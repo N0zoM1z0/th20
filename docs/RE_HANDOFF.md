@@ -1,5 +1,33 @@
 # Current reconstruction handoff
 
+## REF-014 — 2026-10-06 — game-session review checkpoint
+
+The exhaustive goal remains active. All21 game_session bodies individually
+reviewed:13 nonexact/eight support. Total857 terminal/6,087 pending of6,944.
+No family gaps; global17 reconciled/96 pending of113. One original production
+TU freshly compiles; complete source/header/CPU driver/recipes/reports read.
+22 native functions queried and21 decompiled through attested wrapper.
+
+- Constructor free/memset/fill loops differ from native thiscall/receiver
+  return/array helpers; reference explicit padding/grouped words do not close
+  typed Player/Context/PlayerTable/Session owners. MOVSD+2B0 is evidence for
+  floating storage, requires consumer proof. No fake layout or new exact credit.
+- Getter partition: Session context30 stride, Session->PlayerTable and Player
+  F0 stride. Native primary/overlay return stored pointers, source returns
+  references to pointer fields. Original setters/counter receive actual owners
+  in ECX; reference convenience wrappers change ABI/global/lifetime partition.
+- Native continue count ADD precedes signed clamp0..9. Clamp helper's Ghidra
+  _Find_unchecked label is misleading; actual call chain/comparator checked.
+  Five historical alias checks are source-only, not native getter validation.
+- Retained14,342 passes14337 native/five source only, module4/4 current hashes.
+  CPU driver not compiled/run; report not inherited. REF-013 CPU-driver note
+  corrected to read-only; audio compilation includes seven production TUs and
+  backend smoke (eight total), not the CPU driver. Source unchanged,66-unit
+  cold replay remains current; authored49/3,692/full4,620 bytes/18 objects.
+
+Next coherent family: stage_clear17 entries, then every remaining body and96
+manual gap files. Private `.analysis/ref014-*`; earlier counts historical.
+
 ## REF-013 — 2026-10-06 — audio-runtime review checkpoint
 
 The exhaustive goal remains active. All122 audio_runtime C++ bodies are

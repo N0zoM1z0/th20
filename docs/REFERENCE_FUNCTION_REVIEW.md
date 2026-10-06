@@ -37,11 +37,58 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 836 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/tool/test entries have explicit decisions. The
-remaining 6,108 indexed entries are pending. The separate
+The first 857 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/tool/test entries have explicit decisions. The
+remaining 6,087 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: seventeen of 113 files are reconciled, leaving 96 pending.
+
+## REF-014: all 21 game-session implementation entries reviewed
+
+Every indexed body has a specific decision: thirteen nonexact and eight support.
+The seventeen production definitions, four CPU-driver bodies, complete header,
+CMake, README and both reports were read. The single unmodified production TU
+compiles serially; CPU driver was not compiled, linked or run. No family parse
+gap exists. Total857 terminal/6,087 pending; gaps17 reconciled/96 pending.
+Production source and all66 canonical units are unchanged from REF-013.
+
+Independent Ghidra queries cover22 native functions and21 are decompiled.
+Original constructors return receivers, use scalar assignments and actual
+array-construction/member calls; the reference substitutes free void initializers,
+memset/fill_n/range loops and a new constructor wrapper. Native Player preserves
+bytes+A6/A7 and+B1..B3; PlayerTable preserves+224..227; Session preserves+84..87.
+Nonzero player defaults and two F0-byte player strides are corroborated. Typed
+members and natural alignment remain open: reference explicit padding and
+offset-grouped word arrays cannot establish full original declarations. Native
+Session+2B0 uses XORPS/MOVSD; reference declares uint64. This is floating-type
+evidence requiring consumer confirmation, not permission to reshape a class.
+
+Session context lookup is thiscall with30-byte stride. Player lookup separates
+Session->PlayerTable, global wrapper and F0-byte indexed PlayerTable member.
+Primary/overlay wrappers call actual context members returning stored pointers;
+reference CallbackOwner*& returns pointer-field addresses. The five source alias
+checks never execute those original getters and cannot prove their return ABI.
+Default-player binding and combined flag clearing are new source convenience
+functions rather than additional original entries. Each setter/counter body is
+deferred on its own receiver/type/partition evidence, without fabricated prefix
+padding. Native continue increment receives Session in ECX; reference free
+no-argument increment uses a global. The native add stores modulo32 ADD before
+passing the member and local0/9 bounds to a reference-returning clamp chain;
+independent signed comparator evidence overrides Ghidra's misleading
+_Find_unchecked library label. Source local memcpy/clamp changes that partition.
+
+Retained14,342 passes are14,337 isolated native comparisons and five source-only
+alias checks. Dirty storage tests meaningfully exercise retained padding, but
+pointer types, real global initialization, helper ABI and original getter calls
+are not proven by byte equality. Module4/4 source hashes are current; no execution
+receipt was inherited or tests rerun. Output alias/write/exception cleanup gaps
+are recorded separately. REF-013's CPU-driver review note is corrected: that
+driver was read only; its eight compiled TUs comprise seven production sources
+and the source-only backend smoke. All eight compilation results stand.
+
+Private evidence: `.analysis/ref014-*`. Next coherent family: stage_clear's17
+entries, then every remaining implementation and manual gap. The exhaustive
+goal remains active; authored49/3,692 and canonical66/18objects/4,620 unchanged.
 
 ## REF-013: all 122 audio-runtime implementation entries reviewed
 
