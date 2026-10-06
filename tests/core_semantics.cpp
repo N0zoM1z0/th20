@@ -6,6 +6,7 @@
 #include "TaskInfo.hpp"
 #include "ArchiveCrypt.hpp"
 #include "InputState.hpp"
+#include "Configuration.hpp"
 
 #include <array>
 #include <bit>
@@ -13,6 +14,7 @@
 #include <cstdint>
 #include <cstring>
 #include <limits>
+#include <new>
 
 namespace {
 unsigned callback_calls;
@@ -22,6 +24,28 @@ std::int32_t callback_c(void*) { ++callback_calls; return 3; }
 }
 
 int main() {
+    const th20::InputBindings bindings;
+    const std::array<std::int16_t, 24> expected_bindings{
+        0, 1, 2, 3, -1, -1, -1, -1,
+        0, 1, 5, 10, -1, -1, -1, -1,
+        0x5a, 0x58, 0x10, 0x1b, 0x26, 0x28, 0x25, 0x27};
+    std::array<std::int16_t, 24> stored_bindings{};
+    std::memcpy(stored_bindings.data(), &bindings, sizeof(bindings));
+    assert(stored_bindings == expected_bindings);
+    const th20::InputBindingSlots empty_bindings;
+    std::array<std::int16_t, 8> stored_slots{};
+    std::memcpy(stored_slots.data(), &empty_bindings, sizeof(empty_bindings));
+    assert((stored_slots == std::array<std::int16_t, 8>{}));
+    for (const std::uint32_t initial : {0u, 0xffffffffu, 0x12345678u, 0x1ffu, 0xfffffe00u}) {
+        alignas(th20::ConfigurationFlags) std::array<unsigned char, 4> storage{};
+        std::memcpy(storage.data(), &initial, sizeof(initial));
+        auto* options = ::new (storage.data()) th20::ConfigurationFlags;
+        std::uint32_t result;
+        std::memcpy(&result, options, sizeof(result));
+        assert(result == ((initial & ~0x1ffu) | 0x80u));
+        options->~ConfigurationFlags();
+    }
+
     th20::InputButtonState buttons{};
     buttons.retained_118.fill(0x12345678);
     buttons.retained_218.fill(0x87654321);

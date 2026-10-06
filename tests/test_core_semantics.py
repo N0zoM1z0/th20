@@ -21,6 +21,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/FunctionChain.cpp", "src/LockRegistry.cpp", "src/TaskInfo.cpp",
                             "src/ArchiveCrypt.cpp",
                             "src/InputState.cpp",
+                            "src/Configuration.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

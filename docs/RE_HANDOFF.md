@@ -1,5 +1,35 @@
 # Current reconstruction handoff
 
+## REF-007 — 2026-10-06 — platform-services review checkpoint
+
+The exhaustive goal remains active. All 43 actual definitions in ten platform
+service files have individual decisions: two absorbed exact, fourteen native
+deferred and twenty-seven support. Current terminal decisions: 408; 6,298 of
+6,706 pending. Six of 103 parser-gap files reconciled; 97 remain pending.
+
+- Added Configuration owner: signed 48-byte binding construction309, default
+  16-byte slots85 and low-nine-bit flags137 with retained high bits. Three
+  full canonical units add531 bytes; only bindings adds309 authored bytes.
+  Slots and flags retain unknown authored/compiler origins without credit.
+- Cold complete replay: 40/40 units, eleven objects, 3,188 full compared bytes.
+  Authored exact: 31 functions, 2,667 bytes; source-present mappings: 40.
+- Portable checks cover all defaults and retained flag bits. Four unmodified
+  production TUs compile serially; no wholesale platform/clock acceptance.
+- Recovered actual inline-assembly oracle owner and removed two phantom bodies
+  with file-specific parse normalization; all 365 older review bindings remain
+  unchanged. New regression verifies original offsets/hashes; gap reconciled.
+- Native pushes disprove reference's missing-%s argument claim. Logged path,
+  fixed globals, guard/EH, returned statuses, buffer lengths/initialization and
+  allocator/file ownership differences are individually recorded.
+- Read retained CPU report and source-only service tests, without rerunning
+  them. Report includes source-only checks and forces SSE2; complete conversion
+  helper has feature-dispatched code. System settings were not changed.
+
+Next coherent family: runtime_state's 27 definitions, then program_entry and
+all remaining implementations/parser gaps. Deferred protocols remain specific
+follow-ups. Private evidence: `.analysis/ref007-*` and compiler receipts.
+Earlier checkpoint totals below are historical.
+
 ## REF-006 — 2026-10-06 — input review checkpoint
 
 The exhaustive goal remains active. All 84 definitions in seven input files

@@ -695,8 +695,8 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0041F880,27,0x0041F89A,FUN_0041f880,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041F8A0,261,0x0041F9A4,FUN_0041f8a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041F9B0,340,0x0041FB03,FUN_0041f9b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041FB10,309,0x0041FC44,FUN_0041fb10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041FC50,85,0x0041FCA4,FUN_0041fc50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041FB10,309,0x0041FC44,FUN_0041fb10,th20::InputBindings::InputBindings,Configuration,matching,100.00,__thiscall,InputBindings::InputBindings(),false,src/Configuration.cpp,REF-007; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Complete canonical exact replay; original configuration and signed-binding consumers independently checked; post-member-construction game defaults establish authored body
+0x0041FC50,85,0x0041FCA4,FUN_0041fc50,th20::InputBindingSlots::InputBindingSlots,Configuration,reconstructed,100.00,__thiscall,InputBindingSlots::InputBindingSlots(),false,src/Configuration.cpp,REF-007; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,Complete canonical exact replay; original configuration and signed-binding consumers independently checked; member-default initialization may be compiler synthesized; origin pending and excluded from authored credit
 0x0041FCB0,102,0x0041FD15,FUN_0041fcb0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041FD20,68,0x0041FD63,FUN_0041fd20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041FD70,120,0x0041FDE7,FUN_0041fd70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -3557,7 +3557,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004B9AA0,97,0x004B9B00,FUN_004b9aa0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B9B10,73,0x004B9B58,FUN_004b9b10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B9B60,31,0x004B9B7E,FUN_004b9b60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004B9B80,137,0x004B9C08,FUN_004b9b80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004B9B80,137,0x004B9C08,FUN_004b9b80,th20::ConfigurationFlags::ConfigurationFlags,Configuration,reconstructed,100.00,__thiscall,ConfigurationFlags::ConfigurationFlags(),false,src/Configuration.cpp,REF-007; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,Complete canonical exact replay; original configuration and signed-binding consumers independently checked; member-default initialization may be compiler synthesized; origin pending and excluded from authored credit
 0x004B9C10,473,0x004B9DE8,FUN_004b9c10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B9DF0,245,0x004B9EE4,FUN_004b9df0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B9EF0,1214,0x004BA3AD,FUN_004b9ef0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

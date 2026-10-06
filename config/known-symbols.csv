@@ -37,3 +37,6 @@ address,name,module,confidence,evidence
 0x00421AD0,th20::InputDevice::initialize_xinput,InputState,high,REF-006
 0x00420510,th20::map_input_byte,InputState,high,REF-006
 0x004228B0,th20::InputButtonState::update,InputState,high,REF-006
+0x004B9B80,th20::ConfigurationFlags::ConfigurationFlags,Configuration,high,REF-007
+0x0041FC50,th20::InputBindingSlots::InputBindingSlots,Configuration,high,REF-007
+0x0041FB10,th20::InputBindings::InputBindings,Configuration,high,REF-007

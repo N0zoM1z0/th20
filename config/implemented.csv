@@ -35,3 +35,6 @@ th20::InputDevice::initialize_keyboard
 th20::InputDevice::initialize_xinput
 th20::map_input_byte
 th20::InputButtonState::update
+th20::ConfigurationFlags::ConfigurationFlags
+th20::InputBindingSlots::InputBindingSlots
+th20::InputBindings::InputBindings

@@ -36,3 +36,6 @@ th20::InputDevice::initialize_keyboard,0x00421AB0,function
 th20::InputDevice::initialize_xinput,0x00421AD0,function
 th20::map_input_byte,0x00420510,function
 th20::InputButtonState::update,0x004228B0,function
+th20::ConfigurationFlags::ConfigurationFlags,0x004B9B80,function
+th20::InputBindingSlots::InputBindingSlots,0x0041FC50,function
+th20::InputBindings::InputBindings,0x0041FB10,function

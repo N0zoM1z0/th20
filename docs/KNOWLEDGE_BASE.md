@@ -1,5 +1,42 @@
 # Verified facts and open hypotheses
 
+## REF-007 — 2026-10-06
+
+- Individually reviewed: all 43 actual platform-services definitions; two
+  absorbed exact, fourteen native deferred, twenty-seven support. Current
+  totals408 terminal/6,298 pending; six reconciled gap files/97 pending.
+- Independent target: binding constructor309 calls three member-zeroing85
+  constructors, then assigns24 signed-int16 defaults. Disabled -1 and MOVSX
+  consumers corroborate signed storage. Native flags constructor137 changes
+  low9 bits to0x80 while retaining high23; six graphics option consumers
+  independently identify bits1..6. Full configuration176 remains deferred.
+- Compiler-observed/canonical: three new units531 bytes; full cold40/40,
+  eleven objects, 3,188 bytes; authored31/2,667. Slots85/flags137 origins
+  unknown, no authored credit. Portable defaults/retained-bit checks added.
+- Parser-observed: five inline-assembly statements generated two phantom
+  definitions and hid the real enclosing conversion owner. Narrow blanking
+  preserves original offsets/hashes and all365 previous review bindings.
+- Independent target contradicts source comment: 0x4DC473 MOV EDX,[EBP+8]
+  and0x4DC476 PUSH EDX provide filename for %s; native caller0x41E8E5
+  supplies th20.cfg. Source logs joined path instead. Original initializer
+  calls no-op0x40C6B0 where source appends an additional path log.
+- Independent target: clock0x41CB10 computes from fixed globals under lock5;
+  conversion0x542E00 has ECX/EDX input, XMM0 output and feature-dispatched
+  AVX512VL branch. Native rounding0x54A4E0 returns integer status via CRT
+  helpers. Reference intrinsic factoring/bool adapter do not recover full ABI.
+- Independent target: writer0x410E70 full493 bytes clears522 buffer bytes
+  versus source524, leaves write count uninitialized, and uses lock2/EH.
+  Original file read owns raw buffer and returns size through pointer; source
+  optional-vector ownership and resize differ. Save drops native status in
+  reference. Initialization reuses uninitialized4096-WCHAR scratch and stores
+  system API BOOL results into adjacent byte-addressed globals.
+- Oracle limits: retained66,270 checks include14 source-only checks; native
+  fixtures66,256, fixed SSE2 and manufactured lock/global/IAT state. Ordinary
+  entry/TLS, feature variants, NaN/subnormal offsets, real file/path lifetimes
+  and cross-thread operation remain unverified. Reports not freshly rerun.
+
+Private evidence: `.analysis/ref007-*`.
+
 ## REF-006 — 2026-10-06
 
 - Individually reviewed: all 84 input definitions; five absorbed exact,

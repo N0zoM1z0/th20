@@ -19,6 +19,7 @@ PARSER_ANNOTATIONS = {
     "native_recovered/native_exports.cpp": (b"API",),
     "source_reconstruction/core_scheduler/cpu_compare.cpp": (b"__cdecl",),
 }
+PARSER_INLINE_ASM = {"source_reconstruction/platform_services/cpu_compare.cpp"}
 
 
 def digest(data):
@@ -97,6 +98,13 @@ def inventory(reference, paths):
         parse_data = data
         for token in PARSER_ANNOTATIONS.get(path, ()):
             parse_data = re.sub(rb"\b" + token + rb"\b", b" " * len(token), parse_data)
+        if path in PARSER_INLINE_ASM:
+            # This manually read test file uses five flat MSVC asm statements.
+            # The grammar mistakes them for functions and loses their owner.
+            # Preserve original source ranges/hashes, including the statements.
+            parse_data = re.sub(rb"\b__asm\s*\{[^{}]*\}",
+                                lambda match: re.sub(rb"[^\r\n]", b" ", match.group()),
+                                parse_data)
         tree = parser.parse(parse_data)
         lines = data.decode("utf-8", errors="replace").splitlines()
         module = path.split("/")[1] if path.startswith("source_reconstruction/") else path.split("/")[0]

@@ -16,24 +16,90 @@ excluded from implementation counts. `reference-source-files.csv` includes all
 function bodies. Names, address hints and role hints are discovery metadata;
 they are not accepted mappings or semantic conclusions.
 
-The current parser finds 6,707 definitions: 4,193 reconstruction candidates,
-2,440 test/oracle bodies, 39 tooling/support bodies and 35 historical bridge
+The current parser finds 6,706 definitions: 4,193 reconstruction candidates,
+2,439 test/oracle bodies, 39 tooling/support bodies and 35 historical bridge
 bodies. These role hints need review. The parser reports gaps in 103 files;
 manual reconciliation remains required, and this inventory is not asserted
 to be a complete compiler AST. Private gap ranges are recorded rather than
 silently omitted. Tree-sitter 0.25.2 and its C++ grammar 0.23.4 are pinned in
 the analysis environment. Export annotation `API` and scheduler CPU-oracle
 `__cdecl` annotations are blanked only in their individually reconciled files.
-Offsets and hashes use the original bytes; reference source is never edited.
+Flat inline-assembly statements are blanked only in the manually reconciled
+platform-services CPU oracle. Offsets and hashes use the original bytes; reference source is never edited.
 
 `reference-function-reviews.csv` binds every decision to its exact body hash.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 365 native-core/export/scheduler/runtime/archive/input/tool/test bodies
-have explicit decisions. The remaining 6,342 indexed bodies are pending. The separate
+The first 408 native-core/export/scheduler/runtime/archive/input/platform-service/
+tool/test bodies have explicit decisions. The remaining 6,298 indexed bodies
+are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: five of 103 files are reconciled, leaving 98 pending.
+and parser-gap count: six of 103 files are reconciled, leaving 97 pending.
+
+## REF-007: platform services' 43 definitions reviewed
+
+All ten C++ source/header files are read in full, with individual decisions for
+43 actual definitions: two absorbed exact components, fourteen native cases
+deferred with specific differences and twenty-seven support helpers. The
+README, CMake recipe, CPU-validation report and top-level extract_evidence.py
+are also reviewed. That Python helper has no function definitions: its hash
+guard is useful, but hardcoded paths and prefix extents are diagnostic only.
+Total decisions: 408; 6,298 definitions and 97 parser-gap files remain pending.
+
+| Target | Complete bytes | Maintained function | Authored credit |
+| --- | ---: | --- | --- |
+| 0x0041FB10 | 309 | InputBindings constructor | 309 |
+| 0x0041FC50 | 85 | InputBindingSlots constructor | Origin pending |
+| 0x004B9B80 | 137 | ConfigurationFlags constructor | Origin pending |
+
+Three 16-byte signed binding records recover the original receiver ABI,
+member-default construction and twenty-four assignments. Native signed loads
+and disabled -1 bindings independently corroborate the int16 fields. The
+zeroing member constructor is independently queried before anchoring three
+REL32 calls. Flags initialize nine one-bit members individually and preserve
+bits 9..31. Native configuration construction and six independent graphics
+option consumers corroborate storage and named bits. The complete 176-byte
+configuration owner is still deferred. Default-slot and flag constructors
+might be compiler-generated contributions and receive no authored credit.
+
+Cold complete replay passes 40/40 units, eleven objects, 3,188 full bytes.
+Authored exact: 31 functions, 2,667 bytes; source-present mappings: 40.
+Portable checks cover all signed defaults, standalone slot zeroing and retained
+high flag bits in preinitialized storage. Four unmodified reference production
+TUs compile serially; this does not accept their native protocols.
+
+The CPU oracle's five flat inline-assembly statements caused two phantom
+bodies and hid the actual enclosing original_conversion function. Narrow
+parse-view normalization recovers that owner and removes both phantoms; all
+365 prior reviewed IDs/body hashes remain unchanged. Regression verifies
+original body/file hashes and offsets. Two remaining WINAPI annotation gaps
+are manually reconciled; the reference files remain untouched.
+
+Deferred native clock code uses fixed globals, lock-5 tracked guards and a
+special compiler conversion ABI. Its full unsigned-conversion helper includes
+feature-dispatched AVX512VL code; testing only SSE2 is not complete equivalence.
+Native rounding returns an integer status through separate CRT helpers, while
+the reference uses a bool adapter. Writer lock-2/EH, 522-byte buffer clearing,
+uninitialized write count, raw allocator/file ownership and returned save status
+are not recovered by the source RAII/vector/void replacements. Initialization
+uses one retained 4096-WCHAR scratch buffer and writes system-option results to
+adjacent globals; no system-setting mutation was executed during this review.
+
+The reference's missing-%s argument comment is contradicted by native pushes:
+0x4DC473..476 supplies the filename, and caller 0x41E8E5 supplies th20.cfg.
+The source instead logs a joined path. Source path initialization also appends
+a log entry where the native path calls a verified no-op, changing normal-path
+behavior. Truncated-file rejection and eager zero initialization differ too.
+
+The retained 66,270-check CPU report includes fourteen source-only decode
+checks, leaving 66,256 native fixture checks. It maps the target without normal
+entry/TLS startup, manufactures lock/global/IAT state and forces SSE2. NaN/
+subnormal offsets, feature-dispatch variants, real files/path initialization and
+cross-thread scheduling are outside that evidence. Reports and source-only
+Windows service tests were read, not rerun or credited as native exactness.
+
+Private evidence: `.analysis/ref007-*` and fresh compiler receipts.
 
 ## REF-006: input's 84 definitions reviewed
 
@@ -144,10 +210,10 @@ are distinguished from the original ECX receiver ABI.
 | 0x00452F50 | 35 | ClockScalar::operator* | Passed | Origin pending |
 
 Existing Random and Timer reset/set units still pass. Current cold replay is
-thirty-seven complete units, 2,657 bytes, ten independently rebuilt objects.
-Authored credit is thirty functions, 2,358 bytes. RNG is excluded as STL;
-the two shared float-view functions and three empty/defaulted lifetime
-contributions remain under origin review and are not added to authored totals.
+forty complete units, 3,188 bytes, eleven independently rebuilt objects.
+Authored credit is thirty-one functions, 2,667 bytes. RNG is excluded as STL;
+the two shared float-view functions, three empty/defaulted lifetime
+contributions and two configuration initializer contributions remain under origin review and are not added to authored totals.
 Exact names do not establish an enclosing clock or
 interpolation type.
 

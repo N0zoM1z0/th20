@@ -429,3 +429,37 @@ relocations = [
   { offset = 0x1E6, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
   { offset = 0x204, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
 ]
+
+[units.configuration_flags_construct]
+source = "src/Configuration.cpp"
+object = "build/Configuration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::ConfigurationFlags::ConfigurationFlags"]
+symbol = "??0ConfigurationFlags@th20@@QAE@XZ"
+target_address = 0x004B9B80
+size = 137
+relocations = []
+
+[units.input_binding_slots_construct]
+source = "src/Configuration.cpp"
+object = "build/Configuration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputBindingSlots::InputBindingSlots"]
+symbol = "??0InputBindingSlots@th20@@QAE@XZ"
+target_address = 0x0041FC50
+size = 85
+relocations = []
+
+[units.input_bindings_construct]
+source = "src/Configuration.cpp"
+object = "build/Configuration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputBindings::InputBindings"]
+symbol = "??0InputBindings@th20@@QAE@XZ"
+target_address = 0x0041FB10
+size = 309
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0InputBindingSlots@th20@@QAE@XZ", target = 0x0041FC50 },
+  { offset = 0x16, type = "REL32", symbol = "??0InputBindingSlots@th20@@QAE@XZ", target = 0x0041FC50 },
+  { offset = 0x21, type = "REL32", symbol = "??0InputBindingSlots@th20@@QAE@XZ", target = 0x0041FC50 },
+]

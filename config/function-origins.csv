@@ -695,8 +695,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041F880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041F8A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041F9B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041FB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041FC50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041FB10,authored,Configuration,authored,high,REF-007; custom game binding stores occur after three zeroing member constructors
+0x0041FC50,unknown,Configuration,review,pending,REF-007; default member/bitfield initializer emission cannot distinguish explicit authored constructor from compiler synthesis
 0x0041FCB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041FD20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041FD70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3557,7 +3557,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004B9AA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B9B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B9B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004B9B80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004B9B80,unknown,Configuration,review,pending,REF-007; default member/bitfield initializer emission cannot distinguish explicit authored constructor from compiler synthesis
 0x004B9C10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B9DF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B9EF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

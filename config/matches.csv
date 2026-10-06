@@ -29,3 +29,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00421AD0,th20::InputDevice::initialize_xinput,40,matching,100.00,input_initialize_xinput,REF-006; locked MSVC cold build and complete canonical relocation replay
 0x00420510,th20::map_input_byte,105,matching,100.00,input_map_byte,REF-006; locked MSVC cold build and complete canonical relocation replay
 0x004228B0,th20::InputButtonState::update,583,matching,100.00,input_update_buttons,REF-006; locked MSVC cold build and complete canonical relocation replay
+0x0041FB10,th20::InputBindings::InputBindings,309,matching,100.00,input_bindings_construct,REF-007; locked MSVC cold build and complete canonical relocation replay
