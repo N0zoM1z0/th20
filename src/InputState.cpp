@@ -61,6 +61,39 @@ void InputButtonState::update() {
 std::uint32_t InputButtonState::pressed_bits(std::uint32_t mask) const {
     return pressed & mask;
 }
+void InputButtonState::reset_replay() {
+    retained_118.fill(0);
+    retained_218.fill(0);
+    field_298 = 0;
+    replay_current = 0;
+    replay_previous = 0;
+    replay_repeat = 0;
+    replay_pressed = 0;
+    replay_released = 0;
+    retained_2b4 = 0;
+}
+void InputButtonState::update_replay() {
+    std::uint32_t bit = 1;
+    std::uint32_t remaining = replay_current;
+    replay_repeat = 0;
+    retained_2b4 = 0;
+    for (unsigned i = 0; i < 32; ++i, remaining >>= 1, bit <<= 1) {
+        if (remaining & 1) {
+            ++retained_118[i];
+            ++retained_218[i];
+            if (retained_118[i] >= 8) retained_2b4 |= bit;
+            if (retained_118[i] >= 26) {
+                replay_repeat |= bit;
+                retained_118[i] -= 8;
+            }
+        } else {
+            retained_118[i] = 0;
+            retained_218[i] = 0;
+        }
+    }
+    replay_pressed = (replay_current ^ replay_previous) & replay_current;
+    replay_released = (replay_current ^ replay_previous) & ~replay_current;
+}
 
 int InputButtonState::repeated_or_pressed(std::uint32_t mask) const {
     return (pressed_bits(mask) != 0 || (repeat8 & mask) != 0) ? 1 : 0;

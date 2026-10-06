@@ -104,3 +104,9 @@ th20::Cursor::set_wrapping,0x004BFBE0,function
 th20::Cursor::save,0x004C60B0,function
 th20::Cursor::restore,0x004C6010,function
 th20::PauseFlags::PauseFlags,0x004E1CB0,function
+th20::ReplayFileHeader::ReplayFileHeader,0x00507480,function
+th20::ProgressRecordHeader::ProgressRecordHeader,0x0050E500,function
+th20::ProgressScore::ProgressScore,0x0050E4A0,function
+th20::PracticeScore::PracticeScore,0x0050E6A0,function
+th20::InputButtonState::reset_replay,0x005091D0,function
+th20::InputButtonState::update_replay,0x0050A4D0,function

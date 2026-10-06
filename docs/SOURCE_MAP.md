@@ -11,7 +11,7 @@
 | TaskInfo | src/TaskInfo.hpp, src/TaskInfo.cpp | TaskInf destructor and separate virtual/helper enable/disable entries | Five complete exact functions; native constructor and allocator-based deletion pending |
 | Worker | src/Worker.hpp, src/Worker.cpp | constructor 0x0040B780 | Exact 44-byte construction; close/join/detach and destructor remain undefined/pending |
 | ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270 | Exact 71-byte helper; parameter table selection, decryption and native archive owner remain pending |
-| InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update, three mask queries and held-frame query | Nine complete exact functions; constructor, OS polling and Controller owner remain pending |
+| InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update, three mask queries and held-frame query | Eleven complete exact functions including Replay reset/update; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |
 | GameRandom | src/GameRandom.hpp, src/GameRandom.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; engine helpers | Four authored and two library complete exact units; next/seed locking and global startup remain undefined |
 | TrophyText | src/TrophyText.hpp, src/TrophyText.cpp | shared decoder 0x0052F060 and message id reset 0x0052F590 | Two complete exact functions; PMR encoder, parsing, record allocation and whole Trophy owner remain open |
@@ -24,6 +24,8 @@
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690 | Six complete exact members; original class spelling and authored/compiler/library origins pending |
 | Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |
 | PauseFlags | src/PauseFlags.hpp, src/PauseFlags.cpp | four-byte flags construction 0x004E1CB0 | Complete 40-byte exact constructor; two-bit mode/one-bit practice, upper 29 retained, origin pending |
+| ReplayFileHeader | src/ReplayRecords.hpp, src/ReplayRecords.cpp | disk value construction 0x00507480 | Complete 161-byte exact constructor on 48-byte value; implicit padding, retained byte-block inference and origin pending |
+| ProgressRecordHeader / ProgressScore / PracticeScore | src/ProgressRecords.hpp, src/ProgressRecords.cpp | constructors 0x0050E500/0x0050E4A0/0x0050E6A0 | Three complete exact constructors on actual 12/40/16-byte values; original declarations/origins and enclosing records remain open |
 | ColoredVertex | src/ColoredVertex.hpp, src/ColoredVertex.cpp | typed value construction 0x00423470 | Complete 43-byte exact constructor; actual 20-byte value and Vector3 member established; original spelling/origin pending |
 | TextLine | src/TextLine.hpp, src/TextLine.cpp | value construction 0x0046ABA0 | Complete 219-byte exact constructor; actual 320-byte ASCII record; origin pending |
 | Rectangle | src/Rectangle.hpp, src/Rectangle.cpp | overlap 0x00470920; point construction 0x0040DE00; rectangle construction 0x0040DE30 | Three complete exact contributions; actual eight/sixteen-byte values and inclusive wrapped arithmetic; origins pending |
@@ -36,9 +38,18 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns twenty-five objects and one canonical profile per source.
-Ninety-six units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns twenty-nine objects and one canonical profile per source.
+One hundred eleven units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-025 batches Progress and Replay. Actual disk/score/practice values and Replay
+operations on the existing InputButtonState add 986 complete exact bytes. The
+six Replay words are scalar fields, alongside two std::array histories. Original
+fill/index callee identities precede probes; source preserves modulo32 arithmetic
+and natural constructor padding. Full Profile/Metadata/Snapshot/SaveManager and
+Replay/Stage/UserHeader/chunk/link/Configuration/PlayerTable resource and EH
+ownership remain open. The reference bool append ABI and merged rewind(bool)
+are recorded as differences, without importing a padded whole receiver.
 
 REF-023 batches Options and Key Config and adds the complete 46-byte Timer
 signed greater-than member at 0x00461070. Independent callers establish its

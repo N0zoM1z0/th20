@@ -11,9 +11,12 @@ struct InputButtonState {
     std::uint32_t current, previous, repeat8, repeat12, pressed, released;
     std::array<std::uint32_t, 32> repeat8_count, repeat12_count;
     std::array<std::uint32_t, 32> retained_118, held_frames, retained_218;
-    std::array<std::uint32_t, 6> retained_298;
+    std::uint32_t field_298, replay_current, replay_previous, replay_repeat;
+    std::uint32_t replay_pressed, replay_released;
     std::uint32_t held8, retained_2b4, last_input_kind, suppress_previous;
     void update();
+    void reset_replay();
+    void update_replay();
     std::uint32_t current_bits(std::uint32_t mask) const;
     // Physical button index must be in 0..31; the receiver must be valid.
     std::uint32_t held_frame_count(std::uint32_t index) const;

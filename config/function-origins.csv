@@ -4877,7 +4877,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005072D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00507330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00507360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00507480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00507480,unknown,ReplayRecords,review,pending,"REF-025: complete natural canonical contribution, independently observed owner/consumer and library call anchors. Actual typed records with implicit padding, or real InputButtonState array histories/individual Replay scalars; full cold relocation replay and portable state/padding checks pass. Original spelling and authored/compiler/shared origin pending, no authored credit; full SaveManager/Replay/lifetime remains open. See docs/REFERENCE_FUNCTION_REVIEW.md."
 0x00507530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00507560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005076B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4900,7 +4900,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00508B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00508B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00508B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005091D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005091D0,unknown,InputState,review,pending,"REF-025: complete natural canonical contribution, independently observed owner/consumer and library call anchors. Actual typed records with implicit padding, or real InputButtonState array histories/individual Replay scalars; full cold relocation replay and portable state/padding checks pass. Original spelling and authored/compiler/shared origin pending, no authored credit; full SaveManager/Replay/lifetime remains open. See docs/REFERENCE_FUNCTION_REVIEW.md."
 0x00509280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00509DA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00509DD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4929,7 +4929,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0050A410,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050A430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050A4A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0050A4D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0050A4D0,unknown,InputState,review,pending,"REF-025: complete natural canonical contribution, independently observed owner/consumer and library call anchors. Actual typed records with implicit padding, or real InputButtonState array histories/individual Replay scalars; full cold relocation replay and portable state/padding checks pass. Original spelling and authored/compiler/shared origin pending, no authored credit; full SaveManager/Replay/lifetime remains open. See docs/REFERENCE_FUNCTION_REVIEW.md."
 0x0050A6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050A7F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050A820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4952,11 +4952,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0050AEA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050AEB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050AF20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0050E4A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0050E500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0050E4A0,unknown,ProgressRecords,review,pending,"REF-025: complete natural canonical contribution, independently observed owner/consumer and library call anchors. Actual typed records with implicit padding, or real InputButtonState array histories/individual Replay scalars; full cold relocation replay and portable state/padding checks pass. Original spelling and authored/compiler/shared origin pending, no authored credit; full SaveManager/Replay/lifetime remains open. See docs/REFERENCE_FUNCTION_REVIEW.md."
+0x0050E500,unknown,ProgressRecords,review,pending,"REF-025: complete natural canonical contribution, independently observed owner/consumer and library call anchors. Actual typed records with implicit padding, or real InputButtonState array histories/individual Replay scalars; full cold relocation replay and portable state/padding checks pass. Original spelling and authored/compiler/shared origin pending, no authored credit; full SaveManager/Replay/lifetime remains open. See docs/REFERENCE_FUNCTION_REVIEW.md."
 0x0050E540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050E5D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0050E6A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0050E6A0,unknown,ProgressRecords,review,pending,"REF-025: complete natural canonical contribution, independently observed owner/consumer and library call anchors. Actual typed records with implicit padding, or real InputButtonState array histories/individual Replay scalars; full cold relocation replay and portable state/padding checks pass. Original spelling and authored/compiler/shared origin pending, no authored credit; full SaveManager/Replay/lifetime remains open. See docs/REFERENCE_FUNCTION_REVIEW.md."
 0x0050E6E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050E950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050E990,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

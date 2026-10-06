@@ -105,3 +105,9 @@ address,name,module,confidence,evidence
 0x004C60B0,th20::Cursor::save,Cursor,high,REF-024
 0x004C6010,th20::Cursor::restore,Cursor,high,REF-024
 0x004E1CB0,th20::PauseFlags::PauseFlags,PauseFlags,high,REF-024
+0x00507480,th20::ReplayFileHeader::ReplayFileHeader,ReplayRecords,high,REF-025
+0x0050E500,th20::ProgressRecordHeader::ProgressRecordHeader,ProgressRecords,high,REF-025
+0x0050E4A0,th20::ProgressScore::ProgressScore,ProgressRecords,high,REF-025
+0x0050E6A0,th20::PracticeScore::PracticeScore,ProgressRecords,high,REF-025
+0x005091D0,th20::InputButtonState::reset_replay,InputState,high,REF-025
+0x0050A4D0,th20::InputButtonState::update_replay,InputState,high,REF-025

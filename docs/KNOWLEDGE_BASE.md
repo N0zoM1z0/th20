@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## REF-025 — 2026-10-07
+
+- Progress 79/Replay 66 entries:3 absorbed / 69 nonexact / 73 support. Global1,843 terminal/
+  5,101 pending; parser gaps 29 reconciled / 84 pending. All source/driver/writer
+  bodies individually reviewed, with no blanket module disposition.
+- Six complete exact contributions add 986 bytes: actual ReplayFileHeader 48,
+  ProgressRecordHeader 12, ProgressScore 40/PracticeScore 16 constructors and two
+  existing InputButtonState 704 Replay members. Cold 111 units/29 objects/7,578
+  bytes; authored 57 / 4,074 unchanged, pending-origin 50 / library 4/source111.
+- Native Score 60-element and Practice 63-element constructor arrays independently
+  establish 40/16 strides and implicit alignment/padding. Retained two-byte
+  blocks are inferred from initialized byte-block emission; original types/
+  field meanings/spellings/origins unknown. Huge raw reference owners unaccepted.
+- Native Replay histories are std::array<uint32_t,32>, with six scalar Replay
+  words. Independent fill 50A030→425A00/index 414580 anchors replay fully. Public
+  tests check 32 bits/80-frame cadence/wrapping/reset/release/retained physical
+  state and dirty record padding. Native chunk append returns full int32.
+- Sixteen strict-FP original TUs compile;68 complete COFF diagnostics differ.
+  Missing virtual 508F70 recovered 598 bytes/175 instructions; factory 50A95D
+  omitted JMP independently decoded. No truncated/prefix comparison accepted.
+- Replay callbacks 509F60/509F50/509F70/50A000, priorities 21/46/91, global 5C60FC.
+  Actual arrays/link/rewind/base/EH/resource and full owner remain open. Native
+  LZSS global dictionary/tree5C6B38/5C8B38 differ from reference member encoder.
+- Retained CPU reports Progress 99312/0/Replay 35840/0 have no execution/hash
+  binding. Progress separate 31 hashes have stale driver/CMake/Worker header;
+  Replay build manifest missing. Writers not executed; no current CPU run.
+- Demo four files/four stages/27,411 frames has 11 current source hashes. Supplied
+  archive matches recorded 9db8d7c4...590494,150943726 bytes; verifier missing.
+  Unconstructed raw Replay/source-only offset checks do not prove gameplay.
+- Independently verified 113 spell defaults,17 strings,18 character pointers and
+  five ranks. character*9+stone crosses adjacent tables; embedded1.00c remains
+  the approved v1.00a specimen. Guards/thread timing/CRT/file failures unaccepted.
+
 ## REF-024 — 2026-10-07
 
 - Pause175 and Stone193 entries individually terminal:6absorbed/60nonexact/

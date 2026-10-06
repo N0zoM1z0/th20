@@ -31,6 +31,8 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/TrophyText.cpp",
                             "src/Cursor.cpp", "tests/cursor_semantics.cpp",
                             "src/PauseFlags.cpp",
+                            "src/ProgressRecords.cpp", "src/ReplayRecords.cpp",
+                            "tests/replay_record_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

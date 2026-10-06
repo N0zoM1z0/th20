@@ -1195,3 +1195,65 @@ symbol = "??0PauseFlags@th20@@QAE@XZ"
 target_address = 0x004E1CB0
 size = 40
 relocations = []
+
+# REF-025: actual disk/score values and Replay operations on InputButtonState.
+
+[units.replay_file_header_construct]
+source = "src/ReplayRecords.cpp"
+object = "build/ReplayRecords.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ReplayFileHeader::ReplayFileHeader"]
+symbol = "??0ReplayFileHeader@th20@@QAE@XZ"
+target_address = 0x00507480
+size = 161
+relocations = []
+
+[units.progress_record_header_construct]
+source = "src/ProgressRecords.cpp"
+object = "build/ProgressRecords.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ProgressRecordHeader::ProgressRecordHeader"]
+symbol = "??0ProgressRecordHeader@th20@@QAE@XZ"
+target_address = 0x0050E500
+size = 51
+relocations = []
+
+[units.progress_score_construct]
+source = "src/ProgressRecords.cpp"
+object = "build/ProgressRecords.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ProgressScore::ProgressScore"]
+symbol = "??0ProgressScore@th20@@QAE@XZ"
+target_address = 0x0050E4A0
+size = 81
+relocations = []
+
+[units.practice_score_construct]
+source = "src/ProgressRecords.cpp"
+object = "build/ProgressRecords.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PracticeScore::PracticeScore"]
+symbol = "??0PracticeScore@th20@@QAE@XZ"
+target_address = 0x0050E6A0
+size = 51
+relocations = []
+
+[units.input_reset_replay]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::reset_replay"]
+symbol = "?reset_replay@InputButtonState@th20@@QAEXXZ"
+target_address = 0x005091D0
+size = 167
+relocations = [{ offset = 0x23, type = "REL32", symbol = "?fill@?$array@I$0CA@@std@@QAEXABI@Z", target = 0x0050A030 }, { offset = 0x43, type = "REL32", symbol = "?fill@?$array@I$0CA@@std@@QAEXABI@Z", target = 0x0050A030 }]
+
+[units.input_update_replay]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::update_replay"]
+symbol = "?update_replay@InputButtonState@th20@@QAEXXZ"
+target_address = 0x0050A4D0
+size = 475
+relocations = [{ offset = 0x82, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0xAA, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0xD1, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x103, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x135, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x15E, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x17C, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }]

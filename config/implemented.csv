@@ -103,3 +103,9 @@ th20::Cursor::set_wrapping
 th20::Cursor::save
 th20::Cursor::restore
 th20::PauseFlags::PauseFlags
+th20::ReplayFileHeader::ReplayFileHeader
+th20::ProgressRecordHeader::ProgressRecordHeader
+th20::ProgressScore::ProgressScore
+th20::PracticeScore::PracticeScore
+th20::InputButtonState::reset_replay
+th20::InputButtonState::update_replay

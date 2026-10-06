@@ -40,11 +40,96 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 1,698 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/pause/stone/tool/test entries have explicit decisions. The
-remaining 5,246 indexed entries are pending. The separate
+The first 1,843 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/pause/stone/progress/replay/tool/test entries have explicit decisions. The
+remaining 5,101 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: twenty-seven of 113 files are reconciled, leaving 86 pending.
+and parser-gap count: twenty-nine of 113 files are reconciled, leaving 84 pending.
+
+## REF-025: Progress and Replay batch
+
+All 145 implementations have individual hash-bound decisions: Progress 79 and
+Replay 66, with three absorbed, 69 nonexact and 73 support. Coverage is now 1,843
+terminal / 5,101 pending. Two member-pointer parser gaps are manually reconciled;
+global 29 reconciled / 84 pending. Production sources, all owner headers, oracle
+bodies/lambdas and include fragments, CMake recipes and report writers were read.
+No module scan or historical pass count substitutes for these decisions.
+
+Six complete natural contributions add 986 bytes: ReplayFileHeader construction
+507480 / 161, ProgressRecordHeader 50E500 / 51, ProgressScore 50E4A0 / 81,
+PracticeScore 50E6A0 / 51, InputButtonState reset 5091D0 / 167 and update 50A4D0 / 475.
+Cold replay is 111/111 units across 29 objects, 7,578 bytes. Source 111,
+pending-origin 50 / library 4; authored 57 / 4,074 unchanged. The three Progress
+constructors are distinct native subobject boundaries of nonexact reference
+construct_profile, which retains its nonexact decision. Original names/origins
+remain pending; constructor inference does not establish authorship.
+
+Native allocation/load/save establish the 48-byte Replay header. Score and
+practice array construction independently establishes 60*40 and 63*16 storage.
+The 12-byte CR/ST prefix has two 16-bit tags and two 32-bit words. Natural eight-byte
+alignment leaves Score 20..23/36..39 and Practice 12..15 padding intact. Small
+initialized two-byte retained blocks are inferred from native address-based
+clearing; interpreting them as uint16 scalars emitted different constructors.
+Field meanings and original declarations remain unknown. No explicit padding,
+raw giant Profile/Snapshot/SaveManager/Replay facade or copied code was imported.
+
+Input reuses the real704-byte canonical owner. Native array/fill/index and frame
+consumers distinguish two 32-word Replay histories and six individually stored
+Replay scalars. Reset leaves physical input/history and held8 intact. Update
+uses modulo32 counters, unsigned bit scanning, thresholds8/26, repeat-minus8
+and current/previous edge equations. Callees 50A030 (array fill through 425A00)
+and 414580 (array index) were identified independently before probes, rather
+than promoting solved fields. Portable checks cover every bit, 80-frame repeat
+cadence, release/reset, UINT_MAX wrap, unrelated state and dirty record padding.
+
+All 16 unchanged production TUs compile serially with their declared strict-FP
+and transitive include recipe; 68 complete COFF diagnostics differ. Full native
+flow was inspected for load/save/merge, callbacks, frame paths and compression.
+Ghidra omits virtual 508F70: independent PE decoding recovers 598 contiguous bytes/
+175 instructions through its return. Factory 50A930 also omits one two-byte JMP,
+independently decoded without shortening the95-byte span. Other automatic
+extents remain provisional and do not grant rejected functions exact credit.
+
+Native Replay append 509E40/509EE0 returns full int32/EAX/RET12 or RET4; reference
+bool signatures and historical one-byte return checks omit that distinction.
+Raw arrays omit native std::array adapters, and rewind(bool) merges two 44-byte
+no-argument members 509DA0/509E10. Chunk/frame/link template ownership, native EH,
+full 176-byte Configuration,552-byte PlayerTable, TaskInf and allocator graphs
+remain open. Recording/playback callbacks 509F60/509F50, extra 509F70/draw 50A000
+and priorities 21/46/91 are independently observed, without thunk-only credit.
+
+Native LZSS uses dictionary 5C6B38/tree 5C8B38 process globals and cdecl helpers;
+reference owns std::array in a new encoder. Literal 9/match 18 MSB bits and the
+fourteen-zero terminator discard final partial bytes. Encrypt returns its input
+pointer, unlike the reference void Bytes API; signed block/remainder/limit and
+allocation-failure domains remain open. Parsers add guards to original overread,
+zero-size-loop and invalid-index domains. Progress load initializes 2*10 records,
+revisits char 1/index 0, merges backup before main and copies back after parsing.
+Source threads preserve valid file ordering, without accepting original launch
+ABI, arbitrary interleavings, CRT TLS, short writes or disk-full behavior.
+
+Retained Progress CPU 99312/0 and Replay CPU 35840/0 reports have no source/driver/
+compiler binding. Progress module_status's separate 31 hashes have three stale
+entries: compare.cpp, oracle CMake and Worker header. Replay's advertised oracle
+build hash manifest is absent. Original mappings use raw/normalized owners;
+Progress substitutes CRT locale and intercepts original writes, while Replay
+compares bool append returns and omits final FPS cursor comparison. No current
+native CPU execution is claimed. Posthoc evidence/hash writers were not run.
+
+Demo evidence records four files/four stages/27,411 frames with 11 current source
+hashes. The supplied 150,943,726-byte th20.dat independently matches recorded
+SHA256 9db8d7c43fbacec95614163d4c3e1d254e82169f8550177ee849831130590494.
+The retained verifier/build is absent. Driver uses raw unconstructed Replay
+storage and checks nonempty counts/FPS offsets, not stream contents or gameplay;
+this is historical source-only format corroboration. Independently checked data:
+113 spell defaults,17 Replay strings,18 adjacent character pointers and5 ranks.
+The overlapping character*9+stone lookup and embedded1.00c label are preserved
+as observations of the same approved v1.00a target.
+
+Private evidence: .analysis/ref025-* and serial build receipts. The one-shot
+ref025-record.py has already executed; never rerun it. Continue with Title's 803
+entries and every other pending body, batching related owners while recording
+individual outcomes. The exhaustive goal remains active.
 
 ## REF-024: Pause and Stone Menu batch
 

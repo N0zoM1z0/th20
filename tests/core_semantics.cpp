@@ -24,6 +24,7 @@
 
 void check_scene_resource_protocol();
 void check_cursor_history();
+void check_replay_records();
 
 namespace {
 unsigned callback_calls;
@@ -53,6 +54,7 @@ std::uint32_t th20::GameRandom::next() {
 int main() {
     check_scene_resource_protocol();
     check_cursor_history();
+    check_replay_records();
     th20::trophy_text::Message message;
     std::memset(&message, 0xa5, sizeof(message));
     message.reset();
@@ -272,7 +274,8 @@ int main() {
     th20::InputButtonState buttons{};
     buttons.retained_118.fill(0x12345678);
     buttons.retained_218.fill(0x87654321);
-    buttons.retained_298.fill(0xaabbccdd);
+    buttons.field_298 = buttons.replay_current = buttons.replay_previous = 0xaabbccdd;
+    buttons.replay_repeat = buttons.replay_pressed = buttons.replay_released = 0xaabbccdd;
     buttons.retained_2b4 = 7;
     buttons.last_input_kind = 2;
     buttons.suppress_previous = 1;
@@ -295,7 +298,7 @@ int main() {
     assert(buttons.repeat8_count[31] == 0 && buttons.repeat12_count[0] == 0);
     assert(buttons.held_frames[31] == 0 && buttons.held8 == 0);
     assert(buttons.retained_118[17] == 0x12345678 && buttons.retained_218[31] == 0x87654321);
-    assert(buttons.retained_298[5] == 0xaabbccdd && buttons.retained_2b4 == 7);
+    assert(buttons.replay_released == 0xaabbccdd && buttons.retained_2b4 == 7);
     assert(buttons.last_input_kind == 2 && buttons.suppress_previous == 1);
     buttons.current = 1;
     buttons.repeat8_count[0] = buttons.repeat12_count[0] = buttons.held_frames[0] = 0xffffffff;

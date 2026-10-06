@@ -1,5 +1,43 @@
 # Current reconstruction handoff
 
+## REF-025 — 2026-10-07 — Progress and Replay batch checkpoint
+
+The exhaustive goal remains active. All 145 entries individually reviewed:
+3 absorbed / 69 nonexact / 73 support; global 1,843 terminal / 5,101 pending.
+Two member-pointer gap files reconciled; global 29 reconciled / 84 pending.
+
+- Six new complete exact units, 986 bytes: Replay header, CR/ST header, score
+  and practice values, Replay input reset/update. Cold 111/111 across 29 objects,
+  7,578 bytes. Source 111/pending-origin 50 / library 4; authored 57 / 4,074 unchanged.
+  Original names/origins pending; no authored constructor inference.
+- Real 48/12/40/16-byte values use implicit padding; retained two-byte blocks
+  inferred from constructor clearing, field meanings still unknown. Existing
+  704-byte InputButtonState now distinguishes individual Replay scalar fields
+  from two 32-word history arrays. Independent fill 50A030/index 414580 anchors.
+- Portable padding/state tests cover all 32 bits/80 frames/release/reset/unsigned
+  wrap and unrelated physical input retention. Source/profile frozen before
+  final 111-unit cold replay; no repeated builds needed absent further edits.
+- All 16 unmodified production TUs compile strict-FP serially; 68 complete COFF
+  diagnostics differ. One omitted factory JMP decoded; missing virtual 508F70
+  independently decoded as 598 bytes/175 instructions. Automatic other extents
+  remain provisional; no prefix credit. Callback/priorities independently read.
+- Native append returns int32, reference bool/one-byte tests differ; native
+  arrays/link templates, separate rewind members, EH/base/Configuration/
+  PlayerTable/allocator ownership unresolved. Do not create raw giant facades.
+- Retained Progress 99312/0 and Replay 35840/0 reports lack execution/source hash
+  binding. Progress module 31 hashes:28 current / 3 stale; Replay build manifest
+  absent. Demo 11 hashes current and supplied th20.dat matches recorded archive
+  digest; retained verifier missing. No new native CPU or demo execution.
+- Full file/load/save/merge/compression/source/oracle/writer flows read. Data
+  independently checked: 113 defaults/17 strings/18 character pointers/5 ranks.
+  Invalid-input guards, native thread timing/CRT/heap/OS failures/full gameplay
+  remain open. Writers not run; never refresh hashes to imply execution.
+
+Next related batch: title_system 803, then all remaining implementations/gaps.
+Private .analysis/ref025-record.py already executed; never rerun. Archive notes
+143/144 subsequently corrected in ledger after supplied archive attestation.
+Prior checkpoints are historical; compiler and Ghidra work stay serial.
+
 ## REF-024 — 2026-10-07 — Pause and Stone Menu batch checkpoint
 
 The exhaustive goal remains active. All 368 entries individually reviewed:

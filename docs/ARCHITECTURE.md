@@ -44,3 +44,10 @@ resource ownership. Eight methods are exact; constructor exception emission is
 still unresolved. The separate four-byte PauseFlags value is exact without
 introducing an enclosing menu facade. These additions remain component objects,
 with no complete menu or original allocator/runtime linkage claim.
+
+Progress and Replay share actual disk-value protocols and Replay input history.
+Four small constructors and two members on the existing InputButtonState are
+complete exact contributions. They do not close the reference's raw giant disk
+owners, original thread/file/allocator lifetimes or full Replay integration.
+Native intrusive-template/std::array ownership and full-int append ABI differ
+from the reference helpers and remain explicitly recorded for further recovery.
