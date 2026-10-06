@@ -1,4 +1,5 @@
 #include "BulletValues.hpp"
+#include "BulletStyle.hpp"
 #include "CollisionGeometry.hpp"
 #include "Vector2.hpp"
 #include <array>
@@ -8,6 +9,11 @@
 #include <cstring>
 #include <limits>
 #include <new>
+
+namespace th20 {
+// Independent synthetic table; does not provide original startup data.
+BulletStyle bullet_styles[50];
+}
 
 namespace {
 template<class T> void dirty_zero_value() {
@@ -24,6 +30,28 @@ template<class T> void dirty_zero_value() {
 }
 
 void check_bullet_values() {
+    for (std::uint32_t word : {0u, 0x80000000u, 1u, 0x80000001u, 0x3f800000u,
+                              0xbf800000u, 0x7f800000u, 0xff800000u,
+                              0x7fc12345u, 0xffc12345u}) {
+        std::memset(th20::bullet_styles, 0xa5, sizeof(th20::bullet_styles));
+        for (auto& style : th20::bullet_styles) style.radius = std::bit_cast<float>(word);
+        std::array<unsigned char, sizeof(th20::bullet_styles)> before;
+        std::memcpy(before.data(), th20::bullet_styles, before.size());
+        for (int type = 0; type < 50; ++type)
+            assert(std::bit_cast<std::uint32_t>(th20::bullet_radius(type)) == word);
+        assert(std::memcmp(before.data(), th20::bullet_styles, before.size()) == 0);
+    }
+    std::memset(th20::bullet_styles, 0x5a, sizeof(th20::bullet_styles));
+    for (int type = 0; type < 50; ++type) {
+        const auto word = 0x3f000000u + std::uint32_t(type) * 0x1234u;
+        th20::bullet_styles[type].radius = std::bit_cast<float>(word);
+    }
+    std::array<unsigned char, sizeof(th20::bullet_styles)> table_before;
+    std::memcpy(table_before.data(), th20::bullet_styles, table_before.size());
+    for (int type = 0; type < 50; ++type)
+        assert(std::bit_cast<std::uint32_t>(th20::bullet_radius(type)) ==
+               0x3f000000u + std::uint32_t(type) * 0x1234u);
+    assert(std::memcmp(table_before.data(), th20::bullet_styles, table_before.size()) == 0);
     dirty_zero_value<th20::Vector2>();
     dirty_zero_value<th20::ExtendedCommand>();
     dirty_zero_value<th20::ShotParameters>();

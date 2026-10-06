@@ -1,5 +1,39 @@
 # Verified facts and open hypotheses
 
+## REF-029 — 2026-10-07 — Bullet / Laser / Damage batch complete
+
+- All413 bodies individually reviewed:3 absorbed /214 nonexact /196 support.
+  Global3,381 terminal /3,563 pending; parser gaps57 reconciled /56 pending.
+  Four files/six calling-convention sites omit no implementation. Goal active.
+- New full18-byte bullet-radius read485700;137 units cold-replay across36 objects
+  /9,122 complete bytes. Source137/pending origins76/library4; authored57/4,074
+  unchanged. Synthetic dirty50-record/IEEE/nonmutation checks pass C++20/UBSan.
+- Approved PE initializer401280..40A98C,38,669 bytes/5,126 contiguous instructions:
+  3,415 direct stores and20 checked memset calls assign all17,200 bytes. Every
+  4300 reference literal words matches; actual writableBSS5C06A8/radius+144.
+  Array storage/initializer remain undefined, no original literals imported.
+- All56 original production TUs compile strict-FP serially after source freeze;
+  all receipts re-attest.236 full COFF diagnostics:222 size differences, one
+  mismatch,13 structural matches. Radius alone adds canonical acceptance here;
+  other12 need native whole owner/vtable/lifetime closure, not fake receivers.
+- All250 native leads below instruction cap.37 omitted JMPs independently
+  decoded; skipped nine-byte LEA/CALL/NOP range remains ownership-open. Four
+  constructor-bound34-slot laser vtables/136 entries checked from approved PE.
+  Rejected switch/table extents remain provisional; target/database unchanged.
+- Retained Bullet341623/0, Laser431652/0 bind389 current source hashes/shared
+  digest. Laser includes64 source-only checks; native subtotal431588. Damage
+  296121/0 binds45 current hashes, but writer rebinds after run. Historical
+  first/retire/shoot/shape reports retain6/7/11/14 stale hashes and failures.
+  Shared Sprite totals overlap; none summed into new native-execution credit.
+- Type2 ETEX13 bounds-check/throw differs from native420-byte copy into two
+  commands. Local ECL reachability has sequential-entry/rank/memory assumptions;
+  not whole-native equivalence. Damage fixtures exclude active Bomb and heap
+  retire-then-read; callback/item/resource substitutions explicitly recorded.
+- All indexed bodies, headers, fixtures/includes, drivers, report writers,
+  style-recovery tool and conditional reachability note read. No Windows CPU
+  oracle/writer run. Full original pool/ANM/PMR/EH/thread/GPU/game remains open.
+  Next coherent batch: Player611 / Bomb83 / Item190. See full REF-029 review.
+
 ## REF-028 — 2026-10-07 — component checkpoint; batch ongoing
 
 - Seven complete exact contributions add640 bytes: Vector2 construction,

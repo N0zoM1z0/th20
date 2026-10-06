@@ -2,9 +2,11 @@
 
 Bullet / Laser / Damage Regions share an actual64-byte extended-command value,
 40-byte shot parameters and44-byte x86 ECL operands, alongside two-float Vector2.
-Four value constructors and three geometry routines are complete exact at the
-REF-028 component checkpoint. Full resource/EH/typed-array and pool owners remain
-open; exhaustive individual review of this413-body batch is ongoing. See
+Four value constructors, three geometry routines and the bullet-radius query are
+complete exact. All 413 implementations have individual review decisions at
+REF-029. Original writable50*344-byte style storage is externally declared;
+its complete initializer/data was independently audited without importing literals.
+Full resource/EH/typed-array and pool owners remain open. See
 REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md.
 
 The canonical executable is the user-selected Japanese TH20 v1.00a Steamless

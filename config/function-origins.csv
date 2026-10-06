@@ -2357,7 +2357,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00485690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004856C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004856E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00485700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00485700,unknown,BulletStyle,review,pending,"REF-029: full18-byte natural cdecl radius read; actual writable344-byte*50 BSS table and radius+144 independently derived from complete401280 startup initializer, all4300 words audited.137-unit/36-object cold canonical replay and dirty-table/IEEE C++20 UBSan checks pass. Storage/initializer undefined; original name/origin pending. See docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x00485720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

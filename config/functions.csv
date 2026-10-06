@@ -2357,7 +2357,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00485690,48,0x004856BF,FUN_00485690,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004856C0,18,0x004856D1,FUN_004856c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004856E0,17,0x004856F0,FUN_004856e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00485700,18,0x00485711,FUN_00485700,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00485700,18,0x00485711,FUN_00485700,th20::bullet_radius,BulletStyle,reconstructed,100.00,__cdecl,th20::bullet_radius,false,src/BulletStyle.cpp,REF-029; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-029: full18-byte natural cdecl radius read; actual writable344-byte*50 BSS table and radius+144 independently derived from complete401280 startup initializer, all4300 words audited.137-unit/36-object cold canonical replay and dirty-table/IEEE C++20 UBSan checks pass. Storage/initializer undefined; original name/origin pending. See docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x00485720,18,0x00485731,FUN_00485720,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00485740,434,0x004858F1,FUN_00485740,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00485900,19,0x00485912,FUN_00485900,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

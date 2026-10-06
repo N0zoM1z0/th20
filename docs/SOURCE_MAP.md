@@ -2,6 +2,7 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| BulletStyle | src/BulletStyle.hpp, src/BulletStyle.cpp | radius query 0x00485700 | Complete18-byte exact cdecl query; actual writable50*344-byte array, radius+144 and BSS base independently audited; storage/initializer undefined, origin pending |
 | BulletValues | src/BulletValues.hpp, src/BulletValues.cpp | constructors 0x0047BD90/0x0047BD20/0x0047BCA0 | Three complete exact constructors on actual64/40/44x86-byte values; shared array strides/signed counts/script pointer independently observed; origins and full owners pending |
 | Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
 | CollisionGeometry | src/CollisionGeometry.hpp, src/CollisionGeometry.cpp | absolute 0x00445680; circle 0x00456FE0; rectangle 0x00457300 | Three complete exact routines; negative zero/quiet-NaN sign retained, circle inclusive/rectangle strict; origins pending |
@@ -44,16 +45,19 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns thirty-five objects and one canonical profile per source.
-One hundred thirty-six units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns thirty-six objects and one canonical profile per source.
+One hundred thirty-seven units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
-REF-028 is the first component checkpoint within the ongoing413-body Bullet,
-Laser and Damage Regions batch. Seven natural contributions add640 bytes with
-independent array/allocator/typed-vector/signed-count/script consumers and PE
-constant anchors. Both indexed geometry predicates are absorbed; other411 bodies
-remain pending until their individual evidence review is recorded. Full native
-pool/ANM/PMR/metadata/EH and resource lifetime remain open.
+REF-029 closes the413-body Bullet, Laser and Damage Regions review begun at
+REF-028: three absorbed,214 nonexact,196 support. Eight natural contributions
+add658 complete bytes with independent array/allocator/typed-vector/signed-count/
+script consumers and PE anchors. The complete style initializer establishes all
+4300 data words and the actual writable BSS array; maintained source declares
+storage externally and supplies only the radius member read. The twelve other
+reference structural matches lack closed native owner/vtable/lifetime identity.
+Full pool/ANM/PMR/metadata/EH and resources remain open. See
+REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md for individual-record and oracle limits.
 
 REF-027 batches all Effect and Special State implementations. Shared actual
 value members add765 complete exact bytes with no enclosing owner facade.

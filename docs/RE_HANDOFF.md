@@ -1,5 +1,45 @@
 # Current reconstruction handoff
 
+## REF-029 — 2026-10-07 — Bullet / Laser / Damage batch checkpoint
+
+All413 implementations individually reviewed:3 absorbed /214 nonexact /196
+support. The earlier REF-028 recorded two absorptions; REF-029 records the
+remaining411, including radius. Global3,381 terminal /3,563 pending of6,944.
+Four gap files/six sites reconciled; gaps57 reconciled /56 pending. Goal active.
+
+- New natural bullet_radius485700/18bytes. Full137-unit cold replay /36objects /
+  9,122bytes passes. Source137, pending origins76/library4; authored57/4,074
+  unchanged. Synthetic50-record dirty/IEEE/nonmutation C++20/UBSan checks pass.
+- Actual writable50*344-byte BSS array5C06A8/radius+144 independently follows
+  whole401280 initializer38,669bytes/5,126instructions,3415 direct stores and20
+  checked memset calls. All4300 literal words independently audited. Production
+  storage/initializer undefined; no original literal data copied into source.
+- All56 strict-FP original production TUs compile serially after final source
+  freeze; current objects/receipts attest.236 unsliced COFF diagnostics:222 size
+  differences, one mismatch,13 structural matches. Other12 structural matches
+  need actual Bullet/Laser/Type3 owners/vtables/EH, no padded receiver shortcuts.
+- All250 native leads below cap;37 missing JMPs independently decoded. Skipped
+  nine-byte LEA/CALL/NOP has unclosed ownership. Four constructor-bound34-slot
+  laser vtables/136 entries audited; rejected switch/tables remain provisional.
+- Full source/header/fixture/include/writer/tool and report-binding audit done.
+  Bullet341623/0 and Laser431652/0 bind389 current hashes/shared digest; Laser64
+  source-only distinguished. Damage296121/0 has45 current hashes but post-run
+  writer rebinding, not executed-binary proof. Historical6/7/11/14 stale hashes
+  preserved; shared totals overlap. No Windows CPU oracle/writer executed.
+- Type2 ETEX13 checked source differs from native two-command OOB copy; ECL
+  local reachability conditional. Damage Bomb inactive/heap-retire domain and
+  replaced callbacks/Item events, Bullet whole-hit/resource and original PMR/
+  EH/GPU/thread/game ownership remain explicitly open. Read full review.
+- Private .analysis/ref029-record.py executed ONCE; NEVER RERUN. It prevalidates
+  all411 body/file hashes,56 receipts,137 exact units and four gap records before
+  maintained mutation. All REF028/older writers already executed too.
+
+Next coherent batch: player_entity611 + bomb_system83 + item_system190 =884.
+Continue every remaining implementation/gap; do not mark the goal complete.
+Maintain source freeze during serial MSVC compilation, repo-python invocation,
+English maintained text and gpt-6.1-sol commit prefix. Current checkpoint public
+gates/authorized push are recorded with its commit; raw artifacts stay ignored.
+
 ## REF-028 — 2026-10-07 — Bullet / Laser / Damage component checkpoint
 
 The exhaustive goal remains active. Related413-body batch is underway:

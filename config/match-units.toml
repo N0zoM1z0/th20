@@ -1543,3 +1543,15 @@ relocations = [
   { offset = 0x45, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
   { offset = 0x58, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
 ]
+
+[units.bullet_radius]
+source = "src/BulletStyle.cpp"
+object = "build/BulletStyle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::bullet_radius"]
+symbol = "?bullet_radius@th20@@YAMH@Z"
+target_address = 0x00485700
+size = 18
+relocations = [
+  { offset = 0xC, type = "DIR32", symbol = "?bullet_styles@th20@@3PAUBulletStyle@1@A", target = 0x005C06A8 },
+]
