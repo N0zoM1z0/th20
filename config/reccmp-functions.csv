@@ -30,3 +30,4 @@ th20::TaskInfo::~TaskInfo,0x0041FDF0,function
 th20::Worker::Worker,0x0040B780,function
 th20::DebugMemoryResource::DebugMemoryResource,0x00418DB0,function
 th20::DebugMemoryResource::~DebugMemoryResource,0x00418E90,function
+th20::archive_name_sum,0x00456270,function

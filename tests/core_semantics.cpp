@@ -4,6 +4,7 @@
 #include "FunctionChain.hpp"
 #include "LockRegistry.hpp"
 #include "TaskInfo.hpp"
+#include "ArchiveCrypt.hpp"
 
 #include <array>
 #include <bit>
@@ -20,6 +21,16 @@ std::int32_t callback_c(void*) { ++callback_calls; return 3; }
 }
 
 int main() {
+    assert(th20::archive_name_sum(nullptr, 0) == 0);
+    const char name_bytes[]{'A', '\0', 'B', static_cast<char>(0x81), static_cast<char>(0xff)};
+    assert(th20::archive_name_sum(name_bytes, 1) == 65);
+    assert(th20::archive_name_sum(name_bytes, 3) == 131);
+    assert(th20::archive_name_sum(name_bytes, 5) == 3);
+    std::array<char, 256> all_bytes{};
+    for (unsigned index = 0; index != all_bytes.size(); ++index)
+        all_bytes[index] = static_cast<char>(index);
+    assert(th20::archive_name_sum(all_bytes.data(), 256) == 128);
+
     // Independent division-based oracle, including states outside normal seeds.
     std::uint32_t sample = 0x81a7b393u;
     for (unsigned i = 0; i != 100000; ++i) {

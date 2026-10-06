@@ -1461,7 +1461,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00456170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00456270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00456270,authored,ArchiveCrypt,authored,high,REF-004; independently examined game archive decoder caller and counted byte-sum contribution
 0x004562C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004562E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

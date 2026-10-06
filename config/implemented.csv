@@ -29,3 +29,4 @@ th20::TaskInfo::~TaskInfo
 th20::Worker::Worker
 th20::DebugMemoryResource::DebugMemoryResource
 th20::DebugMemoryResource::~DebugMemoryResource
+th20::archive_name_sum

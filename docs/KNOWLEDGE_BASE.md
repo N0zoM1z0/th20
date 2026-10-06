@@ -1,5 +1,41 @@
 # Verified facts and open hypotheses
 
+## REF-004 — 2026-10-06
+
+- Individually reviewed: all 64 explicit archive definitions in eight files;
+  eighteen native cases deferred, forty-six source API/test/report helpers.
+  Total decisions: 190; 6,518 indexed bodies and 103 parser-gap files pending.
+- Independent target: filename primitive 0x456270 sums pointer/count bytes
+  modulo 256. Native caller 0x53A3C0 performs strlen, table selection and crypt
+  parameter pushes. File-backed eight twelve-byte records at 0x5AE000 match
+  reference constants; aggregate-return selector is a new reference API.
+- Compiler-observed: natural shared archive_name_sum reproduces all 71 bytes
+  with original cdecl ABI and no relocations. Portable cases verify explicit
+  counts, embedded zeros, high bytes, wrap and zero length. Full cold replay:
+  32/32 units, nine objects, 1,848 bytes; authored: 25 functions, 1,549 bytes.
+- Independent target: crypt 0x4100E0 has six cdecl arguments, signed 32-bit
+  arithmetic and allocator copy of min(size,limit). Reference vector/64-bit
+  arithmetic and invalid-parameter guards are not its native ownership/ABI.
+- Independent target: LZSS 0x5391F0 has optional output/allocation owner and
+  persistent dictionary 0x5C6B38. Bit-byte fetch precedes exhaustion checking;
+  source safe indexing and expansion/final-size exceptions differ. Valid
+  MSB/ring/overlap semantics do not establish malformed-input equivalence.
+- Independent target: ArcMngr fields at +0/+4/+8/+12 own records/count/names/
+  stream; records stride sixteen with an extra end sentinel. Native lookup
+  returns pointer/null and uses CRT comparison 0x555750 with global-state
+  alternate path. Reference vectors, view-length ASCII comparison and index
+  exceptions are individually deferred replacements.
+- Independent target: file wrapper 0x410AA0 has name,size-out,loose-mode ABI,
+  fixed lock-2/EH and raw buffers. Two strrchr calls corroborate the path quirk
+  and explicit loose selection; source optional-vector interface omits size-out.
+- Recipe observed: four unmodified archive production/verifier TUs compile
+  after supplying CMake-required SHA string macros. Source tests/extraction
+  validators do not run the original EXE; reports are not inherited or summed.
+- Unknown: complete native archive allocator/stream/deleting lifetime, codec
+  ABI/failure paths, locked global initialization and whole-game linkage/runtime.
+
+Private evidence: .analysis/ref004-* and reference-functions/exact-replay-008.log.
+
 ## REF-003 — 2026-10-06
 
 - Individually reviewed: all 67 explicit runtime_core bodies across nine files;

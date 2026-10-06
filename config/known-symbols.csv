@@ -31,3 +31,4 @@ address,name,module,confidence,evidence
 0x0040B780,th20::Worker::Worker,Worker,high,REF-003
 0x00418DB0,th20::DebugMemoryResource::DebugMemoryResource,DebugMemoryResource,high,REF-003
 0x00418E90,th20::DebugMemoryResource::~DebugMemoryResource,DebugMemoryResource,high,REF-003
+0x00456270,th20::archive_name_sum,ArchiveCrypt,high,REF-004

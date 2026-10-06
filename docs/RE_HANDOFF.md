@@ -1,5 +1,37 @@
 # Current reconstruction handoff
 
+## REF-004 — 2026-10-06 — archive review checkpoint
+
+The exhaustive goal is still active. All eight archive source/header files and
+64 explicit definitions now have individual reviews: eighteen native cases
+deferred with specific contracts and forty-six integration/test/report helpers.
+No archive parser gap remains. Total terminal decisions: 190; 6,518 indexed
+bodies and 103 parser-gap files elsewhere are pending.
+
+- Recovered counted filename sum 0x456270, complete 71-byte canonical unit.
+  Its caller, not the sum, selects eight independently read crypt records.
+- Cold full replay: 32/32 units, nine objects, 1,848 compared bytes.
+  Authored exact: 25 functions, 1,549 bytes; source-present mappings: 32.
+- Independent target distinguishes signed native crypt/allocator ABI, pointer
+  LZSS with persistent global dictionary, sixteen-byte ArcMngr/record storage,
+  virtual stream lifetime, CRT name comparison and full locked file selection.
+- Recorded extra source rejection policies, ASCII-view versus CRT comparison,
+  raw-pointer versus optional/vector returns, omitted native size-out parameter
+  and reference storage/global ownership changes. Do not bulk-import archive.
+- All four selected unmodified production/verifier TUs compile serially after
+  adding its declared CMake source-SHA macros to the diagnostic recipe. Cached
+  receipts remain conservative; any source change triggers revalidation/retry.
+- Added portable filename-sum cases for explicit count, embedded zeros, high
+  bytes, wrap and zero-length input. Public CI and private tracking pass.
+
+Next coherent families: native_core's remaining value/string/container/file
+owners, then every remaining indexed implementation and manual parser gap.
+Scheduler/runtime/archive deferred native protocols remain individually logged
+follow-ups. No new approval is needed to continue the user-authorized goal.
+
+Private evidence: .analysis/ref004-*, reference-functions/exact-replay-008.log
+and compiler receipts under build/. REF-003 and earlier totals below are history.
+
 ## REF-003 — 2026-10-06 — runtime review checkpoint
 
 The exhaustive user goal remains active. Every existing implementation needs

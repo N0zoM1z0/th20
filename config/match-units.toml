@@ -357,3 +357,13 @@ relocations = [
   { offset = 0xC, type = "DIR32", symbol = "??_7DebugMemoryResource@th20@@6B@", target = 0x0056C920 },
   { offset = 0x14, type = "REL32", symbol = "??1memory_resource@pmr@std@@UAE@XZ", target = 0x0040E5E0 },
 ]
+
+[units.archive_name_sum]
+source = "src/ArchiveCrypt.cpp"
+object = "build/ArchiveCrypt.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_name_sum"]
+symbol = "?archive_name_sum@th20@@YAEPBDI@Z"
+target_address = 0x00456270
+size = 71
+relocations = []

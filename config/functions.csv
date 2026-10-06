@@ -1461,7 +1461,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00456170,156,0x0045620B,FUN_00456170,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00456210,40,0x00456237,FUN_00456210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00456240,34,0x00456261,FUN_00456240,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00456270,71,0x004562B6,FUN_00456270,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00456270,71,0x004562B6,FUN_00456270,th20::archive_name_sum,ArchiveCrypt,matching,100.00,__cdecl,"uint8_t archive_name_sum(const char*, uint32_t)",false,src/ArchiveCrypt.cpp,REF-004; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Complete 71-byte canonical replay; counted byte-sum only; native caller independently owns parameter-table indexing and in-place decryption
 0x004562C0,17,0x004562D0,FUN_004562c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004562E0,932,0x00456683,FUN_004562e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00456690,313,0x004567C8,FUN_00456690,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

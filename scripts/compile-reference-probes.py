@@ -24,7 +24,7 @@ def main():
     # runtime_core exports the scheduler include directory through its CMake
     # dependency. Record the corresponding include in this diagnostic recipe.
     scheduler_include = reference / "source_reconstruction/core_scheduler"
-    profile = PROFILE + ["/IZ:" + str(scheduler_include.resolve()).replace("/", "\\")]
+    include_profile = PROFILE + ["/IZ:" + str(scheduler_include.resolve()).replace("/", "\\")]
     if subprocess.check_output(["git", "-C", str(reference), "rev-parse", "HEAD"], text=True).strip() != pin["commit"]:
         raise ValueError("reference commit differs")
     if subprocess.check_output(["git", "-C", str(reference), "status", "--porcelain"], text=True):
@@ -46,6 +46,13 @@ def main():
         source = reference / relative
         if digest(source) != row["file_sha256"]:
             raise ValueError(f"reference source inventory is stale: {relative}")
+        profile = list(include_profile)
+        if relative == "source_reconstruction/archive/verify.cpp":
+            # These string macros are declared by archive/CMakeLists.txt;
+            # preserve the recipe instead of editing unmodified reference code.
+            for extension in ("cpp", "hpp"):
+                fingerprint = digest(source.parent / f"archive.{extension}")
+                profile.append(f'/DTH20_ARCHIVE_{extension.upper()}_SHA256="{fingerprint}"')
         key = hashlib.sha256(relative.encode()).hexdigest()[:20]
         report = output / f"{key}.json"
         identity = dict(reference_commit=pin["commit"], reference_path=relative,

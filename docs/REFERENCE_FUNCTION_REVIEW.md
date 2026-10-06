@@ -29,8 +29,8 @@ reference source bytes are never edited.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 126 native-core/export/scheduler/runtime bodies have explicit decisions.
-The remaining 6,582 indexed bodies are pending. The separate
+The first 190 native-core/export/scheduler/runtime/archive bodies have explicit decisions.
+The remaining 6,518 indexed bodies are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: one of 104 files is reconciled, leaving 103 pending.
 
@@ -49,8 +49,8 @@ are distinguished from the original ECX receiver ABI.
 | 0x00452F50 | 35 | ClockScalar::operator* | Passed | Origin pending |
 
 Existing Random and Timer reset/set units still pass. Current cold replay is
-thirty-one complete units, 1,777 bytes, eight independently rebuilt objects.
-Authored credit is twenty-four functions, 1,478 bytes. RNG is excluded as STL;
+thirty-two complete units, 1,848 bytes, nine independently rebuilt objects.
+Authored credit is twenty-five functions, 1,549 bytes. RNG is excluded as STL;
 the two shared float-view functions and three empty/defaulted lifetime
 contributions remain under origin review and are not added to authored totals.
 Exact names do not establish an enclosing clock or
@@ -227,6 +227,76 @@ Private independent evidence: .analysis/ref003-runtime{,-extra}.asm,
 ref003-{resource,task}-vtable.json, ref003-worker-{construct,library}-anchors.asm,
 ref003-pmr-base-anchors.asm and reference-functions/exact-replay-007.log.
 
+## REF-004: archive's 64 explicit definitions reviewed
+
+All eight nongenerated archive source/header files were read, including both
+test drivers and the extraction verifier. Every indexed definition receives
+an individual decision: eighteen native cases deferred with specific ABI or
+behavior differences, and forty-six source API, integration, fixture or report
+helpers. No archive file has an outstanding parser gap. Total explicit reviews
+are 190; 6,518 indexed bodies and 103 parser-gap files remain pending elsewhere.
+
+Independent full target disassembly covers the crypt primitive, filename sum,
+LZSS, header/catalog parsing, aligned name advancement, lookup, member reads,
+manager close/open/size and full file-selection wrapper. It establishes:
+
+- 0x00456270 only sums a caller-counted byte sequence modulo 256 and returns
+  a byte. The parameter-table lookup happens inside 0x0053A3C0, after strlen
+  and this sum. Eight twelve-byte records at 0x005AE000 independently match
+  the reference's key/step/block/limit values. An aggregate-return parameter
+  selector is a reference API, not the native sum contribution.
+- 0x004100E0 is a six-argument cdecl in-place crypt routine. It uses signed
+  32-bit lengths and an allocator-owned copy of min(size, limit), whereas the
+  reference uses vectors, signed 64-bit arithmetic and additional rejection
+  conditions. Odd-byte/short-quarter-block tail and permutation/key behavior
+  are corroborated, without accepting the new ownership or failure contract.
+- Native 0x005391F0 accepts input/length/optional-output/allocation-size, can
+  allocate through the original owner and returns a pointer. Dictionary
+  0x005C6B38 persists and each stream cursor starts at one. Its bit reader
+  fetches before the exhaustion check; the reference checks before indexing.
+  Reference expansion/final-size exceptions and vector return are additional
+  policies. Literal, thirteen-bit ring address and length-plus-three behavior
+  agree on valid streams; malformed-input equivalence is not claimed.
+- Native ArcMngr is sixteen bytes: records +0, count +4, names +8 and stream
+  +12. Parse uses stream virtual calls and allocates count+1 sixteen-byte
+  records, with a final stored-end sentinel. Close logs and separately releases
+  names, records and stream. Reference vector/unique_ptr/path/error storage
+  and injected/embedded dictionary are different lifetime/receiver designs.
+- Native lookup returns a record pointer or null and calls CRT comparison
+  0x00555750. That helper has an ASCII fast path and a global-state-dependent
+  alternate path. Reference explicit-length ASCII views and throwing index
+  results cannot represent its complete native contract.
+- The full file-selection entry 0x00410AA0 owns lock-2/EH, a size-output
+  argument, raw buffers and explicit loose-file mode. Its two strrchr calls
+  preserve the observed backslash/slash quirk; an absent archive member does
+  not select filesystem fallback. A standalone view-return basename helper
+  is not the whole original entry.
+
+Maintained ArchiveCrypt recovers the counted filename sum with its original
+two-argument cdecl ABI and one shared natural body. All 71 bytes replay exactly,
+with no relocations. The reference selector row records this accepted subpart
+while leaving its broader aggregate-return API nonexact. Tests cover explicit
+lengths, embedded zeros, high bytes, wrap, zero length and the sum of all 256
+byte values. This adds one authored function; cold replay is now 32/32 units,
+nine objects, 1,848 compared bytes. Authored exactness: 25 functions, 1,549 bytes.
+
+The source tests, dictionary-borrowing lambdas, manager tests and extraction
+verifier are individually classified as support. Their checks compare valid
+decoded resources to external extraction or exercise source-defined rejection
+and lifecycle behavior; none executes the original game. Duplicate-index
+comparison and first-match unique-member tests have different scopes and are
+not summed. Old report totals are not imported as fresh acceptance.
+
+All four selected unmodified archive production/verifier TUs compile in serial
+diagnostic probes. The verifier recipe now supplies the source SHA string macros
+from its actual CMake contract; missing build definitions are not algorithm
+failures. Conservative receipt checks still retry after any source changes.
+This compilation result is not linkage, native runtime or direct ABI acceptance.
+
+Private evidence: .analysis/ref004-archive-target.asm, ref004-name-compare.asm,
+ref004-crypt-table.json, reference-functions/exact-replay-008.log and serial
+reference compiler receipts/logs. Original bytes and reference source stay private.
+
 ## Compiler diagnostics and remaining work
 
 `compile-reference-probes.py` compiles unmodified reference translation units
@@ -243,8 +313,9 @@ receipt, all source fingerprints and included headers; stale entries and failed
 compilations are retried rather than being accepted by source hash alone. The standalone verifier needs its
 declared CMake definitions; that build issue carries no algorithm conclusion.
 
-Next: individually review archive ownership, then every remaining
-implementation. Deferred scheduler/runtime owner/EH recovery is recorded separately.
+Next: continue native core/string/container/file-owner families and every
+remaining implementation. Deferred scheduler/runtime/archive owner/ABI recovery
+is recorded separately.
 Continue through every indexed implementation; investigate and record hard
 cases without stalling or marking untouched bodies as reviewed.
 
