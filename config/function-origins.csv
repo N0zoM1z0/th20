@@ -5264,7 +5264,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0051D8B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0051D900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0051D990,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0051D9B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0051D9B0,unknown,TitleFlags,review,pending,"REF-026: complete natural canonical contribution with independently reviewed typed owner, callers and consumers. TitleFlags preserves upper28 bits at Title+58D4; PracticeScore predicate reads signed byte9 then8 on the real sixteen-byte record. Cold113-unit replay and dirty-storage/all65536 signed byte-pair semantic tests pass. Original names and authored/compiler/shared origins pending; no authored credit or whole Title/Profile acceptance. See docs/REFERENCE_TITLE_REVIEW.md."
 0x0051DA00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0051DA50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0051DAA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5344,7 +5344,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0052C870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052C9C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052C9F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0052CA30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0052CA30,unknown,ProgressRecords,review,pending,"REF-026: complete natural canonical contribution with independently reviewed typed owner, callers and consumers. TitleFlags preserves upper28 bits at Title+58D4; PracticeScore predicate reads signed byte9 then8 on the real sixteen-byte record. Cold113-unit replay and dirty-storage/all65536 signed byte-pair semantic tests pass. Original names and authored/compiler/shared origins pending; no authored credit or whole Title/Profile acceptance. See docs/REFERENCE_TITLE_REVIEW.md."
 0x0052CA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052CB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052CBD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

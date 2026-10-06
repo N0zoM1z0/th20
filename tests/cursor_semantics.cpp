@@ -1,5 +1,6 @@
 #include "Cursor.hpp"
 #include "PauseFlags.hpp"
+#include "TitleFlags.hpp"
 
 #include <cassert>
 #include <limits>
@@ -38,6 +39,20 @@ void check_cursor_history() {
         assert(actual == (pattern & ~7u));
         assert(flags->mode == 0 && flags->practice == 0);
         flags->~PauseFlags();
+
+        alignas(th20::TitleFlags) std::array<unsigned char, 4> title_storage;
+        std::memcpy(title_storage.data(), &pattern, 4);
+        auto* title_flags = new (title_storage.data()) th20::TitleFlags;
+        std::memcpy(&actual, title_storage.data(), 4);
+        assert(actual == (pattern & ~15u));
+        assert(title_flags->music_pending == 0 && title_flags->initial_menu == 0);
+        assert(title_flags->replay_read_cancelled == 0 &&
+               title_flags->replay_read_finished == 0);
+        title_flags->replay_read_cancelled = 1;
+        title_flags->replay_read_finished = 1;
+        std::memcpy(&actual, title_storage.data(), 4);
+        assert(actual == ((pattern & ~15u) | 12u));
+        title_flags->~TitleFlags();
     }
     CountingResource resource;
     auto* old_resource = std::pmr::set_default_resource(&resource);

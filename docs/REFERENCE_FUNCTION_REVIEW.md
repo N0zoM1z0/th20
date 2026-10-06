@@ -40,11 +40,30 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 1,843 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/pause/stone/progress/replay/tool/test entries have explicit decisions. The
-remaining 5,101 indexed entries are pending. The separate
+The first 2,646 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/pause/stone/progress/replay/title/tool/test entries have explicit decisions. The
+remaining 4,298 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: twenty-nine of 113 files are reconciled, leaving 84 pending.
+and parser-gap count: forty-five of 113 files are reconciled, leaving 68 pending.
+
+## REF-026: Title batch
+
+All 803 Title entries have individual body-hash-bound outcomes: 66 nonexact /
+737 support, including complete production, owner/interface, lambda, fixture,
+data/tool and build-recipe reads. Sixteen parser-gap files are reconciled. See
+[the detailed Title review](REFERENCE_TITLE_REVIEW.md) for native ownership,
+per-family differences, compiler diagnostics and independently audited reports.
+
+Two natural complete exact components add 121 bytes: four-byte TitleFlags
+construction and the existing sixteen-byte PracticeScore availability member.
+Whole reference Title construction and guarded whole-Profile query stay nonexact.
+Cold replay passes 113/113 units across 30 objects, 7,699 bytes. Authored progress
+remains 57 / 4,074; original names and 52 source-present origins remain pending.
+All 50 production TUs and one standalone fixture probe compile serially;
+65 complete COFF diagnostics differ. No native report writers or Windows CPU
+oracles were run. Current retained input/log hashes and stale bindings are
+distinguished individually; data observations and fixture results grant no
+whole-page or whole-game credit. Continue every remaining implementation.
 
 ## REF-025: Progress and Replay batch
 

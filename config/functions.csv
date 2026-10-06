@@ -5264,7 +5264,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0051D8B0,78,0x0051D8FD,FUN_0051d8b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0051D900,135,0x0051D986,FUN_0051d900,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0051D990,25,0x0051D9A8,FUN_0051d990,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0051D9B0,66,0x0051D9F1,FUN_0051d9b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0051D9B0,66,0x0051D9F1,FUN_0051d9b0,th20::TitleFlags::TitleFlags,TitleFlags,reconstructed,100.00,__thiscall,th20::TitleFlags::TitleFlags,false,src/TitleFlags.cpp,REF-026; docs/REFERENCE_TITLE_REVIEW.md,unknown,"REF-026: complete natural canonical contribution with independently reviewed typed owner, callers and consumers. TitleFlags preserves upper28 bits at Title+58D4; PracticeScore predicate reads signed byte9 then8 on the real sixteen-byte record. Cold113-unit replay and dirty-storage/all65536 signed byte-pair semantic tests pass. Original names and authored/compiler/shared origins pending; no authored credit or whole Title/Profile acceptance. See docs/REFERENCE_TITLE_REVIEW.md."
 0x0051DA00,75,0x0051DA4A,FUN_0051da00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0051DA50,75,0x0051DA9A,FUN_0051da50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0051DAA0,78,0x0051DAED,FUN_0051daa0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -5344,7 +5344,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0052C870,324,0x0052C9B3,FUN_0052c870,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052C9C0,42,0x0052C9E9,FUN_0052c9c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052C9F0,52,0x0052CA23,FUN_0052c9f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0052CA30,55,0x0052CA66,FUN_0052ca30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0052CA30,55,0x0052CA66,FUN_0052ca30,th20::PracticeScore::available,ProgressRecords,reconstructed,100.00,__thiscall,th20::PracticeScore::available,false,src/ProgressRecords.cpp,REF-026; docs/REFERENCE_TITLE_REVIEW.md,unknown,"REF-026: complete natural canonical contribution with independently reviewed typed owner, callers and consumers. TitleFlags preserves upper28 bits at Title+58D4; PracticeScore predicate reads signed byte9 then8 on the real sixteen-byte record. Cold113-unit replay and dirty-storage/all65536 signed byte-pair semantic tests pass. Original names and authored/compiler/shared origins pending; no authored credit or whole Title/Profile acceptance. See docs/REFERENCE_TITLE_REVIEW.md."
 0x0052CA70,180,0x0052CB23,FUN_0052ca70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052CB30,158,0x0052CBCD,FUN_0052cb30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052CBD0,26,0x0052CBE9,FUN_0052cbd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

@@ -21,9 +21,10 @@ struct ProgressScore {
 };
 struct PracticeScore {
     std::int64_t score;
-    std::uint8_t field_08, field_09;
+    std::int8_t field_08, field_09;
     std::uint8_t field_0a[2];
     PracticeScore();
+    bool available() const;
 };
 static_assert(sizeof(ProgressRecordHeader) == 12);
 static_assert(sizeof(ProgressScore) == 40);

@@ -51,3 +51,11 @@ complete exact contributions. They do not close the reference's raw giant disk
 owners, original thread/file/allocator lifetimes or full Replay integration.
 Native intrusive-template/std::array ownership and full-int append ABI differ
 from the reference helpers and remain explicitly recorded for further recovery.
+
+Title's four-byte UI flags are an independently constructed value at +0x58D4;
+construction preserves 28 upper bits. Its practice-page predicate belongs to
+the actual sixteen-byte disk score, reading signed bytes +9 then +8. Both small
+components are complete exact. The 0x5978 Title callback owner, native handle
+arrays, mesh, thread/resource/EH lifetimes and whole-Profile accessors remain
+open. Injected Environment interfaces and CPU page fixtures do not establish
+original virtual ownership, startup linkage or full rendered gameplay.

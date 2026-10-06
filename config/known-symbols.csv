@@ -111,3 +111,5 @@ address,name,module,confidence,evidence
 0x0050E6A0,th20::PracticeScore::PracticeScore,ProgressRecords,high,REF-025
 0x005091D0,th20::InputButtonState::reset_replay,InputState,high,REF-025
 0x0050A4D0,th20::InputButtonState::update_replay,InputState,high,REF-025
+0x0051D9B0,th20::TitleFlags::TitleFlags,TitleFlags,high,REF-026
+0x0052CA30,th20::PracticeScore::available,ProgressRecords,high,REF-026

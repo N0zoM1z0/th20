@@ -24,8 +24,9 @@
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690 | Six complete exact members; original class spelling and authored/compiler/library origins pending |
 | Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |
 | PauseFlags | src/PauseFlags.hpp, src/PauseFlags.cpp | four-byte flags construction 0x004E1CB0 | Complete 40-byte exact constructor; two-bit mode/one-bit practice, upper 29 retained, origin pending |
+| TitleFlags | src/TitleFlags.hpp, src/TitleFlags.cpp | four-byte flags construction 0x0051D9B0 | Complete 66-byte exact constructor; four UI bits, upper 28 retained, original name/origin pending |
 | ReplayFileHeader | src/ReplayRecords.hpp, src/ReplayRecords.cpp | disk value construction 0x00507480 | Complete 161-byte exact constructor on 48-byte value; implicit padding, retained byte-block inference and origin pending |
-| ProgressRecordHeader / ProgressScore / PracticeScore | src/ProgressRecords.hpp, src/ProgressRecords.cpp | constructors 0x0050E500/0x0050E4A0/0x0050E6A0 | Three complete exact constructors on actual 12/40/16-byte values; original declarations/origins and enclosing records remain open |
+| ProgressRecordHeader / ProgressScore / PracticeScore | src/ProgressRecords.hpp, src/ProgressRecords.cpp | constructors 0x0050E500/0x0050E4A0/0x0050E6A0; availability 0x0052CA30 | Four complete exact members on actual 12/40/16-byte values; signed-byte availability reads +9 then +8, original declarations/origins and enclosing records remain open |
 | ColoredVertex | src/ColoredVertex.hpp, src/ColoredVertex.cpp | typed value construction 0x00423470 | Complete 43-byte exact constructor; actual 20-byte value and Vector3 member established; original spelling/origin pending |
 | TextLine | src/TextLine.hpp, src/TextLine.cpp | value construction 0x0046ABA0 | Complete 219-byte exact constructor; actual 320-byte ASCII record; origin pending |
 | Rectangle | src/Rectangle.hpp, src/Rectangle.cpp | overlap 0x00470920; point construction 0x0040DE00; rectangle construction 0x0040DE30 | Three complete exact contributions; actual eight/sixteen-byte values and inclusive wrapped arithmetic; origins pending |
@@ -38,9 +39,17 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns twenty-nine objects and one canonical profile per source.
-One hundred eleven units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns thirty objects and one canonical profile per source.
+One hundred thirteen units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-026 reviews Title as one coherent batch. Its four-byte flags at +0x58D4 are
+a real independent value, with four source bit fields and upper bits retained.
+The practice availability predicate is a member on the already recovered
+sixteen-byte score value; whole-Profile selector validation remains separate.
+These add 121 complete exact bytes without a padded Title/Profile facade.
+Native handle arrays, mesh, callbacks, five Cursors, Worker, resource ownership,
+EH and whole-page ABI remain open. See REFERENCE_TITLE_REVIEW.md.
 
 REF-025 batches Progress and Replay. Actual disk/score/practice values and Replay
 operations on the existing InputButtonState add 986 complete exact bytes. The

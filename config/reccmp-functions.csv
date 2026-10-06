@@ -110,3 +110,5 @@ th20::ProgressScore::ProgressScore,0x0050E4A0,function
 th20::PracticeScore::PracticeScore,0x0050E6A0,function
 th20::InputButtonState::reset_replay,0x005091D0,function
 th20::InputButtonState::update_replay,0x0050A4D0,function
+th20::TitleFlags::TitleFlags,0x0051D9B0,function
+th20::PracticeScore::available,0x0052CA30,function

@@ -1257,3 +1257,24 @@ symbol = "?update_replay@InputButtonState@th20@@QAEXXZ"
 target_address = 0x0050A4D0
 size = 475
 relocations = [{ offset = 0x82, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0xAA, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0xD1, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x103, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x135, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x15E, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }, { offset = 0x17C, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 }]
+
+# REF-026: actual four-byte Title UI flags; upper twenty-eight bits survive.
+[units.title_flags_construct]
+source = "src/TitleFlags.cpp"
+object = "build/TitleFlags.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::TitleFlags::TitleFlags"]
+symbol = "??0TitleFlags@th20@@QAE@XZ"
+target_address = 0x0051D9B0
+size = 66
+relocations = []
+
+[units.practice_score_available]
+source = "src/ProgressRecords.cpp"
+object = "build/ProgressRecords.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PracticeScore::available"]
+symbol = "?available@PracticeScore@th20@@QBE_NXZ"
+target_address = 0x0052CA30
+size = 55
+relocations = []

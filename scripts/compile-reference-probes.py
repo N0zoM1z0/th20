@@ -63,7 +63,8 @@ def main():
                                 "source_reconstruction/pause_system/",
                                 "source_reconstruction/stone_menu/",
                                 "source_reconstruction/progress_state/",
-                                "source_reconstruction/replay_system/")):
+                                "source_reconstruction/replay_system/",
+                                "source_reconstruction/title_system/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -81,6 +82,8 @@ def main():
             # pause/stone menus declare these paths and inherit game/sprite/ECL.
             # Progress declares native/binary paths; Replay inherits them from
             # Progress, gameplay, overlay and platform-window dependencies.
+            # Title declares native/binary/scheduler paths and inherits ECL
+            # through its public stone-menu and runtime dependencies.
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
@@ -90,7 +93,8 @@ def main():
                                 "source_reconstruction/pause_system/",
                                 "source_reconstruction/stone_menu/",
                                 "source_reconstruction/progress_state/",
-                                "source_reconstruction/replay_system/")):
+                                "source_reconstruction/replay_system/",
+                                "source_reconstruction/title_system/")):
             # Preserve these modules' explicit CMake floating-point option.
             profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative == "source_reconstruction/archive/verify.cpp":
@@ -99,6 +103,10 @@ def main():
             for extension in ("cpp", "hpp"):
                 fingerprint = digest(source.parent / f"archive.{extension}")
                 profile.append(f'/DTH20_ARCHIVE_{extension.upper()}_SHA256="{fingerprint}"')
+        if relative == "source_reconstruction/title_system/replay_format_probe.cpp":
+            # This standalone diagnostic is owned by sprite_renderer/pool_test,
+            # whose CMake target declares the native fixture's required macro.
+            profile.append('/DTH20_NATIVE_CORE_SHA256="unused"')
         key = hashlib.sha256(relative.encode()).hexdigest()[:20]
         report = output / f"{key}.json"
         identity = dict(reference_commit=pin["commit"], reference_path=relative,

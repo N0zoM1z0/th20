@@ -109,3 +109,5 @@ th20::ProgressScore::ProgressScore
 th20::PracticeScore::PracticeScore
 th20::InputButtonState::reset_replay
 th20::InputButtonState::update_replay
+th20::TitleFlags::TitleFlags
+th20::PracticeScore::available

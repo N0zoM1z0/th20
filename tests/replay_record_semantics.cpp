@@ -31,6 +31,20 @@ void check_replay_records() {
         th20::ProgressRecordHeader prefix;
         assert(prefix.magic == 0 && prefix.version == 0 && prefix.checksum == 0 && prefix.size == 0);
     }
+    th20::PracticeScore practice;
+    practice.score = 0x123456789;
+    practice.field_0a[0] = 0xa5;
+    practice.field_0a[1] = 0x5a;
+    for (int first = -128; first <= 127; ++first) {
+        for (int second = -128; second <= 127; ++second) {
+            practice.field_08 = static_cast<std::int8_t>(first);
+            practice.field_09 = static_cast<std::int8_t>(second);
+            unsigned char before[sizeof(practice)];
+            std::memcpy(before, &practice, sizeof(practice));
+            assert(practice.available() == (first != 0 || second != 0));
+            assert(std::memcmp(before, &practice, sizeof(practice)) == 0);
+        }
+    }
     for (unsigned selected = 0; selected < 32; ++selected) {
         th20::InputButtonState input{};
         input.current = input.previous = 0xabcdef01;

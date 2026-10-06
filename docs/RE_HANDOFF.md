@@ -1,5 +1,41 @@
 # Current reconstruction handoff
 
+## REF-026 — 2026-10-07 — Title batch checkpoint
+
+The exhaustive goal remains active. All 803 Title entries individually reviewed:
+66 nonexact / 737 support. Global 2,646 terminal / 4,298 pending of 6,944.
+Sixteen Title gap files reconciled; global 45 reconciled / 68 pending.
+
+- Two new complete exact units add121 bytes: TitleFlags constructor51D9B0/66
+  and real PracticeScore member52CA30/55. Cold113/113 across30 objects/7,699
+  bytes. Authored57/4,074 unchanged, pending-origin52/library4/source113.
+- Real four-byte flags preserve upper28; ctor caller+58D4 and main/frame/Replay
+  consumers independently read. Predicate uses signed bytes9 then8 on existing
+  sixteen-byte record; independent stage/draw callers establish owner/ABI.
+  Whole Title ctor and guarded whole-Profile query remain nonexact.
+- Portable dirty flag/Replay-bit checks and all65,536 signed-byte pairs pass.
+  Source frozen before final113-unit cold replay. Subsequent candidate builds
+  are serial; do not edit src/probes while compiling or invalidate receipts.
+- Fifty actual CMake production TUs plus one standalone Sprite fixture probe
+  compile;65 complete COFF diagnostics reject. Standalone macro comes from its
+  actual recipe, not native execution evidence. 28 internal jumps in thirteen
+  native heads independently decoded; no trimmed spans or solved anchors used.
+- Handle arrays8/32/139 natural33/33/36 versus native75/75/78; EH4/cookies/
+  templates unresolved. Shade105-byte thiscall/RET12 differs from free helper.
+  Actual Title0x5978 with Cursors/Worker/mesh/resources remains unclosed.
+- MainCPU296/sharedDraw389/parser23 input bindings current; nameDraw has two
+  stale, heap-tail one/stage eleven. Replay16 log hashes verified (14returns/
+  two AVs); five post-run source hashes are not build binding. Save12 inline
+  logs match, no hashes/binary binding. No native oracle/report writer run.
+- Full parser/enumeration/format/save/draw/keyboard/page flows and tools read.
+  Independent238 data checks do not grant code credit. Raw owner/Env/CRT/thread,
+  malformed varargs/heap-tail/error/GDI/GPU/game behavior remain open.
+
+Next related batch: effect_system191 + special_state131, then all remaining
+implementations and parser gaps. Details: REFERENCE_TITLE_REVIEW.md.
+Private `.analysis/ref026-record.py` already executed; never rerun it. Earlier
+checkpoint counts are historical. Keep Ghidra and compiler operations serial.
+
 ## REF-025 — 2026-10-07 — Progress and Replay batch checkpoint
 
 The exhaustive goal remains active. All 145 entries individually reviewed:

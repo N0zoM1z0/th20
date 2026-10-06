@@ -1,5 +1,40 @@
 # Verified facts and open hypotheses
 
+## REF-026 — 2026-10-07
+
+- Title 803 entries: 66 nonexact / 737 support, each body-hash bound. Global
+  2,646 terminal / 4,298 pending; gap files 45 reconciled / 68 pending. Source,
+  interfaces, fixtures, lambdas, tools and recipes all individually read.
+- Natural TitleFlags 0x0051D9B0 (66 bytes) and PracticeScore::available
+  0x0052CA30 (55) pass complete canonical replay. Cold 113/113, 30 objects,
+  7,699 bytes; authored 57 / 4,074 unchanged, 52 pending origins / four library.
+- Caller 0x0051DB00 passes Title+0x58D4; independent frame/main/Replay consumers
+  establish four bits and retained upper28. Predicate callers 0x005296A7,
+  0x00529C5F/0x00529D0F pass actual sixteen-byte practice rows. Signed +9 then
+  +8 reads have no selector arguments; whole-Profile reference guard differs.
+- All 65,536 signed-byte pairs and dirty flag retention pass portable tests.
+  Fifty production TUs plus one standalone fixture compile; 65 complete COFF
+  diagnostics differ. All 28 analysis holes in thirteen native heads decoded
+  as internal jumps; full extents retained. No solved anchors or prefix credit.
+- Standard handle arrays emit 33/33/36 versus native 75/75/78; original EH4,
+  cookies and template ownership remain open. Shade 0x0051E100 is thiscall
+  RET12, 105 bytes; free helper changes ABI. No fake owner or destructor added.
+- Main CPU 2,540,032/0 has 296 current build-bound hashes; shared draw122,880/0
+  has389 current bindings and verified enclosing Sprite digest. Name draw
+  196,608/0 has two stale bindings; parser12,578/0 has23 current, separate
+  heap-tail295/1 has one stale and only2/4096 cases. No current native run.
+- All sixteen Replay fault-log hashes verified; five source hashes attached
+  after execution, not build-bound. Twelve save logs match inline text without
+  source/build/log-hash binding. Native malformed varargs/pointer faults differ
+  from guarded source subset. Report writers not run; binaries absent locally.
+- Independently checked238 data cases, including113 difficulties/455 groupints,
+  labels/pointers/floatbits/keys. Data and Stones keyboards are distinct776-byte
+  states with signed versus unsigned idle tests; synthetic mode2 is fixture-only.
+- Actual Title0x5978 flags+58D4/Worker+5968/Replay pointers+5740/mesh+5924,
+  five Cursors/three Timers, registration11/89. Whole lifetime/allocator/thread,
+  selection return widths, original Env/member graph and GPU remain open.
+  Detailed evidence and limits: REFERENCE_TITLE_REVIEW.md.
+
 ## REF-025 — 2026-10-07
 
 - Progress 79/Replay 66 entries:3 absorbed / 69 nonexact / 73 support. Global1,843 terminal/
