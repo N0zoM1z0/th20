@@ -268,6 +268,17 @@ int main() {
     constexpr std::array<std::int32_t, 7> values = {
         std::numeric_limits<std::int32_t>::min(), -999999, -1, 0, 1,
         16777217, std::numeric_limits<std::int32_t>::max()};
+    // Signed boundary comparisons read current only and preserve every byte.
+    for (const auto current : values) {
+        const th20::Timer timer{-19, current, -0.0f, 0xabcdef01u};
+        std::array<unsigned char, sizeof(timer)> before;
+        std::memcpy(before.data(), &timer, sizeof(timer));
+        for (const auto value : values) {
+            assert(timer.at_least(value) == (current >= value));
+            assert(timer.equals(value) == (current == value));
+            assert(std::memcmp(before.data(), &timer, sizeof(timer)) == 0);
+        }
+    }
     for (std::uint32_t flags = 0; flags != 256; ++flags) {
         th20::Timer timer{12, 34, 56.0f, flags};
         timer.reset();

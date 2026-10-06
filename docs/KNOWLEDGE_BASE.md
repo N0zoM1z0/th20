@@ -1,5 +1,26 @@
 # Verified facts and open hypotheses
 
+## REF-015 — 2026-10-06
+
+- All17 stage_clear entries:11 nonexact/six support; total874 reviewed/6070
+  pending.33 original functions queried/decompiled; four production TUs compile.
+- Original4235C0/4785E0 Timer predicates read signed current+4 and return bool
+  with RET4. Each46-byte complete natural C++ contribution exact; Timer already
+  has real16-byte storage. No relocation anchors needed. Cold68/68,18objects,
+  4712full bytes; authored51/3784,source68. Signed boundary/nonmutation tests.
+- Original StageClear typed handle/base/Timer/diagnostic/EH graph differs from
+  free/aggregate source. Factory retires existing owner4217C0, allocator510930,
+  initializes511270 and failure-retires41F7C0. Renderer reset4E67E0 invokes14
+  setters,190bytes; source direct stores replace call partition. Full owners open.
+- Eight Player getters have separate member addresses; slot API adds exceptions.
+  Inline bonus resolves Player repeatedly; native488550 score receiver is Session.
+  Full update remains nonexact despite restored Timer subcomponents.
+- Eight float encodings/six NUL strings independently match PE. Historical95232
+  subset matches shared report hash/counters;389/389 hashes current, no new run.
+  Freeze failure220 with260/280 current hashes. Factories/resources/owned teardown/
+  state6age10 self-delete/new text/GDI/GPU not covered. Fixtures manufacture
+  global storage and audio slot11 ownership; no native game runtime acceptance.
+
 ## REF-012 — 2026-10-06
 
 - Individually reviewed:49 startup_scene entries,45 C++ and4 Python. Two

@@ -66,3 +66,5 @@ address,name,module,confidence,evidence
 0x00425FC0,th20::SoundCommand::SoundCommand,SoundEffects,high,REF-013
 0x00425D20,th20::SoundEffectChannel::SoundEffectChannel,SoundEffects,high,REF-013
 0x00428380,th20::SoundEffectChannel::release,SoundEffects,high,REF-013
+0x004235C0,th20::Timer::at_least,Timer,high,REF-015
+0x004785E0,th20::Timer::equals,Timer,high,REF-015

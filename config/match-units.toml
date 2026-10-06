@@ -34,6 +34,27 @@ target_address = 0x00423F50
 size = 41
 relocations = []
 
+# REF-015: complete RET4 extents, independently observed stage-clear callers.
+[units.timer_at_least]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::at_least"]
+symbol = "?at_least@Timer@th20@@QBE_NH@Z"
+target_address = 0x004235C0
+size = 46
+relocations = []
+
+[units.timer_equals]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::equals"]
+symbol = "?equals@Timer@th20@@QBE_NH@Z"
+target_address = 0x004785E0
+size = 46
+relocations = []
+
 [units.timer_set]
 source = "src/Timer.cpp"
 object = "build/Timer.obj"

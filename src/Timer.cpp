@@ -3,6 +3,14 @@
 
 namespace th20 {
 
+bool Timer::at_least(std::int32_t value) const {
+    return current >= value;
+}
+
+bool Timer::equals(std::int32_t value) const {
+    return current == value;
+}
+
 void Timer::reset() {
     current = 0;
     previous = -999999;

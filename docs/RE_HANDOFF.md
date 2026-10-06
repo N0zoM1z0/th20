@@ -1,5 +1,32 @@
 # Current reconstruction handoff
 
+## REF-015 — 2026-10-06 — stage-clear review checkpoint
+
+The exhaustive goal remains active. All17 stage_clear implementations individually
+reviewed:11 nonexact/six support. Total874 terminal/6,070 pending of6,944.
+No family gaps; global17 reconciled/96 pending of113. Complete production/
+header/extractor/constants/fixtures/recipes/reports read;33 native functions
+queried and decompiled. All four original production TUs freshly compile;
+declared runtime_state/ECL include dependency added to diagnostic recipe.
+
+- Natural Timer::at_least/equals restore original signed current predicates,
+  thiscall/bool/RET4,46 complete bytes each. No relocations/shaping/padding.
+  Full cold68/68 across18 objects/4,712 bytes; authored51/3,784,source68.
+  Portable signed-edge and complete-byte nonmutation checks pass.
+- Reference StageClear construction/lifetime/factory/scheduling, Player getter
+  partition, Session score receiver and Renderer setter graph remain nonexact.
+  Specific records for every implementation; no fake original class declarations.
+  Update row retains nonexact despite two accepted adjacent Timer helpers.
+- DATA8floats/6NUL strings independently match. Retained95,232 subset checks
+  bound to actual shared report/counters,389/389 hashes current. No new native
+  oracle execution. Factory/I/O, owned destruction, self-deleteage10 and new
+  text/GDI/GPU excluded. Freeze failure220/260current of280hashes,20stale.
+- Source/probe tree frozen before complete replay; ledger/docs follow without
+  invalidating receipts. Reference checkout unchanged. Private.analysis/ref015-*.
+
+Next coherent family: help_system25 entries, then every remaining implementation
+and96 manual gap files. Historical checkpoint totals below are not current.
+
 ## REF-014 — 2026-10-06 — game-session review checkpoint
 
 The exhaustive goal remains active. All21 game_session bodies individually

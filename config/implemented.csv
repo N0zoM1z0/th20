@@ -64,3 +64,5 @@ th20::SoundEffectRequest::SoundEffectRequest
 th20::SoundCommand::SoundCommand
 th20::SoundEffectChannel::SoundEffectChannel
 th20::SoundEffectChannel::release
+th20::Timer::at_least
+th20::Timer::equals

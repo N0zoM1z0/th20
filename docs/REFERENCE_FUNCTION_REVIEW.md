@@ -37,11 +37,71 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 857 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/tool/test entries have explicit decisions. The
-remaining 6,087 indexed entries are pending. The separate
+The first 874 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/tool/test entries have explicit decisions. The
+remaining 6,070 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: seventeen of 113 files are reconciled, leaving 96 pending.
+
+## REF-015: all 17 stage-clear implementation entries reviewed
+
+Every body has an individual outcome: eleven nonexact and six support. Complete
+production code, headers, two fixture fragments, recipes, extractor, constant
+evidence and retained reports were read. All four unmodified production TUs
+freshly compile serially. The diagnostic include recipe now carries stage_clear's
+actual runtime_state/ECL binary-header dependency. CPU fragments were read,
+not compiled or run. No family parser gaps; totals874 terminal/6,070 pending,
+global gaps17 reconciled/96 pending.33 original functions independently queried
+and decompiled through the attested Ghidra wrapper.
+
+Natural Timer predicates restore current>=argument at4235C0 and current==argument
+at4785E0 into the existing complete16-byte Timer record. Each46-byte function
+retains thiscall, signed comparison, bool result and RET4. Full extents end
+after their three-byte returns; no tables, padding or relocations are omitted.
+Both complete COFF contributions replay with zero differences. Portable signed
+boundary tests also check every Timer byte stays unchanged. Full cold68/68
+across18 objects covers4,712 bytes; authored51 functions/3,784 bytes;
+source-present68. This adjacent recovery does not accept the full StageClear
+update, whose reference row remains explicitly nonexact.
+
+Native construction uses TaskInf/vptr, two typed handles, two Timer constructors,
+array memset and diagnostic helper calls; reference integer handles, aggregate
+timers and direct zeroing change the typed-member/EH partition. Destructor has
+diagnostic/base/member-handle teardown. Outer factory retires existing owner
+through4217C0, invokes allocator member510930, then initialize; failure retirement
+uses41F7C0. Source combined nothrow/memset/placement/generic retirement differs.
+No full StageClear/base/allocator owner is imported with artificial padding.
+
+The eight level/phase getters are separate Player members, not a slot-based
+free API with bounds exceptions. Bonus arithmetic is inline in native update,
+repeatedly resolves Player, stores partial bonus and calls Session score member
+488550. Source factoring captures Player and substitutes a Player score helper.
+States1->2->4 and age120/input80001/age300, state6 and age10 completion/deletion
+are corroborated; original helpers and lifetimes remain open. Draw preserves
+native typed-handle lookup, GameController full-width freeze getter, position/
+format/text calls, signed64-bit bonus grouping and animation-tree lookup.
+Text reset4E67E0 is a190-byte member with fourteen ordered setter calls, whereas
+reference writes fields directly. Complete Renderer and GameController owners
+remain pending rather than introducing offset-only facades.
+
+All eight binary32 constants and six CP932 strings including NUL independently
+match the pinned PE and documentary constants. The hardcoded Windows extractor
+was read, not executed; its assert, PE-span and output-alias assumptions remain
+tool limitations. Its printed closure-table label is not native identity proof.
+
+Retained95,232 passes are a subset of the shared2,915,831-check report, whose
+hash and exact subset counters match;389/389 bound source hashes are current.
+This is one historical run, not two independent or newly executed oracles.
+Coverage:256 dirty-state constructors/empty destructors,8192 direct getter cases,
+4096 updates,2048 draws using six existing cached text jobs. Factory/resource
+I/O/scheduling, owned-node/handle destruction, state6/age10 self-deletion, new
+job allocation, GDI, deferred scheduling and GPU are excluded. Audio mutex11
+and game globals are manufactured fixtures. Retained freeze failure has220
+failures,260/280 current hashes and20 stale paths; it is not current rejection
+of all source. No inherited runtime acceptance or whole-game claim.
+
+Private evidence: `.analysis/ref015-*`, serial reference receipts and complete
+cold replay. Next coherent family: help_system25, then every remaining body.
 
 ## REF-014: all 21 game-session implementation entries reviewed
 
