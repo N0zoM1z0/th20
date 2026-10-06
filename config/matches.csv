@@ -53,3 +53,5 @@ address,name,size,status,match_percent,unit,evidence
 0x00423560,th20::Timer::less_than,46,matching,100.00,timer_less_than,REF-016; locked MSVC cold build and complete canonical relocation replay
 0x004495A0,th20::InputButtonState::current_bits,21,matching,100.00,input_current_bits,REF-019; locked MSVC cold build and complete canonical relocation replay
 0x004A0A20,th20::InputButtonState::held_frame_count,79,matching,100.00,input_held_frame_count,REF-019; locked MSVC cold build and complete canonical relocation replay
+0x0052F060,th20::trophy_text::decode,106,matching,100.00,trophy_text_decode,REF-020; locked MSVC cold build and complete canonical relocation replay
+0x0052F590,th20::trophy_text::Message::reset,20,matching,100.00,trophy_message_reset,REF-020; locked MSVC cold build and complete canonical relocation replay

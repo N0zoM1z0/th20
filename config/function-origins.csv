@@ -759,7 +759,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004233B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423470,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004234A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00423520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00423520,unknown,Timer,review,pending,"REF-020; Native Trophy state-change and Ending reset paths call the actual sixteen-byte Timer integer assignment wrapper, complete26 bytes/RET4, independently anchored to existing set at423F80. Natural shared member; original operator spelling and authored/shared/compiler origin pending."
 0x00423540,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00423560,authored,Timer,authored,high,"REF-016; Help original age20 branches independently call signed Timer current<argument member; natural existing16-byte owner, bool/RET4 and complete46-byte extent, no relocations or source shaping."
 0x00423590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5450,7 +5450,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0052EFE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0052F060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0052F060,authored,TrophyText,authored,high,"REF-020; Native Trophy-specific resource allocator/parser and notification consumer independently establish actual704-byte message records, title4/description104 with seven256-byte encoded rows, and shared256-byte decoder result at5C6860. Complete native member/cdecl extents and global anchor read before probing. Decoder includes encoded NUL and byte key77/step7 with step+=16; valid total length<=256, shared result overwritten and nonreentrant. Message reset writes signed id=-1 only, preserving all1792 string bytes. No full Trophy owner, PMR encoder, parser, allocation or resource lifetime acceptance."
 0x0052F0D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5459,7 +5459,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0052F4C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F4E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0052F590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0052F590,authored,TrophyText,authored,high,"REF-020; Native Trophy-specific resource allocator/parser and notification consumer independently establish actual704-byte message records, title4/description104 with seven256-byte encoded rows, and shared256-byte decoder result at5C6860. Complete native member/cdecl extents and global anchor read before probing. Decoder includes encoded NUL and byte key77/step7 with step+=16; valid total length<=256, shared result overwritten and nonreentrant. Message reset writes signed id=-1 only, preserving all1792 string bytes. No full Trophy owner, PMR encoder, parser, allocation or resource lifetime acceptance."
 0x0052F5B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F670,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052F740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

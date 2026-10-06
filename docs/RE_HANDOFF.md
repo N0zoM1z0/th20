@@ -1,5 +1,47 @@
 # Current reconstruction handoff
 
+## REF-020 — 2026-10-07 — Trophy batch checkpoint
+
+Exhaustive goal active; continue coherent batches with individual body-hash
+decisions. All49 Trophy entries reviewed:20 nonexact/28 support/1 absorbed.
+Totals1,049 terminal/5,895 pending of6,944; gaps20 reconciled/93 pending. Both
+Trophy oracle WINAPI gap files fully read and reconciled without source edits.
+
+- Three new complete exact units: shared text decoder52F060/106 bytes,
+  Message id reset52F590/20, Timer integer assignment423520/26. Cold86/86,
+  twenty-one objects/5,556 bytes; authored56/4,056, source86, pending-origin26,
+  library4. Natural shared source; no reference/decompiler body copying.
+- Actual Message704 record has id0/title4/description104, seven256-byte rows.
+  Decoder actual result5C6860 is shared/nonreentrant, valid encoded NUL within256
+  bytes. Closed-form-key portable tests cover all256 lengths/high bytes/wrap/
+  untouched suffix and pointer reuse. Reset preserves1792 string bytes.
+- Timer assignment preserves actual void/RET4/call423F80. Origin/operator name
+  pending. Integer += still33 vs31; no shaping or shortened comparisons.
+- Full Trophy54 owner, checked PMR deque24/proxy8, Timer38/three typed handles48
+  and all50 relevant original functions queried/decompiled/read. Six original
+  production TUs compile using actual public sprite/ECL/binary include paths.
+  No original CPU oracle compiled/run. Omitted JMPs52E4B1/52E4CD/52F97C decoded
+  and retained in full1308-byte resource initializer/165-byte factory extents.
+- Original pop is indexed; source only front-pop. SaveManager achieved returns
+  full EAX0/1, checked128-byte array; source bool/free wrappers remain nonexact.
+  Original resource release returns int0 versus void. PMR encode takes owned
+  28-byte string by value, not a raw char pointer. State2 deletes three handles
+  then retires actual owner without ticking; callable completion chain runs
+  46EBB0 ->46A4B0 ->empty40E5E0 through two distinct eight-byte callable types.
+- Retained295,327 codec/queue checks have exact target/asset hashes but no
+  report source hashes; oracle/build/source_hashes.json absent.41 records/287
+  source-encoded rows merely decode with native helper, not native parser
+  equivalence. Retained34,404 owner/frame subset validates28 shared counters,
+  389 current hashes; historical612 failures bind316/335 current hashes.
+  256 dirty ctor/cache-init/dtor and2,048 full frames execute actual deferred
+  GDI/COM text tasks,612 pixel buffers; host font/preloaded bounded ANM/normalized
+  pointers/synthetic locks/PMR/manual cleanup constrain conclusions. Save,
+  preload/file I/O/factory failures/full scheduling/concurrency remain open.
+
+Next batch: all43 screen_effect entries, then remaining modules and93 gap files.
+`.analysis/ref020-record.py` already ran; do not rerun. Source frozen before
+final86-unit cold replay. Earlier checkpoint counts below are historical.
+
 ## REF-019 — 2026-10-06 — Ending and shared-owner batch checkpoint
 
 The exhaustive goal remains active. User now requests coherent batches; keep

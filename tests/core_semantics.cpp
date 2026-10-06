@@ -12,6 +12,7 @@
 #include "SoundEffects.hpp"
 #include "AnimationHandle.hpp"
 #include "Vector3.hpp"
+#include "TrophyText.hpp"
 
 #include <array>
 #include <bit>
@@ -50,6 +51,34 @@ std::uint32_t th20::GameRandom::next() {
 
 int main() {
     check_scene_resource_protocol();
+    th20::trophy_text::Message message;
+    std::memset(&message, 0xa5, sizeof(message));
+    message.reset();
+    assert(message.id == -1);
+    const auto* message_bytes = reinterpret_cast<const unsigned char*>(&message);
+    for (std::size_t i = 4; i != sizeof(message); ++i) assert(message_bytes[i] == 0xa5);
+    const std::uint8_t empty_text[]{0x77};
+    const std::uint8_t letter_text[]{0x36, 0x7e};
+    auto* shared_text = th20::trophy_text::decode(letter_text);
+    assert(std::strcmp(shared_text, "A") == 0);
+    assert(th20::trophy_text::decode(empty_text) == shared_text && shared_text[0] == 0);
+    // All lengths, high bytes, key wrap and the final buffer byte are covered.
+    for (unsigned length = 0; length != 256; ++length) {
+        std::array<std::uint8_t, 256> encoded{};
+        std::array<char, 256> expected{};
+        for (unsigned i = 0; i <= length; ++i) {
+            const unsigned value = i == length ? 0 : 1 + (i * 97 + length) % 255;
+            expected[i] = static_cast<char>(value);
+            const unsigned key = 0x77 + 7 * i + 8 * i * (i - 1);
+            encoded[i] = static_cast<std::uint8_t>(value ^ key);
+        }
+        std::memset(th20::trophy_text::decoded_text, 0xa5, 256);
+        assert(th20::trophy_text::decode(encoded.data()) == shared_text);
+        assert(std::memcmp(shared_text, expected.data(), length + 1) == 0);
+        for (unsigned i = length + 1; i != 256; ++i) {
+            assert(static_cast<unsigned char>(shared_text[i]) == 0xa5);
+        }
+    }
     alignas(th20::Timer) std::array<unsigned char, 24> timer_storage;
     timer_storage.fill(0xa5);
     auto* zero_timer = ::new(timer_storage.data() + 4) th20::Timer;
@@ -366,7 +395,7 @@ int main() {
     assert(th20::timer_clock_sources[0] == &th20::default_timer_clock);
     assert(th20::default_timer_clock.value == 1.0f);
     th20::Timer stepping;
-    stepping.set(10);
+    stepping = 10;
     stepping += 7;
     assert(stepping.previous == 10 && stepping.current == 17);
     stepping -= 3;

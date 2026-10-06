@@ -40,11 +40,111 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 1,000 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/tool/test entries have explicit decisions. The
-remaining 5,944 indexed entries are pending. The separate
+The first 1,049 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/tool/test entries have explicit decisions. The
+remaining 5,895 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: eighteen of 113 files are reconciled, leaving 95 pending.
+and parser-gap count: twenty of 113 files are reconciled, leaving 93 pending.
+
+## REF-020: Trophy queue, messages, resources and frame lifecycle batch
+
+All forty-nine Trophy entries have individual decisions: twenty nonexact,
+twenty-eight support and one absorbed. Full production sources, headers,
+extractor, both oracle bodies, recipes and report scope were read. The five
+parser errors in two files are WINAPI annotations; all seven CPU-driver and
+eight pool-fixture bodies are present. Both files are manually reconciled.
+Coverage is 1,049 terminal/5,895 pending, with twenty gap files reconciled and
+93 pending. Fifty relevant native functions were independently queried,
+decompiled and read through the attested Ghidra wrapper. Six original production
+TUs freshly compile with their declared public sprite/ECL/binary dependencies.
+Neither original CPU oracle was compiled or executed here.
+
+Three related natural contributions pass complete canonical relocation replay:
+
+| Member | Native address | Complete bytes |
+| --- | --- | --- |
+| Trophy shared text decode | 0x0052F060 | 106 |
+| Trophy Message id reset | 0x0052F590 | 20 |
+| Timer integer assignment wrapper | 0x00423520 | 26 |
+
+The decoder includes the encoded NUL, starts key 0x77/step 7 and advances the
+step by 16 modulo 256. Its independently observed result at 0x005C6860 is a
+shared 256-byte buffer, overwritten on each call. The maintained function uses
+real byte arithmetic and character storage; both absolute relocations are
+explicitly replayed against that original global. Valid input terminates within
+256 bytes; no bounds recovery or reentrancy is claimed. Portable tests use a
+closed-form key calculation across all 256 lengths, high bytes, key wrap,
+trailing-byte preservation and result-pointer reuse. This does not accept the
+encoder: its original cdecl parameter is an owned 28-byte PMR string passed by
+value, indexed at zero and destroyed, while the reference takes a char pointer.
+
+Native resource allocation and parsing independently establish the actual
+0x704-byte Message record: signed id at zero, title at four and two-by-three
+description rows at 0x104, each row 256 bytes. The accepted member sets id to -1
+without touching the remaining 1,792 bytes. No padding facade or record allocator
+is added. Timer assignment keeps the actual void/RET4 member and delegates to
+already accepted set at 0x00423F80. Its source spelling and origin remain pending.
+Cold replay passes 86/86 units over twenty-one objects, 5,556 complete bytes;
+authored credit is 56 functions/4,056 bytes, with 26 pending-origin and four
+library units. Integer += remains nonexact, 33 versus 31 bytes.
+
+TrophyInf's native 0x54 owner contains its TaskInf base, animation-file pointer,
+checked 24-byte PMR deque with eight-byte proxy, three state words, Timer at
+0x38 and three typed handles at 0x48. Construction/destruction, diagnostics,
+allocator/base/vtable/EH and original queue partition remain unresolved. Native
+push has separate value/address/emplace contributions; grow uses actual typed
+allocation/getter/copy/zero/max-size/error helpers. Destruction cleans map blocks
+backwards and destroys elements and proxy through separate members. The native
+pop takes an index and erases through checked iterators; the source provides
+only no-argument front-pop. Valid front-pop event/topology agreement does not
+establish arbitrary indexed deletion or checked-container exactness.
+
+Native achievement query returns full EAX 0/1 through SaveManager thiscall,
+tracked slot20 lock, metadata verification/getter and a checked 128-byte array
+at metadata+0x68. The mutation follows its own getter/checksum member path.
+Reference bool/free/global wrappers change ABI and ownership. The factory has
+a separate enqueue member and diagnostic allocator; initialization registers
+update17/draw93, while the shared draw thunk preserves a separate constant-return
+member. Native resource release returns int zero, versus the reference void
+wrapper. Preload at 44EE50 is distinct from the cached/load member at 44EB30.
+Full extents retain independently decoded unreachable JMPs at 52E4B1/52E4CD
+in the 1,308-byte initializer and 52F97C in the 165-byte factory.
+
+The native 564-byte frame member consumes queued messages, spawns three typed
+animations, produces two centered texts and sound79, tests age>=240, then
+switches to queued/start or teardown state. State2 deletes the three handles and
+retires the actual owner, returning one without another tick. Other states use
+the real postfix Timer member. Two distinct eight-byte completion callable
+types invoke 46EBB0 -> 46A4B0 -> empty40E5E0; the empty body still has an actual
+ECX entry and library/closure ownership. A source empty callback is insufficient
+to accept those function/callable partitions.
+
+Retained CPU validation reports 295,327 checks: 16,384 full-buffer encodings and
+16,384 decodings, sixty-four queue constructors/destructors and 131,072 operations
+each checked for return/allocation sequence and complete map/element topology,
+plus 287 decoded rows across forty-one source-parsed records. The native parser
+is never invoked there. Source-added truncated/overlong/index exceptions and
+std::string/istringstream/span factoring remain nonexact against the PMR/native
+inline parser. The report binds target and asset hashes, but no source hashes;
+its referenced oracle/build/source_hashes.json is absent in this checkout.
+Current historical executable/source identity cannot be re-established.
+
+The separate retained 34,404 owner/frame subset matches all twenty-eight counters
+in the hash-bound shared report and all 389 current source hashes. It covers
+256 dirty constructors, actual cache-hit initialization and owned-node teardown,
+and 2,048 full frames. Both real deferred queues execute GDI raster/upload tasks;
+612 submitted pixel buffers, rectangles, COM counts, both outline polarities,
+full 64-ANM state, normalized owner/scheduler graphs, sound and PMR event order
+are observed. The fixture uses preloaded bounded ANM, host font2, recording COM,
+synthetic locks/resource globals and pointer-role normalization that can also
+rewrite coincidental scalars. Manual normal-exit cleanup and clock reset to one
+do not establish exception/concurrent lifecycle. Save mutation, factory failures,
+preload/file I/O, full assets/scheduling/GPU remain excluded. Historical 612
+pixel/PMR failures bind 316 of 335 current source hashes and are not current
+failures; the retained case41 allocation trace contains twenty identical events.
+
+The next coherent batch is all forty-three screen_effect implementations. Every
+remaining indexed body and manual parser gap stays in the exhaustive scope.
 
 ## REF-019: Ending and its shared Timer/input protocols reviewed as a batch
 

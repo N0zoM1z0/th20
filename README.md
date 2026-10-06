@@ -53,8 +53,8 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | Eighty-three mapped component functions across twenty comparison objects |
-| Authored exactness | Fifty-four functions, 3,930 bytes |
+| Source | Eighty-six mapped component functions across twenty-one comparison objects |
+| Authored exactness | Fifty-six functions, 4,056 bytes |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Three exact comparisons; enclosing owner and origin review remain open |
 | Empty/defaulted lifetime contributions | Three exact comparisons; authored versus compiler-synthesized origin remains open |
@@ -63,7 +63,8 @@ are excluded from Git.
 | Audio state construction | Three complete exact record constructors; authored versus compiler origin remains open |
 | Animation handle construction | Complete 23-byte exact value constructor; authored versus compiler origin remains open |
 | Vector arithmetic | Five complete exact members; original class spelling and authored/library origin remain open |
-| Timer construction and wrappers | Six additional complete exact members; source spelling and origin review remain open |
+| Timer construction and wrappers | Seven additional complete exact members; source spelling and origin review remain open |
+| Trophy messages | Exact shared-buffer decoder and typed record reset; full resource/parser/owner lifetime remains open |
 | Whole-program build and runtime | Not available |
 
 [Generated progress](docs/PROGRESS.md) and `scripts/report-reconstruction-status.py`

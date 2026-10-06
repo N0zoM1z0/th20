@@ -28,6 +28,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/SoundEffects.cpp",
                             "src/AnimationHandle.cpp",
                             "src/Vector3.cpp",
+                            "src/TrophyText.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

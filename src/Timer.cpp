@@ -9,6 +9,10 @@ Timer::operator std::int32_t() const {
     return current;
 }
 
+void Timer::operator=(std::int32_t value) {
+    set(value);
+}
+
 std::int32_t Timer::operator%(std::int32_t divisor) const {
     return current % divisor;
 }

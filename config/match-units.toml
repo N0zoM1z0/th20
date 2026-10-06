@@ -3,6 +3,37 @@ target_sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a089
 
 [units]
 
+[units.trophy_message_reset]
+source = "src/TrophyText.cpp"
+object = "build/TrophyText.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::trophy_text::Message::reset"]
+symbol = "?reset@Message@trophy_text@th20@@QAEXXZ"
+target_address = 0x0052F590
+size = 20
+relocations = []
+
+# REF-020: shared result observed independently in Trophy update before probing.
+[units.trophy_text_decode]
+source = "src/TrophyText.cpp"
+object = "build/TrophyText.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::trophy_text::decode"]
+symbol = "?decode@trophy_text@th20@@YAPBDPBE@Z"
+target_address = 0x0052F060
+size = 106
+relocations = [{ offset = 0x2C, type = "DIR32", symbol = "?decoded_text@trophy_text@th20@@3PADA", target = 0x005C6860 }, { offset = 0x62, type = "DIR32", symbol = "?decoded_text@trophy_text@th20@@3PADA", target = 0x005C6860 }]
+
+[units.timer_assign_integer]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::operator="]
+symbol = "??4Timer@th20@@QAEXH@Z"
+target_address = 0x00423520
+size = 26
+relocations = [{ offset = 0xF, type = "REL32", symbol = "?set@Timer@th20@@QAEXH@Z", target = 0x00423F80 }]
+
 # REF-019: postfix dummy arguments and independently observed wrapper calls.
 [units.timer_subtract_integer]
 source = "src/Timer.cpp"

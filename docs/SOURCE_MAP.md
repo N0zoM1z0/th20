@@ -3,7 +3,7 @@
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
-| Timer | src/Timer.hpp, src/Timer.cpp | construction, current conversion/remainder, subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Fourteen complete exact functions; six added construction/wrapper origins pending; integer += remains nonexact |
+| Timer | src/Timer.hpp, src/Timer.cpp | construction, current conversion/remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Fifteen complete exact functions; seven added construction/wrapper origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | enable 0x0041CCC0; disable 0x0041CA30 | Two exact flag assignments; tracked locking and original global lifetime pending |
@@ -14,6 +14,7 @@
 | InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update, three mask queries and held-frame query | Nine complete exact functions; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |
 | GameRandom | src/GameRandom.hpp, src/GameRandom.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; engine helpers | Four authored and two library complete exact units; next/seed locking and global startup remain undefined |
+| TrophyText | src/TrophyText.hpp, src/TrophyText.cpp | shared decoder 0x0052F060 and message id reset 0x0052F590 | Two complete exact functions; PMR encoder, parsing, record allocation and whole Trophy owner remain open |
 | WindowState | src/WindowState.hpp, src/WindowState.cpp, src/WindowApi.cpp | five field methods, system restoration, repeat reset and flags construction | Seven authored and one origin-pending complete exact units; original construction/global startup remain undefined |
 | WindowApi | src/WindowApi.cpp | foreground wrapper 0x0041B480; locale detection 0x0041D0C0 | Two complete exact units; foreground source/origin identity pending |
 | FontDetection | src/FontDetection.hpp, src/FontDetection.cpp | font enumeration callback 0x00414820 | Authored complete exact callback; initialization/global pointer storage remain undefined |
@@ -29,8 +30,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns twenty objects and one canonical profile per source.
-Eighty-three units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns twenty-one objects and one canonical profile per source.
+Eighty-six units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-019 batches the Timer and physical input protocols used by Ending. Timer's
@@ -54,6 +55,18 @@ the shared array helper does not receive another authored function credit.
 Portable tests check every valid index, full counter values and complete-byte
 nonmutation. These methods add no original polling, nullable slot selection,
 input-global startup or Ending scene lifetime implementation.
+
+REF-020 adds Trophy's shared-buffer decoder and its complete 0x704-byte Message
+record: signed id, title[256], description[2][3][256]. Native resource allocation
+uses that stride and parsing writes the seven actual string rows. Reset changes
+only id to -1. Decode follows the byte-key recurrence, includes the terminating
+NUL, and overwrites the actual shared 256-byte result. Its valid domain requires
+an encoded NUL within 256 bytes; concurrent/reentrant use is unsupported. Tests
+use a closed-form key calculation for all lengths, high bytes and wraparound,
+checking untouched trailing bytes and shared-result replacement. These functions
+do not supply a PMR string encoder, parser, record allocator or TrophyInf lifetime.
+The actual Timer integer assignment wrapper delegates to existing set; this
+additional complete member retains pending origin/operator spelling.
 
 AnimationHandle is the actual four-byte value used by Notice's seven-element
 array and separate secondary member. Native construction zeros that word and
