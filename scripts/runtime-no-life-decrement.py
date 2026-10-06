@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed runtime no-life-decrement patcher for the locked Japanese TH20 Steamless target.
+"""Fail-closed runtime no-hit patcher for the locked Japanese TH20 Steamless target.
 
 The executable on disk is never modified.  Run through repo-python.cmd with Windows Python; --game-dir selects the
 game directory, and --launch starts the verified game before attaching.
@@ -23,12 +23,12 @@ TARGETS = {
     "th20.exe": {
         "sha256": "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897",
         "image_base": 0x00400000,
-        "patch_rva": 0x000F849D,
-        "old": bytes.fromhex("FF"),
-        "new": bytes.fromhex("00"),
-        "context_rva": 0x000F849C,
-        "context": bytes.fromhex("6A FF 8B 4D D8 E8 AA 8D FE FF"),
-        "meaning": "death processing calls add_lives(0) instead of add_lives(-1)",
+        "patch_rva": 0x000F86F0,
+        "old": bytes.fromhex("55"),
+        "new": bytes.fromhex("C3"),
+        "context_rva": 0x000F86F0,
+        "context": bytes.fromhex("55 8B EC 83 EC 1C 89 4D FC 6A 00"),
+        "meaning": "player hit handler returns immediately; no hit effects or death transition",
     },
 }
 
@@ -137,7 +137,7 @@ def verify_file(path: Path, spec: dict[str, object]) -> None:
     context_offset = rva_to_file_offset(data, int(spec["context_rva"]))
     context = bytes(spec["context"])
     if data[context_offset : context_offset + len(context)] != context:
-        raise RuntimeError("unexpected on-disk death call context")
+        raise RuntimeError("unexpected on-disk hit entry context")
     log(
         f"verified file {path} sha256={digest} "
         f"patch_rva=0x{spec['patch_rva']:08X} bytes={old.hex(' ')}"
@@ -433,8 +433,16 @@ def patch_process(
         normalized = bytearray(context)
         normalized[int(spec["patch_rva"]) - int(spec["context_rva"])] = old[0]
         if bytes(normalized) != bytes(spec["context"]):
-            raise RuntimeError("unexpected live death call context")
+            raise RuntimeError("unexpected live hit entry context")
+        # Upgrade the earlier stock-only play aid on an already running game.
+        # Validate before any write; the final mode uses the normal death code.
+        legacy_address = module_base + 0x000F849C
+        legacy = read_memory(api, handle, legacy_address, 10)
+        if legacy not in (bytes.fromhex("6A FF 8B 4D D8 E8 AA 8D FE FF"),
+                          bytes.fromhex("6A 00 8B 4D D8 E8 AA 8D FE FF")):
+            raise RuntimeError("unexpected legacy death call context")
         if actual == new:
+            restore_legacy_patch(api, handle, legacy_address, legacy)
             log("process is already patched")
             return
         if actual != old:
@@ -448,12 +456,21 @@ def patch_process(
             raise RuntimeError(
                 f"runtime patch verification failed: read back {observed.hex(' ')}"
             )
+        restore_legacy_patch(api, handle, legacy_address, legacy)
         log(
             f"patched memory 0x{address:08X}: {old.hex(' ')} -> {new.hex(' ')}; "
             f"{spec['meaning']}"
         )
     finally:
         api.kernel32.CloseHandle(handle)
+
+
+def restore_legacy_patch(api: Win32, handle: int, address: int, context: bytes) -> None:
+    if context[1] == 0:
+        write_memory(api, handle, address + 1, b"\xff")
+        if read_memory(api, handle, address + 1, 1) != b"\xff":
+            raise RuntimeError("legacy life decrement restoration failed")
+        log("restored the earlier stock-only patch; hit suppression is now the only play aid")
 
 
 def parse_args() -> argparse.Namespace:

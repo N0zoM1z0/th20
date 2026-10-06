@@ -23,8 +23,9 @@ Do not treat REF-001's file/module scan as satisfying this requirement.
   Link construction/insertion and eight node operations restore receiver ABI.
 - Cold replay: twenty units, four objects, 1,450 bytes. Authored exact: sixteen
   Timer/FunctionChain functions, 1,231 bytes; source-present mappings: twenty.
-- User-requested runtime no-life-decrement launcher is installed beside the
-  D: game. Windows launch/readback and idempotence pass; target file unchanged.
+- User-requested runtime invincibility launcher is installed beside the
+  D: game. Hit entry now returns before any effects; the earlier stock-only
+  mode is superseded. Revised Windows launch/readback passes; file unchanged.
   See RUNTIME_PATCH.md; no hit/respawn playthrough or reconstruction credit.
 - README now follows TH095: supplied title image centered at width 640,
   followed by the separate 560x176 progress SVG.

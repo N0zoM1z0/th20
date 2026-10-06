@@ -22,10 +22,12 @@
 - Cold replay: twenty complete units, four objects, 1,450 bytes; authored
   exactness is sixteen functions, 1,231 bytes. Library and unknown-origin
   comparisons remain outside authored credit.
-- User-requested play aid: death's immediate at RVA 0xF849D changes -1 to 0;
-  original 0x4E1250 adds it to life stock +0xB8. Windows ASLR launch, readback
-  and repeated attach pass; on-disk target hash is unchanged. Full gameplay
-  hit/respawn validation and reconstruction runtime credit are not claimed.
+- User-requested play aid: initial stock-only mode changed death immediate
+  RVA 0xF849D from -1 to 0. The user then requested no hit effects: hit entry
+  0x4F86F0 now returns immediately. Its three collision callers pass ECX with
+  no stack arguments and ignore its return, then produce their own result.
+  Normal death code is restored when upgrading the earlier in-memory patch.
+  No file-oracle changes or reconstruction runtime credit follow.
 
 ## REF-001 — 2026-10-06
 

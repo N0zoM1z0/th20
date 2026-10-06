@@ -124,7 +124,7 @@ does not complete its function reviews.
 - [Semantic reconstruction policy](docs/SEMANTIC_RECONSTRUCTION.md)
 - [Reference review](docs/REFERENCE_REVIEW.md)
 - [Function-by-function reference review](docs/REFERENCE_FUNCTION_REVIEW.md)
-- [Runtime unlimited-lives launcher](docs/RUNTIME_PATCH.md)
+- [Runtime invincibility launcher](docs/RUNTIME_PATCH.md)
 - [Verified knowledge base](docs/KNOWLEDGE_BASE.md)
 - [Roadmap](docs/ROADMAP.md)
 - [Generated progress](docs/PROGRESS.md)
