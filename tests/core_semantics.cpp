@@ -30,6 +30,7 @@ void check_bullet_values();
 void check_motion_values();
 void check_display_values();
 void check_dialogue_values();
+void check_scalar_math();
 
 namespace {
 unsigned callback_calls;
@@ -65,6 +66,7 @@ int main() {
     check_motion_values();
     check_display_values();
     check_dialogue_values();
+    check_scalar_math();
     th20::trophy_text::Message message;
     std::memset(&message, 0xa5, sizeof(message));
     message.reset();

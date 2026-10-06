@@ -150,3 +150,7 @@ th20::OverlayCounter::OverlayCounter
 th20::DialogueFlags::DialogueFlags
 th20::dialogue_text::is_lead
 th20::dialogue_text::decode
+th20::scalar_math::sine
+th20::scalar_math::cosine
+th20::scalar_math::square_root
+th20::scalar_math::arctangent

@@ -51,8 +51,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns forty-three objects and one canonical profile per source.
-One hundred fifty-two units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns forty-four objects and one canonical profile per source.
+One hundred fifty-six units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-032 absorbs the score-record constructor through an independently rewritten
@@ -67,6 +67,13 @@ trivial destruction differ from original lifetimes. Shared decoder storage remai
 unmatched final SJIS leads and malformed/unbounded inputs are outside acceptance.
 Actual owner/vtable/Animation/Scheduler/SaveManager/Replay resource, checked-array
 and EH lifetimes remain unclosed. See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
+
+REF-035 adds src/ScalarMath.hpp and src/ScalarMath.cpp with four complete cdecl
+float/double CRT wrappers,153 bytes. All16 original ECL math implementations
+have scoped decisions; wrap_angle uses existing normalize_angle rather than
+another canonical unit. The original CRT startup/error/exception domains and
+actual VM/Enemy/vector/interpolation owners remain open. Gameplay/ECL1147
+implementations still require review; see REFERENCE_GAMEPLAY_ECL_REVIEW.md.
 
 REF-029 closes the413-body Bullet, Laser and Damage Regions review begun at
 REF-028: three absorbed,214 nonexact,196 support. Eight natural contributions

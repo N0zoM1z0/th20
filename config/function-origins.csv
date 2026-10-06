@@ -1024,9 +1024,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004396C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439790,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004397C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004397C0,unknown,ScalarMath,review,pending,"REF-035: natural complete cdecl float/double CRT wrapper, independent full native decode/caller/CALL/error-name/fallback evidence before anchors;156-unit/44-object cold replay and C++20/UBSan finite identities/quadrants/signed-zero checks pass. Original spelling and authored/compiler/library origin pending; CRT implementation/startup/error/NaN domains not accepted. Gameplay/ECL remaining1147 bodies pending. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md."
 0x004397F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00439820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00439820,unknown,ScalarMath,review,pending,"REF-035: natural complete cdecl float/double CRT wrapper, independent full native decode/caller/CALL/error-name/fallback evidence before anchors;156-unit/44-object cold replay and C++20/UBSan finite identities/quadrants/signed-zero checks pass. Original spelling and authored/compiler/library origin pending; CRT implementation/startup/error/NaN domains not accepted. Gameplay/ECL remaining1147 bodies pending. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md."
 0x00439850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004398A0,unknown,Vector2,review,pending,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
@@ -1098,7 +1098,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00445BA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00445BC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00446B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00446B30,unknown,ScalarMath,review,pending,"REF-035: natural complete cdecl float/double CRT wrapper, independent full native decode/caller/CALL/error-name/fallback evidence before anchors;156-unit/44-object cold replay and C++20/UBSan finite identities/quadrants/signed-zero checks pass. Original spelling and authored/compiler/library origin pending; CRT implementation/startup/error/NaN domains not accepted. Gameplay/ECL remaining1147 bodies pending. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md."
 0x00446B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446BA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446BC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1489,7 +1489,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004591F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00459210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00459240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00459280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00459280,unknown,ScalarMath,review,pending,"REF-035: natural complete cdecl float/double CRT wrapper, independent full native decode/caller/CALL/error-name/fallback evidence before anchors;156-unit/44-object cold replay and C++20/UBSan finite identities/quadrants/signed-zero checks pass. Original spelling and authored/compiler/library origin pending; CRT implementation/startup/error/NaN domains not accepted. Gameplay/ECL remaining1147 bodies pending. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md."
 0x004592B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004592E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00459350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

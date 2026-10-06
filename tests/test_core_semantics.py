@@ -45,6 +45,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "tests/display_value_semantics.cpp",
                             "src/DialogueFlags.cpp", "src/DialogueText.cpp",
                             "tests/dialogue_value_semantics.cpp",
+                            "src/ScalarMath.cpp", "tests/scalar_math_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

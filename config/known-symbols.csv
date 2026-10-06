@@ -152,3 +152,7 @@ address,name,module,confidence,evidence
 0x004AEC90,th20::DialogueFlags::DialogueFlags,DialogueFlags,high,REF-033
 0x004B6460,th20::dialogue_text::is_lead,DialogueText,high,REF-033
 0x004B7C90,th20::dialogue_text::decode,DialogueText,high,REF-033
+0x00439820,th20::scalar_math::sine,ScalarMath,high,REF-035
+0x004397C0,th20::scalar_math::cosine,ScalarMath,high,REF-035
+0x00446B30,th20::scalar_math::square_root,ScalarMath,high,REF-035
+0x00459280,th20::scalar_math::arctangent,ScalarMath,high,REF-035

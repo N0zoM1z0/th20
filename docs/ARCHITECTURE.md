@@ -1,5 +1,11 @@
 # Target inventory and initial architecture boundary
 
+REF-035 accepts four153-byte scalar math wrappers with genuine cdecl float
+arguments,double CRT dependencies and narrowed ST0 results. All16 ECL math
+implementations are individually reviewed; Gameplay/ECL1147 remain pending.
+Original CRT startup/error domains and native vector/interpolation/VM/Enemy
+owners remain open. See REFERENCE_GAMEPLAY_ECL_REVIEW.md.
+
 REF-034 closes all376 Overlay implementations; the entire672-body display/weapon
 family is individually reviewed. Eighteen native factory positions bind sixteen
 30-slot strategy owners directly to Weapon52FAD0, without the reference's extra

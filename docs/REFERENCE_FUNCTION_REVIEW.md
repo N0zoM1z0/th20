@@ -40,7 +40,7 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The current REF-034 checkpoint has 4,937 explicit terminal decisions and 2,007
+The current REF-035 checkpoint has 4,953 explicit terminal decisions and 1,991
 pending indexed entries. The complete672-body Overlay/HUD/SmallScore/completion
 family follows the reviewed Player/Bomb/Item and Bullet/Laser/Damage batches.
 The separate
@@ -58,6 +58,16 @@ construction/destruction/allocator/phase-return protocols differ from synthetic
 reference owners; no new canonical units are accepted. Existing152 units retain
 fresh receipts and complete replay. Read the detailed family review for oracle
 coverage and remaining owner/type/relocation work. Continue every pending body.
+
+## REF-035: ECL scalar math component checkpoint
+
+All16 math.cpp bodies have outcomes:five absorbed/five nonexact/six support.
+Four natural cdecl double-CRT wrappers add153 complete exact bytes; the existing
+angle_normalize absorbs the fifth semantic body without another unit. Cold
+replay156/156 across44 objects/10,558 bytes and portable C++20/UBSan checks pass.
+One fresh original math TU gives ten full diagnostics. Gameplay/ECL's remaining
+1,147 bodies stay pending, alongside the other844 pending implementations.
+Read REFERENCE_GAMEPLAY_ECL_REVIEW.md for native ABI, ownership and CRT limits.
 
 ## REF-026: Title batch
 

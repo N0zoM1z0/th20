@@ -3,6 +3,47 @@ target_sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a089
 
 [units]
 
+# REF-035: observed cdecl float/double CRT wrappers; native call anchors precede probes.
+[units.scalar_math_sine]
+source = "src/ScalarMath.cpp"
+object = "build/ScalarMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::scalar_math::sine"]
+symbol = "?sine@scalar_math@th20@@YAMM@Z"
+target_address = 0x00439820
+size = 35
+relocations = [{ offset = 0x12, type = "REL32", symbol = "_sin", target = 0x0054FFB0 }]
+
+[units.scalar_math_cosine]
+source = "src/ScalarMath.cpp"
+object = "build/ScalarMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::scalar_math::cosine"]
+symbol = "?cosine@scalar_math@th20@@YAMM@Z"
+target_address = 0x004397C0
+size = 35
+relocations = [{ offset = 0x12, type = "REL32", symbol = "_cos", target = 0x0054FF50 }]
+
+[units.scalar_math_square_root]
+source = "src/ScalarMath.cpp"
+object = "build/ScalarMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::scalar_math::square_root"]
+symbol = "?square_root@scalar_math@th20@@YAMM@Z"
+target_address = 0x00446B30
+size = 35
+relocations = [{ offset = 0x12, type = "REL32", symbol = "_sqrt", target = 0x00550050 }]
+
+[units.scalar_math_arctangent]
+source = "src/ScalarMath.cpp"
+object = "build/ScalarMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::scalar_math::arctangent"]
+symbol = "?arctangent@scalar_math@th20@@YAMMM@Z"
+target_address = 0x00459280
+size = 48
+relocations = [{ offset = 0x1F, type = "REL32", symbol = "_atan2", target = 0x005500E0 }]
+
 [units.trophy_message_reset]
 source = "src/TrophyText.cpp"
 object = "build/TrophyText.obj"

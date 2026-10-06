@@ -1,5 +1,29 @@
 # Verified facts and open hypotheses
 
+## REF-035 — 2026-10-07 — scalar math component checkpoint
+
+- Natural cdecl sin/cos/sqrt/atan2 wrappers widen floats to the double CRT and
+  narrow ST0 results. Native35/35/35/48 complete bytes add153 exact; full156 units
+  cold replay across44 objects/10,558 bytes. Source156,pending origins95/library4,
+  authored57/4,074 unchanged. Spelling/authored/compiler/library origins pending.
+- Independent original CALLs/RET/PE decode, fallback FSIN/FCOS/FSQRT/error strings
+  and atan2 descriptor59A980 precede canonical anchors. Rotation458FA0 and angle
+  caller456210 consume float/ST0 with cdecl cleanup; atan2 y,x order retained.
+  Original CRT startup/error/NaN/errno environment remains unreconstructed.
+- Portable C++20/UBSan4096 squares/513 trig parity+Pythagorean cases/128 scaled
+  quadrants/signed-zero checks pass on host CRT. These do not prove the original
+  exceptional numerical environment or a linked game.
+- All16 math.cpp bodies individually reviewed5 absorbed/5 nonexact/6 support;
+  existing angle_normalize absorbs reference wrap without extra exact unit.
+  One freshly compiled original TU/26 symbols yields10 full diagnostics,
+  four structural/six sizes. Natural difference163/native150 remains deferred.
+  Native polar/rotate vector-pointer API and rotation write/alias order differ
+  from two-reference API; true interpolation/Timer and switch ownership open.
+- Gameplay/ECL1163 family only16 closed;1147 pending. Global4,953 terminal/
+ 1,991 pending,gaps79/34 unchanged. Full source/fixtures/report/grammar review
+  remains active; retained ECL41067 count not promoted without full binding audit.
+  No Windows oracle/writer executed. See REFERENCE_GAMEPLAY_ECL_REVIEW.md.
+
 ## REF-034 — 2026-10-07 — complete Overlay batch
 
 - All376 bodies individually reviewed180 nonexact/196 support,40 indexed files.

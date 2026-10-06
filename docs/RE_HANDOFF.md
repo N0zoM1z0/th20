@@ -1,5 +1,43 @@
 # Current reconstruction handoff
 
+## REF-035 — 2026-10-07 — scalar math component checkpoint
+
+Four natural scalar wrappers add153 complete exact bytes:sin439820/35,
+cos4397C0/35,sqrt446B30/35,atan2459280/48. Full156-unit cold replay across44
+objects/10,558 bytes and portable C++20/UBSan finite identities/squares/quadrants/
+signed-zero checks pass. Source156,pending origins95/library4,authored57/4,074
+unchanged. Original names and authored/compiler/library identity remain pending.
+
+- All16 ECL math.cpp implementations individually reviewed:5 absorbed/5
+  nonexact/6 support. wrap_angle reuses existing angle_normalize/187; no extra
+  canonical unit for that absorption. Math header/recipe fully read. Global
+ 4,953 terminal/1,991 pending; gap coverage79/34 unchanged. Goal active.
+- Related Gameplay1019/ECL144 family has114 indexed files/1163 bodies; only16
+  math bodies closed so far,1147 remain pending. File hashes/inventory are not
+  reading or review. Full VM/Enemy/owner/fixtures/report/gap audit still required.
+- All four native ranges PE/Ghidra/RET attested. Original CALL operands precede
+  probe; FSIN/FCOS/FSQRT/error strings and atan2 descriptor59A980 independently
+  corroborate actual CRT anchors. cdecl float->double->float/ST0, atan2 y,x
+  order and original caller cleanup confirmed. Original CRT bodies/global
+  startup/errno/NaN/exception environment are dependencies, not reconstructed.
+- Fresh unmodified math TU/26 symbols (six static) gives ten full comparisons:
+  four structural/six lengths. Natural angle_difference probe163/native150
+  deferred. Polar output-vector pointer vs two references, rotate separate
+  input/output pointers and saved-X alias order, typed interpolation/Timer/clock
+  and complete easing/switch ownership remain unclosed. No fake declarations.
+- Whole156 canonical build receipts bind final src/probes freeze. Previous43
+  display/Overlay reference receipts describe the historical REF034 source
+  fingerprint and need rebuilding before future reuse; this component review
+  relies only on the freshly rebuilt math TU. No simultaneous MSVC builds.
+- Private .analysis/ref035-record-math.py EXECUTED ONCE; NEVER RERUN. All
+  REF034/older writers already executed too.
+
+Continue coherent Gameplay/ECL1147 implementations, then Sprite540/
+StageBackground121 and183 remaining support bodies. Do not mark goal complete
+with1,991 bodies/34 gap files pending. See REFERENCE_GAMEPLAY_ECL_REVIEW.md and
+private ref035 resume notes. English text/repo-python/gpt-6.1-sol commit subjects
+and public main push authorized; no subagents/concurrent compiler sessions.
+
 ## REF-034 — 2026-10-07 — complete Overlay batch
 
 All376 Overlay implementations individually reviewed:180 nonexact/196 support,

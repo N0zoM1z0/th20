@@ -151,3 +151,7 @@ th20::OverlayCounter::OverlayCounter,0x00532850,function
 th20::DialogueFlags::DialogueFlags,0x004AEC90,function
 th20::dialogue_text::is_lead,0x004B6460,function
 th20::dialogue_text::decode,0x004B7C90,function
+th20::scalar_math::sine,0x00439820,function
+th20::scalar_math::cosine,0x004397C0,function
+th20::scalar_math::square_root,0x00446B30,function
+th20::scalar_math::arctangent,0x00459280,function
