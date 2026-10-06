@@ -94,3 +94,12 @@ th20::IntRectangle::IntRectangle
 th20::set_next_text_outline_scale
 th20::Vector3::operator*=
 th20::Timer::greater_than
+th20::Cursor::~Cursor
+th20::Cursor::snapshot
+th20::Cursor::changed
+th20::Cursor::selected
+th20::Cursor::set_count
+th20::Cursor::set_wrapping
+th20::Cursor::save
+th20::Cursor::restore
+th20::PauseFlags::PauseFlags

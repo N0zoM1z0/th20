@@ -29,6 +29,8 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/AnimationHandle.cpp",
                             "src/Vector3.cpp",
                             "src/TrophyText.cpp",
+                            "src/Cursor.cpp", "tests/cursor_semantics.cpp",
+                            "src/PauseFlags.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

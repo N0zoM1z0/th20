@@ -40,11 +40,114 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 1,330 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/tool/test entries have explicit decisions. The
-remaining 5,614 indexed entries are pending. The separate
+The first 1,698 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/pause/stone/tool/test entries have explicit decisions. The
+remaining 5,246 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: twenty-three of 113 files are reconciled, leaving 90 pending.
+and parser-gap count: twenty-seven of 113 files are reconciled, leaving 86 pending.
+
+## REF-024: Pause and Stone Menu batch
+
+All 368 indexed implementations have individual hash-bound decisions: 175 Pause
+and 193 Stone Menu entries, with six absorbed, 60 nonexact and 302 support.
+Coverage is now 1,698 terminal / 5,246 pending. Four files with 16 parser errors
+were manually reconciled; global gap coverage is 27 reconciled / 86 pending.
+All production sources, owner headers, drivers/includes, constant data, CMake
+recipes and report-writing scripts in this batch were read. The standalone
+88-label initializer is data, including the misclassified `labels` index entry.
+
+Nine new complete canonical contributions add 412 bytes:
+
+| Owner/member | Address | Complete bytes |
+| --- | --- | --- |
+| Cursor destructor | 0x004AFA70 | 45 |
+| Cursor snapshot | 0x004BFC00 | 22 |
+| Cursor changed | 0x0045D030 | 45 |
+| Cursor selected | 0x0046B1B0 | 44 |
+| Cursor count setter | 0x0049C4E0 | 22 |
+| Cursor wrapping setter | 0x004BFBE0 | 22 |
+| Cursor save | 0x004C60B0 | 70 |
+| Cursor restore | 0x004C6010 | 102 |
+| PauseFlags constructor | 0x004E1CB0 | 40 |
+
+Cold replay passes 105/105 units across 27 objects, totaling 6,592 bytes.
+Source mappings are 105, pending-origin units 44 and library units four;
+authored credit remains 57 functions / 4,074 bytes. Original type and method
+spellings and authored/compiler/shared origins of all nine additions remain
+pending. The public semantic suite exercises the same maintained bodies.
+
+The actual 0x4C Cursor contains four int32 fields, a 16-byte PMR vector at +0x10,
+two 20-byte `std::stack<int, std::deque<int>>` owners at +0x20/+0x34 and wrapping
+at +0x48. The locked MSVC deque retains `_Container_base12` and an owned proxy
+even with release iterator settings. Native construction, default-resource,
+iterator, stack push/top/pop/empty and reverse destruction establish the types
+before compiler probing; no handmade DequeStorage or opaque padding is imported.
+Canonical relocations use independently observed adapter identities: stack
+push 4C6080, empty 4C5D90, top 4C7F00, pop 4C5FF0, destructor 4AFA50, vector
+clear 497F40 and destructor 48B830. Diagnostic solved fields supply no anchors.
+
+Both Cursor predicates return full 32-bit EAX, corroborated by consumers which
+test EAX, unlike the reference bool declarations. Restore uses `empty()!=true`
+and clears exclusions even when no history exists. Public tests grow and unwind
+4,096 history frames, preserve unrelated fields and vector capacity, exercise
+signed extrema and verify PMR allocation release. PauseFlags has real two-bit
+mode/one-bit practice fields; its constructor clears them separately and retains
+29 upper bits, corroborated by dirty-storage tests and Pause construction.
+
+Cursor construction is source present but **not exact**: native 138 bytes versus
+96 for the natural no-EH profile and 156 for a /GS /EHsc diagnostic. Native EH
+and exception cleanup remain unresolved. This does not accept complete menu
+construction, linkage or the original library/allocator runtime. Full Pause
+and Stone owners, native base/vtables, scheduler, allocation and resource
+lifecycles remain open. Pause initialization registers priorities 15/95 and
+resets both Timers; callbacks are 4E6520/4E66A0. Stone uses 51B1D0/51B4B0.
+
+All 24 unchanged reference production TUs compile serially with their declared
+strict floating-point recipe and transitive include paths. All 53 complete
+COFF diagnostics differ: 52 contribution-size rejections and one structural
+mismatch (Pause state setter). Fifteen Ghidra gaps contain 16 original JMPs,
+independently decoded from locked PE bytes. Larger menu/update switch-table
+extents remain provisional; no target-sized prefix is accepted. Practice
+background capture is an extracted fragment of 4E59E0 calling Controller
+4E6600; it is not a second complete finish-practice function. Native factories
+initialize the allocator result without the source's intervening null guard.
+
+Independent data checks cover 16 float representations, ten original strings,
+the name-character pointer and four Pause pointer tables, plus all 88 Stone
+string-view pointer/length pairs at 5742E0. Source range checks and the parser's
+unknown-label exception differ from native out-of-range behavior. The native
+Stone initializer includes PMR strings, stringstream/EH and resource freeing;
+the reference splits parsing into a new free helper with ordinary strings.
+
+Historical oracle evidence is retained without rewriting hashes or rerunning:
+
+- Pause CPU: 114,688 checks / zero failures, with 17 of 21 source hashes current.
+  draw.cpp, ranking.cpp, menu_support.hpp and CMakeLists.txt are stale. Its seven
+  operations use raw owner storage with only Cursor construction, 31 intercepted
+  boundaries and a fully replaced menu state machine. Native update's integer
+  result is discarded through `cpu<void>`.
+- Stone CPU: 110,128 / zero, comprising 39,856 Cursor/lifecycle/parser, 16,000 draw,
+  9,216 sprite-helper and 45,056 update/open checks. Of 40 hashes, input.hpp is
+  stale and assets/raw/stonetext.txt is missing. The driver accepts that resource
+  as an unhashed argument; the stock-resource run cannot be reproduced from this
+  checkout. Native stringstream operations are replaced with host streams;
+  resource/proxy/vptr/context addresses are normalized and effects recorded.
+  Text comparisons use FNV32; effect-event padding is partly masked.
+- Pause draw: 81,920 / zero retained, with all 389 attached hashes current and
+  the referenced shared-report digest matching. It overlaps that larger sprite
+  report and must not be counted twice. The retained initial-failure report has
+  196 differences in Renderer/cached Job caused by the old player selector.
+  The current fixture uses valid isolated records, cached Jobs, a synthetic
+  animation pool and the host non-DST timezone; new glyph allocation, file/GPU
+  execution, invalid-time handling and complete menu lifecycles remain outside it.
+
+The report writers can attach current hashes after an old CPU run without
+binding objects/executables or rerunning. Current hash equality does not establish
+historical build identity. No new original CPU oracle was compiled or executed.
+
+Next related batch: progress_state and replay_system, then title_system and every
+remaining implementation/gap. The exhaustive goal remains active. Private
+`.analysis/ref024-record.py` has already executed; never rerun it.
 
 ## REF-023: Options and Key Config batch
 

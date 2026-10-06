@@ -1,5 +1,44 @@
 # Current reconstruction handoff
 
+## REF-024 — 2026-10-07 — Pause and Stone Menu batch checkpoint
+
+The exhaustive goal remains active. All 368 entries individually reviewed:
+six absorbed / 60 nonexact / 302 support; global 1,698 terminal / 5,246 pending.
+Four gap files (16 errors) reconciled; global 27 reconciled / 86 pending.
+
+- Nine new exact units: real Cursor destructor/snapshot/full-int predicates/
+  setters/save/restore and real four-byte PauseFlags construction. Cold replay
+  105/105 across 27 objects, 6,592 complete bytes. Source 105, pending-origin 44,
+  library four; authored 57 / 4,074 unchanged. All nine origins/spellings pending.
+- Cursor owns PMR vector<int> and two std::stack<int,std::deque<int>>. Real proxy,
+  allocator and adapter call graphs independently establish 0x4C storage; native
+  release deque still owns _Container_base12 proxy. No handmade DequeStorage.
+  Constructor remains nonexact (native138, natural96, EH probe156); original EH,
+  whole menu construction/library runtime and linkage remain unaccepted.
+- Public semantic tests cover 4,096 growing/unwinding frames, empty restore,
+  signed predicates, unrelated fields, PMR release and dirty flag upper bits.
+  Source/profile frozen before final105-unit cold replay.
+- All24 original production TUs compile serially with declared strict-FP recipe;
+  53 complete COFF diagnostics differ. Fifteen Ghidra gaps contain16 JMPs decoded
+  independently; switch tables of rejected large members remain provisional.
+  Pause registration15/95 and callbacks4E6520/4E66A0 independently read.
+- Full Pause/Stone state machines, resources, lifecycles, fixture/driver/include
+  and writer bodies read. Data checks:16floats/10strings/name pointer/fourPause
+  tables and88Stone pointer/length records. Invalid-resource policy differs.
+- Historical PauseCPU114688/0 has four stale hashes; Stone110128/0 has input.hpp
+  stale and missing stocktext. PauseDraw81920/0 has389 current hashes/shared digest
+  but overlaps larger sprite report; initial196-failure report retained. Do not
+  refresh report hashes to imply execution. No new native CPU compile/run.
+- CPU raw owners/normalized pointers, host stringstreams, recorded sideeffects,
+  cachedJobs/FNVtext/effectpadding masking/valid fixture domains do not close
+  original allocator/EH/file/audio/GPU/wholegame behavior. Pause update return
+  discarded and entire menu protocol intercepted in its CPU driver.
+
+Next related batch: progress_state79 + replay_system66, then title_system803 and
+all remaining implementations/gaps. No default module-wide rejection. Private
+`.analysis/ref024-record.py` already executed; never rerun. Earlier checkpoints
+are historical. Keep compiler builds and Ghidra operations serial.
+
 ## REF-023 — 2026-10-07 — Options and Key Config batch checkpoint
 
 Exhaustive goal remains active. User requests related batches; all109 Options/Key

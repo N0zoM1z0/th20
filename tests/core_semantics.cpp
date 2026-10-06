@@ -23,6 +23,7 @@
 #include <new>
 
 void check_scene_resource_protocol();
+void check_cursor_history();
 
 namespace {
 unsigned callback_calls;
@@ -51,6 +52,7 @@ std::uint32_t th20::GameRandom::next() {
 
 int main() {
     check_scene_resource_protocol();
+    check_cursor_history();
     th20::trophy_text::Message message;
     std::memset(&message, 0xa5, sizeof(message));
     message.reset();

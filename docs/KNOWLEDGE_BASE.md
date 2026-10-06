@@ -1,5 +1,35 @@
 # Verified facts and open hypotheses
 
+## REF-024 — 2026-10-07
+
+- Pause175 and Stone193 entries individually terminal:6absorbed/60nonexact/
+  302support. Total1,698 terminal/5,246 pending; gaps27reconciled/86pending.
+- Actual Cursor4C owns PMR vector16 at10, two stack/deque20 at20/34 and wrap48.
+  Locked SDK/native adapter graph identifies real std::stack<int>; release
+  deque retains an owned proxy. Default resource/iterator/reverse destruction
+  independently observed before probing. No handmade deque storage imported.
+- Eight Cursor contributions plus PauseFlags ctor add412 complete bytes; cold
+  105/105 units,27objects/6,592bytes. Source105/pending-origin44/library4;
+  authored57/4,074 unchanged. Both query predicates return full int32/EAX.
+- Cursor ctor remains source-present/nonexact: native138 vs96 natural and156
+  EH probe. Original EH/global allocation/library runtime and full menu linkage
+  remain unknown. Portable resource/history/dirty-flag tests passed.
+- Twenty-four strict-FP reference TUs compile;53 complete contribution diagnostics
+  differ. Fifteen omitted Ghidra gaps contain16 independently decoded JMPs.
+  Large switch table extents not accepted. Nine canonical sizes are complete.
+- Native Pause priorities15/95, callbacks4E6520/4E66A0, global5C60BC; initializer
+  resets twoTimers with no virtual enable. Stone callbacks51B1D0/51B4B0.
+  Full owner/TaskInf/metadata/scheduler/resource/EH graphs remain nonexact.
+- Data independently checked:16floats,10strings,name pointer,fourPause tables,
+  88Stone string-view records. Source label/range/unknown-resource policy differs.
+- Retained PauseCPU114688/0 has four stale hashes; StoneCPU110128/0 has stale
+  input.hpp and missing stocktext. PauseDraw81920/0 has389 current hashes/shared
+  digest; initial196 failures retained and counts overlap larger sprite report.
+  Posthoc hash writers do not bind historic binaries or rerun; not executed.
+- No current original CPU run. Raw/normalized owner fixtures, host stringstreams,
+  FNVtext/partly masked effect padding, cachedJobs and intercepted sideeffects
+  limit corroboration. Next progress/replay family, then title and remaining goal.
+
 ## REF-023 — 2026-10-07
 
 - All109 Options/Key implementations individually reviewed:28 nonexact and81

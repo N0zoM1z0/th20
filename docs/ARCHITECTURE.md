@@ -37,3 +37,10 @@ The state model follows TH095: candidate boundary (`functions.csv`), origin
 (`implemented.csv`), and exactness (`matches.csv` plus canonical units) are
 separate. Semantic acceptance, whole-game linkage and playable behavior are
 also independent.
+
+The shared menu Cursor uses a PMR vector and two standard stack/deque owners.
+Native constructor, iterator and stack adapter graphs establish its storage and
+resource ownership. Eight methods are exact; constructor exception emission is
+still unresolved. The separate four-byte PauseFlags value is exact without
+introducing an enclosing menu facade. These additions remain component objects,
+with no complete menu or original allocator/runtime linkage claim.

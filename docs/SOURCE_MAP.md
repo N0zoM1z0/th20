@@ -22,6 +22,8 @@
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690 | Six complete exact members; original class spelling and authored/compiler/library origins pending |
+| Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |
+| PauseFlags | src/PauseFlags.hpp, src/PauseFlags.cpp | four-byte flags construction 0x004E1CB0 | Complete 40-byte exact constructor; two-bit mode/one-bit practice, upper 29 retained, origin pending |
 | ColoredVertex | src/ColoredVertex.hpp, src/ColoredVertex.cpp | typed value construction 0x00423470 | Complete 43-byte exact constructor; actual 20-byte value and Vector3 member established; original spelling/origin pending |
 | TextLine | src/TextLine.hpp, src/TextLine.cpp | value construction 0x0046ABA0 | Complete 219-byte exact constructor; actual 320-byte ASCII record; origin pending |
 | Rectangle | src/Rectangle.hpp, src/Rectangle.cpp | overlap 0x00470920; point construction 0x0040DE00; rectangle construction 0x0040DE30 | Three complete exact contributions; actual eight/sixteen-byte values and inclusive wrapped arithmetic; origins pending |
@@ -210,3 +212,14 @@ no COM object or driver is invoked by those fixtures. Full SoundInf, PMR arrays,
 WaveReader SDK fields, CSound/CStreaming vtables and diagnostic allocator
 lifetimes remain unresolved. No opaque class padding or merged reference owner
 is imported to force small stream methods exact.
+
+REF-024 closes the actual Cursor container storage without defining Pause, Key,
+Options or Stone Menu as padded facades. The PMR vector uses the native default
+resource; each std::stack owns a real std::deque and its release-mode proxy.
+Save/restore keep both histories paired and clear exclusions without freeing
+capacity. Full-width predicates reflect independently observed EAX consumers.
+The natural constructor is maintained for the shared semantic body and portable
+resource tests, but its native exception emission remains nonexact. The eight
+canonical members do not accept complete original construction, library runtime
+or menu linkage. PauseFlags is the real four-byte bitfield value constructed
+inside Pause; it introduces no enclosing owner or global definition.

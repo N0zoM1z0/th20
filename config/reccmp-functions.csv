@@ -95,3 +95,12 @@ th20::IntRectangle::IntRectangle,0x0040DE30,function
 th20::set_next_text_outline_scale,0x00416CF0,function
 th20::Vector3::operator*=,0x00429690,function
 th20::Timer::greater_than,0x00461070,function
+th20::Cursor::~Cursor,0x004AFA70,function
+th20::Cursor::snapshot,0x004BFC00,function
+th20::Cursor::changed,0x0045D030,function
+th20::Cursor::selected,0x0046B1B0,function
+th20::Cursor::set_count,0x0049C4E0,function
+th20::Cursor::set_wrapping,0x004BFBE0,function
+th20::Cursor::save,0x004C60B0,function
+th20::Cursor::restore,0x004C6010,function
+th20::PauseFlags::PauseFlags,0x004E1CB0,function

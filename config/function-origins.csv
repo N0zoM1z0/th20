@@ -1552,7 +1552,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045CF10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045CFE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045D030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045D030,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x0045D060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D0C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1900,7 +1900,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0046AEF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046B0D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046B130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0046B1B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0046B1B0,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x0046B1E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046B210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046B230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2735,7 +2735,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0049C470,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C4B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0049C4E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0049C4E0,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x0049C500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C5B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3324,7 +3324,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004AF310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AF9E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AFA50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AFA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AFA70,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x004AFAA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AFC00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AFCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3718,8 +3718,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004BFB50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BFB80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BFBB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004BFBE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004BFC00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004BFBE0,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
+0x004BFC00,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x004BFC20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BFC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BFCD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3844,9 +3844,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C5FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C5FB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C5FF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C6010,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C6010,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x004C6080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C60B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C60B0,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x004C6100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C6130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C6160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4166,7 +4166,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004E1B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004E1BA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004E1C30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004E1CB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004E1CB0,unknown,PauseFlags,review,pending,REF-024: complete40-byte four-byte native Pause flag constructor; mode low2/practice bit2 cleared separately and upper29 retained. Independent Pause construction/consumers establish real value owner. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x004E1CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004E1E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004E1F70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

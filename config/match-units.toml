@@ -1102,3 +1102,96 @@ symbol = "?greater_than@Timer@th20@@QBE_NH@Z"
 target_address = 0x00461070
 size = 46
 relocations = []
+
+# REF-024: real PMR vector and two stack/deque owners; original spelling pending.
+
+[units.cursor_destruct]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::~Cursor"]
+symbol = "??1Cursor@th20@@QAE@XZ"
+target_address = 0x004AFA70
+size = 45
+relocations = [{ offset = 0xE, type = "REL32", symbol = "??1?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAE@XZ", target = 0x4afa50 }, { offset = 0x19, type = "REL32", symbol = "??1?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAE@XZ", target = 0x4afa50 }, { offset = 0x24, type = "REL32", symbol = "??1?$vector@HV?$polymorphic_allocator@H@pmr@std@@@std@@QAE@XZ", target = 0x48b830 }]
+
+[units.cursor_snapshot]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::snapshot"]
+symbol = "?snapshot@Cursor@th20@@QAEXXZ"
+target_address = 0x004BFC00
+size = 22
+relocations = []
+
+[units.cursor_changed]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::changed"]
+symbol = "?changed@Cursor@th20@@QBEHXZ"
+target_address = 0x0045D030
+size = 45
+relocations = []
+
+[units.cursor_selected]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::selected"]
+symbol = "?selected@Cursor@th20@@QBEHH@Z"
+target_address = 0x0046B1B0
+size = 44
+relocations = []
+
+[units.cursor_set_count]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::set_count"]
+symbol = "?set_count@Cursor@th20@@QAEXH@Z"
+target_address = 0x0049C4E0
+size = 22
+relocations = []
+
+[units.cursor_set_wrapping]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::set_wrapping"]
+symbol = "?set_wrapping@Cursor@th20@@QAEXH@Z"
+target_address = 0x004BFBE0
+size = 22
+relocations = []
+
+[units.cursor_save]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::save"]
+symbol = "?save@Cursor@th20@@QAEXXZ"
+target_address = 0x004C60B0
+size = 70
+relocations = [{ offset = 0x1A, type = "REL32", symbol = "?push@?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAEXABH@Z", target = 0x4c6080 }, { offset = 0x32, type = "REL32", symbol = "?push@?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAEXABH@Z", target = 0x4c6080 }, { offset = 0x3D, type = "REL32", symbol = "?clear@?$vector@HV?$polymorphic_allocator@H@pmr@std@@@std@@QAEXXZ", target = 0x497f40 }]
+
+[units.cursor_restore]
+source = "src/Cursor.cpp"
+object = "build/Cursor.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Cursor::restore"]
+symbol = "?restore@Cursor@th20@@QAEXXZ"
+target_address = 0x004C6010
+size = 102
+relocations = [{ offset = 0xE, type = "REL32", symbol = "?empty@?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QBE_NXZ", target = 0x4c5d90 }, { offset = 0x21, type = "REL32", symbol = "?top@?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAEAAHXZ", target = 0x4c7f00 }, { offset = 0x33, type = "REL32", symbol = "?pop@?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAEXXZ", target = 0x4c5ff0 }, { offset = 0x3E, type = "REL32", symbol = "?top@?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAEAAHXZ", target = 0x4c7f00 }, { offset = 0x51, type = "REL32", symbol = "?pop@?$stack@HV?$deque@HV?$allocator@H@std@@@std@@@std@@QAEXXZ", target = 0x4c5ff0 }, { offset = 0x5D, type = "REL32", symbol = "?clear@?$vector@HV?$polymorphic_allocator@H@pmr@std@@@std@@QAEXXZ", target = 0x497f40 }]
+
+# REF-024: actual four-byte Pause flag value; native consumer retains upper bits.
+[units.pause_flags_construct]
+source = "src/PauseFlags.cpp"
+object = "build/PauseFlags.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PauseFlags::PauseFlags"]
+symbol = "??0PauseFlags@th20@@QAE@XZ"
+target_address = 0x004E1CB0
+size = 40
+relocations = []
