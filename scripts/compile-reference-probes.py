@@ -64,7 +64,9 @@ def main():
                                 "source_reconstruction/stone_menu/",
                                 "source_reconstruction/progress_state/",
                                 "source_reconstruction/replay_system/",
-                                "source_reconstruction/title_system/")):
+                                "source_reconstruction/title_system/",
+                                "source_reconstruction/effect_system/",
+                                "source_reconstruction/special_state/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -84,6 +86,8 @@ def main():
             # Progress, gameplay, overlay and platform-window dependencies.
             # Title declares native/binary/scheduler paths and inherits ECL
             # through its public stone-menu and runtime dependencies.
+            # Effect and Special State declare native/binary/scheduler paths;
+            # their public runtime/VM dependencies propagate ECL headers.
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
@@ -94,7 +98,9 @@ def main():
                                 "source_reconstruction/stone_menu/",
                                 "source_reconstruction/progress_state/",
                                 "source_reconstruction/replay_system/",
-                                "source_reconstruction/title_system/")):
+                                "source_reconstruction/title_system/",
+                                "source_reconstruction/effect_system/",
+                                "source_reconstruction/special_state/")):
             # Preserve these modules' explicit CMake floating-point option.
             profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative == "source_reconstruction/archive/verify.cpp":

@@ -1,5 +1,48 @@
 # Current reconstruction handoff
 
+## REF-027 — 2026-10-07 — Effect / Special State batch checkpoint
+
+All 322 implementations individually reviewed (Effect191 / Special131):
+6 absorbed / 133 nonexact / 183 support. Global 2,968 terminal / 3,976 pending
+of 6,944; gap files 53 reconciled / 60 pending after eight manual reconciliations.
+The exhaustive goal remains active. See REFERENCE_EFFECT_SPECIAL_REVIEW.md.
+
+- Sixteen natural canonical value/member additions,765 complete bytes: actual
+  PackedColor4, EffectParameters56 / x86 EffectRequest72, SelectionPulse8 and
+  shared Interpolation<byte32/float44> constructors/setters/begin. All129 units
+  cold replay across32 objects / 8,464 bytes. Authored57 / 4,074 unchanged;
+  pending origins68/library4/source129. No whole Effect/Special owner credit.
+- Independent native calls anchor member construction/setters; begin takes live
+  const references with observable alias order and raw float copying. Mode
+  setter returns signed assignment. Implicit byte/parameter/pulse padding kept.
+  Portable C++20/UBSan dirty-padding/256-byte/alias/flags/NaN-bit tests pass.
+- All22 unmodified production TUs compile strict-FP serially after final source
+  freeze.163 complete unsliced COFF diagnostics:162 size differences, one
+  SelectionPulse structural match separately accepted through canonical replay.
+- Two missing Ghidra entries independently recovered from actual six-slot
+  vtables and approved PE: Converging45C360/2884 bytes/768 instructions/17
+  internal branches and Wavering467430/993/277/18. No database mutation.
+  Waver4673F0 is deleting destructor, not containing update. Six other analysis
+  holes decoded as internal jumps; rejected sample/factory extents remain intact.
+- Independently audited15 descriptors32bytes + only8 terminator bytes, and ten
+  callback vtables. Native typed arrays, EH4/cookies, handles/sret, callbacks,
+  Worker/resource/real allocator and full owners remain open. No fake facades.
+- Retained Special116736/0 has32 current/2 stale hashes; Spiral69120/0 has189
+  current/15 stale and old shared digest; Additional357860/0 has389 current and
+  matching digest. Shared Sprite2915831/0 binds389 current files; Effect485796
+  subtotal across266 groups overlaps reports. Writers/native CPU not run.
+- Special destructor advances BEFOREfree; native frees first then accesses
+  observer. Fixture free only records events, text records LENGTH not content,
+  parameter padding masked and SpawnParameters constructor replacedzero-fill.
+  Entry initializer/production adapters excluded; no game/GPU/thread acceptance.
+- Stable checkpoint gates: target/tracking/reference/progress/public CI, then
+  authorized public main push with gpt-6.1-sol prefix. Raw evidence stays ignored.
+  Do not rerun .analysis/ref027-record.py or any older record writer.
+- Next coherent review batch: Bullet100 / Laser216 / Damage97, following their
+  shared pool, RNG, collision and cancellation protocols. Review every body and
+  actual owner, compile all real production TUs serially, absorb easy complete
+  natural exact components, record hard cases and continue.3,976 remain pending.
+
 ## REF-026 — 2026-10-07 — Title batch checkpoint
 
 The exhaustive goal remains active. All 803 Title entries individually reviewed:

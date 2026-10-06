@@ -59,3 +59,13 @@ components are complete exact. The 0x5978 Title callback owner, native handle
 arrays, mesh, thread/resource/EH lifetimes and whole-Profile accessors remain
 open. Injected Environment interfaces and CPU page fixtures do not establish
 original virtual ownership, startup linkage or full rendered gameplay.
+
+Effect / Special State share actual parameter and interpolation values. Four
+small value constructors and twelve byte/float interpolation members are
+complete exact; the native owners remain unclosed. Effect owns typed handle /
+request arrays and Worker; Special owns actual intrusive list and typed handles.
+Reference injected Environment interfaces, raw aggregate constructors and
+recording-only allocator/GPU hooks do not establish these native lifetimes.
+Original callback vtables independently identify Converging and Wavering update
+heads missing from current Ghidra; full approved PE instruction flows were
+reconciled without editing the database. See REFERENCE_EFFECT_SPECIAL_REVIEW.md.

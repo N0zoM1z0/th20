@@ -2,6 +2,8 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| PackedColor / EffectParameters / EffectRequest / SelectionPulse | src/EffectParameters.hpp, src/EffectParameters.cpp | constructors 0x004142A0/0x0047BA30/0x0049CE30/0x00461840 | Four complete exact constructors on actual4/56/72x86/8-byte values; implicit padding kept, origins pending |
+| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin | Twelve complete exact members on actual32/44-byte values; live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
 | Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Eighteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
@@ -39,9 +41,17 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns thirty objects and one canonical profile per source.
-One hundred thirteen units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns thirty-two objects and one canonical profile per source.
+One hundred twenty-nine units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-027 batches all Effect and Special State implementations. Shared actual
+value members add765 complete exact bytes with no enclosing owner facade.
+Interpolation begins with live const references and separate signed setters;
+implicit padding and float payload copying follow native code. The real
+Effect13044/SpecialB4 owners, typed intrusive lists/handles/arrays, original
+vtable/EH/resource/callback lifetimes remain open. See
+REFERENCE_EFFECT_SPECIAL_REVIEW.md for all family and oracle limits.
 
 REF-026 reviews Title as one coherent batch. Its four-byte flags at +0x58D4 are
 a real independent value, with four source bit fields and upper bits retained.

@@ -1,5 +1,41 @@
 # Verified facts and open hypotheses
 
+## REF-027 — 2026-10-07
+
+- Effect191 / Special131 bodies individually reviewed:6 absorbed /133 nonexact /
+  183 support. Global2,968 terminal /3,976 pending; gaps53 reconciled /60 pending.
+- Sixteen natural canonical contributions add765 bytes: actual PackedColor4,
+  EffectParameters56/Request72x86, SelectionPulse8, Byte32/Float44 interpolation
+  constructors/four setters/begin. Final129/129 across32 cold objects /8,464
+  bytes; authored57/4,074 unchanged, pending-origin68/library4.
+- Begin uses live const references, ordered setters then current=start/Timer0;
+  raw float DWORD copying preserves NaN/-0/infinity. Mode returns int assignment.
+  Implicit padding kept; dirty-storage/byte256/alias/Timer flags tests pass.
+- Twenty-two unmodified TUs compile;163 whole COFF diagnostics reject162 sizes,
+  one Pulse structural match accepted separately through canonical replay. No
+  prefix, solved anchor, raw byte template, assembly or fake owner accepted.
+- Original vtables independently identify missing Converging45C360/2884/768 and
+  Wavering467430/993/277. All17/18 direct branches stay within instruction
+  boundaries. Ghidra has no containing functions;4673F0 is deleting destructor.
+  Six holes in sample/factory/color heads independently decoded as internal JMP.
+- Real Effect13044 owner:CallbackOwner/files6/Worker28/ready38/handles1024at3C/
+  requests1024at103C/view1303C/context13040. Native table5AFAB8 owns15 records
+  plus8 terminator bytes; source's full16th record crosses unrelated pointers.
+  Ten six-slot callback vtables checked; resource/thread/allocator/EH graph open.
+- Special ControllerB4/list24/Timers18/28/Float38/Byte64/Float84/activeB0 and
+  Entry34/typed handles14/18. Raw source aggregates/casts differ. Active returns
+  raw unsigned byte, sourcebool converts. List constructor duplicate tail write
+  unresolved; no fabricated owner solely for getter or tiny thunk credit.
+- Special free order differs; fixture only records release. Text checks length,
+  not content; parameter padding masked and SpawnParameters zero-fill overridden.
+  Collection native callable captures Entry*, source free Env boundary differs.
+- Retained Special116736/0 hashes32current/2stale, Spiral69120/0 189/15 with old
+  shared digest, Additional357860/0 current389/389. Shared Sprite2915831 binds
+  current389; Effect485796 subtotal266 groups overlaps retained module totals.
+  Post-execution evidence writers and native Windows CPU were not run.
+- Detailed family review, original ABI/boundaries, report limits and current
+  validation: REFERENCE_EFFECT_SPECIAL_REVIEW.md. Exhaustive goal remains active.
+
 ## REF-026 — 2026-10-07
 
 - Title 803 entries: 66 nonexact / 737 support, each body-hash bound. Global

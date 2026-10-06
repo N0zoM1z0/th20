@@ -445,7 +445,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004141C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004142A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004142A0,unknown,EffectParameters,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004142C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004142E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -662,13 +662,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041DE30,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041DE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DE90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041DE90,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x0041DEB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DEF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DF10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DF30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DF50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041DF50,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x0041DF70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DF90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DFB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -982,7 +982,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00438940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00438A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00438A70,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00438A90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438AE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1005,18 +1005,18 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004392D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004393D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004393D0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004393F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439440,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439460,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004394B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004394D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004394D0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004394F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00439550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00439550,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004395B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004395D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1141,7 +1141,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00447940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004479E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004479E0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00447A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1724,7 +1724,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00461690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004616E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00461730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00461840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00461840,unknown,EffectParameters,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00461860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00461880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004618C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2245,7 +2245,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047B850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047B880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047B8A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0047BA30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0047BA30,unknown,EffectParameters,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x0047BAA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047BB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047BB90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2777,7 +2777,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0049CCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CD70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CDD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0049CE30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0049CE30,unknown,EffectParameters,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x0049CE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CF60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CF80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5023,7 +5023,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00511870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00511900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00511910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00511930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00511930,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00511980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005119E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00511A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5064,12 +5064,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00513F70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00514080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005140B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00514110,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00514110,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00514130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00514150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00514150,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00514170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005141C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005141E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005141C0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
+0x005141E0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00514240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00514260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005142B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -25,6 +25,7 @@
 void check_scene_resource_protocol();
 void check_cursor_history();
 void check_replay_records();
+void check_effect_values();
 
 namespace {
 unsigned callback_calls;
@@ -55,6 +56,7 @@ int main() {
     check_scene_resource_protocol();
     check_cursor_history();
     check_replay_records();
+    check_effect_values();
     th20::trophy_text::Message message;
     std::memset(&message, 0xa5, sizeof(message));
     message.reset();

@@ -1278,3 +1278,185 @@ symbol = "?available@PracticeScore@th20@@QBE_NXZ"
 target_address = 0x0052CA30
 size = 55
 relocations = []
+
+[units.packed_color_construct]
+source = "src/EffectParameters.cpp"
+object = "build/EffectParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PackedColor::PackedColor"]
+symbol = "??0PackedColor@th20@@QAE@I@Z"
+target_address = 0x004142A0
+size = 24
+relocations = []
+
+[units.effect_parameters_construct]
+source = "src/EffectParameters.cpp"
+object = "build/EffectParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EffectParameters::EffectParameters"]
+symbol = "??0EffectParameters@th20@@QAE@XZ"
+target_address = 0x0047BA30
+size = 106
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x18, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x41, type = "REL32", symbol = "??0PackedColor@th20@@QAE@I@Z", target = 0x004142A0 },
+  { offset = 0x5E, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.effect_request_construct]
+source = "src/EffectParameters.cpp"
+object = "build/EffectParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EffectRequest::EffectRequest"]
+symbol = "??0EffectRequest@th20@@QAE@XZ"
+target_address = 0x0049CE30
+size = 65
+relocations = [
+  { offset = 0x35, type = "REL32", symbol = "??0EffectParameters@th20@@QAE@XZ", target = 0x0047BA30 },
+]
+
+[units.byte_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<std::uint8_t>::Interpolation"]
+symbol = "??0?$Interpolation@E@th20@@QAE@XZ"
+target_address = 0x00511930
+size = 79
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+[units.byte_interpolation_set_duration]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<std::uint8_t>::set_duration"]
+symbol = "?set_duration@?$Interpolation@E@th20@@QAEXH@Z"
+target_address = 0x0041DE90
+size = 22
+relocations = []
+
+[units.byte_interpolation_set_mode]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<std::uint8_t>::set_mode"]
+symbol = "?set_mode@?$Interpolation@E@th20@@QAEHH@Z"
+target_address = 0x005141C0
+size = 25
+relocations = []
+
+[units.byte_interpolation_set_start]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<std::uint8_t>::set_start"]
+symbol = "?set_start@?$Interpolation@E@th20@@QAEXABE@Z"
+target_address = 0x00514150
+size = 23
+relocations = []
+
+[units.byte_interpolation_set_end]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<std::uint8_t>::set_end"]
+symbol = "?set_end@?$Interpolation@E@th20@@QAEXABE@Z"
+target_address = 0x00514110
+size = 24
+relocations = []
+
+[units.byte_interpolation_begin]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<std::uint8_t>::begin"]
+symbol = "?begin@?$Interpolation@E@th20@@QAEXHHABE0@Z"
+target_address = 0x005141E0
+size = 87
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "?set_duration@?$Interpolation@E@th20@@QAEXH@Z", target = 0x0041DE90 },
+  { offset = 0x1B, type = "REL32", symbol = "?set_mode@?$Interpolation@E@th20@@QAEHH@Z", target = 0x005141C0 },
+  { offset = 0x27, type = "REL32", symbol = "?set_start@?$Interpolation@E@th20@@QAEXABE@Z", target = 0x00514150 },
+  { offset = 0x33, type = "REL32", symbol = "?set_end@?$Interpolation@E@th20@@QAEXABE@Z", target = 0x00514110 },
+  { offset = 0x4C, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]
+
+[units.float_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<float>::Interpolation"]
+symbol = "??0?$Interpolation@M@th20@@QAE@XZ"
+target_address = 0x004479E0
+size = 99
+relocations = [
+  { offset = 0x44, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+[units.float_interpolation_set_duration]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<float>::set_duration"]
+symbol = "?set_duration@?$Interpolation@M@th20@@QAEXH@Z"
+target_address = 0x0041DF50
+size = 22
+relocations = []
+
+[units.float_interpolation_set_mode]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<float>::set_mode"]
+symbol = "?set_mode@?$Interpolation@M@th20@@QAEHH@Z"
+target_address = 0x004394D0
+size = 25
+relocations = []
+
+[units.float_interpolation_set_start]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<float>::set_start"]
+symbol = "?set_start@?$Interpolation@M@th20@@QAEXABM@Z"
+target_address = 0x004393D0
+size = 23
+relocations = []
+
+[units.float_interpolation_set_end]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<float>::set_end"]
+symbol = "?set_end@?$Interpolation@M@th20@@QAEXABM@Z"
+target_address = 0x00438A70
+size = 24
+relocations = []
+
+[units.float_interpolation_begin]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<float>::begin"]
+symbol = "?begin@?$Interpolation@M@th20@@QAEXHHABM0@Z"
+target_address = 0x00439550
+size = 86
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "?set_duration@?$Interpolation@M@th20@@QAEXH@Z", target = 0x0041DF50 },
+  { offset = 0x1B, type = "REL32", symbol = "?set_mode@?$Interpolation@M@th20@@QAEHH@Z", target = 0x004394D0 },
+  { offset = 0x27, type = "REL32", symbol = "?set_start@?$Interpolation@M@th20@@QAEXABM@Z", target = 0x004393D0 },
+  { offset = 0x33, type = "REL32", symbol = "?set_end@?$Interpolation@M@th20@@QAEXABM@Z", target = 0x00438A70 },
+  { offset = 0x4B, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]
+[units.selection_pulse_construct]
+source = "src/EffectParameters.cpp"
+object = "build/EffectParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::SelectionPulse::SelectionPulse"]
+symbol = "??0SelectionPulse@th20@@QAE@XZ"
+target_address = 0x00461840
+size = 31
+relocations = []
