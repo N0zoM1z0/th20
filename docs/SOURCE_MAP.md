@@ -4,6 +4,7 @@
 | --- | --- | --- | --- |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
 | Timer | src/Timer.hpp, src/Timer.cpp | reset/set/mode, add 0x004530F0, tick 0x004533B0 | Five complete exact functions |
+| FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50 | Exact four-byte float view; enclosing owner and origin pending |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
@@ -13,8 +14,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns three objects and one canonical profile per source.
-Nine units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns four objects and one canonical profile per source.
+Twenty units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 `probes/` remains infrastructure-only. Production currently builds objects for

@@ -1,12 +1,20 @@
 #include "Random.hpp"
 #include "Timer.hpp"
 #include "ClockScalar.hpp"
+#include "FunctionChain.hpp"
 
 #include <array>
 #include <bit>
 #include <cassert>
 #include <cstdint>
 #include <limits>
+
+namespace {
+unsigned callback_calls;
+std::int32_t callback_a(void*) { ++callback_calls; return 1; }
+std::int32_t callback_b(void*) { ++callback_calls; return 2; }
+std::int32_t callback_c(void*) { ++callback_calls; return 3; }
+}
 
 int main() {
     // Independent division-based oracle, including states outside normal seeds.
@@ -90,4 +98,50 @@ int main() {
     assert(uninitialized.tick() == 1 && uninitialized.current_fraction == 1.0f);
     assert(uninitialized.previous == 0 && uninitialized.flags == 0xfffffff9u);
     th20::timer_clock_sources[0] = &th20::default_timer_clock;
+
+    int context = 22;
+    for (std::uint32_t flags = 0; flags != 256; ++flags) {
+        th20::FunctionChainNode node{0, 0, nullptr, nullptr, nullptr,
+                                    th20::FunctionChainLink{}, nullptr};
+        th20::FunctionChainLink link{&node};
+        assert(link.node == &node && link.next == nullptr && link.previous == nullptr);
+        assert(link.owner == nullptr && link.iterator == nullptr);
+        node.priority = -31;
+        node.flags = flags;
+        node.link.node = &node;
+        node.link.next = &node.link;
+        node.link.previous = &node.link;
+        node.set_userdata(&context);
+        node.set_before_insert(callback_b);
+        node.set_shutdown_callback(callback_c);
+        assert(node.before_insert == callback_b && node.on_shutdown == callback_c);
+        node.set_callback(callback_a);
+        assert(node.callback == callback_a && node.before_insert == nullptr && node.on_shutdown == nullptr);
+        node.set_before_insert(callback_b);
+        node.set_shutdown_callback(callback_c);
+        node.clear_callbacks();
+        assert(node.callback == nullptr && node.before_insert == nullptr && node.on_shutdown == nullptr);
+        node.set_owned();
+        assert(node.flags == (flags | 1u));
+        node.enable();
+        assert(node.flags == (flags | 3u));
+        node.disable();
+        assert(node.flags == ((flags | 1u) & ~2u));
+        assert(node.priority == -31 && node.userdata == &context);
+        assert(node.link.node == &node && node.link.next == &node.link && node.link.previous == &node.link);
+    }
+    assert(callback_calls == 0); // Setters never invoke or dispatch a callback.
+
+    th20::FunctionChainLink first, middle, last;
+    first.insert_after(&last);
+    assert(first.next == &last && last.previous == &first && last.next == nullptr);
+    last.insert_before(&middle);
+    assert(first.next == &middle && middle.previous == &first);
+    assert(middle.next == &last && last.previous == &middle);
+    assert(first.previous == nullptr && last.next == nullptr);
+    assert(middle.owner == nullptr && last.owner == nullptr);
+    th20::FunctionChainLink before_first;
+    first.insert_before(&before_first);
+    assert(before_first.next == &first && first.previous == &before_first);
+    assert(before_first.previous == nullptr);
 }

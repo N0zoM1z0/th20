@@ -116,3 +116,113 @@ relocations = [
   { offset = 0xDD, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
   { offset = 0x12E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC }
 ]
+
+[units.chain_set_callback]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::set_callback"]
+symbol = "?set_callback@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z"
+target_address = 0x00412D50
+size = 42
+relocations = []
+
+[units.chain_set_userdata]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::set_userdata"]
+symbol = "?set_userdata@FunctionChainNode@th20@@QAEXPAX@Z"
+target_address = 0x00412D10
+size = 22
+relocations = []
+
+[units.chain_set_owned]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::set_owned"]
+symbol = "?set_owned@FunctionChainNode@th20@@QAEXXZ"
+target_address = 0x00412D30
+size = 26
+relocations = []
+
+[units.chain_enable]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::enable"]
+symbol = "?enable@FunctionChainNode@th20@@QAEXXZ"
+target_address = 0x00412D80
+size = 26
+relocations = []
+
+[units.chain_disable]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::disable"]
+symbol = "?disable@FunctionChainNode@th20@@QAEXXZ"
+target_address = 0x004127F0
+size = 26
+relocations = []
+
+[units.chain_set_before_insert]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::set_before_insert"]
+symbol = "?set_before_insert@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z"
+target_address = 0x00412DC0
+size = 22
+relocations = []
+
+[units.chain_set_shutdown_callback]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::set_shutdown_callback"]
+symbol = "?set_shutdown_callback@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z"
+target_address = 0x00412DA0
+size = 22
+relocations = []
+
+[units.chain_clear_callbacks]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainNode::clear_callbacks"]
+symbol = "?clear_callbacks@FunctionChainNode@th20@@QAEXXZ"
+target_address = 0x00411B80
+size = 41
+relocations = []
+
+[units.chain_link_construct]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainLink::FunctionChainLink"]
+symbol = "??0FunctionChainLink@th20@@QAE@PAUFunctionChainNode@1@@Z"
+target_address = 0x00411970
+size = 64
+relocations = []
+
+[units.chain_insert_after]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainLink::insert_after"]
+symbol = "?insert_after@FunctionChainLink@th20@@QAEXPAU12@@Z"
+target_address = 0x00411EE0
+size = 76
+relocations = []
+
+[units.chain_insert_before]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::FunctionChainLink::insert_before"]
+symbol = "?insert_before@FunctionChainLink@th20@@QAEXPAU12@@Z"
+target_address = 0x00411F30
+size = 76
+relocations = []

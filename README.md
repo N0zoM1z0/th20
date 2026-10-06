@@ -1,6 +1,13 @@
 # 東方錦上京 ～ Fossilized Wonders.
 
 <p align="center">
+  <img
+    src="resources/title-screen.png"
+    width="640"
+    alt="Original Japanese TH20 title screen">
+</p>
+
+<p align="center">
   <img src="resources/progress.svg" alt="TH20 exact source reconstruction progress">
 </p>
 
@@ -46,8 +53,8 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | Nine mapped component functions in Random.cpp, Timer.cpp and ClockScalar.cpp |
-| Authored exactness | Five Timer functions, 788 bytes |
+| Source | Twenty mapped component functions across Random, Timer, ClockScalar and FunctionChain |
+| Authored exactness | Sixteen Timer/FunctionChain functions, 1,231 bytes |
 | Library comparisons | Two MSVC minstd_rand equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Two exact comparisons; enclosing owner and origin review remain open |
 | Whole-program build and runtime | Not available |
@@ -117,6 +124,7 @@ does not complete its function reviews.
 - [Semantic reconstruction policy](docs/SEMANTIC_RECONSTRUCTION.md)
 - [Reference review](docs/REFERENCE_REVIEW.md)
 - [Function-by-function reference review](docs/REFERENCE_FUNCTION_REVIEW.md)
+- [Runtime unlimited-lives launcher](docs/RUNTIME_PATCH.md)
 - [Verified knowledge base](docs/KNOWLEDGE_BASE.md)
 - [Roadmap](docs/ROADMAP.md)
 - [Generated progress](docs/PROGRESS.md)

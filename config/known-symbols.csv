@@ -9,3 +9,14 @@ address,name,module,confidence,evidence
 0x004530F0,th20::Timer::add,Timer,high,REF-002
 0x004533B0,th20::Timer::tick,Timer,high,REF-002
 0x00542E90,__aullshr,CRT,high,REF-001
+0x00411970,th20::FunctionChainLink::FunctionChainLink,FunctionChain,high,REF-002
+0x00412D50,th20::FunctionChainNode::set_callback,FunctionChain,high,REF-002
+0x00412D10,th20::FunctionChainNode::set_userdata,FunctionChain,high,REF-002
+0x00412D30,th20::FunctionChainNode::set_owned,FunctionChain,high,REF-002
+0x00412D80,th20::FunctionChainNode::enable,FunctionChain,high,REF-002
+0x004127F0,th20::FunctionChainNode::disable,FunctionChain,high,REF-002
+0x00412DC0,th20::FunctionChainNode::set_before_insert,FunctionChain,high,REF-002
+0x00412DA0,th20::FunctionChainNode::set_shutdown_callback,FunctionChain,high,REF-002
+0x00411B80,th20::FunctionChainNode::clear_callbacks,FunctionChain,high,REF-002
+0x00411EE0,th20::FunctionChainLink::insert_after,FunctionChain,high,REF-002
+0x00411F30,th20::FunctionChainLink::insert_before,FunctionChain,high,REF-002

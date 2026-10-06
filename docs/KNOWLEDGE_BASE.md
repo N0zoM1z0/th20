@@ -1,5 +1,32 @@
 # Verified facts and open hypotheses
 
+## REF-002 — 2026-10-06
+
+- Review coverage: 6,708 explicit nongenerated definitions in 916 C/C++ files;
+  104 parser-gap files still require manual reconciliation. Fifty-nine bodies
+  have individual hash-bound outcomes; remaining bodies are unreviewed.
+- Compiler-observed: natural Timer two-bit assignment matches all 38 bytes.
+  Add/tick match 295/324 bytes with separately established receiver helpers,
+  default slot 0x5AEFE0, float 1.0 storage 0x5AEFE4, and threshold constants
+  0x56E72C/0x56E730. Only the observed default pointer slot is declared.
+- Semantically checked: tick's near-one/null path advances integer and float
+  independently; strict 0.99/1.01 endpoints scale. Receiver float helpers
+  match 16/35 bytes, but their enclosing owner/origin remains unknown.
+- Independently observed: dispatch stack argument/caller cleanup/EAX result
+  establishes cdecl int32(void*) callbacks. Link consumers establish the five
+  pointer slots. Eleven clean FunctionChain members replay all 443 bytes.
+- Shared pointer-store addresses 0x412DA0/0x412DC0 have multiple receiver views;
+  exact credit counts each original address once and does not prove a unique
+  class owner. Iterator/allocator/List base/EH protocols remain deferred with
+  individual notes in reference-function-reviews.csv.
+- Cold replay: twenty complete units, four objects, 1,450 bytes; authored
+  exactness is sixteen functions, 1,231 bytes. Library and unknown-origin
+  comparisons remain outside authored credit.
+- User-requested play aid: death's immediate at RVA 0xF849D changes -1 to 0;
+  original 0x4E1250 adds it to life stock +0xB8. Windows ASLR launch, readback
+  and repeated attach pass; on-disk target hash is unchanged. Full gameplay
+  hit/respawn validation and reconstruction runtime credit are not claimed.
+
 ## REF-001 — 2026-10-06
 
 - Observed: reference commit 011aa029d1dac51578107bc98a0006bd750e453c uses

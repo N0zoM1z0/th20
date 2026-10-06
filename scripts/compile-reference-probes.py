@@ -8,7 +8,7 @@ from pathlib import Path
 import subprocess
 import sys
 
-from project import ROOT, attest_compiler, digest, load_manifest, verified_target
+from project import ROOT, attest_compiler, digest, load_manifest, verified_target, verify_build_receipt
 
 PROFILE = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy",
            "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/utf-8", "/MT"]
@@ -52,12 +52,20 @@ def main():
                         file_sha256=row["file_sha256"], profile=profile,
                         compiler_sha256=compiler["files"]["bin/HostX64/x86/cl.exe"],
                         target_sha256=pin["target_sha256"])
+        object_path = ROOT / "build/reference-probes" / f"{key}.obj"
         if args.resume and report.exists():
             old = json.loads(report.read_text())
-            if all(old.get(field) == value for field, value in identity.items()):
-                print(f"[{index}/{len(files)}] cached {old['result']}: {relative}", flush=True)
-                continue
-        object_path = ROOT / "build/reference-probes" / f"{key}.obj"
+            if old.get("result") == "compiled" and all(old.get(field) == value for field, value in identity.items()):
+                try:
+                    if digest(object_path) != old.get("object_sha256") or digest(object_path.with_suffix(".receipt.json")) != old.get("receipt_sha256"):
+                        raise ValueError("cached object/receipt digest differs")
+                    verify_build_receipt(dict(object=str(object_path.relative_to(ROOT)),
+                                              source=str(source.relative_to(ROOT)), profile=profile))
+                except (OSError, ValueError, KeyError):
+                    pass  # Retry missing/stale objects, headers and receipts.
+                else:
+                    print(f"[{index}/{len(files)}] cached compiled: {relative}", flush=True)
+                    continue
         command = [str(ROOT / "scripts/compile-probe.sh"), str(source), str(object_path), *profile]
         with (output / f"{key}.log").open("w") as log:
             process = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)

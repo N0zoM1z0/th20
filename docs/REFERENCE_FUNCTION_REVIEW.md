@@ -29,8 +29,8 @@ reference source bytes are never edited.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 24 native-core/export bodies have explicit decisions. The remaining
-implementations and parse gaps are still pending.
+The first 59 native-core/export/scheduler bodies have explicit decisions.
+The remaining 6,649 indexed bodies and parse gaps are still pending.
 
 ## Native core: accepted components
 
@@ -47,8 +47,8 @@ are distinguished from the original ECX receiver ABI.
 | 0x00452F50 | 35 | ClockScalar::operator* | Passed | Origin pending |
 
 Existing Random and Timer reset/set units still pass. Current cold replay is
-nine complete units, 1,007 bytes, three independently rebuilt objects.
-Authored Timer credit is five functions, 788 bytes. RNG is excluded as STL;
+twenty complete units, 1,450 bytes, four independently rebuilt objects.
+Authored Timer/FunctionChain credit is sixteen functions, 1,231 bytes. RNG is excluded as STL;
 the two shared float-view functions remain under origin review and are not
 added to authored totals. Exact names do not establish an enclosing clock or
 interpolation type.
@@ -95,6 +95,55 @@ The 0x00423520 forwarding entry is independently inspected (26 bytes, 174
 callers). Its enclosing declaration/origin remains a follow-up, rather than
 inventing a constructor or return contract to gain another match.
 
+## Scheduler: all 35 indexed implementation bodies reviewed
+
+Every definition in scheduler.cpp and scheduler.hpp has an individual
+body-hash-bound outcome: eleven absorbed exact, eighteen reviewed nonexact,
+and six integration/support helpers. Tests and callers in other files still
+need their own review; this is not a module-wide completion claim.
+
+| Maintained contribution | Original entry | Complete bytes |
+| --- | --- | ---: |
+| Link constructor | 0x00411970 | 64 |
+| Link::insert_after | 0x00411EE0 | 76 |
+| Link::insert_before | 0x00411F30 | 76 |
+| Node::set_callback | 0x00412D50 | 42 |
+| Node::set_userdata | 0x00412D10 | 22 |
+| Node::set_owned | 0x00412D30 | 26 |
+| Node::enable | 0x00412D80 | 26 |
+| Node::disable | 0x004127F0 | 26 |
+| Node::set_before_insert | 0x00412DC0 | 22 |
+| Node::set_shutdown_callback | 0x00412DA0 | 22 |
+| Node::clear_callbacks | 0x00411B80 | 41 |
+
+All eleven pass complete canonical replay with no relocations: 443 authored
+bytes. Target node construction and link consumers independently establish
+five Link pointer slots and 20/44-byte x86 Link/Node storage. Dispatch's
+indirect calls pass userdata on the stack, clean four bytes in the caller,
+and inspect EAX, establishing cdecl int32(void*) callback ABI. The /Gd profile
+states that calling convention explicitly. Portable tests check flag masking,
+callback clearing without invocation, link initialization, neighbor insertion
+and null-end branches.
+
+The pointer stores at 0x00412DA0/0x00412DC0 also serve equivalent Link
+observer/owner accessors. Each original address receives credit once; shared
+emission does not establish a unique Node owner. List/Iterator allocation,
+construction and destruction are not inferred from matching setters.
+
+Deferred cases have individual reasons in reference-function-reviews.csv.
+Examples include Iterator construction's two original stack arguments versus
+one reference argument; Node/Iterator FS/EH registration missing from free
+initializers; the List/base constructor's two tail stores; allocator/debug
+owner indirection; merged update/draw APIs with extra Environment/bool
+arguments; original separate accessor calls; and shutdown's missing renderer
+flush at 0x004D9E30. These are current direct-absorption limits, not proofs that
+future natural reconstruction is impossible. No padding, inert stores or
+invented signatures were added to force them.
+
+Private independent evidence is in .analysis/ref002-scheduler-{leaves,links,
+dispatch,remaining}.* and exact-replay-004.log. Reference TU compilation is
+only diagnostic; no behavior claim is inherited from its passing tests.
+
 ## Compiler diagnostics and remaining work
 
 `compile-reference-probes.py` compiles unmodified reference translation units
@@ -106,11 +155,13 @@ macros are reconciled before interpreting compiler errors.
 
 Initial scheduler/archive/runtime probes found the runtime CMake dependency on
 the scheduler include directory and archive-verifier hash macros. The diagnostic
-recipe now supplies the scheduler include. The standalone verifier needs its
+recipe now supplies the scheduler include. Cached probes verify the object,
+receipt, all source fingerprints and included headers; stale entries and failed
+compilations are retried rather than being accepted by source hash alone. The standalone verifier needs its
 declared CMake definitions; that build issue carries no algorithm conclusion.
 
-Next: individually review the scheduler's constructors, links, iterator repair,
-callback mutation and dispatch entries, then runtime and archive ownership.
+Next: individually review runtime and archive ownership, then every remaining
+implementation. Deferred scheduler owner/EH recovery is recorded separately.
 Continue through every indexed implementation; investigate and record hard
 cases without stalling or marking untouched bodies as reviewed.
 
