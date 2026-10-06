@@ -744,9 +744,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00422B80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00422B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00422BC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00422C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00422C30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00422C50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00422C00,library,GameRandom,exclude,high,REF-008; Installed MSVC standard engine implementation independently corroborates library origin; excluded from authored credit
+0x00422C30,library,GameRandom,exclude,high,REF-008; Installed MSVC standard engine implementation independently corroborates library origin; excluded from authored credit
+0x00422C50,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x00422CB0,library,Random,exclude,high,REF-001
 0x00422D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00422D90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -769,7 +769,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00423650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423BD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423BF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00423EA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00423EA0,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x00423EE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423F50,authored,Timer,authored,high,REF-001
 0x00423F80,authored,Timer,authored,high,REF-001
@@ -893,7 +893,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00429210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004292A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004292A0,unknown,ClockScalar,review,pending,REF-008; Shared float wrapper; explicit authored versus generic/template origin remains pending
 0x004292C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004292E0,unknown,ClockScalar,review,unknown,REF-002
 0x004292F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -916,9 +916,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004297A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004297D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429830,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x004298B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004298E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004298E0,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x00429970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429990,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004299B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

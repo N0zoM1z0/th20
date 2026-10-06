@@ -744,9 +744,9 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00422B80,10,0x00422B89,FUN_00422b80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00422B90,46,0x00422BBD,FUN_00422b90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00422BC0,51,0x00422BF2,FUN_00422bc0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00422C00,36,0x00422C23,FUN_00422c00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00422C30,29,0x00422C4C,std::locale::locale,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00422C50,85,0x00422CA4,FUN_00422c50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00422C00,36,0x00422C23,FUN_00422c00,"std::_Get_linear_congruential_seed<uint32_t,0,2147483647>",GameRandom,reconstructed,100.00,__cdecl,"std::_Get_linear_congruential_seed<uint32_t,0,2147483647>",false,src/GameRandom.cpp,REF-008; docs/REFERENCE_FUNCTION_REVIEW.md,library,Complete canonical exact replay; Installed MSVC standard engine implementation independently corroborates library origin; excluded from authored credit
+0x00422C30,29,0x00422C4C,std::locale::locale,th20::GameRandomEngine::GameRandomEngine,GameRandom,reconstructed,100.00,__thiscall,th20::GameRandomEngine::GameRandomEngine,false,src/GameRandom.cpp,REF-008; docs/REFERENCE_FUNCTION_REVIEW.md,library,Complete canonical exact replay; Installed MSVC standard engine implementation independently corroborates library origin; excluded from authored credit
+0x00422C50,85,0x00422CA4,FUN_00422c50,th20::GameRandom::GameRandom,GameRandom,matching,100.00,__thiscall,th20::GameRandom::GameRandom,false,src/GameRandom.cpp,REF-008; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x00422CB0,133,0x00422D34,FUN_00422cb0,th20::random_step,Random,excluded,0.00,__cdecl,uint32_t random_step(uint32_t),false,src/Random.cpp,REF-001; docs/REFERENCE_REVIEW.md,library,MSVC STL minstd_rand transition equivalent; exact replay excluded from authored totals
 0x00422D40,67,0x00422D82,FUN_00422d40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00422D90,54,0x00422DC5,FUN_00422d90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -769,7 +769,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00423650,1407,0x00423BCE,FUN_00423650,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423BD0,17,0x00423BE0,FUN_00423bd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423BF0,637,0x00423E6C,FUN_00423bf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00423EA0,49,0x00423ED0,FUN_00423ea0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00423EA0,49,0x00423ED0,FUN_00423ea0,th20::GameRandom::bounded,GameRandom,matching,100.00,__thiscall,th20::GameRandom::bounded,false,src/GameRandom.cpp,REF-008; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x00423EE0,99,0x00423F42,FUN_00423ee0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423F50,41,0x00423F78,FUN_00423f50,th20::Timer::reset,Timer,matching,100.00,__thiscall,void Timer::reset(),false,src/Timer.cpp,REF-001; docs/REFERENCE_REVIEW.md,authored,41-byte complete COFF function; all bytes exact
 0x00423F80,90,0x00423FD9,FUN_00423f80,th20::Timer::set,Timer,matching,100.00,__thiscall,void Timer::set(int32_t),false,src/Timer.cpp,REF-001; docs/REFERENCE_REVIEW.md,authored,90-byte complete COFF function; both independently anchored calls exact
@@ -893,7 +893,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00429210,50,0x00429241,FUN_00429210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00429250,41,0x00429278,FUN_00429250,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00429280,29,0x0042929C,FUN_00429280,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004292A0,25,0x004292B8,FUN_004292a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004292A0,25,0x004292B8,FUN_004292a0,th20::ClockScalar::set,ClockScalar,reconstructed,100.00,__thiscall,th20::ClockScalar::set,false,src/ClockScalar.cpp,REF-008; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,Complete canonical exact replay; Shared float wrapper; explicit authored versus generic/template origin remains pending
 0x004292C0,21,0x004292D4,FUN_004292c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004292E0,16,0x004292EF,FUN_004292e0,th20::ClockScalar::operator float,ClockScalar,reconstructed,0.00,__thiscall,ClockScalar::operator float() const,false,src/ClockScalar.cpp,REF-002; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,Complete canonical exact replay; authored origin pending for the shared float view
 0x004292F0,80,0x0042933F,FUN_004292f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -916,9 +916,9 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004297A0,33,0x004297C0,FUN_004297a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004297D0,45,0x004297FC,FUN_004297d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00429800,44,0x0042982B,FUN_00429800,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00429830,113,0x004298A0,FUN_00429830,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00429830,113,0x004298A0,FUN_00429830,th20::GameRandom::unit,GameRandom,matching,100.00,__thiscall,th20::GameRandom::unit,false,src/GameRandom.cpp,REF-008; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x004298B0,44,0x004298DB,FUN_004298b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004298E0,129,0x00429960,FUN_004298e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004298E0,129,0x00429960,FUN_004298e0,th20::GameRandom::signed_unit,GameRandom,matching,100.00,__thiscall,th20::GameRandom::signed_unit,false,src/GameRandom.cpp,REF-008; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x00429970,21,0x00429984,FUN_00429970,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00429990,21,0x004299A4,FUN_00429990,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004299B0,21,0x004299C4,FUN_004299b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

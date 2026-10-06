@@ -38,3 +38,10 @@ th20::InputButtonState::update
 th20::ConfigurationFlags::ConfigurationFlags
 th20::InputBindingSlots::InputBindingSlots
 th20::InputBindings::InputBindings
+th20::ClockScalar::set
+th20::GameRandom::GameRandom
+th20::GameRandom::bounded
+th20::GameRandom::unit
+th20::GameRandom::signed_unit
+th20::GameRandomEngine::GameRandomEngine
+"std::_Get_linear_congruential_seed<uint32_t,0,2147483647>"

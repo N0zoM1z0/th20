@@ -47,6 +47,11 @@ def main():
         if digest(source) != row["file_sha256"]:
             raise ValueError(f"reference source inventory is stale: {relative}")
         profile = list(include_profile)
+        if relative.startswith("source_reconstruction/runtime_state/"):
+            # runtime_state links ecl_vm, whose PUBLIC include directories and
+            # binary dependency propagate through the reviewed CMake recipes.
+            for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
+                profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
         if relative == "source_reconstruction/archive/verify.cpp":
             # These string macros are declared by archive/CMakeLists.txt;
             # preserve the recipe instead of editing unmodified reference code.

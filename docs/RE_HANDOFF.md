@@ -1,5 +1,36 @@
 # Current reconstruction handoff
 
+## REF-008 — 2026-10-06 — runtime-state review checkpoint
+
+The exhaustive goal remains active. All 27 runtime-state definitions in six
+files have individual decisions: five absorbed exact, one library exact,
+seven native deferred and fourteen support. Current decisions435; pending
+6,271 of6,706. Parser gaps remain six reconciled/97 pending out of103.
+
+- Added real28-byte GameRandom owner with actual uint32 standard engine at+4.
+  Constructor85, bounded49 and float wrappers113/129 add376 authored bytes.
+  Engine constructor29/normalization36 are complete library units, excluded;
+  original float receiver setter25 is exact with origin pending.
+- Cold complete replay: 47/47 units, twelve objects, 3,654 full compared bytes.
+  Authored exact35/3,043; source-present mappings47. Original fixed-global
+  next/seed locking remains undefined; do not claim linked sampling.
+- Independent startup callers establish four global addresses/ids. Standard
+  random header establishes library origin; constants/callees queried before
+  canonical anchors. Natural uint32 float casts recover full original emission.
+- Portable tests cover defaults/edge seeds, zero/count sampling, high-bit and
+  near2^24 conversion, unclamped signed output and scalar bit preservation.
+  Deterministic test-only next fixture does not implement native lock protocol.
+- All motion/source/oracle bodies read and specific ABI/helper/FP differences
+  recorded; native bounds is int, source bool. Real Motion owner/helper/table
+  work remains open, including its small combined-update member.
+- Two production TUs compile after restoring dependency-propagated include
+  paths in the diagnostic recipe. Both retained reports reviewed, not rerun;
+  their manufactured startup/FP state and unguarded output paths are recorded.
+
+Next coherent family: program_entry's 26 definitions, followed by every
+remaining implementation and manual parser gap. Private evidence:
+`.analysis/ref008-*` and compiler receipts. Earlier totals below are historical.
+
 ## REF-007 — 2026-10-06 — platform-services review checkpoint
 
 The exhaustive goal remains active. All 43 actual definitions in ten platform

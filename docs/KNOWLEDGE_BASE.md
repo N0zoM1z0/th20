@@ -1,5 +1,41 @@
 # Verified facts and open hypotheses
 
+## REF-008 — 2026-10-06
+
+- Individually reviewed: all27 runtime-state bodies, including eight oracle
+  helpers. Current terminal435/pending6,271; gap files six reconciled/97 pending.
+- Independent target: RNG28 bytes embeds standard engine+4, modulus+16,
+  raw last+20, id+24. Constructor85 calls default engine29; independently
+  read standard header and helper36 establish STL normalization. Four startup
+  callers at401100/401120/401140/401160 pass1/0/3/2 to observed global owners.
+  Ghidra's locale label for422C30 is incorrect; no database name mutation.
+- Compiler/canonical: constructor85, bounded49, unit113 and signed_unit129
+  are authored; default engine29/normalizer36 library excluded; scalar setter25
+  pending origin. Full cold47/47, twelve objects, 3,654 bytes; authored35/3,043.
+- Independent data:56CDD0 binary64{0,2^32},56C8CC binary32=1 and56C8D0=2.
+  Natural unsigned float casts emit staged correction; explicit double casts
+  did not match. Signed sampler denominator modulus/2-1 is not clamped.
+- Independent ABI:4292A0 receives float receiver/one float/RET4; original
+  caller4E58E3 supplies5AEFE4. Source free global setter is an adapter.
+- Open protocol: native seed/next use fixed lock10, tracked guard/cookie and
+  actual standard-engine methods. Source reference aggregate/mutex/domain_error
+  is not exact zero-modulus or original global/thread lifetime. Maintained next
+  remains undefined; portable wrapper tests use an explicit observation fixture.
+- Independent motion: flag bit5 suppresses both phases, low nibble selects
+  modes; mode3 preserves two bounded normalizations, mode4 reads rate after
+  sine. Unsupported modes still floor; native floor calls float helper4592B0.
+  Bounds47A400 returns int0/1, uses strict JA and RET16; source bool/free ABI
+  and raw-angle/by-value vector partition remain deferred.
+- Support limits: retained RNG164,000 and motion41,984 checks not rerun.
+  Both bypass entry/TLS; RNG manufactures recursive lock, motion forces feature
+  global5E5288=2/SSE4.1 and nearest FP. No nonfinite trajectory/other motion FP
+  modes/cross-thread or full startup. Report output lacks input alias guards;
+  motion report lacks target-hash field though driver verifies before mapping.
+- Recipe correction: runtime_state receives ecl_vm/native_recovered/include
+  paths through reviewed CMake PUBLIC dependencies. Both unchanged TUs compile.
+
+Private evidence: `.analysis/ref008-*`.
+
 ## REF-007 — 2026-10-06
 
 - Individually reviewed: all 43 actual platform-services definitions; two

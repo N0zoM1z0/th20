@@ -7,6 +7,7 @@ namespace th20 {
 struct ClockScalar {
     float value;
 
+    void set(float input);
     operator float() const;
     float operator*(float delta) const;
 };

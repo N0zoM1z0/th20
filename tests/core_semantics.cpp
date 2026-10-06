@@ -7,6 +7,7 @@
 #include "ArchiveCrypt.hpp"
 #include "InputState.hpp"
 #include "Configuration.hpp"
+#include "GameRandom.hpp"
 
 #include <array>
 #include <bit>
@@ -18,12 +19,64 @@
 
 namespace {
 unsigned callback_calls;
+std::uint32_t random_sample;
+unsigned random_sample_calls;
 std::int32_t callback_a(void*) { ++callback_calls; return 1; }
 std::int32_t callback_b(void*) { ++callback_calls; return 2; }
 std::int32_t callback_c(void*) { ++callback_calls; return 3; }
 }
 
+// Wrapper tests supply one deterministic observation. This is not a maintained
+// implementation of the unresolved original lock-slot-10 sampling protocol.
+std::uint32_t th20::GameRandom::next() {
+    ++random_sample_calls;
+    return random_sample;
+}
+
 int main() {
+    th20::GameRandom game_random(3);
+    assert(game_random.field_00 == 0 && game_random.minimum == 0 && game_random.upper == 0x00ffff00);
+    assert(game_random.modulus == 0 && game_random.last == 0 && game_random.id == 3);
+    assert(game_random.engine == th20::GameRandomEngine(1));
+    for (std::uint32_t seed : {0u, 1u, 0x7fffffffu, 0xfffffffeu, 0xffffffffu}) {
+        game_random.engine.seed(seed);
+        const auto normalized = seed % 0x7fffffffu;
+        assert(game_random.engine() == th20::random_step(normalized ? normalized : 1));
+    }
+    random_sample = 0xffffffff;
+    random_sample_calls = 0;
+    assert(game_random.bounded(0) == 0 && random_sample_calls == 0);
+    for (std::uint32_t count : {1u, 2u, 7u, 0x80000000u, 0xffffffffu}) {
+        const auto before = random_sample_calls;
+        assert(game_random.bounded(count) == random_sample % count);
+        assert(random_sample_calls == before + 1);
+    }
+    struct Sample { std::uint32_t numerator, modulus, unit_bits, signed_bits; };
+    // Independently staged binary32 fixtures include rounding near 2^24,
+    // high-bit unsigned conversion, and the observed non-clamped signed range.
+    constexpr Sample samples[]{
+        {0x00000000u, 0x00000004u, 0x00000000u, 0xbf800000u},
+        {0x00000003u, 0x00000004u, 0x3f800000u, 0x40000000u},
+        {0x00000001u, 0x00000003u, 0x3f000000u, 0x3f800000u},
+        {0x7fffffffu, 0xffffffffu, 0x3f000000u, 0x00000000u},
+        {0x80000001u, 0x7fffffffu, 0x3f800000u, 0x3f800000u},
+        {0xfffffffeu, 0xffffffffu, 0x3f800000u, 0x3f800000u},
+        {0x01000001u, 0x01000003u, 0x3f7ffffcu, 0x3f7ffffcu},
+    };
+    for (const auto sample : samples) {
+        random_sample = sample.numerator;
+        game_random.modulus = sample.modulus;
+        const auto before = random_sample_calls;
+        assert(std::bit_cast<std::uint32_t>(game_random.unit()) == sample.unit_bits);
+        assert(std::bit_cast<std::uint32_t>(game_random.signed_unit()) == sample.signed_bits);
+        assert(random_sample_calls == before + 2);
+    }
+    for (std::uint32_t bits : {0u, 0x80000000u, 0x3f800000u, 0x7f800000u, 0x7fc12345u}) {
+        th20::ClockScalar scalar{2.0f};
+        scalar.set(std::bit_cast<float>(bits));
+        assert(std::bit_cast<std::uint32_t>(scalar.value) == bits);
+    }
+
     const th20::InputBindings bindings;
     const std::array<std::int16_t, 24> expected_bindings{
         0, 1, 2, 3, -1, -1, -1, -1,

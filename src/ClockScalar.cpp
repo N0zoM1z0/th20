@@ -5,6 +5,10 @@ namespace th20 {
 ClockScalar default_timer_clock{1.0f};
 ClockScalar* timer_clock_sources[1]{&default_timer_clock};
 
+void ClockScalar::set(float input) {
+    value = input;
+}
+
 ClockScalar::operator float() const {
     return value;
 }

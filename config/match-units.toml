@@ -463,3 +463,91 @@ relocations = [
   { offset = 0x16, type = "REL32", symbol = "??0InputBindingSlots@th20@@QAE@XZ", target = 0x0041FC50 },
   { offset = 0x21, type = "REL32", symbol = "??0InputBindingSlots@th20@@QAE@XZ", target = 0x0041FC50 },
 ]
+
+[units.clock_scalar_set]
+source = "src/ClockScalar.cpp"
+object = "build/ClockScalar.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ClockScalar::set"]
+symbol = "?set@ClockScalar@th20@@QAEXM@Z"
+target_address = 0x004292A0
+size = 25
+relocations = []
+
+[units.game_random_construct]
+source = "src/GameRandom.cpp"
+object = "build/GameRandom.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::GameRandom::GameRandom"]
+symbol = "??0GameRandom@th20@@QAE@I@Z"
+target_address = 0x00422C50
+size = 85
+relocations = [
+  { offset = 0x17, type = "REL32", symbol = "??0?$linear_congruential_engine@I$0LMIP@$0A@$0HPPPPPPP@@std@@QAE@XZ", target = 0x00422C30 },
+]
+
+[units.game_random_bounded]
+source = "src/GameRandom.cpp"
+object = "build/GameRandom.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::GameRandom::bounded"]
+symbol = "?bounded@GameRandom@th20@@QAEII@Z"
+target_address = 0x00423EA0
+size = 49
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
+]
+
+[units.game_random_unit]
+source = "src/GameRandom.cpp"
+object = "build/GameRandom.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::GameRandom::unit"]
+symbol = "?unit@GameRandom@th20@@QAEMXZ"
+target_address = 0x00429830
+size = 113
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
+  { offset = 0x24, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x4B, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x5D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+]
+
+[units.game_random_signed_unit]
+source = "src/GameRandom.cpp"
+object = "build/GameRandom.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::GameRandom::signed_unit"]
+symbol = "?signed_unit@GameRandom@th20@@QAEMXZ"
+target_address = 0x004298E0
+size = 129
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
+  { offset = 0x24, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x4B, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x5D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x65, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x71, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+]
+
+[units.game_random_engine_construct]
+source = "src/GameRandom.cpp"
+object = "build/GameRandom.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::GameRandomEngine::GameRandomEngine"]
+symbol = "??0?$linear_congruential_engine@I$0LMIP@$0A@$0HPPPPPPP@@std@@QAE@XZ"
+target_address = 0x00422C30
+size = 29
+relocations = [
+  { offset = 0xA, type = "REL32", symbol = "??$_Get_linear_congruential_seed@I$0A@$0HPPPPPPP@@std@@YAII@Z", target = 0x00422C00 },
+]
+
+[units.game_random_engine_normalize]
+source = "src/GameRandom.cpp"
+object = "build/GameRandom.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["std::_Get_linear_congruential_seed<uint32_t,0,2147483647>"]
+symbol = "??$_Get_linear_congruential_seed@I$0A@$0HPPPPPPP@@std@@YAII@Z"
+target_address = 0x00422C00
+size = 36
+relocations = []

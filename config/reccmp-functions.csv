@@ -39,3 +39,10 @@ th20::InputButtonState::update,0x004228B0,function
 th20::ConfigurationFlags::ConfigurationFlags,0x004B9B80,function
 th20::InputBindingSlots::InputBindingSlots,0x0041FC50,function
 th20::InputBindings::InputBindings,0x0041FB10,function
+th20::ClockScalar::set,0x004292A0,function
+th20::GameRandom::GameRandom,0x00422C50,function
+th20::GameRandom::bounded,0x00423EA0,function
+th20::GameRandom::unit,0x00429830,function
+th20::GameRandom::signed_unit,0x004298E0,function
+th20::GameRandomEngine::GameRandomEngine,0x00422C30,function
+"std::_Get_linear_congruential_seed<uint32_t,0,2147483647>",0x00422C00,function

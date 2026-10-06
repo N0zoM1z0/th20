@@ -31,11 +31,76 @@ platform-services CPU oracle. Offsets and hashes use the original bytes; referen
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 408 native-core/export/scheduler/runtime/archive/input/platform-service/
-tool/test bodies have explicit decisions. The remaining 6,298 indexed bodies
-are pending. The separate
+The first 435 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/tool/test bodies have explicit decisions. The remaining 6,271
+indexed bodies are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: six of 103 files are reconciled, leaving 97 pending.
+
+## REF-008: runtime state's 27 definitions reviewed
+
+All six source/header/oracle files are read in full. Twenty-seven actual
+bodies have individual decisions: five absorbed exact components, one library
+normalization, seven native cases deferred and fourteen support helpers. Both
+READMEs, CMake and the two retained CPU reports are also reviewed. No parser
+gap occurs in this family. Total decisions: 435; 6,271 bodies remain pending.
+
+| Target | Complete bytes | Maintained contribution | Authored credit |
+| --- | ---: | --- | --- |
+| 0x00422C50 | 85 | GameRandom constructor | 85 |
+| 0x00423EA0 | 49 | GameRandom::bounded | 49 |
+| 0x00429830 | 113 | GameRandom::unit | 113 |
+| 0x004298E0 | 129 | GameRandom::signed_unit | 129 |
+| 0x00422C30 | 29 | Standard engine default constructor | Library excluded |
+| 0x00422C00 | 36 | Standard engine seed normalization | Library excluded |
+| 0x004292A0 | 25 | ClockScalar::set | Origin pending |
+
+The 28-byte owner contains an actual four-byte standard engine at +4, range
+fields at +8/+12/+16, last raw sample at +20 and stream id at +24. Four separately
+queried CRT startup callers establish ids and object addresses; process-global
+startup is not imported. The explicit uint32_t standard engine also keeps this
+layout on portable hosts with wider uint_fast32_t. Installed MSVC's random
+header independently explains the normalization/default-construction bodies;
+Ghidra's locale name at 0x422C30 does not establish library identity.
+
+Ordinary unsigned-to-float casts naturally emit the original staged binary64
+correction and binary32 conversion. Extra explicit double casts did not explain
+the original emission. Callee 0x423EE0 and file-backed double table {0,2^32},
+float 1 and float 2 were independently checked before canonical anchoring.
+Bounded zero skips sampling; signed_unit uses modulus/2-1 then subtracts one
+without a clamp. Shared setter uses the original float receiver and RET4,
+not the reference's fixed-global free-function ABI. Its origin remains pending.
+
+Cold complete replay passes 47/47 units, twelve objects, 3,654 full bytes.
+Authored exact: 35 functions, 3,043 bytes; source-present mappings: 47.
+Portable checks cover default construction, edge seed normalization, zero/count
+sampling, high-bit conversion, rounding near 2^24 and unclamped signed output.
+A clearly marked test-only next fixture supplies deterministic observations;
+maintained GameRandom::next remains undefined until its lock-slot-10 protocol
+is recovered. No linked sampler or full game-global lifetime is claimed.
+
+Native seed/next use fixed lock storage, tracked guards and security cookies;
+source mutex references, aggregate adapters and domain_error on zero modulus
+are separate contracts. Motion's raw floats/free functions replace native
+scalar/angle/vector receivers, hidden aggregate returns and fixed-rate reads.
+Complete switch tables, float floor helper and original Motion declaration
+remain deferred. Bounds returns a native 32-bit integer, unlike source bool.
+The simple combined member awaits that same canonical Motion owner.
+
+The retained RNG report's 164,000 comparisons use manufactured lock ownership,
+a single resolved thread-id IAT and prepared four-mode floating environments.
+Zero-modulus fault, original entry/TLS/global startup and cross-thread ordering
+are outside the evidence. Motion's 41,984 comparisons force the host SSE4.1
+floor path and nearest rounding: finite trajectories, bounds including NaNs
+and zero-state constructors do not cover nonfinite trajectories or other FP
+modes. Both report writers lack an input/output alias guard; the motion report
+omits a target-hash field, although its driver checks the target before mapping.
+These retained reports were read, not freshly rerun or credited as exactness.
+
+Both unmodified production TUs compile serially after adding the include paths
+actually propagated by their reviewed ECL/binary CMake dependencies. The
+initial missing-header diagnostics were recipe gaps, not source defects.
+Private evidence: `.analysis/ref008-*` and fresh compiler receipts.
 
 ## REF-007: platform services' 43 definitions reviewed
 
@@ -210,9 +275,9 @@ are distinguished from the original ECX receiver ABI.
 | 0x00452F50 | 35 | ClockScalar::operator* | Passed | Origin pending |
 
 Existing Random and Timer reset/set units still pass. Current cold replay is
-forty complete units, 3,188 bytes, eleven independently rebuilt objects.
-Authored credit is thirty-one functions, 2,667 bytes. RNG is excluded as STL;
-the two shared float-view functions, three empty/defaulted lifetime
+forty-seven complete units, 3,654 bytes, twelve independently rebuilt objects.
+Authored credit is thirty-five functions, 3,043 bytes. Four standard engine
+contributions are excluded as STL; the three shared float-view functions, three empty/defaulted lifetime
 contributions and two configuration initializer contributions remain under origin review and are not added to authored totals.
 Exact names do not establish an enclosing clock or
 interpolation type.

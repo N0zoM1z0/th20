@@ -22,6 +22,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/ArchiveCrypt.cpp",
                             "src/InputState.cpp",
                             "src/Configuration.cpp",
+                            "src/GameRandom.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

@@ -40,3 +40,10 @@ address,name,module,confidence,evidence
 0x004B9B80,th20::ConfigurationFlags::ConfigurationFlags,Configuration,high,REF-007
 0x0041FC50,th20::InputBindingSlots::InputBindingSlots,Configuration,high,REF-007
 0x0041FB10,th20::InputBindings::InputBindings,Configuration,high,REF-007
+0x004292A0,th20::ClockScalar::set,ClockScalar,high,REF-008
+0x00422C50,th20::GameRandom::GameRandom,GameRandom,high,REF-008
+0x00423EA0,th20::GameRandom::bounded,GameRandom,high,REF-008
+0x00429830,th20::GameRandom::unit,GameRandom,high,REF-008
+0x004298E0,th20::GameRandom::signed_unit,GameRandom,high,REF-008
+0x00422C30,th20::GameRandomEngine::GameRandomEngine,GameRandom,high,REF-008
+0x00422C00,"std::_Get_linear_congruential_seed<uint32_t,0,2147483647>",GameRandom,high,REF-008
