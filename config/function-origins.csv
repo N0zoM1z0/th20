@@ -285,7 +285,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040FF30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040FF50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040FF70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040FF90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040FF90,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x0040FFB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040FFD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00410030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -749,7 +749,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00422C50,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x00422CB0,library,Random,exclude,high,REF-001
 0x00422D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00422D90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00422D90,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00422DD0,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x00422E10,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x00422E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -760,7 +760,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00423470,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004234A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00423540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00423540,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00423560,authored,Timer,authored,high,"REF-016; Help original age20 branches independently call signed Timer current<argument member; natural existing16-byte owner, bool/RET4 and complete46-byte extent, no relocations or source shaping."
 0x00423590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004235C0,authored,Timer,authored,high,"REF-015; Original StageClear state thresholds independently call this Timer receiver predicate; custom game Timer member, full signed current comparison and bool/RET4 ABI. Complete46-byte extent ends after RET4; no padding/table/relocations or source shaping."
@@ -901,7 +901,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00429390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004293C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429420,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00429440,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x004294A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004294E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -925,7 +925,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004299D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429E30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429E50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429E70,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00429E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0042A110,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0042A3A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1183,7 +1183,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004494F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00449530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00449570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004495A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004495A0,authored,InputState,authored,high,"REF-019; Physical input frame producer REF-006 establishes current word and thirty-two held counters; independent Ending VM and frame consumers gate the actual counter member on current bits. Original member thiscall, full uint32 result, RET4 and array-index anchor independently established. Valid receiver and indices 0..31; original OS polling and enclosing input controller remain unresolved. Bespoke input methods are distinct from their shared STL array-index callee."
 0x004495C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00449600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00449630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2042,7 +2042,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00471DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00471E60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00471F50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00472040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00472040,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00472060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00472090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004720D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2858,7 +2858,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A0970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A0990,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A0A00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A0A20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A0A20,authored,InputState,authored,high,"REF-019; Physical input frame producer REF-006 establishes current word and thirty-two held counters; independent Ending VM and frame consumers gate the actual counter member on current bits. Original member thiscall, full uint32 result, RET4 and array-index anchor independently established. Valid receiver and indices 0..31; original OS polling and enclosing input controller remain unresolved. Bespoke input methods are distinct from their shared STL array-index callee."
 0x004A0A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A0AA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A0B50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

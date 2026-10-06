@@ -1,5 +1,49 @@
 # Current reconstruction handoff
 
+## REF-019 — 2026-10-06 — Ending and shared-owner batch checkpoint
+
+The exhaustive goal remains active. User now requests coherent batches; keep
+individual hash-bound decisions while compiling and replaying related owners
+together. All 39 ending_scene entries are reviewed: 22 nonexact/17 support.
+Total 1,000 terminal/5,944 pending of 6,944. Gaps remain 18 reconciled/95 pending;
+Ending has none. Complete sources/fixtures/reports read, 66 relevant original
+functions queried/decompiled. All six original production TUs freshly compile
+with corrected transitive sprite/ECL/binary includes. No reference oracle run.
+
+- Eight new canonical exact contributions, 270 bytes: Timer ctor54/current17/
+  remainder25/subtract28/post-increment22/post-decrement24, input current21/
+  held79. Natural shared bodies, independently observed original call anchors.
+  All six Timer origins and original operator spelling pending; input adds two
+  authored members. Cold 83/83, twenty objects/5,404 bytes; authored54/3,930,
+  source83/origin-pending exact25. Dirty/sentinel/signed/step/bit31 tests pass.
+- Timer integer += maintained dependency remains nonexact, 33 vs31 bytes/extra
+  XORPS. Subtraction preserves modulo unsigned negation; postfix dummy argument
+  and native member boundaries retained. No shaping or shortened extent.
+- EndingInf28/ScriptF0 actual typed arrays/Timers/Vector3/Worker16 corroborated;
+  full owner, allocator/base/diagnostics/PMR/EH/teardown remain open. Native
+  VM4,107 instruction bytes plus18/4 jump tables. Independently decoded omitted
+  JMPs4A048B/4A103F retained in full update/factory extents.
+- update_script actual int0/1; retained cpu<bool> widens only one byte. Native
+  metadata32-byte index helper has a bounds check; no false unchecked claim.
+  Resource flag mutations native plain stores versus source atomic_ref.
+  Worker callback reloads active owner at execution; full launch/lifetime open.
+- Distinct ordinary/ruby PMR closures and actual captured Animation event2
+  completion chain traced through4A0C20/49EA50/49F1E0/4888E0/477450/42B5D0.
+  All23+5 names/three floats/two strings independently match. Four tables each
+  six slots then RTTI locator or392.0, not seven functions.
+- Retained200,618 subset matches44 counters/shared report hash and389 current
+  source hashes; no fresh original oracle. Actual text tasks/deferred uploads/
+  GDI/COM recording/ANM completion run historically in1,024 fixture programs,
+  1,706 pixel comparisons. Host fonts/synthetic locks/pool/PMR/valid indices,
+  normalized Screen graphs and manual cleanup limit conclusions. Opcode7 and
+  non-gallery12, init/owned Ending dtor/file unload/active threads excluded.
+  Historical659 sound failures have328/343 current hashes, not current failures.
+
+Next coherent batch: all49 trophy_system entries, then every remaining body
+and95 manual gap files. `.analysis/ref019-record.py` has already run; do not
+rerun its guarded append transaction. Source frozen before final cold83 replay.
+Earlier checkpoint totals below are historical.
+
 ## REF-018 — 2026-10-06 — Card review checkpoint
 
 The exhaustive goal remains active. All32 card_system implementations have

@@ -3,6 +3,90 @@ target_sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a089
 
 [units]
 
+# REF-019: postfix dummy arguments and independently observed wrapper calls.
+[units.timer_subtract_integer]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::operator-="]
+symbol = "??ZTimer@th20@@QAEXH@Z"
+target_address = 0x00429E70
+size = 28
+relocations = [{ offset = 0x11, type = "REL32", symbol = "??YTimer@th20@@QAEXH@Z", target = 0x004297A0 }]
+
+[units.timer_post_increment]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::operator++"]
+symbol = "??ETimer@th20@@QAEXH@Z"
+target_address = 0x00423540
+size = 22
+relocations = [{ offset = 0xB, type = "REL32", symbol = "?tick@Timer@th20@@QAEHXZ", target = 0x004533B0 }]
+
+[units.timer_post_decrement]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::operator--"]
+symbol = "??FTimer@th20@@QAEXH@Z"
+target_address = 0x00429420
+size = 24
+relocations = [{ offset = 0xD, type = "REL32", symbol = "??ZTimer@th20@@QAEXH@Z", target = 0x00429E70 }]
+
+
+# REF-019: shared Timer and physical button protocols observed in Ending.
+[units.timer_construct]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::Timer()"]
+symbol = "??0Timer@th20@@QAE@XZ"
+target_address = 0x00422D90
+size = 54
+relocations = []
+
+[units.timer_current_value]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::operator int"]
+symbol = "??BTimer@th20@@QBEHXZ"
+target_address = 0x0040FF90
+size = 17
+relocations = []
+
+[units.timer_remainder]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::operator%"]
+symbol = "??LTimer@th20@@QBEHH@Z"
+target_address = 0x00472040
+size = 25
+relocations = []
+
+[units.input_current_bits]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::current_bits"]
+symbol = "?current_bits@InputButtonState@th20@@QBEII@Z"
+target_address = 0x004495A0
+size = 21
+relocations = []
+
+[units.input_held_frame_count]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::held_frame_count"]
+symbol = "?held_frame_count@InputButtonState@th20@@QBEII@Z"
+target_address = 0x004A0A20
+size = 79
+relocations = [{ offset = 0x18, type = "REL32", symbol = "?current_bits@InputButtonState@th20@@QBEII@Z", target = 0x004495A0 }, { offset = 0x34, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QBEABII@Z", target = 0x00414580 }]
+
+
 # REF-018: native twelve-byte vector owner and complete member contributions.
 [units.vector3_construct]
 source = "src/Vector3.cpp"

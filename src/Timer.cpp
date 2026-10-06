@@ -3,6 +3,32 @@
 
 namespace th20 {
 
+Timer::Timer() : previous(0), current(0), current_fraction(0.0f), flags(0) {}
+
+Timer::operator std::int32_t() const {
+    return current;
+}
+
+std::int32_t Timer::operator%(std::int32_t divisor) const {
+    return current % divisor;
+}
+
+void Timer::operator+=(std::int32_t amount) {
+    add(static_cast<float>(amount));
+}
+
+void Timer::operator-=(std::int32_t amount) {
+    *this += static_cast<std::int32_t>(-static_cast<std::uint32_t>(amount));
+}
+
+void Timer::operator++(int) {
+    tick();
+}
+
+void Timer::operator--(int) {
+    *this -= 1;
+}
+
 bool Timer::at_least(std::int32_t value) const {
     return current >= value;
 }

@@ -6,6 +6,9 @@ that requirement. This work stays active until each implementation has an
 explicit outcome. Easily recoverable exact functions are absorbed immediately;
 difficult cases receive specific evidence and remaining work, then the review
 continues. No default module-wide rejection or completion is permitted.
+Following the user's batching instruction, related owners and modules are
+reviewed together, with one serial compiler pass and a combined exact replay.
+Each implementation still receives its own hash-bound outcome.
 
 ## Coverage and decisions
 
@@ -37,11 +40,108 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 961 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/tool/test entries have explicit decisions. The
-remaining 5,983 indexed entries are pending. The separate
+The first 1,000 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/tool/test entries have explicit decisions. The
+remaining 5,944 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: eighteen of 113 files are reconciled, leaving 95 pending.
+
+## REF-019: Ending and its shared Timer/input protocols reviewed as a batch
+
+All 39 Ending implementation entries have individual decisions: twenty-two
+nonexact and seventeen support. Complete production/header/extractor/constants,
+both CPU fixture fragments, recipes and report scope were read. There are no
+Ending parser gaps. Total coverage is 1,000 terminal and 5,944 pending; eighteen
+gap files are reconciled and 95 remain pending. Sixty-six relevant native
+functions were independently queried and decompiled through the attested
+wrapper. Six original production TUs freshly compile after restoring their
+declared transitive sprite-renderer/ECL/binary include paths. This is compilation,
+not native oracle execution or linkage.
+
+Eight natural shared-owner contributions are newly canonical exact:
+
+| Member | Native address | Complete bytes |
+| --- | --- | --- |
+| Timer construction | 0x00422D90 | 54 |
+| Timer current integer conversion | 0x0040FF90 | 17 |
+| Timer signed remainder | 0x00472040 | 25 |
+| Timer integer subtraction wrapper | 0x00429E70 | 28 |
+| Timer postfix increment | 0x00423540 | 22 |
+| Timer postfix decrement | 0x00429420 | 24 |
+| InputButtonState current bits | 0x004495A0 | 21 |
+| InputButtonState held-frame count | 0x004A0A20 | 79 |
+
+All target extents and call anchors precede probing. The held query retains
+actual thiscall/full uint32/RET4 and shared std::array indexing; the free nullable
+reference helper remains nonexact. Timer operator spelling is inferred and all
+six Timer origins remain pending. Integer += is maintained as a natural dependency
+but emits 33 bytes against 31 native bytes, including an extra XORPS; no shortened
+comparison or shaping is accepted. Subtraction uses defined modulo negation.
+Existing Timer/input contributions retain one body/profile per source. Complete
+cold replay passes 83/83 units across twenty objects, 5,404 bytes; authored credit
+is 54 functions/3,930 bytes, source-present 83, exact-origin-pending 25.
+Dirty/sentinel Timer, signed conversion/remainder, four stepping operations and
+all thirty-two held indices/bit31/full-byte preservation tests pass.
+
+EndingInf's actual 0x28 owner and Script's 0xF0 layout are corroborated, with
+three typed Timers, two five-handle arrays, two Vector3 values, four files,
+sixteen typed handles and a sixteen-byte Worker at 0xDC. Native construction,
+diagnostic/base/allocator/EH, repeated animation resolving, typed deletion and
+original owned teardown differ from the aggregate reference. No artificial
+layout or whole scene owner is absorbed. Full native instruction extents were
+checked, including independently decoded unreachable two-byte JMPs at 4A048B
+and 4A103F that Ghidra omitted from update and factory listings.
+
+The VM has 4,107 instruction bytes, an eighteen-slot opcode table and a separate
+four-slot difficulty table. Recognized opcodes, two wait paths, signed timing,
+music, by-value scene-handle deletion and credits restart are corroborated.
+Reference merged cases/helpers, added bounds/malformed-text exceptions and
+ordinary std::string closures change the native PMR/member/EH partition.
+Native update_script returns full int 0/1; the fixture invokes it as cpu<bool>
+before widening, so return-byte agreement does not close that ABI.
+The metadata array helper does independently check index<32; its source wrapper
+still changes receiver/getter/lock and error partition. Initialization, selectors,
+original filename-path buffer and owned resources remain unclosed.
+
+Plain native flag loads/stores surround asynchronous resource launch; source
+atomic_ref updates are an additional memory-access policy. The original Worker
+callback reloads global EndingInf when it executes, forwards through a member
+to its current Script and returns int zero. Source jthread/free-void helpers
+change launch/callback/stop-source/lock/lifetime protocol. No concurrent oracle
+or failed-I/O acceptance is inferred.
+
+Ordinary and ruby native queued closures are distinct: Script pointer at zero,
+28-byte PMR string at four, then Animation at 0x20, or x/spacing/Animation at
+0x20/0x24/0x28. Both read Script colors at execution. Their completion callable
+objects retain actual Animation pointer and invoke event2 through
+4A0C20 -> 49EA50 -> 49F1E0 -> 4888E0 -> 477450 -> 42B5D0, without manager
+predraw. This behavior is corroborated, while reference unified capture, allocator,
+copy/move/EH and ownership remain nonexact. Four independently read callable
+tables have six function slots followed by RTTI locator or 392.0 float;
+exploratory seventh words are not callable entries. All 23 ending names, five
+alias credits names, three floats and text/error strings independently match.
+
+Retained 200,618 comparisons bind to forty-four exact subset counters in the
+shared report; all 389 source hashes are current. No reference native oracle was
+compiled or run here. The fixtures provide 256 dirty constructors/Script-only
+destructors, 12,288 mixed VM/frame calls, 8,192 valid held queries and 1,024 actual
+queued CP932/ruby GDI/deferred upload/completion programs. Text colors change
+between scheduling and execution; 1,706 pixel comparisons, rectangles, COM
+counts and synthetic ANM state are retained observations. This is stronger
+closure behavior coverage than the Card queue-count-only fixture, without
+granting source exactness or physical GPU/whole-ending acceptance.
+
+Fixtures normalize owner vptr and Screen mode0/5 node graphs, manufacture locks,
+PMR/resources/input and valid synthetic ANM, and use host GDI fonts with recording
+COM surfaces. Graph word replacement may also normalize coincidental scalars.
+Opcode7 is absent; opcode12 forces gallery early return, excluding achievement,
+credits replacement and I/O. Whole EndingInf destruction, initialization, file
+unloading and active-thread lifetime are excluded. Cleanup is manual normal-exit
+restoration and resets the clock to one. Historical sound failures total 659;
+only 328/343 hashes match current source, so that report is historical evidence.
+
+Private evidence: `.analysis/ref019-*`. Next coherent batch is all 49 Trophy
+entries, followed by every remaining implementation and 95 manual gap files.
 
 ## REF-018: all 32 Card implementation entries reviewed
 

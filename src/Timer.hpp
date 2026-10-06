@@ -24,6 +24,14 @@ struct Timer {
         TimerFlagBits flag_bits;
     };
 
+    Timer();
+    operator std::int32_t() const;
+    // The divisor must be nonzero; INT32_MIN / -1 is outside the C++ domain.
+    std::int32_t operator%(std::int32_t divisor) const;
+    void operator+=(std::int32_t amount);
+    void operator-=(std::int32_t amount);
+    void operator++(int);
+    void operator--(int);
     void reset();
     void set_mode(std::uint32_t mode);
     void set(std::int32_t value);

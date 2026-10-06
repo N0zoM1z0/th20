@@ -3,7 +3,7 @@
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
-| Timer | src/Timer.hpp, src/Timer.cpp | reset/set/mode, add/tick, signed predicates 0x004235C0/0x004785E0/0x00423560 | Eight complete exact functions |
+| Timer | src/Timer.hpp, src/Timer.cpp | construction, current conversion/remainder, subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Fourteen complete exact functions; six added construction/wrapper origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | enable 0x0041CCC0; disable 0x0041CA30 | Two exact flag assignments; tracked locking and original global lifetime pending |
@@ -11,7 +11,7 @@
 | TaskInfo | src/TaskInfo.hpp, src/TaskInfo.cpp | TaskInf destructor and separate virtual/helper enable/disable entries | Five complete exact functions; native constructor and allocator-based deletion pending |
 | Worker | src/Worker.hpp, src/Worker.cpp | constructor 0x0040B780 | Exact 44-byte construction; close/join/detach and destructor remain undefined/pending |
 | ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270 | Exact 71-byte helper; parameter table selection, decryption and native archive owner remain pending |
-| InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update and two mask queries | Seven complete exact functions; constructor, OS polling and Controller owner remain pending |
+| InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update, three mask queries and held-frame query | Nine complete exact functions; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |
 | GameRandom | src/GameRandom.hpp, src/GameRandom.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; engine helpers | Four authored and two library complete exact units; next/seed locking and global startup remain undefined |
 | WindowState | src/WindowState.hpp, src/WindowState.cpp, src/WindowApi.cpp | five field methods, system restoration, repeat reset and flags construction | Seven authored and one origin-pending complete exact units; original construction/global startup remain undefined |
@@ -30,8 +30,30 @@ float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
 `config/match-units.toml` owns twenty objects and one canonical profile per source.
-Seventy-five units cover complete COFF function contributions. Library units and units
+Eighty-three units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-019 batches the Timer and physical input protocols used by Ending. Timer's
+actual constructor initializes four words, including positive floating zero.
+Its conversion and signed remainder read current only. Postfix operations have
+the independently observed dummy integer argument and delegate to actual tick
+or subtraction members. Integer subtraction uses modulo unsigned negation
+before converting back, preserving the x86 NEG result including INT32_MIN.
+The natural integer += body is maintained as a dependency but remains nonexact:
+the compiler emits an extra XORPS before conversion, 33 versus 31 bytes.
+Exact wrapper contributions retain independent native call anchors without
+claiming that dependency matches. These six additional Timer origins and the
+original operator spelling remain pending. Tests construct dirty Timer storage,
+check sentinels, signed edges and stepping through shared production bodies.
+
+InputButtonState::current_bits preserves the full uint32 mask, including bit31.
+The held-frame member requires a valid receiver and index 0..31, calls the real
+current-query member, then indexes the actual thirty-two-counter std::array at
+offset 0x198. Both native call anchors were independently read before compilation;
+the shared array helper does not receive another authored function credit.
+Portable tests check every valid index, full counter values and complete-byte
+nonmutation. These methods add no original polling, nullable slot selection,
+input-global startup or Ending scene lifetime implementation.
 
 AnimationHandle is the actual four-byte value used by Notice's seven-element
 array and separate secondary member. Native construction zeros that word and

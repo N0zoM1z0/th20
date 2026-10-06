@@ -14,6 +14,9 @@ struct InputButtonState {
     std::array<std::uint32_t, 6> retained_298;
     std::uint32_t held8, retained_2b4, last_input_kind, suppress_previous;
     void update();
+    std::uint32_t current_bits(std::uint32_t mask) const;
+    // Physical button index must be in 0..31; the receiver must be valid.
+    std::uint32_t held_frame_count(std::uint32_t index) const;
     std::uint32_t pressed_bits(std::uint32_t mask) const;
     int repeated_or_pressed(std::uint32_t mask) const;
 };

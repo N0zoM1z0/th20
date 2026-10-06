@@ -73,3 +73,11 @@ th20::Vector3::Vector3()
 th20::Vector3::operator-
 th20::Vector3::operator*
 th20::Vector3::operator+=
+th20::Timer::Timer()
+th20::Timer::operator int
+th20::Timer::operator%
+th20::Timer::operator-=
+th20::Timer::operator++
+th20::Timer::operator--
+th20::InputButtonState::current_bits
+th20::InputButtonState::held_frame_count

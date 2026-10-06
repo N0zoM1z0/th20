@@ -30,6 +30,15 @@ unsigned random_sample_calls;
 std::int32_t callback_a(void*) { ++callback_calls; return 1; }
 std::int32_t callback_b(void*) { ++callback_calls; return 2; }
 std::int32_t callback_c(void*) { ++callback_calls; return 3; }
+th20::Timer timer_fixture(std::int32_t previous, std::int32_t current,
+                          float fraction, std::uint32_t flags) {
+    th20::Timer timer;
+    timer.previous = previous;
+    timer.current = current;
+    timer.current_fraction = fraction;
+    timer.flags = flags;
+    return timer;
+}
 }
 
 // Wrapper tests supply one deterministic observation. This is not a maintained
@@ -41,6 +50,23 @@ std::uint32_t th20::GameRandom::next() {
 
 int main() {
     check_scene_resource_protocol();
+    alignas(th20::Timer) std::array<unsigned char, 24> timer_storage;
+    timer_storage.fill(0xa5);
+    auto* zero_timer = ::new(timer_storage.data() + 4) th20::Timer;
+    assert(zero_timer->previous == 0 && zero_timer->current == 0);
+    assert(zero_timer->current_fraction == 0.0f && zero_timer->flags == 0);
+    for (std::size_t i = 0; i != timer_storage.size(); ++i) {
+        assert(timer_storage[i] == (i >= 4 && i < 20 ? 0 : 0xa5));
+    }
+    th20::InputButtonState held_input{};
+    held_input.current = 0x80000001u;
+    for (std::uint32_t i = 0; i != 32; ++i) held_input.held_frames[i] = i + 100;
+    const auto held_input_before = held_input;
+    assert(held_input.current_bits(0x80000000u) == 0x80000000u);
+    for (std::uint32_t i = 0; i != 32; ++i) {
+        assert(held_input.held_frame_count(i) == (i == 0 || i == 31 ? i + 100 : 0));
+    }
+    assert(std::memcmp(&held_input, &held_input_before, sizeof(held_input)) == 0);
     alignas(th20::Vector3) std::array<unsigned char, 20> vector_storage;
     vector_storage.fill(0xa5);
     auto* zero_vector = ::new(vector_storage.data() + 4) th20::Vector3;
@@ -300,9 +326,13 @@ int main() {
         16777217, std::numeric_limits<std::int32_t>::max()};
     // Signed boundary comparisons read current only and preserve every byte.
     for (const auto current : values) {
-        const th20::Timer timer{-19, current, -0.0f, 0xabcdef01u};
+        const th20::Timer timer = timer_fixture(-19, current, -0.0f, 0xabcdef01u);
         std::array<unsigned char, sizeof(timer)> before;
         std::memcpy(before.data(), &timer, sizeof(timer));
+        assert(static_cast<std::int32_t>(timer) == current);
+        for (const auto divisor : {3, 6, 12, -3}) {
+            assert(timer % divisor == current % divisor);
+        }
         for (const auto value : values) {
             assert(timer.at_least(value) == (current >= value));
             assert(timer.equals(value) == (current == value));
@@ -311,7 +341,7 @@ int main() {
         }
     }
     for (std::uint32_t flags = 0; flags != 256; ++flags) {
-        th20::Timer timer{12, 34, 56.0f, flags};
+        th20::Timer timer = timer_fixture(12, 34, 56.0f, flags);
         timer.reset();
         assert(timer.previous == -999999 && timer.current == 0);
         assert(std::bit_cast<std::uint32_t>(timer.current_fraction) == 0);
@@ -335,9 +365,19 @@ int main() {
 
     assert(th20::timer_clock_sources[0] == &th20::default_timer_clock);
     assert(th20::default_timer_clock.value == 1.0f);
+    th20::Timer stepping;
+    stepping.set(10);
+    stepping += 7;
+    assert(stepping.previous == 10 && stepping.current == 17);
+    stepping -= 3;
+    assert(stepping.previous == 17 && stepping.current == 14);
+    stepping++;
+    assert(stepping.previous == 14 && stepping.current == 15);
+    stepping--;
+    assert(stepping.previous == 15 && stepping.current == 14);
     th20::ClockScalar half{0.5f};
     th20::timer_clock_sources[0] = &half;
-    th20::Timer fractional{99, 17, 0.25f, 0xfffffff7u};
+    th20::Timer fractional = timer_fixture(99, 17, 0.25f, 0xfffffff7u);
     assert(fractional.tick() == 0);
     assert(fractional.previous == 17 && fractional.current_fraction == 0.75f);
     assert(fractional.flags == 0xfffffff1u);
@@ -349,7 +389,7 @@ int main() {
     // Near-one paths advance the integer independently of the float value.
     th20::ClockScalar near_one{0.995f};
     th20::timer_clock_sources[0] = &near_one;
-    th20::Timer independent{0, 100, 2.25f, 1u};
+    th20::Timer independent = timer_fixture(0, 100, 2.25f, 1u);
     assert(independent.tick() == 101 && independent.current_fraction == 3.25f);
     independent.add(2.0f);
     assert(independent.current == 5 && independent.current_fraction == 5.25f);
@@ -358,16 +398,16 @@ int main() {
     for (float rate : {0.99f, 1.01f}) {
         th20::ClockScalar endpoint{rate};
         th20::timer_clock_sources[0] = &endpoint;
-        th20::Timer timer{0, 0, 0.0f, 1u};
+        th20::Timer timer = timer_fixture(0, 0, 0.0f, 1u);
         timer.add(100.0f);
         assert(timer.current_fraction == rate * 100.0f);
         assert(timer.current == (rate < 1.0f ? 99 : 101));
     }
     th20::timer_clock_sources[0] = nullptr;
-    th20::Timer null_clock{0, std::numeric_limits<std::int32_t>::max(), 4.25f, 1u};
+    th20::Timer null_clock = timer_fixture(0, std::numeric_limits<std::int32_t>::max(), 4.25f, 1u);
     assert(null_clock.tick() == std::numeric_limits<std::int32_t>::min());
     assert(null_clock.current_fraction == 5.25f);
-    th20::Timer uninitialized{91, 71, 44.0f, 0xfffffffeu};
+    th20::Timer uninitialized = timer_fixture(91, 71, 44.0f, 0xfffffffeu);
     assert(uninitialized.tick() == 1 && uninitialized.current_fraction == 1.0f);
     assert(uninitialized.previous == 0 && uninitialized.flags == 0xfffffff9u);
     th20::timer_clock_sources[0] = &th20::default_timer_clock;

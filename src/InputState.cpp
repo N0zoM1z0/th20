@@ -1,5 +1,13 @@
 #include "InputState.hpp"
 namespace th20 {
+std::uint32_t InputButtonState::current_bits(std::uint32_t mask) const {
+    return current & mask;
+}
+
+std::uint32_t InputButtonState::held_frame_count(std::uint32_t index) const {
+    return current_bits(1u << index) ? held_frames[index] : 0;
+}
+
 void InputDevice::reset_header() {
     kind = 0;
     logical_index = 0;
