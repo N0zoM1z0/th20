@@ -31,6 +31,7 @@ struct Timer {
     std::int32_t tick();
     bool at_least(std::int32_t value) const;
     bool equals(std::int32_t value) const;
+    bool less_than(std::int32_t value) const;
 };
 
 static_assert(sizeof(Timer) == 16);

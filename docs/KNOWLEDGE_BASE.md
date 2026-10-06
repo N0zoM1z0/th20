@@ -1,5 +1,27 @@
 # Verified facts and open hypotheses
 
+## REF-016 — 2026-10-06
+
+- Help25 definitions individually reviewed:15 nonexact/10 support. Total899/
+  6045pending; no gaps.26 relevant native entries queried/decompiled; both
+  original production TUs compile, status8/8 hashes current, no runtime oracle.
+- Timer current<argument423560 natural46-byte complete canonical exact, bool/
+  RET4, no relocations. Cold69/69,18objects/4758bytes; authored52/3830,source69.
+- Actual draw callback49DEA0 is13-byte ECX thunk to16-byte478BF0 member, contrary
+  to reference literal mov1/ret comment. Full Help/Cursor/handles/base open.
+- Original shared Graphics Worker+D90 at5C5AD0; launch returnsint0 and forwards
+  argument through tracked lock6. Both detach implementations set close flag
+  true; source vector/copy image allocation and launch ABI still differ.
+- Native44DC20 Controller member int0/RET24 vs source free void; Graphics format
+  remap omitted but verified first nine BPP entries all4, no false domain mismatch.
+  Native direct D3DX import540696 vs new lazy DLL owner/throwing policy; failed
+  GetProcAddress construction leaks module. Texture clear has uninitialized
+  output pointer versus source null. COM/GPU runtime/typed ownership open.
+- Full Help update2072 instruction bytes and six-entry table independently read;
+  three unreachable JMPs at4BF4A3/4BF662/4BF70F omitted by Ghidra are decoded
+  independently and included, not hidden by shortened extents.
+  masks/state/ages and three resource strings corroborated, no exact full frame.
+
 ## REF-015 — 2026-10-06
 
 - All17 stage_clear entries:11 nonexact/six support; total874 reviewed/6070

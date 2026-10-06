@@ -50,3 +50,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00428380,th20::SoundEffectChannel::release,46,matching,100.00,sound_channel_release,REF-013; docs/REFERENCE_FUNCTION_REVIEW.md
 0x004235C0,th20::Timer::at_least,46,matching,100.00,timer_at_least,REF-015; locked MSVC cold build and complete canonical relocation replay
 0x004785E0,th20::Timer::equals,46,matching,100.00,timer_equals,REF-015; locked MSVC cold build and complete canonical relocation replay
+0x00423560,th20::Timer::less_than,46,matching,100.00,timer_less_than,REF-016; locked MSVC cold build and complete canonical relocation replay

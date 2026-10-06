@@ -67,3 +67,4 @@ th20::SoundEffectChannel::SoundEffectChannel,0x00425D20,function
 th20::SoundEffectChannel::release,0x00428380,function
 th20::Timer::at_least,0x004235C0,function
 th20::Timer::equals,0x004785E0,function
+th20::Timer::less_than,0x00423560,function

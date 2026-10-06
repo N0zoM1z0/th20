@@ -3,7 +3,7 @@
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
-| Timer | src/Timer.hpp, src/Timer.cpp | reset/set/mode, add/tick, signed predicates 0x004235C0/0x004785E0 | Seven complete exact functions |
+| Timer | src/Timer.hpp, src/Timer.cpp | reset/set/mode, add/tick, signed predicates 0x004235C0/0x004785E0/0x00423560 | Eight complete exact functions |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | enable 0x0041CCC0; disable 0x0041CA30 | Two exact flag assignments; tracked locking and original global lifetime pending |
@@ -28,7 +28,7 @@ float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
 `config/match-units.toml` owns eighteen objects and one canonical profile per source.
-Sixty-eight units cover complete COFF function contributions. Library units and units
+Sixty-nine units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 TaskInfo's observed RTTI is TaskInf. Its three-slot vtable contains deleting

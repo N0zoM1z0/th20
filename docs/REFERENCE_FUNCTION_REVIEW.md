@@ -37,11 +37,78 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 874 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/tool/test entries have explicit decisions. The
-remaining 6,070 indexed entries are pending. The separate
+The first 899 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/tool/test entries have explicit decisions. The
+remaining 6,045 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: seventeen of 113 files are reconciled, leaving 96 pending.
+
+## REF-016: all 25 Help implementation entries reviewed
+
+Every indexed body has a specific decision: fifteen nonexact and ten support.
+All production code, header, recipes, README and status report were read. Both
+unmodified production TUs freshly compile serially after supplying help_system's
+declared binary includes and inherited ECL/runtime include paths.26 relevant
+original functions were independently queried and decompiled. No family parser
+gaps or original CPU/frame/thread/COM oracle; status report8/8 hashes current
+only binds historical compilation, not runtime. Total899 terminal/6,045 pending;
+global gaps17 reconciled/96 pending. Original Help update's2072-byte instruction
+extent and six-entry jump table at4BF8B8 were fully inspected; no prefix claim.
+Ghidra omits three unreachable five-byte JMPs inside that extent; an independent
+PE decoder reconciles them at4BF4A3/4BF662/4BF70F. They remain part of the full
+contribution and are not discarded as padding.
+
+Natural Timer::less_than restores signed current<argument at423560, complete46
+bytes with thiscall/bool/RET4 and no relocations. The existing Timer declaration
+and portable signed-edge/nonmutation fixture are shared by all three predicates.
+Full cold69/69 across18 objects covers4,758 bytes; authored52 functions/3,830
+bytes; source-present69. Help update remains nonexact despite this adjacent
+accepted component. No bytes, assembly, padding or shaping bodies imported.
+
+Help construction uses TaskInf, Timer, Cursor and fourteen typed-handle array
+constructors plus diagnostic helper; reference aggregate timers/integer handles
+change the original partition. Teardown preserves actual Cursor/base and
+diagnostic calls. Factory calls diagnostic allocator4BEDF0 then original member
+initialization, with41F7C0 failure cleanup. Full Help/Cursor/handle/allocator
+lifetime remains unclosed. No fabricated layout-only owners are maintained.
+
+The reference draw comment is inaccurate: scheduler installs cdecl49DEA0,
+which forwards ECX to478BF0. That member is16 bytes, saving ECX before returning
+int1; it is not literal mov1/ret. Reference direct free return1 merges both
+contributions. Update thunk4BFAD0 likewise calls the original thiscall member.
+Small callbacks do not justify fake receiver declarations or duplicate credit.
+
+Graphics launch4B99F0 returnsint0 and forwards entry plus argument through
+Worker+D90 (fixed5C5AD0), with tracked slot6 guards, diagnostic and EH. Reference
+entry() free API/manual recursive_mutex/jthread graph changes argument/owner
+partition. Native load_image4BF8D0 directly stores410AA0's owned buffer and size
+output; reference vector/second allocation/copy changes ownership and failure.
+Both native and inspected source detach paths set close_requested true before
+detach and reacquire the recursive lock; that flag behavior is corroborated,
+not a discrepancy. Real resource/thread/global lifetime has no new validation.
+
+Native Help uses fixed-event selected/deselected methods and a separate typed
+handle short-event method; source generalized free execute/interrupt APIs merge
+their receiver/argument partitions. File named spawn uses hidden handle sret.
+Input2 masks80001/106/10/20, age20/30, nine menu handles/image13 and effects7/9/10
+agree in the observed state graph, but do not accept rendering/input globals.
+
+Texture replacement44DC20 is a Controller member returningint0 with six stack
+arguments/RET24; source free void drops the receiver and an unused argument.
+Original format mapper44CFB0 consults Graphics configuration; source omits it
+and adds bounds exceptions. Independently checked first nine format entries
+are0/21 and all nine bytes-per-pixel entries4: there is no claimed BPP difference
+in that valid source domain. Container pointer arithmetic is corroborated;
+native unused rectangle locals are not required semantic source fields.
+Original D3DX entry540696 is a static import; source adds lazy LoadLibrary/
+GetProcAddress/FreeLibrary lifetime and throws. Failed symbol lookup leaks its
+module on constructor failure. Clear449D80 is a188-byte TextureRecord member
+with an uninitialized surface output; source initializes it to null and changes
+ABI. Failed COM-output behavior, complete typed owners and real GPU execution
+remain open. The three help/help.anm/help_%.2d.png strings independently match.
+
+Private evidence: `.analysis/ref016-*` and complete69-unit cold replay. Continue
+with notice_system30 and every remaining implementation/manual gap.
 
 ## REF-015: all 17 stage-clear implementation entries reviewed
 

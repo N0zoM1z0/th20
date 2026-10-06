@@ -276,6 +276,7 @@ int main() {
         for (const auto value : values) {
             assert(timer.at_least(value) == (current >= value));
             assert(timer.equals(value) == (current == value));
+            assert(timer.less_than(value) == (current < value));
             assert(std::memcmp(before.data(), &timer, sizeof(timer)) == 0);
         }
     }

@@ -761,7 +761,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004234A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00423560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00423560,authored,Timer,authored,high,"REF-016; Help original age20 branches independently call signed Timer current<argument member; natural existing16-byte owner, bool/RET4 and complete46-byte extent, no relocations or source shaping."
 0x00423590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004235C0,authored,Timer,authored,high,"REF-015; Original StageClear state thresholds independently call this Timer receiver predicate; custom game Timer member, full signed current comparison and bool/RET4 ABI. Complete46-byte extent ends after RET4; no padding/table/relocations or source shaping."
 0x004235F0,library,Random,exclude,high,REF-001

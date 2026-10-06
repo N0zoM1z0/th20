@@ -55,6 +55,17 @@ target_address = 0x004785E0
 size = 46
 relocations = []
 
+# REF-016: complete signed predicate used by Help's age thresholds.
+[units.timer_less_than]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::less_than"]
+symbol = "?less_than@Timer@th20@@QBE_NH@Z"
+target_address = 0x00423560
+size = 46
+relocations = []
+
 [units.timer_set]
 source = "src/Timer.cpp"
 object = "build/Timer.obj"

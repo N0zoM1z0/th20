@@ -11,6 +11,10 @@ bool Timer::equals(std::int32_t value) const {
     return current == value;
 }
 
+bool Timer::less_than(std::int32_t value) const {
+    return current < value;
+}
+
 void Timer::reset() {
     current = 0;
     previous = -999999;

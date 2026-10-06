@@ -66,3 +66,4 @@ th20::SoundEffectChannel::SoundEffectChannel
 th20::SoundEffectChannel::release
 th20::Timer::at_least
 th20::Timer::equals
+th20::Timer::less_than

@@ -1,5 +1,34 @@
 # Current reconstruction handoff
 
+## REF-016 — 2026-10-06 — Help review checkpoint
+
+The exhaustive goal remains active. All25 help_system implementations reviewed:
+15 nonexact/10 support. Total899 terminal/6,045 pending of6,944. Global gaps
+17 reconciled/96 pending of113, no Help gaps. Full source/header/recipe/status
+read;26 relevant original functions queried and decompiled. Both original TUs
+freshly compile after declared/transitive include-path recipe correction.
+
+- Natural Timer::less_than423560 adds46 complete exact bytes, thiscall/bool/
+  RET4, no relocations. Cold69/69 across18 objects/4,758 bytes; authored52/3,830,
+  source69. Signed-edge and byte-preservation tests pass. Source frozen first.
+- Actual draw thunk49DEA0 calls16-byte member478BF0; reference literal-return
+  comment/direct free body merges native partition. No fabricated owner/ABI.
+- Native image load owns410AA0 output directly; source vector/second allocation
+  differs. Both detach paths set close flag true then detach; Worker/D90 address
+  corroborated but actual launch argument/tracked guard/global lifetime open.
+- Texture update Controller thiscall/int0/RET24 differs from free void source.
+  Format map consults Graphics; first nine BPP values all4, no false mismatch.
+  Native static D3DX import vs source lazy library; error/module lifetime differs.
+  Clear original uninitialized surface versus source null output; typed owner open.
+- Original update2072 instruction bytes plus six-pointer jump table inspected.
+  Independently decoded three unreachable JMPs omitted by Ghidra at4BF4A3/
+  4BF662/4BF70F; full extent retained, no prefix/padding exclusion.
+  Three strings and two nine-entry table prefixes independently read. Historical
+  compiled-only status8/8 current hashes; no native Help CPU/thread/COM/GPU run.
+
+Next coherent family: notice_system30, then every remaining implementation and
+96 manual gap files. Private.analysis/ref016-*; earlier counts historical.
+
 ## REF-015 — 2026-10-06 — stage-clear review checkpoint
 
 The exhaustive goal remains active. All17 stage_clear implementations individually
