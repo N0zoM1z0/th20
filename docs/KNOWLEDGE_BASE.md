@@ -1,5 +1,26 @@
 # Verified facts and open hypotheses
 
+## REF-010 — 2026-10-06
+
+- Individual diagnostics support decisions7: three C++ functions, two Python
+  functions and two script bodies. Terminal476/pending6468; gaps unchanged.
+- Source-only tools: minidump module parser108-byte entries (no thread parse);
+  DIA regex/RVA/line lookup lacks PDB/image identity; fixed-layout live reads
+  lack process/PDB hash match and synchronization, so they are not snapshots.
+- Fresh serial compiler: unmodified source_debugger.cpp emits valid x86 COFF.
+  No link/run. Optional DIA SDK header/runtime absent; no fresh DIA compile.
+- Retained observations: null-read, heap corruption, enemy iterator UAF and
+  laser new/free mismatch belong to historical source programs. ASAN announced
+  interception breakpoint bypass explicitly prevents complete sanitizer claim.
+  Six source-state JSONs sample stages1/3, not full runs/original equivalence.
+- Independently checked manifest inputs: first462 has447 matching/15 stale,
+  second/third463 each454 matching/9 stale. All deny full_game_equivalence_verified.
+  No reports rerun, utilities invoked, process attached or checkout changed.
+- Exact totals unchanged: canonical55/14objects/3995bytes, authored41/3260 and
+  source-present55. No production source/profile/anchor changed; no replay needed.
+
+Private evidence: `.analysis/ref010-*`.
+
 ## REF-009 — 2026-10-06
 
 - Individually reviewed: 26 program-entry C++ definitions and eight Python

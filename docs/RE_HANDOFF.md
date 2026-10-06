@@ -1,5 +1,32 @@
 # Current reconstruction handoff
 
+## REF-010 — 2026-10-06 — diagnostics review checkpoint
+
+The exhaustive goal remains active. All seven diagnostics implementation
+entries have individual support decisions: three C++ functions, two Python
+functions and two complete script modules. Inventory6944, decisions476 and
+pending6468. Parser gaps113, reconciled6/pending107. Source55, authored41/3260
+and complete canonical55/14objects/3995bytes unchanged; no production mutation.
+
+- Read four implementation files, CMake, four debugger logs, two ASAN reports,
+  six state snapshots, three build manifests and source-runtime narrative.
+- Minidump tool reads modules only; DIA lookup lacks image/PDB identity and
+  uses regex names. Live-state reader assumes x86 source offsets, basename
+  identity and separate unsynchronized reads, not a coherent original snapshot.
+- Debugger source TU compiles unmodified with pinned x86 compiler. Optional DIA
+  SDK header/runtime absent; no DIA compile/link/runtime acceptance. Tools not
+  invoked, no process attached or APPDATA/source checkout mutation.
+- Retained null/heap/UAF/allocation-mismatch reports are historical source
+  observations. ASAN interception compatibility bypass is explicitly incomplete.
+  State samples stage1/3 do not prove complete gameplay or whole-state identity.
+- Manifests462/463/463 inputs contain15/9/9 hashes stale versus pinned checkout;
+  every manifest explicitly denies complete equivalence. No report inherited.
+
+Next coherent family: platform_window189 entries, then all remaining native/
+script implementations and107 manual gap files. Each difficult case gets its
+own evidence and follow-up; keep advancing exhaustive coverage. Private
+`.analysis/ref010-*`. Earlier counts below are historical checkpoints.
+
 ## REF-009 — 2026-10-06 — entry/window review checkpoint
 
 The exhaustive goal remains active. All 26 program-entry C++ definitions and

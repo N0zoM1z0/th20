@@ -37,11 +37,60 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 469 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/tool/test entries have explicit decisions. The
-remaining 6,475 indexed entries are pending. The separate
+The first 476 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/tool/test entries have explicit decisions. The
+remaining 6,468 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: six of 113 files are reconciled, leaving 107 pending.
+
+## REF-010: diagnostics' seven implementation entries reviewed
+
+All four implementation files, CMake, four debugger logs, both ASAN reports,
+six state snapshots and three retained build manifests are reviewed. Three C++
+functions, two Python functions and two script modules each receive an explicit
+support decision. None implements an original game function. Current terminal
+coverage: 476 entries; 6,468 pending. Parser gaps remain six reconciled and
+107 pending out of 113. Existing 55 canonical units and authored 41/3,260 bytes
+are unchanged; no production source/profile/anchor changed, so no new cold
+replay was needed.
+
+The minidump parser reads module stream4 only, despite its thread-metadata
+comment; it trusts counts, offsets and strings and guards the magic by assert.
+The DIA utility uses PDB regular-expression data lookup or RVA function/line
+queries without checking PDB/image identity. Error handling leaves unchecked
+COM initialization/export/numeric input paths and incomplete failed cleanup.
+The optional DIA SDK header/runtime is absent locally; no fresh DIA build or
+run is claimed. The source debugger TU freshly compiles unmodified with pinned
+x86 MSVC; it was not linked or launched.
+
+The live-state tool checks only executable basename and combines PDB RVAs
+with the enumerated base. It does not match GUID/age or image hash, suspend
+threads or obtain a coherent snapshot. Its fixed x86 offsets are source-build
+assumptions; the returned module count can exceed the 1,024-slot array. Exact
+ReadProcessMemory byte-count checking helps, but separate reads can tear and
+cannot establish native layout or whole-frame equivalence.
+
+The debugger isolates APPDATA, permits two source-build filenames and handles
+second-chance exceptions, stack traces and minidumps. These are filename guards,
+not cryptographic identity checks. It leaves several API results unchecked,
+allows a child to survive debugger failure, and omits exception information in
+the MiniDumpWriteDump call. Its optional ASAN mode continues only an announced
+interception-warning breakpoint; the tool itself explicitly denies complete
+sanitizer validation in that mode. Stack walking is fixed i386 and may duplicate
+the first PC; unsymbolized addresses do not identify original function owners.
+
+Retained observations include a null-read crash, heap-corruption crash, enemy
+iterator use-after-free and laser operator-new/free mismatch. These belong to
+historical source builds, not freshly reproduced original behavior. Six states
+sample source processes reaching stages1/3; separate fields and frame samples
+do not prove complete runs or matching game state. The accompanying runtime
+report also distinguishes these limits. Manifests list462/463/463 source inputs;
+447/454/454 match the pinned checkout and15/9/9 are stale. All three explicitly
+set full_game_equivalence_verified=false. No diagnostic utility was invoked,
+process attached, private build rerun or reference checkout changed.
+
+Private evidence: `.analysis/ref010-*`. Next: platform_window's189 indexed
+implementation entries, then all remaining native/script bodies and manual gaps.
 
 ## REF-009: program entry and frame schedulers reviewed
 
