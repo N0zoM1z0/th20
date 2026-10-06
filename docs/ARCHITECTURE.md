@@ -1,5 +1,13 @@
 # Target inventory and initial architecture boundary
 
+REF-038 establishes native EnemySpawn84 with Counter48 at20 and a four-byte
+value at50 (original tag/role unknown), current-first Enemy position interpolation
+100, generic Vector2 interpolation64 and movement388 with six real subobjects.
+Four complete natural constructors add405 bytes;166 canonical units/48 objects/
+11559 bytes replay. No whole Enemy or padding facade.236 more bodies individually
+reviewed, Gameplay553 pending; resource report has five stale source hashes.
+See REFERENCE_ENEMY_MOVEMENT_REVIEW.md.
+
 REF-037 establishes native ScriptStack24 as a PMR vector16 plus byte SP/BP,
 and EnemyCounters48 as four integer words/eight floats inside EnemyData.
 Six natural members add595 complete exact bytes, without reconstructing the

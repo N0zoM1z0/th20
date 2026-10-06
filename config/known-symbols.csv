@@ -162,3 +162,7 @@ address,name,module,confidence,evidence
 0x00540300,th20::ScriptStack::leave_frame,ScriptStack,high,REF-037
 0x0047BAA0,th20::EnemyCounters::EnemyCounters,EnemyCounters,high,REF-037
 0x004AB1B0,th20::EnemyCounters::reset,EnemyCounters,high,REF-037
+0x0047BB30,th20::EnemySpawn::EnemySpawn,EnemySpawn,high,REF-038
+0x0048B270,th20::EnemyMotionInterpolation::EnemyMotionInterpolation,EnemyMovement,high,REF-038
+0x0048B550,th20::EnemyMovement::EnemyMovement,EnemyMovement,high,REF-038
+0x00447AC0,th20::Vector2Interpolation::Interpolation,Interpolation,high,REF-038

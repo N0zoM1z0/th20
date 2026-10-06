@@ -160,3 +160,7 @@ th20::ScriptStack::local
 th20::ScriptStack::leave_frame
 th20::EnemyCounters::EnemyCounters
 th20::EnemyCounters::reset
+th20::EnemySpawn::EnemySpawn
+th20::EnemyMotionInterpolation::EnemyMotionInterpolation
+th20::EnemyMovement::EnemyMovement
+th20::Vector2Interpolation::Interpolation

@@ -32,6 +32,7 @@ void check_display_values();
 void check_dialogue_values();
 void check_scalar_math();
 void check_script_values();
+void check_enemy_values();
 
 namespace {
 unsigned callback_calls;
@@ -69,6 +70,7 @@ int main() {
     check_dialogue_values();
     check_scalar_math();
     check_script_values();
+    check_enemy_values();
     th20::trophy_text::Message message;
     std::memset(&message, 0xa5, sizeof(message));
     message.reset();

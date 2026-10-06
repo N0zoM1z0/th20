@@ -1,5 +1,40 @@
 # Verified facts and open hypotheses
 
+## REF-038 — 2026-10-07 — Enemy movement and spawn values
+
+- 236 bodies individually read/hash-bound,1 absorbed/36 nonexact/199 support;
+  prior movement ctor separately upgraded. Global5547/1397, grammar84/29.
+- Natural constructors47BB30/48B270/48B550/447AC0 exactly replay95/123/90/97
+  complete bytes. Four actual values84/100/388/64, independent original child
+  call anchors established before probes;166 units/48 cold objects/11559 bytes.
+- Spawn20 Counter48 has four integer/eight float words;50 native4-byte value
+  copies toEnemy8C. Identifier32 tag/role unknown. Shared425CC0 does not prove
+  AnimationHandle identity; no duplicate standalone canonical address credit.
+- Enemy position interpolation is current-first100 bytes with five Vec3 values,
+  Timer3C/duration4C/three axis modes50/shared5C/flags60. Native4A8D70 flag1
+  selects per-axis modes; existing84-byte ANM interpolation remains distinct.
+- Movement388 owns Motion0/position48/scalarAC,D8/vector104,144; original six
+  ctor calls close partition. Vector2 curve uses existing generic body. Ordinary
+  movement samples104 but not144. Full enclosing Enemy/update/PMR owners open.
+- Dirty guarded portable C++20/UBSan construction/reset tests and full canonical
+  replay pass. Source166/pending origins105/library4, authored57/4074 unchanged.
+- Eleven actual production TUs rebuilt after freeze, full/static COFF inventory
+  and37 unsliced diagnostics across36 bodies all differ in length:560 defined
+  symbols/189 static, no structural matches. Earlier unrelated receipts stale.
+- CPU1254134/0 and frame7682 assertions each match105 current source hashes;
+  movement94080/getters88666 finite prepared-object groups exclude documented
+  invalid/null/native full paths. Original RNG endpoints used by opcode host.
+- Resource3304 historical report matches100/105 hashes, not current Enemy/frame/
+  CPU driver/resource test/frame test. No fresh resource test or Windows oracle/
+  report writer executed; executed binary/toolchain/startup still unbound.
+- Frame source test destroys objects then PAGE_NOACCESS guards addresses; CPU20
+  hazard leaves retired storage accessible. Source observer fix deliberately
+  differs from original full flow. Ghidra void4A5040 is wrong:4A5300 returns int1.
+- Exact owners/field roles/allocator/lifetime/vptr/EH/merged getter and optional
+  Reader/Services ABIs remain open. Gameplay553 bodies remain pending; adapter
+  review does not close pending Damage/Mesh/Defeat or included test bodies.
+  Details: REFERENCE_ENEMY_MOVEMENT_REVIEW.md.
+
 ## REF-037 — 2026-10-07 — Enemy owner, stack and VM batch
 
 - All230 scoped bodies individually read/rebound:4 absorbed/62 nonexact/164

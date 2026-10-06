@@ -161,3 +161,7 @@ th20::ScriptStack::local,0x0053E6A0,function
 th20::ScriptStack::leave_frame,0x00540300,function
 th20::EnemyCounters::EnemyCounters,0x0047BAA0,function
 th20::EnemyCounters::reset,0x004AB1B0,function
+th20::EnemySpawn::EnemySpawn,0x0047BB30,function
+th20::EnemyMotionInterpolation::EnemyMotionInterpolation,0x0048B270,function
+th20::EnemyMovement::EnemyMovement,0x0048B550,function
+th20::Vector2Interpolation::Interpolation,0x00447AC0,function

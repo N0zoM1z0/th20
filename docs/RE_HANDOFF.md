@@ -1,5 +1,40 @@
 # Current reconstruction handoff
 
+## REF-038 — 2026-10-07 — Enemy movement/frame/spawn/read batch
+
+All236 scoped bodies individually reviewed:1 absorbed/36 nonexact/199 support;
+prior REF037 movement constructor upgraded separately to absorbed.23 indexed
+files, one grammar file/two default-Vec3 nodes reconciled. Global5,547 terminal/
+1,397 pending; grammar84/29; Gameplay553 pending. Exhaustive goal stays active.
+
+- Four natural full constructors add405 bytes:Spawn47BB30/95, current-first
+  EnemyMotionInterpolation48B270/123, Movement48B550/90, generic Vector2
+  Interpolation447AC0/97. Actual84/100/388/64-byte values; no whole Enemy facade.
+- Full166-unit/48-object cold canonical replay covers11,559 disjoint bytes.
+  Source166/pending origins105/library4; authored57/4,074 unchanged. Dirty
+  guarded construction and embedded Counter reset C++20/UBSan checks pass.
+- Spawn Counter20 is four integer/eight float words, tail50 a native4-byte
+  value subobject. Identifier32 original tag/role unknown; shared425CC0 is not
+  proof of AnimationHandle type and gets no second standalone address credit.
+- Eleven actual production TUs rebuilt after final source freeze; all unrelated
+  older reference receipts stale.560 defined symbols/189 static;37 complete
+  diagnostics across36 bodies all differ in length; no structural matches.
+- CPU1,254,134/0 and frame7,682 assertions bind105/105 current source hashes.
+  Movement94080/getters88666 are retained finite prepared-object groups;
+  no Windows oracle/report writer rerun, binary/compiler/startup unbound.
+- Resource3304-assertion report binds100/105 hashes only:Enemy/frame/CPU driver/
+  resource test/frame test stale. Current source review does not refresh that
+  historical result. GPU recorded; full simulation/drawing explicitly excluded.
+- Frame PAGE_NOACCESS test really destroys then guards retired storage; prior
+  CPU20 hazard fixture leaves it accessible. Full native-frame equivalence,
+  owner/allocator/vptr/EH, merged getter/Reader ABI and opcode dependencies open.
+- Private ref038-record.py executed ONCE; never rerun. All older
+  writers already executed. Maintained src/probes frozen at canonical replay.
+
+Continue553 Gameplay, Sprite540/StageBackground121 and183 other bodies plus29
+remaining grammar files. Serial MSVC/no subagents/English/repo-python/commit
+prefix/public main authorization persist. See REFERENCE_ENEMY_MOVEMENT_REVIEW.md.
+
 ## REF-037 — 2026-10-07 — Enemy owner, stack and VM batch
 
 All230 scoped Gameplay implementations individually reviewed:4 absorbed/62

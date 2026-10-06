@@ -1865,3 +1865,70 @@ relocations = [
   { offset = 0xAC, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
   { offset = 0xBD, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
 ]
+
+# REF-038: native spawn and movement values; independent original callee anchors.
+
+[units.enemy_spawn_construct]
+source = "src/EnemySpawn.cpp"
+object = "build/EnemySpawn.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemySpawn::EnemySpawn"]
+symbol = "??0EnemySpawn@th20@@QAE@XZ"
+target_address = 0x0047BB30
+size = 95
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x48, type = "REL32", symbol = "??0EnemyCounters@th20@@QAE@XZ", target = 0x0047BAA0 },
+  { offset = 0x53, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00425CC0 },
+]
+
+[units.enemy_motion_interpolation_construct]
+source = "src/EnemyMovement.cpp"
+object = "build/EnemyMovement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyMotionInterpolation::EnemyMotionInterpolation"]
+symbol = "??0EnemyMotionInterpolation@th20@@QAE@XZ"
+target_address = 0x0048B270
+size = 123
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x16, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x21, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2C, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x37, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x42, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+[units.enemy_movement_construct]
+source = "src/EnemyMovement.cpp"
+object = "build/EnemyMovement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyMovement::EnemyMovement"]
+symbol = "??0EnemyMovement@th20@@QAE@XZ"
+target_address = 0x0048B550
+size = 90
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Motion@th20@@QAE@XZ", target = 0x00478530 },
+  { offset = 0x16, type = "REL32", symbol = "??0EnemyMotionInterpolation@th20@@QAE@XZ", target = 0x0048B270 },
+  { offset = 0x24, type = "REL32", symbol = "??0?$Interpolation@M@th20@@QAE@XZ", target = 0x004479E0 },
+  { offset = 0x32, type = "REL32", symbol = "??0?$Interpolation@M@th20@@QAE@XZ", target = 0x004479E0 },
+  { offset = 0x40, type = "REL32", symbol = "??0?$Interpolation@UVector2@th20@@@th20@@QAE@XZ", target = 0x00447AC0 },
+  { offset = 0x4E, type = "REL32", symbol = "??0?$Interpolation@UVector2@th20@@@th20@@QAE@XZ", target = 0x00447AC0 },
+]
+
+[units.vector2_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2Interpolation::Interpolation"]
+symbol = "??0?$Interpolation@UVector2@th20@@@th20@@QAE@XZ"
+target_address = 0x00447AC0
+size = 97
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x16, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x21, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x2C, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x37, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x42, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]

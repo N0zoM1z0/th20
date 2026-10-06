@@ -78,7 +78,12 @@ actual VM/Enemy/vector/interpolation owners remain open. REF-036 closes all144
 ECL implementations, including the remaining128 with1 absorbed/26 nonexact/101
 support. Existing GameRandom::signed_unit absorbs the semantic adapter; no
 additional source/units. REF-037 closes230 Gameplay bodies and adds six natural
-ScriptStack/EnemyCounters members,595 complete bytes; Gameplay789 remains pending.
+ScriptStack/EnemyCounters members,595 complete bytes; Gameplay789 remains pending at that checkpoint. REF-038 adds
+src/EnemySpawn.hpp/.cpp and src/EnemyMovement.hpp/.cpp, and extends the shared
+Interpolation template naturally to Vector2. Four complete constructors405
+bytes exactly replay with actual84/100/388/64-byte values; all236 additional
+bodies individually reviewed, prior movement constructor upgraded separately.
+Gameplay553 remains pending. See REFERENCE_ENEMY_MOVEMENT_REVIEW.md.
 Native Stack/runtime/
 resource/vtable/allocator ownership differs from reference owning objects;
 see REFERENCE_GAMEPLAY_ECL_REVIEW.md.
