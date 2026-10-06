@@ -85,3 +85,6 @@ th20::InputButtonState::held_frame_count,0x004A0A20,function
 th20::Timer::operator=,0x00423520,function
 th20::trophy_text::decode,0x0052F060,function
 th20::trophy_text::Message::reset,0x0052F590,function
+th20::Timer::fraction,0x00423BD0,function
+th20::Timer::at_most,0x00423590,function
+th20::ColoredVertex::ColoredVertex,0x00423470,function

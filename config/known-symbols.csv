@@ -86,3 +86,6 @@ address,name,module,confidence,evidence
 0x00423520,th20::Timer::operator=,Timer,high,REF-020
 0x0052F060,th20::trophy_text::decode,TrophyText,high,REF-020
 0x0052F590,th20::trophy_text::Message::reset,TrophyText,high,REF-020
+0x00423BD0,th20::Timer::fraction,Timer,high,REF-021
+0x00423590,th20::Timer::at_most,Timer,high,REF-021
+0x00423470,th20::ColoredVertex::ColoredVertex,ColoredVertex,high,REF-021

@@ -232,6 +232,41 @@ target_address = 0x004785E0
 size = 46
 relocations = []
 
+# REF-021: complete shared members observed in ScreenInf update callers.
+# Original spelling and authored/shared/compiler origin remain pending.
+[units.timer_fraction]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::fraction"]
+symbol = "?fraction@Timer@th20@@QBEMXZ"
+target_address = 0x00423BD0
+size = 17
+relocations = []
+
+[units.timer_at_most]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::at_most"]
+symbol = "?at_most@Timer@th20@@QBE_NH@Z"
+target_address = 0x00423590
+size = 46
+relocations = []
+
+# REF-021: actual typed vertex construction, not a renderer layout facade.
+[units.colored_vertex_construct]
+source = "src/ColoredVertex.cpp"
+object = "build/ColoredVertex.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ColoredVertex::ColoredVertex"]
+symbol = "??0ColoredVertex@th20@@QAE@XZ"
+target_address = 0x00423470
+size = 43
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
 # REF-016: complete signed predicate used by Help's age thresholds.
 [units.timer_less_than]
 source = "src/Timer.cpp"

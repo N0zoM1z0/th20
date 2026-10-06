@@ -1,5 +1,45 @@
 # Current reconstruction handoff
 
+## REF-021 — 2026-10-07 — ScreenEffect batch checkpoint
+
+Exhaustive goal active. User requests related functions/modules in batches;
+retain individual body-hash outcomes and serial compiler/Ghidra discipline.
+All43 Screen entries reviewed:17 nonexact/26 support. Total1,092 terminal/
+5,852 pending of6,944; gaps21 reconciled/92 pending. CPU driver fully read;
+seven WINAPI annotations reconciled without changing reference source.
+
+- Three new complete exact shared contributions: Timer fraction423BD0/17,
+  signed <=423590/46, actual20-byte ColoredVertex ctor423470/43. Cold89/89,
+  twenty-two objects/5,662 bytes; authored56/4,056 unchanged, source89,
+  pending-origin29/library4. Original spelling/origin pending for all three.
+- Vertex is actual typed Vector3 + reciprocal-w12/color16. Native rectangle
+  array helper count4/stride20/ctor423470 and FVF44/stride20 establish complete
+  value owner. Existing Vector3 zero ctor422E10 anchor observed before probing.
+  No fake Screen/Game/Renderer facade, padding, inert locals or body copying.
+- All native17 main functions and relevant15 leaf-query addresses read;
+  seven extra actual entries decompiled. Main17 instruction bodies have no
+  holes. Initialization637 code +3 padding +40 jump-table bytes =680 contribution.
+  Native44 ScreenInf ctor187/dtor121 retain base/vptr/EH/diagnostics; factory
+  wrapper39/factory81/allocator65 and shutdown29 remain separate. Reference
+  changes callback wrappers and invalid-mode behavior. Full owner remains open.
+- Seven updates180/239/221/264/82/1040/1318; four draw callbacks128/172/105/202;
+  rectangle1407. Reference compiler complete sizes all17 differ; preserve no
+  prefix matches. All four original production TUs compile with declared public
+  include paths; no original CPU oracle compiled/run.
+- Native linear zero-Y uses camera3point2 at5C553C, nonzero point0Y5C552C;
+  reference preserves it. Envelope mask0x77/tail unsigned conversion and actual
+  two RNG stream1 calls checked. Four camera writes use stride16C/point8.
+- Retained124288/0 report verifies seven current source hashes and counts
+  7*4096*4 +640*5 +5*320*4. Full normalized68 owner/DE8 Graphics/RNG28,
+  recorded COM/vertex bytes/selected caches and normal lifecycle corroborated.
+  Report omits target/driver/dependency/toolchain hashes; SHA assertion in
+  driver alone cannot restore full historical build binding. Factories/shutdown,
+  invalid modes/heap failures/GPU/startup/concurrent or exception cleanup open.
+
+Next batch: text_renderer, then all remaining bodies and92 manual gap files.
+`.analysis/ref021-record.py` already executed; do not rerun. C++ source/profile
+frozen before final89-unit cold replay. Earlier counts below are historical.
+
 ## REF-020 — 2026-10-07 — Trophy batch checkpoint
 
 Exhaustive goal active; continue coherent batches with individual body-hash

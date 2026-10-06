@@ -26,6 +26,7 @@ struct Timer {
 
     Timer();
     operator std::int32_t() const;
+    float fraction() const;
     void operator=(std::int32_t value);
     // The divisor must be nonzero; INT32_MIN / -1 is outside the C++ domain.
     std::int32_t operator%(std::int32_t divisor) const;
@@ -39,6 +40,7 @@ struct Timer {
     void add(float delta);
     std::int32_t tick();
     bool at_least(std::int32_t value) const;
+    bool at_most(std::int32_t value) const;
     bool equals(std::int32_t value) const;
     bool less_than(std::int32_t value) const;
 };

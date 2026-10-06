@@ -40,11 +40,91 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 1,049 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/tool/test entries have explicit decisions. The
-remaining 5,895 indexed entries are pending. The separate
+The first 1,092 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/tool/test entries have explicit decisions. The
+remaining 5,852 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: twenty of 113 files are reconciled, leaving 93 pending.
+and parser-gap count: twenty-one of 113 files are reconciled, leaving 92 pending.
+
+## REF-021: ScreenEffect and shared Timer/vertex recovery batch
+
+All forty-three ScreenEffect entries have individual hash-bound decisions:
+seventeen nonexact and twenty-six support. Full production sources, header,
+CPU driver, CMake recipe and retained report were read. The driver's seven
+WINAPI annotation gaps are manually reconciled; all thirteen bodies are indexed.
+Coverage is 1,092 terminal/5,852 pending; gaps 21 reconciled/92 pending. All four
+unmodified production TUs freshly compile using their declared transitive
+sprite/runtime/gameplay include paths. Seventeen complete native contributions
+receive compiler size diagnostics; all differ in complete size. No native-sized
+prefix is compared or accepted, and the original CPU oracle is not compiled/run.
+
+Three natural shared contributions are newly canonical exact:
+
+| Member | Native address | Complete bytes |
+| --- | --- | --- |
+| Timer fractional age | 0x00423BD0 | 17 |
+| Timer signed <= predicate | 0x00423590 | 46 |
+| ColoredVertex construction | 0x00423470 | 43 |
+
+Both Timer bodies and their Screen update call sites are independently read.
+The getter returns offset8 through x87 ST0; the signed predicate reads current4,
+returns bool and cleans its integer argument. The vertex's complete 20-byte
+storage is independently established by array construction count4/stride20 in
+the original rectangle routine, typed Vector3 coordinate copies and FVF0x44/
+stride20 COM submission. Its constructor invokes the existing Vector3 zero
+constructor at422E10, then clears reciprocal-w12/color16. That relocation anchor
+precedes probing and all four bytes are replayed. Original source names and
+authored/shared/compiler/library origins of all three remain pending. Cold
+replay passes 89/89 units, twenty-two objects and 5,662 complete bytes. Authored
+credit remains56 functions/4,056 bytes; source mappings89, pending-origin29,
+library4. Reference aggregates and decompiler bodies are not imported.
+
+Actual ScreenInf has a16-byte TaskInf base, scalar fields10..2C, typed Timer30
+and view40, total44 hex bytes. Native constructor187/dtor121 include original
+base/vptr/EH/diagnostics/scheduler ownership that the reference changes.
+Initialization has637 instruction bytes throughRET24, three alignment bytes and
+ten-entry40-byte jump table, all read. It registers direct update24/drawpriority,
+sets mode3 alpha255, shutdown and actual Timer assignment, then scalar arguments.
+Reference constexpr arrays/forwarding callbacks and invalid-mode exception
+change this partition and policy. Native factory is39-byte default-view wrapper
+plus81-byte factory through65-byte diagnostic allocator; reference126-byte
+nothrow-new/memset/placement body merges them. Shutdown native29/source19 also
+changes tracked allocator ownership. No fake Screen/Game/Renderer receiver is
+introduced to absorb isolated field operations or the simple solid callback.
+
+All seven native update extents are contiguous, with no omitted instruction
+holes: fade-out180, fade-in239, hold221, flashes264, solid82, linear shake1040
+and envelope1318 bytes. Timer predicates/conversion/postfix/assignment remain
+distinct real members, while reference fields and free helpers change calls.
+Envelope checks flags0x77 and unsigned wrapped tail conversion; linear shake
+ticks before its termination test. The unsigned-conversion double table at
+56CDD0/56CDD8 is independently read as0.0/4294967296.0, selected by a logical
+shift of the input sign bit. Both callbacks consume two bounded3 calls from
+actual GameRandom stream1 at5BA4C4 and update four cameras. Native linear zero-Y really
+writes camera3point2 at5C553C, unlike its nonzero point0Y at5C552C; the reference
+preserves this observed asymmetry. The four drawing callbacks have complete
+128/172/105/202-byte extents. Native rectangle1407 creates typed vertices,
+performs eleven ordered COM calls and invokes six actual renderer-cache members;
+reference711-byte explicit receiver/device helper factors geometry and writes
+cache fields directly. None of these full owner/callback functions is exact.
+
+The retained124,288 checks/zero failures agree with all seven current reported
+source hashes and the driver arithmetic:7*4096*4 updates +640*5 lifecycle
++5*320*4 drawing. Updates compare full68-byte owner/return/fullDE8 Graphics/RNG28
+under dirty scalar/quarter-frame/nullable clock/Game/cancellation fixtures.
+Lifecycle covers ten valid modes, dirty construction, node registration and
+normal destructor removal; vptr/nodes are normalized and callback identities
+reduced to presence. It never invokes shutdown or either factory. Drawing records
+COM order/arguments/full vertex bytes, selected Controller caches and Graphics
+with host D3DX matrices. These are historical CPU/recording observations,
+excluding GPU pixels, invalid modes, allocation failures, startup, concurrent
+or exception lifetime. Manual process cleanup does not restore every mapped
+global. The report omits target SHA and hashes for the driver, dependencies and
+toolchain despite a SHA assertion in its driver, so a current full historical
+build binding cannot be established. Private evidence is `.analysis/ref021-*`.
+
+Next coherent batch: text_renderer, followed by all remaining indexed bodies
+and manual gaps. Earlier checkpoint counts below are historical.
 
 ## REF-020: Trophy queue, messages, resources and frame lifecycle batch
 

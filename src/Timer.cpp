@@ -9,6 +9,10 @@ Timer::operator std::int32_t() const {
     return current;
 }
 
+float Timer::fraction() const {
+    return current_fraction;
+}
+
 void Timer::operator=(std::int32_t value) {
     set(value);
 }
@@ -35,6 +39,10 @@ void Timer::operator--(int) {
 
 bool Timer::at_least(std::int32_t value) const {
     return current >= value;
+}
+
+bool Timer::at_most(std::int32_t value) const {
+    return current <= value;
 }
 
 bool Timer::equals(std::int32_t value) const {

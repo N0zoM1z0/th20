@@ -3,7 +3,7 @@
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
-| Timer | src/Timer.hpp, src/Timer.cpp | construction, current conversion/remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Fifteen complete exact functions; seven added construction/wrapper origins pending; integer += remains nonexact |
+| Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Seventeen complete exact functions; nine added construction/wrapper origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | enable 0x0041CCC0; disable 0x0041CA30 | Two exact flag assignments; tracked locking and original global lifetime pending |
@@ -22,6 +22,7 @@
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0 | Five complete exact members; original class spelling and authored/compiler/library origins pending |
+| ColoredVertex | src/ColoredVertex.hpp, src/ColoredVertex.cpp | typed value construction 0x00423470 | Complete 43-byte exact constructor; actual 20-byte value and Vector3 member established; original spelling/origin pending |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
@@ -30,9 +31,23 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns twenty-one objects and one canonical profile per source.
-Eighty-six units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns twenty-two objects and one canonical profile per source.
+Eighty-nine units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-021 reviews ScreenEffect as a complete batch and adds two real Timer members:
+the 17-byte fractional-age read at 0x00423BD0 and the 46-byte signed <= predicate
+at 0x00423590. The original read returns through x87 ST0; the predicate retains
+thiscall/bool/RET4. Original names and origins remain pending.
+
+The native rectangle routine constructs four ColoredVertex values through an
+array-construction helper with stride 20 and constructor 0x00423470. Each value
+contains the existing typed Vector3, reciprocal w and color at offsets 0/12/16.
+Its constructor calls the independently recovered Vector3 zero constructor,
+then clears the remaining fields. Rectangle drawing later sets reciprocal w to
+one and packs diffuse color before FVF 0x44/stride-20 submission. This accepts
+the complete value constructor; full ScreenInf, renderer caches, D3D device and
+allocator lifetimes remain open. No enclosing owner facade is introduced.
 
 REF-019 batches the Timer and physical input protocols used by Ending. Timer's
 actual constructor initializes four words, including positive floating zero.
