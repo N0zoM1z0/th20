@@ -18,3 +18,14 @@ th20::FunctionChainNode::set_shutdown_callback
 th20::FunctionChainNode::clear_callbacks
 th20::FunctionChainLink::insert_after
 th20::FunctionChainLink::insert_before
+th20::LockRegistry::enable
+th20::LockRegistry::disable
+th20::DebugMemoryResource::do_is_equal
+th20::TaskInfo::enable_callbacks
+th20::TaskInfo::disable_callbacks
+th20::TaskInfo::enable
+th20::TaskInfo::disable
+th20::TaskInfo::~TaskInfo
+th20::Worker::Worker
+th20::DebugMemoryResource::DebugMemoryResource
+th20::DebugMemoryResource::~DebugMemoryResource

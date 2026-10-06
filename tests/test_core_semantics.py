@@ -18,6 +18,7 @@ class CoreSemanticsTests(unittest.TestCase):
             subprocess.run([compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                             "-fsanitize=undefined", "-Isrc", "tests/core_semantics.cpp",
                             "src/Random.cpp", "src/Timer.cpp", "src/ClockScalar.cpp",
-                            "src/FunctionChain.cpp", "-o", str(output)],
+                            "src/FunctionChain.cpp", "src/LockRegistry.cpp", "src/TaskInfo.cpp",
+                            "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

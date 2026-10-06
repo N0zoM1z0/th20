@@ -2,11 +2,14 @@
 #include "Timer.hpp"
 #include "ClockScalar.hpp"
 #include "FunctionChain.hpp"
+#include "LockRegistry.hpp"
+#include "TaskInfo.hpp"
 
 #include <array>
 #include <bit>
 #include <cassert>
 #include <cstdint>
+#include <cstring>
 #include <limits>
 
 namespace {
@@ -144,4 +147,45 @@ int main() {
     first.insert_before(&before_first);
     assert(before_first.next == &first && first.previous == &before_first);
     assert(before_first.previous == nullptr);
+
+    th20::LockRegistry registry;
+    assert(!registry.enabled());
+    std::array<unsigned char, sizeof(registry)> registry_before{}, registry_after{};
+    std::memcpy(registry_before.data(), &registry, sizeof(registry));
+    registry.enable();
+    assert(registry.enabled());
+    std::memcpy(registry_after.data(), &registry, sizeof(registry));
+    unsigned changed = 0;
+    for (std::size_t index = 0; index != registry_before.size(); ++index) {
+        if (registry_before[index] != registry_after[index]) {
+            ++changed;
+            assert(registry_before[index] == 0 && registry_after[index] == 1);
+        }
+    }
+    assert(changed == 1); // Locks, tracked depths and adjacent storage survive.
+    registry.disable();
+    assert(!registry.enabled());
+    std::memcpy(registry_after.data(), &registry, sizeof(registry));
+    assert(registry_before == registry_after);
+
+    th20::TaskInfo task;
+    assert(task.flags == 2 && task.update_node == nullptr && task.draw_node == nullptr);
+    th20::TaskInfo* virtual_task = &task;
+    virtual_task->enable();
+    virtual_task->disable();
+    th20::FunctionChainNode update{0, 0xffffffffu, callback_a, callback_b, callback_c,
+                                  th20::FunctionChainLink{}, &context};
+    th20::FunctionChainNode draw{0, 0x12345678u, callback_a, callback_b, callback_c,
+                                th20::FunctionChainLink{}, &context};
+    task.update_node = &update;
+    virtual_task->disable();
+    assert(update.flags == 0xfffffffdu && draw.flags == 0x12345678u);
+    task.draw_node = &draw;
+    virtual_task->enable();
+    assert(update.flags == 0xffffffffu && draw.flags == 0x1234567au);
+    task.update_node = nullptr;
+    virtual_task->disable();
+    assert(update.flags == 0xffffffffu && draw.flags == 0x12345678u);
+    assert(task.flags == 2 && callback_calls == 0);
+    assert(update.callback == callback_a && draw.userdata == &context);
 }

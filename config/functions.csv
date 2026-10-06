@@ -61,7 +61,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0040B710,29,0x0040B72C,FUN_0040b710,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040B730,35,0x0040B752,FUN_0040b730,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040B760,23,0x0040B776,FUN_0040b760,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0040B780,44,0x0040B7AB,FUN_0040b780,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0040B780,44,0x0040B7AB,FUN_0040b780,th20::Worker::Worker,Worker,matching,100.00,__thiscall,Worker::Worker() noexcept,false,src/Worker.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x0040B7B0,91,0x0040B80A,FUN_0040b7b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040B810,50,0x0040B841,FUN_0040b810,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040B850,46,0x0040B87D,FUN_0040b850,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -563,10 +563,10 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00418A50,40,0x00418A77,FUN_00418a50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00418A80,55,0x00418AB6,FUN_00418a80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00418AC0,741,0x00418DA4,FUN_00418ac0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00418DB0,31,0x00418DCE,FUN_00418db0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00418DB0,31,0x00418DCE,FUN_00418db0,th20::DebugMemoryResource::DebugMemoryResource,DebugMemoryResource,reconstructed,100.00,__thiscall,DebugMemoryResource::DebugMemoryResource(),false,src/DebugMemoryResource.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,Complete canonical exact replay; custom class identity known; empty/defaulted lifetime contribution origin pending; excluded from authored credit
 0x00418DD0,108,0x00418E3B,FUN_00418dd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00418E40,62,0x00418E7D,std::shared_ptr<__ExceptionPtr>::~shared_ptr<__ExceptionPtr>,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00418E90,29,0x00418EAC,FUN_00418e90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00418E90,29,0x00418EAC,FUN_00418e90,th20::DebugMemoryResource::~DebugMemoryResource,DebugMemoryResource,reconstructed,100.00,__thiscall,virtual DebugMemoryResource::~DebugMemoryResource(),false,src/DebugMemoryResource.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,Complete canonical exact replay; custom class identity known; empty/defaulted lifetime contribution origin pending; excluded from authored credit
 0x00418EB0,105,0x00418F18,FUN_00418eb0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00418F20,105,0x00418F88,FUN_00418f20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00418F90,114,0x00419001,FUN_00418f90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -626,9 +626,9 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0041C320,180,0x0041C3D3,FUN_0041c320,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041C3E0,838,0x0041C725,FUN_0041c3e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041C730,697,0x0041C9E8,FUN_0041c730,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041C9F0,15,0x0041C9FE,FUN_0041c9f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041C9F0,15,0x0041C9FE,FUN_0041c9f0,th20::DebugMemoryResource::do_is_equal,DebugMemoryResource,matching,100.00,__thiscall,bool DebugMemoryResource::do_is_equal(const std::pmr::memory_resource&) const noexcept,false,src/DebugMemoryResource.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x0041CA00,48,0x0041CA2F,FID_conflict:erase,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041CA30,21,0x0041CA44,FUN_0041ca30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041CA30,21,0x0041CA44,FUN_0041ca30,th20::LockRegistry::disable,LockRegistry,matching,100.00,__thiscall,void LockRegistry::disable(),false,src/LockRegistry.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x0041CA50,31,0x0041CA6E,FUN_0041ca50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041CA70,17,0x0041CA80,FUN_0041ca70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041CA90,17,0x0041CAA0,FUN_0041ca90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -638,7 +638,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0041CB10,346,0x0041CC69,FUN_0041cb10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041CC70,20,0x0041CC83,FUN_0041cc70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041CC90,40,0x0041CCB7,FUN_0041cc90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041CCC0,21,0x0041CCD4,FUN_0041ccc0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041CCC0,21,0x0041CCD4,FUN_0041ccc0,th20::LockRegistry::enable,LockRegistry,matching,100.00,__thiscall,void LockRegistry::enable(),false,src/LockRegistry.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x0041CCF0,905,0x0041D078,FUN_0041ccf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041D080,25,0x0041D098,FUN_0041d080,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041D0A0,25,0x0041D0B8,FUN_0041d0a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -700,7 +700,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0041FCB0,102,0x0041FD15,FUN_0041fcb0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041FD20,68,0x0041FD63,FUN_0041fd20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041FD70,120,0x0041FDE7,FUN_0041fd70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041FDF0,20,0x0041FE03,FUN_0041fdf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041FDF0,20,0x0041FE03,FUN_0041fdf0,th20::TaskInfo::~TaskInfo,TaskInfo,reconstructed,100.00,__thiscall,virtual TaskInfo::~TaskInfo(),false,src/TaskInfo.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,Complete canonical exact replay; custom class identity known; empty/defaulted lifetime contribution origin pending; excluded from authored credit
 0x0041FE10,49,0x0041FE40,FUN_0041fe10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041FE50,46,0x0041FE7D,FUN_0041fe50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041FE80,762,0x00420179,FUN_0041fe80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -718,12 +718,12 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00421040,132,0x004210C3,FUN_00421040,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004210D0,170,0x00421179,FUN_004210d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00421180,1276,0x0042167B,FUN_00421180,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00421680,20,0x00421693,FUN_00421680,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004216A0,53,0x004216D4,FUN_004216a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00421680,20,0x00421693,FUN_00421680,th20::TaskInfo::enable,TaskInfo,matching,100.00,__thiscall,virtual void TaskInfo::enable(),false,src/TaskInfo.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
+0x004216A0,53,0x004216D4,FUN_004216a0,th20::TaskInfo::enable_callbacks,TaskInfo,matching,100.00,__thiscall,void TaskInfo::enable_callbacks(),false,src/TaskInfo.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x004216E0,50,0x00421711,CDocObjectServer::ReleaseDocSite,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00421720,50,0x00421751,FUN_00421720,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00421760,20,0x00421773,FUN_00421760,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00421780,53,0x004217B4,FUN_00421780,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00421760,20,0x00421773,FUN_00421760,th20::TaskInfo::disable,TaskInfo,matching,100.00,__thiscall,virtual void TaskInfo::disable(),false,src/TaskInfo.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
+0x00421780,53,0x004217B4,FUN_00421780,th20::TaskInfo::disable_callbacks,TaskInfo,matching,100.00,__thiscall,void TaskInfo::disable_callbacks(),false,src/TaskInfo.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x004217C0,42,0x004217E9,FUN_004217c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004217F0,27,0x0042180A,FUN_004217f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00421810,17,0x00421820,FUN_00421810,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

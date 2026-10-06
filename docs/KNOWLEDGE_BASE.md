@@ -1,5 +1,53 @@
 # Verified facts and open hypotheses
 
+## REF-003 — 2026-10-06
+
+- Individually reviewed: all 67 explicit runtime_core bodies across nine files;
+  126 total indexed decisions, 6,582 pending. One WINAPI annotation parser gap
+  manually reconciled, 103 gap files still pending. File and body hash gates
+  prevent silently carrying decisions to different reference revisions.
+- Independently observed: original registry has 22 x86 recursive mutexes of
+  48 bytes, 22 depth bytes at +0x420 and enabled byte at +0x436. Natural enable
+  and disable fully replay 21 bytes each. Original accessors are unchecked;
+  reference array.at bounds checks prevent direct accessor absorption.
+- Independently file-backed: vtable 0x56C920 and RTTI debug_memory_resource
+  establish a custom four-slot PMR receiver. Natural defaulted construction,
+  destruction and always-true equality replay 31/29/15 bytes. Shared std base
+  helper anchors at 0x40BDA0/0x40E5E0 are independently checked; shared empty
+  emission does not establish unique owners for those helper addresses.
+- Independently file-backed: vtable 0x56D4C0 has three slots and TaskInf RTTI.
+  TaskInfo restores the 20-byte destructor and separate 20-byte virtual
+  forwarding/53-byte nullable node operations in each direction. Default
+  flags=2/null-node semantics are represented but native construction is open.
+- Independently observed/corroborated: Worker 0x40B780 calls the jthread
+  constructor at 0x40B810 and atomic<bool>(false) at 0x40B710. Their separately
+  queried chains and installed MSVC headers establish library identities.
+  Natural maintained construction fully replays 44 bytes with both calls,
+  initializes +0..+12 and preserves tail padding without explicit padding.
+- Compiler-observed: cold 31/31 canonical units across eight objects compare
+  1,777 complete bytes. Authored exactness: 24 functions, 1,478 bytes; eleven
+  new native contributions add 327 bytes. No prefix slicing or solved-field
+  canonical anchors were used. Vtable/RTTI data emission is not claimed exact.
+- Origin remains pending for three exact empty/defaulted PMR/TaskInfo lifetime
+  contributions: custom RTTI establishes class identity, without distinguishing
+  authored code from compiler synthesis. Their 80 bytes receive no authored
+  credit; this checkpoint adds eight authored contributions totaling 247 bytes.
+- Portable UBSan checks: registry toggles preserve adjacent storage; TaskInfo
+  null/one/two-node operations mask only disable bits and preserve callback/data
+  state without invoking callbacks. Linux mutex layout is not x86 evidence.
+- Recorded semantic mismatch: reference finish_log throws on failed CP932
+  conversion, whereas native 0x453220 calls MessageBoxW without checking that
+  return. Native graphics 0x4D9E30 logs before closing Worker member +0xD90;
+  free Worker-only composition omits the enclosing receiver and diagnostic.
+- Unknown/pending: PMR allocation/deallocation, Worker close/detach/join and
+  destructor, native allocator deleting flags/global lock lifetime, native
+  variadic logging/failure paths and whole-program linkage/runtime. Reference
+  isolated CPU fixtures share source PMR/thread state and omit these paths.
+
+Private evidence: .analysis/ref003-*, reference-functions/exact-replay-007.log
+and compiler receipts under build/. Maintained public credit links identify
+Oracatt/Touhou20 as the review reference and N0zoM1z0/th095 as workflow origin.
+
 ## REF-002 — 2026-10-06
 
 - Review coverage: 6,708 explicit nongenerated definitions in 916 C/C++ files;

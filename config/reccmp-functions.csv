@@ -19,3 +19,14 @@ th20::FunctionChainNode::set_shutdown_callback,0x00412DA0,function
 th20::FunctionChainNode::clear_callbacks,0x00411B80,function
 th20::FunctionChainLink::insert_after,0x00411EE0,function
 th20::FunctionChainLink::insert_before,0x00411F30,function
+th20::LockRegistry::enable,0x0041CCC0,function
+th20::LockRegistry::disable,0x0041CA30,function
+th20::DebugMemoryResource::do_is_equal,0x0041C9F0,function
+th20::TaskInfo::enable_callbacks,0x004216A0,function
+th20::TaskInfo::disable_callbacks,0x00421780,function
+th20::TaskInfo::enable,0x00421680,function
+th20::TaskInfo::disable,0x00421760,function
+th20::TaskInfo::~TaskInfo,0x0041FDF0,function
+th20::Worker::Worker,0x0040B780,function
+th20::DebugMemoryResource::DebugMemoryResource,0x00418DB0,function
+th20::DebugMemoryResource::~DebugMemoryResource,0x00418E90,function

@@ -1,5 +1,46 @@
 # Current reconstruction handoff
 
+## REF-003 — 2026-10-06 — runtime review checkpoint
+
+The exhaustive user goal remains active. Every existing implementation needs
+an individual decision; record difficult cases and continue without a module
+default rejection. Next: archive source/ownership and its tests, followed by
+every remaining indexed implementation and parser gap.
+
+- Added explicit README credits to Oracatt/Touhou20 and N0zoM1z0/th095.
+- All nine runtime_core source/header/include files and 67 explicit bodies
+  reviewed: nine absorbed reference bodies, twenty-four native deferred cases,
+  thirty-four integration/test helpers. Each decision binds its own body hash.
+- Total explicit decisions: 126; 6,582 indexed bodies still pending.
+- cpu_compare.cpp's single WINAPI annotation parse gap manually reconciled
+  against the full file and five indexed definitions. Public hash/count-bound
+  reconciliation ledger leaves 103 of 104 gap files pending.
+- Eleven new full canonical units: LockRegistry flag members, custom PMR
+  constructor/destructor/equality, TaskInfo destructor/virtual wrappers/helpers,
+  and Worker construction. Independent file-backed RTTI/vtable and separately
+  queried library/node callees establish all anchors before canonical replay.
+- Cold complete replay: 31/31 units, eight objects, 1,777 compared bytes.
+  Authored exact: 24 functions, 1,478 bytes; source-present mappings: 31.
+- Three exact empty/defaulted PMR/TaskInfo lifetime contributions have pending
+  authored/compiler origins and no authored credit, in addition to two pending
+  float-view functions and two excluded STL equivalents.
+- Worker destructor and custom PMR allocation/deallocation remain declared
+  without definitions. These are partial owners, not complete linked services.
+- Deferred concrete contracts include checked versus unchecked indexing,
+  fixed native globals, allocator receiver/deleting flags, CRT new-handler
+  paths, native variadic logging and conversion-failure behavior, and graphics
+  0x4D9E30 owning its Worker at +0xD90. Read the individual review rows.
+- Portable UBSan tests cover registry representation-preserving toggles and
+  nullable TaskInfo callback masking, plus all previously accepted components.
+- The installed D: runtime play aid matches the maintained no-hit scripts;
+  hits return before effects/death. Actual hit playthrough remains unverified.
+
+Private evidence: .analysis/ref003-*, reference-functions/exact-replay-007.log
+and build object receipts. Public CI and private tracking gates pass. No
+reference implementation text or executable bytes were imported publicly.
+Read REFERENCE_FUNCTION_REVIEW.md and SOURCE_MAP.md; do not equate this bounded
+runtime checkpoint with completing the exhaustive reference goal.
+
 ## REF-002 — 2026-10-06 — exhaustive review remains active
 
 The user clarified that every existing reference implementation must receive

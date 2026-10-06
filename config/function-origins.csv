@@ -61,7 +61,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040B710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040B780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040B780,authored,Worker,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x0040B7B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -563,10 +563,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00418A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00418DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00418DB0,unknown,DebugMemoryResource,review,pending,REF-003; custom class RTTI known; empty/defaulted lifetime contribution authorship versus compiler synthesis unresolved
 0x00418DD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00418E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00418E90,unknown,DebugMemoryResource,review,pending,REF-003; custom class RTTI known; empty/defaulted lifetime contribution authorship versus compiler synthesis unresolved
 0x00418EB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418F90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -626,9 +626,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041C320,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041C3E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041C730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041C9F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041C9F0,authored,DebugMemoryResource,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x0041CA00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041CA30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041CA30,authored,LockRegistry,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x0041CA50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CA90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -638,7 +638,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041CB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041CCC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041CCC0,authored,LockRegistry,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x0041CCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -700,7 +700,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041FCB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041FD20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041FD70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041FDF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041FDF0,unknown,TaskInfo,review,pending,REF-003; custom class RTTI known; empty/defaulted lifetime contribution authorship versus compiler synthesis unresolved
 0x0041FE10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041FE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041FE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -718,12 +718,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00421040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004210D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00421680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004216A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00421680,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
+0x004216A0,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x004216E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00421760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00421780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00421760,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
+0x00421780,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x004217C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004217F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -226,3 +226,134 @@ symbol = "?insert_before@FunctionChainLink@th20@@QAEXPAU12@@Z"
 target_address = 0x00411F30
 size = 76
 relocations = []
+
+[units.registry_enable]
+source = "src/LockRegistry.cpp"
+object = "build/LockRegistry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::LockRegistry::enable"]
+symbol = "?enable@LockRegistry@th20@@QAEXXZ"
+target_address = 0x0041CCC0
+size = 21
+relocations = []
+
+[units.registry_disable]
+source = "src/LockRegistry.cpp"
+object = "build/LockRegistry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::LockRegistry::disable"]
+symbol = "?disable@LockRegistry@th20@@QAEXXZ"
+target_address = 0x0041CA30
+size = 21
+relocations = []
+
+[units.debug_resource_equal]
+source = "src/DebugMemoryResource.cpp"
+object = "build/DebugMemoryResource.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DebugMemoryResource::do_is_equal"]
+symbol = "?do_is_equal@DebugMemoryResource@th20@@EBE_NABVmemory_resource@pmr@std@@@Z"
+target_address = 0x0041C9F0
+size = 15
+relocations = []
+
+[units.task_enable_callbacks]
+source = "src/TaskInfo.cpp"
+object = "build/TaskInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::TaskInfo::enable_callbacks"]
+symbol = "?enable_callbacks@TaskInfo@th20@@QAEXXZ"
+target_address = 0x004216A0
+size = 53
+relocations = [
+  { offset = 0x17, type = "REL32", symbol = "?enable@FunctionChainNode@th20@@QAEXXZ", target = 0x00412D80 },
+  { offset = 0x2C, type = "REL32", symbol = "?enable@FunctionChainNode@th20@@QAEXXZ", target = 0x00412D80 },
+]
+
+[units.task_disable_callbacks]
+source = "src/TaskInfo.cpp"
+object = "build/TaskInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::TaskInfo::disable_callbacks"]
+symbol = "?disable_callbacks@TaskInfo@th20@@QAEXXZ"
+target_address = 0x00421780
+size = 53
+relocations = [
+  { offset = 0x17, type = "REL32", symbol = "?disable@FunctionChainNode@th20@@QAEXXZ", target = 0x004127F0 },
+  { offset = 0x2C, type = "REL32", symbol = "?disable@FunctionChainNode@th20@@QAEXXZ", target = 0x004127F0 },
+]
+
+[units.task_enable]
+source = "src/TaskInfo.cpp"
+object = "build/TaskInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::TaskInfo::enable"]
+symbol = "?enable@TaskInfo@th20@@UAEXXZ"
+target_address = 0x00421680
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?enable_callbacks@TaskInfo@th20@@QAEXXZ", target = 0x004216A0 },
+]
+
+[units.task_disable]
+source = "src/TaskInfo.cpp"
+object = "build/TaskInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::TaskInfo::disable"]
+symbol = "?disable@TaskInfo@th20@@UAEXXZ"
+target_address = 0x00421760
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?disable_callbacks@TaskInfo@th20@@QAEXXZ", target = 0x00421780 },
+]
+
+[units.task_destroy]
+source = "src/TaskInfo.cpp"
+object = "build/TaskInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::TaskInfo::~TaskInfo"]
+symbol = "??1TaskInfo@th20@@UAE@XZ"
+target_address = 0x0041FDF0
+size = 20
+relocations = [
+  { offset = 0xC, type = "DIR32", symbol = "??_7TaskInfo@th20@@6B@", target = 0x0056D4C0 },
+]
+
+[units.worker_construct]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::Worker::Worker"]
+symbol = "??0Worker@th20@@QAE@XZ"
+target_address = 0x0040B780
+size = 44
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "??0jthread@std@@QAE@XZ", target = 0x0040B810 },
+  { offset = 0x20, type = "REL32", symbol = "??0?$atomic@_N@std@@QAE@_N@Z", target = 0x0040B710 },
+]
+
+[units.debug_resource_construct]
+source = "src/DebugMemoryResource.cpp"
+object = "build/DebugMemoryResource.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DebugMemoryResource::DebugMemoryResource"]
+symbol = "??0DebugMemoryResource@th20@@QAE@XZ"
+target_address = 0x00418DB0
+size = 31
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0memory_resource@pmr@std@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x14, type = "DIR32", symbol = "??_7DebugMemoryResource@th20@@6B@", target = 0x0056C920 },
+]
+
+[units.debug_resource_destroy]
+source = "src/DebugMemoryResource.cpp"
+object = "build/DebugMemoryResource.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DebugMemoryResource::~DebugMemoryResource"]
+symbol = "??1DebugMemoryResource@th20@@UAE@XZ"
+target_address = 0x00418E90
+size = 29
+relocations = [
+  { offset = 0xC, type = "DIR32", symbol = "??_7DebugMemoryResource@th20@@6B@", target = 0x0056C920 },
+  { offset = 0x14, type = "REL32", symbol = "??1memory_resource@pmr@std@@UAE@XZ", target = 0x0040E5E0 },
+]

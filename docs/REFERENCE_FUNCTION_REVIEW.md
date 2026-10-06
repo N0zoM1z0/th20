@@ -29,8 +29,10 @@ reference source bytes are never edited.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 59 native-core/export/scheduler bodies have explicit decisions.
-The remaining 6,649 indexed bodies and parse gaps are still pending.
+The first 126 native-core/export/scheduler/runtime bodies have explicit decisions.
+The remaining 6,582 indexed bodies are pending. The separate
+`reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
+and parser-gap count: one of 104 files is reconciled, leaving 103 pending.
 
 ## Native core: accepted components
 
@@ -47,10 +49,11 @@ are distinguished from the original ECX receiver ABI.
 | 0x00452F50 | 35 | ClockScalar::operator* | Passed | Origin pending |
 
 Existing Random and Timer reset/set units still pass. Current cold replay is
-twenty complete units, 1,450 bytes, four independently rebuilt objects.
-Authored Timer/FunctionChain credit is sixteen functions, 1,231 bytes. RNG is excluded as STL;
-the two shared float-view functions remain under origin review and are not
-added to authored totals. Exact names do not establish an enclosing clock or
+thirty-one complete units, 1,777 bytes, eight independently rebuilt objects.
+Authored credit is twenty-four functions, 1,478 bytes. RNG is excluded as STL;
+the two shared float-view functions and three empty/defaulted lifetime
+contributions remain under origin review and are not added to authored totals.
+Exact names do not establish an enclosing clock or
 interpolation type.
 
 ### Mode representation
@@ -144,6 +147,86 @@ Private independent evidence is in .analysis/ref002-scheduler-{leaves,links,
 dispatch,remaining}.* and exact-replay-004.log. Reference TU compilation is
 only diagnostic; no behavior claim is inherited from its passing tests.
 
+## REF-003: runtime_core's 67 explicit definitions reviewed
+
+All nine nongenerated runtime_core source/header/include files were read.
+Their 52 candidate and 15 test/oracle definitions each have a body-hash-bound
+decision: nine absorbed reference bodies, twenty-four deferred native cases
+and thirty-four integration/test helpers. Those nine absorbed bodies restore
+eleven distinct original contributions; wrappers/helpers are counted once per
+original address. No other module is marked reviewed by this checkpoint.
+
+| Maintained contribution | Original entry | Complete bytes |
+| --- | --- | ---: |
+| LockRegistry::enable / disable | 0x0041CCC0 / 0x0041CA30 | 21 / 21 |
+| DebugMemoryResource constructor / destructor | 0x00418DB0 / 0x00418E90 | 31 / 29 |
+| DebugMemoryResource::do_is_equal | 0x0041C9F0 | 15 |
+| TaskInfo::~TaskInfo | 0x0041FDF0 | 20 |
+| TaskInfo virtual enable / disable | 0x00421680 / 0x00421760 | 20 / 20 |
+| TaskInfo enable / disable helpers | 0x004216A0 / 0x00421780 | 53 / 53 |
+| Worker constructor | 0x0040B780 | 44 |
+
+Cold canonical replay passes every byte and relocation of these eleven units,
+327 new compared bytes, of which 247 receive authored credit. Existing units remain exact. The complete replay is
+31/31 units across eight freshly built objects; comparison includes all 1,777
+bytes, with 1,478 authored bytes. Partial PMR/Worker declarations do not close
+allocation or thread lifetimes, and no whole-program linkage is claimed.
+
+Custom RTTI establishes the PMR/TaskInfo class identity, but does not identify
+whether their empty/defaulted constructor/destructor contributions were
+authored or synthesized by the compiler. Those three full exact functions stay
+under origin review and receive no authored credit; their units remain replayable.
+
+Independent constructor disassembly establishes 22 recursive mutexes of 48
+bytes, followed by 22 depth bytes and the enable byte at +0x436. Portable tests
+check that toggling changes only that byte and restores the object state;
+Linux mutex storage is not used as proof of the x86 representation.
+
+Raw file-backed RTTI and vtables independently establish debug_memory_resource
+at 0x0056C920 with four PMR slots, and TaskInf at 0x0056D4C0 with three slots.
+The PMR equality override always returns true; installed standard new/delete
+resources use identity equality, corroborating a custom implementation. Natural
+defaulted custom construction/destruction call the original shared std base
+helpers and install the observed custom vtable. Matching these function bodies
+does not establish complete matching vtable/RTTI data or deleting destructors.
+
+TaskInfo restores virtual forwarding plus separate two-node helpers rather
+than merging both into each virtual body. Portable tests cover null, one and
+two nodes, masking only the disabled flag, preserving callback/data state and
+never invoking callbacks. Worker construction follows independently checked
+jthread and atomic<bool> constructor chains: twelve-byte thread state at +0,
+false at +12, preserved tail padding. Installed MSVC headers corroborate those
+library identities before canonical anchors are accepted.
+
+Each deferred case records its own evidence and follow-up. Specific differences
+include reference array.at bounds checks versus unchecked native indexing;
+lazy lock singleton versus fixed native global storage; native allocator
+receiver/deleting flags versus free factories; raw allocation's two native
+arguments and new-handler failure path; merged va_list logging versus two
+complete cdecl variadic entries; and a conversion-failure exception absent
+from the original finish-log body. The reference worker synchronization helper
+is not the complete graphics member at 0x004D9E30: that native body logs a
+diagnostic and closes its Worker subobject at +0xD90.
+
+Program-entry bridges and injected renderer lambdas are recorded as reference
+integration support, not duplicate native implementations. The isolated CPU
+oracle resolves selected imports/heap state and redirects the mapped original
+PMR default global to a source resource. It checks limited constructor, lock,
+string, allocation and source-created-thread cases. It omits allocation
+failure/new-handler, original variadic formatting, MessageBox and original game
+entry. Its report is not inherited as our runtime acceptance. Source-only
+tests and every explicit fixture lambda are reviewed separately.
+
+Manual reconciliation of cpu_compare.cpp's sole parse gap identifies WINAPI
+on line 10 as the annotation error. Full reading accounts for all five explicit
+bodies and the separately indexed included worker fixtures. The hash/count
+binding is checked publicly; no completeness claim follows for the other 103
+files with parser gaps.
+
+Private independent evidence: .analysis/ref003-runtime{,-extra}.asm,
+ref003-{resource,task}-vtable.json, ref003-worker-{construct,library}-anchors.asm,
+ref003-pmr-base-anchors.asm and reference-functions/exact-replay-007.log.
+
 ## Compiler diagnostics and remaining work
 
 `compile-reference-probes.py` compiles unmodified reference translation units
@@ -160,8 +243,8 @@ receipt, all source fingerprints and included headers; stale entries and failed
 compilations are retried rather than being accepted by source hash alone. The standalone verifier needs its
 declared CMake definitions; that build issue carries no algorithm conclusion.
 
-Next: individually review runtime and archive ownership, then every remaining
-implementation. Deferred scheduler owner/EH recovery is recorded separately.
+Next: individually review archive ownership, then every remaining
+implementation. Deferred scheduler/runtime owner/EH recovery is recorded separately.
 Continue through every indexed implementation; investigate and record hard
 cases without stalling or marking untouched bodies as reviewed.
 

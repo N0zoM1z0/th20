@@ -20,3 +20,14 @@ address,name,module,confidence,evidence
 0x00411B80,th20::FunctionChainNode::clear_callbacks,FunctionChain,high,REF-002
 0x00411EE0,th20::FunctionChainLink::insert_after,FunctionChain,high,REF-002
 0x00411F30,th20::FunctionChainLink::insert_before,FunctionChain,high,REF-002
+0x0041CCC0,th20::LockRegistry::enable,LockRegistry,high,REF-003
+0x0041CA30,th20::LockRegistry::disable,LockRegistry,high,REF-003
+0x0041C9F0,th20::DebugMemoryResource::do_is_equal,DebugMemoryResource,high,REF-003
+0x004216A0,th20::TaskInfo::enable_callbacks,TaskInfo,high,REF-003
+0x00421780,th20::TaskInfo::disable_callbacks,TaskInfo,high,REF-003
+0x00421680,th20::TaskInfo::enable,TaskInfo,high,REF-003
+0x00421760,th20::TaskInfo::disable,TaskInfo,high,REF-003
+0x0041FDF0,th20::TaskInfo::~TaskInfo,TaskInfo,high,REF-003
+0x0040B780,th20::Worker::Worker,Worker,high,REF-003
+0x00418DB0,th20::DebugMemoryResource::DebugMemoryResource,DebugMemoryResource,high,REF-003
+0x00418E90,th20::DebugMemoryResource::~DebugMemoryResource,DebugMemoryResource,high,REF-003
