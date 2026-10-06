@@ -52,7 +52,8 @@ def main():
                                 "source_reconstruction/startup_scene/",
                                 "source_reconstruction/stage_clear/",
                                 "source_reconstruction/help_system/",
-                                "source_reconstruction/notice_system/")):
+                                "source_reconstruction/notice_system/",
+                                "source_reconstruction/card_system/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -61,6 +62,7 @@ def main():
             # paths through sprite_renderer and stone_menu.
             # notice_system has the same declared binary paths and links help
             # and stone_menu, including their transitive ECL/runtime paths.
+            # card_system links runtime_state's public ECL/binary dependencies.
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))

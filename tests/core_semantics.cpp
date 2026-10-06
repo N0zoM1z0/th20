@@ -11,6 +11,7 @@
 #include "WindowState.hpp"
 #include "SoundEffects.hpp"
 #include "AnimationHandle.hpp"
+#include "Vector3.hpp"
 
 #include <array>
 #include <bit>
@@ -40,6 +41,27 @@ std::uint32_t th20::GameRandom::next() {
 
 int main() {
     check_scene_resource_protocol();
+    alignas(th20::Vector3) std::array<unsigned char, 20> vector_storage;
+    vector_storage.fill(0xa5);
+    auto* zero_vector = ::new(vector_storage.data() + 4) th20::Vector3;
+    assert(zero_vector->x == 0 && zero_vector->y == 0 && zero_vector->z == 0);
+    for (std::size_t i = 0; i != vector_storage.size(); ++i) {
+        assert(vector_storage[i] == (i >= 4 && i < 16 ? 0 : 0xa5));
+    }
+    const auto negative_zero = std::bit_cast<float>(0x80000000u);
+    const auto payload_nan = std::bit_cast<float>(0x7fc12345u);
+    const th20::Vector3 special_vector(negative_zero, payload_nan, 1.25f);
+    assert(std::bit_cast<std::uint32_t>(special_vector.x) == 0x80000000u);
+    assert(std::bit_cast<std::uint32_t>(special_vector.y) == 0x7fc12345u);
+    th20::Vector3 position(10.0f, -8.0f, 4.0f);
+    const th20::Vector3 target(18.0f, 4.0f, -12.0f);
+    const auto delta = (target - position) * 0.25f;
+    assert(delta.x == 2.0f && delta.y == 3.0f && delta.z == -4.0f);
+    assert(position.x == 10.0f && position.y == -8.0f && position.z == 4.0f);
+    assert(&(position += delta) == &position);
+    assert(position.x == 12.0f && position.y == -5.0f && position.z == 0.0f);
+    assert(&(position += position) == &position);
+    assert(position.x == 24.0f && position.y == -10.0f && position.z == 0.0f);
     alignas(th20::AnimationHandle) std::array<unsigned char, 12> handle_storage;
     handle_storage.fill(0xa5);
     auto* handle = ::new(handle_storage.data() + 4) th20::AnimationHandle;

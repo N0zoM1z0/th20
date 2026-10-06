@@ -20,6 +20,7 @@
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
+| Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0 | Five complete exact members; original class spelling and authored/compiler/library origins pending |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
@@ -28,8 +29,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns nineteen objects and one canonical profile per source.
-Seventy units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns twenty objects and one canonical profile per source.
+Seventy-five units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 AnimationHandle is the actual four-byte value used by Notice's seven-element
@@ -39,6 +40,17 @@ interrupt members pass the stored word to the real Controller. These consumers
 establish value storage without defining an artificial Notice or Controller.
 Only construction is maintained. Full member protocols, allocator/resource
 lifetimes and authored versus compiler-synthesized constructor identity remain open.
+
+Vector3 is the actual twelve-byte three-float value used by Card's position.
+Its default constructor writes positive zero to each lane; coordinate construction
+copies all three float representations. Native smoothing uses separate subtraction,
+scalar multiplication and in-place addition, with hidden aggregate return storage
+and a receiver reference for addition. Natural C++ preserves those member
+boundaries and the independently observed coordinate-constructor anchor.
+All five complete contributions replay exactly, including relocation fields.
+Original type spelling and source/library origin remain unknown; none adds
+authored progress. This value owner does not reconstruct Card, enemy lookup,
+animation ownership or the original numerical exception environment.
 
 TaskInfo's observed RTTI is TaskInf. Its three-slot vtable contains deleting
 destructor, enable and disable; reference callback-owner naming does not change

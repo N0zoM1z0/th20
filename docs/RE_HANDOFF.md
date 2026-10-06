@@ -1,5 +1,42 @@
 # Current reconstruction handoff
 
+## REF-018 — 2026-10-06 — Card review checkpoint
+
+The exhaustive goal remains active. All32 card_system implementations have
+individual decisions:17 nonexact/15 support. Total961 terminal/5,983 pending
+of6,944. No Card parser gaps; global18 reconciled/95 pending of113. All sources,
+headers, extractor/constants, six full fixture fragments, recipes and reports
+read.49 relevant native functions independently queried and decompiled. Seven
+original production TUs freshly compile after transitive include-path correction.
+
+- Actual three-float Vector3 owner naturally restores zero/coordinate constructors,
+  subtraction, scalar multiplication and add assignment:46/54/88/80/85 bytes.
+  Independent coordinate-ctor anchors, hidden sret/reference/RET ABI, no shaping.
+  All five origins pending; authored52/3,830 unchanged. Cold75/75 across20 objects,
+  5,134 bytes/source75/exact-origin-pending19. Dirty/sentinel/bit/alias tests pass.
+- Full CardC8 owner remains open: typed five handles, Timer, base, Vec3, PMR/EH/
+  diagnostics differ from aggregate reference. Encodervoid member105/RET8 versus
+  pureint function; checksum member148 returns fullint, fixture comparesbool only.
+  No fake padded Card/record/Background/Renderer or merged member accepted.
+- Full update875/draw797/finish602/start1896/post-frame645/init121/factory92
+  instruction extents checked. Independent unreachable JMP488B53 included.
+  Fallback getter+8A460 corroborates current.profiles[18], not backup.
+- Actual title PMR closure and completion chains traced through44B020 and typed
+  info handle short event4. Start oracle queues/clears without executing them;
+  portrait files=-1. Finish omits all113 achievement40. Record/owner origins open.
+- Eight floats/three doubles/text stem/five render strings independently match.
+  Completion six slots then0.05 float; fmod dispatcher mixed metadata/function
+  block, not vtable.543310/543320 signed32/x87 conversion checked; intrinsic
+  value equivalence does not establish FP flags/feature/helper ABI.
+- Retained206,784 subset counters/hash checked,389/389 source hashes current;
+  no native oracle compiled/run. Normalized constructor/scheduler addresses,
+  synthetic ANM/locks/valid indices/eight isolated replay records and deterministic
+  QPC limit conclusions. No hardware IDIV trap/factory/GDI/portrait/replay I/O
+  lifetime acceptance. Historical timing failure46/23cases,280/302 hashes current.
+
+Next coherent family: ending_scene39, then every remaining implementation and95
+manual gap files. Private `.analysis/ref018-*`; earlier counts are historical.
+
 ## REF-017 — 2026-10-06 — Notice review checkpoint
 
 The exhaustive goal remains active. All30 notice_system implementations have

@@ -3,6 +3,57 @@ target_sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a089
 
 [units]
 
+# REF-018: native twelve-byte vector owner and complete member contributions.
+[units.vector3_construct]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::Vector3()"]
+symbol = "??0Vector3@th20@@QAE@XZ"
+target_address = 0x00422E10
+size = 46
+relocations = []
+
+[units.vector3_construct_coordinates]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::Vector3(float,float,float)"]
+symbol = "??0Vector3@th20@@QAE@MMM@Z"
+target_address = 0x00422DD0
+size = 54
+relocations = []
+
+[units.vector3_subtract]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::operator-"]
+symbol = "??GVector3@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x00429440
+size = 88
+relocations = [{ offset = 0x4B, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 }]
+
+[units.vector3_scale]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::operator*"]
+symbol = "??DVector3@th20@@QBE?AU01@M@Z"
+target_address = 0x004292F0
+size = 80
+relocations = [{ offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 }]
+
+[units.vector3_add_assign]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::operator+="]
+symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z"
+target_address = 0x004296E0
+size = 85
+relocations = []
+
 # REF-017: actual four-byte value owner; complete constructor through RET.
 [units.animation_handle_construct]
 source = "src/AnimationHandle.cpp"

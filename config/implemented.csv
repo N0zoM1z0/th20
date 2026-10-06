@@ -68,3 +68,8 @@ th20::Timer::at_least
 th20::Timer::equals
 th20::Timer::less_than
 th20::AnimationHandle::AnimationHandle
+th20::Vector3::Vector3()
+"th20::Vector3::Vector3(float,float,float)"
+th20::Vector3::operator-
+th20::Vector3::operator*
+th20::Vector3::operator+=

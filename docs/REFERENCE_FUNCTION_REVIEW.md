@@ -37,11 +37,115 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 929 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/tool/test entries have explicit decisions. The
-remaining 6,015 indexed entries are pending. The separate
+The first 961 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/tool/test entries have explicit decisions. The
+remaining 5,983 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: eighteen of 113 files are reconciled, leaving 95 pending.
+
+## REF-018: all 32 Card implementation entries reviewed
+
+All 32 bodies have individual decisions: seventeen nonexact and fifteen support.
+Production source, owner/record headers, extractor/constants, six complete CPU
+include fragments, build recipes and reports were read. Same-line nested lambdas
+have distinct records. No family parser gap occurs. Coverage is 961 terminal
+and 5,983 pending; global gaps remain eighteen reconciled and 95 pending.
+Forty-nine relevant native functions were independently queried and decompiled.
+All seven original production TUs freshly compile serially after supplying the
+runtime_state/ECL public include dependencies declared by CMake. The initial
+five missing-binary-header failures were recipe errors, not algorithm rejection.
+Compiler probes remain diagnostics; neither linkage nor a new CPU run is claimed.
+
+Native Card construction, drawing and smoothing expose one coherent twelve-byte
+three-float value owner. Maintained Vector3 recovers both constructors and the
+subtraction, scaling and add-assignment members naturally. Complete extents are
+46, 54, 88, 80 and 85 bytes, totaling 353. Coordinate-constructor calls in the two
+aggregate-return operators were independently established before canonical
+probing. Hidden return storage, RET12/RET8/RET4 and reference return are preserved;
+no arbitrary padding, duplicate body, ABI fiction or emission-shaping local.
+Original class spelling and authored/compiler/library origin remain unknown, so
+all five are excluded from authored credit. Tests cover dirty zero construction
+with adjacent sentinels, signed-zero/NaN representation copying, a three-lane
+position update, nonmutation and self-aliasing add assignment. Full cold replay
+passes 75/75 units across twenty objects and 5,134 bytes. Source-present is 75;
+authored remains 52/3,830 and exact origin-pending contributions rise to nineteen.
+
+Card's full C8-byte owner remains unresolved. Native constructor is 348 bytes,
+with actual base, five typed animation handles, Timer, char64, aligned doubles,
+Vector3 and diagnostic call. Reference aggregate integer handles/Timer/position
+change member and EH partition; explicit alignment-gap fields do not establish
+typed storage. Native destructor's 180 bytes release three handles individually
+and own scheduler/base teardown. Initialize is a 121-byte member with separate
+view/context setter, Session context and Context+10 owner setter, callbacks40/12
+and Timer reset. Source free functions/direct fields/generalized helpers differ.
+Factory is 92 bytes, including independently decoded unreachable JMP488B53
+omitted by Ghidra's body map. Diagnostic allocator/new/zero/constructor/failure
+release are not the source's placement factory. No fake layout-only Card is added.
+
+Original time encoder at488990 is a 105-byte void member that writes A8 in three
+assignments and returns with RET8; source is a pure int function. Original invalid
+time predicate at4885E0 is 148 bytes and returns full EAX0/1. Ghidra calls it bool,
+but retained tests compare only sizeof(bool), so upper return bytes and member
+ABI are not verified. Signed remainders and wrap are corroborated, not absorbed
+into a fabricated A8 receiver. Record helper486E10 is an unchecked member of the
+array already at Profile+B08; reference adds an index exception and changes the
+receiver. Separate capture/attempt increment members merge into a generic source
+offset helper. Actual E0 record/113-element array and SaveManager lifetime remain open.
+
+Complete update is 875 bytes: flags, ages60/300/120, signed bonus decay/rem10,
+mirrored96/128/448 fade thresholds, boss smoothing0.05 and Bomb state. Source
+uses one enemy lookup rather than repeated original getters, inlines vector and
+flag helpers, replaces typed handle methods and throws for hardware IDIV traps.
+The accepted adjacent vectors do not accept this parent. Draw's 797 bytes use
+Renderer mode/alpha setters, typed resolve and repeated profile/record selection;
+source direct field writes, cached selection and free APIs change partition.
+Valid count/bonus/string behavior is corroborated. Full Renderer/Card owners,
+PMR temporary strings, GS and resource lifetime remain unresolved.
+
+Finish's 602 bytes own Background, typed interrupts/deletion, HUD, score, separate
+record members and the all-113 achievement call. Native fallback getter488700
+returns SaveManager+8A460, matching current.profiles[18] (10+18*7AE8), not backup.
+Start's 1,896-byte member/RET16 owns separate flag/record writes, hidden handle
+results, actual 28-byte PMR name and closure, score table and two portrait variants.
+Reference ordinary std::string capture, bounds exceptions and generalized free
+dependencies change allocator/EH/call partition. Queued title invocation was
+independently traced through488460/486AE0/486E80 to44B020. Completion captures
+Card and follows488440/486AD0/486E50/488920 into typed handle short event4.
+Those bodies are reviewed individually; no queue-count oracle accepts their execution.
+
+Eight floats, three doubles, text stem and five render strings independently
+match the PE. The extractor's exploratory seven-word read at56FE44 extends the
+six-slot callable interface into the0.05 float. The59A740 fmod dispatcher block
+contains mixed metadata and function data, not another vtable. Post-frame is a
+645-byte Card member with actual Window clock, fmod dispatcher, half-step0.0167,
+floor and signed32 conversion, member encoding/checksum and Replay getters.
+The543310 thunk/543320 CRT conversion returns INT_MIN on overflow; it is not a
+64-bit low-word conversion. Source intrinsic value agreement does not reproduce
+the x87 input/exception/feature-dispatch ABI or the full Window/Replay protocol.
+
+Retained 206,784 passes/zero failures are exactly the Card subset of the actual
+shared 2,915,831 report, verified against its hash and all 49 counters.389/389
+bound source hashes are current. No retained oracle was compiled or executed
+here. Constructor/dtor and scheduler checks normalize vptr, node/link/callback
+addresses; pointed-to node fields/topology are compared, but address-valued
+scalar words can also be replaced. Other comparisons use controlled whole
+Card/Renderer/Background/Player/HUD/manager/pool/record/sound snapshots.
+
+The valid domain includes two contexts,113 indices, NaN/infinite player Y,
+integer/count edges, synthetic child programs and eight isolated Replay stage
+objects. Update denominator inputs exclude300; original IDIV traps are not run.
+Start checks queued-task count only, clears tasks without executing raster or
+completion, and sets all portrait file selectors to-1. Finish excludes all113
+captures/achievement40. Timing substitutes QPC at the import boundary with
+frequency1/origin0/offset0 and manufactures lock ownership. There is no factory
+failure, replay file I/O/lifecycle, real portrait asset or asynchronous GDI/GPU
+acceptance. Cleanup is normal-exit-only and shared clock state is reset to1.
+Historical timing failure has 46 failed checks from23 cases, with280/302 current
+hashes; it cannot prove current failure or a fresh successful rerun. Empty JSONL
+files alone are not acceptance evidence. Shared renderer bodies remain pending.
+
+Private evidence: `.analysis/ref018-*`. Continue with ending_scene's39 entries
+and every remaining implementation/manual gap; the exhaustive goal stays active.
 
 ## REF-017: all 30 Notice implementation entries reviewed
 

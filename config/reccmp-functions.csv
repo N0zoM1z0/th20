@@ -69,3 +69,8 @@ th20::Timer::at_least,0x004235C0,function
 th20::Timer::equals,0x004785E0,function
 th20::Timer::less_than,0x00423560,function
 th20::AnimationHandle::AnimationHandle,0x00425CC0,function
+th20::Vector3::Vector3(),0x00422E10,function
+"th20::Vector3::Vector3(float,float,float)",0x00422DD0,function
+th20::Vector3::operator-,0x00429440,function
+th20::Vector3::operator*,0x004292F0,function
+th20::Vector3::operator+=,0x004296E0,function
