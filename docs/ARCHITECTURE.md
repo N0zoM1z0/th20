@@ -1,9 +1,11 @@
 # Target inventory and initial architecture boundary
 
-Player / Bomb / Item now share actual Angle4, Motion72, VectorInterpolation84
-and IntPoint8 values. Seven complete constructor/math/member contributions add
-581 exact bytes without enclosing owner facades. All884 reference entries in
-this related batch remain pending; see REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md.
+Player / Bomb / Item share actual Angle4, Motion72, VectorInterpolation84
+and IntPoint8 values. Nine complete contributions cover constructors, arithmetic,
+Motion update orchestration and full-int bounds;765 bytes without enclosing
+facades. All884 related implementations have individual REF031 review decisions.
+Underlying motion updates and full Player/Bomb/Item resource/vtable/EH owners
+remain open; see REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md.
 
 Bullet / Laser / Damage Regions share an actual64-byte extended-command value,
 40-byte shot parameters and44-byte x86 ECL operands, alongside two-float Vector2.

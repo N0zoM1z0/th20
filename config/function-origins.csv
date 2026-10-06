@@ -2169,7 +2169,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00479FD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A1B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0047A1F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0047A1F0,unknown,Motion,review,pending,"REF-031: actual72-byte Motion member; update calls velocity then position at independently audited native thiscall boundaries, left undefined. Bounds returns fullEAX0/1, confirmed by479360 caller, preserves strict outside comparisons and unordered behavior. Complete native flow and independent PE2.0 anchor audited.146-unit/38-object cold replay and C++20/UBSan tests pass. Origin pending; related884-body review ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x0047A210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A2A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2179,7 +2179,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047A340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A370,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A3E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0047A400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0047A400,unknown,Motion,review,pending,"REF-031: actual72-byte Motion member; update calls velocity then position at independently audited native thiscall boundaries, left undefined. Bounds returns fullEAX0/1, confirmed by479360 caller, preserves strict outside comparisons and unordered behavior. Complete native flow and independent PE2.0 anchor audited.146-unit/38-object cold replay and C++20/UBSan tests pass. Origin pending; related884-body review ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x0047A4A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A4C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A4E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

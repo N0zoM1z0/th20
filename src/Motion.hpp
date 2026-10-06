@@ -24,6 +24,10 @@ struct Motion {
     MotionFlags flags;
 
     Motion();
+    void update_velocity();
+    void update_position();
+    void update();
+    int outside_bounds(float x, float y, float width, float height) const;
 };
 
 static_assert(sizeof(MotionFlags) == 4);

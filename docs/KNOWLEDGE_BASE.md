@@ -1,5 +1,32 @@
 # Verified facts and open hypotheses
 
+## REF-031 — 2026-10-07 — Player / Bomb / Item batch complete
+
+- All884 bodies have hash-bound decisions:1 absorbed /221 nonexact /662 support.
+  Global4,265 terminal /2,679 pending; gaps65/48 after eight files/27 sites.
+- Motion update28 and bounds156 add184 complete bytes. Full146 canonical units
+  cold-replay across38 objects /9,887 bytes; authored57/4,074 unchanged,
+  origin-pending85/library4. Actual72-byte value, no padded Player/Bomb receiver.
+- Native wrapper calls velocity then position on the same receiver; dependencies
+  undefined. Bounds uses four ordered strict outside comparisons, fullEAX0/1
+  confirmed by479360 caller, half dimensions and unordered false. Independent
+  callees/PE2.0 precede anchors; all accepted native branches close.
+- All101 indexed source files/fixtures/recipes/writers read,52 final frozen
+  production objects freshly attest. Static/external/all overload/callback
+  inventory yields434 complete diagnostics;420 size differences,two mismatches,
+ 12 structural matches needing real Bomb owner/vtable/EH lifetime closure.
+- Native341 uncapped heads,62 independently decoded missing direct-JMP ranges;
+  six constructor-bound vtables plus three callback tables expose87 slots.
+  Large interpreter expanded; no rejected table/extent shortened for exactness.
+- Player reports duplicate/81 current source hashes/2,754 source assertions;
+  Item33 current/one stale rewards.hpp, post-run writer lacks build/executable
+  binding. Bomb137,408 is sharedSprite subset,389 cancellation hashes current.
+  Native oracle/writers not executed; hooks, valid-domain and owner limits remain.
+- Natural point-add port absorbs one existing reference body through actual
+  IntPoint member ABI and48-byte canonical replay, not raw reference emission.
+  Shared portable C++20/UBSan checks pass. No whole-game linkage/play acceptance.
+  Read REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md and individual ledgers.
+
 ## REF-030 — 2026-10-07 — shared Player / Bomb values; review ongoing
 
 - Seven complete contributions add581 bytes;144-unit/38-object cold replay

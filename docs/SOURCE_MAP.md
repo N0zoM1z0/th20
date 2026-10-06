@@ -27,7 +27,7 @@
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
-| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp | construction 0x00447DE0/0x00429210/0x00478530; reduction 0x00438540 | Four complete exact contributions; actual 4/72-byte values, bounded reduction, original names/origins and updates pending |
+| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp | construction 0x00447DE0/0x00429210/0x00478530; reduction 0x00438540; update 0x0047A1F0; bounds 0x0047A400 | Six complete exact contributions; actual 4/72-byte values, bounded reduction and full-int bounds; underlying velocity/position updates undefined, origins pending |
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690 | Six complete exact members; original class spelling and authored/compiler/library origins pending |
 | Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |
 | PauseFlags | src/PauseFlags.hpp, src/PauseFlags.cpp | four-byte flags construction 0x004E1CB0 | Complete 40-byte exact constructor; two-bit mode/one-bit practice, upper 29 retained, origin pending |
@@ -276,3 +276,11 @@ five Vector3 values at size84; only its constructor adds exact credit. IntPoint
 extends the existing atlas value through an independently shared coordinate
 constructor. All144 units replay; the884-entry reference batch remains ongoing.
 See REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md for boundary, profile and oracle limits.
+
+REF-031 adds Motion update28 and outside-bounds156 without extending its72-byte
+storage. Update preserves same-receiver velocity-before-position dependency
+calls; the actual dependency implementations remain undefined. Bounds preserves
+full-int return, strict edges and unordered comparisons; native caller tests EAX.
+Portable tests observe dependencies and check geometry/IEEE/nonmutation. All146
+units cold-replay across38 objects. All884 related reference bodies reviewed;
+owner/resource/vtable/EH and whole-game acceptance remain open.

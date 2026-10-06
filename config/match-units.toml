@@ -1654,3 +1654,31 @@ size = 48
 relocations = [
   { offset = 0x23, type = "REL32", symbol = "??0IntPoint@th20@@QAE@HH@Z", target = 0x0040DE00 },
 ]
+
+[units.motion_update]
+source = "src/Motion.cpp"
+object = "build/Motion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Motion::update"]
+symbol = "?update@Motion@th20@@QAEXXZ"
+target_address = 0x0047A1F0
+size = 28
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?update_velocity@Motion@th20@@QAEXXZ", target = 0x00453E40 },
+  { offset = 0x13, type = "REL32", symbol = "?update_position@Motion@th20@@QAEXXZ", target = 0x00453AC0 },
+]
+
+[units.motion_outside_bounds]
+source = "src/Motion.cpp"
+object = "build/Motion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Motion::outside_bounds"]
+symbol = "?outside_bounds@Motion@th20@@QBEHMMMM@Z"
+target_address = 0x0047A400
+size = 156
+relocations = [
+  { offset = 0x12, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x30, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x4E, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x6D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+]

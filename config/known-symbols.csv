@@ -144,3 +144,5 @@ address,name,module,confidence,evidence
 0x00447B30,th20::VectorInterpolation::Interpolation,Interpolation,high,REF-030
 0x00414030,th20::IntPoint::IntPoint(),Rectangle,high,REF-030
 0x004F58F0,th20::IntPoint::operator+,Rectangle,high,REF-030
+0x0047A1F0,th20::Motion::update,Motion,high,REF-031
+0x0047A400,th20::Motion::outside_bounds,Motion,high,REF-031

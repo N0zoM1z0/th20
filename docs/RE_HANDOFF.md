@@ -1,5 +1,43 @@
 # Current reconstruction handoff
 
+## REF-031 — 2026-10-07 — Player / Bomb / Item batch complete
+
+All884 implementations individually reviewed:1 absorbed /221 nonexact /662
+support, across101 fully read source files. Global4,265 terminal /2,679 pending
+of6,944. Eight grammar files/27 sites reconciled; gaps65 complete /48 pending.
+Exhaustive goal active. See REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md.
+
+- Two more natural Motion members add184 bytes: update47A1F0/28 and bounds
+  47A400/156. Complete146-unit cold replay /38objects /9,887bytes passes.
+  Source146/pending origins85/library4; authored57/4,074 unchanged. Underlying
+  velocity/position dependencies remain undefined, actual72-byte owner retained.
+- Full-int bounds ABI independently confirmed by Orb EAX caller; strict edges,
+  unordered comparisons and receiver preservation covered. C++20/UBSan tests
+  observe update dependency order and boundary/lattice/IEEE behavior.
+- All52 original production TUs freshly compile after final source freeze.
+  Static/external symbols/all real overloads and31/16/10 callback wrappers plus
+  merged dispatchers yield434 complete comparisons:420 size differences,
+  two mismatches,12 structural matches. Actual Bomb owners/vtables/EH unclosed.
+- Native341 heads uncapped; large42B5D0 expanded,62 missing direct-JMP ranges
+  independently decoded/PE-attested. Six constructor-bound vtables and three
+  callback tables expose87 observed slots; rejected extents/tables not shortened.
+- Reports/recipes/fixtures/writer fully audited, none executed. Player duplicate
+  1,032,161 reports bind81 current hashes,2,754 source-only assertions. Item
+  287,824 binds33 current/one stale rewards.hpp; post-run hash rebinding is not
+  executed-binary proof. SharedBomb137,408 is a subset ofSprite2,915,831;
+  cancellation digest/389 hashes current. Scoped hooks/domain limits retained.
+- Both private REF031 registration scripts already executed ONCE; NEVER RERUN.
+  All REF030/older writers also executed. Current final exact/ref receipts bind
+  unchanged src/probes; preserve freeze during any serial compiler rebuild.
+
+Continue all remaining2,679 implementations and48 grammar files in related
+batches. Next coherent family: Overlay376 / HUD134 / SmallScore74 /
+StageCompletion88 =672, following Player weapon/reward/finish dependencies.
+Gameplay1019/ECL144 and Sprite540/StageBackground121 form subsequent families;
+183 tool/platform/historical support bodies also remain. Do not claim complete
+reconstruction from terminal nonexact decisions. Repo-python,
+English maintained text, gpt-6.1-sol commits and public push remain authorized.
+
 ## REF-030 — 2026-10-07 — Player / Bomb / Item component checkpoint
 
 Seven shared natural value contributions add581 complete bytes: Angle24/50,

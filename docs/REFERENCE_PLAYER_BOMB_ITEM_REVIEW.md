@@ -1,12 +1,25 @@
-# Player, Bomb and Item review — ongoing batch
+# Player, Bomb and Item review
 
-REF-030 reviews these related modules together: Player 611 implementations,
-Bomb 83 and Item 190, totaling 884. This is a component checkpoint, not a
-terminal review of those 884 entries. Global reference decisions remain
-3,381 terminal / 3,563 pending; parser gaps remain 57 reconciled / 56 pending.
-The exhaustive review goal remains active.
+REF-030/031 reviews all 884 existing implementations in these related modules,
+including production, adapters, inline bodies, local closures, fixtures, drivers
+and the evidence writer. All 101 indexed files were read completely against the
+unedited pinned reference. Each terminal decision binds its own body hash;
+compilation or a file-level scan does not replace that review.
 
-## Complete shared components
+| Module | Bodies | Absorbed | Nonexact | Support |
+| --- | ---: | ---: | ---: | ---: |
+| Player | 611 | 1 | 114 | 496 |
+| Bomb | 83 | 0 | 63 | 20 |
+| Item | 190 | 0 | 44 | 146 |
+| Total | 884 | 1 | 221 | 662 |
+
+Global reference review now has 4,265 terminal decisions / 2,679 pending out of
+6,944. Eight files with 27 grammar sites were manually reconciled; 65 gap files
+are reconciled and 48 remain pending. The exhaustive review goal remains active.
+Terminal nonexact decisions record difficulties and follow-up work; they do not
+assert those implementations have been reconstructed.
+
+## Shared exact components
 
 | Canonical unit | Native address | Complete bytes |
 | --- | --- | ---: |
@@ -17,89 +30,155 @@ The exhaustive review goal remains active.
 | Vector3 interpolation construction | `0x00447B30` | 97 |
 | IntPoint default construction | `0x00414030` | 33 |
 | IntPoint addition | `0x004F58F0` | 48 |
+| Motion update orchestration | `0x0047A1F0` | 28 |
+| Motion outside rectangle | `0x0047A400` | 156 |
 
-These seven contributions add 581 complete bytes. Maintained source extends
-actual shared values, without introducing a padded Player or Bomb receiver.
-All 144 units cold-build across 38 objects and replay 9,703 complete bytes.
-Source presence is 144; pending origins are 83 and library units four.
-Authored credit remains 57 functions / 4,074 bytes. Original type spellings
-and authored/compiler/shared-code origins remain unresolved.
+These nine contributions add 765 complete bytes across the two checkpoints.
+All 146 canonical units cold-build across 38 objects and replay 9,887 complete
+bytes. Source presence is 146; pending origins are 85 and library units four.
+Authored credit remains 57 functions / 4,074 bytes. Original type spellings and
+origins remain unresolved; no enclosing Player or Bomb facade was introduced.
 
-Every native extent is contiguous through its complete return. Independent
-approved-PE instruction decoding verifies all bytes and internal branch targets;
-there are no prefix comparisons or removed tables. Native Motion and Orb
-constructors identify the shared Vector3, Angle, Timer and interpolation calls.
-Option construction identifies the integer-pair zero constructor. Point addition
-calls the already recovered coordinate constructor `0x0040DE00`, closing its
-owner relationship with the existing atlas value. Ghidra's STL label at the
-shared zero constructor does not prove an exclusive original class identity.
+Every accepted extent is contiguous through its complete return. Independent
+approved-PE decoding verifies all bytes and internal branch targets. Native typed
+constructors and consumers establish Angle4, Motion72, VectorInterpolation84 and
+the existing IntPoint8. The integer pair's shared coordinate constructor at
+`0x0040DE00` closes its relationship with the existing atlas value. Ghidra's STL
+label on the shared zero constructor does not establish exclusive class identity.
 
-Motion is an actual 72-byte value with three Vector3 members and three
-four-byte Angle members. Its final four-byte control aggregate selects a mode
-in the low four bits; bit 5 freezes both native motion update routines.
-Independent velocity/position consumers read the same offsets. Unknown scalar
-roles retain offset-based names. Only construction is accepted; original
-motion update, snapping, clock and surrounding resource protocols remain open.
+Motion contains three Vector3 and three Angle members, unknown scalar fields
+retaining their offsets, and a genuine four-byte control aggregate. The low four
+bits select mode; bit 5 freezes the two underlying native updates. The accepted
+wrapper calls velocity at `0x00453E40`, then position at `0x00453AC0`, on the same
+receiver without a new clock argument. Those two dependency methods remain
+undefined; this wrapper does not accept their implementations or game linkage.
+
+The bounds member returns full-width integer zero or one; its independent Orb
+caller tests EAX at `0x00479787`. It evaluates left, right, top and bottom in that
+order using half dimensions and strict outside comparisons. Boundary equality
+is inside; an unordered comparison alone does not report outside. It reads only
+position x/y and retains the entire receiver. The reference free helpers and
+bool declarations do not reproduce this native member/return protocol.
 
 VectorInterpolation extends the existing generic implementation to five
-Vector3 members, followed by Timer at 60 and duration/mode at 76/80, size 84.
-Value initialization supports both scalar and vector members naturally.
-All existing byte/float interpolation contributions replay after that change;
-no additional vector interpolation operation is credited.
+Vector3 members, Timer at 60 and duration/mode at 76/80, size 84. All old scalar
+interpolation contributions replay; only vector construction is accepted.
 
-Native angle reduction repeatedly subtracts or adds twice the rounded float pi,
-stopping after at most 34 changes. Values already in the inclusive interval,
-including signed zero and quiet NaNs, pass through. Infinities remain infinite;
-large finite inputs may remain outside the interval after the cap. Float
-construction clears its field, calls reduction and stores the x87 result.
+Native angle reduction stops after at most 34 additions/subtractions of twice
+the rounded float pi. Signed zero and quiet NaNs pass through; infinity remains
+infinite, and large finite inputs may remain unreduced. Independent PE constants
+are pi `0x0056E0F0`, negative pi `0x0056E0F8` and two `0x0056C8D0`. These were read
+before canonical anchors were added. A shared pi constant under strict FP emits
+187 bytes, versus precise180 and local-constant strict200. This per-source
+profile does not prove the game's global flags.
 
-Independent PE constants are pi `0x0056E0F0`, negative pi `0x0056E0F8` and two
-`0x0056C8D0`; they were read as float words before canonical anchors were added.
-Angle.cpp uses a shared mathematical constant and a strict floating-point
-profile. Private precise emission was 180 bytes; strict emission with a local
-constant was 200, including a local initialization. A shared constant under
-strict FP yields the complete natural 187-byte routine. This per-source result
-does not establish the original game's global build flags.
+The one absorbed reference implementation is wrapping fixed-coordinate
+addition. Maintained IntPoint restores the actual const receiver and hidden
+aggregate return, calls the independently observed coordinate constructor and
+preserves defined modulo32 arithmetic. The raw reference free-helper object is
+not claimed exact. Portable C++20/UBSan tests check dirty construction, IEEE and
+bounded-angle behavior, 16,001 finite angle cases, wrapping addition and operand
+nonmutation. Motion tests observe the two undefined dependency calls and verify
+order/receiver identity; rectangle lattice, nextafter, NaN/infinity/signed-zero,
+negative dimensions and bytewise receiver preservation cover the predicate.
+These are synthetic shared-source tests, not a new Windows CPU oracle run.
 
-IntPoint addition uses unsigned modulo-32 arithmetic before signed conversion,
-preserving x86 wraparound and the actual const-member aggregate-return ABI.
-Portable C++20/UBSan tests cover signed boundaries, operand nonmutation, dirty
-construction, angle boundaries, bounded large inputs, infinity/quiet-NaN/signed
-zero behavior and interval/congruence properties across 16,001 finite inputs.
-These tests execute shared source; they do not constitute a new Windows CPU
-oracle run or proof of the original floating exception environment.
+## Compiler, native boundaries and owners
 
-## Batch evidence and remaining work
+All 52 unmodified production translation units compile serially after final
+maintained-source freeze with actual inherited CMake include paths and strict FP:
+Player37, Bomb7, Item8. Every current object and receipt attests. Defined static
+and external function symbols are included. Complete contribution comparisons
+cover all real emitted overloads rather than forcing header instantiations.
 
-All 101 indexed source files and all 884 body/file hashes are privately bound
-to the pinned, unedited reference. Binding and compilation are not individual
-review decisions. All three actual CMake recipes were read. The 52 original
-production translation units compiled serially with their inherited include
-paths and strict FP option: Player 37, Bomb seven, Item eight. Those initial
-receipts precede these maintained-source additions; refresh after final source
-freeze before using them for final batch comparisons. No full-batch fresh
-COFF audit or terminal ledger entry is claimed at this checkpoint.
+There are 434 unsliced comparisons: 420 size differences, two mismatches and
+12 diagnostic structural matches. This includes 114 comparisons for all31
+initialization,16 update and10 hit indices: both their real emitted adapter and
+the merged source dispatcher are checked against each native table entry.
+The two initially unresolved template symbols are covered by this explicit
+instantiation inventory. No solved diagnostic relocation becomes a canonical
+anchor. Complete rejected extents, associated tables and owner uncertainty remain
+recorded; no prefix or table was removed to produce a match.
 
-The native baseline includes 263 provisional leads; each rejected owner and
-large function still needs complete boundary/table reconciliation. Bomb and
-Item production bodies/headers and Player's construction, power, collision,
-events and firing/callback/geometry/hit families have been read. Remaining
-Player lifecycle/frame/adapters, all applicable fixtures and drivers, report
-writers/source bindings, static/external COFF symbols, parser gaps and individual
-hash-bound decisions are pending. Do not mark the batch reviewed by default.
+Native queries cover 341 heads below their limits. The large `0x0042B5D0`
+interpreter was expanded to its complete exported flow after the initial cap.
+All 62 ranges omitted by Ghidra disassembly independently decode as direct JMP
+ranges in the approved PE. Six constructor-bound Bomb/character/Player/Item
+vtables and three shot callback tables expose 87 observed slots. The selected
+callback domains are31/16/10; trailing null words do not establish additional
+valid indices. These observations route review and do not accept all provisional
+function/table extents or original ownership.
 
-A natural intrinsic float-to-fixed probe preserves CVTTSS2SI behavior for
-nonfinite/out-of-range values but emits 117 bytes against the native complete
-61-byte member. It is not accepted. A plain C++ cast would leave those input
-values outside its defined domain; no ABI substitution or truncated comparison
-is used to conceal that difference.
+The 12 structural matches are small Bomb/Controller/character members and shared
+destructors. Actual B8/3C/CC/14F8 owners, typed interpolation, handles, CallbackOwner
+and vtable/EH/resource lifetime must close before canonical absorption. The Orb
+constructor calls the typed four-byte constructor at animation, target identifier
+and damage-handle offsets; replacing them with raw words is insufficient. The
+native array genuinely has24 D8 records, not an artificial one-element owner.
 
-Native Option and Shot construction contains typed handles, values, arrays,
-EH/cookies and untouched padding that the reference's raw initialization does
-not reproduce. Reimu Orb's target identifier has an actual typed constructor;
-whole Bomb owners need their vtables, interpolation representation and lifetime
-closure. Player's source-only services suffix and injected interfaces are not
-original owner evidence. These are retained follow-up leads, without enclosing
-owner or whole-game acceptance. Reference CPU reports and writers have not been
-executed in this batch; gameplay, GPU/resource and allocator ownership remain
-independent gates.
+Player's native1485C prefix and source-only Services suffix remain distinct.
+Raw Option/Shot/Feedback/ShotController construction does not explain original
+typed member/array/EH emission. A defined intrinsic CVTT float-to-fixed probe
+emits117 versus native61 bytes; it remains rejected. A plain C++ cast would leave
+nonfinite/out-of-range inputs undefined. Item's repeated raw reset similarly
+does not close lifetimes of its two typed ANMs per slot.
+
+## Retained oracle and semantic scope
+
+All relevant recipes, complete fixtures/drivers/writer and report bindings were
+read. None of these Windows CPU oracles or evidence writers was executed here.
+Existing report counts remain historical observations, without a current build
+or executed-binary receipt.
+
+Player's duplicate JSON reports are byte-identical: 1,032,161 checks, including
+1,029,407 original CPU checks and 2,754 source assertions. All81 declared source
+hashes are current. CMake generates the hash header at configuration; that does
+not independently bind all linked dependencies or the retained executable.
+Valid SHT relocation/factory/error/heap-overflow assertions are source-only.
+Collision's positive invulnerability excludes actual hit effects; nonfinite
+CRT trig faults are outside its retained isolated-image domain.
+
+Firing's reuse fixture bypasses initialization; the native initializer group
+uses callback0/sound-1 and common native ANM/Damage/RNG services on both paths.
+Shot callbacks have synthetic Weapon/SoundCOM and shared native queries/resources;
+Bullet/Laser lists are empty in those groups. Hit retirement uses fixed-pool
+regions, so writing old Motion after retirement does not validate a genuinely
+freed overflow heap object. Effect cursors are limited to0..1023. Geometry retains
+collinear NaN output ordering and unchanged output z, but its finite-domain CPU
+result does not establish native return ABI or instruction identity.
+
+The complete main-frame fixture patches12 external endpoints in its isolated
+mapped clone and restores them. It leaves the approved target/database unchanged.
+Shots/Options start inactive and higher power allocation is suppressed; original
+Movement/Death/ShotController/Feedback and shared ANM/interpolation still execute.
+Movement has one live Option. Standalone death uses Sessionmode2, empty Enemy,
+absent HUD and four ANMs. These are explicit limits on composition/resource
+acceptance, not whole-game execution.
+
+Bomb state68,387/0 binds current state.cpp and bomb.hpp only. The shared Sprite
+report contains137,408 Bomb-related checks: core31,168, character97,024 and
+cancellation9,216. These are subsets of its2,915,831 total, not additional totals.
+Cancellation's report digest and all389 source bindings are current. Core uses
+an observation Bomb vtable; character uses70 stopped ANM scripts and quiet Reimu
+retirement; cancellation uses32 actual Bullets with empty Lasers. Nonempty Laser,
+full character resources and continuous multi-frame gameplay remain untested.
+
+Item287,824/0 binds33 current files and one stale rewards.hpp hash, also stale in
+module_status.json. Its writer attaches hashes after a retained run without
+rebuilding/rerunning; executing it now would not prove the older executable.
+Frame traces replace activation/power and ANM/effect/HUD/score/phase boundaries;
+full-type dispatch still hooks activation, with separate restored-body activation
+cases. Invalid indexes, zero power unit, OOM and pool exhaustion are excluded.
+
+Review records preserve observable quirks: recursive Item bonus before type
+rejection, differing unordered cull states, signed versus unsigned score adds,
+20000+20000 full-power reward, captured extend threshold, Player publication and
+retained-resource ownership, global0 versus selected context, hit callback
+ordering, quiet Orb retirement and late shared timer/color/resource operations.
+Whole graphics, threads, actual allocators, startup and playable game remain
+independent acceptance gates.
+
+The eight grammar files have27 calling-convention sites. Marisa's one is a
+callback declaration; the other26 are already indexed Windows/fastcall/stdcall
+fixture bodies. All complete files and body ranges were reconciled without
+editing the reference. Individual records retain their hashes and scope.
