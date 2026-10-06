@@ -1,1 +1,6 @@
 name,address,type
+th20::random_step,0x00422CB0,function
+th20::RandomState::next,0x004235F0,function
+th20::Timer::reset,0x00423F50,function
+th20::Timer::set,0x00423F80,function
+th20::Timer::set_mode,0x00423FE0,function

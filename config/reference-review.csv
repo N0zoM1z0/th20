@@ -1,0 +1,56 @@
+reference_module,files,cpp_files,headers,evidence_files,disposition,our_owner_candidate,review_note
+analysis,6964,0,0,8,local-evidence-only,Target evidence,Generated pseudocode and analysis; never production source or exact credit
+archive,16,6,2,4,defer-production-import,Archive,Algorithm lead; preserve cross-call dictionary ownership; verifier uses Windows wmain
+audio_runtime,16,9,4,0,defer-production-import,Audio,Queue and PCM contracts; service suffix and host timing require fresh ABI/runtime evidence
+audit,29,0,0,0,defer-production-import,Evidence tooling,Historical registry scope is narrower than current code; stale bindings cannot confer credit
+bomb_system,115,8,4,93,defer-production-import,Bomb,Distinct six-slot virtual base; character behavior and cancellation boundaries remain separate
+bullet_system,144,21,7,96,defer-production-import,Bullet,Pool and ETEX leads; list retirement and native shared boundaries need independent checks
+card_system,40,7,3,15,defer-production-import,SpellCard,Bonus decay and timing leads; raster/replay dependencies need fresh owner evidence
+core_scheduler,6,2,1,0,defer-production-import,FunctionChain,Strong observer and dispatcher leads; allocator/mutex replacement prevents ABI inheritance
+damage_regions,92,10,4,70,defer-production-import,Collision,Shape/damage order leads; item callbacks and fixture exclusions remain explicit
+diagnostics,20,2,0,0,defer-production-import,Debug tooling,Windows debugging and runtime artifacts are investigation evidence only
+ecl_vm,12,4,2,0,defer-production-import,EclVm,75 common opcodes separate from entity dispatch; owning APIs do not establish original ABI
+effect_system,102,16,11,62,defer-production-import,Effects,Descriptor and motion leads; normalized request padding and stale spiral report prevent exact import
+ending_scene,39,6,2,23,defer-production-import,Ending,Message VM and captured text lifetimes; asynchronous IO and GPU domains excluded
+game_session,24,2,1,17,defer-production-import,GameSession,Unique shared contexts; constructors preserve padding; verify all default storage independently
+gameplay,170,54,35,47,defer-production-import,GameController / Enemy,Useful loading and ECL ownership; service suffixes and shared/patched endpoints limit CPU claims
+help_system,20,2,1,14,defer-production-import,HelpMenu,Compiled lifecycle lead; full frame/thread/texture CPU comparison absent
+hud_system,66,18,5,23,defer-production-import,Hud / Dialogue,Useful script and captured-text contracts; older drawing reports do not cover newer lifetimes
+include,1,0,1,0,portable-tools-tested,Inspection tooling,Root parser interface only; not game ABI declarations
+incremental,18,3,1,0,reject-production-import,Historical evidence,Retained-engine/patch launchers violate our maintained-source acceptance
+input,10,5,2,0,defer-production-import,Input,Button edges and repeats are promising; OS observations and service-suffixed owner need fresh verification
+item_system,79,9,3,61,defer-production-import,Item,Pool/reward order leads; current source differs from selected historical report bindings
+key_config,32,4,2,21,defer-production-import,KeyConfigMenu,State-page contract lead; drawing counts shared with Options and Text cannot be summed
+laser_system,158,26,5,109,defer-production-import,Laser,Four distinct types; ETEX13 rejects observed invalid memory access; full entity scope not exact
+link_probe,3,1,0,0,defer-production-import,Whole-program graph,Explicit Windows game closure; not the root portable build and not an exact link oracle
+native_recovered,3,1,1,0,independently-recovered-subset,RandomState / Timer,"Core leads rederived in our src; two Timer exact functions, STL RNG excluded, delta/tick deferred"
+notice_system,44,2,3,32,defer-production-import,Notice,Message/ANM state lead; recording textures exclude GPU and dynamic file worker
+options_system,21,5,2,7,defer-production-import,OptionsMenu,Configuration/volume state lead; malformed printf repair and host boundaries limit equivalence
+overlay_system,226,17,14,180,defer-production-import,WeaponStone,Thirty-slot interface and nonvirtual destruction; native shared RNG and boundary traces are scoped
+pause_system,74,15,5,43,defer-production-import,PauseMenu,Replay ownership/state leads; selected CPU/report bindings stale
+platform_services,27,6,4,12,defer-production-import,Configuration / Clock,Signed byte widths and dual rounding domains; changed invalid/failure behavior is not exact
+platform_window,174,22,6,132,defer-production-import,Window / Graphics,Real Win32/D3D leads; COM traces differ from pixels; empty mistyped evidence file and stale status
+player_entity,83,38,20,6,defer-production-import,Player,Extensive motion/shot evidence; common native services and redirected frame endpoints are not whole-game proofs
+program_entry,35,3,3,22,defer-production-import,WinMain,Corrected four-argument stdcall lead; old missing-symbol registry is not current closure proof
+progress_state,79,8,6,57,defer-production-import,Save,Dictionary/compression ownership and defaults; current module status binding differs from source
+replay_system,49,11,3,26,defer-production-import,Replay,Record/input lead; text-only 0x00508F70 evidence exposes current inventory gap
+reports,586,0,0,0,local-evidence-only,Evidence review,Historical/runtime/resource claims; freshness and scenario scope must be reverified
+root-build-and-documentation,14,0,0,0,reject-workflow-transplant,Our existing control plane,"README version/build claims and root/game CMake scopes reviewed; keep our target, tooling, structure and exact gates"
+runtime_core,12,5,3,0,defer-production-import,Runtime / Allocation / Locks,PMR/lock/log leads; STL version and changed allocation/error behavior require fresh ABI probes
+runtime_state,20,4,2,9,defer-production-import,Random / Clock,Four 28-byte wrappers distinct from minstd_rand core; Timer clock protocol still open
+screen_effect,36,5,1,27,defer-production-import,ScreenEffects,State/vertex leads; COM recorder does not certify rendered output
+scripts,299,0,0,0,local-resource-evidence-only,Resource investigation,Decompiled DSL resource scripts; byte round trips are not C++ reconstruction
+small_score,29,5,1,17,defer-production-import,FloatingScore,Score glyph and lifetime lead; historical module source bindings stale
+special_state,54,7,3,37,defer-production-import,StoneState,Nonvirtual owner and observer lifetime; destructor policy differs and historical bindings stale
+sprite_renderer,121,42,22,40,defer-production-import,Animation / Renderer,Large pool and VM leads; file/GPU/COM domains differ and shared counts overlap
+src,4,4,0,0,portable-tools-tested,Inspection tooling,Fresh root binary parser CTest passed; these parsers are not recovered game runtime
+stage_background,66,13,5,40,defer-production-import,Background,STD/camera/interpolation leads; transition/resource lifetime needs integrated verification
+stage_clear,29,4,2,15,defer-production-import,StageClear,Mutating getters and score order; factory and self-delete branches excluded from fixture
+stage_completion,26,6,5,9,defer-production-import,GameCompletion,Reward/time accounting lead; UI/replay boundaries and shared Progress counts are scoped
+startup_scene,45,3,2,31,defer-production-import,StartupScene,Loading callback lead; worker initialization not CPU-verified and old status bindings stale
+stone_menu,52,11,5,28,defer-production-import,StoneMenu,Selection/stock leads; history mutation excluded and selected report binding stale
+tests,7,2,0,0,local-oracle-design-only,Behavioral oracle design,Synthetic/CPU-test contracts; native mapping facilities not production imports
+text_renderer,104,14,8,76,defer-production-import,TextRenderer,GDI/cache/queue leads; real GPU/concurrency/lifecycle excluded and selected report binding stale
+title_system,259,54,29,98,defer-production-import,TitleMenu,Menu/state/formatting leads; old namespace labels and undefined format domains need care
+tools,26,0,0,0,investigation-candidate,Local tooling,Format/extraction algorithms are leads; no toolchain or workflow transplant
+trophy_system,42,7,3,22,defer-production-import,Achievement,Queue/encoding lifetime leads; message parsing/save/GPU integration remain separate

@@ -1,1 +1,7 @@
 address,name,module,confidence,evidence
+0x00422CB0,th20::random_step,Random,high,REF-001
+0x004235F0,th20::RandomState::next,Random,high,REF-001
+0x00423F50,th20::Timer::reset,Timer,high,REF-001
+0x00423F80,th20::Timer::set,Timer,high,REF-001
+0x00423FE0,th20::Timer::set_mode,Timer,high,REF-001
+0x00542E90,__aullshr,CRT,high,REF-001

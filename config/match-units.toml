@@ -2,3 +2,47 @@ schema_version = 1
 target_sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897"
 
 [units]
+
+# REF-001: natural C++20 /Od emission; this profile is local to these sources.
+[units.random_step]
+source = "src/Random.cpp"
+object = "build/Random.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::random_step"]
+symbol = "?random_step@th20@@YAII@Z"
+target_address = 0x00422CB0
+size = 133
+relocations = [{ offset = 0x20, type = "REL32", symbol = "__aullshr", target = 0x00542E90 }]
+
+[units.random_next]
+source = "src/Random.cpp"
+object = "build/Random.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::RandomState::next"]
+symbol = "?next@RandomState@th20@@QAEIXZ"
+target_address = 0x004235F0
+size = 35
+relocations = [{ offset = 0xE, type = "REL32", symbol = "?random_step@th20@@YAII@Z", target = 0x00422CB0 }]
+
+[units.timer_reset]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::reset"]
+symbol = "?reset@Timer@th20@@QAEXXZ"
+target_address = 0x00423F50
+size = 41
+relocations = []
+
+[units.timer_set]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::set"]
+symbol = "?set@Timer@th20@@QAEXH@Z"
+target_address = 0x00423F80
+size = 90
+relocations = [
+  { offset = 0x16, type = "REL32", symbol = "?reset@Timer@th20@@QAEXXZ", target = 0x00423F50 },
+  { offset = 0x20, type = "REL32", symbol = "?set_mode@Timer@th20@@QAEXI@Z", target = 0x00423FE0 }
+]

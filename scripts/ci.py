@@ -10,7 +10,7 @@ from project import ROOT
 
 def main():
     files = subprocess.check_output(["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"], cwd=ROOT).decode().split("\0")
-    private = (".tools/", ".analysis/", "ghidra-project/", "build/", ".venv/")
+    private = (".tools/", ".analysis/", "ghidra-project/", "build/", ".venv/", "_reference/")
     suffixes = {".exe", ".bak", ".dll", ".dat", ".zip", ".7z", ".rar", ".gpr", ".i64", ".id0", ".id1", ".obj", ".pdb"}
     for relative in files:
         if relative and (relative.startswith(private) or Path(relative).suffix.lower() in suffixes):
@@ -21,9 +21,10 @@ def main():
     commands = [[sys.executable, "-m", "py_compile", *sorted(f for f in files if f.endswith(".py"))],
                 [sys.executable, "scripts/validate-tracking.py", "--skip-target-bytes"],
                 [sys.executable, "scripts/build.py", "--check"],
+                [sys.executable, "scripts/validate-reference-review.py"],
                 [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
                 [sys.executable, "scripts/progress.py", "--check"], ["git", "diff", "--check"]]
-    commands += [["bash", "-n", f] for f in files if f.endswith(".sh")]
+    commands += [["bash", "-n", f] for f in files if f.endswith(".sh") or f == "scripts/repo-python"]
     for command in commands:
         subprocess.run(command, cwd=ROOT, check=True)
     print("Public CI passed; no private target, compiler, or Ghidra project required.")

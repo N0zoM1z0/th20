@@ -5,7 +5,7 @@ if [[ $# -ne 1 ]]; then
   echo "usage: $0 /path/to/the-locked-steamless/th20.exe" >&2
   exit 2
 fi
-python3 "$repo_root/scripts/verify-target.py" "$1"
+"$repo_root/scripts/repo-python" "$repo_root/scripts/verify-target.py" "$1"
 target_path=$(realpath -- "$1")
 if [[ "$target_path" == "$repo_root/resources/th20.exe" ]]; then
   exit 0
@@ -16,4 +16,4 @@ if [[ -e "$repo_root/resources/th20.exe" && ! -L "$repo_root/resources/th20.exe"
   exit 1
 fi
 ln -sfn -- "$target_path" "$repo_root/resources/th20.exe"
-python3 "$repo_root/scripts/verify-target.py"
+"$repo_root/scripts/repo-python" "$repo_root/scripts/verify-target.py"

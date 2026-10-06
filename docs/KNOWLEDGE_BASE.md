@@ -1,5 +1,33 @@
 # Verified facts and open hypotheses
 
+## REF-001 — 2026-10-06
+
+- Observed: reference commit 011aa029d1dac51578107bc98a0006bd750e453c uses
+  the same target hash. Its v1.00c label matches embedded title/replay strings;
+  registry/package v1.00a is separate evidence, not a different binary.
+- Audited: all 10,822 tracked files; 648,476 matching byte-bearing disassembly
+  rows; 401 stale JSON hash references. All 55 review groups have dispositions
+  accounting for every file. See `REFERENCE_REVIEW.md` and the audit manifests.
+- Independently observed: 153 retained-source diagnostic sites in 124 functions
+  pass target-string, attested Ghidra-reference and Capstone-immediate checks.
+  Two ownerless reference sites are deferred, with no credit.
+- Compiler-observed: natural C++20 /Od bodies fully replay four complete COFF
+  functions with explicit independently reviewed relocation anchors.
+- Corroborated library origin: RNG step/invocation match installed MSVC
+  minstd_rand machinery. These and the reviewed __aullshr helper are excluded
+  from authored totals, regardless of successful component replay.
+- Accepted authored exactness: Timer::reset and Timer::set, 131 bytes total.
+  Timer::set_mode retains three differing bytes and has no exact credit.
+- Semantically checked: reset preserves flags; mode replaces only bits 1..2;
+  set initializes only when required and preserves modulo-32 previous values.
+  Independent portable tests pass with undefined-behavior sanitization.
+- Unknown: full Timer clock/rounding behavior, enclosing 28-byte RNG ownership,
+  remaining origin/boundary review, global compiler flags and whole-program
+  compile/link/runtime. Reference reports do not resolve these unknowns.
+
+Public repository: https://github.com/N0zoM1z0/th20. Maintained text and commit
+messages are English; new subjects use `gpt-6.1-sol: <description>`.
+
 ## BOOT-001 — 2026-10-06
 
 - Observed: selected file SHA-256/MD5/size, PE32/x86, image base, entry,

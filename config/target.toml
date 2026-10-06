@@ -1,6 +1,8 @@
 [target]
 title = "東方錦上京 ～ Fossilized Wonders."
 version = "1.00a"
+version_basis = "Independent hash registry and supplied package readme; distinct from embedded labels"
+embedded_version_label = "1.00c"
 region = "japanese"
 variant = "steamless"
 filename = "th20.exe"
@@ -21,6 +23,24 @@ steam_original_path = "../game_exe/th20.exe.bak"
 steam_original_sha256 = "b0b5847b5f6dc43d51535ed9903a85485547b27dc053587544aac0f148ea4eaf"
 custom_sha256 = "261fb74f64b8a9908b128d30d59af64c59e2c37f6f917ee6646f4c3e42d50f33"
 evidence = "Official sources establish Japanese release/language; THCRAP independently identifies exact whole-file hashes. Selected binary is Steamless, not unmodified non-Steam retail. Steam original has encrypted .text and .bind. No official publisher checksum was found."
+
+[[provenance.embedded_labels]]
+address = 0x0056CB3E
+encoding = "utf-16le"
+value = "1.00c"
+context = "Japanese window-title version suffix"
+
+[[provenance.embedded_labels]]
+address = 0x0056CB8C
+encoding = "utf-16le"
+value = "1.00c"
+context = "English window-title version suffix"
+
+[[provenance.embedded_labels]]
+address = 0x0057354C
+encoding = "ascii"
+value = "1.00c"
+context = "Replay information version text"
 
 [pe]
 machine = "i386"

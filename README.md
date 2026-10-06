@@ -1,42 +1,124 @@
-# 東方錦上京 ～ Fossilized Wonders. reconstruction
+# 東方錦上京 ～ Fossilized Wonders.
 
-TH20 Japanese v1.00a reconstruction, bootstrapped using the local TH095
-workflow. The exact oracle is the **user-selected Steamless** variant, not
-unmodified non-Steam retail. See [target provenance](docs/TARGET_PROVENANCE.md).
+<p align="center">
+  <img src="resources/progress.svg" alt="TH20 exact source reconstruction progress">
+</p>
 
-| State | Bootstrap checkpoint |
+Source reconstruction of the original Japanese TH20 v1.00a **Steamless**
+executable. Function-level exactness requires reproducible comparison against
+one hash-attested target. The workflow follows [TH095](https://github.com/N0zoM1z0/th095),
+with Ghidra and a separate modern MSVC environment for TH20.
+
+> [!IMPORTANT]
+> Reconstruction is in progress. Verified source components and exact function
+> comparisons are available; the repository does not yet build a playable game.
+> Origin review, source presence, exactness, linkage and runtime behavior are
+> separate statuses.
+
+## Exact target
+
+Supply your own executable as `resources/th20.exe`:
+
+| Property | Required value |
 | --- | --- |
-| Target identity | verified, SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
-| Analysis | separate, attested Ghidra 12.1.3 project |
-| Candidate inventory | 6,928 provisional functions, all awaiting review |
-| Compiler | pinned MSVC 19.44.35211 x86 candidate; flags remain unknown |
-| Build environment | Win32/DirectX/MSVC compile + PE32 link + Wine smoke verified |
-| Reconstructed source / exact units | 0 / 0 |
-
-The original files stay in `../game_exe/`. `resources/th20.exe` is an ignored
-symlink to the supplied target. Game data, executables, private databases,
-toolchains and generated outputs are excluded from Git.
+| Version | Japanese 1.00a, user-selected Steamless variant |
+| Embedded title/replay label | 1.00c; recorded separately from registry/package identification |
+| Size | `1,858,560` bytes |
+| SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
+| MD5 | `e7ccdbd2f319ba868ce386e484fff1d3` |
+| Image base | `0x00400000` |
+| Entry point | `0x005435E0` |
 
 ```bash
-cd /home/pentester/coding/codex_ida/th20-reconstruction/th20
-scripts/bootstrap-tools.sh
-python3 scripts/verify-provenance.py --fetch
-python3 scripts/verify-target.py
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/ghidra.py check
-python3 scripts/toolchain-smoke.py
-python3 scripts/ci.py
+scripts/import-target.sh /path/to/th20.exe
+scripts/repo-python scripts/verify-target.py
 ```
 
-On a fresh private workspace, supply that exact executable at
-`resources/th20.exe` and run `python3 scripts/ghidra.py import` once. Existing
-projects use `check`; inventory refreshes never overwrite reviewed ledgers.
-The [workflow](docs/RE_WORKFLOW.md), [oracles](docs/ORACLES.md),
-[build guide](docs/BUILD_MATCHING.md), [Ghidra guide](docs/GHIDRA.md),
-[tool routing](docs/TOOLS.md), [source map](docs/SOURCE_MAP.md),
-[knowledge base](docs/KNOWLEDGE_BASE.md), [roadmap](docs/ROADMAP.md),
-[progress](docs/PROGRESS.md) and [handoff](docs/RE_HANDOFF.md) define the process.
+The Steam-original backup is retained locally as provenance evidence. Its
+code differs from the comparison target. See [target provenance](docs/TARGET_PROVENANCE.md)
+for official Japanese release and independent executable identification.
+Game executables, assets, private databases, toolchains and reference checkouts
+are excluded from Git.
 
-The control-plane scripts adapt MIT-licensed TH095 code; its compiler flags,
-source mappings, game layouts and assembly exceptions do not transfer. This
-repository's license grants no rights to the original game or downloaded tools.
+## Repository status
+
+| Area | Current position |
+| --- | --- |
+| Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
+| Inventory | 6,928 provisional candidates; origin and boundary review in progress |
+| Source | Five mapped component functions in Random.cpp and Timer.cpp |
+| Authored exactness | Timer reset and value-setting: two functions, 131 bytes |
+| Library comparisons | Two MSVC minstd_rand equivalents pass exact replay; excluded from authored totals |
+| Open compiler difference | Timer mode setter differs in three register-encoding bytes; no exact credit |
+| Whole-program build and runtime | Not available |
+
+[Generated progress](docs/PROGRESS.md) and `scripts/report-reconstruction-status.py`
+are the canonical live totals. The authored-byte denominator covers only the
+currently reviewed set; it is not whole-game completion.
+
+The pinned compiler candidate is MSVC `19.44.35211` x86, with Windows SDK
+`10.0.26100.0` and D3DX `9.29.952.8`. Clean `/Od` C++20 profiles reproduce the
+accepted components. These results do not establish executable-wide compiler
+flags, SDK or CRT identity. Profiles and relocation anchors are recorded per
+source in `config/match-units.toml`.
+
+## Build and verify
+
+Public checks need Python 3.11+ and a C++20 compiler, with no original game or
+proprietary toolchain:
+
+```bash
+scripts/repo-python scripts/ci.py
+```
+
+Private reconstruction checks:
+
+```bash
+scripts/bootstrap-tools.sh
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/report-reconstruction-status.py --summary
+scripts/repo-python scripts/validate-tracking.py --require-target
+scripts/repo-python scripts/ghidra.py check
+scripts/repo-python scripts/replay-exact-units.py
+```
+
+On a fresh private workspace, provision tools as described in
+[Tools](docs/TOOLS.md), then run `scripts/repo-python scripts/ghidra.py import` once.
+Every query re-attests the executable and complete mapped code section;
+inventory refreshes never overwrite reviewed ledgers.
+
+## Reference review
+
+[Oracatt/Touhou20](https://github.com/Oracatt/Touhou20) is pinned locally under
+ignored `_reference/Touhou20`. Its target hash matches ours. Its v1.00c label
+comes from embedded strings; our v1.00a identification follows the independent
+hash registry and supplied package. Both observations are preserved in provenance.
+
+The [review](docs/REFERENCE_REVIEW.md) records the repository-wide evidence audit,
+module dispositions, stale reports and independently verified absorption.
+Validated source diagnostics route further analysis; reference source, build
+layout and completion claims are not imported wholesale.
+
+## Documentation
+
+- [Current handoff](docs/RE_HANDOFF.md)
+- [Architecture and target inventory](docs/ARCHITECTURE.md)
+- [Reconstruction workflow](docs/RE_WORKFLOW.md)
+- [Independent oracles](docs/ORACLES.md)
+- [Build and strict matching](docs/BUILD_MATCHING.md)
+- [Ghidra setup and attestation](docs/GHIDRA.md)
+- [Tool routing](docs/TOOLS.md)
+- [Source ownership](docs/SOURCE_MAP.md)
+- [Semantic reconstruction policy](docs/SEMANTIC_RECONSTRUCTION.md)
+- [Reference review](docs/REFERENCE_REVIEW.md)
+- [Verified knowledge base](docs/KNOWLEDGE_BASE.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Generated progress](docs/PROGRESS.md)
+- [Agent rules](AGENTS.md)
+
+## License
+
+[MIT](LICENSE) for this repository's original code and TH095-derived control
+plane. It grants no rights to the original game, downloaded tools or external
+reference material. Maintained prose and commit messages are in English;
+official names and original target evidence retain their original language.

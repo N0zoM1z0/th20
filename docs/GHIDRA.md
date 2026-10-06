@@ -6,17 +6,17 @@ archive URLs/hashes are retained for a fresh independent bootstrap. The TH20
 project is a separate `ghidra-project/TH20.gpr` and does not share databases.
 
 ```bash
-python3 scripts/ghidra.py import        # first import, attest, create initial ledgers
-python3 scripts/ghidra.py check
-python3 scripts/ghidra.py query .analysis/entry.asm disassemble 40 0x005435E0
-python3 scripts/ghidra.py query .analysis/entry.txt function 0x005435E0
-python3 scripts/ghidra.py query .analysis/calls.txt callees 0x005435E0
-python3 scripts/ghidra.py query .analysis/xrefs.txt xrefs_to 40 0x005435E0
-python3 scripts/ghidra.py query .analysis/functions.txt list_functions 0 40 ''
-python3 scripts/ghidra.py query .analysis/strings.txt search_strings 40 'th20'
-python3 scripts/ghidra.py decompile .analysis/entry.c 0x005435E0
-python3 scripts/ghidra.py architecture
-python3 scripts/ghidra.py inventory
+scripts/repo-python scripts/ghidra.py import        # first import, attest, create initial ledgers
+scripts/repo-python scripts/ghidra.py check
+scripts/repo-python scripts/ghidra.py query .analysis/entry.asm disassemble 40 0x005435E0
+scripts/repo-python scripts/ghidra.py query .analysis/entry.txt function 0x005435E0
+scripts/repo-python scripts/ghidra.py query .analysis/calls.txt callees 0x005435E0
+scripts/repo-python scripts/ghidra.py query .analysis/xrefs.txt xrefs_to 40 0x005435E0
+scripts/repo-python scripts/ghidra.py query .analysis/functions.txt list_functions 0 40 ''
+scripts/repo-python scripts/ghidra.py query .analysis/strings.txt search_strings 40 'th20'
+scripts/repo-python scripts/ghidra.py decompile .analysis/entry.c 0x005435E0
+scripts/repo-python scripts/ghidra.py architecture
+scripts/repo-python scripts/ghidra.py inventory
 ```
 
 Initial import runs with two analysis CPUs. Every subsequent inspection uses

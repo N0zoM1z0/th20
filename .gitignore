@@ -1,5 +1,6 @@
 # Private retail targets and analysis workspaces
 reference/
+/_reference/
 resources/private/
 .tools/
 .analysis/

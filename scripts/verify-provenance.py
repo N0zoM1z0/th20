@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 import sys
 import urllib.request
-from project import ROOT, digest, load_manifest, verified_target
+from project import ROOT, digest, load_manifest, verified_target, integer
 
 
 def main():
@@ -26,7 +26,21 @@ def main():
     if digest(registry) != identities["registry_sha256"]:
         raise ValueError("registry snapshot missing or changed; run with --fetch")
     text = registry.read_text()
-    manifest = verified_target()[1]
+    target_bytes, manifest = verified_target()
+    embedded_labels = []
+    for label in manifest["provenance"].get("embedded_labels", []):
+        address = integer(label["address"])
+        expected = (label["value"] + "\0").encode(label["encoding"])
+        for section in manifest["pe"]["sections"]:
+            start = integer(manifest["pe"]["image_base"]) + integer(section["rva"])
+            if start <= address and address + len(expected) <= start + section["raw_size"]:
+                offset = integer(section["raw_offset"]) + address - start
+                if target_bytes[offset:offset + len(expected)] != expected:
+                    raise ValueError(f"embedded version label differs at {address:#x}")
+                embedded_labels.append(label)
+                break
+        else:
+            raise ValueError(f"embedded version label is not file-backed: {address:#x}")
     files = {
         "steamless": ROOT / "resources/th20.exe",
         "steam_original": ROOT / manifest["provenance"]["steam_original_path"],
@@ -46,6 +60,7 @@ def main():
         rows.append({"variant": variant, "version": expected["version"],
                      "label": expected["label"], "sha256": observed, "size": path.stat().st_size})
     report = {"selected": "steamless", "files": rows,
+              "embedded_labels": embedded_labels,
               "registry_url": identities["registry_url"],
               "official_checksums_available": False,
               "non_steam_original_sha256": identities["non_steam_original"]["sha256"]}
@@ -57,6 +72,8 @@ def main():
     else:
         for row in rows:
             print(f"{row['variant']}: Japanese v{row['version']} / {row['label']} / SHA-256 verified")
+        if embedded_labels:
+            print("Embedded title/replay label: 1.00c; registry/package identification: 1.00a. Same locked executable, separate evidence.")
         print("Exact oracle: user-selected Steamless; independent registry evidence, not publisher-issued checksums.")
 
 

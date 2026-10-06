@@ -747,7 +747,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00422C00,36,0x00422C23,FUN_00422c00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00422C30,29,0x00422C4C,std::locale::locale,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00422C50,85,0x00422CA4,FUN_00422c50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00422CB0,133,0x00422D34,FUN_00422cb0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00422CB0,133,0x00422D34,FUN_00422cb0,th20::random_step,Random,excluded,0.00,__cdecl,uint32_t random_step(uint32_t),false,src/Random.cpp,REF-001; docs/REFERENCE_REVIEW.md,library,MSVC STL minstd_rand transition equivalent; exact replay excluded from authored totals
 0x00422D40,67,0x00422D82,FUN_00422d40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00422D90,54,0x00422DC5,FUN_00422d90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00422DD0,54,0x00422E05,FUN_00422dd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -764,16 +764,16 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00423560,46,0x0042358D,FUN_00423560,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423590,46,0x004235BD,FUN_00423590,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004235C0,46,0x004235ED,FUN_004235c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004235F0,35,0x00423612,FUN_004235f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004235F0,35,0x00423612,FUN_004235f0,th20::RandomState::next,Random,excluded,0.00,__thiscall,uint32_t RandomState::next(),false,src/Random.cpp,REF-001; docs/REFERENCE_REVIEW.md,library,"MSVC STL engine invocation equivalent; four-byte engine subobject, not complete 28-byte game RNG"
 0x00423620,46,0x0042364D,FUN_00423620,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423650,1407,0x00423BCE,FUN_00423650,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423BD0,17,0x00423BE0,FUN_00423bd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423BF0,637,0x00423E6C,FUN_00423bf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423EA0,49,0x00423ED0,FUN_00423ea0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00423EE0,99,0x00423F42,FUN_00423ee0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00423F50,41,0x00423F78,FUN_00423f50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00423F80,90,0x00423FD9,FUN_00423f80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00423FE0,38,0x00424005,FUN_00423fe0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00423F50,41,0x00423F78,FUN_00423f50,th20::Timer::reset,Timer,matching,100.00,__thiscall,void Timer::reset(),false,src/Timer.cpp,REF-001; docs/REFERENCE_REVIEW.md,authored,41-byte complete COFF function; all bytes exact
+0x00423F80,90,0x00423FD9,FUN_00423f80,th20::Timer::set,Timer,matching,100.00,__thiscall,void Timer::set(int32_t),false,src/Timer.cpp,REF-001; docs/REFERENCE_REVIEW.md,authored,90-byte complete COFF function; both independently anchored calls exact
+0x00423FE0,38,0x00424005,FUN_00423fe0,th20::Timer::set_mode,Timer,reconstructed,0.00,__thiscall,void Timer::set_mode(uint32_t),false,src/Timer.cpp,REF-001; docs/REFERENCE_REVIEW.md,authored,Behavior checked; full 38-byte comparator has three register-encoding differences; no exact credit
 0x00424010,17,0x00424020,FUN_00424010,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00424030,40,0x00424057,FUN_00424030,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00424060,25,0x00424078,FUN_00424060,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6022,7 +6022,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00542E00,66,0x00542E41,FUN_00542e00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00542E42,3046,0x00543A27,FUN_00542e42,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00542E76,14,0x00542E83,operator_delete,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00542E90,31,0x00542EAE,__aullshr,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00542E90,31,0x00542EAE,__aullshr,__aullshr,CRT,excluded,0.00,register,EDX:EAX unsigned shift by CL,false,,REF-001; docs/REFERENCE_REVIEW.md,library,Complete 31-byte helper reviewed independently; no authored credit
 0x00542EAF,90,0x00542F08,`eh_vector_constructor_iterator',,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00542F0F,20,0x00542F22,FUN_00542f0f,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00542F23,108,0x00542F8E,FUN_00542f23,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

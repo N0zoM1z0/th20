@@ -39,9 +39,28 @@ not an independent reproduction of the unwrapping transformation.
 `resources/th20.exe` is an ignored symlink to the supplied file; it is not a
 new patched copy. Both originals remain unmodified outside the public repo.
 
+## Embedded version labels
+
+The locked executable itself contains the following NUL-terminated strings:
+
+| Virtual address | Encoding | Value | Context |
+| --- | --- | --- | --- |
+| `0x0056CB3E` | UTF-16LE | `1.00c` | Japanese window-title suffix |
+| `0x0056CB8C` | UTF-16LE | `1.00c` | English window-title suffix |
+| `0x0057354C` | ASCII | `1.00c` | Replay information |
+
+These embedded labels differ from the registry/package identification of
+v1.00a. Both observations refer to the same SHA-256-locked file. They do not
+establish a distinct updated v1.00c executable. The reference repository's
+v1.00c label is supported by these strings; it is not evidence of a target
+mismatch. `config/target.toml` records both forms and their evidence, and the
+provenance verifier checks all three strings against the original file.
+
+## Reproduction
+
 ```bash
-python3 scripts/verify-provenance.py --fetch
-python3 scripts/verify-target.py
+scripts/repo-python scripts/verify-provenance.py --fetch
+scripts/repo-python scripts/verify-target.py
 ```
 
 The registry URL and snapshot hash are fixed in

@@ -1,0 +1,5 @@
+th20::random_step
+th20::RandomState::next
+th20::Timer::reset
+th20::Timer::set
+th20::Timer::set_mode

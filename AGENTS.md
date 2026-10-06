@@ -1,5 +1,17 @@
 # TH20 reconstruction agent rules
 
+All maintained source comments, documentation, review records and commit
+messages must be in English, as explicitly requested by the user.
+Official Japanese names and original target evidence may retain their original
+language, as the user explicitly clarified. Preserve the official title in
+`config/target.toml`, following TH095's treatment of game metadata.
+Commit subjects use `gpt-6.1-sol: <description>`.
+
+Invoke Python through `scripts/repo-python` for repository work, including
+one-off snippets and tests. It selects the local `.venv` and verifies pinned
+optional decoder versions. Python subprocesses use `sys.executable` to keep
+that selection. See `docs/TOOLS.md` for fresh-checkout and override behavior.
+
 ## Exact target and scope
 
 This repository reconstructs the user-selected Japanese TH20 v1.00a
@@ -10,6 +22,11 @@ The user explicitly approved this selection on 2026-10-06 and requested
 The Steam-original backup is provenance evidence. Do not substitute it,
 non-Steam retail, a localization, a trial or an earlier/later executable.
 
+Registry/package identification is v1.00a; embedded title/replay strings say
+1.00c in this same locked file. Preserve both observations as documented in
+`docs/TARGET_PROVENANCE.md`. Version labels alone do not identify a different
+comparison target.
+
 ## Before changing reconstruction state
 
 Read `docs/RE_HANDOFF.md`, `docs/ARCHITECTURE.md`, `docs/RE_WORKFLOW.md`,
@@ -18,10 +35,10 @@ Read `docs/RE_HANDOFF.md`, `docs/ARCHITECTURE.md`, `docs/RE_WORKFLOW.md`,
 Inspect `git status`, then run:
 
 ```bash
-python3 scripts/verify-target.py
-python3 scripts/report-reconstruction-status.py --summary
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/ghidra.py check
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/report-reconstruction-status.py --summary
+scripts/repo-python scripts/validate-tracking.py --require-target
+scripts/repo-python scripts/ghidra.py check
 ```
 
 Ghidra queries/decompilation/exports must go through `scripts/ghidra.py`,

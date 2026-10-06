@@ -5,6 +5,8 @@
    x86 compiler and verify control-plane failure paths.
 2. Review one bounded owner/ABI family using target-local calls, strings,
    fields and code extents. Establish clean source and a reproducible unit.
+   REF-001 establishes the first Timer units and verified STL equivalents;
+   close clock/rounding and enclosing RNG ownership before widening that family.
 3. Expand origins/source ownership and canonical exact replay without relying
    on auto-analysis as proof of completeness. Prioritize connected game hubs
    alongside leaf helpers, using architecture metrics as routing evidence.

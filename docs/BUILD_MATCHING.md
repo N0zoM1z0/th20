@@ -22,8 +22,8 @@ untouched. All generated products and PDBs stay under `build/`.
 
 ```bash
 scripts/bootstrap-tools.sh
-python3 scripts/doctor.py
-python3 scripts/toolchain-smoke.py
+scripts/repo-python scripts/doctor.py
+scripts/repo-python scripts/toolchain-smoke.py
 ```
 
 The smoke probe includes Win32, Direct3D9/D3DX9, DirectInput8, DirectSound,
@@ -36,10 +36,10 @@ not a reconstructed game or exact-match credit. Its `/O2 /Ob1 /MT /EHsc /GR-
 
 ```bash
 scripts/compile-probe.sh .analysis/probes/example.cpp build/probes/example.obj /Od /MT /EHsc /Gy /Z7
-python3 scripts/build.py --check
-python3 scripts/build.py --unit example
-python3 scripts/compare-coff-function.py --unit example --json
-python3 scripts/replay-exact-units.py
+scripts/repo-python scripts/build.py --check
+scripts/repo-python scripts/build.py --unit example
+scripts/repo-python scripts/compare-coff-function.py --unit example --json
+scripts/repo-python scripts/replay-exact-units.py
 ```
 
 The first flags are an invocation example, not target-observed truth. `/fp:`,

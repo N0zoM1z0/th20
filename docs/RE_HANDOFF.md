@@ -1,5 +1,56 @@
 # Current reconstruction handoff
 
+## REF-001 — 2026-10-06
+
+The reference-wide review and first independently verified absorption are
+recorded in `REFERENCE_REVIEW.md`. The pinned local checkout is
+`_reference/Touhou20`, explicitly ignored and blocked from public CI's tracked
+tree. The public repository is https://github.com/N0zoM1z0/th20, with TH095-style
+README/progress, About and topics. Maintained prose is English; official names
+and original evidence retain their language. Commit subjects use
+`gpt-6.1-sol: <description>`.
+
+All Python invocations now go through `scripts/repo-python`, modeled on TH10.
+Shell launchers and public CI use the same entry point; it prefers the pinned
+local environment and supports standard-library-only fresh public checkouts.
+
+- All 10,822 reference files audited; 55 group dispositions account for them.
+- Same target hash: registry/package identification is 1.00a, embedded
+  title/replay labels are 1.00c. Both are verified in target provenance.
+- 153 diagnostic sites in 124 functions independently accepted as routing
+  evidence, with no mapping/source/exact credit inherited.
+- Maintained source: `src/Random.*` and `src/Timer.*`; five source-present mappings.
+- Four canonical units replay complete contributions from two cold objects.
+- Authored exact credit: two Timer functions, 131 bytes. RNG's two exact
+  equivalents are excluded as MSVC STL; __aullshr is excluded as CRT.
+- Timer mode: natural source, behavior checked, three differing bytes; no credit.
+- Current origin review: three authored, three exclusions, 6,922 pending.
+- Public semantic/synthetic CI, private target/tracking/Ghidra checks, reference
+  byte/freshness audit and independent source-diagnostic checks pass.
+- Portable reference binary-parser and archive CTests pass. Linux cannot link
+  its Windows-wmain archive verifier; no game/runtime credit follows.
+- No whole-game build/runtime or reference implementation bulk import.
+
+Next coherent family: Timer delta/tick and global clock/rounding, or enclosing
+RNG seed/distribution/storage ownership. Other candidate families are indexed
+in the reference review; avoid inheriting its service-suffixed layouts or
+historical behavior counts. Replay existing units after any shared-source change.
+
+```bash
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/validate-tracking.py --require-target
+scripts/repo-python scripts/ghidra.py check
+scripts/repo-python scripts/review-reference.py
+scripts/repo-python scripts/ghidra.py architecture
+scripts/repo-python scripts/import-reference-leads.py --check
+scripts/repo-python scripts/replay-exact-units.py
+scripts/repo-python scripts/ci.py
+```
+
+Private evidence: `.analysis/reference-review/`, `.analysis/reference-core*`,
+`.analysis/reference-rng-anchor*`; receipts are beside `build/Random.obj` and
+`build/Timer.obj`. The bootstrap record below is historical.
+
 ## BOOT-001 — 2026-10-06
 
 The TH20 control plane and local build/analysis environment are initialized.
@@ -49,11 +100,11 @@ The smoke executable is a console infrastructure probe, not a game build.
 
 ```bash
 git status --short --branch
-python3 scripts/verify-target.py
-python3 scripts/report-reconstruction-status.py --summary
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/ghidra.py check
-python3 scripts/ci.py
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/report-reconstruction-status.py --summary
+scripts/repo-python scripts/validate-tracking.py --require-target
+scripts/repo-python scripts/ghidra.py check
+scripts/repo-python scripts/ci.py
 ```
 
 Read `AGENTS.md`, `RE_WORKFLOW.md`, `ARCHITECTURE.md`, `ORACLES.md`,

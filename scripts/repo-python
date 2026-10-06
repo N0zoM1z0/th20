@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Prefer the repository environment and refuse mismatched decoder versions.
+# A fresh public checkout may use standard-library-only Python instead.
+repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+candidate_interpreters=()
+require_packages=0
+if [[ -n "${TH20_PYTHON:-}" ]]; then
+    candidate_interpreters+=("$TH20_PYTHON")
+elif [[ -e "$repo_root/.venv/bin/python" || -L "$repo_root/.venv/bin/python" ]]; then
+    candidate_interpreters+=("$repo_root/.venv/bin/python")
+    require_packages=1
+else
+    for candidate_command in python3 python3.13 python3.12 python3.11; do
+        if command -v "$candidate_command" >/dev/null 2>&1; then
+            candidate_interpreters+=("$(command -v "$candidate_command")")
+        fi
+    done
+fi
+
+for repo_python in "${candidate_interpreters[@]}"; do
+    if [[ "$repo_python" != */* ]]; then
+        repo_python="$(command -v "$repo_python" || true)"
+    fi
+    [[ -x "$repo_python" ]] || continue
+    if "$repo_python" - "$repo_root" "$require_packages" <<'PY'
+import importlib
+import importlib.util
+import sys
+from pathlib import Path
+
+if sys.version_info < (3, 11):
+    raise SystemExit("repo-python: Python 3.11 or newer is required")
+import tomllib
+
+with (Path(sys.argv[1]) / "config/tools.lock.toml").open("rb") as stream:
+    versions = tomllib.load(stream)["python"]
+for name in ("pefile", "capstone"):
+    if importlib.util.find_spec(name) is None:
+        if sys.argv[2] == "1":
+            raise SystemExit(f"repo-python: repository environment is missing {name}")
+        continue
+    module = importlib.import_module(name)
+    actual = getattr(module, "__version__", None)
+    if actual != versions[name]:
+        raise SystemExit(f"repo-python: {name} {actual!r} differs from pinned {versions[name]}")
+PY
+    then
+        exec "$repo_python" "$@"
+    fi
+done
+
+printf '%s\n' \
+    'error: no compatible repository Python interpreter was found' \
+    'Repair .venv using config/python-requirements.txt, or set TH20_PYTHON to a compatible interpreter.' >&2
+exit 1

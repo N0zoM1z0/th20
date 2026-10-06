@@ -8,10 +8,10 @@ special assembly exceptions are not TH20 evidence.
 
 ```bash
 git status --short --branch
-python3 scripts/verify-target.py
-python3 scripts/report-reconstruction-status.py --summary
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/ghidra.py check
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/report-reconstruction-status.py --summary
+scripts/repo-python scripts/validate-tracking.py --require-target
+scripts/repo-python scripts/ghidra.py check
 ```
 
 Read `RE_HANDOFF.md`, `ARCHITECTURE.md`, `ORACLES.md`, and the relevant source.

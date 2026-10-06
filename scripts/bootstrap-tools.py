@@ -96,13 +96,13 @@ def main():
         with zipfile.ZipFile(archive) as stream:
             stream.extractall(tools / "dxsdk-d3dx")
     if not (ROOT / ".venv/bin/python").exists():
-        subprocess.run(["uv", "venv", str(ROOT / ".venv")], check=True)
+        subprocess.run(["uv", "venv", "--python", sys.executable, str(ROOT / ".venv")], check=True)
     subprocess.run(["uv", "pip", "install", "--python", str(ROOT / ".venv/bin/python"),
                     "-r", str(ROOT / "config/python-requirements.txt")], check=True)
     version = subprocess.run(["reccmp-project", "--version"], capture_output=True, text=True) if shutil.which("reccmp-project") else None
     if version is None or version.stdout.strip() != "reccmp-project 0.1.6":
         subprocess.run(["uv", "tool", "install", "reccmp==0.1.6"], check=True)
-    subprocess.run([sys.executable, "scripts/doctor.py"], cwd=ROOT, check=True)
+    subprocess.run([str(ROOT / "scripts/repo-python"), "scripts/doctor.py"], cwd=ROOT, check=True)
     print("TH20 bootstrap complete. MSVC/SDK/CRT remain candidates until target-local replay proves them.")
 
 
