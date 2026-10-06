@@ -128,3 +128,10 @@ th20::Interpolation<float>::set_start,0x004393D0,function
 th20::Interpolation<float>::set_end,0x00438A70,function
 th20::Interpolation<float>::begin,0x00439550,function
 th20::SelectionPulse::SelectionPulse,0x00461840,function
+th20::Vector2::Vector2,0x004398A0,function
+th20::ExtendedCommand::ExtendedCommand,0x0047BD90,function
+th20::ShotParameters::ShotParameters,0x0047BD20,function
+th20::BulletCommand::BulletCommand,0x0047BCA0,function
+th20::geometry::absolute,0x00445680,function
+th20::geometry::circle_point,0x00456FE0,function
+th20::geometry::rectangle_point,0x00457300,function

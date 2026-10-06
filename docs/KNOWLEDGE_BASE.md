@@ -1,5 +1,31 @@
 # Verified facts and open hypotheses
 
+## REF-028 — 2026-10-07 — component checkpoint; batch ongoing
+
+- Seven complete exact contributions add640 bytes: Vector2 construction,
+  ExtendedCommand64, ShotParameters40, BulletCommand44x86 and three geometry
+  routines. All136 units replay across35 cold objects /9,104 complete bytes.
+  Authored57/4,074 remains unchanged;75 pending origins and four library units.
+- Independent native47B740/4C81F0 bind64-byte array stride and14/24 counts to
+  constructor47BD90. Allocate47A790 requests44 bytes. Shoot481780 reads signed
+  count+24/rows+26; native47DCF0 opcode24 consumes+28 script as character pointer.
+- Actual ShotParameters angle14/angle_step18/speed1C/speed_step20; neutral
+  command-dependent names preserve uncertain original declarations/aliases.
+  Natural host pointer width is retained rather than forcing44-byte host size.
+- Absolute retains-0 and quiet-NaN sign; circle includes equality, rectangle
+  excludes equality. Independently approved PE constants2.0 at56C8D0 / four
+  sign bits at56D7D0 anchor canonical replay. Dirty storage, integer lattice,
+  nextafter/IEEE tests pass C++20/UBSan through shared maintained source.
+- Related413-body batch remains ongoing: only two geometry bodies terminal at
+  this checkpoint,411 pending. Global2,970 terminal /3,974 pending; parser gaps
+ 53 reconciled /60 pending. No aggregate read/compile terminal credit.
+- Fifty-six unmodified actual production TUs compile serially; refreshed after
+  source freeze. Native owners/typed arrays/PMR/EH/resources remain open. Segment
+  flags constructor and CurveNode angle/EH are deferred without shaping source.
+- Fixture/report/source bindings still under audit. Historical CPU totals are
+  retained evidence, not new execution; no Windows CPU oracle or writer run.
+  See REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md and RE_HANDOFF.md for continuation.
+
 ## REF-027 — 2026-10-07
 
 - Effect191 / Special131 bodies individually reviewed:6 absorbed /133 nonexact /

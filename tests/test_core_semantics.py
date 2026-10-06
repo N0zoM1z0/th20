@@ -36,6 +36,8 @@ class CoreSemanticsTests(unittest.TestCase):
                             "tests/replay_record_semantics.cpp",
                             "src/EffectParameters.cpp", "src/Interpolation.cpp",
                             "tests/effect_value_semantics.cpp",
+                            "src/Vector2.cpp", "src/BulletValues.cpp",
+                            "src/CollisionGeometry.cpp", "tests/bullet_value_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

@@ -129,3 +129,10 @@ address,name,module,confidence,evidence
 0x00438A70,th20::Interpolation<float>::set_end,Interpolation,high,REF-027
 0x00439550,th20::Interpolation<float>::begin,Interpolation,high,REF-027
 0x00461840,th20::SelectionPulse::SelectionPulse,EffectParameters,high,REF-027
+0x004398A0,th20::Vector2::Vector2,Vector2,high,REF-028
+0x0047BD90,th20::ExtendedCommand::ExtendedCommand,BulletValues,high,REF-028
+0x0047BD20,th20::ShotParameters::ShotParameters,BulletValues,high,REF-028
+0x0047BCA0,th20::BulletCommand::BulletCommand,BulletValues,high,REF-028
+0x00445680,th20::geometry::absolute,CollisionGeometry,high,REF-028
+0x00456FE0,th20::geometry::circle_point,CollisionGeometry,high,REF-028
+0x00457300,th20::geometry::rectangle_point,CollisionGeometry,high,REF-028

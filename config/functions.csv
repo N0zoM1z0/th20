@@ -1029,7 +1029,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00439820,35,0x00439842,FUN_00439820,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00439850,35,0x00439872,FUN_00439850,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00439880,31,0x0043989E,_vswprintf_s,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004398A0,35,0x004398C2,FUN_004398a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004398A0,35,0x004398C2,FUN_004398a0,th20::Vector2::Vector2,Vector2,reconstructed,100.00,__thiscall,th20::Vector2::Vector2,false,src/Vector2.cpp,REF-028; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x004398D0,57,0x00439908,FUN_004398d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00439910,72,0x00439957,FUN_00439910,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00439960,77,0x004399AC,FUN_00439960,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -1078,7 +1078,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00445130,534,0x00445345,FUN_00445130,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00445350,612,0x004455B3,FUN_00445350,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004455C0,192,0x0044567F,FUN_004455c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00445680,49,0x004456B0,FUN_00445680,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00445680,49,0x004456B0,FUN_00445680,th20::geometry::absolute,CollisionGeometry,reconstructed,100.00,__cdecl,th20::geometry::absolute,false,src/CollisionGeometry.cpp,REF-028; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x004456C0,20,0x004456D3,FUN_004456c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004456E0,20,0x004456F3,FUN_004456e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00445700,25,0x00445718,FUN_00445700,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -1469,10 +1469,10 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00456920,533,0x00456B34,FUN_00456920,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00456B40,517,0x00456D44,FUN_00456b40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00456D50,651,0x00456FDA,FUN_00456d50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00456FE0,95,0x0045703E,FUN_00456fe0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00456FE0,95,0x0045703E,FUN_00456fe0,th20::geometry::circle_point,CollisionGeometry,reconstructed,100.00,__cdecl,th20::geometry::circle_point,false,src/CollisionGeometry.cpp,REF-028; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x00457040,173,0x004570EC,FUN_00457040,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004570F0,517,0x004572F4,FUN_004570f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00457300,122,0x00457379,FUN_00457300,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00457300,122,0x00457379,FUN_00457300,th20::geometry::rectangle_point,CollisionGeometry,reconstructed,100.00,__cdecl,th20::geometry::rectangle_point,false,src/CollisionGeometry.cpp,REF-028; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x00457380,651,0x0045760A,FUN_00457380,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00457610,669,0x004578AC,FUN_00457610,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004578B0,849,0x00457C00,FUN_004578b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -2249,9 +2249,9 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0047BAA0,141,0x0047BB2C,FUN_0047baa0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0047BB30,95,0x0047BB8E,FUN_0047bb30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0047BB90,255,0x0047BC8E,FUN_0047bb90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0047BCA0,127,0x0047BD1E,FUN_0047bca0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0047BD20,106,0x0047BD89,FUN_0047bd20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0047BD90,106,0x0047BDF9,FUN_0047bd90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0047BCA0,127,0x0047BD1E,FUN_0047bca0,th20::BulletCommand::BulletCommand,BulletValues,reconstructed,100.00,__thiscall,th20::BulletCommand::BulletCommand,false,src/BulletValues.cpp,REF-028; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
+0x0047BD20,106,0x0047BD89,FUN_0047bd20,th20::ShotParameters::ShotParameters,BulletValues,reconstructed,100.00,__thiscall,th20::ShotParameters::ShotParameters,false,src/BulletValues.cpp,REF-028; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
+0x0047BD90,106,0x0047BDF9,FUN_0047bd90,th20::ExtendedCommand::ExtendedCommand,BulletValues,reconstructed,100.00,__thiscall,th20::ExtendedCommand::ExtendedCommand,false,src/BulletValues.cpp,REF-028; docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md,unknown,"REF-028: complete natural value/predicate, independently reconciled whole native routine and owner/call/data consumers; 136-unit canonical cold replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related413-body batch remains ongoing; see docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x0047BE00,556,0x0047C02B,FUN_0047be00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0047C030,246,0x0047C125,FUN_0047c030,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0047C130,180,0x0047C1E3,FUN_0047c130,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

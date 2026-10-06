@@ -1460,3 +1460,86 @@ symbol = "??0SelectionPulse@th20@@QAE@XZ"
 target_address = 0x00461840
 size = 31
 relocations = []
+
+[units.vector2_construct]
+source = "src/Vector2.cpp"
+object = "build/Vector2.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2::Vector2"]
+symbol = "??0Vector2@th20@@QAE@XZ"
+target_address = 0x004398A0
+size = 35
+relocations = []
+
+[units.extended_command_construct]
+source = "src/BulletValues.cpp"
+object = "build/BulletValues.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ExtendedCommand::ExtendedCommand"]
+symbol = "??0ExtendedCommand@th20@@QAE@XZ"
+target_address = 0x0047BD90
+size = 106
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x2C, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x37, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.shot_parameters_construct]
+source = "src/BulletValues.cpp"
+object = "build/BulletValues.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ShotParameters::ShotParameters"]
+symbol = "??0ShotParameters@th20@@QAE@XZ"
+target_address = 0x0047BD20
+size = 106
+relocations = [
+  { offset = 0x21, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.bullet_command_construct]
+source = "src/BulletValues.cpp"
+object = "build/BulletValues.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::BulletCommand::BulletCommand"]
+symbol = "??0BulletCommand@th20@@QAE@XZ"
+target_address = 0x0047BCA0
+size = 127
+relocations = []
+
+[units.geometry_absolute]
+source = "src/CollisionGeometry.cpp"
+object = "build/CollisionGeometry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::geometry::absolute"]
+symbol = "?absolute@geometry@th20@@YAMM@Z"
+target_address = 0x00445680
+size = 49
+relocations = [
+  { offset = 0x15, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+]
+
+[units.geometry_circle_point]
+source = "src/CollisionGeometry.cpp"
+object = "build/CollisionGeometry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::geometry::circle_point"]
+symbol = "?circle_point@geometry@th20@@YA_NMMMMM@Z"
+target_address = 0x00456FE0
+size = 95
+relocations = []
+
+[units.geometry_rectangle_point]
+source = "src/CollisionGeometry.cpp"
+object = "build/CollisionGeometry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::geometry::rectangle_point"]
+symbol = "?rectangle_point@geometry@th20@@YA_NMMMMMM@Z"
+target_address = 0x00457300
+size = 122
+relocations = [
+  { offset = 0x17, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x2A, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x45, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x58, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+]

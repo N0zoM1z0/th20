@@ -1,5 +1,44 @@
 # Current reconstruction handoff
 
+## REF-028 — 2026-10-07 — Bullet / Laser / Damage component checkpoint
+
+The exhaustive goal remains active. Related413-body batch is underway:
+Bullet100 / Laser216 / Damage97. Only two complete geometry predicates have
+terminal absorption records here;411 bodies remain pending in this batch.
+Global2,970 terminal /3,974 pending of6,944; gaps53 reconciled /60 pending.
+Do not equate this component checkpoint with finishing the batch.
+
+- Seven natural components add640 complete bytes: Vector235, ExtendedCommand
+  ctor106, ShotParameters106, BulletCommand127, absolute49, circle95, rectangle
+ 122. Full136-unit cold replay /35 objects /9,104 bytes passes. Authored57/4,074
+  unchanged,75 origin-pending/four library/source136.
+- Independent native arrays47B740/4C81F0 establish stride64/count14/24; allocator
+ 47A790 establishes44. Shoot481780 signed short counts+24/+26; opcode24 in47DCF0
+  reads script+28, passing to4A8920/4A73F0. Header preserves actual angle-step /
+  speed order and natural host pointer width. Real enclosing owners remain open.
+- Geometry uses comparison-based absolute retaining-0/quiet-NaN sign, circle<=,
+  rectangle strict short-circuit/full dimensions. Independent2.0/sign mask PE
+  anchors and existing Timer/Vector3 recovered callees precede canonical replay.
+  Portable dirty construction/lattice/nextafter/IEEE checks pass UBSan.
+- All56 original production TUs compile strict-FP serially, refreshed after
+  final source freeze. Never edit src/probes while compiling. No Windows CPU
+  oracle/reference writer run; retained reports and full COFF audits pending.
+- Private .analysis/ref028-* retains413 locked body bindings and native/value
+  evidence. Body binding is not reading or a terminal review. Continue remaining
+ 411 individual decisions, complete COFF/native boundaries, table initializer,
+  remaining fixtures/writers/report-source bindings and four parser gaps.
+- .analysis/ref028-register-components.py is one-shot and already executed;
+  never rerun it. It registers seven canonical components and ONLY two reference
+  geometry absorptions. Existing REF027/older writers also already executed.
+- Concrete deferred easy probes: LaserSegment60 has genuine flags at+38 whose
+  representation remains open; CurveNode60 has Angle member+2C and EH4/cookie.
+  Do not create array[1], padded giant receiver or inert locals for exactness.
+
+Read REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md; private resume notes enumerate the
+remaining reads. Keep batching related work and record difficult cases, without
+claiming all413 reviewed. Stable component gates and authorized public push use
+the requested gpt-6.1-sol commit prefix.
+
 ## REF-027 — 2026-10-07 — Effect / Special State batch checkpoint
 
 All 322 implementations individually reviewed (Effect191 / Special131):

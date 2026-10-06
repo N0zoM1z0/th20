@@ -2,6 +2,9 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| BulletValues | src/BulletValues.hpp, src/BulletValues.cpp | constructors 0x0047BD90/0x0047BD20/0x0047BCA0 | Three complete exact constructors on actual64/40/44x86-byte values; shared array strides/signed counts/script pointer independently observed; origins and full owners pending |
+| Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
+| CollisionGeometry | src/CollisionGeometry.hpp, src/CollisionGeometry.cpp | absolute 0x00445680; circle 0x00456FE0; rectangle 0x00457300 | Three complete exact routines; negative zero/quiet-NaN sign retained, circle inclusive/rectangle strict; origins pending |
 | PackedColor / EffectParameters / EffectRequest / SelectionPulse | src/EffectParameters.hpp, src/EffectParameters.cpp | constructors 0x004142A0/0x0047BA30/0x0049CE30/0x00461840 | Four complete exact constructors on actual4/56/72x86/8-byte values; implicit padding kept, origins pending |
 | Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin | Twelve complete exact members on actual32/44-byte values; live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
@@ -41,9 +44,16 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns thirty-two objects and one canonical profile per source.
-One hundred twenty-nine units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns thirty-five objects and one canonical profile per source.
+One hundred thirty-six units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-028 is the first component checkpoint within the ongoing413-body Bullet,
+Laser and Damage Regions batch. Seven natural contributions add640 bytes with
+independent array/allocator/typed-vector/signed-count/script consumers and PE
+constant anchors. Both indexed geometry predicates are absorbed; other411 bodies
+remain pending until their individual evidence review is recorded. Full native
+pool/ANM/PMR/metadata/EH and resource lifetime remain open.
 
 REF-027 batches all Effect and Special State implementations. Shared actual
 value members add765 complete exact bytes with no enclosing owner facade.

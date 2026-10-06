@@ -66,7 +66,10 @@ def main():
                                 "source_reconstruction/replay_system/",
                                 "source_reconstruction/title_system/",
                                 "source_reconstruction/effect_system/",
-                                "source_reconstruction/special_state/")):
+                                "source_reconstruction/special_state/",
+                                "source_reconstruction/bullet_system/",
+                                "source_reconstruction/laser_system/",
+                                "source_reconstruction/damage_regions/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -88,6 +91,8 @@ def main():
             # through its public stone-menu and runtime dependencies.
             # Effect and Special State declare native/binary/scheduler paths;
             # their public runtime/VM dependencies propagate ECL headers.
+            # Bullet, Laser and Damage Regions inherit the same runtime/VM
+            # headers; Damage also explicitly declares native/binary/scheduler.
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
@@ -100,7 +105,10 @@ def main():
                                 "source_reconstruction/replay_system/",
                                 "source_reconstruction/title_system/",
                                 "source_reconstruction/effect_system/",
-                                "source_reconstruction/special_state/")):
+                                "source_reconstruction/special_state/",
+                                "source_reconstruction/bullet_system/",
+                                "source_reconstruction/laser_system/",
+                                "source_reconstruction/damage_regions/")):
             # Preserve these modules' explicit CMake floating-point option.
             profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative == "source_reconstruction/archive/verify.cpp":

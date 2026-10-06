@@ -1,5 +1,12 @@
 # Target inventory and initial architecture boundary
 
+Bullet / Laser / Damage Regions share an actual64-byte extended-command value,
+40-byte shot parameters and44-byte x86 ECL operands, alongside two-float Vector2.
+Four value constructors and three geometry routines are complete exact at the
+REF-028 component checkpoint. Full resource/EH/typed-array and pool owners remain
+open; exhaustive individual review of this413-body batch is ongoing. See
+REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md.
+
 The canonical executable is the user-selected Japanese TH20 v1.00a Steamless
 variant. Exact release/provenance is in `TARGET_PROVENANCE.md`; machine and
 section details are pinned in `config/target.toml`.
