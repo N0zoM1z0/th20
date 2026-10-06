@@ -3,3 +3,7 @@ th20::RandomState::next
 th20::Timer::reset
 th20::Timer::set
 th20::Timer::set_mode
+th20::ClockScalar::operator float
+th20::ClockScalar::operator*
+th20::Timer::add
+th20::Timer::tick

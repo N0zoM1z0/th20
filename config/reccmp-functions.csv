@@ -4,3 +4,7 @@ th20::RandomState::next,0x004235F0,function
 th20::Timer::reset,0x00423F50,function
 th20::Timer::set,0x00423F80,function
 th20::Timer::set_mode,0x00423FE0,function
+th20::ClockScalar::operator float,0x004292E0,function
+th20::ClockScalar::operator*,0x00452F50,function
+th20::Timer::add,0x004530F0,function
+th20::Timer::tick,0x004533B0,function

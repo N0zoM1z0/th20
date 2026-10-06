@@ -46,10 +46,10 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | Five mapped component functions in Random.cpp and Timer.cpp |
-| Authored exactness | Timer reset and value-setting: two functions, 131 bytes |
+| Source | Nine mapped component functions in Random.cpp, Timer.cpp and ClockScalar.cpp |
+| Authored exactness | Five Timer functions, 788 bytes |
 | Library comparisons | Two MSVC minstd_rand equivalents pass exact replay; excluded from authored totals |
-| Open compiler difference | Timer mode setter differs in three register-encoding bytes; no exact credit |
+| Shared float view | Two exact comparisons; enclosing owner and origin review remain open |
 | Whole-program build and runtime | Not available |
 
 [Generated progress](docs/PROGRESS.md) and `scripts/report-reconstruction-status.py`
@@ -99,6 +99,11 @@ module dispositions, stale reports and independently verified absorption.
 Validated source diagnostics route further analysis; reference source, build
 layout and completion claims are not imported wholesale.
 
+The [function-by-function review](docs/REFERENCE_FUNCTION_REVIEW.md) is now
+active across all existing implementations. Its explicit decisions and pending
+counts are separate from the earlier file audit; scanning or compiling a file
+does not complete its function reviews.
+
 ## Documentation
 
 - [Current handoff](docs/RE_HANDOFF.md)
@@ -111,6 +116,7 @@ layout and completion claims are not imported wholesale.
 - [Source ownership](docs/SOURCE_MAP.md)
 - [Semantic reconstruction policy](docs/SEMANTIC_RECONSTRUCTION.md)
 - [Reference review](docs/REFERENCE_REVIEW.md)
+- [Function-by-function reference review](docs/REFERENCE_FUNCTION_REVIEW.md)
 - [Verified knowledge base](docs/KNOWLEDGE_BASE.md)
 - [Roadmap](docs/ROADMAP.md)
 - [Generated progress](docs/PROGRESS.md)

@@ -1,4 +1,5 @@
 #include "Timer.hpp"
+#include "ClockScalar.hpp"
 
 namespace th20 {
 
@@ -9,7 +10,7 @@ void Timer::reset() {
 }
 
 void Timer::set_mode(std::uint32_t mode) {
-    flags = ((mode & 3u) << 1) | (flags & ~6u);
+    flag_bits.mode = mode;
 }
 
 void Timer::set(std::int32_t value) {
@@ -22,6 +23,55 @@ void Timer::set(std::int32_t value) {
     current_fraction = static_cast<float>(value);
     // C++20 integer conversion defines the target's modulo-2^32 subtraction.
     previous = static_cast<std::int32_t>(static_cast<std::uint32_t>(value) - 1u);
+}
+
+void Timer::add(float delta) {
+    if (!(flags & 1u)) {
+        reset();
+        set_mode(0);
+        flags |= 1u;
+    }
+    if (((flags >> 1) & 3u) >= 1u) {
+        flags &= ~6u;
+    }
+    ClockScalar* clock = timer_clock_sources[(flags >> 1) & 3u];
+    previous = current;
+    if (clock) {
+        if (*clock > 0.99f && *clock < 1.01f) {
+            current_fraction += delta;
+        } else {
+            current_fraction += *clock * delta;
+        }
+    } else {
+        current_fraction += delta;
+    }
+    current = static_cast<std::int32_t>(current_fraction);
+}
+
+std::int32_t Timer::tick() {
+    if (!(flags & 1u)) {
+        reset();
+        set_mode(0);
+        flags |= 1u;
+    }
+    if (((flags >> 1) & 3u) >= 1u) {
+        flags &= ~6u;
+    }
+    ClockScalar* clock = timer_clock_sources[(flags >> 1) & 3u];
+    previous = current;
+    if (clock) {
+        if (*clock > 0.99f && *clock < 1.01f) {
+            current = static_cast<std::int32_t>(static_cast<std::uint32_t>(current) + 1u);
+            current_fraction += 1.0f;
+        } else {
+            current_fraction += *clock;
+            current = static_cast<std::int32_t>(current_fraction);
+        }
+    } else {
+        current = static_cast<std::int32_t>(static_cast<std::uint32_t>(current) + 1u);
+        current_fraction += 1.0f;
+    }
+    return current;
 }
 
 } // namespace th20

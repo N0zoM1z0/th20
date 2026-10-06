@@ -46,3 +46,73 @@ relocations = [
   { offset = 0x16, type = "REL32", symbol = "?reset@Timer@th20@@QAEXXZ", target = 0x00423F50 },
   { offset = 0x20, type = "REL32", symbol = "?set_mode@Timer@th20@@QAEXI@Z", target = 0x00423FE0 }
 ]
+
+[units.timer_mode]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::set_mode"]
+symbol = "?set_mode@Timer@th20@@QAEXI@Z"
+target_address = 0x00423FE0
+size = 38
+relocations = []
+
+[units.clock_scalar_read]
+source = "src/ClockScalar.cpp"
+object = "build/ClockScalar.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ClockScalar::operator float"]
+symbol = "??BClockScalar@th20@@QBEMXZ"
+target_address = 0x004292E0
+size = 16
+relocations = []
+
+[units.clock_scalar_multiply]
+source = "src/ClockScalar.cpp"
+object = "build/ClockScalar.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ClockScalar::operator*"]
+symbol = "??DClockScalar@th20@@QBEMM@Z"
+target_address = 0x00452F50
+size = 35
+relocations = []
+
+[units.timer_add]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::add"]
+symbol = "?add@Timer@th20@@QAEXM@Z"
+target_address = 0x004530F0
+size = 295
+relocations = [
+  { offset = 0x18, type = "REL32", symbol = "?reset@Timer@th20@@QAEXXZ", target = 0x00423F50 },
+  { offset = 0x22, type = "REL32", symbol = "?set_mode@Timer@th20@@QAEXI@Z", target = 0x00423FE0 },
+  { offset = 0x62, type = "DIR32", symbol = "?timer_clock_sources@th20@@3PAPAUClockScalar@1@A", target = 0x005AEFE0 },
+  { offset = 0x82, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x91, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x0056E72C },
+  { offset = 0x9B, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xA6, type = "DIR32", symbol = "__real@3f8147ae", target = 0x0056E730 },
+  { offset = 0xD6, type = "REL32", symbol = "??DClockScalar@th20@@QBEMM@Z", target = 0x00452F50 }
+]
+
+[units.timer_tick]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::tick"]
+symbol = "?tick@Timer@th20@@QAEHXZ"
+target_address = 0x004533B0
+size = 324
+relocations = [
+  { offset = 0x18, type = "REL32", symbol = "?reset@Timer@th20@@QAEXXZ", target = 0x00423F50 },
+  { offset = 0x22, type = "REL32", symbol = "?set_mode@Timer@th20@@QAEXI@Z", target = 0x00423FE0 },
+  { offset = 0x62, type = "DIR32", symbol = "?timer_clock_sources@th20@@3PAPAUClockScalar@1@A", target = 0x005AEFE0 },
+  { offset = 0x82, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x91, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x0056E72C },
+  { offset = 0x9B, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xA6, type = "DIR32", symbol = "__real@3f8147ae", target = 0x0056E730 },
+  { offset = 0xCB, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xDD, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x12E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC }
+]

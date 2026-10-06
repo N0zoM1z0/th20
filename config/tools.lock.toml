@@ -54,6 +54,8 @@ sha256 = "ead0906ae8a26c18a7525da7490127a2110f7c58f18293738283e30e97c6ea4b"
 minimum = "3.11"
 pefile = "2024.8.26"
 capstone = "5.0.6"
+tree_sitter = "0.25.2"
+tree_sitter_cpp = "0.23.4"
 
 [analysis_files]
 "ghidra/support/analyzeHeadless" = "302880328a0024ee24cfe0326d4d9a61c2237116d95f2e0e0df090f747f95e30"

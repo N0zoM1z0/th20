@@ -3,18 +3,19 @@
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
-| Timer | src/Timer.hpp, src/Timer.cpp | reset 0x00423F50; set 0x00423F80; mode 0x00423FE0 | Reset/set exact; mode semantics checked, three compiler byte differences |
+| Timer | src/Timer.hpp, src/Timer.cpp | reset/set/mode, add 0x004530F0, tick 0x004533B0 | Five complete exact functions |
+| ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50 | Exact four-byte float view; enclosing owner and origin pending |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
-Timer is a checked 16-byte value record; delta/tick operations and their global
-clock/rounding protocol remain unimplemented.
+Timer is a checked 16-byte value record with a raw-word/bit-field flag view.
+Add/tick use the independently anchored default global clock slot and repeated
+float receiver calls. Other timer modes and the enclosing clock protocol remain
+open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns two objects and one canonical profile per source.
-Four units cover complete COFF function contributions. Library units can be
-replayed without becoming authored progress. Timer mode is compiled from the
-same production body but is not an exact unit. Its address is an independently
-verified relocation anchor for Timer::set.
+`config/match-units.toml` owns three objects and one canonical profile per source.
+Nine units cover complete COFF function contributions. Library units and units
+with pending origin review can be replayed without becoming authored progress.
 
 `probes/` remains infrastructure-only. Production currently builds objects for
 component comparison; no whole-game linker or runtime acceptance is available.

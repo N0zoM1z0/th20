@@ -1,5 +1,10 @@
 # REF-001: reference review and verified absorption
 
+This is the historical first-pass audit. The user's exhaustive implementation
+review continues in [REF-002](REFERENCE_FUNCTION_REVIEW.md); module dispositions
+below are not function-level completion. Current exact totals come from the
+canonical ledgers and progress report.
+
 ## Scope and provenance
 
 Reference: [Oracatt/Touhou20](https://github.com/Oracatt/Touhou20/tree/011aa029d1dac51578107bc98a0006bd750e453c),

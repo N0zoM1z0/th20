@@ -1,5 +1,38 @@
 # Current reconstruction handoff
 
+## REF-002 — 2026-10-06 — exhaustive review remains active
+
+The user clarified that every existing reference implementation must receive
+an individual review. Easy exact recoveries should be absorbed immediately;
+difficult cases should record evidence and remaining work, then continue.
+Do not treat REF-001's file/module scan as satisfying this requirement.
+
+- Index: 916 nongenerated C/C++ files; 6,708 definitions, including 4,193
+  reconstruction candidates. Role/address hints are provisional, not mappings.
+- Parser gaps in 104 files require manual reconciliation. Deleted declarations
+  and generated Ghidra exports are excluded; defaulted bodies and lambdas remain.
+- Explicit decisions currently cover 24 native-core/export bodies. The other
+  6,684 indexed bodies are pending, as are parse-gap reconciliations.
+- Timer mode now matches through its natural two-bit field representation.
+- Timer add/tick restore original receiver/global-clock/helper-call ABI and
+  match all 295/324 bytes, including eight/ten independent relocations.
+- Two float receiver helpers match 16/35 bytes. Their enclosing owner/origin
+  remains pending, so they receive no authored progress credit.
+- Cold replay: nine units, three objects, 1,007 bytes. Authored exact: five
+  Timer functions, 788 bytes; source-present mappings: nine.
+- Private original-reference TU probes cover scheduler/archive/runtime; build
+  include dependencies and verifier hash macros need distinct recipe handling.
+
+Read `REFERENCE_FUNCTION_REVIEW.md`. Use `index-reference-functions.py --check`
+and `report-reference-functions.py` through `scripts/repo-python`; explicit
+review outcomes bind to body hashes. Reference compiler probes stay serial and
+never confer semantic or exact credit. Continue scheduler constructors/setters,
+link/iterator repair and dispatch, then runtime/archive and every remaining
+implementation. No approval or new task is needed to keep progressing.
+
+Private evidence: `.analysis/ref002-*`, `.analysis/reference-functions/`.
+The following records are historical checkpoints.
+
 ## REF-001 — 2026-10-06
 
 The reference-wide review and first independently verified absorption are

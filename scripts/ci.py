@@ -22,6 +22,7 @@ def main():
                 [sys.executable, "scripts/validate-tracking.py", "--skip-target-bytes"],
                 [sys.executable, "scripts/build.py", "--check"],
                 [sys.executable, "scripts/validate-reference-review.py"],
+                [sys.executable, "scripts/report-reference-functions.py"],
                 [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
                 [sys.executable, "scripts/progress.py", "--check"], ["git", "diff", "--check"]]
     commands += [["bash", "-n", f] for f in files if f.endswith(".sh") or f == "scripts/repo-python"]

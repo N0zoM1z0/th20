@@ -34,7 +34,8 @@ packages or change the working directory.
 | Compile/link/runtime smoke | `scripts/repo-python scripts/toolchain-smoke.py` | infrastructure only, zero reconstruction credit |
 | Public CI | `scripts/repo-python scripts/ci.py` | no private target or installed proprietary tools required |
 
-`.venv` pins pefile/capstone for optional raw-PE/disassembly experiments. The
+`.venv` pins pefile/capstone for raw-PE/disassembly experiments and Tree-sitter
+0.25.2/C++ grammar 0.23.4 for the explicit reference-body inventory. The
 control plane and public tests use Python's standard library. reccmp 0.1.6 and
 objdiff 3.8.0 are supporting navigation/diff tools; the canonical exact gate is
 the relocation-aware comparator. `objdiff.json` starts empty until reference

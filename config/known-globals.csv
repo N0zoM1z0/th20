@@ -1,1 +1,3 @@
 address,name,module,confidence,evidence
+0x005AEFE0,th20::timer_clock_sources,ClockScalar,high,REF-002; independent Ghidra xrefs and file-backed pointer to 0x005AEFE4
+0x005AEFE4,th20::default_timer_clock,ClockScalar,high,REF-002; file-backed initial float 1.0 and independent producer/consumer references
