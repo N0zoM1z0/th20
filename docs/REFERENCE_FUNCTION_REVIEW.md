@@ -40,12 +40,28 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The current REF-035 checkpoint has 4,953 explicit terminal decisions and 1,991
+The current REF-036 checkpoint has 5,081 explicit terminal decisions and 1,863
 pending indexed entries. The complete672-body Overlay/HUD/SmallScore/completion
 family follows the reviewed Player/Bomb/Item and Bullet/Laser/Damage batches.
 The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count:79 of113 files are reconciled, leaving34 pending.
+and parser-gap count:81 of113 files are reconciled, leaving32 pending.
+
+## REF-036: complete ECL batch
+
+All128 remaining ECL implementations have individual decisions:one absorbed,
+26 nonexact and101 support; all144 ECL entries are now reviewed. Two parser-gap
+files are reconciled. Existing game_random_signed_unit absorbs the adapter's
+signed-unit semantics without another canonical unit.156 complete units replay
+across44 current objects,10,559 bytes; this corrects an earlier prose count by
+one byte, without changing contributions. Both original TUs freshly compile;
+24 complete diagnostics all have length differences. Actual Stack/runtime/
+resource/vtable/allocator ownership and status/output-pointer ABI remain open.
+Five retained CPU source hashes,75 native dispatch addresses and21 resource JSON
+histograms independently bind; fresh source C++20/UBSan checks pass. No Windows
+oracle/writer ran, and no original allocator/entity/oldCRT error equivalence is
+claimed. Gameplay1019 and844 other entries remain pending. See
+REFERENCE_GAMEPLAY_ECL_REVIEW.md.
 
 ## REF-034: complete Overlay batch
 

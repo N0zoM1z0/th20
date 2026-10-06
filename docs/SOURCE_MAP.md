@@ -72,8 +72,12 @@ REF-035 adds src/ScalarMath.hpp and src/ScalarMath.cpp with four complete cdecl
 float/double CRT wrappers,153 bytes. All16 original ECL math implementations
 have scoped decisions; wrap_angle uses existing normalize_angle rather than
 another canonical unit. The original CRT startup/error/exception domains and
-actual VM/Enemy/vector/interpolation owners remain open. Gameplay/ECL1147
-implementations still require review; see REFERENCE_GAMEPLAY_ECL_REVIEW.md.
+actual VM/Enemy/vector/interpolation owners remain open. REF-036 closes all144
+ECL implementations, including the remaining128 with1 absorbed/26 nonexact/101
+support. Existing GameRandom::signed_unit absorbs the semantic adapter; no
+additional source/units. Gameplay1019 still requires review. Native Stack/runtime/
+resource/vtable/allocator ownership differs from reference owning objects;
+see REFERENCE_GAMEPLAY_ECL_REVIEW.md.
 
 REF-029 closes the413-body Bullet, Laser and Damage Regions review begun at
 REF-028: three absorbed,214 nonexact,196 support. Eight natural contributions

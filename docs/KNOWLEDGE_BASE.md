@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## REF-036 — 2026-10-07 — complete ECL batch
+
+- All144 ECL bodies have individual outcomes; remaining128:1 absorbed/26
+  nonexact/101 support. Global5,081/1,863, grammar81/32. Gameplay1019 pending.
+  signed_unit uses existing129-byte GameRandom member, without a new unit.
+ 156 complete units/44 current objects replay; fresh disjoint-byte sum10,559
+  corrects earlier prose10,558, without altering source or contribution extents.
+- Original98-entry table53E128 contains75 supported cases; remaining entries
+  default53DEF5. Signed16 opcode load/unsigned range check independently observed.
+ 53E00C belongs to53B5C0, not a standalone interpolation function.28 focused
+  original ranges fully PE-decode,102 Ghidra-omitted instructions retained;
+  rejected candidates are not accepted canonical extents. Entity48C010 separate.
+- Fresh candidate-x86 probe: source Stack20/SP12/BP16, Subroutine44,
+  Runtime80/time20/stack32/flags64/interpolators68; native Stack24/SP16/BP20,
+  Runtime72/time0/stack12/flags68/interpolators52, resource records8. Source
+  Engine execute slot20 differs from native4; variable slots shift accordingly.
+  Native stack generic length/input-output pointers/int status/memcpy/signed-char
+  tags and frame wrapping/logging differ from source fixed words/bool/exceptions.
+- Both unmodified production TUs freshly compile serially; VM532 function
+  symbols/66 static, math26/six.24 complete VM diagnostics differ in length.
+  No prefix, padded owner, renamed vtable or synthetic pop protocol acceptance.
+- Retained41,067/0 binds five current vm/math/fixture hashes and locked target,
+  not executed binary/transitive includes/compiler recipe. Raw reserves fixed
+  storage, leaves proxy zero and injects a pre-owned lock10; Engine paths reject
+  requests. Async640 setups/interpolation16320 updates do not prove allocation,
+  list lifetime, loaders, cross-thread locks, invalid-script CPU exceptions or
+  oldCRT NaN/error handling. Fresh C++20/UBSan source checks pass scoped async,
+  shared borrowed storage, duplicate lookup, frame and host NaN behavior.
+- All21 JSON histograms reproduce23,760 total/15,872 core instructions and
+  per-opcode addresses/counts; raw archive provenance/game completion unproved.
+  Evidence writer fully read, not executed. Details:
+  REFERENCE_GAMEPLAY_ECL_REVIEW.md.
+
 ## REF-035 — 2026-10-07 — scalar math component checkpoint
 
 - Natural cdecl sin/cos/sqrt/atan2 wrappers widen floats to the double CRT and

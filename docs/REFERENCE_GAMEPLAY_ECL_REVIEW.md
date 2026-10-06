@@ -1,5 +1,109 @@
 # Gameplay and ECL implementation review
 
+## REF-036 — complete ECL batch
+
+All 128 remaining ECL implementations now have individual body-hash-bound
+outcomes: one absorbed, 26 nonexact and 101 support. Together with REF-035,
+all 144 ECL implementations are reviewed: six absorbed, 31 nonexact and 107
+support. All seven indexed source files and the five additional module recipe,
+README and report files were fully read. Two parser-gap files are reconciled;
+their empty-vector default argument initializers produce missing type_identifier
+sites, while the complete instruction builders are already indexed.
+
+Global coverage is 5,081 terminal / 1,863 pending of 6,944 implementations;
+81 parser-gap files are reconciled and 32 remain pending. Gameplay's 1,019
+implementations remain pending, as do Sprite540, StageBackground121 and183
+other support implementations. No inventory or module-wide decision substitutes
+for individual source reading.
+
+RandomStream::signed_unit is absorbed through the existing, independently
+written 129-byte game_random_signed_unit member. The reference adapter's
+four injected references and intrinsic helper calls remain a different ABI;
+the natural GameRandom member already preserves sample/(modulus/2-1)-1 and
+replays exactly. Its native next/lock/startup implementation remains an explicit
+dependency. This absorption introduces no new source or canonical unit.
+
+All 156 complete canonical units replay from 44 fresh frozen-source objects.
+Their disjoint target ranges contain **10,559 bytes**: a fresh sum corrects the
+earlier prose total of10,558; no contribution, extent or source changed.
+Source156, pending origins95/library4 and confirmed authored57/4,074 are
+unchanged. Historical display/Overlay reference receipts still predate the
+ScalarMath source freeze and require rebuilding before reuse.
+
+Both unmodified ECL production TUs compile serially under the locked candidate
+MSVC, C++20 containing-game recipe, strict FP/SSE2, actual native/binary include
+paths and permissive-. The standalone ECL recipe declares C++17. These are
+diagnostic choices and reference recipe facts, not original global flag proof.
+VM COFF inventories contain532 defined function symbols,66 static; math contains
+26/six static. Generated STL/EH/deleting/helper contributions receive no indexed
+source or exact credit. Twenty-four complete VM contribution comparisons all
+have length differences; representative results are:
+
+| Contribution | Reference bytes | Native candidate bytes |
+| --- | ---: | ---: |
+| Stack::absolute / local | 117 / 31 | 102 / 120 |
+| Stack::push / pop / peek | 113 / 114 / 119 | 265 / 242 / 192 |
+| Stack::enter_frame / leave_frame | 130 / 56 | 170 / 52 |
+| Runtime::current / call_into | 315 / 1,014 | 80 / 923 |
+| Runtime::tick | 8,428 | 11,110 |
+| Scheduler::spawn / tick | 376 / 148 | 182 / 217 |
+
+A separate fresh x86 layout probe establishes reference Stack20 (SP12/BP16),
+Subroutine44 and Runtime80 (time20/stack32/flags64/interpolators68), with56-byte
+interpolation records. Native Stack24 has SP16/BP20; native Runtime72 has time0,
+stack12, flags68 and interpolation vector52. The original resource table uses
+eight-byte name/code records. Reference Engine virtual method order also differs
+from native manager slots: its execute method follows the variable methods,
+whereas native execute occupies slot4. Replacing these owners with padded or
+renamed declarations would not establish their actual allocator/vtable ABI.
+
+Native push/pop/peek take byte-length or output-pointer parameters and return
+integer status; push/pop also support arbitrary-length memcpy paths. The
+reference API handles four-byte values and returns void/value. Native push
+sign-extends char tags; reference widens an unsigned char. Native enter_frame
+uses wrapping32-bit arithmetic, logs failure and returns-1/0; reference uses an
+int64 guard and bool. Original NULL destination/current results become checked
+source exceptions. Program storage, synchronous/asynchronous call prototypes,
+pool ownership and cleanup remain unresolved. Even the small leave-frame method
+requires the genuine Stack/pop protocol rather than a synthetic receiver.
+
+Twenty-eight focused original ranges completely PE-decode and corroborate
+Ghidra instruction bytes, including102 instructions omitted by its selected
+function bodies. All direct branches in these ranges stay within their
+candidate ranges; rejected extents remain provisional. The actual signed16
+opcode load, unsigned range check and98-entry table53E128 are independently
+read. All75 supported case addresses match the retained table; other entries
+lead to default53DEF5. Address53E00C lies inside53B5C0: the reference's separate
+tick_interpolators helper has no standalone native function there. Native
+entity dispatch48C010 remains a distinct owner and reconstruction scope.
+
+The retained CPU report sums to41,067 with zero failures and binds all five
+current vm/math/header/fixture hashes plus the locked EXE. It includes640 async
+call setups and16,320 interpolation updates. The reviewed fixture compares
+full int results, time bits, sub/IP, SP/BP,4096 stack bytes, mutable instruction
+headers, full56-byte interpolation records and RNG state. The report does not
+bind all transitive headers, compiler options or the executed oracle binary;
+this review did not rerun Windows CPU comparisons. NoEngine rejects all variable
+and entity requests. Raw preallocates storage and leaves the vector proxy zero,
+avoiding native allocator/growth/loader/container ownership. RNG exercises an
+already-owned recursive lock on one thread, not initialization or cross-thread
+ordering. Invalid scripts/stacks, integer CPU faults and legacy CRT NaN/error
+delivery remain outside the comparison domain.
+
+A fresh C++20/UBSan run of the unmodified source tests passes async insertion,
+delayed traversal, converted arguments, lookup, retirement/current restoration,
+252-versus256 frame limits, shared borrowed script-header writes, duplicate
+midpoint lookup and host-CRT NaN classification. These are source semantics;
+native task allocation/traversal and old CRT NaN payload/errno remain untested.
+The retained NaN probe records0xC0000005 without a traced failing instruction,
+so its precise attribution remains unknown.
+
+All21 resource JSON names and histogram entries independently reproduce23,760
+instruction occurrences /15,872 core occurrences and every per-opcode count.
+They do not establish fresh archive provenance, executable coverage or game
+completion. export_opcode_evidence.py was fully reviewed as a source-directory
+dependent writer; it was not executed and the reference checkout remains clean.
+
 ## REF-035 — scalar math component checkpoint
 
 The related batch contains Gameplay1,019 / ECL144 implementations across114

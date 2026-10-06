@@ -1,8 +1,18 @@
 # Target inventory and initial architecture boundary
 
+REF-036 closes all144 ECL implementations for individual review. Native Stack24,
+Runtime72 and eight-byte name/code records differ from the reference20/80/44-byte
+owning types; Engine vtable order, pool allocation, status/output-pointer stack
+ABI and original runtime ownership remain open. General53B5C0 dispatch has75
+supported cases in98-entry table53E128; interpolation53E00C is inlined within
+that function. Entity48C010 remains separate. Existing signed-unit exact source
+absorbs one semantic adapter; no new canonical contribution. Gameplay1019
+remains pending; see REFERENCE_GAMEPLAY_ECL_REVIEW.md.
+
 REF-035 accepts four153-byte scalar math wrappers with genuine cdecl float
 arguments,double CRT dependencies and narrowed ST0 results. All16 ECL math
-implementations are individually reviewed; Gameplay/ECL1147 remain pending.
+implementations were individually reviewed at that checkpoint; REF-036 closes
+the remaining ECL128, while Gameplay1019 remains pending.
 Original CRT startup/error domains and native vector/interpolation/VM/Enemy
 owners remain open. See REFERENCE_GAMEPLAY_ECL_REVIEW.md.
 

@@ -1,5 +1,43 @@
 # Current reconstruction handoff
 
+## REF-036 — 2026-10-07 — complete ECL batch
+
+All128 remaining ECL implementations reviewed individually:1 absorbed/26
+nonexact/101 support; entire144-body ECL module is closed for review. Seven
+indexed source files plus recipe/README/reports fully read. Two empty-default
+initializer grammar files reconciled. Global5,081 terminal/1,863 pending;
+gap coverage81/32. Exhaustive goal remains active.
+
+- signed_unit semantics reuse existing game_random_signed_unit129; no new
+  source/units. All156 canonical units replay from44 fresh frozen-source objects.
+  A recount gives10,559 complete bytes, correcting the earlier10,558 prose
+  total without changing any contribution. Source156/pending origins95/library4,
+  authored57/4,074 unchanged. Both original ECL TUs freshly compile serially.
+- Twenty-four complete reference comparisons all differ in length; VM532
+  defined symbols/66 static, math26/six. Genuine source Stack20/Runtime80/
+  Subroutine44 differ from native24/72/eight-byte records; vtable order,
+  arbitrary-length stack/output-pointer/status ABI and pool lifetimes unclosed.
+  Small leave_frame cannot accept a fabricated native owner/pop protocol.
+- Twenty-eight focused native ranges fully PE-decode;102 omitted Ghidra
+  instructions retained. Original98-entry table53E128/75 case addresses checked.
+  Interpolation53E00C is inside53B5C0, not a separate function. Rejected extents
+  remain provisional, entity48C010 separate. No target/database edits.
+- Retained41,067/0 binds five current source hashes and locked EXE; executed
+  oracle binary/includes/compiler recipe not bound.21 JSON histograms reproduce
+  23,760 total/15,872 core counts, without fresh raw-resource provenance.
+  Fresh unmodified C++20/UBSan source tests pass. Native CPU oracle, writer,
+  allocator traversal, entity/invalid-stack/error/cross-thread/oldCRT NaN
+  equivalence remain unexecuted or unproved.
+- Private ref036-record.py executed ONCE; never rerun. Older writers also
+  already executed. Previous43 display/Overlay reference receipts remain
+  historical and require rebuilding before reuse. src/probes remain frozen.
+
+Continue Gameplay1019, then Sprite540/StageBackground121 and183 remaining
+support bodies. Every implementation/gap still needs its own outcome; do not
+mark complete with1,863 bodies/32 gap files pending. English/repo-python/
+gpt-6.1-sol subjects/public main push and no-subagent/serial-MSVC rules persist.
+See REFERENCE_GAMEPLAY_ECL_REVIEW.md and private ref036 resume notes.
+
 ## REF-035 — 2026-10-07 — scalar math component checkpoint
 
 Four natural scalar wrappers add153 complete exact bytes:sin439820/35,

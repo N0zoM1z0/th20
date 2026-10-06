@@ -47,6 +47,13 @@ def main():
         if digest(source) != row["file_sha256"]:
             raise ValueError(f"reference source inventory is stale: {relative}")
         profile = list(include_profile)
+        if relative.startswith("source_reconstruction/ecl_vm/"):
+            # ECL declares native headers and inherits binary headers. Preserve
+            # its strict FP and conforming-language options in the diagnostic.
+            for directory in ("native_recovered", "include"):
+                profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
+            profile[profile.index("/fp:precise")] = "/fp:strict"
+            profile.append("/permissive-")
         if relative.startswith(("source_reconstruction/runtime_state/",
                                 "source_reconstruction/platform_window/",
                                 "source_reconstruction/startup_scene/",
