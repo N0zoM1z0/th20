@@ -87,3 +87,9 @@ th20::trophy_text::Message::reset
 th20::Timer::fraction
 th20::Timer::at_most
 th20::ColoredVertex::ColoredVertex
+th20::TextLine::TextLine
+th20::rectangles_overlap
+th20::IntPoint::IntPoint
+th20::IntRectangle::IntRectangle
+th20::set_next_text_outline_scale
+th20::Vector3::operator*=

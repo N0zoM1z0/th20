@@ -88,3 +88,9 @@ th20::trophy_text::Message::reset,0x0052F590,function
 th20::Timer::fraction,0x00423BD0,function
 th20::Timer::at_most,0x00423590,function
 th20::ColoredVertex::ColoredVertex,0x00423470,function
+th20::TextLine::TextLine,0x0046ABA0,function
+th20::rectangles_overlap,0x00470920,function
+th20::IntPoint::IntPoint,0x0040DE00,function
+th20::IntRectangle::IntRectangle,0x0040DE30,function
+th20::set_next_text_outline_scale,0x00416CF0,function
+th20::Vector3::operator*=,0x00429690,function

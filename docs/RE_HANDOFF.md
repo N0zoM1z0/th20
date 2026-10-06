@@ -1,5 +1,46 @@
 # Current reconstruction handoff
 
+## REF-022 — 2026-10-07 — Text renderer batch checkpoint
+
+Exhaustive goal active. User requests faster related batches; each indexed body
+still requires its own hash-bound decision. All129 text_renderer entries are
+terminal:63 nonexact/63 support/3 absorbed. Total1,221 terminal/5,723 pending of
+6,944; gaps22 reconciled/91 pending. Entire driver/header adapters/menu include
+read, four WINAPI gaps reconciled. Do not mark the exhaustive goal complete.
+
+- Six new exact contributions: TextLine ctor46ABA0/219, overlap470920/72,
+  IntPoint ctor40DE00/33, IntRectangle ctor40DE30/53, outline scale416CF0/18,
+  Vector3 *=429690/77. Cold95/95,25 objects/6,134 bytes. Authored57/4,074;
+  source95, pending-origin34/library4. Only outline setter adds authored credit.
+- Actual Line320 constructs char256,Vector3 and individual fields; count/stride
+  independently observed in46A6B0. Atlas returnPoint8 and Job rectangle16
+  independently establish two value owners. No fake Renderer/Bitmap facade.
+  Overlap uses unsigned endpoint arithmetic, signed comparisons and inclusive
+  edges; public independent lattice/overflow checks pass UBSan.
+- Independent global5AE120 initial1 and raster consume/reset anchor; original
+  core/grpfont.cpp links authored producer. Vector3 *= actual three-float member
+  is invoked by original Line commit; full scalar contribution/RET4 retained.
+- All13 original production TUs compile with declared strict-FP/transitive
+  includes.56 COFF comparisons retained; fallback104/character72 structural
+  candidates lack closed real owner/callee partition, no exact credit.
+- 75 unique native entry exports; main decompilations/selected leaves read.
+  JMP46DF27->46DF45 and47108F->471096 separately decoded. Switch-bearing
+  diagnostic native sizes are instruction spans, not accepted table extents.
+- AsciiInf1A360/Job684/Bitmap124-hex ownership, Animation/PMR/ClockScalar,
+  RTTI/EH/allocator/lists/GDI/COM partitions remain open. Native draw_jobs int0
+  versus sourcevoid, FPS actualreceiver/int1 versus sourcefreevoid are recorded.
+- Retained57113/0 binds targetSHA;45/46 source hashes current, format.cpp stale.
+  Driver/menu include hashes current; test_environment/full build inputs absent.
+  Included menu18432 leaves38681 text observations. Full read captures precise
+  fixture scope and two native-call ABI mistakes; no CPU oracle compiled/run,
+  no GPU/startup/whole-owner/error/concurrency claim. See full REF-022 review.
+
+Next batch: options_system + key_config, then remaining5,723 bodies/91 gap files.
+`.analysis/ref022-record.py` already executed; never rerun it. Latest ledger
+polish corrected draw0 to470530 (4710F0 is floating conversion), native diagnostic
+sizes and source hash scope. Source/profile frozen before95-unit cold replay;
+earlier counts below are historical. Preserve serial MSVC/Ghidra discipline.
+
 ## REF-021 — 2026-10-07 — ScreenEffect batch checkpoint
 
 Exhaustive goal active. User requests related functions/modules in batches;

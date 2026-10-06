@@ -169,8 +169,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040DCC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040DD70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040DDD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040DE00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040DE30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040DE00,unknown,Rectangle,review,pending,"REF-022; Actual8-byte integer coordinate value established by hidden output atlas470680, calling40DE00 for success coordinates or(-1,-1), EAX=this/RET8. Complete33-byte coordinate ctor, no resources, opaque storage or fake owner; original spelling and origin pending."
+0x0040DE30,unknown,Rectangle,review,pending,"REF-022; Actual16-byte x/y/width/height record established by Job ctor at63C calling40DE30, atlas reads63C..648, and UV/text-size consumers. Complete53-byte zero ctor initializes four integer fields. Not a renderer facade; original record spelling and origin pending."
 0x0040DE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040DE90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040DEA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -527,7 +527,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00416330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00416CF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00416CF0,authored,TextOutline,authored,high,"REF-022; Complete18-byte cdecl setter stores float bits in5AE120. Independent original raster producer415830 multiplies font outline radius by this scalar then resets1; PE initialfloat1 read before acceptance. Producer diagnostic identifies original authored core/grpfont.cpp, and proprietary shared raster global links this setter to authored text support. Original setter spelling inferred. Storage declaration is extern; global construction and whole raster remain unresolved."
 0x00416D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00417A90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00417AB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -910,7 +910,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004295D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429690,unknown,Vector3,review,pending,"REF-022; Actual12-byte three-float value owner already independently established. Complete77-byte member429690 multiplies each scalar lane and returns receiver withRET4; original commit46CA40 independently invokes it for position scaling. Natural operator*= body, no relocation fields. Original spelling and authored/compiler/library origin pending; no broader FP exception or enclosing Renderer acceptance."
 0x004296E0,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x00429740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004297A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1890,7 +1890,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0046A830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A8B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A8E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0046ABA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0046ABA0,unknown,TextLine,review,pending,"REF-022; Actual320-byte ASCII queue record independently established by array ctor46A6B0 count320/stride320, complete line producers/compaction consumers. Native219-byte ctor clears only char[256], invokes Vector3 zero ctor422E10, individually initializes remaining fields and sets alignments1. Natural full typed record, two actual separate words120/124, no synthetic renderer facade; original spelling and authored/compiler/shared origin pending. CRT memset544760 and Vector3 anchor observed independently before probing."
 0x0046AC80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046ADE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046AE00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1999,7 +1999,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00470670,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004708E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00470920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00470920,unknown,Rectangle,review,pending,"REF-022; Complete72-byte cdecl bool/AL helper independently observed in atlas470680; inclusive touching edges, signed comparisons after modulo32 endpoint additions. Natural body uses unsigned additions rather than signed-overflow UB or helper partition. Original helper spelling and authored versus generic/library provenance remain pending; exact credit is kept separate from authored credit. Public lattice intersections and overflow fixtures pass UBSan."
 0x00470970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004709D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004709E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

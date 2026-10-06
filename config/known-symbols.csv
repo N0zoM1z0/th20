@@ -89,3 +89,9 @@ address,name,module,confidence,evidence
 0x00423BD0,th20::Timer::fraction,Timer,high,REF-021
 0x00423590,th20::Timer::at_most,Timer,high,REF-021
 0x00423470,th20::ColoredVertex::ColoredVertex,ColoredVertex,high,REF-021
+0x0046ABA0,th20::TextLine::TextLine,TextLine,high,REF-022
+0x00470920,th20::rectangles_overlap,Rectangle,high,REF-022
+0x0040DE00,th20::IntPoint::IntPoint,Rectangle,high,REF-022
+0x0040DE30,th20::IntRectangle::IntRectangle,Rectangle,high,REF-022
+0x00416CF0,th20::set_next_text_outline_scale,TextOutline,high,REF-022
+0x00429690,th20::Vector3::operator*=,Vector3,high,REF-022

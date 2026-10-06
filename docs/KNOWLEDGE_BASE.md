@@ -1,5 +1,31 @@
 # Verified facts and open hypotheses
 
+## REF-022 — 2026-10-07
+
+- Text renderer's129 implementations individually reviewed; three absorbed,
+  63 nonexact and63 support. Total1,221 terminal/5,723 pending; gaps22/91.
+- Six natural canonical functions total472 new bytes; cold95/95 units across
+  25 objects,6,134 bytes. Authored57/4,074, source95; origins of Line/rectangle/
+  point/overlap/Vector3 multiply assignment remain pending, setter authored.
+- Actual Line320 has typed Vector3 and individually initialized words120/124;
+  count320/stride320 and ctor219 byte extent independently observed. Atlas
+  returns a constructedPoint8; Job63C is a typedRectangle16. Integer addition
+  wraps modulo32 before signed overlap comparisons; touching edges overlap.
+- Native raster consumes/resets5AE120, initialfloat1; setter's DIR32 independent.
+  Core grpfont.cpp diagnostic establishes authored text support. No global
+  storage definition/full raster lifetime is introduced by the setter.
+- Native FPS actualreceiver/int1 and draw_jobs int0 differ from reference free
+  void APIs. Bitmap's initial256 bytes remain unexplained, not accepted padding.
+  Structural fallback104/character72 lack real owner/canonical call partition.
+- 13 original strict-FP TUs compile;56 COFF diagnostics and75 native exports.
+  ASCII46DF27 and factory47108F omitted JMPs decoded. Switch tables remain open
+  for rejected large functions; diagnostic instruction spans are not exact sizes.
+- Historical57113/0 report binds target and45/46 current hashes; format.cpp stale.
+  Driver/menu hashes present; test_environment/full build inputs absent. Typed
+  fixture mistakes: bitmap lookup cdecl versus native thiscall/RET4 and extra
+  inversion arg despiteRET12. No new native CPU execution or whole-game claim.
+
+
 ## REF-016 — 2026-10-06
 
 - Help25 definitions individually reviewed:15 nonexact/10 support. Total899/

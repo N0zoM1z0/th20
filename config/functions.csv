@@ -169,8 +169,8 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0040DCC0,164,0x0040DD63,FUN_0040dcc0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040DD70,87,0x0040DDC6,FUN_0040dd70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040DDD0,42,0x0040DDF9,FUN_0040ddd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0040DE00,33,0x0040DE20,FUN_0040de00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0040DE30,53,0x0040DE64,FUN_0040de30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0040DE00,33,0x0040DE20,FUN_0040de00,th20::IntPoint::IntPoint,Rectangle,reconstructed,100.00,__thiscall,th20::IntPoint::IntPoint,false,src/Rectangle.cpp,REF-022; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Actual8-byte integer coordinate value established by hidden output atlas470680, calling40DE00 for success coordinates or(-1,-1), EAX=this/RET8. Complete33-byte coordinate ctor, no resources, opaque storage or fake owner; original spelling and origin pending."
+0x0040DE30,53,0x0040DE64,FUN_0040de30,th20::IntRectangle::IntRectangle,Rectangle,reconstructed,100.00,__thiscall,th20::IntRectangle::IntRectangle,false,src/Rectangle.cpp,REF-022; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Actual16-byte x/y/width/height record established by Job ctor at63C calling40DE30, atlas reads63C..648, and UV/text-size consumers. Complete53-byte zero ctor initializes four integer fields. Not a renderer facade; original record spelling and origin pending."
 0x0040DE70,30,0x0040DE8D,FUN_0040de70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040DE90,16,0x0040DE9F,FUN_0040de90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040DEA0,23,0x0040DEB6,FUN_0040dea0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -527,7 +527,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00416330,35,0x00416352,FUN_00416330,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00416360,182,0x00416415,FUN_00416360,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00416420,2245,0x00416CE4,FUN_00416420,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00416CF0,18,0x00416D01,FUN_00416cf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00416CF0,18,0x00416D01,FUN_00416cf0,th20::set_next_text_outline_scale,TextOutline,matching,100.00,__cdecl,th20::set_next_text_outline_scale,false,src/TextOutline.cpp,REF-022; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete18-byte cdecl setter stores float bits in5AE120. Independent original raster producer415830 multiplies font outline radius by this scalar then resets1; PE initialfloat1 read before acceptance. Producer diagnostic identifies original authored core/grpfont.cpp, and proprietary shared raster global links this setter to authored text support. Original setter spelling inferred. Storage declaration is extern; global construction and whole raster remain unresolved."
 0x00416D20,3437,0x00417A8C,FUN_00416d20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00417A90,26,0x00417AA9,swap,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00417AB0,542,0x00417CCD,FUN_00417ab0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -910,7 +910,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004295D0,53,0x00429604,FUN_004295d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00429610,44,0x0042963B,FUN_00429610,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00429640,66,0x00429681,FUN_00429640,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00429690,77,0x004296DC,FUN_00429690,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00429690,77,0x004296DC,FUN_00429690,th20::Vector3::operator*=,Vector3,reconstructed,100.00,__thiscall,th20::Vector3::operator*=,false,src/Vector3.cpp,REF-022; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Actual12-byte three-float value owner already independently established. Complete77-byte member429690 multiplies each scalar lane and returns receiver withRET4; original commit46CA40 independently invokes it for position scaling. Natural operator*= body, no relocation fields. Original spelling and authored/compiler/library origin pending; no broader FP exception or enclosing Renderer acceptance."
 0x004296E0,85,0x00429734,FUN_004296e0,th20::Vector3::operator+=,Vector3,reconstructed,100.00,__thiscall,th20::Vector3::operator+=,false,src/Vector3.cpp,REF-018; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x00429740,85,0x00429794,FUN_00429740,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004297A0,33,0x004297C0,FUN_004297a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -1890,7 +1890,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0046A830,128,0x0046A8AF,FUN_0046a830,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0046A8B0,45,0x0046A8DC,FUN_0046a8b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0046A8E0,687,0x0046AB8E,FUN_0046a8e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0046ABA0,219,0x0046AC7A,FUN_0046aba0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0046ABA0,219,0x0046AC7A,FUN_0046aba0,th20::TextLine::TextLine,TextLine,reconstructed,100.00,__thiscall,th20::TextLine::TextLine,false,src/TextLine.cpp,REF-022; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Actual320-byte ASCII queue record independently established by array ctor46A6B0 count320/stride320, complete line producers/compaction consumers. Native219-byte ctor clears only char[256], invokes Vector3 zero ctor422E10, individually initializes remaining fields and sets alignments1. Natural full typed record, two actual separate words120/124, no synthetic renderer facade; original spelling and authored/compiler/shared origin pending. CRT memset544760 and Vector3 anchor observed independently before probing."
 0x0046AC80,349,0x0046ADDC,FUN_0046ac80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0046ADE0,23,0x0046ADF6,FUN_0046ade0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0046AE00,48,0x0046AE2F,FUN_0046ae00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -1999,7 +1999,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00470670,16,0x0047067F,FUN_00470670,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00470680,600,0x004708D7,FUN_00470680,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004708E0,56,0x00470917,FUN_004708e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00470920,72,0x00470967,FUN_00470920,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00470920,72,0x00470967,FUN_00470920,th20::rectangles_overlap,Rectangle,reconstructed,100.00,__cdecl,th20::rectangles_overlap,false,src/Rectangle.cpp,REF-022; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Complete72-byte cdecl bool/AL helper independently observed in atlas470680; inclusive touching edges, signed comparisons after modulo32 endpoint additions. Natural body uses unsigned additions rather than signed-overflow UB or helper partition. Original helper spelling and authored versus generic/library provenance remain pending; exact credit is kept separate from authored credit. Public lattice intersections and overflow fixtures pass UBSan."
 0x00470970,81,0x004709C0,FUN_00470970,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004709D0,10,0x004709D9,FUN_004709d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004709E0,59,0x00470A1A,FUN_004709e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

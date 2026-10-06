@@ -40,11 +40,127 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 1,092 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/tool/test entries have explicit decisions. The
-remaining 5,852 indexed entries are pending. The separate
+The first 1,221 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/tool/test entries have explicit decisions. The
+remaining 5,723 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: twenty-one of 113 files are reconciled, leaving 92 pending.
+and parser-gap count: twenty-two of 113 files are reconciled, leaving 91 pending.
+
+## REF-022: complete text renderer, bitmap and deferred raster batch
+
+All 129 indexed text_renderer bodies were read and individually recorded:
+63 nonexact, 63 support and three absorbed. This includes all thirteen production
+translation units, explicit header constructors, the entire 174-line CPU driver,
+twenty environment adapters and the included 37-line menu fixture. Four WINAPI
+parser errors at driver lines 30..33 are reconciled against the unchanged file.
+Coverage is 1,221 terminal / 5,723 pending; gaps 22 reconciled / 91 pending.
+
+Six natural complete canonical contributions were added in one batch:
+
+| Unit | Address | Bytes | Origin |
+| --- | --- | ---: | --- |
+| TextLine constructor | 0x0046ABA0 | 219 | pending |
+| Inclusive rectangle overlap | 0x00470920 | 72 | pending |
+| IntPoint coordinate constructor | 0x0040DE00 | 33 | pending |
+| IntRectangle zero constructor | 0x0040DE30 | 53 | pending |
+| Next text-outline scale setter | 0x00416CF0 | 18 | authored |
+| Vector3 multiply assignment | 0x00429690 | 77 | pending |
+
+The actual ASCII record is 320 bytes: char[256], typed Vector3, styling/scales,
+two separately initialized words at120/124, font/shadow/layer/frame/alignments.
+Native array construction independently supplies count320 and stride320.
+Its constructor clears char[256], calls the existing Vector3 zero constructor,
+then initializes each scalar; whole-record memset changes the contribution.
+The two CRT/Vector3 anchors were read from independent initialization paths.
+Atlas success/failure constructs the actual eight-byte integer point, and Job
+construction initializes a real sixteen-byte rectangle at63C. Touching edges
+count as overlap; endpoint addition wraps modulo32 before signed comparisons.
+Independent lattice intersections and overflow fixtures pass with UBSan.
+
+The scale setter's global5AE120 initially contains1; original raster415830
+multiplies the font outline radius by it and resets it to1. The producer's
+core/grpfont.cpp diagnostic and this proprietary shared state support authored
+classification. The other five names/origins remain pending. Native ASCII
+commit calls the actual Vector3 multiply-assignment member; its three scalar
+lanes and reference-return/RET4 are recovered without a Renderer facade.
+Cold replay passes95/95 units,25 objects,6,134 complete bytes. Authored credit
+is57 functions/4,074 bytes; source mappings95, pending-origin34, library4.
+
+All thirteen unmodified production TUs compile using the module's explicitly
+declared strict-FP option and public/transitive sprite/ECL/runtime/binary
+includes. Fifty-six corresponding COFF diagnostics retain complete contributions;
+most reject differing sizes. Bitmap fallback104 and character writer72 are
+structurally equal excluding relocations, but actual Bitmap/Renderer owners and
+canonical callee partition remain open. They receive no exact credit. The
+reference's unexplained Bitmap reserved[256] is not imported to create a facade.
+
+Seventy-five unique native entries were independently exported, with complete
+main-function decompilations and selected leaf/callback assembly read. Ghidra
+omits JMP46DF27->46DF45 inside ASCII and JMP47108F->471096 inside the renderer
+factory; both are independently decoded and retained. Diagnostic native sizes
+for switch-bearing functions are instruction spans, not accepted contributions:
+ASCII5639, commit467 and outline2245 additionally require table/padding ownership.
+No such function is accepted or compared using a target-sized prefix.
+
+The actual1A360 AsciiInf owns TaskInf/vptr, three typed5E4 Animations,320 Lines,
+ClockScalar rotation, FunctionChain, Worker and a callable list. Reference
+CallbackOwner/raw scalar/refactored calls omit diagnostics and repeated stores.
+Job684 contains actual Animation/PMR string, Vector3, rectangle, ClockScalar and
+atomic cancellation; aggregate arrays and rotationfloat change construction.
+Native draw_jobs returns int0 while reference returnsvoid. Native FPS is a
+receiver callback returningint1, not the reference freevoidfloat API. Loading
+text compares a typed AnimationHandle and calls the original named factory.
+These owners, RTTI/EH, allocator lifetimes and original partitions remain open.
+
+Formatting keeps original checked-array, string-view and conversion boundaries:
+floating conversion4710F0, integer conversion459210 and separate pad4703C0.
+Ghidra's guessed wide CRT names are not accepted as character-width evidence.
+The 22-float centering table56C768, seven24-byte bitmap records5AE078 and nine
+jitter pairs56F680 are independently decoded. Original menu jitter deliberately
+uses each pair's first component for both coordinates. Bottom-V normalization
+uses texture+20 while top-V uses+1C; this asymmetry is retained as evidence.
+
+The retained CPU report records57,113 checks/0 failures with the locked target
+SHA. Of46 bound source hashes,45 are current; format.cpp differs. Driver/menu
+include hashes are current, but test_environment and the full dependency/build
+inputs are not bound. The included menu loops account for18,432 checks, leaving
+38,681 text checks; conditional text counts remain historical observations.
+No reference native CPU oracle was compiled or executed in this batch.
+
+The driver reads and compares these controlled observation boundaries:
+
+- 512 dirty Line initializations,512 full320-record compactions/counts,1024 UV
+  states and1512 ASCII cases across14 fonts, alignment, scales, strings,
+  punctuation/high bytes, shadow and rotation. It compares fullAnimation5E4
+  and complete intercepted draw traces, not GPU pixels or whole Controller.
+- 4096 full-width overlap cases,512 synthetic atlas searches,512 fullJob/list/
+  flag registrations,110 host GDI extents,2048 float/commit cases,512 FPS cases,
+  4096 public formats and4096 grouped integers plus4096 grouped scores.
+  Formatting depends on the stale format.cpp; valid grouped magnitudes are
+  below1e14. Invalid buffers/conversions, font indices and overflow are excluded.
+- 35 bitmap-format lookups with conditional record checks,128 constructors,
+  384 create/release scenarios,768 inversions and512 outlines. The lookup
+  fixture incorrectly declares native thiscall/RET4 as cdecl; inversion supplies
+  an extra argument despiteRET12. Result comparisons observe AL, not high EAX.
+- 352 raster/upload scenarios cover22 fonts, availability, sparse spacing,
+  outline/scale/width clamp, bitmap bytes, rectangles, readiness and recorded
+  COM calls; both deferred callbacks execute against controlled pixel storage.
+  COM stubs do not implement real reference-count destruction or failure paths.
+- 1024 rectangle-UV states,128 expired-job reuse cases and88 dynamic job cases.
+  Dynamic snapshots compare fullAnimation/scalars and logical PMR text, but
+  normalize self links and external-ready pointers to presence and omit raw
+  allocator/pointer/padding identity. Menu fixtures exercise controlled Cursor
+  states and pre-existing glyph jobs; their other modules remain separately pending.
+
+Private mapping replaces only43F550/43F630 draw boundaries for observations;
+the original executable and Ghidra database are unchanged. Huge fixture owners
+are raw allocated and only selected members constructed. Actual startup,
+constructor/destructor graph, heap/GDI/COM failures, exception cleanup,
+concurrency, malformed indices/buffers, real rendering and whole-game linkage
+remain unaccepted. Difficult functions retain individual reasons rather than a
+module-wide rejection. Next coherent batch: options_system and key_config.
+
+Private evidence: `.analysis/ref022-*`; canonical receipts stay under build/.
 
 ## REF-021: ScreenEffect and shared Timer/vertex recovery batch
 

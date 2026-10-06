@@ -21,8 +21,11 @@
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
-| Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0 | Five complete exact members; original class spelling and authored/compiler/library origins pending |
+| Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690 | Six complete exact members; original class spelling and authored/compiler/library origins pending |
 | ColoredVertex | src/ColoredVertex.hpp, src/ColoredVertex.cpp | typed value construction 0x00423470 | Complete 43-byte exact constructor; actual 20-byte value and Vector3 member established; original spelling/origin pending |
+| TextLine | src/TextLine.hpp, src/TextLine.cpp | value construction 0x0046ABA0 | Complete 219-byte exact constructor; actual 320-byte ASCII record; origin pending |
+| Rectangle | src/Rectangle.hpp, src/Rectangle.cpp | overlap 0x00470920; point construction 0x0040DE00; rectangle construction 0x0040DE30 | Three complete exact contributions; actual eight/sixteen-byte values and inclusive wrapped arithmetic; origins pending |
+| TextOutline | src/TextOutline.hpp, src/TextOutline.cpp | next-scale assignment 0x00416CF0 | Complete 18-byte authored exact setter; externally declared storage/raster lifetime remain open |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
@@ -31,9 +34,21 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns twenty-two objects and one canonical profile per source.
-Eighty-nine units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns twenty-five objects and one canonical profile per source.
+Ninety-five units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-022 reviews all text-renderer implementations together. TextLine recovers the
+actual 320-byte queue value, including a typed Vector3 and two separately stored
+unknown words. Its natural initialization preserves char[256] clearing followed
+by Vector3 construction and individual scalar initialization. IntPoint and
+IntRectangle are actual atlas/job value records, without resources or padding.
+The overlap predicate uses unsigned modulo32 endpoint sums before signed tests.
+The next-outline-scale setter declares its original storage externally; native
+raster consumes this state and restores one. Vector3's multiply assignment
+retains the actual scalar-lane member and reference-return ABI. These small
+components do not supply a fabricated Bitmap or Renderer owner. Full typed ANM,
+PMR/callable-list/Worker/allocator, GDI/COM and renderer lifetimes remain open.
 
 REF-021 reviews ScreenEffect as a complete batch and adds two real Timer members:
 the 17-byte fractional-age read at 0x00423BD0 and the 46-byte signed <= predicate

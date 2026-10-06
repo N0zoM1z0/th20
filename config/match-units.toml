@@ -1025,3 +1025,69 @@ target_address = 0x00428380
 size = 46
 relocations = [
 ]
+
+# REF-022: native record/member initialization, complete constructor extent.
+[units.text_line_construct]
+source = "src/TextLine.cpp"
+object = "build/TextLine.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::TextLine::TextLine"]
+symbol = "??0TextLine@th20@@QAE@XZ"
+target_address = 0x0046ABA0
+size = 219
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x24, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.rectangles_overlap]
+source = "src/Rectangle.cpp"
+object = "build/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::rectangles_overlap"]
+symbol = "?rectangles_overlap@th20@@YA_NHHHHHHHH@Z"
+target_address = 0x00470920
+size = 72
+relocations = []
+
+[units.integer_point_construct]
+source = "src/Rectangle.cpp"
+object = "build/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntPoint::IntPoint"]
+symbol = "??0IntPoint@th20@@QAE@HH@Z"
+target_address = 0x0040DE00
+size = 33
+relocations = []
+
+[units.integer_rectangle_construct]
+source = "src/Rectangle.cpp"
+object = "build/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntRectangle::IntRectangle"]
+symbol = "??0IntRectangle@th20@@QAE@XZ"
+target_address = 0x0040DE30
+size = 53
+relocations = []
+
+[units.text_outline_set_scale]
+source = "src/TextOutline.cpp"
+object = "build/TextOutline.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::set_next_text_outline_scale"]
+symbol = "?set_next_text_outline_scale@th20@@YAXM@Z"
+target_address = 0x00416CF0
+size = 18
+relocations = [
+  { offset = 0xC, type = "DIR32", symbol = "?next_text_outline_scale@th20@@3MA", target = 0x005AE120 },
+]
+
+[units.vector3_scale_assign]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::operator*="]
+symbol = "??XVector3@th20@@QAEAAU01@M@Z"
+target_address = 0x00429690
+size = 77
+relocations = []
