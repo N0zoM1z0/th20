@@ -154,3 +154,9 @@ th20::scalar_math::sine
 th20::scalar_math::cosine
 th20::scalar_math::square_root
 th20::scalar_math::arctangent
+th20::ScriptStack::ScriptStack
+th20::ScriptStack::absolute
+th20::ScriptStack::local
+th20::ScriptStack::leave_frame
+th20::EnemyCounters::EnemyCounters
+th20::EnemyCounters::reset

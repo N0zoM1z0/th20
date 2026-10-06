@@ -17,6 +17,8 @@ PROFILE = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy",
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--module", action="append", default=[])
+    parser.add_argument("--source", action="append", default=[],
+                        help="Limit compilation to exact reference-relative TU paths")
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     pin = load_manifest("reference.toml")
@@ -39,6 +41,11 @@ def main():
         files = [row for row in files if (row["reference_path"].split("/")[1]
                  if row["reference_path"].startswith("source_reconstruction/")
                  else row["reference_path"].split("/")[0]) in args.module]
+    if args.source:
+        unknown = set(args.source) - {row["reference_path"] for row in files}
+        if unknown:
+            raise ValueError(f"unconfigured reference sources: {sorted(unknown)}")
+        files = [row for row in files if row["reference_path"] in args.source]
     output = ROOT / ".analysis/reference-functions/compilations"
     output.mkdir(parents=True, exist_ok=True)
     for index, row in enumerate(files, 1):
@@ -83,7 +90,8 @@ def main():
                                 "source_reconstruction/overlay_system/",
                                 "source_reconstruction/hud_system/",
                                 "source_reconstruction/small_score/",
-                                "source_reconstruction/stage_completion/")):
+                                "source_reconstruction/stage_completion/",
+                                "source_reconstruction/gameplay/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -143,6 +151,22 @@ def main():
             for extension in ("cpp", "hpp"):
                 fingerprint = digest(source.parent / f"archive.{extension}")
                 profile.append(f'/DTH20_ARCHIVE_{extension.upper()}_SHA256="{fingerprint}"')
+        if relative.startswith("source_reconstruction/gameplay/"):
+            # The gameplay/Enemy libraries request strict FP; the entry adapter
+            # is a distinct target whose reviewed CMake recipe does not.
+            strict_sources = {
+                "gameplay.cpp", "player_state.cpp", "stage_data.cpp", "loading.cpp",
+                "enemy.cpp", "enemy_data.cpp", "enemy_frame.cpp", "enemy_state.cpp",
+                "enemy_variables.cpp", "enemy_update.cpp", "enemy_interpolation.cpp",
+                "enemy_movement.cpp", "enemy_damage_helpers.cpp", "enemy_damage.cpp",
+                "enemy_spawn.cpp", "enemy_entity.cpp", "enemy_vm.cpp", "enemy_reads.cpp",
+                "script_loader.cpp", "script_program.cpp", "enemy_opcode_animation.cpp",
+                "enemy_opcode_movement.cpp", "enemy_shot.cpp", "enemy_opcode_laser.cpp",
+                "enemy_opcode_misc.cpp", "enemy_mesh.cpp", "enemy_defeat.cpp",
+                "enemy_opcode_state.cpp", "enemy_drop.cpp", "enemy_cleanup.cpp",
+            }
+            if Path(relative).name in strict_sources:
+                profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative == "source_reconstruction/title_system/replay_format_probe.cpp":
             # This standalone diagnostic is owned by sprite_renderer/pool_test,
             # whose CMake target declares the native fixture's required macro.

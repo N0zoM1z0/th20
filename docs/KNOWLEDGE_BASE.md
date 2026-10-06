@@ -1,5 +1,44 @@
 # Verified facts and open hypotheses
 
+## REF-037 — 2026-10-07 — Enemy owner, stack and VM batch
+
+- All230 scoped bodies individually read/rebound:4 absorbed/62 nonexact/164
+  support. Global5,311/1,633, grammar83/30; Gameplay789 remains pending.
+- Native ScriptStack24 owns PMR vector16, byte SP16/BP20. Constructor4A36D0,
+  absolute53E630, local53E6A0 and leave_frame540300 independently rewrite to
+  complete42/102/120/52-byte exact members. Genuine generic pop53F0B0 takes
+  length/output-pointer/char and returns int; implementation remains undefined.
+  Original vector/default-resource construction/index/size/resize anchors are
+  dependencies. Default slot5E4D28/fallback5B2578 corroborated; first vector
+  word is an allocator resource, correcting the earlier proxy description.
+- Data4A2FC0 constructs a48-byte four-integer/eight-float member47BAA0 before
+  handles/Timer. Its141-byte constructor and138-byte reverse-write reset4AB1B0
+  exactly replay. Original roles/names/origins and full Data/controller unknown.
+- Full162-unit/46-object cold replay:11,154 disjoint bytes. Source162/pending
+  origins101/library4; confirmed authored57/4,074 unchanged. C++20/UBSan tests
+  pass growth/retained payload/negative local displacement, output-pointer frame
+  ordering and dirty48-byte value construction/reset. No fake pop implementation.
+- All47 Gameplay TUs compiled; seven relevant TUs rebuilt after source freeze.
+ 1,451 defined symbols/211 static;74 complete diagnostics across63 bodies:
+ 73 lengths and one93-byte clear_async mismatch (21/81 structural bytes).
+ 33 native ranges fully PE-decode/79 omitted Ghidra instructions; only six
+  new extents accepted. No solved diagnostic anchors or source copying.
+- Reference Runtime72 and manager virtual slot order improve old ECL adapter,
+  but fixed-word/status, NULL/exception, parser/Instruction/Environment, Link vs
+  Runtime/status and allocator/lifetime differences remain. Native4AA1B0 is
+  cdecl, reference gates live in a thiscall member.53EE30/53EA90 raw-value heads
+  corroborated;53E00C still belongs inside53B5C0.
+- Loader constructor4A3650 calls PMR-stack constructor4A36D0 at+21C;
+  reference declares24-byte std::string there. Equal size does not restore
+  initialization/type/lifetime; raw-loader parser fixture bypasses constructor.
+- Retained1,254,134/0 binds105 current source hashes;37,707 general-VM cases
+  include800 call setups/400 six-frame real native allocating/deleting chains.
+  Binary/toolchain/startup identity unbound; Windows oracle/writer not rerun.
+  README old total lacks20 retained-storage iterator hazard cases. Those detect
+  observer writes after retirement without actual freeing or live-path proof.
+  Other included CPU groups/production bodies remain separately pending.
+  Details: REFERENCE_GAMEPLAY_ECL_REVIEW.md.
+
 ## REF-036 — 2026-10-07 — complete ECL batch
 
 - All144 ECL bodies have individual outcomes; remaining128:1 absorbed/26

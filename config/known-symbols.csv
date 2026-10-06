@@ -156,3 +156,9 @@ address,name,module,confidence,evidence
 0x004397C0,th20::scalar_math::cosine,ScalarMath,high,REF-035
 0x00446B30,th20::scalar_math::square_root,ScalarMath,high,REF-035
 0x00459280,th20::scalar_math::arctangent,ScalarMath,high,REF-035
+0x004A36D0,th20::ScriptStack::ScriptStack,ScriptStack,high,REF-037
+0x0053E630,th20::ScriptStack::absolute,ScriptStack,high,REF-037
+0x0053E6A0,th20::ScriptStack::local,ScriptStack,high,REF-037
+0x00540300,th20::ScriptStack::leave_frame,ScriptStack,high,REF-037
+0x0047BAA0,th20::EnemyCounters::EnemyCounters,EnemyCounters,high,REF-037
+0x004AB1B0,th20::EnemyCounters::reset,EnemyCounters,high,REF-037

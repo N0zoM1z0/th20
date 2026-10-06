@@ -155,3 +155,9 @@ th20::scalar_math::sine,0x00439820,function
 th20::scalar_math::cosine,0x004397C0,function
 th20::scalar_math::square_root,0x00446B30,function
 th20::scalar_math::arctangent,0x00459280,function
+th20::ScriptStack::ScriptStack,0x004A36D0,function
+th20::ScriptStack::absolute,0x0053E630,function
+th20::ScriptStack::local,0x0053E6A0,function
+th20::ScriptStack::leave_frame,0x00540300,function
+th20::EnemyCounters::EnemyCounters,0x0047BAA0,function
+th20::EnemyCounters::reset,0x004AB1B0,function

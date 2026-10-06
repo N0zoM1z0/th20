@@ -1,5 +1,116 @@
 # Gameplay and ECL implementation review
 
+## REF-037 — Enemy owner, stack and VM batch
+
+This coherent batch closes 230 implementations individually: four absorbed,
+62 nonexact and 164 support. All 13 indexed files below were fully read, with
+original CRLF body ranges rebound to their pinned hashes. Script-loader, spawn
+and state headers, the Gameplay CMake recipe, README and both retained CPU and
+iterator reports were also read. Two grammar files are reconciled: the fixture's
+empty-vector default initializer and the test Services HRESULT WINAPI annotation
+each leave their complete implementation indexed, with no omitted body.
+
+| File | Reviewed implementations |
+| --- | ---: |
+| enemy.cpp / enemy.hpp | 12 / 1 |
+| enemy_data.cpp / enemy_state.cpp | 3 / 5 |
+| enemy_entity.cpp / enemy_entity.hpp | 15 / 2 |
+| enemy_vm.cpp | 32 |
+| script_loader.cpp / script_program.cpp | 14 / 1 |
+| enemy_vm_test_fixture.hpp / enemy_vm_cpu_cases.inc | 16 / 46 |
+| enemy_cpu_compare.cpp / test_services.hpp | 56 / 27 |
+
+Global coverage is **5,311 reviewed / 1,633 pending** of 6,944; grammar coverage
+is 83 complete / 30 pending. Gameplay still has 789 implementations pending,
+alongside Sprite540, StageBackground121 and183 other support bodies. Reading
+the CPU driver's includes does not close their separately indexed definitions.
+
+Six independent natural C++ members add **595 complete exact bytes**:
+
+| Member | Native entry | Bytes |
+| --- | --- | ---: |
+| ScriptStack constructor | 4A36D0 | 42 |
+| ScriptStack absolute / local | 53E630 / 53E6A0 | 102 / 120 |
+| ScriptStack leave_frame | 540300 | 52 |
+| EnemyCounters constructor / reset | 47BAA0 / 4AB1B0 | 141 / 138 |
+
+Native Runtime construction and original vector construction/index/size/resize
+establish a real 24-byte stack: a 16-byte PMR vector, byte SP at16 and BP at20.
+Its allocator stores the resource pointer before begin/end/capacity. The default
+resource path4141A0 ->415820 ->541550 reads5E4D28, falling back to5B2578. This
+corrects the earlier generic description of the first vector word as a proxy.
+Release-mode STL/PMR helper bodies are explicit dependencies, not additional
+reconstructed library contributions. Ghidra's _String_val name at4A36D0 does
+not establish a different source owner or library origin.
+
+Absolute/local members directly grow zero-initialized word storage and return
+the indexed reference. Absorption covers valid nonnegative resolved addresses;
+local addition must be representable in int32_t. The reference's extra exceptions
+and forwarding local helper are not imported. Native leave_frame saves BP,
+calls generic pop(4,&BP,0), then restores SP and returns zero. The actual generic
+length/output-pointer/char/int-status pop prototype is independently declared;
+its implementation remains undefined. Portable tests observe this dependency's
+arguments and ordering without supplying a production substitute.
+
+EnemyData construction4A2FC0 calls a distinct 48-byte value constructor before
+its handles and Timer. That value contains four integer words and eight floats,
+not the reference's twelve-integer array. Constructor/reset use the observed
+ascending/reverse typed writes, respectively. The whole164-byte Data constructor,
+controller player/generation method, VM/Enemy owners, vptr/EH and resource/pool
+lifetimes remain unclosed. Original names, field roles and origins remain pending.
+
+All 162 canonical units replay from 46 cold objects against the frozen source,
+covering 11,154 disjoint complete bytes. Source162/pending origins101/library4;
+confirmed authored57/4,074 is unchanged. Portable C++20/UBSan checks pass dynamic
+stack growth, retained words, negative local displacements, frame restoration,
+default PMR selection, dirty-storage construction and all48 reset bytes.
+
+The reviewed CMake recipe has 47 production TUs: 30 Gameplay/Enemy sources use
+strict FP; entry adapters retain precise FP. All47 compiled before the new
+source freeze; the seven TUs used for comparisons were rebuilt afterwards.
+Their 1,451 defined function symbols include211 static symbols. Seventy-four
+complete comparisons across63 bodies give73 length differences and one byte
+mismatch. clear_async happens to be93 bytes in both images but matches only21
+of81 structural bytes. No prefix or solved diagnostic relocation is accepted.
+Thirty-three focused native ranges fully PE-decode;79 Ghidra-omitted instructions
+are retained. The six accepted ranges have closed flow and independently read
+call anchors; other inspected extents remain provisional.
+
+Native base-loader constructor4A3650 calls the same PMR-stack constructor4A36D0
+at receiver+21C. The reference instead declares a24-byte std::string there;
+equal width does not establish initialization, container type or destruction.
+The no-includes parser fixture constructs a raw loader and does not exercise
+this original constructor. This additional mismatch is recorded on the loader
+constructor's individual decision; full member roles/lifetime remain pending.
+
+The reference Gameplay runtime has the correct72-byte size and manager virtual
+slot order, improving the older ECL adapter. It still replaces generic stack
+copies/status returns with fixed words, merges native parser methods, adds
+Instruction/Environment parameters, throws for original NULL paths, returns
+Runtime instead of Link/status, and splits interpolation from53B5C0. Raw-value
+parsers53EE30/53EA90 are separate actual heads. Native4AA1B0 is a cdecl callback,
+whereas the reference puts its gates in a thiscall member. Correct layout alone
+does not establish these prototypes or complete owning lifetimes.
+
+The retained Enemy CPU report sums to1,254,134 with zero failures and binds105
+current source hashes plus the locked target. The README's1,254,114 predates20
+iterator-hazard comparisons. General VM scope accounts for37,707 comparisons,
+including800 direct call setups and400 six-frame native allocation/traversal
+chains; integer/float variable getter groups remain separately pending. This
+fixture uses actual PMR containers and mapped native allocator/lock code, unlike
+the old fixed-storage ECL fixture. It still does not bind the executed binary,
+complete toolchain/startup or every transitive dependency. Windows CPU oracle
+and report writer were not executed during this review.
+
+Missing call lookup invalidates the caller and restores current only on success;
+continued invalid execution is outside the setup fixture. Async cleanup leaves
+the main sentinel's next pointer dangling until reset. The iterator report keeps
+retired Enemy storage allocated, then poisons observers to detect writes after
+retirement; its20 matching scenarios do not prove safe dereference after free or
+that a live game took this path. SCPT comparisons exclude include/resource/device
+execution; ANM replacement, active damage/mesh and legacy CRT error/NaN domains
+remain separately scoped or pending.
+
 ## REF-036 — complete ECL batch
 
 All 128 remaining ECL implementations now have individual body-hash-bound

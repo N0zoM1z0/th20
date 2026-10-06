@@ -1,5 +1,14 @@
 # Target inventory and initial architecture boundary
 
+REF-037 establishes native ScriptStack24 as a PMR vector16 plus byte SP/BP,
+and EnemyCounters48 as four integer words/eight floats inside EnemyData.
+Six natural members add595 complete exact bytes, without reconstructing the
+enclosing runtime/controller/Enemy owners. Generic stack pop is a genuine
+output-pointer/status dependency whose implementation remains undefined.
+Gameplay's72-byte reference runtime and correct virtual slots still differ in
+parser/frame/call/list/pool prototypes;230 bodies reviewed,789 Gameplay pending.
+See REFERENCE_GAMEPLAY_ECL_REVIEW.md.
+
 REF-036 closes all144 ECL implementations for individual review. Native Stack24,
 Runtime72 and eight-byte name/code records differ from the reference20/80/44-byte
 owning types; Engine vtable order, pool allocation, status/output-pointer stack

@@ -2,6 +2,8 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| ScriptStack | src/ScriptStack.hpp, src/ScriptStack.cpp | construction4A36D0; absolute53E630; local53E6A0; leave_frame540300 | Four complete exact members on actual PMR Stack24; generic output-pointer/status pop explicitly undefined, allocator/full VM ownership and origins pending |
+| EnemyCounters | src/EnemyCounters.hpp, src/EnemyCounters.cpp | construction47BAA0; reset4AB1B0 | Two complete exact members on actual48-byte four-integer/eight-float value; full EnemyData/controller ownership and field roles/origins pending |
 | DialogueFlags | src/DialogueFlags.hpp, src/DialogueFlags.cpp | construction0x004AEC90 | Complete66-byte exact constructor on real four-byte Dialogue+104 member; upper25 retained, bit meanings/origin pending |
 | DialogueText | src/DialogueText.hpp, src/DialogueText.cpp | lead predicate0x004B6460; decoder0x004B7C90 | Complete62/197-byte exact cdecl contributions; uint8/full-int lead ABI, shared external BSS, valid terminated/paired-lead domain; storage/lifetime and origins pending |
 | ScoreEntry | src/ScoreEntry.hpp, src/ScoreEntry.cpp | construction0x0050FD50 | Complete127-byte exact member on actual68-byte record; typed Vector3/Timer, implicit padding3A/B preserved, float30/34 roles and origin pending |
@@ -51,8 +53,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns forty-four objects and one canonical profile per source.
-One hundred fifty-six units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns forty-six objects and one canonical profile per source.
+One hundred sixty-two units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-032 absorbs the score-record constructor through an independently rewritten
@@ -75,7 +77,9 @@ another canonical unit. The original CRT startup/error/exception domains and
 actual VM/Enemy/vector/interpolation owners remain open. REF-036 closes all144
 ECL implementations, including the remaining128 with1 absorbed/26 nonexact/101
 support. Existing GameRandom::signed_unit absorbs the semantic adapter; no
-additional source/units. Gameplay1019 still requires review. Native Stack/runtime/
+additional source/units. REF-037 closes230 Gameplay bodies and adds six natural
+ScriptStack/EnemyCounters members,595 complete bytes; Gameplay789 remains pending.
+Native Stack/runtime/
 resource/vtable/allocator ownership differs from reference owning objects;
 see REFERENCE_GAMEPLAY_ECL_REVIEW.md.
 

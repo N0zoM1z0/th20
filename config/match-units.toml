@@ -3,6 +3,75 @@ target_sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a089
 
 [units]
 
+# REF-037: native owner construction, accesses and generic pop ABI precede probes.
+[units.script_stack_ctor]
+source = "src/ScriptStack.cpp"
+object = "build/ScriptStack.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ScriptStack::ScriptStack"]
+symbol = "??0ScriptStack@th20@@QAE@XZ"
+target_address = 0x004A36D0
+size = 42
+relocations = [{ offset = 0xB, type = "REL32", symbol = "??0?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 }]
+
+[units.script_stack_absolute]
+source = "src/ScriptStack.cpp"
+object = "build/ScriptStack.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ScriptStack::absolute"]
+symbol = "?absolute@ScriptStack@th20@@QAEAAIH@Z"
+target_address = 0x0053E630
+size = 102
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?size@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QBEIXZ", target = 0x0053F750 },
+  { offset = 0x40, type = "REL32", symbol = "?resize@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEXI@Z", target = 0x0053F370 },
+  { offset = 0x5C, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+]
+
+[units.script_stack_local]
+source = "src/ScriptStack.cpp"
+object = "build/ScriptStack.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ScriptStack::local"]
+symbol = "?local@ScriptStack@th20@@QAEAAIH@Z"
+target_address = 0x0053E6A0
+size = 120
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?size@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QBEIXZ", target = 0x0053F750 },
+  { offset = 0x4C, type = "REL32", symbol = "?resize@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEXI@Z", target = 0x0053F370 },
+  { offset = 0x6E, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+]
+
+[units.script_stack_leave_frame]
+source = "src/ScriptStack.cpp"
+object = "build/ScriptStack.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ScriptStack::leave_frame"]
+symbol = "?leave_frame@ScriptStack@th20@@QAEHXZ"
+target_address = 0x00540300
+size = 52
+relocations = [{ offset = 0x21, type = "REL32", symbol = "?pop@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x0053F0B0 }]
+
+[units.enemy_counters_ctor]
+source = "src/EnemyCounters.cpp"
+object = "build/EnemyCounters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyCounters::EnemyCounters"]
+symbol = "??0EnemyCounters@th20@@QAE@XZ"
+target_address = 0x0047BAA0
+size = 141
+relocations = []
+
+[units.enemy_counters_reset]
+source = "src/EnemyCounters.cpp"
+object = "build/EnemyCounters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyCounters::reset"]
+symbol = "?reset@EnemyCounters@th20@@QAEXXZ"
+target_address = 0x004AB1B0
+size = 138
+relocations = []
+
 # REF-035: observed cdecl float/double CRT wrappers; native call anchors precede probes.
 [units.scalar_math_sine]
 source = "src/ScalarMath.cpp"

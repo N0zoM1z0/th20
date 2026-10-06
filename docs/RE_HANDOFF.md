@@ -1,5 +1,44 @@
 # Current reconstruction handoff
 
+## REF-037 — 2026-10-07 — Enemy owner, stack and VM batch
+
+All230 scoped Gameplay implementations individually reviewed:4 absorbed/62
+nonexact/164 support.13 indexed files plus relevant three type headers, recipe,
+README and retained reports fully read. Two grammar files reconciled. Global
+5,311 terminal/1,633 pending; gaps83/30. Exhaustive goal remains active.
+
+- Six natural value members add595 complete bytes:ScriptStack ctor4A36D0/42,
+  absolute53E630/102,local53E6A0/120,leave_frame540300/52; EnemyCounters
+  ctor47BAA0/141,reset4AB1B0/138. Genuine PMR vector16/Stack24 and four-int/
+  eight-float Counter48 established through native producers/consumers.
+- All162 canonical units freshly replay from46 frozen-source objects/11,154
+  disjoint bytes. Source162/pending origins101/library4, authored57/4,074.
+  Portable C++20/UBSan value/growth/frame-observation tests pass. Generic
+  output-pointer/int-status pop remains undefined in maintained production;
+  vector/allocator implementation and full VM/Enemy/vptr/EH owners unaccepted.
+- All47 Gameplay production TUs compile; seven used for diagnostics rebuilt
+  after new source freeze.1,451 defined symbols/211 static;74 full comparisons
+  across63 bodies give73 lengths/one mismatch. clear_async93 matches only21/81
+  structural bytes.33 native ranges full PE-decode;79 omitted Ghidra instructions
+  retained. Only six accepted extents; original call anchors precede probes.
+- Native loader4A3650 calls the same PMR-stack ctor4A36D0 at+21C, where
+  reference declares std::string24. Raw-loader parser fixture bypasses ctor;
+  initialization/container/lifetime mismatch recorded, full loader still open.
+- Retained1,254,134/0 binds105 source hashes;37,707 general VM comparisons
+  include800 direct call setups and400 six-frame real native allocating/deleting
+  chains. Actual PMR/heap/locks now exercised historically, but executed binary/
+  toolchain/startup unbound. Windows CPU oracle/writer not rerun. Iterator20
+  hazard cases retain storage and do not establish safe access after free.
+- Private ref037-record.py executed ONCE; never rerun. All older writers also
+  already executed. Canonical src/probes frozen. Historical unrelated reference
+  receipts require rebuilding before reuse; only seven Gameplay TUs are current.
+
+Continue coherent Gameplay789, then Sprite540/StageBackground121 and183 other
+support implementations. Every body/gap still needs its own decision; do not
+mark complete with1,633 bodies/30 gap files pending. English/repo-python/
+gpt-6.1-sol subjects/public main pushes and serial-MSVC/no-subagent rules persist.
+See REFERENCE_GAMEPLAY_ECL_REVIEW.md and private ref037 resume notes.
+
 ## REF-036 — 2026-10-07 — complete ECL batch
 
 All128 remaining ECL implementations reviewed individually:1 absorbed/26
