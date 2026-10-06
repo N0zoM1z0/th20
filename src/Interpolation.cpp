@@ -3,7 +3,7 @@
 namespace th20 {
 
 template<class T> Interpolation<T>::Interpolation()
-    : start(0), end(0), tangent_start(0), tangent_end(0), current(0),
+    : start(), end(), tangent_start(), tangent_end(), current(),
       timer(), duration(0), mode(0) {}
 
 template<class T> void Interpolation<T>::set_duration(std::int32_t value) {
@@ -34,5 +34,6 @@ template<class T> void Interpolation<T>::begin(std::int32_t frames,
 
 template struct Interpolation<std::uint8_t>;
 template struct Interpolation<float>;
+template struct Interpolation<Vector3>;
 
 } // namespace th20

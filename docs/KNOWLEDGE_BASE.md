@@ -1,5 +1,27 @@
 # Verified facts and open hypotheses
 
+## REF-030 — 2026-10-07 — shared Player / Bomb values; review ongoing
+
+- Seven complete contributions add581 bytes;144-unit/38-object cold replay
+  totals9,703. Pending origins83/library4/source144; authored57/4,074 unchanged.
+- Independently read typed constructors/callers establish Angle4, Motion72,
+  VectorInterpolation84 and existing IntPoint8 ownership. No raw giant facade.
+  Complete native boundaries/branches and approved PE literal anchors close.
+- Angle reduction has a34-step cap, preserves signed zero/quiet NaNs and leaves
+  infinities/large finite inputs potentially unreduced. A shared pi constant and
+  strict per-source FP profile match187 bytes; precise180/local-strict200 differ.
+  Global game flags, original spellings and function origins remain open.
+- Existing generic interpolation now value-initializes scalar/vector members;
+  all old byte/float exact units replay. IntPoint addition preserves modulo32
+  arithmetic and native aggregate-return ABI. Portable C++20/UBSan checks pass.
+- Intrinsic coordinate conversion117 versus native61 remains rejected; no
+  undefined nonfinite C++ cast, fake ABI or shortened contribution accepted.
+- Player611/Bomb83/Item190 is an ongoing884-entry batch. Global decisions and
+  parser gaps unchanged. Initial52 production compilations precede source
+  additions and need receipt refresh. Full driver/report/COFF/individual review
+  remains pending; no Windows CPU execution or full owner acceptance claimed.
+  See REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md.
+
 ## REF-029 — 2026-10-07 — Bullet / Laser / Damage batch complete
 
 - All413 bodies individually reviewed:3 absorbed /214 nonexact /196 support.

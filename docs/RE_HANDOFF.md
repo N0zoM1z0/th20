@@ -1,5 +1,30 @@
 # Current reconstruction handoff
 
+## REF-030 — 2026-10-07 — Player / Bomb / Item component checkpoint
+
+Seven shared natural value contributions add581 complete bytes: Angle24/50,
+normalization187, Motion142, VectorInterpolation97 and IntPoint33/48. Full144
+units cold-replay across38 objects /9,703 bytes; authored57/4,074 unchanged.
+Source144/pending origins83/library4. All884 related reference entries remain
+pending in this batch; global3,381 terminal /3,563 pending, gaps57/56. Goal active.
+
+- Full native extents/calls/PE constants independently audited; all branches
+  close. Actual72/84/8-byte owners, no fake Player/Bomb facade. Angle source uses
+  strict FP; other source profiles unchanged. Existing shared units replay.
+- C++20/UBSan dirty-value, IEEE/bounded-angle/16,001-input congruence and wrapping
+  coordinate checks pass. CVTT conversion117/native61 remains unaccepted.
+- All52 original production TUs compiled before these source additions with
+  actual inherited CMake paths/strict FP; initial receipts now stale. Refresh
+  after final source freeze before final COFF evidence. Never edit src/probes
+  during serial MSVC builds. All101 source-file/884 body bindings are private.
+- Continue remaining Player production/adapters, all fixtures/drivers/writers/
+  retained-report bindings, full static/external COFF/native owner/table audit
+  and parser gaps; do not default-reject or mark884 terminal merely from binding.
+  See REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md and private ref030 resume notes.
+- Component registration script executed once; never rerun. All previous
+  record writers are already executed. Repository Python uses repo-python;
+  English maintained text, gpt-6.1-sol commits and authorized public push.
+
 ## REF-029 — 2026-10-07 — Bullet / Laser / Damage batch checkpoint
 
 All413 implementations individually reviewed:3 absorbed /214 nonexact /196

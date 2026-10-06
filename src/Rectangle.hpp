@@ -5,12 +5,14 @@
 
 namespace th20 {
 
-// Actual atlas return value and Job rectangle, with no owning resources.
+// Actual atlas return value and Player fixed coordinates, without resources.
 struct IntPoint {
     std::int32_t x;
     std::int32_t y;
 
+    IntPoint();
     IntPoint(std::int32_t x, std::int32_t y);
+    IntPoint operator+(const IntPoint& other) const;
 };
 
 struct IntRectangle {

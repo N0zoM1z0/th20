@@ -1,12 +1,13 @@
 #pragma once
 
 #include "Timer.hpp"
+#include "Vector3.hpp"
 #include <cstddef>
 #include <cstdint>
 
 namespace th20 {
 
-// Scalar animation and Wonder Stone interpolation values. Padding is implicit.
+// Shared scalar and three-lane interpolation values. Padding is implicit.
 template<class T> struct Interpolation {
     T start, end, tangent_start, tangent_end, current;
     Timer timer;
@@ -23,12 +24,18 @@ template<class T> struct Interpolation {
 
 using ByteInterpolation = Interpolation<std::uint8_t>;
 using FloatInterpolation = Interpolation<float>;
+using VectorInterpolation = Interpolation<Vector3>;
 static_assert(sizeof(ByteInterpolation) == 32);
 static_assert(offsetof(ByteInterpolation, timer) == 8);
 static_assert(sizeof(FloatInterpolation) == 44);
 static_assert(offsetof(FloatInterpolation, timer) == 20);
+static_assert(sizeof(VectorInterpolation) == 84);
+static_assert(offsetof(VectorInterpolation, timer) == 60);
+static_assert(offsetof(VectorInterpolation, duration) == 76);
+static_assert(offsetof(VectorInterpolation, mode) == 80);
 
 extern template struct Interpolation<std::uint8_t>;
 extern template struct Interpolation<float>;
+extern template struct Interpolation<Vector3>;
 
 } // namespace th20

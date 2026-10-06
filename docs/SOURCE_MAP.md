@@ -7,7 +7,7 @@
 | Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
 | CollisionGeometry | src/CollisionGeometry.hpp, src/CollisionGeometry.cpp | absolute 0x00445680; circle 0x00456FE0; rectangle 0x00457300 | Three complete exact routines; negative zero/quiet-NaN sign retained, circle inclusive/rectangle strict; origins pending |
 | PackedColor / EffectParameters / EffectRequest / SelectionPulse | src/EffectParameters.hpp, src/EffectParameters.cpp | constructors 0x004142A0/0x0047BA30/0x0049CE30/0x00461840 | Four complete exact constructors on actual4/56/72x86/8-byte values; implicit padding kept, origins pending |
-| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin | Twelve complete exact members on actual32/44-byte values; live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
+| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3 constructor0x00447B30 | Thirteen complete exact members on actual32/44/84-byte values; live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
 | Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Eighteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
@@ -27,6 +27,7 @@
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
+| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp | construction 0x00447DE0/0x00429210/0x00478530; reduction 0x00438540 | Four complete exact contributions; actual 4/72-byte values, bounded reduction, original names/origins and updates pending |
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690 | Six complete exact members; original class spelling and authored/compiler/library origins pending |
 | Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |
 | PauseFlags | src/PauseFlags.hpp, src/PauseFlags.cpp | four-byte flags construction 0x004E1CB0 | Complete 40-byte exact constructor; two-bit mode/one-bit practice, upper 29 retained, origin pending |
@@ -35,7 +36,7 @@
 | ProgressRecordHeader / ProgressScore / PracticeScore | src/ProgressRecords.hpp, src/ProgressRecords.cpp | constructors 0x0050E500/0x0050E4A0/0x0050E6A0; availability 0x0052CA30 | Four complete exact members on actual 12/40/16-byte values; signed-byte availability reads +9 then +8, original declarations/origins and enclosing records remain open |
 | ColoredVertex | src/ColoredVertex.hpp, src/ColoredVertex.cpp | typed value construction 0x00423470 | Complete 43-byte exact constructor; actual 20-byte value and Vector3 member established; original spelling/origin pending |
 | TextLine | src/TextLine.hpp, src/TextLine.cpp | value construction 0x0046ABA0 | Complete 219-byte exact constructor; actual 320-byte ASCII record; origin pending |
-| Rectangle | src/Rectangle.hpp, src/Rectangle.cpp | overlap 0x00470920; point construction 0x0040DE00; rectangle construction 0x0040DE30 | Three complete exact contributions; actual eight/sixteen-byte values and inclusive wrapped arithmetic; origins pending |
+| Rectangle | src/Rectangle.hpp, src/Rectangle.cpp | overlap 0x00470920; point construction 0x0040DE00/0x00414030; addition 0x004F58F0; rectangle construction 0x0040DE30 | Five complete exact contributions; actual atlas/Player integer pairs, modulo32 addition and inclusive wrapped arithmetic; origins pending |
 | TextOutline | src/TextOutline.hpp, src/TextOutline.cpp | next-scale assignment 0x00416CF0 | Complete 18-byte authored exact setter; externally declared storage/raster lifetime remain open |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
@@ -45,8 +46,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns thirty-six objects and one canonical profile per source.
-One hundred thirty-seven units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns thirty-eight objects and one canonical profile per source.
+One hundred forty-four units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-029 closes the413-body Bullet, Laser and Damage Regions review begun at
@@ -267,3 +268,11 @@ resource tests, but its native exception emission remains nonexact. The eight
 canonical members do not accept complete original construction, library runtime
 or menu linkage. PauseFlags is the real four-byte bitfield value constructed
 inside Pause; it introduces no enclosing owner or global definition.
+
+REF-030 adds seven shared Player/Bomb value contributions,581 complete bytes.
+Angle has a34-step reduction cap; Motion contains three typed Angle and Vector3
+members and a genuine control word. Existing generic interpolation supports
+five Vector3 values at size84; only its constructor adds exact credit. IntPoint
+extends the existing atlas value through an independently shared coordinate
+constructor. All144 units replay; the884-entry reference batch remains ongoing.
+See REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md for boundary, profile and oracle limits.

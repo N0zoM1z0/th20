@@ -27,6 +27,7 @@ void check_cursor_history();
 void check_replay_records();
 void check_effect_values();
 void check_bullet_values();
+void check_motion_values();
 
 namespace {
 unsigned callback_calls;
@@ -59,6 +60,7 @@ int main() {
     check_replay_records();
     check_effect_values();
     check_bullet_values();
+    check_motion_values();
     th20::trophy_text::Message message;
     std::memset(&message, 0xa5, sizeof(message));
     message.reset();

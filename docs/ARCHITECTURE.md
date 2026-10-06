@@ -1,5 +1,10 @@
 # Target inventory and initial architecture boundary
 
+Player / Bomb / Item now share actual Angle4, Motion72, VectorInterpolation84
+and IntPoint8 values. Seven complete constructor/math/member contributions add
+581 exact bytes without enclosing owner facades. All884 reference entries in
+this related batch remain pending; see REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md.
+
 Bullet / Laser / Damage Regions share an actual64-byte extended-command value,
 40-byte shot parameters and44-byte x86 ECL operands, alongside two-float Vector2.
 Four value constructors, three geometry routines and the bullet-radius query are

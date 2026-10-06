@@ -136,3 +136,10 @@ th20::geometry::absolute,0x00445680,function
 th20::geometry::circle_point,0x00456FE0,function
 th20::geometry::rectangle_point,0x00457300,function
 th20::bullet_radius,0x00485700,function
+th20::Angle::Angle(),0x00447DE0,function
+th20::Angle::Angle(float),0x00429210,function
+th20::normalize_angle,0x00438540,function
+th20::Motion::Motion,0x00478530,function
+th20::VectorInterpolation::Interpolation,0x00447B30,function
+th20::IntPoint::IntPoint(),0x00414030,function
+th20::IntPoint::operator+,0x004F58F0,function

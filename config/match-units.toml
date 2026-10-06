@@ -1555,3 +1555,102 @@ size = 18
 relocations = [
   { offset = 0xC, type = "DIR32", symbol = "?bullet_styles@th20@@3PAUBulletStyle@1@A", target = 0x005C06A8 },
 ]
+
+# REF-030: shared Player/Bomb values; native callers and PE constants independently read.
+
+[units.angle_construct]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::Angle()"]
+symbol = "??0Angle@th20@@QAE@XZ"
+target_address = 0x00447DE0
+size = 24
+relocations = []
+
+[units.angle_construct_float]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::Angle(float)"]
+symbol = "??0Angle@th20@@QAE@M@Z"
+target_address = 0x00429210
+size = 50
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+]
+
+[units.angle_normalize]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::normalize_angle"]
+symbol = "?normalize_angle@th20@@YAMM@Z"
+target_address = 0x00438540
+size = 187
+relocations = [
+  { offset = 0xE, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x1F, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x27, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x58, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x64, type = "DIR32", symbol = "__real@c0490fdb", target = 0x0056E0F8 },
+  { offset = 0x79, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x81, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xAA, type = "DIR32", symbol = "__real@c0490fdb", target = 0x0056E0F8 },
+]
+
+[units.motion_construct]
+source = "src/Motion.cpp"
+object = "build/Motion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Motion::Motion"]
+symbol = "??0Motion@th20@@QAE@XZ"
+target_address = 0x00478530
+size = 142
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x16, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2C, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 0x4D, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 0x63, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 0x79, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.vector_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::VectorInterpolation::Interpolation"]
+symbol = "??0?$Interpolation@UVector3@th20@@@th20@@QAE@XZ"
+target_address = 0x00447B30
+size = 97
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x16, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x21, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2C, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x37, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x42, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+[units.int_point_construct_zero]
+source = "src/Rectangle.cpp"
+object = "build/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntPoint::IntPoint()"]
+symbol = "??0IntPoint@th20@@QAE@XZ"
+target_address = 0x00414030
+size = 33
+relocations = []
+
+[units.int_point_add]
+source = "src/Rectangle.cpp"
+object = "build/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntPoint::operator+"]
+symbol = "??HIntPoint@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x004F58F0
+size = 48
+relocations = [
+  { offset = 0x23, type = "REL32", symbol = "??0IntPoint@th20@@QAE@HH@Z", target = 0x0040DE00 },
+]

@@ -434,7 +434,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413FD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414030,unknown,Rectangle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x00414060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004140C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -890,7 +890,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00429150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004291E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429210,unknown,Angle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x00429250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004292A0,unknown,ClockScalar,review,pending,REF-008; Shared float wrapper; explicit authored versus generic/template origin remains pending
@@ -975,7 +975,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004383A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00438540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00438540,unknown,Angle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x00438600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004388F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1144,7 +1144,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004479E0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x00447A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00447B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00447B30,unknown,Interpolation,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x00447BA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447C10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447C60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1152,7 +1152,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00447D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447DC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00447DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00447DE0,unknown,Angle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x00447E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004488F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004489F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2133,7 +2133,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004783A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00478430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004784E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00478530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00478530,unknown,Motion,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x004785C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004785E0,authored,Timer,authored,high,"REF-015; Original StageClear state thresholds independently call this Timer receiver predicate; custom game Timer member, full signed current comparison and bool/RET4 ABI. Complete46-byte extent ends after RET4; no padding/table/relocations or source shaping."
 0x00478610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4523,7 +4523,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004F5870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5890,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F58C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F58F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F58F0,unknown,Rectangle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x004F5920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5A00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
