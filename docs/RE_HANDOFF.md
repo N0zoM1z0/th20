@@ -1,5 +1,29 @@
 # Current reconstruction handoff
 
+## REF-005 — 2026-10-06 — tools and test review checkpoint
+
+The exhaustive goal remains active. Added 91 individual support reviews: all
+39 tooling definitions, 37 root test bodies and 15 scheduler CPU-oracle bodies.
+Current inventory: 6,707 definitions; 281 terminal decisions; 6,426 pending.
+Of 103 parser-gap files, three are manually reconciled and 100 remain pending.
+
+- Removed one unreviewed phantom scheduler callback body caused by `__cdecl`
+  forward declarations consuming the next class. Narrow parse-view annotation
+  normalization preserves original source bytes, offsets and hashes. All 190
+  earlier review IDs/body hashes remain valid. Synthetic regression passes.
+- Manually reconciled conditional CLI entry declarations and inline x87 test
+  instructions. Reviewed tool rejection policies and CPU-oracle limitations;
+  source tests and normalized state comparisons add no native exact credit.
+- Portable binary-parser CTest passes. No production source/profile/layout/
+  anchor changed: existing 32 units, nine objects, 1,848 full compared bytes;
+  authored exact 25 functions, 1,549 bytes. No redundant cold replay required.
+
+Next: input's 84 definitions, then every remaining implementation and parser
+gap. Native core's indexed production bodies were already reviewed; the older
+REF-004 suggestion of remaining native-core owners was inaccurate. Deferred
+native owner/protocol work is still individually recorded. Private evidence:
+`.analysis/ref005-*`. Earlier checkpoint totals below are historical.
+
 ## REF-004 — 2026-10-06 — archive review checkpoint
 
 The exhaustive goal is still active. All eight archive source/header files and

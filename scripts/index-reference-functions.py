@@ -15,6 +15,10 @@ FIELDS = ["id", "reference_path", "module", "kind", "name", "start_line",
           "end_line", "body_sha256", "file_sha256", "address_hints", "role_hint"]
 SOURCE_SUFFIXES = {".cpp", ".cc", ".cxx", ".hpp", ".h", ".c", ".inl", ".inc"}
 ADDRESS = re.compile(r"(?:0x|FUN_)([0-9a-fA-F]{6,8})\b")
+PARSER_ANNOTATIONS = {
+    "native_recovered/native_exports.cpp": (b"API",),
+    "source_reconstruction/core_scheduler/cpu_compare.cpp": (b"__cdecl",),
+}
 
 
 def digest(data):
@@ -87,9 +91,12 @@ def inventory(reference, paths):
         if path.startswith("analysis/ghidra/") or "combined_pseudocode" in path:
             continue
         data = (reference / path).read_bytes()
-        # API is an export annotation defined in native_exports.cpp. Blanking
-        # this token preserves offsets while allowing ordinary C++ parsing.
-        parse_data = re.sub(rb"\bAPI\b", b"   ", data) if path == "native_recovered/native_exports.cpp" else data
+        # Only manually reconciled annotation sites are normalized. Preserve
+        # every byte offset and hash the original body, never the parse view.
+        # __cdecl otherwise merges a forward declaration with the next class.
+        parse_data = data
+        for token in PARSER_ANNOTATIONS.get(path, ()):
+            parse_data = re.sub(rb"\b" + token + rb"\b", b" " * len(token), parse_data)
         tree = parser.parse(parse_data)
         lines = data.decode("utf-8", errors="replace").splitlines()
         module = path.split("/")[1] if path.startswith("source_reconstruction/") else path.split("/")[0]

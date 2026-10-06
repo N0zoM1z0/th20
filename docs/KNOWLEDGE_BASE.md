@@ -1,5 +1,29 @@
 # Verified facts and open hypotheses
 
+## REF-005 — 2026-10-06
+
+- Individually reviewed: 39 tooling/support, 37 root test and 15 scheduler
+  CPU-oracle definitions. Total terminal decisions: 281; 6,426 bodies pending
+  out of 6,707. Parser gaps: three reconciled files, 100 pending out of 103.
+- Parser-observed: scheduler `__cdecl` forward declarations incorrectly
+  swallowed a following class as an extra callback body. File-specific
+  annotation normalization removes one unreviewed phantom and three gaps,
+  preserving every earlier accepted ID/body hash. Regression checks original
+  source hashing and real callback offsets. Reference bytes are untouched.
+- Manually reconciled: the CLI's conditional entry declarations share one
+  body; root CPU-test x87 instruction gaps lie within indexed functions.
+- Tool contracts: bounded PE/ECL parsing, stricter malformed-data rejection,
+  modeled ECL serialization and source-only indexed extraction are support
+  behavior, not recovered game loader/VM behavior. Binary-parser CTest passes.
+- Oracle limits: mapped target tests bypass normal entry/TLS startup; fixed FP
+  preparation and control-word restoration do not preserve full x87 state.
+  Scheduler normalizes address-like words and manufactures callback state;
+  original allocation, cross-thread locks and renderer lifetime remain untested.
+- Exact state unchanged: 32 units, nine objects, 1,848 complete bytes; 25
+  authored functions, 1,549 bytes. Next production review: input, 84 bodies.
+
+Private evidence: `.analysis/ref005-*`.
+
 ## REF-004 — 2026-10-06
 
 - Individually reviewed: all 64 explicit archive definitions in eight files;

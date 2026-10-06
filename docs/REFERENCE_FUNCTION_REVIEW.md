@@ -16,23 +16,56 @@ excluded from implementation counts. `reference-source-files.csv` includes all
 function bodies. Names, address hints and role hints are discovery metadata;
 they are not accepted mappings or semantic conclusions.
 
-The current parser finds 6,708 definitions: 4,193 reconstruction candidates,
-2,441 test/oracle bodies, 39 tooling/support bodies and 35 historical bridge
-bodies. These role hints need review. The parser reports gaps in 104 files;
+The current parser finds 6,707 definitions: 4,193 reconstruction candidates,
+2,440 test/oracle bodies, 39 tooling/support bodies and 35 historical bridge
+bodies. These role hints need review. The parser reports gaps in 103 files;
 manual reconciliation remains required, and this inventory is not asserted
 to be a complete compiler AST. Private gap ranges are recorded rather than
 silently omitted. Tree-sitter 0.25.2 and its C++ grammar 0.23.4 are pinned in
-the analysis environment. Export annotation `API` is blanked for parsing only;
-reference source bytes are never edited.
+the analysis environment. Export annotation `API` and scheduler CPU-oracle
+`__cdecl` annotations are blanked only in their individually reconciled files.
+Offsets and hashes use the original bytes; reference source is never edited.
 
 `reference-function-reviews.csv` binds every decision to its exact body hash.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 190 native-core/export/scheduler/runtime/archive bodies have explicit decisions.
-The remaining 6,518 indexed bodies are pending. The separate
+The first 281 native-core/export/scheduler/runtime/archive/tool/test bodies have
+explicit decisions. The remaining 6,426 indexed bodies are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: one of 104 files is reconciled, leaving 103 pending.
+and parser-gap count: three of 103 files are reconciled, leaving 100 pending.
+
+## REF-005: tools and root/scheduler tests reviewed
+
+All 39 tooling/support definitions, 37 root test definitions and 15 scheduler
+CPU-oracle definitions now have individual support-reviewed decisions. These
+91 reviews cover binary/PE/ECL readers, serialization and reporting, CLI output
+guards, indexed asset extraction, synthetic parser fixtures, target mapping,
+floating-point preparation and scheduler state normalization. They grant no
+native exact credit. Native core's indexed production bodies were already
+reviewed; the next coherent production family is input, with 84 definitions.
+
+The scheduler oracle's forward declarations were incorrectly parsed as one
+extra `shutdown_callback` body swallowing the following `World` class. Narrow
+annotation normalization removes that unreviewed phantom and its three parser
+errors; all 190 prior review IDs and original body hashes remain unchanged.
+A synthetic regression checks real definitions, preserved offsets and original
+hashes. Two further gaps are manually reconciled: CLI Windows/POSIX conditional
+entry declarations share one body; root CPU-test inline x87 instructions are
+inside already indexed functions. Neither omits another implementation.
+
+The portable binary-parser CTest passes, including 928 ECL bit mutations, but
+its stricter error policies are tool contracts. CPU tests map the original
+without ordinary entry/TLS startup and prepare a fixed FP environment; x87
+control-word restoration does not restore the full floating-point stack/status.
+Scheduler tests manufacture nodes and callbacks, disable source dispatch locking
+and normalize address-like state words. Owned-node allocation is source-only.
+These tests do not establish native allocation, renderer shutdown, cross-thread
+locking, exception unwinding or complete raw-byte equivalence.
+
+Production source, profiles and relocation anchors are unchanged. The existing
+32 complete exact units remain the last cold replay checkpoint; no new exact
+claim is added by this review batch. Private evidence: `.analysis/ref005-*`.
 
 ## Native core: accepted components
 
@@ -313,7 +346,7 @@ receipt, all source fingerprints and included headers; stale entries and failed
 compilations are retried rather than being accepted by source hash alone. The standalone verifier needs its
 declared CMake definitions; that build issue carries no algorithm conclusion.
 
-Next: continue native core/string/container/file-owner families and every
+Next: review input's 84 definitions and every
 remaining implementation. Deferred scheduler/runtime/archive owner/ABI recovery
 is recorded separately.
 Continue through every indexed implementation; investigate and record hard
