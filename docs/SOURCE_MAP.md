@@ -3,7 +3,7 @@
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
-| Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Seventeen complete exact functions; nine added construction/wrapper origins pending; integer += remains nonexact |
+| Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Eighteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | enable 0x0041CCC0; disable 0x0041CA30 | Two exact flag assignments; tracked locking and original global lifetime pending |
@@ -35,8 +35,15 @@ float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
 `config/match-units.toml` owns twenty-five objects and one canonical profile per source.
-Ninety-five units cover complete COFF function contributions. Library units and units
+Ninety-six units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-023 batches Options and Key Config and adds the complete 46-byte Timer
+signed greater-than member at 0x00461070. Independent callers establish its
+current-field read and thiscall bool/RET4 ABI on the existing sixteen-byte value.
+Origin and original spelling remain pending. Options/Key/Cursor/Graphics/Sound
+lifetimes and native helper partitions remain open; none is represented by a
+padded facade to promote a state setter or callback.
 
 REF-022 reviews all text-renderer implementations together. TextLine recovers the
 actual 320-byte queue value, including a typed Vector3 and two separately stored

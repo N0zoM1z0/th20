@@ -1091,3 +1091,14 @@ symbol = "??XVector3@th20@@QAEAAU01@M@Z"
 target_address = 0x00429690
 size = 77
 relocations = []
+
+# REF-023: Options and Key Config call this complete Timer member.
+[units.timer_greater_than]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::greater_than"]
+symbol = "?greater_than@Timer@th20@@QBE_NH@Z"
+target_address = 0x00461070
+size = 46
+relocations = []

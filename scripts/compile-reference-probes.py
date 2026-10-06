@@ -57,7 +57,9 @@ def main():
                                 "source_reconstruction/ending_scene/",
                                 "source_reconstruction/trophy_system/",
                                 "source_reconstruction/screen_effect/",
-                                "source_reconstruction/text_renderer/")):
+                                "source_reconstruction/text_renderer/",
+                                "source_reconstruction/options_system/",
+                                "source_reconstruction/key_config/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -71,11 +73,14 @@ def main():
             # trophy_system links the same public sprite/ECL dependencies.
             # screen_effect inherits these paths through sprite/runtime/gameplay.
             # text_renderer declares binary paths and links sprite/runtime.
+            # options/key menus declare these paths and inherit sprite/ECL.
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
-        if relative.startswith("source_reconstruction/text_renderer/"):
-            # Preserve the text module's explicit CMake floating-point option.
+        if relative.startswith(("source_reconstruction/text_renderer/",
+                                "source_reconstruction/options_system/",
+                                "source_reconstruction/key_config/")):
+            # Preserve these modules' explicit CMake floating-point option.
             profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative == "source_reconstruction/archive/verify.cpp":
             # These string macros are declared by archive/CMakeLists.txt;

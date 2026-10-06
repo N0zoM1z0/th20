@@ -1,5 +1,43 @@
 # Current reconstruction handoff
 
+## REF-023 — 2026-10-07 — Options and Key Config batch checkpoint
+
+Exhaustive goal remains active. User requests related batches; all109 Options/Key
+entries now have individual hash-bound decisions:28 nonexact/81 support.
+Total1,330 terminal/5,614 pending of6,944; gap files23 reconciled/90 pending.
+Both full drivers, owner headers, seven production TUs, shared menu draw fixture
+and report writer read. Two Options cdecl parser gaps manually reconciled.
+
+- New exact Timer greater_than461070/46 on existing16-byte owner. Cold96/96,
+  25 objects/6,180 bytes; source96/pending-origin35/library4. Authored57/4,074
+  unchanged; original spelling and origin pending. Signed-edge tests extended.
+- All7 unchanged reference TUs compiled serially with declared strict-FP recipe;
+  23 complete COFF diagnostics differ. No prefix or table-truncated acceptance.
+  Native large switch tables/allocator/member partitions remain open.
+- Eight Ghidra gaps/nine JMPs decoded independently:4E042E/4E0433/4E0497,
+  4E10B3,4C5893,4C758F/4C76A4,4C6647,4C7CE3. Database/target unchanged.
+- OptionA4/Key114 base/Cursor/Timers/Vector3/vptr/diagnostics/EH/storage observed.
+  Key ctor clears96bindingbytes with32-byte strides, copies16bytesperrecord.
+  Cursor owns real vector16/two deque20 records; proxy/map/allocator lifetime
+  remains open. No fake owner added to accept callbacks or state setters.
+- Independent307strings/17floats/9pointertables/allowed72 exact data observations.
+  Native volume signedbyte/music-based attenuation; source boundary differs.
+  Original save return/path/CRT/errorargument differs; no disk acceptance.
+- Historical Options393216/Key229376/sharedDraw18432,all0failure;13/12/25 current
+  hashes. Crucial limitation: record_menu_evidence.py attaches current hashes
+  after CPU execution without binary binding/re-execution. Script not run.
+  Full transitive/build inputs absent. No new native CPU oracle compiled/run.
+- Rawowners onlyCursorconstructed,Keyslot0/historypreallocated,drawcachedJobs;
+  sideeffects recorded. Both native Key page draws returnint1 versus sourcevoid;
+  fixtures discard native page results. Draw18432 already included inText57113.
+  No full startup/lifetime/player2/heapgrowth/error/device/audio/file/GPU/game proof.
+
+Next related batch: pause_system + stone_menu, including Cursor/history protocol,
+then every remaining5,614 implementation and90 gap files. Never mark the goal
+complete with pending entries. `.analysis/ref023-record.py` already executed;
+do not rerun it. Shared source/profile frozen before96-unit cold replay. Earlier
+counts below are historical. Keep MSVC and Ghidra operations serial.
+
 ## REF-022 — 2026-10-07 — Text renderer batch checkpoint
 
 Exhaustive goal active. User requests faster related batches; each indexed body

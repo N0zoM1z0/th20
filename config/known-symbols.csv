@@ -95,3 +95,4 @@ address,name,module,confidence,evidence
 0x0040DE30,th20::IntRectangle::IntRectangle,Rectangle,high,REF-022
 0x00416CF0,th20::set_next_text_outline_scale,TextOutline,high,REF-022
 0x00429690,th20::Vector3::operator*=,Vector3,high,REF-022
+0x00461070,th20::Timer::greater_than,Timer,high,REF-023

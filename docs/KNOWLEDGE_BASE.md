@@ -1,5 +1,34 @@
 # Verified facts and open hypotheses
 
+## REF-023 — 2026-10-07
+
+- All109 Options/Key implementations individually reviewed:28 nonexact and81
+  support. Coverage1,330 terminal/5,614 pending; gap files23 reconciled/90 pending.
+- Native Timer signed greater-than461070 reads current+4 on actual16-byte owner;
+  complete46-byte thiscall bool/RET4 is canonical exact. Cold96/96 units,25 objects,
+  6,180 bytes; authored57/4,074 unchanged, source96/pending-origin35/library4.
+- Seven unchanged strict-FP TUs compile;23 complete COFF diagnostics reject
+  differing contributions. Eight Ghidra gaps contain nine JMPs decoded from
+  independent locked PE bytes. Large native switch-table extents remain open.
+- Actual OptionA4/Key114 contain TaskInf/Cursor/Timers/Vector3, real diagnostics,
+  vptr/EH/global construction and reverse resource destruction. Key bindings
+  occupy three32-byte records but initial copy helpers copy16 bytes each.
+  Cursor vector/deque proxy/map/allocator identities remain open; no facade.
+- Both Key page draw routines returnint1; source helpers returnvoid and historical
+  fixture discards native results. Volume uses signed bytes and music-based
+  effect attenuation. Original configuration-save error diagnostic omits%s
+  argument while reference repairs it; original return/CRT/path partition differs.
+- Independently verified307 strings/17 floats/9 pointer tables/72 allowed-key
+  bytes, including all256 key names/12 XInput names and duplicate key226.
+- Retained CPU Options393216/0,Key229376/0,sharedDraw18432/0;13/12/25 source hashes
+  current. Report writer attaches current hashes after execution without binary
+  binding or re-execution. Current hashes cannot establish historical build
+  identity. No new native CPU run; draw counts overlap Text57113, never added twice.
+- Raw owners only Cursor-constructed; Keyselected_slot0/historypreallocated;
+  draw uses cachedJobs. Startup/allocationgrowth/player2/invalidindices/realdevice,
+  file/audio/EH/GDI/GPU/wholegame behavior unaccepted. Specific ledger reasons
+  retained; continue pause_system plus stone_menu with actual Cursor lifetime.
+
 ## REF-022 — 2026-10-07
 
 - Text renderer's129 implementations individually reviewed; three absorbed,

@@ -94,3 +94,4 @@ th20::IntPoint::IntPoint,0x0040DE00,function
 th20::IntRectangle::IntRectangle,0x0040DE30,function
 th20::set_next_text_outline_scale,0x00416CF0,function
 th20::Vector3::operator*=,0x00429690,function
+th20::Timer::greater_than,0x00461070,function

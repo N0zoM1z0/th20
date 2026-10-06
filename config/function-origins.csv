@@ -1707,7 +1707,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00460F30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00460F60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00461000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00461070,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00461070,unknown,Timer,review,pending,"REF-023: complete46-byte signed current>value predicate on existing actual16-byte Timer, thiscall bool/AL withRET4. Independent Options4DFE00 and Key4C5790/4C7160/4C6230 consumers use age and decrement thresholds; complete assembly reads current+4 only and preserves receiver. Natural shared semantic body, no relocations or owner facade. Original method spelling and authored/compiler/shared provenance remain pending; no authored credit. Cold canonical replay and public signed-edge checks pass."
 0x004610A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004610D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00461140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

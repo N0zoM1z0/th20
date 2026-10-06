@@ -40,11 +40,101 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 1,221 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/tool/test entries have explicit decisions. The
-remaining 5,723 indexed entries are pending. The separate
+The first 1,330 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/tool/test entries have explicit decisions. The
+remaining 5,614 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: twenty-two of 113 files are reconciled, leaving 91 pending.
+and parser-gap count: twenty-three of 113 files are reconciled, leaving 90 pending.
+
+## REF-023: Options and Key Config batch
+
+All 109 indexed implementations were read and individually recorded: 57 Options
+and 52 Key Config entries, with 28 nonexact and 81 support decisions. This covers
+all seven production TUs, both owner/environment headers, both complete CPU
+drivers, the shared draw include and the report-writing module. Two parser gaps
+at Options driver lines 24/26 are the cdecl annotations on the pointer-returning
+fade and key-factory hooks; both definitions are indexed and reviewed. Coverage
+is 1,330 terminal / 5,614 pending, with 23 gap files reconciled / 90 pending.
+
+The shared Timer signed `>` predicate at 0x00461070 is naturally recovered on
+the existing actual sixteen-byte owner. Independent Options and Key Config
+consumers use it for ages and positive countdowns. The complete 46-byte member
+reads current at +4, preserves storage and returns bool with thiscall/RET4.
+No relocation is required. Its name and authored/compiler/shared origin remain
+pending. Cold replay passes 96/96 units across 25 objects, totaling 6,180 bytes;
+source mappings are 96, pending-origin units 35 and library units four. Authored
+credit remains 57 functions / 4,074 bytes. Public signed-edge tests also exercise
+the new predicate through the shared production body.
+
+All seven unchanged reference production TUs compile with their declared strict
+floating-point option and transitive scheduler/ECL/native/binary include paths.
+All 23 corresponding complete COFF diagnostics reject differing contributions.
+Native instruction spans of the larger switch-bearing methods remain provisional
+until tables/padding are recovered; no shortened comparison is accepted. Eight
+Ghidra gaps contain nine original JMP instructions, independently decoded from
+the locked PE: Options update 4E042E/4E0433/4E0497, Options factory 4E10B3,
+Key draw dispatcher 4C5893, device update 4C758F/4C76A4, binding update 4C6647,
+and Key factory 4C7CE3. The native database and executable are unchanged.
+
+Options A4 and Key Config 114 contain the actual TaskInf base, Cursor at14,
+typed Timers/Vector3, explicit scalar initialization, original diagnostics,
+vptrs, globals and reverse destruction. Key has three 32-byte binding records;
+its native constructor clears all 96 bytes, while its initial binding-copy
+helpers copy only eight int16 values per record. Cursor owns a sixteen-byte
+vector and two twenty-byte deque records with real proxy/map/block lifetime.
+Those container/allocator identities remain open. A raw padded owner is not
+introduced to accept small state setters or callbacks. Reference aggregate
+initialization, injected environments, free functions, direct field access and
+merged allocator/creator paths differ from original member/EH partitions.
+Both native Key page drawers return int1; the reference page helpers return void.
+
+The native volume member saves ECX but reads fixed configuration/sound globals.
+It interprets both volume bytes as signed, requests command8/0/SetVol, and uses
+the **music** level to compute effect attenuation. For nonzero effect volume,
+the formula is truncated `5000 * (1 - (1 - music/100)^4) - 5000`; zero effect
+volume yields -10000. The source free Configuration/SoundInf helper differs in
+ABI and emission. Original SoundInf storage, queue and thread lifetime remain
+open. Configuration save also changes path/library/return partitions and
+intentionally adds the missing diagnostic `%s` argument; file/error behavior
+is not accepted from update traces.
+
+All 307 declared strings, 17 floating constants, nine pointer tables and the
+72 allowed-key bytes were checked independently against the locked PE. This
+includes the complete 256-key/12-XInput tables and duplicate allowed code226.
+These observations establish data leads, not original storage definitions.
+
+Retained reports record Options393216/0, Key229376/0 and shared draw18432/0.
+Their target SHA matches, and all 13/12/25 listed source hashes match current
+files. However, `record_menu_evidence.py` rewrites reports to attach current
+hashes after the CPU run without rerunning it or binding compiled binaries.
+Hash equality therefore does not prove a matching historical build. The script
+omits many transitive dependencies and toolchain/execution inputs; it was read
+in full and not executed. No reference native CPU oracle was compiled or run.
+
+- Options: 32,768 randomized state cases compare complete A4 storage, B0
+  configuration, display mode, full int return and trace length/content. Only
+  Cursor is placement-constructed. States0..6, age-4..81, countdowns, display-1..10,
+  scale0..6, masks and quarter clocks are controlled. Screen/audio/reset/key
+  creation/save/retire are recording boundaries. The original volume body is
+  then restored for all 65,536 signed-byte pairs, comparing twelve sound-global
+  bytes and enqueue trace; original queue execution remains intercepted.
+- Key: 32,768 state/phase cases compare complete114 storage, enlarged source
+  Input, B0 configuration, two32-byte history snapshots, int return and trace.
+  Three valid devices, raw keys and clocks are controlled; selected_slot is
+  always zero. Cursor history uses preallocated eight-block maps; growth,
+  original CRT defaults initialization, player2 and actual polling are excluded.
+- Draw: 4,096 style cases provide three checks each; 3,072 cases across Options
+  and both Key pages provide two checks each, totaling18,432. They compare
+  Renderer/two pre-existing cached Jobs with valid indices and slot0. Native
+  int returns from Key pages are discarded by the fixture. No glyph upload,
+  whole owner lifetime, GDI/D3D failures or real game rendering is validated.
+  These checks are already included in Text renderer57113 and never added twice.
+
+Constructor/destructor/factory startup, allocations, invalid indices, file and
+device failures, audio threads, exception cleanup and complete playable linkage
+remain unaccepted. Each difficult implementation retains its specific remaining
+work. Next related batch: pause_system and stone_menu, including Cursor/history.
+Private evidence is under `.analysis/ref023-*`; canonical receipts are in build/.
 
 ## REF-022: complete text renderer, bitmap and deferred raster batch
 
