@@ -1,5 +1,36 @@
 # Current reconstruction handoff
 
+## REF-012 — 2026-10-06 — startup-scene review checkpoint
+
+The exhaustive goal remains active. All 49 startup_scene implementation entries
+are individually reviewed: 45 C++ and four Python entries. Decisions: two exact,
+eleven deferred, 36 support. Inventory6,944; terminal714/pending6,230. No family
+parser gap; global gaps13 reconciled/100 pending out of113.
+
+- Shared-resource init/release134/62 bytes add196 authored bytes. Preserve eight
+  ordered calls each, original zero-helper calls, immediate -1 exits without
+  rollback, stone release's observed zero argument and full int HUD/trophy ABI.
+  All16 REL32 anchors derive from independently queried original dependencies.
+- Full cold62/62 across16 objects,4,381 full bytes. Authored48/3,646;
+  source-present62. Source owner SceneResources has declarations only for
+  dependencies; no whole resource owner, linkage or native loading runtime claim.
+- Pure portable tests cover three null-factory paths, trophy failure, early
+  stopping and full teardown order. Original resource/API code not executed.
+- Full source/headers/scripts/fixtures/CMake/reports read;37 native functions
+  independently queried,32 decompiled. Both production TUs freshly compile.
+- LoadingInf animation/base/Worker/diagnostic allocator lifetime remains open.
+  Source changes typed handle/member partition, thread callable argument,
+  readiness atomics, chrono slot method and original shutdown's thiscall ABI.
+  Four startup DATA declarations independently compare against locked target.
+- Retained startup report4/6 hashes current2stale; named-spawn4/4 current.
+  Evidence script refreshes hashes without CPU execution. Retained4096/24576
+  checks attest selected fixture scope only; actual named_spawn implementation
+  still awaits sprite_renderer review. No reference checkout mutation/tool run.
+
+Next coherent family: audio_runtime122 indexed C++ entries, then all remaining
+native/script bodies and100 manual gap files. Continue individual decisions and
+absorb easy exact work. Private `.analysis/ref012-*`; earlier totals historical.
+
 ## REF-011 — 2026-10-06 — platform/window review checkpoint
 
 The exhaustive goal remains active. All 189 platform_window entries are

@@ -60,3 +60,5 @@ address,name,module,confidence,evidence
 0x0041CC90,th20::WindowState::RepeatCounter::reset,WindowState,high,REF-011
 0x0041D0C0,th20::is_japanese_user_locale,WindowApi,high,REF-011
 0x00414820,th20::mark_font_available,FontDetection,high,REF-011
+0x004D82C0,th20::initialize_shared_scene_resources,SceneResources,high,REF-012
+0x004D8560,th20::release_shared_scene_resources,SceneResources,high,REF-012

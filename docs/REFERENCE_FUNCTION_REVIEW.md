@@ -37,11 +37,75 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 665 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/tool/test entries have explicit decisions. The
-remaining 6,279 indexed entries are pending. The separate
+The first 714 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/tool/test entries have explicit decisions. The
+remaining 6,230 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: thirteen of 113 files are reconciled, leaving 100 pending.
+
+## REF-012: all 49 startup-scene implementation entries reviewed
+
+All 45 C++ definitions and four Python function/module entries have individual
+decisions: two absorbed exact, eleven deferred and 36 support. The nineteen
+production definitions include newly introduced namespace bridges; the other
+26 C++ bodies are the named-spawn fixture. Both production TUs, the owner/data
+headers, scripts, CMake recipes and retained reports were read in full. No parser
+gap occurs in this family. Both unmodified TUs compile serially; no link or
+original loading-worker execution is claimed.
+
+Independent attested queries cover 37 native functions, including every
+dependency of the shared-resource routines; 32 are also decompiled. Natural
+maintained orchestration restores the omitted calls and observed ABI:
+
+| Target | Complete bytes | Maintained contribution |
+| --- | ---: | --- |
+| 0x004D82C0 | 134 | initialize_shared_scene_resources |
+| 0x004D8560 | 62 | release_shared_scene_resources |
+
+Both functions retain eight calls, including three calls to the observed
+zero-return helper 0x4A7700. Initialization preserves each early -1 return and
+does not unwind previous resource acquisitions. Release passes zero to stone
+cleanup 0x51B6D0; the callee currently ignores that stack argument. Independently
+observed HUD/trophy release entries return full int0, unlike the reference void
+interfaces. Original caller/callee evidence precedes compiler probes; all sixteen
+REL32 fields have independently established canonical anchors. Resource types
+are forward declarations and their dependency implementations remain undefined.
+These component comparisons do not establish complete resource ownership/linkage.
+
+Cold replay passes 62/62 complete units across sixteen objects, 4,381 bytes.
+Authored exact: 48 functions, 3,646 bytes; source-present: 62. Pure fixture tests
+cover successful order, all three factory-null paths, trophy failure, immediate
+stopping without rollback and the complete teardown order. They use pointer
+tokens that are never dereferenced; no original resource/API is executed.
+
+LoadingInf's observed 0x61C layout is corroborated, but its complete typed
+Animation/base/Worker owner remains open. Native constructor/destructor invoke
+separate handle/member/no-op calls; the reference changes that partition and
+allocator/EH protocol. The factory replaces a diagnostic allocator receiver
+with nothrow new, zeroing, placement construction and catch cleanup. Registration
+replaces the real Worker function/captured-argument protocol with nested mutexes
+and a new jthread closure. The draw routine changes plain readiness loads/stores
+to atomic_ref operations. The worker's native argument storage is overwritten
+from the global after Sleep; the source drops the argument and uses direct
+chrono tick assignment instead of the original slot-indexed timepoint method.
+Scene shutdown is a native thiscall function although it uses fixed globals;
+the source free bridge and combined flag helper change its ABI/partition.
+Each of these bodies has a specific pending-owner or behavior record.
+
+Two strings and two floats independently match the locked PE. The startup
+module report has four of six current input hashes; startup.cpp and CMake are
+stale. Named-spawn's four input hashes are current, but record_evidence rewrites
+hashes and module reports without rerunning its CPU tests. Retained 4,096 cases
+and 24,576 checks cover selected groups, flags, stems, placement and layers;
+they do not attest the full loading scene, ordinary startup, threading or gameplay.
+The fixture snapshots only selected lists, sixteen pool entries, generation and
+free-list fields, and throws for unexercised RNG/geometry/effect dependencies.
+Actual named_spawn production bodies await the sprite_renderer family review.
+No reference evidence tool was run or checkout file changed.
+
+Coverage: 714 terminal and 6,230 pending; gaps remain thirteen reconciled and
+100 pending. Private evidence: `.analysis/ref012-*`. Next: audio_runtime's
+122 indexed C++ entries, then all remaining bodies and manual parser gaps.
 
 ## REF-011: all 189 platform-window implementation entries reviewed
 

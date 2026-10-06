@@ -48,9 +48,11 @@ def main():
             raise ValueError(f"reference source inventory is stale: {relative}")
         profile = list(include_profile)
         if relative.startswith(("source_reconstruction/runtime_state/",
-                                "source_reconstruction/platform_window/")):
+                                "source_reconstruction/platform_window/",
+                                "source_reconstruction/startup_scene/")):
             # runtime_state exports ecl_vm's includes. platform_window links
-            # runtime_state and also declares native/binary includes itself.
+            # runtime_state and also declares native/binary includes itself;
+            # startup_scene inherits platform_window and declares those paths.
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))

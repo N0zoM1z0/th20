@@ -1,5 +1,42 @@
 # Verified facts and open hypotheses
 
+## REF-012 — 2026-10-06
+
+- Individually reviewed:49 startup_scene entries,45 C++ and4 Python. Two
+  absorbed,11 deferred,36 support. Terminal714/pending6230; gaps13/100 unchanged.
+- Independent resource init4D82C0,134bytes: eight calls, including three int0
+  helper4A7700 calls, with each failure returning-1 immediately and no rollback.
+  Release4D8560,62bytes: effects/weapon/stone/HUD/helper/helper/trophy/helper,
+  returns int0. Stone release's sole observed caller passes0; native51B6D0
+  ignores it. HUD4B6560 and trophy52E730 return full int0, not reference void.
+- Independent dependencies queried before probes:4B5900/49E0C0/534DD0/51CC20/
+  52E210/49DEB0/534110/51B6D0/4B6560/52E730, plus actual7-byte zero helper.
+  Sixteen canonical REL32 fields use those independent anchors. Maintained
+  dependency declarations remain undefined; forward pointer types imply no layout.
+- Compiler/canonical: two natural complete authored units196bytes; full cold
+  62/62,16objects,4381bytes. Authored48/3646, source-present62. Pure tests cover
+  all three factory-null paths, trophy failure, order/no rollback and teardown.
+  Fixtures do not execute original resource/API code or dereference pointer tokens.
+- Independent native LoadingInf constructor4D7EF0 calls TaskInf/Worker/Animation/
+  handle425CC0 before global5C4D2C; source direct field/free helpers differ.
+  Factory4D85C0 uses diagnostic allocator4D7EA0 and41F7C0 failure retirement,
+  not combined source nothrow/placement/catch ownership. Complete0x61C owner open.
+- Native draw4D8160 uses plain readiness words and actual named-handle sret;
+  source atomic_ref changes emission. Worker4D8350 overwrites its passed argument
+  from global after Sleep2000; source no-argument body/new closure differ.
+  Native timer4515E0 uses actual timepoint storage/helper and indexed slot;
+  source raw tick assignment drops it. Shutdown4DD730 saves thiscall ECX and
+  invokes separate mode flag setters, while source uses free combined helper.
+- Fresh serial compile: both unmodified production TUs. Full source/support
+  review and37 attested native functions,32 decompiled. No loading runtime/link.
+- DATA: two CP932 strings and two binary32 constants independently match.
+  Startup report4/6 hashes current, startup.cpp/CMake stale. Named report4/4
+  current; evidence recorder refreshes hashes in old reports without CPU rerun.
+  Historical4096 cases/24576 checks cover selected sixteen-item pool fixture,
+  not complete loading/thread/game state. Actual named_spawn family still pending.
+
+Private evidence: `.analysis/ref012-*`.
+
 ## REF-011 — 2026-10-06
 
 - Individually reviewed: all 189 platform_window entries, 170 C++ and 19 Python

@@ -59,3 +59,5 @@ th20::InputButtonState::repeated_or_pressed,0x0041A280,function
 th20::WindowState::RepeatCounter::reset,0x0041CC90,function
 th20::is_japanese_user_locale,0x0041D0C0,function
 th20::mark_font_available,0x00414820,function
+th20::initialize_shared_scene_resources,0x004D82C0,function
+th20::release_shared_scene_resources,0x004D8560,function

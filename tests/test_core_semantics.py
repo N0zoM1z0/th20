@@ -24,6 +24,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/Configuration.cpp",
                             "src/GameRandom.cpp",
                             "src/WindowState.cpp",
+                            "src/SceneResources.cpp", "tests/scene_resource_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

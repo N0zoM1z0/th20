@@ -18,6 +18,8 @@
 #include <limits>
 #include <new>
 
+void check_scene_resource_protocol();
+
 namespace {
 unsigned callback_calls;
 std::uint32_t random_sample;
@@ -35,6 +37,7 @@ std::uint32_t th20::GameRandom::next() {
 }
 
 int main() {
+    check_scene_resource_protocol();
     th20::WindowState window{}; // Explicit fixture, not native startup.
     window.current_time = 123.5;
     window.user_data_directory[200] = 'x';

@@ -45,3 +45,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0041CC90,th20::WindowState::RepeatCounter::reset,40,matching,100.00,window_repeat_reset,REF-011; pinned MSVC cold build and complete canonical relocation replay
 0x0041D0C0,th20::is_japanese_user_locale,47,matching,100.00,window_japanese_locale,REF-011; pinned MSVC cold build and complete canonical relocation replay
 0x00414820,th20::mark_font_available,20,matching,100.00,font_mark_available,REF-011; pinned MSVC cold build and complete canonical relocation replay
+0x004D82C0,th20::initialize_shared_scene_resources,134,matching,100.00,scene_resources_initialize,REF-012; docs/REFERENCE_FUNCTION_REVIEW.md
+0x004D8560,th20::release_shared_scene_resources,62,matching,100.00,scene_resources_release,REF-012; docs/REFERENCE_FUNCTION_REVIEW.md
