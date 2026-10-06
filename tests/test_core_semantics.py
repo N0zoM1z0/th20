@@ -20,6 +20,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/Random.cpp", "src/Timer.cpp", "src/ClockScalar.cpp",
                             "src/FunctionChain.cpp", "src/LockRegistry.cpp", "src/TaskInfo.cpp",
                             "src/ArchiveCrypt.cpp",
+                            "src/InputState.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

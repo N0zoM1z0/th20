@@ -1,0 +1,53 @@
+#include "InputState.hpp"
+namespace th20 {
+void InputDevice::reset_header() {
+    kind = 0;
+    logical_index = 0;
+    direct_input = nullptr;
+    xinput_index = 0;
+}
+void InputDevice::initialize_keyboard(std::int32_t index) {
+    kind = 0;
+    logical_index = index;
+}
+void InputDevice::initialize_xinput(std::int32_t physical, std::int32_t logical) {
+    kind = 2;
+    xinput_index = physical;
+    logical_index = logical;
+}
+std::uint32_t map_input_byte(std::uint32_t* output, std::int16_t index,
+                           std::uint32_t bit, const std::uint8_t* raw) {
+    if (index < 0) return 0;
+    *output |= (raw[index] & 0x80) ? bit : 0;
+    return (raw[index] & 0x80) ? bit : 0;
+}
+void InputButtonState::update() {
+    std::uint32_t bit = 1;
+    std::uint32_t remaining = current;
+    repeat8 = 0;
+    repeat12 = 0;
+    held8 = 0;
+    for (unsigned i = 0; i < 32; ++i, remaining >>= 1, bit <<= 1) {
+        if (remaining & 1) {
+            ++repeat8_count[i];
+            ++repeat12_count[i];
+            ++held_frames[i];
+            if (repeat8_count[i] >= 8) held8 |= bit;
+            if (repeat8_count[i] >= 26) {
+                repeat8 |= bit;
+                repeat8_count[i] -= 8;
+            }
+            if (repeat12_count[i] >= 26) {
+                repeat12 |= bit;
+                repeat12_count[i] -= 12;
+            }
+        } else {
+            repeat8_count[i] = 0;
+            repeat12_count[i] = 0;
+            held_frames[i] = 0;
+        }
+    }
+    pressed = (current ^ previous) & current;
+    released = (current ^ previous) & ~current;
+}
+} // namespace th20

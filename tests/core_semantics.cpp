@@ -5,6 +5,7 @@
 #include "LockRegistry.hpp"
 #include "TaskInfo.hpp"
 #include "ArchiveCrypt.hpp"
+#include "InputState.hpp"
 
 #include <array>
 #include <bit>
@@ -21,6 +22,62 @@ std::int32_t callback_c(void*) { ++callback_calls; return 3; }
 }
 
 int main() {
+    th20::InputButtonState buttons{};
+    buttons.retained_118.fill(0x12345678);
+    buttons.retained_218.fill(0x87654321);
+    buttons.retained_298.fill(0xaabbccdd);
+    buttons.retained_2b4 = 7;
+    buttons.last_input_kind = 2;
+    buttons.suppress_previous = 1;
+    for (unsigned frame = 1; frame <= 60; ++frame) {
+        buttons.previous = buttons.current;
+        buttons.current = 0x80000001;
+        buttons.update();
+        assert(buttons.pressed == (frame == 1 ? 0x80000001u : 0));
+        assert(buttons.released == 0);
+        assert(buttons.repeat8 == (frame >= 26 && (frame - 26) % 8 == 0 ? 0x80000001u : 0));
+        assert(buttons.repeat12 == (frame >= 26 && (frame - 26) % 12 == 0 ? 0x80000001u : 0));
+        assert(buttons.held8 == (frame >= 8 ? 0x80000001u : 0));
+        assert(buttons.held_frames[0] == frame && buttons.held_frames[31] == frame);
+        assert(buttons.held_frames[15] == 0);
+    }
+    buttons.previous = buttons.current;
+    buttons.current = 0;
+    buttons.update();
+    assert(buttons.released == 0x80000001 && buttons.pressed == 0);
+    assert(buttons.repeat8_count[31] == 0 && buttons.repeat12_count[0] == 0);
+    assert(buttons.held_frames[31] == 0 && buttons.held8 == 0);
+    assert(buttons.retained_118[17] == 0x12345678 && buttons.retained_218[31] == 0x87654321);
+    assert(buttons.retained_298[5] == 0xaabbccdd && buttons.retained_2b4 == 7);
+    assert(buttons.last_input_kind == 2 && buttons.suppress_previous == 1);
+    buttons.current = 1;
+    buttons.repeat8_count[0] = buttons.repeat12_count[0] = buttons.held_frames[0] = 0xffffffff;
+    buttons.update();
+    assert(buttons.repeat8_count[0] == 0 && buttons.repeat12_count[0] == 0);
+    assert(buttons.held_frames[0] == 0 && buttons.held8 == 0);
+
+    th20::InputDevice device{};
+    device.buttons = buttons;
+    device.raw.fill(0x85);
+    device.retained_3d0 = 0xabcdef01;
+    device.initialize_xinput(3, 7);
+    assert(device.kind == 2 && device.xinput_index == 3 && device.logical_index == 7);
+    device.initialize_keyboard(-1);
+    assert(device.kind == 0 && device.logical_index == -1 && device.xinput_index == 3);
+    device.reset_header();
+    assert(device.kind == 0 && device.logical_index == 0);
+    assert(device.direct_input == nullptr && device.xinput_index == 0);
+    assert(std::memcmp(&device.buttons, &buttons, sizeof(buttons)) == 0);
+    assert(device.raw[0] == 0x85 && device.raw[255] == 0x85);
+    assert(device.retained_3d0 == 0xabcdef01);
+
+    std::uint32_t mapped = 0x400;
+    const std::uint8_t raw_buttons[]{0x7f, 0x80, 0xff};
+    assert(th20::map_input_byte(&mapped, -1, 2, nullptr) == 0 && mapped == 0x400);
+    assert(th20::map_input_byte(&mapped, 0, 2, raw_buttons) == 0 && mapped == 0x400);
+    assert(th20::map_input_byte(&mapped, 1, 2, raw_buttons) == 2 && mapped == 0x402);
+    assert(th20::map_input_byte(&mapped, 2, 8, raw_buttons) == 8 && mapped == 0x40a);
+
     assert(th20::archive_name_sum(nullptr, 0) == 0);
     const char name_bytes[]{'A', '\0', 'B', static_cast<char>(0x81), static_cast<char>(0xff)};
     assert(th20::archive_name_sum(name_bytes, 1) == 65);

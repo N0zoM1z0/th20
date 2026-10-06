@@ -11,6 +11,7 @@
 | TaskInfo | src/TaskInfo.hpp, src/TaskInfo.cpp | TaskInf destructor and separate virtual/helper enable/disable entries | Five complete exact functions; native constructor and allocator-based deletion pending |
 | Worker | src/Worker.hpp, src/Worker.cpp | constructor 0x0040B780 | Exact 44-byte construction; close/join/detach and destructor remain undefined/pending |
 | ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270 | Exact 71-byte helper; parameter table selection, decryption and native archive owner remain pending |
+| InputState | src/InputState.hpp, src/InputState.cpp | Device header reset/keyboard/XInput initialization, byte binding and button update | Five complete exact functions; constructor, OS polling and Controller owner remain pending |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
@@ -19,8 +20,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns nine objects and one canonical profile per source.
-Thirty-two units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns ten objects and one canonical profile per source.
+Thirty-seven units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 TaskInfo's observed RTTI is TaskInf. Its three-slot vtable contains deleting
@@ -44,3 +45,10 @@ worker until its native lifetime and synchronization protocol are reconstructed.
 component comparison; no whole-game linker or runtime acceptance is available.
 Future owners must close storage, initialization, ABI and lifetime protocols.
 Reference module names do not prescribe our directories or translation units.
+
+InputButtonState retains all 704 observed bytes, including state outside the
+update routine copied by native aggregate frames. InputDevice has its observed
+x86 980-byte layout and a real forward-declared COM pointer. Its three partial
+initializers preserve history and other header fields. No original constructor,
+device polling, ownership or enlarged reference Controller is imported. Portable
+tests initialize these records explicitly and do not prove game-global lifetime.

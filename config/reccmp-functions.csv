@@ -31,3 +31,8 @@ th20::Worker::Worker,0x0040B780,function
 th20::DebugMemoryResource::DebugMemoryResource,0x00418DB0,function
 th20::DebugMemoryResource::~DebugMemoryResource,0x00418E90,function
 th20::archive_name_sum,0x00456270,function
+th20::InputDevice::reset_header,0x00421720,function
+th20::InputDevice::initialize_keyboard,0x00421AB0,function
+th20::InputDevice::initialize_xinput,0x00421AD0,function
+th20::map_input_byte,0x00420510,function
+th20::InputButtonState::update,0x004228B0,function

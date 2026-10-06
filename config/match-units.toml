@@ -367,3 +367,65 @@ symbol = "?archive_name_sum@th20@@YAEPBDI@Z"
 target_address = 0x00456270
 size = 71
 relocations = []
+
+[units.input_reset_header]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputDevice::reset_header"]
+symbol = "?reset_header@InputDevice@th20@@QAEXXZ"
+target_address = 0x00421720
+size = 50
+relocations = []
+
+[units.input_initialize_keyboard]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputDevice::initialize_keyboard"]
+symbol = "?initialize_keyboard@InputDevice@th20@@QAEXH@Z"
+target_address = 0x00421AB0
+size = 31
+relocations = []
+
+[units.input_initialize_xinput]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputDevice::initialize_xinput"]
+symbol = "?initialize_xinput@InputDevice@th20@@QAEXHH@Z"
+target_address = 0x00421AD0
+size = 40
+relocations = []
+
+[units.input_map_byte]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::map_input_byte"]
+symbol = "?map_input_byte@th20@@YAIPAIFIPBE@Z"
+target_address = 0x00420510
+size = 105
+relocations = []
+
+[units.input_update_buttons]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::update"]
+symbol = "?update@InputButtonState@th20@@QAEXXZ"
+target_address = 0x004228B0
+size = 583
+relocations = [
+  { offset = 0x82, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0xAA, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0xD2, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0xF7, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0x126, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0x14F, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0x176, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0x1A2, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0x1C9, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0x1E6, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+  { offset = 0x204, type = "REL32", symbol = "??A?$array@I$0CA@@std@@QAEAAII@Z", target = 0x00414580 },
+]

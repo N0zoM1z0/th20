@@ -30,10 +30,72 @@ Offsets and hashes use the original bytes; reference source is never edited.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 281 native-core/export/scheduler/runtime/archive/tool/test bodies have
-explicit decisions. The remaining 6,426 indexed bodies are pending. The separate
+The first 365 native-core/export/scheduler/runtime/archive/input/tool/test bodies
+have explicit decisions. The remaining 6,342 indexed bodies are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: three of 103 files are reconciled, leaving 100 pending.
+and parser-gap count: five of 103 files are reconciled, leaving 98 pending.
+
+## REF-006: input's 84 definitions reviewed
+
+Every definition in all seven input source/header/test files now has an
+individual hash-bound decision: five absorbed exact components, twenty-eight
+native cases deferred with specific differences and fifty-one support helpers.
+Both parser-gap files are manually reconciled: nine WINAPI callback annotations
+and two CALLBACK annotations; all actual bodies are present in the index.
+Total review decisions: 365; 6,342 definitions and 98 parser-gap files pending.
+
+| Target | Complete bytes | Maintained function | Relocations |
+| --- | ---: | --- | --- |
+| 0x00421720 | 50 | InputDevice::reset_header | None |
+| 0x00421AB0 | 31 | InputDevice::initialize_keyboard | None |
+| 0x00421AD0 | 40 | InputDevice::initialize_xinput | None |
+| 0x00420510 | 105 | map_input_byte | None |
+| 0x004228B0 | 583 | InputButtonState::update | Eleven REL32 calls |
+
+The original Device entries are thiscall members, while the reference exposes
+free functions. Maintained members restore the original receiver, parameter
+widths and callee stack cleanup. Reset affects only the first sixteen bytes;
+keyboard/XInput initialization preserves other header fields and all history.
+The byte-mapping helper retains separate conditional OR and return expressions,
+including the second byte read after the store and disabled negative bindings.
+
+ButtonState is 704 bytes; Device is 980 bytes on x86, with state/raw/tail at
++0x10/+0x2D0/+0x3D0. Native constructor, poll and frame consumers corroborate
+retained storage rather than arbitrary padding. Update walks a real array of
+32 counters using progressive remaining-input and output-bit cursors. Unsigned
+wrap, threshold-eight held mask, first repeat at frame 26 and eight/twelve-frame
+recurrences remain intact. Retained arrays and suppression/device-kind words
+are preserved. The independently queried callee 0x414580 implements receiver
+plus index*4 with RET4; installed MSVC std::array indexing matches its contract.
+Canonical relocation anchors use that separate observation, not solved fields.
+
+Cold complete replay passes 37/37 units, ten objects, 2,657 full bytes.
+Authored exact: 30 functions, 2,358 bytes. Portable checks exercise frame cadence,
+bit31, releases, wrap, retained state, partial-header initialization and negative/
+high-bit byte bindings. All three unmodified input production TUs compile in
+serial diagnostics; compilation alone grants no native acceptance.
+
+Deferred entries preserve specific ABI/ownership differences. Native polling,
+legacy polling, startup sampling, shutdown, rebuild, XInput enumeration and
+whole-frame sampling produce results that the reference drops as void. Device
+DirectInput initialization has a Device receiver; reference moves it to
+Controller. Native Controller owns 0x2EF8 bytes, TaskInf/RTTI/EH and fixed globals;
+reference appends a context pointer and introduces Host virtual dispatch.
+Native enumeration callbacks ignore userdata and use singleton/device globals;
+reference uses injected userdata. WMI deliberately differs in BSTR allocation
+and VariantClear behavior. Keyboard-clear failure and invalid mapping/selection
+exceptions are changed policies. Native bit mapping's wide x86 shift domain
+still needs a defined natural C++ explanation before exact acceptance.
+
+The upstream 44,271 CPU comparisons are reviewed retained evidence, not a fresh
+run. The oracle maps the target and initializes original locks but bypasses
+ordinary entry/TLS startup, fixtures OS/COM observations, excludes vptr/context
+from Controller comparison, and checks empty COM shutdown. Live discovery,
+original allocator/teardown and concurrent reconfiguration remain unverified.
+Support adapters and fixtures are individually reviewed without game credit.
+
+Private evidence: `.analysis/ref006-input-*.asm`, `ref006-input-*.decomp`,
+`ref006-input-compile.log`, `ref006-exact-replay.log` and compiler receipts.
 
 ## REF-005: tools and root/scheduler tests reviewed
 
@@ -82,8 +144,8 @@ are distinguished from the original ECX receiver ABI.
 | 0x00452F50 | 35 | ClockScalar::operator* | Passed | Origin pending |
 
 Existing Random and Timer reset/set units still pass. Current cold replay is
-thirty-two complete units, 1,848 bytes, nine independently rebuilt objects.
-Authored credit is twenty-five functions, 1,549 bytes. RNG is excluded as STL;
+thirty-seven complete units, 2,657 bytes, ten independently rebuilt objects.
+Authored credit is thirty functions, 2,358 bytes. RNG is excluded as STL;
 the two shared float-view functions and three empty/defaulted lifetime
 contributions remain under origin review and are not added to authored totals.
 Exact names do not establish an enclosing clock or
@@ -346,8 +408,8 @@ receipt, all source fingerprints and included headers; stale entries and failed
 compilations are retried rather than being accepted by source hash alone. The standalone verifier needs its
 declared CMake definitions; that build issue carries no algorithm conclusion.
 
-Next: review input's 84 definitions and every
-remaining implementation. Deferred scheduler/runtime/archive owner/ABI recovery
+Next: review platform_services' 44 definitions and every
+remaining implementation. Deferred scheduler/runtime/archive/input owner/ABI recovery
 is recorded separately.
 Continue through every indexed implementation; investigate and record hard
 cases without stalling or marking untouched bodies as reviewed.

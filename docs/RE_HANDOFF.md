@@ -1,5 +1,33 @@
 # Current reconstruction handoff
 
+## REF-006 — 2026-10-06 — input review checkpoint
+
+The exhaustive goal remains active. All 84 definitions in seven input files
+have individual decisions: five absorbed exact, twenty-eight native deferred,
+fifty-one support. Current terminal decisions: 365; 6,342 of 6,707 pending.
+Five of 103 parser-gap files are reconciled; 98 remain pending.
+
+- Added InputState owner with original thiscall Device header members, cdecl
+  byte mapping and full 583-byte button update. Five new authored units: 809
+  bytes. Independent Device constructor/poll/frame consumers establish layout;
+  separately queried indexed-array callee0x414580 anchors eleven relocations.
+- Cold complete replay: 37/37 units, ten objects, 2,657 full compared bytes.
+  Authored exact: 30 functions, 2,358 bytes; source-present mappings: 37.
+- Portable cadence/bit31/release/wrap/retained-state/header/binding checks added.
+  Constructor, polling and enclosing Controller are still unreconstructed.
+- Recorded original results dropped as void, Device-to-Controller receiver
+  changes, appended context, fixed global/Host dispatch differences, callback
+  userdata changes, WMI allocation/cleanup and added failure-domain exceptions.
+- All three selected unmodified production TUs compile serially. Reviewed all
+  fixtures/adapters/tests; the upstream 44,271 CPU comparisons were not rerun
+  and are not exact credit. Two annotation parser-gap files reconciled fully.
+
+Next coherent family: platform_services' 44 definitions, then every remaining
+implementation/parser gap. Deferred owner/ABI cases remain specific follow-ups;
+do not stall exhaustive coverage or treat a module as collectively rejected.
+Private evidence: `.analysis/ref006-*` and compiler receipts under `build/`.
+Earlier checkpoint totals below are historical.
+
 ## REF-005 — 2026-10-06 — tools and test review checkpoint
 
 The exhaustive goal remains active. Added 91 individual support reviews: all

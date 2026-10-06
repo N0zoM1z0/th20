@@ -30,3 +30,8 @@ th20::Worker::Worker
 th20::DebugMemoryResource::DebugMemoryResource
 th20::DebugMemoryResource::~DebugMemoryResource
 th20::archive_name_sum
+th20::InputDevice::reset_header
+th20::InputDevice::initialize_keyboard
+th20::InputDevice::initialize_xinput
+th20::map_input_byte
+th20::InputButtonState::update

@@ -1,5 +1,34 @@
 # Verified facts and open hypotheses
 
+## REF-006 — 2026-10-06
+
+- Individually reviewed: all 84 input definitions; five absorbed exact,
+  twenty-eight native deferred, fifty-one support. Current totals: 365 terminal,
+  6,342 pending; parser-gap files five reconciled, 98 pending out of 103.
+- Independent target: ButtonState704 bytes; Device980 bytes on x86, state/raw/
+  retained tail at +0x10/+0x2D0/+0x3D0. Constructor, poll and aggregate frame
+  consumers establish retained storage; no compiler-shaping padding added.
+- Compiler-observed and canonically replayed: original thiscall reset50,
+  keyboard initialize31, XInput initialize40, cdecl byte mapping105, button
+  update583. Indexed-array callee0x414580 independently reads receiver+index*4,
+  RET4; eleven REL32 anchors replay without solving comparison fields.
+- Behavior: partial header stores preserve history; counter wrap is unsigned;
+  held mask starts at8, repeats at26 then every8/12 frames; bit31 and retained
+  fields verified portably. Byte helper preserves a post-store second read.
+- Full cold replay: 37 units, ten objects, 2,657 full bytes; authored30/2,358.
+- ABI differences: several original input routines return masks/counts/status
+  while source uses void. DirectInput initialization's receiver is Device, not
+  Controller. Native InputInf0x2EF8 owner differs from appended source context,
+  Host dispatch and fixed global/callback protocols. Whole lifetime remains open.
+- Failure-domain differences: added mapping/selected-index exceptions and
+  keyboard-clear zeroing/failure throw; WMI eager allocation/per-object variant
+  lifecycle deliberately differs. Wide native x86 shift needs defined C++ work.
+- Support limits: upstream44,271 CPU comparisons retained, not rerun; startup/
+  TLS, native allocation, live COM/WMI discovery and concurrent reconfiguration
+  unverified. All three unmodified production TUs compile; no bulk acceptance.
+
+Private evidence: `.analysis/ref006-*`.
+
 ## REF-005 — 2026-10-06
 
 - Individually reviewed: 39 tooling/support, 37 root test and 15 scheduler

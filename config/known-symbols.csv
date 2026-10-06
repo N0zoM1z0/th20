@@ -32,3 +32,8 @@ address,name,module,confidence,evidence
 0x00418DB0,th20::DebugMemoryResource::DebugMemoryResource,DebugMemoryResource,high,REF-003
 0x00418E90,th20::DebugMemoryResource::~DebugMemoryResource,DebugMemoryResource,high,REF-003
 0x00456270,th20::archive_name_sum,ArchiveCrypt,high,REF-004
+0x00421720,th20::InputDevice::reset_header,InputState,high,REF-006
+0x00421AB0,th20::InputDevice::initialize_keyboard,InputState,high,REF-006
+0x00421AD0,th20::InputDevice::initialize_xinput,InputState,high,REF-006
+0x00420510,th20::map_input_byte,InputState,high,REF-006
+0x004228B0,th20::InputButtonState::update,InputState,high,REF-006
