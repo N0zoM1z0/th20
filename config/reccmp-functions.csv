@@ -54,3 +54,8 @@ th20::WindowState::set_reset_delay,0x0041DE30,function
 th20::WindowFlags::Bits::Bits,0x00418DD0,function
 th20::bring_window_to_foreground,0x0041B480,function
 th20::WindowState::restore_system_settings,0x0041B490,function
+th20::InputButtonState::pressed_bits,0x00419C00,function
+th20::InputButtonState::repeated_or_pressed,0x0041A280,function
+th20::WindowState::RepeatCounter::reset,0x0041CC90,function
+th20::is_japanese_user_locale,0x0041D0C0,function
+th20::mark_font_available,0x00414820,function

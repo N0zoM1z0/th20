@@ -466,7 +466,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00414780,46,0x004147AD,FUN_00414780,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004147B0,46,0x004147DD,FID_conflict:`scalar_deleting_destructor',,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004147E0,49,0x00414810,FUN_004147e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00414820,20,0x00414833,FUN_00414820,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00414820,20,0x00414833,FUN_00414820,th20::mark_font_available,FontDetection,matching,100.00,__stdcall,th20::mark_font_available,false,src/FontDetection.cpp,REF-011; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x00414840,140,0x004148CB,FUN_00414840,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004148D0,47,0x004148FE,FUN_004148d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00414900,84,0x00414953,FUN_00414900,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -587,14 +587,14 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004199A0,164,0x00419A43,FUN_004199a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00419A50,385,0x00419BD0,FUN_00419a50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00419BE0,20,0x00419BF3,FUN_00419be0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00419C00,22,0x00419C15,FUN_00419c00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00419C00,22,0x00419C15,FUN_00419c00,th20::InputButtonState::pressed_bits,InputState,matching,100.00,__thiscall,th20::InputButtonState::pressed_bits,false,src/InputState.cpp,REF-011; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x00419C20,433,0x00419DD0,FUN_00419c20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00419DE0,583,0x0041A026,FUN_00419de0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041A030,370,0x0041A1A1,FUN_0041a030,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041A1B0,76,0x0041A1FB,FUN_0041a1b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041A200,50,0x0041A231,CDocObjectServer::ReleaseDocSite,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041A240,50,0x0041A271,CDocObjectServer::ReleaseDocSite,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041A280,61,0x0041A2BC,FUN_0041a280,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041A280,61,0x0041A2BC,FUN_0041a280,th20::InputButtonState::repeated_or_pressed,InputState,matching,100.00,__thiscall,th20::InputButtonState::repeated_or_pressed,false,src/InputState.cpp,REF-011; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x0041A2C0,1954,0x0041AA61,FUN_0041a2c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041AA70,184,0x0041AB27,FUN_0041aa70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041AB30,169,0x0041ABD8,FUN_0041ab30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -637,12 +637,12 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0041CAF0,17,0x0041CB00,FUN_0041caf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041CB10,346,0x0041CC69,FUN_0041cb10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041CC70,20,0x0041CC83,FUN_0041cc70,th20::WindowState::display_mode,WindowState,matching,100.00,__thiscall,th20::WindowState::display_mode,false,src/WindowState.cpp,REF-009; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Complete canonical exact replay; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
-0x0041CC90,40,0x0041CCB7,FUN_0041cc90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041CC90,40,0x0041CCB7,FUN_0041cc90,th20::WindowState::RepeatCounter::reset,WindowState,matching,100.00,__thiscall,th20::WindowState::RepeatCounter::reset,false,src/WindowState.cpp,REF-011; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x0041CCC0,21,0x0041CCD4,FUN_0041ccc0,th20::LockRegistry::enable,LockRegistry,matching,100.00,__thiscall,void LockRegistry::enable(),false,src/LockRegistry.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x0041CCF0,905,0x0041D078,FUN_0041ccf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041D080,25,0x0041D098,FUN_0041d080,th20::WindowState::needs_device_reset,WindowState,matching,100.00,__thiscall,th20::WindowState::needs_device_reset,false,src/WindowState.cpp,REF-009; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Complete canonical exact replay; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041D0A0,25,0x0041D0B8,FUN_0041d0a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0041D0C0,47,0x0041D0EE,FUN_0041d0c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0041D0C0,47,0x0041D0EE,FUN_0041d0c0,th20::is_japanese_user_locale,WindowApi,matching,100.00,__cdecl,th20::is_japanese_user_locale,false,src/WindowApi.cpp,REF-011; docs/REFERENCE_FUNCTION_REVIEW.md,authored,Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x0041D0F0,56,0x0041D127,FUN_0041d0f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041D130,210,0x0041D201,FUN_0041d130,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0041D210,214,0x0041D2E5,FUN_0041d210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

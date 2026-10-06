@@ -55,3 +55,8 @@ address,name,module,confidence,evidence
 0x00418DD0,th20::WindowFlags::Bits::Bits,WindowState,high,REF-009
 0x0041B480,th20::bring_window_to_foreground,WindowApi,high,REF-009
 0x0041B490,th20::WindowState::restore_system_settings,WindowState,high,REF-009
+0x00419C00,th20::InputButtonState::pressed_bits,InputState,high,REF-011
+0x0041A280,th20::InputButtonState::repeated_or_pressed,InputState,high,REF-011
+0x0041CC90,th20::WindowState::RepeatCounter::reset,WindowState,high,REF-011
+0x0041D0C0,th20::is_japanese_user_locale,WindowApi,high,REF-011
+0x00414820,th20::mark_font_available,FontDetection,high,REF-011

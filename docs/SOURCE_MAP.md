@@ -11,11 +11,12 @@
 | TaskInfo | src/TaskInfo.hpp, src/TaskInfo.cpp | TaskInf destructor and separate virtual/helper enable/disable entries | Five complete exact functions; native constructor and allocator-based deletion pending |
 | Worker | src/Worker.hpp, src/Worker.cpp | constructor 0x0040B780 | Exact 44-byte construction; close/join/detach and destructor remain undefined/pending |
 | ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270 | Exact 71-byte helper; parameter table selection, decryption and native archive owner remain pending |
-| InputState | src/InputState.hpp, src/InputState.cpp | Device header reset/keyboard/XInput initialization, byte binding and button update | Five complete exact functions; constructor, OS polling and Controller owner remain pending |
+| InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update and two mask queries | Seven complete exact functions; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |
 | GameRandom | src/GameRandom.hpp, src/GameRandom.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; engine helpers | Four authored and two library complete exact units; next/seed locking and global startup remain undefined |
-| WindowState | src/WindowState.hpp, src/WindowState.cpp, src/WindowApi.cpp | five field methods, restore 0x0041B490 and flags constructor 0x00418DD0 | Six authored and one origin-pending complete exact units; original construction/global startup remain undefined |
-| WindowApi | src/WindowApi.cpp | foreground wrapper 0x0041B480 | Complete exact wrapper; source/origin identity pending |
+| WindowState | src/WindowState.hpp, src/WindowState.cpp, src/WindowApi.cpp | five field methods, system restoration, repeat reset and flags construction | Seven authored and one origin-pending complete exact units; original construction/global startup remain undefined |
+| WindowApi | src/WindowApi.cpp | foreground wrapper 0x0041B480; locale detection 0x0041D0C0 | Two complete exact units; foreground source/origin identity pending |
+| FontDetection | src/FontDetection.hpp, src/FontDetection.cpp | font enumeration callback 0x00414820 | Authored complete exact callback; initialization/global pointer storage remain undefined |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
@@ -24,8 +25,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns fourteen objects and one canonical profile per source.
-Fifty-five units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns fifteen objects and one canonical profile per source.
+Sixty units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 TaskInfo's observed RTTI is TaskInf. Its three-slot vtable contains deleting
@@ -75,10 +76,21 @@ next observation and establish no linked game sampler/global startup.
 WindowState's x860x2138 storage follows independently observed global clearing,
 complete native construction and frame/path consumers. It contains real typed
 pairs, paths, clock values, flags and repeat counters with natural alignment.
-Five field members and fixed-global system restoration are authored exact;
+Five field members, repeat-counter reset and fixed-global system restoration are authored exact;
 flags default construction is origin pending. The original constructor and
 window_state storage are undefined. Portable fixture{} initialization is test
 setup and does not supply original startup. WindowApi compiles Windows imports
 separately; no test invokes foreground/system-setting APIs. Its exact foreground
 wrapper has pending source/origin identity because the observed caller ignores
-its result. No linked window or whole-frame runtime is accepted.
+its result. Locale detection preserves the original full-width int result.
+No linked window or whole-frame runtime is accepted.
+
+Input mask queries retain uint32 bit31 and leave all 704 bytes unchanged.
+The repeat query calls the actual pressed method and inspects repeat8 only.
+Window repeat reset updates first/second/elapsed in a real twelve-byte record;
+native window creation supplies four separate threshold values.
+
+FontDetection preserves the stdcall/RET16 enumeration callback. The original
+initializer selects availability bytes through a global pointer at 0x5B6748;
+only its declaration is maintained. The full font table, indexed slot methods,
+fallback selection and OS resource lifetime are not reconstructed by this unit.

@@ -466,7 +466,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004147B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004147E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414820,authored,FontDetection,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x00414840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004148D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -587,14 +587,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004199A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00419A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00419BE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00419C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00419C00,authored,InputState,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x00419C20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00419DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041A030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041A1B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041A200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041A240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041A280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041A280,authored,InputState,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x0041A2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041AA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041AB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -637,12 +637,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041CAF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CC70,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
-0x0041CC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041CC90,authored,WindowState,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x0041CCC0,authored,LockRegistry,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x0041CCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D080,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041D0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041D0C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041D0C0,authored,WindowApi,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x0041D0F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

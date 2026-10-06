@@ -641,3 +641,59 @@ relocations = [
   { offset = 0x3F, type = "DIR32", symbol = "__imp__SystemParametersInfoW@16", target = 0x0056C284 },
   { offset = 0x48, type = "REL32", symbol = "_WINNLSEnableIME@8", target = 0x0054065A },
 ]
+
+[units.input_pressed_bits]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::pressed_bits"]
+symbol = "?pressed_bits@InputButtonState@th20@@QBEII@Z"
+target_address = 0x00419C00
+size = 22
+relocations = []
+
+[units.input_repeated_or_pressed]
+source = "src/InputState.cpp"
+object = "build/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::repeated_or_pressed"]
+symbol = "?repeated_or_pressed@InputButtonState@th20@@QBEHI@Z"
+target_address = 0x0041A280
+size = 61
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?pressed_bits@InputButtonState@th20@@QBEII@Z", target = 0x00419C00 },
+]
+
+[units.window_repeat_reset]
+source = "src/WindowState.cpp"
+object = "build/WindowState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowState::RepeatCounter::reset"]
+symbol = "?reset@RepeatCounter@WindowState@th20@@QAEXH@Z"
+target_address = 0x0041CC90
+size = 40
+relocations = []
+
+[units.window_japanese_locale]
+source = "src/WindowApi.cpp"
+object = "build/WindowApi.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::is_japanese_user_locale"]
+symbol = "?is_japanese_user_locale@th20@@YAHXZ"
+target_address = 0x0041D0C0
+size = 47
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "__imp__GetUserDefaultLCID@0", target = 0x0056C0A4 },
+]
+
+[units.font_mark_available]
+source = "src/FontDetection.cpp"
+object = "build/FontDetection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::mark_font_available"]
+symbol = "?mark_font_available@th20@@YGHPBUtagLOGFONTW@@PBUtagTEXTMETRICW@@KJ@Z"
+target_address = 0x00414820
+size = 20
+relocations = [
+  { offset = 0x4, type = "DIR32", symbol = "?current_font_probe@th20@@3PAEA", target = 0x005B6748 },
+]

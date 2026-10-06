@@ -1,5 +1,40 @@
 # Current reconstruction handoff
 
+## REF-011 — 2026-10-06 — platform/window review checkpoint
+
+The exhaustive goal remains active. All 189 platform_window entries are
+individually reviewed: 170 C++ definitions and 19 Python function/module entries.
+Decisions: four absorbed, 65 nonexact and 120 support. Inventory 6,944;
+terminal 665, pending 6,279. Seven manual gap reconciliations bring totals to
+thirteen reconciled and 100 pending out of 113 files.
+
+- Five new canonical authored contributions total 190 bytes: two input queries,
+  repeat reset, Japanese locale detection and font enumeration callback.
+  Whole window creation remains deferred despite extracting its reset method.
+- Cold complete replay: 60/60 units, fifteen objects, 4,185 full bytes.
+  Authored exact 46/3,450; source-present 60. Independent caller/import/global
+  evidence establishes all relocations. No solved comparison fields promoted.
+- Portable semantics cover bit31/raw masks, repeat8 selection, nonmutation and
+  counter edges/isolation. OS locale/font APIs not invoked; font pointer storage
+  and original initialization remain undefined. No linked window/game claim.
+- All twenty unmodified reference production TUs compile serially. Full source,
+  headers, scripts, fixtures, resources and reports read; 68 native functions
+  independently queried/decompiled through the attested Ghidra wrapper.
+- Concrete native differences: dialog return0 paths versus reference1; live
+  IsWindowEnabled navigation; snapshot/encoder/data-open int statuses and
+  allocator ownership; wall-time pointer return and chrono helper partition.
+  Full Graphics PMR/worker/global owner and original SDK calls remain open.
+- Forty data declarations match locked PE bytes. Two Japanese dialogs match
+  retained original hashes; no fresh resource compilation. Module report has
+  23/31 current hashes and eight stale inputs, plus missing link dependencies.
+  Historical platform/texture fixture passes were not rerun or inherited.
+  Texture evidence tool can refresh hashes without rerunning old CPU results.
+
+Next coherent family: startup_scene's 49 indexed entries, then all remaining
+native/script bodies and 100 manual gap files. Keep individual decisions and
+absorb easy exact work as encountered. Private `.analysis/ref011-*`; earlier
+counts below describe historical checkpoints.
+
 ## REF-010 — 2026-10-06 — diagnostics review checkpoint
 
 The exhaustive goal remains active. All seven diagnostics implementation

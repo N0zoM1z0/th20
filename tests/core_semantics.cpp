@@ -67,6 +67,29 @@ int main() {
     }
     assert(window.current_time == 123.5 && window.user_data_directory[200] == 'x');
     assert(window.repeat[3].elapsed == 19);
+    for (std::int32_t value : {-1, 0, 8, 12, 15, 0x7fffffff}) {
+        window.repeat[1] = {3, 4, 5};
+        window.repeat[2].reset(value);
+        assert(window.repeat[2].first == value && window.repeat[2].second == value);
+        assert(window.repeat[2].elapsed == 0);
+        assert(window.repeat[1].first == 3 && window.repeat[1].second == 4);
+        assert(window.repeat[1].elapsed == 5 && window.repeat[3].elapsed == 19);
+    }
+    th20::InputButtonState query_input{};
+    query_input.pressed = 0x80000001u;
+    query_input.repeat8 = 2;
+    query_input.repeat12 = 4;
+    std::array<unsigned char, sizeof(query_input)> query_before;
+    std::memcpy(query_before.data(), &query_input, sizeof(query_input));
+    assert(query_input.pressed_bits(0xffffffffu) == 0x80000001u);
+    assert(query_input.pressed_bits(0x80000000u) == 0x80000000u);
+    assert(query_input.pressed_bits(0) == 0);
+    assert(query_input.repeated_or_pressed(1) == 1);
+    assert(query_input.repeated_or_pressed(2) == 1);
+    assert(query_input.repeated_or_pressed(0x80000000u) == 1);
+    assert(query_input.repeated_or_pressed(4) == 0); // repeat12 is excluded.
+    assert(query_input.repeated_or_pressed(0) == 0);
+    assert(std::memcmp(query_before.data(), &query_input, sizeof(query_input)) == 0);
     for (const std::uint32_t initial : {0u, 0xffffffffu, 0x12345678u, 0xffu, 0xffffff00u}) {
         alignas(th20::WindowFlags::Bits) std::array<unsigned char, 4> storage{};
         std::memcpy(storage.data(), &initial, sizeof(initial));

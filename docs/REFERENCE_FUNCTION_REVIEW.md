@@ -37,11 +37,93 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 476 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/tool/test entries have explicit decisions. The
-remaining 6,468 indexed entries are pending. The separate
+The first 665 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/tool/test entries have explicit decisions. The
+remaining 6,279 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: six of 113 files are reconciled, leaving 107 pending.
+and parser-gap count: thirteen of 113 files are reconciled, leaving 100 pending.
+
+## REF-011: all 189 platform-window implementation entries reviewed
+
+Every one of the 170 C++ definitions and 19 Python function/module entries
+has an individual body-hash-bound decision: four absorbed exact, 65 native
+deferred and 120 support. All twenty production translation units, six headers,
+both CPU fixture sources, four Python files, CMake recipes, dialog definitions
+and retained reports were read. Twenty unmodified production TUs compile
+serially with the pinned x86 compiler and their actual inherited include paths;
+this does not establish linkage. Seven parser-gap files are manually reconciled,
+including annotation-only headers and fixture inline assembly. No definition
+was omitted and no reference file was changed.
+
+Independent attested disassembly and decompilation cover 68 native functions.
+Five natural maintained contributions add 190 authored bytes. Repeat reset is
+recovered from window creation; the enclosing creation function remains deferred.
+
+| Target | Complete bytes | Maintained contribution |
+| --- | ---: | --- |
+| 0x00419C00 | 22 | InputButtonState::pressed_bits |
+| 0x0041A280 | 61 | InputButtonState::repeated_or_pressed |
+| 0x0041CC90 | 40 | WindowState::RepeatCounter::reset |
+| 0x0041D0C0 | 47 | is_japanese_user_locale |
+| 0x00414820 | 20 | mark_font_available |
+
+The input methods preserve ECX, RET4, raw uint32 masks and the separately
+anchored pressed-method call; the second method uses repeat8, not repeat12.
+Native creation supplies four reset arguments 15/12/12/8 to twelve-byte embedded
+counters. Locale detection returns int, unlike the reference bool. Its actual
+LCID local holds the API observation. Font enumeration returns int1 with RET16
+and writes through the independently observed global pointer. KERNEL32 import
+0x56C0A4 and font initialization 0x416D20 establish import/global anchors before
+canonical replay. Font initialization and pointer storage remain undefined.
+
+Cold replay passes all 60 complete units across fifteen objects, 4,185 bytes.
+Authored exact: 46 functions and 3,450 bytes; source-present mappings: 60.
+Portable tests cover raw bit31, pressed/repeat precedence, excluded repeat12,
+query nonmutation, reset edge values and adjacent-counter preservation. Locale
+and font APIs were compiled and compared, not invoked.
+
+Several deferred functions have concrete behavior or ABI disagreements:
+
+- Native settings_dialog_proc 0x41ABE0 returns 0 for initialization, rejected
+  raw input and unrelated commands; the reference returns 1. Navigation in
+  0x41AE70 queries IsWindowEnabled rather than its own disabled-control array.
+- Encoder lookup 0x4D97F0 returns int and uses a diagnostic allocation family;
+  the source bool and generic allocate/free protocol differ. Snapshot worker
+  0x4D9210 returns int0 and uses a distinct new/zeroing helper. Capture 0x4DE040
+  returns -1/1/0 on its observed paths; the source void loses those statuses.
+- Game-data opening 0x4D9EA0 returns -1/0 and receives an owned raw buffer with
+  a size output. The source drops the status and reallocates a vector copy.
+  Wall-time update 0x4AC0E0 returns the receiver's +0xD0 record and uses chrono
+  helpers; the reference void/direct tick conversion changes that protocol.
+- Graphics layout, viewports, camera, device state, presentation, callbacks and
+  lifetime still require their real PMR/worker/global owners and native member
+  partition. New scalar/helper factoring, table loops, dynamic SDK loading and
+  opaque storage do not reproduce the original contributions. Each body has
+  its own narrower finding and remaining work in the review ledger.
+
+Forty read-only data declarations compare independently with the locked PE:
+twelve narrow strings, two UTF-16 strings, four int arrays, fourteen floats and
+eight doubles. Original Japanese dialogs 203/204, language1041, are 914/1,012
+bytes and their hashes match the retained resource report. No fresh RC compile
+is claimed. No extracted game data or reference production bodies are imported.
+
+Retained CPU results are evidence of their stated historical fixture scope.
+The 30,867 platform passes include three source-only thread cases; ordinary
+entry/TLS startup, complete OS-message behavior, real GPU output and gameplay
+are excluded. Logical font comparisons exclude HFONT/glyphs and unused tails.
+The texture fixture's 222,014 cases cover selected pixel/helper and COM traces;
+its implementation belongs to the still-pending sprite_renderer review.
+Its record_evidence tool rewrites source hashes in an old CPU report without
+rerunning the oracle, so current hashes alone cannot attest fresh execution.
+The module report has only 23/31 current hashes and eight stale inputs, alongside
+29 missing domain and 73 missing source symbols. Its tests were not rerun and
+its linkage/completion claims are not inherited. Extraction utilities also have
+assert-only SHA gates and partial resource/range checks, recorded individually.
+
+Coverage is now 665 terminal decisions and 6,279 pending; parser gaps are
+thirteen reconciled and 100 pending. Private evidence: `.analysis/ref011-*`.
+Next coherent family: startup_scene's 49 indexed entries, then every remaining
+native/script implementation and manual parser gap.
 
 ## REF-010: diagnostics' seven implementation entries reviewed
 

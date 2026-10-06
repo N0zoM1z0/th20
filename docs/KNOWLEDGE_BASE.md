@@ -1,5 +1,51 @@
 # Verified facts and open hypotheses
 
+## REF-011 — 2026-10-06
+
+- Individually reviewed: all 189 platform_window entries, 170 C++ and 19 Python
+  entries. Four absorbed, 65 nonexact, 120 support. Terminal665/pending6279;
+  seven manual parser reconciliations bring gaps to13 reconciled/100 pending.
+- Independent input419C00: ECX704-byte receiver, pressed+10 AND mask, raw EAX,
+  RET4,22bytes. Query41A280 calls that entry then tests repeat8+8; int0/1,
+  RET4,61bytes. Original return widths are preserved, including pressed bit31.
+- Independent reset41CC90: first=value, second=value, elapsed=0,40bytes/RET4.
+  Creation41CCF0 supplies15/12/12/8 to four12-byte Window+2104 records.
+  The original creation's complete ABI, OS paths and member partition are open.
+- Independent locale41D0C0: GetUserDefaultLCID, stored LCID, compare0x411,
+  int0/1,47bytes; reference bool differs. Parsed KERNEL32 IAT56C0A4 anchors
+  canonical DIR32 without solving the field under comparison.
+- Independent font414820: stdcall RET16, writes byte1 through global5B6748,
+  returns int1,20bytes. Initializer416D20 selects availability5B66EC/EE and
+  EnumFontFamiliesExW IAT56C034, independently establishing callback/global
+  identity. Native slots/unrolled initialization remain unimplemented;
+  maintained pointer storage is undefined. No OS font enumeration executed.
+- Compiler/canonical: new five complete authored contributions190bytes.
+  Full cold60/60 units,15objects,4185bytes; authored46/3450, source-present60.
+  Pure semantics cover query precedence/nonmutation and counter edge isolation.
+- Independent message callback41ABE0 returns0 on WM_INITDIALOG, rejected
+  WM_INPUT after deletion and unrelated WM_COMMAND; reference returns1.
+  Startup settings41AE70 uses live IsWindowEnabled navigation. Source added
+  array/lambda bookkeeping does not preserve the entire native OS protocol.
+- Independent snapshot4DE040 returns-1/1/0; worker4D9210 returns int0 with
+  distinct44-byte new/zeroing allocation; encoder4D97F0 uses int plus diagnostic
+  allocator4D86A0/release40D840. Source void/bool/generic allocation loses
+  these ABI/ownership properties. Data-open4D9EA0 returns-1/0 with raw owned
+  read buffer/size output. Wall-time4AC0E0 returns receiver+D0 via chrono helpers.
+- Independently compared DATA:12 narrow strings,2 UTF-16 strings,4 int arrays,
+  14 floats,8 doubles. Original dialog resources203/204 language1041 lengths
+  914/1012 and SHA hashes agree with retained report; no fresh RC compilation.
+- Fresh serial compilation: all20 unmodified production TUs emit x86 COFF
+  with actual CMake inherited include paths. Compilation grants no runtime/link
+  acceptance. All source bodies/scripts reviewed;68 native queries/decompiles.
+- Retained module inputs:23/31 current,8 stale;29 domain/73 source symbols
+  missing. Platform30867 includes3 source-only thread cases. Fixture excludes
+  ordinary entry/TLS, full messages, real GPU/pixels and whole game. Texture
+  222014 has three current source hashes but its record script rewrites hashes
+  without rerunning tests; freshness alone is insufficient execution evidence.
+  Texture production bodies still await the sprite_renderer review.
+
+Private evidence: `.analysis/ref011-*`.
+
 ## REF-010 — 2026-10-06
 
 - Individual diagnostics support decisions7: three C++ functions, two Python

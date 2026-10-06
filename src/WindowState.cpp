@@ -24,4 +24,10 @@ void WindowState::set_reset_delay(std::uint32_t value) {
     reset_delay = value;
 }
 
+void WindowState::RepeatCounter::reset(std::int32_t value) {
+    first = value;
+    second = value;
+    elapsed = 0;
+}
+
 } // namespace th20

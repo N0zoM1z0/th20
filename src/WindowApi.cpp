@@ -19,4 +19,9 @@ void WindowState::restore_system_settings() {
     WINNLSEnableIME(nullptr, TRUE);
 }
 
+int is_japanese_user_locale() {
+    const LCID locale = GetUserDefaultLCID();
+    return locale == 0x411 ? 1 : 0;
+}
+
 } // namespace th20

@@ -50,4 +50,11 @@ void InputButtonState::update() {
     pressed = (current ^ previous) & current;
     released = (current ^ previous) & ~current;
 }
+std::uint32_t InputButtonState::pressed_bits(std::uint32_t mask) const {
+    return pressed & mask;
+}
+
+int InputButtonState::repeated_or_pressed(std::uint32_t mask) const {
+    return (pressed_bits(mask) != 0 || (repeat8 & mask) != 0) ? 1 : 0;
+}
 } // namespace th20

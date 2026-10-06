@@ -53,3 +53,8 @@ th20::WindowState::set_reset_delay
 th20::WindowFlags::Bits::Bits
 th20::bring_window_to_foreground
 th20::WindowState::restore_system_settings
+th20::InputButtonState::pressed_bits
+th20::InputButtonState::repeated_or_pressed
+th20::WindowState::RepeatCounter::reset
+th20::is_japanese_user_locale
+th20::mark_font_available

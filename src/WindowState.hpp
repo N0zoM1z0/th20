@@ -57,7 +57,10 @@ struct WindowState {
     double previous_draw_time, current_draw_time;
     std::int32_t field_20f8, sleep_budget;
     std::uint32_t input_latch;
-    struct RepeatCounter { std::int32_t first, second, elapsed; };
+    struct RepeatCounter {
+        std::int32_t first, second, elapsed;
+        void reset(std::int32_t value);
+    };
     std::array<RepeatCounter, 4> repeat;
 
     std::int32_t display_mode() const;
@@ -85,5 +88,6 @@ static_assert(sizeof(void*) != 4 || offsetof(WindowState, repeat) == 0x2104);
 // Storage is deliberately undefined until original startup is reconstructed.
 extern WindowState window_state;
 void bring_window_to_foreground(HWND__* window);
+int is_japanese_user_locale();
 
 } // namespace th20
