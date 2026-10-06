@@ -1,0 +1,93 @@
+[target]
+title = "東方錦上京 ～ Fossilized Wonders."
+version = "1.00a"
+region = "japanese"
+variant = "steamless"
+filename = "th20.exe"
+size = 1858560
+sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897"
+md5 = "e7ccdbd2f319ba868ce386e484fff1d3"
+
+[provenance]
+selection = "User explicitly selected the supplied Steamless v1.00a as exact oracle on 2026-10-06."
+official_release_url = "https://touhou-project.news/news/14975/"
+official_store_url = "https://store.steampowered.com/app/3671710/"
+release_date_japan = "2025-08-17"
+hash_registry_repository = "https://github.com/thpatch/thcrap-tsa"
+hash_registry_commit = "25acfe37f0bed5008eb8b94afc3d72679fd50384"
+hash_registry_path = "base_tsa/versions.js"
+non_steam_original_sha256 = "e6c4371e214c95dd4dbcaaf6818c79c5e89881270f65b62b8c3c965b65851e2d"
+steam_original_path = "../game_exe/th20.exe.bak"
+steam_original_sha256 = "b0b5847b5f6dc43d51535ed9903a85485547b27dc053587544aac0f148ea4eaf"
+custom_sha256 = "261fb74f64b8a9908b128d30d59af64c59e2c37f6f917ee6646f4c3e42d50f33"
+evidence = "Official sources establish Japanese release/language; THCRAP independently identifies exact whole-file hashes. Selected binary is Steamless, not unmodified non-Steam retail. Steam original has encrypted .text and .bind. No official publisher checksum was found."
+
+[pe]
+machine = "i386"
+image_base = "0x00400000"
+entry_point = "0x005435E0"
+text_start = "0x00401000"
+text_end = "0x0056B47A"
+text_raw_offset = "0x00000400"
+size_of_image = 2068480
+headers_raw_size = 1024
+text_virtual_size = 1483899
+text_raw_size = 1484288
+timestamp_utc = "2025-07-30T01:40:20+00:00"
+linker_version = "14.44"
+relocations_stripped = false
+
+[[pe.sections]]
+name = ".text"
+rva = "0x00001000"
+virtual_size = 1483899
+raw_offset = "0x00000400"
+raw_size = 1484288
+sha256 = "22414adcd32d0296d9aed4c5fedf311dbcf66ef639ae6d7258972e06ca1dfa4d"
+
+[[pe.sections]]
+name = ".rdata"
+rva = "0x0016C000"
+virtual_size = 269196
+raw_offset = "0x0016AA00"
+raw_size = 269312
+sha256 = "fda3543514c014f40b5cc75528daebaadc4a685c2942774ca805ef1471b0abc1"
+
+[[pe.sections]]
+name = ".data"
+rva = "0x001AE000"
+virtual_size = 227760
+raw_offset = "0x001AC600"
+raw_size = 34816
+sha256 = "8c4b2fe528b2717f4287529a91cafe92a8c01981da692d6b43a3fb486a0f6448"
+
+[[pe.sections]]
+name = ".fptable"
+rva = "0x001E6000"
+virtual_size = 128
+raw_offset = "0x001B4E00"
+raw_size = 512
+sha256 = "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560"
+
+[[pe.sections]]
+name = ".rsrc"
+rva = "0x001E7000"
+virtual_size = 6128
+raw_offset = "0x001B5000"
+raw_size = 6144
+sha256 = "c81d6b63a2e37775061c02773e35bee0eb9c11f282ee045e2796a66dd4a339ef"
+
+[[pe.sections]]
+name = ".reloc"
+rva = "0x001E9000"
+virtual_size = 61968
+raw_offset = "0x001B6800"
+raw_size = 62464
+sha256 = "0f1aedf442510c8569729bb314cd41ede27e3306db96a76b88d79039a9e44582"
+
+[toolchain]
+family = "Microsoft Visual C++ 2022 / v143 / x86"
+compiler_candidate = "19.44.35211"
+linker_observed = "14.44"
+rich_header_present = false
+evidence = "Game PE directly observes linker 14.44. Companion custom.exe Rich header has compiler/linker build 35211, plus library builds 35207 and 33140. Exact game compiler build, SDK, CRT and all flags remain hypotheses until target-local compiler replay proves them."

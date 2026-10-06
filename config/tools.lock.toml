@@ -1,0 +1,70 @@
+[ghidra]
+version = "12.1.3"
+asset = "ghidra_12.1.3_PUBLIC_20260817.zip"
+sha256 = "93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54"
+url = "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.3_build/ghidra_12.1.3_PUBLIC_20260817.zip"
+
+[temurin_jdk]
+version = "21.0.12.1+1"
+asset = "OpenJDK21U-jdk_x64_linux_hotspot_21.0.12.1_1.tar.gz"
+sha256 = "ce79869e1307ed8ee1e2baa86a412b1eb5b75d10a01006d788a6f968bcfaee94"
+url = "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_linux_hotspot_21.0.12.1_1.tar.gz"
+
+[reccmp]
+version = "0.1.6"
+
+[objdiff]
+version = "3.8.0"
+asset = "objdiff-cli-linux-x86_64"
+sha256 = "bc1e047126f9c6914bd1695798175234642ab9eaf45e886f841b59a4231e1a81"
+url = "https://github.com/encounter/objdiff/releases/download/v3.8.0/objdiff-cli-linux-x86_64"
+
+[msvc_wine]
+repository = "https://github.com/mstorsjo/msvc-wine.git"
+commit = "514f8ea34842cd6d831804d0e9658d3a32870ae1"
+
+[msvc_manifest]
+url = "https://raw.githubusercontent.com/roblabla/msvc-manifest-history/1c2bbd637d032b82b83f0444c178052769af21fc/manifest.json"
+sha256 = "c7d83a3ea87b64c2d11faaeb0373f6369050ece41e413ea2e816059a97355464"
+product = "Visual Studio 2022 17.14.6 (June 2025)"
+
+[msvc]
+version = "19.44.35211"
+linker_version = "14.44.35211"
+directory_version = "14.44.35207"
+sdk_version = "10.0.26100.0"
+status = "candidate; game linker observed, compiler build corroborated by companion custom.exe"
+[msvc.files]
+"bin/HostX64/x86/cl.exe" = "d1cebe4ca9d3727750090a1394def24c8ef1106dafbc737ea55fa71e1f940737"
+"bin/HostX64/x86/link.exe" = "60c1aa5309be71ebfbe7978d53a126a699c7db40d2a9791b5ec197dd5a8518fd"
+"bin/HostX64/x86/c1.dll" = "945b3f7b103d0ca23f0dabd9da4da9755d4b3c15c511a63b138062898a5b4614"
+"bin/HostX64/x86/c1xx.dll" = "a4c968c201ea2fc435f012aac561dbbab1dbd68126af2195e2efa8a7ee992c1d"
+"bin/HostX64/x86/c2.dll" = "8f6dd0c4d7f6e37585acac94ee6a211f515b43132e53cb564e28c025be2de242"
+"bin/HostX64/x86/lib.exe" = "cd8a18ad1e108a4306472d4b22ec0513d2868605d7a905c12f2d1856c9d8738c"
+"bin/HostX64/x86/mspdbcore.dll" = "07782127063fdacb1afcd90eb614cc0df264863eac2f6f86bf2d0b4d6c67b031"
+"bin/HostX64/x86/mspdb140.dll" = "bfcc51f6fdbc19a926c9b61d5f6f45ff5bd8604f767f8927580691a01b6c8055"
+
+
+[dxsdk_d3dx]
+version = "9.29.952.8"
+url = "https://api.nuget.org/v3-flatcontainer/microsoft.dxsdk.d3dx/9.29.952.8/microsoft.dxsdk.d3dx.9.29.952.8.nupkg"
+sha256 = "ead0906ae8a26c18a7525da7490127a2110f7c58f18293738283e30e97c6ea4b"
+
+[python]
+minimum = "3.11"
+pefile = "2024.8.26"
+capstone = "5.0.6"
+
+[analysis_files]
+"ghidra/support/analyzeHeadless" = "302880328a0024ee24cfe0326d4d9a61c2237116d95f2e0e0df090f747f95e30"
+"ghidra/support/launch.sh" = "32be94ba54ee447c2a71d0191398de4fa7998817f078c315f996350d06df31b5"
+"ghidra/Ghidra/application.properties" = "fb9b6292c801e4a18b7c20829437d3b18b2241b273aea9b1cbdebdf3e5d0dc15"
+"ghidra/Ghidra/Framework/Utility/lib/Utility.jar" = "6f5c4ae8de0ef8f93f796a1b66f1b9dba047b423c54d3d0d845b486d8d08323d"
+"ghidra/Ghidra/Framework/SoftwareModeling/lib/SoftwareModeling.jar" = "220c419c4d94d65faddecf77ba899213b66382c092a3753be56f3bb08112c96f"
+"ghidra/Ghidra/Features/Base/lib/Base.jar" = "1b6b4063ed5c04c6137ecfc588e72ec7d795a57b07ab34324a8245e85d50a56c"
+"ghidra/Ghidra/Features/Decompiler/lib/Decompiler.jar" = "c3b5aa4b77ad19244fcc418b17e129a98a9bc23ebd876fa02b5f419145ec3132"
+"ghidra/Ghidra/Features/Decompiler/os/linux_x86_64/decompile" = "4a97ff9a3dbac5757c7240a664571e82345e4abc4f67cd211cd9d402abe4543d"
+"jdk/bin/java" = "2a207f5e7d075afa01d97f8048389a64432a44c4a5af0f5e77d6e286ec5f401d"
+"jdk/lib/modules" = "70c5465dabf8e1bec2860631ea3ffd342f0ec23a5e2efd3a389d2abe32448f98"
+"jdk/lib/server/libjvm.so" = "462fa559157ee8a862e7e4b8a4a74f8abbf5e1a9deb64f22ee23c7e8c43f698b"
+"objdiff/objdiff-cli" = "bc1e047126f9c6914bd1695798175234642ab9eaf45e886f841b59a4231e1a81"

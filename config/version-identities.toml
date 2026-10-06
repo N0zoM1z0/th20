@@ -1,0 +1,23 @@
+# Identity registry is independent corroboration, not publisher-issued checksums.
+registry_url = "https://raw.githubusercontent.com/thpatch/thcrap-tsa/25acfe37f0bed5008eb8b94afc3d72679fd50384/base_tsa/versions.js"
+registry_sha256 = "9ac6c0247b9c53129429f9522f66e035a7880d15082f8d519990ac7ed82c14e1"
+
+[non_steam_original]
+sha256 = "e6c4371e214c95dd4dbcaaf6818c79c5e89881270f65b62b8c3c965b65851e2d"
+version = "1.00a"
+label = "original"
+
+[steam_original]
+sha256 = "b0b5847b5f6dc43d51535ed9903a85485547b27dc053587544aac0f148ea4eaf"
+version = "1.00a"
+label = "original, Steam release"
+
+[steamless]
+sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897"
+version = "1.00a"
+label = "original, Steamless"
+
+[custom]
+sha256 = "261fb74f64b8a9908b128d30d59af64c59e2c37f6f917ee6646f4c3e42d50f33"
+version = "1.00a"
+label = "original"

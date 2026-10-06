@@ -1,0 +1,13 @@
+targets:
+  th20:
+    filename: th20.exe
+    source_root: src
+    hash:
+      sha256: a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897
+    data_sources:
+      - config/reccmp-functions.csv
+      - config/reccmp-globals.csv
+      - config/reccmp-floats.csv
+      - config/reccmp-strings.csv
+    ghidra:
+      allow_hash_mismatch: false
