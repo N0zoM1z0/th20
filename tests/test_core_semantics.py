@@ -26,6 +26,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/WindowState.cpp",
                             "src/SceneResources.cpp", "tests/scene_resource_semantics.cpp",
                             "src/SoundEffects.cpp",
+                            "src/AnimationHandle.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

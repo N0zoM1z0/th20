@@ -1,5 +1,40 @@
 # Current reconstruction handoff
 
+## REF-017 — 2026-10-06 — Notice review checkpoint
+
+The exhaustive goal remains active. All30 notice_system implementations have
+individual decisions:13 nonexact/17 support. Total929 terminal/6,015 pending
+of6,944. One full five-line fixture header reconciles two WINAPI gaps; global
+18 reconciled/95 pending of113. Complete sources/headers/extractor/constants/
+fixtures/recipes/report read;42 relevant native functions queried and decompiled.
+Both original production TUs freshly compile after include dependency correction.
+
+- Natural actual four-byte AnimationHandle constructor425CC0 adds23 complete
+  canonical exact bytes. No relocations/shaping/padding; origin remains pending,
+  no authored increment. Cold70/70 across19 objects/4,781 bytes; source70,
+  authored52/3,830, origin-pending exact14. Dirty zero plus sentinel test passes.
+- Full130-byte Notice owner remains open. Typed seven-handle array/Timer/Cursor/
+  base construction, allocator factory/selected setter and teardown differ from
+  aggregate reference. Accepted value constructor does not accept whole Notice.
+- Seven NUL strings/all50 native PMR constructor bindings independently match.
+  Source default array/move assignment and native CRT/EH/lifetime differ. Fixture
+  constructs native table from source messages; no CRT initializer acceptance.
+- Completion extractor overreads: actual six function slots, seventh following
+  RTTI locator/string word. Empty invoke corroborated; five callable/EH protocols
+  remain open. Draw thunk49DEA0→16-byte ECX-saving member478BF0 is not literal
+  free return1. No fake layout-free class/ABI identity credited.
+- Full update2,379 bytes and4/8 jump tables checked; independent unreachable
+  JMP4DF285 retained. Native unchecked Cursor99/message table versus source
+  index exception; Stone names stride1024 matches valid source rows. Image
+  substate3, typed interruption, text/texture/Worker owner protocols unclosed.
+- Retained59,904 subset bound to shared report/hash/counters,389/389 current
+  source hashes; no new CPU oracle run. Vptr/proxy/callback/graph normalization,
+  synthetic ANM/Stone/PMR/COM/locks/fonts and valid rows limit conclusions.
+  No async, factory, failed I/O, loaded teardown or GPU/device lifetime checks.
+
+Next coherent family: card_system32, then every remaining implementation and95
+manual gap files. Private `.analysis/ref017-*`; earlier counts are historical.
+
 ## REF-016 — 2026-10-06 — Help review checkpoint
 
 The exhaustive goal remains active. All25 help_system implementations reviewed:

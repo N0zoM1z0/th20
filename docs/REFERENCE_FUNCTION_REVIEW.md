@@ -37,11 +37,93 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 899 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/tool/test entries have explicit decisions. The
-remaining 6,045 indexed entries are pending. The separate
+The first 929 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/tool/test entries have explicit decisions. The
+remaining 6,015 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: seventeen of 113 files are reconciled, leaving 96 pending.
+and parser-gap count: eighteen of 113 files are reconciled, leaving 95 pending.
+
+## REF-017: all 30 Notice implementation entries reviewed
+
+Every indexed implementation has its own body-hash-bound decision: thirteen
+nonexact and seventeen support. Same-line fixture lambdas are reviewed as
+distinct bodies, not collapsed by name or line. Complete production source,
+header, extractor, constants, fixtures, recipes and retained report were read.
+All42 relevant original functions were independently queried and decompiled
+through attested Ghidra. Both unmodified production TUs freshly compile serially
+after reconciling declared binary and transitive ECL/runtime include paths.
+This is compilation, not linkage or runtime acceptance. Two WINAPI annotation
+gaps in pool_fixture.hpp account for both indexed implementations; no omitted
+body. Totals929 terminal/6,015 pending; gaps18 reconciled/95 pending.
+
+Natural AnimationHandle construction at0x00425CC0 recovers the real four-byte
+value owner observed in Notice's seven-element array and secondary member.
+Array stride4/count7, constructor return and resolve/interrupt consumers were
+independently checked before canonical probing. One scalar member initializer
+emits all23 bytes through RET, with no relocation, padding, ABI fiction or source
+shaping. Authored/compiler origin remains pending; no authored credit is added.
+Dirty-storage testing checks the zero word and surrounding sentinel bytes.
+Full cold replay70/70 across19 objects covers4,781 bytes; source-present70,
+authored52/3,830 and origin-pending exact14. Whole Notice constructor remains
+nonexact despite this accepted adjacent value contribution.
+
+Original constructor281 bytes calls actual base, Timer, Cursor, seven typed
+handles, secondary handle, filename initialization and diagnostic helpers.
+Reference aggregate Timer/integer handles replace member/EH partition. Original
+167-byte destructor owns node removal, slots14/22, Cursor/base and global owner;
+the retained tests do not exercise loaded assets or concurrent lifetime. Factory
+4DFB90 uses allocator4DEA10 and separate selected setter49C490. Source placement
+allocation/free initialization changes that graph. Register/enable/thunk methods
+require the actual Notice owner, whose full declaration remains unresolved.
+Reference draw comment is again incorrect:49DEA0 calls16-byte ECX-saving member
+478BF0; free direct return1 merges two contributions. No artificial owner is added.
+
+Seven extracted NUL-terminated byte strings and all50 message constructor
+bindings were independently verified. Native CRT initializer40AA40 constructs
+50 separate PMR strings at5C5B40 with EH and exit registration. Source default
+array construction plus aggregate move assignment has a different lifetime.
+Fixture native table construction uses source messages; independently verified
+constants corroborate values, not native CRT initialization or allocator identity.
+
+Extractor calls five completion interfaces seven-slot vtables. Actual interface
+has six function pointers; the seventh raw word is the next table's RTTI locator
+in the first four cases and ASCII SetV after the last table. Raw reported words
+match, but their interpretation overreads the interface. The common invoke
+46EBB0/46A4B0/40E5E0 chain is empty. Replacing five typed std::function callables
+with an empty function object still changes EH, initialization and ownership.
+Native callable constructor/reset partition was inspected; it is not absorbed
+as fake empty class methods or source-authored progress.
+
+Complete update contains2,379 instruction bytes through return at4DF63A plus
+four-state/eight-substate tables. Independent decoding includes unreachable
+five-byte JMP4DF285 omitted by Ghidra's body map. Native Cursor count99 and
+unchecked message indexing differ from source's0..24 exception policy. The real
+StoneMenu names getter usesF4+index*1024, consistent with source names[stone*4]
+for valid rows. Named spawn returns a typed handle through hidden storage and
+array indexing; generalized Controller wrappers differ. Secondary interruption
+uses a typed handle member. Cursor extra argument, Timer wrapper, raw image
+ownership and Controller texture protocols remain separate unresolved calls.
+
+Retained59,904 passes/zero failures are a subset of the actual shared2,915,831
+report, verified against its hash/counters;389/389 source hashes are current.
+No retained oracle was compiled or executed here. Cases consist of1,536
+constructor/destructor snapshots,1,024 synchronous cache-hit graph checks,
+49,152 controlled frames and4,096 each upload pixels/deferred rectangles.
+Fixtures normalize vptr/proxies/callback/global/node addresses; graph encoding
+can also replace coincidental address-valued scalar words. Proxy contents are
+separately compared, but this is not unnormalized exact byte comparison.
+
+Frame cases exclude image substate3 and use valid message indices, synthetic
+Stone names and64-entry ANM pools, absent game state, substituted PMR resources,
+manufactured lock ownership and host GDI fonts7/8. In-memory COM surfaces always
+succeed, fix1088x96/pitch4352 and do not model nonzero rectangle offsets or device
+failure. No async launch, real I/O, failed load, factory, loaded teardown or GPU
+lifetime is exercised. Cleanup is normal-exit-only and resets clock to1 rather
+than the prior value. Shared renderer snapshots remain separately pending bodies;
+reading Notice include fragments grants no unrelated renderer review credit.
+
+Private evidence: `.analysis/ref017-*`. Continue with card_system and every
+remaining implementation/manual gap; the exhaustive goal remains active.
 
 ## REF-016: all 25 Help implementation entries reviewed
 

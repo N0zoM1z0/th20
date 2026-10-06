@@ -10,6 +10,7 @@
 #include "GameRandom.hpp"
 #include "WindowState.hpp"
 #include "SoundEffects.hpp"
+#include "AnimationHandle.hpp"
 
 #include <array>
 #include <bit>
@@ -39,6 +40,13 @@ std::uint32_t th20::GameRandom::next() {
 
 int main() {
     check_scene_resource_protocol();
+    alignas(th20::AnimationHandle) std::array<unsigned char, 12> handle_storage;
+    handle_storage.fill(0xa5);
+    auto* handle = ::new(handle_storage.data() + 4) th20::AnimationHandle;
+    assert(handle->value == 0);
+    for (std::size_t i = 0; i != handle_storage.size(); ++i) {
+        assert(handle_storage[i] == (i >= 4 && i < 8 ? 0 : 0xa5));
+    }
     alignas(th20::SoundEffectRequest) std::array<unsigned char, sizeof(th20::SoundEffectRequest)> request_storage;
     request_storage.fill(0xa5);
     auto* request = ::new(request_storage.data()) th20::SoundEffectRequest;

@@ -3,6 +3,17 @@ target_sha256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a089
 
 [units]
 
+# REF-017: actual four-byte value owner; complete constructor through RET.
+[units.animation_handle_construct]
+source = "src/AnimationHandle.cpp"
+object = "build/AnimationHandle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::AnimationHandle::AnimationHandle"]
+symbol = "??0AnimationHandle@th20@@QAE@XZ"
+target_address = 0x00425CC0
+size = 23
+relocations = []
+
 # REF-001: natural C++20 /Od emission; this profile is local to these sources.
 [units.random_step]
 source = "src/Random.cpp"
