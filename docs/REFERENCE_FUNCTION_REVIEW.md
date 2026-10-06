@@ -40,11 +40,24 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 2,646 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/audio/session/stage-clear/help/notice/card/ending/trophy/screen/text/options/key-config/pause/stone/progress/replay/title/tool/test entries have explicit decisions. The
-remaining 4,298 indexed entries are pending. The separate
+The current REF-034 checkpoint has 4,937 explicit terminal decisions and 2,007
+pending indexed entries. The complete672-body Overlay/HUD/SmallScore/completion
+family follows the reviewed Player/Bomb/Item and Bullet/Laser/Damage batches.
+The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: forty-five of 113 files are reconciled, leaving 68 pending.
+and parser-gap count:79 of113 files are reconciled, leaving34 pending.
+
+## REF-034: complete Overlay batch
+
+All376 bodies have individual decisions:180 nonexact/196 support,40 fully read
+indexed files and nine reconciled grammar files/28 sites. Actual production
+objects yield318 complete comparisons across174 indexed bodies:268 size
+differences/50 structural matches.540 strategy-table slots,30 base slots,three
+owner slots and18 factory entries independently match the locked PE. Actual
+construction/destruction/allocator/phase-return protocols differ from synthetic
+reference owners; no new canonical units are accepted. Existing152 units retain
+fresh receipts and complete replay. Read the detailed family review for oracle
+coverage and remaining owner/type/relocation work. Continue every pending body.
 
 ## REF-026: Title batch
 

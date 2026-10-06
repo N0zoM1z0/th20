@@ -1,5 +1,129 @@
 # Overlay, HUD, SmallScore and StageCompletion review
 
+## REF-034 — complete Overlay batch
+
+All 376 Overlay implementations have individual body-hash-bound decisions:
+180 nonexact and 196 support, across 40 fully read indexed files. The complete
+672-body Overlay/HUD/SmallScore/StageCompletion family is now reviewed. Global
+coverage is 4,937 terminal / 2,007 pending of 6,944 implementations. Nine grammar
+files / 28 sites are manually reconciled: 79 complete / 34 pending gap files.
+The exhaustive goal remains active; terminal nonexact reviews are not recovered
+game implementations.
+
+This batch adds no canonical source or exact units. All existing 152 canonical
+contributions still replay with fresh unchanged-source receipts: 43 objects,
+10,405 complete bytes. Source-present origins remain 91 pending / four library;
+confirmed authored progress remains 57 / 4,074 bytes. Existing REF-032/033 cold
+builds remain valid because neither maintained source nor compiler profiles
+changed. No reference implementation is copied into public production source.
+
+### Original owners, tables and lifetime
+
+The locked PE independently confirms all 18 factory entries at 5B0AB0, including
+aliases 0/8 and 9/17. Sixteen distinct constructor-bound strategy tables contain
+30 entries each; all 540 position-specific slots and the 30 base slots at
+575810 were checked against target bytes. Constructor stores independently
+bind each vptr. Concrete storage sizes are 38, 40, 48, 5C or 98 in hexadecimal.
+All sixteen constructors call the actual base constructor 52FAD0 directly.
+
+The reference introduces an extra StandardWeapon class. Its constructor/vptr
+transition is absent from the original concrete constructor calls. Six complete
+31-byte FocusBoost/FlagBoost/Orbit constructors match structurally, but their
+REL32 symbol names StandardWeapon construction. Mapping that symbol to native
+Weapon construction would be an ABI/owner lie. Cloud adds another CloudTail
+construction partition: character 0 has position5C/radius68/interpolation6C;
+character 1 has radius5C/interpolation60/position8C. Both are actual 98-byte
+owners, not interchangeable tail layouts.
+
+Each actual 21-byte factory wrapper pushes a source diagnostic string, loads
+the allocator receiver from 5B8894 and calls a thiscall allocator. All sixteen
+allocator bodies are independently decoded: 135 bytes, or 141 for Cloud,
+preserving the receiver, a string argument, RET4 and EH4/cookie state. They
+allocate the actual class size, clear it and call its real constructor. The
+reference free nothrow/catch allocator does not reconstruct this protocol.
+Diagnostic strings establish source routing, not a fabricated allocator type.
+
+Native destruction is thiscall532740 -> cdecl532840 -> deleting wrapper532AB0
+with flags0 -> common destructor532950. The final destructor writes vptr575810.
+The source defaulted nonvirtual destructor emits no body or vptr transition.
+The outer routine then takes slot1 locking and calls unsized delete5429FC;
+the unused deleting-wrapper branch calls sized delete54278D with38. A dummy
+destructor or made-up allocator receiver is not accepted to match these bytes.
+
+The actual 84-byte Overlay owner constructor532880 is exactly 208 bytes and
+ends before destructor532950. Its vtable576228 independently contains
+532AE0/5332B0/533700. It constructs the real Counter member through532850;
+the reference aggregate initializes that member without emitting this call.
+Nine focused owner/protocol functions were fully PE-decoded and checked against
+Ghidra. The iterator-omitted JMP532C52 -> 532D59 is retained, without database
+mutation. Other rejected candidate extents and the earlier 436-head family
+export remain provisional; this is not a claim to have closed every native span.
+
+### Complete compiler diagnostics and easy-match limits
+
+All sixteen actual Overlay production objects retain fresh locked-compiler
+receipts and static/external/template/callback/deleting/EH symbol inventories.
+Across 174 indexed implementations, 318 complete COFF comparisons yield 268
+length differences and 50 structural matches; 47 diagnostics use actual static
+symbols. Both character instances and all genuine overloads are compared.
+No target-sized prefix is compared, and solved diagnostic relocation fields
+are not reused as independent anchors.
+
+Other structural matches include shared empty defaults, zero-return bodies,
+stone-id getters, Cloud position pointers, Char1 Shield option NOPs, the base
+passive clear/end routines, owner disable and its deleting wrapper. These still
+need original owner, prototype, vtable, relocation or shared-code/ICF identity.
+Base construction99 and destruction20 are small future candidates, but adding
+the full 30-slot class before resolving its type and lifetime would invent an
+owner. Record this dependency and continue rather than accept a padded facade.
+
+Native base phase/passive queries MOVZX their raw bytes34/35 into EAX; reference
+`!=0` normalizes. The original bool/byte declaration and noncanonical storage
+domain remain unresolved. Native owner phase calls at532C21 and532CFB test full
+EAX after end/update slots22/21. Several retained weapon fixtures compare AL
+only; this is a coverage limit, not proof that the reference int declaration is
+wrong. No prototype is changed merely to fit emission.
+
+### Behavior, oracle scope and individual support review
+
+All weapons' phase, shooting, option, passive and callback bodies were read,
+including their actual templates, inline methods and owning cancellation
+lambdas. Bar firing deliberately leaves main_shooting unchanged. Ring uses
+fractional age/radius160 and spawns Item6 on expiration. Cloud interpolates
+16->96 and creates two-frame damage20. Shield uses separate 0x24-byte BSS
+records and persistent option damage; Yellow uses two other 0x24-byte records,
+retains Char0 cooldown on reset, samples passive cadence22/16 and merges three
+native cancellation callables into a bool-selected helper. Original callbacks,
+RNG/locking, typed handles, resource/Region owners and EH remain unclosed.
+
+Selection, initialization, teardown, all entry bridges and full owner frame
+flow have individual decisions. Stage/stone arrays require their actual valid
+indices. Visuals preserve end-position read before mesh replacement and start
+read after it, generate 48 effects and update the mesh with radial fading;
+original GPU/mesh ownership remains unverified. Environment's multiple
+interfaces and function-static singleton are synthetic dependency adapters.
+All oracle recorders, mock virtuals, native-hook boundaries, drivers and nested
+lambdas are individually reviewed as support, including their parameter guards
+and substituted resource/retirement behavior.
+
+Retained Overlay870400/0 binds 42 current post-run source hashes, not executed
+build identity. Subtotals are common188416, Orbit/queries32768, owner/frame65536,
+Bar61440, Ring69632, Shield102400, Cloud69632, Yellow258048, filtered cancel10240
+and firing-at-position12288. These are overlapping fixture observations, not
+whole-game or additional exact totals. The oracle excludes production
+owner/lifecycle/factory/visuals linkage; uses ControlledWeapon mocks; excludes
+the constructor vptr; normalizes callback pointers; masks Effect padding; and
+substitutes final Bullet cancellation/Shot construction. Several return checks
+are byte-only. The source-hash writer and foreign-path table-inspection tool
+were read but not executed. No Windows CPU oracle or game playthrough was run.
+
+Six grammar files contain sixteen explicit class-instantiation identifiers,
+not omitted definitions; actual emitted instances are separately inventoried.
+The other three files have twelve cdecl/fastcall pointer-return annotation
+errors, all within indexed boundary bodies. Original bytes and CRLF hashes
+remain intact. Individual decisions and reconciliations reside in the two
+reference review ledgers.
+
 ## REF-033 — HUD batch and Dialogue protocol
 
 All134 HUD implementations now have individual hash-bound decisions:2 absorbed,

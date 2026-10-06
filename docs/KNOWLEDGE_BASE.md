@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## REF-034 — 2026-10-07 — complete Overlay batch
+
+- All376 bodies individually reviewed180 nonexact/196 support,40 indexed files.
+  Complete672-body family reviewed; global4,937 terminal/2,007 pending. Nine
+  grammar files/28 sites reconciled, gaps79/34. Exhaustive goal remains active.
+- Locked native18-position factory5B0AB0 and all540 strategy slots/30 base
+  slots/three owner slots match PE.16 constructor-bound classes directly call
+  base52FAD0; extra source StandardWeapon ctor/vptr has no native counterpart.
+  Cloud98 layouts differ by character and add a source-only tail ctor boundary.
+- Native21-byte wrappers pass diagnostic strings to thiscall allocator receiver
+  global5B8894;16 allocators135/141bytes retain string/receiver/RET4/EH4. Actual
+  allocator type/storage/lifetime remain unresolved, not invented as a facade.
+- Destroy532740 -> cdecl532840 -> deleting532AB0(flags0) -> common532950 restores
+  vptr575810 before slot1/unsized delete. Source defaulted nonvirtual destructor
+  emits no body/transition. Owner532880/208 calls Counter532850; source aggregate
+  does not. Owner vtable576228 has532AE0/5332B0/533700 independently observed.
+- Nine native protocol functions completely decoded/PE-attested, including
+  omitted JMP532C52->532D59. Other rejected target extents remain provisional.
+  Phase calls532C21/532CFB test full EAX; retained AL-only samples cannot prove
+  full return ABI. Base MOVZX byte34/35 vs!=0 source normalization differs;
+  original bool/byte types/noncanonical storage domain remain unproved.
+- Sixteen fresh actual production objects yield318 full diagnostics across174
+  indexed bodies:268 lengths/50 structural,47 static-symbol checks. Structural
+  defaults/getters/position/ctors/deleting wrappers still need canonical owner,
+  type/vtable/relocation/ICF identity. No new source or exact units accepted.
+  Existing152 units/43 objects/10,405 bytes replay with fresh unchanged-source
+  receipts; authored57/4,074 and pending origins91/library4 remain unchanged.
+- Full source/oracle/recipe/report/writer reads,870400/0/42 current post-run
+  hashes audited. Oracle excludes owner/lifecycle/factory/visuals linkage,
+  substitutes concrete strategies/resources/retirement and normalizes callbacks/
+  vptrs. Original GPU/RNG locking/callable/EH lifetimes unverified. Windows oracle
+  and writers NOT executed. Individual scoped notes are in review ledgers.
+
 ## REF-033 — 2026-10-07 — HUD batch and Dialogue protocol
 
 - HUD134 individually reviewed:2 absorbed /59 nonexact /73 support,36 full

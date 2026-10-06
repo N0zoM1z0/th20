@@ -59,8 +59,11 @@ REF-032 absorbs the score-record constructor through an independently rewritten
 real member, while reviewing all162 SmallScore/StageCompletion implementations.
 The reference free helper itself remains nonexact. HUD/Overlay values add two
 more complete constructors. REF-033 closes all134 HUD body reviews and adds
-three real Dialogue value/text contributions through an independent rewrite,
-with376 Overlay bodies still pending. Shared decoder storage remains external;
+three real Dialogue value/text contributions through an independent rewrite.
+REF-034 closes all376 Overlay body reviews,180 nonexact/196 support, without
+adding canonical units. Fifty structural matches still require real native
+owners/prototypes/vtables/relocations; synthetic StandardWeapon construction and
+trivial destruction differ from original lifetimes. Shared decoder storage remains external;
 unmatched final SJIS leads and malformed/unbounded inputs are outside acceptance.
 Actual owner/vtable/Animation/Scheduler/SaveManager/Replay resource, checked-array
 and EH lifetimes remain unclosed. See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.

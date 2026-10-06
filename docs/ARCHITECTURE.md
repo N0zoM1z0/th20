@@ -1,5 +1,14 @@
 # Target inventory and initial architecture boundary
 
+REF-034 closes all376 Overlay implementations; the entire672-body display/weapon
+family is individually reviewed. Eighteen native factory positions bind sixteen
+30-slot strategy owners directly to Weapon52FAD0, without the reference's extra
+StandardWeapon construction layer. Destruction restores base vptr through a
+separate deleting wrapper. Original allocator/owner/prototype/vtable/EH identity
+remains unclosed;50 structural COFF matches add no canonical credit. Native
+phase consumers test full EAX, beyond several fixture AL-only checks. See
+REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
+
 Dialogue contains a real four-byte flags member at104, retaining upper25 bits
 on construction. Its shared text decoder uses BSS5C4A20 and a separate uint8 /
 full-int SJIS predicate; all three complete contributions are exact. Result
@@ -12,8 +21,8 @@ ScoreEntry contains typed Vector3/Timer members and preserves two alignment byte
 HUD boss panels construct four8-byte gauges, and Overlay constructs an8-byte
 counter. Three natural value constructors are complete exact; original float
 roles, counter arithmetic and enclosing owner/vtable/EH lifetimes remain open.
-All162 score/completion bodies have individual REF032 decisions;376
-Overlay bodies remain pending. Completion's raw-byte/full-EAX unlock return differs from
+All162 score/completion bodies have individual REF032 decisions; Overlay's376
+are separately reviewed at REF034. Completion's raw-byte/full-EAX unlock return differs from
 reference bool; Environment fixtures do not prove original getter/return ABI.
 See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
 

@@ -1,5 +1,52 @@
 # Current reconstruction handoff
 
+## REF-034 — 2026-10-07 — complete Overlay batch
+
+All376 Overlay implementations individually reviewed:180 nonexact/196 support,
+40 fully read indexed files. Entire672-body Overlay/HUD/SmallScore/completion
+family closed for individual review. Global4,937 terminal/2,007 pending of6,944;
+nine grammar files/28 sites reconciled, gaps79 complete/34 pending. Exhaustive
+goal active; nonexact/support decisions are not recovered game implementations.
+
+- No new canonical source or units. All152 complete contributions replay with
+  fresh unchanged-source receipts,43 objects/10,405 bytes. Source152, pending
+  origins91/library4, confirmed authored57/4,074 unchanged. Existing cold builds
+  remain valid; no maintained source/header/profile changes this checkpoint.
+- All16 Overlay production objects attested, actual static/external/template/
+  callback/deleting/EH inventories retained.318 complete comparisons across174
+  indexed bodies:268 length differences/50 structural matches;47 static-symbol
+  diagnostics. No prefix acceptance or diagnostic-solved relocation anchors.
+- Native18 factory entries,540 strategy slots/30 base slots/three owner slots
+  independently PE-check.16 constructors call52FAD0 directly; reference adds
+  StandardWeapon constructor/vptr. Six31-byte constructors structurally match
+  but that extra owner cannot be relabeled as the actual native base.
+- Actual factories21 bytes pass diagnostic strings to thiscall global5B8894;
+  allocators135/141 retain receiver/string/RET4/EH4. Destroy532740 calls532840,
+  then deleting532AB0(flags0), then532950 restoring575810. Reference defaulted
+  nonvirtual destructor emits no body. Real allocator/type/lifetime unclosed.
+- Owner ctor532880/208/vtable576228/Counter532850 corroborated. Nine focused
+  native functions fully decode; missing JMP532C52->532D59 retained. Other
+  rejected extents and broader436-head export remain provisional.
+- Native phase end/update calls test full EAX; retained weapon fixtures often
+  compare AL only. Base queries return MOVZX raw bytes34/35 versus source!=0;
+  original bool/byte types and noncanonical object domain remain unproved.
+- Full weapon/owner/frame/visuals/Environment/fixtures/recipe/writer/report text
+  read.870400/0 binds42 current post-run hashes, not executed build identity;
+  oracle excludes owner/lifecycle/factory/visuals production linkage. Mock
+  resources, ControlledWeapon, callback/vptr normalization/byte-only returns
+  and real GPU/thread/retirement/closure owners remain scoped. No Windows
+  CPU oracle, evidence writer or game playthrough executed during this review.
+- Private .analysis/ref034-record.py EXECUTED ONCE; NEVER RERUN. All older
+  registration/review writers also already executed. Preserve frozen src/probes
+  and current43 reference receipts while continuing serial compiler work.
+
+Next coherent batches: Gameplay1019/ECL144, Sprite540/StageBackground121 and183
+remaining support implementations. Review every body/gap and absorb easy natural
+exact components; do not mark the goal complete with2,007 bodies/34 gaps pending.
+No subagents/concurrent MSVC builds. English maintained text, repo-python,
+gpt-6.1-sol subjects and public main push remain authorized. Full family review:
+REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md; private ref034 resume notes.
+
 ## REF-033 — 2026-10-07 — HUD batch and Dialogue protocol
 
 All134 HUD implementations individually reviewed:2 absorbed /59 nonexact /
