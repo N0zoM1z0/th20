@@ -41,6 +41,8 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/BulletStyle.cpp",
                             "src/Angle.cpp", "src/Motion.cpp", "src/Rectangle.cpp",
                             "tests/motion_value_semantics.cpp",
+                            "src/ScoreEntry.cpp", "src/HudGauge.cpp", "src/OverlayCounter.cpp",
+                            "tests/display_value_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

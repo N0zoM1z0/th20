@@ -72,7 +72,11 @@ def main():
                                 "source_reconstruction/damage_regions/",
                                 "source_reconstruction/player_entity/",
                                 "source_reconstruction/bomb_system/",
-                                "source_reconstruction/item_system/")):
+                                "source_reconstruction/item_system/",
+                                "source_reconstruction/overlay_system/",
+                                "source_reconstruction/hud_system/",
+                                "source_reconstruction/small_score/",
+                                "source_reconstruction/stage_completion/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -99,6 +103,8 @@ def main():
             # Player inherits ECL/session/runtime headers and declares native/
             # scheduler; Bomb inherits gameplay/sprite/runtime/Damage; Item
             # declares native/binary/scheduler and inherits runtime/sprite.
+            # Overlay, HUD, Small Score and Stage Completion declare these
+            # paths and inherit runtime/VM headers through their public links.
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
@@ -117,7 +123,11 @@ def main():
                                 "source_reconstruction/damage_regions/",
                                 "source_reconstruction/player_entity/",
                                 "source_reconstruction/bomb_system/",
-                                "source_reconstruction/item_system/")):
+                                "source_reconstruction/item_system/",
+                                "source_reconstruction/overlay_system/",
+                                "source_reconstruction/hud_system/",
+                                "source_reconstruction/small_score/",
+                                "source_reconstruction/stage_completion/")):
             # Preserve these modules' explicit CMake floating-point option.
             profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative == "source_reconstruction/archive/verify.cpp":

@@ -145,3 +145,6 @@ th20::IntPoint::IntPoint(),0x00414030,function
 th20::IntPoint::operator+,0x004F58F0,function
 th20::Motion::update,0x0047A1F0,function
 th20::Motion::outside_bounds,0x0047A400,function
+th20::ScoreEntry::ScoreEntry,0x0050FD50,function
+th20::HudGauge::HudGauge,0x004AECE0,function
+th20::OverlayCounter::OverlayCounter,0x00532850,function

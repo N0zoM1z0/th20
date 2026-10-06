@@ -1682,3 +1682,37 @@ relocations = [
   { offset = 0x4E, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
   { offset = 0x6D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
 ]
+
+# REF-032: real display/overlay values; complete constructors, independent owners.
+[units.score_entry_construct]
+source = "src/ScoreEntry.cpp"
+object = "build/ScoreEntry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ScoreEntry::ScoreEntry"]
+symbol = "??0ScoreEntry@th20@@QAE@XZ"
+target_address = 0x0050FD50
+size = 127
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x3B, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+[units.hud_gauge_construct]
+source = "src/HudGauge.cpp"
+object = "build/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::HudGauge::HudGauge"]
+symbol = "??0HudGauge@th20@@QAE@XZ"
+target_address = 0x004AECE0
+size = 34
+relocations = []
+
+[units.overlay_counter_construct]
+source = "src/OverlayCounter.cpp"
+object = "build/OverlayCounter.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::OverlayCounter::OverlayCounter"]
+symbol = "??0OverlayCounter@th20@@QAE@XZ"
+target_address = 0x00532850
+size = 33
+relocations = []

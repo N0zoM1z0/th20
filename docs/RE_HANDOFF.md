@@ -1,5 +1,44 @@
 # Current reconstruction handoff
 
+## REF-032 — 2026-10-07 — display values and score/completion checkpoint
+
+Three natural constructors add193 complete bytes: ScoreEntry50FD50/127,
+HudGauge4AECE0/34 and OverlayCounter532850/33. Full149-unit cold replay across
+41 objects /10,080 bytes and C++20/UBSan dirty construction checks pass. Source149,
+pending origins88/library4; authored57/4,074 unchanged. ScoreEntry's implicit
+alignment bytes3A/B are retained; actual Vector3/Timer anchors precede matching.
+
+All162 SmallScore74/StageCompletion88 implementations are individually reviewed:
+one absorbed /28 nonexact /133 support, nineteen fully read indexed files.
+Global4,427 terminal /2,517 pending; two grammar files/six sites reconciled,
+gaps67/46. See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
+
+- All43 production TUs in the four-module family freshly compile after final
+  maintained source freeze. Actual inherited include paths/strict FP retained.
+  Nine score/completion objects' static/external symbols, inline/adapters and
+  deleting wrapper yield30 full diagnostics:28 sizes, one mismatch, one
+  structural match. SmallScore deleting wrapper lacks canonical owner/dtor/EH.
+- Fifty-five focused native heads PE-attest below caps; four missing two-byte
+  direct JMPs independently decoded. Constructor-bound SmallScore vtable's
+  three entries read. The436-head broader family export is still provisional.
+- Native unlock getter returns raw byte/full EAX, reference normalizes bool;
+  Replay mode also returns full-int rather than bool. Playtime CRT conversion,
+  repeated getters/clock and SaveManager checked arrays/lock/EH remain open.
+- Retained score46208/0 has28 current/one stale text.hpp hash; completion126976/0
+  has13 current local hashes excluding inherited dependencies. Full driver/hooks/
+  normalization/writers audited; no Windows CPU oracle/writer executed and no
+  executed-build identity. Shared49152 Progress checks not double-counted.
+- REF032 component registration and review writer already executed ONCE;
+  NEVER RERUN. All REF031/older writers also executed. Preserve frozen src/probes
+  during serial compiler reuse/rebuild; current149 canonical/43 ref receipts.
+
+Continue remaining510 Overlay/HUD implementations and their full fixtures,
+report/owner/control-flow/table/grammar review. This family originally totals672;
+compilation alone closes none of its remaining bodies. Then Gameplay1019/ECL144,
+Sprite540/StageBackground121 and183 support bodies. The exhaustive goal remains
+active:2,517 bodies /46 grammar files pending. No subagents/concurrent MSVC builds.
+English maintained text, repo-python and gpt-6.1-sol commits/public push authorized.
+
 ## REF-031 — 2026-10-07 — Player / Bomb / Item batch complete
 
 All884 implementations individually reviewed:1 absorbed /221 nonexact /662

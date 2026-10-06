@@ -3311,7 +3311,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004AEB40,159,0x004AEBDE,FUN_004aeb40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AEBF0,146,0x004AEC81,FUN_004aebf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AEC90,66,0x004AECD1,FUN_004aec90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004AECE0,34,0x004AED01,FUN_004aece0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004AECE0,34,0x004AED01,FUN_004aece0,th20::HudGauge::HudGauge,HudGauge,reconstructed,100.00,__thiscall,th20::HudGauge::HudGauge,false,src/HudGauge.cpp,REF-032; docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md,unknown,"REF-032: complete natural constructor on actual68/8/8-byte display/overlay values, independently confirmed by native enclosing-owner construction and float/record consumers.149-unit/41-object cold canonical replay and dirty-storage C++20/UBSan checks pass. Original spelling and authored/compiler origin pending.672-body batch ongoing; see docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md."
 0x004AED10,62,0x004AED4D,FUN_004aed10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AED50,75,0x004AED9A,FUN_004aed50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AEDA0,75,0x004AEDEA,FUN_004aeda0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -4979,7 +4979,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0050FC90,80,0x0050FCDF,FUN_0050fc90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0050FCE0,26,0x0050FCF9,FUN_0050fce0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0050FD00,73,0x0050FD48,FUN_0050fd00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0050FD50,127,0x0050FDCE,FUN_0050fd50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0050FD50,127,0x0050FDCE,FUN_0050fd50,th20::ScoreEntry::ScoreEntry,ScoreEntry,reconstructed,100.00,__thiscall,th20::ScoreEntry::ScoreEntry,false,src/ScoreEntry.cpp,REF-032; docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md,unknown,"REF-032: complete natural constructor on actual68/8/8-byte display/overlay values, independently confirmed by native enclosing-owner construction and float/record consumers.149-unit/41-object cold canonical replay and dirty-storage C++20/UBSan checks pass. Original spelling and authored/compiler origin pending.672-body batch ongoing; see docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md."
 0x0050FDD0,201,0x0050FE98,FUN_0050fdd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0050FEA0,132,0x0050FF23,FUN_0050fea0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0050FF30,49,0x0050FF60,FUN_0050ff30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -5572,7 +5572,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00532740,97,0x005327A0,FUN_00532740,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005327B0,135,0x00532836,FUN_005327b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00532840,16,0x0053284F,__ExceptionPtrDestroy,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00532850,33,0x00532870,FUN_00532850,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00532850,33,0x00532870,FUN_00532850,th20::OverlayCounter::OverlayCounter,OverlayCounter,reconstructed,100.00,__thiscall,th20::OverlayCounter::OverlayCounter,false,src/OverlayCounter.cpp,REF-032; docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md,unknown,"REF-032: complete natural constructor on actual68/8/8-byte display/overlay values, independently confirmed by native enclosing-owner construction and float/record consumers.149-unit/41-object cold canonical replay and dirty-storage C++20/UBSan checks pass. Original spelling and authored/compiler origin pending.672-body batch ongoing; see docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md."
 0x00532880,208,0x0053294F,FUN_00532880,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00532950,20,0x00532963,FUN_00532950,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00532970,274,0x00532A81,FUN_00532970,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

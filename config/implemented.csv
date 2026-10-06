@@ -144,3 +144,6 @@ th20::IntPoint::IntPoint()
 th20::IntPoint::operator+
 th20::Motion::update
 th20::Motion::outside_bounds
+th20::ScoreEntry::ScoreEntry
+th20::HudGauge::HudGauge
+th20::OverlayCounter::OverlayCounter

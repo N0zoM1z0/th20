@@ -3311,7 +3311,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004AEB40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AEBF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AEC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AECE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AECE0,unknown,HudGauge,review,pending,"REF-032: complete natural constructor on actual68/8/8-byte display/overlay values, independently confirmed by native enclosing-owner construction and float/record consumers.149-unit/41-object cold canonical replay and dirty-storage C++20/UBSan checks pass. Original spelling and authored/compiler origin pending.672-body batch ongoing; see docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md."
 0x004AED10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AED50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AEDA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4979,7 +4979,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0050FC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050FCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050FD00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0050FD50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0050FD50,unknown,ScoreEntry,review,pending,"REF-032: complete natural constructor on actual68/8/8-byte display/overlay values, independently confirmed by native enclosing-owner construction and float/record consumers.149-unit/41-object cold canonical replay and dirty-storage C++20/UBSan checks pass. Original spelling and authored/compiler origin pending.672-body batch ongoing; see docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md."
 0x0050FDD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050FEA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0050FF30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5572,7 +5572,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00532740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005327B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00532840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00532850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00532850,unknown,OverlayCounter,review,pending,"REF-032: complete natural constructor on actual68/8/8-byte display/overlay values, independently confirmed by native enclosing-owner construction and float/record consumers.149-unit/41-object cold canonical replay and dirty-storage C++20/UBSan checks pass. Original spelling and authored/compiler origin pending.672-body batch ongoing; see docs/REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md."
 0x00532880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00532950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00532970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

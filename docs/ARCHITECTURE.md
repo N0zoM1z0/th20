@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+SmallScore owns an Animation and two eighteen-record arrays. Its actual68-byte
+ScoreEntry contains typed Vector3/Timer members and preserves two alignment bytes.
+HUD boss panels construct four8-byte gauges, and Overlay constructs an8-byte
+counter. Three natural value constructors are complete exact; original float
+roles, counter arithmetic and enclosing owner/vtable/EH lifetimes remain open.
+All162 score/completion bodies have individual REF032 decisions;510 HUD/Overlay
+bodies remain pending. Completion's raw-byte/full-EAX unlock return differs from
+reference bool; Environment fixtures do not prove original getter/return ABI.
+See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
+
 Player / Bomb / Item share actual Angle4, Motion72, VectorInterpolation84
 and IntPoint8 values. Nine complete contributions cover constructors, arithmetic,
 Motion update orchestration and full-int bounds;765 bytes without enclosing

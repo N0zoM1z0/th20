@@ -146,3 +146,6 @@ address,name,module,confidence,evidence
 0x004F58F0,th20::IntPoint::operator+,Rectangle,high,REF-030
 0x0047A1F0,th20::Motion::update,Motion,high,REF-031
 0x0047A400,th20::Motion::outside_bounds,Motion,high,REF-031
+0x0050FD50,th20::ScoreEntry::ScoreEntry,ScoreEntry,high,REF-032
+0x004AECE0,th20::HudGauge::HudGauge,HudGauge,high,REF-032
+0x00532850,th20::OverlayCounter::OverlayCounter,OverlayCounter,high,REF-032

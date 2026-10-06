@@ -1,5 +1,35 @@
 # Verified facts and open hypotheses
 
+## REF-032 — 2026-10-07 — display values and score/completion checkpoint
+
+- ScoreEntry68, HudGauge8 and OverlayCounter8 are independently constructed
+  actual values. Natural constructors127/34/33 bytes add193; full149 canonical
+  units cold replay across41 objects /10,080 bytes. Source149/pending origins88/
+  library4; confirmed authored57/4,074 unchanged.
+- Score arrays18*68 contain typed Vector3/Timer; float30/34 correct reference
+  integer declarations, roles unresolved. Implicit3A/B padding retained across
+  dirty construction. HUD first gauge word float, second word unresolved;
+  Overlay counter0/1500 construction accepted, arithmetic/signedness unresolved.
+- SmallScore74/StageCompletion88 individually reviewed:1 absorbed,28 nonexact,
+  133 support. Nineteen indexed files fully read; two grammar files/six sites
+  reconciled. Global4,427 terminal /2,517 pending; gaps67/46. Overlay/HUD510 pending.
+- All43 actual production TUs freshly attest original inherited paths/strict FP.
+  Thirty complete score/completion diagnostics:28 sizes, one mismatch, one
+  structural deleting wrapper with unclosed whole-owner/vtable/dtor/EH. Natural
+  HudPanel109/native159 rejected across default/EHsc/EHa/external partition.
+- Fifty-five focused native heads uncapped and PE-attested; four omitted direct
+  JMPs independently decoded, constructor-bound SmallScore vtable read. Broader
+  family436-head export still provisional, no whole-owner/renderer linkage claim.
+- Unlock4BD780 returns raw byte/full EAX; source bool is not exact, arbitrary
+  metadata bytes omitted by fixture. Replay488800 returns full-int0/1 while
+  fixture compares one byte. Playtime uses two CRT conversions/two clock reads;
+  checked-array/thread/SaveManager and Replay lifetime remain unclosed.
+- SmallScore retained46208/0 binds28 current/one stale text.hpp hash; completion
+  126976/0 binds13 current local hashes, excludes inherited dependencies. Writers
+  rebind post-run hashes without executed-build identity; stage writer has no
+  failed-count guard. Full oracle sources read, none executed. Shared49152
+  Progress checks not recounted. Read full review and individual decisions.
+
 ## REF-031 — 2026-10-07 — Player / Bomb / Item batch complete
 
 - All884 bodies have hash-bound decisions:1 absorbed /221 nonexact /662 support.

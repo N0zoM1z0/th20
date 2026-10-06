@@ -2,6 +2,9 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| ScoreEntry | src/ScoreEntry.hpp, src/ScoreEntry.cpp | construction0x0050FD50 | Complete127-byte exact member on actual68-byte record; typed Vector3/Timer, implicit padding3A/B preserved, float30/34 roles and origin pending |
+| HudGauge | src/HudGauge.hpp, src/HudGauge.cpp | construction0x004AECE0 | Complete34-byte exact constructor on actual8-byte gauge; first word float, second word role and origin pending |
+| OverlayCounter | src/OverlayCounter.hpp, src/OverlayCounter.cpp | construction0x00532850 | Complete33-byte exact constructor on actual8-byte member;0/1500 initial state, arithmetic/signedness and origin pending |
 | BulletStyle | src/BulletStyle.hpp, src/BulletStyle.cpp | radius query 0x00485700 | Complete18-byte exact cdecl query; actual writable50*344-byte array, radius+144 and BSS base independently audited; storage/initializer undefined, origin pending |
 | BulletValues | src/BulletValues.hpp, src/BulletValues.cpp | constructors 0x0047BD90/0x0047BD20/0x0047BCA0 | Three complete exact constructors on actual64/40/44x86-byte values; shared array strides/signed counts/script pointer independently observed; origins and full owners pending |
 | Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
@@ -46,9 +49,16 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns thirty-eight objects and one canonical profile per source.
-One hundred forty-four units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns forty-one objects and one canonical profile per source.
+One hundred forty-nine units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
+
+REF-032 absorbs the score-record constructor through an independently rewritten
+real member, while reviewing all162 SmallScore/StageCompletion implementations.
+The reference free helper itself remains nonexact. HUD/Overlay values add two
+more complete constructors, with510 enclosing-family bodies still pending.
+Actual owner/vtable/Animation/Scheduler/SaveManager/Replay resource, checked-array
+and EH lifetimes remain unclosed. See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
 
 REF-029 closes the413-body Bullet, Laser and Damage Regions review begun at
 REF-028: three absorbed,214 nonexact,196 support. Eight natural contributions
