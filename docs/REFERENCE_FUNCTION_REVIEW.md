@@ -10,15 +10,18 @@ continues. No default module-wide rejection or completion is permitted.
 ## Coverage and decisions
 
 `reference-function-index.csv` inventories explicit C/C++ definitions, defaulted
-definitions and lambdas. Deleted declarations and generated Ghidra exports are
-excluded from implementation counts. `reference-source-files.csv` includes all
-916 nongenerated C/C++ source/header/include files, including files with no
-function bodies. Names, address hints and role hints are discovery metadata;
-they are not accepted mappings or semantic conclusions.
+definitions and lambdas, Python functions/lambdas, and whole Python/PowerShell
+module bodies. Top-level script execution needs review even without functions.
+Deleted declarations and generated Ghidra exports are excluded.
+`reference-source-files.csv` includes 916 nongenerated C/C++ files, 76 Python
+files and ten PowerShell files: 1,002 files, including files without functions.
+Names, address hints and role hints are discovery metadata, not mappings.
 
-The current parser finds 6,706 definitions: 4,193 reconstruction candidates,
-2,439 test/oracle bodies, 39 tooling/support bodies and 35 historical bridge
-bodies. These role hints need review. The parser reports gaps in 103 files;
+The current inventory has 6,944 implementation entries: 6,706 C/C++ definitions,
+152 Python functions/lambdas and 86 script module bodies. Roles are 4,193
+reconstruction candidates, 2,439 test/oracle bodies, 277 tooling/support entries
+and 35 historical bridge bodies. These role hints need review. There are gaps
+in 113 files, including ten explicit PowerShell function-inventory gaps;
 manual reconciliation remains required, and this inventory is not asserted
 to be a complete compiler AST. Private gap ranges are recorded rather than
 silently omitted. Tree-sitter 0.25.2 and its C++ grammar 0.23.4 are pinned in
@@ -26,16 +29,88 @@ the analysis environment. Export annotation `API` and scheduler CPU-oracle
 `__cdecl` annotations are blanked only in their individually reconciled files.
 Flat inline-assembly statements are blanked only in the manually reconciled
 platform-services CPU oracle. Offsets and hashes use the original bytes; reference source is never edited.
+Python uses the standard-library AST with original UTF-8 byte offsets, including
+decorators in function hashes. PowerShell currently has whole-file entries;
+each file still needs manual function enumeration and gap reconciliation.
 
 `reference-function-reviews.csv` binds every decision to its exact body hash.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 435 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/tool/test bodies have explicit decisions. The remaining 6,271
-indexed bodies are pending. The separate
+The first 469 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/tool/test entries have explicit decisions. The
+remaining 6,475 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: six of 103 files are reconciled, leaving 97 pending.
+and parser-gap count: six of 113 files are reconciled, leaving 107 pending.
+
+## REF-009: program entry and frame schedulers reviewed
+
+All six C++ source/header files, both Python tools, README, CMake and retained
+symbol/call-graph reports are read in full. Every one of the 26 C++ definitions
+and eight Python implementation entries has an individual decision: six
+absorbed exact, eight native deferred and twenty support. No parser gap occurs
+in this family. Current totals: 469 terminal decisions; 6,475 entries pending.
+
+| Target | Complete bytes | Maintained contribution | Authored credit |
+| --- | ---: | --- | --- |
+| 0x0041CC70 | 20 | WindowState::display_mode | 20 |
+| 0x0041D080 | 25 | WindowState::needs_device_reset | 25 |
+| 0x0041DCC0 | 22 | WindowState::set_draw_counter | 22 |
+| 0x0041DE00 | 44 | WindowState::set_device_reset | 44 |
+| 0x0041DE30 | 25 | WindowState::set_reset_delay | 25 |
+| 0x0041B490 | 81 | WindowState::restore_system_settings | 81 |
+| 0x00418DD0 | 108 | WindowFlags::Bits default construction | Origin pending |
+| 0x0041B480 | 16 | Foreground API wrapper | Origin pending |
+
+Independent CRT global initialization and the complete window constructor
+establish an 8,496-byte naturally aligned WindowState. The member at +0x2098 is
+a double, rather than the reference's unknown byte range. Real pointer, pair,
+path, clock and repeat-counter fields explain the storage without explicit
+padding. Five methods restore the original thiscall ABI; needs_device_reset
+returns uint32 rather than the reference's free bool. Native flags clear bits
+0..7, with bits 3..4 a single two-bit field, and retain the high 24 bits.
+Main supplies draw counter -4; frame consumers increment its signed-byte storage.
+
+System restoration saves ECX but reads three option bytes from the fixed global
+at 0x5B6758, rather than the reference's receiver. Independently identified
+SystemParametersInfoW IAT and WINNLSEnableIME thunk establish all anchors and
+COFF addends. Tests do not execute this method or mutate system settings.
+The foreground wrapper's sole observed caller ignores its result; its original
+source/origin identity remains pending. Exact default-bitfield initialization
+also remains outside authored credit until origin is established.
+
+Cold replay passes 55/55 complete units across fourteen objects, 3,995 bytes.
+Authored exact: 41 functions, 3,260 bytes; source-present mappings: 55.
+The eight new contributions total 341 bytes, including 217 authored bytes.
+Portable tests cover all signed-byte values, field isolation, flag preservation,
+delay/mode edge values and low-byte flag construction. Original WindowState
+construction, fixed-global storage and startup remain undefined; fixture value
+initialization is explicit test setup, not accepted native startup.
+
+The original main has a corrected four-argument WINAPI ABI and complete
+2,537-byte extent. CRT entry/cookie/tail jump and argument pushes independently
+corroborate it. Reference MSG zeroing, free/injected APIs, omitted proven no-op
+calls and replaced resource/global lifetime prevent exactness. Native frame
+schedulers have complete extents 433/583/370 bytes; reference arithmetic/draw/
+update helpers change partitioning and omit the full constant-zero member.
+Clock locking, COM/graphics ownership and complete frame runtime remain open.
+Graphics getters/releases await its real PMR/config/viewport/jthread owner;
+opaque reference ranges cannot substitute for that declaration.
+
+The symbol report enumerates 50 unresolved functions, 13 globals, two scheduler
+imports and 23 platform symbols in its retained build. It is not fresh link or
+runtime evidence. The selected graph has 22 nodes and 194 static edges; it uses
+historical analysis tables and omits indirect calls. All five retained CP932
+constants independently match the locked file, but none was copied into
+production source. Neither reference tool was executed or allowed to rewrite
+the pinned checkout. Three unmodified production TUs compile serially.
+
+The inventory now includes previously omitted scripts: 238 additional entries.
+All 6,706 existing C/C++ rows and 435 previous review bindings remain unchanged.
+Synthetic parser checks cover decorated/nested Python, UTF-8 offsets, lambdas,
+function-free modules and explicit PowerShell gaps. These new pending entries
+expand exhaustive coverage; they confer no review or exact credit by discovery.
+Private evidence: `.analysis/ref009-*` and fresh compiler receipts.
 
 ## REF-008: runtime state's 27 definitions reviewed
 

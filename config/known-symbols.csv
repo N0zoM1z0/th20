@@ -47,3 +47,11 @@ address,name,module,confidence,evidence
 0x004298E0,th20::GameRandom::signed_unit,GameRandom,high,REF-008
 0x00422C30,th20::GameRandomEngine::GameRandomEngine,GameRandom,high,REF-008
 0x00422C00,"std::_Get_linear_congruential_seed<uint32_t,0,2147483647>",GameRandom,high,REF-008
+0x0041CC70,th20::WindowState::display_mode,WindowState,high,REF-009
+0x0041D080,th20::WindowState::needs_device_reset,WindowState,high,REF-009
+0x0041DCC0,th20::WindowState::set_draw_counter,WindowState,high,REF-009
+0x0041DE00,th20::WindowState::set_device_reset,WindowState,high,REF-009
+0x0041DE30,th20::WindowState::set_reset_delay,WindowState,high,REF-009
+0x00418DD0,th20::WindowFlags::Bits::Bits,WindowState,high,REF-009
+0x0041B480,th20::bring_window_to_foreground,WindowApi,high,REF-009
+0x0041B490,th20::WindowState::restore_system_settings,WindowState,high,REF-009

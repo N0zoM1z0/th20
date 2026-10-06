@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Inventory reference bodies and parse gaps; discovery never implies review."""
 import argparse
+import ast
 import csv
 import hashlib
 from importlib.metadata import version
@@ -13,7 +14,7 @@ from project import ROOT, load_manifest
 
 FIELDS = ["id", "reference_path", "module", "kind", "name", "start_line",
           "end_line", "body_sha256", "file_sha256", "address_hints", "role_hint"]
-SOURCE_SUFFIXES = {".cpp", ".cc", ".cxx", ".hpp", ".h", ".c", ".inl", ".inc"}
+SOURCE_SUFFIXES = {".cpp", ".cc", ".cxx", ".hpp", ".h", ".c", ".inl", ".inc", ".py", ".ps1"}
 ADDRESS = re.compile(r"(?:0x|FUN_)([0-9a-fA-F]{6,8})\b")
 PARSER_ANNOTATIONS = {
     "native_recovered/native_exports.cpp": (b"API",),
@@ -44,6 +45,8 @@ def walk(node):
 
 
 def source_role(path):
+    if Path(path).suffix in {".py", ".ps1"}:
+        return "tool-or-support"
     parts = Path(path).parts
     if parts[0] == "incremental":
         return "historical-bridge-or-retained-engine"
@@ -77,6 +80,47 @@ def addresses(text):
                    if 0x00401000 <= int(match, 16) < 0x0056B480})
 
 
+def script_inventory(path, data):
+    # Python top-level execution is itself an implementation, even in files
+    # without functions. PowerShell gets a whole-file entry and an explicit
+    # unresolved function-inventory gap until that file is manually reconciled.
+    data.decode("utf-8")  # AST column offsets below refer to original UTF-8 bytes.
+    module = path.split("/")[1] if path.startswith("source_reconstruction/") else path.split("/")[0]
+    ranges = [("script_module", "<module>", 1, 0, max(1, len(data.splitlines())), 0, len(data))]
+    errors = []
+    if path.endswith(".py"):
+        tree = ast.parse(data, filename=path)
+        lines = data.splitlines(keepends=True)
+        offsets = [0]
+        for line in lines:
+            offsets.append(offsets[-1] + len(line))
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
+                continue
+            start, column = node.lineno, node.col_offset
+            if getattr(node, "decorator_list", None):
+                first = node.decorator_list[0]
+                start, column = first.lineno, first.col_offset - 1
+            begin = offsets[start - 1] + column
+            end = offsets[node.end_lineno - 1] + node.end_col_offset
+            ranges.append(("python_" + type(node).__name__, getattr(node, "name", "<lambda>"),
+                           start, column, node.end_lineno, begin, end))
+    else:
+        errors.append(dict(start_line=1, end_line=ranges[0][4],
+                           node_type="unsupported_powershell_function_inventory"))
+    rows = []
+    for kind, name, start, column, end_line, begin, end in ranges:
+        identity = f"{path}:{start}:{column}:{kind}:{name}"
+        body = data[begin:end]
+        rows.append(dict(id=digest(identity.encode())[:20], reference_path=path, module=module,
+                         kind=kind, name=name, start_line=start, end_line=end_line,
+                         body_sha256=digest(body), file_sha256=digest(data),
+                         address_hints=";".join(addresses(body.decode("utf-8"))),
+                         role_hint=source_role(path)))
+    return rows, dict(path=path, sha256=digest(data), definitions=len(rows),
+                      role_hint=source_role(path), parse_errors=errors)
+
+
 def inventory(reference, paths):
     import tree_sitter_cpp
     from tree_sitter import Language, Parser
@@ -92,6 +136,11 @@ def inventory(reference, paths):
         if path.startswith("analysis/ghidra/") or "combined_pseudocode" in path:
             continue
         data = (reference / path).read_bytes()
+        if Path(path).suffix in {".py", ".ps1"}:
+            script_rows, file = script_inventory(path, data)
+            rows.extend(script_rows)
+            files.append(file)
+            continue
         # Only manually reconciled annotation sites are normalized. Preserve
         # every byte offset and hash the original body, never the parse view.
         # __cdecl otherwise merges a forward declaration with the next class.

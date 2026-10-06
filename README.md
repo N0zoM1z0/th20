@@ -53,12 +53,13 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | Forty-seven mapped component functions across twelve maintained owners |
-| Authored exactness | Thirty-five functions, 3,043 bytes |
+| Source | Fifty-five mapped component functions across fourteen maintained source owners |
+| Authored exactness | Forty-one functions, 3,260 bytes |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Three exact comparisons; enclosing owner and origin review remain open |
 | Empty/defaulted lifetime contributions | Three exact comparisons; authored versus compiler-synthesized origin remains open |
 | Configuration initializers | Two exact comparisons; authored versus compiler-synthesized origin remains open |
+| Window contributions | Flags initialization and foreground wrapper pass exact replay; origin remains open |
 | Whole-program build and runtime | Not available |
 
 [Generated progress](docs/PROGRESS.md) and `scripts/report-reconstruction-status.py`

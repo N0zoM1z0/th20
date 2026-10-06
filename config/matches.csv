@@ -34,3 +34,9 @@ address,name,size,status,match_percent,unit,evidence
 0x00423EA0,th20::GameRandom::bounded,49,matching,100.00,game_random_bounded,REF-008; locked MSVC cold build and complete canonical relocation replay
 0x00429830,th20::GameRandom::unit,113,matching,100.00,game_random_unit,REF-008; locked MSVC cold build and complete canonical relocation replay
 0x004298E0,th20::GameRandom::signed_unit,129,matching,100.00,game_random_signed_unit,REF-008; locked MSVC cold build and complete canonical relocation replay
+0x0041CC70,th20::WindowState::display_mode,20,matching,100.00,window_display_mode,REF-009; locked MSVC cold build and complete canonical relocation replay
+0x0041D080,th20::WindowState::needs_device_reset,25,matching,100.00,window_needs_reset,REF-009; locked MSVC cold build and complete canonical relocation replay
+0x0041DCC0,th20::WindowState::set_draw_counter,22,matching,100.00,window_set_draw_counter,REF-009; locked MSVC cold build and complete canonical relocation replay
+0x0041DE00,th20::WindowState::set_device_reset,44,matching,100.00,window_set_device_reset,REF-009; locked MSVC cold build and complete canonical relocation replay
+0x0041DE30,th20::WindowState::set_reset_delay,25,matching,100.00,window_set_reset_delay,REF-009; locked MSVC cold build and complete canonical relocation replay
+0x0041B490,th20::WindowState::restore_system_settings,81,matching,100.00,window_restore_settings,REF-009; locked MSVC cold build and complete canonical relocation replay

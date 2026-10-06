@@ -13,6 +13,30 @@ indexer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(indexer)
 
 
+class ScriptIndexTests(unittest.TestCase):
+    def test_python_nested_decorated_function_and_lambda_keep_original_bytes(self):
+        source = ("# Unicode evidence: 錦\n@decorate\ndef outer():\n"
+                  "    def inner():\n        return lambda x: x + 1\n"
+                  "    return inner()\nouter()\n").encode()
+        rows, file = indexer.script_inventory("tools/sample.py", source)
+        self.assertEqual([r["name"] for r in rows], ["<module>", "outer", "inner", "<lambda>"])
+        self.assertFalse(file["parse_errors"])
+        self.assertEqual(rows[0]["body_sha256"], hashlib.sha256(source).hexdigest())
+        self.assertEqual(rows[1]["start_line"], 2)
+        self.assertEqual(rows[1]["body_sha256"], hashlib.sha256(b"\n".join(source.splitlines()[1:6])).hexdigest())
+        self.assertEqual(rows[2]["body_sha256"], hashlib.sha256(b"def inner():\n        return lambda x: x + 1").hexdigest())
+        self.assertEqual(rows[3]["body_sha256"], hashlib.sha256(b"lambda x: x + 1").hexdigest())
+        self.assertTrue(all(r["file_sha256"] == hashlib.sha256(source).hexdigest() for r in rows))
+
+    def test_top_level_python_and_powershell_are_not_silently_omitted(self):
+        rows, file = indexer.script_inventory("tools/read.py", b"value = read_target()\n")
+        self.assertEqual(len(rows), 1)
+        self.assertFalse(file["parse_errors"])
+        rows, file = indexer.script_inventory("tools/build.ps1", b"function build { invoke-compiler }\nbuild\n")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(file["parse_errors"][0]["node_type"], "unsupported_powershell_function_inventory")
+
+
 @unittest.skipUnless(importlib.util.find_spec("tree_sitter_cpp"), "optional pinned reference parser")
 class ReferenceIndexTests(unittest.TestCase):
     def test_inline_assembly_keeps_the_real_enclosing_function(self):

@@ -14,6 +14,8 @@
 | InputState | src/InputState.hpp, src/InputState.cpp | Device header reset/keyboard/XInput initialization, byte binding and button update | Five complete exact functions; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |
 | GameRandom | src/GameRandom.hpp, src/GameRandom.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; engine helpers | Four authored and two library complete exact units; next/seed locking and global startup remain undefined |
+| WindowState | src/WindowState.hpp, src/WindowState.cpp, src/WindowApi.cpp | five field methods, restore 0x0041B490 and flags constructor 0x00418DD0 | Six authored and one origin-pending complete exact units; original construction/global startup remain undefined |
+| WindowApi | src/WindowApi.cpp | foreground wrapper 0x0041B480 | Complete exact wrapper; source/origin identity pending |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
@@ -22,8 +24,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns twelve objects and one canonical profile per source.
-Forty-seven units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns fourteen objects and one canonical profile per source.
+Fifty-five units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 TaskInfo's observed RTTI is TaskInf. Its three-slot vtable contains deleting
@@ -69,3 +71,14 @@ Bounded and floating wrappers preserve original calls, arithmetic and return
 ABI, but next and seed require the native tracked slot-10 locking protocol.
 They remain undefined. Portable wrapper tests explicitly supply a deterministic
 next observation and establish no linked game sampler/global startup.
+
+WindowState's x860x2138 storage follows independently observed global clearing,
+complete native construction and frame/path consumers. It contains real typed
+pairs, paths, clock values, flags and repeat counters with natural alignment.
+Five field members and fixed-global system restoration are authored exact;
+flags default construction is origin pending. The original constructor and
+window_state storage are undefined. Portable fixture{} initialization is test
+setup and does not supply original startup. WindowApi compiles Windows imports
+separately; no test invokes foreground/system-setting APIs. Its exact foreground
+wrapper has pending source/origin identity because the observed caller ignores
+its result. No linked window or whole-frame runtime is accepted.

@@ -8,6 +8,7 @@
 #include "InputState.hpp"
 #include "Configuration.hpp"
 #include "GameRandom.hpp"
+#include "WindowState.hpp"
 
 #include <array>
 #include <bit>
@@ -34,6 +35,48 @@ std::uint32_t th20::GameRandom::next() {
 }
 
 int main() {
+    th20::WindowState window{}; // Explicit fixture, not native startup.
+    window.current_time = 123.5;
+    window.user_data_directory[200] = 'x';
+    window.repeat[3].elapsed = 19;
+    for (std::uint32_t flags : {0u, 1u, 2u, 0xffffffffu, 0x12345678u}) {
+        for (std::uint32_t value : {0u, 1u, 2u, 3u, 0xffffffffu}) {
+            window.flags.word = flags;
+            assert(window.needs_device_reset() == ((flags >> 1) & 1));
+            std::array<unsigned char, sizeof(window)> expected;
+            std::memcpy(expected.data(), &window, sizeof(window));
+            const auto updated = (flags & ~2u) | ((value & 1u) << 1);
+            std::memcpy(expected.data() + offsetof(th20::WindowState, flags), &updated, sizeof(updated));
+            window.set_device_reset(value);
+            assert(window.flags.word == updated);
+            assert(std::memcmp(expected.data(), &window, sizeof(window)) == 0);
+        }
+    }
+    for (unsigned value = 0; value != 256; ++value) {
+        const auto signed_value = std::bit_cast<std::int8_t>(static_cast<std::uint8_t>(value));
+        window.set_draw_counter(signed_value);
+        assert(window.draw_counter == signed_value);
+    }
+    for (std::uint32_t value : {0u, 10u, 0x80000000u, 0xffffffffu}) {
+        window.set_reset_delay(value);
+        assert(window.reset_delay == value);
+    }
+    for (std::int32_t value : {-1, 0, 2, 3, 8, 9}) {
+        window.display_mode_value = value;
+        assert(window.display_mode() == value);
+    }
+    assert(window.current_time == 123.5 && window.user_data_directory[200] == 'x');
+    assert(window.repeat[3].elapsed == 19);
+    for (const std::uint32_t initial : {0u, 0xffffffffu, 0x12345678u, 0xffu, 0xffffff00u}) {
+        alignas(th20::WindowFlags::Bits) std::array<unsigned char, 4> storage{};
+        std::memcpy(storage.data(), &initial, sizeof(initial));
+        auto* flags = ::new (storage.data()) th20::WindowFlags::Bits;
+        std::uint32_t result;
+        std::memcpy(&result, flags, sizeof(result));
+        assert(result == (initial & ~0xffu));
+        flags->~Bits();
+    }
+
     th20::GameRandom game_random(3);
     assert(game_random.field_00 == 0 && game_random.minimum == 0 && game_random.upper == 0x00ffff00);
     assert(game_random.modulus == 0 && game_random.last == 0 && game_random.id == 3);

@@ -1,5 +1,40 @@
 # Current reconstruction handoff
 
+## REF-009 — 2026-10-06 — entry/window review checkpoint
+
+The exhaustive goal remains active. All 26 program-entry C++ definitions and
+both tools (eight Python entries) have individual decisions: six absorbed exact,
+eight native deferred and twenty support. Current inventory is 6,944 entries:
+6,706 C/C++ definitions, 152 Python functions/lambdas and 86 script modules in
+1,002 files. Decisions469; pending6,475. Gap files113, reconciled6/pending107.
+
+- Eight new canonical contributions341 bytes: five WindowState field methods,
+  system restoration, flags default construction and foreground API wrapper.
+  Six authored methods add217 bytes; the other124 bytes retain pending origins.
+- Cold complete replay55/55, fourteen objects, 3,995 full bytes. Authored exact
+  41/3,260; source-present55. Ten exact contributions retain pending origins.
+- Independent full Window construction establishes natural0x2138 layout and
+  real double+2098. Field methods preserve thiscall and uint32 reset return.
+  Restore uses fixed global5B6758, verified USER32 imports and IME thunk54065A;
+  no tests invoked restoration or changed OS settings.
+- Portable field/isolation/signed-byte/retained-bit checks pass. Original Window
+  constructor and global storage stay undefined; no linked/window startup claim.
+- Main2537 bytes, frames433/583/370 and CRT argument pushes independently read.
+  Source zeroed MSG, free/injected ABI, omitted no-ops and replaced lifetime
+  remain deferred. Graphics needs real PMR/config/viewport/jthread declaration.
+- Both tools read, not executed. Retained graph22 nodes/194 static edges omits
+  indirect calls; retained symbol report is not fresh linkage/runtime evidence.
+  All five CP932 constants independently match; none imported into production.
+- Script inventory adds238 formerly omitted entries, including whole-file code.
+  All6,706 earlier C/C++ rows and435 review bindings remain unchanged. Python
+  synthetic offsets/decorator/lambda checks pass. Ten PowerShell files explicitly
+  require manual function enumeration; whole-file entries alone cannot close it.
+
+Next coherent families: diagnostics, then platform_window and every remaining
+implementation/script/manual gap. Do not treat expanded discovery as review
+credit or defer the whole repository behind one difficult owner. Private
+`.analysis/ref009-*` and compiler receipts. Earlier totals below are historical.
+
 ## REF-008 — 2026-10-06 — runtime-state review checkpoint
 
 The exhaustive goal remains active. All 27 runtime-state definitions in six

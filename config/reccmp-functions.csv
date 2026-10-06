@@ -46,3 +46,11 @@ th20::GameRandom::unit,0x00429830,function
 th20::GameRandom::signed_unit,0x004298E0,function
 th20::GameRandomEngine::GameRandomEngine,0x00422C30,function
 "std::_Get_linear_congruential_seed<uint32_t,0,2147483647>",0x00422C00,function
+th20::WindowState::display_mode,0x0041CC70,function
+th20::WindowState::needs_device_reset,0x0041D080,function
+th20::WindowState::set_draw_counter,0x0041DCC0,function
+th20::WindowState::set_device_reset,0x0041DE00,function
+th20::WindowState::set_reset_delay,0x0041DE30,function
+th20::WindowFlags::Bits::Bits,0x00418DD0,function
+th20::bring_window_to_foreground,0x0041B480,function
+th20::WindowState::restore_system_settings,0x0041B490,function

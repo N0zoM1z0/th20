@@ -551,3 +551,93 @@ symbol = "??$_Get_linear_congruential_seed@I$0A@$0HPPPPPPP@@std@@YAII@Z"
 target_address = 0x00422C00
 size = 36
 relocations = []
+
+[units.window_display_mode]
+source = "src/WindowState.cpp"
+object = "build/WindowState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowState::display_mode"]
+symbol = "?display_mode@WindowState@th20@@QBEHXZ"
+target_address = 0x0041CC70
+size = 20
+relocations = []
+
+[units.window_needs_reset]
+source = "src/WindowState.cpp"
+object = "build/WindowState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowState::needs_device_reset"]
+symbol = "?needs_device_reset@WindowState@th20@@QBEIXZ"
+target_address = 0x0041D080
+size = 25
+relocations = []
+
+[units.window_set_draw_counter]
+source = "src/WindowState.cpp"
+object = "build/WindowState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowState::set_draw_counter"]
+symbol = "?set_draw_counter@WindowState@th20@@QAEXC@Z"
+target_address = 0x0041DCC0
+size = 22
+relocations = []
+
+[units.window_set_device_reset]
+source = "src/WindowState.cpp"
+object = "build/WindowState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowState::set_device_reset"]
+symbol = "?set_device_reset@WindowState@th20@@QAEXI@Z"
+target_address = 0x0041DE00
+size = 44
+relocations = []
+
+[units.window_set_reset_delay]
+source = "src/WindowState.cpp"
+object = "build/WindowState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowState::set_reset_delay"]
+symbol = "?set_reset_delay@WindowState@th20@@QAEXI@Z"
+target_address = 0x0041DE30
+size = 25
+relocations = []
+
+[units.window_flags_construct]
+source = "src/WindowState.cpp"
+object = "build/WindowState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowFlags::Bits::Bits"]
+symbol = "??0Bits@WindowFlags@th20@@QAE@XZ"
+target_address = 0x00418DD0
+size = 108
+relocations = []
+
+[units.window_foreground]
+source = "src/WindowApi.cpp"
+object = "build/WindowApi.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::bring_window_to_foreground"]
+symbol = "?bring_window_to_foreground@th20@@YAXPAUHWND__@@@Z"
+target_address = 0x0041B480
+size = 16
+relocations = [
+  { offset = 0x9, type = "DIR32", symbol = "__imp__SetForegroundWindow@4", target = 0x0056C250 },
+]
+
+[units.window_restore_settings]
+source = "src/WindowApi.cpp"
+object = "build/WindowApi.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::WindowState::restore_system_settings"]
+symbol = "?restore_system_settings@WindowState@th20@@QAEXXZ"
+target_address = 0x0041B490
+size = 81
+relocations = [
+  { offset = 0xE, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x17, type = "DIR32", symbol = "__imp__SystemParametersInfoW@16", target = 0x0056C284 },
+  { offset = 0x22, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x2B, type = "DIR32", symbol = "__imp__SystemParametersInfoW@16", target = 0x0056C284 },
+  { offset = 0x36, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x3F, type = "DIR32", symbol = "__imp__SystemParametersInfoW@16", target = 0x0056C284 },
+  { offset = 0x48, type = "REL32", symbol = "_WINNLSEnableIME@8", target = 0x0054065A },
+]

@@ -564,7 +564,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00418A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418DB0,unknown,DebugMemoryResource,review,pending,REF-003; custom class RTTI known; empty/defaulted lifetime contribution authorship versus compiler synthesis unresolved
-0x00418DD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00418DD0,unknown,WindowState,review,pending,REF-009; Default bitfield initialization may be compiler synthesized; no authored credit
 0x00418E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418E90,unknown,DebugMemoryResource,review,pending,REF-003; custom class RTTI known; empty/defaulted lifetime contribution authorship versus compiler synthesis unresolved
 0x00418EB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -600,8 +600,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041AB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041ABE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041AE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041B480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041B490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041B480,unknown,WindowApi,review,pending,REF-009; Full API wrapper exact; sole observed caller ignores result and source/origin identity remains pending; no authored credit
+0x0041B490,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041B4F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041B880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041B8A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -636,11 +636,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041CAD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CAF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041CC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041CC70,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041CC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CCC0,authored,LockRegistry,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x0041CCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041D080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041D080,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041D0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D0C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D0F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -656,10 +656,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041DBA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DBC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DBE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DCC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041DCC0,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041DCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DE00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DE30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041DE00,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
+0x0041DE30,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041DE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DE90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

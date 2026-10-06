@@ -1,5 +1,43 @@
 # Verified facts and open hypotheses
 
+## REF-009 — 2026-10-06
+
+- Individually reviewed: 26 program-entry C++ definitions and eight Python
+  function/module entries: six absorbed exact, eight deferred and twenty support.
+  Inventory6944, decisions469/pending6475; gaps113, reconciled6/pending107.
+- Independent construction: CRT401090 clears8496 bytes at5B6758 and calls
+  full Window constructor418AC0. Natural alignment and real fields establish
+  WindowState0x2138, signed draw counter+70, flags+2090, double+2098, clocks
+  +20C8..20F0 and four12-byte repeat records+2104. Reference opaque8-byte range
+  at2098 conceals the observed double. Original constructor remains undefined.
+- Independent flags418DD0: bits0/1/2, two-bit3..4 and bits5/6/7 cleared separately;
+  high24 retained. needs-reset returns uint32, not source bool. Main initializes
+  counter-4; frames ADD byte and MOVSX. Methods use real thiscall/RET4 ABI.
+- Compiler/canonical: five fields20/25/22/44/25 and restoration81 add217 authored
+  bytes. Default flags108 and foreground16 origins pending, no authored credit.
+  Full cold55 units/14objects/3995bytes; authored41/3260; source-present55.
+- Independent imports: restoration reads fixed global saved bytes+2089..208B,
+  SystemParametersInfoW IAT56C284 and IME thunk54065A/IAT56C290. Canonical COFF
+  global addends replay against base5B6758. Foreground imports56C250, cdecl
+  wrapper41B480; sole main caller ignores result. No OS settings mutated.
+- Portable semantics: all256 draw values, delay/mode edges, field isolation and
+  initialized high24-bit flag preservation. Fixture initialization does not
+  reconstruct startup; platform API source is compiled/replayed, not invoked.
+- Independent main41E7D0 full2537 bytes, RET16; CRT543461 pushes four arguments,
+  entry5435E0 cookie/tail and543CD2 independently read. Frames433/583/370 map
+  dispatch0/-1 to1/2 and contain full constant-zero412540 call. Reference helper
+  partition/free ABI/MSG zeroing/omitted no-ops/changed lifetime remain nonexact.
+- Support: graph22/194 covers selected static edges, historical CSV ownership,
+  no indirect calls. Retained symbol report50 functions/13 globals is not fresh
+  link proof. Tools not executed; five CP932 constants independently compare,
+  none copied to maintained production. Three reference TUs compile serially.
+- Inventory correction: 76Python/10PowerShell files add152 Python functions/
+  lambdas and86 whole modules. Existing6706 C/C++ rows/435 reviews unchanged.
+  Decorators and UTF-8 source offsets hash original bytes. Ten PowerShell files
+  require explicit manual function reconciliation, not silent completeness.
+
+Private evidence: `.analysis/ref009-*`.
+
 ## REF-008 — 2026-10-06
 
 - Individually reviewed: all27 runtime-state bodies, including eight oracle

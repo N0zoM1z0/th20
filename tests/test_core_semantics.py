@@ -23,6 +23,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/InputState.cpp",
                             "src/Configuration.cpp",
                             "src/GameRandom.cpp",
+                            "src/WindowState.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

@@ -45,3 +45,11 @@ th20::GameRandom::unit
 th20::GameRandom::signed_unit
 th20::GameRandomEngine::GameRandomEngine
 "std::_Get_linear_congruential_seed<uint32_t,0,2147483647>"
+th20::WindowState::display_mode
+th20::WindowState::needs_device_reset
+th20::WindowState::set_draw_counter
+th20::WindowState::set_device_reset
+th20::WindowState::set_reset_delay
+th20::WindowFlags::Bits::Bits
+th20::bring_window_to_foreground
+th20::WindowState::restore_system_settings
