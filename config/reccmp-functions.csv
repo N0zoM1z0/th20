@@ -148,3 +148,6 @@ th20::Motion::outside_bounds,0x0047A400,function
 th20::ScoreEntry::ScoreEntry,0x0050FD50,function
 th20::HudGauge::HudGauge,0x004AECE0,function
 th20::OverlayCounter::OverlayCounter,0x00532850,function
+th20::DialogueFlags::DialogueFlags,0x004AEC90,function
+th20::dialogue_text::is_lead,0x004B6460,function
+th20::dialogue_text::decode,0x004B7C90,function

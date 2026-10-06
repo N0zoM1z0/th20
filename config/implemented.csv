@@ -147,3 +147,6 @@ th20::Motion::outside_bounds
 th20::ScoreEntry::ScoreEntry
 th20::HudGauge::HudGauge
 th20::OverlayCounter::OverlayCounter
+th20::DialogueFlags::DialogueFlags
+th20::dialogue_text::is_lead
+th20::dialogue_text::decode

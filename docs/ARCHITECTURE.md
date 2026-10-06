@@ -1,12 +1,19 @@
 # Target inventory and initial architecture boundary
 
+Dialogue contains a real four-byte flags member at104, retaining upper25 bits
+on construction. Its shared text decoder uses BSS5C4A20 and a separate uint8 /
+full-int SJIS predicate; all three complete contributions are exact. Result
+storage remains external and decoding requires terminated assets with paired
+lead bytes. All134 HUD implementations have REF033 decisions; actual140-byte
+Dialogue/2D8-byte HUD vtable/EH/Worker/resource owners remain unclosed.
+
 SmallScore owns an Animation and two eighteen-record arrays. Its actual68-byte
 ScoreEntry contains typed Vector3/Timer members and preserves two alignment bytes.
 HUD boss panels construct four8-byte gauges, and Overlay constructs an8-byte
 counter. Three natural value constructors are complete exact; original float
 roles, counter arithmetic and enclosing owner/vtable/EH lifetimes remain open.
-All162 score/completion bodies have individual REF032 decisions;510 HUD/Overlay
-bodies remain pending. Completion's raw-byte/full-EAX unlock return differs from
+All162 score/completion bodies have individual REF032 decisions;376
+Overlay bodies remain pending. Completion's raw-byte/full-EAX unlock return differs from
 reference bool; Environment fixtures do not prove original getter/return ABI.
 See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
 

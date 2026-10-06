@@ -43,6 +43,8 @@ class CoreSemanticsTests(unittest.TestCase):
                             "tests/motion_value_semantics.cpp",
                             "src/ScoreEntry.cpp", "src/HudGauge.cpp", "src/OverlayCounter.cpp",
                             "tests/display_value_semantics.cpp",
+                            "src/DialogueFlags.cpp", "src/DialogueText.cpp",
+                            "tests/dialogue_value_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

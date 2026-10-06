@@ -1,5 +1,47 @@
 # Current reconstruction handoff
 
+## REF-033 — 2026-10-07 — HUD batch and Dialogue protocol
+
+All134 HUD implementations individually reviewed:2 absorbed /59 nonexact /
+73 support,36 fully read indexed files. Global4,561 terminal /2,383 pending of
+6,944; three retained-C grammar files/eleven sites reconciled, gaps70/43.
+Family296/672 reviewed; Overlay376 remains pending. Exhaustive goal active.
+
+- Natural DialogueFlags66, SJIS predicate62 and decoder197 add325 complete bytes.
+  Full152-unit cold replay across43 objects /10,405 bytes; source152, pending
+  origins91/library4, authored57/4,074 unchanged. Actual+104 four-byte flags
+  retain upper25; native byte/full-int predicate ABI and signed decoder loads.
+- Independent constructor/caller/helper/BSS xrefs precede anchors; accepted
+  ranges fully PE-decoded/closed, including missing JMP4B6498. Buffer storage
+  externally declared, extent/lifetime unproved. Valid NUL/pair domain explicit;
+  synthetic256-byte/all-byte/all-length/dirty flags checks pass C++20/UBSan.
+- All43 actual family production TUs freshly compiled after final source freeze.
+  Eighteen HUD objects inventoried including static/load templates/lambdas/EH.
+  Forty full length rejections; three49-byte structural deleting wrappers need
+  original owners/vtable/dtor/EH and receive no canonical credit. Vtable57062C
+  independently read4B06A0/4B5BB0/421760. Missing VM/factory JMPs decoded.
+- Native4AC290/4AFEE0 closure partition differs from free callback. Resource
+  wrapper4B5900 pushes0;4B5920 returns fullEAX0/1 versus no-argument/bool source.
+  Keep unknown callback parameter/real Worker ownership unresolved.
+- HUD232192/0 is shared Sprite subset389 current hashes/digest. Historical
+  1798099/960 has235 current/17 stale hashes; frame_pool960 failures retained.
+  Full domain/hooks/report/writer/fixtures read; none executed. Draw28 constants
+  independently PE-attest. VM workers/active Dialogue/StoneMenu/GPU remain open.
+- Full Overlay production and all oracle text now read;870400/0 binds42 current
+  post-run hashes, excludes owner/lifecycle/factory/visuals linkage and samples
+  several virtual returns only in AL. Individual body/owner/table/COFF review
+  remains pending; reading/compilation alone is not a terminal decision.
+- Private .analysis/ref033-record.py EXECUTED ONCE; NEVER RERUN. REF032/all older
+  writers also already executed. Preserve final src/probes freeze while using
+  current152 exact/43 reference receipts. No live compiler/Ghidra processes.
+
+Next: finish all376 Overlay bodies,18-position factory/actual vtables/return ABI,
+unmodified production objects and parser gaps, then Gameplay1019/ECL144,
+Sprite540/StageBackground121 and183 support bodies. Do not mark goal complete
+with2,383 bodies /43 gap files pending. English text, repo-python,
+gpt-6.1-sol commit subjects and public push remain authorized. Full review:
+REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md; private ref033 resume notes.
+
 ## REF-032 — 2026-10-07 — display values and score/completion checkpoint
 
 Three natural constructors add193 complete bytes: ScoreEntry50FD50/127,

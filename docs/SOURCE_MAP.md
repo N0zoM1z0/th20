@@ -2,6 +2,8 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| DialogueFlags | src/DialogueFlags.hpp, src/DialogueFlags.cpp | construction0x004AEC90 | Complete66-byte exact constructor on real four-byte Dialogue+104 member; upper25 retained, bit meanings/origin pending |
+| DialogueText | src/DialogueText.hpp, src/DialogueText.cpp | lead predicate0x004B6460; decoder0x004B7C90 | Complete62/197-byte exact cdecl contributions; uint8/full-int lead ABI, shared external BSS, valid terminated/paired-lead domain; storage/lifetime and origins pending |
 | ScoreEntry | src/ScoreEntry.hpp, src/ScoreEntry.cpp | construction0x0050FD50 | Complete127-byte exact member on actual68-byte record; typed Vector3/Timer, implicit padding3A/B preserved, float30/34 roles and origin pending |
 | HudGauge | src/HudGauge.hpp, src/HudGauge.cpp | construction0x004AECE0 | Complete34-byte exact constructor on actual8-byte gauge; first word float, second word role and origin pending |
 | OverlayCounter | src/OverlayCounter.hpp, src/OverlayCounter.cpp | construction0x00532850 | Complete33-byte exact constructor on actual8-byte member;0/1500 initial state, arithmetic/signedness and origin pending |
@@ -49,14 +51,17 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns forty-one objects and one canonical profile per source.
-One hundred forty-nine units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns forty-three objects and one canonical profile per source.
+One hundred fifty-two units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-032 absorbs the score-record constructor through an independently rewritten
 real member, while reviewing all162 SmallScore/StageCompletion implementations.
 The reference free helper itself remains nonexact. HUD/Overlay values add two
-more complete constructors, with510 enclosing-family bodies still pending.
+more complete constructors. REF-033 closes all134 HUD body reviews and adds
+three real Dialogue value/text contributions through an independent rewrite,
+with376 Overlay bodies still pending. Shared decoder storage remains external;
+unmatched final SJIS leads and malformed/unbounded inputs are outside acceptance.
 Actual owner/vtable/Animation/Scheduler/SaveManager/Replay resource, checked-array
 and EH lifetimes remain unclosed. See REFERENCE_OVERLAY_HUD_SCORE_COMPLETION_REVIEW.md.
 

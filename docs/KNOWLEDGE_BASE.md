@@ -1,5 +1,36 @@
 # Verified facts and open hypotheses
 
+## REF-033 — 2026-10-07 — HUD batch and Dialogue protocol
+
+- HUD134 individually reviewed:2 absorbed /59 nonexact /73 support,36 full
+  indexed files. Global4,561 terminal /2,383 pending; gaps70/43 after three
+  retained-C files/eleven sites. Overlay376 still pending, exhaustive goal active.
+- Real Dialogue+104 flags member4 retains upper25; natural ctor4AEC90/66.
+  Separate lead4B6460/62 takes uint8 and returns full-int; original disconnected
+  JMP4B6498 kept. Decoder4B7C90/197 signed input load/XOR recurrence/SJIS trail
+  skip/underscore conversion. Independent callers/BSS/callee anchors precede
+  canonical replay, original names and origins remain unknown.
+- Result BSS5C4A20 externally declared. Next5C4B20 has independent256-bound
+  copy writers, which do not prove Dialogue storage extent/lifetime. Assets
+  need encoded NUL within storage and paired lead bytes; unmatched lead may
+  skip NUL/read stale storage. Synthetic portable C++20/UBSan domain tests pass.
+- Full152 units cold replay /43 objects /10,405 bytes, +325 bytes; source152,
+  pending origins91/library4, authored57/4,074 unchanged. Full43 family TUs
+  compile after source freeze;18 HUD objects include actual static/template/
+  closure/EH inventories.40 full size rejections and three structural49-byte
+  deleting wrappers, no whole-owner/vtable/dtor/EH credit.
+- HUD vtable57062C entries4B06A0/4B5BB0/421760 independently read. Native callback
+ 4AC290 uses stack-local closure4AFEE0; resource4B5900 pushes0 to full-EAX0/1
+  loader4B5920, source no-argument/bool differs. Worker parameter/lifetime open.
+- Full HUD/report/fixture/writer text read;232192/0 is sharedSprite subset with
+ 389 current hashes/digest. Historical1798099/960 has235 current/17 stale hashes,
+  all960 frame_pool failures.28 draw constants PE-attest; no Windows oracle run.
+  Active Dialogue/StoneMenu, real GPU/thread/resource/closure owners unverified.
+- Overlay source/fixtures fully read,870400/0 has42 current post-run hashes;
+  owner/lifecycle/factory/visuals not linked by oracle, several returns compare
+  only AL. All376 individual owner/table/body decisions still pending. Full
+  retained reports do not establish executed-build identity or runtime play.
+
 ## REF-032 — 2026-10-07 — display values and score/completion checkpoint
 
 - ScoreEntry68, HudGauge8 and OverlayCounter8 are independently constructed

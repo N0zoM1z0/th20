@@ -1716,3 +1716,42 @@ symbol = "??0OverlayCounter@th20@@QAE@XZ"
 target_address = 0x00532850
 size = 33
 relocations = []
+
+# REF-033: Dialogue value/text protocol; independent native calls and BSS xrefs.
+[units.dialogue_flags_construct]
+source = "src/DialogueFlags.cpp"
+object = "build/DialogueFlags.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DialogueFlags::DialogueFlags"]
+symbol = "??0DialogueFlags@th20@@QAE@XZ"
+target_address = 0x004AEC90
+size = 66
+relocations = []
+
+[units.dialogue_text_is_lead]
+source = "src/DialogueText.cpp"
+object = "build/DialogueText.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::dialogue_text::is_lead"]
+symbol = "?is_lead@dialogue_text@th20@@YAHE@Z"
+target_address = 0x004B6460
+size = 62
+relocations = []
+
+[units.dialogue_text_decode]
+source = "src/DialogueText.cpp"
+object = "build/DialogueText.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::dialogue_text::decode"]
+symbol = "?decode@dialogue_text@th20@@YAPBDPBD@Z"
+target_address = 0x004B7C90
+size = 197
+relocations = [
+  { offset = 0x2C, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
+  { offset = 0x6E, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
+  { offset = 0x7C, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
+  { offset = 0x82, type = "REL32", symbol = "?is_lead@dialogue_text@th20@@YAHE@Z", target = 0x004B6460 },
+  { offset = 0x9E, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
+  { offset = 0xAC, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
+  { offset = 0xBD, type = "DIR32", symbol = "?decoded_text@dialogue_text@th20@@3PADA", target = 0x005C4A20 },
+]

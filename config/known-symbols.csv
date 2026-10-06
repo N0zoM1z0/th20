@@ -149,3 +149,6 @@ address,name,module,confidence,evidence
 0x0050FD50,th20::ScoreEntry::ScoreEntry,ScoreEntry,high,REF-032
 0x004AECE0,th20::HudGauge::HudGauge,HudGauge,high,REF-032
 0x00532850,th20::OverlayCounter::OverlayCounter,OverlayCounter,high,REF-032
+0x004AEC90,th20::DialogueFlags::DialogueFlags,DialogueFlags,high,REF-033
+0x004B6460,th20::dialogue_text::is_lead,DialogueText,high,REF-033
+0x004B7C90,th20::dialogue_text::decode,DialogueText,high,REF-033

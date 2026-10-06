@@ -1,5 +1,110 @@
 # Overlay, HUD, SmallScore and StageCompletion review
 
+## REF-033 — HUD batch and Dialogue protocol
+
+All134 HUD implementations now have individual hash-bound decisions:2 absorbed,
+59 nonexact and73 support, across36 fully read indexed files. Together with
+REF-032's162 score/completion bodies,296 of this672-body family are reviewed;
+Overlay's376 implementations remain pending. Global4,561 terminal /2,383 pending
+of6,944. Three retained-C grammar files/eleven sites are manually reconciled;
+global70 complete /43 pending gap files. Source reading, individual review,
+compilation and whole native-owner recovery remain separate facts.
+
+Three independently rewritten natural contributions add325 complete bytes:
+
+| Component | Native entry | Complete bytes | Independently observed contract |
+| --- | --- | --- | --- |
+| DialogueFlags construction | 4AEC90 | 66 | Actual four-byte member at Dialogue+104; zero bit0/bit1/bits2..5/bit6, preserve upper25 |
+| SJIS lead predicate | 4B6460 | 62 | One byte argument, full-int0/1 return; inclusive81..9F andE0..FC |
+| Dialogue text decoder | 4B7C90 | 197 | Signed input load, modulo-byte XOR key, shared BSS5C4A20, paired-lead trail skip, remaining underscore to space |
+
+The real140-byte Dialogue constructor4AF310 independently calls the flags
+constructor on+104. Its four field meanings remain provisional. Decoder callers
+49F3D0/4AFFF0/4B00B0/4B0720 and the predicate's sole decoder caller establish
+separate function ownership. The decoder calls4B6460 and tests fullEAX, while
+the reference helper declares unsigned/bool. Original buffer stores/reads/return
+and six Ghidra data xrefs establish5C4A20 before canonical relocation anchors;
+no diagnostic solved field is used as evidence.
+
+All three entire native contributions are independently PE-decoded with closed
+internal branches and actual final RET. The predicate retains disconnected
+JMP4B6498..6499, omitted by Ghidra's instruction iterator. The decoder uses one
+shared semantic body and external result storage. The next BSS buffer5C4B20 has
+independent256-bound copy writers51E4CC and523E07; this corroborates adjacency,
+not the allocation/extent/lifetime of the preceding Dialogue buffer. Production
+storage therefore remains undefined instead of introducing an inferred array.
+
+The decoder has the original unbounded asset-domain contract: encoded NUL must
+decode within available result storage, and every lead byte must have a non-NUL
+trail byte. An unmatched final lead skips the terminator and can read stale or
+out-of-range storage; malformed inputs are not accepted as equivalent to the
+reference's bounds exception. Each call overwrites the shared result. Portable
+C++20/UBSan tests use separate synthetic256-byte storage, all256 predicate
+arguments, all leads with underscore trails, nonlead high bytes, lengths0..255,
+closed-form encoding keys, retained trailing storage, unchanged input/guards,
+shared-pointer overwrite and512 dirty flag patterns.
+
+Full cold canonical replay:152/152 units,43 objects,10,405 complete bytes.
+Source152, pending origins91/library4; confirmed authored57/4,074 unchanged.
+No enclosing Dialogue/HUD source, allocator, renderer, resource or game linkage
+is accepted from these value/text contributions.
+
+All43 original family production TUs were rebuilt serially after final source
+freeze with actual inherited paths/strict FP. All18 HUD objects have current
+receipts and defined static/external symbol inventories, including genuine load
+templates, array helpers, lambdas and EH/deleting contributions. Forty complete
+candidate comparisons all reject by contribution length; no target-sized prefix
+is compared. Three complete49-byte deleting wrappers structurally match:
+FrontInf emitted in core/lifecycle, and Dialogue. Original owner/vtable/dtor/EH
+and sized-delete lifetime remain unclosed, so these earn no canonical credit.
+Constructor/destructor stores independently bind HUD vtable57062C to
+4B06A0/4B5BB0/421760. Its deleting wrapper calls4AFAA0 and sized delete54278D
+with2D8. The broader436-head family export remains provisional. Missing native
+JMPs4B1528..152C and4B90B5..90B6 were separately PE-decoded; rejected VM/table
+and factory extents are not shortened.
+
+Native4AC290's stack-local closure calls thiscall4AFEE0; the reference callback
+flattens that partition. Native resource wrapper4B5900 pushes0 to4B5920 and
+returns fullEAX0. Native4B5920 returns fullEAX0/1; the reference no-argument/bool
+loader omits this callback argument and changes ABI. Its argument type and
+original Worker/global resource ownership remain unresolved. The constructor
+and resource paths cannot be recovered with fabricated receivers/parameters.
+
+Dialogue VM defaults3/30 and codes>36, skip held9/0>=20, Timer countdown,
+forty-frame cooldown, music/completion and opcode36 advancement were read.
+Opcodes15/16 decode the live script when the queued worker executes; opcode17
+owns an earlier string snapshot. Source merges original clear/write/completion
+functors using booleans and captures. Ruby comma/atoi, outline.5/.6, slot9 locking,
+Cursor destruction and handle70 retention are distinct ownership/domain issues.
+Full original switch tables, callback identity/capture lifetimes and EH remain
+unclosed; retained918/631-line decompiler files are evidence only.
+
+HUD frame/score/icons/notifications/draw/feedback/resource code and all nine
+fixture fragments were read. Boss marker scratch Z accumulates across visible
+markers because458FA0 writes only XY. Life-threshold source supports actual41
+data entries and throws above40 despite native0..100 clamp/adjacent reads.
+Score draw sign-extends the low word; repeated mutating getters remain visible.
+StoneMenu and active Dialogue paths are excluded from the frame fixture;
+viewport/matrix COM and text/GPU callbacks are substituted. Pixel output,
+thread/resource lifetimes and unrestricted game integration are unverified.
+
+Retained HUD report232192/0 is a subset of shared Sprite2915831/0, not an extra
+total: draw/scene20480/18432, feedback/wrapper16384/2816, icons16384,
+notifications18432, enable36864, frame36864 and score65536. All389 hashes and
+shared digest are current. The historical first-failure report1798099/960 has
+235 current/17 stale hashes, including HUD update/notification changes; all960
+failures are hud_frame_pool. The empty update_failures log adds no proof.
+All28 retained draw constant words independently match the locked PE.
+
+Overlay's full production/fixture/recipe/writer text has also been read, but
+its individual original-owner/table/COFF review is still pending. Its retained
+870400/0 report has42 current post-run source hashes; the oracle does not link
+owner/lifecycle/factory/visuals objects and compares several virtual returns
+only in AL. This is no whole-owner or executed-build identity. No Windows CPU
+oracle or evidence writer was executed during this review.
+
+## REF-032 — historical score/completion checkpoint
+
 REF-032 is a coherent 672-body family: Overlay376, HUD134, SmallScore74 and
 StageCompletion88. This checkpoint closes all162 SmallScore/StageCompletion
 bodies individually. Their nineteen indexed files, headers, production/oracle
