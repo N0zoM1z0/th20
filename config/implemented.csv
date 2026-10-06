@@ -60,3 +60,7 @@ th20::is_japanese_user_locale
 th20::mark_font_available
 th20::initialize_shared_scene_resources
 th20::release_shared_scene_resources
+th20::SoundEffectRequest::SoundEffectRequest
+th20::SoundCommand::SoundCommand
+th20::SoundEffectChannel::SoundEffectChannel
+th20::SoundEffectChannel::release

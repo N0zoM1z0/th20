@@ -37,11 +37,91 @@ each file still needs manual function enumeration and gap reconciliation.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The first 714 native-core/export/scheduler/runtime/archive/input/platform-service/
-runtime-state/program-entry/diagnostic/platform-window/startup/tool/test entries have explicit decisions. The
-remaining 6,230 indexed entries are pending. The separate
+The first 836 native-core/export/scheduler/runtime/archive/input/platform-service/
+runtime-state/program-entry/diagnostic/platform-window/startup/audio/tool/test entries have explicit decisions. The
+remaining 6,108 indexed entries are pending. The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count: thirteen of 113 files are reconciled, leaving 100 pending.
+and parser-gap count: seventeen of 113 files are reconciled, leaving 96 pending.
+
+## REF-013: all 122 audio-runtime implementation entries reviewed
+
+All 122 C++ bodies have individual hash-bound decisions: four absorbed exact,
+63 nonexact and 55 support. Full source, three owner headers, constants, both
+test drivers, COM fixtures, README, CMake and the retained CPU report were read.
+All eight unmodified production/test translation units compile serially with
+the diagnostic recipe; neither test program was linked or run. Four WINAPI
+annotation gap files are manually reconciled against all actual definitions.
+Coverage is now 836 terminal and 6,108 pending; gaps17 reconciled/96 pending.
+
+Independent attested Ghidra queries and decompilation cover 78 native functions,
+including the separately queried memset anchor before constructor probes.
+Natural maintained records restore actual constructor and release ownership:
+
+| Target | Complete bytes | Maintained contribution |
+| --- | ---: | --- |
+| 0x00425CE0 | 55 | SoundEffectRequest constructor |
+| 0x00425FC0 | 65 | SoundCommand constructor |
+| 0x00425D20 | 73 | SoundEffectChannel constructor |
+| 0x00428380 | 46 | SoundEffectChannel::release |
+
+The first two constructors store scalar fields then memset their actual arrays;
+all return the receiver with thiscall ABI. The reference free void bulk
+initializers have a different partition. Release invokes COM slot2 and clears
+the pointer conditionally. Full cold replay passes66/66 units across18 objects,
+4,620 full bytes. Authored exact is49 functions/3,692 bytes; source-present66.
+Three constructor origins remain pending, bringing origin-pending exact units
+to13; they are excluded from authored progress. Portable dirty-storage tests
+check all request/command bytes and channel fields. No COM driver is executed.
+
+Specific native differences and remaining owner work are recorded per body:
+
+- SoundInf construction calls real array/PMR helpers; CRT startup separately
+  clears0x57E8. The reference zeros more retained fields and adds Context.
+  Its historical native constructor fixture prezeros storage, masking this.
+  Ready returns full int, whereas the reference returns bool. The preload
+  predicate belongs to Graphics at+24C, not the reference SoundInf adapter.
+- Native audio initialization returns-1 for device/buffer/channel failures,
+  1 for resource-load failure and0 on success; reference void loses statuses.
+  Effect creation receives Channel in ECX and reads fixed SoundInf globals;
+  reference receives SoundInf plus Channel&. Device factory4259A0 is not a
+  constructor. Full SDK, PMR, diagnostic allocator and fixed-global ownership
+  remain open. The natural stop probe has100 versus120 bytes (GS/local state);
+  DeviceOwner destructor93 versus88 bytes (EH partition), both deferred.
+- Primary format success-with-null buffer yields E_FAIL in native but can
+  return S_OK in reference. Native releases only after successful SetFormat
+  and normalizes success to S_OK; reference changes failure cleanup/status.
+  Preload returns int and writes fixed track-name globals; reference void,
+  bounded vector access and receiver fields change the contract.
+- The native stream has separate CSound/CStreaming base/derived construction,
+  vtables and destruction. Reference merges them, zeros retained fields and
+  appends a parent pointer. Restore returns S_FALSE when no restoration is
+  needed; reference returns S_OK. Skipped notification returns an error in
+  native and S_OK in reference. Both reject a second lock region, but source
+  adds zero-progress exceptions to native refill loops. Set-volume is native
+  void; reference HRESULT. Four native fade functions become one mode API.
+- WaveReader constructor initializes selected blocks rather than all160 bytes;
+  separate factory clearing does not establish constructor equivalence. Its
+  opaque MMIO regions require actual SDK declarations. File/reset/reopen use
+  fixed globals instead of reference extra base-offset parameters. Native
+  failed ReadFile can leave received count uninitialized; source initializes
+  it. Native thread ignores its passed HWND and uses fixed globals/plain busy;
+  source receiver/atomic_ref/zeroedMSG changes threading and initialization.
+
+Ninety20-byte definition records, all72 pointer-selected NUL-terminated file
+names and five float constants independently match the locked PE. IDs cover
+0..89 in an unsorted table; native binding searches IDs while request cooldown
+indexes the table by ID. These are DATA comparisons, not executable exactness.
+The historical CPU report records31,219 cases/zero failures with12/12 current
+input hashes. It maps isolated calls, substitutes imports/heap/clock/PMR/COM,
+normalizes pointer/vptr values, excludes added fields and skips selected
+allocation/join stages. It cannot establish whole-game, real thread, failed I/O,
+driver or audible-output equivalence. No backend_validation.json is present in
+the pinned checkout; the README's source-only silent smoke claim is not a
+retained result. Neither historical test was rerun or inherited as acceptance.
+
+Private evidence: `.analysis/ref013-*` and serial compiler receipts.
+Next coherent family: game_session's21 entries, then every remaining body and
+96 manual gap files. The exhaustive goal remains active.
 
 ## REF-012: all 49 startup-scene implementation entries reviewed
 

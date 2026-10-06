@@ -827,10 +827,10 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00425C10,78,0x00425C5D,FUN_00425c10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00425C70,75,0x00425CBA,FUN_00425c70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00425CC0,23,0x00425CD6,FUN_00425cc0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00425CE0,55,0x00425D16,FUN_00425ce0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00425D20,73,0x00425D68,FUN_00425d20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00425CE0,55,0x00425D16,FUN_00425ce0,th20::SoundEffectRequest::SoundEffectRequest,SoundEffects,reconstructed,100.00,__thiscall,th20::SoundEffectRequest::SoundEffectRequest(),false,src/SoundEffects.cpp,REF-013; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Natural0x208 record constructor, two scalar stores and512-byte memset; full canonical replay, independent memset anchor. Authored/compiler origin pending."
+0x00425D20,73,0x00425D68,FUN_00425d20,th20::SoundEffectChannel::SoundEffectChannel,SoundEffects,reconstructed,100.00,__thiscall,th20::SoundEffectChannel::SoundEffectChannel(),false,src/SoundEffects.cpp,REF-013; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Natural24-byte x86 Channel constructor with six scalar stores, cooldown-1 and receiver return; complete replay. Authored/compiler origin pending."
 0x00425D70,573,0x00425FAC,FUN_00425d70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00425FC0,65,0x00426000,FUN_00425fc0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00425FC0,65,0x00426000,FUN_00425fc0,th20::SoundCommand::SoundCommand,SoundEffects,reconstructed,100.00,__thiscall,th20::SoundCommand::SoundCommand(),false,src/SoundEffects.cpp,REF-013; docs/REFERENCE_FUNCTION_REVIEW.md,unknown,"Natural0x10C command constructor, three stores and256-byte memset; complete replay and independent memset anchor. Authored/compiler origin pending."
 0x00426010,20,0x00426023,FUN_00426010,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00426030,26,0x00426049,FUN_00426030,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00426050,81,0x004260A0,FUN_00426050,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -856,7 +856,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00427050,784,0x0042735F,FUN_00427050,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00427360,1146,0x004277D9,FUN_00427360,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004277F0,2909,0x0042834C,FUN_004277f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00428380,46,0x004283AD,FUN_00428380,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00428380,46,0x004283AD,FUN_00428380,th20::SoundEffectChannel::release,SoundEffects,matching,100.00,__thiscall,void __thiscall th20::SoundEffectChannel::release(),false,src/SoundEffectsApi.cpp,REF-013; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Game-specific Channel lifecycle method, conditional COM slot2 Release then null pointer; complete replay. Native array iteration corroborates custom owner. No complete audio runtime claim."
 0x004283B0,100,0x00428413,FUN_004283b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00428420,320,0x0042855F,FUN_00428420,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00428560,325,0x004286A4,FUN_00428560,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

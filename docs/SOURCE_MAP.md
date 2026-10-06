@@ -18,6 +18,7 @@
 | WindowApi | src/WindowApi.cpp | foreground wrapper 0x0041B480; locale detection 0x0041D0C0 | Two complete exact units; foreground source/origin identity pending |
 | FontDetection | src/FontDetection.hpp, src/FontDetection.cpp | font enumeration callback 0x00414820 | Authored complete exact callback; initialization/global pointer storage remain undefined |
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
+| SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 
 RandomState represents the four-byte STL engine subobject. It does not replace
 its enclosing 28-byte game RNG, distribution state, four streams or locking.
@@ -26,8 +27,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns sixteen objects and one canonical profile per source.
-Sixty-two units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns eighteen objects and one canonical profile per source.
+Sixty-six units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 TaskInfo's observed RTTI is TaskInf. Its three-slot vtable contains deleting
@@ -103,3 +104,16 @@ The forward-declared resource pointer types define no owner layout or storage.
 All dependency functions remain undefined; independent original caller/callee
 observations establish their anchors and ABI. Test-only observations check
 failure stopping and teardown order without original OS/resource execution.
+
+SoundEffects declares real request (0x208), command (0x10C) and x86 channel
+(24-byte) records, with natural scalar/array/COM pointer storage. Construction
+preserves separate scalar stores and array memset calls rather than changing
+the entire enclosing SoundInf initialization. The independently queried memset
+entry supplies two canonical anchors. Constructor exactness does not resolve
+authored versus compiler-generated origin; all three remain excluded from the
+authored ledger. Release uses the real SDK COM slot and a separate Windows TU.
+Portable dirty-storage tests cover every request/command byte and channel field;
+no COM object or driver is invoked by those fixtures. Full SoundInf, PMR arrays,
+WaveReader SDK fields, CSound/CStreaming vtables and diagnostic allocator
+lifetimes remain unresolved. No opaque class padding or merged reference owner
+is imported to force small stream methods exact.

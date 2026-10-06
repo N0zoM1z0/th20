@@ -9,6 +9,7 @@
 #include "Configuration.hpp"
 #include "GameRandom.hpp"
 #include "WindowState.hpp"
+#include "SoundEffects.hpp"
 
 #include <array>
 #include <bit>
@@ -38,6 +39,19 @@ std::uint32_t th20::GameRandom::next() {
 
 int main() {
     check_scene_resource_protocol();
+    alignas(th20::SoundEffectRequest) std::array<unsigned char, sizeof(th20::SoundEffectRequest)> request_storage;
+    request_storage.fill(0xa5);
+    auto* request = ::new(request_storage.data()) th20::SoundEffectRequest;
+    for (auto byte : request_storage) assert(byte == 0);
+    assert(request->id == 0 && request->count == 0);
+    alignas(th20::SoundCommand) std::array<unsigned char, sizeof(th20::SoundCommand)> command_storage;
+    command_storage.fill(0xa5);
+    auto* command = ::new(command_storage.data()) th20::SoundCommand;
+    for (auto byte : command_storage) assert(byte == 0);
+    assert(command->type == 0 && command->argument == 0 && command->stage == 0);
+    th20::SoundEffectChannel channel;
+    assert(channel.buffer == nullptr && channel.definition == nullptr);
+    assert(channel.cooldown == -1 && channel.id == 0 && channel.pan == 0 && channel.was_playing == 0);
     th20::WindowState window{}; // Explicit fixture, not native startup.
     window.current_time = 123.5;
     window.user_data_directory[200] = 'x';

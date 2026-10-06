@@ -1,5 +1,35 @@
 # Current reconstruction handoff
 
+## REF-013 — 2026-10-06 — audio-runtime review checkpoint
+
+The exhaustive goal remains active. All122 audio_runtime C++ bodies are
+individually reviewed: four absorbed,63 nonexact,55 support. Inventory6,944;
+terminal836/pending6,108. Four manually reconciled WINAPI gap files bring
+global totals to17 reconciled/96 pending out of113.
+
+- Natural Request/Command/Channel constructors55/65/73 and Channel release46
+  add239 complete canonical bytes. The three constructors retain unknown
+  authored/compiler origins; only release adds authored credit. Real typed
+  records and SDK pointer, no padding/assembly/decompiler body imported.
+- Cold66/66 across18 objects/4,620 bytes. Authored49/3,692; source-present66;
+  origin-pending exact13. Portable dirty-storage semantics pass, no COM runtime.
+  Source frozen before full replay; documentation/ledgers do not invalidate it.
+- Full source/header/constants/test/recipe/report reading; all eight original
+  TUs freshly compile serially.78 native functions independently queried and
+  decompiled. Both memset anchors independently established before probing.
+- Native ready/int, initialization-1/1/0, Channel ECX creation, Graphics preload
+  predicate, CSound/CStreaming split owners, partial WaveReader initialization,
+  S_FALSE restore/no-notification error, primary-format null/failure handling,
+  fixed globals/plain thread busy differ from reference. Every hard body has
+  its own record. Natural stop100/120 and DeviceOwner dtor93/88 deferred.
+-90 definitions,72 filename strings,five floats independently match PE.
+  Historical31,219 CPU cases/zero failures have12/12 current source hashes,
+  but exclude real startup/thread/driver/audio and skip allocation/join stages.
+  No backend report present; neither oracle rerun or inherited. Checkout clean.
+
+Next coherent family: game_session21 indexed entries, then all remaining bodies
+and96 manual gap files. Private `.analysis/ref013-*`; earlier counts historical.
+
 ## REF-012 — 2026-10-06 — startup-scene review checkpoint
 
 The exhaustive goal remains active. All 49 startup_scene implementation entries
