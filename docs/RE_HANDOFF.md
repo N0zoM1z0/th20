@@ -1,5 +1,19 @@
 # Current reconstruction handoff
 
+## Storage maintenance — 2026-10-08
+
+Retired 301 downloaded MSVC installer cache files / 926,379,294 bytes
+(883.46 MiB) after checking the installed tools. All 207 protected hashes,
+including the 186 canonical objects/receipts, critical installed tools and the
+pinned manifest, remain unchanged. Tool attestation and all 500 strict canonical
+comparisons pass afterward using existing objects; no cold rebuild was needed.
+Cumulative retirement, including this cache: 2,390 files / 996,679,811 bytes.
+Private core067-storage-plan/cleanup JSON records paths, sizes and hashes;
+core067-storage-canonical-results.json records the complete post-cleanup replay.
+The cache cleanup stamp has completed; never rerun it. Installed tools, native
+exports, reference sources, failed probes and supplied files remain intact.
+No reconstruction credit or source graph changes result from storage maintenance.
+
 ## EXACT-066 — 2026-10-08 — Whole Enemy creation and script selection
 
 Nineteen whole functions add 1,279 bytes: actual controller creation, complete

@@ -77,6 +77,13 @@ Completed generated checkouts, CMake build trees and temporary setup environment
 can be removed after confirming they contain no tracked or active input. Preserve
 locked tools, reference source, Ghidra and supplied game files.
 
+Downloaded MSVC installer payloads under `.tools/downloads/msvc/` are a
+regenerable cache, separate from the installed compiler and SDK under
+`.tools/msvc/`. After checking the installed tools, this cache can be retired
+with a path/size/hash inventory. Preserve `.tools/vs2022-pinned.manifest`, the
+tool lock and installed files; never follow tool symlinks during deletion.
+The bootstrap skips MSVC downloads when the installed compiler is present.
+
 Record removed paths/bytes and protected hashes privately. Strictly compare all
 current units after cleanup; do not cold-rebuild an unchanged source graph just
 for cleanup or documentation. Source/header/profile changes require the usual
