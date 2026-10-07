@@ -14,7 +14,7 @@ class EnemyMovementUpdateTests(unittest.TestCase):
                          if (found := shutil.which(name))), None)
         self.assertIsNotNone(compiler)
         sources = [
-            "EnemyMovementUpdate", "Enemy", "EnemyState", "EnemyMovement",
+            "EnemyMovementUpdate", "Enemy", "EnemyData", "EnemyState", "EnemyMovement",
             "EnemyCounters", "EnemySpawn", "EnemyHealth", "EnemyPattern",
             "Context", "Graphics", "ConfigurationValue", "Configuration",
             "AnimationFile", "Animation", "AnimationHandle", "AnmVariables",

@@ -5,6 +5,9 @@
 #include <cstdlib>
 #include <cstring>
 #include <memory>
+#include <array>
+#include <limits>
+#include <stdexcept>
 #include <vector>
 
 namespace {
@@ -13,6 +16,9 @@ std::vector<std::unique_ptr<th20::Enemy>> allocated;
 std::vector<int> events;
 const char* expected_name;
 th20::EnemySpawn* expected_parameters;
+th20::EnemyController* lookup_controller = nullptr;
+th20::Enemy* resolved_enemy = nullptr;
+unsigned lookup_calls = 0, find_calls = 0;
 }
 
 namespace th20 {
@@ -35,17 +41,24 @@ void TaskInfo::enable() { std::abort(); }
 void TaskInfo::disable() { std::abort(); }
 EnemyController::EnemyController() noexcept : field_124(0), player_index(0), context(nullptr) {}
 EnemyController::~EnemyController() = default;
-EnemyData::EnemyData() = default;
-EnemyAnimationHandles::EnemyAnimationHandles() noexcept = default;
 int EclManager::execute_opcode() { std::abort(); }
 int EclManager::read_integer(int) { std::abort(); }
 int* EclManager::integer_destination(int) { std::abort(); }
 float EclManager::read_float(int) { std::abort(); }
 float* EclManager::float_destination(int) { std::abort(); }
 int Enemy::read_integer(int) { std::abort(); }
-int* Enemy::integer_destination(int) { std::abort(); }
 float Enemy::read_float(int) { std::abort(); }
-float* Enemy::float_destination(int) { std::abort(); }
+// Explicit Session and whole-list-find observation boundaries. Destination,
+// checked-slot and handle-resolution bodies are the real production source.
+std::int32_t enemy_script_globals[4] = {};
+EnemyController* enemy_controller(std::int32_t index) {
+    assert(index == 0); ++lookup_calls; return lookup_controller;
+}
+Enemy* EnemyController::find(std::uint32_t identifier) {
+    ++find_calls;
+    return resolved_enemy && resolved_enemy->state.identifier.value == identifier
+        ? resolved_enemy : nullptr;
+}
 int EnemyState::execute_opcode() { std::abort(); }
 int Enemy::execute_opcode() { std::abort(); }
 int ScriptStack::pop(int, void*, char) { std::abort(); }
@@ -77,6 +90,13 @@ int Enemy::apply_spawn(const EnemySpawn& parameters) {
 int main() {
     using namespace th20;
     EnemyController controller;
+    // Real Data and handle constructors initialize every owned scalar/slot.
+    assert(controller.data.field_30 == 0 && controller.data.field_34 == 0);
+    assert(controller.data.field_38 == 0 && controller.data.field_3c == 0);
+    assert(controller.data.field_40 == 0 && controller.data.field_84.value == 0);
+    assert(controller.data.field_88 == 0 && controller.data.field_9c == 0 && controller.data.field_a0 == 0);
+    assert(controller.data.counters.field_00 == 0 && controller.data.counters.field_2c == 0.0f);
+    for (const auto& handle : controller.data.handles) assert(handle.value == 0);
     EclLoader loader;
     assert(loader.subroutine_index("entry") == -1);
     loader.records = {{"alpha", nullptr}, {"entry", nullptr}, {"zeta", nullptr}};
@@ -119,6 +139,62 @@ int main() {
     assert(controller.enemies.tail == &first->controller_link);
     assert(first->children.next == &second->parent_link && first->children.tail == &second->parent_link);
     assert(second->parent() == first);
+    // Original pointers alias storage; writes preserve signed word bits and
+    // unrelated counters. This uses real Enemy/State/Data/Movement lifetimes.
+    lookup_controller = &controller;
+    controller.data.handles[0].value = second->state.identifier.value;
+    resolved_enemy = second;
+    lookup_calls = find_calls = 0;
+    auto* selected_int = first->integer_destination(-9943);
+    assert(selected_int == reinterpret_cast<std::int32_t*>(&second->state.counters.field_00));
+    assert(lookup_calls == 4 && find_calls == 2); // both resolutions are retained
+    *selected_int = std::numeric_limits<std::int32_t>::min();
+    assert(second->state.counters.field_00 == 0x80000000u && first->state.counters.field_00 == 0);
+    assert(first->integer_destination(-9949) == reinterpret_cast<std::int32_t*>(&controller.data.field_38));
+    assert(first->integer_destination(-9926) == reinterpret_cast<std::int32_t*>(&controller.data.counters.field_00));
+    for (int i = 0; i != 4; ++i) {
+        auto* word = first->integer_destination(-9895 + i);
+        assert(word == &enemy_script_globals[i]); *word = -100 - i;
+    }
+    auto* selected_float = first->float_destination(-9939);
+    assert(selected_float == &second->state.counters.field_10);
+    *selected_float = -17.25f;
+    assert(second->state.counters.field_10 == -17.25f && first->state.counters.field_10 == 0.0f);
+    assert(first->float_destination(-9935) == &first->state.counters.field_20);
+    assert(first->float_destination(-9922) == &controller.data.counters.field_10);
+    first->state.movements.emplace_back();
+    const std::array<float*,4> coordinates{
+        &first->state.movements[0].motion.position.x, &first->state.movements[0].motion.position.y,
+        &first->state.movements[1].motion.position.x, &first->state.movements[1].motion.position.y};
+    for (int i = 0; i != 4; ++i) {
+        auto* coordinate = first->float_destination(-9995 + i);
+        assert(coordinate == coordinates[i]); *coordinate = 37.0f + i;
+    }
+    // Stale and absent selections fall back to self; a stale handle is retained.
+    resolved_enemy = nullptr;
+    assert(first->integer_destination(-9943) == reinterpret_cast<std::int32_t*>(&first->state.counters.field_00));
+    assert(first->float_destination(-9939) == &first->state.counters.field_10);
+    assert(controller.data.handles[0].value == second->state.identifier.value);
+    lookup_controller = nullptr; lookup_calls = find_calls = 0;
+    assert(controller.selected(0) == nullptr && lookup_calls == 1 && find_calls == 0);
+    for (std::uint32_t index : {16u, std::numeric_limits<std::uint32_t>::max()}) {
+        lookup_calls = 0; bool threw = false;
+        try { controller.selected(index); } catch (const std::out_of_range&) { threw = true; }
+        assert(threw && lookup_calls == 0);
+    }
+    controller.data.handles[15].value = second->state.identifier.value;
+    lookup_controller = &controller; resolved_enemy = second;
+    assert(controller.selected(15) == second); // actual maximum valid slot
+    unsigned integer_count = 0, float_count = 0;
+    for (int index = -10000; index <= -9800; ++index) {
+        integer_count += first->integer_destination(index) != nullptr;
+        float_count += first->float_destination(index) != nullptr;
+    }
+    assert(integer_count == 19 && float_count == 24);
+    for (int index : {0, 1, -1, std::numeric_limits<int>::min(), std::numeric_limits<int>::max()}) {
+        assert(first->integer_destination(index) == nullptr && first->float_destination(index) == nullptr);
+    }
+    lookup_controller = nullptr; resolved_enemy = nullptr;
     // Reset retains independent flags/rank while clearing active script storage.
     first->main.flags.bits = 0xa5; first->main.rank = 0x7e;
     first->main.stack.words.assign(300, 0x12345678);

@@ -1,5 +1,45 @@
 # Current reconstruction handoff
 
+## EXACT-072 — 2026-10-08 — Whole Enemy variable destinations and handles
+
+Six complete contributions add 1,820 body /2,183 comparison bytes: actual integer
+and floating destinations including full compressed tables, checked Controller
+selection, player-0 identifier resolution and genuine Data/16-slot construction.
+The former animation-handle declaration is corrected to EnemyHandle and the real
+std::array; native pure zero construction and complete nonthrowing EH replay.
+Folded scalar construction and full checked-array/throw/EH support add no duplicate
+coverage. See EXACT_ENEMY_VARIABLE_RECONSTRUCTION.md.
+
+The frozen graph strictly replays 540 units /100 objects /96,830 disjoint bytes.
+Origins are 467 pending /9 library /64 authored, with 16,948 authored bytes
+unchanged. Six complete reference associations close; all 6,945 reviews remain
+terminal, 166 absorbed. Actual creation tests extend to real variable/handle
+bodies and Data lifetimes, signed bits, aliases, repeated player-0 queries,
+stale/null fallback, complete writable-slot counts and checked bounds. Session
+and whole-list-find remain explicit fixture boundaries; other owner tests now
+use actual Data construction. Source is frozen; configuration/registration
+writers are one-time operations. Never rerun completed stamps.
+
+Both whole reading functions now have complete normal-flow/table audits: integer
+4,668 comparison bytes /112 case heads and float 5,612 bytes /107 case heads.
+They retain distinct conversion/null/owner policies, 51/47 direct dependencies
+and the original unreferenced integer JMP. Full list-find remains 241/251 due
+compiler iterator auto-initialization. Whole readers/search, Player/Session and
+Controller/startup, the 41 KB Enemy root and whole-game link/runtime remain open.
+No partial read/dispatcher acceptance. Keep English/repo-python/attested Ghidra,
+no REA/subagents, serial nice 15 and protected storage cleanup. Goal stays active.
+
+
+Protected cleanup retires 12 completed probe object/receipt files /379,171 bytes.
+Two inactive EXACT-071 successful snapshots are losslessly archived as .json.gz,
+saving another 1,559,710 bytes. Original content/hash roundtrips and all 200
+current canonical hashes are verified. This batch frees 1,938,881 bytes
+(1.85 MiB); cumulative retirement is 2,500 files /1,001,401,012 bytes, with
+5,230,954 archival savings recorded separately. Native/failed evidence and all
+receipt-verified original private header snapshots are retained. All 44 public
+tests pass; post-cleanup comparison uses existing objects without a cold rebuild.
+Cleanup/configuration/registration writers are completed; never rerun them.
+
 ## EXACT-071 — 2026-10-08 — Whole ECL Runtime/Manager lifetime and async disposal
 
 Ten complete functions add 701 body bytes /706 comparison bytes: actual Runtime

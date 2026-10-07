@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111257", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111366", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8521,4 +8521,194 @@ symbol = "?read_float@EclManager@th20@@UAEMH@Z"
 target_address = 0x004AB070
 size = 15
 relocations = [
+]
+
+# EXACT-072: whole variable destinations, Enemy handles and actual Data construction.
+[units.enemy_integer_destination]
+source = "src/EnemyVariables.cpp"
+object = "build/EnemyVariables.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::integer_destination"]
+symbol = "?integer_destination@Enemy@th20@@UAEPAHH@Z"
+target_address = 0x00498600
+size = 663
+compare_size = 838
+relocations = [
+  { offset = 0x2B, type = "DIR32", symbol = "$LN33", target = 0x004988E8 },
+  { offset = 0x32, type = "DIR32", symbol = "$LN34", target = 0x00498898 },
+  { offset = 0x74, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x8A, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xA0, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xB6, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xC3, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0xD5, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xE2, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x10D, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x11A, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x12C, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x139, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x164, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x171, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x183, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x190, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x1BB, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x1C8, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x1DA, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x1E7, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x212, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x225, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x238, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x24B, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x25D, type = "DIR32", symbol = "?enemy_script_globals@th20@@3PAHA", target = 0x005C49D8 },
+  { offset = 0x26C, type = "DIR32", symbol = "?enemy_script_globals@th20@@3PAHA", target = 0x005C49D8 },
+  { offset = 0x27A, type = "DIR32", symbol = "?enemy_script_globals@th20@@3PAHA", target = 0x005C49D8 },
+  { offset = 0x289, type = "DIR32", symbol = "?enemy_script_globals@th20@@3PAHA", target = 0x005C49D8 },
+  { offset = 0x298, type = "DIR32", symbol = "$LN4", target = 0x00498636 },
+  { offset = 0x29C, type = "DIR32", symbol = "$LN5", target = 0x00498643 },
+  { offset = 0x2A0, type = "DIR32", symbol = "$LN6", target = 0x00498650 },
+  { offset = 0x2A4, type = "DIR32", symbol = "$LN7", target = 0x0049865D },
+  { offset = 0x2A8, type = "DIR32", symbol = "$LN8", target = 0x0049866A },
+  { offset = 0x2AC, type = "DIR32", symbol = "$LN9", target = 0x00498680 },
+  { offset = 0x2B0, type = "DIR32", symbol = "$LN10", target = 0x00498696 },
+  { offset = 0x2B4, type = "DIR32", symbol = "$LN11", target = 0x004986AC },
+  { offset = 0x2B8, type = "DIR32", symbol = "$LN12", target = 0x00498703 },
+  { offset = 0x2BC, type = "DIR32", symbol = "$LN13", target = 0x0049875A },
+  { offset = 0x2C0, type = "DIR32", symbol = "$LN14", target = 0x004987B1 },
+  { offset = 0x2C4, type = "DIR32", symbol = "$LN15", target = 0x00498808 },
+  { offset = 0x2C8, type = "DIR32", symbol = "$LN16", target = 0x0049881B },
+  { offset = 0x2CC, type = "DIR32", symbol = "$LN17", target = 0x0049882E },
+  { offset = 0x2D0, type = "DIR32", symbol = "$LN18", target = 0x00498841 },
+  { offset = 0x2D4, type = "DIR32", symbol = "$LN19", target = 0x00498854 },
+  { offset = 0x2D8, type = "DIR32", symbol = "$LN20", target = 0x00498863 },
+  { offset = 0x2DC, type = "DIR32", symbol = "$LN21", target = 0x00498872 },
+  { offset = 0x2E0, type = "DIR32", symbol = "$LN22", target = 0x00498880 },
+  { offset = 0x2E4, type = "DIR32", symbol = "$LN23", target = 0x0049888F },
+]
+
+[units.enemy_float_destination]
+source = "src/EnemyVariables.cpp"
+object = "build/EnemyVariables.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::float_destination"]
+symbol = "?float_destination@Enemy@th20@@UAEPAMH@Z"
+target_address = 0x00498210
+size = 818
+compare_size = 1001
+relocations = [
+  { offset = 0x2B, type = "DIR32", symbol = "$LN38", target = 0x004985A8 },
+  { offset = 0x32, type = "DIR32", symbol = "$LN39", target = 0x00498544 },
+  { offset = 0xA8, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xB5, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0xC7, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xD4, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0xFF, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x10C, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x11E, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x12B, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x156, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x163, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x175, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x182, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x1AD, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x1BA, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x1CC, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x1D9, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x204, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x21A, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x230, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x246, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x25C, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x272, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x288, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x29E, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x2BB, type = "REL32", symbol = "??A?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEAAUEnemyMovement@th20@@I@Z", target = 0x0048BD10 },
+  { offset = 0x2C2, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x2DA, type = "REL32", symbol = "??A?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEAAUEnemyMovement@th20@@I@Z", target = 0x0048BD10 },
+  { offset = 0x2E1, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x2FC, type = "REL32", symbol = "??A?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEAAUEnemyMovement@th20@@I@Z", target = 0x0048BD10 },
+  { offset = 0x303, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x31A, type = "REL32", symbol = "??A?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEAAUEnemyMovement@th20@@I@Z", target = 0x0048BD10 },
+  { offset = 0x321, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x334, type = "DIR32", symbol = "$LN24", target = 0x004984BA },
+  { offset = 0x338, type = "DIR32", symbol = "$LN25", target = 0x004984D8 },
+  { offset = 0x33C, type = "DIR32", symbol = "$LN26", target = 0x004984FA },
+  { offset = 0x340, type = "DIR32", symbol = "$LN27", target = 0x00498519 },
+  { offset = 0x344, type = "DIR32", symbol = "$LN4", target = 0x00498246 },
+  { offset = 0x348, type = "DIR32", symbol = "$LN5", target = 0x00498253 },
+  { offset = 0x34C, type = "DIR32", symbol = "$LN6", target = 0x00498260 },
+  { offset = 0x350, type = "DIR32", symbol = "$LN7", target = 0x0049826D },
+  { offset = 0x354, type = "DIR32", symbol = "$LN12", target = 0x004982AE },
+  { offset = 0x358, type = "DIR32", symbol = "$LN13", target = 0x00498305 },
+  { offset = 0x35C, type = "DIR32", symbol = "$LN14", target = 0x0049835C },
+  { offset = 0x360, type = "DIR32", symbol = "$LN15", target = 0x004983B3 },
+  { offset = 0x364, type = "DIR32", symbol = "$LN8", target = 0x0049827A },
+  { offset = 0x368, type = "DIR32", symbol = "$LN9", target = 0x00498287 },
+  { offset = 0x36C, type = "DIR32", symbol = "$LN10", target = 0x00498294 },
+  { offset = 0x370, type = "DIR32", symbol = "$LN11", target = 0x004982A1 },
+  { offset = 0x374, type = "DIR32", symbol = "$LN16", target = 0x0049840A },
+  { offset = 0x378, type = "DIR32", symbol = "$LN17", target = 0x00498420 },
+  { offset = 0x37C, type = "DIR32", symbol = "$LN18", target = 0x00498436 },
+  { offset = 0x380, type = "DIR32", symbol = "$LN19", target = 0x0049844C },
+  { offset = 0x384, type = "DIR32", symbol = "$LN20", target = 0x00498462 },
+  { offset = 0x388, type = "DIR32", symbol = "$LN21", target = 0x00498478 },
+  { offset = 0x38C, type = "DIR32", symbol = "$LN22", target = 0x0049848E },
+  { offset = 0x390, type = "DIR32", symbol = "$LN23", target = 0x004984A4 },
+  { offset = 0x394, type = "DIR32", symbol = "$LN28", target = 0x0049853A },
+]
+
+[units.enemy_selected]
+source = "src/EnemyVariables.cpp"
+object = "build/EnemyVariables.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::selected"]
+symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
+target_address = 0x00485660
+size = 43
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?at@?$array@UEnemyHandle@th20@@$0BA@@std@@QAEAAUEnemyHandle@th20@@I@Z", target = 0x00484980 },
+  { offset = 0x21, type = "REL32", symbol = "?resolve@EnemyHandle@th20@@QAEPAUEnemy@2@XZ", target = 0x004AAAC0 },
+]
+
+[units.enemy_handle_resolve]
+source = "src/EnemyVariables.cpp"
+object = "build/EnemyVariables.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyHandle::resolve"]
+symbol = "?resolve@EnemyHandle@th20@@QAEPAUEnemy@2@XZ"
+target_address = 0x004AAAC0
+size = 73
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?enemy_controller@th20@@YAPAUEnemyController@1@H@Z", target = 0x00478060 },
+  { offset = 0x21, type = "REL32", symbol = "?enemy_controller@th20@@YAPAUEnemyController@1@H@Z", target = 0x00478060 },
+  { offset = 0x3B, type = "REL32", symbol = "?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00498A80 },
+]
+
+[units.enemy_data_ctor]
+source = "src/EnemyData.cpp"
+object = "build/EnemyData.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyData::EnemyData"]
+symbol = "??0EnemyData@th20@@QAE@XZ"
+target_address = 0x004A2FC0
+size = 148
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0EnemyCounters@th20@@QAE@XZ", target = 0x0047BAA0 },
+  { offset = 0x48, type = "REL32", symbol = "??0?$array@UEnemyHandle@th20@@$0BA@@std@@QAE@XZ", target = 0x0049EBE0 },
+  { offset = 0x6F, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+[units.enemy_handles_ctor]
+source = "src/EnemyData.cpp"
+object = "build/EnemyData.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyHandles::EnemyHandles"]
+symbol = "??0?$array@UEnemyHandle@th20@@$0BA@@std@@QAE@XZ"
+target_address = 0x0049EBE0
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$array@UEnemyHandle@th20@@$0BA@@std@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0EnemyHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
 ]

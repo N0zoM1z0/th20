@@ -532,3 +532,9 @@ th20::EclManager::terminate_async
 th20::DiagnosticAllocator::release_object<EclRuntime>
 th20::DiagnosticAllocator::release_object<IntrusiveLink<EclRuntime>>
 th20::EclManager::read_float
+th20::Enemy::integer_destination
+th20::Enemy::float_destination
+th20::EnemyController::selected
+th20::EnemyHandle::resolve
+th20::EnemyData::EnemyData
+th20::EnemyHandles::EnemyHandles

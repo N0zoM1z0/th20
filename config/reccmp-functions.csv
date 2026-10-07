@@ -533,3 +533,9 @@ th20::EclManager::terminate_async,0x004973C0,function
 th20::DiagnosticAllocator::release_object<EclRuntime>,0x0048AFA0,function
 th20::DiagnosticAllocator::release_object<IntrusiveLink<EclRuntime>>,0x00413B70,function
 th20::EclManager::read_float,0x004AB070,function
+th20::Enemy::integer_destination,0x00498600,function
+th20::Enemy::float_destination,0x00498210,function
+th20::EnemyController::selected,0x00485660,function
+th20::EnemyHandle::resolve,0x004AAAC0,function
+th20::EnemyData::EnemyData,0x004A2FC0,function
+th20::EnemyHandles::EnemyHandles,0x0049EBE0,function

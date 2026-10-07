@@ -61,9 +61,6 @@ float* Enemy::float_destination(std::int32_t) { std::abort(); }
 TaskInfo::~TaskInfo() = default;
 void TaskInfo::enable() { std::abort(); }
 void TaskInfo::disable() { std::abort(); }
-EnemyAnimationHandles::EnemyAnimationHandles() noexcept {}
-EnemyData::EnemyData() : field_30(0), field_34(0), field_38(0), field_3c(0),
-    field_40(0), field_84(0), field_88(0), field_9c(0), field_a0(0) {}
 EnemyController::EnemyController() noexcept : field_c4(0), field_c8(0),
     field_cc(0), field_e0(0), animation_files{}, loader(nullptr), field_120(0),
     field_124(0), player_index(0), context(nullptr) {}

@@ -1,5 +1,32 @@
 # Verified facts and open hypotheses
 
+## EXACT-072 — 2026-10-08 — Writable Enemy variables and genuine handles
+
+- Controller+54 holds sixteen Enemy identifiers. Actual checked access and
+  player-0 lookup distinguish them from animation handles; stale identifiers
+  survive failed resolution. The checked child is std::array::at, with unsigned
+  bound16 and the original CRT throw path, rather than operator[].
+- Two complete pointer switches preserve nineteen integer and twenty-four
+  floating destinations, null defaults, self fallback, repeated selected lookups
+  and actual Movement subobjects. Full compressed tables and alignment replay.
+- Native Data construction establishes the actual164-byte value, sixteen child
+  zero constructors, Timer8C and aggregate84. Nonthrowing handle construction
+  naturally reproduces the real array constructor and complete EH flags5.
+- Six whole contributions add1820body/2183comparisonbytes; the frozen complete
+  graph is540units/100objects/96830bytes. Origins467pending/9library/64authored16948
+  remain separate. All44publictests pass, including real destination/handle/Data
+  bodies in the owned creation test. Session and full list-find are boundaries.
+- Whole readers49ABC0/4995D0 have full127-entry tables and112/107case-head audits.
+  Distinct conversion/null/owner policies and51/47direct dependencies remain.
+  Native unreferenced integer JMP is retained despite Ghidra listing omission.
+  Natural full list-find still emits241/251 due iterator auto-initialization;
+  no fake constructor, redundant clear or partial root credit is accepted.
+- Twelve obsolete products are retired; two inactive successful snapshots are
+  losslessly archived. All200canonical hashes are unchanged; this batch frees
+  1938881bytes. Native/failure evidence and original private header snapshots are
+  retained. See EXACT_ENEMY_VARIABLE_RECONSTRUCTION.md; whole-game gates stay open.
+
+
 ## EXACT-057 — 2026-10-07 — Complete ECL runtime dispatcher
 
 - Whole tick53B5C0/11110 +2alignment +392table canonically replays11504bytes

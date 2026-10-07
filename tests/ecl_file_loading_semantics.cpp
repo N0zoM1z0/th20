@@ -50,8 +50,6 @@ namespace th20 {
 // The actual file loader, base resource lifetime and Context getter are linked.
 EnemyController::EnemyController() noexcept : field_124(0), player_index(0), context(nullptr) {}
 EnemyController::~EnemyController() = default;
-EnemyData::EnemyData() = default;
-EnemyAnimationHandles::EnemyAnimationHandles() noexcept = default;
 TaskInfo::~TaskInfo() = default;
 void TaskInfo::enable() { std::abort(); }
 void TaskInfo::disable() { std::abort(); }
