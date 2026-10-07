@@ -1,5 +1,39 @@
 # Verified facts and open hypotheses
 
+## REF-039 — 2026-10-07 — Enemy health and drop pattern values
+
+- Nine full natural contributions add677 bytes on actual EnemyHealth28 and
+  EnemyPattern168. State4A3060 constructs them at18C/1A8; real receiver and value
+  boundaries established before probes. Canonical175 / objects50 / bytes12236.
+- Health flags bit0 selects scaled accounting, bit1 forced defeat. Apply uses
+  modulo32 arithmetic and signed divide7. Reset preserves scale/threshold/other
+  flags; record changes damage14 only. field04 role and original names unknown.
+- Positive returns fullint0/1, forced_end fulluint32 bit1; caller tests EAX.
+  Historical bool/AL checks do not prove that ABI. Ghidra omits4A3FDD dead jump;
+  complete PE decode and ordinary if/else reproduce full123-byte apply naturally.
+- Pattern has two genuine sixteen-word arrays, duration8C/Timer90/radiiA0,A4.
+  Fifteen emitted item kinds do not reduce its actual slot count. Clear preserves
+  extras/header/radii and uses real fill/Timer assignment. Reset clears entire
+  trivially copyable value then assigns32 radii and Timer0; ctor differs.
+- Native memset/fill/Timer calls and32 literal establish independent anchors.
+  Complete flow and all175 frozen-source cold canonical units pass. Guarded
+  dirty construction, 10,000 widened independent arithmetic/full-byte cases,
+  signed edges/count/Timer flag preservation pass portable C++20/UBSan.
+- Individually reviewed141 bodies:5 absorbed/17 nonexact/119 support, two prior
+  reset upgrades. Two grammar files/ten fastcall annotations reconciled. Global
+ 5688 terminal/1256 pending; gaps86/27; Gameplay412 pending, exhaustive goal active.
+- Ten fresh actual TUs:219 defined/73 static;26 complete diagnostics across22
+  mapped bodies all lengths differ. Source175/pending origins114/library4;
+  authored57/4074 unchanged. Full Enemy/Player/HUD/ANM/ECL/PMR owners unclosed.
+- Historical CPU1254134/0 and frame7682 bind105 hashes; resource3304 only100/105.
+  Scope194864 selected comparison checks overlaps; no fresh Windows execution,
+  executed binary/compiler/startup bind or whole-game equivalence. Damage avoids
+  active child calls; source64 fixture records order. Drop patches Item endpoint;
+  defeat patches nine endpoints/fake tick controls revival; mesh shares actual
+  initialization/strip bodies. These do not establish those dependencies.
+- ref039-record.py executed ONCE; never rerun. See
+  REFERENCE_ENEMY_DAMAGE_REVIEW.md for exact ranges and retained-evidence limits.
+
 ## REF-038 — 2026-10-07 — Enemy movement and spawn values
 
 - 236 bodies individually read/hash-bound,1 absorbed/36 nonexact/199 support;

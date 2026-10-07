@@ -1,5 +1,13 @@
 # Target inventory and initial architecture boundary
 
+REF-039 establishes real EnemyHealth28 at EnemyState+18C and EnemyPattern168
+at+1A8 through original constructor calls. Health exposes wrapping accounting,
+signed division7 and full-EAX queries; pattern owns two sixteen-element arrays,
+Timer and radii. Nine natural complete members add677 bytes;175 canonical units/
+50 cold objects/12236 disjoint bytes replay. Full Enemy/Player/HUD/ANM/PMR/ECL
+owners and active dependency paths remain unresolved. All141 additional bodies
+individually reviewed; Gameplay412 remains pending. See REFERENCE_ENEMY_DAMAGE_REVIEW.md.
+
 REF-038 establishes native EnemySpawn84 with Counter48 at20 and a four-byte
 value at50 (original tag/role unknown), current-first Enemy position interpolation
 100, generic Vector2 interpolation64 and movement388 with six real subobjects.

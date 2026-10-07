@@ -165,3 +165,12 @@ th20::EnemySpawn::EnemySpawn,0x0047BB30,function
 th20::EnemyMotionInterpolation::EnemyMotionInterpolation,0x0048B270,function
 th20::EnemyMovement::EnemyMovement,0x0048B550,function
 th20::Vector2Interpolation::Interpolation,0x00447AC0,function
+th20::EnemyHealth::EnemyHealth,0x004A3360,function
+th20::EnemyHealth::reset,0x004A7310,function
+th20::EnemyHealth::apply,0x004A3F80,function
+th20::EnemyHealth::record,0x004AA050,function
+th20::EnemyHealth::positive,0x004AB240,function
+th20::EnemyHealth::forced_end,0x004AB290,function
+th20::EnemyPattern::EnemyPattern,0x004A34A0,function
+th20::EnemyPattern::reset,0x004A7360,function
+th20::EnemyPattern::clear_counts,0x00497270,function

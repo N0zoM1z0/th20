@@ -164,3 +164,12 @@ th20::EnemySpawn::EnemySpawn
 th20::EnemyMotionInterpolation::EnemyMotionInterpolation
 th20::EnemyMovement::EnemyMovement
 th20::Vector2Interpolation::Interpolation
+th20::EnemyHealth::EnemyHealth
+th20::EnemyHealth::reset
+th20::EnemyHealth::apply
+th20::EnemyHealth::record
+th20::EnemyHealth::positive
+th20::EnemyHealth::forced_end
+th20::EnemyPattern::EnemyPattern
+th20::EnemyPattern::reset
+th20::EnemyPattern::clear_counts

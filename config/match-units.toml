@@ -1932,3 +1932,107 @@ relocations = [
   { offset = 0x37, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
   { offset = 0x42, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
 ]
+
+# REF-039: actual health and pattern values, independently observed native anchors.
+
+[units.enemy_health_construct]
+source = "src/EnemyHealth.cpp"
+object = "build/EnemyHealth.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyHealth::EnemyHealth"]
+symbol = "??0EnemyHealth@th20@@QAE@XZ"
+target_address = 0x004A3360
+size = 83
+relocations = []
+
+[units.enemy_health_reset]
+source = "src/EnemyHealth.cpp"
+object = "build/EnemyHealth.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyHealth::reset"]
+symbol = "?reset@EnemyHealth@th20@@QAEXXZ"
+target_address = 0x004A7310
+size = 65
+relocations = []
+
+[units.enemy_health_apply]
+source = "src/EnemyHealth.cpp"
+object = "build/EnemyHealth.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyHealth::apply"]
+symbol = "?apply@EnemyHealth@th20@@QAEHH@Z"
+target_address = 0x004A3F80
+size = 123
+relocations = []
+
+[units.enemy_health_record]
+source = "src/EnemyHealth.cpp"
+object = "build/EnemyHealth.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyHealth::record"]
+symbol = "?record@EnemyHealth@th20@@QAEXH@Z"
+target_address = 0x004AA050
+size = 28
+relocations = []
+
+[units.enemy_health_positive]
+source = "src/EnemyHealth.cpp"
+object = "build/EnemyHealth.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyHealth::positive"]
+symbol = "?positive@EnemyHealth@th20@@QBEHXZ"
+target_address = 0x004AB240
+size = 40
+relocations = []
+
+[units.enemy_health_forced_end]
+source = "src/EnemyHealth.cpp"
+object = "build/EnemyHealth.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyHealth::forced_end"]
+symbol = "?forced_end@EnemyHealth@th20@@QBEIXZ"
+target_address = 0x004AB290
+size = 22
+relocations = []
+
+[units.enemy_pattern_construct]
+source = "src/EnemyPattern.cpp"
+object = "build/EnemyPattern.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyPattern::EnemyPattern"]
+symbol = "??0EnemyPattern@th20@@QAE@XZ"
+target_address = 0x004A34A0
+size = 136
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x43, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x61, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+[units.enemy_pattern_reset]
+source = "src/EnemyPattern.cpp"
+object = "build/EnemyPattern.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyPattern::reset"]
+symbol = "?reset@EnemyPattern@th20@@QAEXXZ"
+target_address = 0x004A7360
+size = 108
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x21, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x34, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x63, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]
+
+[units.enemy_pattern_clear_counts]
+source = "src/EnemyPattern.cpp"
+object = "build/EnemyPattern.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::EnemyPattern::clear_counts"]
+symbol = "?clear_counts@EnemyPattern@th20@@QAEXXZ"
+target_address = 0x00497270
+size = 72
+relocations = [
+  { offset = 0x21, type = "REL32", symbol = "?fill@?$array@I$0BA@@std@@QAEXABI@Z", target = 0x004981F0 },
+  { offset = 0x3F, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]

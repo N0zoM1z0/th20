@@ -2616,7 +2616,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00496B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00496FB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00497240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00497270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00497270,unknown,EnemyPattern,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004972C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00497360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004973A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2979,9 +2979,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A2E80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A2FC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A3360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A3360,unknown,EnemyHealth,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004A33C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A34A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A34A0,unknown,EnemyPattern,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004A3530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A35F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3012,7 +3012,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A3EE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A3F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A3F80,unknown,EnemyHealth,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004A4000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A4030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A4060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3036,8 +3036,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A7040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A7080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A7170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A7310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A7360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A7310,unknown,EnemyHealth,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
+0x004A7360,unknown,EnemyPattern,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004A73D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A73F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A74D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3074,7 +3074,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A9F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A9FB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AA000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AA050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AA050,unknown,EnemyHealth,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004AA070,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AA0B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AA0F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3126,9 +3126,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004AB110,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AB140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AB1B0,unknown,EnemyCounters,review,pending,REF-037: natural complete typed value member; native construction/owner/access/call operands and generic output-pointer pop ABI independently establish anchors before probing. Full162-unit/46-object cold replay11154 bytes and portable C++20/UBSan tests pass. Actual PMR Stack24 and Counter48 four-integer/eight-float types; original spelling/origin pending. Generic pop/allocator/vector bodies and full VM/Enemy/vptr/EH owners not reconstructed. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md.
-0x004AB240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AB240,unknown,EnemyHealth,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004AB270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AB290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AB290,unknown,EnemyHealth,review,pending,"REF-039: complete natural member on actual EnemyHealth28/EnemyPattern168 values. Native State constructor/receiver offsets, full PE flow including omitted4A3FDD jump, original full-EAX callers and independently decoded memset/fill/Timer/literal anchors precede probes. All175 units/50 cold objects/12236 disjoint bytes pass; independent dirty guarded C++20/UBSan construction, widened modular arithmetic and count/Timer/reset preservation tests pass. Original names/origins and full Enemy/Player/HUD/ANM/PMR/ECL/Services owners remain unaccepted. No whole-owner facade, prefix comparison, copied reference source or extra helper credit. See docs/REFERENCE_ENEMY_DAMAGE_REVIEW.md."
 0x004AB2B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AB2E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AB300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

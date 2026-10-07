@@ -2,6 +2,10 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| EnemyHealth | src/EnemyHealth.hpp, src/EnemyHealth.cpp | construction4A3360; reset4A7310; apply4A3F80; record4AA050; positive4AB240; forced_end4AB290 | Six full exact members on real28-byte value; modulo32/signed division7 and full-EAX queries; field04 role/origin/enclosing owner pending |
+| EnemyPattern | src/EnemyPattern.hpp, src/EnemyPattern.cpp | construction4A34A0; reset4A7360; clear_counts497270 | Three full exact members on real168-byte value with two16-element arrays and Timer; native fifteen emitted kinds do not shorten arrays; origins/full drop owner pending |
+| EnemySpawn | src/EnemySpawn.hpp, src/EnemySpawn.cpp | construction47BB30 | Full95-byte exact constructor on real84-byte value; Counter48 and four-byte Identifier32 tail, original tail tag/role/enclosing owner pending |
+| EnemyMotionInterpolation / EnemyMovement | src/EnemyMovement.hpp, src/EnemyMovement.cpp | construction48B270/48B550 | Full123/90-byte exact constructors on actual100/388-byte values; current-first five-Vec3 curve and six child values; evaluation/full Enemy owner pending |
 | ScriptStack | src/ScriptStack.hpp, src/ScriptStack.cpp | construction4A36D0; absolute53E630; local53E6A0; leave_frame540300 | Four complete exact members on actual PMR Stack24; generic output-pointer/status pop explicitly undefined, allocator/full VM ownership and origins pending |
 | EnemyCounters | src/EnemyCounters.hpp, src/EnemyCounters.cpp | construction47BAA0; reset4AB1B0 | Two complete exact members on actual48-byte four-integer/eight-float value; full EnemyData/controller ownership and field roles/origins pending |
 | DialogueFlags | src/DialogueFlags.hpp, src/DialogueFlags.cpp | construction0x004AEC90 | Complete66-byte exact constructor on real four-byte Dialogue+104 member; upper25 retained, bit meanings/origin pending |
@@ -14,7 +18,7 @@
 | Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
 | CollisionGeometry | src/CollisionGeometry.hpp, src/CollisionGeometry.cpp | absolute 0x00445680; circle 0x00456FE0; rectangle 0x00457300 | Three complete exact routines; negative zero/quiet-NaN sign retained, circle inclusive/rectangle strict; origins pending |
 | PackedColor / EffectParameters / EffectRequest / SelectionPulse | src/EffectParameters.hpp, src/EffectParameters.cpp | constructors 0x004142A0/0x0047BA30/0x0049CE30/0x00461840 | Four complete exact constructors on actual4/56/72x86/8-byte values; implicit padding kept, origins pending |
-| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3 constructor0x00447B30 | Thirteen complete exact members on actual32/44/84-byte values; live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
+| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3/Vector2 constructors0x00447B30/0x00447AC0 | Fourteen complete exact members on actual32/44/84/64-byte values; live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
 | Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Eighteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
@@ -53,8 +57,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns forty-six objects and one canonical profile per source.
-One hundred sixty-two units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns fifty objects and one canonical profile per source.
+One hundred seventy-five units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-032 absorbs the score-record constructor through an independently rewritten
@@ -83,7 +87,12 @@ src/EnemySpawn.hpp/.cpp and src/EnemyMovement.hpp/.cpp, and extends the shared
 Interpolation template naturally to Vector2. Four complete constructors405
 bytes exactly replay with actual84/100/388/64-byte values; all236 additional
 bodies individually reviewed, prior movement constructor upgraded separately.
-Gameplay553 remains pending. See REFERENCE_ENEMY_MOVEMENT_REVIEW.md.
+Gameplay553 remained pending at that checkpoint. See REFERENCE_ENEMY_MOVEMENT_REVIEW.md.
+REF-039 adds EnemyHealth/EnemyPattern actual28/168-byte values and nine complete
+members677 bytes. All141 damage/drop/defeat/cleanup/mesh bodies individually
+reviewed, plus two prior reset upgrades; Gameplay412 remains pending. Full
+health status widths and real count/Timer protocols are accepted independently
+of the unresolved whole owners. See REFERENCE_ENEMY_DAMAGE_REVIEW.md.
 Native Stack/runtime/
 resource/vtable/allocator ownership differs from reference owning objects;
 see REFERENCE_GAMEPLAY_ECL_REVIEW.md.

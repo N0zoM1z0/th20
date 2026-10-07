@@ -50,6 +50,8 @@ class CoreSemanticsTests(unittest.TestCase):
                             "tests/script_value_semantics.cpp",
                             "src/EnemySpawn.cpp", "src/EnemyMovement.cpp",
                             "tests/enemy_value_semantics.cpp",
+                            "src/EnemyHealth.cpp", "src/EnemyPattern.cpp",
+                            "tests/enemy_health_pattern_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

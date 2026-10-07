@@ -166,3 +166,12 @@ address,name,module,confidence,evidence
 0x0048B270,th20::EnemyMotionInterpolation::EnemyMotionInterpolation,EnemyMovement,high,REF-038
 0x0048B550,th20::EnemyMovement::EnemyMovement,EnemyMovement,high,REF-038
 0x00447AC0,th20::Vector2Interpolation::Interpolation,Interpolation,high,REF-038
+0x004A3360,th20::EnemyHealth::EnemyHealth,EnemyHealth,high,REF-039
+0x004A7310,th20::EnemyHealth::reset,EnemyHealth,high,REF-039
+0x004A3F80,th20::EnemyHealth::apply,EnemyHealth,high,REF-039
+0x004AA050,th20::EnemyHealth::record,EnemyHealth,high,REF-039
+0x004AB240,th20::EnemyHealth::positive,EnemyHealth,high,REF-039
+0x004AB290,th20::EnemyHealth::forced_end,EnemyHealth,high,REF-039
+0x004A34A0,th20::EnemyPattern::EnemyPattern,EnemyPattern,high,REF-039
+0x004A7360,th20::EnemyPattern::reset,EnemyPattern,high,REF-039
+0x00497270,th20::EnemyPattern::clear_counts,EnemyPattern,high,REF-039

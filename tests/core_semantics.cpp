@@ -33,6 +33,7 @@ void check_dialogue_values();
 void check_scalar_math();
 void check_script_values();
 void check_enemy_values();
+void check_enemy_health_pattern();
 
 namespace {
 unsigned callback_calls;
@@ -71,6 +72,7 @@ int main() {
     check_scalar_math();
     check_script_values();
     check_enemy_values();
+    check_enemy_health_pattern();
     th20::trophy_text::Message message;
     std::memset(&message, 0xa5, sizeof(message));
     message.reset();

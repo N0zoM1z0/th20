@@ -1,5 +1,38 @@
 # Current reconstruction handoff
 
+## REF-039 — 2026-10-07 — Enemy damage/drop/defeat/mesh batch
+
+All 141 scoped bodies individually reviewed: 5 absorbed / 17 nonexact / 119
+support. Two prior health/pattern reset reviews upgraded separately. Twenty-one
+indexed files; two grammar files / ten fastcall annotations reconciled. Global
+5,688 terminal / 1,256 pending; grammar 86/27; Gameplay 412 pending. Goal active.
+
+- Nine natural complete members on real EnemyHealth28 and EnemyPattern168 add
+  677 bytes. Full 175-unit / 50-object cold replay covers 12,236 disjoint bytes.
+  Source175 / pending origins114 / library4; authored57 / 4,074 unchanged.
+- Native State constructor proves health at18C and pattern at1A8. Full EAX
+  health queries, modulo32 / signed division7, genuine sixteen-count arrays,
+  Timer protocols and reset preservation restored. Original names/origins open.
+- Direct PE decode retains Ghidra-omitted4A3FDD jump. Ordinary if/else returns
+  naturally reproduce all123 apply bytes; no prefix or compiler-shaping code.
+- Ten actual reference TUs freshly rebuilt; 219 defined functions / 73 static.
+  Twenty-six complete diagnostics across22 bodies all differ in length.
+  Other older reference receipts are stale after this maintained source freeze.
+- Dirty guarded construction, 10,000 independent widened-arithmetic/full-byte
+  cases and Timer/count/reset edge checks pass under portable C++20/UBSan.
+- CPU1,254,134/0 and frame7,682 bind105/105 current hashes; resource3,304 binds
+  only100/105. No Windows oracle/writer execution or executed binary/recipe bind.
+  Damage cases exclude active child paths; source fixture records their order.
+  Drop patches Item; defeat patches nine endpoints and fake tick controls revival;
+  mesh shares original initialization/strip callees. Whole-owner behavior open.
+- Private ref039-record.py executed ONCE; never rerun any historical writer.
+  Maintained src/probes remain frozen at the full canonical replay checkpoint.
+
+Continue entity-opcode batch243, then other Gameplay169, Sprite540,
+StageBackground121 and183 other bodies; grammar27 files remain. Serial MSVC,
+no subagents, English, repo-python, commit prefix/public main authorization
+persist. See REFERENCE_ENEMY_DAMAGE_REVIEW.md.
+
 ## REF-038 — 2026-10-07 — Enemy movement/frame/spawn/read batch
 
 All236 scoped bodies individually reviewed:1 absorbed/36 nonexact/199 support;
