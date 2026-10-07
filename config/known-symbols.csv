@@ -241,3 +241,21 @@ address,name,module,confidence,evidence
 0x00471E60,th20::FogValue::operator-,FogValue,high,REF-043
 0x00471F50,th20::FogValue::operator+,FogValue,high,REF-043
 0x00471410,th20::FogInterpolation::FogInterpolation,Interpolation,high,REF-043
+0x00453E40,th20::Motion::update_velocity,MotionUpdates,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00453AC0,th20::Motion::update_position,MotionUpdates,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004543D0,th20::Motion::snap_position,MotionUpdates,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004562C0,th20::Motion::motion_vector,MotionUpdates,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004591F0,th20::Motion::set_motion_z,MotionUpdates,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00452F20,th20::Angle::operator=(float),Angle,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004530C0,th20::Angle::operator+=(float),Angle,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00452FC0,th20::Angle::operator+(float),Angle,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004294E0,th20::Angle::operator-(const Angle&),Angle,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00429570,th20::Vector3::operator+,Vector3,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00429740,th20::Vector3::operator-=,Vector3,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00439330,th20::polar,MotionMath,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00458FA0,th20::rotate_xy,MotionMath,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00456210,th20::vector_direction,MotionMath,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004592B0,th20::floor_scalar,MotionMath,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004396C0,th20::angle_difference,MotionMath,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x004371D0,cos(float),MotionMath,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md
+0x00439530,sin(float),MotionMath,high,EXACT-045; docs/EXACT_MOTION_RECONSTRUCTION.md

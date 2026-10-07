@@ -239,3 +239,21 @@ th20::FogValue::operator*
 th20::FogValue::operator-
 th20::FogValue::operator+
 th20::FogInterpolation::FogInterpolation
+th20::Motion::update_velocity
+th20::Motion::update_position
+th20::Motion::snap_position
+th20::Motion::motion_vector
+th20::Motion::set_motion_z
+th20::Angle::operator=(float)
+th20::Angle::operator+=(float)
+th20::Angle::operator+(float)
+th20::Angle::operator-(const Angle&)
+th20::Vector3::operator+
+th20::Vector3::operator-=
+th20::polar
+th20::rotate_xy
+th20::vector_direction
+th20::floor_scalar
+th20::angle_difference
+cos(float)
+sin(float)

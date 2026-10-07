@@ -904,15 +904,15 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00429420,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00429440,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x004294A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004294E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004294E0,unknown,Angle,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00429520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429570,unknown,Vector3,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x004295D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429690,unknown,Vector3,review,pending,"REF-022; Actual12-byte three-float value owner already independently established. Complete77-byte member429690 multiplies each scalar lane and returns receiver withRET4; original commit46CA40 independently invokes it for position scaling. Natural operator*= body, no relocation fields. Original spelling and authored/compiler/library origin pending; no broader FP exception or enclosing Renderer acceptance."
 0x004296E0,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
-0x00429740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429740,unknown,Vector3,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x004297A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004297D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -938,7 +938,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00435520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004358D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00435C80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004371D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004371D0,unknown,MotionMath,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x004371F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00437220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00437310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1003,7 +1003,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00438F10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004392D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00439330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00439330,unknown,MotionMath,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00439390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004393D0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004393F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1015,13 +1015,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004394D0,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004394F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00439530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00439530,unknown,MotionMath,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00439550,unknown,Interpolation,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004395B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004395D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004396A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004396C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004396C0,unknown,MotionMath,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00439760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439790,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004397C0,unknown,ScalarMath,review,pending,"REF-035: natural complete cdecl float/double CRT wrapper, independent full native decode/caller/CALL/error-name/fallback evidence before anchors;156-unit/44-object cold replay and C++20/UBSan finite identities/quadrants/signed-zero checks pass. Original spelling and authored/compiler/library origin pending; CRT implementation/startup/error/NaN domains not accepted. Gameplay/ECL remaining1147 bodies pending. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md."
@@ -1423,28 +1423,28 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00452E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452EE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00452F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00452F20,unknown,Angle,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00452F50,unknown,ClockScalar,review,unknown,REF-002
 0x00452F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00452FC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00452FC0,unknown,Angle,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00452FF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00453040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004530A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004530C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004530C0,unknown,Angle,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x004530F0,authored,Timer,authored,high,REF-002
 0x00453220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004532C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004533B0,authored,Timer,authored,high,REF-002
 0x00453500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00453AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00453AC0,unknown,MotionUpdates,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md. Code809; complete comparison832 includes alignment NOPs and five-entry dispatch table; no prefix slicing."
 0x00453E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00453E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00453E40,unknown,MotionUpdates,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md. Code694; complete comparison716 includes alignment NOPs and five-entry dispatch table; no prefix slicing."
 0x00454110,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00454150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00454230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00454310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00454340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004543D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004543D0,unknown,MotionUpdates,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00454450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00454480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004545D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1459,10 +1459,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004560D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00456210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00456210,unknown,MotionMath,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00456240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456270,authored,ArchiveCrypt,authored,high,REF-004; independently examined game archive decoder caller and counted byte-sum contribution
-0x004562C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004562C0,unknown,MotionUpdates,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x004562E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004567D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1482,15 +1482,15 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00458B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00458E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00458F70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00458FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00458FA0,unknown,MotionMath,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00459030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004590E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00459190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004591F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004591F0,unknown,MotionUpdates,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x00459210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00459240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00459280,unknown,ScalarMath,review,pending,"REF-035: natural complete cdecl float/double CRT wrapper, independent full native decode/caller/CALL/error-name/fallback evidence before anchors;156-unit/44-object cold replay and C++20/UBSan finite identities/quadrants/signed-zero checks pass. Original spelling and authored/compiler/library origin pending; CRT implementation/startup/error/NaN domains not accepted. Gameplay/ECL remaining1147 bodies pending. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md."
-0x004592B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004592B0,unknown,MotionMath,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x004592E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00459350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004593F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

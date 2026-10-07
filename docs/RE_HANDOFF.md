@@ -1,5 +1,29 @@
 # Current reconstruction handoff
 
+## EXACT-045 — 2026-10-07 — shared Motion protocol batch
+
+Two substantive Motion updates and their direct dependency family now have
+18 complete canonical units: 2,527 code bytes / 2,572 complete comparison bytes.
+All 259 units / 59 cold objects / 20,892 disjoint comparison bytes strictly
+replay. Public finite C++20/UBSan protocol tests replace the old update stubs.
+See EXACT_MOTION_RECONSTRUCTION.md for native flow, dispatch/padding, member
+semantics, profiles, security cookie, shared heads and acceptance limits.
+
+Source 259 / pending origins 198 / library 4; authored 57 / 4,074 unchanged.
+Reference review remains 6,945 terminal bodies / 113 reconciled grammar files.
+No target/database mutation. Maintained src/probes frozen after this batch;
+all canonical receipts were cold-rebuilt because shared declarations changed.
+The private EXACT045 configure and registration writers each execute once;
+never rerun old REF001..REF044 or completed EXACT045 writers.
+
+The active goal is substantive native exact reconstruction. Continue in
+coherent dependency batches, prioritizing interpolation evaluation/easing or
+another high-return main owner. Archive decoding and scheduler bodies retain
+allocator/EH/iterator and global-state questions; record blockers and continue
+with independently closable families. English / repo-python / serial compiler /
+no subagents / gpt-6.1-sol: commits / authorized public main push persist.
+The sections below are historical checkpoints.
+
 ## REF-044 — 2026-10-07 — existing-reference review complete
 
 All remaining 184 bodies across 46 files fully read and recorded as support.

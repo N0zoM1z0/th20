@@ -240,3 +240,21 @@ th20::FogValue::operator*,0x00471DB0,function
 th20::FogValue::operator-,0x00471E60,function
 th20::FogValue::operator+,0x00471F50,function
 th20::FogInterpolation::FogInterpolation,0x00471410,function
+th20::Motion::update_velocity,0x00453E40,function
+th20::Motion::update_position,0x00453AC0,function
+th20::Motion::snap_position,0x004543D0,function
+th20::Motion::motion_vector,0x004562C0,function
+th20::Motion::set_motion_z,0x004591F0,function
+th20::Angle::operator=(float),0x00452F20,function
+th20::Angle::operator+=(float),0x004530C0,function
+th20::Angle::operator+(float),0x00452FC0,function
+th20::Angle::operator-(const Angle&),0x004294E0,function
+th20::Vector3::operator+,0x00429570,function
+th20::Vector3::operator-=,0x00429740,function
+th20::polar,0x00439330,function
+th20::rotate_xy,0x00458FA0,function
+th20::vector_direction,0x00456210,function
+th20::floor_scalar,0x004592B0,function
+th20::angle_difference,0x004396C0,function
+cos(float),0x004371D0,function
+sin(float),0x00439530,function

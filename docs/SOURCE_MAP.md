@@ -1,5 +1,11 @@
 # Source and build ownership
 
+EXACT-045 adds the shared Motion update protocol and its immediate dependencies:
+18 complete units / 2,572 comparison bytes. All 259 canonical units across 59
+cold objects strictly replay over 20,892 disjoint bytes. The source and native
+semantics are documented in EXACT_MOTION_RECONSTRUCTION.md; origins, enclosing
+owners, linkage and full runtime acceptance remain open.
+
 REF-044 completes individual review of all 6,945 existing reference bodies and
 113 grammar files. Final tools/bridges provide support evidence and add no
 maintained production owner. All 241 canonical units remain exact; the source
@@ -52,8 +58,9 @@ and the separate whole-game boundary.
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
-| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp | construction 0x00447DE0/0x00429210/0x00478530; reduction 0x00438540; update 0x0047A1F0; bounds 0x0047A400 | Six complete exact contributions; actual 4/72-byte values, bounded reduction and full-int bounds; underlying velocity/position updates undefined, origins pending |
-| Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690 | Six complete exact members; original class spelling and authored/compiler/library origins pending |
+| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp, src/MotionUpdates.cpp | constructors/reduction/update/bounds; velocity453E40, position453AC0, snap4543D0, vector4562C0, Z4591F0; angle452F20/4530C0/452FC0/4294E0 | Fifteen complete exact contributions on actual4/72-byte values; complete motion protocol, bounded normalization, flags and full-int bounds; origins/enclosing owners pending |
+| Motion math | src/MotionMath.hpp, src/MotionMath.cpp | polar439330, rotation458FA0, direction456210, floor4592B0, difference4396C0; float overloads4371D0/439530 | Seven complete exact contributions; alias-safe planar arithmetic, destinationZ preservation, original origins pending |
+| Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690; add 0x00429570; subtract assignment 0x00429740 | Eight complete exact members; original class spelling and authored/compiler/library origins pending |
 | Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |
 | PauseFlags | src/PauseFlags.hpp, src/PauseFlags.cpp | four-byte flags construction 0x004E1CB0 | Complete 40-byte exact constructor; two-bit mode/one-bit practice, upper 29 retained, origin pending |
 | TitleFlags | src/TitleFlags.hpp, src/TitleFlags.cpp | four-byte flags construction 0x0051D9B0 | Complete 66-byte exact constructor; four UI bits, upper 28 retained, original name/origin pending |

@@ -8,7 +8,17 @@
 namespace th20 {
 
 // The low four bits select motion mode; bit 5 freezes both native updates.
-struct MotionFlags { std::uint32_t bits; };
+struct MotionFlags {
+    union {
+        std::uint32_t bits;
+        struct {
+            std::uint32_t mode : 4;
+            std::uint32_t spin : 1;
+            std::uint32_t frozen : 1;
+            std::uint32_t reserved : 26;
+        } fields;
+    };
+};
 
 // Shared by native Bomb, Damage and Enemy. Unknown scalar roles retain offsets.
 struct Motion {
@@ -24,6 +34,9 @@ struct Motion {
     MotionFlags flags;
 
     Motion();
+    Vector3& motion_vector();
+    void set_motion_z(float value);
+    void snap_position();
     void update_velocity();
     void update_position();
     void update();

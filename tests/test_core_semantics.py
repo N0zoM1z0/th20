@@ -42,6 +42,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/CollisionGeometry.cpp", "tests/bullet_value_semantics.cpp",
                             "src/BulletStyle.cpp",
                             "src/Angle.cpp", "src/Motion.cpp", "src/Rectangle.cpp",
+                            "src/MotionUpdates.cpp", "src/MotionMath.cpp",
                             "tests/motion_value_semantics.cpp",
                             "src/ScoreEntry.cpp", "src/HudGauge.cpp", "src/OverlayCounter.cpp",
                             "tests/display_value_semantics.cpp",

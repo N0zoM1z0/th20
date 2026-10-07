@@ -1,5 +1,14 @@
 # Target inventory and initial architecture boundary
 
+EXACT-045 closes the shared Motion72 velocity/position protocol and direct
+angle/vector/math dependencies in one 18-unit native reconstruction batch.
+Complete dispatch-table and security-cookie evidence accompanies both primary
+bodies. All 259 units / 59 cold objects / 20,892 disjoint comparison bytes
+strictly replay; authored origin totals remain separate. See
+EXACT_MOTION_RECONSTRUCTION.md. Existing reference review is complete; the
+current goal advances substantive native reconstruction in coherent batches.
+The sections below are historical checkpoints.
+
 REF-044 closes the existing-reference review: all 6,945 implementation bodies
 have individual terminal decisions and all 113 parser-gap files are manually
 reconciled. One historical naked ABI invoker was recovered from a parser

@@ -1,6 +1,8 @@
 #include "Angle.hpp"
 #include "Interpolation.hpp"
 #include "Motion.hpp"
+#include "MotionMath.hpp"
+#include "ClockScalar.hpp"
 #include "Rectangle.hpp"
 #include <bit>
 #include <cassert>
@@ -11,21 +13,125 @@
 #include <new>
 
 namespace {
-th20::Motion* observed_motion;
-int motion_stage;
+bool near(float first, double second) {
+    return std::fabs(double(first) - second) < 0.00002;
 }
 
-// Observations at the two undefined native update boundaries.
-namespace th20 {
-void Motion::update_velocity() {
-    assert(this == observed_motion && motion_stage == 0);
-    velocity = Vector3(2.0f, -3.0f, 5.0f);
-    motion_stage = 1;
-}
-void Motion::update_position() {
-    assert(this == observed_motion && motion_stage == 1);
-    position += velocity;
-    motion_stage = 2;
+void check_motion_protocol() {
+    constexpr double pi = 3.1415927410125732;
+    const float saved_clock = th20::default_timer_clock.value;
+    // Frozen updates preserve the entire receiver for every mode and spin bit.
+    for (unsigned mode = 0; mode != 16; ++mode) {
+        for (unsigned spin : {0u, 16u}) {
+            th20::Motion frozen;
+            frozen.position = th20::Vector3(-2.345f, 8.456f, 7);
+            frozen.vector_38 = th20::Vector3(3, -4, 5);
+            frozen.flags.bits = 0xa5a50020u | spin | mode;
+            const th20::Motion before = frozen;
+            frozen.update();
+            assert(std::memcmp(&before, &frozen, sizeof frozen) == 0);
+        }
+    }
+    for (float clock : {0.0f, 0.25f, 1.0f, 2.0f}) {
+        th20::default_timer_clock.value = clock;
+        for (float damping : {0.0f, 0.25f, 1.0f}) {
+            for (unsigned mode = 0; mode != 16; ++mode) {
+                for (unsigned spin : {0u, 16u}) {
+                    struct Guarded { unsigned first; th20::Motion motion; unsigned last; };
+                    Guarded guarded{0x12345678u, {}, 0xabcdef01u};
+                    auto& motion = guarded.motion;
+                    motion.position = th20::Vector3(4.567f, -2.345f, 9);
+                    motion.velocity = th20::Vector3(2, 3, 4);
+                    motion.vector_38 = th20::Vector3(1, 2, 7);
+                    motion.value_18 = 3;
+                    motion.angle_1c = 0.4f;
+                    motion.value_20 = 5;
+                    motion.value_24 = 0.3f;
+                    motion.angle_28 = -0.2f;
+                    motion.value_2c = 0.6f;
+                    motion.angle_30 = 0.7f;
+                    motion.value_34 = damping;
+                    motion.flags.bits = 0xa5a50000u | mode | spin;
+                    const th20::Motion before = motion;
+                    th20::Motion separate = motion;
+                    separate.update_velocity();
+                    separate.update_position();
+                    motion.update();
+                    assert(std::memcmp(&motion, &separate, sizeof motion) == 0);
+                    assert(guarded.first == 0x12345678u && guarded.last == 0xabcdef01u);
+                    assert(motion.flags.bits == before.flags.bits);
+                    double x = before.position.x, y = before.position.y;
+                    if (mode == 0) {
+                        const double length = 3.0 * clock * (1.0 - damping);
+                        assert(near(motion.vector_38.x, length * std::cos(0.4f)));
+                        assert(near(motion.vector_38.y, length * std::sin(0.4f)));
+                        assert(near(motion.vector_38.z, 7.0 * (1.0 - damping)));
+                        assert(near(motion.angle_1c.value, 0.4f +
+                                    (spin ? 0.3f * clock * (1.0 - damping) : 0)));
+                        x += motion.vector_38.x; y += motion.vector_38.y;
+                        assert(near(motion.position.z, 9 + motion.vector_38.z));
+                    } else if (mode == 2 || mode == 3) {
+                        const double radius = 5 + 0.3f * clock * (1.0 - damping);
+                        const double angle = th20::normalize_angle(0.4f + 3 * clock * (1 - damping));
+                        assert(near(motion.value_20, radius));
+                        assert(near(motion.angle_1c.value, angle));
+                        const double local_angle = mode == 2 ? angle : angle + 0.2f;
+                        double local_x = radius * std::cos(local_angle);
+                        const double local_y = radius * std::sin(local_angle);
+                        if (mode == 3) {
+                            local_x *= 0.6f;
+                            x = 1 + local_x * std::cos(-0.2f) - local_y * std::sin(-0.2f);
+                            y = 2 + local_y * std::cos(-0.2f) + local_x * std::sin(-0.2f);
+                        } else { x = 1 + local_x; y = 2 + local_y; }
+                        assert(motion.position.z == 7);
+                        assert(std::memcmp(&motion.vector_38, &before.vector_38,
+                                           sizeof motion.vector_38) == 0);
+                    } else if (mode == 4) {
+                        assert(motion.vector_38.z == 0 && motion.velocity.z == 4);
+                        assert(near(motion.vector_38.x, 3 * clock * std::cos(-0.2f)));
+                        assert(near(motion.vector_38.y, 3 * clock * std::sin(-0.2f)));
+                        const double phase = 0.7f + 0.3f * clock * (1 - damping);
+                        assert(near(motion.angle_30.value, phase));
+                        const double amplitude = std::sin(phase) * 5 * clock;
+                        x = motion.velocity.x + amplitude * std::cos(-0.2f + pi / 2);
+                        y = motion.velocity.y + amplitude * std::sin(-0.2f + pi / 2);
+                        assert(near(motion.angle_1c.value,
+                                    std::atan2(y - before.position.y, x - before.position.x)));
+                        assert(motion.position.z == 4);
+                    } else {
+                        th20::Motion unchanged = before;
+                        unchanged.update_velocity();
+                        assert(std::memcmp(&unchanged, &before, sizeof before) == 0);
+                        assert(motion.position.z == 9);
+                    }
+                    // Rounding follows the actual float intermediate, with one grid cell
+                    // allowed at double/float boundaries. It always rounds downward.
+                    assert(std::fabs(motion.position.x - std::floor(x * 100) / 100) < 0.01002);
+                    assert(std::fabs(motion.position.y - std::floor(y * 100) / 100) < 0.01002);
+                }
+            }
+        }
+    }
+    for (float angle : {-2.5f, -0.2f, 0.0f, 0.8f, 2.5f}) {
+        const th20::Vector3 input(2, -3, 17);
+        th20::Vector3 distinct(0, 0, 23), alias = input;
+        th20::rotate_xy(distinct, input, angle);
+        th20::rotate_xy(alias, alias, angle);
+        assert(alias.x == distinct.x && alias.y == distinct.y);
+        assert(alias.z == 17 && distinct.z == 23);
+        assert(near(alias.x * alias.x + alias.y * alias.y, 13));
+        th20::polar(distinct, angle, 4);
+        assert(distinct.z == 23 && near(distinct.x * distinct.x + distinct.y * distinct.y, 16));
+    }
+    for (float value : {-3.456f, -1.0f, -0.0f, 0.0f, 0.009f, 3.456f}) {
+        th20::Motion motion;
+        motion.position = th20::Vector3(value, value, 17);
+        motion.snap_position();
+        const float expected = float(std::floor(double(value * 100.0f))) / 100.0f;
+        assert(std::bit_cast<unsigned>(motion.position.x) == std::bit_cast<unsigned>(expected));
+        assert(motion.position.y == expected && motion.position.z == 17);
+    }
+    th20::default_timer_clock.value = saved_clock;
 }
 }
 
@@ -83,14 +189,7 @@ void check_motion_values() {
         }
     }
     th20::Motion motion;
-    observed_motion = &motion;
-    motion_stage = 0;
-    motion.position = th20::Vector3(10.0f, 20.0f, 30.0f);
-    motion.flags.bits = 0xffffffffu;
-    motion.update();
-    assert(motion_stage == 2);
-    assert(motion.position.x == 12.0f && motion.position.y == 17.0f &&
-           motion.position.z == 35.0f && motion.flags.bits == 0xffffffffu);
+    check_motion_protocol();
 
     // Membership of an inclusive rectangle is an independent finite-domain oracle.
     for (int x = -10; x <= 10; ++x) {

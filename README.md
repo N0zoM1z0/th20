@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 241 mapped component functions across 57 comparison objects |
+| Source | 259 mapped component functions across 59 comparison objects |
 | Authored exactness | 57 functions, 4,074 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -63,10 +63,11 @@ are excluded from Git.
 | Window contributions | Flags initialization and foreground wrapper pass exact replay; origin remains open |
 | Audio state construction | Three complete exact record constructors; authored versus compiler origin remains open |
 | Animation handle construction | Complete 23-byte exact value constructor; authored versus compiler origin remains open |
-| Vector arithmetic | Five complete exact members; original class spelling and authored/library origin remain open |
+| Vector arithmetic | Eight complete exact members; original class spelling and authored/library origin remain open |
 | Timer construction and wrappers | Nine additional complete exact members, including fractional age and signed <=; source spelling and origin review remain open |
 | Colored vertex construction | Complete 43-byte exact constructor for the actual 20-byte value; source spelling and origin review remain open |
 | Trophy messages | Exact shared-buffer decoder and typed record reset; full resource/parser/owner lifetime remains open |
+| Motion update protocol | Two complete main updates and direct angle/vector/math dependencies: 18 new units / 2,572 comparison bytes; [evidence](docs/EXACT_MOTION_RECONSTRUCTION.md) |
 | Whole-program build and runtime | Not available |
 
 [Generated progress](docs/PROGRESS.md) and `scripts/report-reconstruction-status.py`

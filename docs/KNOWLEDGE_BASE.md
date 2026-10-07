@@ -1,5 +1,23 @@
 # Verified facts and open hypotheses
 
+## EXACT-045 — 2026-10-07 — complete shared Motion updates
+
+- Native 453E40/453AC0 close velocity and position updates on actual Motion72;
+  18 complete units add 2,572 comparison bytes including both dispatch tables.
+  All 259 units / 59 cold objects / 20,892 disjoint bytes strictly replay.
+- Getter4562C0 addresses vector38; setter4591F0 writes its Z at40. Freeze bit5,
+  mode bits0..3 and spin bit4 have real fields without changing the owner layout.
+  Mode4 computes movement direction before XY snapping; alias XY rotation
+  preserves original X and destination Z. Shared Angle float view4292E0 gets
+  no duplicate credit. Native case1 velocity table reaches the epilogue, with
+  a separately reconciled unreachable jump retained in the complete extent.
+- Strict FP and position's strict-GS policy reproduce observed emissions. These
+  local profiles do not prove original global flags. Two standard-header float
+  overloads are exact contributions with original origins still pending.
+- Public finite analytic/protocol tests and full cold replay pass. Authored
+  57/4,074 remains unchanged; 198 origins pending. See
+  EXACT_MOTION_RECONSTRUCTION.md for observations and acceptance limits.
+
 ## REF-044 — 2026-10-07 — exhaustive review closure
 
 - Full reading of the last184 implementations / 46 files and16 grammar files /

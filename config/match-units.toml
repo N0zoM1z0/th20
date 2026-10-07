@@ -2778,3 +2778,306 @@ symbol = "??0?$Interpolation@UFogValue@th20@@@th20@@QAE@XZ"
 target_address = 0x471410
 size = 106
 relocations = [{ offset = 0xB, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x16, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x21, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x2C, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x37, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x45, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 }]
+
+# EXACT-045: coherent Motion protocol, independent whole-flow and dispatch anchors.
+
+[units.motion_velocity]
+source = "src/MotionUpdates.cpp"
+object = "build/MotionUpdates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Motion::update_velocity"]
+symbol = "?update_velocity@Motion@th20@@QAEXXZ"
+target_address = 0x00453E40
+size = 694
+compare_size = 716
+relocations = [
+  { offset = 0x38, type = "DIR32", symbol = "$LN13", target = 0x004540F8 },
+  { offset = 0x3D, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x42, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x62, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x6D, type = "REL32", symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x004562C0 },
+  { offset = 0x8F, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0xA1, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0xC6, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0xD2, type = "REL32", symbol = "??ZVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x00429740 },
+  { offset = 0xE6, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0xEB, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x126, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x144, type = "REL32", symbol = "??4Angle@th20@@QAEAAU01@M@Z", target = 0x00452F20 },
+  { offset = 0x154, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x159, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x199, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x19E, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x1D9, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x1F7, type = "REL32", symbol = "??4Angle@th20@@QAEAAU01@M@Z", target = 0x00452F20 },
+  { offset = 0x202, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x207, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x243, type = "REL32", symbol = "??YAngle@th20@@QAEAAU01@M@Z", target = 0x004530C0 },
+  { offset = 0x248, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x24D, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x26D, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x278, type = "REL32", symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x004562C0 },
+  { offset = 0x29A, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x2AD, type = "REL32", symbol = "?set_motion_z@Motion@th20@@QAEXM@Z", target = 0x004591F0 },
+  { offset = 0x2B8, type = "DIR32", symbol = "$LN5", target = 0x00453E7C },
+  { offset = 0x2BC, type = "DIR32", symbol = "$LN2", target = 0x004540F2 },
+  { offset = 0x2C0, type = "DIR32", symbol = "$LN9", target = 0x00453F93 },
+  { offset = 0x2C4, type = "DIR32", symbol = "$LN9", target = 0x00453F93 },
+  { offset = 0x2C8, type = "DIR32", symbol = "$LN11", target = 0x00454041 },
+]
+
+[units.motion_position]
+source = "src/MotionUpdates.cpp"
+object = "build/MotionUpdates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Motion::update_position"]
+symbol = "?update_position@Motion@th20@@QAEXXZ"
+target_address = 0x00453AC0
+size = 809
+compare_size = 832
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2D, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x4E, type = "DIR32", symbol = "$LN10", target = 0x00453DEC },
+  { offset = 0x56, type = "REL32", symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x004562C0 },
+  { offset = 0x73, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x91, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xB3, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0xC6, type = "REL32", symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x004562C0 },
+  { offset = 0xD9, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x11A, type = "REL32", symbol = "??GAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x004294E0 },
+  { offset = 0x121, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x12A, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0x14F, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x16F, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x180, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x193, type = "REL32", symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x004562C0 },
+  { offset = 0x1A9, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x1C9, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1D1, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1ED, type = "REL32", symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x004562C0 },
+  { offset = 0x1F9, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x20B, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x213, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x225, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@M@Z", target = 0x00452FC0 },
+  { offset = 0x22C, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x235, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0x246, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x24F, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x267, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x271, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x298, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x2B9, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x2E5, type = "REL32", symbol = "??GVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429440 },
+  { offset = 0x2FF, type = "REL32", symbol = "?vector_direction@th20@@YAMABUVector3@1@@Z", target = 0x00456210 },
+  { offset = 0x30D, type = "REL32", symbol = "??4Angle@th20@@QAEAAU01@M@Z", target = 0x00452F20 },
+  { offset = 0x316, type = "REL32", symbol = "?snap_position@Motion@th20@@QAEXXZ", target = 0x004543D0 },
+  { offset = 0x321, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x32C, type = "DIR32", symbol = "$LN5", target = 0x00453B12 },
+  { offset = 0x330, type = "DIR32", symbol = "$LN2", target = 0x00453DD2 },
+  { offset = 0x334, type = "DIR32", symbol = "$LN6", target = 0x00453B3D },
+  { offset = 0x338, type = "DIR32", symbol = "$LN7", target = 0x00453BB5 },
+  { offset = 0x33C, type = "DIR32", symbol = "$LN8", target = 0x00453C85 },
+]
+
+[units.motion_snap]
+source = "src/MotionUpdates.cpp"
+object = "build/MotionUpdates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Motion::snap_position"]
+symbol = "?snap_position@Motion@th20@@QAEXXZ"
+target_address = 0x004543D0
+size = 119
+relocations = [
+  { offset = 0x14, type = "DIR32", symbol = "__real@42c80000", target = 0x0056E04C },
+  { offset = 0x1F, type = "REL32", symbol = "?floor_scalar@th20@@YAMM@Z", target = 0x004592B0 },
+  { offset = 0x32, type = "DIR32", symbol = "__real@42c80000", target = 0x0056E04C },
+  { offset = 0x49, type = "DIR32", symbol = "__real@42c80000", target = 0x0056E04C },
+  { offset = 0x54, type = "REL32", symbol = "?floor_scalar@th20@@YAMM@Z", target = 0x004592B0 },
+  { offset = 0x67, type = "DIR32", symbol = "__real@42c80000", target = 0x0056E04C },
+]
+
+[units.motion_vector]
+source = "src/MotionUpdates.cpp"
+object = "build/MotionUpdates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Motion::motion_vector"]
+symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ"
+target_address = 0x004562C0
+size = 17
+relocations = [
+]
+
+[units.motion_z]
+source = "src/MotionUpdates.cpp"
+object = "build/MotionUpdates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Motion::set_motion_z"]
+symbol = "?set_motion_z@Motion@th20@@QAEXM@Z"
+target_address = 0x004591F0
+size = 26
+relocations = [
+]
+
+[units.angle_assign_float]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::operator=(float)"]
+symbol = "??4Angle@th20@@QAEAAU01@M@Z"
+target_address = 0x00452F20
+size = 40
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+]
+
+[units.angle_add_assign_float]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::operator+=(float)"]
+symbol = "??YAngle@th20@@QAEAAU01@M@Z"
+target_address = 0x004530C0
+size = 47
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+]
+
+[units.angle_add_float]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::operator+(float)"]
+symbol = "??HAngle@th20@@QBE?AU01@M@Z"
+target_address = 0x00452FC0
+size = 42
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+]
+
+[units.angle_subtract_angle]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::operator-(const Angle&)"]
+symbol = "??GAngle@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x004294E0
+size = 61
+relocations = [
+  { offset = 0x22, type = "REL32", symbol = "?angle_difference@th20@@YAMMM@Z", target = 0x004396C0 },
+  { offset = 0x30, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+]
+
+[units.vector3_add]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::operator+"]
+symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x00429570
+size = 88
+relocations = [
+  { offset = 0x4B, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+]
+
+[units.vector3_subtract_assign]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::operator-="]
+symbol = "??ZVector3@th20@@QAEAAU01@ABU01@@Z"
+target_address = 0x00429740
+size = 85
+relocations = [
+]
+
+[units.motion_polar]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::polar"]
+symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z"
+target_address = 0x00439330
+size = 89
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?cos@@YAMM@Z", target = 0x004371D0 },
+  { offset = 0x39, type = "REL32", symbol = "?sin@@YAMM@Z", target = 0x00439530 },
+]
+
+[units.motion_rotate_xy]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::rotate_xy"]
+symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z"
+target_address = 0x00458FA0
+size = 137
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x28, type = "REL32", symbol = "?cosine@scalar_math@th20@@YAMM@Z", target = 0x004397C0 },
+]
+
+[units.motion_vector_direction]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::vector_direction"]
+symbol = "?vector_direction@th20@@YAMABUVector3@1@@Z"
+target_address = 0x00456210
+size = 40
+relocations = [
+  { offset = 0x1F, type = "REL32", symbol = "?arctangent@scalar_math@th20@@YAMMM@Z", target = 0x00459280 },
+]
+
+[units.motion_floor_scalar]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::floor_scalar"]
+symbol = "?floor_scalar@th20@@YAMM@Z"
+target_address = 0x004592B0
+size = 35
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "_floor", target = 0x00550130 },
+]
+
+[units.motion_angle_difference]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::angle_difference"]
+symbol = "?angle_difference@th20@@YAMMM@Z"
+target_address = 0x004396C0
+size = 150
+relocations = [
+  { offset = 0x13, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x1D, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x25, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x4E, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x58, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x60, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+]
+
+[units.cmath_cos_float]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["cos(float)"]
+symbol = "?cos@@YAMM@Z"
+target_address = 0x004371D0
+size = 24
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "_cosf", target = 0x004397C0 },
+]
+
+[units.cmath_sin_float]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["sin(float)"]
+symbol = "?sin@@YAMM@Z"
+target_address = 0x00439530
+size = 24
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "_sinf", target = 0x00439820 },
+]
