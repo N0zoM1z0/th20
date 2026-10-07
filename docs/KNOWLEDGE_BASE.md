@@ -1,5 +1,34 @@
 # Verified facts and open hypotheses
 
+## EXACT-048 — 2026-10-07 — native collision shapes
+
+- Seven complete collision bool/cdecl bodies plus three math dependencies add
+  3,841 bytes. Native AL consumers at4C1030/point callers and stack cleanup
+  establish ABI independently;1,166 instructions reconcile complete flow.
+- Circle/ellipse uses shrink/containment shortcuts then at least eight samples;
+  integer conversion/division ordering is retained. Point ellipse is inclusive.
+  Polygon/star radial segments reject edge touches and preserve vacuous counts.
+- Segment collinear handling orders byX and compares pairedY; descending/vertical
+  overlap quirks remain. It uses actual active orientation storage for swaps.
+- Vector3divide452FF0/80 retains member/hidden-result RET8; normalization4532C0/229
+  tests verified0.01f constant56E1A0. Tiny vectors multiply directly; ordinary
+  vectors divide then scale. Actual aggregate assignment permits input aliasing.
+  Ellipsepolar459190/89 is cdecl4arguments/void; Z unchanged, float cosine/sine.
+- Actual Vector3edge[2] construction calls native40BC20/56 unsigned-count iterator,
+  ECX callback/12stride/RET16. Complete protocol supports compiler-emitted helper
+  anchor without new source or authored credit. Constants/mask/cookie dependencies
+  independently bound; prior unit-local dispatch labels excluded from global map.
+- CollisionShapes strict/GS/strict_gs_check; existing MotionMath strict/no-GS and
+  Vector3 precise/no-GS retained. Typed braced operands preserve real evaluation
+  and reference temporary construction, with one body and no compiler padding.
+- All309units/61coldobjects/41401disjointbytes replay. Public finite C++20/UBSan
+  tests include threshold equality/tiny branch, known vector lengths, aliasing,
+  rotated ellipse/segment/polygon/star boundaries and circle sampling/shortcuts.
+  Source309/pending248/library4/authored57/4074, reference6945/113 unchanged.
+  Count overflow/nonfinite conversion/exceptional FP, original names/origins and
+  enclosing dispatch/controller/link/runtime remain open. See
+  EXACT_COLLISION_SHAPES_RECONSTRUCTION.md.
+
 ## EXACT-047 — 2026-10-07 — current-first Enemy interpolation
 
 - Native4A8D70 has complete2433 bytes /635 instructions; aggregate hidden result

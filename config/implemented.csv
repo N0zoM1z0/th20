@@ -297,3 +297,13 @@ th20::Vector3::operator[]
 th20::FloatInterpolation::duration_value
 th20::Vector2Interpolation::duration_value
 th20::Motion::set_motion_vector
+th20::geometry::ellipse_point
+th20::geometry::regular_polygon_point
+th20::geometry::star_point
+th20::geometry::segment_intersection
+th20::geometry::circle_regular_polygon
+th20::geometry::circle_star
+th20::geometry::circle_ellipse
+th20::Vector3::operator/
+th20::ellipse_polar
+th20::normalize_to_length

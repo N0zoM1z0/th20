@@ -1,5 +1,29 @@
 # Current reconstruction handoff
 
+## EXACT-048 — 2026-10-07 — native collision geometry batch
+
+Ten complete predicates/vector dependencies add 3,841 comparison bytes. All
+309 units / 61 cold objects / 41,401 disjoint complete bytes strictly replay.
+C++20/UBSan geometry, threshold/aliasing, boundary/count and Z preservation
+checks pass. See EXACT_COLLISION_SHAPES_RECONSTRUCTION.md.
+
+Circle/ellipse containment and finite sampling, polygon/star radial-edge tests,
+AL bool/cdecl ABI, signed counts, actual Vector3 edge arrays, and native paired-Y
+collinear quirks are preserved. Normalization threshold is 0.01f and tiny vectors
+retain original-vector scaling. Division retains actual hidden-result member ABI.
+Native array constructor iterator receives an independently audited anchor only,
+with no extra source/authored credit. Original names/origins and enclosing native
+collision dispatcher/controller ownership remain open.
+
+Source309/pendingorigins248/library4/authored57/4074. Full previous graph rebuilt
+following shared source/header changes. Maintained src/probes frozen before cold
+replay. EXACT048 configure and registration writers complete once; NEVER RERUN
+them or completed REF/EXACT writers. Target/database unchanged, reference6945/113
+unchanged. Active unlimited native goal continues in coherent dependency batches;
+remaining collision families are close neighbors. English / repo-python / serial
+compiler / no subagents / gpt-6.1-sol: commits / authorized public main persist.
+Earlier entries are historical checkpoints.
+
 ## EXACT-047 — 2026-10-07 — Enemy interpolation dependency batch
 
 The 2,433-byte current-first/per-axis Enemy update and its direct dependencies

@@ -299,3 +299,13 @@ address,name,module,confidence,evidence
 0x0041CAF0,th20::FloatInterpolation::duration_value,Interpolation,high,EXACT-047; docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md
 0x00438520,th20::Vector2Interpolation::duration_value,Interpolation,high,EXACT-047; docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md
 0x0047A5E0,th20::Motion::set_motion_vector,Motion,high,EXACT-047; docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md
+0x00457040,th20::geometry::ellipse_point,CollisionShapes,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x004570F0,th20::geometry::regular_polygon_point,CollisionShapes,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x00457380,th20::geometry::star_point,CollisionShapes,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x00456920,th20::geometry::segment_intersection,CollisionShapes,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x00456690,th20::geometry::circle_regular_polygon,CollisionShapes,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x004567D0,th20::geometry::circle_star,CollisionShapes,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x004562E0,th20::geometry::circle_ellipse,CollisionShapes,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x00452FF0,th20::Vector3::operator/,Vector3,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x00459190,th20::ellipse_polar,MotionMath,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x004532C0,th20::normalize_to_length,MotionMath,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md

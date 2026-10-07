@@ -29,6 +29,10 @@ Vector3 Vector3::operator*(float factor) const {
     return Vector3(x * factor, y * factor, z * factor);
 }
 
+Vector3 Vector3::operator/(float divisor) const {
+    return Vector3(x / divisor, y / divisor, z / divisor);
+}
+
 Vector3& Vector3::operator*=(float factor) {
     x *= factor;
     y *= factor;

@@ -4159,3 +4159,201 @@ target_address = 0x0047A5E0
 size = 38
 relocations = [
 ]
+
+# EXACT-048: native collision shapes and shared vector math.
+
+[units.geometry_ellipse_point]
+source = "src/CollisionShapes.cpp"
+object = "build/CollisionShapes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::ellipse_point"]
+symbol = "?ellipse_point@geometry@th20@@YA_NMMMMMMM@Z"
+target_address = 0x00457040
+size = 173
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x14, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x3E, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x51, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x90, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xA5, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_regular_polygon_point]
+source = "src/CollisionShapes.cpp"
+object = "build/CollisionShapes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::regular_polygon_point"]
+symbol = "?regular_polygon_point@geometry@th20@@YA_NMMMMMMH@Z"
+target_address = 0x004570F0
+size = 517
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x83, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x8E, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x96, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xB9, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0xE0, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x10A, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x11F, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x147, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x15C, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x1DE, type = "REL32", symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00456920 },
+  { offset = 0x1FD, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_star_point]
+source = "src/CollisionShapes.cpp"
+object = "build/CollisionShapes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::star_point"]
+symbol = "?star_point@geometry@th20@@YA_NMMMMMMMH@Z"
+target_address = 0x00457380
+size = 651
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x68, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xD5, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0xE0, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0xE8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xF9, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x113, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0x166, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x190, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x1A5, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x1CD, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x1E2, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x264, type = "REL32", symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00456920 },
+  { offset = 0x283, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_segment_intersection]
+source = "src/CollisionShapes.cpp"
+object = "build/CollisionShapes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::segment_intersection"]
+symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z"
+target_address = 0x00456920
+size = 533
+relocations = [
+  { offset = 0x85, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x9A, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0xB0, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x205, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+]
+
+[units.geometry_circle_regular_polygon]
+source = "src/CollisionShapes.cpp"
+object = "build/CollisionShapes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::circle_regular_polygon"]
+symbol = "?circle_regular_polygon@geometry@th20@@YA_NMMMMMMMH@Z"
+target_address = 0x00456690
+size = 313
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x48, type = "REL32", symbol = "?circle_point@geometry@th20@@YA_NMMMMM@Z", target = 0x00456FE0 },
+  { offset = 0x8A, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xA2, type = "REL32", symbol = "?normalize_to_length@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x004532C0 },
+  { offset = 0xCC, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xD8, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x124, type = "REL32", symbol = "?regular_polygon_point@geometry@th20@@YA_NMMMMMMH@Z", target = 0x004570F0 },
+  { offset = 0x131, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_circle_star]
+source = "src/CollisionShapes.cpp"
+object = "build/CollisionShapes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::circle_star"]
+symbol = "?circle_star@geometry@th20@@YA_NMMMMMMMMH@Z"
+target_address = 0x004567D0
+size = 324
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x48, type = "REL32", symbol = "?circle_point@geometry@th20@@YA_NMMMMM@Z", target = 0x00456FE0 },
+  { offset = 0x8A, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xA2, type = "REL32", symbol = "?normalize_to_length@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x004532C0 },
+  { offset = 0xCC, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xD8, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x12F, type = "REL32", symbol = "?star_point@geometry@th20@@YA_NMMMMMMMH@Z", target = 0x00457380 },
+  { offset = 0x13C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_circle_ellipse]
+source = "src/CollisionShapes.cpp"
+object = "build/CollisionShapes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::circle_ellipse"]
+symbol = "?circle_ellipse@geometry@th20@@YA_NMMMMMMMM@Z"
+target_address = 0x004562E0
+size = 932
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0xC9, type = "REL32", symbol = "?ellipse_point@geometry@th20@@YA_NMMMMMMM@Z", target = 0x00457040 },
+  { offset = 0xE2, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x10C, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x11F, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x171, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x186, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x19B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1A3, type = "DIR32", symbol = "__real@c0490fdb", target = 0x0056E0F8 },
+  { offset = 0x226, type = "REL32", symbol = "?ellipse_polar@th20@@YAXAAUVector3@1@MMM@Z", target = 0x00459190 },
+  { offset = 0x231, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x239, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x288, type = "REL32", symbol = "?circle_point@geometry@th20@@YA_NMMMMM@Z", target = 0x00456FE0 },
+  { offset = 0x2B0, type = "DIR32", symbol = "__real@40800000", target = 0x0056C8E0 },
+  { offset = 0x301, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x30C, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x314, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x37D, type = "REL32", symbol = "?ellipse_point@geometry@th20@@YA_NMMMMMMM@Z", target = 0x00457040 },
+  { offset = 0x39C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.vector3_divide]
+source = "src/Vector3.cpp"
+object = "build/Vector3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector3::operator/"]
+symbol = "??KVector3@th20@@QBE?AU01@M@Z"
+target_address = 0x00452FF0
+size = 80
+relocations = [
+  { offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+]
+
+[units.ellipse_polar]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::ellipse_polar"]
+symbol = "?ellipse_polar@th20@@YAXAAUVector3@1@MMM@Z"
+target_address = 0x00459190
+size = 89
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?cos@@YAMM@Z", target = 0x004371D0 },
+  { offset = 0x39, type = "REL32", symbol = "?sin@@YAMM@Z", target = 0x00439530 },
+]
+
+[units.normalize_to_length]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::normalize_to_length"]
+symbol = "?normalize_to_length@th20@@YAXAAUVector3@1@ABU21@M@Z"
+target_address = 0x004532C0
+size = 229
+relocations = [
+  { offset = 0x43, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+  { offset = 0x59, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x67, type = "DIR32", symbol = "__real@3c23d70a", target = 0x0056E1A0 },
+  { offset = 0x84, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0xB0, type = "REL32", symbol = "??KVector3@th20@@QBE?AU01@M@Z", target = 0x00452FF0 },
+  { offset = 0xCA, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+]
