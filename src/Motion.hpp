@@ -37,6 +37,15 @@ struct Motion {
     Vector3& position_ref();
     Vector3 position_copy() const;
     void set_position(const Vector3& input);
+    float position_x() const;
+    float position_y() const;
+    void set_position_x(float value);
+    void set_position_y(float value);
+    void set_angle(float value) noexcept;
+    void set_speed(float value);
+    void select_linear();
+    void select_orbit();
+    void select_elliptic();
     void clear();
     Vector3& motion_vector();
     void set_motion_z(float value);

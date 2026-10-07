@@ -1,8 +1,12 @@
 #include "EnemyState.hpp"
+#include "Enemy.hpp"
 #include <array>
 #include <cassert>
 #include <memory_resource>
 #include <new>
+#include <cmath>
+#include <limits>
+#include <type_traits>
 
 // An owned test payload verifies shared lifetime without claiming the native
 // shot-metadata object's still unresolved layout or factory implementation.
@@ -28,6 +32,8 @@ struct CountingResource : std::pmr::memory_resource {
 }
 
 void check_enemy_state() {
+    static_assert(std::is_nothrow_constructible_v<th20::Enemy>);
+    static_assert(noexcept(std::declval<th20::Motion&>().set_angle(0.0f)));
     CountingResource resource;
     auto* previous = std::pmr::set_default_resource(&resource);
     alignas(th20::EnemyState) std::array<unsigned char,
@@ -100,6 +106,73 @@ void check_enemy_state() {
            state->timer_288.current == 0 && state->timer_298.current == 0);
     assert(state->flags.word_00 == 0x11223344u && state->flags.word_04 == 0x55667788u &&
            state->flags.word_08 == 0xaabbccddu);
+
+    // Compose actual movement records without advancing their interpolation
+    // timers or velocities. Bounds operate on the resulting combined position.
+    state->flags.word_04 = 0;
+    state->movements.resize(3);
+    state->movements[0].motion.position = th20::Vector3(10.0f, 20.0f, 3.0f);
+    state->movements[1].motion.position = th20::Vector3(4.0f, -3.0f, 2.0f);
+    state->movements[2].motion.position = th20::Vector3(-1.0f, 5.0f, -4.0f);
+    state->motion_110.position = th20::Vector3(2.0f, 7.0f, 8.0f);
+    const auto timer_before = state->movements[0].position.timer.current;
+    state->combine_movements();
+    assert(state->motion_110.position.x == 13.0f && state->motion_110.position.y == 22.0f &&
+           state->motion_110.position.z == 1.0f);
+    assert(state->motion_110.vector_38.x == 11.0f && state->motion_110.vector_38.y == 15.0f &&
+           state->motion_110.vector_38.z == -7.0f);
+    assert(state->movements[0].motion.position.x == 10.0f);
+    assert(state->movements[0].position.timer.current == timer_before);
+
+    state->flags.word_04 = 2;
+    state->bounds_178.x = state->bounds_178.y = 0.0f;
+    state->bounds_178.width = state->bounds_178.height = 20.0f;
+    state->combine_movements();
+    assert(state->motion_110.position.x == 10.0f && state->motion_110.position.y == 10.0f);
+    assert(state->movements[0].motion.position.x == 7.0f &&
+           state->movements[0].motion.position.y == 8.0f &&
+           state->movements[0].motion.position.z == 3.0f);
+    assert(state->movements[1].motion.position.x == 4.0f &&
+           state->movements[2].motion.position.y == 5.0f);
+    state->combine_movements();
+    assert(state->motion_110.position.x == 10.0f && state->motion_110.position.y == 10.0f);
+
+    state->movements[0].motion.position = th20::Vector3(-100.0f, -100.0f, 3.0f);
+    state->combine_movements();
+    assert(state->motion_110.position.x == -10.0f && state->motion_110.position.y == -10.0f);
+    assert(state->movements[0].motion.position.x == -13.0f &&
+           state->movements[0].motion.position.y == -12.0f);
+
+    // Frozen combined motion still records displacement, then bounds and
+    // redistributes its retained position into record zero.
+    state->motion_110.flags.fields.frozen = 1;
+    state->motion_110.position = th20::Vector3(100.0f, -100.0f, 11.0f);
+    state->combine_movements();
+    assert(state->motion_110.position.x == 10.0f && state->motion_110.position.y == -10.0f &&
+           state->motion_110.position.z == 11.0f);
+    assert(state->movements[0].motion.position.z == 13.0f);
+    state->motion_110.position.x = std::numeric_limits<float>::quiet_NaN();
+    state->combine_movements();
+    assert(std::isnan(state->motion_110.position.x));
+    assert(std::isnan(state->movements[0].motion.position.x));
+    assert(state->motion_110.position.y == -10.0f);
+
+    auto& configured = state->movements[1].motion;
+    configured.flags.bits = 0xa5a5a5a5u;
+    configured.select_orbit();
+    assert(configured.flags.bits == 0xa5a5a5a2u);
+    configured.select_elliptic();
+    assert(configured.flags.bits == 0xa5a5a5a3u);
+    configured.select_linear();
+    assert(configured.flags.bits == 0xa5a5a5a0u);
+    configured.set_position_x(-0.0f);
+    configured.set_position_y(19.0f);
+    configured.set_speed(-7.0f);
+    configured.set_angle(7.0f);
+    assert(std::signbit(configured.position_x()) && configured.position_y() == 19.0f);
+    assert(configured.position.z == 2.0f && configured.value_18 == -7.0f);
+    assert(configured.angle_1c.value == th20::normalize_angle(7.0f));
+
     state->~EnemyState();
     assert(metadata.use_count() == 1);
     assert(resource.live == 0);

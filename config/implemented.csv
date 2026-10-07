@@ -406,3 +406,12 @@ th20::Enemy::integer_argument
 th20::Enemy::float_argument
 th20::EnemyState::integer_argument
 th20::EnemyState::float_argument
+th20::EnemyState::combine_movements
+th20::Motion::position_y
+th20::Motion::set_position_y
+th20::Motion::set_angle
+th20::Motion::set_speed
+th20::Motion::select_linear
+th20::Motion::select_orbit
+th20::Motion::select_elliptic
+th20::Enemy::Enemy

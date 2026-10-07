@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+EXACT-059 closes whole EnemyState movement composition/bounds and its direct
+Motion configuration protocol, plus nonthrowing Enemy construction. Nine
+whole functions add 1,285 instruction bytes and ten alignment bytes; all 417
+units / 78 cold objects / 76,932 disjoint bytes replay. Both native handlers and
+complete FuncInfo flags=5 independently justify the nonthrowing contracts.
+Shared physical X accessors count once; new origins remain pending and authored
+64/16948 is unchanged. Whole movement update and the 41 KB Enemy dispatcher,
+ANM/context/global ownership and production Enemy destruction/resolvers remain
+open. See EXACT_ENEMY_MOVEMENT_RECONSTRUCTION.md. Older entries are historical.
+
 EXACT-058 closes the full EnemyState752 construction/init/destruction protocol
 and its animation/queued/bounds values, plus the actual Enemy0x428 ECL entry and
 argument-forwarding chain. Eleven whole units add1,581 bytes; full graph408/76

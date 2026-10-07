@@ -1,5 +1,44 @@
 # Current reconstruction handoff
 
+## EXACT-059 — 2026-10-07 — Whole Enemy movement composition and construction
+
+Nine complete functions add 1,285 instruction bytes and ten alignment bytes:
+movement composition/bounds844, Motion Y access17/26, normalized angle78,
+speed26, three mode selections26/29/29 and Enemy constructor210. All 417 units /
+78 cold objects / 76,932 disjoint bytes strictly replay. New origins remain
+pending; authored64/16948 is unchanged. Shared X getter/setter physical heads
+are independently exact aliases with no duplicate credit. See
+EXACT_ENEMY_MOVEMENT_RECONSTRUCTION.md.
+
+Complete independent native handlers567600/567750 and FuncInfo5A91B8 flags5
+establish explicit nonthrowing contracts. Natural compiler metadata/handlers
+and complete 83/215-byte contributions reproduce all native bytes, closing the
+previous Enemy constructor168/native210 gap. Existing child contracts stay
+natural; base/list/function dependencies and destructor/resolvers remain open.
+Cold supporting EH and aliases independently replay without additional coverage.
+Owned C++20/O2/UBSan composition tests pass for multiple records, both bounds,
+redistribution, timer/nonfirst retention, frozen state, NaN, modes/flag retention,
+signed zero and normalized angle. Full public/target/tracking/progress gates pass.
+
+Whole Enemy dispatcher48C010/41967 remains the priority; 49 movement opcode
+indices are a coherent group. No partial cases receive credit. Native double
+-999999.0, ordered typed arguments, mirrored normalization and real interpolation/
+parent/controller interfaces must be preserved. Whole movement update4A7710/1675
+is completely reviewed and remains pending on actual ANM/context/global owners.
+4A8260/1258 plus20table is the animation update, not the movement update.
+
+The requested obsolete artifact cleanup remains complete: 1,944 files /
+56,330,189 bytes removed while protected canonical objects/receipts, native
+evidence, reference/source and game files stayed intact. No blanket .analysis
+deletion. Read .analysis/exact059-resume.md for this checkpoint.
+After cold acceptance, another 11 superseded probe/cache files /289,331 bytes
+were removed; all 156 canonical object/receipt files retained identical hashes.
+Private core059-audit.py now replays with --canonical, since duplicate private
+probe objects are retired while their source and native evidence remain intact.
+Configuration/registration writers are stamped NEVER RERUN. English, repo-python, serial
+MSVC/Ghidra, no subagents, gpt-6.1-sol: commits and authorized main push persist.
+Older entries below are historical.
+
 ## EXACT-058 — 2026-10-07 — Enemy state lifetime and argument protocol
 
 Eleven complete functions add 1,581 bytes on actual EnemyState752/Enemy0x428

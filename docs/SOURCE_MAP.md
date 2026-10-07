@@ -1,5 +1,15 @@
 # Source and build ownership
 
+EXACT-059 extends EnemyState.cpp with whole movement composition and adds
+MotionConfiguration.cpp and Enemy.cpp on the existing typed owners. Nine
+complete functions add 1,285 body bytes and ten alignment bytes. All 417 units /
+78 cold objects / 76,932 disjoint bytes replay after source freeze. Native and
+compiler EH metadata independently establish nonthrowing angle assignment and
+Enemy construction. Shared X accessor aliases receive no duplicate credit;
+authored 64/16948 is unchanged. Whole movement update, Enemy dispatcher and
+enclosing dependency/destruction/RTTI remain pending. See
+EXACT_ENEMY_MOVEMENT_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-058 adds EnemyState.cpp and EnemyScript.cpp on shared typed State752 and
 Enemy0x428 declarations. Eleven complete lifetime/record/forwarding functions
 add1,581 bytes. All408 units/76 cold objects/75,637 disjoint bytes replay after

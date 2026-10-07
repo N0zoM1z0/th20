@@ -10,7 +10,7 @@ namespace th20 {
 struct EnemyFlags { std::uint32_t bits; };
 
 // Native constructor, initializer and destruction establish these subobjects.
-// Their enclosing lifetime implementations and variable resolvers remain open.
+// Destruction, initialization and variable resolvers remain open.
 struct Enemy : EclManager {
     EnemyFlags flags;
     IntrusiveLink<Enemy> controller_link;
@@ -22,7 +22,7 @@ struct Enemy : EclManager {
     std::int32_t player_index;
     Context* context;
 
-    Enemy();
+    Enemy() noexcept;
     ~Enemy() override;
     std::int32_t execute_opcode() override;
     std::int32_t read_integer(std::int32_t index) override;

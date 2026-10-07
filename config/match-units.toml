@@ -6493,3 +6493,152 @@ size = 36
 relocations = [
   { offset = 0x1A, type = "REL32", symbol = "?float_argument@Enemy@th20@@QAEMH@Z", target = 0x004AB010 },
 ]
+
+# EXACT-059: whole Enemy movement composition/configuration and nonthrowing construction.
+[units.enemy_combine_movements]
+source = "src/EnemyState.cpp"
+object = "build/EnemyState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::combine_movements"]
+symbol = "?combine_movements@EnemyState@th20@@QAEXXZ"
+target_address = 0x004A7DA0
+size = 844
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x17, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2B, type = "REL32", symbol = "?_Unchecked_begin@?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEPAUEnemyMovement@th20@@XZ", target = 0x00414F30 },
+  { offset = 0x36, type = "REL32", symbol = "?_Unchecked_end@?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEPAUEnemyMovement@th20@@XZ", target = 0x00414F70 },
+  { offset = 0x5D, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x66, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x77, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x80, type = "REL32", symbol = "??ZVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x00429740 },
+  { offset = 0x98, type = "REL32", symbol = "?set_motion_vector@Motion@th20@@QAEXABUVector3@2@@Z", target = 0x0047A5E0 },
+  { offset = 0xA6, type = "REL32", symbol = "?update_position@Motion@th20@@QAEXXZ", target = 0x00453AC0 },
+  { offset = 0xC9, type = "REL32", symbol = "?position_x@Motion@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xDF, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x113, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x130, type = "REL32", symbol = "?set_position_x@Motion@th20@@QAEXM@Z", target = 0x004292A0 },
+  { offset = 0x141, type = "REL32", symbol = "?position_x@Motion@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x15C, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x18A, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1A3, type = "REL32", symbol = "?set_position_x@Motion@th20@@QAEXM@Z", target = 0x004292A0 },
+  { offset = 0x1B2, type = "REL32", symbol = "?position_y@Motion@th20@@QBEMXZ", target = 0x00499390 },
+  { offset = 0x1C8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1FC, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x219, type = "REL32", symbol = "?set_position_y@Motion@th20@@QAEXM@Z", target = 0x0049C7E0 },
+  { offset = 0x22A, type = "REL32", symbol = "?position_y@Motion@th20@@QBEMXZ", target = 0x00499390 },
+  { offset = 0x245, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x274, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x28D, type = "REL32", symbol = "?set_position_y@Motion@th20@@QAEXM@Z", target = 0x0049C7E0 },
+  { offset = 0x29C, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x2C8, type = "REL32", symbol = "?_Unchecked_begin@?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEPAUEnemyMovement@th20@@XZ", target = 0x00414F30 },
+  { offset = 0x2D3, type = "REL32", symbol = "?_Unchecked_end@?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEPAUEnemyMovement@th20@@XZ", target = 0x00414F70 },
+  { offset = 0x300, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x309, type = "REL32", symbol = "??ZVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x00429740 },
+  { offset = 0x32A, type = "REL32", symbol = "??A?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEAAUEnemyMovement@th20@@I@Z", target = 0x0048BD10 },
+  { offset = 0x339, type = "REL32", symbol = "?set_position@Motion@th20@@QAEXABUVector3@2@@Z", target = 0x004393F0 },
+  { offset = 0x344, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.motion_position_y]
+source = "src/MotionConfiguration.cpp"
+object = "build/MotionConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Motion::position_y"]
+symbol = "?position_y@Motion@th20@@QBEMXZ"
+target_address = 0x00499390
+size = 17
+relocations = [
+]
+
+[units.motion_set_position_y]
+source = "src/MotionConfiguration.cpp"
+object = "build/MotionConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Motion::set_position_y"]
+symbol = "?set_position_y@Motion@th20@@QAEXM@Z"
+target_address = 0x0049C7E0
+size = 26
+relocations = [
+]
+
+[units.motion_set_angle]
+source = "src/MotionConfiguration.cpp"
+object = "build/MotionConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Motion::set_angle"]
+symbol = "?set_angle@Motion@th20@@QAEXM@Z"
+target_address = 0x0047A560
+size = 78
+compare_size = 83
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?set_angle@Motion@th20@@QAEXM@Z", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x38, type = "REL32", symbol = "??4Angle@th20@@QAEAAU01@M@Z", target = 0x00452F20 },
+]
+
+[units.motion_set_speed]
+source = "src/MotionConfiguration.cpp"
+object = "build/MotionConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Motion::set_speed"]
+symbol = "?set_speed@Motion@th20@@QAEXM@Z"
+target_address = 0x0047A5C0
+size = 26
+relocations = [
+]
+
+[units.motion_select_linear]
+source = "src/MotionConfiguration.cpp"
+object = "build/MotionConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Motion::select_linear"]
+symbol = "?select_linear@Motion@th20@@QAEXXZ"
+target_address = 0x0047A500
+size = 26
+relocations = [
+]
+
+[units.motion_select_orbit]
+source = "src/MotionConfiguration.cpp"
+object = "build/MotionConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Motion::select_orbit"]
+symbol = "?select_orbit@Motion@th20@@QAEXXZ"
+target_address = 0x0047A4C0
+size = 29
+relocations = [
+]
+
+[units.motion_select_elliptic]
+source = "src/MotionConfiguration.cpp"
+object = "build/MotionConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Motion::select_elliptic"]
+symbol = "?select_elliptic@Motion@th20@@QAEXXZ"
+target_address = 0x0049C470
+size = 29
+relocations = [
+]
+
+[units.enemy_ctor]
+source = "src/Enemy.cpp"
+object = "build/Enemy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::Enemy"]
+symbol = "??0Enemy@th20@@QAE@XZ"
+target_address = 0x004A33C0
+size = 210
+compare_size = 215
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0Enemy@th20@@QAE@XZ", target = 0x00567750 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2C, type = "REL32", symbol = "??0EclManager@th20@@QAE@XZ", target = 0x004A35F0 },
+  { offset = 0x35, type = "DIR32", symbol = "??_7Enemy@th20@@6B@", target = 0x005703CC },
+  { offset = 0x54, type = "REL32", symbol = "??0?$IntrusiveLink@UEnemy@th20@@@th20@@QAE@PAUEnemy@1@@Z", target = 0x00411970 },
+  { offset = 0x62, type = "REL32", symbol = "??0EnemyState@th20@@QAE@XZ", target = 0x004A3060 },
+  { offset = 0x70, type = "REL32", symbol = "??0EnemySpawn@th20@@QAE@XZ", target = 0x0047BB30 },
+  { offset = 0x7E, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 0x8C, type = "REL32", symbol = "??0?$IntrusiveLink@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A10 },
+  { offset = 0xA2, type = "REL32", symbol = "??0?$function@$$A6AXPAUEnemy@th20@@@Z@std@@QAE@$$T@Z", target = 0x004A2D90 },
+]

@@ -60,4 +60,37 @@ int EnemyState::initialize() {
     return 0;
 }
 
+void EnemyState::combine_movements() {
+    Vector3 total;
+    for (auto& movement : movements) total += movement.motion.position_ref();
+    total -= motion_110.position_ref();
+    auto& combined = motion_110;
+    combined.set_motion_vector(total);
+    motion_110.update_position();
+    if ((flags.word_04 >> 1) & 1u) {
+        if (motion_110.position_x() < bounds_178.x - bounds_178.width / 2.0f) {
+            auto& motion = motion_110;
+            motion.set_position_x(bounds_178.x - bounds_178.width / 2.0f);
+        } else if (motion_110.position_x() > bounds_178.width / 2.0f + bounds_178.x) {
+            auto& motion = motion_110;
+            motion.set_position_x(bounds_178.width / 2.0f + bounds_178.x);
+        }
+        if (motion_110.position_y() < bounds_178.y - bounds_178.height / 2.0f) {
+            auto& motion = motion_110;
+            motion.set_position_y(bounds_178.y - bounds_178.height / 2.0f);
+        } else if (motion_110.position_y() > bounds_178.height / 2.0f + bounds_178.y) {
+            auto& motion = motion_110;
+            motion.set_position_y(bounds_178.height / 2.0f + bounds_178.y);
+        }
+        total = motion_110.position_ref();
+        int index = 0;
+        for (auto& movement : movements) {
+            if (index > 0) total -= movement.motion.position_ref();
+            ++index;
+        }
+        auto& records = movements;
+        records[0].motion.set_position(total);
+    }
+}
+
 } // namespace th20
