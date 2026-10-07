@@ -81,9 +81,9 @@ struct EclSubroutineRecord {
 
 class EclLoader {
 public:
-    // Slot zero's higher-level contract remains open. Slot one receives a
-    // mutable SCPT include block; the derived implementation remains unclosed.
-    virtual std::int32_t callback_0(std::uint32_t argument);
+    // File loading and include parsing precede the deleting destructor.
+    // Derived loading borrows the process cache's writable resource buffers.
+    virtual std::int32_t load(const char* path);
     virtual std::int32_t include_resources(std::uint8_t* block);
     virtual ~EclLoader();
 

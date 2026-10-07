@@ -505,3 +505,7 @@ address,name,module,confidence,evidence
 0x004A4150,th20::EclLoader::scalar_deleting_destructor,EclResourceLifetime,high,EXACT-068; docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md
 0x00414B50,th20::EclLoader::include_resources,EclResourceLifetime,high,EXACT-068; docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md
 0x0048B900,th20::ScriptStack::~ScriptStack,EclResourceLifetime,high,EXACT-068; docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md
+0x004A2E40,th20::EclFileLoader::EclFileLoader,EclFileLoading,high,EXACT-069; docs/EXACT_ECL_FILE_LOADING_RECONSTRUCTION.md
+0x004A3900,th20::EclFileLoader::~EclFileLoader,EclFileLoading,high,EXACT-069; docs/EXACT_ECL_FILE_LOADING_RECONSTRUCTION.md
+0x004A4060,th20::EclFileLoader::scalar_deleting_destructor,EclFileLoading,high,EXACT-069; docs/EXACT_ECL_FILE_LOADING_RECONSTRUCTION.md
+0x004A74D0,th20::EclFileLoader::load,EclFileLoading,high,EXACT-069; docs/EXACT_ECL_FILE_LOADING_RECONSTRUCTION.md

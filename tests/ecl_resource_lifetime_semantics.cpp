@@ -10,7 +10,6 @@
 
 namespace th20 {
 // Unclosed boundaries are never executed by this lifetime test.
-std::int32_t EclLoader::callback_0(std::uint32_t) { std::abort(); }
 int ScriptStack::pop(std::int32_t, void*, char) { std::abort(); }
 }
 
@@ -92,6 +91,8 @@ int main() {
     assert(observed->seen == borrowed.data());
     assert(loader->th20::EclLoader::include_resources(borrowed.data()) == 0);
     assert(loader->th20::EclLoader::include_resources(nullptr) == 0);
+    assert(loader->load("owned fixture") == 0);
+    assert(loader->load(nullptr) == 0);
     loader.reset();
     assert(destroyed && original.live.empty());
     assert(original.releases == original.allocations);

@@ -503,3 +503,7 @@ th20::EclLoader::~EclLoader
 th20::EclLoader::scalar_deleting_destructor
 th20::EclLoader::include_resources
 th20::ScriptStack::~ScriptStack
+th20::EclFileLoader::EclFileLoader
+th20::EclFileLoader::~EclFileLoader
+th20::EclFileLoader::scalar_deleting_destructor
+th20::EclFileLoader::load

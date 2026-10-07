@@ -1,5 +1,40 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-069 — 2026-10-08 — Whole ECL file loading
+
+The whole 556-byte derived ECL loading member and three lifetime contributions
+add 682 bytes. Actual Context/EnemyController filename registration precedes
+recursive include handling; the real process PMR pair-list shares writable
+buffers across players. Reference-return emplace_back endpoints, native original
+EclResourceInf RTTI, 572-byte owner and complete two-state EH establish the
+protocol. Inline defaulted cleanup naturally reproduces the complete 20-byte
+derived destructor. Default base load folds with the existing 15-byte include
+callback without extra coverage. All 509 units / 95 cold objects / 91,055
+disjoint bytes strictly replay; origins remain 436 pending / 9 library /
+64 authored, with 16,948 authored bytes unchanged. Complete 118-byte native
+EH support replays without extra credit. See EXACT_ECL_FILE_LOADING_RECONSTRUCTION.md.
+
+Owned O2/UBSan checks exercise actual virtual loading, duplicate -1, cycle
+suppression, cross-player cache reuse, case-sensitive names, append failure and
+both temporary allocation/cleanup paths. Controller startup, resource I/O,
+whole append and derived include remain explicit test boundaries. The complete
+556-byte load and derived/base destructor reference associations close; all
+6,945 reviews remain terminal, 139 absorbed-exact. The constructor association
+still includes the unclosed scalar factory. Complete append876, getter54,
+include516, Session-based binding54, process startup/teardown, candidate STL
+child forwarding emission, 41 KB Enemy root and whole-game link/runtime remain
+pending. Source is frozen; configuration, callee refinement and registration
+writers are completed one-time operations. Never rerun their writers. Keep
+English/repo-python/Ghidra/no REA/no subagents/serial low-priority work and cleanup.
+
+All 42 public tests and target/tracking/progress gates pass. Cleanup retires
+14 superseded probe object/receipt files / 995,805 bytes. All 190 current
+canonical object/receipt hashes are unchanged and 509 strict existing-object
+comparisons pass afterward; no unchanged cold rebuild is needed. Cumulative
+retirement: 2,440 files / 999,274,525 bytes. build is 4.0 MiB and .analysis
+is 78 MiB. Native exports, failed source/diagnostics and installed tools remain
+intact. The one-time core069-cleanup writer is stamped; never rerun it.
+
 ## EXACT-068 — 2026-10-08 — Whole ECL base resource lifetime
 
 Five whole contributions add 252 bytes: base resource construction/destruction,

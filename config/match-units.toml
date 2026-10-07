@@ -8060,3 +8060,84 @@ size = 20
 relocations = [
   { offset = 0xB, type = "REL32", symbol = "??1?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAE@XZ", target = 0x0048B830 },
 ]
+
+# EXACT-069: complete derived ECL file loading and lifetime.
+[units.ecl_file_loader_ctor]
+source = "src/EclFileLoader.cpp"
+object = "build/EclFileLoader.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclFileLoader::EclFileLoader"]
+symbol = "??0EclFileLoader@th20@@QAE@XZ"
+target_address = 0x004A2E40
+size = 57
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0EclLoader@th20@@QAE@XZ", target = 0x004A3650 },
+  { offset = 0x14, type = "DIR32", symbol = "??_7EclFileLoader@th20@@6B@", target = 0x005703E8 },
+]
+
+[units.ecl_file_loader_dtor]
+source = "src/EclFileLoader.cpp"
+object = "build/EclFileLoader.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclFileLoader::~EclFileLoader"]
+symbol = "??1EclFileLoader@th20@@UAE@XZ"
+target_address = 0x004A3900
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??1EclLoader@th20@@UAE@XZ", target = 0x004A3D40 },
+]
+
+[units.ecl_file_loader_scalar_dtor]
+source = "src/EclFileLoader.cpp"
+object = "build/EclFileLoader.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclFileLoader::scalar_deleting_destructor"]
+symbol = "??_GEclFileLoader@th20@@UAEPAXI@Z"
+target_address = 0x004A4060
+size = 49
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??1EclFileLoader@th20@@UAE@XZ", target = 0x004A3900 },
+  { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]
+
+[units.ecl_file_loader_load]
+source = "src/EclFileLoader.cpp"
+object = "build/EclFileLoader.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclFileLoader::load"]
+symbol = "?load@EclFileLoader@th20@@UAEHPBD@Z"
+target_address = 0x004A74D0
+size = 556
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?load@EclFileLoader@th20@@UAEHPBD@Z", target = 0x005697D8 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x38, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x48, type = "REL32", symbol = "?_Unchecked_begin@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@V?$polymorphic_allocator@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@pmr@2@@std@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@2@XZ", target = 0x00414F30 },
+  { offset = 0x53, type = "REL32", symbol = "?_Unchecked_end@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@V?$polymorphic_allocator@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@pmr@2@@std@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@2@XZ", target = 0x00414F70 },
+  { offset = 0x7C, type = "REL32", symbol = "??$?8DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@0@QBD@Z", target = 0x00446DE0 },
+  { offset = 0x8F, type = "DIR32", symbol = "?ecl_duplicate_file_format@th20@@3QBDB", target = 0x005704B4 },
+  { offset = 0x94, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xAF, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xC3, type = "REL32", symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@QBD@Z", target = 0x0046A830 },
+  { offset = 0xE5, type = "REL32", symbol = "??$emplace_back@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@V?$polymorphic_allocator@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@pmr@2@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@1@$$QAV21@@Z", target = 0x004A2A20 },
+  { offset = 0xF4, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@XZ", target = 0x00449240 },
+  { offset = 0x103, type = "DIR32", symbol = "?process_ecl_cache@th20@@3V?$list@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@V?$polymorphic_allocator@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@pmr@2@@std@@A", target = 0x005C49F4 },
+  { offset = 0x10D, type = "REL32", symbol = "?__autoclassinit2@?$_List_unchecked_iterator@V?$_List_val@U?$_List_simple_types@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@std@@@std@@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x119, type = "REL32", symbol = "?_Unchecked_begin@?$list@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@V?$polymorphic_allocator@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@pmr@2@@std@@QAE?AV?$_List_unchecked_iterator@V?$_List_val@U?$_List_simple_types@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@std@@@std@@@2@XZ", target = 0x004A9D10 },
+  { offset = 0x123, type = "REL32", symbol = "?__autoclassinit2@?$_List_unchecked_iterator@V?$_List_val@U?$_List_simple_types@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@std@@@std@@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x12F, type = "REL32", symbol = "?_Unchecked_end@?$list@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@V?$polymorphic_allocator@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@pmr@2@@std@@QAE?AV?$_List_unchecked_iterator@V?$_List_val@U?$_List_simple_types@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@std@@@std@@@2@XZ", target = 0x004A9D40 },
+  { offset = 0x13A, type = "REL32", symbol = "??E?$_List_unchecked_iterator@V?$_List_val@U?$_List_simple_types@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@std@@@std@@@std@@QAEAAV01@XZ", target = 0x0048BE00 },
+  { offset = 0x147, type = "REL32", symbol = "??8?$_List_unchecked_const_iterator@V?$_List_val@U?$_List_simple_types@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@std@@@std@@U_Iterator_base0@2@@std@@QBE_NABV01@@Z", target = 0x00449400 },
+  { offset = 0x156, type = "REL32", symbol = "??D?$_List_unchecked_iterator@V?$_List_val@U?$_List_simple_types@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@std@@@std@@@std@@QBEAAU?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@1@XZ", target = 0x004A3EC0 },
+  { offset = 0x169, type = "REL32", symbol = "??$?8DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@0@QBD@Z", target = 0x00446DE0 },
+  { offset = 0x184, type = "DIR32", symbol = "?ecl_cached_file_format@th20@@3QBDB", target = 0x005704C4 },
+  { offset = 0x189, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x1A3, type = "REL32", symbol = "?ecl_resource_path@th20@@YAPBDPBD@Z", target = 0x004BD4A0 },
+  { offset = 0x1AC, type = "REL32", symbol = "?read_game_resource@th20@@YAPAEPBDPAHH@Z", target = 0x00410AA0 },
+  { offset = 0x1C5, type = "REL32", symbol = "??$?0AAPAEAAPBD$0A@@?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@QAE@AAPAEAAPBD@Z", target = 0x004A1100 },
+  { offset = 0x1DE, type = "DIR32", symbol = "?process_ecl_cache@th20@@3V?$list@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@V?$polymorphic_allocator@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@pmr@2@@std@@A", target = 0x005C49F4 },
+  { offset = 0x1E3, type = "REL32", symbol = "??$emplace_back@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@?$list@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@V?$polymorphic_allocator@U?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@@pmr@2@@std@@QAEAAU?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@1@$$QAU21@@Z", target = 0x004A29E0 },
+  { offset = 0x1F5, type = "REL32", symbol = "??1?$pair@PAEV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@std@@QAE@XZ", target = 0x0046ADE0 },
+  { offset = 0x202, type = "REL32", symbol = "?append@EclLoader@th20@@QAEHPAE@Z", target = 0x0053FE60 },
+  { offset = 0x222, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

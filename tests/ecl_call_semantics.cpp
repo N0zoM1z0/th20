@@ -65,7 +65,6 @@ std::int32_t EclManager::read_integer(std::int32_t) { return 0; }
 std::int32_t* EclManager::integer_destination(std::int32_t) { return nullptr; }
 float EclManager::read_float(std::int32_t) { return 0; }
 float* EclManager::float_destination(std::int32_t) { return nullptr; }
-std::int32_t EclLoader::callback_0(std::uint32_t) { return 0; }
 EclLoader* EclManager::loader_value() const { return loader; }
 int EclLoader::activate(EclManager* manager, const char* name) {
     activated = manager->current_runtime;

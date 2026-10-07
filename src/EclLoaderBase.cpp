@@ -7,6 +7,8 @@ EclLoader::EclLoader()
 
 EclLoader::~EclLoader() = default;
 
+std::int32_t EclLoader::load(const char*) { return 0; }
+
 std::int32_t EclLoader::include_resources(std::uint8_t*) { return 0; }
 
 } // namespace th20
