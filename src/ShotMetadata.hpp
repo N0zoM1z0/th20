@@ -5,13 +5,11 @@
 #include <memory_resource>
 #include <vector>
 
-namespace th20 {
-
-// The queued shared owner points to this value. Unknown operand roles stay
-// neutral; command storage uses the same real 44-byte BulletCommand records.
-struct ShotMetadata {
+// Native shared-control RTTI establishes this original global struct name.
+// Unknown operand roles stay neutral; commands are the real 44-byte values.
+struct EtamaArgInf {
     float field_00;
-    std::pmr::vector<BulletCommand> commands;
+    std::pmr::vector<th20::BulletCommand> commands;
     float field_14, field_18, field_1c, field_20;
     std::uint32_t field_24, field_28, field_2c, field_30, field_34;
     std::int16_t field_38, field_3a;
@@ -19,12 +17,17 @@ struct ShotMetadata {
     std::uint32_t field_44;
     char field_48;
     bool field_49;
-    ShotMetadata() noexcept;
-    ShotMetadata(const ShotMetadata&) = default;
-    ShotMetadata& operator=(const ShotMetadata&) = default;
-    ShotMetadata& operator=(ShotMetadata&&);
-    ~ShotMetadata();
+    EtamaArgInf() noexcept;
+    EtamaArgInf(const EtamaArgInf&) = default;
+    EtamaArgInf& operator=(const EtamaArgInf&) = default;
+    EtamaArgInf& operator=(EtamaArgInf&&);
+    ~EtamaArgInf();
 };
+
+namespace th20 {
+
+// Preserve the semantic spelling without changing the RTTI-visible type.
+using ShotMetadata = ::EtamaArgInf;
 
 #if defined(_M_IX86)
 static_assert(sizeof(ShotMetadata) == 0x4c);

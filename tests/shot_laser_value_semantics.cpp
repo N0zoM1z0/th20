@@ -63,7 +63,7 @@ void metadata_construction(Resource& resource) {
         assert(storage[i] == 0xa5);
         assert(storage[sizeof(th20::ShotMetadata) + alignof(th20::ShotMetadata) + i] == 0xa5);
     }
-    value->~ShotMetadata();
+    std::destroy_at(value);
     assert(resource.live == 0);
 }
 

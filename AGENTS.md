@@ -85,6 +85,12 @@ objects/receipts, preserve native evidence and active inputs, record removed
 paths/bytes privately, and verify exact replay after cleanup. See
 docs/RE_WORKFLOW.md for retirement rules.
 
+The user also requires controlled CPU and memory use. Run compiler, headless
+Ghidra, cold replay and semantic checks at reduced scheduling priority (for
+example `nice -n 15`), keep heavy jobs serial and reuse existing evidence.
+Keep queries bounded to the reviewed scope. Do not repeat cold builds of an
+unchanged graph solely for documentation or cleanup.
+
 Never commit original executables/data, downloaded proprietary toolchains,
 credentials, generated decompiler text, private Ghidra/IDA databases or build
 products. Keep them in ignored `.tools/`, `.analysis/`, `ghidra-project/`,

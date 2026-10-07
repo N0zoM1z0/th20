@@ -6417,7 +6417,7 @@ symbol = "??0EnemyQueuedRecord@th20@@QAE@XZ"
 target_address = 0x0048B500
 size = 66
 relocations = [
-  { offset = 0xB, type = "REL32", symbol = "??0?$shared_ptr@UShotMetadata@th20@@@std@@QAE@XZ", target = 0x0047B880 },
+  { offset = 0xB, type = "REL32", symbol = "??0?$shared_ptr@UEtamaArgInf@@@std@@QAE@XZ", target = 0x0047B880 },
   { offset = 0x16, type = "REL32", symbol = "??0ShotParameters@th20@@QAE@XZ", target = 0x0047BD20 },
   { offset = 0x2B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
   { offset = 0x36, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
@@ -7137,13 +7137,13 @@ relocations = [
 source = "src/ShotMetadata.cpp"
 object = "build/ShotMetadata.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
-functions = ["th20::ShotMetadata::ShotMetadata"]
-symbol = "??0ShotMetadata@th20@@QAE@XZ"
+functions = ["EtamaArgInf::EtamaArgInf"]
+symbol = "??0EtamaArgInf@@QAE@XZ"
 target_address = 0x0047BB90
 size = 255
 compare_size = 260
 relocations = [
-  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0ShotMetadata@th20@@QAE@XZ", target = 0x005679A0 },
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0EtamaArgInf@@QAE@XZ", target = 0x005679A0 },
   { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x39, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
   { offset = 0xE8, type = "REL32", symbol = "?resize@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x004862F0 },
@@ -7153,8 +7153,8 @@ relocations = [
 source = "src/ShotMetadata.cpp"
 object = "build/ShotMetadata.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
-functions = ["th20::ShotMetadata::~ShotMetadata"]
-symbol = "??1ShotMetadata@th20@@QAE@XZ"
+functions = ["EtamaArgInf::~EtamaArgInf"]
+symbol = "??1EtamaArgInf@@QAE@XZ"
 target_address = 0x0047C450
 size = 23
 relocations = [
@@ -7268,10 +7268,152 @@ relocations = [
 source = "src/ShotMetadata.cpp"
 object = "build/ShotMetadata.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
-functions = ["th20::ShotMetadata::operator=(ShotMetadata&&)"]
-symbol = "??4ShotMetadata@th20@@QAEAAU01@$$QAU01@@Z"
+functions = ["EtamaArgInf::operator=(EtamaArgInf&&)"]
+symbol = "??4EtamaArgInf@@QAEAAU0@$$QAU0@@Z"
 target_address = 0x0048BB00
 size = 241
 relocations = [
   { offset = 0x1F, type = "REL32", symbol = "??4?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEAAV01@$$QAV01@@Z", target = 0x0048BA60 },
+]
+
+# EXACT-064: actual DebugAllocator/EtamaArgInf shared allocation and control-block protocol.
+[units.shot_debug_allocate]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["DebugAllocator<std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>>::allocate"]
+symbol = "?allocate@?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@QAEPAV?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@I@Z"
+target_address = 0x004848B0
+size = 138
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?allocate@?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@QAEPAV?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@I@Z", target = 0x0056808D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x4D, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x0054275D },
+  { offset = 0x68, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x80, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.shot_debug_deallocate]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["DebugAllocator<std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>>::deallocate"]
+symbol = "?deallocate@?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@QAEXPAV?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@I@Z"
+target_address = 0x00485240
+size = 77
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x16, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x1B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x24, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x2D, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x005429FC },
+  { offset = 0x38, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x43, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.shot_metadata_copy_ctor]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["EtamaArgInf::EtamaArgInf(const EtamaArgInf&)"]
+symbol = "??0EtamaArgInf@@QAE@ABU0@@Z"
+target_address = 0x0048B400
+size = 248
+relocations = [
+  { offset = 0x27, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@ABV01@@Z", target = 0x0048B2F0 },
+]
+
+[units.shot_allocate_shared]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::allocate_shared<EtamaArgInf, DebugAllocator<EtamaArgInf>>"]
+symbol = "??$allocate_shared@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@$$V@std@@YA?AV?$shared_ptr@UEtamaArgInf@@@0@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z"
+target_address = 0x0047B290
+size = 223
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$allocate_shared@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@$$V@std@@YA?AV?$shared_ptr@UEtamaArgInf@@@0@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z", target = 0x0056904D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x37, type = "REL32", symbol = "??$?0UEtamaArgInf@@@?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@QAE@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z", target = 0x0040B120 },
+  { offset = 0x43, type = "REL32", symbol = "??0?$_Alloc_construct_ptr@U?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@@std@@QAE@AAU?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@@Z", target = 0x00413F50 },
+  { offset = 0x52, type = "REL32", symbol = "?_Allocate@?$_Alloc_construct_ptr@U?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@@std@@QAEXXZ", target = 0x004842F0 },
+  { offset = 0x5F, type = "REL32", symbol = "??$_Construct_in_place@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@ABU?$DebugAllocator@UEtamaArgInf@@@@@std@@YAXAAV?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@0@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z", target = 0x0047AAB0 },
+  { offset = 0x6C, type = "REL32", symbol = "?__autoclassinit2@?$shared_ptr@UEtamaArgInf@@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x74, type = "REL32", symbol = "??0?$shared_ptr@UEtamaArgInf@@@std@@QAE@XZ", target = 0x0047B880 },
+  { offset = 0x8C, type = "REL32", symbol = "??$addressof@UEtamaArgInf@@@std@@YAPAUEtamaArgInf@@AAU1@@Z", target = 0x0040B280 },
+  { offset = 0x9A, type = "REL32", symbol = "?_Release@?$_Alloc_construct_ptr@U?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@@std@@QAEPAV?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@2@XZ", target = 0x00484720 },
+  { offset = 0xA0, type = "REL32", symbol = "??$_Unfancy@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@std@@YAPAV?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@0@PAV10@@Z", target = 0x0040B280 },
+  { offset = 0xB0, type = "REL32", symbol = "??$_Set_ptr_rep_and_enable_shared@UEtamaArgInf@@@?$shared_ptr@UEtamaArgInf@@@std@@AAEXQAUEtamaArgInf@@QAV_Ref_count_base@1@@Z", target = 0x0047B030 },
+  { offset = 0xBF, type = "REL32", symbol = "??1?$_Alloc_construct_ptr@U?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@@std@@QAE@XZ", target = 0x0047C220 },
+  { offset = 0xD7, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.shot_control_block_ctor]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Ref_count_obj_alloc3"]
+symbol = "??$?0$$V@?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@QAE@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z"
+target_address = 0x0047A660
+size = 173
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$?0$$V@?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@QAE@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z", target = 0x00568FDD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x39, type = "REL32", symbol = "??$?0ABU?$DebugAllocator@UEtamaArgInf@@@@$0A@@?$_Ebco_base@U?$DebugAllocator@UEtamaArgInf@@@@$00@std@@IAE@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z", target = 0x0047A770 },
+  { offset = 0x4E, type = "REL32", symbol = "??0_Ref_count_base@std@@IAE@XZ", target = 0x0047C1F0 },
+  { offset = 0x5E, type = "DIR32", symbol = "??_7?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@6B@", target = 0x0056FD20 },
+  { offset = 0x6A, type = "REL32", symbol = "??$addressof@UEtamaArgInf@@@std@@YAPAUEtamaArgInf@@AAU1@@Z", target = 0x0040B280 },
+  { offset = 0x7B, type = "REL32", symbol = "?_Get_val@?$_Ebco_base@U?$DebugAllocator@UEtamaArgInf@@@@$00@std@@IAEAAU?$DebugAllocator@UEtamaArgInf@@@@XZ", target = 0x0040BDA0 },
+  { offset = 0x8B, type = "REL32", symbol = "??$construct@UEtamaArgInf@@$$V@?$_Normal_allocator_traits@U?$DebugAllocator@UEtamaArgInf@@@@@std@@SAXAAU?$DebugAllocator@UEtamaArgInf@@@@PAUEtamaArgInf@@@Z", target = 0x0047B410 },
+]
+
+[units.shot_control_block_destroy]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Destroy"]
+symbol = "?_Destroy@?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@EAEXXZ"
+target_address = 0x00484670
+size = 103
+compare_size = 108
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?_Destroy@?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@EAEXXZ", target = 0x00567750 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x30, type = "REL32", symbol = "??$addressof@UEtamaArgInf@@@std@@YAPAUEtamaArgInf@@AAU1@@Z", target = 0x0040B280 },
+  { offset = 0x41, type = "REL32", symbol = "?_Get_val@?$_Ebco_base@U?$DebugAllocator@UEtamaArgInf@@@@$00@std@@IAEAAU?$DebugAllocator@UEtamaArgInf@@@@XZ", target = 0x0040BDA0 },
+  { offset = 0x51, type = "REL32", symbol = "??$destroy@UEtamaArgInf@@@?$_Normal_allocator_traits@U?$DebugAllocator@UEtamaArgInf@@@@@std@@SAXAAU?$DebugAllocator@UEtamaArgInf@@@@PAUEtamaArgInf@@@Z", target = 0x0047B640 },
+]
+
+[units.shot_control_block_delete]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this"]
+symbol = "?_Delete_this@?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@EAEXXZ"
+target_address = 0x004845F0
+size = 123
+compare_size = 128
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?_Delete_this@?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@EAEXXZ", target = 0x005691C0 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x32, type = "REL32", symbol = "?_Get_val@?$_Ebco_base@U?$DebugAllocator@UEtamaArgInf@@@@$00@std@@IAEAAU?$DebugAllocator@UEtamaArgInf@@@@XZ", target = 0x0040BDA0 },
+  { offset = 0x3B, type = "REL32", symbol = "??$?0UEtamaArgInf@@@?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@QAE@ABU?$DebugAllocator@UEtamaArgInf@@@@@Z", target = 0x0040B120 },
+  { offset = 0x5B, type = "REL32", symbol = "??$_Deallocate_plain@U?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@@std@@YAXAAU?$DebugAllocator@V?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@@@QAV?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@0@@Z", target = 0x0047AC10 },
+  { offset = 0x73, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.shot_control_block_scalar_dtor]
+source = "probes/EnemyShotAllocation.cpp"
+object = "build/EnemyShotAllocation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor"]
+symbol = "??_G?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@EAEPAXI@Z"
+target_address = 0x0047C760
+size = 46
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??1?$_Ref_count_obj_alloc3@UEtamaArgInf@@U?$DebugAllocator@UEtamaArgInf@@@@@std@@EAE@XZ", target = 0x0047C280 },
+  { offset = 0x1E, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
 ]

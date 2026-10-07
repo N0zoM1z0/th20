@@ -440,8 +440,8 @@ th20::Motion::set_parameter_24
 th20::Enemy::parent
 th20::scalar_math::absolute
 th20::Enemy::position_ref
-th20::ShotMetadata::ShotMetadata
-th20::ShotMetadata::~ShotMetadata
+EtamaArgInf::EtamaArgInf
+EtamaArgInf::~EtamaArgInf
 th20::LaserType0Parameters::LaserType0Parameters
 th20::LaserType0Parameters::~LaserType0Parameters
 th20::LaserType1Parameters::LaserType1Parameters
@@ -450,4 +450,12 @@ th20::LaserType2Parameters::LaserType2Parameters
 th20::LaserType2Parameters::~LaserType2Parameters
 th20::LaserType3Parameters::LaserType3Parameters
 th20::LaserType3Parameters::~LaserType3Parameters
-th20::ShotMetadata::operator=(ShotMetadata&&)
+EtamaArgInf::operator=(EtamaArgInf&&)
+"DebugAllocator<std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>>::allocate"
+"DebugAllocator<std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>>::deallocate"
+EtamaArgInf::EtamaArgInf(const EtamaArgInf&)
+"std::allocate_shared<EtamaArgInf, DebugAllocator<EtamaArgInf>>"
+"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Ref_count_obj_alloc3"
+"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Destroy"
+"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this"
+"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor"

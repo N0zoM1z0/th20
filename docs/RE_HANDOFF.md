@@ -1,5 +1,35 @@
 # Current reconstruction handoff
 
+## EXACT-064 — 2026-10-08 — Actual shot allocation and shared control
+
+Eight complete bodies add1,131 instruction+10compiler alignment bytes. Full
+frozen-source cold replay:461units/87objects/86547disjointbytes. Native RTTI
+establishes global EtamaArgInf and DebugAllocator; th20::ShotMetadata remains
+an alias of the same actual76-byte PMR command owner. Real allocation/release
+lock process slot1 and use scalar new/unsized delete. Removing the unsupported
+private converting-ctor noexcept reproduces whole control release123+5padding.
+Generated complete RTTI/vtable/EH and direct support independently replay without
+coverage credit. Five std-associated functions are independently library-owned;
+source origins388pending/9library/64authored16948. Actual copying factory227/236,
+copy-control177/192 and wholequeue396/305 remain nonexact due intrinsic forwarding
+and result-reference materialization. Do not replace headers or add inert locals.
+Whole48C010 dispatcher/tables/five temporary EH states remains the next core root.
+Owned locking/recursion/allocator-selected isolated copy/move/strong-weak lifetimes
+pass. Original global definition/startup and whole-game link/runtime stay open.
+See EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md. Older entries are historical.
+
+Cleanup retires18superseded files /978879bytes; all174 canonical object/receipt
+hashes are unchanged and461strict replays pass afterward. Cumulative retirement:
+2021files /68418873bytes. Native exports, probes and locked tools remain intact.
+All38public semantic/control-plane tests pass. Source is frozen; no additional
+cold build is needed for these documentation/cleanup updates.
+
+core064-configure.py/register.py are one-time writers with completed stamps;
+NEVER RERUN. Private core064-audit.py and exact064-replay.log retain full proof.
+Keep English/repo-python/serial MSVC-Ghidra/no subagents/authorized main push.
+Reduce scheduling priority and memory use, as the user now explicitly requires.
+Periodic protected cleanup follows the stable batch; see RE_WORKFLOW.md.
+
 ## EXACT-063 — 2026-10-08 — Actual Enemy dispatcher temporary lifetimes
 
 Eleven whole functions add1,384 instruction and five compiler alignment bytes.

@@ -442,8 +442,8 @@ address,name,module,confidence,evidence
 0x004AAD90,th20::Enemy::parent,Enemy,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
 0x0047A630,th20::scalar_math::absolute,ScalarMath,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
 0x0047A2C0,th20::Enemy::position_ref,Enemy,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
-0x0047BB90,th20::ShotMetadata::ShotMetadata,ShotMetadata,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
-0x0047C450,th20::ShotMetadata::~ShotMetadata,ShotMetadata,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
+0x0047BB90,EtamaArgInf::EtamaArgInf,ShotMetadata,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
+0x0047C450,EtamaArgInf::~EtamaArgInf,ShotMetadata,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
 0x0047C130,th20::LaserType0Parameters::LaserType0Parameters,LaserParameters,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
 0x0047C4B0,th20::LaserType0Parameters::~LaserType0Parameters,LaserParameters,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
 0x0047C030,th20::LaserType1Parameters::LaserType1Parameters,LaserParameters,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
@@ -452,4 +452,12 @@ address,name,module,confidence,evidence
 0x0048B8B0,th20::LaserType2Parameters::~LaserType2Parameters,LaserParameters,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
 0x0048B5B0,th20::LaserType3Parameters::LaserType3Parameters,LaserParameters,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
 0x0048B890,th20::LaserType3Parameters::~LaserType3Parameters,LaserParameters,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
-0x0048BB00,th20::ShotMetadata::operator=(ShotMetadata&&),ShotMetadata,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
+0x0048BB00,EtamaArgInf::operator=(EtamaArgInf&&),ShotMetadata,high,EXACT-063; docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md
+0x004848B0,"DebugAllocator<std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>>::allocate",DebugAllocator,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
+0x00485240,"DebugAllocator<std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>>::deallocate",DebugAllocator,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
+0x0048B400,EtamaArgInf::EtamaArgInf(const EtamaArgInf&),ShotMetadata,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
+0x0047B290,"std::allocate_shared<EtamaArgInf, DebugAllocator<EtamaArgInf>>",EnemyShotAllocation,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
+0x0047A660,"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Ref_count_obj_alloc3",EnemyShotAllocation,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
+0x00484670,"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Destroy",EnemyShotAllocation,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
+0x004845F0,"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this",EnemyShotAllocation,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
+0x0047C760,"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor",EnemyShotAllocation,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
