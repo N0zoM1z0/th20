@@ -42,7 +42,7 @@ screen_effect,36,5,1,27,defer-production-import,ScreenEffects,State/vertex leads
 scripts,299,0,0,0,local-resource-evidence-only,Resource investigation,Decompiled DSL resource scripts; byte round trips are not C++ reconstruction
 small_score,29,5,1,17,defer-production-import,FloatingScore,Score glyph and lifetime lead; historical module source bindings stale
 special_state,54,7,3,37,defer-production-import,StoneState,Nonvirtual owner and observer lifetime; destructor policy differs and historical bindings stale
-sprite_renderer,121,42,22,40,defer-production-import,Animation / Renderer,Large pool and VM leads; file/GPU/COM domains differ and shared counts overlap
+sprite_renderer,121,42,22,40,defer-production-import,Animation / Renderer,"Native pool/VM/file/GPU/COM leads remain deferred. EXACT-060 independently absorbs ten whole typed ANM lifetime/reset/resource/scales contributions; nontrivial destruction/EH and retained state audited. Pooled115/native59, callbacks/global data and complete Controller/file/VM owners remain open; no reference raw clearing or packed fields imported."
 src,4,4,0,0,portable-tools-tested,Inspection tooling,Fresh root binary parser CTest passed; these parsers are not recovered game runtime
 stage_background,66,13,5,40,defer-production-import,Background,STD/camera/interpolation leads; transition/resource lifetime needs integrated verification
 stage_clear,29,4,2,15,defer-production-import,StageClear,Mutating getters and score order; factory and self-delete branches excluded from fixture

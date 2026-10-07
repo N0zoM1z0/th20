@@ -1,5 +1,52 @@
 # Current reconstruction handoff
 
+## EXACT-060 — 2026-10-07 — ANM lifetime, reset and inherited extents
+
+Ten complete Base/Animation construction/destruction/reset/resource/scales
+functions add 2,855 instruction bytes and fifteen alignment bytes. All427 units /
+79 cold objects /79,802 disjoint bytes strictly replay after source freeze and
+shared AnimationHandle/DiagnosticAllocator declaration changes. New origins
+remain pending; authored64/16948 is unchanged. See
+EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md.
+
+Actual owners are Base0x4C0, Animation0x5E4 and pooled storage0x600. Real typed
+Timer/vector/Angle/interpolation/matrix/variable/link values, native array ctor/
+dtor consumers and complete flags5 EH establish construction and nontrivial
+Animation destruction. The reset is partial: owned resources/handle/Base timer,
+other matrices and interpolation samples/timers/modes remain retained. Parent
+scales recurse through+558 unless local flag bit12 suppresses inheritance.
+Resource release preserves the native nonzero+550 infinite handle-clear path.
+The identity constant has independent64-byte copy consumers; its production data
+initialization remains open. Callback destruction is a declared real allocator
+dependency, not an accepted production body. Shared handle/node physical aliases
+and complete EH support replay independently without duplicate coverage.
+
+Natural PooledAnimation construction with the actual Animation destructor emits
+115/native59 under this owner recipe; the complete mismatch remains pending.
+Do not restore an implicitly trivial Animation, change child exception contracts,
+shorten contributions or adopt reference packed/raw transports. Eight reference
+body reviews now link their independent exact reconstructions; pooled/free
+forwarding boundaries remain explicitly nonexact. All31 public semantic/control
+plane tests and private target/tracking/progress/full Ghidra gates pass.
+
+The whole Enemy movement update4A7710/1675 and dispatcher48C010/41967 remain
+priority. Next close actual Controller/Context/file binding, handle resolution/
+retirement and viewport/global ownership together. Controller constructor4A2E80
+is exported completely:312 bytes, flags5 EH, CallbackOwner base, EnemyData,
+PMR vector, timers, eight file pointers, script loader, sentinel/list and a real
+Identifier32 at+128 (not an invented raw padding word). No source for that next
+owner is accepted yet. Existing Enemy base/destructor/global dependencies remain
+open; no partial opcode credit or whole-game linkage claim is made.
+
+Cleanup totals now1,957 retired files /56,669,951 bytes, approximately54 MiB.
+The latest two removed duplicate probe object/receipt files total50,431 bytes;
+all158 current canonical object/receipt hashes are unchanged. Raw native evidence,
+probe source, reference/game files and Ghidra/toolchains remain intact. See
+private core060-cleanup.json and exact060-resume.md. Current audit uses canonical
+objects only. Configuration/registration were one-time operations; NEVER RERUN.
+English, repo-python, serial MSVC/Ghidra, no subagents, gpt-6.1-sol: commits and
+authorized main push persist. Older entries below are historical.
+
 ## EXACT-059 — 2026-10-07 — Whole Enemy movement composition and construction
 
 Nine complete functions add 1,285 instruction bytes and ten alignment bytes:

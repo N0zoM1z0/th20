@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+EXACT-060 closes real ANM Base/Animation construction, nontrivial destruction,
+partial reset/resource release and recursive scales/extents. Ten whole units
+add 2,855 instruction bytes and fifteen alignment bytes; all427 units/79 cold
+objects/79,802 disjoint bytes replay. Actual typed values, implicit ABI padding,
+array-destruction consumers and complete flags5 EH establish the owners.
+New origins remain pending; authored64/16948 is unchanged. Whole Enemy movement/
+dispatch, Controller/Context/file/global ownership and callback destruction
+remain open. Natural pooled construction115/native59 is rejected. See
+EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md. Older entries are historical.
+
 EXACT-059 closes whole EnemyState movement composition/bounds and its direct
 Motion configuration protocol, plus nonthrowing Enemy construction. Nine
 whole functions add 1,285 instruction bytes and ten alignment bytes; all 417

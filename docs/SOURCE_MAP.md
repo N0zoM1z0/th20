@@ -1,5 +1,17 @@
 # Source and build ownership
 
+EXACT-060 adds Animation.cpp on the actual AnimationBase0x4C0/Animation0x5E4
+and pooled0x600 storage. Ten complete construction/destruction/reset/resource/
+recursive-scale/extent contributions add 2,855 body bytes and fifteen alignment
+bytes. All427 units/79 cold objects/79,802 disjoint bytes replay after the shared
+AnimationHandle and DiagnosticAllocator declarations change. Handle assignment
+and node constructors are independently audited physical aliases without extra
+coverage. Native flags5 EH proves nonthrowing lifetime contracts. Pooled115/
+native59 remains rejected with the actual nontrivial Animation destructor;
+callback/global-data/Controller dependencies and whole Enemy roots remain open.
+Authored64/16948 is unchanged. See EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md.
+Older entries below are historical.
+
 EXACT-059 extends EnemyState.cpp with whole movement composition and adds
 MotionConfiguration.cpp and Enemy.cpp on the existing typed owners. Nine
 complete functions add 1,285 body bytes and ten alignment bytes. All 417 units /

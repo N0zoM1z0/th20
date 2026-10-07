@@ -1,5 +1,15 @@
 # Sprite, ANM, rendering and texture review
 
+EXACT-060 independently reconstructs the real ANM Base/Animation owners rather
+than importing reference raw clearing and packed fields. Ten whole lifetime,
+partial-reset, resource-release and recursive-scale/extent functions add2,870
+comparison bytes. All427 units/79 cold objects/79,802 disjoint bytes replay.
+The true nontrivial destructor, complete flags5 EH and raw Vector2[4] construction
+close the prior707/native725 Base hypothesis. Natural pooled115/native59 remains
+rejected; Controller/file/callback/global and whole Enemy work remain pending.
+See EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md. Review findings below are
+historical and are not claims that these newly closed ten bodies remain open.
+
 ## REF-042 — 2026-10-07
 
 All **540 remaining Sprite implementations** were individually read across

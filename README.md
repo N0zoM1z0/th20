@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 417 mapped component functions across 78 comparison objects |
+| Source | 427 mapped component functions across 79 comparison objects |
 | Authored exactness | 64 functions, 16,948 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -63,6 +63,7 @@ are excluded from Git.
 | Window contributions | Flags initialization and foreground wrapper pass exact replay; origin remains open |
 | Audio state construction | Three complete exact record constructors; authored versus compiler origin remains open |
 | Animation handle construction | Complete 23-byte exact value constructor; authored versus compiler origin remains open |
+| ANM lifetime and reset | Actual Base/Animation construction, nontrivial destruction, partial reset and inherited extents: 10 whole units / 2,870 comparison bytes; [evidence](docs/EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md) |
 | Vector arithmetic | Sixteen complete exact Vector2/Vector3 members; original class spelling and authored/library origin remain open |
 | Timer construction and wrappers | Nine additional complete exact members, including fractional age and signed <=; source spelling and origin review remain open |
 | Colored vertex construction | Complete 43-byte exact constructor for the actual 20-byte value; source spelling and origin review remain open |

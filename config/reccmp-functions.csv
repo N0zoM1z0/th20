@@ -416,3 +416,13 @@ th20::Motion::select_linear,0x0047A500,function
 th20::Motion::select_orbit,0x0047A4C0,function
 th20::Motion::select_elliptic,0x0049C470,function
 th20::Enemy::Enemy,0x004A33C0,function
+th20::AnimationBase::AnimationBase,0x00448D70,function
+th20::Animation::Animation,0x00448B40,function
+th20::Animation::~Animation,0x00449370,function
+th20::Animation::reset,0x004299D0,function
+th20::Animation::release_resources,0x0044C240,function
+th20::Animation::position_ref,0x0044CB60,function
+th20::Animation::inherited_scale_y,0x004458E0,function
+th20::Animation::inherited_scale_x,0x00445940,function
+th20::Animation::height,0x004459A0,function
+th20::Animation::width,0x004459D0,function

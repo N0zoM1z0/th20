@@ -8,6 +8,8 @@ namespace th20 {
 
 // Native startup allocates eight bytes: an observed zero word followed by the
 // real four-slot PMR resource. The word's meaning and startup body remain open.
+struct AnimationCallback;
+
 class DiagnosticAllocator {
 public:
     DiagnosticAllocator();
@@ -15,6 +17,10 @@ public:
 
     void* allocate_bytes(std::int32_t size, const char* label);
     void release_bytes(void* memory);
+
+    // Native 0041F7C0: virtual callback destruction followed by locked delete.
+    // The complete callback vtable and this dependency body remain pending.
+    void release_animation_callback(AnimationCallback* callback);
 
     template<class T>
     T* allocate_array(const char*, std::int32_t count) {

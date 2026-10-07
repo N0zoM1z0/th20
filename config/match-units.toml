@@ -6642,3 +6642,216 @@ relocations = [
   { offset = 0x8C, type = "REL32", symbol = "??0?$IntrusiveLink@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A10 },
   { offset = 0xA2, type = "REL32", symbol = "??0?$function@$$A6AXPAUEnemy@th20@@@Z@std@@QAE@$$T@Z", target = 0x004A2D90 },
 ]
+
+# EXACT-060: whole ANM value/lifetime/reset and recursive-scale protocol.
+[units.animation_base_ctor]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationBase::AnimationBase"]
+symbol = "??0AnimationBase@th20@@QAE@XZ"
+target_address = 0x00448D70
+size = 725
+compare_size = 730
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0AnimationBase@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x7B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x86, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x91, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x9C, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0xA7, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0xB2, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0xBD, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0xC8, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0xEC, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0xFA, type = "REL32", symbol = "??0?$Interpolation@UVector3@th20@@@th20@@QAE@XZ", target = 0x00447B30 },
+  { offset = 0x108, type = "REL32", symbol = "??0?$Interpolation@UIntegerTriple@th20@@@th20@@QAE@XZ", target = 0x00447A50 },
+  { offset = 0x116, type = "REL32", symbol = "??0?$Interpolation@H@th20@@QAE@XZ", target = 0x00447980 },
+  { offset = 0x124, type = "REL32", symbol = "??0?$Interpolation@UVector3@th20@@@th20@@QAE@XZ", target = 0x00447B30 },
+  { offset = 0x132, type = "REL32", symbol = "??0?$Interpolation@UAngle@th20@@@th20@@QAE@XZ", target = 0x00447BA0 },
+  { offset = 0x140, type = "REL32", symbol = "??0?$Interpolation@UVector2@th20@@@th20@@QAE@XZ", target = 0x00447AC0 },
+  { offset = 0x14E, type = "REL32", symbol = "??0?$Interpolation@UVector2@th20@@@th20@@QAE@XZ", target = 0x00447AC0 },
+  { offset = 0x15C, type = "REL32", symbol = "??0?$Interpolation@UVector2@th20@@@th20@@QAE@XZ", target = 0x00447AC0 },
+  { offset = 0x16A, type = "REL32", symbol = "??0?$Interpolation@UIntegerTriple@th20@@@th20@@QAE@XZ", target = 0x00447A50 },
+  { offset = 0x178, type = "REL32", symbol = "??0?$Interpolation@H@th20@@QAE@XZ", target = 0x00447980 },
+  { offset = 0x186, type = "REL32", symbol = "??0?$Interpolation@M@th20@@QAE@XZ", target = 0x004479E0 },
+  { offset = 0x194, type = "REL32", symbol = "??0?$Interpolation@M@th20@@QAE@XZ", target = 0x004479E0 },
+  { offset = 0x199, type = "DIR32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x1AB, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x1B9, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x217, type = "REL32", symbol = "??0Matrix4@th20@@QAE@XZ", target = 0x00447DC0 },
+  { offset = 0x225, type = "REL32", symbol = "??0Matrix4@th20@@QAE@XZ", target = 0x00447DC0 },
+  { offset = 0x259, type = "REL32", symbol = "??0AnmVariables@th20@@QAE@XZ", target = 0x00449050 },
+  { offset = 0x267, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.animation_ctor]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::Animation"]
+symbol = "??0Animation@th20@@QAE@XZ"
+target_address = 0x00448B40
+size = 498
+compare_size = 503
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0Animation@th20@@QAE@XZ", target = 0x005682E0 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2C, type = "REL32", symbol = "??0AnimationBase@th20@@QAE@XZ", target = 0x00448D70 },
+  { offset = 0x3A, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x55, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x63, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x88, type = "REL32", symbol = "??0?$IntrusiveLink@UAnimation@th20@@@th20@@QAE@PAUAnimation@1@@Z", target = 0x00411970 },
+  { offset = 0xA0, type = "REL32", symbol = "??0?$IntrusiveLink@UAnimation@th20@@@th20@@QAE@PAUAnimation@1@@Z", target = 0x00411970 },
+  { offset = 0xB7, type = "REL32", symbol = "??0?$IntrusiveLink@UAnimation@th20@@@th20@@QAE@PAUAnimation@1@@Z", target = 0x00411970 },
+  { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveLink@UAnimation@th20@@@th20@@QAE@PAUAnimation@1@@Z", target = 0x00411970 },
+  { offset = 0xE7, type = "REL32", symbol = "??0?$IntrusiveLink@UAnimation@th20@@@th20@@QAE@PAUAnimation@1@@Z", target = 0x00411970 },
+  { offset = 0x18C, type = "REL32", symbol = "??0Matrix4@th20@@QAE@XZ", target = 0x00447DC0 },
+  { offset = 0x19A, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1C2, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.animation_dtor]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::~Animation"]
+symbol = "??1Animation@th20@@QAE@XZ"
+target_address = 0x00449370
+size = 62
+compare_size = 67
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1Animation@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "?release_resources@Animation@th20@@QAEXXZ", target = 0x0044C240 },
+]
+
+[units.animation_reset]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::reset"]
+symbol = "?reset@Animation@th20@@QAEXXZ"
+target_address = 0x004299D0
+size = 1106
+relocations = [
+  { offset = 0x15, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x25, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x35, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x45, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x55, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x65, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x8A, type = "DIR32", symbol = "?identity_matrix@th20@@3UMatrix4@1@B", target = 0x0056E068 },
+  { offset = 0x110, type = "REL32", symbol = "?reset@Timer@th20@@QAEXXZ", target = 0x00423F50 },
+  { offset = 0x11E, type = "REL32", symbol = "?reset@Timer@th20@@QAEXXZ", target = 0x00423F50 },
+  { offset = 0x129, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x13C, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x18E, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x1C8, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x204, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x23E, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x25E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x26C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x279, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+  { offset = 0x291, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x29F, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2AC, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+  { offset = 0x2D5, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+  { offset = 0x2ED, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2FB, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x308, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+  { offset = 0x331, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+  { offset = 0x379, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x3A1, type = "REL32", symbol = "?stop@?$Interpolation@UVector3@th20@@@th20@@QAEXXZ", target = 0x00429990 },
+  { offset = 0x3AF, type = "REL32", symbol = "?stop@?$Interpolation@UIntegerTriple@th20@@@th20@@QAEXXZ", target = 0x00429990 },
+  { offset = 0x3BD, type = "REL32", symbol = "?stop@?$Interpolation@H@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0x3CB, type = "REL32", symbol = "?stop@?$Interpolation@UVector3@th20@@@th20@@QAEXXZ", target = 0x00429990 },
+  { offset = 0x3D9, type = "REL32", symbol = "?stop@?$Interpolation@UAngle@th20@@@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0x3E7, type = "REL32", symbol = "?stop@?$Interpolation@UVector2@th20@@@th20@@QAEXXZ", target = 0x004299B0 },
+  { offset = 0x3F5, type = "REL32", symbol = "?stop@?$Interpolation@UVector2@th20@@@th20@@QAEXXZ", target = 0x004299B0 },
+  { offset = 0x403, type = "REL32", symbol = "?stop@?$Interpolation@UVector2@th20@@@th20@@QAEXXZ", target = 0x004299B0 },
+  { offset = 0x411, type = "REL32", symbol = "?stop@?$Interpolation@UIntegerTriple@th20@@@th20@@QAEXXZ", target = 0x00429990 },
+  { offset = 0x41F, type = "REL32", symbol = "?stop@?$Interpolation@H@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0x42D, type = "REL32", symbol = "?stop@?$Interpolation@M@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0x43B, type = "REL32", symbol = "?stop@?$Interpolation@M@th20@@QAEXXZ", target = 0x00429970 },
+]
+
+[units.animation_release_resources]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::release_resources"]
+symbol = "?release_resources@Animation@th20@@QAEXXZ"
+target_address = 0x0044C240
+size = 171
+relocations = [
+  { offset = 0x1F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x24, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x4F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x54, type = "REL32", symbol = "?release_animation_callback@DiagnosticAllocator@th20@@QAEXPAUAnimationCallback@2@@Z", target = 0x0041F7C0 },
+  { offset = 0x71, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0xA0, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+]
+
+[units.animation_position_ref]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::position_ref"]
+symbol = "?position_ref@Animation@th20@@QAEAAUVector3@2@XZ"
+target_address = 0x0044CB60
+size = 17
+relocations = [
+]
+
+[units.animation_inherited_scale_y]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::inherited_scale_y"]
+symbol = "?inherited_scale_y@Animation@th20@@QAEMXZ"
+target_address = 0x004458E0
+size = 93
+relocations = [
+  { offset = 0xD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x3D, type = "REL32", symbol = "?inherited_scale_y@Animation@th20@@QAEMXZ", target = 0x004458E0 },
+]
+
+[units.animation_inherited_scale_x]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::inherited_scale_x"]
+symbol = "?inherited_scale_x@Animation@th20@@QAEMXZ"
+target_address = 0x00445940
+size = 93
+relocations = [
+  { offset = 0xD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x3D, type = "REL32", symbol = "?inherited_scale_x@Animation@th20@@QAEMXZ", target = 0x00445940 },
+]
+
+[units.animation_height]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::height"]
+symbol = "?height@Animation@th20@@QAEMXZ"
+target_address = 0x004459A0
+size = 45
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?inherited_scale_y@Animation@th20@@QAEMXZ", target = 0x004458E0 },
+]
+
+[units.animation_width]
+source = "src/Animation.cpp"
+object = "build/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::width"]
+symbol = "?width@Animation@th20@@QAEMXZ"
+target_address = 0x004459D0
+size = 45
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?inherited_scale_x@Animation@th20@@QAEMXZ", target = 0x00445940 },
+]

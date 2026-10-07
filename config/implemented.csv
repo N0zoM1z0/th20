@@ -415,3 +415,13 @@ th20::Motion::select_linear
 th20::Motion::select_orbit
 th20::Motion::select_elliptic
 th20::Enemy::Enemy
+th20::AnimationBase::AnimationBase
+th20::Animation::Animation
+th20::Animation::~Animation
+th20::Animation::reset
+th20::Animation::release_resources
+th20::Animation::position_ref
+th20::Animation::inherited_scale_y
+th20::Animation::inherited_scale_x
+th20::Animation::height
+th20::Animation::width
