@@ -247,7 +247,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040F080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F0C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040F160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040F160,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x0040F180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F1B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F1E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -340,36 +340,36 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00411910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411970,authored,FunctionChain,authored,high,REF-002
-0x004119B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004119B0,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00411A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411B00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00411B00,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00411B80,authored,FunctionChain,authored,high,REF-002
-0x00411BB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00411BB0,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00411C10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411C30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00411C30,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00411CB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411D50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411E30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411EA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00411CE0,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
+0x00411D20,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
+0x00411D50,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
+0x00411E30,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
+0x00411E70,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
+0x00411EA0,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00411EE0,authored,FunctionChain,authored,high,REF-002
 0x00411F30,authored,FunctionChain,authored,high,REF-002
 0x00411F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00412280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412280,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x004122C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004123B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004124B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00412540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412540,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00412550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004125B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00412730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412730,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00412750,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004127B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004127F0,authored,FunctionChain,authored,high,REF-002
@@ -559,7 +559,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004188A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004189C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00418A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00418A10,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00418A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00418AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1205,7 +1205,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044A500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A5A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044A670,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044A670,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x0044A6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044AB00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2599,7 +2599,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0048BCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BD10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BD40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0048BD70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0048BD70,unknown,Motion,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x0048BDA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BDC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BDE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3728,13 +3728,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004BFE30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BFE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BFEE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004BFFB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004BFFB0,unknown,DamageRegion,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x004C0120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C0210,unknown,Identifier32,review,pending,"EXACT-050: Damage Region routing/configuration and shared value protocols. Complete receiver flow/AL-bool/full-EAX/RET ABI, actual196-byte Region with72-byte Motion, five shape routes, configuration preservation/alias order and independent callee anchors audited. Cold strict replay343units/65objects/55692disjointbytes and public C++20/UBSan routing/state/alias checks pass. Constructor EH/controller lifetime/names/origins pending. See docs/EXACT_DAMAGE_REGION_RECONSTRUCTION.md."
-0x004C0240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C0240,unknown,Vector3,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x004C0290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C02D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C03D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C03D0,unknown,DamageRegion,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x004C0480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C0B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C0C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

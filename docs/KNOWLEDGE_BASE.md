@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## EXACT-051 — 2026-10-07 — observation and nonthrowing lifetime
+
+- Native link/list/iterator producers and removal/iteration consumers establish
+  actual 20/24/8-byte x86 storage, including tail and current/pending observers.
+  One generic typed protocol serves Region and FunctionChainNode. Removing the
+  pending node migrates observation to its next node; removing current clears
+  current while retaining the pending traversal. List operations do not own T.
+  Base versus member spelling and original template names remain inferences.
+- Independently decoded complete 29-byte EH handlers at 5679A0/5674F0/567750
+  point to the same complete 36-byte FuncInfo at 5A91B8, with no cleanup/try
+  states and flags 5. Natural noexcept Region/iterator construction emits that
+  metadata and matches complete bodies. A nontrivial link destructor produces
+  absent cleanup states and remains rejected. Full compiler contributions retain
+  the 15 trailing alignment bytes; no body/authored padding credit is assigned.
+- Region update 4C03D0/164 preserves Motion/radius/angle/target, signed Timer
+  decision and wrapping cooldown. Native retirement is declared and anchored,
+  not implemented. Test fixtures observe invocation only. Motion hidden-result
+  copy and Vector3 divide assignment preserve actual XYZ and return ABI.
+- Full 4C0480/1707 controller inspection establishes four-group maximum damage,
+  deduplication, callbacks and side effects. Its real owner interfaces remain
+  open. Pool producers establish 256 Region values and two actual sentinel lists;
+  view C458 selects Context from a 48-byte-stride global table. It is an integer
+  view index, distinct from Region's Context pointer C0.
+- List constructor 418A50/40 remains nonexact (natural 31); reset 44A640/42 has
+  an equal-size store-register mismatch. Sorted insertion 411F80/412100 needs
+  the real registry lock/controller lifetime. These are reviewed, deferred and
+  receive no exact credit. See EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md.
+- Full cold replay passes 363 units / 66 objects / 57,534 disjoint complete bytes,
+  with public C++20/UBSan observation/state checks. Source 363 / pending 302 /
+  library 4; authored 57 / 4,074, target/database and reference 6945/113 unchanged.
+  Whole-game linkage/runtime, original names/origins and unobserved domains remain
+  open. Earlier entries are historical checkpoints.
+
 ## EXACT-050 — 2026-10-07 — Damage Region protocol
 
 - Attested allocation4BFE30 requests196 bytes; construction and configuration /

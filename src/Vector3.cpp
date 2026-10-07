@@ -48,3 +48,10 @@ Vector3& Vector3::operator+=(const Vector3& other) {
 }
 
 } // namespace th20
+
+namespace th20 {
+Vector3& Vector3::operator/=(float divisor) {
+    x /= divisor; y /= divisor; z /= divisor;
+    return *this;
+}
+} // namespace th20

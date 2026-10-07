@@ -1,5 +1,37 @@
 # Current reconstruction handoff
 
+## EXACT-051 — 2026-10-07 — intrusive observation and Region lifetime
+
+Twenty complete units add 1,827 body bytes and 15 compiler alignment bytes.
+All 363 units / 66 cold objects / 57,534 disjoint complete comparison bytes
+strictly replay after shared-header changes. Source 363 / pending origins 302 /
+library 4; authored 57 / 4,074 remains unchanged. See
+EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md for the accepted and deferred scope.
+
+Real linked-node/list/iterator storage is 20/24/8 bytes on x86. Append/remove,
+owner-aware detach, observation migration, search, begin/end and iterator
+construction/destruction/advance share one typed protocol. Existing physical
+aliases receive no duplicate credit. Region construction closes the previous
+317-versus-359 mismatch: native EH handlers and complete FuncInfo flags 5
+corroborate natural nonthrowing construction. One precise-FP/GS/EHsc profile
+covers all nine Region units, including seven previously accepted members.
+Region update calls a declared native retirement dependency, whose body and
+controller/allocator lifetime remain undefined. Tests observe calls only.
+
+Complete damage controller 4C0480/1707 and its pool/initialization neighborhood
+are reviewed; actual Player/Bullet/Enemy/Effect/score interfaces remain pending.
+List construction 31 versus native 40 and reset's equal-size store-register
+mismatch remain nonexact. Sorted insertion requires the real registry lock and
+controller owner. Do not replace these owners or lifetimes with fake facades.
+
+Maintained src/probes froze before the full cold replay. Public C++20/UBSan
+checks, tracking, target and full Ghidra attestation pass; reference 6945/113
+is unchanged. EXACT051 configure/registration writers have completed once;
+NEVER RERUN them or earlier stamped writers. The native goal stays active;
+continue coherent batches. English / repo-python / serial compiler / no subagents /
+`gpt-6.1-sol:` commits / authorized public main push persist.
+Earlier entries are historical checkpoints.
+
 ## EXACT-050 — 2026-10-07 — Damage Region routing/configuration
 
 Thirteen complete units add3,532 bytes, including the2,696-byte dispatcher,

@@ -26,3 +26,7 @@ Vector3& Motion::position_ref() { return position; }
 void Motion::set_position(const Vector3& input) { position = input; }
 void Motion::clear() { std::memset(static_cast<void*>(this), 0, sizeof(*this)); }
 } // namespace th20
+
+namespace th20 {
+Vector3 Motion::position_copy() const { return position; }
+} // namespace th20

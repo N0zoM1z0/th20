@@ -35,6 +35,7 @@ struct Motion {
 
     Motion();
     Vector3& position_ref();
+    Vector3 position_copy() const;
     void set_position(const Vector3& input);
     void clear();
     Vector3& motion_vector();

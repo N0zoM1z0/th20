@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+EXACT-051 closes the actual 20-byte linked node, 24-byte sentinel list and
+8-byte current/pending observer protocol. Twenty complete contributions include
+Region nonthrowing construction/update and position/vector dependencies:
+1,827 body bytes plus 15 compiler alignment bytes; all 363 units / 66 cold objects /
+57,534 disjoint complete comparison bytes strictly replay. Native EH metadata
+corroborates the nonthrowing contract, closing the previous Region constructor
+mismatch. Complete damage control is reviewed; enclosing Context and controller,
+retirement, locking and allocation lifetimes remain open. See
+EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-050 closes the2,696-byte Damage Region collision dispatcher with its
 rectangle/circle configuration and direct Motion/identifier protocols:13 complete
 units /3,532 new bytes. All343 units /65 coldobjects /55,692 disjoint complete

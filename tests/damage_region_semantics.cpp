@@ -1,10 +1,22 @@
 #include "DamageRegion.hpp"
+#include "ClockScalar.hpp"
+#include <type_traits>
 #include <algorithm>
 #include <cassert>
 #include <cstdint>
 #include <limits>
 
 using namespace th20;
+namespace {
+unsigned retire_calls;
+DamageRegion* retired_region;
+}
+// Test-only observation of the unresolved controller/allocator lifecycle call.
+// This records invocation and does not simulate native retirement or deletion.
+void th20::DamageRegion::retire() { ++retire_calls; retired_region = this; }
+static_assert(std::is_nothrow_constructible_v<DamageRegion>);
+static_assert(std::is_nothrow_constructible_v<IntrusiveIterator<DamageRegion>, IntrusiveLink<DamageRegion>*>);
+
 
 int main() {
     DamageRegion region;
@@ -112,4 +124,76 @@ int main() {
     assert(region.link.next == &middle.link && middle.link.next == &last.link);
     assert(last.link.previous == &middle.link && middle.link.previous == &region.link);
     assert(last.link.node == &last && middle.link.node == &middle);
+    Vector3 quotient(9, -6, 3);
+    assert(&(quotient /= 3) == &quotient);
+    assert(quotient.x == 3 && quotient.y == -2 && quotient.z == 1);
+    region.motion.position = Vector3(8, 6, 4);
+    Vector3 copy = region.motion.position_copy();
+    copy /= 2;
+    assert(copy.x == 4 && copy.z == 2 && region.position().x == 8 && region.position().z == 4);
+
+    region.motion.flags.bits = 0x20; // Motion alone is frozen; region time still advances.
+    region.radius_a = 4; region.value_20 = 1.5f; region.radius_b = 9;
+    region.angle = 0; region.angular_velocity = 0.25f;
+    region.target = 123u; region.timer = 3; region.cooldown = 2;
+    region.update();
+    assert(region.position().x == 8 && region.position().z == 4);
+    assert(region.radius_a == 5.5f && region.radius_b == 9 && region.angle.value == 0.25f);
+    assert(region.target.get() == 0 && region.timer.current == 2 && region.cooldown == 1);
+    assert(retire_calls == 0);
+    region.update();
+    assert(region.timer.current == 1 && region.cooldown == 0 && retire_calls == 0);
+    region.update();
+    assert(region.timer.current == 0 && region.cooldown == -1 && retire_calls == 1 && retired_region == &region);
+    ClockScalar stopped(0);
+    ClockScalar* saved_clock = timer_clock_sources[0];
+    timer_clock_sources[0] = &stopped;
+    region.timer = 1; region.cooldown = std::numeric_limits<std::int32_t>::min();
+    region.update();
+    assert(region.timer.current == 1 && region.cooldown == std::numeric_limits<std::int32_t>::max());
+    assert(region.radius_a == 10 && region.angle.value == 1 && retire_calls == 1);
+    region.timer = -2;
+    region.update();
+    assert(retire_calls == 2 && region.timer.current == -2);
+    timer_clock_sources[0] = saved_clock;
+
+    IntrusiveList<DamageRegion> list;
+    DamageRegion first_node, second_node, third_node;
+    list.append(&first_node.link); list.append(&second_node.link); list.append(&third_node.link);
+    assert(list.tail == &third_node.link && first_node.link.previous == &list);
+    assert(first_node.link.owner == &list && second_node.link.owner == &list);
+    assert(list.find(&second_node) == &second_node.link && list.find(&region) == nullptr);
+    assert(list.find(nullptr) == &list);
+    assert(first_node.link.node_access() == &first_node);
+    {
+        auto iterator = list.begin();
+        assert(iterator.differs(list.end()) && iterator.get() == &first_node.link);
+        assert(first_node.link.iterator == &iterator && second_node.link.iterator == &iterator);
+        second_node.link.detach(); // Repair the pending observer before advancing.
+        assert(iterator.pending == &third_node.link && third_node.link.iterator == &iterator);
+        assert(!second_node.link.owner && !second_node.link.next && !second_node.link.previous && !second_node.link.iterator);
+        first_node.link.detach(); // A removed current node can still advance to the pending node.
+        assert(iterator.current == nullptr && iterator.pending == &third_node.link);
+        assert(&iterator.advance() == &iterator && iterator.get() == &third_node.link);
+        assert(iterator.pending == nullptr && third_node.link.previous == &list);
+        third_node.link.detach();
+        assert(!iterator.differs(nullptr) && list.tail == &list && !list.next);
+    }
+    list.append(&first_node.link); list.append(&second_node.link);
+    {
+        auto iterator = list.begin();
+        assert(iterator.current == &first_node.link && iterator.pending == &second_node.link);
+    }
+    assert(!first_node.link.iterator && !second_node.link.iterator);
+    first_node.link.detach(); second_node.link.detach();
+    list.reset(nullptr);
+    assert(list.tail == &list && !list.next && !list.previous);
+    second_node.link.initialize(&third_node);
+    assert(second_node.link.node_value() == &third_node && !second_node.link.owner);
+    assert(second_node.link.find(&third_node) == &second_node.link);
+    IntrusiveIterator<DamageRegion> empty(nullptr), another_empty(nullptr);
+    assert(!empty.differs(&another_empty) && !empty.differs(nullptr));
+    empty.advance();
+    assert(empty.get() == nullptr && empty.pending == nullptr);
+
 }

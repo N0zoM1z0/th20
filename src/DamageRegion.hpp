@@ -41,7 +41,11 @@ struct DamageRegion {
     std::int32_t value_b4, sides, value_bc;
     Context* context;
 
-    DamageRegion();
+    DamageRegion() noexcept;
+    void update();
+    // Native retirement is independently anchored; controller/allocator lifetime
+    // remains undefined until its enclosing owners are reconstructed.
+    void retire();
     bool intersects(const Vector3* center,const Vector2* size,float direction,float radius);
     Vector3& position();
     Context* context_value();

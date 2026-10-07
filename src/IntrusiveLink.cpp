@@ -1,0 +1,8 @@
+#include "IntrusiveLink.hpp"
+#include "DamageRegion.hpp"
+
+namespace th20 {
+template struct IntrusiveLink<DamageRegion>;
+template struct IntrusiveList<DamageRegion>;
+template struct IntrusiveIterator<DamageRegion>;
+} // namespace th20

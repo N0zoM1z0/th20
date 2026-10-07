@@ -20,6 +20,7 @@ struct Vector3 {
     Vector3& operator-=(const Vector3& other);
     Vector3 operator*(float factor) const;
     Vector3 operator/(float divisor) const;
+    Vector3& operator/=(float divisor);
     Vector3& operator*=(float factor);
     Vector3& operator+=(const Vector3& other);
 };

@@ -2,10 +2,8 @@
 #include "CollisionGeometry.hpp"
 
 namespace th20 {
-template struct IntrusiveLink<DamageRegion>;
-
-// Natural construction is source-present; native exception metadata is pending.
-DamageRegion::DamageRegion() : link(this), flags{},radius_a(0),radius_b(0),value_20(0),
+// Native shared exception metadata corroborates nonthrowing construction.
+DamageRegion::DamageRegion() noexcept : link(this), flags{},radius_a(0),radius_b(0),value_20(0),
     angle(),angular_velocity(0),dimensions(),motion(),timer(),identifier(),value_90(0),damage(0),
     value_98(0),value_9c(0),value_a0(0),target(),cooldown(0),group(0),animation(),value_b4(0),
     sides(0),value_bc(0),context(nullptr) {}
@@ -106,3 +104,17 @@ std::uint32_t DamageRegion::configure_circle(const Vector3& center,float radius,
     return identifier.get();
 }
 }
+
+namespace th20 {
+void DamageRegion::update() {
+    motion.update();
+    radius_a += value_20;
+    angle += angular_velocity;
+    target = 0u;
+    Timer& lifetime = timer;
+    lifetime--;
+    cooldown = static_cast<std::int32_t>(static_cast<std::uint32_t>(cooldown) - 1u);
+    const Timer& remaining = timer;
+    if (remaining.at_most(0)) retire();
+}
+} // namespace th20
