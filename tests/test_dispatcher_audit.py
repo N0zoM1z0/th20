@@ -44,3 +44,62 @@ class DispatcherAuditTests(unittest.TestCase):
         result = audit.audit_bytes(bytes.fromhex("eb 02 c3"), 0x1000, [0x1002])
         self.assertEqual(result["outside_direct_branches"], [{"address": 0x1000, "destination": 0x1004}])
         self.assertFalse(result["exact_claim"])
+
+    def test_opcode_aliases_and_shared_tails_preserve_call_sites(self):
+        # CMP; JE shared NOP; CALL external; JMP shared RET; NOP; RET.
+        code = bytes.fromhex("83 f8 01 74 07 e8 f6 0f 00 00 eb 01 90 c3")
+        result = audit.audit_bytes(code, 0x1000, [0x1000, 0x100c, 0x100d],
+                                   indices=bytes([0, 0, 1, 2]), opcode_base=300)
+        paths = {path["head"]: path for path in result["case_paths"]}
+        self.assertEqual(paths[0x1000]["opcodes"], [300, 301])
+        self.assertEqual(paths[0x100c]["opcodes"], [302])
+        self.assertEqual(paths[0x100d]["opcodes"], [303])
+        self.assertEqual(paths[0x1000]["direct_calls"], [{"address": 0x1005, "target": 0x2000}])
+        self.assertEqual(paths[0x1000]["other_case_entries_reached"], [0x100c, 0x100d])
+        self.assertEqual(paths[0x100c]["instruction_addresses"], [0x100c, 0x100d])
+        self.assertEqual(result["instructions_not_reached_from_cases"], [])
+        self.assertFalse(result["exact_claim"])
+        self.assertFalse(result["source_accepted"])
+
+    def test_unselected_entries_and_disconnected_instructions_are_retained(self):
+        # JMP RET; two disconnected NOPs; RET. A table entry is unselected.
+        code = bytes.fromhex("eb 02 90 90 c3")
+        result = audit.audit_bytes(code, 0x1000, [0x1000, 0x1004],
+                                   indices=bytes([0]), opcode_base=400)
+        self.assertEqual(result["case_paths"][1]["opcodes"], [])
+        self.assertEqual(result["instructions_not_reached_from_cases"], [0x1002, 0x1003])
+        self.assertFalse(result["exact_claim"])
+
+    def test_indirect_and_external_successors_stay_unresolved(self):
+        result = audit.audit_bytes(bytes.fromhex("ff e0 c3"), 0x1000,
+                                   [0x1000], opcode_base=500)
+        self.assertEqual(result["case_paths"][0]["unresolved_indirect_jumps"],
+                         [{"address": 0x1000, "operand": "eax"}])
+        self.assertEqual(result["instructions_not_reached_from_cases"], [0x1002])
+        outside = audit.audit_bytes(bytes.fromhex("eb 02 c3"), 0x1000,
+                                    [0x1000], opcode_base=500)
+        self.assertEqual(outside["case_paths"][0]["outside_successors"], [0x1004])
+        with self.assertRaises(ValueError):
+            audit.audit_bytes(self.code, 0x1000, [0x1000], opcode_base=-1)
+
+    def test_nested_tables_require_the_actual_jump_operand_and_complete_heads(self):
+        # JMP [EAX*4+0x3000]; NOP; RET. Explicit synthetic nested table.
+        code = bytes.fromhex("ff 24 85 00 30 00 00 90 c3")
+        nested = {0x1000: {"address": 0x3000, "entries": [0x1007, 0x1008]}}
+        result = audit.audit_bytes(code, 0x1000, [0x1000], opcode_base=529,
+                                   nested_tables=nested)
+        self.assertEqual(result["case_paths"][0]["instruction_addresses"], [0x1000, 0x1007, 0x1008])
+        self.assertEqual(result["case_paths"][0]["unresolved_indirect_jumps"], [])
+        self.assertEqual(result["instructions_not_reached_from_cases"], [])
+        for invalid in [
+            {0x1000: {"address": 0x3004, "entries": [0x1007]}},
+            {0x1000: {"address": 0x3000, "entries": [0x1001]}},
+            {0x1000: {"address": 0x3000, "entries": []}},
+            {0x1007: {"address": 0x3000, "entries": [0x1008]}},
+        ]:
+            with self.subTest(binding=invalid):
+                with self.assertRaises(ValueError):
+                    audit.audit_bytes(code, 0x1000, [0x1000], opcode_base=529,
+                                      nested_tables=invalid)
+        with self.assertRaises(ValueError):
+            audit.audit_bytes(code, 0x1000, [0x1000], nested_tables=nested)

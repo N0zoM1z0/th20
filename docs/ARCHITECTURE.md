@@ -1,5 +1,13 @@
 # Target inventory and initial architecture boundary
 
+CORE-062 closes the complete Enemy dispatcher normal control-flow audit and
+four additional nested rank tables (24 pointers /96bytes). All174 case paths
+and the40-instruction prologue cover the full8896 native instruction heads;
+no indirect branch remains unresolved. The complete compiler contribution and
+five actual EH cleanup record lifetimes remain pending. No new exact/source
+credit:442units/84objects/84017bytes. See CORE_ENEMY_DISPATCH_LAYOUT.md.
+Older entries below are historical.
+
 EXACT-061 closes the whole 1,675-byte Enemy movement update and fourteen actual
 owner/interface functions, including complete Graphics, viewport, configuration,
 AnimationFile and Context construction. The full frozen-source graph strictly

@@ -1,5 +1,49 @@
 # Current reconstruction handoff
 
+## CORE-062 — 2026-10-07 — Complete Enemy dispatcher graph and nested tables
+
+The whole48C010/41967 investigation now follows all174 primary case paths,
+including four rank tables at496978/988/998/9B8 (4/4/8/8 pointers). Native indexed
+jumps, bounds, Ghidra xrefs and complete destinations independently corroborate
+these96 additional bytes. All8856 case-path heads plus40 prologue/dispatch heads
+cover the entire8896-instruction listing. No unresolved indirect jumps, external
+successors or unselected table entries remain. Shared tails stay explicit;
+no partial opcode/function exact credit is given. See CORE_ENEMY_DISPATCH_LAYOUT.md.
+
+The raw contiguous body/table block is43464bytes, including one NOP at4963FF;
+eight trailing INT3 bytes before4969E0 still need cold COFF ownership attribution.
+Do not compare only the prior two tables. Native42-byte EH observation at5694AC
+references FuncInfo5AA704, flags1, five unwind states and separate11-byte thunks.
+Stores locate actual temporary lifetimes in600 and702/703/713/711. Actual shot/
+laser owners, synchronous EH and full compiler contribution remain open; do not
+add a nonthrowing root contract or trivial byte transports. Native cleanup targets
+are47C450/47C4B0/47C490/48B890/48B8B0. Ghidra lacks handler membership; locked PE
+read-only decoding supplies this separate evidence without database mutation.
+
+All1264 direct sites /236 dependencies are inventoried;55 canonical entries
+cover590 sites (navigation only, excluding aliases/library support). Independent
+parameter-wrapper exports show nonvirtual argument destinations distinct from
+virtual variable-resolution slots. Four natural rank-switch statement drafts
+remain private and uncompiled for integration into the whole root. No new exact
+unit or accepted source:442units/84objects/84017bytes, authored64/16948 unchanged.
+The generic audit now exports optional normal reachable case paths and checks
+explicit nested bindings against their actual JMP operands. Four new synthetic
+cases cover alias/shared tails, disconnected/unselected code and invalid/unknown
+branch/table handling. All36 public tests and private target/tracking/progress
+checks pass; production source is unchanged, so no cold rebuild is required.
+
+Next reconstruct the actual shot metadata and four laser temporary owners and
+the complete natural dispatcher; retain all primary/nested tables/default/exits,
+parameter order and real cleanup. See private core062-resume.md. Configuration/
+registration writers from older checkpoints remain one-time completed operations.
+Periodic cleanup removes 5 superseded files / 2,638,115 bytes: completed
+environment smoke products/copied SDK DLL and the initial case catalog. The
+saved smoke proof, probe source, master SDK DLL, full native evidence and all168
+canonical object/receipt hashes remain intact. Cumulative cleanup: 1,995
+files / 67,118,490 bytes. See private core062-cleanup.json. Cleanup after
+stable batches remains explicitly requested.
+English/repo-python/serial MSVC-Ghidra/no subagents/authorized main push persist.
+
 ## EXACT-061 — 2026-10-07 — Whole Enemy movement and graphics owners
 
 Fifteen complete functions add 4,205 instruction bytes and ten alignment bytes.

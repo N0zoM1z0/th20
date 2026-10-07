@@ -1,5 +1,10 @@
 # Core ECL and Enemy dispatch reconstruction
 
+CORE-062 follow-up: Enemy also owns four nested rank tables (24 pointers /96bytes).
+The complete normal graph and additional table inventory are documented in
+[whole Enemy dispatcher layout](CORE_ENEMY_DISPATCH_LAYOUT.md). The two-table
+Enemy inventory below is the historical CORE-055 checkpoint.
+
 CORE-055 is an investigation checkpoint. EXACT-057 subsequently accepts the
 whole ECL tick, including its complete table/alignment, after resolving parameter
 lifetimes and independently replaying all401 relocations. See

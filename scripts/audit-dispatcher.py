@@ -8,6 +8,7 @@ heads remain explicit, including code outside an inferred function body.
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 import hashlib
 import importlib.util
 import json
@@ -18,8 +19,102 @@ import struct
 from project import ROOT
 
 
+def catalog_case_paths(instructions: list, table: list[int],
+                       indices: bytes | None, opcode_base: int,
+                       nested_tables: dict[int, dict] | None = None) -> dict:
+    """Follow normal control flow from every case, preserving shared tails.
+
+    These reachable sets are navigation aids, not function contributions or
+    disjoint comparison intervals. Implicit exception edges are not inferred.
+    """
+    import capstone
+
+    if opcode_base < 0:
+        raise ValueError("opcode base must be nonnegative")
+    heads = {instruction.address: instruction for instruction in instructions}
+    nested_tables = nested_tables or {}
+    for jump, nested in nested_tables.items():
+        instruction = heads.get(jump)
+        if instruction is None or instruction.mnemonic != "jmp":
+            raise ValueError("nested table binding is not an indirect JMP instruction head")
+        operand = instruction.operands[0]
+        if (operand.type != capstone.x86.X86_OP_MEM or
+                operand.mem.base != capstone.x86.X86_REG_INVALID or
+                operand.mem.index == capstone.x86.X86_REG_INVALID or
+                operand.mem.scale != 4 or
+                (operand.mem.disp & 0xffffffff) != nested["address"]):
+            raise ValueError("nested table binding disagrees with the indexed JMP operand")
+        if not nested["entries"] or any(target not in heads for target in nested["entries"]):
+            raise ValueError("nested table has an invalid instruction destination")
+    groups = defaultdict(list)
+    selections = indices if indices is not None else range(len(table))
+    for offset, selection in enumerate(selections):
+        groups[table[selection]].append(opcode_base + offset)
+    # Include even table entries unselected by the compressed index table.
+    for head in table:
+        groups[head]
+    reached = set()
+    paths = []
+    for head, opcodes in sorted(groups.items()):
+        pending = [head]
+        visited = set()
+        calls, indirect_calls, exits, unresolved, shared_entries = [], [], [], [], set()
+        while pending:
+            address = pending.pop()
+            if address in visited:
+                continue
+            instruction = heads.get(address)
+            if instruction is None:
+                exits.append(address)
+                continue
+            visited.add(address)
+            if address != head and address in groups:
+                shared_entries.add(address)
+            if instruction.mnemonic == "call":
+                operand = instruction.operands[0]
+                if operand.type == capstone.x86.X86_OP_IMM:
+                    calls.append({"address": address, "target": operand.imm})
+                else:
+                    indirect_calls.append({"address": address, "operand": instruction.op_str})
+            if instruction.group(capstone.CS_GRP_RET):
+                continue
+            if instruction.group(capstone.CS_GRP_JUMP):
+                operand = instruction.operands[0]
+                if operand.type == capstone.x86.X86_OP_IMM:
+                    pending.append(operand.imm)
+                elif address in nested_tables:
+                    pending.extend(nested_tables[address]["entries"])
+                else:
+                    unresolved.append({"address": address, "operand": instruction.op_str})
+                if instruction.mnemonic == "jmp":
+                    continue
+            pending.append(address + instruction.size)
+        reached.update(visited)
+        paths.append({
+            "head": head, "opcodes": opcodes,
+            "instruction_addresses": sorted(visited),
+            "direct_calls": sorted(calls, key=lambda item: item["address"]),
+            "indirect_calls": sorted(indirect_calls, key=lambda item: item["address"]),
+            "other_case_entries_reached": sorted(shared_entries),
+            "outside_successors": sorted(set(exits)),
+            "unresolved_indirect_jumps": unresolved,
+        })
+    return {
+        "opcode_base": opcode_base, "case_paths": paths,
+        "nested_tables": [{"jump": jump, **nested} for jump, nested in sorted(nested_tables.items())],
+        "instructions_reached_from_cases": len(reached),
+        "instructions_not_reached_from_cases": sorted(set(heads) - reached),
+        "case_path_limitations": "Normal direct control flow only; calls are not followed. "
+        "Implicit exception edges are unknown. Shared tails can appear in multiple paths. "
+        "Unselected table entries remain explicit. These are not source acceptance, "
+        "function extents, disjoint byte coverage or partial exact results.",
+    }
+
+
 def audit_bytes(code: bytes, entry: int, table: list[int],
-                listing: str | None = None, indices: bytes | None = None) -> dict:
+                listing: str | None = None, indices: bytes | None = None,
+                opcode_base: int | None = None,
+                nested_tables: dict[int, dict] | None = None) -> dict:
     import capstone
 
     if not code or not table:
@@ -62,7 +157,7 @@ def audit_bytes(code: bytes, entry: int, table: list[int],
     missing = [] if listing is None else [
         {"address": i.address, "operation": f"{i.mnemonic} {i.op_str}".strip()}
         for i in instructions if i.address not in observed]
-    return {
+    result = {
         "entry": entry, "size": len(code), "body_sha256": hashlib.sha256(code).hexdigest(),
         "instructions": len(instructions), "returns": [i.address for i in instructions if i.group(capstone.CS_GRP_RET)],
         "ghidra_listed_heads": len(observed) if listing is not None else None,
@@ -73,6 +168,11 @@ def audit_bytes(code: bytes, entry: int, table: list[int],
         "index_entries": len(indices) if indices is not None else None,
         "exact_claim": False, "source_accepted": False,
     }
+    if opcode_base is not None:
+        result.update(catalog_case_paths(instructions, table, indices, opcode_base, nested_tables))
+    elif nested_tables:
+        raise ValueError("nested tables require an opcode base and case-path audit")
+    return result
 
 
 def address_count(value: str) -> tuple[int, int]:
@@ -85,12 +185,26 @@ def address_count(value: str) -> tuple[int, int]:
     return address, count
 
 
+def nested_table_spec(value: str) -> tuple[int, int, int]:
+    try:
+        jump, address, count = (int(part, 0) for part in value.split(":"))
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("expected JUMP_ADDRESS:TABLE_ADDRESS:COUNT") from exc
+    if min(jump, address) < 0 or count <= 0:
+        raise argparse.ArgumentTypeError("invalid nested table address/count")
+    return jump, address, count
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--entry", type=lambda v: int(v, 0), required=True)
     parser.add_argument("--size", type=lambda v: int(v, 0), required=True)
     parser.add_argument("--jump-table", type=address_count, required=True)
     parser.add_argument("--index-table", type=address_count)
+    parser.add_argument("--opcode-base", type=lambda v: int(v, 0),
+                        help="expand opcode selections and normal reachable case paths")
+    parser.add_argument("--nested-table", type=nested_table_spec, action="append", default=[],
+                        help="independently reviewed JUMP_ADDRESS:TABLE_ADDRESS:COUNT; repeatable")
     parser.add_argument("--ghidra-export", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -111,7 +225,16 @@ def main() -> None:
     if args.index_table:
         index_address, index_count = args.index_table
         indices = oracle.pe_bytes_at(pe, index_address, index_count)
-    result = audit_bytes(code, args.entry, table, args.ghidra_export.read_text(), indices)
+    nested_tables = {}
+    for jump, address, count in args.nested_table:
+        if jump in nested_tables:
+            raise ValueError("duplicate nested table JMP binding")
+        raw = oracle.pe_bytes_at(pe, address, count * 4)
+        nested_tables[jump] = {"address": address,
+                               "entries": list(struct.unpack(f"<{count}I", raw)),
+                               "sha256": hashlib.sha256(raw).hexdigest()}
+    result = audit_bytes(code, args.entry, table, args.ghidra_export.read_text(),
+                         indices, args.opcode_base, nested_tables)
     result.update(target_sha256=hashlib.sha256(pe).hexdigest(),
                   table_address=table_address, table_sha256=hashlib.sha256(raw_table).hexdigest())
     if indices is not None:
