@@ -1,5 +1,31 @@
 # Current reconstruction handoff
 
+## EXACT-058 — 2026-10-07 — Enemy state lifetime and argument protocol
+
+Eleven complete functions add 1,581 bytes on actual EnemyState752/Enemy0x428
+owners: State construction765, destruction65, initialization416, three record
+constructors, the complete virtual dispatcher wrapper25 and four argument
+forwarders36 each. All 408 units / 76 cold objects / 75,637 disjoint bytes strictly
+replay. New origins remain pending; authored64/16948 is unchanged. See
+EXACT_ENEMY_STATE_RECONSTRUCTION.md. The whole Enemy dispatcher48C010/41967
+remains pending and is the next priority; no cases receive separate credit.
+
+Owned C++20/O2/UBSan checks validate retained animation and queued ownership,
+movement rebuild, phase clear without capacity release, partial health/timer/
+flags reset and complete PMR allocation release. Whole-game linkage, dependency
+implementations and exception behavior remain open. Enclosing Enemy constructor
+probe168/native210 misses EH; rejected rather than changing child contracts.
+
+Retired artifacts cleaned before reconstruction:1,944 files /56,330,189 bytes.
+Previous74 canonical objects/receipts retained identical hashes and397 complete
+comparisons passed without rebuild. Native evidence, review records and current
+Enemy work remain intact; cleanup detail is private core058-cleanup.json.
+
+Read .analysis/exact058-resume.md for the current checkpoint and open hypotheses.
+Do not rerun configuration/registration writers. English, repo-python, serial
+MSVC/Ghidra, no subagents, gpt-6.1-sol: commits and authorized main push persist.
+Older entries below are historical.
+
 ## EXACT-057 — 2026-10-07 — Whole ECL runtime dispatcher exact
 
 The complete root53B5C0 passes canonical all-byte replay:11,110instructionbytes,

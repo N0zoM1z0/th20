@@ -396,3 +396,14 @@ th20::EclRuntime::call_into,0x0053F3B0,function
 th20::ecl_diagnostic_hint,0x0040C6B0,function
 th20::EclRuntime::tick,0x0053B5C0,function
 th20::GameRandom::radians,0x004297D0,function
+th20::EnemyState::EnemyState,0x004A3060,function
+th20::EnemyState::~EnemyState,0x004A3AC0,function
+th20::EnemyState::initialize,0x004A7170,function
+th20::EnemyAnimationLink::EnemyAnimationLink,0x0048B3D0,function
+th20::EnemyQueuedRecord::EnemyQueuedRecord,0x0048B500,function
+th20::EnemyBounds::EnemyBounds,0x004398D0,function
+th20::Enemy::execute_opcode,0x004969E0,function
+th20::Enemy::integer_argument,0x004AB0E0,function
+th20::Enemy::float_argument,0x004AB010,function
+th20::EnemyState::integer_argument,0x004AB080,function
+th20::EnemyState::float_argument,0x004AAFB0,function

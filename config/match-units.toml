@@ -6318,3 +6318,178 @@ relocations = [
   { offset = 0xD, type = "REL32", symbol = "?signed_unit@GameRandom@th20@@QAEMXZ", target = 0x004298E0 },
   { offset = 0x1D, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
 ]
+
+# EXACT-058: complete Enemy state lifetime and dispatcher argument protocol.
+[units.enemy_state_ctor]
+source = "src/EnemyState.cpp"
+object = "build/EnemyState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::EnemyState"]
+symbol = "??0EnemyState@th20@@QAE@XZ"
+target_address = 0x004A3060
+size = 765
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x16, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x2B, type = "REL32", symbol = "??0?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+  { offset = 0xDA, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0xE5, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0xF0, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0xFB, type = "REL32", symbol = "??0EnemyCounters@th20@@QAE@XZ", target = 0x0047BAA0 },
+  { offset = 0x109, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x117, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x125, type = "REL32", symbol = "??0Motion@th20@@QAE@XZ", target = 0x00478530 },
+  { offset = 0x133, type = "REL32", symbol = "??0Motion@th20@@QAE@XZ", target = 0x00478530 },
+  { offset = 0x141, type = "REL32", symbol = "??0?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+  { offset = 0x14F, type = "REL32", symbol = "??0?$forward_list@UEnemyQueuedRecord@th20@@V?$polymorphic_allocator@UEnemyQueuedRecord@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004A2D30 },
+  { offset = 0x15D, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x16B, type = "REL32", symbol = "??0EnemyBounds@th20@@QAE@XZ", target = 0x004398D0 },
+  { offset = 0x179, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x187, type = "REL32", symbol = "??0EnemyHealth@th20@@QAE@XZ", target = 0x004A3360 },
+  { offset = 0x195, type = "REL32", symbol = "??0EnemyPattern@th20@@QAE@XZ", target = 0x004A34A0 },
+  { offset = 0x25A, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x268, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x276, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x284, type = "REL32", symbol = "??0?$vector@UEnemyPhase@th20@@V?$polymorphic_allocator@UEnemyPhase@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+]
+
+[units.enemy_state_dtor]
+source = "src/EnemyState.cpp"
+object = "build/EnemyState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::~EnemyState"]
+symbol = "??1EnemyState@th20@@QAE@XZ"
+target_address = 0x004A3AC0
+size = 65
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "??1?$vector@UEnemyPhase@th20@@V?$polymorphic_allocator@UEnemyPhase@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004A3860 },
+  { offset = 0x1F, type = "REL32", symbol = "??1?$forward_list@UEnemyQueuedRecord@th20@@V?$polymorphic_allocator@UEnemyQueuedRecord@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004A37E0 },
+  { offset = 0x2D, type = "REL32", symbol = "??1?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004A3840 },
+  { offset = 0x38, type = "REL32", symbol = "??1?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004A3820 },
+]
+
+[units.enemy_state_initialize]
+source = "src/EnemyState.cpp"
+object = "build/EnemyState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::initialize"]
+symbol = "?initialize@EnemyState@th20@@QAEHXZ"
+target_address = 0x004A7170
+size = 416
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?clear@?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEXXZ", target = 0x00497F40 },
+  { offset = 0x28, type = "REL32", symbol = "?resize@?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x0049C2C0 },
+  { offset = 0x77, type = "REL32", symbol = "?clear@Motion@th20@@QAEXXZ", target = 0x004A73D0 },
+  { offset = 0x82, type = "DIR32", symbol = "__real@41c00000", target = 0x0056F7B4 },
+  { offset = 0x92, type = "DIR32", symbol = "__real@41c00000", target = 0x0056F7B4 },
+  { offset = 0xA2, type = "DIR32", symbol = "__real@41c00000", target = 0x0056F7B4 },
+  { offset = 0xB2, type = "DIR32", symbol = "__real@41c00000", target = 0x0056F7B4 },
+  { offset = 0xDD, type = "REL32", symbol = "?reset@EnemyPattern@th20@@QAEXXZ", target = 0x004A7360 },
+  { offset = 0xED, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0xFD, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x10D, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x11D, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x158, type = "REL32", symbol = "?reset@EnemyHealth@th20@@QAEXXZ", target = 0x004A7310 },
+  { offset = 0x166, type = "REL32", symbol = "?clear@?$vector@UEnemyPhase@th20@@V?$polymorphic_allocator@UEnemyPhase@th20@@@pmr@std@@@std@@QAEXXZ", target = 0x00497F40 },
+  { offset = 0x179, type = "REL32", symbol = "?resize@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x0049C2A0 },
+  { offset = 0x184, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+]
+
+[units.enemy_animation_link_ctor]
+source = "src/EnemyState.cpp"
+object = "build/EnemyState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyAnimationLink::EnemyAnimationLink"]
+symbol = "??0EnemyAnimationLink@th20@@QAE@XZ"
+target_address = 0x0048B3D0
+size = 43
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x16, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.enemy_queued_record_ctor]
+source = "src/EnemyState.cpp"
+object = "build/EnemyState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyQueuedRecord::EnemyQueuedRecord"]
+symbol = "??0EnemyQueuedRecord@th20@@QAE@XZ"
+target_address = 0x0048B500
+size = 66
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0?$shared_ptr@UShotMetadata@th20@@@std@@QAE@XZ", target = 0x0047B880 },
+  { offset = 0x16, type = "REL32", symbol = "??0ShotParameters@th20@@QAE@XZ", target = 0x0047BD20 },
+  { offset = 0x2B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x36, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.enemy_bounds_ctor]
+source = "src/EnemyState.cpp"
+object = "build/EnemyState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyBounds::EnemyBounds"]
+symbol = "??0EnemyBounds@th20@@QAE@XZ"
+target_address = 0x004398D0
+size = 57
+relocations = [
+]
+
+[units.enemy_execute_opcode]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::Enemy::execute_opcode"]
+symbol = "?execute_opcode@Enemy@th20@@UAEHXZ"
+target_address = 0x004969E0
+size = 25
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?execute_opcode@EnemyState@th20@@QAEHXZ", target = 0x0048C010 },
+]
+
+[units.enemy_integer_argument]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::Enemy::integer_argument"]
+symbol = "?integer_argument@Enemy@th20@@QAEHH@Z"
+target_address = 0x004AB0E0
+size = 36
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?integer_argument@EclRuntime@th20@@QAEHH@Z", target = 0x0053ED50 },
+]
+
+[units.enemy_float_argument]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::Enemy::float_argument"]
+symbol = "?float_argument@Enemy@th20@@QAEMH@Z"
+target_address = 0x004AB010
+size = 36
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?float_argument@EclRuntime@th20@@QAEMH@Z", target = 0x0053E970 },
+]
+
+[units.enemy_state_integer_argument]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::integer_argument"]
+symbol = "?integer_argument@EnemyState@th20@@QAEHH@Z"
+target_address = 0x004AB080
+size = 36
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?integer_argument@Enemy@th20@@QAEHH@Z", target = 0x004AB0E0 },
+]
+
+[units.enemy_state_float_argument]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::float_argument"]
+symbol = "?float_argument@EnemyState@th20@@QAEMH@Z"
+target_address = 0x004AAFB0
+size = 36
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?float_argument@Enemy@th20@@QAEMH@Z", target = 0x004AB010 },
+]

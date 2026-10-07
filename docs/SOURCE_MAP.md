@@ -1,5 +1,12 @@
 # Source and build ownership
 
+EXACT-058 adds EnemyState.cpp and EnemyScript.cpp on shared typed State752 and
+Enemy0x428 declarations. Eleven complete lifetime/record/forwarding functions
+add1,581 bytes. All408 units/76 cold objects/75,637 disjoint bytes replay after
+the source freeze; new origins remain pending and authored64/16948 is unchanged.
+Whole Enemy dispatch and enclosing lifetime/EH remain open. See
+EXACT_ENEMY_STATE_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-057 adds the complete EclRuntimeTick.cpp using shared EclRuntime/ScriptStack
 owners and the whole native jump table:11,110instructionbytes plus394alignment/
 tablebytes. GameRandomAngle.cpp owns the shared45-byte radians utility with
@@ -114,6 +121,7 @@ and the separate whole-game boundary.
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| EnemyState / Enemy | src/EnemyState.hpp, src/EnemyState.cpp, src/Enemy.hpp, src/EnemyScript.cpp | State construction4A3060/init4A7170/destruction4A3AC0; records48B3D0/48B500/4398D0; entry4969E0; arguments4AB080/4AAFB0/4AB0E0/4AB010 | Eleven complete exact functions1581bytes on real752/0x428 owners, typed PMR/vector/list/shared ownership, retained animation/queued/reset semantics; all new origins and whole48C010 dispatcher/enclosing lifetimes/metadata/controller/Runtime dependencies pending |
 | FogValue | src/FogValue.hpp, src/FogValue.cpp | construction 0x00471940/0x004718D0; pack 0x00473400; scale/subtract/add 0x00471DB0/0x00471E60/0x00471F50 | Six complete exact members on actual 28-byte value; representable int32 channel truncation, original names/origins/full background owners pending |
 | IntegerTriple | src/IntegerTriple.hpp, src/IntegerTriple.cpp | constructors414090/4291E0; add4295D0/subtract4294A0/scale429340 | Five complete exact members; actual three-int value, reversed constructor arguments, by-value RHS ABI, modulo32 arithmetic and per-component truncation; original tag/roles/origins pending |
 | Matrix4 | src/Matrix4.hpp, src/Matrix4.cpp | constructor 0x00447DC0 | Complete 30-byte exact constructor on sixteen floats; matrix consumers independently observed, original spelling/origin pending |

@@ -1,5 +1,14 @@
 # Target inventory and initial architecture boundary
 
+EXACT-058 closes the full EnemyState752 construction/init/destruction protocol
+and its animation/queued/bounds values, plus the actual Enemy0x428 ECL entry and
+argument-forwarding chain. Eleven whole units add1,581 bytes; full graph408/76
+cold objects/75,637 disjoint bytes. New origins remain pending; authored64/16948
+unchanged. Typed owners reuse existing values and real PMR/shared ownership.
+The whole Enemy dispatcher48C010/41967 and enclosing lifetime/variable bodies
+remain pending. See EXACT_ENEMY_STATE_RECONSTRUCTION.md. Cleanup preserves
+native evidence and current exact receipts. Older entries are historical.
+
 EXACT-057 closes the whole native ECL Runtime dispatcher53B5C0/11110, including
 two alignment bytes and all98table entries over11504comparisonbytes. All401
 relocations independently replay on shared actual owners. Separately named

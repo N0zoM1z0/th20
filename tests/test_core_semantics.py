@@ -56,6 +56,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "tests/enemy_value_semantics.cpp", "tests/enemy_interpolation_semantics.cpp",
                             "src/EnemyHealth.cpp", "src/EnemyPattern.cpp",
                             "tests/enemy_health_pattern_semantics.cpp",
+                            "src/EnemyState.cpp", "tests/enemy_state_semantics.cpp",
                             "-pthread", "-o", str(output)],
                            cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

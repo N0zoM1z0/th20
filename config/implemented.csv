@@ -395,3 +395,14 @@ th20::EclRuntime::call_into
 th20::ecl_diagnostic_hint
 th20::EclRuntime::tick
 th20::GameRandom::radians
+th20::EnemyState::EnemyState
+th20::EnemyState::~EnemyState
+th20::EnemyState::initialize
+th20::EnemyAnimationLink::EnemyAnimationLink
+th20::EnemyQueuedRecord::EnemyQueuedRecord
+th20::EnemyBounds::EnemyBounds
+th20::Enemy::execute_opcode
+th20::Enemy::integer_argument
+th20::Enemy::float_argument
+th20::EnemyState::integer_argument
+th20::EnemyState::float_argument

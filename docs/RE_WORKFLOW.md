@@ -63,3 +63,17 @@ and external branches; no source, boundary ownership or exact claim follows
 automatically. See CORE_ECL_DISPATCH_RECONSTRUCTION.md for both current roots
 and reproducible commands. Keep whole compiler contributions, associated tables
 and all unreferenced failure/exit paths in subsequent comparisons.
+
+## Retiring generated artifacts
+
+Protect every current `config/match-units.toml` object and its sibling
+`.receipt.json` before removing obsolete experiment builds. Keep toolchain smoke
+artifacts, active probes, native exports and evidence supporting reviewed ledgers.
+Completed generated checkouts, CMake build trees and temporary setup environments
+can be removed after confirming they contain no tracked or active input. Preserve
+locked tools, reference source, Ghidra and supplied game files.
+
+Record removed paths/bytes and protected hashes privately. Strictly compare all
+current units after cleanup; do not cold-rebuild an unchanged source graph just
+for cleanup or documentation. Source/header/profile changes require the usual
+affected cold replay. EXACT-058 records the first retirement pass.
