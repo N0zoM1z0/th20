@@ -459,7 +459,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004144B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004144E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414580,unknown,Vector3,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
 0x004145A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004145D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -634,7 +634,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041CA90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CAB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CAD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041CAF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041CAF0,unknown,Interpolation,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
 0x0041CB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041CC70,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041CC90,authored,WindowState,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
@@ -973,8 +973,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004382B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438380,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004383A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00438500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00438520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00438500,unknown,EnemyMovement,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
+0x00438520,unknown,Interpolation,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
 0x00438540,unknown,Angle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x00438600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2188,7 +2188,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047A540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A5C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0047A5E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0047A5E0,unknown,Motion,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
 0x0047A610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047A660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3049,7 +3049,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A8760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A8920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A89C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A8D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A8D70,unknown,EnemyMovement,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
 0x004A9700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A9730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A97C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3103,8 +3103,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004AAA60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AAA80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AAAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AAB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AAB70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AAB10,unknown,EnemyMovement,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
+0x004AAB70,unknown,EnemyMovement,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
 0x004AABD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AABF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AAC00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -53,7 +53,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/ScriptStack.cpp", "src/EnemyCounters.cpp",
                             "tests/script_value_semantics.cpp",
                             "src/EnemySpawn.cpp", "src/EnemyMovement.cpp",
-                            "tests/enemy_value_semantics.cpp",
+                            "tests/enemy_value_semantics.cpp", "tests/enemy_interpolation_semantics.cpp",
                             "src/EnemyHealth.cpp", "src/EnemyPattern.cpp",
                             "tests/enemy_health_pattern_semantics.cpp",
                             "-pthread", "-o", str(output)],

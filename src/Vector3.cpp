@@ -2,6 +2,10 @@
 
 namespace th20 {
 
+float& Vector3::operator[](int index) {
+    return *reinterpret_cast<float*>(reinterpret_cast<unsigned char*>(this) + index * sizeof(float));
+}
+
 Vector3::Vector3() : x(0.0f), y(0.0f), z(0.0f) {}
 
 Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {}

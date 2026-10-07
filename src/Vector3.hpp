@@ -10,6 +10,9 @@ struct Vector3 {
     float y;
     float z;
 
+    // Native unchecked access returns a reference to the actual float subobject.
+    // Requires index in [0,2]; byte addressing keeps the named coordinate storage.
+    float& operator[](int index);
     Vector3();
     Vector3(float x, float y, float z);
     Vector3 operator+(const Vector3& other) const;

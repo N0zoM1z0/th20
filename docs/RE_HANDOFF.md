@@ -1,5 +1,30 @@
 # Current reconstruction handoff
 
+## EXACT-047 — 2026-10-07 — Enemy interpolation dependency batch
+
+The 2,433-byte current-first/per-axis Enemy update and its direct dependencies
+add eight complete functions / 2,716 comparison bytes. All 299 units / 60 cold
+objects / 37,560 disjoint complete comparison bytes strictly replay. Public
+C++20/UBSan mixed-axis, clock, terminal, negative-duration, indexed storage and
+half-speed acceleration checks pass. See EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md.
+
+Source 299 / pending origins 238 / library 4; authored 57 / 4,074 unchanged.
+The existing 100/388/12/72-byte owners retain their layouts and prior exact units.
+Full signed duration reads preserve negative states. Terminal endpoint selection
+uses shared mode even on the axis path; early returns leave current unchanged.
+Enemy stop binds the prior duration-at-4C physical head without duplicate credit.
+Axis modes use a real three-int array; Vector3 indexing addresses actual named
+float subobjects via byte representation, with established index domain 0..2.
+
+Maintained src/probes frozen before the full cold replay; canonical receipts
+were rebuilt after shared declaration changes. EXACT047 configure/registration
+writers execute once; never rerun completed writers or any older REF/EXACT writer.
+Target/database unchanged. Reference review remains 6,945 terminal / 113 grammar.
+The active native goal remains open: continue substantial coherent owner batches.
+Enclosing Enemy/PMR/ECL/resource/VM lifetime and original origins remain unresolved.
+English / repo-python / serial compiler / no subagents / gpt-6.1-sol: commits /
+authorized public main push persist. Earlier entries are historical checkpoints.
+
 ## EXACT-046 — 2026-10-07 — shared interpolation protocol batch
 
 Shared 4,154-byte easing and all eight interpolation update bodies now have

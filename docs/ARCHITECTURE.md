@@ -1,5 +1,13 @@
 # Target inventory and initial architecture boundary
 
+EXACT-047 reconstructs the distinct current-first100-byte Enemy position curve:
+eight complete units / 2,716 bytes, centered on its 2,433-byte update. Existing
+Movement388, Vector3 and Motion owners retain their layouts. All 299 / 60 cold
+objects / 37,560 disjoint comparison bytes strictly replay. Native caller stride, hidden result,
+signed duration and direct assignment corroborate component ownership; full
+Enemy/PMR/ECL/resource lifetime remains open. See EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md.
+Earlier entries are historical checkpoints.
+
 EXACT-046 reconstructs the shared 4 KB easing dispatch and all eight generic
 interpolation updates, with their immediate arithmetic/storage dependencies.
 32 complete units add 13,952 bytes; all 291 / 60 cold objects / 34,844 disjoint

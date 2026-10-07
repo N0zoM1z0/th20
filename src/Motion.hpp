@@ -36,6 +36,7 @@ struct Motion {
     Motion();
     Vector3& motion_vector();
     void set_motion_z(float value);
+    void set_motion_vector(const Vector3& value);
     void snap_position();
     void update_velocity();
     void update_position();

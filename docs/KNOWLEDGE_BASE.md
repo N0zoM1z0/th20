@@ -1,5 +1,32 @@
 # Verified facts and open hypotheses
 
+## EXACT-047 — 2026-10-07 — current-first Enemy interpolation
+
+- Native4A8D70 has complete2433 bytes /635 instructions; aggregate hidden result
+  and RET4. Two factors4AAB10/89 and4AAB70/83 call already canonical easing.
+  Eight complete units add2716 bytes;299/60coldobjects/37560disjointbytes replay.
+- Caller4A7710 walks actual movement388 stride, reads duration from genuine
+  scalar/Vector2/Enemy values, subtracts previous Motion position from returned
+  sample and assigns Vector3 to Motion+38 through47A5E0 before position update.
+  Whole enclosing caller/PMR/animation/Enemy lifetime remains unclosed.
+- AxisModes owns three int32 slots; Vector3 index414580 returns actual float
+  reference at receiver+4*index, RET4. Source uses byte representation to reach
+  each aligned named subobject; native unchecked index domain is0..2.
+- Positive durations tick/clamp/stop; zero returns endpoint; negative evaluates
+  without time mutation. Terminal selection uses shared mode5C even with axis
+  flag60bit0. Early returns retain current. Stop shares prior429990 head.
+- Mixed axis7/17/8/ordinary modes retain mutation and coefficient order. Signed
+  duration readers return full EAX; other generic emissions remain unbound.
+  Shared/axis factors leave owner unchanged. All upper flag bits are preserved.
+- Existing precise profiles and actual owners retained. Public C++20/UBSan tests
+  include all modes/four clocks, guarded/embedded storage, negative factors,
+  independent Hermite/half-speed acceleration closed forms, terminal mismatch,
+  full signed extremes, raw indexed payloads and assignment aliasing.
+- Source299/pendingorigins238/library4/authored57/4074. Reference6945/113 unchanged.
+  Configuration producers, full Enemy/ECL/resource owners, exceptional FP/CRT,
+  original names/origins, whole linking/runtime acceptance remain open.
+  See EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md. Earlier entries are historical.
+
 ## EXACT-046 — 2026-10-07 — shared easing and eight interpolation updates
 
 - Shared easing454EF0 has 4,154 code bytes plus alignment/table bytes, with

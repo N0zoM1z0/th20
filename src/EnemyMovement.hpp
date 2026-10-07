@@ -7,7 +7,7 @@
 
 namespace th20 {
 
-struct AxisModes { std::int32_t x, y, z; };
+struct AxisModes { std::int32_t values[3]; };
 // Bit zero selects the three axis modes instead of the shared mode.
 struct EnemyInterpolationFlags { std::uint32_t bits; };
 
@@ -22,6 +22,14 @@ struct EnemyMotionInterpolation {
     EnemyInterpolationFlags flags;
 
     EnemyMotionInterpolation();
+    // Positive durations advance and clamp. Terminal returns leave current intact
+    // and use the shared mode even when the low flags bit selects axis modes.
+    Vector3 sample();
+    void stop();
+    std::int32_t duration_value() const;
+    float factor() const;
+    // Axis indices are the native signed 0, 1 and 2 coordinate indices.
+    float factor(std::int32_t axis) const;
 };
 
 struct EnemyMovement {

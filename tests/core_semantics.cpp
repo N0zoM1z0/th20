@@ -34,6 +34,7 @@ void check_dialogue_values();
 void check_scalar_math();
 void check_script_values();
 void check_enemy_values();
+void check_enemy_interpolation();
 void check_enemy_health_pattern();
 void check_fog_values();
 
@@ -75,6 +76,7 @@ int main() {
     check_scalar_math();
     check_script_values();
     check_enemy_values();
+    check_enemy_interpolation();
     check_enemy_health_pattern();
     check_fog_values();
     th20::trophy_text::Message message;

@@ -290,3 +290,11 @@ th20::Vector2::operator-,0x00429520,function
 th20::Vector2::operator*,0x004293C0,function
 th20::Angle::operator+(const Angle&),0x00429610,function
 th20::Angle::operator*,0x00429390,function
+th20::EnemyMotionInterpolation::sample,0x004A8D70,function
+th20::EnemyMotionInterpolation::factor(),0x004AAB70,function
+th20::EnemyMotionInterpolation::factor(int),0x004AAB10,function
+th20::EnemyMotionInterpolation::duration_value,0x00438500,function
+th20::Vector3::operator[],0x00414580,function
+th20::FloatInterpolation::duration_value,0x0041CAF0,function
+th20::Vector2Interpolation::duration_value,0x00438520,function
+th20::Motion::set_motion_vector,0x0047A5E0,function

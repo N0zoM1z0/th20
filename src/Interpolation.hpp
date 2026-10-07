@@ -26,6 +26,9 @@ template<class T> struct Interpolation {
     T evaluate();
     float factor() const;
     void stop();
+    // Full signed duration, rather than a narrowed activity flag. Float/Vector2
+    // physical heads are bound; other emissions remain unbound.
+    std::int32_t duration_value() const;
     void set_duration(std::int32_t value);
     std::int32_t set_mode(std::int32_t value);
     void set_start(const T& value);

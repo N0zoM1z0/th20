@@ -6,6 +6,8 @@ Motion::Motion() : position(), velocity(), value_18(0.0f), angle_1c(),
     value_20(0.0f), value_24(0.0f), angle_28(), value_2c(0.0f), angle_30(),
     value_34(0.0f), vector_38(), flags{} {}
 
+void Motion::set_motion_vector(const Vector3& value) { vector_38 = value; }
+
 void Motion::update() {
     update_velocity();
     update_position();

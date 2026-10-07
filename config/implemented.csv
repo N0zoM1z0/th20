@@ -289,3 +289,11 @@ th20::Vector2::operator-
 th20::Vector2::operator*
 th20::Angle::operator+(const Angle&)
 th20::Angle::operator*
+th20::EnemyMotionInterpolation::sample
+th20::EnemyMotionInterpolation::factor()
+th20::EnemyMotionInterpolation::factor(int)
+th20::EnemyMotionInterpolation::duration_value
+th20::Vector3::operator[]
+th20::FloatInterpolation::duration_value
+th20::Vector2Interpolation::duration_value
+th20::Motion::set_motion_vector
