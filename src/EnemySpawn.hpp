@@ -1,18 +1,12 @@
 #pragma once
 
 #include "EnemyCounters.hpp"
+#include "Identifier32.hpp"
 #include "Vector3.hpp"
 #include <cstddef>
 #include <cstdint>
 
 namespace th20 {
-
-// A native four-byte value subobject. Its original tag and semantic role are
-// unknown; sharing a zero constructor with AnimationHandle proves neither.
-struct Identifier32 {
-    std::uint32_t value;
-    Identifier32();
-};
 
 // Bit zero of the second spawn mask controls viewport-relative movement.
 struct SpawnFlags { std::uint32_t bits; };

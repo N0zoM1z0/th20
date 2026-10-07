@@ -1,26 +1,15 @@
 #pragma once
 
+#include "IntrusiveLink.hpp"
 #include <cstddef>
 #include <cstdint>
 
 namespace th20 {
 
 struct FunctionChainNode;
-struct FunctionChainList;
-struct FunctionChainIterator;
-
-// REF-002: pointer slots checked against link initialization and mutations.
-struct FunctionChainLink {
-    FunctionChainNode* node;
-    FunctionChainLink* next;
-    FunctionChainLink* previous;
-    FunctionChainList* owner;
-    FunctionChainIterator* iterator;
-
-    explicit FunctionChainLink(FunctionChainNode* value = nullptr);
-    void insert_after(FunctionChainLink* added);
-    void insert_before(FunctionChainLink* added);
-};
+using FunctionChainList = IntrusiveList<FunctionChainNode>;
+using FunctionChainIterator = IntrusiveIterator<FunctionChainNode>;
+using FunctionChainLink = IntrusiveLink<FunctionChainNode>;
 
 // The x86 compile profile explicitly selects the default __cdecl convention.
 using FunctionChainCallback = std::int32_t (*)(void*);

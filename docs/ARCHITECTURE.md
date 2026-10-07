@@ -1,5 +1,13 @@
 # Target inventory and initial architecture boundary
 
+EXACT-050 closes the2,696-byte Damage Region collision dispatcher with its
+rectangle/circle configuration and direct Motion/identifier protocols:13 complete
+units /3,532 new bytes. All343 units /65 coldobjects /55,692 disjoint complete
+comparison bytes strictly replay. Actual196-byte Region uses a shared typed
+linked-prefix body with FunctionChainNode. Constructor EH and full controller /
+list/pool lifetime stay unresolved. See EXACT_DAMAGE_REGION_RECONSTRUCTION.md.
+Earlier entries are historical checkpoints.
+
 EXACT-049 closes the twelve-root rectangle/segment neighborhood and nine direct
 planar dependencies: 21 complete units / 10,759 new bytes. All 330 units / 63 cold
 objects / 52,160 disjoint complete comparison bytes strictly replay. Actual

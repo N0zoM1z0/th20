@@ -1,4 +1,5 @@
 #include "Motion.hpp"
+#include <cstring>
 
 namespace th20 {
 
@@ -18,4 +19,10 @@ int Motion::outside_bounds(float x, float y, float width, float height) const {
         y - height / 2.0f > position.y || position.y > y + height / 2.0f ? 1 : 0;
 }
 
+} // namespace th20
+
+namespace th20 {
+Vector3& Motion::position_ref() { return position; }
+void Motion::set_position(const Vector3& input) { position = input; }
+void Motion::clear() { std::memset(static_cast<void*>(this), 0, sizeof(*this)); }
 } // namespace th20

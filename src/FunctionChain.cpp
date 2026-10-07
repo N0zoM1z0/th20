@@ -2,29 +2,7 @@
 
 namespace th20 {
 
-FunctionChainLink::FunctionChainLink(FunctionChainNode* value)
-    : node(value), next(nullptr), previous(nullptr), owner(nullptr), iterator(nullptr) {
-}
-
-void FunctionChainLink::insert_after(FunctionChainLink* added) {
-    if (next) {
-        added->next = next;
-        next->previous = added;
-    }
-    next = added;
-    added->owner = owner;
-    added->previous = this;
-}
-
-void FunctionChainLink::insert_before(FunctionChainLink* added) {
-    if (previous) {
-        added->previous = previous;
-        previous->next = added;
-    }
-    added->owner = owner;
-    added->next = this;
-    previous = added;
-}
+template struct IntrusiveLink<FunctionChainNode>;
 
 void FunctionChainNode::set_callback(FunctionChainCallback value) {
     callback = value;

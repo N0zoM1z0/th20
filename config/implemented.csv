@@ -328,3 +328,16 @@ th20::geometry::norm_xy
 th20::geometry::line_parameters
 th20::rotate_xy_array<Vector2>
 th20::rotate_xy_array<Vector3>
+th20::DamageRegion::intersects
+th20::DamageRegion::position
+th20::DamageRegion::context_value
+th20::DamageRegion::is_heap
+th20::DamageRegion::configure_rectangle
+th20::DamageRegion::configure_circle
+th20::DamageRegion::set_position
+th20::Motion::position_ref
+th20::Motion::set_position
+th20::Motion::clear
+th20::Identifier32::get
+th20::Identifier32::operator=
+th20::Identifier32::equals

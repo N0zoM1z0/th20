@@ -556,7 +556,7 @@ source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::FunctionChainLink::FunctionChainLink"]
-symbol = "??0FunctionChainLink@th20@@QAE@PAUFunctionChainNode@1@@Z"
+symbol = "??0?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAE@PAUFunctionChainNode@1@@Z"
 target_address = 0x00411970
 size = 64
 relocations = []
@@ -566,7 +566,7 @@ source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::FunctionChainLink::insert_after"]
-symbol = "?insert_after@FunctionChainLink@th20@@QAEXPAU12@@Z"
+symbol = "?insert_after@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEXPAU12@@Z"
 target_address = 0x00411EE0
 size = 76
 relocations = []
@@ -576,7 +576,7 @@ source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::FunctionChainLink::insert_before"]
-symbol = "?insert_before@FunctionChainLink@th20@@QAEXPAU12@@Z"
+symbol = "?insert_before@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEXPAU12@@Z"
 target_address = 0x00411F30
 size = 76
 relocations = []
@@ -4865,4 +4865,201 @@ size = 172
 relocations = [
   { offset = 0x12, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
   { offset = 0x28, type = "REL32", symbol = "?cosine@scalar_math@th20@@YAMM@Z", target = 0x004397C0 },
+]
+
+# EXACT-050: Damage Region routing/configuration and shared value protocols.
+
+[units.region_intersects]
+source = "src/DamageRegion.cpp"
+object = "build/DamageRegion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DamageRegion::intersects"]
+symbol = "?intersects@DamageRegion@th20@@QAE_NPBUVector3@2@PBUVector2@2@MM@Z"
+target_address = 0x004C1030
+size = 2696
+relocations = [
+  { offset = 0x60, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x88, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x9D, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x119, type = "REL32", symbol = "?rectangle_rectangle@geometry@th20@@YA_NMMMMMMMMMM@Z", target = 0x004580C0 },
+  { offset = 0x153, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x17B, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x190, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x1F6, type = "REL32", symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00457610 },
+  { offset = 0x242, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x257, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x2EF, type = "REL32", symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00457610 },
+  { offset = 0x334, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x33A, type = "REL32", symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 0x004560D0 },
+  { offset = 0x380, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x3A8, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x3BD, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x47D, type = "REL32", symbol = "?rectangle_ellipse@geometry@th20@@YA_NMMMMMMMMMM@Z", target = 0x004578B0 },
+  { offset = 0x49E, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x4CF, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x4E7, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x584, type = "REL32", symbol = "?circle_ellipse@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x004562E0 },
+  { offset = 0x5D2, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x5F3, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x60B, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x6DC, type = "REL32", symbol = "?rectangle_regular_polygon@geometry@th20@@YA_NMMMMMMMMMH@Z", target = 0x00457C10 },
+  { offset = 0x70C, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x72D, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x745, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x7DB, type = "REL32", symbol = "?circle_regular_polygon@geometry@th20@@YA_NMMMMMMMH@Z", target = 0x00456690 },
+  { offset = 0x829, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x85A, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x872, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x951, type = "REL32", symbol = "?rectangle_star@geometry@th20@@YA_NMMMMMMMMMMH@Z", target = 0x00458670 },
+  { offset = 0x981, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x9B2, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x9CA, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0xA6E, type = "REL32", symbol = "?circle_star@geometry@th20@@YA_NMMMMMMMMH@Z", target = 0x004567D0 },
+]
+
+[units.region_position]
+source = "src/DamageRegion.cpp"
+object = "build/DamageRegion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DamageRegion::position"]
+symbol = "?position@DamageRegion@th20@@QAEAAUVector3@2@XZ"
+target_address = 0x004C0F50
+size = 22
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+]
+
+[units.region_context]
+source = "src/DamageRegion.cpp"
+object = "build/DamageRegion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DamageRegion::context_value"]
+symbol = "?context_value@DamageRegion@th20@@QAEPAUContext@2@XZ"
+target_address = 0x004C0FE0
+size = 20
+relocations = [
+]
+
+[units.region_is_heap]
+source = "src/DamageRegion.cpp"
+object = "build/DamageRegion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DamageRegion::is_heap"]
+symbol = "?is_heap@DamageRegion@th20@@QAE_NXZ"
+target_address = 0x004C1000
+size = 48
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+]
+
+[units.region_configure_rectangle]
+source = "src/DamageRegion.cpp"
+object = "build/DamageRegion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DamageRegion::configure_rectangle"]
+symbol = "?configure_rectangle@DamageRegion@th20@@QAEIABUVector3@2@MMMHH@Z"
+target_address = 0x004C1C50
+size = 290
+relocations = [
+  { offset = 0x4A, type = "REL32", symbol = "?clear@Motion@th20@@QAEXXZ", target = 0x004A73D0 },
+  { offset = 0x56, type = "REL32", symbol = "?set_position@DamageRegion@th20@@QAEXABUVector3@2@@Z", target = 0x004C2030 },
+  { offset = 0x86, type = "REL32", symbol = "??4Angle@th20@@QAEAAU01@M@Z", target = 0x00452F20 },
+  { offset = 0xA0, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0xF0, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x118, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+]
+
+[units.region_configure_circle]
+source = "src/DamageRegion.cpp"
+object = "build/DamageRegion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DamageRegion::configure_circle"]
+symbol = "?configure_circle@DamageRegion@th20@@QAEIABUVector3@2@MMHH@Z"
+target_address = 0x004C1D80
+size = 260
+relocations = [
+  { offset = 0x4D, type = "REL32", symbol = "?clear@Motion@th20@@QAEXXZ", target = 0x004A73D0 },
+  { offset = 0x59, type = "REL32", symbol = "?set_position@DamageRegion@th20@@QAEXABUVector3@2@@Z", target = 0x004C2030 },
+  { offset = 0x82, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0xD2, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0xFA, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+]
+
+[units.region_set_position]
+source = "src/DamageRegion.cpp"
+object = "build/DamageRegion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::DamageRegion::set_position"]
+symbol = "?set_position@DamageRegion@th20@@QAEXABUVector3@2@@Z"
+target_address = 0x004C2030
+size = 37
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?set_position@Motion@th20@@QAEXABUVector3@2@@Z", target = 0x004393F0 },
+]
+
+[units.motion_position_ref]
+source = "src/Motion.cpp"
+object = "build/Motion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Motion::position_ref"]
+symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ"
+target_address = 0x0040BDA0
+size = 14
+relocations = [
+]
+
+[units.motion_set_position]
+source = "src/Motion.cpp"
+object = "build/Motion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Motion::set_position"]
+symbol = "?set_position@Motion@th20@@QAEXABUVector3@2@@Z"
+target_address = 0x004393F0
+size = 35
+relocations = [
+]
+
+[units.motion_clear]
+source = "src/Motion.cpp"
+object = "build/Motion.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Motion::clear"]
+symbol = "?clear@Motion@th20@@QAEXXZ"
+target_address = 0x004A73D0
+size = 27
+relocations = [
+  { offset = 0x10, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]
+
+[units.identifier_get]
+source = "src/Identifier32.cpp"
+object = "build/Identifier32.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Identifier32::get"]
+symbol = "?get@Identifier32@th20@@QBEIXZ"
+target_address = 0x0040C300
+size = 16
+relocations = [
+]
+
+[units.identifier_set]
+source = "src/Identifier32.cpp"
+object = "build/Identifier32.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Identifier32::operator="]
+symbol = "??4Identifier32@th20@@QAEXI@Z"
+target_address = 0x004117A0
+size = 21
+relocations = [
+]
+
+[units.identifier_equals]
+source = "src/Identifier32.cpp"
+object = "build/Identifier32.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Identifier32::equals"]
+symbol = "?equals@Identifier32@th20@@QBEHABU12@@Z"
+target_address = 0x004C0210
+size = 46
+relocations = [
 ]

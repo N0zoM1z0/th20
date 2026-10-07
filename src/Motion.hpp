@@ -34,6 +34,9 @@ struct Motion {
     MotionFlags flags;
 
     Motion();
+    Vector3& position_ref();
+    void set_position(const Vector3& input);
+    void clear();
     Vector3& motion_vector();
     void set_motion_z(float value);
     void set_motion_vector(const Vector3& value);

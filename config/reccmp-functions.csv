@@ -329,3 +329,16 @@ th20::geometry::norm_xy,0x00455FB0,function
 th20::geometry::line_parameters,0x00456170,function
 th20::rotate_xy_array<Vector2>,0x00459030,function
 th20::rotate_xy_array<Vector3>,0x004590E0,function
+th20::DamageRegion::intersects,0x004C1030,function
+th20::DamageRegion::position,0x004C0F50,function
+th20::DamageRegion::context_value,0x004C0FE0,function
+th20::DamageRegion::is_heap,0x004C1000,function
+th20::DamageRegion::configure_rectangle,0x004C1C50,function
+th20::DamageRegion::configure_circle,0x004C1D80,function
+th20::DamageRegion::set_position,0x004C2030,function
+th20::Motion::position_ref,0x0040BDA0,function
+th20::Motion::set_position,0x004393F0,function
+th20::Motion::clear,0x004A73D0,function
+th20::Identifier32::get,0x0040C300,function
+th20::Identifier32::operator=,0x004117A0,function
+th20::Identifier32::equals,0x004C0210,function

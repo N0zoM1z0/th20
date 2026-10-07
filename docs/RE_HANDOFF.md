@@ -1,5 +1,31 @@
 # Current reconstruction handoff
 
+## EXACT-050 — 2026-10-07 — Damage Region routing/configuration
+
+Thirteen complete units add3,532 bytes, including the2,696-byte dispatcher,
+rectangle/circle configuration and Motion/identifier dependencies. All343 units /
+65 coldobjects /55,692 disjoint complete bytes strictly replay. Public C++20/UBSan
+routing, state preservation, signed duration, alias-order and typed-node checks
+pass. See EXACT_DAMAGE_REGION_RECONSTRUCTION.md for all reviewed/deferred neighbors.
+
+Actual196-byte Region contains existing Motion72/Timer16/Angle4/Vector2 values,
+three identifier words, flags and a typed linked prefix. One IntrusiveLink<T>
+body now serves real Region/FunctionChainNode values, preserving the three old
+exact link units. Position-reference40BDA0 was anchor-only; its complete14-byte
+head now receives one canonical unit. Shared constructor411970/zero425CC0 and
+getter aliases never receive duplicate coverage. No complete controller facade.
+
+Natural Region construction remains317 versus native359: FS/cookie/handler EH
+ownership open; no credit or fabricated link destructor. Region update/retire,
+controller/pool/list/observer ownership remain pending with exact addresses and
+reasons recorded. Source343/pendingorigins282/library4/authored57/4074. Target/DB
+and full reference6945/113 remain unchanged. Maintained src/probes frozen before
+full cold replay. EXACT050 configure/registration writers completed once; NEVER
+RERUN them or previous REF/EXACT writers. Active native reconstruction continues
+in coherent batches. English/repo-python/serial compiler/no subagents and
+`gpt-6.1-sol:` commits/authorized public main push persist.
+Earlier entries are historical checkpoints.
+
 ## EXACT-049 — 2026-10-07 — rectangle/segment neighborhood
 
 All twelve reviewed collision roots and nine direct dependencies close in one

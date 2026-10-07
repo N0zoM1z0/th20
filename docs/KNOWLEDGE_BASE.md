@@ -1,5 +1,39 @@
 # Verified facts and open hypotheses
 
+## EXACT-050 — 2026-10-07 — Damage Region protocol
+
+- Attested allocation4BFE30 requests196 bytes; construction and configuration /
+  collision/controller consumers establish linked-prefix20, flags14, dimensions2C,
+  Motion34/72, Timer7C/16, identifier8C, targetA4, animationB0 and opaque ContextC0.
+  Signed cooldown/group follow real JLE/JG consumers; original tags/other roles
+  and signedness remain unknown. No invented complete controller/list owner.
+- Dispatcher4C1030/2696 implements five repeated-bitfield routes and optional
+  rectangle/circle queries; AL/RET16 corroborated by4C0480. Activation belongs
+  to caller. Inclusive squared circle distance ignoresZ and retains active
+  FP evaluation order. Invalid kinds5..7 read no query inputs.
+- Rectangle4C1C50/290 and circle4C1D80/260 clear Motion before copying position,
+  preserve unrelated flags/fields and return full identifier. Rectangle writes
+  dimensions/angle/zero angular velocity; circle preserves those fields. Signed
+  Timer assignment and alias-clearing behavior retain native protocol.
+- Typed IntrusiveLink<T> replaces three fixed-type link bodies with one shared
+  constructor/insert-after/insert-before protocol. Old physical contributions
+  retain exactness. Region first-member topology is an inference; list/observer
+  ownership and original template names remain open. No nontrivial destructor.
+- Position40BDA0/14 was anchor-only and now counts once; identifier get40C300/16,
+  assignment4117A0/21 and equality4C0210/46 preserve observed word/full-EAX ABIs.
+  Existing generic zero ctor425CC0 and link ctor411970 receive no extra unit.
+- Natural constructor317 versus native359 lacks FS/cookie/shared-handler frame.
+  Private nontrivial-link destructor/EH probes produce absent cleanup states and
+  are rejected. Exact acceptance excludes the ctor. All reviewed/deferred Region,
+  controller, allocator, handle and unrelated Player/Enemy/Context neighbors are
+  recorded in EXACT_DAMAGE_REGION_RECONSTRUCTION.md, without claiming full
+  review of the1707-byte damage controller.
+- Thirteen complete units /3532B add to343units /65coldobjects /55692disjointB;
+  full previous graph cold rebuilt and strict canonical replay plus public
+  C++20/UBSan routing/state/alias checks pass. Source343/pending282/library4;
+  authored57/4074 unchanged. Source/probes frozen; target/DB/reference6945/113
+  unchanged. Whole-game linkage/runtime, EH/lifetime and original origins remain open.
+
 ## EXACT-049 — 2026-10-07 — rectangle/segment protocol
 
 - All twelve reviewed roots4545D0,4547E0,454D80,456B40,456D50,457610,4578B0,

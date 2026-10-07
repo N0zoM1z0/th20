@@ -1,5 +1,14 @@
 # Source and build ownership
 
+EXACT-050 adds the coherent Damage Region routing/configuration protocol and
+Motion/identifier dependencies:13 units /3,532 bytes; all343 /65 coldobjects /
+55,692 disjoint complete bytes strictly replay. Actual196-byte Region has typed
+subobjects and an opaque Context pointer. Shared IntrusiveLink<T> preserves the
+old constructor/insertion exact units; physical aliases count once. Natural
+Region construction remains source-present/nonexact due to native EH ownership.
+Controller/pool/observer lifetime and original names/origins remain pending.
+See EXACT_DAMAGE_REGION_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-049 adds all twelve rectangle/segment candidates and nine planar math
 leaves: 21 complete units / 10,759 bytes; all330 /63 coldobjects /52,160 disjoint
 bytes strictly replay. Actual arrays, typed shared scalar rotation, separate
@@ -85,7 +94,10 @@ and the separate whole-game boundary.
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
-| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp, src/MotionUpdates.cpp | constructors/reduction/update/bounds; velocity453E40, position453AC0, snap4543D0, vector4562C0, set-vector47A5E0, Z4591F0; angle452F20/4530C0/452FC0/4294E0/429610/429390 | Eighteen complete exact contributions on actual4/72-byte values; complete motion protocol, bounded normalization, flags and full-int bounds; origins/enclosing owners pending |
+| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp, src/MotionUpdates.cpp | constructors/reduction/update/bounds; velocity453E40, position453AC0, snap4543D0, vector4562C0, set-vector47A5E0, Z4591F0; angle452F20/4530C0/452FC0/4294E0/429610/429390 | Twenty-one complete exact contributions on actual4/72-byte values; position/get/set/clear protocol added; complete motion protocol, bounded normalization, flags and full-int bounds; origins/enclosing owners pending |
+| Damage Region | src/DamageRegion.hpp, src/DamageRegion.cpp | Routing4C1030, configuration4C1C50/4C1D80, position/context/allocation flag and set-position | Seven complete exact members on real196-byte value; natural construction source-present/nonexact, controller/lifetime pending |
+| Identifier word protocol | src/Identifier32.hpp, src/Identifier32.cpp | get40C300, assignment4117A0, equality4C0210; zero ctor425CC0 shared | Three complete exact units; shared ctor has no duplicate credit, original semantic tags/origins pending |
+| Typed linked prefix | src/IntrusiveLink.hpp, src/FunctionChain.cpp, src/DamageRegion.cpp | One constructor/insert-after/insert-before body with real FunctionChainNode and Region pointers | Three old complete exact contributions retained; opaque list/iterator lifetime remains open |
 | Rectangle collision neighborhood | src/RectangleCollisions.cpp, src/CollisionGeometry.hpp | 4545D0/4547E0/454D80;456B40/456D50;457610/4578B0/457C10/4580C0/458670/458B60/458E90 | Twelve complete exact routines; native array storage, status/bool/float ABI, finite sampling and shortcut/boundary quirks; enclosing owner/origins pending |
 | Planar geometry metrics | src/GeometryMetrics.cpp, src/CollisionGeometry.hpp | 455FB0/455FE0/456030/456050/456080/4560D0/456170 | Seven complete exact routines; interleaved scalar endpoints, XY-only Vector3 distance, full-EAX vertical status; origins pending |
 | Motion math | src/MotionMath.hpp, src/MotionMath.cpp | polar439330, rotation458FA0, direction456210, floor4592B0, difference4396C0; ellipsepolar459190; normalization4532C0; arrays459030/4590E0; float overloads4371D0/439530 | Eleven complete exact contributions; typed scalar shared head covered once; alias-safe planar arithmetic, destinationZ preservation, original origins pending |
