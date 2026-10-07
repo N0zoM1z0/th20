@@ -889,27 +889,27 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00429120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004291E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004291E0,unknown,IntegerTriple,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00429210,unknown,Angle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
-0x00429250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429250,unknown,Vector2,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00429280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004292A0,unknown,ClockScalar,review,pending,REF-008; Shared float wrapper; explicit authored versus generic/template origin remains pending
 0x004292C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004292E0,unknown,ClockScalar,review,unknown,REF-002
 0x004292F0,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
-0x00429340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004293C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429340,unknown,IntegerTriple,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x00429390,unknown,Angle,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x004293C0,unknown,Vector2,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x00429400,unknown,Timer,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00429420,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
 0x00429440,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
-0x004294A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004294A0,unknown,IntegerTriple,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x004294E0,unknown,Angle,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
-0x00429520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429520,unknown,Vector2,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00429570,unknown,Vector3,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
-0x004295D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004295D0,unknown,IntegerTriple,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x00429610,unknown,Angle,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x00429640,unknown,Vector2,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00429690,unknown,Vector3,review,pending,"REF-022; Actual12-byte three-float value owner already independently established. Complete77-byte member429690 multiplies each scalar lane and returns receiver withRET4; original commit46CA40 independently invokes it for position scaling. Natural operator*= body, no relocation fields. Original spelling and authored/compiler/library origin pending; no broader FP exception or enclosing Renderer acceptance."
 0x004296E0,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x00429740,unknown,Vector3,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
@@ -919,19 +919,19 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00429830,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x004298B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004298E0,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
-0x00429970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00429990,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004299B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429970,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x00429990,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x004299B0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x004299D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429E30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429E50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429E70,unknown,Timer,review,pending,"REF-019; Original sixteen-byte Timer construction and Ending timer member consumers independently establish storage, zero initialization, signed current value/remainder, integer subtraction and postfix dummy-argument wrappers. Complete canonical contributions and actual call anchors checked before probing. Original operator spelling is inferred; authored versus shared generic/compiler origin remains pending. Integer += remains nonexact: natural conversion emits an additional XORPS, 33 versus 31 bytes; no prefix or instruction shaping accepted. Wrapper exactness does not accept that callee or original numerical exception environment."
-0x00429E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0042A110,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0042A3A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0042A980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0042AD80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0042B1F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00429E90,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x0042A110,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x0042A3A0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x0042A980,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x0042AD80,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x0042B1F0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x0042B590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0042B5D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00435500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -947,9 +947,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004374B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00437500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00437520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00437540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004375A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00437600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00437540,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x004375A0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x00437600,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00437660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00437680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004376A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1450,7 +1450,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004545D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004547E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00454D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00454EF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00454EF0,unknown,Easing,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md. Code4154; complete4284 includes2-byte alignmentNOP and32-entry dispatch table. No prefix slicing."
 0x00455FB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00455FE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00456030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2052,11 +2052,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00472A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00472A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00472D10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00473140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00473140,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00473160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00473400,unknown,FogValue,review,pending,"REF-043: independently maintained natural FogValue28 member or shared FogInterpolation164 constructor. Native camera member, five28-byte curve values, seven-word sampling copies and hidden-result member calls establish storage/ABI. All seven whole native ranges decode/flow-close and agree with attested Ghidra; call destinations read before probes independently anchor relocations. Seven new units1043bytes, all241units/57coldobjects/18320disjointbytes exact. Independent C++20/UBSan guarded construction, finite arithmetic, raw distance payload, signed-zero, repacking, input preservation and assignment alias checks pass. Channel truncation must be int32-representable; nonfinite/out-of-range channel conversion is outside portable C++ acceptance. Original names/origins/full Background/Camera/ANM/VM/EH/resource ownership open. See docs/REFERENCE_STAGE_BACKGROUND_REVIEW.md."
 0x00473490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00473590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00473590,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x004739D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004739E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00473B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2064,7 +2064,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00474860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00474CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00474CE0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00474D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474D60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2721,7 +2721,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0049C1A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C1E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0049C260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0049C260,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x0049C280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C2A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5027,8 +5027,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00511980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005119E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00511A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00511AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00511CF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00511AF0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
+0x00511CF0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00511ED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00511F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00512090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5038,7 +5038,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00512F30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00512F60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00512FB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00513710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00513710,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x005139B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005139E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00513A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5050,7 +5050,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00513C10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00513C70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00513CC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00513CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00513CE0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
 0x00513D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00513D60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00513D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

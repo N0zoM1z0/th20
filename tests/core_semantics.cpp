@@ -28,6 +28,7 @@ void check_replay_records();
 void check_effect_values();
 void check_bullet_values();
 void check_motion_values();
+void check_interpolation_protocol();
 void check_display_values();
 void check_dialogue_values();
 void check_scalar_math();
@@ -62,6 +63,7 @@ std::uint32_t th20::GameRandom::next() {
 }
 
 int main() {
+    check_interpolation_protocol();
     check_scene_resource_protocol();
     check_cursor_history();
     check_replay_records();

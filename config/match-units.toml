@@ -3081,3 +3081,926 @@ size = 24
 relocations = [
   { offset = 0xF, type = "REL32", symbol = "_sinf", target = 0x00439820 },
 ]
+
+# EXACT-046: shared easing and complete eight-type interpolation protocol.
+
+[units.easing]
+source = "src/Easing.cpp"
+object = "build/Easing.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::easing"]
+symbol = "?easing@th20@@YAMHMM@Z"
+target_address = 0x00454EF0
+size = 4154
+compare_size = 4284
+relocations = [
+  { offset = 0xE, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x44, type = "DIR32", symbol = "$LN55", target = 0x00455F2C },
+  { offset = 0x63, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x70, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x81, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xB6, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC3, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD4, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE5, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x11F, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x12C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x13D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x14E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x15F, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x17D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x18A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1A2, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1B1, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1BE, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1CF, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1DB, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1F5, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x202, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x210, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x21D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x22E, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x236, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x24E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x25B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x267, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x26F, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x289, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x296, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2B3, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2C2, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2CF, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2E0, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2F1, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2FD, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x317, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x324, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x332, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x33F, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x350, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x361, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x369, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x381, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x38E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x39F, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x3AB, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x3B3, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x3CD, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x3DA, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x3FC, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x40B, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x418, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x429, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x43A, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x44B, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x457, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x471, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x47E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x48C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x499, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x4AA, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x4BB, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x4CC, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x4D4, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x4EC, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x4F9, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x50A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x51B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x527, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x52F, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x557, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x55F, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x56A, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x57F, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x587, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x58F, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x597, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x5A6, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x5B4, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x5D3, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x5E0, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x5F3, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x5FB, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x606, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x619, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x62D, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x635, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x640, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x64E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x65B, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x663, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x67D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x68A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x69D, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x6A5, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x6AD, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x6B5, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x6C4, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x6D2, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x6DF, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x6F3, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x6FB, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x703, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x70E, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x721, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x729, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
+  { offset = 0x743, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x750, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x75C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x764, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x76C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x774, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x784, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x78C, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x794, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x79C, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x7A4, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x7AC, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x7C0, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x7C8, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x7D0, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x7D8, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x7E0, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x7E8, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0x7F8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x81A, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x827, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x833, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x83B, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x843, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x84B, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x85B, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x863, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x86B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x873, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x87B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x883, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x897, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x89F, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x8A7, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x8AF, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x8B7, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x8BF, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0x8CF, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x8F1, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x8FE, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x90A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x912, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x91A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x922, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x932, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x93A, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x942, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x94A, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x952, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x95A, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x96E, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x976, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x97E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x986, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x98E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x996, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0x9A6, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x9C8, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0x9D5, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0x9E1, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x9E9, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0x9F1, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x9F9, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA09, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA11, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA19, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xA21, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA29, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xA31, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA45, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA4D, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA55, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xA5D, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA65, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xA6D, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xA7D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xA9F, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xAAC, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xAB8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xAC0, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xAC8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xAD0, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xAE0, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xAE8, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xAF0, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xAF8, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xB00, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xB08, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xB1C, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xB24, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xB2C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xB34, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xB3C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xB44, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xB54, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xB71, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xB88, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xB95, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xBA1, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xBA9, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xBB1, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xBB9, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xBC9, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xBD1, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xBD9, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xBE1, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xBE9, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xBF1, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xC05, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xC0D, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xC15, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC1D, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xC25, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC2D, type = "DIR32", symbol = "__real@3e800000", target = 0x0056E718 },
+  { offset = 0xC3D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC4D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC66, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC7D, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xC8A, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xC96, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC9E, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xCA6, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xCAE, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xCBE, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xCC6, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xCCE, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xCD6, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xCDE, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xCE6, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xCFA, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xD02, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xD0A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD12, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xD1A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD22, type = "DIR32", symbol = "__real@3e99999a", target = 0x0056E71C },
+  { offset = 0xD32, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD42, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD5B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD72, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xD7F, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xD8B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD93, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xD9B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xDA3, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xDB3, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xDBB, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xDC3, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xDCB, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xDD3, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xDDB, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xDEF, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xDF7, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xDFF, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE07, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xE0F, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE17, type = "DIR32", symbol = "__real@3eb33333", target = 0x0056E720 },
+  { offset = 0xE27, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE37, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE50, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE67, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xE74, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xE80, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE88, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xE90, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE98, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xEA8, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xEB0, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xEB8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xEC0, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xEC8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xED0, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xEE4, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xEEC, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xEF4, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xEFC, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xF04, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xF0C, type = "DIR32", symbol = "__real@3ec28f5c", target = 0x0056E724 },
+  { offset = 0xF1C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xF2C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xF45, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xF5C, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xF69, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xF75, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xF7D, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xF85, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xF8D, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xF9D, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xFA5, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xFAD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xFB5, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xFBD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xFC5, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xFD9, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xFE1, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xFE9, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xFF1, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0xFF9, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1001, type = "DIR32", symbol = "__real@3ecccccd", target = 0x0056E728 },
+  { offset = 0x1011, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1021, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x103C, type = "DIR32", symbol = "$LN33", target = 0x00455F23 },
+  { offset = 0x1040, type = "DIR32", symbol = "$LN5", target = 0x00454F38 },
+  { offset = 0x1044, type = "DIR32", symbol = "$LN7", target = 0x00454F86 },
+  { offset = 0x1048, type = "DIR32", symbol = "$LN9", target = 0x00454FEA },
+  { offset = 0x104C, type = "DIR32", symbol = "$LN6", target = 0x00454F4F },
+  { offset = 0x1050, type = "DIR32", symbol = "$LN8", target = 0x00454FA2 },
+  { offset = 0x1054, type = "DIR32", symbol = "$LN10", target = 0x0045500B },
+  { offset = 0x1058, type = "DIR32", symbol = "$LN33", target = 0x00455F23 },
+  { offset = 0x105C, type = "DIR32", symbol = "$LN33", target = 0x00455F23 },
+  { offset = 0x1060, type = "DIR32", symbol = "$LN11", target = 0x00455064 },
+  { offset = 0x1064, type = "DIR32", symbol = "$LN13", target = 0x00455170 },
+  { offset = 0x1068, type = "DIR32", symbol = "$LN15", target = 0x004552B4 },
+  { offset = 0x106C, type = "DIR32", symbol = "$LN12", target = 0x004550DC },
+  { offset = 0x1070, type = "DIR32", symbol = "$LN14", target = 0x004551FE },
+  { offset = 0x1074, type = "DIR32", symbol = "$LN16", target = 0x00455358 },
+  { offset = 0x1078, type = "DIR32", symbol = "$LN17", target = 0x00455430 },
+  { offset = 0x107C, type = "DIR32", symbol = "$LN18", target = 0x00455437 },
+  { offset = 0x1080, type = "DIR32", symbol = "$LN33", target = 0x00455F23 },
+  { offset = 0x1084, type = "DIR32", symbol = "$LN19", target = 0x0045543E },
+  { offset = 0x1088, type = "DIR32", symbol = "$LN20", target = 0x00455466 },
+  { offset = 0x108C, type = "DIR32", symbol = "$LN21", target = 0x004554BA },
+  { offset = 0x1090, type = "DIR32", symbol = "$LN22", target = 0x00455564 },
+  { offset = 0x1094, type = "DIR32", symbol = "$LN23", target = 0x0045562A },
+  { offset = 0x1098, type = "DIR32", symbol = "$LN24", target = 0x00455701 },
+  { offset = 0x109C, type = "DIR32", symbol = "$LN25", target = 0x004557D8 },
+  { offset = 0x10A0, type = "DIR32", symbol = "$LN26", target = 0x004558AF },
+  { offset = 0x10A4, type = "DIR32", symbol = "$LN27", target = 0x00455986 },
+  { offset = 0x10A8, type = "DIR32", symbol = "$LN28", target = 0x00455A5D },
+  { offset = 0x10AC, type = "DIR32", symbol = "$LN29", target = 0x00455B52 },
+  { offset = 0x10B0, type = "DIR32", symbol = "$LN30", target = 0x00455C47 },
+  { offset = 0x10B4, type = "DIR32", symbol = "$LN31", target = 0x00455D3C },
+  { offset = 0x10B8, type = "DIR32", symbol = "$LN32", target = 0x00455E31 },
+]
+
+[units.timer_pre_increment]
+source = "src/Timer.cpp"
+object = "build/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::operator++()"]
+symbol = "??ETimer@th20@@QAEXXZ"
+target_address = 0x00429400
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?tick@Timer@th20@@QAEHXZ", target = 0x004533B0 },
+]
+
+[units.byte_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ByteInterpolation::sample"]
+symbol = "?sample@?$Interpolation@E@th20@@QAEEXZ"
+target_address = 0x00513710
+size = 670
+relocations = [
+  { offset = 0x19, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x32, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x4B, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x53, type = "REL32", symbol = "?stop@?$Interpolation@E@th20@@QAEXXZ", target = 0x0049C260 },
+  { offset = 0x139, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x15F, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x16C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x178, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x185, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1A0, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1AD, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x1C2, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1CF, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1EF, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x25D, type = "REL32", symbol = "?factor@?$Interpolation@E@th20@@QBEMXZ", target = 0x00513CE0 },
+]
+
+[units.byte_interpolation_stop]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ByteInterpolation::stop"]
+symbol = "?stop@?$Interpolation@E@th20@@QAEXXZ"
+target_address = 0x0049C260
+size = 21
+relocations = [
+]
+
+[units.byte_interpolation_factor]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ByteInterpolation::factor"]
+symbol = "?factor@?$Interpolation@E@th20@@QBEMXZ"
+target_address = 0x00513CE0
+size = 83
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x48, type = "REL32", symbol = "?easing@th20@@YAMHMM@Z", target = 0x00454EF0 },
+]
+
+[units.byte_interpolation_evaluate]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ByteInterpolation::evaluate"]
+symbol = "?evaluate@?$Interpolation@E@th20@@QAEEXZ"
+target_address = 0x00511AF0
+size = 499
+relocations = [
+  { offset = 0x8D, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0xB3, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC0, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xCC, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xD9, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xF4, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x101, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x116, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x123, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x143, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1B1, type = "REL32", symbol = "?factor@?$Interpolation@E@th20@@QBEMXZ", target = 0x00513CE0 },
+]
+
+[units.float_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FloatInterpolation::sample"]
+symbol = "?sample@?$Interpolation@M@th20@@QAEMXZ"
+target_address = 0x0042A110
+size = 649
+relocations = [
+  { offset = 0x19, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x32, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x4B, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x53, type = "REL32", symbol = "?stop@?$Interpolation@M@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0x13F, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x165, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x172, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x17E, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x18B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1A6, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1B3, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x1C8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1D5, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1F5, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x255, type = "REL32", symbol = "?factor@?$Interpolation@M@th20@@QBEMXZ", target = 0x00437540 },
+]
+
+[units.float_interpolation_stop]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FloatInterpolation::stop"]
+symbol = "?stop@?$Interpolation@M@th20@@QAEXXZ"
+target_address = 0x00429970
+size = 21
+relocations = [
+]
+
+[units.float_interpolation_factor]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FloatInterpolation::factor"]
+symbol = "?factor@?$Interpolation@M@th20@@QBEMXZ"
+target_address = 0x00437540
+size = 83
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x48, type = "REL32", symbol = "?easing@th20@@YAMHMM@Z", target = 0x00454EF0 },
+]
+
+[units.float_interpolation_evaluate]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FloatInterpolation::evaluate"]
+symbol = "?evaluate@?$Interpolation@M@th20@@QAEMXZ"
+target_address = 0x00511CF0
+size = 477
+relocations = [
+  { offset = 0x93, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0xB9, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xC6, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xD2, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xDF, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xFA, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x107, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x11C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x129, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x149, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1A9, type = "REL32", symbol = "?factor@?$Interpolation@M@th20@@QBEMXZ", target = 0x00437540 },
+]
+
+[units.integer_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerInterpolation::sample"]
+symbol = "?sample@?$Interpolation@H@th20@@QAEHXZ"
+target_address = 0x00429E90
+size = 639
+relocations = [
+  { offset = 0x19, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x32, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x4B, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x53, type = "REL32", symbol = "?stop@?$Interpolation@H@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0x12D, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x153, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x160, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x16C, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x179, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x194, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1A1, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x1B6, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1C3, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1E3, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x245, type = "REL32", symbol = "?factor@?$Interpolation@H@th20@@QBEMXZ", target = 0x00437540 },
+]
+
+[units.integer_triple_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerTripleInterpolation::sample"]
+symbol = "?sample@?$Interpolation@UIntegerTriple@th20@@@th20@@QAE?AUIntegerTriple@2@XZ"
+target_address = 0x0042A3A0
+size = 1489
+relocations = [
+  { offset = 0x33, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x4C, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x65, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x6D, type = "REL32", symbol = "?stop@?$Interpolation@UIntegerTriple@th20@@@th20@@QAEXXZ", target = 0x00429990 },
+  { offset = 0x188, type = "REL32", symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004295D0 },
+  { offset = 0x222, type = "REL32", symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004295D0 },
+  { offset = 0x268, type = "REL32", symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004295D0 },
+  { offset = 0x2B4, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x2DA, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2E7, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2F3, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x300, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x31B, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x328, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x33D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x34A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x36A, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x399, type = "REL32", symbol = "??DIntegerTriple@th20@@QBE?AU01@M@Z", target = 0x00429340 },
+  { offset = 0x3BF, type = "REL32", symbol = "??DIntegerTriple@th20@@QBE?AU01@M@Z", target = 0x00429340 },
+  { offset = 0x3F5, type = "REL32", symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004295D0 },
+  { offset = 0x41B, type = "REL32", symbol = "??DIntegerTriple@th20@@QBE?AU01@M@Z", target = 0x00429340 },
+  { offset = 0x463, type = "REL32", symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004295D0 },
+  { offset = 0x489, type = "REL32", symbol = "??DIntegerTriple@th20@@QBE?AU01@M@Z", target = 0x00429340 },
+  { offset = 0x4D1, type = "REL32", symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004295D0 },
+  { offset = 0x4F4, type = "REL32", symbol = "?factor@?$Interpolation@UIntegerTriple@th20@@@th20@@QBEMXZ", target = 0x004375A0 },
+  { offset = 0x527, type = "REL32", symbol = "??GIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004294A0 },
+  { offset = 0x544, type = "REL32", symbol = "??DIntegerTriple@th20@@QBE?AU01@M@Z", target = 0x00429340 },
+  { offset = 0x592, type = "REL32", symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z", target = 0x004295D0 },
+]
+
+[units.angle_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::AngleInterpolation::sample"]
+symbol = "?sample@?$Interpolation@UAngle@th20@@@th20@@QAE?AUAngle@2@XZ"
+target_address = 0x0042B1F0
+size = 923
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x39, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x52, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x5A, type = "REL32", symbol = "?stop@?$Interpolation@UAngle@th20@@@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0xFC, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x00429610 },
+  { offset = 0x137, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x00429610 },
+  { offset = 0x15A, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x00429610 },
+  { offset = 0x18A, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x1B0, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1BD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1C9, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1D6, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x1F1, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1FE, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x213, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x220, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x240, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x26C, type = "REL32", symbol = "??DAngle@th20@@QBE?AU01@M@Z", target = 0x00429390 },
+  { offset = 0x28F, type = "REL32", symbol = "??DAngle@th20@@QBE?AU01@M@Z", target = 0x00429390 },
+  { offset = 0x2A2, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x00429610 },
+  { offset = 0x2C5, type = "REL32", symbol = "??DAngle@th20@@QBE?AU01@M@Z", target = 0x00429390 },
+  { offset = 0x2DB, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x00429610 },
+  { offset = 0x301, type = "REL32", symbol = "??DAngle@th20@@QBE?AU01@M@Z", target = 0x00429390 },
+  { offset = 0x317, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x00429610 },
+  { offset = 0x329, type = "REL32", symbol = "?factor@?$Interpolation@UAngle@th20@@@th20@@QBEMXZ", target = 0x00437540 },
+  { offset = 0x348, type = "REL32", symbol = "??GAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x004294E0 },
+  { offset = 0x365, type = "REL32", symbol = "??DAngle@th20@@QBE?AU01@M@Z", target = 0x00429390 },
+  { offset = 0x37B, type = "REL32", symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z", target = 0x00429610 },
+]
+
+[units.fog_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FogInterpolation::sample"]
+symbol = "?sample@?$Interpolation@UFogValue@th20@@@th20@@QAE?AUFogValue@2@XZ"
+target_address = 0x00473590
+size = 1074
+relocations = [
+  { offset = 0x28, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x47, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x66, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x6E, type = "REL32", symbol = "?stop@?$Interpolation@UFogValue@th20@@@th20@@QAEXXZ", target = 0x00473140 },
+  { offset = 0x13A, type = "REL32", symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471F50 },
+  { offset = 0x190, type = "REL32", symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471F50 },
+  { offset = 0x1BB, type = "REL32", symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471F50 },
+  { offset = 0x1FD, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x226, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x233, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x23F, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x24C, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x267, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x274, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x289, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x296, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2B6, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2E5, type = "REL32", symbol = "??DFogValue@th20@@QBE?AU01@M@Z", target = 0x00471DB0 },
+  { offset = 0x30B, type = "REL32", symbol = "??DFogValue@th20@@QBE?AU01@M@Z", target = 0x00471DB0 },
+  { offset = 0x321, type = "REL32", symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471F50 },
+  { offset = 0x347, type = "REL32", symbol = "??DFogValue@th20@@QBE?AU01@M@Z", target = 0x00471DB0 },
+  { offset = 0x35D, type = "REL32", symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471F50 },
+  { offset = 0x383, type = "REL32", symbol = "??DFogValue@th20@@QBE?AU01@M@Z", target = 0x00471DB0 },
+  { offset = 0x399, type = "REL32", symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471F50 },
+  { offset = 0x3B2, type = "REL32", symbol = "?factor@?$Interpolation@UFogValue@th20@@@th20@@QBEMXZ", target = 0x00474CE0 },
+  { offset = 0x3D1, type = "REL32", symbol = "??GFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471E60 },
+  { offset = 0x3EE, type = "REL32", symbol = "??DFogValue@th20@@QBE?AU01@M@Z", target = 0x00471DB0 },
+  { offset = 0x404, type = "REL32", symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z", target = 0x00471F50 },
+]
+
+[units.fog_interpolation_stop]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FogInterpolation::stop"]
+symbol = "?stop@?$Interpolation@UFogValue@th20@@@th20@@QAEXXZ"
+target_address = 0x00473140
+size = 24
+relocations = [
+]
+
+[units.fog_interpolation_factor]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FogInterpolation::factor"]
+symbol = "?factor@?$Interpolation@UFogValue@th20@@@th20@@QBEMXZ"
+target_address = 0x00474CE0
+size = 92
+relocations = [
+  { offset = 0x23, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x51, type = "REL32", symbol = "?easing@th20@@YAMHMM@Z", target = 0x00454EF0 },
+]
+
+[units.vector2_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2Interpolation::sample"]
+symbol = "?sample@?$Interpolation@UVector2@th20@@@th20@@QAE?AUVector2@2@XZ"
+target_address = 0x0042A980
+size = 1022
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x39, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x52, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x5A, type = "REL32", symbol = "?stop@?$Interpolation@UVector2@th20@@@th20@@QAEXXZ", target = 0x004299B0 },
+  { offset = 0x11A, type = "REL32", symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429640 },
+  { offset = 0x167, type = "REL32", symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429640 },
+  { offset = 0x193, type = "REL32", symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429640 },
+  { offset = 0x1CF, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x1F5, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x202, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x20E, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x21B, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x236, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x243, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x258, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x265, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x285, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2B4, type = "REL32", symbol = "??DVector2@th20@@QBE?AU01@M@Z", target = 0x004293C0 },
+  { offset = 0x2DA, type = "REL32", symbol = "??DVector2@th20@@QBE?AU01@M@Z", target = 0x004293C0 },
+  { offset = 0x2F0, type = "REL32", symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429640 },
+  { offset = 0x316, type = "REL32", symbol = "??DVector2@th20@@QBE?AU01@M@Z", target = 0x004293C0 },
+  { offset = 0x32C, type = "REL32", symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429640 },
+  { offset = 0x352, type = "REL32", symbol = "??DVector2@th20@@QBE?AU01@M@Z", target = 0x004293C0 },
+  { offset = 0x368, type = "REL32", symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429640 },
+  { offset = 0x380, type = "REL32", symbol = "?factor@?$Interpolation@UVector2@th20@@@th20@@QBEMXZ", target = 0x00437600 },
+  { offset = 0x39F, type = "REL32", symbol = "??GVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429520 },
+  { offset = 0x3BC, type = "REL32", symbol = "??DVector2@th20@@QBE?AU01@M@Z", target = 0x004293C0 },
+  { offset = 0x3D2, type = "REL32", symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z", target = 0x00429640 },
+]
+
+[units.vector2_interpolation_stop]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2Interpolation::stop"]
+symbol = "?stop@?$Interpolation@UVector2@th20@@@th20@@QAEXXZ"
+target_address = 0x004299B0
+size = 21
+relocations = [
+]
+
+[units.vector2_interpolation_factor]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2Interpolation::factor"]
+symbol = "?factor@?$Interpolation@UVector2@th20@@@th20@@QBEMXZ"
+target_address = 0x00437600
+size = 83
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x48, type = "REL32", symbol = "?easing@th20@@YAMHMM@Z", target = 0x00454EF0 },
+]
+
+[units.vector3_interpolation_sample]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::VectorInterpolation::sample"]
+symbol = "?sample@?$Interpolation@UVector3@th20@@@th20@@QAE?AUVector3@2@XZ"
+target_address = 0x0042AD80
+size = 1129
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??ETimer@th20@@QAEXXZ", target = 0x00429400 },
+  { offset = 0x39, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x52, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x5A, type = "REL32", symbol = "?stop@?$Interpolation@UVector3@th20@@@th20@@QAEXXZ", target = 0x00429990 },
+  { offset = 0x13C, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x1A4, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x1D6, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x222, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x248, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x255, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x261, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x26E, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x289, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x296, type = "DIR32", symbol = "__real@40400000", target = 0x0056C8D8 },
+  { offset = 0x2AB, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2B8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2D8, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x307, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x32D, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x343, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x369, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x37F, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x3A5, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x3BB, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x3DB, type = "REL32", symbol = "?factor@?$Interpolation@UVector3@th20@@@th20@@QBEMXZ", target = 0x004375A0 },
+  { offset = 0x3FA, type = "REL32", symbol = "??GVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429440 },
+  { offset = 0x417, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x42D, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+]
+
+[units.vector3_interpolation_stop]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::VectorInterpolation::stop"]
+symbol = "?stop@?$Interpolation@UVector3@th20@@@th20@@QAEXXZ"
+target_address = 0x00429990
+size = 21
+relocations = [
+]
+
+[units.vector3_interpolation_factor]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::VectorInterpolation::factor"]
+symbol = "?factor@?$Interpolation@UVector3@th20@@@th20@@QBEMXZ"
+target_address = 0x004375A0
+size = 83
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x48, type = "REL32", symbol = "?easing@th20@@YAMHMM@Z", target = 0x00454EF0 },
+]
+
+[units.integer_triple_coordinates]
+source = "src/IntegerTriple.cpp"
+object = "build/IntegerTriple.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerTriple::IntegerTriple(int,int,int)"]
+symbol = "??0IntegerTriple@th20@@QAE@HHH@Z"
+target_address = 0x004291E0
+size = 42
+relocations = [
+]
+
+[units.integer_triple_add]
+source = "src/IntegerTriple.cpp"
+object = "build/IntegerTriple.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerTriple::operator+"]
+symbol = "??HIntegerTriple@th20@@QBE?AU01@U01@@Z"
+target_address = 0x004295D0
+size = 53
+relocations = [
+  { offset = 0x28, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@HHH@Z", target = 0x004291E0 },
+]
+
+[units.integer_triple_subtract]
+source = "src/IntegerTriple.cpp"
+object = "build/IntegerTriple.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerTriple::operator-"]
+symbol = "??GIntegerTriple@th20@@QBE?AU01@U01@@Z"
+target_address = 0x004294A0
+size = 53
+relocations = [
+  { offset = 0x28, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@HHH@Z", target = 0x004291E0 },
+]
+
+[units.integer_triple_scale]
+source = "src/IntegerTriple.cpp"
+object = "build/IntegerTriple.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerTriple::operator*"]
+symbol = "??DIntegerTriple@th20@@QBE?AU01@M@Z"
+target_address = 0x00429340
+size = 77
+relocations = [
+  { offset = 0x40, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@HHH@Z", target = 0x004291E0 },
+]
+
+[units.vector2_coordinates]
+source = "src/Vector2.cpp"
+object = "build/Vector2.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2::Vector2(float,float)"]
+symbol = "??0Vector2@th20@@QAE@MM@Z"
+target_address = 0x00429250
+size = 41
+relocations = [
+]
+
+[units.vector2_add]
+source = "src/Vector2.cpp"
+object = "build/Vector2.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2::operator+"]
+symbol = "??HVector2@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x00429640
+size = 66
+relocations = [
+  { offset = 0x35, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+]
+
+[units.vector2_subtract]
+source = "src/Vector2.cpp"
+object = "build/Vector2.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2::operator-"]
+symbol = "??GVector2@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x00429520
+size = 66
+relocations = [
+  { offset = 0x35, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+]
+
+[units.vector2_scale]
+source = "src/Vector2.cpp"
+object = "build/Vector2.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Vector2::operator*"]
+symbol = "??DVector2@th20@@QBE?AU01@M@Z"
+target_address = 0x004293C0
+size = 61
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??0Vector2@th20@@QAE@MM@Z", target = 0x00429250 },
+]
+
+[units.angle_add_angle]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::operator+(const Angle&)"]
+symbol = "??HAngle@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x00429610
+size = 44
+relocations = [
+  { offset = 0x1F, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+]
+
+[units.angle_scale]
+source = "src/Angle.cpp"
+object = "build/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::Angle::operator*"]
+symbol = "??DAngle@th20@@QBE?AU01@M@Z"
+target_address = 0x00429390
+size = 42
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+]

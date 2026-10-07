@@ -44,4 +44,6 @@ Angle Angle::operator-(const Angle& other) const {
     return Angle(angle_difference(value, other.value));
 }
 
+Angle Angle::operator+(const Angle& other) const { return Angle(value+other.value); }
+Angle Angle::operator*(float factor) const { return Angle(value*factor); }
 } // namespace th20

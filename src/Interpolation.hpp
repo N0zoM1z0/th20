@@ -8,6 +8,7 @@
 #include "Vector3.hpp"
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 
 namespace th20 {
 
@@ -18,6 +19,13 @@ template<class T> struct Interpolation {
     std::int32_t duration, mode;
 
     Interpolation();
+    // Advance positive durations, then sample; zero duration returns an endpoint.
+    T sample();
+    // Evaluate without advancing or clamping the timer. Only float/byte native
+    // entries have been bound so far; other template emissions are unbound.
+    T evaluate();
+    float factor() const;
+    void stop();
     void set_duration(std::int32_t value);
     std::int32_t set_mode(std::int32_t value);
     void set_start(const T& value);

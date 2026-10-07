@@ -1,5 +1,11 @@
 # Source and build ownership
 
+EXACT-046 closes shared easing and the generic interpolation update protocol:
+32 complete units / 13,952 bytes. All 291 / 60 cold objects / 34,844 disjoint
+comparison bytes strictly replay. Component-scoped behavior, shared physical
+heads, arithmetic ABIs and open ownership/origin boundaries are recorded in
+EXACT_INTERPOLATION_RECONSTRUCTION.md. Earlier summaries are historical.
+
 EXACT-045 adds the shared Motion update protocol and its immediate dependencies:
 18 complete units / 2,572 comparison bytes. All 259 canonical units across 59
 cold objects strictly replay over 20,892 disjoint bytes. The source and native
@@ -16,7 +22,7 @@ and the separate whole-game boundary.
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | FogValue | src/FogValue.hpp, src/FogValue.cpp | construction 0x00471940/0x004718D0; pack 0x00473400; scale/subtract/add 0x00471DB0/0x00471E60/0x00471F50 | Six complete exact members on actual 28-byte value; representable int32 channel truncation, original names/origins/full background owners pending |
-| IntegerTriple | src/IntegerTriple.hpp, src/IntegerTriple.cpp | constructor 0x00414090 | Complete 43-byte exact constructor on a real three-integer value; original tag and enclosing ANM owner pending |
+| IntegerTriple | src/IntegerTriple.hpp, src/IntegerTriple.cpp | constructors414090/4291E0; add4295D0/subtract4294A0/scale429340 | Five complete exact members; actual three-int value, reversed constructor arguments, by-value RHS ABI, modulo32 arithmetic and per-component truncation; original tag/roles/origins pending |
 | Matrix4 | src/Matrix4.hpp, src/Matrix4.cpp | constructor 0x00447DC0 | Complete 30-byte exact constructor on sixteen floats; matrix consumers independently observed, original spelling/origin pending |
 | Sprite vertices | src/SpriteVertices.hpp, src/SpriteVertices.cpp | constructors 0x00449110/0x00449140/0x00449170 | Three complete exact constructors on real 20/20/28-byte values; array strides/pointers independently observed, full Controller owner pending |
 | AnmVariables | src/AnmVariables.hpp, src/AnmVariables.cpp | constructor 0x00449050 | Complete 182-byte exact constructor on actual seven-integer/nine-float member; field roles/origin/full Base pending |
@@ -35,12 +41,13 @@ and the separate whole-game boundary.
 | OverlayCounter | src/OverlayCounter.hpp, src/OverlayCounter.cpp | construction0x00532850 | Complete33-byte exact constructor on actual8-byte member;0/1500 initial state, arithmetic/signedness and origin pending |
 | BulletStyle | src/BulletStyle.hpp, src/BulletStyle.cpp | radius query 0x00485700 | Complete18-byte exact cdecl query; actual writable50*344-byte array, radius+144 and BSS base independently audited; storage/initializer undefined, origin pending |
 | BulletValues | src/BulletValues.hpp, src/BulletValues.cpp | constructors 0x0047BD90/0x0047BD20/0x0047BCA0 | Three complete exact constructors on actual64/40/44x86-byte values; shared array strides/signed counts/script pointer independently observed; origins and full owners pending |
-| Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
+| Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructors4398A0/429250; add429640/subtract429520/scale4293C0 | Five complete exact members on actual two-float value; native member/result ABI, original spelling/origin pending |
 | CollisionGeometry | src/CollisionGeometry.hpp, src/CollisionGeometry.cpp | absolute 0x00445680; circle 0x00456FE0; rectangle 0x00457300 | Three complete exact routines; negative zero/quiet-NaN sign retained, circle inclusive/rectangle strict; origins pending |
 | PackedColor / EffectParameters / EffectRequest / SelectionPulse | src/EffectParameters.hpp, src/EffectParameters.cpp | constructors 0x004142A0/0x0047BA30/0x0049CE30/0x00461840 | Four complete exact constructors on actual4/56/72x86/8-byte values; implicit padding kept, origins pending |
-| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3/Vector2 constructors 0x00447B30/0x00447AC0; integer/IntegerTriple/Angle constructors 0x00447980/0x00447A50/0x00447BA0; Fog constructor 0x00471410 | Eighteen complete exact members on actual 32/44/84/64/164-byte values; one semantic template body, live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
+| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | existing constructors/setters/begin; sample429E90/42A110/42A3A0/42A980/42AD80/42B1F0/473590/513710; five stop/factor heads; evaluate511CF0/511AF0 | Thirty-eight complete exact contributions on actual32/44/64/84/164-byte values; shared protocol, ordered accumulation/Hermite and typed narrowing; other evaluation emissions, original origins and enclosing owners unbound |
+| Easing | src/Easing.hpp, src/Easing.cpp | dispatch454EF0 | Complete4,284-byte contribution including32-entry table; zero-duration override, unclamped ratio, polynomial/sine/calibrated back curves; origins and global compiler/CRT recipe pending |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
-| Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Eighteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
+| Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick, prefix increment and signed predicates | Nineteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | enable 0x0041CCC0; disable 0x0041CA30 | Two exact flag assignments; tracked locking and original global lifetime pending |
@@ -58,7 +65,7 @@ and the separate whole-game boundary.
 | SceneResources | src/SceneResources.hpp, src/SceneResources.cpp | initialization 0x004D82C0; release 0x004D8560 | Two authored complete exact orchestration functions; dependency owners remain undefined |
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
-| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp, src/MotionUpdates.cpp | constructors/reduction/update/bounds; velocity453E40, position453AC0, snap4543D0, vector4562C0, Z4591F0; angle452F20/4530C0/452FC0/4294E0 | Fifteen complete exact contributions on actual4/72-byte values; complete motion protocol, bounded normalization, flags and full-int bounds; origins/enclosing owners pending |
+| Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp, src/MotionUpdates.cpp | constructors/reduction/update/bounds; velocity453E40, position453AC0, snap4543D0, vector4562C0, Z4591F0; angle452F20/4530C0/452FC0/4294E0/429610/429390 | Seventeen complete exact contributions on actual4/72-byte values; complete motion protocol, bounded normalization, flags and full-int bounds; origins/enclosing owners pending |
 | Motion math | src/MotionMath.hpp, src/MotionMath.cpp | polar439330, rotation458FA0, direction456210, floor4592B0, difference4396C0; float overloads4371D0/439530 | Seven complete exact contributions; alias-safe planar arithmetic, destinationZ preservation, original origins pending |
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690; add 0x00429570; subtract assignment 0x00429740 | Eight complete exact members; original class spelling and authored/compiler/library origins pending |
 | Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |

@@ -29,6 +29,10 @@ void Timer::operator-=(std::int32_t amount) {
     *this += static_cast<std::int32_t>(-static_cast<std::uint32_t>(amount));
 }
 
+void Timer::operator++() {
+    tick();
+}
+
 void Timer::operator++(int) {
     tick();
 }

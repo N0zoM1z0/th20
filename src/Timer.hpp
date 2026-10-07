@@ -33,6 +33,7 @@ struct Timer {
     void operator+=(std::int32_t amount);
     void operator-=(std::int32_t amount);
     void operator++(int);
+    void operator++();
     void operator--(int);
     void reset();
     void set_mode(std::uint32_t mode);

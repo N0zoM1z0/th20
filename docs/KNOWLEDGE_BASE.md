@@ -1,5 +1,25 @@
 # Verified facts and open hypotheses
 
+## EXACT-046 — 2026-10-07 — shared easing and eight interpolation updates
+
+- Shared easing454EF0 has 4,154 code bytes plus alignment/table bytes, with
+  all 32 dispatch destinations independently bound. Eight generic updates and
+  two float/byte evaluations close one genuine template protocol; 32 units add
+  13,952 complete bytes. All 291 / 60 cold objects / 34,844 disjoint bytes replay.
+- Duration-positive updates tick before comparison; terminal returns clamp time,
+  stop and preserve current. Zero returns an endpoint; negative does not tick.
+  Modes7/17 preserve ordered accumulation; mode8 computes Hermite weights before
+  typed arithmetic. Byte narrowing goes through int32; signed sums/differences
+  explicitly wrap. IntegerTriple scales truncate each component separately.
+- IntegerTriple has a real reversed-argument coordinate constructor and by-value
+  RHS arithmetic. Angle/Vector2 additional operations retain real member/hidden
+  result ABIs. Shared scalar/component stop/factor heads receive no duplicate
+  credit. Only float/byte nonadvancing evaluation heads are currently bound.
+- Existing profiles retained; easing strict FP retains normalized back expressions.
+  Independent finite curve/protocol C++20/UBSan tests pass. Origins remain pending:
+  230 unknown, four library, authored57/4,074 unchanged. Full startup/resources/
+  linkage/gameplay remain open; see EXACT_INTERPOLATION_RECONSTRUCTION.md.
+
 ## EXACT-045 — 2026-10-07 — complete shared Motion updates
 
 - Native 453E40/453AC0 close velocity and position updates on actual Motion72;

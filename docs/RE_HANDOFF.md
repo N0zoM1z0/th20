@@ -1,5 +1,27 @@
 # Current reconstruction handoff
 
+## EXACT-046 — 2026-10-07 — shared interpolation protocol batch
+
+Shared 4,154-byte easing and all eight interpolation update bodies now have
+one maintained template protocol, with two evaluations that leave time unchanged.
+32 complete units add 13,952 comparison bytes. All 291 units / 60 cold objects /
+34,844 disjoint comparison bytes strictly replay; public C++20/UBSan checks pass.
+See EXACT_INTERPOLATION_RECONSTRUCTION.md for storage, ABI, complete dispatch,
+shared heads, signed/byte wrapping, active evaluation order and acceptance limits.
+
+Source 291 / pending origins 230 / library 4; authored 57 / 4,074 unchanged.
+Reference review remains 6,945 terminal bodies / 113 reconciled grammar files.
+Maintained src/probes frozen before the full cold replay; all canonical receipts
+were rebuilt after shared declarations changed. EXACT046 configure/registration
+writers execute once; never rerun completed writers or any older REF/EXACT writer.
+Target and Ghidra database remain unchanged.
+
+Continue substantive native reconstruction in coherent batches. Enemy's distinct
+current-first/per-axis interpolation is the closest next dependency family;
+resource/EH/allocator-heavy schedulers and archive owners retain open questions.
+English / repo-python / serial compiler / no subagents / gpt-6.1-sol: commits /
+authorized public main push persist. Earlier sections are historical checkpoints.
+
 ## EXACT-045 — 2026-10-07 — shared Motion protocol batch
 
 Two substantive Motion updates and their direct dependency family now have

@@ -1,5 +1,12 @@
 # Target inventory and initial architecture boundary
 
+EXACT-046 reconstructs the shared 4 KB easing dispatch and all eight generic
+interpolation updates, with their immediate arithmetic/storage dependencies.
+32 complete units add 13,952 bytes; all 291 / 60 cold objects / 34,844 disjoint
+comparison bytes strictly replay. The existing typed owners and layouts remain
+canonical. Enemy's distinct current-first/per-axis protocol remains separate.
+See EXACT_INTERPOLATION_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-045 closes the shared Motion72 velocity/position protocol and direct
 angle/vector/math dependencies in one 18-unit native reconstruction batch.
 Complete dispatch-table and security-cookie evidence accompanies both primary

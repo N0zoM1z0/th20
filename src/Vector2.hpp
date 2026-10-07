@@ -10,6 +10,10 @@ struct Vector2 {
     float y;
 
     Vector2();
+    Vector2(float x, float y);
+    Vector2 operator+(const Vector2& other) const;
+    Vector2 operator-(const Vector2& other) const;
+    Vector2 operator*(float factor) const;
 };
 
 static_assert(sizeof(Vector2) == 8);

@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 259 mapped component functions across 59 comparison objects |
+| Source | 291 mapped component functions across 60 comparison objects |
 | Authored exactness | 57 functions, 4,074 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -68,6 +68,7 @@ are excluded from Git.
 | Colored vertex construction | Complete 43-byte exact constructor for the actual 20-byte value; source spelling and origin review remain open |
 | Trophy messages | Exact shared-buffer decoder and typed record reset; full resource/parser/owner lifetime remains open |
 | Motion update protocol | Two complete main updates and direct angle/vector/math dependencies: 18 new units / 2,572 comparison bytes; [evidence](docs/EXACT_MOTION_RECONSTRUCTION.md) |
+| Interpolation protocol | Shared 4 KB easing and eight typed updates, plus direct dependencies: 32 new units / 13,952 comparison bytes; [evidence](docs/EXACT_INTERPOLATION_RECONSTRUCTION.md) |
 | Whole-program build and runtime | Not available |
 
 [Generated progress](docs/PROGRESS.md) and `scripts/report-reconstruction-status.py`
