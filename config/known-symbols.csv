@@ -393,3 +393,5 @@ address,name,module,confidence,evidence
 0x00539060,th20::archive_lzss_insert,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
 0x00539180,th20::archive_lzss_unlink,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
 0x005394C0,th20::archive_lzss_remove,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0053F3B0,th20::EclRuntime::call_into,EclRuntime,high,EXACT-056; docs/EXACT_ECL_CALL_RECONSTRUCTION.md
+0x0040C6B0,th20::ecl_diagnostic_hint,EclDiagnostic,high,EXACT-056; docs/EXACT_ECL_CALL_RECONSTRUCTION.md

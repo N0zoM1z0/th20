@@ -5841,3 +5841,53 @@ relocations = [
   { offset = 0x73, type = "REL32", symbol = "?archive_lzss_remove@th20@@YAXH@Z", target = 0x005394C0 },
   { offset = 0x83, type = "REL32", symbol = "?archive_lzss_replace@th20@@YAXHH@Z", target = 0x00539A10 },
 ]
+
+# EXACT-056: complete ECL invocation and actual empty diagnostic hook.
+[units.ecl_runtime_call]
+source = "src/EclRuntimeCall.cpp"
+object = "build/EclRuntimeCall.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/Gd", "/sdl"]
+functions = ["th20::EclRuntime::call_into"]
+symbol = "?call_into@EclRuntime@th20@@QAEHPAU12@HH@Z"
+target_address = 0x0053F3B0
+size = 923
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1B, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x49, type = "REL32", symbol = "?pointer_value@ScriptStack@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x74, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0xF3, type = "REL32", symbol = "?consuming_float_value@EclRuntime@th20@@QAEMHM@Z", target = 0x0053EC80 },
+  { offset = 0x11A, type = "REL32", symbol = "?absolute@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E630 },
+  { offset = 0x13F, type = "REL32", symbol = "?absolute@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E630 },
+  { offset = 0x160, type = "REL32", symbol = "?consuming_integer_value@EclRuntime@th20@@QAEHHH@Z", target = 0x0053EFB0 },
+  { offset = 0x191, type = "REL32", symbol = "?absolute@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E630 },
+  { offset = 0x1B1, type = "REL32", symbol = "?absolute@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E630 },
+  { offset = 0x1C6, type = "REL32", symbol = "?pointer_value@ScriptStack@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x1E8, type = "REL32", symbol = "?pop@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x0053F0B0 },
+  { offset = 0x1FD, type = "REL32", symbol = "?set_pointer@ScriptStack@th20@@QAEXH@Z", target = 0x00412DA0 },
+  { offset = 0x21B, type = "REL32", symbol = "?absolute@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E630 },
+  { offset = 0x235, type = "REL32", symbol = "?set_pointer@ScriptStack@th20@@QAEXH@Z", target = 0x00412DA0 },
+  { offset = 0x24F, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0x26F, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0x28B, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0x2A7, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0x2CA, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0x2E3, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0x2FC, type = "REL32", symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z", target = 0x0053F260 },
+  { offset = 0x320, type = "REL32", symbol = "?loader_value@EclManager@th20@@QBEPAVEclLoader@2@XZ", target = 0x00437660 },
+  { offset = 0x343, type = "REL32", symbol = "?activate@EclLoader@th20@@QAEHPAVEclManager@2@PBD@Z", target = 0x0053FDF0 },
+  { offset = 0x357, type = "DIR32", symbol = "?ecl_missing_subroutine_format@th20@@3QBDB", target = 0x00576A20 },
+  { offset = 0x35C, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x391, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.ecl_diagnostic_hint]
+source = "src/EclDiagnostic.cpp"
+object = "build/EclDiagnostic.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ecl_diagnostic_hint"]
+symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ"
+target_address = 0x0040C6B0
+size = 5
+relocations = [
+]

@@ -1,9 +1,10 @@
 # Core ECL and Enemy dispatch reconstruction
 
-CORE-055 is an investigation checkpoint. Neither dispatcher has accepted source,
-an exact unit or new coverage credit. The accepted EXACT-054 graph remains 393
-complete units and 61,579 disjoint comparison bytes. The current priority is
-whole core dispatchers and the real owners and protocols they require.
+CORE-055 is an investigation checkpoint. Neither dispatcher has accepted source
+or an exact unit. EXACT-056 subsequently accepts its complete 923-byte invocation
+dependency and actual empty diagnostic hook; see EXACT_ECL_CALL_RECONSTRUCTION.md.
+The accepted graph now has 395 complete units and 62,507 disjoint comparison
+bytes. The current priority is whole core dispatchers and their real protocols.
 
 ## Complete native intervals
 
@@ -125,10 +126,12 @@ only; equal case lengths do not establish byte identity or exactness.
 Remaining work includes full local-variable placement and common exits, whole
 relocation/table replay, floating comparison edge behavior, real stack/frame
 failure handling, dependency bodies and startup/lifetime ownership. The reference
-does not resolve these. The native frame reservation failure logs an error before
-returning failure; an invented throw or silent success is not acceptable.
+does not resolve these. Invocation failure calls the native empty diagnostic
+hook before returning failure; it does not output a log. EXACT-056 corrects the
+earlier interpretation and preserves caller invalidation and current-runtime
+retention. An invented throw or silent success is not acceptable.
 
-No compiler result in this investigation is a canonical exact result. Keep all
+Neither whole dispatcher hypothesis is a canonical exact result. Keep all
 raw disassembly, decompiler output, object files, case diagnostics and candidate
 source private. Continue with the whole tick and its immediate protocols, then
 the complete Enemy dispatcher; defer unrelated leaves.

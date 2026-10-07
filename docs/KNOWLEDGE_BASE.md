@@ -1,5 +1,32 @@
 # Verified facts and open hypotheses
 
+## EXACT-056 — 2026-10-07 — Whole ECL invocation protocol
+
+- Complete call_into53F3B0/923 and empty diagnostic40C6B0/5 replay exactly.
+  All27 invocation relocations use independent semantic anchors. The whole
+  graph cold replays395units/72objects/62507disjointbytes after shared declarations;
+  authored63/5838, pendingorigins328, library4. See EXACT_ECL_CALL_RECONSTRUCTION.md.
+- Shared Runtime72/Manager112/Loader564/Stack24 layouts use actual PMR and
+  interpolation owners. Manager's six virtual defaults are concrete. Loader's
+  first two callback roles, native constructors/lifetimes and flags initialization
+  wrapper remain pending. Declarations grant no production implementation credit.
+- Ordered float/integer descriptor transfer precedes return-record construction.
+  Fresh target records three minus-one sentinels; existing target saves caller
+  time/offset/subroutine and the post-consumption pointer. The prior frame word
+  is preserved at the original boundary. Final argument is a name word skip.
+- Activation failure invalidates the caller and retains the target as manager
+  current; success restores the saved current runtime.40C6B0 is empty, correcting
+  the earlier log-output interpretation. The original format symbol's entire
+  CP932/NUL data is independently checked, separately from function coverage.
+- Activation53FDF0 begins with set_loader41DFB0, then name/offset/time and current
+  instruction. Sorted binary name lookup is540340;53F9A0 belongs to a library
+  vector-insertion body. These attested dependencies remain unaccepted bodies.
+- Whole tick remains nonexact: best11504-byte hypothesis matches9875/9900
+  structural bytes, excluding1604relocationbytes. Remaining25differences are
+  opcode81 argument order/lifetime. Aggregate and structured-binding alternatives
+  preserve size but alter many native stack slots; both rejected. No root/case
+  fragment credit. Whole EnemyState41967 follows; unrelated leaves are deferred.
+
 ## EXACT-053 — 2026-10-07 — Worker launch and shutdown lifetime
 
 - Five complete native bodies add 666 instruction bytes and five destructor

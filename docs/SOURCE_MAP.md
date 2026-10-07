@@ -1,5 +1,15 @@
 # Source and build ownership
 
+EXACT-056 adds EclRuntimeCall.cpp's complete 923-byte invocation and
+EclDiagnostic.cpp's actual empty release hook. The shared EclRuntime.hpp owns
+Runtime72/Manager112/Loader564 and uses canonical ScriptStack and interpolation.
+The diagnostic data profile preserves the native Japanese literal in CP932.
+All 395 units / 72 cold objects / 62,507 disjoint bytes strictly replay after the
+ScriptStack declaration change. Authored 63 / 5,838; the empty hook's origin
+remains pending. Constructor/lifetime/flags initialization, dependency bodies
+and whole dispatchers remain open. See EXACT_ECL_CALL_RECONSTRUCTION.md.
+Earlier entries are historical checkpoints.
+
 CORE-055 retains whole ECL and Enemy dispatch compiler/owner hypotheses under
 ignored .analysis. No production dispatcher source or exact unit is accepted;
 the accepted graph below remains unchanged. Native owner layouts, call contracts

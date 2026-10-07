@@ -1,5 +1,46 @@
 # Current reconstruction handoff
 
+## EXACT-056 — 2026-10-07 — Complete ECL invocation and return frames
+
+The whole invocation at 0053F3B0 / 923 bytes passes all-byte canonical replay
+with 27 independently established relocations. EclRuntimeCall.cpp uses the
+maintained Runtime72/Manager112/Loader564 model and canonical ScriptStack24.
+The actual five-byte diagnostic hook is empty; its unresolved ICF/library
+origin receives no authored credit. Original Japanese format data is independently
+verified as 28 CP932 bytes including NUL. See EXACT_ECL_CALL_RECONSTRUCTION.md.
+
+All 395 units / 72 cold objects / 62,507 disjoint bytes cold replay after shared
+ScriptStack declarations changed. Mapped/source 395; pending origins 328;
+library 4; authored 63 / 5,838. Original target and full Ghidra remain immutable.
+Owned C++20/UBSan frame tests cover fresh/nested targets, ordered typed transfers,
+numeric conversion, post-consumption pointer, skipped name/arguments, saved
+caller fields, guard words, success restore and failure retention. Unaccepted
+constructor, generic stack, resolver and activation bodies are labeled fixtures.
+Host tests model MSVC raw-word aliasing with -fno-strict-aliasing.
+All29public tests pass; target/tracking/progress and full Ghidra attestation pass.
+
+New native evidence corrects three earlier hypotheses: Manager defaults are
+concrete, the invocation's final argument is name_skip, and 40C6B0 does not log.
+Activation first sets the loader at41DFB0; sorted lookup is540340. On failure,
+the caller is invalidated while current_runtime remains switched to the target.
+Runtime/lifetime/flags construction and these dependency implementations remain
+open; the declaration model is not a whole-game build.
+
+Whole ECL tick remains pending. Its best private whole-size probe is
+9875/9900 structurally matching non-relocation bytes, with25case81 differences;
+1604relocationbytes and the full table remain unproven. Native reads angle2 then
+length3. Aggregate and structured-binding snapshot probes preserve whole size
+but broadly change local slots and were rejected. Do not accept case fragments,
+the wrong-order nested expression or exact-size diagnostics. Continue with this
+core and then the complete EnemyState root48C010/41967; defer unrelated leaves.
+
+Private exact056-defs/results/replay logs and core056 exports are ignored.
+EXACT056 configuration/registration writers and54/older writers are stamped;
+NEVER RERUN. Source/probes froze before replay; do not rebuild unchanged units
+merely for documentation edits. Active goal, English, repo-python, serial MSVC,
+no subagents, gpt-6.1-sol: commits and authorized public main pushes persist.
+Read .analysis/core056-resume.md for exact handles/checkpoint on resume.
+
 ## CORE-055 — 2026-10-07 — Whole ECL and Enemy dispatcher investigation
 
 The user's current priority is complete core dispatchers; defer unrelated leaves.

@@ -391,3 +391,5 @@ th20::archive_lzss_replace
 th20::archive_lzss_insert
 th20::archive_lzss_unlink
 th20::archive_lzss_remove
+th20::EclRuntime::call_into
+th20::ecl_diagnostic_hint

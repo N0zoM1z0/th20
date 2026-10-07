@@ -118,7 +118,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040C640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040C6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040C6B0,unknown,EclDiagnostic,review,pending,"EXACT-056: Complete ECL invocation/frame protocol and actual empty diagnostic hook. Independent complete flow, shared Runtime72/Manager112/Loader564/Stack24 owners, concrete virtual slots, ordered typed transfer, success restore/failure retention, all27 semantic relocation anchors and CP932 literal. Full cold replay395/72/62507disjointbytes after shared declaration changes; bounded owned C++20/UBSan fixtures pass. Tick and Enemy whole dispatch, constructor/lifetime/flags wrapper and dependency implementations remain pending. See docs/EXACT_ECL_CALL_RECONSTRUCTION.md. Five-byte empty head may be ICF/template/library; origin unresolved and excluded from authored credit."
 0x0040C6C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C6F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5843,7 +5843,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0053F260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053F370,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053F390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0053F3B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0053F3B0,authored,EclRuntime,authored,high,"EXACT-056: Complete ECL invocation/frame protocol and actual empty diagnostic hook. Independent complete flow, shared Runtime72/Manager112/Loader564/Stack24 owners, concrete virtual slots, ordered typed transfer, success restore/failure retention, all27 semantic relocation anchors and CP932 literal. Full cold replay395/72/62507disjointbytes after shared declaration changes; bounded owned C++20/UBSan fixtures pass. Tick and Enemy whole dispatch, constructor/lifetime/flags wrapper and dependency implementations remain pending. See docs/EXACT_ECL_CALL_RECONSTRUCTION.md."
 0x0053F750,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053F780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053F7B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

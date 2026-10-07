@@ -1,0 +1,123 @@
+#pragma once
+
+#include "Interpolation.hpp"
+#include "IntrusiveLink.hpp"
+#include "ScriptStack.hpp"
+
+#include <cstddef>
+#include <cstdint>
+#include <memory_resource>
+#include <vector>
+
+namespace th20 {
+
+struct EclInstruction {
+    std::int32_t time;
+    std::int16_t opcode;
+    std::uint16_t length;
+    std::uint16_t references;
+    std::uint8_t rank;
+    std::uint8_t argument_count;
+    std::uint8_t stack_drop;
+    std::uint8_t field_0d;
+    std::uint16_t field_0e;
+};
+static_assert(sizeof(EclInstruction) == 16);
+
+struct EclScriptPosition {
+    std::int32_t subroutine;
+    std::int32_t offset;
+    EclScriptPosition();
+};
+static_assert(sizeof(EclScriptPosition) == 8);
+
+struct EclScriptInterpolation : FloatInterpolation {
+    std::int32_t frame_base;
+    EclScriptPosition position;
+};
+
+class EclManager;
+
+struct EclRuntime {
+    float time;
+    EclScriptPosition position;
+    ScriptStack stack;
+    std::int32_t async_id;
+    EclManager* manager;
+    std::int32_t signal;
+    std::uint8_t rank;
+    std::pmr::vector<EclScriptInterpolation> interpolators;
+    // Word layout is established; the native construction wrapper remains open.
+    std::uint32_t flags;
+
+    EclRuntime();
+    EclInstruction* current();
+    std::int32_t consuming_integer_value(std::int32_t index, std::int32_t value);
+    float consuming_float_value(std::int32_t index, float value);
+    int call_into(EclRuntime* target, std::int32_t argument_skip,
+                  std::int32_t name_skip);
+};
+
+struct EclSubroutineRecord {
+    const char* name;
+    std::uint8_t* header;
+};
+
+class EclLoader {
+public:
+    // The two one-word callback slots precede the deleting destructor. Their
+    // higher-level roles remain open; activation uses the nonvirtual protocol.
+    virtual std::int32_t callback_0(std::uint32_t argument);
+    virtual std::int32_t callback_1(std::uint32_t argument);
+    virtual ~EclLoader();
+
+    std::uint32_t file_count;
+    std::uint32_t subroutine_count;
+    std::uint8_t* files[64];
+    std::uint32_t fields_10c[64];
+    std::pmr::vector<EclSubroutineRecord> records;
+    ScriptStack globals;
+
+    EclLoader();
+    int activate(EclManager* manager, const char* name);
+};
+
+class EclManager {
+public:
+    // Native defaults are concrete zero-return methods, not pure virtual slots.
+    virtual ~EclManager();
+    virtual std::int32_t execute_opcode();
+    virtual std::int32_t read_integer(std::int32_t index);
+    virtual std::int32_t* integer_destination(std::int32_t index);
+    virtual float read_float(std::int32_t index);
+    virtual float* float_destination(std::int32_t index);
+
+    std::uint32_t field_04;
+    std::uint32_t field_08;
+    EclRuntime* current_runtime;
+    EclRuntime main;
+    EclLoader* loader;
+    IntrusiveLink<EclRuntime> runtimes;
+
+    EclManager();
+    EclLoader* loader_value() const;
+};
+
+#if defined(_M_IX86)
+static_assert(sizeof(EclRuntime) == 72);
+static_assert(offsetof(EclRuntime, stack) == 12);
+static_assert(offsetof(EclRuntime, interpolators) == 52);
+static_assert(offsetof(EclRuntime, flags) == 68);
+static_assert(sizeof(EclScriptInterpolation) == 56);
+static_assert(offsetof(EclScriptInterpolation, frame_base) == 44);
+static_assert(sizeof(EclSubroutineRecord) == 8);
+static_assert(sizeof(EclManager) == 112);
+static_assert(offsetof(EclManager, main) == 16);
+static_assert(offsetof(EclManager, loader) == 88);
+static_assert(offsetof(EclManager, runtimes) == 92);
+static_assert(sizeof(EclLoader) == 564);
+static_assert(offsetof(EclLoader, records) == 524);
+static_assert(offsetof(EclLoader, globals) == 540);
+#endif
+
+} // namespace th20

@@ -1,5 +1,13 @@
 # Target inventory and initial architecture boundary
 
+EXACT-056 closes the whole ECL invocation/frame protocol at 0053F3B0 / 923
+bytes, preserving ordered typed transfers, nested return records and failure
+retention. The shared owners replace private ABI hypotheses for this accepted
+body; native constructors and flags wrapper remain undefined. Manager virtual
+defaults are concrete; the release diagnostic hook is empty. All 395 units /
+72 cold objects / 62,507 disjoint bytes replay. Whole tick and Enemy dispatchers
+remain pending; see EXACT_ECL_CALL_RECONSTRUCTION.md. Older entries are historical.
+
 CORE-055 audits both complete ECL and Enemy dispatch intervals and tables and
 corroborates Runtime72, Manager112, ScriptInterpolation56 and Loader564. The
 whole ECL compiler hypothesis remains private and nonexact. Ghidra's Enemy
