@@ -88,3 +88,11 @@ Record removed paths/bytes and protected hashes privately. Strictly compare all
 current units after cleanup; do not cold-rebuild an unchanged source graph just
 for cleanup or documentation. Source/header/profile changes require the usual
 affected cold replay. EXACT-058 records the first retirement pass.
+
+Inactive successful replay snapshots may be archived losslessly as `.json.gz`.
+Verify that every saved unit passed, check the decompressed content against the
+original SHA-256 before retiring the uncompressed file, and record both hashes
+and bytes saved. Keep current snapshots, native exports, failed experiments and
+active inputs intact. Read archived evidence with `gzip.open` through
+`scripts/repo-python`; an archived path is preserved evidence, not a missing
+verification. Store cleanup-only replay reports compressed from the outset.

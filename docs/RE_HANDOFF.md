@@ -1,5 +1,25 @@
 # Current reconstruction handoff
 
+## Storage maintenance — 2026-10-08
+
+Seven inactive successful replay snapshots from EXACT-061 through EXACT-068
+are losslessly archived as `.json.gz`, saving 4,915,722 bytes (4.69 MiB).
+Original content/hash roundtrips pass; all 200 current canonical object/receipt
+hashes remain unchanged. Every other pre-existing native/failed source and
+evidence file is retained. Build contains only the 100 canonical objects and
+their receipts; no obsolete products remain there. Current strict comparison
+passes all 540 units using existing objects, without another cold rebuild.
+All 44 public tests and the public-tree/progress checks pass after archival.
+
+Private inventory: `.analysis/core072-storage-cleanup.json`; compressed current
+proof: `.analysis/core072-storage-canonical-results.json.gz`. This one-time
+cleanup writer is completed; never rerun it. Cumulative obsolete-product
+retirement stays at 2,500 files /1,001,401,012 bytes; separate lossless archival
+savings now total 10,146,676 bytes. Analysis is about 75 MiB and build 4.4 MiB.
+Installed compiler/SDK/Wine (about 4.2 GiB), reference, game and Ghidra remain
+protected. Source and exact coverage are unchanged; the whole core
+reconstruction goal and the next reader/Player/Session scope remain active.
+
 ## EXACT-072 — 2026-10-08 — Whole Enemy variable destinations and handles
 
 Six complete contributions add 1,820 body /2,183 comparison bytes: actual integer
