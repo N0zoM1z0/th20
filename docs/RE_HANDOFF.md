@@ -1,5 +1,47 @@
 # Current reconstruction handoff
 
+## EXACT-071 — 2026-10-08 — Whole ECL Runtime/Manager lifetime and async disposal
+
+Ten complete functions add 701 body bytes /706 comparison bytes: actual Runtime
+and Manager construction/destruction/scalar cleanup, saved-next async clearing,
+typed Runtime/link release and the floating default. Independent SptInf RTTI,
+real zero initialization, aggregate flag storage, allocation-free node contract,
+PMR ownership and destruction before slot-1 locking establish the protocol.
+The complete Manager destructor includes its five natural compiler INT3 bytes;
+its 29-byte EH handler and 36-byte zero-state FuncInfo strictly replay. Folded
+position/node/default-slot and complete vector/destroy_at support add no duplicate
+credit. See EXACT_ECL_RUNTIME_LIFETIME_RECONSTRUCTION.md.
+
+The frozen graph strictly replays 534 units /98 objects /94,647 disjoint bytes.
+Origins are 461 pending /9 library /64 authored, with 16,948 authored bytes
+unchanged. All 44 public tests pass, including actual lifecycle/reset/default
+slots, three-node async disposal, stale sentinel validity, scalar/virtual cleanup,
+resource capture/release order and independent cross-thread lock observation.
+The argument test now runs real production Runtime/Manager lifetimes; bounded
+whole tick/call/Enemy fixtures retain their declared game interfaces. Three
+complete reference associations close; all 6,945 reviews remain terminal,
+160 absorbed. Whole resource append/getter/include, actual variable/Player/Session
+owners, process startup, 41 KB Enemy root and whole-game link/runtime stay open.
+
+Full private include516 retains four constant byte-index lowering differences;
+new getter expression probes retain full nonexact evidence. A generated Enemy
+literal label changed after header refinement: independently verified original
+source/COFF/native string identity binds SG111257 to existing native570420.
+The cold tail reuses current receipts and builds only missing objects. Source is
+frozen. Configuration/registration writers are completed; NEVER rerun.
+
+Protected cleanup retires 20 completed probe object/receipt files /650,871 bytes.
+All 196 canonical hashes remain unchanged. Five inactive successful replay JSON
+snapshots are losslessly archived as .json.gz, saving a further 3,671,244 bytes;
+original content/hash roundtrips are verified and native/failed evidence remains
+intact. This batch frees 4,322,115 bytes (4.12 MiB). Cumulative obsolete-product
+retirement is 2,488 files /1,001,021,841 bytes; archival savings are recorded
+separately. build is 4.2 MiB, analysis about 79 MiB, installed tools 4.2 GiB.
+Cleanup/archival writers are completed; NEVER rerun. Strict existing-object
+replay verifies cleanup without another unchanged cold build. Keep English,
+repo-python, attested Ghidra, no REA/subagents, serial nice 15 and periodic cleanup.
+The full reconstruction goal remains active.
+
 ## EXACT-070 — 2026-10-08 — Whole ECL argument and tagged stack protocol
 
 Fifteen whole functions add 2,886 bytes: actual current instruction lookup,

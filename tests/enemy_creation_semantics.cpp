@@ -16,16 +16,17 @@ th20::EnemySpawn* expected_parameters;
 }
 
 namespace th20 {
-// Fixtures supply only unresolved production startup, pool/context selection,
-// subroutine lookup and the whole spawn-application boundary. Actual creation,
-// initialization, state/reset, generation, lists and selection run unchanged.
+// Deliberate fixtures supply VM construction/default slots, production startup,
+// pool/context selection, subroutine lookup and the spawn-application boundary.
+// Actual creation, initialization, state/reset, generation, lists and selection
+// run unchanged; the real VM lifetime has its own owned test.
 LockRegistry process_locks;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator = &allocator;
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
 EclScriptPosition::EclScriptPosition() : subroutine(0), offset(0) {}
-EclRuntime::EclRuntime() : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags(0) {}
+EclRuntime::EclRuntime() : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags{} {}
 EclManager::EclManager() : field_04(0), field_08(0), current_runtime(&main), loader(nullptr) {}
 EclManager::~EclManager() = default;
 Enemy::~Enemy() = default;
@@ -119,13 +120,13 @@ int main() {
     assert(first->children.next == &second->parent_link && first->children.tail == &second->parent_link);
     assert(second->parent() == first);
     // Reset retains independent flags/rank while clearing active script storage.
-    first->main.flags = 0xa5; first->main.rank = 0x7e;
+    first->main.flags.bits = 0xa5; first->main.rank = 0x7e;
     first->main.stack.words.assign(300, 0x12345678);
     first->main.stack.pointer = 123; first->main.stack.frame_base = 44;
     first->main.interpolators.resize(2);
     first->main.signal = 19;
     first->reset();
-    assert(first->main.flags == 0xa4 && first->main.rank == 0x7e && first->main.signal == 0);
+    assert(first->main.flags.bits == 0xa4 && first->main.rank == 0x7e && first->main.signal == 0);
     assert(first->main.async_id == -1 && first->main.manager == first && first->main.interpolators.empty());
     assert(first->main.position.subroutine == -1 && first->main.position.offset == -1);
     assert(first->main.stack.words.empty() && first->main.stack.words.capacity() >= 300);

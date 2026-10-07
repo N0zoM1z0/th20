@@ -522,3 +522,13 @@ th20::EclRuntime::float_destination_at
 th20::ScriptStack::push
 th20::ScriptStack::pop
 th20::ScriptStack::peek
+th20::EclRuntime::EclRuntime
+th20::EclRuntime::~EclRuntime
+th20::EclRuntime::scalar_deleting_destructor
+th20::EclManager::EclManager
+th20::EclManager::~EclManager
+th20::EclManager::scalar_deleting_destructor
+th20::EclManager::terminate_async
+th20::DiagnosticAllocator::release_object<EclRuntime>
+th20::DiagnosticAllocator::release_object<IntrusiveLink<EclRuntime>>
+th20::EclManager::read_float

@@ -18,6 +18,16 @@ public:
     void* allocate_bytes(std::int32_t size, const char* label);
     void release_bytes(void* memory);
 
+    // Destroy outside the lock, then release scalar storage under slot 1.
+    // Null is a no-op; process startup remains an external dependency.
+    template<class T>
+    void release_object(T* memory) {
+        if (!memory) return;
+        std::destroy_at(memory);
+        std::lock_guard<std::recursive_mutex> guard(process_locks.slot(1));
+        ::operator delete(memory);
+    }
+
     // Native 0041F7C0: virtual callback destruction followed by locked delete.
     // The complete callback vtable and this dependency body remain pending.
     void release_animation_callback(AnimationCallback* callback);

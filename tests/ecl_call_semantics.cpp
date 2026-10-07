@@ -56,7 +56,7 @@ void check_arguments(const th20::ScriptStack& stack, std::size_t first) {
 namespace th20 {
 EclScriptPosition::EclScriptPosition() : subroutine(-1), offset(-1) {}
 EclRuntime::EclRuntime()
-    : time(0), async_id(-1), manager(nullptr), signal(-1), rank(0), flags(0) {}
+    : time(0), async_id(-1), manager(nullptr), signal(-1), rank(0), flags{} {}
 EclManager::EclManager()
     : field_04(0), field_08(0), current_runtime(&main), loader(nullptr) {}
 EclManager::~EclManager() = default;

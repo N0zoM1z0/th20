@@ -13,7 +13,8 @@ std::vector<int> reads;
 th20::Animation* selected;
 }
 namespace th20 {
-// Owned fixtures only for unresolved startup, ECL reading and renderer lookup.
+// Deliberate fixtures bound VM construction/default slots, startup, ECL reading
+// and renderer lookup. The real VM lifetime has its own owned test.
 // Production EnemyScript forwarding, state lifetime, dispatcher and every
 // animation parameter body execute unchanged.
 LockRegistry process_locks;
@@ -23,7 +24,7 @@ DiagnosticAllocator* process_allocator = &allocator;
 void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) { assert(!p); }
 const Matrix4 identity_matrix = [] { Matrix4 m; for (int i=0;i<4;++i) m.elements[i][i]=1; return m; }();
 EclScriptPosition::EclScriptPosition() : subroutine(0), offset(0) {}
-EclRuntime::EclRuntime() : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags(0) {}
+EclRuntime::EclRuntime() : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags{} {}
 EclManager::EclManager() : field_04(0), field_08(0), current_runtime(nullptr), loader(nullptr) {}
 EclManager::~EclManager() = default;
 Enemy::~Enemy() = default;

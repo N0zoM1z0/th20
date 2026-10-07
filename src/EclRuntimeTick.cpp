@@ -69,12 +69,12 @@ check_time:
             }
             case 18: {
                 auto* link=manager->find_runtime(integer_argument(0));
-                if(link) link->node_value()->flags |= 1;
+                if(link) link->node_value()->flags.bits |= 1;
                 break;
             }
             case 19: {
                 auto* link=manager->find_runtime(integer_argument(0));
-                if(link) link->node_value()->flags &= ~1u;
+                if(link) link->node_value()->flags.bits &= ~1u;
                 break;
             }
             case 20: {

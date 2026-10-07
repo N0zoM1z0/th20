@@ -1,4 +1,5 @@
 #include "EclRuntime.hpp"
+#include "DiagnosticAllocator.hpp"
 
 #include <array>
 #include <bit>
@@ -53,21 +54,12 @@ struct Resource : std::pmr::memory_resource {
 };
 }
 
-// Explicit unresolved boundaries: original Runtime/Manager construction,
-// resource instruction lookup and game variable dispatch. Real current(), all
-// eleven resolvers, Stack copy/access/lifetime and base loader lifetime run here.
+// Explicit unresolved boundaries: resource instruction lookup and derived game
+// variable dispatch. Real Runtime/Manager construction and lifetime, current(),
+// all eleven resolvers, stack protocol and base loader lifetime run here.
 namespace th20 {
-EclScriptPosition::EclScriptPosition() : subroutine(-1), offset(-1) {}
-EclRuntime::EclRuntime()
-    : time(0), async_id(-1), manager(nullptr), signal(-1), rank(0), flags(0) {}
-EclManager::EclManager()
-    : field_04(0), field_08(0), current_runtime(&main), loader(nullptr) {}
-EclManager::~EclManager() = default;
-std::int32_t EclManager::execute_opcode() { return 0; }
-std::int32_t EclManager::read_integer(std::int32_t) { return 0; }
-float EclManager::read_float(std::int32_t) { return 0; }
-std::int32_t* EclManager::integer_destination(std::int32_t) { return nullptr; }
-float* EclManager::float_destination(std::int32_t) { return nullptr; }
+LockRegistry process_locks;
+DiagnosticAllocator* process_allocator = nullptr;
 EclInstruction* EclLoader::instruction(std::int32_t subroutine, std::int32_t offset) {
     ++loader_calls; seen_subroutine = subroutine; seen_offset = offset;
     return &record.instruction;
@@ -159,6 +151,7 @@ void check_runtime() {
     runtime.manager = &manager;
     manager.loader = &loader;
     loader_calls = 0;
+    runtime.position.offset = -1;
     assert(runtime.current() == nullptr && loader_calls == 0);
     runtime.position.subroutine = 7;
     assert(runtime.current() == nullptr && loader_calls == 0);

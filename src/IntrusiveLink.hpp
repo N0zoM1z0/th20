@@ -11,7 +11,7 @@ template<class T> struct IntrusiveLink {
     IntrusiveLink* previous;
     IntrusiveList<T>* owner;
     IntrusiveIterator<T>* iterator;
-    IntrusiveLink();
+    IntrusiveLink() noexcept;
     explicit IntrusiveLink(T* value);
     void insert_after(IntrusiveLink* added);
     void insert_before(IntrusiveLink* added);
@@ -49,7 +49,7 @@ template<class T> struct IntrusiveIterator {
     bool differs(const IntrusiveIterator* other) const;
     IntrusiveLink<T>* get();
 };
-template<class T> IntrusiveLink<T>::IntrusiveLink() : node(nullptr),next(nullptr),previous(nullptr),owner(nullptr),iterator(nullptr) {}
+template<class T> IntrusiveLink<T>::IntrusiveLink() noexcept : node(nullptr),next(nullptr),previous(nullptr),owner(nullptr),iterator(nullptr) {}
 template<class T> IntrusiveLink<T>::IntrusiveLink(T* input) : node(input),next(nullptr),previous(nullptr),owner(nullptr),iterator(nullptr) {}
 template<class T> void IntrusiveLink<T>::insert_after(IntrusiveLink* added) {
     if(next) {added->next=next;next->previous=added;} next=added;added->owner=owner;added->previous=this;

@@ -23,7 +23,7 @@ void EclManager::reset() {
     main.position.subroutine = -1;
     main.async_id = -1;
     main.manager = this;
-    main.flags &= ~1u;
+    main.flags.bits &= ~1u;
     main.signal = 0;
     main.interpolators.clear();
     current_runtime = &main;

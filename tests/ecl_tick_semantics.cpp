@@ -70,7 +70,7 @@ template<class T> void push(th20::ScriptStack& stack, T value, char tag) {
 namespace th20 {
 EclScriptPosition::EclScriptPosition() : subroutine(-1), offset(-1) {}
 EclRuntime::EclRuntime()
-    : time(0), async_id(-1), manager(nullptr), signal(-1), rank(0), flags(0) {}
+    : time(0), async_id(-1), manager(nullptr), signal(-1), rank(0), flags{} {}
 EclManager::EclManager()
     : field_04(0), field_08(0), current_runtime(&main), loader(nullptr) {}
 EclManager::~EclManager() = default;
@@ -228,7 +228,7 @@ int main() {
     found_runtime = &link;
     load(runtime, {record(18), record(20), record(19), record(17), future});
     program[1].arguments[1] = 42;
-    assert(runtime.tick(1) == 0 && child.flags == 0 && child.signal == 42 && child.position.offset == -1);
+    assert(runtime.tick(1) == 0 && child.flags.bits == 0 && child.signal == 42 && child.position.offset == -1);
 
     // Exercise real scalar interpolation sampling through the tick tail and
     // recovery of saved instruction/frame address, not a fake sample result.

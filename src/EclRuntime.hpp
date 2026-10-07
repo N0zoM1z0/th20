@@ -43,6 +43,11 @@ struct EclScriptInterpolation : FloatInterpolation {
 
 class EclManager;
 
+// Aggregate flag storage preserves the observed four-byte initialization.
+// The original source type name remains unknown.
+struct EclRuntimeFlags { std::uint32_t bits; };
+static_assert(sizeof(EclRuntimeFlags) == 4);
+
 struct EclRuntime {
     float time;
     EclScriptPosition position;
@@ -52,8 +57,7 @@ struct EclRuntime {
     std::int32_t signal;
     std::uint8_t rank;
     std::pmr::vector<EclScriptInterpolation> interpolators;
-    // Word layout is established; the native construction wrapper remains open.
-    std::uint32_t flags;
+    EclRuntimeFlags flags;
 
     EclRuntime();
     EclInstruction* current();

@@ -20,6 +20,7 @@ class EclArgumentsTests(unittest.TestCase):
                 "-fno-strict-aliasing", "-fsanitize=undefined", "-Isrc",
                 "tests/ecl_arguments_semantics.cpp", "src/EclArguments.cpp",
                 "src/ScriptStackCopy.cpp", "src/ScriptStack.cpp", "src/EclLoaderBase.cpp",
+                "src/EclRuntimeLifetime.cpp", "src/LockRegistry.cpp", "-pthread",
                 "-o", str(output),
             ], cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True, timeout=10)

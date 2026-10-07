@@ -523,3 +523,13 @@ th20::EclRuntime::float_destination_at,0x0053E7C0,function
 th20::ScriptStack::push,0x0053F260,function
 th20::ScriptStack::pop,0x0053F0B0,function
 th20::ScriptStack::peek,0x00540450,function
+th20::EclRuntime::EclRuntime,0x004A3580,function
+th20::EclRuntime::~EclRuntime,0x0048B8D0,function
+th20::EclRuntime::scalar_deleting_destructor,0x0048BEE0,function
+th20::EclManager::EclManager,0x004A35F0,function
+th20::EclManager::~EclManager,0x004A3CE0,function
+th20::EclManager::scalar_deleting_destructor,0x004A4120,function
+th20::EclManager::terminate_async,0x004973C0,function
+th20::DiagnosticAllocator::release_object<EclRuntime>,0x0048AFA0,function
+th20::DiagnosticAllocator::release_object<IntrusiveLink<EclRuntime>>,0x00413B70,function
+th20::EclManager::read_float,0x004AB070,function
