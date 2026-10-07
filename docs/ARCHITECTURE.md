@@ -1,5 +1,12 @@
 # Target inventory and initial architecture boundary
 
+CORE-055 audits both complete ECL and Enemy dispatch intervals and tables and
+corroborates Runtime72, Manager112, ScriptInterpolation56 and Loader564. The
+whole ECL compiler hypothesis remains private and nonexact. Ghidra's Enemy
+function membership omits 8,842 existing case instructions; read-only interval
+exports recover them. See CORE_ECL_DISPATCH_RECONSTRUCTION.md. This checkpoint
+adds no accepted source or exact coverage.
+
 EXACT-054 closes signed block decryption, the persistent LZSS decoder, seven
 shared compression-tree operations and actual malloc/array/PMR allocation:
 sixteen complete bodies add 2,676 bytes. All 393 units / 70 cold objects / 61,579

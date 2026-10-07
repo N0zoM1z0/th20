@@ -4,6 +4,7 @@
 
 import ghidra.app.script.GhidraScript;
 import ghidra.program.model.address.Address;
+import ghidra.program.model.address.AddressSet;
 import ghidra.program.model.listing.Data;
 import ghidra.program.model.listing.DataIterator;
 import ghidra.program.model.listing.Function;
@@ -107,6 +108,37 @@ public class QueryProgram extends GhidraScript
         if (iterator.hasNext())
             output.printf("[truncated after %d instructions]%n", maximum);
         output.println();
+    }
+
+    // Large switches can have valid case code outside Ghidra's inferred body.
+    // Read existing instructions throughout the requested interval; never create
+    // instructions, change function ownership or mutate target memory.
+    private void writeDisassemblyRange(PrintWriter output, Address start,
+        Address end, int maximum) throws Exception
+    {
+        if (!start.getAddressSpace().equals(end.getAddressSpace()) ||
+            start.compareTo(end) > 0 ||
+            !currentProgram.getMemory().contains(start) ||
+            !currentProgram.getMemory().contains(end))
+            throw new IllegalArgumentException("invalid mapped instruction interval");
+        output.printf("range: %s..%s%n", formattedAddress(start), formattedAddress(end));
+        InstructionIterator iterator = currentProgram.getListing().getInstructions(
+            new AddressSet(start, end), true);
+        int count = 0;
+        while (iterator.hasNext() && count < maximum)
+        {
+            monitor.checkCancelled();
+            Instruction instruction = iterator.next();
+            StringBuilder encoded = new StringBuilder();
+            for (byte value : instruction.getBytes())
+                encoded.append(String.format("%02X", value & 0xff));
+            output.printf("%s  %-20s  %s%n", formattedAddress(instruction.getAddress()),
+                encoded.toString(), instruction.toString());
+            count++;
+        }
+        if (iterator.hasNext())
+            output.printf("[truncated after %d instructions]%n", maximum);
+        output.printf("listed_instructions: %d%n%n", count);
     }
 
     private static List<Function> sorted(Set<Function> functions)
@@ -278,6 +310,14 @@ public class QueryProgram extends GhidraScript
                 int maximum = positive(args[2], "instruction count");
                 for (int i = 3; i < args.length; ++i)
                     writeDisassembly(output, toAddr(args[i]), maximum);
+            }
+            else if (operation.equals("disassemble_range"))
+            {
+                if (args.length != 5)
+                    throw new IllegalArgumentException(
+                        "disassemble_range requires COUNT START INCLUSIVE_END");
+                writeDisassemblyRange(output, toAddr(args[3]), toAddr(args[4]),
+                    positive(args[2], "instruction count"));
             }
             else if (operation.equals("callers") || operation.equals("callees"))
             {

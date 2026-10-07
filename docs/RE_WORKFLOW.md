@@ -27,9 +27,9 @@ one writable session. Ghidra and compiler wrappers serialize their operations.
    Keep raw decompiler text and temporary hypotheses under `.analysis/`.
 3. Form a semantic and ABI hypothesis. Preserve uncertain names, types,
    ownership and object boundaries as unknowns.
-4. Compile a small natural C/C++ probe with the pinned x86 compiler and explicit
-   flags. Runtime/library origins need independent evidence; auto-analysis
-   does not classify authorship.
+4. Compile a natural C/C++ probe for the complete selected function with the
+   pinned x86 compiler and explicit flags. Runtime/library origins need
+   independent evidence; auto-analysis does not classify authorship.
 5. Compare instructions, stack/register behavior, complete extents and
    relocations. Diagnostic structural-exact excludes relocation fields and
    therefore does not establish exactness.
@@ -50,3 +50,16 @@ Replay every affected unit after a shared header, profile, translation-unit,
 layout or relocation-anchor change. Profiles are per source/unit, not a global
 assumption. Exact source, semantic acceptance, link coherence and runtime
 behavior remain independent acceptance gates.
+
+## Large dispatcher evidence
+
+Function-based Ghidra exports can omit valid switch cases even without output
+truncation. Use `query OUTPUT disassemble_range COUNT START INCLUSIVE_END` to
+read the existing listing throughout an independently reconciled interval.
+This operation neither defines missing instructions nor changes function bodies.
+Then use `scripts/audit-dispatcher.py` with the complete PE interval, explicit
+pointer table, optional compressed index table and that export. Review omissions
+and external branches; no source, boundary ownership or exact claim follows
+automatically. See CORE_ECL_DISPATCH_RECONSTRUCTION.md for both current roots
+and reproducible commands. Keep whole compiler contributions, associated tables
+and all unreferenced failure/exit paths in subsequent comparisons.

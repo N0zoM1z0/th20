@@ -1,5 +1,11 @@
 # Source and build ownership
 
+CORE-055 retains whole ECL and Enemy dispatch compiler/owner hypotheses under
+ignored .analysis. No production dispatcher source or exact unit is accepted;
+the accepted graph below remains unchanged. Native owner layouts, call contracts
+and missing Ghidra function membership are recorded in
+CORE_ECL_DISPATCH_RECONSTRUCTION.md.
+
 EXACT-054 adds sixteen archive/allocator bodies / 2,676 complete comparison
 bytes. All 393 units / 70 cold objects / 61,579 disjoint bytes strictly replay.
 ArchiveCrypt.cpp retains its counted-name helper and adds signed decryption;

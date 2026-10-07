@@ -1,5 +1,46 @@
 # Current reconstruction handoff
 
+## CORE-055 — 2026-10-07 — Whole ECL and Enemy dispatcher investigation
+
+The user's current priority is complete core dispatchers; defer unrelated leaves.
+No EXACT055 source or exact unit is accepted. EXACT054 remains 393 units /
+70 cold objects / 61,579 disjoint comparison bytes, with authored 62 / 4,915.
+Public src/probes have not changed since that complete cold replay.
+See CORE_ECL_DISPATCH_RECONSTRUCTION.md for evidence and reproduction commands.
+
+ECL tick 0053B5C0 is completely audited: 11,110 body bytes, 2,525 instructions,
+98 table pointers / 76 distinct case heads, 288 direct calls / 52 dependencies.
+Retain its two alignment bytes and entire 392-byte table, totaling 11,504 bytes.
+The private whole C++ member compiles with actual Runtime72 / Manager112 /
+Stack24 / ScriptInterpolation56 / Loader564 assertions. Argument order, shared
+stack expressions, scoped return restoration and the delegated status protocol
+have been reconciled progressively. Complete source acceptance, native local
+placement/temporary lifetime, relocation replay and dependency/startup ownership
+remain pending. Exact-size or case-shape diagnostics cannot promote this root.
+
+EnemyState execute 0048C010 is completely audited: 41,967 body bytes / 8,896
+instructions, 174 primary table entries plus 704 compressed opcode indices,
+1,264 direct calls / 236 dependencies. Ghidra's inferred function contains only
+54 heads. New read-only disassemble_range exports all 8,896 existing listing
+heads without editing database ownership. ECL still has 80 undefined listing
+heads; the complete PE audit explicitly retains them. Enemy wrapper4969E0/25
+adjusts the receiver by88; the large body belongs to EnemyState, not Enemy.
+
+New audit-dispatcher.py checks complete PE decoding, independently supplied
+tables, compressed indices and Ghidra/PE agreement while reporting missing heads
+and outside branches. It grants no source/exact credit and writes raw reports
+only under .analysis. Three synthetic rejection/coverage tests pass, and all28
+public tests pass locally. Optional decoder tests skip when the pinned package
+is absent from a public checkout. Real audits and both range exports pass;
+target/tracking/progress gates pass. Preserve the locked target and full database.
+
+Private work is .analysis/exact055-ecl-probe.hpp/.cpp and complete compile/case
+diagnostics; no raw source/export/object is public. Read the current private
+exact055-resume.md before continuing. NEVER RERUN stamped EXACT054 or earlier
+configure/registration writers. All prior authorizations and rules persist:
+active native goal, English, repo-python, serial compiler, no subagents,
+gpt-6.1-sol: commits and authorized public main push.
+
 ## EXACT-054 — 2026-10-07 — Archive codecs and allocation protocol
 
 Sixteen complete bodies add 2,676 instruction/comparison bytes. All 393 units /

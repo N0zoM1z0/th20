@@ -24,6 +24,8 @@ packages or change the working directory.
 | Attest exact target | `scripts/repo-python scripts/verify-target.py` | SHA-256/MD5/size/PE/section hashes |
 | Attest Ghidra database | `scripts/repo-python scripts/ghidra.py check` | original file bytes, loaded metadata and complete mapped code |
 | Inspect target semantics | `scripts/repo-python scripts/ghidra.py query/decompile` | attested read-only view; provisional meanings |
+| Inspect complete instruction interval | `scripts/repo-python scripts/ghidra.py query OUTPUT disassemble_range COUNT START INCLUSIVE_END` | existing listing, independent of inferred function membership; no database changes |
+| Audit whole dispatcher and tables | `scripts/repo-python scripts/audit-dispatcher.py --help` | locked PE, explicit complete interval/tables and Ghidra export; no exact credit |
 | Rank target-wide leads | `scripts/repo-python scripts/ghidra.py architecture` | private metrics, no automatic source/origin promotion |
 | Compile explicit probe | `scripts/compile-probe.sh SOURCE build/OUTPUT.obj FLAGS...` | x86 COFF + freshness receipt |
 | Compile configured unit | `scripts/repo-python scripts/build.py --unit NAME` | pinned compiler, explicit unit profile |
@@ -36,7 +38,9 @@ packages or change the working directory.
 
 `.venv` pins pefile/capstone for raw-PE/disassembly experiments and Tree-sitter
 0.25.2/C++ grammar 0.23.4 for the explicit reference-body inventory. The
-control plane and public tests use Python's standard library. reccmp 0.1.6 and
+control plane runs with Python's standard library. Decoder and reference-parser
+tests additionally exercise the pinned optional packages when present; a public
+checkout without those packages skips these optional tests. reccmp 0.1.6 and
 objdiff 3.8.0 are supporting navigation/diff tools; the canonical exact gate is
 the relocation-aware comparator. `objdiff.json` starts empty until reference
 objects are independently prepared; its build routing is configured.
