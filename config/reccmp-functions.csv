@@ -362,3 +362,12 @@ th20::DamageRegion::DamageRegion,0x004BFFB0,function
 th20::DamageRegion::update,0x004C03D0,function
 th20::Motion::position_copy,0x0048BD70,function
 th20::Vector3::operator/=,0x004C0240,function
+th20::FunctionChainNode::FunctionChainNode,0x00411A70,function
+th20::FunctionChainNode::shutdown_callback_value,0x00411700,function
+th20::FunctionChainNode::userdata_value,0x00412710,function
+th20::LockRegistry::LockRegistry,0x00452E00,function
+th20::LockRegistry::slot,0x0040C310,function
+th20::LockRegistry::enter_tracked,0x00412550,function
+th20::LockRegistry::leave_tracked,0x00412750,function
+th20::GameRandom::next,0x00423EE0,function
+th20::GameRandom::seed,0x004D9940,function

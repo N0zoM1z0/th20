@@ -102,7 +102,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040C280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C2D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C300,unknown,Identifier32,review,pending,"EXACT-050: Damage Region routing/configuration and shared value protocols. Complete receiver flow/AL-bool/full-EAX/RET ABI, actual196-byte Region with72-byte Motion, five shape routes, configuration preservation/alias order and independent callee anchors audited. Cold strict replay343units/65objects/55692disjointbytes and public C++20/UBSan routing/state/alias checks pass. Constructor EH/controller lifetime/names/origins pending. See docs/EXACT_DAMAGE_REGION_RECONSTRUCTION.md."
-0x0040C310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040C310,unknown,LockRegistry,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x0040C340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C3D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -328,7 +328,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00411610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004116B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00411700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00411700,unknown,FunctionChain,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x00411720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411790,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004117A0,unknown,Identifier32,review,pending,"EXACT-050: Damage Region routing/configuration and shared value protocols. Complete receiver flow/AL-bool/full-EAX/RET ABI, actual196-byte Region with72-byte Motion, five shape routes, configuration preservation/alias order and independent callee anchors audited. Cold strict replay343units/65objects/55692disjointbytes and public C++20/UBSan routing/state/alias checks pass. Constructor EH/controller lifetime/names/origins pending. See docs/EXACT_DAMAGE_REGION_RECONSTRUCTION.md."
@@ -341,7 +341,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00411960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411970,authored,FunctionChain,authored,high,REF-002
 0x004119B0,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
-0x00411A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00411A70,unknown,FunctionChain,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x00411B00,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x00411B80,authored,FunctionChain,authored,high,REF-002
 0x00411BB0,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
@@ -366,11 +366,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00412400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004124B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412540,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
-0x00412550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412550,unknown,LockRegistry,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x004125B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00412710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412710,unknown,FunctionChain,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x00412730,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
-0x00412750,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412750,unknown,LockRegistry,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x004127B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004127F0,authored,FunctionChain,authored,high,REF-002
 0x00412810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -770,7 +770,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00423BD0,unknown,Timer,review,pending,"REF-021; Actual sixteen-byte Timer member independently observed in complete ScreenInf update callers. Fraction returns offset8 through x87 ST0, no arguments, complete17 bytes. Signed <= predicate reads current4, returns bool AL/full MOVZX, RET4, complete46 bytes. Natural shared member bodies; original spelling and authored/shared/compiler/library origin pending."
 0x00423BF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00423EA0,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
-0x00423EE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00423EE0,unknown,GameRandomStream,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x00423F50,authored,Timer,authored,high,REF-001
 0x00423F80,authored,Timer,authored,high,REF-001
 0x00423FE0,authored,Timer,authored,high,REF-002
@@ -1419,7 +1419,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00452D60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452DD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00452E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00452E00,unknown,LockRegistry,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x00452E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452EE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4036,7 +4036,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D97F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D9940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D9940,unknown,GameRandomStream,review,pending,"EXACT-052: Shared FunctionChainNode construction/access, real recursive-mutex registry and locked GameRandom seed/next protocol. Complete native boundaries, callers, mutex/engine dependencies and independent relocation anchors audited. Full cold strict replay 372 units/67 objects/58232 disjoint bytes; owned C++20/UBSan recursion, cross-thread locking and seeded stream checks pass. Origin remains unknown; controller dispatch, iterator initialization policy and production global/thread lifetime stay pending. See docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md."
 0x004D99D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9B50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

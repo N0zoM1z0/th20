@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 363 mapped component functions across 66 comparison objects |
+| Source | 372 mapped component functions across 67 comparison objects |
 | Authored exactness | 57 functions, 4,074 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -67,6 +67,7 @@ are excluded from Git.
 | Timer construction and wrappers | Nine additional complete exact members, including fractional age and signed <=; source spelling and origin review remain open |
 | Colored vertex construction | Complete 43-byte exact constructor for the actual 20-byte value; source spelling and origin review remain open |
 | Trophy messages | Exact shared-buffer decoder and typed record reset; full resource/parser/owner lifetime remains open |
+| Shared locks and random stream | Node construction/access, actual recursive-mutex registry and locked seed/next: 9 new units / 693 body bytes; [evidence](docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md) |
 | Intrusive observation and Region lifetime | Shared link/list/iterator protocol and Region construction/update: 20 new units / 1,827 body bytes; [evidence](docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md) |
 | Motion update protocol | Two complete main updates and direct angle/vector/math dependencies: 18 new units / 2,572 comparison bytes; [evidence](docs/EXACT_MOTION_RECONSTRUCTION.md) |
 | Rectangle/segment geometry | All 12 related roots plus 9 direct dependencies: 21 new complete units / 10,759 bytes; [evidence](docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md) |

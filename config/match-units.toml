@@ -474,7 +474,7 @@ relocations = [
 [units.chain_set_callback]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::set_callback"]
 symbol = "?set_callback@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z"
 target_address = 0x00412D50
@@ -484,7 +484,7 @@ relocations = []
 [units.chain_set_userdata]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::set_userdata"]
 symbol = "?set_userdata@FunctionChainNode@th20@@QAEXPAX@Z"
 target_address = 0x00412D10
@@ -494,7 +494,7 @@ relocations = []
 [units.chain_set_owned]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::set_owned"]
 symbol = "?set_owned@FunctionChainNode@th20@@QAEXXZ"
 target_address = 0x00412D30
@@ -504,7 +504,7 @@ relocations = []
 [units.chain_enable]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::enable"]
 symbol = "?enable@FunctionChainNode@th20@@QAEXXZ"
 target_address = 0x00412D80
@@ -514,7 +514,7 @@ relocations = []
 [units.chain_disable]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::disable"]
 symbol = "?disable@FunctionChainNode@th20@@QAEXXZ"
 target_address = 0x004127F0
@@ -524,7 +524,7 @@ relocations = []
 [units.chain_set_before_insert]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::set_before_insert"]
 symbol = "?set_before_insert@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z"
 target_address = 0x00412DC0
@@ -534,7 +534,7 @@ relocations = []
 [units.chain_set_shutdown_callback]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::set_shutdown_callback"]
 symbol = "?set_shutdown_callback@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z"
 target_address = 0x00412DA0
@@ -544,7 +544,7 @@ relocations = []
 [units.chain_clear_callbacks]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainNode::clear_callbacks"]
 symbol = "?clear_callbacks@FunctionChainNode@th20@@QAEXXZ"
 target_address = 0x00411B80
@@ -554,7 +554,7 @@ relocations = []
 [units.chain_link_construct]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainLink::FunctionChainLink"]
 symbol = "??0?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAE@PAUFunctionChainNode@1@@Z"
 target_address = 0x00411970
@@ -564,7 +564,7 @@ relocations = []
 [units.chain_insert_after]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainLink::insert_after"]
 symbol = "?insert_after@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEXPAU12@@Z"
 target_address = 0x00411EE0
@@ -574,7 +574,7 @@ relocations = []
 [units.chain_insert_before]
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::FunctionChainLink::insert_before"]
 symbol = "?insert_before@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEXPAU12@@Z"
 target_address = 0x00411F30
@@ -584,7 +584,7 @@ relocations = []
 [units.registry_enable]
 source = "src/LockRegistry.cpp"
 object = "build/LockRegistry.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::LockRegistry::enable"]
 symbol = "?enable@LockRegistry@th20@@QAEXXZ"
 target_address = 0x0041CCC0
@@ -594,7 +594,7 @@ relocations = []
 [units.registry_disable]
 source = "src/LockRegistry.cpp"
 object = "build/LockRegistry.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::LockRegistry::disable"]
 symbol = "?disable@LockRegistry@th20@@QAEXXZ"
 target_address = 0x0041CA30
@@ -5328,4 +5328,131 @@ symbol = "??_0Vector3@th20@@QAEAAU01@M@Z"
 target_address = 0x004C0240
 size = 77
 relocations = [
+]
+
+# EXACT-052: independently reviewed node, recursive-lock and random-stream state.
+[units.chain_node_ctor]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainNode::FunctionChainNode"]
+symbol = "??0FunctionChainNode@th20@@QAE@XZ"
+target_address = 0x00411A70
+size = 138
+compare_size = 143
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0FunctionChainNode@th20@@QAE@XZ", target = 0x005679A0 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x6A, type = "REL32", symbol = "??0?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAE@PAUFunctionChainNode@1@@Z", target = 0x00411970 },
+]
+
+[units.chain_node_shutdown]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainNode::shutdown_callback_value"]
+symbol = "?shutdown_callback_value@FunctionChainNode@th20@@QAEP6AHPAX@ZXZ"
+target_address = 0x00411700
+size = 17
+relocations = [
+]
+
+[units.chain_node_userdata]
+source = "src/FunctionChain.cpp"
+object = "build/FunctionChain.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainNode::userdata_value"]
+symbol = "?userdata_value@FunctionChainNode@th20@@QAEPAXXZ"
+target_address = 0x00412710
+size = 17
+relocations = [
+]
+
+[units.lock_registry_ctor]
+source = "src/LockRegistry.cpp"
+object = "build/LockRegistry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::LockRegistry::LockRegistry"]
+symbol = "??0LockRegistry@th20@@QAE@XZ"
+target_address = 0x00452E00
+size = 61
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0?$array@Vrecursive_mutex@std@@$0BG@@std@@QAE@XZ", target = 0x00452D80 },
+]
+
+[units.lock_registry_slot]
+source = "src/LockRegistry.cpp"
+object = "build/LockRegistry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::LockRegistry::slot"]
+symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z"
+target_address = 0x0040C310
+size = 33
+relocations = [
+  { offset = 0x17, type = "REL32", symbol = "??A?$array@Vrecursive_mutex@std@@$0BG@@std@@QAEAAVrecursive_mutex@1@I@Z", target = 0x0040BBC0 },
+]
+
+[units.lock_registry_enter]
+source = "src/LockRegistry.cpp"
+object = "build/LockRegistry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::LockRegistry::enter_tracked"]
+symbol = "?enter_tracked@LockRegistry@th20@@QAEXI@Z"
+target_address = 0x00412550
+size = 94
+relocations = [
+  { offset = 0x25, type = "REL32", symbol = "??A?$array@Vrecursive_mutex@std@@$0BG@@std@@QAEAAVrecursive_mutex@1@I@Z", target = 0x0040BBC0 },
+  { offset = 0x2C, type = "REL32", symbol = "?lock@_Mutex_base@std@@QAEXXZ", target = 0x0040C470 },
+  { offset = 0x44, type = "REL32", symbol = "??A?$array@E$0BG@@std@@QAEAAEI@Z", target = 0x00411C10 },
+]
+
+[units.lock_registry_leave]
+source = "src/LockRegistry.cpp"
+object = "build/LockRegistry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::LockRegistry::leave_tracked"]
+symbol = "?leave_tracked@LockRegistry@th20@@QAEXI@Z"
+target_address = 0x00412750
+size = 95
+relocations = [
+  { offset = 0x2B, type = "REL32", symbol = "??A?$array@E$0BG@@std@@QAEAAEI@Z", target = 0x00411C10 },
+  { offset = 0x4D, type = "REL32", symbol = "??A?$array@Vrecursive_mutex@std@@$0BG@@std@@QAEAAVrecursive_mutex@1@I@Z", target = 0x0040BBC0 },
+  { offset = 0x54, type = "REL32", symbol = "?unlock@_Mutex_base@std@@QAEXXZ", target = 0x0040C660 },
+]
+
+[units.game_random_next]
+source = "src/GameRandomStream.cpp"
+object = "build/GameRandomStream.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::GameRandom::next"]
+symbol = "?next@GameRandom@th20@@QAEIXZ"
+target_address = 0x00423EE0
+size = 99
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x16, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x1B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x24, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x2F, type = "REL32", symbol = "??R?$linear_congruential_engine@I$0LMIP@$0A@$0HPPPPPPP@@std@@QAEIXZ", target = 0x004235F0 },
+  { offset = 0x4E, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x5B, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.game_random_seed]
+source = "src/GameRandomStream.cpp"
+object = "build/GameRandomStream.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::GameRandom::seed"]
+symbol = "?seed@GameRandom@th20@@QAEXI@Z"
+target_address = 0x004D9940
+size = 139
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x16, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x1B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x24, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x33, type = "REL32", symbol = "?max@?$numeric_limits@I@std@@SAIXZ", target = 0x004111E0 },
+  { offset = 0x6E, type = "REL32", symbol = "?seed@?$linear_congruential_engine@I$0LMIP@$0A@$0HPPPPPPP@@std@@QAEXI@Z", target = 0x004DDA10 },
+  { offset = 0x76, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x81, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

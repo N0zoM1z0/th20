@@ -361,3 +361,12 @@ th20::DamageRegion::DamageRegion
 th20::DamageRegion::update
 th20::Motion::position_copy
 th20::Vector3::operator/=
+th20::FunctionChainNode::FunctionChainNode
+th20::FunctionChainNode::shutdown_callback_value
+th20::FunctionChainNode::userdata_value
+th20::LockRegistry::LockRegistry
+th20::LockRegistry::slot
+th20::LockRegistry::enter_tracked
+th20::LockRegistry::leave_tracked
+th20::GameRandom::next
+th20::GameRandom::seed

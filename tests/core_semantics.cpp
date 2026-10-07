@@ -57,7 +57,7 @@ th20::Timer timer_fixture(std::int32_t previous, std::int32_t current,
 }
 
 // Wrapper tests supply one deterministic observation. This is not a maintained
-// implementation of the unresolved original lock-slot-10 sampling protocol.
+// implementation of the sampler. The actual lock/state path is tested separately.
 std::uint32_t th20::GameRandom::next() {
     ++random_sample_calls;
     return random_sample;
@@ -473,13 +473,14 @@ int main() {
 
     int context = 22;
     for (std::uint32_t flags = 0; flags != 256; ++flags) {
-        th20::FunctionChainNode node{0, 0, nullptr, nullptr, nullptr,
-                                    th20::FunctionChainLink{}, nullptr};
+        th20::FunctionChainNode node;
+        assert(node.flags.bits == 0 && node.priority == 0 && node.link.node == &node);
+        assert(!node.callback && !node.before_insert && !node.on_shutdown && !node.userdata);
         th20::FunctionChainLink link{&node};
         assert(link.node == &node && link.next == nullptr && link.previous == nullptr);
         assert(link.owner == nullptr && link.iterator == nullptr);
         node.priority = -31;
-        node.flags = flags;
+        node.flags.bits = flags;
         node.link.node = &node;
         node.link.next = &node.link;
         node.link.previous = &node.link;
@@ -487,6 +488,7 @@ int main() {
         node.set_before_insert(callback_b);
         node.set_shutdown_callback(callback_c);
         assert(node.before_insert == callback_b && node.on_shutdown == callback_c);
+        assert(node.shutdown_callback_value() == callback_c && node.userdata_value() == &context);
         node.set_callback(callback_a);
         assert(node.callback == callback_a && node.before_insert == nullptr && node.on_shutdown == nullptr);
         node.set_before_insert(callback_b);
@@ -494,11 +496,11 @@ int main() {
         node.clear_callbacks();
         assert(node.callback == nullptr && node.before_insert == nullptr && node.on_shutdown == nullptr);
         node.set_owned();
-        assert(node.flags == (flags | 1u));
+        assert(node.flags.bits == (flags | 1u));
         node.enable();
-        assert(node.flags == (flags | 3u));
+        assert(node.flags.bits == (flags | 3u));
         node.disable();
-        assert(node.flags == ((flags | 1u) & ~2u));
+        assert(node.flags.bits == ((flags | 1u) & ~2u));
         assert(node.priority == -31 && node.userdata == &context);
         assert(node.link.node == &node && node.link.next == &node.link && node.link.previous == &node.link);
     }
@@ -542,19 +544,22 @@ int main() {
     th20::TaskInfo* virtual_task = &task;
     virtual_task->enable();
     virtual_task->disable();
-    th20::FunctionChainNode update{0, 0xffffffffu, callback_a, callback_b, callback_c,
-                                  th20::FunctionChainLink{}, &context};
-    th20::FunctionChainNode draw{0, 0x12345678u, callback_a, callback_b, callback_c,
-                                th20::FunctionChainLink{}, &context};
+    th20::FunctionChainNode update, draw;
+    update.flags.bits = 0xffffffffu;
+    draw.flags.bits = 0x12345678u;
+    update.callback = draw.callback = callback_a;
+    update.before_insert = draw.before_insert = callback_b;
+    update.on_shutdown = draw.on_shutdown = callback_c;
+    update.userdata = draw.userdata = &context;
     task.update_node = &update;
     virtual_task->disable();
-    assert(update.flags == 0xfffffffdu && draw.flags == 0x12345678u);
+    assert(update.flags.bits == 0xfffffffdu && draw.flags.bits == 0x12345678u);
     task.draw_node = &draw;
     virtual_task->enable();
-    assert(update.flags == 0xffffffffu && draw.flags == 0x1234567au);
+    assert(update.flags.bits == 0xffffffffu && draw.flags.bits == 0x1234567au);
     task.update_node = nullptr;
     virtual_task->disable();
-    assert(update.flags == 0xffffffffu && draw.flags == 0x12345678u);
+    assert(update.flags.bits == 0xffffffffu && draw.flags.bits == 0x12345678u);
     assert(task.flags == 2 && callback_calls == 0);
     assert(update.callback == callback_a && draw.userdata == &context);
 }

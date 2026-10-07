@@ -363,3 +363,12 @@ address,name,module,confidence,evidence
 0x004C03D0,th20::DamageRegion::update,DamageRegion,high,EXACT-051; docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md
 0x0048BD70,th20::Motion::position_copy,Motion,high,EXACT-051; docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md
 0x004C0240,th20::Vector3::operator/=,Vector3,high,EXACT-051; docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md
+0x00411A70,th20::FunctionChainNode::FunctionChainNode,FunctionChain,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x00411700,th20::FunctionChainNode::shutdown_callback_value,FunctionChain,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x00412710,th20::FunctionChainNode::userdata_value,FunctionChain,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x00452E00,th20::LockRegistry::LockRegistry,LockRegistry,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x0040C310,th20::LockRegistry::slot,LockRegistry,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x00412550,th20::LockRegistry::enter_tracked,LockRegistry,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x00412750,th20::LockRegistry::leave_tracked,LockRegistry,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x00423EE0,th20::GameRandom::next,GameRandomStream,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x004D9940,th20::GameRandom::seed,GameRandomStream,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md

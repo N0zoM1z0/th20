@@ -1,5 +1,37 @@
 # Verified facts and open hypotheses
 
+## EXACT-052 — 2026-10-07 — shared locks and random stream state
+
+- Nine complete contributions add 693 body bytes and five constructor alignment
+  bytes. All 372 units / 67 cold objects / 58,232 disjoint complete comparison
+  bytes strictly replay. Source 372 / pending origins 311 / library 4;
+  authored 57 / 4,074 is unchanged. See EXACT_LOCK_RANDOM_RECONSTRUCTION.md.
+- FunctionChainNode is 44 bytes; its flags are one four-byte aggregate word.
+  Default nonthrowing construction retains typed link observation and shared
+  handler/FuncInfo flags 5. Shutdown callback and userdata accessors close.
+- LockRegistry is 0x438 bytes on x86: 22 recursive mutexes, 22 byte depths at
+  0x420 and enabled at 0x436. Default initialization of the mutex array is
+  materially different from explicit value initialization. Tracked enter locks
+  then increments; leave decrements then unlocks, gated by enabled. Depth wraps.
+- GameRandom seed/next independently use actual lock_guard on global registry
+  slot 10 regardless of tracked-enabled state. Seed retains the original input
+  in last while std::linear_congruential_engine normalizes its state. Next
+  retains the raw sample before unsigned modulus reduction. The actual native
+  engine multiplier is 48271 and modulus 0x7fffffff.
+- /sdl supplies the native GS instrumentation for this stream translation unit
+  without extra source fields or clearing. This proves a local candidate recipe;
+  it does not identify global original build flags or source spelling.
+- Complete update/draw dispatch 611/587 bytes and jump tables independently
+  establish callback/retry/restart/shutdown/return paths. Equal priorities insert
+  before existing nodes. Two sorted insertion probes remain 371 versus 381:
+  native iterator memory initialization calls 40C080 before list begin. That
+  helper initializes memory; allocation is separate. Its source/compiler policy
+  stays unresolved; no fake constructor or redundant source clear is accepted.
+- All 23 public checks pass, including owned recursive locking, cross-thread
+  exclusion and 1,800 independently checked RNG samples. Production registry
+  startup, threads, complete controller/pool ownership and runtime remain open.
+  Configure/registration writers are stamped; never rerun them.
+
 ## EXACT-051 — 2026-10-07 — observation and nonthrowing lifetime
 
 - Native link/list/iterator producers and removal/iteration consumers establish

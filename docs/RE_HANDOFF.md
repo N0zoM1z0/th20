@@ -1,5 +1,40 @@
 # Current reconstruction handoff
 
+## EXACT-052 — 2026-10-07 — shared locks and random stream state
+
+Nine complete units add 693 body bytes and five constructor alignment bytes.
+All 372 units / 67 cold objects / 58,232 disjoint complete comparison bytes
+strictly replay after shared-header and canonical-profile changes. Source 372 /
+pending origins 311 / library 4; authored 57 / 4,074 remains unchanged. See
+EXACT_LOCK_RANDOM_RECONSTRUCTION.md for accepted functions and deferred roots.
+
+FunctionChainNode construction/access closes the actual 44-byte node. Its
+four-byte flags aggregate and nonthrowing constructor are corroborated by
+native producers, consumers and shared EH metadata. The real 22-slot recursive
+mutex registry now constructs, exposes slots and tracks enabled recursive depth.
+GameRandom seed/next use actual std::lock_guard on shared slot 10 and the real
+standard engine, retaining raw last before modulus reduction. One GS/EHsc/Gd
+profile covers each FunctionChain/LockRegistry source; GameRandomStream.cpp uses
+that profile with /sdl. This is local compiler evidence, not a whole-game claim.
+
+Native update/draw dispatch 412810/611 and 412AA0/587, their complete tables,
+both 381-byte sorted insertions and removal/allocator dependencies are reviewed.
+Insertion probes remain 371 versus 381: native zero-initialization of the real
+iterator precedes begin(). Helper 40C080 is memory initialization, not allocation.
+Its original compiler/source policy remains open; do not insert redundant clears
+or artificial empty constructors to force matching. Production registry startup,
+thread lifetime and complete controller/pool ownership also remain unresolved.
+
+Owned C++20/UBSan tests cover all 22 mutexes, 256 recursive depths, paired gated
+calls, cross-thread exclusion and 1,800 independently checked RNG samples.
+All 23 public tests, tracking, target and full Ghidra attestation pass.
+EXACT052 configure/registration writers completed once; NEVER RERUN them or
+older stamped writers. Maintained src/probes froze before full cold replay.
+The native goal remains active: continue coherent batches with substantive
+roots and immediate dependencies. English / repo-python / serial compiler /
+no subagents / `gpt-6.1-sol:` commits / authorized public main push persist.
+Earlier entries are historical checkpoints.
+
 ## EXACT-051 — 2026-10-07 — intrusive observation and Region lifetime
 
 Twenty complete units add 1,827 body bytes and 15 compiler alignment bytes.

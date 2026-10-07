@@ -1,5 +1,16 @@
 # Target inventory and initial architecture boundary
 
+EXACT-052 closes node construction/access, actual shared recursive locking and
+the random stream seed/next protocol: nine complete units / 693 body bytes plus
+five alignment bytes. All 372 units / 67 cold objects / 58,232 disjoint complete
+comparison bytes strictly replay. The registry owns 22 real std::recursive_mutex
+values and byte depths; stream operations unconditionally guard slot 10. Tests
+use an owned registry; production global/thread startup remains undefined.
+The 611/587-byte update/draw dispatchers and both 381-byte sorted insertions are
+fully reviewed but remain nonexact pending iterator initialization policy and
+controller/allocator lifetime. See EXACT_LOCK_RANDOM_RECONSTRUCTION.md.
+Earlier entries are historical checkpoints.
+
 EXACT-051 closes the actual 20-byte linked node, 24-byte sentinel list and
 8-byte current/pending observer protocol. Twenty complete contributions include
 Region nonthrowing construction/update and position/vector dependencies:

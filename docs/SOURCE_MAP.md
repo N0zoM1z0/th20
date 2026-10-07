@@ -1,5 +1,15 @@
 # Source and build ownership
 
+EXACT-052 adds node construction/access, actual recursive-mutex registry and
+locked random stream state: nine units / 693 body bytes plus five alignment
+bytes. All 372 units / 67 cold objects / 58,232 disjoint complete comparison
+bytes strictly replay. FunctionChain.cpp and LockRegistry.cpp each use one
+GS/EHsc/Gd profile; new GameRandomStream.cpp adds /sdl while the existing scalar
+GameRandom.cpp retains its recipe. There is one production seed/next body.
+The shared registry is declared but its production global startup is undefined.
+Controller dispatch, iterator initialization policy and pool lifetime remain
+pending. See EXACT_LOCK_RANDOM_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-051 adds shared intrusive observation, sentinel operations, nonthrowing
 Region construction/update and position/vector dependencies: 20 complete units /
 1,827 body bytes plus 15 compiler alignment bytes. All 363 units / 66 cold objects /
@@ -86,16 +96,16 @@ and the separate whole-game boundary.
 | Easing | src/Easing.hpp, src/Easing.cpp | dispatch454EF0 | Complete4,284-byte contribution including32-entry table; zero-duration override, unclamped ratio, polynomial/sine/calibrated back curves; origins and global compiler/CRT recipe pending |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
 | Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick, prefix increment and signed predicates | Nineteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
-| FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
+| FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion, node construction and ten field operations | Fourteen complete exact functions; allocator, iterator initialization, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
-| LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | enable 0x0041CCC0; disable 0x0041CA30 | Two exact flag assignments; tracked locking and original global lifetime pending |
+| LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | construction 0x00452E00; slot 0x0040C310; tracked enter/leave 0x00412550/0x00412750; enable/disable | Six complete exact functions on the actual 22-slot recursive-mutex owner; production global/thread lifetime pending |
 | DebugMemoryResource | src/DebugMemoryResource.hpp, src/DebugMemoryResource.cpp | constructor 0x00418DB0; destructor 0x00418E90; equality 0x0041C9F0 | Three complete exact custom PMR functions; allocation/deallocation remain undefined and this is not a linked allocator |
 | TaskInfo | src/TaskInfo.hpp, src/TaskInfo.cpp | TaskInf destructor and separate virtual/helper enable/disable entries | Five complete exact functions; native constructor and allocator-based deletion pending |
 | Worker | src/Worker.hpp, src/Worker.cpp | constructor 0x0040B780 | Exact 44-byte construction; close/join/detach and destructor remain undefined/pending |
 | ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270 | Exact 71-byte helper; parameter table selection, decryption and native archive owner remain pending |
 | InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update, three mask queries and held-frame query | Eleven complete exact functions including Replay reset/update; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |
-| GameRandom | src/GameRandom.hpp, src/GameRandom.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; engine helpers | Four authored and two library complete exact units; next/seed locking and global startup remain undefined |
+| GameRandom | src/GameRandom.hpp, src/GameRandom.cpp, src/GameRandomStream.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; seed/next 0x004D9940/0x00423EE0; engine helpers | Eight complete exact units, including two library and two pending-origin stream functions; actual slot-10 locking closes, production global startup remains undefined |
 | TrophyText | src/TrophyText.hpp, src/TrophyText.cpp | shared decoder 0x0052F060 and message id reset 0x0052F590 | Two complete exact functions; PMR encoder, parsing, record allocation and whole Trophy owner remain open |
 | WindowState | src/WindowState.hpp, src/WindowState.cpp, src/WindowApi.cpp | five field methods, system restoration, repeat reset and flags construction | Seven authored and one origin-pending complete exact units; original construction/global startup remain undefined |
 | WindowApi | src/WindowApi.cpp | foreground wrapper 0x0041B480; locale detection 0x0041D0C0 | Two complete exact units; foreground source/origin identity pending |
@@ -334,9 +344,11 @@ original 176-byte configuration, its raw-copy/load/save lifetime or fixed global
 GameRandom closes the observed 28-byte object storage using the actual uint32
 standard engine. Its default range differs from the explicitly seeded range.
 Bounded and floating wrappers preserve original calls, arithmetic and return
-ABI, but next and seed require the native tracked slot-10 locking protocol.
-They remain undefined. Portable wrapper tests explicitly supply a deterministic
-next observation and establish no linked game sampler/global startup.
+ABI. GameRandomStream.cpp supplies the complete seed/next bodies with ordinary
+std::lock_guard ownership of shared slot 10, independently of tracked locking.
+Portable wrapper tests explicitly supply a deterministic next observation;
+a separate owned-registry fixture exercises the actual sampler and seed bodies.
+Production global startup and whole-game linkage remain open.
 
 WindowState's x860x2138 storage follows independently observed global clearing,
 complete native construction and frame/path consumers. It contains real typed

@@ -20,8 +20,9 @@ struct GameRandom {
     std::uint32_t id;
 
     explicit GameRandom(std::uint32_t stream_id);
-    // Native next owns lock-slot 10 and updates last before reduction. Its
-    // complete guard/lifetime protocol remains undefined in maintained source.
+    // Both state-changing operations unconditionally own shared mutex slot 10.
+    // Sampling requires a nonzero modulus; the native DIV failure is not replaced.
+    void seed(std::uint32_t value);
     std::uint32_t next();
     std::uint32_t bounded(std::uint32_t count);
     float unit();
