@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+REF-042 establishes genuine IntegerTriple12, Matrix4 with sixteen floats,
+AnmVariables64, three Sprite vertex values and three additional instantiations
+of the shared Interpolation template. Native nested calls and array constructor
+pointers/strides corroborate actual storage. Four cdecl texel accumulators retain
+packed channel widths, alpha gating, wrapping and alias order. Thirteen new
+complete units add 1,387 bytes; all 234 units / 56 cold objects / 17,277 bytes
+exactly replay. Full Animation/Controller/Worker/VM/EH/resource owners remain
+unclosed; natural Base construction is 707 versus 725 bytes and rejected whole.
+All 540 Sprite bodies individually reviewed; global 6,640/304, grammar 96/17.
+See REFERENCE_SPRITE_REVIEW.md.
 
 REF-041 establishes genuine PlayerRecord240 through original array stride/count,
 complete constructor,64-bit score and mutating power consumers.45 setters have

@@ -35,6 +35,7 @@ class CoreSemanticsTests(unittest.TestCase):
                             "src/ProgressRecords.cpp", "src/ReplayRecords.cpp",
                             "tests/replay_record_semantics.cpp",
                             "src/EffectParameters.cpp", "src/Interpolation.cpp",
+                            "src/IntegerTriple.cpp",
                             "tests/effect_value_semantics.cpp",
                             "src/Vector2.cpp", "src/BulletValues.cpp",
                             "src/CollisionGeometry.cpp", "tests/bullet_value_semantics.cpp",

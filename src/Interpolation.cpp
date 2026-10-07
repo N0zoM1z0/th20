@@ -34,6 +34,9 @@ template<class T> void Interpolation<T>::begin(std::int32_t frames,
 
 template struct Interpolation<std::uint8_t>;
 template struct Interpolation<float>;
+template struct Interpolation<std::int32_t>;
+template struct Interpolation<IntegerTriple>;
+template struct Interpolation<Angle>;
 template struct Interpolation<Vector2>;
 template struct Interpolation<Vector3>;
 

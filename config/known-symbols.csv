@@ -221,3 +221,16 @@ address,name,module,confidence,evidence
 0x00423050,th20::PlayerRecord::PlayerRecord,PlayerRecord,high,REF-041
 0x0044C090,th20::PlayerRecord::current_score,PlayerRecord,high,REF-041
 0x004B81D0,th20::PlayerRecord::starting_power,PlayerRecord,high,REF-041
+0x00414090,th20::IntegerTriple::IntegerTriple,IntegerTriple,high,REF-042
+0x00447DC0,th20::Matrix4::Matrix4,Matrix4,high,REF-042
+0x00449110,th20::SpriteCorner::SpriteCorner,SpriteVertices,high,REF-042
+0x00449140,th20::SpriteColoredVertex::SpriteColoredVertex,SpriteVertices,high,REF-042
+0x00449170,th20::SpriteTexturedVertex::SpriteTexturedVertex,SpriteVertices,high,REF-042
+0x00449050,th20::AnmVariables::AnmVariables,AnmVariables,high,REF-042
+0x00447980,th20::IntegerInterpolation::IntegerInterpolation,Interpolation,high,REF-042
+0x00447A50,th20::IntegerTripleInterpolation::IntegerTripleInterpolation,Interpolation,high,REF-042
+0x00447BA0,th20::AngleInterpolation::AngleInterpolation,Interpolation,high,REF-042
+0x00451640,th20::accumulate_texel1555,TextureTexels,high,REF-042
+0x00451700,th20::accumulate_texel4444,TextureTexels,high,REF-042
+0x004517C0,th20::accumulate_texel8332,TextureTexels,high,REF-042
+0x00451880,th20::accumulate_texel8888,TextureTexels,high,REF-042

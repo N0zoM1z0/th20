@@ -91,7 +91,8 @@ def main():
                                 "source_reconstruction/hud_system/",
                                 "source_reconstruction/small_score/",
                                 "source_reconstruction/stage_completion/",
-                                "source_reconstruction/gameplay/")):
+                                "source_reconstruction/gameplay/",
+                                "source_reconstruction/sprite_renderer/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -123,6 +124,12 @@ def main():
             # Preserve the paths propagated by the reviewed CMake recipes.
             for directory in ("source_reconstruction/ecl_vm", "native_recovered", "include"):
                 profile.append("/IZ:" + str((reference / directory).resolve()).replace("/", "\\"))
+        if relative.startswith("source_reconstruction/sprite_renderer/"):
+            # The renderer and platform adapter request strict FP; its entry
+            # adapter is a separate target without that CMake option.
+            if Path(relative).name not in {
+                    "entry_adapter.cpp", "anm_adapter.cpp", "controller_adapter.cpp"}:
+                profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative.startswith(("source_reconstruction/text_renderer/",
                                 "source_reconstruction/options_system/",
                                 "source_reconstruction/key_config/",

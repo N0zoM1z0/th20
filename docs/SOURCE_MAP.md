@@ -2,6 +2,11 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| IntegerTriple | src/IntegerTriple.hpp, src/IntegerTriple.cpp | constructor 0x00414090 | Complete 43-byte exact constructor on a real three-integer value; original tag and enclosing ANM owner pending |
+| Matrix4 | src/Matrix4.hpp, src/Matrix4.cpp | constructor 0x00447DC0 | Complete 30-byte exact constructor on sixteen floats; matrix consumers independently observed, original spelling/origin pending |
+| Sprite vertices | src/SpriteVertices.hpp, src/SpriteVertices.cpp | constructors 0x00449110/0x00449140/0x00449170 | Three complete exact constructors on real 20/20/28-byte values; array strides/pointers independently observed, full Controller owner pending |
+| AnmVariables | src/AnmVariables.hpp, src/AnmVariables.cpp | constructor 0x00449050 | Complete 182-byte exact constructor on actual seven-integer/nine-float member; field roles/origin/full Base pending |
+| TextureTexels | src/TextureTexels.hpp, src/TextureTexels.cpp | accumulation 0x00451640/0x00451700/0x004517C0/0x00451880 | Four complete exact cdecl helpers; packed channels, alpha gate, wrapping and alias order; full texture repair/resource owner pending |
 | PlayerRecord | src/PlayerRecord.hpp, src/PlayerRecord.cpp | construction423050;43 unique setter heads;score44C090;mutating power4B81D0 | 46 full exact units3654bytes on real240-byte scalar/byte value;two alreadycanonical shared setters get no duplicate credit;original names/origins/full Table/Session/HUD owners pending |
 | EnemyHealth | src/EnemyHealth.hpp, src/EnemyHealth.cpp | construction4A3360; reset4A7310; apply4A3F80; record4AA050; positive4AB240; forced_end4AB290 | Six full exact members on real28-byte value; modulo32/signed division7 and full-EAX queries; field04 role/origin/enclosing owner pending |
 | EnemyPattern | src/EnemyPattern.hpp, src/EnemyPattern.cpp | construction4A34A0; reset4A7360; clear_counts497270 | Three full exact members on real168-byte value with two16-element arrays and Timer; native fifteen emitted kinds do not shorten arrays; origins/full drop owner pending |
@@ -19,7 +24,7 @@
 | Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
 | CollisionGeometry | src/CollisionGeometry.hpp, src/CollisionGeometry.cpp | absolute 0x00445680; circle 0x00456FE0; rectangle 0x00457300 | Three complete exact routines; negative zero/quiet-NaN sign retained, circle inclusive/rectangle strict; origins pending |
 | PackedColor / EffectParameters / EffectRequest / SelectionPulse | src/EffectParameters.hpp, src/EffectParameters.cpp | constructors 0x004142A0/0x0047BA30/0x0049CE30/0x00461840 | Four complete exact constructors on actual4/56/72x86/8-byte values; implicit padding kept, origins pending |
-| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3/Vector2 constructors0x00447B30/0x00447AC0 | Fourteen complete exact members on actual32/44/84/64-byte values; live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
+| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3/Vector2 constructors 0x00447B30/0x00447AC0; integer/IntegerTriple/Angle constructors 0x00447980/0x00447A50/0x00447BA0 | Seventeen complete exact members on actual 32/44/84/64-byte values; one semantic template body, live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
 | Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Eighteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
@@ -58,8 +63,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns fifty-one objects and one canonical profile per source.
-Two hundred twenty-one units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns fifty-six objects and one canonical profile per source.
+Two hundred thirty-four units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-032 absorbs the score-record constructor through an independently rewritten
@@ -345,3 +350,10 @@ individual decisions; all1019 Gameplay reviewed, global6100terminal/844pending,
 gaps91/22. Full221unit/51object/15890byte cold replay and24080 independent guarded
 C++20/UBSan checks pass; real Table/Session/Game/HUD/worker/resource lifetimes and
 original field names/origins remain pending. See REFERENCE_GAME_LOADING_REVIEW.md.
+
+REF-042 adds five genuine value/texel source owners and three instantiations of
+the existing Interpolation template. Thirteen complete units add 1,387 bytes;
+all 234 units cold-replay from 56 objects over 17,277 disjoint bytes. All 540
+Sprite implementations have individual decisions. Natural Base construction
+remains nonexact; full Animation/Controller/Worker/VM/resource lifetimes and
+original names/origins remain open. See REFERENCE_SPRITE_REVIEW.md.

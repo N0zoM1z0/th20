@@ -2574,3 +2574,135 @@ size = 64
 relocations = [
   { offset = 0x27, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
 ]
+
+# REF-042: native Sprite values, shared interpolation and texel channel ABI.
+
+[units.integer_triple_construct]
+source = "src/IntegerTriple.cpp"
+object = "build/IntegerTriple.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerTriple::IntegerTriple"]
+symbol = "??0IntegerTriple@th20@@QAE@XZ"
+target_address = 0x00414090
+size = 43
+relocations = []
+
+[units.matrix4_construct]
+source = "src/Matrix4.cpp"
+object = "build/Matrix4.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Matrix4::Matrix4"]
+symbol = "??0Matrix4@th20@@QAE@XZ"
+target_address = 0x00447DC0
+size = 30
+relocations = [{ offset = 0x10, type = "REL32", symbol = "_memset", target = 0x00544760 }]
+
+[units.sprite_corner_construct]
+source = "src/SpriteVertices.cpp"
+object = "build/SpriteVertices.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::SpriteCorner::SpriteCorner"]
+symbol = "??0SpriteCorner@th20@@QAE@XZ"
+target_address = 0x00449110
+size = 44
+relocations = [{ offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 }]
+
+[units.sprite_colored_vertex_construct]
+source = "src/SpriteVertices.cpp"
+object = "build/SpriteVertices.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::SpriteColoredVertex::SpriteColoredVertex"]
+symbol = "??0SpriteColoredVertex@th20@@QAE@XZ"
+target_address = 0x00449140
+size = 43
+relocations = [{ offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 }]
+
+[units.sprite_textured_vertex_construct]
+source = "src/SpriteVertices.cpp"
+object = "build/SpriteVertices.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::SpriteTexturedVertex::SpriteTexturedVertex"]
+symbol = "??0SpriteTexturedVertex@th20@@QAE@XZ"
+target_address = 0x00449170
+size = 65
+relocations = [{ offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 }]
+
+[units.anm_variables_construct]
+source = "src/AnmVariables.cpp"
+object = "build/AnmVariables.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::AnmVariables::AnmVariables"]
+symbol = "??0AnmVariables@th20@@QAE@XZ"
+target_address = 0x00449050
+size = 182
+relocations = []
+
+[units.integer_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerInterpolation::IntegerInterpolation"]
+symbol = "??0?$Interpolation@H@th20@@QAE@XZ"
+target_address = 0x00447980
+size = 94
+relocations = [{ offset = 0x3F, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 }]
+
+[units.integer_triple_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntegerTripleInterpolation::IntegerTripleInterpolation"]
+symbol = "??0?$Interpolation@UIntegerTriple@th20@@@th20@@QAE@XZ"
+target_address = 0x00447A50
+size = 97
+relocations = [{ offset = 0xB, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@XZ", target = 0x00414090 }, { offset = 0x16, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@XZ", target = 0x00414090 }, { offset = 0x21, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@XZ", target = 0x00414090 }, { offset = 0x2C, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@XZ", target = 0x00414090 }, { offset = 0x37, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@XZ", target = 0x00414090 }, { offset = 0x42, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 }]
+
+[units.angle_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::AngleInterpolation::AngleInterpolation"]
+symbol = "??0?$Interpolation@UAngle@th20@@@th20@@QAE@XZ"
+target_address = 0x00447BA0
+size = 97
+relocations = [{ offset = 0xB, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 }, { offset = 0x16, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 }, { offset = 0x21, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 }, { offset = 0x2C, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 }, { offset = 0x37, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 }, { offset = 0x42, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 }]
+
+[units.accumulate_texel1555]
+source = "src/TextureTexels.cpp"
+object = "build/TextureTexels.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::accumulate_texel1555"]
+symbol = "?accumulate_texel1555@th20@@YAXPAIPBUTexel1555@1@AAI@Z"
+target_address = 0x00451640
+size = 183
+relocations = []
+
+[units.accumulate_texel4444]
+source = "src/TextureTexels.cpp"
+object = "build/TextureTexels.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::accumulate_texel4444"]
+symbol = "?accumulate_texel4444@th20@@YAXPAIPBUTexel4444@1@AAI@Z"
+target_address = 0x00451700
+size = 183
+relocations = []
+
+[units.accumulate_texel8332]
+source = "src/TextureTexels.cpp"
+object = "build/TextureTexels.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::accumulate_texel8332"]
+symbol = "?accumulate_texel8332@th20@@YAXPAIPBUTexel8332@1@AAI@Z"
+target_address = 0x004517C0
+size = 187
+relocations = []
+
+[units.accumulate_texel8888]
+source = "src/TextureTexels.cpp"
+object = "build/TextureTexels.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::accumulate_texel8888"]
+symbol = "?accumulate_texel8888@th20@@YAXPAIPBUTexel8888@1@AAI@Z"
+target_address = 0x00451880
+size = 139
+relocations = []

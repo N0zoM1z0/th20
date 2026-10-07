@@ -1,5 +1,46 @@
 # Verified facts and open hypotheses
 
+## REF-042 — 2026-10-07 — native Sprite values and texel accumulation
+
+- All 540 remaining Sprite bodies across 46 indexed files were individually
+  reviewed: 7 absorbed / 153 nonexact / 380 support. Five grammar files and
+  17 sites reconciled; global 6,640 terminal / 304 pending, grammar 96/17.
+- Native Base construction calls real IntegerTriple, Angle interpolation,
+  Matrix4 and mixed integer/float AnmVariables constructors. Controller's
+  constructor pointers and array strides establish 20-byte corners, 20-byte
+  colored vertices and 28-byte textured vertices. Their white diffuse defaults
+  differ from the existing Screen ColoredVertex. No complete owner is accepted.
+- Matrix4 contains sixteen floats; original 443020 copies 64-byte values and
+  uses matrix storage for diagonal scaling, D3DX rotations/multiplication and
+  D3D transforms. Decompiler library aliases do not prove original type names.
+  AnmVariables is a real 64-byte member at Base+444: seven integers/nine floats.
+- Three new Interpolation instantiations share the maintained semantic body.
+  Four cdecl texel accumulators preserve native packed channel widths, alpha
+  gating, null-RGB short circuit, wrapping and count/RGB alias order. Full
+  transparent-edge repair, owners, resource lifetimes and origins remain open.
+- Thirteen complete native ranges were decoded, flow-closed and checked against
+  attested Ghidra. Canonical call anchors were independently read before probes.
+  All 234 units / 56 cold objects / 17,277 disjoint bytes exactly replay; 13 new
+  units add 1,387 bytes. Source 234 / pending origins 173 / library 4;
+  authored 57 / 4,074 unchanged. Portable C++20/UBSan passes 2,613,444 checks.
+- Thirty-six fresh reference TUs define 1,516 functions / 297 static functions.
+  Across 159 bodies, 212 whole comparisons produce 210 length differences and
+  two mismatches. Natural typed Base construction emits 707 versus 725 bytes;
+  whole acceptance rejected. Two unbounded associations are skipped, not sliced.
+- Source ANM cases 163 / nondefault 161 independently agree with native table
+  435000 and index 435284 (161 slots / 636 bytes); default 42B8D3 leads to
+  434DAD, including opcode 0 and label 5. Shared native VM/EH/owner ABI remains
+  unclosed. The opcode evidence writer was fully read but never executed.
+- Historical ANM CPU 261,652 binds 8/8 hashes; Controller CPU 14 binds 13/14
+  (Worker stale); Sprite CPU 29,252 binds 7/7; preload 3,308 binds 1/1;
+  shared pool 2,915,831 binds 389/389; texture 2,181 binds 2/2. These retain
+  prepared-object, pointer normalization, finite-domain and uninitialized-pixel
+  exclusions. No Windows oracle/writer was rerun or executed binary bound.
+- Both REF042 registration writers executed ONCE; never rerun any writer.
+  Current canonical and 36 reference receipts valid; other older reference
+  objects stale. Continue StageBackground 121, other bodies 183 and 17 grammar
+  files. The exhaustive goal remains active. See REFERENCE_SPRITE_REVIEW.md.
+
 ## REF-041 — 2026-10-07 — real PlayerRecord and Gameplay closure
 
 - All169 remaining Gameplay bodies/18files individually read:3absorbed/

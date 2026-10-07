@@ -1,5 +1,45 @@
 # Current reconstruction handoff
 
+## REF-042 — 2026-10-07 — complete Sprite / ANM / texture batch
+
+All 540 remaining Sprite bodies were individually read across 46 indexed files:
+7 absorbed / 153 nonexact / 380 support. Five grammar files and 17 indexed sites
+were reconciled. Global coverage is 6,640 terminal / 304 pending; grammar files
+are 96 complete / 17 pending. The exhaustive review goal remains active.
+
+- Thirteen natural complete contributions add 1,387 bytes: IntegerTriple,
+  Matrix4, three Sprite vertex values, mixed AnmVariables, three instantiations
+  of the shared Interpolation template, and four cdecl texel accumulators.
+  Native nested calls, array strides/counts, channel extraction and independent
+  relocation anchors establish actual components; original names/origins remain
+  pending. Full Animation/Controller/Worker/resource owners remain unaccepted.
+- All 234 canonical units cold-replay from 56 objects over 17,277 disjoint bytes.
+  Source presence 234 / pending origins 173 / library 4; authored 57 / 4,074
+  unchanged. Portable C++20/g++13/UBSan passes 2,613,444 independent guarded
+  construction, exhaustive 16-bit channel, wrapping and alias-order checks.
+- Thirty-six actual unmodified reference production TUs freshly compiled after
+  final source freeze: 1,516 defined / 297 static functions. The 212 complete
+  comparisons across 159 bodies yield 210 size differences and two mismatches.
+  A natural typed AnimationBase probe is 707 versus 725 bytes and rejected
+  whole; no prefix, padded owner or compiler-shaping workaround is accepted.
+- Six retained reports were read and rebound without executing their drivers
+  or writers. Controller CPU binds 13/14 distinct source hashes: Worker header
+  stale. Other retained hash counts and prepared-object/COM/finite-domain limits
+  are documented in REFERENCE_SPRITE_REVIEW.md. They do not bind the executed
+  binaries/compiler/startup or establish full rendered gameplay.
+- The complete source ANM dispatcher has 163 cases; 161 nondefault routes match
+  the independently checked native 161-slot table and 636-byte index. Full VM
+  member/EH ABI and external dependencies remain open. Native constructor
+  callbacks and matrix consumers corroborate values, not complete owners.
+- ref042-record.py and ref042-configure-units.py executed ONCE; NEVER RERUN them
+  or any earlier registration writer. Maintained src/probes are frozen. All 234
+  canonical receipts and this batch's 36 reference TUs are current; unrelated
+  older reference objects need rebuild before reuse.
+
+Continue StageBackground's 121 bodies, then 183 other bodies and 17 grammar
+files. Serial MSVC, no subagents, English, repo-python, commit prefix and public
+main authorization persist. See REFERENCE_SPRITE_REVIEW.md for the full batch.
+
 ## REF-041 — 2026-10-07 — PlayerRecord and remaining Gameplay batch
 
 All169 remaining Gameplay bodies individually read across18 files:3 absorbed /

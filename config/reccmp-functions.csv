@@ -220,3 +220,16 @@ th20::PlayerRecord::set_field_20,0x0041DF30,function
 th20::PlayerRecord::PlayerRecord,0x00423050,function
 th20::PlayerRecord::current_score,0x0044C090,function
 th20::PlayerRecord::starting_power,0x004B81D0,function
+th20::IntegerTriple::IntegerTriple,0x00414090,function
+th20::Matrix4::Matrix4,0x00447DC0,function
+th20::SpriteCorner::SpriteCorner,0x00449110,function
+th20::SpriteColoredVertex::SpriteColoredVertex,0x00449140,function
+th20::SpriteTexturedVertex::SpriteTexturedVertex,0x00449170,function
+th20::AnmVariables::AnmVariables,0x00449050,function
+th20::IntegerInterpolation::IntegerInterpolation,0x00447980,function
+th20::IntegerTripleInterpolation::IntegerTripleInterpolation,0x00447A50,function
+th20::AngleInterpolation::AngleInterpolation,0x00447BA0,function
+th20::accumulate_texel1555,0x00451640,function
+th20::accumulate_texel4444,0x00451700,function
+th20::accumulate_texel8332,0x004517C0,function
+th20::accumulate_texel8888,0x00451880,function

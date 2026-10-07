@@ -219,3 +219,16 @@ th20::PlayerRecord::set_field_20
 th20::PlayerRecord::PlayerRecord
 th20::PlayerRecord::current_score
 th20::PlayerRecord::starting_power
+th20::IntegerTriple::IntegerTriple
+th20::Matrix4::Matrix4
+th20::SpriteCorner::SpriteCorner
+th20::SpriteColoredVertex::SpriteColoredVertex
+th20::SpriteTexturedVertex::SpriteTexturedVertex
+th20::AnmVariables::AnmVariables
+th20::IntegerInterpolation::IntegerInterpolation
+th20::IntegerTripleInterpolation::IntegerTripleInterpolation
+th20::AngleInterpolation::AngleInterpolation
+th20::accumulate_texel1555
+th20::accumulate_texel4444
+th20::accumulate_texel8332
+th20::accumulate_texel8888
