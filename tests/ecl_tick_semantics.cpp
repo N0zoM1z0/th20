@@ -66,7 +66,7 @@ template<class T> void push(th20::ScriptStack& stack, T value, char tag) {
 
 // Explicit test-only dependencies. The accepted body runs on maintained owners
 // and real math/interpolation implementations; these bounded VM fixtures do not
-// claim native constructor, resolver, generic-copy or async lifetime fidelity.
+// claim native constructor, resolver or async lifetime fidelity.
 namespace th20 {
 EclScriptPosition::EclScriptPosition() : subroutine(-1), offset(-1) {}
 EclRuntime::EclRuntime()
@@ -130,20 +130,6 @@ int ScriptStack::enter_frame(std::int32_t bytes) {
     const int previous = frame_base;
     push(4, &previous, 0);
     frame_base = pointer;
-    return 0;
-}
-int ScriptStack::push(std::int32_t bytes, const void* input, char tag) {
-    assert(bytes == 4);
-    if (tag) { absolute(pointer) = static_cast<unsigned char>(tag); pointer += 4; }
-    std::memcpy(&absolute(pointer), input, 4);
-    pointer += 4;
-    return 0;
-}
-int ScriptStack::pop(std::int32_t bytes, void* output, char tag) {
-    assert(bytes == 4 && pointer >= 4);
-    pointer -= 4;
-    std::memcpy(output, &absolute(pointer), 4);
-    if (tag) { pointer -= 4; assert(absolute(pointer) == static_cast<unsigned char>(tag)); }
     return 0;
 }
 GameRandom script_random(0);

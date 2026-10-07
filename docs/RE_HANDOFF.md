@@ -1,5 +1,41 @@
 # Current reconstruction handoff
 
+## EXACT-070 — 2026-10-08 — Whole ECL argument and tagged stack protocol
+
+Fifteen whole functions add 2,886 bytes: actual current instruction lookup,
+eleven separate integer/float consuming/nonconsuming/supplied-value/destination
+members and generic push/pop/peek. Natural returning if/else branches and direct
+virtual expressions close the former nine-byte discrepancy; complete native
+unreachable jumps remain compared. Independent constant identity rejects the
+old private negative-eight multiplier: the original uses positive 8.0f.
+Direct const payload reading reproduces the whole native float return without
+extra SSE rounding spill. Three complete library supports add no duplicate
+coverage. All 524 units / 97 frozen-source cold objects / 93,941 disjoint bytes
+strictly replay; origins are 451 pending / 9 library / 64 authored, with
+16,948 authored bytes unchanged. See EXACT_ECL_ARGUMENT_STACK_RECONSTRUCTION.md.
+
+Owned O2/UBSan checks run all fifteen real bodies and cover sixteen mask slots,
+literal bits, real local/destination/virtual dispatch, -1/-100/fraction/-0,
+consumption/nonmutation, arbitrary 0..32-byte and tagged 8-byte copies, i/f
+conversion, signed tags, saved frames, allocation failure and PMR release.
+Existing whole tick/invocation tests now use production push/pop. All 43 public
+tests pass. Eighteen whole reference associations close; all 6,945 reviews remain
+terminal, 157 absorbed. Original Runtime/Manager construction, complete resource
+instruction54/append876/include516, production variable owners, whole 41 KB Enemy
+root and whole-game link/runtime remain pending. The resource getter still has
+two pointer-constant lowering differences. No global compiler profile or fake
+compiler headers are introduced. One-time core070 configuration/registration
+writers are completed; NEVER rerun. Source is frozen and canonical audit passes.
+
+Protected cleanup retires 28 completed probe object/receipt files / 1,096,445 bytes.
+All 194 current canonical hashes remain unchanged. Cumulative retirement is
+2,468 files / 1,000,370,970 bytes. build is 4.2 MiB, analysis 79 MiB, installed tools 4.2 GiB.
+Native exports, failed probes/diagnostics, source and tools remain intact.
+One-time core070-cleanup writer is completed; NEVER rerun. Existing-object
+strict replay verifies cleanup without another unchanged cold rebuild.
+Keep English/repo-python/attested Ghidra/no REA/no subagents/serial nice 15,
+authorized main push and periodic protected cleanup. The full goal stays active.
+
 ## EXACT-069 — 2026-10-08 — Whole ECL file loading
 
 The whole 556-byte derived ECL loading member and three lifetime contributions

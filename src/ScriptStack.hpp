@@ -23,8 +23,9 @@ struct ScriptStack {
     int enter_frame(std::int32_t byte_count);
     std::int32_t frame_value() const;
 
-    // Native generic output-pointer protocol at 0x0053F0B0. Its arbitrary-length
-    // copies, tagged conversions and invalid-state behavior remain unrecovered.
+    // Valid copies require sufficient readable/writable storage and representable
+    // byte arithmetic. Pop and peek do not grow or bounds-check the word vector.
+    // Tags occupy a full word; i/f tags request numeric conversion.
     int pop(std::int32_t byte_count, void* output, char requested_type);
     int peek(std::int32_t byte_offset, void* output, char requested_type);
     int push(std::int32_t byte_count, const void* input, char supplied_type);

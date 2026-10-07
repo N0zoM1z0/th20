@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 442 mapped component functions across 84 comparison objects |
+| Source | 524 mapped component functions across 97 comparison objects |
 | Authored exactness | 64 functions, 16,948 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -79,6 +79,8 @@ are excluded from Git.
 | Enemy state and ECL entry | Complete state lifetime, typed records and argument-forwarding protocol: 11 new units / 1,581 bytes; whole Enemy dispatcher pending; [evidence](docs/EXACT_ENEMY_STATE_RECONSTRUCTION.md) |
 | Enemy movement and construction | Whole movement composition/bounds, mode configuration and nonthrowing Enemy construction: 9 new units / 1,285 body bytes; [evidence](docs/EXACT_ENEMY_MOVEMENT_RECONSTRUCTION.md) |
 | Whole Enemy movement update and graphics owners | Complete movement update and actual Graphics/viewport/configuration/file/context construction: 15 new units / 4,215 comparison bytes; [evidence](docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md) |
+| ECL resource lifetime and loading | Actual base/derived owner lifetimes and whole 556-byte file loading: 9 new units / 934 bytes; [lifetime](docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md), [loading](docs/EXACT_ECL_FILE_LOADING_RECONSTRUCTION.md) |
+| ECL argument and tagged stack protocol | Whole current instruction, eleven parameter/destination members and generic push/pop/peek: 15 new units / 2,886 bytes; [evidence](docs/EXACT_ECL_ARGUMENT_STACK_RECONSTRUCTION.md) |
 | Interpolation protocol | Shared 4 KB easing and eight typed updates, plus direct dependencies: 32 new units / 13,952 comparison bytes; [evidence](docs/EXACT_INTERPOLATION_RECONSTRUCTION.md) |
 | Whole-program build and runtime | Not available |
 

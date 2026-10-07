@@ -50,7 +50,7 @@ void check_arguments(const th20::ScriptStack& stack, std::size_t first) {
 }
 }
 
-// Test-only dependency fixtures: production constructors, generic stack copies,
+// Test-only dependency fixtures: production constructors,
 // argument resolution and loader activation are not accepted by this test.
 // The fixture uses the maintained owners and bounds calls to four-byte words.
 namespace th20 {
@@ -87,18 +87,6 @@ std::int32_t EclRuntime::consuming_integer_value(std::int32_t index, std::int32_
 }
 std::int32_t ScriptStack::pointer_value() const { return pointer; }
 void ScriptStack::set_pointer(std::int32_t value) { pointer = value; }
-int ScriptStack::push(std::int32_t bytes, const void* input, char tag) {
-    assert(bytes == 4 && tag == 0);
-    std::memcpy(&absolute(pointer), input, 4);
-    pointer += 4;
-    return 0;
-}
-int ScriptStack::pop(std::int32_t bytes, void* output, char tag) {
-    assert(bytes == 4 && tag == 0);
-    pointer -= 4;
-    std::memcpy(output, &absolute(pointer), 4);
-    return 0;
-}
 }
 
 int main() {

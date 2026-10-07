@@ -19,7 +19,7 @@ class EclTickSemanticsTests(unittest.TestCase):
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                 "-Wno-sign-compare", "-fno-strict-aliasing", "-fsanitize=undefined",
                 "-Isrc", "tests/ecl_tick_semantics.cpp", "src/EclRuntimeTick.cpp",
-                "src/ScriptStack.cpp", "src/EclLoaderBase.cpp", "src/GameRandom.cpp", "src/GameRandomAngle.cpp",
+                "src/ScriptStack.cpp", "src/ScriptStackCopy.cpp", "src/EclLoaderBase.cpp", "src/GameRandom.cpp", "src/GameRandomAngle.cpp",
                 "src/Interpolation.cpp", "src/Easing.cpp", "src/Timer.cpp",
                 "src/ClockScalar.cpp", "src/Angle.cpp", "src/ScalarMath.cpp",
                 "src/Vector3.cpp", "src/Vector2.cpp", "src/MotionMath.cpp",

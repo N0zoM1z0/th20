@@ -8141,3 +8141,232 @@ relocations = [
   { offset = 0x202, type = "REL32", symbol = "?append@EclLoader@th20@@QAEHPAE@Z", target = 0x0053FE60 },
   { offset = 0x222, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# EXACT-070: complete runtime argument/destination and generic tagged stack protocol.
+[units.ecl_runtime_current]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::current"]
+symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ"
+target_address = 0x005403D0
+size = 80
+relocations = [
+  { offset = 0x39, type = "REL32", symbol = "?instruction@EclLoader@th20@@QAEPAUEclInstruction@2@HH@Z", target = 0x0053E8E0 },
+]
+
+[units.ecl_integer_argument]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::integer_argument"]
+symbol = "?integer_argument@EclRuntime@th20@@QAEHH@Z"
+target_address = 0x0053ED50
+size = 209
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x52, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x8A, type = "REL32", symbol = "?peek@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x00540450 },
+]
+
+[units.ecl_float_argument]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::float_argument"]
+symbol = "?float_argument@EclRuntime@th20@@QAEMH@Z"
+target_address = 0x0053E970
+size = 287
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x17, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x46, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x66, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x80, type = "DIR32", symbol = "__real@bf800000", target = 0x0056E0F4 },
+  { offset = 0x9A, type = "DIR32", symbol = "__real@c2c80000", target = 0x005732DC },
+  { offset = 0xBF, type = "DIR32", symbol = "__real@41000000", target = 0x0056D7BC },
+  { offset = 0xCC, type = "REL32", symbol = "?peek@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x00540450 },
+  { offset = 0x115, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.ecl_consuming_integer]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::consuming_integer"]
+symbol = "?consuming_integer@EclRuntime@th20@@QAEHH@Z"
+target_address = 0x0053EEE0
+size = 197
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x52, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x7E, type = "REL32", symbol = "?pop@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x0053F0B0 },
+]
+
+[units.ecl_consuming_float]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::consuming_float"]
+symbol = "?consuming_float@EclRuntime@th20@@QAEMH@Z"
+target_address = 0x0053EB70
+size = 261
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x17, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x46, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x66, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x7D, type = "DIR32", symbol = "__real@bf800000", target = 0x0056E0F4 },
+  { offset = 0x97, type = "DIR32", symbol = "__real@c2c80000", target = 0x005732DC },
+  { offset = 0xB2, type = "REL32", symbol = "?pop@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x0053F0B0 },
+  { offset = 0xFB, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.ecl_integer_argument_value]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::integer_argument_value"]
+symbol = "?integer_argument_value@EclRuntime@th20@@QAEHHH@Z"
+target_address = 0x0053EE30
+size = 163
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x40, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x6A, type = "REL32", symbol = "?peek@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x00540450 },
+]
+
+[units.ecl_float_argument_value]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::float_argument_value"]
+symbol = "?float_argument_value@EclRuntime@th20@@QAEMHM@Z"
+target_address = 0x0053EA90
+size = 212
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x35, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x4E, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x5C, type = "DIR32", symbol = "__real@bf800000", target = 0x0056E0F4 },
+  { offset = 0x6E, type = "DIR32", symbol = "__real@c2c80000", target = 0x005732DC },
+  { offset = 0x8C, type = "DIR32", symbol = "__real@41000000", target = 0x0056D7BC },
+  { offset = 0x99, type = "REL32", symbol = "?peek@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x00540450 },
+]
+
+[units.ecl_consuming_integer_value]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::consuming_integer_value"]
+symbol = "?consuming_integer_value@EclRuntime@th20@@QAEHHH@Z"
+target_address = 0x0053EFB0
+size = 158
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x40, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x65, type = "REL32", symbol = "?pop@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x0053F0B0 },
+]
+
+[units.ecl_consuming_float_value]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::consuming_float_value"]
+symbol = "?consuming_float_value@EclRuntime@th20@@QAEMHM@Z"
+target_address = 0x0053EC80
+size = 196
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x35, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x4E, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+  { offset = 0x5C, type = "DIR32", symbol = "__real@bf800000", target = 0x0056E0F4 },
+  { offset = 0x6E, type = "DIR32", symbol = "__real@c2c80000", target = 0x005732DC },
+  { offset = 0x89, type = "REL32", symbol = "?pop@ScriptStack@th20@@QAEHHPAXD@Z", target = 0x0053F0B0 },
+]
+
+[units.ecl_integer_destination]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::integer_destination"]
+symbol = "?integer_destination@EclRuntime@th20@@QAEPAHH@Z"
+target_address = 0x0053E850
+size = 136
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x4E, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+]
+
+[units.ecl_float_destination]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::float_destination"]
+symbol = "?float_destination@EclRuntime@th20@@QAEPAMH@Z"
+target_address = 0x0053E720
+size = 148
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
+  { offset = 0x38, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x58, type = "REL32", symbol = "?local@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E6A0 },
+]
+
+[units.ecl_float_destination_at]
+source = "src/EclArguments.cpp"
+object = "build/EclArguments.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclRuntime::float_destination_at"]
+symbol = "?float_destination_at@EclRuntime@th20@@QAEPAMPAUEclInstruction@2@HH@Z"
+target_address = 0x0053E7C0
+size = 140
+relocations = [
+  { offset = 0x2D, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x50, type = "REL32", symbol = "?absolute@ScriptStack@th20@@QAEAAIH@Z", target = 0x0053E630 },
+]
+
+[units.script_stack_push]
+source = "src/ScriptStackCopy.cpp"
+object = "build/ScriptStackCopy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ScriptStack::push"]
+symbol = "?push@ScriptStack@th20@@QAEHHPBXD@Z"
+target_address = 0x0053F260
+size = 265
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "?size@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QBEIXZ", target = 0x0053F750 },
+  { offset = 0x4F, type = "REL32", symbol = "?resize@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEXI@Z", target = 0x0053F370 },
+  { offset = 0x7A, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+  { offset = 0xB7, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+  { offset = 0xE4, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+  { offset = 0xEA, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+]
+
+[units.script_stack_pop]
+source = "src/ScriptStackCopy.cpp"
+object = "build/ScriptStackCopy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ScriptStack::pop"]
+symbol = "?pop@ScriptStack@th20@@QAEHHPAXD@Z"
+target_address = 0x0053F0B0
+size = 242
+relocations = [
+  { offset = 0x38, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+  { offset = 0x63, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+  { offset = 0x6D, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0xA5, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+]
+
+[units.script_stack_peek]
+source = "src/ScriptStackCopy.cpp"
+object = "build/ScriptStackCopy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ScriptStack::peek"]
+symbol = "?peek@ScriptStack@th20@@QAEHHPAXD@Z"
+target_address = 0x00540450
+size = 192
+relocations = [
+  { offset = 0x39, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+  { offset = 0x43, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x73, type = "REL32", symbol = "??A?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEAAII@Z", target = 0x0053B530 },
+]
