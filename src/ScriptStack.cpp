@@ -4,6 +4,14 @@ namespace th20 {
 
 ScriptStack::ScriptStack() : pointer(0), frame_base(0) {}
 
+void ScriptStack::reset() {
+    pointer = 0;
+    frame_base = 0;
+    words.clear();
+    auto& storage = words;
+    storage.reserve(256);
+}
+
 std::uint32_t& ScriptStack::absolute(std::int32_t byte_offset) {
     if (words.size() < static_cast<std::size_t>(byte_offset / 4 + 1)) {
         words.resize(byte_offset / 4 + 1);

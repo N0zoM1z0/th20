@@ -44,6 +44,8 @@ scripts/repo-python scripts/ghidra.py check
 Ghidra queries/decompilation/exports must go through `scripts/ghidra.py`,
 which re-attests target and database on every call. Never use an unrelated
 IDA/Ghidra database. Never patch target or mapped database bytes.
+The user explicitly requested no REA skills or REA MCP tools. Use the existing
+attested Ghidra workflow directly.
 
 ## Evidence, source and exactness
 

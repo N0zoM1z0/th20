@@ -1,5 +1,38 @@
 # Current reconstruction handoff
 
+## EXACT-066 — 2026-10-08 — Whole Enemy creation and script selection
+
+Nineteen whole functions add 1,279 bytes: actual controller creation, complete
+Enemy initialization, inherited ECL reset, PMR stack reserve/reset, generation,
+binary subroutine lookup/selection and non-consuming value forwarding/hidden
+Identifier32 return. Native callees distinguish reserve from resize and supplied
+values from consuming helpers. One complete folded script-loader getter alias
+replays without duplicate coverage. Frozen-source cold batch covers all 93
+objects once (90 existing plus three new); all 500 units / 90,121 disjoint bytes
+strictly replay. Origins: 427 pending / 9 library / 64 authored, 16,948 authored
+bytes unchanged. Eight reference associations close; unrelated/shared-address
+and partially covered wrappers retain their reviewed state. Owned O2/UBSan
+creation/reset/list/generation/lookup checks run actual maintained bodies with
+explicit unresolved boundaries. All 40 local public tests and tracking/progress
+checks pass. See EXACT_ENEMY_CREATION_RECONSTRUCTION.md.
+
+Whole 653-byte opcode spawning is still nonexact (14 load/reservation-order
+bytes); clean scalar factory, runtime virtual materialization, list prepend
+emission and 780-byte spawn application remain pending. No fake Session or
+compiler header is introduced. Whole 41 KB 48C010 and whole-game link/runtime
+remain open. Native/failed source evidence is retained privately.
+User explicitly requires no REA skills or MCP; use the existing attested Ghidra
+wrapper directly. English/repo-python/no subagents/serial low-priority heavy
+work/authorized main push and periodic protected cleanup persist.
+
+Cleanup retires 43 superseded files / 1,153,194 bytes. All 186 current canonical
+object/receipt hashes are unchanged and 500 strict replays pass after cleanup.
+Cumulative retirement: 2,089 files / 70,300,517 bytes. Native exports, failed
+probe sources/diagnostics, supplied files and locked tools remain intact.
+One-time core066 configuration/registration/cleanup writers have completed
+stamps; NEVER RERUN. core066-audit.py now reads canonical objects; no unchanged
+cold build is needed solely for documentation or cleanup.
+
 ## EXACT-065 — 2026-10-08 — Whole Enemy animation dispatcher and parameters
 
 Twenty whole functions add 2,218 instruction bytes and 77 compiler alignment/

@@ -22,6 +22,11 @@ public:
     // The complete callback vtable and this dependency body remain pending.
     void release_animation_callback(AnimationCallback* callback);
 
+    // Scalar factory includes a compiler-generated pre-construction clear.
+    // Its clean compiler reproduction remains pending.
+    template<class T>
+    T* allocate_object(const char*);
+
     template<class T>
     T* allocate_array(const char*, std::int32_t count) {
         std::lock_guard<std::recursive_mutex> guard(process_locks.slot(1));

@@ -60,6 +60,8 @@ struct EclRuntime {
     std::int32_t consuming_integer(std::int32_t index);
     float float_argument(std::int32_t index);
     float consuming_float(std::int32_t index);
+    std::int32_t integer_argument_value(std::int32_t index, std::int32_t value);
+    float float_argument_value(std::int32_t index, float value);
     std::int32_t* integer_destination(std::int32_t index);
     float* float_destination(std::int32_t index);
     float* float_destination_at(EclInstruction* instruction,
@@ -93,6 +95,8 @@ public:
 
     EclLoader();
     int activate(EclManager* manager, const char* name);
+    int select(EclManager* manager, const char* name);
+    std::int32_t subroutine_index(const char* name);
     EclInstruction* instruction(std::int32_t subroutine, std::int32_t offset);
 };
 
@@ -114,6 +118,11 @@ public:
     IntrusiveLink<EclRuntime> runtimes;
 
     EclManager();
+    void reset();
+    void set_loader(EclLoader* value);
+    void select_subroutine(const char* name);
+    void set_offset(std::int32_t value);
+    void set_time(float value);
     EclLoader* loader_value() const;
     int spawn(std::int32_t async_id, std::int32_t argument_skip);
     IntrusiveLink<EclRuntime>* find_runtime(std::int32_t async_id);

@@ -95,6 +95,9 @@ struct EnemyState {
     // The whole 48C010 dispatcher remains undefined while its owners are closed.
     int execute_opcode();
     void change_animation();
+    int spawn_from_opcode();
+    std::int32_t integer_argument_value(std::int32_t index, std::int32_t value);
+    float float_argument_value(std::int32_t index, float value);
     std::int32_t integer_argument(std::int32_t index);
     float float_argument(std::int32_t index);
 };

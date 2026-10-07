@@ -34,6 +34,7 @@ template<class T> struct IntrusiveList : IntrusiveLink<T> {
     T* node_value();
     void remove(IntrusiveLink<T>* link);
     void append(IntrusiveLink<T>* link);
+    void prepend(IntrusiveLink<T>* link);
     void reset(T* input);
     IntrusiveLink<T>* find(T* input);
     IntrusiveIterator<T> begin();
@@ -94,6 +95,10 @@ template<class T> void IntrusiveList<T>::remove(IntrusiveLink<T>* link){
 }
 template<class T> void IntrusiveList<T>::append(IntrusiveLink<T>* link){
     IntrusiveLink<T>* end=tail;end->insert_after(link);link->set_owner(this);tail=link;
+}
+template<class T> void IntrusiveList<T>::prepend(IntrusiveLink<T>* link){
+    IntrusiveLink<T>& head=*this;head.insert_after(link);link->set_owner(this);
+    if(tail==static_cast<IntrusiveLink<T>*>(this))tail=link;
 }
 template<class T> void IntrusiveList<T>::reset(T* input){
     IntrusiveLink<T>& head=*this;head.initialize(input);tail=this;

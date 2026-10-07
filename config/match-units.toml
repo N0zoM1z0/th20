@@ -7734,3 +7734,262 @@ size = 217
 relocations = [
   { offset = 0x14, type = "REL32", symbol = "?update_layer@Animation@th20@@QAEXXZ", target = 0x0040E5E0 },
 ]
+
+# EXACT-066: complete Enemy creation, initialization and script selection protocol.
+[units.enemy_create]
+source = "src/EnemySpawning.cpp"
+object = "build/EnemySpawning.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::create"]
+symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@Z"
+target_address = 0x004A8920
+size = 155
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "$SG111153", target = 0x00570420 },
+  { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
+  { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
+  { offset = 0x52, type = "REL32", symbol = "?append@?$IntrusiveList@UEnemy@th20@@@th20@@QAEXPAU?$IntrusiveLink@UEnemy@th20@@@2@@Z", target = 0x00411EA0 },
+  { offset = 0x5F, type = "REL32", symbol = "?apply_spawn@Enemy@th20@@QAEHABUEnemySpawn@2@@Z", target = 0x004A89C0 },
+  { offset = 0x79, type = "REL32", symbol = "?prepend@?$IntrusiveList@UEnemy@th20@@@th20@@QAEXPAU?$IntrusiveLink@UEnemy@th20@@@2@@Z", target = 0x0044A6B0 },
+]
+
+[units.enemy_count]
+source = "src/EnemySpawning.cpp"
+object = "build/EnemySpawning.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::count"]
+symbol = "?count@EnemyController@th20@@QBEHXZ"
+target_address = 0x00478080
+size = 20
+relocations = [
+]
+
+[units.enemy_capacity]
+source = "src/EnemySpawning.cpp"
+object = "build/EnemySpawning.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::capacity"]
+symbol = "?capacity@EnemyController@th20@@QBEHXZ"
+target_address = 0x0045BCF0
+size = 20
+relocations = [
+]
+
+[units.enemy_initialize]
+source = "src/EnemyInitialization.cpp"
+object = "build/EnemyInitialization.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::initialize"]
+symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z"
+target_address = 0x004A73F0
+size = 222
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?reset@EclManager@th20@@QAEXXZ", target = 0x004972C0 },
+  { offset = 0x19, type = "REL32", symbol = "?select_context@Enemy@th20@@QAEXH@Z", target = 0x004AB970 },
+  { offset = 0x33, type = "REL32", symbol = "?initialize@EnemyState@th20@@QAEHXZ", target = 0x004A7170 },
+  { offset = 0x4A, type = "REL32", symbol = "?reset@?$IntrusiveList@UEnemy@th20@@@th20@@QAEXPAUEnemy@2@@Z", target = 0x0044A640 },
+  { offset = 0x62, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UEnemy@th20@@@th20@@QAEXPAUEnemy@2@@Z", target = 0x0044A670 },
+  { offset = 0x72, type = "REL32", symbol = "??4?$function@$$A6AXPAUEnemy@th20@@@Z@std@@QAEAAV01@$$T@Z", target = 0x004A3E40 },
+  { offset = 0x80, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x87, type = "REL32", symbol = "?generation@EnemyController@th20@@QBEIXZ", target = 0x004AABF0 },
+  { offset = 0x96, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0xA4, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xAB, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
+  { offset = 0xB9, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0xC0, type = "REL32", symbol = "?script_loader@EnemyController@th20@@QBEPAVEclLoader@2@XZ", target = 0x00415800 },
+  { offset = 0xD3, type = "REL32", symbol = "?select@EclLoader@th20@@QAEHPAVEclManager@2@PBD@Z", target = 0x00540280 },
+]
+
+[units.enemy_generation]
+source = "src/EnemyInitialization.cpp"
+object = "build/EnemyInitialization.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::generation"]
+symbol = "?generation@EnemyController@th20@@QBEIXZ"
+target_address = 0x004AABF0
+size = 16
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+]
+
+[units.enemy_advance_generation]
+source = "src/EnemyInitialization.cpp"
+object = "build/EnemyInitialization.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::advance_generation"]
+symbol = "?advance_generation@EnemyController@th20@@QAEIXZ"
+target_address = 0x004AB140
+size = 98
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0xD, type = "DIR32", symbol = "?previous_enemy_generation@th20@@3IA", target = 0x005C49EC },
+  { offset = 0x13, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x1C, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x22, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x35, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x3D, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x4F, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x55, type = "DIR32", symbol = "?current_enemy_generation@th20@@3IA", target = 0x005C49F0 },
+  { offset = 0x5A, type = "DIR32", symbol = "?previous_enemy_generation@th20@@3IA", target = 0x005C49EC },
+]
+
+[units.ecl_manager_reset]
+source = "src/EclSelection.cpp"
+object = "build/EclSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::reset"]
+symbol = "?reset@EclManager@th20@@QAEXXZ"
+target_address = 0x004972C0
+size = 147
+relocations = [
+  { offset = 0x5B, type = "REL32", symbol = "?clear@?$vector@UEclScriptInterpolation@th20@@V?$polymorphic_allocator@UEclScriptInterpolation@th20@@@pmr@std@@@std@@QAEXXZ", target = 0x00497F40 },
+  { offset = 0x72, type = "REL32", symbol = "?reset@ScriptStack@th20@@QAEXXZ", target = 0x00497360 },
+  { offset = 0x8A, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEXPAUEclRuntime@2@@Z", target = 0x0044A670 },
+]
+
+[units.ecl_loader_select]
+source = "src/EclSelection.cpp"
+object = "build/EclSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclLoader::select"]
+symbol = "?select@EclLoader@th20@@QAEHPAVEclManager@2@PBD@Z"
+target_address = 0x00540280
+size = 66
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "?set_loader@EclManager@th20@@QAEXPAVEclLoader@2@@Z", target = 0x0041DFB0 },
+  { offset = 0x1B, type = "REL32", symbol = "?select_subroutine@EclManager@th20@@QAEXPBD@Z", target = 0x00540550 },
+  { offset = 0x25, type = "REL32", symbol = "?set_offset@EclManager@th20@@QAEXH@Z", target = 0x00540590 },
+  { offset = 0x36, type = "REL32", symbol = "?set_time@EclManager@th20@@QAEXM@Z", target = 0x00540510 },
+]
+
+[units.ecl_loader_subroutine_index]
+source = "src/EclSelection.cpp"
+object = "build/EclSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclLoader::subroutine_index"]
+symbol = "?subroutine_index@EclLoader@th20@@QAEHPBD@Z"
+target_address = 0x00540340
+size = 144
+relocations = [
+  { offset = 0x48, type = "REL32", symbol = "??A?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAEAAUEclSubroutineRecord@th20@@I@Z", target = 0x0053B590 },
+  { offset = 0x54, type = "REL32", symbol = "_strcmp", target = 0x0054FD10 },
+]
+
+[units.ecl_manager_set_loader]
+source = "src/EclSelection.cpp"
+object = "build/EclSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::set_loader"]
+symbol = "?set_loader@EclManager@th20@@QAEXPAVEclLoader@2@@Z"
+target_address = 0x0041DFB0
+size = 22
+relocations = [
+]
+
+[units.ecl_manager_select_subroutine]
+source = "src/EclSelection.cpp"
+object = "build/EclSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::select_subroutine"]
+symbol = "?select_subroutine@EclManager@th20@@QAEXPBD@Z"
+target_address = 0x00540550
+size = 51
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?subroutine_index@EclLoader@th20@@QAEHPBD@Z", target = 0x00540340 },
+]
+
+[units.ecl_manager_set_offset]
+source = "src/EclSelection.cpp"
+object = "build/EclSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::set_offset"]
+symbol = "?set_offset@EclManager@th20@@QAEXH@Z"
+target_address = 0x00540590
+size = 25
+relocations = [
+]
+
+[units.ecl_manager_set_time]
+source = "src/EclSelection.cpp"
+object = "build/EclSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::set_time"]
+symbol = "?set_time@EclManager@th20@@QAEXM@Z"
+target_address = 0x00540510
+size = 28
+relocations = [
+]
+
+[units.script_stack_reset]
+source = "src/ScriptStack.cpp"
+object = "build/ScriptStack.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ScriptStack::reset"]
+symbol = "?reset@ScriptStack@th20@@QAEXXZ"
+target_address = 0x00497360
+size = 61
+relocations = [
+  { offset = 0x21, type = "REL32", symbol = "?clear@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEXXZ", target = 0x00497F40 },
+  { offset = 0x34, type = "REL32", symbol = "?reserve@?$vector@IV?$polymorphic_allocator@I@pmr@std@@@std@@QAEXI@Z", target = 0x0049C220 },
+]
+
+[units.enemy_identifier_value]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::Enemy::identifier_value"]
+symbol = "?identifier_value@Enemy@th20@@QAE?AUIdentifier32@2@XZ"
+target_address = 0x00498F90
+size = 30
+relocations = [
+]
+
+[units.enemy_float_argument_value]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::Enemy::float_argument_value"]
+symbol = "?float_argument_value@Enemy@th20@@QAEMHM@Z"
+target_address = 0x004AB040
+size = 47
+relocations = [
+  { offset = 0x25, type = "REL32", symbol = "?float_argument_value@EclRuntime@th20@@QAEMHM@Z", target = 0x0053EA90 },
+]
+
+[units.enemy_state_float_argument_value]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::float_argument_value"]
+symbol = "?float_argument_value@EnemyState@th20@@QAEMHM@Z"
+target_address = 0x004AAFE0
+size = 47
+relocations = [
+  { offset = 0x25, type = "REL32", symbol = "?float_argument_value@Enemy@th20@@QAEMHM@Z", target = 0x004AB040 },
+]
+
+[units.enemy_integer_argument_value]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::Enemy::integer_argument_value"]
+symbol = "?integer_argument_value@Enemy@th20@@QAEHHH@Z"
+target_address = 0x004AB110
+size = 40
+relocations = [
+  { offset = 0x1E, type = "REL32", symbol = "?integer_argument_value@EclRuntime@th20@@QAEHHH@Z", target = 0x0053EE30 },
+]
+
+[units.enemy_state_integer_argument_value]
+source = "src/EnemyScript.cpp"
+object = "build/EnemyScript.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::EnemyState::integer_argument_value"]
+symbol = "?integer_argument_value@EnemyState@th20@@QAEHHH@Z"
+target_address = 0x004AB0B0
+size = 40
+relocations = [
+  { offset = 0x1E, type = "REL32", symbol = "?integer_argument_value@Enemy@th20@@QAEHHH@Z", target = 0x004AB110 },
+]

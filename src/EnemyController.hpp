@@ -35,7 +35,15 @@ struct EnemyController : TaskInfo {
     EnemyController() noexcept;
     ~EnemyController() override;
     AnimationFile* animation_file(std::int32_t index);
+    std::int32_t count() const;
+    std::int32_t capacity() const;
+    Enemy* create(const char* name, const EnemySpawn& parameters, Enemy* parent);
+    EclLoader* script_loader() const;
+    std::uint32_t generation() const;
+    std::uint32_t advance_generation();
 };
+// Actual process generation words; production initialization remains open.
+extern std::uint32_t current_enemy_generation, previous_enemy_generation;
 #if defined(_M_IX86)
 static_assert(sizeof(EnemyData)==0xa4);
 static_assert(sizeof(EnemyController)==0x134);

@@ -41,6 +41,8 @@ int ScriptStack::pop(int, void*, char) { std::abort(); }
 EclInstruction* EclRuntime::current() { reads.push_back(100); return &instruction; }
 int EclRuntime::integer_argument(int i) { reads.push_back(i); return integers.at(i); }
 float EclRuntime::float_argument(int i) { reads.push_back(10+i); return reals.at(i); }
+int EclRuntime::integer_argument_value(int i, int value) { reads.push_back(300+i); return value+100; }
+float EclRuntime::float_argument_value(int i, float value) { reads.push_back(400+i); return value+0.5f; }
 Animation* AnimationHandle::resolve() {
     reads.push_back(200);
     if (value==7) return selected;
@@ -56,6 +58,13 @@ int main() {
     enemy.current_runtime=&enemy.main;
     auto& state=enemy.state;
     state.entity=&enemy;
+    assert(state.integer_argument_value(3, 7)==107);
+    assert(state.float_argument_value(2, 1.25f)==1.75f);
+    assert((reads==std::vector<int>{303,402}));
+    state.identifier=0x12345678u;
+    auto identifier=enemy.identifier_value();
+    identifier=1;
+    assert(state.identifier.value==0x12345678u && identifier.value==1);
     state.animations.resize(1);
     auto run=[&](int op, std::initializer_list<int> order) {
         instruction.opcode=static_cast<std::int16_t>(op);

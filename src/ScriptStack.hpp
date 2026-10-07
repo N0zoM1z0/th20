@@ -14,6 +14,7 @@ struct ScriptStack {
     std::int32_t frame_base;
 
     ScriptStack();
+    void reset();
     // Valid addresses resolve to nonnegative word indices. For local addresses,
     // frame_base + byte_offset must also be representable as int32_t.
     std::uint32_t& absolute(std::int32_t byte_offset);
@@ -25,6 +26,7 @@ struct ScriptStack {
     // Native generic output-pointer protocol at 0x0053F0B0. Its arbitrary-length
     // copies, tagged conversions and invalid-state behavior remain unrecovered.
     int pop(std::int32_t byte_count, void* output, char requested_type);
+    int peek(std::int32_t byte_offset, void* output, char requested_type);
     int push(std::int32_t byte_count, const void* input, char supplied_type);
     std::int32_t pointer_value() const;
     void set_pointer(std::int32_t value);
