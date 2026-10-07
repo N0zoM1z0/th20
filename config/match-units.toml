@@ -2706,3 +2706,75 @@ symbol = "?accumulate_texel8888@th20@@YAXPAIPBUTexel8888@1@AAI@Z"
 target_address = 0x00451880
 size = 139
 relocations = []
+
+# REF-043: actual FogValue members and shared interpolation constructor.
+
+[units.fog_default]
+source = "src/FogValue.cpp"
+object = "build/FogValue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::FogValue::FogValue"]
+symbol = "??0FogValue@th20@@QAE@XZ"
+target_address = 0x471940
+size = 64
+relocations = []
+
+[units.fog_parameters]
+source = "src/FogValue.cpp"
+object = "build/FogValue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::FogValue::FogValue(float,float,float,float,float,float)"]
+symbol = "??0FogValue@th20@@QAE@MMMMMM@Z"
+target_address = 0x4718d0
+size = 112
+relocations = [{ offset = 0x62, type = "REL32", symbol = "?pack@FogValue@th20@@QAEXXZ", target = 0x00473400 }]
+
+[units.fog_pack]
+source = "src/FogValue.cpp"
+object = "build/FogValue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::FogValue::pack"]
+symbol = "?pack@FogValue@th20@@QAEXXZ"
+target_address = 0x473400
+size = 137
+relocations = []
+
+[units.fog_scale]
+source = "src/FogValue.cpp"
+object = "build/FogValue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::FogValue::operator*"]
+symbol = "??DFogValue@th20@@QBE?AU01@M@Z"
+target_address = 0x471db0
+size = 172
+relocations = [{ offset = 0x9F, type = "REL32", symbol = "??0FogValue@th20@@QAE@MMMMMM@Z", target = 0x004718D0 }]
+
+[units.fog_subtract]
+source = "src/FogValue.cpp"
+object = "build/FogValue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::FogValue::operator-"]
+symbol = "??GFogValue@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x471e60
+size = 226
+relocations = [{ offset = 0xD4, type = "REL32", symbol = "??0FogValue@th20@@QAE@MMMMMM@Z", target = 0x004718D0 }]
+
+[units.fog_add]
+source = "src/FogValue.cpp"
+object = "build/FogValue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::FogValue::operator+"]
+symbol = "??HFogValue@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x471f50
+size = 226
+relocations = [{ offset = 0xD4, type = "REL32", symbol = "??0FogValue@th20@@QAE@MMMMMM@Z", target = 0x004718D0 }]
+
+[units.fog_interpolation_construct]
+source = "src/Interpolation.cpp"
+object = "build/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::FogInterpolation::FogInterpolation"]
+symbol = "??0?$Interpolation@UFogValue@th20@@@th20@@QAE@XZ"
+target_address = 0x471410
+size = 106
+relocations = [{ offset = 0xB, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x16, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x21, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x2C, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x37, type = "REL32", symbol = "??0FogValue@th20@@QAE@XZ", target = 0x00471940 }, { offset = 0x45, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 }]

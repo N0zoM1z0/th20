@@ -234,3 +234,10 @@ address,name,module,confidence,evidence
 0x00451700,th20::accumulate_texel4444,TextureTexels,high,REF-042
 0x004517C0,th20::accumulate_texel8332,TextureTexels,high,REF-042
 0x00451880,th20::accumulate_texel8888,TextureTexels,high,REF-042
+0x00471940,th20::FogValue::FogValue,FogValue,high,REF-043
+0x004718D0,"th20::FogValue::FogValue(float,float,float,float,float,float)",FogValue,high,REF-043
+0x00473400,th20::FogValue::pack,FogValue,high,REF-043
+0x00471DB0,th20::FogValue::operator*,FogValue,high,REF-043
+0x00471E60,th20::FogValue::operator-,FogValue,high,REF-043
+0x00471F50,th20::FogValue::operator+,FogValue,high,REF-043
+0x00471410,th20::FogInterpolation::FogInterpolation,Interpolation,high,REF-043

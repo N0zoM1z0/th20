@@ -92,7 +92,8 @@ def main():
                                 "source_reconstruction/small_score/",
                                 "source_reconstruction/stage_completion/",
                                 "source_reconstruction/gameplay/",
-                                "source_reconstruction/sprite_renderer/")):
+                                "source_reconstruction/sprite_renderer/",
+                                "source_reconstruction/stage_background/")):
             # runtime_state exports ecl_vm's includes. platform_window links
             # runtime_state and also declares native/binary includes itself;
             # startup_scene inherits platform_window and declares those paths;
@@ -149,7 +150,8 @@ def main():
                                 "source_reconstruction/overlay_system/",
                                 "source_reconstruction/hud_system/",
                                 "source_reconstruction/small_score/",
-                                "source_reconstruction/stage_completion/")):
+                                "source_reconstruction/stage_completion/",
+                                "source_reconstruction/stage_background/")):
             # Preserve these modules' explicit CMake floating-point option.
             profile[profile.index("/fp:precise")] = "/fp:strict"
         if relative == "source_reconstruction/archive/verify.cpp":

@@ -1,5 +1,44 @@
 # Verified facts and open hypotheses
 
+## REF-043 — 2026-10-07 — real fog values and StageBackground closure
+
+- All 121 StageBackground bodies / 16 files individually read and CRLF-hash
+  bound: 5 absorbed / 26 nonexact / 90 support. One missing grammar node in
+  the indexed instruction builder reconciled. Global 6,761/183; grammar 97/16.
+- Native camera+150 constructs FogValue28 at471940. Native471410 constructs
+  five values then Timer8C/duration9C/modeA0. Full473590 copies seven words and
+  invokes genuine member arithmetic through hidden results. Original tags and
+  qualifiers remain unproved; maintained nonmutating arithmetic uses const.
+- Fog values have two distances, BGRA float channels and packed word. Ordinary
+  member construction, legal byte access and value-return arithmetic naturally
+  reproduce six complete members; shared Interpolation supplies a seventh.
+  Seven units add 1,043 bytes; full 241 / 57 cold objects / 18,320 bytes exact.
+- All seven native ranges completely decode/flow-close and agree with attested
+  Ghidra; independently read fog/pack/Timer calls anchor canonical relocations.
+  Source 241 / pending origins 180 / library 4 / authored 57 / 4,074 unchanged.
+- Packing truncates to int32 then keeps low bytes without clamping. Portable
+  source requires representable channel truncation; native CVTT behavior for
+  nonfinite/out-of-range channels is not portable C++ acceptance. New independent
+  public C++20/UBSan tests cover all 256 dirty patterns, conversion edges,
+  finite widened arithmetic 10,000 cases, signed zero/raw NaN distance payload,
+  repacking, input preservation and assignment aliasing; all pass.
+- Eleven actual reference TUs freshly compiled after source freeze define 528 /
+  static 91. All 35 whole comparisons across 32 bodies differ in size. Free source
+  helpers and extracted STD camera/VM switches do not restore original complete
+  member ABI. Actual camera preserves matrices through receiver-accessor calls;
+  importing zeroing Matrix4 there would change observed initialization.
+- Historical state 62,048 binds 3/3, VM 43,080 binds 7/7; shared pool
+  2,915,831 binds 389/389.
+  Stage subset 35,476 checks / 77 groups; drawing prose 239,658 is historical. Full
+  finite COM/normalized-pointer/prepared-state domains, excluded geometry fade<30
+  transition allocation, empty foreground39/40 lists and grids2..17 retained.
+  No original Windows oracle/writer or executed binary/compiler/startup binding.
+- Manifest configured once; ref043-record.py executed once; ref043-finish-record.py completed the ledger writes; NEVER RERUN any
+  prior registration writer. All 241 canonical and 11 reference receipts current;
+  other older reference objects stale. Full Background/Camera/ANM/VM/allocator/
+  vptr/EH/resource lifetime and same-input rendered stages remain unresolved.
+  Continue all 183 bodies / 16 grammar files. See REFERENCE_STAGE_BACKGROUND_REVIEW.md.
+
 ## REF-042 — 2026-10-07 — native Sprite values and texel accumulation
 
 - All 540 remaining Sprite bodies across 46 indexed files were individually

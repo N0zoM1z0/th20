@@ -233,3 +233,10 @@ th20::accumulate_texel1555,0x00451640,function
 th20::accumulate_texel4444,0x00451700,function
 th20::accumulate_texel8332,0x004517C0,function
 th20::accumulate_texel8888,0x00451880,function
+th20::FogValue::FogValue,0x00471940,function
+"th20::FogValue::FogValue(float,float,float,float,float,float)",0x004718D0,function
+th20::FogValue::pack,0x00473400,function
+th20::FogValue::operator*,0x00471DB0,function
+th20::FogValue::operator-,0x00471E60,function
+th20::FogValue::operator+,0x00471F50,function
+th20::FogInterpolation::FogInterpolation,0x00471410,function

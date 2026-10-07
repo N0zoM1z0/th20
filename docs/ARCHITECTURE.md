@@ -1,5 +1,14 @@
 # Target inventory and initial architecture boundary
 
+REF-043 establishes actual FogValue28 and shared FogInterpolation164 through
+native camera construction, five value strides, seven-word copies and hidden
+result arithmetic. Six natural members and one shared template constructor add
+1,043 complete bytes; all 241 units / 57 cold objects / 18,320 bytes replay.
+Packing retains low bytes after representable int32 channel truncation. Full
+Camera/Background/ScriptState/ANM/VM/vptr/EH/resource lifetimes remain unclosed.
+All 121 StageBackground bodies individually reviewed; global 6,761/183,
+grammar 97/16. See REFERENCE_STAGE_BACKGROUND_REVIEW.md.
+
 REF-042 establishes genuine IntegerTriple12, Matrix4 with sixteen floats,
 AnmVariables64, three Sprite vertex values and three additional instantiations
 of the shared Interpolation template. Native nested calls and array constructor

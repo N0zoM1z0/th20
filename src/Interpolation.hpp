@@ -3,6 +3,7 @@
 #include "Timer.hpp"
 #include "Angle.hpp"
 #include "IntegerTriple.hpp"
+#include "FogValue.hpp"
 #include "Vector2.hpp"
 #include "Vector3.hpp"
 #include <cstddef>
@@ -30,6 +31,7 @@ using FloatInterpolation = Interpolation<float>;
 using IntegerInterpolation = Interpolation<std::int32_t>;
 using IntegerTripleInterpolation = Interpolation<IntegerTriple>;
 using AngleInterpolation = Interpolation<Angle>;
+using FogInterpolation = Interpolation<FogValue>;
 using Vector2Interpolation = Interpolation<Vector2>;
 using VectorInterpolation = Interpolation<Vector3>;
 static_assert(sizeof(ByteInterpolation) == 32);
@@ -39,6 +41,8 @@ static_assert(sizeof(IntegerInterpolation) == 44);
 static_assert(offsetof(IntegerInterpolation, timer) == 20);
 static_assert(sizeof(IntegerTripleInterpolation) == 84);
 static_assert(offsetof(IntegerTripleInterpolation, timer) == 60);
+static_assert(sizeof(FogInterpolation) == 164);
+static_assert(offsetof(FogInterpolation, timer) == 140);
 static_assert(sizeof(AngleInterpolation) == 44);
 static_assert(offsetof(AngleInterpolation, timer) == 20);
 static_assert(offsetof(FloatInterpolation, timer) == 20);
@@ -56,6 +60,7 @@ extern template struct Interpolation<float>;
 extern template struct Interpolation<std::int32_t>;
 extern template struct Interpolation<IntegerTriple>;
 extern template struct Interpolation<Angle>;
+extern template struct Interpolation<FogValue>;
 extern template struct Interpolation<Vector2>;
 extern template struct Interpolation<Vector3>;
 

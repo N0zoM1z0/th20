@@ -37,6 +37,7 @@ template struct Interpolation<float>;
 template struct Interpolation<std::int32_t>;
 template struct Interpolation<IntegerTriple>;
 template struct Interpolation<Angle>;
+template struct Interpolation<FogValue>;
 template struct Interpolation<Vector2>;
 template struct Interpolation<Vector3>;
 

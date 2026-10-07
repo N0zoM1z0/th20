@@ -2,6 +2,7 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| FogValue | src/FogValue.hpp, src/FogValue.cpp | construction 0x00471940/0x004718D0; pack 0x00473400; scale/subtract/add 0x00471DB0/0x00471E60/0x00471F50 | Six complete exact members on actual 28-byte value; representable int32 channel truncation, original names/origins/full background owners pending |
 | IntegerTriple | src/IntegerTriple.hpp, src/IntegerTriple.cpp | constructor 0x00414090 | Complete 43-byte exact constructor on a real three-integer value; original tag and enclosing ANM owner pending |
 | Matrix4 | src/Matrix4.hpp, src/Matrix4.cpp | constructor 0x00447DC0 | Complete 30-byte exact constructor on sixteen floats; matrix consumers independently observed, original spelling/origin pending |
 | Sprite vertices | src/SpriteVertices.hpp, src/SpriteVertices.cpp | constructors 0x00449110/0x00449140/0x00449170 | Three complete exact constructors on real 20/20/28-byte values; array strides/pointers independently observed, full Controller owner pending |
@@ -24,7 +25,7 @@
 | Vector2 | src/Vector2.hpp, src/Vector2.cpp | constructor 0x004398A0 | Complete35-byte exact constructor on actual two-float value used by Region/Bullet/LaserSegment; original spelling/origin pending |
 | CollisionGeometry | src/CollisionGeometry.hpp, src/CollisionGeometry.cpp | absolute 0x00445680; circle 0x00456FE0; rectangle 0x00457300 | Three complete exact routines; negative zero/quiet-NaN sign retained, circle inclusive/rectangle strict; origins pending |
 | PackedColor / EffectParameters / EffectRequest / SelectionPulse | src/EffectParameters.hpp, src/EffectParameters.cpp | constructors 0x004142A0/0x0047BA30/0x0049CE30/0x00461840 | Four complete exact constructors on actual4/56/72x86/8-byte values; implicit padding kept, origins pending |
-| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3/Vector2 constructors 0x00447B30/0x00447AC0; integer/IntegerTriple/Angle constructors 0x00447980/0x00447A50/0x00447BA0 | Seventeen complete exact members on actual 32/44/84/64-byte values; one semantic template body, live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
+| Interpolation<T> | src/Interpolation.hpp, src/Interpolation.cpp | byte/float constructors, duration/mode/start/end setters and begin; Vector3/Vector2 constructors 0x00447B30/0x00447AC0; integer/IntegerTriple/Angle constructors 0x00447980/0x00447A50/0x00447BA0; Fog constructor 0x00471410 | Eighteen complete exact members on actual 32/44/84/64/164-byte values; one semantic template body, live-reference alias order and raw float copying; evaluation and enclosing owners remain open |
 | RandomState | src/Random.hpp, src/Random.cpp | transition 0x00422CB0; invocation 0x004235F0 | Exact library equivalents; excluded from authored credit |
 | Timer | src/Timer.hpp, src/Timer.cpp | construction, current/fraction reads, remainder, assignment/subtraction/postfix wrappers, reset/set/mode, add/tick and signed predicates | Eighteen complete exact functions; additional construction/wrapper/predicate origins pending; integer += remains nonexact |
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion and eight node field operations | Eleven complete exact functions; allocator, iterator, dispatch and enclosing owner remain open |
@@ -63,8 +64,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns fifty-six objects and one canonical profile per source.
-Two hundred thirty-four units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns fifty-seven objects and one canonical profile per source.
+Two hundred forty-one units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-032 absorbs the score-record constructor through an independently rewritten
@@ -357,3 +358,10 @@ all 234 units cold-replay from 56 objects over 17,277 disjoint bytes. All 540
 Sprite implementations have individual decisions. Natural Base construction
 remains nonexact; full Animation/Controller/Worker/VM/resource lifetimes and
 original names/origins remain open. See REFERENCE_SPRITE_REVIEW.md.
+
+REF-043 adds actual FogValue28 and shared FogInterpolation164 without accepting
+complete Camera/Background/ScriptState/ANM/VM/EH/resource owners. Seven complete
+units add 1,043 bytes; all 241 units / 57 cold objects / 18,320 disjoint bytes
+replay. All 121 StageBackground implementations have individual decisions.
+Packing requires representable int32 channel truncation in portable C++; see
+REFERENCE_STAGE_BACKGROUND_REVIEW.md for native emission and historical limits.

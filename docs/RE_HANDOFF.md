@@ -1,5 +1,41 @@
 # Current reconstruction handoff
 
+## REF-043 — 2026-10-07 — complete StageBackground batch
+
+All 121 remaining StageBackground bodies were individually read across 16 files:
+5 absorbed / 26 nonexact / 90 support. One grammar file/site reconciled; global
+6,761 terminal / 183 pending, grammar 97 complete / 16 pending. Goal active.
+
+- Genuine FogValue28 contains two distances, four float channels and packed
+  color. Six complete members and shared FogInterpolation164 construction add
+  1,043 bytes. Native camera construction, five-value strides, seven-word copies
+  and hidden-result member calls independently establish real storage/ABI.
+- All 241 units / 57 cold objects / 18,320 disjoint bytes exactly replay.
+  Source 241 / pending origins 180 / library 4; authored 57 / 4,074 unchanged.
+  Public g++13/C++20/UBSan dirty guarded construction, widened finite arithmetic,
+  conversion edges, signed zero/raw distance payload, repacking, input preservation
+  and assignment alias tests pass. Channel truncation must be int32-representable;
+  portable nonfinite/out-of-range channel conversion remains outside acceptance.
+- Eleven fresh unmodified reference production TUs define 528 functions / 91
+  static functions. All 35 complete comparisons across 32 bodies differ in size.
+  Actual Fog members replace semantic helpers; free helpers get no native ABI
+  credit. Full Camera/Background/ScriptState/ANM/VM/vptr/EH/resources remain open.
+- Historical state/fog 62,048 binds 3/3 hashes; STD VM 43,080 binds 7/7;
+  shared pool 2,915,831 binds 389/389. Stage subset 35,476 field comparisons /
+  77 groups retains finite inputs, pointer normalization, valid grids, excluded
+  transition allocation and empty foreground global layers39/40. No Windows
+  oracle/writer rerun or executed binary/compiler/startup binding.
+- Maintained src/probes frozen; all 241 canonical receipts and this batch's 11
+  reference TU receipts current. Other older reference receipts are stale.
+  REF043 manifest configured once; ref043-record.py and the corrective
+  ref043-finish-record.py completed registration. NEVER RERUN either writer
+  or any REF001..REF042 registration writer. See the full batch document
+  REFERENCE_STAGE_BACKGROUND_REVIEW.md.
+
+Continue all 183 remaining bodies: root PowerShell 5, incremental 62, audit 39,
+platform_services 1, tests 10 and tools 66, plus 16 grammar files. Serial MSVC,
+no subagents, English, repo-python, commit prefix and public main persist.
+
 ## REF-042 — 2026-10-07 — complete Sprite / ANM / texture batch
 
 All 540 remaining Sprite bodies were individually read across 46 indexed files:

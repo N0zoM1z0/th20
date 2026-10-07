@@ -232,3 +232,10 @@ th20::accumulate_texel1555
 th20::accumulate_texel4444
 th20::accumulate_texel8332
 th20::accumulate_texel8888
+th20::FogValue::FogValue
+"th20::FogValue::FogValue(float,float,float,float,float,float)"
+th20::FogValue::pack
+th20::FogValue::operator*
+th20::FogValue::operator-
+th20::FogValue::operator+
+th20::FogInterpolation::FogInterpolation
