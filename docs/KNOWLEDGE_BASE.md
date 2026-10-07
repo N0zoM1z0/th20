@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## EXACT-049 — 2026-10-07 — rectangle/segment protocol
+
+- All twelve reviewed roots4545D0,4547E0,454D80,456B40,456D50,457610,4578B0,
+  457C10,4580C0,458670,458B60,458E90 and nine direct leaves close:21units/10759B.
+  Attested Ghidra plus locked-PE decoder reconcile2836instructions, complete
+  returns/branches and unreachable jump45477D. No shortened contribution.
+- Line parameters/intersection-point return fullEAX; predicates return AL bool;
+  distances return ST0. Dispatcher4C1030 cleanups/MOVZXAL corroborate predicates.
+  503450 default-constructs both Vector3 outputs and consumes the same input
+  position through actual three-lane subtraction429740;4D2750 corroborates nearest.
+- Line slope threshold0.01 versus vertical overlap0.001, failed output preservation,
+  finite +/-1000 endpoints, line-angle gate for rotating corners and duplicated
+  hits remain native. Nearest distance ignoresZ but full output inheritscenterZ.
+- Rectangle/circle stripsinclusive/cornersstrict; polygon/star center shortcut
+  ignores rectangle rotation; segment tests inspect boundary only. Ellipse sampling
+  retains signed rotated dimensions, rectangle-angle phase, minimum8 perimeter
+  versus minimum3 grid and divisor8. Rectangle pairs include radius rejection,
+  actual Vector2 arrays, inclusive corner containment and nested edge crossings.
+- Actual XY scalar rotation458FA0/137 receives both Vector2 and Vector3. One
+  maintained typed template has two identical complete instantiations; existing
+  unit covers physical head once. Array template459030/4590E0 preserves8/12stride,
+  zero count, in-place/forward overlap and destinationZ. Count signedness unknown;
+  valid nonnegative array lengths are established. Original template/ICF unproved.
+- Verified independent constants56E714=0.001,56D7BC=8,56CDB0=1000 and cyclic int[4][2]
+  routing56E688 supplement earlier anchors. Iterator40BC20 retains anchor only.
+  GeometryMetrics strict/noGS; RectangleCollisions strict/GS/strict_gs_check;
+  MotionMath strict/noGS unchanged. Local candidate recipes, not global proof.
+- Full cold330units/63objects/52160disjointbytes and public C++20/UBSan finite
+  geometry/aliases/boundaries pass. Source330/pending269/library4/authored57/4074;
+  reference6945/113 unchanged. All12candidates exact. Names/origins, controller/
+  resource lifetimes, count overflow/nonfinite conversion/traps/link/runtime remain
+  open. See EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md.
+
 ## EXACT-048 — 2026-10-07 — native collision shapes
 
 - Seven complete collision bool/cdecl bodies plus three math dependencies add

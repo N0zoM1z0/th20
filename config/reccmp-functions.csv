@@ -308,3 +308,24 @@ th20::geometry::circle_ellipse,0x004562E0,function
 th20::Vector3::operator/,0x00452FF0,function
 th20::ellipse_polar,0x00459190,function
 th20::normalize_to_length,0x004532C0,function
+th20::geometry::segment_intersection_point,0x004545D0,function
+th20::geometry::line_rectangle_intersections,0x004547E0,function
+th20::geometry::nearest_width_segment,0x00454D80,function
+th20::geometry::segment_regular_polygon,0x00456B40,function
+th20::geometry::segment_star,0x00456D50,function
+th20::geometry::rectangle_circle,0x00457610,function
+th20::geometry::rectangle_ellipse,0x004578B0,function
+th20::geometry::rectangle_regular_polygon,0x00457C10,function
+th20::geometry::rectangle_rectangle,0x004580C0,function
+th20::geometry::rectangle_star,0x00458670,function
+th20::geometry::rectangle_contains_any_four,0x00458B60,function
+th20::geometry::rotated_rectangle_point,0x00458E90,function
+th20::geometry::squared_norm_xy,0x00456050,function
+th20::geometry::norm_xy,0x00455FB0,function
+"th20::geometry::squared_distance_xy(float,float,float,float)",0x00456080,function
+"th20::geometry::distance_xy(float,float,float,float)",0x00455FE0,function
+"th20::geometry::squared_distance_xy(const Vector3&,const Vector3&)",0x004560D0,function
+"th20::geometry::distance_xy(const Vector3&,const Vector3&)",0x00456030,function
+th20::geometry::line_parameters,0x00456170,function
+th20::rotate_xy_array<Vector2>,0x00459030,function
+th20::rotate_xy_array<Vector3>,0x004590E0,function

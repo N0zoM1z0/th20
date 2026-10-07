@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 309 mapped component functions across 61 comparison objects |
+| Source | 330 mapped component functions across 63 comparison objects |
 | Authored exactness | 57 functions, 4,074 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -68,6 +68,7 @@ are excluded from Git.
 | Colored vertex construction | Complete 43-byte exact constructor for the actual 20-byte value; source spelling and origin review remain open |
 | Trophy messages | Exact shared-buffer decoder and typed record reset; full resource/parser/owner lifetime remains open |
 | Motion update protocol | Two complete main updates and direct angle/vector/math dependencies: 18 new units / 2,572 comparison bytes; [evidence](docs/EXACT_MOTION_RECONSTRUCTION.md) |
+| Rectangle/segment geometry | All 12 related roots plus 9 direct dependencies: 21 new complete units / 10,759 bytes; [evidence](docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md) |
 | Collision geometry | Circle/ellipse/polygon/star predicates and vector dependencies: 10 new complete units / 3,841 bytes; [evidence](docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md) |
 | Enemy interpolation | Current-first 2.4 KB update, shared/axis factors and direct movement dependencies: 8 new units / 2,716 bytes; [evidence](docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md) |
 | Interpolation protocol | Shared 4 KB easing and eight typed updates, plus direct dependencies: 32 new units / 13,952 comparison bytes; [evidence](docs/EXACT_INTERPOLATION_RECONSTRUCTION.md) |

@@ -1,5 +1,31 @@
 # Current reconstruction handoff
 
+## EXACT-049 — 2026-10-07 — rectangle/segment neighborhood
+
+All twelve reviewed collision roots and nine direct dependencies close in one
+batch: 21 complete units / 10,759 new bytes. All 330 units / 63 cold objects /
+52,160 disjoint complete comparison bytes strictly replay after rebuilding the
+previous graph. Public C++20/UBSan geometry/rotation/alias/boundary tests pass.
+See EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md.
+
+Actual Vector2/Vector3 corner/line/hit arrays, cdecl AL/full-EAX/ST0 ABIs, finite
+line length, two line tolerances, XY-only distances, inclusive/strict boundaries,
+unrotated center shortcuts and signed finite ellipse sampling remain native.
+Scalar XY rotation now has one typed template body for both genuine values,
+sharing the already canonical physical head without duplicate coverage. Array
+rotation has one body with two exact native stride variants. Cyclic edge table
+has an independent read-only anchor and natural initializer; no extra credit.
+
+Source330/pendingorigins269/library4/authored57/4074. All twelve candidates are
+exact; no structural-only/deferred candidate remains in this bounded batch.
+Full dispatcher/controller ownership, original names/origins, exceptional FP,
+linkage and whole-game runtime remain open. Target/database/reference6945/113
+unchanged. Source/probes frozen before full cold replay. EXACT049 configure and
+registration writers complete once; NEVER RERUN them or earlier REF/EXACT writers.
+Active unlimited native goal continues in coherent batches. English / repo-python /
+serial compiler / no subagents / gpt-6.1-sol: commits / authorized public main persist.
+Earlier entries are historical checkpoints.
+
 ## EXACT-048 — 2026-10-07 — native collision geometry batch
 
 Ten complete predicates/vector dependencies add 3,841 comparison bytes. All

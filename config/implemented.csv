@@ -307,3 +307,24 @@ th20::geometry::circle_ellipse
 th20::Vector3::operator/
 th20::ellipse_polar
 th20::normalize_to_length
+th20::geometry::segment_intersection_point
+th20::geometry::line_rectangle_intersections
+th20::geometry::nearest_width_segment
+th20::geometry::segment_regular_polygon
+th20::geometry::segment_star
+th20::geometry::rectangle_circle
+th20::geometry::rectangle_ellipse
+th20::geometry::rectangle_regular_polygon
+th20::geometry::rectangle_rectangle
+th20::geometry::rectangle_star
+th20::geometry::rectangle_contains_any_four
+th20::geometry::rotated_rectangle_point
+th20::geometry::squared_norm_xy
+th20::geometry::norm_xy
+"th20::geometry::squared_distance_xy(float,float,float,float)"
+"th20::geometry::distance_xy(float,float,float,float)"
+"th20::geometry::squared_distance_xy(const Vector3&,const Vector3&)"
+"th20::geometry::distance_xy(const Vector3&,const Vector3&)"
+th20::geometry::line_parameters
+th20::rotate_xy_array<Vector2>
+th20::rotate_xy_array<Vector3>

@@ -309,3 +309,24 @@ address,name,module,confidence,evidence
 0x00452FF0,th20::Vector3::operator/,Vector3,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
 0x00459190,th20::ellipse_polar,MotionMath,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
 0x004532C0,th20::normalize_to_length,MotionMath,high,EXACT-048; docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md
+0x004545D0,th20::geometry::segment_intersection_point,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x004547E0,th20::geometry::line_rectangle_intersections,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00454D80,th20::geometry::nearest_width_segment,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00456B40,th20::geometry::segment_regular_polygon,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00456D50,th20::geometry::segment_star,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00457610,th20::geometry::rectangle_circle,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x004578B0,th20::geometry::rectangle_ellipse,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00457C10,th20::geometry::rectangle_regular_polygon,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x004580C0,th20::geometry::rectangle_rectangle,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00458670,th20::geometry::rectangle_star,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00458B60,th20::geometry::rectangle_contains_any_four,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00458E90,th20::geometry::rotated_rectangle_point,RectangleCollisions,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00456050,th20::geometry::squared_norm_xy,GeometryMetrics,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00455FB0,th20::geometry::norm_xy,GeometryMetrics,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00456080,"th20::geometry::squared_distance_xy(float,float,float,float)",GeometryMetrics,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00455FE0,"th20::geometry::distance_xy(float,float,float,float)",GeometryMetrics,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x004560D0,"th20::geometry::squared_distance_xy(const Vector3&,const Vector3&)",GeometryMetrics,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00456030,"th20::geometry::distance_xy(const Vector3&,const Vector3&)",GeometryMetrics,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00456170,th20::geometry::line_parameters,GeometryMetrics,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x00459030,th20::rotate_xy_array<Vector2>,MotionMath,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md
+0x004590E0,th20::rotate_xy_array<Vector3>,MotionMath,high,EXACT-049; docs/EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md

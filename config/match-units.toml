@@ -2850,7 +2850,7 @@ relocations = [
   { offset = 0x12A, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
   { offset = 0x14F, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
   { offset = 0x16F, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
-  { offset = 0x180, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x180, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
   { offset = 0x193, type = "REL32", symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x004562C0 },
   { offset = 0x1A9, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
   { offset = 0x1C9, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
@@ -3009,7 +3009,7 @@ source = "src/MotionMath.cpp"
 object = "build/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::rotate_xy"]
-symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z"
+symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z"
 target_address = 0x00458FA0
 size = 137
 relocations = [
@@ -4174,7 +4174,7 @@ relocations = [
   { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x14, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
   { offset = 0x3E, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
-  { offset = 0x51, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x51, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
   { offset = 0x90, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
   { offset = 0xA5, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
@@ -4192,11 +4192,11 @@ relocations = [
   { offset = 0x11, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
   { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
   { offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
-  { offset = 0x83, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x83, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
   { offset = 0x8E, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
   { offset = 0x96, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
   { offset = 0xB9, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
-  { offset = 0xE0, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0xE0, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
   { offset = 0x10A, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
   { offset = 0x11F, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
   { offset = 0x147, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
@@ -4219,12 +4219,12 @@ relocations = [
   { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
   { offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
   { offset = 0x68, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
-  { offset = 0xD5, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0xD5, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
   { offset = 0xE0, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
   { offset = 0xE8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
   { offset = 0xF9, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
   { offset = 0x113, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
-  { offset = 0x166, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x166, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
   { offset = 0x190, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
   { offset = 0x1A5, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
   { offset = 0x1CD, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
@@ -4299,7 +4299,7 @@ relocations = [
   { offset = 0xC9, type = "REL32", symbol = "?ellipse_point@geometry@th20@@YA_NMMMMMMM@Z", target = 0x00457040 },
   { offset = 0xE2, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
   { offset = 0x10C, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
-  { offset = 0x11F, type = "REL32", symbol = "?rotate_xy@th20@@YAXAAUVector3@1@ABU21@M@Z", target = 0x00458FA0 },
+  { offset = 0x11F, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
   { offset = 0x171, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
   { offset = 0x186, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
   { offset = 0x19B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
@@ -4356,4 +4356,513 @@ relocations = [
   { offset = 0x84, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
   { offset = 0xB0, type = "REL32", symbol = "??KVector3@th20@@QBE?AU01@M@Z", target = 0x00452FF0 },
   { offset = 0xCA, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+]
+
+# EXACT-049: complete rectangle/segment neighborhood and planar dependencies.
+
+[units.geometry_segment_intersection_point]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::segment_intersection_point"]
+symbol = "?segment_intersection_point@geometry@th20@@YAHAAM0MMMMMMMM@Z"
+target_address = 0x004545D0
+size = 526
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x69, type = "REL32", symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00456920 },
+  { offset = 0xB3, type = "REL32", symbol = "?line_parameters@geometry@th20@@YAHAAM0MMMM@Z", target = 0x00456170 },
+  { offset = 0xF2, type = "REL32", symbol = "?line_parameters@geometry@th20@@YAHAAM0MMMM@Z", target = 0x00456170 },
+  { offset = 0x172, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x180, type = "DIR32", symbol = "__real@3a83126f", target = 0x0056E714 },
+  { offset = 0x206, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_line_rectangle_intersections]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::line_rectangle_intersections"]
+symbol = "?line_rectangle_intersections@geometry@th20@@YAHAAUVector3@2@0ABU32@MMMMMM@Z"
+target_address = 0x004547E0
+size = 1439
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x23, type = "DIR32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x30, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x3C, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x44, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x5E, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x66, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x80, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x88, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xA3, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xBE, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xD8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xF2, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x10C, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x114, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x12E, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x14E, type = "REL32", symbol = "??$rotate_xy_array@UVector2@th20@@@th20@@YAXPAUVector2@0@PBU10@MI@Z", target = 0x00459030 },
+  { offset = 0x1CC, type = "DIR32", symbol = "__real@447a0000", target = 0x0056CDB0 },
+  { offset = 0x20C, type = "REL32", symbol = "??$rotate_xy@UVector2@th20@@@th20@@YAXAAUVector2@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x2B8, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2C5, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x2FA, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x318, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x336, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x354, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x3C7, type = "REL32", symbol = "?segment_intersection_point@geometry@th20@@YAHAAM0MMMMMMMM@Z", target = 0x004545D0 },
+  { offset = 0x444, type = "REL32", symbol = "?squared_norm_xy@geometry@th20@@YAMMM@Z", target = 0x00456050 },
+  { offset = 0x49D, type = "REL32", symbol = "?squared_norm_xy@geometry@th20@@YAMMM@Z", target = 0x00456050 },
+  { offset = 0x597, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_nearest_width_segment]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::nearest_width_segment"]
+symbol = "?nearest_width_segment@geometry@th20@@YAMABUVector3@2@MM0AAU32@@Z"
+target_address = 0x00454D80
+size = 343
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x14, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1C, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2D, type = "REL32", symbol = "??GVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429440 },
+  { offset = 0x4A, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x5D, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x6C, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x74, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x8B, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xA9, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0xB8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xD4, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0xDC, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xFE, type = "REL32", symbol = "?distance_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 0x00456030 },
+  { offset = 0x11C, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x12F, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x14F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_segment_regular_polygon]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::segment_regular_polygon"]
+symbol = "?segment_regular_polygon@geometry@th20@@YA_NMMMMMMMMH@Z"
+target_address = 0x00456B40
+size = 517
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x83, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x8E, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x96, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xB9, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0xE0, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x10A, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x11F, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x147, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x15C, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x1DE, type = "REL32", symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00456920 },
+  { offset = 0x1FD, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_segment_star]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::segment_star"]
+symbol = "?segment_star@geometry@th20@@YA_NMMMMMMMMMH@Z"
+target_address = 0x00456D50
+size = 651
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x43, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x68, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xD5, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0xE0, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0xE8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xF9, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x113, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0x166, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x190, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x1A5, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x1CD, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x1E2, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x264, type = "REL32", symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00456920 },
+  { offset = 0x283, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_rectangle_circle]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::rectangle_circle"]
+symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z"
+target_address = 0x00457610
+size = 669
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x14, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x3E, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x51, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x63, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x76, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x91, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0xA4, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xC1, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0xD4, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xEA, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0xFD, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x11C, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x137, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x180, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x197, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1E0, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1FB, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x23D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x254, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x295, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_rectangle_ellipse]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::rectangle_ellipse"]
+symbol = "?rectangle_ellipse@geometry@th20@@YA_NMMMMMMMMMM@Z"
+target_address = 0x004578B0
+size = 849
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x6A, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x72, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x9C, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0xAF, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0xD8, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xED, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0xFD, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x17E, type = "REL32", symbol = "?ellipse_polar@th20@@YAXAAUVector3@1@MMM@Z", target = 0x00459190 },
+  { offset = 0x189, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x191, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1EB, type = "REL32", symbol = "?rectangle_point@geometry@th20@@YA_NMMMMMM@Z", target = 0x00457300 },
+  { offset = 0x213, type = "DIR32", symbol = "__real@41000000", target = 0x0056D7BC },
+  { offset = 0x233, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x23B, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x26A, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x272, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2EB, type = "REL32", symbol = "?ellipse_point@geometry@th20@@YA_NMMMMMMM@Z", target = 0x00457040 },
+  { offset = 0x349, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_rectangle_regular_polygon]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::rectangle_regular_polygon"]
+symbol = "?rectangle_regular_polygon@geometry@th20@@YA_NMMMMMMMMMH@Z"
+target_address = 0x00457C10
+size = 1195
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x53, type = "REL32", symbol = "?rectangle_point@geometry@th20@@YA_NMMMMMM@Z", target = 0x00457300 },
+  { offset = 0xAF, type = "REL32", symbol = "?regular_polygon_point@geometry@th20@@YA_NMMMMMMH@Z", target = 0x004570F0 },
+  { offset = 0xC5, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0xD2, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0xDE, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0xE6, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x100, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x108, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x122, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x12A, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x145, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x160, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x17A, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x194, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1AE, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x1B6, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1D0, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x1F0, type = "REL32", symbol = "??$rotate_xy_array@UVector3@th20@@@th20@@YAXPAUVector3@0@PBU10@MI@Z", target = 0x004590E0 },
+  { offset = 0x232, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x243, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x2CB, type = "REL32", symbol = "?segment_regular_polygon@geometry@th20@@YA_NMMMMMMMMH@Z", target = 0x00456B40 },
+  { offset = 0x35F, type = "REL32", symbol = "?segment_regular_polygon@geometry@th20@@YA_NMMMMMMMMH@Z", target = 0x00456B40 },
+  { offset = 0x3F3, type = "REL32", symbol = "?segment_regular_polygon@geometry@th20@@YA_NMMMMMMMMH@Z", target = 0x00456B40 },
+  { offset = 0x489, type = "REL32", symbol = "?segment_regular_polygon@geometry@th20@@YA_NMMMMMMMMH@Z", target = 0x00456B40 },
+  { offset = 0x4A3, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_rectangle_rectangle]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::rectangle_rectangle"]
+symbol = "?rectangle_rectangle@geometry@th20@@YA_NMMMMMMMMMM@Z"
+target_address = 0x004580C0
+size = 1452
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x23, type = "DIR32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x30, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x62, type = "REL32", symbol = "?distance_xy@geometry@th20@@YAMMMMM@Z", target = 0x00455FE0 },
+  { offset = 0x7A, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x8D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x9D, type = "REL32", symbol = "?norm_xy@geometry@th20@@YAMMM@Z", target = 0x00455FB0 },
+  { offset = 0xB5, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xC8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xD8, type = "REL32", symbol = "?norm_xy@geometry@th20@@YAMMM@Z", target = 0x00455FB0 },
+  { offset = 0x105, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x10D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x127, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x12F, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x149, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x151, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x16C, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x187, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1A1, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1BB, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1D5, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x1DD, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1F7, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x217, type = "REL32", symbol = "??$rotate_xy_array@UVector2@th20@@@th20@@YAXPAUVector2@0@PBU10@MI@Z", target = 0x00459030 },
+  { offset = 0x226, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x22E, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x248, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x250, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x26A, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x272, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x28D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2A8, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2C2, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2DC, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2F6, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x2FE, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x318, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x338, type = "REL32", symbol = "??$rotate_xy_array@UVector2@th20@@@th20@@YAXPAUVector2@0@PBU10@MI@Z", target = 0x00459030 },
+  { offset = 0x3F1, type = "REL32", symbol = "?rectangle_contains_any_four@geometry@th20@@YA_NMMMMMPBUVector2@2@@Z", target = 0x00458B60 },
+  { offset = 0x442, type = "REL32", symbol = "?rectangle_contains_any_four@geometry@th20@@YA_NMMMMMPBUVector2@2@@Z", target = 0x00458B60 },
+  { offset = 0x49D, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x4BB, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x4D9, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x4F7, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x515, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x533, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x551, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x56F, type = "DIR32", symbol = "?rectangle_edges@geometry@th20@@3QAY01$$CBHA", target = 0x0056E688 },
+  { offset = 0x580, type = "REL32", symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00456920 },
+  { offset = 0x5A4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_rectangle_star]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::rectangle_star"]
+symbol = "?rectangle_star@geometry@th20@@YA_NMMMMMMMMMMH@Z"
+target_address = 0x00458670
+size = 1250
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x53, type = "REL32", symbol = "?rectangle_point@geometry@th20@@YA_NMMMMMM@Z", target = 0x00457300 },
+  { offset = 0xBA, type = "REL32", symbol = "?star_point@geometry@th20@@YA_NMMMMMMMH@Z", target = 0x00457380 },
+  { offset = 0xD0, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0xDD, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0xE9, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0xF1, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x10B, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x113, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x12D, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x135, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x150, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x16B, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x185, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x19F, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1B9, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x1C1, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1DB, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x1FB, type = "REL32", symbol = "??$rotate_xy_array@UVector3@th20@@@th20@@YAXPAUVector3@0@PBU10@MI@Z", target = 0x004590E0 },
+  { offset = 0x23D, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x24E, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x2E1, type = "REL32", symbol = "?segment_star@geometry@th20@@YA_NMMMMMMMMMH@Z", target = 0x00456D50 },
+  { offset = 0x380, type = "REL32", symbol = "?segment_star@geometry@th20@@YA_NMMMMMMMMMH@Z", target = 0x00456D50 },
+  { offset = 0x41F, type = "REL32", symbol = "?segment_star@geometry@th20@@YA_NMMMMMMMMMH@Z", target = 0x00456D50 },
+  { offset = 0x4C0, type = "REL32", symbol = "?segment_star@geometry@th20@@YA_NMMMMMMMMMH@Z", target = 0x00456D50 },
+  { offset = 0x4DA, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_rectangle_contains_any_four]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::rectangle_contains_any_four"]
+symbol = "?rectangle_contains_any_four@geometry@th20@@YA_NMMMMMPBUVector2@2@@Z"
+target_address = 0x00458B60
+size = 804
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x1E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x142, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x156, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x169, type = "REL32", symbol = "??$rotate_xy_array@UVector2@th20@@@th20@@YAXPAUVector2@0@PBU10@MI@Z", target = 0x00459030 },
+  { offset = 0x185, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x198, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1B7, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x1CA, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x1F0, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x203, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x222, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x235, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x25A, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x26D, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x28B, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x29E, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2C1, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x2D4, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x2F3, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x306, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x31C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_rotated_rectangle_point]
+source = "src/RectangleCollisions.cpp"
+object = "build/RectangleCollisions.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::rotated_rectangle_point"]
+symbol = "?rotated_rectangle_point@geometry@th20@@YA_NMMMMMMM@Z"
+target_address = 0x00458E90
+size = 222
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x14, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x3E, type = "DIR32", symbol = "__real@00000000", target = 0x0056E0E8 },
+  { offset = 0x50, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x63, type = "REL32", symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x76, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x89, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x9F, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0xB2, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xD6, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.geometry_squared_norm_xy]
+source = "src/GeometryMetrics.cpp"
+object = "build/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::squared_norm_xy"]
+symbol = "?squared_norm_xy@geometry@th20@@YAMMM@Z"
+target_address = 0x00456050
+size = 40
+relocations = [
+]
+
+[units.geometry_norm_xy]
+source = "src/GeometryMetrics.cpp"
+object = "build/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::norm_xy"]
+symbol = "?norm_xy@geometry@th20@@YAMMM@Z"
+target_address = 0x00455FB0
+size = 46
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?squared_norm_xy@geometry@th20@@YAMMM@Z", target = 0x00456050 },
+  { offset = 0x25, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+]
+
+[units.geometry_squared_distance_xy_scalar]
+source = "src/GeometryMetrics.cpp"
+object = "build/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::squared_distance_xy(float,float,float,float)"]
+symbol = "?squared_distance_xy@geometry@th20@@YAMMMMM@Z"
+target_address = 0x00456080
+size = 68
+relocations = [
+]
+
+[units.geometry_distance_xy_scalar]
+source = "src/GeometryMetrics.cpp"
+object = "build/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::distance_xy(float,float,float,float)"]
+symbol = "?distance_xy@geometry@th20@@YAMMMMM@Z"
+target_address = 0x00455FE0
+size = 68
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "?squared_distance_xy@geometry@th20@@YAMMMMM@Z", target = 0x00456080 },
+  { offset = 0x3B, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+]
+
+[units.geometry_squared_distance_xy_vector]
+source = "src/GeometryMetrics.cpp"
+object = "build/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::squared_distance_xy(const Vector3&,const Vector3&)"]
+symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z"
+target_address = 0x004560D0
+size = 88
+relocations = [
+]
+
+[units.geometry_distance_xy_vector]
+source = "src/GeometryMetrics.cpp"
+object = "build/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::distance_xy(const Vector3&,const Vector3&)"]
+symbol = "?distance_xy@geometry@th20@@YAMABUVector3@2@0@Z"
+target_address = 0x00456030
+size = 32
+relocations = [
+  { offset = 0xC, type = "REL32", symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 0x004560D0 },
+  { offset = 0x17, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+]
+
+[units.geometry_line_parameters]
+source = "src/GeometryMetrics.cpp"
+object = "build/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::line_parameters"]
+symbol = "?line_parameters@geometry@th20@@YAHAAM0MMMM@Z"
+target_address = 0x00456170
+size = 156
+relocations = [
+  { offset = 0x15, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x23, type = "DIR32", symbol = "__real@3c23d70a", target = 0x0056E1A0 },
+]
+
+[units.rotate_xy_array_vector2]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::rotate_xy_array<Vector2>"]
+symbol = "??$rotate_xy_array@UVector2@th20@@@th20@@YAXPAUVector2@0@PBU10@MI@Z"
+target_address = 0x00459030
+size = 172
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x28, type = "REL32", symbol = "?cosine@scalar_math@th20@@YAMM@Z", target = 0x004397C0 },
+]
+
+[units.rotate_xy_array_vector3]
+source = "src/MotionMath.cpp"
+object = "build/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::rotate_xy_array<Vector3>"]
+symbol = "??$rotate_xy_array@UVector3@th20@@@th20@@YAXPAUVector3@0@PBU10@MI@Z"
+target_address = 0x004590E0
+size = 172
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x28, type = "REL32", symbol = "?cosine@scalar_math@th20@@YAMM@Z", target = 0x004397C0 },
 ]

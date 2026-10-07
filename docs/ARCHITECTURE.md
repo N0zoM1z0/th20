@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+EXACT-049 closes the twelve-root rectangle/segment neighborhood and nine direct
+planar dependencies: 21 complete units / 10,759 new bytes. All 330 units / 63 cold
+objects / 52,160 disjoint complete comparison bytes strictly replay. Actual
+Vector2/Vector3 arrays and one typed XY rotation protocol preserve native owner
+boundaries and share scalar head458FA0 without duplicate coverage. Complete
+collision controller, origins and runtime remain open. See
+EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md. EXACT-048 previously added ten
+collision/vector contributions / 3,841 bytes; all previous units are rebuilt.
+Earlier entries are historical checkpoints.
+
 EXACT-047 reconstructs the distinct current-first100-byte Enemy position curve:
 eight complete units / 2,716 bytes, centered on its 2,433-byte update. Existing
 Movement388, Vector3 and Motion owners retain their layouts. All 299 / 60 cold

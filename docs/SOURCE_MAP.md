@@ -1,5 +1,11 @@
 # Source and build ownership
 
+EXACT-049 adds all twelve rectangle/segment candidates and nine planar math
+leaves: 21 complete units / 10,759 bytes; all330 /63 coldobjects /52,160 disjoint
+bytes strictly replay. Actual arrays, typed shared scalar rotation, separate
+array strides, cdecl return widths and original geometry quirks are retained.
+See EXACT_RECTANGLE_COLLISIONS_RECONSTRUCTION.md. Earlier summaries are historical.
+
 EXACT-048 closes seven collision predicates and three vector/math dependencies:
 ten complete units / 3,841 bytes; all 309 units / 61 cold objects / 41,401 disjoint bytes
 strictly replay. Native edge arrays, cdecl AL predicates, normalization threshold,
@@ -80,7 +86,9 @@ and the separate whole-game boundary.
 | SoundEffects | src/SoundEffects.hpp, src/SoundEffects.cpp, src/SoundEffectsApi.cpp | request/command/channel construction 0x00425CE0/0x00425FC0/0x00425D20; channel release 0x00428380 | Four complete exact units; release authored, three constructor origins pending; enclosing SoundInf and stream owners remain open |
 | AnimationHandle | src/AnimationHandle.hpp, src/AnimationHandle.cpp | value construction 0x00425CC0 | Complete 23-byte exact constructor; authored/compiler origin pending; resolve, interruption and enclosing Controller remain undefined |
 | Angle / Motion | src/Angle.hpp, src/Angle.cpp, src/Motion.hpp, src/Motion.cpp, src/MotionUpdates.cpp | constructors/reduction/update/bounds; velocity453E40, position453AC0, snap4543D0, vector4562C0, set-vector47A5E0, Z4591F0; angle452F20/4530C0/452FC0/4294E0/429610/429390 | Eighteen complete exact contributions on actual4/72-byte values; complete motion protocol, bounded normalization, flags and full-int bounds; origins/enclosing owners pending |
-| Motion math | src/MotionMath.hpp, src/MotionMath.cpp | polar439330, rotation458FA0, direction456210, floor4592B0, difference4396C0; ellipsepolar459190; normalization4532C0; float overloads4371D0/439530 | Nine complete exact contributions; alias-safe planar arithmetic, destinationZ preservation, original origins pending |
+| Rectangle collision neighborhood | src/RectangleCollisions.cpp, src/CollisionGeometry.hpp | 4545D0/4547E0/454D80;456B40/456D50;457610/4578B0/457C10/4580C0/458670/458B60/458E90 | Twelve complete exact routines; native array storage, status/bool/float ABI, finite sampling and shortcut/boundary quirks; enclosing owner/origins pending |
+| Planar geometry metrics | src/GeometryMetrics.cpp, src/CollisionGeometry.hpp | 455FB0/455FE0/456030/456050/456080/4560D0/456170 | Seven complete exact routines; interleaved scalar endpoints, XY-only Vector3 distance, full-EAX vertical status; origins pending |
+| Motion math | src/MotionMath.hpp, src/MotionMath.cpp | polar439330, rotation458FA0, direction456210, floor4592B0, difference4396C0; ellipsepolar459190; normalization4532C0; arrays459030/4590E0; float overloads4371D0/439530 | Eleven complete exact contributions; typed scalar shared head covered once; alias-safe planar arithmetic, destinationZ preservation, original origins pending |
 | Vector3 | src/Vector3.hpp, src/Vector3.cpp | constructors 0x00422E10/0x00422DD0; subtract 0x00429440; scale 0x004292F0; add assignment 0x004296E0; multiply assignment 0x00429690; add 0x00429570; subtract assignment 0x00429740; indexed reference 0x00414580; division0x00452FF0 | Ten complete exact members including indexed reference414580 and division; actual named float subobjects, domain0..2, original class spelling/origins pending |
 | Cursor | src/Cursor.hpp, src/Cursor.cpp | shared menu history, predicates, setters and reverse resource destruction | Eight complete exact members on real PMR vector/two-stack owner; natural constructor source present but native EH nonexact, origins pending |
 | PauseFlags | src/PauseFlags.hpp, src/PauseFlags.cpp | four-byte flags construction 0x004E1CB0 | Complete 40-byte exact constructor; two-bit mode/one-bit practice, upper 29 retained, origin pending |

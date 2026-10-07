@@ -27,13 +27,31 @@ void normalize_to_length(Vector3& destination, const Vector3& input, float lengt
     }
 }
 
-void rotate_xy(Vector3& destination, const Vector3& input, float direction) {
+template<class Coordinate>
+void rotate_xy(Coordinate& destination, const Coordinate& input, float direction) {
     const float sine = scalar_math::sine(direction);
     const float cosine = scalar_math::cosine(direction);
     const float rotated_x = input.x * cosine - input.y * sine;
     destination.y = input.y * cosine + input.x * sine;
     destination.x = rotated_x;
 }
+
+template<class Coordinate> void rotate_xy_array(Coordinate* destination, const Coordinate* input, float direction, std::uint32_t count) {
+    const float sine = scalar_math::sine(direction);
+    const float cosine = scalar_math::cosine(direction);
+    while (count != 0) {
+        const float rotated_x = input->x * cosine - input->y * sine;
+        destination->y = input->y * cosine + input->x * sine;
+        destination->x = rotated_x;
+        ++destination;
+        ++input;
+        --count;
+    }
+}
+template void rotate_xy(Vector2&, const Vector2&, float);
+template void rotate_xy(Vector3&, const Vector3&, float);
+template void rotate_xy_array(Vector2*, const Vector2*, float, std::uint32_t);
+template void rotate_xy_array(Vector3*, const Vector3*, float, std::uint32_t);
 
 float vector_direction(const Vector3& input) {
     return scalar_math::arctangent(input.y, input.x);
