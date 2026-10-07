@@ -440,3 +440,14 @@ th20::Motion::set_parameter_24
 th20::Enemy::parent
 th20::scalar_math::absolute
 th20::Enemy::position_ref
+th20::ShotMetadata::ShotMetadata
+th20::ShotMetadata::~ShotMetadata
+th20::LaserType0Parameters::LaserType0Parameters
+th20::LaserType0Parameters::~LaserType0Parameters
+th20::LaserType1Parameters::LaserType1Parameters
+th20::LaserType1Parameters::~LaserType1Parameters
+th20::LaserType2Parameters::LaserType2Parameters
+th20::LaserType2Parameters::~LaserType2Parameters
+th20::LaserType3Parameters::LaserType3Parameters
+th20::LaserType3Parameters::~LaserType3Parameters
+th20::ShotMetadata::operator=(ShotMetadata&&)

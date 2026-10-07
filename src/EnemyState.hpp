@@ -7,6 +7,7 @@
 #include "EnemyMovement.hpp"
 #include "EnemyPattern.hpp"
 #include "Identifier32.hpp"
+#include "ShotMetadata.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <forward_list>
@@ -18,7 +19,6 @@ namespace th20 {
 
 struct Enemy;
 struct Context;
-struct ShotMetadata;
 struct EnemyMeshOwner;
 
 struct EnemyAnimationLink {
@@ -28,8 +28,8 @@ struct EnemyAnimationLink {
     EnemyAnimationLink();
 };
 
-// The shared owner supplies shot metadata. Its pointed-to layout and lifetime
-// producers remain open; the queued value owns the real shared_ptr subobject.
+// The queued record owns the real shared metadata value through shared_ptr.
+// Queue access/factory implementations remain open.
 struct EnemyQueuedRecord {
     std::shared_ptr<ShotMetadata> owner;
     ShotParameters parameters;

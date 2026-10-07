@@ -1,5 +1,16 @@
 # Target inventory and initial architecture boundary
 
+EXACT-063 closes the actual Enemy dispatcher ShotMetadata and four laser
+parameter temporary lifetimes. Eleven whole functions add1,384 instruction
+bytes and five alignment bytes; all453units/86coldobjects/85,406disjointbytes
+strictly replay after the shared owner becomes complete. Native PMR move157,
+actual flags5 EH and complete child contributions establish ownership and
+exceptions. Equal/unequal allocator transfer, copy/reset, all four command-vector
+lifetimes and allocation failure termination pass owned semantic tests. Queue
+accessors/factories and the whole41KB Enemy dispatcher remain pending; no partial
+opcode credit. Authored64/16948 is unchanged. See
+EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md. Older entries below are historical.
+
 CORE-062 closes the complete Enemy dispatcher normal control-flow audit and
 four additional nested rank tables (24 pointers /96bytes). All174 case paths
 and the40-instruction prologue cover the full8896 native instruction heads;

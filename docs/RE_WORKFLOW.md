@@ -66,9 +66,13 @@ and all unreferenced failure/exit paths in subsequent comparisons.
 
 ## Retiring generated artifacts
 
-Protect every current `config/match-units.toml` object and its sibling
+Retire superseded build artifacts after every stable reconstruction batch, as
+explicitly requested by the user. Protect every current
+`config/match-units.toml` object and its sibling
 `.receipt.json` before removing obsolete experiment builds. Keep toolchain smoke
-artifacts, active probes, native exports and evidence supporting reviewed ledgers.
+proof reports and probe sources, active probes, native exports and evidence
+supporting reviewed ledgers. Completed regenerable smoke binaries and copied SDK
+DLLs can be retired while retaining their saved proof and master SDK files.
 Completed generated checkouts, CMake build trees and temporary setup environments
 can be removed after confirming they contain no tracked or active input. Preserve
 locked tools, reference source, Ghidra and supplied game files.

@@ -1,5 +1,11 @@
 # Whole Enemy dispatcher control flow and compiler tables
 
+EXACT-063 subsequently closes the five actual temporary construction/destruction
+owners and ShotMetadata move assignment, including complete PMR/EH support.
+The graph is now453units/86objects/85406bytes; the whole dispatcher and queue/
+factory protocol remain pending. See EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md.
+The CORE-062 graph and counts below record the historical investigation.
+
 CORE-062 continues the complete 0048C010 dispatcher. This is a native protocol
 and boundary investigation; no new source function or exact unit is accepted.
 The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.

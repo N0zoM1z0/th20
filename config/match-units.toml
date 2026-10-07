@@ -7131,3 +7131,147 @@ size = 25
 relocations = [
   { offset = 0x11, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
 ]
+
+# EXACT-063: actual Enemy dispatcher shot/laser temporary lifetimes and PMR move assignment.
+[units.shot_metadata_ctor]
+source = "src/ShotMetadata.cpp"
+object = "build/ShotMetadata.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ShotMetadata::ShotMetadata"]
+symbol = "??0ShotMetadata@th20@@QAE@XZ"
+target_address = 0x0047BB90
+size = 255
+compare_size = 260
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0ShotMetadata@th20@@QAE@XZ", target = 0x005679A0 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+  { offset = 0xE8, type = "REL32", symbol = "?resize@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x004862F0 },
+]
+
+[units.shot_metadata_dtor]
+source = "src/ShotMetadata.cpp"
+object = "build/ShotMetadata.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ShotMetadata::~ShotMetadata"]
+symbol = "??1ShotMetadata@th20@@QAE@XZ"
+target_address = 0x0047C450
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x0047C320 },
+]
+
+[units.laser_type0_parameters_ctor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType0Parameters::LaserType0Parameters"]
+symbol = "??0LaserType0Parameters@th20@@QAE@XZ"
+target_address = 0x0047C130
+size = 180
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x8B, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+]
+
+[units.laser_type0_parameters_dtor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType0Parameters::~LaserType0Parameters"]
+symbol = "??1LaserType0Parameters@th20@@QAE@XZ"
+target_address = 0x0047C4B0
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x0047C320 },
+]
+
+[units.laser_type1_parameters_ctor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType1Parameters::LaserType1Parameters"]
+symbol = "??0LaserType1Parameters@th20@@QAE@XZ"
+target_address = 0x0047C030
+size = 246
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x16, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x58, type = "DIR32", symbol = "__real@41000000", target = 0x0056D7BC },
+  { offset = 0xE1, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+]
+
+[units.laser_type1_parameters_dtor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType1Parameters::~LaserType1Parameters"]
+symbol = "??1LaserType1Parameters@th20@@QAE@XZ"
+target_address = 0x0047C490
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x0047C320 },
+]
+
+[units.laser_type2_parameters_ctor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType2Parameters::LaserType2Parameters"]
+symbol = "??0LaserType2Parameters@th20@@QAE@XZ"
+target_address = 0x0048B650
+size = 198
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x6A, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+]
+
+[units.laser_type2_parameters_dtor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType2Parameters::~LaserType2Parameters"]
+symbol = "??1LaserType2Parameters@th20@@QAE@XZ"
+target_address = 0x0048B8B0
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x0047C320 },
+]
+
+[units.laser_type3_parameters_ctor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType3Parameters::LaserType3Parameters"]
+symbol = "??0LaserType3Parameters@th20@@QAE@XZ"
+target_address = 0x0048B5B0
+size = 149
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x16, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x80, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004141C0 },
+]
+
+[units.laser_type3_parameters_dtor]
+source = "src/LaserParameters.cpp"
+object = "build/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType3Parameters::~LaserType3Parameters"]
+symbol = "??1LaserType3Parameters@th20@@QAE@XZ"
+target_address = 0x0048B890
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x0047C320 },
+]
+
+[units.shot_metadata_move_assignment]
+source = "src/ShotMetadata.cpp"
+object = "build/ShotMetadata.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ShotMetadata::operator=(ShotMetadata&&)"]
+symbol = "??4ShotMetadata@th20@@QAEAAU01@$$QAU01@@Z"
+target_address = 0x0048BB00
+size = 241
+relocations = [
+  { offset = 0x1F, type = "REL32", symbol = "??4?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEAAV01@$$QAV01@@Z", target = 0x0048BA60 },
+]

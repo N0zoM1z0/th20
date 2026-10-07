@@ -21,7 +21,7 @@ class EnemyMovementUpdateTests(unittest.TestCase):
             "Matrix4", "Motion", "MotionConfiguration", "MotionUpdates", "MotionMath",
             "Vector2", "Vector3", "Angle", "Interpolation", "IntegerTriple",
             "FogValue", "Easing", "Timer", "ClockScalar", "ScalarMath",
-            "Identifier32", "ScriptStack", "BulletValues", "CollisionGeometry",
+            "Identifier32", "ScriptStack", "BulletValues", "ShotMetadata", "CollisionGeometry",
             "Worker", "LockRegistry", "DiagnosticAllocator", "DebugMemoryResource",
         ]
         with tempfile.TemporaryDirectory() as temporary:

@@ -79,6 +79,12 @@ Replay affected exact units after shared-header/profile/layout/partition/anchor
 changes. Run `scripts/ci.py`, tracking and progress gates; commit stable
 checkpoints before handoff.
 
+After each stable batch, retire superseded probe builds and other regenerable
+artifacts as explicitly requested by the user. Protect all current canonical
+objects/receipts, preserve native evidence and active inputs, record removed
+paths/bytes privately, and verify exact replay after cleanup. See
+docs/RE_WORKFLOW.md for retirement rules.
+
 Never commit original executables/data, downloaded proprietary toolchains,
 credentials, generated decompiler text, private Ghidra/IDA databases or build
 products. Keep them in ignored `.tools/`, `.analysis/`, `ghidra-project/`,

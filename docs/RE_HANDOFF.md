@@ -1,5 +1,43 @@
 # Current reconstruction handoff
 
+## EXACT-063 — 2026-10-08 — Actual Enemy dispatcher temporary lifetimes
+
+Eleven whole functions add1,384 instruction and five compiler alignment bytes.
+The frozen-source graph strictly replays453units/86coldobjects/85406disjointbytes.
+Actual ShotMetadata0x4C owns PMR BulletCommand44 values, constructs two commands,
+and retains implicit trailing padding. Four laser parameter values0x54/74/5C/50
+own their command vectors and now supply all five native dispatcher cleanup
+states. See EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md. New origins remain pending:
+385pending/4library/64authored16948. One reference constructor association closes;
+header/implicit laser constructors receive no fabricated reference-body credit.
+
+IMPORTANT: independent full vector48BA60/157 proves ShotMetadata48BB00/241 is
+move assignment. The initial private copy hypothesis has the same outer241
+bytes but its vector child is121; reject that relocation/ownership inference.
+Native handler5679A0/29 plus full FuncInfo5A91B8/36 flags5 establishes the metadata
+nonthrowing constructor, including allocation failure termination. Five complete
+PMR library contributions plus both EH records independently replay without
+extra coverage. The whole Enemy dispatcher stays flags1, not nonthrowing.
+Type3 +30 is float. Type2 +28 is a four-byte flag aggregate with unknown original
+aggregate/union spelling; scalar initialization differs. Its curve pointer is
+not destroyed here; the curve owner remains open. Existing Enemy fixtures now
+use the real metadata;37public semantic/control-plane tests pass.
+
+Queue498B80/396 (COW) and498D10/305 (ensure-only) remain private/nonexact.
+std::pair forwarding explains467CC0/55, but allocation/temporary-reference emission
+differs in whole accessors. Do not promote allocator/std::move hypotheses or
+child coverage into whole queue/dispatcher credit. Next close actual allocation/
+shared-control/aggregate-return protocol and integrate the complete48C010 root,
+all primary/nested tables and real EH states. No leaf-only detour is needed.
+Private core063-resume.md records probe/replay/cleanup state. One-time writers
+core063-configure.py/register.py are completed; never rerun them.
+Periodic cleanup retires8 superseded files /321,504bytes,
+protecting all172 current object/receipt hashes and replaying453 units. Cumulative
+retirement:2003files /67,439,994bytes. See private
+core063-cleanup.json. Continue after stable batches; preserve native exports,
+probe sources, active inputs and locked tools.
+English/repo-python/serial MSVC-Ghidra/no subagents/authorized main push persist.
+
 ## CORE-062 — 2026-10-07 — Complete Enemy dispatcher graph and nested tables
 
 The whole48C010/41967 investigation now follows all174 primary case paths,

@@ -441,3 +441,14 @@ th20::Motion::set_parameter_24,0x0047A520,function
 th20::Enemy::parent,0x004AAD90,function
 th20::scalar_math::absolute,0x0047A630,function
 th20::Enemy::position_ref,0x0047A2C0,function
+th20::ShotMetadata::ShotMetadata,0x0047BB90,function
+th20::ShotMetadata::~ShotMetadata,0x0047C450,function
+th20::LaserType0Parameters::LaserType0Parameters,0x0047C130,function
+th20::LaserType0Parameters::~LaserType0Parameters,0x0047C4B0,function
+th20::LaserType1Parameters::LaserType1Parameters,0x0047C030,function
+th20::LaserType1Parameters::~LaserType1Parameters,0x0047C490,function
+th20::LaserType2Parameters::LaserType2Parameters,0x0048B650,function
+th20::LaserType2Parameters::~LaserType2Parameters,0x0048B8B0,function
+th20::LaserType3Parameters::LaserType3Parameters,0x0048B5B0,function
+th20::LaserType3Parameters::~LaserType3Parameters,0x0048B890,function
+th20::ShotMetadata::operator=(ShotMetadata&&),0x0048BB00,function

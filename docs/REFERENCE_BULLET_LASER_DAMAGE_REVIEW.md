@@ -1,5 +1,14 @@
 # Bullet, Laser and Damage Regions review (REF-029)
 
+EXACT-063 independently reconstructs ShotMetadata construction at47BB90/255,
+including five alignment bytes and complete native flags5 exception metadata.
+Its body-hash-bound review now associates the complete canonical constructor;
+reference arrays/byte fields/explicit padding are replaced with actual typed
+storage. Four laser parameter lifetime owners and metadata move assignment also
+close. Type3 +30 is float; Type2 flags are a neutral aggregate with original
+spelling unknown. Factory/queue/laser entity roots remain pending. See
+EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md. The REF-029 counts below are historical.
+
 All 413 indexed implementations have individual, body-hash-bound decisions.
 The earlier REF-028 component checkpoint absorbed two predicates; REF-029 closes
 the remaining 411 decisions and adds the complete bullet-radius query.

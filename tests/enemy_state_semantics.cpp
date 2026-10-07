@@ -8,10 +8,6 @@
 #include <limits>
 #include <type_traits>
 
-// An owned test payload verifies shared lifetime without claiming the native
-// shot-metadata object's still unresolved layout or factory implementation.
-namespace th20 { struct ShotMetadata {}; }
-
 namespace {
 struct CountingResource : std::pmr::memory_resource {
     unsigned live = 0;
@@ -175,6 +171,9 @@ void check_enemy_state() {
 
     state->~EnemyState();
     assert(metadata.use_count() == 1);
+    // The remaining shared metadata still owns its two-command PMR allocation.
+    assert(resource.live == 1);
+    metadata.reset();
     assert(resource.live == 0);
     std::pmr::set_default_resource(previous);
 }
