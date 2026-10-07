@@ -39,6 +39,27 @@ class ScriptIndexTests(unittest.TestCase):
 
 @unittest.skipUnless(importlib.util.find_spec("tree_sitter_cpp"), "optional pinned reference parser")
 class ReferenceIndexTests(unittest.TestCase):
+    def test_naked_invoker_and_line_asm_retain_original_bytes_and_gaps(self):
+        path = "incremental/native_bridge/abi_check.cpp"
+        first = (b"__declspec(naked) void __cdecl invoke_probe() {\r\n"
+                 b"    __asm {\r\n        xor eax, eax\r\n"
+                 b"    finish:\r\n        ret\r\n    }\r\n}")
+        second = (b"void controls() {\r\n    unsigned short saved;\r\n"
+                  b"    __asm fnstcw saved\r\n}")
+        source = first + b"\r\n" + second + b"\r\n"
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            file = root / path
+            file.parent.mkdir(parents=True)
+            file.write_bytes(source)
+            rows, files = indexer.inventory(root, [path])
+        self.assertEqual([row["name"] for row in rows], ["invoke_probe", "controls"])
+        self.assertEqual(rows[0]["body_sha256"], hashlib.sha256(first).hexdigest())
+        self.assertEqual(rows[1]["body_sha256"], hashlib.sha256(second).hexdigest())
+        self.assertTrue(files[0]["parse_errors"])
+        self.assertTrue(all(row["file_sha256"] == hashlib.sha256(source).hexdigest()
+                            for row in rows))
+
     def test_inline_assembly_keeps_the_real_enclosing_function(self):
         path = "source_reconstruction/platform_services/cpu_compare.cpp"
         source = (b"double conversion(unsigned value) {\n"

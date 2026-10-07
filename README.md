@@ -53,8 +53,9 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | Eighty-nine mapped component functions across twenty-two comparison objects |
-| Authored exactness | Fifty-six functions, 4,056 bytes |
+| Source | 241 mapped component functions across 57 comparison objects |
+| Authored exactness | 57 functions, 4,074 bytes |
+| Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Three exact comparisons; enclosing owner and origin review remain open |
 | Empty/defaulted lifetime contributions | Three exact comparisons; authored versus compiler-synthesized origin remains open |
@@ -115,10 +116,11 @@ module dispositions, stale reports and independently verified absorption.
 Validated source diagnostics route further analysis; reference source, build
 layout and completion claims are not imported wholesale.
 
-The [function-by-function review](docs/REFERENCE_FUNCTION_REVIEW.md) is now
-active across all existing implementations. Its explicit decisions and pending
-counts are separate from the earlier file audit; scanning or compiling a file
-does not complete its function reviews.
+The [function-by-function review](docs/REFERENCE_FUNCTION_REVIEW.md) is complete
+for all 6,945 indexed implementations, including one parser omission recovered
+during manual review. All 113 parser-gap files are manually reconciled. The
+[final audit](docs/REFERENCE_SUPPORT_REVIEW.md) records coverage and evidence
+limits; nonexact implementations remain documented for further reconstruction.
 
 ## Documentation
 
@@ -133,6 +135,7 @@ does not complete its function reviews.
 - [Semantic reconstruction policy](docs/SEMANTIC_RECONSTRUCTION.md)
 - [Reference review](docs/REFERENCE_REVIEW.md)
 - [Function-by-function reference review](docs/REFERENCE_FUNCTION_REVIEW.md)
+- [Complete reference review and final tooling batch](docs/REFERENCE_SUPPORT_REVIEW.md)
 - [Enemy movement, spawn and variable review](docs/REFERENCE_ENEMY_MOVEMENT_REVIEW.md)
 - [Runtime invincibility launcher](docs/RUNTIME_PATCH.md)
 - [Verified knowledge base](docs/KNOWLEDGE_BASE.md)

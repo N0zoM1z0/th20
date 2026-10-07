@@ -1,5 +1,12 @@
 # Source and build ownership
 
+REF-044 completes individual review of all 6,945 existing reference bodies and
+113 grammar files. Final tools/bridges provide support evidence and add no
+maintained production owner. All 241 canonical units remain exact; the source
+owners below retain their component-scoped acceptance and unresolved origins/
+enclosing lifetimes. See REFERENCE_SUPPORT_REVIEW.md for complete review counts
+and the separate whole-game boundary.
+
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
 | FogValue | src/FogValue.hpp, src/FogValue.cpp | construction 0x00471940/0x004718D0; pack 0x00473400; scale/subtract/add 0x00471DB0/0x00471E60/0x00471F50 | Six complete exact members on actual 28-byte value; representable int32 channel truncation, original names/origins/full background owners pending |

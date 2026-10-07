@@ -19,8 +19,22 @@ ADDRESS = re.compile(r"(?:0x|FUN_)([0-9a-fA-F]{6,8})\b")
 PARSER_ANNOTATIONS = {
     "native_recovered/native_exports.cpp": (b"API",),
     "source_reconstruction/core_scheduler/cpu_compare.cpp": (b"__cdecl",),
+    "incremental/native_bridge/bridge.cpp": (b"__cdecl", b"__fastcall", b"WINAPI"),
+    "incremental/native_bridge/abi_check.cpp": (b"__cdecl",),
+    "incremental/link_tests/link_check.cpp": (b"WINAPI",),
 }
-PARSER_INLINE_ASM = {"source_reconstruction/platform_services/cpu_compare.cpp"}
+PARSER_INLINE_ASM = {
+    "source_reconstruction/platform_services/cpu_compare.cpp",
+    "incremental/native_bridge/abi_check.cpp",
+    "incremental/link_tests/link_check.cpp",
+}
+# Keep original grammar diagnostics visible after recovering their bodies.
+# These three files still require their individual manual reconciliation record.
+PARSER_RAW_GAPS = {
+    "incremental/native_bridge/bridge.cpp",
+    "incremental/native_bridge/abi_check.cpp",
+    "incremental/link_tests/link_check.cpp",
+}
 
 
 def digest(data):
@@ -148,11 +162,14 @@ def inventory(reference, paths):
         for token in PARSER_ANNOTATIONS.get(path, ()):
             parse_data = re.sub(rb"\b" + token + rb"\b", b" " * len(token), parse_data)
         if path in PARSER_INLINE_ASM:
-            # This manually read test file uses five flat MSVC asm statements.
-            # The grammar mistakes them for functions and loses their owner.
+            # Manually read MSVC test harnesses use block and line asm. The
+            # grammar otherwise loses invoke_probe or mistakes asm for bodies.
             # Preserve original source ranges/hashes, including the statements.
             parse_data = re.sub(rb"\b__asm\s*\{[^{}]*\}",
                                 lambda match: re.sub(rb"[^\r\n]", b" ", match.group()),
+                                parse_data)
+            parse_data = re.sub(rb"\b__asm[^\r\n]*",
+                                lambda match: b" " * len(match.group()),
                                 parse_data)
         tree = parser.parse(parse_data)
         lines = data.decode("utf-8", errors="replace").splitlines()
@@ -160,8 +177,9 @@ def inventory(reference, paths):
         nodes = list(walk(tree.root_node))
         definitions = [node for node in nodes if node.type in {"function_definition", "lambda_expression"}
                        and not any(child.type == "delete_method_clause" for child in node.named_children)]
+        error_nodes = list(walk(parser.parse(data).root_node)) if path in PARSER_RAW_GAPS else nodes
         errors = [dict(start_line=node.start_point.row + 1, end_line=node.end_point.row + 1,
-                       node_type=node.type) for node in nodes if node.type == "ERROR" or node.is_missing]
+                       node_type=node.type) for node in error_nodes if node.type == "ERROR" or node.is_missing]
         files.append(dict(path=path, sha256=digest(data), definitions=len(definitions),
                           role_hint=source_role(path), parse_errors=errors))
         for node in definitions:

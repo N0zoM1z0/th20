@@ -1,5 +1,24 @@
 # Verified facts and open hypotheses
 
+## REF-044 — 2026-10-07 — exhaustive review closure
+
+- Full reading of the last184 implementations / 46 files and16 grammar files /
+  119 sites closes all6,945 bodies and113 grammar files with individual records.
+  One naked historical ABI invoker was omitted by the old parser and recovered;
+  all6,944 existing identities and original body/file hashes remain unchanged.
+- Final outcomes114 absorbed / 3 library / 1,877 nonexact / 4,951 support. No
+  fresh native unit comes from the final tooling/bridge batch. All241 complete
+  canonical units still replay from current verified cold-build receipts;
+  authored totals57/4,074 and pending origins180 remain separate.
+- Bridge instrumentation and retained-engine PE copies do not establish an
+  independently sourced game. Sparse runtime observation, static dispatch/CFG
+  analysis, registry rebinding, resource roundtrips and snapshot dependency
+  enumeration keep their bounded scopes. No reference writer/driver executed.
+- Parser normalization preserves offsets/original CRLF hashes and raw historical
+  gaps; a synthetic regression checks recovered naked/line-asm bodies. The
+  complete final evidence summary is REFERENCE_SUPPORT_REVIEW.md. Whole-game
+  owner, startup, link and behavioral acceptance remains open.
+
 ## REF-043 — 2026-10-07 — real fog values and StageBackground closure
 
 - All 121 StageBackground bodies / 16 files individually read and CRLF-hash

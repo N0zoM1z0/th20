@@ -1,5 +1,33 @@
 # Current reconstruction handoff
 
+## REF-044 — 2026-10-07 — existing-reference review complete
+
+All remaining 184 bodies across 46 files fully read and recorded as support.
+All 16 remaining grammar files / 119 sites individually reconciled. Manual
+reading recovered the omitted historical ABI invoke_probe: index now 6,945,
+with all 6,944 previous identities/hashes unchanged. Global 6,945 terminal /
+zero pending; all 113 grammar files complete. See REFERENCE_SUPPORT_REVIEW.md.
+
+- No new canonical source in this tooling/bridge batch. All 241 complete units
+  replay using current hash-verified cold-build receipts: 57 objects / 18,320
+  disjoint bytes. Authored exact credit remains 57 / 4,074; 180 origins pending.
+- Final reference outcomes: 114 absorbed / 3 library / 1,877 nonexact /
+  4,951 support. Reference-body counts do not measure native game completion.
+- Historical playable packaging retains original engine instructions. Sparse
+  frame capture, static dispatch/CFG checks, scoped component oracles and
+  source snapshot builds retain their documented acceptance limits.
+- REF044 registration completed once; NEVER RERUN ref044-record.py or any
+  REF001..REF043 writer. Maintained src/probes unchanged, current canonical
+  receipts valid; older reference diagnostic objects may be stale.
+- One synthetic parser regression added for naked MSVC/line assembly, original
+  CRLF hashes and preserved raw gaps. English / repo-python / serial compiler /
+  no subagents / commit prefix / authorized public main push persist.
+
+The requested exhaustive review is closed. Further reconstruction can select
+coherent native owner families from the recorded nonexact cases; full owner/
+vtable/EH/resource/allocator/startup/link/gameplay acceptance remains open.
+The sections below are historical checkpoints.
+
 ## REF-043 — 2026-10-07 — complete StageBackground batch
 
 All 121 remaining StageBackground bodies were individually read across 16 files:

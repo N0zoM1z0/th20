@@ -1,14 +1,14 @@
-# REF-002: exhaustive implementation review in progress
+# Exhaustive reference implementation review
 
 The user requires a function-by-function review of every existing reference
-implementation. REF-001's repository scan and module dispositions do not meet
-that requirement. This work stays active until each implementation has an
-explicit outcome. Easily recoverable exact functions are absorbed immediately;
-difficult cases receive specific evidence and remaining work, then the review
-continues. No default module-wide rejection or completion is permitted.
-Following the user's batching instruction, related owners and modules are
-reviewed together, with one serial compiler pass and a combined exact replay.
-Each implementation still receives its own hash-bound outcome.
+implementation. REF-001's repository scan and module dispositions alone do not
+meet that requirement. REF-002 through REF-044 individually read the bodies,
+absorbed easily recoverable natural exact source and recorded difficult cases.
+Related owners and modules were reviewed in coherent batches with serial
+compiler access and complete canonical replay. Each implementation has its
+own hash-bound outcome. The existing-reference review is complete; native
+ownership, remaining nonexact functions and whole-game reconstruction stay open.
+See [the final audit](REFERENCE_SUPPORT_REVIEW.md) for evidence boundaries.
 
 ## Coverage and decisions
 
@@ -20,32 +20,48 @@ Deleted declarations and generated Ghidra exports are excluded.
 files and ten PowerShell files: 1,002 files, including files without functions.
 Names, address hints and role hints are discovery metadata, not mappings.
 
-The current inventory has 6,944 implementation entries: 6,706 C/C++ definitions,
+The current inventory has 6,945 implementation entries: 6,707 C/C++ definitions,
 152 Python functions/lambdas and 86 script module bodies. Roles are 4,193
 reconstruction candidates, 2,439 test/oracle bodies, 277 tooling/support entries
-and 35 historical bridge bodies. These role hints need review. There are gaps
+and 36 historical bridge bodies. Role hints remain discovery metadata. There are gaps
 in 113 files, including ten explicit PowerShell function-inventory gaps;
-manual reconciliation remains required, and this inventory is not asserted
+all manually reconciled, and this inventory is not asserted
 to be a complete compiler AST. Private gap ranges are recorded rather than
 silently omitted. Tree-sitter 0.25.2 and its C++ grammar 0.23.4 are pinned in
 the analysis environment. Export annotation `API` and scheduler CPU-oracle
 `__cdecl` annotations are blanked only in their individually reconciled files.
-Flat inline-assembly statements are blanked only in the manually reconciled
-platform-services CPU oracle. Offsets and hashes use the original bytes; reference source is never edited.
+REF-044 also reconciles historical __cdecl/__fastcall/WINAPI annotations and
+MSVC block/line assembly, recovering one previously omitted naked invoker while
+preserving the old IDs and original grammar diagnostics. Inline assembly is
+normalized only in individually reconciled test harnesses. Offsets and hashes
+use the original bytes; reference source is never edited.
 Python uses the standard-library AST with original UTF-8 byte offsets, including
 decorators in function hashes. PowerShell currently has whole-file entries;
-each file still needs manual function enumeration and gap reconciliation.
+each whole file and its local function bodies have been manually reconciled.
 
 `reference-function-reviews.csv` binds every decision to its exact body hash.
 `report-reference-functions.py` validates those bindings, counts explicit
 terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
-The current REF-036 checkpoint has 5,081 explicit terminal decisions and 1,863
-pending indexed entries. The complete672-body Overlay/HUD/SmallScore/completion
-family follows the reviewed Player/Bomb/Item and Bullet/Laser/Damage batches.
+The final REF-044 checkpoint has 6,945 explicit terminal decisions and zero
+pending indexed entries: 114 absorbed-exact, three library-exact, 1,877
+reviewed-nonexact and 4,951 support-reviewed. These are reference-body outcomes,
+not native function counts. All 241 complete canonical units replay exactly.
 The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
-and parser-gap count:81 of113 files are reconciled, leaving32 pending.
+and parser-gap count: all 113 files are reconciled, leaving zero pending.
+
+## REF-044: complete reference review
+
+All remaining184 bodies across46 files were fully read, including historical
+bridges, nested script helpers and top-level execution. All16 remaining grammar
+files/119 sites were manually reconciled. Exactly one omitted ABI invoker was
+recovered by offset-preserving parsing; all6,944 prior rows remain unchanged.
+This batch adds support decisions, with no additional canonical source. All241
+units/57 objects/18,320 disjoint bytes replay using current verified cold-build
+receipts. Public and target-required gates pass. Detailed findings, scopes and
+final counts are in REFERENCE_SUPPORT_REVIEW.md; older sections below are dated
+checkpoints and do not override final totals.
 
 ## REF-036: complete ECL batch
 

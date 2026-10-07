@@ -1,5 +1,14 @@
 # Target inventory and initial architecture boundary
 
+REF-044 closes the existing-reference review: all 6,945 implementation bodies
+have individual terminal decisions and all 113 parser-gap files are manually
+reconciled. One historical naked ABI invoker was recovered from a parser
+omission; all prior IDs/hashes are unchanged. The final support/bridge batch
+adds no native unit. All 241 complete units / 57 objects / 18,320 comparison
+bytes still replay exactly. Full native owners, origins, linkage and gameplay
+remain open; see REFERENCE_SUPPORT_REVIEW.md. The entries below are earlier
+component checkpoints.
+
 REF-043 establishes actual FogValue28 and shared FogInterpolation164 through
 native camera construction, five value strides, seven-word copies and hidden
 result arithmetic. Six natural members and one shared template constructor add
