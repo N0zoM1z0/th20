@@ -24,6 +24,8 @@ struct Enemy : EclManager {
 
     Enemy() noexcept;
     ~Enemy() override;
+    Enemy* parent();
+    Vector3& position_ref();
     std::int32_t execute_opcode() override;
     std::int32_t read_integer(std::int32_t index) override;
     std::int32_t* integer_destination(std::int32_t index) override;

@@ -1,5 +1,55 @@
 # Current reconstruction handoff
 
+## EXACT-061 — 2026-10-07 — Whole Enemy movement and graphics owners
+
+Fifteen complete functions add 4,205 instruction bytes and ten alignment bytes.
+The full frozen-source graph strictly replays: 442 units / 84 cold objects /
+84,017 disjoint comparison bytes. The new bodies include Enemy movement update
+4A7710/1675, Graphics construction 4D8990/941, viewport construction 471790/319,
+Configuration construction 4B9C10/473, AnimationFile construction 448A30/186 and
+Context construction 423320/133. New origins stay pending: 374 pending, four
+library, 64 authored / 16,948 bytes. See EXACT_ENEMY_UPDATE_RECONSTRUCTION.md.
+
+Actual Graphics0xDE8 owns six ViewportState0x16C values, native SDK records,
+Configuration0xB0 and two Workers. Independent startup establishes global base
+5C4D40; the movement offset belongs to viewport zero's final vector. Context
+has twelve separate pointer slots; EnemyController0x134 includes actual PMR,
+TaskInfo, EnemyData, timers, list, Identifier32 and file pointers. Its lifetime
+and file-selection implementations remain undefined. AnimationFile0x70 owns
+real PMR strings and an atomic value, with a separately audited constructor chain.
+
+Whole movement preserves parent following, interpolation order, frozen viewport
+offsets, composition, direction-transition/file-before-retirement order and
+strict departure flags. Native float absolute widens to double CRT fabs; the
+comparison-based geometry absolute is a different operation. Fourteen complete
+support aliases/library/EH contributions replay without duplicate credit. Actual
+flags5 EH reproduces Graphics/Configuration nonthrowing contracts; no existing
+child contracts were weakened. Owned semantic fixtures explicitly delimit open
+production dependencies; no whole-game linkage/runtime claim follows.
+
+Four independently reconstructed reference bodies now have exact associations;
+the combined graphics-startup and file-creation wrappers remain nonexact despite
+their accepted constructor dependencies. Native Context size is 133, correcting
+the earlier 165-byte note. Viewport +11C/+124 are real zeroed Vector2 values,
+not uninitialized lanes. All 32 public semantic/control-plane tests and private
+target/tracking/progress/full Ghidra gates pass.
+
+Cleanup removes 33 superseded files / 7,810,424 bytes: duplicate probe object/
+receipt pairs and old aggregate replay JSON completely superseded by current
+results at identical target addresses and full extents. All 168 canonical
+object/receipt hashes remain unchanged. Cumulative cleanup: 1,990 files /
+64,480,375 bytes, approximately 61.5 MiB. Native exports, logs, probe sources,
+registration stamps, references, game files, Ghidra and tools are retained.
+See private core061-cleanup.json and exact061-resume.md. Configuration and
+registration were one-time operations; NEVER RERUN.
+
+Next priority is the complete Enemy dispatcher 48C010 / 41,967 bytes and all
+174 pointer-table entries / 704 index bytes. Actual production Controller,
+handle resolution/retirement, file spawn and global lifetime remain dependencies
+to close coherently. Do not award individual cases or shorten whole bodies.
+English, repo-python, serial MSVC/Ghidra, no subagents, gpt-6.1-sol: commits and
+authorized main push persist. Older entries below are historical.
+
 ## EXACT-060 — 2026-10-07 — ANM lifetime, reset and inherited extents
 
 Ten complete Base/Animation construction/destruction/reset/resource/scales

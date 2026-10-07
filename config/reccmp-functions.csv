@@ -426,3 +426,18 @@ th20::Animation::inherited_scale_y,0x004458E0,function
 th20::Animation::inherited_scale_x,0x00445940,function
 th20::Animation::height,0x004459A0,function
 th20::Animation::width,0x004459D0,function
+th20::EnemyState::update_movements,0x004A7710,function
+th20::Graphics::Graphics,0x004D8990,function
+th20::GraphicsFlags::GraphicsFlags,0x004D88C0,function
+th20::ViewportState::ViewportState,0x00471790,function
+th20::Configuration::Configuration,0x004B9C10,function
+th20::AnimationFile::AnimationFile,0x00448A30,function
+th20::Context::Context,0x00423320,function
+th20::Motion::operator=(const Vector3&),0x00477B80,function
+th20::Motion::is_orbit,0x0049BEA0,function
+th20::Motion::is_elliptic,0x004AB2B0,function
+th20::Motion::set_parameter_20,0x0047A540,function
+th20::Motion::set_parameter_24,0x0047A520,function
+th20::Enemy::parent,0x004AAD90,function
+th20::scalar_math::absolute,0x0047A630,function
+th20::Enemy::position_ref,0x0047A2C0,function

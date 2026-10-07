@@ -12,6 +12,10 @@ float cosine(float value) {
     return static_cast<float>(std::cos(static_cast<double>(value)));
 }
 
+float absolute(float value) {
+    return static_cast<float>(std::fabs(static_cast<double>(value)));
+}
+
 float square_root(float value) {
     return static_cast<float>(std::sqrt(static_cast<double>(value)));
 }

@@ -46,4 +46,29 @@ struct ConfigurationFlags {
 
 static_assert(sizeof(ConfigurationFlags) == 4);
 
+struct ConfigurationCounterPair { std::uint32_t first, second; };
+struct ConfigurationByteFlag { std::uint8_t bit0:1, retained:7; };
+struct Configuration {
+    std::uint32_t version, size;
+    InputBindings bindings[2];
+    ConfigurationCounterPair values_68;
+    std::uint16_t value_70, value_72;
+    std::uint8_t alternate_pixel_format, value_75, value_76;
+    std::int32_t saved_display_mode;
+    std::uint8_t frame_skip, value_7d, value_7e, value_7f;
+    std::uint8_t value_80, presentation_mode, scale_choice;
+    ConfigurationByteFlag flag_83;
+    ConfigurationFlags flags;
+    std::int32_t saved_window_x, saved_window_y;
+    std::uint32_t value_90;
+    std::uint8_t value_94, value_95, value_96, value_97, value_98, value_99;
+    std::uint8_t value_9a, value_9b, value_9c, value_9d, value_9e, value_9f;
+    std::uint8_t value_a0, value_a1, value_a2, value_a3, value_a4;
+    ConfigurationCounterPair values_a8;
+    Configuration() noexcept;
+};
+static_assert(sizeof(Configuration)==0xb0);
+static_assert(offsetof(Configuration,flags)==0x84);
+static_assert(offsetof(Configuration,values_a8)==0xa8);
+
 } // namespace th20

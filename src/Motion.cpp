@@ -19,6 +19,16 @@ int Motion::outside_bounds(float x, float y, float width, float height) const {
         y - height / 2.0f > position.y || position.y > y + height / 2.0f ? 1 : 0;
 }
 
+// Assignment updates position only. Independent Bomb and Enemy callers use
+// this overload on Motion subobjects; all other motion state is retained.
+Motion& Motion::operator=(const Vector3& input) {
+    position = input;
+    return *this;
+}
+int Motion::is_orbit() const { return (flags.bits & 0xfu) == 2 ? 1 : 0; }
+int Motion::is_elliptic() const { return (flags.bits & 0xfu) == 3 ? 1 : 0; }
+void Motion::set_parameter_20(float value) { value_20 = value; }
+void Motion::set_parameter_24(float value) { value_24 = value; }
 } // namespace th20
 
 namespace th20 {

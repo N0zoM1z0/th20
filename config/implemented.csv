@@ -425,3 +425,18 @@ th20::Animation::inherited_scale_y
 th20::Animation::inherited_scale_x
 th20::Animation::height
 th20::Animation::width
+th20::EnemyState::update_movements
+th20::Graphics::Graphics
+th20::GraphicsFlags::GraphicsFlags
+th20::ViewportState::ViewportState
+th20::Configuration::Configuration
+th20::AnimationFile::AnimationFile
+th20::Context::Context
+th20::Motion::operator=(const Vector3&)
+th20::Motion::is_orbit
+th20::Motion::is_elliptic
+th20::Motion::set_parameter_20
+th20::Motion::set_parameter_24
+th20::Enemy::parent
+th20::scalar_math::absolute
+th20::Enemy::position_ref

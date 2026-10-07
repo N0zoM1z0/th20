@@ -1,5 +1,16 @@
 # Target inventory and initial architecture boundary
 
+EXACT-061 closes the whole 1,675-byte Enemy movement update and fourteen actual
+owner/interface functions, including complete Graphics, viewport, configuration,
+AnimationFile and Context construction. The full frozen-source graph strictly
+replays: 442 units / 84 cold objects / 84,017 disjoint comparison bytes. The
+batch adds 4,205 instruction bytes and ten alignment bytes. Native owner/global/
+SDK/atomic/array/EH consumers establish the protocol; owned semantic tests cover
+ordering, bounds and retained initialization. New origins remain pending;
+authored 64 / 16,948 is unchanged. Whole Enemy dispatch and unresolved production
+lifetimes/resolution/spawn/global definitions remain open. See
+EXACT_ENEMY_UPDATE_RECONSTRUCTION.md. Older entries below are historical.
+
 EXACT-060 closes real ANM Base/Animation construction, nontrivial destruction,
 partial reset/resource release and recursive scales/extents. Ten whole units
 add 2,855 instruction bytes and fifteen alignment bytes; all427 units/79 cold

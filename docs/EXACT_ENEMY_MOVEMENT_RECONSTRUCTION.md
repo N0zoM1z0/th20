@@ -1,5 +1,10 @@
 # Enemy movement composition and nonthrowing construction
 
+EXACT-061 follow-up: the previously pending whole movement update and its
+Graphics/viewport/configuration/Context/AnimationFile owners now strictly replay.
+See [whole movement update evidence](EXACT_ENEMY_UPDATE_RECONSTRUCTION.md).
+This document records the historical EXACT-059 boundary.
+
 EXACT-059 adds nine complete functions: 1,285 instruction bytes and ten compiler
 alignment bytes. All 417 units / 78 cold objects / 76,932 disjoint comparison
 bytes strictly replay. New origins remain pending; authored totals remain

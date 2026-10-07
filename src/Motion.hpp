@@ -34,6 +34,7 @@ struct Motion {
     MotionFlags flags;
 
     Motion();
+    Motion& operator=(const Vector3& input);
     Vector3& position_ref();
     Vector3 position_copy() const;
     void set_position(const Vector3& input);
@@ -46,6 +47,10 @@ struct Motion {
     void select_linear();
     void select_orbit();
     void select_elliptic();
+    int is_orbit() const;
+    int is_elliptic() const;
+    void set_parameter_20(float value);
+    void set_parameter_24(float value);
     void clear();
     Vector3& motion_vector();
     void set_motion_z(float value);

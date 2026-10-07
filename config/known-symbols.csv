@@ -427,3 +427,18 @@ address,name,module,confidence,evidence
 0x00445940,th20::Animation::inherited_scale_x,Animation,high,EXACT-060; docs/EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md
 0x004459A0,th20::Animation::height,Animation,high,EXACT-060; docs/EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md
 0x004459D0,th20::Animation::width,Animation,high,EXACT-060; docs/EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md
+0x004A7710,th20::EnemyState::update_movements,EnemyState,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x004D8990,th20::Graphics::Graphics,Graphics,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x004D88C0,th20::GraphicsFlags::GraphicsFlags,Graphics,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x00471790,th20::ViewportState::ViewportState,Viewport,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x004B9C10,th20::Configuration::Configuration,Configuration,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x00448A30,th20::AnimationFile::AnimationFile,AnimationFile,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x00423320,th20::Context::Context,Context,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x00477B80,th20::Motion::operator=(const Vector3&),Motion,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x0049BEA0,th20::Motion::is_orbit,Motion,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x004AB2B0,th20::Motion::is_elliptic,Motion,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x0047A540,th20::Motion::set_parameter_20,Motion,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x0047A520,th20::Motion::set_parameter_24,Motion,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x004AAD90,th20::Enemy::parent,Enemy,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x0047A630,th20::scalar_math::absolute,ScalarMath,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md
+0x0047A2C0,th20::Enemy::position_ref,Enemy,high,EXACT-061; docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md

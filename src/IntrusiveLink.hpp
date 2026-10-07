@@ -18,6 +18,7 @@ template<class T> struct IntrusiveLink {
     IntrusiveLink* next_value();
     IntrusiveLink* previous_value();
     T* node_value();
+    IntrusiveList<T>* owner_value();
     T*& node_ref();
     T*& node_access();
     void set_iterator(IntrusiveIterator<T>* input);
@@ -30,6 +31,7 @@ template<class T> struct IntrusiveLink {
 template<class T> struct IntrusiveList : IntrusiveLink<T> {
     IntrusiveLink<T>* tail;
     IntrusiveList();
+    T* node_value();
     void remove(IntrusiveLink<T>* link);
     void append(IntrusiveLink<T>* link);
     void reset(T* input);
@@ -57,6 +59,7 @@ template<class T> void IntrusiveLink<T>::insert_before(IntrusiveLink* added) {
 template<class T> IntrusiveLink<T>* IntrusiveLink<T>::next_value() {return next;}
 template<class T> IntrusiveLink<T>* IntrusiveLink<T>::previous_value() {return previous;}
 template<class T> T* IntrusiveLink<T>::node_value(){return node;}
+template<class T> IntrusiveList<T>* IntrusiveLink<T>::owner_value(){return owner;}
 template<class T> T*& IntrusiveLink<T>::node_ref(){return node;}
 template<class T> T*& IntrusiveLink<T>::node_access(){return node_ref();}
 template<class T> void IntrusiveLink<T>::set_iterator(IntrusiveIterator<T>* input){iterator=input;}
@@ -84,6 +87,7 @@ template<class T> IntrusiveLink<T>* IntrusiveLink<T>::find(T* input){
     return nullptr;
 }
 template<class T> IntrusiveList<T>::IntrusiveList():IntrusiveLink<T>(),tail(this){}
+template<class T> T* IntrusiveList<T>::node_value(){return IntrusiveLink<T>::node_value();}
 template<class T> void IntrusiveList<T>::remove(IntrusiveLink<T>* link){
     if (tail == link) { tail = link->previous_value(); }
     link->detach_inner();
