@@ -1,5 +1,34 @@
 # Verified facts and open hypotheses
 
+## REF-040 — 2026-10-07 — entity opcode and adapter review
+
+- All243 scoped bodies/22files individually read:26nonexact/217support; no new
+  source/units. Global5931terminal/1013pending, Gameplay169pending; five grammar
+  files/39indexed sites reconciled, gaps91/22. Exhaustive goal remains active.
+- Maintained source/profile/probes unchanged. Full175 units/50 prior cold objects/
+  12236 disjoint bytes replay with current receipts; source175/pendingorigins114/
+  library4/authored57/4074 unchanged. No prefix, fake owner or extra helper credit.
+- Eleven actualreference TUs compiled;1134defined/196static functions.27complete
+  comparisons26bodies allsize-differs. Source optional-int handlers/bridges are
+  extra bodies, not standalone native48C010 case extents.
+- Native dispatcher frame/EH/State receiver and zeroEAX default4963DF observed.
+  Original174entry primary496400 and704byte secondary4966B8 independentlyPE
+  verified;224defined opcodes and569/unknown default. Tables do not close full
+  shared case control flow/EH/lifetimes. Ten helper ranges fully decode, none accepted.
+- Phase4AB650/4AB780 use actual Enemy+340 vector andRET16/8, three-argument
+  capacity64 copy548610; free State/checked helper differs. NativePlayer479080
+  writes20EC through thiscall, not source global setter. No padded owner imported.
+- Callback56FE8C entriesnull/488B80/488E80 and null-only56FE98/56FE9C, four
+  phase names independentlyverified. Original fullint callbacks, real ANM/Player/
+  Bullet/Laser/metadata/PMR/container/vptr owners remain unresolved.
+- Historical CPU1254134/0/frame7682 eachbind105hashes; resource3304only100/105.
+  Six scoped opcode groups381824checks notrerun; prose1254114stale by20hazards.
+  Creation6patches, Laser3patches+synthetic3-slot methods, misc4patches; metadata
+  padding4A/B and pointer/vptr normalization, finite/null-HUD and heavy endpoint
+  exclusions retained. No Windows oracle/writer or binary/compiler/startup bind.
+- ref040-record.py executed ONCE; never rerun any registration writer. See
+  REFERENCE_ENTITY_OPCODE_REVIEW.md for individual findings and domain limits.
+
 ## REF-039 — 2026-10-07 — Enemy health and drop pattern values
 
 - Nine full natural contributions add677 bytes on actual EnemyHealth28 and

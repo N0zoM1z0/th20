@@ -93,6 +93,11 @@ members677 bytes. All141 damage/drop/defeat/cleanup/mesh bodies individually
 reviewed, plus two prior reset upgrades; Gameplay412 remains pending. Full
 health status widths and real count/Timer protocols are accepted independently
 of the unresolved whole owners. See REFERENCE_ENEMY_DAMAGE_REVIEW.md.
+REF-040 closes243 additional entity-opcode body reviews without new source.
+All175 existing canonical contributions remain exact. Original224 defined
+cases/174-slot table/704-byte index are independently verified, but optional-int
+source handlers and Services do not establish full native dispatcher ownership.
+Gameplay169 remains pending. See REFERENCE_ENTITY_OPCODE_REVIEW.md.
 Native Stack/runtime/
 resource/vtable/allocator ownership differs from reference owning objects;
 see REFERENCE_GAMEPLAY_ECL_REVIEW.md.

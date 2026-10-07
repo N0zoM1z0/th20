@@ -1,5 +1,13 @@
 # Target inventory and initial architecture boundary
 
+REF-040 reviews all remaining entity opcode/adapter/fixture implementations:
+243 bodies across22 files, without adding canonical source. The original State
+member48C010 owns a shared EH/aligned frame and a174-slot/704-byte jump-table
+pair;224 defined opcodes/default-zero routing are independently verified. Free
+optional-int handlers and virtual Services do not restore that single native
+member or complete owner/lifetime graph. All175 unchanged canonical units remain
+exact; Gameplay169 remains pending. See REFERENCE_ENTITY_OPCODE_REVIEW.md.
+
 REF-039 establishes real EnemyHealth28 at EnemyState+18C and EnemyPattern168
 at+1A8 through original constructor calls. Health exposes wrapping accounting,
 signed division7 and full-EAX queries; pattern owns two sixteen-element arrays,

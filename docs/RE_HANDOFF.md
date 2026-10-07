@@ -1,5 +1,38 @@
 # Current reconstruction handoff
 
+## REF-040 — 2026-10-07 — complete entity-opcode batch
+
+All 243 scoped implementations individually read across22 files:26 nonexact /
+217 support. No new exact source or unit. Five grammar files/39 indexed sites
+reconciled; complete bodies already indexed. Global5,931 terminal/1,013 pending;
+gaps91/22; Gameplay169 pending. Exhaustive goal remains active.
+
+- Maintained src/probes/profiles unchanged since REF039. All175 canonical units /
+  50 existing cold objects /12,236 disjoint bytes still pass fresh receipt checks
+  and strict replay. Source175/pending origins114/library4/authored57/4074 unchanged.
+- Eleven actual reference TUs freshly compiled serially:1,134 defined/196 static.
+  Twenty-seven complete diagnostics across26 bodies all lengths differ. Extracted
+  optional-int handlers are not standalone native48C010 function extents.
+- Original704-byte opcode map4966B8/174-slot primary496400 fully PE verified.
+  Exactly224 defined cases;569/unknown default4963DF clears full EAX. Full
+  dispatcher EH/shared flow/owners and all case behavior remain unclosed.
+- Ten native helper ranges fully PE decode/closed direct branches; no accepted
+  heads. Phase methods actual Enemy+340 vector/RET16,8 differ from free State
+  helpers. Callback tables and four phase name strings independently verified.
+- CPU1,254,134/0/frame7,682 each105 current hashes; entity prose count1,254,114
+  is stale. Selected six opcode groups381,824 checks, not whole-game evidence.
+  Resource3,304 only100/105 current hashes. No Windows oracle/writer rerun or
+  executed binary/compiler/startup bind. Creation patches six endpoints; Laser
+  patches three plus synthetic vtable; misc patches four. Metadata padding and
+  pointer/vptr normalization, null HUD/finite domains and heavy exclusions noted.
+- Private ref040-record.py executed ONCE; never rerun it or any older writer.
+  Current175 canonical receipts remain valid. Other historical reference objects
+  need rebuild before reuse; this batch's eleven are current.
+
+Continue other Gameplay169, then Sprite540/StageBackground121/other183 and22
+remaining grammar files. Serial MSVC/no subagents/English/repo-python/commit
+prefix/public main authorization persist. See REFERENCE_ENTITY_OPCODE_REVIEW.md.
+
 ## REF-039 — 2026-10-07 — Enemy damage/drop/defeat/mesh batch
 
 All 141 scoped bodies individually reviewed: 5 absorbed / 17 nonexact / 119
