@@ -479,7 +479,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414AD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414B50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414B50,unknown,EclResourceLifetime,review,pending,"EXACT-068: Five complete ECL base resource initialization/destruction contributions; 252bytes. Frozen-source505units/94coldobjects/90373disjointbytes strictly replay. Actual PMR record/word containers capture their default allocator and release only owned storage; file buffers remain borrowed. Native original global RTTI name is SptResourceInf; maintained EclLoader denotes its role. Complete append876, derived resource loading and first virtual callback remain pending. See docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md."
 0x00414B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414B70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2586,7 +2586,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0048B890,unknown,LaserParameters,review,pending,"EXACT-063: Actual Enemy dispatcher ShotMetadata and four laser temporary lifetimes; real PMR BulletCommand vectors, implicit padding, native flags5 nonthrowing construction and allocator-sensitive move assignment. All eleven complete bodies /1384 instruction+5 alignment bytes and seven complete PMR/EH support contributions independently replay; no duplicate support credit. Frozen-source full cold453units/86objects/85406disjointbytes. Owned C++20/O2/UBSan defaults/copy/allocator-sensitive move/reset/failure-boundary/vector lifetime tests; queue accessors, factories, full Enemy dispatch/tables/EH and whole-game link/runtime remain pending. See docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md."
 0x0048B8B0,unknown,LaserParameters,review,pending,"EXACT-063: Actual Enemy dispatcher ShotMetadata and four laser temporary lifetimes; real PMR BulletCommand vectors, implicit padding, native flags5 nonthrowing construction and allocator-sensitive move assignment. All eleven complete bodies /1384 instruction+5 alignment bytes and seven complete PMR/EH support contributions independently replay; no duplicate support credit. Frozen-source full cold453units/86objects/85406disjointbytes. Owned C++20/O2/UBSan defaults/copy/allocator-sensitive move/reset/failure-boundary/vector lifetime tests; queue accessors, factories, full Enemy dispatch/tables/EH and whole-game link/runtime remain pending. See docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md."
 0x0048B8D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0048B900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0048B900,unknown,EclResourceLifetime,review,pending,"EXACT-068: Five complete ECL base resource initialization/destruction contributions; 252bytes. Frozen-source505units/94coldobjects/90373disjointbytes strictly replay. Actual PMR record/word containers capture their default allocator and release only owned storage; file buffers remain borrowed. Native original global RTTI name is SptResourceInf; maintained EclLoader denotes its role. Complete append876, derived resource loading and first virtual callback remain pending. See docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md."
 0x0048B920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048B980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048B9E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2985,7 +2985,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A3530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A35F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A3650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A3650,unknown,EclResourceLifetime,review,pending,"EXACT-068: Five complete ECL base resource initialization/destruction contributions; 252bytes. Frozen-source505units/94coldobjects/90373disjointbytes strictly replay. Actual PMR record/word containers capture their default allocator and release only owned storage; file buffers remain borrowed. Native original global RTTI name is SptResourceInf; maintained EclLoader denotes its role. Complete append876, derived resource loading and first virtual callback remain pending. See docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md."
 0x004A36D0,unknown,ScriptStack,review,pending,REF-037: natural complete typed value member; native construction/owner/access/call operands and generic output-pointer pop ABI independently establish anchors before probing. Full162-unit/46-object cold replay11154 bytes and portable C++20/UBSan tests pass. Actual PMR Stack24 and Counter48 four-integer/eight-float types; original spelling/origin pending. Generic pop/allocator/vector bodies and full VM/Enemy/vptr/EH owners not reconstructed. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md.
 0x004A3700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3002,7 +3002,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A3AC0,unknown,EnemyState,review,pending,"EXACT-058: Complete EnemyState752 lifetime/init, typed animation/queued/bounds records and actual Enemy0x428 dispatcher/argument forwarding protocol. Independent owner producers/consumers, PMR/shared-pointer layouts, 53 relocation definitions and external24.0f consumer audited; full cold replay408/76/75637disjointbytes. Owned C++20/O2/UBSan retention/reset/allocation-release checks pass. Origin remains pending; whole41KB dispatcher, enclosing Enemy lifetime/EH, metadata/controller/global and Runtime dependency implementations remain open. See docs/EXACT_ENEMY_STATE_RECONSTRUCTION.md."
 0x004A3B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A3D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A3D40,unknown,EclResourceLifetime,review,pending,"EXACT-068: Five complete ECL base resource initialization/destruction contributions; 252bytes. Frozen-source505units/94coldobjects/90373disjointbytes strictly replay. Actual PMR record/word containers capture their default allocator and release only owned storage; file buffers remain borrowed. Native original global RTTI name is SptResourceInf; maintained EclLoader denotes its role. Complete append876, derived resource loading and first virtual callback remain pending. See docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md."
 0x004A3D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A3E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3019,7 +3019,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004A40A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A40E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A4120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004A4150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004A4150,unknown,EclResourceLifetime,review,pending,"EXACT-068: Five complete ECL base resource initialization/destruction contributions; 252bytes. Frozen-source505units/94coldobjects/90373disjointbytes strictly replay. Actual PMR record/word containers capture their default allocator and release only owned storage; file buffers remain borrowed. Native original global RTTI name is SptResourceInf; maintained EclLoader denotes its role. Complete append876, derived resource loading and first virtual callback remain pending. See docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md."
 0x004A4190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A4810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004A4A20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -88,10 +88,7 @@ int EclManager::spawn(std::int32_t id, std::int32_t skip) {
 }
 void EclManager::terminate_async() { ++termination_calls; }
 IntrusiveLink<EclRuntime>* EclManager::find_runtime(std::int32_t) { return found_runtime; }
-EclLoader::EclLoader() : file_count(0), subroutine_count(0), files{}, fields_10c{} {}
-EclLoader::~EclLoader() = default;
 std::int32_t EclLoader::callback_0(std::uint32_t) { return 0; }
-std::int32_t EclLoader::callback_1(std::uint32_t) { return 0; }
 EclInstruction* EclLoader::instruction(std::int32_t subroutine, std::int32_t offset) {
     assert(subroutine == 0 && offset >= 0 && offset % sizeof(Record) == 0);
     return &program.at(static_cast<unsigned>(offset) / sizeof(Record)).header;

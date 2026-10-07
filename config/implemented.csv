@@ -498,3 +498,8 @@ th20::Enemy::float_argument_value
 th20::EnemyState::float_argument_value
 th20::Enemy::integer_argument_value
 th20::EnemyState::integer_argument_value
+th20::EclLoader::EclLoader
+th20::EclLoader::~EclLoader
+th20::EclLoader::scalar_deleting_destructor
+th20::EclLoader::include_resources
+th20::ScriptStack::~ScriptStack

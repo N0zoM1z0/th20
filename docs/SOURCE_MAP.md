@@ -1,5 +1,38 @@
 # Source and build ownership
 
+## EXACT-068 — 2026-10-08 — Whole ECL base resource lifetime
+
+Five whole contributions add 252 bytes: base resource construction/destruction,
+compiler scalar deleting destructor, default include callback and implicit PMR
+ScriptStack cleanup. Actual allocator capture, borrowed file buffers, fixed
+arrays, original global SptResourceInf RTTI and independently bound native
+cleanup establish the protocol. Existing 42-byte ScriptStack construction gains
+its allocation-free noexcept contract without new credit. All 505 units / 94
+cold objects / 90,373 disjoint bytes strictly replay; origins remain 432 pending /
+9 library / 64 authored, with 16,948 authored bytes unchanged. Owned O2/UBSan
+resource capture/release/virtual cleanup checks use the actual maintained bodies;
+ECL call/tick and Enemy creation tests replace duplicate base fixtures. See
+EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md.
+
+The full 876-byte append body remains nonexact at 878 bytes; byte-pointer offset
+lowering and receiver register allocation differ. The full 54-byte instruction
+getter retains two structural byte differences. Derived loading, first callback,
+global production ownership, the 41 KB Enemy root and whole-game link/runtime
+remain pending. Reference constructor/destructor/append reviews retain their
+terminal nonexact state; all 6,945 reviews remain terminal, 137 absorbed-exact.
+Fresh successful objects complete the staged cold graph without duplicate
+compilation. One-time core068 configuration/registration writers are completed;
+never rerun them. Canonical audit and failed native/source evidence remain private.
+Keep English/repo-python/Ghidra/no REA/no subagents/serial reduced-priority work.
+
+All 41 public tests and target/tracking/progress checks pass. Cleanup retires
+36 superseded experiment objects/receipts / 1,598,909 bytes. All 188 current
+canonical object/receipt hashes remain unchanged and 505 strict existing-object
+comparisons pass afterward; no additional cold build is needed. Cumulative
+retirement: 2,426 files / 998,278,720 bytes. build is 3.8 MiB and .analysis
+is 77 MiB. Native exports, failed source/diagnostics and installed tools remain
+intact. One-time core068-cleanup writer is stamped; never rerun it.
+
 ## EXACT-066 — 2026-10-08 — Whole Enemy creation and script selection
 
 Nineteen whole functions add 1,279 bytes: actual controller creation, complete

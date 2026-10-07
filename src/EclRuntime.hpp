@@ -7,6 +7,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <array>
 #include <memory_resource>
 #include <vector>
 
@@ -80,20 +81,23 @@ struct EclSubroutineRecord {
 
 class EclLoader {
 public:
-    // The two one-word callback slots precede the deleting destructor. Their
-    // higher-level roles remain open; activation uses the nonvirtual protocol.
+    // Slot zero's higher-level contract remains open. Slot one receives a
+    // mutable SCPT include block; the derived implementation remains unclosed.
     virtual std::int32_t callback_0(std::uint32_t argument);
-    virtual std::int32_t callback_1(std::uint32_t argument);
+    virtual std::int32_t include_resources(std::uint8_t* block);
     virtual ~EclLoader();
 
     std::uint32_t file_count;
     std::uint32_t subroutine_count;
-    std::uint8_t* files[64];
+    std::array<std::uint8_t*, 64> files;
     std::uint32_t fields_10c[64];
     std::pmr::vector<EclSubroutineRecord> records;
     ScriptStack globals;
 
     EclLoader();
+    // The complete append body is still under reconstruction. It borrows the
+    // writable resource buffer and returns the old file index, or -1.
+    int append(std::uint8_t* buffer);
     int activate(EclManager* manager, const char* name);
     int select(EclManager* manager, const char* name);
     std::int32_t subroutine_index(const char* name);
@@ -145,6 +149,8 @@ static_assert(offsetof(EclManager, main) == 16);
 static_assert(offsetof(EclManager, loader) == 88);
 static_assert(offsetof(EclManager, runtimes) == 92);
 static_assert(sizeof(EclLoader) == 564);
+static_assert(offsetof(EclLoader, files) == 12);
+static_assert(offsetof(EclLoader, fields_10c) == 268);
 static_assert(offsetof(EclLoader, records) == 524);
 static_assert(offsetof(EclLoader, globals) == 540);
 #endif

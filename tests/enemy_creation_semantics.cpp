@@ -36,10 +36,7 @@ EnemyController::EnemyController() noexcept : field_124(0), player_index(0), con
 EnemyController::~EnemyController() = default;
 EnemyData::EnemyData() = default;
 EnemyAnimationHandles::EnemyAnimationHandles() noexcept = default;
-EclLoader::EclLoader() : file_count(0), subroutine_count(0) {}
-EclLoader::~EclLoader() = default;
 int EclLoader::callback_0(std::uint32_t) { std::abort(); }
-int EclLoader::callback_1(std::uint32_t) { std::abort(); }
 int EclManager::execute_opcode() { std::abort(); }
 int EclManager::read_integer(int) { std::abort(); }
 int* EclManager::integer_destination(int) { std::abort(); }

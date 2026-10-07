@@ -14,7 +14,7 @@ class EnemyCreationTests(unittest.TestCase):
                          if (p := shutil.which(n))), None)
         self.assertIsNotNone(compiler)
         sources = [
-            "EnemySpawning", "EnemyInitialization", "EclSelection", "Enemy",
+            "EnemySpawning", "EnemyInitialization", "EclSelection", "EclLoaderBase", "Enemy",
             "EnemyState", "EnemyMovement", "EnemyCounters", "EnemySpawn",
             "EnemyHealth", "EnemyPattern", "Motion",
             "MotionConfiguration", "MotionUpdates", "MotionMath", "Vector2",

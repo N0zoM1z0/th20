@@ -19,6 +19,7 @@ class EclCallSemanticsTests(unittest.TestCase):
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                 "-fno-strict-aliasing", "-fsanitize=undefined", "-Isrc",
                 "tests/ecl_call_semantics.cpp", "src/EclRuntimeCall.cpp",
-                "src/EclDiagnostic.cpp", "src/ScriptStack.cpp", "-o", str(output),
+                "src/EclDiagnostic.cpp", "src/ScriptStack.cpp", "src/EclLoaderBase.cpp",
+                "-o", str(output),
             ], cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True)

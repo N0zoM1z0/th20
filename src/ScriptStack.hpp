@@ -13,7 +13,7 @@ struct ScriptStack {
     std::int32_t pointer;
     std::int32_t frame_base;
 
-    ScriptStack();
+    ScriptStack() noexcept;
     void reset();
     // Valid addresses resolve to nonnegative word indices. For local addresses,
     // frame_base + byte_offset must also be representable as int32_t.

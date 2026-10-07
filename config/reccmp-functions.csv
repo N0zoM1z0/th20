@@ -499,3 +499,8 @@ th20::Enemy::float_argument_value,0x004AB040,function
 th20::EnemyState::float_argument_value,0x004AAFE0,function
 th20::Enemy::integer_argument_value,0x004AB110,function
 th20::EnemyState::integer_argument_value,0x004AB0B0,function
+th20::EclLoader::EclLoader,0x004A3650,function
+th20::EclLoader::~EclLoader,0x004A3D40,function
+th20::EclLoader::scalar_deleting_destructor,0x004A4150,function
+th20::EclLoader::include_resources,0x00414B50,function
+th20::ScriptStack::~ScriptStack,0x0048B900,function

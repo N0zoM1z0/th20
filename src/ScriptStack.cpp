@@ -2,7 +2,7 @@
 
 namespace th20 {
 
-ScriptStack::ScriptStack() : pointer(0), frame_base(0) {}
+ScriptStack::ScriptStack() noexcept : pointer(0), frame_base(0) {}
 
 void ScriptStack::reset() {
     pointer = 0;
