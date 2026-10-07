@@ -1,5 +1,14 @@
 # Source and build ownership
 
+EXACT-057 adds the complete EclRuntimeTick.cpp using shared EclRuntime/ScriptStack
+owners and the whole native jump table:11,110instructionbytes plus394alignment/
+tablebytes. GameRandomAngle.cpp owns the shared45-byte radians utility with
+unresolved authorship. GameRandom.hpp declares its method; EclRuntime.hpp
+declares the native shared random owner and pending VM dependencies. Full cold
+replay397units/74objects/74056disjointbytes after these declaration changes;
+authored64/16948. Constructor/flags/lifetime and wholeEnemy remain pending.
+See EXACT_ECL_TICK_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-056 adds EclRuntimeCall.cpp's complete 923-byte invocation and
 EclDiagnostic.cpp's actual empty release hook. The shared EclRuntime.hpp owns
 Runtime72/Manager112/Loader564 and uses canonical ScriptStack and interpolation.

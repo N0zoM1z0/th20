@@ -394,3 +394,5 @@ th20::archive_lzss_unlink,0x00539180,function
 th20::archive_lzss_remove,0x005394C0,function
 th20::EclRuntime::call_into,0x0053F3B0,function
 th20::ecl_diagnostic_hint,0x0040C6B0,function
+th20::EclRuntime::tick,0x0053B5C0,function
+th20::GameRandom::radians,0x004297D0,function

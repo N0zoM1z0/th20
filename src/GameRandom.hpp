@@ -27,6 +27,7 @@ struct GameRandom {
     std::uint32_t bounded(std::uint32_t count);
     float unit();
     float signed_unit();
+    float radians();
 };
 
 static_assert(sizeof(GameRandomEngine) == 4);

@@ -19,6 +19,8 @@ struct ScriptStack {
     std::uint32_t& absolute(std::int32_t byte_offset);
     std::uint32_t& local(std::int32_t byte_offset);
     int leave_frame();
+    int enter_frame(std::int32_t byte_count);
+    std::int32_t frame_value() const;
 
     // Native generic output-pointer protocol at 0x0053F0B0. Its arbitrary-length
     // copies, tagged conversions and invalid-state behavior remain unrecovered.

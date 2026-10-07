@@ -1,5 +1,32 @@
 # Verified facts and open hypotheses
 
+## EXACT-057 — 2026-10-07 — Complete ECL runtime dispatcher
+
+- Whole tick53B5C0/11110 +2alignment +392table canonically replays11504bytes
+  with401independent relocations,288REL32/113DIR32. Real localCOFFsymbol offsets
+  resolve the table pointer and all98entries,76distinctheads. Fullgraph397units/
+  74coldobjects/74056disjointbytes after shared declarations; authored64/16948.
+  Shared GameRandom::radians4297D0/45 closes with unresolved utility origin.
+  See EXACT_ECL_TICK_RECONSTRUCTION.md. No case or shortened extent credit.
+- Native polar opcode81 reads direction2 then length3. Two meaningful named
+  constfloat samples retain both values throughout the case and reproduce
+  native frame5A0, whole11110body and11504contribution. Saving only angle,
+  aggregate/binding and nested-expression hypotheses are rejected. An extra
+  inner scope changes body11111 and many placements; also rejected.
+- Maintained owners retain actual concrete manager virtual slots and native
+  typed PMR/interpolation storage. Startup, native lifetime/flags wrapper and
+  direct VM dependency bodies remain declared/unaccepted. Generated STL helper
+  contributions are uncredited even though root anchors identify their roles.
+- GameRandom global5BA4A8 has independent startup401120 with streamID0 and real
+  constructor422C50, plus game consumers. Negative-one constant56E0F4 is independently
+  corroborated outside tick and by resolver thresholds. No solved fields used.
+- Owned whole-dispatch tests use real math/interpolation and bounded, explicitly
+  labeled constructor/resolver/stack/async fixtures. Arithmetic order, NaN comparisons,
+  tagged consumption, rank/time/termination, relative branches, delegated status,
+  polar order and saved-frame interpolation tail pass C++20/O2/UBSan. Whole-game
+  runtime and invalid-domain portability remain open. Next root is EnemyState41967;
+  unrelated leaves stay deferred.
+
 ## EXACT-056 — 2026-10-07 — Whole ECL invocation protocol
 
 - Complete call_into53F3B0/923 and empty diagnostic40C6B0/5 replay exactly.

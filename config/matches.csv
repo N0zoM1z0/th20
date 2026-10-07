@@ -62,3 +62,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0041F6D0,th20::DebugMemoryResource::do_allocate,141,matching,100.00,debug_resource_allocate,"EXACT-054; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
 0x0041F760,th20::DebugMemoryResource::do_deallocate,81,matching,100.00,debug_resource_deallocate,"EXACT-054; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
 0x0053F3B0,th20::EclRuntime::call_into,923,matching,100.00,ecl_runtime_call,"EXACT-056; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
+0x0053B5C0,th20::EclRuntime::tick,11110,matching,100.00,ecl_runtime_tick,"EXACT-057; locked MSVC cold build, whole11504-byte canonical replay including complete table and independent application-owner evidence"

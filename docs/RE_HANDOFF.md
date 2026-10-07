@@ -1,5 +1,45 @@
 # Current reconstruction handoff
 
+## EXACT-057 — 2026-10-07 — Whole ECL runtime dispatcher exact
+
+The complete root53B5C0 passes canonical all-byte replay:11,110instructionbytes,
+two native alignment bytes and the entire392-byte/98-entry jump table,11,504bytes
+total. All401relocations have independent anchors, including the table pointer
+and98entries from real COFFlocal symbol offsets. The accepted maintained body is
+src/EclRuntimeTick.cpp on shared EclRuntime/ScriptStack owners. Meaningful named
+constfloat direction and length values preserve native argument order and lifetime;
+no source shaping or ABI substitutions. See EXACT_ECL_TICK_RECONSTRUCTION.md.
+
+All397units/74coldobjects/74056disjointbytes cold replay after owner declarations
+changed. Source/mapped397, pendingorigins329, library4, authored64/16948. Authored
+coverage excludes table/alignment and GameRandom::radians4297D0/45's unresolved
+utility origin. The native shared random5BA4A8 has independent startup401120/
+constructor422C50 evidence; source declares its owner without inventing startup.
+
+Owned C++20/O2/UBSan whole-dispatch tests use maintained owners, actual math and
+interpolation, with explicitly bounded constructor/resolver/stack/async fixtures.
+They cover rank/time/ended state, signed arithmetic and tagged consumption, NaN
+comparisons, logical/bit operations, post-decrement, ordered polar reads, relative
+branches, delegated0/-1/1status branches, async state and interpolation's saved
+instruction/frame tail. Invocation remains independently tested by EXACT056.
+Host -fno-strict-aliasing models native raw-word access; unsigned size comparisons
+retain native conversions. Production dependency/lifetime/flags bodies and full
+game linkage/runtime remain open. All30public tests and private target/tracking/
+progress/full Ghidra gates pass.
+
+One new rejected whole probe gives extra inner scope to both polar samples:
+body11111,whole11504,only6593/9900structuralbytes. The accepted same-case lifetime
+probe matches all9900structuralbytes and then every byte under canonical replay.
+Never promote earlier rejected or merely equal-size probes, nor solved fields.
+Whole EnemyState48C010/41967 is the next priority; defer unrelated leaves.
+
+EXACT057 configuration/registration writers and56/54/older writers are stamped
+NEVER RERUN. Source/probes froze before complete replay. Read private
+.analysis/exact057-resume.md for exact handles/checkpoint, independent audit and
+raw evidence locations. Active native goal, English, repo-python, serial MSVC/
+Ghidra, no subagents, gpt-6.1-sol: commits and authorized main push persist.
+Older entries below are historical.
+
 ## EXACT-056 — 2026-10-07 — Complete ECL invocation and return frames
 
 The whole invocation at 0053F3B0 / 923 bytes passes all-byte canonical replay

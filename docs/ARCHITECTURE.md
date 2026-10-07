@@ -1,5 +1,14 @@
 # Target inventory and initial architecture boundary
 
+EXACT-057 closes the whole native ECL Runtime dispatcher53B5C0/11110, including
+two alignment bytes and all98table entries over11504comparisonbytes. All401
+relocations independently replay on shared actual owners. Separately named
+direction/length samples explain native order and temporary lifetime. A45-byte
+shared random-angle dependency also closes; its origin stays pending. Full
+graph397/74coldobjects/74056disjointbytes, authored64/16948. Native dependency/
+startup/lifetime implementations and fullEnemyState48C010/41967 remain pending.
+See EXACT_ECL_TICK_RECONSTRUCTION.md. Older entries are historical checkpoints.
+
 EXACT-056 closes the whole ECL invocation/frame protocol at 0053F3B0 / 923
 bytes, preserving ordered typed transfers, nested return records and failure
 retention. The shared owners replace private ABI hypotheses for this accepted

@@ -914,7 +914,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004296E0,unknown,Vector3,review,pending,"REF-018; Actual twelve-byte three-float owner independently established by Card construction, scalar lane producers and native subtraction/scale/add-assignment consumers. Natural shared body; complete canonical extent and constructor-call anchors checked independently before probing. Exact source does not establish original class spelling or authored/compiler/library provenance; origin pending, enclosing Card/Controller remain unresolved."
 0x00429740,unknown,Vector3,review,pending,"EXACT-045: complete shared Motion protocol dependency batch; independently attested native whole flow, returns, receiver/member offsets, constants, callees and table bindings. Cold strict replay259units/59objects/20892disjointbytes and finite C++20/UBSan protocol tests pass. Original spelling/origin pending. See docs/EXACT_MOTION_RECONSTRUCTION.md."
 0x004297A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004297D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004297D0,unknown,GameRandom,review,pending,"EXACT-057: Complete whole ECL tick11110instructionbytes plus2nativealignmentbytes and392-byte98-entry jump table, and shared GameRandom angle45bytes. Shared maintained native owners, meaningful scalar parameter lifetimes, full401independent COFF relocation replay, all76distinct heads, constant/global startup producers and dependency definitions corroborated. Full cold graph397units/74objects/74056disjointbytes, bounded owned C++20/UBSan whole-dispatch tests and real math/interpolation pass. Native dependency/lifetime/startup/flags implementation and full-game link/runtime remain open; EnemyState whole41967-byte root is next. See docs/EXACT_ECL_TICK_RECONSTRUCTION.md. Original random utility authorship remains unresolved; excluded from authored credit."
 0x00429800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00429830,authored,GameRandom,authored,high,"REF-008; Original 28-byte game RNG constructor/callers, receiver ABI and fixed field consumers independently reviewed"
 0x004298B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5813,7 +5813,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0053B530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053B560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053B590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0053B5C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0053B5C0,authored,EclRuntime,authored,high,"EXACT-057: Complete whole ECL tick11110instructionbytes plus2nativealignmentbytes and392-byte98-entry jump table, and shared GameRandom angle45bytes. Shared maintained native owners, meaningful scalar parameter lifetimes, full401independent COFF relocation replay, all76distinct heads, constant/global startup producers and dependency definitions corroborated. Full cold graph397units/74objects/74056disjointbytes, bounded owned C++20/UBSan whole-dispatch tests and real math/interpolation pass. Native dependency/lifetime/startup/flags implementation and full-game link/runtime remain open; EnemyState whole41967-byte root is next. See docs/EXACT_ECL_TICK_RECONSTRUCTION.md."
 0x0053E2B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053E390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053E450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

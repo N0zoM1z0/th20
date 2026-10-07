@@ -3,6 +3,7 @@
 #include "Interpolation.hpp"
 #include "IntrusiveLink.hpp"
 #include "ScriptStack.hpp"
+#include "GameRandom.hpp"
 
 #include <cstddef>
 #include <cstdint>
@@ -34,6 +35,9 @@ static_assert(sizeof(EclScriptPosition) == 8);
 struct EclScriptInterpolation : FloatInterpolation {
     std::int32_t frame_base;
     EclScriptPosition position;
+    void set_tangent_start(const float& value);
+    void set_tangent_end(const float& value);
+    void reset_time();
 };
 
 class EclManager;
@@ -52,10 +56,19 @@ struct EclRuntime {
 
     EclRuntime();
     EclInstruction* current();
+    std::int32_t integer_argument(std::int32_t index);
+    std::int32_t consuming_integer(std::int32_t index);
+    float float_argument(std::int32_t index);
+    float consuming_float(std::int32_t index);
+    std::int32_t* integer_destination(std::int32_t index);
+    float* float_destination(std::int32_t index);
+    float* float_destination_at(EclInstruction* instruction,
+                                std::int32_t frame_base, std::int32_t index);
     std::int32_t consuming_integer_value(std::int32_t index, std::int32_t value);
     float consuming_float_value(std::int32_t index, float value);
     int call_into(EclRuntime* target, std::int32_t argument_skip,
                   std::int32_t name_skip);
+    int tick(float delta);
 };
 
 struct EclSubroutineRecord {
@@ -80,6 +93,7 @@ public:
 
     EclLoader();
     int activate(EclManager* manager, const char* name);
+    EclInstruction* instruction(std::int32_t subroutine, std::int32_t offset);
 };
 
 class EclManager {
@@ -101,7 +115,13 @@ public:
 
     EclManager();
     EclLoader* loader_value() const;
+    int spawn(std::int32_t async_id, std::int32_t argument_skip);
+    IntrusiveLink<EclRuntime>* find_runtime(std::int32_t async_id);
+    void terminate_async();
 };
+
+// Native shared random owner. Production construction remains unresolved.
+extern GameRandom script_random;
 
 #if defined(_M_IX86)
 static_assert(sizeof(EclRuntime) == 72);

@@ -1,10 +1,12 @@
 # Core ECL and Enemy dispatch reconstruction
 
-CORE-055 is an investigation checkpoint. Neither dispatcher has accepted source
-or an exact unit. EXACT-056 subsequently accepts its complete 923-byte invocation
-dependency and actual empty diagnostic hook; see EXACT_ECL_CALL_RECONSTRUCTION.md.
-The accepted graph now has 395 complete units and 62,507 disjoint comparison
-bytes. The current priority is whole core dispatchers and their real protocols.
+CORE-055 is an investigation checkpoint. EXACT-057 subsequently accepts the
+whole ECL tick, including its complete table/alignment, after resolving parameter
+lifetimes and independently replaying all401 relocations. See
+EXACT_ECL_TICK_RECONSTRUCTION.md. EXACT-056 closed the invocation dependency.
+The graph now has397 units and74,056 disjoint comparison bytes. The whole
+EnemyState dispatcher remains pending. Older compiler observations below are
+historical; the current priority remains whole core dispatchers and their protocols.
 
 ## Complete native intervals
 
@@ -87,7 +89,7 @@ Important call contracts recovered from producers and consumers:
   buffer pointer and requested type tag; they return integer status. They are
   not a fixed-word facade.
 - `0053F3B0` calls from the current Runtime into a target Runtime and returns
-  status. It takes target, argument-skip and an integer mode argument.
+  status. It takes target, argument-skip and name-skip word offset (EXACT-056).
 - `0053E390` async spawn returns status, not a Runtime reference.
 - `0053E920` searches for an intrusive link, including the main sentinel.
 - Argument readers obtain the current instruction internally. The final
@@ -131,7 +133,9 @@ hook before returning failure; it does not output a log. EXACT-056 corrects the
 earlier interpretation and preserves caller invalidation and current-runtime
 retention. An invented throw or silent success is not acceptable.
 
-Neither whole dispatcher hypothesis is a canonical exact result. Keep all
+The historical hypotheses below were not canonical exact results; EXACT-057
+later accepted the complete ECL root with its correct parameter lifetimes.
+Enemy remains pending. Keep all
 raw disassembly, decompiler output, object files, case diagnostics and candidate
 source private. Continue with the whole tick and its immediate protocols, then
 the complete Enemy dispatcher; defer unrelated leaves.
