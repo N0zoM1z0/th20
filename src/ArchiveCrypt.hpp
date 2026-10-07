@@ -6,7 +6,13 @@ namespace th20 {
 
 // REF-004: caller supplies the exact byte count, including embedded zeros if
 // present. The wrapped sum feeds the archive parameter-table index; parameter
-// selection and in-place decryption are separate unreconstructed contributions.
+// selection remains part of the unreconstructed archive manager.
 std::uint8_t archive_name_sum(const char* name, std::uint32_t size);
+
+// Original signed six-argument protocol. Valid archive parameters have positive
+// even blocks and a copy limit covering each transformed block. Odd/small tails
+// remain untouched. Returns the original pointer; scratch storage uses new[].
+std::uint8_t* archive_decrypt(std::uint8_t* data, std::int32_t size,
+    std::uint8_t key, std::uint8_t step, std::int32_t block, std::int32_t limit);
 
 } // namespace th20

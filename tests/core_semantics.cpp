@@ -5,6 +5,7 @@
 #include "LockRegistry.hpp"
 #include "TaskInfo.hpp"
 #include "ArchiveCrypt.hpp"
+#include "DiagnosticAllocator.hpp"
 #include "InputState.hpp"
 #include "Configuration.hpp"
 #include "GameRandom.hpp"
@@ -21,6 +22,13 @@
 #include <cstring>
 #include <limits>
 #include <new>
+
+// The counted-name helper shares a TU with archive decryption. Bind its process
+// dependencies for this fixture; actual codec allocation is tested separately.
+namespace th20 {
+LockRegistry process_locks;
+DiagnosticAllocator* process_allocator = nullptr;
+}
 
 void check_scene_resource_protocol();
 void check_cursor_history();

@@ -1,5 +1,15 @@
 # Source and build ownership
 
+EXACT-054 adds sixteen archive/allocator bodies / 2,676 complete comparison
+bytes. All 393 units / 70 cold objects / 61,579 disjoint bytes strictly replay.
+ArchiveCrypt.cpp retains its counted-name helper and adds signed decryption;
+ArchiveLzss.cpp and ArchiveLzssTree.cpp own decoder and tree protocols.
+DiagnosticAllocator.cpp owns byte allocation and array instantiations;
+DebugMemoryResource.cpp adds guarded aligned allocation/deallocation under its
+single GS/EHsc/Gd/SDL recipe. Startup, compressor checksum and complete archive
+manager lifetime remain open. Core ECL tick 0053B5C0 is the next priority.
+See EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md. Earlier entries are historical.
+
 EXACT-053 adds five Worker lifecycle bodies / 666 instruction bytes and five
 destructor alignment bytes. All 377 units / 67 cold objects / 58,903 disjoint
 comparison bytes strictly replay. Worker.cpp uses one GS/EHsc/Gd/SDL recipe for
@@ -109,10 +119,12 @@ and the separate whole-game boundary.
 | FunctionChain | src/FunctionChain.hpp, src/FunctionChain.cpp | link construction/insertion, node construction and ten field operations | Fourteen complete exact functions; allocator, iterator initialization, dispatch and enclosing owner remain open |
 | ClockScalar | src/ClockScalar.hpp, src/ClockScalar.cpp | float read 0x004292E0; multiply 0x00452F50; set 0x004292A0 | Exact four-byte float view; enclosing owner and origin pending |
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | construction 0x00452E00; slot 0x0040C310; tracked enter/leave 0x00412550/0x00412750; enable/disable | Six complete exact functions on the actual 22-slot recursive-mutex owner; production global/thread lifetime pending |
-| DebugMemoryResource | src/DebugMemoryResource.hpp, src/DebugMemoryResource.cpp | constructor 0x00418DB0; destructor 0x00418E90; equality 0x0041C9F0 | Three complete exact custom PMR functions; allocation/deallocation remain undefined and this is not a linked allocator |
+| DebugMemoryResource | src/DebugMemoryResource.hpp, src/DebugMemoryResource.cpp | constructor 0x00418DB0; destructor 0x00418E90; equality 0x0041C9F0; aligned allocation/deallocation 0x0041F6D0/0x0041F760 | Five complete exact custom PMR functions with actual shared slot-1 guards; production global startup remains open |
+| DiagnosticAllocator | src/DiagnosticAllocator.hpp, src/DiagnosticAllocator.cpp | byte malloc/free 0x0041F610/0x0041F670; typed byte-array allocation/delete 0x0040D8C0/0x0040D840; destructor 0x0041F5F0 | Five complete exact bodies on actual eight-byte resource owner; constructor/global startup and first zero-word meaning remain open |
 | TaskInfo | src/TaskInfo.hpp, src/TaskInfo.cpp | TaskInf destructor and separate virtual/helper enable/disable entries | Five complete exact functions; native constructor and allocator-based deletion pending |
 | Worker | src/Worker.hpp, src/Worker.cpp | construction 0x0040B780; start 0x0040B1D0; detach 0x0040BC60; close/join 0x0040BCF0; close/detach 0x004BA8B0; destructor 0x0040B980 | Six complete exact functions on real jthread12/atomic/Worker16 storage; enclosing detached-task ownership, two library emission differences and process-global startup remain pending |
-| ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270 | Exact 71-byte helper; parameter table selection, decryption and native archive owner remain pending |
+| ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270; signed block decrypt 0x004100E0 | Two complete exact bodies with actual array scratch ownership; parameter-table selection and full archive owner remain pending |
+| ArchiveLzss | src/ArchiveLzss.hpp, src/ArchiveLzss.cpp, src/ArchiveLzssTree.cpp | decoder 0x005391F0; seven tree operations 0x00539060/0x00539180/0x005394C0/0x00539960/0x005399A0/0x005399D0/0x00539A10 | Eight complete exact bodies, shared 8192-byte dictionary and 8193 real tree nodes; original utility provenance, compressor and full manager remain pending |
 | InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update, three mask queries and held-frame query | Eleven complete exact functions including Replay reset/update; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |
 | GameRandom | src/GameRandom.hpp, src/GameRandom.cpp, src/GameRandomStream.cpp | construction 0x00422C50; bounded 0x00423EA0; float wrappers 0x00429830/0x004298E0; seed/next 0x004D9940/0x00423EE0; engine helpers | Eight complete exact units, including two library and two pending-origin stream functions; actual slot-10 locking closes, production global startup remains undefined |

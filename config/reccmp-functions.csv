@@ -376,3 +376,19 @@ th20::Worker::close_and_join,0x0040BCF0,function
 th20::Worker::detach,0x0040BC60,function
 th20::Worker::close_and_detach,0x004BA8B0,function
 "th20::Worker::start<int(void*), void*>",0x0040B1D0,function
+th20::archive_decrypt,0x004100E0,function
+th20::archive_decompress,0x005391F0,function
+th20::DiagnosticAllocator::allocate_bytes,0x0041F610,function
+th20::DiagnosticAllocator::release_bytes,0x0041F670,function
+th20::DiagnosticAllocator::allocate_array<uint8_t>,0x0040D8C0,function
+th20::DiagnosticAllocator::release_array<uint8_t>,0x0040D840,function
+th20::DiagnosticAllocator::~DiagnosticAllocator,0x0041F5F0,function
+th20::DebugMemoryResource::do_allocate,0x0041F6D0,function
+th20::DebugMemoryResource::do_deallocate,0x0041F760,function
+th20::archive_lzss_reset,0x005399A0,function
+th20::archive_lzss_set_root,0x005399D0,function
+th20::archive_lzss_predecessor,0x00539960,function
+th20::archive_lzss_replace,0x00539A10,function
+th20::archive_lzss_insert,0x00539060,function
+th20::archive_lzss_unlink,0x00539180,function
+th20::archive_lzss_remove,0x005394C0,function

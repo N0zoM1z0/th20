@@ -604,7 +604,7 @@ relocations = []
 [units.debug_resource_equal]
 source = "src/DebugMemoryResource.cpp"
 object = "build/DebugMemoryResource.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::DebugMemoryResource::do_is_equal"]
 symbol = "?do_is_equal@DebugMemoryResource@th20@@EBE_NABVmemory_resource@pmr@std@@@Z"
 target_address = 0x0041C9F0
@@ -689,7 +689,7 @@ relocations = [
 [units.debug_resource_construct]
 source = "src/DebugMemoryResource.cpp"
 object = "build/DebugMemoryResource.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::DebugMemoryResource::DebugMemoryResource"]
 symbol = "??0DebugMemoryResource@th20@@QAE@XZ"
 target_address = 0x00418DB0
@@ -702,7 +702,7 @@ relocations = [
 [units.debug_resource_destroy]
 source = "src/DebugMemoryResource.cpp"
 object = "build/DebugMemoryResource.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::DebugMemoryResource::~DebugMemoryResource"]
 symbol = "??1DebugMemoryResource@th20@@UAE@XZ"
 target_address = 0x00418E90
@@ -5556,4 +5556,288 @@ relocations = [
   { offset = 0x80, type = "REL32", symbol = "??1jthread@std@@QAE@XZ", target = 0x0040B9D0 },
   { offset = 0x90, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0xA6, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# EXACT-054: signed archive decrypt, persistent LZSS/tree and actual allocation.
+[units.archive_decrypt]
+source = "src/ArchiveCrypt.cpp"
+object = "build/ArchiveCrypt.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_decrypt"]
+symbol = "?archive_decrypt@th20@@YAPAEPAEHEEHH@Z"
+target_address = 0x004100E0
+size = 446
+relocations = [
+  { offset = 0x5F, type = "DIR32", symbol = "?crypt_copy_label@th20@@3QBDB", target = 0x0056C578 },
+  { offset = 0x65, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x6A, type = "REL32", symbol = "??$allocate_array@E@DiagnosticAllocator@th20@@QAEPAEPBDH@Z", target = 0x0040D8C0 },
+  { offset = 0x99, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x1A7, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x1AC, type = "REL32", symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z", target = 0x0040D840 },
+]
+
+[units.archive_decompress]
+source = "src/ArchiveLzss.cpp"
+object = "build/ArchiveLzss.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_decompress"]
+symbol = "?archive_decompress@th20@@YAPAEPBEHPAEH@Z"
+target_address = 0x005391F0
+size = 706
+relocations = [
+  { offset = 0x1E, type = "DIR32", symbol = "?lzss_output_label@th20@@3QBDB", target = 0x00576828 },
+  { offset = 0x28, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x2D, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 0x13C, type = "DIR32", symbol = "?archive_dictionary@th20@@3PAEA", target = 0x005C6B38 },
+  { offset = 0x281, type = "DIR32", symbol = "?archive_dictionary@th20@@3PAEA", target = 0x005C6B38 },
+  { offset = 0x2A1, type = "DIR32", symbol = "?archive_dictionary@th20@@3PAEA", target = 0x005C6B38 },
+]
+
+[units.diagnostic_allocate_bytes]
+source = "src/DiagnosticAllocator.cpp"
+object = "build/DiagnosticAllocator.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::DiagnosticAllocator::allocate_bytes"]
+symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z"
+target_address = 0x0041F610
+size = 88
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x16, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x1B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x24, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x2D, type = "REL32", symbol = "_malloc", target = 0x0054A550 },
+  { offset = 0x41, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x4E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.diagnostic_release_bytes]
+source = "src/DiagnosticAllocator.cpp"
+object = "build/DiagnosticAllocator.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::DiagnosticAllocator::release_bytes"]
+symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z"
+target_address = 0x0041F670
+size = 85
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x23, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x2C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x35, type = "REL32", symbol = "_free", target = 0x0054A540 },
+  { offset = 0x40, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x4B, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.diagnostic_allocate_byte_array]
+source = "src/DiagnosticAllocator.cpp"
+object = "build/DiagnosticAllocator.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::DiagnosticAllocator::allocate_array<uint8_t>"]
+symbol = "??$allocate_array@E@DiagnosticAllocator@th20@@QAEPAEPBDH@Z"
+target_address = 0x0040D8C0
+size = 143
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$allocate_array@E@DiagnosticAllocator@th20@@QAEPAEPBDH@Z", target = 0x005676ED },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x4C, type = "REL32", symbol = "??_U@YAPAXI@Z", target = 0x00542A01 },
+  { offset = 0x6D, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x85, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.diagnostic_release_byte_array]
+source = "src/DiagnosticAllocator.cpp"
+object = "build/DiagnosticAllocator.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::DiagnosticAllocator::release_array<uint8_t>"]
+symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z"
+target_address = 0x0040D840
+size = 120
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x23, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x2C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x3C, type = "REL32", symbol = "??_V@YAXPAX@Z", target = 0x00542A0A },
+  { offset = 0x63, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x6E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.diagnostic_destruct]
+source = "src/DiagnosticAllocator.cpp"
+object = "build/DiagnosticAllocator.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::DiagnosticAllocator::~DiagnosticAllocator"]
+symbol = "??1DiagnosticAllocator@th20@@QAE@XZ"
+target_address = 0x0041F5F0
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1DebugMemoryResource@th20@@UAE@XZ", target = 0x00418E90 },
+]
+
+[units.debug_resource_allocate]
+source = "src/DebugMemoryResource.cpp"
+object = "build/DebugMemoryResource.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::DebugMemoryResource::do_allocate"]
+symbol = "?do_allocate@DebugMemoryResource@th20@@EAEPAXII@Z"
+target_address = 0x0041F6D0
+size = 141
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?do_allocate@DebugMemoryResource@th20@@EAEPAXII@Z", target = 0x0056808D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x50, type = "REL32", symbol = "??2@YAPAXIW4align_val_t@std@@@Z", target = 0x00542E42 },
+  { offset = 0x6B, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x83, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.debug_resource_deallocate]
+source = "src/DebugMemoryResource.cpp"
+object = "build/DebugMemoryResource.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::DebugMemoryResource::do_deallocate"]
+symbol = "?do_deallocate@DebugMemoryResource@th20@@EAEXPAXII@Z"
+target_address = 0x0041F760
+size = 81
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x16, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x1B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x24, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x31, type = "REL32", symbol = "??3@YAXPAXW4align_val_t@std@@@Z", target = 0x00542E76 },
+  { offset = 0x3C, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x47, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.archive_lzss_reset]
+source = "src/ArchiveLzssTree.cpp"
+object = "build/ArchiveLzssTree.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_lzss_reset"]
+symbol = "?archive_lzss_reset@th20@@YAXXZ"
+target_address = 0x005399A0
+size = 45
+relocations = [
+  { offset = 0xB, type = "DIR32", symbol = "?archive_dictionary@th20@@3PAEA", target = 0x005C6B38 },
+  { offset = 0x10, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x1F, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x24, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]
+
+[units.archive_lzss_set_root]
+source = "src/ArchiveLzssTree.cpp"
+object = "build/ArchiveLzssTree.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_lzss_set_root"]
+symbol = "?archive_lzss_set_root@th20@@YAXH@Z"
+target_address = 0x005399D0
+size = 64
+relocations = [
+  { offset = 0x10, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x1A, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x28, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x36, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+]
+
+[units.archive_lzss_predecessor]
+source = "src/ArchiveLzssTree.cpp"
+object = "build/ArchiveLzssTree.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_lzss_predecessor"]
+symbol = "?archive_lzss_predecessor@th20@@YAHH@Z"
+target_address = 0x00539960
+size = 52
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x17, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x24, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+]
+
+[units.archive_lzss_replace]
+source = "src/ArchiveLzssTree.cpp"
+object = "build/ArchiveLzssTree.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_lzss_replace"]
+symbol = "?archive_lzss_replace@th20@@YAXHH@Z"
+target_address = 0x00539A10
+size = 153
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x17, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x29, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x38, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x42, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x4B, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x65, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x6F, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x79, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x83, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x8D, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+]
+
+[units.archive_lzss_insert]
+source = "src/ArchiveLzssTree.cpp"
+object = "build/ArchiveLzssTree.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_lzss_insert"]
+symbol = "?archive_lzss_insert@th20@@YAHHPAH@Z"
+target_address = 0x00539060
+size = 284
+relocations = [
+  { offset = 0x24, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x58, type = "DIR32", symbol = "?archive_dictionary@th20@@3PAEA", target = 0x005C6B38 },
+  { offset = 0x6B, type = "DIR32", symbol = "?archive_dictionary@th20@@3PAEA", target = 0x005C6B38 },
+  { offset = 0x9F, type = "REL32", symbol = "?archive_lzss_replace@th20@@YAXHH@Z", target = 0x00539A10 },
+  { offset = 0xB7, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0xC6, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0xE6, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0xF0, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0xFE, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+]
+
+[units.archive_lzss_unlink]
+source = "src/ArchiveLzssTree.cpp"
+object = "build/ArchiveLzssTree.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_lzss_unlink"]
+symbol = "?archive_lzss_unlink@th20@@YAXHH@Z"
+target_address = 0x00539180
+size = 103
+relocations = [
+  { offset = 0xD, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x13, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x1D, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x24, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x33, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x3D, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x49, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x53, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x5D, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+]
+
+[units.archive_lzss_remove]
+source = "src/ArchiveLzssTree.cpp"
+object = "build/ArchiveLzssTree.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_lzss_remove"]
+symbol = "?archive_lzss_remove@th20@@YAXH@Z"
+target_address = 0x005394C0
+size = 142
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x19, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x26, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x30, type = "REL32", symbol = "?archive_lzss_unlink@th20@@YAXHH@Z", target = 0x00539180 },
+  { offset = 0x3F, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x4C, type = "DIR32", symbol = "?archive_lzss_nodes@th20@@3PAUArchiveLzssNode@1@A", target = 0x005C8B38 },
+  { offset = 0x56, type = "REL32", symbol = "?archive_lzss_unlink@th20@@YAXHH@Z", target = 0x00539180 },
+  { offset = 0x64, type = "REL32", symbol = "?archive_lzss_predecessor@th20@@YAHH@Z", target = 0x00539960 },
+  { offset = 0x73, type = "REL32", symbol = "?archive_lzss_remove@th20@@YAXH@Z", target = 0x005394C0 },
+  { offset = 0x83, type = "REL32", symbol = "?archive_lzss_replace@th20@@YAXHH@Z", target = 0x00539A10 },
 ]

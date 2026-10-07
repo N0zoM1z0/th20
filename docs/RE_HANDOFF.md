@@ -1,5 +1,44 @@
 # Current reconstruction handoff
 
+## EXACT-054 — 2026-10-07 — Archive codecs and allocation protocol
+
+Sixteen complete bodies add 2,676 instruction/comparison bytes. All 393 units /
+70 cold objects / 61,579 disjoint complete comparison bytes strictly replay.
+Mapped/source 393; pending origins 327; library 4; authored 62 / 4,915 bytes.
+See EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md for the bodies and deferred owners.
+
+Signed block decryption and the persistent LZSS decoder share the actual
+8-byte DiagnosticAllocator and process mutex 1. Seven compression-tree methods
+share the real 8,193-node dictionary owner. PMR aligned allocation/deallocation
+use actual standard allocation and guards. The native allocator constructor and
+meaning of its first word remain unresolved; no invented production startup.
+Two complete GS/EH handler/cleanup/metadata groups replay independently as six
+support contributions, without extra function credit. The full compressor and
+archive manager are audited; checksum ownership and real stream/record lifetime
+remain open. Missing Ghidra failure jumps are included in whole PE extents.
+
+All 25 public tests pass, including independent codec vectors, overlapping and
+wrapped dictionary references, retained dictionary state, native exhaustion,
+guarded buffers, tree replacement/removal and actual owned aligned allocation.
+The counted-name fixture now binds its shared translation unit's process globals.
+Target/full Ghidra attestation and tracking/progress pass. Maintained src/probes
+froze before the complete cold replay. EXACT054 configure/registration writers
+completed once and are stamped. NEVER RERUN them or older writers.
+
+The user's latest priority is complete core dispatchers, deferring standalone
+leaves. Next target is ECL Runtime tick 0053B5C0: 11,110 body bytes, 2,525 decoded
+instructions and an independent 392-byte / 98-entry jump table. Private EXACT055
+boundary audit reconciles all 80 Ghidra-omitted heads and 76 distinct case heads;
+no prefix/body fragment is accepted. Recover the actual 72-byte Runtime, 112-byte
+ScriptManager and direct stack/loader/interpolation dependencies together.
+The downstream Enemy opcode dispatcher 0048C010 / 41,967 bytes follows this VM.
+No EXACT055 source or exact claim is accepted yet. Reference facades and its
+older 80-byte Runtime are not production ABI evidence.
+
+Native reconstruction stays active. English / repo-python / serial compiler /
+no subagents / `gpt-6.1-sol:` commits / authorized public main push persist.
+Earlier entries are historical checkpoints.
+
 ## EXACT-053 — 2026-10-07 — Worker launch and shutdown lifetime
 
 Five complete Worker lifecycle bodies add666 instruction bytes and five

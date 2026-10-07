@@ -3,3 +3,6 @@ address,name,module,confidence,evidence
 0x005AEFE4,th20::default_timer_clock,ClockScalar,high,REF-002; file-backed initial float 1.0 and independent producer/consumer references
 0x0056C920,th20::DebugMemoryResource::vtable,DebugMemoryResource,high,REF-003; independent four-slot file-backed table and debug_memory_resource RTTI; emitted data not claimed exact
 0x0056D4C0,th20::TaskInfo::vtable,TaskInfo,high,REF-003; independent three-slot file-backed table and TaskInf RTTI; emitted data not claimed exact
+0x005B8894,th20::process_allocator,DiagnosticAllocator,high,EXACT-054; Native eight-byte allocation/constructor/published pointer at41E821..41E869 and real resource destructor; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x005C6B38,th20::archive_dictionary,ArchiveLzss,high,EXACT-054; Complete decoder/compressor/reset consumers establish8192-byte shared persistent ring; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x005C8B38,th20::archive_lzss_nodes,ArchiveLzss,high,EXACT-054; Seven complete operations/reset establish8193 real12-byte parent/left/right nodes; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md

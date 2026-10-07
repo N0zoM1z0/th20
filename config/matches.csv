@@ -56,3 +56,8 @@ address,name,size,status,match_percent,unit,evidence
 0x0052F060,th20::trophy_text::decode,106,matching,100.00,trophy_text_decode,REF-020; locked MSVC cold build and complete canonical relocation replay
 0x0052F590,th20::trophy_text::Message::reset,20,matching,100.00,trophy_message_reset,REF-020; locked MSVC cold build and complete canonical relocation replay
 0x00416CF0,th20::set_next_text_outline_scale,18,matching,100.00,text_outline_set_scale,REF-022; locked MSVC cold build and complete independent canonical relocation replay
+0x004100E0,th20::archive_decrypt,446,matching,100.00,archive_decrypt,"EXACT-054; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
+0x0041F610,th20::DiagnosticAllocator::allocate_bytes,88,matching,100.00,diagnostic_allocate_bytes,"EXACT-054; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
+0x0041F670,th20::DiagnosticAllocator::release_bytes,85,matching,100.00,diagnostic_release_bytes,"EXACT-054; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
+0x0041F6D0,th20::DebugMemoryResource::do_allocate,141,matching,100.00,debug_resource_allocate,"EXACT-054; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
+0x0041F760,th20::DebugMemoryResource::do_deallocate,81,matching,100.00,debug_resource_deallocate,"EXACT-054; locked MSVC cold build, complete canonical replay and independent application-owner evidence"

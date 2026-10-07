@@ -53,8 +53,8 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 377 mapped component functions across 67 comparison objects |
-| Authored exactness | 57 functions, 4,074 bytes |
+| Source | 393 mapped component functions across 70 comparison objects |
+| Authored exactness | 62 functions, 4,915 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Three exact comparisons; enclosing owner and origin review remain open |
@@ -67,6 +67,7 @@ are excluded from Git.
 | Timer construction and wrappers | Nine additional complete exact members, including fractional age and signed <=; source spelling and origin review remain open |
 | Colored vertex construction | Complete 43-byte exact constructor for the actual 20-byte value; source spelling and origin review remain open |
 | Trophy messages | Exact shared-buffer decoder and typed record reset; full resource/parser/owner lifetime remains open |
+| Archive codec and allocation | Signed decrypt, persistent LZSS/tree and actual byte/array/PMR allocation: 16 new units / 2,676 bytes; [evidence](docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md) |
 | Worker lifetime | Real thread start/replacement, guarded join/detach and destructor: 5 new units / 666 body bytes; [evidence](docs/EXACT_WORKER_RECONSTRUCTION.md) |
 | Shared locks and random stream | Node construction/access, actual recursive-mutex registry and locked seed/next: 9 new units / 693 body bytes; [evidence](docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md) |
 | Intrusive observation and Region lifetime | Shared link/list/iterator protocol and Region construction/update: 20 new units / 1,827 body bytes; [evidence](docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md) |

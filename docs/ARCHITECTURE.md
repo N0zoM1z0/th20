@@ -1,5 +1,16 @@
 # Target inventory and initial architecture boundary
 
+EXACT-054 closes signed block decryption, the persistent LZSS decoder, seven
+shared compression-tree operations and actual malloc/array/PMR allocation:
+sixteen complete bodies add 2,676 bytes. All 393 units / 70 cold objects / 61,579
+disjoint comparison bytes strictly replay. The allocator owns the real PMR
+resource; startup and its first word's meaning remain open. The compressor and
+full archive manager are audited and remain pending. See
+EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md. The user now prioritizes core large
+dispatchers: pursue the complete 11,110-byte ECL tick at 0053B5C0 and its real
+owner before returning to additional archive leaves. Earlier entries are
+historical checkpoints.
+
 EXACT-053 closes the actual Worker16 launch/replacement and shutdown lifetime:
 five complete bodies / 666 instruction bytes plus five destructor alignment
 bytes. All 377 units / 67 cold objects / 58,903 disjoint comparison bytes strictly

@@ -375,3 +375,19 @@ th20::Worker::close_and_join
 th20::Worker::detach
 th20::Worker::close_and_detach
 "th20::Worker::start<int(void*), void*>"
+th20::archive_decrypt
+th20::archive_decompress
+th20::DiagnosticAllocator::allocate_bytes
+th20::DiagnosticAllocator::release_bytes
+th20::DiagnosticAllocator::allocate_array<uint8_t>
+th20::DiagnosticAllocator::release_array<uint8_t>
+th20::DiagnosticAllocator::~DiagnosticAllocator
+th20::DebugMemoryResource::do_allocate
+th20::DebugMemoryResource::do_deallocate
+th20::archive_lzss_reset
+th20::archive_lzss_set_root
+th20::archive_lzss_predecessor
+th20::archive_lzss_replace
+th20::archive_lzss_insert
+th20::archive_lzss_unlink
+th20::archive_lzss_remove

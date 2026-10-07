@@ -6,8 +6,8 @@
 namespace th20 {
 
 // REF-003: custom four-slot PMR vtable and a pointer-sized receiver.
-// Allocation/deallocation remain pending; their declarations are not a
-// linked or complete allocator.
+// Aligned allocation and deallocation serialize through shared mutex slot 1.
+// Equality always returns true. Process-global resource startup remains open.
 class DebugMemoryResource final : public std::pmr::memory_resource {
 public:
     DebugMemoryResource();

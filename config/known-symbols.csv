@@ -377,3 +377,19 @@ address,name,module,confidence,evidence
 0x0040BC60,th20::Worker::detach,Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md
 0x004BA8B0,th20::Worker::close_and_detach,Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md
 0x0040B1D0,"th20::Worker::start<int(void*), void*>",Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md
+0x004100E0,th20::archive_decrypt,ArchiveCrypt,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x005391F0,th20::archive_decompress,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0041F610,th20::DiagnosticAllocator::allocate_bytes,DiagnosticAllocator,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0041F670,th20::DiagnosticAllocator::release_bytes,DiagnosticAllocator,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0040D8C0,th20::DiagnosticAllocator::allocate_array<uint8_t>,DiagnosticAllocator,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0040D840,th20::DiagnosticAllocator::release_array<uint8_t>,DiagnosticAllocator,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0041F5F0,th20::DiagnosticAllocator::~DiagnosticAllocator,DiagnosticAllocator,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0041F6D0,th20::DebugMemoryResource::do_allocate,DebugMemoryResource,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x0041F760,th20::DebugMemoryResource::do_deallocate,DebugMemoryResource,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x005399A0,th20::archive_lzss_reset,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x005399D0,th20::archive_lzss_set_root,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x00539960,th20::archive_lzss_predecessor,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x00539A10,th20::archive_lzss_replace,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x00539060,th20::archive_lzss_insert,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x00539180,th20::archive_lzss_unlink,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
+0x005394C0,th20::archive_lzss_remove,ArchiveLzss,high,EXACT-054; docs/EXACT_ARCHIVE_CODEC_RECONSTRUCTION.md
