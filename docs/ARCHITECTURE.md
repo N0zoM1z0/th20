@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+
+REF-041 establishes genuine PlayerRecord240 through original array stride/count,
+complete constructor,64-bit score and mutating power consumers.45 setters have
+natural individual members; two alreadycanonical shared heads get no second
+credit.46 new complete units add3654bytes;221units/51coldobjects/15890bytes replay.
+Actual integer/byte fields and implicit gaps avoid a whole-owner facade. Table/
+Session/Game/HUD/worker/EH/resource lifetimes and original names/origins remain
+unclosed. All169 remaining Gameplay bodies individually reviewed; Gameplay1019
+complete, global6100/844 and gaps91/22. See REFERENCE_GAME_LOADING_REVIEW.md.
+
 REF-040 reviews all remaining entity opcode/adapter/fixture implementations:
 243 bodies across22 files, without adding canonical source. The original State
 member48C010 owns a shared EH/aligned frame and a174-slot/704-byte jump-table

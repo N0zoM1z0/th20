@@ -1,5 +1,36 @@
 # Verified facts and open hypotheses
 
+## REF-041 — 2026-10-07 — real PlayerRecord and Gameplay closure
+
+- All169 remaining Gameplay bodies/18files individually read:3absorbed/
+  25nonexact/141support; prior ctor review upgraded separately. Global6100/844,
+  Gameplay1019/1019 reviewed; gaps91/22 unchanged. Exhaustive goal active.
+- Natural PlayerRecord240 established by native Table array stride240/count2 /
+  ctor423050, score44C090 and mutating power4B81D0. Actual scalar/byte fields,
+ 64-bit score and implicit A6/A7,B1..B3 gaps; original field names/alignment
+  declaration/origin pending. Native full48 ranges agree with Ghidra;45setter
+  stores/widths/constants/RET4/clamp471170 independently verified before bulk probes.
+- 46 new units3654bytes; two setter heads41DF50/412D10 alreadycanonical elsewhere
+  get no duplicate credit. Full221units/51coldobjects/15890disjointbytes exact;
+  source221/pendingorigins160/library4, authored57/4074 unchanged.24080 independent
+  guarded/default/edge/full-byte C++20/UBSan checks pass; no original oracle rerun.
+- Eight fresh unmodified reference TUs486defined/127static,71full comparisons /
+ 27bodies:69size differences and2Game structural-only matches. Full Game owner
+  adds source Services110/vptr/EH/config/lifetime uncertainties. Real Table/
+  Session/HUD/worker/loading resources unclosed, no padded facade or helper credit.
+- Eight complete stage rows448scalar/168pointer slots and18difficulty constants
+  PE verified. Extractor writers fully read, neverrun/imported. Backgroundselector
+  is inlined within4BAD40, not standalone original contribution.
+- Retained Game107522 has2/2 hashes; Player58025 and Loading40345 each12/13 with
+  entry adapter stale. Frame225280 has389/389, shared2915831 report digest verified.
+  NullHUD, valid save/stage domains, recorded factory/thread/resource boundaries,
+  activation/secondary/replay-final exclusions and pointer-word normalization
+  preserved. No Windows report writer/oracle or binary/compiler/startup bind.
+- ref041-record.py executed ONCE; never rerun any old writer. Current221canonical
+  and8reference receipts valid; unrelated older reference objects need rebuild.
+  Next Sprite540/StageBackground121/other183 plus22grammar files. See
+  REFERENCE_GAME_LOADING_REVIEW.md.
+
 ## REF-040 — 2026-10-07 — entity opcode and adapter review
 
 - All243 scoped bodies/22files individually read:26nonexact/217support; no new

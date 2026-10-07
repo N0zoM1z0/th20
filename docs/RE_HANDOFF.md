@@ -1,5 +1,40 @@
 # Current reconstruction handoff
 
+## REF-041 — 2026-10-07 — PlayerRecord and remaining Gameplay batch
+
+All169 remaining Gameplay bodies individually read across18 files:3 absorbed /
+25 nonexact /141 support; prior Player ctor review upgraded separately. Global
+6100 terminal/844 pending; all1019 Gameplay bodies reviewed; gaps91/22 unchanged.
+Exhaustive goal active. Next Sprite540, StageBackground121 and183 other bodies.
+
+- Real PlayerRecord240 has64-bit score/individual integer and byte fields with
+  natural implicit gapsA6/A7,B1..B3. Array stride240/count2/constructor pointer,
+  score and mutating-power consumers independently corroborate real value.
+- All45 setters plus ctor/score/power naturally match. Two shared heads41DF50 /
+  412D10 already canonical elsewhere get no duplicate credit.46 new units add
+  3654 bytes. Full221unit/51object cold replay covers15890 disjoint bytes;
+  source221/pendingorigins160/library4, authored57/4074 unchanged.
+- 24080 independent dirty guarded/default/edge/full-byte C++20/UBSan checks pass.
+  Full48 PE ranges agree with attested Ghidra; native setter stores/constants/
+  RET4/call471170 anchor verified independently, no relocation-solving credit.
+- Eight actual reference TUs freshly compiled after final source freeze:
+  486 defined/127 static;71 complete comparisons27bodies:69 size differences,
+  Game restart20/clearbit6 32 structural-only (full Game owner unclosed).
+- Static eight308-byte stage rows/448 scalars/168nullable pointers and18difficulty
+  constants PE verified. Extraction writers fully read, never executed/imported.
+- Historical Game107522 binds2/2; Player58025 and Loading40345 bind12/13 (each
+  entry adapter stale). Frame225280 binds389/389 and shared2915831 report digest
+  verified; prepared activation/replay/secondary exclusions and pointer-word
+  normalization retained. NullHUD Player fixture does not prove active observer.
+  No Windows oracle/writer rerun or executed binary/compiler/startup bind.
+- ref041-record.py executed ONCE; NEVER RERUN any registration writer. src/probes
+  frozen. All221 canonical receipts and these8 reference TUs current; unrelated
+  older reference receipts stale after PlayerRecord addition. Table/Session/
+  Game/vptr/EH/HUD/worker/resource owners and original names/origins unaccepted.
+
+Serial MSVC/no subagents/English/repo-python/commit prefix/public main persist.
+See REFERENCE_GAME_LOADING_REVIEW.md. Continue all844 pending bodies/22gap files.
+
 ## REF-040 — 2026-10-07 — complete entity-opcode batch
 
 All 243 scoped implementations individually read across22 files:26 nonexact /

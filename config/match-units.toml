@@ -2036,3 +2036,541 @@ relocations = [
   { offset = 0x21, type = "REL32", symbol = "?fill@?$array@I$0BA@@std@@QAEXABI@Z", target = 0x004981F0 },
   { offset = 0x3F, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]
+
+# REF-041: complete real PlayerRecord members; shared native heads get no duplicate credit.
+
+[units.player_record_set_field_ec]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_ec"]
+symbol = "?set_field_ec@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE340
+size = 25
+relocations = []
+
+[units.player_record_set_field_30]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_30"]
+symbol = "?set_field_30@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE0A0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_34]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_34"]
+symbol = "?set_field_34@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE140
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_38]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_38"]
+symbol = "?set_field_38@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE0F0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_d4]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_d4"]
+symbol = "?set_field_d4@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BD9E0
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_d0]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_d0"]
+symbol = "?set_field_d0@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDA80
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_c0]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_c0"]
+symbol = "?set_field_c0@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDF30
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_c4]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_c4"]
+symbol = "?set_field_c4@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDBF0
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_e4]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_e4"]
+symbol = "?set_field_e4@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDC60
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_4c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_4c"]
+symbol = "?set_field_4c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE940
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_50]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_50"]
+symbol = "?set_field_50@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BEA00
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_54]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_54"]
+symbol = "?set_field_54@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE9B0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_9c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_9c"]
+symbol = "?set_field_9c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDD10
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_a0]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_a0"]
+symbol = "?set_field_a0@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BEC10
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_a4]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_a4"]
+symbol = "?set_field_a4@PlayerRecord@th20@@QAEXE@Z"
+target_address = 0x004BE990
+size = 25
+relocations = []
+
+[units.player_record_set_field_a5]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_a5"]
+symbol = "?set_field_a5@PlayerRecord@th20@@QAEXE@Z"
+target_address = 0x004BE190
+size = 25
+relocations = []
+
+[units.player_record_set_field_a8]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_a8"]
+symbol = "?set_field_a8@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BEAF0
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_b0]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_b0"]
+symbol = "?set_field_b0@PlayerRecord@th20@@QAEXE@Z"
+target_address = 0x004BDC40
+size = 25
+relocations = []
+
+[units.player_record_set_field_44]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_44"]
+symbol = "?set_field_44@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BEA50
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_3c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_3c"]
+symbol = "?set_field_3c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDF80
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_40]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_40"]
+symbol = "?set_field_40@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE050
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_48]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_48"]
+symbol = "?set_field_48@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BEAA0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_ac]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_ac"]
+symbol = "?set_field_ac@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE440
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_5c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_5c"]
+symbol = "?set_field_5c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE620
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_64]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_64"]
+symbol = "?set_field_64@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE760
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_68]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_68"]
+symbol = "?set_field_68@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE670
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_6c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_6c"]
+symbol = "?set_field_6c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE7B0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_70]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_70"]
+symbol = "?set_field_70@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE6C0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_60]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_60"]
+symbol = "?set_field_60@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE710
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_74]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_74"]
+symbol = "?set_field_74@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE8A0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_78]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_78"]
+symbol = "?set_field_78@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE800
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_7c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_7c"]
+symbol = "?set_field_7c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE8F0
+size = 69
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_80]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_80"]
+symbol = "?set_field_80@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE850
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_84]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_84"]
+symbol = "?set_field_84@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE530
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_88]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_88"]
+symbol = "?set_field_88@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE490
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_8c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_8c"]
+symbol = "?set_field_8c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE5D0
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_90]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_90"]
+symbol = "?set_field_90@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE4E0
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_94]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_94"]
+symbol = "?set_field_94@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BE580
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_bc]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_bc"]
+symbol = "?set_field_bc@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDEE0
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_d8]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_d8"]
+symbol = "?set_field_d8@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDA30
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_b8]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_b8"]
+symbol = "?set_field_b8@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004BDE90
+size = 78
+relocations = [
+  { offset = 0x36, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_set_field_1c]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_1c"]
+symbol = "?set_field_1c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x0041DE70
+size = 22
+relocations = []
+
+[units.player_record_set_field_20]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::set_field_20"]
+symbol = "?set_field_20@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x0041DF30
+size = 22
+relocations = []
+
+[units.player_record_construct]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::PlayerRecord"]
+symbol = "??0PlayerRecord@th20@@QAE@XZ"
+target_address = 0x00423050
+size = 712
+relocations = []
+
+[units.player_record_current_score]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::current_score"]
+symbol = "?current_score@PlayerRecord@th20@@QBE_KXZ"
+target_address = 0x0044C090
+size = 19
+relocations = []
+
+[units.player_record_starting_power]
+source = "src/PlayerRecord.cpp"
+object = "build/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::starting_power"]
+symbol = "?starting_power@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x004B81D0
+size = 64
+relocations = [
+  { offset = 0x27, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]

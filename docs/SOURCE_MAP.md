@@ -2,6 +2,7 @@
 
 | Owner | Maintained source | Target component | Acceptance |
 | --- | --- | --- | --- |
+| PlayerRecord | src/PlayerRecord.hpp, src/PlayerRecord.cpp | construction423050;43 unique setter heads;score44C090;mutating power4B81D0 | 46 full exact units3654bytes on real240-byte scalar/byte value;two alreadycanonical shared setters get no duplicate credit;original names/origins/full Table/Session/HUD owners pending |
 | EnemyHealth | src/EnemyHealth.hpp, src/EnemyHealth.cpp | construction4A3360; reset4A7310; apply4A3F80; record4AA050; positive4AB240; forced_end4AB290 | Six full exact members on real28-byte value; modulo32/signed division7 and full-EAX queries; field04 role/origin/enclosing owner pending |
 | EnemyPattern | src/EnemyPattern.hpp, src/EnemyPattern.cpp | construction4A34A0; reset4A7360; clear_counts497270 | Three full exact members on real168-byte value with two16-element arrays and Timer; native fifteen emitted kinds do not shorten arrays; origins/full drop owner pending |
 | EnemySpawn | src/EnemySpawn.hpp, src/EnemySpawn.cpp | construction47BB30 | Full95-byte exact constructor on real84-byte value; Counter48 and four-byte Identifier32 tail, original tail tag/role/enclosing owner pending |
@@ -57,8 +58,8 @@ Add/tick use the independently anchored default global clock slot and repeated
 float receiver calls. Other timer modes and the enclosing clock protocol remain
 open; the shared float view does not establish the full clock-controller owner.
 
-`config/match-units.toml` owns fifty objects and one canonical profile per source.
-One hundred seventy-five units cover complete COFF function contributions. Library units and units
+`config/match-units.toml` owns fifty-one objects and one canonical profile per source.
+Two hundred twenty-one units cover complete COFF function contributions. Library units and units
 with pending origin review can be replayed without becoming authored progress.
 
 REF-032 absorbs the score-record constructor through an independently rewritten
@@ -336,3 +337,11 @@ full-int return, strict edges and unordered comparisons; native caller tests EAX
 Portable tests observe dependencies and check geometry/IEEE/nonmutation. All146
 units cold-replay across38 objects. All884 related reference bodies reviewed;
 owner/resource/vtable/EH and whole-game acceptance remain open.
+
+REF-041 adds genuine PlayerRecord240,46 canonical units3654bytes and natural
+implementations of all45 setters. Two shared native heads remain credited only
+once through existing owners. All169 remaining Gameplay implementations have
+individual decisions; all1019 Gameplay reviewed, global6100terminal/844pending,
+gaps91/22. Full221unit/51object/15890byte cold replay and24080 independent guarded
+C++20/UBSan checks pass; real Table/Session/Game/HUD/worker/resource lifetimes and
+original field names/origins remain pending. See REFERENCE_GAME_LOADING_REVIEW.md.
