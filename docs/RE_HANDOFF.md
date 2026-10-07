@@ -1,5 +1,37 @@
 # Current reconstruction handoff
 
+## EXACT-065 — 2026-10-08 — Whole Enemy animation dispatcher and parameters
+
+Twenty whole functions add 2,218 instruction bytes and 77 compiler alignment/
+table bytes. The complete 00496B90 animation sub-dispatcher contributes 967
+instruction bytes and all nineteen pointers over 1,044 comparison bytes. Actual
+Enemy/State/ANM/Color3/PMR and interpolation owners replace reference adapters.
+Direct list initialization preserves ordered Vector3 reads without an extra
+reference spill. Real packed color/channel representations, mixed flag modes
+and complete signed layer selection close the parameter protocol. Eight whole
+folded/template/container support contributions independently replay without
+extra credit. Frozen-source cold replay: 481 units / 90 objects / 88,842 disjoint
+bytes. New origins stay pending: 408 pending / 9 library / 64 authored, with
+16,948 authored bytes unchanged. Two existing reference associations close.
+All 39 public tests pass, including owned whole dispatch/forwarding/parameter
+checks under O2/UBSan. See EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md.
+
+The whole 0048C010 root remains pending; do not turn this direct dependency into
+partial opcode or whole-root credit. Next integrate these real interfaces while
+closing laser virtual ownership, callback tables and remaining whole direct
+bodies. Copying factory/control and queue reference emission still differ.
+Native full CFG/tables and the five real temporary EH owners remain reusable.
+English/repo-python/Ghidra/serial low-priority work/no subagents/authorized main
+push persist. Configuration/registration writers are one-time operations; never
+rerun completed stamps. Private core065-audit.py replays current canonical
+objects; no additional cold build is needed for documentation or cleanup.
+
+Cleanup retires 25 superseded files / 728,450 bytes. All 180 current canonical
+object/receipt hashes remain unchanged and 481 strict replays pass afterward.
+Cumulative retirement: 2,046 files / 69,147,323 bytes. Native exports, failed
+probe sources/diagnostics and locked tools are retained. See private
+core065-cleanup.json. build is 3.5 MiB; .analysis is 72 MiB.
+
 ## EXACT-064 — 2026-10-08 — Actual shot allocation and shared control
 
 Eight complete bodies add1,131 instruction+10compiler alignment bytes. Full

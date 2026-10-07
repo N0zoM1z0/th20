@@ -459,3 +459,23 @@ EtamaArgInf::EtamaArgInf(const EtamaArgInf&)
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Destroy"
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this"
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor"
+th20::EnemyState::change_animation
+th20::Enemy::current_instruction
+th20::Color3::Color3
+th20::IntegerTriple::IntegerTriple(const Color3&)
+th20::Animation::set_rotation
+th20::Animation::set_rotation_z
+th20::Animation::set_scale
+th20::Animation::set_scale_58
+th20::Animation::interpolate_scale
+th20::Animation::scale_ref
+th20::Animation::vector_5bc_ref
+th20::Animation::interpolate_position
+th20::Animation::set_color
+th20::Animation::interpolate_color
+th20::Animation::set_alpha
+th20::Animation::set_alpha_494
+th20::Animation::interpolate_alpha
+th20::Animation::interpolate_alpha_494
+th20::Animation::set_flag_byte_01
+th20::Animation::set_layer

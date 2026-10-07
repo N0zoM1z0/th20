@@ -2,6 +2,8 @@
 
 namespace th20 {
 
+EclInstruction* Enemy::current_instruction() { return current_runtime->current(); }
+
 int Enemy::execute_opcode() { return state.execute_opcode(); }
 
 std::int32_t Enemy::integer_argument(std::int32_t index) {

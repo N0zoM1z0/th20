@@ -460,3 +460,23 @@ EtamaArgInf::EtamaArgInf(const EtamaArgInf&),0x0048B400,function
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Destroy",0x00484670,function
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this",0x004845F0,function
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor",0x0047C760,function
+th20::EnemyState::change_animation,0x00496B90,function
+th20::Enemy::current_instruction,0x00499310,function
+th20::Color3::Color3,0x0048B720,function
+th20::IntegerTriple::IntegerTriple(const Color3&),0x00429180,function
+th20::Animation::set_rotation,0x00450590,function
+th20::Animation::set_rotation_z,0x004505C0,function
+th20::Animation::set_scale,0x00470E50,function
+th20::Animation::set_scale_58,0x004864F0,function
+th20::Animation::interpolate_scale,0x0049C680,function
+th20::Animation::scale_ref,0x0044CCA0,function
+th20::Animation::vector_5bc_ref,0x0044CB20,function
+th20::Animation::interpolate_position,0x004614A0,function
+th20::Animation::set_color,0x0049C860,function
+th20::Animation::interpolate_color,0x0049C5E0,function
+th20::Animation::set_alpha,0x00470B60,function
+th20::Animation::set_alpha_494,0x0049C8A0,function
+th20::Animation::interpolate_alpha,0x00464580,function
+th20::Animation::interpolate_alpha_494,0x0049C520,function
+th20::Animation::set_flag_byte_01,0x0045DD40,function
+th20::Animation::set_layer,0x00450350,function

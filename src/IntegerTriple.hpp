@@ -3,6 +3,7 @@
 #include <cstdint>
 
 namespace th20 {
+struct Color3;
 
 // Three signed components used by ANM color interpolation; original tag unknown.
 struct IntegerTriple {
@@ -10,6 +11,7 @@ struct IntegerTriple {
     IntegerTriple();
     // Native construction accepts the last component first.
     IntegerTriple(std::int32_t third, std::int32_t second, std::int32_t first);
+    IntegerTriple(const Color3& color);
     IntegerTriple operator+(IntegerTriple other) const;
     IntegerTriple operator-(IntegerTriple other) const;
     // Each product must have a representable int32 truncation.

@@ -1,5 +1,11 @@
 # Whole Enemy dispatcher control flow and compiler tables
 
+EXACT-065 closes the complete direct animation sub-dispatcher 00496B90/967,
+including its nineteen-entry table and actual parameter protocol. Its 1,044-byte
+compiler contribution is separate from the still-pending 0048C010 root. See
+[the animation checkpoint](EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md). Reuse these
+actual interfaces during whole-root integration; no partial root credit follows.
+
 EXACT-063 subsequently closes the five actual temporary construction/destruction
 owners and ShotMetadata move assignment, including complete PMR/EH support.
 The graph is now453units/86objects/85406bytes; the whole dispatcher and queue/
