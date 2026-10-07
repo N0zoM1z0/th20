@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+EXACT-053 closes the actual Worker16 launch/replacement and shutdown lifetime:
+five complete bodies / 666 instruction bytes plus five destructor alignment
+bytes. All 377 units / 67 cold objects / 58,903 disjoint comparison bytes strictly
+replay. Shared slot-6 guards, real jthread/atomic storage and complete EH metadata
+preserve native nested detach and join ownership. The 4,119-byte loading body
+and graphics/snapshot callers are completely audited, but their full owners and
+resource/allocator/global lifetimes remain open. Two standard thread constructor/
+move library bodies also retain emission differences. See
+EXACT_WORKER_RECONSTRUCTION.md. Earlier entries are historical checkpoints.
+
 EXACT-052 closes node construction/access, actual shared recursive locking and
 the random stream seed/next protocol: nine complete units / 693 body bytes plus
 five alignment bytes. All 372 units / 67 cold objects / 58,232 disjoint complete

@@ -676,7 +676,7 @@ relocations = [
 [units.worker_construct]
 source = "src/Worker.cpp"
 object = "build/Worker.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::Worker"]
 symbol = "??0Worker@th20@@QAE@XZ"
 target_address = 0x0040B780
@@ -5455,4 +5455,105 @@ relocations = [
   { offset = 0x6E, type = "REL32", symbol = "?seed@?$linear_congruential_engine@I$0LMIP@$0A@$0HPPPPPPP@@std@@QAEXI@Z", target = 0x004DDA10 },
   { offset = 0x76, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x81, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# EXACT-053: real Worker launch/replacement, close/join/detach and destruction.
+[units.worker_destruct]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::~Worker"]
+symbol = "??1Worker@th20@@QAE@XZ"
+target_address = 0x0040B980
+size = 71
+compare_size = 76
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1Worker@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "?close_and_join@Worker@th20@@QAEXXZ", target = 0x0040BCF0 },
+  { offset = 0x33, type = "REL32", symbol = "??1jthread@std@@QAE@XZ", target = 0x0040B9D0 },
+]
+
+[units.worker_close_join]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::close_and_join"]
+symbol = "?close_and_join@Worker@th20@@QAEXXZ"
+target_address = 0x0040BCF0
+size = 150
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?close_and_join@Worker@th20@@QAEXXZ", target = 0x0056762D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x50, type = "REL32", symbol = "??4?$atomic@_N@std@@QAE_N_N@Z", target = 0x0040BAA0 },
+  { offset = 0x59, type = "REL32", symbol = "?joinable@jthread@std@@QBE_NXZ", target = 0x0040C3D0 },
+  { offset = 0x68, type = "REL32", symbol = "?join@jthread@std@@QAEXXZ", target = 0x0040C340 },
+  { offset = 0x78, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x8E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.worker_detach]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::detach"]
+symbol = "?detach@Worker@th20@@QAEXXZ"
+target_address = 0x0040BC60
+size = 136
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?detach@Worker@th20@@QAEXXZ", target = 0x0056762D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x4B, type = "REL32", symbol = "?joinable@jthread@std@@QBE_NXZ", target = 0x0040C3D0 },
+  { offset = 0x5A, type = "REL32", symbol = "?detach@jthread@std@@QAEXXZ", target = 0x0040C160 },
+  { offset = 0x6A, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x80, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.worker_close_detach]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::close_and_detach"]
+symbol = "?close_and_detach@Worker@th20@@QAEXXZ"
+target_address = 0x004BA8B0
+size = 133
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?close_and_detach@Worker@th20@@QAEXXZ", target = 0x0056762D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x50, type = "REL32", symbol = "??4?$atomic@_N@std@@QAE_N_N@Z", target = 0x0040BAA0 },
+  { offset = 0x58, type = "REL32", symbol = "?detach@Worker@th20@@QAEXXZ", target = 0x0040BC60 },
+  { offset = 0x67, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x7D, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.worker_start]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::start<int(void*), void*>"]
+symbol = "??$start@$$A6AHPAX@ZPAX@Worker@th20@@QAEXA6AHPAX@ZAAPAX@Z"
+target_address = 0x0040B1D0
+size = 176
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$start@$$A6AHPAX@ZPAX@Worker@th20@@QAEXA6AHPAX@ZAAPAX@Z", target = 0x0056755D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x4B, type = "REL32", symbol = "?detach@Worker@th20@@QAEXXZ", target = 0x0040BC60 },
+  { offset = 0x58, type = "REL32", symbol = "??4?$atomic@_N@std@@QAE_N_N@Z", target = 0x0040BAA0 },
+  { offset = 0x69, type = "REL32", symbol = "??$?0A6AHPAX@ZAAPAX@jthread@std@@QAE@A6AHPAX@ZAAPAX@Z", target = 0x0040AFD0 },
+  { offset = 0x78, type = "REL32", symbol = "??4jthread@std@@QAEAAV01@$$QAV01@@Z", target = 0x0040BAC0 },
+  { offset = 0x80, type = "REL32", symbol = "??1jthread@std@@QAE@XZ", target = 0x0040B9D0 },
+  { offset = 0x90, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xA6, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

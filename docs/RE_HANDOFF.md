@@ -1,5 +1,39 @@
 # Current reconstruction handoff
 
+## EXACT-053 — 2026-10-07 — Worker launch and shutdown lifetime
+
+Five complete Worker lifecycle bodies add666 instruction bytes and five
+destructor alignment bytes. All377 units /67 coldobjects /58,903 disjoint complete
+comparison bytes strictly replay; source377 / pendingorigins316 / library4 /
+authored57 and4,074 unchanged. See EXACT_WORKER_RECONSTRUCTION.md.
+
+Actual Worker16 owns jthread12 plus atomic<bool> at12. Native start replaces
+threads by guarded detach, resets the close flag and moves a temporary real
+jthread. Close/join, plain detach, nested close/detach and destructor preserve
+original mutex6 ownership and atomic assignment. One GS/EHsc/Gd/SDL recipe
+covers all six Worker units, retaining the earlier44-byte constructor.
+Fourteen complete EH support contributions canonically replay with independent
+handler/metadata/unwind anchors. Support helpers receive no extra coverage.
+
+Native loading4BAD40/4119, graphics launch4B99F0/164, graphics close4D9E30/53 and
+snapshot4DE040/425 are completely audited. Loading retains all14 otherwise
+unreferenced failure jumps and its separate32-byte eight-entry path table.
+Graphics close belongs to the owner with Worker atD90, not to Worker itself.
+Complete graphics/loading/surface/resource/allocator ownership remains pending;
+no artificial owners or merged free-function ABIs are maintained. Standard
+jthread function-constructor120/native150 and move76/native94 remain nonexact:
+locked named-cast intrinsics omit native forward/move calls; Oi-off fails to
+close this gap. Do not modify locked headers/compiler or claim these bodies exact.
+
+All24 public C++20/UBSan tests pass, including owned actual tasks, replacement,
+blocking join, detach, restart flag reset, mutex6 exclusion and destructor wait.
+Target/full Ghidra attestation and tracking/progress pass. Maintained src/probes
+froze before cold replay; EXACT053 configure/registration writers completed
+once and are stamped. NEVER RERUN them or older writers. All handles closed at
+publication. Native goal stays active; continue coherent substantive batches.
+English / repo-python / serial compiler / no subagents / `gpt-6.1-sol:` commits /
+authorized public main push persist. Earlier entries are historical checkpoints.
+
 ## EXACT-052 — 2026-10-07 — shared locks and random stream state
 
 Nine complete units add 693 body bytes and five constructor alignment bytes.

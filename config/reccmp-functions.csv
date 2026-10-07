@@ -371,3 +371,8 @@ th20::LockRegistry::enter_tracked,0x00412550,function
 th20::LockRegistry::leave_tracked,0x00412750,function
 th20::GameRandom::next,0x00423EE0,function
 th20::GameRandom::seed,0x004D9940,function
+th20::Worker::~Worker,0x0040B980,function
+th20::Worker::close_and_join,0x0040BCF0,function
+th20::Worker::detach,0x0040BC60,function
+th20::Worker::close_and_detach,0x004BA8B0,function
+"th20::Worker::start<int(void*), void*>",0x0040B1D0,function

@@ -372,3 +372,8 @@ address,name,module,confidence,evidence
 0x00412750,th20::LockRegistry::leave_tracked,LockRegistry,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
 0x00423EE0,th20::GameRandom::next,GameRandomStream,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
 0x004D9940,th20::GameRandom::seed,GameRandomStream,high,EXACT-052; docs/EXACT_LOCK_RANDOM_RECONSTRUCTION.md
+0x0040B980,th20::Worker::~Worker,Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md
+0x0040BCF0,th20::Worker::close_and_join,Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md
+0x0040BC60,th20::Worker::detach,Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md
+0x004BA8B0,th20::Worker::close_and_detach,Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md
+0x0040B1D0,"th20::Worker::start<int(void*), void*>",Worker,high,EXACT-053; docs/EXACT_WORKER_RECONSTRUCTION.md

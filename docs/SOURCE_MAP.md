@@ -1,5 +1,15 @@
 # Source and build ownership
 
+EXACT-053 adds five Worker lifecycle bodies / 666 instruction bytes and five
+destructor alignment bytes. All 377 units / 67 cold objects / 58,903 disjoint
+comparison bytes strictly replay. Worker.cpp uses one GS/EHsc/Gd/SDL recipe for
+the existing constructor and new start/close/join/detach/destructor protocol.
+Its template uses the actual jthread and shared slot 6; no fake task service or
+profile-specific source. Complete loading/graphics/snapshot callers are audited,
+with real enclosing ownership still pending. Thread library constructor/move
+emission differences and global startup remain open. See
+EXACT_WORKER_RECONSTRUCTION.md. Earlier entries are historical checkpoints.
+
 EXACT-052 adds node construction/access, actual recursive-mutex registry and
 locked random stream state: nine units / 693 body bytes plus five alignment
 bytes. All 372 units / 67 cold objects / 58,232 disjoint complete comparison
@@ -101,7 +111,7 @@ and the separate whole-game boundary.
 | LockRegistry | src/LockRegistry.hpp, src/LockRegistry.cpp | construction 0x00452E00; slot 0x0040C310; tracked enter/leave 0x00412550/0x00412750; enable/disable | Six complete exact functions on the actual 22-slot recursive-mutex owner; production global/thread lifetime pending |
 | DebugMemoryResource | src/DebugMemoryResource.hpp, src/DebugMemoryResource.cpp | constructor 0x00418DB0; destructor 0x00418E90; equality 0x0041C9F0 | Three complete exact custom PMR functions; allocation/deallocation remain undefined and this is not a linked allocator |
 | TaskInfo | src/TaskInfo.hpp, src/TaskInfo.cpp | TaskInf destructor and separate virtual/helper enable/disable entries | Five complete exact functions; native constructor and allocator-based deletion pending |
-| Worker | src/Worker.hpp, src/Worker.cpp | constructor 0x0040B780 | Exact 44-byte construction; close/join/detach and destructor remain undefined/pending |
+| Worker | src/Worker.hpp, src/Worker.cpp | construction 0x0040B780; start 0x0040B1D0; detach 0x0040BC60; close/join 0x0040BCF0; close/detach 0x004BA8B0; destructor 0x0040B980 | Six complete exact functions on real jthread12/atomic/Worker16 storage; enclosing detached-task ownership, two library emission differences and process-global startup remain pending |
 | ArchiveCrypt | src/ArchiveCrypt.hpp, src/ArchiveCrypt.cpp | counted filename byte sum 0x00456270 | Exact 71-byte helper; parameter table selection, decryption and native archive owner remain pending |
 | InputState | src/InputState.hpp, src/InputState.cpp | Device initializers, byte binding, button update, three mask queries and held-frame query | Eleven complete exact functions including Replay reset/update; constructor, OS polling and Controller owner remain pending |
 | Configuration | src/Configuration.hpp, src/Configuration.cpp | binding construction 0x0041FB10; default slots 0x0041FC50; option flags 0x004B9B80 | Three complete exact functions; slots/flags origin pending; full configuration owner remains open |

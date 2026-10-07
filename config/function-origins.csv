@@ -38,7 +38,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040B120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040B1D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040B1D0,unknown,Worker,review,pending,"EXACT-053: Real Worker16/jthread12/atomic flag launch, replacement, guarded close/join/detach and destructor. Complete native instructions, reference-argument producers, library ABI, EH/data/unwind contributions and independent relocation anchors audited. Full cold strict replay377units/67objects/58903disjointbytes; owned real-thread C++20/UBSan lifecycle checks pass. Origin remains unknown; original library constructor/move emission and enclosing graphics/loading/resource/global lifetimes remain pending. See docs/EXACT_WORKER_RECONSTRUCTION.md."
 0x0040B280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B2A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -71,7 +71,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040B900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040B980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040B980,unknown,Worker,review,pending,"EXACT-053: Real Worker16/jthread12/atomic flag launch, replacement, guarded close/join/detach and destructor. Complete native instructions, reference-argument producers, library ABI, EH/data/unwind contributions and independent relocation anchors audited. Full cold strict replay377units/67objects/58903disjointbytes; owned real-thread C++20/UBSan lifecycle checks pass. Origin remains unknown; original library constructor/move emission and enclosing graphics/loading/resource/global lifetimes remain pending. See docs/EXACT_WORKER_RECONSTRUCTION.md."
 0x0040B9D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040BA00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040BA80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -82,8 +82,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040BBC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040BBE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040BC20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040BC60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040BCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040BC60,unknown,Worker,review,pending,"EXACT-053: Real Worker16/jthread12/atomic flag launch, replacement, guarded close/join/detach and destructor. Complete native instructions, reference-argument producers, library ABI, EH/data/unwind contributions and independent relocation anchors audited. Full cold strict replay377units/67objects/58903disjointbytes; owned real-thread C++20/UBSan lifecycle checks pass. Origin remains unknown; original library constructor/move emission and enclosing graphics/loading/resource/global lifetimes remain pending. See docs/EXACT_WORKER_RECONSTRUCTION.md."
+0x0040BCF0,unknown,Worker,review,pending,"EXACT-053: Real Worker16/jthread12/atomic flag launch, replacement, guarded close/join/detach and destructor. Complete native instructions, reference-argument producers, library ABI, EH/data/unwind contributions and independent relocation anchors audited. Full cold strict replay377units/67objects/58903disjointbytes; owned real-thread C++20/UBSan lifecycle checks pass. Origin remains unknown; original library constructor/move emission and enclosing graphics/loading/resource/global lifetimes remain pending. See docs/EXACT_WORKER_RECONSTRUCTION.md."
 0x0040BD90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040BDA0,unknown,Motion,review,pending,"EXACT-050: Damage Region routing/configuration and shared value protocols. Complete receiver flow/AL-bool/full-EAX/RET ABI, actual196-byte Region with72-byte Motion, five shape routes, configuration preservation/alias order and independent callee anchors audited. Cold strict replay343units/65objects/55692disjointbytes and public C++20/UBSan routing/state/alias checks pass. Constructor EH/controller lifetime/names/origins pending. See docs/EXACT_DAMAGE_REGION_RECONSTRUCTION.md."
 0x0040BDB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3567,7 +3567,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004BA440,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BA4A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BA870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004BA8B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004BA8B0,unknown,Worker,review,pending,"EXACT-053: Real Worker16/jthread12/atomic flag launch, replacement, guarded close/join/detach and destructor. Complete native instructions, reference-argument producers, library ABI, EH/data/unwind contributions and independent relocation anchors audited. Full cold strict replay377units/67objects/58903disjointbytes; owned real-thread C++20/UBSan lifecycle checks pass. Origin remains unknown; original library constructor/move emission and enclosing graphics/loading/resource/global lifetimes remain pending. See docs/EXACT_WORKER_RECONSTRUCTION.md."
 0x004BA940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BAD40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BBD80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## EXACT-053 — 2026-10-07 — Worker launch and shutdown lifetime
+
+- Five complete native bodies add 666 instruction bytes and five destructor
+  alignment bytes. All 377 units / 67 cold objects / 58,903 disjoint comparison
+  bytes strictly replay. Source 377 / pending origins 316 / library 4;
+  authored 57 / 4,074 is unchanged. See EXACT_WORKER_RECONSTRUCTION.md.
+- Real Worker16 owns jthread12 and atomic<bool> at12. Start guards shared slot6,
+  recursively calls detach, resets the close flag, constructs a temporary thread
+  from function/argument references and moves ownership. Native function-address
+  and pointer-reference producers corroborate the maintained specialization.
+- Close/join assigns true and joins while holding slot6. Close/detach assigns
+  true and calls separately guarded detach. Plain detach leaves the flag alone.
+  Destructor closes/joins before normal member destruction. Atomic assignment
+  preserves native return-value/call partition and byte exchange semantics.
+- Fourteen whole EH support contributions canonically replay, including the
+  shared destructor flags5 FuncInfo, separate guarded/start flags1 metadata,
+  single-state unwind sections, handlers and aligned guard cleanup. No extra
+  coverage; independent data graphs and native calls supply anchors.
+- GS/EHsc/SDL explains native cookie frames without source shaping. Standard
+  jthread constructor120/native150 and move76/native94 remain nonexact because
+  locked named-cast intrinsics omit native forward/move calls; Oi-off does not
+  resolve them. Their ABI/protocol anchors do not give their bodies credit.
+- Complete 4BAD40/4119 loading body has1064 instructions,219 direct/five indirect
+  calls,14 otherwise unreferenced failure jumps and a separate32-byte eight-case
+  path table. Full graphics launch164/close53 and snapshot425 are audited.
+  Real enclosing owner, resource, surface, allocator and cleanup APIs remain
+  unclosed; no layout facade or merged free-helper ABI is accepted.
+- Owned real-task replacement/detach/join/destructor and mutex6 tests pass with
+  all24 public checks. Fixture completion occurs at thread exit, preserving
+  detached task data. Native lock-order, self-join/error/global-startup and larger
+  owner lifetime limits remain recorded. Configure/registration writers are
+  stamped; never rerun them. Native goal stays active for substantive batches.
+
 ## EXACT-052 — 2026-10-07 — shared locks and random stream state
 
 - Nine complete contributions add 693 body bytes and five constructor alignment

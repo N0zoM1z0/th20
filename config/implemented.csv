@@ -370,3 +370,8 @@ th20::LockRegistry::enter_tracked
 th20::LockRegistry::leave_tracked
 th20::GameRandom::next
 th20::GameRandom::seed
+th20::Worker::~Worker
+th20::Worker::close_and_join
+th20::Worker::detach
+th20::Worker::close_and_detach
+"th20::Worker::start<int(void*), void*>"
