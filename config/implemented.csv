@@ -560,3 +560,9 @@ th20::Session::set_flag1
 th20::player_record
 th20::TaskInfo::TaskInfo
 th20::EnemyController::EnemyController
+th20::Card::Card
+th20::Card::encode_time
+th20::Card::invalid_encoded_time
+th20::Card::active
+th20::Card::bind_context
+th20::card

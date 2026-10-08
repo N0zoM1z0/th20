@@ -562,3 +562,9 @@ address,name,module,confidence,evidence
 0x00464080,th20::player_record,Session,high,EXACT-073; docs/EXACT_SESSION_RECONSTRUCTION.md
 0x0041FD20,th20::TaskInfo::TaskInfo,TaskInfo,high,EXACT-074; docs/EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md
 0x004A2E80,th20::EnemyController::EnemyController,EnemyController,high,EXACT-074; docs/EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md
+0x00486BB0,th20::Card::Card,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
+0x00488990,th20::Card::encode_time,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
+0x004885E0,th20::Card::invalid_encoded_time,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
+0x004887A0,th20::Card::active,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
+0x00488A20,th20::Card::bind_context,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
+0x00478EA0,th20::card,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md

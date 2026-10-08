@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111392", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111396", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8990,4 +8990,89 @@ relocations = [
   { offset = 0x111, type = "DIR32", symbol = "$SG111071", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
+]
+
+[units.card_ctor]
+source = "src/Card.cpp"
+object = "build/Card.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Card::Card"]
+symbol = "??0Card@th20@@QAE@XZ"
+target_address = 0x00486BB0
+size = 348
+compare_size = 353
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0Card@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
+  { offset = 0x33, type = "DIR32", symbol = "??_7Card@th20@@6B@", target = 0x0056FD88 },
+  { offset = 0x3E, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x43, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x53, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x5E, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x69, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x79, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x112, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x13E, type = "DIR32", symbol = "$SG7089", target = 0x0056FD94 },
+  { offset = 0x143, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+]
+
+[units.card_encode_time]
+source = "src/Card.cpp"
+object = "build/Card.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Card::encode_time"]
+symbol = "?encode_time@Card@th20@@QAEXHH@Z"
+target_address = 0x00488990
+size = 105
+relocations = [
+]
+
+[units.card_invalid_encoded_time]
+source = "src/Card.cpp"
+object = "build/Card.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Card::invalid_encoded_time"]
+symbol = "?invalid_encoded_time@Card@th20@@QAEHXZ"
+target_address = 0x004885E0
+size = 148
+relocations = [
+]
+
+[units.card_active]
+source = "src/Card.cpp"
+object = "build/Card.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Card::active"]
+symbol = "?active@Card@th20@@QAE_NXZ"
+target_address = 0x004887A0
+size = 44
+relocations = [
+]
+
+[units.card_bind_context]
+source = "src/Card.cpp"
+object = "build/Card.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Card::bind_context"]
+symbol = "?bind_context@Card@th20@@QAEXH@Z"
+target_address = 0x00488A20
+size = 54
+relocations = [
+  { offset = 0x1E, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x23, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+]
+
+[units.process_card]
+source = "src/Card.cpp"
+object = "build/Card.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::card"]
+symbol = "?card@th20@@YAPAUCard@1@H@Z"
+target_address = 0x00478EA0
+size = 26
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0xD, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+  { offset = 0x14, type = "REL32", symbol = "?card@Context@th20@@QAEPAUCard@2@XZ", target = 0x00411700 },
 ]

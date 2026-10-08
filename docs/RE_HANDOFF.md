@@ -1,5 +1,68 @@
 # Current reconstruction handoff
 
+## EXACT-075 — 2026-10-08 — Actual Card construction and time state
+
+Six complete contributions add 725 body /730 comparison bytes: actual Card
+construction, wrapping time encoding, full-width validation, active-state
+observation, stored-index Context binding and real process lookup. Native C8
+allocation, independent CardInf RTTI/vtable/literal identity, five actual
+AnimationHandles, Timer/Vector3, aligned doubles and complete nonthrowing EH
+establish the owner. Context slot10 now has its real borrowed Card type;
+getter/setter physical folding adds no duplicate coverage. See
+[Card evidence](EXACT_CARD_RECONSTRUCTION.md).
+
+The frozen graph strictly replays 568 units /104 fresh objects /99,122 disjoint
+comparison bytes. Origins are 495 pending /9 library /64 authored /16,948
+authored bytes. Three complete reference associations close; all 6,945 reviews
+remain terminal, now 180 absorbed. The remaining multi-target initialization,
+factory/disposal and independent Region binding associations retain their
+nonexact status. Configuration and registration writers are completed one-time
+operations; never rerun. Whole proof is compressed from the outset at
+`.analysis/exact075-canonical-results.json.gz`; full original/type/EH/alias
+support is checked by `core075-audit.py`.
+
+O2/UBSan checks use real production construction and Session/Context, dirty
+guards/natural gaps, wide-integer wrap oracles, valid/corrupted checksum words,
+whole-state preservation and two-context publication. Card destruction remains
+an explicit fixture boundary. Factory/initialization/gameplay/disposal, Player/
+game owners, whole readers and the 41 KB opcode root remain open. Original
+reference free/raw/service bodies are not imported. DamageRegion binding's
+same physical head does not independently close its owner protocol.
+
+Before source changes, two inactive successful replay snapshots were losslessly
+archived, saving 861,845 bytes (842 KiB). Original-content hash roundtrips and
+562/562 strict existing-object comparisons pass; all 206 protected hashes stay
+unchanged. Inventory `core075-storage-cleanup.json` and compressed proof
+`core075-storage-canonical-results.json.gz` are private. This one-time writer
+is completed; never rerun. Separate cumulative archival savings are now
+12,617,291 bytes. Installed tools, original game/reference and native evidence
+are protected. Continue serial nice 15, repo-python, attested Ghidra and
+protected cleanup; no REA or subagents. Goal stays active.
+
+All 46 public tests pass (83.163 seconds); target, tracking, reference and
+generated-progress gates pass. Frozen source replay rebuilt stale objects once;
+the original Enemy creation literal's COFF label changed from `$SG111392` to
+`$SG111396` and was independently rebound to the unchanged original/source
+literal at `570420`. No relocation destination was solved from compared bytes.
+
+Protected batch cleanup then retires four completed Card probe object/receipt
+files /60,070 bytes. All 208 canonical object/receipt hashes and private native/
+failed source evidence stay unchanged; 568/568 strict post-cleanup comparisons
+pass using existing objects. Inventory `core075-probe-cleanup.json` and proof
+`core075-post-cleanup-results.json.gz` are private. This one-time writer is
+completed; never rerun. This turn's archival plus product retirement frees
+921,915 bytes (900 KiB). Cumulative product retirement is 2,532 files /
+1,002,185,513 bytes, separate from 12,617,291 bytes of archival savings.
+Analysis remains about 74 MiB, build 4.6 MiB and installed tools 4.2 GiB.
+
+Next, continue actual Player/Game owners for whole Enemy readers `49ABC0`
+(4,668 comparison bytes) and `4995D0` (5,612). Card process lookup `478EA0`
+and active query `4887A0` are now closed dependencies. Native Player constructor
+`4F46A0` is 794 bytes and exposes large typed Option/Shot pools; prove complete
+allocation/field/child storage before maintaining its owner. The older 15 KiB
+Player estimate is not evidence. Original full reader CFG/table audits and
+all failed Controller iterator/pre-clear experiments remain authoritative.
+
 ## EXACT-074 — 2026-10-08 — Actual Controller and Task construction
 
 Two complete constructors add 380 body /385 comparison bytes: actual

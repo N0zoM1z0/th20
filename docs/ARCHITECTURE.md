@@ -1,5 +1,24 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-075 — 2026-10-08 — Actual Card owner and time-state protocol
+
+The actual 200-byte Card owns five AnimationHandles, a Timer, name/state, two
+aligned double clocks and a Vector3. Six whole contributions add 725 body /730
+comparison bytes: constructor, defined 32-bit wrapping encoding, full integer
+validation, active query, Context binding and Session lookup. Independent native
+allocation/RTTI/vtable/string and complete EH establish the owner; Context slot10
+has a borrowed Card pointer. Shared getter/setter folding adds no duplicate
+coverage. Production guarded construction, wrap/invalid-code tests and actual
+two-context publication pass O2/UBSan; Card destruction is an explicit fixture.
+Full Card gameplay/factory/disposal, Player/game owners, both Enemy readers,
+the 41 KB opcode root and whole-game runtime remain open. See
+[evidence](EXACT_CARD_RECONSTRUCTION.md).
+
+The frozen graph strictly replays 568 units /104 fresh objects /99,122 disjoint
+bytes. Origins are 495 pending /9 library /64 authored /16,948 bytes. Three
+complete reference associations close, giving 180 absorbed across all 6,945
+terminal reviews; pending multi-target associations receive no partial credit.
+
 ## EXACT-074 — 2026-10-08 — Actual Controller and Task construction
 
 The real 308-byte Controller and 16-byte Task base now have complete constructor

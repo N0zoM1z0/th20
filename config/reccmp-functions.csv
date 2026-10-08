@@ -561,3 +561,9 @@ th20::Session::set_flag1,0x004BDD60,function
 th20::player_record,0x00464080,function
 th20::TaskInfo::TaskInfo,0x0041FD20,function
 th20::EnemyController::EnemyController,0x004A2E80,function
+th20::Card::Card,0x00486BB0,function
+th20::Card::encode_time,0x00488990,function
+th20::Card::invalid_encoded_time,0x004885E0,function
+th20::Card::active,0x004887A0,function
+th20::Card::bind_context,0x00488A20,function
+th20::card,0x00478EA0,function

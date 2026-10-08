@@ -1,5 +1,26 @@
 # Source and build ownership
 
+## EXACT-075 — 2026-10-08 — Actual Card and borrowed Context slot
+
+`src/Card.hpp` declares the genuine C8 owner with natural double alignment,
+real Task/handle/Timer/Vector3 subobjects and no source-only suffix.
+`src/Card.cpp` owns construction, wrapping time encoding, full integer
+validation, active observation, index binding and process Session lookup in
+`build/Card.obj`. Six complete contributions add 725 body /730 comparison bytes.
+`src/Context.hpp/.cpp` owns the borrowed Card pointer and genuine typed accessor/
+publication methods; their already represented physical heads add no duplicate
+coverage. Full allocation/initialization/disposal and Card gameplay stay open.
+
+The Card test uses production construction/Session/Context and a deliberately
+declared Card destructor fixture. Dirty guards/natural gaps, signed wrapping,
+valid/damaged checksum words, whole-state preservation and two-context
+publication pass O2/UBSan. No fixture validates native cleanup or whole-game
+runtime. See [Card evidence](EXACT_CARD_RECONSTRUCTION.md).
+
+The frozen source graph strictly replays 568 units /104 fresh objects /99,122
+disjoint comparison bytes, including the new shared Context header. Three whole
+reference associations close; original authored attribution stays unchanged.
+
 ## EXACT-074 — 2026-10-08 — Controller and Task constructor ownership
 
 `src/EnemyControllerConstruction.cpp` and `src/TaskInfoConstruction.cpp` own
