@@ -125,3 +125,18 @@ All 252 canonical/active product hashes remain protected. All 625 current
 canonical units and nine active private probe roots strictly replay afterward
 using existing objects. Net savings after archives and verification are
 354,296 bytes. Only V4 remains active; formal admission is still pending.
+
+## CORE-093 File dependency update
+
+The real File/IFile private bodies now close twelve whole entries, including
+construction, destruction, seven file operations and conversion. Strict replay
+covers 1,153 bytes /35 independent relocations with the complete destructor
+alignment. Actual O0/O2/UBSan checks execute these bodies with narrow OS/CRT
+fixtures. See [native File protocol](PBG_FILE_RECONSTRUCTION.md).
+The factory pre-clear, array helpers and shared production/canonical admission
+remain pending. No archive/resource credit follows from dependency closure.
+
+A further protected retirement removes 6 old probe/host products /449,414 bytes;
+254 current canonical/active hashes remain unchanged. Existing 625 canonical
+units and 21 active whole roots replay afterward; net savings 348,238 bytes.
+Preserve archive V4 and File V3 sources, objects, receipts and native evidence.

@@ -1,5 +1,38 @@
 # Target inventory and initial architecture boundary
 
+## CORE-093 — 2026-10-09 — Complete native File dependency closure
+
+Twelve whole private Pbg::File/IFile candidates strictly replay 1,153 comparison
+bytes /35 independent relocations, including all five destructor alignment bytes.
+Native RTTI supplies class tags, owner names and eight-slot ABI; import-name
+lookups, full CRT protocols, complete constant pool and shared EH identities
+close anchors. The initial dot-prefix hypothesis is rejected: native fallback
+uses an empty string. Four complete deleting-destructor/wchar wrappers and
+entire EH code/data sections replay as support only. See
+[native File protocol](PBG_FILE_RECONSTRUCTION.md).
+
+Actual unchanged File bodies pass O0/O2 and UBSan boundary checks for modes,
+flags, virtual close/lifetime, short I/O, ignored OS booleans/error values,
+failed-open stale access, name prefixes and conversion failure. Fixtures cover
+only Win32 and valid-input wchar CRT; full native CP932 remains open. No new
+production source, canonical unit, authored credit or reference absorption is
+claimed. Accepted counters remain 625 units/125 objects/633 mappings/75 authored
+exact functions/21,340 authored exact bytes/220 absorbed.
+
+Protected cleanup removes 6 obsolete/completed products /449,414 bytes; all 254
+canonical/active hashes and 4,996 evidence files remain intact. Post-cleanup 625
+canonical and 21 active whole probe roots strictly replay without rebuilding.
+Net savings after archives/replay: 348,238 bytes. Cumulative retirement: 2,732
+products /1,019,411,018 bytes. Preserve active archive V4/File V3 and original
+inputs; completed writers must never rerun. Build 6.5M/analysis 86M.
+
+Next promote shared File/IFile, archive owner and resource-reader bodies, retain
+one genuine allocator template body, test actual catalog/member codecs and
+allocator/file lifetimes, then freeze/cold-replay before canonical admission.
+Factory pre-clear and array emission remain open; no invented clear, source-body
+padding, replacement manager or solved field is accepted. Goal remains active;
+serial nice15, repo-python, attested Ghidra and periodic retirement continue.
+
 ## CORE-092 — 2026-10-08 — Whole archive/resource probe closure
 
 Nine complete private candidates strictly replay 2,869 bytes and 118 independent
