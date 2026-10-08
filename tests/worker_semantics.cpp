@@ -41,8 +41,58 @@ static void start(th20::Worker& worker, Task& task) {
     assert(task.executions == 1 && !closing(worker));
 }
 
+struct Receiver {
+    std::atomic<unsigned> first_calls{0}, second_calls{0};
+    void first(void* argument) { ++first_calls; execute(argument); }
+    void second(void* argument) { ++second_calls; execute(argument); }
+};
+
+static void member_tasks() {
+    using namespace std::chrono_literals;
+    Receiver receiver, other;
+    Task old_task, new_task;
+    auto old_entered=old_task.entered.get_future();
+    auto old_done=old_task.finished.get_future();
+    auto new_entered=new_task.entered.get_future();
+    auto new_done=new_task.finished.get_future();
+    th20::Worker worker;
+    Receiver* owner=&receiver;
+    auto operation=&Receiver::first;
+    void* argument=&old_task;
+    worker.start(owner, operation, argument);
+    owner=&other;
+    operation=&Receiver::second;
+    argument=&new_task;
+    old_entered.get();
+    assert(receiver.first_calls==1 && other.first_calls==0);
+    worker.start(&receiver, operation, argument);
+    new_entered.get();
+    assert(receiver.second_calls==1 && !closing(worker));
+    assert(old_done.wait_for(0ms)==std::future_status::timeout);
+    new_task.release.set_value();
+    worker.close_and_join();
+    new_done.get();
+    assert(old_done.wait_for(0ms)==std::future_status::timeout);
+    old_task.release.set_value();
+    old_done.get();
+
+    // The callable owns values even before thread decay/capture takes place.
+    Task direct;
+    owner=&receiver;
+    operation=&Receiver::first;
+    argument=&direct;
+    th20::Worker::MemberTask<Receiver, decltype(operation), void*> bound(owner, operation, argument);
+    owner=&other;
+    operation=&Receiver::second;
+    argument=nullptr;
+    direct.release.set_value();
+    bound();
+    assert(direct.executions==1 && receiver.first_calls==2 && other.second_calls==0);
+}
+
 int main() {
     using namespace std::chrono_literals;
+    member_tasks();
     {
         th20::Worker worker;
         assert(!closing(worker));

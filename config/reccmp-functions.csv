@@ -609,3 +609,11 @@ th20::EclLoader::instruction,0x0053E8E0,function
 th20::ProgressProfile::ProgressProfile,0x0050AF20,function
 th20::ProgressMetadata::ProgressMetadata,0x0050E6E0,function
 th20::ProgressSnapshot::ProgressSnapshot,0x0050E540,function
+"th20::Worker::start<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>",0x0050AB10,function
+"th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::MemberTask",0x0046A570,function
+"th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::operator()",0x0050EAC0,function
+th20::ProgressSaveManager::copy_current_to_backup,0x0050EEB0,function
+th20::ProgressSaveManager::merge_current,0x0050F5F0,function
+th20::ProgressSaveManager::ProgressSaveManager,0x0050E5D0,function
+th20::ProgressSaveManager::commit,0x0050F660,function
+th20::ProgressSaveManager::~ProgressSaveManager,0x0050E990,function

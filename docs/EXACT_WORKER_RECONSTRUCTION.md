@@ -121,3 +121,17 @@ exception injection, production registry startup, exact library constructor/move
 emission, complete game linkage or playable runtime. In particular, a callback
 that needs slot 6 while another thread holds it across join can block; the native
 lock order is retained. Cross-owner lifetime recovery remains required.
+
+## CORE/EXACT-086 member-task extension
+
+The actual SaveManager specialization now uses a captured receiver, four-byte
+member operation and copied argument, rather than a no-argument lambda. The
+whole189-byte start,48-byte capture constructor and44-byte invocation strictly
+replay281bytes. Complete native heap-tuple/invoke consumers establish the real
+three-word protocol; EH39/13/44 also agrees without duplicate coverage. The
+jthread helper's ABI is established but its native123-byte body remains nonexact.
+The existing free-function/lifecycle units preserve their exact bytes. Actual
+thread tests now exercise changed capture inputs, different member operations,
+detached replacement and complete receiver/task lifetimes. See
+[SaveManager evidence](EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md) for the
+whole owner, copy/merge, pending disk callbacks and compiler disagreements.

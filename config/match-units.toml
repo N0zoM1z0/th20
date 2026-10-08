@@ -9864,3 +9864,77 @@ relocations = [
   { offset = 0x65, type = "REL32", symbol = "??0ProgressProfile@th20@@QAE@XZ", target = 0x0050AF20 },
   { offset = 0x73, type = "REL32", symbol = "??0ProgressMetadata@th20@@QAE@XZ", target = 0x0050E6E0 },
 ]
+
+[units.worker_start_save_member]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::start<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>"]
+symbol = "??$start@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAEXPAUProgressSaveManager@1@P821@AEXPAX@ZAAPAX@Z"
+target_address = 0x0050AB10
+size = 189
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$start@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAEXPAUProgressSaveManager@1@P821@AEXPAX@ZAAPAX@Z", target = 0x0056A85D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x4B, type = "REL32", symbol = "?detach@Worker@th20@@QAEXXZ", target = 0x0040BC60 },
+  { offset = 0x58, type = "REL32", symbol = "??4?$atomic@_N@std@@QAE_N_N@Z", target = 0x0040BAA0 },
+  { offset = 0x6D, type = "REL32", symbol = "??0?$MemberTask@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAE@AAPAUProgressSaveManager@2@AAP832@AEXPAX@ZAAPAX@Z", target = 0x0046A570 },
+  { offset = 0x76, type = "REL32", symbol = "??$?0U?$MemberTask@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@$$V@jthread@std@@QAE@$$QAU?$MemberTask@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@@Z", target = 0x0050AA60 },
+  { offset = 0x85, type = "REL32", symbol = "??4jthread@std@@QAEAAV01@$$QAV01@@Z", target = 0x0040BAC0 },
+  { offset = 0x8D, type = "REL32", symbol = "??1jthread@std@@QAE@XZ", target = 0x0040B9D0 },
+  { offset = 0x9D, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xB3, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.worker_save_member_construct]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::MemberTask"]
+symbol = "??0?$MemberTask@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAE@AAPAUProgressSaveManager@2@AAP832@AEXPAX@ZAAPAX@Z"
+target_address = 0x0046A570
+size = 48
+relocations = [
+]
+
+[units.worker_save_member_invoke]
+source = "src/Worker.cpp"
+object = "build/Worker.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
+functions = ["th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::operator()"]
+symbol = "??R?$MemberTask@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAEXXZ"
+target_address = 0x0050EAC0
+size = 44
+relocations = [
+]
+
+[units.progress_save_copy_backup]
+source = "src/ProgressSaveManager.cpp"
+object = "build/ProgressSaveManager.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::ProgressSaveManager::copy_current_to_backup"]
+symbol = "?copy_current_to_backup@ProgressSaveManager@th20@@QAEHXZ"
+target_address = 0x0050EEB0
+size = 75
+relocations = [
+  { offset = 0x1E, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x3E, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+]
+
+[units.progress_save_merge_current]
+source = "src/ProgressSaveManager.cpp"
+object = "build/ProgressSaveManager.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::ProgressSaveManager::merge_current"]
+symbol = "?merge_current@ProgressSaveManager@th20@@QAEHXZ"
+target_address = 0x0050F5F0
+size = 107
+relocations = [
+  { offset = 0x26, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x46, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x55, type = "REL32", symbol = "?parse@ProgressSaveManager@th20@@QAEHPAUProgressSnapshot@2@@Z", target = 0x0050EB70 },
+  { offset = 0x60, type = "REL32", symbol = "?copy_current_to_backup@ProgressSaveManager@th20@@QAEHXZ", target = 0x0050EEB0 },
+]

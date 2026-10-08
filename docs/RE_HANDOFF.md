@@ -1,5 +1,56 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-086 — 2026-10-08 — SaveManager ownership and member tasks
+
+The actual 1242D8 SaveManager now composes two real Snapshots, a neutral zero
+word/64-byte interval and the existing Worker. Complete member-task construction,
+invocation/start and current/backup copy/merge strictly replay five whole units,
+463 bytes and nineteen independent relocations. EH39/13/44 also agrees without
+additional coverage. The native three-word callable copies receiver, member
+operation and argument; its heap-tuple/invoke consumers are independently
+reviewed. The reference no-argument lambda/free-copy/raw facade is not imported.
+See [whole-owner evidence](EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md).
+
+The complete lifecycle roots remain nonexact: constructor198/native199,
+commit68/70 and destructor262/299. Native post-call NOPs and caller null-check
+partition remain unresolved; moving the identical join body into the class
+does not close the difference. The member jthread constructor is116/native123
+with named-forwarding differences. No fake return, redundant shaping condition,
+assembly or shortened extent is introduced. Void one-word callback spelling is
+an inference; original source names and authored identity remain pending.
+
+Frozen replay passes613/613 units /119 fresh objects /119777 disjoint bytes.
+Source mappings total618, including five whole nonexact methods; exact-unit
+origins are540 pending /9 library /64 authored (16948 authored bytes unchanged).
+Two reference associations close,211 absorbed across all6945 terminal reviews.
+All 56 public tests pass (174.781 seconds). Actual O2/UBSan thread/owner
+checks cover copied inputs, detached replacement, join-before-save, destructor
+waiting, real ordered four-buffer release and null-buffer teardown. Whole
+nineteen-Profile/Metadata copies preserve file size/buffer ownership; merge
+returns full positive/negative fixture results and copies back in either case.
+Load/save/parse and allocator startup are explicit fixtures and genuine pending
+production dependencies. No disk/checksum/serialization/game runtime follows.
+
+Protected retirement removes 10 completed probe products
+(391494 bytes). Original receipts and 2
+historical input versions are losslessly archived; net savings after those
+archives and the post-cleanup replay are 254260 bytes. All238 canonical product
+hashes and 4624 retained evidence files stay
+unchanged. Post-cleanup613/613 strict replay uses119 existing objects without
+rebuilding. Cumulative retired products: 2635 files /
+1014801414 bytes. Analysis is81M and
+build is5.5M; tools, target, reference and Ghidra stay protected.
+Proofs: core086-final-frozen-source.json, exact086-canonical-results.json.gz,
+core086-cold-support.json and core086-post-cleanup-results.json.gz.
+Completed configuration, registration, cleanup and documentation writers must
+never rerun; restoring older probes requires their original hash-bound inputs.
+
+Continue whole SaveManager parse824/load562/write1198/save174 with real record,
+allocator, codec and I/O protocols; do not reinterpret a pending dependency as
+an accepted replacement service. Whole Enemy roots/readers/State, Controller
+and Player remain open. Keep one writer, serial nice15, repo-python and
+attested Ghidra, without REA or delegation. Reconstruction remains active.
+
 ## EXACT-085 — 2026-10-08 — Complete Snapshot and Metadata owners
 
 The complete Metadata constructor at 50E6E0 strictly replays 612 bytes, and

@@ -608,3 +608,11 @@ th20::EclLoader::instruction
 th20::ProgressProfile::ProgressProfile
 th20::ProgressMetadata::ProgressMetadata
 th20::ProgressSnapshot::ProgressSnapshot
+"th20::Worker::start<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>"
+"th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::MemberTask"
+"th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::operator()"
+th20::ProgressSaveManager::copy_current_to_backup
+th20::ProgressSaveManager::merge_current
+th20::ProgressSaveManager::ProgressSaveManager
+th20::ProgressSaveManager::commit
+th20::ProgressSaveManager::~ProgressSaveManager

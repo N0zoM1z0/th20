@@ -610,3 +610,11 @@ address,name,module,confidence,evidence
 0x0050AF20,th20::ProgressProfile::ProgressProfile,ProgressProfile,high,EXACT-084; docs/EXACT_PROGRESS_PROFILE_RECONSTRUCTION.md
 0x0050E6E0,th20::ProgressMetadata::ProgressMetadata,ProgressStorage,high,EXACT-085; docs/EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md
 0x0050E540,th20::ProgressSnapshot::ProgressSnapshot,ProgressStorage,high,EXACT-085; docs/EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md
+0x0050AB10,"th20::Worker::start<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>",Worker,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
+0x0046A570,"th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::MemberTask",Worker,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
+0x0050EAC0,"th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::operator()",Worker,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
+0x0050EEB0,th20::ProgressSaveManager::copy_current_to_backup,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
+0x0050F5F0,th20::ProgressSaveManager::merge_current,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
+0x0050E5D0,th20::ProgressSaveManager::ProgressSaveManager,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
+0x0050F660,th20::ProgressSaveManager::commit,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
+0x0050E990,th20::ProgressSaveManager::~ProgressSaveManager,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md

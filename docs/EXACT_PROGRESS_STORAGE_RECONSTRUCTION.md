@@ -115,3 +115,10 @@ retirement removes 10 probe products and 84 archived header copies,
 saving 176426 net bytes after receipt/input and replay archives. All 236
 canonical product hashes remain unchanged; post-cleanup replay is
 608/608 strict exact using 118 existing objects without rebuilding.
+
+CORE/EXACT-086 now composes these real Snapshots in the actual SaveManager and
+checks owned threads, nineteen-record/Metadata merge extents and real four-buffer
+release. Five whole member-task/copy/merge contributions are exact; its three
+whole lifecycle roots remain nonexact. Disk load/save/parse and allocator startup
+are explicit test boundaries, not completed runtime. See
+[SaveManager evidence](EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md).

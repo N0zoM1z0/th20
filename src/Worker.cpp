@@ -1,4 +1,5 @@
 #include "Worker.hpp"
+#include "ProgressSaveManager.hpp"
 
 namespace th20 {
 
@@ -26,5 +27,9 @@ void Worker::close_and_detach() {
 
 template void Worker::start<std::int32_t(void*), void*>(
     std::int32_t (&function)(void*), void*& argument);
+
+template void Worker::start<ProgressSaveManager,
+    void (ProgressSaveManager::*)(void*), void*>(
+    ProgressSaveManager*, void (ProgressSaveManager::*)(void*), void*&);
 
 } // namespace th20
