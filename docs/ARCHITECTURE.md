@@ -12,8 +12,11 @@ Production O2/UBSan dirty guards, retained Configuration bits/gaps, exhaustive
 flags/restart and whole-state preservation pass; Game teardown is an explicit
 fixture. Full startup/loading/update/disposal and both readers remain open.
 
-4992F0+44 is a folded getter used on EnemyController and unresolved Context
-primary owners, not established Game storage. 450880 invokes the real renderer
+4992F0+44 is reached through Context slot0 directly and via 478E80, which uses
+the same slot0 getter. The complete primary owner remains unresolved. Prior
+EnemyController attribution was incorrect; its actual process lookup is 478060.
+These reader routes establish neither Game nor EnemyController storage.
+450880 invokes the real renderer
 Controller update after its Game guard; no Animation/facade is introduced.
 See [evidence](EXACT_GAME_CONTROLLER_RECONSTRUCTION.md).
 

@@ -19,10 +19,13 @@ states with unrelated high bits, signed restart extremes and whole-state
 snapshots. Game destruction is an explicit fixture; full allocation/publication,
 loading/update/subsystem retirement/graphics/audio remain open.
 
-Correction: 4992F0+44 is a shared physical getter used after actual process
-EnemyController lookup 478E80 and Context primary-owner lookup 40C300. The former
-reads data.field_34; the latter's real owner remains unresolved. It is not
-established Game storage. Native 450880 conditionally returns 1 or invokes actual
+Correction: 4992F0+44 is reached through Context slot0 both directly via
+40C300 and through 478E80, which itself calls Session context 40BBC0 then 40C300.
+Both routes refer to the borrowed primary owner, whose complete type/storage
+remain unresolved. The intermediate EnemyController attribution was incorrect;
+actual process EnemyController lookup is 478060 through slot8/accessor 412730.
+These reader routes do not establish Game or EnemyController storage.
+Native 450880 conditionally returns 1 or invokes actual
 renderer Controller update 4497D0, not an Animation member or free bool helper.
 Do not create a fake/padded owner to close either protocol. Full Player tail /
 ANM lifetime, both whole Enemy readers and 41 KB opcode root remain open.

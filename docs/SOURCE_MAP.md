@@ -14,7 +14,9 @@ The frozen graph passes 580 units /106 fresh objects /100,983 disjoint bytes; fi
 reference associations close without changing authored totals. Owned O2/UBSan
 checks cover dirty defaults/retained Configuration bits/gaps, all low flag
 states, restart extremes and whole-state mutation boundaries. Shared getter
-4992F0 and renderer wrapper 450880 retain their separate unresolved ownership;
+4992F0 reaches the unresolved Context slot0 primary owner both directly and
+via 478E80; it is not established EnemyController or Game storage. Renderer
+wrapper 450880 retains its separate unresolved ownership;
 full Game loading/update/disposal and Player/main readers remain open. See
 [evidence](EXACT_GAME_CONTROLLER_RECONSTRUCTION.md).
 

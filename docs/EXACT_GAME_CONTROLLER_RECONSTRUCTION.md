@@ -80,14 +80,20 @@ Native EH and x86 layout are independently checked by complete exact replay.
 
 ## Corrected shared getter routing and remaining work
 
-The earlier label "Game +44 frame getter" for `4992F0` was incorrect. The
-existing full reader exports show two independently distinct routes: process
-EnemyController lookup `478E80`, and Context slot0 obtained through `40C300`.
-The former reads the actual Controller's `data.field_34` at total offset `44`;
-the latter's full primary-owner meaning remains unresolved. Game has
-Configuration storage at that offset. A shared physical getter does not
-establish one exclusive owner/type or justify a padded Game facade. No new
-getter or primary-owner source acceptance follows from this routing correction.
+The earlier label "Game +44 frame getter" for `4992F0` was incorrect. Full
+reader exports show a direct Context slot0 lookup through `40C300` and process
+lookup `478E80`. Attested disassembly proves that `478E80` itself calls the
+actual Session context accessor `40BBC0` followed by the same slot0 getter
+`40C300`. Both routes therefore reach the Context's borrowed primary owner.
+The original complete primary-owner type/storage remains unresolved.
+
+An intermediate attribution of `478E80` to EnemyController was also incorrect
+and has been corrected in the maintained ledgers and handoff. Actual process
+EnemyController lookup is `478060`, through Context slot8/accessor `412730`.
+No EnemyController or Game storage attribution follows from these reader
+routes. Game has Configuration storage at total offset `44`. No `4992F0`
+getter or complete primary-owner source acceptance follows from this routing
+investigation; do not introduce a padded owner to satisfy the displacement.
 
 The `450880` wrapper conditionally returns integer1 when the Game suppression
 and freeze predicates are true; otherwise it calls the actual renderer
@@ -103,7 +109,8 @@ open. The real Game constructor and restart dependency are now available to
 that work without substituting a partial owner.
 
 Private evidence includes `core077-game-owner.asm`, `core077-game-support.asm`,
-the bounded renderer update entry, `core077-audit.py`, native RTTI/vtable/log/EH
+the bounded renderer update entry, `core077-primary-owner-routing.asm`,
+`core077-audit.py`, native RTTI/vtable/log/EH
 support and compressed canonical proof. Configuration, registration and
 retirement writers are completed one-time operations and must never be rerun.
 Current objects/receipts, native evidence and original tools/game/reference
