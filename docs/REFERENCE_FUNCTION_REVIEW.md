@@ -122,6 +122,14 @@ whole-page or whole-game credit. Continue every remaining implementation.
 
 ## REF-025: Progress and Replay batch
 
+EXACT-084 later closes the whole reference Profile association with a natural
+typed 13,684-byte constructor and complete 13,689-byte canonical contribution.
+The physical Spell array has 123 records; startup initializes 113 active
+identifiers/defaults. The shared 81-byte Score constructor moves to the actual
+Profile translation unit without duplicate credit. The REF-025 counts and
+nonexact constructor decision below describe that earlier checkpoint; see
+[the current whole-owner evidence](EXACT_PROGRESS_PROFILE_RECONSTRUCTION.md).
+
 All 145 implementations have individual hash-bound decisions: Progress 79 and
 Replay 66, with three absorbed, 69 nonexact and 73 support. Coverage is now 1,843
 terminal / 5,101 pending. Two member-pointer parser gaps are manually reconciled;

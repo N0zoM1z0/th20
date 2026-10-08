@@ -12,12 +12,11 @@ struct ProgressRecordHeader {
 // The 60-element score array and 63-element practice array have natural
 // eight-byte alignment. Their constructors leave compiler padding alone.
 struct ProgressScore {
-    std::int64_t score;
-    std::uint8_t stage, continues;
-    char name[10];
-    std::int64_t timestamp;
-    float slowdown;
-    ProgressScore();
+    std::int64_t score=0;
+    std::uint8_t stage=0, continues=0;
+    char name[10]{};
+    std::int64_t timestamp=0;
+    float slowdown=0;
 };
 struct PracticeScore {
     std::int64_t score;

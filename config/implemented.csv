@@ -605,3 +605,4 @@ th20::ScriptStack::frame_value
 th20::EclFileLoader::bind_player
 th20::EclLoader::append
 th20::EclLoader::instruction
+th20::ProgressProfile::ProgressProfile

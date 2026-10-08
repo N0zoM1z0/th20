@@ -607,3 +607,4 @@ address,name,module,confidence,evidence
 0x004AB8B0,th20::EclFileLoader::bind_player,EclBuffer,high,CORE/EXACT-083; docs/ECL_BUFFER_RECONSTRUCTION.md
 0x0053FE60,th20::EclLoader::append,EclBuffer,high,CORE/EXACT-083; docs/ECL_BUFFER_RECONSTRUCTION.md
 0x0053E8E0,th20::EclLoader::instruction,EclBuffer,high,CORE/EXACT-083; docs/ECL_BUFFER_RECONSTRUCTION.md
+0x0050AF20,th20::ProgressProfile::ProgressProfile,ProgressProfile,high,EXACT-084; docs/EXACT_PROGRESS_PROFILE_RECONSTRUCTION.md

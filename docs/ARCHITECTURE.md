@@ -1,5 +1,57 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-084 — 2026-10-08 — Whole Profile construction and protected cleanup
+
+The complete Profile constructor at 50AF20 strictly replays 13,684 body bytes,
+the full 13,689-byte contribution and all 131 independently anchored relocations.
+The actual typed 7AE8 owner contains seventy Scores, 123 physical Spell records,
+72-byte Statistics and 63 Practice records. Independent startup initializes only
+113 Spell identifiers/defaults; the extra ten roles remain unknown. The previous
+113-slot constructor description is corrected by the whole producer extent.
+See [whole-owner evidence](EXACT_PROGRESS_PROFILE_RECONSTRUCTION.md).
+
+Natural partial aggregate initialization under the explicit C++17 TU profile
+recovers the complete constructor. Genuine fixed nonallocating noexcept
+construction agrees with the full 29-byte folded EH handler, 36-byte information
+record (flags 5) and 56-byte array construction iterator. Existing Score defaults
+become implicit shared member initialization; the complete 81-byte Score
+constructor moves to its actual instantiating Profile TU without duplicate
+credit. There are no emission-only fields or profile-selected source bodies.
+This establishes neither global language/flags nor original source identity.
+
+The frozen graph strictly replays 606 units /117 fresh objects /118559 disjoint
+comparison bytes. Source mappings total 608, including the two whole nonexact
+ECL buffer methods. Exact-unit origins are 533 pending /9 library /64 authored;
+authored coverage remains 16948 bytes. One complete reference association closes,
+207 absorbed across all 6945 terminal reviews. All 54 public tests pass
+(168.600 seconds). Actual complete Profile construction and aliasing run in
+dirty guarded buffers under both C++17 and C++20 with O2/UBSan; every physical
+slot, both counter modes, Score row and Practice row is checked. Existing Score
+dirty default-construction checks also pass. Host tests do not certify native
+padding writes; the full x86 comparison verifies those separately.
+
+Protected retirement removes 12 completed probe products
+(285566 bytes). Original receipts and
+2 historical input versions are losslessly archived;
+product savings after those archives are 204874 bytes. The
+post-cleanup replay archive costs 56882 bytes, leaving
+147992 bytes of net retirement savings. All 234 canonical product hashes and
+4513 private evidence files remain unchanged.
+Post-cleanup 606/606 strict replay uses 117 existing objects without a cold
+rebuild. Cumulative retired products: 2615 files /
+1014202611 bytes. Analysis is 80M and build 5.4M;
+installed tools, target, reference and Ghidra evidence stay protected. Current
+private proofs are core084-final-frozen-source.json,
+exact084-canonical-results.json.gz and core084-post-cleanup-results.json.gz.
+Completed configuration, registration and cleanup writers must never rerun.
+
+Whole Snapshot/metadata, active-record initialization, loading/saving and game
+runtime remain open. Whole Enemy root/readers/State tick, Controller frame and
+Player remain core dependencies. C++17 is new per-owner compiler evidence, not a
+license to repeat unchanged failed hypotheses or switch global profiles.
+Continue coherent core batches, serial nice15, repo-python and attested Ghidra,
+without REA or delegation. Reconstruction remains active.
+
 ## CORE/EXACT-083 — 2026-10-08 — Actual ECL buffer pipeline and protected cleanup
 
 Complete production append and instruction resolution now run in the actual
