@@ -21,7 +21,7 @@ EnemyState::EnemyState() : identifier(), identifier_04(), entity(nullptr),
     field_258(0), field_25c(0), field_260(0), field_264(0), field_268(0),
     field_26c(0), field_270(0), field_274(0.0f), field_278(10), field_27c(-1),
     field_280(0), field_284(0), timer_288(), timer_298(), timer_2a8(), phases(),
-    flags{}, mesh(nullptr), field_2d8(0), field_2dc(0), field_2e0(0),
+    flags{}, mesh(nullptr), field_2d8(0), field_2dc(0), update_callback(nullptr),
     field_2e4(0), field_2e8(0), context(nullptr) {}
 
 EnemyState::~EnemyState() = default;

@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 594 mapped component functions across 110 comparison objects |
+| Source | 597 mapped component functions across 113 comparison objects |
 | Authored exactness | 64 functions, 16,948 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -77,6 +77,7 @@ are excluded from Git.
 | Collision geometry | Circle/ellipse/polygon/star predicates and vector dependencies: 10 new complete units / 3,841 bytes; [evidence](docs/EXACT_COLLISION_SHAPES_RECONSTRUCTION.md) |
 | Enemy interpolation | Current-first 2.4 KB update, shared/axis factors and direct movement dependencies: 8 new units / 2,716 bytes; [evidence](docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md) |
 | Enemy state and ECL entry | Complete state lifetime, typed records and argument-forwarding protocol: 11 new units / 1,581 bytes; whole Enemy dispatcher pending; [evidence](docs/EXACT_ENEMY_STATE_RECONSTRUCTION.md) |
+| State/Manager script pipeline | Whole script gate and async traversal with actual member callback and Timer step: 3 new units /419 bytes; [evidence](docs/EXACT_ENEMY_SCRIPT_PIPELINE_RECONSTRUCTION.md) |
 | Enemy spawn and time-scale orchestration | Two complete Enemy core functions and Animation slowdown setter: 3 new units /1399 comparison bytes; [evidence](docs/EXACT_ENEMY_SPAWN_TICK_RECONSTRUCTION.md) |
 | Enemy movement and construction | Whole movement composition/bounds, mode configuration and nonthrowing Enemy construction: 9 new units / 1,285 body bytes; [evidence](docs/EXACT_ENEMY_MOVEMENT_RECONSTRUCTION.md) |
 | Whole Enemy movement update and graphics owners | Complete movement update and actual Graphics/viewport/configuration/file/context construction: 15 new units / 4,215 comparison bytes; [evidence](docs/EXACT_ENEMY_UPDATE_RECONSTRUCTION.md) |

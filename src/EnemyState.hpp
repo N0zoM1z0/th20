@@ -59,7 +59,7 @@ struct EnemyStateFlags {
 };
 
 // Actual 752-byte subobject at Enemy+88. Neutral scalar names retain unresolved
-// roles. Callback address words retain storage until their full ABI is proven.
+// roles. The update callback uses the observed single-inheritance member ABI.
 struct EnemyState {
     Identifier32 identifier, identifier_04;
     Enemy* entity;
@@ -89,7 +89,9 @@ struct EnemyState {
     std::pmr::vector<EnemyPhase> phases;
     EnemyStateFlags flags;
     EnemyMeshOwner* mesh;
-    std::uint32_t field_2d8, field_2dc, field_2e0, field_2e4, field_2e8;
+    std::uint32_t field_2d8, field_2dc;
+    int (EnemyState::*update_callback)();
+    std::uint32_t field_2e4, field_2e8;
     Context* context;
 
     EnemyState();
@@ -97,6 +99,7 @@ struct EnemyState {
     int initialize();
     // Actual 4A8260 whole tick is retained as a private nonexact candidate.
     int tick();
+    int advance_scripts();
     void combine_movements();
     int update_movements();
     // The whole 48C010 dispatcher remains undefined while its owners are closed.
@@ -121,6 +124,8 @@ static_assert(offsetof(EnemyQueuedRecord, parameters) == 8);
 static_assert(offsetof(EnemyQueuedRecord, vector_34) == 0x34);
 static_assert(offsetof(EnemyQueuedRecord, vector_40) == 0x40);
 static_assert(sizeof(EnemyState) == 752);
+static_assert(sizeof(decltype(EnemyState::update_callback)) == 4);
+static_assert(offsetof(EnemyState, update_callback) == 0x2e0);
 static_assert(offsetof(EnemyState, entity) == 8);
 static_assert(offsetof(EnemyState, animations) == 0xc);
 static_assert(offsetof(EnemyState, field_38) == 0x38);

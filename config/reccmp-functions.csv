@@ -593,3 +593,6 @@ th20::bullet_controller,0x00478E80,function
 th20::Enemy::apply_spawn,0x004A89C0,function
 th20::Enemy::tick,0x004A8760,function
 th20::Animation::set_slowdown,0x0045D130,function
+th20::EclManager::tick,0x0053E2B0,function
+th20::EnemyState::advance_scripts,0x004AB4C0,function
+th20::Timer::step,0x00456240,function

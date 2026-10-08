@@ -135,6 +135,7 @@ public:
     int spawn(std::int32_t async_id, std::int32_t argument_skip);
     IntrusiveLink<EclRuntime>* find_runtime(std::int32_t async_id);
     void terminate_async();
+    int tick(float delta);
 };
 
 // Native shared random owner. Production construction remains unresolved.

@@ -27,6 +27,8 @@ struct Timer {
     Timer();
     operator std::int32_t() const;
     float fraction() const;
+    // Unchecked native clock lookup; the established source slot is mode 0.
+    float step() const;
     void operator=(std::int32_t value);
     // The divisor must be nonzero; INT32_MIN / -1 is outside the C++ domain.
     std::int32_t operator%(std::int32_t divisor) const;

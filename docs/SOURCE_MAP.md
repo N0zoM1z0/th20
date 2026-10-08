@@ -1,5 +1,41 @@
 # Source and build ownership
 
+## EXACT-080 — 2026-10-08 — Actual State/Manager script pipeline
+
+Three complete script-progression/async-traversal/Timer-step contributions add
+419 bytes. Actual 752-byte State uses a four-byte member callback at +2E0;
+whole invocation, null initialization and layout are compiler-verified against
+the native ECX/word/full-result protocol. Original C++ spelling stays inferred.
+Manager preserves cached-next traversal, primary-failure context and real async
+runtime destruction before link detach/release. Clock lookup preserves the
+established mode0 domain; no fictitious extra clock entries are introduced. See
+[script pipeline evidence](EXACT_ENEMY_SCRIPT_PIPELINE_RECONSTRUCTION.md).
+
+The frozen graph is 597 units /113 fresh objects /104292 disjoint comparison bytes.
+Origins remain 524 pending /9 library /64 authored /16948 bytes. Three complete
+reference associations close, 199 absorbed across all 6945 terminal reviews.
+Owned O2/UBSan checks now execute real production VM tick as well as the Manager/
+State pipeline and real PMR lifetime: completion subsets, distinct primary context,
+deferred spawn, signed failures, callback recursion and IEEE step values. Loader,
+spawn, movement, Enemy opcode/outer retirement and unused helper routes remain
+explicit fixtures. Full State tick's 1280-byte candidate stays nonexact: two natural
+advancement/ownership experiments retain the same NOP discrepancy. Whole dispatcher,
+readers, Player and runtime remain open. Continue serial nice15, repo-python,
+attested Ghidra, no REA/delegation and protected cleanup. Goal remains active.
+
+All 51 public tests pass (133.069 seconds); target/tracking/reference/progress
+gates pass. Protected cleanup retires 10 completed probe object/receipt products,
+244614 bytes. Original receipts and 6 historical source/header versions are
+losslessly preserved in compressed archives of 74399 and 5153 bytes; net savings
+165062 bytes. All 226 current canonical product hashes and all native/failed
+source evidence remain unchanged. Post-cleanup 597/597 strict replay uses existing
+objects without a cold rebuild. Cumulative retired products: 2570 files /
+1003225449 bytes; separate prior archival savings: 12865565 bytes. Analysis is
+about 77 MiB and build 5.1 MiB; installed tools/game/reference remain protected.
+Final source is frozen in core080-final-frozen-source.json; current complete proofs
+are exact080-canonical-results.json.gz and core080-post-cleanup-results.json.gz.
+One-time configuration/registration/cleanup writers are completed; never rerun.
+
 ## EXACT-079 — 2026-10-08 — Enemy spawn and time-scale orchestration
 
 Two complete Enemy core functions and the Animation slowdown setter add 1257 body

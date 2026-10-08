@@ -592,3 +592,6 @@ th20::bullet_controller
 th20::Enemy::apply_spawn
 th20::Enemy::tick
 th20::Animation::set_slowdown
+th20::EclManager::tick
+th20::EnemyState::advance_scripts
+th20::Timer::step
