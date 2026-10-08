@@ -1,5 +1,53 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-078 — 2026-10-08 — Bullet pool and resource ownership
+
+Eleven complete contributions establish actual 1320-byte Bullet values and the
+2649512-byte BulletInf owner with a typed 2001-entry pool, fourteen ExtendedCommands
+per Bullet, a typed 2001-handle array and real free/active intrusive lists. Native
+allocation, RTTI/vtable/literal/publication, complete array/EH contracts and genuine
+shared_ptr<ShotMetadata> lifetime are independently checked. Bullet +88 is a
+distinct packed color; +58 is the actual borrowed BulletStyle pointer. Color is
+independently assigned0xFFD08080 and transferred to
+EffectParameters; it is not an Animation handle despite the folded constructor. Two six-pointer draw
+arrays replace flattened reference integers; Controller +44 is its count. Full
+construction/destruction/disable/count/context contributions add 1471 body /1491
+comparison bytes; frozen 591 units /108 fresh objects replay 102474 disjoint bytes.
+Origins are 518 pending /9 library /64 authored /16948 bytes. Five complete reference
+associations close, 194 absorbed across all 6945 terminal reviews. See
+[Bullet evidence](EXACT_BULLET_STORAGE_RECONSTRUCTION.md).
+
+Context slot0 now has the actual borrowed BulletController pointer. Both process
+478E80 and direct40C300 routes reach BulletInf; 4992F0 reads its count44. Actual
+EnemyController lookup remains478060/slot8. Typed Context getter/setter and array/
+shared-pointer support pass complete strict comparisons without duplicate credit.
+Reference Session primary_owner returns a pointer reference instead of the stored
+pointer value and remains nonexact; owner closure does not justify ABI substitution.
+
+Owned O2/UBSan checks cover all2001 dirty records/natural gaps, real defaults and
+sentinels, two Context routes, full count/binding mutation boundaries, actual
+callback disabling and complete shared metadata release including the final slot,
+then actual pool destruction after reacquiring a resource. Controller destruction
+and enable are explicit fixtures; full factory/initialize/update/draw/retirement,
+renderer, Player tail/ANM lifetime, both Enemy readers and41KB opcode root stay open.
+No runtime/whole-game credit follows. Source is frozen; one-time configuration and
+registration writers are completed. Continue serial nice15, repo-python, attested
+Ghidra, no REA/delegation and protected cleanup. Goal stays active.
+
+All49 public tests pass (145.482 seconds); target/tracking/reference/progress gates
+pass. Protected cleanup retires six completed probe object/receipt products /160000
+bytes, while losslessly preserving original receipt texts in a45320-byte compressed
+archive; net savings114680 bytes. All216 current canonical hashes and all native/
+failed-source evidence remain unchanged. Post-cleanup591/591 strict replay uses
+existing objects without a cold rebuild. Cumulative retired products2546 files /
+1002499503 bytes; separate earlier successful-snapshot archival savings12865565
+bytes. Analysis is about75 MiB and build4.8 MiB; installed tools/game/reference
+remain protected. Final proof is exact078-final-canonical-results.json.gz; the first
+exact078-canonical-results.json.gz is historical pre-color byte evidence only.
+Final source is frozen in core078-final-frozen-source.json; never rerun completed
+one-time writers. Original Enemy/Card/Bullet log identities independently reconcile
+current compiler-local labels without changing native destination addresses.
+
 ## EXACT-077 — 2026-10-08 — Actual Game owner and integer state ABI
 
 Actual 272-byte GameInf owns two Timers, Configuration, a distinct flag word,

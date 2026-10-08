@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 580 mapped component functions across 106 comparison objects |
+| Source | 591 mapped component functions across 108 comparison objects |
 | Authored exactness | 64 functions, 16,948 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |

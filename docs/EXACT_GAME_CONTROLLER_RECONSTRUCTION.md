@@ -85,15 +85,17 @@ reader exports show a direct Context slot0 lookup through `40C300` and process
 lookup `478E80`. Attested disassembly proves that `478E80` itself calls the
 actual Session context accessor `40BBC0` followed by the same slot0 getter
 `40C300`. Both routes therefore reach the Context's borrowed primary owner.
-The original complete primary-owner type/storage remains unresolved.
+EXACT-078 independently establishes the actual BulletInf owner and its typed
+2001-entry pool; see [Bullet evidence](EXACT_BULLET_STORAGE_RECONSTRUCTION.md).
 
 An intermediate attribution of `478E80` to EnemyController was also incorrect
 and has been corrected in the maintained ledgers and handoff. Actual process
 EnemyController lookup is `478060`, through Context slot8/accessor `412730`.
 No EnemyController or Game storage attribution follows from these reader
-routes. Game has Configuration storage at total offset `44`. No `4992F0`
-getter or complete primary-owner source acceptance follows from this routing
-investigation; do not introduce a padded owner to satisfy the displacement.
+routes. Game has Configuration storage at total offset `44`. This routing
+investigation alone established no complete owner acceptance. EXACT-078 now
+closes the full native BulletInf storage and `4992F0` count query through
+independent allocation/publication/typed-construction evidence and strict replay.
 
 The `450880` wrapper conditionally returns integer1 when the Game suppression
 and freeze predicates are true; otherwise it calls the actual renderer

@@ -578,3 +578,14 @@ th20::GameController::update_suppressed
 th20::GameController::animation_frozen
 th20::GameController::restart
 th20::GameController::clear_flag_6
+th20::Bullet::Bullet
+th20::Bullet::~Bullet
+th20::BulletExtendedCommands::BulletExtendedCommands
+th20::BulletPool::BulletPool
+th20::BulletHandles::BulletHandles
+th20::BulletController::BulletController
+th20::BulletPool::~BulletPool
+th20::BulletController::disable
+th20::BulletController::count
+th20::BulletController::select_context
+th20::bullet_controller

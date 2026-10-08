@@ -580,3 +580,14 @@ address,name,module,confidence,evidence
 0x00424060,th20::GameController::animation_frozen,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md
 0x00488830,th20::GameController::restart,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md
 0x004BD920,th20::GameController::clear_flag_6,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md
+0x0047BE00,th20::Bullet::Bullet,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x0047C470,th20::Bullet::~Bullet,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x0047B740,th20::BulletExtendedCommands::BulletExtendedCommands,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x0047B790,th20::BulletPool::BulletPool,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x0047B7C0,th20::BulletHandles::BulletHandles,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x0047B8A0,th20::BulletController::BulletController,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x0047C2A0,th20::BulletPool::~BulletPool,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x00484260,th20::BulletController::disable,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x004992F0,th20::BulletController::count,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x00486530,th20::BulletController::select_context,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md
+0x00478E80,th20::bullet_controller,Bullet,high,EXACT-078; docs/EXACT_BULLET_STORAGE_RECONSTRUCTION.md

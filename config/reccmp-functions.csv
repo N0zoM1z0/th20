@@ -579,3 +579,14 @@ th20::GameController::update_suppressed,0x00424030,function
 th20::GameController::animation_frozen,0x00424060,function
 th20::GameController::restart,0x00488830,function
 th20::GameController::clear_flag_6,0x004BD920,function
+th20::Bullet::Bullet,0x0047BE00,function
+th20::Bullet::~Bullet,0x0047C470,function
+th20::BulletExtendedCommands::BulletExtendedCommands,0x0047B740,function
+th20::BulletPool::BulletPool,0x0047B790,function
+th20::BulletHandles::BulletHandles,0x0047B7C0,function
+th20::BulletController::BulletController,0x0047B8A0,function
+th20::BulletPool::~BulletPool,0x0047C2A0,function
+th20::BulletController::disable,0x00484260,function
+th20::BulletController::count,0x004992F0,function
+th20::BulletController::select_context,0x00486530,function
+th20::bullet_controller,0x00478E80,function
