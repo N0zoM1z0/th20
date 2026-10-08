@@ -4,6 +4,8 @@ CORE/EXACT-089 reconstructs the complete save/load protocol on the existing
 SaveManager, Snapshot, Profile, Metadata, Worker, allocator and codec owners.
 Eight complete contributions pass strict canonical relocation replay. Three
 additional complete bodies execute in the shared protocol and remain nonexact.
+CORE-090 refines the writer's native iteration, storage views and cleanup order;
+see [whole serialization evidence](PROGRESS_WRITE_PROTOCOL_RECONSTRUCTION.md).
 This is component reconstruction; original process startup, filesystem runtime
 and a linked playable game remain open.
 
@@ -20,7 +22,7 @@ and a linked playable game remain open.
 | 4BEB60 Metadata integrity update | ProgressIntegrity.cpp | 161 / 161 | Exact |
 | 50FB60 save thread entry | ProgressFileWrite.cpp | 174 / 174 | Exact |
 | 50F3B0 load thread entry | ProgressFileLoad.cpp | 574 / 562 | Whole nonexact |
-| 50F6B0 file serialization | ProgressFileWrite.cpp | 1274 / 1198 | Whole nonexact |
+| 50F6B0 file serialization | ProgressFileWrite.cpp | 1198 / 1198 | Whole nonexact: 46 structural differences |
 | 463F20 Metadata byte sum | ProgressIntegrity.cpp | 125 / 134 | Whole nonexact |
 
 The eight accepted roots contribute 1,924 disjoint bytes and 95 independently
@@ -140,10 +142,10 @@ addresses. Natural cleanup padding is retained. Complete handler, unwind and
 cleanup contributions replay, including the shared save/Worker cleanup graph.
 They provide support only and are not separate exact progress.
 
-The writer's finite std::views::iota ranges implement the observed 2x9 protocol.
-Original free begin/end helpers and their source types are still unresolved;
-no generated iota helper is mechanically anchored from a compared call field.
-Writer stack/alias/expression emission also remains open. Load retains the full
+CORE-090 replaces finite std::views::iota with the independently corroborated
+one-word range/cursor protocol. Original tag kinds/type spellings remain inferred;
+complete helpers replay as support without additional exact credit. Writer
+payload-index expression emission remains open. Load retains the full
 562-byte native scope; its stack/source emission differs. The byte checksum
 retains all 134 native bytes, including an unresolved multiply-by-zero/index
 expression and signed comparison; source uses a safe complete-owner byte view.
@@ -180,7 +182,7 @@ reuses canonical objects and receipts. Whole native resource loading, startup,
 invalid allocation/CRT domains, actual disk execution and game runtime remain
 open.
 
-## Frozen verification and protected storage retirement
+## CORE-089 frozen verification and protected storage retirement
 
 The final source strictly replays 623/623 units across 125 fresh objects and
 122227 disjoint comparison bytes. All 59 public tests pass in 157.214 seconds.

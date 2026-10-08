@@ -1,5 +1,60 @@
 # Source and build ownership
 
+## CORE-090 — 2026-10-08 — Whole writer iteration, storage and cleanup
+
+The complete serializer now emits1198/native1198 bytes, with46 remaining
+structural instruction differences. It remains whole nonexact; no new exact,
+origin or reference-absorption credit is claimed. Native char staging, direct
+record/header evaluation, single writer buffer guards and the observed
+string/path versus compressed/staging lifetime order are now maintained.
+See [whole serialization protocol](PROGRESS_WRITE_PROTOCOL_RECONSTRUCTION.md).
+
+Independent Game consumers corroborate the shared four-byte cursor and
+one-word free range ABI. Eight complete cursor/range contributions strictly
+replay as support only; the two begin wrappers share one native entry.
+Tag kind and original spellings remain inferred. Five complete SDK contributions
+agree structurally, with SDK/EH relocation closure still open. Batch pointer
+expression/profile probes do not resolve native MOV44/SHL0 versus MOV1/IMUL44.
+Indexed parser probes825/native824 remain rejected; maintained parsing is813/824.
+No inert local, invented array owner, fake result, assembly, shortened unit or
+mechanically solved relocation is introduced.
+
+Actual O2/UBSan checks additionally omit a non-CR Profile from the encrypted
+packet and preserve its complete bytes through real writing and parsing.
+The other17 slots, fallback and Metadata round-trip. Existing reload, defaults,
+threads, allocation/log/open-failure and short-write checks remain active.
+Startup/resource/OS/valid-input CRT fixtures and native runtime limits remain
+explicit. All59 public tests pass in178.205 seconds.
+
+Frozen strict replay passes623/623 units /125 fresh objects /122227 disjoint
+bytes. Source mappings remain633, including10 whole nonexact methods;
+exact origins541 pending/9 library/73 authored,19318 authored exact bytes.
+All6945 reference reviews remain terminal,218 absorbed. No counters increase
+merely because the whole serializer has the same extent as native.
+
+Two protected retirement passes remove32 probe products /1612565 bytes.
+Original receipts, negative diagnostics and one historical source version remain
+losslessly archived. Net probe-storage savings after receipt/replay archives:
+1176893 bytes. All250 current canonical hashes remain protected; post-cleanup
+623/623 replay uses125 existing objects without another build. Cumulative
+retirement is2714 products /1018212016 bytes. Analysis84M/build6.3M;
+installed tools, target, reference and Ghidra remain protected.
+
+Proofs: core090-protocol-audit.json, core090-pointer-emission.json.gz,
+core090-final-frozen-source.json, exact090-canonical-results.json.gz,
+core090-interim-cleanup.json, core090-cleanup.json and
+core090-post-cleanup-results.json.gz. Completed replay/cleanup/documentation
+writers must never rerun; historical probes require the original complete
+SHA-bound input set. Single writer, serial nice15, repo-python, attested Ghidra,
+no REA/delegation and periodic retirement remain required.
+
+Continue the whole583-byte resource reader410AA0 and the actual archive-owner
+storage/lifetime and lookup/read protocol, then larger Enemy/State/Controller/
+Player roots. The reference Manager uses a replacement API and cannot supply the
+native owner ABI. The resource reader uses a local HANDLE, not the separate
+process output handle. Remaining writer/parse/compiler questions stay recorded;
+reconstruction remains active.
+
 ## CORE/EXACT-089 — 2026-10-08 — Whole SaveManager file protocol and native I/O
 
 Eight complete file/log/default/integrity/save entries strictly replay 1924 bytes

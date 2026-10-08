@@ -2,6 +2,7 @@
 #include "DiagnosticAllocator.hpp"
 #include "DiagnosticLog.hpp"
 #include "GameFileIo.hpp"
+#include "EclFileLoader.hpp"
 #include "Win32FileApi.hpp"
 #include "SecureCrt.hpp"
 #include "GameRandom.hpp"
@@ -148,6 +149,39 @@ void exercise_files() {
     assert(handles.size()==2 && handles[0]->closed && handles[1]->closed);
     assert(handles[0]->writes==2 && handles[0]->closes==1);
     assert(game_file_handle==handles[1].get()); // Native close never clears it.
+
+    // A non-CR slot is omitted from the real compressed/encrypted packet and
+    // retains every byte through both writing and parsing the filtered file.
+    auto& omitted=owner->current.profiles[1][8];
+    omitted.header.magic=0x5858;
+    omitted.header.checksum=0xdeadbeef;
+    omitted.field_0c=41;
+    omitted.field_10=43;
+    Bytes omitted_bytes(sizeof(omitted));
+    std::memcpy(omitted_bytes.data(),&omitted,sizeof(omitted));
+    assert(owner->write("filtered.dat",&owner->current)==0);
+    assert(std::memcmp(omitted_bytes.data(),&omitted,sizeof(omitted))==0);
+    ProgressFileHeader filtered_header;
+    const auto& filtered_packet=disk.at("/cpu-score/filtered.dat");
+    std::memcpy(&filtered_header,filtered_packet.data(),sizeof(filtered_header));
+    assert(filtered_header.file_size==filtered_packet.size());
+    assert(filtered_header.compressed_size==filtered_packet.size()-sizeof(filtered_header));
+    assert(filtered_header.decoded_size==18*sizeof(ProgressProfile)+sizeof(ProgressMetadata));
+    assert(owner->current.decoded_buffer==nullptr);
+    process_allocator->release_bytes(owner->current.file_buffer);
+    std::int32_t filtered_size=0;
+    owner->current.file_buffer=read_game_resource("/cpu-score/filtered.dat",&filtered_size,1);
+    owner->current.file_size=filtered_size;
+    assert(owner->parse(&owner->current)==0);
+    assert(std::memcmp(omitted_bytes.data(),&omitted,sizeof(omitted))==0);
+    for (unsigned character=0; character<2; ++character) for (unsigned index=0; index<9; ++index) {
+        if (character==1 && index==8) continue;
+        const auto& profile=owner->current.profiles[character][index];
+        assert(profile.statistics.field_00==900+character*10+index);
+        assert(profile.field_0c==character && profile.field_10==index);
+    }
+    assert(owner->current.fallback.statistics.field_00==990 && owner->current.fallback.field_0c==2);
+    assert(owner->current.metadata.field_60==1000);
 
     const auto* file=owner->current.file_buffer;
     const auto* decoded=owner->current.decoded_buffer;
