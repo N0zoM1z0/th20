@@ -40,3 +40,9 @@ std::uint32_t EnemyHealth::forced_end() const {
 }
 
 } // namespace th20
+
+namespace th20 {
+void EnemyHealth::set_health(std::uint32_t value) { health = value; }
+void EnemyHealth::set_initial(std::uint32_t value) { field_04 = value; }
+void EnemyHealth::set_phase(std::uint32_t value) { phase_health = value; }
+}

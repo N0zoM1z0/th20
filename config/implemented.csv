@@ -589,3 +589,6 @@ th20::BulletController::disable
 th20::BulletController::count
 th20::BulletController::select_context
 th20::bullet_controller
+th20::Enemy::apply_spawn
+th20::Enemy::tick
+th20::Animation::set_slowdown

@@ -16,6 +16,9 @@ struct EnemyHealth {
 
     EnemyHealth();
     void reset();
+    void set_health(std::uint32_t value);
+    void set_initial(std::uint32_t value);
+    void set_phase(std::uint32_t value);
     std::int32_t apply(std::int32_t amount);
     void record(std::int32_t amount);
     int positive() const;

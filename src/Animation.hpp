@@ -94,6 +94,7 @@ struct Animation {
     // Nonzero field_550 enters the native repeated-handle-clear loop.
     void release_resources();
     void reset();
+    void set_slowdown(float value);
     Vector3& position_ref();
     float inherited_scale_y();
     float inherited_scale_x();

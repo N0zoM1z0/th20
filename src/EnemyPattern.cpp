@@ -25,3 +25,8 @@ void EnemyPattern::clear_counts() {
 }
 
 } // namespace th20
+
+namespace th20 {
+void EnemyPattern::set_base_kind(std::int32_t value) { base_kind = value; }
+std::int32_t EnemyPattern::base_kind_value() const { return base_kind; }
+}

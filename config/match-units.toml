@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111400", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111439", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8987,7 +8987,7 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111071", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111110", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
@@ -9450,4 +9450,83 @@ relocations = [
   { offset = 0x8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
   { offset = 0xD, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
   { offset = 0x14, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+]
+
+[units.enemy_apply_spawn]
+source = "src/EnemySpawnApplication.cpp"
+object = "build/EnemySpawnApplication.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::apply_spawn"]
+symbol = "?apply_spawn@Enemy@th20@@QAEHABUEnemySpawn@2@@Z"
+target_address = 0x004A89C0
+size = 780
+compare_size = 922
+relocations = [
+  { offset = 0x2F, type = "REL32", symbol = "?resize@?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x0049C2C0 },
+  { offset = 0x45, type = "REL32", symbol = "??A?$vector@UEnemyMovement@th20@@V?$polymorphic_allocator@UEnemyMovement@th20@@@pmr@std@@@std@@QAEAAUEnemyMovement@th20@@I@Z", target = 0x0048BD10 },
+  { offset = 0x54, type = "REL32", symbol = "?set_position@Motion@th20@@QAEXABUVector3@2@@Z", target = 0x004393F0 },
+  { offset = 0x6E, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x88, type = "REL32", symbol = "?set_health@EnemyHealth@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0xA2, type = "REL32", symbol = "?set_initial@EnemyHealth@th20@@QAEXI@Z", target = 0x00411570 },
+  { offset = 0xBC, type = "REL32", symbol = "?set_phase@EnemyHealth@th20@@QAEXI@Z", target = 0x0049C4E0 },
+  { offset = 0xD6, type = "REL32", symbol = "?set_base_kind@EnemyPattern@th20@@QAEXH@Z", target = 0x00411570 },
+  { offset = 0xFE, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x103, type = "REL32", symbol = "?mode@Session@th20@@QAEHXZ", target = 0x004640A0 },
+  { offset = 0x15D, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x1CB, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x1D0, type = "REL32", symbol = "?clamped_field_1fc@Session@th20@@QAEHXZ", target = 0x00499330 },
+  { offset = 0x1E1, type = "REL32", symbol = "?tick@Enemy@th20@@QAEHXZ", target = 0x004A8760 },
+  { offset = 0x201, type = "REL32", symbol = "?base_kind_value@EnemyPattern@th20@@QBEHXZ", target = 0x0040FF90 },
+  { offset = 0x21C, type = "REL32", symbol = "?set_base_kind@EnemyPattern@th20@@QAEXH@Z", target = 0x00411570 },
+  { offset = 0x22B, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+  { offset = 0x283, type = "DIR32", symbol = "$LN28", target = 0x004A8CEC },
+  { offset = 0x28A, type = "DIR32", symbol = "$LN29", target = 0x004A8CCC },
+  { offset = 0x30C, type = "DIR32", symbol = "$LN10", target = 0x004A8C4E },
+  { offset = 0x310, type = "DIR32", symbol = "$LN15", target = 0x004A8C5D },
+  { offset = 0x314, type = "DIR32", symbol = "$LN21", target = 0x004A8C7B },
+  { offset = 0x318, type = "DIR32", symbol = "$LN19", target = 0x004A8C6C },
+  { offset = 0x31C, type = "DIR32", symbol = "$LN24", target = 0x004A8C8A },
+  { offset = 0x320, type = "DIR32", symbol = "$LN25", target = 0x004A8C99 },
+  { offset = 0x324, type = "DIR32", symbol = "$LN26", target = 0x004A8CA8 },
+  { offset = 0x328, type = "DIR32", symbol = "$LN2", target = 0x004A8CB5 },
+]
+
+[units.enemy_tick]
+source = "src/EnemyTick.cpp"
+object = "build/EnemyTick.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::tick"]
+symbol = "?tick@Enemy@th20@@QAEHXZ"
+target_address = 0x004A8760
+size = 448
+relocations = [
+  { offset = 0x3C, type = "REL32", symbol = "?_Unchecked_begin@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEPAUEnemyAnimationLink@th20@@XZ", target = 0x00414F30 },
+  { offset = 0x47, type = "REL32", symbol = "?_Unchecked_end@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEPAUEnemyAnimationLink@th20@@XZ", target = 0x00414F70 },
+  { offset = 0x6B, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x85, type = "REL32", symbol = "?set_slowdown@Animation@th20@@QAEXM@Z", target = 0x0045D130 },
+  { offset = 0x96, type = "REL32", symbol = "?tick@EnemyState@th20@@QAEHXZ", target = 0x004A8260 },
+  { offset = 0xA5, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0xAA, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xD7, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xE1, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x109, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x10E, type = "REL32", symbol = "?set@ClockScalar@th20@@QAEXM@Z", target = 0x004292A0 },
+  { offset = 0x123, type = "REL32", symbol = "?_Unchecked_begin@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEPAUEnemyAnimationLink@th20@@XZ", target = 0x00414F30 },
+  { offset = 0x12E, type = "REL32", symbol = "?_Unchecked_end@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEPAUEnemyAnimationLink@th20@@XZ", target = 0x00414F70 },
+  { offset = 0x152, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x174, type = "REL32", symbol = "?set_slowdown@Animation@th20@@QAEXM@Z", target = 0x0045D130 },
+  { offset = 0x185, type = "REL32", symbol = "?tick@EnemyState@th20@@QAEHXZ", target = 0x004A8260 },
+  { offset = 0x198, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x19D, type = "REL32", symbol = "?set@ClockScalar@th20@@QAEXM@Z", target = 0x004292A0 },
+]
+
+[units.animation_set_slowdown]
+source = "src/AnimationParameters.cpp"
+object = "build/AnimationParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::set_slowdown"]
+symbol = "?set_slowdown@Animation@th20@@QAEXM@Z"
+target_address = 0x0045D130
+size = 29
+relocations = [
 ]

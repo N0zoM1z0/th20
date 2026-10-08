@@ -18,6 +18,8 @@ struct EnemyPattern {
 
     EnemyPattern();
     void reset();
+    void set_base_kind(std::int32_t value);
+    std::int32_t base_kind_value() const;
     void clear_counts();
 };
 

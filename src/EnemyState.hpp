@@ -50,7 +50,12 @@ struct EnemyBounds {
 };
 
 struct EnemyStateFlags {
-    std::uint32_t word_00, word_04, word_08;
+    std::uint32_t word_00;
+    union {
+        std::uint32_t word_04;
+        struct { std::uint32_t low:3, spawn_mirrored:1, middle:6, viewport_relative:1, upper:21; } fields_04;
+    };
+    std::uint32_t word_08;
 };
 
 // Actual 752-byte subobject at Enemy+88. Neutral scalar names retain unresolved
@@ -90,6 +95,8 @@ struct EnemyState {
     EnemyState();
     ~EnemyState();
     int initialize();
+    // Actual 4A8260 whole tick is retained as a private nonexact candidate.
+    int tick();
     void combine_movements();
     int update_movements();
     // The whole 48C010 dispatcher remains undefined while its owners are closed.

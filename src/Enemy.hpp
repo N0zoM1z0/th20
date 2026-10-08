@@ -39,6 +39,7 @@ struct Enemy : EclManager {
     float float_argument_value(std::int32_t index, float value);
     void select_context(std::int32_t index);
     void initialize(std::int32_t index, const char* name);
+    int tick();
     int apply_spawn(const EnemySpawn& parameters);
 };
 

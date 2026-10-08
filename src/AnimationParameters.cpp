@@ -78,3 +78,7 @@ void Animation::set_layer(std::int32_t layer) {
         !((base.flags.word_04 >> 23) & 1u)) base.flags.field_0c = 1;
 }
 }
+
+namespace th20 {
+void Animation::set_slowdown(float value) { field_560 = value; }
+}

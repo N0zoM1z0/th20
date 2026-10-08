@@ -1,5 +1,42 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-079 — 2026-10-08 — Enemy spawn and time-scale orchestration
+
+Two complete Enemy core functions and the Animation slowdown setter add 1257 body
+/1399 comparison bytes. Full 780-byte spawn includes the eight-entry jump table
+and all 110 selectors; full 448-byte tick preserves ordered handle resolution,
+IEEE clock clamping/save/restore, sticky flags and delegated signed return. Actual
+Enemy/EnemyState/Session, PMR records, health/pattern members and Timer value
+assignment remain shared natural owners. See
+[spawn/tick evidence](EXACT_ENEMY_SPAWN_TICK_RECONSTRUCTION.md).
+
+The frozen graph is 594 units /110 fresh objects /103873 disjoint comparison bytes.
+Origins remain 521 pending /9 library /64 authored /16948 bytes. Two complete
+reference associations close, 196 absorbed across all 6945 terminal reviews.
+Owned O2/UBSan checks cover 108 IEEE time-scale cases and 3300 spawn cases using
+production lifetimes and orchestration. Whole State tick, renderer/retirement and
+virtual readers are explicit fixture boundaries. Negative rank modes are outside
+the defined shift domain. No runtime or whole-game credit follows.
+
+A whole 1280-byte EnemyState tick experiment remains nonexact because a missing
+NOP after Pattern tick shifts subsequent Timer code. Candidate source, headers,
+profiles and diagnostics are retained privately. The 41 KB dispatcher and both
+whole readers remain open. Continue serial nice15, repo-python, attested Ghidra,
+no REA/delegation and protected cleanup. Goal remains active.
+
+All 50 public tests pass (135.233 seconds); target/tracking/reference/progress
+gates pass. Protected cleanup retires 14 completed probe object/receipt products,
+481332 bytes. Original receipts and 16 historical source/header versions are
+losslessly preserved in compressed archives of 113827 and 9495 bytes; net savings
+358010 bytes. All 220 current canonical product hashes and all native/failed
+source evidence remain unchanged. Post-cleanup 594/594 strict replay uses existing
+objects without a cold rebuild. Cumulative retired products: 2560 files /
+1002980835 bytes; separate prior archival savings: 12865565 bytes. Analysis is
+about 76 MiB and build 4.9 MiB; installed tools/game/reference remain protected.
+Final source is frozen in core079-final-frozen-source.json; current complete proofs
+are exact079-canonical-results.json.gz and core079-post-cleanup-results.json.gz.
+One-time configuration/registration/cleanup writers are completed; never rerun.
+
 ## EXACT-078 — 2026-10-08 — Bullet pool and resource ownership
 
 Eleven complete contributions establish actual 1320-byte Bullet values and the
