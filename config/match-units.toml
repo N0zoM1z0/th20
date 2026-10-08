@@ -9076,3 +9076,132 @@ relocations = [
   { offset = 0xD, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
   { offset = 0x14, type = "REL32", symbol = "?card@Context@th20@@QAEPAUCard@2@XZ", target = 0x00411700 },
 ]
+
+[units.player_option_ctor]
+source = "src/PlayerStorage.cpp"
+object = "build/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerOption::PlayerOption"]
+symbol = "??0PlayerOption@th20@@QAE@XZ"
+target_address = 0x004F49C0
+size = 440
+compare_size = 445
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0PlayerOption@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x36, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x41, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x46, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x56, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x61, type = "REL32", symbol = "??0IntPoint@th20@@QAE@XZ", target = 0x00414030 },
+  { offset = 0x6C, type = "REL32", symbol = "??0IntPoint@th20@@QAE@XZ", target = 0x00414030 },
+  { offset = 0x71, type = "DIR32", symbol = "??0IntPoint@th20@@QAE@XZ", target = 0x00414030 },
+  { offset = 0x84, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x92, type = "REL32", symbol = "??0IntPoint@th20@@QAE@XZ", target = 0x00414030 },
+  { offset = 0xA0, type = "REL32", symbol = "??0IntPoint@th20@@QAE@XZ", target = 0x00414030 },
+  { offset = 0xAE, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0xBC, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 0xD8, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0xE6, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0xF4, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x161, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+]
+
+[units.player_feedback_ctor]
+source = "src/PlayerStorage.cpp"
+object = "build/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerFeedback::PlayerFeedback"]
+symbol = "??0PlayerFeedback@th20@@QAE@XZ"
+target_address = 0x004F4580
+size = 133
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x16, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x21, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x54, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x5F, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+]
+
+[units.player_collision_bounds_ctor]
+source = "src/PlayerStorage.cpp"
+object = "build/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerCollisionBounds::PlayerCollisionBounds"]
+symbol = "??0PlayerCollisionBounds@th20@@QAE@XZ"
+target_address = 0x004F4610
+size = 58
+relocations = [
+  { offset = 0x23, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2E, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.player_motion_parameters_ctor]
+source = "src/PlayerStorage.cpp"
+object = "build/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerMotionParameters::PlayerMotionParameters"]
+symbol = "??0PlayerMotionParameters@th20@@QAE@XZ"
+target_address = 0x004F4650
+size = 68
+relocations = [
+]
+
+[units.player_shot_ctor]
+source = "src/PlayerStorage.cpp"
+object = "build/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShot::PlayerShot"]
+symbol = "??0PlayerShot@th20@@QAE@XZ"
+target_address = 0x004F4CB0
+size = 413
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "??0?$IntrusiveLink@UPlayerShot@th20@@@th20@@QAE@XZ", target = 0x00418A10 },
+  { offset = 0x22, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x2D, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x38, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x75, type = "REL32", symbol = "??0Motion@th20@@QAE@XZ", target = 0x00478530 },
+  { offset = 0x83, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 0x9E, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0xD3, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
+  { offset = 0x117, type = "REL32", symbol = "??0DamageHandle@th20@@QAE@I@Z", target = 0x004142A0 },
+  { offset = 0x147, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+]
+
+[units.player_shot_pool_ctor]
+source = "src/PlayerStorage.cpp"
+object = "build/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShotPool::PlayerShotPool"]
+symbol = "??0PlayerShotPool@th20@@QAE@XZ"
+target_address = 0x004F41D0
+size = 81
+compare_size = 86
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0PlayerShotPool@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0PlayerShot@th20@@QAE@XZ", target = 0x004F4CB0 },
+  { offset = 0x3A, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
+
+[units.player_shot_controller_ctor]
+source = "src/PlayerStorage.cpp"
+object = "build/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShotController::PlayerShotController"]
+symbol = "??0PlayerShotController@th20@@QAE@XZ"
+target_address = 0x004F4B80
+size = 291
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0PlayerShotPool@th20@@QAE@XZ", target = 0x004F41D0 },
+  { offset = 0x19, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x27, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x35, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x43, type = "REL32", symbol = "??0?$IntrusiveList@UPlayerShot@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 0x51, type = "REL32", symbol = "??0?$IntrusiveList@UPlayerShot@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 0x7E, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x93, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0xBD, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 0xD9, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0xFE, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]

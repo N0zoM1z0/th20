@@ -567,3 +567,10 @@ th20::Card::invalid_encoded_time,0x004885E0,function
 th20::Card::active,0x004887A0,function
 th20::Card::bind_context,0x00488A20,function
 th20::card,0x00478EA0,function
+th20::PlayerOption::PlayerOption,0x004F49C0,function
+th20::PlayerFeedback::PlayerFeedback,0x004F4580,function
+th20::PlayerCollisionBounds::PlayerCollisionBounds,0x004F4610,function
+th20::PlayerMotionParameters::PlayerMotionParameters,0x004F4650,function
+th20::PlayerShot::PlayerShot,0x004F4CB0,function
+th20::PlayerShotPool::PlayerShotPool,0x004F41D0,function
+th20::PlayerShotController::PlayerShotController,0x004F4B80,function

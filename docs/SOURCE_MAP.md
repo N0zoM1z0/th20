@@ -1,5 +1,23 @@
 # Source and build ownership
 
+## EXACT-076 — 2026-10-08 — Player storage construction ownership
+
+`src/PlayerStorage.hpp/.cpp` owns actual Option, Feedback, CollisionBounds,
+MotionParameters, Shot, ShotPool and ShotController storage/construction.
+`build/PlayerStorage.obj` supplies seven complete contributions, 1,484 body /
+1,494 comparison bytes, including full 256-shot array construction and complete
+Option/pool EH. Typed dependencies reuse canonical production values and
+intrusive protocol; no enclosing padded Player declaration is maintained.
+
+The frozen graph passes 575 units /105 fresh objects /100,616 disjoint bytes. Four
+whole reference associations close; authored attribution remains unchanged.
+`tests/player_storage_semantics.cpp` checks production guarded defaults for
+all records /256 Shots and full pool/list transfers at O2/UBSan without substitute
+construction. Unreferenced gameplay methods are discarded by the test linker.
+Root Player/ANM/resource/gameplay and whole readers remain open; the untouched
+Player +14850 declaration is unresolved. See
+[evidence](EXACT_PLAYER_STORAGE_RECONSTRUCTION.md).
+
 ## EXACT-075 — 2026-10-08 — Actual Card and borrowed Context slot
 
 `src/Card.hpp` declares the genuine C8 owner with natural double alignment,

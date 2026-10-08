@@ -568,3 +568,10 @@ address,name,module,confidence,evidence
 0x004887A0,th20::Card::active,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
 0x00488A20,th20::Card::bind_context,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
 0x00478EA0,th20::card,Card,high,EXACT-075; docs/EXACT_CARD_RECONSTRUCTION.md
+0x004F49C0,th20::PlayerOption::PlayerOption,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
+0x004F4580,th20::PlayerFeedback::PlayerFeedback,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
+0x004F4610,th20::PlayerCollisionBounds::PlayerCollisionBounds,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
+0x004F4650,th20::PlayerMotionParameters::PlayerMotionParameters,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
+0x004F4CB0,th20::PlayerShot::PlayerShot,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
+0x004F41D0,th20::PlayerShotPool::PlayerShotPool,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
+0x004F4B80,th20::PlayerShotController::PlayerShotController,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md

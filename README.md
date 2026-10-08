@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 568 mapped component functions across 104 comparison objects |
+| Source | 575 mapped component functions across 105 comparison objects |
 | Authored exactness | 64 functions, 16,948 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -86,6 +86,7 @@ are excluded from Git.
 | Process Session and player table | Actual 704-byte process owner, CRT initializer, two Contexts/two PlayerRecords, lookups and state queries: 20 new units / 1,177 comparison bytes; [evidence](docs/EXACT_SESSION_RECONSTRUCTION.md) |
 | Controller and Task construction | Actual 308-byte Controller defaults, native Task flag construction and generation side effects: 2 new units / 385 comparison bytes; [evidence](docs/EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md) |
 | Card construction and time state | Actual 200-byte Card, typed handles, wrapping time encoding, full-width validation and Context binding/lookup: 6 new units / 730 comparison bytes; [evidence](docs/EXACT_CARD_RECONSTRUCTION.md) |
+| Player storage construction | Actual Option/Feedback/Shot/ShotController and complete 256-shot pool: 7 whole constructors / 1,494 comparison bytes; [evidence](docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md) |
 | Interpolation protocol | Shared 4 KB easing and eight typed updates, plus direct dependencies: 32 new units / 13,952 comparison bytes; [evidence](docs/EXACT_INTERPOLATION_RECONSTRUCTION.md) |
 | Whole-program build and runtime | Not available |
 

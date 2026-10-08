@@ -1,5 +1,51 @@
 # Current reconstruction handoff
 
+## EXACT-076 — 2026-10-08 — Actual Player storage construction
+
+Seven whole constructors establish actual 300-byte Option, 92-byte Feedback, 32-byte collision
+bounds, 20-byte motion parameters, 292-byte Shot and 75,160-byte ShotController storage. The
+controller owns a typed 256-shot pool, two real intrusive lists and six Timers.
+Full member order, native counts/strides and complete nonthrowing Option/pool
+EH are independently checked. These add 1,484 body /1,494 comparison bytes; frozen
+575-unit /105-fresh-object replay covers 100,616 disjoint bytes. Origins remain
+502 pending /9 library /64 authored /16,948 bytes. Four complete reference associations
+close, 184 absorbed across 6,945 terminal reviews. See
+[Player storage evidence](EXACT_PLAYER_STORAGE_RECONSTRUCTION.md).
+
+Production O2/UBSan checks use dirty guarded whole records, all 256 Shot defaults
+and full pool/list insertion, transfer, removal and sentinel recovery. No
+constructor fixture is used. Unreferenced gameplay methods are discarded at
+portable link time; this does not accept native EH execution or whole gameplay.
+Shared damage-handle/array-loop heads receive no duplicate credit; independent
+IntrusiveList constructor emission remains nonexact.
+
+Native Player allocation 4F32B0 requests 1485C /84,060 bytes and its 794-byte root
+constructor includes actual ANM /10+12 Options /Feedback /256 Shots. The untouched
+four bytes at +14850 have no established original declaration/type. The only
+literal byte pattern in .text belongs to an unrelated REL32 CALL at 49612C;
+this scan is not a proof against alternate/indirect accesses. Do not invent a
+padding word or facade to close the root. Full Player/ANM lifetime/gameplay,
+both whole Enemy readers and 41 KB opcode root remain open. Failed noexcept/
+std::array probes and original evidence are retained privately.
+
+All 47 public tests pass (87.568 seconds); target, tracking, reference and
+generated-progress gates pass.
+
+Configuration/registration/cleanup writers are completed one-time operations;
+never rerun. Proofs are gzip from outset. Continue serial nice 15, repo-python,
+attested Ghidra and protected periodic cleanup; no REA or delegation.
+
+Protected cleanup retires six completed probe products /126,345 bytes. All
+210 canonical hashes and native/failed source evidence remain unchanged;
+575/575 post-cleanup strict replay uses existing objects with no rebuild.
+Inventory `core076-probe-cleanup.json` and gzip proof are private. Cumulative
+retired products are 2,538 files /1,002,311,858 bytes; separate archival savings
+remain 12,617,291 bytes. Analysis is about 74 MiB and build 4.6 MiB; installed
+tools/game/reference/Ghidra stay protected. Whole proof is compressed from
+the outset at `exact076-canonical-results.json.gz`. The original Enemy literal
+COFF identity stays `$SG111396`, independently checked at 570420. Goal remains
+active; this is a progress checkpoint.
+
 ## EXACT-075 — 2026-10-08 — Actual Card construction and time state
 
 Six complete contributions add 725 body /730 comparison bytes: actual Card

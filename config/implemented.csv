@@ -566,3 +566,10 @@ th20::Card::invalid_encoded_time
 th20::Card::active
 th20::Card::bind_context
 th20::card
+th20::PlayerOption::PlayerOption
+th20::PlayerFeedback::PlayerFeedback
+th20::PlayerCollisionBounds::PlayerCollisionBounds
+th20::PlayerMotionParameters::PlayerMotionParameters
+th20::PlayerShot::PlayerShot
+th20::PlayerShotPool::PlayerShotPool
+th20::PlayerShotController::PlayerShotController

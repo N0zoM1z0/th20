@@ -1,5 +1,22 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-076 — 2026-10-08 — Actual Player subobject protocols
+
+Seven whole constructors establish actual Option/Feedback/CollisionBounds/
+MotionParameters/Shot/ShotController storage, including a real 256-element
+Shot pool, typed Motion/Timer/vector/point/handle members and two intrusive
+lists. Complete member construction, native counts/strides, Option/pool EH
+and full body/padding comparison add 1,494 disjoint bytes. Frozen 575 units /
+105 fresh objects replay 100,616 bytes; origins 502 pending /9 library /64 authored /
+16,948 bytes. Four whole reference associations close, 184 absorbed across 6,945
+terminal reviews. Production guarded O2/UBSan pool/default/list checks pass.
+
+The enclosing Player allocation is 1485C /84,060 bytes; original declaration of
+its untouched +14850 region remains unknown. Whole Player/ANM/resource/gameplay,
+both Enemy readers and the 41 KB opcode root stay open. Independent intrusive
+list constructor emission remains nonexact; shared scalar/loop heads add no
+credit. See [evidence](EXACT_PLAYER_STORAGE_RECONSTRUCTION.md).
+
 ## EXACT-075 — 2026-10-08 — Actual Card owner and time-state protocol
 
 The actual 200-byte Card owns five AnimationHandles, a Timer, name/state, two
