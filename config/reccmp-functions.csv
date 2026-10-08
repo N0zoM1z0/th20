@@ -621,3 +621,14 @@ th20::ProgressRecordHeader::calculate_checksum,0x0050FC90,function
 th20::ProgressSaveManager::parse,0x0050EB70,function
 th20::archive_encrypt,0x004103C0,function
 th20::archive_compress,0x00539550,function
+th20::open_game_output,0x00410840,function
+th20::write_game_output,0x00411060,function
+th20::close_game_output,0x004106E0,function
+th20::report_log_error,0x00454230,function
+th20::ProgressProfile::initialize,0x0050EF00,function
+th20::ProgressMetadata::initialize,0x0050F090,function
+th20::ProgressMetadata::update_integrity,0x004BEB60,function
+th20::ProgressSaveManager::save,0x0050FB60,function
+th20::ProgressSaveManager::load,0x0050F3B0,function
+th20::ProgressSaveManager::write,0x0050F6B0,function
+th20::ProgressMetadata::calculate_integrity,0x00463F20,function

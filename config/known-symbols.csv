@@ -622,3 +622,14 @@ address,name,module,confidence,evidence
 0x0050EB70,th20::ProgressSaveManager::parse,ProgressSaveManager,high,CORE/EXACT-087; docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md
 0x004103C0,th20::archive_encrypt,ArchiveCrypt,high,CORE/EXACT-088; docs/ARCHIVE_WRITE_RECONSTRUCTION.md
 0x00539550,th20::archive_compress,ArchiveLzss,high,CORE/EXACT-088; docs/ARCHIVE_WRITE_RECONSTRUCTION.md
+0x00410840,th20::open_game_output,GameFileIo,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x00411060,th20::write_game_output,GameFileIo,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x004106E0,th20::close_game_output,GameFileIo,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x00454230,th20::report_log_error,DiagnosticLog,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050EF00,th20::ProgressProfile::initialize,ProgressInitialize,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050F090,th20::ProgressMetadata::initialize,ProgressInitialize,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x004BEB60,th20::ProgressMetadata::update_integrity,ProgressIntegrity,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050FB60,th20::ProgressSaveManager::save,ProgressFileWrite,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050F3B0,th20::ProgressSaveManager::load,ProgressFileLoad,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050F6B0,th20::ProgressSaveManager::write,ProgressFileWrite,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x00463F20,th20::ProgressMetadata::calculate_integrity,ProgressIntegrity,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md

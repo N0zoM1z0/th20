@@ -9965,3 +9965,186 @@ relocations = [
   { offset = 0x1A7, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x1AC, type = "REL32", symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z", target = 0x0040D840 },
 ]
+
+[units.game_output_open]
+source = "src/GameFileIo.cpp"
+object = "build/GameFileIo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::open_game_output"]
+symbol = "?open_game_output@th20@@YAHPBD@Z"
+target_address = 0x00410840
+size = 323
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?open_game_output@th20@@YAHPBD@Z", target = 0x00567A55 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2b, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x30, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x4e, type = "REL32", symbol = "??$?0PBD$0A@@path@filesystem@std@@QAE@ABQBDW4format@012@@Z", target = 0x0040C720 },
+  { offset = 0x6c, type = "REL32", symbol = "?c_str@path@filesystem@std@@QBEPB_WXZ", target = 0x0040FF70 },
+  { offset = 0x73, type = "DIR32", symbol = "__imp__CreateFileW@28", target = 0x0056C164 },
+  { offset = 0x78, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x7e, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x9b, type = "DIR32", symbol = "__imp__GetLastError@0", target = 0x0056C130 },
+  { offset = 0xa9, type = "DIR32", symbol = "__imp__FormatMessageW@28", target = 0x0056C128 },
+  { offset = 0xb6, type = "DIR32", symbol = "?file_output_error@th20@@3QBDB", target = 0x0056C658 },
+  { offset = 0xbb, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xc8, type = "DIR32", symbol = "__imp__LocalFree@4", target = 0x0056C12C },
+  { offset = 0xdc, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+  { offset = 0xeb, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xf9, type = "DIR32", symbol = "?file_output_open@th20@@3QBDB", target = 0x0056C6A0 },
+  { offset = 0xfe, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x114, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+  { offset = 0x123, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x13b, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.game_output_write]
+source = "src/GameFileIo.cpp"
+object = "build/GameFileIo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::write_game_output"]
+symbol = "?write_game_output@th20@@YAHPBXI@Z"
+target_address = 0x00411060
+size = 255
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?write_game_output@th20@@YAHPBXI@Z", target = 0x005676ED },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2b, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x30, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x46, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x5f, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x77, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x7e, type = "DIR32", symbol = "__imp__WriteFile@20", target = 0x0056C138 },
+  { offset = 0x8d, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x94, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+  { offset = 0x99, type = "DIR32", symbol = "?file_output_short@th20@@3QBDB", target = 0x0056C6B0 },
+  { offset = 0x9e, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xb7, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xc1, type = "DIR32", symbol = "?file_output_written@th20@@3QBDB", target = 0x0056C6C8 },
+  { offset = 0xc6, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xdf, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xf7, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.game_output_close]
+source = "src/GameFileIo.cpp"
+object = "build/GameFileIo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::close_game_output"]
+symbol = "?close_game_output@th20@@YAHXZ"
+target_address = 0x004106E0
+size = 179
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?close_game_output@th20@@YAHXZ", target = 0x005679CD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2b, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x30, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x46, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x5f, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x69, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x70, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+  { offset = 0x75, type = "DIR32", symbol = "?file_output_closed@th20@@3QBDB", target = 0x0056C71C },
+  { offset = 0x7a, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x93, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xab, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.diagnostic_log_error]
+source = "src/DiagnosticLog.cpp"
+object = "build/DiagnosticLog.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::report_log_error"]
+symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ"
+target_address = 0x00454230
+size = 221
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x005687D0 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2e, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3f, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x59, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x7c, type = "REL32", symbol = "??$vsprintf_s@$0EAA@@@YAHAAY0EAA@DPBDPAD@Z", target = 0x00452D60 },
+  { offset = 0x98, type = "REL32", symbol = "??Y?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV01@QBD@Z", target = 0x004530A0 },
+  { offset = 0xba, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xd5, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.progress_profile_initialize]
+source = "src/ProgressInitialize.cpp"
+object = "build/ProgressInitialize.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::ProgressProfile::initialize"]
+symbol = "?initialize@ProgressProfile@th20@@QAEXXZ"
+target_address = 0x0050EF00
+size = 400
+relocations = [
+  { offset = 0xa3, type = "DIR32", symbol = "?progress_score_default_name@th20@@3QBDB", target = 0x00573710 },
+  { offset = 0xc1, type = "REL32", symbol = "_strcpy_s", target = 0x00548610 },
+  { offset = 0x14e, type = "REL32", symbol = "??A?$array@UProgressSpell@th20@@$0HL@@std@@QAEAAUProgressSpell@th20@@I@Z", target = 0x00486E10 },
+  { offset = 0x161, type = "DIR32", symbol = "?progress_spell_defaults@th20@@3PAIA", target = 0x005AF058 },
+  { offset = 0x17c, type = "REL32", symbol = "??A?$array@UProgressSpell@th20@@$0HL@@std@@QAEAAUProgressSpell@th20@@I@Z", target = 0x00486E10 },
+]
+
+[units.progress_metadata_initialize]
+source = "src/ProgressInitialize.cpp"
+object = "build/ProgressInitialize.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::ProgressMetadata::initialize"]
+symbol = "?initialize@ProgressMetadata@th20@@QAEXXZ"
+target_address = 0x0050F090
+size = 211
+relocations = [
+  { offset = 0x2b, type = "DIR32", symbol = "?progress_metadata_default_name@th20@@3QBDB", target = 0x005724AC },
+  { offset = 0x39, type = "REL32", symbol = "_strcpy_s", target = 0x00548610 },
+  { offset = 0x59, type = "DIR32", symbol = "?progress_random@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x5e, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
+  { offset = 0x8e, type = "DIR32", symbol = "?progress_random@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x93, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
+  { offset = 0xbc, type = "REL32", symbol = "?at@?$array@I$08@std@@QAEAAII@Z", target = 0x004BD080 },
+  { offset = 0xca, type = "REL32", symbol = "?update_integrity@ProgressMetadata@th20@@QAEXXZ", target = 0x004BEB60 },
+]
+
+[units.progress_metadata_update_integrity]
+source = "src/ProgressIntegrity.cpp"
+object = "build/ProgressIntegrity.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::ProgressMetadata::update_integrity"]
+symbol = "?update_integrity@ProgressMetadata@th20@@QAEXXZ"
+target_address = 0x004BEB60
+size = 161
+relocations = [
+  { offset = 0xd, type = "REL32", symbol = "?calculate_integrity@ProgressMetadata@th20@@QBEIXZ", target = 0x00463F20 },
+  { offset = 0x1b, type = "DIR32", symbol = "?progress_random@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x20, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
+  { offset = 0x71, type = "DIR32", symbol = "?progress_random@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x76, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
+]
+
+[units.progress_save_thread]
+source = "src/ProgressFileWrite.cpp"
+object = "build/ProgressFileWrite.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ProgressSaveManager::save"]
+symbol = "?save@ProgressSaveManager@th20@@QAEXPAX@Z"
+target_address = 0x0050FB60
+size = 174
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?save@ProgressSaveManager@th20@@QAEXPAX@Z", target = 0x0056762D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2e, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3c, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x51, type = "DIR32", symbol = "?progress_backup_filename@th20@@3QBDB", target = 0x0057371C },
+  { offset = 0x59, type = "REL32", symbol = "?write@ProgressSaveManager@th20@@QAEHPBDPAUProgressSnapshot@2@@Z", target = 0x0050F6B0 },
+  { offset = 0x62, type = "DIR32", symbol = "?progress_current_filename@th20@@3QBDB", target = 0x00573730 },
+  { offset = 0x6a, type = "REL32", symbol = "?write@ProgressSaveManager@th20@@QAEHPBDPAUProgressSnapshot@2@@Z", target = 0x0050F6B0 },
+  { offset = 0x72, type = "REL32", symbol = "?copy_current_to_backup@ProgressSaveManager@th20@@QAEHXZ", target = 0x0050EEB0 },
+  { offset = 0x77, type = "DIR32", symbol = "?progress_save_end@th20@@3QBDB", target = 0x00573758 },
+  { offset = 0x7c, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x8e, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xa4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

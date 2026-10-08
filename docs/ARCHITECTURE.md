@@ -1,5 +1,62 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-089 — 2026-10-08 — Whole SaveManager file protocol and native I/O
+
+Eight complete file/log/default/integrity/save entries strictly replay 1924 bytes
+and 95 independent relocations. Twenty-three complete SDK/EH contributions also
+agree as support only. Actual SaveManager load/write/save now executes the real
+Profile/Metadata initialization, random stream, codec, parser, backup merge,
+C allocator, native file and PMR logging bodies. Independent custom record,
+score.cpp and game lock/handle/log consumers establish authored origins.
+See [whole protocol and unresolved emission](PROGRESS_FILE_IO_RECONSTRUCTION.md).
+
+Whole load 574/native562, serialization 1274/native1198 and Metadata sum
+125/native134 remain nonexact. Writer range helpers/source identity, load stack
+emission and the sum's signed comparison/index expression remain open. No partial
+extent, inert local, fake return, assembly or mechanically solved range-helper
+anchor is accepted. The original resource reader 410AA0 is a genuine pending
+dependency. The checked nine-element .at accessor is independently established;
+an earlier unchecked 22-byte helper hypothesis was rejected before acceptance.
+
+Actual O2/UBSan tests execute complete nineteen-Profile/Metadata encrypted packets,
+real threads, backup-before-current writes, reload/current-missing fallback,
+initialization/preservation, 64+2 RNG draws, checksum wraparound, ordered C
+allocation/release, log formatting, open failure and short writes. Native ignored
+write results and the non-reset closed handle are preserved. OS, secure-CRT,
+resource and startup boundaries are explicit fixtures; real disk/game runtime
+and invalid allocation/CRT domains remain open.
+
+Frozen replay passes 623/623 units /125 fresh objects /122227 disjoint bytes.
+Source mappings total 633, including 10 whole nonexact methods. Exact-unit origins:
+541 pending/9 library/73 authored. Confirmed authored functions total 78;
+authored exact bytes 19318, 83.73% of the expanded provisional denominator.
+All 6945 reference reviews remain terminal, 218 associations absorbed. The merged
+454150/454230 reference helper remains nonexact because 454150 is still pending.
+All 59 public tests pass in 157.214 seconds.
+
+Protected retirement removes 26 obsolete probe products
+(1314539 bytes). Original receipts and
+8 historical input versions are losslessly
+archived, including the SHA-bound intermediate log header. Net savings after
+archives and cleanup replay: 996949 bytes. All 250 canonical product hashes and
+4795 retained evidence files stay unchanged.
+Post-cleanup 623/623 replay uses 125 existing objects without rebuilding.
+Cumulative retired build products: 2682 files/
+1016599451 bytes. Analysis is 83M and
+build is 6.3M; locked tools/reference/target/Ghidra remain protected.
+
+Proofs: core089-whole-audit.json, core089-cold-support.json,
+core089-final-frozen-source.json, exact089-canonical-results.json.gz,
+core089-cleanup.json and core089-post-cleanup-results.json.gz. Completed
+configuration/registration/cleanup/documentation writers must never rerun.
+Historical probes require restoration of original SHA-bound inputs.
+
+Continue coherent whole roots, prioritizing the actual resource-reader and
+writer range/type protocol, then whole Enemy/State/Controller/Player. Compression
+964/native1036 and parsing 813/native824 remain whole nonexact. Keep one writer,
+serial nice 15, repo-python, attested Ghidra, no REA/delegation and periodic
+protected retirement. Reconstruction remains active.
+
 ## CORE/EXACT-088 — 2026-10-08 — Real archive writing and full codec integration
 
 Whole archive encryption at 4103C0 strictly replays all 446 bytes and six

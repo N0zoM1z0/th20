@@ -25,7 +25,11 @@ struct ProgressProfile {
     ProgressStatistics statistics = {0};
     PracticeScore practice[7][9];
     ProgressProfile() noexcept;
+    void initialize();
 };
+// Native initialization consumes entries 0..112. The complete original table
+// extent and startup definition remain pending; do not invent its remaining data.
+extern std::uint32_t progress_spell_defaults[];
 static_assert(std::is_aggregate_v<ProgressScore>);
 static_assert(sizeof(ProgressSpell)==0xe0);
 static_assert(offsetof(ProgressSpell, captures)==0xc0);

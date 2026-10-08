@@ -31,6 +31,9 @@ struct ProgressMetadata {
     std::uint8_t field_1d0=0, checksum=0, salt_1d2[32]{};
 
     ProgressMetadata();
+    void initialize();
+    std::uint32_t calculate_integrity() const;
+    void update_integrity();
 };
 
 // The enclosing save manager releases these buffers. Snapshot construction

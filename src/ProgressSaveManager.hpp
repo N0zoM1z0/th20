@@ -19,10 +19,9 @@ struct ProgressSaveManager {
     std::int32_t copy_current_to_backup();
     std::int32_t merge_current();
 
-    // Genuine native dependencies. File loading and saving bodies
-    // remain pending; no replacement I/O is supplied by this component.
     void load(void* argument);
     void save(void* argument);
+    std::int32_t write(const char* filename, ProgressSnapshot* snapshot);
     std::int32_t parse(ProgressSnapshot* snapshot);
 };
 

@@ -620,3 +620,14 @@ th20::ProgressRecordHeader::calculate_checksum
 th20::ProgressSaveManager::parse
 th20::archive_encrypt
 th20::archive_compress
+th20::open_game_output
+th20::write_game_output
+th20::close_game_output
+th20::report_log_error
+th20::ProgressProfile::initialize
+th20::ProgressMetadata::initialize
+th20::ProgressMetadata::update_integrity
+th20::ProgressSaveManager::save
+th20::ProgressSaveManager::load
+th20::ProgressSaveManager::write
+th20::ProgressMetadata::calculate_integrity

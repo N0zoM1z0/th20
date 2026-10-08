@@ -64,3 +64,11 @@ address,name,size,status,match_percent,unit,evidence
 0x0053F3B0,th20::EclRuntime::call_into,923,matching,100.00,ecl_runtime_call,"EXACT-056; locked MSVC cold build, complete canonical replay and independent application-owner evidence"
 0x0053B5C0,th20::EclRuntime::tick,11110,matching,100.00,ecl_runtime_tick,"EXACT-057; locked MSVC cold build, whole11504-byte canonical replay including complete table and independent application-owner evidence"
 0x004103C0,th20::archive_encrypt,446,matching,100.00,archive_encrypt,CORE/EXACT-088; docs/ARCHIVE_WRITE_RECONSTRUCTION.md
+0x00410840,th20::open_game_output,323,matching,100.00,game_output_open,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x00411060,th20::write_game_output,255,matching,100.00,game_output_write,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x004106E0,th20::close_game_output,179,matching,100.00,game_output_close,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x00454230,th20::report_log_error,221,matching,100.00,diagnostic_log_error,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050EF00,th20::ProgressProfile::initialize,400,matching,100.00,progress_profile_initialize,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050F090,th20::ProgressMetadata::initialize,211,matching,100.00,progress_metadata_initialize,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x004BEB60,th20::ProgressMetadata::update_integrity,161,matching,100.00,progress_metadata_update_integrity,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050FB60,th20::ProgressSaveManager::save,174,matching,100.00,progress_save_thread,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
