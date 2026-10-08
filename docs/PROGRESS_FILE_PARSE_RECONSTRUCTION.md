@@ -1,10 +1,11 @@
 # Complete progress-file parser and checksum
 
-CORE/EXACT-087 maintains the complete SaveManager parser at 0050EB70 and the
-record checksum at 0050FC90. The checksum strictly replays all 80 bytes without
-relocations. The parser is 813 candidate bytes against the complete native 824;
-it receives source presence and semantic coverage, with no canonical unit,
-prefix credit or reference absorption. Native score.cpp diagnostics establish
+CORE/EXACT-091 strictly replays the complete 824-byte parser at 0050EB70 with
+23 independent relocations. Typed one-past-header payload addressing and
+ordinary Profile value assignment close the earlier CORE-087 emission gaps;
+see [complete exact evidence](PROGRESS_FILE_EXACT_RECONSTRUCTION.md).
+The record checksum at 0050FC90 strictly replays all 80 bytes without
+relocations. Native score.cpp diagnostics establish
 the parser's authored origin independently of its byte comparison. Checksum
 authorship and original class/function spelling remain unknown.
 
@@ -38,7 +39,8 @@ bytes from offset eight to the caller-supplied signed extent. Neither the first
 eight bytes nor the header's size field determines that extent. Two-dimensional
 indexing selects two rows of nine real Profiles; character two selects the
 separate fallback and ignores the second selector. The native parser adds no
-selector bounds checks. Whole memcpy preserves every Profile byte.
+selector bounds checks. Ordinary Profile assignment emits a whole memcpy in
+the pinned x86 compiler and preserves every Profile byte there.
 
 ST records require magic 5453, version two, checksum over 1F8 and size 1F8.
 Assignment copies the actual Metadata owner; native MSVC emits REP MOVSD for
@@ -74,7 +76,7 @@ execute with a null process allocator. Current complete lifecycle candidates
 remain nonexact: constructor 198/native199, commit 68/70, destructor 304/299.
 No lifecycle unit is added and no artificial NOP or shortened extent is used.
 
-## Emission evidence and executed scope
+## Historical CORE-087 emission evidence and executed scope
 
 ProgressFileParse.cpp owns both parser and checksum under an explicit C++20
 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /EHsc /Gd profile without /sdl.
@@ -116,7 +118,7 @@ geometry and reach fallback; do not introduce out-of-array typed subscripts.
 Whole Enemy/State, Controller and Player roots remain open. Use serial nice15,
 repo-python, bounded attested Ghidra and protected periodic retirement.
 
-Final checkpoint: 57 public tests pass (131.530 seconds); 614/614 units
+Historical CORE-087 checkpoint: 57 public tests pass (131.530 seconds); 614/614 units
 strictly replay over 120 fresh objects /119857 disjoint bytes. Protected
 retirement saves 179919 net bytes, preserves 240 canonical hashes and repeats
 614/614 strict replay with 120 existing objects and no rebuild.

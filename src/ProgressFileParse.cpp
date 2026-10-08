@@ -49,10 +49,10 @@ create_default:
             ecl_diagnostic_hint(progress_file_version);
             goto create_default;
         }
-        archive_decrypt(snapshot->file_buffer+static_cast<std::uint32_t>(sizeof(ProgressFileHeader)),
+        archive_decrypt(reinterpret_cast<std::uint8_t*>(&reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)[1]),
             reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->compressed_size,
             0xac,0x35,16,reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->compressed_size);
-        auto* compressed=snapshot->file_buffer+static_cast<std::uint32_t>(sizeof(ProgressFileHeader));
+        auto* compressed=reinterpret_cast<std::uint8_t*>(&reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)[1]);
         snapshot->decoded_buffer=static_cast<std::uint8_t*>(process_allocator->allocate_bytes(
             reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->decoded_size<<2,
             progress_file_decoded_label));
@@ -66,9 +66,8 @@ create_default:
                     cursor->size==sizeof(ProgressProfile)) {
                     auto* profile=reinterpret_cast<ProgressProfile*>(cursor);
                     if (profile->field_0c!=2) {
-                        std::memcpy(&snapshot->profiles[profile->field_0c][profile->field_10],
-                            profile,sizeof(ProgressProfile));
-                    } else std::memcpy(&snapshot->fallback,profile,sizeof(ProgressProfile));
+                        snapshot->profiles[profile->field_0c][profile->field_10]=*profile;
+                    } else snapshot->fallback=*profile;
                 }
             } else if (cursor->magic==0x5453) {
                 if (cursor->version==2 && cursor->calculate_checksum(sizeof(ProgressMetadata))==cursor->checksum &&

@@ -10148,3 +10148,97 @@ relocations = [
   { offset = 0x8e, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0xa4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+[units.progress_file_write]
+source = "src/ProgressFileWrite.cpp"
+object = "build/ProgressFileWrite.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ProgressSaveManager::write"]
+symbol = "?write@ProgressSaveManager@th20@@QAEHPBDPAUProgressSnapshot@2@@Z"
+target_address = 0x0050F6B0
+size = 1198
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?write@ProgressSaveManager@th20@@QAEHPBDPAUProgressSnapshot@2@@Z", target = 0x0056A9A5 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x43, type = "DIR32", symbol = "?progress_file_staging_label@th20@@3QBDB", target = 0x005738A8 },
+  { offset = 0x4e, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x53, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 0x72, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x9a, type = "REL32", symbol = "?begin@th20@@YA?AUIntegerIterator@1@W4ProgressCharacters@1@@Z", target = 0x00461510 },
+  { offset = 0xac, type = "REL32", symbol = "?end@th20@@YA?AUIntegerIterator@1@W4ProgressCharacters@1@@Z", target = 0x0050AE60 },
+  { offset = 0xb9, type = "REL32", symbol = "??EIntegerIterator@th20@@QAEAAU01@XZ", target = 0x00461860 },
+  { offset = 0xc6, type = "REL32", symbol = "??9IntegerIterator@th20@@QBE_NABU01@@Z", target = 0x00449460 },
+  { offset = 0xd9, type = "REL32", symbol = "??DIntegerIterator@th20@@QBEHXZ", target = 0x0040C300 },
+  { offset = 0xf8, type = "REL32", symbol = "?begin@th20@@YA?AUIntegerIterator@1@W4ProgressProfiles@1@@Z", target = 0x00461510 },
+  { offset = 0x10a, type = "REL32", symbol = "?end@th20@@YA?AUIntegerIterator@1@W4ProgressProfiles@1@@Z", target = 0x0050AE80 },
+  { offset = 0x117, type = "REL32", symbol = "??EIntegerIterator@th20@@QAEAAU01@XZ", target = 0x00461860 },
+  { offset = 0x124, type = "REL32", symbol = "??9IntegerIterator@th20@@QBE_NABU01@@Z", target = 0x00449460 },
+  { offset = 0x137, type = "REL32", symbol = "??DIntegerIterator@th20@@QBEHXZ", target = 0x0040C300 },
+  { offset = 0x1bd, type = "REL32", symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z", target = 0x0050FC90 },
+  { offset = 0x1ff, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x23e, type = "REL32", symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z", target = 0x0050FC90 },
+  { offset = 0x261, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x288, type = "REL32", symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z", target = 0x0050FC90 },
+  { offset = 0x2ac, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x2fb, type = "REL32", symbol = "?archive_compress@th20@@YAPAEPBEHPAH@Z", target = 0x00539550 },
+  { offset = 0x33c, type = "REL32", symbol = "?archive_encrypt@th20@@YAPAEPAEHEEHH@Z", target = 0x004103C0 },
+  { offset = 0x346, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x34e, type = "REL32", symbol = "??$?0$$BY0BAAA@D$0A@@path@filesystem@std@@QAE@AAY0BAAA@$$CBDW4format@012@@Z", target = 0x00417CD0 },
+  { offset = 0x361, type = "REL32", symbol = "??$?_0PBD$0A@@path@filesystem@std@@QAEAAV012@ABQBD@Z", target = 0x004D8620 },
+  { offset = 0x36d, type = "REL32", symbol = "?string@path@filesystem@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@XZ", target = 0x0041E790 },
+  { offset = 0x379, type = "REL32", symbol = "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ", target = 0x0040FF30 },
+  { offset = 0x38b, type = "REL32", symbol = "?open_game_output@th20@@YAHPBD@Z", target = 0x00410840 },
+  { offset = 0x397, type = "DIR32", symbol = "?progress_file_write_error@th20@@3QBDB", target = 0x005738E4 },
+  { offset = 0x39c, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
+  { offset = 0x3a1, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454230 },
+  { offset = 0x3b4, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x3b9, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x3d0, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x3d5, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x3f2, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ", target = 0x0040E5A0 },
+  { offset = 0x401, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+  { offset = 0x41a, type = "REL32", symbol = "?write_game_output@th20@@YAHPBXI@Z", target = 0x00411060 },
+  { offset = 0x430, type = "REL32", symbol = "?write_game_output@th20@@YAHPBXI@Z", target = 0x00411060 },
+  { offset = 0x438, type = "REL32", symbol = "?close_game_output@th20@@YAHXZ", target = 0x004106E0 },
+  { offset = 0x449, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x44e, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x461, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ", target = 0x0040E5A0 },
+  { offset = 0x470, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+  { offset = 0x481, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x486, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x4a4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.progress_file_parse]
+source = "src/ProgressFileParse.cpp"
+object = "build/ProgressFileParse.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ProgressSaveManager::parse"]
+symbol = "?parse@ProgressSaveManager@th20@@QAEHPAUProgressSnapshot@2@@Z"
+target_address = 0x0050EB70
+size = 824
+relocations = [
+  { offset = 0x19, type = "DIR32", symbol = "?progress_file_init@th20@@3QBDB", target = 0x005737B0 },
+  { offset = 0x1e, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x40, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x45, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x54, type = "DIR32", symbol = "?progress_file_header_label@th20@@3QBDB", target = 0x005737C0 },
+  { offset = 0x5c, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x61, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 0x77, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x147, type = "DIR32", symbol = "?progress_file_version@th20@@3QBDB", target = 0x00573808 },
+  { offset = 0x14c, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x185, type = "REL32", symbol = "?archive_decrypt@th20@@YAPAEPAEHEEHH@Z", target = 0x004100E0 },
+  { offset = 0x19e, type = "DIR32", symbol = "?progress_file_decoded_label@th20@@3QBDB", target = 0x00573848 },
+  { offset = 0x1b1, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x1b6, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 0x1e0, type = "REL32", symbol = "?archive_decompress@th20@@YAPAEPBEHPAEH@Z", target = 0x005391F0 },
+  { offset = 0x22c, type = "REL32", symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z", target = 0x0050FC90 },
+  { offset = 0x27b, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x298, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x2c4, type = "REL32", symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z", target = 0x0050FC90 },
+  { offset = 0x2f2, type = "DIR32", symbol = "?progress_file_data_error@th20@@3QBDB", target = 0x0057388C },
+  { offset = 0x2f7, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x30f, type = "DIR32", symbol = "?progress_file_data_error@th20@@3QBDB", target = 0x0057388C },
+  { offset = 0x314, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+]

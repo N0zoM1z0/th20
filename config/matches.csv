@@ -72,3 +72,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0050F090,th20::ProgressMetadata::initialize,211,matching,100.00,progress_metadata_initialize,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
 0x004BEB60,th20::ProgressMetadata::update_integrity,161,matching,100.00,progress_metadata_update_integrity,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
 0x0050FB60,th20::ProgressSaveManager::save,174,matching,100.00,progress_save_thread,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050EB70,th20::ProgressSaveManager::parse,824,matching,100.00,progress_file_parse,CORE/EXACT-091; docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md
+0x0050F6B0,th20::ProgressSaveManager::write,1198,matching,100.00,progress_file_write,CORE/EXACT-091; docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md

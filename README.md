@@ -53,10 +53,10 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 633 mapped component functions; 623 canonical units across 125 comparison objects; ten whole methods remain nonexact |
+| Source | 633 mapped component functions; 625 canonical units across 125 comparison objects; eight whole methods remain nonexact |
 | Progress-file parser | Complete parser executes actual checksum/cipher/decoder/allocator and backup merge; checksum80 is exact, parser813/native824 remains nonexact; [evidence](docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
-| Progress-file I/O | 8 whole exact entries; native cursor and cleanup protocol reconstructed; serializer 1,198/native1,198 bytes remains nonexact; [file protocol](docs/PROGRESS_FILE_IO_RECONSTRUCTION.md), [writer evidence](docs/PROGRESS_WRITE_PROTOCOL_RECONSTRUCTION.md) |
-| Authored exactness | 73 functions, 19,318 bytes |
+| Progress-file I/O | 10 whole exact entries; complete serialization and parsing add 2,022 bytes with independent relocation and EH evidence; [file protocol](docs/PROGRESS_FILE_IO_RECONSTRUCTION.md), [exact evidence](docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md) |
+| Authored exactness | 75 functions, 21,340 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Three exact comparisons; enclosing owner and origin review remain open |

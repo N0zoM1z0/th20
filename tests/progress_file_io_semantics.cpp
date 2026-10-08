@@ -133,7 +133,14 @@ void exercise_files() {
     assert(owner->current.file_buffer && owner->backup.file_buffer);
     assert(owner->current.fallback.header.magic==0x5243);
     set_markers(owner->backup,700); set_markers(owner->current,900);
+    // Disk checksums cover object representation, including native Profile
+    // alignment bytes. Preserve those bytes through the actual value copy.
+    auto& represented=owner->current.profiles[1][7];
+    auto* representation=reinterpret_cast<std::uint8_t*>(&represented);
+    for (unsigned index=0x14; index<0x18; ++index) representation[index]=0xa0+index;
     owner->save(nullptr);
+    Bytes represented_bytes(sizeof(represented));
+    std::memcpy(represented_bytes.data(),&represented,sizeof(represented));
     assert(opens==std::vector<std::string>({"/cpu-score/scoreth20bak.dat","/cpu-score/scoreth20.dat"}));
     check_markers(owner->current,900); check_markers(owner->backup,900);
     const auto original_disk=disk;
@@ -174,6 +181,8 @@ void exercise_files() {
     owner->current.file_size=filtered_size;
     assert(owner->parse(&owner->current)==0);
     assert(std::memcmp(omitted_bytes.data(),&omitted,sizeof(omitted))==0);
+    assert(std::memcmp(represented_bytes.data(),&represented,sizeof(represented))==0);
+    assert(represented.header.calculate_checksum(sizeof(represented))==represented.header.checksum);
     for (unsigned character=0; character<2; ++character) for (unsigned index=0; index<9; ++index) {
         if (character==1 && index==8) continue;
         const auto& profile=owner->current.profiles[character][index];

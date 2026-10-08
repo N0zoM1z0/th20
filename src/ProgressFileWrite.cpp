@@ -45,9 +45,9 @@ std::int32_t ProgressSaveManager::write(const char* filename, ProgressSnapshot* 
     snapshot->metadata.header.checksum=snapshot->metadata.header.calculate_checksum(sizeof(ProgressMetadata));
     std::memcpy(staging+count, &snapshot->metadata, sizeof(ProgressMetadata));
     count+=sizeof(ProgressMetadata);
-    const auto* payload_bytes=reinterpret_cast<const std::uint8_t*>(staging);
+    const auto* staged_header=reinterpret_cast<const ProgressFileHeader*>(staging);
     reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->decoded_size=count-sizeof(ProgressFileHeader);
-    auto* compressed=archive_compress(&payload_bytes[sizeof(ProgressFileHeader)],
+    auto* compressed=archive_compress(reinterpret_cast<const std::uint8_t*>(&staged_header[1]),
         reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->decoded_size, reinterpret_cast<std::int32_t*>(&reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->compressed_size));
     reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->file_size=reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->compressed_size+sizeof(ProgressFileHeader);
     archive_encrypt(compressed, reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->compressed_size, 0xac, 0x35, 16, reinterpret_cast<ProgressFileHeader*>(snapshot->file_buffer)->compressed_size);

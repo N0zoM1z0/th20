@@ -1,6 +1,12 @@
 # Whole progress-file serialization protocol
 
-CORE-090 refines the complete SaveManager writer at 50F6B0. The maintained
+CORE/EXACT-091 now strictly replays the complete 1,198-byte writer with 49
+independent relocations. The real header prefix supplies one-past-header payload
+addressing; complete SDK/EH/literal identities close the relocation proof.
+See [current exact evidence](PROGRESS_FILE_EXACT_RECONSTRUCTION.md).
+
+The following records the earlier CORE-090 experiments. That batch refined
+the complete SaveManager writer at 50F6B0. Its then-maintained
 contribution is 1198 bytes, matching the native extent, with 46 structural
 instruction differences. It remains whole nonexact. No new exact unit,
 authored origin, reference absorption or compared-byte coverage is claimed.

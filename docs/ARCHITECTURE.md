@@ -1,5 +1,50 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-091 — 2026-10-08 — Complete progress-file writing and parsing
+
+The complete writer at 50F6B0 and parser at 50EB70 now strictly replay
+1,198 and 824 bytes, respectively, with 72 independent relocations in total.
+The existing 44-byte header prefix explains payload addressing; ordinary
+Profile assignment explains the native whole-record copy and address evaluation.
+See [complete exact evidence](PROGRESS_FILE_EXACT_RECONSTRUCTION.md).
+Earlier CORE-090 emission gaps below are historical and superseded.
+
+Complete literals, independent Game SDK callers and unique complete writer
+EH code/data sections establish relocation identities without solving compared
+fields. Eight cursor/range and four SDK functions plus the writer's complete
+EH sections strictly replay as support only. The SDK append EH retains two
+possible identities; original linkage and range-tag spelling remain open.
+
+Frozen replay passes 625/625 units across 125 fresh objects and 124,249 disjoint
+comparison bytes. Source mappings remain 633, with eight whole nonexact methods.
+Origins are 541 pending/9 library/75 authored exact; 78 functions are confirmed
+authored. Authored exact bytes total 21,340, or 92.49% of the current provisional
+denominator. All 6,945 reference reviews remain terminal, with 220 absorbed.
+All 59 public tests pass in 140.855 seconds; encrypted-packet checks now
+verify complete Profile representation, alignment bytes and record checksum.
+Startup, malformed/allocator/CRT domains and native disk/game runtime remain open.
+
+Protected cleanup retires 6 obsolete probe products / 257,559 bytes.
+Original receipts and two historical input versions remain losslessly archived.
+Net savings after archives and verification are 135,890 bytes. All 250 canonical
+hashes and 4,919 retained evidence files remain unchanged;
+post-cleanup 625/625 strict replay uses the existing 125 objects without rebuilding.
+Cumulative retirement: 2,720 products / 1,018,469,575 bytes. Analysis is 85M and
+build 6.3M; installed tools, native evidence, reference and target are protected.
+
+Private proofs: core091-bindings.json, core091-cold-audit.json,
+core091-final-frozen-source.json, exact091-canonical-results.json.gz,
+core091-cleanup.json and core091-post-cleanup-results.json.gz.
+Completed replay/registration/cleanup/documentation writers must never rerun.
+Historical probes require restoration of their full original SHA-bound inputs.
+
+Continue the complete 583-byte resource reader at 410AA0 and the real archive
+owner's allocation/catalog/lookup/read lifetime protocol, then larger
+Enemy/State/Controller/Player roots. The reference replacement Manager cannot
+supply the native owner ABI. Whole load, Metadata sum and compression remain
+nonexact. Single writer, serial nice15, repo-python, attested Ghidra, no REA or
+delegation and periodic protected retirement remain required. Goal stays active.
+
 ## CORE-090 — 2026-10-08 — Whole writer iteration, storage and cleanup
 
 The complete serializer now emits1198/native1198 bytes, with46 remaining

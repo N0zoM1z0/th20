@@ -619,7 +619,7 @@ address,name,module,confidence,evidence
 0x0050F660,th20::ProgressSaveManager::commit,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
 0x0050E990,th20::ProgressSaveManager::~ProgressSaveManager,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
 0x0050FC90,th20::ProgressRecordHeader::calculate_checksum,ProgressSaveManager,high,CORE/EXACT-087; docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md
-0x0050EB70,th20::ProgressSaveManager::parse,ProgressSaveManager,high,CORE/EXACT-087; docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md
+0x0050EB70,th20::ProgressSaveManager::parse,ProgressSaveManager,high,CORE/EXACT-087; docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md; CORE/EXACT-091; docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md
 0x004103C0,th20::archive_encrypt,ArchiveCrypt,high,CORE/EXACT-088; docs/ARCHIVE_WRITE_RECONSTRUCTION.md
 0x00539550,th20::archive_compress,ArchiveLzss,high,CORE/EXACT-088; docs/ARCHIVE_WRITE_RECONSTRUCTION.md
 0x00410840,th20::open_game_output,GameFileIo,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
@@ -631,5 +631,5 @@ address,name,module,confidence,evidence
 0x004BEB60,th20::ProgressMetadata::update_integrity,ProgressIntegrity,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
 0x0050FB60,th20::ProgressSaveManager::save,ProgressFileWrite,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
 0x0050F3B0,th20::ProgressSaveManager::load,ProgressFileLoad,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
-0x0050F6B0,th20::ProgressSaveManager::write,ProgressFileWrite,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x0050F6B0,th20::ProgressSaveManager::write,ProgressFileWrite,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md; CORE/EXACT-091; docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md
 0x00463F20,th20::ProgressMetadata::calculate_integrity,ProgressIntegrity,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md

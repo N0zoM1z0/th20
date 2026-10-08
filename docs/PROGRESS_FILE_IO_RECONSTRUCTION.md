@@ -2,10 +2,10 @@
 
 CORE/EXACT-089 reconstructs the complete save/load protocol on the existing
 SaveManager, Snapshot, Profile, Metadata, Worker, allocator and codec owners.
-Eight complete contributions pass strict canonical relocation replay. Three
-additional complete bodies execute in the shared protocol and remain nonexact.
-CORE-090 refines the writer's native iteration, storage views and cleanup order;
-see [whole serialization evidence](PROGRESS_WRITE_PROTOCOL_RECONSTRUCTION.md).
+CORE/EXACT-091 adds complete serialization and parsing to the eight CORE-089
+exact contributions. Whole load and Metadata byte sum remain nonexact.
+See [complete exact evidence](PROGRESS_FILE_EXACT_RECONSTRUCTION.md) and
+[earlier serialization experiments](PROGRESS_WRITE_PROTOCOL_RECONSTRUCTION.md).
 This is component reconstruction; original process startup, filesystem runtime
 and a linked playable game remain open.
 
@@ -22,11 +22,13 @@ and a linked playable game remain open.
 | 4BEB60 Metadata integrity update | ProgressIntegrity.cpp | 161 / 161 | Exact |
 | 50FB60 save thread entry | ProgressFileWrite.cpp | 174 / 174 | Exact |
 | 50F3B0 load thread entry | ProgressFileLoad.cpp | 574 / 562 | Whole nonexact |
-| 50F6B0 file serialization | ProgressFileWrite.cpp | 1198 / 1198 | Whole nonexact: 46 structural differences |
+| 50F6B0 file serialization | ProgressFileWrite.cpp | 1198 / 1198 | Exact |
+| 50EB70 file parsing | ProgressFileParse.cpp | 824 / 824 | Exact |
 | 463F20 Metadata byte sum | ProgressIntegrity.cpp | 125 / 134 | Whole nonexact |
 
-The eight accepted roots contribute 1,924 disjoint bytes and 95 independently
-established relocations. Twenty-three complete library/EH contributions also
+The eight CORE-089 roots contribute 1,924 disjoint bytes and 95 independently
+established relocations. CORE-091 adds 2,022 bytes and 72 independent relocations.
+Twenty-three complete CORE-089 library/EH contributions also
 replay as support, without additional coverage. Custom score-record transforms,
 score.cpp diagnostics, shared game locks, the process file handle and custom
 log error state corroborate authored origins separately from byte identity.
@@ -130,7 +132,7 @@ established, but the full exception helper is not claimed exact.
 
 ## Independent evidence and unresolved emission
 
-All eleven native roots are reviewed through their final return, including
+All twelve native roots are reviewed through their final return, including
 every branch and complete extent. Bounded attested Ghidra listings agree with
 the locked PE instructions. Separate owner consumers and the full PE import
 descriptor/lookup tables supply global and IAT identities. Named diagnostics
@@ -144,8 +146,9 @@ They provide support only and are not separate exact progress.
 
 CORE-090 replaces finite std::views::iota with the independently corroborated
 one-word range/cursor protocol. Original tag kinds/type spellings remain inferred;
-complete helpers replay as support without additional exact credit. Writer
-payload-index expression emission remains open. Load retains the full
+complete helpers replay as support without additional exact credit. CORE-091
+closes writer and parser emission with the existing typed header prefix and
+ordinary Profile value assignment. Load retains the full
 562-byte native scope; its stack/source emission differs. The byte checksum
 retains all 134 native bytes, including an unresolved multiply-by-zero/index
 expression and signed comparison; source uses a safe complete-owner byte view.
