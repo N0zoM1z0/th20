@@ -503,7 +503,7 @@ int main() {
         assert(node.callback == callback_a && node.before_insert == nullptr && node.on_shutdown == nullptr);
         node.set_before_insert(callback_b);
         node.set_shutdown_callback(callback_c);
-        node.clear_callbacks();
+        node.set_callback(nullptr);
         assert(node.callback == nullptr && node.before_insert == nullptr && node.on_shutdown == nullptr);
         node.set_owned();
         assert(node.flags.bits == (flags | 1u));

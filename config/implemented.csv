@@ -15,7 +15,7 @@ th20::FunctionChainNode::enable
 th20::FunctionChainNode::disable
 th20::FunctionChainNode::set_before_insert
 th20::FunctionChainNode::set_shutdown_callback
-th20::FunctionChainNode::clear_callbacks
+th20::FunctionChainNode::~FunctionChainNode
 th20::FunctionChainLink::insert_after
 th20::FunctionChainLink::insert_before
 th20::LockRegistry::enable
@@ -666,3 +666,15 @@ th20::RenderMesh::select_context
 th20::RenderMesh::initialize
 th20::RenderMesh::update_strips
 th20::render_mesh_uv
+th20::FunctionChainController::FunctionChainController
+th20::FunctionChainController::create
+th20::FunctionChainController::remove
+th20::register_update
+th20::register_update_disabled
+th20::register_draw
+th20::register_draw_disabled
+th20::FunctionChainController::remove_unlocked
+th20::FunctionChainController::insert_update
+th20::FunctionChainController::insert_draw
+th20::FunctionChainController::update
+th20::FunctionChainController::draw

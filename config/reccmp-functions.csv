@@ -16,7 +16,7 @@ th20::FunctionChainNode::enable,0x00412D80,function
 th20::FunctionChainNode::disable,0x004127F0,function
 th20::FunctionChainNode::set_before_insert,0x00412DC0,function
 th20::FunctionChainNode::set_shutdown_callback,0x00412DA0,function
-th20::FunctionChainNode::clear_callbacks,0x00411B80,function
+th20::FunctionChainNode::~FunctionChainNode,0x00411B80,function
 th20::FunctionChainLink::insert_after,0x00411EE0,function
 th20::FunctionChainLink::insert_before,0x00411F30,function
 th20::LockRegistry::enable,0x0041CCC0,function
@@ -667,3 +667,15 @@ th20::RenderMesh::select_context,0x0049E050,function
 th20::RenderMesh::initialize,0x0049D850,function
 th20::RenderMesh::update_strips,0x0049DDC0,function
 th20::render_mesh_uv,0x0049DF40,function
+th20::FunctionChainController::FunctionChainController,0x00418A80,function
+th20::FunctionChainController::create,0x004127B0,function
+th20::FunctionChainController::remove,0x004124B0,function
+th20::register_update,0x004122C0,function
+th20::register_update_disabled,0x00412310,function
+th20::register_draw,0x00412360,function
+th20::register_draw_disabled,0x004123B0,function
+th20::FunctionChainController::remove_unlocked,0x00412400,function
+th20::FunctionChainController::insert_update,0x00411F80,function
+th20::FunctionChainController::insert_draw,0x00412100,function
+th20::FunctionChainController::update,0x00412810,function
+th20::FunctionChainController::draw,0x00412AA0,function

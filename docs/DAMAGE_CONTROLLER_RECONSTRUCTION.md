@@ -1,5 +1,19 @@
 # Damage controller and whole query evidence
 
+## CORE/EXACT-097 scheduler ownership update
+
+The actual 56-byte FunctionChainController and all four registration entries
+now have maintained source. Complete update/draw, insertion and removal
+protocols run against shared node/list/lock/allocator owners. Independent native
+deleting destruction identifies the existing 41-byte callback-clear root as
+ordinary FunctionChainNode destruction; the source now owns that lifetime.
+Locked removal and disabled-update registration used by HitCtrlInf are complete
+canonical exact functions. See [scheduler protocol](FUNCTION_CHAIN_CONTROLLER_RECONSTRUCTION.md).
+Earlier statements below that scheduler registration/destruction lacks source
+are historical. HitCtrlInf itself still needs actual initialization, region
+disposal and complete owner/query admission; scheduler source alone adds no
+HitCtrlInf canonical or runtime credit.
+
 CORE096 investigates the actual HitCtrlInf owner and the complete damage query
 at 0x004C0480. It follows the existing DamageRegion collision, lifetime,
 intrusive observation, TaskInfo and Session protocols. This is a private

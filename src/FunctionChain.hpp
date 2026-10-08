@@ -27,6 +27,7 @@ struct FunctionChainNode {
     void* userdata;
 
     FunctionChainNode() noexcept;
+    ~FunctionChainNode();
     FunctionChainCallback shutdown_callback_value();
     void* userdata_value();
     void set_callback(FunctionChainCallback value);
@@ -36,7 +37,6 @@ struct FunctionChainNode {
     void disable();
     void set_before_insert(FunctionChainCallback value);
     void set_shutdown_callback(FunctionChainCallback value);
-    void clear_callbacks();
 };
 
 static_assert(sizeof(FunctionChainFlags) == 4);

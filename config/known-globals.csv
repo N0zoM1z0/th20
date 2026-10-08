@@ -9,3 +9,4 @@ address,name,module,confidence,evidence
 0x00576A20,th20::ecl_missing_subroutine_format,EclDiagnostic,high,EXACT-056; native caller and COFF data symbol whole28-byte CP932/NUL comparison; docs/EXACT_ECL_CALL_RECONSTRUCTION.md
 0x005BA4A8,th20::script_random,GameRandom,high,EXACT-057; startup00401120 passes streamID0 to real00422C50/28-byte owner and independent game consumers; declaration only; docs/EXACT_ECL_TICK_RECONSTRUCTION.md
 0x005BA568,th20::session,Session,high,EXACT-073; original initializer401180/CRT56C3CC/ctor422E40/704-byte BSS; docs/EXACT_SESSION_RECONSTRUCTION.md
+0x005B66D8,th20::process_chain,FunctionChainController,high,CORE/EXACT-097; four registration helpers and HitCtrlInf destruction independently read controller pointer; startup open

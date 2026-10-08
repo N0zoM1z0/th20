@@ -12,7 +12,7 @@ address,name,size,status,match_percent,unit,evidence
 0x004127F0,th20::FunctionChainNode::disable,26,matching,100.00,chain_disable,REF-002; locked MSVC cold build and complete canonical replay
 0x00412DC0,th20::FunctionChainNode::set_before_insert,22,matching,100.00,chain_set_before_insert,REF-002; locked MSVC cold build and complete canonical replay
 0x00412DA0,th20::FunctionChainNode::set_shutdown_callback,22,matching,100.00,chain_set_shutdown_callback,REF-002; locked MSVC cold build and complete canonical replay
-0x00411B80,th20::FunctionChainNode::clear_callbacks,41,matching,100.00,chain_clear_callbacks,REF-002; locked MSVC cold build and complete canonical replay
+0x00411B80,th20::FunctionChainNode::~FunctionChainNode,41,matching,100.00,chain_clear_callbacks,REF-002; locked MSVC cold build and complete canonical replay
 0x00411EE0,th20::FunctionChainLink::insert_after,76,matching,100.00,chain_insert_after,REF-002; locked MSVC cold build and complete canonical replay
 0x00411F30,th20::FunctionChainLink::insert_before,76,matching,100.00,chain_insert_before,REF-002; locked MSVC cold build and complete canonical replay
 0x0041CCC0,th20::LockRegistry::enable,21,matching,100.00,registry_enable,REF-003; locked MSVC cold build and complete canonical relocation replay

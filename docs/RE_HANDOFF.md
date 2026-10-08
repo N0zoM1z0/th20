@@ -1,5 +1,53 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-097 — 2026-10-09 — Complete scheduler ownership and dispatch
+
+The real 56-byte FunctionChainController now has complete maintained update,
+draw, sorted insertion, removal and four distinct registration bodies. Seven
+complete canonical roots add 518 compared bytes and 39 independent relocations.
+Frozen 235-file source passes 666/666 strict units across 132 fresh objects and
+129,954 disjoint comparison bytes. Source mappings are 680, including fourteen
+whole nonexact methods. See [scheduler protocol](FUNCTION_CHAIN_CONTROLLER_RECONSTRUCTION.md).
+
+Independent deleting destruction and destroy_at calls identify native 411B80
+as ordinary FunctionChainNode destruction, superseding the old clear_callbacks
+helper name. Its existing 41-byte canonical root is renamed without duplicate
+credit; the legacy unit ID stays stable. The shared actual allocator release
+protocol now runs real node destruction. Complete deleting destructor (46 bytes),
+destroy_at (16 bytes) and release_object (97 bytes) strictly replay as support only.
+
+Whole unlocked removal156/native162, each insertion371/native381,
+update640/native648 and draw592/native612 remain nonexact. Both dispatcher
+contributions retain original tables and one-byte NOP alignment; no inert
+initialization or dead pointer reset is added to shape emission. The complete
+native bodies611/587, closed branches and omitted Ghidra heads are independently
+audited. Public O2/UBSan checks and a private ASan/UBSan precursor cover all
+9/6 actions, retries/restart, shutdown, counts, order, locks, pending-node
+removal, observer repair and all four owned registrations/releases.
+
+All 63 public tests pass in 186.839 seconds. Authored exact coverage remains
+84 functions/24,209 bytes; reference absorption remains 238 and all 6,945 reviews
+remain terminal. New origins stay unknown. Process startup, controller shutdown,
+factory compiler initialization and native game runtime remain open. Next close
+HitCtrlInf initialization/region disposal and admit its actual lifecycle before
+the complete damage query. The fresh active private HitCtrlInf object is
+build/core097-HitCtrlInf.obj: five complete roots still strictly replay 473 comparison bytes.
+Original core096 source/header inputs remain active; its older object is retired.
+
+Protected cleanup retires 71 replaced probe products and bytecode caches,
+561,585 bytes gross/515,977 net. Original SHA-bound private inputs and receipts
+are checked and losslessly archived. All 266 canonical/active hashes remain
+protected; post-cleanup 666 strict results equal the compressed frozen proof.
+No redundant rebuild or full duplicate replay report is written. Cumulative
+retirement is 2,823 products/1,021,057,524 bytes gross. The build directory occupies about 7.0 MiB; analysis occupies about 88 MiB.
+Proofs: core097-staged.json, core097-native-roots-audit.json,
+core097-final-frozen-source.json, exact097-canonical-results.json.gz,
+core097-registered.json, core097-production-lifetime-support.json,
+core097-hit-whole-bindings.json, core097-retired-inputs.json.gz and
+core097-cleanup.json. Completed writers must not rerun. Goal remains active;
+serial nice15, repo-python, attested Ghidra, no REA/delegation and periodic
+protected storage retirement continue.
+
 ## CORE096 — 2026-10-09 — Whole damage query and controller construction evidence
 
 The complete native HitCtrlInf damage query at 0x004C0480 is independently

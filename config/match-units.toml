@@ -545,8 +545,8 @@ relocations = []
 source = "src/FunctionChain.cpp"
 object = "build/FunctionChain.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
-functions = ["th20::FunctionChainNode::clear_callbacks"]
-symbol = "?clear_callbacks@FunctionChainNode@th20@@QAEXXZ"
+functions = ["th20::FunctionChainNode::~FunctionChainNode"]
+symbol = "??1FunctionChainNode@th20@@QAE@XZ"
 target_address = 0x00411B80
 size = 41
 relocations = []
@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111450", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111449", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8987,7 +8987,7 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111123", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111122", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
@@ -9013,7 +9013,7 @@ relocations = [
   { offset = 0x69, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x79, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 0x112, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 0x13E, type = "DIR32", symbol = "$SG7096", target = 0x0056FD94 },
+  { offset = 0x13E, type = "DIR32", symbol = "$SG7095", target = 0x0056FD94 },
   { offset = 0x143, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9223,7 +9223,7 @@ relocations = [
   { offset = 0x3E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x49, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x68, type = "REL32", symbol = "??0Configuration@th20@@QAE@XZ", target = 0x004B9C10 },
-  { offset = 0xD7, type = "DIR32", symbol = "$SG1659", target = 0x00570B10 },
+  { offset = 0xD7, type = "DIR32", symbol = "$SG1658", target = 0x00570B10 },
   { offset = 0xDC, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79684", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79683", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -10794,4 +10794,120 @@ relocations = [
   { offset = 9, type = "REL32", symbol = "?mesh_width@WindowState@th20@@QBEHXZ", target = 0x0049DFD0 },
   { offset = 34, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
   { offset = 39, type = "REL32", symbol = "?mesh_height@WindowState@th20@@QBEHXZ", target = 0x0049DFB0 },
+]
+
+[units.chain_controller_ctor]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::FunctionChainController"]
+symbol = "??0FunctionChainController@th20@@QAE@XZ"
+target_address = 0x00418A80
+size = 55
+relocations = [
+  { offset = 23, type = "REL32", symbol = "??0?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 34, type = "REL32", symbol = "??0?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+]
+
+[units.chain_controller_create]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::create"]
+symbol = "?create@FunctionChainController@th20@@QAEPAUFunctionChainNode@2@P6AHPAX@Z@Z"
+target_address = 0x004127B0
+size = 57
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "$SG78138", target = 0x0056C728 },
+  { offset = 16, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 21, type = "REL32", symbol = "??$allocate_object@UFunctionChainNode@th20@@@DiagnosticAllocator@th20@@QAEPAUFunctionChainNode@1@PBD@Z", target = 0x00411910 },
+  { offset = 36, type = "REL32", symbol = "?set_callback@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z", target = 0x00412D50 },
+  { offset = 44, type = "REL32", symbol = "?set_owned@FunctionChainNode@th20@@QAEXXZ", target = 0x00412D30 },
+]
+
+[units.chain_controller_remove]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::remove"]
+symbol = "?remove@FunctionChainController@th20@@QAEXPAUFunctionChainNode@2@@Z"
+target_address = 0x004124B0
+size = 134
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?remove@FunctionChainController@th20@@QAEXPAUFunctionChainNode@2@@Z", target = 0x0056762D },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 54, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 59, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 68, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 87, type = "REL32", symbol = "?remove_unlocked@FunctionChainController@th20@@QAEXPAUFunctionChainNode@2@@Z", target = 0x00412400 },
+  { offset = 102, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 124, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.chain_register_update]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::register_update"]
+symbol = "?register_update@th20@@YAPAUFunctionChainNode@1@HP6AHPAX@Z0@Z"
+target_address = 0x004122C0
+size = 68
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 15, type = "REL32", symbol = "?create@FunctionChainController@th20@@QAEPAUFunctionChainNode@2@P6AHPAX@Z@Z", target = 0x004127B0 },
+  { offset = 30, type = "REL32", symbol = "?set_userdata@FunctionChainNode@th20@@QAEXPAX@Z", target = 0x00412D10 },
+  { offset = 38, type = "REL32", symbol = "?enable@FunctionChainNode@th20@@QAEXXZ", target = 0x00412D80 },
+  { offset = 52, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 57, type = "REL32", symbol = "?insert_update@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z", target = 0x00411F80 },
+]
+
+[units.chain_register_update_disabled]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::register_update_disabled"]
+symbol = "?register_update_disabled@th20@@YAPAUFunctionChainNode@1@HP6AHPAX@Z0@Z"
+target_address = 0x00412310
+size = 68
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 15, type = "REL32", symbol = "?create@FunctionChainController@th20@@QAEPAUFunctionChainNode@2@P6AHPAX@Z@Z", target = 0x004127B0 },
+  { offset = 30, type = "REL32", symbol = "?set_userdata@FunctionChainNode@th20@@QAEXPAX@Z", target = 0x00412D10 },
+  { offset = 38, type = "REL32", symbol = "?disable@FunctionChainNode@th20@@QAEXXZ", target = 0x004127F0 },
+  { offset = 52, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 57, type = "REL32", symbol = "?insert_update@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z", target = 0x00411F80 },
+]
+
+[units.chain_register_draw]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::register_draw"]
+symbol = "?register_draw@th20@@YAPAUFunctionChainNode@1@HP6AHPAX@Z0@Z"
+target_address = 0x00412360
+size = 68
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 15, type = "REL32", symbol = "?create@FunctionChainController@th20@@QAEPAUFunctionChainNode@2@P6AHPAX@Z@Z", target = 0x004127B0 },
+  { offset = 30, type = "REL32", symbol = "?set_userdata@FunctionChainNode@th20@@QAEXPAX@Z", target = 0x00412D10 },
+  { offset = 38, type = "REL32", symbol = "?enable@FunctionChainNode@th20@@QAEXXZ", target = 0x00412D80 },
+  { offset = 52, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 57, type = "REL32", symbol = "?insert_draw@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z", target = 0x00412100 },
+]
+
+[units.chain_register_draw_disabled]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::register_draw_disabled"]
+symbol = "?register_draw_disabled@th20@@YAPAUFunctionChainNode@1@HP6AHPAX@Z0@Z"
+target_address = 0x004123B0
+size = 68
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 15, type = "REL32", symbol = "?create@FunctionChainController@th20@@QAEPAUFunctionChainNode@2@P6AHPAX@Z@Z", target = 0x004127B0 },
+  { offset = 30, type = "REL32", symbol = "?set_userdata@FunctionChainNode@th20@@QAEXPAX@Z", target = 0x00412D10 },
+  { offset = 38, type = "REL32", symbol = "?disable@FunctionChainNode@th20@@QAEXXZ", target = 0x004127F0 },
+  { offset = 52, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 57, type = "REL32", symbol = "?insert_draw@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z", target = 0x00412100 },
 ]

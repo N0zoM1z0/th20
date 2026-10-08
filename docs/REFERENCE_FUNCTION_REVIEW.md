@@ -1817,7 +1817,7 @@ need their own review; this is not a module-wide completion claim.
 | Node::disable | 0x004127F0 | 26 |
 | Node::set_before_insert | 0x00412DC0 | 22 |
 | Node::set_shutdown_callback | 0x00412DA0 | 22 |
-| Node::clear_callbacks | 0x00411B80 | 41 |
+| Node::~FunctionChainNode (CORE/EXACT-097 ownership correction) | 0x00411B80 | 41 |
 
 All eleven pass complete canonical replay with no relocations: 443 authored
 bytes. Target node construction and link consumers independently establish

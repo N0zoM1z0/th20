@@ -41,7 +41,7 @@ void FunctionChainNode::set_shutdown_callback(FunctionChainCallback value) {
     on_shutdown = value;
 }
 
-void FunctionChainNode::clear_callbacks() {
+FunctionChainNode::~FunctionChainNode() {
     callback = nullptr;
     before_insert = nullptr;
     on_shutdown = nullptr;

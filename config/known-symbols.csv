@@ -17,7 +17,7 @@ address,name,module,confidence,evidence
 0x004127F0,th20::FunctionChainNode::disable,FunctionChain,high,REF-002
 0x00412DC0,th20::FunctionChainNode::set_before_insert,FunctionChain,high,REF-002
 0x00412DA0,th20::FunctionChainNode::set_shutdown_callback,FunctionChain,high,REF-002
-0x00411B80,th20::FunctionChainNode::clear_callbacks,FunctionChain,high,REF-002
+0x00411B80,th20::FunctionChainNode::~FunctionChainNode,FunctionChain,high,REF-002
 0x00411EE0,th20::FunctionChainLink::insert_after,FunctionChain,high,REF-002
 0x00411F30,th20::FunctionChainLink::insert_before,FunctionChain,high,REF-002
 0x0041CCC0,th20::LockRegistry::enable,LockRegistry,high,REF-003
@@ -668,3 +668,15 @@ address,name,module,confidence,evidence
 0x0049D850,th20::RenderMesh::initialize,RenderMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
 0x0049DDC0,th20::RenderMesh::update_strips,RenderMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
 0x0049DF40,th20::render_mesh_uv,RenderMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x00418A80,th20::FunctionChainController::FunctionChainController,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x004127B0,th20::FunctionChainController::create,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x004124B0,th20::FunctionChainController::remove,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x004122C0,th20::register_update,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x00412310,th20::register_update_disabled,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x00412360,th20::register_draw,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x004123B0,th20::register_draw_disabled,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x00412400,th20::FunctionChainController::remove_unlocked,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x00411F80,th20::FunctionChainController::insert_update,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x00412100,th20::FunctionChainController::insert_draw,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x00412810,th20::FunctionChainController::update,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x00412AA0,th20::FunctionChainController::draw,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
