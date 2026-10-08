@@ -102,6 +102,8 @@ struct EnemyState {
     int advance_scripts();
     void combine_movements();
     int update_movements();
+    void update_mesh();
+    Vector3& position_ref();
     // The whole 48C010 dispatcher remains undefined while its owners are closed.
     int execute_opcode();
     void change_animation();

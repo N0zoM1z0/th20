@@ -22,7 +22,10 @@ struct SpriteColoredVertex {
 struct SpriteTexturedVertex {
     Vector3 position;
     float reciprocal_w;
-    std::uint32_t color;
+    union {
+        std::uint32_t color;
+        struct { std::uint8_t blue, green, red, alpha; } channels;
+    };
     float u, v;
     SpriteTexturedVertex();
 };

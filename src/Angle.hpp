@@ -13,6 +13,7 @@ struct Angle {
     operator float() const;
     Angle& operator=(float input);
     Angle& operator+=(float input);
+    Angle& operator-=(float input);
     Angle operator+(float input) const;
     Angle operator+(const Angle& other) const;
     Angle operator*(float factor) const;

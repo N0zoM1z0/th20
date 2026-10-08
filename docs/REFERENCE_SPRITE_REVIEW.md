@@ -1,5 +1,14 @@
 # Sprite, ANM, rendering and texture review
 
+CORE/EXACT-095 closes four further complete native mesh operations: context
+selection, UV conversion, strip update and grid initialization. Their reference
+target associations now point to canonical actual-owner bodies; the reference
+free replacement wrappers remain diagnostic rather than byte-exact imports.
+Thirteen complete mesh/interface roots add 1,165 comparison bytes. The whole
+enemy deformation consumer remains 1,548/native 1,649 and receives no exact
+credit. See [mesh protocol evidence](RENDER_MESH_RECONSTRUCTION.md). Historical
+REF-042 counts and open-owner descriptions below retain their original scope.
+
 EXACT-060 independently reconstructs the real ANM Base/Animation owners rather
 than importing reference raw clearing and packed fields. Ten whole lifetime,
 partial-reset, resource-release and recursive-scale/extent functions add2,870

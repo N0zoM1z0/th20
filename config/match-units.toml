@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111446", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111450", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8987,7 +8987,7 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111119", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111123", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79682", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79684", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9587,10 +9587,10 @@ symbol = "?spawn@EclManager@th20@@QAEHHH@Z"
 target_address = 0x0053E390
 size = 182
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG98900", target = 0x00576A40 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG98902", target = 0x00576A40 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEclRuntime@th20@@@DiagnosticAllocator@th20@@QAEPAUEclRuntime@1@PBD@Z", target = 0x0053B3D0 },
-  { offset = 0x1D, type = "DIR32", symbol = "$SG98901", target = 0x00576A88 },
+  { offset = 0x1D, type = "DIR32", symbol = "$SG98903", target = 0x00576A88 },
   { offset = 0x23, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x28, type = "REL32", symbol = "??$allocate_object@U?$IntrusiveLink@UEclRuntime@th20@@@th20@@@DiagnosticAllocator@th20@@QAEPAU?$IntrusiveLink@UEclRuntime@th20@@@1@PBD@Z", target = 0x0053B410 },
   { offset = 0x76, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEXPAUEclRuntime@2@@Z", target = 0x0044A670 },
@@ -10626,4 +10626,172 @@ relocations = [
   { offset = 181, type = "REL32", symbol = "_wcscpy_s", target = 0x00548100 },
   { offset = 227, type = "REL32", symbol = "_wcscat_s", target = 0x005517B0 },
   { offset = 240, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.enemy_mesh_owner_ctor]
+source = "src/EnemyMesh.cpp"
+object = "build/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "??0EnemyMeshOwner@th20@@QAE@XZ"
+functions = ["th20::EnemyMeshOwner::EnemyMeshOwner"]
+target_address = 0x0048B370
+size = 88
+relocations = [
+  { offset = 65, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 76, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
+]
+
+[units.angle_subtract_float]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "??ZAngle@th20@@QAEAAU01@M@Z"
+functions = ["th20::Angle::operator-=(float)"]
+target_address = 0x00472060
+size = 47
+relocations = [
+  { offset = 26, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+]
+
+[units.mesh_squared_norm_xy]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?squared_norm_xy@th20@@YAMABUVector3@1@@Z"
+functions = ["th20::squared_norm_xy"]
+target_address = 0x00456130
+size = 50
+relocations = [
+]
+
+[units.animation_mesh_vertices]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?mesh_vertices@Animation@th20@@QAEPAUSpriteTexturedVertex@2@XZ"
+functions = ["th20::Animation::mesh_vertices"]
+target_address = 0x0049DFF0
+size = 20
+relocations = [
+]
+
+[units.enemy_state_position_ref]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ"
+functions = ["th20::EnemyState::position_ref"]
+target_address = 0x00499350
+size = 25
+relocations = [
+  { offset = 17, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+]
+
+[units.window_mesh_view_x]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?mesh_view_x@WindowState@th20@@QBEHH@Z"
+functions = ["th20::WindowState::mesh_view_x"]
+target_address = 0x0049DF00
+size = 23
+relocations = [
+]
+
+[units.window_mesh_view_y]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?mesh_view_y@WindowState@th20@@QBEHH@Z"
+functions = ["th20::WindowState::mesh_view_y"]
+target_address = 0x0049DF20
+size = 23
+relocations = [
+]
+
+[units.window_mesh_width]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?mesh_width@WindowState@th20@@QBEHXZ"
+functions = ["th20::WindowState::mesh_width"]
+target_address = 0x0049DFD0
+size = 20
+relocations = [
+]
+
+[units.window_mesh_height]
+source = "src/MeshInterfaces.cpp"
+object = "build/MeshInterfaces.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?mesh_height@WindowState@th20@@QBEHXZ"
+functions = ["th20::WindowState::mesh_height"]
+target_address = 0x0049DFB0
+size = 20
+relocations = [
+]
+
+[units.render_mesh_select_context]
+source = "src/RenderMesh.cpp"
+object = "build/RenderMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?select_context@RenderMesh@th20@@QAEXH@Z"
+functions = ["th20::RenderMesh::select_context"]
+target_address = 0x0049E050
+size = 45
+relocations = [
+  { offset = 24, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 29, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+]
+
+[units.render_mesh_initialize]
+source = "src/RenderMesh.cpp"
+object = "build/RenderMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?initialize@RenderMesh@th20@@QAEXMMMM@Z"
+functions = ["th20::RenderMesh::initialize"]
+target_address = 0x0049D850
+size = 503
+relocations = [
+  { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 40, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 45, type = "REL32", symbol = "?mesh_view_y@WindowState@th20@@QBEHH@Z", target = 0x0049DF20 },
+  { offset = 71, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 76, type = "REL32", symbol = "?mesh_view_x@WindowState@th20@@QBEHH@Z", target = 0x0049DF00 },
+  { offset = 129, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 144, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 174, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 356, type = "REL32", symbol = "?render_mesh_uv@th20@@YAXUVector3@1@AAM1@Z", target = 0x0049DF40 },
+  { offset = 370, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 435, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 440, type = "REL32", symbol = "?mesh_view_y@WindowState@th20@@QBEHH@Z", target = 0x0049DF20 },
+  { offset = 482, type = "REL32", symbol = "?update_strips@RenderMesh@th20@@QAEXXZ", target = 0x0049DDC0 },
+  { offset = 493, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.render_mesh_update_strips]
+source = "src/RenderMesh.cpp"
+object = "build/RenderMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?update_strips@RenderMesh@th20@@QAEXXZ"
+functions = ["th20::RenderMesh::update_strips"]
+target_address = 0x0049DDC0
+size = 194
+relocations = [
+  { offset = 77, type = "REL32", symbol = "?mesh_vertices@Animation@th20@@QAEPAUSpriteTexturedVertex@2@XZ", target = 0x0049DFF0 },
+]
+
+[units.render_mesh_uv]
+source = "src/RenderMesh.cpp"
+object = "build/RenderMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+symbol = "?render_mesh_uv@th20@@YAXUVector3@1@AAM1@Z"
+functions = ["th20::render_mesh_uv"]
+target_address = 0x0049DF40
+size = 107
+relocations = [
+  { offset = 4, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 9, type = "REL32", symbol = "?mesh_width@WindowState@th20@@QBEHXZ", target = 0x0049DFD0 },
+  { offset = 34, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 39, type = "REL32", symbol = "?mesh_height@WindowState@th20@@QBEHXZ", target = 0x0049DFB0 },
 ]

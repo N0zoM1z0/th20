@@ -654,3 +654,17 @@ address,name,module,confidence,evidence
 0x00538C20,Pbg::File::size,PbgFile,high,CORE/EXACT-094; docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md
 0x00538F10,Pbg::File::seek,PbgFile,high,CORE/EXACT-094; docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md
 0x00538E10,Pbg::convert_filename,PbgFile,high,CORE/EXACT-094; docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md
+0x0048B370,th20::EnemyMeshOwner::EnemyMeshOwner,EnemyMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x004A4190,th20::EnemyState::update_mesh,EnemyMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x00472060,th20::Angle::operator-=(float),MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x00456130,th20::squared_norm_xy,MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049DFF0,th20::Animation::mesh_vertices,MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x00499350,th20::EnemyState::position_ref,MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049DF00,th20::WindowState::mesh_view_x,MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049DF20,th20::WindowState::mesh_view_y,MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049DFD0,th20::WindowState::mesh_width,MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049DFB0,th20::WindowState::mesh_height,MeshInterfaces,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049E050,th20::RenderMesh::select_context,RenderMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049D850,th20::RenderMesh::initialize,RenderMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049DDC0,th20::RenderMesh::update_strips,RenderMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md
+0x0049DF40,th20::render_mesh_uv,RenderMesh,high,CORE/EXACT-095; docs/RENDER_MESH_RECONSTRUCTION.md

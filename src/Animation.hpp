@@ -12,6 +12,7 @@
 #include <cstdint>
 namespace th20 {
 struct AnimationCallback;
+struct SpriteTexturedVertex;
 struct AnimationColorChannels { std::uint8_t blue, green, red, alpha; };
 struct AnimationFlagBytes { std::uint8_t field_00, field_01; };
 // Mixed flag storage observed through byte/word producers and consumers.
@@ -95,6 +96,7 @@ struct Animation {
     void release_resources();
     void reset();
     void set_slowdown(float value);
+    SpriteTexturedVertex* mesh_vertices();
     Vector3& position_ref();
     float inherited_scale_y();
     float inherited_scale_x();

@@ -36,7 +36,9 @@ struct WindowState {
     std::int32_t playfield_width, playfield_height;
     std::int32_t offset_x, offset_y;
     struct Pair { std::int32_t first, second; };
-    std::array<Pair, 6> retained_pairs;
+    Pair retained_28, retained_30;
+    std::int32_t mesh_offset_x[2], mesh_offset_y[2];
+    Pair retained_48, retained_50;
     std::int32_t field_0058, field_005c, field_0060, field_0064;
     std::uint8_t active, cursor_latch;
     std::uint32_t startup_status;
@@ -64,6 +66,10 @@ struct WindowState {
     std::array<RepeatCounter, 4> repeat;
 
     std::int32_t display_mode() const;
+    std::int32_t mesh_view_x(std::int32_t index) const;
+    std::int32_t mesh_view_y(std::int32_t index) const;
+    std::int32_t mesh_width() const;
+    std::int32_t mesh_height() const;
     std::uint32_t needs_device_reset() const;
     void set_draw_counter(std::int8_t value);
     void set_device_reset(std::uint32_t value);
@@ -83,6 +89,10 @@ static_assert(sizeof(void*) != 4 || offsetof(WindowState, display_mode_value) ==
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, flags) == 0x2090);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, field_2098) == 0x2098);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, current_time) == 0x20c8);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, mesh_offset_x) == 0x38);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, mesh_offset_y) == 0x40);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, scaled_width) == 0x20a0);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, scaled_height) == 0x20a4);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, repeat) == 0x2104);
 
 // Storage is deliberately undefined until original startup is reconstructed.

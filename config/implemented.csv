@@ -652,3 +652,17 @@ Pbg::File::position
 Pbg::File::size
 Pbg::File::seek
 Pbg::convert_filename
+th20::EnemyMeshOwner::EnemyMeshOwner
+th20::EnemyState::update_mesh
+th20::Angle::operator-=(float)
+th20::squared_norm_xy
+th20::Animation::mesh_vertices
+th20::EnemyState::position_ref
+th20::WindowState::mesh_view_x
+th20::WindowState::mesh_view_y
+th20::WindowState::mesh_width
+th20::WindowState::mesh_height
+th20::RenderMesh::select_context
+th20::RenderMesh::initialize
+th20::RenderMesh::update_strips
+th20::render_mesh_uv

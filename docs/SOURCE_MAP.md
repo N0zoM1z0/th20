@@ -1,5 +1,49 @@
 # Source and build ownership
 
+## CORE/EXACT-095 — 2026-10-09 — Mesh geometry and enemy deformation
+
+Thirteen complete production roots add 1,165 strictly compared bytes and 25
+independent relocations: grid initialization, adjacent-column strip update,
+UV conversion, context selection, owner construction and native interfaces.
+Frozen replay passes 659/659 units across 131 fresh objects and 129,436 disjoint
+comparison bytes, with 233 source files unchanged. See
+[mesh reconstruction evidence](RENDER_MESH_RECONSTRUCTION.md).
+
+Real RenderMesh, EnemyMeshOwner, Animation, Session, WindowState, Motion and
+Angle owners share one maintained geometric implementation. Native offsets
+refine WindowState's two mesh-coordinate arrays without changing its extent;
+mesh dimensions use scaled width/height rather than client dimensions. The
+entire EnemyState deformation body remains 1,548/native 1,649 and receives no
+exact credit. Native unused radius-to-byte emission, allocation, deletion,
+renderer publication and invalid-conversion domains remain open.
+
+All 62 public tests pass in 174.426 seconds, including eighteen grid cases and
+192 complete deformation cases under O2/UBSan/float-cast-overflow checking.
+Source mappings are 668 with nine whole nonexact methods. All thirteen new
+canonical origins remain unknown: totals 566 unknown, nine library and 84
+independently authored. Authored exact coverage remains 84 functions/24,209
+bytes. Four complete reference target associations bring absorbed total to
+238; all 6,945 reference reviews remain terminal. Replacement free APIs are
+not byte-exact imports, and authored coverage is not whole-game completion.
+
+Protected cleanup retires twelve superseded probe products plus one historical
+successful replay snapshot: 13 files/781,290 bytes gross. Historical source and
+original receipts remain losslessly archived; all original SHA-bound inputs
+are checked. The 397-unit historical snapshot is now core058-cleanup-replay.log.gz
+and decompresses to the original bytes. All 262 canonical hashes and 5,072
+evidence files remain protected. Post-cleanup 659/659 strict replay reuses
+131 existing objects; no redundant rebuild. Net savings after source, receipt,
+snapshot and verification archives: 419,078 bytes. Cumulative retirement:
+2,749 products/1,020,425,955 bytes gross. Build 6.9M/analysis 87M.
+
+Proofs: core095-production-bindings.json, core095-cold-audit.json,
+core095-final-frozen-source.json, exact095-canonical-results.json.gz,
+core095-registered.json, core095-probe-inputs.json.gz, core095-cleanup.json
+and core095-post-cleanup-results.json.gz. Completed writers must never rerun.
+Continue larger Enemy/State/Controller/Player protocols. The reconstruction
+remains unfinished; single writer, serial nice15, repo-python, attested Ghidra,
+no REA/delegation and periodic protected retirement continue.
+
 ## CORE/EXACT-094 — 2026-10-09 — Whole archive/resource production admission
 
 Twenty-one complete production roots now strictly replay 4,022 comparison bytes
