@@ -24,8 +24,8 @@ unsigned lookup_calls = 0, find_calls = 0;
 namespace th20 {
 // Deliberate fixtures supply VM construction/default slots, production startup,
 // pool/context selection, subroutine lookup and the spawn-application boundary.
-// Actual creation, initialization, state/reset, generation, lists and selection
-// run unchanged; the real VM lifetime has its own owned test.
+// Actual Controller/Task construction, creation, initialization, state/reset,
+// generation, lists and selection run unchanged; the VM lifetime has its own test.
 LockRegistry process_locks;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
 DiagnosticAllocator allocator;
@@ -39,7 +39,6 @@ Enemy::~Enemy() = default;
 TaskInfo::~TaskInfo() = default;
 void TaskInfo::enable() { std::abort(); }
 void TaskInfo::disable() { std::abort(); }
-EnemyController::EnemyController() noexcept : field_124(0), player_index(0), context(nullptr) {}
 EnemyController::~EnemyController() = default;
 int EclManager::execute_opcode() { std::abort(); }
 int EclManager::read_integer(int) { std::abort(); }
@@ -90,6 +89,42 @@ int Enemy::apply_spawn(const EnemySpawn& parameters) {
 int main() {
     using namespace th20;
     EnemyController controller;
+    assert(controller.flags == 2 && !controller.update_node && !controller.draw_node);
+    assert(controller.loaded_names.empty() && controller.loaded_names.capacity() == 0);
+    assert(controller.field_c4 == 0 && controller.field_c8 == 0 && controller.field_cc == 0);
+    assert(controller.field_e0 == 0 && controller.field_120 == 0 && controller.field_124 == 0);
+    assert(controller.identifier_128.value == 0 && controller.player_index == 0 && !controller.context);
+    assert(!controller.loader && controller.enemies.tail == &controller.enemies);
+    assert(!controller.enemies.node && !controller.enemies.next && !controller.enemies.previous);
+    assert(!controller.enemies.owner && !controller.enemies.iterator);
+    for (auto* file : controller.animation_files) assert(file == nullptr);
+    assert(previous_enemy_generation == 1 && current_enemy_generation == 2);
+    // Dirty placement construction verifies that actual constructors clear
+    // retained flag bits/pointers and cannot depend on pre-zeroed host storage.
+    constexpr std::size_t guard = 16;
+    alignas(TaskInfo) std::array<unsigned char, sizeof(TaskInfo)+2*guard> task_storage;
+    task_storage.fill(0xa5);
+    auto* dirty_task = std::construct_at(reinterpret_cast<TaskInfo*>(task_storage.data()+guard));
+    assert(dirty_task->flags == 2 && !dirty_task->update_node && !dirty_task->draw_node);
+    std::destroy_at(dirty_task);
+    alignas(EnemyController) std::array<unsigned char, sizeof(EnemyController)+2*guard> controller_storage;
+    controller_storage.fill(0xa5);
+    current_enemy_generation = 0xffffffffu;
+    auto* dirty_controller = std::construct_at(reinterpret_cast<EnemyController*>(controller_storage.data()+guard));
+    assert(dirty_controller->flags == 2 && !dirty_controller->update_node && !dirty_controller->draw_node);
+    assert(dirty_controller->loaded_names.empty() && dirty_controller->loaded_names.capacity() == 0);
+    assert(dirty_controller->field_c4 == 0 && dirty_controller->field_c8 == 0 && dirty_controller->field_cc == 0);
+    assert(dirty_controller->field_e0 == 0 && dirty_controller->field_120 == 0 && dirty_controller->field_124 == 0);
+    assert(dirty_controller->player_index == 0 && !dirty_controller->context && !dirty_controller->loader);
+    assert(dirty_controller->enemies.tail == &dirty_controller->enemies);
+    for (auto* file : dirty_controller->animation_files) assert(file == nullptr);
+    for (const auto& handle : dirty_controller->data.handles) assert(handle.value == 0);
+    assert(previous_enemy_generation == 0xffffffffu && current_enemy_generation == 1);
+    std::destroy_at(dirty_controller); // Controller disposal is still a fixture.
+    for (std::size_t i=0;i<guard;++i) {
+        assert(task_storage[i] == 0xa5 && task_storage[sizeof(TaskInfo)+guard+i] == 0xa5);
+        assert(controller_storage[i] == 0xa5 && controller_storage[sizeof(EnemyController)+guard+i] == 0xa5);
+    }
     // Real Data and handle constructors initialize every owned scalar/slot.
     assert(controller.data.field_30 == 0 && controller.data.field_34 == 0);
     assert(controller.data.field_38 == 0 && controller.data.field_3c == 0);

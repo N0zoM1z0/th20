@@ -49,7 +49,7 @@ struct EnemyController : TaskInfo {
 };
 // Actual process generation words; production initialization remains open.
 extern std::uint32_t current_enemy_generation, previous_enemy_generation;
-// Actual cdecl player/context lookup; Session ownership and startup remain open.
+// Actual cdecl player/context lookup through the reconstructed process Session.
 EnemyController* enemy_controller(std::int32_t index);
 // Four process script words; original global initialization remains open.
 extern std::int32_t enemy_script_globals[4];

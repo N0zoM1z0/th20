@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111368", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111392", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8954,4 +8954,40 @@ relocations = [
   { offset = 0x8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
   { offset = 0xD, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
   { offset = 0x14, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+]
+
+[units.task_info_ctor]
+source = "src/TaskInfoConstruction.cpp"
+object = "build/TaskInfoConstruction.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::TaskInfo::TaskInfo"]
+symbol = "??0TaskInfo@th20@@QAE@XZ"
+target_address = 0x0041FD20
+size = 68
+relocations = [
+  { offset = 0xC, type = "DIR32", symbol = "??_7TaskInfo@th20@@6B@", target = 0x0056D4C0 },
+]
+
+[units.enemy_controller_ctor]
+source = "src/EnemyControllerConstruction.cpp"
+object = "build/EnemyControllerConstruction.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::EnemyController"]
+symbol = "??0EnemyController@th20@@QAE@XZ"
+target_address = 0x004A2E80
+size = 312
+compare_size = 317
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0EnemyController@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
+  { offset = 0x33, type = "DIR32", symbol = "??_7EnemyController@th20@@6B@", target = 0x005703F8 },
+  { offset = 0x3E, type = "REL32", symbol = "??0EnemyData@th20@@QAE@XZ", target = 0x004A2FC0 },
+  { offset = 0x4C, type = "REL32", symbol = "??0?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@V?$polymorphic_allocator@V?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@@pmr@2@@std@@QAE@XZ", target = 0x004141C0 },
+  { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111071", target = 0x00570404 },
+  { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]

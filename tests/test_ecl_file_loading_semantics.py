@@ -16,7 +16,7 @@ class EclFileLoadingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "ecl-file-loading"
             sources = ["EclFileLoader", "EclLoaderBase", "EclDiagnostic", "ScriptStack", "Context",
-                       "EnemyData", "EnemyCounters", "AnimationHandle", "Timer", "ClockScalar", "Identifier32"]
+                       "EnemyData", "TaskInfoConstruction", "EnemyCounters", "AnimationHandle", "Timer", "ClockScalar", "Identifier32"]
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                 "-fsanitize=undefined", "-Isrc", "tests/ecl_file_loading_semantics.cpp",

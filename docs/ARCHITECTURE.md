@@ -1,5 +1,19 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-074 — 2026-10-08 — Actual Controller and Task construction
+
+The real 308-byte Controller and 16-byte Task base now have complete constructor
+comparisons: 312/317 and 68 bytes. Typed flag zeroing/default activation, original
+EnemyCtrlInf RTTI/log literal, real subobject construction, complete EH and
+generation side effects establish the protocol. The frozen graph passes 562
+units /103 fresh objects /98,392 disjoint bytes; origins 489 pending/9 library/
+64 authored /16,948 bytes. Reference associations remain 177 absorbed across 6,945
+terminal reviews because the Controller allocation+constructor association's
+factory is still nonexact. Production creation checks now use actual Controller/
+Task construction with dirty guards and generation wrap. Whole search/statistics,
+allocation/disposal and several child emissions stay open; all failed hypotheses
+are retained. See [evidence](EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md).
+
 ## EXACT-073 — 2026-10-08 — Actual process Session and player table
 
 The real 704-byte Session owns two Contexts and a 552-byte PlayerTable with two

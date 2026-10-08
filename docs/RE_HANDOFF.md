@@ -1,5 +1,55 @@
 # Current reconstruction handoff
 
+## EXACT-074 — 2026-10-08 — Actual Controller and Task construction
+
+Two complete constructors add 380 body /385 comparison bytes: actual
+Controller 312/317 and Task 68. Independent EnemyCtrlInf RTTI/vtable identity,
+original log literal, complete nonthrowing EH and real Task/Data/PMR/Timer/list/
+identifier construction establish the caller protocol. Explicit aggregate flag
+zeroing before setting bit1 replaces the prior implicit Task constructor's
+53-byte emission. Original declarations/names and broader flag roles remain
+unknown. See [Controller construction evidence](EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md).
+
+The frozen graph strictly replays 562 units /103 fresh objects /98,392 disjoint
+bytes; origins are 489 pending /9 library /64 authored /16,948 bytes. All 6,945
+reference reviews remain terminal, 177 absorbed. The Controller constructor
+association also includes its unmatched 73-byte factory and remains nonexact;
+no partial reference association or authored-origin credit is granted. Creation
+tests now use production Controller/Task construction, dirty guarded defaults
+and real generation wrap effects. Disposal, allocation, VM/startup, Session
+lookup and whole-list-find remain explicit test boundaries. Other loading/
+movement tests retain Controller fixtures and link actual Task construction.
+
+Whole find 251 and two separate 219-byte statistics retain missing compiler
+iterator pre-initialization. Natural range-for/initialization/default-argument/
+named-return variants did not resolve the 10-byte search difference. Unsupported
+default declarations and renamed operators were reverted; no dummy constructor,
+clear or inert local is introduced. Seven independent SDL compiler fixtures
+also emit no helper. Natural new T/new T() factories remain 60/73. Original
+sentinel constructor remains 31/40 due two observed tail stores; redundant
+assignments are not introduced. Complete source/native/failed evidence is
+retained privately. Whole Controller disposal/search, both Enemy readers,
+Player/card/game owners, 41 KB opcode root and whole-game link/runtime remain open.
+
+Source is frozen. Configuration/registration writers are completed one-time
+operations; never rerun them. Whole proof is compressed from the outset at
+`.analysis/exact074-canonical-results.json.gz`; constructor audit/support are
+`core074-audit.py`/`core074-support.json`. Keep English/repo-python/attested
+Ghidra, no REA/subagents, serial nice 15 and periodic protected cleanup. Goal
+stays active; no unchanged cold rebuild for documentation or cleanup.
+
+All 45 public tests pass (79.805 seconds), including real guarded Controller/
+Task construction and creation. Target, tracking, reference and progress gates
+pass. Protected cleanup retires 20 completed probe object/receipt files /
+551,844 bytes (539 KiB), preserving every failed source/header/log/native export.
+All 206 current canonical object/receipt hashes are unchanged; post-cleanup
+comparison uses existing objects without a cold rebuild. Proof is compressed
+from the outset at `.analysis/core074-post-cleanup-results.json.gz`; inventory
+is `.analysis/core074-cleanup.json`. This one-time writer is completed; never
+rerun it. Cumulative obsolete-product retirement is 2,528 files /1,002,125,443
+bytes; separate lossless archival savings stay 11,755,446 bytes. Analysis is
+about 74 MiB, build 4.6 MiB and installed tools 4.2 GiB.
+
 ## EXACT-073 — 2026-10-08 — Actual process Session and player-table protocol
 
 Twenty complete contributions add 1,167 body /1,177 comparison bytes: real

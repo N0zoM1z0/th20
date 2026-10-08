@@ -1,5 +1,21 @@
 # Source and build ownership
 
+## EXACT-074 — 2026-10-08 — Controller and Task constructor ownership
+
+`src/EnemyControllerConstruction.cpp` and `src/TaskInfoConstruction.cpp` own
+the two genuine constructor bodies in separate canonical objects, with one
+shared declaration/flag representation. Complete 312/317 and 68-byte comparisons
+add 380 body /385 comparison bytes, with full Controller EH and independent
+RTTI/literal anchors. The whole frozen graph passes 562 units /103 fresh objects/
+98,392 disjoint bytes; origins 489 pending/9 library/64 authored /16,948 bytes.
+Reference associations remain 177 absorbed across 6,945 terminal reviews; the
+multi-target Controller association's factory is still unclosed. Creation now
+uses production Controller/Task construction; other Controller fixtures and
+disposal/search/allocation boundaries remain explicit. Rejected SDL/range/factory
+variants are private evidence and were not promoted. Source is frozen; completed
+one-time configuration/registration writers must never be rerun. See
+[evidence](EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md).
+
 ## EXACT-073 — 2026-10-08 — Actual process Session ownership
 
 `src/Session.hpp/.cpp` owns the genuine Session/PlayerTable definitions, actual

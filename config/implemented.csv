@@ -558,3 +558,5 @@ th20::Session::increment_continue_count
 th20::Session::set_flag0
 th20::Session::set_flag1
 th20::player_record
+th20::TaskInfo::TaskInfo
+th20::EnemyController::EnemyController

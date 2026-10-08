@@ -15,7 +15,8 @@ class EnemyCreationTests(unittest.TestCase):
         self.assertIsNotNone(compiler)
         sources = [
             "EnemyVariables", "EnemySpawning", "EnemyInitialization", "EclSelection", "EclLoaderBase", "Enemy",
-            "EnemyData", "EnemyState", "EnemyMovement", "EnemyCounters", "EnemySpawn",
+            "EnemyData", "EnemyControllerConstruction", "TaskInfoConstruction", "EclDiagnostic",
+            "EnemyState", "EnemyMovement", "EnemyCounters", "EnemySpawn",
             "EnemyHealth", "EnemyPattern", "Motion",
             "MotionConfiguration", "MotionUpdates", "MotionMath", "Vector2",
             "Vector3", "Angle", "Interpolation", "Easing", "Timer", "ClockScalar",

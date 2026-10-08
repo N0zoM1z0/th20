@@ -5,10 +5,13 @@
 namespace th20 {
 
 // REF-003: TaskInf RTTI, three virtual slots, flags and two callback nodes.
-// Implicit construction preserves the observed defaults; its original code
-// contribution and allocator-based deletion still require reconstruction.
+// Construction clears the flag word before setting bit 1. Allocator-based
+// deletion and process callback registration remain open.
+struct TaskFlagWord { std::uint32_t bits; };
+
 class TaskInfo {
 public:
+    TaskInfo() noexcept;
     virtual ~TaskInfo();
     virtual void enable();
     virtual void disable();
@@ -16,9 +19,9 @@ public:
     void enable_callbacks();
     void disable_callbacks();
 
-    std::uint32_t flags = 2;
-    FunctionChainNode* update_node = nullptr;
-    FunctionChainNode* draw_node = nullptr;
+    union { std::uint32_t flags; TaskFlagWord flag_word; };
+    FunctionChainNode* update_node;
+    FunctionChainNode* draw_node;
 };
 
 static_assert(sizeof(void*) != 4 || sizeof(TaskInfo) == 16);

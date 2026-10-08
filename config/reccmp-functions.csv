@@ -559,3 +559,5 @@ th20::Session::increment_continue_count,0x004BCCC0,function
 th20::Session::set_flag0,0x004BE220,function
 th20::Session::set_flag1,0x004BDD60,function
 th20::player_record,0x00464080,function
+th20::TaskInfo::TaskInfo,0x0041FD20,function
+th20::EnemyController::EnemyController,0x004A2E80,function
