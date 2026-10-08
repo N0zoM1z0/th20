@@ -5,4 +5,5 @@ Context::Context() noexcept
       object_10(nullptr), object_14(nullptr), object_18(nullptr), object_1c(nullptr),
       object_20(nullptr), current_player(nullptr), object_28(nullptr), overlay_owner(nullptr) {}
 EnemyController* Context::enemy_controller() { return enemies; }
+PlayerRecord* Context::player_record() { return current_player; }
 }

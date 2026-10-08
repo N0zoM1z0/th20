@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111366", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111368", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8711,4 +8711,247 @@ relocations = [
   { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x27, type = "DIR32", symbol = "??0EnemyHandle@th20@@QAE@XZ", target = 0x00425CC0 },
   { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
+
+[units.session_ctor]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::Session"]
+symbol = "??0Session@th20@@QAE@XZ"
+target_address = 0x00422E40
+size = 214
+compare_size = 219
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0Session@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0Context@th20@@QAE@XZ", target = 0x00423320 },
+  { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x98, type = "REL32", symbol = "??0PlayerTable@th20@@QAE@XZ", target = 0x00422F20 },
+]
+
+[units.player_table_ctor]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerTable::PlayerTable"]
+symbol = "??0PlayerTable@th20@@QAE@XZ"
+target_address = 0x00422F20
+size = 298
+compare_size = 303
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0PlayerTable@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0PlayerRecord@th20@@QAE@XZ", target = 0x00423050 },
+  { offset = 0x37, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
+
+[units.session_static_initializer]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::session::dynamic_initializer"]
+symbol = "??__Esession@th20@@YAXXZ"
+target_address = 0x00401180
+size = 16
+relocations = [
+  { offset = 0x4, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x9, type = "REL32", symbol = "??0Session@th20@@QAE@XZ", target = 0x00422E40 },
+]
+
+[units.session_context]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::context"]
+symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z"
+target_address = 0x0040BBC0
+size = 20
+relocations = []
+
+[units.session_player_table]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::player_table"]
+symbol = "?player_table@Session@th20@@QAEAAUPlayerTable@2@XZ"
+target_address = 0x004989F0
+size = 19
+relocations = []
+
+[units.process_player_table]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::player_table"]
+symbol = "?player_table@th20@@YAAAUPlayerTable@1@XZ"
+target_address = 0x00498F40
+size = 15
+relocations = [
+  { offset = 0x4, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x9, type = "REL32", symbol = "?player_table@Session@th20@@QAEAAUPlayerTable@2@XZ", target = 0x004989F0 },
+]
+
+[units.player_table_player]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerTable::player"]
+symbol = "?player@PlayerTable@th20@@QAEAAUPlayerRecord@2@H@Z"
+target_address = 0x00488720
+size = 23
+relocations = []
+
+[units.player_table_mode]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerTable::mode"]
+symbol = "?mode@PlayerTable@th20@@QAEHXZ"
+target_address = 0x004640C0
+size = 20
+relocations = []
+
+[units.session_table_mode]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::mode"]
+symbol = "?mode@Session@th20@@QAEHXZ"
+target_address = 0x004640A0
+size = 25
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?mode@PlayerTable@th20@@QAEHXZ", target = 0x004640C0 },
+]
+
+[units.player_table_clamp_field_1fc]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerTable::clamped_field_1fc"]
+symbol = "?clamped_field_1fc@PlayerTable@th20@@QAEHXZ"
+target_address = 0x004994D0
+size = 73
+relocations = [
+  { offset = 0x2A, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_table_clamp_field_204]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerTable::clamped_field_204"]
+symbol = "?clamped_field_204@PlayerTable@th20@@QAEHXZ"
+target_address = 0x00499480
+size = 73
+relocations = [
+  { offset = 0x2A, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_table_clamp_field_208]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerTable::clamped_field_208"]
+symbol = "?clamped_field_208@PlayerTable@th20@@QAEHXZ"
+target_address = 0x00499580
+size = 73
+relocations = [
+  { offset = 0x2A, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.session_clamp_field_1fc]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::clamped_field_1fc"]
+symbol = "?clamped_field_1fc@Session@th20@@QAEHXZ"
+target_address = 0x00499330
+size = 25
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?clamped_field_1fc@PlayerTable@th20@@QAEHXZ", target = 0x004994D0 },
+]
+
+[units.session_clamp_field_204]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::clamped_field_204"]
+symbol = "?clamped_field_204@Session@th20@@QAEHXZ"
+target_address = 0x00499460
+size = 25
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?clamped_field_204@PlayerTable@th20@@QAEHXZ", target = 0x00499480 },
+]
+
+[units.process_enemy_controller]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::enemy_controller"]
+symbol = "?enemy_controller@th20@@YAPAUEnemyController@1@H@Z"
+target_address = 0x00478060
+size = 26
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0xD, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+  { offset = 0x14, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+]
+
+[units.player_table_add_continue_count]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerTable::add_continue_count"]
+symbol = "?add_continue_count@PlayerTable@th20@@QAEXH@Z"
+target_address = 0x004BCCF0
+size = 87
+relocations = [
+  { offset = 0x3F, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.session_increment_continue_count]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::increment_continue_count"]
+symbol = "?increment_continue_count@Session@th20@@QAEXXZ"
+target_address = 0x004BCCC0
+size = 35
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?add_continue_count@PlayerTable@th20@@QAEXH@Z", target = 0x004BCCF0 },
+]
+
+[units.session_set_flag0]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::set_flag0"]
+symbol = "?set_flag0@Session@th20@@QAEXI@Z"
+target_address = 0x004BE220
+size = 36
+relocations = []
+
+[units.session_set_flag1]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::set_flag1"]
+symbol = "?set_flag1@Session@th20@@QAEXI@Z"
+target_address = 0x004BDD60
+size = 38
+relocations = []
+
+[units.process_player_record]
+source = "src/Session.cpp"
+object = "build/Session.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::player_record"]
+symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z"
+target_address = 0x00464080
+size = 26
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0xD, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+  { offset = 0x14, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
 ]

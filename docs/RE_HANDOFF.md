@@ -1,5 +1,50 @@
 # Current reconstruction handoff
 
+## EXACT-073 — 2026-10-08 — Actual process Session and player-table protocol
+
+Twenty complete contributions add 1,167 body /1,177 comparison bytes: real
+Session/PlayerTable construction, compiler-owned process initializer, indexed
+Context/table/record queries, selected current-record and Controller lookups,
+mode/clamp queries, continue updates and bitfield setters. Native construction,
+independent double-clock consumers, actual 704-byte BSS and original CRT slot
+establish complete storage and startup contributions. Natural alignment gaps
+replace explicit reference padding; both complete EH records and real array
+construction replay. Shared Context/array helper folding adds no duplicate
+coverage. See [Session evidence](EXACT_SESSION_RECONSTRUCTION.md).
+
+The frozen graph strictly replays 560 units /101 fresh objects /98,007 disjoint
+bytes. Origins remain 487 pending /9 library /64 authored, with 16,948 authored
+bytes unchanged. Eleven whole reference associations close; all 6,945 reviews
+remain terminal, 177 absorbed. New O2/UBSan verification uses production Session,
+Context and PlayerRecord lifetimes/lookups, dirty guarded construction and natural
+gaps, whole-object preservation, wrap/clamp edges and retained flag bits. Existing
+Enemy creation tests still have explicit lookup/search fixture boundaries; no
+whole creation/runtime integration claim follows.
+
+Source is frozen. Cold replay and one-time configuration/registration writers
+have completed; never rerun completed writers or another unchanged cold build.
+Private whole replay: `.analysis/exact073-canonical-results.json.gz`. Actual
+Player entity, primary game/frame/card owners and Controller search/range
+iteration still block whole Enemy readers. Both original reader CFG/table audits
+remain authoritative; neither whole reader nor the 41 KB opcode root receives
+partial credit. Session clock/statistics, process-wide initialization order and
+whole-game link/runtime remain open. Keep English/repo-python/attested Ghidra,
+no REA/subagents, serial nice 15 and periodic protected cleanup. Goal stays active.
+
+All 45 public tests pass (77.360 seconds), including the new actual Session test;
+target, tracking, reference and generated-progress gates pass. Protected cleanup
+retires eight obsolete Session probe object/receipt files /172,587 bytes. Two
+inactive successful EXACT-072 snapshots are losslessly archived, saving another
+1,608,770 bytes, with decompressed content and both hashes verified. All 202
+canonical object/receipt hashes and remaining private evidence are unchanged.
+This batch frees 1,781,357 bytes (1.70 MiB); cumulative obsolete-product
+retirement is 2,508 files /1,001,573,599 bytes, and separate archival savings total
+11,755,446 bytes. Analysis is about 74 MiB, build 4.4 MiB and tools 4.2 GiB.
+Private inventory: `.analysis/core073-cleanup.json`; cleanup-only proof is
+compressed from the outset at `.analysis/core073-post-cleanup-results.json.gz`.
+This cleanup writer is a completed one-time operation; never rerun it. Strict
+post-cleanup replay uses existing objects and requires no unchanged cold build.
+
 ## Storage maintenance — 2026-10-08
 
 Seven inactive successful replay snapshots from EXACT-061 through EXACT-068

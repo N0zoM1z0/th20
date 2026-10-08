@@ -1,5 +1,20 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-073 — 2026-10-08 — Actual process Session and player table
+
+The real 704-byte Session owns two Contexts and a 552-byte PlayerTable with two
+240-byte PlayerRecords. Native construction, independent double-clock storage
+and consumption, complete EH and the original CRT/BSS identity establish the
+whole owner without invented padding. Twenty complete contributions add
+1,167 body /1,177 comparison bytes; the frozen graph passes 560 units /101
+fresh objects /98,007 disjoint bytes. Eleven whole reference associations close,
+177 absorbed across 6,945 terminal reviews; authored origins remain 64 functions
+/16,948 bytes, with 487 pending and nine library comparisons. Actual production
+Session/defaults/lookups and state transitions have owned O2/UBSan coverage.
+See [Session evidence](EXACT_SESSION_RECONSTRUCTION.md). Whole Player/card/game
+and Controller protocols, both Enemy readers, the 41 KB opcode root and complete
+game linking/runtime remain open. Shared physical helper folding adds no credit.
+
 ## EXACT-072 — 2026-10-08 — Whole Enemy variable destinations and handles
 
 Six complete contributions add 1,820 body /2,183 comparison bytes: actual integer

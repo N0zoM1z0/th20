@@ -1,5 +1,25 @@
 # Source and build ownership
 
+## EXACT-073 — 2026-10-08 — Actual process Session ownership
+
+`src/Session.hpp/.cpp` owns the genuine Session/PlayerTable definitions, actual
+process global and compiler-generated CRT initializer. One canonical
+`build/Session.obj` supplies twenty complete contributions, adding 1,167 body
+/1,177 comparison bytes. `Context` now declares its actual current PlayerRecord
+pointer and getter; the physical getter folds with existing native code and adds
+no duplicate unit. The actual LockRegistry array helper separately replays the
+shared Session indexing address. Complete constructors, natural gaps, EH,
+array construction and original CRT/BSS identity are checked independently.
+
+The frozen graph strictly passes 560 units /101 fresh objects /98,007 disjoint
+bytes. Origins are 487 pending /9 library /64 authored, with 16,948 authored bytes
+unchanged; 177 reference associations are absorbed across 6,945 terminal reviews.
+New O2/UBSan tests execute production Session/Context/PlayerRecord ownership and
+lookups; existing Enemy creation lookup/search fixtures remain explicit limits.
+Whole Player/card/game/Controller readers and the 41 KB Enemy root remain open.
+See [Session evidence](EXACT_SESSION_RECONSTRUCTION.md). Source is frozen and
+one-time configuration/registration writers are completed; never rerun them.
+
 ## EXACT-072 — 2026-10-08 — Whole Enemy variable destinations and handles
 
 Six complete contributions add 1,820 body /2,183 comparison bytes: actual integer

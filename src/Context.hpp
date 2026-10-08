@@ -2,6 +2,7 @@
 #include "TaskInfo.hpp"
 namespace th20 {
 struct EnemyController;
+struct PlayerRecord;
 // Twelve independent context slots. Unresolved pointer roles retain offsets.
 struct Context {
     TaskInfo* primary_owner;
@@ -13,11 +14,12 @@ struct Context {
     void* object_18;
     void* object_1c;
     void* object_20;
-    void* current_player;
+    PlayerRecord* current_player;
     void* object_28;
     TaskInfo* overlay_owner;
     Context() noexcept;
     EnemyController* enemy_controller();
+    PlayerRecord* player_record();
 };
 #if defined(_M_IX86)
 static_assert(sizeof(Context)==0x30);
