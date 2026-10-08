@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 608 mapped component functions; 606 canonical units across 117 comparison objects; two whole buffer methods remain nonexact |
+| Source | 610 mapped component functions; 608 canonical units across 118 comparison objects; two whole buffer methods remain nonexact |
 | Authored exactness | 64 functions, 16,948 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
@@ -80,6 +80,7 @@ are excluded from Git.
 | State/Manager script pipeline | Whole script gate and async traversal with actual member callback and Timer step: 3 new units /419 bytes; [evidence](docs/EXACT_ENEMY_SCRIPT_PIPELINE_RECONSTRUCTION.md) |
 | ECL buffer pipeline | Actual borrowed-buffer registration and instruction resolution now execute in VM/Manager tests; both remain nonexact. Player Context binding is whole exact; [evidence](docs/ECL_BUFFER_RECONSTRUCTION.md) |
 | Profile construction | Complete 13,684-byte typed constructor with 123 physical Spell slots and full EH; [evidence](docs/EXACT_PROGRESS_PROFILE_RECONSTRUCTION.md) |
+| Snapshot and Metadata | Whole constructors with real eighteen-profile array, fallback and nine-slot counters: 2 units /755 comparison bytes; [evidence](docs/EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md) |
 | ECL async and call setup | Whole spawn/find/invalidation, Runtime allocation and Loader activation; real VM lifecycle checks: 7 new units /524 bytes; [evidence](docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md) |
 | Enemy spawn and time-scale orchestration | Two complete Enemy core functions and Animation slowdown setter: 3 new units /1399 comparison bytes; [evidence](docs/EXACT_ENEMY_SPAWN_TICK_RECONSTRUCTION.md) |
 | Enemy movement and construction | Whole movement composition/bounds, mode configuration and nonthrowing Enemy construction: 9 new units / 1,285 body bytes; [evidence](docs/EXACT_ENEMY_MOVEMENT_RECONSTRUCTION.md) |

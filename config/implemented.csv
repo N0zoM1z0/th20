@@ -606,3 +606,5 @@ th20::EclFileLoader::bind_player
 th20::EclLoader::append
 th20::EclLoader::instruction
 th20::ProgressProfile::ProgressProfile
+th20::ProgressMetadata::ProgressMetadata
+th20::ProgressSnapshot::ProgressSnapshot

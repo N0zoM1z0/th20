@@ -1,5 +1,65 @@
 # Current reconstruction handoff
 
+## EXACT-085 — 2026-10-08 — Complete Snapshot and Metadata owners
+
+The complete Metadata constructor at 50E6E0 strictly replays 612 bytes, and
+Snapshot at 50E540 replays its full 138/143-byte contribution. Nine independently
+anchored relocations and the complete folded EH handler29/info36 flags5/array56
+all agree. The actual 92140 Snapshot composes eighteen real Profiles, a separate
+fallback and 1F8 Metadata with natural alignment. There is no explicit padding
+member or raw whole-record facade. See [whole-owner evidence](EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md).
+
+Independent indexing/startup/consumer evidence proves nine available and used
+counter slots; the final available slot defaults to nine. Selection consists of
+two eight-entry tables (sixteen values total), rather than the historical review's
+two sixteen-entry description. Ten Metadata name bytes remain untouched until
+startup. Unknown byte-region roles retain neutral names without speculative word
+widths. Defaulted shared constructors under the explicit C++17 TU profile explain
+all native bytes; original spelling, authored/compiler identity and global flags
+remain unproven. Snapshot's fixed construction is genuinely noexcept; the early
+noexcept Metadata hypothesis emits an absent wrapper and is rejected.
+
+The frozen graph strictly replays 608 units /118 fresh objects /119314 disjoint
+comparison bytes. Source mappings total 610, including the two whole nonexact
+ECL buffer methods. Exact-unit origins are 535 pending /9 library /64 authored;
+authored coverage stays 16948 bytes. Two whole reference associations close,
+209 absorbed across all 6945 terminal reviews. All 55 public tests pass
+(159.441 seconds). O2/UBSan checks execute actual standalone Metadata and two
+complete Snapshots across four dirty patterns under C++17 and C++20; every
+Profile member, all 123 physical Spell slots, fallback, Metadata defaults,
+preserved names and live aliases are checked. No record fixture or game data
+supplies construction. Native pointer layout, padding and support are separately
+verified by the full x86 comparison.
+
+The whole Enemy State tick was observed with only its historical strict-FP
+profile's language setting changed to C++17. It retains the same complete1280
+extent, relocation records and 180 differences as C++20. The late missing NOP
+remains open; this negative observation grants no unit, source or partial credit.
+The advancement candidate keeps its void contract; no invented return or inert shaping is used.
+Whole Enemy roots/readers/State, Controller and Player remain core work.
+Complete startup, parsing/load/save, locking/checksum/RNG, Worker and buffer
+release still remain open for the new storage owners; this is not game-runtime
+acceptance. Continue coherent core batches, serial nice15, repo-python and
+attested Ghidra, without REA or delegation. Reconstruction remains active.
+
+Protected retirement removes 10 completed probe products
+(207309 bytes) and 84 copied private headers
+(131990 bytes). Original receipts and exact copied inputs are losslessly archived.
+Savings after those archives are 233496 bytes; the post-cleanup
+replay archive costs 57070 bytes, leaving 176426 net
+bytes saved. All 236 canonical product hashes and
+4566 retained evidence files remain unchanged.
+Post-cleanup 608/608 strict replay uses 118 existing objects without rebuilding.
+Cumulative retired products: 2625 files /
+1014409920 bytes; copied-input and earlier archival savings
+are separately recorded. Analysis is 80M and build 5.4M;
+installed tools, target, reference and Ghidra evidence stay protected. Current
+proofs are core085-final-frozen-source.json, exact085-canonical-results.json.gz,
+core085-canonical-support.json and core085-post-cleanup-results.json.gz.
+Completed configuration, registration, cleanup and documentation writers must
+never rerun. Archived copied headers restore by path and SHA256 before probing
+the historical private State candidate again.
+
 ## EXACT-084 — 2026-10-08 — Whole Profile construction and protected cleanup
 
 The complete Profile constructor at 50AF20 strictly replays 13,684 body bytes,

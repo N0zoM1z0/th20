@@ -122,6 +122,14 @@ whole-page or whole-game credit. Continue every remaining implementation.
 
 ## REF-025: Progress and Replay batch
 
+EXACT-085 subsequently closes the whole Metadata and Snapshot constructors.
+Metadata has two eight-entry selection tables (sixteen values total) and
+nine available/used counter slots; slot eight of the available array defaults
+to nine. Snapshot constructs eighteen selectable Profiles, a distinct fallback
+and Metadata with natural alignment and full EH. Historical raw reference
+bodies are not imported; saving/loading/worker and runtime remain open. See
+[the current storage-owner evidence](EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md).
+
 EXACT-084 later closes the whole reference Profile association with a natural
 typed 13,684-byte constructor and complete 13,689-byte canonical contribution.
 The physical Spell array has 123 records; startup initializes 113 active

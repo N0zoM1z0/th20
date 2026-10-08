@@ -9832,3 +9832,35 @@ relocations = [
   { offset = 0x354A, type = "DIR32", symbol = "??0PracticeScore@th20@@QAE@XZ", target = 0x0050E6A0 },
   { offset = 0x355D, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
 ]
+
+[units.progress_metadata_ctor]
+source = "src/ProgressStorage.cpp"
+object = "build/ProgressStorage.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ProgressMetadata::ProgressMetadata"]
+symbol = "??0ProgressMetadata@th20@@QAE@XZ"
+target_address = 0x0050E6E0
+size = 612
+relocations = [
+  { offset = 0xb, type = "REL32", symbol = "??0ProgressRecordHeader@th20@@QAE@XZ", target = 0x0050E500 },
+  { offset = 0x81, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x96, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]
+
+[units.progress_snapshot_ctor]
+source = "src/ProgressStorage.cpp"
+object = "build/ProgressStorage.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ProgressSnapshot::ProgressSnapshot"]
+symbol = "??0ProgressSnapshot@th20@@QAE@XZ"
+target_address = 0x0050E540
+size = 138
+compare_size = 143
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0ProgressSnapshot@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x44, type = "DIR32", symbol = "??0ProgressProfile@th20@@QAE@XZ", target = 0x0050AF20 },
+  { offset = 0x57, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x65, type = "REL32", symbol = "??0ProgressProfile@th20@@QAE@XZ", target = 0x0050AF20 },
+  { offset = 0x73, type = "REL32", symbol = "??0ProgressMetadata@th20@@QAE@XZ", target = 0x0050E6E0 },
+]
