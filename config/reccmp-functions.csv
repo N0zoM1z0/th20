@@ -619,3 +619,5 @@ th20::ProgressSaveManager::commit,0x0050F660,function
 th20::ProgressSaveManager::~ProgressSaveManager,0x0050E990,function
 th20::ProgressRecordHeader::calculate_checksum,0x0050FC90,function
 th20::ProgressSaveManager::parse,0x0050EB70,function
+th20::archive_encrypt,0x004103C0,function
+th20::archive_compress,0x00539550,function

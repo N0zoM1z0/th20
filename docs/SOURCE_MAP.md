@@ -1,5 +1,58 @@
 # Source and build ownership
 
+## CORE/EXACT-088 — 2026-10-08 — Real archive writing and full codec integration
+
+Whole archive encryption at 4103C0 strictly replays all 446 bytes and six
+independently established relocations. ArchiveCrypt.cpp owns both cipher
+directions under the existing signed ABI and real new[]/delete[] scratch family.
+Whole compression at 539550 now uses the actual shared ring/tree, C allocator,
+lookahead and token protocol. Its complete candidate is 964/native 1036 bytes,
+so it remains nonexact, with no partial unit or reference absorption.
+Original filectrl.cpp/LzssUtil.cpp diagnostics establish both authored origins.
+See [complete protocol and unresolved emission](ARCHIVE_WRITE_RECONSTRUCTION.md).
+
+The compressor initializes a native scalar and updates it in seven byte-flush
+chains; no consumer, return or escape is established. Its 70 instruction bytes
+do not fully explain the 72-byte extent difference. No inert accumulator or fake
+result is added for emission. Source identity, stack/expression differences and
+the unused sum's purpose remain open; keep this negative evidence intact.
+
+Actual O2/UBSan checks exercise compression -> encryption -> decryption ->
+decoding -> checksum/parser -> backup/copy-back over complete CR/ST records,
+all eighteen Profiles, fallback and Metadata. Independent token/permutation
+models cover four patterns, fourteen positive lengths through 20000, ring wrap,
+overlap, complete-byte counts, retained tails and untouched failure state.
+Independent synthetic malformed-record fixtures remain. Native startup and disk
+load/save boundaries are fixtures; full filesystem writes/game runtime are open.
+
+Frozen replay passes 615/615 units /120 fresh objects /120303 disjoint bytes.
+There are 622 source mappings, including seven complete nonexact methods.
+Exact-unit origins: 541 pending /9 library /65 authored. Confirmed authored
+functions total 67; authored exact bytes are 17394, or 90.34% of the expanded
+provisional denominator. All 6945 reference reviews remain terminal, with 213
+absorbed associations. All 58 public tests pass in 127.297 seconds.
+
+Protected retirement removes 6 obsolete probe products
+(144787 bytes). Original receipts and all
+3 historical input versions are losslessly
+archived. Net savings after evidence archives and cleanup replay: 31538 bytes.
+All 240 canonical product hashes and 4733
+retained evidence files stay unchanged. Post-cleanup 615/615 strict replay uses
+120 existing objects without rebuilding. Cumulative retired build products:
+2656 files /1015284912 bytes.
+Analysis is 82M and build is 5.6M; tools, target, reference and Ghidra are protected.
+Proofs: core088-whole-audit.json, core088-native-unused-accumulator.json,
+core088-final-frozen-source.json, exact088-canonical-results.json.gz,
+core088-cleanup.json and core088-post-cleanup-results.json.gz.
+Completed configuration, registration, cleanup and documentation writers must
+never rerun. Restore original SHA-bound declarations before historical probes.
+
+Continue whole SaveManager load 562/write 1198/save 174 with original path, I/O
+and initialization owners. Respect load's 2x10 physical visits across nine-element
+rows and fallback. Whole Enemy/State, Controller and Player remain open.
+Keep one writer, serial nice 15, repo-python, attested Ghidra, no REA/delegation
+and periodic protected retirement. Reconstruction remains active.
+
 ## CORE/EXACT-087 — 2026-10-08 — Whole progress-file parsing and protected retirement
 
 Complete SaveManager parsing now executes the actual checksum, archive cipher,

@@ -1,5 +1,11 @@
 # Archive codec, shared dictionary and allocation
 
+CORE/EXACT-088 adds the complete446-byte exact encryption entry and executes
+the actual whole compressor/cipher/parser pipeline. Compressor964/native1036
+remains nonexact; the unobserved native sum is recorded without an emission-only
+scalar. This supersedes the historical source-absence discussion below, without
+granting compressor exactness. See [write protocol](ARCHIVE_WRITE_RECONSTRUCTION.md).
+
 EXACT-054 reconstructs sixteen complete native functions in one protocol batch:
 2,676 instruction bytes, with no extra function padding. The complete graph has
 393 units, 70 cold objects and 61,579 disjoint comparison bytes. Five independently

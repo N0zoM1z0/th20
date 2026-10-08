@@ -9948,3 +9948,20 @@ symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z"
 target_address = 0x0050FC90
 size = 80
 relocations = []
+
+[units.archive_encrypt]
+source = "src/ArchiveCrypt.cpp"
+object = "build/ArchiveCrypt.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::archive_encrypt"]
+symbol = "?archive_encrypt@th20@@YAPAEPAEHEEHH@Z"
+target_address = 0x004103C0
+size = 446
+relocations = [
+  { offset = 0x5F, type = "DIR32", symbol = "?encrypt_copy_label@th20@@3QBDB", target = 0x0056C5B8 },
+  { offset = 0x65, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x6A, type = "REL32", symbol = "??$allocate_array@E@DiagnosticAllocator@th20@@QAEPAEPBDH@Z", target = 0x0040D8C0 },
+  { offset = 0x99, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0x1A7, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x1AC, type = "REL32", symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z", target = 0x0040D840 },
+]

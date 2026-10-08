@@ -4,7 +4,7 @@
 
 namespace th20 {
 
-// Process-shared native storage, also used by the unreconstructed compressor.
+// Process-shared native storage, used by both compression and decompression.
 extern std::uint8_t archive_dictionary[8192];
 
 struct ArchiveLzssNode {
@@ -18,6 +18,14 @@ static_assert(sizeof(ArchiveLzssNode) == 12);
 // is retained across calls; the decoder resets only its local cursor to one.
 std::uint8_t* archive_decompress(const std::uint8_t* compressed, std::int32_t size,
     std::uint8_t* output, std::int32_t output_size);
+
+// Signed input extent and malloc-owned output. Failure preserves output_size
+// and shared storage; success resets the shared ring/tree and reports complete
+// bytes only, discarding the final partial byte. Use positive readable extents
+// whose token output fits the native twice-input allocation. Zero input's
+// terminator can overrun that allocation and is outside the tested domain.
+std::uint8_t* archive_compress(const std::uint8_t* data, std::int32_t size,
+    std::int32_t* output_size);
 
 void archive_lzss_reset();
 void archive_lzss_set_root(std::int32_t index);

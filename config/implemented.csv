@@ -618,3 +618,5 @@ th20::ProgressSaveManager::commit
 th20::ProgressSaveManager::~ProgressSaveManager
 th20::ProgressRecordHeader::calculate_checksum
 th20::ProgressSaveManager::parse
+th20::archive_encrypt
+th20::archive_compress

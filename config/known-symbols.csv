@@ -620,3 +620,5 @@ address,name,module,confidence,evidence
 0x0050E990,th20::ProgressSaveManager::~ProgressSaveManager,ProgressSaveManager,high,CORE/EXACT-086; docs/EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md
 0x0050FC90,th20::ProgressRecordHeader::calculate_checksum,ProgressSaveManager,high,CORE/EXACT-087; docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md
 0x0050EB70,th20::ProgressSaveManager::parse,ProgressSaveManager,high,CORE/EXACT-087; docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md
+0x004103C0,th20::archive_encrypt,ArchiveCrypt,high,CORE/EXACT-088; docs/ARCHIVE_WRITE_RECONSTRUCTION.md
+0x00539550,th20::archive_compress,ArchiveLzss,high,CORE/EXACT-088; docs/ARCHIVE_WRITE_RECONSTRUCTION.md

@@ -15,4 +15,9 @@ std::uint8_t archive_name_sum(const char* name, std::uint32_t size);
 std::uint8_t* archive_decrypt(std::uint8_t* data, std::int32_t size,
     std::uint8_t key, std::uint8_t step, std::int32_t block, std::int32_t limit);
 
+// Inverse permutation with the same signed parameters, retained tails and
+// caller-owned input pointer. Scratch allocation and release use new[]/delete[].
+std::uint8_t* archive_encrypt(std::uint8_t* data, std::int32_t size,
+    std::uint8_t key, std::uint8_t step, std::int32_t block, std::int32_t limit);
+
 } // namespace th20

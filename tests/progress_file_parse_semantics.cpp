@@ -1,6 +1,7 @@
 #include "ProgressSaveManager.hpp"
 #include "DiagnosticAllocator.hpp"
 #include "ArchiveLzss.hpp"
+#include "ArchiveCrypt.hpp"
 #include <algorithm>
 #include <cassert>
 #include <cstring>
@@ -75,9 +76,20 @@ Bytes encrypted(const Bytes& plain) {
     return result;
 }
 
-Bytes install(ProgressSnapshot& snapshot, const Bytes& records, int decoded=-1) {
-    auto payload=compressed(records);
-    auto cipher=encrypted(payload);
+Bytes install(ProgressSnapshot& snapshot, const Bytes& records, int decoded=-1, bool real_codecs=false) {
+    Bytes payload, cipher;
+    if (real_codecs) {
+        std::int32_t size=-1;
+        auto* owned=archive_compress(records.data(),records.size(),&size);
+        assert(owned && size>0);
+        payload.assign(owned,owned+size);
+        assert(archive_encrypt(owned,size,0xac,0x35,16,size)==owned);
+        cipher.assign(owned,owned+size);
+        process_allocator->release_bytes(owned);
+    } else {
+        payload=compressed(records);
+        cipher=encrypted(payload);
+    }
     ProgressFileHeader header{};
     header.magic=0x32304854;
     header.version=4;
@@ -169,7 +181,7 @@ void whole_records(ProgressSaveManager& manager) {
     const auto st=record(*metadata,0x5453,2);
     all.insert(all.end(),st.begin(),st.end());
     auto& snapshot=manager.current;
-    const auto payload=install(snapshot,all);
+    const auto payload=install(snapshot,all,-1,true);
     auto* file=snapshot.file_buffer;
     const auto file_size=snapshot.file_size;
     assert(manager.merge_current()==0); // Real backup -> parse -> copy-back pipeline.
