@@ -574,3 +574,8 @@ th20::PlayerMotionParameters::PlayerMotionParameters,0x004F4650,function
 th20::PlayerShot::PlayerShot,0x004F4CB0,function
 th20::PlayerShotPool::PlayerShotPool,0x004F41D0,function
 th20::PlayerShotController::PlayerShotController,0x004F4B80,function
+th20::GameController::GameController,0x004B9DF0,function
+th20::GameController::update_suppressed,0x00424030,function
+th20::GameController::animation_frozen,0x00424060,function
+th20::GameController::restart,0x00488830,function
+th20::GameController::clear_flag_6,0x004BD920,function

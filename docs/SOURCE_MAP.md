@@ -1,5 +1,23 @@
 # Source and build ownership
 
+## EXACT-077 — 2026-10-08 — Game construction and state ownership
+
+`src/GameController.hpp/.cpp` owns genuine 272-byte Game storage, construction,
+full integer predicates, signed restart query and bit 6 clear. One canonical
+`build/GameController.obj` supplies five complete units /362 body /367 comparison
+bytes with independent original type/log and full EH evidence. Actual production
+Task/Timer/Configuration dependencies remain shared. No Services suffix or
+padded owner is maintained. Game teardown stays declared and is an explicit
+fixture in `tests/game_controller_semantics.cpp`.
+
+The frozen graph passes 580 units /106 fresh objects /100,983 disjoint bytes; five whole
+reference associations close without changing authored totals. Owned O2/UBSan
+checks cover dirty defaults/retained Configuration bits/gaps, all low flag
+states, restart extremes and whole-state mutation boundaries. Shared getter
+4992F0 and renderer wrapper 450880 retain their separate unresolved ownership;
+full Game loading/update/disposal and Player/main readers remain open. See
+[evidence](EXACT_GAME_CONTROLLER_RECONSTRUCTION.md).
+
 ## EXACT-076 — 2026-10-08 — Player storage construction ownership
 
 `src/PlayerStorage.hpp/.cpp` owns actual Option, Feedback, CollisionBounds,

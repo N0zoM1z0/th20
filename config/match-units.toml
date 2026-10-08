@@ -9205,3 +9205,68 @@ relocations = [
   { offset = 0xD9, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xFE, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
 ]
+
+[units.game_controller_ctor]
+source = "src/GameController.cpp"
+object = "build/GameController.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::GameController::GameController"]
+symbol = "??0GameController@th20@@QAE@XZ"
+target_address = 0x004B9DF0
+size = 245
+compare_size = 250
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0GameController@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
+  { offset = 0x33, type = "DIR32", symbol = "??_7GameController@th20@@6B@", target = 0x00570B04 },
+  { offset = 0x3E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x49, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x68, type = "REL32", symbol = "??0Configuration@th20@@QAE@XZ", target = 0x004B9C10 },
+  { offset = 0xD7, type = "DIR32", symbol = "$SG1656", target = 0x00570B10 },
+  { offset = 0xDC, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+]
+
+[units.game_update_suppressed]
+source = "src/GameController.cpp"
+object = "build/GameController.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::GameController::update_suppressed"]
+symbol = "?update_suppressed@GameController@th20@@QBEHXZ"
+target_address = 0x00424030
+size = 40
+relocations = [
+]
+
+[units.game_animation_frozen]
+source = "src/GameController.cpp"
+object = "build/GameController.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::GameController::animation_frozen"]
+symbol = "?animation_frozen@GameController@th20@@QBEHXZ"
+target_address = 0x00424060
+size = 25
+relocations = [
+]
+
+[units.game_restart]
+source = "src/GameController.cpp"
+object = "build/GameController.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::GameController::restart"]
+symbol = "?restart@GameController@th20@@QBEHXZ"
+target_address = 0x00488830
+size = 20
+relocations = [
+]
+
+[units.game_clear_flag_6]
+source = "src/GameController.cpp"
+object = "build/GameController.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::GameController::clear_flag_6"]
+symbol = "?clear_flag_6@GameController@th20@@QAEXXZ"
+target_address = 0x004BD920
+size = 32
+relocations = [
+]

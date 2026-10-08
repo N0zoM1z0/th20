@@ -1,5 +1,22 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-077 — 2026-10-08 — Actual Game owner and integer state ABI
+
+Actual 272-byte GameInf owns two Timers, Configuration, a distinct flag word,
+two doubles and scalar restart/state. Five whole construction/query/bit-clear
+contributions add 362 body /367 comparison bytes with complete native EH and
+independent allocation/RTTI/vtable/log identity. Frozen 580 units /106 fresh objects
+replay 100,983 bytes; origins 507 pending /9 library /64 authored 16,948 bytes. Five whole
+reference associations close, 189 absorbed across 6,945 terminal reviews.
+Production O2/UBSan dirty guards, retained Configuration bits/gaps, exhaustive
+flags/restart and whole-state preservation pass; Game teardown is an explicit
+fixture. Full startup/loading/update/disposal and both readers remain open.
+
+4992F0+44 is a folded getter used on EnemyController and unresolved Context
+primary owners, not established Game storage. 450880 invokes the real renderer
+Controller update after its Game guard; no Animation/facade is introduced.
+See [evidence](EXACT_GAME_CONTROLLER_RECONSTRUCTION.md).
+
 ## EXACT-076 — 2026-10-08 — Actual Player subobject protocols
 
 Seven whole constructors establish actual Option/Feedback/CollisionBounds/

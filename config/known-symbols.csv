@@ -575,3 +575,8 @@ address,name,module,confidence,evidence
 0x004F4CB0,th20::PlayerShot::PlayerShot,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
 0x004F41D0,th20::PlayerShotPool::PlayerShotPool,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
 0x004F4B80,th20::PlayerShotController::PlayerShotController,PlayerStorage,high,EXACT-076; docs/EXACT_PLAYER_STORAGE_RECONSTRUCTION.md
+0x004B9DF0,th20::GameController::GameController,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md
+0x00424030,th20::GameController::update_suppressed,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md
+0x00424060,th20::GameController::animation_frozen,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md
+0x00488830,th20::GameController::restart,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md
+0x004BD920,th20::GameController::clear_flag_6,GameController,high,EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md

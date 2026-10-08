@@ -1,5 +1,51 @@
 # Current reconstruction handoff
 
+## EXACT-077 — 2026-10-08 — Actual Game construction and state
+
+Five complete contributions establish the actual 272-byte GameInf owner and
+state queries/bit 6 clearing. Native 0x110 allocation, Task, two Timer and Configuration
+construction, original GameInf RTTI/vtable and GameTaskInf literal, two actual
+double fields and complete nonthrowing EH are independently checked. Predicates
+return full-width int; no bool ABI or Services suffix is imported. These add
+362 body /367 comparison bytes; the frozen graph strictly replays 580 units /
+106 fresh objects /100,983 disjoint bytes. Origins are 507 pending /9 library /
+64 authored /16,948 bytes. Five whole reference associations close, 189 absorbed
+across 6,945 terminal reviews. See
+[Game evidence](EXACT_GAME_CONTROLLER_RECONSTRUCTION.md).
+
+Owned O2/UBSan checks use actual production Game/Task/Timer/Configuration:
+dirty guards, retained high Configuration option bits/natural gaps, 512 flag
+states with unrelated high bits, signed restart extremes and whole-state
+snapshots. Game destruction is an explicit fixture; full allocation/publication,
+loading/update/subsystem retirement/graphics/audio remain open.
+
+Correction: 4992F0+44 is a shared physical getter used after actual process
+EnemyController lookup 478E80 and Context primary-owner lookup 40C300. The former
+reads data.field_34; the latter's real owner remains unresolved. It is not
+established Game storage. Native 450880 conditionally returns 1 or invokes actual
+renderer Controller update 4497D0, not an Animation member or free bool helper.
+Do not create a fake/padded owner to close either protocol. Full Player tail /
+ANM lifetime, both whole Enemy readers and 41 KB opcode root remain open.
+
+Source is frozen; configuration/registration/cleanup writers are completed
+one-time operations. Compressed proofs and repeatable `core077-audit.py` retain
+all original type/log/full EH checks. Continue serial nice 15, repo-python,
+attested Ghidra, no REA/delegation and protected cleanup. Goal stays active.
+
+All 48 public tests pass (91.308 seconds); target, tracking, reference and
+progress gates pass. Protected cleanup retires two probe products /27,645 bytes
+and archives two inactive successful snapshots /248,274 bytes saved, with
+original-content hash roundtrips. All 212 canonical hashes/native and failed
+source evidence remain unchanged; 580/580 existing-object strict replay passes
+with no rebuild. Total batch savings 275,919 bytes; cumulative products 2,540 /
+1,002,339,503 bytes and separate archival savings 12,865,565 bytes. Private
+inventory `core077-probe-cleanup.json`; compressed current proofs
+`exact077-canonical-results.json.gz` and `core077-post-cleanup-results.json.gz`.
+Historical ref036/ref037 canonical snapshots now use `.json.gz`; read with
+gzip.open through repo-python. Never rerun completed one-time writers. Analysis
+about 74 MiB /build 4.7 MiB; installed tools/game/reference protected. Enemy original
+literal COFF name stays `$SG111396`, independently checked at 570420.
+
 ## EXACT-076 — 2026-10-08 — Actual Player storage construction
 
 Seven whole constructors establish actual 300-byte Option, 92-byte Feedback, 32-byte collision

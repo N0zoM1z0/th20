@@ -573,3 +573,8 @@ th20::PlayerMotionParameters::PlayerMotionParameters
 th20::PlayerShot::PlayerShot
 th20::PlayerShotPool::PlayerShotPool
 th20::PlayerShotController::PlayerShotController
+th20::GameController::GameController
+th20::GameController::update_suppressed
+th20::GameController::animation_frozen
+th20::GameController::restart
+th20::GameController::clear_flag_6
