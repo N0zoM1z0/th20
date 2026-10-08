@@ -1,5 +1,46 @@
 # Current reconstruction handoff
 
+## EXACT-081 — 2026-10-08 — Initialization hypothesis and protected storage cleanup
+
+The defaulted/value-initialized Enemy hypothesis preserves the complete existing
+215-byte constructor contribution, but its allocation emits 79 bytes versus
+native `4A2910`/73. The direct `memset` call differs from the native thiscall
+initialization helper. This experiment supplies no new exact credit, original
+source identity or complete EH claim. Production owners/profiles/layouts stay
+unchanged; Controller diagnostic/generation side effects are not replaced. See
+[initialization observations](EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md).
+
+The graph remains 597 units /113 objects /104292 disjoint comparison bytes;
+origins 524 pending /9 library /64 authored /16948 bytes; reference absorption
+199 across all 6945 terminal reviews. The full existing graph strictly replays
+after probe retirement without a cold rebuild. Continue whole core owners and
+dispatchers; avoid repeating this failed factory explanation unchanged. Serial
+nice15, repo-python, attested Ghidra and no REA/delegation remain required. The
+reconstruction goal remains active.
+
+Four completed probe products (81293 bytes) are retired. Original receipts and
+84 copied private headers (131922 bytes) are losslessly archived with original
+paths and SHA-256 identities; product/input savings after archives are 158990
+bytes. A separate pinned D3DX download cache (9833468 bytes) is removed after
+checking all 63 extracted SDK files byte-for-byte. Bootstrap now reuses the
+installed SDK without re-downloading that cache; a real bootstrap run, including
+locked analysis/compiler/version checks, succeeds after removal. Total product,
+input and cache savings are 9992458 bytes; the compressed current replay proof
+costs an additional 55188 bytes. All 226 canonical products and installed SDK
+files retain their hashes. Native evidence and failed probe source remain
+preserved. Cumulative retired products/cache: 2575 files /1013140210 bytes;
+copied-header archival is accounted separately.
+
+Private inventories are core081-cleanup.json and core081-d3dx-cache-plan.json;
+complete proof is core081-post-cleanup-results.json.gz. Restore private copied
+headers from core081-retired-probe-headers.json.gz before rebuilding the probe.
+The one-time retirement writer is completed; never rerun. Source still matches
+core080-final-frozen-source.json. After cache retirement, all 574 distinct current
+receipt inputs/headers, the installed SDK and canonical product hashes are
+re-attested; the existing strict replay remains valid. This final attestation is
+core081-final-cleanup-attestation.json. All 51 public tests pass (157.721 seconds),
+with target/tracking/reference/progress gates current.
+
 ## EXACT-080 — 2026-10-08 — Actual State/Manager script pipeline
 
 Three complete script-progression/async-traversal/Timer-step contributions add

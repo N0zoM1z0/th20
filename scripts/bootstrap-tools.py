@@ -91,8 +91,8 @@ def main():
                         "--skip-recommended", "--dest", str(tools / "msvc"),
                         "--cache", str(downloads / "msvc")], check=True, cwd=ROOT)
     item = lock["dxsdk_d3dx"]
-    archive = download(item["url"], downloads / "microsoft.dxsdk.d3dx.9.29.952.8.nupkg", item["sha256"])
     if not (tools / "dxsdk-d3dx/build/native/include/d3dx9.h").is_file():
+        archive = download(item["url"], downloads / "microsoft.dxsdk.d3dx.9.29.952.8.nupkg", item["sha256"])
         with zipfile.ZipFile(archive) as stream:
             stream.extractall(tools / "dxsdk-d3dx")
     if not (ROOT / ".venv/bin/python").exists():

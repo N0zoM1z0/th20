@@ -84,6 +84,12 @@ with a path/size/hash inventory. Preserve `.tools/vs2022-pinned.manifest`, the
 tool lock and installed files; never follow tool symlinks during deletion.
 The bootstrap skips MSVC downloads when the installed compiler is present.
 
+The pinned D3DX NuGet archive under `.tools/downloads/` is also a regenerable
+download cache. Check its locked package hash and verify the extracted SDK files
+against the archive before retiring it; preserve the installed SDK and record
+both the cache inventory and installed-file hashes. Bootstrap reuses an installed
+D3DX SDK without downloading this cache again.
+
 Record removed paths/bytes and protected hashes privately. Strictly compare all
 current units after cleanup; do not cold-rebuild an unchanged source graph just
 for cleanup or documentation. Source/header/profile changes require the usual

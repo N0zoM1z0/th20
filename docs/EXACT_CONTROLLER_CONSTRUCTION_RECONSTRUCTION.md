@@ -97,6 +97,33 @@ Original reference free/raw/Services adapters remain unimported. Whole readers,
 Player/card/game owners, Controller searches/disposal, the 41 KB Enemy opcode
 root and whole-game link/runtime remain open.
 
+### EXACT-081: defaulted-constructor observation
+
+Value initialization of a non-user-provided constructor is a different hypothesis
+from the earlier `new T()` experiments with user-provided constructors. Two small
+compiler fixtures with implicit/defaulted constructors and genuine default member
+initializers clear storage before construction. A larger fixture emits a direct
+`memset` call rather than the native helper at `40C080`.
+
+A private copy of the actual 1064-byte Enemy owner moves its existing member
+initializers into the declarations and defaults its constructor on the first
+declaration. Its complete 215-byte constructor contribution, including the
+five-byte comparison tail and all ten independently anchored relocations, matches
+the existing native constructor. This body observation establishes neither the
+original declaration nor complete EH identity. Its natural value-initializing
+allocation is 79 bytes versus native `4A2910`/73: it calls `memset` directly,
+where the native code calls the thiscall helper. The factory remains nonexact.
+Controller construction has real diagnostic and generation side effects, so
+this defaulted Enemy experiment does not establish a Controller implementation.
+
+Production source, profiles, layouts and exact credit stay unchanged. No explicit
+clear, synthetic constructor or helper is introduced. Private sources, decoded
+complete contributions and original receipts preserve this rejected explanation.
+The completed probe objects are retired; all 84 copied private headers are
+losslessly archived with original paths and SHA-256 identities. Restore those
+headers from `core081-retired-probe-headers.json.gz` before rebuilding the private
+probe. The prior 597-unit graph is replayed with its existing canonical objects.
+
 Private evidence includes `core074-audit.py`, `core074-defs.json`,
 `core074-support.json`, the independent RTTI/native storage exports and all
 failed SDL/search/factory probe sources and reports. Canonical replay snapshots
