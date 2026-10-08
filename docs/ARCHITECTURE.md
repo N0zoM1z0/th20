@@ -1,5 +1,49 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-083 — 2026-10-08 — Actual ECL buffer pipeline and protected cleanup
+
+Complete production append and instruction resolution now run in the actual
+VM/Manager/Stack/Loader/PMR pipeline, replacing its buffer-resolution fixture.
+Both remain nonexact: append is 878/native 876 bytes; instruction is 54 bytes
+with two structural differences. Neither receives a canonical unit or absorption
+credit. The whole 54-byte derived player binding strictly replays through the
+actual Session/context. See [buffer protocol evidence](ECL_BUFFER_RECONSTRUCTION.md).
+
+The frozen graph strictly replays 605 units /116 fresh objects /104870 disjoint
+comparison bytes. There are 607 source mappings, including two whole nonexact
+buffer methods; exact-unit origins are 532 pending /9 library /64 authored,
+with authored coverage unchanged at 16948 bytes. One complete reference binding
+association closes: 206 absorbed across all 6945 terminal reviews. All 53 public
+tests pass (141.326 seconds), including writable-buffer aliasing, duplicate
+stability, recursive include publication, rejection, nontransactional allocation
+failure and actual binding to both Session contexts. Four compiler-local literal
+labels are independently reidentified by complete native text at existing
+addresses; all existing contributions retain exact bytes.
+
+Whole Controller frame 4A5040/734 is newly exported with attestation but remains
+unimplemented. Twenty pointer-initialization compiler fixture functions are
+identical under C++14/17/20 and emit no native preclear under the tested profile.
+The Player +0x14850 interval remains unknown; its bounded negative scan supplies
+no complete owner/type proof. Whole Enemy root/readers/State tick and game runtime
+remain open. Derived include/resource I/O, link allocation, startup, unused
+frame/interpolation and Enemy outer movement/opcode/retirement remain dependencies
+or explicit fixtures. Continue core protocols in coherent batches, serial nice15,
+repo-python, attested Ghidra, no REA/delegation. Reconstruction remains active.
+
+Protected retirement removes 12 completed probe products (331306
+bytes). Original receipts and three historical input versions are losslessly
+archived; savings after those archives are 268753 bytes. The
+post-cleanup replay archive costs 56064 bytes, leaving
+212689 bytes of net retirement savings. All 232 canonical product hashes and
+4470 private evidence files remain unchanged.
+Post-cleanup 605/605 strict replay uses 116 existing objects without a cold
+rebuild. Cumulative retired products: 2603 files /1013917045 bytes; earlier
+separate archival savings remain recorded. Analysis is about 79 MiB and build
+5.3 MiB; tools/game/reference remain protected. Current private proofs are
+core083-final-frozen-source.json, exact083-canonical-results.json.gz and
+core083-post-cleanup-results.json.gz. Completed registration, configuration and
+cleanup writers must never rerun.
+
 ## EXACT-082 — 2026-10-08 — Actual ECL async and call setup
 
 Seven complete contributions add 524 bytes: actual Manager spawn/find/mark-only

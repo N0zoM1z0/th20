@@ -99,8 +99,8 @@ public:
     ScriptStack globals;
 
     EclLoader();
-    // The complete append body is still under reconstruction. It borrows the
-    // writable resource buffer and returns the old file index, or -1.
+    // Borrow writable resource buffers. These complete buffer methods have
+    // semantic coverage; their compiler contributions remain nonexact.
     int append(std::uint8_t* buffer);
     int activate(EclManager* manager, const char* name);
     int select(EclManager* manager, const char* name);

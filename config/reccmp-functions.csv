@@ -603,3 +603,6 @@ th20::DiagnosticAllocator::allocate_object<th20::EclRuntime>,0x0053B3D0,function
 th20::EclLoader::activate,0x0053FDF0,function
 th20::EclManager::loader_value,0x00437660,function
 th20::ScriptStack::frame_value,0x0041CA90,function
+th20::EclFileLoader::bind_player,0x004AB8B0,function
+th20::EclLoader::append,0x0053FE60,function
+th20::EclLoader::instruction,0x0053E8E0,function

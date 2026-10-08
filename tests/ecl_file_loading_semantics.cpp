@@ -2,6 +2,7 @@
 #include "EnemyController.hpp"
 #include "Context.hpp"
 #include "ClockScalar.hpp"
+#include "Session.hpp"
 #include <array>
 #include <cassert>
 #include <cstdlib>
@@ -85,6 +86,13 @@ int main() {
         EclFileLoader first_loader, second_loader;
         assert(first_loader.player_index == 0 && first_loader.context == nullptr);
         assert(second_loader.file_count == 0 && second_loader.records.empty());
+        for (int index : {0,1,0,1}) {
+            first_loader.bind_player(index);
+            assert(first_loader.player_index == index);
+            assert(first_loader.context == &session.contexts[index]);
+        }
+        second_loader.bind_player(0);
+        assert(second_loader.context == &session.contexts[0]);
         first_loader.context = &first_context; second_loader.context = &second_context;
         EclLoader* virtual_loader = &first_loader;
         const char* root = "owned-root-script-long.ecl";

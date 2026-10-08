@@ -17,7 +17,23 @@ struct InstructionRecord {
     th20::EclInstruction header;
     std::array<std::uint32_t,32> arguments;
 };
-std::array<std::vector<InstructionRecord>,5> programs;
+struct Program {
+    std::array<std::uint32_t,4> subroutine_header{};
+    std::array<InstructionRecord,4> instructions{};
+    Program& operator=(std::initializer_list<InstructionRecord> values) {
+        assert(values.size() <= instructions.size());
+        instructions = {};
+        std::copy(values.begin(), values.end(), instructions.begin());
+        return *this;
+    }
+};
+struct ScriptFile {
+    std::array<std::uint32_t,9> header{};
+    std::array<std::uint32_t,5> offsets{};
+    std::array<char,32> names{};
+    std::array<Program,5> programs{};
+} script_file;
+auto& programs = script_file.programs;
 constexpr std::array<const char*,5> names{"main","task1","task2","task3","task4"};
 std::vector<int> events;
 th20::EclLoader test_loader;
@@ -96,7 +112,7 @@ DiagnosticAllocator::DiagnosticAllocator() : state_word_(0),resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator=&allocator;
 GameRandom script_random{0};
-// The link scalar factory and instruction buffer resolver remain fixtures, along
+// The link scalar factory remains a fixture, along
 // with unused interpolation/frame routes and Enemy's outer retirement/movement.
 // Actual Runtime allocation, both lifetimes, VM/call setup, loader activation,
 // Manager spawn/find/invalidation/tick and the State script gate all execute.
@@ -115,10 +131,6 @@ template<> IntrusiveLink<EclRuntime>* DiagnosticAllocator::allocate_object<Intru
     assert(std::strstr(label,"sptcmd.cpp:1014 LinkInf<SptBaseInf*>") != nullptr);
     events.push_back(200);return new IntrusiveLink<EclRuntime>;
 }
-EclInstruction* EclLoader::instruction(std::int32_t routine,std::int32_t offset) {
-    assert(routine>=0 && routine<static_cast<int>(programs.size()) && offset>=0);
-    assert(offset%sizeof(InstructionRecord)==0);return &programs[routine].at(offset/sizeof(InstructionRecord)).header;
-}
 void EclScriptInterpolation::set_tangent_start(const float&) {std::abort();}
 void EclScriptInterpolation::set_tangent_end(const float&) {std::abort();}
 void EclScriptInterpolation::reset_time() {std::abort();}
@@ -133,8 +145,22 @@ struct Manager : th20::EclManager {
 int main() {
     using namespace th20;
     auto* old_resource=std::pmr::set_default_resource(&resource);
-    test_loader.subroutine_count=names.size();
-    for(auto name:names)test_loader.records.push_back({name,nullptr});
+    script_file.header[0] = 0x54504353;
+    script_file.header[1] = 1;
+    script_file.header[4] = names.size();
+    auto* bytes = reinterpret_cast<std::uint8_t*>(&script_file);
+    auto* name_cursor = script_file.names.data();
+    for (unsigned i=0; i<names.size(); ++i) {
+        script_file.offsets[i] = reinterpret_cast<std::uint8_t*>(&programs[i]) - bytes;
+        std::strcpy(name_cursor, names[i]);
+        name_cursor += std::strlen(names[i]) + 1;
+    }
+    assert(test_loader.append(bytes) == 0);
+    assert(test_loader.subroutine_count == names.size());
+    for (unsigned i=0; i<names.size(); ++i) {
+        assert(test_loader.records[i].header == reinterpret_cast<std::uint8_t*>(&programs[i]));
+        assert(test_loader.instruction(i,0) == &programs[i].instructions[0].header);
+    }
     // All async completion subsets with primary success/failure. Real VM opcode1
     // terminates; custom opcode1000 observes the Manager's current runtime.
     for(unsigned mask=0;mask<8;++mask)for(bool primary_failure:{false,true}) {

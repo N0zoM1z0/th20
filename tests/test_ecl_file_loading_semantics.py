@@ -15,7 +15,7 @@ class EclFileLoadingTests(unittest.TestCase):
         self.assertIsNotNone(compiler)
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "ecl-file-loading"
-            sources = ["EclFileLoader", "EclLoaderBase", "EclDiagnostic", "ScriptStack", "Context",
+            sources = ["EclFileLoader", "EclFileLoaderBinding", "Session", "PlayerRecord", "EclLoaderBase", "EclDiagnostic", "ScriptStack", "Context",
                        "EnemyData", "TaskInfoConstruction", "EnemyCounters", "AnimationHandle", "Timer", "ClockScalar", "Identifier32"]
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",

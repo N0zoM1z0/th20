@@ -602,3 +602,6 @@ th20::DiagnosticAllocator::allocate_object<th20::EclRuntime>
 th20::EclLoader::activate
 th20::EclManager::loader_value
 th20::ScriptStack::frame_value
+th20::EclFileLoader::bind_player
+th20::EclLoader::append
+th20::EclLoader::instruction

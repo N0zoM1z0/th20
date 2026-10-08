@@ -16,7 +16,7 @@ class EclManagerEnemyScriptsTests(unittest.TestCase):
         sources = [
             "EclManagerTick", "EclManagerAsync", "EclCallSetup", "EclRuntimeCall",
             "EclDiagnostic", "EnemyScriptAdvance", "TimerStep", "EclRuntimeTick",
-            "EclArguments", "EclRuntimeLifetime", "EclSelection", "EclLoaderBase",
+            "EclArguments", "EclRuntimeLifetime", "EclSelection", "EclLoaderBase", "EclLoaderBuffer",
             "Enemy", "EnemyState", "EnemyMovement", "EnemyCounters", "EnemySpawn",
             "EnemyHealth", "EnemyPattern", "Motion", "MotionConfiguration", "MotionUpdates",
             "MotionMath", "Vector2", "Vector3", "Angle", "Interpolation", "Easing",
