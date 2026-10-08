@@ -22,10 +22,10 @@ std::int32_t ProgressSaveManager::commit() {
 ProgressSaveManager::~ProgressSaveManager() {
     commit();
     worker.close_and_join();
-    if (current.file_buffer) TH20_RELEASE_ARRAY_AND_RESET(current.file_buffer);
-    if (current.decoded_buffer) TH20_RELEASE_ARRAY_AND_RESET(current.decoded_buffer);
-    if (backup.file_buffer) TH20_RELEASE_ARRAY_AND_RESET(backup.file_buffer);
-    if (backup.decoded_buffer) TH20_RELEASE_ARRAY_AND_RESET(backup.decoded_buffer);
+    if (current.file_buffer) TH20_RELEASE_BYTES_AND_RESET(current.file_buffer);
+    if (current.decoded_buffer) TH20_RELEASE_BYTES_AND_RESET(current.decoded_buffer);
+    if (backup.file_buffer) TH20_RELEASE_BYTES_AND_RESET(backup.file_buffer);
+    if (backup.decoded_buffer) TH20_RELEASE_BYTES_AND_RESET(backup.decoded_buffer);
 }
 
 std::int32_t ProgressSaveManager::copy_current_to_backup() {

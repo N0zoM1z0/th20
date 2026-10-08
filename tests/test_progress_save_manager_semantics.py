@@ -17,7 +17,7 @@ class ProgressSaveManagerTests(unittest.TestCase):
             output = Path(directory) / "save-manager"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-Isrc", "-pthread",
+                "-fsanitize=undefined", "-Isrc", "-pthread", "-Wl,--wrap=free",
                 "tests/progress_save_manager_semantics.cpp", "src/ProgressSaveManager.cpp",
                 "src/ProgressStorage.cpp", "src/ProgressProfile.cpp", "src/ProgressRecords.cpp",
                 "src/Worker.cpp", "src/LockRegistry.cpp", "src/DiagnosticAllocator.cpp",

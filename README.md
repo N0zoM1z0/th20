@@ -53,7 +53,8 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 618 mapped component functions; 613 canonical units across 119 comparison objects; five whole methods remain nonexact |
+| Source | 620 mapped component functions; 614 canonical units across 120 comparison objects; six whole methods remain nonexact |
+| Progress-file parser | Complete parser executes actual checksum/cipher/decoder/allocator and backup merge; checksum80 is exact, parser813/native824 remains nonexact; [evidence](docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Authored exactness | 64 functions, 16,948 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |

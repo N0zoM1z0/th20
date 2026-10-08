@@ -616,3 +616,5 @@ th20::ProgressSaveManager::merge_current
 th20::ProgressSaveManager::ProgressSaveManager
 th20::ProgressSaveManager::commit
 th20::ProgressSaveManager::~ProgressSaveManager
+th20::ProgressRecordHeader::calculate_checksum
+th20::ProgressSaveManager::parse

@@ -1,5 +1,67 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-087 — 2026-10-08 — Whole progress-file parsing and protected retirement
+
+Complete SaveManager parsing now executes the actual checksum, archive cipher,
+LZSS decoder, C allocator and current/backup merge. It remains whole nonexact:
+813 candidate/native824 bytes, with every native branch/tail retained. The actual
+record-header member checksum strictly replays all 80 bytes. Typed 2x9 Profiles
+replace the flat declaration without changing layout; the complete existing
+Snapshot 143 and all prior units remain strict exact. Complete native literals
+are independently verified under the source-local CP932 compiler recipe.
+See [parser evidence and correction](PROGRESS_FILE_PARSE_RECONSTRUCTION.md).
+
+CORE/EXACT-086's array-delete fixture and heap-family claim were incorrect and
+are superseded: native 41F610 uses malloc and 41F670 uses free. Production and
+lifecycle tests now use that actual family and shared null-safe reset protocol;
+ordered real free calls are observed after save. ArchiveCrypt scratch keeps its
+separate new[]/delete[] family. Complete lifecycle candidates remain nonexact:
+constructor 198/native 199, commit 68/70, destructor 304/299. No new lifecycle credit,
+fake returns, emission-only locals, padding or shortened extents are introduced.
+
+Frozen replay passes 614/614 units /120 fresh objects /119857 disjoint bytes.
+There are 620 source mappings, including six whole nonexact methods. Exact-unit
+origins are 541 pending /9 library /64 authored; authored exact bytes stay 16948.
+Independent score.cpp diagnostics establish this nonexact parser as authored,
+so 65 authored functions are now confirmed and authored-byte exactness is 95.36%
+of the expanded provisional denominator. Checksum identity remains pending.
+One complete reference association closes: 212 absorbed across all 6945 terminal
+reviews. All 57 public tests pass (131.530 seconds).
+
+Actual O2/UBSan encrypted synthetic files execute all 18 selectors, fallback,
+complete CR/ST records, metadata members, buffer identity, decoded contents and
+real backup -> parse -> copy-back. Tests cover all observed header rejections,
+retained decoded ownership, version/checksum/size rejection, unknown-magic stop,
+copy-before-negative-remaining, checksum prefix exclusion and safe negative
+extents. Host assignment tests compare members; native REP MOVSD/padding is
+separate x86 evidence. Process startup and disk load/save remain explicit
+fixtures. Native malformed UB domains, compression/encryption writing and full
+game runtime remain open. The older boundary test keeps its explicit parse
+fixture to exercise full signed merge results; it does not link the real parser.
+
+Protected retirement removes 15 completed/rejected probe products
+(338711 bytes) and 8 copied private headers
+(13613 bytes). Original receipts and all 11
+historical/copied input versions are losslessly archived. Net savings after
+archives and post-cleanup replay: 179919 bytes. All 240 canonical product hashes
+and 4692 retained evidence files remain unchanged.
+Post-cleanup 614/614 strict replay uses 120 existing objects without rebuilding.
+Cumulative retired build products: 2650 files /
+1015140125 bytes. Analysis is 81M and
+build is 5.6M; locked tools, target, reference and Ghidra stay protected.
+Proofs: core087-final-frozen-source.json, exact087-canonical-results.json.gz,
+core087-whole-audit.json, core087-cold-support.json and
+core087-post-cleanup-results.json.gz. Completed configuration, registration,
+cleanup and documentation writers must never rerun. Historical probes require
+restoration of their original hash-bound declarations before reproduction.
+
+Continue whole SaveManager load 562/write 1198/save 174 with actual I/O and codec
+protocols. Load's 2x10 initializer visits cross 9-element row geometry and reach
+fallback; do not invent out-of-array typed subscripts. Whole Enemy/State,
+Controller and Player remain open. Keep one writer, serial nice 15, repo-python,
+bounded attested Ghidra, no REA/delegation and periodic protected retirement.
+Reconstruction remains active.
+
 ## CORE/EXACT-086 — 2026-10-08 — SaveManager ownership and member tasks
 
 The actual 1242D8 SaveManager now composes two real Snapshots, a neutral zero

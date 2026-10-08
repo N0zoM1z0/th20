@@ -617,3 +617,5 @@ th20::ProgressSaveManager::merge_current,0x0050F5F0,function
 th20::ProgressSaveManager::ProgressSaveManager,0x0050E5D0,function
 th20::ProgressSaveManager::commit,0x0050F660,function
 th20::ProgressSaveManager::~ProgressSaveManager,0x0050E990,function
+th20::ProgressRecordHeader::calculate_checksum,0x0050FC90,function
+th20::ProgressSaveManager::parse,0x0050EB70,function

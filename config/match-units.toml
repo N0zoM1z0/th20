@@ -9938,3 +9938,13 @@ relocations = [
   { offset = 0x55, type = "REL32", symbol = "?parse@ProgressSaveManager@th20@@QAEHPAUProgressSnapshot@2@@Z", target = 0x0050EB70 },
   { offset = 0x60, type = "REL32", symbol = "?copy_current_to_backup@ProgressSaveManager@th20@@QAEHXZ", target = 0x0050EEB0 },
 ]
+
+[units.progress_record_checksum]
+source = "src/ProgressFileParse.cpp"
+object = "build/ProgressFileParse.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ProgressRecordHeader::calculate_checksum"]
+symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z"
+target_address = 0x0050FC90
+size = 80
+relocations = []

@@ -4,6 +4,18 @@
 
 namespace th20 {
 
+// TH20 disk prefix, independently consumed by parsing and the complete writer.
+// Unknown bytes/words retain neutral names; default creation clears all44 bytes.
+struct ProgressFileHeader {
+    std::uint32_t magic, file_size, version;
+    std::uint32_t spell_size, profile_size, metadata_size, snapshot_size;
+    std::uint8_t field_1c[4];
+    std::uint32_t field_20, compressed_size, decoded_size;
+};
+static_assert(sizeof(ProgressFileHeader)==44);
+static_assert(offsetof(ProgressFileHeader, compressed_size)==0x24);
+static_assert(offsetof(ProgressFileHeader, decoded_size)==0x28);
+
 // ST record. Unknown byte-array roles retain neutral offset names. The name is
 // initialized by the separate startup protocol, not by default construction.
 struct ProgressMetadata {
@@ -27,7 +39,7 @@ struct ProgressSnapshot {
     std::uint32_t file_size=0;
     std::uint8_t* file_buffer=nullptr;
     std::uint8_t* decoded_buffer=nullptr;
-    ProgressProfile profiles[18];
+    ProgressProfile profiles[2][9];
     ProgressProfile fallback;
     ProgressMetadata metadata;
 

@@ -69,19 +69,20 @@ int main() {
         auto* backup=::new(second.get()+guard) ProgressSnapshot;
         for (const auto* snapshot:{current,backup}) {
             assert(snapshot->file_size==0 && !snapshot->file_buffer && !snapshot->decoded_buffer);
-            for (const auto& selectable:snapshot->profiles)profile(selectable);
+            for (const auto& row:snapshot->profiles)
+                for (const auto& selectable:row)profile(selectable);
             profile(snapshot->fallback);metadata(snapshot->metadata,pattern);
         }
         // The eighteenth selectable record, fallback, metadata and backup are
         // distinct live objects, including the final physical Spell slot.
-        current->profiles[17].spells[122].attempts[1]=37;
+        current->profiles[1][8].spells[122].attempts[1]=37;
         current->fallback.scores[6][9].score=100000;
         current->metadata.used_stones[8]=4;
         current->metadata.choices[15]=3;
-        assert(current->profiles[16].spells[122].attempts[1]==0);
-        assert(current->profiles[17].spells[122].attempts[0]==0);
+        assert(current->profiles[1][7].spells[122].attempts[1]==0);
+        assert(current->profiles[1][8].spells[122].attempts[0]==0);
         assert(current->fallback.spells[122].attempts[1]==0);
-        assert(current->profiles[17].scores[6][9].score==0);
+        assert(current->profiles[1][8].scores[6][9].score==0);
         assert(current->metadata.stones[8]==9 && current->metadata.used_stones[7]==0);
         assert(backup->metadata.used_stones[8]==0 && backup->metadata.choices[15]==8);
         assert(backup->fallback.scores[6][9].score==0);

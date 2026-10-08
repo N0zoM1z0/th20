@@ -67,3 +67,12 @@ static_assert(sizeof(void*) != 4 || sizeof(DiagnosticAllocator) == 8);
 // Keep this shared protocol visible to callers with more than one exit path.
 #define TH20_RELEASE_ARRAY_AND_RESET(pointer) \
     (th20::process_allocator->release_array(pointer), (pointer) = nullptr)
+
+// File and decoded buffers come from allocate_bytes(), using the C heap family.
+#define TH20_RELEASE_BYTES_AND_RESET(pointer) \
+    { \
+        if (pointer) { \
+            th20::process_allocator->release_bytes(pointer); \
+            (pointer) = nullptr; \
+        } \
+    }

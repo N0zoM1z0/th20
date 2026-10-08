@@ -8,6 +8,9 @@ struct ProgressRecordHeader {
     std::uint16_t magic, version;
     std::uint32_t checksum, size;
     ProgressRecordHeader();
+    // Sum bytes [8,extent) of the complete containing CR/ST record. The signed
+    // extent and readable containing storage are supplied by the caller.
+    std::uint32_t calculate_checksum(std::int32_t extent) const;
 };
 // The 60-element score array and 63-element practice array have natural
 // eight-byte alignment. Their constructors leave compiler padding alone.

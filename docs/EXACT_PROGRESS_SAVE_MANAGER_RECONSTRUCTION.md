@@ -1,5 +1,11 @@
 # SaveManager ownership, member tasks and record merge
 
+CORE/EXACT-087 supersedes this historical checkpoint's array-delete fixture and
+heap-family acceptance: file/decoded buffers use real malloc/free. The current
+destructor is304/native299 and remains nonexact. Parsing now has a complete
+production body with actual codec/allocator tests, but remains813/native824.
+See [current parser and correction evidence](PROGRESS_FILE_PARSE_RECONSTRUCTION.md).
+
 CORE/EXACT-086 reconstructs the actual SaveManager owner and its whole
 construction, commit, destruction and merge bodies. Five complete contributions
 strictly replay 463 bytes and nineteen independently anchored relocations.

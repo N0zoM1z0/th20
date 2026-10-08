@@ -6,7 +6,6 @@
 #include <cstring>
 #include <future>
 #include <memory>
-#include <new>
 #include <vector>
 
 namespace {
@@ -69,18 +68,18 @@ void merge_protocol(th20::ProgressSaveManager& owner, Fixture& f) {
 }
 }
 
-// Observe the real maintained allocator's delete[] without replacing release
-// or ownership logic. Startup and the three pending file callbacks below are
-// explicit fixtures; they do not claim native disk parsing or game execution.
-void operator delete[](void* memory) noexcept {
+// Observe the actual C heap release through the linker's free wrapper. Array
+// delete in the shared C++ library does not satisfy this family/order check.
+// Startup and pending file callbacks remain explicit test boundaries.
+extern "C" void __real_free(void* memory);
+extern "C" void __wrap_free(void* memory) {
     if (fixture && fixture->released<fixture->buffers.size() &&
         memory==fixture->buffers[fixture->released]) {
         assert(fixture->save_count==3);
         ++fixture->released;
     }
-    ::operator delete(memory);
+    __real_free(memory);
 }
-void operator delete[](void* memory, std::size_t) noexcept { ::operator delete[](memory); }
 
 namespace th20 {
 LockRegistry process_locks;
@@ -95,10 +94,11 @@ void ProgressSaveManager::load(void* argument) {
     assert(!backup.file_buffer && !backup.decoded_buffer);
     assert(field_124280==0);
     for (auto value : field_124284) assert(value==0);
-    assert(current.profiles[17].header.size==0 && backup.fallback.header.size==0);
+    assert(current.profiles[1][8].header.size==0 && backup.fallback.header.size==0);
     assert(current.metadata.stones[8]==9 && backup.metadata.used_stones[8]==0);
     if (fixture->allocate_buffers) {
-        for (auto& buffer : fixture->buffers) buffer=new std::uint8_t[64];
+        for (auto& buffer : fixture->buffers)
+            buffer=static_cast<std::uint8_t*>(process_allocator->allocate_bytes(64, "SaveManager fixture"));
         current.file_size=123; backup.file_size=456;
         current.file_buffer=fixture->buffers[0];
         current.decoded_buffer=fixture->buffers[1];
@@ -169,6 +169,9 @@ int main() {
     empty.allocate_buffers=false;
     fixture=&empty;
     th20::process_allocator=nullptr;
+    std::uint8_t* absent=nullptr;
+    TH20_RELEASE_BYTES_AND_RESET(absent);
+    assert(absent==nullptr);
     auto empty_loaded=empty.load.entered.get_future();
     empty.load.release.set_value();
     for (auto& gate : empty.saves) gate.release.set_value();
