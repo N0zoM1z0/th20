@@ -1,5 +1,13 @@
 # Whole archive-owner and resource-reader candidates
 
+## CORE/EXACT-094 production update
+
+The nine complete archive/resource bodies are now shared production source
+and canonical units. The full File dependency is also maintained. Frozen replay
+passes 646 units/128 fresh objects; actual cipher/LZSS/allocator/File/resource and
+SaveManager integration checks pass. The prior private-only state is historical.
+See [whole production evidence](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md).
+
 CORE-092 independently reconstructs the archive directory and member-reading
 protocol. Nine complete private probe bodies strictly replay 2,869 bytes and
 118 independently established relocations. They are not yet production source,

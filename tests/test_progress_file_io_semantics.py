@@ -1,4 +1,4 @@
-"""Real complete save/load protocol; only startup, resource/OS and CRT boundaries fixture."""
+"""Real complete save/load protocol; only startup/data, OS and CRT boundaries fixture."""
 from pathlib import Path
 import shutil
 import subprocess
@@ -19,6 +19,7 @@ class ProgressFileIoTests(unittest.TestCase):
             "GameFileIo", "DiagnosticLog", "GameRandom", "GameRandomStream", "Worker",
             "ArchiveCrypt", "ArchiveLzss", "ArchiveLzssEncode", "ArchiveLzssTree", "EclDiagnostic",
             "DiagnosticAllocator", "DebugMemoryResource", "LockRegistry",
+            "GameResourceIo", "ArchiveOwner", "PbgFile",
         ]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "progress-file-io"

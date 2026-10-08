@@ -10242,3 +10242,388 @@ relocations = [
   { offset = 0x30f, type = "DIR32", symbol = "?progress_file_data_error@th20@@3QBDB", target = 0x0057388C },
   { offset = 0x314, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
+
+[units.archive_owner_duplicate_name]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::duplicate_name"]
+symbol = "?duplicate_name@ArchiveOwner@th20@@QAEPADPBD@Z"
+target_address = 0x00539E60
+size = 97
+relocations = [
+  { offset = 14, type = "REL32", symbol = "_strlen", target = 0x0054FE20 },
+  { offset = 28, type = "DIR32", symbol = "$SG167039", target = 0x005769E4 },
+  { offset = 38, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 43, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 65, type = "REL32", symbol = "_strlen", target = 0x0054FE20 },
+  { offset = 81, type = "REL32", symbol = "_strcpy_s", target = 0x00548610 },
+]
+
+[units.archive_owner_load_catalog]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::load_catalog"]
+symbol = "?load_catalog@ArchiveOwner@th20@@QAE_NPBD@Z"
+target_address = 0x00539ED0
+size = 669
+relocations = [
+  { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 73, type = "DIR32", symbol = "?archive_read_mode@th20@@3PBDB", target = 0x005B0AF8 },
+  { offset = 169, type = "REL32", symbol = "?archive_decrypt@th20@@YAPAEPAEHEEHH@Z", target = 0x004100E0 },
+  { offset = 289, type = "DIR32", symbol = "?archive_seek_start@th20@@3IA", target = 0x005767D4 },
+  { offset = 311, type = "DIR32", symbol = "$SG167064", target = 0x00576960 },
+  { offset = 321, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 326, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 425, type = "REL32", symbol = "?archive_decrypt@th20@@YAPAEPAEHEEHH@Z", target = 0x004100E0 },
+  { offset = 447, type = "REL32", symbol = "?archive_decompress@th20@@YAPAEPBEHPAEH@Z", target = 0x005391F0 },
+  { offset = 486, type = "REL32", symbol = "?parse_catalog@ArchiveOwner@th20@@QAEPAUArchiveEntry@2@PADHH@Z", target = 0x0053A210 },
+  { offset = 519, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 524, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 547, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 552, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 579, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 584, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 607, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 612, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 632, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 637, type = "REL32", symbol = "??$release_object@VFile@Pbg@@@DiagnosticAllocator@th20@@QAEXPAVFile@Pbg@@@Z", target = 0x00539B20 },
+  { offset = 659, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.archive_owner_close]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::close"]
+symbol = "?close@ArchiveOwner@th20@@QAEXXZ"
+target_address = 0x0053A170
+size = 151
+relocations = [
+  { offset = 24, type = "DIR32", symbol = "$SG167084", target = 0x005768F4 },
+  { offset = 29, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 54, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 59, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 91, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 96, type = "REL32", symbol = "??$release_array@UArchiveEntry@th20@@@DiagnosticAllocator@th20@@QAEXPAUArchiveEntry@1@@Z", target = 0x00539AB0 },
+  { offset = 118, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 123, type = "REL32", symbol = "??$release_object@VFile@Pbg@@@DiagnosticAllocator@th20@@QAEXPAVFile@Pbg@@@Z", target = 0x00539B20 },
+]
+
+[units.archive_owner_parse_catalog]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::parse_catalog"]
+symbol = "?parse_catalog@ArchiveOwner@th20@@QAEPAUArchiveEntry@2@PADHH@Z"
+target_address = 0x0053A210
+size = 319
+relocations = [
+  { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 34, type = "DIR32", symbol = "$SG167108", target = 0x005769A0 },
+  { offset = 40, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 45, type = "REL32", symbol = "??$allocate_array@UArchiveEntry@th20@@@DiagnosticAllocator@th20@@QAEPAUArchiveEntry@1@PBDH@Z", target = 0x00539B90 },
+  { offset = 108, type = "REL32", symbol = "?duplicate_name@ArchiveOwner@th20@@QAEPADPBD@Z", target = 0x00539E60 },
+  { offset = 128, type = "REL32", symbol = "?advance_name@ArchiveCatalogCursor@th20@@QAEPADXZ", target = 0x0053A680 },
+  { offset = 154, type = "REL32", symbol = "?advance_word@ArchiveCatalogCursor@th20@@QAEIXZ", target = 0x0053A650 },
+  { offset = 180, type = "REL32", symbol = "?advance_word@ArchiveCatalogCursor@th20@@QAEIXZ", target = 0x0053A650 },
+  { offset = 206, type = "REL32", symbol = "?advance_word@ArchiveCatalogCursor@th20@@QAEIXZ", target = 0x0053A650 },
+  { offset = 278, type = "REL32", symbol = "??_EArchiveEntry@th20@@QAEPAXI@Z", target = 0x00539DB0 },
+  { offset = 309, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.archive_owner_find]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::find"]
+symbol = "?find@ArchiveOwner@th20@@QAEPAUArchiveEntry@2@PBD@Z"
+target_address = 0x0053A350
+size = 101
+relocations = [
+  { offset = 75, type = "REL32", symbol = "__stricmp", target = 0x00555750 },
+]
+
+[units.archive_owner_read]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::read"]
+symbol = "?read@ArchiveOwner@th20@@QAEPAEPBDPAE@Z"
+target_address = 0x0053A3C0
+size = 596
+relocations = [
+  { offset = 45, type = "REL32", symbol = "?find@ArchiveOwner@th20@@QAEPAUArchiveEntry@2@PBD@Z", target = 0x0053A350 },
+  { offset = 125, type = "DIR32", symbol = "$SG167149", target = 0x00576910 },
+  { offset = 135, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 140, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 196, type = "DIR32", symbol = "?archive_seek_start@th20@@3IA", target = 0x005767D4 },
+  { offset = 307, type = "REL32", symbol = "_strlen", target = 0x0054FE20 },
+  { offset = 343, type = "REL32", symbol = "?archive_name_sum@th20@@YAEPBDI@Z", target = 0x00456270 },
+  { offset = 378, type = "DIR32", symbol = "?archive_member_parameters@th20@@3PAUArchiveCipherParameters@1@A", target = 0x005AE000 },
+  { offset = 392, type = "DIR32", symbol = "?archive_member_parameters@th20@@3PAUArchiveCipherParameters@1@A", target = 0x005AE000 },
+  { offset = 407, type = "DIR32", symbol = "?archive_member_parameters@th20@@3PAUArchiveCipherParameters@1@A", target = 0x005AE000 },
+  { offset = 422, type = "DIR32", symbol = "?archive_member_parameters@th20@@3PAUArchiveCipherParameters@1@A", target = 0x005AE000 },
+  { offset = 436, type = "REL32", symbol = "?archive_decrypt@th20@@YAPAEPAEHEEHH@Z", target = 0x004100E0 },
+  { offset = 468, type = "REL32", symbol = "?archive_decompress@th20@@YAPAEPBEHPAEH@Z", target = 0x005391F0 },
+  { offset = 512, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 517, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 541, type = "DIR32", symbol = "$SG167161", target = 0x0057694C },
+  { offset = 546, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 571, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 576, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+]
+
+[units.archive_owner_size]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::size"]
+symbol = "?size@ArchiveOwner@th20@@QAEHPBD@Z"
+target_address = 0x0053A620
+size = 48
+relocations = [
+  { offset = 17, type = "REL32", symbol = "?find@ArchiveOwner@th20@@QAEPAUArchiveEntry@2@PBD@Z", target = 0x0053A350 },
+]
+
+[units.archive_owner_open]
+source = "src/ArchiveOwner.cpp"
+object = "build/ArchiveOwner.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ArchiveOwner::open"]
+symbol = "?open@ArchiveOwner@th20@@QAE_NPBD@Z"
+target_address = 0x0053A6F0
+size = 305
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 32, type = "REL32", symbol = "?close@ArchiveOwner@th20@@QAEXXZ", target = 0x0053A170 },
+  { offset = 50, type = "DIR32", symbol = "__imp__GetCurrentDirectoryW@8", target = 0x0056C068 },
+  { offset = 62, type = "DIR32", symbol = "$SG167179", target = 0x00576864 },
+  { offset = 67, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 79, type = "DIR32", symbol = "$SG167180", target = 0x00576884 },
+  { offset = 84, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 92, type = "DIR32", symbol = "$SG167181", target = 0x005768A0 },
+  { offset = 98, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 103, type = "REL32", symbol = "??$allocate_object@VFile@Pbg@@@DiagnosticAllocator@th20@@QAEPAVFile@Pbg@@PBD@Z", target = 0x00539C80 },
+  { offset = 146, type = "REL32", symbol = "?load_catalog@ArchiveOwner@th20@@QAE_NPBD@Z", target = 0x00539ED0 },
+  { offset = 168, type = "REL32", symbol = "?duplicate_name@ArchiveOwner@th20@@QAEPADPBD@Z", target = 0x00539E60 },
+  { offset = 228, type = "DIR32", symbol = "?archive_read_mode@th20@@3PBDB", target = 0x005B0AF8 },
+  { offset = 264, type = "DIR32", symbol = "$SG167185", target = 0x005768DC },
+  { offset = 269, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 283, type = "REL32", symbol = "?close@ArchiveOwner@th20@@QAEXXZ", target = 0x0053A170 },
+  { offset = 295, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.game_resource_read]
+source = "src/GameResourceIo.cpp"
+object = "build/GameResourceIo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::read_game_resource"]
+symbol = "?read_game_resource@th20@@YAPAEPBDPAHH@Z"
+target_address = 0x00410AA0
+size = 583
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?read_game_resource@th20@@YAPAEPBDPAHH@Z", target = 0x00567A8D },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 43, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 48, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 57, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 85, type = "REL32", symbol = "_strrchr", target = 0x005448C0 },
+  { offset = 125, type = "REL32", symbol = "_strrchr", target = 0x005448C0 },
+  { offset = 163, type = "DIR32", symbol = "?archive_owner@th20@@3UArchiveOwner@1@A", target = 0x005B66C8 },
+  { offset = 168, type = "REL32", symbol = "?size@ArchiveOwner@th20@@QAEHPBD@Z", target = 0x0053A620 },
+  { offset = 211, type = "DIR32", symbol = "$SG218057", target = 0x0056C5F8 },
+  { offset = 216, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 233, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 238, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 265, type = "DIR32", symbol = "?archive_owner@th20@@3UArchiveOwner@1@A", target = 0x005B66C8 },
+  { offset = 270, type = "REL32", symbol = "?read@ArchiveOwner@th20@@QAEPAEPBDPAE@Z", target = 0x0053A3C0 },
+  { offset = 285, type = "DIR32", symbol = "$SG218061", target = 0x0056C60C },
+  { offset = 290, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 307, type = "REL32", symbol = "??$?0PBD$0A@@path@filesystem@std@@QAE@ABQBDW4format@012@@Z", target = 0x0040C720 },
+  { offset = 333, type = "REL32", symbol = "?c_str@path@filesystem@std@@QBEPB_WXZ", target = 0x0040FF70 },
+  { offset = 340, type = "DIR32", symbol = "__imp__CreateFileW@28", target = 0x0056C164 },
+  { offset = 351, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+  { offset = 367, type = "DIR32", symbol = "$SG218063", target = 0x0056C61C },
+  { offset = 372, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 392, type = "DIR32", symbol = "__imp__GetFileSize@8", target = 0x0056C160 },
+  { offset = 409, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 414, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 432, type = "DIR32", symbol = "$SG218066", target = 0x0056C638 },
+  { offset = 437, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 450, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+  { offset = 477, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x0056C0B0 },
+  { offset = 502, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+  { offset = 524, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 551, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 575, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.pbg_ifile_ctor]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::IFile::IFile"]
+symbol = "??0IFile@Pbg@@QAE@XZ"
+target_address = 0x00539040
+size = 23
+relocations = [
+  { offset = 12, type = "DIR32", symbol = "??_7IFile@Pbg@@6B@", target = 0x00576750 },
+]
+
+[units.pbg_ifile_dtor]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::IFile::~IFile"]
+symbol = "??1IFile@Pbg@@UAE@XZ"
+target_address = 0x00538A30
+size = 20
+relocations = [
+  { offset = 12, type = "DIR32", symbol = "??_7IFile@Pbg@@6B@", target = 0x00576750 },
+]
+
+[units.pbg_file_ctor]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::File"]
+symbol = "??0File@Pbg@@QAE@XZ"
+target_address = 0x00539000
+size = 51
+relocations = [
+  { offset = 11, type = "REL32", symbol = "??0IFile@Pbg@@QAE@XZ", target = 0x00539040 },
+  { offset = 20, type = "DIR32", symbol = "??_7File@Pbg@@6B@", target = 0x00576774 },
+]
+
+[units.pbg_file_dtor]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::~File"]
+symbol = "??1File@Pbg@@UAE@XZ"
+target_address = 0x005389D0
+size = 80
+compare_size = 85
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??1File@Pbg@@UAE@XZ", target = 0x00567600 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 43, type = "DIR32", symbol = "??_7File@Pbg@@6B@", target = 0x00576774 },
+  { offset = 51, type = "REL32", symbol = "?close@File@Pbg@@UAEXXZ", target = 0x00538AB0 },
+  { offset = 60, type = "REL32", symbol = "??1IFile@Pbg@@UAE@XZ", target = 0x00538A30 },
+]
+
+[units.pbg_file_open]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::open"]
+symbol = "?open@File@Pbg@@UAE_NPBD0@Z"
+target_address = 0x00538C50
+size = 346
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 223, type = "REL32", symbol = "?convert_filename@Pbg@@YAXPA_WPBD@Z", target = 0x00538E10 },
+  { offset = 267, type = "DIR32", symbol = "__imp__CreateFileW@28", target = 0x0056C164 },
+  { offset = 323, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x0056C140 },
+  { offset = 336, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.pbg_file_close]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::close"]
+symbol = "?close@File@Pbg@@UAEXXZ"
+target_address = 0x00538AB0
+size = 53
+relocations = [
+  { offset = 25, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+]
+
+[units.pbg_file_read]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::read"]
+symbol = "?read@File@Pbg@@UAEIPAXI@Z"
+target_address = 0x00538DB0
+size = 88
+relocations = [
+  { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 65, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x0056C0B0 },
+  { offset = 78, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.pbg_file_write]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::write"]
+symbol = "?write@File@Pbg@@UAE_NPBXI@Z"
+target_address = 0x00538F90
+size = 106
+relocations = [
+  { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 65, type = "DIR32", symbol = "__imp__WriteFile@20", target = 0x0056C138 },
+  { offset = 96, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.pbg_file_position]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::position"]
+symbol = "?position@File@Pbg@@UAEIXZ"
+target_address = 0x00538BF0
+size = 43
+relocations = [
+  { offset = 35, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x0056C140 },
+]
+
+[units.pbg_file_size]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::size"]
+symbol = "?size@File@Pbg@@UAEIXZ"
+target_address = 0x00538C20
+size = 39
+relocations = [
+  { offset = 31, type = "DIR32", symbol = "__imp__GetFileSize@8", target = 0x0056C160 },
+]
+
+[units.pbg_file_seek]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::File::seek"]
+symbol = "?seek@File@Pbg@@UAE_NHI@Z"
+target_address = 0x00538F10
+size = 51
+relocations = [
+  { offset = 39, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x0056C140 },
+]
+
+[units.pbg_file_convert_filename]
+source = "src/PbgFile.cpp"
+object = "build/PbgFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["Pbg::convert_filename"]
+symbol = "?convert_filename@Pbg@@YAXPA_WPBD@Z"
+target_address = 0x00538E10
+size = 248
+relocations = [
+  { offset = 10, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 34, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 68, type = "DIR32", symbol = "__imp__MultiByteToWideChar@24", target = 0x0056C124 },
+  { offset = 83, type = "REL32", symbol = "?wcschr@@YAPA_WPA_W_W@Z", target = 0x00538F50 },
+  { offset = 111, type = "REL32", symbol = "_wcscpy_s", target = 0x00548100 },
+  { offset = 133, type = "DIR32", symbol = "__imp__GetModuleFileNameW@12", target = 0x0056C10C },
+  { offset = 144, type = "REL32", symbol = "?wcsrchr@@YAPA_WPA_W_W@Z", target = 0x00538F70 },
+  { offset = 167, type = "DIR32", symbol = "$SG166875", target = 0x005767D0 },
+  { offset = 181, type = "REL32", symbol = "_wcscpy_s", target = 0x00548100 },
+  { offset = 227, type = "REL32", symbol = "_wcscat_s", target = 0x005517B0 },
+  { offset = 240, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

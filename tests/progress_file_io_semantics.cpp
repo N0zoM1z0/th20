@@ -3,12 +3,15 @@
 #include "DiagnosticLog.hpp"
 #include "GameFileIo.hpp"
 #include "EclFileLoader.hpp"
+#include "ArchiveOwner.hpp"
+#include "WideSecureCrt.hpp"
 #include "Win32FileApi.hpp"
 #include "SecureCrt.hpp"
 #include "GameRandom.hpp"
 #include "WindowState.hpp"
 #include <algorithm>
 #include <cassert>
+#include <cctype>
 #include <cstdlib>
 #include <map>
 #include <memory>
@@ -25,6 +28,11 @@ std::uint32_t progress_spell_defaults[113];
 DebugMemoryResource log_resource;
 DiagnosticLog diagnostic_log{std::pmr::string(&log_resource),0};
 void* game_file_handle;
+ArchiveOwner archive_owner;
+const char* archive_read_mode="r";
+std::uint32_t archive_seek_start=0;
+ArchiveCipherParameters archive_member_parameters[8]{}; // Archive mode is unused here.
+
 }
 
 namespace {
@@ -35,6 +43,8 @@ struct Output {
     Bytes bytes;
     bool closed=false;
     unsigned writes=0, closes=0;
+    bool input=false;
+    DWORD position=0;
 };
 std::vector<std::unique_ptr<Output>> handles;
 std::map<std::string,Bytes> disk;
@@ -246,7 +256,10 @@ void exercise_files() {
 extern "C" void* __real_malloc(std::size_t);
 extern "C" void __real_free(void*);
 extern "C" void* __wrap_malloc(std::size_t size) {
-    auto* memory=__real_malloc(size);
+    // Heap-boundary fixture: native token fetch requires a readable guard byte
+    // even though resource allocation requests exactly the file's logical size.
+    auto* memory=__real_malloc(size+1);
+    if (memory) static_cast<std::uint8_t*>(memory)[size]=0xff;
     if (allocations) { allocations->pointers.push_back(memory); allocations->sizes.push_back(size); }
     return memory;
 }
@@ -269,15 +282,24 @@ extern "C" int vsprintf_s(char* buffer, std::size_t size, const char* format, st
 }
 extern "C" HANDLE CreateFileW(const wchar_t* name, DWORD access, DWORD sharing,
                                void* security, DWORD creation, DWORD attributes, HANDLE existing) {
-    assert(access==GENERIC_WRITE && sharing==FILE_SHARE_READ && creation==CREATE_ALWAYS && attributes==FILE_ATTRIBUTE_NORMAL);
-    assert(!security && !existing);
+    assert(sharing==FILE_SHARE_READ && !security && !existing);
+    const bool input=access==GENERIC_READ;
+    if (input) assert(creation==OPEN_EXISTING && attributes==(FILE_ATTRIBUTE_NORMAL|FILE_FLAG_SEQUENTIAL_SCAN));
+    else assert(access==GENERIC_WRITE && creation==CREATE_ALWAYS && attributes==FILE_ATTRIBUTE_NORMAL);
     std::string filename;
     for (; *name; ++name) { assert(*name>0 && *name<128); filename+=static_cast<char>(*name); }
-    opens.push_back(filename);
-    if (fail_open) return INVALID_HANDLE_VALUE;
+    if (input) {
+        reads.push_back(filename);
+        if (disk.find(filename)==disk.end()) return INVALID_HANDLE_VALUE;
+    } else {
+        opens.push_back(filename);
+        if (fail_open) return INVALID_HANDLE_VALUE;
+    }
     handles.push_back(std::make_unique<Output>());
     handles.back()->name=filename;
-    disk[filename].clear();
+    handles.back()->input=input;
+    if (input) handles.back()->bytes=disk.at(filename);
+    else disk[filename].clear();
     return handles.back().get();
 }
 extern "C" int WriteFile(HANDLE handle, const void* bytes, DWORD size, DWORD* written, void* overlapped) {
@@ -312,20 +334,50 @@ extern "C" void* LocalFree(void* memory) {
     delete[] static_cast<wchar_t*>(memory);
     return nullptr;
 }
-namespace th20 {
-std::uint8_t* read_game_resource(const char* filename, std::int32_t* size, std::int32_t mode) {
-    // Genuine pending resource-reader boundary; returned files use its C family.
-    assert(mode==1 && size);
-    reads.emplace_back(filename);
-    const auto found=disk.find(filename);
-    if (found==disk.end()) { *size=0; return nullptr; }
-    const auto& bytes=found->second;
-    *size=bytes.size();
-    auto* owned=static_cast<std::uint8_t*>(process_allocator->allocate_bytes(bytes.size()+1,"resource fixture"));
-    std::memcpy(owned,bytes.data(),bytes.size());
-    owned[bytes.size()]=0xff; // Explicit readable guard required by the real decoder.
-    return owned;
+// OS/CRT boundary fixtures for the genuine shared resource and File bodies.
+extern "C" int ReadFile(HANDLE handle, void* destination, DWORD size, DWORD* count, void* overlapped) {
+    assert(!overlapped);
+    auto& input=*static_cast<Output*>(handle);
+    assert(input.input && !input.closed && input.position<=input.bytes.size());
+    *count=std::min(size,static_cast<DWORD>(input.bytes.size()-input.position));
+    std::memcpy(destination,input.bytes.data()+input.position,*count);
+    input.position+=*count;
+    return 1;
 }
+extern "C" DWORD GetFileSize(HANDLE handle,DWORD* high) {
+    assert(!high);auto& input=*static_cast<Output*>(handle);
+    assert(input.input && !input.closed);return input.bytes.size();
+}
+extern "C" DWORD SetFilePointer(HANDLE handle,LONG offset,LONG* high,DWORD origin) {
+    assert(!high);auto& input=*static_cast<Output*>(handle);assert(!input.closed);
+    if (!origin) input.position=offset;
+    else if (origin==FILE_CURRENT) input.position+=offset;
+    else { assert(origin==FILE_END);input.position=input.bytes.size()+offset; }
+    return input.position;
+}
+extern "C" DWORD GetCurrentDirectoryW(DWORD size,wchar_t* output) {
+    assert(size>=11);std::wcscpy(output,L"/cpu-score");return 10;
+}
+extern "C" DWORD GetModuleFileNameW(HANDLE module,wchar_t* output,DWORD size) {
+    assert(!module && size==260);std::wcscpy(output,L"Z:\\game\\th20.exe");return 16;
+}
+extern "C" int MultiByteToWideChar(unsigned page,DWORD flags,const char* source,int size,wchar_t* output,int capacity) {
+    assert(page==932 && !flags && size==-1 && capacity==260);
+    const auto extent=std::strlen(source);assert(extent+1<=static_cast<unsigned>(capacity));
+    for (unsigned i=0;i<=extent;++i) output[i]=static_cast<unsigned char>(source[i]);
+    return extent+1;
+}
+extern "C" int wcscpy_s(wchar_t* output,std::size_t size,const wchar_t* source) {
+    assert(std::wcslen(source)<size);std::wcscpy(output,source);return 0;
+}
+extern "C" int wcscat_s(wchar_t* output,std::size_t size,const wchar_t* source) {
+    assert(std::wcslen(output)+std::wcslen(source)<size);std::wcscat(output,source);return 0;
+}
+extern "C" int _stricmp(const char* left,const char* right) {
+    for (;;++left,++right) {
+        const auto a=std::tolower(static_cast<unsigned char>(*left)),b=std::tolower(static_cast<unsigned char>(*right));
+        if (a!=b || !a) return a-b;
+    }
 }
 
 int main() {

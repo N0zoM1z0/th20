@@ -1,6 +1,7 @@
 #pragma once
 
 #include "EclRuntime.hpp"
+#include "GameResourceIo.hpp"
 #include <list>
 #include <utility>
 
@@ -13,10 +14,9 @@ using EclCachedFile = std::pair<std::uint8_t*, std::pmr::string>;
 extern std::pmr::list<EclCachedFile> process_ecl_cache;
 extern const char ecl_duplicate_file_format[], ecl_cached_file_format[];
 
-// Native resource path construction and resource I/O are unclosed dependencies.
-// The reader accepts a size output and one observed 32-bit mode argument.
+// Resource-path construction and process archive startup remain dependencies.
+// The resource reader is shared with the actual archive/file protocol.
 const char* ecl_resource_path(const char* filename);
-std::uint8_t* read_game_resource(const char* path, std::int32_t* size, std::int32_t mode);
 
 class EclFileLoader : public EclLoader {
 public:

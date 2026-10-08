@@ -1,5 +1,57 @@
 # Source and build ownership
 
+## CORE/EXACT-094 — 2026-10-09 — Whole archive/resource production admission
+
+Twenty-one complete production roots now strictly replay 4,022 comparison bytes
+and 153 independent relocations: nine archive/resource operations plus twelve
+File/IFile construction, destruction, conversion and I/O operations. All five
+File destructor alignment bytes remain in the comparison. Frozen cold replay
+passes 646/646 units across 128 fresh objects and 128,271 disjoint bytes.
+See [whole archive/resource exact evidence](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md).
+The earlier private-only CORE092/093 state below is historical and superseded.
+
+Shared owners and real bodies are PbgFile, ArchiveOwner and GameResourceIo.
+The File and Runtime factories share one ordinary allocator template definition;
+File factory 129/native 67 and array helper emission remain explicitly nonexact.
+Real File O0/O2/UBSan checks pass. Actual archive/File/allocator/cipher/LZSS/
+resource checks pass O2/UBSan, retaining all eight cipher selectors, sentinel,
+case-insensitive first match, optional/caller buffer ownership, ignored OS/
+reopen/member returns, failures and mixed-separator/no-fallback behavior.
+The SaveManager file/checksum/parse/backup pipeline now calls the real resource
+reader; its replacement reader body is removed. Heap/OS/startup/data and valid-
+input CRT fixtures remain explicit, including a readable native-decoder guard.
+
+Independent custom archive diagnostics, THA1 records/ciphers and game process
+consumers establish nine authored roots. Exact authored coverage is 84 functions/
+24,209 bytes; confirmed authored 87, provisional denominator 25,941 (93.32%).
+Twelve RTTI-proven File origins remain unknown. Canonical origins are 553 pending/
+9 library/84 authored. There are 654 source mappings and eight prior whole nonexact
+methods. All 6,945 reference reviews remain terminal; 14 fully closed target
+associations bring absorbed total to 234. Combined unclosed rows and free
+replacement wrappers retain their previous stages; no partial absorption.
+
+All 61 public tests pass in 147.984 seconds. Protected cleanup retires 4 obsolete
+probe products /233,647 bytes. The full pre-change source tree and original
+receipts remain losslessly archived; every original SHA-bound input is checked.
+All 256 current canonical hashes and 5,032 evidence files remain protected.
+Post-cleanup 646/646 strict replay reuses 128 objects. Net savings after historical
+source/receipt and verification archives: 46,336 bytes. Cumulative retirement:
+2,736 products /1,019,644,665 bytes. Build 6.7M/analysis 86M.
+
+Proofs: core094-production-bindings.json, core094-cold-audit.json,
+core094-final-frozen-source.json, exact094-canonical-results.json.gz,
+core094-registered.json, core094-prechange-source.json.gz, core094-cleanup.json
+and core094-post-cleanup-results.json.gz. Completed writers must never rerun.
+The former archive V4/File V3 objects are retired; retain their unchanged source
+and reconstruct historical inputs from the archived original source tree.
+
+Continue larger Enemy/State/Controller/Player roots. Original startup/data,
+unused cipher bytes, scalar/array helper emission, full CP932/CRT/malformed/
+allocation/native-disk domains and a linked playable game remain unfinished.
+Do not invent clears, source padding, fake constructors or a replacement manager.
+Goal remains active; single writer, serial nice15, repo-python, attested Ghidra,
+no REA/delegation and periodic protected retirement continue.
+
 ## CORE-093 — 2026-10-09 — Complete native File dependency closure
 
 Twelve whole private Pbg::File/IFile candidates strictly replay 1,153 comparison

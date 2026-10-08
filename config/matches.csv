@@ -74,3 +74,12 @@ address,name,size,status,match_percent,unit,evidence
 0x0050FB60,th20::ProgressSaveManager::save,174,matching,100.00,progress_save_thread,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
 0x0050EB70,th20::ProgressSaveManager::parse,824,matching,100.00,progress_file_parse,CORE/EXACT-091; docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md
 0x0050F6B0,th20::ProgressSaveManager::write,1198,matching,100.00,progress_file_write,CORE/EXACT-091; docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md
+0x00539E60,th20::ArchiveOwner::duplicate_name,97,matching,100.00,archive_owner_duplicate_name,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x00539ED0,th20::ArchiveOwner::load_catalog,669,matching,100.00,archive_owner_load_catalog,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x0053A170,th20::ArchiveOwner::close,151,matching,100.00,archive_owner_close,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x0053A210,th20::ArchiveOwner::parse_catalog,319,matching,100.00,archive_owner_parse_catalog,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x0053A350,th20::ArchiveOwner::find,101,matching,100.00,archive_owner_find,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x0053A3C0,th20::ArchiveOwner::read,596,matching,100.00,archive_owner_read,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x0053A620,th20::ArchiveOwner::size,48,matching,100.00,archive_owner_size,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x0053A6F0,th20::ArchiveOwner::open,305,matching,100.00,archive_owner_open,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x00410AA0,th20::read_game_resource,583,matching,100.00,game_resource_read,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay

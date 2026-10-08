@@ -1,5 +1,5 @@
 #include "EclRuntime.hpp"
-#include "DiagnosticAllocator.hpp"
+#include "DiagnosticObjectFactories.hpp"
 #include <type_traits>
 namespace th20 {
 EclScriptPosition::EclScriptPosition() noexcept : subroutine(0), offset(0) {}
@@ -32,7 +32,6 @@ float* EclManager::float_destination(std::int32_t) { return nullptr; }
 namespace th20 {
 // Only Runtime's actual scalar factory is instantiated here. Other owner
 // factories have separately observed initialization contracts and remain open.
-template<class T> T* DiagnosticAllocator::allocate_object(const char*) { return new T; }
 template EclRuntime* DiagnosticAllocator::allocate_object<EclRuntime>(const char*);
 
 static_assert(std::is_nothrow_default_constructible_v<ScriptStack>);

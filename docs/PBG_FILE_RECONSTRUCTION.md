@@ -1,5 +1,14 @@
 # Native Pbg file protocol
 
+## CORE/EXACT-094 production update
+
+All twelve complete File/IFile bodies are now maintained in PbgFile.hpp/.cpp
+and formally canonical, including all five destructor alignment bytes. File
+authorship remains unknown; vtable/RTTI identities do not prove it. Factory 129
+versus native 67 and full original data/startup emission remain open. Actual
+production checks and the frozen 646-unit graph pass. The prior private-only
+state is historical. See [whole production evidence](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md).
+
 CORE-093 closes twelve complete private File/IFile candidates: 1,148 function
 bytes plus five compiler alignment bytes strictly replay 1,153 bytes and
 35 independently established relocations. This is dependency evidence for the

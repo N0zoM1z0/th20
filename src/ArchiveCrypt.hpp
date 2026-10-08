@@ -6,7 +6,7 @@ namespace th20 {
 
 // REF-004: caller supplies the exact byte count, including embedded zeros if
 // present. The wrapped sum feeds the archive parameter-table index; parameter
-// selection remains part of the unreconstructed archive manager.
+// selection is maintained by the shared archive owner.
 std::uint8_t archive_name_sum(const char* name, std::uint32_t size);
 
 // Original signed six-argument protocol. Valid archive parameters have positive
