@@ -1,5 +1,41 @@
 # Target inventory and initial architecture boundary
 
+## CORE-092 — 2026-10-08 — Whole archive/resource probe closure
+
+Nine complete private candidates strictly replay 2,869 bytes and 118 independent
+relocations: name duplication97, directory load669, close151, directory parse319,
+find101, member read596, size48, archive open305 and resource read583.
+No production source, canonical unit, authored origin or reference-absorption
+counter is added yet. The accepted graph remains 625 units/125 objects, with
+633 mappings/75 authored exact functions/21,340 authored exact bytes/220 absorbed.
+See [whole archive and resource protocol](ARCHIVE_OWNER_RECONSTRUCTION.md).
+
+Independent startup closes the sixteen-byte owner storage. Native RTTI identifies
+Pbg::File and Pbg::IFile with twelve-byte Win32 file storage and eight vtable slots;
+automatic library labels are rejected. Directory storage is count+1 sixteen-byte
+entries, using the final sentinel's offset for member extent. Case-insensitive
+_stricmp replaces the rejected strcmp hypothesis before strict proof. The word
+cursor advances and dereferences the new position; the older CORE090 pointer-
+return note is superseded. Two cursor bodies and complete resource EH code/data
+sections strictly replay as support only. Full-data ownership/unused parameter
+bytes, array helpers and the scalar factory pre-clear remain open.
+
+Protected interim cleanup retires six superseded products / 492,029 bytes.
+Original receipts remain losslessly archived; all SHA-bound original inputs are
+unchanged. All 252 canonical/active product hashes and 4,963 evidence files
+remain protected. Post-cleanup 625/625 canonical and 9 active probe roots strictly
+replay without rebuilding. Net savings after archives/replay: 354,296 bytes.
+Cumulative retirement: 2,726 products / 1,018,961,604 bytes. Preserve active V4 source,
+object and receipt; completed binding/cleanup writers must never rerun.
+
+Next split real production File/IFile, owner and resource-reader declarations/
+bodies, preserve one shared allocator factory body, execute actual codec/allocator/
+file-boundary protocol checks, then freeze and cold-replay the expanded graph
+before canonical registration. Pbg RTTI names are evidence; other type spellings
+remain inferred. No replacement manager API, artificial padding or solved field
+is admissible. Keep serial nice15, repo-python, attested Ghidra, no REA/delegation
+and periodic retirement. Goal remains active.
+
 ## CORE/EXACT-091 — 2026-10-08 — Complete progress-file writing and parsing
 
 The complete writer at 50F6B0 and parser at 50EB70 now strictly replay
