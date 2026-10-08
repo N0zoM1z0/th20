@@ -1,5 +1,39 @@
 # Current reconstruction handoff
 
+## CORE096 — 2026-10-09 — Whole damage query and controller construction evidence
+
+The complete native HitCtrlInf damage query at 0x004C0480 is independently
+reconciled: 1,707 bytes, 454 instructions, ret32, 65 direct calls to 33 physical
+heads and closed internal branches. Seventeen heads already have canonical
+bodies. Actual three-entry callback storage, its adjacent RTTI locator and
+four-slot group arrays replace broader reference layout assumptions. See
+[damage controller evidence](DAMAGE_CONTROLLER_RECONSTRUCTION.md).
+
+RTTI identifies HitCtrlInf with its actual TaskInf base. The full 0xC460 owner
+contains 256 real DamageRegion values, two observer-aware lists and Timer.
+Five complete private natural C++ contributions strictly replay 473 comparison
+bytes, including both five-byte construction alignment tails. Complete deleting
+destructor (49 bytes) and two handlers/FuncInfo records replay as support only. Private
+find 261/native 264, update 243/native 248 and allocation 265/native 225 remain
+nonexact; full scheduler registration/destruction, initialization, allocation
+and active Bomb/Player/callback/reward/query protocols remain dependencies.
+No production, canonical, authored or reference absorption credit is added.
+
+All 62 public tests pass in 157.494 seconds. Production source remains the
+unchanged 233-file freeze: 659 units/131 objects/668 mappings/84 authored exact
+functions/24,209 bytes/238 absorbed. Protected cleanup retires three obsolete
+V1 products/69,984 bytes; original SHA-bound source, header and receipt inputs
+are checked and losslessly archived. All 264 canonical/active hashes and
+5,103 evidence files remain protected. Post-cleanup 659 strict results are
+identical to the retained core095-post-cleanup-results.json.gz proof, avoiding
+another full duplicate report. Net saved 51,111 bytes; cumulative retirement
+2,752 products/1,020,495,939 bytes gross. Keep V2 object/receipt and source active.
+Completed proof/cleanup writers must not rerun. Next close real callback-manager
+registration/destruction and the whole owner initialization/allocation before
+production admission, then the complete active query. Goal remains active;
+serial nice15, repo-python, attested Ghidra, no REA/delegation and periodic
+protected storage retirement continue.
+
 ## CORE/EXACT-095 — 2026-10-09 — Mesh geometry and enemy deformation
 
 Thirteen complete production roots add 1,165 strictly compared bytes and 25
