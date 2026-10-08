@@ -31,8 +31,8 @@ DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator = &allocator;
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
-EclScriptPosition::EclScriptPosition() : subroutine(0), offset(0) {}
-EclRuntime::EclRuntime() : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags{} {}
+EclScriptPosition::EclScriptPosition() noexcept : subroutine(0), offset(0) {}
+EclRuntime::EclRuntime() noexcept : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags{} {}
 EclManager::EclManager() : field_04(0), field_08(0), current_runtime(&main), loader(nullptr) {}
 EclManager::~EclManager() = default;
 Enemy::~Enemy() = default;

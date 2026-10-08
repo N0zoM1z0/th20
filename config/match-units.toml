@@ -5915,7 +5915,7 @@ relocations = [
   { offset = 0x1C0, type = "REL32", symbol = "?set_pointer@ScriptStack@th20@@QAEXH@Z", target = 0x00412DA0 },
   { offset = 0x1CC, type = "REL32", symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ", target = 0x005403D0 },
   { offset = 0x20B, type = "REL32", symbol = "?spawn@EclManager@th20@@QAEHHH@Z", target = 0x0053E390 },
-  { offset = 0x224, type = "REL32", symbol = "?terminate_async@EclManager@th20@@QAEXXZ", target = 0x0053E560 },
+  { offset = 0x224, type = "REL32", symbol = "?invalidate_async@EclManager@th20@@QAEXXZ", target = 0x0053E560 },
   { offset = 0x26E, type = "REL32", symbol = "?consuming_integer_value@EclRuntime@th20@@QAEHHH@Z", target = 0x0053EFB0 },
   { offset = 0x288, type = "REL32", symbol = "?spawn@EclManager@th20@@QAEHHH@Z", target = 0x0053E390 },
   { offset = 0x2AF, type = "REL32", symbol = "?integer_argument@EclRuntime@th20@@QAEHH@Z", target = 0x0053ED50 },
@@ -7430,7 +7430,7 @@ size = 967
 compare_size = 1044
 relocations = [
   { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 0x1D, type = "REL32", symbol = "?current_instruction@Enemy@th20@@QAEPAUEclInstruction@2@XZ", target = 0x00499310 },
+  { offset = 0x1D, type = "REL32", symbol = "?current_instruction@EclManager@th20@@QAEPAUEclInstruction@2@XZ", target = 0x00499310 },
   { offset = 0x2A, type = "REL32", symbol = "?integer_argument@EnemyState@th20@@QAEHH@Z", target = 0x004AB080 },
   { offset = 0x38, type = "REL32", symbol = "?size@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QBEIXZ", target = 0x0049CB30 },
   { offset = 0x5A, type = "REL32", symbol = "?resize@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x0049C2A0 },
@@ -7507,11 +7507,11 @@ relocations = [
 ]
 
 [units.enemy_current_instruction]
-source = "src/EnemyScript.cpp"
-object = "build/EnemyScript.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
-functions = ["th20::Enemy::current_instruction"]
-symbol = "?current_instruction@Enemy@th20@@QAEPAUEclInstruction@2@XZ"
+source = "src/EclCallSetup.cpp"
+object = "build/EclCallSetup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::current_instruction"]
+symbol = "?current_instruction@EclManager@th20@@QAEPAUEclInstruction@2@XZ"
 target_address = 0x00499310
 size = 22
 relocations = [
@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111445", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111446", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8987,7 +8987,7 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111116", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111117", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
@@ -9576,4 +9576,103 @@ size = 34
 relocations = [
   { offset = 0x15, type = "DIR32", symbol = "?timer_clock_sources@th20@@3PAPAUClockScalar@1@A", target = 0x005AEFE0 },
   { offset = 0x1A, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+]
+
+[units.ecl_manager_spawn]
+source = "src/EclManagerAsync.cpp"
+object = "build/EclManagerAsync.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::spawn"]
+symbol = "?spawn@EclManager@th20@@QAEHHH@Z"
+target_address = 0x0053E390
+size = 182
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "$SG98900", target = 0x00576A40 },
+  { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEclRuntime@th20@@@DiagnosticAllocator@th20@@QAEPAUEclRuntime@1@PBD@Z", target = 0x0053B3D0 },
+  { offset = 0x1D, type = "DIR32", symbol = "$SG98901", target = 0x00576A88 },
+  { offset = 0x23, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x28, type = "REL32", symbol = "??$allocate_object@U?$IntrusiveLink@UEclRuntime@th20@@@th20@@@DiagnosticAllocator@th20@@QAEPAU?$IntrusiveLink@UEclRuntime@th20@@@1@PBD@Z", target = 0x0053B410 },
+  { offset = 0x76, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEXPAUEclRuntime@2@@Z", target = 0x0044A670 },
+  { offset = 0x8B, type = "REL32", symbol = "?insert_after@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEXPAU12@@Z", target = 0x00411EE0 },
+  { offset = 0xA6, type = "REL32", symbol = "?call_into@EclRuntime@th20@@QAEHPAU12@HH@Z", target = 0x0053F3B0 },
+]
+
+[units.ecl_manager_find_runtime]
+source = "src/EclManagerAsync.cpp"
+object = "build/EclManagerAsync.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::find_runtime"]
+symbol = "?find_runtime@EclManager@th20@@QAEPAU?$IntrusiveLink@UEclRuntime@th20@@@2@H@Z"
+target_address = 0x0053E920
+size = 72
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 0x27, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEPAUEclRuntime@2@XZ", target = 0x0040C300 },
+]
+
+[units.ecl_manager_invalidate_async]
+source = "src/EclManagerAsync.cpp"
+object = "build/EclManagerAsync.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::invalidate_async"]
+symbol = "?invalidate_async@EclManager@th20@@QAEXXZ"
+target_address = 0x0053E560
+size = 82
+relocations = [
+  { offset = 0x10, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 0x21, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 0x2C, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEPAUEclRuntime@2@XZ", target = 0x0040C300 },
+  { offset = 0x3B, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEPAUEclRuntime@2@XZ", target = 0x0040C300 },
+]
+
+[units.ecl_runtime_allocate]
+source = "src/EclRuntimeLifetime.cpp"
+object = "build/EclRuntimeLifetime.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::allocate_object<th20::EclRuntime>"]
+symbol = "??$allocate_object@UEclRuntime@th20@@@DiagnosticAllocator@th20@@QAEPAUEclRuntime@1@PBD@Z"
+target_address = 0x0053B3D0
+size = 57
+relocations = [
+  { offset = 0xC, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x0054275D },
+  { offset = 0x20, type = "REL32", symbol = "??0EclRuntime@th20@@QAE@XZ", target = 0x004A3580 },
+]
+
+[units.ecl_loader_activate]
+source = "src/EclCallSetup.cpp"
+object = "build/EclCallSetup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclLoader::activate"]
+symbol = "?activate@EclLoader@th20@@QAEHPAVEclManager@2@PBD@Z"
+target_address = 0x0053FDF0
+size = 97
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?set_loader@EclManager@th20@@QAEXPAVEclLoader@2@@Z", target = 0x0041DFB0 },
+  { offset = 0x1D, type = "REL32", symbol = "?select_subroutine@EclManager@th20@@QAEXPBD@Z", target = 0x00540550 },
+  { offset = 0x27, type = "REL32", symbol = "?set_offset@EclManager@th20@@QAEXH@Z", target = 0x00540590 },
+  { offset = 0x38, type = "REL32", symbol = "?set_time@EclManager@th20@@QAEXM@Z", target = 0x00540510 },
+  { offset = 0x40, type = "REL32", symbol = "?current_instruction@EclManager@th20@@QAEPAUEclInstruction@2@XZ", target = 0x00499310 },
+]
+
+[units.ecl_manager_loader_value]
+source = "src/EclCallSetup.cpp"
+object = "build/EclCallSetup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclManager::loader_value"]
+symbol = "?loader_value@EclManager@th20@@QBEPAVEclLoader@2@XZ"
+target_address = 0x00437660
+size = 17
+relocations = [
+]
+
+[units.script_stack_frame_value]
+source = "src/EclCallSetup.cpp"
+object = "build/EclCallSetup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ScriptStack::frame_value"]
+symbol = "?frame_value@ScriptStack@th20@@QBEHXZ"
+target_address = 0x0041CA90
+size = 17
+relocations = [
 ]

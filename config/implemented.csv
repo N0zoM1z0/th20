@@ -460,7 +460,7 @@ EtamaArgInf::EtamaArgInf(const EtamaArgInf&)
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this"
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor"
 th20::EnemyState::change_animation
-th20::Enemy::current_instruction
+th20::EclManager::current_instruction
 th20::Color3::Color3
 th20::IntegerTriple::IntegerTriple(const Color3&)
 th20::Animation::set_rotation
@@ -595,3 +595,10 @@ th20::Animation::set_slowdown
 th20::EclManager::tick
 th20::EnemyState::advance_scripts
 th20::Timer::step
+th20::EclManager::spawn
+th20::EclManager::find_runtime
+th20::EclManager::invalidate_async
+th20::DiagnosticAllocator::allocate_object<th20::EclRuntime>
+th20::EclLoader::activate
+th20::EclManager::loader_value
+th20::ScriptStack::frame_value

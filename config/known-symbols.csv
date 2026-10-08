@@ -462,7 +462,7 @@ address,name,module,confidence,evidence
 0x004845F0,"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this",EnemyShotAllocation,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
 0x0047C760,"std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor",EnemyShotAllocation,high,EXACT-064; docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md
 0x00496B90,th20::EnemyState::change_animation,EnemyAnimation,high,EXACT-065; docs/EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md
-0x00499310,th20::Enemy::current_instruction,EnemyAnimation,high,EXACT-065; docs/EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md
+0x00499310,th20::EclManager::current_instruction,EclAsync,high,EXACT-065; docs/EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md
 0x0048B720,th20::Color3::Color3,AnimationParameters,high,EXACT-065; docs/EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md
 0x00429180,th20::IntegerTriple::IntegerTriple(const Color3&),AnimationParameters,high,EXACT-065; docs/EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md
 0x00450590,th20::Animation::set_rotation,AnimationParameters,high,EXACT-065; docs/EXACT_ENEMY_ANIMATION_RECONSTRUCTION.md
@@ -597,3 +597,10 @@ address,name,module,confidence,evidence
 0x0053E2B0,th20::EclManager::tick,EnemyScript,high,EXACT-080; docs/EXACT_ENEMY_SCRIPT_PIPELINE_RECONSTRUCTION.md
 0x004AB4C0,th20::EnemyState::advance_scripts,EnemyScript,high,EXACT-080; docs/EXACT_ENEMY_SCRIPT_PIPELINE_RECONSTRUCTION.md
 0x00456240,th20::Timer::step,EnemyScript,high,EXACT-080; docs/EXACT_ENEMY_SCRIPT_PIPELINE_RECONSTRUCTION.md
+0x0053E390,th20::EclManager::spawn,EclAsync,high,EXACT-082; docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md
+0x0053E920,th20::EclManager::find_runtime,EclAsync,high,EXACT-082; docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md
+0x0053E560,th20::EclManager::invalidate_async,EclAsync,high,EXACT-082; docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md
+0x0053B3D0,th20::DiagnosticAllocator::allocate_object<th20::EclRuntime>,EclAsync,high,EXACT-082; docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md
+0x0053FDF0,th20::EclLoader::activate,EclAsync,high,EXACT-082; docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md
+0x00437660,th20::EclManager::loader_value,EclAsync,high,EXACT-082; docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md
+0x0041CA90,th20::ScriptStack::frame_value,EclAsync,high,EXACT-082; docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md

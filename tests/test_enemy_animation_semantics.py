@@ -13,7 +13,7 @@ class EnemyAnimationTests(unittest.TestCase):
                          if (p := shutil.which(n))), None)
         self.assertIsNotNone(compiler)
         sources = [
-            "EnemyAnimation", "EnemyScript", "Enemy", "EnemyState", "EnemyMovement",
+            "EnemyAnimation", "EnemyScript", "EclCallSetup", "Enemy", "EnemyState", "EnemyMovement",
             "EnemyCounters", "EnemySpawn", "EnemyHealth", "EnemyPattern",
             "AnimationParameters", "Animation", "AnimationHandle", "AnmVariables",
             "Color3", "Matrix4", "Motion", "MotionConfiguration", "MotionUpdates", "MotionMath",

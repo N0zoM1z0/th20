@@ -1,5 +1,44 @@
 # Target inventory and initial architecture boundary
 
+## EXACT-082 — 2026-10-08 — Actual ECL async and call setup
+
+Seven complete contributions add 524 bytes: actual Manager spawn/find/mark-only
+invalidation, Runtime scalar allocation, Loader activation and two owned getters.
+VM opcode21 now calls invalidate_async at53E560, distinct from destructive owner
+cleanup at4973C0. The inherited 22-byte current-instruction getter moves to its
+actual Manager base without additional physical coverage. Existing Position,
+Runtime and Manager lifetime units retain exact bytes under genuine nonthrowing
+initialization contracts; original annotation spelling remains inferred. See
+[whole async evidence](EXACT_ECL_ASYNC_RECONSTRUCTION.md).
+
+The frozen graph strictly replays 604 units /115 fresh objects /104816 disjoint
+comparison bytes. Origins:531 pending /9 library /64 authored /16948 bytes.
+Six complete reference associations close,205 absorbed across6945 terminal reviews.
+Owned O2/UBSan tests now execute actual VM/call_into/Manager/Stack/Loader and PMR
+lifetime bodies across signed IDs, skips, descriptor conversions, missing names,
+deferred spawn, signaling and invalidation-before-retirement. Node factory53B410,
+buffer resolution, startup, unused interpolation/frame routes and Enemy movement/
+opcode/outer retirement remain fixtures. Bit0's wider role stays unknown. Whole
+41 KB Enemy root/readers/State tick, Player and game runtime remain open.
+
+Continue whole core protocols in coherent batches, serial nice15, repo-python,
+attested Ghidra, no REA/delegation and protected storage retirement. The graph is
+frozen in core082-final-frozen-source.json and fully replayed in
+exact082-canonical-results.json.gz. Completed configuration/registration writers
+must never rerun. Reconstruction remains active.
+
+All52 public tests pass (183.390 seconds); target/tracking/reference/progress
+checks pass. Protected cleanup retires16 completed probe object/receipt files,
+445529 bytes;252 copied private headers (395825 bytes), original receipts and
+seven historical input versions are losslessly archived. Net product/input
+savings after the three archives:597030 bytes. All230 canonical product hashes
+and4428 private evidence files remain unchanged. Post-cleanup604/604 strict replay
+uses115 existing objects without a cold rebuild. Cumulative retired products:
+2591 files /1013585739 bytes; prior separate archival savings remain documented
+in earlier batches. Analysis is about78 MiB and build5.2 MiB; tools/game/reference
+remain protected. Final cleanup proof:core082-post-cleanup-results.json.gz.
+Completed cleanup writer must never rerun.
+
 ## EXACT-080 — 2026-10-08 — Actual State/Manager script pipeline
 
 Three complete script-progression/async-traversal/Timer-step contributions add

@@ -461,7 +461,7 @@ EtamaArgInf::EtamaArgInf(const EtamaArgInf&),0x0048B400,function
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::_Delete_this",0x004845F0,function
 "std::_Ref_count_obj_alloc3<EtamaArgInf, DebugAllocator<EtamaArgInf>>::scalar_deleting_destructor",0x0047C760,function
 th20::EnemyState::change_animation,0x00496B90,function
-th20::Enemy::current_instruction,0x00499310,function
+th20::EclManager::current_instruction,0x00499310,function
 th20::Color3::Color3,0x0048B720,function
 th20::IntegerTriple::IntegerTriple(const Color3&),0x00429180,function
 th20::Animation::set_rotation,0x00450590,function
@@ -596,3 +596,10 @@ th20::Animation::set_slowdown,0x0045D130,function
 th20::EclManager::tick,0x0053E2B0,function
 th20::EnemyState::advance_scripts,0x004AB4C0,function
 th20::Timer::step,0x00456240,function
+th20::EclManager::spawn,0x0053E390,function
+th20::EclManager::find_runtime,0x0053E920,function
+th20::EclManager::invalidate_async,0x0053E560,function
+th20::DiagnosticAllocator::allocate_object<th20::EclRuntime>,0x0053B3D0,function
+th20::EclLoader::activate,0x0053FDF0,function
+th20::EclManager::loader_value,0x00437660,function
+th20::ScriptStack::frame_value,0x0041CA90,function

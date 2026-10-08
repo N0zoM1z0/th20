@@ -29,7 +29,7 @@ static_assert(sizeof(EclInstruction) == 16);
 struct EclScriptPosition {
     std::int32_t subroutine;
     std::int32_t offset;
-    EclScriptPosition();
+    EclScriptPosition() noexcept;
 };
 static_assert(sizeof(EclScriptPosition) == 8);
 
@@ -59,7 +59,7 @@ struct EclRuntime {
     std::pmr::vector<EclScriptInterpolation> interpolators;
     EclRuntimeFlags flags;
 
-    EclRuntime();
+    EclRuntime() noexcept;
     EclInstruction* current();
     std::int32_t integer_argument(std::int32_t index);
     std::int32_t consuming_integer(std::int32_t index);
@@ -132,9 +132,13 @@ public:
     void set_offset(std::int32_t value);
     void set_time(float value);
     EclLoader* loader_value() const;
+    EclInstruction* current_instruction();
     int spawn(std::int32_t async_id, std::int32_t argument_skip);
     IntrusiveLink<EclRuntime>* find_runtime(std::int32_t async_id);
+    // Destructive owner cleanup; the surrounding lifecycle resets the sentinel.
     void terminate_async();
+    // VM opcode 21 marks children ended; tick performs their later retirement.
+    void invalidate_async();
     int tick(float delta);
 };
 

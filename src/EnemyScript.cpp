@@ -2,7 +2,6 @@
 
 namespace th20 {
 
-EclInstruction* Enemy::current_instruction() { return current_runtime->current(); }
 Identifier32 Enemy::identifier_value() { return state.identifier; }
 
 std::int32_t Enemy::integer_argument_value(std::int32_t index, std::int32_t value) {

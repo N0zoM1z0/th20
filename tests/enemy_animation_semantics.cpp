@@ -23,8 +23,8 @@ DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator = &allocator;
 void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) { assert(!p); }
 const Matrix4 identity_matrix = [] { Matrix4 m; for (int i=0;i<4;++i) m.elements[i][i]=1; return m; }();
-EclScriptPosition::EclScriptPosition() : subroutine(0), offset(0) {}
-EclRuntime::EclRuntime() : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags{} {}
+EclScriptPosition::EclScriptPosition() noexcept : subroutine(0), offset(0) {}
+EclRuntime::EclRuntime() noexcept : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags{} {}
 EclManager::EclManager() : field_04(0), field_08(0), current_runtime(nullptr), loader(nullptr) {}
 EclManager::~EclManager() = default;
 Enemy::~Enemy() = default;
@@ -39,6 +39,12 @@ float Enemy::read_float(int) { std::abort(); }
 float* Enemy::float_destination(int) { std::abort(); }
 int EnemyState::execute_opcode() { std::abort(); }
 int ScriptStack::pop(int, void*, char) { std::abort(); }
+// Activation is outside this animation fixture; the actual inherited Manager
+// instruction lookup executes from EclCallSetup against the resolver below.
+void EclManager::set_loader(EclLoader*) { std::abort(); }
+void EclManager::select_subroutine(const char*) { std::abort(); }
+void EclManager::set_offset(int) { std::abort(); }
+void EclManager::set_time(float) { std::abort(); }
 EclInstruction* EclRuntime::current() { reads.push_back(100); return &instruction; }
 int EclRuntime::integer_argument(int i) { reads.push_back(i); return integers.at(i); }
 float EclRuntime::float_argument(int i) { reads.push_back(10+i); return reals.at(i); }

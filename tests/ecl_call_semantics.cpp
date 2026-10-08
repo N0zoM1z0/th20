@@ -54,8 +54,8 @@ void check_arguments(const th20::ScriptStack& stack, std::size_t first) {
 // argument resolution and loader activation are not accepted by this test.
 // The fixture uses the maintained owners and bounds calls to four-byte words.
 namespace th20 {
-EclScriptPosition::EclScriptPosition() : subroutine(-1), offset(-1) {}
-EclRuntime::EclRuntime()
+EclScriptPosition::EclScriptPosition() noexcept : subroutine(-1), offset(-1) {}
+EclRuntime::EclRuntime() noexcept
     : time(0), async_id(-1), manager(nullptr), signal(-1), rank(0), flags{} {}
 EclManager::EclManager()
     : field_04(0), field_08(0), current_runtime(&main), loader(nullptr) {}

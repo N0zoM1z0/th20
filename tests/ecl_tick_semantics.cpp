@@ -68,8 +68,8 @@ template<class T> void push(th20::ScriptStack& stack, T value, char tag) {
 // and real math/interpolation implementations; these bounded VM fixtures do not
 // claim native constructor, resolver or async lifetime fidelity.
 namespace th20 {
-EclScriptPosition::EclScriptPosition() : subroutine(-1), offset(-1) {}
-EclRuntime::EclRuntime()
+EclScriptPosition::EclScriptPosition() noexcept : subroutine(-1), offset(-1) {}
+EclRuntime::EclRuntime() noexcept
     : time(0), async_id(-1), manager(nullptr), signal(-1), rank(0), flags{} {}
 EclManager::EclManager()
     : field_04(0), field_08(0), current_runtime(&main), loader(nullptr) {}
@@ -86,7 +86,7 @@ float* EclManager::float_destination(std::int32_t index) { return &floats.at(ind
 int EclManager::spawn(std::int32_t id, std::int32_t skip) {
     spawn_id = id; spawn_skip = skip; return 0;
 }
-void EclManager::terminate_async() { ++termination_calls; }
+void EclManager::invalidate_async() { ++termination_calls; }
 IntrusiveLink<EclRuntime>* EclManager::find_runtime(std::int32_t) { return found_runtime; }
 EclInstruction* EclLoader::instruction(std::int32_t subroutine, std::int32_t offset) {
     assert(subroutine == 0 && offset >= 0 && offset % sizeof(Record) == 0);

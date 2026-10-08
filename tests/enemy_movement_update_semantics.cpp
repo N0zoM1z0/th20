@@ -41,8 +41,8 @@ Graphics process_graphics;
 Graphics::~Graphics() = default;
 AnimationFile::~AnimationFile() = default;
 int ScriptStack::pop(std::int32_t, void*, char) { std::abort(); }
-EclScriptPosition::EclScriptPosition() : subroutine(0), offset(0) {}
-EclRuntime::EclRuntime() : time(0), async_id(0), manager(nullptr), signal(0),
+EclScriptPosition::EclScriptPosition() noexcept : subroutine(0), offset(0) {}
+EclRuntime::EclRuntime() noexcept : time(0), async_id(0), manager(nullptr), signal(0),
     rank(0), flags(0) {}
 EclManager::EclManager() : field_04(0), field_08(0), current_runtime(nullptr),
     loader(nullptr) {}

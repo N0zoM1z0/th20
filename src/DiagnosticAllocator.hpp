@@ -32,8 +32,8 @@ public:
     // The complete callback vtable and this dependency body remain pending.
     void release_animation_callback(AnimationCallback* callback);
 
-    // Scalar factory includes a compiler-generated pre-construction clear.
-    // Its clean compiler reproduction remains pending.
+    // Runtime uses ordinary nonthrowing default construction. Other scalar
+    // instantiations have observed pre-clears whose reproduction remains open.
     template<class T>
     T* allocate_object(const char*);
 

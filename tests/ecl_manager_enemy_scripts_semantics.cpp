@@ -7,18 +7,23 @@
 #include <cassert>
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 #include <memory_resource>
 #include <limits>
 #include <vector>
 
 namespace {
-std::array<std::vector<th20::EclInstruction>,5> programs;
+struct InstructionRecord {
+    th20::EclInstruction header;
+    std::array<std::uint32_t,32> arguments;
+};
+std::array<std::vector<InstructionRecord>,5> programs;
+constexpr std::array<const char*,5> names{"main","task1","task2","task3","task4"};
 std::vector<int> events;
 th20::EclLoader test_loader;
 unsigned movement_calls;
 int movement_result, callback_result;
 float movement_clock;
-bool spawn_requested;
 th20::EnemyState* expected_state;
 struct Resource : std::pmr::memory_resource {
     struct Record { void* pointer; std::size_t bytes, alignment; int id; th20::IntrusiveLink<th20::EclRuntime>* link; };
@@ -44,8 +49,24 @@ struct Resource : std::pmr::memory_resource {
         auto found=std::find_if(live.begin(),live.end(),[=](const Record& r){return r.pointer==p;});assert(found!=live.end());found->id=id;found->link=link;
     }
 } resource;
-th20::EclInstruction instruction(int opcode,int time=0) {
-    th20::EclInstruction v{};v.opcode=static_cast<std::int16_t>(opcode);v.time=time;v.length=sizeof(v);v.rank=15;return v;
+InstructionRecord instruction(int opcode,int time=0) {
+    InstructionRecord v{};v.header.opcode=static_cast<std::int16_t>(opcode);
+    v.header.time=time;v.header.length=sizeof(v);v.header.rank=15;return v;
+}
+InstructionRecord spawn_instruction(const char* name,int skip,int id=0,int opcode=15) {
+    auto v=instruction(opcode);v.header.argument_count=static_cast<std::uint8_t>(skip+5);
+    auto* payload=reinterpret_cast<unsigned char*>(v.arguments.data());
+    v.arguments[0]=32;std::strcpy(reinterpret_cast<char*>(payload+4),name);
+    v.arguments[9]=static_cast<std::uint32_t>(id);
+    const std::array<char,4> from{'f','g','i','i'},to{'f','i','f','i'};
+    const std::array<std::uint32_t,4> values{
+        std::bit_cast<std::uint32_t>(1.25f),std::bit_cast<std::uint32_t>(-3.75f),
+        static_cast<std::uint32_t>(-7),19};
+    for(int i=0;i<4;++i) {
+        auto* descriptor=payload+36+skip*4+i*8;
+        descriptor[0]=from[i];descriptor[1]=to[i];std::memcpy(descriptor+4,&values[i],4);
+    }
+    return v;
 }
 void prepare(th20::EclRuntime& runtime,th20::EclManager& manager,int id,bool ended) {
     runtime.manager=&manager;runtime.async_id=id;runtime.rank=15;runtime.time=0;
@@ -75,9 +96,10 @@ DiagnosticAllocator::DiagnosticAllocator() : state_word_(0),resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator=&allocator;
 GameRandom script_random{0};
-// Only unresolved spawn/loader/interpolation routes and Enemy's outer retirement,
-// opcode root and movement body are fixtures. Production lifetimes, real VM tick,
-// Manager traversal, State script gate, Timer step and typed release all execute.
+// The link scalar factory and instruction buffer resolver remain fixtures, along
+// with unused interpolation/frame routes and Enemy's outer retirement/movement.
+// Actual Runtime allocation, both lifetimes, VM/call setup, loader activation,
+// Manager spawn/find/invalidation/tick and the State script gate all execute.
 Enemy::~Enemy()=default;
 std::int32_t Enemy::execute_opcode() {events.push_back(100+current_runtime->async_id);return 0;}
 std::int32_t Enemy::read_integer(std::int32_t) {std::abort();}
@@ -89,23 +111,18 @@ int EnemyState::update_movements() {
     if(movement_calls==1){default_timer_clock.value=movement_clock;return movement_result;}
     return callback_result;
 }
-int EclManager::spawn(std::int32_t id,std::int32_t skip) {
-    assert(spawn_requested && id==-1 && skip==0);spawn_requested=false;
-    auto* link=add(*this,4,false);link->detach();runtimes.insert_after(link);events.push_back(200);return 0;
+template<> IntrusiveLink<EclRuntime>* DiagnosticAllocator::allocate_object<IntrusiveLink<EclRuntime>>(const char* label) {
+    assert(std::strstr(label,"sptcmd.cpp:1014 LinkInf<SptBaseInf*>") != nullptr);
+    events.push_back(200);return new IntrusiveLink<EclRuntime>;
 }
-IntrusiveLink<EclRuntime>* EclManager::find_runtime(std::int32_t) {std::abort();}
 EclInstruction* EclLoader::instruction(std::int32_t routine,std::int32_t offset) {
     assert(routine>=0 && routine<static_cast<int>(programs.size()) && offset>=0);
-    assert(offset%sizeof(EclInstruction)==0);return &programs[routine].at(offset/sizeof(EclInstruction));
+    assert(offset%sizeof(InstructionRecord)==0);return &programs[routine].at(offset/sizeof(InstructionRecord)).header;
 }
-int EclRuntime::call_into(EclRuntime*,std::int32_t,std::int32_t) {std::abort();}
 void EclScriptInterpolation::set_tangent_start(const float&) {std::abort();}
 void EclScriptInterpolation::set_tangent_end(const float&) {std::abort();}
 void EclScriptInterpolation::reset_time() {std::abort();}
 int ScriptStack::enter_frame(std::int32_t) {std::abort();}
-std::int32_t ScriptStack::pointer_value() const {return pointer;}
-std::int32_t ScriptStack::frame_value() const {return frame_base;}
-void ScriptStack::set_pointer(std::int32_t value) {pointer=value;}
 }
 
 namespace {
@@ -116,6 +133,8 @@ struct Manager : th20::EclManager {
 int main() {
     using namespace th20;
     auto* old_resource=std::pmr::set_default_resource(&resource);
+    test_loader.subroutine_count=names.size();
+    for(auto name:names)test_loader.records.push_back({name,nullptr});
     // All async completion subsets with primary success/failure. Real VM opcode1
     // terminates; custom opcode1000 observes the Manager's current runtime.
     for(unsigned mask=0;mask<8;++mask)for(bool primary_failure:{false,true}) {
@@ -151,11 +170,114 @@ int main() {
     // Cached-next protocol defers a new node inserted by the real VM spawn opcode.
     {
         Manager manager;ready(manager);add(manager,1,false);add(manager,2,false);
-        programs[0]={instruction(15),instruction(1000),instruction(0,100000)};
-        spawn_requested=true;events.clear();assert(manager.tick(1)==0 && !spawn_requested);
-        assert((events==std::vector<int>{200,100,101,102}));assert((surviving(manager)==std::vector<int>{4,1,2}));
+        programs[4]={instruction(1000),instruction(0,100000)};
+        programs[0]={spawn_instruction("task4",0),instruction(1000),instruction(0,100000)};
+        events.clear();assert(manager.tick(1)==0);
+        assert((events==std::vector<int>{200,100,101,102}));assert((surviving(manager)==std::vector<int>{-1,1,2}));
         assert(manager.runtimes.next->node->time==0);events.clear();assert(manager.tick(1)==0);
-        assert((events==std::vector<int>{104}));assert(manager.runtimes.next->node->time==1);
+        assert((events==std::vector<int>{99}));assert(manager.runtimes.next->node->time==1);
+    }
+    assert(resource.live.empty());
+    // Real spawn includes sentinel-aware lookup, head insertion, rank copying,
+    // all four numeric descriptor conversions and the native five-word frame.
+    for(int skip:{0,1,3})for(int id:{std::numeric_limits<int>::min(),-1,0,17,std::numeric_limits<int>::max()}) {
+        {
+            Manager manager;ready(manager);add(manager,1,false);add(manager,2,false);
+            manager.current_runtime=&manager.main;manager.main.rank=0xa5;manager.main.time=37;manager.main.async_id=-1;
+            programs[0]={spawn_instruction("task4",skip)};
+            programs[4]={instruction(1000),instruction(0,100000)};
+            auto* old_head=manager.runtimes.next;events.clear();assert(manager.spawn(id,skip)==0);
+            auto* link=manager.runtimes.next;auto* runtime=link->node;
+            assert(link!=old_head && link->previous==&manager.runtimes && link->next==old_head && old_head->previous==link);
+            assert(link->owner==nullptr && link->iterator==nullptr);
+            assert(runtime->manager==&manager && runtime->async_id==id && runtime->rank==0xa5);
+            assert(runtime->time==0 && runtime->position.subroutine==4 && runtime->position.offset==0);
+            assert(runtime->signal==0 && runtime->flags.bits==0 && runtime->interpolators.empty());
+            assert(runtime->stack.pointer==20 && runtime->stack.frame_base==0 && runtime->stack.words.size()>=9);
+            assert(runtime->stack.words[0]==0 && runtime->stack.words[1]==4);
+            for(int i=2;i<5;++i)assert(runtime->stack.words[i]==0xffffffffu);
+            assert(runtime->stack.words[5]==std::bit_cast<unsigned>(1.25f));
+            assert(runtime->stack.words[6]==static_cast<unsigned>(-3));
+            assert(runtime->stack.words[7]==std::bit_cast<unsigned>(-7.0f));
+            assert(runtime->stack.words[8]==19 && manager.current_runtime==&manager.main);
+            assert(manager.main.time==37 && manager.main.position.offset==0 && manager.main.position.subroutine==0);
+            assert(manager.find_runtime(id)==(id==-1?&manager.runtimes:link));
+            assert(manager.find_runtime(1)==old_head && manager.find_runtime(2)==old_head->next);
+            assert(manager.find_runtime(99)==nullptr && events==std::vector<int>{200});
+        }
+        assert(resource.live.empty());
+    }
+    // Lookup failure returns -1, retains the new current target and inserted
+    // node, invalidates the caller, and leaves retirement to the owner lifecycle.
+    {
+        Manager manager;ready(manager);add(manager,1,false);
+        programs[0]={spawn_instruction("missing",0)};auto* old_head=manager.runtimes.next;
+        events.clear();assert(manager.spawn(27,0)==-1);auto* link=manager.runtimes.next;
+        assert(link->next==old_head && link->node->async_id==27 && manager.current_runtime==link->node);
+        assert(manager.main.position.offset==-1 && manager.main.position.subroutine==-1);
+        assert(link->node->position.offset==0 && link->node->position.subroutine==-1);
+        assert(link->node->stack.pointer==20 && manager.find_runtime(27)==link);
+        assert(events==std::vector<int>{200});
+    }
+    assert(resource.live.empty());
+    // Invalidation is allocation-free and never frees/detaches a node. The
+    // embedded primary is excluded; both end words change on every child.
+    for(unsigned count=0;count<=3;++count) {
+        Manager manager;ready(manager);for(unsigned id=1;id<=count;++id)add(manager,id,false);
+        const auto allocation_count=resource.live.size();auto* head=manager.runtimes.next;
+        manager.current_runtime=count?head->node:&manager.main;auto* current=manager.current_runtime;
+        events.clear();manager.invalidate_async();assert(events.empty() && resource.live.size()==allocation_count);
+        assert(manager.runtimes.next==head && manager.current_runtime==current);
+        assert(manager.main.position.subroutine==0 && manager.main.position.offset==0);
+        for(auto* p=head;p;p=p->next)assert(p->node->position.offset==-1 && p->node->position.subroutine==-1 && p->previous->next==p);
+    }
+    assert(resource.live.empty());
+    // VM opcode21 marks children while the primary still runs. Retirement is
+    // ordered after the primary callback, preserving cached-next traversal.
+    {
+        Manager manager;ready(manager);add(manager,1,false);add(manager,2,false);
+        programs[0]={instruction(21),instruction(1000),instruction(0,100000)};
+        events.clear();resource.observe=true;assert(manager.tick(1)==0);resource.observe=false;
+        assert((events==std::vector<int>{100,301,301,302,302}));
+        assert(manager.runtimes.next==nullptr && manager.current_runtime==&manager.main);
+        assert(manager.main.position.subroutine==0 && manager.main.time==1);
+    }
+    assert(resource.live.empty());
+    // The VM's named-id spawn route supplies skip1 through real consuming
+    // argument decoding; script index and async identifier remain independent.
+    {
+        Manager manager;ready(manager);
+        programs[0]={spawn_instruction("task4",1,27,16),instruction(1000),instruction(0,100000)};
+        programs[4]={instruction(1000),instruction(0,100000)};
+        events.clear();assert(manager.tick(1)==0 && events==std::vector<int>({200,100}));
+        auto* child=manager.runtimes.next->node;assert(child->async_id==27 && child->position.subroutine==4 && child->time==0);
+        assert(child->stack.words[5]==std::bit_cast<unsigned>(1.25f) && child->stack.words[8]==19);
+        events.clear();assert(manager.tick(1)==0 && events==std::vector<int>{127} && child->time==1);
+    }
+    assert(resource.live.empty());
+    // Real find handles flag set/clear, signaling and offset-only ending.
+    // Ending does not destroy a child until subsequent Manager traversal.
+    {
+        Manager manager;ready(manager);auto* first=add(manager,1,false);auto* second=add(manager,2,false);
+        second->node->flags.bits=0x80000000u;
+        auto set_flag=instruction(18),signal=instruction(20);
+        set_flag.header.argument_count=1;set_flag.arguments[0]=2;
+        signal.header.argument_count=2;signal.arguments[0]=2;signal.arguments[1]=static_cast<unsigned>(-7);
+        programs[0]={set_flag,signal,instruction(1000),instruction(0,100000)};
+        events.clear();assert(manager.tick(1)==0 && events==std::vector<int>({100,101,102}));
+        assert(first->node->time==1 && second->node->time==1 && second->node->signal==-7);
+        assert(second->node->flags.bits==0x80000001u);
+        auto clear_flag=instruction(19),end=instruction(17);
+        clear_flag.header.argument_count=1;clear_flag.arguments[0]=2;
+        end.header.argument_count=1;end.arguments[0]=1;
+        programs[0]={clear_flag,end,instruction(1000),instruction(0,100000)};manager.main.position.offset=0;
+        const auto live_count=resource.live.size();events.clear();assert(manager.main.tick(1)==0);
+        assert(first->node->position.offset==-1 && first->node->position.subroutine==1);
+        assert(manager.runtimes.next==first && resource.live.size()==live_count && events==std::vector<int>{100});
+        assert(second->node->flags.bits==0x80000000u && second->node->signal==-7);
+        events.clear();resource.observe=true;assert(manager.tick(1)==0);resource.observe=false;
+        assert(events==std::vector<int>({301,301}) && manager.runtimes.next==second);
+        assert(second->previous==&manager.runtimes && second->node->time==2);
     }
     assert(resource.live.empty());
     // State gate, signed failures, movement-before-clock observation, real VM

@@ -58,7 +58,7 @@ check_time:
                 break;
             }
             case 15: manager->spawn(-1,0); goto advance;
-            case 21: manager->terminate_async(); goto advance;
+            case 21: manager->invalidate_async(); goto advance;
             case 16:
                 manager->spawn(consuming_integer_value(1,ECL_INTEGER_ARGUMENT(ins,(ECL_INTEGER_ARGUMENT(ins,0)+4u)/4)),1);
                 goto advance;

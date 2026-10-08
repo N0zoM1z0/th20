@@ -14,7 +14,8 @@ class EclManagerEnemyScriptsTests(unittest.TestCase):
                          if (p := shutil.which(n))), None)
         self.assertIsNotNone(compiler)
         sources = [
-            "EclManagerTick", "EnemyScriptAdvance", "TimerStep", "EclRuntimeTick",
+            "EclManagerTick", "EclManagerAsync", "EclCallSetup", "EclRuntimeCall",
+            "EclDiagnostic", "EnemyScriptAdvance", "TimerStep", "EclRuntimeTick",
             "EclArguments", "EclRuntimeLifetime", "EclSelection", "EclLoaderBase",
             "Enemy", "EnemyState", "EnemyMovement", "EnemyCounters", "EnemySpawn",
             "EnemyHealth", "EnemyPattern", "Motion", "MotionConfiguration", "MotionUpdates",
