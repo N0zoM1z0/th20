@@ -1,5 +1,48 @@
 # Current reconstruction handoff
 
+## CORE-106 — 2026-10-09 — Complete private Item primary and protected cleanup
+
+Whole 1,576-byte primary spawn now replays without differences under a fresh
+locked receipt. Its real ANM initialization scope groups both bindings,
+attachment reset and packed-color alias; extra follows the scope. The real
+Weapon borrow supplies the other native NOP. No padding, inert local or shortened
+comparison is used. Nine whole private roots total 1,830B/48 independently
+anchored relocations, including actual Weapon99/20/22 and ANM wrapper32.
+All internal branch heads and final returns are audited. Twelve complete
+list/vtable/script supports replay; front is19B, node value16B. Whole list
+prepend66 remains nonexact at five sentinel-comparison register/operand bytes.
+No supporting/full-link exactness or public canonical credit follows yet.
+
+Actual consistent O2/ASan/UBSan graph checks ordinary types/clamp including NaN,
+512/1024 partitions/exhaustion, first-member special allocation, observer
+detachment, descending delays/signed counters, point conversion/global mode,
+Record-zero bonus recursion, delay wrapping, seed-one Y-before-X RNG, effect
+and both binding order, mutation between separate file reads, actual Weapon
+lifetime and real bulk spawn. Original effect/three-argument ANM binding,
+empty-resource controller retirement and startup are explicit fixtures;
+original frame/uncalled virtual gameplay interfaces abort if reached. Original
+ANM/effect/runtime and inferred virtual signatures/RTTI remain open.
+
+Next: archive fresh canonical/private closure before genuine-owner source
+migration, then replay the frozen affected production graph and public semantic
+checks before admission. Do not stop at helpers. Public checkpoint is unchanged:
+747 units/143 objects/140,553 bytes/253 sources/761 mappings/fourteen whole nonexact;
+authored84/24,209B/reference238/all6,945 reviews terminal/claims header-only.
+See [Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
+Periodic and final retirement remove179 products/383,115 gross bytes,
+310,901 net bytes after the72,214B host archive; all747 canonical replay results
+and protected current source/native/active private hashes remain unchanged.
+Preserve core106-retired-host-inputs.json.gz, original primary-v1/v2 and Weapon-v1
+input archives, core106-private-bindings.json, core106-semantics.json,
+core106-primary-support-native.asm/attestation, current five private object pairs,
+core106-item and passed core106-host-v3. Completed proof/cleanup writers must
+not be rerun. Failed host copies and replaced primary-v1 pair are retired.
+Use repo-python, serial nice15 jobs, attested Ghidra, no REA/delegation and
+periodic protected cleanup. Goal stays active; whole game is not complete.
+All 68 public tests pass in206.824 seconds; public CI's temporary Python caches
+are automatically retired. Build is about8.3MiB and analysis110MiB.
+
 ## CORE-105 — 2026-10-09 — Main Item candidate and periodic retirement
 
 Complete primary spawn (1,576 bytes) and draw (815 bytes) are reviewed through

@@ -1,5 +1,78 @@
 # Item main-function evidence
 
+## CORE-106: complete private spawn and actual protocol checks
+
+The complete primary spawn at 004C3C90 now replays all 1,576 bytes without
+differences under a fresh locked compiler receipt. Two ANM bindings, attachment
+reset and the actual packed-color alias share one meaningful initialization
+scope; the extra field assignment follows that scope. Together with the scoped
+passive-Weapon borrow, this naturally emits the native NOPs without an extra
+entry NOP, inert storage, padding or shortened comparisons. Original source
+spelling remains inferred. The CORE105 fourth trial is historical evidence.
+
+Nine complete private roots total 1,830 bytes and 48 independently anchored
+relocations: primary spawn, two Record byte getters, Overlay's Weapon pointer
+getter, packed-color setter, actual Weapon construction/destruction/passive-byte
+setter and the two-argument ANM binding wrapper. Complete native instruction
+coverage, every internal branch destination, final returns and disjoint extents
+are checked independently. The 19-byte free-list front wrapper is complete;
+its node-value dependency is a separate 16-byte body.
+
+Twelve complete support contributions replay, including the ten actual list
+helpers, the 120-byte thirty-slot Weapon table and the 128-byte script table.
+Native constructor and nonvirtual destructor both independently publish the
+same base vptr. The preceding RTTI locator is a separate unresolved scope;
+virtual names and uncalled prototypes remain inferred. The complete shared
+66-byte list prepend differs at five bytes in register/operand selection for
+its sentinel comparison. Its whole boundary is retained as nonexact support;
+no supporting full-link exactness or arbitrary source shaping is claimed.
+
+An internally consistent private host graph passes C++20/O2/ASan/UBSan through
+the actual primary implementation, actual Item/ItemInf/Animation lifetime,
+real 512/1024 free partitions, intrusive observer protocol, real Session/Record,
+RNG, Weapon, BulletController/Bullet pools and AnimationFile construction.
+The scope checks every valid ordinary type, special types 9--13, descending
+delay thresholds, signed/modulo counter edges, point conversion, retained fields,
+special first-member allocation despite a null stored node value, ordinary
+nonnull-head/null-value return, both exhaustion boundaries and NaN-preserving
+clamp. Empty ordinary heads and negative table indices are native precondition
+violations; no fabricated safe execution is tested.
+
+Bonus checks use real global Record-zero and Overlay/Weapon selection while the
+Item owner selects Context one. Seed-one RNG independently produces 48,271
+for y then 182,605,794 for x; recursive/outer list order, delay+16 modulo,
+counter wrapping and both binding pairs are verified. Capture mutation confirms
+two separate file reads and effect-before-bind ordering: an effect may change
+the owner's selected Context after the Item has selected its own Context, and
+the second bind observes a file changed during the first bind. Actual bulk-spawn
+also executes the real primary body with the shared reference declaration.
+
+Process startup/identity/null-callback release, abort-only original frame and
+uncalled Weapon/Player interfaces, checked empty-resource Bullet/Overlay/File
+retirement, capture-only original Item effect and three-argument ANM binding
+are explicit fixtures. The real two-argument binding wrapper runs. Original
+ANM VM/effect/virtual gameplay, resource-owning controller retirement, RTTI,
+full linkage and game startup/runtime remain separate acceptance gates.
+
+This is private complete replay and bounded semantic evidence. Public production
+source, canonical ledgers and coverage remain CORE/EXACT-104: 747 units/143 objects,
+140,553 disjoint bytes and 253 source files. Next is migration to the genuine
+source owners, consistent caller/reference declaration and frozen affected-graph
+cold replay before canonical admission. No leaf-only credit is added here.
+
+Private proofs are core106-private-bindings.json and core106-semantics.json;
+native support exports/attestations and the passed core106-host-v3 graph remain
+active. Original primary-v1/v2 and Weapon-v1 input archives preserve source and
+receipt bytes, reusing hash-verified original baseline inputs and installed
+SDK bytes. Failed host copies are losslessly archived before retirement.
+Periodic/final cleanup retires 179 files/383,115 gross bytes and saves 310,901
+bytes after the 72,214-byte retired-host archive. All current canonical/source,
+passed private/semantic and native evidence hashes are protected; all 747
+existing-object results are unchanged. Heavy jobs stay serial at nice 15;
+cleanup does not cold-build an unchanged graph.
+All 68 public tests pass in 206.824 seconds. Public CI uses a temporary Python
+cache directory, which is retired automatically with its temporary products.
+
 ## CORE-105: complete primary-spawn candidate
 
 The current target remains the locked Japanese v1.00a Steamless executable.

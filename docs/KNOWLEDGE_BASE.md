@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## CORE-106 — 2026-10-09 — Complete private Item spawn protocol
+
+- Whole primary004C3C90/1576 privately replays under a fresh locked receipt.
+  A real shared ANM-initialization scope and separate actual Weapon borrow
+  naturally reproduce both scope NOPs. No inert locals, padding or shortened
+  comparison; original syntax remains inferred.
+- Native Weapon constructor99/nonvirtual destructor20 publish vptr575810;
+  two real Timers14/24 and fields0/0/0/1/bytes34/35 reproduce construction.
+  Passive setter4865B0 writes byte35; Overlay4859D0 reads actual Weapon pointer34.
+  Complete30-slot table120B independently agrees with reviewed native producer
+  evidence. Uncalled virtual prototypes and RTTI locator/full-link remain open.
+- Native438380/32 forwards Animation/script/null to genuine4382B0 binding.
+  Parent binding194 remains an undefined original interface, distinct from
+  the two-argument wrapper. Script table5AFD50/128 and full float payloads are
+  independently checked. Front4859F0 is19B, node value40C300 is16B.
+- Nine private roots1830B/48relocations and twelve full support contributions
+  replay; all root branches/final returns/full extents audited. Shared list
+  prepend66 differs in five sentinel-compare register/operand bytes and stays
+  whole nonexact support. No full-link or canonical credit is inferred.
+- Actual O2/ASan/UBSan covers ordinary/special pools and observer detachment,
+  signed counter/delay edges, NaN clamp, retained fields, global mode conversion,
+  actual Record-zero/Weapon bonus recursion and real RNG Y-before-X, binding
+  and effect ordering, independent file rereads and actual bulk spawn.
+  Native ordinary nonnull-head and valid table-index preconditions remain;
+  special first-member allocation does not consume the node's stored value.
+- Explicit startup/null-callback/abort-only frame and uncalled virtual fixtures,
+  checked empty-resource controller retirement and capture-only original
+  effect/three-argument binding bound this scope. ANM VM/effect/resource lifetime,
+  native gameplay/runtime, genuine-owner public migration and cold admission
+  remain open. Public747/143/140553B/253sources and all credit stay unchanged.
+  Protected retirement frees310901 net bytes; all747 prior results unchanged.
+  See [Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
 ## CORE/EXACT-104 — 2026-10-09 — Actual Item owner and reward consumers
 
 - Native producers establish Item 0xC4C with two actual Animation0x5E4 members,
