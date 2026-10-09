@@ -1,5 +1,33 @@
 # Verified facts and open hypotheses
 
+## CORE-109 — Private SoundInf protocol and complete poll audit
+
+- Fresh attested poll4277F0 covers2909B/787 instruction heads, nine distinct
+  command cases and32 direct dependencies. Its3B alignment NOP and36B table
+  make2948B through428373; original COFF ownership remains untested. The
+  command pointer advances during record shifting and persists on repeat.
+- The real0x57E8 SoundInf owns typed requests/channels/commands, a16B PMR
+  vector and SDK pointers/handles. Native startup separately zeroes storage;
+  no service Context follows the native owner. Original resource/stream/wave
+  lifetime and scalar roles remain open. Lock scopes use actual lock_guard.
+- Seven complete private roots replay868B; constructor compares all578 emitted
+  bytes against native573B code plus5CC. All bytes equal, but CC ownership,
+  three array constructor EH/boundaries, PMR internals and enqueue unwind map
+  remain open. No production/source/origin/reference/canonical credit follows.
+- Request first writes ID via actual checked array::at; subsequent pan/count
+  writes are unchecked. ID lookup table is unsorted, native unknown-ID handling
+  has no invented bounds/throw, and ready returns fullint. Preload configuration
+  belongs to actual Graphics. Float cast invalid-domain semantics require a
+  genuine shared contract before admission. See
+  [SoundInf reconstruction](SOUND_PROTOCOL_RECONSTRUCTION.md).
+- Superseded private pairs retire only after original SHA-bound closures are
+  archived and replacements verified. Protect current145 canonical pairs,
+  256 sources, native evidence and activev4; replay existing756 units without
+  an unchanged-source cold build. Six replaced products261372B are retired;
+  all756 results and current source/canonical hashes remain unchanged. All69
+  public tests pass in287.486s; temporary caches retire automatically. Build
+  remains8.2MiB/analysis114MiB. Production remains CORE107.
+
 ## CORE-108 — Complete Item update boundary and branch corrections
 
 - The whole4757B update decodes1125 instructions. Attested Ghidra omits three

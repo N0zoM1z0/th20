@@ -1,5 +1,48 @@
 # Current reconstruction handoff
 
+## CORE-109 — 2026-10-09 — Actual sound owner and protected probe retirement
+
+Item update's real sound dependency now has a private0x57E8 owner and coherent
+whole request/command protocol. Seven complete roots replay868B without
+differences; constructor compares all578 emitted bytes, including five native
+CC bytes after its573B code. Original CC contribution ownership remains open.
+Three array constructors retain native EH/boundary disagreements36/36/33 versus
+78/78/75; PMR internals and enqueue unwind-map closure remain open. No source,
+mapping, canonical/origin/reference credit is added. Production stays CORE107:
+756 units/145 objects/142383B/256 sources; authored85/25785B, confirmed88,
+mappings770/fourteen whole nonexact, absorbed238/all6945 terminal reviews.
+
+Fresh attested full poll4277F0:2909B/787 heads, all listed, nine targets,
+32 direct dependency heads. Preserve3B NOP and36B table428350: complete native
+code/alignment/table interval2948B through428373, original COFF untested.
+LockRegistry slot11 guards are actual lock_guard; retain the advanced command
+pointer on the preload repeat edge. Native request's first ID store uses
+checked array::at, ready returns fullint, and preload configuration belongs
+to actual Graphics. See [SoundInf protocol evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
+Continue the whole dispatcher with genuine separate CSound/stream ownership,
+WaveReader prefix, virtual/resource/error/stage contracts and host semantics.
+Float invalid conversions/SSE exception mode, native constructor failure/EH,
+startup and resource retirement remain open. Do not replace these with a
+Context/Environment, guessed raw receiver prefix or fake returns. Renderer
+trailing-word displacement navigation leads establish no missing field type.
+
+Preserve core109-sound native exports/attestations, complete poll dispatch audit,
+private source/currentv4 object-receipt and core109-private-replay-v4.json.gz.
+Earlier v3 failed binding expectation remains evidence, not a passed result.
+Original v1/v2/v3 SHA-bound input/receipt closures are retained losslessly before
+retiring their replaced pairs; current canonical/source/native/active hashes
+and all756 existing-object results are protected. Use repo-python, serial
+nice15 jobs, no REA/delegation and periodic protected retirement. Goal remains
+active; whole poll and game reconstruction are incomplete.
+
+Cleanup retires6 replaced object/receipt products261372B, with original inputs
+and receipts retained losslessly. All756 existing-object results equal CORE107;
+current290 canonical hashes and256 source hashes remain unchanged. All69
+public tests pass in287.486s; temporary CI caches retire automatically. Build
+remains8.2MiB/analysis114MiB. Preserve core109-cleanup.json.gz and original
+v1/v2/v3 input archives; do not rerun completed proof/cleanup writers.
+
 ## CORE-108 — 2026-10-09 — Whole Item update audit
 
 Fresh attested native evidence reconciles update004C25A0 through RET004C3834:
