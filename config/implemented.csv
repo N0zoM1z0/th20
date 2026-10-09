@@ -773,3 +773,14 @@ th20::SoundInf::load_track
 th20::SoundInf::free_preload
 th20::SoundInf::~SoundInf
 th20::Graphics::uses_preloaded_music
+th20::Item::retire
+th20::Item::spawn_effect
+th20::Item::activate
+th20::EffectAnimationHandle::EffectAnimationHandle
+th20::StoneMenuInfo::enable
+th20::Context::effect_info
+th20::EffectInfo::animation_file
+th20::stone_menu_info
+th20::PlayerRecord::starting_configuration
+th20::Animation::stop
+th20::Animation::set_position

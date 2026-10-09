@@ -1,5 +1,22 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-115 — Whole Item lifecycle and genuine resource interfaces
+
+Complete retirement70/effect344/activation400 and eight new supports add1096
+physical bytes/57 independent relocations; three existing getter aliases add no
+coverage. Effect/Stone storage follows actual construction, consumers, three-slot
+virtual tables and sized deleting wrappers. Effect uses a real AnimationHandle
+wrapper array; Stone's actual enable calls TaskInfo. Original resource constructor/
+destructor definitions and renderer loading/retirement remain open interfaces.
+
+Frozen264-source graph passes772 units/149 fresh objects/145631B. Maintained-body
+651-case O2/ASan/UBSan checks actual RNG, selected/global records, callback enable,
+ANM position/type rereads and observer-safe pool retirement through explicit
+original-resource fixtures. Three independent native application origins yield
+90 authored exact functions/28561B and93 confirmed origins. Whole update4820/draw815,
+renderer's unproven four-byte interval, original RTTI/full linkage/runtime and
+unconsumed source context remain open. See [Item evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
 ## CORE-112 — Private complete sound creation and lifetime chain
 
 The complete memory-stream factory, actual partial WaveReader constructor and

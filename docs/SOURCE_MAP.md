@@ -1,5 +1,23 @@
 # Source and build ownership
 
+## CORE/EXACT-115 — Coherent Item lifecycle source ownership
+
+| Owner/protocol | Maintained source | Scope |
+| --- | --- | --- |
+| Whole Item activation, effect and retirement | src/ItemLifecycle.cpp, src/Item.hpp | Three complete roots; shared integer ABI and genuine retained pools/ANM interfaces |
+| Effect/Stone storage | src/ItemResourceOwners.hpp | Full constructor/consumer/deleting-size corroboration; actual handle wrapper and Stone virtual enable; original resource startup/destruction undefined |
+| Owner/Record/Animation support | src/ItemLifecycleAccess.cpp | Eight new physical roots; three independent shared getter aliases without duplicate credit |
+| Selected Effect Context | src/Context.hpp | Typed+20 pointer and genuine getter; original initialization publication remains separately observed |
+| Independent maintained semantic scope | tests/item_lifecycle_semantics.cpp | 651 actual-owned cases; original resource/ANM/Sound/renderer calls are explicit fixtures |
+
+Eleven physical roots add1096B/57 relocations; frozen264-source graph passes772
+units/149 fresh objects/145631B. Three native gameplay origins add795 authored
+bytes, yielding90/28561B and93 confirmed authored. Existing primary-spawn caller
+and its capture fixture use the same new return declaration. Supporting origin,
+original resource lifetime/RTTI/full linkage/runtime and whole update/draw remain
+open. Earlier private sound receipt closures are preserved as historical inputs
+and need fresh builds before further acceptance. See [Item evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
 ## CORE-112 — Private sound source ownership investigation
 
 The ignored core112-sound directory contains one shared complete factory body,

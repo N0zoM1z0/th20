@@ -21,7 +21,9 @@ struct Item {
     Item();
     ~Item();
     void select_context(std::int32_t index);
-    void spawn_effect();
+    std::int32_t spawn_effect();
+    std::int32_t activate();
+    void retire();
 };
 class ItemInf : public TaskInfo {
 public:

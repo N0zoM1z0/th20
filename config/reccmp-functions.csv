@@ -774,3 +774,14 @@ th20::SoundInf::load_track,0x00426890,function
 th20::SoundInf::free_preload,0x00428EE0,function
 th20::SoundInf::~SoundInf,0x00426030,function
 th20::Graphics::uses_preloaded_music,0x00428FA0,function
+th20::Item::retire,0x004C3880,function
+th20::Item::spawn_effect,0x004C42C0,function
+th20::Item::activate,0x004C4420,function
+th20::EffectAnimationHandle::EffectAnimationHandle,0x0049CF60,function
+th20::StoneMenuInfo::enable,0x004E6230,function
+th20::Context::effect_info,0x0041CAD0,function
+th20::EffectInfo::animation_file,0x0045D100,function
+th20::stone_menu_info,0x0051B960,function
+th20::PlayerRecord::starting_configuration,0x004641D0,function
+th20::Animation::stop,0x0044FD00,function
+th20::Animation::set_position,0x0045DD60,function

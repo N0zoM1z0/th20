@@ -1,5 +1,46 @@
 # Verified facts and open hypotheses
 
+## CORE/EXACT-115 — Whole maintained Item lifecycle admission
+
+Eleven physical roots add1096B/57 independently anchored relocations. Whole
+retirement70/effect344/activation381+19 table/alignment and Record75+17 table/
+alignment preserve full boundaries; three shared getter aliases add no duplicate
+credit. Actual Effect/Stone sizes are0x13044/0x21104, independently corroborated
+by constructors and49-byte deleting wrappers. Stone enable20 at004E6230 calls
+TaskInfo; Effect's1024 four-byte entries use a23-byte AnimationHandle wrapper.
+Native text parsing establishes256-byte rows and five-line descriptions.
+
+Maintained-source O2/ASan/UBSan passes651 cases, including four real virtual
+callback combinations, signed/default Record selection, global Record-zero versus
+selected Context, effect/type and binding/position rereads, and observer-safe
+retirement. Original ANM/Sound/renderer operations and synthetic empty-resource
+owner lifetime remain explicit fixtures. Native resource destructor ordering is
+recorded, but both original owner constructors/destructors remain undefined;
+RTTI/EH/full linkage/game runtime are open. See [Item evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
+The frozen264-source graph passes772 units/149 fresh objects/145631 disjoint
+bytes. Three independently audited gameplay origins add795B: authored90/28561B,
+confirmed93; eight support origins pending. Mappings786/fourteen whole nonexact,
+reference238/all6945 terminal reviews and header-only claims stay distinct.
+Keep original pre-migration156 receipt closures, new full canonical results,
+production replays and sanitizer receipt. Earlier sound probes now carry archived
+historical closures; fresh reconstruction requires a new build. CORE114 remote
+matching-head CI succeeded atb29d156, run37979666488. Next: genuine renderer
+storage and full Item update4820/draw815; no invented gap field or inert shaping.
+
+All71 public tests pass in247.810 seconds; the full gate passes in249.601
+seconds. Temporary host products and CI caches retire automatically. Protected
+retirement removes four replaced private pairs and147 old canonical pairs:
+302 files /8,315,438 bytes (7.93 MiB). Original source/receipt/SDK closures are
+verified before deletion; all772 completed comparison results,264 source hashes
+and298 current canonical-file hashes remain unchanged after cleanup. Build9.4MiB
+/analysis127MiB. Keep both cleanup receipts and pre-deletion retirement plans;
+historical retired pairs remain represented by their lossless original closures.
+The duplicate SoundLoading literal labels are resolved from full typed payloads
+and actual COFF reference roles. Existing147 objects compile once total across
+both observation attempts; no completed object is rebuilt for the correction.
+
+
 ## CORE-114 — Complete private Item activation/effect/retirement chain
 
 Whole Item retirement70/effect344/activation400 and nine real access/state

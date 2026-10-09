@@ -1,5 +1,51 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-115 — 2026-10-10 — Whole maintained Item lifecycle
+
+Eleven new physical roots1096B/57 relocations are admitted: Item retirement70,
+effect344,activation381+19 table/alignment, actual owner/Record/Animation support,
+Effect's23-byte wrapper and Stone enable20. Three shared getter aliases add no
+coverage. Genuine complete owner storage follows constructors, array/text
+consumers, three-slot tables and sized deleting wrappers; original resource
+startup/destruction remains undefined. See [whole Item evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
+Frozen264-source graph passes772 strict units/149 fresh objects/145631 disjoint
+bytes. Three native gameplay origins add795B: authored90/28561B,confirmed93.
+Mappings786/fourteen whole nonexact,reference238/all6945 terminal reviews and
+header-only claims remain distinct. Maintained-body O2/ASan/UBSan passes651
+cases with real LCG/record/list/Worker/Cursor/member lifetime and actual Stone
+virtual enable. Original ANM/Sound/renderer-handle calls and synthetic empty-resource
+owner lifetime remain fixtures; original RTTI/EH/loading/full linkage/runtime open.
+
+Keep build/core115-canonical/149 pairs, core115-final-frozen-source.json,
+exact115-canonical-results.json.gz, both production replays, production semantic
+receipt,156 original pre-admission closures, native lifetime/consumer/text/caller
+exports, origin audit and original literal identities/reconciliation. All147 old
+objects are compiled once after the shared-header migration; two freshly proved
+Item TUs are reused. Earlier sound probes have archived historical source/receipt
+closures and need fresh builds before new acceptance. CORE114 matching-head CI
+succeeded atb29d156,run37979666488; receipt core115-prior-remote-ci-complete.json.
+
+Next: original renderer storage and whole Item update4820/draw815. Its four-byte
+interval after the second Animation remains unexplained; preserve unconsumed
+bounds/Timer32 query context, native NaN branches and all table/alignment bytes.
+The now maintained Item dependencies can be used directly. Continue repo-python,
+serial nice15, no REA/delegation, periodic protected retirement and immutable
+proof writers. The unlimited game reconstruction goal remains active.
+
+All71 public tests pass in247.810 seconds; the full gate passes in249.601
+seconds. Temporary host products and CI caches retire automatically. Protected
+retirement removes four replaced private pairs and147 old canonical pairs:
+302 files /8,315,438 bytes (7.93 MiB). Original source/receipt/SDK closures are
+verified before deletion; all772 completed comparison results,264 source hashes
+and298 current canonical-file hashes remain unchanged after cleanup. Build9.4MiB
+/analysis127MiB. Keep both cleanup receipts and pre-deletion retirement plans;
+historical retired pairs remain represented by their lossless original closures.
+The duplicate SoundLoading literal labels are resolved from full typed payloads
+and actual COFF reference roles. Existing147 objects compile once total across
+both observation attempts; no completed object is rebuilt for the correction.
+
+
 ## CORE-114 — 2026-10-10 — Whole private Item activation/effect/retirement
 
 Three complete Item bodies retire70/effect344/activate400 plus nine access/state

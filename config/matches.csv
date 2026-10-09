@@ -86,3 +86,6 @@ address,name,size,status,match_percent,unit,evidence
 0x004C3C90,th20::ItemInf::spawn,1576,matching,100.00,item_spawn_primary,CORE/EXACT-107; complete cold canonical replay and independent native gameplay-consumer/application-origin audit; docs/ITEM_MAIN_RECONSTRUCTION.md
 0x00427360,th20::SoundInf::preload,1146,matching,100.00,sound_preload,CORE/EXACT-111; complete frozen cold canonical replay and independent native application-origin audit; docs/SOUND_PROTOCOL_RECONSTRUCTION.md
 0x00426890,th20::SoundInf::load_track,835,matching,100.00,sound_load_track,CORE/EXACT-111; complete frozen cold canonical replay and independent native application-origin audit; docs/SOUND_PROTOCOL_RECONSTRUCTION.md
+0x004C3880,th20::Item::retire,70,matching,100.00,item_retire,CORE/EXACT-115; full frozen canonical replay and independent native application-origin audit; docs/ITEM_UPDATE_RECONSTRUCTION.md
+0x004C42C0,th20::Item::spawn_effect,344,matching,100.00,item_spawn_effect,CORE/EXACT-115; full frozen canonical replay and independent native application-origin audit; docs/ITEM_UPDATE_RECONSTRUCTION.md
+0x004C4420,th20::Item::activate,381,matching,100.00,item_activate,CORE/EXACT-115; full frozen canonical replay and independent native application-origin audit; docs/ITEM_UPDATE_RECONSTRUCTION.md

@@ -775,3 +775,14 @@ address,name,module,confidence,evidence
 0x00428EE0,th20::SoundInf::free_preload,SoundLoadingProtocol,high,CORE/EXACT-111; complete native storage/call/resource protocol; original names inferred
 0x00426030,th20::SoundInf::~SoundInf,SoundLoadingProtocol,high,CORE/EXACT-111; complete native storage/call/resource protocol; original names inferred
 0x00428FA0,th20::Graphics::uses_preloaded_music,SoundLoadingProtocol,high,CORE/EXACT-111; complete native storage/call/resource protocol; original names inferred
+0x004C3880,th20::Item::retire,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x004C42C0,th20::Item::spawn_effect,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x004C4420,th20::Item::activate,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x0049CF60,th20::EffectAnimationHandle::EffectAnimationHandle,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x004E6230,th20::StoneMenuInfo::enable,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x0041CAD0,th20::Context::effect_info,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x0045D100,th20::EffectInfo::animation_file,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x0051B960,th20::stone_menu_info,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x004641D0,th20::PlayerRecord::starting_configuration,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x0044FD00,th20::Animation::stop,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x0045DD60,th20::Animation::set_position,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred

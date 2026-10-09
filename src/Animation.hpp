@@ -96,6 +96,8 @@ struct Animation {
     void release_resources();
     void reset();
     void set_slowdown(float value);
+    void stop();
+    void set_position(const Vector3& position);
     SpriteTexturedVertex* mesh_vertices();
     Vector3& position_ref();
     float inherited_scale_y();

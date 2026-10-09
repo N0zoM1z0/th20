@@ -1,5 +1,96 @@
 # Complete Item update investigation
 
+## CORE/EXACT-115: maintained whole activation, effect and retirement
+
+The three complete Item bodies and their coherent owner interfaces are now
+maintained. Eleven new physical roots add 1,096 disjoint comparison bytes and
+57 independently bound relocations. Three shared getter heads replay another
+51 bytes without duplicate canonical credit. The frozen 264-source-file graph
+passes all 772 strict units across 149 fresh objects over 145,631 disjoint bytes.
+Three independent application-origin audits add 795 authored bytes; authored
+exactness is 90 functions / 28,561 bytes and confirmed authored origins are 93.
+Eight supporting origins remain pending. Fourteen whole nonexact methods,
+reference absorption 238 and all 6,945 terminal reviews remain unchanged.
+
+| Complete contribution | Native address | Code / comparison bytes |
+| --- | --- | --- |
+| Item retirement | 004C3880 | 70 / 70 |
+| Item effect creation | 004C42C0 | 344 / 344 |
+| Item activation | 004C4420 | 381 / 400 |
+| Effect handle wrapper construction | 0049CF60 | 23 / 23 |
+| Stone enable forwarding | 004E6230 | 20 / 20 |
+| Context Effect lookup | 0041CAD0 | 17 / 17 |
+| Effect file lookup | 0045D100 | 38 / 38 |
+| Current Stone lookup | 0051B960 | 10 / 10 |
+| Record starting configuration | 004641D0 | 75 / 92 |
+| Animation stop | 0044FD00 | 42 / 42 |
+| Animation position assignment | 0045DD60 | 40 / 40 |
+
+Activation includes three alignment bytes and its complete four-entry table;
+Record selection includes one alignment byte and its complete four-entry table.
+Section-local destinations come from actual COFF symbol offsets. Effect and
+activation now share genuine integer return declarations with callers and
+fixtures, following both complete native zero-EAX epilogues. Original return
+spelling remains a source inference. Updating the existing primary-spawn call's
+decorated signature preserves its independently established native destination.
+Three aliases at00411700/0041CAB0/00424010 add no physical coverage.
+
+The native lifetime audit closes the earlier synthetic Stone-enable discrepancy.
+Stone's three-slot table selects its own20-byte forwarding body, which calls
+actual TaskInfo enable. The Effect table selects existing TaskInfo enable/disable.
+Deleting wrappers independently use0x21104/0x13044 sizes. Effect's1024-entry
+four-byte array constructs through a23-byte wrapper around real AnimationHandle;
+that wrapper is now an actual composed member, with original tag/inheritance
+spelling still inferred. Constructor clearing and native text parsing corroborate
+Stone's88x256 names and88x5x256 descriptions; the natural alignment before its
+view field is retained. No original resource constructor/destructor is supplied.
+
+Native Stone destruction retires handles in order0/2/3/1, unloads file24,
+destroys the selection/category Cursors and then TaskInfo. Effect destruction
+joins its Worker, clears its requests, removes callbacks, unloads files8/7/21,
+and destroys Worker/TaskInfo. These observed resource protocols remain undefined
+interfaces pending the genuine renderer owner. Sized deletion and three known
+slots establish the reviewed storage/protocol boundary, not complete native RTTI,
+EH, loading, full linkage or game runtime.
+
+The maintained bodies pass651 C++20/O2/ASan/UBSan cases. This retains the647-case
+Item matrix and adds all four update/draw-null combinations through a TaskInfo
+reference to actual Stone enable; all1024 real wrapper handles construct to zero.
+Actual Item/Animation, record, LCG, Cursor, Worker, guards and observer-safe lists
+execute. Original ANM/Sound/renderer-handle calls and synthetic empty-resource
+Effect/Stone/Sound startup/retirement remain explicit fixtures; uncalled Overlay
+lifetime is abort-only for host RTTI. An initial new fixture assertion used the
+wrong node-flag expectation; the corrected independent test uses the maintained
+bit-one enable contract. Production behavior did not change for that correction.
+
+Original261-source canonical and nine active private object/receipt closures are
+verified and losslessly archived before migration. Existing147 objects are each
+rebuilt once because shared-header fingerprints change; two freshly compiled
+Item TUs are reused. Full original literal payloads independently identify any
+new compiler labels. Keep exact115-canonical-results.json.gz, the264-source
+freeze, both production replays,651-case sanitizer receipt and pre-admission
+archive. Earlier sound probes now have historical frozen closures; they are not
+fresh receipts for the new source graph and must be rebuilt before new acceptance.
+
+The whole Item update remains4,820 bytes including its60-byte table; draw is815.
+The genuine renderer's four-byte interval after its second Animation remains
+unexplained. Original handle/resource methods, ANM VM and native unconsumed
+bounds/Timer query source context remain open. Continue those whole roots using
+actual owners; preserve the recorded nonexact boundaries.
+
+All71 public tests pass in247.810 seconds; the full gate passes in249.601
+seconds. Temporary host products and CI caches retire automatically. Protected
+retirement removes four replaced private pairs and147 old canonical pairs:
+302 files /8,315,438 bytes (7.93 MiB). Original source/receipt/SDK closures are
+verified before deletion; all772 completed comparison results,264 source hashes
+and298 current canonical-file hashes remain unchanged after cleanup. Build9.4MiB
+/analysis127MiB. Keep both cleanup receipts and pre-deletion retirement plans;
+historical retired pairs remain represented by their lossless original closures.
+The duplicate SoundLoading literal labels are resolved from full typed payloads
+and actual COFF reference roles. Existing147 objects compile once total across
+both observation attempts; no completed object is rebuilt for the correction.
+
+
 ## CORE-114: complete activation, effect and retirement dependencies
 
 Three whole private Item bodies now replay without differences: retirement

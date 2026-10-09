@@ -126,6 +126,9 @@ struct PlayerRecord {
     void set_field_20(std::int32_t value);
     void set_field_28(std::int32_t value);
     std::int32_t starting_power();
+    std::int32_t starting_configuration(std::int32_t index);
+    std::int32_t field_0c_value();
+    std::int32_t field_18_value();
 };
 static_assert(sizeof(PlayerRecord) == 240);
 static_assert(alignof(PlayerRecord) == 8);

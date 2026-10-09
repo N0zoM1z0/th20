@@ -63,9 +63,10 @@ void AnimationFile::bind_animation(Animation* animation,std::int32_t script,Anim
     animation->base.color_490=0xabcdef01u;
     if(switch_file && calls==1)tested_owner->context->set_bullet_controller(switch_controller);
 }
-void Item::spawn_effect() {
+std::int32_t Item::spawn_effect() {
     events.push_back({nullptr,nullptr,0,this});
     if(switch_context)tested_owner->select_context(1);
+    return 0;
 }
 // The original thirty-slot virtual surface is never invoked by this protocol.
 // Explicit abort-only fixture definitions supply its host vtable; no original
