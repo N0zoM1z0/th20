@@ -1,5 +1,55 @@
 # Current reconstruction handoff
 
+## CORE-108 — 2026-10-09 — Whole Item update audit
+
+Fresh attested native evidence reconciles update004C25A0 through RET004C3834:
+4757 code bytes/1125 PE-decoded heads versus1122 Ghidra-listed heads. Preserve
+the three omitted unconditional jumps, three-byte table-alignment NOP and
+fifteen-slot reward table004C3838. Complete code/alignment/table interval4820B;
+COFF contribution boundary remains untested. Special activation381B also has
+its original four-slot table; code/alignment/table interval400B. Fifty-seven
+direct dependency heads, six ordered/NaN branch sites, eleven full float
+payloads and ten whole protocol bodies are audited without new source credit.
+
+Native forced attraction uses ordered threshold>PlayerY. Both moving states
+use identical ordered y/absolute-x cull branches. The reference's negated
+comparisons differ for quiet NaNs with masked SSE exceptions; earlier REF031
+native interpretation is superseded, with reference hashes/statuses preserved.
+Native numerical exception environment remains open. See
+[complete Item update evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
+Next work: genuine renderer ownership/publication and original Item activation/
+reward/ANM/handle/sound protocol before whole update admission. Renderer evidence
+adds four40B constructed records, a72B three-list aggregate and65536 slots at
+stride600; intervening storage/second-Animation trailing word remain unresolved.
+Do not introduce a raw receiver prefix/padding. Native unconsumed local bounds
+and ignored Timer::at_least(32) result need original source-context evidence;
+do not manufacture inert source solely for matching. Effect/activation EAX-zero
+epilogues require return-type/caller corroboration before header migration.
+
+Production remains CORE107:256 sources/756 canonical units/145 objects/142383B,
+85 authored exact/25785B,88 confirmed authored,770 mappings/fourteen whole
+nonexact,238 absorbed/all6945 reviews terminal/claims header-only. No source,
+canonical object, relocation anchor or profile changes; no cold rebuild is
+needed for this investigation/cleanup. CORE107 matching-head GitHub CI succeeds
+at314cf20 (run37918051276); its receipt is core107-remote-ci.json.
+
+Preserve core108-native-audit.json.gz, core108-item-update-dispatch.json,
+whole native/protocol/decompiler exports and attestation logs, completed writers,
+current canonical pairs and active CORE103 query inputs. Continue serial nice15
+jobs, repo-python, no REA/delegation and protected periodic retirement.
+This checkpoint is native evidence and progress, not exact update or game completion.
+
+Protected cleanup retires three regenerable bytecode files/33919 bytes and
+three empty cache/product directories. All756 existing-object replay results
+equal CORE107, with256 source/290 canonical object-receipt hashes unchanged.
+All69 public tests pass in271.776s; temporary CI caches retire automatically.
+Build remains8.2MiB/analysis113MiB; no new compiler trial products accumulate.
+Preserve core108-cleanup.json.gz, core108-normal-flow.json and
+core108-dependency-owners.json.gz. The last supplies actual proposed_name ledger
+names; the optional demangled_name field in the original audit is null because
+that ledger column does not exist. No native-address/boundary proof changes.
+
 ## CORE/EXACT-107 — 2026-10-09 — Complete primary Item spawn
 
 Whole primary1576 and eight direct/lifetime roots are maintained in genuine

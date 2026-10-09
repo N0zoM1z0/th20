@@ -1,5 +1,15 @@
 # Item main-function evidence
 
+## CORE-108: complete update boundary and dependency audit
+
+Complete update4757B/1125 instructions now has fresh native/branch/table evidence,
+including three Ghidra-omitted jumps and the original fifteen-slot reward table.
+Native ordered cull/attraction branches correct the reference's unordered
+interpretation. Real renderer/ANM/reward/handle/sound ownership and original
+source context for unconsumed computations remain open; no source or exact
+credit is added. Continue those coherent dependencies before whole update
+admission. See [complete Item update evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
 ## CORE/EXACT-107: maintained complete primary spawn
 
 The complete 1,576-byte primary spawn is maintained in `src/ItemSpawn.cpp` with

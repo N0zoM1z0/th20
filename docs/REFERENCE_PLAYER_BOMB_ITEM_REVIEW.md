@@ -171,12 +171,19 @@ full-type dispatch still hooks activation, with separate restored-body activatio
 cases. Invalid indexes, zero power unit, OOM and pool exhaustion are excluded.
 
 Review records preserve observable quirks: recursive Item bonus before type
-rejection, differing unordered cull states, signed versus unsigned score adds,
+rejection, signed versus unsigned score adds,
 20000+20000 full-power reward, captured extend threshold, Player publication and
 retained-resource ownership, global0 versus selected context, hit callback
 ordering, quiet Orb retirement and late shared timer/color/resource operations.
 Whole graphics, threads, actual allocators, startup and playable game remain
 independent acceptance gates.
+
+CORE-108 independently audits the complete Item update and corrects the earlier
+reference-frame interpretation: native states one and two both use ordered
+outside-bounds branches, and forced collection uses ordered threshold greater
+than Player y. The reference's negated comparisons differ for quiet NaNs with
+masked SSE exceptions. Historical trace/fixture results do not prove those
+original branches. See [complete Item update evidence](ITEM_UPDATE_RECONSTRUCTION.md).
 
 The eight grammar files have27 calling-convention sites. Marisa's one is a
 callback declaration; the other26 are already indexed Windows/fastcall/stdcall

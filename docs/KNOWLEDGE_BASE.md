@@ -1,5 +1,36 @@
 # Verified facts and open hypotheses
 
+## CORE-108 — Complete Item update boundary and branch corrections
+
+- The whole4757B update decodes1125 instructions. Attested Ghidra omits three
+  unconditional jumps that remain included. Fifteen reward pointers and the
+  three-byte alignment NOP make a4820B code/table interval; its whole COFF
+  contribution still requires a compiler probe. Special activation381B plus
+  alignment and its four-pointer table spans400B. No source or exact credit.
+- Original state1/state4 forced collection uses ordered threshold>PlayerY.
+  State1/state2 cull y and absolute x with identical ordered branches. The
+  reference's negated tests differ for quiet NaNs with masked SSE exceptions.
+  Earlier reference review wording is corrected without changing original
+  reference hashes or terminal nonexact status; runtime exception mode is open.
+- Eleven full float payloads, six compare/branch sites, ten whole protocol
+  bodies and57 distinct dependency heads are independently checked. Reuse
+  genuine vectors, Timer, ClockScalar, lists, Context and Session; shared heads
+  do not by themselves establish a new receiver or gameplay ownership.
+- Renderer selection writes+6C4. Four40B constructed records, a72B three-list
+  aggregate and65536-slot/600-stride pool refine actual storage evidence, but
+  intervening fields/lifetime remain unresolved. Original ANM39470B, sound,
+  handle and full reward boundaries cannot be replaced with an Environment.
+- Unconsumed native bounds calculations and ignored Timer predicate need
+  original source-context recovery; no inert source is added for matching.
+  Effect/activation zero-EAX epilogues require genuine return declarations and
+  whole caller/implementation corroboration before shared-header migration.
+  Production756/145/142383B/256sources and all coverage remain CORE107.
+  See [complete Item update evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+- Periodic cleanup retires three bytecode files/33919B and three empty
+  directories. All756 existing-object results and256 source/290 canonical
+  hashes are unchanged. All69 public tests pass in271.776s with temporary
+  caches automatically retired; build8.2MiB/analysis113MiB, no new trial objects.
+
 ## CORE/EXACT-107 — 2026-10-09 — Maintained complete primary Item spawn
 
 - Actual primary1576B and eight direct/lifetime roots now live in their real
