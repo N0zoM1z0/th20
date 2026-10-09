@@ -1,5 +1,37 @@
 # Source and build ownership
 
+## CORE/EXACT-119 — Animation template preparation and scoped lookup
+
+Seven complete roots add465B/16 independently resolved relocations: whole241-byte
+child identity search,84-byte File template preparation,34-byte actual4C0 base
+copy and four genuine pending-field helpers. Actual Animation5E4/File70 owners,
+by-value recursive ordinals, signed local+440 reads and -2 terminal fallback are
+retained. Full support aliases replay without duplicate coverage; no new authored
+origin is inferred. See [binding evidence](ANIMATION_BINDING_RECONSTRUCTION.md).
+
+Frozen270-source graph passes794 strict units/155 fresh objects/149535 disjoint
+bytes. Mappings809/fifteen whole nonexact; authored94/30383B,confirmed98,
+reference238/all6945 terminal reviews and header-only claims remain distinct.
+Maintained production O2/ASan/UBSan passes24022 cases with actual value/geometry/
+observer lifetimes, independent scoped lookup expectations and complete byte-state
+checks. File retirement is a borrowed-only fixture; unresolved parent/VM binding
+aborts on unexpected entry. Original loading/File lifetime/game runtime are open.
+
+Bounded read-only decoded-scalar queries inspect10453 Renderer and23733 VM
+instructions, finding real template stride/identity producers. No direct match
+establishes Renderer+6000DFC ownership or padding; whole allocation7D40E94 modulo
+8/16 contradicts whole-owner alignment as the missing interval's explanation.
+Actual194-byte parent binding4382B0,226/338-byte preparation zero-state lifetime,
+Renderer ownership and full922-byte VM450CB0 remain open coherent next scopes.
+
+Keep build/core119-canonical/155 pairs,core119-final-frozen-source.json,
+exact119-canonical-results.json.gz,whole production/support proof,24022-case
+receipt, original155 pre-change closures plus private-batch closure and native
+exports. Private receipt closures remain historical after migration. Use repo-python,
+serial nice15,no REA/delegation,periodic protected cleanup. Goal remains active.
+PriorCORE118 matching-head remote CI succeeds at1607906,run37998987994.
+
+
 ## CORE/EXACT-118 — Whole Animation child propagation
 
 Six complete roots add1351B: four272-byte recursive flag operations at450160,

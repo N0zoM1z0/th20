@@ -11,6 +11,7 @@ import ghidra.program.model.listing.Function;
 import ghidra.program.model.listing.FunctionIterator;
 import ghidra.program.model.listing.Instruction;
 import ghidra.program.model.listing.InstructionIterator;
+import ghidra.program.model.scalar.Scalar;
 import ghidra.program.model.symbol.Reference;
 import ghidra.program.model.symbol.ReferenceIterator;
 import ghidra.program.model.symbol.Symbol;
@@ -146,6 +147,56 @@ public class QueryProgram extends GhidraScript
         List<Function> result = new ArrayList<>(functions);
         result.sort(Comparator.comparing(Function::getEntryPoint));
         return result;
+    }
+
+    // Search decoded operands in a bounded existing listing. A scalar match is
+    // a navigation lead, not proof of its receiver, field type or liveness.
+    private void writeOperandScalars(PrintWriter output, Address start,
+        Address end, int maximum, Set<Long> wanted) throws Exception
+    {
+        if (!start.getAddressSpace().equals(end.getAddressSpace()) ||
+            start.compareTo(end) > 0 || end.subtract(start) > 0x20000 ||
+            currentProgram.getMemory().getBlock(start) == null ||
+            currentProgram.getMemory().getBlock(start) !=
+                currentProgram.getMemory().getBlock(end))
+            throw new IllegalArgumentException("scalar search requires one bounded memory block");
+        output.printf("operand_scalars: %s..%s%n", formattedAddress(start), formattedAddress(end));
+        InstructionIterator instructions = currentProgram.getListing().getInstructions(
+            new AddressSet(start, end), true);
+        int scanned = 0;
+        int emitted = 0;
+        while (instructions.hasNext())
+        {
+            monitor.checkCancelled();
+            Instruction instruction = instructions.next();
+            scanned++;
+            List<String> matches = new ArrayList<>();
+            for (int operand = 0; operand < instruction.getNumOperands(); operand++)
+                for (Object item : instruction.getOpObjects(operand))
+                    if (item instanceof Scalar)
+                    {
+                        Scalar scalar = (Scalar)item;
+                        long value = scalar.getUnsignedValue() & 0xffffffffL;
+                        if (wanted.contains(value))
+                            matches.add(String.format("operand=%d scalar=%s bits=%d", operand,
+                                hex(value), scalar.bitLength()));
+                    }
+            if (matches.isEmpty())
+                continue;
+            if (emitted == maximum)
+            {
+                output.printf("[truncated after %d matching instructions]%n", maximum);
+                break;
+            }
+            Function function = getFunctionContaining(instruction.getAddress());
+            output.printf("%s  function=%s  %s  %s%n",
+                formattedAddress(instruction.getAddress()),
+                function == null ? "unknown" : formattedAddress(function.getEntryPoint()),
+                instruction.toString(), String.join("; ", matches));
+            emitted++;
+        }
+        output.printf("scanned_instructions: %d  returned: %d%n", scanned, emitted);
+        output.println("Scalar matches and listing omissions do not prove object ownership or field absence.");
     }
 
     private void writeCalls(PrintWriter output, Address address, boolean callers)
@@ -323,6 +374,17 @@ public class QueryProgram extends GhidraScript
             {
                 for (int i = 2; i < args.length; ++i)
                     writeCalls(output, toAddr(args[i]), operation.equals("callers"));
+            }
+            else if (operation.equals("operand_scalars"))
+            {
+                if (args.length < 6)
+                    throw new IllegalArgumentException(
+                        "operand_scalars requires LIMIT START INCLUSIVE_END VALUE...");
+                Set<Long> wanted = new java.util.HashSet<>();
+                for (int i = 5; i < args.length; i++)
+                    wanted.add(Long.decode(args[i]) & 0xffffffffL);
+                writeOperandScalars(output, toAddr(args[3]), toAddr(args[4]),
+                    positive(args[2], "match count"), wanted);
             }
             else if (operation.equals("xrefs_to"))
             {

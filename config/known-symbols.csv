@@ -802,3 +802,10 @@ address,name,module,confidence,evidence
 0x0044F2C0,th20::Animation::set_flag_4b4_recursively,AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
 0x004494B0,th20::AnimationChildLinks::operator[],AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
 0x0044B9F0,th20::IntrusiveLink<Animation>::begin,AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
+0x0044C6B0,th20::Animation::find_child,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
+0x004371F0,th20::Animation::copy_base,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
+0x00429E50,th20::Animation::clear_field_570,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
+0x00438A50,th20::Animation::set_field_5dc,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
+0x00438A30,th20::Animation::set_field_5e0,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
+0x00429E30,th20::Animation::clear_pending_fields,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
+0x00438B70,th20::AnimationFile::apply_template,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred

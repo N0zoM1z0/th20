@@ -26,3 +26,11 @@ native conditional temporaries clear them earlier. The accepted recursive flag
 operations do not mutate topology during traversal. Do not extend their runtime
 claim to observer-mediated detachment through this particular node begin.
 See [child traversal](ANIMATION_CHILDREN_RECONSTRUCTION.md).
+
+CORE/EXACT-119 copies only trivially-copyable AnimationBase state, retaining the
+nontrivial Animation tail and using actual Timer assignment contracts. Child
+identity lookup passes remaining ordinals by value to descendants; its -2 terminal
+fallback is separate from ordinary matching. Do not replace this with flattened
+nth-descendant counting or globally change uint16 identity storage from one signed
+consumer. Real loading/File retirement/parent binding/VM interpretation remain
+undefined interfaces. See [binding evidence](ANIMATION_BINDING_RECONSTRUCTION.md).

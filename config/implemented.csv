@@ -800,3 +800,10 @@ th20::Animation::clear_flag_4b4_recursively
 th20::Animation::set_flag_4b4_recursively
 th20::AnimationChildLinks::operator[]
 th20::IntrusiveLink<Animation>::begin
+th20::Animation::find_child
+th20::Animation::copy_base
+th20::Animation::clear_field_570
+th20::Animation::set_field_5dc
+th20::Animation::set_field_5e0
+th20::Animation::clear_pending_fields
+th20::AnimationFile::apply_template

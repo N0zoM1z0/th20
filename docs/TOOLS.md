@@ -25,6 +25,7 @@ packages or change the working directory.
 | Attest Ghidra database | `scripts/repo-python scripts/ghidra.py check` | original file bytes, loaded metadata and complete mapped code |
 | Inspect target semantics | `scripts/repo-python scripts/ghidra.py query/decompile` | attested read-only view; provisional meanings |
 | Inspect complete instruction interval | `scripts/repo-python scripts/ghidra.py query OUTPUT disassemble_range COUNT START INCLUSIVE_END` | existing listing, independent of inferred function membership; no database changes |
+| Locate decoded operand scalars | `scripts/repo-python scripts/ghidra.py query OUTPUT operand_scalars LIMIT START INCLUSIVE_END VALUE...` | read-only bounded listing navigation; matches do not establish ownership or absence |
 | Audit whole dispatcher and tables | `scripts/repo-python scripts/audit-dispatcher.py --help` | locked PE, explicit complete interval/tables and Ghidra export; no exact credit |
 | Rank target-wide leads | `scripts/repo-python scripts/ghidra.py architecture` | private metrics, no automatic source/origin promotion |
 | Compile explicit probe | `scripts/compile-probe.sh SOURCE build/OUTPUT.obj FLAGS...` | x86 COFF + freshness receipt |
@@ -44,3 +45,20 @@ checkout without those packages skips these optional tests. reccmp 0.1.6 and
 objdiff 3.8.0 are supporting navigation/diff tools; the canonical exact gate is
 the relocation-aware comparator. `objdiff.json` starts empty until reference
 objects are independently prepared; its build routing is configured.
+
+## Bounded decoded operand navigation
+
+`operand_scalars` searches only existing Ghidra instructions in one mapped memory
+block, with an end-minus-start span at most 0x20000. Values accept decimal,
+0x-prefixed hexadecimal and leading-zero octal integers, then normalize to 32 bits. LIMIT bounds returned matching
+instructions, with explicit truncation and scanned/returned counts. Each result
+reports address, containing function if known, operand index and original scalar
+width. The script checks cancellation and never creates instructions, changes
+function membership or writes target/database bytes. Every invocation uses the
+normal full target/database attestation. CORE119 exercised this operation through
+two fresh attested queries, scanning 10,453 and 23,733 decoded instructions.
+
+Use matches to select full producer/consumer bodies for further review. Immediate
+values and displacements can be numerically equal without sharing a field role;
+listing omissions and indirect access make absence an invalid ownership or padding
+proof. See [Animation binding evidence](ANIMATION_BINDING_RECONSTRUCTION.md).

@@ -110,10 +110,16 @@ struct Animation {
     void release_resources();
     void* allocate_geometry(std::int32_t bytes);
     AnmVariables& variables();
+    Animation* find_child(std::int32_t identifier, std::int32_t ordinal);
     void clear_flag0_recursively();
     void set_flag0_recursively();
     void clear_flag_4b4_recursively();
     void set_flag_4b4_recursively();
+    void copy_base(const Animation* source);
+    void clear_field_570();
+    void clear_pending_fields();
+    void set_field_5dc(std::uint32_t value);
+    void set_field_5e0(std::uint32_t value);
     void reset();
     void set_slowdown(float value);
     void stop();

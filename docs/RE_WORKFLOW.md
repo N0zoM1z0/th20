@@ -64,6 +64,16 @@ automatically. See CORE_ECL_DISPATCH_RECONSTRUCTION.md for both current roots
 and reproducible commands. Keep whole compiler contributions, associated tables
 and all unreferenced failure/exit paths in subsequent comparisons.
 
+## Decoded operand navigation
+
+Use `query OUTPUT operand_scalars LIMIT START INCLUSIVE_END VALUE...` through the
+attested wrapper to locate numeric operands in one bounded existing memory block.
+The query is read-only, reports original scalar widths and explicit truncation,
+and checks cancellation. Numeric matches are navigation leads; inspect the full
+receiver/producer/consumer flow before assigning field ownership or meaning.
+No matching instruction does not establish padding or absence of dynamic access.
+See TOOLS.md and ANIMATION_BINDING_RECONSTRUCTION.md for the verified CORE119 use.
+
 ## Retiring generated artifacts
 
 During longer batches, retire replaced trials periodically once their

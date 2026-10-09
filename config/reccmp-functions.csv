@@ -801,3 +801,10 @@ th20::Animation::clear_flag_4b4_recursively,0x0044F170,function
 th20::Animation::set_flag_4b4_recursively,0x0044F2C0,function
 th20::AnimationChildLinks::operator[],0x004494B0,function
 th20::IntrusiveLink<Animation>::begin,0x0044B9F0,function
+th20::Animation::find_child,0x0044C6B0,function
+th20::Animation::copy_base,0x004371F0,function
+th20::Animation::clear_field_570,0x00429E50,function
+th20::Animation::set_field_5dc,0x00438A50,function
+th20::Animation::set_field_5e0,0x00438A30,function
+th20::Animation::clear_pending_fields,0x00429E30,function
+th20::AnimationFile::apply_template,0x00438B70,function
