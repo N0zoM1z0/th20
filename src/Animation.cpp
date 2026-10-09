@@ -13,7 +13,7 @@ AnimationBase::AnimationBase() noexcept : timer(), field_10(0), field_14(0),
     field_440(0), variables(), vector_484(), color_490(0), color_494(0), flags{},
     field_4b8(0.0f), field_4bc(0.0f) {}
 Animation::Animation() noexcept : base(), handle(), index(0), timer_4c8(), timer_4d8(),
-    field_4e8(0), link_4ec(this), link_500(this), link_514(this), link_528(this),
+    field_4e8(0), link_4ec(this), link_500(this), child_links{{IntrusiveLink<Animation>(this), IntrusiveLink<Animation>(this)}},
     link_53c(this), field_550(0), field_554(0), parent_558(nullptr), parent_55c(nullptr), field_560(0.0f),
     geometry(nullptr), callback(nullptr), geometry_bytes(0), field_570(0), field_574(0), field_578(0),
     field_579(0), matrix_57c(), vector_5bc(), user_data(nullptr), field_5cc(0), vector_5d0(),

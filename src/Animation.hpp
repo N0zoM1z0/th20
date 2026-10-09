@@ -11,6 +11,13 @@
 #include <cstddef>
 #include <cstdint>
 namespace th20 {
+struct Animation;
+// Native indices 0/1 select the sibling node and child sentinel. The separate
+// +53C publication node is independently initialized and appended.
+struct AnimationChildLinks {
+    IntrusiveLink<Animation> nodes[2];
+    IntrusiveLink<Animation>& operator[](std::int32_t index);
+};
 struct AnimationCallback;
 struct SpriteTexturedVertex;
 struct AnimationColorChannels { std::uint8_t blue, green, red, alpha; };
@@ -78,7 +85,9 @@ struct Animation {
     std::uint32_t index;
     Timer timer_4c8, timer_4d8;
     std::uint32_t field_4e8;
-    IntrusiveLink<Animation> link_4ec, link_500, link_514, link_528, link_53c;
+    IntrusiveLink<Animation> link_4ec, link_500;
+    AnimationChildLinks child_links;
+    IntrusiveLink<Animation> link_53c;
     // These two observed words remain semantically unresolved.
     std::uint32_t field_550, field_554;
     Animation* parent_558;
@@ -102,6 +111,9 @@ struct Animation {
     void* allocate_geometry(std::int32_t bytes);
     AnmVariables& variables();
     void clear_flag0_recursively();
+    void set_flag0_recursively();
+    void clear_flag_4b4_recursively();
+    void set_flag_4b4_recursively();
     void reset();
     void set_slowdown(float value);
     void stop();
@@ -147,6 +159,9 @@ static_assert(offsetof(AnimationBase, flags) == 0x498);
 #if defined(_M_IX86)
 static_assert(sizeof(Animation) == 0x5e4);
 static_assert(offsetof(Animation, link_4ec) == 0x4ec);
+static_assert(sizeof(AnimationChildLinks) == 0x28);
+static_assert(offsetof(Animation, child_links) == 0x514);
+static_assert(offsetof(Animation, link_53c) == 0x53c);
 static_assert(offsetof(Animation, matrix_57c) == 0x57c);
 static_assert(sizeof(PooledAnimation) == 0x600);
 static_assert(offsetof(PooledAnimation, active) == 0x5f8);

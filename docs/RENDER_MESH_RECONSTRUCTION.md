@@ -319,3 +319,10 @@ the replay. Four complete reference target associations are now absorbed;
 their free replacement APIs remain diagnostic rather than byte-exact imports.
 Authored totals remain 84 exact functions and 24,209 bytes. Protected retirement
 and the complete public test result are recorded in the current handoff.
+
+CORE/EXACT-118 closes the formerly undefined whole272-byte recursive Animation
+flag clear, together with three related propagation operations and the actual
+child-node/iterator protocol. The dedicated1025-case production fixture executes
+these real bodies; older mesh protocol fixtures retain their explicit dependency
+captures. Original VM/renderer allocation and retirement remain separate.
+See [Animation child traversal](ANIMATION_CHILDREN_RECONSTRUCTION.md).

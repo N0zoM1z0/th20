@@ -82,7 +82,7 @@ int main(int argc, char**) {
     assert(a.base.timer.current == 0 && a.handle.value == 0 && a.index == 0);
     assert(a.geometry == nullptr && a.callback == nullptr && a.geometry_bytes == 0);
     assert(a.parent_558 == nullptr && a.parent_55c == nullptr);
-    for (auto* link : {&a.link_4ec, &a.link_500, &a.link_514, &a.link_528, &a.link_53c}) {
+    for (auto* link : {&a.link_4ec, &a.link_500, &a.child_links[0], &a.child_links[1], &a.link_53c}) {
         assert(link->node == &a && link->next == nullptr && link->previous == nullptr);
         assert(link->owner == nullptr && link->iterator == nullptr);
     }

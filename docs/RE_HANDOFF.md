@@ -1,5 +1,56 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-118 — Whole Animation child propagation
+
+Six complete roots add1351B: four272-byte recursive flag operations at450160,
+44FA70,44F170,44F2C0;20-byte actual indexed node access4494B0;243-byte node
+begin44B9F0. Eleven native consumers establish indices0/1 and separate53C
+publication. Genuine two-node aggregate storage preserves full503-byte Animation
+construction and x86 size5E4. Complete independent EH sections/state maps/FuncInfo
+and twelve shared physical supports strictly replay, without duplicate coverage.
+See [child traversal evidence](ANIMATION_CHILDREN_RECONSTRUCTION.md).
+
+Frozen269-source graph passes787 units/154 fresh objects/149070 disjoint bytes.
+Mappings802/fifteen whole nonexact; authored94/30383B,confirmed98,reference238,
+all6945 terminal reviews and header-only claims remain distinct. No new authored
+origin is inferred. Maintained production O2/ASan/UBSan passes1025 real-owner
+cases across deep/wide/balanced trees, selected subtrees and null node begin.
+Portable copy elision can retain observer hooks differently from native MSVC
+conditional temporaries; mutation during this node-begin traversal remains outside
+accepted runtime equivalence. The four flag traversals do not mutate topology.
+
+Keep build/core118-canonical/154 pairs,core118-final-frozen-source.json,
+exact118-canonical-results.json.gz, complete production EH/support proof,
+1025-case receipt,original154 verified input closures and native caller exports.
+Next: whole241-byte recursive identity search and signed+440 corroboration,
+then original Renderer allocation/publication/binding and full922-byte VM;
+whole Item update/draw and Renderer storage interval remain open. Use repo-python,
+serial nice15,no REA/delegation,protected periodic retirement. Goal active.
+PriorCORE117 matching-head remote CI succeeds at01e71ec,run37994765834.
+
+All74 public tests pass in239.429 seconds; complete gate passes in240.992
+seconds. The first complete run retains one explicit test-linkage failure: the
+existing Animation runner omitted AnimationChildren.cpp after its fixture began
+using the real indexed interface. The focused corrected regression and second
+complete public run pass. No production source, profile or canonical bytes change
+for that correction; no completed production object is rebuilt.
+
+Protected final retirement removes436 files/8815691B:153 previous
+canonical pairs, the migrated child-protocol pair and128 copied private host
+dependency files. Original actual input/receipt/SDK closures are SHA-verified before
+deletion. Combined with mid-batch retirement, 440 files/8924135B retire.
+All787 completed exact results,269 source hashes,308 current canonical hashes
+and9 native evidence hashes remain unchanged. Build9.8MiB/analysis140MiB.
+Forty-five complete typed literal roles reconcile30 label renames; all154 affected
+production objects compile once. Keep cleanup/path-hash plans and original
+compressed input closures. No original target/reference/tools/database or active
+canonical input is retired.
+
+A final bytecode-cache pass retires4 regenerable files/37271B, yielding
+444 files/8961406B (8.55 MiB) for the complete batch.
+Current source,308 canonical hashes and9 native evidence hashes remain unchanged.
+No compiler input is retired and no unchanged-source build is repeated.
+
 ## CORE/EXACT-117 — Whole mesh lifecycle and corrected VM output ABI
 
 Eight whole roots add1608 comparison bytes: RenderMesh ctor878/dtor266+5CC,

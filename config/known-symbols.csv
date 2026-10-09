@@ -796,3 +796,9 @@ address,name,module,confidence,evidence
 0x00450C70,"th20::AnimationFile::spawn(const char*,int,int,Animation**)",MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
 0x004790E0,"th20::AnimationFile::spawn(const char*,int,const Vector3&,float,int,Animation**)",MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
 0x004ABA30,th20::AnimationFile::spawn_flag8,MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x00450160,th20::Animation::clear_flag0_recursively,AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
+0x0044FA70,th20::Animation::set_flag0_recursively,AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
+0x0044F170,th20::Animation::clear_flag_4b4_recursively,AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
+0x0044F2C0,th20::Animation::set_flag_4b4_recursively,AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
+0x004494B0,th20::AnimationChildLinks::operator[],AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred
+0x0044B9F0,th20::IntrusiveLink<Animation>::begin,AnimationChildren,high,CORE/EXACT-118; full actual owner/ABI/body evidence; original spelling inferred

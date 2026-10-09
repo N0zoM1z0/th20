@@ -794,3 +794,9 @@ th20::Animation::variables
 "th20::AnimationFile::spawn(const char*,int,int,Animation**)"
 "th20::AnimationFile::spawn(const char*,int,const Vector3&,float,int,Animation**)"
 th20::AnimationFile::spawn_flag8
+th20::Animation::clear_flag0_recursively
+th20::Animation::set_flag0_recursively
+th20::Animation::clear_flag_4b4_recursively
+th20::Animation::set_flag_4b4_recursively
+th20::AnimationChildLinks::operator[]
+th20::IntrusiveLink<Animation>::begin

@@ -18,3 +18,11 @@ ownership evidence. Byte identity alone does not prove a proposed name/meaning,
 and runtime behavior alone does not prove exactness. Record observed facts,
 compiler observations, independent corroboration, inferences and unknowns
 separately in the knowledge base and handoff.
+
+CORE/EXACT-118 preserves native null-first iterator-return temporaries without
+changing independently established noexcept contracts. Portable return-copy
+elision may retain observer hooks until returned-iterator destruction, whereas
+native conditional temporaries clear them earlier. The accepted recursive flag
+operations do not mutate topology during traversal. Do not extend their runtime
+claim to observer-mediated detachment through this particular node begin.
+See [child traversal](ANIMATION_CHILDREN_RECONSTRUCTION.md).

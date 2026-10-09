@@ -1,5 +1,33 @@
 # Source and build ownership
 
+## CORE/EXACT-118 — Whole Animation child propagation
+
+Six complete roots add1351B: four272-byte recursive flag operations at450160,
+44FA70,44F170,44F2C0;20-byte actual indexed node access4494B0;243-byte node
+begin44B9F0. Eleven native consumers establish indices0/1 and separate53C
+publication. Genuine two-node aggregate storage preserves full503-byte Animation
+construction and x86 size5E4. Complete independent EH sections/state maps/FuncInfo
+and twelve shared physical supports strictly replay, without duplicate coverage.
+See [child traversal evidence](ANIMATION_CHILDREN_RECONSTRUCTION.md).
+
+Frozen269-source graph passes787 units/154 fresh objects/149070 disjoint bytes.
+Mappings802/fifteen whole nonexact; authored94/30383B,confirmed98,reference238,
+all6945 terminal reviews and header-only claims remain distinct. No new authored
+origin is inferred. Maintained production O2/ASan/UBSan passes1025 real-owner
+cases across deep/wide/balanced trees, selected subtrees and null node begin.
+Portable copy elision can retain observer hooks differently from native MSVC
+conditional temporaries; mutation during this node-begin traversal remains outside
+accepted runtime equivalence. The four flag traversals do not mutate topology.
+
+Keep build/core118-canonical/154 pairs,core118-final-frozen-source.json,
+exact118-canonical-results.json.gz, complete production EH/support proof,
+1025-case receipt,original154 verified input closures and native caller exports.
+Next: whole241-byte recursive identity search and signed+440 corroboration,
+then original Renderer allocation/publication/binding and full922-byte VM;
+whole Item update/draw and Renderer storage interval remain open. Use repo-python,
+serial nice15,no REA/delegation,protected periodic retirement. Goal active.
+PriorCORE117 matching-head remote CI succeeds at01e71ec,run37994765834.
+
 ## CORE/EXACT-117 — Whole mesh lifecycle and corrected VM output ABI
 
 Eight whole roots add1608 comparison bytes: RenderMesh ctor878/dtor266+5CC,

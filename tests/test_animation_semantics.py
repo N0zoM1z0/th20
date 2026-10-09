@@ -18,7 +18,7 @@ class AnimationSemanticsTests(unittest.TestCase):
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                 "-fsanitize=undefined", "-pthread", "-Isrc",
-                "tests/animation_semantics.cpp", "src/Animation.cpp",
+                "tests/animation_semantics.cpp", "src/Animation.cpp", "src/AnimationChildren.cpp",
                 "src/AnimationHandle.cpp", "src/AnmVariables.cpp", "src/Matrix4.cpp",
                 "src/Interpolation.cpp", "src/Easing.cpp", "src/Timer.cpp",
                 "src/ClockScalar.cpp", "src/Angle.cpp", "src/ScalarMath.cpp",
