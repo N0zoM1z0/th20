@@ -1,5 +1,57 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-100 — 2026-10-09 — Actual Bomb ownership and dispatch
+
+Seventeen complete actual BombBaseInf/BombInf lifecycle, dispatch, Context
+publication and generic allocation contributions add 1,272 disjoint compared
+bytes and 63 independent relocations. The frozen 243-file graph passes
+706/706 strict units across 137 fresh objects and 135,568 disjoint bytes.
+Source mappings are 720, with fourteen whole nonexact methods. Authored exact
+coverage stays 84 functions/24,209 bytes; confirmed authored functions stay 87;
+reference absorption stays 238 and all 6,945 reviews remain terminal.
+
+Native storage is 0xB8/0x3C with six/three virtual slots. Original integer
+interpolation, enabled scheduler priorities 33/44, event return discard, finish
+result propagation and explicit Context-zero destruction reset replace reference
+assumptions. Actual generic virtual destruction runs outside allocator slot
+one; scheduler teardown uses shared actual owners. Context's 22-byte setter
+aliases an existing physical root without duplicate credit. Full EH, deleting
+destructors, callbacks and typed release/factory helpers replay as support only.
+
+BombController's non-final candidate retains native virtual destroy_at emission;
+original class finalness, template spelling and RTTI identity remain unknown.
+Bomb-specific Context release belongs in BombCreation.cpp, keeping ordinary
+Context callers independent of allocation/locks. Whole global creation is
+113/native 123 bytes and remains nonexact; no inert local reset is added.
+
+Actual O2/ASan/UBSan lifecycle/dispatch checks pass. Startup placement and ANM
+retirement are explicit fixtures; unresolved Bomb::start and Controller::update
+fixture definitions abort if called. Original character gameplay, Player/ANM,
+whole 1,707-byte damage query and game startup/runtime remain open.
+
+All 65 public tests pass in 199.043 seconds, including existing Context callers
+and the new actual Bomb protocol. Target-required tracking, progress and public
+artifact gates pass.
+
+Periodic protected retirement during and after this batch removes 85 products,
+3,809,702 bytes gross. The final cleanup saves 3,221,374 bytes net after its
+lossless historical-ledger archive. All 274 current canonical object/receipt
+hashes remain unchanged; all 706 existing-object results equal the frozen proof.
+No unchanged graph cold build or duplicate large replay report is created.
+Historical private inputs/receipts, native evidence, trial sources and installed
+tools remain. Build occupies about 7.3 MiB; analysis occupies about 93 MiB.
+Cleanup reports are core100-interim-cleanup.json, core100-final-cleanup.json
+and core100-cleanup-total.json; historical snapshots are archived losslessly.
+
+Proofs: core100-production-bindings.json, core100-native-roots-audit.json,
+core100-semantics.json, core100-final-frozen-source.json,
+exact100-canonical-results.json.gz, core100-final-literal-reconciliation.json
+and core100-registered.json. Historical inputs/receipts are losslessly archived
+before retirement; completed writers must never rerun. Continue coherent
+larger owners and the actual whole query; goal remains active. Serial nice15,
+repo-python, attested Ghidra, no REA/delegation and periodic protected retirement
+persist. See [Bomb ownership evidence](BOMB_OWNER_RECONSTRUCTION.md).
+
 ## CORE/EXACT-099 — 2026-10-09 — Whole core iteration and dispatch
 
 Seven complete core functions add 2,769 disjoint compared bytes and 174

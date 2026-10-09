@@ -1,5 +1,25 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-100 — Actual Bomb ownership admission
+
+Actual BombBaseInf/BombInf are separate 0xB8/0x3C polymorphic owners with
+six/three virtual slots, actual integer interpolation and typed Context +0x18
+publication. Complete enabled priority-33/44 registration, virtual lifetime,
+draw/event/finish dispatch and shared allocator/scheduler teardown are
+maintained. Native event return discard and Context-zero destructor reset
+are preserved. Seventeen whole exact roots add 1,272 disjoint bytes and 63
+independent relocations; the existing 22-byte setter alias adds no physical
+credit. Complete EH, deleting and typed factory/release protocols replay as
+support. Actual O2/ASan/UBSan lifecycle/dispatch checks pass with explicit
+startup/ANM/unresolved gameplay fixture boundaries.
+
+The frozen 243-file graph passes 706 strict units across 137 fresh objects and
+135,568 disjoint bytes. Source mappings are 720, fourteen whole nonexact.
+Whole creator113/native123 remains nonexact without an inert failure reset.
+Authored/reference/origin credit remains unchanged; original RTTI/source
+spelling, Player/ANM, whole damage query and game startup/runtime remain open.
+See [Bomb ownership](BOMB_OWNER_RECONSTRUCTION.md).
+
 ## CORE/EXACT-099 — Whole iteration and dispatch admission
 
 Seven complete core functions add 2,769 disjoint compared bytes and 174

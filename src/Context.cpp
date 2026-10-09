@@ -12,4 +12,6 @@ Card* Context::card() { return card_owner; }
 void Context::set_card(Card* value) { card_owner=value; }
 HitCtrlInf* Context::hit_controller() { return hits; }
 void Context::set_hit_controller(HitCtrlInf* value) { hits=value; }
+BombController* Context::bomb_controller() {return object_18;}
+void Context::set_bomb_controller(BombController* value) {object_18=value;}
 }

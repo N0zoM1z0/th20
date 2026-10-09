@@ -1,5 +1,22 @@
 # Damage controller and whole query evidence
 
+## CORE/EXACT-100 dependency update
+
+The actual HitCtrlInf pool/heap lifecycle and complete find/update/destruction
+are maintained and exact after CORE098/099. Actual Bomb Context lookup,
+event dispatch, lifetime and publication now also have complete canonical
+source. These supersede the historical missing-owner statements below. See
+[hit lifecycle](HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md),
+[core dispatch](CORE_ITERATION_EXACT_RECONSTRUCTION.md) and
+[Bomb ownership](BOMB_OWNER_RECONSTRUCTION.md).
+
+The full 1,707-byte query remains unimplemented. Original Player, damage-cap
+producers, item/reward/callback bodies and allocation-dependent region reads
+remain open. Closing actual Bomb dependencies does not establish query
+acceptance or game startup/runtime. Historical private input files and receipts
+have been archived before retiring their obsolete objects; completed trial
+recipes must use their SHA-bound archived inputs rather than current headers.
+
 ## CORE/EXACT-097 scheduler ownership update
 
 The actual 56-byte FunctionChainController and all four registration entries

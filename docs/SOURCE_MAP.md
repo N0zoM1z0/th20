@@ -1,5 +1,23 @@
 # Source and build ownership
 
+## CORE/EXACT-100 — Actual Bomb source and build ownership
+
+| Actual owner/protocol | Maintained source | Acceptance |
+| --- | --- | --- |
+| BombBaseInf/BombInf storage | src/Bomb.hpp | Shared 0xB8/0x3C layouts, six/three virtual slots; original names/types remain separate evidence |
+| Lifetime, registration and dispatch | src/Bomb.cpp | Thirteen whole exact roots; actual enabled33/44 scheduler and virtual destruction/return protocols |
+| Context publication | src/Context.hpp, src/Context.cpp | Typed +0x18 getter exact; 22-byte setter aliases an existing physical unit without duplicate credit |
+| Allocation and Context release | src/BombCreation.cpp, src/DiagnosticObjectFactories.hpp | Three whole exact roots; genuine typed virtual release and shared generic factory; whole113/native123 creator remains nonexact |
+
+Seventeen complete contributions add 1,272 disjoint bytes and 63 independent
+relocations. The frozen 243-file graph passes 706 strict units across 137 fresh
+objects and 135,568 disjoint bytes. Source mappings are 720, with fourteen
+whole nonexact methods. Authored coverage stays 84/24,209 bytes; reference
+absorption stays 238. Actual O2/ASan/UBSan checks preserve explicit startup/ANM
+fixture bindings and abort-only unresolved gameplay test definitions. Original
+gameplay/startup/runtime and whole query remain open. See
+[Bomb ownership](BOMB_OWNER_RECONSTRUCTION.md).
+
 ## CORE/EXACT-099 — Shared core source and build ownership
 
 | Actual owner | Maintained source | Acceptance |

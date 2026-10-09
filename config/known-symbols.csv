@@ -702,3 +702,21 @@ address,name,module,confidence,evidence
 0x004BFE30,th20::DiagnosticAllocator::allocate_object<DamageRegion>,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
 0x00411910,th20::DiagnosticAllocator::allocate_object<FunctionChainNode>,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
 0x0040C080,th20::HitCtrlInf::__autoclassinit2,HitCtrlInf,high,CORE/EXACT-098; complete naturally emitted helper and independent memset/region factory consumers
+0x00478430,th20::Bomb::Bomb,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477A60,th20::Bomb::~Bomb,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477CE0,th20::Bomb::event,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x004779B0,th20::BombController::BombController,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477AE0,th20::BombController::~BombController,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477DC0,th20::BombController::initialize,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477CB0,th20::BombController::draw,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477CF0,th20::BombController::event,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477F00,th20::BombController::finish,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00478290,th20::Bomb::select_context,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x004782D0,th20::BombController::select_context,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00424010,th20::Context::bomb_controller,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00478040,th20::bomb_controller,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x0041F7C0,th20::DiagnosticAllocator::release_object<Bomb>,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x004BD1B0,th20::Context::release_bomb_controller,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477FD0,th20::destroy_bomb_controller,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00477960,th20::DiagnosticAllocator::allocate_object<BombController>,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
+0x00478300,th20::create_bomb_controller,Bomb,high,CORE/EXACT-100; complete native owner/lifetime/dispatch review; source/type spellings inferred
