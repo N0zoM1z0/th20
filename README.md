@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 786 mapped component functions; 772 canonical units across 149 comparison objects; fourteen whole methods remain nonexact |
+| Source | 787 mapped component functions; 773 canonical units across 150 comparison objects; fourteen whole methods remain nonexact |
 | Progress-file parser | Complete parser executes actual checksum/cipher/decoder/allocator and backup merge; checksum80 is exact, parser813/native824 remains nonexact; [evidence](docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Progress-file I/O | 10 whole exact entries; complete serialization and parsing add 2,022 bytes with independent relocation and EH evidence; [file protocol](docs/PROGRESS_FILE_IO_RECONSTRUCTION.md), [exact evidence](docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md) |
 | Archive/resource I/O | 21 whole exact roots; actual File/archive/allocator/cipher/LZSS pipeline; [evidence](docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md) |
@@ -64,8 +64,8 @@ are excluded from Git.
 | Item pool and reward protocol | Complete 1,536-slot owner construction/destruction, 596-byte pool initializer, Context publication, disabled scheduling and bulk-spawn/reward consumers; 16 whole exact roots add 2,195 bytes; original frame callbacks remain open; [evidence](docs/ITEM_OWNER_RECONSTRUCTION.md) |
 | Primary Item spawn | Complete 1,576-byte main function and eight real dependencies add 1,830 disjoint exact bytes; actual pools, bonus/RNG recursion and binding order; original ANM VM and full link/runtime remain open; [evidence](docs/ITEM_MAIN_RECONSTRUCTION.md) |
 | Item activation, effect and retirement | Complete Item lifecycle and actual Effect/Stone interfaces; 11 new physical roots add 1,096 exact bytes; whole update/draw and original resource lifetime remain open; [evidence](docs/ITEM_UPDATE_RECONSTRUCTION.md) |
-| Mesh deformation | 13 whole exact protocol roots; complete enemy consumer remains nonexact; actual geometry/strip checks; [evidence](docs/RENDER_MESH_RECONSTRUCTION.md) |
-| Authored exactness | 90 functions, 28,561 bytes |
+| Mesh deformation | 14 whole exact protocol roots including the local-coordinate surface grid; complete enemy consumer remains nonexact; actual geometry/strip checks; [evidence](docs/RENDER_MESH_RECONSTRUCTION.md) |
+| Authored exactness | 91 functions, 29,041 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Three exact comparisons; enclosing owner and origin review remain open |

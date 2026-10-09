@@ -785,3 +785,4 @@ th20::stone_menu_info,0x0051B960,function
 th20::PlayerRecord::starting_configuration,0x004641D0,function
 th20::Animation::stop,0x0044FD00,function
 th20::Animation::set_position,0x0045DD60,function
+th20::RenderMesh::initialize_surface_grid,0x0049D5B0,function

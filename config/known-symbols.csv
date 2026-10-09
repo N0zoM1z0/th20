@@ -786,3 +786,4 @@ address,name,module,confidence,evidence
 0x004641D0,th20::PlayerRecord::starting_configuration,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
 0x0044FD00,th20::Animation::stop,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
 0x0045DD60,th20::Animation::set_position,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
+0x0049D5B0,th20::RenderMesh::initialize_surface_grid,RenderMeshSurface,high,CORE/EXACT-116; complete native body and two independent custom mesh consumers; original spelling inferred

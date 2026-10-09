@@ -1,5 +1,50 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-116 — 2026-10-10 — Whole surface-grid initialization
+
+Whole480-byte RenderMesh surface initialization at49D5B0 is maintained with10
+independent relocations. Local positions/UV precede fixed Graphics viewport2
+display offsets and actual full Animation strip copies. Existing503-byte Window
+grid variant is unchanged. Two independently attested complete screen consumers
+establish application origin; original names remain inferred. See
+[mesh/viewport evidence](RENDER_MESH_RECONSTRUCTION.md).
+
+Frozen265-source graph passes773 units/150 fresh objects/146111 disjoint bytes.
+Authored91/29041B, confirmed94; mappings787/fourteen whole nonexact, reference238/
+all6945 terminal reviews and header-only claims remain distinct. Maintained-body
+O2/ASan/UBSan passes946 cases with real Graphics/Animation/Session/Worker values,
+explicit empty-resource Graphics retirement and abort-only uncalled Overlay
+virtual fixtures for Context RTTI. Original resources/full link/runtime remain open.
+
+Keep build/core116-canonical/150 pairs, core116-final-frozen-source.json,
+exact116-canonical-results.json.gz,946-case maintained semantic receipt,
+150 original pre-admission receipt closures, original literal identities and
+reference-role reconciliation, origin audit and attested consumer/native exports.
+All149 prior objects compile once; the fresh surface-grid object is reused.
+Earlier sound closures remain historical and need fresh builds for acceptance.
+Prior CORE115 matching-head remote CI succeeded at29dcecd,run37984159078.
+
+Next coherent main batch: actual878-byte RenderMesh construction, Graphics
+handle creation4DE430/4DE360 and Animation callback publication/type/lifetime.
+Whole Item update4820/draw815 and original Renderer four-byte interval remain
+open. Full Renderer ctor/dtor/allocator evidence narrows ownership but does not
+justify guessed padding/alignment; direct text-pattern absence is not a type
+proof. Correct the previous Effect association:49D5B0 is mesh, actual Effect
+update49D4A0 has271B and draw callback49DEA0 forwards478BF0. No caller/constructor
+or Effect exact credit follows. Continue repo-python,serial nice15,no REA/
+delegation,protected periodic retirement and immutable proof writers. Goal active.
+
+All72 public tests pass in292.555 seconds; the full gate passes in294.904
+seconds. Temporary host products and CI bytecode caches retire automatically.
+Protected retirement removes149 replaced canonical pairs and the migrated
+private surface-grid pair:300 files /8,291,307 bytes (7.91 MiB). Original
+source/receipt/SDK closures are verified before deletion. All773 completed
+comparison results,265 source hashes and300 current canonical-file hashes remain
+unchanged after cleanup. Build9.5MiB/analysis131MiB; keep the cleanup receipt
+and pre-deletion path/size/hash plan. Two literal labels are reconciled through
+40 verified reference roles, including duplicate full payloads. No unchanged
+source cold rebuild is used for documentation or retirement.
+
 ## CORE/EXACT-115 — 2026-10-10 — Whole maintained Item lifecycle
 
 Eleven new physical roots1096B/57 relocations are admitted: Item retirement70,

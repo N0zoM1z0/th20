@@ -22,6 +22,7 @@ struct RenderMesh {
     Context* context;
     void select_context(std::int32_t index);
     void initialize(float x,float y,float width,float height);
+    void initialize_surface_grid(float x,float y,float width,float height);
     void update_strips();
 };
 struct EnemyMeshOwner {

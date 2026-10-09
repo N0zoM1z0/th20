@@ -1,5 +1,33 @@
 # Verified facts and open hypotheses
 
+## CORE/EXACT-116 — Whole surface-grid and native renderer lifetime evidence
+
+Whole480-byte surface initialization49D5B0/10 independent relocations is maintained.
+This is a RenderMesh method; the earlier proposed Effect draw association was
+incorrect. Actual Effect update49D4A0 is271B and draw callback49DEA0 calls478BF0.
+Local points/UV precede fixed Graphics viewport2 display offsets. Two full custom
+screen consumers51ED90/52C030 independently establish application origin.
+Frozen265-source replay passes773 units/150 objects/146111B; authored91/29041B,
+confirmed94,mappings787,fourteen whole nonexact,reference238/all6945 reviews.
+Maintained O2/ASan/UBSan passes946 owned cases. Original resource/RTTI/full-link/
+runtime and878-byte mesh construction remain open; see [mesh evidence](RENDER_MESH_RECONSTRUCTION.md).
+
+Complete Renderer destructor independently retires both actual embedded Animations
+and its retained group/pool/Worker storage. Allocation and blanket clearing both
+use0x7D40E94. Full locked-text direct-displacement candidates expose genuine
+texture-factor consumers at+6000E04 but do not identify+6000DFC. Absence of a
+literal displacement does not rule out computed accesses or establish alignment/
+field type. No padding/alignment guess is accepted; whole Item update4820/draw815
+still requires the genuine storage and original source context.
+
+Original149 canonical and one private receipt closures are losslessly verified
+before header migration; each previous object compiles once and the new mesh
+object is reused. Complete literal payloads and actual fresh COFF relocation roles
+preserve independent anchors through changed labels. Keep CORE116 freeze/results/
+semantic/origin/native/retirement evidence and historical sound closures; no fresh
+sound acceptance without new builds. CORE115 matching-head CI success29dcecd/
+37984159078. Continue serial nice15,repo-python,no REA/delegation,protected cleanup.
+
 ## CORE/EXACT-115 — Whole maintained Item lifecycle admission
 
 Eleven physical roots add1096B/57 independently anchored relocations. Whole

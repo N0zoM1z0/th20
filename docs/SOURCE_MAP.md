@@ -1,5 +1,21 @@
 # Source and build ownership
 
+## CORE/EXACT-116 — Surface-grid source ownership
+
+`src/RenderMeshSurface.cpp` owns the complete480-byte local-coordinate grid at
+49D5B0. `RenderMesh.hpp` adds its genuine method declaration; the existing nine-word
+owner is unchanged. Actual Graphics viewport2 supplies signed display offsets;
+local positions/UV and full Animation strip copies use maintained shared bodies.
+The503-byte Window-offset variant remains in RenderMesh.cpp unchanged.
+`tests/render_mesh_surface_semantics.cpp` checks946 cases with actual owner/member
+lifetimes and explicit resource/uncalled RTTI fixtures. See [mesh evidence](RENDER_MESH_RECONSTRUCTION.md).
+
+Frozen265-source graph:773 units/150 fresh objects/146111B. Independent screen
+consumers establish one authored root, yielding91/29041B and94 confirmed origins.
+Mappings787/fourteen whole nonexact/reference238 remain distinct. Original mesh
+construction878, Graphics handle publication, resource loading/retirement,
+Renderer interval, original RTTI/EH/full link/runtime remain open.
+
 ## CORE/EXACT-115 — Coherent Item lifecycle source ownership
 
 | Owner/protocol | Maintained source | Scope |

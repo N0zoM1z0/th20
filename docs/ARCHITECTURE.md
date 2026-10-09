@@ -1,5 +1,19 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-116 — Actual mesh/Graphics coordinate domains
+
+Whole surface-grid initialization480 at49D5B0 joins actual RenderMesh, Graphics,
+ViewportState, WindowState and Animation owners. Local points/UV stay separate
+from displayed vertices shifted by fixed viewport2 signed offsets; complete strip
+publication uses actual geometry. The503-byte Window-offset variant is distinct
+and unchanged. No Renderer storage prefix is needed by this method.
+
+Frozen265-source graph passes773 units/150 objects/146111B; maintained O2/ASan/
+UBSan passes946 cases. Two independent custom screen consumers establish authored
+origin, yielding91/29041B and94 confirmed origins. Original878-byte construction,
+Graphics creation/Animation callback lifetime, Renderer gap and whole Item frame
+methods remain open. See [mesh evidence](RENDER_MESH_RECONSTRUCTION.md).
+
 ## CORE/EXACT-115 — Whole Item lifecycle and genuine resource interfaces
 
 Complete retirement70/effect344/activation400 and eight new supports add1096

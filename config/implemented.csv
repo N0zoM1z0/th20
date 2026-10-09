@@ -784,3 +784,4 @@ th20::stone_menu_info
 th20::PlayerRecord::starting_configuration
 th20::Animation::stop
 th20::Animation::set_position
+th20::RenderMesh::initialize_surface_grid
