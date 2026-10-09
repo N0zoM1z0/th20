@@ -761,3 +761,12 @@ address,name,module,confidence,evidence
 0x00533720,th20::OverlayCounter::add_reward,ItemProtocol,high,CORE/EXACT-104; actual Item owner/lifetime/native protocol; source spelling inferred
 0x004C2180,"std::array<th20::Item,1536>::array",ItemProtocol,high,CORE/EXACT-104; actual Item owner/lifetime/native protocol; source spelling inferred
 0x004C2430,"std::array<th20::Item,1536>::~array",ItemProtocol,high,CORE/EXACT-104; actual Item owner/lifetime/native protocol; source spelling inferred
+0x004C3C90,th20::ItemInf::spawn,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x004C4F50,th20::PlayerRecord::field_a5_value,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x00464400,th20::PlayerRecord::field_2f_value,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x004859D0,th20::WeaponStoneInfo::passive_weapon,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x0044FA10,th20::Animation::set_packed_color,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x0052FAD0,th20::Weapon::Weapon,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x00532950,th20::Weapon::~Weapon,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x004865B0,th20::Weapon::set_passive,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred
+0x00438380,th20::AnimationFile::bind_animation,ItemSpawnProtocol,high,CORE/EXACT-107; complete native protocol/owners; original names and uncalled virtual prototypes inferred

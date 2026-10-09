@@ -5,7 +5,7 @@
 #include "OverlayCounter.hpp"
 namespace th20 {
 struct Context;
-struct Weapon;
+class Weapon;
 struct RenderMesh;
 class WeaponStoneInfo : public TaskInfo {
 public:
@@ -32,6 +32,7 @@ public:
     void enable() override;
     void disable() override;
     bool phase_one();
+    Weapon* passive_weapon();
 };
 WeaponStoneInfo* weapon_stone_info(std::int32_t index);
 #if defined(_M_IX86)

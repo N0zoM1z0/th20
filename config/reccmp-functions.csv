@@ -760,3 +760,12 @@ th20::GameRandom::signed_range,0x004298B0,function
 th20::OverlayCounter::add_reward,0x00533720,function
 "std::array<th20::Item,1536>::array",0x004C2180,function
 "std::array<th20::Item,1536>::~array",0x004C2430,function
+th20::ItemInf::spawn,0x004C3C90,function
+th20::PlayerRecord::field_a5_value,0x004C4F50,function
+th20::PlayerRecord::field_2f_value,0x00464400,function
+th20::WeaponStoneInfo::passive_weapon,0x004859D0,function
+th20::Animation::set_packed_color,0x0044FA10,function
+th20::Weapon::Weapon,0x0052FAD0,function
+th20::Weapon::~Weapon,0x00532950,function
+th20::Weapon::set_passive,0x004865B0,function
+th20::AnimationFile::bind_animation,0x00438380,function

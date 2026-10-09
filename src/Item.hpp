@@ -21,6 +21,7 @@ struct Item {
     Item();
     ~Item();
     void select_context(std::int32_t index);
+    void spawn_effect();
 };
 class ItemInf : public TaskInfo {
 public:
@@ -43,8 +44,8 @@ public:
     void initialize_pool();
     std::int32_t initialize(std::int32_t index);
     void spawn_many(const Vector3* position,std::int32_t count,std::int32_t type);
-    // Genuine original gameplay interfaces; no replacement implementation.
-    Item* spawn(std::int32_t type,const Vector3* position,std::uint32_t color,float angle,float speed,
+    // Primary spawning is maintained; original frame callbacks remain open.
+    Item* spawn(std::int32_t type,const Vector3& position,std::uint32_t color,float angle,float speed,
                 std::int32_t delay,std::uint32_t extra,std::int32_t sound);
     static std::int32_t update_callback(void* owner);
     static std::int32_t draw_callback(void* owner);

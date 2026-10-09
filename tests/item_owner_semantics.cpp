@@ -50,10 +50,10 @@ const Matrix4 identity_matrix=[] {
 std::int32_t ItemInf::update_callback(void*) {std::abort();}
 std::int32_t ItemInf::draw_callback(void*) {std::abort();}
 std::int32_t ItemInf::second_draw_callback(void*) {std::abort();}
-Item* ItemInf::spawn(std::int32_t type,const Vector3* position,std::uint32_t color,
+Item* ItemInf::spawn(std::int32_t type,const Vector3& position,std::uint32_t color,
                     float angle,float speed,std::int32_t delay,std::uint32_t extra,
                     std::int32_t sound) {
-    spawns.push_back({this,position,type,delay,sound,color,extra,angle,speed});
+    spawns.push_back({this,&position,type,delay,sound,color,extra,angle,speed});
     // The caller discards the genuine dependency's return, including null.
     return spawns.size()%2?nullptr:&pool[0];
 }

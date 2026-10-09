@@ -1,5 +1,41 @@
 # Verified facts and open hypotheses
 
+## CORE/EXACT-107 — 2026-10-09 — Maintained complete primary Item spawn
+
+- Actual primary1576B and eight direct/lifetime roots now live in their real
+  owners. The script table128B shares ItemSpawn.cpp; byte getters, packed-color
+  setter, Weapon pointer, real0x38 Weapon/Timers and two-argument ANM wrapper
+  use one shared owner/type graph and primary/caller reference interface.
+- Nine whole roots1830B/48independent relocations; frozen256-file graph passes
+  756 units/145 fresh objects/142383 disjoint bytes. Six protocol-owner objects
+  are reused; each other changed object builds once. Complete original typed
+  literal payloads, terminators and independent data anchors explain label
+  renames; no target relocation field is solved. Full native branch/return
+  and extent audits precede registration.
+- Actual maintained O2/ASan/UBSan checks real pools/observers/counters, point
+  conversion, retained fields/NaN clamp, global Record-zero/Weapon bonus, real
+  Y-before-X RNG, recursive order, binding/effect and separate file rereads.
+  Original ANM/effect/resource lifetime, startup/frame/uncalled virtual gameplay
+  and full link/runtime remain bounded by explicit fixtures and open interfaces.
+- Independent application-origin evidence: seven fresh attested game callers,
+  whole native147B bulk-spawn consumer and target-local pool/item/mode/Record/RNG/
+  ANM policy. Only primary1576 receives new authored classification/credit;
+  eight helpers remain pending. Authored85/25785B, confirmed88, mappings770,
+  fourteen whole nonexact, reference238/all6945 reviews terminal and claims
+  header-only. Byte matching alone did not classify origin.
+- Twelve complete supports replay; whole list prepend66 still differs at five
+  register/operand bytes. Constructor/reset and RTTI/full-link boundaries remain;
+  no extra stores or compiler shaping. Interim retirement removes286 replaced
+  products/7594435B after original148 receipt/input closure verification;
+  all756 current results/protected source/native/active hashes remain unchanged.
+  All69 public tests pass in233.276s. Final lossless private/host retirement
+  brings both cleanup passes to458 products/5933478 net bytes after original
+  source archives, with all756 existing-object results identical; temporary CI
+  caches retire automatically. Build8.2MiB/analysis112MiB; native/active query
+  inputs and installed tools remain protected.
+  Continue whole Item update4757 and renderer-backed draw815. See
+  [Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
 ## CORE-106 — 2026-10-09 — Complete private Item spawn protocol
 
 - Whole primary004C3C90/1576 privately replays under a fresh locked receipt.

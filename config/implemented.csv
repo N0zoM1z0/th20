@@ -759,3 +759,12 @@ th20::GameRandom::signed_range
 th20::OverlayCounter::add_reward
 "std::array<th20::Item,1536>::array"
 "std::array<th20::Item,1536>::~array"
+th20::ItemInf::spawn
+th20::PlayerRecord::field_a5_value
+th20::PlayerRecord::field_2f_value
+th20::WeaponStoneInfo::passive_weapon
+th20::Animation::set_packed_color
+th20::Weapon::Weapon
+th20::Weapon::~Weapon
+th20::Weapon::set_passive
+th20::AnimationFile::bind_animation

@@ -1,5 +1,26 @@
 # Source and build ownership
 
+## CORE/EXACT-107 — Complete primary Item protocol
+
+| Owner | Maintained source | Scope |
+| --- | --- | --- |
+| Primary spawn and immutable script selections | src/ItemSpawn.cpp | Complete1576B root and independently replayed128B table; actual ordinary/special pools, bonus recursion and binding order |
+| Shared caller and gameplay interface | src/Item.hpp, src/Item.cpp | Consistent const Vector3 reference, genuine undefined Item effect and real147B bulk-spawn caller |
+| Native Weapon base | src/Weapon.hpp, src/Weapon.cpp | Actual0x38 storage, real Timers14/24, nonvirtual destruction and byte35 setter; uncalled virtual prototypes inferred and original definitions open |
+| Record, Animation and Overlay access | src/PlayerRecord.*, src/Animation.*, src/WeaponStoneInfo.* | Actual byte getters, packed-color assignment and Weapon pointer34 lookup |
+| ANM binding wrapper | src/AnimationFile.* | Complete32B two-argument wrapper; genuine parent/VM binding remains undefined |
+
+Nine roots add1830B/48relocations. Frozen256-file source graph:756 units/145 fresh
+objects/142383 disjoint bytes; mappings770 and14 whole nonexact. Independent
+native application-origin audit promotes only primary spawning: authored85/25785B,
+confirmed88; eight supporting origins remain pending and reference238 unchanged.
+Twelve full support contributions replay; shared list prepend66 remains nonexact,
+without compiler shaping. Actual maintained primary and bulk-spawn bodies pass
+O2/ASan/UBSan with explicit startup/empty-resource retirement/ANM-effect captures
+and abort-only original frame/uncalled virtual interfaces. Full link/runtime and
+original ANM/effect/resource lifetime remain open. See
+[Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
 ## CORE/EXACT-104 — Actual Item source ownership
 
 | Owner/protocol | Maintained source | Scope |

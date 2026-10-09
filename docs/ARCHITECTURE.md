@@ -1,5 +1,24 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-107 — Complete primary Item spawning
+
+The full 1,576-byte primary spawn and eight direct/lifetime dependencies are
+maintained in actual ItemSpawn, Record, Animation, Overlay, Weapon and
+AnimationFile owners. Nine roots add 1,830 disjoint bytes/48 independent
+relocations. The frozen 256-source-file graph passes 756 strict units in145
+fresh objects over142,383 disjoint bytes. Actual Item pools, observer detachment,
+signed/modulo counters, clamp/NaN, global bonus/RNG recursion, effect/bind ordering
+and independent file rereads pass O2/ASan/UBSan through maintained bodies.
+
+The main root has independent application-origin evidence from native gameplay
+consumers; authored exact85/25,785B, confirmed authored88, mappings770. Eight
+support origins remain pending; fourteen whole nonexact methods/reference238
+stay unchanged. Twelve complete supports replay; list prepend66 remains
+explicitly nonexact alongside earlier constructor/reset boundaries. Original
+effect/ANM VM, resource-owning retirement, uncalled virtual signatures/RTTI,
+full link/startup/runtime remain open. Complete update4757B and draw815B follow.
+See [Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
 ## CORE/EXACT-104 — Actual Item pool and reward protocol
 
 The actual 0xC4C Item owns two real Animation values; the TaskInfo-derived

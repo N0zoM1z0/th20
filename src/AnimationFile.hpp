@@ -23,6 +23,9 @@ struct AnimationFile {
     std::uint32_t field_60, field_64, field_68, field_6c;
     AnimationFile();
     ~AnimationFile();
+    void bind_animation(Animation* animation, std::int32_t script);
+    // Original parent/VM binding remains a genuine undefined interface.
+    void bind_animation(Animation* animation, std::int32_t script, Animation* parent);
     AnimationHandle spawn(const char* expected_stem, std::int32_t script,
                           const Vector3& position, float rotation,
                           std::int32_t layer, std::uint32_t flags);

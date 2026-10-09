@@ -1,5 +1,61 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-107 — 2026-10-09 — Complete primary Item spawn
+
+Whole primary1576 and eight direct/lifetime roots are maintained in genuine
+ItemSpawn, Record, Animation, Overlay, Weapon and AnimationFile owners. The
+128-byte script table shares ItemSpawn.cpp; shared primary/bulk-spawn interfaces
+use const Vector3&. Nine roots add1830B/48 independent relocations. Actual Weapon
+0x38 owns Timers14/24, restores its vptr in nonvirtual destruction and writes
+passive byte35. Original virtual names/prototypes/RTTI remain inferred/open.
+
+Frozen256-file source graph passes756/756 strict units in145 fresh objects over
+142383 disjoint bytes. Six protocol objects are reused; each other changed
+object builds once. Full original typed literal payloads and independent data
+anchors reconcile label renames; no target fields solved. Whole native branches,
+returns/extents and twelve full list/vtable/script supports are audited.
+Prepend66 remains nonexact at five register/operand bytes; earlier list ctor/reset
+boundaries remain. No compiler shaping or supporting/full-link claim.
+
+Maintained whole primary and real bulk spawn pass O2/ASan/UBSan through actual
+pools/lists/observers, wrapping counters/special delays, point/global-mode policy,
+NaN clamp/retained fields, global Record-zero/Weapon bonus, real Y-before-X RNG,
+recursion/effect/bind ordering and independent file rereads. Public primary
+harness uses explicit startup/identity/null-callback release, empty-resource
+controller retirement, captured original effect/three-argument ANM binding and
+abort-only original frame/uncalled virtual interfaces. Original ANM/effect,
+resource-owning retirement/full linkage/gameplay startup/runtime stay open.
+
+Only primary receives independently audited application origin from seven fresh
+attested game callers and the complete147B bulk-spawn consumer. Authored exact
+85/25785B, confirmed88, mappings770/fourteen whole nonexact; eight support origins
+remain pending. Reference238/all6945 terminal reviews/claims header-only stay
+unchanged. Next main root: complete Item update4757B; draw815B still requires
+the genuine renderer owner, not its unresolved raw prefix. See
+[Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
+Original143 canonical and five private closures are retained losslessly in
+core107-pre-admission-inputs.json.gz; original matches additionally live in
+core107-original-matches.json.gz. Interim retirement removes286 replaced pairs/
+7594435B with all756 current results identical and current290 canonical hashes,
+256 source/native/active private hashes protected. All69 public tests pass in
+233.276s. Final cleanup retires the historical105 v4 and106 private/host products
+after original SHA-bound closure verification and lossless archival. Both passes
+remove458 products and save5933478 net bytes after original-source archives;
+all756 current results remain identical. Build is about8.2MiB/analysis112MiB.
+Preserve core107-final-retired-inputs.json.gz together with the pre-admission
+archive for exact original source/receipt and passed host reproduction. The
+old105/106 copied sources/host and six private object pairs are now retired.
+Active CORE103 whole-query source/v5 pair remains protected; its archived
+original closure must be restored before reproduction against later headers.
+Do not rerun completed writers. Preserve
+core107-production-bindings.json, core107-primary-origin.json, core107-semantics.json,
+core107-registered.json, core107-final-frozen-source.json,
+exact107-canonical-results.json.gz, original typed-literal/native/caller exports
+and attestations. Use repo-python, serial nice15 jobs, attested Ghidra and no
+REA/delegation; clean replaced products during and after batches. Goal stays
+active; the whole game is not complete.
+
 ## CORE-106 — 2026-10-09 — Complete private Item primary and protected cleanup
 
 Whole 1,576-byte primary spawn now replays without differences under a fresh

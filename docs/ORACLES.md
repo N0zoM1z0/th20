@@ -1,5 +1,23 @@
 # Independent oracles and acceptance
 
+## CORE/EXACT-107 checkpoint
+
+The complete1576B primary spawn and eight genuine dependencies canonically
+replay1830 disjoint bytes/48 independent relocations. The frozen256-file graph
+passes756 units/145 fresh objects/142383 compared bytes. Whole native branches,
+final returns, full128B script table,120B Weapon table and typed literal payloads
+are independently checked. Twelve full supports replay; whole prepend66 and
+earlier constructor/reset disagreements remain explicit supporting boundaries.
+
+Maintained-body O2/ASan/UBSan exercises real pools, observers, counters, bonus/RNG,
+clamp/NaN and effect/binding/file reread order. Explicit unresolved dependency
+captures do not establish original ANM/effect/resource lifetime or gameplay
+runtime. Seven attested native callers plus the separately reviewed complete147B
+consumer establish application origin independently from exactness; only main
+spawning receives new authored credit. Original syntax, virtual prototypes/RTTI,
+full link/startup/runtime remain separate. See
+[Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
 ## Oracle A: exact target
 
 The user-selected Japanese TH20 v1.00a **Steamless** executable is the sole

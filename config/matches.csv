@@ -83,3 +83,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0053A620,th20::ArchiveOwner::size,48,matching,100.00,archive_owner_size,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
 0x0053A6F0,th20::ArchiveOwner::open,305,matching,100.00,archive_owner_open,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
 0x00410AA0,th20::read_game_resource,583,matching,100.00,game_resource_read,CORE/EXACT-094; independent application diagnostic/header/cipher/process consumers and frozen cold strict replay
+0x004C3C90,th20::ItemInf::spawn,1576,matching,100.00,item_spawn_primary,CORE/EXACT-107; complete cold canonical replay and independent native gameplay-consumer/application-origin audit; docs/ITEM_MAIN_RECONSTRUCTION.md

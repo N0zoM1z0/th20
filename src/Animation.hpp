@@ -107,6 +107,7 @@ struct Animation {
     void set_scale(float x, float y);
     void set_scale_58(float x, float y);
     void interpolate_scale(std::int32_t duration, std::int32_t mode, float x, float y);
+    void set_packed_color(std::uint32_t color);
     void set_color(std::uint8_t red, std::uint8_t green, std::uint8_t blue);
     void interpolate_color(std::int32_t duration, std::int32_t mode, const Color3& color);
     void set_alpha(std::uint8_t alpha);

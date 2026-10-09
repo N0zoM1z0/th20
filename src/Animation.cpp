@@ -84,6 +84,7 @@ float Animation::width() { return base.vector_70.x * inherited_scale_x(); }
 }
 
 namespace th20 {
+void Animation::set_packed_color(std::uint32_t color) {base.color_490=color;}
 void Animation::release_resources() {
     if (geometry) process_allocator->release_bytes(geometry);
     geometry = nullptr;

@@ -1,5 +1,71 @@
 # Item main-function evidence
 
+## CORE/EXACT-107: maintained complete primary spawn
+
+The complete 1,576-byte primary spawn is maintained in `src/ItemSpawn.cpp` with
+its immutable 128-byte script table. Record getters, packed-color assignment,
+Overlay's actual Weapon lookup, Weapon construction/destruction/passive setter
+and the two-argument ANM wrapper live in their genuine owner translation units.
+The primary interface and its real bulk-spawn caller consistently borrow
+`const Vector3&`; original source spelling remains inferred. Weapon's two real
+Timers retain offset names rather than unproven gameplay roles.
+
+Nine complete roots add 1,830 disjoint bytes and 48 independently anchored
+relocations. The frozen 256-file source graph cold replays all 756 canonical
+units in 145 fresh objects, comparing 142,383 disjoint bytes. Every changed
+object builds once; six freshly verified protocol objects are reused during the
+rest of the affected-graph gate. Generated literal-label changes follow complete
+original typed payloads and independent PE data anchors, including terminators.
+COFF zero alignment is separate; no relocation destination is solved from the
+field being compared. All complete native branches and final returns are audited.
+
+Twelve complete support contributions replay, including the actual 19-byte
+list-front wrapper, the 120-byte base Weapon table and the full script table.
+The preceding Weapon RTTI locator is separate. Uncalled virtual names/prototypes,
+original source spelling and full linkage remain open. Shared list prepend
+retains its entire 66-byte boundary and five register/operand differences;
+existing shared constructor/reset disagreements are unchanged. No inert local,
+extra store, padding or shortened comparison manufactures supporting exactness.
+
+Maintained production bodies pass O2/ASan/UBSan through the whole primary protocol
+covered below, using the public `item_spawn_semantics.cpp` harness. The actual
+bulk-spawn body also reaches the real primary implementation. The older owner
+test separately captures primary calls to test caller arguments; its fixture
+uses the same shared reference declaration. Explicit unresolved effect/parent
+ANM binding, startup, empty-resource controller retirement and abort-only original
+frame/uncalled virtual interfaces remain test boundaries. Original ANM/effect,
+resource-owning retirement, gameplay startup/runtime and full linkage are not
+established by this bounded scope.
+
+Application origin is audited separately from matching: fresh attested Ghidra
+evidence records seven incoming game consumers, and the independently reviewed
+complete 147-byte bulk-spawn caller forwards the original request. The primary's
+sixteen game item kinds, actual 512/1024 pool policy, global mode/Record/Weapon
+bonus rules, process RNG and per-game ANM scripts establish custom game control
+flow. Only this main root receives new authored credit. Eight helper/lifetime
+origins remain pending. Authored exact coverage is now 85 functions/25,785 bytes;
+confirmed authored 88, mappings 770, fourteen whole nonexact methods, reference
+absorption 238 and all 6,945 terminal reviews remain separate facts.
+
+Before shared-source migration, original 143 canonical and five private receipt
+closures were verified and losslessly archived in core107-pre-admission-inputs.json.gz.
+Installed SDK headers remain protected in original bytes. Interim retirement
+removes 286 replaced object/receipt products totaling 7,594,435 bytes; all 756
+current existing-object replay results and all protected source/native/active
+input hashes remain unchanged. No unchanged-source cold rebuild runs for cleanup.
+All69 public tests pass in233.276 seconds. Final retirement preserves historical
+CORE105 v4 and CORE106 source/receipt/host closures in
+core107-final-retired-inputs.json.gz and the original pre-admission archive,
+then removes their superseded copied sources and six private object pairs.
+Both cleanup passes remove458 products and save5,933,478 net bytes after the
+original-source archives. All756 replay results and current290 canonical hashes,
+256 source and retained native/proof/active query hashes remain unchanged.
+Build is about8.2MiB; analysis112MiB. Public CI's temporary Python/compiler caches
+are automatically retired. Detailed records stay private.
+Next main work is complete Item update (4,757 bytes), followed by draw (815 bytes)
+with the genuine renderer storage/ownership boundary below. Original frame
+callbacks, creator/factory, RTTI/full linkage and game runtime remain open.
+
 ## CORE-106: complete private spawn and actual protocol checks
 
 The complete primary spawn at 004C3C90 now replays all 1,576 bytes without

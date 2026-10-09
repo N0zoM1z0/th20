@@ -57,7 +57,7 @@ ItemInf* item_controller(std::int32_t index) {return session.context(index).item
 float GameRandom::signed_range(float limit) {return signed_unit()*limit;}
 void ItemInf::spawn_many(const Vector3* position,std::int32_t count,std::int32_t type) {
     while(count>0) {
-        spawn(type,position,0xffffffffu,script_random.signed_range(3.1415927410125732f/180.0f*10.0f)-3.1415927410125732f/2.0f,2.0f,0,0,-1);
+        spawn(type,*position,0xffffffffu,script_random.signed_range(3.1415927410125732f/180.0f*10.0f)-3.1415927410125732f/2.0f,2.0f,0,0,-1);
         --count;
     }
 }
