@@ -1,7 +1,116 @@
 # SoundInf owner and whole command dispatcher
 
-CORE-109 investigates the actual sound owner used directly by Item update.
-Production remains CORE107: 756 canonical units, 145 objects and 142,383
+## CORE/EXACT-111 — Complete preload and loading protocol
+
+The complete 1,146-byte preload and 835-byte loading functions are maintained
+in `src/SoundLoading.cpp`, together with their actual 119-byte buffer release,
+26-byte default destructor and 26-byte Graphics option getter. Five complete
+roots add 2,152 disjoint canonical bytes and 77 independently reviewed
+relocations. The frozen 261-source-file graph passes all 761 strict units in
+147 fresh objects over 144,535 disjoint bytes. The two main functions have
+independent application-origin evidence from the original whole command
+dispatcher and TH20 core/sound.cpp diagnostic provenance; authored exactness
+is 87 functions / 27,766 bytes, confirmed authored 90. Three support origins
+remain pending. No constructor, poll or stream implementation is admitted here.
+
+| Complete contribution | Native address | Bytes |
+| --- | --- | --- |
+| SoundInf::preload | 00427360 | 1146 |
+| SoundInf::load_track | 00426890 | 835 |
+| SoundInf::free_preload | 00428EE0 | 119 |
+| SoundInf::~SoundInf | 00426030 | 26 |
+| Graphics::uses_preloaded_music | 00428FA0 | 26 |
+
+The actual SoundInf storage uses SDK pointers/handles, real fixed record arrays
+and the native PMR vector. TrackFormat is 52 bytes with an actual 18-byte
+WAVEFORMATEX and implicit tail alignment. PreloadedTrack has four observed
+fields, totaling sixteen bytes on x86. SoundDeviceOwner contains the actual
+DirectSound pointer at offset zero; its constructor, destructor and factory
+body remain genuine undefined interfaces. StreamingSound stays forward-declared;
+the unproven private CSound/StreamingSound/WaveReader prefixes are not imported.
+Original SoundInf construction, lookup, reopening and notification callback
+also remain undefined production interfaces.
+
+Preload holds the real recursive lock at slot 2, grows/value-initializes its
+PMR vector, then checks the receiver's cached allocation/name. A cache hit
+returns before publication. Otherwise it writes the process-global track name,
+which is distinct from the receiver's name array, before option/device gating.
+Replacement frees only allocation; format/current/size remain retained even
+if the new file or allocation fails. Successful reading publishes the original
+format pointer, allocation/current pointer and requested preload size. It does
+not use the number of bytes actually read to shorten the record or initialize
+unfilled malloc storage.
+
+The path is a real 261-element WCHAR array, cleared by its actual size; the
+conversion call requests MAX_PATH=260 using CP932. Conversion, file seek,
+ReadFile BOOL/count and secure-CRT statuses are ignored exactly as observed.
+File open failure returns -1; allocation failure closes the opened file and
+returns -1. Preserve the original diagnostic path and misspelled `Streming`
+messages. The Japanese factory-error payload remains original CP932 data,
+represented as string escapes, not machine-code bytes.
+
+Loading checks the actual device owner, configuration byte and DirectSound
+pointer before any OS creation. With preload disabled it delegates to genuine
+reopening using the receiver's name. With preload enabled it requires an
+allocation, publishes current_track and calculates notification size with
+uint32 multiplication/wrap, a right shift by four and block-alignment rounding.
+Nonzero nBlockAlign is an original precondition; no new division guard is added.
+The event precedes the thread, which precedes the memory-stream factory. The
+callback parameter is the process Graphics window. Event/thread failure does
+not prevent the factory call; negative HRESULT returns -1 without invented
+handle rollback and without updating the selected preload index.
+
+The factory's actual x86 interface passes GUID by value, with 48 explicit stack
+bytes, rather than a reference. Ordinary SDK GUID_NULL naturally emits the
+native copies and stack alignment. Flags are CTRLPOSITIONNOTIFY |
+GETCURRENTPOSITION2 (0x10100), notification count 16. The volume flag is not added
+at this caller. Positive HRESULT, including S_FALSE, follows the success path.
+
+Complete preload EH handler42, FuncInfo36, one-state unwind map8 and guard
+cleanup16 replay privately without differences. Native handler/ABI metadata
+independently identify cleanup destinations; no compared relocation field is
+solved. The cleanup compares all five emitted native CC alignment bytes, whose
+original COFF ownership is separate. Three whole vector wrappers replay103B;
+deeper resize/allocation/EH/library closure remains unaccepted support.
+
+The maintained body executes under O2/ASan/UBSan with actual SoundInf/Graphics
+owned storage, member constructors, PMR containers, locks and malloc/free
+allocator. The independent arithmetic model uses wide multiplication plus
+explicit uint32 truncation across 140 rate/alignment/factory/event/thread cases.
+Additional checks cover global-versus-receiver names, value initialization,
+short/error reads, ignored conversion/seek failure, cached no-op, replacement
+failure, retained fields and a real PMR bad_alloc with cross-thread lock release.
+Public O2/UBSan uses the same production body. Fixtures supply only unresolved
+startup and API/factory/lookup/reopen observations; they never execute the
+notification thread or dereference an invented stream/COM object. A malloc
+sentinel observes untouched read tails and is explicitly fixture instrumentation.
+
+The supported caller domain is indices 0..15, terminated valid names fitting
+their 256-byte arrays, valid track-format/storage records, representable
+allocation sizes and nonzero block alignment. Original Unicode/CRT constraint
+handling, resource-owning retirement, SDK/COM factory behavior, stream/WaveReader
+ownership, thread races, full link and game runtime remain separate requirements.
+The earlier complete private poll remains2920/native2948 with1222 differences;
+the private129-byte reopen match still depends on unaccepted base ownership.
+Continue coherent factory/stream and whole dispatcher work, recording unresolved
+source-context differences without inert stores or padding.
+
+Preserve core111 production/root/EH/semantic/origin reports, the frozen source
+map, exact111 canonical results, bounded native exports and attestation logs.
+The pre-admission archive preserves original 756-unit/145-object and five active
+probe input/receipt closures. Retired products remain reproducible from these
+SHA-bound inputs; their historical receipts are not relabeled fresh after
+source-graph changes. Current 147 canonical pairs remain protected.
+
+All70 public tests pass in273.260s, including the new whole loading resource
+protocol. Temporary semantic executables and CI bytecode caches retire
+automatically. Current261 source/294 canonical-file hashes remain unchanged
+after CI. Build8.8MiB/analysis119MiB; current canonical evidence stays protected.
+
+## CORE-109: historical private owner investigation
+
+CORE-109 investigated the actual sound owner used directly by Item update.
+Production at that checkpoint remained CORE107: 756 canonical units, 145 objects and 142,383
 disjoint compared bytes. Private compiler results do not add source, reference,
 origin or canonical credit.
 

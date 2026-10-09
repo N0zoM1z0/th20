@@ -1,5 +1,24 @@
 # Source and build ownership
 
+## CORE/EXACT-111 — Coherent sound loading source ownership
+
+| Owner/protocol | Maintained source | Scope |
+| --- | --- | --- |
+| Actual SoundInf and track records | src/SoundInf.hpp | Complete storage; real arrays/PMR vector/SDK pointers; original startup remains undefined |
+| Whole preload/load/allocation release/destructor | src/SoundLoading.cpp | Four full roots2126B; original global publication, failures, locks and allocator |
+| Actual Graphics preload option | src/GraphicsSound.cpp, src/Graphics.hpp | One whole26B getter through the existing complete owner |
+| DirectSound device factory interface | src/SoundDeviceOwner.hpp | Observed pointer at offset zero and GUID by-value ABI; original ctor/dtor/factory bodies undefined |
+| SDK and portable API bindings | src/Win32SoundApi.hpp | Actual Windows SDK; portable logical records/API observations, no profile-selected behavior |
+
+Five complete roots add2152B/77 independent relocations. Frozen261-source graph
+passes761 units/147 objects/144535 disjoint bytes. Two main application origins
+are independently audited; authored87/27766B, confirmed90. Maintained-body
+O2/ASan/UBSan and public O2/UBSan exercise actual owned containers/locks/allocator
+and140 arithmetic/failure combinations. No original startup, stream/COM/factory/
+thread execution, invalid CRT/CP932 domain or whole-game runtime is accepted.
+Whole private poll/reopen remain separate unaccepted source-context/owner work.
+See [sound protocol evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
 ## CORE/EXACT-107 — Complete primary Item protocol
 
 | Owner | Maintained source | Scope |

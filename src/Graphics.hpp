@@ -60,6 +60,7 @@ struct Graphics {
     std::uint32_t clear_color;
     Graphics() noexcept;
     ~Graphics();
+    std::int32_t uses_preloaded_music() const;
 };
 // Production global definition/startup and destruction remain open.
 extern Graphics process_graphics;

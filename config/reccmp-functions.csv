@@ -769,3 +769,8 @@ th20::Weapon::Weapon,0x0052FAD0,function
 th20::Weapon::~Weapon,0x00532950,function
 th20::Weapon::set_passive,0x004865B0,function
 th20::AnimationFile::bind_animation,0x00438380,function
+th20::SoundInf::preload,0x00427360,function
+th20::SoundInf::load_track,0x00426890,function
+th20::SoundInf::free_preload,0x00428EE0,function
+th20::SoundInf::~SoundInf,0x00426030,function
+th20::Graphics::uses_preloaded_music,0x00428FA0,function

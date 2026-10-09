@@ -1,5 +1,25 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-111 — Complete sound preload and loading
+
+The actual SoundInf storage now supports full1146-byte preload/835-byte load,
+119-byte allocation release and26-byte default destructor in SoundLoading.cpp.
+GraphicsSound.cpp adds the genuine26-byte configuration getter. Five roots add
+2152 disjoint bytes/77 independent relocations; frozen261-source graph passes
+761 units/147 fresh objects/144535 bytes. Two main origins independently add
+1981 authored bytes, yielding87/27766B and90 confirmed authored. Three supporting
+origins remain pending. No original startup or stream implementation is added.
+
+SDK WAVEFORMATEX18 yields TrackFormat52; actual x86 PreloadedTrack16 has four
+observed fields. SoundDeviceOwner has its actual DirectSound pointer and genuine
+GUID-by-value factory interface. The original ctor/dtor/factory and SoundInf
+startup/find/reopen/thread remain undefined. StreamingSound is forward-declared;
+private inferred CSound/StreamingSound/WaveReader layouts are not imported.
+Actual guard/vector/allocator/global publication, unchecked statuses, uint32
+notification arithmetic and OS creation order pass maintained-body O2/ASan/UBSan.
+Original full resource/thread/COM/link/runtime and deeper library EH remain open.
+See [sound loading evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
 ## CORE/EXACT-107 — Complete primary Item spawning
 
 The full 1,576-byte primary spawn and eight direct/lifetime dependencies are

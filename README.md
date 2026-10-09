@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 770 mapped component functions; 756 canonical units across 145 comparison objects; fourteen whole methods remain nonexact |
+| Source | 775 mapped component functions; 761 canonical units across 147 comparison objects; fourteen whole methods remain nonexact |
 | Progress-file parser | Complete parser executes actual checksum/cipher/decoder/allocator and backup merge; checksum80 is exact, parser813/native824 remains nonexact; [evidence](docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Progress-file I/O | 10 whole exact entries; complete serialization and parsing add 2,022 bytes with independent relocation and EH evidence; [file protocol](docs/PROGRESS_FILE_IO_RECONSTRUCTION.md), [exact evidence](docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md) |
 | Archive/resource I/O | 21 whole exact roots; actual File/archive/allocator/cipher/LZSS pipeline; [evidence](docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md) |
@@ -64,13 +64,14 @@ are excluded from Git.
 | Item pool and reward protocol | Complete 1,536-slot owner construction/destruction, 596-byte pool initializer, Context publication, disabled scheduling and bulk-spawn/reward consumers; 16 whole exact roots add 2,195 bytes; original frame callbacks remain open; [evidence](docs/ITEM_OWNER_RECONSTRUCTION.md) |
 | Primary Item spawn | Complete 1,576-byte main function and eight real dependencies add 1,830 disjoint exact bytes; actual pools, bonus/RNG recursion and binding order; original effect/ANM VM and full link/runtime remain open; [evidence](docs/ITEM_MAIN_RECONSTRUCTION.md) |
 | Mesh deformation | 13 whole exact protocol roots; complete enemy consumer remains nonexact; actual geometry/strip checks; [evidence](docs/RENDER_MESH_RECONSTRUCTION.md) |
-| Authored exactness | 85 functions, 25,785 bytes |
+| Authored exactness | 87 functions, 27,766 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |
 | Library comparisons | Four MSVC minstd_rand component equivalents pass exact replay; excluded from authored totals |
 | Shared float view | Three exact comparisons; enclosing owner and origin review remain open |
 | Empty/defaulted lifetime contributions | Three exact comparisons; authored versus compiler-synthesized origin remains open |
 | Configuration initializers | Two exact comparisons; authored versus compiler-synthesized origin remains open |
 | Window contributions | Flags initialization and foreground wrapper pass exact replay; origin remains open |
+| Sound preload and loading | Complete 1,146-byte preload and 835-byte load plus three real supports add 2,152 exact bytes; actual resource/failure protocol; stream/factory/thread runtime remains open; [evidence](docs/SOUND_PROTOCOL_RECONSTRUCTION.md) |
 | Audio state construction | Three complete exact record constructors; authored versus compiler origin remains open |
 | Animation handle construction | Complete 23-byte exact value constructor; authored versus compiler origin remains open |
 | ANM lifetime and reset | Actual Base/Animation construction, nontrivial destruction, partial reset and inherited extents: 10 whole units / 2,870 comparison bytes; [evidence](docs/EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md) |

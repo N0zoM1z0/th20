@@ -1,5 +1,45 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-111 — 2026-10-10 — Whole sound preload and loading admission
+
+Complete preload1146/load835 and real free119/destructor26/Graphics getter26
+are maintained and canonically admitted: five roots2152B/77 relocations.
+Frozen261-file graph passes761 units/147 fresh objects/144535 disjoint bytes;
+two main origins independently audited, authored87/27766B, confirmed90.
+Mappings775/fourteen whole nonexact; reference238/all6945 reviews terminal;
+claims header-only. Source declarations retain original startup/find/reopen/
+factory/thread interfaces undefined; no private stream/WaveReader prefix is
+admitted. See [sound loading evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
+Same-body O2/ASan/UBSan checks140 independent arithmetic/factory/event/thread
+failure cases, actual PMR throw/unwind, receiver/global names, short/error read,
+replacement retention and real allocator family. Whole preload EH42/36/8/16
+and three vector wrappers103 privately replay. Deeper resize/EH, original CRT/
+CP932 invalid domains, COM/stream/WaveReader/thread resources/full link/runtime
+remain open. Private poll2920/native2948 still has1222 full differences; private
+reopen129 still depends on unaccepted base ownership. Next work is coherent
+factory/stream/loading dependencies and whole dispatcher, then Item update;
+do not manufacture the redundant stores/unused locals to force poll matching.
+
+Original756-unit/145-object and five active probe closures were verified and
+archived before source migration. All current source/native/active evidence and
+147 canonical object/receipt pairs are protected. Interim retirement removes
+six replaced trial files/321491B; final retirement removes
+294 replaced canonical/migrated-trial files/7943829B. All761
+existing-object replay results are unchanged after cleanup. Keep native files,
+core111-pre-admission-inputs.json.gz, original trial archives and both cleanup
+receipts; do not rerun completed proof writers. No unchanged-source cold builds
+are used for cleanup. Continue serial nice15 jobs, repo-python and no delegation
+or REA. Goal remains active; game reconstruction is incomplete.
+
+All70 public tests pass in273.260s, including the new whole loading test.
+Temporary CI bytecode caches and semantic executables retire automatically.
+Build remains8.8MiB/analysis119MiB. Preserve core111-public-ci.log and its
+completion receipt; current261 source and294 canonical-file hashes remain
+unchanged after CI.
+
+Prior CORE110 matching-head remote CI succeeded at9274513, run37928363998.
+
 ## CORE-110 — 2026-10-09 — Whole private sound dispatcher
 
 The complete private poll now includes all nine commands, both playback paths,

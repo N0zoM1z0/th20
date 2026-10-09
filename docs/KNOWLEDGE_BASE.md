@@ -1,5 +1,41 @@
 # Verified facts and open hypotheses
 
+## CORE/EXACT-111 — Complete sound loading and resource protocol
+
+- Five complete roots2152B/77 relocations are admitted: preload1146, load835,
+  release119, default destructor26 and Graphics getter26. Frozen261-source graph
+  passes761 units/147 fresh objects/144535 disjoint bytes. Two main application
+  origins are independently audited; authored87/27766B, confirmed90. Three
+  support origins remain pending. Mappings775/fourteen whole nonexact, reference
+  review totals and header-only claims remain separate.
+- Actual SDK GUID by-value/48-stack-byte factory ABI naturally emits the native
+  copies. Original flags10100/count16, Graphics window callback parameter,
+  uint32 notification wrap and event-before-thread-before-factory order remain.
+  Event/thread failure still reaches the factory; factory failure retains
+  handles/index and current-name publication without invented rollback.
+- Preload uses actual lock2 and PMR resize, receiver cache comparison but global
+  name publication. Actual malloc/free release clears allocation only. Short/
+  error reads retain requested size and untouched tails; conversion/seek/CRT
+  status behavior and original261-WCHAR storage are preserved. Complete native
+  EH42/36/8/16 privately replays, including cleanup alignment ownership caveat.
+- Maintained-body O2/ASan/UBSan covers140 independent arithmetic/failure cases,
+  real owned members/containers/locks/allocator, actual PMR throw/unwind and
+  replacement/file/read failure. Startup/API/factory/find/reopen captures do not
+  establish original SDK/COM/stream/WaveReader/thread/CP932/CRT/full-game runtime.
+  Source keeps these real interfaces undefined and the stream forward-declared.
+- Whole private poll remains2920/native2948 with1222 differences; private reopen
+  129 is not admitted through an unproven base prefix. Coherent factory/stream
+  and dispatcher work continues. See [sound evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+- Protected periodic retirement removes six replaced trial files
+  /321491B, then294 replaced canonical/trial files
+  /7943829B. Original SHA-bound closures remain lossless;
+  all761 current replay results/261-source/294-canonical-file hashes remain
+  unchanged after cleanup. No unchanged-source cold rebuild is repeated.
+
+All70 public tests pass in273.260s; automatic temporary-cache/binary retirement
+keeps build8.8MiB/analysis119MiB. Current261 source/294 canonical-file hashes are
+unchanged after CI. Preserve core111-public-ci.log and completion receipt.
+
 ## CORE-110 — Complete private sound dispatcher comparison
 
 - All nine command cases, both playback paths, lock scopes, stage/error waits,
