@@ -1,5 +1,10 @@
 # Complete function-chain controller protocol
 
+CORE/EXACT-099 now closes both full insertion methods and update/draw,
+including original tables and alignment. Shared iterator initialization and
+actual scopes explain the prior differences. Unlocked removal and node factory
+remain nonexact. See [current core evidence](CORE_ITERATION_EXACT_RECONSTRUCTION.md).
+
 CORE/EXACT-097 reconstructs the actual 56-byte controller and complete update,
 draw, insertion, registration and removal methods. This closes the scheduler
 ownership dependency required by HitCtrlInf initialization and destruction.

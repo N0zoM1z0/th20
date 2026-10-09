@@ -66,6 +66,12 @@ and all unreferenced failure/exit paths in subsequent comparisons.
 
 ## Retiring generated artifacts
 
+During longer batches, retire replaced trials periodically once their
+replacement evidence is verified. Preserve active inputs and native evidence;
+archive original SHA-bound inputs and receipts before removing copied headers
+or old snapshots. Keep heavy verification/build jobs serial at reduced priority.
+Do not wait until the end of a long batch to address accumulating temporary data.
+
 Retire superseded build artifacts after every stable reconstruction batch, as
 explicitly requested by the user. Protect every current
 `config/match-units.toml` object and its sibling

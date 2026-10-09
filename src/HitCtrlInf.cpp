@@ -9,11 +9,13 @@ HitCtrlInf::HitCtrlInf() noexcept : next_handle(0),visited(0),view_index(0),cont
 HitCtrlInf::~HitCtrlInf() {
     ecl_diagnostic_hint("shutdown HitCtrlInf\n");
     process_chain->remove(update_node);
+    {
     auto& list=active;
     auto iterator=list.begin();
     auto* finish=list.end();
     for (;iterator.differs(finish);iterator.advance()) {
         auto* link=iterator.get();link->node_access()->retire();
+    }
     }
 }
 std::int32_t HitCtrlInf::initialize(std::int32_t index) {

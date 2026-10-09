@@ -1,5 +1,56 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-099 — 2026-10-09 — Whole core iteration and dispatch
+
+Seven complete core functions add 2,769 disjoint compared bytes and 174
+independent relocations: actual HitCtrlInf destruction, find and update,
+FunctionChainController update/draw insertion and both full dispatchers.
+The frozen 240-file graph passes 689/689 strict units across 135 fresh objects
+and 134,296 disjoint bytes. Source mappings remain 702, with thirteen whole
+nonexact methods. Authored exact coverage stays 84 functions/24,209 bytes;
+reference absorption stays 238 and all 6,945 reviews remain terminal.
+
+One public class declaration for IntrusiveIterator naturally restores the
+native /sdl initialization before hidden-return construction. The existing
+required-start constructor, two-pointer 8-byte layout, observer protocol and
+shared bodies stay intact. Native source spelling remains inferred. Complete
+typed producers/consumers and all seven EH protocols replay as support only;
+the shared 31-byte initializer adds no duplicate physical credit.
+
+Actual action scopes preserve shutdown bypass, callback lock release/reacquire,
+retry/restart, disabled/null counts, observer cleanup and all exits. Both
+original jump tables and NOP alignment are included. Ordinary HitCtrlInf
+destruction compares 230 body bytes and five compiler alignment bytes; the
+remaining five linker alignment bytes are outside its COFF contribution.
+
+All 64 public tests pass in 205.315 seconds. Actual scheduler and
+pool/heap lifecycle fixtures also pass O2/ASan/UBSan, with temporary binaries
+removed automatically. Native startup/resource placement remains a fixture.
+The whole 1,707-byte damage query, original Bomb/Player/item/reward/callback
+protocol and playable whole-game startup/runtime remain open. Region/node
+factories, global hit-owner creation and unlocked scheduler removal retain
+their complete nonexact bodies; no inert clears or fabricated constructors.
+
+Periodic protected cleanup ran both during and after this batch: 198
+superseded products/10,806,857 bytes gross, 8,371,341 net after lossless archives.
+The interim 682-unit and final 689-unit strict results are identical to their
+respective frozen proofs without redundant builds. All 270 current canonical
+object/receipt hashes remain protected. Historical SHA-bound inputs, original
+receipts and copied headers are archived; native evidence and trial sources
+remain. No obsolete private object or inactive node-factory object remains.
+Cumulative retirement: 3,100 products/1,032,958,075 bytes gross.
+
+Proofs: core099-production-bindings.json, core099-native-roots-audit.json,
+core099-template-support.json, core099-production-eh-support.json,
+core099-semantics.json, core099-final-frozen-source.json,
+exact099-canonical-results.json.gz, core099-registered.json,
+core099-interim-cleanup.json and core099-final-cleanup.json. Historical input
+archives are core099-interim-retired-inputs.json.gz and
+core099-final-retired-inputs.json.gz. Completed writers must never rerun.
+Continue coherent larger owners and the actual whole query; the goal remains
+active. Serial nice15, repo-python, attested Ghidra, no REA/delegation and
+periodic protected retirement persist. See [core iteration evidence](CORE_ITERATION_EXACT_RECONSTRUCTION.md).
+
 ## CORE/EXACT-098 — 2026-10-09 — Actual hit-controller pool and heap lifecycle
 
 The real 0xC460 HitCtrlInf owner now has complete maintained initialization,

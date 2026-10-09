@@ -53,10 +53,11 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 668 mapped component functions; 659 canonical units across 131 comparison objects; nine whole methods remain nonexact |
+| Source | 702 mapped component functions; 689 canonical units across 135 comparison objects; thirteen whole methods remain nonexact |
 | Progress-file parser | Complete parser executes actual checksum/cipher/decoder/allocator and backup merge; checksum80 is exact, parser813/native824 remains nonexact; [evidence](docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Progress-file I/O | 10 whole exact entries; complete serialization and parsing add 2,022 bytes with independent relocation and EH evidence; [file protocol](docs/PROGRESS_FILE_IO_RECONSTRUCTION.md), [exact evidence](docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md) |
 | Archive/resource I/O | 21 whole exact roots; actual File/archive/allocator/cipher/LZSS pipeline; [evidence](docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md) |
+| Scheduler and hit-owner cores | Actual shared ownership, pool/heap lifecycle and complete update/draw dispatch; seven more whole exact roots add 2,769 bytes; [core evidence](docs/CORE_ITERATION_EXACT_RECONSTRUCTION.md), [hit lifecycle](docs/HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md) |
 | Mesh deformation | 13 whole exact protocol roots; complete enemy consumer remains nonexact; actual geometry/strip checks; [evidence](docs/RENDER_MESH_RECONSTRUCTION.md) |
 | Authored exactness | 84 functions, 24,209 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |

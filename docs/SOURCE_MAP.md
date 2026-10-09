@@ -1,5 +1,24 @@
 # Source and build ownership
 
+## CORE/EXACT-099 — Shared core source and build ownership
+
+| Actual owner | Maintained source | Acceptance |
+| --- | --- | --- |
+| HitCtrlInf lifecycle | src/HitCtrlInf.cpp | Whole destructor 230+5, find 264 and update 248 now exact; existing pool/heap bodies remain exact |
+| Scheduler insertion/dispatch | src/FunctionChainController.cpp | Complete insertion 381/381 and update/draw 648/612 now exact, with both full tables |
+| Typed observer iteration | src/IntrusiveLink.hpp, src/IntrusiveLink.cpp | One class/public declaration; existing bodies, required-start constructor and 8-byte layout retained; ABI aliases strictly replay; no duplicate physical credit |
+
+Seven complete core functions add 2,769 disjoint compared bytes and 174
+independent relocations: actual HitCtrlInf destruction, find and update,
+FunctionChainController update/draw insertion and both full dispatchers.
+The frozen 240-file graph passes 689/689 strict units across 135 fresh objects
+and 134,296 disjoint bytes. Source mappings remain 702, with thirteen whole
+nonexact methods. Authored exact coverage stays 84 functions/24,209 bytes;
+reference absorption stays 238 and all 6,945 reviews remain terminal.
+
+All 64 public tests and actual O2/ASan/UBSan core protocols pass. Original game
+startup/runtime and whole damage query remain open. See [core iteration evidence](CORE_ITERATION_EXACT_RECONSTRUCTION.md).
+
 ## CORE/EXACT-098 — Actual hit-owner source and build ownership
 
 | Actual owner/protocol | Maintained source | Acceptance |

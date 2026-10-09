@@ -4,7 +4,7 @@
 // typed protocol. Reset requires detached storage; list operations do not own T.
 namespace th20 {
 template<class T> struct IntrusiveList;
-template<class T> struct IntrusiveIterator;
+template<class T> class IntrusiveIterator;
 template<class T> struct IntrusiveLink {
     T* node;
     IntrusiveLink* next;
@@ -41,7 +41,8 @@ template<class T> struct IntrusiveList : IntrusiveLink<T> {
     IntrusiveIterator<T> begin();
     IntrusiveIterator<T>* end();
 };
-template<class T> struct IntrusiveIterator {
+template<class T> class IntrusiveIterator {
+public:
     IntrusiveLink<T>* current;
     IntrusiveLink<T>* pending;
     IntrusiveIterator(IntrusiveLink<T>* start, IntrusiveLink<T>* next = nullptr) noexcept;

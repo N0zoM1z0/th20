@@ -1,5 +1,23 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-099 — Whole iteration and dispatch admission
+
+Seven complete core functions add 2,769 disjoint compared bytes and 174
+independent relocations: actual HitCtrlInf destruction, find and update,
+FunctionChainController update/draw insertion and both full dispatchers.
+The frozen 240-file graph passes 689/689 strict units across 135 fresh objects
+and 134,296 disjoint bytes. Source mappings remain 702, with thirteen whole
+nonexact methods. Authored exact coverage stays 84 functions/24,209 bytes;
+reference absorption stays 238 and all 6,945 reviews remain terminal.
+
+Actual shared iterator producers/consumers retain the native two-pointer
+observer protocol; a public class declaration naturally emits /sdl initialization.
+Whole hit-owner destruction/find/update and scheduler insertion/update/draw
+now pass complete canonical replay, including full tables, compiler padding
+and independent relocation bindings. Full EH support and actual O2/ASan/UBSan
+core fixtures pass. Original source spelling, authored origin and original
+game startup/runtime stay separate. See [core iteration evidence](CORE_ITERATION_EXACT_RECONSTRUCTION.md).
+
 ## CORE/EXACT-098 — HitCtrlInf lifecycle admission
 
 Actual 0xC460 HitCtrlInf/TaskInfo construction, Context +0x28 publication,

@@ -99,35 +99,38 @@ restart:
         auto* end=list.end();
         for (;iterator.differs(end);iterator.advance()) {
             auto* link=iterator.get();
-            if (!link->node_access()->callback) continue;
+            if (link->node_access()->callback) {
 enabled:
-            if ((link->node_access()->flags.bits>>1)&1u) {
-                if (shutting_down) goto shutdown;
-                process_locks.leave_tracked(0);
-                {
-                const auto action=link->node_access()->callback(link->node_access()->userdata);
-                process_locks.enter_tracked(0);
-                switch (action) {
-                case 0:remove_unlocked(link->node_access());break;
-                case 1:break;
-                case 2:goto enabled;
-                case 3:count=1;goto finish;
-                case 4:count=0;goto finish;
-                case 5:count=-1;goto finish;
-                case 6:goto restart;
-                case 7:goto shutdown;
-                case 8:count=0;goto finish;
-                }
-                }
-                goto counted;
+                if ((link->node_access()->flags.bits>>1)&1u) {
+                    {
+                    // Shutdown enters the same case without invoking the update callback.
+                    std::int32_t action;
+                    if (shutting_down) goto shutdown;
+                    process_locks.leave_tracked(0);
+                    action=link->node_access()->callback(link->node_access()->userdata);
+                    process_locks.enter_tracked(0);
+                    switch (action) {
+                    case 0:remove_unlocked(link->node_access());goto counted;
+                    case 1:break;
+                    case 2:goto enabled;
+                    case 4:count=0;goto finish;
+                    case 8:count=0;goto finish;
+                    case 3:count=1;goto finish;
+                    case 5:count=-1;goto finish;
+                    case 6:goto restart;
+                    case 7:
 shutdown:
-                    if (link->node_access()->shutdown_callback_value()) {
-                        auto callback=link->node_access()->shutdown_callback_value();
-                        callback(link->node_access()->userdata_value());
+                        if (link->node_access()->shutdown_callback_value()) {
+                            auto callback=link->node_access()->shutdown_callback_value();
+                            callback(link->node_access()->userdata_value());
+                        }
+                        break;
                     }
-            }
+                    }
+                }
 counted:
-            ++count;
+                ++count;
+            }
         }
     }
 finish:
@@ -143,22 +146,23 @@ std::int32_t FunctionChainController::draw() {
         auto* end=list.end();
         for (;iterator.differs(end);iterator.advance()) {
             auto* link=iterator.get();
-            if (!link->node_access()->callback) continue;
+            if (link->node_access()->callback) {
 enabled:
-            if ((link->node_access()->flags.bits>>1)&1u) {
-                process_locks.leave_tracked(0);
-                const auto action=link->node_access()->callback(link->node_access()->userdata_value());
-                process_locks.enter_tracked(0);
-                switch (action) {
-                case 0:remove_unlocked(link->node_access());break;
-                case 1:break;
-                case 2:goto enabled;
-                case 3:count=1;goto clear_observers;
-                case 4:count=0;goto clear_observers;
-                case 5:count=-1;goto clear_observers;
+                if ((link->node_access()->flags.bits>>1)&1u) {
+                    process_locks.leave_tracked(0);
+                    const auto action=link->node_access()->callback(link->node_access()->userdata_value());
+                    process_locks.enter_tracked(0);
+                    switch (action) {
+                    case 0:remove_unlocked(link->node_access());break;
+                    case 1:break;
+                    case 2:goto enabled;
+                    case 4:count=0;goto clear_observers;
+                    case 3:count=1;goto clear_observers;
+                    case 5:count=-1;goto clear_observers;
+                    }
                 }
+                ++count;
             }
-            ++count;
         }
     }
 clear_observers:

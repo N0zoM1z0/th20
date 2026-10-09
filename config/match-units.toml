@@ -5133,7 +5133,7 @@ symbol = "?detach_inner@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXXZ"
 target_address = 0x00411D50
 size = 216
 relocations = [
-  { offset = 0x77, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x77, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.link_find]
@@ -5192,7 +5192,7 @@ source = "src/IntrusiveLink.cpp"
 object = "build/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveList<DamageRegion>::begin"]
-symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AU?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ"
+symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ"
 target_address = 0x00412280
 size = 53
 relocations = [
@@ -5205,7 +5205,7 @@ source = "src/IntrusiveLink.cpp"
 object = "build/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveList<DamageRegion>::end"]
-symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ"
+symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ"
 target_address = 0x00412540
 size = 13
 relocations = [
@@ -5223,9 +5223,9 @@ compare_size = 177
 relocations = [
   { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@PAU?$IntrusiveLink@UDamageRegion@th20@@@1@0@Z", target = 0x005674F0 },
   { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 0x51, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x51, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
   { offset = 0x60, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
-  { offset = 0x93, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x93, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.iterator_dtor]
@@ -5240,8 +5240,8 @@ compare_size = 116
 relocations = [
   { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00567750 },
   { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 0x3E, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
-  { offset = 0x5B, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x3E, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x5B, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.iterator_advance]
@@ -5249,13 +5249,13 @@ source = "src/IntrusiveLink.cpp"
 object = "build/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveIterator<DamageRegion>::advance"]
-symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAU12@XZ"
+symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ"
 target_address = 0x00411C30
 size = 121
 relocations = [
-  { offset = 0x1F, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x1F, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
   { offset = 0x49, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
-  { offset = 0x6D, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x6D, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.iterator_differs]
@@ -5263,7 +5263,7 @@ source = "src/IntrusiveLink.cpp"
 object = "build/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveIterator<DamageRegion>::differs"]
-symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBU12@@Z"
+symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z"
 target_address = 0x00411BB0
 size = 91
 relocations = [
@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111460", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111462", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8987,7 +8987,7 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111129", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111131", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
@@ -9013,7 +9013,7 @@ relocations = [
   { offset = 0x69, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x79, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 0x112, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 0x13E, type = "DIR32", symbol = "$SG7103", target = 0x0056FD94 },
+  { offset = 0x13E, type = "DIR32", symbol = "$SG7105", target = 0x0056FD94 },
   { offset = 0x143, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9223,7 +9223,7 @@ relocations = [
   { offset = 0x3E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x49, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x68, type = "REL32", symbol = "??0Configuration@th20@@QAE@XZ", target = 0x004B9C10 },
-  { offset = 0xD7, type = "DIR32", symbol = "$SG1662", target = 0x00570B10 },
+  { offset = 0xD7, type = "DIR32", symbol = "$SG1664", target = 0x00570B10 },
   { offset = 0xDC, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79692", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79694", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9587,10 +9587,10 @@ symbol = "?spawn@EclManager@th20@@QAEHHH@Z"
 target_address = 0x0053E390
 size = 182
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG98906", target = 0x00576A40 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG98908", target = 0x00576A40 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEclRuntime@th20@@@DiagnosticAllocator@th20@@QAEPAUEclRuntime@1@PBD@Z", target = 0x0053B3D0 },
-  { offset = 0x1D, type = "DIR32", symbol = "$SG98907", target = 0x00576A88 },
+  { offset = 0x1D, type = "DIR32", symbol = "$SG98909", target = 0x00576A88 },
   { offset = 0x23, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x28, type = "REL32", symbol = "??$allocate_object@U?$IntrusiveLink@UEclRuntime@th20@@@th20@@@DiagnosticAllocator@th20@@QAEPAU?$IntrusiveLink@UEclRuntime@th20@@@1@PBD@Z", target = 0x0053B410 },
   { offset = 0x76, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEXPAUEclRuntime@2@@Z", target = 0x0044A670 },
@@ -10818,7 +10818,7 @@ symbol = "?create@FunctionChainController@th20@@QAEPAUFunctionChainNode@2@P6AHPA
 target_address = 0x004127B0
 size = 57
 relocations = [
-  { offset = 10, type = "DIR32", symbol = "$SG78143", target = 0x0056C728 },
+  { offset = 10, type = "DIR32", symbol = "$SG78145", target = 0x0056C728 },
   { offset = 16, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 21, type = "REL32", symbol = "??$allocate_object@UFunctionChainNode@th20@@@DiagnosticAllocator@th20@@QAEPAUFunctionChainNode@1@PBD@Z", target = 0x00411910 },
   { offset = 36, type = "REL32", symbol = "?set_callback@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z", target = 0x00412D50 },
@@ -10946,7 +10946,7 @@ relocations = [
   { offset = 89, type = "REL32", symbol = "??0?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 103, type = "REL32", symbol = "??0?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 130, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 161, type = "DIR32", symbol = "$SG79171", target = 0x00570C94 },
+  { offset = 161, type = "DIR32", symbol = "$SG79173", target = 0x00570C94 },
   { offset = 166, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11027,7 +11027,7 @@ relocations = [
   { offset = 67, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
   { offset = 94, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 102, type = "REL32", symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ", target = 0x004C0C60 },
-  { offset = 112, type = "DIR32", symbol = "$SG79265", target = 0x00570D00 },
+  { offset = 112, type = "DIR32", symbol = "$SG79269", target = 0x00570D00 },
   { offset = 118, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 123, type = "REL32", symbol = "??$allocate_object@UDamageRegion@th20@@@DiagnosticAllocator@th20@@QAEPAUDamageRegion@1@PBD@Z", target = 0x004BFE30 },
   { offset = 144, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAUDamageRegion@2@@Z", target = 0x0044A670 },
@@ -11160,4 +11160,258 @@ target_address = 0x0040C080
 size = 31
 relocations = [
   { offset = 18, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]
+
+[units.hit_controller_dtor]
+source = "src/HitCtrlInf.cpp"
+object = "build/HitCtrlInf.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::HitCtrlInf::~HitCtrlInf"]
+symbol = "??1HitCtrlInf@th20@@UAE@XZ"
+target_address = 0x004C0120
+size = 230
+compare_size = 235
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??1HitCtrlInf@th20@@UAE@XZ", target = 0x005699D0 },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 48, type = "DIR32", symbol = "??_7HitCtrlInf@th20@@6B@", target = 0x00570C88 },
+  { offset = 53, type = "DIR32", symbol = "$SG79213", target = 0x00570CAC },
+  { offset = 58, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 74, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 79, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAUFunctionChainNode@2@@Z", target = 0x004124B0 },
+  { offset = 101, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 113, type = "REL32", symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 121, type = "REL32", symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 134, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 147, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 162, type = "REL32", symbol = "?get@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 173, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEAAPAUDamageRegion@2@XZ", target = 0x0040F160 },
+  { offset = 180, type = "REL32", symbol = "?retire@DamageRegion@th20@@QAEXXZ", target = 0x004C1F30 },
+  { offset = 191, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 200, type = "REL32", symbol = "??1TaskInfo@th20@@UAE@XZ", target = 0x0041FDF0 },
+  { offset = 222, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.hit_controller_find]
+source = "src/HitCtrlInf.cpp"
+object = "build/HitCtrlInf.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::HitCtrlInf::find"]
+symbol = "?find@HitCtrlInf@th20@@QAEPAUDamageRegion@2@UIdentifier32@2@@Z"
+target_address = 0x004C0D00
+size = 264
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?find@HitCtrlInf@th20@@QAEPAUDamageRegion@2@UIdentifier32@2@@Z", target = 0x0056863D },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 47, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+  { offset = 79, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 91, type = "REL32", symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 106, type = "REL32", symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 119, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 132, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 147, type = "REL32", symbol = "?get@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 158, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
+  { offset = 178, type = "REL32", symbol = "?equals@Identifier32@th20@@QBEHABU12@@Z", target = 0x004C0210 },
+  { offset = 190, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
+  { offset = 208, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 230, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 254, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.hit_controller_update]
+source = "src/HitCtrlInf.cpp"
+object = "build/HitCtrlInf.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::HitCtrlInf::update"]
+symbol = "?update@HitCtrlInf@th20@@QAEHXZ"
+target_address = 0x004C02D0
+size = 248
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?update@HitCtrlInf@th20@@QAEHXZ", target = 0x0056863D },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 67, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 79, type = "REL32", symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 94, type = "REL32", symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 107, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 120, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 135, type = "REL32", symbol = "?get@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 146, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEAAPAUDamageRegion@2@XZ", target = 0x0040F160 },
+  { offset = 153, type = "REL32", symbol = "?update@DamageRegion@th20@@QAEXXZ", target = 0x004C03D0 },
+  { offset = 179, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 214, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+  { offset = 240, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.chain_controller_insert_update]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::insert_update"]
+symbol = "?insert_update@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z"
+target_address = 0x00411F80
+size = 381
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?insert_update@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z", target = 0x00567B95 },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 72, type = "REL32", symbol = "?userdata_value@FunctionChainNode@th20@@QAEPAXXZ", target = 0x00412710 },
+  { offset = 99, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 104, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 113, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 147, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 159, type = "REL32", symbol = "?begin@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAE?AV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 171, type = "REL32", symbol = "?end@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAEPAV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 184, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 197, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 212, type = "REL32", symbol = "?get@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEPAU?$IntrusiveLink@UFunctionChainNode@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 223, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 247, type = "REL32", symbol = "?insert_before@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEXPAU12@@Z", target = 0x00411F30 },
+  { offset = 266, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 281, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 300, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 325, type = "REL32", symbol = "?append@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAEXPAU?$IntrusiveLink@UFunctionChainNode@th20@@@2@@Z", target = 0x00411EA0 },
+  { offset = 347, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 371, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.chain_controller_insert_draw]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::insert_draw"]
+symbol = "?insert_draw@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z"
+target_address = 0x00412100
+size = 381
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?insert_draw@FunctionChainController@th20@@QAEHPAUFunctionChainNode@2@H@Z", target = 0x00567B95 },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 72, type = "REL32", symbol = "?userdata_value@FunctionChainNode@th20@@QAEPAXXZ", target = 0x00412710 },
+  { offset = 99, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 104, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 113, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 147, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 159, type = "REL32", symbol = "?begin@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAE?AV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 171, type = "REL32", symbol = "?end@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAEPAV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 184, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 197, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 212, type = "REL32", symbol = "?get@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEPAU?$IntrusiveLink@UFunctionChainNode@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 223, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 247, type = "REL32", symbol = "?insert_before@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEXPAU12@@Z", target = 0x00411F30 },
+  { offset = 266, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 281, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 300, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 325, type = "REL32", symbol = "?append@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAEXPAU?$IntrusiveLink@UFunctionChainNode@th20@@@2@@Z", target = 0x00411EA0 },
+  { offset = 347, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 371, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.chain_controller_update]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::update"]
+symbol = "?update@FunctionChainController@th20@@QAEHXZ"
+target_address = 0x00412810
+size = 611
+compare_size = 648
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?update@FunctionChainController@th20@@QAEHXZ", target = 0x00567C0D },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 46, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 51, type = "REL32", symbol = "?enter_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412550 },
+  { offset = 78, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 90, type = "REL32", symbol = "?begin@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAE?AV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 105, type = "REL32", symbol = "?end@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAEPAV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 118, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 131, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 150, type = "REL32", symbol = "?get@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEPAU?$IntrusiveLink@UFunctionChainNode@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 161, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 181, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 218, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 223, type = "REL32", symbol = "?leave_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412750 },
+  { offset = 231, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 247, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 275, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 280, type = "REL32", symbol = "?enter_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412550 },
+  { offset = 307, type = "DIR32", symbol = "$LN28", target = 0x00412A74 },
+  { offset = 315, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 326, type = "REL32", symbol = "?remove_unlocked@FunctionChainController@th20@@QAEXPAUFunctionChainNode@2@@Z", target = 0x00412400 },
+  { offset = 364, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 392, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 420, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 448, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 466, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 480, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 487, type = "REL32", symbol = "?shutdown_callback_value@FunctionChainNode@th20@@QAEP6AHPAX@ZXZ", target = 0x00411700 },
+  { offset = 499, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 506, type = "REL32", symbol = "?shutdown_callback_value@FunctionChainNode@th20@@QAEP6AHPAX@ZXZ", target = 0x00411700 },
+  { offset = 523, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 530, type = "REL32", symbol = "?userdata_value@FunctionChainNode@th20@@QAEPAXXZ", target = 0x00412710 },
+  { offset = 566, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 574, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 579, type = "REL32", symbol = "?leave_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412750 },
+  { offset = 603, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 612, type = "DIR32", symbol = "$LN11", target = 0x00412947 },
+  { offset = 616, type = "DIR32", symbol = "$LN5", target = 0x00412A2D },
+  { offset = 620, type = "DIR32", symbol = "$LN14", target = 0x00412965 },
+  { offset = 624, type = "DIR32", symbol = "$LN19", target = 0x004129A2 },
+  { offset = 628, type = "DIR32", symbol = "$LN15", target = 0x0041296A },
+  { offset = 632, type = "DIR32", symbol = "$LN21", target = 0x004129BE },
+  { offset = 636, type = "DIR32", symbol = "$LN23", target = 0x004129D7 },
+  { offset = 640, type = "DIR32", symbol = "$LN24", target = 0x004129EC },
+  { offset = 644, type = "DIR32", symbol = "$LN17", target = 0x00412986 },
+]
+
+[units.chain_controller_draw]
+source = "src/FunctionChainController.cpp"
+object = "build/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::draw"]
+symbol = "?draw@FunctionChainController@th20@@QAEHXZ"
+target_address = 0x00412AA0
+size = 587
+compare_size = 612
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?draw@FunctionChainController@th20@@QAEHXZ", target = 0x00567C55 },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 46, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 51, type = "REL32", symbol = "?enter_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412550 },
+  { offset = 77, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 89, type = "REL32", symbol = "?begin@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAE?AV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 104, type = "REL32", symbol = "?end@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAEPAV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 117, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 130, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 149, type = "REL32", symbol = "?get@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEPAU?$IntrusiveLink@UFunctionChainNode@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 160, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 180, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 203, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 208, type = "REL32", symbol = "?leave_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412750 },
+  { offset = 216, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 232, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 239, type = "REL32", symbol = "?userdata_value@FunctionChainNode@th20@@QAEPAXXZ", target = 0x00412710 },
+  { offset = 262, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 267, type = "REL32", symbol = "?enter_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412550 },
+  { offset = 290, type = "DIR32", symbol = "$LN24", target = 0x00412CEC },
+  { offset = 298, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEAAPAUFunctionChainNode@2@XZ", target = 0x0040F160 },
+  { offset = 309, type = "REL32", symbol = "?remove_unlocked@FunctionChainController@th20@@QAEXPAUFunctionChainNode@2@@Z", target = 0x00412400 },
+  { offset = 341, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 366, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 391, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 423, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 443, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 455, type = "REL32", symbol = "?begin@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAE?AV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 470, type = "REL32", symbol = "?end@?$IntrusiveList@UFunctionChainNode@th20@@@th20@@QAEPAV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 483, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 496, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 511, type = "REL32", symbol = "?get@?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAEPAU?$IntrusiveLink@UFunctionChainNode@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 524, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UFunctionChainNode@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UFunctionChainNode@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 542, type = "REL32", symbol = "??1?$IntrusiveIterator@UFunctionChainNode@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 550, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 555, type = "REL32", symbol = "?leave_tracked@LockRegistry@th20@@QAEXI@Z", target = 0x00412750 },
+  { offset = 579, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 588, type = "DIR32", symbol = "$LN12", target = 0x00412BC6 },
+  { offset = 592, type = "DIR32", symbol = "$LN5", target = 0x00412C2E },
+  { offset = 596, type = "DIR32", symbol = "$LN14", target = 0x00412BDE },
+  { offset = 600, type = "DIR32", symbol = "$LN17", target = 0x00412BFC },
+  { offset = 604, type = "DIR32", symbol = "$LN15", target = 0x00412BE3 },
+  { offset = 608, type = "DIR32", symbol = "$LN19", target = 0x00412C15 },
 ]
