@@ -24,7 +24,7 @@ struct Timer {
         TimerFlagBits flag_bits;
     };
 
-    Timer();
+    Timer() noexcept;
     operator std::int32_t() const;
     float fraction() const;
     // Unchecked native clock lookup; the established source slot is mode 0.

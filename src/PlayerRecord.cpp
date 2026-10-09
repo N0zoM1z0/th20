@@ -246,4 +246,7 @@ std::int32_t PlayerRecord::starting_power() {
     return field_38;
 }
 
+std::int32_t PlayerRecord::field_10_value() {return field_10;}
+std::int32_t PlayerRecord::field_14_value() {return field_14;}
+
 } // namespace th20

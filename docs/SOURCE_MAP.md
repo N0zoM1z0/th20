@@ -1,5 +1,24 @@
 # Source and build ownership
 
+## CORE/EXACT-102 — Actual Player/SHT source ownership
+
+| Owner/protocol | Maintained source | Scope |
+| --- | --- | --- |
+| Complete Player and real arrays | src/Player.hpp, src/Player.cpp | Four whole construction roots; original destruction/activation remain undefined interfaces |
+| Serialized SHT schema/relocation | src/ShotData.hpp, src/ShotData.cpp | Whole 164-byte loader, actual variable-sized tail and complete scalar support |
+| Focus/cap/current Overlay selection | src/PlayerDamageCap.cpp | Whole 47/241/26-byte roots with actual shared Context/Record getters |
+| Overlay storage/phase/disabling | src/WeaponStoneInfo.hpp, src/WeaponStoneInfo.cpp | Whole 208/42/20-byte roots; original destruction/activation remain undefined interfaces |
+| Typed Context lookup and getter aliases | src/Context.cpp, src/PlayerRecord.cpp | Whole 17-byte Context root; two 17-byte Record aliases replay as support without duplicate physical credit |
+| Shared scalar construction contracts | src/Timer.*, src/Vector3.*, src/AnimationHandle.*, src/OverlayCounter.* | Nonthrowing store-only default construction; 70 affected objects and full EH support verified before migration |
+
+Twelve roots add 1,810 disjoint bytes and 70 relocations. The frozen 250-file
+graph contains 718 units/141 objects/137,378 disjoint bytes and 732 mappings,
+fourteen whole nonexact. Actual production source executes the public synthetic
+and private original archive/SHT/cap scopes with O2/ASan/UBSan. RTTI, full-link
+weak E/G resolution, original owner lifetime/activation, whole query and game
+startup/runtime remain open. Authored/reference credit stays unchanged. See
+[Player/SHT reconstruction](PLAYER_SHT_RECONSTRUCTION.md).
+
 ## CORE-101 — Private Player/SHT candidate ownership
 
 Ignored core101-player candidates contain complete typed Player construction,

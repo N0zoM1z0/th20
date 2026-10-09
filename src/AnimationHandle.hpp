@@ -12,7 +12,7 @@ struct Animation;
 struct AnimationHandle {
     std::uint32_t value;
 
-    AnimationHandle();
+    AnimationHandle() noexcept;
     // Native word assignment; the shared physical head is audited separately.
     void operator=(std::uint32_t input);
     Animation* resolve();

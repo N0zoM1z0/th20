@@ -1,5 +1,7 @@
 #include "Context.hpp"
+#include "WeaponStoneInfo.hpp"
 namespace th20 {
+WeaponStoneInfo* Context::weapon_stone_info() {return static_cast<WeaponStoneInfo*>(overlay_owner);}
 Context::Context() noexcept
     : primary_owner(nullptr), object_04(nullptr), enemies(nullptr), object_0c(nullptr),
       card_owner(nullptr), object_14(nullptr), object_18(nullptr), object_1c(nullptr),

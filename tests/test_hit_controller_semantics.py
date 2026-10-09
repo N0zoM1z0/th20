@@ -17,7 +17,8 @@ class HitControllerTests(unittest.TestCase):
             output = Path(directory) / "hit-controller"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-ffp-contract=off", "-Isrc", "-pthread",
+                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-Wl,--gc-sections", "-ffp-contract=off", "-Isrc", "-pthread",
                 "tests/hit_controller_semantics.cpp", "src/HitCtrlInf.cpp",
                 "src/HitCtrlInfCreation.cpp", "src/DamageRegion.cpp", "src/DamageRegionLifetime.cpp",
                 "src/FunctionChain.cpp", "src/FunctionChainAllocation.cpp", "src/FunctionChainController.cpp",

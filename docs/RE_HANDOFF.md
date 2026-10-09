@@ -1,5 +1,67 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-102 — 2026-10-09 — Actual Player/SHT consumers
+
+Twelve complete Player construction/array, SHT loading/relocation, cap/focus,
+Overlay construction/phase/disable and typed Context selection contributions
+add 1,810 disjoint compared bytes and 70 independent relocations. The frozen
+250-file maintained graph passes 718/718 strict units across 141 fresh objects
+and 137,378 disjoint bytes. Mappings are 732; fourteen whole nonexact methods
+remain. Authored exact coverage stays 84 functions/24,209 bytes, confirmed
+authored functions stay 87; reference absorption stays 238 and all 6,945
+reviews remain terminal. Claims remain header-only.
+
+Actual Player/Overlay storage is 0x1485C/0x84. Player preserves its untouched
++14850 word, real ten/twelve Option arrays, 33 points and 256 Shot values.
+Whole SHT loading is 164 bytes, not the earlier 162-byte private label. Original
+resources establish the 0x5D4 prefix, 121 three-column rows and 160 offsets.
+The full 241-byte cap selects global Context 0 even for a Player bound to 1.
+Whole native Overlay initialization and its setter corroborate publication of
+actual this at Context+2C; no initializer implementation is accepted.
+
+Four independently exact store-only scalar default constructors now express
+nonthrowing construction. This closes the whole 208-byte Overlay constructor
+with its ordinary potentially-throwing declaration, actual nontrivial TaskInfo
+destructor and unchanged /EHsc profile. An independent 70-object private graph
+preserves all 706 prior units and 70 complete EH contributions before migration.
+Defaulting the actual base destructor was rejected as 11/native 20 bytes.
+Original exception syntax, finalness and template/RTTI spelling remain unknown.
+Full EH, array helper, Record aliases and 49-byte scalar-deleting bodies replay
+as support; complete three-slot tables retain the real weak E/G protocol.
+Strong vector deleting definitions/full-link resolution remain a separate gate.
+
+Actual maintained O2/ASan/UBSan construction/archive/resource/cap scopes pass
+768 synthetic/original cap selections, negative sentinels, empty tables and
+missing-resource exits. Original Player/Overlay ordinary destruction and
+activation are undefined production interfaces; test definitions abort if
+called. ANM, enclosing owner retirement and startup remain explicit fixtures.
+Whole Player/Overlay/ANM lifetime, activation, 1,707-byte damage query, RTTI and
+whole-game compile/link/runtime remain open. See
+[Player/SHT reconstruction](PLAYER_SHT_RECONSTRUCTION.md).
+
+Public CI now links six older narrow Context fixtures with function/data
+sections and linker reclamation: their uncalled typed Overlay getter otherwise
+introduces an unresolved UBSan RTTI dependency. Sanitizers and actual exercised
+bodies remain enabled; the Player/SHT fixture supplies explicit unresolved
+owner lifetime bindings and exercises the real getter.
+
+All 66 public tests pass in 230.714 seconds; tracking, target and progress gates
+pass. Interim and stable-boundary retirement remove 479 obsolete products,
+15,944,303 gross bytes and 13,104,441 net bytes after lossless archives. The
+final pass verifies all 74 original private receipt closures and preserves
+282 canonical object/receipt hashes, 250 source hashes and 5,485 private
+evidence files. All 718 existing-object results equal the frozen proof; no
+unchanged graph rebuild runs for cleanup. Native assets, installed tools,
+target provenance and Ghidra stay protected.
+
+Preserve core102-pre-admission-inputs.json.gz and
+core102-final-retired-inputs.json.gz to recover exact historical inputs and
+receipts. Private contract/Overlay copies and 74 old private objects are
+retired; completed historical writers must never rerun or overwrite proofs.
+Current results are exact102-canonical-results.json.gz; final retirement is
+core102-final-cleanup.json. Keep jobs serial at nice 15 and continue periodic
+mid-batch retirement after verifying replacements.
+
 ## CORE-101 — 2026-10-09 — Private Player/SHT consumer evidence
 
 Whole private Player construction and its three actual array contributions

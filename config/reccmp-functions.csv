@@ -719,3 +719,15 @@ th20::Context::release_bomb_controller,0x004BD1B0,function
 th20::destroy_bomb_controller,0x00477FD0,function
 th20::DiagnosticAllocator::allocate_object<BombController>,0x00477960,function
 th20::create_bomb_controller,0x00478300,function
+th20::Player::Player,0x004F46A0,function
+"th20::PlayerValues<PlayerOption,10>::PlayerValues",0x004F4110,function
+"th20::PlayerValues<PlayerOption,12>::PlayerValues",0x004F4170,function
+"th20::PlayerValues<IntPoint,33>::PlayerValues",0x004F40C0,function
+th20::Player::load_shot_data,0x004F9B80,function
+th20::Player::damage_limit,0x004FF4E0,function
+th20::Player::focused_mode,0x004FF5E0,function
+th20::WeaponStoneInfo::WeaponStoneInfo,0x00532880,function
+th20::WeaponStoneInfo::phase_one,0x004FF840,function
+th20::WeaponStoneInfo::disable,0x00533700,function
+th20::weapon_stone_info,0x00464230,function
+th20::Context::weapon_stone_info,0x00464250,function

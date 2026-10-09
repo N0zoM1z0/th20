@@ -17,7 +17,8 @@ class SessionTests(unittest.TestCase):
             output = Path(directory) / "session"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-Isrc", "tests/session_semantics.cpp",
+                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-Wl,--gc-sections", "-Isrc", "tests/session_semantics.cpp",
                 "src/Session.cpp", "src/Context.cpp", "src/PlayerRecord.cpp",
                 "-o", str(output),
             ], cwd=ROOT, check=True)

@@ -19,7 +19,8 @@ class EclFileLoadingTests(unittest.TestCase):
                        "EnemyData", "TaskInfoConstruction", "EnemyCounters", "AnimationHandle", "Timer", "ClockScalar", "Identifier32"]
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-Isrc", "tests/ecl_file_loading_semantics.cpp",
+                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-Wl,--gc-sections", "-Isrc", "tests/ecl_file_loading_semantics.cpp",
                 *(f"src/{name}.cpp" for name in sources), "-o", str(output),
             ], cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True, timeout=10)

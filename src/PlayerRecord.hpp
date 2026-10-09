@@ -75,6 +75,8 @@ struct PlayerRecord {
     std::int32_t field_ec;
     PlayerRecord();
     std::uint64_t current_score() const;
+    std::int32_t field_10_value();
+    std::int32_t field_14_value();
     void set_field_ec(std::int32_t value);
     void set_field_30(std::int32_t value);
     void set_field_34(std::int32_t value);

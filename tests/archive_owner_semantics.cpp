@@ -243,4 +243,5 @@ int main() {
     archive_owner.close();assert(live_allocations()==0);
     for(const auto& h:handles)assert(h->closes==1);
     track_malloc=false;th20::process_allocator=nullptr;
+    return 0;
 }

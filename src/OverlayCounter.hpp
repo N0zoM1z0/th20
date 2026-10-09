@@ -12,7 +12,7 @@ struct OverlayCounter {
     std::int32_t current;
     std::int32_t threshold;
 
-    OverlayCounter();
+    OverlayCounter() noexcept;
 };
 
 static_assert(sizeof(OverlayCounter) == 8);

@@ -718,3 +718,15 @@ th20::Context::release_bomb_controller
 th20::destroy_bomb_controller
 th20::DiagnosticAllocator::allocate_object<BombController>
 th20::create_bomb_controller
+th20::Player::Player
+"th20::PlayerValues<PlayerOption,10>::PlayerValues"
+"th20::PlayerValues<PlayerOption,12>::PlayerValues"
+"th20::PlayerValues<IntPoint,33>::PlayerValues"
+th20::Player::load_shot_data
+th20::Player::damage_limit
+th20::Player::focused_mode
+th20::WeaponStoneInfo::WeaponStoneInfo
+th20::WeaponStoneInfo::phase_one
+th20::WeaponStoneInfo::disable
+th20::weapon_stone_info
+th20::Context::weapon_stone_info

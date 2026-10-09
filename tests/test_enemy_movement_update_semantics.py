@@ -28,7 +28,8 @@ class EnemyMovementUpdateTests(unittest.TestCase):
             output = Path(temporary) / "enemy-movement"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-pthread", "-Isrc",
+                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-Wl,--gc-sections", "-pthread", "-Isrc",
                 "tests/enemy_movement_update_semantics.cpp",
                 *(f"src/{source}.cpp" for source in sources), "-o", str(output),
             ], cwd=ROOT, check=True)

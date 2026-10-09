@@ -86,6 +86,8 @@ artifacts as explicitly requested by the user. Protect all current canonical
 objects/receipts, preserve native evidence and active inputs, record removed
 paths/bytes privately, and verify exact replay after cleanup. See
 docs/RE_WORKFLOW.md for retirement rules.
+During longer batches, also retire replaced trials periodically after verifying
+their replacements and archiving original SHA-bound inputs and receipts.
 
 The user also requires controlled CPU and memory use. Run compiler, headless
 Ghidra, cold replay and semantic checks at reduced scheduling priority (for

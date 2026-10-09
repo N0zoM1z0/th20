@@ -20,7 +20,8 @@ class CardTests(unittest.TestCase):
             output = Path(directory) / "card"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-Isrc", "tests/card_semantics.cpp",
+                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-Wl,--gc-sections", "-Isrc", "tests/card_semantics.cpp",
                 *(f"src/{name}.cpp" for name in sources), "-o", str(output),
             ], cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True, timeout=10)

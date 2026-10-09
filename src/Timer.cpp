@@ -3,7 +3,7 @@
 
 namespace th20 {
 
-Timer::Timer() : previous(0), current(0), current_fraction(0.0f), flags(0) {}
+Timer::Timer() noexcept : previous(0), current(0), current_fraction(0.0f), flags(0) {}
 
 Timer::operator std::int32_t() const {
     return current;

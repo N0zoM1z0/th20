@@ -1,5 +1,24 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-102 — Actual Player/SHT consumer admission
+
+Complete 0x1485C Player construction and real arrays, serialized 0x5D4 SHT
+prefix/tail, full loading/relocation and global Context-zero cap selection are
+maintained with actual 0x84 Overlay value construction and typed lookup. Twelve
+whole roots add 1,810 disjoint bytes and 70 independent relocations. The frozen
+250-file graph contains 718 units across 141 objects and 137,378 disjoint bytes;
+source mappings are 732, with fourteen whole nonexact methods.
+
+Four independently exact store-only default constructors are nonthrowing;
+the private 70-object gate preserves all 706 prior units and 70 full EH
+contributions. The real 20-byte TaskInfo destructor and /EHsc remain intact.
+Full EH, scalar-deleting bodies, typed getter aliases and two three-slot
+weak E/G tables replay as support. Actual O2/ASan/UBSan construction/resource
+checks pass on synthetic and original assets, with 768 cap selections.
+Original Player/Overlay/ANM lifetime, activation, RTTI, full-link weak resolution,
+whole query and native startup/runtime remain open. Authored/reference credit
+is unchanged. See [Player/SHT reconstruction](PLAYER_SHT_RECONSTRUCTION.md).
+
 ## CORE-101 — Private Player and SHT consumer evidence
 
 Complete actual Player construction, SHT relocation and cap selection now have
