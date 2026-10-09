@@ -1,5 +1,34 @@
 # Verified facts and open hypotheses
 
+## CORE-110 — Complete private sound dispatcher comparison
+
+- All nine command cases, both playback paths, lock scopes, stage/error waits,
+  thread retirement, queue-pointer repeat and effect requests now have one
+  complete private poll body. Fresh pinned contribution2920B includes all nine
+  jump pointers; native interval2948B remains fully compared. There are1222
+  differences including28 absent object bytes. No production/exact credit.
+- Eighteen complete logging literals match thirteen native payloads. Internal
+  relocations follow emitted case offsets rather than hiding disagreement by
+  binding to native case heads. Genuine allocator release97/destroy_at27 replay
+  privately without differences; no separate helper admission follows.
+- Separate native base/derived constructors, allocation and caller evidence
+  establish actual stream ownership, two virtual slots and plain busy fieldA4.
+  Private CSound88/StreamingSoundA8 layouts use inferred four-byte packing.
+  No extra SoundInf parent, atomics or receiver padding are introduced.
+- Pinned official SDK records corroborate the private legacy WaveReader prefix;
+  unused original member types remain unproven. NativeA0 factory clear differs
+  from constructor's three20B clears. Negative track index and command9 use
+  command names. Retained legacy bytes, native extra stores, numerical/CRT/EH
+  and resource/runtime closure remain open. See
+  [whole sound protocol evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+- Production stays CORE107; CORE109 matching-head remote CI passed at4353a94,
+  run37925028718. Protect canonical145 pairs/256 sources, native evidence and
+  active CORE103/109/110 inputs while retiring the replaced v1 build pair.
+  Cleanup retires two replaced files/88200B with original input closure retained;
+  all756 current exact results and source/canonical/native/active hashes remain
+  unchanged. Build8.3MiB/analysis114MiB; installed tools remain protected.
+  All69 public tests pass in243.532s; temporary CI caches retire automatically.
+
 ## CORE-109 — Private SoundInf protocol and complete poll audit
 
 - Fresh attested poll4277F0 covers2909B/787 instruction heads, nine distinct

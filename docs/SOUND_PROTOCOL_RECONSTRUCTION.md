@@ -5,6 +5,78 @@ Production remains CORE107: 756 canonical units, 145 objects and 142,383
 disjoint compared bytes. Private compiler results do not add source, reference,
 origin or canonical credit.
 
+## CORE-110: complete private dispatcher candidate
+
+The complete main dispatcher now has a private C++ body with all nine commands,
+both playback paths, stage waits, queue retirement, lock scopes and final effect
+processing. A fresh pinned build emits 2,920 bytes, including its entire
+nine-slot jump table. Comparison includes every emitted byte and every byte of
+the 2,948-byte native code/alignment/table interval: 1,222 differences, including
+28 native bytes beyond the emitted extent. The object table starts at offset
+2,884; the native table starts at 2,912. This is a whole nonexact candidate,
+with no source, mapping, authored, reference or canonical admission.
+
+All eighteen emitted logging literals are checked through their terminators
+against thirteen distinct native payloads. Internal relocations retain the
+object's own case offsets. They are not redirected to different native case
+heads to disguise the table disagreement. Two complete genuine allocator
+supports replay privately without differences: `release_object<StreamingSound>`
+97 bytes and `std::destroy_at<StreamingSound>` 27 bytes. Destruction calls the
+actual virtual destructor before deletion under process lock slot 1. Native
+shared code does not imply an AnimationCallback receiver at this call site.
+
+Fresh attested constructor, factory, destruction and caller evidence separates
+the polymorphic CSound base from its StreamingSound derivative. The private
+base compiles to 0x88 bytes with four-byte member alignment; the derivative
+compiles to 0xA8, with its ordinary integer busy field at 0xA4. Native allocation
+clears the complete derived storage before construction. The constructor has
+four explicit arguments and no appended SoundInf parent pointer. Its two
+observed virtual slots are destruction and reset. Original packing directives,
+some retained member types, virtual declarations and resource lifetime remain
+inferred or open; these private layouts are not maintained type acceptance.
+
+Microsoft's pinned SDK sample supplies independent corroboration for the
+legacy wave records: HMMIO, two MMCKINFO values and MMIOINFO precede the memory
+reading fields. Its original format pointer and resource buffer differ from
+the private modified-wave hypothesis. See the
+[official SDK wave declaration](https://raw.githubusercontent.com/microsoft/DirectX-SDK-Samples/07e3eaa10e7dd026ec9d95fe326db2d5c4227e1b/C%2B%2B/DXUT/Optional/SDKwavefile.h).
+This corroboration does not establish TH20's unused prefix types. Native
+WaveReader is allocated as 0xA0; its constructor clears only twenty bytes at
+each of 0x04, 0x18 and 0x30. A proposed 72-byte MMIOINFO at 0x30 therefore retains
+52 bytes. No blanket constructor zeroing or opaque padding is introduced.
+
+The native nonpreloaded start path uses the command's own name when its track
+index is negative, and the indexed track name otherwise. Command 9 also uses
+the command name. The current-track filename is not substituted. Preloaded
+stage 2 tests reset failure, whereas streamed stage 3 ignores reset status and
+tests fill failure. Reopen is a void forwarding interface; recreate's native
+HRESULT is ignored. Fade targets the process-global SoundInf wrapper. Busy
+pause/resume leaves the command queued, and pause alone logs the busy wait.
+
+Native thread retirement contains both a conditional and an unconditional
+stream-pointer clear. Native also writes an unused zero before the request
+range loop. The candidate does not manufacture these extra stores; their
+original source context remains unresolved. Numerical overflow, CRT constraint
+handling, constructor failure/EH maps, complete stream/wave/device bodies and
+runtime admission remain open. Continue the main protocol, without admitting
+only its matching destruction helpers.
+
+Preserve `core110-poll-replay.json.gz`, its complete private source and active
+v2 object/receipt, both fresh native exports and attestation logs, and original
+v1 SHA-bound input/receipt archive. Failed diagnostics remain evidence; completed
+proof writers are not rerun. Retire only the replaced v1 build pair after
+checking the archive and active replacement, then protect all current canonical
+pairs and replay the existing 756 units. The remote CORE109 CI succeeded at
+4353a94; its private receipt is `core109-remote-ci.json`.
+
+The protected cleanup removes two replaced files totaling 88,200 bytes. All
+756 existing canonical results remain identical to CORE107; 256 source and
+290 canonical object/receipt hashes remain unchanged. Native evidence and
+active inputs are protected. Build storage is 8.3 MiB and analysis storage
+114 MiB; installed tools, supplied game files and the database are preserved.
+All 69 public tests pass in 243.532 seconds, with temporary caches automatically
+retired. The maintained reconstruction graph remains unchanged.
+
 ## Whole dispatcher evidence
 
 Fresh attested Ghidra range export and locked-PE decoding agree on all 787

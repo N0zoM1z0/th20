@@ -1,5 +1,48 @@
 # Current reconstruction handoff
 
+## CORE-110 — 2026-10-09 — Whole private sound dispatcher
+
+The complete private poll now includes all nine commands, both playback paths,
+stage/error waits, actual guards, advanced-pointer repeat, thread retirement and
+effect requests. Fresh pinned v2 emits2920B including all nine table slots;
+native code/alignment/table spans2948B. All-byte comparison records1222
+differences including28 absent object bytes, with object/native table offsets
+2884/2912. Nothing is prefix-sliced or admitted. Eighteen full logging literals
+match thirteen native payloads; genuine allocator destroy97/destroy_at27
+supports replay privately but receive no isolated admission.
+
+Actual CSound/StreamingSound ownership is separately recovered: private88/A8
+layouts, two virtual slots, ordinary busy integerA4, no appended SoundInf parent.
+WaveReader'sA0 allocation/partial construction and pinned official SDK record
+layout corroborate a typed legacy-prefix hypothesis, not native type acceptance.
+Preserve uncleared bytes; unused prefix types and original packing remain open.
+Negative playback indices and command9 use command names, not current_track.
+Native redundant pointer clear and unused pre-range-loop zero need original
+source context; do not add inert stores solely for matching. Full resource,
+EH, numeric/CRT contracts and runtime admission remain unresolved.
+
+Production remains CORE107:756 units/145 objects/142383B/256sources; authored
+85/25785B, confirmed88, mappings770/fourteen whole nonexact, reference238 and
+all6945 terminal reviews, claims header-only. CORE109 remote CI succeeded at
+4353a94, run37925028718; core109-remote-ci.json records it. No production/header/
+profile/anchor change or unchanged-source cold build is needed for this batch.
+
+Keep core110-poll-replay.json.gz, final log/writer, private core110-sound inputs
+and active v2 pair, original v1 input/receipt archive, bounded native exports/
+attestations and pinned SDK corroboration. Keep CORE109 v4 and CORE103 query
+inputs. Continue the complete dispatcher; it remains nonexact and the goal
+remains active. Serial nice15 jobs, repo-python, no REA/delegation and periodic
+protected retirement continue.
+
+Protected cleanup retires the replaced v1 object/receipt pair88200B. Original
+SHA-bound inputs/receipt remain lossless; installed SDK bytes are verified.
+All756 existing-object exact results equal CORE107, with current290 canonical
+hashes/256 source hashes and native/active evidence unchanged. Build8.3MiB,
+analysis114MiB; installed tools remain protected. Preserve core110-cleanup.json.gz.
+All69 public tests pass in243.532s; temporary CI caches retire automatically.
+Preserve core110-public-ci.log. This checkpoint changes three public documents
+and keeps the maintained reconstruction graph unchanged.
+
 ## CORE-109 — 2026-10-09 — Actual sound owner and protected probe retirement
 
 Item update's real sound dependency now has a private0x57E8 owner and coherent
