@@ -158,4 +158,3 @@ completed exact results,270 source hashes,310 current canonical hashes and
 20 retained native evidence hashes remain unchanged. Current products,
 native evidence, original target/reference/tools/database and historical input
 archives are protected. No unchanged-source cold rebuild is performed for cleanup.
-
