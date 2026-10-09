@@ -1,5 +1,22 @@
 # Source and build ownership
 
+## CORE-112 — Private sound source ownership investigation
+
+The ignored core112-sound directory contains one shared complete factory body,
+actual partial WaveReader constructor/open-memory bodies and coherent base/derived
+stream construction/destruction bodies. Nine complete private contributions
+compare 1,810 bytes, including five base-destructor native CC bytes with unresolved
+COFF ownership. Two release helpers compare another 217 bytes. Same-body
+O2/ASan/UBSan protocol checks pass 200 factory and sixteen owned lifetime cases,
+plus a real construction exception.
+
+The maintained graph is unchanged. Original unused SDK prefix types, packing,
+uncalled virtual signatures and deeper resource/EH/startup/runtime remain open;
+these private declarations are not imported into src/. Preserve active factory
+v3, WaveMemory v2 and StreamLifecycle v2 pairs with original replaced closures
+and both completed semantic receipts. See
+[sound protocol evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
 ## CORE/EXACT-111 — Coherent sound loading source ownership
 
 | Owner/protocol | Maintained source | Scope |

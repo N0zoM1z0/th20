@@ -1,5 +1,87 @@
 # SoundInf owner and whole command dispatcher
 
+## CORE-112 — Whole private memory-stream factory and lifetime protocol
+
+The complete 735-byte memory-stream factory now replays without differences
+under the pinned x86 compiler. Its 22 relocations use independently identified
+callee, process-global, SDK IID and diagnostic-string anchors. All five native
+strings are checked through their terminators; IID_IDirectSoundNotify is checked
+against the actual SDK GUID. The initial candidate's single flag-byte mismatch
+was a real policy error: the native factory selects LOCSOFTWARE, not
+CTRLFREQUENCY. The corrected body retains flags OR 0x18188.
+
+| Complete private contribution | Native address | Compared bytes |
+| --- | --- | --- |
+| SoundDeviceOwner::create_memory_stream | 00459D70 | 735 |
+| WaveReader::WaveReader | 004596D0 | 214 |
+| WaveReader::open_memory | 0045AC90 | 92 |
+| CSound::CSound | 00459530 | 255 |
+| StreamingSound::StreamingSound | 00459630 | 150 |
+| CSound::~CSound | 004597B0 | 237 |
+| StreamingSound::~StreamingSound | 00459900 | 29 |
+| CSound scalar deleting destructor | 00459970 | 49 |
+| StreamingSound scalar deleting destructor | 004599B0 | 49 |
+
+These nine private contributions compare 1,810 bytes. The base destructor has
+232 code bytes and five emitted CC bytes which also match the native image;
+original COFF alignment ownership remains unresolved. No compared extent is
+shortened. Its previous 237-versus-232 report remains preserved. The initial
+base constructor had eleven differences from using two separate loop-index
+variables; the original shared mutable index is independently corroborated by
+native reuse and the pinned SDK source. No unused shaping local is added.
+Two complete allocation-release dependencies replay another 217 bytes without
+differences. Original deeper allocation/constructor/EH closure remains open.
+
+The factory publishes memory fields through open_memory with flag zero, then
+ignores its E_NOTIMPL result. Only flag one returns S_OK; publication precedes
+the check. Notification offsets retain uint32 wrap, including zero count/stride
+and overflowing stride arithmetic. Failed CreateSoundBuffer or QueryInterface,
+a positive HRESULT with a null notification interface, and null/throwing array
+allocation preserve the original early resource retention. After a notification
+registration attempt, both success and negative HRESULT release the notification
+interface and array. Stream allocation follows these releases; output publication
+and descriptor/device/event/busy fields follow construction. No invented
+rollback, null guard or RAII cleanup changes these paths.
+
+The shared factory/WaveReader bodies pass O2/ASan/UBSan across 200 independently
+modeled arithmetic, COM and allocation-boundary cases. A second same-body check
+passes sixteen real owned stream construction/destruction cases, negative and
+positive fill/position statuses, retained dirty representation bytes, virtual
+retirement and throwing construction before ownership transfer. Helpers use
+actual typed allocations and recursive guards. Portable COM mocks declare the
+full SDK method order and retain host pointer widths; native ABI evidence comes
+from the actual Windows SDK build, not a forged portable layout. Explicit fixture
+specializations are declared before use so inline array templates do not bypass
+failure observations. Failed preliminary harness runs remain preserved.
+
+The legacy WaveReader prefix, unconsumed CSound fields, original four-byte
+packing and uncalled virtual signatures remain private hypotheses. Native scalar
+factories clear their full allocation before construction; constructor-only dirty
+storage checks do not claim to reproduce those unresolved factory helpers.
+Original WaveReader file retirement, fill implementation, COM driver, allocator
+failure/EH behavior, startup, notification threading and full link/runtime remain
+open. Therefore none of these private results adds maintained source, mapping,
+authored, reference or canonical credit. The accepted graph remains 761 units /
+147 objects / 144,535 disjoint bytes, with 261 source files.
+
+Preserve core112-factory-replay-v3.json.gz, core112-wave-replay-v2.json.gz,
+core112-lifecycle-replay-v2.json.gz, both semantic receipts, bounded attested
+native exports and the three active object/receipt pairs. Original replaced
+input closures and failed/earlier full comparisons remain lossless. Eight replaced
+trial files were retired in two passes; current canonical pairs, source hashes
+and all 761 replay results are protected. The first pass's byte sizes were not
+persisted before a stale baseline path stopped verification; its recovery uses
+the actual CORE111 baseline and claims no retired byte count. The final pass
+persists a retirement inventory before deletion. No unchanged-source cold build
+is repeated. CORE111 matching-head GitHub CI succeeded at bcb1cf6, run37964687061.
+
+All 70 public tests pass in 212.344 seconds; the full gate passes in
+213.895 seconds. Temporary CI bytecode caches and semantic executables retire
+automatically. Current 261 source / 294 canonical-file hashes remain unchanged
+after CI. Final retirement removes two replaced files / 89,486 bytes; build
+remains 9.0 MiB and analysis 120 MiB. Preserve core112-public-ci.log, its
+completion receipt and both protected cleanup receipts.
+
 ## CORE/EXACT-111 — Complete preload and loading protocol
 
 The complete 1,146-byte preload and 835-byte loading functions are maintained

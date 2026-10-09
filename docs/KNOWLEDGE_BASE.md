@@ -1,5 +1,29 @@
 # Verified facts and open hypotheses
 
+## CORE-112 — Complete private sound creation and lifetime evidence
+
+Nine whole private factory/WaveReader/CSound/StreamingSound contributions replay
+1,810 bytes without differences, including five base-destructor CC bytes with
+unresolved original COFF ownership. Two complete release helpers replay 217
+additional bytes. No canonical/source/origin/reference credit is added: actual
+legacy field types, packing, uncalled virtual prototypes and original deeper
+resource/EH/startup/link closure remain unaccepted.
+
+Observed behavior preserves LOCSOFTWARE flags, uint32 notification wrap,
+open_memory's field publication before ignored E_NOTIMPL, early retained
+resources and notification/array release before stream creation. Real same-body
+O2/ASan/UBSan checks pass 200 factory cases and sixteen owned lifetime cases plus
+throwing construction. Native x86 SDK layout and portable logical mocks remain
+separate evidence. See [whole sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
+Protected retirement removes eight replaced trial files in two passes, preserving
+original SHA-bound closures and all current canonical/source/native/active inputs.
+The first cleanup required recovery from a stale historical baseline path; no
+unsupported byte count is claimed. The final pass persists its inventory before
+deletion. All 761 existing-object results equal CORE111. Production stays at
+761 units / 147 objects / 144,535 bytes; no unchanged-source cold build is needed.
+CORE111 remote CI completed successfully at bcb1cf6, run37964687061.
+
 ## CORE/EXACT-111 — Complete sound loading and resource protocol
 
 - Five complete roots2152B/77 relocations are admitted: preload1146, load835,

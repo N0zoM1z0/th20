@@ -1,5 +1,22 @@
 # Target inventory and initial architecture boundary
 
+## CORE-112 — Private complete sound creation and lifetime chain
+
+The complete memory-stream factory, actual partial WaveReader constructor and
+memory-open body, base/derived constructors/destructors and both deleting
+wrappers now match nine whole private contributions totaling 1,810 bytes.
+The base destructor includes five native CC alignment bytes whose original
+COFF ownership remains open. Two complete release helpers add 217 private bytes.
+Observed early resource retention, ignored E_NOTIMPL, unsigned notification
+arithmetic and construction/retirement order pass shared-body sanitizer checks.
+
+This closes private emission and caller-protocol evidence, not maintained owner
+acceptance. Legacy SDK field types, original packing/virtual declarations,
+WaveReader file retirement, allocation/fill/COM/EH/startup and whole-game runtime
+remain open. No private prefix or source is imported; production remains
+761 units / 147 objects / 144,535 bytes / 261 source files. See
+[whole sound evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
 ## CORE/EXACT-111 — Complete sound preload and loading
 
 The actual SoundInf storage now supports full1146-byte preload/835-byte load,

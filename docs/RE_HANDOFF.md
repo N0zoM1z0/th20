@@ -1,5 +1,48 @@
 # Current reconstruction handoff
 
+## CORE-112 — 2026-10-10 — Whole private sound creation and lifetime chain
+
+Nine complete factory/WaveReader/CSound/StreamingSound contributions privately
+replay 1,810 bytes without differences; two full release helpers add 217 bytes.
+Factory735 uses 22 independent relocations and actual SDK IID/flags. Original
+ignored E_NOTIMPL, early retained resources, notification arithmetic and ordered
+construction/retirement are preserved. Base destructor237 includes native232
+code plus five CC bytes; original COFF ownership remains open. Earlier whole
+comparisons and real flag/index corrections remain preserved.
+
+Shared-body O2/ASan/UBSan passes 200 factory and sixteen real owned lifetime
+cases, plus dirty partial construction and an allocation exception. Original
+unused SDK prefix types, packing/uncalled virtual signatures, WaveReader file
+retirement, fill/helper/COM/EH/startup/notification-thread/link/runtime remain
+open. No private source, canonical, authored, mapping or reference admission.
+Production stays CORE111: 761 units / 147 objects / 144,535 bytes / 261 sources;
+authored87 / 27,766 bytes, confirmed90, mappings775 / fourteen whole nonexact,
+reference238 / all6945 terminal reviews / header-only claims.
+
+Preserve active build/core112-SoundFactory-v3, core112-WaveMemory-v2 and
+core112-StreamLifecycle-v2 object/receipt pairs, private source/proof writers,
+both semantic receipts and all bounded attested native exports. Keep original
+v1/v2 factory, v1 WaveMemory and v1 StreamLifecycle input archives. Eight replaced
+trial files are retired; the first cleanup recovered from a stale CORE107
+baseline path and claims no missing byte-size inventory. The final pass persists
+its retirement plan before deletion. All 761 current results equal CORE111;
+261 source and 294 canonical-file hashes remain protected. No unchanged-source
+cold rebuild is used. See [sound protocol evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
+CORE111 matching-head remote CI succeeded at bcb1cf6, run37964687061; its fresh
+completion receipt is core112-prior-remote-ci.json. Continue coherent original
+WaveReader/stream file/fill/EH ownership, then whole poll and Item update. Record
+unclosed source context rather than adding inert stores, padding or fake types.
+Continue repo-python, serial nice15 jobs, no REA/delegation and protected periodic
+retirement. The full reconstruction goal remains active.
+
+All 70 public tests pass in 212.344 seconds; the full gate passes in
+213.895 seconds. Temporary CI bytecode caches and semantic executables retire
+automatically. Current 261 source / 294 canonical-file hashes remain unchanged
+after CI. Final retirement removes two replaced files / 89,486 bytes; build
+remains 9.0 MiB and analysis 120 MiB. Preserve core112-public-ci.log, its
+completion receipt and both protected cleanup receipts.
+
 ## CORE/EXACT-111 — 2026-10-10 — Whole sound preload and loading admission
 
 Complete preload1146/load835 and real free119/destructor26/Graphics getter26
