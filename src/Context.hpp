@@ -1,6 +1,7 @@
 #pragma once
 #include "TaskInfo.hpp"
 namespace th20 {
+class Player;
 struct EnemyController;
 struct BulletController;
 struct PlayerRecord;
@@ -23,6 +24,7 @@ struct Context {
     HitCtrlInf* hits;
     TaskInfo* overlay_owner;
     Context() noexcept;
+    Player* player();
     WeaponStoneInfo* weapon_stone_info();
     BulletController* bullet_controller();
     void set_bullet_controller(BulletController* value);

@@ -7745,7 +7745,7 @@ symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111469", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111506", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -8987,7 +8987,7 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111131", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111166", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
@@ -9013,7 +9013,7 @@ relocations = [
   { offset = 0x69, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x79, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 0x112, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 0x13E, type = "DIR32", symbol = "$SG7114", target = 0x0056FD94 },
+  { offset = 0x13E, type = "DIR32", symbol = "$SG7123", target = 0x0056FD94 },
   { offset = 0x143, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9223,7 +9223,7 @@ relocations = [
   { offset = 0x3E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x49, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x68, type = "REL32", symbol = "??0Configuration@th20@@QAE@XZ", target = 0x004B9C10 },
-  { offset = 0xD7, type = "DIR32", symbol = "$SG1664", target = 0x00570B10 },
+  { offset = 0xD7, type = "DIR32", symbol = "$SG1667", target = 0x00570B10 },
   { offset = 0xDC, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79703", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79712", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9587,10 +9587,10 @@ symbol = "?spawn@EclManager@th20@@QAEHHH@Z"
 target_address = 0x0053E390
 size = 182
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG98908", target = 0x00576A40 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG98911", target = 0x00576A40 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEclRuntime@th20@@@DiagnosticAllocator@th20@@QAEPAUEclRuntime@1@PBD@Z", target = 0x0053B3D0 },
-  { offset = 0x1D, type = "DIR32", symbol = "$SG98909", target = 0x00576A88 },
+  { offset = 0x1D, type = "DIR32", symbol = "$SG98912", target = 0x00576A88 },
   { offset = 0x23, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x28, type = "REL32", symbol = "??$allocate_object@U?$IntrusiveLink@UEclRuntime@th20@@@th20@@@DiagnosticAllocator@th20@@QAEPAU?$IntrusiveLink@UEclRuntime@th20@@@1@PBD@Z", target = 0x0053B410 },
   { offset = 0x76, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEXPAUEclRuntime@2@@Z", target = 0x0044A670 },
@@ -10946,7 +10946,7 @@ relocations = [
   { offset = 89, type = "REL32", symbol = "??0?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 103, type = "REL32", symbol = "??0?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 130, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 161, type = "DIR32", symbol = "$SG79182", target = 0x00570C94 },
+  { offset = 161, type = "DIR32", symbol = "$SG79193", target = 0x00570C94 },
   { offset = 166, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11027,7 +11027,7 @@ relocations = [
   { offset = 67, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
   { offset = 94, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 102, type = "REL32", symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ", target = 0x004C0C60 },
-  { offset = 112, type = "DIR32", symbol = "$SG79278", target = 0x00570D00 },
+  { offset = 112, type = "DIR32", symbol = "$SG79289", target = 0x00570D00 },
   { offset = 118, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 123, type = "REL32", symbol = "??$allocate_object@UDamageRegion@th20@@@DiagnosticAllocator@th20@@QAEPAUDamageRegion@1@PBD@Z", target = 0x004BFE30 },
   { offset = 144, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAUDamageRegion@2@@Z", target = 0x0044A670 },
@@ -11175,7 +11175,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1HitCtrlInf@th20@@UAE@XZ", target = 0x005699D0 },
   { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 48, type = "DIR32", symbol = "??_7HitCtrlInf@th20@@6B@", target = 0x00570C88 },
-  { offset = 53, type = "DIR32", symbol = "$SG79222", target = 0x00570CAC },
+  { offset = 53, type = "DIR32", symbol = "$SG79233", target = 0x00570CAC },
   { offset = 58, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 74, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 79, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAUFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -11480,7 +11480,7 @@ relocations = [
   { offset = 42, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
   { offset = 51, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
   { offset = 92, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 137, type = "DIR32", symbol = "$SG79417", target = 0x0056FAA0 },
+  { offset = 137, type = "DIR32", symbol = "$SG79426", target = 0x0056FAA0 },
   { offset = 142, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11497,7 +11497,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1BombController@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
-  { offset = 48, type = "DIR32", symbol = "$SG79428", target = 0x0056FAB8 },
+  { offset = 48, type = "DIR32", symbol = "$SG79437", target = 0x0056FAB8 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 74, type = "REL32", symbol = "??$release_object@VBomb@th20@@@DiagnosticAllocator@th20@@QAEXPAVBomb@1@@Z", target = 0x0041F7C0 },
@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG81295", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG81304", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11873,4 +11873,183 @@ symbol = "?weapon_stone_info@Context@th20@@QAEPAVWeaponStoneInfo@2@XZ"
 target_address = 0x00464250
 size = 17
 relocations = [
+]
+
+[units.record_score_add]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerRecord::add_score"]
+symbol = "?add_score@PlayerRecord@th20@@QAEX_K@Z"
+target_address = 0x004E14B0
+size = 88
+relocations = [
+  { offset = 22, type = "REL32", symbol = "__aulldiv", target = 0x00543200 },
+]
+
+[units.session_score_add]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Session::add_score"]
+symbol = "?add_score@Session@th20@@QAEXI@Z"
+target_address = 0x00488550
+size = 55
+relocations = [
+  { offset = 26, type = "REL32", symbol = "?player@PlayerTable@th20@@QAEAAUPlayerRecord@2@H@Z", target = 0x00488720 },
+  { offset = 44, type = "REL32", symbol = "?add_score@PlayerRecord@th20@@QAEX_K@Z", target = 0x004E14B0 },
+]
+
+[units.timer_every]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Timer::every"]
+symbol = "?every@Timer@th20@@QBEHH@Z"
+target_address = 0x00478E00
+size = 61
+relocations = [
+]
+
+[units.player_frame_changed]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::frame_changed"]
+symbol = "?frame_changed@Player@th20@@QAEHXZ"
+target_address = 0x004C0CE0
+size = 25
+relocations = [
+  { offset = 17, type = "REL32", symbol = "?changed@Timer@th20@@QBEHXZ", target = 0x0045D030 },
+]
+
+[units.player_find_shot]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::find_shot"]
+symbol = "?find_shot@Player@th20@@QAEPAUPlayerShot@2@H@Z"
+target_address = 0x004C0FB0
+size = 38
+relocations = [
+  { offset = 28, type = "REL32", symbol = "?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z", target = 0x00506360 },
+]
+
+[units.player_shot_find]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShotController::find"]
+symbol = "?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z"
+target_address = 0x00506360
+size = 246
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z", target = 0x0056838D },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 73, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 85, type = "REL32", symbol = "?begin@?$IntrusiveList@UPlayerShot@th20@@@th20@@QAE?AV?$IntrusiveIterator@UPlayerShot@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 100, type = "REL32", symbol = "?end@?$IntrusiveList@UPlayerShot@th20@@@th20@@QAEPAV?$IntrusiveIterator@UPlayerShot@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 113, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 126, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 141, type = "REL32", symbol = "?get@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAEPAU?$IntrusiveLink@UPlayerShot@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 152, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UPlayerShot@th20@@@th20@@QAEAAPAUPlayerShot@2@XZ", target = 0x0040F160 },
+  { offset = 170, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UPlayerShot@th20@@@th20@@QAEAAPAUPlayerShot@2@XZ", target = 0x0040F160 },
+  { offset = 190, type = "REL32", symbol = "??1?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 212, type = "REL32", symbol = "??1?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 236, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.region_player_shot]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DamageRegion::player_shot"]
+symbol = "?player_shot@DamageRegion@th20@@QAEPAUPlayerShot@2@XZ"
+target_address = 0x004C0F70
+size = 55
+relocations = [
+  { offset = 13, type = "REL32", symbol = "?context_value@DamageRegion@th20@@QAEPAUContext@2@XZ", target = 0x004C0FE0 },
+  { offset = 20, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 47, type = "REL32", symbol = "?find_shot@Player@th20@@QAEPAUPlayerShot@2@H@Z", target = 0x004C0FB0 },
+]
+
+[units.enemy_controller_find]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::find"]
+symbol = "?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
+target_address = 0x00498A80
+size = 251
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x0056838D },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 73, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UEnemy@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 85, type = "REL32", symbol = "?begin@?$IntrusiveList@UEnemy@th20@@@th20@@QAE?AV?$IntrusiveIterator@UEnemy@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 100, type = "REL32", symbol = "?end@?$IntrusiveList@UEnemy@th20@@@th20@@QAEPAV?$IntrusiveIterator@UEnemy@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 113, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UEnemy@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 126, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UEnemy@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 141, type = "REL32", symbol = "?get@?$IntrusiveIterator@UEnemy@th20@@@th20@@QAEPAU?$IntrusiveLink@UEnemy@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 152, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UEnemy@th20@@@th20@@QAEPAUEnemy@2@XZ", target = 0x0040C300 },
+  { offset = 164, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+  { offset = 177, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UEnemy@th20@@@th20@@QAEPAUEnemy@2@XZ", target = 0x0040C300 },
+  { offset = 195, type = "REL32", symbol = "??1?$IntrusiveIterator@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 217, type = "REL32", symbol = "??1?$IntrusiveIterator@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 241, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.enemy_health_value]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::health_value"]
+symbol = "?health_value@Enemy@th20@@QAEPAUEnemyHealth@2@XZ"
+target_address = 0x004AABD0
+size = 19
+relocations = [
+]
+
+[units.enemy_force_defeat]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyHealth::force_defeat"]
+symbol = "?force_defeat@EnemyHealth@th20@@QAEXXZ"
+target_address = 0x004C1E90
+size = 26
+relocations = [
+]
+
+[units.enemy_reward_multiplier]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::reward_multiplier_enabled"]
+symbol = "?reward_multiplier_enabled@Enemy@th20@@QAE_NXZ"
+target_address = 0x004C1AC0
+size = 26
+relocations = [
+]
+
+[units.enemy_set_damage_marker]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::set_damage_marker"]
+symbol = "?set_damage_marker@Enemy@th20@@QAEXI@Z"
+target_address = 0x004C1FC0
+size = 45
+relocations = [
+]
+
+[units.weapon_stone_record_damage]
+source = "src/DamageQueryProtocol.cpp"
+object = "build/DamageQueryProtocol.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::WeaponStoneInfo::record_damage"]
+symbol = "?record_damage@WeaponStoneInfo@th20@@QAEXPBUVector3@2@HH@Z"
+target_address = 0x004A9F80
+size = 45
+relocations = [
+  { offset = 34, type = "REL32", symbol = "?add_reward@OverlayCounter@th20@@QAEXPBUVector3@2@HH@Z", target = 0x00533720 },
 ]

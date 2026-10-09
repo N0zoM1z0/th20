@@ -27,6 +27,7 @@ public:
     std::int32_t view_index;
     Context* context;
     WeaponStoneInfo();
+    void record_damage(const Vector3*,std::int32_t,std::int32_t);
     ~WeaponStoneInfo() override;
     void enable() override;
     void disable() override;

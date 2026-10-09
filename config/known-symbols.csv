@@ -732,3 +732,16 @@ address,name,module,confidence,evidence
 0x00533700,th20::WeaponStoneInfo::disable,Player,high,CORE/EXACT-102; complete native construction/SHT/cap consumer review; source spelling inferred
 0x00464230,th20::weapon_stone_info,Player,high,CORE/EXACT-102; complete native construction/SHT/cap consumer review; source spelling inferred
 0x00464250,th20::Context::weapon_stone_info,Player,high,CORE/EXACT-102; complete native construction/SHT/cap consumer review; source spelling inferred
+0x004E14B0,th20::PlayerRecord::add_score,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x00488550,th20::Session::add_score,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x00478E00,th20::Timer::every,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004C0CE0,th20::Player::frame_changed,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004C0FB0,th20::Player::find_shot,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x00506360,th20::PlayerShotController::find,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004C0F70,th20::DamageRegion::player_shot,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x00498A80,th20::EnemyController::find,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004AABD0,th20::Enemy::health_value,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004C1E90,th20::EnemyHealth::force_defeat,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004C1AC0,th20::Enemy::reward_multiplier_enabled,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004C1FC0,th20::Enemy::set_damage_marker,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred
+0x004A9F80,th20::WeaponStoneInfo::record_damage,DamageQueryProtocol,high,CORE/EXACT-103; complete native query-consumer protocol; source spelling inferred

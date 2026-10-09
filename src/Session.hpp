@@ -36,6 +36,7 @@ struct Session {
     double field_2b0;
     std::int32_t field_2b8, field_2bc;
     Session() noexcept;
+    void add_score(std::uint32_t amount);
     void increment_continue_count();
     void set_flag0(std::uint32_t value);
     void set_flag1(std::uint32_t value);

@@ -731,3 +731,16 @@ th20::WeaponStoneInfo::phase_one,0x004FF840,function
 th20::WeaponStoneInfo::disable,0x00533700,function
 th20::weapon_stone_info,0x00464230,function
 th20::Context::weapon_stone_info,0x00464250,function
+th20::PlayerRecord::add_score,0x004E14B0,function
+th20::Session::add_score,0x00488550,function
+th20::Timer::every,0x00478E00,function
+th20::Player::frame_changed,0x004C0CE0,function
+th20::Player::find_shot,0x004C0FB0,function
+th20::PlayerShotController::find,0x00506360,function
+th20::DamageRegion::player_shot,0x004C0F70,function
+th20::EnemyController::find,0x00498A80,function
+th20::Enemy::health_value,0x004AABD0,function
+th20::EnemyHealth::force_defeat,0x004C1E90,function
+th20::Enemy::reward_multiplier_enabled,0x004C1AC0,function
+th20::Enemy::set_damage_marker,0x004C1FC0,function
+th20::WeaponStoneInfo::record_damage,0x004A9F80,function

@@ -1,5 +1,64 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-103 — 2026-10-09 — Actual damage-query consumers
+
+Thirteen new whole roots add 980 disjoint compared bytes and 36 independent
+relocations. Fourteen maintained bodies include the existing 45-byte Timer/Cursor
+shared head; Context::player and EnemyHandle::get also alias existing physical
+contributions without duplicate credit. Complete 246-byte Shot and 251-byte
+Enemy lookup, score width/division/cap, frame/period gating, forced defeat,
+Enemy flags and actual Overlay forwarding are maintained in DamageQueryProtocol.
+The frozen 251-file graph passes 731/731 strict units across 142 objects and
+138,358 disjoint bytes. Mappings are 745; fourteen whole nonexact methods remain.
+Authored exact coverage stays 84/24,209 bytes, reference absorption stays 238,
+all 6,945 reviews stay terminal and claims stay header-only.
+
+Whole native extents, all internal branches and final returns are audited.
+Forty-five full template/EH handlers/FuncInfo/state maps/cleanup contributions
+replay as support. Actual private O2/ASan/UBSan protocol checks pass; all 67
+public tests pass in 241.813 seconds. The public protocol test exercises actual
+maintained searches and consumers with explicit startup/ECL/reward interfaces;
+original Player/Overlay destructor and activation bindings abort if reached.
+The original Item spawn implementation is not supplied by reward capture.
+
+The query's Context+8 lookup is the existing EnemyController getter, returning
+Enemy; earlier item-receiver labels are superseded. Context+4 is a genuine
+void*-to-Player* lookup under the native published-pointer precondition; complete
+publication/owner lifetime remains open. Real Player/Enemy/Overlay storage is
+unchanged; the flags union preserves raw word08 and marker bit4.
+
+Whole natural query remains private 1,685/native1,707 bytes, without an inert
+native visit-counter local. It is not maintained, mapped or semantically/exact
+accepted. Original heap-backed region reads after retirement, hit callbacks,
+Counter90B/original Item spawn, Player/Overlay/ANM lifetime, RTTI/full-link and
+native game startup/runtime remain open. Keep actual four-slot grouping arrays,
+three-entry callback table, real EnemyHandle target and caller ordering evidence.
+See [query consumers](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md).
+
+Periodic and final protected retirement remove 200 products,
+855,122 gross bytes and 796,659 bytes net of
+the retired-host archive. Three superseded private object pairs have original
+SHA-bound input/receipt archives. Completed host copies are now archived in
+core103-final-retired-inputs.json.gz. All 284 current canonical hashes, 251 source
+hashes and 5,603 evidence files remain protected; all 731
+existing-object results equal the frozen proof. No unchanged-source cold rebuild
+runs for cleanup. Build occupies about 7.9 MiB; analysis about 104 MiB.
+
+Preserve core103-pre-admission-inputs.json.gz for original CORE102 source and
+142 receipt closures, plus core103-v2/v3/v4-inputs.json.gz and the completed-host
+archive. Whole-query v5 object/receipt and private source remain active historical
+inputs: their original global closure is archived, so do not treat the receipt
+as fresh against the changed production graph or rerun completed writers.
+Current graph results: exact103-canonical-results.json.gz. Current independent
+query physical inventory: core103-next-query-dependencies.json (33 heads).
+Proofs: core103-production-bindings.json, core103-native-roots-audit.json,
+core103-private-eh.json, core103-semantics.json, core103-registered.json,
+core103-final-frozen-source.json, core103-final-literal-reconciliation.json
+and core103-final-cleanup.json. Completed proof writers must never overwrite.
+Continue coherent core protocols serially at nice15, with repo-python, attested
+Ghidra, no REA/delegation and protected cleanup during and after long batches.
+Goal remains active; this checkpoint is progress, not whole-game completion.
+
 ## CORE/EXACT-102 — 2026-10-09 — Actual Player/SHT consumers
 
 Twelve complete Player construction/array, SHT loading/relocation, cap/focus,

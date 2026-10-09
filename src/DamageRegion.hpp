@@ -24,6 +24,7 @@ struct DamageRegionFlags {
 };
 // Opaque native owner, corroborated by allocation and dispatch consumers.
 struct Context;
+struct PlayerShot;
 struct DamageRegion {
     IntrusiveLink<DamageRegion> link;
     DamageRegionFlags flags;
@@ -42,6 +43,7 @@ struct DamageRegion {
     Context* context;
 
     DamageRegion() noexcept;
+    PlayerShot* player_shot();
     void update();
     // Retirement detaches before clearing the identifier and conditionally
     // releases heap storage through the actual Context controller.

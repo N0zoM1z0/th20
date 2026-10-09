@@ -55,7 +55,10 @@ struct EnemyStateFlags {
         std::uint32_t word_04;
         struct { std::uint32_t low:3, spawn_mirrored:1, middle:6, viewport_relative:1, upper:21; } fields_04;
     };
-    std::uint32_t word_08;
+    union {
+        std::uint32_t word_08;
+        struct { std::uint32_t lower:4, damage_marked:1, upper:27; } fields_08;
+    };
 };
 
 // Actual 752-byte subobject at Enemy+88. Neutral scalar names retain unresolved

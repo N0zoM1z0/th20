@@ -730,3 +730,16 @@ th20::WeaponStoneInfo::phase_one
 th20::WeaponStoneInfo::disable
 th20::weapon_stone_info
 th20::Context::weapon_stone_info
+th20::PlayerRecord::add_score
+th20::Session::add_score
+th20::Timer::every
+th20::Player::frame_changed
+th20::Player::find_shot
+th20::PlayerShotController::find
+th20::DamageRegion::player_shot
+th20::EnemyController::find
+th20::Enemy::health_value
+th20::EnemyHealth::force_defeat
+th20::Enemy::reward_multiplier_enabled
+th20::Enemy::set_damage_marker
+th20::WeaponStoneInfo::record_damage

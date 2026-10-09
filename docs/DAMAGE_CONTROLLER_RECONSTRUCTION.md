@@ -1,5 +1,27 @@
 # Damage controller and whole query evidence
 
+## CORE/EXACT-103 — Actual damage-query consumers
+
+Thirteen new complete consumers add 980 disjoint bytes and 36 independently
+anchored relocations. Fourteen maintained bodies include the existing 45-byte
+Timer/Cursor physical alias; Context/EnemyHandle aliases add no duplicate credit.
+Actual 246-byte Shot and 251-byte Enemy searches use real lists, typed node
+accessors and full iterator/EH cleanup. Score preserves unsigned64 division,
+modulo addition and cap; Session zero-extends uint32 into record zero. Frame,
+period, forced-defeat, reward flag/marker and actual Overlay forwarding are
+maintained in one coherent DamageQueryProtocol TU with shared actual owners.
+
+The frozen 251-file graph passes 731 units/142 objects/138,358 disjoint bytes;
+mappings are 745, fourteen whole nonexact. Forty-five complete compiler/template
+support contributions replay. Actual private O2/ASan/UBSan and public O2/UBSan
+scopes use explicit startup/ECL/reward interfaces and abort-only unresolved
+Player/Overlay lifetime bindings. Authored/reference coverage remains unchanged.
+The reward lookup is actual EnemyController+8, returning Enemy; original Item
+spawning is a later Counter dependency. Whole query remains private1685/native1707
+and unaccepted; post-retirement heap lifetime, original callbacks/owner lifetime,
+RTTI/full-link and native startup/runtime remain open. See
+[damage-query consumers](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md).
+
 ## CORE/EXACT-100 dependency update
 
 The actual HitCtrlInf pool/heap lifecycle and complete find/update/destruction

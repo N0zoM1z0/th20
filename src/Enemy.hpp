@@ -23,6 +23,9 @@ struct Enemy : EclManager {
     Context* context;
 
     Enemy() noexcept;
+    EnemyHealth* health_value();
+    bool reward_multiplier_enabled();
+    void set_damage_marker(std::uint32_t value);
     ~Enemy() override;
     Enemy* parent();
     Vector3& position_ref();

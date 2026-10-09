@@ -25,6 +25,8 @@ struct Timer {
     };
 
     Timer() noexcept;
+    std::int32_t changed() const;
+    std::int32_t every(std::int32_t divisor) const;
     operator std::int32_t() const;
     float fraction() const;
     // Unchecked native clock lookup; the established source slot is mode 0.

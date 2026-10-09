@@ -8,6 +8,7 @@ struct Enemy;
 struct EnemyHandle {
     std::uint32_t value;
     EnemyHandle() noexcept;
+    std::uint32_t get() const;
     Enemy* resolve();
 };
 static_assert(sizeof(EnemyHandle) == 4);

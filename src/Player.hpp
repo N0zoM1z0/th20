@@ -56,6 +56,8 @@ public:
     std::int32_t view_index;
     Context* context;
     Player() noexcept;
+    std::int32_t frame_changed();
+    PlayerShot* find_shot(std::int32_t identifier);
     ~Player() override;
     void enable() override;
     std::int32_t load_shot_data(PlayerShotData** output,const char* path);

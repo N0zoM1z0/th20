@@ -2,9 +2,12 @@
 #include "ShotData.hpp"
 #include "Session.hpp"
 #include "WeaponStoneInfo.hpp"
+#pragma push_macro("main")
+#undef main
 #define main unused_archive_fixture_main
 #include "archive_owner_semantics.cpp"
 #undef main
+#pragma pop_macro("main")
 namespace th20 {
 // Explicit unresolved interface bindings. Neither original owner destruction
 // nor gameplay activation is accepted by this constructor/resource scope.
@@ -98,4 +101,5 @@ int main() {
     std::destroy_at(&player->animation);player->TaskInfo::~TaskInfo();::operator delete(player);
     overlay->TaskInfo::~TaskInfo();::operator delete(overlay);fixture_overlay=nullptr;
     std::puts("Whole Player construction, actual archive/SHT relocation and 384 synthetic damage-cap selections passed; signed sentinels, zero-count and missing-resource exits passed. Owner/ANM/Context startup bindings remain explicit fixtures.");
+    return 0;
 }

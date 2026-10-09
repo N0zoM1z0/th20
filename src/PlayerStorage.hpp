@@ -112,6 +112,7 @@ struct PlayerShotController {
     std::int32_t player_index;
     Context* context;
     PlayerShotController();
+    PlayerShot* find(std::int32_t identifier);
 };
 // No explicit padding fields: byte flags and pointers use native alignment.
 static_assert(sizeof(PlayerOptionState)==8);

@@ -15,6 +15,7 @@ struct EnemyHealth {
     EnemyHealthFlags flags;
 
     EnemyHealth();
+    void force_defeat();
     void reset();
     void set_health(std::uint32_t value);
     void set_initial(std::uint32_t value);
