@@ -59,6 +59,7 @@ are excluded from Git.
 | Archive/resource I/O | 21 whole exact roots; actual File/archive/allocator/cipher/LZSS pipeline; [evidence](docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md) |
 | Scheduler and hit-owner cores | Actual shared ownership, pool/heap lifecycle and complete update/draw dispatch; seven more whole exact roots add 2,769 bytes; [core evidence](docs/CORE_ITERATION_EXACT_RECONSTRUCTION.md), [hit lifecycle](docs/HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md) |
 | Bomb ownership and dispatch | Actual base/controller storage, enabled registration, virtual lifetime and typed Context publication; 17 whole exact roots add 1,272 bytes; whole creator remains nonexact; [evidence](docs/BOMB_OWNER_RECONSTRUCTION.md) |
+| Player/SHT investigation | Private whole construction, SHT relocation and damage-cap replay; actual archive/resource checks pass; Player/ANM and Overlay lifecycle remain open; no canonical credit added; [evidence](docs/PLAYER_SHT_RECONSTRUCTION.md) |
 | Mesh deformation | 13 whole exact protocol roots; complete enemy consumer remains nonexact; actual geometry/strip checks; [evidence](docs/RENDER_MESH_RECONSTRUCTION.md) |
 | Authored exactness | 84 functions, 24,209 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |

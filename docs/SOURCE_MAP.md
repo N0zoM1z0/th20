@@ -1,5 +1,16 @@
 # Source and build ownership
 
+## CORE-101 — Private Player/SHT candidate ownership
+
+Ignored core101-player candidates contain complete typed Player construction,
+serialized SHT prefix/tail, loading and cap selection. Private copies of shared
+Session/PlayerRecord declarations keep fixture translation units consistent.
+Fresh private objects replay whole roots; actual archive/SHT/cap semantic checks
+pass. Player/ANM and Overlay lifecycle remain unresolved, with a whole Overlay
+constructor EH mismatch. These candidates are not maintained source mappings
+or canonical units. The 243-file CORE/EXACT-100 graph and all coverage metrics
+remain unchanged. See [Player/SHT evidence](PLAYER_SHT_RECONSTRUCTION.md).
+
 ## CORE/EXACT-100 — Actual Bomb source and build ownership
 
 | Actual owner/protocol | Maintained source | Acceptance |

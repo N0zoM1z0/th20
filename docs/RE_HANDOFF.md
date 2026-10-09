@@ -1,5 +1,39 @@
 # Current reconstruction handoff
 
+## CORE-101 — 2026-10-09 — Private Player/SHT consumer evidence
+
+Whole private Player construction and its three actual array contributions
+replay 1,045 bytes, with full EH support. Whole SHT loading/relocation replays
+164 bytes; complete cap/focus/overlay-phase roots replay 241/47/42 bytes.
+The two Record getters are existing-head aliases. Fresh final private objects
+use consistent current declarations; completed historical writers never rerun.
+
+Actual original SHT resources establish a 0x5D4 prefix, 121 three-column damage
+rows and 160 offset entries in both files. Native Player direction has a real
+floating-angle consumer; tail roles remain open. Actual archive/resource
+execution and 384 original cap selections pass O2/ASan/UBSan, including signed
+sentinel, zero-count and missing-resource paths. Original owner destruction,
+ANM, Overlay publication and startup are explicit unresolved boundaries.
+The complete Overlay constructor remains 255/native208 bytes; no EH weakening
+or fabricated receiver closes it. See [Player/SHT evidence](PLAYER_SHT_RECONSTRUCTION.md).
+
+This checkpoint adds no maintained source, mappings, canonical units, authored
+or reference credit. CORE/EXACT-100's 706 units/137 objects/135,568 disjoint
+bytes and all terminal reference reviews remain unchanged. Continue actual
+Player/ANM and Overlay lifetime before migrating this protocol; the whole
+1,707-byte query and whole-game startup/runtime remain open.
+
+Interim protected retirement is recorded in core101-interim-cleanup.json;
+stable-boundary retirement and unchanged existing-object replay are recorded
+in core101-final-cleanup.json. The batch retires 81 products/746,175 gross
+bytes; the final pass saves 548,993 net bytes after its lossless input archive.
+All 706 existing-object results equal the frozen CORE100 proof; all 274
+canonical and six current private object/receipt hashes remain unchanged.
+All 65 public tests pass in 218.205 seconds; tracking/progress gates pass.
+Preserve native assets/exports, active candidates,
+their receipts and original SHA-bound archived inputs. Keep heavy jobs serial
+at nice15 and clean replaced trials during longer batches as well as at handoff.
+
 ## CORE/EXACT-100 — 2026-10-09 — Actual Bomb ownership and dispatch
 
 Seventeen complete actual BombBaseInf/BombInf lifecycle, dispatch, Context

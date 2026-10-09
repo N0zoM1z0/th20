@@ -1,5 +1,15 @@
 # Target inventory and initial architecture boundary
 
+## CORE-101 — Private Player and SHT consumer evidence
+
+Complete actual Player construction, SHT relocation and cap selection now have
+private whole-function replay and O2/ASan/UBSan evidence through actual shared
+archive/resource bodies. Original resources establish 121 three-column damage
+rows and 160 offsets per SHT. Native direction has a floating-angle consumer.
+Original Player/ANM and Overlay lifetime remain open; the complete Overlay
+constructor retains an EH mismatch. No canonical or source-ownership credit
+changes. See [Player/SHT evidence](PLAYER_SHT_RECONSTRUCTION.md).
+
 ## CORE/EXACT-100 — Actual Bomb ownership admission
 
 Actual BombBaseInf/BombInf are separate 0xB8/0x3C polymorphic owners with
