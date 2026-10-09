@@ -1,5 +1,48 @@
 # Current reconstruction handoff
 
+## CORE-105 — 2026-10-09 — Main Item candidate and periodic retirement
+
+Complete primary spawn (1,576 bytes) and draw (815 bytes) are reviewed through
+their final returns. Fresh attested Ghidra callee evidence corrects the Weapon
+bonus write to +0x35 and both draw callbacks to GameController bit 2 only.
+The private complete typed primary spawn is now 1,577/native 1,576 bytes and remains
+whole nonexact/unaccepted; no source/mapping/canonical credit changes.
+Five complete direct dependencies privately replay 103 bytes without differences;
+the original 128-byte script table and float payloads are independently verified.
+Whole v1/v2/v3 sizes are 1,570/1,582/1,574; original SHA-bound inputs/receipts
+are archived before retirement. The third trial differs by two native NOPs
+under diagnostic instruction-index normalization; the fourth narrows the actual
+Weapon/Animation borrows and emits one extra scope-entry NOP. No arbitrary
+padding or shortened comparison is accepted. Fourth trial/current headers remain active.
+
+Actual ordinary spawning requires a nonnull free head before its node-value
+getter; the reference's empty-list guard changes behavior. Special generation
+precedes detachment; descending special delays and RNG y-before-x are retained.
+The original clamp preserves unordered x; negative ANM indices are not checked
+by a fabricated production throw. Complete Weapon virtual signatures, original
+source spelling, primary semantic/ANM/effect/owner closure and runtime remain open.
+The draw renderer is a real 0x7D40E94 owner; its two Animations, Worker, pools,
+lists and vertex arrays have producer evidence, but unresolved intervening
+types/ownership prohibit a fake receiver prefix or copied explicit padding.
+See [Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md).
+
+The unchanged CORE104 graph remains 747 units/143 objects/140,553 disjoint bytes,
+253 source files and 761 mappings/fourteen whole nonexact methods. Continue the
+main Item protocol in coherent batches; no leaf-only admission from this trial.
+All 68 public tests pass in 213.961 seconds. Periodic retirement removes nine files/
+208,194 bytes with all 747 existing-object results identical; final retirement
+is core105-final-cleanup.json.gz. Both passes retire 85 files/1,490,179 gross
+bytes and save 1,313,723 bytes after the 176,456-byte compact input archive;
+all 286 canonical and 253 source hashes and all 747 replay results are unchanged.
+Preserve core105-retired-primary-inputs.json.gz
+for exact original source/receipt envelopes and byte-identical legacy archive
+reproduction through hash-protected installed headers. Preserve
+current canonical pairs, original archived inputs, all native exports/attestations
+and active core105-item/core103-protocol inputs. Installed SDK headers are
+verified in original bytes; normalized archive text is not SDK hash evidence.
+Use nice 15/repo-python, attested Ghidra, no REA/delegation and cleanup during
+and after long batches. Goal stays active; whole game is not complete.
+
 ## CORE/EXACT-104 — 2026-10-09 — Actual Item owner and reward protocol
 
 Sixteen new complete Item/ItemInf/array, Context, bulk-spawn/Counter and scaled
