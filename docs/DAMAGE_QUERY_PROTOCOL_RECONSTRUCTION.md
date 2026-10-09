@@ -67,9 +67,10 @@ reads EnemyState flags word04 bit30. Damage marking truncates its input bit zero
 into word08 bit4 while preserving every other bit. The new union provides the
 actual raw-word and bit-field views without changing owner size or offsets.
 The 45-byte Overlay wrapper forwards into its real eight-byte Counter member.
-Counter::add_reward is a genuine undefined production interface: its observed
-90-byte native implementation uses signed threshold comparison, modulo32
-addition and Item spawning, whose actual enclosing owner remains open.
+At CORE/EXACT-103, Counter::add_reward was a genuine undefined production
+interface. CORE/EXACT-104 now maintains its complete 90-byte threshold/modulo32
+body and the actual Item owner/bulk-spawn caller; the primary gameplay spawn
+remains undefined. See [Item ownership](ITEM_OWNER_RECONSTRUCTION.md).
 
 ## Semantic and exact gates
 

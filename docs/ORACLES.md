@@ -59,3 +59,17 @@ API documentation, and adjacent games. None substitutes for target comparison.
 Do not copy target bytes into source, use arbitrary padding/inert locals/fake
 returns, invent ABI declarations, patch a compiler, or import TH095 assembly
 exceptions. Infrastructure tests use synthetic fixtures, never game bytes.
+
+## CORE/EXACT-104 checkpoint
+
+Sixteen complete Item owner/pool/publication/scheduler/reward/RNG roots replay
+2,195 disjoint bytes and 93 independent relocations. Frozen 253-file graph:
+747 canonical units/143 fresh objects/140,553 bytes. Three complete5-byte compiler
+tails are included; the existing22-byte setter alias receives no duplicate credit.
+Seventeen full compiler/template/EH/vtable supports replay. Two shared list
+support implementations remain explicitly nonexact and uncredited; no inert
+stores manufacture full link exactness. Actual O2/ASan/UBSan exercises1536 slots,
+512/1024 partitions and3072 actual geometry releases with explicit unresolved
+startup/frame/primary-spawn boundaries. Original gameplay, RTTI/full link/runtime
+and whole-query heap lifetime remain separate. See
+[Item ownership](ITEM_OWNER_RECONSTRUCTION.md).

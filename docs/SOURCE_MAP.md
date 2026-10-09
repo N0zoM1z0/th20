@@ -1,5 +1,24 @@
 # Source and build ownership
 
+## CORE/EXACT-104 — Actual Item source ownership
+
+| Owner/protocol | Maintained source | Scope |
+| --- | --- | --- |
+| Item/ItemInf and actual 1,536-slot array | src/Item.hpp, src/Item.cpp | Whole value/owner/array construction and destruction, selectors and real layouts |
+| Pool/publication/scheduling | src/Item.cpp, src/Context.hpp | Whole596-byte resource-free initialization, typed Context+0C, disabled priorities 39/35/19 and three-node enable/destruction |
+| Reward/bulk-spawn/random consumers | src/Item.cpp, src/GameRandom.hpp | Whole90-byte Counter,147-byte caller and44-byte scaled RNG; genuine primary spawn remains undefined |
+
+Sixteen roots add 2,195 bytes and 93 independent relocations. The frozen 253-file
+graph passes 747 units/143 objects/140,553 disjoint bytes; mappings 761 with14
+whole nonexact methods. The 22-byte Context setter aliases an existing physical
+head with no duplicate credit. Seventeen complete support bodies/data replay;
+shared list constructor/reset remain nonexact supporting boundaries. Actual
+O2/ASan/UBSan lifecycle checks and public maintained-body tests use explicit
+process-startup/null-callback/abort-only frame/capture-only primary interfaces.
+Native gameplay callbacks, creator/factory, RTTI/full link/startup/runtime and
+whole-query post-retirement heap lifetime remain open. See
+[Item ownership](ITEM_OWNER_RECONSTRUCTION.md).
+
 ## CORE/EXACT-103 — Actual damage-query consumers
 
 Thirteen new complete consumers add 980 disjoint bytes and 36 independently

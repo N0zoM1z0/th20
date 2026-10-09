@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 745 mapped component functions; 731 canonical units across 142 comparison objects; fourteen whole methods remain nonexact |
+| Source | 761 mapped component functions; 747 canonical units across 143 comparison objects; fourteen whole methods remain nonexact |
 | Progress-file parser | Complete parser executes actual checksum/cipher/decoder/allocator and backup merge; checksum80 is exact, parser813/native824 remains nonexact; [evidence](docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Progress-file I/O | 10 whole exact entries; complete serialization and parsing add 2,022 bytes with independent relocation and EH evidence; [file protocol](docs/PROGRESS_FILE_IO_RECONSTRUCTION.md), [exact evidence](docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md) |
 | Archive/resource I/O | 21 whole exact roots; actual File/archive/allocator/cipher/LZSS pipeline; [evidence](docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md) |
@@ -61,6 +61,7 @@ are excluded from Git.
 | Bomb ownership and dispatch | Actual base/controller storage, enabled registration, virtual lifetime and typed Context publication; 17 whole exact roots add 1,272 bytes; whole creator remains nonexact; [evidence](docs/BOMB_OWNER_RECONSTRUCTION.md) |
 | Player/SHT consumer | Complete Player/Overlay value construction, SHT relocation and global cap selection; 12 whole exact roots add 1,810 bytes; original owner lifetime/activation remain open; [evidence](docs/PLAYER_SHT_RECONSTRUCTION.md) |
 | Damage-query consumers | 13 new whole exact roots add 980 bytes; actual Shot/Enemy search, score/frame/flag protocols and Overlay forwarding; whole query remains private and nonexact; [evidence](docs/DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md) |
+| Item pool and reward protocol | Complete 1,536-slot owner construction/destruction, 596-byte pool initializer, Context publication, disabled scheduling and bulk-spawn/reward consumers; 16 whole exact roots add 2,195 bytes; primary spawn/frame callbacks remain open; [evidence](docs/ITEM_OWNER_RECONSTRUCTION.md) |
 | Mesh deformation | 13 whole exact protocol roots; complete enemy consumer remains nonexact; actual geometry/strip checks; [evidence](docs/RENDER_MESH_RECONSTRUCTION.md) |
 | Authored exactness | 84 functions, 24,209 bytes |
 | Reference review | All 6,945 indexed implementation bodies reviewed; all 113 parser-gap files manually reconciled |

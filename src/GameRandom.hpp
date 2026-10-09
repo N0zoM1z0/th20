@@ -28,6 +28,7 @@ struct GameRandom {
     float unit();
     float signed_unit();
     float radians();
+    float signed_range(float limit);
 };
 
 static_assert(sizeof(GameRandomEngine) == 4);

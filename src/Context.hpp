@@ -2,6 +2,7 @@
 #include "TaskInfo.hpp"
 namespace th20 {
 class Player;
+class ItemInf;
 struct EnemyController;
 struct BulletController;
 struct PlayerRecord;
@@ -14,7 +15,7 @@ struct Context {
     BulletController* primary_owner;
     void* object_04;
     EnemyController* enemies;
-    void* object_0c;
+    ItemInf* object_0c;
     Card* card_owner;
     void* object_14;
     BombController* object_18;
@@ -24,6 +25,8 @@ struct Context {
     HitCtrlInf* hits;
     TaskInfo* overlay_owner;
     Context() noexcept;
+    ItemInf* item_controller();
+    void set_item_controller(ItemInf* owner);
     Player* player();
     WeaponStoneInfo* weapon_stone_info();
     BulletController* bullet_controller();

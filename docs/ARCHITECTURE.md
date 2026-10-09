@@ -1,5 +1,22 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-104 — Actual Item pool and reward protocol
+
+The actual 0xC4C Item owns two real Animation values; the TaskInfo-derived
+0x49C89C ItemInf owns 1,536 complete slots and three scheduler nodes. Whole
+construction/destruction, 596-byte pool initialization, Context+0C publication,
+disabled priority39/35/19 registration, enable of three nodes/inherited disable of two, 147-byte
+bulk-spawn caller and 90-byte Counter reward are maintained in Item.cpp.
+Sixteen whole roots add 2,195 disjoint bytes/93 independent relocations. The
+frozen 253-file graph passes 747 units/143 objects/140,553 disjoint bytes;
+mappings 761 and fourteen whole nonexact methods. Authored/reference credit
+stays unchanged. Seventeen complete supports replay; shared list construction
+and reset remain explicit nonexact boundaries, without inert compiler shaping.
+Actual O2/ASan/UBSan checks include512/1024 partitions and3,072 owned geometry
+releases. Primary1576-byte spawn,4757-byte update,815-byte draw, callbacks,
+creator/factory, original RTTI/full link/startup/runtime and whole-query heap
+lifetime remain open. See [Item ownership](ITEM_OWNER_RECONSTRUCTION.md).
+
 ## CORE/EXACT-103 — Actual damage-query consumers
 
 Thirteen new complete consumers add 980 disjoint bytes and 36 independently

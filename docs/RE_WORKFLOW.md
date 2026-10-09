@@ -108,3 +108,17 @@ and bytes saved. Keep current snapshots, native exports, failed experiments and
 active inputs intact. Read archived evidence with `gzip.open` through
 `scripts/repo-python`; an archived path is preserved evidence, not a missing
 verification. Store cleanup-only replay reports compressed from the outset.
+
+## CORE/EXACT-104 checkpoint
+
+The complete Item owner batch preserves one genuine semantic declaration/body
+with actual Animation/Timer/list storage, native whole-array byte initialization
+under its resource-free/no-observer precondition and actual lifetime/scheduler
+publication. The uniform /fp:strict profile reproduces observed runtime float
+operations and while/decrement without inert locals. Native full extents,
+constants, ABI/EH/vtable support and actual O2/ASan/UBSan precede admission.
+Shared list constructor/reset disagreements remain recorded supporting boundaries.
+The frozen747-unit/143-object graph builds each changed object once; literal
+renames follow complete native payload identities. Cleanup replays existing
+objects and protects current receipts, source, native evidence and historical
+SHA-bound input closures. See [Item ownership](ITEM_OWNER_RECONSTRUCTION.md).

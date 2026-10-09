@@ -1,5 +1,34 @@
 # Verified facts and open hypotheses
 
+## CORE/EXACT-104 — 2026-10-09 — Actual Item owner and reward consumers
+
+- Native producers establish Item 0xC4C with two actual Animation0x5E4 members,
+  genuine AnimationHandle/Timer/link/vector fields; ItemInf 0x49C89C owns 1,536 slots,
+  three scheduler nodes and three real lists. Context+0C publishes actual this.
+- Complete596-byte pool initialization clears the entire resource-free array,
+  then rebuilds512 ordinary/1024 special slots. No resource/observer-owning reset
+  is claimed. Only the observed counters/scale change; attraction/view state
+  survives. Destruction removes three nodes, then actual array/Item/Animation
+  lifetimes release resources. Original destruction leaves publication stale.
+- Actual disabled priorities 39/35/19 registration and enable of three nodes/inherited disable of two asymmetry
+  are preserved. Bulk spawn consumes actual scaled RNG at 5BA4A8, pi/180*10
+  minus pi/2, speed 2 and eight genuine primary-spawn parameters. The original
+  while/decrement and uniform /fp:strict profile naturally reproduce147 bytes.
+  Full five float payloads are independently verified; no inert local is added.
+- Counter 90B uses signed strict> with modulo32 accounting, positive threshold
+  and globalContext 0 Item lookup. Equality produces no spawn; returns are
+  discarded. This closes the genuine Counter interface left open in CORE103.
+- Sixteen roots 2,195B/93relocations and17 complete support contributions replay;
+  frozen 253-file graph747units/143objects/140553bytes. Shared list constructor 31/native 40
+  and reset one-register byte remain explicit whole nonexact support boundaries.
+  No redundant store is used to manufacture supporting/full link exactness.
+- Actual O2/ASan/UBSan verifies full pool/lifecycle/publication/scheduler/reward/RNG,
+  including3072 actual owned geometry releases. Startup/identity/null callback,
+  abort-only frame/Overlay lifetime and capture-only primary spawn are fixtures.
+  Original primary1576B/update 4,757B/draw 815B/callbacks/creator/RTTI/full link/runtime
+  and whole query heap lifetime remain open. Authored 84/24209B, absorption238,
+  all6945 reviews terminal and claims header-only. See ITEM_OWNER_RECONSTRUCTION.md.
+
 ## EXACT-072 — 2026-10-08 — Writable Enemy variables and genuine handles
 
 - Controller+54 holds sixteen Enemy identifiers. Actual checked access and

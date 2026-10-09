@@ -1,5 +1,67 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-104 — 2026-10-09 — Actual Item owner and reward protocol
+
+Sixteen new complete Item/ItemInf/array, Context, bulk-spawn/Counter and scaled
+RNG roots add 2,195 disjoint bytes and 93 independently anchored relocations.
+Actual Item 0xC4C owns two real Animations; TaskInfo-derived ItemInf 0x49C89C owns
+1536 complete slots. The whole 596-byte pool initializer, real lifetime,
+typed Context+0C publication, disabled priorities 39/35/19 registration, enable of three nodes/inherited
+disable of two and actual 147/90-byte bulk-spawn/reward consumers live in Item.cpp.
+The 22-byte setter aliases an existing physical contribution with no duplicate
+credit. Complete native bodies/branches/final returns and three 5-byte compiler
+CC tails are independently audited; five full float payloads are verified.
+
+The frozen 253-file graph passes 747/747 strict units across 143 fresh objects
+and 140,553 disjoint bytes; mappings 761, fourteen whole nonexact methods.
+Authored 84/24,209B, confirmed authored 87, absorbed 238, all 6,945 reviews terminal
+and claims header-only remain unchanged. Seventeen complete compiler/template/
+EH/vtable support contributions replay, including three-slot weak E/G table,
+scalar deletion and zero-state FuncInfo. Shared list constructor 31/native 40 and reset
+one-register byte remain explicit whole nonexact supporting boundaries. No
+redundant store or supporting/full link exactness is fabricated.
+
+Actual O2/ASan/UBSan checks complete construction, 512/1024 partitions, retained
+owner fields, Context publication, scheduler flags/priorities/removal, 3,072
+actual geometry releases, strict threshold/mod32, Context 0 reward choice and
+scaled RNG consumption/bulk-spawn arguments. Process startup/identity matrix,
+null-only ANM callback release, abort-only original frame callbacks/unrelated
+Overlay lifetime and capture-only primary spawn are explicit fixtures. Original
+Item destruction leaves Context publication stale; fixtures close the slot
+without consuming the destroyed pointer. Pool byte initialization requires
+resource-free storage and no live observers; it never releases existing resources.
+
+The uniform /fp:strict profile and actual while/decrement reproduce complete
+bulk spawn naturally. Item is ordinary potentially throwing; ItemInf noexcept
+and actual std::array construction/destruction reproduce native complete EH.
+Original syntax/type names and RTTI identities remain inferred/open. Primary
+spawn 1,576B, update 4,757B, draw 815B, callbacks, creator/factory, full link/RTTI,
+startup/runtime and whole-query post-retirement heap lifetime remain open.
+Counter::add_reward is now maintained; the old CORE103 dependency is closed.
+Complete primary-spawn native export already reaches ret20 in
+core104-item-support.asm; it is not truncated at the500-instruction request.
+Prioritize these coherent main Item functions next; defer unrelated leaves.
+
+All 68 public tests pass in 207.343 seconds. Periodic and final retirement
+remove 179 products/976,651 gross bytes, 916,533 bytes net of the
+retired-input archive. All 286 current canonical hashes, 253 source hashes and
+5,655 retained private evidence files are protected; all 747 existing-object
+results equal the frozen proof. No unchanged-source cold rebuild runs for
+cleanup. Build is about 8 MiB; analysis about 108 MiB. Completed private Item
+v3 pair/source and host copies are retired after original SHA-bound closure
+verification. Their complete inputs live in core104-final-retired-inputs.json.gz;
+the pre-admission archive also preserves original v3 and old canonical receipts.
+Preserve native exports/attestations and completed proof writers.
+Pre-admission original 449 inputs/143 verified receipts live in
+core104-pre-admission-inputs.json.gz; four retired trials have initial/v2 archives.
+Current proofs: core104-private-bindings.json, core104-production-bindings.json,
+core104-native-roots-audit.json, core104-semantics.json, core104-registered.json,
+core104-final-frozen-source.json, exact104-canonical-results.json.gz and
+core104-final-literal-reconciliation.json. Never overwrite/restart completed
+writers. Keep serial nice15 jobs, repo-python, attested Ghidra, no REA/delegation
+and protected cleanup during and after long batches. Goal remains active.
+See [Item ownership](ITEM_OWNER_RECONSTRUCTION.md).
+
 ## CORE/EXACT-103 — 2026-10-09 — Actual damage-query consumers
 
 Thirteen new whole roots add 980 disjoint compared bytes and 36 independent
