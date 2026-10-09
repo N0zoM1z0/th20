@@ -1,5 +1,22 @@
 # Source and build ownership
 
+## CORE/EXACT-098 — Actual hit-owner source and build ownership
+
+| Actual owner/protocol | Maintained source | Acceptance |
+| --- | --- | --- |
+| HitCtrlInf/256-region pool | src/HitCtrlInf.hpp, src/HitCtrlInf.cpp | Complete actual methods; thirteen new complete exact contributions in this object; full destructor/find/update remain nonexact |
+| DamageRegion context and retirement | src/DamageRegionLifetime.cpp, src/DamageRegion.hpp | Complete retirement (138 bytes) exact; selector (54 bytes) aliases existing card_bind_context without duplicate credit |
+| Shared owner/region factories | src/HitCtrlInfCreation.cpp, src/DiagnosticObjectFactories.hpp | One natural generic new-T body; owner factory (73 bytes) and auto-class helper (31 bytes) exact; global creation and region factory remain nonexact |
+| Real scheduler-node allocation ownership | src/FunctionChainAllocation.cpp | Same generic new-T template; full node factory 57/native 67 bytes remains nonexact |
+| Context +0x28 publication and Identifier32 input | src/Context.hpp, src/Context.cpp, src/Identifier32.hpp, src/Identifier32.cpp | Typed producers/consumers and real aggregate return; physical heads already counted |
+
+The frozen graph contains 682 units across 135 objects and 131,527 disjoint bytes,
+with 240 source files and 702 physical source mappings, twenty nonexact. All
+64 public tests and private ASan/UBSan owned lifecycle checks pass. Authored
+coverage remains 84 functions/24,209 bytes; reference absorption remains 238.
+Full damage query and Windows startup/runtime are separate open work. See
+[lifecycle evidence](HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md).
+
 ## CORE/EXACT-097 — 2026-10-09 — Complete scheduler ownership and dispatch
 
 The real 56-byte FunctionChainController now has complete maintained update,

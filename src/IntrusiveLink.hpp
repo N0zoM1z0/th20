@@ -37,6 +37,7 @@ template<class T> struct IntrusiveList : IntrusiveLink<T> {
     void prepend(IntrusiveLink<T>* link);
     void reset(T* input);
     IntrusiveLink<T>* find(T* input);
+    IntrusiveLink<T>* front();
     IntrusiveIterator<T> begin();
     IntrusiveIterator<T>* end();
 };
@@ -106,6 +107,7 @@ template<class T> void IntrusiveList<T>::reset(T* input){
 template<class T> IntrusiveLink<T>* IntrusiveList<T>::find(T* input){
     IntrusiveLink<T>& head=*this;return head.find(input);
 }
+template<class T> IntrusiveLink<T>* IntrusiveList<T>::front(){return this->next_value();}
 template<class T> IntrusiveIterator<T> IntrusiveList<T>::begin(){return IntrusiveIterator<T>(this->next_value(),nullptr);}
 template<class T> IntrusiveIterator<T>* IntrusiveList<T>::end(){return nullptr;}
 template<class T> IntrusiveIterator<T>::IntrusiveIterator(IntrusiveLink<T>* start,IntrusiveLink<T>* next) noexcept:current(start),pending(next){

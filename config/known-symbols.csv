@@ -680,3 +680,25 @@ address,name,module,confidence,evidence
 0x00412100,th20::FunctionChainController::insert_draw,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
 0x00412810,th20::FunctionChainController::update,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
 0x00412AA0,th20::FunctionChainController::draw,FunctionChainController,high,CORE/EXACT-097; complete native owner/protocol review
+0x004BFE80,"std::array<th20::DamageRegion,256>::array",HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004BFEE0,th20::HitCtrlInf::HitCtrlInf,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C2090,th20::HitCtrlInf::select_context,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C0C60,th20::HitCtrlInf::advance_handle,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C1EB0,th20::HitCtrlInf::detach,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C0B30,th20::HitCtrlInf::initialize,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C0E60,th20::HitCtrlInf::allocate,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C0CB0,th20::HitCtrlInf::update_callback,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C1AE0,th20::HitCtrlInf::create_rectangle,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C1B80,th20::HitCtrlInf::create_circle,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x00478EC0,th20::hit_controller,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004859F0,th20::IntrusiveList<DamageRegion>::front,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C0C40,"std::array<th20::DamageRegion,256>::_Unchecked_end",HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C1F30,th20::DamageRegion::retire,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C0120,th20::HitCtrlInf::~HitCtrlInf,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C0D00,th20::HitCtrlInf::find,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C02D0,th20::HitCtrlInf::update,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004C20D0,th20::create_hit_controller,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004BFDE0,th20::DiagnosticAllocator::allocate_object<HitCtrlInf>,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x004BFE30,th20::DiagnosticAllocator::allocate_object<DamageRegion>,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x00411910,th20::DiagnosticAllocator::allocate_object<FunctionChainNode>,HitCtrlInf,high,CORE/EXACT-098; complete native owner/protocol review; original source spelling inferred
+0x0040C080,th20::HitCtrlInf::__autoclassinit2,HitCtrlInf,high,CORE/EXACT-098; complete naturally emitted helper and independent memset/region factory consumers

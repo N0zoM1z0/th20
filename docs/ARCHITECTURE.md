@@ -1,5 +1,24 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-098 — HitCtrlInf lifecycle admission
+
+Actual 0xC460 HitCtrlInf/TaskInfo construction, Context +0x28 publication,
+priority-28 disabled scheduler registration and 256 pooled DamageRegion values
+now form one maintained lifecycle with real active/free observer lists, shape
+creation, allocation, retirement and destruction. Shared generic new-T
+naturally emits the owner's native factory and auto-class helper. Sixteen
+complete canonical contributions add 1,573 bytes and 72 relocations; the frozen
+graph passes 682 units across 135 objects and 131,527 disjoint bytes, with
+240 source files.
+
+Full ordinary destruction/find/update/global creation and two child/node
+factories remain nonexact. Natural iterator scope now follows native teardown
+order; no source clears, synthetic constructors or inert resets force emission.
+Typed Context/Identifier/region-selector aliases receive no duplicate physical
+credit. O2/UBSan and ASan/UBSan exercise real pool/heap and scheduler lifetime.
+Game startup, active Bomb/Player/item/reward protocols, the 1,707-byte query and
+original runtime remain open. See [actual lifecycle](HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md).
+
 ## CORE/EXACT-097 — 2026-10-09 — Complete scheduler ownership and dispatch
 
 The real 56-byte FunctionChainController now has complete maintained update,

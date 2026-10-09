@@ -8,6 +8,7 @@ namespace th20 {
 struct Identifier32 {
     std::uint32_t value;
     Identifier32();
+    explicit Identifier32(std::uint32_t input);
     std::uint32_t get() const;
     void operator=(std::uint32_t input);
     int equals(const Identifier32& other) const;

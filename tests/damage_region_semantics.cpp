@@ -11,8 +11,9 @@ namespace {
 unsigned retire_calls;
 DamageRegion* retired_region;
 }
-// Test-only observation of the unresolved controller/allocator lifecycle call.
-// This records invocation and does not simulate native retirement or deletion.
+// Focused region checks observe the retirement call boundary here. The separate
+// hit_controller_semantics fixture links the actual controller/allocator/region
+// retirement bodies; this observation does not simulate retirement or deletion.
 void th20::DamageRegion::retire() { ++retire_calls; retired_region = this; }
 static_assert(std::is_nothrow_constructible_v<DamageRegion>);
 static_assert(std::is_nothrow_constructible_v<IntrusiveIterator<DamageRegion>, IntrusiveLink<DamageRegion>*>);

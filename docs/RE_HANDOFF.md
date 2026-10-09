@@ -1,5 +1,65 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-098 — 2026-10-09 — Actual hit-controller pool and heap lifecycle
+
+The real 0xC460 HitCtrlInf owner now has complete maintained initialization,
+allocation, rectangle/circle creation, lookup, update and destruction bodies.
+DamageRegion retirement runs the actual Context/controller/allocator protocol.
+Sixteen complete canonical roots add 1,573 compared bytes and 72 independent
+relocations. Frozen 240-file source passes 682/682 strict units across 135
+fresh objects and 131,527 disjoint bytes. Source mappings are 702, including
+twenty whole nonexact methods. See [hit lifecycle](HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md).
+
+Context +0x28 is the typed owner publication. Initialization registers the real
+disabled priority-28 update node and publishes all 256 pooled region links.
+Pool reuse, low-sixteen-bit identifier wrap and heap bit 24, shape creation,
+observer repair and actual release-before-return are maintained on shared
+owners. Rectangle/circle results retain the real hidden aggregate-return ABI.
+Region context selection (54 bytes), Identifier32 input construction (22 bytes)
+and Context getter/setter share existing physical units without duplicate credit.
+Actual region release (97 bytes) and empty destroy_at (5 bytes) strictly replay
+as support only.
+
+The unchanged generic new-T factory naturally emits complete HitCtrlInf
+allocation (73 bytes) and auto-class initialization (31 bytes). This closes the original
+pre-clear mechanism for that owner without source clears or specializations.
+Full destructor 224/native 230 body bytes, find 254/native 264, update 238/native 248,
+global creation 82/native 92, region factory 60/native 73 and node factory
+57/native 67 remain nonexact. Destructor 224 includes five compiler alignment
+bytes; its actual body is 219. Real block scopes restore native iterator teardown order.
+Native auto-class emission for remaining types, creator dead reset and factory
+partitioning remain open; no fake default constructor or inert reset is added.
+
+All 64 public tests pass in 222.716 seconds. Actual owned pool/heap checks
+also pass O2/ASan/UBSan. Both views, callback enable/disable, generation/shape
+configuration, missing lookup, reuse/double retirement, clocks and 261-region
+update retirement plus 259-region destruction exercise shared actual bodies.
+Process placement/resource startup remain fixtures. The full 1,707-byte damage query,
+original Bomb/Player/item/reward/callback protocol and native game startup/runtime
+remain open. Origins stay pending; authored exact coverage (84 functions/24,209
+bytes), confirmed authored functions (87), reference absorption (238) and all
+6,945 terminal reviews remain unchanged.
+
+Protected cleanup retires 79 replaced probe products,
+original input snapshots and caches: 1,093,694 bytes gross /
+770,451 net after lossless historical inputs and receipts.
+All 1,503 original SHA-bound input/header
+entries are checked before removal. All 272 canonical/active hashes and
+5,198 evidence files stay protected; post-cleanup
+682 strict results equal the retained final frozen proof without another build
+or duplicate replay report. Cumulative retirement is 2,902 products /
+1,022,151,218 bytes gross. Old private core097/core098 probe objects are
+retired; their source/receipt inputs are archived. The current nonexact node
+factory object is build/FunctionChainAllocation.obj; all canonical objects stay.
+
+Proofs: core098-production-bindings.json, core098-factory-bindings.json,
+core098-native-roots-audit.json, core098-region-release-support.json,
+core098-final-frozen-source.json, exact098-final-canonical-results.json.gz,
+core098-registered.json, core098-retired-inputs.json.gz and core098-cleanup.json.
+Completed writers must never rerun. Continue the actual whole damage-query
+protocol and larger game owners; goal remains active. Serial nice15,
+repo-python, attested Ghidra, no REA/delegation and periodic retirement persist.
+
 ## CORE/EXACT-097 — 2026-10-09 — Complete scheduler ownership and dispatch
 
 The real 56-byte FunctionChainController now has complete maintained update,

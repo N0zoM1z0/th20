@@ -43,9 +43,10 @@ struct DamageRegion {
 
     DamageRegion() noexcept;
     void update();
-    // Native retirement is independently anchored; controller/allocator lifetime
-    // remains undefined until its enclosing owners are reconstructed.
+    // Retirement detaches before clearing the identifier and conditionally
+    // releases heap storage through the actual Context controller.
     void retire();
+    void select_context(std::int32_t index);
     bool intersects(const Vector3* center,const Vector2* size,float direction,float radius);
     Vector3& position();
     Context* context_value();
