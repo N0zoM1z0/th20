@@ -1,5 +1,45 @@
 # Source and build ownership
 
+## CORE/EXACT-117 — Whole mesh lifecycle and corrected VM output ABI
+
+Eight whole roots add1608 comparison bytes: RenderMesh ctor878/dtor266+5CC,
+Graphics surface creation198, geometry63/variables19 and three real spawn wrappers
+57/61/61. Frozen268-source graph passes781 units/153 fresh objects/147719 disjoint
+bytes. Authored94/30383B, confirmed98; mappings796/fifteen whole nonexact,
+reference238/all6945 terminal reviews and header-only claims remain distinct.
+See [mesh lifecycle and ABI evidence](RENDER_MESH_RECONSTRUCTION.md).
+
+Actual resource19C selects construction; native columns*size-1 allocation widths,
+root userdata, Context/scripts/layers and four-buffer retirement order are retained.
+Animation userdata is a generic pointer. Optional Animation** output is separate
+from flags; Item wrapper supplies0, distinct Enemy wrapper supplies8. Existing
+caller declarations/symbols and fixtures are corrected. Grid creation whole224/
+native223 has130 differences and remains nonexact; no shortened extent or shaping.
+Five support origins remain unknown. Destructor compares all five generated CC
+bytes; original final linker-alignment byte ownership remains inferred.
+
+Maintained production O2/ASan/UBSan passes3433 cases with actual value lifetimes,
+explicit original VM/handle/recursive-clear/heap captures, empty resource retirement
+and abort-only uncalled Overlay virtual fixtures. Original malformed dimensions,
+resource loading/renderer lifetime, EH/RTTI/full link/startup/runtime remain open.
+Original150 canonical/three private receipt closures are verified before migration;
+all153 production objects compile once. Preserve build/core117-canonical/153 pairs,
+core117-final-frozen-source.json, exact117-canonical-results.json.gz, whole production
+proof,3433-case receipt, independent origin/native/literal reconciliation and cleanup
+receipts. Mid-batch retirement removes282 files/951445B after lossless closure
+archival; active evidence and canonical products remain protected.
+
+Next coherent main scope: close original Animation child/VM/renderer publication
+protocol and the grid flag-byte source context, then complete screen consumers;
+whole Item update4820/draw815 and Renderer four-byte interval remain open. Use
+repo-python,serial nice15,no REA/delegation,protected periodic cleanup and immutable
+completed proof writers. The unlimited reconstruction goal remains active.
+Prior CORE116 matching-head remote CI succeeded atbc2f5c1,run37989072606.
+
+`src/RenderMeshLifecycle.cpp`, `src/GraphicsMesh.cpp` and
+`src/MeshResourceAccess.cpp` own the new complete bodies.
+`tests/render_mesh_lifecycle_semantics.cpp` exercises the shared production owners.
+
 ## CORE/EXACT-116 — Surface-grid source ownership
 
 `src/RenderMeshSurface.cpp` owns the complete480-byte local-coordinate grid at

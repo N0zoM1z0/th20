@@ -20,6 +20,8 @@ struct RenderMesh {
     Vector3* positions;
     std::int32_t view_index;
     Context* context;
+    RenderMesh(std::int32_t columns,std::int32_t rows,std::int32_t surface,std::int32_t view);
+    ~RenderMesh();
     void select_context(std::int32_t index);
     void initialize(float x,float y,float width,float height);
     void initialize_surface_grid(float x,float y,float width,float height);

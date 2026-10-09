@@ -785,3 +785,12 @@ th20::PlayerRecord::starting_configuration
 th20::Animation::stop
 th20::Animation::set_position
 th20::RenderMesh::initialize_surface_grid
+th20::RenderMesh::RenderMesh
+th20::RenderMesh::~RenderMesh
+th20::Graphics::create_grid_strip
+th20::Graphics::create_surface_strip
+th20::Animation::allocate_geometry
+th20::Animation::variables
+"th20::AnimationFile::spawn(const char*,int,int,Animation**)"
+"th20::AnimationFile::spawn(const char*,int,const Vector3&,float,int,Animation**)"
+th20::AnimationFile::spawn_flag8

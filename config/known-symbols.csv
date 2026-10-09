@@ -787,3 +787,12 @@ address,name,module,confidence,evidence
 0x0044FD00,th20::Animation::stop,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
 0x0045DD60,th20::Animation::set_position,ItemLifecycleProtocol,high,CORE/EXACT-115; independent complete native storage/callee protocol; original spelling inferred
 0x0049D5B0,th20::RenderMesh::initialize_surface_grid,RenderMeshSurface,high,CORE/EXACT-116; complete native body and two independent custom mesh consumers; original spelling inferred
+0x0049CF80,th20::RenderMesh::RenderMesh,RenderMeshLifecycle,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x00471CA0,th20::RenderMesh::~RenderMesh,RenderMeshLifecycle,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x004DE430,th20::Graphics::create_grid_strip,GraphicsMesh,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x004DE360,th20::Graphics::create_surface_strip,GraphicsMesh,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x0042B590,th20::Animation::allocate_geometry,MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x0045D0C0,th20::Animation::variables,MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x00450C70,"th20::AnimationFile::spawn(const char*,int,int,Animation**)",MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x004790E0,"th20::AnimationFile::spawn(const char*,int,const Vector3&,float,int,Animation**)",MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred
+0x004ABA30,th20::AnimationFile::spawn_flag8,MeshResourceAccess,high,CORE/EXACT-117; full native owner/ABI/body evidence; original spelling inferred

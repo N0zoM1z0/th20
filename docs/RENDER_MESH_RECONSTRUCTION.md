@@ -1,5 +1,139 @@
 # Mesh geometry and enemy deformation
 
+## CORE/EXACT-117: whole mesh construction and retirement
+
+Eight complete physical roots add 1,608 disjoint comparison bytes with 59 independent
+relocations. The frozen 268-file production graph passes 781 strict units across
+153 fresh objects / 147,719 bytes. Three independently audited application roots
+add 1,342 authored bytes: authored exact 94 / 30,383 bytes, confirmed authored
+98. Mappings are 796; fifteen whole methods remain nonexact. Reference absorption
+238, all 6,945 terminal implementation reviews and header-only claims are unchanged.
+
+| Maintained operation | Native address | Complete comparison bytes |
+| --- | --- | ---: |
+| RenderMesh construction | 0x49CF80 | 878 |
+| RenderMesh retirement | 0x471CA0 | 271 (266 code + five CC bytes) |
+| Graphics surface strip creation | 0x4DE360 | 198 |
+| Animation geometry allocation | 0x42B590 | 63 |
+| Animation variables reference | 0x45D0C0 | 19 |
+| AnimationFile null-position wrapper | 0x450C70 | 57 |
+| AnimationFile position/output wrapper, flags zero | 0x4790E0 | 61 |
+| AnimationFile position/output wrapper, flags eight | 0x4ABA30 | 61 |
+
+`RenderMeshLifecycle.cpp` owns the actual four-int constructor and paired
+destructor; no default constructor is invented. The existing nine-word owner
+remains 36 bytes on x86. Construction checks **Graphics resource +0x19C** rather
+than graphics_ready. If absent, it clears the complete owner and returns. Otherwise
+it binds actual Session Context and preserves native allocation expressions:
+`sizeof(AnimationHandle)*columns-1`, `sizeof(Animation*)*columns-1`, and complete
+vertex/position grids. The first two expressions retain the native extra three
+bytes on x86. Columns/rows/surface/view are signed 32-bit integers; negative
+nonzero surface values take the surface branch.
+
+Grid mode creates root and columns on layer 41 with script zero. Surface mode
+uses layer 42 and chooses script 13/14/15 for widths 640/960/other, then changes
+root and strips to layer 27. Root Animation publishes the mesh pointer at +0x5C8
+and calls the genuine undefined recursive flag-clear interface. Strip resolution,
+byte +0x499 clearing and two-bit layer-mode updates preserve native ordering and
+unrelated flag bits. Retirement calls root retirement, frees/resets vertices and
+positions, retires each column handle, then frees/resets handles and strip pointers.
+Original renderer/VM handle creation, recursive child traversal and retirement
+remain genuine dependencies, separately bounded by test captures.
+
+`GraphicsMesh.cpp` uses the **global** Graphics surface file even when called on
+a different receiver. Geometry allocation always reserves `28*rows*2` bytes. Rows
+above two set primitive byte 12, publish rows to the real AnmVariables integer,
+and initialize only Z/RHW/color, preserving X/Y/UV. Smaller rows set primitive
+zero and retain all geometry bytes. Whole grid creation at 0x4DE430 is maintained
+but **nonexact**: natural complete COFF has 224 bytes versus native 223, with 130
+full replay differences. Its uint8 OR promotes to MOVZX/32-bit OR, while the target
+uses byte MOV/OR. Earlier six-bit and eight-bit-field experiments also disagree.
+No shortened comparison, inert local, fake ABI or source-profile branch is used.
+The complete mismatch and original trial inputs are retained for further review.
+
+The native spawn ABI corrects a previous declaration: the six-argument wrapper's
+last parameter is optional **Animation** output storage (`Animation**`), not a
+flags word. Full 0x450CB0 takes a nullable Vector3 pointer, flags and output as
+separate arguments and writes nonnull output storage before checking the requested
+file stem. The 0x4790E0 wrapper supplies flags zero; the distinct 0x4ABA30 wrapper
+supplies flags eight. Item calls use the former and Enemy movement uses the latter.
+`MeshResourceAccess.cpp` preserves both wrappers and the null-position overload.
+Their common full VM implementation remains undefined. Existing caller symbols
+and fixtures are corrected while independent native destinations remain fixed.
+
+Animation +0x5C8 becomes generic `void* user_data`: independently attested mesh
+publication and callbacks at 0x531150/0x534F10 consume different actual owner
+pointers. It is not an exclusive RenderMesh pointer. A query at 0x531270 resolves
+to the encompassing 0x531260 method and is not evidence of another userdata
+consumer. The mixed flag byte at +0x4A0 has a standard union with the existing
+low-two-bit mode view. All existing Animation constructor/reset/retirement exact
+units pass after these shared-header refinements; native size remains 0x5E4.
+
+The full scalar allocation consumer 0x4712D0 allocates/clears 36 bytes and calls
+0x49CF80. Screen consumer 0x52C030 owns the mesh at +0x5924, retires it through
+allocator/destroy_at/scalar-deleting bodies and then allocates a 64-by-48 surface
+mesh. Complete native deletion independently identifies destructor 0x471CA0;
+automatic library names are not accepted as ownership evidence. Together with
+actual scripts/layers/Context and paired buffer lifetime, these application
+consumers establish construction/retirement/Graphics origins independently from
+exactness. Five access/wrapper origins remain unknown. Original function spelling,
+translation-unit partition and original COFF ownership are still inferences.
+
+Destructor RET is at 0x471DA9, followed by six native CC bytes before the next
+function at 0x471DB0. The complete generated contribution owns five CC bytes;
+all 271 bytes are compared. Its independently reused generic noexcept handler
+is also anchored by prior DamageRegion, FunctionChainNode and ShotMetadata units. Attributing the sixth byte to original linker
+alignment remains an inference; it receives no authored coverage. Original EH
+handler structure, complete RTTI/link/startup and game runtime remain separate.
+
+Maintained production C++20/O2/ASan/UBSan passes **3,433 cases**: all 256 initial
+flag bytes across five row counts and both factories; 864 owned mesh lifetimes
+across columns/rows/views/window widths/nonzero surface values/retained flags;
+three resource-absent paths; six null/non-null output wrapper cases. Actual mesh,
+Graphics/viewport/Worker, Animation values, Session/Context, PMR strings and lock
+owners execute. Explicit original VM/handle/recursive-clear captures, empty
+resource-file/Graphics teardown and abort-only uncalled Overlay virtual fixtures
+bound unimplemented protocols. Heap captures use malloc/free with actual slot-one
+guards and sanitizer bounds, record exact allocation/retirement order and seed
+buffers to verify preserved bytes. A borrowed opaque API token exercises only
+resource-pointer presence. Existing geometry fixtures use the actual absent-resource
+constructor and detach externally owned views before the actual destructor.
+Malformed dimensions/allocation failures and original resources/runtime remain open.
+
+Before migration, 150 prior canonical and three fresh private original
+source/receipt/SDK closures are verified and losslessly archived. Every affected
+production object builds once; full typed literal payloads and actual fresh COFF
+reference roles identify labels independently, including duplicates. Keep CORE117
+frozen source/full comparisons/production semantic/origin/native/literal/retirement
+receipts. Seven superseded trial pairs and the losslessly archived private host
+graph retire during this batch: 282 files / 951,445 bytes. Current canonical and
+active private pairs are protected. Historical sound closures remain historical;
+no unchanged-source cold rebuild is used for documentation or cleanup.
+
+All73 public tests pass in277.125 seconds; the full gate passes in281.075
+seconds. The first public run exposed two missing AnimationParameters linkage
+entries in the existing geometry runners. Targeted regression then exposed a
+formerly trivial owning RenderMesh snapshot gaining real destructor behavior.
+Both runners now include the actual layer implementation; the surface fixture
+uses a non-owning byte snapshot and detaches its borrowed root/views before real
+retirement. Failed logs remain unchanged. The final surface fixture is corrected
+before its compiler invocation in the successful complete public run. Production
+source, canonical objects and the3433-case production semantic body are unchanged
+by these test fixes; no canonical cold rebuild is repeated.
+
+Protected final retirement removes150 previous canonical and three migrated
+private pairs:306 files/8,534,482 bytes. Including mid-batch retirement,588 files/
+9,485,927 bytes (9.05 MiB) retire. Original source/receipt/SDK closures are verified
+before deletion; all781 completed comparison results,268 source hashes and306
+current canonical-file hashes remain unchanged afterward. Build9.8MiB/analysis
+137MiB. Preserve the pre-deletion path/size/hash plans and both cleanup receipts.
+Forty-five complete typed literal reference roles reconcile14 label renames,
+including duplicate payloads; each of153 production objects compiles once.
+Six regenerable Python bytecode files/43490B also retire after final control-plane
+checks, yielding594 files/9529417B (9.09 MiB) for the complete batch. All current
+source/canonical hashes remain unchanged; no compiler input is retired.
+
+
 ## CORE/EXACT-116: whole local-coordinate surface grid
 
 The complete 480-byte method at 0x49D5B0 is now maintained in

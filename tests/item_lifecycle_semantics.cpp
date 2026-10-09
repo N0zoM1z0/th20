@@ -59,9 +59,9 @@ AnimationFile::~AnimationFile() {
     assert(!bytes && !templates && !sprites && !scripts && !textures);
 }
 AnimationHandle AnimationFile::spawn(const char* stem,int script,const Vector3& position,
-                                   float rotation,int layer,unsigned flags) {
+                                   float rotation,int layer,Animation** output) {
     assert(std::strcmp(stem,"effect")==0 && script==94);
-    assert(&position==&current_item->position && rotation==0 && layer==-1 && !flags);
+    assert(&position==&current_item->position && rotation==0 && layer==-1 && !output);
     events.push_back({1,script,this});
     if(mutate_effect)current_item->type=6;
     AnimationHandle result;result=0x12345678u;return result;

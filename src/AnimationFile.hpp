@@ -28,7 +28,16 @@ struct AnimationFile {
     void bind_animation(Animation* animation, std::int32_t script, Animation* parent);
     AnimationHandle spawn(const char* expected_stem, std::int32_t script,
                           const Vector3& position, float rotation,
-                          std::int32_t layer, std::uint32_t flags);
+                          std::int32_t layer, Animation** output);
+    AnimationHandle spawn(const char* expected_stem,std::int32_t script,
+                          std::int32_t layer,Animation** output);
+    AnimationHandle spawn_flag8(const char* expected_stem,std::int32_t script,
+                               const Vector3& position,float rotation,
+                               std::int32_t layer,Animation** output);
+    // Full native VM creation supports a null position and optional output.
+    AnimationHandle spawn(const char* expected_stem,std::int32_t script,
+                          const Vector3* position,float rotation,std::int32_t layer,
+                          std::uint32_t flags,Animation** output);
 };
 #if defined(_M_IX86)
 static_assert(sizeof(AnimationFile)==0x70);

@@ -60,6 +60,8 @@ struct Graphics {
     std::uint32_t clear_color;
     Graphics() noexcept;
     ~Graphics();
+    AnimationHandle create_grid_strip(std::int32_t rows,std::int32_t script);
+    AnimationHandle create_surface_strip(std::int32_t rows,std::int32_t script);
     std::int32_t uses_preloaded_music() const;
 };
 // Production global definition/startup and destruction remain open.

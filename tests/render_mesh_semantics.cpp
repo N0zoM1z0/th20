@@ -1,3 +1,6 @@
+#include "Graphics.hpp"
+#include "WeaponStoneInfo.hpp"
+#include <cstdlib>
 #include "Animation.hpp"
 #include "ClockScalar.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -15,6 +18,21 @@
 #include <vector>
 
 namespace th20 {
+// Original VM creation is uncalled: resource-absent mesh construction executes.
+AnimationHandle Graphics::create_grid_strip(std::int32_t,std::int32_t) {std::abort();}
+AnimationHandle Graphics::create_surface_strip(std::int32_t,std::int32_t) {std::abort();}
+Animation* AnimationHandle::resolve() {std::abort();}
+void AnimationHandle::retire() {assert(!value);value=0;}
+void Animation::clear_flag0_recursively() {std::abort();}
+Graphics::~Graphics() {
+    assert(!resource_19c&&!resource_1a0&&!resource_1a4&&!surface_animation);
+    assert(!direct3d&&!device&&!snapshot_pixels&&!dynamic_buffer&&!startup_scene);
+}
+Graphics process_graphics;
+WeaponStoneInfo::~WeaponStoneInfo() {std::abort();}
+void WeaponStoneInfo::enable() {std::abort();}
+void WeaponStoneInfo::disable() {std::abort();}
+
 // Only process allocation/window startup and unused callback retirement are
 // boundaries. All mesh, State/Animation/Session lifetimes and math are real.
 LockRegistry process_locks;
@@ -40,7 +58,7 @@ void close(float actual,float expected,std::source_location location=std::source
            std::abs(actual-expected)<=2e-4f*(1+std::abs(expected)));
 }
 struct Grid {
-    RenderMesh mesh{};
+    RenderMesh mesh{0,0,0,0};
     std::vector<SpriteTexturedVertex> vertices;
     std::vector<Vector3> positions;
     std::vector<Animation> strips;
@@ -58,7 +76,9 @@ struct Grid {
         }
         mesh.strips=strip_pointers.data();
     }
-    ~Grid() { for (auto& strip:strips) strip.geometry=nullptr; }
+    ~Grid() { for (auto& strip:strips) strip.geometry=nullptr;
+        mesh.columns=0;mesh.vertices=nullptr;mesh.positions=nullptr;
+        mesh.strip_handles=nullptr;mesh.strips=nullptr; }
     void check_strips() const {
         assert(vertices.front().color==0x12345678&&vertices.back().color==0x76543210);
         for (int col=0;col<mesh.columns-1;++col) for (int row=0;row<mesh.rows;++row) {
@@ -78,7 +98,7 @@ int main() {
     assert(window_state.mesh_view_x(0)==17&&window_state.mesh_view_x(1)==-11);
     assert(window_state.mesh_view_y(0)==29&&window_state.mesh_view_y(1)==13);
     assert(window_state.mesh_width()==640&&window_state.mesh_height()==480);
-    RenderMesh empty{};empty.initialize(1,2,3,4);empty.update_strips();
+    RenderMesh empty{0,0,0,0};empty.initialize(1,2,3,4);empty.update_strips();
     for (int index:{0,1}) {
         empty.select_context(index);
         assert(empty.view_index==index&&empty.context==&session.contexts[index]);

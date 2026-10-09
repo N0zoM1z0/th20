@@ -16,7 +16,7 @@ Animation::Animation() noexcept : base(), handle(), index(0), timer_4c8(), timer
     field_4e8(0), link_4ec(this), link_500(this), link_514(this), link_528(this),
     link_53c(this), field_550(0), field_554(0), parent_558(nullptr), parent_55c(nullptr), field_560(0.0f),
     geometry(nullptr), callback(nullptr), geometry_bytes(0), field_570(0), field_574(0), field_578(0),
-    field_579(0), matrix_57c(), vector_5bc(), field_5c8(0), field_5cc(0), vector_5d0(),
+    field_579(0), matrix_57c(), vector_5bc(), user_data(nullptr), field_5cc(0), vector_5d0(),
     field_5dc(0), field_5e0(0) {}
 Animation::~Animation() noexcept { release_resources(); }
 PooledAnimation::PooledAnimation() : animation(), free_link(), active(0), index(0) {}
@@ -32,7 +32,7 @@ void Animation::reset() {
     base.flags = {};
     base.flags.bit_10 = 1;
     base.flags.word_04 |= 1u;
-    base.flags.mode = 1;
+    base.flags.bits_08.mode = 1;
     timer_4c8.reset();
     timer_4d8.reset();
     base.variables.field_34 = 1.0f;

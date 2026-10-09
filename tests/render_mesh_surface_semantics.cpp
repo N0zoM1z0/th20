@@ -18,6 +18,13 @@
 #include <vector>
 
 namespace th20 {
+// Original VM creation is uncalled: resource-absent mesh construction executes.
+AnimationHandle Graphics::create_grid_strip(std::int32_t,std::int32_t) {std::abort();}
+AnimationHandle Graphics::create_surface_strip(std::int32_t,std::int32_t) {std::abort();}
+Animation* AnimationHandle::resolve() {std::abort();}
+void AnimationHandle::retire() {assert(!value);value=0;}
+void Animation::clear_flag0_recursively() {std::abort();}
+
 // Only process allocation/window startup and unused callback retirement are
 // boundaries. Mesh, Animation/Session lifetimes and math execute maintained bodies.
 LockRegistry process_locks;
@@ -49,7 +56,7 @@ void close(float actual,float expected,std::source_location location=std::source
            std::abs(actual-expected)<=2e-4f*(1+std::abs(expected)));
 }
 struct Grid {
-    RenderMesh mesh{};
+    RenderMesh mesh{0,0,0,0};
     std::vector<SpriteTexturedVertex> vertices;
     std::vector<Vector3> positions;
     std::vector<Animation> strips;
@@ -67,7 +74,9 @@ struct Grid {
         }
         mesh.strips=strip_pointers.data();
     }
-    ~Grid() { for (auto& strip:strips) strip.geometry=nullptr; }
+    ~Grid() { for (auto& strip:strips) strip.geometry=nullptr;
+        mesh.root.value=0;mesh.columns=0;mesh.vertices=nullptr;mesh.positions=nullptr;
+        mesh.strip_handles=nullptr;mesh.strips=nullptr; }
     void check_strips() const {
         assert(vertices.front().color==0x12345678&&vertices.back().color==0x76543210);
         for (int col=0;col<mesh.columns-1;++col) for (int row=0;row<mesh.rows;++row) {
@@ -89,7 +98,7 @@ int main() {
         {10,20,100,60},{-64,-96,800,1200},{-0.0f,-0.0f,0,0},
         {1280,960,-320,-240},{nan,40,100,60},{30,nan,100,60},{10,20,nan,nan}}};
     unsigned cases=0;
-    RenderMesh empty{};empty.view_index=std::numeric_limits<int>::max();
+    RenderMesh empty{0,0,0,0};empty.view_index=std::numeric_limits<int>::max();
     empty.rows=1;
     std::feclearexcept(FE_ALL_EXCEPT);
     empty.initialize_surface_grid(nan,nan,0,0);
@@ -104,14 +113,12 @@ int main() {
         }
         Grid grid(columns,rows);grid.mesh.view_index=view;
         grid.mesh.context=&session.contexts[1];grid.mesh.root.value=0x12345678;
-        const auto original=grid.mesh;
+        std::array<unsigned char,sizeof(RenderMesh)> original{};
+        std::memcpy(original.data(),&grid.mesh,sizeof(grid.mesh));
         std::array<unsigned char,sizeof(Graphics)> before{};
         std::memcpy(before.data(),&process_graphics,sizeof(process_graphics));
         grid.mesh.initialize_surface_grid(shape[0],shape[1],shape[2],shape[3]);
-        assert(grid.mesh.columns==original.columns&&grid.mesh.rows==original.rows);
-        assert(grid.mesh.view_index==view&&grid.mesh.context==original.context);
-        assert(grid.mesh.root.value==original.root.value&&grid.mesh.strip_handles==original.strip_handles);
-        assert(grid.mesh.strips==original.strips&&grid.mesh.vertices==original.vertices&&grid.mesh.positions==original.positions);
+        assert(std::memcmp(original.data(),&grid.mesh,sizeof(grid.mesh))==0);
         assert(std::memcmp(before.data(),&process_graphics,sizeof(process_graphics))==0);
         float x=shape[0];
         const float dx=shape[2]/float(columns-1),dy=shape[3]/float(rows-1);

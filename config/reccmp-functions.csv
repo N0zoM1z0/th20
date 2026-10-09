@@ -786,3 +786,12 @@ th20::PlayerRecord::starting_configuration,0x004641D0,function
 th20::Animation::stop,0x0044FD00,function
 th20::Animation::set_position,0x0045DD60,function
 th20::RenderMesh::initialize_surface_grid,0x0049D5B0,function
+th20::RenderMesh::RenderMesh,0x0049CF80,function
+th20::RenderMesh::~RenderMesh,0x00471CA0,function
+th20::Graphics::create_grid_strip,0x004DE430,function
+th20::Graphics::create_surface_strip,0x004DE360,function
+th20::Animation::allocate_geometry,0x0042B590,function
+th20::Animation::variables,0x0045D0C0,function
+"th20::AnimationFile::spawn(const char*,int,int,Animation**)",0x00450C70,function
+"th20::AnimationFile::spawn(const char*,int,const Vector3&,float,int,Animation**)",0x004790E0,function
+th20::AnimationFile::spawn_flag8,0x004ABA30,function

@@ -17,14 +17,17 @@ struct AnimationColorChannels { std::uint8_t blue, green, red, alpha; };
 struct AnimationFlagBytes { std::uint8_t field_00, field_01; };
 // Mixed flag storage observed through byte/word producers and consumers.
 // Offset labels preserve unresolved roles; no packing or explicit padding.
+struct AnimationModeBits { std::uint8_t mode : 2; std::uint8_t other : 6; };
 struct AnimationFlags {
     union { std::uint16_t field_00; AnimationFlagBytes bytes_00; };
     std::uint8_t bit_10 : 1;
     std::uint8_t other_02 : 7;
     std::uint8_t field_03;
     std::uint32_t word_04;
-    std::uint8_t mode : 2;
-    std::uint8_t other_08 : 6;
+    union {
+        std::uint8_t byte_08;
+        AnimationModeBits bits_08;
+    };
     std::uint8_t other_09_low : 2;
     std::uint8_t color_mode : 3;
     std::uint8_t other_09_high : 3;
@@ -87,13 +90,18 @@ struct Animation {
     std::uint8_t field_578, field_579;
     Matrix4 matrix_57c;
     Vector3 vector_5bc;
-    std::uint32_t field_5c8, field_5cc;
+    // Native callers publish different callback-owner pointers at +5C8.
+    void* user_data;
+    std::uint32_t field_5cc;
     Vector3 vector_5d0;
     std::uint32_t field_5dc, field_5e0;
     Animation() noexcept;
     ~Animation() noexcept;
     // Nonzero field_550 enters the native repeated-handle-clear loop.
     void release_resources();
+    void* allocate_geometry(std::int32_t bytes);
+    AnmVariables& variables();
+    void clear_flag0_recursively();
     void reset();
     void set_slowdown(float value);
     void stop();

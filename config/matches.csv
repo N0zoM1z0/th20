@@ -90,3 +90,6 @@ address,name,size,status,match_percent,unit,evidence
 0x004C42C0,th20::Item::spawn_effect,344,matching,100.00,item_spawn_effect,CORE/EXACT-115; full frozen canonical replay and independent native application-origin audit; docs/ITEM_UPDATE_RECONSTRUCTION.md
 0x004C4420,th20::Item::activate,381,matching,100.00,item_activate,CORE/EXACT-115; full frozen canonical replay and independent native application-origin audit; docs/ITEM_UPDATE_RECONSTRUCTION.md
 0x0049D5B0,th20::RenderMesh::initialize_surface_grid,480,matching,100.00,render_mesh_surface_initialize,"CORE/EXACT-116; complete frozen canonical replay, two independent native application consumers; docs/RENDER_MESH_RECONSTRUCTION.md"
+0x0049CF80,th20::RenderMesh::RenderMesh,878,matching,100.00,render_mesh_construct,CORE/EXACT-117; whole frozen canonical replay and independent application creation/retirement consumers; docs/RENDER_MESH_RECONSTRUCTION.md
+0x00471CA0,th20::RenderMesh::~RenderMesh,266,matching,100.00,render_mesh_retire,CORE/EXACT-117; whole frozen canonical replay and independent application creation/retirement consumers; docs/RENDER_MESH_RECONSTRUCTION.md
+0x004DE360,th20::Graphics::create_surface_strip,198,matching,100.00,graphics_surface_strip,CORE/EXACT-117; whole frozen canonical replay and independent application creation/retirement consumers; docs/RENDER_MESH_RECONSTRUCTION.md

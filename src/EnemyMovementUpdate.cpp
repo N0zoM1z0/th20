@@ -49,7 +49,7 @@ int EnemyState::update_movements() {
                 position = previous->position_ref();
                 animations[0].handle.retire();
             }
-            animations[0].handle = file->spawn(nullptr, field_28 + transition, position,
+            animations[0].handle = file->spawn_flag8(nullptr, field_28 + transition, position,
                                                 0.0f, field_34 + 7, 0);
             field_2c = direction;
         }

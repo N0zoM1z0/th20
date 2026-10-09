@@ -86,10 +86,10 @@ void AnimationHandle::retire() {
     events.push_back(3);
     value = 0;
 }
-AnimationHandle AnimationFile::spawn(const char* stem, std::int32_t script,
-    const Vector3& position, float rotation, std::int32_t layer, std::uint32_t flags) {
+AnimationHandle AnimationFile::spawn_flag8(const char* stem, std::int32_t script,
+    const Vector3& position, float rotation, std::int32_t layer, Animation** output) {
     assert(this == expected_file && !stem && script == expected_script);
-    assert(rotation == 0 && layer == 8 && flags == 0);
+    assert(rotation == 0 && layer == 8 && output == nullptr);
     assert(position.x == expected_position.x && position.y == expected_position.y &&
            position.z == expected_position.z);
     events.push_back(4);
