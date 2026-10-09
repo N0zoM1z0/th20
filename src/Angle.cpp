@@ -47,3 +47,5 @@ Angle Angle::operator-(const Angle& other) const {
 Angle Angle::operator+(const Angle& other) const { return Angle(value+other.value); }
 Angle Angle::operator*(float factor) const { return Angle(value*factor); }
 } // namespace th20
+
+namespace th20 { float add_angles(float first, float second) { return normalize_angle(first + second); } }

@@ -25,7 +25,7 @@ struct AnimationFile {
     AnimationFile();
     ~AnimationFile();
     void bind_animation(Animation* animation, std::int32_t script);
-    // Original parent/VM binding remains a genuine undefined interface.
+    // Parent binding prepares the actual Animation before its VM update.
     void bind_animation(Animation* animation, std::int32_t script, Animation* parent);
     AnimationHandle spawn(const char* expected_stem, std::int32_t script,
                           const Vector3& position, float rotation,

@@ -34,3 +34,12 @@ fallback is separate from ordinary matching. Do not replace this with flattened
 nth-descendant counting or globally change uint16 identity storage from one signed
 consumer. Real loading/File retirement/parent binding/VM interpretation remain
 undefined interfaces. See [binding evidence](ANIMATION_BINDING_RECONSTRUCTION.md).
+
+CORE/EXACT-120 adopts the actual bit24 view and integer-return Animation VM
+interface from independent native producers and consumers. The VM body remains
+undefined. Frame updates preserve single-step UV wrap, full signed duration,
+stored-current RGB reads at terminal duration and exactly one parent hop. The
+real-owner fixtures capture the VM call without claiming interpreter execution;
+acyclic slowdown, valid nonoverlapping template storage and portable NaN
+classification delimit the accepted test domain. See
+[animation updates](ANIMATION_UPDATE_RECONSTRUCTION.md).

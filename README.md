@@ -53,7 +53,7 @@ are excluded from Git.
 | --- | --- |
 | Target and analysis | Locked executable; independent, fully attested Ghidra 12.1.3 project |
 | Inventory | 6,928 provisional candidates; origin and boundary review in progress |
-| Source | 809 mapped component functions; 794 canonical units across 155 comparison objects; fifteen whole methods remain nonexact |
+| Source | 815 mapped component functions; 800 canonical units across 156 comparison objects; fifteen whole methods remain nonexact |
 | Progress-file parser | Complete parser executes actual checksum/cipher/decoder/allocator and backup merge; checksum80 is exact, parser813/native824 remains nonexact; [evidence](docs/PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Progress-file I/O | 10 whole exact entries; complete serialization and parsing add 2,022 bytes with independent relocation and EH evidence; [file protocol](docs/PROGRESS_FILE_IO_RECONSTRUCTION.md), [exact evidence](docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md) |
 | Archive/resource I/O | 21 whole exact roots; actual File/archive/allocator/cipher/LZSS pipeline; [evidence](docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md) |
@@ -75,6 +75,7 @@ are excluded from Git.
 | Sound preload and loading | Complete 1,146-byte preload and 835-byte load plus three real supports add 2,152 exact bytes; actual resource/failure protocol; stream/factory/thread runtime remains open; [evidence](docs/SOUND_PROTOCOL_RECONSTRUCTION.md) |
 | Audio state construction | Three complete exact record constructors; authored versus compiler origin remains open |
 | Animation handle construction | Complete 23-byte exact value constructor; authored versus compiler origin remains open |
+| Animation frame update and parent binding | Six whole exact roots add 2,182 bytes, including 931/944-byte frame methods; [evidence](docs/ANIMATION_UPDATE_RECONSTRUCTION.md) |
 | Animation template and identity lookup | Seven whole exact roots add 465 bytes; actual template-state copy and scoped child search; [evidence](docs/ANIMATION_BINDING_RECONSTRUCTION.md) |
 | Animation child propagation | Six whole exact roots add 1,351 bytes; actual child storage and four recursive flag operations; [evidence](docs/ANIMATION_CHILDREN_RECONSTRUCTION.md) |
 | ANM lifetime and reset | Actual Base/Animation construction, nontrivial destruction, partial reset and inherited extents: 10 whole units / 2,870 comparison bytes; [evidence](docs/EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md) |

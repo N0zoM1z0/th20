@@ -4,6 +4,7 @@ namespace th20 {
 
 // Native reduction is bounded to 34 steps, including for infinite input.
 float normalize_angle(float value);
+float add_angles(float first, float second);
 
 struct Angle {
     float value;

@@ -24,6 +24,7 @@ template<class T> struct Interpolation {
     // Evaluate without advancing or clamping the timer. Only float/byte native
     // entries have been bound so far; other template emissions are unbound.
     T evaluate();
+    T& current_value();
     float factor() const;
     void stop();
     // Full signed duration, rather than a narrowed activity flag. Float/Vector2

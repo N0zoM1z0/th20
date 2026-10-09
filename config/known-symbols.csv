@@ -809,3 +809,9 @@ address,name,module,confidence,evidence
 0x00438A30,th20::Animation::set_field_5e0,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
 0x00429E30,th20::Animation::clear_pending_fields,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
 0x00438B70,th20::AnimationFile::apply_template,AnimationBinding,high,CORE/EXACT-119; actual whole owner/body/ABI; original spelling inferred
+0x004382B0,th20::AnimationFile::bind_animation(parent),AnimationUpdates,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
+0x004374B0,th20::Animation::slowdown,AnimationUpdates,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
+0x00435520,th20::Animation::update_motion,AnimationUpdates,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
+0x004358D0,th20::Animation::update_interpolations,AnimationUpdates,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
+0x00438600,th20::add_angles,Angle,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
+0x00437750,th20::IntegerTripleInterpolation::current_value,Interpolation,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred

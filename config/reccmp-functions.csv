@@ -808,3 +808,9 @@ th20::Animation::set_field_5dc,0x00438A50,function
 th20::Animation::set_field_5e0,0x00438A30,function
 th20::Animation::clear_pending_fields,0x00429E30,function
 th20::AnimationFile::apply_template,0x00438B70,function
+th20::AnimationFile::bind_animation(parent),0x004382B0,function
+th20::Animation::slowdown,0x004374B0,function
+th20::Animation::update_motion,0x00435520,function
+th20::Animation::update_interpolations,0x004358D0,function
+th20::add_angles,0x00438600,function
+th20::IntegerTripleInterpolation::current_value,0x00437750,function

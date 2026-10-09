@@ -1,5 +1,50 @@
 # Independent oracles and acceptance
 
+## CORE/EXACT-120 — Whole Animation frame updates and parent binding
+
+Six complete roots add2,182B/67 independently resolved relocations: whole931-byte
+motion,944-byte twelve-channel interpolation,194-byte parent binding,67-byte
+recursive slowdown and two actual value helpers29/17. Full native slowdown
+includes two internal jump bytes omitted by function-only Ghidra. Independent
+32-bit bit24 producer and whole508-byte VM consumer corroborate storage and the
+true int32 VM return. No new authored origin is inferred. See
+[animation update evidence](ANIMATION_UPDATE_RECONSTRUCTION.md).
+
+Frozen271-source graph passes800 strict units/156 fresh objects/151717 disjoint
+bytes;815 mappings/fifteen whole nonexact. Authored94/30383B,confirmed98,
+reference238/all6945 terminal reviews and header-only claims remain separate.
+Maintained production O2/ASan/UBSan passes49664 actual-owner cases with independent
+state oracles. Full canonical/support replay and all76 public tests pass.
+UV wraps once, RGB reads stored current even at terminal duration, negative
+signed durations remain active, and parent selection performs exactly one hop.
+No original VM body, resource loader or gameplay runtime is claimed.
+
+Preserve build/core120-canonical/156 verified pairs, CORE120 freeze,
+results/whole-support proof/semantics/native evidence, original155 canonical and
+three private compiler closures, and failed-trial original closures. Original
+private receipts become historical after migration. Renderer+6000DFC ownership,
+whole922-byte File VM creation,226/338-byte reset lifetime,39470-byte interpreter,
+5388-byte geometry update and Item update/draw remain open. Use repo-python,
+serial nice15,no REA/delegation,protected periodic cleanup. Goal remains active.
+PriorCORE119 matching-head remote CI succeeds atcfd2f5a,run38002180347.
+
+
+All76 public tests pass in281.266 seconds; the complete public gate
+passes in283.083 seconds. Whole production roots/supports
+strictly replay and actual maintained O2/ASan/UBSan passes49664 cases. Each of156
+affected objects compiles once;45 independent complete literal roles reconcile
+30 label changes without solving a compared target field.
+
+Protected final retirement removes324 files/8927535B;
+combined with four mid-batch files, 328 files/
+9045917B (8.63 MiB) retire.
+Original155 canonical and three private compiler/SDK closures are SHA-verified
+before deletion. All800 completed results,271 source hashes,312 current canonical
+hashes,28 native evidence hashes and three original
+closure archive hashes remain unchanged. Only superseded pairs, copied host TUs
+and regenerable bytecode retire. No compiler runs for cleanup; original target,
+reference, tools, database, current products and native evidence are protected.
+
 ## CORE/EXACT-119 — Animation template preparation and scoped lookup
 
 Seven complete roots add465B/16 independently resolved relocations: whole241-byte

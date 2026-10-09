@@ -807,3 +807,9 @@ th20::Animation::set_field_5dc
 th20::Animation::set_field_5e0
 th20::Animation::clear_pending_fields
 th20::AnimationFile::apply_template
+th20::AnimationFile::bind_animation(parent)
+th20::Animation::slowdown
+th20::Animation::update_motion
+th20::Animation::update_interpolations
+th20::add_angles
+th20::IntegerTripleInterpolation::current_value

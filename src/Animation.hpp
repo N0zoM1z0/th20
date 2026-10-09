@@ -25,12 +25,17 @@ struct AnimationFlagBytes { std::uint8_t field_00, field_01; };
 // Mixed flag storage observed through byte/word producers and consumers.
 // Offset labels preserve unresolved roles; no packing or explicit padding.
 struct AnimationModeBits { std::uint8_t mode : 2; std::uint8_t other : 6; };
+struct AnimationWord04Bits {
+    std::uint32_t low : 24;
+    std::uint32_t bit_24 : 1;
+    std::uint32_t high : 7;
+};
 struct AnimationFlags {
     union { std::uint16_t field_00; AnimationFlagBytes bytes_00; };
     std::uint8_t bit_10 : 1;
     std::uint8_t other_02 : 7;
     std::uint8_t field_03;
-    std::uint32_t word_04;
+    union { std::uint32_t word_04; AnimationWord04Bits bits_04; };
     union {
         std::uint8_t byte_08;
         AnimationModeBits bits_08;
@@ -120,6 +125,10 @@ struct Animation {
     void clear_pending_fields();
     void set_field_5dc(std::uint32_t value);
     void set_field_5e0(std::uint32_t value);
+    std::int32_t update();
+    void update_motion();
+    void update_interpolations();
+    float slowdown();
     void reset();
     void set_slowdown(float value);
     void stop();

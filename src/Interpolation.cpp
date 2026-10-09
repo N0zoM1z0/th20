@@ -35,6 +35,8 @@ template<class T> void Interpolation<T>::begin(std::int32_t frames,
 
 template<class T> std::int32_t Interpolation<T>::duration_value() const { return duration; }
 
+template<class T> T& Interpolation<T>::current_value() { return current; }
+
 template<class T> void Interpolation<T>::stop() { duration = 0; }
 template<class T> float Interpolation<T>::factor() const {
     return easing(mode, timer.fraction(), static_cast<float>(duration));
