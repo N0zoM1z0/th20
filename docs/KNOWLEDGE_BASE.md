@@ -1,5 +1,38 @@
 # Verified facts and open hypotheses
 
+## CORE-113 — Complete private file/read/fill/recovery protocol
+
+Five full private WaveReader destruction/close/open/read and CSound recovery
+contributions replay999B/23 relocations without differences. Destructor67
+includes62 code bytes and five native CC bytes with unresolved COFF ownership.
+Complete reset388/native396 retains369 differences; complete fill539/native540
+retains351. Missing seek-result stores/stack local and initial-reset NOP need
+genuine source context. No source/canonical/authored/reference admission.
+
+The shared chain executes real owned objects, arrays, guards and resource
+retirement under O2/ASan/UBSan:48 data/seek cases and36 fill cases plus API failures.
+File reads consume capped requested length before the ignored BOOL result;
+initial reset and Unlock statuses are ignored; early locked-buffer exits remain.
+Recovery makes two calls per iteration and retries any nonzero second status.
+Bounded fixture interventions observe nonterminating recovery/zero-progress
+repeat without adding production guards. See
+[whole sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
+Unused legacy SDK types, packing/virtual signatures, original OS/COM/allocator/
+EH/startup/link/runtime remain open. File-base BSS005C0004 has two reads and no
+producer; its reset binding stays diagnostic. PE import names independently
+identify SDK API anchors. Preserve full comparisons, current v2 pairs, original
+v1 closures and semantic/native evidence while retiring replaced products.
+Production stays CORE111; CORE112 remote CI succeeded at15b3449, run37971167572.
+Continue whole Item update/dispatcher rather than forcing missing stores or NOPs.
+
+All70 public tests pass in262.679 seconds; the full gate passes in
+264.582 seconds. Temporary semantic executables and CI bytecode caches
+retire automatically. Cleanup removes four replaced files /163920 bytes;
+all761 results and261 source /294 canonical /12 private hashes remain unchanged
+after CI. Build9.2MiB /analysis121MiB. Preserve core113-public-ci.log, its
+completion receipt, cleanup receipt and pre-deletion retirement plan.
+
 ## CORE-112 — Complete private sound creation and lifetime evidence
 
 Nine whole private factory/WaveReader/CSound/StreamingSound contributions replay

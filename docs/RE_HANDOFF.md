@@ -1,5 +1,50 @@
 # Current reconstruction handoff
 
+## CORE-113 — 2026-10-10 — Whole private file/read/fill/recovery chain
+
+Five complete private contributions replay999B/23 relocations: WaveReader
+close64/open327/read347/destructor67 and CSound recovery194. Destructor includes
+native62 code plus five CC bytes; original COFF ownership remains open.
+Whole reset388/native396 has369 differences, including8 absent bytes; whole
+fill539/native540 has351, including1 absent byte. Natural mutually exclusive
+backend/status if/else scopes explain earlier read/recovery disagreements;
+unconsumed seek-result stores and initial-reset NOP remain unclosed. No inert
+locals, fake void ABI or narrowed comparison; no canonical/source/origin credit.
+
+Same-body O2/ASan/UBSan passes48 data/seek and36 real owned fill cases plus API
+failures, actual construction/destruction/guards, retained locks and ignored
+initial-reset/Unlock errors. Two explicit fixture exceptions bound native
+zero-progress repeat and nonzero-second-Restore observations; no source guard
+is added. Legacy SDK types, packing/uncalled virtual signatures, original driver/
+allocator/EH/startup/thread/link/runtime remain open. File-base BSS005C0004 has
+only two reset reads, no producer and a diagnostic consumer-derived binding.
+See [whole sound evidence](SOUND_PROTOCOL_RECONSTRUCTION.md).
+
+Preserve active core113-WaveIo-v2 and core113-SoundFill-v2 object/receipt pairs,
+both v2 whole comparisons, original v1 input archives/failed earlier receipts,
+80-case and84-case semantic reports, twelve frozen private inputs, bounded
+attested native exports and import/global-binding audits. Retire only replaced
+v1 products with a pre-deletion path/size/hash plan. Current261 source hashes,
+294 canonical-file hashes and all761 CORE111 results remain protected; no
+unchanged-source cold build is needed. Prior CORE112 matching-head remote CI
+succeeded at15b3449, run37971167572; receipt core113-prior-remote-ci.json.
+
+Production remains761 units /147 objects /144535B, authored87 /27766B,
+confirmed90, mappings775 /fourteen whole nonexact, reference238 /all6945 terminal
+reviews /header-only claims. Next main work: whole Item update and SoundInf
+command dispatcher, with original renderer/resource/type/source context. The
+file/fill chain is now bounded and recorded; do not keep chasing small helper
+counts or force unused stores/NOPs. Continue repo-python, serial nice15, no REA/
+delegation, protected periodic retirement and immutable completed proof writers.
+The full game reconstruction goal remains active.
+
+All70 public tests pass in262.679 seconds; the full gate passes in
+264.582 seconds. Temporary semantic executables and CI bytecode caches
+retire automatically. Cleanup removes four replaced files /163920 bytes;
+all761 results and261 source /294 canonical /12 private hashes remain unchanged
+after CI. Build9.2MiB /analysis121MiB. Preserve core113-public-ci.log, its
+completion receipt, cleanup receipt and pre-deletion retirement plan.
+
 ## CORE-112 — 2026-10-10 — Whole private sound creation and lifetime chain
 
 Nine complete factory/WaveReader/CSound/StreamingSound contributions privately

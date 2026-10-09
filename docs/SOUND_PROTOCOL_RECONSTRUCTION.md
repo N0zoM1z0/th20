@@ -1,5 +1,100 @@
 # SoundInf owner and whole command dispatcher
 
+## CORE-113 — Complete private WaveReader I/O and buffer filling
+
+The file reader and buffer-filling chain now have shared private C++ bodies,
+using actual owned WaveReader/CSound/StreamingSound objects, SDK records, typed
+arrays and recursive guards. Five complete contributions replay 999 bytes
+without differences; all 23 relocations are checked. No source, canonical,
+authored, mapping or reference admission follows from these private results.
+
+| Complete private contribution | Native address | Compared bytes | Full result |
+| --- | --- | --- | --- |
+| WaveReader::~WaveReader | 00459920 | 67 | Zero differences; 62 code + 5 native CC, COFF ownership open |
+| WaveReader::close_file | 00459A30 | 64 | Zero differences |
+| WaveReader::open_file | 0045AB40 | 327 | Zero differences |
+| WaveReader::read | 0045AFF0 | 347 | Zero differences |
+| CSound::restore | 0045B780 | 194 | Zero differences |
+| WaveReader::reset | 0045B5F0 | Object388 / native396 | 369 full differences, including8 absent native bytes |
+| CSound::fill | 0045A240 | Object539 / native540 | 351 full differences, including1 absent native byte |
+
+Original memory/file and lost/available-buffer paths are mutually exclusive
+if/else branches. These natural scopes, also corroborated by the pinned SDK
+recovery source, explain the earlier shorter read/recovery contributions.
+Reset still lacks the native unconsumed seek-result stores and stack local;
+fill still lacks the native NOP after its ignored initial reset call. An explicit
+void cast correctly states the discarded HRESULT but does not close that
+emission disagreement. No inert locals, empty statements, narrowed comparison
+or false void prototype are added. All native bytes and earlier failed whole
+comparisons remain preserved.
+
+File opening stores mode and clears memory mode before validation. Mode one
+requires a filename, converts through CP932 using a 261-WCHAR array and capacity
+260, then opens a shared-read sequential file. Conversion and initial reset
+results are ignored. Failed opening leaves the invalid handle and previous
+metadata/name; other modes return success without opening. Closing in mode one
+always logs and attempts CloseHandle, including null/invalid handles, ignores
+failure and writes INVALID_HANDLE_VALUE. Repeated closing still attempts the API.
+The complete destructor calls this same close body without invented rollback.
+
+Memory reads check the current pointer, optionally report a byte count and
+clamp to the logical view. File reads gate only on null handles, require output
+and count pointers, then subtract the capped request from the chunk-size word
+before ReadFile. They ignore BOOL and report the supplied actual count, returning
+S_OK even for a defined failed-read observation. A short read therefore consumes
+requested remaining length, not actual length. File reset checks both null and
+invalid handles, while memory reset ignores position. Signed-positive metadata
+checks coexist with unsigned position/wrap arithmetic; file positions beyond the
+end subtract the loop span once, rather than applying modulo repeatedly.
+
+Fill restores and locks the buffer, discards initial reset status, reads data,
+and selects either silence or repeated data. Eight-bit PCM silence is128; other
+bit depths use zero. Successful completion discards Unlock status. Failed
+restore/lock/reset/read paths retain the original early exit and any acquired
+lock; no RAII cleanup is inserted. Recovery calls Restore twice per iteration,
+sleeps only for BUFFERLOST from the first call, and repeats whenever the second
+call is nonzero, including unrelated failures. Zero-progress repeat can also
+remain in its loop. Both behaviors are preserved.
+
+Same-body O2/ASan/UBSan checks pass 48 independent data/seek cases and36 owned
+fill cases, plus failed conversion/open/seek/read/status/lock/unlock/reset,
+repeated close, invalid versus null handles, signed metadata, silence, ordering
+and virtual resource retirement. Two explicit fixture exceptions stop bounded
+observations of zero-progress reads and nonzero recovery statuses; they are test
+observation boundaries, not native API exception guarantees or production guards.
+Original pointer wrap/overlap/unwritten failure count, COM driver, allocator/EH,
+startup, concurrency and full link/runtime remain unaccepted. Real memory
+arithmetic stays within actual128-byte arrays even when logical views are shorter.
+
+Legacy unused SDK prefix types, original packing and uncalled virtual signatures
+remain unproven. New consumers establish the chunk-size word's remaining-length
+role, but not all other MMCKINFO/MMIOINFO members. The tentative file-base input
+at005C0004 has two reset reads and no recovered producer. It resides in BSS;
+scalar/aggregate ownership and startup remain open. Its reset relocation is a
+consumer-derived diagnostic hypothesis, never an accepted canonical anchor.
+Other API anchors are independently verified against the locked PE import table.
+
+Preserve active core113-WaveIo-v2 and core113-SoundFill-v2 pairs, whole comparison
+receipts, both completed semantic reports, frozen private sources, bounded native
+exports/attestations, import/global-binding audits and original v1 input archives.
+Retirement removes four replaced products; current261 source hashes and147
+canonical pairs remain protected. All761 exact results equal CORE111 after cleanup,
+without repeating an unchanged-source cold build. Production remains761 units /
+147 objects /144535 disjoint bytes; authored87 /27766 bytes and reference238.
+CORE112 matching-head remote CI succeeded at15b3449, run37971167572.
+
+Continue major whole-function work after recording these unclosed source/type
+boundaries. Item update and the complete SoundInf dispatcher remain the main
+frontier; do not park on isolated small helper admissions or manufacture missing
+stores/NOPs to raise exact counts.
+
+All70 public tests pass in262.679 seconds; the full gate passes in
+264.582 seconds. Temporary semantic executables and CI bytecode caches
+retire automatically. Cleanup removes four replaced files /163920 bytes;
+all761 results and261 source /294 canonical /12 private hashes remain unchanged
+after CI. Build9.2MiB /analysis121MiB. Preserve core113-public-ci.log, its
+completion receipt, cleanup receipt and pre-deletion retirement plan.
+
 ## CORE-112 — Whole private memory-stream factory and lifetime protocol
 
 The complete 735-byte memory-stream factory now replays without differences
