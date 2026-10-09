@@ -1,5 +1,107 @@
 # Complete Item update investigation
 
+## CORE-114: complete activation, effect and retirement dependencies
+
+Three whole private Item bodies now replay without differences: retirement
+70 bytes at004C3880, effect344 at004C42C0 and activation400 at004C4420.
+Activation includes381 code bytes, three alignment bytes and all four table
+entries. Nine complete access/state contributions add290 bytes, including the
+whole92-byte PlayerRecord selection contribution and its four-slot table.
+Together twelve contributions compare1,104 bytes through55 independently
+anchored relocations. These are private results, not canonical admission.
+
+The actual storage candidates reuse complete maintained Item, Animation,
+Context, PlayerRecord, Cursor, TaskInfo, Worker, EffectRequest and AnimationFile
+values. Independent native constructors establish the0x13044 EffectInfo and
+0x21104 StoneMenuInfo candidates, including their real arrays and containers.
+The Stone factory independently allocates0x21104, constructs the value and
+publishes it at005C6120 only after successful initialization. Its getter and
+file+10 access are separate contributions; the latter shares an existing
+physical getter head without implying that the receivers are the same type.
+Effect initialization publishes through the Context setter, while the original
+file lookup independently indexes pointer-sized entries at+10.
+
+The native protocol preserves several details omitted by an injected service
+environment:
+
+- Activation stores state two before any random or ANM operation. Type thirteen
+  consumes one random value modulo eight, then a second modulo four. Remainders
+  zero through four select global PlayerRecord zero, independently of the Item's
+  selected Context. Signed record division truncates toward zero before adding
+  nine; other remainders select types nine through twelve directly.
+- Record indices0/1/2/3 read fields0C/14/10/18. Case zero and default share the
+  same actual source branch. The earlier private104-byte contribution kept two
+  identical return branches and has37 complete differences against native92;
+  the shared case/default scope explains the emission without inert shaping.
+- Types nine through twelve bind scripts37 through40 using the current process
+  Stone owner. Position copying follows binding, so a changed Item position is
+  observed. Secondary Animation stop sets field28 to minus one and clears only
+  the actual flag bit at49A.
+- Effect types4/6/14/5/7 obtain file zero from the selected Context's actual
+  EffectInfo, spawn script94 with stem `effect`, then reread type before choosing
+  sound74 or48. Types one/two create the same effect and request the Item sound
+  only when nonnegative. The returned effect handle is intentionally discarded;
+  no attachment publication or extra validation is added.
+- Retirement clears state before the original attachment retirement call,
+  detaches the actual link with observer repair, then prepends it to its retained
+  free-list owner. It does not destroy the Item or release its two Animations.
+
+One consistent host graph runs these same whole bodies at C++20/O2 with ASan and
+UBSan. It passes647 cases:576 independently computed random/record combinations,
+ordinary activation, post-binding position changes, effect/sound ordering and
+post-effect type changes, plus current/pending observer retirement. Actual Item,
+Animation, record, Cursor, arrays, Worker, recursive guards and list lifetime
+execute. Synthetic resource-free Effect/Stone/Sound startup and checked retirement,
+captured original ANM/Sound/renderer-handle operations, and abort-only uncalled
+Overlay lifetime remain explicit boundaries. Failed initial host builds retain
+their logs; temporary host graphs/executables retire automatically.
+
+The integer-zero effect/activation result candidates reproduce the complete
+native EAX epilogues. Original declared return spelling is still inferred;
+the public undefined void effect declaration is unchanged. Original Effect/Stone
+loading, RTTI/uncalled virtual signatures, allocator/EH/startup/resource retirement,
+full linkage and native game runtime remain unaccepted. No private owner/header,
+canonical unit, authored origin, mapping or reference credit is imported.
+
+Independent constructor-published three-slot table reads further separate storage
+from virtual acceptance. EffectInfo uses the known TaskInfo enable/disable heads;
+StoneMenuInfo's enable slot points instead to004E6230, a separate20-byte body.
+The private synthetic Stone fixture inherits TaskInfo enable and is not a native
+vtable match. Its original enable wrapper and both deleting/lifetime protocols
+must be closed before coherent owner migration. Private nonvirtual byte identity
+does not resolve that difference. Keep core114-owner-vtable-boundary.json.
+
+Renderer investigation retains the full constructor tail and bounded real value
+constructors: existing40-byte records, three24-byte lists,0x600 pooled Animation
+slots, real matrix and20/28-byte vertex values. The four-byte interval after the
+second Animation remains unexplained; the reference calls it padding. Its original
+type/ownership and the renderer interface still need independent evidence.
+No raw receiver prefix, copied Worker storage, arbitrary padding or injected
+Environment is introduced to compile the complete update.
+
+Preserve current lifecycle-v2/access-v3 pairs, whole comparison reports,647-case
+semantic receipt,32 frozen private inputs and all attested native exports.
+Original lifecycle-v1/access-v2 source/header/receipt/SDK closures are verified
+and archived before replaced products are retired. The initial failed access
+build exposed missing self-contained Context/Timer includes; the corrected
+header changes no body or layout, and both active pairs have fresh receipts.
+Current production remains CORE111:761 units/147 objects/144535 disjoint bytes,
+261 source files, authored87/27766 bytes, confirmed90, mappings775/fourteen whole
+nonexact, reference238/all6945 terminal reviews and header-only claims.
+CORE113 matching-head remote CI succeeded atc519b20, run37975687004.
+Continue complete Item update and draw with actual renderer ownership, then
+coherent source/ABI migration of these dependencies; do not count private byte
+identity as owner or original-runtime acceptance.
+
+All70 public tests pass in255.800 seconds; the full gate passes in
+257.509 seconds. Temporary semantic executables/graphs and CI bytecode
+caches retire automatically. Protected cleanup removes four replaced products
+/150358 bytes after persisting its pre-deletion path/size/hash inventory and
+verifying original closures. All761 existing-object results equal CORE111, and
+261 source/294 canonical/32 private hashes remain unchanged after CI. Build9.4MiB
+/analysis122MiB. Preserve core114-public-ci.log/completion receipt, cleanup receipt
+and retirement plan; no unchanged-source cold rebuild is repeated.
+
 ## CORE-108: native control flow and dependencies
 
 The complete update at 004C25A0 contains 4,757 code bytes through its return

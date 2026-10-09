@@ -1,5 +1,51 @@
 # Current reconstruction handoff
 
+## CORE-114 — 2026-10-10 — Whole private Item activation/effect/retirement
+
+Three complete Item bodies retire70/effect344/activate400 plus nine access/state
+contributions290 replay1,104B/55 relocations without differences. Whole activation
+and Record selection include their alignment and complete four-slot tables.
+Real case-zero/default sharing closes the earlier Record104/native92 mismatch;
+no inert source shaping or narrowed boundary. See
+[whole Item evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
+Same-body O2/ASan/UBSan passes647 owned cases:576 independent RNG/record
+combinations, signed selection, selected Context versus global Record-zero,
+post-effect type/post-binding position changes and real observer-safe retirement.
+Actual Item/Animation/containers/Worker/guards execute; original ANM/Sound/renderer
+handle operations and synthetic empty-resource Effect/Stone/Sound startup and
+retirement remain explicit fixtures. Abort-only uncalled Overlay lifetime supplies
+host RTTI. Original owner loading/RTTI/virtual/allocator/EH/resource retirement,
+return spelling/full link/runtime and complete renderer storage remain open.
+
+No private source/header, canonical, authored, mapping or reference admission.
+Production remains761 units/147 objects/144535B/261 sources, authored87/27766B,
+confirmed90, mappings775/fourteen whole nonexact, reference238/all6945 terminal
+reviews and header-only claims. Keep active core114-ItemLifecycle-v2 and
+core114-ItemLifecycleAccess-v3 object/receipt pairs, original replaced closures,
+full comparison reports,647-case receipt,32 frozen private inputs and bounded
+attested native exports. Prior CORE113 matching-head CI succeeded atc519b20,
+run37975687004; fresh receipt core114-prior-remote-ci.json.
+
+Renderer constructor tail/value evidence is retained. The four-byte interval
+after its second Animation remains unexplained; do not import the reference's
+padding/raw Worker storage or inject an Environment. Next: original renderer
+storage/publication/resource interfaces and whole Item update4820B including
+table, then draw815B; migrate the now matching Item dependencies only through
+coherent genuine owners/return declarations and fresh affected-graph replay.
+Native unconsumed bounds/Timer32 query still need source context. Continue
+repo-python, serial nice15, no REA/delegation, protected periodic retirement and
+immutable proof writers. The full reconstruction goal remains active.
+
+All70 public tests pass in255.800 seconds; the full gate passes in
+257.509 seconds. Temporary semantic executables/graphs and CI bytecode
+caches retire automatically. Protected cleanup removes four replaced products
+/150358 bytes after persisting its pre-deletion path/size/hash inventory and
+verifying original closures. All761 existing-object results equal CORE111, and
+261 source/294 canonical/32 private hashes remain unchanged after CI. Build9.4MiB
+/analysis122MiB. Preserve core114-public-ci.log/completion receipt, cleanup receipt
+and retirement plan; no unchanged-source cold rebuild is repeated.
+
 ## CORE-113 — 2026-10-10 — Whole private file/read/fill/recovery chain
 
 Five complete private contributions replay999B/23 relocations: WaveReader

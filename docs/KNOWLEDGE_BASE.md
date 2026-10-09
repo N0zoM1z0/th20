@@ -1,5 +1,40 @@
 # Verified facts and open hypotheses
 
+## CORE-114 — Complete private Item activation/effect/retirement chain
+
+Whole Item retirement70/effect344/activation400 and nine real access/state
+contributions290 replay1,104 bytes/55 relocations without differences.
+Activation and Record selection include full alignment and four-slot tables.
+Case zero/default source sharing closes the earlier whole104/native92 Record
+disagreement; no inert stores, shortened comparisons or fabricated receiver.
+See [whole Item dependency evidence](ITEM_UPDATE_RECONSTRUCTION.md).
+
+Shared-body C++20/O2/ASan/UBSan passes647 actual-owned cases, including576
+independent RNG/record combinations, signed selection, global Record-zero versus
+selected Context-one, effect/type rereads, post-binding position and observer-safe
+retirement. Actual containers, guards, Worker and Item/Animation lifetime execute;
+original ANM/Sound/renderer operations and synthetic empty-resource owner startup/
+retirement remain fixtures. Original Effect/Stone RTTI/virtual/lifetime/loading,
+effect return spelling, full link/game runtime and renderer's unexplained interval
+remain open. Current private complete storage is not imported into production.
+
+Preserve fresh lifecycle-v2/access-v3 pairs, native exports,647-case semantic
+receipt and32 frozen private inputs. Original replaced closures are archived
+before retirement; all current261 source hashes,294 canonical-file hashes and761
+existing-object results remain protected. Production is unchanged at CORE111.
+CORE113 matching-head remote CI succeeded atc519b20, run37975687004. Continue
+whole Item update/draw and genuine renderer ownership, followed by coherent
+source/ABI migration; no private exactness is added to canonical/origin totals.
+
+All70 public tests pass in255.800 seconds; the full gate passes in
+257.509 seconds. Temporary semantic executables/graphs and CI bytecode
+caches retire automatically. Protected cleanup removes four replaced products
+/150358 bytes after persisting its pre-deletion path/size/hash inventory and
+verifying original closures. All761 existing-object results equal CORE111, and
+261 source/294 canonical/32 private hashes remain unchanged after CI. Build9.4MiB
+/analysis122MiB. Preserve core114-public-ci.log/completion receipt, cleanup receipt
+and retirement plan; no unchanged-source cold rebuild is repeated.
+
 ## CORE-113 — Complete private file/read/fill/recovery protocol
 
 Five full private WaveReader destruction/close/open/read and CSound recovery
