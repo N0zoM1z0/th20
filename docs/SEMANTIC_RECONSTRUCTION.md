@@ -43,3 +43,12 @@ real-owner fixtures capture the VM call without claiming interpreter execution;
 acyclic slowdown, valid nonoverlapping template storage and portable NaN
 classification delimit the accepted test domain. See
 [animation updates](ANIMATION_UPDATE_RECONSTRUCTION.md).
+
+CORE/EXACT-121 adds actual 24-byte world vertex storage from independent native
+producer/FVF/stride consumers and explicit Vector3 output/reference interfaces
+from whole callers and fresh emission. The complete geometry dispatcher preserves
+all code/tables, parent pointer distinctions, shape routing and ring closure.
+Guarded live typed vertex fixtures and complete owner images delimit positive
+counts, acyclic parents and supported aliasing; native raw-allocation object
+lifetime and rendering remain open. See
+[geometry and position](ANIMATION_GEOMETRY_RECONSTRUCTION.md).

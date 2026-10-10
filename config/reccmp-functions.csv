@@ -814,3 +814,13 @@ th20::Animation::update_motion,0x00435520,function
 th20::Animation::update_interpolations,0x004358D0,function
 th20::add_angles,0x00438600,function
 th20::IntegerTripleInterpolation::current_value,0x00437750,function
+th20::Animation::update_geometry,0x00435C80,function
+th20::Animation::position,0x004376E0,function
+th20::Animation::transform_position,0x004379E0,function
+th20::Animation::rotation_z_value,0x00437930,function
+th20::Animation::scale_x_value,0x004379C0,function
+th20::Animation::scale_y_value,0x004379A0,function
+th20::WindowState::scale_value,0x00438290,function
+th20::WindowState::field_0060_value,0x00437680,function
+th20::WindowState::field_005c_value,0x004376A0,function
+th20::WindowState::field_0064_value,0x004376C0,function

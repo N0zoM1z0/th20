@@ -126,6 +126,12 @@ struct Animation {
     void set_field_5dc(std::uint32_t value);
     void set_field_5e0(std::uint32_t value);
     std::int32_t update();
+    Vector3& position(Vector3& output);
+    Vector3& transform_position(Vector3& value);
+    float rotation_z_value();
+    float scale_x_value();
+    float scale_y_value();
+    void update_geometry();
     void update_motion();
     void update_interpolations();
     float slowdown();

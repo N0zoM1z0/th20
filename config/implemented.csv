@@ -813,3 +813,13 @@ th20::Animation::update_motion
 th20::Animation::update_interpolations
 th20::add_angles
 th20::IntegerTripleInterpolation::current_value
+th20::Animation::update_geometry
+th20::Animation::position
+th20::Animation::transform_position
+th20::Animation::rotation_z_value
+th20::Animation::scale_x_value
+th20::Animation::scale_y_value
+th20::WindowState::scale_value
+th20::WindowState::field_0060_value
+th20::WindowState::field_005c_value
+th20::WindowState::field_0064_value

@@ -65,6 +65,11 @@ struct WindowState {
     };
     std::array<RepeatCounter, 4> repeat;
 
+    float scale_value();
+    std::int32_t field_0058_value();
+    std::int32_t field_005c_value();
+    std::int32_t field_0060_value();
+    std::int32_t field_0064_value();
     std::int32_t display_mode() const;
     std::int32_t mesh_view_x(std::int32_t index) const;
     std::int32_t mesh_view_y(std::int32_t index) const;

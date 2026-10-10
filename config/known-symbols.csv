@@ -815,3 +815,13 @@ address,name,module,confidence,evidence
 0x004358D0,th20::Animation::update_interpolations,AnimationUpdates,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
 0x00438600,th20::add_angles,Angle,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
 0x00437750,th20::IntegerTripleInterpolation::current_value,Interpolation,high,CORE/EXACT-120; native actual whole owner/ABI; original spelling inferred
+0x00435C80,th20::Animation::update_geometry,AnimationGeometry,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x004376E0,th20::Animation::position,AnimationGeometry,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x004379E0,th20::Animation::transform_position,AnimationGeometry,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x00437930,th20::Animation::rotation_z_value,AnimationGeometry,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x004379C0,th20::Animation::scale_x_value,AnimationGeometry,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x004379A0,th20::Animation::scale_y_value,AnimationGeometry,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x00438290,th20::WindowState::scale_value,WindowAnimation,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x00437680,th20::WindowState::field_0060_value,WindowAnimation,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x004376A0,th20::WindowState::field_005c_value,WindowAnimation,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x004376C0,th20::WindowState::field_0064_value,WindowAnimation,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred

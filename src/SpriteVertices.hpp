@@ -6,6 +6,16 @@
 
 namespace th20 {
 
+// Native XYZ/diffuse/one-texture geometry record; independent FVF142/stride24 consumer.
+struct SpriteWorldTexturedVertex {
+    Vector3 position;
+    std::uint32_t color;
+    float u, v;
+};
+static_assert(sizeof(SpriteWorldTexturedVertex) == 24);
+static_assert(offsetof(SpriteWorldTexturedVertex, color) == 12);
+static_assert(offsetof(SpriteWorldTexturedVertex, u) == 16);
+
 struct SpriteCorner {
     Vector3 position;
     float u, v;

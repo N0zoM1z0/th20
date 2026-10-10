@@ -1,5 +1,64 @@
 # Source and build ownership
 
+## CORE/EXACT-121 — Whole geometry and parent position
+
+Ten new whole roots add6,337B/134 independent relocations; the eleventh
+implementation is a separately verified17-byte folded alias at437660. Geometry includes its
+complete5388-byte body and24/40-byte tables; all1239 instruction heads and40
+selectors reconcile. Genuine Animation5E4/WindowState2138 owners and independent
+FVF142/144 stride24/28 DrawPrimitiveUP consumers establish actual vertex storage.
+Whole38/146-byte callers corroborate explicit Vector3 output/reference ABI;
+the rejected by-value compiler trial remains archived. See
+[geometry and position evidence](ANIMATION_GEOMETRY_RECONSTRUCTION.md).
+
+Frozen273-source graph passes810 strict units/158 fresh objects/158054 disjoint
+comparison bytes;825 mappings/fifteen whole nonexact. No new authored-origin
+credit:94/30383B,confirmed98;reference238/all6945 terminal reviews and header-only
+claims stay separate. Maintained production O2/ASan/UBSan passes87808 actual-owner cases;
+whole/support replay and all77 public tests pass. Geometry uses +55C
+for direct radius scale and +558 for recursive position, with native distinct
+screen-mode routing and ring closure. Tests delimit live typed storage, counts
+at least two, finite shape inputs and finite acyclic parents; native buffer
+allocation/lifetime and gameplay rendering are not claimed.
+
+Preserve build/core121-canonical/158 verified pairs, CORE121 freeze,
+whole/table proof/native exports, semantic receipts and original156 canonical/
+two private compiler input closures. Three failed trials were retired only after
+original closures and replacement11-root proof/semantics were verified, followed
+by protected800-unit replay. VM39470, File922, zero-lifetime reset226/338,
+Renderer+6000DFC and Item update/draw remain open. Continue serial nice15 and
+periodic protected cleanup; no REA/delegation. Goal remains active.
+
+All77 public tests pass in253.091s; the full public gate passes in
+254.872s. Whole production geometry, associated tables, ten
+canonical dependencies and the separately typed folded getter strictly replay;
+87808 maintained O2/ASan/UBSan state cases pass. All158 objects compile once;
+45 independent complete literal roles reconcile30 label changes without solving
+any compared target field. No unchanged-source cold build runs for cleanup.
+
+Protected retirement removes323 final files/8935149B;
+including six replaced-trial files, the batch retires329
+files/9103020B (8.68 MiB).
+Original156 canonical and two private compiler/SDK closures are SHA-verified
+before deletion. Protected810-unit replay,273 frozen source hashes,316 current
+canonical product hashes,42 native evidence hashes and five original input
+archives remain unchanged. Only superseded pairs, copied host dependencies and
+regenerable bytecode retire. Preserve current158 pairs and immutable proofs;
+private receipts retain historical input identities after migration. Prior
+CORE120 matching-head remote CI succeeds at5ec57f9,run38005893963.
+
+Next bounded scope is the complete Animation VM at42B5D0:39470B code,
+2B alignment and644/636B tables give a40752B candidate comparison contribution.
+Fresh attested Ghidra interval lists8535 of8559 actual native instruction heads;
+the24 omissions are internal JMP instructions and must be retained. All161
+case heads/636 indices audit without outside direct branches. The native signed
+int16 opcode is incremented before dispatch: normalized selectors0..635 mean
+actual opcodes-1..634. There are505 direct calls to81 heads and five indirect
+calls. This is prepared native scope only; VM source, external callback/Renderer
+interfaces, raw geometry lifetime and complete compiler emission remain open.
+Preserve core122-vm-scope.json and core122-native-evidence.json privately; do not
+assign source/exact/origin credit from the navigation audit.
+
 ## CORE/EXACT-120 — Whole Animation frame updates and parent binding
 
 Six complete roots add2,182B/67 independently resolved relocations: whole931-byte
