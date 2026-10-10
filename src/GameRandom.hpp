@@ -26,6 +26,7 @@ struct GameRandom {
     std::uint32_t next();
     std::uint32_t bounded(std::uint32_t count);
     float unit();
+    float range(float limit);
     float signed_unit();
     float radians();
     float signed_range(float limit);

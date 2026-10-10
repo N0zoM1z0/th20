@@ -76,6 +76,7 @@ are excluded from Git.
 | Audio state construction | Three complete exact record constructors; authored versus compiler origin remains open |
 | Animation handle construction | Complete 23-byte exact value constructor; authored versus compiler origin remains open |
 | Animation geometry and parent position | Ten new whole exact roots add 6,337 bytes, with one separately verified folded getter, including the full 5,388-byte geometry body and both tables; [evidence](docs/ANIMATION_GEOMETRY_RECONSTRUCTION.md) |
+| Animation operands and recursive direction | Eight whole exact roots add 2,453 bytes, including all four operand dispatchers and their complete tables; [evidence](docs/ANIMATION_OPERAND_RECONSTRUCTION.md) |
 | Animation frame update and parent binding | Six whole exact roots add 2,182 bytes, including 931/944-byte frame methods; [evidence](docs/ANIMATION_UPDATE_RECONSTRUCTION.md) |
 | Animation template and identity lookup | Seven whole exact roots add 465 bytes; actual template-state copy and scoped child search; [evidence](docs/ANIMATION_BINDING_RECONSTRUCTION.md) |
 | Animation child propagation | Six whole exact roots add 1,351 bytes; actual child storage and four recursive flag operations; [evidence](docs/ANIMATION_CHILDREN_RECONSTRUCTION.md) |

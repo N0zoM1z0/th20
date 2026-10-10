@@ -21,6 +21,7 @@ struct AnimationFile {
     TextureRecord* textures;
     std::atomic<std::uint32_t> stage;
     std::uint32_t field_60, field_64, field_68, field_6c;
+    AnmInstruction* script(std::int32_t index);
     void apply_template(Animation* animation, std::int32_t script);
     AnimationFile();
     ~AnimationFile();

@@ -52,3 +52,14 @@ Guarded live typed vertex fixtures and complete owner images delimit positive
 counts, acyclic parents and supported aliasing; native raw-allocation object
 lifetime and rendering remain open. See
 [geometry and position](ANIMATION_GEOMETRY_RECONSTRUCTION.md).
+
+CORE/EXACT-122 closes mutable ANM operand aliases, the shared Progress/ANM random
+stream and recursive rotation/direction contracts with genuine owners. Floating
+selectors and float-to-int register conversions require finite int32-representable
+inputs; masked null inputs bypass reads. Parent chains are live and acyclic.
+Rotation caches contain pre-wrap local angles and update original inherited
+angles; direction arguments are full int32 predicates. Actual-owner fixtures use
+independent random/frame models and full images, with explicit allocator startup,
+resource-absent Graphics/file destruction boundaries. Whole VM, packet/buffer
+lifetime and Renderer ownership remain open. See
+[animation operands](ANIMATION_OPERAND_RECONSTRUCTION.md).

@@ -1,5 +1,64 @@
 # Current reconstruction handoff
 
+## CORE/EXACT-122 — Animation operands and recursive direction
+
+Eight complete methods add 2,453 comparison bytes and 123 independently
+resolved relocations. Four whole operand dispatchers retain every table and
+selector path; the full native VM calls them 308 times. Genuine Animation5E4,
+File70, GameRandom28 and GraphicsDE8 owners preserve writable argument aliases,
+shared progress_random5BA4C4, unconditional floating draws versus zero-bound
+integer no-draw, and full-int32 parent direction predicates. Selector10026
+recursively captures pre-wrap angles in the cache and normalizes inherited
+original rotations. See [operand and frame evidence](ANIMATION_OPERAND_RECONSTRUCTION.md).
+
+Private strict replay and 157,851 O2/ASan/UBSan/float-cast-overflow actual-owner
+cases pass. The frozen274-source production graph passes818 strict units,
+159 fresh objects,160507 disjoint bytes and833 mappings. Fifteen whole nonexact
+roots remain; authored94/30383B,confirmed98,reference238/all6945 terminal reviews
+and header-only claims stay separate. Production root/support replay, maintained semantic
+receipts and all78 public tests pass. First wrong-anchor trial and initial
+fixture failures retain their original input closures; they earn no exact credit.
+
+Preserve build/core122-canonical/159 verified pairs, CORE122 freeze,
+whole native/table proofs, original158 canonical/one private compiler closures
+and original failed/successful host input archives. Periodic retirement verifies
+original closures, unchanged protected hashes and complete exact replay; no
+unchanged-source cold build runs for cleanup. Use serial nice15, repo-python,
+bounded Ghidra768m/two processors; no REA/delegation. Goal remains active.
+
+The whole42B5D0 VM remains39,470 code bytes plus2 alignment and644/636 table
+bytes,40752 total. All161 case heads and636 selections are retained;24 Ghidra
+omissions are internal JMPs. Signed opcodes-1..634, packet mutability/lifetime,
+Renderer+6000DFC, five indirect callback calls, full File VM creation and native
+buffer lifetime/rendering remain open. Operand closure supports the whole VM;
+it does not contribute partial exact credit to its body.
+
+All78 public tests pass in 266.813s; the complete public gate passes in
+268.510s. Whole production roots, all four associated tables,
+ten canonical dependencies and 157,851 maintained O2/ASan/UBSan/float-cast-overflow
+state cases pass. Each of 159 objects compiles once; 45 independent complete
+literal roles reconcile 30 label changes. No compared relocation
+field is solved, and no unchanged-source cold build runs for cleanup.
+
+Protected retirement removes 466 final files / 9308551 bytes;
+including the mid-batch wrong-anchor trial and temporary read copy, the batch
+retires 469 files / 10057259 bytes
+(9.59 MiB). Original 158 canonical and one
+private compiler input closures are SHA-verified before deletion. All 818 exact
+replays, 274 frozen source hashes, 318 current canonical product hashes,
+60 native evidence hashes, five original archives and
+five completed proof/semantic receipts remain unchanged. Preserve current
+159 pairs and immutable original input archives; private receipts retain their
+historical input identities after migration. Prior CORE121 matching-head remote
+CI succeeds at cf3e93b, run38009890180.
+
+The next bounded native query already finds six existing calls to setter438A30
+(+5E0) and seven to438A50 (+5DC), including429E46/429E3C. Preserve the attested
+core123-callback-setter-xrefs.txt, core123-callback-native-evidence.json and
+core123-vm-callback-plan.json. Trace those producers and actual callback vtables
+before changing typed storage; navigation does not establish absence of other
+dynamic writers or exact/source credit. Main VM40752 remains the whole objective.
+
 ## CORE/EXACT-121 — Whole geometry and parent position
 
 Ten new whole roots add6,337B/134 independent relocations; the eleventh

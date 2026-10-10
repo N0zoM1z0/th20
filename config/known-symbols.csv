@@ -825,3 +825,11 @@ address,name,module,confidence,evidence
 0x00437680,th20::WindowState::field_0060_value,WindowAnimation,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
 0x004376A0,th20::WindowState::field_005c_value,WindowAnimation,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
 0x004376C0,th20::WindowState::field_0064_value,WindowAnimation,high,CORE/EXACT-121; native whole owners and consumers; original spelling inferred
+0x00437220,th20::Animation::integer_argument,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00437310,th20::Animation::float_argument,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00437D00,th20::Animation::integer_value,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00437EB0,th20::Animation::float_value,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00437770,th20::Animation::rotation_sum,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00437840,th20::Animation::transform_direction,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00437490,th20::AnimationFile::script,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00429800,th20::GameRandom::range,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred

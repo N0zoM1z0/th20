@@ -125,6 +125,12 @@ struct Animation {
     void clear_pending_fields();
     void set_field_5dc(std::uint32_t value);
     void set_field_5e0(std::uint32_t value);
+    std::int32_t* integer_argument(std::int32_t* value, std::uint16_t mask, std::int32_t index);
+    float* float_argument(float* value, std::uint16_t mask, std::int32_t index);
+    std::int32_t integer_value(std::int32_t value);
+    float float_value(float value);
+    Vector3& rotation_sum();
+    Vector3& transform_direction(Vector3& value, std::int32_t rotate, std::int32_t scale);
     std::int32_t update();
     Vector3& position(Vector3& output);
     Vector3& transform_position(Vector3& value);

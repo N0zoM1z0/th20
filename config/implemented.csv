@@ -823,3 +823,11 @@ th20::WindowState::scale_value
 th20::WindowState::field_0060_value
 th20::WindowState::field_005c_value
 th20::WindowState::field_0064_value
+th20::Animation::integer_argument
+th20::Animation::float_argument
+th20::Animation::integer_value
+th20::Animation::float_value
+th20::Animation::rotation_sum
+th20::Animation::transform_direction
+th20::AnimationFile::script
+th20::GameRandom::range

@@ -824,3 +824,11 @@ th20::WindowState::scale_value,0x00438290,function
 th20::WindowState::field_0060_value,0x00437680,function
 th20::WindowState::field_005c_value,0x004376A0,function
 th20::WindowState::field_0064_value,0x004376C0,function
+th20::Animation::integer_argument,0x00437220,function
+th20::Animation::float_argument,0x00437310,function
+th20::Animation::integer_value,0x00437D00,function
+th20::Animation::float_value,0x00437EB0,function
+th20::Animation::rotation_sum,0x00437770,function
+th20::Animation::transform_direction,0x00437840,function
+th20::AnimationFile::script,0x00437490,function
+th20::GameRandom::range,0x00429800,function
