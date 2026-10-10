@@ -1,5 +1,8 @@
 # Actual Card construction and time state
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-075 reconstructs the complete native Card owner and six complete callable
 contributions required by the Enemy reader dependency graph. Source and exact
 comparison do not establish whole Card gameplay, disposal or a playable game.

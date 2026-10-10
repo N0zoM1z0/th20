@@ -1,5 +1,8 @@
 # Whole ECL argument and tagged stack protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-070 closes fifteen whole native contributions, 2,886 bytes, on the locked
 Japanese v1.00a Steamless executable. EclArguments.cpp supplies the real current
 instruction lookup and eleven separate parameter/destination members on the

@@ -1,5 +1,8 @@
 # Gameplay and ECL implementation review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## REF-037 — Enemy owner, stack and VM batch
 
 This coherent batch closes 230 implementations individually: four absorbed,

@@ -1,5 +1,8 @@
 # EXACT-048: native collision shapes and vector dependencies
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 This coherent batch reconstructs seven complete collision predicates, vector
 normalization, ellipse sampling and genuine Vector3 division. Ten complete
 functions add 3,841 comparison bytes. The existing circle predicate, planar

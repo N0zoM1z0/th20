@@ -1,5 +1,8 @@
 # Enemy spawn and time-scale orchestration
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-079, 2026-10-08. Three complete contributions on the locked Japanese
 Steamless target add 1257 body /1399 comparison bytes. They use the actual
 1064-byte Enemy, 752-byte EnemyState and 704-byte Session owners.

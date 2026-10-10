@@ -1,5 +1,8 @@
 # Whole ECL file loading and derived lifetime
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-069 reconstructs the complete 556-byte file-loading member and three
 derived lifetime contributions. Four whole functions add 682 instruction and
 comparison bytes. The frozen graph has 509 units / 95 objects / 91,055 disjoint

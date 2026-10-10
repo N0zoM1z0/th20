@@ -1,5 +1,8 @@
 # Hit controller lifecycle reconstruction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-099 now closes full ordinary destruction, find and update. The
 current graph has 689 strict units/135 objects/134,296 disjoint bytes; whole
 query and creator/factory questions remain open. See [current core evidence](CORE_ITERATION_EXACT_RECONSTRUCTION.md).

@@ -3,8 +3,8 @@
 #include "SecureCrt.hpp"
 
 namespace th20 {
-// Independent native consumers establish the second stream at 5BA4C4. Process
-// construction and the complete enclosing stream owner remain pending.
+// Independent native consumers establish this GameRandom stream at 5BA4C4.
+// The complete owner is declared; its process-global startup remains pending.
 extern GameRandom progress_random;
 const char progress_score_default_name[]="--------";
 const char progress_metadata_default_name[]="        ";

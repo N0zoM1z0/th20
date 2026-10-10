@@ -1,5 +1,8 @@
 # ECL buffer registration and instruction resolution
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-083 adds complete production bodies for EclLoader::append and
 EclLoader::instruction, and an exact EclFileLoader::bind_player contribution.
 The two buffer methods have semantic and compiler evidence but remain nonexact.

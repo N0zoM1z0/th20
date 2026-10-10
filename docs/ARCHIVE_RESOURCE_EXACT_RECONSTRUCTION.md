@@ -1,5 +1,8 @@
 # Whole archive and resource production protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE-094 maintains shared production File/IFile, archive-owner and resource-reader
 bodies. Twenty-one complete fresh production candidates strictly replay 4,022
 comparison bytes and 153 independently established relocations. Frozen canonical

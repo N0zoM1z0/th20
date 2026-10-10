@@ -1,5 +1,8 @@
 # EXACT-060: ANM construction, resource lifetime and reset
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 Ten whole functions add 2,855 instruction bytes and fifteen alignment bytes.
 The frozen maintained graph strictly replays 427 units / 79 cold objects /
 79,802 disjoint comparison bytes. New origins remain pending; authored coverage
@@ -93,10 +96,10 @@ The semantic role of +550 and the neighboring +554 word remains unresolved.
 
 Native41F7C0 independently establishes a callback pointer on the actual
 eight-byte DiagnosticAllocator owner. It invokes virtual destruction through
-41F880, acquires shared lock1 and deletes storage. The maintained owner declares
-that dependency; its production body and the complete callback vtable remain
-pending. Accepting the caller does not accept this dependency's implementation
-or establish complete allocation-failure behavior.
+41F880, acquires shared lock1 and deletes storage. CORE/EXACT-123 subsequently implements this dependency through the shared
+release_object template and genuine callback base. See
+[callback retirement](ANIMATION_CALLBACK_RECONSTRUCTION.md) for current virtual
+lifetime and slot evidence. Allocation/startup integration remains separate.
 
 Shared intrusive value/default construction reproduces complete native64/63
 bytes at411970/418A10. AnimationHandle word assignment independently reproduces
@@ -114,9 +117,8 @@ free-node initialization and implicit-padding retention. They exercise chained
 and locally suppressed scale inheritance, ignored +55C for scale, position
 aliasing, signed zero and NaN. Dirty reset checks retained ownership and timer/
 interpolation state, all flag bytes and both reset/retained matrices. Actual byte
-allocation/release runs with an owned shared lock registry. A bounded callback
-fixture verifies call argument/order without pretending to reconstruct its
-virtual lifetime. Nontrivial destruction invokes cleanup; a separate timed
+allocation/release runs with an owned shared lock registry. The maintained fixture now observes actual callback virtual destruction; see
+[callback evidence](ANIMATION_CALLBACK_RECONSTRUCTION.md). Nontrivial destruction invokes cleanup; a separate timed
 process confirms the nonzero+550 path does not return.
 
 All31 public tests and private target/tracking/progress/full Ghidra gates pass.
@@ -130,6 +132,6 @@ remain intact.
 The whole Enemy movement update4A7710/1675 and dispatcher48C010/41967 remain
 pending. This batch closes their actual Animation construction/reset/extents
 dependencies. Controller/Context/file binding, handle resolution/retirement,
-global viewport ownership, production callback destruction and enclosing Enemy
+global viewport ownership and enclosing Enemy
 lifetimes remain the next coherent core work. No leaf-only diversion, partial
 switch credit or whole-game linkage claim follows from this checkpoint.

@@ -1,5 +1,8 @@
 # Whole Enemy creation, initialization and script selection
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-066 adds nineteen whole functions / 1,279 instruction and comparison
 bytes. The frozen source graph has 500 units / 93 objects / 90,121 disjoint
 comparison bytes. New origins stay pending: 427 pending / 9 library / 64

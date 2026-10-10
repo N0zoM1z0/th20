@@ -1,5 +1,8 @@
 # Sprite, ANM, rendering and texture review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-095 closes four further complete native mesh operations: context
 selection, UV conversion, strip update and grid initialization. Their reference
 target associations now point to canonical actual-owner bodies; the reference

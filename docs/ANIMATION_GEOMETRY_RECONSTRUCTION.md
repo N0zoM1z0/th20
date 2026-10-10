@@ -1,5 +1,8 @@
 # Animation geometry and parent position
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-121 reconstructs the complete 5,388-byte geometry update and ten
 position/value functions in the established Animation and WindowState owners.
 All source is maintained C++ with a shared semantic body, real vertex records

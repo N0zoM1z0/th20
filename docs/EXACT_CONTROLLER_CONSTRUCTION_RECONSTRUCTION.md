@@ -1,5 +1,8 @@
 # Actual Enemy Controller and Task construction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-074 reconstructs two complete constructor contributions: the 312-byte
 EnemyController constructor at `4A2E80` and the 68-byte TaskInfo constructor at
 `41FD20`. The Controller comparison also includes its five natural compiler

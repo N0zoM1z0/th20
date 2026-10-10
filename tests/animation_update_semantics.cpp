@@ -183,7 +183,7 @@ int main() {
             IntrusiveIterator<Animation> observer(&a.child_links[1]);
             Image expected=image(a);
             replace(expected,base_at,templates[script].base);
-            replace(expected,offsetof(Animation,field_570),std::uint32_t(0));replace(expected,offsetof(Animation,field_5dc),AnimationHitCallback(nullptr));replace(expected,offsetof(Animation,field_5e0),AnimationScriptCallback(nullptr));
+            replace(expected,offsetof(Animation,field_570),std::uint32_t(0));replace(expected,offsetof(Animation,field_5dc),AnimationEntryCallback(nullptr));replace(expected,offsetof(Animation,field_5e0),AnimationScriptCallback(nullptr));
             replace(expected,offsetof(Animation,timer_4c8),assigned_zero(a.timer_4c8));replace(expected,offsetof(Animation,timer_4d8),assigned_zero(a.timer_4d8));
             Animation* chosen=supplied;
             if(supplied) {

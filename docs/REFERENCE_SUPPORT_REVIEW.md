@@ -1,5 +1,8 @@
 # REF-044: tooling, historical bridges and exhaustive review closure
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 The pinned reference at `011aa029d1dac51578107bc98a0006bd750e453c` now has an
 explicit terminal decision for all **6,945 indexed implementation bodies**.
 All **113 files with parser gaps** have individual manual reconciliations.

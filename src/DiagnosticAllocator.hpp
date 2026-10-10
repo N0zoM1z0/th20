@@ -8,8 +8,6 @@ namespace th20 {
 
 // Native startup allocates eight bytes: an observed zero word followed by the
 // real four-slot PMR resource. The word's meaning and startup body remain open.
-struct AnimationCallback;
-
 class DiagnosticAllocator {
 public:
     DiagnosticAllocator();

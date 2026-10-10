@@ -1,5 +1,8 @@
 # EXACT-046: shared easing and interpolation evaluation
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 A single native protocol batch reconstructs the shared easing dispatch, all
 eight generic interpolation update bodies, two evaluations that leave time
 unchanged, and their direct arithmetic dependencies. It adds 32 complete units:

@@ -1,5 +1,8 @@
 # Whole archive-owner and resource-reader candidates
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## CORE/EXACT-094 production update
 
 The nine complete archive/resource bodies are now shared production source

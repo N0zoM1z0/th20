@@ -1,5 +1,8 @@
 # REF-001: reference review and verified absorption
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 This is the historical first-pass audit. The user's exhaustive implementation
 review continues in [REF-002](REFERENCE_FUNCTION_REVIEW.md); module dispositions
 below are not function-level completion. Current exact totals come from the

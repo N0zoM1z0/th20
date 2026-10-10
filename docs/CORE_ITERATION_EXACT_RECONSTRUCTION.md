@@ -1,5 +1,8 @@
 # Whole core iteration and dispatch exact reconstruction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-099 admits seven complete core methods on the actual shared
 HitCtrlInf, FunctionChainController, allocator, Context and iterator owners.
 It supersedes the iterator-related nonexact results in CORE097/098.

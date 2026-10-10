@@ -1,5 +1,8 @@
 # Whole Profile construction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-084 reconstructs the complete 13,684-byte Profile constructor at
 0050AF20, including all 123 physical Spell records. Its full compiler
 contribution is 13,689 bytes, including the five following INT3 bytes.

@@ -1,5 +1,8 @@
 # SaveManager ownership, member tasks and record merge
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-087 supersedes this historical checkpoint's array-delete fixture and
 heap-family acceptance: file/decoded buffers use real malloc/free. The current
 destructor is304/native299 and remains nonexact. Parsing now has a complete

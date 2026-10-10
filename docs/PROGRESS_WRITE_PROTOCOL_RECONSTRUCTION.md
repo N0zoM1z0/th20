@@ -1,5 +1,8 @@
 # Whole progress-file serialization protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-091 now strictly replays the complete 1,198-byte writer with 49
 independent relocations. The real header prefix supplies one-past-header payload
 addressing; complete SDK/EH/literal identities close the relocation proof.

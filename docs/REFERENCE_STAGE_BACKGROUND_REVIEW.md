@@ -1,5 +1,8 @@
 # Stage background, fog, camera and STD review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## REF-043 — 2026-10-07
 
 All **121 remaining StageBackground implementations** were individually read

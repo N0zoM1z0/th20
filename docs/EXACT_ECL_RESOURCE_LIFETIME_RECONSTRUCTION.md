@@ -1,5 +1,8 @@
 # Whole ECL resource initialization and destruction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-068 adds five whole contributions / 252 instruction and comparison bytes.
 The frozen source graph has 505 units / 94 objects / 90,373 disjoint comparison
 bytes. Origins remain independently tracked: 432 pending / 9 library / 64

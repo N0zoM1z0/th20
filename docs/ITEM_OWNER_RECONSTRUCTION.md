@@ -1,5 +1,8 @@
 # Actual Item pool, lifetime and reward protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-104 reconstructs the complete Item/ItemInf storage and lifetime,
 the full pool initializer, Context publication, scheduler registration, bulk
 spawn caller and OverlayCounter reward consumer. Sixteen complete roots replay

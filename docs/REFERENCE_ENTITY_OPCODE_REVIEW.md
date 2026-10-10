@@ -1,5 +1,8 @@
 # Entity opcode, adapter and fixture review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## REF-040 — 2026-10-07
 
 All **243** scoped reference implementations were individually read across

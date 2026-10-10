@@ -1,5 +1,8 @@
 # Core ECL and Enemy dispatch reconstruction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE-062 follow-up: Enemy also owns four nested rank tables (24 pointers /96bytes).
 The complete normal graph and additional table inventory are documented in
 [whole Enemy dispatcher layout](CORE_ENEMY_DISPATCH_LAYOUT.md). The two-table
@@ -9,7 +12,7 @@ CORE-055 is an investigation checkpoint. EXACT-057 subsequently accepts the
 whole ECL tick, including its complete table/alignment, after resolving parameter
 lifetimes and independently replaying all401 relocations. See
 EXACT_ECL_TICK_RECONSTRUCTION.md. EXACT-056 closed the invocation dependency.
-The graph now has397 units and74,056 disjoint comparison bytes. The whole
+That historical checkpoint had397 units and74,056 disjoint comparison bytes. The whole
 EnemyState dispatcher remains pending. Older compiler observations below are
 historical; the current priority remains whole core dispatchers and their protocols.
 

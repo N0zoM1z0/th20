@@ -1,5 +1,8 @@
 # Whole compression and encryption protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-088 maintains encryption at 004103C0 and compression at 00539550. The cipher
 strictly replays all 446 bytes and six independent relocations. The compressor
 is 964 candidate/native 1036 bytes: source-present and executed, with no canonical

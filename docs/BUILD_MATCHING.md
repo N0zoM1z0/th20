@@ -64,7 +64,8 @@ relocations = []            # must enumerate every actual COFF relocation
 ```
 
 Add real relocation rows with offset, `DIR32`/`REL32`, decorated symbol and an
-independently established target address. The manifest starts empty. No
-whole-game compile/link graph is claimed at this bootstrap stage. Build one
-coherent owner first; later whole-program linkage must fail on real unresolved
-symbols, without stubs or `/FORCE:UNRESOLVED`.
+independently established target address. The live manifest records accepted
+component units and their per-source profiles.
+It is not a whole-game compile/link graph. Whole-program linkage must expose real
+unresolved dependencies, without stubs or `/FORCE:UNRESOLVED`. Current counts
+and verification are in [the handoff](RE_HANDOFF.md).

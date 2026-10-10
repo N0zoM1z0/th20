@@ -1,5 +1,8 @@
 # Complete ECL runtime dispatcher
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-057 reconstructs the complete EclRuntime::tick at `0053B5C0`: 11,110
 instruction bytes, two native alignment bytes and the entire 392-byte jump
 table. Canonical replay compares all 11,504 bytes with zero differences after

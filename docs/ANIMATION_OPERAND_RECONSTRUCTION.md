@@ -1,5 +1,8 @@
 # Animation operands and recursive direction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-122 reconstructs eight complete methods needed by the main animation
 interpreter. The four operand methods have 308 direct calls in its whole native
 body. The interpreter itself remains open: its 39,470-byte body, two alignment

@@ -1,5 +1,8 @@
 # Player, Bomb and Item review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 REF-030/031 reviews all 884 existing implementations in these related modules,
 including production, adapters, inline bodies, local closures, fixtures, drivers
 and the evidence writer. All 101 indexed files were read completely against the

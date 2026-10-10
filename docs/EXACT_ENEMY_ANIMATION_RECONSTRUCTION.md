@@ -1,5 +1,8 @@
 # Whole Enemy animation dispatch and parameter protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-065 reconstructs twenty complete functions with 2,218 instruction bytes
 and 77 associated alignment/table bytes. The largest is the actual
 `EnemyState::change_animation` at `00496B90`: 967 instruction bytes, one compiler

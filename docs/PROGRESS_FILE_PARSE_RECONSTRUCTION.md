@@ -1,5 +1,8 @@
 # Complete progress-file parser and checksum
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-091 strictly replays the complete 824-byte parser at 0050EB70 with
 23 independent relocations. Typed one-past-header payload addressing and
 ordinary Profile value assignment close the earlier CORE-087 emission gaps;

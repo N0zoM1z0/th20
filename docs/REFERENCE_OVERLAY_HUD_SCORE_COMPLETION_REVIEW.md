@@ -1,5 +1,8 @@
 # Overlay, HUD, SmallScore and StageCompletion review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## REF-034 — complete Overlay batch
 
 All 376 Overlay implementations have individual body-hash-bound decisions:

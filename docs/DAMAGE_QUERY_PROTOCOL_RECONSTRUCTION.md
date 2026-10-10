@@ -1,5 +1,8 @@
 # Actual damage-query consumer protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-103 closes a coherent set of consumers of the complete native
 1,707-byte HitCtrlInf query. Fourteen complete maintained bodies replay 1,025
 bytes and 36 independently anchored relocations. Thirteen are new physical

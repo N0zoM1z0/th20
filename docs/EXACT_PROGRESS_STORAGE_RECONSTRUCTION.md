@@ -1,5 +1,8 @@
 # Complete Snapshot and Metadata construction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-085 closes the actual persisted-record hierarchy started by EXACT-084.
 The complete Metadata constructor at 0050E6E0 strictly replays 612 bytes.
 The complete Snapshot constructor at 0050E540 replays its 138-byte body and

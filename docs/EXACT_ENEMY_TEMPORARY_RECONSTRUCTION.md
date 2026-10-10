@@ -1,5 +1,8 @@
 # EXACT-063: Enemy dispatcher temporary owners
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 Eleven complete functions add 1,384 instruction bytes and five alignment bytes.
 The frozen-source graph strictly replays 453 units / 86 cold objects / 85,406
 disjoint comparison bytes. New origins remain pending; authored 64 / 16,948

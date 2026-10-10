@@ -1,5 +1,8 @@
 # Actual Game construction and state
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-077 establishes the real Game owner required by the Enemy readers'
 restart-state dependency. Five complete construction/state contributions add
 362 body /367 comparison bytes. Complete Game loading, updates, cleanup and

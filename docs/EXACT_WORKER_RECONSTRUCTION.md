@@ -1,5 +1,8 @@
 # Worker launch, replacement and shutdown lifetime
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-053 closes five complete Worker lifecycle bodies: 666 instruction bytes
 and five destructor alignment bytes. The canonical graph has 377 units across
 67 cold objects and 58,903 disjoint complete comparison bytes. These five

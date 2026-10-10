@@ -1,5 +1,8 @@
 # Animation motion, interpolation and parent binding
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-120 closes six complete native functions in the existing canonical
 Animation and File owners. Maintained source uses one body per operation, with
 no copied decompiler code, assembly, arbitrary padding or profile branches.

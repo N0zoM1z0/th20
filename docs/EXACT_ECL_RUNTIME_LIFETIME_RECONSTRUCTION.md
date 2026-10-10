@@ -1,5 +1,8 @@
 # Whole ECL Runtime/Manager lifetime and async disposal
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-071 closes ten complete native contributions on the locked Japanese
 v1.00a Steamless target: 701 body bytes and 706 comparison bytes. The existing
 72-byte Runtime and 112-byte Manager now have actual maintained lifetime bodies;

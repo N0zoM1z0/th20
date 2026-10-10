@@ -1,5 +1,8 @@
 # EXACT-047: current-first Enemy position interpolation
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 This coherent native movement batch reconstructs the 2,433-byte Enemy position
 update and its direct factor, indexing, duration and motion-assignment dependencies.
 Eight complete functions add 2,716 comparison bytes, using the existing actual

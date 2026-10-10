@@ -1,5 +1,8 @@
 # Actual process Session and player-table reconstruction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-073 closes the complete Session storage and construction protocol used by
 the Enemy variable readers. Twenty whole contributions add 1,167 instruction
 bytes and 1,177 comparison bytes. The maintained definition owns two real

@@ -1,5 +1,8 @@
 # Whole ECL async creation, lookup, invalidation and call setup
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-082 separates VM task invalidation from destructive owner cleanup and
 connects the accepted VM to actual Manager/Runtime/Stack/Loader bodies. Seven
 complete contributions add 524 bytes on the locked Japanese v1.00a Steamless

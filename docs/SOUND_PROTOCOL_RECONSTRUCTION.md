@@ -1,5 +1,8 @@
 # SoundInf owner and whole command dispatcher
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## CORE-113 — Complete private WaveReader I/O and buffer filling
 
 The file reader and buffer-filling chain now have shared private C++ bodies,

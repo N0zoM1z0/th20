@@ -1,5 +1,8 @@
 # Enemy frame, movement, spawn and variable review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## REF-038 — 2026-10-07
 
 All **236** scoped reference implementations were individually read, including

@@ -1,5 +1,8 @@
 # Complete progress-file serialization and parsing
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-091 closes two existing authored roots with fresh canonical builds:
 
 | Entry | Owner | Complete bytes | Independent relocations |

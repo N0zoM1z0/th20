@@ -1,5 +1,8 @@
 # Whole Enemy movement update and its actual owners
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-061 reconstructs the complete 1,675-byte Enemy movement update and fourteen
 related owner/interface functions. The batch adds 4,205 instruction bytes and
 ten compiler alignment bytes. The frozen graph contains 442 whole units,

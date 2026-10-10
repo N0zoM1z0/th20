@@ -1,5 +1,8 @@
 # Shared locks, callback nodes and random stream state
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-052 adds nine complete native operations: 693 body bytes and five compiler
 alignment bytes. The current graph has 372 units, 67 canonical objects and 58,232
 disjoint complete comparison bytes. Original authored attribution stays at 57

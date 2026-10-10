@@ -1,5 +1,8 @@
 # Effect and Special State reference review (REF-027)
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 The pinned Oracatt/Touhou20 reference has 191 Effect and 131 Special State
 implementations. All 322 bodies were read individually, including inline
 methods, templates, lambdas, fixture hooks, two generated C evidence bodies and

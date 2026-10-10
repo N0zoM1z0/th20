@@ -1,5 +1,8 @@
 # EXACT-064: actual shot allocation and shared-control protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 Eight complete contributions add 1,131 instruction bytes and ten compiler
 alignment bytes. The frozen-source graph replays 461 units / 87 cold objects /
 86,547 disjoint comparison bytes. The whole Enemy dispatcher remains pending.

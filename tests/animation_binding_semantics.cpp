@@ -11,8 +11,8 @@
 #include <vector>
 
 namespace {
-std::int32_t hit0(th20::Animation*) { return 0; }
-std::int32_t hit1(th20::Animation*) { return 1; }
+std::int32_t entry0(th20::Animation*) { return 0; }
+std::int32_t entry1(th20::Animation*) { return 1; }
 std::int32_t script0(th20::Animation*, std::int32_t v) { return v; }
 std::int32_t script1(th20::Animation*, std::int32_t) { return -1; }
 }
@@ -148,14 +148,14 @@ int main() {
         {
             IntrusiveIterator<Animation> observer(&dest.child_links[1]);
             auto source_before=image(templates[seed%3]);
-            dest.field_570=0x12345678;dest.field_5dc=hit0;dest.field_5e0=script0;
+            dest.field_570=0x12345678;dest.field_5dc=entry0;dest.field_5e0=script0;
             dest.timer_4c8.flags=seed*13u;dest.timer_4d8.flags=seed*7u;
             dest.timer_4c8.previous=17;dest.timer_4c8.current=19;dest.timer_4c8.current_fraction=19.5f;
             dest.timer_4d8.previous=-17;dest.timer_4d8.current=-19;dest.timer_4d8.current_fraction=-19.5f;
             Image e=image(dest);
             std::memcpy(e.data(),&templates[seed%3].base,sizeof(AnimationBase));
             replace(e,offsetof(Animation,field_570),std::uint32_t(0));
-            replace(e,offsetof(Animation,field_5dc),AnimationHitCallback(nullptr));
+            replace(e,offsetof(Animation,field_5dc),AnimationEntryCallback(nullptr));
             replace(e,offsetof(Animation,field_5e0),AnimationScriptCallback(nullptr));
             replace(e,offsetof(Animation,timer_4c8),zero_assignment(dest.timer_4c8));
             replace(e,offsetof(Animation,timer_4d8),zero_assignment(dest.timer_4d8));
@@ -163,11 +163,11 @@ int main() {
             assert(image(dest)==e);
             assert(image(templates[seed%3])==source_before);
             ++cases;
-            AnimationHitCallback hit=seed%2?hit0:hit1;
+            AnimationEntryCallback entry=seed%2?entry0:entry1;
             AnimationScriptCallback script=seed%2?script0:script1;
-            dest.set_field_5dc(hit);
+            dest.set_field_5dc(entry);
             dest.set_field_5e0(script);
-            assert(dest.field_5dc==hit && dest.field_5e0==script);
+            assert(dest.field_5dc==entry && dest.field_5e0==script);
             dest.clear_pending_fields();
             assert(dest.field_5dc==0 && dest.field_5e0==0);
             ++cases;

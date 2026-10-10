@@ -1,5 +1,8 @@
 # Archive codec, shared dictionary and allocation
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-088 adds the complete446-byte exact encryption entry and executes
 the actual whole compressor/cipher/parser pipeline. Compressor964/native1036
 remains nonexact; the unobserved native sum is recorded without an emission-only

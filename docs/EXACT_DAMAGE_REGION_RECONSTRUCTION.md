@@ -1,5 +1,8 @@
 # Damage Region routing and configuration
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-050 reconstructs one coherent native region protocol: the 2,696-byte
 collision dispatcher, its rectangle/circle configuration paths and position,
 context, allocation-flag, Motion and identifier dependencies. Thirteen complete

@@ -1,5 +1,8 @@
 # Bullet ownership, construction and resource release
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-078 closes eleven complete contributions on the actual BulletInf owner
 and its 2001-entry Bullet pool. They add 1,471 body /1,491 comparison bytes.
 The frozen graph contains 591 units in 108 objects over 102,474 disjoint

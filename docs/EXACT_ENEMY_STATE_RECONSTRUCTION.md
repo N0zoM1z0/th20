@@ -1,5 +1,8 @@
 # Enemy state lifetime and ECL argument protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-058 closes eleven complete functions supporting the whole Enemy dispatcher.
 They add 1,581 disjoint bytes. The accepted graph contains 408 whole units in 76
 cold objects over 75,637 comparison bytes. All new origins remain pending;

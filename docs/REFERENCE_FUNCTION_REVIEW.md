@@ -1,5 +1,8 @@
 # Exhaustive reference implementation review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 The user requires a function-by-function review of every existing reference
 implementation. REF-001's repository scan and module dispositions alone do not
 meet that requirement. REF-002 through REF-044 individually read the bodies,
@@ -45,8 +48,9 @@ terminal decisions separately from intermediate work, and reports untouched
 bodies as pending. No scan, compile or module status grants review credit.
 The final REF-044 checkpoint has 6,945 explicit terminal decisions and zero
 pending indexed entries: 114 absorbed-exact, three library-exact, 1,877
-reviewed-nonexact and 4,951 support-reviewed. These are reference-body outcomes,
-not native function counts. All 241 complete canonical units replay exactly.
+reviewed-nonexact and 4,951 support-reviewed. These are historical REF-044 reference-body outcomes, not current absorption
+totals or native function counts. At REF-044, all241 complete canonical units
+replayed exactly; later native admissions are tracked in the current ledgers.
 The separate
 `reference-parse-gap-reviews.csv` binds manual reconciliation to the file hash
 and parser-gap count: all 113 files are reconciled, leaving zero pending.

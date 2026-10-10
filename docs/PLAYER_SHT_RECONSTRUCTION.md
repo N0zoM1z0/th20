@@ -1,5 +1,8 @@
 # Player construction and SHT consumer reconstruction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-102 maintains complete actual Player construction, serialized SHT
 loading/relocation and damage-limit selection, with actual Overlay value
 construction and typed Context selection. Twelve whole contributions add

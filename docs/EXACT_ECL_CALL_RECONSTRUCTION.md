@@ -1,5 +1,8 @@
 # ECL invocation and frame protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-056 accepts the complete 923-byte invocation at `0053F3B0` and the actual
 five-byte empty release diagnostic hook at `0040C6B0`. The invocation is authored
 application behavior. The empty hook's library/template/ICF origin remains

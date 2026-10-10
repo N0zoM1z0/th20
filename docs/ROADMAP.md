@@ -1,19 +1,17 @@
 # Reconstruction roadmap
 
-1. Completed bootstrap: identify variants, user-select the exact target,
-   attest Ghidra, inventory provisional boundaries, provision a pinned modern
-   x86 compiler and verify control-plane failure paths.
-2. Review one bounded owner/ABI family using target-local calls, strings,
-   fields and code extents. Establish clean source and a reproducible unit.
-   REF-001 establishes the first Timer units and verified STL equivalents;
-   close clock/rounding and enclosing RNG ownership before widening that family.
-3. Expand origins/source ownership and canonical exact replay without relying
-   on auto-analysis as proof of completeness. Prioritize connected game hubs
-   alongside leaf helpers, using architecture metrics as routing evidence.
-4. Build a real whole-program production graph with complete compile/link and
-   audited global/initializer ownership. Verify gameplay/runtime independently.
-5. Improve shared semantic source and consider portable products only under a
-   separate scope, with asset distribution kept private.
+Bootstrap, locked-target/Ghidra setup and the exhaustive pinned-reference review
+are complete. Current reconstruction counts and open boundaries are recorded in
+[the handoff](RE_HANDOFF.md), [progress](PROGRESS.md) and the source/match ledgers.
 
-No whole-game exact, source-complete, playable or portable status is claimed
-by the bootstrap checkpoint.
+1. Close coherent core protocols around the whole Animation VM and actual
+   Renderer/callback/packet owners, retaining complete control flow and tables.
+2. Integrate the remaining whole Enemy dispatcher and its queue/factory lifetimes.
+   Keep nonexact compiler hypotheses explicit rather than claiming switch fragments.
+3. Resolve recorded whole nonexact functions and process-global initialization;
+   extend authored-origin review using independent native evidence.
+4. Assemble the genuine production compile/link graph, then verify gameplay and
+   resource/runtime behavior independently. No playable reconstruction is available.
+
+Keep periodic protected artifact retirement and bounded serial tool usage. A
+portable product is a separate future scope; original game assets remain private.

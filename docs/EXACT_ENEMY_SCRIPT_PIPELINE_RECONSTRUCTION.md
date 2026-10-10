@@ -1,5 +1,8 @@
 # Enemy State and ECL Manager script pipeline
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-080, 2026-10-08. Three complete contributions add 419 body/comparison bytes
 on the locked Japanese Steamless target, using actual 752-byte EnemyState,
 112-byte EclManager, 72-byte EclRuntime and 16-byte Timer owners.

@@ -1,5 +1,8 @@
 # Whole progress-file loading, saving and native file I/O
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-089 reconstructs the complete save/load protocol on the existing
 SaveManager, Snapshot, Profile, Metadata, Worker, allocator and codec owners.
 CORE/EXACT-091 adds complete serialization and parsing to the eight CORE-089

@@ -1,5 +1,8 @@
 # Complete function-chain controller protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-099 now closes both full insertion methods and update/draw,
 including original tables and alignment. Shared iterator initialization and
 actual scopes explain the prior differences. Unlocked removal and node factory

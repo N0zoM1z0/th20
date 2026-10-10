@@ -1,5 +1,8 @@
 # Enemy damage, drops, defeat, cleanup and mesh review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## REF-039 — 2026-10-07
 
 All **141** implementations in this coherent batch were individually read,

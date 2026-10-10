@@ -1,5 +1,8 @@
 # Bullet, Laser and Damage Regions review (REF-029)
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-063 independently reconstructs ShotMetadata construction at47BB90/255,
 including five alignment bytes and complete native flags5 exception metadata.
 Its body-hash-bound review now associates the complete canonical constructor;

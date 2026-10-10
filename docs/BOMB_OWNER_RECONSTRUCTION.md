@@ -1,5 +1,8 @@
 # Actual Bomb ownership and dispatch
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 CORE/EXACT-100 reconstructs the actual BombBaseInf/BombInf storage, lifetime,
 scheduler registration, Context publication and virtual dispatch. Seventeen
 complete contributions add 1,272 disjoint comparison bytes and 63 independently

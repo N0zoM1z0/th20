@@ -1,5 +1,8 @@
 # Enemy movement composition and nonthrowing construction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-061 follow-up: the previously pending whole movement update and its
 Graphics/viewport/configuration/Context/AnimationFile owners now strictly replay.
 See [whole movement update evidence](EXACT_ENEMY_UPDATE_RECONSTRUCTION.md).

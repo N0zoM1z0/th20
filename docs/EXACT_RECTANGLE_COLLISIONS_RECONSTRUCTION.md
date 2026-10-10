@@ -1,5 +1,8 @@
 # EXACT-049: rectangle/segment neighborhood and planar dependencies
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 This batch reconstructs all twelve reviewed neighboring collision routines and
 nine direct dependencies. The 21 complete contributions add 10,759 comparison
 bytes. Every original candidate closes; none is left at a structural-only result.

@@ -1,5 +1,8 @@
 # Damage controller and whole query evidence
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## CORE/EXACT-103 — Actual damage-query consumers
 
 Thirteen new complete consumers add 980 disjoint bytes and 36 independently

@@ -1,5 +1,8 @@
 # EXACT-045: complete Motion update protocol
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 This is the first native reconstruction batch after the exhaustive reference
 review. It closes the two shared Motion update bodies and their immediate
 angle/vector/math dependency family with natural maintained C++. The existing

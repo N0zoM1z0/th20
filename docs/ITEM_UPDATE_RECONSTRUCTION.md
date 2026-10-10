@@ -1,5 +1,8 @@
 # Complete Item update investigation
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 ## CORE/EXACT-115: maintained whole activation, effect and retirement
 
 The three complete Item bodies and their coherent owner interfaces are now

@@ -1,5 +1,8 @@
 # Whole Enemy variable destinations and Controller data
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-072 closes six complete contributions on the actual Enemy, Context,
 EnemyController and identifier owners. Independent original vtable `5703CC`
 places integer/float reading and destination resolution in four separate slots.

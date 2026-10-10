@@ -1,5 +1,8 @@
 # Intrusive observation and nonthrowing Region construction
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 EXACT-051 closes the shared linked-node/sentinel/observer protocol that the damage
 controller requires, plus Region construction/update and two position/vector
 dependencies. Twenty new complete units add 1,827 body bytes and 15 compiler

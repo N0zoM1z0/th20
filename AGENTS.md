@@ -74,6 +74,12 @@ attested Ghidra workflow directly.
 
 ## Session discipline
 
+Keep RE_HANDOFF.md limited to current status, protected products and next work.
+Architecture, oracles and source navigation each have their own documentation
+role. Put unique native findings in focused evidence documents and link them
+through EVIDENCE_INDEX.md; do not duplicate cumulative checkpoint logs across
+core documents. Historical batch totals must not masquerade as current status.
+
 Use one writable reconstruction session at a time. Do not delegate matching or
 run concurrent MSVC builds. Keep `config/claims.csv` header-only. Work on one
 bounded address, coherent owner/protocol, or workflow-maintenance batch.

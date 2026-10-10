@@ -1,5 +1,8 @@
 # REF-026: Title batch review
 
+Batch counts and open-work statements describe the checkpoint documented here.
+For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
+
 All 803 indexed Title implementations were individually read and have body-hash
 bound decisions: 66 nonexact and 737 support. This includes 333 candidate-role
 entries, 455 oracle bodies and 15 tools; role hints are not acceptance decisions.
