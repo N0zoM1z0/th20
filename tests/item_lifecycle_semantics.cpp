@@ -1,4 +1,5 @@
 #include "Item.hpp"
+#include "AnimationReleaseObserver.hpp"
 #include "ItemResourceOwners.hpp"
 #include "Session.hpp"
 #include "GameRandom.hpp"
@@ -32,9 +33,6 @@ GameRandom script_random(0);
 SoundInf process_sound;
 StoneMenuInfo* process_stone_menu;
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_() {}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* callback) {
-    assert(!callback);++releases;
-}
 const Matrix4 identity_matrix=[] {
     Matrix4 result;for(int i=0;i<4;++i)result.elements[i][i]=1;return result;
 }();
@@ -179,6 +177,8 @@ void retirement() {
     Item first,middle,last;IntrusiveList<Item> active,available;
     for(auto* item:{&first,&middle,&last}) {
         item->free_list=&available;item->state=2;item->attachment=0x123u;
+        new th20_test::AnimationReleaseObserver(&item->animation,releases);
+        new th20_test::AnimationReleaseObserver(&item->secondary_animation,releases);
         active.append(&item->link);
     }
     {
@@ -208,7 +208,7 @@ int main() {
         owner_interfaces(*menu,*effect);activation(file);effects(*effect,file);retirement();
         menu->file=nullptr;process_stone_menu=nullptr;
     }
-    assert(cases==651 && releases>0);
+    assert(cases==651 && releases==6);
     process_locks.disable();process_allocator=nullptr;
     std::printf("%u whole Item cases passed: actual objects/RNG/record selection, effect ordering, animation state and observer-safe retirement; ANM/Sound/renderer and owner startup/retirement remain fixtures.\n",cases);
 }

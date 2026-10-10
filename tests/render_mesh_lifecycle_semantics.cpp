@@ -82,7 +82,6 @@ void DiagnosticAllocator::release_bytes(void* p) {
     auto it=allocations.begin();while(it!=allocations.end()&&it->pointer!=p)++it;
     assert(it!=allocations.end());events.push_back({2,p,0});allocations.erase(it);std::free(p);
 }
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) {assert(!p);}
 Graphics::~Graphics() {
     assert(!resource_19c&&!resource_1a0&&!resource_1a4&&!surface_animation);
     assert(!direct3d&&!device&&!snapshot_pixels&&!dynamic_buffer&&!startup_scene);

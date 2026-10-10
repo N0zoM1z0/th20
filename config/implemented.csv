@@ -831,3 +831,12 @@ th20::Animation::rotation_sum
 th20::Animation::transform_direction
 th20::AnimationFile::script
 th20::GameRandom::range
+th20::AnimationCallback::AnimationCallback
+th20::AnimationCallback::~AnimationCallback
+th20::AnimationCallback::scalar_deleting_destructor
+th20::Animation::set_callback
+th20::Animation::interrupt
+th20::Bullet::type
+th20::Bullet::color_index
+th20::bullet_animation_script
+std::destroy_at<th20::AnimationCallback>

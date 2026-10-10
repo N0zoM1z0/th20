@@ -13,7 +13,6 @@ namespace th20 {
 LockRegistry process_locks;
 DiagnosticAllocator* process_allocator;
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_(){}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) { assert(this==process_allocator && !p); }
 WindowState window_state{}; // Fixture global; native startup remains unresolved.
 const Matrix4 identity_matrix=[] {Matrix4 m;for(int i=0;i<4;++i)m.elements[i][i]=1;return m;}();
 }

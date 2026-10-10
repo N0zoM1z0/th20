@@ -25,7 +25,6 @@ AnimationFile::~AnimationFile() { assert(!bytes && !templates && !sprites && !sc
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_(){}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator=&allocator;
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) {assert(this==process_allocator && !p);}
 WindowState window_state{};
 const Matrix4 identity_matrix=[] {Matrix4 m;for(int i=0;i<4;++i)m.elements[i][i]=1;return m;}();
 }

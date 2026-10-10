@@ -44,7 +44,6 @@ void WeaponStoneInfo::enable() {std::abort();}
 void WeaponStoneInfo::disable() {std::abort();}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator=&allocator;
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) { assert(!p); }
 }
 namespace {
 using namespace th20;

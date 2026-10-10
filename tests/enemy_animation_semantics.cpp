@@ -21,7 +21,6 @@ LockRegistry process_locks;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator = &allocator;
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) { assert(!p); }
 const Matrix4 identity_matrix = [] { Matrix4 m; for (int i=0;i<4;++i) m.elements[i][i]=1; return m; }();
 EclScriptPosition::EclScriptPosition() noexcept : subroutine(0), offset(0) {}
 EclRuntime::EclRuntime() noexcept : time(0), async_id(0), manager(nullptr), signal(0), rank(0), flags{} {}

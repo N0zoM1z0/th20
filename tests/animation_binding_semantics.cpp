@@ -10,13 +10,17 @@
 #include <limits>
 #include <vector>
 
+namespace {
+std::int32_t hit0(th20::Animation*) { return 0; }
+std::int32_t hit1(th20::Animation*) { return 1; }
+std::int32_t script0(th20::Animation*, std::int32_t v) { return v; }
+std::int32_t script1(th20::Animation*, std::int32_t) { return -1; }
+}
+
 namespace th20 {
 LockRegistry process_locks;
 DiagnosticAllocator* process_allocator;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* callback) {
-    assert(this == process_allocator && callback == nullptr);
-}
 const Matrix4 identity_matrix = [] { Matrix4 value; for (int i=0;i<4;++i) value.elements[i][i]=1.0f; return value; }();
 // Original file retirement/loading is still undefined. This fixture permits
 // only a borrowed template view; no owned file resource reaches destruction.
@@ -144,24 +148,26 @@ int main() {
         {
             IntrusiveIterator<Animation> observer(&dest.child_links[1]);
             auto source_before=image(templates[seed%3]);
-            dest.field_570=0x12345678;dest.field_5dc=0xffffffff;dest.field_5e0=0x80000000;
+            dest.field_570=0x12345678;dest.field_5dc=hit0;dest.field_5e0=script0;
             dest.timer_4c8.flags=seed*13u;dest.timer_4d8.flags=seed*7u;
             dest.timer_4c8.previous=17;dest.timer_4c8.current=19;dest.timer_4c8.current_fraction=19.5f;
             dest.timer_4d8.previous=-17;dest.timer_4d8.current=-19;dest.timer_4d8.current_fraction=-19.5f;
             Image e=image(dest);
             std::memcpy(e.data(),&templates[seed%3].base,sizeof(AnimationBase));
             replace(e,offsetof(Animation,field_570),std::uint32_t(0));
-            replace(e,offsetof(Animation,field_5dc),std::uint32_t(0));
-            replace(e,offsetof(Animation,field_5e0),std::uint32_t(0));
+            replace(e,offsetof(Animation,field_5dc),AnimationHitCallback(nullptr));
+            replace(e,offsetof(Animation,field_5e0),AnimationScriptCallback(nullptr));
             replace(e,offsetof(Animation,timer_4c8),zero_assignment(dest.timer_4c8));
             replace(e,offsetof(Animation,timer_4d8),zero_assignment(dest.timer_4d8));
             file.apply_template(&dest,static_cast<std::int32_t>(seed%3));
             assert(image(dest)==e);
             assert(image(templates[seed%3])==source_before);
             ++cases;
-            dest.set_field_5dc(0x80000000u+seed);
-            dest.set_field_5e0(0xffffffffu-seed);
-            assert(dest.field_5dc==0x80000000u+seed && dest.field_5e0==0xffffffffu-seed);
+            AnimationHitCallback hit=seed%2?hit0:hit1;
+            AnimationScriptCallback script=seed%2?script0:script1;
+            dest.set_field_5dc(hit);
+            dest.set_field_5e0(script);
+            assert(dest.field_5dc==hit && dest.field_5e0==script);
             dest.clear_pending_fields();
             assert(dest.field_5dc==0 && dest.field_5e0==0);
             ++cases;

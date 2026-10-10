@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = ['ArchiveOwner', 'PbgFile', 'GameResourceIo', 'ArchiveCrypt', 'ArchiveLzss', 'DiagnosticAllocator', 'DebugMemoryResource', 'LockRegistry', 'EclDiagnostic', 'Animation', 'AnimationHandle', 'AnmVariables', 'Matrix4', 'Interpolation', 'Easing', 'Timer', 'ClockScalar', 'Angle', 'ScalarMath', 'Vector3', 'Vector2', 'MotionMath', 'IntegerTriple', 'FogValue', 'CollisionGeometry', 'PlayerStorage', 'Identifier32', 'Motion', 'TaskInfo', 'TaskInfoConstruction', 'FunctionChain', 'Rectangle', 'OverlayCounter', 'Context', 'PlayerRecord', 'Session', 'Player', 'ShotData', 'PlayerDamageCap', 'WeaponStoneInfo']
+SOURCES = ['ArchiveOwner', 'PbgFile', 'GameResourceIo', 'ArchiveCrypt', 'ArchiveLzss', 'DiagnosticAllocator', 'DebugMemoryResource', 'LockRegistry', 'EclDiagnostic', 'Animation', 'AnimationCallback', 'AnimationHandle', 'AnmVariables', 'Matrix4', 'Interpolation', 'Easing', 'Timer', 'ClockScalar', 'Angle', 'ScalarMath', 'Vector3', 'Vector2', 'MotionMath', 'IntegerTriple', 'FogValue', 'CollisionGeometry', 'PlayerStorage', 'Identifier32', 'Motion', 'TaskInfo', 'TaskInfoConstruction', 'FunctionChain', 'Rectangle', 'OverlayCounter', 'Context', 'PlayerRecord', 'Session', 'Player', 'ShotData', 'PlayerDamageCap', 'WeaponStoneInfo']
 
 class PlayerShotDataTests(unittest.TestCase):
     def test_owned_construction_resource_relocation_and_cap_selection(self):

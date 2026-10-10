@@ -1,4 +1,5 @@
 #include "Item.hpp"
+#include "AnimationReleaseObserver.hpp"
 #include "Session.hpp"
 #include "GameRandom.hpp"
 #include "Bullet.hpp"
@@ -32,9 +33,6 @@ DiagnosticAllocator* process_allocator;
 FunctionChainController* process_chain;
 GameRandom script_random(0);
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_() {}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* callback) {
-    assert(!callback); ++releases;
-}
 const Matrix4 identity_matrix=[] {
     Matrix4 result; for(int i=0;i<4;++i)result.elements[i][i]=1; return result;
 }();
@@ -274,6 +272,9 @@ int main() {
     auto owner=std::make_unique<ItemInf>();
     ordinary(*owner,file1);specials(*owner);points(*owner);bonuses(*owner,weapon);
     ordering(*owner,*first,*second,file0,file1);
+    for(auto& item:owner->pool)
+        for(auto* animation:{&item.animation,&item.secondary_animation})
+            new th20_test::AnimationReleaseObserver(animation,releases);
     const auto before=releases;owner.reset();assert(releases-before==3072);
     session.context(0).set_item_controller(nullptr);session.context(1).set_item_controller(nullptr);
     session.context(0).overlay_owner=nullptr;overlay.weapon_34=nullptr;

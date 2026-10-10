@@ -833,3 +833,12 @@ address,name,module,confidence,evidence
 0x00437840,th20::Animation::transform_direction,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
 0x00437490,th20::AnimationFile::script,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
 0x00429800,th20::GameRandom::range,AnimationOperands,high,CORE/EXACT-122; native whole operand owners and consumers; original spelling inferred
+0x00446B60,th20::AnimationCallback::AnimationCallback,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x00446BA0,th20::AnimationCallback::~AnimationCallback,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x00446BC0,th20::AnimationCallback::scalar_deleting_destructor,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x00446BF0,th20::Animation::set_callback,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x004388F0,th20::Animation::interrupt,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x00485640,th20::Bullet::type,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x00485720,th20::Bullet::color_index,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x0047D580,th20::bullet_animation_script,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x0041F880,std::destroy_at<th20::AnimationCallback>,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred

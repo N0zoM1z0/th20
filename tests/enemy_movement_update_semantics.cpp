@@ -29,9 +29,6 @@ LockRegistry process_locks;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator = &allocator;
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* value) {
-    assert(!value);
-}
 const Matrix4 identity_matrix = [] {
     Matrix4 result;
     for (int i = 0; i != 4; ++i) result.elements[i][i] = 1.0f;

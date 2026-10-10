@@ -22,7 +22,6 @@ namespace th20 {
 LockRegistry process_locks;
 DiagnosticAllocator* process_allocator;
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_(){}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* cb) {assert(this==process_allocator && cb==nullptr);}
 const Matrix4 identity_matrix=[] {Matrix4 r;for(int i=0;i<4;++i)r.elements[i][i]=1.0f;return r;}();
 // Borrowed-only File fixture; original loading and retirement remain undefined.
 AnimationFile::~AnimationFile() {assert(!bytes&&!sprites&&!scripts&&!textures&&!templates);}
@@ -184,7 +183,7 @@ int main() {
             IntrusiveIterator<Animation> observer(&a.child_links[1]);
             Image expected=image(a);
             replace(expected,base_at,templates[script].base);
-            replace(expected,offsetof(Animation,field_570),std::uint32_t(0));replace(expected,offsetof(Animation,field_5dc),std::uint32_t(0));replace(expected,offsetof(Animation,field_5e0),std::uint32_t(0));
+            replace(expected,offsetof(Animation,field_570),std::uint32_t(0));replace(expected,offsetof(Animation,field_5dc),AnimationHitCallback(nullptr));replace(expected,offsetof(Animation,field_5e0),AnimationScriptCallback(nullptr));
             replace(expected,offsetof(Animation,timer_4c8),assigned_zero(a.timer_4c8));replace(expected,offsetof(Animation,timer_4d8),assigned_zero(a.timer_4d8));
             Animation* chosen=supplied;
             if(supplied) {

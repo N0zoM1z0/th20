@@ -16,7 +16,6 @@ void Player::enable() {std::abort();}
 WeaponStoneInfo::~WeaponStoneInfo() {std::abort();}
 void WeaponStoneInfo::enable() {std::abort();}
 WeaponStoneInfo* fixture_overlay;
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* value) {assert(!value);}
 const Matrix4 identity_matrix=[] {
     Matrix4 result;for (int i=0;i<4;++i)result.elements[i][i]=1;return result;
 }();

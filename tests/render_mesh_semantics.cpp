@@ -40,7 +40,6 @@ WindowState window_state{};
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator=&allocator;
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) { assert(!p); }
 }
 namespace {
 using namespace th20;

@@ -5,7 +5,7 @@ import subprocess
 import tempfile
 import unittest
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = ['Animation', 'AnimationHandle', 'AnmVariables', 'Matrix4', 'Interpolation', 'Easing', 'Timer', 'ClockScalar', 'Angle', 'ScalarMath', 'Vector3', 'Vector2', 'MotionMath', 'IntegerTriple', 'FogValue', 'CollisionGeometry', 'DiagnosticAllocator', 'DebugMemoryResource', 'LockRegistry', 'AnimationChildren', 'AnimationGeometry', 'AnimationOperands', 'AnimationFile', 'Graphics', 'Configuration', 'ConfigurationValue', 'Worker', 'GameRandom', 'GameRandomStream', 'Item', 'TaskInfo', 'FunctionChain']
+SOURCES = ['Animation', 'AnimationCallback', 'AnimationHandle', 'AnmVariables', 'Matrix4', 'Interpolation', 'Easing', 'Timer', 'ClockScalar', 'Angle', 'ScalarMath', 'Vector3', 'Vector2', 'MotionMath', 'IntegerTriple', 'FogValue', 'CollisionGeometry', 'DiagnosticAllocator', 'DebugMemoryResource', 'LockRegistry', 'AnimationChildren', 'AnimationGeometry', 'AnimationOperands', 'AnimationFile', 'Graphics', 'Configuration', 'ConfigurationValue', 'Worker', 'GameRandom', 'GameRandomStream', 'Item', 'TaskInfo', 'FunctionChain']
 class AnimationOperandTests(unittest.TestCase):
     def test_actual_owners_random_and_recursive_frames(self):
         compiler = next((p for n in ('g++-13', 'clang++-18', 'c++') if (p := shutil.which(n))), None)

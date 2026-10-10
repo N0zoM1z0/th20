@@ -13,7 +13,7 @@ class RenderMeshTests(unittest.TestCase):
                          if (p := shutil.which(name))), None)
         self.assertIsNotNone(compiler)
         sources = ["RenderMeshLifecycle", "Graphics", "Configuration", "ConfigurationValue", "Worker", "RenderMesh", "EnemyMesh", "MeshInterfaces", "EnemyState", "EnemyMovement",
-                   "EnemyCounters", "EnemyHealth", "EnemyPattern", "AnimationParameters", "Animation", "AnimationHandle",
+                   "EnemyCounters", "EnemyHealth", "EnemyPattern", "AnimationParameters", "Animation", "AnimationCallback", "AnimationHandle",
                    "AnmVariables", "Matrix4", "Motion", "MotionMath", "MotionConfiguration", "MotionUpdates",
                    "Vector2", "Vector3", "SpriteVertices", "Angle", "Interpolation", "IntegerTriple", "FogValue", "Easing",
                    "Timer", "ClockScalar", "ScalarMath", "Identifier32", "BulletValues", "ShotMetadata",

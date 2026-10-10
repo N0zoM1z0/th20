@@ -6,7 +6,7 @@ import tempfile
 import unittest
 ROOT=Path(__file__).resolve().parents[1]
 SOURCES=[
-    'RenderMeshLifecycle', 'RenderMesh', 'MeshInterfaces', 'AnimationParameters', 'Animation', 'AnimationHandle', 'AnmVariables',
+    'RenderMeshLifecycle', 'RenderMesh', 'MeshInterfaces', 'AnimationParameters', 'Animation', 'AnimationCallback', 'AnimationHandle', 'AnmVariables',
     'Matrix4', 'Motion', 'MotionMath', 'MotionConfiguration', 'MotionUpdates',
     'Vector2', 'Vector3', 'SpriteVertices', 'Angle', 'Interpolation',
     'IntegerTriple', 'FogValue', 'Easing', 'Timer', 'ClockScalar',

@@ -1,5 +1,71 @@
 # Target inventory and initial architecture boundary
 
+## CORE/EXACT-123 — Animation callback owners and signed script selection
+
+Nine complete physical roots add414 comparison bytes and10 independent
+relocations. The genuine callback base8/five virtual slots closes the VM's
+virtual receiver contract. Typed +5DC/+5E0 storage preserves signed32 cdecl
+unary-entry/script callbacks; actual Bullet528 accessors sign-extend all signed16
+representations. Negative style sentinels bypass unchecked color/word indexes;
+positive paths retain type0..49/color0..15/script0..4 and signed result bits.
+See [callback evidence](ANIMATION_CALLBACK_RECONSTRUCTION.md).
+
+Five whole folded emissions151B and full20B slot table independently replay,
+without duplicate physical units/mappings or RTTI byte identity claims. Actual
+SprtFuncBaseInf8/direct EffectMenuWindowInf48 native RTTI corrects the reference
+hierarchy. Real release_object callback destruction runs outside lock1; the
+new27B virtual destroy helper and existing97B release template explain the
+previous opaque callback boundary. All18 private migration roots3360B preserve
+typed setters and resource retirement.
+
+Frozen276-source production passes827 strict units/160 fresh objects/160921
+disjoint bytes and842 physical mappings. Maintained149903-case O2/ASan/UBSan/
+float-cast-overflow semantics pass. Fifteen whole nonexact roots remain;
+authored94/30383B,confirmed98,reference238/all6945 terminal reviews and header-only
+claims stay separate. All79 public gates and final protected retirement pass.
+
+Preserve current build/core123-canonical/160 pairs, freeze, native owner/RTTI/
+callback proofs and original159 canonical/three private input closures. The
+first trial and failed host fixture retain original SHA-bound inputs; periodic
+retirement already verifies all818 previous exact results and protected hashes.
+Use serial nice15/CPU3 and bounded Ghidra768m/two processors. No REA/delegation.
+The goal remains active.
+
+Whole42B5D0 VM39470 code plus2 alignment/644 pointer/636 index bytes remains
+40752, with161 physical cases/636 selections and24 internal listing omissions.
+Raw packet storage/lifetime, Renderer+6000DFC, concrete callback owners/lambdas,
+derived draw/constructor exception contract and full File VM creation remain
+open. Native callback contracts do not admit part of the VM body or establish
+gameplay rendering/lifetime.
+
+All79 public tests pass in 385.866s; the complete public gate passes in
+387.968s. The first public attempt retains its original
+fixture/link inputs after missing genuine callback RTTI is observed. The second
+retains all79 original test inputs after three legacy mock-call counters fail.
+Fifteen existing fixtures now link the real callback implementation/RTTI; Item
+fixtures observe actual virtual destruction, including3072 owned callbacks in
+each whole pool test. Null callback release is not counted as destruction.
+No production source change or cold rebuild follows those fixture corrections.
+
+Each of160 objects compiles once. All45 complete independent literal roles
+reconcile45 fresh label names; no compared target relocation field is solved.
+Protected retirement removes475 final files /
+9495944 bytes; including the archived first trial, the batch
+retires591 files /
+9739861 bytes
+(9.29 MiB). All827 exact results,
+276 frozen source hashes,320 current products,81
+native evidence hashes and original compiler/failed-fixture archives remain
+unchanged. Original159 canonical/three private closures are verified before
+retirement; no unchanged-source build runs for cleanup.
+
+The +5DC callback is observed at VM entry. Its current AnimationHitCallback
+typedef label is provisional and does not establish a collision trigger; rename
+it together with the next necessary shared-header batch. Full40752B VM,
+Renderer+6000DFC, concrete callback owners/lambdas and native packet/buffer
+lifetime remain open. Prior CORE122 matching-head remote CI succeeds at3c03d2b,
+run38013441492. The reconstruction goal remains active.
+
 ## CORE/EXACT-122 — Animation operands and recursive direction
 
 Eight complete methods add 2,453 comparison bytes and 123 independently

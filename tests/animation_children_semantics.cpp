@@ -11,9 +11,6 @@
 #include <type_traits>
 
 namespace {
-th20::Animation* releasing;
-th20::AnimationCallback* expected_callback;
-unsigned callback_calls;
 
 template<class T> void check_padding(const T& object, std::size_t first,
                                     std::size_t end) {
@@ -34,22 +31,11 @@ template<class T> void retained_sample(const th20::Interpolation<T>& value) {
 }
 
 namespace th20 {
-// Owned host startup fixture, shared with the archive tests. Production startup
-// and callback virtual destruction remain unresolved; this test observes the
-// callback argument and order without dereferencing its opaque token.
+// Owned host allocator startup fixture; callback retirement uses the real
+// null-safe shared release_object template.
 LockRegistry process_locks;
 DiagnosticAllocator* process_allocator;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* input) {
-    assert(this == process_allocator);
-    if (releasing) {
-        assert(releasing->geometry == nullptr && releasing->geometry_bytes == 0);
-        assert(releasing->callback == input && input == expected_callback);
-        assert(releasing->handle.value == 0x12345678u);
-        assert(releasing->base.field_28 == 37);
-    }
-    ++callback_calls;
-}
 // Logical identity value for portable execution only. This does not reconstruct
 // the native constant's production initialization or accept a data unit.
 const Matrix4 identity_matrix = [] {

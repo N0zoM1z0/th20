@@ -15,7 +15,7 @@ class EnemyAnimationTests(unittest.TestCase):
         sources = [
             "EnemyAnimation", "EnemyScript", "EclCallSetup", "Enemy", "EnemyState", "EnemyMovement",
             "EnemyCounters", "EnemySpawn", "EnemyHealth", "EnemyPattern",
-            "AnimationParameters", "Animation", "AnimationHandle", "AnmVariables",
+            "AnimationParameters", "Animation", "AnimationCallback", "AnimationHandle", "AnmVariables",
             "Color3", "Matrix4", "Motion", "MotionConfiguration", "MotionUpdates", "MotionMath",
             "Vector2", "Vector3", "Angle", "Interpolation", "IntegerTriple", "FogValue",
             "Easing", "Timer", "ClockScalar", "ScalarMath", "Identifier32", "ScriptStack",
@@ -25,7 +25,7 @@ class EnemyAnimationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "enemy-animation"
             subprocess.run([
-                compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
+                compiler, "-std=c++20", "-O2", "-ffunction-sections", "-fdata-sections", "-Wl,--gc-sections", "-Wall", "-Wextra", "-Werror",
                 "-fsanitize=undefined", "-pthread", "-Isrc", "tests/enemy_animation_semantics.cpp",
                 *(f"src/{name}.cpp" for name in sources), "-o", str(output),
             ], cwd=ROOT, check=True)

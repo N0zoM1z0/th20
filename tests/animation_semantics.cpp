@@ -1,4 +1,5 @@
 #include "Animation.hpp"
+#include "AnimationCallback.hpp"
 #include "DiagnosticAllocator.hpp"
 
 #include <array>
@@ -14,7 +15,16 @@ namespace {
 th20::Animation* releasing;
 th20::AnimationCallback* expected_callback;
 unsigned callback_calls;
-int callback_token;
+struct LifetimeObserver final : th20::AnimationCallback {
+    explicit LifetimeObserver(th20::Animation* a) : AnimationCallback(a) {}
+    ~LifetimeObserver() override {
+        assert(releasing && releasing->geometry == nullptr && releasing->geometry_bytes == 0);
+        assert(releasing->callback == this && this == expected_callback);
+        assert(releasing->handle.value == 0x12345678u && releasing->base.field_28 == 37);
+        ++callback_calls;
+    }
+};
+th20::AnimationCallback* owned_callback;
 
 template<class T> void check_padding(const T& object, std::size_t first,
                                     std::size_t end) {
@@ -35,22 +45,11 @@ template<class T> void retained_sample(const th20::Interpolation<T>& value) {
 }
 
 namespace th20 {
-// Owned host startup fixture, shared with the archive tests. Production startup
-// and callback virtual destruction remain unresolved; this test observes the
-// callback argument and order without dereferencing its opaque token.
+// Owned host allocator startup fixture. Real virtual destruction observes
+// callback release order; process startup remains undefined in production.
 LockRegistry process_locks;
 DiagnosticAllocator* process_allocator;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* input) {
-    assert(this == process_allocator);
-    if (releasing) {
-        assert(releasing->geometry == nullptr && releasing->geometry_bytes == 0);
-        assert(releasing->callback == input && input == expected_callback);
-        assert(releasing->handle.value == 0x12345678u);
-        assert(releasing->base.field_28 == 37);
-    }
-    ++callback_calls;
-}
 // Logical identity value for portable execution only. This does not reconstruct
 // the native constant's production initialization or accept a data unit.
 const Matrix4 identity_matrix = [] {
@@ -154,11 +153,11 @@ int main(int argc, char**) {
     stopped_only(a.base.interpolation_34c);
     a.geometry = allocator.allocate_bytes(64, "animation test");
     a.geometry_bytes = 64;
-    a.callback = reinterpret_cast<AnimationCallback*>(&callback_token);
+    owned_callback = new LifetimeObserver(&a);
     a.handle = 0x12345678u;
     a.reset();
     assert(callback_calls == 0 && a.geometry != nullptr && a.geometry_bytes == 64);
-    assert(a.callback == reinterpret_cast<AnimationCallback*>(&callback_token));
+    assert(a.callback == owned_callback);
     assert(a.handle.value == 0x12345678u && a.base.timer.current == 31);
     assert(a.base.field_28 == 37 && a.base.field_10 == 123);
     assert(a.base.variables.field_00 == 51 && a.base.variables.field_34 == 1.0f);
@@ -201,5 +200,5 @@ int main(int argc, char**) {
     assert(a.base.field_28 == -1 && a.base.field_10 == 123);
     assert(a.link_4ec.node == &a && a.base.timer.current == 31);
     pooled->~PooledAnimation();
-    assert(callback_calls == 2); // The real nontrivial destructor invokes cleanup.
+    assert(callback_calls == 1); // Null callback cleanup performs no virtual destruction.
 }

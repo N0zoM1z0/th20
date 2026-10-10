@@ -28,10 +28,6 @@ public:
         ::operator delete(memory);
     }
 
-    // Native 0041F7C0: virtual callback destruction followed by locked delete.
-    // The complete callback vtable and this dependency body remain pending.
-    void release_animation_callback(AnimationCallback* callback);
-
     // Runtime uses ordinary nonthrowing default construction. Other scalar
     // instantiations have observed pre-clears whose reproduction remains open.
     template<class T>

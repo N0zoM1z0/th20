@@ -1,4 +1,5 @@
 #include "Item.hpp"
+#include "AnimationReleaseObserver.hpp"
 #include "Session.hpp"
 #include "GameRandom.hpp"
 #include "OverlayCounter.hpp"
@@ -41,9 +42,6 @@ GameRandom script_random(0);
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_() {}
 WeaponStoneInfo::~WeaponStoneInfo() {std::abort();}
 void WeaponStoneInfo::enable() {std::abort();}
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* callback) {
-    assert(!callback);++animation_releases;
-}
 const Matrix4 identity_matrix=[] {
     Matrix4 result;for(int i=0;i<4;++i)result.elements[i][i]=1;return result;
 }();
@@ -127,6 +125,7 @@ void initialize_and_lifetime() {
         animation->geometry=process_allocator->allocate_bytes(8,"Item semantic geometry");
         assert(animation->geometry);owned_geometry.push_back(animation->geometry);
         animation->geometry_bytes=8;animation->handle.value=123;
+        new th20_test::AnimationReleaseObserver(animation,animation_releases);
     }
     const auto before=animation_releases;
     process_allocator->release_object(owner);

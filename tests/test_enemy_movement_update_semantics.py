@@ -17,7 +17,7 @@ class EnemyMovementUpdateTests(unittest.TestCase):
             "EnemyMovementUpdate", "Enemy", "EnemyData", "TaskInfoConstruction", "EnemyState", "EnemyMovement",
             "EnemyCounters", "EnemySpawn", "EnemyHealth", "EnemyPattern",
             "Context", "Graphics", "ConfigurationValue", "Configuration",
-            "AnimationFile", "Animation", "AnimationHandle", "AnmVariables",
+            "AnimationFile", "Animation", "AnimationCallback", "AnimationHandle", "AnmVariables",
             "Matrix4", "Motion", "MotionConfiguration", "MotionUpdates", "MotionMath",
             "Vector2", "Vector3", "Angle", "Interpolation", "IntegerTriple",
             "FogValue", "Easing", "Timer", "ClockScalar", "ScalarMath",

@@ -19,6 +19,9 @@ struct AnimationChildLinks {
     IntrusiveLink<Animation>& operator[](std::int32_t index);
 };
 struct AnimationCallback;
+// Native x86 default __cdecl calls return signed32 and clean 4/8 caller bytes.
+using AnimationHitCallback = std::int32_t (*)(Animation*);
+using AnimationScriptCallback = std::int32_t (*)(Animation*, std::int32_t);
 struct SpriteTexturedVertex;
 struct AnimationColorChannels { std::uint8_t blue, green, red, alpha; };
 struct AnimationFlagBytes { std::uint8_t field_00, field_01; };
@@ -108,7 +111,8 @@ struct Animation {
     void* user_data;
     std::uint32_t field_5cc;
     Vector3 vector_5d0;
-    std::uint32_t field_5dc, field_5e0;
+    AnimationHitCallback field_5dc;
+    AnimationScriptCallback field_5e0;
     Animation() noexcept;
     ~Animation() noexcept;
     // Nonzero field_550 enters the native repeated-handle-clear loop.
@@ -123,14 +127,16 @@ struct Animation {
     void copy_base(const Animation* source);
     void clear_field_570();
     void clear_pending_fields();
-    void set_field_5dc(std::uint32_t value);
-    void set_field_5e0(std::uint32_t value);
+    void set_field_5dc(AnimationHitCallback value);
+    void set_field_5e0(AnimationScriptCallback value);
     std::int32_t* integer_argument(std::int32_t* value, std::uint16_t mask, std::int32_t index);
     float* float_argument(float* value, std::uint16_t mask, std::int32_t index);
     std::int32_t integer_value(std::int32_t value);
     float float_value(float value);
     Vector3& rotation_sum();
     Vector3& transform_direction(Vector3& value, std::int32_t rotate, std::int32_t scale);
+    AnimationCallback* set_callback(AnimationCallback* value);
+    void interrupt(std::int32_t event);
     std::int32_t update();
     Vector3& position(Vector3& output);
     Vector3& transform_position(Vector3& value);

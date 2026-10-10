@@ -5,7 +5,7 @@ import subprocess
 import tempfile
 import unittest
 ROOT=Path(__file__).resolve().parents[1]
-SOURCES=['RenderMeshLifecycle', 'GraphicsMesh', 'MeshResourceAccess', 'RenderMesh', 'MeshInterfaces', 'Animation', 'AnimationHandle', 'AnimationParameters', 'AnimationFile', 'AnmVariables', 'Matrix4', 'Motion', 'MotionMath', 'MotionConfiguration', 'MotionUpdates', 'Vector2', 'Vector3', 'SpriteVertices', 'Angle', 'Interpolation', 'IntegerTriple', 'FogValue', 'Easing', 'Timer', 'ClockScalar', 'ScalarMath', 'Identifier32', 'BulletValues', 'ShotMetadata', 'CollisionGeometry', 'Session', 'PlayerRecord', 'LockRegistry', 'DebugMemoryResource', 'Graphics', 'Configuration', 'ConfigurationValue', 'Worker', 'Context', 'TaskInfo', 'FunctionChain']
+SOURCES=['RenderMeshLifecycle', 'GraphicsMesh', 'MeshResourceAccess', 'RenderMesh', 'MeshInterfaces', 'Animation', 'AnimationCallback', 'AnimationHandle', 'AnimationParameters', 'AnimationFile', 'AnmVariables', 'Matrix4', 'Motion', 'MotionMath', 'MotionConfiguration', 'MotionUpdates', 'Vector2', 'Vector3', 'SpriteVertices', 'Angle', 'Interpolation', 'IntegerTriple', 'FogValue', 'Easing', 'Timer', 'ClockScalar', 'ScalarMath', 'Identifier32', 'BulletValues', 'ShotMetadata', 'CollisionGeometry', 'Session', 'PlayerRecord', 'LockRegistry', 'DebugMemoryResource', 'Graphics', 'Configuration', 'ConfigurationValue', 'Worker', 'Context', 'TaskInfo', 'FunctionChain']
 class RenderMeshLifecycleTests(unittest.TestCase):
     def test_whole_owned_protocol(self):
         compiler=next((p for n in ('g++-13','clang++-18','c++') if (p:=shutil.which(n))),None)

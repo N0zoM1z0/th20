@@ -832,3 +832,12 @@ th20::Animation::rotation_sum,0x00437770,function
 th20::Animation::transform_direction,0x00437840,function
 th20::AnimationFile::script,0x00437490,function
 th20::GameRandom::range,0x00429800,function
+th20::AnimationCallback::AnimationCallback,0x00446B60,function
+th20::AnimationCallback::~AnimationCallback,0x00446BA0,function
+th20::AnimationCallback::scalar_deleting_destructor,0x00446BC0,function
+th20::Animation::set_callback,0x00446BF0,function
+th20::Animation::interrupt,0x004388F0,function
+th20::Bullet::type,0x00485640,function
+th20::Bullet::color_index,0x00485720,function
+th20::bullet_animation_script,0x0047D580,function
+std::destroy_at<th20::AnimationCallback>,0x0041F880,function

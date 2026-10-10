@@ -31,8 +31,8 @@ void Animation::copy_base(const Animation* source) {
     std::memcpy(&base, &source->base, sizeof(base));
 }
 void Animation::clear_field_570() { field_570 = 0; }
-void Animation::set_field_5dc(std::uint32_t value) { field_5dc = value; }
-void Animation::set_field_5e0(std::uint32_t value) { field_5e0 = value; }
+void Animation::set_field_5dc(AnimationHitCallback value) { field_5dc = value; }
+void Animation::set_field_5e0(AnimationScriptCallback value) { field_5e0 = value; }
 void Animation::clear_pending_fields() {
     set_field_5dc(0);
     set_field_5e0(0);

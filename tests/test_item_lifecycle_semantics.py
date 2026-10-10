@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 ROOT=Path(__file__).resolve().parents[1]
-sources=['Item','Animation','AnimationHandle','AnmVariables','Matrix4','Interpolation',
+sources=['Item','Animation', 'AnimationCallback','AnimationHandle','AnmVariables','Matrix4','Interpolation',
  'Easing','Timer','ClockScalar','Angle','ScalarMath','Vector3','Vector2','MotionMath',
  'IntegerTriple','FogValue','CollisionGeometry','DiagnosticAllocator','DebugMemoryResource',
  'LockRegistry','FunctionChain','FunctionChainAllocation','FunctionChainController',

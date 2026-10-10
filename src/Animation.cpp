@@ -1,4 +1,5 @@
 #include "Animation.hpp"
+#include "AnimationCallback.hpp"
 #include "DiagnosticAllocator.hpp"
 namespace th20 {
 AnimationBase::AnimationBase() noexcept : timer(), field_10(0), field_14(0),
@@ -89,7 +90,7 @@ void Animation::release_resources() {
     if (geometry) process_allocator->release_bytes(geometry);
     geometry = nullptr;
     geometry_bytes = 0;
-    process_allocator->release_animation_callback(callback);
+    process_allocator->release_object(callback);
     callback = nullptr;
     handle = 0;
     base.field_28 = -1;

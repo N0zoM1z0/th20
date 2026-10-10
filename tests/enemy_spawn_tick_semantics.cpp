@@ -33,7 +33,6 @@ DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator = &allocator;
 const Matrix4 identity_matrix = [] { Matrix4 m; for (int i=0;i<4;++i) m.elements[i][i]=1; return m; }();
-void DiagnosticAllocator::release_animation_callback(AnimationCallback* p) { assert(!p); }
 Enemy::~Enemy() = default;
 int Enemy::execute_opcode() { std::abort(); }
 int Enemy::read_integer(int) { std::abort(); }

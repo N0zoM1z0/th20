@@ -56,6 +56,8 @@ struct Bullet {
     std::uint32_t field_518;
     std::int32_t view_index;
     Context* context;
+    std::int32_t type() const;
+    std::int32_t color_index() const;
     Bullet();
     ~Bullet();
 };

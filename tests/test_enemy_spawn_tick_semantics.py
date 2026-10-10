@@ -16,7 +16,7 @@ class EnemySpawnTickTests(unittest.TestCase):
         names = [
             "EnemySpawnApplication", "EnemyTick", "Enemy", "EnemyState", "EnemyMovement",
             "EnemyCounters", "EnemySpawn", "EnemyHealth", "EnemyPattern", "Session", "Context",
-            "PlayerRecord", "EclRuntimeLifetime", "Animation", "AnimationParameters",
+            "PlayerRecord", "EclRuntimeLifetime", "Animation", "AnimationCallback", "AnimationParameters",
             "AnimationHandle", "AnmVariables", "Matrix4", "Motion", "MotionConfiguration",
             "MotionUpdates", "MotionMath", "Vector2", "Vector3", "Angle", "Interpolation",
             "IntegerTriple", "FogValue", "Color3", "Easing", "Timer", "ClockScalar", "ScalarMath",
