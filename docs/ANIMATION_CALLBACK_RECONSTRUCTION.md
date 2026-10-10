@@ -153,4 +153,3 @@ it together with the next necessary shared-header batch. Full40752B VM,
 Renderer+6000DFC, concrete callback owners/lambdas and native packet/buffer
 lifetime remain open. Prior CORE122 matching-head remote CI succeeds at3c03d2b,
 run38013441492. The reconstruction goal remains active.
-
