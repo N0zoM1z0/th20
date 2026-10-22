@@ -4,7 +4,7 @@
 #include "RenderMesh.hpp"
 #include "Session.hpp"
 #include "WindowState.hpp"
-#include "DiagnosticAllocator.hpp"
+#include "DiagnosticObjectFactories.hpp"
 #include "WeaponStoneInfo.hpp"
 #include <cassert>
 #include <cstdlib>
@@ -120,7 +120,9 @@ int main() {
     unsigned cases=0;
     for(int surface:{0,1,-1}) {
         reset();process_graphics.graphics_ready=1;
-        {RenderMesh empty(std::numeric_limits<int>::min(),-9,surface,999);
+        {std::unique_ptr<RenderMesh> owned(allocator.allocate_object<RenderMesh>(
+             "empty mesh fixture", std::numeric_limits<int>::min(), -9, surface, 999));
+         auto& empty = *owned;
          assert(!empty.columns&&!empty.rows&&!empty.root.value&&!empty.strip_handles);
          assert(!empty.strips&&!empty.vertices&&!empty.positions&&!empty.view_index&&!empty.context);
          assert(events.empty());}
@@ -149,7 +151,9 @@ int main() {
         process_graphics.surface_animation=&global_file;
         std::array<void*,4> buffers{};unsigned root=0;std::vector<unsigned> handles;
         {
-            RenderMesh mesh(columns,rows,surface,view);
+            std::unique_ptr<RenderMesh> owned(allocator.allocate_object<RenderMesh>(
+                "mesh fixture", columns, rows, surface, view));
+            auto& mesh = *owned;
             assert(mesh.columns==columns&&mesh.rows==rows&&mesh.view_index==view);
             assert(mesh.context==&session.contexts[view]);
             assert(allocations.size()==unsigned(4+columns));

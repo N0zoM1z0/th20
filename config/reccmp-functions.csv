@@ -895,3 +895,4 @@ std::destroy_at<th20::EnemyMeshOwner>,0x0048B090,function
 std::destroy_at<th20::RenderMesh>,0x004713B0,function
 th20::EnemyMeshOwner::scalar_deleting_destructor,0x0048BE80,function
 th20::RenderMesh::scalar_deleting_destructor,0x004720D0,function
+"th20::DiagnosticAllocator::allocate_object<RenderMesh,int,int,int,int>",0x004712D0,function

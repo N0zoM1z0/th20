@@ -10,8 +10,9 @@ struct Animation;
 struct Context;
 
 // Native constructor, allocation widths and grid/strip consumers establish all
-// nine words. Renderer allocation, deletion and publication remain dependencies.
-struct RenderMesh {
+// nine words. Compiler initialization independently corroborates the class tag.
+class RenderMesh {
+public:
     std::int32_t columns, rows;
     AnimationHandle root;
     AnimationHandle* strip_handles;

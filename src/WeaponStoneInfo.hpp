@@ -6,7 +6,7 @@
 namespace th20 {
 struct Context;
 class Weapon;
-struct RenderMesh;
+class RenderMesh;
 class WeaponStoneInfo : public TaskInfo {
 public:
     Timer timer_10;

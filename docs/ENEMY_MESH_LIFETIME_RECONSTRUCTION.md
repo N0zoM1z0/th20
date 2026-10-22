@@ -80,7 +80,8 @@ are preserved; no manual preclear or fake noexcept declaration is added.
 `0048B010` is reviewed authored from its actual allocator receiver, diagnostic
 argument, object constructor and game publication, but has no source mapping or
 canonical exact unit. The separate four-argument RenderMesh allocation factory
-at `004712D0` remains outside this admission.
+at `004712D0` remains outside this admission; CORE/EXACT-137 subsequently accepts
+it through [the parameterized allocation audit](MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
 
 ## Origins and whole deformation
 

@@ -31,6 +31,9 @@ public:
     template<class T>
     T* allocate_object(const char*);
 
+    template<class T, class... Args>
+    T* allocate_object(const char*, Args... args);
+
     template<class T>
     T* allocate_array(const char*, std::int32_t count) {
         std::lock_guard<std::recursive_mutex> guard(process_locks.slot(1));

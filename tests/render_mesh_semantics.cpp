@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include "Animation.hpp"
 #include "ClockScalar.hpp"
-#include "DiagnosticAllocator.hpp"
+#include "DiagnosticObjectFactories.hpp"
 #include "EnemyState.hpp"
 #include "RenderMesh.hpp"
 #include "Session.hpp"
@@ -115,7 +115,7 @@ void check_owned_mesh_retirement() {
     for (int columns : {0, 1, 3, 17}) {
         auto* owner = new EnemyMeshOwner;
         assert(!owner->mesh && owner->radius == 0 && owner->current_radius == 0);
-        owner->mesh = new RenderMesh(0, 0, 0, 0);
+        owner->mesh = allocator.allocate_object<RenderMesh>("owned mesh fixture", 0, 0, 0, 0);
         auto* mesh = owner->mesh;
         mesh->columns = columns;
         mesh->rows = 2;
