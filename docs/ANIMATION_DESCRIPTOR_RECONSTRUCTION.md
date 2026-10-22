@@ -156,6 +156,14 @@ The Renderer +6000DFC..+6000DFF interval remains unclassified. Existing complete
 constructor, destructor and allocation evidence does not identify a member or
 prove padding. No maintained Renderer declaration is introduced.
 
+CORE135 additionally checks 35,796 listed consumer instructions over
+`00410000..0042FFFF` for direct +6000DFC..+6000DFF operands and finds no matches.
+An attempted whole-text operand query exceeds the wrapper's bounded-range limit
+and is rejected; it supplies no evidence. The earlier core105 constructor export
+is truncated at `0044848F`; the retained overlapping core114 tail supplies the
+remaining complete constructor coverage. These navigation observations do not
+classify the interval or exclude computed accesses.
+
 Bounded native operand navigation over `0044A700..0044F14F` inspects 5,425 listed
 instructions and finds three +6C matches, all in File clearing. This does not
 prove the absence of computed/external writes or establish an allocation

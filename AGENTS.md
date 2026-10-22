@@ -5,7 +5,7 @@ messages must be in English, as explicitly requested by the user.
 Official Japanese names and original target evidence may retain their original
 language, as the user explicitly clarified. Preserve the official title in
 `config/target.toml`, following TH095's treatment of game metadata.
-Commit subjects use `gpt-6.1-sol: <description>`.
+Commit subjects use `gpt-6-astra-medium: <description>`.
 
 Invoke Python through `scripts/repo-python` for repository work, including
 one-off snippets and tests. It selects the local `.venv` and verifies pinned

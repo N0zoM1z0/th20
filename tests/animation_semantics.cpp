@@ -43,16 +43,24 @@ bool lock_available_to_another_thread() {
 }
 
 struct StringResource final : std::pmr::memory_resource {
-    std::vector<void*> allocations, deallocations;
+    struct Allocation {
+        void* memory;
+        std::size_t bytes, alignment;
+        bool operator==(const Allocation&) const = default;
+    };
+    std::vector<Allocation> allocations, deallocations;
     bool cleared = false;
     void* do_allocate(std::size_t bytes, std::size_t alignment) override {
         void* result = std::pmr::new_delete_resource()->allocate(bytes, alignment);
-        allocations.push_back(result);
+        allocations.push_back({result, bytes, alignment});
         return result;
     }
     void do_deallocate(void* memory, std::size_t bytes, std::size_t alignment) override {
         assert(cleared);
-        deallocations.push_back(memory);
+        Allocation released{memory, bytes, alignment};
+        assert(std::find(allocations.begin(), allocations.end(), released) != allocations.end());
+        assert(std::find(deallocations.begin(), deallocations.end(), released) == deallocations.end());
+        deallocations.push_back(released);
         std::pmr::new_delete_resource()->deallocate(memory, bytes, alignment);
     }
     bool do_is_equal(const std::pmr::memory_resource& other) const noexcept override {
@@ -61,6 +69,7 @@ struct StringResource final : std::pmr::memory_resource {
 };
 StringResource* string_resource;
 th20::AnimationFile* retiring_file;
+unsigned retiring_filename_length;
 unsigned clear_calls;
 int next_array_index;
 std::vector<int> retired_indices;
@@ -83,7 +92,7 @@ struct ArrayObserver final : th20::AnimationCallback {
 void check_file_and_template_lifetime(th20::DiagnosticAllocator& allocator) {
     using namespace th20;
     allocator.release_object(static_cast<AnimationFile*>(nullptr));
-    for (unsigned length : {33u, 129u, 513u}) {
+    for (unsigned length : {0u, 1u, 14u, 15u, 16u, 17u, 33u, 129u, 513u}) {
         StringResource resource;
         auto* previous = std::pmr::set_default_resource(&resource);
         auto* file = allocator.allocate_object<AnimationFile>("file lifetime fixture");
@@ -91,15 +100,22 @@ void check_file_and_template_lifetime(th20::DiagnosticAllocator& allocator) {
         assert(file && !file->bytes && !file->templates && !file->textures);
         file->filename.assign(length, 'f');
         file->stem.assign(length + 17, 's');
-        assert(resource.allocations.size() == 2);
         void* filename = file->filename.data();
         void* stem = file->stem.data();
+        std::vector<StringResource::Allocation> expected;
+        for (void* data : {stem, filename}) {
+            for (const auto& allocation : resource.allocations) {
+                if (allocation.memory == data) expected.push_back(allocation);
+            }
+        }
+        assert(expected.size() == resource.allocations.size());
         string_resource = &resource;
         retiring_file = file;
+        retiring_filename_length = length;
         unsigned before = clear_calls;
         allocator.release_object(file);
         assert(clear_calls == before + 1);
-        assert(resource.deallocations == std::vector<void*>({stem, filename}));
+        assert(resource.deallocations == expected);
         string_resource = nullptr;
         retiring_file = nullptr;
     }
@@ -287,7 +303,8 @@ void AnimationFile::clear() {
     if (!string_resource) { assert(this != retiring_file); return; }
     assert(this == retiring_file);
     assert(!string_resource->cleared && string_resource->deallocations.empty());
-    assert(!filename.empty() && !stem.empty());
+    assert(filename.size() == retiring_filename_length);
+    assert(stem.size() == retiring_filename_length + 17);
     assert(lock_available_to_another_thread());
     string_resource->cleared = true;
     ++clear_calls;

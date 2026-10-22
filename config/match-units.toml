@@ -6646,7 +6646,7 @@ relocations = [
 # EXACT-060: whole ANM value/lifetime/reset and recursive-scale protocol.
 [units.animation_base_ctor]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationBase::AnimationBase"]
 symbol = "??0AnimationBase@th20@@QAE@XZ"
@@ -6689,7 +6689,7 @@ relocations = [
 
 [units.animation_ctor]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::Animation"]
 symbol = "??0Animation@th20@@QAE@XZ"
@@ -6715,7 +6715,7 @@ relocations = [
 
 [units.animation_dtor]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::~Animation"]
 symbol = "??1Animation@th20@@QAE@XZ"
@@ -6730,7 +6730,7 @@ relocations = [
 
 [units.animation_reset]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::reset"]
 symbol = "?reset@Animation@th20@@QAEXXZ"
@@ -6780,7 +6780,7 @@ relocations = [
 
 [units.animation_release_resources]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::release_resources"]
 symbol = "?release_resources@Animation@th20@@QAEXXZ"
@@ -6797,7 +6797,7 @@ relocations = [
 
 [units.animation_position_ref]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::position_ref"]
 symbol = "?position_ref@Animation@th20@@QAEAAUVector3@2@XZ"
@@ -6808,7 +6808,7 @@ relocations = [
 
 [units.animation_inherited_scale_y]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::inherited_scale_y"]
 symbol = "?inherited_scale_y@Animation@th20@@QAEMXZ"
@@ -6821,7 +6821,7 @@ relocations = [
 
 [units.animation_inherited_scale_x]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::inherited_scale_x"]
 symbol = "?inherited_scale_x@Animation@th20@@QAEMXZ"
@@ -6834,7 +6834,7 @@ relocations = [
 
 [units.animation_height]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::height"]
 symbol = "?height@Animation@th20@@QAEMXZ"
@@ -6846,7 +6846,7 @@ relocations = [
 
 [units.animation_width]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::width"]
 symbol = "?width@Animation@th20@@QAEMXZ"
@@ -12415,7 +12415,7 @@ relocations = [
 
 [units.animation_set_packed_color]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_packed_color"]
 symbol = "?set_packed_color@Animation@th20@@QAEXI@Z"
@@ -14316,7 +14316,7 @@ relocations = [
 
 [units.animation_file_dtor]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::~AnimationFile"]
 symbol = "??1AnimationFile@th20@@QAE@XZ"
@@ -14333,7 +14333,7 @@ relocations = [
 
 [units.animation_file_release]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_object<AnimationFile>"]
 symbol = "??$release_object@VAnimationFile@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimationFile@1@@Z"
@@ -14352,7 +14352,7 @@ relocations = [
 
 [units.animation_template_allocate]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_array<Animation>"]
 symbol = "??$allocate_array@UAnimation@th20@@@DiagnosticAllocator@th20@@QAEPAUAnimation@1@PBDH@Z"
@@ -14374,7 +14374,7 @@ relocations = [
 
 [units.animation_template_release]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_array<Animation>"]
 symbol = "??$release_array@UAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAUAnimation@1@@Z"
@@ -14392,7 +14392,7 @@ relocations = [
 
 [units.animation_file_destroy_at]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::destroy_at<th20::AnimationFile>"]
 symbol = "??$destroy_at@VAnimationFile@th20@@@std@@YAXQAVAnimationFile@th20@@@Z"
@@ -14404,7 +14404,7 @@ relocations = [
 
 [units.animation_file_scalar_deleting_destructor]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::scalar_deleting_destructor"]
 symbol = "??_GAnimationFile@th20@@QAEPAXI@Z"
@@ -14417,7 +14417,7 @@ relocations = [
 
 [units.animation_vector_deleting_destructor]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::vector_deleting_destructor"]
 symbol = "??_EAnimation@th20@@QAEPAXI@Z"
@@ -14436,7 +14436,7 @@ relocations = [
 
 [units.pmr_string_dtor]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::string::~basic_string"]
 symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@XZ"
@@ -14471,7 +14471,7 @@ relocations = [
 
 [units.animation_texture_array_allocate]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_array<TextureRecord>"]
 symbol = "??$allocate_array@UTextureRecord@th20@@@DiagnosticAllocator@th20@@QAEPAUTextureRecord@1@PBDH@Z"
@@ -14492,7 +14492,7 @@ relocations = [
 
 [units.animation_sprite_array_allocate]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_array<SpriteData>"]
 symbol = "??$allocate_array@USpriteData@th20@@@DiagnosticAllocator@th20@@QAEPAUSpriteData@1@PBDH@Z"
@@ -14513,7 +14513,7 @@ relocations = [
 
 [units.animation_script_array_allocate]
 source = "src/Animation.cpp"
-object = "build/core133-canonical/Animation.obj"
+object = "build/core135-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_array<AnmInstruction*>"]
 symbol = "??$allocate_array@PAUAnmInstruction@th20@@@DiagnosticAllocator@th20@@QAEPAPAUAnmInstruction@1@PBDH@Z"
@@ -14566,4 +14566,153 @@ relocations = [
     { offset = 23, type_id = 6, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", addend = 0, target = 5693960 },
     { offset = 36, type_id = 6, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", addend = 0, target = 5693960 },
     { offset = 58, type_id = 6, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", addend = 0, target = 5693960 },
+]
+
+[units.pmr_string_tidy]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::_Tidy_deallocate"]
+symbol = "?_Tidy_deallocate@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEXXZ"
+target_address = 4503360
+size = 139
+relocations = [
+    { offset = 22, type = "REL32", symbol = "?_Orphan_all@_Container_base0@std@@QAEXXZ", target = 4253152 },
+    { offset = 31, type = "REL32", symbol = "?_Large_mode_engaged@?$_String_val@U?$_Simple_types@D@std@@@std@@QBE_NXZ", target = 4256128 },
+    { offset = 46, type = "REL32", symbol = "?_Getal@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEAAV?$polymorphic_allocator@D@pmr@2@XZ", target = 4256096 },
+    { offset = 71, type = "REL32", symbol = "?_Deallocate_for_capacity@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@CAXAAV?$polymorphic_allocator@D@pmr@2@QADI@Z", target = 4502400 },
+    { offset = 82, type = "REL32", symbol = "?_Switch_to_buf@_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAEXXZ", target = 4257440 },
+    { offset = 128, type = "REL32", symbol = "?assign@?$_Narrow_char_traits@DH@std@@SAXAADABD@Z", target = 4259472 },
+]
+
+[units.pmr_string_pair_dtor]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::_Mypair::~_Compressed_pair"]
+symbol = "??1?$_Compressed_pair@V?$polymorphic_allocator@D@pmr@std@@V?$_String_val@U?$_Simple_types@D@std@@@3@$0A@@std@@QAE@XZ"
+target_address = 4493760
+size = 23
+relocations = [
+    { offset = 14, type = "REL32", symbol = "??1?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ", target = 4253056 },
+]
+
+[units.stl_empty_receiver]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Container_base0::_Orphan_all"]
+symbol = "?_Orphan_all@_Container_base0@std@@QAEXXZ"
+target_address = 4253152
+size = 11
+relocations = [
+]
+
+[units.string_large_mode]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_String_val<char>::_Large_mode_engaged"]
+symbol = "?_Large_mode_engaged@?$_String_val@U?$_Simple_types@D@std@@@std@@QBE_NXZ"
+target_address = 4256128
+size = 42
+relocations = [
+]
+
+[units.pmr_string_deallocate_capacity]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::_Deallocate_for_capacity"]
+symbol = "?_Deallocate_for_capacity@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@CAXAAV?$polymorphic_allocator@D@pmr@2@QADI@Z"
+target_address = 4502400
+size = 25
+relocations = [
+    { offset = 18, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@D@pmr@std@@QAEXQADI@Z", target = 4506080 },
+]
+
+[units.string_switch_to_buf]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_String_val<char>::_Bxty::_Switch_to_buf"]
+symbol = "?_Switch_to_buf@_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAEXXZ"
+target_address = 4257440
+size = 72
+relocations = [
+    { offset = 14, type = "REL32", symbol = "??$_Destroy_in_place@PAD@std@@YAXAAPAD@Z", target = 4245168 },
+    { offset = 22, type = "REL32", symbol = "?is_constant_evaluated@std@@YA_NXZ", target = 4264304 },
+]
+
+[units.narrow_char_assign]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Narrow_char_traits<char>::assign"]
+symbol = "?assign@?$_Narrow_char_traits@DH@std@@SAXAADABD@Z"
+target_address = 4259472
+size = 45
+relocations = [
+    { offset = 4, type = "REL32", symbol = "?is_constant_evaluated@std@@YA_NXZ", target = 4264304 },
+    { offset = 24, type = "REL32", symbol = "?assign@?$_Char_traits@DH@std@@SAXAADABD@Z", target = 4259296 },
+]
+
+[units.string_value_dtor]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_String_val<char>::~_String_val"]
+symbol = "??1?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ"
+target_address = 4253056
+size = 20
+relocations = [
+    { offset = 11, type = "REL32", symbol = "??1_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ", target = 4253152 },
+]
+
+[units.pmr_allocator_deallocate]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::polymorphic_allocator<char>::deallocate"]
+symbol = "?deallocate@?$polymorphic_allocator@D@pmr@std@@QAEXQADI@Z"
+target_address = 4506080
+size = 84
+compare_size = 89
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$?deallocate@?$polymorphic_allocator@D@pmr@std@@QAEXQADI@Z", target = 5667232 },
+    { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+    { offset = 62, type = "REL32", symbol = "?deallocate@memory_resource@pmr@std@@QAEXQAXII@Z", target = 4281632 },
+]
+
+[units.pmr_resource_deallocate]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::memory_resource::deallocate"]
+symbol = "?deallocate@memory_resource@pmr@std@@QAEXQAXII@Z"
+target_address = 4281632
+size = 45
+relocations = [
+]
+
+[units.std_is_constant_evaluated]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::is_constant_evaluated"]
+symbol = "?is_constant_evaluated@std@@YA_NXZ"
+target_address = 4264304
+size = 7
+relocations = [
+]
+
+[units.char_traits_assign]
+source = "src/Animation.cpp"
+object = "build/core135-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Char_traits<char>::assign"]
+symbol = "?assign@?$_Char_traits@DH@std@@SAXAADABD@Z"
+target_address = 4259296
+size = 15
+relocations = [
 ]

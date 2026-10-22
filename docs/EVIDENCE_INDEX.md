@@ -55,6 +55,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Damage controller and whole query evidence](DAMAGE_CONTROLLER_RECONSTRUCTION.md)
 - [Damage-region allocation and lifecycle ownership](DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md)
 - [AnimationFile destruction and template-array lifetime](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md)
+- [File PMR string retirement and SDK/compiler origins](ANIMATION_PMR_RETIREMENT_RECONSTRUCTION.md)
 - [ANM descriptors, pointer tables and sprite binding](ANIMATION_DESCRIPTOR_RECONSTRUCTION.md)
 - [ANM texture formats, Graphics accessors and creator origins](ANIMATION_TEXTURE_FORMAT_RECONSTRUCTION.md)
 - [Actual damage-query consumer protocol](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md)

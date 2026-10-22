@@ -876,3 +876,15 @@ th20::DiagnosticAllocator::allocate_array<AnmInstruction*>,0x00447480,function
 th20::AnimationFile::texture_id,0x0044D000,function
 th20::AnimationFile::store_sprite,0x004506F0,function
 th20::select_texture_format,0x0044CFB0,function
+std::pmr::string::_Tidy_deallocate,0x0044B740,function
+std::pmr::string::_Mypair::~_Compressed_pair,0x004491C0,function
+std::_Container_base0::_Orphan_all,0x0040E5E0,function
+std::_String_val<char>::_Large_mode_engaged,0x0040F180,function
+std::pmr::string::_Deallocate_for_capacity,0x0044B380,function
+std::_String_val<char>::_Bxty::_Switch_to_buf,0x0040F6A0,function
+std::_Narrow_char_traits<char>::assign,0x0040FE90,function
+std::_String_val<char>::~_String_val,0x0040E580,function
+std::pmr::polymorphic_allocator<char>::deallocate,0x0044C1E0,function
+std::pmr::memory_resource::deallocate,0x00415520,function
+std::is_constant_evaluated,0x00411170,function
+std::_Char_traits<char>::assign,0x0040FDE0,function

@@ -875,3 +875,15 @@ th20::DiagnosticAllocator::allocate_array<AnmInstruction*>
 th20::AnimationFile::texture_id
 th20::AnimationFile::store_sprite
 th20::select_texture_format
+std::pmr::string::_Tidy_deallocate
+std::pmr::string::_Mypair::~_Compressed_pair
+std::_Container_base0::_Orphan_all
+std::_String_val<char>::_Large_mode_engaged
+std::pmr::string::_Deallocate_for_capacity
+std::_String_val<char>::_Bxty::_Switch_to_buf
+std::_Narrow_char_traits<char>::assign
+std::_String_val<char>::~_String_val
+std::pmr::polymorphic_allocator<char>::deallocate
+std::pmr::memory_resource::deallocate
+std::is_constant_evaluated
+std::_Char_traits<char>::assign

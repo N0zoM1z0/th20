@@ -9,7 +9,7 @@ the original game's translation-unit partition.
 
 | Protocol | Maintained source | Focused evidence |
 | --- | --- | --- |
-| Animation lifetime/parameters | Animation.hpp/cpp, AnimationFile.hpp/cpp, AnimationParameters.cpp | [Lifetime](EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md), [File/template arrays](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md), [descriptors/binding](ANIMATION_DESCRIPTOR_RECONSTRUCTION.md) |
+| Animation lifetime/parameters | Animation.hpp/cpp, AnimationFile.hpp/cpp, AnimationParameters.cpp | [Lifetime](EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md), [File/template arrays](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md), [PMR retirement](ANIMATION_PMR_RETIREMENT_RECONSTRUCTION.md), [descriptors/binding](ANIMATION_DESCRIPTOR_RECONSTRUCTION.md) |
 | Animation traversal/templates | AnimationChildren.cpp, AnimationBinding.cpp, AnimationFile.hpp/cpp | [Children](ANIMATION_CHILDREN_RECONSTRUCTION.md), [binding](ANIMATION_BINDING_RECONSTRUCTION.md) |
 | Animation frame/geometry/operands | AnimationUpdates.cpp, AnimationGeometry.cpp, AnimationOperands.cpp | [Updates](ANIMATION_UPDATE_RECONSTRUCTION.md), [geometry](ANIMATION_GEOMETRY_RECONSTRUCTION.md), [operands](ANIMATION_OPERAND_RECONSTRUCTION.md) |
 | Animation callback protocol | AnimationCallback.hpp/cpp, Bullet.hpp, BulletStyle.hpp | [Callbacks](ANIMATION_CALLBACK_RECONSTRUCTION.md) |
@@ -47,12 +47,14 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 869 units / 163 objects. Eight additional
+The configured graph currently has 881 units / 163 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
 have reviewed authored origins without maintained bodies or source mappings.
 Graphics accessors fold to existing physical units without duplicate credit.
+The actual File destructor also emits complete SDK string-retirement units;
+their library/compiler origins remain separate from authored exact coverage.
 Do not use stubs or forced unresolved linkage to claim a whole-program product.
 
 ## Build freshness and local products
