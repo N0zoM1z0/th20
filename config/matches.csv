@@ -96,3 +96,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0053E8E0,th20::EclLoader::instruction,54,matching,100.00,ecl_loader_instruction,CORE/EXACT-126; docs/ECL_BUFFER_EXACT_RECONSTRUCTION.md
 0x0053FE60,th20::EclLoader::append,876,matching,100.00,ecl_loader_append,CORE/EXACT-127; docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md
 0x0053FDB0,th20::EclLoader::append::name_predicate,57,matching,100.00,ecl_name_predicate,CORE/EXACT-127; docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md
+0x0050E990,th20::ProgressSaveManager::~ProgressSaveManager,299,matching,100.00,progress_save_dtor,CORE/EXACT-128; docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md
+0x0050F3B0,th20::ProgressSaveManager::load,562,matching,100.00,progress_load_thread,CORE/EXACT-128; docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md

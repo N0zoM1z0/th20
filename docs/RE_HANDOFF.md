@@ -12,43 +12,45 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 844 physical strict units, 161 comparison objects,
-162,849 disjoint comparison bytes and 857 source-present mappings. Thirteen
-mapped whole functions remain nonexact. Authored coverage is separately 97 exact
-functions / 31,370 bytes, with 101 confirmed authored origins. The pinned reference
+The maintained graph contains 846 physical strict units, 162 comparison objects,
+163,715 disjoint comparison bytes and 857 source-present mappings. Eleven
+mapped whole functions remain nonexact. Authored coverage is separately 99 exact
+functions / 32,231 bytes, with 102 confirmed authored origins. The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
 These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-127 accepts complete ECL registration and fifteen supporting physical
-functions, adding 1,874 comparison bytes. Unsigned file-relative address rebasing
-and a per-source C++17 profile explain the complete registration/insertion path.
-Thirteen origin decisions separately identify the custom name predicate, eleven
-SDK functions and an existing compiler initializer. Eleven folded aliases pass
-without duplicate credit. All 844 strict units and all 80 public tests pass
-(322.805 seconds). Only the affected EclLoaderBuffer object is rebuilt; the
-other 160 objects retain immutable receipts. See
-[registration evidence](ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md).
+CORE/EXACT-128 accepts complete progress loading and SaveManager destruction,
+adding 861 authored body bytes and 866 comparison bytes. Direct one-use Profile
+expressions plus a per-source C++20 /sdl profile close load emission. The unchanged
+destructor retains its five native alignment bytes; the former size-only
+nonexact rejection is corrected. Eleven new origin decisions identify the custom
+destructor and ten SDK functions. Only the two affected production objects are
+built; 160 other objects retain immutable receipts. All 80 public tests pass
+(290.447 seconds). After protected retirement, all 846 strict units pass with
+all 324 canonical product/receipt hashes unchanged and no compiler invocations. See
+[load/lifetime evidence](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md).
 
 ## Current local products
 
 Canonical paths in `config/match-units.toml` use
-`build/maintenance124-canonical/` plus the new
-`build/core127-canonical/EclLoaderBuffer.obj`. Protect all 161 objects and sibling
-receipts. The current source freeze is `.analysis/core127-final-frozen-source.json`;
-strict results are `.analysis/core127-exact-results.json.gz` and post-retirement
-results are `.analysis/core127-post-cleanup-results.json.gz`.
+`build/maintenance124-canonical/`, `build/core127-canonical/EclLoaderBuffer.obj`
+and the two objects under `build/core128-canonical/`. Protect all 162 objects and
+sibling receipts. The current source freeze is
+`.analysis/core128-final-frozen-source.json`; affected strict results are
+`.analysis/core128-affected-exact-results.json` and post-retirement whole-graph
+results are `.analysis/core128-post-cleanup-results.json.gz`.
 
-Original inputs for the reused 160 objects remain preserved in
-`.analysis/maintenance125-original-inputs.json.gz`. The replaced EclLoaderBuffer
-object's original inputs were verified before editing and preserved in
-`.analysis/core127-original-inputs.json.gz`. Retired object/probe inputs and
-immutable receipts are in `.analysis/core127-retired-inputs.json.gz`; protected
-hashes and removal records are `.analysis/core127-protected.json` and
-`.analysis/core127-cleanup.json`. The superseded core126 object was retired after
-replacement verification. No current canonical products were removed or rebuilt
-for cleanup.
+Original inputs for the reused maintenance124 objects remain preserved in
+`.analysis/maintenance125-original-inputs.json.gz`. The retained ECL object's
+proof is in the core127 evidence. The replaced SaveManager object's authentic
+original closure was reverified and preserved in
+`.analysis/core128-original-inputs.json.gz`. Retired object/probe inputs and
+immutable receipts are in `.analysis/core128-retired-inputs.json.gz`; protected
+hashes and removal records are `.analysis/core128-protected.json` and
+`.analysis/core128-cleanup.json`. No current canonical products are removed or
+rebuilt for cleanup.
 
 Retain original compiler input archives, failed experiment evidence, native
 exports and the locked target/tools/Ghidra/reference. Old receipts describe
@@ -58,11 +60,13 @@ checks, as specified in [the workflow](RE_WORKFLOW.md).
 
 ## Next reconstruction work
 
-Use the C++17 emission result as a bounded profile lead for another coherent
-nonexact protocol, rather than assuming global flags. The four ProgressSaveManager
-constructor/destructor/load/commit roots at 0x0050E5D0, 0x0050E990, 0x0050F3B0 and
-0x0050F660 remain nonexact and total 1,130 native bytes. Review their existing
-evidence before fresh probes; preserve one natural source body and actual owners.
+ProgressSaveManager constructor and commit at 0x0050E5D0 and 0x0050F660 remain
+whole nonexact (198/native199 and 68/native70), totaling 269 native bytes. Native
+post-call NOP differences are unresolved. C++17 is inapplicable to this owner
+because Worker contains actual std::jthread. The /sdl, /Z7, /fp:strict and /Ob1
+lifetime trials do not close these roots; do not repeat unchanged trials or
+insert padding/change actual void contracts. Load and destruction are now exact.
+Use the ECL C++17 and load /sdl results as bounded profile leads, not global flags.
 Other open mapped roots include Enemy mesh deformation, grid strips, compression
 and allocation/removal factories. Do not repeat unchanged old trials.
 

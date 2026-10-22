@@ -23,10 +23,9 @@ void ProgressSaveManager::load(void*) {
             // Native visits physical Profile storage, revisiting row1[0] and
             // ending at fallback. Start from the complete Snapshot byte view;
             // no out-of-array profiles[character][9] subscript is formed.
-            auto* profile=reinterpret_cast<ProgressProfile*>(
+            reinterpret_cast<ProgressProfile*>(
                 reinterpret_cast<std::uint8_t*>(&backup)+offsetof(ProgressSnapshot,profiles)+
-                character*sizeof(backup.profiles[0])+index*sizeof(ProgressProfile));
-            profile->initialize();
+                character*sizeof(backup.profiles[0])+index*sizeof(ProgressProfile))->initialize();
         }
     }
     parse(&backup);
@@ -39,10 +38,9 @@ void ProgressSaveManager::load(void*) {
     current.metadata.initialize();
     for (std::int32_t character=0; character<2; ++character) {
         for (std::int32_t index=0; index<10; ++index) {
-            auto* profile=reinterpret_cast<ProgressProfile*>(
+            reinterpret_cast<ProgressProfile*>(
                 reinterpret_cast<std::uint8_t*>(&current)+offsetof(ProgressSnapshot,profiles)+
-                character*sizeof(current.profiles[0])+index*sizeof(ProgressProfile));
-            profile->initialize();
+                character*sizeof(current.profiles[0])+index*sizeof(ProgressProfile))->initialize();
         }
     }
     merge_current();

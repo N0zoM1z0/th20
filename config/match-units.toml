@@ -9913,7 +9913,7 @@ relocations = [
 
 [units.progress_save_copy_backup]
 source = "src/ProgressSaveManager.cpp"
-object = "build/maintenance124-canonical/ProgressSaveManager.obj"
+object = "build/core128-canonical/ProgressSaveManager.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::ProgressSaveManager::copy_current_to_backup"]
 symbol = "?copy_current_to_backup@ProgressSaveManager@th20@@QAEHXZ"
@@ -9926,7 +9926,7 @@ relocations = [
 
 [units.progress_save_merge_current]
 source = "src/ProgressSaveManager.cpp"
-object = "build/maintenance124-canonical/ProgressSaveManager.obj"
+object = "build/core128-canonical/ProgressSaveManager.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::ProgressSaveManager::merge_current"]
 symbol = "?merge_current@ProgressSaveManager@th20@@QAEHXZ"
@@ -14139,4 +14139,73 @@ relocations = [
     { offset = 360, type = "REL32", symbol = "??$_Emplace_reallocate@ABUEclSubroutineRecord@th20@@@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@AAEPAUEclSubroutineRecord@th20@@QAU23@ABU23@@Z", target = 0x0053F8A0 },
     { offset = 373, type = "REL32", symbol = "?_Make_iterator@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@AAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@QAUEclSubroutineRecord@th20@@@Z", target = 0x005402D0 },
     { offset = 397, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.progress_load_thread]
+source = "src/ProgressFileLoad.cpp"
+object = "build/core128-canonical/ProgressFileLoad.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl", "/source-charset:utf-8", "/execution-charset:.932"]
+functions = ["th20::ProgressSaveManager::load"]
+symbol = "?load@ProgressSaveManager@th20@@QAEXPAX@Z"
+target_address = 0x0050F3B0
+size = 562
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$?load@ProgressSaveManager@th20@@QAEXPAX@Z", target = 0x0056A95D },
+    { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 46, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+    { offset = 51, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+    { offset = 60, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+    { offset = 74, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+    { offset = 82, type = "REL32", symbol = "??$?0$$BY0BAAA@D$0A@@path@filesystem@std@@QAE@AAY0BAAA@$$CBDW4format@012@@Z", target = 0x00417CD0 },
+    { offset = 91, type = "DIR32", symbol = "?progress_backup_filename@th20@@3QBDB", target = 0x0057371C },
+    { offset = 99, type = "REL32", symbol = "??$?_0$$BY0A@D$0A@@path@filesystem@std@@QAEAAV012@AAY0A@$$CBD@Z", target = 0x00417E40 },
+    { offset = 111, type = "REL32", symbol = "?string@path@filesystem@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@XZ", target = 0x0041E790 },
+    { offset = 123, type = "REL32", symbol = "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ", target = 0x0040FF30 },
+    { offset = 147, type = "REL32", symbol = "?read_game_resource@th20@@YAPAEPBDPAHH@Z", target = 0x00410AA0 },
+    { offset = 173, type = "REL32", symbol = "?initialize@ProgressMetadata@th20@@QAEXXZ", target = 0x0050F090 },
+    { offset = 253, type = "REL32", symbol = "?initialize@ProgressProfile@th20@@QAEXXZ", target = 0x0050EF00 },
+    { offset = 276, type = "REL32", symbol = "?parse@ProgressSaveManager@th20@@QAEHPAUProgressSnapshot@2@@Z", target = 0x0050EB70 },
+    { offset = 281, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+    { offset = 289, type = "REL32", symbol = "??$?4$$BY0BAAA@D$0A@@path@filesystem@std@@QAEAAV012@AAY0BAAA@$$CBD@Z", target = 0x00417DF0 },
+    { offset = 294, type = "DIR32", symbol = "?progress_current_filename@th20@@3QBDB", target = 0x00573730 },
+    { offset = 302, type = "REL32", symbol = "??$?_0$$BY0A@D$0A@@path@filesystem@std@@QAEAAV012@AAY0A@$$CBD@Z", target = 0x00417E40 },
+    { offset = 315, type = "REL32", symbol = "?string@path@filesystem@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@XZ", target = 0x0041E790 },
+    { offset = 330, type = "REL32", symbol = "??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@$$QAV01@@Z", target = 0x00418EB0 },
+    { offset = 338, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ", target = 0x0040E5A0 },
+    { offset = 347, type = "REL32", symbol = "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ", target = 0x0040FF30 },
+    { offset = 365, type = "REL32", symbol = "?read_game_resource@th20@@YAPAEPBDPAHH@Z", target = 0x00410AA0 },
+    { offset = 388, type = "REL32", symbol = "?initialize@ProgressMetadata@th20@@QAEXXZ", target = 0x0050F090 },
+    { offset = 465, type = "REL32", symbol = "?initialize@ProgressProfile@th20@@QAEXXZ", target = 0x0050EF00 },
+    { offset = 478, type = "REL32", symbol = "?merge_current@ProgressSaveManager@th20@@QAEHXZ", target = 0x0050F5F0 },
+    { offset = 483, type = "DIR32", symbol = "?progress_load_end@th20@@3QBDB", target = 0x00573740 },
+    { offset = 488, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+    { offset = 503, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ", target = 0x0040E5A0 },
+    { offset = 515, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+    { offset = 530, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+    { offset = 552, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.progress_save_dtor]
+source = "src/ProgressSaveManager.cpp"
+object = "build/core128-canonical/ProgressSaveManager.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::ProgressSaveManager::~ProgressSaveManager"]
+symbol = "??1ProgressSaveManager@th20@@QAE@XZ"
+target_address = 0x0050E990
+size = 299
+compare_size = 304
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$??1ProgressSaveManager@th20@@QAE@XZ", target = 0x00567600 },
+    { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 42, type = "REL32", symbol = "?commit@ProgressSaveManager@th20@@QAEHXZ", target = 0x0050F660 },
+    { offset = 56, type = "REL32", symbol = "?close_and_join@Worker@th20@@QAEXXZ", target = 0x0040BCF0 },
+    { offset = 88, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+    { offset = 93, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+    { offset = 134, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+    { offset = 139, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+    { offset = 189, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+    { offset = 194, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+    { offset = 247, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+    { offset = 252, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+    { offset = 279, type = "REL32", symbol = "??1Worker@th20@@QAE@XZ", target = 0x0040B980 },
 ]

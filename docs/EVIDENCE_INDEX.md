@@ -87,6 +87,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Complete Snapshot and Metadata construction](EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md)
 - [Native Pbg file protocol](PBG_FILE_RECONSTRUCTION.md)
 - [Complete progress-file serialization and parsing](PROGRESS_FILE_EXACT_RECONSTRUCTION.md)
+- [Complete progress loading and SaveManager destruction](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md)
 - [Whole progress-file loading, saving and native file I/O](PROGRESS_FILE_IO_RECONSTRUCTION.md)
 - [Complete progress-file parser and checksum](PROGRESS_FILE_PARSE_RECONSTRUCTION.md)
 - [Whole progress-file serialization protocol](PROGRESS_WRITE_PROTOCOL_RECONSTRUCTION.md)
