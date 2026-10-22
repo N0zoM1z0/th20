@@ -41,7 +41,8 @@ int EclLoader::append(std::uint8_t* buffer) {
     for (std::int32_t i = 0;
          i < reinterpret_cast<EclFilePrefix*>(files[file_count])->subroutine_count;
          ++i, ++offsets) {
-        EclSubroutineRecord record{name, files[file_count] + *offsets};
+        EclSubroutineRecord record{name, reinterpret_cast<std::uint8_t*>(
+            *offsets + reinterpret_cast<std::uintptr_t>(files[file_count]))};
         auto position = std::find_if(records.begin(), records.end(),
             [name](EclSubroutineRecord record) { return std::strcmp(name, record.name) < 0; });
         records.insert(position, record);

@@ -5,6 +5,8 @@ CORE/EXACT-126 accepts the complete 54-byte `EclLoader::instruction` at
 The earlier [buffer protocol](ECL_BUFFER_RECONSTRUCTION.md) still describes
 borrowing, ordering, failures and recursive includes. Current totals belong in
 [the handoff](RE_HANDOFF.md) and [generated progress](PROGRESS.md).
+The later [registration and insertion review](ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md)
+closes the complete registration root and its reviewed supporting units.
 
 ## Native boundaries and wire storage
 
@@ -88,6 +90,8 @@ scripts/compare-coff-function.py --unit ecl_loader_instruction --json`.
 The canonical object and sibling receipt are
 `build/core126-canonical/EclLoaderBuffer.obj` and
 `build/core126-canonical/EclLoaderBuffer.receipt.json`.
+Those checkpoint products are superseded by CORE/EXACT-127; their original
+input/receipt closure is archived, and current paths come from match-units.toml.
 
 The original 160 canonical objects do not include EclLoaderBuffer.cpp. Their
 original immutable receipts therefore remain valid under the reviewed

@@ -841,3 +841,18 @@ th20::Bullet::type,0x00485640,function
 th20::Bullet::color_index,0x00485720,function
 th20::bullet_animation_script,0x0047D580,function
 std::destroy_at<th20::AnimationCallback>,0x0041F880,function
+th20::EclLoader::append::name_capture_constructor,0x0040B670,function
+std::pmr::vector<th20::EclSubroutineRecord>::begin,0x004702B0,function
+std::pmr::vector<th20::EclSubroutineRecord>::end,0x00470550,function
+std::find_if<ECL subroutine names>,0x0053FCA0,function
+std::pmr::vector<th20::EclSubroutineRecord>::insert,0x00540420,function
+th20::EclLoader::append::name_predicate,0x0053FDB0,function
+std::pmr::vector<th20::EclSubroutineRecord>::iterator::iterator,0x00413FA0,function
+std::_Get_unwrapped<ECL record iterator>,0x004690E0,function
+std::pmr::vector<th20::EclSubroutineRecord>::const_iterator::const_iterator,0x00414000,function
+std::pmr::vector<th20::EclSubroutineRecord>::iterator::_Unwrapped,0x0046EF50,function
+std::pmr::vector<th20::EclSubroutineRecord>::const_iterator::_Seek_to,0x004FCCD0,function
+std::_Iterator_base0::_Adopt,0x0040EC90,function
+std::addressof<ECL record vector storage>,0x0040B280,function
+std::_Seek_wrapped<ECL record iterator>,0x004EE740,function
+std::pmr::vector<th20::EclSubroutineRecord>::emplace,0x0053FB00,function

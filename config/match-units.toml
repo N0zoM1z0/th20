@@ -13889,12 +13889,254 @@ relocations = [
 
 [units.ecl_loader_instruction]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core126-canonical/EclLoaderBuffer.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::instruction"]
 symbol = "?instruction@EclLoader@th20@@QAEPAUEclInstruction@2@HH@Z"
 target_address = 0x0053E8E0
 size = 54
 relocations = [
     { offset = 28, type = "REL32", symbol = "??A?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAEAAUEclSubroutineRecord@th20@@I@Z", target = 0x0053B590 },
+]
+
+[units.ecl_loader_append]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclLoader::append"]
+symbol = "?append@EclLoader@th20@@QAEHPAE@Z"
+target_address = 0x0053FE60
+size = 876
+relocations = [
+    { offset = 10, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 44, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 73, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 88, type = "DIR32", symbol = "?ecl_invalid_magic_format@th20@@3QBDB", target = 0x00576AD8 },
+    { offset = 93, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+    { offset = 120, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 158, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 174, type = "DIR32", symbol = "?ecl_invalid_version_format@th20@@3QBDB", target = 0x00576AFC },
+    { offset = 179, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+    { offset = 206, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 253, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 282, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 315, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 354, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 435, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 480, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 500, type = "REL32", symbol = "?__autoclassinit2@?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAEXI@Z", target = 0x0040C080 },
+    { offset = 515, type = "REL32", symbol = "??0<lambda_69eed955fb65f39abf157efcb08ac6ca>@@QAE@ABQAD@Z", target = 0x0040B670 },
+    { offset = 558, type = "REL32", symbol = "?end@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@XZ", target = 0x00470550 },
+    { offset = 596, type = "REL32", symbol = "?begin@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@XZ", target = 0x004702B0 },
+    { offset = 628, type = "REL32", symbol = "??$find_if@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@V<lambda_69eed955fb65f39abf157efcb08ac6ca>@@@std@@YA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@V10@V10@V<lambda_69eed955fb65f39abf157efcb08ac6ca>@@@Z", target = 0x0053FCA0 },
+    { offset = 671, type = "REL32", symbol = "?insert@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@ABUEclSubroutineRecord@th20@@@Z", target = 0x00540420 },
+    { offset = 681, type = "REL32", symbol = "_strlen", target = 0x0054FE20 },
+    { offset = 767, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 818, type = "REL32", symbol = "??A?$array@PAE$0EA@@std@@QAEAAPAEI@Z", target = 0x00414580 },
+    { offset = 866, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.ecl_name_capture_ctor]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclLoader::append::name_capture_constructor"]
+symbol = "??0<lambda_69eed955fb65f39abf157efcb08ac6ca>@@QAE@ABQAD@Z"
+target_address = 0x0040B670
+size = 26
+relocations = [
+]
+
+[units.ecl_records_begin]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::begin"]
+symbol = "?begin@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@XZ"
+target_address = 0x004702B0
+size = 66
+relocations = [
+    { offset = 23, type = "REL32", symbol = "??$addressof@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@YAPAV?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@0@AAV10@@Z", target = 0x0040B280 },
+    { offset = 53, type = "REL32", symbol = "??0?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAE@PAUEclSubroutineRecord@th20@@PBU_Container_base0@1@@Z", target = 0x00413FA0 },
+]
+
+[units.ecl_records_end]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::end"]
+symbol = "?end@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@XZ"
+target_address = 0x00470550
+size = 67
+relocations = [
+    { offset = 23, type = "REL32", symbol = "??$addressof@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@YAPAV?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@0@AAV10@@Z", target = 0x0040B280 },
+    { offset = 54, type = "REL32", symbol = "??0?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAE@PAUEclSubroutineRecord@th20@@PBU_Container_base0@1@@Z", target = 0x00413FA0 },
+]
+
+[units.ecl_records_find_if]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::find_if<ECL subroutine names>"]
+symbol = "??$find_if@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@V<lambda_69eed955fb65f39abf157efcb08ac6ca>@@@std@@YA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@V10@V10@V<lambda_69eed955fb65f39abf157efcb08ac6ca>@@@Z"
+target_address = 0x0053FCA0
+size = 151
+relocations = [
+    { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 25, type = "REL32", symbol = "??$_Adl_verify_range@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@V12@@std@@YAXABV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@0@Z", target = 0x0040C6B0 },
+    { offset = 37, type = "REL32", symbol = "??$_Get_unwrapped@AAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@@std@@YA?A_TAAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@@Z", target = 0x004690E0 },
+    { offset = 52, type = "REL32", symbol = "??$_Get_unwrapped@ABV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@@std@@YA?A_TABV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@@Z", target = 0x004690E0 },
+    { offset = 95, type = "REL32", symbol = "??R<lambda_69eed955fb65f39abf157efcb08ac6ca>@@QBE@UEclSubroutineRecord@th20@@@Z", target = 0x0053FDB0 },
+    { offset = 119, type = "REL32", symbol = "??$_Seek_wrapped@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@AAPAUEclSubroutineRecord@th20@@@std@@YAXAAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@AAPAUEclSubroutineRecord@th20@@@Z", target = 0x004EE740 },
+    { offset = 143, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.ecl_records_insert]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::insert"]
+symbol = "?insert@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@ABUEclSubroutineRecord@th20@@@Z"
+target_address = 0x00540420
+size = 36
+relocations = [
+    { offset = 23, type = "REL32", symbol = "??$emplace@ABUEclSubroutineRecord@th20@@@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@ABUEclSubroutineRecord@th20@@@Z", target = 0x0053FB00 },
+]
+
+[units.ecl_name_predicate]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclLoader::append::name_predicate"]
+symbol = "??R<lambda_69eed955fb65f39abf157efcb08ac6ca>@@QBE@UEclSubroutineRecord@th20@@@Z"
+target_address = 0x0053FDB0
+size = 57
+relocations = [
+    { offset = 20, type = "REL32", symbol = "_strcmp", target = 0x0054FD10 },
+]
+
+[units.ecl_records_iterator_ctor]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::iterator::iterator"]
+symbol = "??0?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAE@PAUEclSubroutineRecord@th20@@PBU_Container_base0@1@@Z"
+target_address = 0x00413FA0
+size = 33
+relocations = [
+    { offset = 19, type = "REL32", symbol = "??0?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAE@PAUEclSubroutineRecord@th20@@PBU_Container_base0@1@@Z", target = 0x00414000 },
+]
+
+[units.ecl_records_get_unwrapped]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Get_unwrapped<ECL record iterator>"]
+symbol = "??$_Get_unwrapped@AAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@@std@@YA?A_TAAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@@Z"
+target_address = 0x004690E0
+size = 13
+relocations = [
+    { offset = 7, type = "REL32", symbol = "?_Unwrapped@?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QBEPAUEclSubroutineRecord@th20@@XZ", target = 0x0046EF50 },
+]
+
+[units.ecl_records_const_iterator_ctor]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::const_iterator::const_iterator"]
+symbol = "??0?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAE@PAUEclSubroutineRecord@th20@@PBU_Container_base0@1@@Z"
+target_address = 0x00414000
+size = 37
+relocations = [
+    { offset = 23, type = "REL32", symbol = "?_Adopt@_Iterator_base0@std@@QAEXPBX@Z", target = 0x0040EC90 },
+]
+
+[units.ecl_records_iterator_unwrapped]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::iterator::_Unwrapped"]
+symbol = "?_Unwrapped@?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QBEPAUEclSubroutineRecord@th20@@XZ"
+target_address = 0x0046EF50
+size = 25
+relocations = [
+    { offset = 14, type = "REL32", symbol = "??$_Unfancy_maybe_null@UEclSubroutineRecord@th20@@@std@@YAPAUEclSubroutineRecord@th20@@PAU12@@Z", target = 0x0040B280 },
+]
+
+[units.ecl_records_iterator_seek_to]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::const_iterator::_Seek_to"]
+symbol = "?_Seek_to@?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAEXPBUEclSubroutineRecord@th20@@@Z"
+target_address = 0x004FCCD0
+size = 30
+relocations = [
+    { offset = 12, type = "REL32", symbol = "??$_Refancy_maybe_null@PAUEclSubroutineRecord@th20@@$0A@@std@@YAPAUEclSubroutineRecord@th20@@PAU12@@Z", target = 0x0040B280 },
+]
+
+[units.ecl_records_iterator_adopt]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Iterator_base0::_Adopt"]
+symbol = "?_Adopt@_Iterator_base0@std@@QAEXPBX@Z"
+target_address = 0x0040EC90
+size = 13
+relocations = [
+]
+
+[units.ecl_records_storage_address]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::addressof<ECL record vector storage>"]
+symbol = "??$addressof@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@YAPAV?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@0@AAV10@@Z"
+target_address = 0x0040B280
+size = 8
+relocations = [
+]
+
+[units.ecl_records_seek_wrapped]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Seek_wrapped<ECL record iterator>"]
+symbol = "??$_Seek_wrapped@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@AAPAUEclSubroutineRecord@th20@@@std@@YAXAAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@AAPAUEclSubroutineRecord@th20@@@Z"
+target_address = 0x004EE740
+size = 29
+relocations = [
+    { offset = 8, type = "REL32", symbol = "??$forward@AAPAUEclSubroutineRecord@th20@@@std@@YAAAPAUEclSubroutineRecord@th20@@AAPAU12@@Z", target = 0x0040B280 },
+    { offset = 22, type = "REL32", symbol = "?_Seek_to@?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAEXPBUEclSubroutineRecord@th20@@@Z", target = 0x004FCCD0 },
+]
+
+[units.ecl_records_emplace]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core127-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::EclSubroutineRecord>::emplace"]
+symbol = "??$emplace@ABUEclSubroutineRecord@th20@@@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@ABUEclSubroutineRecord@th20@@@Z"
+target_address = 0x0053FB00
+size = 407
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$??$emplace@ABUEclSubroutineRecord@th20@@@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@ABUEclSubroutineRecord@th20@@@Z", target = 0x0056B1ED },
+    { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 95, type = "REL32", symbol = "??$forward@ABUEclSubroutineRecord@th20@@@std@@YAABUEclSubroutineRecord@th20@@ABU12@@Z", target = 0x0040B280 },
+    { offset = 107, type = "REL32", symbol = "??$_Emplace_back_with_unused_capacity@ABUEclSubroutineRecord@th20@@@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@AAEAAUEclSubroutineRecord@th20@@ABU23@@Z", target = 0x0053F810 },
+    { offset = 121, type = "REL32", symbol = "?_Getal@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@AAEAAV?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@2@XZ", target = 0x0040F160 },
+    { offset = 133, type = "REL32", symbol = "??$forward@ABUEclSubroutineRecord@th20@@@std@@YAABUEclSubroutineRecord@th20@@ABU12@@Z", target = 0x0040B280 },
+    { offset = 149, type = "REL32", symbol = "??$?0ABUEclSubroutineRecord@th20@@@?$_Alloc_temporary2@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@1@ABUEclSubroutineRecord@th20@@@Z", target = 0x0053F7B0 },
+    { offset = 172, type = "REL32", symbol = "?_Orphan_range@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@ABEXPAUEclSubroutineRecord@th20@@0@Z", target = 0x00414B60 },
+    { offset = 189, type = "REL32", symbol = "??$move@AAUEclSubroutineRecord@th20@@@std@@YA$$QAUEclSubroutineRecord@th20@@AAU12@@Z", target = 0x0040B280 },
+    { offset = 204, type = "REL32", symbol = "??$_Unfancy@UEclSubroutineRecord@th20@@@std@@YAPAUEclSubroutineRecord@th20@@PAU12@@Z", target = 0x0040B280 },
+    { offset = 227, type = "REL32", symbol = "??$construct@UEclSubroutineRecord@th20@@U12@@?$_Normal_allocator_traits@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@1@PAUEclSubroutineRecord@th20@@$$QAU45@@Z", target = 0x00413A90 },
+    { offset = 265, type = "REL32", symbol = "??$_Move_backward_unchecked@PAUEclSubroutineRecord@th20@@PAU12@@std@@YAPAUEclSubroutineRecord@th20@@PAU12@00@Z", target = 0x00467080 },
+    { offset = 276, type = "REL32", symbol = "?_Get_value@?$_Alloc_temporary2@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAEAAUEclSubroutineRecord@th20@@XZ", target = 0x004FBFF0 },
+    { offset = 282, type = "REL32", symbol = "??$move@AAUEclSubroutineRecord@th20@@@std@@YA$$QAUEclSubroutineRecord@th20@@AAU12@@Z", target = 0x0040B280 },
+    { offset = 313, type = "REL32", symbol = "??1?$_Alloc_temporary2@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x0053FD40 },
+    { offset = 330, type = "REL32", symbol = "?_Make_iterator@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@AAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@QAUEclSubroutineRecord@th20@@@Z", target = 0x005402D0 },
+    { offset = 344, type = "REL32", symbol = "??$forward@ABUEclSubroutineRecord@th20@@@std@@YAABUEclSubroutineRecord@th20@@ABU12@@Z", target = 0x0040B280 },
+    { offset = 360, type = "REL32", symbol = "??$_Emplace_reallocate@ABUEclSubroutineRecord@th20@@@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@AAEPAUEclSubroutineRecord@th20@@QAU23@ABU23@@Z", target = 0x0053F8A0 },
+    { offset = 373, type = "REL32", symbol = "?_Make_iterator@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@AAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@QAUEclSubroutineRecord@th20@@@Z", target = 0x005402D0 },
+    { offset = 397, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

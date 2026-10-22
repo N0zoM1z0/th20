@@ -93,6 +93,18 @@ int main() {
         assert((record_names(loader)==std::vector<std::string>{"a","a","a","b","child","parent","z"}));
     }
     assert(resource.live.empty());
+    // Registration stores opaque file-relative addresses without reading the
+    // subroutine headers. Preserve every unsigned wire-offset bit, including
+    // values outside this fixture's buffer; do not execute those records.
+    for(std::uint32_t offset : {0u,1u,15u,16u,0x7fffffffu,0x80000000u,0xfffffff0u,0xffffffffu}) {
+        Loader loader;File input{"opaque"};input.words[9]=offset;
+        assert(loader.append(input.bytes())==0);
+        const auto base=reinterpret_cast<std::uintptr_t>(input.bytes());
+        const auto stored=reinterpret_cast<std::uintptr_t>(loader.records[0].header);
+        assert(stored-base==offset && input.words[9]==offset);
+        assert(loader.records[0].name==reinterpret_cast<char*>(input.words.data()+10));
+    }
+    assert(resource.live.empty());
     // Native insertion failure is nontransactional: counts and the borrowed
     // slot are already published, whereas file_count has not advanced.
     {

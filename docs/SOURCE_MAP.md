@@ -47,7 +47,7 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 828 units / 161 objects. Fourteen additional
+The configured graph currently has 844 units / 161 objects. Thirteen additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. Do not use stubs or forced unresolved linkage to

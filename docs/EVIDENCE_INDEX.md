@@ -24,6 +24,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md)
 - [ECL buffer registration and instruction resolution](ECL_BUFFER_RECONSTRUCTION.md)
 - [ECL wire-header extents and exact instruction resolution](ECL_BUFFER_EXACT_RECONSTRUCTION.md)
+- [Exact ECL registration and record insertion](ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md)
 - [Whole ECL argument and tagged stack protocol](EXACT_ECL_ARGUMENT_STACK_RECONSTRUCTION.md)
 - [Whole ECL async creation, lookup, invalidation and call setup](EXACT_ECL_ASYNC_RECONSTRUCTION.md)
 - [ECL invocation and frame protocol](EXACT_ECL_CALL_RECONSTRUCTION.md)

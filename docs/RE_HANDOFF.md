@@ -12,39 +12,43 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 828 physical strict units, 161 comparison objects,
-160,975 disjoint comparison bytes and 842 source-present mappings. Fourteen
-mapped whole functions remain nonexact. Authored coverage is separately 95 exact
-functions / 30,437 bytes, with 100 confirmed authored origins. The pinned reference
+The maintained graph contains 844 physical strict units, 161 comparison objects,
+162,849 disjoint comparison bytes and 857 source-present mappings. Thirteen
+mapped whole functions remain nonexact. Authored coverage is separately 97 exact
+functions / 31,370 bytes, with 101 confirmed authored origins. The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
 These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-126 accepts complete 54-byte ECL instruction resolution with a genuine
-16-byte subroutine prefix and signed byte displacement. The whole 876-byte
-registration function remains six structural bytes nonexact after representing
-its complete 36-byte wire header. Both roots receive independent authored-origin
-reviews. All 828 strict units pass with only one new production object build;
-the original 160 objects are reused with immutable receipts under the reviewed
-[freshness policy](ORACLES.md). All 80 public tests pass (332.833 seconds).
-See [buffer exact evidence](ECL_BUFFER_EXACT_RECONSTRUCTION.md).
+CORE/EXACT-127 accepts complete ECL registration and fifteen supporting physical
+functions, adding 1,874 comparison bytes. Unsigned file-relative address rebasing
+and a per-source C++17 profile explain the complete registration/insertion path.
+Thirteen origin decisions separately identify the custom name predicate, eleven
+SDK functions and an existing compiler initializer. Eleven folded aliases pass
+without duplicate credit. All 844 strict units and all 80 public tests pass
+(322.805 seconds). Only the affected EclLoaderBuffer object is rebuilt; the
+other 160 objects retain immutable receipts. See
+[registration evidence](ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md).
 
 ## Current local products
 
 Canonical paths in `config/match-units.toml` use
 `build/maintenance124-canonical/` plus the new
-`build/core126-canonical/EclLoaderBuffer.obj`. Protect all 161 objects and sibling
-receipts. The current source freeze is `.analysis/core126-final-frozen-source.json`;
-strict results are `.analysis/core126-exact-results.json.gz` and post-retirement
-results are `.analysis/core126-post-cleanup-results.json.gz`.
+`build/core127-canonical/EclLoaderBuffer.obj`. Protect all 161 objects and sibling
+receipts. The current source freeze is `.analysis/core127-final-frozen-source.json`;
+strict results are `.analysis/core127-exact-results.json.gz` and post-retirement
+results are `.analysis/core127-post-cleanup-results.json.gz`.
 
-Original inputs for the prior 160 objects were verified and preserved before
-source changes in `.analysis/maintenance125-original-inputs.json.gz`. Retired
-probe inputs and immutable receipts are in
-`.analysis/core126-retired-probe-inputs.json.gz`; protected hashes and removal
-records are `.analysis/core126-protected.json` and `.analysis/core126-cleanup.json`.
-No canonical products were retired or rebuilt for cleanup.
+Original inputs for the reused 160 objects remain preserved in
+`.analysis/maintenance125-original-inputs.json.gz`. The replaced EclLoaderBuffer
+object's original inputs were verified before editing and preserved in
+`.analysis/core127-original-inputs.json.gz`. Retired object/probe inputs and
+immutable receipts are in `.analysis/core127-retired-inputs.json.gz`; protected
+hashes and removal records are `.analysis/core127-protected.json` and
+`.analysis/core127-cleanup.json`. The superseded core126 object was retired after
+replacement verification. No current canonical products were removed or rebuilt
+for cleanup.
 
 Retain original compiler input archives, failed experiment evidence, native
 exports and the locked target/tools/Ghidra/reference. Old receipts describe
@@ -54,12 +58,13 @@ checks, as specified in [the workflow](RE_WORKFLOW.md).
 
 ## Next reconstruction work
 
-The immediate ECL buffer lead is the six-byte register-encoding disagreement in
-the whole 876-byte append at `0x0053FE60`, offsets 485, 486, 487, 488, 490 and 492.
-Reversing the pointer addition preserves those differences; a subscript form
-emits 901 bytes and is rejected. Do not repeat unchanged trials or introduce
-shaping locals. Original inputs, complete native boundaries and diagnostic
-results are under `.analysis/core125-ecl-*` and `.analysis/core126-*`.
+Use the C++17 emission result as a bounded profile lead for another coherent
+nonexact protocol, rather than assuming global flags. The four ProgressSaveManager
+constructor/destructor/load/commit roots at 0x0050E5D0, 0x0050E990, 0x0050F3B0 and
+0x0050F660 remain nonexact and total 1,130 native bytes. Review their existing
+evidence before fresh probes; preserve one natural source body and actual owners.
+Other open mapped roots include Enemy mesh deformation, grid strips, compression
+and allocation/removal factories. Do not repeat unchanged old trials.
 
 Continue coherent core protocols around the whole Animation VM at `0x0042B5D0`.
 Its full extent is 40,752 bytes: 39,470 code, two alignment bytes, 644 pointer-table

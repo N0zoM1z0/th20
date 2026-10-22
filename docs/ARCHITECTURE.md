@@ -32,7 +32,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | --- | --- | --- |
 | Animation | Base 0x4C0, Animation 0x5E4, pooled record 0x600; real timers, interpolation, intrusive links and vertex records | Whole VM, Renderer and native buffer lifetime |
 | Animation callbacks | Eight-byte base, five virtual slots; cdecl entry/script callbacks | Remaining concrete owners, lambda adapters and native RTTI name identity |
-| ECL | Runtime 72, Manager 112, Loader 564; actual stack/frame/async protocol, whole Runtime tick and buffer instruction resolution | Full resource/startup graph and remaining buffer registration emission differences |
+| ECL | Runtime 72, Manager 112, Loader 564; actual stack/frame/async protocol, whole Runtime tick, buffer registration and instruction resolution | Full resource/startup graph and whole-program linkage |
 | Enemy | Actual EnemyState/Enemy, movement, parameters, handles and script dependencies | Whole 0x48C010 dispatcher and queue/factory emission |
 | Scheduler | Actual controller/nodes, observed lists, sorted registration and dispatch | Remaining removal/factory emission and process-global startup |
 | Player/Bomb/Bullet/Item | Typed ownership, pools, context publication, SHT/damage consumers and Item spawn/lifecycle | Full gameplay, resource callbacks and remaining controller factories |

@@ -39,7 +39,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040B130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B1D0,unknown,Worker,review,pending,"EXACT-053: Real Worker16/jthread12/atomic flag launch, replacement, guarded close/join/detach and destructor. Complete native instructions, reference-argument producers, library ABI, EH/data/unwind contributions and independent relocation anchors audited. Full cold strict replay377units/67objects/58903disjointbytes; owned real-thread C++20/UBSan lifecycle checks pass. Origin remains unknown; original library constructor/move emission and enclosing graphics/loading/resource/global lifetimes remain pending. See docs/EXACT_WORKER_RECONSTRUCTION.md."
-0x0040B280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040B280,unknown,EclBuffer,review,pending,"CORE/EXACT-127: Complete 8-byte address contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. This physical primitive has a verified ECL role; folded contributors/original source identity remain unresolved, so authored/library origin stays unknown. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md."
 0x0040B290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B2A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B2B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -53,7 +53,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040B5D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040B670,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040B670,unknown,EclBuffer,review,pending,"CORE/EXACT-127: Complete 26-byte capture contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. This physical primitive has a verified ECL role; folded contributors/original source identity remain unresolved, so authored/library origin stays unknown. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md."
 0x0040B690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B6D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -92,7 +92,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040BFB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040BFF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040C080,unknown,HitCtrlInf,review,pending,"CORE/EXACT-098: Complete actual HitCtrlInf pool/heap lifecycle on shared Context/scheduler/allocator owners. Frozen240-file source passes682 strict canonical units/135 fresh objects/131527 disjoint bytes. Sixteen new complete roots1573B/72 independent relocations include initialization265B, allocation225B, rectangle/circle creation151/140B, retirement138B, owner factory73B and naturally compiler-generated auto-class initializer31B. Region selector/Context/Identifier aliases add no physical credit. Full destructor/find/update/global creation and Region/Node allocation factories remain nonexact; no inert initialization/reset or special allocator body. Owned O2/UBSan and ASan/UBSan exercise both views, generations, actual callbacks, observer repair, 261-region pool/heap retirement and 259-region destruction. Origins/authored/reference absorption remain separate and unchanged; full damage query/Windows startup/runtime remain open. See docs/HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md. Origin remains pending independently of production/canonical acceptance."
+0x0040C080,compiler,HitCtrlInf,exclude,high,CORE/EXACT-127: Independent compiler-emitted __autoclassinit2 implementations for real HitCtrlInf and ECL iterator owners explain the complete31-byte native dynamic-span zeroing function; canonical relocation replay uses the existing independently anchored memset. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x0040C0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -232,7 +232,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040EBA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040EBE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040EC20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040EC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040EC90,unknown,EclBuffer,review,pending,"CORE/EXACT-127: Complete 13-byte adopt contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. This physical primitive has a verified ECL role; folded contributors/original source identity remain unresolved, so authored/library origin stays unknown. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md."
 0x0040ECA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040ECC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040ED00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -431,9 +431,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413EC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413F50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413FA0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 33-byte iterator_ctor contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x00413FD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414000,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 37-byte const_iterator_ctor contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x00414030,unknown,Rectangle,review,pending,"REF-030: complete natural shared value/math/member; native complete flow, typed producers/consumers and independent callee/PE literal anchors audited.144-unit/38-object cold canonical replay and C++20/UBSan checks pass. Original names and authored/compiler/shared origins pending. Related884-body reference review remains ongoing; see docs/REFERENCE_PLAYER_BOMB_ITEM_REVIEW.md."
 0x00414060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414090,unknown,IntegerTriple,review,pending,"REF-042: independently maintained natural Sprite value or cdecl texel contribution. Native nested constructor calls, actual vertex array strides/counts/function pointers, mixed scalar widths and uint16/BGRA channel extraction establish real storage/ABI before probing. All13 complete native ranges PE-decode and agree with attested Ghidra; independent Vector3/Timer/Angle/IntegerTriple/memset destinations anchor canonical relocations. All234units/56coldobjects/17277disjointbytes exact,2613444 independent dirty-guard/default/exhaustive-channel/alias C++20/UBSan checks. Original tags/field roles/origins and full Animation/Controller/Worker/resource/EH ownership remain open. Natural Base707 versus725 rejected, no prefix/facade/compiler-shaping or copied reference source. See docs/REFERENCE_SPRITE_REVIEW.md."
@@ -1853,7 +1853,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00468FE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00469030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00469070,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004690E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004690E0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 13-byte unwrap contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x004690F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00469390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004693F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1957,7 +1957,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0046EEE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046EEF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046EF00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0046EF50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0046EF50,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 25-byte unwrapped contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x0046EF70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046EF80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046F100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1980,7 +1980,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00470220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004702B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004702B0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 66-byte begin contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x00470300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1992,7 +1992,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00470510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00470550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00470550,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 67-byte end contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x004705A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4371,7 +4371,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004EE400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004EE530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004EE600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004EE740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004EE740,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 29-byte seek_wrapped contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x004EE760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004EE780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004EE7B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4622,7 +4622,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FCC30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCC60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FCCD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FCCD0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 30-byte seek_to contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x004FCCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCD20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCD50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5851,12 +5851,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0053F8A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053FA90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0053FAB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0053FB00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0053FCA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0053FB00,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 407-byte emplace contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
+0x0053FCA0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 151-byte find_if contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x0053FD40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0053FDB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0053FDB0,authored,EclBuffer,authored,high,CORE/EXACT-127: Complete 57-byte predicate contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Custom SCPT-name selection supplies application-authored semantics. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x0053FDF0,unknown,EclAsync,review,pending,"EXACT-082: Seven complete async creation/find/invalidation/Runtime allocation/Loader activation/owned getter contributions add 524 bytes. Frozen 604-unit /115 fresh-object graph strictly replays 104816 disjoint bytes. VM opcode21 now calls mark-only invalidate_async at53E560, distinct from destructive terminate_async at4973C0; real VM/Manager/PMR checks prove deferred destruction. Real call_into preserves signed IDs, skips, descriptor conversions, five-word frames and missing-subroutine retained context. Genuine nonthrowing scalar/member constructors allow ordinary Runtime new T under unchanged EHsc; original annotation spelling is inferred. Existing whole Position/Runtime/Manager lifetimes stay exact. Manager base current_instruction migrates without new physical coverage. Full folded support endpoints have no duplicate credit. Node factory53B410/73, buffer resolution, allocator startup, unused interpolation/frame routes and Enemy movement/opcode/outer retirement remain explicit dependencies. Bit0 wider role and whole root/readers/State tick/Player/runtime remain open. Reference raw interfaces are not imported; all new authored origins remain pending. See docs/EXACT_ECL_ASYNC_RECONSTRUCTION.md."
-0x0053FE60,authored,EclBuffer,authored,high,"CORE/EXACT-126: Complete 876-byte SCPT registration boundary and application-authored origin reviewed through fixed-header fields, Spt diagnostics, sorted borrowed subroutine records and independent ECL VM/include consumers. The 36-byte wire header explains both fixed-header crossings. Whole maintained output is 876 bytes with six structural register-encoding differences; no canonical unit or exact credit. Rejection, stable duplicate insertion, nontransactional failure and recursive include publication remain unchanged. See docs/ECL_BUFFER_EXACT_RECONSTRUCTION.md."
+0x0053FE60,authored,EclBuffer,authored,high,CORE/EXACT-127: Complete 876-byte append contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Custom SCPT-name selection supplies application-authored semantics. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x005401D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5865,7 +5865,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00540300,unknown,ScriptStack,review,pending,REF-037: natural complete typed value member; native construction/owner/access/call operands and generic output-pointer pop ABI independently establish anchors before probing. Full162-unit/46-object cold replay11154 bytes and portable C++20/UBSan tests pass. Actual PMR Stack24 and Counter48 four-integer/eight-float types; original spelling/origin pending. Generic pop/allocator/vector bodies and full VM/Enemy/vptr/EH owners not reconstructed. See docs/REFERENCE_GAMEPLAY_ECL_REVIEW.md.
 0x00540340,unknown,EclSelection,review,pending,"EXACT-066: Nineteen complete actual Enemy creation/initialization, script reset/selection, generation, hidden-result identifier and non-consuming value forwarding bodies;1279bytes. Frozen-source500units/93coldobjects/90121disjointbytes strictly replay. Owned O2/UBSan tests exercise actual creation/init/reset/selection and list/generation lifetimes. Scalar allocation/context/spawn application, supplied-value virtual materialization, whole653-byte spawn opcode and41KB main dispatcher remain pending. See docs/EXACT_ENEMY_CREATION_RECONSTRUCTION.md."
 0x005403D0,unknown,EclArguments,review,pending,"EXACT-070: Fifteen complete actual ECL current/argument/destination and generic tagged stack-copy members add2886bytes. Complete524unit/97coldobject graph replays93941disjointbytes. Natural branch/virtual expression and real constant identity establish emission; no masked structural-only credit. Owned O2/UBSan checks and actual push/pop in whole tick/call tests pass. Source origin, resource instruction/append/include, production variable owners, whole Enemy root and whole-game linkage/runtime remain open. See docs/EXACT_ECL_ARGUMENT_STACK_RECONSTRUCTION.md."
-0x00540420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00540420,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 36-byte insert contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x00540450,unknown,ScriptStack,review,pending,"EXACT-070: Fifteen complete actual ECL current/argument/destination and generic tagged stack-copy members add2886bytes. Complete524unit/97coldobject graph replays93941disjointbytes. Natural branch/virtual expression and real constant identity establish emission; no masked structural-only credit. Owned O2/UBSan checks and actual push/pop in whole tick/call tests pass. Source origin, resource instruction/append/include, production variable owners, whole Enemy root and whole-game linkage/runtime remain open. See docs/EXACT_ECL_ARGUMENT_STACK_RECONSTRUCTION.md."
 0x00540510,unknown,EclSelection,review,pending,"EXACT-066: Nineteen complete actual Enemy creation/initialization, script reset/selection, generation, hidden-result identifier and non-consuming value forwarding bodies;1279bytes. Frozen-source500units/93coldobjects/90121disjointbytes strictly replay. Owned O2/UBSan tests exercise actual creation/init/reset/selection and list/generation lifetimes. Scalar allocation/context/spawn application, supplied-value virtual materialization, whole653-byte spawn opcode and41KB main dispatcher remain pending. See docs/EXACT_ENEMY_CREATION_RECONSTRUCTION.md."
 0x00540530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
