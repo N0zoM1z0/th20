@@ -855,3 +855,6 @@ std::_Iterator_base0::_Adopt
 std::addressof<ECL record vector storage>
 std::_Seek_wrapped<ECL record iterator>
 std::pmr::vector<th20::EclSubroutineRecord>::emplace
+th20::DiagnosticAllocator::release_object<FunctionChainNode>
+std::destroy_at<th20::FunctionChainNode>
+th20::FunctionChainNode::scalar_deleting_destructor

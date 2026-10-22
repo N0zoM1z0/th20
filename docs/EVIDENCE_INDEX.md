@@ -69,6 +69,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Actual process Session and player-table reconstruction](EXACT_SESSION_RECONSTRUCTION.md)
 - [Worker launch, replacement and shutdown lifetime](EXACT_WORKER_RECONSTRUCTION.md)
 - [Complete function-chain controller protocol](FUNCTION_CHAIN_CONTROLLER_RECONSTRUCTION.md)
+- [Function-chain allocation, release and source ownership](FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md)
 - [Hit controller lifecycle reconstruction](HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md)
 - [Item main-function evidence](ITEM_MAIN_RECONSTRUCTION.md)
 - [Actual Item pool, lifetime and reward protocol](ITEM_OWNER_RECONSTRUCTION.md)

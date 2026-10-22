@@ -856,3 +856,6 @@ std::_Iterator_base0::_Adopt,0x0040EC90,function
 std::addressof<ECL record vector storage>,0x0040B280,function
 std::_Seek_wrapped<ECL record iterator>,0x004EE740,function
 std::pmr::vector<th20::EclSubroutineRecord>::emplace,0x0053FB00,function
+th20::DiagnosticAllocator::release_object<FunctionChainNode>,0x004118A0,function
+std::destroy_at<th20::FunctionChainNode>,0x00411960,function
+th20::FunctionChainNode::scalar_deleting_destructor,0x00411CB0,function

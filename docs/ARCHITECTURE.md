@@ -34,7 +34,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | Animation callbacks | Eight-byte base, five virtual slots; cdecl entry/script callbacks | Remaining concrete owners, lambda adapters and native RTTI name identity |
 | ECL | Runtime 72, Manager 112, Loader 564; actual stack/frame/async protocol, whole Runtime tick, buffer registration and instruction resolution | Full resource/startup graph and whole-program linkage |
 | Enemy | Actual EnemyState/Enemy, movement, parameters, handles and script dependencies | Whole 0x48C010 dispatcher and queue/factory emission |
-| Scheduler | Actual controller/nodes, observed lists, sorted registration and dispatch | Remaining removal/factory emission and process-global startup |
+| Scheduler | Actual controller/nodes, observed lists, sorted registration/dispatch and scalar allocation/release | Unlocked removal emission and process-global startup |
 | Player/Bomb/Bullet/Item | Typed ownership, pools, context publication, SHT/damage consumers and Item spawn/lifecycle | Full gameplay, resource callbacks and remaining controller factories |
 | Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction | Remaining compressor/SaveManager emission and startup |
 | Graphics/mesh | Actual Graphics, RenderMesh, surface/geometry records, two-bit flag view and lifecycle protocols | Renderer declaration, full rendering and resource integration |

@@ -6,7 +6,7 @@
 
 namespace th20 {
 
-struct FunctionChainNode;
+class FunctionChainNode;
 using FunctionChainList = IntrusiveList<FunctionChainNode>;
 using FunctionChainIterator = IntrusiveIterator<FunctionChainNode>;
 using FunctionChainLink = IntrusiveLink<FunctionChainNode>;
@@ -17,7 +17,8 @@ using FunctionChainCallback = std::int32_t (*)(void*);
 // The native flags are a four-byte aggregate word. Allocation, destruction
 // and enclosing dispatch ownership remain separately reconstructed.
 struct FunctionChainFlags { std::uint32_t bits; };
-struct FunctionChainNode {
+class FunctionChainNode {
+public:
     std::int32_t priority;
     FunctionChainFlags flags;
     FunctionChainCallback callback;

@@ -107,3 +107,17 @@ address,name,size,status,match_percent,unit,evidence
 0x0049DFD0,th20::WindowState::mesh_width,20,matching,100.00,window_mesh_width,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
 0x0049DFB0,th20::WindowState::mesh_height,20,matching,100.00,window_mesh_height,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
 0x004DE430,th20::Graphics::create_grid_strip,223,matching,100.00,graphics_grid_strip,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x00411A70,th20::FunctionChainNode::FunctionChainNode,138,matching,100.00,chain_node_ctor,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00418A80,th20::FunctionChainController::FunctionChainController,55,matching,100.00,chain_controller_ctor,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x004127B0,th20::FunctionChainController::create,57,matching,100.00,chain_controller_create,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x004124B0,th20::FunctionChainController::remove,134,matching,100.00,chain_controller_remove,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x004122C0,th20::register_update,68,matching,100.00,chain_register_update,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00412310,th20::register_update_disabled,68,matching,100.00,chain_register_update_disabled,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00412360,th20::register_draw,68,matching,100.00,chain_register_draw,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x004123B0,th20::register_draw_disabled,68,matching,100.00,chain_register_draw_disabled,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00411F80,th20::FunctionChainController::insert_update,381,matching,100.00,chain_controller_insert_update,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00412100,th20::FunctionChainController::insert_draw,381,matching,100.00,chain_controller_insert_draw,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00412810,th20::FunctionChainController::update,611,matching,100.00,chain_controller_update,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00412AA0,th20::FunctionChainController::draw,587,matching,100.00,chain_controller_draw,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x00411910,th20::DiagnosticAllocator::allocate_object<FunctionChainNode>,67,matching,100.00,chain_node_allocate,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
+0x004118A0,th20::DiagnosticAllocator::release_object<FunctionChainNode>,97,matching,100.00,chain_node_release,CORE/EXACT-130; docs/FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md
