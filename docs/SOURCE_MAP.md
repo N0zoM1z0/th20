@@ -52,7 +52,9 @@ mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
 have reviewed authored origins without maintained bodies or source mappings.
-The native EnemyMeshOwner allocation factory also remains source-absent.
+The native EnemyMeshOwner allocation factory and full AnimationFile spawn
+producer also remain source-absent. The five existing MeshResourceAccess helper
+origins are reviewed in [the resource audit](MESH_RESOURCE_ORIGIN_AUDIT.md).
 EnemyMesh.cpp now owns the actual nested mesh retirement and typed scalar-release
 instantiation; see [ownership evidence](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md).
 MeshResourceAccess.cpp owns the parameterized RenderMesh scalar factory under its

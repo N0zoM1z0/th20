@@ -11,6 +11,10 @@ CORE/EXACT-136 closes the actual EnemyMeshOwner/RenderMesh retirement chain and
 separately reviews its game-owned origins. Allocation and whole deformation
 remain explicit boundaries. See [owned retirement](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md).
 
+CORE/EXACT-138 separately resolves the five previously pending access/wrapper
+origins and reviews the complete source-absent ANM creation producer. See
+[resource origin evidence](MESH_RESOURCE_ORIGIN_AUDIT.md).
+
 ## CORE/EXACT-117: whole mesh construction and retirement
 
 Eight complete physical roots add 1,608 disjoint comparison bytes with 59 independent

@@ -19,6 +19,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Mesh geometry and enemy deformation](RENDER_MESH_RECONSTRUCTION.md)
 - [Enemy mesh ownership, retirement and origin audit](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md)
 - [RenderMesh scalar construction and compiler evidence](MESH_ALLOCATION_EXACT_RECONSTRUCTION.md) — complete parameterized factory, class-tag/C++17 observations, and independent EH/SDK support.
+- [Mesh resource access and ANM creation origins](MESH_RESOURCE_ORIGIN_AUDIT.md) — five existing exact helpers and the complete source-absent producer.
 - [Mesh flag ownership, exact grid creation and origin review](MESH_FLAGS_EXACT_RECONSTRUCTION.md)
 
 ## ECL and Enemy

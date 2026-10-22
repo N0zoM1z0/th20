@@ -14,30 +14,29 @@ second target. The Steam-original backup is provenance evidence. See
 
 The maintained graph contains 889 physical strict units, 163 comparison objects,
 167,588 disjoint comparison bytes and 897 source-present mappings. Eight
-mapped whole functions remain nonexact. Authored coverage is separately 175 exact
-functions / 46,728 bytes, with 184 confirmed authored origins. File::clear and
-the two Renderer texture creators and EnemyMeshOwner allocation are reviewed
-authored but source-absent.
+mapped whole functions remain nonexact. Authored coverage is separately 180 exact
+functions / 46,989 bytes, with 190 confirmed authored origins. File::clear, the two
+Renderer texture creators, EnemyMeshOwner allocation and the full AnimationFile
+spawn protocol are reviewed authored but source-absent.
 The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
 These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-137 accepts the complete 213-byte parameterized RenderMesh factory.
-Natural by-value SDK forwarding and the public-class declaration reproduce
-compiler initialization under the provider's C++17 profile. All 93 EH support
-bytes and 39 folded SDK/compiler helper bytes independently replay without extra
-coverage. Actual Enemy publication establishes authored origin. All 228 prior
-affected units remain exact after 36 fresh serial builds; 127 objects are reused.
-See [allocation evidence](MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
-Public CI passes all 81 tests in 415.228 seconds; three focused UBSan fixtures
-and two ASan/UBSan lifecycle fixtures also pass. Private validation receipts are
-in `.analysis/core137-gates.json`.
-Eighty superseded object/receipt files are retired after original-input
-preservation. All 889 units strictly replay afterward from existing objects;
-all 326 protected hashes remain unchanged, with zero cleanup compiler calls.
-The final audit is `.analysis/core137-final-audit.json`.
+CORE/EXACT-138 reviews six authored mesh/resource origins. Five existing exact
+helpers contribute 261 bytes to authored accounting; the full 922-byte ANM spawn
+producer remains source-absent. Physical units, mappings and comparison bytes
+are unchanged. All six full bodies and nine independent call sites are checked
+against locked bytes. The five canonical helpers strictly replay from the current
+object; all 326 product and 278 source hashes remain unchanged. No MSVC build or
+superseded build product is introduced. See [origin evidence](MESH_RESOURCE_ORIGIN_AUDIT.md).
+Public CI passes all 81 tests in 360.203 seconds. The final audit is
+`.analysis/core138-final-audit.json`; whole-body/caller evidence and selected
+strict results are `.analysis/core138-boundaries.json` and
+`.analysis/core138-selected-results.json.gz`. Current product protection is also
+recorded in `.analysis/core138-protected.json`; CORE137 remains the latest
+full physical replay and retirement checkpoint.
 
 ## Current local products
 
@@ -69,6 +68,13 @@ Retire superseded builds only after replacement verification and protected hash
 checks, as specified in [the workflow](RE_WORKFLOW.md).
 
 ## Next reconstruction work
+
+AnimationFile::spawn(full protocol) at 0x00450CB0 is a reviewed 922-byte authored
+body with no maintained source or canonical unit. Preserve optional output
+publication before the requested-stem check, hidden handle return, actual flags
+and full VM/Renderer registration dependencies. Its exact convenience wrappers
+do not close the producer. Resolve the real Renderer owner before implementing
+this method; current fixtures explicitly capture this boundary.
 
 File::clear at 0x0044AB00 is a reviewed 284-byte authored body with no maintained
 implementation or source mapping. It requires actual Renderer detachment/texture
