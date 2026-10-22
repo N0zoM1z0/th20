@@ -868,3 +868,10 @@ std::destroy_at<th20::AnimationFile>,0x00447850,function
 th20::AnimationFile::scalar_deleting_destructor,0x00449760,function
 th20::Animation::vector_deleting_destructor,0x004496B0,function
 std::pmr::string::~basic_string,0x00449240,function
+th20::TextureRecord::TextureRecord,0x00448AF0,function
+th20::SpriteData::SpriteData,0x004488F0,function
+th20::DiagnosticAllocator::allocate_array<TextureRecord>,0x004475F0,function
+th20::DiagnosticAllocator::allocate_array<SpriteData>,0x00447520,function
+th20::DiagnosticAllocator::allocate_array<AnmInstruction*>,0x00447480,function
+th20::AnimationFile::texture_id,0x0044D000,function
+th20::AnimationFile::store_sprite,0x004506F0,function

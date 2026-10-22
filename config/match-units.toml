@@ -6646,7 +6646,7 @@ relocations = [
 # EXACT-060: whole ANM value/lifetime/reset and recursive-scale protocol.
 [units.animation_base_ctor]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationBase::AnimationBase"]
 symbol = "??0AnimationBase@th20@@QAE@XZ"
@@ -6689,7 +6689,7 @@ relocations = [
 
 [units.animation_ctor]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::Animation"]
 symbol = "??0Animation@th20@@QAE@XZ"
@@ -6715,7 +6715,7 @@ relocations = [
 
 [units.animation_dtor]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::~Animation"]
 symbol = "??1Animation@th20@@QAE@XZ"
@@ -6730,7 +6730,7 @@ relocations = [
 
 [units.animation_reset]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::reset"]
 symbol = "?reset@Animation@th20@@QAEXXZ"
@@ -6780,7 +6780,7 @@ relocations = [
 
 [units.animation_release_resources]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::release_resources"]
 symbol = "?release_resources@Animation@th20@@QAEXXZ"
@@ -6797,7 +6797,7 @@ relocations = [
 
 [units.animation_position_ref]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::position_ref"]
 symbol = "?position_ref@Animation@th20@@QAEAAUVector3@2@XZ"
@@ -6808,7 +6808,7 @@ relocations = [
 
 [units.animation_inherited_scale_y]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::inherited_scale_y"]
 symbol = "?inherited_scale_y@Animation@th20@@QAEMXZ"
@@ -6821,7 +6821,7 @@ relocations = [
 
 [units.animation_inherited_scale_x]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::inherited_scale_x"]
 symbol = "?inherited_scale_x@Animation@th20@@QAEMXZ"
@@ -6834,7 +6834,7 @@ relocations = [
 
 [units.animation_height]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::height"]
 symbol = "?height@Animation@th20@@QAEMXZ"
@@ -6846,7 +6846,7 @@ relocations = [
 
 [units.animation_width]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::width"]
 symbol = "?width@Animation@th20@@QAEMXZ"
@@ -6859,7 +6859,7 @@ relocations = [
 # EXACT-061: whole Enemy movement and its actual graphics/file/context owners.
 [units.enemy_update_movements]
 source = "src/EnemyMovementUpdate.cpp"
-object = "build/core132-canonical/EnemyMovementUpdate.obj"
+object = "build/core133-canonical/EnemyMovementUpdate.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl"]
 functions = ["th20::EnemyState::update_movements"]
 symbol = "?update_movements@EnemyState@th20@@QAEHXZ"
@@ -7017,7 +7017,7 @@ relocations = [
 
 [units.animation_file_ctor]
 source = "src/AnimationFile.cpp"
-object = "build/core132-canonical/AnimationFile.obj"
+object = "build/core133-canonical/AnimationFile.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::AnimationFile::AnimationFile"]
 symbol = "??0AnimationFile@th20@@QAE@XZ"
@@ -7031,7 +7031,7 @@ relocations = [
 
 [units.context_ctor]
 source = "src/Context.cpp"
-object = "build/core132-canonical/Context.obj"
+object = "build/core133-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::Context"]
 symbol = "??0Context@th20@@QAE@XZ"
@@ -7738,14 +7738,14 @@ relocations = [
 # EXACT-066: complete Enemy creation, initialization and script selection protocol.
 [units.enemy_create]
 source = "src/EnemySpawning.cpp"
-object = "build/core132-canonical/EnemySpawning.obj"
+object = "build/core133-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::create"]
 symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@Z"
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111576", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111651", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -7756,7 +7756,7 @@ relocations = [
 
 [units.enemy_count]
 source = "src/EnemySpawning.cpp"
-object = "build/core132-canonical/EnemySpawning.obj"
+object = "build/core133-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::count"]
 symbol = "?count@EnemyController@th20@@QBEHXZ"
@@ -7767,7 +7767,7 @@ relocations = [
 
 [units.enemy_capacity]
 source = "src/EnemySpawning.cpp"
-object = "build/core132-canonical/EnemySpawning.obj"
+object = "build/core133-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::capacity"]
 symbol = "?capacity@EnemyController@th20@@QBEHXZ"
@@ -7778,7 +7778,7 @@ relocations = [
 
 [units.enemy_initialize]
 source = "src/EnemyInitialization.cpp"
-object = "build/core132-canonical/EnemyInitialization.obj"
+object = "build/core133-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::initialize"]
 symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z"
@@ -7803,7 +7803,7 @@ relocations = [
 
 [units.enemy_generation]
 source = "src/EnemyInitialization.cpp"
-object = "build/core132-canonical/EnemyInitialization.obj"
+object = "build/core133-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::generation"]
 symbol = "?generation@EnemyController@th20@@QBEIXZ"
@@ -7815,7 +7815,7 @@ relocations = [
 
 [units.enemy_advance_generation]
 source = "src/EnemyInitialization.cpp"
-object = "build/core132-canonical/EnemyInitialization.obj"
+object = "build/core133-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::advance_generation"]
 symbol = "?advance_generation@EnemyController@th20@@QAEIXZ"
@@ -8064,7 +8064,7 @@ relocations = [
 # EXACT-069: complete derived ECL file loading and lifetime.
 [units.ecl_file_loader_ctor]
 source = "src/EclFileLoader.cpp"
-object = "build/core132-canonical/EclFileLoader.obj"
+object = "build/core133-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::EclFileLoader"]
 symbol = "??0EclFileLoader@th20@@QAE@XZ"
@@ -8077,7 +8077,7 @@ relocations = [
 
 [units.ecl_file_loader_dtor]
 source = "src/EclFileLoader.cpp"
-object = "build/core132-canonical/EclFileLoader.obj"
+object = "build/core133-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::~EclFileLoader"]
 symbol = "??1EclFileLoader@th20@@UAE@XZ"
@@ -8089,7 +8089,7 @@ relocations = [
 
 [units.ecl_file_loader_scalar_dtor]
 source = "src/EclFileLoader.cpp"
-object = "build/core132-canonical/EclFileLoader.obj"
+object = "build/core133-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::scalar_deleting_destructor"]
 symbol = "??_GEclFileLoader@th20@@UAEPAXI@Z"
@@ -8102,7 +8102,7 @@ relocations = [
 
 [units.ecl_file_loader_load]
 source = "src/EclFileLoader.cpp"
-object = "build/core132-canonical/EclFileLoader.obj"
+object = "build/core133-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::load"]
 symbol = "?load@EclFileLoader@th20@@UAEHPBD@Z"
@@ -8526,7 +8526,7 @@ relocations = [
 # EXACT-072: whole variable destinations, Enemy handles and actual Data construction.
 [units.enemy_integer_destination]
 source = "src/EnemyVariables.cpp"
-object = "build/core132-canonical/EnemyVariables.obj"
+object = "build/core133-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::integer_destination"]
 symbol = "?integer_destination@Enemy@th20@@UAEPAHH@Z"
@@ -8587,7 +8587,7 @@ relocations = [
 
 [units.enemy_float_destination]
 source = "src/EnemyVariables.cpp"
-object = "build/core132-canonical/EnemyVariables.obj"
+object = "build/core133-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::float_destination"]
 symbol = "?float_destination@Enemy@th20@@UAEPAMH@Z"
@@ -8658,7 +8658,7 @@ relocations = [
 
 [units.enemy_selected]
 source = "src/EnemyVariables.cpp"
-object = "build/core132-canonical/EnemyVariables.obj"
+object = "build/core133-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::selected"]
 symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
@@ -8671,7 +8671,7 @@ relocations = [
 
 [units.enemy_handle_resolve]
 source = "src/EnemyVariables.cpp"
-object = "build/core132-canonical/EnemyVariables.obj"
+object = "build/core133-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHandle::resolve"]
 symbol = "?resolve@EnemyHandle@th20@@QAEPAUEnemy@2@XZ"
@@ -8685,7 +8685,7 @@ relocations = [
 
 [units.enemy_data_ctor]
 source = "src/EnemyData.cpp"
-object = "build/core132-canonical/EnemyData.obj"
+object = "build/core133-canonical/EnemyData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyData::EnemyData"]
 symbol = "??0EnemyData@th20@@QAE@XZ"
@@ -8699,7 +8699,7 @@ relocations = [
 
 [units.enemy_handles_ctor]
 source = "src/EnemyData.cpp"
-object = "build/core132-canonical/EnemyData.obj"
+object = "build/core133-canonical/EnemyData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHandles::EnemyHandles"]
 symbol = "??0?$array@UEnemyHandle@th20@@$0BA@@std@@QAE@XZ"
@@ -8970,7 +8970,7 @@ relocations = [
 
 [units.enemy_controller_ctor]
 source = "src/EnemyControllerConstruction.cpp"
-object = "build/core132-canonical/EnemyControllerConstruction.obj"
+object = "build/core133-canonical/EnemyControllerConstruction.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::EnemyController"]
 symbol = "??0EnemyController@th20@@QAE@XZ"
@@ -8987,7 +8987,7 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Identifier32@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111233", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111308", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
@@ -11586,7 +11586,7 @@ relocations = [
 
 [units.context_bomb_controller]
 source = "src/Context.cpp"
-object = "build/core132-canonical/Context.obj"
+object = "build/core133-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::bomb_controller"]
 symbol = "?bomb_controller@Context@th20@@QAEPAVBombController@2@XZ"
@@ -11671,7 +11671,7 @@ relocations = [
 
 [units.player_construct]
 source = "src/Player.cpp"
-object = "build/core132-canonical/Player.obj"
+object = "build/core133-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::Player"]
 symbol = "??0Player@th20@@QAE@XZ"
@@ -11711,13 +11711,13 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG81504", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG81579", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.player_option_values_10_construct]
 source = "src/Player.cpp"
-object = "build/core132-canonical/Player.obj"
+object = "build/core133-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,10>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAE@XZ"
@@ -11733,7 +11733,7 @@ relocations = [
 
 [units.player_option_values_12_construct]
 source = "src/Player.cpp"
-object = "build/core132-canonical/Player.obj"
+object = "build/core133-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,12>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAE@XZ"
@@ -11749,7 +11749,7 @@ relocations = [
 
 [units.player_point_values_33_construct]
 source = "src/Player.cpp"
-object = "build/core132-canonical/Player.obj"
+object = "build/core133-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<IntPoint,33>::PlayerValues"]
 symbol = "??0?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAE@XZ"
@@ -11765,7 +11765,7 @@ relocations = [
 
 [units.player_shot_data_load]
 source = "src/ShotData.cpp"
-object = "build/core132-canonical/ShotData.obj"
+object = "build/core133-canonical/ShotData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::load_shot_data"]
 symbol = "?load_shot_data@Player@th20@@QAEHPAPAUPlayerShotData@2@PBD@Z"
@@ -11779,7 +11779,7 @@ relocations = [
 
 [units.player_damage_limit]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core132-canonical/PlayerDamageCap.obj"
+object = "build/core133-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::damage_limit"]
 symbol = "?damage_limit@Player@th20@@QAEHXZ"
@@ -11799,7 +11799,7 @@ relocations = [
 
 [units.player_focused_mode]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core132-canonical/PlayerDamageCap.obj"
+object = "build/core133-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::focused_mode"]
 symbol = "?focused_mode@Player@th20@@QAE_NXZ"
@@ -11810,7 +11810,7 @@ relocations = [
 
 [units.weapon_stone_construct]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core132-canonical/WeaponStoneInfo.obj"
+object = "build/core133-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::WeaponStoneInfo"]
 symbol = "??0WeaponStoneInfo@th20@@QAE@XZ"
@@ -11829,7 +11829,7 @@ relocations = [
 
 [units.weapon_stone_phase_one]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core132-canonical/WeaponStoneInfo.obj"
+object = "build/core133-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::phase_one"]
 symbol = "?phase_one@WeaponStoneInfo@th20@@QAE_NXZ"
@@ -11840,7 +11840,7 @@ relocations = [
 
 [units.weapon_stone_disable]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core132-canonical/WeaponStoneInfo.obj"
+object = "build/core133-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::disable"]
 symbol = "?disable@WeaponStoneInfo@th20@@UAEXXZ"
@@ -11852,7 +11852,7 @@ relocations = [
 
 [units.weapon_stone_current]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core132-canonical/PlayerDamageCap.obj"
+object = "build/core133-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::weapon_stone_info"]
 symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z"
@@ -11866,7 +11866,7 @@ relocations = [
 
 [units.context_weapon_stone]
 source = "src/Context.cpp"
-object = "build/core132-canonical/Context.obj"
+object = "build/core133-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::weapon_stone_info"]
 symbol = "?weapon_stone_info@Context@th20@@QAEPAVWeaponStoneInfo@2@XZ"
@@ -11877,7 +11877,7 @@ relocations = [
 
 [units.record_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::add_score"]
 symbol = "?add_score@PlayerRecord@th20@@QAEX_K@Z"
@@ -11889,7 +11889,7 @@ relocations = [
 
 [units.session_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::add_score"]
 symbol = "?add_score@Session@th20@@QAEXI@Z"
@@ -11902,7 +11902,7 @@ relocations = [
 
 [units.timer_every]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Timer::every"]
 symbol = "?every@Timer@th20@@QBEHH@Z"
@@ -11913,7 +11913,7 @@ relocations = [
 
 [units.player_frame_changed]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::frame_changed"]
 symbol = "?frame_changed@Player@th20@@QAEHXZ"
@@ -11925,7 +11925,7 @@ relocations = [
 
 [units.player_find_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::find_shot"]
 symbol = "?find_shot@Player@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11937,7 +11937,7 @@ relocations = [
 
 [units.player_shot_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::find"]
 symbol = "?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11961,7 +11961,7 @@ relocations = [
 
 [units.region_player_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DamageRegion::player_shot"]
 symbol = "?player_shot@DamageRegion@th20@@QAEPAUPlayerShot@2@XZ"
@@ -11975,7 +11975,7 @@ relocations = [
 
 [units.enemy_controller_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::find"]
 symbol = "?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
@@ -12000,7 +12000,7 @@ relocations = [
 
 [units.enemy_health_value]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::health_value"]
 symbol = "?health_value@Enemy@th20@@QAEPAUEnemyHealth@2@XZ"
@@ -12011,7 +12011,7 @@ relocations = [
 
 [units.enemy_force_defeat]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHealth::force_defeat"]
 symbol = "?force_defeat@EnemyHealth@th20@@QAEXXZ"
@@ -12022,7 +12022,7 @@ relocations = [
 
 [units.enemy_reward_multiplier]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::reward_multiplier_enabled"]
 symbol = "?reward_multiplier_enabled@Enemy@th20@@QAE_NXZ"
@@ -12033,7 +12033,7 @@ relocations = [
 
 [units.enemy_set_damage_marker]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::set_damage_marker"]
 symbol = "?set_damage_marker@Enemy@th20@@QAEXI@Z"
@@ -12044,7 +12044,7 @@ relocations = [
 
 [units.weapon_stone_record_damage]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core132-canonical/DamageQueryProtocol.obj"
+object = "build/core133-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::record_damage"]
 symbol = "?record_damage@WeaponStoneInfo@th20@@QAEXPBUVector3@2@HH@Z"
@@ -12328,7 +12328,7 @@ relocations = [
 
 [units.item_spawn_primary]
 source = "src/ItemSpawn.cpp"
-object = "build/core132-canonical/ItemSpawn.obj"
+object = "build/core133-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::spawn"]
 symbol = "?spawn@ItemInf@th20@@QAEPAUItem@2@HABUVector3@2@IMMHIH@Z"
@@ -12404,7 +12404,7 @@ relocations = [
 
 [units.overlay_passive_weapon]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core132-canonical/WeaponStoneInfo.obj"
+object = "build/core133-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::passive_weapon"]
 symbol = "?passive_weapon@WeaponStoneInfo@th20@@QAEPAVWeapon@2@XZ"
@@ -12415,7 +12415,7 @@ relocations = [
 
 [units.animation_set_packed_color]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_packed_color"]
 symbol = "?set_packed_color@Animation@th20@@QAEXI@Z"
@@ -12463,7 +12463,7 @@ relocations = [
 
 [units.animation_file_bind_script]
 source = "src/AnimationFile.cpp"
-object = "build/core132-canonical/AnimationFile.obj"
+object = "build/core133-canonical/AnimationFile.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::AnimationFile::bind_animation"]
 symbol = "?bind_animation@AnimationFile@th20@@QAEXPAUAnimation@2@H@Z"
@@ -12607,7 +12607,7 @@ relocations = [
 
 [units.item_retire]
 source = "src/ItemLifecycle.cpp"
-object = "build/core132-canonical/ItemLifecycle.obj"
+object = "build/core133-canonical/ItemLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::retire"]
 symbol = "?retire@Item@th20@@QAEXXZ"
@@ -12621,7 +12621,7 @@ relocations = [
 
 [units.item_spawn_effect]
 source = "src/ItemLifecycle.cpp"
-object = "build/core132-canonical/ItemLifecycle.obj"
+object = "build/core133-canonical/ItemLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::spawn_effect"]
 symbol = "?spawn_effect@Item@th20@@QAEHXZ"
@@ -12630,7 +12630,7 @@ size = 344
 relocations = [
   { offset = 83, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 96, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 128, type = "DIR32", symbol = "$SG194034", target = 0x0056EC84 },
+  { offset = 128, type = "DIR32", symbol = "$SG194109", target = 0x0056EC84 },
   { offset = 140, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 174, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 179, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12638,7 +12638,7 @@ relocations = [
   { offset = 196, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
   { offset = 240, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 253, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 286, type = "DIR32", symbol = "$SG194040", target = 0x0056EC84 },
+  { offset = 286, type = "DIR32", symbol = "$SG194115", target = 0x0056EC84 },
   { offset = 298, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 328, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 333, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12646,7 +12646,7 @@ relocations = [
 
 [units.item_activate]
 source = "src/ItemLifecycle.cpp"
-object = "build/core132-canonical/ItemLifecycle.obj"
+object = "build/core133-canonical/ItemLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::activate"]
 symbol = "?activate@Item@th20@@QAEHXZ"
@@ -12685,7 +12685,7 @@ relocations = [
 
 [units.effect_handle_construct]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectAnimationHandle::EffectAnimationHandle"]
 symbol = "??0EffectAnimationHandle@th20@@QAE@XZ"
@@ -12697,7 +12697,7 @@ relocations = [
 
 [units.stone_menu_enable]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::StoneMenuInfo::enable"]
 symbol = "?enable@StoneMenuInfo@th20@@UAEXXZ"
@@ -12709,7 +12709,7 @@ relocations = [
 
 [units.context_effect_info]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Context::effect_info"]
 symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ"
@@ -12720,7 +12720,7 @@ relocations = [
 
 [units.effect_animation_file]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectInfo::animation_file"]
 symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z"
@@ -12732,7 +12732,7 @@ relocations = [
 
 [units.stone_menu_global]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::stone_menu_info"]
 symbol = "?stone_menu_info@th20@@YAPAVStoneMenuInfo@1@XZ"
@@ -12744,7 +12744,7 @@ relocations = [
 
 [units.record_starting_configuration]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::starting_configuration"]
 symbol = "?starting_configuration@PlayerRecord@th20@@QAEHH@Z"
@@ -12765,7 +12765,7 @@ relocations = [
 
 [units.animation_stop]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::stop"]
 symbol = "?stop@Animation@th20@@QAEXXZ"
@@ -12776,7 +12776,7 @@ relocations = [
 
 [units.animation_set_position]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core132-canonical/ItemLifecycleAccess.obj"
+object = "build/core133-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_position"]
 symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z"
@@ -12877,7 +12877,7 @@ relocations = [
 
 [units.graphics_surface_strip]
 source = "src/GraphicsMesh.cpp"
-object = "build/core132-canonical/GraphicsMesh.obj"
+object = "build/core133-canonical/GraphicsMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Graphics::create_surface_strip"]
 symbol = "?create_surface_strip@Graphics@th20@@QAE?AUAnimationHandle@2@HH@Z"
@@ -12895,21 +12895,21 @@ relocations = [
 
 [units.animation_allocate_geometry]
 source = "src/MeshResourceAccess.cpp"
-object = "build/core132-canonical/MeshResourceAccess.obj"
+object = "build/core133-canonical/MeshResourceAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::allocate_geometry"]
 symbol = "?allocate_geometry@Animation@th20@@QAEPAXH@Z"
 target_address = 0x0042B590
 size = 63
 relocations = [
-  { offset = 20, type = "DIR32", symbol = "$SG80859", target = 0x0056E0A8 },
+  { offset = 20, type = "DIR32", symbol = "$SG80934", target = 0x0056E0A8 },
   { offset = 30, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 35, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
 ]
 
 [units.animation_variables]
 source = "src/MeshResourceAccess.cpp"
-object = "build/core132-canonical/MeshResourceAccess.obj"
+object = "build/core133-canonical/MeshResourceAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::variables"]
 symbol = "?variables@Animation@th20@@QAEAAUAnmVariables@2@XZ"
@@ -12920,7 +12920,7 @@ relocations = [
 
 [units.animation_file_spawn_short]
 source = "src/MeshResourceAccess.cpp"
-object = "build/core132-canonical/MeshResourceAccess.obj"
+object = "build/core133-canonical/MeshResourceAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::spawn(const char*,int,int,Animation**)"]
 symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z"
@@ -12932,7 +12932,7 @@ relocations = [
 
 [units.animation_file_spawn_position]
 source = "src/MeshResourceAccess.cpp"
-object = "build/core132-canonical/MeshResourceAccess.obj"
+object = "build/core133-canonical/MeshResourceAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::spawn(const char*,int,const Vector3&,float,int,Animation**)"]
 symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z"
@@ -12944,7 +12944,7 @@ relocations = [
 
 [units.animation_file_spawn_flag8]
 source = "src/MeshResourceAccess.cpp"
-object = "build/core132-canonical/MeshResourceAccess.obj"
+object = "build/core133-canonical/MeshResourceAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::spawn_flag8"]
 symbol = "?spawn_flag8@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z"
@@ -13094,7 +13094,7 @@ relocations = [
 
 [units.animation_find_child]
 source = "src/AnimationBinding.cpp"
-object = "build/core132-canonical/AnimationBinding.obj"
+object = "build/core133-canonical/AnimationBinding.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::find_child"]
 symbol = "?find_child@Animation@th20@@QAEPAU12@HH@Z"
@@ -13113,7 +13113,7 @@ relocations = [
 
 [units.animation_copy_base]
 source = "src/AnimationBinding.cpp"
-object = "build/core132-canonical/AnimationBinding.obj"
+object = "build/core133-canonical/AnimationBinding.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::copy_base"]
 symbol = "?copy_base@Animation@th20@@QAEXPBU12@@Z"
@@ -13125,7 +13125,7 @@ relocations = [
 
 [units.animation_clear_field_570]
 source = "src/AnimationBinding.cpp"
-object = "build/core132-canonical/AnimationBinding.obj"
+object = "build/core133-canonical/AnimationBinding.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::clear_field_570"]
 symbol = "?clear_field_570@Animation@th20@@QAEXXZ"
@@ -13136,7 +13136,7 @@ relocations = [
 
 [units.animation_set_field_5dc]
 source = "src/AnimationBinding.cpp"
-object = "build/core132-canonical/AnimationBinding.obj"
+object = "build/core133-canonical/AnimationBinding.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_field_5dc"]
 symbol = "?set_field_5dc@Animation@th20@@QAEXP6AHPAU12@@Z@Z"
@@ -13147,7 +13147,7 @@ relocations = [
 
 [units.animation_set_field_5e0]
 source = "src/AnimationBinding.cpp"
-object = "build/core132-canonical/AnimationBinding.obj"
+object = "build/core133-canonical/AnimationBinding.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_field_5e0"]
 symbol = "?set_field_5e0@Animation@th20@@QAEXP6AHPAU12@H@Z@Z"
@@ -13158,7 +13158,7 @@ relocations = [
 
 [units.animation_clear_pending_fields]
 source = "src/AnimationBinding.cpp"
-object = "build/core132-canonical/AnimationBinding.obj"
+object = "build/core133-canonical/AnimationBinding.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::clear_pending_fields"]
 symbol = "?clear_pending_fields@Animation@th20@@QAEXXZ"
@@ -13171,7 +13171,7 @@ relocations = [
 
 [units.animation_file_apply_template]
 source = "src/AnimationBinding.cpp"
-object = "build/core132-canonical/AnimationBinding.obj"
+object = "build/core133-canonical/AnimationBinding.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::apply_template"]
 symbol = "?apply_template@AnimationFile@th20@@QAEXPAUAnimation@2@H@Z"
@@ -13187,7 +13187,7 @@ relocations = [
 
 [units.animation_parent_binding]
 source = "src/AnimationUpdates.cpp"
-object = "build/core132-canonical/AnimationUpdates.obj"
+object = "build/core133-canonical/AnimationUpdates.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::bind_animation(parent)"]
 symbol = "?bind_animation@AnimationFile@th20@@QAEXPAUAnimation@2@H0@Z"
@@ -13201,7 +13201,7 @@ relocations = [
 
 [units.animation_slowdown]
 source = "src/AnimationUpdates.cpp"
-object = "build/core132-canonical/AnimationUpdates.obj"
+object = "build/core133-canonical/AnimationUpdates.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::slowdown"]
 symbol = "?slowdown@Animation@th20@@QAEMXZ"
@@ -13213,7 +13213,7 @@ relocations = [
 
 [units.animation_motion_update]
 source = "src/AnimationUpdates.cpp"
-object = "build/core132-canonical/AnimationUpdates.obj"
+object = "build/core133-canonical/AnimationUpdates.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::update_motion"]
 symbol = "?update_motion@Animation@th20@@QAEXXZ"
@@ -13254,7 +13254,7 @@ relocations = [
 
 [units.animation_interpolation_update]
 source = "src/AnimationUpdates.cpp"
-object = "build/core132-canonical/AnimationUpdates.obj"
+object = "build/core133-canonical/AnimationUpdates.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::update_interpolations"]
 symbol = "?update_interpolations@Animation@th20@@QAEXXZ"
@@ -13565,7 +13565,7 @@ relocations = [
 
 [units.animation_integer_argument]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::integer_argument"]
 symbol = "?integer_argument@Animation@th20@@QAEPAHPAHGH@Z"
@@ -13587,7 +13587,7 @@ relocations = [
 
 [units.animation_float_argument]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::float_argument"]
 symbol = "?float_argument@Animation@th20@@QAEPAMPAMGH@Z"
@@ -13617,7 +13617,7 @@ relocations = [
 
 [units.animation_integer_value]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::integer_value"]
 symbol = "?integer_value@Animation@th20@@QAEHH@Z"
@@ -13651,7 +13651,7 @@ relocations = [
 
 [units.animation_float_value]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::float_value"]
 symbol = "?float_value@Animation@th20@@QAEMM@Z"
@@ -13725,7 +13725,7 @@ relocations = [
 
 [units.animation_rotation_sum]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::rotation_sum"]
 symbol = "?rotation_sum@Animation@th20@@QAEAAUVector3@2@XZ"
@@ -13741,7 +13741,7 @@ relocations = [
 
 [units.animation_transform_direction]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::transform_direction"]
 symbol = "?transform_direction@Animation@th20@@QAEAAUVector3@2@AAU32@HH@Z"
@@ -13757,7 +13757,7 @@ relocations = [
 
 [units.animation_file_script]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::script"]
 symbol = "?script@AnimationFile@th20@@QAEPAUAnmInstruction@2@H@Z"
@@ -13768,7 +13768,7 @@ relocations = [
 
 [units.game_random_range]
 source = "src/AnimationOperands.cpp"
-object = "build/core132-canonical/AnimationOperands.obj"
+object = "build/core133-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::GameRandom::range"]
 symbol = "?range@GameRandom@th20@@QAEMM@Z"
@@ -14212,7 +14212,7 @@ relocations = [
 
 [units.graphics_grid_strip]
 source = "src/GraphicsMesh.cpp"
-object = "build/core132-canonical/GraphicsMesh.obj"
+object = "build/core133-canonical/GraphicsMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Graphics::create_grid_strip"]
 symbol = "?create_grid_strip@Graphics@th20@@QAE?AUAnimationHandle@2@HH@Z"
@@ -14302,7 +14302,7 @@ relocations = [
 
 [units.animation_file_allocate]
 source = "src/AnimationFile.cpp"
-object = "build/core132-canonical/AnimationFile.obj"
+object = "build/core133-canonical/AnimationFile.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::DiagnosticAllocator::allocate_object<AnimationFile>"]
 symbol = "??$allocate_object@VAnimationFile@th20@@@DiagnosticAllocator@th20@@QAEPAVAnimationFile@1@PBD@Z"
@@ -14316,7 +14316,7 @@ relocations = [
 
 [units.animation_file_dtor]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::~AnimationFile"]
 symbol = "??1AnimationFile@th20@@QAE@XZ"
@@ -14333,7 +14333,7 @@ relocations = [
 
 [units.animation_file_release]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_object<AnimationFile>"]
 symbol = "??$release_object@VAnimationFile@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimationFile@1@@Z"
@@ -14352,7 +14352,7 @@ relocations = [
 
 [units.animation_template_allocate]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_array<Animation>"]
 symbol = "??$allocate_array@UAnimation@th20@@@DiagnosticAllocator@th20@@QAEPAUAnimation@1@PBDH@Z"
@@ -14374,7 +14374,7 @@ relocations = [
 
 [units.animation_template_release]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_array<Animation>"]
 symbol = "??$release_array@UAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAUAnimation@1@@Z"
@@ -14392,7 +14392,7 @@ relocations = [
 
 [units.animation_file_destroy_at]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::destroy_at<th20::AnimationFile>"]
 symbol = "??$destroy_at@VAnimationFile@th20@@@std@@YAXQAVAnimationFile@th20@@@Z"
@@ -14404,7 +14404,7 @@ relocations = [
 
 [units.animation_file_scalar_deleting_destructor]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::scalar_deleting_destructor"]
 symbol = "??_GAnimationFile@th20@@QAEPAXI@Z"
@@ -14417,7 +14417,7 @@ relocations = [
 
 [units.animation_vector_deleting_destructor]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::vector_deleting_destructor"]
 symbol = "??_EAnimation@th20@@QAEPAXI@Z"
@@ -14436,7 +14436,7 @@ relocations = [
 
 [units.pmr_string_dtor]
 source = "src/Animation.cpp"
-object = "build/core132-canonical/Animation.obj"
+object = "build/core133-canonical/Animation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::string::~basic_string"]
 symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@XZ"
@@ -14445,4 +14445,109 @@ size = 29
 relocations = [
     { offset = 11, type = "REL32", symbol = "?_Tidy_deallocate@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEXXZ", target = 0x0044B740 },
     { offset = 20, type = "REL32", symbol = "??1?$_Compressed_pair@V?$polymorphic_allocator@D@pmr@std@@V?$_String_val@U?$_Simple_types@D@std@@@3@$0A@@std@@QAE@XZ", target = 0x004491C0 },
+]
+
+[units.texture_record_ctor]
+source = "src/AnimationFile.cpp"
+object = "build/core133-canonical/AnimationFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::TextureRecord::TextureRecord"]
+symbol = "??0TextureRecord@th20@@QAE@XZ"
+target_address = 0x00448AF0
+size = 73
+relocations = [
+]
+
+[units.sprite_data_ctor]
+source = "src/AnimationFile.cpp"
+object = "build/core133-canonical/AnimationFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::SpriteData::SpriteData"]
+symbol = "??0SpriteData@th20@@QAE@XZ"
+target_address = 0x004488F0
+size = 252
+relocations = [
+]
+
+[units.animation_texture_array_allocate]
+source = "src/Animation.cpp"
+object = "build/core133-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::allocate_array<TextureRecord>"]
+symbol = "??$allocate_array@UTextureRecord@th20@@@DiagnosticAllocator@th20@@QAEPAUTextureRecord@1@PBDH@Z"
+target_address = 0x004475F0
+size = 205
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$??$allocate_array@UTextureRecord@th20@@@DiagnosticAllocator@th20@@QAEPAUTextureRecord@1@PBDH@Z", target = 0x0056828D },
+    { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 46, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+    { offset = 51, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+    { offset = 60, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+    { offset = 97, type = "REL32", symbol = "??_U@YAPAXI@Z", target = 0x00542A01 },
+    { offset = 114, type = "DIR32", symbol = "??0TextureRecord@th20@@QAE@XZ", target = 0x00448AF0 },
+    { offset = 129, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+    { offset = 171, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+    { offset = 195, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.animation_sprite_array_allocate]
+source = "src/Animation.cpp"
+object = "build/core133-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::allocate_array<SpriteData>"]
+symbol = "??$allocate_array@USpriteData@th20@@@DiagnosticAllocator@th20@@QAEPAUSpriteData@1@PBDH@Z"
+target_address = 0x00447520
+size = 205
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$??$allocate_array@USpriteData@th20@@@DiagnosticAllocator@th20@@QAEPAUSpriteData@1@PBDH@Z", target = 0x0056828D },
+    { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 46, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+    { offset = 51, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+    { offset = 60, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+    { offset = 97, type = "REL32", symbol = "??_U@YAPAXI@Z", target = 0x00542A01 },
+    { offset = 114, type = "DIR32", symbol = "??0SpriteData@th20@@QAE@XZ", target = 0x004488F0 },
+    { offset = 129, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+    { offset = 171, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+    { offset = 195, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.animation_script_array_allocate]
+source = "src/Animation.cpp"
+object = "build/core133-canonical/Animation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::allocate_array<AnmInstruction*>"]
+symbol = "??$allocate_array@PAUAnmInstruction@th20@@@DiagnosticAllocator@th20@@QAEPAPAUAnmInstruction@1@PBDH@Z"
+target_address = 0x00447480
+size = 158
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$??$allocate_array@PAUAnmInstruction@th20@@@DiagnosticAllocator@th20@@QAEPAPAUAnmInstruction@1@PBDH@Z", target = 0x005676ED },
+    { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+    { offset = 46, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+    { offset = 51, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+    { offset = 60, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+    { offset = 91, type = "REL32", symbol = "??_U@YAPAXI@Z", target = 0x00542A01 },
+    { offset = 124, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+    { offset = 148, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.animation_file_texture_id]
+source = "src/AnimationFile.cpp"
+object = "build/core133-canonical/AnimationFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::AnimationFile::texture_id"]
+symbol = "?texture_id@AnimationFile@th20@@QAEII@Z"
+target_address = 0x0044D000
+size = 24
+relocations = [
+]
+
+[units.animation_file_store_sprite]
+source = "src/AnimationFile.cpp"
+object = "build/core133-canonical/AnimationFile.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::AnimationFile::store_sprite"]
+symbol = "?store_sprite@AnimationFile@th20@@QAEXHABUSpriteData@2@@Z"
+target_address = 0x004506F0
+size = 343
+relocations = [
 ]

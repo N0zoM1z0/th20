@@ -104,4 +104,10 @@ void Animation::release_resources() {
 template void DiagnosticAllocator::release_object<AnimationFile>(AnimationFile*);
 template Animation* DiagnosticAllocator::allocate_array<Animation>(const char*, std::int32_t);
 template void DiagnosticAllocator::release_array<Animation>(Animation*);
+template TextureRecord* DiagnosticAllocator::allocate_array<TextureRecord>(const char*,std::int32_t);
+template SpriteData* DiagnosticAllocator::allocate_array<SpriteData>(const char*,std::int32_t);
+template AnmInstruction** DiagnosticAllocator::allocate_array<AnmInstruction*>(const char*,std::int32_t);
+template void DiagnosticAllocator::release_array<TextureRecord>(TextureRecord*);
+template void DiagnosticAllocator::release_array<SpriteData>(SpriteData*);
+template void DiagnosticAllocator::release_array<AnmInstruction*>(AnmInstruction**);
 }

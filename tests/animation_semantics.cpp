@@ -3,6 +3,7 @@
 #include "AnimationFile.hpp"
 #include "DiagnosticAllocator.hpp"
 
+#include <algorithm>
 #include <array>
 #include <bit>
 #include <cassert>
@@ -125,6 +126,129 @@ void check_file_and_template_lifetime(th20::DiagnosticAllocator& allocator) {
     }
 }
 
+void check_descriptor_protocol(th20::DiagnosticAllocator& allocator) {
+    using namespace th20;
+    static_assert(std::is_trivially_copyable_v<SpriteData>);
+    static_assert(std::is_trivially_destructible_v<SpriteData>);
+    static_assert(std::is_trivially_destructible_v<TextureRecord>);
+    static_assert(std::is_nothrow_constructible_v<SpriteData>);
+    static_assert(std::is_nothrow_constructible_v<TextureRecord>);
+    alignas(SpriteData) std::array<unsigned char,sizeof(SpriteData)> dirty;
+    dirty.fill(0xa5);
+    auto* initialized = new(dirty.data()) SpriteData;
+    const std::array<unsigned char,sizeof(SpriteData)> zero{};
+    assert(dirty == zero);
+    initialized->~SpriteData();
+    struct GuardedTexture {
+        std::array<unsigned char,32> before;
+        alignas(TextureRecord) std::array<unsigned char,sizeof(TextureRecord)> object;
+        std::array<unsigned char,32> after;
+    } guarded;
+    std::memset(&guarded,0xa5,sizeof(guarded));
+    auto* record = new(guarded.object.data()) TextureRecord;
+    assert(!record->texture && !record->external_bytes && !record->header);
+    assert(record->external_size == 0 && record->bytes_per_pixel == 0 && record->flags.bits == 0);
+    for (auto b:guarded.before) assert(b == 0xa5);
+    for (auto b:guarded.after) assert(b == 0xa5);
+    record->~TextureRecord();
+    for (int count:{0,1,7,31}) {
+        auto* textures = allocator.allocate_array<TextureRecord>("texture records",count);
+        auto* descriptors = allocator.allocate_array<SpriteData>("sprite records",count);
+        auto** scripts = allocator.allocate_array<AnmInstruction*>("script table",count);
+        std::array<std::array<std::uint8_t,16>,31> packet_storage{};
+        for (int i=0;i<count;++i) {
+            assert(!textures[i].texture && !textures[i].external_bytes && !textures[i].header);
+            assert(textures[i].external_size == 0 && textures[i].bytes_per_pixel == 0 && textures[i].flags.bits == 0);
+            assert(std::memcmp(&descriptors[i],zero.data(),zero.size()) == 0);
+            // Only pointer transport is exercised; no packet object is read.
+            scripts[i] = reinterpret_cast<AnmInstruction*>(packet_storage[i].data());
+        }
+        {
+            AnimationFile view;
+            view.scripts = scripts;
+            view.script_count = static_cast<std::uint32_t>(count);
+            for (int i=0;i<count;++i) assert(view.script(i) == scripts[i]);
+            view.scripts = nullptr;
+        }
+        auto* image = static_cast<std::uint8_t*>(allocator.allocate_bytes(64,"external image"));
+        std::memset(image,0x5a,64);
+        if (count) {
+            textures[0].external_bytes = image;
+            textures[0].external_size = 64;
+        }
+        allocator.release_array(textures);
+        allocator.release_array(descriptors);
+        allocator.release_array(scripts);
+        // Native array deletion does not retire an external image payload.
+        for (unsigned i=0;i<64;++i) assert(image[i] == 0x5a);
+        allocator.release_bytes(image);
+    }
+    allocator.release_array(static_cast<TextureRecord*>(nullptr));
+    allocator.release_array(static_cast<SpriteData*>(nullptr));
+    allocator.release_array(static_cast<AnmInstruction**>(nullptr));
+
+    AnimationFile file;
+    for (std::uint32_t id:{0u,1u,41u,0x00ffffffu,0x80000000u,0xffffffffu}) {
+        file.id = id;
+        for (std::uint32_t index:{0u,1u,255u,256u,0x10000u,0x80000000u,0xffffffffu}) {
+            auto expected = static_cast<std::uint32_t>(std::uint64_t(id)*256u) | index;
+            assert(file.texture_id(index) == expected);
+        }
+    }
+    file.id = 29;
+    auto* slots = allocator.allocate_array<SpriteData>("guarded sprite window",7);
+    file.sprites = slots+3;
+    file.sprite_count = 7;
+    using SlotImage = std::array<unsigned char,7*sizeof(SpriteData)>;
+    using FileImage = std::array<unsigned char,sizeof(AnimationFile)>;
+    for (unsigned seed=0;seed<64;++seed) {
+        const int x = int((seed*3)%17)-8, y = int((seed*7)%19)-9;
+        const int width = int(seed%9)+1, height = int(seed%7)+1;
+        const int sx = 1 << (seed%3), sy = 1 << ((seed/3)%3);
+        const int x_exp = 5+int(seed%4), y_exp = 5+int((seed/4)%4);
+        SpriteData source;
+        source.file_id = file.id;
+        source.texture_index = seed;
+        source.texture_id = (file.id*256u) | seed;
+        source.left = float(x*sx); source.right = float((x+width)*sx);
+        source.top = float(y*sy); source.bottom = float((y+height)*sy);
+        source.extent_20 = float(1 << x_exp); source.extent_1c = float(1 << y_exp);
+        source.scale_50 = float(sx); source.scale_54 = float(sy);
+        source.field_24 = std::bit_cast<float>(0x7fc00000u | seed);
+        source.field_28 = -float(seed+1); source.field_2c = float(seed*2);
+        source.field_30 = -0.0f; source.field_34 = float(seed+17);
+        source.u0 = 17; source.u1 = 19; source.v0 = 23; source.v1 = 29;
+        source.extent_48 = 31; source.extent_4c = 37;
+        // The independent oracle starts with unscaled integer dimensions.
+        SpriteData expected = source;
+        expected.u0 = std::ldexp(float(x*sx),-x_exp);
+        expected.u1 = std::ldexp(float((x+width)*sx),-x_exp);
+        expected.v0 = std::ldexp(float(y*sy),-y_exp);
+        expected.v1 = std::ldexp(float((y+height)*sy),-y_exp);
+        expected.extent_4c = float(width); expected.extent_48 = float(height);
+        std::array<unsigned char,sizeof(SpriteData)> source_before;
+        std::memcpy(source_before.data(),&source,sizeof(source));
+        for (int index:{-3,-1,0,2,3}) {
+            for (bool self_alias:{false,true}) {
+                auto* bytes = reinterpret_cast<unsigned char*>(slots);
+                std::fill_n(bytes,7*sizeof(SpriteData),0xa5);
+                if (self_alias) file.sprites[index] = source;
+                SlotImage wanted;
+                std::memcpy(wanted.data(),slots,wanted.size());
+                std::memcpy(wanted.data()+(index+3)*sizeof(SpriteData),&expected,sizeof(expected));
+                FileImage owner_before;
+                std::memcpy(owner_before.data(),&file,sizeof(file));
+                file.store_sprite(index,self_alias?file.sprites[index]:source);
+                assert(std::memcmp(wanted.data(),slots,wanted.size()) == 0);
+                assert(std::memcmp(owner_before.data(),&file,sizeof(file)) == 0);
+                assert(std::memcmp(source_before.data(),&source,sizeof(source)) == 0);
+            }
+        }
+    }
+    file.sprites = nullptr;
+    allocator.release_array(slots);
+}
+
 template<class T> void check_padding(const T& object, std::size_t first,
                                     std::size_t end) {
     const auto* bytes = reinterpret_cast<const unsigned char*>(&object);
@@ -159,8 +283,9 @@ const Matrix4 identity_matrix = [] {
 // The native clear early exit is exercised only with no loaded resources.
 // Renderer-mediated detachment and loaded-buffer retirement remain external.
 void AnimationFile::clear() {
-    assert(this == retiring_file && string_resource);
     assert(!bytes && !templates && !sprites && !scripts && !textures);
+    if (!string_resource) { assert(this != retiring_file); return; }
+    assert(this == retiring_file);
     assert(!string_resource->cleared && string_resource->deallocations.empty());
     assert(!filename.empty() && !stem.empty());
     assert(lock_available_to_another_thread());
@@ -184,6 +309,7 @@ int main(int argc, char**) {
         return 2; // The native nonzero-word path must not return.
     }
     check_file_and_template_lifetime(allocator);
+    check_descriptor_protocol(allocator);
 
     alignas(PooledAnimation) std::array<unsigned char, sizeof(PooledAnimation)> storage;
     storage.fill(0xa5);

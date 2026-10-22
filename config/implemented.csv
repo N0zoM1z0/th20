@@ -867,3 +867,10 @@ std::destroy_at<th20::AnimationFile>
 th20::AnimationFile::scalar_deleting_destructor
 th20::Animation::vector_deleting_destructor
 std::pmr::string::~basic_string
+th20::TextureRecord::TextureRecord
+th20::SpriteData::SpriteData
+th20::DiagnosticAllocator::allocate_array<TextureRecord>
+th20::DiagnosticAllocator::allocate_array<SpriteData>
+th20::DiagnosticAllocator::allocate_array<AnmInstruction*>
+th20::AnimationFile::texture_id
+th20::AnimationFile::store_sprite
