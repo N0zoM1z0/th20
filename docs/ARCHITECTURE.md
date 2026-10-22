@@ -36,8 +36,8 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | Enemy | Actual EnemyState/Enemy, movement, parameters, handles and script dependencies | Whole 0x48C010 dispatcher and queue/factory emission |
 | Scheduler | Actual controller/nodes, observed lists, sorted registration and dispatch | Remaining removal/factory emission and process-global startup |
 | Player/Bomb/Bullet/Item | Typed ownership, pools, context publication, SHT/damage consumers and Item spawn/lifecycle | Full gameplay, resource callbacks and remaining controller factories |
-| Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records and serialization | Remaining compressor/parser/SaveManager emission and startup |
-| Graphics/mesh | Actual Graphics, RenderMesh, surface/geometry records and lifecycle protocols | Renderer declaration, full rendering and grid-strip emission |
+| Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction | Remaining compressor/SaveManager emission and startup |
+| Graphics/mesh | Actual Graphics, RenderMesh, surface/geometry records, two-bit flag view and lifecycle protocols | Renderer declaration, full rendering and resource integration |
 | Sound | Actual SoundInf storage and loading/preload protocol | Whole dispatcher, startup and resource-owning retirement |
 | Platform/UI | Verified window/input/text/value/menu components | Complete scene owners, OS resources and global initialization |
 

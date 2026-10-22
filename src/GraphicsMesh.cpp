@@ -9,7 +9,7 @@ AnimationHandle Graphics::create_grid_strip(std::int32_t rows,std::int32_t scrip
     animation->allocate_geometry(sizeof(SpriteTexturedVertex)*rows*2);
     if (rows>2) {
         animation->base.flags.bytes_00.field_00=12;
-        animation->base.flags.byte_08=static_cast<std::uint8_t>(animation->base.flags.byte_08|0x30);
+        animation->base.flags.bits_08.field_4_5=3;
         animation->variables().field_00=rows;
         auto* vertex=animation->mesh_vertices();
         for (std::int32_t i=0;i<rows*2;++i) {

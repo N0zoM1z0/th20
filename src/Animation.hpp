@@ -27,7 +27,13 @@ struct AnimationColorChannels { std::uint8_t blue, green, red, alpha; };
 struct AnimationFlagBytes { std::uint8_t field_00, field_01; };
 // Mixed flag storage observed through byte/word producers and consumers.
 // Offset labels preserve unresolved roles; no packing or explicit padding.
-struct AnimationModeBits { std::uint8_t mode : 2; std::uint8_t other : 6; };
+// Native renderer reads bits 4..5 together; their mode meaning is unresolved.
+struct AnimationModeBits {
+    std::uint8_t mode : 2;
+    std::uint8_t other_2_3 : 2;
+    std::uint8_t field_4_5 : 2;
+    std::uint8_t other_6_7 : 2;
+};
 struct AnimationWord04Bits {
     std::uint32_t low : 24;
     std::uint32_t bit_24 : 1;

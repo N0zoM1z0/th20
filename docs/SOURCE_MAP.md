@@ -19,7 +19,7 @@ the original game's translation-unit partition.
 | Gameplay ownership/damage | Player*, Bomb*, Bullet*, Item*, Context*, Session*, Damage* | [Player/SHT](PLAYER_SHT_RECONSTRUCTION.md), [Bomb](BOMB_OWNER_RECONSTRUCTION.md), [Item](ITEM_OWNER_RECONSTRUCTION.md), [damage](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md) |
 | Archive/File/resource I/O | Archive*, PbgFile*, GameFileIo*, GameResourceIo* | [Resource graph](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md), [writing](ARCHIVE_WRITE_RECONSTRUCTION.md) |
 | Progress persistence | Progress*, SecureCrt.hpp | [File protocol](PROGRESS_FILE_EXACT_RECONSTRUCTION.md), [loading/lifetime](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md), [parser](PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
-| Graphics/mesh/sound | Graphics*, RenderMesh*, MeshResourceAccess*, SoundInf.hpp, SoundLoading.cpp | [Mesh](RENDER_MESH_RECONSTRUCTION.md), [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) |
+| Graphics/mesh/sound | Graphics*, RenderMesh*, MeshResourceAccess*, SoundInf.hpp, SoundLoading.cpp | [Mesh](RENDER_MESH_RECONSTRUCTION.md), [mesh flags](MESH_FLAGS_EXACT_RECONSTRUCTION.md), [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) |
 | Shared math/time/random | Vector*, Angle*, Timer*, ClockScalar*, Interpolation*, GameRandom* | [Interpolation](EXACT_INTERPOLATION_RECONSTRUCTION.md), [random/locks](EXACT_LOCK_RANDOM_RECONSTRUCTION.md) |
 | Platform/UI/value components | Window*, Input*, Cursor*, text/flags/record owners | [Reference evidence index](EVIDENCE_INDEX.md) |
 
@@ -47,7 +47,7 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 846 units / 162 objects. Eleven additional
+The configured graph currently has 847 units / 162 objects. Ten additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. Do not use stubs or forced unresolved linkage to

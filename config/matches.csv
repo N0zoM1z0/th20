@@ -98,3 +98,12 @@ address,name,size,status,match_percent,unit,evidence
 0x0053FDB0,th20::EclLoader::append::name_predicate,57,matching,100.00,ecl_name_predicate,CORE/EXACT-127; docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md
 0x0050E990,th20::ProgressSaveManager::~ProgressSaveManager,299,matching,100.00,progress_save_dtor,CORE/EXACT-128; docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md
 0x0050F3B0,th20::ProgressSaveManager::load,562,matching,100.00,progress_load_thread,CORE/EXACT-128; docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md
+0x0049E050,th20::RenderMesh::select_context,45,matching,100.00,render_mesh_select_context,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x0049D850,th20::RenderMesh::initialize,503,matching,100.00,render_mesh_initialize,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x0049DDC0,th20::RenderMesh::update_strips,194,matching,100.00,render_mesh_update_strips,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x0049DF40,th20::render_mesh_uv,107,matching,100.00,render_mesh_uv,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x0049DF00,th20::WindowState::mesh_view_x,23,matching,100.00,window_mesh_view_x,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x0049DF20,th20::WindowState::mesh_view_y,23,matching,100.00,window_mesh_view_y,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x0049DFD0,th20::WindowState::mesh_width,20,matching,100.00,window_mesh_width,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x0049DFB0,th20::WindowState::mesh_height,20,matching,100.00,window_mesh_height,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md
+0x004DE430,th20::Graphics::create_grid_strip,223,matching,100.00,graphics_grid_strip,CORE/EXACT-129; docs/MESH_FLAGS_EXACT_RECONSTRUCTION.md

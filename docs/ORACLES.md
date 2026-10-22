@@ -23,12 +23,14 @@ Use the profile recorded for each source/unit in `config/match-units.toml`.
 Compiler receipts record commands, profile, source/header hashes, target identity,
 compiler identity and object hash. Canonical replay rejects absent or stale
 receipts. Receipts retain their original complete source/header/probe snapshots.
-Verification permits changes to other C/C++ implementation files only when the
+Verification permits changes to existing C/C++ source/header files only when the
 compiler's captured include list does not include them. The actual source and
-all included files must still match. Every header and the complete snapshot path
-set remain conservative gates: a shared-header edit or an added/removed source
-still requires the complete graph to be rebuilt. Historical receipts are never
-rewritten to imply a fresh build.
+all included files must still match. The complete snapshot path set and non-C/C++
+inputs remain conservative gates: added/removed files still invalidate previous
+receipts. A shared-header edit requires fresh builds and replay for every actual
+including object. Immutable receipts retain their original snapshots and are
+never rewritten to imply a fresh build. CORE129 records the affected-header
+validation and independent compiler include-trace evidence.
 Ordinary x86 COFF is supported; /GL and bigobj/LTCG are not.
 
 ## Strict comparison

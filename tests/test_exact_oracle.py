@@ -138,7 +138,7 @@ class ExactOracleTests(unittest.TestCase):
 
 
 class ReceiptTests(unittest.TestCase):
-    def test_only_unincluded_implementation_edits_reuse_the_receipt(self):
+    def test_only_unincluded_source_and_header_edits_reuse_the_receipt(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             (root / "build").mkdir()
@@ -147,7 +147,9 @@ class ReceiptTests(unittest.TestCase):
             other = root / "src/other.cpp"
             included = root / "src/included.cpp"
             header = root / "src/shared.hpp"
-            for path in (source, other, included, header):
+            other_header = root / "src/other.hpp"
+            control = root / "src/control.json"
+            for path in (source, other, included, header, other_header, control):
                 path.write_text("// original fixture\n")
             obj = root / "build/probe.obj"
             obj.write_bytes(b"fixture object")
@@ -158,14 +160,16 @@ class ReceiptTests(unittest.TestCase):
                  patch.object(project, "load_manifest", return_value={"target": {"sha256": "target"}}):
                 receipt = {"object_sha256": project.digest(obj), "inputs": project.source_fingerprint(source),
                            "profile": ["/Od"], "compiler_sha256": "compiler", "target_sha256": "target",
-                           "headers": {str(included): project.digest(included)}}
+                           "headers": {str(included): project.digest(included),
+                                       str(header): project.digest(header)}}
                 receipt_path = obj.with_suffix(".receipt.json")
                 original_receipt = json.dumps(receipt)
                 receipt_path.write_text(original_receipt)
                 other.write_text("// unrelated implementation changed\n")
+                other_header.write_text("// unrelated header changed\n")
                 project.verify_build_receipt(unit)
                 self.assertEqual(receipt_path.read_text(), original_receipt)
-                for path in (source, included, header):
+                for path in (source, included, header, control):
                     with self.subTest(changed=path.name):
                         path.write_text("// relevant input changed\n")
                         with self.assertRaisesRegex(ValueError, "stale or incompatible"):

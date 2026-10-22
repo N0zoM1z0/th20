@@ -127,10 +127,12 @@ def verify_build_receipt(unit):
     included = {Path(path).resolve() for path in headers}
     for name, observed in current.items():
         path = (ROOT / name).resolve()
-        # A separately compiled implementation cannot affect this object.
-        # Included implementation files remain part of the input closure.
+        # The compiler's captured include closure determines which existing
+        # C/C++ files affect this object. The complete path set stays fixed,
+        # so added/removed files cannot change include resolution unnoticed.
         if path != source and path not in included and path.suffix.lower() in {
-            ".c", ".cc", ".cpp", ".cxx"
+            ".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx",
+            ".inc", ".inl"
         }:
             continue
         if recorded[name] != observed:

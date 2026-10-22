@@ -12,44 +12,46 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 846 physical strict units, 162 comparison objects,
-163,715 disjoint comparison bytes and 857 source-present mappings. Eleven
-mapped whole functions remain nonexact. Authored coverage is separately 99 exact
-functions / 32,231 bytes, with 102 confirmed authored origins. The pinned reference
+The maintained graph contains 847 physical strict units, 162 comparison objects,
+163,938 disjoint comparison bytes and 857 source-present mappings. Ten
+mapped whole functions remain nonexact. Authored coverage is separately 108 exact
+functions / 33,389 bytes, with 110 confirmed authored origins. The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
 These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-128 accepts complete progress loading and SaveManager destruction,
-adding 861 authored body bytes and 866 comparison bytes. Direct one-use Profile
-expressions plus a per-source C++20 /sdl profile close load emission. The unchanged
-destructor retains its five native alignment bytes; the former size-only
-nonexact rejection is corrected. Eleven new origin decisions identify the custom
-destructor and ten SDK functions. Only the two affected production objects are
-built; 160 other objects retain immutable receipts. All 80 public tests pass
-(290.447 seconds). After protected retirement, all 846 strict units pass with
-all 324 canonical product/receipt hashes unchanged and no compiler invocations. See
-[load/lifetime evidence](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md).
+CORE/EXACT-129 accepts complete 223-byte grid-strip creation through the native
+two-bit Animation flag view, independently consumed by the renderer. Eight new
+origin decisions classify 935 already-compared bytes of mesh/Window operations
+as authored; those bytes receive no duplicate physical credit. All 140 previous
+affected units pass after 24 production objects build once. Compiler include
+records and extended freshness controls permit reuse of 138 unaffected immutable
+objects after the shared-header refinement. All 80 public tests pass in 273.867
+seconds. After retirement, all 847 units pass strict replay with all 324 current
+object/receipt hashes unchanged and zero compiler invocations. See
+[mesh flag/origin evidence](MESH_FLAGS_EXACT_RECONSTRUCTION.md).
 
 ## Current local products
 
 Canonical paths in `config/match-units.toml` use
-`build/maintenance124-canonical/`, `build/core127-canonical/EclLoaderBuffer.obj`
-and the two objects under `build/core128-canonical/`. Protect all 162 objects and
+`build/maintenance124-canonical/`, `build/core127-canonical/EclLoaderBuffer.obj`,
+the two objects under `build/core128-canonical/` and 24 objects under
+`build/core129-canonical/`. Protect all 162 objects and
 sibling receipts. The current source freeze is
-`.analysis/core128-final-frozen-source.json`; affected strict results are
-`.analysis/core128-affected-exact-results.json` and post-retirement whole-graph
-results are `.analysis/core128-post-cleanup-results.json.gz`.
+`.analysis/core129-final-frozen-source.json`; affected strict results are
+`.analysis/core129-affected-results.json.gz`, with the new root separately in
+`.analysis/core129-grid-exact-result.json`. Post-retirement whole-graph results
+are `.analysis/core129-post-cleanup-results.json.gz`.
 
 Original inputs for the reused maintenance124 objects remain preserved in
-`.analysis/maintenance125-original-inputs.json.gz`. The retained ECL object's
-proof is in the core127 evidence. The replaced SaveManager object's authentic
-original closure was reverified and preserved in
-`.analysis/core128-original-inputs.json.gz`. Retired object/probe inputs and
-immutable receipts are in `.analysis/core128-retired-inputs.json.gz`; protected
-hashes and removal records are `.analysis/core128-protected.json` and
-`.analysis/core128-cleanup.json`. No current canonical products are removed or
+`.analysis/maintenance125-original-inputs.json.gz`; core127/core128 proofs protect
+their newer objects. All 162 old pairs were verified before editing, and the
+24 replaced objects' authentic original closures are preserved in
+`.analysis/core129-original-inputs.json.gz`. Retired object/probe inputs and
+immutable receipts are in `.analysis/core129-retired-inputs.json.gz`; protected
+hashes and removal records are `.analysis/core129-protected.json` and
+`.analysis/core129-cleanup.json`. No current canonical products are removed or
 rebuilt for cleanup.
 
 Retain original compiler input archives, failed experiment evidence, native
@@ -67,8 +69,15 @@ because Worker contains actual std::jthread. The /sdl, /Z7, /fp:strict and /Ob1
 lifetime trials do not close these roots; do not repeat unchanged trials or
 insert padding/change actual void contracts. Load and destruction are now exact.
 Use the ECL C++17 and load /sdl results as bounded profile leads, not global flags.
-Other open mapped roots include Enemy mesh deformation, grid strips, compression
+Other open mapped roots include Enemy mesh deformation, compression
 and allocation/removal factories. Do not repeat unchanged old trials.
+
+Animation+4A0 bits 4..5 now have an independently consumed two-bit view; their
+renderer state meaning remains open. Existing byte/RHS/8-bit literal and /Os
+OR probes do not explain grid emission; the actual field assignment does.
+Five CORE095 exact support origins remain pending alongside whole Enemy
+deformation. Do not add its unused radius conversion or the compressor's
+unobserved sum merely for emission.
 
 Continue coherent core protocols around the whole Animation VM at `0x0042B5D0`.
 Its full extent is 40,752 bytes: 39,470 code, two alignment bytes, 644 pointer-table

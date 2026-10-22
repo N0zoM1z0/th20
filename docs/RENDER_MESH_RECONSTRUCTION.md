@@ -3,6 +3,10 @@
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
+CORE/EXACT-129 closes grid-strip creation through the independently consumed
+two-bit flag view and separately reviews eight application origins. See
+[mesh flag and origin evidence](MESH_FLAGS_EXACT_RECONSTRUCTION.md).
+
 ## CORE/EXACT-117: whole mesh construction and retirement
 
 Eight complete physical roots add 1,608 disjoint comparison bytes with 59 independent
