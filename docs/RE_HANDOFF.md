@@ -70,6 +70,15 @@ checks, as specified in [the workflow](RE_WORKFLOW.md).
 
 ## Next reconstruction work
 
+CORE-140 privately closes the 67-byte Pbg::File allocation factory at
+0x00539C80 with the existing constructor/shared factory and a local profile
+without /EHsc. C++17 and C++20 both strictly match; the 31-byte folded helper
+also replays. Preserve the C++20 active probe under build/core140-probes/ and
+its receipt. Production admission still needs a dedicated allocation provider
+and the conservative receipt path-set migration; preserve PbgFile.cpp's
+destructor/EH profile. Do not repeat the rejected defaulted-constructor probe
+(80/native67). See [profile evidence](PBG_FILE_ALLOCATION_PROFILE.md).
+
 AnimationFile::spawn(full protocol) at 0x00450CB0 is a reviewed 922-byte authored
 body with no maintained source or canonical unit. Preserve optional output
 publication before the requested-stem check, hidden handle return, actual flags
