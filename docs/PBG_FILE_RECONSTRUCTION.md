@@ -1,5 +1,9 @@
 # Native Pbg file protocol
 
+The scalar factory is now canonical through its dedicated provider; the File/IFile
+methods and destructor profile are preserved. See the
+[CORE/EXACT-141 allocation admission](PBG_FILE_ALLOCATION_PROFILE.md).
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

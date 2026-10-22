@@ -19,7 +19,7 @@ class ProgressFileIoTests(unittest.TestCase):
             "GameFileIo", "DiagnosticLog", "GameRandom", "GameRandomStream", "Worker",
             "ArchiveCrypt", "ArchiveLzss", "ArchiveLzssEncode", "ArchiveLzssTree", "EclDiagnostic",
             "DiagnosticAllocator", "DebugMemoryResource", "LockRegistry",
-            "GameResourceIo", "ArchiveOwner", "PbgFile",
+            "GameResourceIo", "ArchiveOwner", "PbgFile", "PbgFileAllocation",
         ]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "progress-file-io"

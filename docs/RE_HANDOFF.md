@@ -12,8 +12,8 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 890 physical strict units, 163 comparison objects,
-167,670 disjoint comparison bytes and 898 source-present mappings. Eight
+The maintained graph contains 891 physical strict units, 164 comparison objects,
+167,737 disjoint comparison bytes and 899 source-present mappings. Eight
 mapped whole functions remain nonexact. Authored coverage is separately 181 exact
 functions / 47,071 bytes, with 190 confirmed authored origins. File::clear, the two
 Renderer texture creators and the full AnimationFile
@@ -24,60 +24,52 @@ These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-139 accepts the complete 82-byte EnemyMeshOwner value-allocation
-factory and preserves its complete 88-byte constructor. Default member
-initializers/defaulted construction and one shared variadic allocation body
-naturally reproduce the native preclear. MeshInterfaces owns the instantiation
-and constructor under its bounded profile without /EHsc; no noexcept contract is
-changed. All 205 prior affected units remain exact after 31 fresh builds, with
-132 objects reused. Previously accepted mesh EH/folded support also strictly
-replays over all 197 bytes. See [allocation evidence](ENEMY_MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
-Public CI passes all 81 tests in 358.927 seconds; three focused UBSan and two
-ASan/UBSan mesh lifecycle fixtures also pass. Private validation results are in
-`.analysis/core139-gates.json`.
-Sixty-six superseded object/receipt files are retired after original-input
-preservation. All 890 units strictly replay afterward; all 326 protected hashes
-remain unchanged, with zero cleanup compiler calls. The final audit is
-`.analysis/core139-final-audit.json`.
+CORE/EXACT-141 accepts the complete 67-byte Pbg::File scalar allocation
+factory. PbgFileAllocation.cpp owns its sole instantiation under the verified
+C++20 profile without /EHsc; PbgFile.cpp retains its original method/destructor
+profile. The shared allocation body, File constructor and exception declarations
+are unchanged. All 890 prior units strictly replay after the new-source snapshot
+migration, and all 232 bytes of Pbg EH/deleting/wide/initialization support pass.
+The folded initialization helper adds no duplicate coverage. Authored/library
+provenance for this factory remains pending. See
+[allocation evidence](PBG_FILE_ALLOCATION_PROFILE.md).
+
+Public CI passes all 81 tests (335.274 seconds). Cleanup retires 330 replaced
+object/receipt files (9,633,608 bytes), preserving authentic input closures.
+All 891 units strictly replay afterward using existing objects; all 328 current
+product hashes and 279 source hashes remain unchanged. No cleanup compilation
+was performed. Nineteen empty build directories were also removed.
 
 ## Current local products
 
-The manifest owns all current object paths. Its 163 canonical objects are under
-`build/core127-canonical/` (1), `build/core128-canonical/` (1), `build/core129-canonical/` (5),
-`build/core130-canonical/` (9), `build/core131-canonical/` (2), `build/core132-canonical/` (2),
-`build/core133-canonical/` (11), `build/core134-canonical/` (5), `build/core137-canonical/` (5),
-`build/core139-canonical/` (31), `build/maintenance124-canonical/` (91). Protect all 163 sibling receipts as well.
-The current source freeze is `.analysis/core139-final-frozen-source.json`; fresh
-affected results are `.analysis/core139-affected-results.json.gz`. The new unit
-and prior mesh support are recorded in `.analysis/core139-new-exact-results.json`
-and `.analysis/core139-support.json`.
+All 164 canonical objects and their sibling receipts are under
+`build/core141-canonical/`; the manifest is authoritative. The final source
+freeze is `.analysis/core141-final-frozen-source.json` (279 paths). The original
+163-object migration is recorded in `core141-affected-results.json.gz`, with the
+final PbgFile-only refresh in `core141-pbg-refresh-results.json`. New-factory
+acceptance is `core141-new-exact-results.json`; support and contract audits are
+`core141-support.json`, `core141-graph-audit.json` and `core141-section-audit.json`.
+These private names are relative to `.analysis/`.
 
-All original object/receipt pairs and authentic source versions are archived
-before editing in `.analysis/core139-pre-header-inputs.json.gz`. Preserve the
-prior original-input archives, including CORE137, and CORE138's origin-only
-proof. Retired input archives reference shared original inputs by SHA and retain
-additional private probe inputs inline. Never rewrite immutable receipts or
-cold-build an unchanged graph solely for cleanup. Current protection,
-retirement and full replay are `.analysis/core139-protected.json`,
-`.analysis/core139-cleanup.json` and `.analysis/core139-post-cleanup-results.json.gz`.
-Retired input/receipt closures are `.analysis/core139-retired-inputs.json.gz`.
+Retain the nine private investigation object/receipt pairs still at the build
+root: core103-QueryProtocol-v5 and the core109..core113 sound probes. They support
+unresolved query/sound ownership and dispatcher work, not canonical exact credit.
+See [damage query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md) and
+[sound evidence](SOUND_PROTOCOL_RECONSTRUCTION.md). Their protected hashes are
+`.analysis/core141-retained-private-products.json`.
 
-Retain original compiler input archives, failed experiment evidence, native
-exports and the locked target/tools/Ghidra/reference. Old receipts describe
-their original input closures; never rewrite them to imply fresh verification.
-Retire superseded builds only after replacement verification and protected hash
-checks, as specified in [the workflow](RE_WORKFLOW.md).
+Authentic old inputs and receipts were archived before editing in
+`.analysis/core141-pre-header-inputs.json.gz`. The interim PbgFile input closure
+is `core141-intermediate-inputs.json.gz`; the first source snapshot remains
+`core141-first-frozen-source.json`. Retain these and the earlier original-input
+archives, native exports, rejected probes and locked tools/reference/target.
+Never rewrite immutable receipts or cold-build an unchanged graph for cleanup.
+Final validation, protected retirement and full existing-object replay are
+recorded in `.analysis/core141-gates.json`, `core141-retirement-plan.json`,
+`core141-cleanup.json` and `core141-post-cleanup-results.json.gz`. Retired original
+closures are preserved in `core141-retired-inputs.json.gz`.
 
 ## Next reconstruction work
-
-CORE-140 privately closes the 67-byte Pbg::File allocation factory at
-0x00539C80 with the existing constructor/shared factory and a local profile
-without /EHsc. C++17 and C++20 both strictly match; the 31-byte folded helper
-also replays. Preserve the C++20 active probe under build/core140-probes/ and
-its receipt. Production admission still needs a dedicated allocation provider
-and the conservative receipt path-set migration; preserve PbgFile.cpp's
-destructor/EH profile. Do not repeat the rejected defaulted-constructor probe
-(80/native67). See [profile evidence](PBG_FILE_ALLOCATION_PROFILE.md).
 
 AnimationFile::spawn(full protocol) at 0x00450CB0 is a reviewed 922-byte authored
 body with no maintained source or canonical unit. Preserve optional output

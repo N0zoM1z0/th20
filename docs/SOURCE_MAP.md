@@ -47,7 +47,7 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 890 units / 163 objects. Eight additional
+The configured graph currently has 891 units / 164 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
@@ -64,6 +64,11 @@ Graphics accessors fold to existing physical units without duplicate credit.
 The actual File destructor also emits complete SDK string-retirement units;
 their library/compiler origins remain separate from authored exact coverage.
 Do not use stubs or forced unresolved linkage to claim a whole-program product.
+
+PbgFileAllocation.cpp owns the scalar Pbg::File factory under its verified local
+profile without /EHsc; PbgFile.cpp retains the File/IFile methods and destructor
+EH profile. Archive, Progress, Player SHT and DamageQuery fixtures link this provider. See
+[allocation profile and admission](PBG_FILE_ALLOCATION_PROFILE.md).
 
 ## Build freshness and local products
 

@@ -842,3 +842,4 @@ address,name,module,confidence,evidence
 0x00485720,th20::Bullet::color_index,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
 0x0047D580,th20::bullet_animation_script,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
 0x0041F880,std::destroy_at<th20::AnimationCallback>,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
+0x00539C80,th20::DiagnosticAllocator::allocate_object<Pbg::File>,DiagnosticAllocator,high,CORE/EXACT-141; docs/PBG_FILE_ALLOCATION_PROFILE.md; native Archive caller and complete typed factory protocol

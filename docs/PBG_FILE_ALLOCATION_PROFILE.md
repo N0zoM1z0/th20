@@ -1,6 +1,43 @@
 # Pbg::File allocation profile evidence
 
-## CORE-140 private closure
+## CORE/EXACT-141 production admission
+
+`src/PbgFileAllocation.cpp` now owns the sole explicit File allocation
+instantiation, using the existing shared scalar body and the C++20 profile
+established below. Canonical unit `pbg_file_allocate` strictly replays all
+67 bytes and three independently anchored relocations. PbgFile.cpp retains
+its original `/EHsc` profile and all twelve accepted methods. No constructor,
+layout, exception declaration or allocation semantics changed.
+
+Adding the provider changes the conservative receipt snapshot path set from
+278 to 279 entries. Original inputs and receipts were preserved before editing
+in `.analysis/core141-pre-header-inputs.json.gz`. All 163 prior objects were
+rebuilt under their unchanged profiles, then all 890 prior units strictly
+replayed. The new provider adds one object and one complete physical unit:
+891 units / 164 objects / 167,737 disjoint comparison bytes. The graph audit
+preserves all previous extents, targets and relocation roles. No old receipt was
+rewritten. This one-time path-set migration is distinct from cleanup replay.
+
+The 162 unchanged providers also preserve every section payload, relocation,
+size and flag outside compiler debug/checksum sections; the changed object-path
+record explains those auxiliary differences. PbgFile.cpp loses the old factory
+instantiation. Its deleting destructors, wide wrappers and EH metadata, plus
+the new provider's folded initializer, strictly replay all 232 support bytes.
+These contributions receive no additional physical credit.
+
+The Archive, Progress file, Player SHT and DamageQuery fixtures now link the
+dedicated provider and continue to exercise their actual owner protocols. The isolated
+File fixture still links the real File methods. OS, startup and valid-input CRT
+fixtures retain their documented limits; native disk/game execution remains open.
+
+The factory's source mapping and complete boundary are accepted, while its
+authored/library provenance remains pending. The 899 source mappings and 891
+physical units must not be conflated with the unchanged 181 authored exact
+functions / 47,071 bytes. See `.analysis/core141-new-exact-results.json`,
+`core141-graph-audit.json`, `core141-section-audit.json` and `core141-support.json`.
+The historical private experiments below are preserved evidence.
+
+## Historical CORE-140 probes
 
 The locked target's complete scalar factory at `00539C80..00539CC2`
 contains 67 bytes. Both branches join at `00539CBA`, followed by `ret 4`;
@@ -27,14 +64,11 @@ None of these destinations was obtained by solving a field in the factory.
 The private compiler receipt, complete COFF contribution and relocation list
 are verified in `.analysis/core140-private-proof.json`.
 
-The previous 129-byte production emission uses `/EHsc`. Removing that flag from
-the whole PbgFile.cpp provider would also affect its accepted destructor and EH
-support, so this result does not authorize a blanket profile change. A dedicated
-allocation provider with the tested profile is the next production step; retain
-the existing File/IFile methods, exception declarations and destructor profile.
-Adding that source currently changes the conservative receipt snapshot path set;
-plan the required receipt/build migration explicitly rather than rewriting old
-receipts or placing this instantiation in an unrelated owner merely to avoid it.
+The old in-file instantiation emitted 129 bytes with `/EHsc`. Removing that flag
+from the whole PbgFile.cpp provider would affect its accepted destructor and EH
+support. This motivated CORE141's dedicated provider and explicit receipt
+migration, preserving the File/IFile methods, exception declarations and
+destructor profile. The shared source body required no special-case allocation.
 
 ## Rejected constructor hypothesis
 
@@ -49,5 +83,6 @@ The trial results are `.analysis/core140-private-results.json` and
 `.analysis/core140-original-results.json`. Attested native evidence is
 `.analysis/core140-pbg-factory.asm` and `.analysis/core140-pbg-callers.txt`.
 Source, object receipts and original input closures are preserved privately.
-Canonical units, source mappings and origin classifications remain unchanged;
-this profile result does not establish authored provenance or whole-game linkage.
+CORE140 left canonical units, source mappings and origins unchanged. CORE141's
+production admission above adds physical coverage and source presence while
+leaving authored provenance and whole-game linkage unresolved.

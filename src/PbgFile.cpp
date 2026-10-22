@@ -1,6 +1,5 @@
 #include "PbgFile.hpp"
 #include "WideSecureCrt.hpp"
-#include "DiagnosticObjectFactories.hpp"
 #include <cstring>
 
 namespace Pbg {
@@ -81,10 +80,4 @@ bool File::seek(std::int32_t offset,std::uint32_t origin) {
     SetFilePointer(handle,offset,nullptr,origin);
     return true;
 }
-}
-
-// The observed factory pre-clear is still an emission question. This is the
-// shared real scalar allocation body, not a fabricated clear or exact claim.
-namespace th20 {
-template Pbg::File* DiagnosticAllocator::allocate_object<Pbg::File>(const char*);
 }

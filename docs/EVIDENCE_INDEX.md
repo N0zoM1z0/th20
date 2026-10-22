@@ -97,7 +97,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [SaveManager ownership, member tasks and record merge](EXACT_PROGRESS_SAVE_MANAGER_RECONSTRUCTION.md)
 - [Complete Snapshot and Metadata construction](EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md)
 - [Native Pbg file protocol](PBG_FILE_RECONSTRUCTION.md)
-- [Pbg File allocation profile and private whole-factory closure](PBG_FILE_ALLOCATION_PROFILE.md)
+- [Pbg File allocation profile and complete factory admission](PBG_FILE_ALLOCATION_PROFILE.md)
 - [Complete progress-file serialization and parsing](PROGRESS_FILE_EXACT_RECONSTRUCTION.md)
 - [Complete progress loading and SaveManager destruction](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md)
 - [Whole progress-file loading, saving and native file I/O](PROGRESS_FILE_IO_RECONSTRUCTION.md)

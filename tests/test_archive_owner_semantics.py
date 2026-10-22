@@ -12,7 +12,7 @@ class ArchiveOwnerTests(unittest.TestCase):
         compiler = next((p for name in ("g++-13", "clang++-18", "c++")
                          if (p := shutil.which(name))), None)
         self.assertIsNotNone(compiler)
-        sources = ("ArchiveOwner", "PbgFile", "GameResourceIo", "ArchiveCrypt", "ArchiveLzss",
+        sources = ("ArchiveOwner", "PbgFile", "PbgFileAllocation", "GameResourceIo", "ArchiveCrypt", "ArchiveLzss",
                    "DiagnosticAllocator", "DebugMemoryResource", "LockRegistry", "EclDiagnostic")
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "archive-owner"
