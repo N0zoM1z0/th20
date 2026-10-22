@@ -109,7 +109,6 @@ def verify_build_receipt(unit):
     lock, _ = attest_compiler()
     expected = {
         "object_sha256": digest(output),
-        "inputs": source_fingerprint(ROOT / unit["source"]),
         "profile": unit["profile"],
         "compiler_sha256": lock["files"]["bin/HostX64/x86/cl.exe"],
         "target_sha256": load_manifest("target.toml")["target"]["sha256"],
@@ -117,7 +116,26 @@ def verify_build_receipt(unit):
     for key, value in expected.items():
         if receipt.get(key) != value:
             raise ValueError(f"stale or incompatible build receipt: {key}; cold-build the unit")
-    for header, expected_hash in receipt.get("headers", {}).items():
+    current = source_fingerprint(ROOT / unit["source"])
+    recorded = receipt.get("inputs")
+    if not isinstance(recorded, dict) or recorded.keys() != current.keys():
+        raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
+    headers = receipt.get("headers")
+    if not isinstance(headers, dict):
+        raise ValueError("stale or incompatible build receipt: headers; cold-build the unit")
+    source = (ROOT / unit["source"]).resolve()
+    included = {Path(path).resolve() for path in headers}
+    for name, observed in current.items():
+        path = (ROOT / name).resolve()
+        # A separately compiled implementation cannot affect this object.
+        # Included implementation files remain part of the input closure.
+        if path != source and path not in included and path.suffix.lower() in {
+            ".c", ".cc", ".cpp", ".cxx"
+        }:
+            continue
+        if recorded[name] != observed:
+            raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
+    for header, expected_hash in headers.items():
         if digest(header) != expected_hash:
             raise ValueError(f"included header changed: {header}; cold-build the unit")
     return receipt

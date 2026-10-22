@@ -22,8 +22,13 @@ Use the profile recorded for each source/unit in `config/match-units.toml`.
 
 Compiler receipts record commands, profile, source/header hashes, target identity,
 compiler identity and object hash. Canonical replay rejects absent or stale
-receipts. Conservative freshness includes every maintained source/header and
-probe: a shared-header edit currently requires the complete graph to be rebuilt.
+receipts. Receipts retain their original complete source/header/probe snapshots.
+Verification permits changes to other C/C++ implementation files only when the
+compiler's captured include list does not include them. The actual source and
+all included files must still match. Every header and the complete snapshot path
+set remain conservative gates: a shared-header edit or an added/removed source
+still requires the complete graph to be rebuilt. Historical receipts are never
+rewritten to imply a fresh build.
 Ordinary x86 COFF is supported; /GL and bigobj/LTCG are not.
 
 ## Strict comparison

@@ -27,13 +27,13 @@ negative-sentinel bypass and full-width results. The 149,903-case callback
 fixture and all 79 public tests pass at that checkpoint. See
 [callback evidence](ANIMATION_CALLBACK_RECONSTRUCTION.md).
 
-The maintenance batch renames the unsupported `Hit` callback label to
-`AnimationEntryCallback`, removes an unused forward declaration and corrects
-stale source comments. It adds no exact units or authored credit. All 827 strict
-units pass after 160 fresh object builds, including independent checks of the
-five folded callback aliases and full slot table. All 79 public tests pass
-(339.559 seconds). Protected cleanup replays the complete graph without another
-compiler invocation. The local receipt is `.analysis/maintenance124-resume.json`.
+Maintenance125 corrects overly broad receipt invalidation: changes to unrelated,
+unincluded C/C++ implementation files can reuse original objects. Actual source,
+included implementations, headers, path-set changes and all other identity gates
+remain checked. Original receipts are immutable. All 827 strict units pass using
+160 existing objects with zero compiler invocations; all 80 public tests pass
+(414.156 seconds). No source, exact or authored credit changes in this batch.
+See [the oracle policy](ORACLES.md) and `.analysis/maintenance125-gates.json`.
 
 ## Current local products
 
@@ -44,6 +44,11 @@ The maintenance source freeze is
 `.analysis/maintenance124-exact-results.json.gz`. The original CORE123 compiler
 inputs were verified and archived in
 `.analysis/maintenance124-original-inputs.json.gz` before source changes.
+Maintenance125 preserves the same products, verifies their original inputs in
+`.analysis/maintenance125-original-inputs.json.gz`, and records unchanged product
+hashes in `.analysis/maintenance125-protected.json`. Its strict results are
+`.analysis/maintenance125-exact-results.json.gz`. No generated builds became
+superseded in this verification-only maintenance batch.
 
 Retain original compiler input archives, failed experiment evidence, native
 exports and the locked target/tools/Ghidra/reference. Old receipts describe
@@ -52,6 +57,13 @@ Retire superseded builds only after replacement verification and protected hash
 checks, as specified in [the workflow](RE_WORKFLOW.md).
 
 ## Next reconstruction work
+
+The immediate ECL buffer lead uses the genuine complete 36-byte file header and
+16-byte subroutine prefix. Private whole-method probes produce 54/54 structurally
+equal instruction resolution and 876/876 append with six remaining register
+encoding differences. These are diagnostic results, not exact admission.
+Inputs and observations are under `.analysis/core125-ecl-*`; independently
+rechecked complete boundaries are `.analysis/core126-ecl-boundaries.json`.
 
 Continue coherent core protocols around the whole Animation VM at `0x0042B5D0`.
 Its full extent is 40,752 bytes: 39,470 code, two alignment bytes, 644 pointer-table
