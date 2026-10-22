@@ -28,12 +28,14 @@ struct RenderMesh {
     void update_strips();
 };
 struct EnemyMeshOwner {
+    // Owned mesh storage is retired through the process allocator.
     RenderMesh* mesh;
     std::uint32_t field_04;
     float radius,current_radius;
     std::uint32_t color;
     Angle phase_x,phase_y;
     EnemyMeshOwner();
+    ~EnemyMeshOwner();
 };
 // Native cdecl passes all three coordinates by value; z is not consumed.
 void render_mesh_uv(Vector3 position,float& u,float& v);

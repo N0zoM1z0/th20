@@ -4,10 +4,16 @@
 #include "ClockScalar.hpp"
 #include "MotionMath.hpp"
 #include "ScalarMath.hpp"
+#include "DiagnosticAllocator.hpp"
 
 namespace th20 {
 namespace { constexpr float pi=3.1415927410125732f; }
 EnemyMeshOwner::EnemyMeshOwner():mesh(nullptr),field_04(0),radius(0.0f),current_radius(0.0f),color(0),phase_x(),phase_y() {}
+EnemyMeshOwner::~EnemyMeshOwner() {
+    process_allocator->release_object(mesh);
+    mesh = nullptr;
+}
+template void DiagnosticAllocator::release_object<EnemyMeshOwner>(EnemyMeshOwner*);
 void EnemyState::update_mesh() {
     if (mesh) {
         auto* point=mesh->mesh->positions;

@@ -15,14 +15,36 @@
 #include <cstdio>
 #include <limits>
 #include <source_location>
+#include <thread>
 #include <vector>
+
+namespace {
+th20::EnemyMeshOwner* retiring_owner;
+th20::RenderMesh* retiring_mesh;
+unsigned mesh_root_retirements;
+}
 
 namespace th20 {
 // Original VM creation is uncalled: resource-absent mesh construction executes.
 AnimationHandle Graphics::create_grid_strip(std::int32_t,std::int32_t) {std::abort();}
 AnimationHandle Graphics::create_surface_strip(std::int32_t,std::int32_t) {std::abort();}
 Animation* AnimationHandle::resolve() {std::abort();}
-void AnimationHandle::retire() {assert(!value);value=0;}
+void AnimationHandle::retire() {
+    if (value) {
+        assert(retiring_owner && retiring_mesh && this == &retiring_mesh->root);
+        assert(retiring_owner->mesh == retiring_mesh);
+        bool available = false;
+        std::thread observer([&] {
+            auto& lock = process_locks.slot(1);
+            available = lock.try_lock();
+            if (available) lock.unlock();
+        });
+        observer.join();
+        assert(available);
+        ++mesh_root_retirements;
+    }
+    value = 0;
+}
 void Animation::clear_flag0_recursively() {std::abort();}
 Graphics::~Graphics() {
     assert(!resource_19c&&!resource_1a0&&!resource_1a4&&!surface_animation);
@@ -87,9 +109,46 @@ struct Grid {
         }
     }
 };
+
+void check_owned_mesh_retirement() {
+    allocator.release_object(static_cast<EnemyMeshOwner*>(nullptr));
+    for (int columns : {0, 1, 3, 17}) {
+        auto* owner = new EnemyMeshOwner;
+        assert(!owner->mesh && owner->radius == 0 && owner->current_radius == 0);
+        owner->mesh = new RenderMesh(0, 0, 0, 0);
+        auto* mesh = owner->mesh;
+        mesh->columns = columns;
+        mesh->rows = 2;
+        mesh->root = 0x1234u;
+        if (columns) {
+            mesh->vertices = static_cast<SpriteTexturedVertex*>(allocator.allocate_bytes(
+                int(sizeof(SpriteTexturedVertex)) * columns * 2, "owned mesh vertices"));
+            mesh->positions = static_cast<Vector3*>(allocator.allocate_bytes(
+                int(sizeof(Vector3)) * columns * 2, "owned mesh positions"));
+        }
+        if (columns > 1) {
+            mesh->strip_handles = static_cast<AnimationHandle*>(allocator.allocate_bytes(
+                int(sizeof(AnimationHandle)) * (columns - 1), "owned mesh handles"));
+            mesh->strips = static_cast<Animation**>(allocator.allocate_bytes(
+                int(sizeof(Animation*)) * (columns - 1), "owned mesh strips"));
+            for (int i = 0; i < columns - 1; ++i)
+                std::construct_at(mesh->strip_handles + i);
+        }
+        retiring_owner = owner;
+        retiring_mesh = mesh;
+        const auto before = mesh_root_retirements;
+        allocator.release_object(owner);
+        assert(mesh_root_retirements == before + 1);
+        retiring_owner = nullptr;
+        retiring_mesh = nullptr;
+    }
+    auto* empty = new EnemyMeshOwner;
+    allocator.release_object(empty);
+}
 }
 int main() {
     using namespace th20;
+    check_owned_mesh_retirement();
     window_state.scaled_width=640;window_state.scaled_height=480;
     window_state.client_width=1279;window_state.client_height=959;
     window_state.mesh_offset_x[0]=17;window_state.mesh_offset_x[1]=-11;
@@ -176,7 +235,7 @@ int main() {
             close(vertex.u,p.x/640);close(vertex.v,p.y/480);
             phase_x=wrap(phase_x+pi/32);phase_y=wrap(phase_y-pi/64);
         }
-        grid.check_strips();state.mesh=nullptr;
+        grid.check_strips();state.mesh=nullptr;owner.mesh=nullptr;
     }
     Grid edge(2,2);EnemyMeshOwner owner;owner.mesh=&edge.mesh;owner.current_radius=0;
     state.mesh=&owner;state.field_2e8=0;state.motion_110.position={-100,-100,0};
@@ -191,5 +250,5 @@ int main() {
     for (const auto& p:edge.positions) assert(p.x==49&&p.y==59);
     for (unsigned i=1;i<edge.vertices.size()-1;++i)
         assert(edge.vertices[i].position.x==49&&edge.vertices[i].position.y==59);
-    edge.check_strips();state.mesh=nullptr;
+    edge.check_strips();state.mesh=nullptr;owner.mesh=nullptr;
 }

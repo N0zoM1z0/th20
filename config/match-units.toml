@@ -10630,7 +10630,7 @@ relocations = [
 
 [units.enemy_mesh_owner_ctor]
 source = "src/EnemyMesh.cpp"
-object = "build/maintenance124-canonical/EnemyMesh.obj"
+object = "build/core136-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "??0EnemyMeshOwner@th20@@QAE@XZ"
 functions = ["th20::EnemyMeshOwner::EnemyMeshOwner"]
@@ -10643,7 +10643,7 @@ relocations = [
 
 [units.angle_subtract_float]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "??ZAngle@th20@@QAEAAU01@M@Z"
 functions = ["th20::Angle::operator-=(float)"]
@@ -10655,7 +10655,7 @@ relocations = [
 
 [units.mesh_squared_norm_xy]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?squared_norm_xy@th20@@YAMABUVector3@1@@Z"
 functions = ["th20::squared_norm_xy"]
@@ -10666,7 +10666,7 @@ relocations = [
 
 [units.animation_mesh_vertices]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?mesh_vertices@Animation@th20@@QAEPAUSpriteTexturedVertex@2@XZ"
 functions = ["th20::Animation::mesh_vertices"]
@@ -10677,7 +10677,7 @@ relocations = [
 
 [units.enemy_state_position_ref]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ"
 functions = ["th20::EnemyState::position_ref"]
@@ -10689,7 +10689,7 @@ relocations = [
 
 [units.window_mesh_view_x]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?mesh_view_x@WindowState@th20@@QBEHH@Z"
 functions = ["th20::WindowState::mesh_view_x"]
@@ -10700,7 +10700,7 @@ relocations = [
 
 [units.window_mesh_view_y]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?mesh_view_y@WindowState@th20@@QBEHH@Z"
 functions = ["th20::WindowState::mesh_view_y"]
@@ -10711,7 +10711,7 @@ relocations = [
 
 [units.window_mesh_width]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?mesh_width@WindowState@th20@@QBEHXZ"
 functions = ["th20::WindowState::mesh_width"]
@@ -10722,7 +10722,7 @@ relocations = [
 
 [units.window_mesh_height]
 source = "src/MeshInterfaces.cpp"
-object = "build/core129-canonical/MeshInterfaces.obj"
+object = "build/core136-canonical/MeshInterfaces.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?mesh_height@WindowState@th20@@QBEHXZ"
 functions = ["th20::WindowState::mesh_height"]
@@ -10733,7 +10733,7 @@ relocations = [
 
 [units.render_mesh_select_context]
 source = "src/RenderMesh.cpp"
-object = "build/core130-canonical/RenderMesh.obj"
+object = "build/core136-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?select_context@RenderMesh@th20@@QAEXH@Z"
 functions = ["th20::RenderMesh::select_context"]
@@ -10746,7 +10746,7 @@ relocations = [
 
 [units.render_mesh_initialize]
 source = "src/RenderMesh.cpp"
-object = "build/core130-canonical/RenderMesh.obj"
+object = "build/core136-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?initialize@RenderMesh@th20@@QAEXMMMM@Z"
 functions = ["th20::RenderMesh::initialize"]
@@ -10771,7 +10771,7 @@ relocations = [
 
 [units.render_mesh_update_strips]
 source = "src/RenderMesh.cpp"
-object = "build/core130-canonical/RenderMesh.obj"
+object = "build/core136-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?update_strips@RenderMesh@th20@@QAEXXZ"
 functions = ["th20::RenderMesh::update_strips"]
@@ -10783,7 +10783,7 @@ relocations = [
 
 [units.render_mesh_uv]
 source = "src/RenderMesh.cpp"
-object = "build/core130-canonical/RenderMesh.obj"
+object = "build/core136-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?render_mesh_uv@th20@@YAXUVector3@1@AAM1@Z"
 functions = ["th20::render_mesh_uv"]
@@ -12787,7 +12787,7 @@ relocations = [
 
 [units.render_mesh_surface_initialize]
 source = "src/RenderMeshSurface.cpp"
-object = "build/core134-canonical/RenderMeshSurface.obj"
+object = "build/core136-canonical/RenderMeshSurface.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::RenderMesh::initialize_surface_grid"]
 symbol = "?initialize_surface_grid@RenderMesh@th20@@QAEXMMMM@Z"
@@ -12808,7 +12808,7 @@ relocations = [
 
 [units.render_mesh_construct]
 source = "src/RenderMeshLifecycle.cpp"
-object = "build/core134-canonical/RenderMeshLifecycle.obj"
+object = "build/core136-canonical/RenderMeshLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::RenderMesh::RenderMesh"]
 symbol = "??0RenderMesh@th20@@QAE@HHHH@Z"
@@ -12853,7 +12853,7 @@ relocations = [
 
 [units.render_mesh_retire]
 source = "src/RenderMeshLifecycle.cpp"
-object = "build/core134-canonical/RenderMeshLifecycle.obj"
+object = "build/core136-canonical/RenderMeshLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::RenderMesh::~RenderMesh"]
 symbol = "??1RenderMesh@th20@@QAE@XZ"
@@ -14715,4 +14715,108 @@ symbol = "?assign@?$_Char_traits@DH@std@@SAXAADABD@Z"
 target_address = 4259296
 size = 15
 relocations = [
+]
+
+[units.enemy_mesh_owner_dtor]
+source = "src/EnemyMesh.cpp"
+object = "build/core136-canonical/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::EnemyMeshOwner::~EnemyMeshOwner"]
+symbol = "??1EnemyMeshOwner@th20@@QAE@XZ"
+target_address = 4864160
+size = 79
+compare_size = 84
+relocations = [
+    { offset = 6, type = "DIR32", symbol = "__ehhandler$??1EnemyMeshOwner@th20@@QAE@XZ", target = 5666304 },
+    { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+    { offset = 46, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 5998740 },
+    { offset = 51, type = "REL32", symbol = "??$release_object@URenderMesh@th20@@@DiagnosticAllocator@th20@@QAEXPAURenderMesh@1@@Z", target = 4859904 },
+]
+
+[units.enemy_mesh_owner_release]
+source = "src/EnemyMesh.cpp"
+object = "build/core136-canonical/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::release_object<EnemyMeshOwner>"]
+symbol = "??$release_object@UEnemyMeshOwner@th20@@@DiagnosticAllocator@th20@@QAEXPAUEnemyMeshOwner@1@@Z"
+target_address = 4763440
+size = 97
+relocations = [
+    { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+    { offset = 32, type = "REL32", symbol = "??$destroy_at@UEnemyMeshOwner@th20@@@std@@YAXQAUEnemyMeshOwner@th20@@@Z", target = 4763792 },
+    { offset = 42, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 6029888 },
+    { offset = 47, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 4244240 },
+    { offset = 56, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 4241200 },
+    { offset = 65, type = "REL32", symbol = "??3@YAXPAX@Z", target = 5515772 },
+    { offset = 76, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 4241664 },
+    { offset = 87, type = "REL32", symbol = "@__security_check_cookie@4", target = 5515758 },
+]
+
+[units.render_mesh_release]
+source = "src/EnemyMesh.cpp"
+object = "build/core136-canonical/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::release_object<RenderMesh>"]
+symbol = "??$release_object@URenderMesh@th20@@@DiagnosticAllocator@th20@@QAEXPAURenderMesh@1@@Z"
+target_address = 4859904
+size = 97
+relocations = [
+    { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+    { offset = 32, type = "REL32", symbol = "??$destroy_at@URenderMesh@th20@@@std@@YAXQAURenderMesh@th20@@@Z", target = 4658096 },
+    { offset = 42, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 6029888 },
+    { offset = 47, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 4244240 },
+    { offset = 56, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 4241200 },
+    { offset = 65, type = "REL32", symbol = "??3@YAXPAX@Z", target = 5515772 },
+    { offset = 76, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 4241664 },
+    { offset = 87, type = "REL32", symbol = "@__security_check_cookie@4", target = 5515758 },
+]
+
+[units.enemy_mesh_owner_destroy_at]
+source = "src/EnemyMesh.cpp"
+object = "build/core136-canonical/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["std::destroy_at<th20::EnemyMeshOwner>"]
+symbol = "??$destroy_at@UEnemyMeshOwner@th20@@@std@@YAXQAUEnemyMeshOwner@th20@@@Z"
+target_address = 4763792
+size = 16
+relocations = [
+    { offset = 9, type = "REL32", symbol = "??_GEnemyMeshOwner@th20@@QAEPAXI@Z", target = 4767360 },
+]
+
+[units.render_mesh_destroy_at]
+source = "src/EnemyMesh.cpp"
+object = "build/core136-canonical/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["std::destroy_at<th20::RenderMesh>"]
+symbol = "??$destroy_at@URenderMesh@th20@@@std@@YAXQAURenderMesh@th20@@@Z"
+target_address = 4658096
+size = 16
+relocations = [
+    { offset = 9, type = "REL32", symbol = "??_GRenderMesh@th20@@QAEPAXI@Z", target = 4661456 },
+]
+
+[units.enemy_mesh_owner_scalar_deleting_destructor]
+source = "src/EnemyMesh.cpp"
+object = "build/core136-canonical/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::EnemyMeshOwner::scalar_deleting_destructor"]
+symbol = "??_GEnemyMeshOwner@th20@@QAEPAXI@Z"
+target_address = 4767360
+size = 46
+relocations = [
+    { offset = 11, type = "REL32", symbol = "??1EnemyMeshOwner@th20@@QAE@XZ", target = 4864160 },
+    { offset = 30, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 5515149 },
+]
+
+[units.render_mesh_scalar_deleting_destructor]
+source = "src/EnemyMesh.cpp"
+object = "build/core136-canonical/EnemyMesh.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::RenderMesh::scalar_deleting_destructor"]
+symbol = "??_GRenderMesh@th20@@QAEPAXI@Z"
+target_address = 4661456
+size = 46
+relocations = [
+    { offset = 11, type = "REL32", symbol = "??1RenderMesh@th20@@QAE@XZ", target = 4660384 },
+    { offset = 30, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 5515149 },
 ]

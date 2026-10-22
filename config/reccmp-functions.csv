@@ -888,3 +888,10 @@ std::pmr::polymorphic_allocator<char>::deallocate,0x0044C1E0,function
 std::pmr::memory_resource::deallocate,0x00415520,function
 std::is_constant_evaluated,0x00411170,function
 std::_Char_traits<char>::assign,0x0040FDE0,function
+th20::EnemyMeshOwner::~EnemyMeshOwner,0x004A38A0,function
+th20::DiagnosticAllocator::release_object<EnemyMeshOwner>,0x0048AF30,function
+th20::DiagnosticAllocator::release_object<RenderMesh>,0x004A2800,function
+std::destroy_at<th20::EnemyMeshOwner>,0x0048B090,function
+std::destroy_at<th20::RenderMesh>,0x004713B0,function
+th20::EnemyMeshOwner::scalar_deleting_destructor,0x0048BE80,function
+th20::RenderMesh::scalar_deleting_destructor,0x004720D0,function

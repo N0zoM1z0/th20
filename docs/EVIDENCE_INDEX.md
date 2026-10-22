@@ -17,6 +17,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Animation motion, interpolation and parent binding](ANIMATION_UPDATE_RECONSTRUCTION.md)
 - [EXACT-060: ANM construction, resource lifetime and reset](EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md)
 - [Mesh geometry and enemy deformation](RENDER_MESH_RECONSTRUCTION.md)
+- [Enemy mesh ownership, retirement and origin audit](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md)
 - [Mesh flag ownership, exact grid creation and origin review](MESH_FLAGS_EXACT_RECONSTRUCTION.md)
 
 ## ECL and Enemy

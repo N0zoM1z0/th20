@@ -7,6 +7,10 @@ CORE/EXACT-129 closes grid-strip creation through the independently consumed
 two-bit flag view and separately reviews eight application origins. See
 [mesh flag and origin evidence](MESH_FLAGS_EXACT_RECONSTRUCTION.md).
 
+CORE/EXACT-136 closes the actual EnemyMeshOwner/RenderMesh retirement chain and
+separately reviews its game-owned origins. Allocation and whole deformation
+remain explicit boundaries. See [owned retirement](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md).
+
 ## CORE/EXACT-117: whole mesh construction and retirement
 
 Eight complete physical roots add 1,608 disjoint comparison bytes with 59 independent

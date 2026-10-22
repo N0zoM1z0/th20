@@ -887,3 +887,10 @@ std::pmr::polymorphic_allocator<char>::deallocate
 std::pmr::memory_resource::deallocate
 std::is_constant_evaluated
 std::_Char_traits<char>::assign
+th20::EnemyMeshOwner::~EnemyMeshOwner
+th20::DiagnosticAllocator::release_object<EnemyMeshOwner>
+th20::DiagnosticAllocator::release_object<RenderMesh>
+std::destroy_at<th20::EnemyMeshOwner>
+std::destroy_at<th20::RenderMesh>
+th20::EnemyMeshOwner::scalar_deleting_destructor
+th20::RenderMesh::scalar_deleting_destructor
