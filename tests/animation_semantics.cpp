@@ -1,5 +1,6 @@
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
+#include "AnimationFile.hpp"
 #include "DiagnosticAllocator.hpp"
 
 #include <array>
@@ -9,7 +10,10 @@
 #include <cstring>
 #include <limits>
 #include <new>
+#include <memory_resource>
+#include <thread>
 #include <type_traits>
+#include <vector>
 
 namespace {
 th20::Animation* releasing;
@@ -25,6 +29,101 @@ struct LifetimeObserver final : th20::AnimationCallback {
     }
 };
 th20::AnimationCallback* owned_callback;
+
+bool lock_available_to_another_thread() {
+    bool available = false;
+    std::thread observer([&] {
+        auto& lock = th20::process_locks.slot(1);
+        available = lock.try_lock();
+        if (available) lock.unlock();
+    });
+    observer.join();
+    return available;
+}
+
+struct StringResource final : std::pmr::memory_resource {
+    std::vector<void*> allocations, deallocations;
+    bool cleared = false;
+    void* do_allocate(std::size_t bytes, std::size_t alignment) override {
+        void* result = std::pmr::new_delete_resource()->allocate(bytes, alignment);
+        allocations.push_back(result);
+        return result;
+    }
+    void do_deallocate(void* memory, std::size_t bytes, std::size_t alignment) override {
+        assert(cleared);
+        deallocations.push_back(memory);
+        std::pmr::new_delete_resource()->deallocate(memory, bytes, alignment);
+    }
+    bool do_is_equal(const std::pmr::memory_resource& other) const noexcept override {
+        return this == &other;
+    }
+};
+StringResource* string_resource;
+th20::AnimationFile* retiring_file;
+unsigned clear_calls;
+int next_array_index;
+std::vector<int> retired_indices;
+
+struct ArrayObserver final : th20::AnimationCallback {
+    int index;
+    th20::Animation* animation;
+    ArrayObserver(th20::Animation* owner, int value)
+        : AnimationCallback(owner), index(value), animation(owner) {}
+    ~ArrayObserver() override {
+        assert(index == next_array_index--);
+        assert(animation->geometry == nullptr && animation->geometry_bytes == 0);
+        assert(animation->callback == this && animation->handle.value == unsigned(index + 1));
+        assert(animation->base.field_28 == 37);
+        if (retired_indices.empty()) assert(!lock_available_to_another_thread());
+        retired_indices.push_back(index);
+    }
+};
+
+void check_file_and_template_lifetime(th20::DiagnosticAllocator& allocator) {
+    using namespace th20;
+    allocator.release_object(static_cast<AnimationFile*>(nullptr));
+    for (unsigned length : {33u, 129u, 513u}) {
+        StringResource resource;
+        auto* previous = std::pmr::set_default_resource(&resource);
+        auto* file = allocator.allocate_object<AnimationFile>("file lifetime fixture");
+        std::pmr::set_default_resource(previous);
+        assert(file && !file->bytes && !file->templates && !file->textures);
+        file->filename.assign(length, 'f');
+        file->stem.assign(length + 17, 's');
+        assert(resource.allocations.size() == 2);
+        void* filename = file->filename.data();
+        void* stem = file->stem.data();
+        string_resource = &resource;
+        retiring_file = file;
+        unsigned before = clear_calls;
+        allocator.release_object(file);
+        assert(clear_calls == before + 1);
+        assert(resource.deallocations == std::vector<void*>({stem, filename}));
+        string_resource = nullptr;
+        retiring_file = nullptr;
+    }
+    allocator.release_array(static_cast<Animation*>(nullptr));
+    for (int count : {0, 1, 3, 17}) {
+        Animation* values = allocator.allocate_array<Animation>("template lifetime fixture", count);
+        retired_indices.clear();
+        next_array_index = count - 1;
+        for (int i = 0; i < count; ++i) {
+            Animation& value = values[i];
+            assert(value.link_4ec.node == &value && value.child_links[1].node == &value);
+            assert(!value.geometry && !value.callback && value.handle.value == 0);
+            value.handle = static_cast<unsigned>(i + 1);
+            value.base.field_28 = 37;
+            if (i & 1) {
+                value.geometry = allocator.allocate_bytes(32 + i, "template geometry fixture");
+                value.geometry_bytes = 32 + i;
+            }
+            new ArrayObserver(&value, i);
+        }
+        allocator.release_array(values);
+        assert(next_array_index == -1 && retired_indices.size() == unsigned(count));
+        for (int i = 0; i < count; ++i) assert(retired_indices[i] == count - i - 1);
+    }
+}
 
 template<class T> void check_padding(const T& object, std::size_t first,
                                     std::size_t end) {
@@ -57,6 +156,17 @@ const Matrix4 identity_matrix = [] {
     for (int i = 0; i < 4; ++i) value.elements[i][i] = 1.0f;
     return value;
 }();
+// The native clear early exit is exercised only with no loaded resources.
+// Renderer-mediated detachment and loaded-buffer retirement remain external.
+void AnimationFile::clear() {
+    assert(this == retiring_file && string_resource);
+    assert(!bytes && !templates && !sprites && !scripts && !textures);
+    assert(!string_resource->cleared && string_resource->deallocations.empty());
+    assert(!filename.empty() && !stem.empty());
+    assert(lock_available_to_another_thread());
+    string_resource->cleared = true;
+    ++clear_calls;
+}
 }
 
 int main(int argc, char**) {
@@ -73,6 +183,7 @@ int main(int argc, char**) {
         looping.release_resources();
         return 2; // The native nonzero-word path must not return.
     }
+    check_file_and_template_lifetime(allocator);
 
     alignas(PooledAnimation) std::array<unsigned char, sizeof(PooledAnimation)> storage;
     storage.fill(0xa5);

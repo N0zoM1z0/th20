@@ -859,3 +859,12 @@ std::pmr::vector<th20::EclSubroutineRecord>::emplace,0x0053FB00,function
 th20::DiagnosticAllocator::release_object<FunctionChainNode>,0x004118A0,function
 std::destroy_at<th20::FunctionChainNode>,0x00411960,function
 th20::FunctionChainNode::scalar_deleting_destructor,0x00411CB0,function
+th20::DiagnosticAllocator::allocate_object<AnimationFile>,0x004477B0,function
+th20::AnimationFile::~AnimationFile,0x00449310,function
+th20::DiagnosticAllocator::release_object<AnimationFile>,0x004473A0,function
+th20::DiagnosticAllocator::allocate_array<Animation>,0x004476C0,function
+th20::DiagnosticAllocator::release_array<Animation>,0x004472C0,function
+std::destroy_at<th20::AnimationFile>,0x00447850,function
+th20::AnimationFile::scalar_deleting_destructor,0x00449760,function
+th20::Animation::vector_deleting_destructor,0x004496B0,function
+std::pmr::string::~basic_string,0x00449240,function

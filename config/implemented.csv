@@ -858,3 +858,12 @@ std::pmr::vector<th20::EclSubroutineRecord>::emplace
 th20::DiagnosticAllocator::release_object<FunctionChainNode>
 std::destroy_at<th20::FunctionChainNode>
 th20::FunctionChainNode::scalar_deleting_destructor
+th20::DiagnosticAllocator::allocate_object<AnimationFile>
+th20::AnimationFile::~AnimationFile
+th20::DiagnosticAllocator::release_object<AnimationFile>
+th20::DiagnosticAllocator::allocate_array<Animation>
+th20::DiagnosticAllocator::release_array<Animation>
+std::destroy_at<th20::AnimationFile>
+th20::AnimationFile::scalar_deleting_destructor
+th20::Animation::vector_deleting_destructor
+std::pmr::string::~basic_string

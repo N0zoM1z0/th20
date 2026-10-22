@@ -1,5 +1,6 @@
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
+#include "AnimationFile.hpp"
 #include "DiagnosticAllocator.hpp"
 namespace th20 {
 AnimationBase::AnimationBase() noexcept : timer(), field_10(0), field_14(0),
@@ -20,6 +21,7 @@ Animation::Animation() noexcept : base(), handle(), index(0), timer_4c8(), timer
     field_579(0), matrix_57c(), vector_5bc(), user_data(nullptr), field_5cc(0), vector_5d0(),
     field_5dc(0), field_5e0(0) {}
 Animation::~Animation() noexcept { release_resources(); }
+AnimationFile::~AnimationFile() { clear(); }
 PooledAnimation::PooledAnimation() : animation(), free_link(), active(0), index(0) {}
 void Animation::reset() {
     base.vector_50.x = 1.0f;
@@ -99,4 +101,7 @@ void Animation::release_resources() {
         while (true) { handle = 0; }
     }
 }
+template void DiagnosticAllocator::release_object<AnimationFile>(AnimationFile*);
+template Animation* DiagnosticAllocator::allocate_array<Animation>(const char*, std::int32_t);
+template void DiagnosticAllocator::release_array<Animation>(Animation*);
 }

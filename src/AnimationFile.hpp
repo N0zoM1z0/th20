@@ -9,7 +9,8 @@ struct Animation;
 struct SpriteData;
 struct TextureRecord;
 struct AnmInstruction;
-struct AnimationFile {
+class AnimationFile {
+public:
     std::uint32_t id;
     std::pmr::string filename, stem;
     std::uint8_t* bytes;
@@ -25,6 +26,8 @@ struct AnimationFile {
     void apply_template(Animation* animation, std::int32_t script);
     AnimationFile();
     ~AnimationFile();
+    // Loaded-resource retirement still requires the actual Renderer protocol.
+    void clear();
     void bind_animation(Animation* animation, std::int32_t script);
     // Parent binding prepares the actual Animation before its VM update.
     void bind_animation(Animation* animation, std::int32_t script, Animation* parent);

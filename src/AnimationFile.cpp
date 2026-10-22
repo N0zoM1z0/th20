@@ -1,4 +1,5 @@
 #include "AnimationFile.hpp"
+#include "DiagnosticObjectFactories.hpp"
 namespace th20 {
 AnimationFile::AnimationFile()
     : id(0), bytes(nullptr), templates(nullptr), texture_count(0), script_count(0),
@@ -7,4 +8,5 @@ AnimationFile::AnimationFile()
 void AnimationFile::bind_animation(Animation* animation,std::int32_t script) {
     bind_animation(animation,script,nullptr);
 }
+template AnimationFile* DiagnosticAllocator::allocate_object<AnimationFile>(const char*);
 }

@@ -12,50 +12,55 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 852 physical strict units, 163 comparison objects,
-164,237 disjoint comparison bytes and 860 source-present mappings. Eight
-mapped whole functions remain nonexact. Authored coverage is separately 148 exact
-functions / 42,390 bytes, with 152 confirmed authored origins. The pinned reference
+The maintained graph contains 861 physical strict units, 163 comparison objects,
+165,103 disjoint comparison bytes and 869 source-present mappings. Eight
+mapped whole functions remain nonexact. Authored coverage is separately 158 exact
+functions / 44,627 bytes, with 163 confirmed authored origins. File::clear is
+reviewed authored but remains source-absent. The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
 These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-131 accepts the complete 73-byte Region allocator. Only the
-class/public declaration changes: the existing constructor and shared new T
-body remain unchanged. Full 97-byte scalar release aliases the existing ECL unit;
-the 31-byte initializer and five-byte trivial destruction add no duplicate
-credit. Twenty-nine new origin decisions identify 27 authored, one SDK and one
-compiler function; global HitCtrlInf creation remains whole nonexact.
-All 57 previous affected units pass after six objects build once, with 157
-unaffected objects reused. All 80 public tests pass in 294.135 seconds. After
-retirement, all 852 units strictly replay with all 326 current object/receipt
-hashes unchanged and no compiler invocations. See
-[Region allocation/lifetime evidence](DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md).
+CORE/EXACT-132 accepts nine complete File/Animation lifetime roots, adding 866
+physical comparison bytes. Ordinary File destruction and real template-array
+allocation/release retain the two string members, actual Animation lifetime,
+array cookies, reverse destruction and distinct lock ordering. Fifteen origin
+decisions identify eleven authored, two STL and two compiler functions; File
+clear remains unimplemented and receives no source or exact credit.
+All 128 previous affected units pass after 31 objects build once, with 132
+unaffected objects reused. Complete EH support and the extended actual-owner
+lifetime fixture pass. All 80 public tests pass in 342.394 seconds; the private
+ASan/UBSan lifetime fixture passes in 8.546 seconds. After retirement, all 861
+units strictly replay with all 326 current object/receipt hashes unchanged and
+no compiler invocations. See
+[File/template lifetime evidence](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md).
 
 ## Current local products
 
 Canonical paths in `config/match-units.toml` use
 `build/maintenance124-canonical/`, `build/core127-canonical/EclLoaderBuffer.obj`,
 the two objects under `build/core128-canonical/`, retained objects under
-`build/core129-canonical/`, 40 retained objects under `build/core130-canonical/`
-and six objects under `build/core131-canonical/`.
+`build/core129-canonical/`, `build/core130-canonical/`, `build/core131-canonical/`
+and 31 objects under `build/core132-canonical/`.
 Protect all 163 objects and
 sibling receipts. The current source freeze is
-`.analysis/core131-final-frozen-source.json`; affected strict results are
-`.analysis/core131-affected-results.json.gz`, with reviewed roots and full aliases
-separately in `.analysis/core131-admission-results.json`. Post-retirement results
-are `.analysis/core131-post-cleanup-results.json.gz`.
+`.analysis/core132-final-frozen-source.json`; affected strict results are
+`.analysis/core132-affected-results.json.gz`, with new roots separately in
+`.analysis/core132-new-exact-results.json` and complete support in
+`.analysis/core132-eh-support.json`. Post-retirement results are
+`.analysis/core132-post-cleanup-results.json.gz`.
 
 Original inputs for the reused maintenance124 objects remain preserved in
 `.analysis/maintenance125-original-inputs.json.gz`; core127/core128/core129 proofs
 protect their newer objects. All 163 old pairs were verified before editing;
-the six replaced objects' authentic input versions and original receipts are in
-`.analysis/core131-pre-header-inputs.json.gz`. Original CORE130 archives remain
-preserved for their historical products. Retired inputs and immutable receipts
-are in `.analysis/core131-retired-inputs.json.gz`; current protected hashes and
-the 14-product / 407,238-byte removal record are in
-`.analysis/core131-protected.json` and `.analysis/core131-cleanup.json`.
+the 31 replaced objects' authentic input versions and original receipts are in
+`.analysis/core132-pre-header-inputs.json.gz`. Original CORE130/131 archives remain
+preserved for their historical products.
+Retired inputs and immutable receipts are in
+`.analysis/core132-retired-inputs.json.gz`; current protected hashes and the
+66-product / 2,468,065-byte removal record are in
+`.analysis/core132-protected.json` and `.analysis/core132-cleanup.json`.
 No current canonical products are removed or rebuilt for cleanup.
 
 Retain original compiler input archives, failed experiment evidence, native
@@ -65,6 +70,14 @@ Retire superseded builds only after replacement verification and protected hash
 checks, as specified in [the workflow](RE_WORKFLOW.md).
 
 ## Next reconstruction work
+
+File::clear at 0x0044AB00 is a reviewed 284-byte authored body with no maintained
+implementation or source mapping. It requires actual Renderer detachment/texture
+retirement and the +6C buffer producer. File destruction now invokes that real
+interface and then destroys stem/filename. Keep resource-absent fixture clears
+distinct from loaded-resource retirement. Scalar File allocation retains its
+existing profile without /EHsc; adding /EHsc emits129/native67. File construction
+exception declarations are unchanged. Do not change them merely to shorten code.
 
 ProgressSaveManager constructor and commit at 0x0050E5D0 and 0x0050F660 remain
 whole nonexact (198/native199 and 68/native70), totaling 269 native bytes. Native

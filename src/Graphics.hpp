@@ -6,7 +6,7 @@
 #include "TaskInfo.hpp"
 #include "Worker.hpp"
 namespace th20 {
-struct AnimationFile;
+class AnimationFile;
 struct GraphicsFlags {
     std::uint32_t bit0:1, bit1:1, bit2:1, bit3:1, bit4:1, bits5_6:2;
     std::uint32_t bit7:1, bit8:1, bit9:1, bit10:1, bit11:1, bit12:1, bit13:1, retained:18;

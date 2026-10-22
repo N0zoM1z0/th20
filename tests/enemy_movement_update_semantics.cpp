@@ -36,7 +36,7 @@ const Matrix4 identity_matrix = [] {
 }();
 Graphics process_graphics;
 Graphics::~Graphics() = default;
-AnimationFile::~AnimationFile() = default;
+void AnimationFile::clear() {assert(!bytes && !templates && !sprites && !scripts && !textures);}
 int ScriptStack::pop(std::int32_t, void*, char) { std::abort(); }
 EclScriptPosition::EclScriptPosition() noexcept : subroutine(0), offset(0) {}
 EclRuntime::EclRuntime() noexcept : time(0), async_id(0), manager(nullptr), signal(0),

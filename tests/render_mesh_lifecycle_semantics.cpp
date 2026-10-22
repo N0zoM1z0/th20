@@ -88,7 +88,7 @@ Graphics::~Graphics() {
 }
 Graphics process_graphics;
 // Empty original-file resource retirement is bounded; actual PMR string members retire.
-AnimationFile::~AnimationFile() {assert(!bytes&&!templates&&!sprites&&!scripts&&!textures);}
+void AnimationFile::clear() {assert(!bytes&&!templates&&!sprites&&!scripts&&!textures);}
 WeaponStoneInfo::~WeaponStoneInfo(){std::abort();}
 void WeaponStoneInfo::enable(){std::abort();}
 void WeaponStoneInfo::disable(){std::abort();}

@@ -22,11 +22,11 @@ LockRegistry process_locks;
 DiagnosticAllocator* process_allocator;
 DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
 const Matrix4 identity_matrix = [] { Matrix4 value; for (int i=0;i<4;++i) value.elements[i][i]=1.0f; return value; }();
-// Original file retirement/loading is still undefined. This fixture permits
+// Loaded-resource clearing/loading is still undefined. This fixture permits
 // only a borrowed template view; no owned file resource reaches destruction.
 // Three-argument VM binding is not exercised; accidental entry fails hard.
 void AnimationFile::bind_animation(Animation*, std::int32_t, Animation*) { std::abort(); }
-AnimationFile::~AnimationFile() {
+void AnimationFile::clear() {
     assert(bytes == nullptr && sprites == nullptr && scripts == nullptr && textures == nullptr);
     assert(templates == nullptr);
 }

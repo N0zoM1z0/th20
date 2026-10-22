@@ -53,7 +53,7 @@ EffectInfo::~EffectInfo() {
 StoneMenuInfo::StoneMenuInfo():file(nullptr),visible(0),saved_selection(0),
     names{},descriptions{},state(0),field_210f8(0),view_index(0),context(nullptr) {}
 StoneMenuInfo::~StoneMenuInfo() {assert(!file && !update_node && !draw_node);}
-AnimationFile::~AnimationFile() {
+void AnimationFile::clear() {
     assert(!bytes && !templates && !sprites && !scripts && !textures);
 }
 AnimationHandle AnimationFile::spawn(const char* stem,int script,const Vector3& position,

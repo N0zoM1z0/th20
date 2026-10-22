@@ -11,7 +11,7 @@
 namespace th20 {
 // EXACT-078: native BulletInf and its typed 2001-entry pool. Offset names
 // retain unresolved roles; alignment gaps are supplied by actual members.
-struct AnimationFile;
+class AnimationFile;
 struct BulletStyle;
 // Native +88 is packed color consumed by effect parameters, not an ANM id.
 // Its zero-construction head folds with other independent four-byte values.

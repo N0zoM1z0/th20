@@ -53,7 +53,7 @@ WeaponStoneInfo::~WeaponStoneInfo() {
 void WeaponStoneInfo::enable() {std::abort();}
 Player::~Player() {std::abort();}
 void Player::enable() {std::abort();}
-AnimationFile::~AnimationFile() {
+void AnimationFile::clear() {
     assert(!bytes && !templates && !sprites && !scripts && !textures);
 }
 void AnimationFile::bind_animation(Animation* animation,std::int32_t script,Animation* parent) {

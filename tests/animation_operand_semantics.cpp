@@ -21,7 +21,7 @@ Graphics::~Graphics() {
     assert(!direct3d && !device && !snapshot_pixels && !dynamic_buffer && !startup_scene);
 }
 Graphics process_graphics;
-AnimationFile::~AnimationFile() { assert(!bytes && !templates && !sprites && !scripts && !textures); }
+void AnimationFile::clear() { assert(!bytes && !templates && !sprites && !scripts && !textures); }
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_(){}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator=&allocator;

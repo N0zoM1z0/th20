@@ -24,7 +24,7 @@ DiagnosticAllocator* process_allocator;
 DiagnosticAllocator::DiagnosticAllocator():state_word_(0),resource_(){}
 const Matrix4 identity_matrix=[] {Matrix4 r;for(int i=0;i<4;++i)r.elements[i][i]=1.0f;return r;}();
 // Borrowed-only File fixture; original loading and retirement remain undefined.
-AnimationFile::~AnimationFile() {assert(!bytes&&!sprites&&!scripts&&!textures&&!templates);}
+void AnimationFile::clear() {assert(!bytes&&!sprites&&!scripts&&!textures&&!templates);}
 // Capture the actual unresolved interpreter ABI and its complete entry state.
 std::int32_t Animation::update() {
     assert(this==vm_receiver && image(*this)==vm_expected);

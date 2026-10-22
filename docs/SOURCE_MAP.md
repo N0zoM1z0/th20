@@ -9,7 +9,7 @@ the original game's translation-unit partition.
 
 | Protocol | Maintained source | Focused evidence |
 | --- | --- | --- |
-| Animation lifetime/parameters | Animation.hpp/cpp, AnimationParameters.cpp | [Lifetime](EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md) |
+| Animation lifetime/parameters | Animation.hpp/cpp, AnimationFile.hpp/cpp, AnimationParameters.cpp | [Lifetime](EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md), [File/template arrays](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md) |
 | Animation traversal/templates | AnimationChildren.cpp, AnimationBinding.cpp, AnimationFile.hpp/cpp | [Children](ANIMATION_CHILDREN_RECONSTRUCTION.md), [binding](ANIMATION_BINDING_RECONSTRUCTION.md) |
 | Animation frame/geometry/operands | AnimationUpdates.cpp, AnimationGeometry.cpp, AnimationOperands.cpp | [Updates](ANIMATION_UPDATE_RECONSTRUCTION.md), [geometry](ANIMATION_GEOMETRY_RECONSTRUCTION.md), [operands](ANIMATION_OPERAND_RECONSTRUCTION.md) |
 | Animation callback protocol | AnimationCallback.hpp/cpp, Bullet.hpp, BulletStyle.hpp | [Callbacks](ANIMATION_CALLBACK_RECONSTRUCTION.md) |
@@ -47,10 +47,11 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 852 units / 163 objects. Eight additional
+The configured graph currently has 861 units / 163 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
-are not production admission. Do not use stubs or forced unresolved linkage to
+are not production admission. File::clear has a reviewed authored origin and
+declared interface, but no maintained body or source mapping. Do not use stubs or forced unresolved linkage to
 claim a whole-program product.
 
 ## Build freshness and local products
