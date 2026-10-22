@@ -25,7 +25,8 @@ struct DamageRegionFlags {
 // Opaque native owner, corroborated by allocation and dispatch consumers.
 struct Context;
 struct PlayerShot;
-struct DamageRegion {
+class DamageRegion {
+public:
     IntrusiveLink<DamageRegion> link;
     DamageRegionFlags flags;
     float radius_a, radius_b, value_20;

@@ -12,50 +12,51 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 851 physical strict units, 163 comparison objects,
-164,164 disjoint comparison bytes and 860 source-present mappings. Nine
-mapped whole functions remain nonexact. Authored coverage is separately 122 exact
-functions / 36,169 bytes, with 125 confirmed authored origins. The pinned reference
+The maintained graph contains 852 physical strict units, 163 comparison objects,
+164,237 disjoint comparison bytes and 860 source-present mappings. Eight
+mapped whole functions remain nonexact. Authored coverage is separately 148 exact
+functions / 42,390 bytes, with 152 confirmed authored origins. The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
 These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-130 accepts complete Node allocation and the scalar release chain,
-adding four physical units / 226 comparison bytes. The existing user constructor
-and new T body need no changes: class/public declaration enables the observed
-automatic /sdl initialization. Its 31-byte helper folds without duplicate credit.
-Seventeen new origin decisions identify fifteen authored, one SDK and one
-compiler function; unlocked removal is authored but remains whole nonexact.
-All 225 previous affected units pass after 43 existing objects build once;
-one new allocator object is built and 119 unaffected objects are reused. All 80
-public tests pass in 281.599 seconds. After retirement, all 851 units strictly
-replay with all 326 current object/receipt hashes unchanged and no compiler
-invocations. See
-[allocation/lifetime evidence](FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md).
+CORE/EXACT-131 accepts the complete 73-byte Region allocator. Only the
+class/public declaration changes: the existing constructor and shared new T
+body remain unchanged. Full 97-byte scalar release aliases the existing ECL unit;
+the 31-byte initializer and five-byte trivial destruction add no duplicate
+credit. Twenty-nine new origin decisions identify 27 authored, one SDK and one
+compiler function; global HitCtrlInf creation remains whole nonexact.
+All 57 previous affected units pass after six objects build once, with 157
+unaffected objects reused. All 80 public tests pass in 294.135 seconds. After
+retirement, all 852 units strictly replay with all 326 current object/receipt
+hashes unchanged and no compiler invocations. See
+[Region allocation/lifetime evidence](DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md).
 
 ## Current local products
 
 Canonical paths in `config/match-units.toml` use
 `build/maintenance124-canonical/`, `build/core127-canonical/EclLoaderBuffer.obj`,
 the two objects under `build/core128-canonical/`, retained objects under
-`build/core129-canonical/` and 44 objects under `build/core130-canonical/`.
+`build/core129-canonical/`, 40 retained objects under `build/core130-canonical/`
+and six objects under `build/core131-canonical/`.
 Protect all 163 objects and
 sibling receipts. The current source freeze is
-`.analysis/core130-final-frozen-source.json`; affected strict results are
-`.analysis/core130-affected-results.json.gz`, with new roots separately in
-`.analysis/core130-new-exact-results.json`. Post-retirement whole-graph results
-are `.analysis/core130-post-cleanup-results.json.gz`.
+`.analysis/core131-final-frozen-source.json`; affected strict results are
+`.analysis/core131-affected-results.json.gz`, with reviewed roots and full aliases
+separately in `.analysis/core131-admission-results.json`. Post-retirement results
+are `.analysis/core131-post-cleanup-results.json.gz`.
 
 Original inputs for the reused maintenance124 objects remain preserved in
 `.analysis/maintenance125-original-inputs.json.gz`; core127/core128/core129 proofs
-protect their newer objects. All 162 old pairs were verified before editing;
-the 43 replaced objects' authentic input versions and original receipts are in
-`.analysis/core130-pre-header-inputs.json.gz`. Retired object/probe inputs and
-immutable receipts are in `.analysis/core130-retired-inputs.json.gz`; protected
-hashes and removal records are `.analysis/core130-protected.json` and
-`.analysis/core130-cleanup.json`. No current canonical products are removed or
-rebuilt for cleanup.
+protect their newer objects. All 163 old pairs were verified before editing;
+the six replaced objects' authentic input versions and original receipts are in
+`.analysis/core131-pre-header-inputs.json.gz`. Original CORE130 archives remain
+preserved for their historical products. Retired inputs and immutable receipts
+are in `.analysis/core131-retired-inputs.json.gz`; current protected hashes and
+the 14-product / 407,238-byte removal record are in
+`.analysis/core131-protected.json` and `.analysis/core131-cleanup.json`.
+No current canonical products are removed or rebuilt for cleanup.
 
 Retain original compiler input archives, failed experiment evidence, native
 exports and the locked target/tools/Ghidra/reference. Old receipts describe
@@ -75,12 +76,14 @@ Use the ECL C++17 and load /sdl results as bounded profile leads, not global fla
 Other open mapped roots include Enemy mesh deformation, compression
 and allocation/removal factories. Do not repeat unchanged old trials.
 
-Node scalar allocation is now exact. Reuse the class/public declaration result
-as a bounded lead for another actual scalar owner, with complete typed caller
-replay; do not generalize it to unreviewed classes. Struct C++17, brace/value,
-defaulted/in-class-initializer and constructor-visibility Node probes do not
-explain the target. Unlocked scheduler removal remains whole156/native162 because
-of the final unobserved parameter reset; do not insert a dead reset for emission.
+Node and Region scalar allocation are now exact with unchanged shared new T
+and actual constructor bodies. Preserve the class/public declarations and
+complete typed caller replay. Struct C++17, brace/value, defaulted/in-class
+initializer and constructor-visibility Node probes do not explain the target.
+Unlocked scheduler removal remains whole 156/native162; global HitCtrlInf creation
+remains whole 82/native92. Both retain unobserved native resets; do not introduce
+dead resets for emission. The whole 1,707-byte damage query remains unimplemented;
+its unconsumed counter and heap release before later reads remain open.
 
 Animation+4A0 bits 4..5 now have an independently consumed two-bit view; their
 renderer state meaning remains open. Existing byte/RHS/8-bit literal and /Os

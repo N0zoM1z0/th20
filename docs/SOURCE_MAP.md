@@ -16,7 +16,7 @@ the original game's translation-unit partition.
 | ECL stack/runtime/manager/loader | ScriptStack*, EclRuntime*, EclManager*, EclLoader*, EclFileLoader* | [Whole tick](EXACT_ECL_TICK_RECONSTRUCTION.md), [call protocol](EXACT_ECL_CALL_RECONSTRUCTION.md), [buffers](ECL_BUFFER_RECONSTRUCTION.md) |
 | Enemy movement/script/parameters | Enemy*, Motion*, ShotMetadata*, Laser* | [Movement](EXACT_ENEMY_UPDATE_RECONSTRUCTION.md), [whole dispatcher](CORE_ENEMY_DISPATCH_LAYOUT.md), [temporaries](EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md) |
 | Scheduler/observation/locking | FunctionChain*, IntrusiveLink*, LockRegistry*, DiagnosticAllocator* | [Scheduler](FUNCTION_CHAIN_CONTROLLER_RECONSTRUCTION.md), [allocation/release](FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md), [iteration](CORE_ITERATION_EXACT_RECONSTRUCTION.md) |
-| Gameplay ownership/damage | Player*, Bomb*, Bullet*, Item*, Context*, Session*, Damage* | [Player/SHT](PLAYER_SHT_RECONSTRUCTION.md), [Bomb](BOMB_OWNER_RECONSTRUCTION.md), [Item](ITEM_OWNER_RECONSTRUCTION.md), [damage](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md) |
+| Gameplay ownership/damage | Player*, Bomb*, Bullet*, Item*, Context*, Session*, Damage*, HitCtrlInf* | [Player/SHT](PLAYER_SHT_RECONSTRUCTION.md), [Bomb](BOMB_OWNER_RECONSTRUCTION.md), [Item](ITEM_OWNER_RECONSTRUCTION.md), [damage](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md), [Region allocation/ownership](DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md) |
 | Archive/File/resource I/O | Archive*, PbgFile*, GameFileIo*, GameResourceIo* | [Resource graph](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md), [writing](ARCHIVE_WRITE_RECONSTRUCTION.md) |
 | Progress persistence | Progress*, SecureCrt.hpp | [File protocol](PROGRESS_FILE_EXACT_RECONSTRUCTION.md), [loading/lifetime](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md), [parser](PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Graphics/mesh/sound | Graphics*, RenderMesh*, MeshResourceAccess*, SoundInf.hpp, SoundLoading.cpp | [Mesh](RENDER_MESH_RECONSTRUCTION.md), [mesh flags](MESH_FLAGS_EXACT_RECONSTRUCTION.md), [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) |
@@ -47,7 +47,7 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 851 units / 163 objects. Nine additional
+The configured graph currently has 852 units / 163 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. Do not use stubs or forced unresolved linkage to

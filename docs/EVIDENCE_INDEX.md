@@ -53,6 +53,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Actual Bomb ownership and dispatch](BOMB_OWNER_RECONSTRUCTION.md)
 - [Whole core iteration and dispatch exact reconstruction](CORE_ITERATION_EXACT_RECONSTRUCTION.md)
 - [Damage controller and whole query evidence](DAMAGE_CONTROLLER_RECONSTRUCTION.md)
+- [Damage-region allocation and lifecycle ownership](DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md)
 - [Actual damage-query consumer protocol](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md)
 - [Bullet ownership, construction and resource release](EXACT_BULLET_STORAGE_RECONSTRUCTION.md)
 - [Actual Card construction and time state](EXACT_CARD_RECONSTRUCTION.md)

@@ -4871,7 +4871,7 @@ relocations = [
 
 [units.region_intersects]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::intersects"]
 symbol = "?intersects@DamageRegion@th20@@QAE_NPBUVector3@2@PBUVector2@2@MM@Z"
@@ -4919,7 +4919,7 @@ relocations = [
 
 [units.region_position]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::position"]
 symbol = "?position@DamageRegion@th20@@QAEAAUVector3@2@XZ"
@@ -4931,7 +4931,7 @@ relocations = [
 
 [units.region_context]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::context_value"]
 symbol = "?context_value@DamageRegion@th20@@QAEPAUContext@2@XZ"
@@ -4942,7 +4942,7 @@ relocations = [
 
 [units.region_is_heap]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::is_heap"]
 symbol = "?is_heap@DamageRegion@th20@@QAE_NXZ"
@@ -4954,7 +4954,7 @@ relocations = [
 
 [units.region_configure_rectangle]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::configure_rectangle"]
 symbol = "?configure_rectangle@DamageRegion@th20@@QAEIABUVector3@2@MMMHH@Z"
@@ -4971,7 +4971,7 @@ relocations = [
 
 [units.region_configure_circle]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::configure_circle"]
 symbol = "?configure_circle@DamageRegion@th20@@QAEIABUVector3@2@MMHH@Z"
@@ -4987,7 +4987,7 @@ relocations = [
 
 [units.region_set_position]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::set_position"]
 symbol = "?set_position@DamageRegion@th20@@QAEXABUVector3@2@@Z"
@@ -5068,10 +5068,10 @@ relocations = [
 
 [units.link_default_ctor]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveLink<DamageRegion>::IntrusiveLink"]
-symbol = "??0?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAE@XZ"
+symbol = "??0?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAE@XZ"
 target_address = 0x00418A10
 size = 63
 relocations = [
@@ -5079,10 +5079,10 @@ relocations = [
 
 [units.link_previous]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveLink<DamageRegion>::previous_value"]
-symbol = "?previous_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ"
+symbol = "?previous_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@XZ"
 target_address = 0x00412730
 size = 17
 relocations = [
@@ -5090,22 +5090,22 @@ relocations = [
 
 [units.link_node_access]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveLink<DamageRegion>::node_access"]
-symbol = "?node_access@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEAAPAUDamageRegion@2@XZ"
+symbol = "?node_access@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEAAPAVDamageRegion@2@XZ"
 target_address = 0x0040F160
 size = 19
 relocations = [
-  { offset = 0xB, type = "REL32", symbol = "?node_ref@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEAAPAUDamageRegion@2@XZ", target = 0x0040BDA0 },
+  { offset = 0xB, type = "REL32", symbol = "?node_ref@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEAAPAVDamageRegion@2@XZ", target = 0x0040BDA0 },
 ]
 
 [units.link_initialize]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveLink<DamageRegion>::initialize"]
-symbol = "?initialize@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAUDamageRegion@2@@Z"
+symbol = "?initialize@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAVDamageRegion@2@@Z"
 target_address = 0x0044A670
 size = 61
 relocations = [
@@ -5113,99 +5113,99 @@ relocations = [
 
 [units.link_detach]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveLink<DamageRegion>::detach"]
-symbol = "?detach@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXXZ"
+symbol = "?detach@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXXZ"
 target_address = 0x00411CE0
 size = 55
 relocations = [
-  { offset = 0x23, type = "REL32", symbol = "?remove@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@UDamageRegion@th20@@@2@@Z", target = 0x00411D20 },
-  { offset = 0x2E, type = "REL32", symbol = "?detach_inner@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411D50 },
+  { offset = 0x23, type = "REL32", symbol = "?remove@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@VDamageRegion@th20@@@2@@Z", target = 0x00411D20 },
+  { offset = 0x2E, type = "REL32", symbol = "?detach_inner@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411D50 },
 ]
 
 [units.link_detach_inner]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveLink<DamageRegion>::detach_inner"]
-symbol = "?detach_inner@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXXZ"
+symbol = "?detach_inner@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXXZ"
 target_address = 0x00411D50
 size = 216
 relocations = [
-  { offset = 0x77, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x77, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.link_find]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveLink<DamageRegion>::find"]
-symbol = "?find@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@PAUDamageRegion@2@@Z"
+symbol = "?find@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@PAVDamageRegion@2@@Z"
 target_address = 0x00411E30
 size = 60
 relocations = [
-  { offset = 0x19, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
-  { offset = 0x2B, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 0x19, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAVDamageRegion@2@XZ", target = 0x0040C300 },
+  { offset = 0x2B, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
 ]
 
 [units.list_remove]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveList<DamageRegion>::remove"]
-symbol = "?remove@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@UDamageRegion@th20@@@2@@Z"
+symbol = "?remove@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@VDamageRegion@th20@@@2@@Z"
 target_address = 0x00411D20
 size = 47
 relocations = [
-  { offset = 0x16, type = "REL32", symbol = "?previous_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x00412730 },
-  { offset = 0x24, type = "REL32", symbol = "?detach_inner@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411D50 },
+  { offset = 0x16, type = "REL32", symbol = "?previous_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x00412730 },
+  { offset = 0x24, type = "REL32", symbol = "?detach_inner@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411D50 },
 ]
 
 [units.list_append]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveList<DamageRegion>::append"]
-symbol = "?append@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@UDamageRegion@th20@@@2@@Z"
+symbol = "?append@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@VDamageRegion@th20@@@2@@Z"
 target_address = 0x00411EA0
 size = 57
 relocations = [
-  { offset = 0x1A, type = "REL32", symbol = "?insert_after@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU12@@Z", target = 0x00411EE0 },
-  { offset = 0x26, type = "REL32", symbol = "?set_owner@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveList@UDamageRegion@th20@@@2@@Z", target = 0x00412DC0 },
+  { offset = 0x1A, type = "REL32", symbol = "?insert_after@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAU12@@Z", target = 0x00411EE0 },
+  { offset = 0x26, type = "REL32", symbol = "?set_owner@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveList@VDamageRegion@th20@@@2@@Z", target = 0x00412DC0 },
 ]
 
 [units.list_find]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveList<DamageRegion>::find"]
-symbol = "?find@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@PAUDamageRegion@2@@Z"
+symbol = "?find@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@VDamageRegion@th20@@@2@PAVDamageRegion@2@@Z"
 target_address = 0x00411E70
 size = 33
 relocations = [
-  { offset = 0x17, type = "REL32", symbol = "?find@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@PAUDamageRegion@2@@Z", target = 0x00411E30 },
+  { offset = 0x17, type = "REL32", symbol = "?find@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@PAVDamageRegion@2@@Z", target = 0x00411E30 },
 ]
 
 [units.list_begin]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveList<DamageRegion>::begin"]
-symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ"
+symbol = "?begin@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ"
 target_address = 0x00412280
 size = 53
 relocations = [
-  { offset = 0x16, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
-  { offset = 0x1F, type = "REL32", symbol = "??0?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@PAU?$IntrusiveLink@UDamageRegion@th20@@@1@0@Z", target = 0x004119B0 },
+  { offset = 0x16, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 0x1F, type = "REL32", symbol = "??0?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@PAU?$IntrusiveLink@VDamageRegion@th20@@@1@0@Z", target = 0x004119B0 },
 ]
 
 [units.list_end]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveList<DamageRegion>::end"]
-symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ"
+symbol = "?end@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ"
 target_address = 0x00412540
 size = 13
 relocations = [
@@ -5213,57 +5213,57 @@ relocations = [
 
 [units.iterator_ctor]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveIterator<DamageRegion>::IntrusiveIterator"]
-symbol = "??0?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@PAU?$IntrusiveLink@UDamageRegion@th20@@@1@0@Z"
+symbol = "??0?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@PAU?$IntrusiveLink@VDamageRegion@th20@@@1@0@Z"
 target_address = 0x004119B0
 size = 172
 compare_size = 177
 relocations = [
-  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@PAU?$IntrusiveLink@UDamageRegion@th20@@@1@0@Z", target = 0x005674F0 },
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@PAU?$IntrusiveLink@VDamageRegion@th20@@@1@0@Z", target = 0x005674F0 },
   { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 0x51, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
-  { offset = 0x60, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
-  { offset = 0x93, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x51, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x60, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 0x93, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.iterator_dtor]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveIterator<DamageRegion>::~IntrusiveIterator"]
-symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ"
+symbol = "??1?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@XZ"
 target_address = 0x00411B00
 size = 111
 compare_size = 116
 relocations = [
-  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00567750 },
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00567750 },
   { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 0x3E, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
-  { offset = 0x5B, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x3E, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x5B, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.iterator_advance]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveIterator<DamageRegion>::advance"]
-symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ"
+symbol = "?advance@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEAAV12@XZ"
 target_address = 0x00411C30
 size = 121
 relocations = [
-  { offset = 0x1F, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
-  { offset = 0x49, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
-  { offset = 0x6D, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x1F, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
+  { offset = 0x49, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 0x6D, type = "REL32", symbol = "?set_iterator@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@@Z", target = 0x00412DA0 },
 ]
 
 [units.iterator_differs]
 source = "src/IntrusiveLink.cpp"
-object = "build/maintenance124-canonical/IntrusiveLink.obj"
+object = "build/core131-canonical/IntrusiveLink.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::IntrusiveIterator<DamageRegion>::differs"]
-symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z"
+symbol = "?differs@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QBE_NPBV12@@Z"
 target_address = 0x00411BB0
 size = 91
 relocations = [
@@ -5271,7 +5271,7 @@ relocations = [
 
 [units.region_ctor]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::DamageRegion"]
 symbol = "??0DamageRegion@th20@@QAE@XZ"
@@ -5281,7 +5281,7 @@ compare_size = 364
 relocations = [
   { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0DamageRegion@th20@@QAE@XZ", target = 0x005679A0 },
   { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 0x36, type = "REL32", symbol = "??0?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAE@PAUDamageRegion@1@@Z", target = 0x00411970 },
+  { offset = 0x36, type = "REL32", symbol = "??0?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAE@PAVDamageRegion@1@@Z", target = 0x00411970 },
   { offset = 0x6C, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
   { offset = 0x82, type = "REL32", symbol = "??0Vector2@th20@@QAE@XZ", target = 0x004398A0 },
   { offset = 0x8D, type = "REL32", symbol = "??0Motion@th20@@QAE@XZ", target = 0x00478530 },
@@ -5293,7 +5293,7 @@ relocations = [
 
 [units.region_update]
 source = "src/DamageRegion.cpp"
-object = "build/maintenance124-canonical/DamageRegion.obj"
+object = "build/core131-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::update"]
 symbol = "?update@DamageRegion@th20@@QAEXXZ"
@@ -10914,15 +10914,15 @@ relocations = [
 
 [units.hit_region_array_ctor]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["std::array<th20::DamageRegion,256>::array"]
-symbol = "??0?$array@UDamageRegion@th20@@$0BAA@@std@@QAE@XZ"
+symbol = "??0?$array@VDamageRegion@th20@@$0BAA@@std@@QAE@XZ"
 target_address = 0x004BFE80
 size = 81
 compare_size = 86
 relocations = [
-  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0?$array@UDamageRegion@th20@@$0BAA@@std@@QAE@XZ", target = 0x00567600 },
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0?$array@VDamageRegion@th20@@$0BAA@@std@@QAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 39, type = "DIR32", symbol = "??0DamageRegion@th20@@QAE@XZ", target = 0x004BFFB0 },
   { offset = 58, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
@@ -10930,7 +10930,7 @@ relocations = [
 
 [units.hit_controller_ctor]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::HitCtrlInf"]
 symbol = "??0HitCtrlInf@th20@@QAE@XZ"
@@ -10942,17 +10942,17 @@ relocations = [
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 42, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
   { offset = 51, type = "DIR32", symbol = "??_7HitCtrlInf@th20@@6B@", target = 0x00570C88 },
-  { offset = 62, type = "REL32", symbol = "??0?$array@UDamageRegion@th20@@$0BAA@@std@@QAE@XZ", target = 0x004BFE80 },
-  { offset = 89, type = "REL32", symbol = "??0?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 103, type = "REL32", symbol = "??0?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 62, type = "REL32", symbol = "??0?$array@VDamageRegion@th20@@$0BAA@@std@@QAE@XZ", target = 0x004BFE80 },
+  { offset = 89, type = "REL32", symbol = "??0?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 103, type = "REL32", symbol = "??0?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 130, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 161, type = "DIR32", symbol = "$SG79219", target = 0x00570C94 },
+  { offset = 161, type = "DIR32", symbol = "$SG79221", target = 0x00570C94 },
   { offset = 166, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.hit_controller_select_context]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::select_context"]
 symbol = "?select_context@HitCtrlInf@th20@@QAEXH@Z"
@@ -10965,7 +10965,7 @@ relocations = [
 
 [units.hit_controller_advance_handle]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::advance_handle"]
 symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ"
@@ -10976,21 +10976,21 @@ relocations = [
 
 [units.hit_controller_detach]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::detach"]
-symbol = "?detach@HitCtrlInf@th20@@QAEXPAUDamageRegion@2@@Z"
+symbol = "?detach@HitCtrlInf@th20@@QAEXPAVDamageRegion@2@@Z"
 target_address = 0x004C1EB0
 size = 70
 relocations = [
-  { offset = 19, type = "REL32", symbol = "?detach@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
+  { offset = 19, type = "REL32", symbol = "?detach@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
   { offset = 28, type = "REL32", symbol = "?is_heap@DamageRegion@th20@@QAE_NXZ", target = 0x004C1000 },
-  { offset = 59, type = "REL32", symbol = "?prepend@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@UDamageRegion@th20@@@2@@Z", target = 0x0044A6B0 },
+  { offset = 59, type = "REL32", symbol = "?prepend@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@VDamageRegion@th20@@@2@@Z", target = 0x0044A6B0 },
 ]
 
 [units.hit_controller_initialize]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::initialize"]
 symbol = "?initialize@HitCtrlInf@th20@@QAEHH@Z"
@@ -11003,35 +11003,35 @@ relocations = [
   { offset = 51, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
   { offset = 56, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
   { offset = 71, type = "REL32", symbol = "?set_hit_controller@Context@th20@@QAEXPAVHitCtrlInf@2@@Z", target = 0x00412D10 },
-  { offset = 93, type = "REL32", symbol = "?reset@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAUDamageRegion@2@@Z", target = 0x0044A640 },
-  { offset = 114, type = "REL32", symbol = "?reset@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAUDamageRegion@2@@Z", target = 0x0044A640 },
-  { offset = 132, type = "REL32", symbol = "?_Unchecked_begin@?$array@UDamageRegion@th20@@$0BAA@@std@@QAEPAUDamageRegion@th20@@XZ", target = 0x0040BDA0 },
-  { offset = 143, type = "REL32", symbol = "?_Unchecked_end@?$array@UDamageRegion@th20@@$0BAA@@std@@QAEPAUDamageRegion@th20@@XZ", target = 0x004C0C40 },
-  { offset = 192, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAUDamageRegion@2@@Z", target = 0x0044A670 },
-  { offset = 216, type = "REL32", symbol = "?append@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@UDamageRegion@th20@@@2@@Z", target = 0x00411EA0 },
+  { offset = 93, type = "REL32", symbol = "?reset@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAVDamageRegion@2@@Z", target = 0x0044A640 },
+  { offset = 114, type = "REL32", symbol = "?reset@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAVDamageRegion@2@@Z", target = 0x0044A640 },
+  { offset = 132, type = "REL32", symbol = "?_Unchecked_begin@?$array@VDamageRegion@th20@@$0BAA@@std@@QAEPAVDamageRegion@th20@@XZ", target = 0x0040BDA0 },
+  { offset = 143, type = "REL32", symbol = "?_Unchecked_end@?$array@VDamageRegion@th20@@$0BAA@@std@@QAEPAVDamageRegion@th20@@XZ", target = 0x004C0C40 },
+  { offset = 192, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAVDamageRegion@2@@Z", target = 0x0044A670 },
+  { offset = 216, type = "REL32", symbol = "?append@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@VDamageRegion@th20@@@2@@Z", target = 0x00411EA0 },
   { offset = 253, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]
 
 [units.hit_controller_allocate]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::allocate"]
-symbol = "?allocate@HitCtrlInf@th20@@QAEPAUDamageRegion@2@XZ"
+symbol = "?allocate@HitCtrlInf@th20@@QAEPAVDamageRegion@2@XZ"
 target_address = 0x004C0E60
 size = 225
 relocations = [
-  { offset = 19, type = "REL32", symbol = "?front@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ", target = 0x004859F0 },
-  { offset = 36, type = "REL32", symbol = "?detach@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
-  { offset = 59, type = "REL32", symbol = "?append@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@UDamageRegion@th20@@@2@@Z", target = 0x00411EA0 },
-  { offset = 67, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
+  { offset = 19, type = "REL32", symbol = "?front@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@VDamageRegion@th20@@@2@XZ", target = 0x004859F0 },
+  { offset = 36, type = "REL32", symbol = "?detach@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
+  { offset = 59, type = "REL32", symbol = "?append@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@VDamageRegion@th20@@@2@@Z", target = 0x00411EA0 },
+  { offset = 67, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAVDamageRegion@2@XZ", target = 0x0040C300 },
   { offset = 94, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 102, type = "REL32", symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ", target = 0x004C0C60 },
-  { offset = 112, type = "DIR32", symbol = "$SG79315", target = 0x00570D00 },
+  { offset = 112, type = "DIR32", symbol = "$SG79317", target = 0x00570D00 },
   { offset = 118, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
-  { offset = 123, type = "REL32", symbol = "??$allocate_object@UDamageRegion@th20@@@DiagnosticAllocator@th20@@QAEPAUDamageRegion@1@PBD@Z", target = 0x004BFE30 },
-  { offset = 144, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEXPAUDamageRegion@2@@Z", target = 0x0044A670 },
-  { offset = 167, type = "REL32", symbol = "?append@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@UDamageRegion@th20@@@2@@Z", target = 0x00411EA0 },
+  { offset = 123, type = "REL32", symbol = "??$allocate_object@VDamageRegion@th20@@@DiagnosticAllocator@th20@@QAEPAVDamageRegion@1@PBD@Z", target = 0x004BFE30 },
+  { offset = 144, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAVDamageRegion@2@@Z", target = 0x0044A670 },
+  { offset = 167, type = "REL32", symbol = "?append@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEXPAU?$IntrusiveLink@VDamageRegion@th20@@@2@@Z", target = 0x00411EA0 },
   { offset = 196, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 206, type = "REL32", symbol = "?select_context@DamageRegion@th20@@QAEXH@Z", target = 0x00488A20 },
   { offset = 214, type = "REL32", symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ", target = 0x004C0C60 },
@@ -11039,7 +11039,7 @@ relocations = [
 
 [units.hit_controller_update_callback]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::update_callback"]
 symbol = "?update_callback@HitCtrlInf@th20@@SAHPAX@Z"
@@ -11051,7 +11051,7 @@ relocations = [
 
 [units.hit_controller_create_rectangle]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::create_rectangle"]
 symbol = "?create_rectangle@HitCtrlInf@th20@@QAE?AUIdentifier32@2@ABUVector3@2@MMMHH@Z"
@@ -11059,7 +11059,7 @@ target_address = 0x004C1AE0
 size = 151
 relocations = [
   { offset = 23, type = "REL32", symbol = "??0Identifier32@th20@@QAE@I@Z", target = 0x004142A0 },
-  { offset = 31, type = "REL32", symbol = "?allocate@HitCtrlInf@th20@@QAEPAUDamageRegion@2@XZ", target = 0x004C0E60 },
+  { offset = 31, type = "REL32", symbol = "?allocate@HitCtrlInf@th20@@QAEPAVDamageRegion@2@XZ", target = 0x004C0E60 },
   { offset = 58, type = "REL32", symbol = "?select_context@DamageRegion@th20@@QAEXH@Z", target = 0x00488A20 },
   { offset = 111, type = "REL32", symbol = "?configure_rectangle@DamageRegion@th20@@QAEIABUVector3@2@MMMHH@Z", target = 0x004C1C50 },
   { offset = 137, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
@@ -11067,7 +11067,7 @@ relocations = [
 
 [units.hit_controller_create_circle]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::create_circle"]
 symbol = "?create_circle@HitCtrlInf@th20@@QAE?AUIdentifier32@2@ABUVector3@2@MMHH@Z"
@@ -11075,7 +11075,7 @@ target_address = 0x004C1B80
 size = 140
 relocations = [
   { offset = 23, type = "REL32", symbol = "??0Identifier32@th20@@QAE@I@Z", target = 0x004142A0 },
-  { offset = 31, type = "REL32", symbol = "?allocate@HitCtrlInf@th20@@QAEPAUDamageRegion@2@XZ", target = 0x004C0E60 },
+  { offset = 31, type = "REL32", symbol = "?allocate@HitCtrlInf@th20@@QAEPAVDamageRegion@2@XZ", target = 0x004C0E60 },
   { offset = 58, type = "REL32", symbol = "?select_context@DamageRegion@th20@@QAEXH@Z", target = 0x00488A20 },
   { offset = 100, type = "REL32", symbol = "?configure_circle@DamageRegion@th20@@QAEIABUVector3@2@MMHH@Z", target = 0x004C1D80 },
   { offset = 126, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
@@ -11083,7 +11083,7 @@ relocations = [
 
 [units.hit_controller_get]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::hit_controller"]
 symbol = "?hit_controller@th20@@YAPAVHitCtrlInf@1@H@Z"
@@ -11097,22 +11097,22 @@ relocations = [
 
 [units.hit_region_list_front]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::IntrusiveList<DamageRegion>::front"]
-symbol = "?front@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ"
+symbol = "?front@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@VDamageRegion@th20@@@2@XZ"
 target_address = 0x004859F0
 size = 19
 relocations = [
-  { offset = 11, type = "REL32", symbol = "?next_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
+  { offset = 11, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAU12@XZ", target = 0x0040FF90 },
 ]
 
 [units.hit_region_array_end]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["std::array<th20::DamageRegion,256>::_Unchecked_end"]
-symbol = "?_Unchecked_end@?$array@UDamageRegion@th20@@$0BAA@@std@@QAEPAUDamageRegion@th20@@XZ"
+symbol = "?_Unchecked_end@?$array@VDamageRegion@th20@@$0BAA@@std@@QAEPAVDamageRegion@th20@@XZ"
 target_address = 0x004C0C40
 size = 19
 relocations = [
@@ -11120,7 +11120,7 @@ relocations = [
 
 [units.region_retire]
 source = "src/DamageRegionLifetime.cpp"
-object = "build/core130-canonical/DamageRegionLifetime.obj"
+object = "build/core131-canonical/DamageRegionLifetime.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::DamageRegion::retire"]
 symbol = "?retire@DamageRegion@th20@@QAEXXZ"
@@ -11130,15 +11130,15 @@ relocations = [
   { offset = 19, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
   { offset = 39, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
   { offset = 56, type = "REL32", symbol = "?hit_controller@Context@th20@@QAEPAVHitCtrlInf@2@XZ", target = 0x00412710 },
-  { offset = 71, type = "REL32", symbol = "?detach@HitCtrlInf@th20@@QAEXPAUDamageRegion@2@@Z", target = 0x004C1EB0 },
+  { offset = 71, type = "REL32", symbol = "?detach@HitCtrlInf@th20@@QAEXPAVDamageRegion@2@@Z", target = 0x004C1EB0 },
   { offset = 102, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 124, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
-  { offset = 129, type = "REL32", symbol = "??$release_object@UDamageRegion@th20@@@DiagnosticAllocator@th20@@QAEXPAUDamageRegion@1@@Z", target = 0x00413B70 },
+  { offset = 129, type = "REL32", symbol = "??$release_object@VDamageRegion@th20@@@DiagnosticAllocator@th20@@QAEXPAVDamageRegion@1@@Z", target = 0x00413B70 },
 ]
 
 [units.hit_controller_allocate_object]
 source = "src/HitCtrlInfCreation.cpp"
-object = "build/core130-canonical/HitCtrlInfCreation.obj"
+object = "build/core131-canonical/HitCtrlInfCreation.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::DiagnosticAllocator::allocate_object<HitCtrlInf>"]
 symbol = "??$allocate_object@VHitCtrlInf@th20@@@DiagnosticAllocator@th20@@QAEPAVHitCtrlInf@1@PBD@Z"
@@ -11152,7 +11152,7 @@ relocations = [
 
 [units.hit_controller_auto_class_initialize]
 source = "src/HitCtrlInfCreation.cpp"
-object = "build/core130-canonical/HitCtrlInfCreation.obj"
+object = "build/core131-canonical/HitCtrlInfCreation.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::__autoclassinit2"]
 symbol = "?__autoclassinit2@HitCtrlInf@th20@@QAEXI@Z"
@@ -11164,7 +11164,7 @@ relocations = [
 
 [units.hit_controller_dtor]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::~HitCtrlInf"]
 symbol = "??1HitCtrlInf@th20@@UAE@XZ"
@@ -11175,52 +11175,52 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1HitCtrlInf@th20@@UAE@XZ", target = 0x005699D0 },
   { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 48, type = "DIR32", symbol = "??_7HitCtrlInf@th20@@6B@", target = 0x00570C88 },
-  { offset = 53, type = "DIR32", symbol = "$SG79259", target = 0x00570CAC },
+  { offset = 53, type = "DIR32", symbol = "$SG79261", target = 0x00570CAC },
   { offset = 58, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 74, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 79, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
-  { offset = 101, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
-  { offset = 113, type = "REL32", symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412280 },
-  { offset = 121, type = "REL32", symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412540 },
-  { offset = 134, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
-  { offset = 147, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
-  { offset = 162, type = "REL32", symbol = "?get@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
-  { offset = 173, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEAAPAUDamageRegion@2@XZ", target = 0x0040F160 },
+  { offset = 101, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 113, type = "REL32", symbol = "?begin@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 121, type = "REL32", symbol = "?end@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 134, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 147, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 162, type = "REL32", symbol = "?get@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@VDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 173, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEAAPAVDamageRegion@2@XZ", target = 0x0040F160 },
   { offset = 180, type = "REL32", symbol = "?retire@DamageRegion@th20@@QAEXXZ", target = 0x004C1F30 },
-  { offset = 191, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 191, type = "REL32", symbol = "??1?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 200, type = "REL32", symbol = "??1TaskInfo@th20@@UAE@XZ", target = 0x0041FDF0 },
   { offset = 222, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
 
 [units.hit_controller_find]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::find"]
-symbol = "?find@HitCtrlInf@th20@@QAEPAUDamageRegion@2@UIdentifier32@2@@Z"
+symbol = "?find@HitCtrlInf@th20@@QAEPAVDamageRegion@2@UIdentifier32@2@@Z"
 target_address = 0x004C0D00
 size = 264
 relocations = [
-  { offset = 6, type = "DIR32", symbol = "__ehhandler$?find@HitCtrlInf@th20@@QAEPAUDamageRegion@2@UIdentifier32@2@@Z", target = 0x0056863D },
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?find@HitCtrlInf@th20@@QAEPAVDamageRegion@2@UIdentifier32@2@@Z", target = 0x0056863D },
   { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 47, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
-  { offset = 79, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
-  { offset = 91, type = "REL32", symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412280 },
-  { offset = 106, type = "REL32", symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412540 },
-  { offset = 119, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
-  { offset = 132, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
-  { offset = 147, type = "REL32", symbol = "?get@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
-  { offset = 158, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
+  { offset = 79, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 91, type = "REL32", symbol = "?begin@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 106, type = "REL32", symbol = "?end@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 119, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 132, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 147, type = "REL32", symbol = "?get@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@VDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 158, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAVDamageRegion@2@XZ", target = 0x0040C300 },
   { offset = 178, type = "REL32", symbol = "?equals@Identifier32@th20@@QBEHABU12@@Z", target = 0x004C0210 },
-  { offset = 190, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEPAUDamageRegion@2@XZ", target = 0x0040C300 },
-  { offset = 208, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
-  { offset = 230, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 190, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAVDamageRegion@2@XZ", target = 0x0040C300 },
+  { offset = 208, type = "REL32", symbol = "??1?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 230, type = "REL32", symbol = "??1?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 254, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
 
 [units.hit_controller_update]
 source = "src/HitCtrlInf.cpp"
-object = "build/core130-canonical/HitCtrlInf.obj"
+object = "build/core131-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::update"]
 symbol = "?update@HitCtrlInf@th20@@QAEHXZ"
@@ -11229,15 +11229,15 @@ size = 248
 relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$?update@HitCtrlInf@th20@@QAEHXZ", target = 0x0056863D },
   { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 67, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
-  { offset = 79, type = "REL32", symbol = "?begin@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412280 },
-  { offset = 94, type = "REL32", symbol = "?end@?$IntrusiveList@UDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@UDamageRegion@th20@@@2@XZ", target = 0x00412540 },
-  { offset = 107, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
-  { offset = 120, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
-  { offset = 135, type = "REL32", symbol = "?get@?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@UDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
-  { offset = 146, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UDamageRegion@th20@@@th20@@QAEAAPAUDamageRegion@2@XZ", target = 0x0040F160 },
+  { offset = 67, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 79, type = "REL32", symbol = "?begin@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE?AV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 94, type = "REL32", symbol = "?end@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveIterator@VDamageRegion@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 107, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 120, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 135, type = "REL32", symbol = "?get@?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAEPAU?$IntrusiveLink@VDamageRegion@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 146, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEAAPAVDamageRegion@2@XZ", target = 0x0040F160 },
   { offset = 153, type = "REL32", symbol = "?update@DamageRegion@th20@@QAEXXZ", target = 0x004C03D0 },
-  { offset = 179, type = "REL32", symbol = "??1?$IntrusiveIterator@UDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 179, type = "REL32", symbol = "??1?$IntrusiveIterator@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 214, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
   { offset = 240, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
@@ -11877,7 +11877,7 @@ relocations = [
 
 [units.record_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::add_score"]
 symbol = "?add_score@PlayerRecord@th20@@QAEX_K@Z"
@@ -11889,7 +11889,7 @@ relocations = [
 
 [units.session_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::add_score"]
 symbol = "?add_score@Session@th20@@QAEXI@Z"
@@ -11902,7 +11902,7 @@ relocations = [
 
 [units.timer_every]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Timer::every"]
 symbol = "?every@Timer@th20@@QBEHH@Z"
@@ -11913,7 +11913,7 @@ relocations = [
 
 [units.player_frame_changed]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::frame_changed"]
 symbol = "?frame_changed@Player@th20@@QAEHXZ"
@@ -11925,7 +11925,7 @@ relocations = [
 
 [units.player_find_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::find_shot"]
 symbol = "?find_shot@Player@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11937,7 +11937,7 @@ relocations = [
 
 [units.player_shot_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::find"]
 symbol = "?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11961,7 +11961,7 @@ relocations = [
 
 [units.region_player_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DamageRegion::player_shot"]
 symbol = "?player_shot@DamageRegion@th20@@QAEPAUPlayerShot@2@XZ"
@@ -11975,7 +11975,7 @@ relocations = [
 
 [units.enemy_controller_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::find"]
 symbol = "?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
@@ -12000,7 +12000,7 @@ relocations = [
 
 [units.enemy_health_value]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::health_value"]
 symbol = "?health_value@Enemy@th20@@QAEPAUEnemyHealth@2@XZ"
@@ -12011,7 +12011,7 @@ relocations = [
 
 [units.enemy_force_defeat]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHealth::force_defeat"]
 symbol = "?force_defeat@EnemyHealth@th20@@QAEXXZ"
@@ -12022,7 +12022,7 @@ relocations = [
 
 [units.enemy_reward_multiplier]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::reward_multiplier_enabled"]
 symbol = "?reward_multiplier_enabled@Enemy@th20@@QAE_NXZ"
@@ -12033,7 +12033,7 @@ relocations = [
 
 [units.enemy_set_damage_marker]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::set_damage_marker"]
 symbol = "?set_damage_marker@Enemy@th20@@QAEXI@Z"
@@ -12044,7 +12044,7 @@ relocations = [
 
 [units.weapon_stone_record_damage]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core130-canonical/DamageQueryProtocol.obj"
+object = "build/core131-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::record_damage"]
 symbol = "?record_damage@WeaponStoneInfo@th20@@QAEXPBUVector3@2@HH@Z"
@@ -14284,4 +14284,18 @@ size = 46
 relocations = [
     { offset = 11, type = "REL32", symbol = "??1FunctionChainNode@th20@@QAE@XZ", target = 0x00411B80 },
     { offset = 30, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]
+
+[units.region_allocate_object]
+source = "src/HitCtrlInfCreation.cpp"
+object = "build/core131-canonical/HitCtrlInfCreation.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::DiagnosticAllocator::allocate_object<DamageRegion>"]
+symbol = "??$allocate_object@VDamageRegion@th20@@@DiagnosticAllocator@th20@@QAEPAVDamageRegion@1@PBD@Z"
+target_address = 0x004BFE30
+size = 73
+relocations = [
+    { offset = 15, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x0054275D },
+    { offset = 40, type = "REL32", symbol = "?__autoclassinit2@DamageRegion@th20@@QAEXI@Z", target = 0x0040C080 },
+    { offset = 48, type = "REL32", symbol = "??0DamageRegion@th20@@QAE@XZ", target = 0x004BFFB0 },
 ]
