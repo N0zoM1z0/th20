@@ -13886,3 +13886,15 @@ target_address = 0x0041F880
 size = 27
 relocations = [
 ]
+
+[units.ecl_loader_instruction]
+source = "src/EclLoaderBuffer.cpp"
+object = "build/core126-canonical/EclLoaderBuffer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EclLoader::instruction"]
+symbol = "?instruction@EclLoader@th20@@QAEPAUEclInstruction@2@HH@Z"
+target_address = 0x0053E8E0
+size = 54
+relocations = [
+    { offset = 28, type = "REL32", symbol = "??A?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAEAAUEclSubroutineRecord@th20@@I@Z", target = 0x0053B590 },
+]

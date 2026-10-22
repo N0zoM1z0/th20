@@ -5,15 +5,19 @@
 
 namespace th20 {
 namespace {
-// Only the consumed prefix is typed; the remaining file header is opaque.
+// Only consumed fields are typed; the remaining fixed file header is opaque.
 struct EclFilePrefix {
     std::uint32_t magic;
     std::uint16_t version;
     std::uint16_t include_size;
     std::uint8_t fields_08[8];
     std::uint16_t subroutine_count;
+    std::uint8_t fields_12[18];
 };
 static_assert(offsetof(EclFilePrefix, subroutine_count) == 0x10);
+static_assert(sizeof(EclFilePrefix) == 36);
+struct EclSubroutinePrefix { std::uint8_t bytes[16]; };
+static_assert(sizeof(EclSubroutinePrefix) == 16);
 }
 
 int EclLoader::append(std::uint8_t* buffer) {
@@ -28,7 +32,8 @@ int EclLoader::append(std::uint8_t* buffer) {
         files[file_count] = nullptr;
         return -1;
     }
-    auto* offsets = reinterpret_cast<std::uint32_t*>(&files[file_count][0x24u] +
+    auto* offsets = reinterpret_cast<std::uint32_t*>(
+        reinterpret_cast<std::uint8_t*>(&reinterpret_cast<EclFilePrefix*>(files[file_count])[1]) +
         reinterpret_cast<EclFilePrefix*>(files[file_count])->include_size);
     auto* name = reinterpret_cast<char*>(offsets +
         reinterpret_cast<EclFilePrefix*>(files[file_count])->subroutine_count);
@@ -45,13 +50,14 @@ int EclLoader::append(std::uint8_t* buffer) {
     auto file = file_count;
     ++file_count;
     if (reinterpret_cast<EclFilePrefix*>(files[file])->include_size) {
-        include_resources(&files[file][0x24u]);
+        include_resources(reinterpret_cast<std::uint8_t*>(&reinterpret_cast<EclFilePrefix*>(files[file])[1]));
     }
     return file;
 }
 
 EclInstruction* EclLoader::instruction(std::int32_t subroutine, std::int32_t offset) {
     auto& table = records;
-    return reinterpret_cast<EclInstruction*>(&table[subroutine].header[16u] + offset);
+    return reinterpret_cast<EclInstruction*>(
+        reinterpret_cast<std::uint8_t*>(&reinterpret_cast<EclSubroutinePrefix*>(table[subroutine].header)[1]) + offset);
 }
 } // namespace th20

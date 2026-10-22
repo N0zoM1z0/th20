@@ -69,6 +69,8 @@ int main() {
             second.bytes()+second.headers[1],second.bytes()+second.headers[0],first.bytes()+first.headers[0]};
         for(unsigned i=0;i<expected.size();++i) {
             assert(loader.records[i].header==expected[i]);
+            assert(reinterpret_cast<std::uint8_t*>(loader.instruction(i,-16))==expected[i]);
+            assert(reinterpret_cast<std::uint8_t*>(loader.instruction(i,4))==expected[i]+20);
             auto* instruction=loader.instruction(i,16);assert(instruction->opcode==20);
             instruction->stack_drop=7;assert(expected[i][32+12]==7);
         }

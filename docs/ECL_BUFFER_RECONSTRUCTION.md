@@ -8,6 +8,8 @@ EclLoader::instruction, and an exact EclFileLoader::bind_player contribution.
 The two buffer methods have semantic and compiler evidence but remain nonexact.
 They have source mappings without canonical comparison units or exact credit.
 This distinction is intentional: functional progress must not inflate exactness.
+The later [wire-header and exact-resolution review](ECL_BUFFER_EXACT_RECONSTRUCTION.md)
+accepts instruction resolution; registration still has six structural differences.
 
 ## Native protocol and maintained source
 

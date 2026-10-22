@@ -12,43 +12,39 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 827 physical strict units, 160 comparison objects,
-160,921 disjoint comparison bytes and 842 source-present mappings. Fifteen
-mapped whole functions remain nonexact. Authored coverage is separately 94 exact
-functions / 30,383 bytes, with 98 confirmed authored origins. The pinned reference
+The maintained graph contains 828 physical strict units, 161 comparison objects,
+160,975 disjoint comparison bytes and 842 source-present mappings. Fourteen
+mapped whole functions remain nonexact. Authored coverage is separately 95 exact
+functions / 30,437 bytes, with 100 confirmed authored origins. The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
-These figures do not imply whole-game linkage or playable behavior.
+These figures do not imply whole-game linkage or playable behavior. Percentages
+over currently reviewed authored functions do not measure the whole-game 95%
+byte-exact objective.
 
-CORE/EXACT-123 admitted nine whole callback roots (414 bytes) and independently
-verified five folded aliases without duplicate physical credit. The actual
-eight-byte callback base has five virtual slots. Real virtual destruction runs
-outside allocator lock 1. Signed Bullet getters and the script callback preserve
-negative-sentinel bypass and full-width results. The 149,903-case callback
-fixture and all 79 public tests pass at that checkpoint. See
-[callback evidence](ANIMATION_CALLBACK_RECONSTRUCTION.md).
-
-Maintenance125 corrects overly broad receipt invalidation: changes to unrelated,
-unincluded C/C++ implementation files can reuse original objects. Actual source,
-included implementations, headers, path-set changes and all other identity gates
-remain checked. Original receipts are immutable. All 827 strict units pass using
-160 existing objects with zero compiler invocations; all 80 public tests pass
-(414.156 seconds). No source, exact or authored credit changes in this batch.
-See [the oracle policy](ORACLES.md) and `.analysis/maintenance125-gates.json`.
+CORE/EXACT-126 accepts complete 54-byte ECL instruction resolution with a genuine
+16-byte subroutine prefix and signed byte displacement. The whole 876-byte
+registration function remains six structural bytes nonexact after representing
+its complete 36-byte wire header. Both roots receive independent authored-origin
+reviews. All 828 strict units pass with only one new production object build;
+the original 160 objects are reused with immutable receipts under the reviewed
+[freshness policy](ORACLES.md). All 80 public tests pass (332.833 seconds).
+See [buffer exact evidence](ECL_BUFFER_EXACT_RECONSTRUCTION.md).
 
 ## Current local products
 
-Canonical object paths are authoritative in `config/match-units.toml` and now
-use `build/maintenance124-canonical/`. Protect each object and sibling receipt.
-The maintenance source freeze is
-`.analysis/maintenance124-final-frozen-source.json`; complete results are
-`.analysis/maintenance124-exact-results.json.gz`. The original CORE123 compiler
-inputs were verified and archived in
-`.analysis/maintenance124-original-inputs.json.gz` before source changes.
-Maintenance125 preserves the same products, verifies their original inputs in
-`.analysis/maintenance125-original-inputs.json.gz`, and records unchanged product
-hashes in `.analysis/maintenance125-protected.json`. Its strict results are
-`.analysis/maintenance125-exact-results.json.gz`. No generated builds became
-superseded in this verification-only maintenance batch.
+Canonical paths in `config/match-units.toml` use
+`build/maintenance124-canonical/` plus the new
+`build/core126-canonical/EclLoaderBuffer.obj`. Protect all 161 objects and sibling
+receipts. The current source freeze is `.analysis/core126-final-frozen-source.json`;
+strict results are `.analysis/core126-exact-results.json.gz` and post-retirement
+results are `.analysis/core126-post-cleanup-results.json.gz`.
+
+Original inputs for the prior 160 objects were verified and preserved before
+source changes in `.analysis/maintenance125-original-inputs.json.gz`. Retired
+probe inputs and immutable receipts are in
+`.analysis/core126-retired-probe-inputs.json.gz`; protected hashes and removal
+records are `.analysis/core126-protected.json` and `.analysis/core126-cleanup.json`.
+No canonical products were retired or rebuilt for cleanup.
 
 Retain original compiler input archives, failed experiment evidence, native
 exports and the locked target/tools/Ghidra/reference. Old receipts describe
@@ -58,12 +54,12 @@ checks, as specified in [the workflow](RE_WORKFLOW.md).
 
 ## Next reconstruction work
 
-The immediate ECL buffer lead uses the genuine complete 36-byte file header and
-16-byte subroutine prefix. Private whole-method probes produce 54/54 structurally
-equal instruction resolution and 876/876 append with six remaining register
-encoding differences. These are diagnostic results, not exact admission.
-Inputs and observations are under `.analysis/core125-ecl-*`; independently
-rechecked complete boundaries are `.analysis/core126-ecl-boundaries.json`.
+The immediate ECL buffer lead is the six-byte register-encoding disagreement in
+the whole 876-byte append at `0x0053FE60`, offsets 485, 486, 487, 488, 490 and 492.
+Reversing the pointer addition preserves those differences; a subscript form
+emits 901 bytes and is rejected. Do not repeat unchanged trials or introduce
+shaping locals. Original inputs, complete native boundaries and diagnostic
+results are under `.analysis/core125-ecl-*` and `.analysis/core126-*`.
 
 Continue coherent core protocols around the whole Animation VM at `0x0042B5D0`.
 Its full extent is 40,752 bytes: 39,470 code, two alignment bytes, 644 pointer-table
