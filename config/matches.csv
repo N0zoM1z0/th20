@@ -166,3 +166,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004506F0,th20::AnimationFile::store_sprite,343,matching,100.00,animation_file_store_sprite,CORE/EXACT-133; docs/ANIMATION_DESCRIPTOR_RECONSTRUCTION.md; complete canonical relocation replay with verified locked MSVC receipt
 0x00437490,th20::AnimationFile::script,25,matching,100.00,animation_file_script,CORE/EXACT-133; docs/ANIMATION_DESCRIPTOR_RECONSTRUCTION.md; complete canonical relocation replay with verified locked MSVC receipt
 0x0040D840,th20::DiagnosticAllocator::release_array<uint8_t>,120,matching,100.00,diagnostic_release_byte_array,CORE/EXACT-133; docs/ANIMATION_DESCRIPTOR_RECONSTRUCTION.md; complete canonical relocation replay with verified locked MSVC receipt
+0x0044CFB0,th20::select_texture_format,77,matching,100.00,graphics_select_texture_format,CORE/EXACT-134; docs/ANIMATION_TEXTURE_FORMAT_RECONSTRUCTION.md; fresh affected MSVC build and complete canonical relocation replay

@@ -1,6 +1,13 @@
 #include "Graphics.hpp"
 #include <cstring>
 namespace th20 {
+const graphics_api::TextureFormat texture_api_formats[9] = {
+    graphics_api::format_unknown, graphics_api::format_argb8,
+    graphics_api::format_argb8, graphics_api::format_argb8,
+    graphics_api::format_argb8, graphics_api::format_argb8,
+    graphics_api::format_argb8, graphics_api::format_argb8,
+    graphics_api::format_argb8
+};
 TransformMatrix::TransformMatrix() {}
 ViewportState::ViewportState()
     : field_of_view(0), field_58(0), field_5c(0), viewport{}, field_f8(0),
@@ -23,4 +30,16 @@ Graphics::Graphics() noexcept
       field_db4(0), render_value(0), field_dbc(0), dynamic_buffer(nullptr),
       startup_scene(nullptr), field_dcc(0), field_dd0(0), field_dd4(0),
       update_duration(0), clear_color(0) {}
+graphics_api::Device* Graphics::get_device() { return device; }
+std::int32_t Graphics::texture_format_mode() { return 0; }
+std::uint32_t select_texture_format(std::uint32_t format) {
+    if (process_graphics.texture_format_mode()) {
+        if (texture_api_formats[format] == graphics_api::format_argb8 ||
+            texture_api_formats[format] == graphics_api::format_unknown)
+            format = 5;
+        else if (texture_api_formats[format] == graphics_api::format_rgb8)
+            format = 3;
+    }
+    return format;
+}
 }

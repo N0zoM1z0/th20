@@ -19,7 +19,7 @@ the original game's translation-unit partition.
 | Gameplay ownership/damage | Player*, Bomb*, Bullet*, Item*, Context*, Session*, Damage*, HitCtrlInf* | [Player/SHT](PLAYER_SHT_RECONSTRUCTION.md), [Bomb](BOMB_OWNER_RECONSTRUCTION.md), [Item](ITEM_OWNER_RECONSTRUCTION.md), [damage](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md), [Region allocation/ownership](DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md) |
 | Archive/File/resource I/O | Archive*, PbgFile*, GameFileIo*, GameResourceIo* | [Resource graph](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md), [writing](ARCHIVE_WRITE_RECONSTRUCTION.md) |
 | Progress persistence | Progress*, SecureCrt.hpp | [File protocol](PROGRESS_FILE_EXACT_RECONSTRUCTION.md), [loading/lifetime](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md), [parser](PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
-| Graphics/mesh/sound | Graphics*, RenderMesh*, MeshResourceAccess*, SoundInf.hpp, SoundLoading.cpp | [Mesh](RENDER_MESH_RECONSTRUCTION.md), [mesh flags](MESH_FLAGS_EXACT_RECONSTRUCTION.md), [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) |
+| Graphics/mesh/sound | Graphics*, RenderMesh*, MeshResourceAccess*, SoundInf.hpp, SoundLoading.cpp | [Texture formats/accessors](ANIMATION_TEXTURE_FORMAT_RECONSTRUCTION.md), [mesh](RENDER_MESH_RECONSTRUCTION.md), [mesh flags](MESH_FLAGS_EXACT_RECONSTRUCTION.md), [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) |
 | Shared math/time/random | Vector*, Angle*, Timer*, ClockScalar*, Interpolation*, GameRandom* | [Interpolation](EXACT_INTERPOLATION_RECONSTRUCTION.md), [random/locks](EXACT_LOCK_RANDOM_RECONSTRUCTION.md) |
 | Platform/UI/value components | Window*, Input*, Cursor*, text/flags/record owners | [Reference evidence index](EVIDENCE_INDEX.md) |
 
@@ -47,12 +47,13 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 868 units / 163 objects. Eight additional
+The configured graph currently has 869 units / 163 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
-are not production admission. File::clear has a reviewed authored origin and
-declared interface, but no maintained body or source mapping. Do not use stubs or forced unresolved linkage to
-claim a whole-program product.
+are not production admission. File::clear and the two Renderer texture creators
+have reviewed authored origins without maintained bodies or source mappings.
+Graphics accessors fold to existing physical units without duplicate credit.
+Do not use stubs or forced unresolved linkage to claim a whole-program product.
 
 ## Build freshness and local products
 

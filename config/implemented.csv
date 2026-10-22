@@ -874,3 +874,4 @@ th20::DiagnosticAllocator::allocate_array<SpriteData>
 th20::DiagnosticAllocator::allocate_array<AnmInstruction*>
 th20::AnimationFile::texture_id
 th20::AnimationFile::store_sprite
+th20::select_texture_format

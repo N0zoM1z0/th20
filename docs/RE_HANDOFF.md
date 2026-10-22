@@ -12,28 +12,30 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 868 physical strict units, 163 comparison objects,
-166,363 disjoint comparison bytes and 876 source-present mappings. Eight
-mapped whole functions remain nonexact. Authored coverage is separately 167 exact
-functions / 46,032 bytes, with 172 confirmed authored origins. File::clear is
-reviewed authored but remains source-absent. The pinned reference
+The maintained graph contains 869 physical strict units, 163 comparison objects,
+166,440 disjoint comparison bytes and 877 source-present mappings. Eight
+mapped whole functions remain nonexact. Authored coverage is separately 168 exact
+functions / 46,109 bytes, with 175 confirmed authored origins. File::clear and
+the two Renderer texture creators are reviewed authored but source-absent.
+The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
 These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-133 accepts seven complete descriptor/array/binding roots, adding
-1,260 physical comparison bytes. Real 24-byte texture and 88-byte sprite records
-retain trivial destruction and separate GPU/external-image retirement. Full
-descriptor assignment, UV/dimension updates and full-word identity packing use
-the actual File owner. Nine authored origin decisions include two already-exact
-physical roots; the three 120-byte release aliases receive no duplicate credit.
-All 106 previous affected units pass after 23 objects build once, with 140
-unaffected objects reused. Complete EH support and the extended actual-owner
-descriptor fixture pass. All 80 public tests pass in 302.972 seconds; the private
-ASan/UBSan fixture passes in 8.279 seconds. After retirement, all 868 units strictly
-replay with all 326 current object/receipt hashes unchanged and no compiler
-invocations. See [descriptor evidence](ANIMATION_DESCRIPTOR_RECONSTRUCTION.md).
+CORE/EXACT-134 accepts the complete 77-byte texture-format selector, retaining
+the actual constant-zero Graphics predicate and unchanged full input word.
+Complete 13-/17-byte Graphics accessors and the 36-byte typed SDK format table
+strictly replay as support without additional physical credit. Three authored
+origin decisions include the two source-absent Renderer texture creators;
+folded accessor origins remain pending. All 22 previous affected units pass after
+eight objects build once, with 155 unaffected objects reused. The actual-owner
+fixture passes 73,728 input cases and full state/pointer preservation. All 81
+public tests pass in 456.027 seconds; after finalizing fixture storage, the
+affected test passes UBSan in 3.624 seconds and ASan/UBSan in 3.456 seconds.
+After retirement, all 869 units strictly replay with all 326 current product
+hashes unchanged and no compiler calls. See
+[texture-format evidence](ANIMATION_TEXTURE_FORMAT_RECONSTRUCTION.md).
 
 ## Current local products
 
@@ -41,26 +43,26 @@ Canonical paths in `config/match-units.toml` use
 `build/maintenance124-canonical/`, `build/core127-canonical/EclLoaderBuffer.obj`,
 the two objects under `build/core128-canonical/`, retained objects under
 `build/core129-canonical/`, `build/core130-canonical/`, `build/core131-canonical/`,
-eight retained objects under `build/core132-canonical/` and 23 objects under
-`build/core133-canonical/`.
+three retained objects under `build/core132-canonical/`, 20 retained objects under
+`build/core133-canonical/` and eight objects under `build/core134-canonical/`.
 Protect all 163 objects and
 sibling receipts. The current source freeze is
-`.analysis/core133-final-frozen-source.json`; affected strict results are
-`.analysis/core133-affected-results.json.gz`, with new roots separately in
-`.analysis/core133-new-exact-results.json` and complete support in
-`.analysis/core133-support.json`. Post-retirement results are
-`.analysis/core133-post-cleanup-results.json.gz`.
+`.analysis/core134-final-frozen-source.json`; affected strict results are
+`.analysis/core134-affected-results.json.gz`, with the new root separately in
+`.analysis/core134-new-exact-results.json` and complete support in
+`.analysis/core134-support.json`. Post-retirement results are
+`.analysis/core134-post-cleanup-results.json.gz`.
 
 Original inputs for the reused maintenance124 objects remain preserved in
 `.analysis/maintenance125-original-inputs.json.gz`; core127/core128/core129 proofs
 protect their newer objects. All 163 old pairs were verified before editing;
-the 23 replaced objects' authentic input versions and original receipts are in
-`.analysis/core133-pre-header-inputs.json.gz`. Original CORE130/131/132 archives remain
+the eight replaced objects' authentic input versions and original receipts are in
+`.analysis/core134-pre-header-inputs.json.gz`. Original CORE130/131/132/133 archives remain
 preserved for their historical products.
 Retired inputs and immutable receipts are in
-`.analysis/core133-retired-inputs.json.gz`; current protected hashes and the
-52-product / 1,879,665-byte removal record are in
-`.analysis/core133-protected.json` and `.analysis/core133-cleanup.json`.
+`.analysis/core134-retired-inputs.json.gz`; current protected hashes and the
+18-product / 826,869-byte removal record are in
+`.analysis/core134-protected.json` and `.analysis/core134-cleanup.json`.
 No current canonical products are removed or rebuilt for cleanup.
 
 Retain original compiler input archives, failed experiment evidence, native
@@ -78,6 +80,15 @@ interface and then destroys stem/filename. Keep resource-absent fixture clears
 distinct from loaded-resource retirement. Scalar File allocation retains its
 existing profile without /EHsc; adding /EHsc emits 129/native67. File construction
 exception declarations are unchanged. Do not change them merely to shorten code.
+
+Renderer texture creators at 0x0044C0B0 / 0x0044C150 are now reviewed authored,
+with complete 155-/139-byte native bodies but no maintained source or exact unit.
+Actual Graphics device/format accessors are available; resolve the complete
+Renderer receiver before implementing its members. Preserve nonzero HRESULT
+handling, mode bits and full byte-size arithmetic. The format selector's predicate
+is an observed native constant zero, not a configuration binding or an added
+input-domain exception. Its accessor aliases do not change existing physical
+unit ownership or establish a unique original source origin.
 
 ProgressSaveManager constructor and commit at 0x0050E5D0 and 0x0050F660 remain
 whole nonexact (198/native199 and 68/native70), totaling 269 native bytes. Native

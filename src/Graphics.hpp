@@ -63,9 +63,14 @@ struct Graphics {
     AnimationHandle create_grid_strip(std::int32_t rows,std::int32_t script);
     AnimationHandle create_surface_strip(std::int32_t rows,std::int32_t script);
     std::int32_t uses_preloaded_music() const;
+    graphics_api::Device* get_device();
+    // The locked target's texture-format predicate is a constant-zero method.
+    std::int32_t texture_format_mode();
 };
 // Production global definition/startup and destruction remain open.
 extern Graphics process_graphics;
+extern const graphics_api::TextureFormat texture_api_formats[9];
+std::uint32_t select_texture_format(std::uint32_t format);
 #if defined(_M_IX86)
 static_assert(sizeof(Graphics)==0xde8);
 static_assert(offsetof(Graphics,configuration)==0x1c8);

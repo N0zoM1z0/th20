@@ -6859,7 +6859,7 @@ relocations = [
 # EXACT-061: whole Enemy movement and its actual graphics/file/context owners.
 [units.enemy_update_movements]
 source = "src/EnemyMovementUpdate.cpp"
-object = "build/core133-canonical/EnemyMovementUpdate.obj"
+object = "build/core134-canonical/EnemyMovementUpdate.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl"]
 functions = ["th20::EnemyState::update_movements"]
 symbol = "?update_movements@EnemyState@th20@@QAEHXZ"
@@ -6935,7 +6935,7 @@ relocations = [
 
 [units.graphics_ctor]
 source = "src/Graphics.cpp"
-object = "build/core132-canonical/Graphics.obj"
+object = "build/core134-canonical/Graphics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Graphics::Graphics"]
 symbol = "??0Graphics@th20@@QAE@XZ"
@@ -6963,7 +6963,7 @@ relocations = [
 
 [units.graphics_flags_ctor]
 source = "src/Graphics.cpp"
-object = "build/core132-canonical/Graphics.obj"
+object = "build/core134-canonical/Graphics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::GraphicsFlags::GraphicsFlags"]
 symbol = "??0GraphicsFlags@th20@@QAE@XZ"
@@ -6974,7 +6974,7 @@ relocations = [
 
 [units.viewport_ctor]
 source = "src/Graphics.cpp"
-object = "build/core132-canonical/Graphics.obj"
+object = "build/core134-canonical/Graphics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::ViewportState::ViewportState"]
 symbol = "??0ViewportState@th20@@QAE@XZ"
@@ -12475,7 +12475,7 @@ relocations = [
 
 [units.sound_preload]
 source = "src/SoundLoading.cpp"
-object = "build/core132-canonical/SoundLoading.obj"
+object = "build/core134-canonical/SoundLoading.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::SoundInf::preload"]
 symbol = "?preload@SoundInf@th20@@QAEHHPBD@Z"
@@ -12499,21 +12499,21 @@ relocations = [
   { offset = 319, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 370, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 396, type = "REL32", symbol = "?free_preload@SoundInf@th20@@QAEXH@Z", target = 0x00428EE0 },
-  { offset = 405, type = "DIR32", symbol = "$SG177405", target = 0x0056DDD0 },
+  { offset = 405, type = "DIR32", symbol = "$SG177416", target = 0x0056DDD0 },
   { offset = 410, type = "REL32", symbol = "?sound_log@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 432, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 474, type = "DIR32", symbol = "__imp__MultiByteToWideChar@24", target = 0x0056C124 },
   { offset = 505, type = "DIR32", symbol = "__imp__CreateFileW@28", target = 0x0056C164 },
-  { offset = 538, type = "DIR32", symbol = "$SG177407", target = 0x0056DDEC },
+  { offset = 538, type = "DIR32", symbol = "$SG177418", target = 0x0056DDEC },
   { offset = 543, type = "REL32", symbol = "?sound_log@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 574, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 600, type = "REL32", symbol = "?find_track@SoundInf@th20@@QAEHPBD@Z", target = 0x00428420 },
   { offset = 647, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x0056C140 },
-  { offset = 652, type = "DIR32", symbol = "$SG177409", target = 0x0056DE10 },
+  { offset = 652, type = "DIR32", symbol = "$SG177420", target = 0x0056DE10 },
   { offset = 682, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 687, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
   { offset = 715, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
-  { offset = 733, type = "DIR32", symbol = "$SG177411", target = 0x0056DDEC },
+  { offset = 733, type = "DIR32", symbol = "$SG177422", target = 0x0056DDEC },
   { offset = 738, type = "REL32", symbol = "?sound_log@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 769, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 833, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x0056C0B0 },
@@ -12529,7 +12529,7 @@ relocations = [
 
 [units.sound_load_track]
 source = "src/SoundLoading.cpp"
-object = "build/core132-canonical/SoundLoading.obj"
+object = "build/core134-canonical/SoundLoading.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::SoundInf::load_track"]
 symbol = "?load_track@SoundInf@th20@@QAEHH@Z"
@@ -12544,7 +12544,7 @@ relocations = [
   { offset = 168, type = "REL32", symbol = "?resize@?$vector@UPreloadedTrack@th20@@V?$polymorphic_allocator@UPreloadedTrack@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x00429040 },
   { offset = 193, type = "REL32", symbol = "??A?$vector@UPreloadedTrack@th20@@V?$polymorphic_allocator@UPreloadedTrack@th20@@@pmr@std@@@std@@QAEAAUPreloadedTrack@th20@@I@Z", target = 0x00426110 },
   { offset = 244, type = "REL32", symbol = "_strcpy_s", target = 0x00548610 },
-  { offset = 256, type = "DIR32", symbol = "$SG177430", target = 0x0056DE4C },
+  { offset = 256, type = "DIR32", symbol = "$SG177441", target = 0x0056DE4C },
   { offset = 261, type = "REL32", symbol = "?sound_log@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 287, type = "REL32", symbol = "??A?$vector@UPreloadedTrack@th20@@V?$polymorphic_allocator@UPreloadedTrack@th20@@@pmr@std@@@std@@QAEAAUPreloadedTrack@th20@@I@Z", target = 0x00426110 },
   { offset = 320, type = "REL32", symbol = "??A?$vector@UPreloadedTrack@th20@@V?$polymorphic_allocator@UPreloadedTrack@th20@@@pmr@std@@@std@@QAEAAUPreloadedTrack@th20@@I@Z", target = 0x00426110 },
@@ -12560,15 +12560,15 @@ relocations = [
   { offset = 647, type = "REL32", symbol = "??A?$vector@UPreloadedTrack@th20@@V?$polymorphic_allocator@UPreloadedTrack@th20@@@pmr@std@@@std@@QAEAAUPreloadedTrack@th20@@I@Z", target = 0x00426110 },
   { offset = 677, type = "REL32", symbol = "??A?$vector@UPreloadedTrack@th20@@V?$polymorphic_allocator@UPreloadedTrack@th20@@@pmr@std@@@std@@QAEAAUPreloadedTrack@th20@@I@Z", target = 0x00426110 },
   { offset = 768, type = "REL32", symbol = "?create_memory_stream@SoundDeviceOwner@th20@@QAEJPAPAVStreamingSound@2@PAEKPAUTrackFormat@2@KU_GUID@@KKPAX@Z", target = 0x00459D70 },
-  { offset = 782, type = "DIR32", symbol = "$SG177432", target = 0x0056DD70 },
+  { offset = 782, type = "DIR32", symbol = "$SG177443", target = 0x0056DD70 },
   { offset = 787, type = "REL32", symbol = "?sound_log@th20@@YAXPBDZZ", target = 0x0040C6B0 },
-  { offset = 800, type = "DIR32", symbol = "$SG177433", target = 0x0056DE68 },
+  { offset = 800, type = "DIR32", symbol = "$SG177444", target = 0x0056DE68 },
   { offset = 805, type = "REL32", symbol = "?sound_log@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.sound_free_preload]
 source = "src/SoundLoading.cpp"
-object = "build/core132-canonical/SoundLoading.obj"
+object = "build/core134-canonical/SoundLoading.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::SoundInf::free_preload"]
 symbol = "?free_preload@SoundInf@th20@@QAEXH@Z"
@@ -12584,7 +12584,7 @@ relocations = [
 
 [units.sound_destroy]
 source = "src/SoundLoading.cpp"
-object = "build/core132-canonical/SoundLoading.obj"
+object = "build/core134-canonical/SoundLoading.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::SoundInf::~SoundInf"]
 symbol = "??1SoundInf@th20@@QAE@XZ"
@@ -12596,7 +12596,7 @@ relocations = [
 
 [units.graphics_uses_preloaded_music]
 source = "src/GraphicsSound.cpp"
-object = "build/core132-canonical/GraphicsSound.obj"
+object = "build/core134-canonical/GraphicsSound.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Graphics::uses_preloaded_music"]
 symbol = "?uses_preloaded_music@Graphics@th20@@QBEHXZ"
@@ -12787,7 +12787,7 @@ relocations = [
 
 [units.render_mesh_surface_initialize]
 source = "src/RenderMeshSurface.cpp"
-object = "build/core132-canonical/RenderMeshSurface.obj"
+object = "build/core134-canonical/RenderMeshSurface.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::RenderMesh::initialize_surface_grid"]
 symbol = "?initialize_surface_grid@RenderMesh@th20@@QAEXMMMM@Z"
@@ -12808,7 +12808,7 @@ relocations = [
 
 [units.render_mesh_construct]
 source = "src/RenderMeshLifecycle.cpp"
-object = "build/core132-canonical/RenderMeshLifecycle.obj"
+object = "build/core134-canonical/RenderMeshLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::RenderMesh::RenderMesh"]
 symbol = "??0RenderMesh@th20@@QAE@HHHH@Z"
@@ -12819,16 +12819,16 @@ relocations = [
   { offset = 101, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 117, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 137, type = "REL32", symbol = "?select_context@RenderMesh@th20@@QAEXH@Z", target = 0x0049E050 },
-  { offset = 159, type = "DIR32", symbol = "$SG176087", target = 0x0057002C },
+  { offset = 159, type = "DIR32", symbol = "$SG176098", target = 0x0057002C },
   { offset = 176, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 181, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
-  { offset = 192, type = "DIR32", symbol = "$SG176088", target = 0x00570068 },
+  { offset = 192, type = "DIR32", symbol = "$SG176099", target = 0x00570068 },
   { offset = 209, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 214, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
-  { offset = 225, type = "DIR32", symbol = "$SG176089", target = 0x005700A8 },
+  { offset = 225, type = "DIR32", symbol = "$SG176100", target = 0x005700A8 },
   { offset = 240, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 245, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
-  { offset = 256, type = "DIR32", symbol = "$SG176090", target = 0x005700EC },
+  { offset = 256, type = "DIR32", symbol = "$SG176101", target = 0x005700EC },
   { offset = 271, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 276, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
   { offset = 305, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
@@ -12853,7 +12853,7 @@ relocations = [
 
 [units.render_mesh_retire]
 source = "src/RenderMeshLifecycle.cpp"
-object = "build/core132-canonical/RenderMeshLifecycle.obj"
+object = "build/core134-canonical/RenderMeshLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::RenderMesh::~RenderMesh"]
 symbol = "??1RenderMesh@th20@@QAE@XZ"
@@ -12877,7 +12877,7 @@ relocations = [
 
 [units.graphics_surface_strip]
 source = "src/GraphicsMesh.cpp"
-object = "build/core133-canonical/GraphicsMesh.obj"
+object = "build/core134-canonical/GraphicsMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Graphics::create_surface_strip"]
 symbol = "?create_surface_strip@Graphics@th20@@QAE?AUAnimationHandle@2@HH@Z"
@@ -13565,7 +13565,7 @@ relocations = [
 
 [units.animation_integer_argument]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::integer_argument"]
 symbol = "?integer_argument@Animation@th20@@QAEPAHPAHGH@Z"
@@ -13587,7 +13587,7 @@ relocations = [
 
 [units.animation_float_argument]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::float_argument"]
 symbol = "?float_argument@Animation@th20@@QAEPAMPAMGH@Z"
@@ -13617,7 +13617,7 @@ relocations = [
 
 [units.animation_integer_value]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::integer_value"]
 symbol = "?integer_value@Animation@th20@@QAEHH@Z"
@@ -13651,7 +13651,7 @@ relocations = [
 
 [units.animation_float_value]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::float_value"]
 symbol = "?float_value@Animation@th20@@QAEMM@Z"
@@ -13725,7 +13725,7 @@ relocations = [
 
 [units.animation_rotation_sum]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::rotation_sum"]
 symbol = "?rotation_sum@Animation@th20@@QAEAAUVector3@2@XZ"
@@ -13741,7 +13741,7 @@ relocations = [
 
 [units.animation_transform_direction]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::transform_direction"]
 symbol = "?transform_direction@Animation@th20@@QAEAAUVector3@2@AAU32@HH@Z"
@@ -13757,7 +13757,7 @@ relocations = [
 
 [units.animation_file_script]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationFile::script"]
 symbol = "?script@AnimationFile@th20@@QAEPAUAnmInstruction@2@H@Z"
@@ -13768,7 +13768,7 @@ relocations = [
 
 [units.game_random_range]
 source = "src/AnimationOperands.cpp"
-object = "build/core133-canonical/AnimationOperands.obj"
+object = "build/core134-canonical/AnimationOperands.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::GameRandom::range"]
 symbol = "?range@GameRandom@th20@@QAEMM@Z"
@@ -14212,7 +14212,7 @@ relocations = [
 
 [units.graphics_grid_strip]
 source = "src/GraphicsMesh.cpp"
-object = "build/core133-canonical/GraphicsMesh.obj"
+object = "build/core134-canonical/GraphicsMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Graphics::create_grid_strip"]
 symbol = "?create_grid_strip@Graphics@th20@@QAE?AUAnimationHandle@2@HH@Z"
@@ -14550,4 +14550,20 @@ symbol = "?store_sprite@AnimationFile@th20@@QAEXHABUSpriteData@2@@Z"
 target_address = 0x004506F0
 size = 343
 relocations = [
+]
+
+[units.graphics_select_texture_format]
+source = "src/Graphics.cpp"
+object = "build/core134-canonical/Graphics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::select_texture_format"]
+symbol = "?select_texture_format@th20@@YAII@Z"
+target_address = 4509616
+size = 77
+relocations = [
+    { offset = 4, type_id = 6, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", addend = 0, target = 6049088 },
+    { offset = 9, type_id = 20, type = "REL32", symbol = "?texture_format_mode@Graphics@th20@@QAEHXZ", addend = 0, target = 4269376 },
+    { offset = 23, type_id = 6, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", addend = 0, target = 5693960 },
+    { offset = 36, type_id = 6, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", addend = 0, target = 5693960 },
+    { offset = 58, type_id = 6, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", addend = 0, target = 5693960 },
 ]

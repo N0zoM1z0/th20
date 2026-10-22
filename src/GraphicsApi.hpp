@@ -15,6 +15,10 @@ namespace th20::graphics_api {
 using Direct3D = IDirect3D9;
 using Device = IDirect3DDevice9;
 using Resource = IUnknown;
+using TextureFormat = D3DFORMAT;
+inline constexpr TextureFormat format_unknown = D3DFMT_UNKNOWN;
+inline constexpr TextureFormat format_rgb8 = D3DFMT_R8G8B8;
+inline constexpr TextureFormat format_argb8 = D3DFMT_A8R8G8B8;
 using WindowHandle = HWND;
 using WindowRect = RECT;
 using InputDeviceCaps = DIDEVCAPS;
@@ -25,6 +29,9 @@ using DeviceCaps = D3DCAPS9;
 struct Direct3D;
 struct Device;
 struct Resource;
+enum TextureFormat : std::int32_t {
+    format_unknown = 0, format_rgb8 = 20, format_argb8 = 21
+};
 using WindowHandle = void*;
 // Portable API records for owned tests. Native builds use actual SDK types.
 struct WindowRect { std::int32_t left, top, right, bottom; };
@@ -128,6 +135,7 @@ struct D3DCAPS9 {
 using DeviceCaps = D3DCAPS9;
 #endif
 static_assert(sizeof(InputDeviceCaps) == 44);
+static_assert(sizeof(TextureFormat) == 4);
 static_assert(sizeof(DeviceCaps) == 304);
 #if defined(_M_IX86)
 static_assert(sizeof(Presentation) == 56);
