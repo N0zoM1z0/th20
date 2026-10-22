@@ -37,7 +37,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | Scheduler | Actual controller/nodes, observed lists, sorted registration/dispatch and scalar allocation/release | Unlocked removal emission and process-global startup |
 | Player/Bomb/Bullet/Item/Hit | Typed ownership, pools, Context publication, SHT/damage consumers, Hit allocation/lifecycle and Item spawning | Whole damage query, full gameplay, resource callbacks and remaining controller factories |
 | Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction | Remaining compressor/SaveManager emission and startup |
-| Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned Enemy mesh retirement, surface/geometry records and two-bit flag view | Renderer declaration, mesh creation, full rendering and resource integration |
+| Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned mesh allocation/retirement, surface/geometry records and two-bit flag view | Renderer declaration, mesh creation, full rendering and resource integration |
 | Sound | Actual SoundInf storage and loading/preload protocol | Whole dispatcher, startup and resource-owning retirement |
 | Platform/UI | Verified window/input/text/value/menu components | Complete scene owners, OS resources and global initialization |
 

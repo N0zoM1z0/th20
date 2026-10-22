@@ -1,9 +1,11 @@
 #include "RenderMesh.hpp"
+#include "DiagnosticObjectFactories.hpp"
 #include "Animation.hpp"
 #include "EnemyState.hpp"
 #include "WindowState.hpp"
 
 namespace th20 {
+template EnemyMeshOwner* DiagnosticAllocator::allocate_object<EnemyMeshOwner>(const char*);
 std::int32_t WindowState::mesh_view_x(std::int32_t index) const { return mesh_offset_x[index]; }
 std::int32_t WindowState::mesh_view_y(std::int32_t index) const { return mesh_offset_y[index]; }
 std::int32_t WindowState::mesh_width() const { return scaled_width; }

@@ -1,5 +1,9 @@
 # Enemy mesh ownership, retirement and origin audit
 
+CORE/EXACT-139 subsequently closes EnemyMeshOwner allocation and unifies the
+scalar factory body through natural empty-pack value initialization. See
+[the current allocation evidence](ENEMY_MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
+
 CORE/EXACT-136 closes the actual EnemyMeshOwner retirement chain. Its native
 nontrivial destructor releases the owned RenderMesh through the process allocator
 and clears its pointer. The maintained declaration previously exposed only the

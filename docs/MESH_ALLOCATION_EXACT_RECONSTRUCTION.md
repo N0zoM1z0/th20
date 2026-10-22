@@ -1,5 +1,9 @@
 # RenderMesh scalar construction and compiler evidence
 
+CORE/EXACT-139 subsequently closes EnemyMeshOwner allocation and unifies the
+scalar factory body through natural empty-pack value initialization. See
+[the current allocation evidence](ENEMY_MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
+
 CORE/EXACT-137 investigates the complete 213-byte allocator factory at
 `004712D0`. The native Enemy command at `00495BD0` supplies the process allocator,
 a diagnostic label, columns 17, rows 17, surface zero and the actual State view.

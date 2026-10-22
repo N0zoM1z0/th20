@@ -26,11 +26,7 @@ public:
         ::operator delete(memory);
     }
 
-    // Runtime uses ordinary nonthrowing default construction. Other scalar
-    // instantiations have observed pre-clears whose reproduction remains open.
-    template<class T>
-    T* allocate_object(const char*);
-
+    // Copy constructor arguments; an empty pack value-initializes the owner.
     template<class T, class... Args>
     T* allocate_object(const char*, Args... args);
 

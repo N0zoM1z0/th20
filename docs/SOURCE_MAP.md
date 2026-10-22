@@ -47,16 +47,17 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 889 units / 163 objects. Eight additional
+The configured graph currently has 890 units / 163 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
 have reviewed authored origins without maintained bodies or source mappings.
-The native EnemyMeshOwner allocation factory and full AnimationFile spawn
-producer also remain source-absent. The five existing MeshResourceAccess helper
+The full AnimationFile spawn producer also remains source-absent. The five existing MeshResourceAccess helper
 origins are reviewed in [the resource audit](MESH_RESOURCE_ORIGIN_AUDIT.md).
-EnemyMesh.cpp now owns the actual nested mesh retirement and typed scalar-release
-instantiation; see [ownership evidence](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md).
+EnemyMesh.cpp owns nested mesh retirement and typed scalar release;
+MeshInterfaces.cpp owns EnemyMeshOwner value allocation and emits the defaulted
+constructor. See [ownership](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) and
+[allocation evidence](ENEMY_MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
 MeshResourceAccess.cpp owns the parameterized RenderMesh scalar factory under its
 verified C++17 profile; see [allocation evidence](MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
 Graphics accessors fold to existing physical units without duplicate credit.

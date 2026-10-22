@@ -895,3 +895,4 @@ std::destroy_at<th20::RenderMesh>
 th20::EnemyMeshOwner::scalar_deleting_destructor
 th20::RenderMesh::scalar_deleting_destructor
 "th20::DiagnosticAllocator::allocate_object<RenderMesh,int,int,int,int>"
+th20::DiagnosticAllocator::allocate_object<EnemyMeshOwner>

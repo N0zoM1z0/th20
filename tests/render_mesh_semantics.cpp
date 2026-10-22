@@ -16,6 +16,7 @@
 #include <limits>
 #include <source_location>
 #include <thread>
+#include <type_traits>
 #include <vector>
 
 namespace {
@@ -111,10 +112,19 @@ struct Grid {
 };
 
 void check_owned_mesh_retirement() {
+    static_assert(!std::is_nothrow_default_constructible_v<EnemyMeshOwner>);
+    static_assert(!std::is_trivially_default_constructible_v<EnemyMeshOwner>);
+    auto check_initial = [](const EnemyMeshOwner& owner) {
+        assert(!owner.mesh && owner.field_04 == 0 && owner.color == 0);
+        for (float value : {owner.radius, owner.current_radius,
+                            owner.phase_x.value, owner.phase_y.value})
+            assert(value == 0.0f && !std::signbit(value));
+    };
+    { EnemyMeshOwner direct; check_initial(direct); }
     allocator.release_object(static_cast<EnemyMeshOwner*>(nullptr));
     for (int columns : {0, 1, 3, 17}) {
-        auto* owner = new EnemyMeshOwner;
-        assert(!owner->mesh && owner->radius == 0 && owner->current_radius == 0);
+        auto* owner = allocator.allocate_object<EnemyMeshOwner>("owned mesh owner fixture");
+        check_initial(*owner);
         owner->mesh = allocator.allocate_object<RenderMesh>("owned mesh fixture", 0, 0, 0, 0);
         auto* mesh = owner->mesh;
         mesh->columns = columns;
@@ -142,7 +152,8 @@ void check_owned_mesh_retirement() {
         retiring_owner = nullptr;
         retiring_mesh = nullptr;
     }
-    auto* empty = new EnemyMeshOwner;
+    auto* empty = allocator.allocate_object<EnemyMeshOwner>("empty mesh owner fixture");
+    check_initial(*empty);
     allocator.release_object(empty);
 }
 }

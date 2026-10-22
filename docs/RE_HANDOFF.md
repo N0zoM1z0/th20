@@ -12,11 +12,11 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 889 physical strict units, 163 comparison objects,
-167,588 disjoint comparison bytes and 897 source-present mappings. Eight
-mapped whole functions remain nonexact. Authored coverage is separately 180 exact
-functions / 46,989 bytes, with 190 confirmed authored origins. File::clear, the two
-Renderer texture creators, EnemyMeshOwner allocation and the full AnimationFile
+The maintained graph contains 890 physical strict units, 163 comparison objects,
+167,670 disjoint comparison bytes and 898 source-present mappings. Eight
+mapped whole functions remain nonexact. Authored coverage is separately 181 exact
+functions / 47,071 bytes, with 190 confirmed authored origins. File::clear, the two
+Renderer texture creators and the full AnimationFile
 spawn protocol are reviewed authored but source-absent.
 The pinned reference
 has 6,945 terminal implementation reviews and all 113 parser-gap files reconciled.
@@ -24,42 +24,43 @@ These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-138 reviews six authored mesh/resource origins. Five existing exact
-helpers contribute 261 bytes to authored accounting; the full 922-byte ANM spawn
-producer remains source-absent. Physical units, mappings and comparison bytes
-are unchanged. All six full bodies and nine independent call sites are checked
-against locked bytes. The five canonical helpers strictly replay from the current
-object; all 326 product and 278 source hashes remain unchanged. No MSVC build or
-superseded build product is introduced. See [origin evidence](MESH_RESOURCE_ORIGIN_AUDIT.md).
-Public CI passes all 81 tests in 360.203 seconds. The final audit is
-`.analysis/core138-final-audit.json`; whole-body/caller evidence and selected
-strict results are `.analysis/core138-boundaries.json` and
-`.analysis/core138-selected-results.json.gz`. Current product protection is also
-recorded in `.analysis/core138-protected.json`; CORE137 remains the latest
-full physical replay and retirement checkpoint.
+CORE/EXACT-139 accepts the complete 82-byte EnemyMeshOwner value-allocation
+factory and preserves its complete 88-byte constructor. Default member
+initializers/defaulted construction and one shared variadic allocation body
+naturally reproduce the native preclear. MeshInterfaces owns the instantiation
+and constructor under its bounded profile without /EHsc; no noexcept contract is
+changed. All 205 prior affected units remain exact after 31 fresh builds, with
+132 objects reused. Previously accepted mesh EH/folded support also strictly
+replays over all 197 bytes. See [allocation evidence](ENEMY_MESH_ALLOCATION_EXACT_RECONSTRUCTION.md).
+Public CI passes all 81 tests in 358.927 seconds; three focused UBSan and two
+ASan/UBSan mesh lifecycle fixtures also pass. Private validation results are in
+`.analysis/core139-gates.json`.
+Sixty-six superseded object/receipt files are retired after original-input
+preservation. All 890 units strictly replay afterward; all 326 protected hashes
+remain unchanged, with zero cleanup compiler calls. The final audit is
+`.analysis/core139-final-audit.json`.
 
 ## Current local products
 
 The manifest owns all current object paths. Its 163 canonical objects are under
 `build/core127-canonical/` (1), `build/core128-canonical/` (1), `build/core129-canonical/` (5),
 `build/core130-canonical/` (9), `build/core131-canonical/` (2), `build/core132-canonical/` (2),
-`build/core133-canonical/` (11), `build/core134-canonical/` (5), `build/core137-canonical/` (36),
-`build/maintenance124-canonical/` (91). Protect their 163 sibling receipts as well.
-The source freeze is `.analysis/core137-final-frozen-source.json`; fresh affected
-results are `.analysis/core137-affected-results.json.gz`. The new factory and
-complete support are recorded in `.analysis/core137-new-exact-results.json` and
-`.analysis/core137-support.json`.
+`build/core133-canonical/` (11), `build/core134-canonical/` (5), `build/core137-canonical/` (5),
+`build/core139-canonical/` (31), `build/maintenance124-canonical/` (91). Protect all 163 sibling receipts as well.
+The current source freeze is `.analysis/core139-final-frozen-source.json`; fresh
+affected results are `.analysis/core139-affected-results.json.gz`. The new unit
+and prior mesh support are recorded in `.analysis/core139-new-exact-results.json`
+and `.analysis/core139-support.json`.
 
-All prior object/receipt pairs and authentic source versions were verified before
-editing and archived in `.analysis/core137-pre-header-inputs.json.gz`. Preserve
-the historical maintenance125 and CORE127 through CORE136 original-input archives.
-The current retirement archive references shared original inputs by SHA and
-retains additional private probe inputs inline; preserve both original and
-retirement archives. Current protected products, retirement inventory and replay
-are `.analysis/core137-protected.json`, `.analysis/core137-cleanup.json` and
-`.analysis/core137-post-cleanup-results.json.gz`; retired inputs and receipts are
-in `.analysis/core137-retired-inputs.json.gz`. Cleanup never rewrites receipts
-or cold-builds an unchanged source graph.
+All original object/receipt pairs and authentic source versions are archived
+before editing in `.analysis/core139-pre-header-inputs.json.gz`. Preserve the
+prior original-input archives, including CORE137, and CORE138's origin-only
+proof. Retired input archives reference shared original inputs by SHA and retain
+additional private probe inputs inline. Never rewrite immutable receipts or
+cold-build an unchanged graph solely for cleanup. Current protection,
+retirement and full replay are `.analysis/core139-protected.json`,
+`.analysis/core139-cleanup.json` and `.analysis/core139-post-cleanup-results.json.gz`.
+Retired input/receipt closures are `.analysis/core139-retired-inputs.json.gz`.
 
 Retain original compiler input archives, failed experiment evidence, native
 exports and the locked target/tools/Ghidra/reference. Old receipts describe
@@ -120,11 +121,11 @@ The generic CORE095 Angle subtraction and XY norm origins remain pending.
 Whole Enemy deformation is now reviewed authored but remains 1548/native1649;
 its 101-byte local conversion has no observed direct byte read or address
 formation. Do not add that unused calculation or the compressor's unobserved sum
-merely for emission. EnemyMeshOwner destruction and nested release are exact;
-its scalar allocation at 0x0048B010 remains source-absent, with seven native
-preclear stores unexplained by natural57/119/129-byte probes. The four-argument
-RenderMesh factory at 0x004712D0 is now exact; its original whole Enemy caller
-and outer EnemyMeshOwner creation remain open.
+merely for emission. EnemyMeshOwner allocation at
+0x0048B010, defaulted construction, destruction and nested release are now exact.
+The four-argument RenderMesh factory at 0x004712D0 is also exact. Preserve the
+shared empty-pack value-initialization model and the actual Angle exception
+contract. The enclosing whole Enemy caller remains open.
 
 The descriptor arrays and sprite binding are now available for the real loading
 protocol; they do not establish mutable ANM packet/buffer ownership or loaded-File

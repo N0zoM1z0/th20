@@ -29,13 +29,12 @@ public:
     void update_strips();
 };
 struct EnemyMeshOwner {
-    // Owned mesh storage is retired through the process allocator.
-    RenderMesh* mesh;
-    std::uint32_t field_04;
-    float radius,current_radius;
-    std::uint32_t color;
-    Angle phase_x,phase_y;
-    EnemyMeshOwner();
+    RenderMesh* mesh = nullptr;
+    std::uint32_t field_04 = 0;
+    float radius = 0.0f, current_radius = 0.0f;
+    std::uint32_t color = 0;
+    Angle phase_x{}, phase_y{};
+    EnemyMeshOwner() = default;
     ~EnemyMeshOwner();
 };
 // Native cdecl passes all three coordinates by value; z is not consumed.
