@@ -63,6 +63,13 @@ Reuse passing evidence for unchanged inputs. Documentation and cleanup add
 **zero compiler builds and zero canonical replays**; only protected hashes and
 lightweight documentation/tracking checks run during that phase.
 
+The 2026-10-24 documentation/cleanup pass has **zero affected providers and
+zero replay units**. It reuses the completed checks above. All 949 protected
+paths retain their recorded hashes. Three completed historical replay logs are
+archived losslessly, saving 67,481 bytes; `handoff160-retirement-plan.json`
+records original/archive hashes, terminal success and the protected inventory.
+This maintenance changes no source, profile, manifest or acceptance count.
+
 `core159-retirement-plan.json` records eight retired files / 1,844,976 bytes:
 the replaced old object/receipt, initial probe/canonical pairs and two successful
 regenerable host binaries.
@@ -79,6 +86,8 @@ Historical archive lookup remains in `handoff146-retirement-plan.json`,
 The handoff157 record identifies lossless archival of 101
 historical logs/hash snapshots; handoff154 identifies
 `core154-retired-probe-inputs.json.gz`.
+The handoff160 record locates the archived core098, core099 and core141 replay
+logs. Their `.log.gz` files preserve the complete original evidence.
 Use `gzip.open` for their losslessly archived reports instead of old plain paths.
 
 ## Protected local products
