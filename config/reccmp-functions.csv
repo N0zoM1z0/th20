@@ -911,3 +911,8 @@ std::pmr::vector<th20::EnemyPhase>::resize,0x004AB570,function
 std::pmr::vector<th20::EnemyPhase>::size,0x004ABA00,function
 std::pmr::vector<th20::EnemyPhase>::operator[],0x0048BD40,function
 std::pmr::vector<th20::EnemyPhase>::at,0x004AA160,function
+th20::Session::field_70_is_two,0x00488850,function
+th20::Session::clamped_field_1f4,0x00474D60,function
+th20::PlayerTable::clamped_field_1f4,0x00474D80,function
+th20::PlayerRecord::add_field_dc,0x00497CC0,function
+th20::PlayerRecord::add_field_e0,0x00497C60,function

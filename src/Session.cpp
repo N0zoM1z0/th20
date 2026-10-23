@@ -19,6 +19,11 @@ PlayerRecord* player_record(std::int32_t index) {
 PlayerRecord& PlayerTable::player(std::int32_t index) { return players[index]; }
 std::int32_t PlayerTable::mode() { return field_1e0; }
 std::int32_t Session::mode() { return table.mode(); }
+bool Session::field_70_is_two() { return field_70 == 2; }
+std::int32_t PlayerTable::clamped_field_1f4() {
+    field_1f4 = std::clamp(field_1f4,0,999); return field_1f4;
+}
+std::int32_t Session::clamped_field_1f4() { return table.clamped_field_1f4(); }
 std::int32_t PlayerTable::clamped_field_1fc() {
     field_1fc = std::clamp(field_1fc,0,999); return field_1fc;
 }

@@ -81,6 +81,8 @@ struct PlayerRecord {
     std::uint8_t field_a5_value();
     std::uint8_t field_2f_value();
     void set_field_ec(std::int32_t value);
+    void add_field_dc(std::int32_t delta);
+    void add_field_e0(std::int32_t delta);
     void set_field_30(std::int32_t value);
     void set_field_34(std::int32_t value);
     void set_field_38(std::int32_t value);

@@ -80,6 +80,9 @@ and timeout producers, implicit record defaults and four STL access/growth
 support units. See [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
 These dependencies add no partial dispatcher credit; complete state-family
 control flow and the remaining real receiver owners are still open.
+The current private whole-root draft now contains 53 values / 28 heads after
+adding 514, 521, 563 and 564. Its complete caller observations, semantic domains
+and five accepted dependencies are in the [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md).
 
 ## Comparison extent still needs compiler ownership
 

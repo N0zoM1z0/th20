@@ -910,3 +910,8 @@ std::pmr::vector<th20::EnemyPhase>::resize
 std::pmr::vector<th20::EnemyPhase>::size
 std::pmr::vector<th20::EnemyPhase>::operator[]
 std::pmr::vector<th20::EnemyPhase>::at
+th20::Session::field_70_is_two
+th20::Session::clamped_field_1f4
+th20::PlayerTable::clamped_field_1f4
+th20::PlayerRecord::add_field_dc
+th20::PlayerRecord::add_field_e0

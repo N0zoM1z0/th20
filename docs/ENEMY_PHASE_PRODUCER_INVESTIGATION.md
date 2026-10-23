@@ -114,3 +114,8 @@ unimplemented root. Continue that same whole-root construction with genuine
 receivers. HUD, laser and other unresolved owners cannot be replaced by reference
 service adapters. Preserve full default behavior, tables and EH under
 [whole-root evidence](CORE_ENEMY_DISPATCH_LAYOUT.md).
+
+CORE148 continues the caller paths in the same private whole-root draft; see the
+[state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) for replacement
+conditions, borrowed strings, repeated indices and receiver caching. These caller
+paths remain outside production source and add no partial dispatcher exact credit.

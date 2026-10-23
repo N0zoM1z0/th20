@@ -29,6 +29,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Core ECL and Enemy dispatch reconstruction](CORE_ECL_DISPATCH_RECONSTRUCTION.md)
 - [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md) — includes the current bounded dependency audit.
 - [Enemy movement opcode source frontier and raw random words](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) — private whole-root source work, retained interpolation state and the complete word sampler.
+- [Enemy state opcode source frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) — phase replacement, repeated operand reads, live receivers, conditional counter updates and five complete dependencies.
 - [Enemy phase producer reconstruction](ENEMY_PHASE_PRODUCER_INVESTIGATION.md) — complete Enemy-owned configuration/timeout protocol, implicit record defaults and typed STL support; affected-only verification.
 - [ECL buffer registration and instruction resolution](ECL_BUFFER_RECONSTRUCTION.md)
 - [ECL wire-header extents and exact instruction resolution](ECL_BUFFER_EXACT_RECONSTRUCTION.md)

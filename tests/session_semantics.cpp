@@ -91,9 +91,22 @@ int main() {
 
     constexpr auto low=std::numeric_limits<std::int32_t>::min();
     constexpr auto high=std::numeric_limits<std::int32_t>::max();
+    for (auto input : {low,-1,0,1,2,3,high}) {
+        value->field_70=input;
+        const auto before=snapshot(*value);
+        assert(value->field_70_is_two()==(input==2));
+        assert(snapshot(*value)==before);
+    }
     for (auto input : {low,-1,0,1,998,999,1000,9998,9999,10000,99998,99999,100000,high}) {
-        value->table.field_1fc=input;
+        value->table.field_1f4=input;
         auto before=snapshot(*value);
+        assert(value->clamped_field_1f4()==std::clamp(input,0,999));
+        only_word_changed(*value,before,value->table.field_1f4);
+        value->table.field_1f4=input; before=snapshot(*value);
+        assert(value->table.clamped_field_1f4()==std::clamp(input,0,999));
+        only_word_changed(*value,before,value->table.field_1f4);
+        value->table.field_1fc=input;
+        before=snapshot(*value);
         assert(value->clamped_field_1fc()==std::clamp(input,0,999));
         only_word_changed(*value,before,value->table.field_1fc);
         value->table.field_204=input; before=snapshot(*value);
@@ -102,6 +115,24 @@ int main() {
         value->table.field_208=input; before=snapshot(*value);
         assert(value->table.clamped_field_208()==std::clamp(input,0,99999));
         only_word_changed(*value,before,value->table.field_208);
+    }
+    for (auto initial : {low,high,-1,0,1,999998,999999,1000000}) {
+        for (auto delta : {low,high,-1000000,-1,0,1,999999,1000000}) {
+            const auto bits=static_cast<std::uint32_t>(initial)+static_cast<std::uint32_t>(delta);
+            const auto signed_value=static_cast<std::int64_t>(bits)
+                - ((bits & 0x80000000u) ? 0x100000000LL : 0LL);
+            const auto expected=std::clamp<std::int64_t>(signed_value,0,999999);
+            auto& record=value->table.players[1];
+            record.field_dc=initial;
+            auto before=snapshot(*value);
+            record.add_field_dc(delta);
+            assert(record.field_dc==expected);
+            only_word_changed(*value,before,record.field_dc);
+            record.field_e0=initial; before=snapshot(*value);
+            record.add_field_e0(delta);
+            assert(record.field_e0==expected);
+            only_word_changed(*value,before,record.field_e0);
+        }
     }
     for (auto initial : {low,high,-10,-1,0,1,8,9,10}) {
         for (auto delta : {low,high,-10,-1,0,1,8,9,10}) {

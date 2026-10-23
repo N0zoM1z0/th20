@@ -91,6 +91,11 @@ retains implicit member defaults for life/time and both complete name arrays.
 The original private constructor guess is superseded by independent evidence
 from value construction and complete strict replay. See
 [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
+Session.cpp owns the field70 predicate and mutating field1F4 queries;
+PlayerRecord.cpp owns the wrapping fieldDC/E0 updates. These support four more
+paths in the same private whole-dispatcher draft. See
+[state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) for source and
+fixture boundaries; the production dispatcher remains undefined.
 
 ## Build freshness and local products
 

@@ -68,6 +68,16 @@ PlayerRecord::PlayerRecord()
       field_e4(0),
       field_e8(0),
       field_ec(0) {}
+void PlayerRecord::add_field_dc(std::int32_t delta) {
+    field_dc = static_cast<std::int32_t>(
+        static_cast<std::uint32_t>(field_dc) + static_cast<std::uint32_t>(delta));
+    field_dc = std::clamp(field_dc, 0, 999999);
+}
+void PlayerRecord::add_field_e0(std::int32_t delta) {
+    field_e0 = static_cast<std::int32_t>(
+        static_cast<std::uint32_t>(field_e0) + static_cast<std::uint32_t>(delta));
+    field_e0 = std::clamp(field_e0, 0, 999999);
+}
 std::uint64_t PlayerRecord::current_score() const {return score;}
 void PlayerRecord::set_field_ec(std::int32_t value) {
     field_ec = value;
