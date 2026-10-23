@@ -3,6 +3,11 @@
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
+CORE/EXACT-159 subsequently reconstructs the genuine
+[FrontInf owner and constructor](FRONT_OWNER_RECONSTRUCTION.md) from independent
+native evidence. The rejected REF-033 source/owner observations below remain
+historical and do not describe that maintained implementation.
+
 ## REF-034 — complete Overlay batch
 
 All 376 Overlay implementations have individual body-hash-bound decisions:

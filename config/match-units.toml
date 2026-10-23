@@ -1809,8 +1809,8 @@ relocations = [
 
 [units.hud_gauge_construct]
 source = "src/HudGauge.cpp"
-object = "build/core141-canonical/HudGauge.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::HudGauge::HudGauge"]
 symbol = "??0HudGauge@th20@@QAE@XZ"
 target_address = 0x004AECE0
@@ -15931,4 +15931,174 @@ symbol = "?subtract_time@EclManager@th20@@QAEXM@Z"
 target_address = 4836400
 size = 38
 relocations = [
+]
+
+[units.front_boss_panel_ctor]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontBossPanel::FrontBossPanel"]
+symbol = "??0FrontBossPanel@th20@@QAE@XZ"
+target_address = 4909888
+size = 159
+compare_size = 164
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0FrontBossPanel@th20@@QAE@XZ", target = 5666304 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 80, type = "DIR32", symbol = "??0HudGauge@th20@@QAE@XZ", target = 4910304 },
+  { offset = 96, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+  { offset = 101, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 117, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+]
+
+[units.front_flags_ctor]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontFlags::FrontFlags"]
+symbol = "??0FrontFlags@th20@@QAE@XZ"
+target_address = 4910064
+size = 146
+relocations = [
+]
+
+[units.front_ctor]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontInf::FrontInf"]
+symbol = "??0FrontInf@th20@@QAE@XZ"
+target_address = 4910992
+size = 883
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0FrontInf@th20@@QAE@XZ", target = 5675165 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 42, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 4324640 },
+  { offset = 58, type = "DIR32", symbol = "??_7FrontInf@th20@@6B@", target = 5703212 },
+  { offset = 69, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$06@std@@QAE@XZ", target = 4910576 },
+  { offset = 80, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$06@std@@QAE@XZ", target = 4910576 },
+  { offset = 91, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$01@std@@QAE@XZ", target = 4910416 },
+  { offset = 200, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 214, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$09@std@@QAE@XZ", target = 4910656 },
+  { offset = 228, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$02@std@@QAE@XZ", target = 4910496 },
+  { offset = 242, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 256, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 270, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$09@std@@QAE@XZ", target = 4910656 },
+  { offset = 284, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 298, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 312, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 326, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 340, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 354, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 368, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 382, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 396, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 516, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 530, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 4337040 },
+  { offset = 672, type = "DIR32", symbol = "??0HudGauge@th20@@QAE@XZ", target = 4910304 },
+  { offset = 690, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+  { offset = 704, type = "REL32", symbol = "??0FrontFlags@th20@@QAE@XZ", target = 4910064 },
+  { offset = 718, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 4337040 },
+  { offset = 801, type = "DIR32", symbol = "??0FrontBossPanel@th20@@QAE@XZ", target = 4909888 },
+  { offset = 820, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+  { offset = 838, type = "DIR32", symbol = "$SG50874", target = 5703232 },
+  { offset = 843, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
+  { offset = 854, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 6031012 },
+]
+
+[units.front_has_dialogue]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontInf::has_dialogue"]
+symbol = "?has_dialogue@FrontInf@th20@@QAEHXZ"
+target_address = 4686176
+size = 44
+relocations = [
+]
+
+[units.front_set_field_180]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontInf::set_field_180"]
+symbol = "?set_field_180@FrontInf@th20@@QAEXH@Z"
+target_address = 4835104
+size = 25
+relocations = [
+]
+
+[units.front_set_boss_gauge]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontInf::set_boss_gauge"]
+symbol = "?set_boss_gauge@FrontInf@th20@@QAEXHHMH@Z"
+target_address = 4835776
+size = 65
+relocations = [
+]
+
+[units.front_handles_2_ctor]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,2>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$01@std@@QAE@XZ"
+target_address = 4910416
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$01@std@@QAE@XZ", target = 5666304 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 39, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 52, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+]
+
+[units.front_handles_3_ctor]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,3>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$02@std@@QAE@XZ"
+target_address = 4910496
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$02@std@@QAE@XZ", target = 5666304 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 39, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 52, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+]
+
+[units.front_handles_7_ctor]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,7>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$06@std@@QAE@XZ"
+target_address = 4910576
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$06@std@@QAE@XZ", target = 5666304 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 39, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 52, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+]
+
+[units.front_handles_10_ctor]
+source = "src/HudGauge.cpp"
+object = "build/core159-v2/HudGauge.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,10>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$09@std@@QAE@XZ"
+target_address = 4910656
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$09@std@@QAE@XZ", target = 5666304 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 39, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 52, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
 ]

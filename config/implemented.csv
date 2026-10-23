@@ -971,3 +971,13 @@ th20::EnemyState::float_argument_destination
 th20::Enemy::integer_argument_destination
 th20::Enemy::float_argument_destination
 th20::EclManager::subtract_time
+th20::FrontBossPanel::FrontBossPanel
+th20::FrontFlags::FrontFlags
+th20::FrontInf::FrontInf
+th20::FrontInf::has_dialogue
+th20::FrontInf::set_field_180
+th20::FrontInf::set_boss_gauge
+"std::array<th20::AnimationHandle,2>::array"
+"std::array<th20::AnimationHandle,3>::array"
+"std::array<th20::AnimationHandle,7>::array"
+"std::array<th20::AnimationHandle,10>::array"

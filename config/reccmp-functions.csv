@@ -972,3 +972,13 @@ th20::EnemyState::float_argument_destination,0x004AA980,function
 th20::Enemy::integer_argument_destination,0x004AAA10,function
 th20::Enemy::float_argument_destination,0x004AA9B0,function
 th20::EclManager::subtract_time,0x0049CC30,function
+th20::FrontBossPanel::FrontBossPanel,0x004AEB40,function
+th20::FrontFlags::FrontFlags,0x004AEBF0,function
+th20::FrontInf::FrontInf,0x004AEF90,function
+th20::FrontInf::has_dialogue,0x00478160,function
+th20::FrontInf::set_field_180,0x0049C720,function
+th20::FrontInf::set_boss_gauge,0x0049C9C0,function
+"std::array<th20::AnimationHandle,2>::array",0x004AED50,function
+"std::array<th20::AnimationHandle,3>::array",0x004AEDA0,function
+"std::array<th20::AnimationHandle,7>::array",0x004AEDF0,function
+"std::array<th20::AnimationHandle,10>::array",0x004AEE40,function

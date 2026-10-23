@@ -197,3 +197,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004A9E60,th20::PlayerRecord::add_field_70,83,matching,100.00,player_record_add_field_70,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
 0x004A9DE0,th20::PlayerRecord::add_reward,95,matching,100.00,player_record_add_reward,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
 0x00540230,th20::EclLoader::select_index,66,matching,100.00,ecl_loader_select_index,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
+0x004AEF90,th20::FrontInf::FrontInf,883,matching,100.00,front_ctor,CORE/EXACT-159; docs/FRONT_OWNER_RECONSTRUCTION.md
