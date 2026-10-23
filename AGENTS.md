@@ -110,6 +110,10 @@ records. A shared-header change expands the affected include closure, not
 automatically the entire graph.
 State the affected replay scope in each handoff, including zero units for an
 unchanged documentation/cleanup batch.
+Before starting validation, identify the changed inputs and selected providers.
+Invoke `replay-exact-units.py` with explicit `--source` filters; use
+`build.py --unit` and `compare-coff-function.py --unit` for individual units.
+Do not invoke the replay script without a source filter as a routine check.
 
 After each stable batch, retire superseded probe builds and other regenerable
 artifacts as explicitly requested by the user. Protect all current canonical

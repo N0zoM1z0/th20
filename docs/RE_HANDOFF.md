@@ -34,8 +34,9 @@ The production Enemy opcode dispatcher remains undefined. Its private 96-value /
 
 ## Current verification and cleanup
 
-Three headers and three implementations change. Captured includes select 44
-providers / 317 existing units; all fresh serial builds and strict replays pass.
+The last reconstruction batch changed three headers and three implementations.
+Captured includes selected 44 providers / 317 existing units; all fresh serial
+builds and strict replays pass.
 The other 120 providers reuse valid evidence. Sixteen generated literal-name
 changes preserve complete data and canonical roles. All 76 EH code/data sections
 for 38 affected parents remain identical, including full relocation and function
@@ -52,6 +53,15 @@ These filenames and other private filenames below are relative to `.analysis/`.
 Reuse passing evidence for unchanged inputs. Documentation and cleanup add
 **zero compiler builds and zero canonical replays**; only protected hashes and
 lightweight documentation/tracking checks run during that phase.
+
+The current handoff maintenance changes documentation only. Its affected scope
+is **0 providers / 0 units**, with no builds, semantic tests, Ghidra, full CI or
+canonical replay. `handoff157-retirement-plan.json` records lossless archival of
+101 superseded successful replay logs and source-hash snapshots, saving
+1,834,302 bytes. `handoff157-cleanup.json` records saved bytes and protected-hash
+verification; documentation checks are in `handoff157-gates.json`.
+Read the archived historical logs with `gzip.open`; current proofs, failed
+trials and active investigation inputs retain their existing paths.
 
 `core156-retirement-plan.json` records 215 retired files / 3,817,017 bytes:
 superseded canonical/probe products and copied private headers/source. Authentic

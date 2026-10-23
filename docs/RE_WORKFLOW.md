@@ -139,6 +139,8 @@ the historical first retirement pass; its broader verification is not the
 current required scope.
 
 Inactive successful replay snapshots may be archived losslessly as `.json.gz`.
+Completed historical replay logs may likewise use `.log.gz` after checking an
+explicit successful terminal summary and rejecting failure or mismatch records.
 Verify that every saved unit passed, check the decompressed content against the
 original SHA-256 before retiring the uncompressed file, and record both hashes
 and bytes saved. Keep current snapshots, native exports, failed experiments and

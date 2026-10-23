@@ -18,6 +18,7 @@ packages or change the working directory.
 
 | Need | Command | Evidence boundary |
 | --- | --- | --- |
+| Documentation or artifact cleanup | `git diff --check`, local-link and protected-hash checks | unchanged reconstruction inputs: zero builds, tests or replays; reuse passing evidence |
 | Reproduce installed tools | `scripts/bootstrap-tools.sh` | pinned downloads/commits; ignored local tools |
 | Check installed binaries/versions | `scripts/repo-python scripts/doctor.py` | locked critical tool fingerprints and banners |
 | Check Japanese variant provenance | `scripts/repo-python scripts/verify-provenance.py --fetch` | immutable independent registry + supplied files |
