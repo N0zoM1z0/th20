@@ -102,6 +102,11 @@ Enemy.cpp owns the actual entity flag query. Seven complete dependencies are
 strict exact; the full scatter source remains 628/native630 and nonexact. The
 same private dispatcher draft includes all nine observed callers. See
 [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md).
+EnemyData.cpp owns checked selected-slot publication, scalar handle assignment
+and the Data flag-bit write; EnemyHealth.cpp owns raw-health reads and scaled
+writes. The current private dispatcher also includes life, boss, bounds and
+timer paths. Scalar-return and checked-helper emission remain separate open
+boundaries. See [health and boss state](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md).
 
 ## Build freshness and local products
 

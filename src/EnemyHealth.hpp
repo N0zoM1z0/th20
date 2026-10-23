@@ -18,6 +18,8 @@ struct EnemyHealth {
     void force_defeat();
     void reset();
     void set_health(std::uint32_t value);
+    std::uint32_t get_health() const;
+    void set_scaled_health(std::uint32_t value);
     void set_initial(std::uint32_t value);
     void set_phase(std::uint32_t value);
     std::int32_t apply(std::int32_t amount);

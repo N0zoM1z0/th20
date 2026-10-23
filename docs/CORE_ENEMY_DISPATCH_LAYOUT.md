@@ -80,10 +80,12 @@ and timeout producers, implicit record defaults and four STL access/growth
 support units. See [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
 These dependencies add no partial dispatcher credit; complete state-family
 control flow and the remaining real receiver owners are still open.
-The current private whole-root draft contains 62 values / 37 heads after the
-phase/counter and nine drop paths. The [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md)
+The current private whole-root draft contains 80 values / 55 heads after the
+phase/counter, drop and eighteen health/boss/parameter paths. The [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md)
 retains phase/counter evidence; the [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md)
 records the actual Item-backed producers, caller order and nonexact scatter boundary.
+The [health and boss state evidence](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md)
+records checked publication, real storage and exception write order.
 
 ## Comparison extent still needs compiler ownership
 

@@ -31,6 +31,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Enemy movement opcode source frontier and raw random words](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) — private whole-root source work, retained interpolation state and the complete word sampler.
 - [Enemy state opcode source frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) — phase replacement, repeated operand reads, live receivers, conditional counter updates and five complete dependencies.
 - [Enemy drop protocol and dispatcher callers](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md) — complete Item-backed drop/scatter source, seven strict dependencies, nine private caller paths and the remaining scatter emission difference.
+- [Enemy health, boss slots and state parameters](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md) — actual checked identifier publication, exception write order, eighteen private state paths and three complete dependencies.
 - [Enemy phase producer reconstruction](ENEMY_PHASE_PRODUCER_INVESTIGATION.md) — complete Enemy-owned configuration/timeout protocol, implicit record defaults and typed STL support; affected-only verification.
 - [ECL buffer registration and instruction resolution](ECL_BUFFER_RECONSTRUCTION.md)
 - [ECL wire-header extents and exact instruction resolution](ECL_BUFFER_EXACT_RECONSTRUCTION.md)

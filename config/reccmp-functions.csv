@@ -924,3 +924,6 @@ th20::EnemyPattern::set_duration,0x0049C6F0,function
 th20::EnemyPattern::set_radii,0x0049C830,function
 th20::Enemy::bomb_drop_disabled,0x0049C0C0,function
 th20::EnemyPattern::emit_items,0x004A5350,function
+th20::EnemyController::set_selected,0x0049C2E0,function
+th20::EnemyController::set_field_84_bit_0,0x0049C4B0,function
+th20::EnemyHealth::set_scaled_health,0x0049C340,function

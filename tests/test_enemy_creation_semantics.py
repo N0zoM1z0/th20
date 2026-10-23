@@ -15,7 +15,7 @@ class EnemyCreationTests(unittest.TestCase):
         self.assertIsNotNone(compiler)
         sources = [
             "EnemyVariables", "EnemySpawning", "EnemyInitialization", "EclSelection", "EclLoaderBase", "Enemy",
-            "EnemyData", "EnemyControllerConstruction", "TaskInfoConstruction", "EclDiagnostic",
+            "EnemyData", "EnemyControllerConstruction", "EnemyScript", "TaskInfoConstruction", "EclDiagnostic",
             "EnemyState", "EnemyMovement", "EnemyCounters", "EnemySpawn",
             "EnemyHealth", "EnemyPattern", "Motion",
             "MotionConfiguration", "MotionUpdates", "MotionMath", "Vector2",
@@ -29,7 +29,7 @@ class EnemyCreationTests(unittest.TestCase):
             output = Path(directory) / "enemy-creation"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-fsanitize=undefined", "-fno-sanitize-recover=all", "-ffunction-sections", "-fdata-sections",
                 "-Wl,--gc-sections", "-pthread", "-Isrc", "tests/enemy_creation_semantics.cpp",
                 "tests/enemy_phase_semantics.cpp",
                 *(f"src/{name}.cpp" for name in sources), "-o", str(output),

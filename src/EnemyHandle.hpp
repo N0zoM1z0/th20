@@ -9,6 +9,7 @@ struct EnemyHandle {
     std::uint32_t value;
     EnemyHandle() noexcept;
     std::uint32_t get() const;
+    void operator=(std::uint32_t input);
     Enemy* resolve();
 };
 static_assert(sizeof(EnemyHandle) == 4);

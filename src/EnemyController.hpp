@@ -9,8 +9,14 @@
 #include <vector>
 namespace th20 {
 using EnemyHandles = std::array<EnemyHandle,16>;
-// Native construction zeros this four-byte aggregate. Its role is unknown.
-struct EnemyDataWord { std::uint32_t value; };
+// Native construction zeros this word; bit zero is independently writable.
+// Its broader role remains unknown.
+struct EnemyDataWord {
+    union {
+        std::uint32_t value;
+        struct { std::uint32_t bit_0:1, upper:31; } bits;
+    };
+};
 struct EnemyData {
     EnemyCounters counters;
     std::uint32_t field_30, field_34, field_38, field_3c, field_40;
@@ -39,6 +45,8 @@ struct EnemyController : TaskInfo {
     AnimationFile* animation_file(std::int32_t index);
     // A checked handle slot resolves through player 0.
     Enemy* selected(std::uint32_t index);
+    void set_selected(std::uint32_t index, Enemy* enemy);
+    void set_field_84_bit_0(std::uint32_t input);
     Enemy* find(std::uint32_t identifier);
     std::int32_t count() const;
     std::int32_t capacity() const;

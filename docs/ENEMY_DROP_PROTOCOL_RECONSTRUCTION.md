@@ -4,9 +4,11 @@
 
 The same private whole EnemyState dispatcher draft at 0x48C010 now includes
 506..510, 556, 567, 568 and 572. The preceding movement/phase/counter bodies are
-unchanged. The resulting exercise has 62 effective values / 37 primary heads;
+unchanged. The CORE149 exercise has 62 effective values / 37 primary heads;
 it is neither a production dispatcher nor partial exact credit. Native default,
 remaining cases, tables, EH and complete compiler contribution remain open.
+The subsequent [health and boss state batch](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md)
+extends the same draft; the counts here describe the dated drop investigation.
 
 The maintained 168-byte EnemyPattern owns both sixteen-word arrays, Timer,
 kind selections and radii. Its value operations remain in EnemyPattern.cpp;

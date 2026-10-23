@@ -9,6 +9,7 @@
 #include <limits>
 #include <stdexcept>
 #include <vector>
+#include <cstdio>
 
 void check_enemy_phases(th20::Enemy& enemy);
 
@@ -61,7 +62,6 @@ Enemy* EnemyController::find(std::uint32_t identifier) {
         ? resolved_enemy : nullptr;
 }
 int EnemyState::execute_opcode() { std::abort(); }
-int Enemy::execute_opcode() { std::abort(); }
 int ScriptStack::pop(int, void*, char) { std::abort(); }
 void Enemy::select_context(int index) {
     events.push_back(1);
@@ -222,6 +222,53 @@ int main() {
     controller.data.handles[15].value = second->state.identifier.value;
     lookup_controller = &controller; resolved_enemy = second;
     assert(controller.selected(15) == second); // actual maximum valid slot
+    // Actual publication runs the maintained by-value Enemy identifier, getter,
+    // checked slot and handle assignment bodies. Only final list-find remains
+    // the explicit lookup capture above. All unrelated owner bytes must survive.
+    const auto first_id=first->state.identifier.value,second_id=second->state.identifier.value;
+    unsigned publication_cases=0;
+    for(unsigned index=0;index<16;++index)for(unsigned id:{0u,1u,0x80000000u,0xffffffffu})
+    for(Enemy* target:{static_cast<Enemy*>(nullptr),first,second}) {
+        first->state.identifier.value=id;second->state.identifier.value=id^0x12345678u;
+        controller.data.field_84.value=0xa5a5a5a5u;
+        std::array<unsigned char,sizeof(EnemyController)> expected;
+        std::memcpy(expected.data(),&controller,sizeof(controller));
+        const auto flag_offset=reinterpret_cast<unsigned char*>(&controller.data.field_84)-reinterpret_cast<unsigned char*>(&controller);
+        const unsigned flag=(0xa5a5a5a5u&~1u)|(id&1u);
+        std::memcpy(expected.data()+flag_offset,&flag,4);
+        const auto offset=reinterpret_cast<unsigned char*>(&controller.data.handles[index])-reinterpret_cast<unsigned char*>(&controller);
+        const unsigned identifier=target?target->state.identifier.value:0u;
+        std::memcpy(expected.data()+offset,&identifier,4);
+        std::array<unsigned char,sizeof(Enemy)> first_image,second_image;
+        std::memcpy(first_image.data(),first,sizeof(Enemy));std::memcpy(second_image.data(),second,sizeof(Enemy));
+        controller.set_field_84_bit_0(id);controller.set_selected(index,target);
+        assert(!std::memcmp(expected.data(),&controller,sizeof(controller)));
+        assert(!std::memcmp(first_image.data(),first,sizeof(Enemy)) && !std::memcmp(second_image.data(),second,sizeof(Enemy)));
+        resolved_enemy=identifier?target:nullptr;lookup_calls=find_calls=0;
+        assert(controller.selected(index)==resolved_enemy && lookup_calls==2 && find_calls==1);
+        ++publication_cases;
+    }
+    for(unsigned index:{16u,0x7fffffffu,0x80000000u,0xffffffffu})
+    for(Enemy* target:{static_cast<Enemy*>(nullptr),first,second}) {
+        std::array<unsigned char,sizeof(EnemyController)> before;
+        std::memcpy(before.data(),&controller,sizeof(controller));bool threw=false;
+        try {controller.set_selected(index,target);}catch(const std::out_of_range&){threw=true;}
+        assert(threw && !std::memcmp(before.data(),&controller,sizeof(controller)));++publication_cases;
+    }
+    for(unsigned value:{0u,1u,306783378u,306783379u,0x80000000u,0xffffffffu}) {
+        EnemyHealth health;std::array<unsigned,7> expected{9,17,23,31,41,47,0xf3};
+        health.health=9;health.field_04=17;health.phase_health=23;
+        health.scaled_health=31;health.threshold=41;health.damage=47;health.flags.bits=0xf3;
+        expected[0]=value;
+        health.set_health(value);assert(health.get_health()==value);
+        expected[3]=static_cast<unsigned>(std::uint64_t(value)*7u);
+        health.set_scaled_health(health.get_health());
+        assert(!std::memcmp(&health,expected.data(),sizeof(health)));
+    }
+    first->state.identifier.value=first_id;second->state.identifier.value=second_id;
+    controller.data.handles[0].value=second_id;controller.data.handles[15].value=second_id;
+    lookup_controller=&controller;resolved_enemy=second;
+    std::printf("Owned Enemy publication passed: %u slot/whole-owner/exception cases, full-width identifiers and scaled-health wrap.\n",publication_cases);
     unsigned integer_count = 0, float_count = 0;
     for (int index = -10000; index <= -9800; ++index) {
         integer_count += first->integer_destination(index) != nullptr;

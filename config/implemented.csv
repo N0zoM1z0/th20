@@ -923,3 +923,6 @@ th20::EnemyPattern::set_duration
 th20::EnemyPattern::set_radii
 th20::Enemy::bomb_drop_disabled
 th20::EnemyPattern::emit_items
+th20::EnemyController::set_selected
+th20::EnemyController::set_field_84_bit_0
+th20::EnemyHealth::set_scaled_health
