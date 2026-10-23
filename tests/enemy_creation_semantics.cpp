@@ -88,6 +88,143 @@ int Enemy::apply_spawn(const EnemySpawn& parameters) {
 }
 }
 
+namespace {
+std::function<int(th20::Enemy&)> clear_defeat_capture;
+std::function<void(th20::AnimationHandle&)> clear_retire_capture;
+template<class T> auto clear_image(const T& value) {
+    std::array<unsigned char,sizeof(T)> out;
+    std::memcpy(out.data(),&value,sizeof(value));return out;
+}
+template<class T,class V> void clear_patch(std::array<unsigned char,sizeof(T)>& image,
+    const T& owner,const V& member,const V& value) {
+    const auto offset=reinterpret_cast<const unsigned char*>(&member)-reinterpret_cast<const unsigned char*>(&owner);
+    std::memcpy(image.data()+offset,&value,sizeof(value));
+}
+void invoke_clear(th20::EnemyController& controller,int variant,int selector) {
+    switch(variant) {
+    case 0:controller.clear();break;
+    case 1:controller.clear_matching(selector);break;
+    case 2:controller.clear_variant_565();break;
+    case 3:controller.clear_variant_573();break;
+    default:std::abort();
+    }
+}
+void check_enemy_clear_protocol() {
+    using namespace th20;
+    unsigned scenarios=0;
+    for(int variant=0;variant<4;++variant)for(unsigned bits=0;bits<128;++bits)
+    for(int selector:{-1,7,9})for(unsigned count:{0u,1u,3u}) {
+        EnemyController controller;Enemy enemy;
+        controller.enemies.append(&enemy.controller_link);
+        auto& state=enemy.state;
+        state.flags.word_00=0x80000000u|((bits&1u)?32u:0u)|((bits&2u)?128u:0u)
+            |((bits&4u)?1024u:0u)|((bits&32u)?256u:0u);
+        state.flags.word_04=0x10000u|((bits&8u)?64u:0u)|((bits&16u)?128u:0u)
+            |((bits&64u)?0x40000000u:0u);
+        state.field_30=7;state.field_27c=31;state.field_284=29;state.vector_6c={11,13,17};
+        std::memset(static_cast<void*>(&state.pattern),0x5a,sizeof(state.pattern));
+        state.animations.resize(count);
+        for(unsigned i=0;i<count;++i)state.animations[i].handle.value=i?0xffffffffu:0u;
+        auto* storage=state.animations.data();auto capacity=state.animations.capacity();
+        controller.data.timer_8c=23;
+        const auto owner_before=clear_image(controller);auto enemy_expected=clear_image(enemy);
+        const unsigned old04=state.flags.word_04;
+        const bool eligible=((bits&31u)==0 || (bits&32u))
+            && (variant!=1 || selector==7) && (variant!=3 || !(bits&64u));
+        unsigned defeated=0,retired=0;
+        EnemyPattern reset_expected;
+        std::memset(static_cast<void*>(&reset_expected),0,sizeof(reset_expected));
+        reset_expected.radius_x=reset_expected.radius_y=32;
+        reset_expected.timer.previous=-1;reset_expected.timer.flags=1;
+        clear_defeat_capture=[&](Enemy& actual) {
+            assert(&actual==&enemy && eligible);++defeated;
+            assert(!std::memcmp(&state.pattern,&reset_expected,sizeof(reset_expected)));
+            assert(state.vector_6c.x==0 && state.vector_6c.y==192 && state.vector_6c.z==17);
+            assert(state.field_284==0 && state.field_27c==(variant==2?-1:31));
+            assert(state.flags.word_04==old04 && state.animations.size()==count);
+            assert(controller.data.timer_8c.current==23 && enemy.controller_link.iterator);
+            state.flags.word_04^=0x100000u;return 0x100;
+        };
+        clear_retire_capture=[&](AnimationHandle& handle) {
+            assert(defeated==1 && state.animations.size()==count);
+            assert(&handle==&state.animations[retired].handle);
+            assert(handle.value==(retired?0xffffffffu:0u));
+            assert(controller.data.timer_8c.current==23);++retired;handle.value=0;
+        };
+        invoke_clear(controller,variant,selector);
+        assert(defeated==unsigned(eligible) && retired==(eligible?count:0));
+        assert(state.animations.size()==(eligible?0:count));
+        assert(state.animations.data()==storage && state.animations.capacity()==capacity);
+        if(eligible) {
+            clear_patch(enemy_expected,enemy,state.pattern,reset_expected);
+            clear_patch(enemy_expected,enemy,state.vector_6c.x,0.f);
+            clear_patch(enemy_expected,enemy,state.vector_6c.y,192.f);
+            clear_patch(enemy_expected,enemy,state.field_284,0);
+            if(variant==2)clear_patch(enemy_expected,enemy,state.field_27c,-1);
+            clear_patch(enemy_expected,enemy,state.flags.word_04,(old04^0x100000u)|0x200u);
+            // The standard vector's opaque control object has separate size,
+            // storage and capacity assertions; all other Enemy bytes are modeled.
+            clear_patch(enemy_expected,enemy,state.animations,state.animations);
+        }
+        assert(clear_image(enemy)==enemy_expected);
+        auto owner_expected=owner_before;
+        Timer expected_timer=controller.data.timer_8c;
+        assert(expected_timer.previous==23 && expected_timer.current==24 && expected_timer.current_fraction==24.f);
+        clear_patch(owner_expected,controller,controller.data.timer_8c,expected_timer);
+        assert(clear_image(controller)==owner_expected);
+        assert(!enemy.controller_link.iterator);enemy.controller_link.detach();++scenarios;
+    }
+    // Native defeat and retirement are explicit resource boundaries. Reentrant
+    // callbacks may detach current/pending nodes, append a later node, replace
+    // animation records, or throw; the actual observer/list implementation runs.
+    for(int variant=0;variant<4;++variant)for(int action=0;action<6;++action) {
+        EnemyController controller;Enemy first,second,third,added;
+        std::array<Enemy*,4> actors{&first,&second,&third,&added};
+        for(auto* e:actors){e->state.field_30=7;e->state.animations.resize(1);e->state.animations[0].handle.value=31;}
+        controller.enemies.append(&first.controller_link);controller.enemies.append(&second.controller_link);controller.enemies.append(&third.controller_link);
+        controller.data.timer_8c=23;std::vector<Enemy*> order;unsigned retirements=0;
+        clear_defeat_capture=[&](Enemy& actor) {
+            order.push_back(&actor);
+            if(&actor==&first) {
+                if(action==0)first.controller_link.detach();
+                if(action==1)second.controller_link.detach();
+                if(action==2){first.controller_link.detach();second.controller_link.detach();}
+                if(action==3)controller.enemies.append(&added.controller_link);
+                if(action==4){first.state.animations.resize(2);first.state.animations[1].handle.value=99;}
+                if(action==5)throw std::runtime_error("Captured whole defeat failure");
+            }
+            return 1;
+        };
+        clear_retire_capture=[&](AnimationHandle& handle){++retirements;handle.value=0;};
+        bool threw=false;try{invoke_clear(controller,variant,7);}catch(const std::runtime_error&){threw=true;}
+        std::vector<Enemy*> expected{&first};
+        if(action!=5){if(action!=1&&action!=2)expected.push_back(&second);expected.push_back(&third);if(action==3)expected.push_back(&added);}
+        assert(order==expected && threw==(action==5));
+        assert(retirements==(action==5?0u:unsigned(expected.size())+(action==4?1u:0u)));
+        assert(controller.data.timer_8c.current==(action==5?23:24));
+        for(auto* e:actors){assert(!e->controller_link.iterator);e->controller_link.detach();}
+        ++scenarios;
+    }
+    for(int variant=0;variant<4;++variant) {
+        EnemyController controller;Enemy enemy;controller.enemies.append(&enemy.controller_link);
+        enemy.state.field_30=7;enemy.state.animations.resize(3);enemy.state.flags.word_04=0x10000;
+        controller.data.timer_8c=23;unsigned retired=0;
+        clear_defeat_capture=[](Enemy&){return 1;};
+        clear_retire_capture=[&](AnimationHandle& handle){if(++retired==2)throw std::runtime_error("Captured retirement failure");handle.value=0;};
+        bool threw=false;try{invoke_clear(controller,variant,7);}catch(const std::runtime_error&){threw=true;}
+        assert(threw && retired==2 && enemy.state.animations.size()==3);
+        assert(enemy.state.flags.word_04==0x10000 && controller.data.timer_8c.current==23 && !enemy.controller_link.iterator);
+        enemy.controller_link.detach();++scenarios;
+    }
+    clear_defeat_capture={};clear_retire_capture={};
+    std::printf("Owned Enemy clear passed: %u filter/order/topology/exception scenarios.\n",scenarios);
+}
+}
+namespace th20 {
+std::int32_t Enemy::defeat(){assert(clear_defeat_capture);return clear_defeat_capture(*this);}
+void AnimationHandle::retire(){assert(clear_retire_capture);clear_retire_capture(*this);}
+}
+
 int main() {
     using namespace th20;
     EnemyController controller;
@@ -298,4 +435,5 @@ int main() {
     assert(controller.enemies.tail == &controller.enemies && !controller.enemies.next);
     assert(first->children.tail == &first->children && !first->children.next);
     allocated.clear();
+    check_enemy_clear_protocol();
 }

@@ -930,3 +930,8 @@ th20::Card::request_flag_3
 th20::Card::request_flag_4
 th20::Card::set_flag_8
 th20::EnemyHealth::set_scaled_enabled
+th20::EnemyController::clear
+th20::EnemyController::clear_matching
+th20::EnemyController::clear_variant_565
+th20::EnemyController::clear_variant_573
+th20::EnemyState::flag_04_bit_30

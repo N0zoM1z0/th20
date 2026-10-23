@@ -121,3 +121,9 @@ paths come from match-units.toml. Shared source/header changes require affected
 fresh compilation and strict replay. Preserve original SHA-bound input archives
 before retiring superseded products. See [oracles](ORACLES.md) and
 [build/matching](BUILD_MATCHING.md).
+
+EnemySpawning.cpp owns four complete Controller clear variants over the real
+observer list; EnemyState.cpp owns the bit30 query. Enemy.hpp declares the genuine
+whole defeat boundary, whose body remains undefined. Six integrated clear,
+selection and return paths extend the same private whole-root candidate; see
+[clear protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md).

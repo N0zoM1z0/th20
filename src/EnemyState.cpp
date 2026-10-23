@@ -26,6 +26,8 @@ EnemyState::EnemyState() : identifier(), identifier_04(), entity(nullptr),
 
 EnemyState::~EnemyState() = default;
 
+bool EnemyState::flag_04_bit_30() { return (flags.word_04 >> 30) & 1u; }
+
 int EnemyState::initialize() {
     movements.clear();
     auto& movement_records = movements;

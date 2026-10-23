@@ -47,6 +47,8 @@ struct Enemy : EclManager {
     void initialize(std::int32_t index, const char* name);
     int tick();
     int apply_spawn(const EnemySpawn& parameters);
+    // Whole native defeat/resource processing remains undefined.
+    std::int32_t defeat();
 };
 
 #if defined(_M_IX86)

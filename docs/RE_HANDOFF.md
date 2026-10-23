@@ -11,36 +11,37 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Its embedded title/replay label is 1.00c in the same executable. The Steam-original
 backup is provenance evidence. See [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 923 physical strict units, 164 canonical objects and 169,920
-disjoint comparison bytes. All 932 mapped functions have source; nine whole
-mapped functions remain nonexact. Authored exact coverage is separately 185
-functions / 47,850 bytes, with 197 confirmed authored origins. The pinned
+The graph contains 928 physical strict units, 164 canonical objects and 172,008
+disjoint comparison bytes. All 937 mapped functions have source; nine whole
+mapped functions remain nonexact. Authored exact coverage is separately 189
+functions / 49,912 bytes, with 201 confirmed authored origins. The pinned
 reference has 6,945 terminal implementation reviews and 113 reconciled parser-gap
 files. These counts establish neither whole-game 95% byte exactness nor a
 playable reconstruction; whole-program compilation and linkage remain open.
 
-CORE151 extends the same private whole-root draft to 90 values / 61 heads with
-ten Card paths. It passes 19,248 bounded O2/UBSan scenarios; the production
-dispatcher remains undefined and receives no partial exact credit. The public
-Card fixture separately checks 104 flag/health/retirement-order cases. Four
-complete dependencies add 142 strict bytes; their origins remain pending.
-The complete ordinary native Card start/finish bodies establish two authored
-origins, but their production bodies remain undefined and receive no source or
-exact credit. See [Card caller protocol](ENEMY_CARD_STATE_RECONSTRUCTION.md)
-and retained [health/boss state](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md).
+CORE152 extends the same private whole-root draft to 96 values / 67 heads with
+clear, selection and return paths. It passes 19,350 bounded O2/UBSan scenarios;
+the production dispatcher remains undefined and receives no partial exact credit.
+The public actual-owner fixture separately checks 4,636 clear protocol cases.
+Five complete dependencies add 2,088 strict bytes; the four authored clear roots
+account for 2,062 bytes, while the flag query origin remains pending. The genuine
+whole Enemy::defeat at 0x4A5640 remains source-absent. See
+[clear protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md); retained
+[Card callers](ENEMY_CARD_STATE_RECONSTRUCTION.md) and
+[health/boss state](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md) remain valid.
 
 ## Current verification and cleanup
 
-Only 19 affected providers / 95 previous units are cold-built and strictly
-replayed, followed by the four new units. The other 145 providers reuse existing
-evidence. The focused public Card test and expanded private whole-root fixture
-pass. There is no unfiltered replay or full CI run.
-Current proofs are `.analysis/core151-cold-proof.json`,
-`core151-affected-results.json.gz`, `core151-new-exact-results.json.gz` and
-`core151-graph-audit.json`; cleanup and final gates are `core151-cleanup.json`
-and `core151-gates.json`. Cleanup only verifies protected hashes.
-The 43 superseded product files total 2,170,821 bytes; their authentic probe and
-fixture inputs/receipts are preserved in the 302,337-byte retirement archive.
+Only 17 affected providers / 82 previous units are cold-built and strictly
+replayed, followed by the five new units. The other 147 providers reuse existing
+evidence. The focused public Enemy creation/clear test and expanded private
+whole-root fixture pass. There is no unfiltered replay or full CI run.
+Current proofs are `.analysis/core152-cold-proof.json`,
+`core152-affected-results.json.gz`, `core152-new-exact-results.json.gz` and
+`core152-graph-audit.json`; cleanup and final gates are `core152-cleanup.json`
+and `core152-gates.json`. Cleanup only verifies protected hashes.
+The 39 superseded product files total 2,248,403 bytes; their authentic probe and
+fixture inputs/receipts are preserved in the 341,878-byte retirement archive.
 The earlier handoff's archived successful reports remain mapped by
 `handoff146-retirement-plan.json`; use `gzip.open` for their verified `.gz` copies.
 Native evidence, original inputs, installed tools, reference, Ghidra and supplied
@@ -50,12 +51,9 @@ The earlier documentation-only archive lookup remains
 `handoff149-retirement-plan.json`. Read `handoff144-protected-inventory.json.gz`
 and `core131-admission-results.json.gz` with `gzip.open` instead of their old paths.
 
-The 2026-10-23 documentation-only handoff changes no reconstruction inputs:
-zero replay units, compiler builds, Ghidra runs or full CI runs. Its private
-lookup is `handoff152-retirement-plan.json`. It losslessly archives 56 superseded
-source-hash reports from 1,318,023 to 652,213 bytes, saving 665,810 bytes. Every
-decompressed SHA-256 and all 832 protected file hashes are verified. Current
-freezes, canonical products, native evidence and active probes remain intact.
+Historical source-hash snapshots are losslessly archived through
+`handoff152-retirement-plan.json`. Current source freezes, original inputs and
+active evidence remain protected; read the archived reports with `gzip.open`.
 
 ## Protected local products
 
@@ -67,11 +65,12 @@ freezes, canonical products, native evidence and active probes remain intact.
 | `build/core145-canonical/` | 17 | Every sibling `.receipt.json` |
 | `build/core148-canonical/` | 14 | Every sibling `.receipt.json` |
 | `build/core149-canonical/` | 2 | Every sibling `.receipt.json` |
-| `build/core151-canonical/` | 19 | Every sibling `.receipt.json` |
+| `build/core151-canonical/` | 2 | Every sibling `.receipt.json` |
+| `build/core152-canonical/` | 17 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. The current 279-path
-source freeze is `.analysis/core151-final-frozen-source.json`. Current acceptance,
-affected replay and graph contracts are the CORE151 records above. Earlier
+source freeze is `.analysis/core152-final-frozen-source.json`. Current acceptance,
+affected replay and graph contracts are the CORE152 records above. Earlier
 independent identities and original acceptance
 remain preserved in their focused evidence and private archives.
 Private filenames in this section are relative to `.analysis/`.
@@ -82,10 +81,11 @@ closures support unresolved [damage-query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.
 and [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) work, not current canonical credit.
 Hashes are in `core141-retained-private-products.json`. Also retain the current
 `build/core144-probes/Alignment.obj` and receipt for the unfinished owner inquiry.
-The superseded CORE151 helper probes and completed host binary are retired.
-Their original receipts and SHA-bound inputs are in `core151-retired-inputs.json.gz`;
+The superseded CORE152 clear probes and completed host binary are retired.
+Their original receipts and SHA-bound inputs are in `core152-retired-inputs.json.gz`;
 native exports, rejected source and the active draft/fixture remain intact.
-Preserve `core151-pre-card-inputs.json.gz`, all CORE150, CORE149 and CORE148 original-input archives,
+Preserve `core152-pre-clear-inputs.json.gz`, `core151-pre-card-inputs.json.gz`,
+all CORE151, CORE150, CORE149 and CORE148 original-input archives,
 both CORE147 original-input archives,
 all CORE145 original-input archives and all earlier input/evidence archives.
 Receipts retain their authentic original inputs and must never be rewritten.
@@ -93,9 +93,10 @@ Receipts retain their authentic original inputs and must never be rewritten.
 Preserve private `.analysis/core149-pattern/`, `.analysis/core150-owner/` and `.analysis/core151-flags/`
 sources and their native exports. Unfinished emission and ABI questions retain
 their complete source/native evidence; do not repeat unchanged rejected trials.
-The unfinished clear/selection inquiry also retains `.analysis/core152-clear/`,
-its native exports and `build/core152-probes/Clear.obj` with its original receipt.
-This initial probe has no accepted source, mapping or exact credit.
+Preserve `.analysis/core152-clear/`, its native exports and the integrated
+`.analysis/core152-enemy-dispatch-candidate.cpp` / `core152-dispatch-host.cpp`.
+The retired probe receipts remain authentic in the archive above; the whole
+dispatcher draft still has no accepted source, mapping or exact credit.
 
 ## Next work and existing private leads
 
@@ -123,14 +124,17 @@ This initial probe has no accepted source, mapping or exact credit.
    contribution ownership remains unresolved. Continue the same whole-root
    source construction beyond the private 400..448 movement draft. The 500..575
    owner/state family has a private 75-value / 71-head catalog, complete phase
-   producers and phase, counter, drop, health, boss and Card paths in the integrated
-   private draft. Continue its
-   remaining genuine receiver ownership and state paths; reuse the closed record
+   producers and phase, counter, drop, health, boss, Card, clear, selection and
+   return paths in the integrated private draft. Continue its remaining genuine
+   receiver ownership and state paths; reuse the closed record
    defaults, replacement gates, counters, drop/scatter, checked publication and
    the Card decoding/live-metadata sequence. The source-absent native Card start
    at 0x487C30 (1,896 ordinary bytes) and finish at 0x4878B0 (602 bytes) need real
    UI/record/Renderer closure; preserve full EH/resource effects before coding
-   them. See [Card caller protocol](ENEMY_CARD_STATE_RECONSTRUCTION.md),
+   them. The whole 1,371-byte Enemy::defeat at 0x4A5640 also needs genuine
+   recursive child/script/resource closure; its declaration and captured calls
+   receive no source or exact credit. See [clear protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md),
+   [Card caller protocol](ENEMY_CARD_STATE_RECONSTRUCTION.md),
    [health and boss state](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md),
    [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md),
    [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) and

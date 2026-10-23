@@ -51,6 +51,10 @@ struct EnemyController : TaskInfo {
     std::int32_t count() const;
     std::int32_t capacity() const;
     Enemy* create(const char* name, const EnemySpawn& parameters, Enemy* parent);
+    void clear();
+    void clear_matching(std::int32_t field_30);
+    void clear_variant_565();
+    void clear_variant_573();
     EclLoader* script_loader() const;
     std::uint32_t generation() const;
     std::uint32_t advance_generation();

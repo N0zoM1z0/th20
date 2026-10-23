@@ -104,6 +104,7 @@ struct EnemyState {
     int tick();
     int advance_scripts();
     void combine_movements();
+    bool flag_04_bit_30();
     int update_movements();
     void update_mesh();
     Vector3& position_ref();
