@@ -64,6 +64,11 @@ previous acceptance; new exact credit still requires a fresh locked-compiler
 build. Both modes support repeated `--source src/Owner.cpp` filters. For a single
 affected unit, use `build.py --unit NAME` and `compare-coff-function.py --unit NAME`.
 Never run an unfiltered replay merely for handoff, cleanup or reassurance.
+Historical full-replay instructions do not override the user's affected-only
+rule. Shared headers expand the captured include closure; they do not by
+themselves require replaying unrelated providers. State the affected provider
+and unit counts in the verification record, including zero for documentation
+and cleanup.
 
 A unit uses TH095's schema:
 

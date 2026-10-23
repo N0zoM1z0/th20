@@ -43,6 +43,14 @@ The earlier handoff's archived successful reports remain mapped by
 Native evidence, original inputs, installed tools, reference, Ghidra and supplied
 game files remain protected.
 
+The subsequent documentation-only handoff changes no reconstruction inputs:
+zero affected providers, builds or replay units. Protected hashes pass for all
+328 canonical products, 22 private products and 279 source paths. Two historical
+generated reports are archived losslessly, reducing their size by 787,780 bytes.
+The path/hash lookup is `handoff149-retirement-plan.json`; the cleanup summary is
+`handoff149-cleanup.json`. Read `handoff144-protected-inventory.json.gz` and
+`core131-admission-results.json.gz` with `gzip.open` instead of their old paths.
+
 ## Protected local products
 
 | Canonical directory | Objects | Required companions |
@@ -73,6 +81,11 @@ native exports, rejected source and the active draft/fixture remain intact.
 Preserve `core148-pre-session-inputs.json.gz`, both CORE147 original-input archives,
 all CORE145 original-input archives and all earlier input/evidence archives.
 Receipts retain their authentic original inputs and must never be rewritten.
+
+Also preserve `build/core149-probes/Drops.obj` and its original receipt, the
+private `.analysis/core149-pattern/` sources and the CORE149 native exports.
+This unfinished drop-protocol investigation has no new accepted units or
+production changes. Its protected hashes are in `handoff149-retirement-plan.json`.
 
 ## Next work and existing private leads
 

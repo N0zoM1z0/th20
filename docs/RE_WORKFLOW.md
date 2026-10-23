@@ -142,6 +142,11 @@ active inputs intact. Read archived evidence with `gzip.open` through
 `scripts/repo-python`; an archived path is preserved evidence, not a missing
 verification. Store cleanup-only replay reports compressed from the outset.
 
+Superseded generated handoff inventories may also be archived losslessly after
+checking that the current handoff uses a newer inventory. Preserve their exact
+decompressed bytes, record both hashes and update the current handoff's archive
+lookup. Do not retire the current product inventory or active investigation inputs.
+
 Completed historical public-CI logs may likewise be archived as `.log.gz` after
 checking their terminal success marker and successful test summary. Record the
 original path, original SHA-256, archive path and archive SHA-256 in the private
