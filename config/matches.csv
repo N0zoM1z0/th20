@@ -191,3 +191,9 @@ address,name,size,status,match_percent,unit,evidence
 0x00498E70,th20::EffectInfo::select_handle_slot,196,matching,100.00,effect_select_handle_slot,CORE/EXACT-153; docs/ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md
 0x00497D20,th20::EffectInfo::publish_handle,79,matching,100.00,effect_publish_handle,CORE/EXACT-153; docs/ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md
 0x004A5640,th20::Enemy::defeat,1371,matching,100.00,enemy_defeat,CORE/EXACT-155; docs/ENEMY_DEFEAT_RECONSTRUCTION.md
+0x004A9EC0,th20::PlayerRecord::add_field_64,83,matching,100.00,player_record_add_field_64,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
+0x004A9D80,th20::PlayerRecord::add_field_68,83,matching,100.00,player_record_add_field_68,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
+0x004A9F20,th20::PlayerRecord::add_field_6c,83,matching,100.00,player_record_add_field_6c,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
+0x004A9E60,th20::PlayerRecord::add_field_70,83,matching,100.00,player_record_add_field_70,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
+0x004A9DE0,th20::PlayerRecord::add_reward,95,matching,100.00,player_record_add_reward,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md
+0x00540230,th20::EclLoader::select_index,66,matching,100.00,ecl_loader_select_index,CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md

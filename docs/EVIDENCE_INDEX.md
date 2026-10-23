@@ -36,6 +36,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Enemy clear, selection and return protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md) — four complete authored clear roots, observer mutation/exception order, shared native EH and six integrated caller paths.
 - [Enemy defeat resources and corrected owner fields](ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md) — actual normalized Angle, identified EffectInfo file/cursor storage, complete handle publication, and remaining whole defeat owners.
 - [Whole Enemy defeat reconstruction](ENEMY_DEFEAT_RECONSTRUCTION.md) — complete strict caller and independent EH code/data, genuine StoneEnemyController, corrected +38 counter, bounded semantic checks and separate nonexact callee emission.
+- [Defeat feedback, reward and indexed-script state](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md) — actual Timer-backed Feedback, full reward dispatch/table and channel state, indexed ECL selection, real-owner integration and the remaining Feedback emission gap.
 - [Enemy phase producer reconstruction](ENEMY_PHASE_PRODUCER_INVESTIGATION.md) — complete Enemy-owned configuration/timeout protocol, implicit record defaults and typed STL support; affected-only verification.
 - [ECL buffer registration and instruction resolution](ECL_BUFFER_RECONSTRUCTION.md)
 - [ECL wire-header extents and exact instruction resolution](ECL_BUFFER_EXACT_RECONSTRUCTION.md)

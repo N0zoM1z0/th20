@@ -117,10 +117,11 @@ anchor the accepted callers; neither callee receives standalone exact credit.
 SDK/emission provenance remains unresolved. The actual function storage is 40
 bytes on x86 and its implementation pointer is slot9 at +0x24.
 
-PlayerFeedback::record_hit, PlayerRecord::add_reward, the indexed ECL selector,
-weapon_stone_info, SoundInf::request_effect_at and the Controller resource
-dispatcher remain undefined production interfaces. Capturing them in a fixture
-does not reconstruct those bodies or close whole-program linkage.
+CORE156 maintains the full Feedback, reward and indexed-selection bodies in
+[the state protocol](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md). The Feedback update
+remains 114/native115 and nonexact. weapon_stone_info, SoundInf::request_effect_at
+and the Controller resource dispatcher remain undefined production interfaces;
+resource creation and VM execution remain separate integration boundaries.
 
 ## Bounded verification and retained evidence
 
@@ -131,15 +132,15 @@ unchanged CORE154 objects and pass their own complete replay. The earlier
 52-provider/364-unit CORE154 proof remains preserved; it is not repeated.
 No whole-graph replay or full CI is run.
 
-The public O2/UBSan fixture passes 10,240 combinations, twelve interface failures
-and five recursive topology cases. It uses maintained owner storage, actual
+The public O2/UBSan fixture passes 10,240 combinations, eight remaining external
+interface failures and five recursive topology cases. It uses maintained owner storage, actual
 handle publication, record clamps and random advancement. It checks full actor,
 Controller, record and feedback images, event prefixes, script returns, pending
 child detachment, post-call node reload and iterator cleanup after exceptions.
-The corrected getter is tested with unequal +30/+38 words, and the captured
-feedback publication writes both words before the caller reads +38. Earlier
-Enemy creation/clear and spawn/tick results are retained; this batch reruns only
-the affected defeat fixture.
+The corrected getter is tested with unequal +30/+38 words. CORE156 replaces the
+Feedback/reward/reset/index captures with actual maintained bodies and adds their
+independent state models; see [state verification](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md).
+Earlier Enemy creation/clear and spawn/tick results are retained.
 
 The test domain uses live owner pointers, nonnegative feedback counts, valid
 effect cursors, finite positions and acyclic child lists. Resource-free startup,

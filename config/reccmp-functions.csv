@@ -955,3 +955,15 @@ th20::PlayerRecord::add_field_5c,0x00477F60,function
 std::function<void(th20::Enemy*)>::operator bool,0x004145A0,function
 "std::_Func_class<void,th20::Enemy*>::_Empty",0x00414A80,function
 "std::_Func_class<void,th20::Enemy*>::_Getimpl",0x00414AD0,function
+th20::PlayerFeedback::operator+=,0x0045C300,function
+th20::PlayerRecord::reward_limit,0x004AAFA0,function
+th20::PlayerRecord::add_field_64,0x004A9EC0,function
+th20::PlayerRecord::add_field_68,0x004A9D80,function
+th20::PlayerRecord::add_field_6c,0x004A9F20,function
+th20::PlayerRecord::add_field_70,0x004A9E60,function
+th20::PlayerRecord::add_reward,0x004A9DE0,function
+th20::EclManager::set_subroutine_index,0x00540530,function
+th20::EclLoader::select_index,0x00540230,function
+th20::EclManager::select_subroutine_index,0x005401D0,function
+th20::Timer::operator+=,0x004297A0,function
+th20::PlayerFeedback::record_hit,0x004FB3A0,function

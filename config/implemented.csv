@@ -954,3 +954,15 @@ th20::PlayerRecord::add_field_5c
 std::function<void(th20::Enemy*)>::operator bool
 "std::_Func_class<void,th20::Enemy*>::_Empty"
 "std::_Func_class<void,th20::Enemy*>::_Getimpl"
+th20::PlayerFeedback::operator+=
+th20::PlayerRecord::reward_limit
+th20::PlayerRecord::add_field_64
+th20::PlayerRecord::add_field_68
+th20::PlayerRecord::add_field_6c
+th20::PlayerRecord::add_field_70
+th20::PlayerRecord::add_reward
+th20::EclManager::set_subroutine_index
+th20::EclLoader::select_index
+th20::EclManager::select_subroutine_index
+th20::Timer::operator+=
+th20::PlayerFeedback::record_hit

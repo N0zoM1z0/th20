@@ -3,6 +3,11 @@
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
+CORE156 corrects the offset-zero Feedback Timer to a base subobject, corroborated
+by ordinary updates and the unchanged complete constructor. Its real state
+protocol and current emission boundary are in
+[defeat state reconstruction](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md).
+
 EXACT-076 maintains seven complete construction contributions for the actual
 Player subobjects required by the larger Enemy reader investigation. These are
 typed native records with complete array and exception protocols. The complete

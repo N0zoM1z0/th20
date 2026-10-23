@@ -26,7 +26,7 @@ class EnemyDefeatTests(unittest.TestCase):
             "GameRandomAngle", "MeshInterfaces", "Player", "PlayerStorage", "Rectangle",
             "EclDiagnostic", "DamageQueryProtocol", "Session", "PlayerRecord", "Card",
             "EnemySpawning", "WeaponStoneInfo", "OverlayCounter", "EffectParameters",
-            "ItemLifecycleAccess", "SoundEffects",
+            "ItemLifecycleAccess", "SoundEffects", "EclSelection", "EclLoaderBase",
         ]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "enemy-defeat"

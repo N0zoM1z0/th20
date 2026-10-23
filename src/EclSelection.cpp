@@ -49,4 +49,19 @@ void EclManager::select_subroutine(const char* name) {
 void EclManager::set_offset(std::int32_t value) { current_runtime->position.offset = value; }
 void EclManager::set_time(float value) { current_runtime->time = value; }
 
+void EclManager::set_subroutine_index(std::int32_t value) {
+    current_runtime->position.subroutine = value;
+}
+int EclLoader::select_index(EclManager* manager, std::int32_t index) {
+    manager->set_loader(this);
+    manager->set_subroutine_index(index);
+    manager->set_offset(0);
+    manager->set_time(0.0f);
+    return 0;
+}
+std::int32_t EclManager::select_subroutine_index(std::int32_t index) {
+    auto* source = loader;
+    return source->select_index(this, index);
+}
+
 } // namespace th20

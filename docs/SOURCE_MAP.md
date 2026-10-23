@@ -143,3 +143,11 @@ callback helpers are strict exact. PlayerFeedback's actual counter getter reads
 +38 and folds to the existing physical duration-getter unit without duplicate
 credit. The list constructor and SDK callback invocation retain separate emission
 differences. See [whole defeat acceptance](ENEMY_DEFEAT_RECONSTRUCTION.md).
+
+PlayerStorage.cpp owns the actual Timer-backed Feedback operations; the complete
+update remains 114/native115 and nonexact. PlayerRecord.cpp owns all four reward
+channels and the complete dispatcher/table. EclSelection.cpp owns indexed loader
+selection, cached Manager routing and the direct index setter. The integrated
+defeat fixture uses these actual bodies and the maintained ECL reset, with
+remaining VM/resource calls explicitly captured. See
+[defeat state protocols](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md).

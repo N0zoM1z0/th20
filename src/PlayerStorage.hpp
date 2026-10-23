@@ -42,8 +42,8 @@ struct PlayerOption {
     Context* context;
     PlayerOption() noexcept;
 };
-struct PlayerFeedback {
-    Timer timer_00,timer_10,timer_20;
+struct PlayerFeedback : Timer {
+    Timer timer_10,timer_20;
     std::uint32_t field_30,field_34,field_38,field_3c;
     Vector3 vector_40;
     AnimationHandle handle_4c;
@@ -51,6 +51,7 @@ struct PlayerFeedback {
     std::int32_t player_index;
     Context* context;
     PlayerFeedback();
+    void operator+=(std::int32_t amount);
     void record_hit(std::int32_t value);
     std::int32_t count_value();
 };

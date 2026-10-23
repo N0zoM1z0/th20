@@ -31,7 +31,7 @@ void defaults(const PlayerOption& v) {
     assert(v.player_index==0 && !v.context);
 }
 void defaults(const PlayerFeedback& v) {
-    zero(v.timer_00); zero(v.timer_10); zero(v.timer_20); zero(v.vector_40);
+    zero(static_cast<const Timer&>(v)); zero(v.timer_10); zero(v.timer_20); zero(v.vector_40);
     assert(v.field_30==0 && v.field_34==0 && v.field_38==0 && v.field_3c==0);
     assert(v.handle_4c.value==0 && v.enabled==0 && v.player_index==0 && !v.context);
 }

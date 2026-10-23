@@ -19,5 +19,15 @@ PlayerShotController::PlayerShotController()
     :field_12460(0),field_12464(0),counters_12468{},counters_124e0{},field_12558(0),
      flags_1255c{},field_12564(0),field_12578(0),byte_1257c(0),player_index(0),context(nullptr) {}
 std::int32_t PlayerFeedback::count_value() { return static_cast<std::int32_t>(field_38); }
+void PlayerFeedback::operator+=(std::int32_t amount) { Timer::operator+=(amount); }
+void PlayerFeedback::record_hit(std::int32_t amount) {
+    *this += amount;
+    Timer& timer = *this;
+    if (timer.greater_than(30)) Timer::operator=(30);
+    ++field_38;
+    field_30 = field_38;
+    if (static_cast<std::int32_t>(field_3c) < static_cast<std::int32_t>(field_30))
+        field_3c = field_30;
+}
 
 }

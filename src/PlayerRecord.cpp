@@ -272,4 +272,46 @@ void PlayerRecord::add_field_5c(std::int32_t amount) {
     field_5c = std::clamp(field_5c, 0, 10000);
 }
 
+std::int32_t PlayerRecord::reward_limit() { return 1000; }
+void PlayerRecord::add_field_64(std::int32_t amount) {
+    field_64 = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_64)
+        + static_cast<std::uint32_t>(amount));
+    if (field_64 >= reward_limit()) {
+        field_64 = reward_limit();
+        if (field_98 < 0) field_98 = 0;
+    }
+}
+void PlayerRecord::add_field_68(std::int32_t amount) {
+    field_68 = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_68)
+        + static_cast<std::uint32_t>(amount));
+    if (field_68 >= reward_limit()) {
+        field_68 = reward_limit();
+        if (field_98 < 0) field_98 = 1;
+    }
+}
+void PlayerRecord::add_field_6c(std::int32_t amount) {
+    field_6c = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_6c)
+        + static_cast<std::uint32_t>(amount));
+    if (field_6c >= reward_limit()) {
+        field_6c = reward_limit();
+        if (field_98 < 0) field_98 = 2;
+    }
+}
+void PlayerRecord::add_field_70(std::int32_t amount) {
+    field_70 = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_70)
+        + static_cast<std::uint32_t>(amount));
+    if (field_70 >= reward_limit()) {
+        field_70 = reward_limit();
+        if (field_98 < 0) field_98 = 3;
+    }
+}
+void PlayerRecord::add_reward(std::int32_t kind, std::int32_t amount) {
+    switch (kind) {
+    case 0: case 1: default: add_field_64(amount); break;
+    case 2: case 3: add_field_68(amount); break;
+    case 4: case 5: add_field_6c(amount); break;
+    case 6: case 7: add_field_70(amount); break;
+    }
+}
+
 } // namespace th20

@@ -104,6 +104,7 @@ public:
     int append(std::uint8_t* buffer);
     int activate(EclManager* manager, const char* name);
     int select(EclManager* manager, const char* name);
+    int select_index(EclManager* manager, std::int32_t index);
     std::int32_t subroutine_index(const char* name);
     EclInstruction* instruction(std::int32_t subroutine, std::int32_t offset);
 };
@@ -130,6 +131,7 @@ public:
     void set_loader(EclLoader* value);
     void select_subroutine(const char* name);
     std::int32_t select_subroutine_index(std::int32_t index);
+    void set_subroutine_index(std::int32_t value);
     void set_offset(std::int32_t value);
     void set_time(float value);
     EclLoader* loader_value() const;
