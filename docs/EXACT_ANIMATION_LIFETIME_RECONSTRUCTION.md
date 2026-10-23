@@ -1,5 +1,8 @@
 # EXACT-060: ANM construction, resource lifetime and reset
 
+CORE/EXACT-143 now accepts the complete pooled-record and fixed-pool lifetimes.
+See [pool lifecycle evidence](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
@@ -55,10 +58,11 @@ code contributions include five trailing INT3 bytes each; all are compared.
 Animation.cpp uses one precise-FP /Od/Ob0/GS/Gy/Zl/SSE2/SDL/EHsc recipe. This
 is a local matching recipe, not recovery of the game's global compiler flags
 or original translation-unit partition. Shared child exception contracts remain
-unchanged. Natural PooledAnimation construction now emits115/native59 under
-this recipe because the real Animation destructor requires exception cleanup.
-That complete mismatch remains pending. The earlier59-byte trivial-lifetime
-probe is rejected. No prefix or exception-contract substitution is accepted.
+unchanged at this checkpoint. Its historical pooled constructor emitted
+115/native59. The current shared child contracts already emit the complete
+59-byte body; CORE143 accepts it with the real nontrivial Animation lifetime
+and without changing those contracts. The earlier trivial-lifetime probe remains
+rejected. No prefix or exception-contract substitution is accepted.
 
 ## Partial reset and inherited extents
 

@@ -1,4 +1,4 @@
-"""ANM lifetime, descriptor storage/binding and real File member teardown."""
+"""ANM/pool lifetime, descriptor binding and real File member teardown."""
 from pathlib import Path
 import shutil
 import subprocess
@@ -19,7 +19,7 @@ class AnimationSemanticsTests(unittest.TestCase):
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                 "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
                 "-Wl,--gc-sections", "-pthread", "-Isrc",
-                "tests/animation_semantics.cpp", "src/Animation.cpp", "src/AnimationFile.cpp", "src/AnimationOperands.cpp", "src/AnimationCallback.cpp", "src/AnimationChildren.cpp",
+                "tests/animation_semantics.cpp", "src/Animation.cpp", "src/AnimationFile.cpp", "src/AnimationOperands.cpp", "src/AnimationCallback.cpp", "src/AnimationChildren.cpp", "src/MeshResourceAccess.cpp",
                 "src/AnimationHandle.cpp", "src/AnmVariables.cpp", "src/Matrix4.cpp",
                 "src/Interpolation.cpp", "src/Easing.cpp", "src/Timer.cpp",
                 "src/ClockScalar.cpp", "src/Angle.cpp", "src/ScalarMath.cpp",

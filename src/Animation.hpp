@@ -183,14 +183,20 @@ struct Animation {
     void update_layer();
     void set_flag_byte_01(std::uint8_t value);
 };
-// Actual pooled storage. Natural construction remains nonexact under the
-// ANM EHsc recipe; do not change shared child contracts to erase cleanup.
+// Actual pooled storage; its constructor retains the shared child contracts.
+// The whole fixed-capacity owner follows the native array lifetime protocol.
 struct PooledAnimation {
     Animation animation;
     IntrusiveLink<Animation> free_link;
     std::uint8_t active;
     std::uint32_t index;
     PooledAnimation();
+};
+struct AnimationPool {
+    static constexpr std::size_t capacity = 65536;
+    PooledAnimation records[capacity];
+    AnimationPool() noexcept;
+    ~AnimationPool() noexcept;
 };
 static_assert(sizeof(AnimationBase) == 0x4c0);
 static_assert(offsetof(AnimationBase, variables) == 0x444);
@@ -204,5 +210,7 @@ static_assert(offsetof(Animation, link_53c) == 0x53c);
 static_assert(offsetof(Animation, matrix_57c) == 0x57c);
 static_assert(sizeof(PooledAnimation) == 0x600);
 static_assert(offsetof(PooledAnimation, active) == 0x5f8);
+static_assert(sizeof(AnimationPool) == 0x6000000);
+static_assert(offsetof(AnimationPool, records) == 0);
 #endif
 }

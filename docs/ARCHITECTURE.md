@@ -30,7 +30,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 
 | Area | Established structure | Remaining integration boundary |
 | --- | --- | --- |
-| Animation | Base 0x4C0, Animation 0x5E4, pooled record 0x600; real values/links/vertices, descriptor arrays/binding, template lifetime and File destruction | Whole VM, Renderer and loaded-File/buffer clearing |
+| Animation | Base 0x4C0, Animation 0x5E4, pooled record 0x600; complete 65,536-record pool lifetime, real values/links/vertices, descriptors/binding, template lifetime and File destruction | Whole VM, Renderer and loaded-File/buffer clearing |
 | Animation callbacks | Eight-byte base, five virtual slots; cdecl entry/script callbacks | Remaining concrete owners, lambda adapters and native RTTI name identity |
 | ECL | Runtime 72, Manager 112, Loader 564; actual stack/frame/async protocol, whole Runtime tick, buffer registration and instruction resolution | Full resource/startup graph and whole-program linkage |
 | Enemy | Actual EnemyState/Enemy, movement, parameters, handles and script dependencies | Whole 0x48C010 dispatcher and queue/factory emission |

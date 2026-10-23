@@ -281,6 +281,64 @@ template<class T> void retained_sample(const th20::Interpolation<T>& value) {
     assert(value.duration == 0 && value.mode == 91);
     assert(value.timer.current == 19);
 }
+
+std::vector<std::size_t> retired_pool_slots;
+struct PoolObserver final : th20::AnimationCallback {
+    std::size_t slot;
+    th20::Animation* animation;
+    PoolObserver(th20::Animation* owner, std::size_t index)
+        : AnimationCallback(owner), slot(index), animation(owner) {}
+    ~PoolObserver() override {
+        assert(animation->geometry == nullptr && animation->geometry_bytes == 0);
+        assert(animation->callback == this && animation->handle.value == slot + 1);
+        assert(animation->base.field_28 == 37);
+        if (retired_pool_slots.empty()) assert(lock_available_to_another_thread());
+        retired_pool_slots.push_back(slot);
+    }
+};
+
+void check_pool_lifetime() {
+    using namespace th20;
+    static_assert(AnimationPool::capacity == 65536);
+    static_assert(std::is_nothrow_default_constructible_v<AnimationPool>);
+    static_assert(std::is_nothrow_destructible_v<AnimationPool>);
+    static_assert(!std::is_nothrow_default_constructible_v<PooledAnimation>);
+    void* memory = ::operator new(sizeof(AnimationPool));
+    std::memset(memory, 0xa5, sizeof(AnimationPool));
+    auto* pool = ::new (memory) AnimationPool;
+    for (std::size_t i = 0; i < AnimationPool::capacity; ++i) {
+        auto& slot = pool->records[i];
+        auto& animation = slot.animation;
+        assert(!slot.active && !slot.index && !slot.free_link.node);
+        assert(!slot.free_link.next && !slot.free_link.previous);
+        assert(!slot.free_link.owner && !slot.free_link.iterator);
+        assert(!animation.geometry && !animation.callback && !animation.handle.value);
+        for (auto* link : {&animation.link_4ec, &animation.link_500,
+                          &animation.child_links[0], &animation.child_links[1], &animation.link_53c}) {
+            assert(link->node == &animation && !link->next && !link->previous);
+            assert(!link->owner && !link->iterator);
+        }
+    }
+    for (std::size_t i : {std::size_t{0}, std::size_t{32768}, std::size_t{65535}}) {
+        const auto& slot = pool->records[i];
+        check_padding(slot, offsetof(PooledAnimation, active) + sizeof(slot.active),
+                      offsetof(PooledAnimation, index));
+    }
+    const std::array<std::size_t, 5> selected{0, 1, 32768, 65534, 65535};
+    retired_pool_slots.clear();
+    retired_pool_slots.reserve(selected.size());
+    for (std::size_t i : selected) {
+        auto& animation = pool->records[i].animation;
+        assert(animation.allocate_geometry(32) && animation.geometry_bytes == 32);
+        animation.handle.value = static_cast<std::uint32_t>(i + 1);
+        animation.base.field_28 = 37;
+        animation.callback = new PoolObserver(&animation, i);
+    }
+    pool->~AnimationPool();
+    assert(std::equal(retired_pool_slots.begin(), retired_pool_slots.end(),
+                      selected.rbegin(), selected.rend()));
+    ::operator delete(memory);
+}
 }
 
 namespace th20 {
@@ -327,6 +385,7 @@ int main(int argc, char**) {
     }
     check_file_and_template_lifetime(allocator);
     check_descriptor_protocol(allocator);
+    check_pool_lifetime();
 
     alignas(PooledAnimation) std::array<unsigned char, sizeof(PooledAnimation)> storage;
     storage.fill(0xa5);

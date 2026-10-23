@@ -23,6 +23,8 @@ Animation::Animation() noexcept : base(), handle(), index(0), timer_4c8(), timer
 Animation::~Animation() noexcept { release_resources(); }
 AnimationFile::~AnimationFile() { clear(); }
 PooledAnimation::PooledAnimation() : animation(), free_link(), active(0), index(0) {}
+AnimationPool::AnimationPool() noexcept : records() {}
+AnimationPool::~AnimationPool() noexcept = default;
 void Animation::reset() {
     base.vector_50.x = 1.0f;
     base.vector_50.y = 1.0f;

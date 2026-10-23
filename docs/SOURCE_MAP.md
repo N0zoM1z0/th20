@@ -47,7 +47,7 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 892 units / 164 objects. Eight additional
+The configured graph currently has 896 units / 164 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
@@ -75,6 +75,11 @@ IntrusiveLink.hpp exposes the same five-pointer protocol through a public class
 declaration; native layout and noexcept construction are preserved. The complete
 ECL fixture uses production node allocation. See
 [node allocation](ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md).
+
+Animation.hpp declares the actual 65,536-record AnimationPool; Animation.cpp owns
+its construction, defaulted destruction and the shared slot lifetime. The full
+owner fixture uses real geometry/callback retirement. See
+[pool lifetime](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
 ## Build freshness and local products
 

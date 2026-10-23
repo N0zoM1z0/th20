@@ -898,3 +898,7 @@ th20::RenderMesh::scalar_deleting_destructor
 th20::DiagnosticAllocator::allocate_object<EnemyMeshOwner>
 th20::DiagnosticAllocator::allocate_object<Pbg::File>
 th20::DiagnosticAllocator::allocate_object<th20::IntrusiveLink<th20::EclRuntime>>
+th20::PooledAnimation::PooledAnimation
+th20::PooledAnimation::~PooledAnimation
+th20::AnimationPool::AnimationPool
+th20::AnimationPool::~AnimationPool

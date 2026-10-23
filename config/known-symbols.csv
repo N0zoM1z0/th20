@@ -844,3 +844,7 @@ address,name,module,confidence,evidence
 0x0041F880,std::destroy_at<th20::AnimationCallback>,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
 0x00539C80,th20::DiagnosticAllocator::allocate_object<Pbg::File>,DiagnosticAllocator,high,CORE/EXACT-141; docs/PBG_FILE_ALLOCATION_PROFILE.md; native Archive caller and complete typed factory protocol
 0x0053B410,th20::DiagnosticAllocator::allocate_object<th20::IntrusiveLink<th20::EclRuntime>>,DiagnosticAllocator,high,CORE/EXACT-142; docs/ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md; actual async caller and complete typed node protocol
+0x004489F0,th20::PooledAnimation::PooledAnimation,AnimationPool,high,CORE/EXACT-143; docs/ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md; full native lifetime role and independent callee/owner identities; C++ spelling inferred
+0x004492F0,th20::PooledAnimation::~PooledAnimation,AnimationPool,high,CORE/EXACT-143; docs/ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md; full native lifetime role and independent callee/owner identities; C++ spelling inferred
+0x00447C60,th20::AnimationPool::AnimationPool,AnimationPool,high,CORE/EXACT-143; docs/ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md; full native lifetime role and independent callee/owner identities; C++ spelling inferred
+0x004491E0,th20::AnimationPool::~AnimationPool,AnimationPool,high,CORE/EXACT-143; docs/ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md; full native lifetime role and independent callee/owner identities; C++ spelling inferred

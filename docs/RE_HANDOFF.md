@@ -12,8 +12,8 @@ Its embedded title/replay label is 1.00c; this is the same executable, not a
 second target. The Steam-original backup is provenance evidence. See
 [target provenance](TARGET_PROVENANCE.md).
 
-The maintained graph contains 892 physical strict units, 164 comparison objects,
-167,804 disjoint comparison bytes and 900 source-present mappings. Eight
+The maintained graph contains 896 physical strict units, 164 comparison objects,
+168,057 disjoint comparison bytes and 904 source-present mappings. Eight
 mapped whole functions remain nonexact. Authored coverage is separately 181 exact
 functions / 47,071 bytes, with 190 confirmed authored origins. File::clear, the two
 Renderer texture creators and the full AnimationFile
@@ -24,33 +24,34 @@ These figures do not imply whole-game linkage or playable behavior. Percentages
 over currently reviewed authored functions do not measure the whole-game 95%
 byte-exact objective.
 
-CORE/EXACT-142 accepts the complete 67-byte asynchronous ECL node factory.
-EclRuntimeLifetime.cpp owns the Runtime and node scalar instantiations through
-one shared body and its unchanged profile. IntrusiveLink is a public class with
-its original five fields, 20-byte layout and noexcept constructor. All 425
-prior affected units strictly replay after 70 fresh builds; 94 objects are reused.
-The 63-byte constructor and 31-byte initialization helper fold to existing units
-without duplicate credit. Native class-key spelling and authored/library
-provenance remain inferred/pending. The actual VM/Manager/Enemy fixture now uses
-production node allocation and passes its focused O2/UBSan check. See
-[node allocation](ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md).
+CORE/EXACT-143 accepts the complete PooledAnimation and AnimationPool
+construction/destruction chain: 243 body bytes / 253 compared bytes over four
+whole functions. AnimationPool owns 65,536 genuine records with native stride
+0x600 and extent 0x6000000. Animation.cpp retains its matching profile and all
+shared child contracts. All 167 prior affected units strictly replay after
+24 fresh builds; 140 objects are reused. The full dirty-storage O2/UBSan owner
+fixture checks every slot, five resource-owning callbacks and reverse retirement;
+compile/run peak RSS is 190,960 KiB. New origins remain pending. Renderer
++6000DFC ownership remains unresolved. See
+[pool lifetime](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
-Public CI passes all 81 tests (263.534 seconds). Cleanup retires 144 replaced
-object/receipt files (4,936,868 bytes), with authentic inputs preserved. All 892
-units strictly replay afterward using existing objects. All 328 canonical and
-18 retained investigation product hashes remain unchanged; no cleanup compiler
-calls are made. See `.analysis/core142-final-audit.json`.
+Public CI passes all 81 tests (256.351 seconds). Cleanup retires 50 replaced
+object/receipt files (1,684,634 bytes), preserving authentic inputs. All 896 units
+strictly replay afterward with all 328 canonical, 18 retained investigation and
+279 source hashes unchanged. No cleanup compiler calls are made. See
+`.analysis/core143-final-audit.json`.
 
 ## Current local products
 
-The manifest owns all 164 canonical objects: 94 under `build/core141-canonical/`
-and 70 under `build/core142-canonical/`, plus their sibling receipts. The source
-freeze is `.analysis/core142-final-frozen-source.json` (279 paths). Fresh affected
-replay is `core142-affected-results.json.gz`; new acceptance and folded support
-are `core142-new-exact-results.json` and `core142-support.json`. All previous
-contracts, type-identity changes and native boundaries are recorded in
-`core142-graph-audit.json`, `core142-symbol-changes.json` and
-`core142-boundaries.json`. These private names are relative to `.analysis/`.
+The manifest owns all 164 canonical objects: 94 under `build/core141-canonical/`,
+46 under `build/core142-canonical/` and 24 under `build/core143-canonical/`, plus
+all sibling receipts. The source freeze is
+`.analysis/core143-final-frozen-source.json` (279 paths). Affected replay is
+`core143-affected-results.json.gz`; new acceptance and EH aliases are
+`core143-new-exact-results.json` and `core143-support.json`. Complete boundaries,
+independent slot identities and all prior comparison contracts are recorded in
+`core143-boundaries.json`, `core143-independent-slot-identities.json` and
+`core143-graph-audit.json`. These private names are relative to `.analysis/`.
 
 Retain the nine private investigation object/receipt pairs still at the build
 root: core103-QueryProtocol-v5 and the core109..core113 sound probes. They support
@@ -60,14 +61,13 @@ See [damage query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md) and
 `.analysis/core141-retained-private-products.json`.
 
 Authentic old inputs and receipts were archived before editing in
-`.analysis/core142-pre-header-inputs.json.gz`. Preserve this and earlier
+`.analysis/core143-pre-header-inputs.json.gz`. Preserve this and earlier
 original-input archives, native exports, rejected probe sources and locked
 tools/reference/target. Never rewrite receipts or cold-build an unchanged graph
-for cleanup. The final validation, protected retirement and existing-object
-replay are recorded in `.analysis/core142-gates.json`,
-`core142-retirement-plan.json`, `core142-cleanup.json` and
-`core142-post-cleanup-results.json.gz`. Retired closures are preserved in
-`core142-retired-inputs.json.gz`.
+for cleanup. Final validation, protected retirement and existing-object replay
+are `.analysis/core143-gates.json`, `core143-retirement-plan.json`,
+`core143-cleanup.json` and `core143-post-cleanup-results.json.gz`. Retired original
+closures are preserved in `core143-retired-inputs.json.gz`.
 
 ## Next reconstruction work
 
@@ -146,7 +146,8 @@ are unresolved. Native `EffectMenuWindowInf` is directly derived, 72 bytes; its
 constructor exception contract and drawing dependencies remain open.
 
 Resolve the actual Renderer owner before introducing its maintained declaration.
-The native allocation is `0x7D40E94` bytes. The interval +6000DFC..+6000DFF between
+Its fixed AnimationPool lifetime is now accepted, while the complete owner
+remains undeclared. The native allocation is `0x7D40E94` bytes. The interval +6000DFC..+6000DFF between
 an inline Animation and the next scalar is unresolved. No observed direct access
 does not prove padding; allocation alignment does not explain it by itself.
 Other open boundaries include mutable ANM packet/buffer lifetime, File VM creation,
