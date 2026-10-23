@@ -18,6 +18,8 @@ the original game's translation-unit partition.
 | Enemy rank destinations and script time | EnemyScriptAdvance.cpp, EclSelection.cpp, EclArguments.cpp | [Rank/control protocol](ENEMY_RANK_CONTROL_RECONSTRUCTION.md) |
 | HUD owner and boss markers | HudGauge.hpp/cpp | [FrontInf owner and script callers](FRONT_OWNER_RECONSTRUCTION.md) |
 | Text queue/resource owner | TextLine.hpp/cpp | [AsciiInf storage and shared resources](ASCII_OWNER_RECONSTRUCTION.md) |
+| Dialogue initialization and ready state | DialogueText.hpp/cpp, HudGauge.hpp/cpp, AnimationHandle.hpp/cpp | [Whole Dialogue owner and callbacks](DIALOGUE_OWNER_RECONSTRUCTION.md) |
+| Laser controller storage/context | LaserParameters.hpp/cpp, Context.hpp/cpp | [Dialogue cancellation receivers](DIALOGUE_OWNER_RECONSTRUCTION.md) |
 | Scheduler/observation/locking | FunctionChain*, IntrusiveLink*, LockRegistry*, DiagnosticAllocator* | [Scheduler](FUNCTION_CHAIN_CONTROLLER_RECONSTRUCTION.md), [allocation/release](FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md), [iteration](CORE_ITERATION_EXACT_RECONSTRUCTION.md) |
 | Gameplay ownership/damage | Player*, Bomb*, Bullet*, Item*, Context*, Session*, Damage*, HitCtrlInf* | [Player/SHT](PLAYER_SHT_RECONSTRUCTION.md), [Bomb](BOMB_OWNER_RECONSTRUCTION.md), [Item](ITEM_OWNER_RECONSTRUCTION.md), [damage](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md), [Region allocation/ownership](DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md) |
 | Archive/File/resource I/O | Archive*, PbgFile*, GameFileIo*, GameResourceIo* | [Resource graph](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md), [writing](ARCHIVE_WRITE_RECONSTRUCTION.md) |

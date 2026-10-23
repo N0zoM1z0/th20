@@ -1,5 +1,6 @@
 #include "HudGauge.hpp"
 #include "EclDiagnostic.hpp"
+#include "DialogueText.hpp"
 
 namespace th20 {
 
@@ -36,6 +37,8 @@ FrontInf::FrontInf()
 }
 
 std::int32_t FrontInf::has_dialogue() { return dialogue ? 1 : 0; }
+std::int32_t FrontInf::dialogue_ready() { return dialogue->ready(); }
+Dialogue* FrontInf::dialogue_value() { return dialogue; }
 
 void FrontInf::set_field_180(std::int32_t value) { field_180 = value; }
 

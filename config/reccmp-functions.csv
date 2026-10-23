@@ -986,3 +986,14 @@ th20::AsciiInf::AsciiInf,0x0046A8E0,function
 "std::array<th20::TextLine,320>::array",0x0046A6B0,function
 std::list<std::function<void()>>::list,0x0046A8B0,function
 th20::AsciiInf::text_animation_file,0x00470670,function
+th20::Dialogue::Dialogue,0x004AF310,function
+th20::Dialogue::ready,0x00499560,function
+"std::array<th20::AnimationHandle,4>::array",0x004616E0,function
+Dialogue follow callback static invoker,0x004AC290,function
+Dialogue follow callback operator,0x004AFEE0,function
+th20::FrontInf::dialogue_ready,0x00499110,function
+th20::FrontInf::dialogue_value,0x004B8070,function
+th20::LaserController::LaserController,0x004C87C0,function
+th20::LaserController::select_context,0x004D7E10,function
+th20::laser_controller,0x00478EE0,function
+th20::AnimationHandle::interrupt_offset_7,0x00464510,function

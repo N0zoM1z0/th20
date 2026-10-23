@@ -90,17 +90,19 @@ Process allocator startup, scheduler methods and AsciiInf's native resource
 destructor are explicit fixture boundaries. The fixture's default destructor
 exercises real member teardown; it does not reconstruct native resource cleanup.
 Unloaded real AnimationFiles supply borrowed identities. No GDI, GPU, loader,
-whole-game runtime or native CPU execution is claimed. The existing whole-root
-fixture records TextLine.hpp as an input, so that affected fixture is refreshed
-and again passes all 36,244 cases. Its candidate and cases are unchanged. The
-earlier FrontInf fixture retains its twelve unchanged input hashes and passing
-1,706 cases; it is not repeated.
+whole-game runtime or native CPU execution is claimed. At CORE160 the existing
+whole-root fixture recorded TextLine.hpp as an input, so that affected fixture
+was refreshed and passed all 36,244 cases. Its candidate/cases were unchanged.
+The earlier FrontInf fixture retained its twelve unchanged input hashes and
+passing 1,706 cases; it was not repeated in that batch.
 
 The generic job-list constructor retains its known 31/native40 emission question;
 it receives no new exact credit. Full AsciiInf destruction, initialization,
-queue execution, formatting and drawing remain open. The next caller is the
-complete 1,738-byte Dialogue constructor at 0x4AF310 over a 0x140-byte owner,
-including actual Cursor lifetime, animation callbacks and cancellation owners.
+queue execution, formatting and drawing remain open. CORE161 subsequently closes
+the complete 1,738-byte Dialogue constructor at 0x4AF310 over its real 0x140-byte
+owner, actual Cursor cleanup, callbacks and cancellation receiver interfaces.
+See [current Dialogue evidence](DIALOGUE_OWNER_RECONSTRUCTION.md) for that closure,
+updated fixtures and remaining native resource/geometry work.
 The production Enemy dispatcher and whole-game link remain incomplete.
 
 Private reproducibility records under .analysis/ include core160-pre-ascii-inputs,

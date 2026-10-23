@@ -16,6 +16,8 @@ struct AnimationHandle {
     // Native word assignment; the shared physical head is audited separately.
     void operator=(std::uint32_t input);
     Animation* resolve();
+    void interrupt(std::int32_t event);
+    void interrupt_offset_7(std::int32_t event);
     void retire();
 };
 

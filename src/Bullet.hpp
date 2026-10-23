@@ -94,6 +94,7 @@ struct BulletController final : TaskInfo {
     void disable() override;
     void select_context(std::int32_t index);
     std::int32_t count();
+    std::int32_t cancel_all(std::int32_t mode);
 };
 BulletController* bullet_controller(std::int32_t index);
 #if defined(_M_IX86)

@@ -98,15 +98,21 @@ guard bytes, publication after the diagnostic, base cleanup on injected failure,
 virtual slot shape, all 3x4 valid markers, full signed tag bits and copied float
 words. Scheduler and resource destruction are explicit host boundaries.
 
-The integrated private whole-root draft passes 36,244 scenarios: 26,781 prior
-cases and 9,463 new FrontInf callers. It now contains 110 effective values /
+At CORE159 the integrated private whole-root draft passed 36,244 scenarios:
+26,781 prior cases and 9,463 new FrontInf callers. It contains 110 effective values /
 81 primary heads. Production dispatch remains undefined and receives no partial
 source acceptance or exact credit.
 
 Opcode 534 reads its value before loading the live process FrontInf and writing
 field180. Opcode 519 short-circuits the actual Dialogue-pointer predicate, then
-tests the full integer result of the genuine, still-undefined Dialogue-ready
-operation. That whole callee is captured by the fixture, not replaced in source.
+tests the full integer result of the genuine Dialogue-ready operation. At CORE159
+that whole callee was still undefined and captured by the fixture.
+
+CORE161 subsequently implements the actual ready getters, complete Dialogue
+storage/construction and callback partition. The current root fixture uses a
+live complete Dialogue and passes 36,232 cases after retiring twelve synthetic
+getter mutation/exception cases. See [Dialogue evidence](DIALOGUE_OWNER_RECONSTRUCTION.md)
+for current validation scope and remaining resource/geometry boundaries.
 
 Opcode 527 reads float1, integer2, the signed initial-health word, then integer0
 and the current boss index. It divides by binary32(initial health) before the

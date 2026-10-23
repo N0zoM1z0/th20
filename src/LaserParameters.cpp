@@ -1,4 +1,6 @@
 #include "LaserParameters.hpp"
+#include "Session.hpp"
+#include "EclDiagnostic.hpp"
 
 namespace th20 {
 
@@ -22,5 +24,20 @@ LaserType3Parameters::LaserType3Parameters()
     : angle(0), field_1c(0), field_20(0), field_24(0), handle(0), field_2c(0),
       field_30(0), field_34(0), flags(0), view_index(0) {}
 LaserType3Parameters::~LaserType3Parameters() = default;
+
+LaserController::LaserController() noexcept
+    : count(0), next_handle(0x10000), file(nullptr), field_4c(0),
+      view_index(0), context(nullptr) {
+    ecl_diagnostic_hint("initialize LaserInf\n");
+}
+
+void LaserController::select_context(std::int32_t index) {
+    view_index = index;
+    context = &session.context(view_index);
+}
+
+LaserController* laser_controller(std::int32_t index) {
+    return session.context(index).laser_controller();
+}
 
 } // namespace th20

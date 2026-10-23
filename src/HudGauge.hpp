@@ -90,6 +90,7 @@ public:
     void enable() override;
     std::int32_t has_dialogue();
     std::int32_t dialogue_ready();
+    Dialogue* dialogue_value();
     void set_field_180(std::int32_t value);
     void set_boss_gauge(std::int32_t boss, std::int32_t marker, float fraction,
                         std::int32_t value);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BulletValues.hpp"
+#include "TaskInfo.hpp"
 #include <cstddef>
 #include <memory_resource>
 #include <vector>
@@ -62,8 +63,38 @@ struct LaserType3Parameters {
     ~LaserType3Parameters();
 };
 
+class AnimationFile;
+class Laser;
+struct Context;
+
+// Native LaserInf owns an observed list; individual Laser bodies are separate.
+class LaserController : public TaskInfo {
+public:
+    IntrusiveList<Laser> active;
+    std::uint32_t count;
+    std::uint32_t next_handle;
+    Vector3 cancel_position;
+    Vector3 cancel_size;
+    AnimationFile* file;
+    std::uint32_t field_4c;
+    std::int32_t view_index;
+    Context* context;
+
+    LaserController() noexcept;
+    ~LaserController() override;
+    void select_context(std::int32_t index);
+    std::int32_t cancel_all(std::int32_t mode, std::int32_t argument);
+};
+
+LaserController* laser_controller(std::int32_t index);
+
 static_assert(sizeof(LaserType2Flags) == 4);
 #if defined(_M_IX86)
+static_assert(sizeof(LaserController) == 0x58);
+static_assert(offsetof(LaserController, active) == 0x10);
+static_assert(offsetof(LaserController, cancel_position) == 0x30);
+static_assert(offsetof(LaserController, file) == 0x48);
+static_assert(offsetof(LaserController, context) == 0x54);
 static_assert(sizeof(LaserType0Parameters) == 0x54);
 static_assert(sizeof(LaserType1Parameters) == 0x74);
 static_assert(sizeof(LaserType2Parameters) == 0x5c);

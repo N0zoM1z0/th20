@@ -49,10 +49,10 @@ are excluded from Git.
 
 ## Repository status
 
-The maintained graph has **987 source-present mappings**, **977 physical strict
-units** and **164 comparison objects** covering 177,676 disjoint comparison bytes.
+The maintained graph has **998 source-present mappings**, **988 physical strict
+units** and **164 comparison objects** covering 179,906 disjoint comparison bytes.
 Ten mapped whole functions remain nonexact. Confirmed authored exactness is
-separately 200 functions / 53,621 bytes; it is not whole-game completion.
+separately 202 functions / 55,538 bytes; it is not whole-game completion.
 
 | Area | Current position |
 | --- | --- |
@@ -64,7 +64,7 @@ separately 200 functions / 53,621 bytes; it is not whole-game completion.
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |
-| HUD and text | Complete FrontInf and [AsciiInf construction](docs/ASCII_OWNER_RECONSTRUCTION.md); resource lifetime and frame execution remain open |
+| HUD and text | Complete FrontInf, AsciiInf and [Dialogue construction/ready protocol](docs/DIALOGUE_OWNER_RECONSTRUCTION.md); native resource lifetime and frame execution remain open |
 | Whole-program build and runtime | Not yet available |
 
 [Generated progress](docs/PROGRESS.md) and the status reporter provide live

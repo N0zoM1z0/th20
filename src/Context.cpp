@@ -7,6 +7,7 @@ Context::Context() noexcept
       card_owner(nullptr), object_14(nullptr), object_18(nullptr), object_1c(nullptr),
       object_20(nullptr), current_player(nullptr), hits(nullptr), overlay_owner(nullptr) {}
 BulletController* Context::bullet_controller() {return primary_owner;}
+LaserController* Context::laser_controller() { return object_14; }
 void Context::set_bullet_controller(BulletController* value) {primary_owner=value;}
 EnemyController* Context::enemy_controller() { return enemies; }
 PlayerRecord* Context::player_record() { return current_player; }

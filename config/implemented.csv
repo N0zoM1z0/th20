@@ -985,3 +985,14 @@ th20::AsciiInf::AsciiInf
 "std::array<th20::TextLine,320>::array"
 std::list<std::function<void()>>::list
 th20::AsciiInf::text_animation_file
+th20::Dialogue::Dialogue
+th20::Dialogue::ready
+"std::array<th20::AnimationHandle,4>::array"
+Dialogue follow callback static invoker
+Dialogue follow callback operator
+th20::FrontInf::dialogue_ready
+th20::FrontInf::dialogue_value
+th20::LaserController::LaserController
+th20::LaserController::select_context
+th20::laser_controller
+th20::AnimationHandle::interrupt_offset_7
