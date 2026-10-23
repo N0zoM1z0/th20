@@ -107,6 +107,11 @@ and the Data flag-bit write; EnemyHealth.cpp owns raw-health reads and scaled
 writes. The current private dispatcher also includes life, boss, bounds and
 timer paths. Scalar-return and checked-helper emission remain separate open
 boundaries. See [health and boss state](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md).
+Card.cpp owns three complete flag requests/writes; EnemyHealth.cpp owns scaled
+mode selection. Card.hpp declares the genuine resource-owning start/finish
+interfaces, whose full bodies remain undefined. Ten more private dispatcher
+paths preserve decoding, live metadata and post-call health/Timer sequencing.
+See [Card caller protocol](ENEMY_CARD_STATE_RECONSTRUCTION.md).
 
 ## Build freshness and local products
 

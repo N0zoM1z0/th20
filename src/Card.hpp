@@ -7,7 +7,12 @@
 namespace th20 {
 // Native construction clears this aggregate; bit 0 denotes an active spell.
 // Other bit meanings and the complete start/finish protocol remain open.
-struct CardFlags { std::uint32_t bits; };
+struct CardFlags {
+    union {
+        std::uint32_t bits;
+        struct { std::uint32_t lower:8, bit_8:1, upper:23; } fields;
+    };
+};
 
 // Actual CardInf owner: five typed handles, Timer, name, scalar state, two
 // aligned double clocks and a real Vector3. Alignment supplies the gaps.
@@ -33,6 +38,13 @@ struct Card final : TaskInfo {
     void encode_time(std::int32_t seconds, std::int32_t hundredths);
     std::int32_t invalid_encoded_time();
     bool active();
+    void request_flag_3();
+    void request_flag_4();
+    void set_flag_8(std::uint32_t value);
+    // The full resource-owning start/finish bodies remain undefined.
+    void start_spell(std::int32_t index, const char* spell_name,
+                     std::int32_t duration, std::int32_t arg_3);
+    void finish_spell();
     // Valid index is 0 or 1. Binding does not publish or register callbacks.
     void bind_context(std::int32_t index);
 };

@@ -15,12 +15,12 @@ class CardTests(unittest.TestCase):
         self.assertIsNotNone(compiler)
         sources = ["Card", "TaskInfoConstruction", "TaskInfo", "FunctionChain",
                    "Timer", "ClockScalar", "Vector3", "AnimationHandle",
-                   "EclDiagnostic", "Session", "Context", "PlayerRecord"]
+                   "EclDiagnostic", "Session", "Context", "PlayerRecord", "EnemyHealth"]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "card"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-fsanitize=undefined", "-fno-sanitize-recover=all", "-ffunction-sections", "-fdata-sections",
                 "-Wl,--gc-sections", "-Isrc", "tests/card_semantics.cpp",
                 *(f"src/{name}.cpp" for name in sources), "-o", str(output),
             ], cwd=ROOT, check=True)

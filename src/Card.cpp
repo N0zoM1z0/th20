@@ -28,6 +28,15 @@ std::int32_t Card::invalid_encoded_time() {
 
 bool Card::active() { return (spell_flags.bits&1u) != 0; }
 
+void Card::request_flag_3() { spell_flags.bits |= 8u; }
+
+void Card::request_flag_4() {
+    spell_flags.bits |= 16u;
+    effect_handle.retire();
+}
+
+void Card::set_flag_8(std::uint32_t value) { spell_flags.fields.bit_8 = value; }
+
 void Card::bind_context(std::int32_t index) {
     player_index=index;
     context=&session.context(player_index);

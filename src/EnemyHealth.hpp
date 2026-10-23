@@ -6,7 +6,12 @@
 namespace th20 {
 
 // Bit zero selects scaled health; bit one requests forced defeat.
-struct EnemyHealthFlags { std::uint32_t bits; };
+struct EnemyHealthFlags {
+    union {
+        std::uint32_t bits;
+        struct { std::uint32_t scaled:1, upper:31; } fields;
+    };
+};
 
 // The real 28-byte value at EnemyState+18c. Integer storage preserves native
 // modulo32 accounting; queries and division interpret the required signed bits.
@@ -20,6 +25,7 @@ struct EnemyHealth {
     void set_health(std::uint32_t value);
     std::uint32_t get_health() const;
     void set_scaled_health(std::uint32_t value);
+    void set_scaled_enabled(std::uint32_t value);
     void set_initial(std::uint32_t value);
     void set_phase(std::uint32_t value);
     std::int32_t apply(std::int32_t amount);

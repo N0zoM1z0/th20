@@ -926,3 +926,7 @@ th20::EnemyPattern::emit_items
 th20::EnemyController::set_selected
 th20::EnemyController::set_field_84_bit_0
 th20::EnemyHealth::set_scaled_health
+th20::Card::request_flag_3
+th20::Card::request_flag_4
+th20::Card::set_flag_8
+th20::EnemyHealth::set_scaled_enabled

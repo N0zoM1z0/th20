@@ -2423,11 +2423,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004872D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004878B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004878B0,authored,CardSpell,authored,high,"CORE/EXACT-151; docs/ENEMY_CARD_STATE_RECONSTRUCTION.md; Complete602-byte ordinary native Card finish has active gating, three info-handle releases, background/effect retirement, bonus/Session/UI publication, paired spell capture records,113-record completion scan and distinct sound paths. Full listing bytes and direct branches are reconciled. Real UI/record/Renderer ownership remains open; only the genuine Card interface is declared. No maintained body, mapping, source presence, canonical unit or exact credit."
 0x00487B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487BB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00487C30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00487C30,authored,CardSpell,authored,high,"CORE/EXACT-151; docs/ENEMY_CARD_STATE_RECONSTRUCTION.md; Complete1896-byte ordinary native Card start has game-specific flags/name/timer, paired capture-record initialization, custom UI/ANM ownership, boss position, bonus/stage state and real sound/record consumers. Full listing bytes and direct branches are reconciled; associated EH contribution and genuine remaining UI/record owners stay open. Only the real Card interface is declared. No maintained body, mapping, source presence, canonical unit or exact credit."
 0x004883A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004883C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004883F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2621,8 +2621,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00497360,unknown,EclSelection,review,pending,"EXACT-066: Nineteen complete actual Enemy creation/initialization, script reset/selection, generation, hidden-result identifier and non-consuming value forwarding bodies;1279bytes. Frozen-source500units/93coldobjects/90121disjointbytes strictly replay. Owned O2/UBSan tests exercise actual creation/init/reset/selection and list/generation lifetimes. Scalar allocation/context/spawn application, supplied-value virtual materialization, whole653-byte spawn opcode and41KB main dispatcher remain pending. See docs/EXACT_ENEMY_CREATION_RECONSTRUCTION.md."
 0x004973A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004973C0,unknown,EclRuntimeLifetime,review,pending,"EXACT-071: Ten complete actual ECL Runtime/Manager lifetime, async clearing, typed scalar release and floating default bodies add 701 body bytes /706 comparison bytes including natural complete destructor padding. Complete 534-unit /98-object cold replay covers 94647 disjoint bytes. Independent SptInf RTTI, zero initialization, real PMR lifetimes and destroy-before-lock release establish protocol; canonical whole bodies and complete EH/alias support strictly replay. Owned O2/UBSan checks exercise resource capture, scalar/virtual disposal and native clear/reset validity. Source origin, whole Enemy root, resource append/getter/include, process startup and whole-game link/runtime remain open. See docs/EXACT_ECL_RUNTIME_LIFETIME_RECONSTRUCTION.md."
-0x00497420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00497450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00497420,unknown,EnemyCardState,review,unknown,"CORE/EXACT-151; docs/ENEMY_CARD_STATE_RECONSTRUCTION.md; Complete38-byte Card flag request sets bit4 before unconditionally invoking actual effect_handle.retire, including a zero handle. The independently reviewed37-byte native handle wrapper forwards through the real Renderer and then clears the word. Full Card caller is exact; Renderer execution remains unimplemented. Origin pending."
+0x00497450,unknown,EnemyCardState,review,unknown,CORE/EXACT-151; docs/ENEMY_CARD_STATE_RECONSTRUCTION.md; Complete26-byte Card flag request sets only bit3. Broader role and authored/compiler/library origin remain pending. Actual ECL536 receiver and whole-owner state are reviewed.
 0x00497470,unknown,GameRandom,review,pending,CORE/EXACT-145; docs/ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md; full raw-word protocol/boundary accepted; original authored/compiler/library provenance unresolved
 0x004974D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00497540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2727,7 +2727,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0049C2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C2E0,authored,EnemyHealthBoss,authored,high,"CORE/EXACT-150; docs/ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md; Complete85-byte game-owned Controller publisher obtains a by-value Enemy identifier for a non-null actor, otherwise zero, then stores through the real checked sixteen-slot handle array. Independent ECL512 registration/clear callers and owned round-trip tests establish the actor/slot role. Fresh complete canonical replay is exact; checked helper emission and original native runtime remain separate."
 0x0049C340,unknown,EnemyHealthBoss,review,unknown,CORE/EXACT-150; docs/ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md; Complete23-byte scaled-health producer stores low32(input*7) at actual EnemyHealth+0C. Both ECL511/566 use current raw health; unsigned maintained arithmetic preserves native overflow. Authored/compiler/library origin and original spelling remain pending.
-0x0049C360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0049C360,unknown,EnemyCardState,review,unknown,CORE/EXACT-151; docs/ENEMY_CARD_STATE_RECONSTRUCTION.md; Complete36-byte EnemyHealth scaled-mode write changes only flag bit0 from the full32-bit input low bit. Native apply independently consumes this mode. ECL562 and post-start/post-finish ordering are reviewed; origin pending.
 0x0049C390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C3C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C3F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2759,7 +2759,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0049C940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049C9C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0049CA10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0049CA10,unknown,EnemyCardState,review,unknown,CORE/EXACT-151; docs/ENEMY_CARD_STATE_RECONSTRUCTION.md; Complete42-byte Card bit8 write masks the full32-bit input to its low bit and retains all other flag bits. Actual ECL561 caches its Card receiver before integer0. Broader role/origin pending.
 0x0049CA40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CAA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -1,16 +1,34 @@
 #include "Card.hpp"
 #include "Session.hpp"
+#include "EnemyHealth.hpp"
 #include <algorithm>
 #include <array>
 #include <cassert>
 #include <cstring>
 #include <limits>
 #include <memory>
+#include <functional>
+#include <stdexcept>
+#include <cstdio>
+
+namespace {
+th20::Card* retiring_card;
+unsigned retirement_calls, retired_value, retirement_flags;
+std::function<void()> retirement_hook;
+}
 
 namespace th20 {
 // Explicit disposal boundary. This fixture performs no native Card cleanup;
 // all construction, encoding, queries, Session and Context bodies are production.
 Card::~Card() = default;
+// Only the unresolved Renderer retirement is captured. The actual Card caller
+// must publish its flag before passing the real effect-handle subobject here.
+void AnimationHandle::retire() {
+    assert(retiring_card && this==&retiring_card->effect_handle);
+    ++retirement_calls;retired_value=value;retirement_flags=retiring_card->spell_flags.bits;
+    if(retirement_hook)retirement_hook();
+    value=0;
+}
 }
 
 namespace {
@@ -126,6 +144,41 @@ int main() {
         value->context->set_card(nullptr);
         assert(card(index)==nullptr);
     }
+    unsigned flag_cases=0;retiring_card=value;
+    const std::array<unsigned,6> flag_words{0u,1u,2u,3u,0x80000000u,0xffffffffu};
+    for(unsigned flags:flag_words) {
+        value->spell_flags.bits=flags;auto before=snapshot(*value);
+        value->request_flag_3();assert(value->spell_flags.bits==(flags|8u));
+        replace(before,*value,value->spell_flags);assert(before==snapshot(*value));++flag_cases;
+        for(unsigned handle:{0u,1u,11u,0xffffffffu}) {
+            value->spell_flags.bits=flags;value->effect_handle.value=handle;
+            before=snapshot(*value);const auto calls=retirement_calls;
+            value->request_flag_4();assert(retirement_calls==calls+1);
+            assert(retirement_flags==(flags|16u) && retired_value==handle && value->effect_handle.value==0);
+            replace(before,*value,value->spell_flags);replace(before,*value,value->effect_handle);
+            assert(before==snapshot(*value));++flag_cases;
+        }
+        for(unsigned input:flag_words) {
+            value->spell_flags.bits=flags;before=snapshot(*value);const auto calls=retirement_calls;
+            value->set_flag_8(input);assert(value->spell_flags.bits==((flags&~0x100u)|((input&1u)<<8)));
+            replace(before,*value,value->spell_flags);assert(before==snapshot(*value) && retirement_calls==calls);++flag_cases;
+            EnemyHealth health;health.health=7;health.field_04=17;health.phase_health=23;
+            health.scaled_health=31;health.threshold=41;health.damage=47;health.flags.bits=flags;
+            const std::array<unsigned,7> expected{7,17,23,31,41,47,(flags&~1u)|(input&1u)};
+            health.set_scaled_enabled(input);assert(!std::memcmp(&health,expected.data(),sizeof(health)));++flag_cases;
+        }
+    }
+    value->spell_flags.bits=1;value->effect_handle.value=91;
+    retirement_hook=[&]{assert(value->spell_flags.bits==17);value->spell_flags.bits=0x80000101u;};
+    value->request_flag_4();retirement_hook={};
+    assert(value->spell_flags.bits==0x80000101u && value->effect_handle.value==0);++flag_cases;
+    value->spell_flags.bits=3;value->effect_handle.value=73;auto before=snapshot(*value);
+    retirement_hook=[] {throw std::runtime_error("Captured Renderer retirement failure");};
+    bool threw=false;try {value->request_flag_4();}catch(const std::runtime_error&){threw=true;}
+    retirement_hook={};assert(threw && value->spell_flags.bits==19 && value->effect_handle.value==73);
+    replace(before,*value,value->spell_flags);assert(before==snapshot(*value));++flag_cases;
+    retiring_card=nullptr;value->effect_handle.value=0;
+    std::printf("Card/health flags passed: %u whole-owner/mask/retirement-order cases; Renderer retirement remains captured.\n",flag_cases);
     std::destroy_at(value); // Declared fixture disposal boundary only.
     untouched(storage.data(),storage.data()+guard);
     untouched(storage.data()+guard+sizeof(Card),storage.data()+storage.size());

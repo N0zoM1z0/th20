@@ -8,6 +8,8 @@ movement, phase, counter and drop bodies are preserved. The production dispatche
 remains undefined; no switch fragment, helper-sized prefix or private exercise
 entry receives original-function credit. Complete remaining owners, default,
 tables, EH and compiler contribution remain open.
+The subsequent [Card caller batch](ENEMY_CARD_STATE_RECONSTRUCTION.md) extends
+the same draft; this page retains the dated health/boss observations.
 
 | Entry | Complete bytes | Maintained function | Origin |
 | --- | ---: | --- | --- |
