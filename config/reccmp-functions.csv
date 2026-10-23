@@ -904,3 +904,10 @@ th20::PooledAnimation::~PooledAnimation,0x004492F0,function
 th20::AnimationPool::AnimationPool,0x00447C60,function
 th20::AnimationPool::~AnimationPool,0x004491E0,function
 th20::GameRandom::next_word,0x00497470,function
+th20::EnemyPhase::EnemyPhase,0x004A3530,function
+th20::Enemy::configure_phase,0x004AB650,function
+th20::Enemy::configure_timeout,0x004AB780,function
+std::pmr::vector<th20::EnemyPhase>::resize,0x004AB570,function
+std::pmr::vector<th20::EnemyPhase>::size,0x004ABA00,function
+std::pmr::vector<th20::EnemyPhase>::operator[],0x0048BD40,function
+std::pmr::vector<th20::EnemyPhase>::at,0x004AA160,function

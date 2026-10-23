@@ -903,3 +903,10 @@ th20::PooledAnimation::~PooledAnimation
 th20::AnimationPool::AnimationPool
 th20::AnimationPool::~AnimationPool
 th20::GameRandom::next_word
+th20::EnemyPhase::EnemyPhase
+th20::Enemy::configure_phase
+th20::Enemy::configure_timeout
+std::pmr::vector<th20::EnemyPhase>::resize
+std::pmr::vector<th20::EnemyPhase>::size
+std::pmr::vector<th20::EnemyPhase>::operator[]
+std::pmr::vector<th20::EnemyPhase>::at

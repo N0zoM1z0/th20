@@ -31,6 +31,7 @@ class EnemyCreationTests(unittest.TestCase):
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                 "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
                 "-Wl,--gc-sections", "-pthread", "-Isrc", "tests/enemy_creation_semantics.cpp",
+                "tests/enemy_phase_semantics.cpp",
                 *(f"src/{name}.cpp" for name in sources), "-o", str(output),
             ], cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True, timeout=10)

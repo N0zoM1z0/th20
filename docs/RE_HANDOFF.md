@@ -11,55 +11,51 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Its embedded title/replay label is 1.00c in the same executable. The Steam-original
 backup is provenance evidence. See [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 897 physical strict units, 164 canonical objects and 168,151
-disjoint comparison bytes. All 905 mapped functions have source; eight whole
-mapped functions remain nonexact. Authored exact coverage is separately 181
-functions / 47,071 bytes, with 190 confirmed authored origins. The pinned
+The graph contains 904 physical strict units, 164 canonical objects and 168,852
+disjoint comparison bytes. All 912 mapped functions have source; eight whole
+mapped functions remain nonexact. Authored exact coverage is separately 183
+functions / 47,526 bytes, with 192 confirmed authored origins. The pinned
 reference has 6,945 terminal implementation reviews and 113 reconciled parser-gap
 files. These counts establish neither whole-game 95% byte exactness nor a
 playable reconstruction; whole-program compilation and linkage remain open.
 
-CORE/EXACT-145 accepts the complete 94-byte GameRandom::next_word at 0x497470.
-It records the raw engine result and returns its low 16 bits under the real
-slot-10 mutex, bypassing modulus division. Its origin remains pending. The whole
-Enemy dispatcher also has a private movement candidate for 49 values / 24 case
-heads, with 459 bounded O2/UBSan scenarios. This draft is not production source
-or partial exact credit. See [movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
+CORE/EXACT-147 accepts the complete phase and timeout producers, implicit record
+construction and four typed STL support functions: seven units / 701 bytes.
+Actual record defaults include life/time -1 and both complete zeroed name arrays;
+the private 33-byte constructor guess is superseded. See [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
+The private movement draft still covers 49 values / 24 heads with 459 bounded
+O2/UBSan scenarios. It is not production dispatcher source or partial exact credit;
+its accepted raw-word dependency remains documented in [movement evidence](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
 
 ## Current verification and cleanup
 
-The handoff maintenance batch changes documentation and the commit convention;
-production source, profiles, anchors and acceptance ledgers are unchanged.
-Public CI completed before the affected-only policy correction: 84 tests passed.
-It was not repeated for the subsequent documentation-only edits. The full
-existing-object replay was stopped at the user's request; its partial log is
-interrupted evidence, not a completed whole-graph verification. No reconstruction
-unit changed, so this batch has zero affected replay units. Relevant records are
-`.analysis/handoff146-ci.log`, `handoff146-cleanup.json` and
-`handoff146-existing-replay.log.gz`; final gates are `handoff146-gates.json`.
-`handoff146-protected-inventory.json.gz` records protected products and evidence;
-`handoff146-retirement-plan.json` maps each archived historical report to its
-verified lossless `.gz` copy. Current CORE145 acceptance reports stay uncompressed
-where originally recorded. Older successful CI logs and inactive exact-result
-snapshots may now require `gzip.open`; their original content hashes are retained.
-Native evidence, original-input archives, installed tools, reference, Ghidra
-database and supplied game files remain protected. No unchanged graph is cold
-built for cleanup.
+Only 17 affected providers / 72 previous units are cold-built and strictly
+replayed, followed by the seven new units. The other 147 providers reuse existing
+evidence. Two relevant O2/UBSan tests pass, including 720 phase/timeout transitions
+and dirty-storage defaults. There is no unfiltered replay or full CI run.
+Current proofs are `.analysis/core147-cold-proof.json`,
+`core147-affected-results.json.gz`, `core147-new-exact-results.json.gz` and
+`core147-graph-audit.json`; cleanup and final gates are `core147-cleanup.json`
+and `core147-gates.json`. Cleanup only verifies protected hashes.
+The earlier handoff's archived successful reports remain mapped by
+`handoff146-retirement-plan.json`; use `gzip.open` for their verified `.gz` copies.
+Native evidence, original inputs, installed tools, reference, Ghidra and supplied
+game files remain protected.
 
 ## Protected local products
 
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
-| `build/core141-canonical/` | 89 | Every sibling `.receipt.json` |
+| `build/core141-canonical/` | 87 | Every sibling `.receipt.json` |
 | `build/core142-canonical/` | 24 | Every sibling `.receipt.json` |
-| `build/core143-canonical/` | 16 | Every sibling `.receipt.json` |
-| `build/core145-canonical/` | 35 | Every sibling `.receipt.json` |
+| `build/core143-canonical/` | 15 | Every sibling `.receipt.json` |
+| `build/core145-canonical/` | 21 | Every sibling `.receipt.json` |
+| `build/core147-canonical/` | 17 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. The current 279-path
-source freeze is `.analysis/core145-final-frozen-source.json`. New acceptance and
-affected replay are `core145-word-strict.json`, `core145-affected-results.json.gz`
-and `core145-cold-proof.json`; current whole-graph contracts are
-`core145-graph-audit.json`. Earlier independent identities and original acceptance
+source freeze is `.analysis/core147-final-frozen-source.json`. Current acceptance,
+affected replay and graph contracts are the CORE147 records above. Earlier
+independent identities and original acceptance
 remain preserved in their focused evidence and private archives.
 Private filenames in this section are relative to `.analysis/`.
 
@@ -69,13 +65,11 @@ closures support unresolved [damage-query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.
 and [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) work, not current canonical credit.
 Hashes are in `core141-retained-private-products.json`. Also retain the current
 `build/core144-probes/Alignment.obj` and receipt for the unfinished owner inquiry.
-Also retain `build/core146-probes/Phase.obj` and its receipt with the original
-private inputs under `.analysis/core146-phase/`. This is an unfinished producer
-probe with an unproven record-construction assumption, not canonical source.
-
-Preserve `core145-pre-header-inputs.json.gz`, `core145-retired-inputs.json.gz`,
-`core145-host-original-inputs.json.gz` and all earlier original-input archives,
-native exports and rejected probe sources.
+The superseded CORE146 and CORE147 phase probe binaries are retired. Their
+original receipts and SHA-bound inputs are preserved in
+`core147-retired-inputs.json.gz`; native exports and private source remain intact.
+Preserve `core147-pre-phase-inputs.json.gz`, both CORE145 original-input archives,
+`core145-host-original-inputs.json.gz` and all earlier input/evidence archives.
 Receipts retain their authentic original inputs and must never be rewritten.
 
 ## Next work and existing private leads
@@ -103,11 +97,11 @@ Receipts retain their authentic original inputs and must never be rewritten.
    EnemyState::execute_opcode at 0x48C010 has 41,967 body bytes; whole compiler
    contribution ownership remains unresolved. Continue the same whole-root
    source construction beyond the private 400..448 movement draft. The 500..575
-   owner/state family now has a private 75-value / 71-head catalog and a phase
-   producer investigation. Resume at its unresolved record-construction chain;
-   do not promote the private `life = time = -1` constructor guess. See
-   [phase producer evidence](ENEMY_PHASE_PRODUCER_INVESTIGATION.md) for the
-   complete current boundary and retained inputs. The movement draft, exact word dependency,
+   owner/state family has a private 75-value / 71-head catalog and complete phase
+   producers. Continue the whole caller's practice/state behavior and remaining
+   genuine receiver ownership; do not re-investigate the closed record defaults.
+   See [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md) for the source and
+   retained evidence. The movement draft, exact word dependency,
    independent operand-read order and remaining member-call boundaries are in
    [movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
    Reuse actual owners and the accepted animation sub-dispatcher. Preserve the

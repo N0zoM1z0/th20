@@ -10,6 +10,8 @@
 #include <stdexcept>
 #include <vector>
 
+void check_enemy_phases(th20::Enemy& enemy);
+
 namespace {
 th20::Context context;
 std::vector<std::unique_ptr<th20::Enemy>> allocated;
@@ -244,6 +246,7 @@ int main() {
     assert(first->runtimes.node == &first->main && !first->runtimes.next);
     assert(loader.select(first, "missing") == 0 && first->main.position.subroutine == -1);
     assert(first->main.position.offset == 0 && first->main.time == 0);
+    check_enemy_phases(*first);
     second->parent_link.detach(); second->controller_link.detach(); first->controller_link.detach();
     assert(controller.enemies.tail == &controller.enemies && !controller.enemies.next);
     assert(first->children.tail == &first->children && !first->children.next);

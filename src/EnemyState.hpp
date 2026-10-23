@@ -40,8 +40,8 @@ struct EnemyQueuedRecord {
 
 // Native phase configuration writes two independently terminated 64-byte names.
 struct EnemyPhase {
-    std::int32_t life, time;
-    char script[64], timeout_script[64];
+    std::int32_t life = -1, time = -1;
+    char script[64]{}, timeout_script[64]{};
 };
 
 struct EnemyBounds {

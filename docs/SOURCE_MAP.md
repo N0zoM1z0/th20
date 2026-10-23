@@ -86,9 +86,11 @@ It advances the engine under the same real mutex and bypasses modulus division.
 The Enemy movement opcode candidate remains private whole-root source work;
 it is not an implemented production dispatcher or a separate exact unit. See
 [movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
-The subsequent [phase producer investigation](ENEMY_PHASE_PRODUCER_INVESTIGATION.md)
-also remains private; its constructor guess does not change the maintained
-EnemyPhase aggregate or establish native initialization.
+EnemyInitialization.cpp owns the complete phase/timeout producers; EnemyState.hpp
+retains implicit member defaults for life/time and both complete name arrays.
+The original private constructor guess is superseded by independent evidence
+from value construction and complete strict replay. See
+[phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
 
 ## Build freshness and local products
 

@@ -9,8 +9,8 @@ namespace th20 {
 
 struct EnemyFlags { std::uint32_t bits; };
 
-// Native constructor, initializer and destruction establish these subobjects.
-// Destruction, initialization and variable resolvers remain open.
+// Native construction and initialization establish these subobjects.
+// Destruction and the whole opcode dispatcher remain open.
 struct Enemy : EclManager {
     EnemyFlags flags;
     IntrusiveLink<Enemy> controller_link;
@@ -40,6 +40,9 @@ struct Enemy : EclManager {
     std::int32_t integer_argument_value(std::int32_t index, std::int32_t value);
     float float_argument_value(std::int32_t index, float value);
     void select_context(std::int32_t index);
+    void configure_phase(std::uint32_t index, std::int32_t life,
+                         std::int32_t time, const char* name);
+    void configure_timeout(std::uint32_t index, const char* name);
     void initialize(std::int32_t index, const char* name);
     int tick();
     int apply_spawn(const EnemySpawn& parameters);

@@ -30,6 +30,19 @@ struct CountingResource : std::pmr::memory_resource {
 void check_enemy_state() {
     static_assert(std::is_nothrow_constructible_v<th20::Enemy>);
     static_assert(noexcept(std::declval<th20::Motion&>().set_angle(0.0f)));
+    // Native member defaults initialize both complete names even in dirty storage.
+    alignas(th20::EnemyPhase) std::array<unsigned char,
+        sizeof(th20::EnemyPhase) + 2 * alignof(th20::EnemyPhase)> phase_storage;
+    phase_storage.fill(0xa5);
+    auto* phase = ::new (phase_storage.data() + alignof(th20::EnemyPhase)) th20::EnemyPhase;
+    assert(phase->life == -1 && phase->time == -1);
+    for (char value : phase->script) assert(value == 0);
+    for (char value : phase->timeout_script) assert(value == 0);
+    for (unsigned i = 0; i != alignof(th20::EnemyPhase); ++i) {
+        assert(phase_storage[i] == 0xa5);
+        assert(phase_storage[alignof(th20::EnemyPhase) + sizeof(th20::EnemyPhase) + i] == 0xa5);
+    }
+    phase->~EnemyPhase();
     CountingResource resource;
     auto* previous = std::pmr::set_default_resource(&resource);
     alignas(th20::EnemyState) std::array<unsigned char,
@@ -58,6 +71,11 @@ void check_enemy_state() {
     state->animations.front().offset.x = 19.0f;
     state->animations.front().parent = 4;
     state->phases.resize(4);
+    for (const auto& record : state->phases) {
+        assert(record.life == -1 && record.time == -1);
+        for (char value : record.script) assert(value == 0);
+        for (char value : record.timeout_script) assert(value == 0);
+    }
     const auto phase_capacity = state->phases.capacity();
     state->health.health = 91;
     state->health.scaled_health = 637;

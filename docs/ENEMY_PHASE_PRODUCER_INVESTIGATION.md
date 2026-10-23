@@ -1,88 +1,116 @@
-# Enemy phase producer investigation
+# Enemy phase producer reconstruction
 
-## CORE146 investigation boundary
+## CORE/EXACT-147 acceptance
 
-This unfinished investigation continues the whole EnemyState opcode dispatcher
-at 0x48C010 beyond the private movement draft. It accepts no production source,
-semantic reconstruction, origin classification or exact unit. The current
-acceptance graph remains the CORE/EXACT-145 graph recorded in the
-[handoff](RE_HANDOFF.md). Raw exports and probe sources remain private.
+The maintained Enemy owner now implements the complete phase and timeout
+configuration protocol used by the whole opcode dispatcher. EnemyInitialization.cpp
+owns both producers; EnemyState.hpp keeps the record's implicit member defaults.
+Original translation-unit ownership and C++ spelling remain unproven. This work
+accepts no switch fragment or partial exactness for EnemyState::execute_opcode.
 
-The private catalog `.analysis/core146-state-family-catalog.json` covers 75
-effective values in 500..575, excluding default value 569, across 71 primary
-heads. Complete implementation still needs genuine HUD, laser and other receiver
-owners; reference service adapters do not establish those interfaces.
+| Entry | Complete bytes | Canonical contribution | Origin |
+| --- | ---: | --- | --- |
+| 0x4A3530 | 71 | EnemyPhase implicit default construction | Compiler |
+| 0x4AB650 | 301 | Enemy::configure_phase | Authored |
+| 0x4AB780 | 154 | Enemy::configure_timeout | Authored |
+| 0x4AB570 | 32 | PMR vector size-only resize wrapper | Library |
+| 0x4ABA00 | 41 | PMR vector size | Library |
+| 0x48BD40 | 36 | PMR vector unchecked element access | Library |
+| 0x4AA160 | 66 | PMR vector checked element access | Library |
 
-## Native producer observations
+All seven full contributions, totaling 701 bytes, strictly replay from the fresh
+canonical EnemyInitialization object. The two authored producers account for
+455 authored exact bytes; compiler/library support is excluded from authored
+coverage. Complete COFF sections agree with reviewed native entries, returns and
+extents. No target-sized prefix, padding insertion or synthetic wrapper is used.
 
-The attested export `.analysis/core146-phase-producers-native.asm` records two
-complete candidate bodies:
+## Actual receiver and state transitions
 
-| Entry | Body bytes | Observed receiver and behavior |
-| --- | ---: | --- |
-| 0x4AB650 | 301 | Enemy receiver; grow phases, write life, then conditionally write time and names |
-| 0x4AB780 | 154 | Enemy receiver; grow phases, then replace or clear the timeout name |
+Both producers receive Enemy and access the vector at Enemy+0x340, corresponding
+to EnemyState+0x2B8 at Enemy+0x88. EnemyPhase is 136 bytes: two signed 32-bit values
+followed by two independent 64-byte names at +8 and +72.
 
-Both access the vector at Enemy+0x340, corresponding to the maintained
-EnemyState+0x2B8 subobject at Enemy+0x88. The maintained EnemyPhase is 136 bytes:
-two 32-bit integers followed by two independent 64-byte names. These are Enemy
-producer candidates, not EnemyState member candidates.
+configure_phase grows when size is less than unsigned 32-bit `index + 1`, then
+writes life. Negative life preserves time and both names. Otherwise it writes
+time and copies the supplied name into both arrays through the existing
+strcpy_s interface, or clears only each array's first byte for a null name.
 
-The first body grows the vector when its size is less than the unsigned 32-bit
-`index + 1`, then writes life. Negative life preserves the existing time and both
-names. Otherwise it writes time and either copies the same supplied name into
-both arrays through `strcpy_s`, or clears only each array's first byte.
+configure_timeout preserves the native asymmetry: a non-null name uses checked
+vector access before copying the timeout name, while a null name uses unchecked
+access and clears only its first byte. There are no invented overflow checks or
+extra bounds guards. The native producers' ignored/unequal return-register
+contents support the maintained void interface.
 
-The second body has an asymmetric access contract: a non-null name uses checked
-vector access at 0x4AA160 before copying into the timeout array, while a null
-name uses unchecked access at 0x48BD40 and clears its first byte. Preserve that
-distinction and the observed unsigned arithmetic; extra bounds or overflow
-guards have not been established.
+## Implicit construction and independent bindings
 
-The observed storage dependencies are size at 0x4ABA00, resize at 0x4AB570,
-unchecked access at 0x48BD40 and checked access at 0x4AA160. Native copy calls
-target the independently existing `strcpy_s` anchor at 0x548610. This navigation
-does not yet supply complete canonical relocation identities for the producers.
+The native construction chain is traced independently through vector resize
+0x4A1F80, uninitialized construction 0x4A2380, backout emplacement 0x4A19B0,
+allocator dispatch 0x4A25D0/0x4A25F0, tuple application 0x4A2470, construction
+adapters 0x4A17D0/0x4A2AD0 and value construction 0x4A15A0.
 
-## Compiler result and unresolved construction
+At 0x4A15A0, the caller obtains the real placement address, zeroes all 136 bytes
+and invokes 0x4A3530. That complete constructor writes life/time as -1 and zeroes
+both entire name arrays. Natural in-class initializers preserve this implicit,
+non-user-provided construction contract. A hand-written constructor would remove
+the implicit outer value-initialization pass; no forced extra memset is added.
+The fresh canonical provider also matches that complete 62-byte lowering outside
+relocation fields. This is separate compiler corroboration, not a new exact unit.
 
-The retained private source `.analysis/core146-phase/Phase.cpp` proposes
-`Enemy::configure_phase` and `Enemy::configure_timeout`, with local header copies.
-Its MSVC 19.44.35211 x86 profile is C++20, /Od, /Ob0, /GS, /Gy, /Zl, SSE2,
-/fp:precise, /sdl and /EHsc. `build/core146-probes/Phase.obj` and its authentic
-receipt remain protected.
+The earlier CORE146 private 33-byte constructor guess initialized only life/time.
+It had no complete raw target occurrence and was never production source. Its
+inputs and failed observation remain preserved. The corrected 71-byte body first
+agreed completely through the already established memset anchor, then passed
+fresh canonical strict replay.
 
-`.analysis/core146-phase-probe-diagnostic.json` reports complete 301- and 154-byte
-producer bodies with no differences outside relocation fields. This is a
-structural diagnostic, not strict exact replay or evidence for every dependency.
+Relocation identities come from independently reviewed complete callees, actual
+receiver/argument flow and pinned SDK definitions. The relocation-free 36-byte
+index and 41-byte size bodies each have one complete raw target occurrence.
+Resize delegates to the independently reconciled 254-byte shrink/no-op/grow
+algorithm; checked access uses the native range-failure wrapper and observed
+invalid-vector-subscript string. Neither underlying delegate receives standalone
+exact credit in this batch. memset at 0x544760 and strcpy_s at 0x548610 reuse
+existing independent anchors. No compared producer field is solved for an anchor.
 
-The probe also adds a provisional `EnemyPhase` constructor that initializes life
-and time to -1. Its complete 33-byte emitted body has no full-byte occurrence in
-the locked PE, as recorded in
-`.analysis/core146-phase-constructor-independent.json`. That result does not
-establish a replacement constructor or native default values. Do not copy this
-guess into the maintained aggregate in `src/EnemyState.hpp`.
+## Behavior and verification scope
 
-## Resume point and protected evidence
+The existing actual-Enemy creation fixture now executes 720 phase/timeout
+transitions against independent 136-byte record images, checking every live
+record after each transition. It covers growth and gaps, retained capacity,
+negative/zero/positive life, signed time extremes, null/empty/63-byte names,
+untouched tails, copy order and the non-null checked overflow branch. Separate
+dirty-storage and vector-growth checks verify both complete name arrays and
+life/time defaults. Both relevant O2/UBSan public tests pass.
 
-Trace actual value construction before editing production declarations. Existing
-read-only exports follow resize through 0x4A1F80, uninitialized construction at
-0x4A2380, backout emplacement at 0x4A19B0 and allocator construction at 0x4A25D0
-and 0x4A25F0. The last export shows a call from 0x4A2623 to 0x4A2470; its complete
-construction behavior remains unresolved in this investigation.
+Valid nonoverlapping names delimit the fixture's explicit CRT capture boundary;
+native oversized-input/invalid-parameter behavior is not claimed. The unchecked
+null overflow branch is outside the valid test domain. Startup, complete VM
+dispatch, original resource integration and native runtime execution remain open.
 
-Reuse these private exports rather than repeating unchanged queries:
+Captured include closures select 17 affected providers / 72 previous units.
+Each provider is cold-built once, and all 72 previous units strictly replay.
+Two literal-label renames preserve complete old/new COFF data, roles, targets and
+addends. The other 147 providers reuse valid existing evidence. Only those 72
+affected and seven new units are replayed; cleanup adds no replay requirement.
 
-- `core146-phase-storage-native.asm`
-- `core146-phase-growth-native.asm`
-- `core146-phase-value-construction-native.asm`
-- `core146-phase-emplace-native.asm`
-- `core146-phase-allocator-native.asm`
-- `core146-phase-construct-chain.asm`
+## Protected evidence and remaining whole-root work
 
-All filenames above are relative to `.analysis/`. Preserve their associated
-Ghidra logs, the producer export, catalog, compiler log, diagnostics, local probe
-inputs and object receipt. After establishing construction, use natural shared
-source, independent relocation identities and fresh affected builds before any
-acceptance. The whole dispatcher's default, tables, EH and full compiler extent
-remain open under [whole-root evidence](CORE_ENEMY_DISPATCH_LAYOUT.md).
+Private results are relative to `.analysis/`:
+
+- `core147-independent-bindings.json`, `core147-new-exact-results.json.gz`
+- `core147-value-construction-corroboration.json`
+- `core147-cold-proof.json`, `core147-affected-results.json.gz`
+- `core147-enemy-phase-semantics.log`, `core147-core-semantics.log`
+- `core147-pre-phase-inputs.json.gz`, `core147-retired-inputs.json.gz`
+- `core147-graph-audit.json`, `core147-cleanup.json`, `core147-gates.json`
+
+Preserve the CORE146 and CORE147 attested native exports, Ghidra logs, private
+probe sources and original receipts/inputs in the retirement archive. Rejected
+source is evidence, not an alternate production implementation.
+
+The private 500..575 catalog still covers 75 effective values, excluding default
+569, across 71 primary heads. Whole opcode 514 includes additional practice and
+state handling beyond these producers; opcode 521's caller also remains in the
+unimplemented root. Continue that same whole-root construction with genuine
+receivers. HUD, laser and other unresolved owners cannot be replaced by reference
+service adapters. Preserve full default behavior, tables and EH under
+[whole-root evidence](CORE_ENEMY_DISPATCH_LAYOUT.md).

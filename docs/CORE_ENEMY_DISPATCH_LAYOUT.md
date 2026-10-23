@@ -75,10 +75,11 @@ and accepts the required complete raw random-word dependency. Read the
 bounded host checks and current dependency inventory. The production root and
 its complete compiler extent remain open; no switch fragment is accepted.
 
-The subsequent private 500..575 state-family catalog and phase producer probe
-are preserved in [phase producer evidence](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
-They add no production source or partial exact credit; record initialization and
-the remaining real receiver owners still need independent evidence.
+The subsequent 500..575 state-family catalog now has complete canonical phase
+and timeout producers, implicit record defaults and four STL access/growth
+support units. See [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
+These dependencies add no partial dispatcher credit; complete state-family
+control flow and the remaining real receiver owners are still open.
 
 ## Comparison extent still needs compiler ownership
 
