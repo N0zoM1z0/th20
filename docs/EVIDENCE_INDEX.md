@@ -16,7 +16,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Animation operands and recursive direction](ANIMATION_OPERAND_RECONSTRUCTION.md)
 - [Animation motion, interpolation and parent binding](ANIMATION_UPDATE_RECONSTRUCTION.md)
 - [EXACT-060: ANM construction, resource lifetime and reset](EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md)
-- [Animation pool construction and complete array retirement](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md)
+- [Animation pool construction and complete array retirement](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md) — includes enclosing-owner alignment limits.
 - [Mesh geometry and enemy deformation](RENDER_MESH_RECONSTRUCTION.md)
 - [Enemy mesh ownership, retirement and origin audit](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md)
 - [RenderMesh scalar construction and compiler evidence](MESH_ALLOCATION_EXACT_RECONSTRUCTION.md) — complete parameterized factory, class-tag/C++17 observations, and independent EH/SDK support.
@@ -27,7 +27,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 ## ECL and Enemy
 
 - [Core ECL and Enemy dispatch reconstruction](CORE_ECL_DISPATCH_RECONSTRUCTION.md)
-- [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md)
+- [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md) — includes the current bounded dependency audit.
 - [ECL buffer registration and instruction resolution](ECL_BUFFER_RECONSTRUCTION.md)
 - [ECL wire-header extents and exact instruction resolution](ECL_BUFFER_EXACT_RECONSTRUCTION.md)
 - [Exact ECL registration and record insertion](ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md)

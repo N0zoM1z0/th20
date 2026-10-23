@@ -48,6 +48,18 @@ recovered per unit. The wrapper uses `/showIncludes` for freshness receipts;
 no source-body selector or compiler patch is injected. Each output is ordinary
 x86 COFF and has a matching `.receipt.json` recording inputs/header hashes.
 
+For handoff or artifact cleanup with an unchanged source graph, reuse existing
+canonical objects without compiling:
+
+```bash
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --existing-objects
+```
+
+This mode retains strict target, receipt, extent and relocation checks. Missing,
+stale or mismatching products fail without a rebuild fallback. It verifies
+previous acceptance; new exact credit still requires a fresh locked-compiler
+build. Both modes support repeated `--source src/Owner.cpp` filters.
+
 A unit uses TH095's schema:
 
 ```toml

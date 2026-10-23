@@ -87,3 +87,20 @@ Private evidence includes `core143-independent-slot-identities.json`,
 All are under `.analysis/`; original input archives, failed logs and probe
 sources are retained when regenerable objects are retired. Final CI and cleanup
 replay are recorded in the current handoff.
+
+## CORE144 continuation: enclosing owner alignment
+
+A separate synthetic MSVC 19.44.35211 x86 probe tests eight layouts with explicit
+8/16-byte type/member alignment, default packing and pack(1/4). In each tested
+combination, explicit alignment propagates to the containing type even under
+reduced packing. The resulting owner alignment is 8 or 16, so these combinations
+do not explain the Renderer allocation size 0x7D40E94, which is 4 modulo 8.
+Natural uint64 alignment and other packing combinations were not tested. This
+compiler observation neither identifies the +6000DFC interval nor proves padding;
+the genuine Renderer owner remains unresolved.
+
+Private source/results are `.analysis/core144-alignment.cpp` and
+`.analysis/core144-alignment-results.json`; the authentic object and receipt are
+`build/core144-probes/Alignment.obj` and its sibling `.receipt.json`. Preserve
+these current investigation inputs without awarding canonical credit or repeating
+the unchanged trial.

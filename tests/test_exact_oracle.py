@@ -3,6 +3,7 @@ import importlib.util
 import json
 from pathlib import Path
 import struct
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -220,6 +221,45 @@ class ReceiptTests(unittest.TestCase):
                 header.write_text("// changed header\n")
                 with self.assertRaisesRegex(ValueError, "included header changed"):
                     project.verify_build_receipt(unit)
+
+
+class ReplayCommandTests(unittest.TestCase):
+    def setUp(self):
+        self.replay = load_script("replay-exact-units.py")
+        first = {"source": "src/first.cpp", "object": "build/first.obj", "profile": ["/Od"]}
+        self.units = {"first": first, "alias": dict(first),
+                      "second": {"source": "src/second.cpp", "object": "build/second.obj", "profile": ["/O2"]}}
+
+    def run_replay(self, arguments):
+        with patch.object(sys, "argv", ["replay-exact-units.py", *arguments]), \
+             patch.object(self.replay, "load_manifest", return_value={"units": self.units}), \
+             patch.object(self.replay.subprocess, "run") as run, \
+             patch("builtins.print"):
+            self.replay.main()
+        return [call.args[0][1:] for call in run.call_args_list]
+
+    def test_existing_objects_keep_strict_checks_without_compiling(self):
+        for arguments, names in ((["--existing-objects"], list(self.units)),
+                                 (["--existing-objects", "--source", "src/first.cpp"], ["first", "alias"])):
+            with self.subTest(arguments=arguments):
+                commands = self.run_replay(arguments)
+                self.assertEqual(commands, [["scripts/build.py", "--check"],
+                                           *[["scripts/compare-coff-function.py", "--unit", name] for name in names]])
+
+    def test_default_still_cold_builds_each_object_once(self):
+        commands = self.run_replay([])
+        self.assertEqual([c for c in commands if c[:2] == ["scripts/build.py", "--unit"]],
+                         [["scripts/build.py", "--unit", "first"], ["scripts/build.py", "--unit", "second"]])
+        self.assertEqual([c[-1] for c in commands if c[0] == "scripts/compare-coff-function.py"], list(self.units))
+
+    def test_existing_object_failure_stops_without_rebuilding(self):
+        with patch.object(sys, "argv", ["replay-exact-units.py", "--existing-objects"]), \
+             patch.object(self.replay, "load_manifest", return_value={"units": self.units}), \
+             patch.object(self.replay.subprocess, "run", side_effect=[None, subprocess.CalledProcessError(1, "compare")]) as run:
+            with self.assertRaises(subprocess.CalledProcessError):
+                self.replay.main()
+        self.assertEqual([call.args[0][1:] for call in run.call_args_list],
+                         [["scripts/build.py", "--check"], ["scripts/compare-coff-function.py", "--unit", "first"]])
 
 
 if __name__ == "__main__":

@@ -49,10 +49,10 @@ are excluded from Git.
 
 ## Repository status
 
-The maintained graph has **842 source-present mappings**, **827 physical strict
-units** and **160 comparison objects** covering 160,921 disjoint comparison bytes.
-Fifteen mapped whole functions remain nonexact. Confirmed authored exactness is
-separately 94 functions / 30,383 bytes; it is not whole-game completion.
+The maintained graph has **904 source-present mappings**, **896 physical strict
+units** and **164 comparison objects** covering 168,057 disjoint comparison bytes.
+Eight mapped whole functions remain nonexact. Confirmed authored exactness is
+separately 181 functions / 47,071 bytes; it is not whole-game completion.
 
 | Area | Current position |
 | --- | --- |
@@ -84,7 +84,7 @@ proprietary toolchain:
 scripts/repo-python scripts/ci.py
 ```
 
-Private reconstruction checks:
+Private handoff checks reuse the current canonical objects and receipts:
 
 ```bash
 scripts/bootstrap-tools.sh
@@ -92,13 +92,15 @@ scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/ghidra.py check
-scripts/repo-python scripts/replay-exact-units.py
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --existing-objects
 ```
 
 On a fresh private workspace, provision tools as described in
 [Tools](docs/TOOLS.md), then run `scripts/repo-python scripts/ghidra.py import` once.
 Every query re-attests the executable and complete mapped code section;
 inventory refreshes never overwrite reviewed ledgers.
+For fresh exact acceptance after source changes, run the affected cold replay
+without `--existing-objects`; see [build and matching](docs/BUILD_MATCHING.md).
 
 ## Reference review
 

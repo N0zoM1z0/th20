@@ -113,8 +113,10 @@ both the cache inventory and installed-file hashes. Bootstrap reuses an installe
 D3DX SDK without downloading this cache again.
 
 Record removed paths/bytes and protected hashes privately. Strictly compare all
-current units after cleanup; do not cold-rebuild an unchanged source graph just
-for cleanup or documentation. Source/header/profile changes require the usual
+current units after cleanup with
+`scripts/repo-python scripts/replay-exact-units.py --existing-objects` at reduced
+priority; do not cold-rebuild an unchanged source graph just for cleanup or
+documentation. Source/header/profile changes require the usual
 affected cold replay. EXACT-058 records the first retirement pass.
 
 Inactive successful replay snapshots may be archived losslessly as `.json.gz`.

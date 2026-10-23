@@ -54,6 +54,21 @@ The complete direct-call inventory contains 1,264 sites and 236 distinct targets
 55 canonical entry addresses cover 590 sites. Physical aliases and library support
 are excluded from these navigation counts; they do not measure root completion.
 
+### CORE144 handoff dependency refresh
+
+Against the unchanged CORE/EXACT-143 graph of 896 units, the private navigation
+audit revalidates the complete body SHA-256 and every recorded E8 call encoding
+and destination against the locked PE. There are still 1,264 sites / 236 targets;
+90 canonical entry addresses now cover 749 sites. This refresh supersedes the
+CORE-062 dependency coverage count for navigation only. It accepts no dispatcher
+source, compiler extent, authored origin or partial exact credit.
+
+The read-only audit source and result are
+`.analysis/core144-enemy-dependencies.py` and
+`.analysis/core144-enemy-current-dependencies.json`. Reuse this bounded inventory
+when resuming the complete root; original boundary and EH evidence below remains
+applicable.
+
 ## Comparison extent still needs compiler ownership
 
 The native body ends at004963FE. A single NOP at004963FF precedes the main
