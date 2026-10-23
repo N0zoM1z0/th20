@@ -105,6 +105,8 @@ Reuse valid existing evidence and do not repeat unchanged builds or tests.
 These scope rules supersede broader verification instructions in historical
 records. A shared-header change expands the affected include closure, not
 automatically the entire graph.
+State the affected replay scope in each handoff, including zero units for an
+unchanged documentation/cleanup batch.
 
 After each stable batch, retire superseded probe builds and other regenerable
 artifacts as explicitly requested by the user. Protect all current canonical

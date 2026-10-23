@@ -35,7 +35,7 @@ packages or change the working directory.
 | Validate tracking | `scripts/repo-python scripts/validate-tracking.py --require-target` | ledger consistency; does not prove exactness |
 | Report/generate state | `scripts/repo-python scripts/report-reconstruction-status.py`, `scripts/repo-python scripts/progress.py` | ledger-derived, not prose-derived |
 | Compile/link/runtime smoke | `scripts/repo-python scripts/toolchain-smoke.py` | infrastructure only, zero reconstruction credit |
-| Public CI | `scripts/repo-python scripts/ci.py` | no private target or installed proprietary tools required |
+| Public CI when code/infrastructure changes warrant it | `scripts/repo-python scripts/ci.py` | no private target or installed proprietary tools required; skip documentation/cleanup batches |
 
 `.venv` pins pefile/capstone for raw-PE/disassembly experiments and Tree-sitter
 0.25.2/C++ grammar 0.23.4 for the explicit reference-body inventory. The

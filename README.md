@@ -77,16 +77,18 @@ do not establish executable-wide compiler flags, SDK or CRT identity.
 
 ## Build and verify
 
-Public checks need Python 3.11+ and a C++20 compiler, with no original game or
-proprietary toolchain:
+Documentation and artifact-cleanup handoffs use diff/link checks and protected
+product hashes. An unchanged reconstruction graph needs no replay, compiler,
+Ghidra or full CI run. Commit subjects use `gpt-6.1-sol: <description>`.
+
+When code or infrastructure changes warrant broader checks, public CI needs
+Python 3.11+ and a C++20 compiler, with no original game or proprietary toolchain:
 
 ```bash
 scripts/repo-python scripts/ci.py
 ```
 
-Documentation and artifact-cleanup handoffs use diff/link checks and protected
-product hashes. An unchanged reconstruction graph needs no replay, compiler,
-Ghidra or full CI run. Private preflight for reconstruction changes is:
+Private preflight for reconstruction changes is:
 
 ```bash
 scripts/bootstrap-tools.sh

@@ -50,6 +50,13 @@ The earlier documentation-only archive lookup remains
 `handoff149-retirement-plan.json`. Read `handoff144-protected-inventory.json.gz`
 and `core131-admission-results.json.gz` with `gzip.open` instead of their old paths.
 
+The 2026-10-23 documentation-only handoff changes no reconstruction inputs:
+zero replay units, compiler builds, Ghidra runs or full CI runs. Its private
+lookup is `handoff152-retirement-plan.json`. It losslessly archives 56 superseded
+source-hash reports from 1,318,023 to 652,213 bytes, saving 665,810 bytes. Every
+decompressed SHA-256 and all 832 protected file hashes are verified. Current
+freezes, canonical products, native evidence and active probes remain intact.
+
 ## Protected local products
 
 | Canonical directory | Objects | Required companions |
@@ -86,6 +93,9 @@ Receipts retain their authentic original inputs and must never be rewritten.
 Preserve private `.analysis/core149-pattern/`, `.analysis/core150-owner/` and `.analysis/core151-flags/`
 sources and their native exports. Unfinished emission and ABI questions retain
 their complete source/native evidence; do not repeat unchanged rejected trials.
+The unfinished clear/selection inquiry also retains `.analysis/core152-clear/`,
+its native exports and `build/core152-probes/Clear.obj` with its original receipt.
+This initial probe has no accepted source, mapping or exact credit.
 
 ## Next work and existing private leads
 

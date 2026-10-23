@@ -11,6 +11,8 @@ and cleanup batches with an unchanged reconstruction graph need Git/diff/link
 checks and protected-product hash checks, with zero replay units. Skip Ghidra,
 MSVC, full CI and canonical replay for these batches. The preflight below is for
 changes to reconstruction code, native analysis evidence or acceptance state.
+Commit subjects use `gpt-6.1-sol: <description>`. State the affected replay scope
+in the handoff; an unchanged documentation/cleanup batch reports zero units.
 
 ```bash
 git status --short --branch
@@ -146,6 +148,10 @@ Superseded generated handoff inventories may also be archived losslessly after
 checking that the current handoff uses a newer inventory. Preserve their exact
 decompressed bytes, record both hashes and update the current handoff's archive
 lookup. Do not retire the current product inventory or active investigation inputs.
+
+Superseded source-freeze hash reports may use the same lossless archival process.
+Keep the current freeze and every report protected by the active investigation;
+record the original and archive hashes in the current handoff's private lookup.
 
 Completed historical public-CI logs may likewise be archived as `.log.gz` after
 checking their terminal success marker and successful test summary. Record the
