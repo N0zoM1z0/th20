@@ -39,7 +39,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction | Remaining compressor/SaveManager emission and startup |
 | Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned mesh allocation/retirement, surface/geometry records and two-bit flag view | Renderer declaration, mesh creation, full rendering and resource integration |
 | Sound | Actual SoundInf storage and loading/preload protocol | Whole dispatcher, startup and resource-owning retirement |
-| Platform/UI | Verified window/input/text/value/menu components and complete FrontInf storage/construction with boss markers | HUD resource/destruction/frame execution, complete scene owners, OS resources and global initialization |
+| Platform/UI | Verified window/input/value/menu components, complete FrontInf and AsciiInf storage/construction, boss markers and shared text-resource selection | HUD/text resource lifetime and frame execution, complete scene owners, OS resources and global initialization |
 
 Animation +568 points to the actual virtual callback base. +5DC is an
 `AnimationEntryCallback`; +5E0 is an `AnimationScriptCallback`. +5C8 is generic

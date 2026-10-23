@@ -1139,8 +1139,8 @@ relocations = [
 # REF-022: native record/member initialization, complete constructor extent.
 [units.text_line_construct]
 source = "src/TextLine.cpp"
-object = "build/core141-canonical/TextLine.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+object = "build/core160-canonical/TextLine.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::TextLine::TextLine"]
 symbol = "??0TextLine@th20@@QAE@XZ"
 target_address = 0x0046ABA0
@@ -16101,4 +16101,80 @@ relocations = [
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
   { offset = 39, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
   { offset = 52, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+]
+
+[units.ascii_ctor]
+source = "src/TextLine.cpp"
+object = "build/core160-canonical/TextLine.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AsciiInf::AsciiInf"]
+symbol = "??0AsciiInf@th20@@QAE@XZ"
+target_address = 4630752
+size = 687
+compare_size = 692
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0AsciiInf@th20@@QAE@XZ", target = 5667232 },
+  { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 44, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 4324640 },
+  { offset = 53, type = "DIR32", symbol = "??_7AsciiInf@th20@@6B@", target = 5699008 },
+  { offset = 64, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 4492096 },
+  { offset = 78, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 4492096 },
+  { offset = 92, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 4492096 },
+  { offset = 106, type = "REL32", symbol = "??0?$array@UTextLine@th20@@$0BEA@@std@@QAE@XZ", target = 4630192 },
+  { offset = 169, type = "DIR32", symbol = "__real@3f800000", target = 5687500 },
+  { offset = 188, type = "DIR32", symbol = "__real@3f800000", target = 5687500 },
+  { offset = 353, type = "REL32", symbol = "??0IntPoint@th20@@QAE@XZ", target = 4276272 },
+  { offset = 381, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 4362768 },
+  { offset = 395, type = "REL32", symbol = "??0?$IntrusiveList@UTextJob@th20@@@th20@@QAE@XZ", target = 4295248 },
+  { offset = 409, type = "REL32", symbol = "??0Worker@th20@@QAE@XZ", target = 4241280 },
+  { offset = 423, type = "REL32", symbol = "??0?$list@V?$function@$$A6AXXZ@std@@V?$allocator@V?$function@$$A6AXXZ@std@@@2@@std@@QAE@XZ", target = 4630704 },
+  { offset = 476, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 490, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
+  { offset = 564, type = "REL32", symbol = "_memset", target = 5523296 },
+  { offset = 572, type = "DIR32", symbol = "$SG83927", target = 5699020 },
+  { offset = 577, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
+  { offset = 588, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
+  { offset = 625, type = "DIR32", symbol = "__real@3f800000", target = 5687500 },
+  { offset = 644, type = "DIR32", symbol = "__real@3f800000", target = 5687500 },
+]
+
+[units.ascii_lines_ctor]
+source = "src/TextLine.cpp"
+object = "build/core160-canonical/TextLine.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::TextLine,320>::array"]
+symbol = "??0?$array@UTextLine@th20@@$0BEA@@std@@QAE@XZ"
+target_address = 4630192
+size = 81
+compare_size = 86
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$??0?$array@UTextLine@th20@@$0BEA@@std@@QAE@XZ", target = 5666304 },
+  { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 39, type = "DIR32", symbol = "??0TextLine@th20@@QAE@XZ", target = 4631456 },
+  { offset = 58, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
+]
+
+[units.ascii_pending_tasks_ctor]
+source = "src/TextLine.cpp"
+object = "build/core160-canonical/TextLine.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::list<std::function<void()>>::list"]
+symbol = "??0?$list@V?$function@$$A6AXXZ@std@@V?$allocator@V?$function@$$A6AXXZ@std@@@2@@std@@QAE@XZ"
+target_address = 4630704
+size = 45
+relocations = [
+  { offset = 24, type = "REL32", symbol = "??$?0$$V@?$_Compressed_pair@V?$allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@std@@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@2@$00@std@@QAE@U_Zero_then_variadic_args_t@1@@Z", target = 4619408 },
+  { offset = 33, type = "REL32", symbol = "?_Alloc_sentinel_and_proxy@?$list@V?$function@$$A6AXXZ@std@@V?$allocator@V?$function@$$A6AXXZ@std@@@2@@std@@AAEXXZ", target = 4647392 },
+]
+
+[units.ascii_text_animation_file]
+source = "src/TextLine.cpp"
+object = "build/core160-canonical/TextLine.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AsciiInf::text_animation_file"]
+symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ"
+target_address = 4654704
+size = 16
+relocations = [
+  { offset = 8, type = "DIR32", symbol = "?shared_text_animation_file@th20@@3PAVAnimationFile@1@A", target = 6051968 },
 ]

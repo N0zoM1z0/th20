@@ -1884,12 +1884,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0046A620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0046A6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0046A6B0,compiler,AsciiInf,exclude,high,"CORE/EXACT-160; docs/ASCII_OWNER_RECONSTRUCTION.md; Pinned SDK std::array is an aggregate without a written default-constructor body. Native count320/stride320 and TextLine callback, complete81-byte compiler-generated constructor plus all5 emitted INT3 bytes and full shared noexcept EH support establish compiler origin. TextLine219 is freshly replayed after its recovered noexcept declaration; unchanged old code. Excluded from authored coverage."
 0x0046A710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0046A8B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0046A8E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0046A8B0,library,AsciiInf,exclude,high,"CORE/EXACT-160; docs/ASCII_OWNER_RECONSTRUCTION.md; Complete45-byte pinned SDK std::list<std::function<void()>> default constructor with actual eight-byte head/count storage, compressed-pair initialization and full sentinel allocation interface. Native independent33-byte compressed storage and136-byte sentinel producer corroborate the library partition. Full relocation replay; excluded from authored coverage. No standard-container facade or aggregate padding."
+0x0046A8E0,authored,AsciiInf,authored,high,"CORE/EXACT-160; docs/ASCII_OWNER_RECONSTRUCTION.md; Complete687-byte noexcept AsciiInf constructor over the actual0x1A360 TaskInfo-derived owner: three separate Animations,320 TextLines, native IntPoint/Angle, observed job sentinel, Worker and std::list<std::function<void()>>, four distinct draw nodes and256-byte text buffer. Preserves native repeated style stores and diagnostic-before-publication. Independent AV RTTI hierarchy, deleting size, typed consumers and producer/resource evidence establish storage. Complete692-byte COFF extent includes all5 emitted INT3 bytes; complete94-byte EH support strictly replays flags5. Original resource lifecycle/RTTI data exactness and the generic job-list31/native40 emission remain open. Custom diagnostic/publication establishes authored origin."
 0x0046ABA0,unknown,TextLine,review,pending,"REF-022; Actual320-byte ASCII queue record independently established by array ctor46A6B0 count320/stride320, complete line producers/compaction consumers. Native219-byte ctor clears only char[256], invokes Vector3 zero ctor422E10, individually initializes remaining fields and sets alignments1. Natural full typed record, two actual separate words120/124, no synthetic renderer facade; original spelling and authored/compiler/shared origin pending. CRT memset544760 and Vector3 anchor observed independently before probing."
 0x0046AC80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046ADE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1996,7 +1996,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004705A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00470670,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00470670,unknown,AsciiInf,review,pending,"CORE/EXACT-160; docs/ASCII_OWNER_RECONSTRUCTION.md; Complete16-byte thiscall member returns the shared AnimationFile pointer at5C5880, ignoring instance state. Independent4D8350 resource publication and4DE360/4DE430 calls to the actual File::spawn identify the slot; it is distinct from AsciiInf::animation_file at+1A244. Maintained genuine complete owner, no adapter receiver; origin/spelling remain pending."
 0x00470680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004708E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470920,unknown,Rectangle,review,pending,"REF-022; Complete72-byte cdecl bool/AL helper independently observed in atlas470680; inclusive touching edges, signed comparisons after modulo32 endpoint additions. Natural body uses unsigned additions rather than signed-overflow UB or helper partition. Original helper spelling and authored versus generic/library provenance remain pending; exact credit is kept separate from authored credit. Public lattice intersections and overflow fixtures pass UBSan."

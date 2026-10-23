@@ -475,7 +475,7 @@ ASCII5639, commit467 and outline2245 additionally require table/padding ownershi
 No such function is accepted or compared using a target-sized prefix.
 
 The actual1A360 AsciiInf owns TaskInf/vptr, three typed5E4 Animations,320 Lines,
-ClockScalar rotation, FunctionChain, Worker and a callable list. Reference
+Angle rotation, an observed job list, Worker and a callable list. Reference
 CallbackOwner/raw scalar/refactored calls omit diagnostics and repeated stores.
 Job684 contains actual Animation/PMR string, Vector3, rectangle, ClockScalar and
 atomic cancellation; aggregate arrays and rotationfloat change construction.
@@ -483,6 +483,12 @@ Native draw_jobs returns int0 while reference returnsvoid. Native FPS is a
 receiver callback returningint1, not the reference freevoidfloat API. Loading
 text compares a typed AnimationHandle and calls the original named factory.
 These owners, RTTI/EH, allocator lifetimes and original partitions remain open.
+
+CORE/EXACT-160 subsequently closes the complete AsciiInf storage, constructor,
+typed array and shared-file getter. Independent native constructor429210
+corrects the earlier ClockScalar rotation label to Angle. Resource lifecycle,
+formatting/drawing and complete RTTI data remain open; see
+[current AsciiInf evidence](ASCII_OWNER_RECONSTRUCTION.md).
 
 Formatting keeps original checked-array, string-view and conversion boundaries:
 floating conversion4710F0, integer conversion459210 and separate pad4703C0.

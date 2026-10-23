@@ -9,6 +9,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Animation and rendering
 
+- [AsciiInf owner and shared text resources](ASCII_OWNER_RECONSTRUCTION.md) — complete native storage/construction, typed text queue, shared-file identity and full noexcept support.
+
 - [Animation template preparation and scoped child lookup](ANIMATION_BINDING_RECONSTRUCTION.md)
 - [Animation callback owners and calling conventions](ANIMATION_CALLBACK_RECONSTRUCTION.md)
 - [Animation child traversal and recursive flags](ANIMATION_CHILDREN_RECONSTRUCTION.md)

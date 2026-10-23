@@ -982,3 +982,7 @@ th20::FrontInf::set_boss_gauge,0x0049C9C0,function
 "std::array<th20::AnimationHandle,3>::array",0x004AEDA0,function
 "std::array<th20::AnimationHandle,7>::array",0x004AEDF0,function
 "std::array<th20::AnimationHandle,10>::array",0x004AEE40,function
+th20::AsciiInf::AsciiInf,0x0046A8E0,function
+"std::array<th20::TextLine,320>::array",0x0046A6B0,function
+std::list<std::function<void()>>::list,0x0046A8B0,function
+th20::AsciiInf::text_animation_file,0x00470670,function

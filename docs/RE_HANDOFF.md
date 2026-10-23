@@ -11,20 +11,22 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Its embedded title/replay label is 1.00c in the same executable. The Steam-original
 backup is provenance evidence. See [target provenance](TARGET_PROVENANCE.md).
 
-The accepted graph contains 973 physical strict units, 164 canonical objects and
-176,837 disjoint comparison bytes. All 983 mapped functions have source; ten
+The accepted graph contains 977 physical strict units, 164 canonical objects and
+177,676 disjoint comparison bytes. All 987 mapped functions have source; ten
 whole mapped functions remain nonexact. Authored exact coverage is separately
-199 functions / 52,934 bytes, with 212 confirmed authored origins. The pinned
+200 functions / 53,621 bytes, with 213 confirmed authored origins. The pinned
 reference has 6,945 terminal implementation reviews and 113 reconciled parser-gap
 files. These counts establish neither whole-game 95% byte exactness nor a
 playable reconstruction; whole-program compilation and linkage remain open.
 
-CORE159 reconstructs the complete 0x2D8-byte FrontInf storage and its 883-byte
-authored constructor, with actual TaskInfo inheritance, typed handle arrays,
-boss panels, flags and publication. Ten new strict units add 1,647 comparison
-bytes; four array constructors are compiler-generated. Resource loading,
-destruction, frame execution and RTTI/vtable data exactness remain open.
-See [FrontInf owner evidence](FRONT_OWNER_RECONSTRUCTION.md).
+CORE160 reconstructs the complete 0x1A360-byte AsciiInf storage and its
+687-byte authored noexcept constructor, including three actual Animations,
+320 TextLines, the real Worker/list and shared text-file selection. Four new
+strict units add 839 comparison bytes; complete EH support separately passes
+94 bytes. AsciiInf resource lifetime, formatting and drawing remain open.
+See [AsciiInf owner evidence](ASCII_OWNER_RECONSTRUCTION.md). The complete
+FrontInf owner and boss-marker protocol remain accepted; see
+[FrontInf evidence](FRONT_OWNER_RECONSTRUCTION.md).
 
 The private whole-dispatcher draft now covers 110 effective values / 81 primary
 heads and passes 36,244 O2/UBSan scenarios, including three further HUD paths.
@@ -43,41 +45,38 @@ and guarded storage fixtures for unchanged bodies. See
 
 ## Current verification and cleanup
 
-HudGauge.hpp/cpp select one provider / one previous unit. Two canonical builds
-were necessary, the final one after preserving the native class key and public
-base. The old 34-byte HudGauge and all ten new units strictly pass. The other
-163 providers reuse valid evidence. One generated literal rename and the pointer
-class tag retain their complete data/native roles. Full EH code/data independently
-replay 151 bytes, including TaskInfo cleanup and all shared noexcept aliases;
-these support bytes are separate from the canonical progress total. No full CI
-or unfiltered whole-graph replay runs.
+TextLine.hpp/cpp select one provider / one previous unit. One diagnostic build
+and one final canonical build run serially at reduced priority. The previous
+219-byte TextLine unit and four new complete units strictly pass; the other
+163 providers reuse valid evidence. Both complete emitted INT3 tails and every
+relocation are compared. Two complete handlers and shared flags-5 metadata
+separately replay 94 bytes. No full CI or unfiltered whole-graph replay runs.
 
-Current private proofs are `core159-cold-proof.json`,
-`core159-affected-results.json.gz`, `core159-new-exact-results.json.gz`,
-`core159-independent-bindings.json`, `core159-final-role-reconciliation.json`,
-`core159-graph-audit.json`, `core159-front-semantics-v3.log`,
-`core159-dispatch-host-v4.log` and `core159-gates.json`.
-Earlier semantic/emission proofs remain preserved.
+Current private proofs are `core160-cold-proof.json`,
+`core160-affected-results.json.gz`, `core160-new-exact-results.json.gz`,
+`core160-independent-bindings.json`, `core160-ascii-native-identity.json`,
+`core160-ascii-callable-identity.json`, `core160-ascii-semantics.log`,
+`core160-public-test-proof.json` and `core160-gates.json`.
 These filenames and other private filenames below are relative to `.analysis/`.
-Reuse passing evidence for unchanged inputs. Documentation and cleanup add
-**zero compiler builds and zero canonical replays**; only protected hashes and
-lightweight documentation/tracking checks run during that phase.
+The actual-owner fixture passes 256 dirty constructions, 81,920 complete
+TextLine images, 768 shared-file selections and a separate noexcept termination
+path. The earlier FrontInf fixture's twelve inputs are unchanged; its passing
+1,706 cases remain valid. The affected whole-dispatcher fixture also passes all
+36,244 cases after its recorded TextLine.hpp input changes. Its candidate/cases
+are unchanged; see
+`core160-dispatch-host-recipe.json` and `core160-dispatch-host.log`.
 
-The 2026-10-24 documentation/cleanup pass has **zero affected providers and
-zero replay units**. It reuses the completed checks above. All 949 protected
-paths retain their recorded hashes. Three completed historical replay logs are
-archived losslessly, saving 67,481 bytes; `handoff160-retirement-plan.json`
-records original/archive hashes, terminal success and the protected inventory.
-This maintenance changes no source, profile, manifest or acceptance count.
-
-`core159-retirement-plan.json` records eight retired files / 1,844,976 bytes:
-the replaced old object/receipt, initial probe/canonical pairs and two successful
-regenerable host binaries.
-Authentic receipts and SHA-bound texts are archived before retirement.
-`core159-cleanup.json` confirms protected hashes remain unchanged, with no extra
-builds or replays. The current products preserve all active emission questions.
-Native evidence, original inputs, installed tools, reference source, Ghidra and
-supplied game files remain protected.
+`core160-retirement-plan.json` records retirement of the replaced TextLine
+object/receipt, initial probe pair and successful regenerable host binary:
+five files / 960,418 bytes, after preserving authentic receipts and SHA-bound
+input texts. All 328 canonical files, twenty private products and 337 native
+evidence/active inputs retain their protected hashes. `core160-cleanup.json`
+records the removed paths' inventory and hash checks;
+cleanup itself adds zero compiler builds and zero canonical replays.
+The preceding documentation-only `handoff160-retirement-plan.json` locates three
+losslessly archived historical replay logs and 67,481 bytes saved.
+Reuse completed evidence when its inputs are unchanged; documentation and cleanup
+do not restart verification.
 
 Historical archive lookup remains in `handoff146-retirement-plan.json`,
 `handoff149-retirement-plan.json`, `handoff152-retirement-plan.json` and
@@ -94,7 +93,7 @@ Use `gzip.open` for their losslessly archived reports instead of old plain paths
 
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
-| `build/core141-canonical/` | 78 | Every sibling `.receipt.json` |
+| `build/core141-canonical/` | 77 | Every sibling `.receipt.json` |
 | `build/core142-canonical/` | 12 | Every sibling `.receipt.json` |
 | `build/core143-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core145-canonical/` | 6 | Every sibling `.receipt.json` |
@@ -105,37 +104,29 @@ Use `gzip.open` for their losslessly archived reports instead of old plain paths
 | `build/core156-canonical/` | 18 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 29 | Every sibling `.receipt.json` |
 | `build/core159-v2/` | 1 | Every sibling `.receipt.json` |
+| `build/core160-canonical/` | 1 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. The current 279-path
-source freeze is `core159-final-frozen-source.json`. Protected hashes, including
-315 native evidence/active input files and twenty private investigation products,
-are in `core159-retirement-plan.json`. Retain the nine root object/receipt pairs for
+source freeze is `core160-final-frozen-source.json`. Protected hashes for current
+products, native evidence/active inputs and twenty private investigation products
+are in `core160-retirement-plan.json`. Retain the nine root object/receipt pairs for
 core103-QueryProtocol-v5 and the core109..core113 sound probes, plus
 `build/core144-probes/Alignment.obj` and its receipt. Their unfinished
 [damage-query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md),
 [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Renderer-owner](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md) inquiries remain open.
 
-Preserve `core159-pre-front-inputs.json.gz`,
-`core159-pre-registration-ledgers.json.gz`, `core159-probe-original-inputs.json.gz`,
-`core159-canonical-v1-original-inputs.json.gz`,
-`core159-dispatch-host-v3-original-inputs.json.gz`, `core158-pre-rank-inputs.json.gz`,
-`core158-pre-registration-ledgers.json.gz`, `core156-pre-state-inputs.json.gz`,
-`core156-pre-registration-ledgers.json.gz`,
-`core156-probe-v1-original-inputs.json.gz`,
-`core156-probe-v2-original-inputs.json.gz`,
-`core156-probe-final-original-inputs.json.gz`,
-`core156-member-call-original-inputs.json.gz`, `core155-pre-counter-inputs.json.gz`,
-`core155-pre-registration-ledgers.json.gz`, `core154-pre-acceptance-inputs.json.gz`,
-`core154-pre-geometry-namespace-inputs.json.gz`,
-`core154-pre-publication-inputs.json.gz`, `core154-v4-original-inputs.json.gz`,
-`core154-retired-probe-inputs.json.gz` and all earlier original-input/evidence
-archives. They retain authentic receipts and SHA-bound source versions; receipts
-must never be rewritten. The current private whole-dispatcher inputs are
-`core159-enemy-dispatch-candidate.cpp`, `core159-dispatch-host.cpp`,
-`core159-front-host-cases.inc` and `core159-dispatch-host-recipe.json`.
-Earlier candidates/fixtures and unfinished owner/phase/protocol inputs remain
-protected; reuse their evidence rather than repeating rejected trials.
+Preserve `core160-pre-ascii-inputs.json.gz`,
+`core160-pre-registration-ledgers.json.gz`,
+`core160-probe-v1-original-inputs.json.gz`,
+`core160-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
+archives identified by the retirement plans. These retain authentic receipts
+and SHA-bound source versions; receipts must never be rewritten. The current
+private whole-dispatcher source remains `core159-enemy-dispatch-candidate.cpp`,
+`core159-dispatch-host.cpp` and `core159-front-host-cases.inc`; its refreshed
+recipe is `core160-dispatch-host-recipe.json`. Earlier candidates/fixtures and
+unfinished owner/phase/protocol inputs remain protected; reuse their evidence
+rather than repeating rejected trials.
 
 ## Next work
 
@@ -148,8 +139,11 @@ protected; reuse their evidence rather than repeating rejected trials.
    [movement](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) evidence. The new
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md) and
    [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) frontiers identify the fourteen
-   remaining nondefault state paths, actual Dialogue/resource boundaries and
-   the handle-preservation requirement.
+   remaining nondefault state paths and the handle-preservation requirement.
+   AsciiInf now supplies the real shared-file receiver. Continue the complete
+   0x140-byte Dialogue owner and 1,738-byte constructor at 0x4AF310, actual Cursor
+   lifetime, animation/cancellation calls and ready-state protocol; see
+   [text-resource evidence](ASCII_OWNER_RECONSTRUCTION.md).
 2. Resolve the genuine Renderer owner and +6000DFC..+6000DFF before declaring
    members. Allocation is 0x7D40E94 bytes; negative searches do not prove padding.
    This blocks whole File::clear, texture creators and the 922-byte AnimationFile

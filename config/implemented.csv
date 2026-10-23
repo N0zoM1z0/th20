@@ -981,3 +981,7 @@ th20::FrontInf::set_boss_gauge
 "std::array<th20::AnimationHandle,3>::array"
 "std::array<th20::AnimationHandle,7>::array"
 "std::array<th20::AnimationHandle,10>::array"
+th20::AsciiInf::AsciiInf
+"std::array<th20::TextLine,320>::array"
+std::list<std::function<void()>>::list
+th20::AsciiInf::text_animation_file
