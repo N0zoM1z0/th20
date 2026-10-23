@@ -1,9 +1,29 @@
 #pragma once
 #include "TaskInfo.hpp"
+#include "IntrusiveLink.hpp"
+#include "Interpolation.hpp"
 #include "Timer.hpp"
 #include "AnimationFile.hpp"
 #include "OverlayCounter.hpp"
 namespace th20 {
+struct StoneEnemyRecord;
+struct StoneEnemyController {
+    IntrusiveList<StoneEnemyRecord> records;
+    Timer timer_18, timer_28;
+    FloatInterpolation scalar_38;
+    Interpolation<std::uint8_t> scalar_64;
+    FloatInterpolation scalar_84;
+    std::uint8_t byte_b0;
+    StoneEnemyController();
+    ~StoneEnemyController();
+    std::uint8_t byte_b0_value();
+};
+extern StoneEnemyController* process_stone_enemies;
+StoneEnemyController* stone_enemy_controller();
+#if defined(_M_IX86)
+static_assert(sizeof(StoneEnemyController)==0xb4);
+static_assert(offsetof(StoneEnemyController,byte_b0)==0xb0);
+#endif
 struct Context;
 class Weapon;
 class RenderMesh;

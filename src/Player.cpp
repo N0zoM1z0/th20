@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include "Session.hpp"
 #include "EclDiagnostic.hpp"
 namespace th20 {
 Player::Player() noexcept
@@ -10,4 +11,7 @@ Player::Player() noexcept
       view_index(0),context(nullptr) {
     ecl_diagnostic_hint("initialize PlayerInf\n");
 }
+PlayerFeedback* Player::feedback_value() { return &feedback; }
+Player* player(std::int32_t index) { return session.context(index).player(); }
+
 }

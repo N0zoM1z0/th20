@@ -129,6 +129,7 @@ public:
     void reset();
     void set_loader(EclLoader* value);
     void select_subroutine(const char* name);
+    std::int32_t select_subroutine_index(std::int32_t index);
     void set_offset(std::int32_t value);
     void set_time(float value);
     EclLoader* loader_value() const;

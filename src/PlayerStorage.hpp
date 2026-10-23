@@ -51,6 +51,8 @@ struct PlayerFeedback {
     std::int32_t player_index;
     Context* context;
     PlayerFeedback();
+    void record_hit(std::int32_t value);
+    std::int32_t count_value();
 };
 struct PlayerCollisionBounds {
     float normal_radius,focus_radius;

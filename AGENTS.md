@@ -6,6 +6,7 @@ Official Japanese names and original target evidence may retain their original
 language, as the user explicitly clarified. Preserve the official title in
 `config/target.toml`, following TH095's treatment of game metadata.
 Commit subjects use `gpt-6.1-sol: <description>`.
+Use this exact prefix for new documentation and cleanup checkpoints as well.
 This user-requested prefix supersedes the earlier `gpt-6-astra-medium:` format;
 do not rewrite historical commits.
 
@@ -102,6 +103,8 @@ The user explicitly requires fast, affected-only validation (2026-10-23).
 Never run an unfiltered whole-graph replay merely for handoff, documentation,
 cleanup or reassurance. An unchanged graph has zero affected replay units.
 Reuse valid existing evidence and do not repeat unchanged builds or tests.
+Resuming a session for documentation or cleanup does not restart completed
+validation. Reuse the handoff's passing results for unchanged inputs.
 These scope rules supersede broader verification instructions in historical
 records. A shared-header change expands the affected include closure, not
 automatically the entire graph.

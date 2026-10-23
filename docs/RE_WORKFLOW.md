@@ -13,6 +13,8 @@ MSVC, full CI and canonical replay for these batches. The preflight below is for
 changes to reconstruction code, native analysis evidence or acceptance state.
 Commit subjects use `gpt-6.1-sol: <description>`. State the affected replay scope
 in the handoff; an unchanged documentation/cleanup batch reports zero units.
+Reuse completed passing checks when their inputs are unchanged. Resuming a
+handoff or retiring artifacts does not require restarting those checks.
 
 ```bash
 git status --short --branch

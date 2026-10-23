@@ -18,4 +18,6 @@ PlayerShotPool::PlayerShotPool() noexcept {}
 PlayerShotController::PlayerShotController()
     :field_12460(0),field_12464(0),counters_12468{},counters_124e0{},field_12558(0),
      flags_1255c{},field_12564(0),field_12578(0),byte_1257c(0),player_index(0),context(nullptr) {}
+std::int32_t PlayerFeedback::count_value() { return static_cast<std::int32_t>(field_30); }
+
 }

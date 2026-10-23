@@ -27,4 +27,8 @@ int line_parameters(float& slope, float& intercept, float ax,float ay,float bx,f
     return 0;
 }
 }
+float geometry::direction_xy(const Vector3& first, const Vector3& second) {
+    return scalar_math::arctangent(second.y - first.y, second.x - first.x);
+}
+
 }

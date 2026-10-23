@@ -1619,7 +1619,7 @@ relocations = []
 
 [units.geometry_absolute]
 source = "src/CollisionGeometry.cpp"
-object = "build/core141-canonical/CollisionGeometry.obj"
+object = "build/core154-canonical/CollisionGeometry.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::geometry::absolute"]
 symbol = "?absolute@geometry@th20@@YAMM@Z"
@@ -1631,7 +1631,7 @@ relocations = [
 
 [units.geometry_circle_point]
 source = "src/CollisionGeometry.cpp"
-object = "build/core141-canonical/CollisionGeometry.obj"
+object = "build/core154-canonical/CollisionGeometry.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::geometry::circle_point"]
 symbol = "?circle_point@geometry@th20@@YA_NMMMMM@Z"
@@ -1641,7 +1641,7 @@ relocations = []
 
 [units.geometry_rectangle_point]
 source = "src/CollisionGeometry.cpp"
-object = "build/core141-canonical/CollisionGeometry.obj"
+object = "build/core154-canonical/CollisionGeometry.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::geometry::rectangle_point"]
 symbol = "?rectangle_point@geometry@th20@@YA_NMMMMMM@Z"
@@ -2041,7 +2041,7 @@ relocations = [
 
 [units.player_record_set_field_ec]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_ec"]
 symbol = "?set_field_ec@PlayerRecord@th20@@QAEXH@Z"
@@ -2051,7 +2051,7 @@ relocations = []
 
 [units.player_record_set_field_30]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_30"]
 symbol = "?set_field_30@PlayerRecord@th20@@QAEXH@Z"
@@ -2063,7 +2063,7 @@ relocations = [
 
 [units.player_record_set_field_34]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_34"]
 symbol = "?set_field_34@PlayerRecord@th20@@QAEXH@Z"
@@ -2075,7 +2075,7 @@ relocations = [
 
 [units.player_record_set_field_38]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_38"]
 symbol = "?set_field_38@PlayerRecord@th20@@QAEXH@Z"
@@ -2087,7 +2087,7 @@ relocations = [
 
 [units.player_record_set_field_d4]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_d4"]
 symbol = "?set_field_d4@PlayerRecord@th20@@QAEXH@Z"
@@ -2099,7 +2099,7 @@ relocations = [
 
 [units.player_record_set_field_d0]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_d0"]
 symbol = "?set_field_d0@PlayerRecord@th20@@QAEXH@Z"
@@ -2111,7 +2111,7 @@ relocations = [
 
 [units.player_record_set_field_c0]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_c0"]
 symbol = "?set_field_c0@PlayerRecord@th20@@QAEXH@Z"
@@ -2123,7 +2123,7 @@ relocations = [
 
 [units.player_record_set_field_c4]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_c4"]
 symbol = "?set_field_c4@PlayerRecord@th20@@QAEXH@Z"
@@ -2135,7 +2135,7 @@ relocations = [
 
 [units.player_record_set_field_e4]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_e4"]
 symbol = "?set_field_e4@PlayerRecord@th20@@QAEXH@Z"
@@ -2147,7 +2147,7 @@ relocations = [
 
 [units.player_record_set_field_4c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_4c"]
 symbol = "?set_field_4c@PlayerRecord@th20@@QAEXH@Z"
@@ -2159,7 +2159,7 @@ relocations = [
 
 [units.player_record_set_field_50]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_50"]
 symbol = "?set_field_50@PlayerRecord@th20@@QAEXH@Z"
@@ -2171,7 +2171,7 @@ relocations = [
 
 [units.player_record_set_field_54]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_54"]
 symbol = "?set_field_54@PlayerRecord@th20@@QAEXH@Z"
@@ -2183,7 +2183,7 @@ relocations = [
 
 [units.player_record_set_field_9c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_9c"]
 symbol = "?set_field_9c@PlayerRecord@th20@@QAEXH@Z"
@@ -2195,7 +2195,7 @@ relocations = [
 
 [units.player_record_set_field_a0]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_a0"]
 symbol = "?set_field_a0@PlayerRecord@th20@@QAEXH@Z"
@@ -2207,7 +2207,7 @@ relocations = [
 
 [units.player_record_set_field_a4]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_a4"]
 symbol = "?set_field_a4@PlayerRecord@th20@@QAEXE@Z"
@@ -2217,7 +2217,7 @@ relocations = []
 
 [units.player_record_set_field_a5]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_a5"]
 symbol = "?set_field_a5@PlayerRecord@th20@@QAEXE@Z"
@@ -2227,7 +2227,7 @@ relocations = []
 
 [units.player_record_set_field_a8]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_a8"]
 symbol = "?set_field_a8@PlayerRecord@th20@@QAEXH@Z"
@@ -2239,7 +2239,7 @@ relocations = [
 
 [units.player_record_set_field_b0]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_b0"]
 symbol = "?set_field_b0@PlayerRecord@th20@@QAEXE@Z"
@@ -2249,7 +2249,7 @@ relocations = []
 
 [units.player_record_set_field_44]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_44"]
 symbol = "?set_field_44@PlayerRecord@th20@@QAEXH@Z"
@@ -2261,7 +2261,7 @@ relocations = [
 
 [units.player_record_set_field_3c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_3c"]
 symbol = "?set_field_3c@PlayerRecord@th20@@QAEXH@Z"
@@ -2273,7 +2273,7 @@ relocations = [
 
 [units.player_record_set_field_40]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_40"]
 symbol = "?set_field_40@PlayerRecord@th20@@QAEXH@Z"
@@ -2285,7 +2285,7 @@ relocations = [
 
 [units.player_record_set_field_48]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_48"]
 symbol = "?set_field_48@PlayerRecord@th20@@QAEXH@Z"
@@ -2297,7 +2297,7 @@ relocations = [
 
 [units.player_record_set_field_ac]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_ac"]
 symbol = "?set_field_ac@PlayerRecord@th20@@QAEXH@Z"
@@ -2309,7 +2309,7 @@ relocations = [
 
 [units.player_record_set_field_5c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_5c"]
 symbol = "?set_field_5c@PlayerRecord@th20@@QAEXH@Z"
@@ -2321,7 +2321,7 @@ relocations = [
 
 [units.player_record_set_field_64]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_64"]
 symbol = "?set_field_64@PlayerRecord@th20@@QAEXH@Z"
@@ -2333,7 +2333,7 @@ relocations = [
 
 [units.player_record_set_field_68]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_68"]
 symbol = "?set_field_68@PlayerRecord@th20@@QAEXH@Z"
@@ -2345,7 +2345,7 @@ relocations = [
 
 [units.player_record_set_field_6c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_6c"]
 symbol = "?set_field_6c@PlayerRecord@th20@@QAEXH@Z"
@@ -2357,7 +2357,7 @@ relocations = [
 
 [units.player_record_set_field_70]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_70"]
 symbol = "?set_field_70@PlayerRecord@th20@@QAEXH@Z"
@@ -2369,7 +2369,7 @@ relocations = [
 
 [units.player_record_set_field_60]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_60"]
 symbol = "?set_field_60@PlayerRecord@th20@@QAEXH@Z"
@@ -2381,7 +2381,7 @@ relocations = [
 
 [units.player_record_set_field_74]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_74"]
 symbol = "?set_field_74@PlayerRecord@th20@@QAEXH@Z"
@@ -2393,7 +2393,7 @@ relocations = [
 
 [units.player_record_set_field_78]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_78"]
 symbol = "?set_field_78@PlayerRecord@th20@@QAEXH@Z"
@@ -2405,7 +2405,7 @@ relocations = [
 
 [units.player_record_set_field_7c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_7c"]
 symbol = "?set_field_7c@PlayerRecord@th20@@QAEXH@Z"
@@ -2417,7 +2417,7 @@ relocations = [
 
 [units.player_record_set_field_80]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_80"]
 symbol = "?set_field_80@PlayerRecord@th20@@QAEXH@Z"
@@ -2429,7 +2429,7 @@ relocations = [
 
 [units.player_record_set_field_84]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_84"]
 symbol = "?set_field_84@PlayerRecord@th20@@QAEXH@Z"
@@ -2441,7 +2441,7 @@ relocations = [
 
 [units.player_record_set_field_88]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_88"]
 symbol = "?set_field_88@PlayerRecord@th20@@QAEXH@Z"
@@ -2453,7 +2453,7 @@ relocations = [
 
 [units.player_record_set_field_8c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_8c"]
 symbol = "?set_field_8c@PlayerRecord@th20@@QAEXH@Z"
@@ -2465,7 +2465,7 @@ relocations = [
 
 [units.player_record_set_field_90]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_90"]
 symbol = "?set_field_90@PlayerRecord@th20@@QAEXH@Z"
@@ -2477,7 +2477,7 @@ relocations = [
 
 [units.player_record_set_field_94]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_94"]
 symbol = "?set_field_94@PlayerRecord@th20@@QAEXH@Z"
@@ -2489,7 +2489,7 @@ relocations = [
 
 [units.player_record_set_field_bc]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_bc"]
 symbol = "?set_field_bc@PlayerRecord@th20@@QAEXH@Z"
@@ -2501,7 +2501,7 @@ relocations = [
 
 [units.player_record_set_field_d8]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_d8"]
 symbol = "?set_field_d8@PlayerRecord@th20@@QAEXH@Z"
@@ -2513,7 +2513,7 @@ relocations = [
 
 [units.player_record_set_field_b8]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_b8"]
 symbol = "?set_field_b8@PlayerRecord@th20@@QAEXH@Z"
@@ -2525,7 +2525,7 @@ relocations = [
 
 [units.player_record_set_field_1c]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_1c"]
 symbol = "?set_field_1c@PlayerRecord@th20@@QAEXH@Z"
@@ -2535,7 +2535,7 @@ relocations = []
 
 [units.player_record_set_field_20]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::set_field_20"]
 symbol = "?set_field_20@PlayerRecord@th20@@QAEXH@Z"
@@ -2545,7 +2545,7 @@ relocations = []
 
 [units.player_record_construct]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::PlayerRecord"]
 symbol = "??0PlayerRecord@th20@@QAE@XZ"
@@ -2555,7 +2555,7 @@ relocations = []
 
 [units.player_record_current_score]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::current_score"]
 symbol = "?current_score@PlayerRecord@th20@@QBE_KXZ"
@@ -2565,7 +2565,7 @@ relocations = []
 
 [units.player_record_starting_power]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::starting_power"]
 symbol = "?starting_power@PlayerRecord@th20@@QAEHXZ"
@@ -2993,7 +2993,7 @@ relocations = [
 
 [units.motion_polar]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::polar"]
 symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z"
@@ -3006,7 +3006,7 @@ relocations = [
 
 [units.motion_rotate_xy]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::rotate_xy"]
 symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z"
@@ -3019,7 +3019,7 @@ relocations = [
 
 [units.motion_vector_direction]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::vector_direction"]
 symbol = "?vector_direction@th20@@YAMABUVector3@1@@Z"
@@ -3031,7 +3031,7 @@ relocations = [
 
 [units.motion_floor_scalar]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::floor_scalar"]
 symbol = "?floor_scalar@th20@@YAMM@Z"
@@ -3043,7 +3043,7 @@ relocations = [
 
 [units.motion_angle_difference]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::angle_difference"]
 symbol = "?angle_difference@th20@@YAMMM@Z"
@@ -3060,7 +3060,7 @@ relocations = [
 
 [units.cmath_cos_float]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["cos(float)"]
 symbol = "?cos@@YAMM@Z"
@@ -3072,7 +3072,7 @@ relocations = [
 
 [units.cmath_sin_float]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["sin(float)"]
 symbol = "?sin@@YAMM@Z"
@@ -4164,7 +4164,7 @@ relocations = [
 
 [units.geometry_ellipse_point]
 source = "src/CollisionShapes.cpp"
-object = "build/core141-canonical/CollisionShapes.obj"
+object = "build/core154-canonical/CollisionShapes.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::ellipse_point"]
 symbol = "?ellipse_point@geometry@th20@@YA_NMMMMMMM@Z"
@@ -4181,7 +4181,7 @@ relocations = [
 
 [units.geometry_regular_polygon_point]
 source = "src/CollisionShapes.cpp"
-object = "build/core141-canonical/CollisionShapes.obj"
+object = "build/core154-canonical/CollisionShapes.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::regular_polygon_point"]
 symbol = "?regular_polygon_point@geometry@th20@@YA_NMMMMMMH@Z"
@@ -4207,7 +4207,7 @@ relocations = [
 
 [units.geometry_star_point]
 source = "src/CollisionShapes.cpp"
-object = "build/core141-canonical/CollisionShapes.obj"
+object = "build/core154-canonical/CollisionShapes.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::star_point"]
 symbol = "?star_point@geometry@th20@@YA_NMMMMMMMH@Z"
@@ -4235,7 +4235,7 @@ relocations = [
 
 [units.geometry_segment_intersection]
 source = "src/CollisionShapes.cpp"
-object = "build/core141-canonical/CollisionShapes.obj"
+object = "build/core154-canonical/CollisionShapes.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::segment_intersection"]
 symbol = "?segment_intersection@geometry@th20@@YA_NMMMMMMMM@Z"
@@ -4250,7 +4250,7 @@ relocations = [
 
 [units.geometry_circle_regular_polygon]
 source = "src/CollisionShapes.cpp"
-object = "build/core141-canonical/CollisionShapes.obj"
+object = "build/core154-canonical/CollisionShapes.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::circle_regular_polygon"]
 symbol = "?circle_regular_polygon@geometry@th20@@YA_NMMMMMMMH@Z"
@@ -4269,7 +4269,7 @@ relocations = [
 
 [units.geometry_circle_star]
 source = "src/CollisionShapes.cpp"
-object = "build/core141-canonical/CollisionShapes.obj"
+object = "build/core154-canonical/CollisionShapes.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::circle_star"]
 symbol = "?circle_star@geometry@th20@@YA_NMMMMMMMMH@Z"
@@ -4288,7 +4288,7 @@ relocations = [
 
 [units.geometry_circle_ellipse]
 source = "src/CollisionShapes.cpp"
-object = "build/core141-canonical/CollisionShapes.obj"
+object = "build/core154-canonical/CollisionShapes.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::circle_ellipse"]
 symbol = "?circle_ellipse@geometry@th20@@YA_NMMMMMMMM@Z"
@@ -4330,7 +4330,7 @@ relocations = [
 
 [units.ellipse_polar]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::ellipse_polar"]
 symbol = "?ellipse_polar@th20@@YAXAAUVector3@1@MMM@Z"
@@ -4343,7 +4343,7 @@ relocations = [
 
 [units.normalize_to_length]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::normalize_to_length"]
 symbol = "?normalize_to_length@th20@@YAXAAUVector3@1@ABU21@M@Z"
@@ -4362,7 +4362,7 @@ relocations = [
 
 [units.geometry_segment_intersection_point]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::segment_intersection_point"]
 symbol = "?segment_intersection_point@geometry@th20@@YAHAAM0MMMMMMMM@Z"
@@ -4380,7 +4380,7 @@ relocations = [
 
 [units.geometry_line_rectangle_intersections]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::line_rectangle_intersections"]
 symbol = "?line_rectangle_intersections@geometry@th20@@YAHAAUVector3@2@0ABU32@MMMMMM@Z"
@@ -4422,7 +4422,7 @@ relocations = [
 
 [units.geometry_nearest_width_segment]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::nearest_width_segment"]
 symbol = "?nearest_width_segment@geometry@th20@@YAMABUVector3@2@MM0AAU32@@Z"
@@ -4450,7 +4450,7 @@ relocations = [
 
 [units.geometry_segment_regular_polygon]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::segment_regular_polygon"]
 symbol = "?segment_regular_polygon@geometry@th20@@YA_NMMMMMMMMH@Z"
@@ -4476,7 +4476,7 @@ relocations = [
 
 [units.geometry_segment_star]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::segment_star"]
 symbol = "?segment_star@geometry@th20@@YA_NMMMMMMMMMH@Z"
@@ -4504,7 +4504,7 @@ relocations = [
 
 [units.geometry_rectangle_circle]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::rectangle_circle"]
 symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z"
@@ -4536,7 +4536,7 @@ relocations = [
 
 [units.geometry_rectangle_ellipse]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::rectangle_ellipse"]
 symbol = "?rectangle_ellipse@geometry@th20@@YA_NMMMMMMMMMM@Z"
@@ -4566,7 +4566,7 @@ relocations = [
 
 [units.geometry_rectangle_regular_polygon]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::rectangle_regular_polygon"]
 symbol = "?rectangle_regular_polygon@geometry@th20@@YA_NMMMMMMMMMH@Z"
@@ -4603,7 +4603,7 @@ relocations = [
 
 [units.geometry_rectangle_rectangle]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::rectangle_rectangle"]
 symbol = "?rectangle_rectangle@geometry@th20@@YA_NMMMMMMMMMM@Z"
@@ -4666,7 +4666,7 @@ relocations = [
 
 [units.geometry_rectangle_star]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::rectangle_star"]
 symbol = "?rectangle_star@geometry@th20@@YA_NMMMMMMMMMMH@Z"
@@ -4703,7 +4703,7 @@ relocations = [
 
 [units.geometry_rectangle_contains_any_four]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::rectangle_contains_any_four"]
 symbol = "?rectangle_contains_any_four@geometry@th20@@YA_NMMMMMPBUVector2@2@@Z"
@@ -4737,7 +4737,7 @@ relocations = [
 
 [units.geometry_rotated_rectangle_point]
 source = "src/RectangleCollisions.cpp"
-object = "build/core141-canonical/RectangleCollisions.obj"
+object = "build/core154-canonical/RectangleCollisions.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::rotated_rectangle_point"]
 symbol = "?rotated_rectangle_point@geometry@th20@@YA_NMMMMMMM@Z"
@@ -4758,7 +4758,7 @@ relocations = [
 
 [units.geometry_squared_norm_xy]
 source = "src/GeometryMetrics.cpp"
-object = "build/core141-canonical/GeometryMetrics.obj"
+object = "build/core154-v2/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::squared_norm_xy"]
 symbol = "?squared_norm_xy@geometry@th20@@YAMMM@Z"
@@ -4769,7 +4769,7 @@ relocations = [
 
 [units.geometry_norm_xy]
 source = "src/GeometryMetrics.cpp"
-object = "build/core141-canonical/GeometryMetrics.obj"
+object = "build/core154-v2/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::norm_xy"]
 symbol = "?norm_xy@geometry@th20@@YAMMM@Z"
@@ -4782,7 +4782,7 @@ relocations = [
 
 [units.geometry_squared_distance_xy_scalar]
 source = "src/GeometryMetrics.cpp"
-object = "build/core141-canonical/GeometryMetrics.obj"
+object = "build/core154-v2/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::squared_distance_xy(float,float,float,float)"]
 symbol = "?squared_distance_xy@geometry@th20@@YAMMMMM@Z"
@@ -4793,7 +4793,7 @@ relocations = [
 
 [units.geometry_distance_xy_scalar]
 source = "src/GeometryMetrics.cpp"
-object = "build/core141-canonical/GeometryMetrics.obj"
+object = "build/core154-v2/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::distance_xy(float,float,float,float)"]
 symbol = "?distance_xy@geometry@th20@@YAMMMMM@Z"
@@ -4806,7 +4806,7 @@ relocations = [
 
 [units.geometry_squared_distance_xy_vector]
 source = "src/GeometryMetrics.cpp"
-object = "build/core141-canonical/GeometryMetrics.obj"
+object = "build/core154-v2/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::squared_distance_xy(const Vector3&,const Vector3&)"]
 symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z"
@@ -4817,7 +4817,7 @@ relocations = [
 
 [units.geometry_distance_xy_vector]
 source = "src/GeometryMetrics.cpp"
-object = "build/core141-canonical/GeometryMetrics.obj"
+object = "build/core154-v2/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::distance_xy(const Vector3&,const Vector3&)"]
 symbol = "?distance_xy@geometry@th20@@YAMABUVector3@2@0@Z"
@@ -4830,7 +4830,7 @@ relocations = [
 
 [units.geometry_line_parameters]
 source = "src/GeometryMetrics.cpp"
-object = "build/core141-canonical/GeometryMetrics.obj"
+object = "build/core154-v2/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::line_parameters"]
 symbol = "?line_parameters@geometry@th20@@YAHAAM0MMMM@Z"
@@ -4843,7 +4843,7 @@ relocations = [
 
 [units.rotate_xy_array_vector2]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::rotate_xy_array<Vector2>"]
 symbol = "??$rotate_xy_array@UVector2@th20@@@th20@@YAXPAUVector2@0@PBU10@MI@Z"
@@ -4856,7 +4856,7 @@ relocations = [
 
 [units.rotate_xy_array_vector3]
 source = "src/MotionMath.cpp"
-object = "build/core141-canonical/MotionMath.obj"
+object = "build/core154-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::rotate_xy_array<Vector3>"]
 symbol = "??$rotate_xy_array@UVector3@th20@@@th20@@YAXPAUVector3@0@PBU10@MI@Z"
@@ -4871,7 +4871,7 @@ relocations = [
 
 [units.region_intersects]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::intersects"]
 symbol = "?intersects@DamageRegion@th20@@QAE_NPBUVector3@2@PBUVector2@2@MM@Z"
@@ -4919,7 +4919,7 @@ relocations = [
 
 [units.region_position]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::position"]
 symbol = "?position@DamageRegion@th20@@QAEAAUVector3@2@XZ"
@@ -4931,7 +4931,7 @@ relocations = [
 
 [units.region_context]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::context_value"]
 symbol = "?context_value@DamageRegion@th20@@QAEPAUContext@2@XZ"
@@ -4942,7 +4942,7 @@ relocations = [
 
 [units.region_is_heap]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::is_heap"]
 symbol = "?is_heap@DamageRegion@th20@@QAE_NXZ"
@@ -4954,7 +4954,7 @@ relocations = [
 
 [units.region_configure_rectangle]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::configure_rectangle"]
 symbol = "?configure_rectangle@DamageRegion@th20@@QAEIABUVector3@2@MMMHH@Z"
@@ -4971,7 +4971,7 @@ relocations = [
 
 [units.region_configure_circle]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::configure_circle"]
 symbol = "?configure_circle@DamageRegion@th20@@QAEIABUVector3@2@MMHH@Z"
@@ -4987,7 +4987,7 @@ relocations = [
 
 [units.region_set_position]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::set_position"]
 symbol = "?set_position@DamageRegion@th20@@QAEXABUVector3@2@@Z"
@@ -5271,7 +5271,7 @@ relocations = [
 
 [units.region_ctor]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::DamageRegion"]
 symbol = "??0DamageRegion@th20@@QAE@XZ"
@@ -5293,7 +5293,7 @@ relocations = [
 
 [units.region_update]
 source = "src/DamageRegion.cpp"
-object = "build/core142-canonical/DamageRegion.obj"
+object = "build/core154-canonical/DamageRegion.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::DamageRegion::update"]
 symbol = "?update@DamageRegion@th20@@QAEXXZ"
@@ -5845,7 +5845,7 @@ relocations = [
 # EXACT-056: complete ECL invocation and actual empty diagnostic hook.
 [units.ecl_runtime_call]
 source = "src/EclRuntimeCall.cpp"
-object = "build/core145-canonical/EclRuntimeCall.obj"
+object = "build/core154-canonical/EclRuntimeCall.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/Gd", "/sdl"]
 functions = ["th20::EclRuntime::call_into"]
 symbol = "?call_into@EclRuntime@th20@@QAEHPAU12@HH@Z"
@@ -5895,7 +5895,7 @@ relocations = [
 # EXACT-057: complete ECL tick, whole jump table and shared random angle.
 [units.ecl_runtime_tick]
 source = "src/EclRuntimeTick.cpp"
-object = "build/core145-canonical/EclRuntimeTick.obj"
+object = "build/core154-canonical/EclRuntimeTick.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/Gd", "/sdl"]
 functions = ["th20::EclRuntime::tick"]
 symbol = "?tick@EclRuntime@th20@@QAEHM@Z"
@@ -6436,7 +6436,7 @@ relocations = [
 
 [units.enemy_execute_opcode]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Enemy::execute_opcode"]
 symbol = "?execute_opcode@Enemy@th20@@UAEHXZ"
@@ -6448,7 +6448,7 @@ relocations = [
 
 [units.enemy_integer_argument]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Enemy::integer_argument"]
 symbol = "?integer_argument@Enemy@th20@@QAEHH@Z"
@@ -6460,7 +6460,7 @@ relocations = [
 
 [units.enemy_float_argument]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Enemy::float_argument"]
 symbol = "?float_argument@Enemy@th20@@QAEMH@Z"
@@ -6472,7 +6472,7 @@ relocations = [
 
 [units.enemy_state_integer_argument]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::EnemyState::integer_argument"]
 symbol = "?integer_argument@EnemyState@th20@@QAEHH@Z"
@@ -6484,7 +6484,7 @@ relocations = [
 
 [units.enemy_state_float_argument]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::EnemyState::float_argument"]
 symbol = "?float_argument@EnemyState@th20@@QAEMH@Z"
@@ -6623,7 +6623,7 @@ relocations = [
 
 [units.enemy_ctor]
 source = "src/Enemy.cpp"
-object = "build/core153-canonical/Enemy.obj"
+object = "build/core154-canonical/Enemy.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::Enemy"]
 symbol = "??0Enemy@th20@@QAE@XZ"
@@ -6859,7 +6859,7 @@ relocations = [
 # EXACT-061: whole Enemy movement and its actual graphics/file/context owners.
 [units.enemy_update_movements]
 source = "src/EnemyMovementUpdate.cpp"
-object = "build/core153-canonical/EnemyMovementUpdate.obj"
+object = "build/core154-canonical/EnemyMovementUpdate.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl"]
 functions = ["th20::EnemyState::update_movements"]
 symbol = "?update_movements@EnemyState@th20@@QAEHXZ"
@@ -7031,7 +7031,7 @@ relocations = [
 
 [units.context_ctor]
 source = "src/Context.cpp"
-object = "build/core142-canonical/Context.obj"
+object = "build/core154-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::Context"]
 symbol = "??0Context@th20@@QAE@XZ"
@@ -7097,7 +7097,7 @@ relocations = [
 
 [units.enemy_parent]
 source = "src/Enemy.cpp"
-object = "build/core153-canonical/Enemy.obj"
+object = "build/core154-canonical/Enemy.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::parent"]
 symbol = "?parent@Enemy@th20@@QAEPAU12@XZ"
@@ -7122,7 +7122,7 @@ relocations = [
 
 [units.enemy_position_ref]
 source = "src/Enemy.cpp"
-object = "build/core153-canonical/Enemy.obj"
+object = "build/core154-canonical/Enemy.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::position_ref"]
 symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ"
@@ -7421,7 +7421,7 @@ relocations = [
 # EXACT-065: complete Enemy animation dispatcher and actual parameter protocol.
 [units.enemy_change_animation]
 source = "src/EnemyAnimation.cpp"
-object = "build/core153-canonical/EnemyAnimation.obj"
+object = "build/core154-canonical/EnemyAnimation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyState::change_animation"]
 symbol = "?change_animation@EnemyState@th20@@QAEXXZ"
@@ -7508,7 +7508,7 @@ relocations = [
 
 [units.enemy_current_instruction]
 source = "src/EclCallSetup.cpp"
-object = "build/core145-canonical/EclCallSetup.obj"
+object = "build/core154-canonical/EclCallSetup.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::current_instruction"]
 symbol = "?current_instruction@EclManager@th20@@QAEPAUEclInstruction@2@XZ"
@@ -7738,14 +7738,14 @@ relocations = [
 # EXACT-066: complete Enemy creation, initialization and script selection protocol.
 [units.enemy_create]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::create"]
 symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@Z"
 target_address = 0x004A8920
 size = 155
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG111763", target = 0x00570420 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG111766", target = 0x00570420 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEnemy@th20@@$$V@DiagnosticAllocator@th20@@QAEPAUEnemy@1@PBD@Z", target = 0x004A2910 },
   { offset = 0x2E, type = "REL32", symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z", target = 0x004A73F0 },
@@ -7756,7 +7756,7 @@ relocations = [
 
 [units.enemy_count]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::count"]
 symbol = "?count@EnemyController@th20@@QBEHXZ"
@@ -7767,7 +7767,7 @@ relocations = [
 
 [units.enemy_capacity]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::capacity"]
 symbol = "?capacity@EnemyController@th20@@QBEHXZ"
@@ -7778,7 +7778,7 @@ relocations = [
 
 [units.enemy_initialize]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::initialize"]
 symbol = "?initialize@Enemy@th20@@QAEXHPBD@Z"
@@ -7803,7 +7803,7 @@ relocations = [
 
 [units.enemy_generation]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::generation"]
 symbol = "?generation@EnemyController@th20@@QBEIXZ"
@@ -7815,7 +7815,7 @@ relocations = [
 
 [units.enemy_advance_generation]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::advance_generation"]
 symbol = "?advance_generation@EnemyController@th20@@QAEIXZ"
@@ -7837,7 +7837,7 @@ relocations = [
 
 [units.ecl_manager_reset]
 source = "src/EclSelection.cpp"
-object = "build/core145-canonical/EclSelection.obj"
+object = "build/core154-canonical/EclSelection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::reset"]
 symbol = "?reset@EclManager@th20@@QAEXXZ"
@@ -7851,7 +7851,7 @@ relocations = [
 
 [units.ecl_loader_select]
 source = "src/EclSelection.cpp"
-object = "build/core145-canonical/EclSelection.obj"
+object = "build/core154-canonical/EclSelection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::select"]
 symbol = "?select@EclLoader@th20@@QAEHPAVEclManager@2@PBD@Z"
@@ -7866,7 +7866,7 @@ relocations = [
 
 [units.ecl_loader_subroutine_index]
 source = "src/EclSelection.cpp"
-object = "build/core145-canonical/EclSelection.obj"
+object = "build/core154-canonical/EclSelection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::subroutine_index"]
 symbol = "?subroutine_index@EclLoader@th20@@QAEHPBD@Z"
@@ -7879,7 +7879,7 @@ relocations = [
 
 [units.ecl_manager_set_loader]
 source = "src/EclSelection.cpp"
-object = "build/core145-canonical/EclSelection.obj"
+object = "build/core154-canonical/EclSelection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::set_loader"]
 symbol = "?set_loader@EclManager@th20@@QAEXPAVEclLoader@2@@Z"
@@ -7890,7 +7890,7 @@ relocations = [
 
 [units.ecl_manager_select_subroutine]
 source = "src/EclSelection.cpp"
-object = "build/core145-canonical/EclSelection.obj"
+object = "build/core154-canonical/EclSelection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::select_subroutine"]
 symbol = "?select_subroutine@EclManager@th20@@QAEXPBD@Z"
@@ -7902,7 +7902,7 @@ relocations = [
 
 [units.ecl_manager_set_offset]
 source = "src/EclSelection.cpp"
-object = "build/core145-canonical/EclSelection.obj"
+object = "build/core154-canonical/EclSelection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::set_offset"]
 symbol = "?set_offset@EclManager@th20@@QAEXH@Z"
@@ -7913,7 +7913,7 @@ relocations = [
 
 [units.ecl_manager_set_time]
 source = "src/EclSelection.cpp"
-object = "build/core145-canonical/EclSelection.obj"
+object = "build/core154-canonical/EclSelection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::set_time"]
 symbol = "?set_time@EclManager@th20@@QAEXM@Z"
@@ -7937,7 +7937,7 @@ relocations = [
 
 [units.enemy_identifier_value]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Enemy::identifier_value"]
 symbol = "?identifier_value@Enemy@th20@@QAE?AUIdentifier32@2@XZ"
@@ -7948,7 +7948,7 @@ relocations = [
 
 [units.enemy_float_argument_value]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Enemy::float_argument_value"]
 symbol = "?float_argument_value@Enemy@th20@@QAEMHM@Z"
@@ -7960,7 +7960,7 @@ relocations = [
 
 [units.enemy_state_float_argument_value]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::EnemyState::float_argument_value"]
 symbol = "?float_argument_value@EnemyState@th20@@QAEMHM@Z"
@@ -7972,7 +7972,7 @@ relocations = [
 
 [units.enemy_integer_argument_value]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Enemy::integer_argument_value"]
 symbol = "?integer_argument_value@Enemy@th20@@QAEHHH@Z"
@@ -7984,7 +7984,7 @@ relocations = [
 
 [units.enemy_state_integer_argument_value]
 source = "src/EnemyScript.cpp"
-object = "build/core153-canonical/EnemyScript.obj"
+object = "build/core154-canonical/EnemyScript.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::EnemyState::integer_argument_value"]
 symbol = "?integer_argument_value@EnemyState@th20@@QAEHHH@Z"
@@ -7997,7 +7997,7 @@ relocations = [
 # EXACT-068: complete ECL resource initialization/destruction protocol.
 [units.ecl_loader_ctor]
 source = "src/EclLoaderBase.cpp"
-object = "build/core145-canonical/EclLoaderBase.obj"
+object = "build/core154-canonical/EclLoaderBase.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::EclLoader"]
 symbol = "??0EclLoader@th20@@QAE@XZ"
@@ -8013,7 +8013,7 @@ relocations = [
 
 [units.ecl_loader_dtor]
 source = "src/EclLoaderBase.cpp"
-object = "build/core145-canonical/EclLoaderBase.obj"
+object = "build/core154-canonical/EclLoaderBase.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::~EclLoader"]
 symbol = "??1EclLoader@th20@@UAE@XZ"
@@ -8027,7 +8027,7 @@ relocations = [
 
 [units.ecl_loader_scalar_dtor]
 source = "src/EclLoaderBase.cpp"
-object = "build/core145-canonical/EclLoaderBase.obj"
+object = "build/core154-canonical/EclLoaderBase.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::scalar_deleting_destructor"]
 symbol = "??_GEclLoader@th20@@UAEPAXI@Z"
@@ -8040,7 +8040,7 @@ relocations = [
 
 [units.ecl_loader_include_default]
 source = "src/EclLoaderBase.cpp"
-object = "build/core145-canonical/EclLoaderBase.obj"
+object = "build/core154-canonical/EclLoaderBase.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::include_resources"]
 symbol = "?include_resources@EclLoader@th20@@UAEHPAE@Z"
@@ -8051,7 +8051,7 @@ relocations = [
 
 [units.script_stack_dtor]
 source = "src/EclLoaderBase.cpp"
-object = "build/core145-canonical/EclLoaderBase.obj"
+object = "build/core154-canonical/EclLoaderBase.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::ScriptStack::~ScriptStack"]
 symbol = "??1ScriptStack@th20@@QAE@XZ"
@@ -8064,7 +8064,7 @@ relocations = [
 # EXACT-069: complete derived ECL file loading and lifetime.
 [units.ecl_file_loader_ctor]
 source = "src/EclFileLoader.cpp"
-object = "build/core153-canonical/EclFileLoader.obj"
+object = "build/core154-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::EclFileLoader"]
 symbol = "??0EclFileLoader@th20@@QAE@XZ"
@@ -8077,7 +8077,7 @@ relocations = [
 
 [units.ecl_file_loader_dtor]
 source = "src/EclFileLoader.cpp"
-object = "build/core153-canonical/EclFileLoader.obj"
+object = "build/core154-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::~EclFileLoader"]
 symbol = "??1EclFileLoader@th20@@UAE@XZ"
@@ -8089,7 +8089,7 @@ relocations = [
 
 [units.ecl_file_loader_scalar_dtor]
 source = "src/EclFileLoader.cpp"
-object = "build/core153-canonical/EclFileLoader.obj"
+object = "build/core154-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::scalar_deleting_destructor"]
 symbol = "??_GEclFileLoader@th20@@UAEPAXI@Z"
@@ -8102,7 +8102,7 @@ relocations = [
 
 [units.ecl_file_loader_load]
 source = "src/EclFileLoader.cpp"
-object = "build/core153-canonical/EclFileLoader.obj"
+object = "build/core154-canonical/EclFileLoader.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::load"]
 symbol = "?load@EclFileLoader@th20@@UAEHPBD@Z"
@@ -8145,7 +8145,7 @@ relocations = [
 # EXACT-070: complete runtime argument/destination and generic tagged stack protocol.
 [units.ecl_runtime_current]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::current"]
 symbol = "?current@EclRuntime@th20@@QAEPAUEclInstruction@2@XZ"
@@ -8157,7 +8157,7 @@ relocations = [
 
 [units.ecl_integer_argument]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::integer_argument"]
 symbol = "?integer_argument@EclRuntime@th20@@QAEHH@Z"
@@ -8171,7 +8171,7 @@ relocations = [
 
 [units.ecl_float_argument]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::float_argument"]
 symbol = "?float_argument@EclRuntime@th20@@QAEMH@Z"
@@ -8191,7 +8191,7 @@ relocations = [
 
 [units.ecl_consuming_integer]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::consuming_integer"]
 symbol = "?consuming_integer@EclRuntime@th20@@QAEHH@Z"
@@ -8205,7 +8205,7 @@ relocations = [
 
 [units.ecl_consuming_float]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::consuming_float"]
 symbol = "?consuming_float@EclRuntime@th20@@QAEMH@Z"
@@ -8224,7 +8224,7 @@ relocations = [
 
 [units.ecl_integer_argument_value]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::integer_argument_value"]
 symbol = "?integer_argument_value@EclRuntime@th20@@QAEHHH@Z"
@@ -8238,7 +8238,7 @@ relocations = [
 
 [units.ecl_float_argument_value]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::float_argument_value"]
 symbol = "?float_argument_value@EclRuntime@th20@@QAEMHM@Z"
@@ -8256,7 +8256,7 @@ relocations = [
 
 [units.ecl_consuming_integer_value]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::consuming_integer_value"]
 symbol = "?consuming_integer_value@EclRuntime@th20@@QAEHHH@Z"
@@ -8270,7 +8270,7 @@ relocations = [
 
 [units.ecl_consuming_float_value]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::consuming_float_value"]
 symbol = "?consuming_float_value@EclRuntime@th20@@QAEMHM@Z"
@@ -8287,7 +8287,7 @@ relocations = [
 
 [units.ecl_integer_destination]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::integer_destination"]
 symbol = "?integer_destination@EclRuntime@th20@@QAEPAHH@Z"
@@ -8300,7 +8300,7 @@ relocations = [
 
 [units.ecl_float_destination]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::float_destination"]
 symbol = "?float_destination@EclRuntime@th20@@QAEPAMH@Z"
@@ -8314,7 +8314,7 @@ relocations = [
 
 [units.ecl_float_destination_at]
 source = "src/EclArguments.cpp"
-object = "build/core145-canonical/EclArguments.obj"
+object = "build/core154-canonical/EclArguments.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::float_destination_at"]
 symbol = "?float_destination_at@EclRuntime@th20@@QAEPAMPAUEclInstruction@2@HH@Z"
@@ -8374,7 +8374,7 @@ relocations = [
 # EXACT-071: whole ECL runtime/manager lifetime and async scalar release.
 [units.ecl_runtime_ctor]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::EclRuntime"]
 symbol = "??0EclRuntime@th20@@QAE@XZ"
@@ -8388,7 +8388,7 @@ relocations = [
 
 [units.ecl_runtime_dtor]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::~EclRuntime"]
 symbol = "??1EclRuntime@th20@@QAE@XZ"
@@ -8401,7 +8401,7 @@ relocations = [
 
 [units.ecl_runtime_scalar_dtor]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclRuntime::scalar_deleting_destructor"]
 symbol = "??_GEclRuntime@th20@@QAEPAXI@Z"
@@ -8414,7 +8414,7 @@ relocations = [
 
 [units.ecl_manager_ctor]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::EclManager"]
 symbol = "??0EclManager@th20@@QAE@XZ"
@@ -8428,7 +8428,7 @@ relocations = [
 
 [units.ecl_manager_dtor]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::~EclManager"]
 symbol = "??1EclManager@th20@@UAE@XZ"
@@ -8445,7 +8445,7 @@ relocations = [
 
 [units.ecl_manager_scalar_dtor]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::scalar_deleting_destructor"]
 symbol = "??_GEclManager@th20@@UAEPAXI@Z"
@@ -8458,7 +8458,7 @@ relocations = [
 
 [units.ecl_manager_terminate_async]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::terminate_async"]
 symbol = "?terminate_async@EclManager@th20@@QAEXXZ"
@@ -8476,7 +8476,7 @@ relocations = [
 
 [units.ecl_runtime_release]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_object<EclRuntime>"]
 symbol = "??$release_object@UEclRuntime@th20@@@DiagnosticAllocator@th20@@QAEXPAUEclRuntime@1@@Z"
@@ -8495,7 +8495,7 @@ relocations = [
 
 [units.ecl_runtime_link_release]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_object<IntrusiveLink<EclRuntime>>"]
 symbol = "??$release_object@V?$IntrusiveLink@UEclRuntime@th20@@@th20@@@DiagnosticAllocator@th20@@QAEXPAV?$IntrusiveLink@UEclRuntime@th20@@@1@@Z"
@@ -8514,7 +8514,7 @@ relocations = [
 
 [units.ecl_manager_read_float_default]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::read_float"]
 symbol = "?read_float@EclManager@th20@@UAEMH@Z"
@@ -8526,7 +8526,7 @@ relocations = [
 # EXACT-072: whole variable destinations, Enemy handles and actual Data construction.
 [units.enemy_integer_destination]
 source = "src/EnemyVariables.cpp"
-object = "build/core153-canonical/EnemyVariables.obj"
+object = "build/core154-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::integer_destination"]
 symbol = "?integer_destination@Enemy@th20@@UAEPAHH@Z"
@@ -8587,7 +8587,7 @@ relocations = [
 
 [units.enemy_float_destination]
 source = "src/EnemyVariables.cpp"
-object = "build/core153-canonical/EnemyVariables.obj"
+object = "build/core154-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::float_destination"]
 symbol = "?float_destination@Enemy@th20@@UAEPAMH@Z"
@@ -8658,7 +8658,7 @@ relocations = [
 
 [units.enemy_selected]
 source = "src/EnemyVariables.cpp"
-object = "build/core153-canonical/EnemyVariables.obj"
+object = "build/core154-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::selected"]
 symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
@@ -8671,7 +8671,7 @@ relocations = [
 
 [units.enemy_handle_resolve]
 source = "src/EnemyVariables.cpp"
-object = "build/core153-canonical/EnemyVariables.obj"
+object = "build/core154-canonical/EnemyVariables.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHandle::resolve"]
 symbol = "?resolve@EnemyHandle@th20@@QAEPAUEnemy@2@XZ"
@@ -8685,7 +8685,7 @@ relocations = [
 
 [units.enemy_data_ctor]
 source = "src/EnemyData.cpp"
-object = "build/core153-canonical/EnemyData.obj"
+object = "build/core154-canonical/EnemyData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyData::EnemyData"]
 symbol = "??0EnemyData@th20@@QAE@XZ"
@@ -8699,7 +8699,7 @@ relocations = [
 
 [units.enemy_handles_ctor]
 source = "src/EnemyData.cpp"
-object = "build/core153-canonical/EnemyData.obj"
+object = "build/core154-canonical/EnemyData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHandles::EnemyHandles"]
 symbol = "??0?$array@UEnemyHandle@th20@@$0BA@@std@@QAE@XZ"
@@ -8715,7 +8715,7 @@ relocations = [
 
 [units.session_ctor]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::Session"]
 symbol = "??0Session@th20@@QAE@XZ"
@@ -8732,7 +8732,7 @@ relocations = [
 
 [units.player_table_ctor]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::PlayerTable"]
 symbol = "??0PlayerTable@th20@@QAE@XZ"
@@ -8748,7 +8748,7 @@ relocations = [
 
 [units.session_static_initializer]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::session::dynamic_initializer"]
 symbol = "??__Esession@th20@@YAXXZ"
@@ -8761,7 +8761,7 @@ relocations = [
 
 [units.session_context]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::context"]
 symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z"
@@ -8771,7 +8771,7 @@ relocations = []
 
 [units.session_player_table]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::player_table"]
 symbol = "?player_table@Session@th20@@QAEAAUPlayerTable@2@XZ"
@@ -8781,7 +8781,7 @@ relocations = []
 
 [units.process_player_table]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::player_table"]
 symbol = "?player_table@th20@@YAAAUPlayerTable@1@XZ"
@@ -8794,7 +8794,7 @@ relocations = [
 
 [units.player_table_player]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::player"]
 symbol = "?player@PlayerTable@th20@@QAEAAUPlayerRecord@2@H@Z"
@@ -8804,7 +8804,7 @@ relocations = []
 
 [units.player_table_mode]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::mode"]
 symbol = "?mode@PlayerTable@th20@@QAEHXZ"
@@ -8814,7 +8814,7 @@ relocations = []
 
 [units.session_table_mode]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::mode"]
 symbol = "?mode@Session@th20@@QAEHXZ"
@@ -8826,7 +8826,7 @@ relocations = [
 
 [units.player_table_clamp_field_1fc]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::clamped_field_1fc"]
 symbol = "?clamped_field_1fc@PlayerTable@th20@@QAEHXZ"
@@ -8838,7 +8838,7 @@ relocations = [
 
 [units.player_table_clamp_field_204]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::clamped_field_204"]
 symbol = "?clamped_field_204@PlayerTable@th20@@QAEHXZ"
@@ -8850,7 +8850,7 @@ relocations = [
 
 [units.player_table_clamp_field_208]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::clamped_field_208"]
 symbol = "?clamped_field_208@PlayerTable@th20@@QAEHXZ"
@@ -8862,7 +8862,7 @@ relocations = [
 
 [units.session_clamp_field_1fc]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::clamped_field_1fc"]
 symbol = "?clamped_field_1fc@Session@th20@@QAEHXZ"
@@ -8874,7 +8874,7 @@ relocations = [
 
 [units.session_clamp_field_204]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::clamped_field_204"]
 symbol = "?clamped_field_204@Session@th20@@QAEHXZ"
@@ -8886,7 +8886,7 @@ relocations = [
 
 [units.process_enemy_controller]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::enemy_controller"]
 symbol = "?enemy_controller@th20@@YAPAUEnemyController@1@H@Z"
@@ -8900,7 +8900,7 @@ relocations = [
 
 [units.player_table_add_continue_count]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::add_continue_count"]
 symbol = "?add_continue_count@PlayerTable@th20@@QAEXH@Z"
@@ -8912,7 +8912,7 @@ relocations = [
 
 [units.session_increment_continue_count]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::increment_continue_count"]
 symbol = "?increment_continue_count@Session@th20@@QAEXXZ"
@@ -8924,7 +8924,7 @@ relocations = [
 
 [units.session_set_flag0]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::set_flag0"]
 symbol = "?set_flag0@Session@th20@@QAEXI@Z"
@@ -8934,7 +8934,7 @@ relocations = []
 
 [units.session_set_flag1]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::set_flag1"]
 symbol = "?set_flag1@Session@th20@@QAEXI@Z"
@@ -8944,7 +8944,7 @@ relocations = []
 
 [units.process_player_record]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::player_record"]
 symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z"
@@ -8970,7 +8970,7 @@ relocations = [
 
 [units.enemy_controller_ctor]
 source = "src/EnemyControllerConstruction.cpp"
-object = "build/core153-canonical/EnemyControllerConstruction.obj"
+object = "build/core154-canonical/EnemyControllerConstruction.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::EnemyController"]
 symbol = "??0EnemyController@th20@@QAE@XZ"
@@ -8987,14 +8987,14 @@ relocations = [
   { offset = 0x81, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0xCA, type = "REL32", symbol = "??0?$IntrusiveList@UEnemy@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xF2, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 0x111, type = "DIR32", symbol = "$SG111417", target = 0x00570404 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG111420", target = 0x00570404 },
   { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x121, type = "REL32", symbol = "?advance_generation@EnemyController@th20@@QAEIXZ", target = 0x004AB140 },
 ]
 
 [units.card_ctor]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::Card"]
 symbol = "??0Card@th20@@QAE@XZ"
@@ -9013,13 +9013,13 @@ relocations = [
   { offset = 0x69, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x79, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 0x112, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 0x13E, type = "DIR32", symbol = "$SG7194", target = 0x0056FD94 },
+  { offset = 0x13E, type = "DIR32", symbol = "$SG7201", target = 0x0056FD94 },
   { offset = 0x143, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.card_encode_time]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::encode_time"]
 symbol = "?encode_time@Card@th20@@QAEXHH@Z"
@@ -9030,7 +9030,7 @@ relocations = [
 
 [units.card_invalid_encoded_time]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::invalid_encoded_time"]
 symbol = "?invalid_encoded_time@Card@th20@@QAEHXZ"
@@ -9041,7 +9041,7 @@ relocations = [
 
 [units.card_active]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::active"]
 symbol = "?active@Card@th20@@QAE_NXZ"
@@ -9052,7 +9052,7 @@ relocations = [
 
 [units.card_bind_context]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::bind_context"]
 symbol = "?bind_context@Card@th20@@QAEXH@Z"
@@ -9065,7 +9065,7 @@ relocations = [
 
 [units.process_card]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::card"]
 symbol = "?card@th20@@YAPAUCard@1@H@Z"
@@ -9079,7 +9079,7 @@ relocations = [
 
 [units.player_option_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core142-canonical/PlayerStorage.obj"
+object = "build/core154-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerOption::PlayerOption"]
 symbol = "??0PlayerOption@th20@@QAE@XZ"
@@ -9109,7 +9109,7 @@ relocations = [
 
 [units.player_feedback_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core142-canonical/PlayerStorage.obj"
+object = "build/core154-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerFeedback::PlayerFeedback"]
 symbol = "??0PlayerFeedback@th20@@QAE@XZ"
@@ -9125,7 +9125,7 @@ relocations = [
 
 [units.player_collision_bounds_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core142-canonical/PlayerStorage.obj"
+object = "build/core154-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerCollisionBounds::PlayerCollisionBounds"]
 symbol = "??0PlayerCollisionBounds@th20@@QAE@XZ"
@@ -9138,7 +9138,7 @@ relocations = [
 
 [units.player_motion_parameters_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core142-canonical/PlayerStorage.obj"
+object = "build/core154-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerMotionParameters::PlayerMotionParameters"]
 symbol = "??0PlayerMotionParameters@th20@@QAE@XZ"
@@ -9149,7 +9149,7 @@ relocations = [
 
 [units.player_shot_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core142-canonical/PlayerStorage.obj"
+object = "build/core154-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShot::PlayerShot"]
 symbol = "??0PlayerShot@th20@@QAE@XZ"
@@ -9170,7 +9170,7 @@ relocations = [
 
 [units.player_shot_pool_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core142-canonical/PlayerStorage.obj"
+object = "build/core154-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotPool::PlayerShotPool"]
 symbol = "??0PlayerShotPool@th20@@QAE@XZ"
@@ -9186,7 +9186,7 @@ relocations = [
 
 [units.player_shot_controller_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core142-canonical/PlayerStorage.obj"
+object = "build/core154-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::PlayerShotController"]
 symbol = "??0PlayerShotController@th20@@QAE@XZ"
@@ -9314,7 +9314,7 @@ relocations = [
 
 [units.bullet_extended_commands_ctor]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletExtendedCommands::BulletExtendedCommands"]
 symbol = "??0BulletExtendedCommands@th20@@QAE@XZ"
@@ -9330,7 +9330,7 @@ relocations = [
 
 [units.bullet_pool_ctor]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletPool::BulletPool"]
 symbol = "??0BulletPool@th20@@QAE@XZ"
@@ -9344,7 +9344,7 @@ relocations = [
 
 [units.bullet_handles_ctor]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletHandles::BulletHandles"]
 symbol = "??0BulletHandles@th20@@QAE@XZ"
@@ -9360,7 +9360,7 @@ relocations = [
 
 [units.bullet_controller_ctor]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::BulletController"]
 symbol = "??0BulletController@th20@@QAE@XZ"
@@ -9378,13 +9378,13 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79765", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79772", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.bullet_pool_destroy]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletPool::~BulletPool"]
 symbol = "??1BulletPool@th20@@QAE@XZ"
@@ -9400,7 +9400,7 @@ relocations = [
 
 [units.bullet_controller_disable]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::disable"]
 symbol = "?disable@BulletController@th20@@UAEXXZ"
@@ -9416,7 +9416,7 @@ relocations = [
 
 [units.bullet_controller_count]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::count"]
 symbol = "?count@BulletController@th20@@QAEHXZ"
@@ -9427,7 +9427,7 @@ relocations = [
 
 [units.bullet_select_context]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::select_context"]
 symbol = "?select_context@BulletController@th20@@QAEXH@Z"
@@ -9440,7 +9440,7 @@ relocations = [
 
 [units.process_bullet_controller]
 source = "src/BulletController.cpp"
-object = "build/core148-canonical/BulletController.obj"
+object = "build/core154-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::bullet_controller"]
 symbol = "?bullet_controller@th20@@YAPAUBulletController@1@H@Z"
@@ -9454,8 +9454,8 @@ relocations = [
 
 [units.enemy_apply_spawn]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core153-canonical/EnemySpawnApplication.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+object = "build/core154-canonical/EnemySpawnApplication.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::apply_spawn"]
 symbol = "?apply_spawn@Enemy@th20@@QAEHABUEnemySpawn@2@@Z"
 target_address = 0x004A89C0
@@ -9493,7 +9493,7 @@ relocations = [
 
 [units.enemy_tick]
 source = "src/EnemyTick.cpp"
-object = "build/core153-canonical/EnemyTick.obj"
+object = "build/core154-canonical/EnemyTick.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::tick"]
 symbol = "?tick@Enemy@th20@@QAEHXZ"
@@ -9533,7 +9533,7 @@ relocations = [
 
 [units.ecl_manager_tick]
 source = "src/EclManagerTick.cpp"
-object = "build/core145-canonical/EclManagerTick.obj"
+object = "build/core154-canonical/EclManagerTick.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::tick"]
 symbol = "?tick@EclManager@th20@@QAEHM@Z"
@@ -9553,7 +9553,7 @@ relocations = [
 
 [units.enemy_state_advance_scripts]
 source = "src/EnemyScriptAdvance.cpp"
-object = "build/core153-canonical/EnemyScriptAdvance.obj"
+object = "build/core154-canonical/EnemyScriptAdvance.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyState::advance_scripts"]
 symbol = "?advance_scripts@EnemyState@th20@@QAEHXZ"
@@ -9580,17 +9580,17 @@ relocations = [
 
 [units.ecl_manager_spawn]
 source = "src/EclManagerAsync.cpp"
-object = "build/core145-canonical/EclManagerAsync.obj"
+object = "build/core154-canonical/EclManagerAsync.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::spawn"]
 symbol = "?spawn@EclManager@th20@@QAEHHH@Z"
 target_address = 0x0053E390
 size = 182
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG98944", target = 0x00576A40 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG98946", target = 0x00576A40 },
   { offset = 0x10, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x15, type = "REL32", symbol = "??$allocate_object@UEclRuntime@th20@@$$V@DiagnosticAllocator@th20@@QAEPAUEclRuntime@1@PBD@Z", target = 0x0053B3D0 },
-  { offset = 0x1D, type = "DIR32", symbol = "$SG98945", target = 0x00576A88 },
+  { offset = 0x1D, type = "DIR32", symbol = "$SG98947", target = 0x00576A88 },
   { offset = 0x23, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x28, type = "REL32", symbol = "??$allocate_object@V?$IntrusiveLink@UEclRuntime@th20@@@th20@@$$V@DiagnosticAllocator@th20@@QAEPAV?$IntrusiveLink@UEclRuntime@th20@@@1@PBD@Z", target = 0x0053B410 },
   { offset = 0x76, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UEclRuntime@th20@@@th20@@QAEXPAUEclRuntime@2@@Z", target = 0x0044A670 },
@@ -9600,7 +9600,7 @@ relocations = [
 
 [units.ecl_manager_find_runtime]
 source = "src/EclManagerAsync.cpp"
-object = "build/core145-canonical/EclManagerAsync.obj"
+object = "build/core154-canonical/EclManagerAsync.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::find_runtime"]
 symbol = "?find_runtime@EclManager@th20@@QAEPAV?$IntrusiveLink@UEclRuntime@th20@@@2@H@Z"
@@ -9613,7 +9613,7 @@ relocations = [
 
 [units.ecl_manager_invalidate_async]
 source = "src/EclManagerAsync.cpp"
-object = "build/core145-canonical/EclManagerAsync.obj"
+object = "build/core154-canonical/EclManagerAsync.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::invalidate_async"]
 symbol = "?invalidate_async@EclManager@th20@@QAEXXZ"
@@ -9628,7 +9628,7 @@ relocations = [
 
 [units.ecl_runtime_allocate]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_object<th20::EclRuntime>"]
 symbol = "??$allocate_object@UEclRuntime@th20@@$$V@DiagnosticAllocator@th20@@QAEPAUEclRuntime@1@PBD@Z"
@@ -9641,7 +9641,7 @@ relocations = [
 
 [units.ecl_loader_activate]
 source = "src/EclCallSetup.cpp"
-object = "build/core145-canonical/EclCallSetup.obj"
+object = "build/core154-canonical/EclCallSetup.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::activate"]
 symbol = "?activate@EclLoader@th20@@QAEHPAVEclManager@2@PBD@Z"
@@ -9657,7 +9657,7 @@ relocations = [
 
 [units.ecl_manager_loader_value]
 source = "src/EclCallSetup.cpp"
-object = "build/core145-canonical/EclCallSetup.obj"
+object = "build/core154-canonical/EclCallSetup.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclManager::loader_value"]
 symbol = "?loader_value@EclManager@th20@@QBEPAVEclLoader@2@XZ"
@@ -9668,7 +9668,7 @@ relocations = [
 
 [units.script_stack_frame_value]
 source = "src/EclCallSetup.cpp"
-object = "build/core145-canonical/EclCallSetup.obj"
+object = "build/core154-canonical/EclCallSetup.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::ScriptStack::frame_value"]
 symbol = "?frame_value@ScriptStack@th20@@QBEHXZ"
@@ -9679,7 +9679,7 @@ relocations = [
 
 [units.ecl_file_loader_bind_player]
 source = "src/EclFileLoaderBinding.cpp"
-object = "build/core148-canonical/EclFileLoaderBinding.obj"
+object = "build/core154-canonical/EclFileLoaderBinding.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclFileLoader::bind_player"]
 symbol = "?bind_player@EclFileLoader@th20@@QAEXH@Z"
@@ -10733,7 +10733,7 @@ relocations = [
 
 [units.render_mesh_select_context]
 source = "src/RenderMesh.cpp"
-object = "build/core148-canonical/RenderMesh.obj"
+object = "build/core154-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?select_context@RenderMesh@th20@@QAEXH@Z"
 functions = ["th20::RenderMesh::select_context"]
@@ -10746,7 +10746,7 @@ relocations = [
 
 [units.render_mesh_initialize]
 source = "src/RenderMesh.cpp"
-object = "build/core148-canonical/RenderMesh.obj"
+object = "build/core154-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?initialize@RenderMesh@th20@@QAEXMMMM@Z"
 functions = ["th20::RenderMesh::initialize"]
@@ -10771,7 +10771,7 @@ relocations = [
 
 [units.render_mesh_update_strips]
 source = "src/RenderMesh.cpp"
-object = "build/core148-canonical/RenderMesh.obj"
+object = "build/core154-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?update_strips@RenderMesh@th20@@QAEXXZ"
 functions = ["th20::RenderMesh::update_strips"]
@@ -10783,7 +10783,7 @@ relocations = [
 
 [units.render_mesh_uv]
 source = "src/RenderMesh.cpp"
-object = "build/core148-canonical/RenderMesh.obj"
+object = "build/core154-canonical/RenderMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?render_mesh_uv@th20@@YAXUVector3@1@AAM1@Z"
 functions = ["th20::render_mesh_uv"]
@@ -10914,7 +10914,7 @@ relocations = [
 
 [units.hit_region_array_ctor]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["std::array<th20::DamageRegion,256>::array"]
 symbol = "??0?$array@VDamageRegion@th20@@$0BAA@@std@@QAE@XZ"
@@ -10930,7 +10930,7 @@ relocations = [
 
 [units.hit_controller_ctor]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::HitCtrlInf"]
 symbol = "??0HitCtrlInf@th20@@QAE@XZ"
@@ -10946,13 +10946,13 @@ relocations = [
   { offset = 89, type = "REL32", symbol = "??0?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 103, type = "REL32", symbol = "??0?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 130, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 161, type = "DIR32", symbol = "$SG79235", target = 0x00570C94 },
+  { offset = 161, type = "DIR32", symbol = "$SG79242", target = 0x00570C94 },
   { offset = 166, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.hit_controller_select_context]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::select_context"]
 symbol = "?select_context@HitCtrlInf@th20@@QAEXH@Z"
@@ -10965,7 +10965,7 @@ relocations = [
 
 [units.hit_controller_advance_handle]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::advance_handle"]
 symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ"
@@ -10976,7 +10976,7 @@ relocations = [
 
 [units.hit_controller_detach]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::detach"]
 symbol = "?detach@HitCtrlInf@th20@@QAEXPAVDamageRegion@2@@Z"
@@ -10990,7 +10990,7 @@ relocations = [
 
 [units.hit_controller_initialize]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::initialize"]
 symbol = "?initialize@HitCtrlInf@th20@@QAEHH@Z"
@@ -11014,7 +11014,7 @@ relocations = [
 
 [units.hit_controller_allocate]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::allocate"]
 symbol = "?allocate@HitCtrlInf@th20@@QAEPAVDamageRegion@2@XZ"
@@ -11027,7 +11027,7 @@ relocations = [
   { offset = 67, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAVDamageRegion@2@XZ", target = 0x0040C300 },
   { offset = 94, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 102, type = "REL32", symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ", target = 0x004C0C60 },
-  { offset = 112, type = "DIR32", symbol = "$SG79333", target = 0x00570D00 },
+  { offset = 112, type = "DIR32", symbol = "$SG79340", target = 0x00570D00 },
   { offset = 118, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 123, type = "REL32", symbol = "??$allocate_object@VDamageRegion@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVDamageRegion@1@PBD@Z", target = 0x004BFE30 },
   { offset = 144, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAVDamageRegion@2@@Z", target = 0x0044A670 },
@@ -11039,7 +11039,7 @@ relocations = [
 
 [units.hit_controller_update_callback]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::update_callback"]
 symbol = "?update_callback@HitCtrlInf@th20@@SAHPAX@Z"
@@ -11051,7 +11051,7 @@ relocations = [
 
 [units.hit_controller_create_rectangle]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::create_rectangle"]
 symbol = "?create_rectangle@HitCtrlInf@th20@@QAE?AUIdentifier32@2@ABUVector3@2@MMMHH@Z"
@@ -11067,7 +11067,7 @@ relocations = [
 
 [units.hit_controller_create_circle]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::create_circle"]
 symbol = "?create_circle@HitCtrlInf@th20@@QAE?AUIdentifier32@2@ABUVector3@2@MMHH@Z"
@@ -11083,7 +11083,7 @@ relocations = [
 
 [units.hit_controller_get]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::hit_controller"]
 symbol = "?hit_controller@th20@@YAPAVHitCtrlInf@1@H@Z"
@@ -11097,7 +11097,7 @@ relocations = [
 
 [units.hit_region_list_front]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::IntrusiveList<DamageRegion>::front"]
 symbol = "?front@?$IntrusiveList@VDamageRegion@th20@@@th20@@QAEPAV?$IntrusiveLink@VDamageRegion@th20@@@2@XZ"
@@ -11109,7 +11109,7 @@ relocations = [
 
 [units.hit_region_array_end]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["std::array<th20::DamageRegion,256>::_Unchecked_end"]
 symbol = "?_Unchecked_end@?$array@VDamageRegion@th20@@$0BAA@@std@@QAEPAVDamageRegion@th20@@XZ"
@@ -11120,7 +11120,7 @@ relocations = [
 
 [units.region_retire]
 source = "src/DamageRegionLifetime.cpp"
-object = "build/core148-canonical/DamageRegionLifetime.obj"
+object = "build/core154-canonical/DamageRegionLifetime.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::DamageRegion::retire"]
 symbol = "?retire@DamageRegion@th20@@QAEXXZ"
@@ -11138,7 +11138,7 @@ relocations = [
 
 [units.hit_controller_allocate_object]
 source = "src/HitCtrlInfCreation.cpp"
-object = "build/core148-canonical/HitCtrlInfCreation.obj"
+object = "build/core154-canonical/HitCtrlInfCreation.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::DiagnosticAllocator::allocate_object<HitCtrlInf>"]
 symbol = "??$allocate_object@VHitCtrlInf@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVHitCtrlInf@1@PBD@Z"
@@ -11152,7 +11152,7 @@ relocations = [
 
 [units.hit_controller_auto_class_initialize]
 source = "src/HitCtrlInfCreation.cpp"
-object = "build/core148-canonical/HitCtrlInfCreation.obj"
+object = "build/core154-canonical/HitCtrlInfCreation.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::__autoclassinit2"]
 symbol = "?__autoclassinit2@HitCtrlInf@th20@@QAEXI@Z"
@@ -11164,7 +11164,7 @@ relocations = [
 
 [units.hit_controller_dtor]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::~HitCtrlInf"]
 symbol = "??1HitCtrlInf@th20@@UAE@XZ"
@@ -11175,7 +11175,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1HitCtrlInf@th20@@UAE@XZ", target = 0x005699D0 },
   { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 48, type = "DIR32", symbol = "??_7HitCtrlInf@th20@@6B@", target = 0x00570C88 },
-  { offset = 53, type = "DIR32", symbol = "$SG79275", target = 0x00570CAC },
+  { offset = 53, type = "DIR32", symbol = "$SG79282", target = 0x00570CAC },
   { offset = 58, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 74, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 79, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -11194,7 +11194,7 @@ relocations = [
 
 [units.hit_controller_find]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::find"]
 symbol = "?find@HitCtrlInf@th20@@QAEPAVDamageRegion@2@UIdentifier32@2@@Z"
@@ -11220,7 +11220,7 @@ relocations = [
 
 [units.hit_controller_update]
 source = "src/HitCtrlInf.cpp"
-object = "build/core148-canonical/HitCtrlInf.obj"
+object = "build/core154-canonical/HitCtrlInf.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::HitCtrlInf::update"]
 symbol = "?update@HitCtrlInf@th20@@QAEHXZ"
@@ -11418,7 +11418,7 @@ relocations = [
 
 [units.bomb_ctor]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bomb::Bomb"]
 symbol = "??0Bomb@th20@@QAE@XZ"
@@ -11437,7 +11437,7 @@ relocations = [
 
 [units.bomb_dtor]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bomb::~Bomb"]
 symbol = "??1Bomb@th20@@UAE@XZ"
@@ -11456,7 +11456,7 @@ relocations = [
 
 [units.bomb_event]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bomb::event"]
 symbol = "?event@Bomb@th20@@UAEHPBUVector3@2@PBUVector2@2@@Z"
@@ -11467,7 +11467,7 @@ relocations = [
 
 [units.bomb_controller_ctor]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BombController::BombController"]
 symbol = "??0BombController@th20@@QAE@XZ"
@@ -11480,13 +11480,13 @@ relocations = [
   { offset = 42, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
   { offset = 51, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
   { offset = 92, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 137, type = "DIR32", symbol = "$SG79471", target = 0x0056FAA0 },
+  { offset = 137, type = "DIR32", symbol = "$SG79478", target = 0x0056FAA0 },
   { offset = 142, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.bomb_controller_dtor]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BombController::~BombController"]
 symbol = "??1BombController@th20@@UAE@XZ"
@@ -11497,7 +11497,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1BombController@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
-  { offset = 48, type = "DIR32", symbol = "$SG79482", target = 0x0056FAB8 },
+  { offset = 48, type = "DIR32", symbol = "$SG79489", target = 0x0056FAB8 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 74, type = "REL32", symbol = "??$release_object@VBomb@th20@@@DiagnosticAllocator@th20@@QAEXPAVBomb@1@@Z", target = 0x0041F7C0 },
@@ -11510,7 +11510,7 @@ relocations = [
 
 [units.bomb_controller_initialize]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BombController::initialize"]
 symbol = "?initialize@BombController@th20@@QAEHH@Z"
@@ -11527,7 +11527,7 @@ relocations = [
 
 [units.bomb_controller_draw]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BombController::draw"]
 symbol = "?draw@BombController@th20@@QAEHXZ"
@@ -11538,7 +11538,7 @@ relocations = [
 
 [units.bomb_controller_event]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BombController::event"]
 symbol = "?event@BombController@th20@@QAEHPBUVector3@2@PBUVector2@2@@Z"
@@ -11549,7 +11549,7 @@ relocations = [
 
 [units.bomb_controller_finish]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BombController::finish"]
 symbol = "?finish@BombController@th20@@QAEHXZ"
@@ -11560,7 +11560,7 @@ relocations = [
 
 [units.bomb_select_context]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bomb::select_context"]
 symbol = "?select_context@Bomb@th20@@QAEXH@Z"
@@ -11573,7 +11573,7 @@ relocations = [
 
 [units.bomb_controller_select_context]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BombController::select_context"]
 symbol = "?select_context@BombController@th20@@QAEXH@Z"
@@ -11586,7 +11586,7 @@ relocations = [
 
 [units.context_bomb_controller]
 source = "src/Context.cpp"
-object = "build/core142-canonical/Context.obj"
+object = "build/core154-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::bomb_controller"]
 symbol = "?bomb_controller@Context@th20@@QAEPAVBombController@2@XZ"
@@ -11597,7 +11597,7 @@ relocations = [
 
 [units.bomb_controller_get]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::bomb_controller"]
 symbol = "?bomb_controller@th20@@YAPAVBombController@1@H@Z"
@@ -11611,7 +11611,7 @@ relocations = [
 
 [units.bomb_release]
 source = "src/Bomb.cpp"
-object = "build/core148-canonical/Bomb.obj"
+object = "build/core154-canonical/Bomb.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_object<Bomb>"]
 symbol = "??$release_object@VBomb@th20@@@DiagnosticAllocator@th20@@QAEXPAVBomb@1@@Z"
@@ -11630,7 +11630,7 @@ relocations = [
 
 [units.context_release_bomb_controller]
 source = "src/BombCreation.cpp"
-object = "build/core148-canonical/BombCreation.obj"
+object = "build/core154-canonical/BombCreation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::release_bomb_controller"]
 symbol = "?release_bomb_controller@Context@th20@@QAEXXZ"
@@ -11643,7 +11643,7 @@ relocations = [
 
 [units.bomb_controller_destroy]
 source = "src/BombCreation.cpp"
-object = "build/core148-canonical/BombCreation.obj"
+object = "build/core154-canonical/BombCreation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::destroy_bomb_controller"]
 symbol = "?destroy_bomb_controller@th20@@YAXH@Z"
@@ -11657,7 +11657,7 @@ relocations = [
 
 [units.bomb_controller_allocate]
 source = "src/BombCreation.cpp"
-object = "build/core148-canonical/BombCreation.obj"
+object = "build/core154-canonical/BombCreation.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_object<BombController>"]
 symbol = "??$allocate_object@VBombController@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVBombController@1@PBD@Z"
@@ -11671,7 +11671,7 @@ relocations = [
 
 [units.player_construct]
 source = "src/Player.cpp"
-object = "build/core143-canonical/Player.obj"
+object = "build/core154-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::Player"]
 symbol = "??0Player@th20@@QAE@XZ"
@@ -11711,13 +11711,13 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG81603", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG81945", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.player_option_values_10_construct]
 source = "src/Player.cpp"
-object = "build/core143-canonical/Player.obj"
+object = "build/core154-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,10>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAE@XZ"
@@ -11733,7 +11733,7 @@ relocations = [
 
 [units.player_option_values_12_construct]
 source = "src/Player.cpp"
-object = "build/core143-canonical/Player.obj"
+object = "build/core154-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,12>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAE@XZ"
@@ -11749,7 +11749,7 @@ relocations = [
 
 [units.player_point_values_33_construct]
 source = "src/Player.cpp"
-object = "build/core143-canonical/Player.obj"
+object = "build/core154-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<IntPoint,33>::PlayerValues"]
 symbol = "??0?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAE@XZ"
@@ -11765,7 +11765,7 @@ relocations = [
 
 [units.player_shot_data_load]
 source = "src/ShotData.cpp"
-object = "build/core143-canonical/ShotData.obj"
+object = "build/core154-canonical/ShotData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::load_shot_data"]
 symbol = "?load_shot_data@Player@th20@@QAEHPAPAUPlayerShotData@2@PBD@Z"
@@ -11779,7 +11779,7 @@ relocations = [
 
 [units.player_damage_limit]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core148-canonical/PlayerDamageCap.obj"
+object = "build/core154-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::damage_limit"]
 symbol = "?damage_limit@Player@th20@@QAEHXZ"
@@ -11799,7 +11799,7 @@ relocations = [
 
 [units.player_focused_mode]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core148-canonical/PlayerDamageCap.obj"
+object = "build/core154-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::focused_mode"]
 symbol = "?focused_mode@Player@th20@@QAE_NXZ"
@@ -11810,7 +11810,7 @@ relocations = [
 
 [units.weapon_stone_construct]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core142-canonical/WeaponStoneInfo.obj"
+object = "build/core154-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::WeaponStoneInfo"]
 symbol = "??0WeaponStoneInfo@th20@@QAE@XZ"
@@ -11829,7 +11829,7 @@ relocations = [
 
 [units.weapon_stone_phase_one]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core142-canonical/WeaponStoneInfo.obj"
+object = "build/core154-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::phase_one"]
 symbol = "?phase_one@WeaponStoneInfo@th20@@QAE_NXZ"
@@ -11840,7 +11840,7 @@ relocations = [
 
 [units.weapon_stone_disable]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core142-canonical/WeaponStoneInfo.obj"
+object = "build/core154-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::disable"]
 symbol = "?disable@WeaponStoneInfo@th20@@UAEXXZ"
@@ -11852,7 +11852,7 @@ relocations = [
 
 [units.weapon_stone_current]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core148-canonical/PlayerDamageCap.obj"
+object = "build/core154-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::weapon_stone_info"]
 symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z"
@@ -11866,7 +11866,7 @@ relocations = [
 
 [units.context_weapon_stone]
 source = "src/Context.cpp"
-object = "build/core142-canonical/Context.obj"
+object = "build/core154-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::weapon_stone_info"]
 symbol = "?weapon_stone_info@Context@th20@@QAEPAVWeaponStoneInfo@2@XZ"
@@ -11877,7 +11877,7 @@ relocations = [
 
 [units.record_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::add_score"]
 symbol = "?add_score@PlayerRecord@th20@@QAEX_K@Z"
@@ -11889,7 +11889,7 @@ relocations = [
 
 [units.session_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::add_score"]
 symbol = "?add_score@Session@th20@@QAEXI@Z"
@@ -11902,7 +11902,7 @@ relocations = [
 
 [units.timer_every]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Timer::every"]
 symbol = "?every@Timer@th20@@QBEHH@Z"
@@ -11913,7 +11913,7 @@ relocations = [
 
 [units.player_frame_changed]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::frame_changed"]
 symbol = "?frame_changed@Player@th20@@QAEHXZ"
@@ -11925,7 +11925,7 @@ relocations = [
 
 [units.player_find_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::find_shot"]
 symbol = "?find_shot@Player@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11937,7 +11937,7 @@ relocations = [
 
 [units.player_shot_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::find"]
 symbol = "?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11961,7 +11961,7 @@ relocations = [
 
 [units.region_player_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DamageRegion::player_shot"]
 symbol = "?player_shot@DamageRegion@th20@@QAEPAUPlayerShot@2@XZ"
@@ -11975,7 +11975,7 @@ relocations = [
 
 [units.enemy_controller_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::find"]
 symbol = "?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
@@ -12000,7 +12000,7 @@ relocations = [
 
 [units.enemy_health_value]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::health_value"]
 symbol = "?health_value@Enemy@th20@@QAEPAUEnemyHealth@2@XZ"
@@ -12011,7 +12011,7 @@ relocations = [
 
 [units.enemy_force_defeat]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHealth::force_defeat"]
 symbol = "?force_defeat@EnemyHealth@th20@@QAEXXZ"
@@ -12022,7 +12022,7 @@ relocations = [
 
 [units.enemy_reward_multiplier]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::reward_multiplier_enabled"]
 symbol = "?reward_multiplier_enabled@Enemy@th20@@QAE_NXZ"
@@ -12033,7 +12033,7 @@ relocations = [
 
 [units.enemy_set_damage_marker]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::set_damage_marker"]
 symbol = "?set_damage_marker@Enemy@th20@@QAEXI@Z"
@@ -12044,7 +12044,7 @@ relocations = [
 
 [units.weapon_stone_record_damage]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core153-canonical/DamageQueryProtocol.obj"
+object = "build/core154-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::record_damage"]
 symbol = "?record_damage@WeaponStoneInfo@th20@@QAEXPBUVector3@2@HH@Z"
@@ -12056,7 +12056,7 @@ relocations = [
 
 [units.item_construct]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::Item"]
 symbol = "??0Item@th20@@QAE@XZ"
@@ -12075,7 +12075,7 @@ relocations = [
 
 [units.item_destroy]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::~Item"]
 symbol = "??1Item@th20@@QAE@XZ"
@@ -12088,7 +12088,7 @@ relocations = [
 
 [units.item_controller_construct]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::ItemInf"]
 symbol = "??0ItemInf@th20@@QAE@XZ"
@@ -12105,13 +12105,13 @@ relocations = [
   { offset = 110, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 124, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 269, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 300, type = "DIR32", symbol = "$SG97890", target = 0x00570D4C },
+  { offset = 300, type = "DIR32", symbol = "$SG97897", target = 0x00570D4C },
   { offset = 305, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.item_controller_destroy]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::~ItemInf"]
 symbol = "??1ItemInf@th20@@UAE@XZ"
@@ -12122,7 +12122,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1ItemInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7ItemInf@th20@@6B@", target = 0x00570D40 },
-  { offset = 48, type = "DIR32", symbol = "$SG97906", target = 0x00570D60 },
+  { offset = 48, type = "DIR32", symbol = "$SG97913", target = 0x00570D60 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 74, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -12136,7 +12136,7 @@ relocations = [
 
 [units.item_select_context]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::select_context"]
 symbol = "?select_context@Item@th20@@QAEXH@Z"
@@ -12149,7 +12149,7 @@ relocations = [
 
 [units.item_controller_select_context]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::select_context"]
 symbol = "?select_context@ItemInf@th20@@QAEXH@Z"
@@ -12162,7 +12162,7 @@ relocations = [
 
 [units.item_controller_enable]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::enable"]
 symbol = "?enable@ItemInf@th20@@UAEXXZ"
@@ -12176,7 +12176,7 @@ relocations = [
 
 [units.item_pool_initialize]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::initialize_pool"]
 symbol = "?initialize_pool@ItemInf@th20@@QAEXXZ"
@@ -12206,7 +12206,7 @@ relocations = [
 
 [units.item_controller_initialize]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::initialize"]
 symbol = "?initialize@ItemInf@th20@@QAEHH@Z"
@@ -12228,7 +12228,7 @@ relocations = [
 
 [units.item_spawn_many]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::spawn_many"]
 symbol = "?spawn_many@ItemInf@th20@@QAEXPBUVector3@2@HH@Z"
@@ -12248,7 +12248,7 @@ relocations = [
 
 [units.context_item_controller]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Context::item_controller"]
 symbol = "?item_controller@Context@th20@@QAEPAVItemInf@2@XZ"
@@ -12259,7 +12259,7 @@ relocations = [
 
 [units.session_item_controller]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::item_controller"]
 symbol = "?item_controller@th20@@YAPAVItemInf@1@H@Z"
@@ -12273,7 +12273,7 @@ relocations = [
 
 [units.random_signed_range]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::GameRandom::signed_range"]
 symbol = "?signed_range@GameRandom@th20@@QAEMM@Z"
@@ -12285,7 +12285,7 @@ relocations = [
 
 [units.overlay_counter_add_reward]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::OverlayCounter::add_reward"]
 symbol = "?add_reward@OverlayCounter@th20@@QAEXPBUVector3@2@HH@Z"
@@ -12298,7 +12298,7 @@ relocations = [
 
 [units.item_pool_construct]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::array<th20::Item,1536>::array"]
 symbol = "??0?$array@UItem@th20@@$0GAA@@std@@QAE@XZ"
@@ -12312,7 +12312,7 @@ relocations = [
 
 [units.item_pool_destroy]
 source = "src/Item.cpp"
-object = "build/core148-canonical/Item.obj"
+object = "build/core154-canonical/Item.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::array<th20::Item,1536>::~array"]
 symbol = "??1?$array@UItem@th20@@$0GAA@@std@@QAE@XZ"
@@ -12328,7 +12328,7 @@ relocations = [
 
 [units.item_spawn_primary]
 source = "src/ItemSpawn.cpp"
-object = "build/core149-canonical/ItemSpawn.obj"
+object = "build/core154-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::spawn"]
 symbol = "?spawn@ItemInf@th20@@QAEPAUItem@2@HABUVector3@2@IMMHIH@Z"
@@ -12382,7 +12382,7 @@ relocations = [
 
 [units.player_record_field_a5_value]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::field_a5_value"]
 symbol = "?field_a5_value@PlayerRecord@th20@@QAEEXZ"
@@ -12393,7 +12393,7 @@ relocations = [
 
 [units.player_record_field_2f_value]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::field_2f_value"]
 symbol = "?field_2f_value@PlayerRecord@th20@@QAEEXZ"
@@ -12404,7 +12404,7 @@ relocations = [
 
 [units.overlay_passive_weapon]
 source = "src/WeaponStoneInfo.cpp"
-object = "build/core142-canonical/WeaponStoneInfo.obj"
+object = "build/core154-canonical/WeaponStoneInfo.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::passive_weapon"]
 symbol = "?passive_weapon@WeaponStoneInfo@th20@@QAEPAVWeapon@2@XZ"
@@ -12607,7 +12607,7 @@ relocations = [
 
 [units.item_retire]
 source = "src/ItemLifecycle.cpp"
-object = "build/core153-canonical/ItemLifecycle.obj"
+object = "build/core154-canonical/ItemLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::retire"]
 symbol = "?retire@Item@th20@@QAEXXZ"
@@ -12621,7 +12621,7 @@ relocations = [
 
 [units.item_spawn_effect]
 source = "src/ItemLifecycle.cpp"
-object = "build/core153-canonical/ItemLifecycle.obj"
+object = "build/core154-canonical/ItemLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::spawn_effect"]
 symbol = "?spawn_effect@Item@th20@@QAEHXZ"
@@ -12630,7 +12630,7 @@ size = 344
 relocations = [
   { offset = 83, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 96, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 128, type = "DIR32", symbol = "$SG194152", target = 0x0056EC84 },
+  { offset = 128, type = "DIR32", symbol = "$SG194159", target = 0x0056EC84 },
   { offset = 140, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 174, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 179, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12638,7 +12638,7 @@ relocations = [
   { offset = 196, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
   { offset = 240, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 253, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 286, type = "DIR32", symbol = "$SG194158", target = 0x0056EC84 },
+  { offset = 286, type = "DIR32", symbol = "$SG194165", target = 0x0056EC84 },
   { offset = 298, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 328, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 333, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12646,7 +12646,7 @@ relocations = [
 
 [units.item_activate]
 source = "src/ItemLifecycle.cpp"
-object = "build/core153-canonical/ItemLifecycle.obj"
+object = "build/core154-canonical/ItemLifecycle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Item::activate"]
 symbol = "?activate@Item@th20@@QAEHXZ"
@@ -12685,7 +12685,7 @@ relocations = [
 
 [units.effect_handle_construct]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectAnimationHandle::EffectAnimationHandle"]
 symbol = "??0EffectAnimationHandle@th20@@QAE@XZ"
@@ -12697,7 +12697,7 @@ relocations = [
 
 [units.stone_menu_enable]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::StoneMenuInfo::enable"]
 symbol = "?enable@StoneMenuInfo@th20@@UAEXXZ"
@@ -12709,7 +12709,7 @@ relocations = [
 
 [units.context_effect_info]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Context::effect_info"]
 symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ"
@@ -12720,7 +12720,7 @@ relocations = [
 
 [units.effect_animation_file]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectInfo::animation_file"]
 symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z"
@@ -12732,7 +12732,7 @@ relocations = [
 
 [units.stone_menu_global]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::stone_menu_info"]
 symbol = "?stone_menu_info@th20@@YAPAVStoneMenuInfo@1@XZ"
@@ -12744,7 +12744,7 @@ relocations = [
 
 [units.record_starting_configuration]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::starting_configuration"]
 symbol = "?starting_configuration@PlayerRecord@th20@@QAEHH@Z"
@@ -12765,7 +12765,7 @@ relocations = [
 
 [units.animation_stop]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::stop"]
 symbol = "?stop@Animation@th20@@QAEXXZ"
@@ -12776,7 +12776,7 @@ relocations = [
 
 [units.animation_set_position]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_position"]
 symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z"
@@ -13889,7 +13889,7 @@ relocations = [
 
 [units.ecl_loader_instruction]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::instruction"]
 symbol = "?instruction@EclLoader@th20@@QAEPAUEclInstruction@2@HH@Z"
@@ -13901,7 +13901,7 @@ relocations = [
 
 [units.ecl_loader_append]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::append"]
 symbol = "?append@EclLoader@th20@@QAEHPAE@Z"
@@ -13938,7 +13938,7 @@ relocations = [
 
 [units.ecl_name_capture_ctor]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::append::name_capture_constructor"]
 symbol = "??0<lambda_69eed955fb65f39abf157efcb08ac6ca>@@QAE@ABQAD@Z"
@@ -13949,7 +13949,7 @@ relocations = [
 
 [units.ecl_records_begin]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::begin"]
 symbol = "?begin@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@XZ"
@@ -13962,7 +13962,7 @@ relocations = [
 
 [units.ecl_records_end]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::end"]
 symbol = "?end@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@XZ"
@@ -13975,7 +13975,7 @@ relocations = [
 
 [units.ecl_records_find_if]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::find_if<ECL subroutine names>"]
 symbol = "??$find_if@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@V<lambda_69eed955fb65f39abf157efcb08ac6ca>@@@std@@YA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@V10@V10@V<lambda_69eed955fb65f39abf157efcb08ac6ca>@@@Z"
@@ -13993,7 +13993,7 @@ relocations = [
 
 [units.ecl_records_insert]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::insert"]
 symbol = "?insert@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@2@ABUEclSubroutineRecord@th20@@@Z"
@@ -14005,7 +14005,7 @@ relocations = [
 
 [units.ecl_name_predicate]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EclLoader::append::name_predicate"]
 symbol = "??R<lambda_69eed955fb65f39abf157efcb08ac6ca>@@QBE@UEclSubroutineRecord@th20@@@Z"
@@ -14017,7 +14017,7 @@ relocations = [
 
 [units.ecl_records_iterator_ctor]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::iterator::iterator"]
 symbol = "??0?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAE@PAUEclSubroutineRecord@th20@@PBU_Container_base0@1@@Z"
@@ -14029,7 +14029,7 @@ relocations = [
 
 [units.ecl_records_get_unwrapped]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Get_unwrapped<ECL record iterator>"]
 symbol = "??$_Get_unwrapped@AAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@@std@@YA?A_TAAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@@Z"
@@ -14041,7 +14041,7 @@ relocations = [
 
 [units.ecl_records_const_iterator_ctor]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::const_iterator::const_iterator"]
 symbol = "??0?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAE@PAUEclSubroutineRecord@th20@@PBU_Container_base0@1@@Z"
@@ -14053,7 +14053,7 @@ relocations = [
 
 [units.ecl_records_iterator_unwrapped]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::iterator::_Unwrapped"]
 symbol = "?_Unwrapped@?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QBEPAUEclSubroutineRecord@th20@@XZ"
@@ -14065,7 +14065,7 @@ relocations = [
 
 [units.ecl_records_iterator_seek_to]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::const_iterator::_Seek_to"]
 symbol = "?_Seek_to@?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@QAEXPBUEclSubroutineRecord@th20@@@Z"
@@ -14077,7 +14077,7 @@ relocations = [
 
 [units.ecl_records_iterator_adopt]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Iterator_base0::_Adopt"]
 symbol = "?_Adopt@_Iterator_base0@std@@QAEXPBX@Z"
@@ -14088,7 +14088,7 @@ relocations = [
 
 [units.ecl_records_storage_address]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::addressof<ECL record vector storage>"]
 symbol = "??$addressof@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@YAPAV?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@0@AAV10@@Z"
@@ -14099,7 +14099,7 @@ relocations = [
 
 [units.ecl_records_seek_wrapped]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Seek_wrapped<ECL record iterator>"]
 symbol = "??$_Seek_wrapped@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@std@@AAPAUEclSubroutineRecord@th20@@@std@@YAXAAV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@0@AAPAUEclSubroutineRecord@th20@@@Z"
@@ -14112,7 +14112,7 @@ relocations = [
 
 [units.ecl_records_emplace]
 source = "src/EclLoaderBuffer.cpp"
-object = "build/core145-canonical/EclLoaderBuffer.obj"
+object = "build/core154-canonical/EclLoaderBuffer.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EclSubroutineRecord>::emplace"]
 symbol = "??$emplace@ABUEclSubroutineRecord@th20@@@?$vector@UEclSubroutineRecord@th20@@V?$polymorphic_allocator@UEclSubroutineRecord@th20@@@pmr@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@UEclSubroutineRecord@th20@@@std@@@std@@@1@ABUEclSubroutineRecord@th20@@@Z"
@@ -14143,7 +14143,7 @@ relocations = [
 
 [units.progress_load_thread]
 source = "src/ProgressFileLoad.cpp"
-object = "build/core145-canonical/ProgressFileLoad.obj"
+object = "build/core154-canonical/ProgressFileLoad.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl", "/source-charset:utf-8", "/execution-charset:.932"]
 functions = ["th20::ProgressSaveManager::load"]
 symbol = "?load@ProgressSaveManager@th20@@QAEXPAX@Z"
@@ -14288,7 +14288,7 @@ relocations = [
 
 [units.region_allocate_object]
 source = "src/HitCtrlInfCreation.cpp"
-object = "build/core148-canonical/HitCtrlInfCreation.obj"
+object = "build/core154-canonical/HitCtrlInfCreation.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
 functions = ["th20::DiagnosticAllocator::allocate_object<DamageRegion>"]
 symbol = "??$allocate_object@VDamageRegion@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVDamageRegion@1@PBD@Z"
@@ -14870,7 +14870,7 @@ relocations = [
 
 [units.ecl_runtime_link_allocate]
 source = "src/EclRuntimeLifetime.cpp"
-object = "build/core145-canonical/EclRuntimeLifetime.obj"
+object = "build/core154-canonical/EclRuntimeLifetime.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::allocate_object<th20::IntrusiveLink<th20::EclRuntime>>"]
 symbol = "??$allocate_object@V?$IntrusiveLink@UEclRuntime@th20@@@th20@@$$V@DiagnosticAllocator@th20@@QAEPAV?$IntrusiveLink@UEclRuntime@th20@@@1@PBD@Z"
@@ -14960,7 +14960,7 @@ relocations = [
 
 [units.enemy_phase_construct]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyPhase::EnemyPhase"]
 symbol = "??0EnemyPhase@th20@@QAE@XZ"
@@ -14973,7 +14973,7 @@ relocations = [
 
 [units.enemy_configure_phase]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::configure_phase"]
 symbol = "?configure_phase@Enemy@th20@@QAEXIHHPBD@Z"
@@ -14994,7 +14994,7 @@ relocations = [
 
 [units.enemy_configure_timeout]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::configure_timeout"]
 symbol = "?configure_timeout@Enemy@th20@@QAEXIPBD@Z"
@@ -15010,7 +15010,7 @@ relocations = [
 
 [units.enemy_phase_vector_resize]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EnemyPhase>::resize"]
 symbol = "?resize@?$vector@UEnemyPhase@th20@@V?$polymorphic_allocator@UEnemyPhase@th20@@@pmr@std@@@std@@QAEXI@Z"
@@ -15022,7 +15022,7 @@ relocations = [
 
 [units.enemy_phase_vector_size]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EnemyPhase>::size"]
 symbol = "?size@?$vector@UEnemyPhase@th20@@V?$polymorphic_allocator@UEnemyPhase@th20@@@pmr@std@@@std@@QBEIXZ"
@@ -15033,7 +15033,7 @@ relocations = [
 
 [units.enemy_phase_vector_index]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EnemyPhase>::operator[]"]
 symbol = "??A?$vector@UEnemyPhase@th20@@V?$polymorphic_allocator@UEnemyPhase@th20@@@pmr@std@@@std@@QAEAAUEnemyPhase@th20@@I@Z"
@@ -15044,7 +15044,7 @@ relocations = [
 
 [units.enemy_phase_vector_at]
 source = "src/EnemyInitialization.cpp"
-object = "build/core153-canonical/EnemyInitialization.obj"
+object = "build/core154-canonical/EnemyInitialization.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::EnemyPhase>::at"]
 symbol = "?at@?$vector@UEnemyPhase@th20@@V?$polymorphic_allocator@UEnemyPhase@th20@@@pmr@std@@@std@@QAEAAUEnemyPhase@th20@@I@Z"
@@ -15056,7 +15056,7 @@ relocations = [
 
 [units.session_field_70_is_two]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::field_70_is_two"]
 symbol = "?field_70_is_two@Session@th20@@QAE_NXZ"
@@ -15067,7 +15067,7 @@ relocations = [
 
 [units.session_clamp_field_1f4]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::clamped_field_1f4"]
 symbol = "?clamped_field_1f4@Session@th20@@QAEHXZ"
@@ -15079,7 +15079,7 @@ relocations = [
 
 [units.player_table_clamp_field_1f4]
 source = "src/Session.cpp"
-object = "build/core148-canonical/Session.obj"
+object = "build/core154-canonical/Session.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::clamped_field_1f4"]
 symbol = "?clamped_field_1f4@PlayerTable@th20@@QAEHXZ"
@@ -15091,7 +15091,7 @@ relocations = [
 
 [units.player_record_add_field_dc]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::add_field_dc"]
 symbol = "?add_field_dc@PlayerRecord@th20@@QAEXH@Z"
@@ -15103,7 +15103,7 @@ relocations = [
 
 [units.player_record_add_field_e0]
 source = "src/PlayerRecord.cpp"
-object = "build/core148-canonical/PlayerRecord.obj"
+object = "build/core154-canonical/PlayerRecord.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
 functions = ["th20::PlayerRecord::add_field_e0"]
 symbol = "?add_field_e0@PlayerRecord@th20@@QAEXH@Z"
@@ -15115,7 +15115,7 @@ relocations = [
 
 [units.enemy_pattern_drop]
 source = "src/ItemSpawn.cpp"
-object = "build/core149-canonical/ItemSpawn.obj"
+object = "build/core154-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EnemyPattern::drop"]
 symbol = "?drop@EnemyPattern@th20@@QAEXABUVector3@2@_N@Z"
@@ -15195,7 +15195,7 @@ relocations = [
 
 [units.enemy_bomb_drop_disabled]
 source = "src/Enemy.cpp"
-object = "build/core153-canonical/Enemy.obj"
+object = "build/core154-canonical/Enemy.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::bomb_drop_disabled"]
 symbol = "?bomb_drop_disabled@Enemy@th20@@QAE_NXZ"
@@ -15206,7 +15206,7 @@ relocations = [
 
 [units.enemy_controller_set_selected]
 source = "src/EnemyData.cpp"
-object = "build/core153-canonical/EnemyData.obj"
+object = "build/core154-canonical/EnemyData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::set_selected"]
 symbol = "?set_selected@EnemyController@th20@@QAEXIPAUEnemy@2@@Z"
@@ -15221,7 +15221,7 @@ relocations = [
 
 [units.enemy_controller_set_field_84_bit_0]
 source = "src/EnemyData.cpp"
-object = "build/core153-canonical/EnemyData.obj"
+object = "build/core154-canonical/EnemyData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::set_field_84_bit_0"]
 symbol = "?set_field_84_bit_0@EnemyController@th20@@QAEXI@Z"
@@ -15243,7 +15243,7 @@ relocations = [
 
 [units.card_request_flag_3]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::request_flag_3"]
 symbol = "?request_flag_3@Card@th20@@QAEXXZ"
@@ -15254,7 +15254,7 @@ relocations = [
 
 [units.card_request_flag_4]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::request_flag_4"]
 symbol = "?request_flag_4@Card@th20@@QAEXXZ"
@@ -15266,7 +15266,7 @@ relocations = [
 
 [units.card_set_flag_8]
 source = "src/Card.cpp"
-object = "build/core151-canonical/Card.obj"
+object = "build/core154-canonical/Card.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Card::set_flag_8"]
 symbol = "?set_flag_8@Card@th20@@QAEXI@Z"
@@ -15288,7 +15288,7 @@ relocations = [
 
 [units.enemy_controller_clear]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::clear"]
 symbol = "?clear@EnemyController@th20@@QAEXXZ"
@@ -15318,7 +15318,7 @@ relocations = [
 
 [units.enemy_controller_clear_matching]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::clear_matching"]
 symbol = "?clear_matching@EnemyController@th20@@QAEXH@Z"
@@ -15348,7 +15348,7 @@ relocations = [
 
 [units.enemy_controller_clear_variant_565]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::clear_variant_565"]
 symbol = "?clear_variant_565@EnemyController@th20@@QAEXXZ"
@@ -15378,7 +15378,7 @@ relocations = [
 
 [units.enemy_controller_clear_variant_573]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::clear_variant_573"]
 symbol = "?clear_variant_573@EnemyController@th20@@QAEXXZ"
@@ -15420,7 +15420,7 @@ relocations = [
 
 [units.enemy_controller_set_angle_128]
 source = "src/EnemySpawning.cpp"
-object = "build/core153-canonical/EnemySpawning.obj"
+object = "build/core154-canonical/EnemySpawning.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::set_angle_128"]
 symbol = "?set_angle_128@EnemyController@th20@@QAEXM@Z"
@@ -15432,7 +15432,7 @@ relocations = [
 
 [units.enemy_animation_file]
 source = "src/Enemy.cpp"
-object = "build/core153-canonical/Enemy.obj"
+object = "build/core154-canonical/Enemy.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::animation_file"]
 symbol = "?animation_file@Enemy@th20@@QAEPAVAnimationFile@2@H@Z"
@@ -15445,7 +15445,7 @@ relocations = [
 
 [units.effect_handle_matches_value]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectAnimationHandle::matches_value"]
 symbol = "?matches_value@EffectAnimationHandle@th20@@QAE_NI@Z"
@@ -15456,7 +15456,7 @@ relocations = [
 
 [units.effect_handle_missing]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectAnimationHandle::missing"]
 symbol = "?missing@EffectAnimationHandle@th20@@QAE_NXZ"
@@ -15468,7 +15468,7 @@ relocations = [
 
 [units.effect_select_handle_slot]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectInfo::select_handle_slot"]
 symbol = "?select_handle_slot@EffectInfo@th20@@QAEHXZ"
@@ -15483,7 +15483,7 @@ relocations = [
 
 [units.effect_publish_handle]
 source = "src/ItemLifecycleAccess.cpp"
-object = "build/core153-v2/ItemLifecycleAccess.obj"
+object = "build/core154-canonical/ItemLifecycleAccess.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EffectInfo::publish_handle"]
 symbol = "?publish_handle@EffectInfo@th20@@QAEII@Z"

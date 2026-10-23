@@ -36,6 +36,7 @@ bool circle_ellipse(float x, float y, float radius, float center_x, float center
 extern const int rectangle_edges[4][2];
 // These distances use XY even when the input has a z lane. Scalar endpoint
 // arguments are interleaved: x1, x2, y1, y2. Results return through ST0.
+float direction_xy(const Vector3&,const Vector3&);
 float squared_norm_xy(float, float);
 float norm_xy(float, float);
 float squared_distance_xy(float, float, float, float);

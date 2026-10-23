@@ -15,4 +15,5 @@ AnimationFile* Enemy::animation_file(std::int32_t index) {
     auto* controller = context->enemy_controller();
     return controller->animation_file(index);
 }
+bool Enemy::damage_marked() { return (state.flags.word_08 >> 4) & 1u; }
 } // namespace th20

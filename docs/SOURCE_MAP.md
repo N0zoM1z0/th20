@@ -47,9 +47,8 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 897 units / 164 objects. Eight additional
-mapped whole functions are nonexact; the current handoff and generated progress
-separate these totals from authored coverage. Private diagnostic/support probes
+The current handoff and generated progress separate physical strict units,
+mapped whole nonexact functions and authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
 have reviewed authored origins without maintained bodies or source mappings.
 The full AnimationFile spawn producer also remains source-absent. The five existing MeshResourceAccess helper
@@ -124,7 +123,8 @@ before retiring superseded products. See [oracles](ORACLES.md) and
 
 EnemySpawning.cpp owns four complete Controller clear variants over the real
 observer list; EnemyState.cpp owns the bit30 query. Enemy.hpp declares the genuine
-whole defeat boundary, whose body remains undefined. Six integrated clear,
+whole defeat boundary. EnemySpawnApplication.cpp now maintains its complete
+source candidate; canonical relocation/EH acceptance remains pending. Six integrated clear,
 selection and return paths extend the same private whole-root candidate; see
 [clear protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md).
 
@@ -134,3 +134,10 @@ resource dispatcher remains undefined. ItemResourceOwners.hpp separates the
 identified file pointers from scalar cursor words; ItemLifecycleAccess.cpp owns
 the complete effect-handle selection and tagged publication protocol. See
 [defeat resources](ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md).
+
+WeaponStoneInfo.hpp declares the independently identified 0xB4 StoneEnemyController;
+WeaponStoneInfo.cpp owns its construction, byte getter and process-slot access.
+Player.cpp, PlayerStorage.cpp, PlayerRecord.cpp and GeometryMetrics.cpp own the
+remaining maintained defeat dependencies. These ten complete source candidates
+have no new ledger or exact credit yet. See
+[whole defeat source and acceptance boundary](ENEMY_DEFEAT_RECONSTRUCTION.md).

@@ -6,4 +6,8 @@ WeaponStoneInfo::WeaponStoneInfo()
 Weapon* WeaponStoneInfo::passive_weapon() {return weapon_34;}
 bool WeaponStoneInfo::phase_one() {return phase==1?1:0;}
 void WeaponStoneInfo::disable() {TaskInfo::disable();}
+StoneEnemyController::StoneEnemyController() : byte_b0(0) {}
+std::uint8_t StoneEnemyController::byte_b0_value() { return byte_b0; }
+StoneEnemyController* stone_enemy_controller() { return process_stone_enemies; }
+
 }

@@ -261,4 +261,15 @@ std::int32_t PlayerRecord::field_14_value() {return field_14;}
 std::uint8_t PlayerRecord::field_a5_value() {return field_a5;}
 std::uint8_t PlayerRecord::field_2f_value() {return field_2f;}
 
+void PlayerRecord::add_field_44(std::int32_t amount) {
+    field_44 = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_44)
+        + static_cast<std::uint32_t>(amount));
+    field_44 = std::clamp(field_44, 0, 1000000);
+}
+void PlayerRecord::add_field_5c(std::int32_t amount) {
+    field_5c = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_5c)
+        + static_cast<std::uint32_t>(amount));
+    field_5c = std::clamp(field_5c, 0, 10000);
+}
+
 } // namespace th20

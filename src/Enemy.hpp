@@ -49,8 +49,9 @@ struct Enemy : EclManager {
     void initialize(std::int32_t index, const char* name);
     int tick();
     int apply_spawn(const EnemySpawn& parameters);
-    // Whole native defeat/resource processing remains undefined.
+    // Complete defeat protocol; native resource/record interfaces remain separate.
     std::int32_t defeat();
+    bool damage_marked();
     AnimationFile* animation_file(std::int32_t index);
 };
 

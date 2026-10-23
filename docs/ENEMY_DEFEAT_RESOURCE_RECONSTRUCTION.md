@@ -2,8 +2,9 @@
 
 CORE/EXACT-153 follows the complete Enemy::defeat caller at 0x4A5640, preserving
 its entire 1,371-byte ordinary body as the reconstruction boundary. It closes
-actual angle, file-routing and effect-handle dependencies. The whole defeat
-implementation and the whole Enemy opcode dispatcher remain undefined. Current
+actual angle, file-routing and effect-handle dependencies. CORE154 now maintains
+the [whole defeat source candidate](ENEMY_DEFEAT_RECONSTRUCTION.md), with canonical
+relocation/EH acceptance pending. The whole Enemy opcode dispatcher remains undefined. Current
 acceptance and protected products are in [the handoff](RE_HANDOFF.md).
 
 ## Corrected storage hypotheses
@@ -120,13 +121,12 @@ PlayerRecord, WeaponStoneInfo and process random state, followed by optional ECL
 termination/reset/call/tick and the actual callback. Child, resource and callback
 order must survive exceptions and mutation.
 
-The process slot at 0x5C6118, read by 0x513DD0, supplies an owner whose byte +B0
-is tested at 0x485A40. Its actual type, construction and lifetime remain unresolved;
-no owner prefix or replacement service is introduced. Native xrefs include writes
-at 0x513CD4 and 0x514253. Continue from those actual producers before maintaining
-the whole reward path. The 151-byte Controller file dispatcher also needs its
-remaining genuine resource owners. Keep complete control flow, EH and all
-resource effects in scope; declarations and captured calls do not close defeat.
+CORE154 follows the process-slot producers at 0x513CD4 and 0x514253 to the genuine
+0xB4 StoneEnemyController allocation, constructor and lifetime. Its complete
+declaration and maintained defeat source are documented in
+[whole defeat evidence](ENEMY_DEFEAT_RECONSTRUCTION.md). Canonical relocation/EH
+acceptance remains open. The 151-byte Controller file dispatcher still needs
+its remaining genuine resource owners; captured resource calls do not close it.
 
 Private evidence under `.analysis/` includes `core153-native-body-audit.json`,
 `core153-independent-bindings.json`, `core153-symbol-role-reconciliation.json`,
