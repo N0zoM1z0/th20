@@ -69,6 +69,12 @@ The read-only audit source and result are
 when resuming the complete root; original boundary and EH evidence below remains
 applicable.
 
+CORE145 continues actual whole-root source construction for the movement family
+and accepts the required complete raw random-word dependency. Read the
+[movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) for its
+bounded host checks and current dependency inventory. The production root and
+its complete compiler extent remain open; no switch fragment is accepted.
+
 ## Comparison extent still needs compiler ownership
 
 The native body ends at004963FE. A single NOP at004963FF precedes the main

@@ -11,49 +11,50 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Its embedded title/replay label is 1.00c in the same executable. The Steam-original
 backup is provenance evidence. See [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 896 physical strict units, 164 canonical objects and 168,057
-disjoint comparison bytes. All 904 mapped functions have source; eight whole
+The graph contains 897 physical strict units, 164 canonical objects and 168,151
+disjoint comparison bytes. All 905 mapped functions have source; eight whole
 mapped functions remain nonexact. Authored exact coverage is separately 181
 functions / 47,071 bytes, with 190 confirmed authored origins. The pinned
 reference has 6,945 terminal implementation reviews and 113 reconciled parser-gap
 files. These counts establish neither whole-game 95% byte exactness nor a
 playable reconstruction; whole-program compilation and linkage remain open.
 
-The latest source acceptance is CORE/EXACT-143, commit `cfd171b`: complete
-PooledAnimation/AnimationPool construction and destruction, with 65,536 genuine
-records, native stride 0x600 and extent 0x6000000. Four whole units add 243 body
-bytes / 253 compared bytes; their origins remain pending. See
-[pool lifetime](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md) for boundaries, EH,
-24 affected cold builds and the complete dirty-storage owner fixture.
+CORE/EXACT-145 accepts the complete 94-byte GameRandom::next_word at 0x497470.
+It records the raw engine result and returns its low 16 bits under the real
+slot-10 mutex, bypassing modulus division. Its origin remains pending. The whole
+Enemy dispatcher also has a private movement candidate for 49 values / 24 case
+heads, with 459 bounded O2/UBSan scenarios. This draft is not production source
+or partial exact credit. See [movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
 
-## Handoff verification and cleanup
+## Current verification and cleanup
 
-This housekeeping batch changes workflow and documentation, with no production
-source, header, profile, layout or canonical manifest changes. Existing-object
-replay keeps full target, receipt, extent and relocation checks; it neither
-compiles nor awards new exact credit. Missing or stale products fail directly.
+The GameRandom declaration/source update selects 35 providers / 153 previous
+units through captured include closures. Each provider is freshly built once;
+all 153 units strictly replay, with 129 providers reused. Eight string-label
+renames preserve complete literal content, relocation roles, targets and addends.
 
-Public CI and complete replay logs are `.analysis/handoff144-ci.log` and
-`.analysis/handoff144-existing-replay.log`. Protected inventories, retired cache
-paths/bytes and Git packing checks are recorded in
-`.analysis/handoff144-protected-inventory.json`, `handoff144-cleanup.json` and
-`handoff144-git-packing.json`. Packing preserves every Git object, reference and
-reflog without pruning. Native evidence, original-input archives, installed tools,
-reference, Ghidra database and supplied game files are retained.
+Public CI, current protected retirement and complete existing-object replay are
+`.analysis/core145-ci.log`, `core145-cleanup.json` and
+`core145-post-cleanup-results.json.gz`; final gates are `core145-gates.json`.
+Native evidence, original-input archives, installed tools, reference, Ghidra
+database and supplied game files remain protected. No unchanged graph is cold
+built for cleanup.
 
 ## Protected local products
 
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
-| `build/core141-canonical/` | 94 | Every sibling `.receipt.json` |
-| `build/core142-canonical/` | 46 | Every sibling `.receipt.json` |
-| `build/core143-canonical/` | 24 | Every sibling `.receipt.json` |
+| `build/core141-canonical/` | 89 | Every sibling `.receipt.json` |
+| `build/core142-canonical/` | 24 | Every sibling `.receipt.json` |
+| `build/core143-canonical/` | 16 | Every sibling `.receipt.json` |
+| `build/core145-canonical/` | 35 | Every sibling `.receipt.json` |
 
-The manifest owns these 164 objects / 328 product files. The unchanged 279-path
-source freeze is `.analysis/core143-final-frozen-source.json`. Complete acceptance,
-independent identities and earlier protected retirement are preserved in
-`core143-gates.json`, `core143-boundaries.json`, `core143-graph-audit.json`,
-`core143-independent-slot-identities.json` and `core143-post-cleanup-results.json.gz`.
+The manifest owns these 164 objects / 328 product files. The current 279-path
+source freeze is `.analysis/core145-final-frozen-source.json`. New acceptance and
+affected replay are `core145-word-strict.json`, `core145-affected-results.json.gz`
+and `core145-cold-proof.json`; current whole-graph contracts are
+`core145-graph-audit.json`. Earlier independent identities and original acceptance
+remain preserved in their focused evidence and private archives.
 Private filenames in this section are relative to `.analysis/`.
 
 Retain the nine investigation object/receipt pairs at the build root:
@@ -63,8 +64,9 @@ and [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) work, not current canonical credit
 Hashes are in `core141-retained-private-products.json`. Also retain the current
 `build/core144-probes/Alignment.obj` and receipt for the unfinished owner inquiry.
 
-Preserve `core143-pre-header-inputs.json.gz`, `core143-retired-inputs.json.gz` and
-all earlier original-input archives, native exports and rejected probe sources.
+Preserve `core145-pre-header-inputs.json.gz`, `core145-retired-inputs.json.gz`,
+`core145-host-original-inputs.json.gz` and all earlier original-input archives,
+native exports and rejected probe sources.
 Receipts retain their authentic original inputs and must never be rewritten.
 
 ## Next work and existing private leads
@@ -90,10 +92,14 @@ Receipts retain their authentic original inputs and must never be rewritten.
    [dispatch evidence](CORE_ECL_DISPATCH_RECONSTRUCTION.md) and
    [callback contracts](ANIMATION_CALLBACK_RECONSTRUCTION.md).
    EnemyState::execute_opcode at 0x48C010 has 41,967 body bytes; whole compiler
-   contribution ownership remains unresolved. Its current bounded dependency
-   audit is preserved in [complete Enemy layout](CORE_ENEMY_DISPATCH_LAYOUT.md).
-   Reuse actual owners and the accepted animation sub-dispatcher; dependency
-   coverage does not establish partial root credit.
+   contribution ownership remains unresolved. Continue the same whole-root
+   source construction beyond the private 400..448 movement draft, next reviewing
+   the 500..575 owner/state family. The current draft, exact word dependency,
+   independent operand-read order and remaining member-call boundaries are in
+   [movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
+   Reuse actual owners and the accepted animation sub-dispatcher. Preserve the
+   native default return and full tables/EH; private exercise factoring and its
+   out-of-domain exception are not production replacements.
 
 The eight source-present whole nonexact roots remain:
 
@@ -122,7 +128,7 @@ Follow [AGENTS.md](../AGENTS.md) and its preflight. Invoke Python through
 `scripts/repo-python`, Ghidra through `scripts/ghidra.py`, and keep one writable
 session. Run heavy work serial at nice 15 / CPU 3, with bounded Ghidra memory.
 No REA or delegated reconstruction. Preserve English maintained prose, the
-official Japanese title and commit prefix `gpt-6-astra-medium:`. Keep claims
+official Japanese title and commit prefix `gpt-6.1-sol:`. Keep claims
 header-only. For cleanup of an unchanged graph, run
 `nice -n 15 taskset -c 3 scripts/repo-python scripts/replay-exact-units.py --existing-objects`;
 source/header/profile changes require fresh affected cold builds.

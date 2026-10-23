@@ -70,6 +70,19 @@ int main() {
         state = (state * 48271u) % prime;
         assert(random.next() == state % 13 && random.last == state);
         assert(random.id == 42 && random.field_00 == 0x89abcdefu);
+        for (std::uint32_t modulus : {0u, 1u, 13u, 0xffffffffu}) {
+            random.seed(seed);
+            random.modulus = modulus;
+            state = seed % prime;
+            if (!state) state = 1;
+            static_assert(std::is_same_v<decltype(random.next_word()), std::uint16_t>);
+            for (unsigned i = 0; i != 300; ++i) {
+                state = (state * 48271u) % prime;
+                assert(random.next_word() == static_cast<std::uint16_t>(state));
+                assert(random.last == state && random.modulus == modulus);
+                assert(random.id == 42 && random.field_00 == 0x89abcdefu);
+            }
+        }
     }
 
     // Slot 10 is acquired even while tracked locking is disabled. Start the
@@ -90,5 +103,21 @@ int main() {
     assert(available_to_other_thread(th20::process_locks.slot(11)));
     mutex.unlock();
     assert(pending.get() == 9u * 48271u);
+    assert(available_to_other_thread(mutex));
+
+    random.modulus = 0;
+    std::promise<void> word_started;
+    auto word_entered = word_started.get_future();
+    mutex.lock();
+    auto word_pending = std::async(std::launch::async, [&] {
+        word_started.set_value();
+        return random.next_word();
+    });
+    word_entered.get();
+    assert(word_pending.wait_for(std::chrono::milliseconds(10)) == std::future_status::timeout);
+    mutex.unlock();
+    const auto second = (std::uint64_t{9} * 48271u * 48271u) % prime;
+    assert(word_pending.get() == static_cast<std::uint16_t>(second));
+    assert(random.last == second && random.modulus == 0);
     assert(available_to_other_thread(mutex));
 }

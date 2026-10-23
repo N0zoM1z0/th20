@@ -902,3 +902,4 @@ th20::PooledAnimation::PooledAnimation
 th20::PooledAnimation::~PooledAnimation
 th20::AnimationPool::AnimationPool
 th20::AnimationPool::~AnimationPool
+th20::GameRandom::next_word

@@ -7,6 +7,11 @@ std::uint32_t GameRandom::next(){
     last=engine();
     return last%modulus;
 }
+std::uint16_t GameRandom::next_word(){
+    std::lock_guard<std::recursive_mutex> guard(process_locks.slot(10));
+    last=engine();
+    return static_cast<std::uint16_t>(last);
+}
 void GameRandom::seed(std::uint32_t value){
     std::lock_guard<std::recursive_mutex> guard(process_locks.slot(10));
     minimum=0;

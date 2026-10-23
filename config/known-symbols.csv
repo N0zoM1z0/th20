@@ -848,3 +848,4 @@ address,name,module,confidence,evidence
 0x004492F0,th20::PooledAnimation::~PooledAnimation,AnimationPool,high,CORE/EXACT-143; docs/ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md; full native lifetime role and independent callee/owner identities; C++ spelling inferred
 0x00447C60,th20::AnimationPool::AnimationPool,AnimationPool,high,CORE/EXACT-143; docs/ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md; full native lifetime role and independent callee/owner identities; C++ spelling inferred
 0x004491E0,th20::AnimationPool::~AnimationPool,AnimationPool,high,CORE/EXACT-143; docs/ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md; full native lifetime role and independent callee/owner identities; C++ spelling inferred
+0x00497470,th20::GameRandom::next_word,GameRandom,high,CORE/EXACT-145; docs/ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md; complete raw-word call/field/lock ABI and independent support identities; method spelling inferred

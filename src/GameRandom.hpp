@@ -20,10 +20,11 @@ struct GameRandom {
     std::uint32_t id;
 
     explicit GameRandom(std::uint32_t stream_id);
-    // Both state-changing operations unconditionally own shared mutex slot 10.
-    // Sampling requires a nonzero modulus; the native DIV failure is not replaced.
+    // State-changing operations unconditionally own shared mutex slot 10.
+    // next requires a nonzero modulus; next_word takes raw engine bits.
     void seed(std::uint32_t value);
     std::uint32_t next();
+    std::uint16_t next_word();
     std::uint32_t bounded(std::uint32_t count);
     float unit();
     float range(float limit);

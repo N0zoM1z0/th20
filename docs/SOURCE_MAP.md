@@ -47,7 +47,7 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 896 units / 164 objects. Eight additional
+The configured graph currently has 897 units / 164 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
@@ -80,6 +80,12 @@ Animation.hpp declares the actual 65,536-record AnimationPool; Animation.cpp own
 its construction, defaulted destruction and the shared slot lifetime. The full
 owner fixture uses real geometry/callback retirement. See
 [pool lifetime](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
+
+GameRandomStream.cpp owns the complete raw uint16 sampler alongside next/seed.
+It advances the engine under the same real mutex and bypasses modulus division.
+The Enemy movement opcode candidate remains private whole-root source work;
+it is not an implemented production dispatcher or a separate exact unit. See
+[movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
 
 ## Build freshness and local products
 

@@ -903,3 +903,4 @@ th20::PooledAnimation::PooledAnimation,0x004489F0,function
 th20::PooledAnimation::~PooledAnimation,0x004492F0,function
 th20::AnimationPool::AnimationPool,0x00447C60,function
 th20::AnimationPool::~AnimationPool,0x004491E0,function
+th20::GameRandom::next_word,0x00497470,function

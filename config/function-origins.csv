@@ -2623,7 +2623,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004973C0,unknown,EclRuntimeLifetime,review,pending,"EXACT-071: Ten complete actual ECL Runtime/Manager lifetime, async clearing, typed scalar release and floating default bodies add 701 body bytes /706 comparison bytes including natural complete destructor padding. Complete 534-unit /98-object cold replay covers 94647 disjoint bytes. Independent SptInf RTTI, zero initialization, real PMR lifetimes and destroy-before-lock release establish protocol; canonical whole bodies and complete EH/alias support strictly replay. Owned O2/UBSan checks exercise resource capture, scalar/virtual disposal and native clear/reset validity. Source origin, whole Enemy root, resource append/getter/include, process startup and whole-game link/runtime remain open. See docs/EXACT_ECL_RUNTIME_LIFETIME_RECONSTRUCTION.md."
 0x00497420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00497450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00497470,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00497470,unknown,GameRandom,review,pending,CORE/EXACT-145; docs/ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md; full raw-word protocol/boundary accepted; original authored/compiler/library provenance unresolved
 0x004974D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00497540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00497560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
