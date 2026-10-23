@@ -49,10 +49,10 @@ are excluded from Git.
 
 ## Repository status
 
-The maintained graph has **943 source-present mappings**, **934 physical strict
-units** and **164 comparison objects** covering 172,456 disjoint comparison bytes.
+The maintained graph has **956 source-present mappings**, **947 physical strict
+units** and **164 comparison objects** covering 174,342 disjoint comparison bytes.
 Nine mapped whole functions remain nonexact. Confirmed authored exactness is
-separately 191 functions / 50,187 bytes; it is not whole-game completion.
+separately 192 functions / 51,558 bytes; it is not whole-game completion.
 
 | Area | Current position |
 | --- | --- |
@@ -60,7 +60,7 @@ separately 191 functions / 50,187 bytes; it is not whole-game completion.
 | Reference review | All 6,945 indexed implementations and 113 parser-gap files reviewed |
 | ECL Runtime | Whole tick, call/frame/argument and lifetime protocols; [evidence](docs/EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | Animation | Lifetime, children, templates, frame/geometry/operand updates and real callbacks; whole VM remains open; [source map](docs/SOURCE_MAP.md) |
-| Enemy | Actual owners and movement/script dependencies; whole opcode dispatcher remains open; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
+| Enemy | Actual owners, movement/script dependencies and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); whole opcode dispatcher remains open; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |

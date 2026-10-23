@@ -941,3 +941,16 @@ th20::EffectAnimationHandle::matches_value
 th20::EffectAnimationHandle::missing
 th20::EffectInfo::select_handle_slot
 th20::EffectInfo::publish_handle
+th20::Enemy::defeat
+th20::StoneEnemyController::StoneEnemyController
+th20::StoneEnemyController::byte_b0_value
+th20::stone_enemy_controller
+th20::Enemy::damage_marked
+th20::Player::feedback_value
+th20::player
+th20::geometry::direction_xy
+th20::PlayerRecord::add_field_44
+th20::PlayerRecord::add_field_5c
+std::function<void(th20::Enemy*)>::operator bool
+"std::_Func_class<void,th20::Enemy*>::_Empty"
+"std::_Func_class<void,th20::Enemy*>::_Getimpl"

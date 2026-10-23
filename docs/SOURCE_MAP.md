@@ -124,7 +124,7 @@ before retiring superseded products. See [oracles](ORACLES.md) and
 EnemySpawning.cpp owns four complete Controller clear variants over the real
 observer list; EnemyState.cpp owns the bit30 query. Enemy.hpp declares the genuine
 whole defeat boundary. EnemySpawnApplication.cpp now maintains its complete
-source candidate; canonical relocation/EH acceptance remains pending. Six integrated clear,
+accepted source and independently replayed EH code/data. Six integrated clear,
 selection and return paths extend the same private whole-root candidate; see
 [clear protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md).
 
@@ -138,6 +138,8 @@ the complete effect-handle selection and tagged publication protocol. See
 WeaponStoneInfo.hpp declares the independently identified 0xB4 StoneEnemyController;
 WeaponStoneInfo.cpp owns its construction, byte getter and process-slot access.
 Player.cpp, PlayerStorage.cpp, PlayerRecord.cpp and GeometryMetrics.cpp own the
-remaining maintained defeat dependencies. These ten complete source candidates
-have no new ledger or exact credit yet. See
-[whole defeat source and acceptance boundary](ENEMY_DEFEAT_RECONSTRUCTION.md).
+remaining maintained defeat dependencies. The ten complete roots and three SDK
+callback helpers are strict exact. PlayerFeedback's actual counter getter reads
++38 and folds to the existing physical duration-getter unit without duplicate
+credit. The list constructor and SDK callback invocation retain separate emission
+differences. See [whole defeat acceptance](ENEMY_DEFEAT_RECONSTRUCTION.md).

@@ -35,7 +35,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Enemy Card caller protocol and flag ownership](ENEMY_CARD_STATE_RECONSTRUCTION.md) — decoded names, live opcode/difficulty reads, cached actual Card receivers, ten private paths and the complete source-absent Card producers.
 - [Enemy clear, selection and return protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md) — four complete authored clear roots, observer mutation/exception order, shared native EH and six integrated caller paths.
 - [Enemy defeat resources and corrected owner fields](ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md) — actual normalized Angle, identified EffectInfo file/cursor storage, complete handle publication, and remaining whole defeat owners.
-- [Whole Enemy defeat source checkpoint](ENEMY_DEFEAT_RECONSTRUCTION.md) — complete caller source, independently identified StoneEnemyController, bounded semantic checks and pending canonical relocation/EH acceptance.
+- [Whole Enemy defeat reconstruction](ENEMY_DEFEAT_RECONSTRUCTION.md) — complete strict caller and independent EH code/data, genuine StoneEnemyController, corrected +38 counter, bounded semantic checks and separate nonexact callee emission.
 - [Enemy phase producer reconstruction](ENEMY_PHASE_PRODUCER_INVESTIGATION.md) — complete Enemy-owned configuration/timeout protocol, implicit record defaults and typed STL support; affected-only verification.
 - [ECL buffer registration and instruction resolution](ECL_BUFFER_RECONSTRUCTION.md)
 - [ECL wire-header extents and exact instruction resolution](ECL_BUFFER_EXACT_RECONSTRUCTION.md)

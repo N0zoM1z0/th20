@@ -11,54 +11,55 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Its embedded title/replay label is 1.00c in the same executable. The Steam-original
 backup is provenance evidence. See [target provenance](TARGET_PROVENANCE.md).
 
-The accepted graph contains 934 physical strict units, 164 canonical objects and
-172,456 disjoint comparison bytes. All 943 mapped functions have source; nine
+The accepted graph contains 947 physical strict units, 164 canonical objects and
+174,342 disjoint comparison bytes. All 956 mapped functions have source; nine
 whole mapped functions remain nonexact. Authored exact coverage is separately
-191 functions / 50,187 bytes, with 203 confirmed authored origins. The pinned
+192 functions / 51,558 bytes, with 204 confirmed authored origins. The pinned
 reference has 6,945 terminal implementation reviews and 113 reconciled parser-gap
 files. These counts establish neither whole-game 95% byte exactness nor a
 playable reconstruction; whole-program compilation and linkage remain open.
 
-CORE154 maintains the complete 1,371-byte Enemy::defeat source candidate and
-identifies the genuine 0xB4 StoneEnemyController behind process slot 0x5C6118.
-Ten complete candidates have zero ordinary non-relocation differences, but
-canonical callee/EH binding remains pending. They receive no new mapping, origin
-or exact credit. The public actual-owner fixture passes 10,240 combinations,
-twelve interface failures and five recursive topology cases. Enemy creation/clear
-and spawn/tick regression fixtures also pass. See
-[whole defeat source and remaining acceptance](ENEMY_DEFEAT_RECONSTRUCTION.md).
+CORE155 accepts the whole 1,371-byte Enemy::defeat, nine owner helpers and three
+SDK callback helpers: thirteen strict units / 1,886 bytes, with separate authored
+and library origins. The complete 55-byte EH code and 44-byte metadata also
+replay independently. The actual PlayerFeedback counter getter is corrected to
++38 and folds to an existing physical unit without duplicate credit. The public
+actual-owner fixture passes 10,240 combinations, twelve interface failures,
+five recursive topology cases and an assertion with unequal counter words. Earlier
+Enemy creation/clear and spawn/tick results are retained. See
+[whole defeat acceptance and callee boundaries](ENEMY_DEFEAT_RECONSTRUCTION.md).
 The production Enemy opcode dispatcher remains undefined. Its private 96-value /
 67-head draft and last CORE153 19,350-case result are preserved, without new credit.
 
 ## Current verification and cleanup
 
-Actual captured includes select 52 providers / 364 existing strict units.
-Their fresh serial builds and strict replays pass; the other 112 providers reuse
-valid evidence. A GeometryMetrics namespace correction then rebuilds only that
-provider and replays its seven existing units. Sixteen compiler-generated literal
-symbol renames preserve independently verified full data and canonical identities.
-The local EnemySpawnApplication profile uses /fp:strict; its accepted apply_spawn
-unit still passes. No whole-graph replay or full CI is run.
+Only PlayerStorage.cpp changes. Actual include closures select one provider /
+seven existing strict units, all freshly built and replayed. The other 163
+providers reuse valid evidence. Thirteen new units reuse unchanged CORE154
+objects with valid immutable receipts and pass their own canonical replay.
+Only the affected defeat fixture is rerun. No whole-graph replay or full CI runs.
+The earlier CORE154 52-provider/364-unit and geometry correction results remain
+preserved; unchanged verification is not repeated.
 
-Current private proofs are `core154-cold-proof.json`,
-`core154-affected-results.json.gz`, `core154-geometry-exact-results.json.gz`,
-`core154-literal-role-reconciliation.json`, `core154-graph-audit.json`,
-`core154-defeat-semantics-v2.log` and `core154-owner-regression.log`.
+Current private proofs are `core155-independent-bindings.json`,
+`core155-counter-exact-results.json.gz`, `core155-new-exact-results.json.gz`,
+`core155-graph-audit.json`, `core155-defeat-semantics.log` and `core155-gates.json`.
 These filenames and other private filenames below are relative to `.analysis/`.
 Reuse passing evidence for unchanged inputs. Documentation and cleanup add
 **zero compiler builds and zero canonical replays**; only protected hashes and
 lightweight documentation/tracking checks run during that phase.
 
-`handoff154-retirement-plan.json` records 226 retired files / 4,147,932 bytes:
-superseded canonical/probe products and duplicate private header/source copies.
-The latter retain their exact bytes in the 75,833-byte
-`core154-retired-probe-inputs.json.gz`; net space saved is 4,072,099 bytes.
-`handoff154-cleanup.json` confirms all protected hashes remain unchanged.
+`core155-retirement-plan.json` records the two replaced PlayerStorage product
+files / 50,630 bytes. Their authentic receipt and SHA-bound source versions are
+preserved in `core155-pre-counter-inputs.json.gz`. `core155-cleanup.json` confirms
+all protected hashes remain unchanged. No disposable probe builds are created.
 Native evidence, original inputs, installed tools, reference source, Ghidra and
 supplied game files remain protected.
 
 Historical archive lookup remains in `handoff146-retirement-plan.json`,
-`handoff149-retirement-plan.json` and `handoff152-retirement-plan.json`.
+`handoff149-retirement-plan.json`, `handoff152-retirement-plan.json` and
+`handoff154-retirement-plan.json`. The last identifies the lossless
+`core154-retired-probe-inputs.json.gz` archive.
 Use `gzip.open` for their losslessly archived reports instead of old plain paths.
 
 ## Protected local products
@@ -72,20 +73,22 @@ Use `gzip.open` for their losslessly archived reports instead of old plain paths
 | `build/core149-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core151-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core152-canonical/` | 3 | Every sibling `.receipt.json` |
-| `build/core154-canonical/` | 51 | Every sibling `.receipt.json` |
+| `build/core154-canonical/` | 50 | Every sibling `.receipt.json` |
 | `build/core154-v2/` | 1 | Every sibling `.receipt.json` |
+| `build/core155-canonical/` | 1 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. The current 279-path
-source freeze is `core154-final-frozen-source.json`. Protected hashes, including
-277 native evidence files and twenty private investigation products, are in
-`handoff154-retirement-plan.json`. Retain the nine root object/receipt pairs for
+source freeze is `core155-final-frozen-source.json`. Protected hashes, including
+280 native evidence files and twenty private investigation products, are in
+`core155-retirement-plan.json`. Retain the nine root object/receipt pairs for
 core103-QueryProtocol-v5 and the core109..core113 sound probes, plus
 `build/core144-probes/Alignment.obj` and its receipt. Their unfinished
 [damage-query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md),
 [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Renderer-owner](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md) inquiries remain open.
 
-Preserve `core154-pre-acceptance-inputs.json.gz`,
+Preserve `core155-pre-counter-inputs.json.gz`,
+`core155-pre-registration-ledgers.json.gz`, `core154-pre-acceptance-inputs.json.gz`,
 `core154-pre-geometry-namespace-inputs.json.gz`,
 `core154-pre-publication-inputs.json.gz`, `core154-v4-original-inputs.json.gz`,
 `core154-retired-probe-inputs.json.gz` and all earlier original-input/evidence
@@ -97,11 +100,15 @@ sources and their native exports; reuse rejected-trial evidence.
 
 ## Next work
 
-1. Finish independent canonical callee, constant and complete EH cleanup/handler,
-   unwind-map and FuncInfo binding for the maintained defeat candidates. Accept
-   complete roots only after their own strict replay. Resource calls, native
-   feedback/reward implementations and indexed ECL selection remain separate
-   interfaces. Follow [whole defeat evidence](ENEMY_DEFEAT_RECONSTRUCTION.md).
+1. Close complete native feedback/reward and indexed ECL selector bodies on their
+   genuine owners: record_hit at 0x4FB3A0 (115 bytes), add_reward at 0x4A9DE0
+   (128-byte contribution), and selectors at 0x5401D0 / 0x540230 (40 / 66 bytes).
+   Native record_hit increments +38 then copies it to +30;
+   preserve signed comparisons and wrapping behavior when reviewing that whole
+   protocol. The accepted defeat caller retains explicit resource interfaces.
+   IntrusiveList construction remains31/native40 and SDK callback invocation
+   remains69/native83; preserve these separate emission gaps and do not introduce
+   shaping writes. Follow [whole defeat evidence](ENEMY_DEFEAT_RECONSTRUCTION.md).
 2. Continue the whole Enemy dispatcher with actual owners, complete control flow,
    tables and compiler contributions. The 0x48C010 root has 41,967 ordinary body
    bytes; no case fragment receives partial exact credit. Reuse the existing

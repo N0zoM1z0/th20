@@ -2,9 +2,9 @@
 
 CORE/EXACT-153 follows the complete Enemy::defeat caller at 0x4A5640, preserving
 its entire 1,371-byte ordinary body as the reconstruction boundary. It closes
-actual angle, file-routing and effect-handle dependencies. CORE154 now maintains
-the [whole defeat source candidate](ENEMY_DEFEAT_RECONSTRUCTION.md), with canonical
-relocation/EH acceptance pending. The whole Enemy opcode dispatcher remains undefined. Current
+actual angle, file-routing and effect-handle dependencies. CORE155 now accepts
+the [whole defeat source](ENEMY_DEFEAT_RECONSTRUCTION.md), including independent
+canonical relocation/EH replay. The whole Enemy opcode dispatcher remains undefined. Current
 acceptance and protected products are in [the handoff](RE_HANDOFF.md).
 
 ## Corrected storage hypotheses
@@ -124,8 +124,8 @@ order must survive exceptions and mutation.
 CORE154 follows the process-slot producers at 0x513CD4 and 0x514253 to the genuine
 0xB4 StoneEnemyController allocation, constructor and lifetime. Its complete
 declaration and maintained defeat source are documented in
-[whole defeat evidence](ENEMY_DEFEAT_RECONSTRUCTION.md). Canonical relocation/EH
-acceptance remains open. The 151-byte Controller file dispatcher still needs
+[whole defeat evidence](ENEMY_DEFEAT_RECONSTRUCTION.md). CORE155 accepts the caller
+and complete owner dependencies with independent relocation/EH replay. The 151-byte Controller file dispatcher still needs
 its remaining genuine resource owners; captured resource calls do not close it.
 
 Private evidence under `.analysis/` includes `core153-native-body-audit.json`,

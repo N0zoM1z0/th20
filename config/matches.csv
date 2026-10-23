@@ -190,3 +190,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004A4E30,th20::EnemyController::clear_variant_573,526,matching,100.00,enemy_controller_clear_variant_573,CORE/EXACT-152; docs/ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md
 0x00498E70,th20::EffectInfo::select_handle_slot,196,matching,100.00,effect_select_handle_slot,CORE/EXACT-153; docs/ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md
 0x00497D20,th20::EffectInfo::publish_handle,79,matching,100.00,effect_publish_handle,CORE/EXACT-153; docs/ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md
+0x004A5640,th20::Enemy::defeat,1371,matching,100.00,enemy_defeat,CORE/EXACT-155; docs/ENEMY_DEFEAT_RECONSTRUCTION.md

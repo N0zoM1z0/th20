@@ -9079,7 +9079,7 @@ relocations = [
 
 [units.player_option_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core154-canonical/PlayerStorage.obj"
+object = "build/core155-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerOption::PlayerOption"]
 symbol = "??0PlayerOption@th20@@QAE@XZ"
@@ -9109,7 +9109,7 @@ relocations = [
 
 [units.player_feedback_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core154-canonical/PlayerStorage.obj"
+object = "build/core155-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerFeedback::PlayerFeedback"]
 symbol = "??0PlayerFeedback@th20@@QAE@XZ"
@@ -9125,7 +9125,7 @@ relocations = [
 
 [units.player_collision_bounds_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core154-canonical/PlayerStorage.obj"
+object = "build/core155-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerCollisionBounds::PlayerCollisionBounds"]
 symbol = "??0PlayerCollisionBounds@th20@@QAE@XZ"
@@ -9138,7 +9138,7 @@ relocations = [
 
 [units.player_motion_parameters_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core154-canonical/PlayerStorage.obj"
+object = "build/core155-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerMotionParameters::PlayerMotionParameters"]
 symbol = "??0PlayerMotionParameters@th20@@QAE@XZ"
@@ -9149,7 +9149,7 @@ relocations = [
 
 [units.player_shot_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core154-canonical/PlayerStorage.obj"
+object = "build/core155-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShot::PlayerShot"]
 symbol = "??0PlayerShot@th20@@QAE@XZ"
@@ -9170,7 +9170,7 @@ relocations = [
 
 [units.player_shot_pool_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core154-canonical/PlayerStorage.obj"
+object = "build/core155-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotPool::PlayerShotPool"]
 symbol = "??0PlayerShotPool@th20@@QAE@XZ"
@@ -9186,7 +9186,7 @@ relocations = [
 
 [units.player_shot_controller_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core154-canonical/PlayerStorage.obj"
+object = "build/core155-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::PlayerShotController"]
 symbol = "??0PlayerShotController@th20@@QAE@XZ"
@@ -15492,4 +15492,234 @@ size = 79
 relocations = [
   { offset = 13, type = "REL32", symbol = "?select_handle_slot@EffectInfo@th20@@QAEHXZ", target = 4820592 },
   { offset = 56, type = "REL32", symbol = "??A?$array@UEffectAnimationHandle@th20@@$0EAA@@std@@QAEAAUEffectAnimationHandle@th20@@I@Z", target = 4277632 },
+]
+
+[units.enemy_defeat]
+source = "src/EnemySpawnApplication.cpp"
+object = "build/core154-canonical/EnemySpawnApplication.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::defeat"]
+symbol = "?defeat@Enemy@th20@@QAEHXZ"
+target_address = 4871744
+size = 1371
+relocations = [
+  { offset = 6, type = "DIR32", symbol = "__ehhandler$?defeat@Enemy@th20@@QAEHXZ", target = 5674893 },
+  { offset = 24, type = "DIR32", symbol = "___security_cookie", target = 5973440 },
+  { offset = 63, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UEnemy@th20@@@th20@@QAEXI@Z", target = 4243584 },
+  { offset = 75, type = "REL32", symbol = "?begin@?$IntrusiveList@UEnemy@th20@@@th20@@QAE?AV?$IntrusiveIterator@UEnemy@th20@@@2@XZ", target = 4268672 },
+  { offset = 90, type = "REL32", symbol = "?end@?$IntrusiveList@UEnemy@th20@@@th20@@QAEPAV?$IntrusiveIterator@UEnemy@th20@@@2@XZ", target = 4269376 },
+  { offset = 106, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UEnemy@th20@@@th20@@QAEAAV12@XZ", target = 4267056 },
+  { offset = 122, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UEnemy@th20@@@th20@@QBE_NPBV12@@Z", target = 4266928 },
+  { offset = 137, type = "REL32", symbol = "?get@?$IntrusiveIterator@UEnemy@th20@@@th20@@QAEPAV?$IntrusiveLink@UEnemy@th20@@@2@XZ", target = 4244224 },
+  { offset = 148, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UEnemy@th20@@@th20@@QAEPAUEnemy@2@XZ", target = 4244224 },
+  { offset = 155, type = "REL32", symbol = "?defeat@Enemy@th20@@QAEHXZ", target = 4871744 },
+  { offset = 163, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UEnemy@th20@@@th20@@QAEPAUEnemy@2@XZ", target = 4244224 },
+  { offset = 204, type = "REL32", symbol = "??1?$IntrusiveIterator@UEnemy@th20@@@th20@@QAE@XZ", target = 4266752 },
+  { offset = 219, type = "REL32", symbol = "?detach@?$IntrusiveLink@UEnemy@th20@@@th20@@QAEXXZ", target = 4267232 },
+  { offset = 246, type = "REL32", symbol = "?position_x@Motion@th20@@QBEMXZ", target = 4362976 },
+  { offset = 281, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 6006832 },
+  { offset = 286, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 4353712 },
+  { offset = 295, type = "REL32", symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ", target = 4694720 },
+  { offset = 311, type = "REL32", symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 4546768 },
+  { offset = 325, type = "DIR32", symbol = "__real@3e4ccccd", target = 5700600 },
+  { offset = 333, type = "DIR32", symbol = "__real@3e4ccccd", target = 5700600 },
+  { offset = 347, type = "DIR32", symbol = "__real@c0490fdb", target = 5693688 },
+  { offset = 355, type = "DIR32", symbol = "__real@40000000", target = 5687504 },
+  { offset = 370, type = "REL32", symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ", target = 4694720 },
+  { offset = 385, type = "REL32", symbol = "?direction_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 4694752 },
+  { offset = 417, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 4311760 },
+  { offset = 438, type = "REL32", symbol = "?animation_file@Enemy@th20@@QAEPAVAnimationFile@2@H@Z", target = 4822064 },
+  { offset = 449, type = "REL32", symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ", target = 4694720 },
+  { offset = 504, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 4690144 },
+  { offset = 521, type = "REL32", symbol = "?publish_handle@EffectInfo@th20@@QAEII@Z", target = 4816160 },
+  { offset = 536, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 4269872 },
+  { offset = 558, type = "REL32", symbol = "?set_angle_128@EnemyController@th20@@QAEXM@Z", target = 4896800 },
+  { offset = 578, type = "REL32", symbol = "?bomb_drop_disabled@Enemy@th20@@QAE_NXZ", target = 4833472 },
+  { offset = 589, type = "REL32", symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ", target = 4694720 },
+  { offset = 609, type = "REL32", symbol = "?drop@EnemyPattern@th20@@QAEXABUVector3@2@_N@Z", target = 4767504 },
+  { offset = 618, type = "REL32", symbol = "?damage_marked@Enemy@th20@@QAE_NXZ", target = 4895488 },
+  { offset = 636, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 4589616 },
+  { offset = 646, type = "REL32", symbol = "?feedback_value@Player@th20@@QAEPAUPlayerFeedback@2@XZ", target = 4893280 },
+  { offset = 673, type = "REL32", symbol = "?record_hit@PlayerFeedback@th20@@QAEXH@Z", target = 5223328 },
+  { offset = 780, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 4589616 },
+  { offset = 790, type = "REL32", symbol = "?feedback_value@Player@th20@@QAEPAUPlayerFeedback@2@XZ", target = 4893280 },
+  { offset = 797, type = "REL32", symbol = "?count_value@PlayerFeedback@th20@@QAEHXZ", target = 4424992 },
+  { offset = 818, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 4589616 },
+  { offset = 828, type = "REL32", symbol = "?feedback_value@Player@th20@@QAEPAUPlayerFeedback@2@XZ", target = 4893280 },
+  { offset = 835, type = "REL32", symbol = "?count_value@PlayerFeedback@th20@@QAEHXZ", target = 4424992 },
+  { offset = 882, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 4604032 },
+  { offset = 900, type = "REL32", symbol = "?add_field_44@PlayerRecord@th20@@QAEXH@Z", target = 4890544 },
+  { offset = 906, type = "REL32", symbol = "?stone_enemy_controller@th20@@YAPAUStoneEnemyController@1@XZ", target = 5324240 },
+  { offset = 913, type = "REL32", symbol = "?byte_b0_value@StoneEnemyController@th20@@QAEEXZ", target = 4741696 },
+  { offset = 927, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 4604032 },
+  { offset = 945, type = "REL32", symbol = "?add_field_5c@PlayerRecord@th20@@QAEXH@Z", target = 4685664 },
+  { offset = 951, type = "DIR32", symbol = "?script_random@th20@@3UGameRandom@1@A", target = 6005928 },
+  { offset = 956, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 4341472 },
+  { offset = 975, type = "REL32", symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z", target = 4604464 },
+  { offset = 992, type = "REL32", symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ", target = 4694720 },
+  { offset = 1022, type = "REL32", symbol = "?record_damage@WeaponStoneInfo@th20@@QAEXPBUVector3@2@HH@Z", target = 4890496 },
+  { offset = 1028, type = "REL32", symbol = "?stone_enemy_controller@th20@@YAPAUStoneEnemyController@1@XZ", target = 5324240 },
+  { offset = 1035, type = "REL32", symbol = "?byte_b0_value@StoneEnemyController@th20@@QAEEXZ", target = 4741696 },
+  { offset = 1059, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 4604032 },
+  { offset = 1075, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 4604032 },
+  { offset = 1099, type = "REL32", symbol = "?starting_configuration@PlayerRecord@th20@@QAEHH@Z", target = 4604368 },
+  { offset = 1127, type = "REL32", symbol = "?add_reward@PlayerRecord@th20@@QAEXHH@Z", target = 4890080 },
+  { offset = 1135, type = "DIR32", symbol = "?script_random@th20@@3UGameRandom@1@A", target = 6005928 },
+  { offset = 1140, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 4341472 },
+  { offset = 1159, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 4604032 },
+  { offset = 1187, type = "REL32", symbol = "?add_reward@PlayerRecord@th20@@QAEXHH@Z", target = 4890080 },
+  { offset = 1208, type = "REL32", symbol = "?terminate_async@EclManager@th20@@QAEXXZ", target = 4813760 },
+  { offset = 1216, type = "REL32", symbol = "?reset@EclManager@th20@@QAEXXZ", target = 4813504 },
+  { offset = 1234, type = "REL32", symbol = "?select_subroutine_index@EclManager@th20@@QAEHH@Z", target = 5505488 },
+  { offset = 1251, type = "REL32", symbol = "?tick@EclManager@th20@@QAEHM@Z", target = 5497520 },
+  { offset = 1299, type = "REL32", symbol = "??B?$function@$$A6AXPAUEnemy@th20@@@Z@std@@QBE_NXZ", target = 4277664 },
+  { offset = 1336, type = "REL32", symbol = "??R?$_Func_class@XPAUEnemy@th20@@@std@@QBEXPAUEnemy@th20@@@Z", target = 4865824 },
+  { offset = 1363, type = "REL32", symbol = "@__security_check_cookie@4", target = 5515758 },
+]
+
+[units.stone_enemy_controller_ctor]
+source = "src/WeaponStoneInfo.cpp"
+object = "build/core154-canonical/WeaponStoneInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::StoneEnemyController::StoneEnemyController"]
+symbol = "??0StoneEnemyController@th20@@QAE@XZ"
+target_address = 5314944
+size = 90
+relocations = [
+  { offset = 11, type = "REL32", symbol = "??0?$IntrusiveList@UStoneEnemyRecord@th20@@@th20@@QAE@XZ", target = 4295248 },
+  { offset = 22, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 4337040 },
+  { offset = 33, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 4337040 },
+  { offset = 44, type = "REL32", symbol = "??0?$Interpolation@M@th20@@QAE@XZ", target = 4487648 },
+  { offset = 55, type = "REL32", symbol = "??0?$Interpolation@E@th20@@QAE@XZ", target = 5314864 },
+  { offset = 69, type = "REL32", symbol = "??0?$Interpolation@M@th20@@QAE@XZ", target = 4487648 },
+]
+
+[units.stone_enemy_controller_byte_b0]
+source = "src/WeaponStoneInfo.cpp"
+object = "build/core154-canonical/WeaponStoneInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::StoneEnemyController::byte_b0_value"]
+symbol = "?byte_b0_value@StoneEnemyController@th20@@QAEEXZ"
+target_address = 4741696
+size = 21
+relocations = [
+]
+
+[units.stone_enemy_controller_access]
+source = "src/WeaponStoneInfo.cpp"
+object = "build/core154-canonical/WeaponStoneInfo.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::stone_enemy_controller"]
+symbol = "?stone_enemy_controller@th20@@YAPAUStoneEnemyController@1@XZ"
+target_address = 5324240
+size = 10
+relocations = [
+  { offset = 4, type = "DIR32", symbol = "?process_stone_enemies@th20@@3PAUStoneEnemyController@1@A", target = 6054168 },
+]
+
+[units.enemy_damage_marked]
+source = "src/Enemy.cpp"
+object = "build/core154-canonical/Enemy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Enemy::damage_marked"]
+symbol = "?damage_marked@Enemy@th20@@QAE_NXZ"
+target_address = 4895488
+size = 26
+relocations = [
+]
+
+[units.player_feedback_access]
+source = "src/Player.cpp"
+object = "build/core154-canonical/Player.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::feedback_value"]
+symbol = "?feedback_value@Player@th20@@QAEPAUPlayerFeedback@2@XZ"
+target_address = 4893280
+size = 19
+relocations = [
+]
+
+[units.player_access]
+source = "src/Player.cpp"
+object = "build/core154-canonical/Player.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::player"]
+symbol = "?player@th20@@YAPAVPlayer@1@H@Z"
+target_address = 4589616
+size = 26
+relocations = [
+  { offset = 8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 6006120 },
+  { offset = 13, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 4242368 },
+  { offset = 20, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 4259728 },
+]
+
+[units.geometry_direction_xy]
+source = "src/GeometryMetrics.cpp"
+object = "build/core154-v2/GeometryMetrics.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::geometry::direction_xy"]
+symbol = "?direction_xy@geometry@th20@@YAMABUVector3@2@0@Z"
+target_address = 4694752
+size = 55
+relocations = [
+  { offset = 46, type = "REL32", symbol = "?arctangent@scalar_math@th20@@YAMMM@Z", target = 4559488 },
+]
+
+[units.player_record_add_field_44]
+source = "src/PlayerRecord.cpp"
+object = "build/core154-canonical/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::add_field_44"]
+symbol = "?add_field_44@PlayerRecord@th20@@QAEXH@Z"
+target_address = 4890544
+size = 75
+relocations = [
+  { offset = 54, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 4657520 },
+]
+
+[units.player_record_add_field_5c]
+source = "src/PlayerRecord.cpp"
+object = "build/core154-canonical/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::add_field_5c"]
+symbol = "?add_field_5c@PlayerRecord@th20@@QAEXH@Z"
+target_address = 4685664
+size = 75
+relocations = [
+  { offset = 54, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 4657520 },
+]
+
+[units.enemy_callback_nonempty]
+source = "src/EnemySpawnApplication.cpp"
+object = "build/core154-canonical/EnemySpawnApplication.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["std::function<void(th20::Enemy*)>::operator bool"]
+symbol = "??B?$function@$$A6AXPAUEnemy@th20@@@Z@std@@QBE_NXZ"
+target_address = 4277664
+size = 48
+relocations = [
+  { offset = 13, type = "REL32", symbol = "?_Empty@?$_Func_class@XPAUEnemy@th20@@@std@@IBE_NXZ", target = 4278912 },
+]
+
+[units.enemy_callback_empty]
+source = "src/EnemySpawnApplication.cpp"
+object = "build/core154-canonical/EnemySpawnApplication.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void,th20::Enemy*>::_Empty"]
+symbol = "?_Empty@?$_Func_class@XPAUEnemy@th20@@@std@@IBE_NXZ"
+target_address = 4278912
+size = 45
+relocations = [
+  { offset = 13, type = "REL32", symbol = "?_Getimpl@?$_Func_class@XPAUEnemy@th20@@@std@@ABEPAV?$_Func_base@XPAUEnemy@th20@@@2@XZ", target = 4278992 },
+]
+
+[units.enemy_callback_implementation]
+source = "src/EnemySpawnApplication.cpp"
+object = "build/core154-canonical/EnemySpawnApplication.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void,th20::Enemy*>::_Getimpl"]
+symbol = "?_Getimpl@?$_Func_class@XPAUEnemy@th20@@@std@@ABEPAV?$_Func_base@XPAUEnemy@th20@@@2@XZ"
+target_address = 4278992
+size = 25
+relocations = [
 ]

@@ -134,7 +134,8 @@ void EnemyPattern::drop(const Vector3& position,bool marked) {
     assert(marked==bool(active->state.flags.word_08&32u));note(::drop);
 }
 void PlayerFeedback::record_hit(int value) {
-    assert(value==active->state.field_26c);note(::feedback);field_30=static_cast<unsigned>(level);
+    assert(value==active->state.field_26c);note(::feedback);
+    field_30=field_38=static_cast<unsigned>(level);
 }
 void OverlayCounter::add_reward(const Vector3* position,int amount,int kind) {
     assert(this==&selected_stone->counter && position==&active->state.motion_110.position);
@@ -174,7 +175,7 @@ void prepare(World& world) {
     world.first.angle_128.value=91;world.second.angle_128.value=93;
     world.gate.byte_b0=0;world.fx->handle_cursor=1023;
     for(auto& entry:world.fx->handles)entry.handle.value=0;
-    world.player->feedback.field_30=0;
+    world.player->feedback.field_30=world.player->feedback.field_38=0;
     auto& record=session.table.players[0];record.field_44=999999;record.field_5c=9999;
     record.field_0c=2;record.field_14=3;record.field_10=5;record.field_18=7;
     level=0;gate_after=0;expected_reward=0;expected_kind=0;output_handle=0x12345678u;
@@ -208,7 +209,8 @@ void matrix(World& world) {
         if(script!=-1)patch(expected_actor,a,state.field_27c,-1);
         if(marked){auto& record=session.table.players[0];patch(expected_record,record,record.field_44,wrapped_add_clamp(999999,expected_reward,1000000));
             if(!first_gate)patch(expected_record,record,record.field_5c,wrapped_add_clamp(9999,expected_reward,10000));
-            patch(expected_feedback,world.player->feedback,world.player->feedback.field_30,static_cast<unsigned>(count));}
+            patch(expected_feedback,world.player->feedback,world.player->feedback.field_30,static_cast<unsigned>(count));
+            patch(expected_feedback,world.player->feedback,world.player->feedback.field_38,static_cast<unsigned>(count));}
         std::vector<Step> expected;if(audio)expected.push_back(sound);if(effect){expected.push_back(file_lookup);expected.push_back(spawn);}expected.push_back(drop);
         if(marked){expected.push_back(feedback);expected.push_back(stone);if(!next_gate)expected.push_back(reward);}
         if(script!=-1){expected.push_back(terminate);expected.push_back(reset);expected.push_back(select_script);expected.push_back(tick);}
@@ -263,6 +265,10 @@ void topology(World& world) {
 }
 int main() {
     th20::process_locks.enable();
-    {World world;matrix(world);failures(world);topology(world);}
+    {World world;
+        world.player->feedback.field_30=3;world.player->feedback.field_38=7;
+        assert(world.player->feedback.count_value()==7);
+        matrix(world);failures(world);topology(world);
+    }
     th20::process_locks.disable();
 }

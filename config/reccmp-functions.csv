@@ -942,3 +942,16 @@ th20::EffectAnimationHandle::matches_value,0x00449430,function
 th20::EffectAnimationHandle::missing,0x0049BED0,function
 th20::EffectInfo::select_handle_slot,0x00498E70,function
 th20::EffectInfo::publish_handle,0x00497D20,function
+th20::Enemy::defeat,0x004A5640,function
+th20::StoneEnemyController::StoneEnemyController,0x00511980,function
+th20::StoneEnemyController::byte_b0_value,0x00485A40,function
+th20::stone_enemy_controller,0x00513DD0,function
+th20::Enemy::damage_marked,0x004AB300,function
+th20::Player::feedback_value,0x004AAA60,function
+th20::player,0x00460830,function
+th20::geometry::direction_xy,0x0047A2E0,function
+th20::PlayerRecord::add_field_44,0x004A9FB0,function
+th20::PlayerRecord::add_field_5c,0x00477F60,function
+std::function<void(th20::Enemy*)>::operator bool,0x004145A0,function
+"std::_Func_class<void,th20::Enemy*>::_Empty",0x00414A80,function
+"std::_Func_class<void,th20::Enemy*>::_Getimpl",0x00414AD0,function
