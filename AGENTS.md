@@ -29,6 +29,12 @@ comparison target.
 
 ## Before changing reconstruction state
 
+For documentation-only or artifact-cleanup work, inspect Git status and the
+changed paths, check documentation/diffs and protected product hashes, and stop
+there. Do not run Ghidra, MSVC, full CI or canonical replay for an unchanged
+reconstruction graph. The reconstruction preflight below applies when changing
+reconstruction code, analysis evidence or acceptance state.
+
 Read `docs/RE_HANDOFF.md`, `docs/ARCHITECTURE.md`, `docs/RE_WORKFLOW.md`,
 `docs/ORACLES.md` and the relevant source. For semantic work also read
 `docs/SEMANTIC_RECONSTRUCTION.md` and `docs/SOURCE_MAP.md`.
@@ -83,14 +89,23 @@ core documents. Historical batch totals must not masquerade as current status.
 Use one writable reconstruction session at a time. Do not delegate matching or
 run concurrent MSVC builds. Keep `config/claims.csv` header-only. Work on one
 bounded address, coherent owner/protocol, or workflow-maintenance batch.
-Replay affected exact units after shared-header/profile/layout/partition/anchor
-changes. Run `scripts/ci.py`, tracking and progress gates; commit stable
-checkpoints before handoff.
+Replay only exact units actually affected by source, shared-header, profile,
+layout, partition or anchor changes. Derive affected providers from captured
+include closures and manifest dependencies; use explicit source filters or
+individual units. Run relevant tests and lightweight tracking/progress gates;
+use full CI only when the changed code or infrastructure warrants it. Commit
+stable checkpoints before handoff.
+
+The user explicitly requires fast, affected-only validation (2026-10-23).
+Never run an unfiltered whole-graph replay merely for handoff, documentation,
+cleanup or reassurance. An unchanged graph has zero affected replay units.
+Reuse valid existing evidence and do not repeat unchanged builds or tests.
 
 After each stable batch, retire superseded probe builds and other regenerable
 artifacts as explicitly requested by the user. Protect all current canonical
 objects/receipts, preserve native evidence and active inputs, record removed
-paths/bytes privately, and verify exact replay after cleanup. See
+paths/bytes privately, and verify protected hashes after cleanup. Replay only
+units affected by actual reconstruction changes; cleanup alone requires none. See
 docs/RE_WORKFLOW.md for retirement rules.
 During longer batches, also retire replaced trials periodically after verifying
 their replacements and archiving original SHA-bound inputs and receipts.

@@ -84,7 +84,9 @@ proprietary toolchain:
 scripts/repo-python scripts/ci.py
 ```
 
-Private handoff checks reuse the current canonical objects and receipts:
+Documentation and artifact-cleanup handoffs use diff/link checks and protected
+product hashes. An unchanged reconstruction graph needs no replay, compiler,
+Ghidra or full CI run. Private preflight for reconstruction changes is:
 
 ```bash
 scripts/bootstrap-tools.sh
@@ -92,15 +94,16 @@ scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/ghidra.py check
-nice -n 15 scripts/repo-python scripts/replay-exact-units.py --existing-objects
 ```
 
 On a fresh private workspace, provision tools as described in
 [Tools](docs/TOOLS.md), then run `scripts/repo-python scripts/ghidra.py import` once.
 Every query re-attests the executable and complete mapped code section;
 inventory refreshes never overwrite reviewed ledgers.
-For fresh exact acceptance after source changes, run the affected cold replay
-without `--existing-objects`; see [build and matching](docs/BUILD_MATCHING.md).
+For source changes, derive the actual affected providers from captured include
+closures and manifest dependencies. Build and replay only those units, with
+individual unit commands or explicit `--source` filters. New exact acceptance
+requires affected cold builds; see [build and matching](docs/BUILD_MATCHING.md).
 
 ## Reference review
 

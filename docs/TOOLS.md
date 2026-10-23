@@ -31,7 +31,7 @@ packages or change the working directory.
 | Compile explicit probe | `scripts/compile-probe.sh SOURCE build/OUTPUT.obj FLAGS...` | x86 COFF + freshness receipt |
 | Compile configured unit | `scripts/repo-python scripts/build.py --unit NAME` | pinned compiler, explicit unit profile |
 | Strict canonical comparison | `scripts/repo-python scripts/compare-coff-function.py --unit NAME --json` | all bytes + explicit relocations |
-| Cold replay accepted units | `scripts/repo-python scripts/replay-exact-units.py` | serial unique object builds; never refresh anchors automatically |
+| Cold replay affected units | `scripts/repo-python scripts/replay-exact-units.py --source src/EnemyState.cpp` | select actual affected providers; serial builds; skip unchanged graphs |
 | Validate tracking | `scripts/repo-python scripts/validate-tracking.py --require-target` | ledger consistency; does not prove exactness |
 | Report/generate state | `scripts/repo-python scripts/report-reconstruction-status.py`, `scripts/repo-python scripts/progress.py` | ledger-derived, not prose-derived |
 | Compile/link/runtime smoke | `scripts/repo-python scripts/toolchain-smoke.py` | infrastructure only, zero reconstruction credit |

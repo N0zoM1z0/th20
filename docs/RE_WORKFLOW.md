@@ -6,6 +6,12 @@ special assembly exceptions are not TH20 evidence.
 
 ## Session preflight
 
+The user requires affected-only validation and quick handoffs. Documentation
+and cleanup batches with an unchanged reconstruction graph need Git/diff/link
+checks and protected-product hash checks, with zero replay units. Skip Ghidra,
+MSVC, full CI and canonical replay for these batches. The preflight below is for
+changes to reconstruction code, native analysis evidence or acceptance state.
+
 ```bash
 git status --short --branch
 scripts/repo-python scripts/verify-target.py
@@ -43,13 +49,20 @@ one writable session. Ghidra and compiler wrappers serialize their operations.
 8. Record an exact result only after the canonical replay has zero differences
    over its complete extent. Update mapping, origins, source presence and
    match ledgers separately; do not infer one from another.
-9. Update knowledge/handoff, run affected replays, regenerate progress, run CI,
+9. Update knowledge/handoff, run only affected replays, regenerate progress when
+   its inputs change, run tests appropriate to the change,
    inspect the public diff and commit a stable checkpoint.
 
 Replay every affected unit after a shared header, profile, translation-unit,
 layout or relocation-anchor change. Profiles are per source/unit, not a global
 assumption. Exact source, semantic acceptance, link coherence and runtime
 behavior remain independent acceptance gates.
+
+Determine affected providers from the changed input closures and manifest
+dependencies. Use individual unit commands or repeated `--source` filters;
+do not default to an unfiltered replay. Reuse passing evidence for unchanged
+providers. Run full CI only when the changed code or infrastructure warrants it,
+and never repeat it solely for a documentation edit or cleanup.
 
 ## Large dispatcher evidence
 
@@ -112,12 +125,14 @@ against the archive before retiring it; preserve the installed SDK and record
 both the cache inventory and installed-file hashes. Bootstrap reuses an installed
 D3DX SDK without downloading this cache again.
 
-Record removed paths/bytes and protected hashes privately. Strictly compare all
-current units after cleanup with
-`scripts/repo-python scripts/replay-exact-units.py --existing-objects` at reduced
-priority; do not cold-rebuild an unchanged source graph just for cleanup or
-documentation. Source/header/profile changes require the usual
-affected cold replay. EXACT-058 records the first retirement pass.
+Record removed paths/bytes and protected hashes privately. Verify those hashes
+after cleanup; an unchanged graph requires no replay. If the batch also changes
+reconstruction inputs, strictly replay only the affected units, using explicit
+source filters or individual unit commands at reduced priority. Never run a
+whole-graph replay or cold build solely for cleanup or documentation.
+Source/header/profile changes require fresh affected builds. EXACT-058 records
+the historical first retirement pass; its broader verification is not the
+current required scope.
 
 Inactive successful replay snapshots may be archived losslessly as `.json.gz`.
 Verify that every saved unit passed, check the decompressed content against the
@@ -126,3 +141,9 @@ and bytes saved. Keep current snapshots, native exports, failed experiments and
 active inputs intact. Read archived evidence with `gzip.open` through
 `scripts/repo-python`; an archived path is preserved evidence, not a missing
 verification. Store cleanup-only replay reports compressed from the outset.
+
+Completed historical public-CI logs may likewise be archived as `.log.gz` after
+checking their terminal success marker and successful test summary. Record the
+original path, original SHA-256, archive path and archive SHA-256 in the private
+retirement inventory; verify decompressed bytes before removing the original.
+Keep current CI evidence, failed logs, native exports and active inputs intact.

@@ -28,14 +28,20 @@ or partial exact credit. See [movement source frontier](ENEMY_DISPATCH_MOVEMENT_
 
 ## Current verification and cleanup
 
-The GameRandom declaration/source update selects 35 providers / 153 previous
-units through captured include closures. Each provider is freshly built once;
-all 153 units strictly replay, with 129 providers reused. Eight string-label
-renames preserve complete literal content, relocation roles, targets and addends.
-
-Public CI, current protected retirement and complete existing-object replay are
-`.analysis/core145-ci.log`, `core145-cleanup.json` and
-`core145-post-cleanup-results.json.gz`; final gates are `core145-gates.json`.
+The handoff maintenance batch changes documentation and the commit convention;
+production source, profiles, anchors and acceptance ledgers are unchanged.
+Public CI completed before the affected-only policy correction: 84 tests passed.
+It was not repeated for the subsequent documentation-only edits. The full
+existing-object replay was stopped at the user's request; its partial log is
+interrupted evidence, not a completed whole-graph verification. No reconstruction
+unit changed, so this batch has zero affected replay units. Relevant records are
+`.analysis/handoff146-ci.log`, `handoff146-cleanup.json` and
+`handoff146-existing-replay.log.gz`; final gates are `handoff146-gates.json`.
+`handoff146-protected-inventory.json.gz` records protected products and evidence;
+`handoff146-retirement-plan.json` maps each archived historical report to its
+verified lossless `.gz` copy. Current CORE145 acceptance reports stay uncompressed
+where originally recorded. Older successful CI logs and inactive exact-result
+snapshots may now require `gzip.open`; their original content hashes are retained.
 Native evidence, original-input archives, installed tools, reference, Ghidra
 database and supplied game files remain protected. No unchanged graph is cold
 built for cleanup.
@@ -63,6 +69,9 @@ closures support unresolved [damage-query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.
 and [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) work, not current canonical credit.
 Hashes are in `core141-retained-private-products.json`. Also retain the current
 `build/core144-probes/Alignment.obj` and receipt for the unfinished owner inquiry.
+Also retain `build/core146-probes/Phase.obj` and its receipt with the original
+private inputs under `.analysis/core146-phase/`. This is an unfinished producer
+probe with an unproven record-construction assumption, not canonical source.
 
 Preserve `core145-pre-header-inputs.json.gz`, `core145-retired-inputs.json.gz`,
 `core145-host-original-inputs.json.gz` and all earlier original-input archives,
@@ -93,8 +102,12 @@ Receipts retain their authentic original inputs and must never be rewritten.
    [callback contracts](ANIMATION_CALLBACK_RECONSTRUCTION.md).
    EnemyState::execute_opcode at 0x48C010 has 41,967 body bytes; whole compiler
    contribution ownership remains unresolved. Continue the same whole-root
-   source construction beyond the private 400..448 movement draft, next reviewing
-   the 500..575 owner/state family. The current draft, exact word dependency,
+   source construction beyond the private 400..448 movement draft. The 500..575
+   owner/state family now has a private 75-value / 71-head catalog and a phase
+   producer investigation. Resume at its unresolved record-construction chain;
+   do not promote the private `life = time = -1` constructor guess. See
+   [phase producer evidence](ENEMY_PHASE_PRODUCER_INVESTIGATION.md) for the
+   complete current boundary and retained inputs. The movement draft, exact word dependency,
    independent operand-read order and remaining member-call boundaries are in
    [movement source frontier](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md).
    Reuse actual owners and the accepted animation sub-dispatcher. Preserve the
@@ -128,7 +141,9 @@ Follow [AGENTS.md](../AGENTS.md) and its preflight. Invoke Python through
 `scripts/repo-python`, Ghidra through `scripts/ghidra.py`, and keep one writable
 session. Run heavy work serial at nice 15 / CPU 3, with bounded Ghidra memory.
 No REA or delegated reconstruction. Preserve English maintained prose, the
-official Japanese title and commit prefix `gpt-6.1-sol:`. Keep claims
-header-only. For cleanup of an unchanged graph, run
-`nice -n 15 taskset -c 3 scripts/repo-python scripts/replay-exact-units.py --existing-objects`;
-source/header/profile changes require fresh affected cold builds.
+official Japanese title and commit prefix `gpt-6.1-sol:`. Keep claims header-only.
+For documentation and cleanup of an unchanged graph, check diffs, links and
+protected hashes; skip Ghidra, MSVC, full CI and replay. For reconstruction
+changes, derive affected providers from actual include closures and manifest
+dependencies, then build and replay only those units. Use explicit `--source`
+filters or individual unit commands. Do not run an unfiltered replay for handoff.

@@ -35,6 +35,14 @@ Ordinary x86 COFF is supported; /GL and bigobj/LTCG are not.
 
 ## Strict comparison
 
+Validation scope follows the user's affected-only requirement. An unchanged
+reconstruction graph needs no replay for documentation, handoff or cleanup;
+protected hashes and appropriate diff/link checks suffice. For reconstruction
+changes, determine affected providers from captured include closures and
+manifest dependencies, then verify only those units. Use individual unit commands
+or explicit `--source` filters; do not run an unfiltered whole-graph replay as a
+default. Reuse valid evidence for unchanged providers.
+
 `compare-coff-function.py --unit NAME` verifies the complete compiler contribution
 and all relocation identities, offsets, types and addends. Independently
 established DIR32/REL32 anchors are replayed, then every byte is compared.

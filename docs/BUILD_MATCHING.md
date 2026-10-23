@@ -39,7 +39,7 @@ scripts/compile-probe.sh .analysis/probes/example.cpp build/probes/example.obj /
 scripts/repo-python scripts/build.py --check
 scripts/repo-python scripts/build.py --unit example
 scripts/repo-python scripts/compare-coff-function.py --unit example --json
-scripts/repo-python scripts/replay-exact-units.py
+scripts/repo-python scripts/replay-exact-units.py --source src/GameRandomStream.cpp
 ```
 
 The first flags are an invocation example, not target-observed truth. `/fp:`,
@@ -48,17 +48,22 @@ recovered per unit. The wrapper uses `/showIncludes` for freshness receipts;
 no source-body selector or compiler patch is injected. Each output is ordinary
 x86 COFF and has a matching `.receipt.json` recording inputs/header hashes.
 
-For handoff or artifact cleanup with an unchanged source graph, reuse existing
-canonical objects without compiling:
+For documentation, handoff or artifact cleanup with an unchanged source graph,
+check protected hashes and documentation only. Run no canonical replay or build.
+For changed reconstruction inputs, determine the actual affected providers from
+captured include closures and manifest dependencies, then use explicit filters:
 
 ```bash
-nice -n 15 scripts/repo-python scripts/replay-exact-units.py --existing-objects
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --existing-objects --source src/GameRandomStream.cpp
 ```
 
+The source above is an example; select the actual affected set for the change.
 This mode retains strict target, receipt, extent and relocation checks. Missing,
 stale or mismatching products fail without a rebuild fallback. It verifies
 previous acceptance; new exact credit still requires a fresh locked-compiler
-build. Both modes support repeated `--source src/Owner.cpp` filters.
+build. Both modes support repeated `--source src/Owner.cpp` filters. For a single
+affected unit, use `build.py --unit NAME` and `compare-coff-function.py --unit NAME`.
+Never run an unfiltered replay merely for handoff, cleanup or reassurance.
 
 A unit uses TH095's schema:
 
