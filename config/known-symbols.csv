@@ -843,3 +843,4 @@ address,name,module,confidence,evidence
 0x0047D580,th20::bullet_animation_script,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
 0x0041F880,std::destroy_at<th20::AnimationCallback>,AnimationCallback,high,CORE/EXACT-123; native full owner/producers/consumers; semantic name inferred
 0x00539C80,th20::DiagnosticAllocator::allocate_object<Pbg::File>,DiagnosticAllocator,high,CORE/EXACT-141; docs/PBG_FILE_ALLOCATION_PROFILE.md; native Archive caller and complete typed factory protocol
+0x0053B410,th20::DiagnosticAllocator::allocate_object<th20::IntrusiveLink<th20::EclRuntime>>,DiagnosticAllocator,high,CORE/EXACT-142; docs/ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md; actual async caller and complete typed node protocol

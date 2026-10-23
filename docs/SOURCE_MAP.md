@@ -47,7 +47,7 @@ undefined dependency. A folded implementation can explain several semantic
 roles without duplicate physical credit. Runtime/library units do not silently
 become authored exact functions.
 
-The configured graph currently has 891 units / 164 objects. Eight additional
+The configured graph currently has 892 units / 164 objects. Eight additional
 mapped whole functions are nonexact; the current handoff and generated progress
 separate these totals from authored coverage. Private diagnostic/support probes
 are not production admission. File::clear and the two Renderer texture creators
@@ -69,6 +69,12 @@ PbgFileAllocation.cpp owns the scalar Pbg::File factory under its verified local
 profile without /EHsc; PbgFile.cpp retains the File/IFile methods and destructor
 EH profile. Archive, Progress, Player SHT and DamageQuery fixtures link this provider. See
 [allocation profile and admission](PBG_FILE_ALLOCATION_PROFILE.md).
+
+EclRuntimeLifetime.cpp owns both Runtime and asynchronous-node scalar factories.
+IntrusiveLink.hpp exposes the same five-pointer protocol through a public class
+declaration; native layout and noexcept construction are preserved. The complete
+ECL fixture uses production node allocation. See
+[node allocation](ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md).
 
 ## Build freshness and local products
 

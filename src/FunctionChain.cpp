@@ -2,7 +2,7 @@
 
 namespace th20 {
 
-template struct IntrusiveLink<FunctionChainNode>;
+template class IntrusiveLink<FunctionChainNode>;
 
 FunctionChainNode::FunctionChainNode() noexcept : priority(0), flags{},
     callback(nullptr), before_insert(nullptr), on_shutdown(nullptr), link(this),

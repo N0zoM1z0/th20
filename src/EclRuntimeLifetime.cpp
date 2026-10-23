@@ -30,9 +30,9 @@ float* EclManager::float_destination(std::int32_t) { return nullptr; }
 }
 
 namespace th20 {
-// Only Runtime's actual scalar factory is instantiated here. Other owner
-// factories have separately observed initialization contracts and remain open.
+// Runtime and its owned asynchronous list node use the shared scalar factory.
 template EclRuntime* DiagnosticAllocator::allocate_object<EclRuntime>(const char*);
+template IntrusiveLink<EclRuntime>* DiagnosticAllocator::allocate_object<IntrusiveLink<EclRuntime>>(const char*);
 
 static_assert(std::is_nothrow_default_constructible_v<ScriptStack>);
 static_assert(std::is_nothrow_default_constructible_v<decltype(EclRuntime::interpolators)>);

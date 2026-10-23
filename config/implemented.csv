@@ -897,3 +897,4 @@ th20::RenderMesh::scalar_deleting_destructor
 "th20::DiagnosticAllocator::allocate_object<RenderMesh,int,int,int,int>"
 th20::DiagnosticAllocator::allocate_object<EnemyMeshOwner>
 th20::DiagnosticAllocator::allocate_object<Pbg::File>
+th20::DiagnosticAllocator::allocate_object<th20::IntrusiveLink<th20::EclRuntime>>

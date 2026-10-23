@@ -1,5 +1,9 @@
 # Whole ECL async creation, lookup, invalidation and call setup
 
+CORE/EXACT-142 closes the node scalar factory through the shared production
+allocation body and removes its specialized fixture. See
+[node allocation](ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md).
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
@@ -66,11 +70,11 @@ identical. The factory's complete 57 bytes now match without an artificial helpe
 clear or altered return ABI. Original annotation spelling remains inferred; no
 executable-wide compiler flags are claimed.
 
-The different node scalar factory at `53B410` still clears through `40C080` before
-construction. That complete 73-byte contribution remains unclosed. Production
-spawn retains its actual declared factory dependency; the semantic test explicitly
-supplies this factory. Allocation failure and process allocator startup are not
-closed by these positive allocation checks.
+At this historical checkpoint, the different node scalar factory at `53B410`
+remained a 73-byte compiler candidate against a native clear-before-construction
+body. CORE142 now accepts its complete native 67 bytes; the production factory
+replaces the specialized test dependency. Allocation failure and process allocator
+startup remain outside the positive allocation checks.
 
 ## Actual activation and shared lookup owner
 

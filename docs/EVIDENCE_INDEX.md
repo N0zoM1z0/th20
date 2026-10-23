@@ -32,6 +32,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Exact ECL registration and record insertion](ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md)
 - [Whole ECL argument and tagged stack protocol](EXACT_ECL_ARGUMENT_STACK_RECONSTRUCTION.md)
 - [Whole ECL async creation, lookup, invalidation and call setup](EXACT_ECL_ASYNC_RECONSTRUCTION.md)
+- [Exact asynchronous ECL node allocation](ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md)
 - [ECL invocation and frame protocol](EXACT_ECL_CALL_RECONSTRUCTION.md)
 - [Whole ECL file loading and derived lifetime](EXACT_ECL_FILE_LOADING_RECONSTRUCTION.md)
 - [Whole ECL resource initialization and destruction](EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md)

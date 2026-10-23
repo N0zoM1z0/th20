@@ -5,7 +5,8 @@
 namespace th20 {
 template<class T> struct IntrusiveList;
 template<class T> class IntrusiveIterator;
-template<class T> struct IntrusiveLink {
+template<class T> class IntrusiveLink {
+public:
     T* node;
     IntrusiveLink* next;
     IntrusiveLink* previous;

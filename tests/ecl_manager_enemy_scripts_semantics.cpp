@@ -10,6 +10,7 @@
 #include <cstring>
 #include <memory_resource>
 #include <limits>
+#include <type_traits>
 #include <vector>
 
 namespace {
@@ -112,9 +113,9 @@ DiagnosticAllocator::DiagnosticAllocator() : state_word_(0),resource_() {}
 DiagnosticAllocator allocator;
 DiagnosticAllocator* process_allocator=&allocator;
 GameRandom script_random{0};
-// The link scalar factory remains a fixture, along
-// with unused interpolation/frame routes and Enemy's outer retirement/movement.
-// Actual Runtime allocation, both lifetimes, VM/call setup, loader activation,
+// Unused interpolation/frame routes and Enemy's outer retirement/movement remain
+// explicit fixture boundaries. Actual Runtime/node allocation, both lifetimes,
+// VM/call setup, loader activation,
 // Manager spawn/find/invalidation/tick and the State script gate all execute.
 Enemy::~Enemy()=default;
 std::int32_t Enemy::execute_opcode() {events.push_back(100+current_runtime->async_id);return 0;}
@@ -126,10 +127,6 @@ int EnemyState::update_movements() {
     assert(this==expected_state);++movement_calls;events.push_back(movement_calls==1?10:20);
     if(movement_calls==1){default_timer_clock.value=movement_clock;return movement_result;}
     return callback_result;
-}
-template<> IntrusiveLink<EclRuntime>* DiagnosticAllocator::allocate_object<IntrusiveLink<EclRuntime>>(const char* label) {
-    assert(std::strstr(label,"sptcmd.cpp:1014 LinkInf<SptBaseInf*>") != nullptr);
-    events.push_back(200);return new IntrusiveLink<EclRuntime>;
 }
 void EclScriptInterpolation::set_tangent_start(const float&) {std::abort();}
 void EclScriptInterpolation::set_tangent_end(const float&) {std::abort();}
@@ -144,6 +141,12 @@ struct Manager : th20::EclManager {
 }
 int main() {
     using namespace th20;
+    static_assert(std::is_nothrow_default_constructible_v<IntrusiveLink<EclRuntime>>);
+    {
+        auto* link=process_allocator->allocate_object<IntrusiveLink<EclRuntime>>("owned asynchronous node");
+        assert(link && !link->node && !link->next && !link->previous && !link->owner && !link->iterator);
+        process_allocator->release_object(link);
+    }
     auto* old_resource=std::pmr::set_default_resource(&resource);
     script_file.header[0] = 0x54504353;
     script_file.header[1] = 1;
@@ -199,7 +202,7 @@ int main() {
         programs[4]={instruction(1000),instruction(0,100000)};
         programs[0]={spawn_instruction("task4",0),instruction(1000),instruction(0,100000)};
         events.clear();assert(manager.tick(1)==0);
-        assert((events==std::vector<int>{200,100,101,102}));assert((surviving(manager)==std::vector<int>{-1,1,2}));
+        assert((events==std::vector<int>{100,101,102}));assert((surviving(manager)==std::vector<int>{-1,1,2}));
         assert(manager.runtimes.next->node->time==0);events.clear();assert(manager.tick(1)==0);
         assert((events==std::vector<int>{99}));assert(manager.runtimes.next->node->time==1);
     }
@@ -229,7 +232,7 @@ int main() {
             assert(manager.main.time==37 && manager.main.position.offset==0 && manager.main.position.subroutine==0);
             assert(manager.find_runtime(id)==(id==-1?&manager.runtimes:link));
             assert(manager.find_runtime(1)==old_head && manager.find_runtime(2)==old_head->next);
-            assert(manager.find_runtime(99)==nullptr && events==std::vector<int>{200});
+            assert(manager.find_runtime(99)==nullptr && events.empty());
         }
         assert(resource.live.empty());
     }
@@ -243,7 +246,7 @@ int main() {
         assert(manager.main.position.offset==-1 && manager.main.position.subroutine==-1);
         assert(link->node->position.offset==0 && link->node->position.subroutine==-1);
         assert(link->node->stack.pointer==20 && manager.find_runtime(27)==link);
-        assert(events==std::vector<int>{200});
+        assert(events.empty());
     }
     assert(resource.live.empty());
     // Invalidation is allocation-free and never frees/detaches a node. The
@@ -275,7 +278,7 @@ int main() {
         Manager manager;ready(manager);
         programs[0]={spawn_instruction("task4",1,27,16),instruction(1000),instruction(0,100000)};
         programs[4]={instruction(1000),instruction(0,100000)};
-        events.clear();assert(manager.tick(1)==0 && events==std::vector<int>({200,100}));
+        events.clear();assert(manager.tick(1)==0 && events==std::vector<int>{100});
         auto* child=manager.runtimes.next->node;assert(child->async_id==27 && child->position.subroutine==4 && child->time==0);
         assert(child->stack.words[5]==std::bit_cast<unsigned>(1.25f) && child->stack.words[8]==19);
         events.clear();assert(manager.tick(1)==0 && events==std::vector<int>{127} && child->time==1);
