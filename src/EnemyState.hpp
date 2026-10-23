@@ -116,6 +116,8 @@ struct EnemyState {
     float float_argument_value(std::int32_t index, float value);
     std::int32_t integer_argument(std::int32_t index);
     float float_argument(std::int32_t index);
+    std::int32_t* integer_argument_destination(std::int32_t index);
+    float* float_argument_destination(std::int32_t index);
 };
 
 static_assert(sizeof(EnemyPhase) == 136);

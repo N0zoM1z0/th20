@@ -39,6 +39,8 @@ struct Enemy : EclManager {
     float* float_destination(std::int32_t index) override;
     std::int32_t integer_argument(std::int32_t index);
     float float_argument(std::int32_t index);
+    std::int32_t* integer_argument_destination(std::int32_t index);
+    float* float_argument_destination(std::int32_t index);
     Identifier32 identifier_value();
     std::int32_t integer_argument_value(std::int32_t index, std::int32_t value);
     float float_argument_value(std::int32_t index, float value);

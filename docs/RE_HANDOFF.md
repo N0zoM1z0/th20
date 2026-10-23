@@ -11,71 +11,63 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Its embedded title/replay label is 1.00c in the same executable. The Steam-original
 backup is provenance evidence. See [target provenance](TARGET_PROVENANCE.md).
 
-The accepted graph contains 958 physical strict units, 164 canonical objects and
-175,008 disjoint comparison bytes. All 968 mapped functions have source; ten
+The accepted graph contains 963 physical strict units, 164 canonical objects and
+175,190 disjoint comparison bytes. All 973 mapped functions have source; ten
 whole mapped functions remain nonexact. Authored exact coverage is separately
 198 functions / 52,051 bytes, with 211 confirmed authored origins. The pinned
 reference has 6,945 terminal implementation reviews and 113 reconciled parser-gap
 files. These counts establish neither whole-game 95% byte exactness nor a
 playable reconstruction; whole-program compilation and linkage remain open.
 
-CORE156 maintains real Feedback, reward and indexed-script state protocols.
-Eleven strict units add 666 comparison bytes and 493 authored code bytes. The complete
-Feedback update remains 114/native115 and nonexact, with one unexplained post-call
-NOP; it receives source/origin credit separately. The corrected Timer-base owner
-retains its complete 133-byte constructor. The actual-owner fixture passes 38,400
-Feedback, 8,064 reward, 84 selection and 10,240 defeat combinations, plus eight
-remaining external-call failures and five topology cases. The guarded Player
-storage/pool fixture also passes. See
-[state protocols and emission boundary](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md) and
-[whole defeat acceptance](ENEMY_DEFEAT_RECONSTRUCTION.md).
-The production Enemy opcode dispatcher remains undefined. Its private 96-value /
-67-head draft and last CORE153 19,350-case result are preserved, without new credit.
+CORE158 adds five complete strict destination/time dependencies, totaling 182
+comparison bytes, without new authored credit. The private whole-dispatcher
+draft now covers 107 effective values / 78 primary heads and passes 26,781
+O2/UBSan scenarios. Its eleven new rank/control paths use actual Runtime
+destination decoding, loader lookup and time subtraction. Production dispatch
+remains undefined; no fragment receives source acceptance or exact credit.
+See [rank/control evidence](ENEMY_RANK_CONTROL_RECONSTRUCTION.md).
+
+The accepted whole Enemy defeat and real Feedback/reward/indexed-script protocols
+remain intact. Feedback is still 114/native115 with one unexplained post-call NOP;
+its full 133-byte constructor stays exact. Reuse the passing CORE156 real-owner
+and guarded storage fixtures for unchanged bodies. See
+[state protocols](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md) and
+[whole defeat](ENEMY_DEFEAT_RECONSTRUCTION.md).
 
 ## Current verification and cleanup
 
-The last reconstruction batch changed three headers and three implementations.
-Captured includes selected 44 providers / 317 existing units; all fresh serial
-builds and strict replays pass.
-The other 120 providers reuse valid evidence. Sixteen generated literal-name
-changes preserve complete data and canonical roles. All 76 EH code/data sections
-for 38 affected parents remain identical, including full relocation and function
-label roles; their prior independent bindings are reused. Eleven new units pass
-complete canonical replay. No full CI or unfiltered whole-graph replay runs.
+Three headers and two implementations changed. Captured includes selected 29
+providers / 162 existing units; all fresh serial builds and strict replays pass.
+The other 135 providers reuse valid evidence. Four generated literal-name
+changes preserve complete data and canonical roles. All 30 EH code/data sections
+for fifteen affected parents remain identical, including full relocation and
+function-label roles; their prior independent bindings are reused. Five new units
+pass complete canonical replay. No full CI or unfiltered whole-graph replay runs.
 
-Current private proofs are `core156-cold-proof.json`,
-`core156-affected-results.json.gz`, `core156-new-exact-results.json.gz`,
-`core156-independent-bindings.json`, `core156-eh-evidence-reuse.json`,
-`core156-feedback-emission.json`, `core156-graph-audit.json`,
-`core156-defeat-semantics-v1.log`, `core156-storage-semantics.log` and
-`core156-gates.json`.
+Current private proofs are `core158-cold-proof.json`,
+`core158-affected-results.json.gz`, `core158-new-exact-results.json.gz`,
+`core158-independent-bindings.json`, `core158-eh-evidence-reuse.json`,
+`core158-graph-audit.json`, `core158-dispatch-host-v3.log` and
+`core158-gates.json`. Earlier semantic/emission proofs remain preserved.
 These filenames and other private filenames below are relative to `.analysis/`.
 Reuse passing evidence for unchanged inputs. Documentation and cleanup add
 **zero compiler builds and zero canonical replays**; only protected hashes and
 lightweight documentation/tracking checks run during that phase.
 
-The current handoff maintenance changes documentation only. Its affected scope
-is **0 providers / 0 units**, with no builds, semantic tests, Ghidra, full CI or
-canonical replay. `handoff157-retirement-plan.json` records lossless archival of
-101 superseded successful replay logs and source-hash snapshots, saving
-1,834,302 bytes. `handoff157-cleanup.json` records saved bytes and protected-hash
-verification; documentation checks are in `handoff157-gates.json`.
-Read the archived historical logs with `gzip.open`; current proofs, failed
-trials and active investigation inputs retain their existing paths.
-
-`core156-retirement-plan.json` records 215 retired files / 3,817,017 bytes:
-superseded canonical/probe products and copied private headers/source. Authentic
-receipts and SHA-bound texts remain in the archives below. `core156-cleanup.json`
-confirms all protected hashes remain unchanged. The maintained source/current
-objects preserve the active Feedback emission question; replaced trials are
-archived instead of kept as duplicate build trees.
+`core158-retirement-plan.json` records 59 retired files / 3,221,406 bytes:
+29 replaced object/receipt pairs and the successful regenerable host binary.
+Authentic receipts and SHA-bound texts are archived before retirement.
+`core158-cleanup.json` confirms protected hashes remain unchanged, with no extra
+builds or replays. The current products preserve all active emission questions.
 Native evidence, original inputs, installed tools, reference source, Ghidra and
 supplied game files remain protected.
 
 Historical archive lookup remains in `handoff146-retirement-plan.json`,
 `handoff149-retirement-plan.json`, `handoff152-retirement-plan.json` and
-`handoff154-retirement-plan.json`. The last identifies the lossless
-`core154-retired-probe-inputs.json.gz` archive.
+`handoff154-retirement-plan.json`, `core156-retirement-plan.json` and
+`handoff157-retirement-plan.json`. The last records lossless archival of 101
+historical logs/hash snapshots; handoff154 identifies
+`core154-retired-probe-inputs.json.gz`.
 Use `gzip.open` for their losslessly archived reports instead of old plain paths.
 
 ## Protected local products
@@ -88,22 +80,23 @@ Use `gzip.open` for their losslessly archived reports instead of old plain paths
 | `build/core145-canonical/` | 6 | Every sibling `.receipt.json` |
 | `build/core149-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core151-canonical/` | 1 | Every sibling `.receipt.json` |
-| `build/core152-canonical/` | 3 | Every sibling `.receipt.json` |
 | `build/core154-canonical/` | 7 | Every sibling `.receipt.json` |
 | `build/core154-v2/` | 1 | Every sibling `.receipt.json` |
-| `build/core156-canonical/` | 44 | Every sibling `.receipt.json` |
+| `build/core156-canonical/` | 18 | Every sibling `.receipt.json` |
+| `build/core158-canonical/` | 29 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. The current 279-path
-source freeze is `core156-final-frozen-source.json`. Protected hashes, including
-284 native evidence files and twenty private investigation products, are in
-`core156-retirement-plan.json`. Retain the nine root object/receipt pairs for
+source freeze is `core158-final-frozen-source.json`. Protected hashes, including
+294 native evidence/active input files and twenty private investigation products,
+are in `core158-retirement-plan.json`. Retain the nine root object/receipt pairs for
 core103-QueryProtocol-v5 and the core109..core113 sound probes, plus
 `build/core144-probes/Alignment.obj` and its receipt. Their unfinished
 [damage-query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md),
 [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Renderer-owner](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md) inquiries remain open.
 
-Preserve `core156-pre-state-inputs.json.gz`,
+Preserve `core158-pre-rank-inputs.json.gz`,
+`core158-pre-registration-ledgers.json.gz`, `core156-pre-state-inputs.json.gz`,
 `core156-pre-registration-ledgers.json.gz`,
 `core156-probe-v1-original-inputs.json.gz`,
 `core156-probe-v2-original-inputs.json.gz`,
@@ -114,10 +107,11 @@ Preserve `core156-pre-state-inputs.json.gz`,
 `core154-pre-publication-inputs.json.gz`, `core154-v4-original-inputs.json.gz`,
 `core154-retired-probe-inputs.json.gz` and all earlier original-input/evidence
 archives. They retain authentic receipts and SHA-bound source versions; receipts
-must never be rewritten. The earlier private whole-dispatcher candidate and
-fixture remain `core152-enemy-dispatch-candidate.cpp` and
-`core153-dispatch-host.cpp`. Preserve unfinished private owner/phase/protocol
-sources and their native exports; reuse rejected-trial evidence.
+must never be rewritten. The current private whole-dispatcher inputs are
+`core158-enemy-dispatch-candidate.cpp`, `core158-dispatch-host.cpp`,
+`core158-rank-host-cases.inc` and `core158-dispatch-host-recipe.json`.
+Earlier candidates/fixtures and unfinished owner/phase/protocol inputs remain
+protected; reuse their evidence rather than repeating rejected trials.
 
 ## Next work
 
@@ -127,7 +121,9 @@ sources and their native exports; reuse rejected-trial evidence.
    [state](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md),
    [Card](ENEMY_CARD_STATE_RECONSTRUCTION.md),
    [clear](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md) and
-   [movement](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) evidence.
+   [movement](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) evidence. The new
+   [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md) frontier identifies the
+   seventeen remaining nondefault state paths and the handle-preservation boundary.
 2. Resolve the genuine Renderer owner and +6000DFC..+6000DFF before declaring
    members. Allocation is 0x7D40E94 bytes; negative searches do not prove padding.
    This blocks whole File::clear, texture creators and the 922-byte AnimationFile

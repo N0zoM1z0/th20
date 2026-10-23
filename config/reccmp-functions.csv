@@ -967,3 +967,8 @@ th20::EclLoader::select_index,0x00540230,function
 th20::EclManager::select_subroutine_index,0x005401D0,function
 th20::Timer::operator+=,0x004297A0,function
 th20::PlayerFeedback::record_hit,0x004FB3A0,function
+th20::EnemyState::integer_argument_destination,0x004AA9E0,function
+th20::EnemyState::float_argument_destination,0x004AA980,function
+th20::Enemy::integer_argument_destination,0x004AAA10,function
+th20::Enemy::float_argument_destination,0x004AA9B0,function
+th20::EclManager::subtract_time,0x0049CC30,function

@@ -134,6 +134,7 @@ public:
     void set_subroutine_index(std::int32_t value);
     void set_offset(std::int32_t value);
     void set_time(float value);
+    void subtract_time(float value);
     EclLoader* loader_value() const;
     EclInstruction* current_instruction();
     int spawn(std::int32_t async_id, std::int32_t argument_skip);

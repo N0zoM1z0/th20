@@ -9,7 +9,7 @@ provisional until each boundary is reconciled with exact target control flow.
 | Origin/boundary review pending | 6,656 |
 | Confirmed authored functions | 211 |
 | Classified exclusions | 61 |
-| Source-present mappings, all origins | 968 |
+| Source-present mappings, all origins | 973 |
 | Source-present authored mappings | 205 |
 | Canonical exact functions | 198 |
 | Canonical exact authored bytes | 52,051 |

@@ -30,6 +30,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md) — includes the current bounded dependency audit.
 - [Enemy movement opcode source frontier and raw random words](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) — private whole-root source work, retained interpolation state and the complete word sampler.
 - [Enemy state opcode source frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) — phase replacement, repeated operand reads, live receivers, conditional counter updates and five complete dependencies.
+- [Enemy rank destinations and script-time control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md) — actual instruction-destination forwarding, selected Runtime time, eleven further private paths and five whole strict dependencies.
 - [Enemy drop protocol and dispatcher callers](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md) — complete Item-backed drop/scatter source, seven strict dependencies, nine private caller paths and the remaining scatter emission difference.
 - [Enemy health, boss slots and state parameters](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md) — actual checked identifier publication, exception write order, eighteen private state paths and three complete dependencies.
 - [Enemy Card caller protocol and flag ownership](ENEMY_CARD_STATE_RECONSTRUCTION.md) — decoded names, live opcode/difficulty reads, cached actual Card receivers, ten private paths and the complete source-absent Card producers.

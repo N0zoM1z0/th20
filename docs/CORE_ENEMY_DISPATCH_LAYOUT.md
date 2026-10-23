@@ -80,7 +80,7 @@ and timeout producers, implicit record defaults and four STL access/growth
 support units. See [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
 These dependencies add no partial dispatcher credit; complete state-family
 control flow and the remaining real receiver owners are still open.
-The current private whole-root draft contains 90 values / 61 heads after the
+The CORE151 private whole-root draft contained 90 values / 61 heads after the
 phase/counter, drop, health/boss/parameter and ten Card paths. The [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md)
 retains phase/counter evidence; the [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md)
 records the actual Item-backed producers, caller order and nonexact scatter boundary.
@@ -88,6 +88,9 @@ The [health and boss state evidence](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md)
 records checked publication, real storage and exception write order.
 The [Card caller protocol](ENEMY_CARD_STATE_RECONSTRUCTION.md) records decoding,
 live metadata, cached receivers and the genuine unimplemented Card producers.
+Later whole-root source work and its remaining state paths are recorded in
+[rank destinations and script-time control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md);
+use the current handoff for live acceptance.
 
 ## Comparison extent still needs compiler ownership
 

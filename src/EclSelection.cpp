@@ -48,6 +48,7 @@ void EclManager::select_subroutine(const char* name) {
 }
 void EclManager::set_offset(std::int32_t value) { current_runtime->position.offset = value; }
 void EclManager::set_time(float value) { current_runtime->time = value; }
+void EclManager::subtract_time(float value) { current_runtime->time -= value; }
 
 void EclManager::set_subroutine_index(std::int32_t value) {
     current_runtime->position.subroutine = value;
