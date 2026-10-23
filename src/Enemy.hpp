@@ -28,6 +28,7 @@ struct Enemy : EclManager {
     void set_damage_marker(std::uint32_t value);
     ~Enemy() override;
     Enemy* parent();
+    bool bomb_drop_disabled();
     Vector3& position_ref();
     std::int32_t execute_opcode() override;
     std::int32_t read_integer(std::int32_t index) override;

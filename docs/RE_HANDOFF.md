@@ -11,60 +11,59 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Its embedded title/replay label is 1.00c in the same executable. The Steam-original
 backup is provenance evidence. See [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 909 physical strict units, 164 canonical objects and 169,166
-disjoint comparison bytes. All 917 mapped functions have source; eight whole
-mapped functions remain nonexact. Authored exact coverage is separately 183
-functions / 47,526 bytes, with 192 confirmed authored origins. The pinned
+The graph contains 916 physical strict units, 164 canonical objects and 169,628
+disjoint comparison bytes. All 925 mapped functions have source; nine whole
+mapped functions remain nonexact. Authored exact coverage is separately 184
+functions / 47,765 bytes, with 194 confirmed authored origins. The pinned
 reference has 6,945 terminal implementation reviews and 113 reconciled parser-gap
 files. These counts establish neither whole-game 95% byte exactness nor a
 playable reconstruction; whole-program compilation and linkage remain open.
 
-CORE148 extends the same private whole-root draft to 53 values / 28 heads,
-including phase replacement, timeout and conditional record counters. It passes
-9,830 bounded O2/UBSan scenarios with actual phase/Session/record owners and
-explicit ECL/resource boundaries. The production dispatcher remains undefined;
-no switch fragment receives exact credit. See [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md).
-Five complete dependencies add 314 strict bytes. Their origins remain pending;
-the previously accepted [phase producers](ENEMY_PHASE_PRODUCER_INVESTIGATION.md)
-and [movement semantics](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) are preserved.
+CORE149 extends the same private whole-root draft to 62 values / 37 heads with
+nine drop paths. It passes 11,921 bounded O2/UBSan scenarios; the production
+dispatcher remains undefined and receives no partial exact credit. The real
+drop/scatter/Item pool chain separately passes 543 model/boundary scenarios.
+Seven complete dependencies add 462 strict bytes, including the authored
+239-byte drop producer. The full scatter source remains 628/native630 and
+nonexact. See [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md),
+[state callers](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) and
+[phase producers](ENEMY_PHASE_PRODUCER_INVESTIGATION.md).
 
 ## Current verification and cleanup
 
-Only 18 affected providers / 169 previous units are cold-built and strictly
-replayed, followed by the five new units. The other 146 providers reuse existing
-evidence. The focused public Session test and expanded private whole-root fixture
+Only 19 affected providers / 83 previous units are cold-built and strictly
+replayed, followed by the seven new units. The other 145 providers reuse existing
+evidence. The focused public Item test and expanded private whole-root fixture
 pass. There is no unfiltered replay or full CI run.
-Current proofs are `.analysis/core148-cold-proof.json`,
-`core148-affected-results.json.gz`, `core148-new-exact-results.json.gz` and
-`core148-graph-audit.json`; cleanup and final gates are `core148-cleanup.json`
-and `core148-gates.json`. Cleanup only verifies protected hashes.
+Current proofs are `.analysis/core149-cold-proof.json`,
+`core149-affected-results.json.gz`, `core149-new-exact-results.json.gz` and
+`core149-graph-audit.json`; cleanup and final gates are `core149-cleanup.json`
+and `core149-gates.json`. Cleanup only verifies protected hashes.
+The 51 superseded product files total 2,365,055 bytes; their authentic probe and
+fixture inputs/receipts are preserved in the 411,097-byte retirement archive.
 The earlier handoff's archived successful reports remain mapped by
 `handoff146-retirement-plan.json`; use `gzip.open` for their verified `.gz` copies.
 Native evidence, original inputs, installed tools, reference, Ghidra and supplied
 game files remain protected.
 
-The subsequent documentation-only handoff changes no reconstruction inputs:
-zero affected providers, builds or replay units. Protected hashes pass for all
-328 canonical products, 22 private products and 279 source paths. Two historical
-generated reports are archived losslessly, reducing their size by 787,780 bytes.
-The path/hash lookup is `handoff149-retirement-plan.json`; the cleanup summary is
-`handoff149-cleanup.json`. Read `handoff144-protected-inventory.json.gz` and
-`core131-admission-results.json.gz` with `gzip.open` instead of their old paths.
+The earlier documentation-only archive lookup remains
+`handoff149-retirement-plan.json`. Read `handoff144-protected-inventory.json.gz`
+and `core131-admission-results.json.gz` with `gzip.open` instead of their old paths.
 
 ## Protected local products
 
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
-| `build/core141-canonical/` | 86 | Every sibling `.receipt.json` |
+| `build/core141-canonical/` | 85 | Every sibling `.receipt.json` |
 | `build/core142-canonical/` | 16 | Every sibling `.receipt.json` |
 | `build/core143-canonical/` | 12 | Every sibling `.receipt.json` |
 | `build/core145-canonical/` | 17 | Every sibling `.receipt.json` |
-| `build/core147-canonical/` | 15 | Every sibling `.receipt.json` |
-| `build/core148-canonical/` | 18 | Every sibling `.receipt.json` |
+| `build/core148-canonical/` | 15 | Every sibling `.receipt.json` |
+| `build/core149-canonical/` | 19 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. The current 279-path
-source freeze is `.analysis/core148-final-frozen-source.json`. Current acceptance,
-affected replay and graph contracts are the CORE148 records above. Earlier
+source freeze is `.analysis/core149-final-frozen-source.json`. Current acceptance,
+affected replay and graph contracts are the CORE149 records above. Earlier
 independent identities and original acceptance
 remain preserved in their focused evidence and private archives.
 Private filenames in this section are relative to `.analysis/`.
@@ -75,17 +74,17 @@ closures support unresolved [damage-query](DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.
 and [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) work, not current canonical credit.
 Hashes are in `core141-retained-private-products.json`. Also retain the current
 `build/core144-probes/Alignment.obj` and receipt for the unfinished owner inquiry.
-The superseded CORE148 helper probes and completed host binary are retired.
-Their original receipts and SHA-bound inputs are in `core148-retired-inputs.json.gz`;
+The superseded CORE149 helper probes and completed host binary are retired.
+Their original receipts and SHA-bound inputs are in `core149-retired-inputs.json.gz`;
 native exports, rejected source and the active draft/fixture remain intact.
-Preserve `core148-pre-session-inputs.json.gz`, both CORE147 original-input archives,
+Preserve `core149-pre-pattern-inputs.json.gz`, all CORE148 original-input archives,
+both CORE147 original-input archives,
 all CORE145 original-input archives and all earlier input/evidence archives.
 Receipts retain their authentic original inputs and must never be rewritten.
 
-Also preserve `build/core149-probes/Drops.obj` and its original receipt, the
-private `.analysis/core149-pattern/` sources and the CORE149 native exports.
-This unfinished drop-protocol investigation has no new accepted units or
-production changes. Its protected hashes are in `handoff149-retirement-plan.json`.
+Preserve private `.analysis/core149-pattern/` sources and the CORE149 native
+exports. The unfinished scatter emission has its full production source and
+canonical ItemSpawn object; do not repeat the unchanged rejected trials.
 
 ## Next work and existing private leads
 
@@ -113,9 +112,10 @@ production changes. Its protected hashes are in `handoff149-retirement-plan.json
    contribution ownership remains unresolved. Continue the same whole-root
    source construction beyond the private 400..448 movement draft. The 500..575
    owner/state family has a private 75-value / 71-head catalog, complete phase
-   producers and four caller paths in the integrated private draft. Continue its
+   producers and phase, counter and drop paths in the integrated private draft. Continue its
    remaining genuine receiver ownership and state paths; reuse the closed record
-   defaults, replacement gates and counter behavior. See
+   defaults, replacement gates, counters and complete drop/scatter protocols. See
+   [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md),
    [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) and
    [phase protocol](ENEMY_PHASE_PRODUCER_INVESTIGATION.md). The movement draft, exact word dependency,
    independent operand-read order and remaining member-call boundaries are in
@@ -124,7 +124,7 @@ production changes. Its protected hashes are in `handoff149-retirement-plan.json
    native default return and full tables/EH; private exercise factoring and its
    out-of-domain exception are not production replacements.
 
-The eight source-present whole nonexact roots remain:
+The nine source-present whole nonexact roots remain:
 
 | Root | Entry | Current boundary / evidence |
 | --- | --- | --- |
@@ -132,6 +132,7 @@ The eight source-present whole nonexact roots remain:
 | ProgressMetadata::calculate_integrity | 0x463F20 | Whole 134-byte native root; [Progress storage](EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md) |
 | create_bomb_controller | 0x478300 | Whole 123-byte native factory; [Bomb owner](BOMB_OWNER_RECONSTRUCTION.md) |
 | EnemyState::update_mesh | 0x4A4190 | 1548/native1649; unused local conversion is not a source fix. [Mesh lifetime](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) |
+| EnemyPattern::emit_items | 0x4A5350 | 628/native630; extra native register copy remains unexplained. [Drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md) |
 | create_hit_controller | 0x4C20D0 | 82/native92; unobserved resets remain unresolved. [Hit lifecycle](HIT_CONTROLLER_LIFECYCLE_RECONSTRUCTION.md) |
 | ProgressSaveManager construction | 0x50E5D0 | 198/native199; [lifetime/profile](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md) |
 | ProgressSaveManager::commit | 0x50F660 | 68/native70; same lifetime/profile evidence |

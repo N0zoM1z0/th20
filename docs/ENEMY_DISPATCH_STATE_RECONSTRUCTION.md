@@ -2,12 +2,14 @@
 
 ## CORE/EXACT-148 scope
 
-The private source for the whole EnemyState dispatcher at 0x48C010 now covers
+The CORE148 private source for the whole EnemyState dispatcher at 0x48C010 covers
 53 effective values / 28 primary heads: the unchanged 400..448 movement body
 plus 514, 521, 563 and 564. This is source work toward the complete root, not a
 production implementation or partial exact credit. The exercise's explicit
 instruction argument and out-of-domain exception are host boundaries; native
 prologue, default, remaining cases, full tables/EH and compiler extent remain open.
+The subsequent [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md) extends
+the same draft; this page retains the dated phase/counter evidence.
 
 Five complete dependencies are separately accepted from natural maintained
 Session.cpp and PlayerRecord.cpp, using their existing per-source profiles:

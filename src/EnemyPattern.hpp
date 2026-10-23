@@ -8,6 +8,8 @@
 
 namespace th20 {
 
+struct Vector3;
+
 // Fifteen item kinds are emitted, but each native count array has sixteen slots.
 struct EnemyPattern {
     std::int32_t player, base_kind, bomb_kind;
@@ -19,6 +21,13 @@ struct EnemyPattern {
     EnemyPattern();
     void reset();
     void set_base_kind(std::int32_t value);
+    void set_bomb_kind(std::int32_t value);
+    void set_count(std::uint32_t kind, std::uint32_t value);
+    void set_extra_count(std::uint32_t kind, std::uint32_t value);
+    void set_duration(std::uint32_t value);
+    void set_radii(float x, float y);
+    void drop(const Vector3& origin, bool bomb_mark);
+    void emit_items(const Vector3& origin);
     std::int32_t base_kind_value() const;
     void clear_counts();
 };

@@ -5,6 +5,8 @@
 #include "WeaponStoneInfo.hpp"
 #include "GameRandom.hpp"
 #include "MotionMath.hpp"
+#include "EnemyPattern.hpp"
+#include "ScalarMath.hpp"
 #include <type_traits>
 namespace th20 {
 extern GameRandom script_random;
@@ -81,5 +83,49 @@ Item* ItemInf::spawn(std::int32_t type,const Vector3& position,std::uint32_t col
         }
         return item;
     }
+}
+
+void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
+    if (bomb_kind && !bomb_mark) {
+        auto* owner = item_controller(player);
+        const auto kind = bomb_kind;
+        owner->spawn(kind, origin, 0xffffffffu,
+            -3.1415927410125732f / 2.0f, 2.2f, 0, 0, -1);
+    } else if (base_kind) {
+        auto* owner = item_controller(player);
+        const auto kind = base_kind;
+        owner->spawn(kind, origin, 0xffffffffu,
+            -3.1415927410125732f / 2.0f, 2.2f, 0, 0, -1);
+    }
+    emit_items(origin);
+    base_kind = 0;
+}
+
+void EnemyPattern::emit_items(const Vector3& origin) {
+    Vector3 position;
+    float angle = script_random.radians();
+    for (std::int32_t i = 0; i < 15; ++i) {
+        auto count = counts[i];
+        if (duration && timer.less_than(static_cast<std::int32_t>(duration))) {
+            if (static_cast<std::int32_t>(extra_counts[i]) > 0) {
+                // The native IMUL retains its low word before signed division.
+                count += extra_counts[i] - static_cast<std::int32_t>(
+                    static_cast<std::uint32_t>(static_cast<std::int32_t>(timer))
+                        * extra_counts[i]) / static_cast<std::int32_t>(duration);
+            }
+        }
+        for (std::int32_t j = 0; j < static_cast<std::int32_t>(count); ++j) {
+            ellipse_polar(position, angle, radius_x, radius_y);
+            position *= script_random.unit() * 0.5f + 0.5f;
+            position.z = 0;
+            position += origin;
+            auto* owner = item_controller(player);
+            owner->spawn(i + 1, position, 0xffffffffu,
+                -3.1415927410125732f / 2.0f, 2.2f, 0, 0, -1);
+            angle = normalize_angle(3.1415927410125732f / 2.0f + angle
+                + script_random.radians() / 4.0f);
+        }
+    }
+    counts.fill(0);
 }
 }

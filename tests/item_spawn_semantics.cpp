@@ -8,11 +8,15 @@
 #include "Player.hpp"
 #include "DiagnosticObjectFactories.hpp"
 #include "FunctionChainController.hpp"
+#include "EnemyPattern.hpp"
 #include <bit>
+#include <algorithm>
 #include <cassert>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
+#include <functional>
 #include <limits>
 #include <memory>
 #include <vector>
@@ -24,6 +28,7 @@ th20::ItemInf* tested_owner;
 th20::BulletController* switch_controller;
 bool switch_file, switch_context;
 unsigned calls, releases;
+std::function<void(th20::Item&)> effect_hook;
 }
 namespace th20 {
 // Fixture startup and explicit unresolved gameplay interfaces. The complete
@@ -64,6 +69,7 @@ void AnimationFile::bind_animation(Animation* animation,std::int32_t script,Anim
 std::int32_t Item::spawn_effect() {
     events.push_back({nullptr,nullptr,0,this});
     if(switch_context)tested_owner->select_context(1);
+    if(effect_hook)effect_hook(*this);
     return 0;
 }
 // The original thirty-slot virtual surface is never invoked by this protocol.
@@ -106,6 +112,7 @@ constexpr int scripts[16][2]={{-1,-1},{115,137},{116,138},{117,139},{118,140},
     {119,141},{120,142},{121,143},{122,144},{123,-1},{124,-1},{125,-1},{126,-1},{127,-1},{128,-1},{-1,-1}};
 void reset(ItemInf& owner) {
     events.clear();calls=0;switch_file=false;switch_context=false;
+    effect_hook={};
     // No ANM resources are installed by the capture-only dependency. No live
     // iterator may survive this original whole-pool byte initialization.
     for(auto& item:owner.pool) {
@@ -238,6 +245,150 @@ void bonuses(ItemInf& owner,Weapon& weapon) {
     script_random.seed(1);assert(spawn(owner,1,p) && owner.bonus_counter==std::numeric_limits<int>::min());
     assert(script_random.last==1 && owner.spawn_counter==1);
 }
+struct PatternRandom {
+    std::uint32_t state;
+    explicit PatternRandom(std::uint32_t seed):state(seed%2147483647u) {
+        if(!state)state=1;
+    }
+    std::uint32_t next() {
+        state=static_cast<std::uint32_t>(std::uint64_t(state)*48271u%2147483647u);
+        return state;
+    }
+    float radians() {return (float(next())/(float(2147483647u)/2.f-1.f)-1.f)*3.1415927410125732f;}
+    float unit() {return float(next())/(float(2147483647u)-1.f);}
+};
+std::int64_t signed_bits(std::uint32_t word) {
+    return word<0x80000000u?word:std::int64_t(word)-0x100000000LL;
+}
+struct PatternSpawn {int type;float x,y;};
+std::vector<PatternSpawn> model_pattern(const EnemyPattern& pattern,const Vector3& origin,
+                                      bool bomb_mark,PatternRandom& random) {
+    constexpr float pi=3.1415927410125732f;
+    std::vector<PatternSpawn> result;
+    const int first=pattern.bomb_kind&&!bomb_mark?pattern.bomb_kind:pattern.base_kind;
+    if(first)result.push_back({first,origin.x,origin.y});
+    float angle=random.radians();
+    for(unsigned i=0;i<15;++i) {
+        std::uint32_t bits=pattern.counts[i];
+        const auto extra=signed_bits(pattern.extra_counts[i]);
+        const auto duration=signed_bits(pattern.duration);
+        if(duration && pattern.timer.current<duration && extra>0) {
+            const auto low=static_cast<std::uint32_t>(std::uint64_t(
+                static_cast<std::uint32_t>(pattern.timer.current))*pattern.extra_counts[i]);
+            const auto product=signed_bits(low);
+            assert(!(product==-2147483648LL && duration==-1));
+            bits=static_cast<std::uint32_t>(std::uint64_t(bits)+pattern.extra_counts[i]-product/duration);
+        }
+        const auto count=signed_bits(bits);
+        assert(count<=64);
+        for(std::int64_t n=0;n<count;++n) {
+            const float scale=random.unit()*.5f+.5f;
+            const float x=static_cast<float>(std::cos(angle))*pattern.radius_x;
+            const float y=static_cast<float>(std::sin(angle))*pattern.radius_y;
+            result.push_back({int(i)+1,x*scale+origin.x,y*scale+origin.y});
+            angle=(pi/2.f+angle)+random.radians()/4.f;
+            while(angle>pi)angle-=2.f*pi;
+            while(angle<-pi)angle+=2.f*pi;
+        }
+    }
+    return result;
+}
+void check_pattern_items(ItemInf& owner,const std::vector<PatternSpawn>& spawns) {
+    std::vector<Item*> emitted;
+    unsigned ordinary_index=0,special_index=512,attempts=0;
+    int points=8;
+    for(const auto& expected:spawns) {
+        if(expected.type>=16)continue;
+        ++attempts;
+        int type=expected.type;
+        const bool special=type>=9&&type<=13;
+        if(type==15) {
+            if(++points<10)continue;
+            points=0;type=2;
+        }
+        if(type==14)type=6;
+        auto* item=&owner.pool[special?special_index++:ordinary_index++];
+        emitted.push_back(item);
+        const float x=special?expected.x:std::clamp(expected.x,-192.f,192.f);
+        assert(item->type==type && item->state==(special?5:1));
+        assert(std::abs(item->position.x-x)<0.0002f && std::abs(item->position.y-expected.y)<0.0002f);
+        assert(item->position.z==0 && item->velocity.z==0 && item->extra==0 && item->sound==-1);
+        assert(std::abs(std::hypot(item->velocity.x,item->velocity.y)-2.2f)<0.00001f);
+        assert(item->delay==(special?int(attempts%4):0));
+        if(!special)assert(item->animation.base.color_490==0xffffffffu);
+    }
+    assert(owner.spawn_counter==int(attempts) && owner.point_counter==points);
+    auto* node=owner.active.next;
+    for(auto it=emitted.rbegin();it!=emitted.rend();++it) {
+        assert(node==&(*it)->link);node=node->next;
+    }
+    assert(!node);
+}
+void patterns(ItemInf& owner) {
+    unsigned scenarios=0;
+    for(unsigned seed:{1u,37u,0xfffffffeu})for(unsigned duration:{0u,4u,0xfffffffdu})
+    for(int time:{-4,-1,0,3,4})for(bool bomb_mark:{false,true})
+    for(int base:{0,2,9})for(int bomb:{0,14}) {
+        reset(owner);session.context(0).set_item_controller(&owner);owner.point_counter=8;
+        EnemyPattern pattern;
+        pattern.base_kind=base;pattern.bomb_kind=bomb;pattern.duration=duration;
+        pattern.radius_x=53;pattern.radius_y=-27;
+        pattern.timer.current=time;pattern.timer.previous=31;
+        pattern.timer.current_fraction=-15.5f;pattern.timer.flags=0xf3;
+        pattern.counts.fill(1);pattern.counts[14]=2;pattern.counts[15]=0x7fffffffu;
+        for(unsigned i=0;i<16;++i)pattern.extra_counts[i]=i%5==0?2u:0x80000000u;
+        Vector3 origin(211,42,73);
+        PatternRandom random(seed);
+        const auto expected=model_pattern(pattern,origin,bomb_mark,random);
+        auto image=pattern;image.counts.fill(0);image.base_kind=0;
+        script_random.seed(seed);pattern.drop(origin,bomb_mark);
+        assert(script_random.last==random.state && !std::memcmp(&pattern,&image,sizeof(pattern)));
+        check_pattern_items(owner,expected);++scenarios;
+    }
+    // A low-word product wrap can leave a small positive emission count.
+    reset(owner);owner.point_counter=8;EnemyPattern wrapped;
+    wrapped.counts[1]=0xc0000000u;wrapped.extra_counts[1]=0x40000001u;
+    wrapped.duration=5;wrapped.timer.current=4;
+    Vector3 origin(7,8,9);PatternRandom random(123);
+    auto expected=model_pattern(wrapped,origin,false,random);
+    script_random.seed(123);wrapped.emit_items(origin);
+    assert(script_random.last==random.state && expected.size()==1);
+    check_pattern_items(owner,expected);
+    reset(owner);owner.point_counter=8;EnemyPattern empty;
+    empty.counts[15]=0xffffffffu;empty.extra_counts[15]=0x7fffffffu;
+    script_random.seed(19);PatternRandom zero_random(19);zero_random.next();
+    empty.emit_items(origin);
+    assert(!owner.spawn_counter && !owner.active.next && script_random.last==zero_random.state);
+    assert(empty.counts[15]==0 && empty.extra_counts[15]==0x7fffffffu);
+    // Callbacks change the borrowed origin and later fields, but the current
+    // kind's count remains cached. Each item looks up the current player again.
+    auto second=std::make_unique<ItemInf>();reset(*second);reset(owner);
+    session.context(0).set_item_controller(&owner);session.context(1).set_item_controller(second.get());
+    EnemyPattern live;live.base_kind=2;live.counts[1]=2;
+    Vector3 borrowed(1,2,3);unsigned effects=0;
+    effect_hook=[&](Item& item) {
+        if(++effects==1) {
+            assert(&item==&owner.pool[0] && item.position.x==1);
+            live.player=1;borrowed.x=20;live.counts[1]=3;
+            live.base_kind=99;script_random.next();
+        } else if(effects==2) {
+            assert(&item==&second->pool[0] && item.position.x==20);
+            live.counts[1]=0;live.counts[3]=2;borrowed.x=30;
+        }
+        assert(live.base_kind==99);
+    };
+    script_random.seed(71);live.drop(borrowed,true);effect_hook={};
+    PatternRandom live_random(71);for(int i=0;i<12;++i)live_random.next();
+    assert(effects==6 && owner.spawn_counter==1 && second->spawn_counter==5);
+    assert(script_random.last==live_random.state && live.base_kind==0 && live.player==1);
+    for(auto count:live.counts)assert(!count);
+    for(unsigned i=0;i<5;++i) {
+        assert(second->pool[i].type==(i<3?2:4));
+        assert(second->pool[i].position.x==(i?30:20));
+    }
+    session.context(0).set_item_controller(&owner);session.context(1).set_item_controller(&owner);
+    std::printf("Enemy drop integration passed: %u independent count/LCG/pool models, low-word wrap, zero-count RNG and live origin/count/player callbacks.\n",scenarios+3);
+}
 void ordering(ItemInf& owner,BulletController& first,BulletController& second,
               AnimationFile& file0,AnimationFile& file1) {
     Vector3 p(1,2,3);reset(owner);session.context(0).set_bullet_controller(&first);
@@ -272,6 +423,7 @@ int main() {
     auto owner=std::make_unique<ItemInf>();
     ordinary(*owner,file1);specials(*owner);points(*owner);bonuses(*owner,weapon);
     ordering(*owner,*first,*second,file0,file1);
+    patterns(*owner);
     for(auto& item:owner->pool)
         for(auto* animation:{&item.animation,&item.secondary_animation})
             new th20_test::AnimationReleaseObserver(animation,releases);

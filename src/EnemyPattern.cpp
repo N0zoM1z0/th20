@@ -24,6 +24,26 @@ void EnemyPattern::clear_counts() {
     timer = 0;
 }
 
+void EnemyPattern::set_count(std::uint32_t kind, std::uint32_t value) {
+    counts[kind - 1u] = value;
+}
+
+void EnemyPattern::set_extra_count(std::uint32_t kind, std::uint32_t value) {
+    extra_counts[kind - 1u] = value;
+}
+
+void EnemyPattern::set_bomb_kind(std::int32_t value) { bomb_kind = value; }
+
+void EnemyPattern::set_duration(std::uint32_t value) {
+    duration = value;
+    timer = 0;
+}
+
+void EnemyPattern::set_radii(float x, float y) {
+    radius_x = x;
+    radius_y = y;
+}
+
 } // namespace th20
 
 namespace th20 {

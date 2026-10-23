@@ -10,7 +10,7 @@ from test_item_owner_semantics import SOURCES as OWNER_SOURCES
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = OWNER_SOURCES + ['ItemSpawn', 'Weapon', 'AnimationFile', 'Bullet',
                          'BulletController', 'BulletValues', 'PlayerDamageCap',
-                         'WeaponStoneInfo']
+                         'WeaponStoneInfo', 'EnemyPattern', 'GameRandomAngle']
 
 
 class ItemSpawnTests(unittest.TestCase):

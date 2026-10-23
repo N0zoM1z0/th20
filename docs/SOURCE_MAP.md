@@ -96,6 +96,12 @@ PlayerRecord.cpp owns the wrapping fieldDC/E0 updates. These support four more
 paths in the same private whole-dispatcher draft. See
 [state opcode frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) for source and
 fixture boundaries; the production dispatcher remains undefined.
+EnemyPattern.cpp owns the count/kind/duration/radius operations; ItemSpawn.cpp
+owns the complete drop and scatter protocols alongside the real Item producer.
+Enemy.cpp owns the actual entity flag query. Seven complete dependencies are
+strict exact; the full scatter source remains 628/native630 and nonexact. The
+same private dispatcher draft includes all nine observed callers. See
+[drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md).
 
 ## Build freshness and local products
 

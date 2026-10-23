@@ -915,3 +915,11 @@ th20::Session::clamped_field_1f4
 th20::PlayerTable::clamped_field_1f4
 th20::PlayerRecord::add_field_dc
 th20::PlayerRecord::add_field_e0
+th20::EnemyPattern::drop
+th20::EnemyPattern::set_base_kind
+th20::EnemyPattern::set_count
+th20::EnemyPattern::set_extra_count
+th20::EnemyPattern::set_duration
+th20::EnemyPattern::set_radii
+th20::Enemy::bomb_drop_disabled
+th20::EnemyPattern::emit_items
