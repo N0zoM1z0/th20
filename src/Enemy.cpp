@@ -1,4 +1,6 @@
 #include "Enemy.hpp"
+#include "EnemyController.hpp"
+#include "Context.hpp"
 
 namespace th20 {
 
@@ -9,4 +11,8 @@ Enemy::Enemy() noexcept : EclManager(), flags{}, controller_link(this), state(),
 Enemy* Enemy::parent() { return parent_link.owner_value()->node_value(); }
 Vector3& Enemy::position_ref() { return state.motion_110.position_ref(); }
 bool Enemy::bomb_drop_disabled() { return (state.flags.word_08 >> 5) & 1u; }
+AnimationFile* Enemy::animation_file(std::int32_t index) {
+    auto* controller = context->enemy_controller();
+    return controller->animation_file(index);
+}
 } // namespace th20

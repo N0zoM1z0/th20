@@ -49,10 +49,10 @@ are excluded from Git.
 
 ## Repository status
 
-The maintained graph has **937 source-present mappings**, **928 physical strict
-units** and **164 comparison objects** covering 172,008 disjoint comparison bytes.
+The maintained graph has **943 source-present mappings**, **934 physical strict
+units** and **164 comparison objects** covering 172,456 disjoint comparison bytes.
 Nine mapped whole functions remain nonexact. Confirmed authored exactness is
-separately 189 functions / 49,912 bytes; it is not whole-game completion.
+separately 191 functions / 50,187 bytes; it is not whole-game completion.
 
 | Area | Current position |
 | --- | --- |

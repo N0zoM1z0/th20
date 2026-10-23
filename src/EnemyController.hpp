@@ -37,7 +37,7 @@ struct EnemyController : TaskInfo {
     EclLoader* loader;
     IntrusiveList<Enemy> enemies;
     std::uint32_t field_120, field_124;
-    Identifier32 identifier_128;
+    Angle angle_128;
     std::int32_t player_index;
     Context* context;
     EnemyController() noexcept;
@@ -55,6 +55,7 @@ struct EnemyController : TaskInfo {
     void clear_matching(std::int32_t field_30);
     void clear_variant_565();
     void clear_variant_573();
+    void set_angle_128(float angle);
     EclLoader* script_loader() const;
     std::uint32_t generation() const;
     std::uint32_t advance_generation();

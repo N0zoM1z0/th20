@@ -120,4 +120,6 @@ void EnemyController::clear_variant_573() {
     data.timer_8c++;
 }
 
+void EnemyController::set_angle_128(float angle) { angle_128 = angle; }
+
 } // namespace th20

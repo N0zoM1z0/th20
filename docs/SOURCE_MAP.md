@@ -127,3 +127,10 @@ observer list; EnemyState.cpp owns the bit30 query. Enemy.hpp declares the genui
 whole defeat boundary, whose body remains undefined. Six integrated clear,
 selection and return paths extend the same private whole-root candidate; see
 [clear protocol](ENEMY_CLEAR_PROTOCOL_RECONSTRUCTION.md).
+
+EnemyController.hpp now uses the native normalized Angle at +128. Enemy.cpp
+forwards animation-file lookup through the actual Context/Controller, whose full
+resource dispatcher remains undefined. ItemResourceOwners.hpp separates the
+identified file pointers from scalar cursor words; ItemLifecycleAccess.cpp owns
+the complete effect-handle selection and tagged publication protocol. See
+[defeat resources](ENEMY_DEFEAT_RESOURCE_RECONSTRUCTION.md).

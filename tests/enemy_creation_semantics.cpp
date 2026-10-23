@@ -10,6 +10,7 @@
 #include <stdexcept>
 #include <vector>
 #include <cstdio>
+#include <cmath>
 
 void check_enemy_phases(th20::Enemy& enemy);
 
@@ -232,7 +233,7 @@ int main() {
     assert(controller.loaded_names.empty() && controller.loaded_names.capacity() == 0);
     assert(controller.field_c4 == 0 && controller.field_c8 == 0 && controller.field_cc == 0);
     assert(controller.field_e0 == 0 && controller.field_120 == 0 && controller.field_124 == 0);
-    assert(controller.identifier_128.value == 0 && controller.player_index == 0 && !controller.context);
+    assert(controller.angle_128.value == 0 && controller.player_index == 0 && !controller.context);
     assert(!controller.loader && controller.enemies.tail == &controller.enemies);
     assert(!controller.enemies.node && !controller.enemies.next && !controller.enemies.previous);
     assert(!controller.enemies.owner && !controller.enemies.iterator);
@@ -436,4 +437,19 @@ int main() {
     assert(first->children.tail == &first->children && !first->children.next);
     allocated.clear();
     check_enemy_clear_protocol();
+    EnemyController angle_owner;
+    unsigned angle_cases=0;
+    constexpr float pi=3.1415927410125732f;
+    for(float input:{-1000.f,-100.f,-7.f,-pi,-1.f,-0.f,0.f,1.f,pi,7.f,100.f,1000.f,
+        std::numeric_limits<float>::infinity(),-std::numeric_limits<float>::infinity(),
+        std::numeric_limits<float>::quiet_NaN()}) {
+        auto expected=clear_image(angle_owner);float normalized=input;
+        if(input>pi)for(int i=0;i<34 && normalized>pi;++i)normalized-=2.f*pi;
+        else if(input<-pi)for(int i=0;i<34 && normalized<-pi;++i)normalized=2.f*pi+normalized;
+        clear_patch(expected,angle_owner,angle_owner.angle_128.value,normalized);
+        angle_owner.set_angle_128(input);
+        assert(clear_image(angle_owner)==expected);++angle_cases;
+    }
+    std::printf("Owned Enemy Controller angle passed: %u float/whole-owner cases.\n",angle_cases);
+
 }

@@ -935,3 +935,9 @@ th20::EnemyController::clear_matching
 th20::EnemyController::clear_variant_565
 th20::EnemyController::clear_variant_573
 th20::EnemyState::flag_04_bit_30
+th20::EnemyController::set_angle_128
+th20::Enemy::animation_file
+th20::EffectAnimationHandle::matches_value
+th20::EffectAnimationHandle::missing
+th20::EffectInfo::select_handle_slot
+th20::EffectInfo::publish_handle

@@ -16,6 +16,8 @@
 #include <limits>
 #include <memory>
 #include <vector>
+#include <functional>
+#include <stdexcept>
 
 namespace {
 struct Event { int kind,argument; th20::AnimationFile* file; };
@@ -44,7 +46,7 @@ SoundInf::~SoundInf()=default;
 // This unresolved Overlay lifetime/enable is uncalled; it supplies UBSan RTTI.
 WeaponStoneInfo::~WeaponStoneInfo() {std::abort();}
 void WeaponStoneInfo::enable() {std::abort();}
-EffectInfo::EffectInfo():files{},ready(0),view_index(0),context(nullptr) {}
+EffectInfo::EffectInfo():files{},field_1c(0),handle_cursor(0),field_24(0),ready(0),view_index(0),context(nullptr) {}
 EffectInfo::~EffectInfo() {
     for(auto* file:files)assert(!file);
     for(auto& request:requests)assert(!request.animation);
@@ -199,6 +201,84 @@ void retirement() {
     assert(available.tail==&available);cases+=3;
 }
 }
+namespace {
+std::function<th20::Animation*(th20::AnimationHandle&)> publication_resolver;
+template<class T> auto effect_image(const T& value) {
+    std::array<unsigned char,sizeof(T)> result;
+    std::memcpy(result.data(),&value,sizeof(value));return result;
+}
+template<class T,class V> void effect_patch(std::array<unsigned char,sizeof(T)>& image,
+    const T& owner,const V& member,const V& value) {
+    const auto offset=reinterpret_cast<const unsigned char*>(&member)-reinterpret_cast<const unsigned char*>(&owner);
+    std::memcpy(image.data()+offset,&value,sizeof(value));
+}
+void effect_publication(th20::EffectInfo& owner) {
+    using namespace th20;
+    Animation live;unsigned scenarios=0;
+    owner.field_1c=73;owner.field_24=-91;
+    for(unsigned start=0;start<1024;++start)for(unsigned input:{0u,1u,0x80000000u,0xffffffffu}) {
+        owner.handle_cursor=static_cast<int>(start);
+        for(auto& entry:owner.handles)entry.handle.value=0;
+        auto expected=effect_image(owner);
+        effect_patch(expected,owner,owner.handle_cursor,static_cast<int>((start+1)%1024));
+        effect_patch(expected,owner,owner.handles[start].handle.value,input);
+        publication_resolver=[](AnimationHandle&)->Animation*{std::abort();};
+        const auto result=owner.publish_handle(input);
+        assert(result==(0x80000000u|start) && effect_image(owner)==expected);++scenarios;
+    }
+    for(unsigned start:{0u,1u,2u,17u,511u,512u,1022u,1023u})
+    for(unsigned stale:{0u,1u,2u,17u,1023u,1024u})for(bool terminal_live:{false,true})
+    for(unsigned input:{0u,1u,0x80000000u,0xffffffffu}) {
+        owner.handle_cursor=static_cast<int>(start);
+        for(auto& entry:owner.handles)entry.handle.value=0x40001234u;
+        for(unsigned i=1;i<=stale;++i)owner.handles[(start+i)%1024].handle.value=0x80004321u;
+        if(stale<1024)owner.handles[(start+stale+1)%1024].handle.value=terminal_live?0x40001234u:0u;
+        auto expected=effect_image(owner);unsigned resolved=0;
+        const unsigned selected=(start+stale)%1024;
+        effect_patch(expected,owner,owner.handle_cursor,static_cast<int>(stale==1024?start:(selected+1)%1024));
+        for(unsigned i=1;i<=stale;++i)effect_patch(expected,owner,owner.handles[(start+i)%1024].handle.value,0u);
+        if(stale<1024)effect_patch(expected,owner,owner.handles[selected].handle.value,input);
+        publication_resolver=[&](AnimationHandle& handle)->Animation*{
+            const unsigned index=(start+resolved+1)%1024;
+            assert(&handle==&owner.handles[index].handle);++resolved;
+            if(handle.value==0x40001234u)return &live;
+            assert(handle.value==0x80004321u);handle.value=0;return nullptr;
+        };
+        const unsigned result=owner.publish_handle(input);
+        assert(result==(stale==1024?0u:0x80000000u|selected));
+        assert(resolved==stale+(stale<1024&&terminal_live?1u:0u));
+        assert(effect_image(owner)==expected);++scenarios;
+    }
+    for(unsigned fail_at:{1u,2u,1024u}) {
+        owner.handle_cursor=0;
+        for(auto& entry:owner.handles)entry.handle.value=0x80004321u;
+        auto expected=effect_image(owner);unsigned resolved=0;
+        effect_patch(expected,owner,owner.handle_cursor,static_cast<int>(fail_at%1024));
+        for(unsigned i=1;i<fail_at;++i)effect_patch(expected,owner,owner.handles[i].handle.value,0u);
+        publication_resolver=[&](AnimationHandle& handle)->Animation*{
+            if(++resolved==fail_at)throw std::runtime_error("Captured Renderer resolution failure");
+            handle.value=0;return nullptr;
+        };
+        bool threw=false;try{owner.publish_handle(0x12345678u);}catch(const std::runtime_error&){threw=true;}
+        assert(threw && resolved==fail_at && effect_image(owner)==expected);++scenarios;
+    }
+    // A live lookup may change owner state; publication retains the returned
+    // previous slot and preserves the callback's fresh cursor value.
+    owner.handle_cursor=0;for(auto& entry:owner.handles)entry.handle.value=0x40001234u;
+    auto expected=effect_image(owner);effect_patch(expected,owner,owner.handle_cursor,1023);
+    effect_patch(expected,owner,owner.handles[0].handle.value,0xffffffffu);
+    publication_resolver=[&](AnimationHandle& handle)->Animation*{
+        assert(&handle==&owner.handles[1].handle);owner.handle_cursor=1023;return &live;
+    };
+    assert(owner.publish_handle(0xffffffffu)==0x80000000u && effect_image(owner)==expected);++scenarios;
+    publication_resolver={};
+    std::printf("Effect publication passed: %u cursor/whole-owner/stale/live/failure cases.\n",scenarios);
+}
+}
+namespace th20 {
+Animation* AnimationHandle::resolve(){assert(publication_resolver);return publication_resolver(*this);}
+}
+
 int main() {
     using namespace th20;
     DiagnosticAllocator allocator;process_allocator=&allocator;process_locks.enable();
@@ -206,6 +286,7 @@ int main() {
         AnimationFile file;auto effect=std::make_unique<EffectInfo>();
         auto menu=std::make_unique<StoneMenuInfo>();menu->file=&file;process_stone_menu=menu.get();
         owner_interfaces(*menu,*effect);activation(file);effects(*effect,file);retirement();
+        effect_publication(*effect);
         menu->file=nullptr;process_stone_menu=nullptr;
     }
     assert(cases==651 && releases==6);

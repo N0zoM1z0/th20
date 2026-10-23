@@ -936,3 +936,9 @@ th20::EnemyController::clear_matching,0x004A4810,function
 th20::EnemyController::clear_variant_565,0x004A4C20,function
 th20::EnemyController::clear_variant_573,0x004A4E30,function
 th20::EnemyState::flag_04_bit_30,0x004AB380,function
+th20::EnemyController::set_angle_128,0x004AB820,function
+th20::Enemy::animation_file,0x00499430,function
+th20::EffectAnimationHandle::matches_value,0x00449430,function
+th20::EffectAnimationHandle::missing,0x0049BED0,function
+th20::EffectInfo::select_handle_slot,0x00498E70,function
+th20::EffectInfo::publish_handle,0x00497D20,function

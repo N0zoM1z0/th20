@@ -7,6 +7,8 @@
 
 namespace th20 {
 
+class AnimationFile;
+
 struct EnemyFlags { std::uint32_t bits; };
 
 // Native construction and initialization establish these subobjects.
@@ -49,6 +51,7 @@ struct Enemy : EclManager {
     int apply_spawn(const EnemySpawn& parameters);
     // Whole native defeat/resource processing remains undefined.
     std::int32_t defeat();
+    AnimationFile* animation_file(std::int32_t index);
 };
 
 #if defined(_M_IX86)
