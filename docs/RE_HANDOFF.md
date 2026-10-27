@@ -1,9 +1,11 @@
 # Current reconstruction handoff
 
-CORE168 integrates the already-exact SoundInf and Player dependencies into
-the private whole Enemy root for opcodes 516/575, with full host regression.
-The whole Enemy dispatcher remains open; CORE167 and CORE166 are the two
-separate complete native dependency admissions. Start with this
+CORE169 independently decodes the two entire 1,472-byte Enemy opcode
+502/503 paths, integrates their real owner and animation flag propagation
+semantics into the existing private whole-root draft, and verifies the full
+36,802-case host. No partial machine-code exactness is claimed. CORE168
+previously closed real opcode 516/575 call ordering through exact SoundInf
+and Player dependencies; the complete Enemy dispatcher remains open. Start with this
 page, [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
@@ -31,13 +33,14 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft now covers **112 effective values / 83 primary
-heads**. Its entire **36,310-case O2/UBSan** host passes, retaining all 36,232
-previous cases and adding 78 opcode 516/575 real-owner, operand-mutation and
-failure-order scenarios. The refresh also corrects old fixture dependencies
-on the now-real Dialogue destructor and Animation child linkage. Production
-dispatch remains undefined; no case fragment receives source acceptance or
-partial exact credit. See [complete caller evidence](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
+The private whole Enemy draft now covers **114 effective values / 85 native
+primary heads**, including entire 502/503 bitfield/visibility paths and the
+real 516/575 call dependencies. Its **36,802-case O2/UBSan** host passes:
+36,310 earlier cases and 492 new bit-transfer, recursive Animation, failed
+handle and exception-order cases. The whole 41,967-byte production dispatcher
+remains undefined; none of these case-path bytes has partial exact credit.
+See [502/503 complete native path evidence](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
+and [516/575 caller integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
 
 CORE/EXACT-162 reconstructs the 228-byte Dialogue destructor and its complete
 233-byte compiler contribution. It retires fifteen actual animation handles
@@ -57,6 +60,20 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE169 audits the **full two 1,472-byte** native Enemy branches for opcodes
+502/503 (592 original instructions), including all fourteen separate low-bit
+writes, the post-update bit-five gate, and the original begin/end/vector loop.
+Failed Renderer lookups must retain stale handle values; the private host
+therefore captures just this boundary while executing real recursive Animation
+flag operations on nested child storage. Full source candidate versions CORE168
+and older are protected; the new host compiles 78 genuine sources and passes
+**36,802/36,802** cases, adding 492 to CORE168. Hash-attested native ranges,
+89 source/fixture input hashes and a valid unchanged 164-object receipt graph
+are stored in `core169-whole-enemy-root-proof.json` and
+`core169-enemy-502-503-native-audit.json`. **Zero production-source or exact
+unit changes**; this is large-root semantic progress, not partial byte exactness.
+
 
 CORE168 adds zero tracked production-source or canonical-unit changes. The
 private whole Enemy draft is extended with real opcode 516 and 575 case order,
@@ -160,8 +177,8 @@ exception metadata are retained.
 The actual-owner fixture passes 512 guarded dirty constructions, 24 exception
 unwinds, 2,049 live callbacks and 3,072 full-width ready reads. The affected
 FrontInf fixture passes 1,706 cases; AsciiInf passes 256 dirty constructions,
-81,920 complete line images and 768 shared-file selections. The updated whole-root
-fixture passes 36,232 cases. Source and fixture limitations are explicit in the
+81,920 complete line images and 768 shared-file selections. The historical CORE161 whole-root
+fixture passed 36,232 cases; the current CORE169 host passes 36,802. Source and fixture limitations are explicit in the
 focused evidence; these are portable checks, not native game execution.
 
 Historical CORE161 private proofs include `core161-cold-proof.json`,
@@ -219,9 +236,10 @@ Preserve `core161-pre-dialogue-inputs.json.gz`,
 `core161-probe-v1-original-inputs.json.gz`,
 `core161-probe-v2-original-inputs.json.gz`,
 `core161-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
-archives. Current private root inputs are `core159-enemy-dispatch-candidate.cpp`,
-`core161-dispatch-host.cpp`, `core161-front-host-cases.inc` and the core161 recipe;
-earlier candidates and incomplete protocols remain protected.
+archives. Current private root inputs are `core169-enemy-dispatch-candidate.cpp`,
+`core169-dispatch-host.cpp`, `core169-visibility-host-cases.inc` and the CORE169
+recipe/proof; all CORE168, CORE161 and earlier candidates, fixtures and
+incomplete protocols remain protected.
 
 Historical archive lookup remains in the handoff146/149/152/154/157/160 and
 core156/158/159/160 retirement plans. They preserve archived logs, snapshots and
@@ -238,8 +256,10 @@ Ghidra, native exports and supplied `../game_exe/` files.
    ordinary body, tables and compiler contributions. The 575 path has a verified
    exact Player flag dependency; opcode 516 now has a complete exact
    SoundInf positional pan dependency too. Neither grants partial root credit. Remaining
-   502/503, 516..518, 524, 539, 548/549, 551, 553..555 and other nondefault
-   state paths still need original owner/call reconciliation. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
+   502/503 are semantically integrated, but still need the genuine Renderer
+   lookup and wrapper source/ABI. The 517/518, 524, 539, 548/549, 551,
+   553..555 and other nondefault state paths still need owner/call
+   reconciliation. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md),
    [state](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md),
    [Card](ENEMY_CARD_STATE_RECONSTRUCTION.md),
