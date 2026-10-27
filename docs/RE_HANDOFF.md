@@ -1,5 +1,15 @@
 # Current reconstruction handoff
 
+CORE173 now integrates **Enemy opcode 524 and 553** as two complete
+native paths within the existing private whole-root candidate, executing
+the independently exact GameController, PlayerTable and EnemyController
+setters. The single **37,347-case** host passes, adding 166 complete-owner,
+receiver-retargeting and exception-order checks to CORE170's 37,181 cases.
+All 164 canonical original-source compiler receipts remain valid, with no
+change to the exact reconstruction graph. The **41,967-byte** Enemy root,
+actual Game publication and many subsystem resources are still open.
+See [new complete-root integration proof](ENEMY_WHOLE_ROOT_524_553_INTEGRATION.md).
+
 CORE/EXACT-172 adds the two complete 78-byte PlayerTable / 36-byte
 GameController dependencies of Enemy opcode 524, with 149/149 protected
 strict replays. CORE/EXACT-171 previously added the complete 25-byte
@@ -37,12 +47,12 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft now covers **116 effective values / 87 native
-primary heads**, adding native 517/518 ScreenInf creation and message cleanup
-to the prior 502/503 visibility and 516/575 real-callee branches. Its
-**37,181-case O2/UBSan** host passes (36,802 earlier cases plus 379 new
-owner/order/failure tests). Production Enemy dispatch remains undefined;
-none of these root case intervals has partial machine-code credit. See
+The private whole Enemy draft now covers **118 effective values / 89 native
+primary heads**, including 524/553 genuine Game/Session/Controller, 517/518
+ScreenInf/message cleanup, 502/503 visibility and 516/575 real-callee paths.
+Its **37,347-case O2/UBSan** host passes (37,181 CORE170 cases plus 166
+new full-object/receiver/failure scenarios). Production Enemy dispatch remains
+undefined; none of these case intervals receives partial machine-code credit. See
 [ScreenInf/message proof](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
 [502/503 native paths](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
 and [516/575 integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
@@ -65,6 +75,21 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE173 adds no maintained production source and **zero** canonical units:
+private Enemy opcode **524/553** case paths from original independently
+verified 76-byte and 66-byte intervals are exercised inside the same
+79-translation-unit whole-root host. **37,347/37,347** tests pass (166 new),
+checking late published Game pointer versus cached early Context controller,
+actual full Game/Session/EnemyController methods, complete owner images and
+operand-exception order. Private input hashes cover 92 source/fixture files;
+all 164 existing authentic pinned-MSVC object receipts are verified and
+previous CORE170 evidence remains unchanged. See
+[focused host proof](ENEMY_WHOLE_ROOT_524_553_INTEGRATION.md) and private
+`core173-whole-enemy-root-proof.json`. The graph stays **211 authored whole
+exact functions / 56,583 bytes / 997 physical strict units**; nothing here
+claims 41,967-byte Enemy exactness.
+
 
 CORE/EXACT-172 establishes the genuine GameController and Session.table
 chain for opcode 524: global GameController pointer `0x005BA828` points to
@@ -231,7 +256,7 @@ The actual-owner fixture passes 512 guarded dirty constructions, 24 exception
 unwinds, 2,049 live callbacks and 3,072 full-width ready reads. The affected
 FrontInf fixture passes 1,706 cases; AsciiInf passes 256 dirty constructions,
 81,920 complete line images and 768 shared-file selections. The historical CORE161 whole-root
-fixture passed 36,232 cases; the current CORE170 host passes 37,181. Source and fixture limitations are explicit in the
+fixture passed 36,232 cases; CORE170 passed 37,181; current CORE173 passes 37,347. Source and fixture limitations are explicit in the
 focused evidence; these are portable checks, not native game execution.
 
 Historical CORE161 private proofs include `core161-cold-proof.json`,
@@ -291,9 +316,9 @@ Preserve `core161-pre-dialogue-inputs.json.gz`,
 `core161-probe-v1-original-inputs.json.gz`,
 `core161-probe-v2-original-inputs.json.gz`,
 `core161-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
-archives. Current private root inputs are `core170-enemy-dispatch-candidate.cpp`,
-`core170-dispatch-host.cpp`, `core170-screen-message-host-cases.inc` and the
-CORE170 recipe/proof. CORE169, CORE168, CORE161 and all earlier candidates,
+archives. Current private root inputs are `core173-enemy-dispatch-candidate.cpp`,
+`core173-dispatch-host.cpp`, `core173-game-session-host-cases.inc` and the
+CORE173 recipe/proof. CORE170, CORE169, CORE168, CORE161 and earlier candidates,
 fixtures and unfinished protocols remain protected.
 
 Historical archive lookup remains in the handoff146/149/152/154/157/160 and
@@ -314,8 +339,9 @@ Ghidra, native exports and supplied `../game_exe/` files.
    502/503 are semantically integrated, but still need the genuine Renderer
    lookup and wrapper source/ABI. Opcode 517/518 now have tested ScreenInf
    and FrontInf/Bullet/Laser/Enemy call ordering, but the real Screen
-   factory/message/cancellation bodies remain open. The 524, 539, 548/549,
-   551, 553..555 and other nondefault state paths need original owners. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
+   factory/message/cancellation bodies remain open. Opcode 524 and 553 now have verified
+   whole-host integrations with real typed callees; 539, 548/549,
+   551, 554/555 and other nondefault state paths still need real owners. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md),
    [state](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md),
    [Card](ENEMY_CARD_STATE_RECONSTRUCTION.md),
