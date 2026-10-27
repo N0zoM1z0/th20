@@ -32,6 +32,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md) — includes the current bounded dependency audit.
 - [Enemy movement opcode source frontier and raw random words](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) — private whole-root source work, retained interpolation state and the complete word sampler.
 - [Enemy state opcode source frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) — phase replacement, repeated operand reads, live receivers, conditional counter updates and five complete dependencies.
+- [Enemy opcode 575 and genuine Player flag owner](ENEMY_OPCODE_575_PLAYER_FLAG_RECONSTRUCTION.md) — complete native 42-byte bitfield setter with actual Player storage, Player(0) caller ordering and 37 scoped exact comparisons.
 - [Enemy rank destinations and script-time control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md) — actual instruction-destination forwarding, selected Runtime time, eleven further private paths and five whole strict dependencies.
 - [FrontInf owner and Enemy HUD callers](FRONT_OWNER_RECONSTRUCTION.md) — complete typed HUD owner, construction/publication, boss markers, full EH and three further private root paths.
 - [Dialogue ownership, retirement and follow-box](DIALOGUE_OWNER_RECONSTRUCTION.md) — real Dialogue/Laser owners, complete constructor/destructor, live callback, full-width ready state and independently verified 387-byte follow-box with native WindowState scale and handle child lookup.

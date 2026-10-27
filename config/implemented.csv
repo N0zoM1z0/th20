@@ -999,3 +999,4 @@ th20::AnimationHandle::interrupt_offset_7
 th20::Dialogue::~Dialogue
 th20::Dialogue::follow_box
 th20::AnimationHandle::find_child
+th20::Player::set_entity_flag_10

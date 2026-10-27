@@ -60,6 +60,18 @@ int main() {
     assert(player->direction.value==0 && player->value_1484c.value==0);
     assert(player->field_14850==0xa5a5a5a5u);
     assert(!player->shot_data && !player->animation_file && !player->focused);
+    // The whole Enemy opcode 575 resolves player zero, reads one integer,
+    // then calls this actual Player bit-10 setter. Check the true word owner.
+    static_assert(sizeof(PlayerWordFlags) == 4);
+    for (std::uint32_t original : {0u, 0xffffffffu, 0x80000000u, 0x12345678u}) {
+        for (std::uint32_t argument : {0u, 1u, 2u, 3u, 0x80000000u, 0xffffffffu}) {
+            player->entity_flags.bits = original;
+            player->set_entity_flag_10(argument);
+            assert(player->entity_flags.bits ==
+                ((original & ~0x400u) | ((argument & 1u) << 10)));
+        }
+    }
+
     for (auto& option:player->options.values) assert(!option.state && !option.context);
     for (auto& option:player->secondary_options.values) assert(!option.state && !option.context);
     for (auto& point:player->points_20fc.values) assert(!point.x && !point.y);

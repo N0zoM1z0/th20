@@ -1000,3 +1000,4 @@ th20::AnimationHandle::interrupt_offset_7,0x00464510,function
 th20::Dialogue::~Dialogue,0x004AFC00,function
 th20::Dialogue::follow_box,0x004B89A0,function
 th20::AnimationHandle::find_child,0x0044C670,function
+th20::Player::set_entity_flag_10,0x0049C390,function

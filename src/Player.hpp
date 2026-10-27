@@ -62,12 +62,14 @@ public:
     void enable() override;
     std::int32_t load_shot_data(PlayerShotData** output,const char* path);
     bool focused_mode();
+    void set_entity_flag_10(std::uint32_t value);
     std::int32_t damage_limit();
     PlayerFeedback* feedback_value();
 };
 Player* player(std::int32_t index);
 #if defined(_M_IX86)
 static_assert(sizeof(Player)==0x1485c);
+static_assert(offsetof(Player,entity_flags)==0x14);
 static_assert(offsetof(Player,animation)==0x28);
 static_assert(offsetof(Player,options)==0x684);
 static_assert(offsetof(Player,secondary_options)==0x123c);

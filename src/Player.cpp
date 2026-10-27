@@ -12,6 +12,10 @@ Player::Player() noexcept
     ecl_diagnostic_hint("initialize PlayerInf\n");
 }
 PlayerFeedback* Player::feedback_value() { return &feedback; }
+void Player::set_entity_flag_10(std::uint32_t value) {
+    entity_flags.fields.bit_10 = value;
+}
+
 Player* player(std::int32_t index) { return session.context(index).player(); }
 
 }

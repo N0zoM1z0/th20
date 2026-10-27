@@ -1,9 +1,9 @@
 # Current reconstruction handoff
 
-The latest confirmed reconstruction batch closes the complete 134-byte
-ProgressMetadata checksum, correcting its return ABI and signed pointer
-comparison. Earlier CORE/EXACT-164 independently audited the complete Enemy
-mesh deformation root and expanded its boundary tests. Start with this
+The latest reconstructed dependency is the complete Player entity-flag
+setter used by Enemy opcode 575, with the whole Enemy dispatcher still open.
+Previously, CORE/EXACT-165 closed the ProgressMetadata checksum and
+CORE/EXACT-164 audited the complete Enemy mesh deformation root. Start with this
 page, [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
@@ -14,10 +14,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 992 physical strict units, 164 canonical objects and 180,723
-disjoint comparison bytes. All 1,001 mapped functions have source; nine whole
+The graph contains 993 physical strict units, 164 canonical objects and 180,765
+disjoint comparison bytes. All 1,002 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-206 functions / 56,350 bytes, with 218 confirmed authored origins. The reference
+207 functions / 56,392 bytes, with 219 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -55,6 +55,22 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-166 recovers the native 42-byte `Player::set_entity_flag_10`
+member at 0x49C390, called by the *whole* Enemy dispatcher's opcode 575 path.
+The opcode reads `player(0)` before operand 0, then calls the bitfield setter.
+The real Player+14 word is a typed 10/1/21 bitfield view; 42/42 function bytes
+are exact with zero relocations. The 6 objects whose genuine include closures
+contain Player/PlayerStorage headers are independently cold rebuilt; all 36
+old functions and the new complete function replay **37/37** full comparisons
+(6,521 compared bytes). The one compiler-local initialization string rename
+was reconciled using the original complete COFF bytes and PE string. All 12
+original object/receipt SHA-256 hashes survive and all 158 unaffected
+canonical receipts remain valid. Portable Player/SHT tests pass 24 full-word
+flag cases and prior resource/damage-cap behavior. See
+[focused proof](ENEMY_OPCODE_575_PLAYER_FLAG_RECONSTRUCTION.md) and private
+`core166-player-final-proof.json`. **No partial Enemy root credit** is taken.
+
 
 CORE/EXACT-165 corrects `ProgressMetadata::calculate_integrity` at 0x463F20:
 its return is a byte, not the previously declared uint32_t; the native signed
@@ -151,8 +167,9 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
-| `build/core163-canonical/` | 53 | Every sibling `.receipt.json` |
+| `build/core163-canonical/` | 47 | Every sibling `.receipt.json` |
 | `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
+| `build/core166-canonical/` | 6 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;
@@ -189,8 +206,10 @@ Ghidra, native exports and supplied `../game_exe/` files.
    and Cursor constructor emission. Follow-box and its real child lookup are
    now closed; the Renderer and Animation pool integration remain open.
 2. Continue the complete Enemy dispatcher at 0x48C010, including its 41,967-byte
-   ordinary body, tables and compiler contributions. Fourteen nondefault state
-   paths remain unresolved. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
+   ordinary body, tables and compiler contributions. The 575 path has a verified
+   exact Player flag dependency; no whole dispatch credit follows. Remaining
+   502/503, 516..518, 524, 539, 548/549, 551, 553..555 and other nondefault
+   state paths still need original owner/call reconciliation. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md),
    [state](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md),
    [Card](ENEMY_CARD_STATE_RECONSTRUCTION.md),

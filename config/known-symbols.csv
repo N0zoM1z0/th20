@@ -852,3 +852,4 @@ address,name,module,confidence,evidence
 0x004AFC00,th20::Dialogue::~Dialogue,Dialogue,high,CORE/EXACT-162
 0x004B89A0,th20::Dialogue::follow_box,Dialogue,high,CORE/EXACT-163
 0x0044C670,th20::AnimationHandle::find_child,AnimationHandle,high,CORE/EXACT-163
+0x0049C390,th20::Player::set_entity_flag_10,Player,high,CORE/EXACT-166; typed native Player bit10 owner

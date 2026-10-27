@@ -14,7 +14,14 @@ namespace th20 {
 // containing offsets describe observed storage with unresolved gameplay roles.
 // The enclosing 0x1485c Player and its untouched +0x14850 region remain open.
 
-struct PlayerWordFlags { std::uint32_t bits; };
+// Native Player+14 word: only bit 10 has an established script setter.
+struct PlayerWordFlags {
+    union {
+        std::uint32_t bits;
+        struct { std::uint32_t lower:10, bit_10:1, upper:21; } fields;
+    };
+};
+static_assert(sizeof(PlayerWordFlags) == 4);
 struct PlayerOptionState { std::uint32_t flags; std::uint8_t focused; };
 // Shot +0xdc is a damage identifier, independently resolved by the native
 // consumer. This scalar constructor shares PackedColor's physical head.

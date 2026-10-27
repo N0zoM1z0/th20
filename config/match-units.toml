@@ -9079,7 +9079,7 @@ relocations = [
 
 [units.player_option_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerOption::PlayerOption"]
 symbol = "??0PlayerOption@th20@@QAE@XZ"
@@ -9109,7 +9109,7 @@ relocations = [
 
 [units.player_feedback_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerFeedback::PlayerFeedback"]
 symbol = "??0PlayerFeedback@th20@@QAE@XZ"
@@ -9125,7 +9125,7 @@ relocations = [
 
 [units.player_collision_bounds_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerCollisionBounds::PlayerCollisionBounds"]
 symbol = "??0PlayerCollisionBounds@th20@@QAE@XZ"
@@ -9138,7 +9138,7 @@ relocations = [
 
 [units.player_motion_parameters_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerMotionParameters::PlayerMotionParameters"]
 symbol = "??0PlayerMotionParameters@th20@@QAE@XZ"
@@ -9149,7 +9149,7 @@ relocations = [
 
 [units.player_shot_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShot::PlayerShot"]
 symbol = "??0PlayerShot@th20@@QAE@XZ"
@@ -9170,7 +9170,7 @@ relocations = [
 
 [units.player_shot_pool_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotPool::PlayerShotPool"]
 symbol = "??0PlayerShotPool@th20@@QAE@XZ"
@@ -9186,7 +9186,7 @@ relocations = [
 
 [units.player_shot_controller_ctor]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::PlayerShotController"]
 symbol = "??0PlayerShotController@th20@@QAE@XZ"
@@ -9454,7 +9454,7 @@ relocations = [
 
 [units.enemy_apply_spawn]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core163-canonical/EnemySpawnApplication.obj"
+object = "build/core166-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::apply_spawn"]
 symbol = "?apply_spawn@Enemy@th20@@QAEHABUEnemySpawn@2@@Z"
@@ -11671,7 +11671,7 @@ relocations = [
 
 [units.player_construct]
 source = "src/Player.cpp"
-object = "build/core163-canonical/Player.obj"
+object = "build/core166-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::Player"]
 symbol = "??0Player@th20@@QAE@XZ"
@@ -11711,13 +11711,13 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG81964", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG81994", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.player_option_values_10_construct]
 source = "src/Player.cpp"
-object = "build/core163-canonical/Player.obj"
+object = "build/core166-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,10>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAE@XZ"
@@ -11733,7 +11733,7 @@ relocations = [
 
 [units.player_option_values_12_construct]
 source = "src/Player.cpp"
-object = "build/core163-canonical/Player.obj"
+object = "build/core166-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,12>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAE@XZ"
@@ -11749,7 +11749,7 @@ relocations = [
 
 [units.player_point_values_33_construct]
 source = "src/Player.cpp"
-object = "build/core163-canonical/Player.obj"
+object = "build/core166-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<IntPoint,33>::PlayerValues"]
 symbol = "??0?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAE@XZ"
@@ -11765,7 +11765,7 @@ relocations = [
 
 [units.player_shot_data_load]
 source = "src/ShotData.cpp"
-object = "build/core163-canonical/ShotData.obj"
+object = "build/core166-canonical/ShotData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::load_shot_data"]
 symbol = "?load_shot_data@Player@th20@@QAEHPAPAUPlayerShotData@2@PBD@Z"
@@ -11779,7 +11779,7 @@ relocations = [
 
 [units.player_damage_limit]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core163-canonical/PlayerDamageCap.obj"
+object = "build/core166-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::damage_limit"]
 symbol = "?damage_limit@Player@th20@@QAEHXZ"
@@ -11799,7 +11799,7 @@ relocations = [
 
 [units.player_focused_mode]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core163-canonical/PlayerDamageCap.obj"
+object = "build/core166-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::focused_mode"]
 symbol = "?focused_mode@Player@th20@@QAE_NXZ"
@@ -11852,7 +11852,7 @@ relocations = [
 
 [units.weapon_stone_current]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core163-canonical/PlayerDamageCap.obj"
+object = "build/core166-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::weapon_stone_info"]
 symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z"
@@ -11877,7 +11877,7 @@ relocations = [
 
 [units.record_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::add_score"]
 symbol = "?add_score@PlayerRecord@th20@@QAEX_K@Z"
@@ -11889,7 +11889,7 @@ relocations = [
 
 [units.session_score_add]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::add_score"]
 symbol = "?add_score@Session@th20@@QAEXI@Z"
@@ -11902,7 +11902,7 @@ relocations = [
 
 [units.timer_every]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Timer::every"]
 symbol = "?every@Timer@th20@@QBEHH@Z"
@@ -11913,7 +11913,7 @@ relocations = [
 
 [units.player_frame_changed]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::frame_changed"]
 symbol = "?frame_changed@Player@th20@@QAEHXZ"
@@ -11925,7 +11925,7 @@ relocations = [
 
 [units.player_find_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::find_shot"]
 symbol = "?find_shot@Player@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11937,7 +11937,7 @@ relocations = [
 
 [units.player_shot_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::find"]
 symbol = "?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11961,7 +11961,7 @@ relocations = [
 
 [units.region_player_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DamageRegion::player_shot"]
 symbol = "?player_shot@DamageRegion@th20@@QAEPAUPlayerShot@2@XZ"
@@ -11975,7 +11975,7 @@ relocations = [
 
 [units.enemy_controller_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::find"]
 symbol = "?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
@@ -12000,7 +12000,7 @@ relocations = [
 
 [units.enemy_health_value]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::health_value"]
 symbol = "?health_value@Enemy@th20@@QAEPAUEnemyHealth@2@XZ"
@@ -12011,7 +12011,7 @@ relocations = [
 
 [units.enemy_force_defeat]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHealth::force_defeat"]
 symbol = "?force_defeat@EnemyHealth@th20@@QAEXXZ"
@@ -12022,7 +12022,7 @@ relocations = [
 
 [units.enemy_reward_multiplier]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::reward_multiplier_enabled"]
 symbol = "?reward_multiplier_enabled@Enemy@th20@@QAE_NXZ"
@@ -12033,7 +12033,7 @@ relocations = [
 
 [units.enemy_set_damage_marker]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::set_damage_marker"]
 symbol = "?set_damage_marker@Enemy@th20@@QAEXI@Z"
@@ -12044,7 +12044,7 @@ relocations = [
 
 [units.weapon_stone_record_damage]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core163-canonical/DamageQueryProtocol.obj"
+object = "build/core166-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::record_damage"]
 symbol = "?record_damage@WeaponStoneInfo@th20@@QAEXPBUVector3@2@HH@Z"
@@ -15496,7 +15496,7 @@ relocations = [
 
 [units.enemy_defeat]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core163-canonical/EnemySpawnApplication.obj"
+object = "build/core166-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::defeat"]
 symbol = "?defeat@Enemy@th20@@QAEHXZ"
@@ -15630,7 +15630,7 @@ relocations = [
 
 [units.player_feedback_access]
 source = "src/Player.cpp"
-object = "build/core163-canonical/Player.obj"
+object = "build/core166-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::feedback_value"]
 symbol = "?feedback_value@Player@th20@@QAEPAUPlayerFeedback@2@XZ"
@@ -15641,7 +15641,7 @@ relocations = [
 
 [units.player_access]
 source = "src/Player.cpp"
-object = "build/core163-canonical/Player.obj"
+object = "build/core166-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::player"]
 symbol = "?player@th20@@YAPAVPlayer@1@H@Z"
@@ -15691,7 +15691,7 @@ relocations = [
 
 [units.enemy_callback_nonempty]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core163-canonical/EnemySpawnApplication.obj"
+object = "build/core166-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::function<void(th20::Enemy*)>::operator bool"]
 symbol = "??B?$function@$$A6AXPAUEnemy@th20@@@Z@std@@QBE_NXZ"
@@ -15703,7 +15703,7 @@ relocations = [
 
 [units.enemy_callback_empty]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core163-canonical/EnemySpawnApplication.obj"
+object = "build/core166-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::_Func_class<void,th20::Enemy*>::_Empty"]
 symbol = "?_Empty@?$_Func_class@XPAUEnemy@th20@@@std@@IBE_NXZ"
@@ -15715,7 +15715,7 @@ relocations = [
 
 [units.enemy_callback_implementation]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core163-canonical/EnemySpawnApplication.obj"
+object = "build/core166-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::_Func_class<void,th20::Enemy*>::_Getimpl"]
 symbol = "?_Getimpl@?$_Func_class@XPAUEnemy@th20@@@std@@ABEPAV?$_Func_base@XPAUEnemy@th20@@@2@XZ"
@@ -15726,7 +15726,7 @@ relocations = [
 
 [units.player_feedback_add_time]
 source = "src/PlayerStorage.cpp"
-object = "build/core163-canonical/PlayerStorage.obj"
+object = "build/core166-canonical/PlayerStorage.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerFeedback::operator+="]
 symbol = "??YPlayerFeedback@th20@@QAEXH@Z"
@@ -16496,4 +16496,15 @@ relocations = [
   { offset = 36, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
   { offset = 112, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 126, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.player_entity_flag_bit10]
+source = "src/Player.cpp"
+object = "build/core166-canonical/Player.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::set_entity_flag_10"]
+symbol = "?set_entity_flag_10@Player@th20@@QAEXI@Z"
+target_address = 4834192
+size = 42
+relocations = [
 ]
