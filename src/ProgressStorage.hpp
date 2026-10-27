@@ -32,7 +32,7 @@ struct ProgressMetadata {
 
     ProgressMetadata();
     void initialize();
-    std::uint32_t calculate_integrity() const;
+    std::uint8_t calculate_integrity() const;
     void update_integrity();
 };
 

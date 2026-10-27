@@ -106,6 +106,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Archive, Progress and sound
 
+- [Complete byte-exact ProgressMetadata checksum](PROGRESS_INTEGRITY_BYTE_EXACT.md) — corrected native uint8 return, signed x86 address comparison, full 134-byte strict replay and eight-provider dependency validation.
+
 - [Whole archive-owner and resource-reader candidates](ARCHIVE_OWNER_RECONSTRUCTION.md)
 - [Whole archive and resource production protocol](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md)
 - [Whole compression and encryption protocol](ARCHIVE_WRITE_RECONSTRUCTION.md)

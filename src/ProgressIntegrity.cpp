@@ -5,12 +5,15 @@
 namespace th20 {
 extern GameRandom progress_random;
 
-std::uint32_t ProgressMetadata::calculate_integrity() const {
+std::uint8_t ProgressMetadata::calculate_integrity() const {
     std::lock_guard<std::recursive_mutex> guard(process_locks.slot(20));
-    const auto* cursor=reinterpret_cast<const std::uint8_t*>(this)+offsetof(ProgressMetadata,field_58);
-    std::uint8_t sum=0;
-    while (cursor<reinterpret_cast<const std::uint8_t*>(this)+offsetof(ProgressMetadata,field_1d0)) {
-        sum+=*cursor;
+    const auto* cursor = &field_58[0];
+    std::uint8_t sum = 0;
+    // The native x86 traversal compares addresses as signed 32-bit values.
+    while (static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(cursor)) <
+           static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(this) +
+               offsetof(ProgressMetadata, field_1d0))) {
+        sum += *cursor;
         ++cursor;
     }
     return sum;

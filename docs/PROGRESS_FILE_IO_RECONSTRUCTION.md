@@ -1,5 +1,11 @@
 # Whole progress-file loading, saving and native file I/O
 
+CORE/EXACT-165 later resolves the entire Metadata byte-sum root at 0x463F20.
+Its signed address comparison, byte return and 134-byte canonical replay are
+recorded in [focused exact evidence](PROGRESS_INTEGRITY_BYTE_EXACT.md).
+The historical 125/134 nonexact table below describes the earlier CORE089
+checkpoint, not the current result.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

@@ -675,7 +675,7 @@ relocations = [
 
 [units.worker_construct]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::Worker"]
 symbol = "??0Worker@th20@@QAE@XZ"
@@ -5460,7 +5460,7 @@ relocations = [
 # EXACT-053: real Worker launch/replacement, close/join/detach and destruction.
 [units.worker_destruct]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::~Worker"]
 symbol = "??1Worker@th20@@QAE@XZ"
@@ -5476,7 +5476,7 @@ relocations = [
 
 [units.worker_close_join]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::close_and_join"]
 symbol = "?close_and_join@Worker@th20@@QAEXXZ"
@@ -5497,7 +5497,7 @@ relocations = [
 
 [units.worker_detach]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::detach"]
 symbol = "?detach@Worker@th20@@QAEXXZ"
@@ -5517,7 +5517,7 @@ relocations = [
 
 [units.worker_close_detach]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::close_and_detach"]
 symbol = "?close_and_detach@Worker@th20@@QAEXXZ"
@@ -5537,7 +5537,7 @@ relocations = [
 
 [units.worker_start]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::start<int(void*), void*>"]
 symbol = "??$start@$$A6AHPAX@ZPAX@Worker@th20@@QAEXA6AHPAX@ZAAPAX@Z"
@@ -9835,7 +9835,7 @@ relocations = [
 
 [units.progress_metadata_ctor]
 source = "src/ProgressStorage.cpp"
-object = "build/core141-canonical/ProgressStorage.obj"
+object = "build/core164-canonical/ProgressStorage.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::ProgressMetadata::ProgressMetadata"]
 symbol = "??0ProgressMetadata@th20@@QAE@XZ"
@@ -9849,7 +9849,7 @@ relocations = [
 
 [units.progress_snapshot_ctor]
 source = "src/ProgressStorage.cpp"
-object = "build/core141-canonical/ProgressStorage.obj"
+object = "build/core164-canonical/ProgressStorage.obj"
 profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::ProgressSnapshot::ProgressSnapshot"]
 symbol = "??0ProgressSnapshot@th20@@QAE@XZ"
@@ -9867,7 +9867,7 @@ relocations = [
 
 [units.worker_start_save_member]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::start<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>"]
 symbol = "??$start@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAEXPAUProgressSaveManager@1@P821@AEXPAX@ZAAPAX@Z"
@@ -9891,7 +9891,7 @@ relocations = [
 
 [units.worker_save_member_construct]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::MemberTask"]
 symbol = "??0?$MemberTask@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAE@AAPAUProgressSaveManager@2@AAP832@AEXPAX@ZAAPAX@Z"
@@ -9902,7 +9902,7 @@ relocations = [
 
 [units.worker_save_member_invoke]
 source = "src/Worker.cpp"
-object = "build/core141-canonical/Worker.obj"
+object = "build/core164-canonical/Worker.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl"]
 functions = ["th20::Worker::MemberTask<ProgressSaveManager, void(ProgressSaveManager::*)(void*), void*>::operator()"]
 symbol = "??R?$MemberTask@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAEXXZ"
@@ -9913,7 +9913,7 @@ relocations = [
 
 [units.progress_save_copy_backup]
 source = "src/ProgressSaveManager.cpp"
-object = "build/core141-canonical/ProgressSaveManager.obj"
+object = "build/core164-canonical/ProgressSaveManager.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::ProgressSaveManager::copy_current_to_backup"]
 symbol = "?copy_current_to_backup@ProgressSaveManager@th20@@QAEHXZ"
@@ -9926,7 +9926,7 @@ relocations = [
 
 [units.progress_save_merge_current]
 source = "src/ProgressSaveManager.cpp"
-object = "build/core141-canonical/ProgressSaveManager.obj"
+object = "build/core164-canonical/ProgressSaveManager.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::ProgressSaveManager::merge_current"]
 symbol = "?merge_current@ProgressSaveManager@th20@@QAEHXZ"
@@ -9941,7 +9941,7 @@ relocations = [
 
 [units.progress_record_checksum]
 source = "src/ProgressFileParse.cpp"
-object = "build/core141-canonical/ProgressFileParse.obj"
+object = "build/core164-canonical/ProgressFileParse.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
 functions = ["th20::ProgressRecordHeader::calculate_checksum"]
 symbol = "?calculate_checksum@ProgressRecordHeader@th20@@QBEIH@Z"
@@ -10075,7 +10075,7 @@ relocations = [
 
 [units.progress_profile_initialize]
 source = "src/ProgressInitialize.cpp"
-object = "build/core145-canonical/ProgressInitialize.obj"
+object = "build/core164-canonical/ProgressInitialize.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::ProgressProfile::initialize"]
 symbol = "?initialize@ProgressProfile@th20@@QAEXXZ"
@@ -10091,7 +10091,7 @@ relocations = [
 
 [units.progress_metadata_initialize]
 source = "src/ProgressInitialize.cpp"
-object = "build/core145-canonical/ProgressInitialize.obj"
+object = "build/core164-canonical/ProgressInitialize.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::ProgressMetadata::initialize"]
 symbol = "?initialize@ProgressMetadata@th20@@QAEXXZ"
@@ -10110,14 +10110,14 @@ relocations = [
 
 [units.progress_metadata_update_integrity]
 source = "src/ProgressIntegrity.cpp"
-object = "build/core145-canonical/ProgressIntegrity.obj"
+object = "build/core164-canonical/ProgressIntegrity.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::ProgressMetadata::update_integrity"]
 symbol = "?update_integrity@ProgressMetadata@th20@@QAEXXZ"
 target_address = 0x004BEB60
 size = 161
 relocations = [
-  { offset = 0xd, type = "REL32", symbol = "?calculate_integrity@ProgressMetadata@th20@@QBEIXZ", target = 0x00463F20 },
+  { offset = 0xd, type = "REL32", symbol = "?calculate_integrity@ProgressMetadata@th20@@QBEEXZ", target = 0x00463F20 },
   { offset = 0x1b, type = "DIR32", symbol = "?progress_random@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
   { offset = 0x20, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
   { offset = 0x71, type = "DIR32", symbol = "?progress_random@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
@@ -10126,7 +10126,7 @@ relocations = [
 
 [units.progress_save_thread]
 source = "src/ProgressFileWrite.cpp"
-object = "build/core141-canonical/ProgressFileWrite.obj"
+object = "build/core164-canonical/ProgressFileWrite.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
 functions = ["th20::ProgressSaveManager::save"]
 symbol = "?save@ProgressSaveManager@th20@@QAEXPAX@Z"
@@ -10151,7 +10151,7 @@ relocations = [
 
 [units.progress_file_write]
 source = "src/ProgressFileWrite.cpp"
-object = "build/core141-canonical/ProgressFileWrite.obj"
+object = "build/core164-canonical/ProgressFileWrite.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
 functions = ["th20::ProgressSaveManager::write"]
 symbol = "?write@ProgressSaveManager@th20@@QAEHPBDPAUProgressSnapshot@2@@Z"
@@ -10211,7 +10211,7 @@ relocations = [
 
 [units.progress_file_parse]
 source = "src/ProgressFileParse.cpp"
-object = "build/core141-canonical/ProgressFileParse.obj"
+object = "build/core164-canonical/ProgressFileParse.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/source-charset:utf-8", "/execution-charset:.932"]
 functions = ["th20::ProgressSaveManager::parse"]
 symbol = "?parse@ProgressSaveManager@th20@@QAEHPAUProgressSnapshot@2@@Z"
@@ -14143,7 +14143,7 @@ relocations = [
 
 [units.progress_load_thread]
 source = "src/ProgressFileLoad.cpp"
-object = "build/core158-canonical/ProgressFileLoad.obj"
+object = "build/core164-canonical/ProgressFileLoad.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd", "/sdl", "/source-charset:utf-8", "/execution-charset:.932"]
 functions = ["th20::ProgressSaveManager::load"]
 symbol = "?load@ProgressSaveManager@th20@@QAEXPAX@Z"
@@ -14187,7 +14187,7 @@ relocations = [
 
 [units.progress_save_dtor]
 source = "src/ProgressSaveManager.cpp"
-object = "build/core141-canonical/ProgressSaveManager.obj"
+object = "build/core164-canonical/ProgressSaveManager.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
 functions = ["th20::ProgressSaveManager::~ProgressSaveManager"]
 symbol = "??1ProgressSaveManager@th20@@QAE@XZ"
@@ -16479,4 +16479,21 @@ size = 63
 relocations = [
   { offset = 13, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 0x0044CED0 },
   { offset = 38, type = "REL32", symbol = "?find_child@Animation@th20@@QAEPAU12@HH@Z", target = 0x0044C6B0 },
+]
+
+[units.progress_metadata_calculate_integrity]
+source = "src/ProgressIntegrity.cpp"
+object = "build/core164-canonical/ProgressIntegrity.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::ProgressMetadata::calculate_integrity"]
+symbol = "?calculate_integrity@ProgressMetadata@th20@@QBEEXZ"
+target_address = 4603680
+size = 134
+relocations = [
+  { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 22, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 27, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 36, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 112, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 126, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

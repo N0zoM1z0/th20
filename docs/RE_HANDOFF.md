@@ -1,8 +1,9 @@
 # Current reconstruction handoff
 
-The latest confirmed reconstruction batch closes Dialogue follow-box and
-AnimationHandle child lookup. CORE/EXACT-164 independently reaudits the complete
-Enemy mesh deformation root and expands its boundary tests. Start with this
+The latest confirmed reconstruction batch closes the complete 134-byte
+ProgressMetadata checksum, correcting its return ABI and signed pointer
+comparison. Earlier CORE/EXACT-164 independently audited the complete Enemy
+mesh deformation root and expanded its boundary tests. Start with this
 page, [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
@@ -13,10 +14,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 991 physical strict units, 164 canonical objects and 180,589
-disjoint comparison bytes. All 1,001 mapped functions have source; ten whole
+The graph contains 992 physical strict units, 164 canonical objects and 180,723
+disjoint comparison bytes. All 1,001 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-205 functions / 56,216 bytes, with 218 confirmed authored origins. The reference
+206 functions / 56,350 bytes, with 218 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -54,6 +55,22 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-165 corrects `ProgressMetadata::calculate_integrity` at 0x463F20:
+its return is a byte, not the previously declared uint32_t; the native signed
+32-bit address comparison and actual array-first-element expression now emit the
+whole 134-byte target. All six relocations are independently supported by prior
+exact LockRegistry/Worker and compiler-security roles. The 161-byte Metadata
+integrity update also remains exact with its corrected callee symbol. Actual
+include closures select **8 providers and 22 old strict units**. All eight are
+cold-built at reduced priority into `build/core164-canonical/`; all 22 old
+units and the new complete unit strictly replay exactly (**23/23**). The
+remaining 156 canonical providers reuse unchanged valid evidence. All five
+focused progress test suites pass. The original eight object and eight receipt
+hashes are protected in `core164-progress-scope.json`, while the new
+`core165-progress-final-proof.json` records verification results. Source ABI,
+exactness and portable fixture limitations are in
+[focused evidence](PROGRESS_INTEGRITY_BYTE_EXACT.md). No whole-graph replay was run.
 
 CORE/EXACT-164 touches only the Enemy mesh host semantics test and focused
 evidence/handoff prose. Its complete native 1,649-byte code audit confirms
@@ -124,17 +141,18 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
-| `build/core141-canonical/` | 73 | Every sibling `.receipt.json` |
+| `build/core141-canonical/` | 68 | Every sibling `.receipt.json` |
 | `build/core142-canonical/` | 7 | Every sibling `.receipt.json` |
-| `build/core145-canonical/` | 5 | Every sibling `.receipt.json` |
+| `build/core145-canonical/` | 3 | Every sibling `.receipt.json` |
 | `build/core149-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core151-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core154-canonical/` | 5 | Every sibling `.receipt.json` |
 | `build/core154-v2/` | 1 | Every sibling `.receipt.json` |
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
-| `build/core158-canonical/` | 11 | Every sibling `.receipt.json` |
+| `build/core158-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
 | `build/core163-canonical/` | 53 | Every sibling `.receipt.json` |
+| `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;
@@ -187,12 +205,11 @@ Ghidra, native exports and supplied `../game_exe/` files.
    [File lifetime](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md) and
    [whole dispatch](CORE_ECL_DISPATCH_RECONSTRUCTION.md).
 
-The ten accepted source-present whole nonexact roots are:
+The nine source-present whole nonexact roots are:
 
 | Root | Entry | Current boundary / evidence |
 | --- | --- | --- |
 | FunctionChainController::remove_unlocked | 0x412400 | 156/native162; [scheduler](FUNCTION_CHAIN_ALLOCATION_EXACT_RECONSTRUCTION.md) |
-| ProgressMetadata::calculate_integrity | 0x463F20 | Whole native134; [progress storage](EXACT_PROGRESS_STORAGE_RECONSTRUCTION.md) |
 | create_bomb_controller | 0x478300 | Whole native123; [Bomb owner](BOMB_OWNER_RECONSTRUCTION.md) |
 | EnemyState::update_mesh | 0x4A4190 | 1548/native1649; [mesh lifetime](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) |
 | EnemyPattern::emit_items | 0x4A5350 | 628/native630; [drop protocol](ENEMY_DROP_PROTOCOL_RECONSTRUCTION.md) |

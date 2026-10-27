@@ -632,7 +632,7 @@ address,name,module,confidence,evidence
 0x0050FB60,th20::ProgressSaveManager::save,ProgressFileWrite,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
 0x0050F3B0,th20::ProgressSaveManager::load,ProgressFileLoad,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
 0x0050F6B0,th20::ProgressSaveManager::write,ProgressFileWrite,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md; CORE/EXACT-091; docs/PROGRESS_FILE_EXACT_RECONSTRUCTION.md
-0x00463F20,th20::ProgressMetadata::calculate_integrity,ProgressIntegrity,high,CORE/EXACT-089; docs/PROGRESS_FILE_IO_RECONSTRUCTION.md
+0x00463F20,th20::ProgressMetadata::calculate_integrity,ProgressIntegrity,high,CORE/EXACT-165; docs/PROGRESS_INTEGRITY_BYTE_EXACT.md; independently corroborated Native byte-return and signed address branch
 0x00539E60,th20::ArchiveOwner::duplicate_name,ArchiveOwner,high,CORE/EXACT-094; docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md
 0x00539ED0,th20::ArchiveOwner::load_catalog,ArchiveOwner,high,CORE/EXACT-094; docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md
 0x0053A170,th20::ArchiveOwner::close,ArchiveOwner,high,CORE/EXACT-094; docs/ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md
