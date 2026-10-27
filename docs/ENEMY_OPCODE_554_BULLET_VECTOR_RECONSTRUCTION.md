@@ -65,9 +65,10 @@ O2/UBSan corroboration, not full native-game runtime execution.
 ## Open complete-root integration
 
 The original opcode 554 subpath is part of the single, unaccepted Enemy root.
-Its private full-root host case integration must still exercise Y-before-X
-argument reads, the original cached BulletController identity when the Context
-changes during operand evaluation, and the actual whole-owner float writes.
+CORE175 now [integrates and tests its complete native 106-byte case path](ENEMY_WHOLE_ROOT_554_BULLET_INTEGRATION.md)
+in the entire 41KB private host, retaining all previous tests plus 132 real
+Bullet-controller caller/retargeting/exception scenarios. This semantic
+verification does not upgrade the whole root to machine-code exactness.
 Renderer, Bullet VM, whole root compiler tables and callback/resource paths
 remain open. This new 39-byte full callee does not grant any partial 41KB root
 byte credit.

@@ -1,5 +1,15 @@
 # Current reconstruction handoff
 
+CORE175 now integrates native Enemy **opcode 554** into the single complete
+whole-root host, using the real 39-byte exact BulletController vector setter
+and complete original **106-byte caller interval**. One fresh 79-translation-
+unit host passes **37,479/37,479** O2/UBSan scenarios (132 new), including
+whole 2,001-bullet owner images, Y-before-X read order, early cached receiver,
+and operand failures. The private candidate reaches **119 effective values /
+90 primary heads**. Existing compiler-exactness statistics do not change;
+all 164 receipts and the original CORE173 private sources are preserved.
+See [new full-root verification](ENEMY_WHOLE_ROOT_554_BULLET_INTEGRATION.md).
+
 CORE/EXACT-174 restores **all 39 native bytes** of the true
 `BulletController::set_vector_4c(X,Y)` used by Enemy opcode **554**. The root
 reads the cached Context BulletController before **float operand 1 then 0**.
@@ -57,12 +67,13 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft now covers **118 effective values / 89 native
-primary heads**, including 524/553 genuine Game/Session/Controller, 517/518
-ScreenInf/message cleanup, 502/503 visibility and 516/575 real-callee paths.
-Its **37,347-case O2/UBSan** host passes (37,181 CORE170 cases plus 166
-new full-object/receiver/failure scenarios). Production Enemy dispatch remains
-undefined; none of these case intervals receives partial machine-code credit. See
+The private whole Enemy draft now covers **119 effective values / 90 native
+primary heads**, including 554 genuine BulletController, 524/553 real
+Game/Session/Controller, 517/518 ScreenInf/message cleanup, 502/503 visibility
+and 516/575 real-callee paths. Its **37,479-case O2/UBSan** whole host passes
+(37,347 CORE173 cases plus 132 new entire-Bullet-owner/retargeting/failure
+scenarios). Production Enemy dispatch remains undefined; no case interval
+receives partial machine-code credit. See
 [ScreenInf/message proof](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
 [502/503 native paths](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
 and [516/575 integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
@@ -85,6 +96,20 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE175 is a **complete-root semantic** change with zero new production source
+or pinned strict units. The actual original opcode554 interval is 106 bytes/
+22 instructions and calls `Context::bullet_controller` before `float_argument(1)`
+and `float_argument(0)`, then the fully exact 39-byte BulletController setter.
+The protected 79-source whole Enemy host now passes **37,479/37,479** cases
+(132 new), exercising live 2001-slot BulletInf owners, early receiver
+selection, full object images and exceptions. Private evidence hashes cover
+93 inputs; all 164 canonical build receipts and CORE173 original whole-root
+candidate/log identities remain unchanged. Exact authored count remains
+**212 functions / 56,622 bytes / 998 physical strict units**, without
+partial Enemy root byte credit. See [complete caller evidence](ENEMY_WHOLE_ROOT_554_BULLET_INTEGRATION.md)
+and private `core175-enemy-whole-host-proof.json`.
+
 
 CORE/EXACT-174 is a real graph change: `BulletController::set_vector_4c`
 restores the complete 39-byte, zero-relocation native setter at 0x486480,
@@ -283,7 +308,8 @@ The actual-owner fixture passes 512 guarded dirty constructions, 24 exception
 unwinds, 2,049 live callbacks and 3,072 full-width ready reads. The affected
 FrontInf fixture passes 1,706 cases; AsciiInf passes 256 dirty constructions,
 81,920 complete line images and 768 shared-file selections. The historical CORE161 whole-root
-fixture passed 36,232 cases; CORE170 passed 37,181; current CORE173 passes 37,347. Source and fixture limitations are explicit in the
+fixture passed 36,232 cases; CORE170 passed 37,181; CORE173 passed
+37,347; current CORE175 passes 37,479. Source and fixture limitations are explicit in the
 focused evidence; these are portable checks, not native game execution.
 
 Historical CORE161 private proofs include `core161-cold-proof.json`,
@@ -344,9 +370,9 @@ Preserve `core161-pre-dialogue-inputs.json.gz`,
 `core161-probe-v1-original-inputs.json.gz`,
 `core161-probe-v2-original-inputs.json.gz`,
 `core161-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
-archives. Current private root inputs are `core173-enemy-dispatch-candidate.cpp`,
-`core173-dispatch-host.cpp`, `core173-game-session-host-cases.inc` and the
-CORE173 recipe/proof. CORE170, CORE169, CORE168, CORE161 and earlier candidates,
+archives. Current private root inputs are `core175-enemy-dispatch-candidate.cpp`,
+`core175-dispatch-host.cpp`, `core175-bullet-vector-host-cases.inc` and the
+CORE175 recipe/proof. CORE173, CORE170, CORE169, CORE168, CORE161 and earlier candidates,
 fixtures and unfinished protocols remain protected.
 
 Historical archive lookup remains in the handoff146/149/152/154/157/160 and
@@ -370,8 +396,9 @@ Ghidra, native exports and supplied `../game_exe/` files.
    factory/message/cancellation bodies remain open. Opcode 524 and 553 now have verified
    whole-host integrations with real typed callees; 539, 548/549,
    551, 555 and other nondefault state paths still need real owners.
-   Opcode 554 now has an exact true BulletController vector setter; its
-   actual Y-before-X full-root caller integration remains open. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
+   Opcode 554 now has both an exact true BulletController vector setter and
+   passing live Y-before-X whole-root caller integration; root byte emission
+   and native startup are still open. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md),
    [state](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md),
    [Card](ENEMY_CARD_STATE_RECONSTRUCTION.md),
