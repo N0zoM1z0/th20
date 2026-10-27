@@ -49,6 +49,7 @@ struct EnemyController : TaskInfo {
     void set_field_84_bit_0(std::uint32_t input);
     void set_field_88(std::uint32_t value);
     Enemy* find(std::uint32_t identifier);
+    bool has_identifier(std::uint32_t identifier);
     std::int32_t count() const;
     std::int32_t capacity() const;
     Enemy* create(const char* name, const EnemySpawn& parameters, Enemy* parent);

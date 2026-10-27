@@ -1006,3 +1006,5 @@ th20::EnemyController::set_field_88,0x0049C490,function
 th20::PlayerTable::set_field_1fc,0x0049C970,function
 th20::GameController::set_field_34,0x0049C940,function
 th20::BulletController::set_vector_4c,0x00486480,function
+th20::PackedColor::operator=(uint32_t),0x0045D650,function
+th20::EnemyController::has_identifier,0x0049BF00,function

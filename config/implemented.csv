@@ -1005,3 +1005,5 @@ th20::EnemyController::set_field_88
 th20::PlayerTable::set_field_1fc
 th20::GameController::set_field_34
 th20::BulletController::set_vector_4c
+th20::PackedColor::operator=(uint32_t)
+th20::EnemyController::has_identifier

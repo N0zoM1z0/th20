@@ -9,7 +9,9 @@ namespace th20 {
 // Actual four-byte packed color value; original type spelling remains unknown.
 struct PackedColor {
     std::uint32_t value;
-    explicit PackedColor(std::uint32_t value = 0);
+    PackedColor();
+    explicit PackedColor(std::uint32_t value);
+    std::uint32_t operator=(std::uint32_t input);
 };
 
 struct SelectionPulse {

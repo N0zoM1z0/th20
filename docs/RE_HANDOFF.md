@@ -1,5 +1,20 @@
 # Current reconstruction handoff
 
+CORE/EXACT-178 corrects a real type/ABI misconception discovered by
+whole-provider replay: native 0x4117A0 is the **void-return AnimationHandle**
+writer, while native 0x45D650 is the **24-byte PackedColor uint32-return**
+writer. Original AnimationHandle is preserved. The genuine four-byte
+PackedColor already exists in production; its default constructor shares
+the **previously accepted 23-byte** zero head and has **zero new byte credit**.
+The other complete new function is the **244-byte** native
+`EnemyController::has_identifier` used by opcode 549, with full iterator
+lifetime and **13 independently established relocations**. The combined 14
+changed-include providers cold replay **87/87** original + new units over
+16,836 compared bytes; 28 original product hashes and 150 unaffected
+receipts remain valid. Both host suites pass. The whole Enemy dispatcher
+remains nonexact, and its opcode 551 host needs the corrected PackedColor type.
+See [corrected native type and query evidence](ENEMY_COLOR_CONTAINS_NATIVE_RECONSTRUCTION.md).
+
 CORE176 extends the actual single **41,967-byte Enemy dispatcher** private
 candidate with **opcode 551**, independently decoded as a whole **257-byte
 native interval / 58 instructions**. It runs the real AnimationHandle and
@@ -63,10 +78,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 998 physical strict units, 164 canonical objects and 180,995
-disjoint comparison bytes. All 1,007 mapped functions have source; nine whole
+The graph contains 1,000 physical strict units, 164 canonical objects and 181,263
+disjoint comparison bytes. All 1,009 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-212 functions / 56,622 bytes, with 224 confirmed authored origins. The reference
+214 functions / 56,890 bytes, with 226 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -109,6 +124,23 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-178 is an actual source/ABI correction and protected exact replay:
+**24/24** bytes for the real `PackedColor::operator=(uint32_t)` at 0x45D650
+and **244/244** bytes for genuine EnemyController boolean membership at
+0x49BF00. The first is **not** the existing 21-byte void AnimationHandle
+assignment at 0x4117A0; a 53-object rejected experiment proves why. Shared
+PackedColor no-arg construction has the already-credited 23-byte physical
+head at 0x425CC0 and is **not** added as a new strict unit. Native iterator
+EH/cleanup and thirteen pre-established relocation targets support the
+second method. Source/receipt include closures require **14** new cold MSVC
+objects / 85 pre-existing exact units; all **87/87** including the two new
+units pass with **16,836** complete compared bytes. Every one of the **28**
+old object/receipt hashes and **150** unaffected canonical receipts is valid.
+PackedColor and Enemy iterator/whole-owner public tests pass. The whole root
+remains separate. See [focused correction and exact evidence](ENEMY_COLOR_CONTAINS_NATIVE_RECONSTRUCTION.md)
+and `.analysis/core178-final-exact-proof.json`.
+
 
 CORE176 is a **whole-root host-only** continuation. Its original opcode 551
 is one 257-byte native case (58 instructions), with live AnimationHandle and
@@ -361,7 +393,7 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
-| `build/core141-canonical/` | 67 | Every sibling `.receipt.json` |
+| `build/core141-canonical/` | 66 | Every sibling `.receipt.json` |
 | `build/core142-canonical/` | 6 | Every sibling `.receipt.json` |
 | `build/core145-canonical/` | 3 | Every sibling `.receipt.json` |
 | `build/core149-canonical/` | 1 | Every sibling `.receipt.json` |
@@ -371,13 +403,14 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
-| `build/core163-canonical/` | 28 | Every sibling `.receipt.json` |
+| `build/core163-canonical/` | 27 | Every sibling `.receipt.json` |
 | `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
 | `build/core166-canonical/` | 2 | Every sibling `.receipt.json` |
 | `build/core167-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core171-canonical/` | 8 | Every sibling `.receipt.json` |
-| `build/core172-canonical/` | 17 | Every sibling `.receipt.json` |
-| `build/core174-canonical/` | 5 | Every sibling `.receipt.json` |
+| `build/core172-canonical/` | 14 | Every sibling `.receipt.json` |
+| `build/core174-canonical/` | 4 | Every sibling `.receipt.json` |
+| `build/core178-canonical/` | 14 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;

@@ -68,11 +68,36 @@ void exercise_protocols(th20::Player& player,th20::WeaponStoneInfo& overlay) {
     EnemyController controller;Enemy a,b,c;
     a.state.identifier.value=17;b.state.identifier.value=~std::uint32_t(0);c.state.identifier.value=17;
     controller.enemies.append(&a.controller_link);controller.enemies.append(&b.controller_link);controller.enemies.append(&c.controller_link);
+    // Opcode 549's genuine bool-valued EnemyController list query is not
+    // the pointer-returning find(). It must release the iterator on both
+    // early match and exhausted-list paths, preserving all owner bytes.
+    auto owner_image=[&](const auto& object) {
+        const auto* p=reinterpret_cast<const unsigned char*>(&object);
+        return std::vector<unsigned char>(p,p+sizeof(object));
+    };
+    unsigned enemy_contains_cases=0;
+    for(auto wanted:{0u,17u,18u,~std::uint32_t(0)}) {
+        auto before=owner_image(controller),ia=owner_image(a),ib=owner_image(b),ic=owner_image(c);
+        const bool found=controller.has_identifier(wanted);
+        assert(found==(wanted==17u || wanted==~std::uint32_t(0)));
+        assert(owner_image(controller)==before && owner_image(a)==ia &&
+               owner_image(b)==ib && owner_image(c)==ic);
+        assert(!a.controller_link.iterator && !b.controller_link.iterator && !c.controller_link.iterator);
+        ++enemy_contains_cases;
+    }
     assert(controller.find(17)==&a && controller.find(~std::uint32_t(0))==&b);
     assert(!controller.find(0) && !controller.find(18));
     assert(!a.controller_link.iterator && !b.controller_link.iterator && !c.controller_link.iterator);
     a.controller_link.detach();assert(controller.find(17)==&c);
+    assert(controller.has_identifier(17) && controller.has_identifier(~std::uint32_t(0)));
+    enemy_contains_cases+=2;
     b.controller_link.detach();c.controller_link.detach();assert(!controller.find(17));
+    for(auto wanted:{0u,17u,18u,~std::uint32_t(0)}) {
+        auto before=owner_image(controller);
+        assert(!controller.has_identifier(wanted) && owner_image(controller)==before);
+        ++enemy_contains_cases;
+    }
+    assert(enemy_contains_cases==10);
     assert(a.health_value()==&a.state.health);
     for(unsigned flags:{0u,1u,2u,~0u,0x80000001u}) {
         a.state.health.flags.bits=flags;a.health_value()->force_defeat();assert(a.state.health.flags.bits==(flags|2));

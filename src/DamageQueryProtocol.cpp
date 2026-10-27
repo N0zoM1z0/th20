@@ -59,6 +59,21 @@ Enemy* EnemyController::find(std::uint32_t identifier) {
     }
     return nullptr;
 }
+// The original bool-valued EnemyController list query, distinct from find().
+// Original x86 uses the real iterator lifetime, including unwind cleanup.
+bool EnemyController::has_identifier(std::uint32_t identifier) {
+    if (!identifier) return false;
+    {
+        auto& list = enemies;
+        auto iterator = list.begin();
+        auto* finish = list.end();
+        for (; iterator.differs(finish); iterator.advance()) {
+            auto* entry = iterator.get();
+            if (entry->node_value()->state.identifier.get() == identifier) return true;
+        }
+    }
+    return false;
+}
 EnemyHealth* Enemy::health_value() {return &state.health;}
 void EnemyHealth::force_defeat() {flags.bits|=2;}
 bool Enemy::reward_multiplier_enabled() {return (state.flags.word_04>>30)&1;}

@@ -16,7 +16,8 @@ class CoreSemanticsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             output = Path(temporary) / "core-semantics"
             subprocess.run([compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                            "-fsanitize=undefined", "-Isrc", "tests/core_semantics.cpp",
+                            "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                            "-Wl,--gc-sections", "-Isrc", "tests/core_semantics.cpp",
                             "src/Random.cpp", "src/Timer.cpp", "src/ClockScalar.cpp",
                             "src/FunctionChain.cpp", "src/LockRegistry.cpp", "src/TaskInfo.cpp", "src/TaskInfoConstruction.cpp",
                             "src/ArchiveCrypt.cpp",

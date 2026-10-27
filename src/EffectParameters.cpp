@@ -2,7 +2,12 @@
 
 namespace th20 {
 
+PackedColor::PackedColor() : value(0) {}
 PackedColor::PackedColor(std::uint32_t initial) : value(initial) {}
+std::uint32_t PackedColor::operator=(std::uint32_t input) {
+    value = input;
+    return input;
+}
 
 SelectionPulse::SelectionPulse() : enabled(0), radius(0) {}
 

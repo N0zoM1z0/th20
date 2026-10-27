@@ -858,3 +858,5 @@ address,name,module,confidence,evidence
 0x0049C970,th20::PlayerTable::set_field_1fc,Session,high,CORE/EXACT-172; actual native game and session typed owners with full cold-compiler proof
 0x0049C940,th20::GameController::set_field_34,GameController,high,CORE/EXACT-172; actual native game and session typed owners with full cold-compiler proof
 0x00486480,th20::BulletController::set_vector_4c,BulletController,high,CORE/EXACT-174; whole native 39B two-float setter and typed BulletInf+0x4C owner
+0x0045D650,th20::PackedColor::operator=(uint32_t),EffectParameters,high,CORE/EXACT-178; full original native method; independent owner and canonical source proof
+0x0049BF00,th20::EnemyController::has_identifier,EnemyController,high,CORE/EXACT-178; full original native method; independent owner and canonical source proof

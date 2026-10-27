@@ -28,6 +28,23 @@ void check_effect_values() {
     }
     for (std::uint32_t color : {0u, 0xffffffffu, 0x80000000u, 0x7fc00001u, 0xff123456u})
         assert(th20::PackedColor(color).value == color);
+    // The real four-byte PackedColor, not AnimationHandle, supplies native
+    // Enemy opcode 551's uint32-returning word assignment at 0x45D650.
+    // Its separately emitted no-arg zero constructor folds with an already
+    // registered native 0x425CC0 head and receives no duplicate byte credit.
+    unsigned packed_assignment_cases=0;
+    for (unsigned dirty : {0u, 0x55u, 0xa5u, 0xffu})
+        for (std::uint32_t color : {0u, 1u, 0xffffffffu, 0x80000000u,
+                                    0x01020304u, 0x7fc00001u, 0xff123456u}) {
+            alignas(th20::PackedColor) unsigned char storage[sizeof(th20::PackedColor)];
+            std::memset(storage,dirty,sizeof(storage));
+            auto* packed=::new(storage) th20::PackedColor();
+            assert(packed->value==0u);
+            const std::uint32_t returned=(*packed=color);
+            assert(returned==color && packed->value==color);
+            ++packed_assignment_cases;
+        }
+    assert(packed_assignment_cases==28);
     th20::EffectRequest request;
     assert(request.type == -1 && request.original_parameters == nullptr);
     assert(request.animation == nullptr && request.delay == 0 && request.parameters.enabled == 1);
