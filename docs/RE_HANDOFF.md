@@ -1,5 +1,20 @@
 # Current reconstruction handoff
 
+CORE179 integrates the **full 95-byte native Enemy opcode549 caller path** into
+the same 41,967-byte private whole-root draft, executing real
+`EnemyController::has_identifier` (244-byte exact) and real ECL destination
+forwarding. The previous opcode551 host now uses the separately confirmed
+`PackedColor` zero/returning assignment ABI, **not** the folded
+AnimationHandle void setter. One new 80-translation-unit O2/UBSan host passes
+**37,985/37,985** cases (336 new), checking early cached controller versus
+late live destination, intrusive iterator cleanup, owner-image preservation
+and operand/destination failures. Private input hashes cover **96** files;
+all 164 authenticated canonical receipts and CORE176 original source/hash
+identities remain valid. The exact graph is **unchanged**: 214 authored
+functions / 56,890 bytes / 1,000 physical strict units. Native 41,967-byte
+Enemy root remains **nonexact**. See
+[full boss-root evidence](ENEMY_WHOLE_ROOT_549_AND_COLOR_CORRECTION.md).
+
 CORE/EXACT-178 corrects a real type/ABI misconception discovered by
 whole-provider replay: native 0x4117A0 is the **void-return AnimationHandle**
 writer, while native 0x45D650 is the **24-byte PackedColor uint32-return**
@@ -95,11 +110,12 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft now covers **120 effective values / 91 native
-primary heads**, including 551 real FogValue construction and opaque global
+The private whole Enemy draft now covers **121 effective values / 92 native
+primary heads**, including 549 genuine Enemy membership and 551 real
+PackedColor/FogValue construction with bounded Background global
 transfer, 554 genuine BulletController, 524/553 Game/Session/Controller,
 517/518 ScreenInf/message cleanup, 502/503 visibility and 516/575 actual
-callees. Its **37,649-case O2/UBSan** whole host passes (37,479 CORE175 cases
+callees. Its **37,985-case O2/UBSan** whole host passes (37,649 CORE176 cases
 plus 170 packed-color/global-retargeting/failure scenarios). Production Enemy
 dispatch remains undefined; no partial case fragment gets exact-byte credit. See
 [ScreenInf/message proof](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
@@ -124,6 +140,21 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE179 advances the **same complete Enemy root** with the real opcode549
+95-byte/20-instruction original caller and restores the genuine
+`PackedColor` value type in opcode551, without new production code or
+independently counted case fragments. The 80-translation-unit full host passes
+**37,985/37,985** cases, with **336 new** real Enemy list/controller/VM
+late-destination/exception tests. Previous 170 FogValue scenarios all pass
+with the corrected PackedColor constructor and uint32 assignment. The private
+proof binds 96 actual inputs and compiler executable/log hashes; all 164
+current canonical receipts and protected CORE176 private evidence survive.
+Exactness remains **214 whole authored functions / 56,890 bytes / 1,000
+strict units**, and native 41,967-byte Enemy body tables and EH are open.
+See [complete root proof](ENEMY_WHOLE_ROOT_549_AND_COLOR_CORRECTION.md)
+and private `core179-enemy-whole-root-proof.json`.
+
 
 CORE/EXACT-178 is an actual source/ABI correction and protected exact replay:
 **24/24** bytes for the real `PackedColor::operator=(uint32_t)` at 0x45D650
@@ -431,9 +462,10 @@ Preserve `core161-pre-dialogue-inputs.json.gz`,
 `core161-probe-v1-original-inputs.json.gz`,
 `core161-probe-v2-original-inputs.json.gz`,
 `core161-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
-archives. Current private root inputs are `core176-enemy-dispatch-candidate.cpp`,
-`core176-dispatch-host.cpp`, `core176-fog-host-cases.inc` and the
-CORE176 recipe/proof. CORE175, CORE173, CORE170, CORE169, CORE168, CORE161 and earlier candidates,
+archives. Current private root inputs are `core179-enemy-dispatch-candidate.cpp`,
+`core179-dispatch-host.cpp`, `core179-enemy-membership-host-cases.inc`,
+`core179-fog-host-cases.inc` and the CORE179 recipe/proof. CORE176 retains its
+unaltered historic source and build evidence. CORE175, CORE173, CORE170, CORE169, CORE168, CORE161 and earlier candidates,
 fixtures and unfinished protocols remain protected.
 
 Historical archive lookup remains in the handoff146/149/152/154/157/160 and

@@ -14,12 +14,16 @@ The complete native opcode 551 primary interval is **0x00495C1F through
 jumps to the whole dispatcher's shared exit at 0x4963DF). The actual
 original instruction bytes, case SHA-256, and nine direct call sites are
 recorded in ignored private `.analysis/core176-enemy-551-native-audit.json`.
-The native trace constructs an actual four-byte `AnimationHandle` temporary,
-then calls `EnemyState::integer_argument` at indices **0, 1, 2** in that exact
-order. It assigns the third integer into the temporary through the genuine
-native handle word assignment at `0x0045D650`. This use of a handle-shaped
-four-byte value is observed; it does not establish that the word refers to a
-live renderer animation.
+The native trace constructs a four-byte scalar using a folded zero-value
+constructor (historically attributed to `AnimationHandle`), then calls
+`EnemyState::integer_argument` at indices **0, 1, 2** in that exact order. It assigns the third integer into the temporary through native
+`0x0045D650`. **Later CORE/EXACT-178 independently corrected this earlier
+typing hypothesis:** the 24-byte value-returning setter is now complete as
+a real four-byte `PackedColor` method, and the shared 23-byte zero initializer
+at `0x00425CC0` does not uniquely identify an AnimationHandle. In contrast,
+the previously accepted 21-byte `AnimationHandle`/`Identifier32` void writer
+is at `0x004117A0` and must not be redirected. See
+[color ABI correction](ENEMY_COLOR_CONTAINS_NATIVE_RECONSTRUCTION.md).
 
 It then reads floats in **4, 3** order, and interprets the third integer's
 four little-endian bytes as unsigned blue, green, red and alpha values. Each
@@ -69,6 +73,11 @@ production code, ledger mappings, strict units, or exactness claims. The
 private whole-root draft now covers **120 effective opcode values / 91
 original primary heads**, with **212 independently accepted complete authored
 functions / 56,622 native bytes** and **998 whole strict units** unchanged.
+
+CORE179 subsequently re-runs these same 170 scenarios against the now
+correctly typed real `PackedColor` constructor and returning assignment,
+as part of a [37,985-case complete-root host](ENEMY_WHOLE_ROOT_549_AND_COLOR_CORRECTION.md).
+The old labels above are historical, not an acceptance of handle identity.
 
 ## Remaining major work
 
