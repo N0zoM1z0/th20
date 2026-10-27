@@ -1,5 +1,18 @@
 # Current reconstruction handoff
 
+CORE176 extends the actual single **41,967-byte Enemy dispatcher** private
+candidate with **opcode 551**, independently decoded as a whole **257-byte
+native interval / 58 instructions**. It runs the real AnimationHandle and
+FogValue construction/packing with true `integer 0/1/2, float 4/3` read order.
+The original global at `0x005C069C` is deliberately an **opaque captured
+boundary**: its full Stage/Background owner remains unproven. The entire
+79-translation-unit host passes **37,649/37,649** scenarios, adding 170
+new packed-color, late-global and exception checks. All 164 canonical
+compiler receipts and previous CORE175 private hashes remain valid. The
+full-root exactness graph remains **unchanged**: 212 whole authored exact
+functions / 56,622 bytes / 998 strict units. See
+[focused 551 full-root evidence](ENEMY_WHOLE_ROOT_551_FOG_INTEGRATION.md).
+
 CORE175 now integrates native Enemy **opcode 554** into the single complete
 whole-root host, using the real 39-byte exact BulletController vector setter
 and complete original **106-byte caller interval**. One fresh 79-translation-
@@ -67,13 +80,13 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft now covers **119 effective values / 90 native
-primary heads**, including 554 genuine BulletController, 524/553 real
-Game/Session/Controller, 517/518 ScreenInf/message cleanup, 502/503 visibility
-and 516/575 real-callee paths. Its **37,479-case O2/UBSan** whole host passes
-(37,347 CORE173 cases plus 132 new entire-Bullet-owner/retargeting/failure
-scenarios). Production Enemy dispatch remains undefined; no case interval
-receives partial machine-code credit. See
+The private whole Enemy draft now covers **120 effective values / 91 native
+primary heads**, including 551 real FogValue construction and opaque global
+transfer, 554 genuine BulletController, 524/553 Game/Session/Controller,
+517/518 ScreenInf/message cleanup, 502/503 visibility and 516/575 actual
+callees. Its **37,649-case O2/UBSan** whole host passes (37,479 CORE175 cases
+plus 170 packed-color/global-retargeting/failure scenarios). Production Enemy
+dispatch remains undefined; no partial case fragment gets exact-byte credit. See
 [ScreenInf/message proof](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
 [502/503 native paths](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
 and [516/575 integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
@@ -96,6 +109,21 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE176 is a **whole-root host-only** continuation. Its original opcode 551
+is one 257-byte native case (58 instructions), with live AnimationHandle and
+actual 28-byte FogValue constructors and all five operands evaluated in their
+independently verified `i0,i1,i2,f4,f3` order. The current global pointer at
+0x005C069C is chosen after the operands; it is captured as an unresolved
+owner, **not** introduced as a maintained class. The complete 79-source host
+passes **37,649/37,649**, including **170 new** full-color, signed distance,
+late-owner and operand-failure tests. Private proof hashes **94** input paths,
+protects original CORE175 candidate/log bytes, and verifies all 164 canonical
+build receipts. The admitted graph is unchanged: **212 whole authored exact
+functions / 56,622 bytes / 998 strict units**; no whole Enemy root byte claim.
+See [native and whole-root proof](ENEMY_WHOLE_ROOT_551_FOG_INTEGRATION.md) and
+`core176-enemy-whole-host-proof.json` in private analysis.
+
 
 CORE175 is a **complete-root semantic** change with zero new production source
 or pinned strict units. The actual original opcode554 interval is 106 bytes/
@@ -309,7 +337,7 @@ unwinds, 2,049 live callbacks and 3,072 full-width ready reads. The affected
 FrontInf fixture passes 1,706 cases; AsciiInf passes 256 dirty constructions,
 81,920 complete line images and 768 shared-file selections. The historical CORE161 whole-root
 fixture passed 36,232 cases; CORE170 passed 37,181; CORE173 passed
-37,347; current CORE175 passes 37,479. Source and fixture limitations are explicit in the
+37,347; CORE175 passed 37,479; current CORE176 passes 37,649. Source and fixture limitations are explicit in the
 focused evidence; these are portable checks, not native game execution.
 
 Historical CORE161 private proofs include `core161-cold-proof.json`,
@@ -370,9 +398,9 @@ Preserve `core161-pre-dialogue-inputs.json.gz`,
 `core161-probe-v1-original-inputs.json.gz`,
 `core161-probe-v2-original-inputs.json.gz`,
 `core161-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
-archives. Current private root inputs are `core175-enemy-dispatch-candidate.cpp`,
-`core175-dispatch-host.cpp`, `core175-bullet-vector-host-cases.inc` and the
-CORE175 recipe/proof. CORE173, CORE170, CORE169, CORE168, CORE161 and earlier candidates,
+archives. Current private root inputs are `core176-enemy-dispatch-candidate.cpp`,
+`core176-dispatch-host.cpp`, `core176-fog-host-cases.inc` and the
+CORE176 recipe/proof. CORE175, CORE173, CORE170, CORE169, CORE168, CORE161 and earlier candidates,
 fixtures and unfinished protocols remain protected.
 
 Historical archive lookup remains in the handoff146/149/152/154/157/160 and
@@ -395,7 +423,9 @@ Ghidra, native exports and supplied `../game_exe/` files.
    and FrontInf/Bullet/Laser/Enemy call ordering, but the real Screen
    factory/message/cancellation bodies remain open. Opcode 524 and 553 now have verified
    whole-host integrations with real typed callees; 539, 548/549,
-   551, 555 and other nondefault state paths still need real owners.
+   555 and other nondefault state paths still need real owners. Opcode 551
+   now has a whole-host FogValue route, but its genuine global and forwarding
+   interpolation owner at 0x005C069C are still unaccepted.
    Opcode 554 now has both an exact true BulletController vector setter and
    passing live Y-before-X whole-root caller integration; root byte emission
    and native startup are still open. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
