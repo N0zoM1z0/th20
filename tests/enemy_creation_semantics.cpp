@@ -386,6 +386,26 @@ int main() {
         assert(controller.selected(index)==resolved_enemy && lookup_calls==2 && find_calls==1);
         ++publication_cases;
     }
+    // Native Enemy opcode 553 calls this real EnemyController +0x98
+    // setter. Test the complete owner image: every byte except data.field_88
+    // must survive, even for high-bit signed-looking input words.
+    unsigned state_field_cases = 0;
+    for (unsigned original : {0u,1u,0x80000000u,0xffffffffu,0xA5A55A5Au})
+        for (unsigned value : {0u,1u,2u,0x12345678u,0x80000000u,0xffffffffu}) {
+            controller.data.field_88 = original;
+            std::array<unsigned char,sizeof(EnemyController)> expected;
+            std::memcpy(expected.data(),&controller,sizeof(controller));
+            const auto field_offset = reinterpret_cast<unsigned char*>(&controller.data.field_88) -
+                reinterpret_cast<unsigned char*>(&controller);
+            // Host x64 offset legitimately differs from the separately
+            // verified native MSVC x86 +0x98 member layout.
+            std::memcpy(expected.data()+field_offset,&value,sizeof(value));
+            controller.set_field_88(value);
+            assert(controller.data.field_88 == value);
+            assert(std::memcmp(expected.data(),&controller,sizeof(controller)) == 0);
+            ++state_field_cases;
+        }
+    assert(state_field_cases == 30);
     for(unsigned index:{16u,0x7fffffffu,0x80000000u,0xffffffffu})
     for(Enemy* target:{static_cast<Enemy*>(nullptr),first,second}) {
         std::array<unsigned char,sizeof(EnemyController)> before;

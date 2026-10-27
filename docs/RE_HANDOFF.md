@@ -1,6 +1,8 @@
 # Current reconstruction handoff
 
-CORE170 adds genuine Enemy opcode 517 ScreenInf factory and opcode 518
+CORE/EXACT-171 adds the complete 25-byte EnemyController scalar dependency
+called by Enemy opcode 553, with 66/66 protected whole-unit strict replays.
+CORE170 previously added opcode 517 ScreenInf factory and opcode 518
 FrontInf→Bullet→Laser→Enemy cleanup paths to the private whole-root draft.
 The 37,181-case host passes, including all 36,802 prior CORE169 scenarios;
 the exact 41,967-byte Enemy root, native Screen allocation and full resource
@@ -16,10 +18,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 994 physical strict units, 164 canonical objects and 180,817
-disjoint comparison bytes. All 1,003 mapped functions have source; nine whole
+The graph contains 995 physical strict units, 164 canonical objects and 180,842
+disjoint comparison bytes. All 1,004 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-208 functions / 56,444 bytes, with 220 confirmed authored origins. The reference
+209 functions / 56,469 bytes, with 221 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -61,6 +63,22 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-171 reconstructs **`EnemyController::set_field_88`**, the complete
+25-byte game-specific write at 0x49C490, through the genuine Controller at
++0x98. The native opcode 553 obtains `Context::enemy_controller` before
+integer operand 0 and calls the cached receiver; the whole Enemy dispatcher
+remains unaccepted. Authentic includes require **11** protected fresh MSVC
+objects and **65 previous** strict units. All **66/66** old and new units
+replay exactly (**14,881 complete compared bytes**). Six renamed local string
+labels are proved independently from old/new complete COFF and native PE
+literals. All **22** old object and receipt hashes survive, with **153**
+valid unaffected receipts. Host Enemy creation/clear regression passes, plus
+30 complete `field_88` object-image scenarios; the genuine x86 layout is
+asserted at +0x98 without pretending x64 host offsets are identical. See
+[complete source/owner proof](ENEMY_OPCODE_553_CONTROLLER_FIELD_RECONSTRUCTION.md)
+and private `core171-final-exact-proof.json`.
+
 
 CORE170 independently decodes full opcode 517/518 case intervals (99/142
 original bytes; 25/31 native instructions), fixes seven-argument ScreenInf
@@ -226,10 +244,11 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
-| `build/core163-canonical/` | 47 | Every sibling `.receipt.json` |
+| `build/core163-canonical/` | 38 | Every sibling `.receipt.json` |
 | `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
-| `build/core166-canonical/` | 6 | Every sibling `.receipt.json` |
+| `build/core166-canonical/` | 4 | Every sibling `.receipt.json` |
 | `build/core167-canonical/` | 1 | Every sibling `.receipt.json` |
+| `build/core171-canonical/` | 11 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;

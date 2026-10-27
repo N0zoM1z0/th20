@@ -10,4 +10,7 @@ void EnemyController::set_selected(std::uint32_t index, Enemy* enemy) {
 void EnemyController::set_field_84_bit_0(std::uint32_t input) {
     data.field_84.bits.bit_0 = input;
 }
+void EnemyController::set_field_88(std::uint32_t value) {
+    data.field_88 = value;
+}
 } // namespace th20

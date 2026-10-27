@@ -47,6 +47,7 @@ struct EnemyController : TaskInfo {
     Enemy* selected(std::uint32_t index);
     void set_selected(std::uint32_t index, Enemy* enemy);
     void set_field_84_bit_0(std::uint32_t input);
+    void set_field_88(std::uint32_t value);
     Enemy* find(std::uint32_t identifier);
     std::int32_t count() const;
     std::int32_t capacity() const;
@@ -72,5 +73,6 @@ static_assert(offsetof(EnemyData, handles)==0x44);
 static_assert(offsetof(EnemyData, field_84)==0x84);
 static_assert(sizeof(EnemyController)==0x134);
 static_assert(offsetof(EnemyController,context)==0x130);
+static_assert(offsetof(EnemyController,data) + offsetof(EnemyData,field_88) == 0x98);
 #endif
 }

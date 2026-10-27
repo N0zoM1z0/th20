@@ -49,10 +49,10 @@ are excluded from Git.
 
 ## Repository status
 
-The maintained graph has **1,003 source-present mappings**, **994 physical strict
-units** and **164 comparison objects** covering 180,817 disjoint comparison bytes.
+The maintained graph has **1,004 source-present mappings**, **995 physical strict
+units** and **164 comparison objects** covering 180,842 disjoint comparison bytes.
 Nine mapped whole functions remain nonexact. Confirmed authored exactness is
-separately 208 functions / 56,444 bytes; it is not whole-game completion.
+separately 209 functions / 56,469 bytes; it is not whole-game completion.
 
 | Area | Current position |
 | --- | --- |
@@ -60,7 +60,7 @@ separately 208 functions / 56,444 bytes; it is not whole-game completion.
 | Reference review | All 6,945 indexed implementations and 113 parser-gap files reviewed |
 | ECL Runtime | Whole tick, call/frame/argument and lifetime protocols; [evidence](docs/EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | Animation | Lifetime, children, templates, frame/geometry/operand updates and real callbacks; whole VM remains open; [source map](docs/SOURCE_MAP.md) |
-| Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft covers 112 values/83 heads with 36,310 host checks, but native root remains open; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
+| Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft covers 116 values/87 heads with 37,181 host checks, but native root remains open; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |
