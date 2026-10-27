@@ -1,9 +1,9 @@
 # Current reconstruction handoff
 
-The latest full exact dependency is SoundInf positional effect request at
-0x426EB0, called by Enemy opcode 516. The previous batch closed the Player
-entity-flag setter for opcode 575. The whole Enemy dispatcher remains open;
-CORE/EXACT-165 separately closed the ProgressMetadata checksum. Start with this
+CORE168 integrates the already-exact SoundInf and Player dependencies into
+the private whole Enemy root for opcodes 516/575, with full host regression.
+The whole Enemy dispatcher remains open; CORE167 and CORE166 are the two
+separate complete native dependency admissions. Start with this
 page, [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
@@ -31,11 +31,13 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft still covers 110 effective values / 81 primary
-heads. It passes 36,232 O2/UBSan cases with actual Dialogue construction and ready
-reads. Twelve old synthetic getter mutation/exception cases are retired because
-the recovered getters are pure. Production dispatch remains undefined; no case
-fragment receives source acceptance or partial exact credit.
+The private whole Enemy draft now covers **112 effective values / 83 primary
+heads**. Its entire **36,310-case O2/UBSan** host passes, retaining all 36,232
+previous cases and adding 78 opcode 516/575 real-owner, operand-mutation and
+failure-order scenarios. The refresh also corrects old fixture dependencies
+on the now-real Dialogue destructor and Animation child linkage. Production
+dispatch remains undefined; no case fragment receives source acceptance or
+partial exact credit. See [complete caller evidence](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
 
 CORE/EXACT-162 reconstructs the 228-byte Dialogue destructor and its complete
 233-byte compiler contribution. It retires fifteen actual animation handles
@@ -55,6 +57,19 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE168 adds zero tracked production-source or canonical-unit changes. The
+private whole Enemy draft is extended with real opcode 516 and 575 case order,
+and its preserved 36,232 previous scenarios and 78 new real SoundInf/Player
+scenarios pass (**36,310**). The private host uses 78 source providers and
+keeps its original 76-provider/old candidate inputs SHA-protected rather than
+overwriting them. All new code and input SHA-256 hashes, locked PE checks and
+actual original case heads are in
+`core168-whole-enemy-root-proof.json`. This is verified large-root semantic
+progress only; total exact functions remain **208 / 56,444 bytes**. No
+cold canonical build or strict-root comparison is asserted for these private
+source changes.
+
 
 CORE/EXACT-167 closes all 52 original bytes of the real
 `SoundInf::request_effect_at(id,x)` at 0x426EB0, with three independently

@@ -32,6 +32,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md) — includes the current bounded dependency audit.
 - [Enemy movement opcode source frontier and raw random words](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) — private whole-root source work, retained interpolation state and the complete word sampler.
 - [Enemy state opcode source frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) — phase replacement, repeated operand reads, live receivers, conditional counter updates and five complete dependencies.
+- [Complete Enemy root host integration for opcodes 516/575](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md) — 112 effective values/83 heads in the private natural source draft; 36,310 real-owner host tests, including receiver capture and failure order; no root exact credit.
 - [Enemy opcode 575 and genuine Player flag owner](ENEMY_OPCODE_575_PLAYER_FLAG_RECONSTRUCTION.md) — complete native 42-byte bitfield setter with actual Player storage, Player(0) caller ordering and 37 scoped exact comparisons.
 - [Enemy rank destinations and script-time control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md) — actual instruction-destination forwarding, selected Runtime time, eleven further private paths and five whole strict dependencies.
 - [FrontInf owner and Enemy HUD callers](FRONT_OWNER_RECONSTRUCTION.md) — complete typed HUD owner, construction/publication, boss markers, full EH and three further private root paths.
