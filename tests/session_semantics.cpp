@@ -109,6 +109,13 @@ int main() {
         before=snapshot(*value);
         assert(value->clamped_field_1fc()==std::clamp(input,0,999));
         only_word_changed(*value,before,value->table.field_1fc);
+        // Native 0x49C970 stores the full signed input before clamping this
+        // same real field. Compare all of Session, not only the result.
+        value->table.field_1fc = 314;
+        before=snapshot(*value);
+        value->table.set_field_1fc(input);
+        assert(value->table.field_1fc==std::clamp(input,0,999));
+        only_word_changed(*value,before,value->table.field_1fc);
         value->table.field_204=input; before=snapshot(*value);
         assert(value->clamped_field_204()==std::clamp(input,-1,9999));
         only_word_changed(*value,before,value->table.field_204);

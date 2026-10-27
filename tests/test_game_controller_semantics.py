@@ -13,14 +13,16 @@ class GameControllerTests(unittest.TestCase):
         compiler = next((p for name in ("g++-13", "clang++-18", "c++")
                          if (p := shutil.which(name))), None)
         self.assertIsNotNone(compiler)
-        sources = ["GameController", "TaskInfoConstruction", "TaskInfo",
+        sources = ["GameController", "Session", "Context", "PlayerRecord",
+                   "TaskInfoConstruction", "TaskInfo",
                    "FunctionChain", "Timer", "ClockScalar", "Configuration",
                    "ConfigurationValue", "EclDiagnostic"]
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "game-controller"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-Isrc", "tests/game_controller_semantics.cpp",
+                "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",
+                "-Wl,--gc-sections", "-Isrc", "tests/game_controller_semantics.cpp",
                 *(f"src/{name}.cpp" for name in sources), "-o", str(output),
             ], cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True, timeout=10)

@@ -27,6 +27,10 @@ std::int32_t Session::clamped_field_1f4() { return table.clamped_field_1f4(); }
 std::int32_t PlayerTable::clamped_field_1fc() {
     field_1fc = std::clamp(field_1fc,0,999); return field_1fc;
 }
+void PlayerTable::set_field_1fc(std::int32_t value) {
+    field_1fc = value;
+    field_1fc = std::clamp(field_1fc,0,999);
+}
 std::int32_t PlayerTable::clamped_field_204() {
     field_204 = std::clamp(field_204,-1,9999); return field_204;
 }

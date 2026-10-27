@@ -20,6 +20,7 @@ struct PlayerTable {
     void add_continue_count(std::int32_t delta);
     PlayerRecord& player(std::int32_t index);
     std::int32_t mode();
+    void set_field_1fc(std::int32_t value);
     std::int32_t clamped_field_1fc();
     std::int32_t clamped_field_1f4();
     std::int32_t clamped_field_204();
@@ -60,6 +61,7 @@ static_assert(offsetof(PlayerTable,field_220) == 0x220);
 static_assert(sizeof(Session) == 0x2c0);
 static_assert(offsetof(Session,field_60) == 0x60);
 static_assert(offsetof(Session,flags) == 0x6c);
+static_assert(offsetof(PlayerTable,field_1fc) == 0x1fc);
 static_assert(offsetof(Session,table) == 0x88);
 static_assert(offsetof(Session,field_2b0) == 0x2b0);
 #endif

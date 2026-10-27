@@ -208,3 +208,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0049C390,th20::Player::set_entity_flag_10,42,matching,100.00,player_entity_flag_bit10,CORE/EXACT-166; cold canonical 42-byte whole function replay with zero relocations and verified native Player owner
 0x00426EB0,th20::SoundInf::request_effect_at,52,matching,100.00,sound_effect_request_at,CORE/EXACT-167; whole pinned-MSVC function and three independently established relocation roles
 0x0049C490,th20::EnemyController::set_field_88,25,matching,100.00,enemy_controller_set_field_88,CORE/EXACT-171; complete native 25-byte dependency of Enemy opcode553 with 0 relocations and protected 66-unit provider replay
+0x0049C970,th20::PlayerTable::set_field_1fc,78,matching,100.00,player_table_set_field_1fc,CORE/EXACT-172; full pinned canonical comparison and independent native relocation targets
+0x0049C940,th20::GameController::set_field_34,36,matching,100.00,game_controller_set_field_34,CORE/EXACT-172; full pinned canonical comparison and independent native relocation targets

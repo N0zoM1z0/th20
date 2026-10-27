@@ -1002,3 +1002,5 @@ th20::AnimationHandle::find_child
 th20::Player::set_entity_flag_10
 th20::SoundInf::request_effect_at
 th20::EnemyController::set_field_88
+th20::PlayerTable::set_field_1fc
+th20::GameController::set_field_34

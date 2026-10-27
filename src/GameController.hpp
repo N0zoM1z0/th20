@@ -24,10 +24,12 @@ struct GameController final : TaskInfo {
     int animation_frozen() const;
     std::int32_t restart() const;
     void clear_flag_6();
+    void set_field_34(std::uint32_t value);
 };
 #if defined(_M_IX86)
 static_assert(sizeof(GameController)==0x110);
 static_assert(offsetof(GameController,frame_timer)==0x10);
+static_assert(offsetof(GameController,field_34)==0x34);
 static_assert(offsetof(GameController,configuration)==0x38);
 static_assert(offsetof(GameController,game_flags)==0xe8);
 static_assert(offsetof(GameController,field_f8)==0xf8);

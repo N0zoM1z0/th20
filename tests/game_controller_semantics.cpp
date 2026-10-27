@@ -1,4 +1,6 @@
 #include "GameController.hpp"
+#include "Session.hpp"
+#include <bit>
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -85,6 +87,34 @@ int main() {
         const auto before=snapshot(*value);
         assert(value->restart()==mode && snapshot(*value)==before);
     }
+    // The actual opcode 524 callees share two owners. GameController retains
+    // all 32 input bits in its own +34 word, while the real process Session's
+    // PlayerTable::field_1fc clamps the signed interpretation to 0..999.
+    const auto previous_table_word = session.table.field_1fc;
+    unsigned stage_cases = 0;
+    for (auto original : {0u,0xffffffffu,0x80000000u,0x12345678u})
+        for (auto input : {0u,1u,998u,999u,1000u,9999u,0x7fffffffu,
+                           0x80000000u,0xffffffffu,0x87654321u}) {
+            value->field_34 = original;
+            session.table.field_1fc = 384;
+            auto expected_game = snapshot(*value);
+            std::array<unsigned char,sizeof(Session)> expected_session{};
+            std::memcpy(expected_session.data(),&session,sizeof(session));
+            const auto game_offset = reinterpret_cast<const unsigned char*>(&value->field_34)
+                - reinterpret_cast<const unsigned char*>(value);
+            std::memcpy(expected_game.data()+game_offset,&input,sizeof(input));
+            const auto clamped = std::clamp(std::bit_cast<std::int32_t>(input),0,999);
+            const auto table_offset = reinterpret_cast<const unsigned char*>(&session.table.field_1fc)
+                - reinterpret_cast<const unsigned char*>(&session);
+            std::memcpy(expected_session.data()+table_offset,&clamped,sizeof(clamped));
+            value->set_field_34(input);
+            assert(value->field_34 == input && session.table.field_1fc == clamped);
+            assert(snapshot(*value)==expected_game);
+            assert(std::memcmp(&session,expected_session.data(),sizeof(session))==0);
+            ++stage_cases;
+        }
+    assert(stage_cases==40);
+    session.table.field_1fc=previous_table_word;
     std::destroy_at(value); // Explicit fixture boundary only.
     untouched(storage.data(),storage.data()+guard);
     untouched(storage.data()+guard+sizeof(GameController),storage.data()+storage.size());

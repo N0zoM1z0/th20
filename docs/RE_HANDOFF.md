@@ -1,7 +1,9 @@
 # Current reconstruction handoff
 
-CORE/EXACT-171 adds the complete 25-byte EnemyController scalar dependency
-called by Enemy opcode 553, with 66/66 protected whole-unit strict replays.
+CORE/EXACT-172 adds the two complete 78-byte PlayerTable / 36-byte
+GameController dependencies of Enemy opcode 524, with 149/149 protected
+strict replays. CORE/EXACT-171 previously added the complete 25-byte
+EnemyController scalar dependency called by Enemy opcode 553.
 CORE170 previously added opcode 517 ScreenInf factory and opcode 518
 FrontInf→Bullet→Laser→Enemy cleanup paths to the private whole-root draft.
 The 37,181-case host passes, including all 36,802 prior CORE169 scenarios;
@@ -18,10 +20,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 995 physical strict units, 164 canonical objects and 180,842
-disjoint comparison bytes. All 1,004 mapped functions have source; nine whole
+The graph contains 997 physical strict units, 164 canonical objects and 180,956
+disjoint comparison bytes. All 1,006 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-209 functions / 56,469 bytes, with 221 confirmed authored origins. The reference
+211 functions / 56,583 bytes, with 223 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -63,6 +65,25 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-172 establishes the genuine GameController and Session.table
+chain for opcode 524: global GameController pointer `0x005BA828` points to
+the real Game owner; `Session` at `0x005BA568` has PlayerTable at +0x88,
+which matches the independent native global access at `0x005BA5F0`.
+**`PlayerTable::set_field_1fc` (78/78)** stores then clamps the signed value
+to 0..999. **`GameController::set_field_34` (36/36)** calls that real table
+setter and preserves the original full input word in Game+0x34. Three
+relocations are independently established and 19 truly affected providers
+are cold-built into `build/core172-canonical/`: **149/149** complete strict
+units, **18,875** compared bytes. Fourteen changed compiler string labels
+match complete old/new COFF and original native constant bytes. All 38
+original object/receipt hashes survive, and 145 unaffected receipts remain
+valid. Both focused Game/Session O2/UBSan tests pass, including 40 paired
+full-owner image scenarios. The Enemy root still gets **zero** partial exact
+credit; opcode 524 whole-root host integration is separate next work. See
+[focused native/owner proof](ENEMY_OPCODE_524_GAME_SESSION_RECONSTRUCTION.md)
+and private `core172-final-exact-proof.json`.
+
 
 CORE/EXACT-171 reconstructs **`EnemyController::set_field_88`**, the complete
 25-byte game-specific write at 0x49C490, through the genuine Controller at
@@ -235,7 +256,7 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
 | `build/core141-canonical/` | 67 | Every sibling `.receipt.json` |
-| `build/core142-canonical/` | 7 | Every sibling `.receipt.json` |
+| `build/core142-canonical/` | 6 | Every sibling `.receipt.json` |
 | `build/core145-canonical/` | 3 | Every sibling `.receipt.json` |
 | `build/core149-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core151-canonical/` | 1 | Every sibling `.receipt.json` |
@@ -244,11 +265,12 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
-| `build/core163-canonical/` | 38 | Every sibling `.receipt.json` |
+| `build/core163-canonical/` | 30 | Every sibling `.receipt.json` |
 | `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
-| `build/core166-canonical/` | 4 | Every sibling `.receipt.json` |
+| `build/core166-canonical/` | 2 | Every sibling `.receipt.json` |
 | `build/core167-canonical/` | 1 | Every sibling `.receipt.json` |
-| `build/core171-canonical/` | 11 | Every sibling `.receipt.json` |
+| `build/core171-canonical/` | 9 | Every sibling `.receipt.json` |
+| `build/core172-canonical/` | 19 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;

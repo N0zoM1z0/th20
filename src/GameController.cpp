@@ -1,4 +1,5 @@
 #include "GameController.hpp"
+#include "Session.hpp"
 #include "EclDiagnostic.hpp"
 namespace th20 {
 GameController::GameController() noexcept
@@ -12,4 +13,8 @@ int GameController::update_suppressed() const {
 int GameController::animation_frozen() const {return (game_flags.bits>>1)&1u;}
 std::int32_t GameController::restart() const {return restart_mode;}
 void GameController::clear_flag_6() {game_flags.bits&=~0x40u;}
+void GameController::set_field_34(std::uint32_t value) {
+    session.table.set_field_1fc(static_cast<std::int32_t>(value));
+    field_34 = value;
+}
 }

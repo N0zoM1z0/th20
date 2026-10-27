@@ -855,3 +855,5 @@ address,name,module,confidence,evidence
 0x0049C390,th20::Player::set_entity_flag_10,Player,high,CORE/EXACT-166; typed native Player bit10 owner
 0x00426EB0,th20::SoundInf::request_effect_at,SoundEffects,high,CORE/EXACT-167; independently verified SoundInf coordinate-to-pan owner
 0x0049C490,th20::EnemyController::set_field_88,EnemyController,high,CORE/EXACT-171; actual controller +0x98 field; original full write and x86 object layout
+0x0049C970,th20::PlayerTable::set_field_1fc,Session,high,CORE/EXACT-172; actual native game and session typed owners with full cold-compiler proof
+0x0049C940,th20::GameController::set_field_34,GameController,high,CORE/EXACT-172; actual native game and session typed owners with full cold-compiler proof
