@@ -94,8 +94,10 @@ Windows/Renderer startup or a playable game.
 The Enemy 41,967-byte main root still needs its full primary routing tables,
 shared control exits, nested rank tables, compiler-owned EH/data, complete
 VM/Animation resource dependencies and missing long opcode paths. The
-corresponding original opcode548 case must be added to the existing private
-whole-root semantic host separately. Other high-value unresolved native
+corresponding original opcode548 case was subsequently [integrated and tested
+in the complete CORE181 whole-root host](ENEMY_WHOLE_ROOT_548_STAGE_TITLE_INTEGRATION.md)
+with 256 new native receiver/guard/Renderer-boundary scenarios, without
+claiming any exact root bytes. Other high-value unresolved native
 paths include 539 and 555. The three complete real methods add **118**
 nonoverlapping authored native bytes; they do **not** credit any fragment of
 Enemy's main root.

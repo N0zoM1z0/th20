@@ -1,5 +1,20 @@
 # Current reconstruction handoff
 
+CORE181 advances the *same complete 41,967-byte Enemy root* with native
+opcode **548** (original 17 bytes / four instructions) calling the now-exact
+real `FrontInf::show_stage_title` method, guarded by genuine Graphics mode8
+and Session flag5 helpers. The 80-translation-unit whole-root host passes
+**38,241/38,241** cases (256 new with 112 captured lower-level Animation VM
+spawn calls), including all 37,985 previously verified CORE179 scenarios.
+The real 4-arg AnimationFile wrapper and all owner methods execute; only its
+original 7-arg Renderer/VM producer is a captured boundary. Private SHA-256
+proof records 97 actual input paths, protected CORE179 source/log identities
+and 164 unchanged current canonical build receipts. The original Enemy boss
+root is **still not machine-code exact**; 217 independently exact functions /
+57,008 bytes / 1,003 physical strict units remain unchanged. See
+[CORE181 whole-root opcode548 proof](ENEMY_WHOLE_ROOT_548_STAGE_TITLE_INTEGRATION.md)
+and `.analysis/core181-enemy-whole-root-proof.json`.
+
 CORE/EXACT-180 reconstructs **three complete real functions** in the
 original Enemy opcode548 call chain: `Graphics::field_b0c_value` (20B),
 `Session::flag5_value` (23B) and `FrontInf::show_stage_title` (75B), with
@@ -11,9 +26,9 @@ units replay (**33,658** comparison bytes). All 58 previous object/receipt
 SHA hashes and 135 unaffected receipts remain valid. Actual Front, Graphics,
 Session and AnimationFile host tests pass 112 gate/spawn/failure scenarios,
 with 48 genuine animation spawn boundary calls, complete owner images and
-full original parameter ordering. Root Enemy opcode548 is not yet integrated
-in the private whole-root host; native 41,967-byte boss root remains
-nonexact. See [focused proof](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md)
+full original parameter ordering. CORE181 subsequently integrated opcode548 into the single
+private whole-root host with 256 additional real Front/Graphics/Session tests;
+native 41,967-byte boss root remains nonexact. See [focused proof](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md)
 and `.analysis/core180-stage-title-final-proof.json`.
 
 CORE179 integrates the **full 95-byte native Enemy opcode549 caller path** into
@@ -126,17 +141,19 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft now covers **121 effective values / 92 native
-primary heads**, including 549 genuine Enemy membership and 551 real
-PackedColor/FogValue construction with bounded Background global
-transfer, 554 genuine BulletController, 524/553 Game/Session/Controller,
-517/518 ScreenInf/message cleanup, 502/503 visibility and 516/575 actual
-callees. Its **37,985-case O2/UBSan** whole host passes (37,649 CORE176 cases
-plus 170 packed-color/global-retargeting/failure scenarios). Production Enemy
-dispatch remains undefined; no partial case fragment gets exact-byte credit. See
-[ScreenInf/message proof](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
-[502/503 native paths](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
-and [516/575 integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
+The private whole Enemy draft now covers **122 effective values / 93 native
+primary heads**, including original opcode548 and its actual FrontInf title
+owner, 549 genuine Enemy membership, 551 real PackedColor/FogValue packing,
+554 BulletController, 524/553 Game/Session/Controller, 517/518 ScreenInf,
+502/503 visibility and 516/575 real callees. Its **38,241-case O2/UBSan**
+single-root host passes (37,985 CORE179 cases plus 256 native stage-title
+owner/gate/failure scenarios). The original Enemy 41KB dispatch, compressed
+index, nested rank tables, common exits and EH are still **not byte exact**;
+no opcode fragment gets partial root credit. See
+[whole-root 548 caller](ENEMY_WHOLE_ROOT_548_STAGE_TITLE_INTEGRATION.md),
+[549/551 binding](ENEMY_WHOLE_ROOT_549_AND_COLOR_CORRECTION.md),
+[502/503 paths](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md) and
+[516/575 integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
 
 CORE/EXACT-162 reconstructs the 228-byte Dialogue destructor and its complete
 233-byte compiler contribution. It retires fifteen actual animation handles
@@ -431,7 +448,8 @@ unwinds, 2,049 live callbacks and 3,072 full-width ready reads. The affected
 FrontInf fixture passes 1,706 cases; AsciiInf passes 256 dirty constructions,
 81,920 complete line images and 768 shared-file selections. The historical CORE161 whole-root
 fixture passed 36,232 cases; CORE170 passed 37,181; CORE173 passed
-37,347; CORE175 passed 37,479; current CORE176 passes 37,649. Source and fixture limitations are explicit in the
+37,347; CORE175 passed 37,479; CORE176 passed 37,649;
+CORE179 passed 37,985; current CORE181 passes 38,241. Source and fixture limitations are explicit in the
 focused evidence; these are portable checks, not native game execution.
 
 Historical CORE161 private proofs include `core161-cold-proof.json`,
@@ -494,9 +512,10 @@ Preserve `core161-pre-dialogue-inputs.json.gz`,
 `core161-probe-v1-original-inputs.json.gz`,
 `core161-probe-v2-original-inputs.json.gz`,
 `core161-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
-archives. Current private root inputs are `core179-enemy-dispatch-candidate.cpp`,
-`core179-dispatch-host.cpp`, `core179-enemy-membership-host-cases.inc`,
-`core179-fog-host-cases.inc` and the CORE179 recipe/proof. CORE176 retains its
+archives. Current private root inputs are `core181-enemy-dispatch-candidate.cpp`,
+`core181-dispatch-host.cpp`, `core181-front-title-host-cases.inc` and the
+CORE181 recipe/proof. The original CORE179 candidate, fixture and log remain
+protected. CORE176 retains its
 unaltered historic source and build evidence. CORE175, CORE173, CORE170, CORE169, CORE168, CORE161 and earlier candidates,
 fixtures and unfinished protocols remain protected.
 
