@@ -5,6 +5,8 @@
 #include "LaserParameters.hpp"
 #include "Session.hpp"
 #include "TextLine.hpp"
+#include "WindowState.hpp"
+#include <cmath>
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -37,6 +39,7 @@ struct DialogueOwnerFixture::State {
     Dialogue* constructing = nullptr;
     Dialogue* followed = nullptr;
     Animation* followed_animation = nullptr;
+    Vector3 followed_position;
     std::int32_t failure = -1;
     unsigned spawns = 0;
     bool mutate = false;
@@ -118,11 +121,12 @@ struct DialogueFixtureBackend {
         }
         return 1;
     }
-    static void follow(Dialogue& dialogue, Animation* animation) {
+    static void set_follow_position(Animation& destination, const Vector3& position) {
         auto& s = state();
-        assert(&dialogue == s.value);
-        s.followed = &dialogue;
-        s.followed_animation = animation;
+        assert(s.value);
+        s.followed = s.value;
+        s.followed_animation = &destination;
+        s.followed_position = position;
     }
 };
 
@@ -175,6 +179,11 @@ Dialogue* DialogueOwnerFixture::construct(unsigned char pattern, std::uint8_t* s
     s.ascii[1].animation_file = &s.files[2];
     s.value = ::new (s.storage.data() + 32) Dialogue(script);
     s.frame.dialogue = s.value;
+    // Link real Animation child nodes and identifiers, not a fabricated tree
+    // lookup. The native recursive selector is linked from AnimationBinding.
+    s.animations[0].child_links[1].next = &s.animations[1].link_500;
+    s.animations[1].link_500.previous = &s.animations[0].child_links[1];
+    s.animations[1].base.field_440 = 166;
     return s.value;
 }
 
@@ -197,6 +206,10 @@ void DialogueOwnerFixture::check_guards(unsigned char pattern) const {
 void DialogueOwnerFixture::check_follow(Dialogue* receiver, Animation* animation) const {
     assert(state_->followed == receiver && state_->followed_animation == animation);
 }
+void DialogueOwnerFixture::check_position(float x, float y, float z) const {
+    const auto& p = state_->followed_position;
+    assert(std::fabs(p.x-x) < 0.0001f && std::fabs(p.y-y) < 0.0001f && std::fabs(p.z-z) < 0.0001f);
+}
 bool try_dialogue_resolve(AnimationHandle& handle, Animation*& output) {
     return DialogueFixtureBackend::resolve(handle, output);
 }
@@ -213,7 +226,15 @@ BulletController::~BulletController() = default;
 void BulletController::enable() { std::abort(); }
 LaserController::~LaserController() = default;
 // Production Dialogue destructor is linked; only resource backends are fixtures.
-void Dialogue::follow_box(Animation* animation) { test::DialogueFixtureBackend::follow(*this, animation); }
+// Real Dialogue::follow_box and AnimationHandle::find_child are linked.
+// Native animation tree/geometry/update owners are separate verified boundaries.
+WindowState window_state{};
+Vector3& Animation::position(Vector3& output) { output = vector_5bc; return output; }
+float Animation::scale_x_value() { return base.vector_50.x; }
+void Animation::set_position(const Vector3& value) {
+    vector_5bc = value;
+    test::DialogueFixtureBackend::set_follow_position(*this, value);
+}
 void AnimationHandle::interrupt(std::int32_t event) { test::DialogueFixtureBackend::interrupt(*this, event); }
 std::int32_t BulletController::cancel_all(std::int32_t mode) { return test::DialogueFixtureBackend::bullets(*this, mode); }
 std::int32_t LaserController::cancel_all(std::int32_t mode, std::int32_t argument) { return test::DialogueFixtureBackend::lasers(*this, mode, argument); }

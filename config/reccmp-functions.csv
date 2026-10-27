@@ -998,3 +998,5 @@ th20::LaserController::select_context,0x004D7E10,function
 th20::laser_controller,0x00478EE0,function
 th20::AnimationHandle::interrupt_offset_7,0x00464510,function
 th20::Dialogue::~Dialogue,0x004AFC00,function
+th20::Dialogue::follow_box,0x004B89A0,function
+th20::AnimationHandle::find_child,0x0044C670,function

@@ -5,6 +5,7 @@
 #include "Enemy.hpp"
 #include "EnemyController.hpp"
 #include "Session.hpp"
+#include "WindowState.hpp"
 #include <array>
 #include <atomic>
 #include <cassert>
@@ -113,9 +114,48 @@ int main() {
             auto& a = fixture.animation(i);
             assert(a.field_578 == 0x15 && a.field_579 == 0x15);
             assert(a.base.flags.word_04 == ((0xABCDEF00u + i) & ~0x400u));
+            auto& child = fixture.animation(1);
+            child.vector_5bc = Vector3(20.0f, 40.0f, 3.0f);
+            const float child_scale = (pattern & 1u) ? 1.5f : 0.5f;
+            child.base.vector_50.x = child_scale;
+            window_state.scale = (pattern % 3u == 0) ? 1.0f : ((pattern % 3u == 1) ? 2.0f : 4.0f);
+            d->handle_6c.value = 0x200u;
+            d->field_114 = static_cast<std::int32_t>(i); // modes 0,1,2 and fallthrough 3
             assert(a.field_5dc && a.field_5dc(&a) == 0);
             fixture.check_follow(d, &a);
+            float offset = 0.0f;
+            if (i == 0) offset = -36.0f;
+            else if (i == 1) offset = (child_scale < 1.0f)
+                ? (child_scale + 0.125f) * 32.0f - 8.0f : 24.0f;
+            else if (i == 2) offset = (child_scale + 0.125f) * 16.0f - 8.0f;
+            const float ratio = 2.0f / window_state.scale;
+            fixture.check_position(20.0f * ratio + offset, 40.0f * ratio, 3.0f);
             ++callbacks;
+        }
+        // Child identity is a real intrusive-tree traversal. A valid animation
+        // handle with no matching child does not update the destination.
+        if (pattern % 64u == 0) {
+            auto& a = fixture.animation(0);
+            const auto old_identifier = fixture.animation(1).base.field_440;
+            fixture.animation(1).base.field_440 = 0x1234;
+            const auto before = a.vector_5bc;
+            const auto count = fixture.events().size();
+            assert(a.field_5dc(&a) == 0);
+            assert(fixture.events().size() == count + 1);
+            assert(a.vector_5bc.x == before.x && a.vector_5bc.y == before.y &&
+                   a.vector_5bc.z == before.z);
+            fixture.animation(1).base.field_440 = old_identifier;
+        }
+        // Invalid lookups clear the handle and never move the target animation.
+        if (pattern % 32u == 0) {
+            d->handle_6c.value = 0xDEADBEEFu;
+            auto& a = fixture.animation(0);
+            const auto before = a.vector_5bc;
+            const auto event_count = fixture.events().size();
+            assert(a.field_5dc(&a) == 0);
+            assert(d->handle_6c.value == 0 && fixture.events().size() == event_count);
+            assert(a.vector_5bc.x == before.x && a.vector_5bc.y == before.y &&
+                   a.vector_5bc.z == before.z);
         }
         for (auto ready : {-2147483647-1,-1,0,1,0x100,2147483647}) {
             d->ready_state = ready;
@@ -135,16 +175,16 @@ int main() {
         d->cursor.excluded.push_back(13);
         d->cursor.selection_history.push(29);
         d->cursor.count_history.push(31);
-        fixture.destroy();
-{
-        auto retirement = expected;
+        {
+            auto retirement = fixture.events();
+            fixture.destroy();
         for (unsigned i = 0; i < 4; ++i) {
             retirement.push_back({'d', static_cast<std::int32_t>(0x1000 + i)});
             retirement.push_back({'d', static_cast<std::int32_t>(0x1100 + i)});
         }
-        for (std::int32_t handle : {0x1200, 0x200, 0x201, 0x202, 0x203, 0x1201, 0x1202})
-            retirement.push_back({'d', handle});
-        assert(fixture.events() == retirement);
+            for (std::int32_t handle : {0x1200, 0x200, 0x201, 0x202, 0x203, 0x1201, 0x1202})
+                retirement.push_back({'d', handle});
+            assert(fixture.events() == retirement);
         }
         assert(allocations.load() == baseline);
         ++constructions;
@@ -165,6 +205,10 @@ int main() {
         auto& animation = fixture.animation(0);
         // The original callback reads the current FrontInf at invocation time.
         assert(current_front == &second_fixture.front());
+        second->handle_6c.value = 0x200u;
+        second_fixture.animation(1).vector_5bc = Vector3(10.0f, 20.0f, 3.0f);
+        second_fixture.animation(1).base.vector_50.x = 1.0f;
+        window_state.scale = 2.0f;
         assert(animation.field_5dc(&animation) == 0);
         second_fixture.check_follow(second, &animation);
         assert(first != second);

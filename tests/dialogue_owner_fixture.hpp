@@ -33,6 +33,7 @@ public:
     const std::vector<DialogueEvent>& events() const;
     void check_guards(unsigned char pattern) const;
     void check_follow(Dialogue* receiver, Animation* animation) const;
+    void check_position(float x, float y, float z) const;
 };
 
 bool try_dialogue_resolve(AnimationHandle& handle, Animation*& output);

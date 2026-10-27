@@ -123,14 +123,61 @@ before destruction. The AnimationHandle backend remains captured, not a
 claim about the native handle allocator. Full Dialogue resource/frame execution
 and actual process-global startup remain open.
 
+## Follow-box and child lookup (CORE/EXACT-163)
+
+Native `Dialogue::follow_box` at 0x4B89A0 is now reconstructed as a complete
+387-byte method, with **24 independently established relocations**. The natural
+code resolves handle +6C, searches child identifier `field_13c + 166` at ordinal
+zero, returns without modifying the destination if none exists, gets a 3D child
+position, and multiplies X and Y separately by `2.0f / window_state.scale`.
+It deliberately leaves Z unchanged. Position mode +114 selects the original
+X correction: mode zero subtracts 36; mode one caps the child X scale at one
+or adds 0.125 below one before multiplying by 32 and subtracting eight;
+mode two uses the same added fraction times 16 minus eight; other modes leave
+X alone. The result is written through the actual `Animation::set_position`.
+
+The scale read at 0x5B8818 belongs to the independently established global
+`WindowState` at 0x5B6758, offset **+20C0**. The actual COFF relocation
+retains that source addend, rather than introducing another fake global.
+The whole function needs `/fp:strict`; `/fp:precise` produced a shorter and
+nonexact conditional path. All eight previous `DialogueText.cpp` units remain
+strictly exact after the translation unit's necessary profile change. The
+four compiler-renamed `"text"` literals in the constructor were reconciled by
+comparing their unmodified old/new COFF bytes and native NUL-terminated bytes,
+not by solving the target relocation fields.
+
+The corresponding `AnimationHandle::find_child` at 0x44C670 has a natural
+63-byte exact wrapper, with two pre-established relocation roles. It resolves
+the mutating handle, delegates identifier/ordinal to the real animation tree
+search when nonnull, and returns null otherwise. This is a separate method;
+its complete exactness does not imply the animation pool or handle backend
+has been implemented. No new fictitious class or field is introduced.
+
+The guarded portable owner fixture now invokes both production methods with a
+real intrusive animation child link, concrete handle-resolution boundary and
+captured actual destination writes. It checks modes 0, 1 (below and above
+unity), 2, unrecognized modes, three coordinate scales, invalid handle clearing,
+missing child, z preservation, cross-FrontInf callback routing, and original
+constructor/destructor resources. This is O2/UBSan host-side corroboration,
+not native engine execution. Original build-receipt include closures select exactly 53 affected providers
+and 351 strict units. All are freshly cold-compiled (51 previous outputs are
+redirected to new protected products), and all 351 completely replay exact.
+Original artifact/receipt hashes are preserved. Twenty-five compiler-local
+literal names shift while the full old/new COFF bytes and native C-string
+contents agree independently. Two native pooled ranges differ only outside
+the terminating NUL. The other 111 providers reuse unchanged inputs and
+receipts; no whole-graph replay is claimed.
+
 ## Semantic corroboration and remaining work
 
 O2/UBSan passes 512 guarded dirty-memory constructions, 24 exception-unwind
 failures, 2,049 live callback invocations and 3,072 full-width ready reads.
 It uses actual Dialogue, Cursor and standard-container lifetimes, actual AsciiInf,
 Bullet/Laser construction, real File wrappers and empty real Enemy clear.
-The full File producer, handle backend, cancellation resource bodies, native
-resource destructors and follow-box execution are explicit fixture boundaries.
+The full File producer, handle backend, cancellation resource bodies, and
+native resource/frame execution remain explicit fixture boundaries. Follow-box
+logic itself now executes with real animation child traversal and a captured
+position backend.
 Allocation balance verifies Cursor cleanup after captured resource failures.
 No native CPU, GPU, whole VM or playable-game result is claimed.
 
@@ -141,13 +188,10 @@ mutation/exception cases are retired: the recovered getters are pure and now
 read a live complete Dialogue instead of opaque storage. Production dispatch
 remains undefined; it receives no fragment source acceptance or partial credit.
 
-Next recover the full 387-byte follow-box body at 0x4B89A0. Its
-coordinate scale at 0x5B8818 is the genuine `WindowState::scale` at offset
-+20C0 of the independently established global owner (base 0x5B6758). Native handle
-child lookup at 0x44C670 is a separate interface. Existing Animation position,
-scale and position-write methods already cover the other observed calls.
-The Cursor constructor's emission question, Renderer ownership, full message VM
-and fourteen remaining nondefault Enemy state paths stay open. Reuse existing
+The whole Dialogue frame/message VM remains open, along with native resource
+retirement and Cursor construction emission. Renderer ownership and fourteen
+nondefault Enemy dispatch paths remain unverified. All completed follows use
+the independently supported WindowState owner, not a facade. Reuse existing
 negative trials and follow the affected-only workflow.
 
 Private reproducibility records are core161-pre-dialogue-inputs and original

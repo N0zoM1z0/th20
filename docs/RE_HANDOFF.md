@@ -1,7 +1,7 @@
 # Current reconstruction handoff
 
-The latest request is code/documentation cleanup and handoff to a later agent.
-This checkpoint is verified; no validation job is pending. Start with this page,
+Current work is source reconstruction of Dialogue follow-box and animation
+child lookup, with a deliberately scoped canonical exactness replay. Start with this page,
 [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
@@ -12,10 +12,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 988 physical strict units, 164 canonical objects and 179,906
-disjoint comparison bytes. All 998 mapped functions have source; ten whole
+The graph contains 991 physical strict units, 164 canonical objects and 180,589
+disjoint comparison bytes. All 1,001 mapped functions have source; ten whole
 mapped functions remain nonexact. Authored exact coverage is separately
-202 functions / 55,538 bytes, with 215 confirmed authored origins. The reference
+205 functions / 56,216 bytes, with 218 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -40,18 +40,47 @@ CORE/EXACT-162 reconstructs the 228-byte Dialogue destructor and its complete
 in the native order and leaves handle +70 untouched. All 14 independent
 relocations and seven existing same-provider units strictly pass from a new
 cold-built DialogueText object; portable production-owner retirement order
-and populated Cursor destruction pass 512 dirty constructions. The follow-box
-and full resource/frame VM remain open; see [Dialogue evidence](DIALOGUE_OWNER_RECONSTRUCTION.md).
+and populated Cursor destruction pass 512 dirty constructions. The full resource/frame VM remains open; see [Dialogue evidence](DIALOGUE_OWNER_RECONSTRUCTION.md).
+
+CORE/EXACT-163 closes the whole 387-byte Dialogue follow-box and 63-byte
+AnimationHandle child-forwarding method, with 26 independently mapped relocations.
+The native WindowState coordinate scale is proven at global +20C0, and the
+Dialogue TU now uses exact `/fp:strict` for all nine previously accepted units
+plus follow-box. The portable production-owner fixture exercises real intrusive
+child traversal, missing/invalid handles, X/Y scaling, three placement modes,
+retained Z and cross-FrontInf callback routing. These two functions add 450
+physical comparison bytes. The affected include-closure providers, not the
+whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
 
-The eleven source/header changes select 59 providers / 392 previous units from
-original receipts' captured include closures. All 59 are cold-built once,
-serially at reduced priority; 105 providers reuse valid evidence. All 392 previous
-units and eleven new complete units strictly pass. Two diagnostic Dialogue builds
-precede the final build. Full emitted INT3 tails, canonical relocations, Cursor
-cleanup and shared noexcept metadata are retained. No unfiltered whole-graph
-replay or full CI runs.
+CORE163 changed the two source files `DialogueText.cpp` and
+`AnimationHandle.cpp`, plus the existing handle declaration header. Actual
+`/showIncludes` closures in original authenticated receipts select **53
+providers / 351 strict units**; 51 previously accepted objects are rebuilt
+serially at `nice 15` into `build/core163-canonical/` without overwriting the
+original objects or receipts. The other two are already fresh in this
+canonical directory. All **351/351** complete strict comparisons pass after
+25 MSVC-generated literal labels were reconciled. Each old/new COFF literal
+has identical complete bytes, and each native constant agrees through NUL;
+2 native string-pool padded extents differ outside the original literal. No
+target byte was solved to obtain any relocation. The other **111 unaffected
+providers** reuse their previously validated original receipts; no unfiltered
+whole-graph replay is performed.
+
+Protected input hashes and the 53/351 affected closure are recorded privately in
+`core163-affected-scope.json`. The self-contained result index is
+`core163-affected-final-proof.json`: 351/351 full exact replays covering 63,053
+affected comparison bytes, all 53 current canonical receipts, all 106 protected
+old-object/receipt hashes, and 111 valid unaffected receipts. Three disjoint
+comparison batches and `core163-literal-reconciliation.json` retain all native
+literal identity evidence. Original object and receipt SHA-256 values
+match the frozen scope after all builds. Native game target SHA-256 stays locked.
+
+Prior CORE161 validated 59 providers / 392 previous units and eleven new
+whole units. That historical evidence was not recompiled outside this turn's
+actual affected closure. Complete INT3 tails, Cursor cleanup and shared
+exception metadata are retained.
 
 The actual-owner fixture passes 512 guarded dirty constructions, 24 exception
 unwinds, 2,049 live callbacks and 3,072 full-width ready reads. The affected
@@ -60,7 +89,7 @@ FrontInf fixture passes 1,706 cases; AsciiInf passes 256 dirty constructions,
 fixture passes 36,232 cases. Source and fixture limitations are explicit in the
 focused evidence; these are portable checks, not native game execution.
 
-Current private proofs include `core161-cold-proof.json`,
+Historical CORE161 private proofs include `core161-cold-proof.json`,
 `core161-affected-results.json.gz`, `core161-new-exact-results.json.gz`,
 `core161-independent-bindings.json`, `core161-existing-role-reconciliation.json`,
 `core161-protocol-native-identity.json`, `core161-public-test-proof.json`,
@@ -74,9 +103,8 @@ rather than rerunning admission or cleanup.
 regenerable host binary. Authentic receipts and SHA-bound input texts are archived
 before removal. `core161-cleanup.json` confirms all 328 current canonical files,
 twenty private investigation products and 356 native evidence/active inputs
-retain their protected hashes. The handoff/cleanup phase adds **zero compiler
-builds and zero replays**; only documentation, lightweight gates and hash checks
-run after the user's handoff request.
+retain their protected hashes. The preceding CORE161 cleanup phase added zero compiler builds/replays; the
+separate CORE163 phase above did rebuild exactly the affected 53 providers.
 
 ## Protected local products
 
@@ -91,11 +119,15 @@ run after the user's handoff request.
 | `build/core154-v2/` | 1 | Every sibling `.receipt.json` |
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 11 | Every sibling `.receipt.json` |
-| `build/core161-canonical/` | 59 | Every sibling `.receipt.json` |
+| `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
+| `build/core163-canonical/` | 53 | Every sibling `.receipt.json` |
 
-The manifest owns these 164 objects / 328 product files. The current 279-path
-source freeze is `core161-final-frozen-source.json`. Protected product, source,
-native-evidence and test hashes are in `core161-retirement-plan.json`.
+The manifest owns these 164 objects / 328 product files. Earlier authentic
+object/receipt pairs remain in their original directories without alteration;
+private CORE161 hashes and the new CORE163 scope both protect the old products.
+The previous 279-path source freeze is `core161-final-frozen-source.json`.
+Protected historical product, source, native-evidence and test hashes remain
+in `core161-retirement-plan.json`.
 Retain the nine root object/receipt pairs for core103-QueryProtocol-v5 and the
 core109..core113 sound probes, plus `build/core144-probes/Alignment.obj` and its
 receipt. These twenty files are historical unfinished-investigation snapshots;
@@ -121,13 +153,9 @@ Ghidra, native exports and supplied `../game_exe/` files.
 
 ## Next work
 
-1. Complete the 387-byte follow-box method at 0x4B89A0. Its coordinate
-   scale at 0x5B8818 has now been identified as the genuine `WindowState::scale`
-   field at +20C0 of the global at 0x5B6758; do not invent a facade.
-   The existing Animation position, scale and position-write methods cover
-   other observed calls. Handle child
-   lookup at 0x44C670 is a separate interface. Native resource retirement, the
-   Cursor constructor emission question and whole message VM remain open.
+1. Continue the whole Dialogue frame/message VM, native resource retirement,
+   and Cursor constructor emission. Follow-box and its real child lookup are
+   now closed; the Renderer and Animation pool integration remain open.
 2. Continue the complete Enemy dispatcher at 0x48C010, including its 41,967-byte
    ordinary body, tables and compiler contributions. Fourteen nondefault state
    paths remain unresolved. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),

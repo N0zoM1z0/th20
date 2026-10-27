@@ -6,6 +6,11 @@
 #include "HudGauge.hpp"
 #include "LaserParameters.hpp"
 #include "TextLine.hpp"
+#include "WindowState.hpp"
+
+#if defined(_M_IX86)
+static_assert(offsetof(th20::WindowState, scale) == 0x20C0);
+#endif
 
 namespace th20::dialogue_text {
 
@@ -117,6 +122,28 @@ Dialogue::~Dialogue() {
     handle_64.retire();
     handle_68.retire();
     handle_6c.retire();
+}
+
+void Dialogue::follow_box(Animation* animation) {
+    Animation* child = handle_6c.find_child(field_13c + 166, 0);
+    if (child) {
+        Vector3 position;
+        child->position(position);
+        position.x = (2.0f / window_state.scale) * position.x;
+        position.y = (2.0f / window_state.scale) * position.y;
+        if (field_114 == 1) {
+            if (child->scale_x_value() < 1.0f) {
+                position.x += (child->scale_x_value() + 0.125f) * 32.0f - 8.0f;
+            } else {
+                position.x += 1.0f * 32.0f - 8.0f;
+            }
+        } else if (field_114 == 0) {
+            position.x -= 36.0f;
+        } else if (field_114 == 2) {
+            position.x += (child->scale_x_value() + 0.125f) * 16.0f - 8.0f;
+        }
+        animation->set_position(position);
+    }
 }
 
 std::int32_t Dialogue::ready() { return ready_state; }
