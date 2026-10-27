@@ -66,6 +66,7 @@ struct Graphics {
     graphics_api::Device* get_device();
     // The locked target's texture-format predicate is a constant-zero method.
     std::int32_t texture_format_mode();
+    std::int32_t field_b0c_value() const;
 };
 // Production global definition/startup and destruction remain open.
 extern Graphics process_graphics;

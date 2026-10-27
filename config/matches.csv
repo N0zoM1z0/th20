@@ -213,3 +213,6 @@ address,name,size,status,match_percent,unit,evidence
 0x00486480,th20::BulletController::set_vector_4c,39,matching,100.00,bullet_controller_set_vector_4c,CORE/EXACT-174; full original body zero relocations; all affected Bullet providers independently cold replayed
 0x0045D650,th20::PackedColor::operator=(uint32_t),24,matching,100.00,packed_color_assign_u32,CORE/EXACT-178; complete native whole function plus protected joint-cold compiler replay
 0x0049BF00,th20::EnemyController::has_identifier,244,matching,100.00,enemy_controller_has_identifier,CORE/EXACT-178; complete native whole function plus protected joint-cold compiler replay
+0x004AC0C0,th20::Graphics::field_b0c_value,20,matching,100.00,graphics_field_b0c_value,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; complete cold MSVC replay with original graphics/Session/ANM relocations
+0x004B8390,th20::Session::flag5_value,23,matching,100.00,session_flag5_value,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; complete cold MSVC replay with original graphics/Session/ANM relocations
+0x004B96F0,th20::FrontInf::show_stage_title,75,matching,100.00,front_show_stage_title,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; complete cold MSVC replay with original graphics/Session/ANM relocations

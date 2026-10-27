@@ -1,6 +1,9 @@
 #include "HudGauge.hpp"
 #include "EclDiagnostic.hpp"
 #include "DialogueText.hpp"
+#include "Graphics.hpp"
+#include "Session.hpp"
+#include "AnimationFile.hpp"
 
 namespace th20 {
 
@@ -36,6 +39,11 @@ FrontInf::FrontInf()
     current_front = this;
 }
 
+void FrontInf::show_stage_title() {
+    if (process_graphics.field_b0c_value() != 8 && !session.flag5_value()) {
+        message_file->spawn(nullptr, 0, -1, nullptr);
+    }
+}
 std::int32_t FrontInf::has_dialogue() { return dialogue ? 1 : 0; }
 std::int32_t FrontInf::dialogue_ready() { return dialogue->ready(); }
 Dialogue* FrontInf::dialogue_value() { return dialogue; }

@@ -31,6 +31,7 @@ Graphics::Graphics() noexcept
       startup_scene(nullptr), field_dcc(0), field_dd0(0), field_dd4(0),
       update_duration(0), clear_color(0) {}
 graphics_api::Device* Graphics::get_device() { return device; }
+std::int32_t Graphics::field_b0c_value() const { return field_b0c; }
 std::int32_t Graphics::texture_format_mode() { return 0; }
 std::uint32_t select_texture_format(std::uint32_t format) {
     if (process_graphics.texture_format_mode()) {

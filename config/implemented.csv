@@ -1007,3 +1007,6 @@ th20::GameController::set_field_34
 th20::BulletController::set_vector_4c
 th20::PackedColor::operator=(uint32_t)
 th20::EnemyController::has_identifier
+th20::Graphics::field_b0c_value
+th20::Session::flag5_value
+th20::FrontInf::show_stage_title

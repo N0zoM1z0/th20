@@ -3171,7 +3171,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004ABF30,333,0x004AC07C,FUN_004abf30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AC080,38,0x004AC0A5,FUN_004ac080,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AC0B0,13,0x004AC0BC,FUN_004ac0b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004AC0C0,20,0x004AC0D3,FUN_004ac0c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004AC0C0,20,0x004AC0D3,FUN_004ac0c0,th20::Graphics::field_b0c_value,Graphics,matching,100.00,__thiscall,?field_b0c_value@Graphics@th20@@QBEHXZ,false,src/Graphics.cpp,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md,authored,"Whole native 20-byte direct Graphics.field_b0c getter at x86 owner offset+0xB0C; returns exact int32 mode, no relocations. Enemy opcode548 invokes before Session flag5 to short-circuit when equal8. Genuine process Graphics owner independently at 0x005C4D40. All 29 affected providers and 199 complete strict units replay exact; no whole Enemy root credit. Original class/member spellings inferred; original typed owners, native field layout and caller sequence independently verified."
 0x004AC0E0,113,0x004AC150,FUN_004ac0e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AC160,13,0x004AC16C,FUN_004ac160,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AC170,46,0x004AC19D,FUN_004ac170,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -3516,7 +3516,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004B8300,64,0x004B833F,FUN_004b8300,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B8340,34,0x004B8361,FUN_004b8340,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B8370,23,0x004B8386,FUN_004b8370,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004B8390,23,0x004B83A6,FUN_004b8390,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004B8390,23,0x004B83A6,FUN_004b8390,th20::Session::flag5_value,Session,matching,100.00,__thiscall,?flag5_value@Session@th20@@QBEHXZ,false,src/Session.cpp,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md,authored,"Whole native 23-byte Session.flags.bits bit5 getter, shifts actual Session+0x6C word right5 and masks bit0, no relocations. Enemy opcode548 queries only if Graphics.mode != 8, uses real process Session at 0x005BA568. Full scope 199 exact whole units after 29 protected fresh builds. Original class/member spellings inferred; original typed owners, native field layout and caller sequence independently verified."
 0x004B83B0,49,0x004B83E0,FUN_004b83b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B83F0,23,0x004B8406,FUN_004b83f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B8410,23,0x004B8426,FUN_004b8410,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -3550,7 +3550,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004B9050,58,0x004B9089,FUN_004b9050,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B9090,78,0x004B90DD,FUN_004b9090,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B90E0,1522,0x004B96D1,FUN_004b90e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004B96F0,75,0x004B973A,FUN_004b96f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004B96F0,75,0x004B973A,FUN_004b96f0,th20::FrontInf::show_stage_title,FrontInf,matching,100.00,__thiscall,?show_stage_title@FrontInf@th20@@QAEXXZ,false,src/HudGauge.cpp,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md,authored,"Complete 75-byte real FrontInf title animation method. If process_graphics.field_b0c_value()!=8 and !session.flag5_value(), calls real FrontInf::message_file at native +0x170 via AnimationFile::spawn(nullptr,0,-1,nullptr) with native hidden four-byte return temporary. Five independently mapped Graphics/Session globals, two getters and accepted ANM spawn. Tested 112 genuine owner short circuit/spawn/error scenarios; 199 affected strict units exact, Enemy whole root remains unaccepted. Original class/member spellings inferred; original typed owners, native field layout and caller sequence independently verified."
 0x004B9740,626,0x004B99B1,FUN_004b9740,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B99C0,35,0x004B99E2,FUN_004b99c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004B99F0,164,0x004B9A93,FUN_004b99f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

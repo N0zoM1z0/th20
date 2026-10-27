@@ -20,6 +20,7 @@ PlayerRecord& PlayerTable::player(std::int32_t index) { return players[index]; }
 std::int32_t PlayerTable::mode() { return field_1e0; }
 std::int32_t Session::mode() { return table.mode(); }
 bool Session::field_70_is_two() { return field_70 == 2; }
+std::int32_t Session::flag5_value() const { return (flags.bits >> 5) & 1u; }
 std::int32_t PlayerTable::clamped_field_1f4() {
     field_1f4 = std::clamp(field_1f4,0,999); return field_1f4;
 }

@@ -860,3 +860,6 @@ address,name,module,confidence,evidence
 0x00486480,th20::BulletController::set_vector_4c,BulletController,high,CORE/EXACT-174; whole native 39B two-float setter and typed BulletInf+0x4C owner
 0x0045D650,th20::PackedColor::operator=(uint32_t),EffectParameters,high,CORE/EXACT-178; full original native method; independent owner and canonical source proof
 0x0049BF00,th20::EnemyController::has_identifier,EnemyController,high,CORE/EXACT-178; full original native method; independent owner and canonical source proof
+0x004AC0C0,th20::Graphics::field_b0c_value,Graphics,high,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; complete native owner/address and callable control flow
+0x004B8390,th20::Session::flag5_value,Session,high,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; complete native owner/address and callable control flow
+0x004B96F0,th20::FrontInf::show_stage_title,FrontInf,high,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; complete native owner/address and callable control flow

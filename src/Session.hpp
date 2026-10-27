@@ -39,6 +39,7 @@ struct Session {
     std::int32_t field_2b8, field_2bc;
     Session() noexcept;
     bool field_70_is_two();
+    std::int32_t flag5_value() const;
     void add_score(std::uint32_t amount);
     void increment_continue_count();
     void set_flag0(std::uint32_t value);

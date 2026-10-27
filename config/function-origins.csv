@@ -3171,7 +3171,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004ABF30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AC080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AC0B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AC0C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AC0C0,authored,Graphics,authored,high,"CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; Genuine native opcode548 and independent Graphics/Session/FrontInf owner/storage, complete pinned MSVC whole-body replay and short-circuit exercise: Whole native 20-byte direct Graphics.field_b0c getter at x86 owner offset+0xB0C; returns exact int32 mode, no relocations. Enemy opcode548 invokes before Session flag5 to short-circuit when equal8. Genuine process Graphics owner independently at 0x005C4D40. All 29 affected providers and 199 complete strict units replay exact; no whole Enemy root credit."
 0x004AC0E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AC160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AC170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3516,7 +3516,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004B8300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B8340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B8370,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004B8390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004B8390,authored,Session,authored,high,"CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; Genuine native opcode548 and independent Graphics/Session/FrontInf owner/storage, complete pinned MSVC whole-body replay and short-circuit exercise: Whole native 23-byte Session.flags.bits bit5 getter, shifts actual Session+0x6C word right5 and masks bit0, no relocations. Enemy opcode548 queries only if Graphics.mode != 8, uses real process Session at 0x005BA568. Full scope 199 exact whole units after 29 protected fresh builds."
 0x004B83B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B83F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B8410,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3550,7 +3550,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004B9050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B9090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B90E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004B96F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004B96F0,authored,FrontInf,authored,high,"CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; Genuine native opcode548 and independent Graphics/Session/FrontInf owner/storage, complete pinned MSVC whole-body replay and short-circuit exercise: Complete 75-byte real FrontInf title animation method. If process_graphics.field_b0c_value()!=8 and !session.flag5_value(), calls real FrontInf::message_file at native +0x170 via AnimationFile::spawn(nullptr,0,-1,nullptr) with native hidden four-byte return temporary. Five independently mapped Graphics/Session globals, two getters and accepted ANM spawn. Tested 112 genuine owner short circuit/spawn/error scenarios; 199 affected strict units exact, Enemy whole root remains unaccepted."
 0x004B9740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B99C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B99F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

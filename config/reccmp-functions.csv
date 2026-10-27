@@ -1008,3 +1008,6 @@ th20::GameController::set_field_34,0x0049C940,function
 th20::BulletController::set_vector_4c,0x00486480,function
 th20::PackedColor::operator=(uint32_t),0x0045D650,function
 th20::EnemyController::has_identifier,0x0049BF00,function
+th20::Graphics::field_b0c_value,0x004AC0C0,function
+th20::Session::flag5_value,0x004B8390,function
+th20::FrontInf::show_stage_title,0x004B96F0,function

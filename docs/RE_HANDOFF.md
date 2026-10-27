@@ -1,5 +1,21 @@
 # Current reconstruction handoff
 
+CORE/EXACT-180 reconstructs **three complete real functions** in the
+original Enemy opcode548 call chain: `Graphics::field_b0c_value` (20B),
+`Session::flag5_value` (23B) and `FrontInf::show_stage_title` (75B), with
+all 5 source-independent Graphics/Session/AnimationFile relocations exact.
+The actual FrontInf `+0x170` message file spawns only when the original
+Graphics mode is not 8 and Session flag5 is unset. **29** affected current
+pinned-MSVC objects are freshly cold built and all **199/199** old/new strict
+units replay (**33,658** comparison bytes). All 58 previous object/receipt
+SHA hashes and 135 unaffected receipts remain valid. Actual Front, Graphics,
+Session and AnimationFile host tests pass 112 gate/spawn/failure scenarios,
+with 48 genuine animation spawn boundary calls, complete owner images and
+full original parameter ordering. Root Enemy opcode548 is not yet integrated
+in the private whole-root host; native 41,967-byte boss root remains
+nonexact. See [focused proof](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md)
+and `.analysis/core180-stage-title-final-proof.json`.
+
 CORE179 integrates the **full 95-byte native Enemy opcode549 caller path** into
 the same 41,967-byte private whole-root draft, executing real
 `EnemyController::has_identifier` (244-byte exact) and real ECL destination
@@ -93,10 +109,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 1,000 physical strict units, 164 canonical objects and 181,263
-disjoint comparison bytes. All 1,009 mapped functions have source; nine whole
+The graph contains 1,003 physical strict units, 164 canonical objects and 181,381
+disjoint comparison bytes. All 1,012 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-214 functions / 56,890 bytes, with 226 confirmed authored origins. The reference
+217 functions / 57,008 bytes, with 229 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -140,6 +156,21 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-180 adds three full original source/ABI matches for Enemy opcode
+548's genuine stage-title path. The natural 75-byte FrontInf call is gated by
+20-byte Graphics `field_b0c` and 23-byte Session bit5 getters, with five
+independent relocs including original `AnimationFile::spawn` at 0x450C70.
+**29** authentic affected providers and **196** older units are cold replayed
+as **199/199** total exact over 33,658 bytes. Thirty local MSVC literal
+labels are reconciled against complete old/new COFF bytes and original native
+NUL-terminated strings. All **58** original object/receipt hashes and **135**
+unaffected current compiler receipts survive. The new real-owner Front title
+host exercises **112** graphics/flags/exception combinations (48 successful
+spawn boundary calls), with all prior Front, Graphics and Session suites
+passing. Authored whole-function graph increases by three, not by an Enemy
+root fragment; see [native 548 proof](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md).
+
 
 CORE179 advances the **same complete Enemy root** with the real opcode549
 95-byte/20-instruction original caller and restores the genuine
@@ -434,14 +465,15 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
-| `build/core163-canonical/` | 27 | Every sibling `.receipt.json` |
+| `build/core163-canonical/` | 19 | Every sibling `.receipt.json` |
 | `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
 | `build/core166-canonical/` | 2 | Every sibling `.receipt.json` |
 | `build/core167-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core171-canonical/` | 8 | Every sibling `.receipt.json` |
 | `build/core172-canonical/` | 14 | Every sibling `.receipt.json` |
-| `build/core174-canonical/` | 4 | Every sibling `.receipt.json` |
-| `build/core178-canonical/` | 14 | Every sibling `.receipt.json` |
+| `build/core174-canonical/` | 2 | Every sibling `.receipt.json` |
+| `build/core178-canonical/` | 9 | Every sibling `.receipt.json` |
+| `build/core180-canonical/` | 29 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;
@@ -487,8 +519,10 @@ Ghidra, native exports and supplied `../game_exe/` files.
    lookup and wrapper source/ABI. Opcode 517/518 now have tested ScreenInf
    and FrontInf/Bullet/Laser/Enemy call ordering, but the real Screen
    factory/message/cancellation bodies remain open. Opcode 524 and 553 now have verified
-   whole-host integrations with real typed callees; 539, 548/549,
-   555 and other nondefault state paths still need real owners. Opcode 551
+   whole-host integrations with real typed callees; 539 and 555
+   still need native owner paths. Opcode548 now has three exact genuine
+   Graphics/Session/FrontInf dependencies, but its original whole-root
+   host integration remains open. The 549 branch was integrated in CORE179. Opcode 551
    now has a whole-host FogValue route, but its genuine global and forwarding
    interpolation owner at 0x005C069C are still unaccepted.
    Opcode 554 now has both an exact true BulletController vector setter and
