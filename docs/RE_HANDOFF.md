@@ -1,8 +1,9 @@
 # Current reconstruction handoff
 
-Current work is source reconstruction of Dialogue follow-box and animation
-child lookup, with a deliberately scoped canonical exactness replay. Start with this page,
-[generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
+The latest confirmed reconstruction batch closes Dialogue follow-box and
+AnimationHandle child lookup. CORE/EXACT-164 independently reaudits the complete
+Enemy mesh deformation root and expands its boundary tests. Start with this
+page, [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
 ## Verified reconstruction state
@@ -53,6 +54,19 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-164 touches only the Enemy mesh host semantics test and focused
+evidence/handoff prose. Its complete native 1,649-byte code audit confirms
+three writes (and zero direct reads/address formations) of stack byte -31,
+with independently identified 32.0/64.0/255.0 constants. The real mesh
+production fixture passes 1,536 whole-owner deformation cases spanning those
+thresholds, growing/equal/shrinking radius targets, independent geometry,
+color, UV and strip checks. This **does not** grant whole-root exact credit;
+`EnemyState::update_mesh` remains 1,548-source/1,649-native nonexact. The
+CORE164 reconstruction graph is unchanged; its affected cold-build/strict
+replay scope is **zero units**. Private evidence is
+`core164-mesh-unused-byte-audit.json`; unrelated diagnostic drop/compression
+probes remain ignored and unaccepted.
 
 CORE163 changed the two source files `DialogueText.cpp` and
 `AnimationHandle.cpp`, plus the existing handle declaration header. Actual

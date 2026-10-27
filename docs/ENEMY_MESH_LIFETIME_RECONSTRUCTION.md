@@ -113,6 +113,45 @@ subtraction and 50-byte XY squared norm retain verified semantic roles but
 unresolved original physical origins. Their provenance is not inferred merely
 from game callers or matching arithmetic.
 
+## CORE/EXACT-164: renewed whole-body radius-boundary audit
+
+The complete locked-target `EnemyState::update_mesh` entry at `0x4A4190`
+remains a genuine 1,649-byte native authored function, not a collection of
+small independently accepted fragments. A fresh independent scan of all
+1,649 native `.text` bytes at the attested executable hash finds exactly three
+direct references to stack byte `[ebp-0x31]`: stores of 255 at `0x4A427C`,
+zero at `0x4A4297` and the computed AL value at `0x4A42DE`. No instruction
+loads that byte or directly takes its address. The native threshold constants
+are independently read from immutable target data: 32.0 at `0x56CD94`,
+64.0 at `0x56FA28` and 255.0 at `0x56CD9C`. The conditional computation
+therefore stores zero below 32, a linearly computed byte in [32,64), and
+255 at or above 64. Neither this static observation nor a test establishes an
+external use for that byte, and none is introduced into the maintained source.
+Raw decoded addresses, instruction bytes, constants and target identity are
+retained in ignored `.analysis/core164-mesh-unused-byte-audit.json`.
+
+The real `EnemyState::update_mesh` host fixture is expanded from 192 to
+**1,536 independent-model deformation scenarios**. The matrix now spans all
+radius thresholds (0, 25, 31.999, 32, 48, 63.999, 64 and 100), both window
+views, two grid widths and heights, four clock values (-1, 0, 0.5, 2), two
+center Z values and three relationships between target and current radii
+(greater, equal, smaller; zero is not assigned a negative target). Existing
+checks cover complete unchanged `EnemyState` storage, published owner radius,
+phase changes, every grid vertex position/color/UV and strip propagation.
+The scoped O2/UBSan/float-cast-overflow `tests.test_render_mesh_semantics` test
+passes against **the unchanged production function**, including all
+32/64-boundary branches and non-growing radius cases.
+
+This is a substantive whole-boss semantic and negative-evidence improvement,
+not byte exactness: the maintained complete source still emits 1,548 versus
+1,649 native bytes. Neither the missing compiler register/stack emission nor
+the potential native byte-local's original source role has been established.
+Only `tests/render_mesh_semantics.cpp` and this evidence/handoff text change;
+no accepted source, shared header, profile, layout or relocation changed.
+Accordingly the affected canonical replay scope is **zero units**, and all
+previous exact proofs remain protected. Do not add an emission-only dead local
+or reduce the native extent to claim exactness.
+
 ## Verification and fixture domain
 
 All 163 prior object/receipt pairs and original input versions are preserved

@@ -203,19 +203,28 @@ int main() {
     // Independent coordinate/color model checks the real whole deformation,
     // including old radius, XY weights, XYZ normalization and separate UV data.
     // Finite valid color conversions are required; malformed/NaN casts are open.
+    // The native whole update has a separate 32..64 radius-dependent temporary
+    // byte with no identified consumer. Probe both transition boundaries and
+    // the observable geometry, color, phase and publication protocol without
+    // adding an emission-only local to production source. Exercise all three
+    // relations between current and target radius as well as clock direction.
     for (int columns:{2,5}) for (int rows:{2,4}) for (int view:{0,1})
-    for (float radius:{0.0f,25.0f,100.0f}) for (float clock:{-1.0f,0.0f,0.5f,2.0f})
-    for (float z:{0.0f,13.0f}) {
+    for (float radius:{0.0f,25.0f,31.999f,32.0f,48.0f,63.999f,64.0f,100.0f})
+    for (float clock:{-1.0f,0.0f,0.5f,2.0f})
+    for (float z:{0.0f,13.0f}) for (int growth_mode:{0,1,2}) {
         Grid grid(columns,rows);grid.mesh.view_index=view;
         EnemyMeshOwner owner;owner.mesh=&grid.mesh;owner.current_radius=radius;
-        owner.radius=radius+1;owner.color=0x12345678;owner.phase_x.value=0.3f;owner.phase_y.value=-0.2f;
+        const float requested_radius = growth_mode==0 ? radius+1.0f
+            : growth_mode==1 ? radius : (radius>0.0f ? radius-1.0f : radius);
+        owner.radius=requested_radius;owner.color=0x12345678;
+        owner.phase_x.value=0.3f;owner.phase_y.value=-0.2f;
         state.mesh=&owner;state.field_2e8=view;state.motion_110.position={180,200,z};
         default_timer_clock.value=clock;
         std::array<unsigned char,sizeof(EnemyState)> before{};
         std::memcpy(before.data(),&state,sizeof(state));
         state.update_mesh();
         assert(std::memcmp(before.data(),&state,sizeof(state))==0);
-        close(owner.current_radius,radius+clock*2);
+        close(owner.current_radius,radius<requested_radius ? radius+clock*2.0f : radius);
         close(owner.phase_x,wrap(0.3f+(pi/16)*clock));
         close(owner.phase_y,wrap(-0.2f+(pi/32)*clock));
         float phase_x=0.3f,phase_y=-0.2f;
