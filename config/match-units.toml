@@ -1092,7 +1092,7 @@ relocations = [
 
 [units.sound_request_construct]
 source = "src/SoundEffects.cpp"
-object = "build/core141-canonical/SoundEffects.obj"
+object = "build/core167-canonical/SoundEffects.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::SoundEffectRequest::SoundEffectRequest"]
 symbol = "??0SoundEffectRequest@th20@@QAE@XZ"
@@ -1104,7 +1104,7 @@ relocations = [
 
 [units.sound_command_construct]
 source = "src/SoundEffects.cpp"
-object = "build/core141-canonical/SoundEffects.obj"
+object = "build/core167-canonical/SoundEffects.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::SoundCommand::SoundCommand"]
 symbol = "??0SoundCommand@th20@@QAE@XZ"
@@ -1116,7 +1116,7 @@ relocations = [
 
 [units.sound_channel_construct]
 source = "src/SoundEffects.cpp"
-object = "build/core141-canonical/SoundEffects.obj"
+object = "build/core167-canonical/SoundEffects.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::SoundEffectChannel::SoundEffectChannel"]
 symbol = "??0SoundEffectChannel@th20@@QAE@XZ"
@@ -16507,4 +16507,18 @@ symbol = "?set_entity_flag_10@Player@th20@@QAEXI@Z"
 target_address = 4834192
 size = 42
 relocations = [
+]
+
+[units.sound_effect_request_at]
+source = "src/SoundEffects.cpp"
+object = "build/core167-canonical/SoundEffects.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::SoundInf::request_effect_at"]
+symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z"
+target_address = 4353712
+size = 52
+relocations = [
+  { offset = 16, type = "DIR32", symbol = "__real@447a0000", target = 0x0056CDB0 },
+  { offset = 24, type = "DIR32", symbol = "__real@43400000", target = 0x0056E050 },
+  { offset = 41, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
 ]

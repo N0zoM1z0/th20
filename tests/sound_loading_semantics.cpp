@@ -28,6 +28,17 @@ Graphics::~Graphics() = default; // Fixture has no graphics resources or tasks.
 Graphics process_graphics;
 SoundInf::SoundInf() noexcept {} // Original definition binding remains open.
 SoundInf process_sound;
+// The native SoundInf request queue is a separate, pending owner. Capture the
+// real production request_effect_at call boundary without inventing a queue.
+SoundInf* last_effect_receiver;
+std::int32_t last_effect_id, last_effect_pan;
+unsigned effect_request_count;
+void SoundInf::request_effect(std::int32_t id, std::int32_t pan) {
+    last_effect_receiver = this;
+    last_effect_id = id;
+    last_effect_pan = pan;
+    ++effect_request_count;
+}
 SoundDeviceOwner::SoundDeviceOwner() : direct_sound(nullptr) {}
 SoundDeviceOwner::~SoundDeviceOwner() = default; // No owned COM fixture object.
 DWORD sound_notification_thread(void*) { std::abort(); } // Must remain uncalled.
@@ -239,6 +250,27 @@ int main() {
     SoundDeviceOwner owner;
     TrackFormat formats[]={make_format("first",123,32),make_format("second",456,64)};
     SoundInf sound; configure(sound,owner,formats);
+
+    // Enemy opcode 516 (also used by enemy defeat) calls the genuine sound
+    // pan adapter. These expected values are independent fixed reference
+    // samples of truncation toward zero after two binary32 operations.
+    const struct { float x; std::int32_t pan; } pans[]{
+        {-384.0f,-2000}, {-192.0f,-1000}, {-96.0f,-500}, {-48.0f,-250},
+        {-9.0f,-46}, {-0.25f,-1}, {0.0f,0}, {0.25f,1},
+        {9.0f,46}, {48.0f,250}, {96.0f,500}, {192.0f,1000}, {384.0f,2000}
+    };
+    unsigned effect_cases=0;
+    for (std::int32_t id : {0, 74, -1, 2147483647}) {
+        for (const auto& sample : pans) {
+            const auto before = effect_request_count;
+            sound.request_effect_at(id, sample.x);
+            assert(effect_request_count == before+1);
+            assert(last_effect_receiver == &sound);
+            assert(last_effect_id == id && last_effect_pan == sample.pan);
+            ++effect_cases;
+        }
+    }
+    assert(effect_cases == 52);
 
     // Preload grows/value-initializes before global name publication and gating.
     reset_calls(); process_graphics.configuration.flags.preload_music=0;

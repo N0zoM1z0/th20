@@ -853,3 +853,4 @@ address,name,module,confidence,evidence
 0x004B89A0,th20::Dialogue::follow_box,Dialogue,high,CORE/EXACT-163
 0x0044C670,th20::AnimationHandle::find_child,AnimationHandle,high,CORE/EXACT-163
 0x0049C390,th20::Player::set_entity_flag_10,Player,high,CORE/EXACT-166; typed native Player bit10 owner
+0x00426EB0,th20::SoundInf::request_effect_at,SoundEffects,high,CORE/EXACT-167; independently verified SoundInf coordinate-to-pan owner

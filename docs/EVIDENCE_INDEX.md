@@ -125,6 +125,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Whole progress-file serialization protocol](PROGRESS_WRITE_PROTOCOL_RECONSTRUCTION.md)
 - [SoundInf owner and whole command dispatcher](SOUND_PROTOCOL_RECONSTRUCTION.md)
 
+- [SoundInf positional effect request and Enemy opcode 516](SOUND_EFFECT_PAN_RECONSTRUCTION.md) — full 52-byte native pan adapter, genuine SoundInf/global and Enemy caller order, complete affected-only strict replay.
+
 ## Reference review
 
 - [Effect and Special State reference review (REF-027)](REFERENCE_EFFECT_SPECIAL_REVIEW.md)

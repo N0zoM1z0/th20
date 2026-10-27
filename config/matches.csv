@@ -206,3 +206,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044C670,th20::AnimationHandle::find_child,63,matching,100.00,animation_handle_find_child,CORE/EXACT-163; complete pinned MSVC canonical replay with independent relocations
 0x00463F20,th20::ProgressMetadata::calculate_integrity,134,matching,100.00,progress_metadata_calculate_integrity,CORE/EXACT-165; locked compiler complete original function and independent six-relocation canonical exact replay
 0x0049C390,th20::Player::set_entity_flag_10,42,matching,100.00,player_entity_flag_bit10,CORE/EXACT-166; cold canonical 42-byte whole function replay with zero relocations and verified native Player owner
+0x00426EB0,th20::SoundInf::request_effect_at,52,matching,100.00,sound_effect_request_at,CORE/EXACT-167; whole pinned-MSVC function and three independently established relocation roles

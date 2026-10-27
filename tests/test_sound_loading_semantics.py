@@ -17,7 +17,8 @@ class SoundLoadingTests(unittest.TestCase):
             output = Path(directory) / 'sound-loading'
             subprocess.run([
                 compiler, '-std=c++20', '-O2', '-Wall', '-Wextra', '-Werror',
-                '-fsanitize=undefined', '-Isrc', '-pthread',
+                '-fsanitize=undefined', '-ffunction-sections', '-fdata-sections',
+                '-Wl,--gc-sections', '-Isrc', '-pthread',
                 'tests/sound_loading_semantics.cpp', 'src/SoundLoading.cpp',
                 'src/GraphicsSound.cpp', 'src/Graphics.cpp', 'src/SoundEffects.cpp',
                 'src/Configuration.cpp', 'src/ConfigurationValue.cpp',

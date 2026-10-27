@@ -1000,3 +1000,4 @@ th20::Dialogue::~Dialogue
 th20::Dialogue::follow_box
 th20::AnimationHandle::find_child
 th20::Player::set_entity_flag_10
+th20::SoundInf::request_effect_at

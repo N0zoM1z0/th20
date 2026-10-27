@@ -1,9 +1,9 @@
 # Current reconstruction handoff
 
-The latest reconstructed dependency is the complete Player entity-flag
-setter used by Enemy opcode 575, with the whole Enemy dispatcher still open.
-Previously, CORE/EXACT-165 closed the ProgressMetadata checksum and
-CORE/EXACT-164 audited the complete Enemy mesh deformation root. Start with this
+The latest full exact dependency is SoundInf positional effect request at
+0x426EB0, called by Enemy opcode 516. The previous batch closed the Player
+entity-flag setter for opcode 575. The whole Enemy dispatcher remains open;
+CORE/EXACT-165 separately closed the ProgressMetadata checksum. Start with this
 page, [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
@@ -14,10 +14,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 993 physical strict units, 164 canonical objects and 180,765
-disjoint comparison bytes. All 1,002 mapped functions have source; nine whole
+The graph contains 994 physical strict units, 164 canonical objects and 180,817
+disjoint comparison bytes. All 1,003 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-207 functions / 56,392 bytes, with 219 confirmed authored origins. The reference
+208 functions / 56,444 bytes, with 220 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -55,6 +55,19 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-167 closes all 52 original bytes of the real
+`SoundInf::request_effect_at(id,x)` at 0x426EB0, with three independently
+established float/callee relocations. Enemy opcode 516 captures the state
+position's X before reading its integer sound identifier, then calls this
+member on process_sound at 0x5BA830. The one changed SoundEffects translation
+unit is cold-built into `build/core167-canonical/`: **4/4** old and new
+complete exact units, 163 unaffected canonical receipts retained, and both
+original object/receipt SHA hashes preserved. The live SoundLoading host
+fixture passes 52 pan conversion cases plus its 140 original resource cases.
+See [sound/Enemy integration](SOUND_EFFECT_PAN_RECONSTRUCTION.md); native
+request queue and whole 41KB Enemy dispatch remain separate open boundaries.
+
 
 CORE/EXACT-166 recovers the native 42-byte `Player::set_entity_flag_10`
 member at 0x49C390, called by the *whole* Enemy dispatcher's opcode 575 path.
@@ -157,7 +170,7 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 
 | Canonical directory | Objects | Required companions |
 | --- | ---: | --- |
-| `build/core141-canonical/` | 68 | Every sibling `.receipt.json` |
+| `build/core141-canonical/` | 67 | Every sibling `.receipt.json` |
 | `build/core142-canonical/` | 7 | Every sibling `.receipt.json` |
 | `build/core145-canonical/` | 3 | Every sibling `.receipt.json` |
 | `build/core149-canonical/` | 1 | Every sibling `.receipt.json` |
@@ -170,6 +183,7 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | `build/core163-canonical/` | 47 | Every sibling `.receipt.json` |
 | `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
 | `build/core166-canonical/` | 6 | Every sibling `.receipt.json` |
+| `build/core167-canonical/` | 1 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;
@@ -207,7 +221,8 @@ Ghidra, native exports and supplied `../game_exe/` files.
    now closed; the Renderer and Animation pool integration remain open.
 2. Continue the complete Enemy dispatcher at 0x48C010, including its 41,967-byte
    ordinary body, tables and compiler contributions. The 575 path has a verified
-   exact Player flag dependency; no whole dispatch credit follows. Remaining
+   exact Player flag dependency; opcode 516 now has a complete exact
+   SoundInf positional pan dependency too. Neither grants partial root credit. Remaining
    502/503, 516..518, 524, 539, 548/549, 551, 553..555 and other nondefault
    state paths still need original owner/call reconciliation. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md),
