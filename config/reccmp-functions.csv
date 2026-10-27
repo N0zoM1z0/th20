@@ -1005,3 +1005,4 @@ th20::SoundInf::request_effect_at,0x00426EB0,function
 th20::EnemyController::set_field_88,0x0049C490,function
 th20::PlayerTable::set_field_1fc,0x0049C970,function
 th20::GameController::set_field_34,0x0049C940,function
+th20::BulletController::set_vector_4c,0x00486480,function

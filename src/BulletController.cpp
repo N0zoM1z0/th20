@@ -23,6 +23,10 @@ void BulletController::select_context(std::int32_t index) {
     view_index=index;
     context=&session.context(view_index);
 }
+void BulletController::set_vector_4c(float x, float y) {
+    vector_4c.x = x;
+    vector_4c.y = y;
+}
 std::int32_t BulletController::count() {return bullet_count;}
 BulletController* bullet_controller(std::int32_t index) {
     return session.context(index).bullet_controller();

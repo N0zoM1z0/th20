@@ -93,6 +93,7 @@ struct BulletController final : TaskInfo {
     void enable() override;
     void disable() override;
     void select_context(std::int32_t index);
+    void set_vector_4c(float x, float y);
     std::int32_t count();
     std::int32_t cancel_all(std::int32_t mode);
 };
@@ -107,6 +108,7 @@ static_assert(offsetof(Bullet,commands)==0xa0);
 static_assert(offsetof(Bullet,interpolation_420)==0x420);
 static_assert(offsetof(Bullet,context)==0x520);
 static_assert(sizeof(BulletController)==0x286da8);
+static_assert(offsetof(BulletController,vector_4c)==0x4c);
 static_assert(offsetof(BulletController,pool)==0x60);
 static_assert(offsetof(BulletController,handles)==0x284e08);
 static_assert(offsetof(BulletController,free)==0x286d4c);

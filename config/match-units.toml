@@ -1840,7 +1840,7 @@ relocations = []
 
 [units.dialogue_text_is_lead]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::dialogue_text::is_lead"]
 symbol = "?is_lead@dialogue_text@th20@@YAHE@Z"
@@ -1850,7 +1850,7 @@ relocations = []
 
 [units.dialogue_text_decode]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::dialogue_text::decode"]
 symbol = "?decode@dialogue_text@th20@@YAPBDPBD@Z"
@@ -9273,7 +9273,7 @@ relocations = [
 
 [units.bullet_ctor]
 source = "src/Bullet.cpp"
-object = "build/core163-canonical/Bullet.obj"
+object = "build/core174-canonical/Bullet.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Bullet::Bullet"]
 symbol = "??0Bullet@th20@@QAE@XZ"
@@ -9302,7 +9302,7 @@ relocations = [
 
 [units.bullet_destroy]
 source = "src/Bullet.cpp"
-object = "build/core163-canonical/Bullet.obj"
+object = "build/core174-canonical/Bullet.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::Bullet::~Bullet"]
 symbol = "??1Bullet@th20@@QAE@XZ"
@@ -9314,7 +9314,7 @@ relocations = [
 
 [units.bullet_extended_commands_ctor]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletExtendedCommands::BulletExtendedCommands"]
 symbol = "??0BulletExtendedCommands@th20@@QAE@XZ"
@@ -9330,7 +9330,7 @@ relocations = [
 
 [units.bullet_pool_ctor]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletPool::BulletPool"]
 symbol = "??0BulletPool@th20@@QAE@XZ"
@@ -9344,7 +9344,7 @@ relocations = [
 
 [units.bullet_handles_ctor]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletHandles::BulletHandles"]
 symbol = "??0BulletHandles@th20@@QAE@XZ"
@@ -9360,7 +9360,7 @@ relocations = [
 
 [units.bullet_controller_ctor]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::BulletController"]
 symbol = "??0BulletController@th20@@QAE@XZ"
@@ -9378,13 +9378,13 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79795", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79799", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.bullet_pool_destroy]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletPool::~BulletPool"]
 symbol = "??1BulletPool@th20@@QAE@XZ"
@@ -9400,7 +9400,7 @@ relocations = [
 
 [units.bullet_controller_disable]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::disable"]
 symbol = "?disable@BulletController@th20@@UAEXXZ"
@@ -9416,7 +9416,7 @@ relocations = [
 
 [units.bullet_controller_count]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::count"]
 symbol = "?count@BulletController@th20@@QAEHXZ"
@@ -9427,7 +9427,7 @@ relocations = [
 
 [units.bullet_select_context]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::select_context"]
 symbol = "?select_context@BulletController@th20@@QAEXH@Z"
@@ -9440,7 +9440,7 @@ relocations = [
 
 [units.process_bullet_controller]
 source = "src/BulletController.cpp"
-object = "build/core172-canonical/BulletController.obj"
+object = "build/core174-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::bullet_controller"]
 symbol = "?bullet_controller@th20@@YAPAUBulletController@1@H@Z"
@@ -12328,7 +12328,7 @@ relocations = [
 
 [units.item_spawn_primary]
 source = "src/ItemSpawn.cpp"
-object = "build/core172-canonical/ItemSpawn.obj"
+object = "build/core174-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::spawn"]
 symbol = "?spawn@ItemInf@th20@@QAEPAUItem@2@HABUVector3@2@IMMHIH@Z"
@@ -13780,7 +13780,7 @@ relocations = [
 
 [units.animation_callback_ctor]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationCallback::AnimationCallback"]
 symbol = "??0AnimationCallback@th20@@QAE@PAUAnimation@1@@Z"
@@ -13793,7 +13793,7 @@ relocations = [
 
 [units.animation_callback_dtor]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationCallback::~AnimationCallback"]
 symbol = "??1AnimationCallback@th20@@UAE@XZ"
@@ -13805,7 +13805,7 @@ relocations = [
 
 [units.animation_callback_scalar_delete]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationCallback::scalar_deleting_destructor"]
 symbol = "??_GAnimationCallback@th20@@UAEPAXI@Z"
@@ -13818,7 +13818,7 @@ relocations = [
 
 [units.animation_set_callback]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_callback"]
 symbol = "?set_callback@Animation@th20@@QAEPAUAnimationCallback@2@PAU32@@Z"
@@ -13829,7 +13829,7 @@ relocations = [
 
 [units.animation_interrupt]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Animation::interrupt"]
 symbol = "?interrupt@Animation@th20@@QAEXH@Z"
@@ -13840,7 +13840,7 @@ relocations = [
 
 [units.bullet_type]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::type"]
 symbol = "?type@Bullet@th20@@QBEHXZ"
@@ -13851,7 +13851,7 @@ relocations = [
 
 [units.bullet_color_index]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::color_index"]
 symbol = "?color_index@Bullet@th20@@QBEHXZ"
@@ -13862,7 +13862,7 @@ relocations = [
 
 [units.bullet_animation_script]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::bullet_animation_script"]
 symbol = "?bullet_animation_script@th20@@YAHPAUAnimation@1@H@Z"
@@ -13878,7 +13878,7 @@ relocations = [
 
 [units.animation_callback_destroy_at]
 source = "src/AnimationCallback.cpp"
-object = "build/core163-canonical/AnimationCallback.obj"
+object = "build/core174-canonical/AnimationCallback.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::destroy_at<th20::AnimationCallback>"]
 symbol = "??$destroy_at@UAnimationCallback@th20@@@std@@YAXQAUAnimationCallback@th20@@@Z"
@@ -15115,7 +15115,7 @@ relocations = [
 
 [units.enemy_pattern_drop]
 source = "src/ItemSpawn.cpp"
-object = "build/core172-canonical/ItemSpawn.obj"
+object = "build/core174-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EnemyPattern::drop"]
 symbol = "?drop@EnemyPattern@th20@@QAEXABUVector3@2@_N@Z"
@@ -16181,7 +16181,7 @@ relocations = [
 
 [units.dialogue_ctor]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::Dialogue"]
 symbol = "??0Dialogue@th20@@QAE@PAE@Z"
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117525", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117529", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117526", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117530", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117527", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117531", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117528", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117532", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16271,7 +16271,7 @@ relocations = [
 
 [units.dialogue_ready]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::ready"]
 symbol = "?ready@Dialogue@th20@@QAEHXZ"
@@ -16282,7 +16282,7 @@ relocations = [
 
 [units.dialogue_handles_4_ctor]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::array<th20::AnimationHandle,4>::array"]
 symbol = "??0?$array@UAnimationHandle@th20@@$03@std@@QAE@XZ"
@@ -16298,7 +16298,7 @@ relocations = [
 
 [units.dialogue_callback_invoke]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["Dialogue follow callback static invoker"]
 symbol = "?<lambda_invoker_cdecl>@<lambda_1>@?1???0Dialogue@th20@@QAE@PAE@Z@SA@PAUAnimation@3@@Z"
@@ -16310,7 +16310,7 @@ relocations = [
 
 [units.dialogue_callback_operator]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["Dialogue follow callback operator"]
 symbol = "??R<lambda_1>@?1???0Dialogue@th20@@QAE@PAE@Z@QBE@PAUAnimation@2@@Z"
@@ -16407,7 +16407,7 @@ relocations = [
 
 [units.dialogue_dtor]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::~Dialogue"]
 symbol = "??1Dialogue@th20@@QAE@XZ"
@@ -16434,7 +16434,7 @@ relocations = [
 
 [units.dialogue_follow_box]
 source = "src/DialogueText.cpp"
-object = "build/core171-canonical/DialogueText.obj"
+object = "build/core174-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::follow_box"]
 symbol = "?follow_box@Dialogue@th20@@QAEXPAUAnimation@2@@Z"
@@ -16559,4 +16559,15 @@ size = 36
 relocations = [
   { offset = 12, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
   { offset = 17, type = "REL32", symbol = "?set_field_1fc@PlayerTable@th20@@QAEXH@Z", target = 0x0049C970 },
+]
+
+[units.bullet_controller_set_vector_4c]
+source = "src/BulletController.cpp"
+object = "build/core174-canonical/BulletController.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::BulletController::set_vector_4c"]
+symbol = "?set_vector_4c@BulletController@th20@@QAEXMM@Z"
+target_address = 4744320
+size = 39
+relocations = [
 ]

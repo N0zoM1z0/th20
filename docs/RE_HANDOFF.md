@@ -1,5 +1,15 @@
 # Current reconstruction handoff
 
+CORE/EXACT-174 restores **all 39 native bytes** of the true
+`BulletController::set_vector_4c(X,Y)` used by Enemy opcode **554**. The root
+reads the cached Context BulletController before **float operand 1 then 0**.
+The real typed BulletController contains the native vector at +0x4C.
+All **32/32** full affected strict units replay after five pinned cold builds;
+10 original product hashes and all 159 untouched canonical receipts survive.
+The 64 full Bullet owner image tests pass. The whole Enemy opcode dispatcher
+remains **nonexact**, with private opcode554 host integration still open.
+See [native owner/callee proof](ENEMY_OPCODE_554_BULLET_VECTOR_RECONSTRUCTION.md).
+
 CORE173 now integrates **Enemy opcode 524 and 553** as two complete
 native paths within the existing private whole-root candidate, executing
 the independently exact GameController, PlayerTable and EnemyController
@@ -30,10 +40,10 @@ The sole target is Japanese v1.00a Steamless, SHA-256
 Embedded title/replay strings say 1.00c in this same file. The Steam-original
 backup is provenance evidence; see [target provenance](TARGET_PROVENANCE.md).
 
-The graph contains 997 physical strict units, 164 canonical objects and 180,956
-disjoint comparison bytes. All 1,006 mapped functions have source; nine whole
+The graph contains 998 physical strict units, 164 canonical objects and 180,995
+disjoint comparison bytes. All 1,007 mapped functions have source; nine whole
 mapped functions remain nonexact. Authored exact coverage is separately
-211 functions / 56,583 bytes, with 223 confirmed authored origins. The reference
+212 functions / 56,622 bytes, with 224 confirmed authored origins. The reference
 retains 6,945 terminal implementation reviews and 113 reconciled parser-gap files.
 Whole-game 95% byte exactness, complete compilation/linkage and a playable
 reconstruction remain unproved.
@@ -75,6 +85,23 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE/EXACT-174 is a real graph change: `BulletController::set_vector_4c`
+restores the complete 39-byte, zero-relocation native setter at 0x486480,
+called by the native Enemy opcode 554 path after capturing true Context
+slot-zero BulletInf and reading float operands **1 then 0**. Original x86
+member offsets are +0x4C and +0x50. Actual include closures select only
+**5** providers and **31** prior full strict units, cold rebuilt into
+`build/core174-canonical/`; all **32/32** old and new whole units are exact
+(**6,539** compared bytes). Five changed compiler-local labels match full
+old/new COFF and native PE literal bytes. All **10** original object/receipt
+hashes and **159** unaffected authentic receipts are verified. The real
+2,001-bullet controller host passes 64 full-owner float-bit image tests,
+including signed zeros and NaN payloads. Focused proof:
+[Bullet vector and native opcode554](ENEMY_OPCODE_554_BULLET_VECTOR_RECONSTRUCTION.md),
+private `core174-bullet-final-exact-proof.json`. The big Enemy root still
+has no partial exact credit.
+
 
 CORE173 adds no maintained production source and **zero** canonical units:
 private Enemy opcode **524/553** case paths from original independently
@@ -290,12 +317,13 @@ separate CORE163 phase above did rebuild exactly the affected 53 providers.
 | `build/core156-canonical/` | 1 | Every sibling `.receipt.json` |
 | `build/core158-canonical/` | 10 | Every sibling `.receipt.json` |
 | `build/core161-canonical/` | 6 | Every sibling `.receipt.json` |
-| `build/core163-canonical/` | 30 | Every sibling `.receipt.json` |
+| `build/core163-canonical/` | 28 | Every sibling `.receipt.json` |
 | `build/core164-canonical/` | 8 | Every sibling `.receipt.json` |
 | `build/core166-canonical/` | 2 | Every sibling `.receipt.json` |
 | `build/core167-canonical/` | 1 | Every sibling `.receipt.json` |
-| `build/core171-canonical/` | 9 | Every sibling `.receipt.json` |
-| `build/core172-canonical/` | 19 | Every sibling `.receipt.json` |
+| `build/core171-canonical/` | 8 | Every sibling `.receipt.json` |
+| `build/core172-canonical/` | 17 | Every sibling `.receipt.json` |
+| `build/core174-canonical/` | 5 | Every sibling `.receipt.json` |
 
 The manifest owns these 164 objects / 328 product files. Earlier authentic
 object/receipt pairs remain in their original directories without alteration;
@@ -341,7 +369,9 @@ Ghidra, native exports and supplied `../game_exe/` files.
    and FrontInf/Bullet/Laser/Enemy call ordering, but the real Screen
    factory/message/cancellation bodies remain open. Opcode 524 and 553 now have verified
    whole-host integrations with real typed callees; 539, 548/549,
-   551, 554/555 and other nondefault state paths still need real owners. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
+   551, 555 and other nondefault state paths still need real owners.
+   Opcode 554 now has an exact true BulletController vector setter; its
+   actual Y-before-X full-root caller integration remains open. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md),
    [state](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md),
    [Card](ENEMY_CARD_STATE_RECONSTRUCTION.md),

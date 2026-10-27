@@ -2,6 +2,7 @@
 #include "Session.hpp"
 #include <algorithm>
 #include <array>
+#include <bit>
 #include <cassert>
 #include <cstring>
 #include <limits>
@@ -111,6 +112,27 @@ int main() {
         owner->bullet_count=count;auto before=snapshot(*owner);
         assert(owner->count()==count && snapshot(*owner)==before);
     }
+    // Original Enemy opcode 554 calls the real BulletController+0x4C
+    // two-float setter. Verify all non-target bytes of this 2,525,608-byte
+    // owner, including its unrelated +0x54 vector and 2001 pool slots.
+    const std::uint32_t float_bits[]{0u,0x80000000u,0x3f800000u,0xbf800000u,
+        0x43000000u,0x7f7fffffu,0x7f800000u,0x7fc12345u};
+    unsigned vector_setter_cases=0;
+    owner->vector_54={321.0f,-456.0f};
+    const auto* base=reinterpret_cast<const unsigned char*>(owner);
+    const std::size_t pos_x=reinterpret_cast<const unsigned char*>(&owner->vector_4c.x)-base;
+    const std::size_t pos_y=reinterpret_cast<const unsigned char*>(&owner->vector_4c.y)-base;
+    assert(pos_y==pos_x+sizeof(float));
+    for (auto bx:float_bits) for(auto by:float_bits) {
+        const float x=std::bit_cast<float>(bx),y=std::bit_cast<float>(by);
+        auto before=snapshot(*owner);
+        std::memcpy(before.data()+pos_x,&bx,sizeof(bx));
+        std::memcpy(before.data()+pos_y,&by,sizeof(by));
+        owner->set_vector_4c(x,y);
+        assert(snapshot(*owner)==before);
+        ++vector_setter_cases;
+    }
+    assert(vector_setter_cases==64);
     // Resource release covers the entire typed pool, including the final slot.
     auto shared=std::make_shared<ShotMetadata>();auto distinct=std::make_shared<ShotMetadata>();
     assert(shared->commands.size()==2 && distinct->commands.size()==2);
