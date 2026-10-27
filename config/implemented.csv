@@ -996,3 +996,4 @@ th20::LaserController::LaserController
 th20::LaserController::select_context
 th20::laser_controller
 th20::AnimationHandle::interrupt_offset_7
+th20::Dialogue::~Dialogue

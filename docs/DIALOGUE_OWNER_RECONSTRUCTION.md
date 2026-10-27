@@ -98,6 +98,31 @@ storage/RTTI/deleting-size evidence and prior bindings establish destinations;
 no compared target field is solved. Manifest formatting is preserved, with a
 parsed-graph equality check after formatting cleanup.
 
+## Complete native destructor (CORE/EXACT-162)
+
+The native `Dialogue::~Dialogue` at 0x4AFC00 performs four iterations over
+its two independently owned `std::array<AnimationHandle, 4>` rows, retiring
+both handles per iteration. It then retires seven individual handles at
++54, +58, +5C, +60, +64, +68 and +6C. **The +70 handle is not retired** by
+this destructor. The actual `Cursor` subobject at +7C is destroyed automatically,
+after all explicit retirement. The body is 228 bytes; the complete compiler
+contribution additionally includes five genuine INT3 bytes (233 compared).
+
+The natural source emits all 233 bytes with zero differences under the pinned
+MSVC x86 `/Od` profile. All 14 relocations are mapped to the separately
+observed common EH handler, process security cookie, four-handle array index,
+AnimationHandle retire operation and actual Cursor destructor. The new
+`dialogue_dtor` unit and seven pre-existing Dialogue units cold-replay exactly
+from one fresh `core162-canonical/DialogueText.obj`, preserving the earlier
+`core161` object and its authentic build receipt.
+
+The existing actual-owner O2/UBSan fixture now verifies full 15-call release
+order for 512 dirty constructions, with distinct nonzero handle values,
+checks that +70 is not released, and populates all three Cursor containers
+before destruction. The AnimationHandle backend remains captured, not a
+claim about the native handle allocator. Full Dialogue resource/frame execution
+and actual process-global startup remain open.
+
 ## Semantic corroboration and remaining work
 
 O2/UBSan passes 512 guarded dirty-memory constructions, 24 exception-unwind
@@ -116,9 +141,9 @@ mutation/exception cases are retired: the recovered getters are pure and now
 read a live complete Dialogue instead of opaque storage. Production dispatch
 remains undefined; it receives no fragment source acceptance or partial credit.
 
-Next recover the complete native Dialogue destructor at 0x4AFC00 and the full
-387-byte follow-box body at 0x4B89A0. The latter reads coordinate scale at
-0x5B8818; identify its genuine owner before declaring storage. Native handle
+Next recover the full 387-byte follow-box body at 0x4B89A0. Its
+coordinate scale at 0x5B8818 is the genuine `WindowState::scale` at offset
++20C0 of the independently established global owner (base 0x5B6758). Native handle
 child lookup at 0x44C670 is a separate interface. Existing Animation position,
 scale and position-write methods already cover the other observed calls.
 The Cursor constructor's emission question, Renderer ownership, full message VM

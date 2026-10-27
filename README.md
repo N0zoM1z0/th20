@@ -80,7 +80,7 @@ do not establish executable-wide compiler flags, SDK or CRT identity.
 
 Documentation and artifact-cleanup handoffs use diff/link checks and protected
 product hashes. An unchanged reconstruction graph needs no replay, compiler,
-Ghidra or full CI run. Commit subjects use `gpt-6.1-sol: <description>`.
+Ghidra or full CI run. Commit subjects use `gpt-web: <description>`.
 
 When code or infrastructure changes warrant broader checks, public CI needs
 Python 3.11+ and a C++20 compiler, with no original game or proprietary toolchain:

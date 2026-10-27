@@ -64,7 +64,7 @@ Animation* AnimationHandle::resolve() {
     value = 0;
     return nullptr;
 }
-void AnimationHandle::retire() { std::abort(); }
+void AnimationHandle::retire() { test::record_dialogue_retirement(*this); }
 }
 
 int main() {
@@ -123,7 +123,29 @@ int main() {
             assert(fixture.front().dialogue_value() == d);
             ++ready_reads;
         }
+        // Exercise full native retirement order, including both array rows.
+        for (unsigned i = 0; i < 4; ++i) {
+            d->portraits[i].value = 0x1000 + i;
+            d->portrait_overlays[i].value = 0x1100 + i;
+        }
+        d->handle_54.value = 0x1200;
+        d->handle_68.value = 0x1201;
+        d->handle_6c.value = 0x1202;
+        d->handle_70.value = 0x1203; // Native destructor never retires this field.
+        d->cursor.excluded.push_back(13);
+        d->cursor.selection_history.push(29);
+        d->cursor.count_history.push(31);
         fixture.destroy();
+{
+        auto retirement = expected;
+        for (unsigned i = 0; i < 4; ++i) {
+            retirement.push_back({'d', static_cast<std::int32_t>(0x1000 + i)});
+            retirement.push_back({'d', static_cast<std::int32_t>(0x1100 + i)});
+        }
+        for (std::int32_t handle : {0x1200, 0x200, 0x201, 0x202, 0x203, 0x1201, 0x1202})
+            retirement.push_back({'d', handle});
+        assert(fixture.events() == retirement);
+        }
         assert(allocations.load() == baseline);
         ++constructions;
     }

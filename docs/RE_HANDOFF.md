@@ -35,6 +35,14 @@ reads. Twelve old synthetic getter mutation/exception cases are retired because
 the recovered getters are pure. Production dispatch remains undefined; no case
 fragment receives source acceptance or partial exact credit.
 
+CORE/EXACT-162 reconstructs the 228-byte Dialogue destructor and its complete
+233-byte compiler contribution. It retires fifteen actual animation handles
+in the native order and leaves handle +70 untouched. All 14 independent
+relocations and seven existing same-provider units strictly pass from a new
+cold-built DialogueText object; portable production-owner retirement order
+and populated Cursor destruction pass 512 dirty constructions. The follow-box
+and full resource/frame VM remain open; see [Dialogue evidence](DIALOGUE_OWNER_RECONSTRUCTION.md).
+
 ## Current verification and cleanup
 
 The eleven source/header changes select 59 providers / 392 previous units from
@@ -113,10 +121,11 @@ Ghidra, native exports and supplied `../game_exe/` files.
 
 ## Next work
 
-1. Continue the native Dialogue destructor at 0x4AFC00 and complete 387-byte
-   follow-box method at 0x4B89A0. The latter's coordinate scale at 0x5B8818 needs
-   a genuine owner; do not invent a facade. The existing Animation position,
-   scale and position-write methods cover other observed calls. Handle child
+1. Complete the 387-byte follow-box method at 0x4B89A0. Its coordinate
+   scale at 0x5B8818 has now been identified as the genuine `WindowState::scale`
+   field at +20C0 of the global at 0x5B6758; do not invent a facade.
+   The existing Animation position, scale and position-write methods cover
+   other observed calls. Handle child
    lookup at 0x44C670 is a separate interface. Native resource retirement, the
    Cursor constructor emission question and whole message VM remain open.
 2. Continue the complete Enemy dispatcher at 0x48C010, including its 41,967-byte
@@ -159,7 +168,7 @@ ownership questions are in the focused evidence.
 ## Resume discipline
 
 Follow [AGENTS.md](../AGENTS.md), [workflow](RE_WORKFLOW.md) and
-[tool routing](TOOLS.md). Commit subjects use **`gpt-6.1-sol: <description>`**.
+[tool routing](TOOLS.md). Commit subjects use **`gpt-web: <description>`**.
 Use one writable session, no REA or delegated reconstruction, and serial heavy
 work at nice 15 / CPU 3 with bounded Ghidra memory. Use scripts/repo-python;
 keep claims header-only and maintained prose in English, preserving the official

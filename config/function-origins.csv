@@ -3326,7 +3326,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004AFA50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AFA70,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x004AFAA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AFC00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AFC00,authored,Dialogue,authored,high,"CORE/EXACT-162; docs/DIALOGUE_OWNER_RECONSTRUCTION.md; Native explicitly releases 15 game-owned handles in two array rows and seven single slots, omitting +70, before the compiler-generated Cursor retirement. Full body/tail and protected canonical relocation replay are exact; dynamic backend and other Dialogue resource lifetime remain external."
 0x004AFCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AFD60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AFDC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

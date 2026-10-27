@@ -105,6 +105,20 @@ Dialogue::Dialogue(std::uint8_t* input)
     field_110 = 0;
 }
 
+Dialogue::~Dialogue() {
+    for (std::int32_t index = 0; index < 4; ++index) {
+        portraits[index].retire();
+        portrait_overlays[index].retire();
+    }
+    handle_54.retire();
+    handle_58.retire();
+    handle_5c.retire();
+    handle_60.retire();
+    handle_64.retire();
+    handle_68.retire();
+    handle_6c.retire();
+}
+
 std::int32_t Dialogue::ready() { return ready_state; }
 
 } // namespace th20

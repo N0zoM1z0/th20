@@ -81,6 +81,11 @@ struct DialogueFixtureBackend {
         result = &s.animations[index];
         return true;
     }
+    static void retire(AnimationHandle& handle) {
+        auto& s = state();
+        s.events.push_back({'d', static_cast<std::int32_t>(handle.value)});
+        handle.value = 0;
+    }
     static void interrupt(AnimationHandle& handle, std::int32_t event) {
         auto& s = state();
         assert((handle.value == 0x201u || handle.value == 0x203u) && event == 7);
@@ -195,6 +200,7 @@ void DialogueOwnerFixture::check_follow(Dialogue* receiver, Animation* animation
 bool try_dialogue_resolve(AnimationHandle& handle, Animation*& output) {
     return DialogueFixtureBackend::resolve(handle, output);
 }
+void record_dialogue_retirement(AnimationHandle& handle) { DialogueFixtureBackend::retire(handle); }
 void set_other_spawn(OtherSpawn function) { other_spawn = function; }
 } // namespace th20::test
 
@@ -206,7 +212,7 @@ void AsciiInf::enable() { std::abort(); }
 BulletController::~BulletController() = default;
 void BulletController::enable() { std::abort(); }
 LaserController::~LaserController() = default;
-Dialogue::~Dialogue() = default;
+// Production Dialogue destructor is linked; only resource backends are fixtures.
 void Dialogue::follow_box(Animation* animation) { test::DialogueFixtureBackend::follow(*this, animation); }
 void AnimationHandle::interrupt(std::int32_t event) { test::DialogueFixtureBackend::interrupt(*this, event); }
 std::int32_t BulletController::cancel_all(std::int32_t mode) { return test::DialogueFixtureBackend::bullets(*this, mode); }

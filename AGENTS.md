@@ -5,9 +5,9 @@ messages must be in English, as explicitly requested by the user.
 Official Japanese names and original target evidence may retain their original
 language, as the user explicitly clarified. Preserve the official title in
 `config/target.toml`, following TH095's treatment of game metadata.
-Commit subjects use `gpt-6.1-sol: <description>`.
+Commit subjects use `gpt-web: <description>`.
 Use this exact prefix for new documentation and cleanup checkpoints as well.
-This user-requested prefix supersedes the earlier `gpt-6-astra-medium:` format;
+This user-requested prefix supersedes the earlier `gpt-6.1-sol:` format;
 do not rewrite historical commits.
 
 Invoke Python through `scripts/repo-python` for repository work, including

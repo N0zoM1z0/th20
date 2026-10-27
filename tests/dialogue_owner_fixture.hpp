@@ -36,6 +36,7 @@ public:
 };
 
 bool try_dialogue_resolve(AnimationHandle& handle, Animation*& output);
+void record_dialogue_retirement(AnimationHandle& handle);
 using OtherSpawn = AnimationHandle (*)(AnimationFile&, const char*, std::int32_t,
     const Vector3*, float, std::int32_t, std::uint32_t, Animation**);
 void set_other_spawn(OtherSpawn function);

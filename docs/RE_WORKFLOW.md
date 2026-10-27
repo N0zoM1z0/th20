@@ -11,7 +11,7 @@ and cleanup batches with an unchanged reconstruction graph need Git/diff/link
 checks and protected-product hash checks, with zero replay units. Skip Ghidra,
 MSVC, full CI and canonical replay for these batches. The preflight below is for
 changes to reconstruction code, native analysis evidence or acceptance state.
-Commit subjects use `gpt-6.1-sol: <description>`. State the affected replay scope
+Commit subjects use `gpt-web: <description>`. State the affected replay scope
 in the handoff; an unchanged documentation/cleanup batch reports zero units.
 Reuse completed passing checks when their inputs are unchanged. Resuming a
 handoff or retiring artifacts does not require restarting those checks.
