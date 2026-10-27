@@ -1,11 +1,11 @@
 # Current reconstruction handoff
 
-CORE169 independently decodes the two entire 1,472-byte Enemy opcode
-502/503 paths, integrates their real owner and animation flag propagation
-semantics into the existing private whole-root draft, and verifies the full
-36,802-case host. No partial machine-code exactness is claimed. CORE168
-previously closed real opcode 516/575 call ordering through exact SoundInf
-and Player dependencies; the complete Enemy dispatcher remains open. Start with this
+CORE170 adds genuine Enemy opcode 517 ScreenInf factory and opcode 518
+FrontInf→Bullet→Laser→Enemy cleanup paths to the private whole-root draft.
+The 37,181-case host passes, including all 36,802 prior CORE169 scenarios;
+the exact 41,967-byte Enemy root, native Screen allocation and full resource
+implementations remain open. CORE169 previously closed the two 1,472-byte
+502/503 visibility paths semantically, without granting partial exactness. Start with this
 page, [generated progress](PROGRESS.md) and the [evidence index](EVIDENCE_INDEX.md).
 Do not restart completed validation merely to review the handoff.
 
@@ -33,14 +33,15 @@ See [Dialogue owner evidence](DIALOGUE_OWNER_RECONSTRUCTION.md). Earlier
 [FrontInf](FRONT_OWNER_RECONSTRUCTION.md) and [AsciiInf](ASCII_OWNER_RECONSTRUCTION.md)
 construction remain accepted; native resource retirement/frame execution stay open.
 
-The private whole Enemy draft now covers **114 effective values / 85 native
-primary heads**, including entire 502/503 bitfield/visibility paths and the
-real 516/575 call dependencies. Its **36,802-case O2/UBSan** host passes:
-36,310 earlier cases and 492 new bit-transfer, recursive Animation, failed
-handle and exception-order cases. The whole 41,967-byte production dispatcher
-remains undefined; none of these case-path bytes has partial exact credit.
-See [502/503 complete native path evidence](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
-and [516/575 caller integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
+The private whole Enemy draft now covers **116 effective values / 87 native
+primary heads**, adding native 517/518 ScreenInf creation and message cleanup
+to the prior 502/503 visibility and 516/575 real-callee branches. Its
+**37,181-case O2/UBSan** host passes (36,802 earlier cases plus 379 new
+owner/order/failure tests). Production Enemy dispatch remains undefined;
+none of these root case intervals has partial machine-code credit. See
+[ScreenInf/message proof](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
+[502/503 native paths](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
+and [516/575 integration](ENEMY_WHOLE_ROOT_516_575_INTEGRATION.md).
 
 CORE/EXACT-162 reconstructs the 228-byte Dialogue destructor and its complete
 233-byte compiler contribution. It retires fifteen actual animation handles
@@ -60,6 +61,19 @@ physical comparison bytes. The affected include-closure providers, not the
 whole graph, are the correct cold-build scope.
 
 ## Current verification and cleanup
+
+CORE170 independently decodes full opcode 517/518 case intervals (99/142
+original bytes; 25/31 native instructions), fixes seven-argument ScreenInf
+allocation ownership (`0x4250F0`, owner size 0x44 and 637-byte ten-mode
+initializer) and confirms late Front/Context receivers through actual native
+calls. The private host compiles 78 real source units and passes
+**37,181/37,181** scenarios, adding 379 to CORE169. Front message, Bullet,
+Laser and Screen resource bodies are bounded captures; the last
+`EnemyController::clear` call is the actual accepted whole implementation.
+The hash-attested `core170-whole-enemy-root-proof.json` preserves 90 input
+hashes and all 164 unchanged canonical receipts. **Zero tracked production
+or exact-unit changes**; the 41,967-byte whole root remains nonexact.
+
 
 CORE169 audits the **full two 1,472-byte** native Enemy branches for opcodes
 502/503 (592 original instructions), including all fourteen separate low-bit
@@ -178,7 +192,7 @@ The actual-owner fixture passes 512 guarded dirty constructions, 24 exception
 unwinds, 2,049 live callbacks and 3,072 full-width ready reads. The affected
 FrontInf fixture passes 1,706 cases; AsciiInf passes 256 dirty constructions,
 81,920 complete line images and 768 shared-file selections. The historical CORE161 whole-root
-fixture passed 36,232 cases; the current CORE169 host passes 36,802. Source and fixture limitations are explicit in the
+fixture passed 36,232 cases; the current CORE170 host passes 37,181. Source and fixture limitations are explicit in the
 focused evidence; these are portable checks, not native game execution.
 
 Historical CORE161 private proofs include `core161-cold-proof.json`,
@@ -236,10 +250,10 @@ Preserve `core161-pre-dialogue-inputs.json.gz`,
 `core161-probe-v1-original-inputs.json.gz`,
 `core161-probe-v2-original-inputs.json.gz`,
 `core161-prior-dispatch-inputs.json.gz` and all earlier original-input/evidence
-archives. Current private root inputs are `core169-enemy-dispatch-candidate.cpp`,
-`core169-dispatch-host.cpp`, `core169-visibility-host-cases.inc` and the CORE169
-recipe/proof; all CORE168, CORE161 and earlier candidates, fixtures and
-incomplete protocols remain protected.
+archives. Current private root inputs are `core170-enemy-dispatch-candidate.cpp`,
+`core170-dispatch-host.cpp`, `core170-screen-message-host-cases.inc` and the
+CORE170 recipe/proof. CORE169, CORE168, CORE161 and all earlier candidates,
+fixtures and unfinished protocols remain protected.
 
 Historical archive lookup remains in the handoff146/149/152/154/157/160 and
 core156/158/159/160 retirement plans. They preserve archived logs, snapshots and
@@ -257,9 +271,10 @@ Ghidra, native exports and supplied `../game_exe/` files.
    exact Player flag dependency; opcode 516 now has a complete exact
    SoundInf positional pan dependency too. Neither grants partial root credit. Remaining
    502/503 are semantically integrated, but still need the genuine Renderer
-   lookup and wrapper source/ABI. The 517/518, 524, 539, 548/549, 551,
-   553..555 and other nondefault state paths still need owner/call
-   reconciliation. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
+   lookup and wrapper source/ABI. Opcode 517/518 now have tested ScreenInf
+   and FrontInf/Bullet/Laser/Enemy call ordering, but the real Screen
+   factory/message/cancellation bodies remain open. The 524, 539, 548/549,
+   551, 553..555 and other nondefault state paths need original owners. Reuse [FrontInf callers](FRONT_OWNER_RECONSTRUCTION.md),
    [rank/control](ENEMY_RANK_CONTROL_RECONSTRUCTION.md),
    [state](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md),
    [Card](ENEMY_CARD_STATE_RECONSTRUCTION.md),
