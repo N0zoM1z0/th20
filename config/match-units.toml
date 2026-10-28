@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117730", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117732", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117731", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117733", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117732", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117734", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117733", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117735", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16362,7 +16362,7 @@ relocations = [
   { offset = 62, type = "REL32", symbol = "??0?$IntrusiveList@VLaser@th20@@@th20@@QAE@XZ", target = 4295248 },
   { offset = 93, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 4337168 },
   { offset = 104, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 4337168 },
-  { offset = 149, type = "DIR32", symbol = "$SG79130", target = 5706764 },
+  { offset = 149, type = "DIR32", symbol = "$SG79132", target = 5706764 },
   { offset = 154, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
 ]
 
@@ -16704,4 +16704,19 @@ relocations = [
   { offset = 0x4F, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 0x5C, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
   { offset = 0x79, type = "REL32", symbol = "?at@?$array@PAVAnimationFile@th20@@$07@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x004AA130 },
+]
+
+# CORE/EXACT-194: original whole 0x004C9300 LaserController list registration.
+# Both original call sites are independently established native typed methods.
+[units.laser_controller_register_laser]
+source = "src/LaserRegistration.cpp"
+object = "build/core194-canonical/LaserRegistration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserController::register_laser"]
+symbol = "?register_laser@LaserController@th20@@QAEXPAVLaser@2@@Z"
+target_address = 0x004C9300
+size = 75
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VLaser@th20@@@th20@@QAEXPAVLaser@2@@Z", target = 0x0044A670 },
+  { offset = 0x32, type = "REL32", symbol = "?prepend@?$IntrusiveList@VLaser@th20@@@th20@@QAEXPAV?$IntrusiveLink@VLaser@th20@@@2@@Z", target = 0x0044A6B0 },
 ]

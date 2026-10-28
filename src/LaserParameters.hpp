@@ -85,6 +85,7 @@ public:
     void select_context(std::int32_t index);
     std::int32_t cancel_all(std::int32_t mode, std::int32_t argument);
     std::int32_t reset_all_lasers();
+    void register_laser(Laser* chosen);
 };
 
 LaserController* laser_controller(std::int32_t index);

@@ -3901,7 +3901,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C9250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C92C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C9300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C9300,authored,LaserController,authored,high,"CORE/EXACT-194; docs/LASER_REGISTRATION_NATIVE_EXACT_RECONSTRUCTION.md; native game-specific 75-byte Laser registration, original 474B creation has four independent registration call sites, intrusive link+8 / list+0x10 / count+0x28; full strict locked MSVC whole-function proof and 22/22 affected units."
 0x004C9350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9380,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

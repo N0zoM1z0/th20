@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE192 integrates native Enemy 702/703 typed Laser spawn branches into the entire 41,967-byte boss root; previous CORE191 and CORE190 exact selector evidence preserved.
+**Checkpoint:** CORE/EXACT-194 admits the complete native 75-byte LaserController registration callee; CORE192 whole Enemy 702/703 proof remains intact.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -22,10 +22,10 @@ evidence documents are historical, not competing current status.
   SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
   Do not switch to the Steam-original backup or any other release. See
   [target provenance](TARGET_PROVENANCE.md) and `config/target.toml`.
-- Live ledgers: **6,928** target function candidates, **1,015** source-present
-  mappings, **1,006** physical canonical strict units, **220** confirmed
-  authored exact functions / **57,442** authored exact bytes. The 165 current
-  canonical objects cover **181,815** comparison bytes. **Nine**
+- Live ledgers: **6,928** target function candidates, **1,016** source-present
+  mappings, **1,007** physical canonical strict units, **221** confirmed
+  authored exact functions / **57,517** authored exact bytes. The 166 current
+  canonical objects cover **181,890** comparison bytes. **Nine**
   source-present whole-function mappings remain nonexact. These are not a
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
@@ -36,6 +36,30 @@ evidence documents are historical, not competing current status.
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-194 reconstructs the **entire genuine native 75-byte**
+`LaserController::register_laser(Laser*)` at `0x004C9300` from real
+`Laser.link+0x8`, `LaserController.active+0x10` and `count+0x28` fields.
+Both native direct calls (`IntrusiveLink::initialize` at `0x0044A670`
+and `IntrusiveList::prepend` at `0x0044A6B0`) were independently
+established; **75/75 original bytes with two relocations** replay exact
+under locked MSVC 19.44 x86. The original still-nonexact **474-byte**
+LaserController creator at `0x004D47F0` calls this method at four verified
+sites after allocation/virtual init. The only affected compiler-receipt
+closure is **3 production TUs**, **22/22** complete strict units all passed
+fresh cold build; other providers were not cold-built. Current source:
+`src/LaserRegistration.cpp`, updated real member declaration in
+`src/LaserParameters.hpp`, canonical
+`build/core194-canonical/LaserRegistration.obj`. Private native bytes,
+2 original targets, 4 caller sites, source/object hashes and replay log:
+`.analysis/core194-native-laser-registration-audit.json` and
+`.analysis/core194-affected-replay.log`; complete evidence at
+[real laser registration exact reconstruction](LASER_REGISTRATION_NATIVE_EXACT_RECONSTRUCTION.md).
+This adds **one authored exact / 75 bytes** but *no native credit for the
+474-byte factory or the 41,967-byte Enemy boss*. CORE192's 40,941 whole-root
+scenarios remain protected; they were compiled before the new nonvirtual
+member declaration and do not yet execute the real registration method.
+
 
 CORE192 added **both complete original large Laser spawn opcode branches**
 to the *same existing entire Enemy source-draft root*: native **702** has
@@ -247,7 +271,8 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
    native compiler/EH closure for the **396-byte** `0x00498B80` COW and
    **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now
    tested). The next large concrete dependency is the **474-byte native
-   LaserController creator `0x004D47F0`** consumed by 702/703, with four
+   LaserController creator `0x004D47F0`** consumed by 702/703; its exact
+   **75-byte registration** callee is now separately fully reconstructed, with four
    concrete beam factory cases, virtual init and lifetime. The **151-byte**
    `EnemyController::animation_file` remains exact and already integrated;
    also attack the still undefined Stage getter `0x004AADF0` and
@@ -278,12 +303,12 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 ## Protected data and fast scoped verification
 
 `config/match-units.toml` is the **only** current canonical object inventory,
-not a static build-directory list copied from old handoffs. As of CORE190 it
-selects **165** actual `build/**/*.obj` files with **165 sibling
+not a static build-directory list copied from old handoffs. As of CORE194 it
+selects **166** actual `build/**/*.obj` files with **166 sibling
 `.receipt.json` files**. Their distribution is core141 66, core142 6,
 core145 3, core149 1, core151 1, core154 5, core154-v2 1, core156 1,
 core158 10, core163 19, core164 8, core166 2, core167 1, core174 2,
-core178 9, core180 26, **core182 2, core185 1 and core190 1**. Old probe objects/receipts may be
+core178 9, core180 26, **core182 2, core185 1, core190 1 and core194 1**. Old probe objects/receipts may be
 retained as historical evidence but are not current acceptance units. Also
 preserve the twenty historical unfinished QueryProtocol/sound/Alignment
 products documented in
@@ -291,6 +316,9 @@ products documented in
 [sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Animation pool](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
+**For CORE194**, new real `LaserController::register_laser` and
+`LaserParameters.hpp` affect **3 provider objects / 22 native units**;
+**22/22** strict cold replays pass, other source providers not rebuilt.
 **For CORE190**, changes to real `EnemyController.hpp` and new full selector
 source affect exactly **12** receipt-derived canonical providers, all **68/68**
 complete native strict units passed after **12** serial reduced-priority cold
