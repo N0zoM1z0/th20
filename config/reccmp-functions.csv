@@ -1103,3 +1103,4 @@ th20::Player::set_clock_scale,0x004AB590,function
 th20::PlayerTable::clamped_field_1e4,0x004C5DB0,function
 th20::Session::flag0_value,0x00474E00,function
 th20::Player::clear_entity_flag2,0x004790C0,function
+th20::Player::reset_initial_state,0x004FB450,function

@@ -12,6 +12,7 @@ namespace th20 {
 template<class T, unsigned Count> struct PlayerValues {
     T values[Count];
     PlayerValues() noexcept;
+    T* begin();
     T& at(std::int32_t index);
     T* end();
 };
@@ -80,6 +81,9 @@ public:
     std::int32_t damage_limit();
     PlayerFeedback* feedback_value();
     void clear_option_animations();
+    void reset_initial_state();
+    void rebuild_option_animations(std::int32_t mode);
+    void enter_special_state();
     void clear_entity_flag2();
     IntPoint& fixed_position_ref();
     void set_clock_scale(float value);

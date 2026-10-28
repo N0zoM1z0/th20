@@ -77,3 +77,10 @@ The full native Player reset boss at `0x004FB450` (966B), its 1,518-byte
 option setup callee at `0x004FACA0`, Bullet 1,404B command-11 and 273B
 single-group draw are **still nonexact**; the helper exact proofs do not
 imply complete runtime startup, game linkage, or those parents' exactness.
+
+## Later CORE/EXACT-314 status
+
+The complete original 966-byte Player reset owner at `0x004FB450` is now
+**strict native exact**, superseding the historical open-parent statements
+above. See [the whole 966-byte proof](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md).
+The separately larger 1,518-byte option rebuild callee remains open.

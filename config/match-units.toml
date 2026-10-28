@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82075", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82084", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -18661,3 +18661,56 @@ symbol = "?clear_entity_flag2@Player@th20@@QAEXXZ"
 target_address = 0x004790C0
 size = 26
 relocations = []
+
+# CORE/EXACT-314: complete 966-byte Player reset boss, all 208 instructions,
+# full native 19 call + 21 PE HIGHLOW data fields and the typed 33-slot loop.
+[units.player_reset_initial_state]
+source = "src/PlayerResetInitial.cpp"
+object = "build/core314-canonical/PlayerResetInitial.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::reset_initial_state"]
+symbol = "?reset_initial_state@Player@th20@@QAEXXZ"
+target_address = 0x004FB450
+size = 966
+relocations = [
+  { offset = 0x01F, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x02F, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x05B, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x06B, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x079, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x089, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x097, type = "REL32", symbol = "?reset_all@PlayerShotController@th20@@QAEXXZ", target = 0x00504950 },
+  { offset = 0x09F, type = "REL32", symbol = "?clear_option_animations@Player@th20@@QAEXXZ", target = 0x004FF8F0 },
+  { offset = 0x0A9, type = "REL32", symbol = "?rebuild_option_animations@Player@th20@@QAEXH@Z", target = 0x004FACA0 },
+  { offset = 0x0B4, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x0C4, type = "REL32", symbol = "?clear_entity_flag2@Player@th20@@QAEXXZ", target = 0x004790C0 },
+  { offset = 0x0D2, type = "REL32", symbol = "?stop@?$Interpolation@M@th20@@QAEXXZ", target = 0x00429970 },
+  { offset = 0x0DD, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x0EE, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x0FB, type = "REL32", symbol = "?set_clock_scale@Player@th20@@QAEXM@Z", target = 0x004AB590 },
+  { offset = 0x10F, type = "REL32", symbol = "?begin@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAEPAUIntPoint@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x11A, type = "REL32", symbol = "?end@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAEPAUIntPoint@2@XZ", target = 0x004FCE40 },
+  { offset = 0x13E, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x170, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x193, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x1B6, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x1D9, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x1F1, type = "DIR32", symbol = "?native_five@th20@@3MB", target = 0x0056EDD4 },
+  { offset = 0x204, type = "DIR32", symbol = "?native_thirty@th20@@3MB", target = 0x0056F280 },
+  { offset = 0x217, type = "DIR32", symbol = "?native_seventy@th20@@3MB", target = 0x0056FA2C },
+  { offset = 0x22A, type = "DIR32", symbol = "?native_seventy@th20@@3MB", target = 0x0056FA2C },
+  { offset = 0x23D, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x250, type = "DIR32", symbol = "?native_three@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x263, type = "DIR32", symbol = "?native_three@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x27E, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2AB, type = "DIR32", symbol = "?native_ten@th20@@3MB", target = 0x0056E734 },
+  { offset = 0x2B3, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2D1, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2FE, type = "DIR32", symbol = "?native_ten@th20@@3MB", target = 0x0056E734 },
+  { offset = 0x306, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x390, type = "REL32", symbol = "?player_table@th20@@YAAAUPlayerTable@1@XZ", target = 0x00498F40 },
+  { offset = 0x397, type = "REL32", symbol = "?clamped_field_1e4@PlayerTable@th20@@QAEHXZ", target = 0x004C5DB0 },
+  { offset = 0x3A0, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x3A5, type = "REL32", symbol = "?flag0_value@Session@th20@@QBEIXZ", target = 0x00474E00 },
+  { offset = 0x3BD, type = "REL32", symbol = "?enter_special_state@Player@th20@@QAEXXZ", target = 0x004FFD20 },
+]

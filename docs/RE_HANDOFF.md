@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-308 Player reset mode closure.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-314 entire Player initialization/reset.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,104** |
-| Canonical strict native units | **1,093** |
-| Unique canonical object providers | **217**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **305**, covering **79,525 native bytes** |
+| Source-present mappings, all origins | **1,105** |
+| Canonical strict native units | **1,094** |
+| Unique canonical object providers | **218**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **306**, covering **80,491 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 217 current canonical object/receipt pairs, native proof documents,
+The 218 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::reset_initial_state` | `0x004FB450` | **966** | [whole reset state machine](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md) |
 | `PlayerTable::clamped_field_1e4` | `0x004C5DB0` | **73** | [mode clamp and state flags](PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md) |
 | `Player::clear_option_animations` | `0x004FF8F0` | **237** | [full sweep and accessor chain](PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md) |
 | `Player::draw` | `0x004F8AF0` | **145** | [draw and flush](PLAYER_DRAW_EXACT_RECONSTRUCTION.md) |
@@ -72,14 +73,16 @@ additional scoped strict unit. See the focused proof.
 The freshly closed Player option state sweep and four typed accessors add
 **327 strict bytes**; all **49/49** units affected by new Player.hpp
 declarations replayed across **18** source objects, with no full replay.
-The still-open **966-byte** Player initialization/root `0x004FB450` directly
-calls the accepted 237-byte sweep and 19/29/19-byte accessors, plus three
-newly exact 73/20/26B mode/flag methods. CORE/EXACT-308 also corrected a
-Ghidra library-function misidentification: `0x00471170` is called as the
-`std::clamp<int>` template. The `Player.hpp`/`Session.hpp` closure replay was
-**195/195** strict units across **36** rebuilt objects; 15 compiler-private
-`$SG` renumberings retained all original relocation targets. Prioritize
-the remaining complete 966-byte parent as the next larger challenge.
+The complete **966-byte** Player initialization/reset root `0x004FB450`
+is now **966/966 strict exact**, with **208 original instructions and 40
+independently verified native relocation sites**. It closes the caller of
+the 237B option-sweep, typed position-history and 73/20/26B mode/flag chain.
+CORE/EXACT-314 recomputed the real affected closure and passed **61/61
+strict units across 21 cold objects**, with no full-graph replay. Earlier
+CORE/EXACT-308 independently corrected Ghidra's tentative 0x00471170
+library-function label to a genuine `std::clamp<int>` call. The next
+substantial Player frontier is the separate **1,518-byte**
+`Player::rebuild_option_animations` at `0x004FACA0` (still nonexact).
 
 ## Open complete-function roots — next agent's priorities
 
@@ -133,6 +136,16 @@ the remaining complete 966-byte parent as the next larger challenge.
    and `.analysis/core298-PENDING_GRAZE_FEEDBACK.md`, **not** left in
    maintained headers without strict regression. Native callees
    `0x004FE8D0`, `0x0049DC60`, `0x0049BE20` need independent review.
+
+## New large Player frontier after exact reset
+
+The full `Player::rebuild_option_animations` at `0x004FACA0` is
+**1,518 native bytes, not yet exact**. It is called directly by the
+now complete 966B reset root and contains resource/AnimationHandle
+replacement, Player option assignment and animation-file selection.
+Work on its own whole-function evidence and genuine callees, not a
+shortened prefix or speculative owner interface. See
+[the complete reset proof](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md).
 
 ## Resume workflow and bounded verification
 

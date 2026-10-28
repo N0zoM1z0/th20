@@ -97,3 +97,10 @@ The larger 966-byte Player reset/initialization boss at `0x004FB450`, the
 1,404-byte Bullet command-11 source and the 273-byte single Bullet draw-group
 routine remain separately **nonexact**. This checkpoint does not imply
 whole-game linker or runtime closure.
+
+## Later CORE/EXACT-314 status
+
+The complete original 966-byte Player reset owner at `0x004FB450` is now
+**strict native exact**, superseding the historical open-parent statements
+above. See [the whole 966-byte proof](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md).
+The separately larger 1,518-byte option rebuild callee remains open.

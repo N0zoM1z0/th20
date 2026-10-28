@@ -122,6 +122,7 @@ struct PlayerShotController {
     std::int32_t player_index;
     Context* context;
     PlayerShotController();
+    void reset_all();
     PlayerShot* find(std::int32_t identifier);
 };
 // No explicit padding fields: byte flags and pointers use native alignment.

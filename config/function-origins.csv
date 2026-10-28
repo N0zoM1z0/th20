@@ -4566,7 +4566,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FB340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FB3A0,authored,EnemyDefeatState,authored,high,"CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md; Complete semantic source for native115-byte Feedback hit update: advance actual Timer base, cap only above30, wrap raw counter+38, copy to+30 and update+3C through signed comparison. Ordinary member use and full133-byte constructor corroborate Timer-base reconstruction. Actual compiled extent114 differs by an unexplained native post-call NOP at4FB3B5. This whole function remains nonexact with no canonical unit or exact byte credit; no inserted padding, fake return or shortened target. Independent game-specific Player/Enemy counter protocol establishes authored origin."
 0x004FB420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FB450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FB450,authored,Player,authored,high,CORE/EXACT-314; docs/PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md; entire original gameplay Player reset and native object owners
 0x004FB820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FB8C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FB900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
