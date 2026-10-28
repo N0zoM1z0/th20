@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/REVIEW-212 corrects real Bullet-list head insertion and the exact 291B caller’s symbol/semantics; CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
+**Checkpoint:** CORE/EXACT-214 admits the whole 281B native Bullet reflection and 22B/17B typed helpers (38/38 strict affected replay); CORE/REVIEW-212 corrects real Bullet-list head insertion and the exact 291B caller’s symbol/semantics; CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 active-session commit subjects and **affected-only** replay requirements. This
@@ -46,6 +46,22 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-214 (web): **fully exact 281-byte Bullet vertical reflection**
+`0x00482DA0`, plus complete native 22-byte
+`BulletExtendedCommands::at` `0x0047C680` and 17-byte
+`BulletController::vector_4c_ref` `0x00485990`. All 13 original relocations
+in the 281B function are independently anchored; SSE NaN branch and
+`448.0f / 2.0f`, command index 4, Angle sign inversion and vertical
+position reflection are preserved. **320/320 new native bytes**, 35/35
+shared-Bullet.hpp existing units freshly cold-recompiled and strict replayed:
+**38/38 units / seven objects**, no unfiltered cold replay. Local MSVC
+`$SG` symbol labels renumbered; original data destinations did not change.
+Full original 832B caller at `0x00482A60`, 3,735B single-bullet emit at
+`0x004818E0`, and 41,967B Enemy opcode dispatcher **remain nonexact**.
+See [Bullet reflection evidence](BULLET_REFLECTION_EXACT_RECONSTRUCTION.md).
+Current authored exact ledger totals: **235 functions / 60,036 bytes**.
+
 
 CORE/REVIEW-212 (web) independently corrected a **real source semantic error**:
 native list method `0x0044A6B0` prepends to the sentinel, not appends.

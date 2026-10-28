@@ -1025,3 +1025,6 @@ th20::BulletController::fire
 th20::Bullet::deactivate
 th20::Bullet::select_context
 th20::BulletController::free_list
+th20::Bullet::reflect_at_y_limit
+th20::BulletExtendedCommands::at
+th20::BulletController::vector_4c_ref

@@ -24,6 +24,7 @@ struct BulletCommandFlags { std::uint64_t bits; };
 struct BulletExtendedCommands {
     ExtendedCommand slots[14];
     BulletExtendedCommands() noexcept;
+    ExtendedCommand& at(std::int32_t index);
 };
 struct Bullet {
     IntrusiveLink<Bullet> link;
@@ -62,6 +63,7 @@ struct Bullet {
     ~Bullet();
     void select_context(std::int32_t index);
     void deactivate();
+    std::int32_t reflect_at_y_limit();
 };
 struct BulletPool {
     Bullet slots[2001];
@@ -100,6 +102,7 @@ struct BulletController final : TaskInfo {
     void set_scalar_48(float value);
     std::int32_t count();
     IntrusiveList<Bullet>& free_list();
+    Vector2& vector_4c_ref();
     std::int32_t fire(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata);
     std::int32_t emit(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata,
                       int column, int row, float direction);

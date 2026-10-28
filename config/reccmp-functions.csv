@@ -1026,3 +1026,6 @@ th20::BulletController::fire,0x00481780,function
 th20::Bullet::deactivate,0x0047DA40,function
 th20::Bullet::select_context,0x00486570,function
 th20::BulletController::free_list,0x00485900,function
+th20::Bullet::reflect_at_y_limit,0x00482DA0,function
+th20::BulletExtendedCommands::at,0x0047C680,function
+th20::BulletController::vector_4c_ref,0x00485990,function

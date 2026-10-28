@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79816", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79820", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117752", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117756", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117753", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117757", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117754", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117758", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117755", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117759", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16948,4 +16948,50 @@ functions = ["th20::BulletController::free_list"]
 symbol = "?free_list@BulletController@th20@@QAEAAU?$IntrusiveList@UBullet@th20@@@2@XZ"
 target_address = 0x00485900
 size = 19
+relocations = []
+
+# CORE/EXACT-214: whole native 281B Bullet vertical reflection used by the
+# 832B original Bullet opcode update boss; original SSE NaN behavior retained.
+[units.bullet_reflect_at_y_limit]
+source = "src/BulletReflection.cpp"
+object = "build/core214-canonical/BulletReflection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Bullet::reflect_at_y_limit"]
+symbol = "?reflect_at_y_limit@Bullet@th20@@QAEHXZ"
+target_address = 0x00482DA0
+size = 281
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x1A, type = "REL32", symbol = "?vector_4c_ref@BulletController@th20@@QAEAAUVector2@2@XZ", target = 0x00485990 },
+  { offset = 0x39, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x53, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x5A, type = "REL32", symbol = "?vector_4c_ref@BulletController@th20@@QAEAAUVector2@2@XZ", target = 0x00485990 },
+  { offset = 0x76, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+  { offset = 0x7E, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x8B, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xB2, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xC8, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xD7, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0xEB, type = "REL32", symbol = "??4Angle@th20@@QAEAAU01@M@Z", target = 0x00452F20 },
+  { offset = 0xF3, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+]
+
+[units.bullet_extended_commands_at]
+source = "src/BulletReflection.cpp"
+object = "build/core214-canonical/BulletReflection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::BulletExtendedCommands::at"]
+symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z"
+target_address = 0x0047C680
+size = 22
+relocations = []
+
+[units.bullet_controller_vector_4c_ref]
+source = "src/BulletReflection.cpp"
+object = "build/core214-canonical/BulletReflection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::BulletController::vector_4c_ref"]
+symbol = "?vector_4c_ref@BulletController@th20@@QAEAAUVector2@2@XZ"
+target_address = 0x00485990
+size = 17
 relocations = []
