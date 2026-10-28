@@ -19318,3 +19318,21 @@ relocations = [
   { offset = 0x260, type = "REL32", symbol = "?fill@?$array@I$0BA@@std@@QAEXABI@Z", target = 0x004981F0 },
   { offset = 0x26C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-387: complete original 162B FunctionChain owned-node removal.
+[units.function_chain_remove_unlocked]
+source = "src/FunctionChainController.cpp"
+object = "build/core142-canonical/FunctionChainController.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::FunctionChainController::remove_unlocked"]
+symbol = "?remove_unlocked@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z"
+target_address = 0x00412400
+size = 162
+relocations = [
+  { offset = 0x25, type = "REL32", symbol = "?find@?$IntrusiveList@VFunctionChainNode@th20@@@th20@@QAEPAV?$IntrusiveLink@VFunctionChainNode@th20@@@2@PAVFunctionChainNode@2@@Z", target = 0x00411E70 },
+  { offset = 0x43, type = "REL32", symbol = "?find@?$IntrusiveList@VFunctionChainNode@th20@@@th20@@QAEPAV?$IntrusiveLink@VFunctionChainNode@th20@@@2@PAVFunctionChainNode@2@@Z", target = 0x00411E70 },
+  { offset = 0x60, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VFunctionChainNode@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
+  { offset = 0x6D, type = "REL32", symbol = "?detach@?$IntrusiveLink@VFunctionChainNode@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
+  { offset = 0x8C, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x91, type = "REL32", symbol = "??$release_object@VFunctionChainNode@th20@@@DiagnosticAllocator@th20@@QAEXPAVFunctionChainNode@1@@Z", target = 0x004118A0 },
+]

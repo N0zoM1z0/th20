@@ -44,7 +44,12 @@ void FunctionChainController::remove_unlocked(FunctionChainNode* node) {
     if (current==link) current=link->next_value();
     link->detach();
     node->callback=nullptr;
-    if (node->flags.bits&1u) process_allocator->release_object(node);
+    if (node->flags.bits&1u) {
+        process_allocator->release_object(node);
+        // The original explicitly invalidates its by-value local node slot
+        // only after releasing owned storage; this is a real PE write.
+        node = nullptr;
+    }
 }
 
 void FunctionChainController::remove(FunctionChainNode* node) {

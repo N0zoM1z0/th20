@@ -129,3 +129,16 @@ core130-cold-proof.json, core130-affected-results.json.gz,
 core130-new-exact-results.json, core130-folded-initializer.json,
 core130-boundaries.json, rejected probe sources and attested native exports
 under `.analysis/`. Completed proof/retirement writers must never rerun.
+
+
+## CORE/EXACT-387 — later complete owned-node unlinking
+
+The old nonexact 156B candidate of the full original 162-byte
+`FunctionChainController::remove_unlocked` is superseded.
+Native `mov [ebp+8],0` after owned-node release now has an
+actual real C++ `node=nullptr` expression in the owned branch.
+All **162 original bytes / 52 instructions** and six
+independently native E8/HIGHLOW references are strict exact.
+The true original source provider replayed **15/15 exact
+units in one object**, without any global cold rebuild.
+See the [new focused original proof](FUNCTION_CHAIN_REMOVE_162_EXACT_RECONSTRUCTION.md).

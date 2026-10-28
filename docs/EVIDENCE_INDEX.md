@@ -254,6 +254,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Ownership, gameplay and shared values
 
+- [Exact complete 162B FunctionChainController owned-node removal](FUNCTION_CHAIN_REMOVE_162_EXACT_RECONSTRUCTION.md) — actual update/draw intrusive-chain search, current cursor fix, release, and original by-value node-slot zeroing; five E8 and one PE HIGHLOW native refs, 15/15 scoped strict units in one rebuilt owner object.
+
 - [Actual Bomb ownership and dispatch](BOMB_OWNER_RECONSTRUCTION.md)
 - [Whole core iteration and dispatch exact reconstruction](CORE_ITERATION_EXACT_RECONSTRUCTION.md)
 - [Damage controller and whole query evidence](DAMAGE_CONTROLLER_RECONSTRUCTION.md)
