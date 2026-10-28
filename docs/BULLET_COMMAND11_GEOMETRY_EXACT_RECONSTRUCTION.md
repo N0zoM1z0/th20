@@ -111,3 +111,13 @@ The original **1,846B** Bullet physics, **2,018B** collision,
 **41,967B** Enemy opcode dispatcher remain nonexact. The full
 command11-specific native disassembly and whole-function compiler trials
 stay under ignored `.analysis/core255-*` and `build/core255-probes/`.
+
+## CORE/RECON-302 update (later checkpoint)
+
+The complete parent is now maintained at `src/BulletCommand11.cpp`, with
+a fresh native/control-flow audit and an isolated locked-MSVC build. Its
+original 1,404-byte function remains **nonexact**: the 1,378-byte candidate
+aligns 353/357 original instruction mnemonics, omitting only four original
+unconsumed 384.0f/448.0f stack copies. Prior statements above that the
+source is private only are historical. See
+[full maintained-source frontier](BULLET_COMMAND11_FULL_SOURCE_FRONTIER.md).

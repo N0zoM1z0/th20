@@ -66,6 +66,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 - [Historical 1,846B Bullet physics frontier (superseded)](BULLET_PHYSICS_1846_NATIVE_FRONTIER.md) — prior complete 517-instruction audit and rejected probes; the entire 1,846B body and original jump-table contribution are now exact (see the newer full proof above).
 
+- [Maintained complete 1,404B Bullet command11 source frontier](BULLET_COMMAND11_FULL_SOURCE_FRONTIER.md) — whole 357-instruction native boss reconstructed as a natural 353-instruction / 1,378B source candidate; 66/66 aligned relocation sites and 35/35 independent PE base relocations, but four original unconsumed float-write instructions remain unexplained, so no parent exact credit.
+
 - [Exact 255B command11 geometry dependency chain and 1,404B whole boss frontier](BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md) — three whole 50B/50B/155B native functions with three independently reviewed native relocations, plus a complete 357-instruction 1,404B parent candidate still nonexact.
 
 - [Native shot vector STL origin and full 3,735B emitter branch-table audit](BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md) — actual 33B/41B MSVC STL vector methods 2/2 strict but library-excluded from authored credit; full 3,840B emitter and 1,872B physics table-containing contributions plus 2,018B collision-root SHA independently attested.

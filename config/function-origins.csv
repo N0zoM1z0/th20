@@ -2300,7 +2300,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00480D70,authored,BulletGeometry,authored,high,"CORE/EXACT-256; docs/BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md; complete game-owned native 50B cross or dot Vector2 gameplay helper, 0 relocation, 4 original callers within 1404B Bullet command11"
 0x00480DB0,authored,Bullet,authored,high,CORE/EXACT-245; docs/BULLET_COMMAND7_EXACT_RECONSTRUCTION.md; original game-owned Bullet player direction/vector interpolation with complete 493B/21-native relocation proof and independent entire native Player/Vector3/Timer callees
 0x00480FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00481200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00481200,authored,Bullet,authored,high,CORE/RECON-302; docs/BULLET_COMMAND11_FULL_SOURCE_FRONTIER.md; direct game-authored Bullet update caller at 0x00485B60 and typed Bullet state machine
 0x00481780,authored,BulletController,authored,high,"CORE/EXACT-210; docs/BULLET_FIRE_EXACT_RECONSTRUCTION.md; original gameplay-level signed shot formation, sound and player-directed loops; 103 original instructions / 11 relocation anchors"
 0x004818E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004827E0,authored,Bullet,authored,high,"CORE/EXACT-246; docs/BULLET_COMMAND8_EXACT_RECONSTRUCTION.md; whole game-owned Bullet command8 interpolation with original 637B code, signed Timer state, exact native VectorInterpolation and 22 independent original PE relocation anchors"

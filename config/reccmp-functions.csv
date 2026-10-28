@@ -1092,3 +1092,4 @@ th20::select_bullet_aim,0x00485740,function
 th20::BulletController::rebuild_active_bullets,0x0047D600,function
 th20::Player::collision_rectangle_circle,0x004F91D0,function
 th20::Player::draw,0x004F8AF0,function
+th20::Bullet::advance_command11,0x00481200,function

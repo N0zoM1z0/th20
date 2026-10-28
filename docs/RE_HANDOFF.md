@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-301 Player drawing checkpoint.** This file is the concise
+**Updated 2026-10-28; CORE/RECON-302 Bullet command-11 frontier.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,7 +16,7 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,093** |
+| Source-present mappings, all origins | **1,094** |
 | Canonical strict native units | **1,084** |
 | Unique canonical object providers | **213**, each with an exact `.obj` and `.receipt.json` |
 | Exact game-authored whole functions | **296**, covering **79,066 native bytes** |
@@ -67,10 +67,11 @@ including all 21 previously exact header consumers. See the focused proof.
 ## Open complete-function roots — next agent's priorities
 
 1. **Bullet command 11 `0x00481200`: 1,404 bytes / 357 native
-   instructions.** Its entire real 50B cross, 50B dot and 155B
+   instructions.** The entire boss now has maintained nonexact
+   `src/BulletCommand11.cpp`; read the [whole source frontier](BULLET_COMMAND11_FULL_SOURCE_FRONTIER.md). Its entire real 50B cross, 50B dot and 155B
    normalization helpers are exact. Full private candidates live at
    `.analysis/core255-BulletCommand11-splitarrays.cpp` and
-   `.analysis/core263-command11-polar-one-literal.cpp`. Real original
+   `.analysis/core263-command11-polar-one-literal.cpp` (older experiments). Real original
    `1.0f` for polar radius produces **353/357 original instruction kinds**
    in one full-body candidate; the remaining four original stores of
    384.0/448.0 may reflect real locals, but do **not** insert inert locals
