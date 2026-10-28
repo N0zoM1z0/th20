@@ -313,6 +313,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Archive, Progress and sound
 
+- [Exact whole 320B SoundInf effect request boss](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md) — real 12×0x208 request queue, signed ID/pan and 60-sample cap, 90-channel cooldown, seven immutable PE E8 targets and one HIGHLOW signed-volume field with genuine +8 COFF addend; 25/25 scoped strict units across 12 cold source objects. Two original calls from the still-open 3,111B Player frame.
+
 - [Exact full ProgressSaveManager constructor/commit and copy/merge (451B)](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md) — new complete 199B native ctor and 70B Worker save submission from natural C++ scopes, plus existing strict 75B copy/107B merge game-origin confirmation; destructor already exact. 5/5 scoped strict units in one cold object.
 
 - [Complete byte-exact ProgressMetadata checksum](PROGRESS_INTEGRITY_BYTE_EXACT.md) — corrected native uint8 return, signed x86 address comparison, full 134-byte strict replay and eight-provider dependency validation.

@@ -155,6 +155,29 @@ The 3,111B parent remains independently
 NONEXACT. See [both complete original game
 handle methods](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md).
 
+## Subsequent CORE/EXACT-445 complete native SoundInf queue callee
+
+The real `SoundInf::request_effect(int,int)` at
+`0x00426D70` is now **320/320 strict native exact**,
+called twice from the original 3,111B Player
+main-frame at offsets `+0xC5` and `+0x139`.
+Its entire 102-instruction original does 12-slot
+effect request merge and max-60 pan buffering
+with correct real 90-channel cooldown selection.
+All seven native E8 fields and original one
+HIGHLOW field (sound table base+8) agree.
+True sound header source closure passed **25/25
+strict native units in 12 cold objects**,
+not a whole-graph cold replay.
+The independently exact direct call-site count
+for the still-open 3,111B parent is now **64/67**,
+leaving three separate unresolved called functions:
+input provider, Animation VM interrupt/update and
+the 555B Player motion clamp. The main 3,111B
+parent itself remains **NONEXACT**, with no
+inferred exact native byte credit.
+[Original 320B SoundInf request proof](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md).
+
 ## Whole parent call-graph status and focused strict replay
 
 Before these two native methods were admitted, 45 of

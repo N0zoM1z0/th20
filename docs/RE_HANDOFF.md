@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-439 two complete AnimationHandle Player frame forwarders.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-445 entire 320-byte SoundInf effect request boss.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,153** |
-| Canonical strict native units | **1,154** |
+| Source-present mappings, all origins | **1,154** |
+| Canonical strict native units | **1,155** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **379**, covering **117,259 native bytes** |
+| Exact game-authored whole functions | **380**, covering **117,579 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `SoundInf::request_effect` | `0x00426D70` | **320** | [whole sound request queue, channel cooldown, original PE volume table](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md) |
 | `AnimationHandle::is_valid` / `set_position_forward` | `0x0047A340` / `0x004645E0` | **45 / 26** | [full native handle validity and position forwarders](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) |
 | `Player::suspend_option_animations` | `0x004BD0C0` | **237** | [entire native mode-3 suspension, distinct from mode-2 clearer](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md) |
 | `PlayerValues<IntPoint,33>::at` / `InputButtonState::replay_current_bits` | `0x0045D670` / `0x004973A0` | **22 / 25** | [complete original main-frame call graph and two exact ABI methods](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) |
@@ -614,6 +615,33 @@ PE addresses, fields and full unchanged
 nonrelocation bytes. Original gameplay
 bosses retain their strict exact matches.
 [71-byte original native ABI proof](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-445 closes the **whole 320-byte
+SoundInf::request_effect** at `0x00426D70`,
+**320/320 native exact** with all **102 original
+i386 instructions** and **seven independently
+original E8 + one PE HIGHLOW** references.
+The actual 12-slot requests with 0x208 stride,
+signed ID sentinel, at most 60 pan samples
+and original 90-channel cooldown are preserved.
+The original volume word `0x005AE6F2` equals
+base `0x005AE6EA` plus real +8 COFF
+addend. The separate 22B cooldown setter
+folds to previously exact `EnemyPattern::set_base_kind`
+at `0x00411570` and gets no duplicate
+physical byte credit. The only changed source
+interfaces were `SoundEffects.hpp` and its
+existing `SoundEffects.cpp` owner: prior
+compiler receipts identify **12 actual source
+providers with 24 old units**, and the new
+complete boss gives **25/25 strict native
+units in 12 low-priority cold objects**.
+Original 3,111B Player main-frame called
+this twice; **64/67 original direct E8
+call sites now have independently exact
+callees**, three remain. The parent
+remains NONEXACT. No unfiltered full replay.
+[Whole 320B original sound request proof](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

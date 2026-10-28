@@ -73,3 +73,23 @@ Enemy opcode dispatcher (including 502/503 animation-flag traversal), and
 the complete Animation VM/resource renderer are **not** accepted as exact
 here. This checkpoint admits one 52-byte native member and documents one
 real large-root constituent path, with **no** partial dispatch coverage.
+
+
+## Subsequent CORE/EXACT-445 whole native effect request queue
+
+Earlier statements that the complete `SoundInf::request_effect(int,int)`
+queue was still open are now **historical and superseded**.
+The entire original 320B native game-owned body at
+`0x00426D70` is now **320/320 strict exact** with
+**102 complete i386 instructions and all seven
+original E8 plus one original HIGHLOW field**.
+The real 12-request/60-pan queue and 90-channel cooldown
+protocol are maintained in the existing SoundEffects
+source owner. The original effect table absolute field
+at `0x005AE6F2` is base `0x005AE6EA` plus native
+signed volume offset `+8`; its COFF field addend is
+not erased or double-added. The new game boss's
+actual old SoundEffects.hpp/SoundInf.hpp receipt
+closure replays **25/25 native strict units in
+12 cold source objects**, no global replay.
+[Original complete 320B SoundInf request proof](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md).

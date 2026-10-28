@@ -1151,3 +1151,4 @@ th20::InputButtonState::replay_current_bits
 th20::Player::suspend_option_animations
 th20::AnimationHandle::is_valid
 th20::AnimationHandle::set_position_forward
+th20::SoundInf::request_effect

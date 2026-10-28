@@ -35,6 +35,9 @@ struct SoundEffectChannel {
     std::int32_t id, pan, was_playing;
     SoundEffectChannel();
     void release();
+    // Original 22-byte scalar sound-channel cooldown setter folds to
+    // the existing original EnemyPattern::set_base_kind physical code.
+    void set_cooldown(std::int32_t value);
 };
 static_assert(sizeof(void*) != 4 || sizeof(SoundEffectChannel) == 24);
 static_assert(sizeof(void*) != 4 || offsetof(SoundEffectChannel, definition) == 8);
