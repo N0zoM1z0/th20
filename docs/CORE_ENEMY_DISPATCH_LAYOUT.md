@@ -21,6 +21,17 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE204 now adds the *complete 593-byte* original Enemy opcode 601
+(136 native instructions, 16 independently verified calls) to the **same
+whole 41,967-byte Enemy source draft**. Its actual 305B ensure-only
+`EnemyState::shared_shot`, two original real **26B scalar setter** calls,
+0.9f position gate and copied shared metadata into the still-open **339B
+Bullet firing producer** are tested. **314** new cases bring the intact
+85-TU GCC O2/UBSan and ASan+UBSan complete-root tests to
+**43,439/43,439**, covering 136 opcode values / 104 primary heads. The
+original entire root remains x86 nonexact. See
+[whole opcode 601 integration](ENEMY_WHOLE_ROOT_OPCODE_601_BULLET_FIRE.md).
+
 CORE/EXACT-203 closes the complete **26-byte native BulletController
 scalar field setter** at `0x0049C740` with zero relocations, called twice
 by the still nonexact original **593-byte opcode 601**. All **35/35**

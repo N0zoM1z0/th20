@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-203 closes the native 26-byte BulletController scalar owner needed by the original 593-byte Enemy opcode 601; CORE202 whole-root and earlier exact COW/laser proofs retained.
+**Checkpoint:** CORE204 integrates the complete original 593-byte Enemy opcode 601 Bullet generation caller into the same 41,967-byte root, executing CORE203 exact scalar and CORE200 exact shared selector; CORE202 and earlier proofs preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -30,12 +30,50 @@ evidence documents are historical, not competing current status.
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
-  covers **135 effective opcode values / 103 primary heads** and passes
-  **43,125 / 43,125** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  covers **136 effective opcode values / 104 primary heads** and passes
+  **43,439 / 43,439** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE204 integrates **the entire original 593-byte native opcode 601
+primary head** at `0x00492803..0x00492A53` into the same complete
+41,967-byte Enemy source-draft root. Original Capstone/locked PE and case
+catalog independently confirm **136 original instructions / 16 direct
+calls**, including `EnemyState::shared_shot` (exact 305B),
+`BulletController::set_scalar_48(float)` (exact 26B, called **twice**),
+the actual 0.9f position threshold, and original **339-byte** still-open
+BulletController firing/metadata lifetime boundary at `0x00481780`.
+This opcode uniquely uses **ensure-only, never COW** for shared metadata.
+Its first field_48 setter runs before firing; the last setter resets
+**the fresh, live Context owner** only on normal return, while a firing
+exception leaves the preceding scalar value intact. The new **314**
+scenarios test **266 real successful original shared record/position
+paths**, **126** first-time owners, **70** unchanged shared aliases,
+**56** actual queue expansions, **60** strict-relative vs **206** absolute
+and NaN paths, **133** late Context retargets, **42** downstream throwing
+producer cases with *no reset*, and six early VM operand errors.
+Both full **85-TU** GCC13 O2/UBSan and ASan+UBSan fixtures pass all
+**43,439/43,439** cases, retaining the preceding 43,125. Only unrelated
+unlinked fixture vptr checks are disabled in the ASan run; leaks are on.
+Protected active evidence: `.analysis/core204-enemy-dispatch-candidate.cpp`,
+`.analysis/core204-dispatch-host.cpp`,
+`.analysis/core204-op601-host-cases.inc`,
+`.analysis/core204-dispatch-host-recipe.json`,
+`.analysis/core204-dispatch-host.log`,
+`.analysis/core204-dispatch-host-asan.log`,
+`.analysis/core204-native-601-audit.json` and
+`.analysis/core204-enemy-whole-root-proof.json` (four current source hashes,
+two binary hashes and both original successful log hashes). Protect
+`build/core204-dispatch-host*` and all older proof-bound objects.
+Complete explanation:
+[whole original opcode 601 Bullet caller](ENEMY_WHOLE_ROOT_OPCODE_601_BULLET_FIRE.md).
+CORE204 changes **zero maintained production compiler inputs**. No extra
+native cold-build/replay units, and no full cold replay, were needed after
+CORE/EXACT-203's already passed 35/35 affected units. The full 41,967-byte
+Enemy root and the 339B Bullet producer remain machine-code nonexact.
+
 
 CORE/EXACT-203 independently recovered the entire native
 **26-byte** `BulletController::set_scalar_48(float)` at `0x0049C740`.
@@ -472,26 +510,24 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core202-enemy-dispatch-candidate.cpp` — the *same entire*
-  41,967-byte Enemy source draft, with newly integrated 600 alongside
-  previous 539/555, 609–612, 700–703 and 711/713.
-- `.analysis/core202-dispatch-host.cpp`,
-  `.analysis/core202-op600-host-cases.inc`,
-  `.analysis/core202-dispatch-host-recipe.json` — full 85-TU GCC host with
-  actual exact queued selectors, Laser creator/registration, native typed
-  ShotParameters/EtamaArgInf and all prior cases.
-- `.analysis/core202-dispatch-host.log`,
-  `.analysis/core202-dispatch-host-asan.log`,
-  `.analysis/core202-native-op600.asm`,
-  `.analysis/core202-native-600-audit.json`,
-  `.analysis/core202-enemy-whole-root-proof.json` — **43,125/43,125**
-  dual-sanitizer cases, complete original 403B native branch/call audit,
-  four SHA-bound current private inputs and two protected binaries.
-  Preserve `build/core202-dispatch-host` and
-  `build/core202-dispatch-host-asan` with their logs and receipts.
-- All prior CORE201/200/199/198/197/196 and older protected original
-  input, native source/probe, compiler-product and historical proof
-  artifacts remain intact. Do not remove or avoid dirty/ignored work.
+- `.analysis/core204-enemy-dispatch-candidate.cpp` — latest *entire*
+  Enemy root, retaining all previous cases and adding the native 601
+  593-byte branch with real accepted 305B and 26B callees.
+- `.analysis/core204-dispatch-host.cpp`,
+  `.analysis/core204-op601-host-cases.inc`,
+  `.analysis/core204-dispatch-host-recipe.json` — 85-TU whole-root host,
+  with 314 new state/owner/exception cases and all old cases preserved.
+- `.analysis/core204-dispatch-host.log`,
+  `.analysis/core204-dispatch-host-asan.log`,
+  `.analysis/core204-native-op601.asm`,
+  `.analysis/core204-native-601-audit.json`,
+  `.analysis/core204-enemy-whole-root-proof.json` — two complete successful
+  sanitizer runs (43,439 cases), 136 original native instructions/16
+  calls, four SHA-bound private source inputs. Protect both
+  `build/core204-dispatch-host*` executables and all historical proofs.
+- The earlier CORE203 26B Bullet scalar and CORE200/201 queue selector
+  strict native receipts remain protected. Earlier CORE202/199/198/197
+  and other evidence retains full historical provenance. Do not discard it.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
@@ -593,7 +629,7 @@ semantic hosts (and CORE187's additional AddressSanitizer variant), not any
 native cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
 full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
 protected product hashes and links; reuse the CORE185 native canonical
-replay and the current CORE202 full-root semantic host receipts. The older CORE192
+replay and the current CORE204 full-root semantic host receipts. The older CORE192
 boundary remains historical; the new CORE196 unhooked caller executes the
 actual exact Laser creator, though the concrete native allocation factories
 remain explicit fixture boundaries. The CORE190
