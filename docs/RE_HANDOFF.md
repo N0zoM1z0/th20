@@ -1,5 +1,19 @@
 # Current reconstruction handoff
 
+CORE/EXACT-182 reconstructs the **entire 263-byte native
+`LaserController::reset_all_lasers`** call of Enemy opcode **539**, with
+independently decoded 34-slot beam vtables, original iterator EH and all
+**14** original relocation targets. Pinned x86 MSVC strictly replays
+**263/263** bytes; only the two affected canonical sources were cold built.
+All **21/21** affected old/new units (4,148 bytes) replay exactly, and all
+**162** unaffected object/source/include receipts remain hash-valid without
+recompilation. A real typed LaserController + Laser iterator fixture passes
+**601/601** scenarios on each GCC/Clang ASan+UBSan. The maintained graph now
+has **1,013 source-present mappings, 1,004 physical strict units, 218 exact
+authored functions and 57,271 exact authored bytes**; the 41,967-byte Enemy
+boss root is **still not exact**. See
+[opcode 539 whole-callee proof](ENEMY_OPCODE_539_LASER_RESET_EXACT_RECONSTRUCTION.md).
+
 CORE181 advances the *same complete 41,967-byte Enemy root* with native
 opcode **548** (original 17 bytes / four instructions) calling the now-exact
 real `FrontInf::show_stage_title` method, guarded by genuine Graphics mode8

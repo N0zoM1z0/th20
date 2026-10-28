@@ -40,4 +40,20 @@ LaserController* laser_controller(std::int32_t index) {
     return session.context(index).laser_controller();
 }
 
+std::int32_t LaserController::reset_all_lasers() {
+    [[maybe_unused]] std::int32_t count = 0;
+    IntrusiveList<Laser>* const list = &active;
+    {
+        IntrusiveIterator<Laser> it = list->begin();
+        IntrusiveIterator<Laser>* const last = list->end();
+        for (; it.differs(last); it.advance()) {
+            IntrusiveLink<Laser>* link = it.get();
+            link->node_access()->timer_6ac = 0;
+            link->node_access()->field_6cc = 0;
+            link->node_access()->erase(1, 0);
+        }
+    }
+    return 0;
+}
+
 } // namespace th20

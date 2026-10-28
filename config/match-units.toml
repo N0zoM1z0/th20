@@ -1840,7 +1840,7 @@ relocations = []
 
 [units.dialogue_text_is_lead]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::dialogue_text::is_lead"]
 symbol = "?is_lead@dialogue_text@th20@@YAHE@Z"
@@ -1850,7 +1850,7 @@ relocations = []
 
 [units.dialogue_text_decode]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::dialogue_text::decode"]
 symbol = "?decode@dialogue_text@th20@@YAPBDPBD@Z"
@@ -7163,7 +7163,7 @@ relocations = [
 
 [units.laser_type0_parameters_ctor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType0Parameters::LaserType0Parameters"]
 symbol = "??0LaserType0Parameters@th20@@QAE@XZ"
@@ -7176,7 +7176,7 @@ relocations = [
 
 [units.laser_type0_parameters_dtor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType0Parameters::~LaserType0Parameters"]
 symbol = "??1LaserType0Parameters@th20@@QAE@XZ"
@@ -7188,7 +7188,7 @@ relocations = [
 
 [units.laser_type1_parameters_ctor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType1Parameters::LaserType1Parameters"]
 symbol = "??0LaserType1Parameters@th20@@QAE@XZ"
@@ -7203,7 +7203,7 @@ relocations = [
 
 [units.laser_type1_parameters_dtor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType1Parameters::~LaserType1Parameters"]
 symbol = "??1LaserType1Parameters@th20@@QAE@XZ"
@@ -7215,7 +7215,7 @@ relocations = [
 
 [units.laser_type2_parameters_ctor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType2Parameters::LaserType2Parameters"]
 symbol = "??0LaserType2Parameters@th20@@QAE@XZ"
@@ -7228,7 +7228,7 @@ relocations = [
 
 [units.laser_type2_parameters_dtor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType2Parameters::~LaserType2Parameters"]
 symbol = "??1LaserType2Parameters@th20@@QAE@XZ"
@@ -7240,7 +7240,7 @@ relocations = [
 
 [units.laser_type3_parameters_ctor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType3Parameters::LaserType3Parameters"]
 symbol = "??0LaserType3Parameters@th20@@QAE@XZ"
@@ -7254,7 +7254,7 @@ relocations = [
 
 [units.laser_type3_parameters_dtor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserType3Parameters::~LaserType3Parameters"]
 symbol = "??1LaserType3Parameters@th20@@QAE@XZ"
@@ -16181,7 +16181,7 @@ relocations = [
 
 [units.dialogue_ctor]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::Dialogue"]
 symbol = "??0Dialogue@th20@@QAE@PAE@Z"
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117532", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117645", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117533", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117646", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117534", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117647", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117535", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117648", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16271,7 +16271,7 @@ relocations = [
 
 [units.dialogue_ready]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::ready"]
 symbol = "?ready@Dialogue@th20@@QAEHXZ"
@@ -16282,7 +16282,7 @@ relocations = [
 
 [units.dialogue_handles_4_ctor]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::array<th20::AnimationHandle,4>::array"]
 symbol = "??0?$array@UAnimationHandle@th20@@$03@std@@QAE@XZ"
@@ -16298,7 +16298,7 @@ relocations = [
 
 [units.dialogue_callback_invoke]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["Dialogue follow callback static invoker"]
 symbol = "?<lambda_invoker_cdecl>@<lambda_1>@?1???0Dialogue@th20@@QAE@PAE@Z@SA@PAUAnimation@3@@Z"
@@ -16310,7 +16310,7 @@ relocations = [
 
 [units.dialogue_callback_operator]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["Dialogue follow callback operator"]
 symbol = "??R<lambda_1>@?1???0Dialogue@th20@@QAE@PAE@Z@QBE@PAUAnimation@2@@Z"
@@ -16347,7 +16347,7 @@ relocations = [
 
 [units.laser_controller_ctor]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserController::LaserController"]
 symbol = "??0LaserController@th20@@QAE@XZ"
@@ -16362,13 +16362,13 @@ relocations = [
   { offset = 62, type = "REL32", symbol = "??0?$IntrusiveList@VLaser@th20@@@th20@@QAE@XZ", target = 4295248 },
   { offset = 93, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 4337168 },
   { offset = 104, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 4337168 },
-  { offset = 149, type = "DIR32", symbol = "$SG79017", target = 5706764 },
+  { offset = 149, type = "DIR32", symbol = "$SG79130", target = 5706764 },
   { offset = 154, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
 ]
 
 [units.laser_select_context]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::LaserController::select_context"]
 symbol = "?select_context@LaserController@th20@@QAEXH@Z"
@@ -16381,7 +16381,7 @@ relocations = [
 
 [units.laser_controller_lookup]
 source = "src/LaserParameters.cpp"
-object = "build/core180-canonical/LaserParameters.obj"
+object = "build/core182-canonical/LaserParameters.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::laser_controller"]
 symbol = "?laser_controller@th20@@YAPAVLaserController@1@H@Z"
@@ -16407,7 +16407,7 @@ relocations = [
 
 [units.dialogue_dtor]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::~Dialogue"]
 symbol = "??1Dialogue@th20@@QAE@XZ"
@@ -16434,7 +16434,7 @@ relocations = [
 
 [units.dialogue_follow_box]
 source = "src/DialogueText.cpp"
-object = "build/core180-canonical/DialogueText.obj"
+object = "build/core182-canonical/DialogueText.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Dialogue::follow_box"]
 symbol = "?follow_box@Dialogue@th20@@QAEXPAUAnimation@2@@Z"
@@ -16647,4 +16647,29 @@ relocations = [
   { offset = 25, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
   { offset = 30, type = "REL32", symbol = "?flag5_value@Session@th20@@QBEHXZ", target = 0x004B8390 },
   { offset = 66, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 0x00450C70 },
+]
+
+[units.laser_reset_all_lasers]
+source = "src/LaserParameters.cpp"
+object = "build/core182-canonical/LaserParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserController::reset_all_lasers"]
+symbol = "?reset_all_lasers@LaserController@th20@@QAEHXZ"
+target_address = 0x004D2430
+size = 263
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?reset_all_lasers@LaserController@th20@@QAEHXZ", target = 0x005685FD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x41, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x4D, type = "REL32", symbol = "?begin@?$IntrusiveList@VLaser@th20@@@th20@@QAE?AV?$IntrusiveIterator@VLaser@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x5C, type = "REL32", symbol = "?end@?$IntrusiveList@VLaser@th20@@@th20@@QAEPAV?$IntrusiveIterator@VLaser@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x69, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x76, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VLaser@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x85, type = "REL32", symbol = "?get@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEPAV?$IntrusiveLink@VLaser@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0x92, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VLaser@th20@@@th20@@QAEAAPAVLaser@2@XZ", target = 0x0040F160 },
+  { offset = 0x9F, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0xA7, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VLaser@th20@@@th20@@QAEAAPAVLaser@2@XZ", target = 0x0040F160 },
+  { offset = 0xBB, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VLaser@th20@@@th20@@QAEAAPAVLaser@2@XZ", target = 0x0040F160 },
+  { offset = 0xE7, type = "REL32", symbol = "??1?$IntrusiveIterator@VLaser@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0xFF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

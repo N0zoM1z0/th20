@@ -1011,3 +1011,4 @@ th20::EnemyController::has_identifier,0x0049BF00,function
 th20::Graphics::field_b0c_value,0x004AC0C0,function
 th20::Session::flag5_value,0x004B8390,function
 th20::FrontInf::show_stage_title,0x004B96F0,function
+th20::LaserController::reset_all_lasers,0x004D2430,function
