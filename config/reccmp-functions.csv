@@ -1083,3 +1083,5 @@ th20::Player::collision_rectangle,0x004F8CE0,function
 th20::Player::collision_circle,0x004F8FF0,function
 th20::PlayerRecord::collision_radius_multiplier,0x004FF490,function
 th20::Player::collision_expansion_enabled,0x004FF800,function
+th20::AnimationHandle::resolve,0x0044CED0,function
+th20::bullet_animation_handle_valid,0x00485A10,function

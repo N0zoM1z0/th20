@@ -47,6 +47,25 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/EXACT-275 (web) independently closes the true **51B
+`AnimationHandle::resolve`** (`0x0044CED0`) and complete **44B Bullet
+fastcall handle-valid wrapper** (`0x00485A10`) used in the original
+2,018B collision-state boss. **Three PE-original relocation targets**
+are independently attested, including authentic global Renderer
+`0x005C0028` and live external 456B handler `0x0044CD00`. The wrapper
+**must return int**, not decompiler `bool`: natural 32-bit return exactly
+eliminates its former one-byte mismatch. Both whole original bodies
+are strict **51/51 + 44/44 = 95B**, **2/2 newly recompiled exact units
+in one new source object**. No original shared header/code changed,
+so **zero previously exact units affected**; no full cold replay.
+See [complete AnimationHandle/Bullet validity exact source and evidence](BULLET_COLLISION_HANDLE_EXACT_RECONSTRUCTION.md).
+Live authored coverage **289 funcs / 74,876 native bytes**.
+Original 2,018B Bullet collision parent, 332B graze response,
+336B Player death handler, 1,404B command11, 273B drawer, 3,735B
+emitter, 12,140B Bullet command sequencer and 41,967B Enemy opcode
+remain independent nonexact full roots.
+
+
 CORE/EXACT-273 (web) now closes the **entire original 466B**
 `Player::collision_circle` at `0x004F8FF0`: **466/466 native bytes**, all
 121 original x86 instructions, **18 independently PE-disassembled

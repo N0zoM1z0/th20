@@ -146,3 +146,15 @@ outcomes. See [whole Player circle and record evidence](PLAYER_COLLISION_CIRCLE_
 The original 2,018B `Bullet::process_collision` parent is **not yet
 exact**, regardless of its now-complete two main Player collision
 children and seven exact native Animation/handle wrappers.
+
+## CORE/EXACT-275 follow-on — real 51B resolver and 44B full-word test now exact
+
+Two additional complete native caller dependencies of the still-open
+2,018-byte `Bullet::process_collision` are now independently strict
+exact: full **51-byte** `AnimationHandle::resolve` at `0x0044CED0`
+with original native 0x005C0028/0x0044CD00 relocations, and the **44-byte**
+fastcall `bullet_animation_handle_valid` at `0x00485A10` calling it.
+The latter returns a **full int**, not the decompiler-inferred `bool`;
+this restores its original 44B machine code without padding.
+One new TU yields **2/2 new strict units / one cold object**, and no old
+native source is impacted. See [complete resolver and handle test proof](BULLET_COLLISION_HANDLE_EXACT_RECONSTRUCTION.md).

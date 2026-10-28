@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Complete original 51B AnimationHandle resolve and 44B Bullet handle-valid wrapper](BULLET_COLLISION_HANDLE_EXACT_RECONSTRUCTION.md) — three original native call/data relocations, corrected full-int ABI and 2/2 new strict units; full 2,018B collision parent remains nonexact.
+
 - [Whole exact 466B Player circle collision and real 73B/23B record/flag methods](PLAYER_COLLISION_CIRCLE_EXACT_RECONSTRUCTION.md) — complete 121-instruction native circle graze/hit path, 18 original relocations and 562B newly exact, all 252/252 scoped old/new native units.
 
 - [Whole exact 777B Player rectangle hit/graze boss](PLAYER_COLLISION_RECTANGLE_EXACT_RECONSTRUCTION.md) — full two-stage focused/unfocused Player AABB and 48px graze, all 212 native instructions/35 original relocations, 36/36 scoped strict units.
