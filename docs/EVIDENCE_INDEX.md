@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact native Bullet six-group draw orchestration](BULLET_DRAW_GROUPS_EXACT_RECONSTRUCTION.md) — complete 81B original game draw loop, three native ABI anchors, one shared narrow Renderer interface and 46/46 affected-only strict units; original single-group/Renderer draw remain nonexact.
+
 - [Complete exact 832-byte Bullet boundary boss](BULLET_BOUNDARY_BOSS_EXACT_RECONSTRUCTION.md) — native entire four-way dispatcher plus exact 176B rectangle, all 31/7 original relocations, all 45 earlier shared-header units reverified (47/47 scoped strict units).
 
 - [Exact entire 176-byte Bullet field rectangle test](BULLET_RECTANGLE_EXACT_RECONSTRUCTION.md) — all four ordered SSE edges, native center and real floats, seven original data relocations and 176/176 exact bytes; two original 832B boss call sites.

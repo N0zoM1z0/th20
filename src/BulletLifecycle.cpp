@@ -1,15 +1,9 @@
 #include "Bullet.hpp"
 #include "Session.hpp"
+#include "AnimationRuntimeOwner.hpp"
 
 namespace th20 {
-// A concrete original global pointer at 0x005C0028 owns Animation lifetimes.
-// The real manager's full layout, initialization and original spelling
-// remain unknown; this narrow method is an ABI-bound external interface.
-struct AnimationPoolOwner {
-    std::int32_t release_animation(Animation* value);
-};
-extern AnimationPoolOwner* current_animation_pool;
-
+// The real animation-owner pointer and method ABI share one narrow declaration.
 void Bullet::select_context(std::int32_t index) {
     view_index = index;
     context = &session.context(view_index);

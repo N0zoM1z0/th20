@@ -1034,3 +1034,4 @@ th20::Bullet::reflect_at_left_x,0x00482EC0,function
 th20::Bullet::reflect_at_upper_y,0x00483150,function
 th20::bullet_outside_rectangle,0x00485420,function
 th20::Bullet::handle_boundary,0x00482A60,function
+th20::BulletController::draw_groups,0x0047DC90,function

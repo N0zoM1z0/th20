@@ -109,6 +109,8 @@ struct BulletController final : TaskInfo {
     void set_vector_4c(float x, float y);
     void set_scalar_48(float value);
     std::int32_t count();
+    std::int32_t draw_group(std::int32_t group);
+    std::int32_t draw_groups();
     IntrusiveList<Bullet>& free_list();
     Vector2& vector_4c_ref();
     std::int32_t fire(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata);

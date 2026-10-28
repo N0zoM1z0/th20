@@ -2294,7 +2294,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047D960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047DA40,authored,Bullet,authored,high,"CORE/EXACT-211; docs/BULLET_LIFECYCLE_EMISSION_EXACT_RECONSTRUCTION.md; whole original owner/caller and locked PE evidence, 291B full body, game-specific Bullet state and original constructor consumers"
 0x0047DB70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0047DC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0047DC90,authored,Bullet,authored,high,"CORE/EXACT-225; docs/BULLET_DRAW_GROUPS_EXACT_RECONSTRUCTION.md; complete six-group BulletController game draw orchestration, independently grounded native original callers and process Renderer constant layer 12, 81B/three relocations strict"
 0x0047DCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00480D30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00480D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
