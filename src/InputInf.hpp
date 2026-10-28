@@ -38,6 +38,13 @@ public:
     InputBindings bindings[4];
     // Entire original 26B accessor, native thiscall receiver and int index.
     InputButtonState* for_view(std::int32_t logical_index);
+    // The entire original 3490B device polling frame calls both of these
+    // authentic input-owner address/routing methods.
+    std::int32_t routing_for_view(std::int32_t view) const;
+    InputBindings* bindings_for_view(std::int32_t view);
+    // Whole original COM pad pointer and pointer-slot getters.
+    IDirectInputDevice8W* pad_device(std::int32_t index) const;
+    IDirectInputDevice8W** pad_device_slot(std::int32_t index);
 };
 #if defined(_M_IX86)
 static_assert(sizeof(TaskInfo) == 0x10);

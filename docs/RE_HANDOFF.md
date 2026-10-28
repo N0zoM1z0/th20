@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-476 complete 466B InputInf shutdown and 50B DirectInput release.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-480 InputInf routing/pad methods and complete 3,490B input frame original audit.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,164** |
-| Canonical strict native units | **1,165** |
+| Source-present mappings, all origins | **1,168** |
+| Canonical strict native units | **1,169** |
 | Unique canonical object providers | **232**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **389**, covering **119,225 native bytes** |
+| Exact game-authored whole functions | **393**, covering **119,353 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::routing_for_view` / `bindings_for_view` / `pad_device` / `pad_device_slot` | `0x00421990` / `0x004217F0` / `0x00421850` / `0x00421870` | **49 / 27 / 26 / 26** | [entire InputDevice frame original control frontier and four exact InputInf native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) |
 | `InputInf::shutdown` / `release_direct_input` | `0x004202C0` / `0x004216E0` | **466 / 50** | [entire original 12-device/4-pad DirectInput COM shutdown](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) |
 | `InputInf::~InputInf` / MSVC deleting wrapper | `0x0041FD70` / `0x0041FE10` | **120 / 49 compiler support** | [whole InputInf virtual destructor and compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) |
 | `InputInf::InputInf` | `0x0041F8A0` | **261** (+5 PE CC compared) | [entire original RTTI InputInf 261B constructor and full 266B aligned source](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md) |
@@ -889,6 +890,38 @@ bosses include **3,490B input frame update**,
 555B Player movement and 3,111B Player
 main frame; no linked-game guarantee.
 [Whole native InputInf COM shutdown proof](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-480 independently audits the **entire original
+3,490-byte/747-instruction InputDevice frame**
+at `0x00421B00`, including **21 direct E8 and 18
+original PE HIGHLOW fields**. Keyboard, COM
+DirectInput and XInput branches are all reviewed,
+but the 3,490B parent itself stays **NONEXACT**.
+Four original exact InputInf helpers are completed:
+`routing_for_view` at `0x00421990` (**49B**),
+`bindings_for_view` at `0x004217F0` (**27B**),
+`pad_device` at `0x00421850` (**26B**) and
+`pad_device_slot` at `0x00421870` (**26B**).
+Original input frame direct-call targets now have
+**11/21** strict-exact callee coverage; parent native
+bytes are not credited. All four are complete original
+native whole bodies with zero E8/HIGHLOW and
+**128 unique game-authored original bytes** total.
+Prior `InputInf.hpp` native compiler receipts cover
+**3 existing source providers / 6 strict units**.
+New work replays **10/10 original native strict
+units in exactly 3 cold objects**, including the
+previously exact 466B shutdown, 261B ctor,
+120B destructor, compiler 49B deleting wrapper,
+50B COM release and 26B view selector. Only five
+original-PE-grounded MSVC private `$SG` symbols were
+renumbered, preserving native literal destinations
+and complete nonrelocation exactness. Current
+game-authored exact summary: **393 functions /
+119,353 native bytes**, **1,169 strict units /
+232 canonical object providers**.
+[Original entire 3,490B input frame and four native
+exact InputInf methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md).
 
 ## Open complete-function roots — next agent's priorities
 

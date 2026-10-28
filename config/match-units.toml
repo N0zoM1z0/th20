@@ -19881,7 +19881,7 @@ relocations = [
   { offset = 0x73, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
   { offset = 0xC7, type = "DIR32", symbol = "??0InputBindings@th20@@QAE@XZ", target = 0x0041FB10 },
   { offset = 0xDA, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
-  { offset = 0xDF, type = "DIR32", symbol = "$SG78651", target = 0x0056D4DC },
+  { offset = 0xDF, type = "DIR32", symbol = "$SG78659", target = 0x0056D4DC },
   { offset = 0xE4, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0xEF, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
 ]
@@ -19902,7 +19902,7 @@ relocations = [
   { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1InputInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x2B, type = "DIR32", symbol = "??_7InputInf@th20@@6B@", target = 0x0056D4D0 },
-  { offset = 0x30, type = "DIR32", symbol = "$SG78655", target = 0x0056D684 },
+  { offset = 0x30, type = "DIR32", symbol = "$SG78663", target = 0x0056D684 },
   { offset = 0x35, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x45, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 0x4A, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -19945,11 +19945,11 @@ relocations = [
   { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
   { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
   { offset = 0x78, type = "REL32", symbol = "?reset_header@InputDevice@th20@@QAEXXZ", target = 0x00421720 },
-  { offset = 0x8C, type = "DIR32", symbol = "$SG170763", target = 0x0056D6E4 },
+  { offset = 0x8C, type = "DIR32", symbol = "$SG170771", target = 0x0056D6E4 },
   { offset = 0x91, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
-  { offset = 0x113, type = "DIR32", symbol = "$SG170766", target = 0x0056D6FC },
+  { offset = 0x113, type = "DIR32", symbol = "$SG170774", target = 0x0056D6FC },
   { offset = 0x118, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
-  { offset = 0x18B, type = "DIR32", symbol = "$SG170768", target = 0x0056D718 },
+  { offset = 0x18B, type = "DIR32", symbol = "$SG170776", target = 0x0056D718 },
   { offset = 0x190, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x19B, type = "REL32", symbol = "?release_direct_input@InputInf@th20@@QAEXXZ", target = 0x004216E0 },
   { offset = 0x1B2, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
@@ -19969,3 +19969,51 @@ target_address = 0x004216E0
 size = 50
 relocations = [
 ]
+
+# CORE/EXACT-480: whole immutable original game-owned InputInf 26/27/49B
+# native field and routing methods; zero E8 and original PE HIGHLOW.
+[units.input_inf_routing_for_view]
+source = "src/InputInf.cpp"
+object = "build/core455-canonical/InputInf.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputInf::routing_for_view"]
+symbol = "?routing_for_view@InputInf@th20@@QBEHH@Z"
+target_address = 0x00421990
+size = 49
+relocations = []
+
+# CORE/EXACT-480: whole immutable original game-owned InputInf 26/27/49B
+# native field and routing methods; zero E8 and original PE HIGHLOW.
+[units.input_inf_bindings_for_view]
+source = "src/InputInf.cpp"
+object = "build/core455-canonical/InputInf.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputInf::bindings_for_view"]
+symbol = "?bindings_for_view@InputInf@th20@@QAEPAUInputBindings@2@H@Z"
+target_address = 0x004217F0
+size = 27
+relocations = []
+
+# CORE/EXACT-480: whole immutable original game-owned InputInf 26/27/49B
+# native field and routing methods; zero E8 and original PE HIGHLOW.
+[units.input_inf_pad_device]
+source = "src/InputInf.cpp"
+object = "build/core455-canonical/InputInf.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputInf::pad_device"]
+symbol = "?pad_device@InputInf@th20@@QBEPAUIDirectInputDevice8W@@H@Z"
+target_address = 0x00421850
+size = 26
+relocations = []
+
+# CORE/EXACT-480: whole immutable original game-owned InputInf 26/27/49B
+# native field and routing methods; zero E8 and original PE HIGHLOW.
+[units.input_inf_pad_device_slot]
+source = "src/InputInf.cpp"
+object = "build/core455-canonical/InputInf.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputInf::pad_device_slot"]
+symbol = "?pad_device_slot@InputInf@th20@@QAEPAPAUIDirectInputDevice8W@@H@Z"
+target_address = 0x00421870
+size = 26
+relocations = []

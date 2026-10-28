@@ -725,15 +725,15 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00421760,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x00421780,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x004217C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004217F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004217F0,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
 0x00421810,authored,PlayerOptions,authored,high,CORE/EXACT-330; docs/PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md; complete native resource Player object ABI
 0x00421830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00421850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00421870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00421850,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
+0x00421870,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
 0x00421890,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00421990,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00421990,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
 0x004219D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421AB0,authored,InputState,authored,high,REF-006; independent input storage and producer/consumer protocol; complete canonical replay
 0x00421AD0,authored,InputState,authored,high,REF-006; independent input storage and producer/consumer protocol; complete canonical replay

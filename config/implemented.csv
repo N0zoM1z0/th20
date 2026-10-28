@@ -1162,3 +1162,7 @@ th20::InputInf::~InputInf
 th20::InputInf::scalar_deleting_destructor
 th20::InputInf::shutdown
 th20::InputInf::release_direct_input
+th20::InputInf::routing_for_view
+th20::InputInf::bindings_for_view
+th20::InputInf::pad_device
+th20::InputInf::pad_device_slot

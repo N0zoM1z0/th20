@@ -17,6 +17,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Entire original 3,490B input polling frame and four exact 128B InputInf routing/bindings/pad native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) — whole 747 original instructions, 21 E8/18 HIGHLOW, authentic keyboard/DirectInput/XInput phases; 49/27/26/26 whole exact callees, original input frame now 11/21 exact direct-call destinations, 10/10 native strict units in 3 actual cold objects. The 3,490B parent is NONEXACT.
+
+
 - [Entire 466B native InputInf DirectInput shutdown boss and 50B interface release — exact](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) — original 127+20 instructions, 9 E8/6 PE HIGHLOW, real recursive lock slot 15, 12 devices and four typed COM pad handles, all 466/466 and 50/50 original bytes; 6/6 receipt-dependent strict units in three source-scoped cold objects. 3,490B input processing remains NONEXACT.
 
 - [Whole original 120B InputInf virtual destructor and separate 49B compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) — 125/125 original aligned destructor, 49/49 original compiler support, 12 independent E8/HIGHLOW fields, real callback removal/global clear; 4/4 actual InputInf.hpp receipt-dependent strict units in two cold objects. 466B shutdown remains NONEXACT.

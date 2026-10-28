@@ -223,3 +223,28 @@ The 3,490B input processing, 555B Player motion,
 3,111B Player frame and whole-game linkage remain
 open. No unfiltered whole-repository cold
 replay was run.
+
+
+## Subsequent CORE/EXACT-480 InputInf routing, bindings, pad ABI
+
+The entire original 3,490-byte InputDevice polling frame at
+`0x00421B00` was independently decoded as **747 original
+i386 instructions with 21 direct E8 and 18 PE HIGHLOW fields**,
+but still remains **NONEXACT**. Four separately original whole
+`InputInf` methods are now strict exact:
+`routing_for_view` (**49B**), `bindings_for_view` (**27B**),
+`pad_device` (**26B**) and `pad_device_slot` (**26B**).
+All have zero native E8/HIGHLOW fields, and two are actual
+callee destinations of the 3,490B input frame, raising
+its original exactly matched direct-call targets to **11/21**.
+The four unique game-original bodies total **128B**.
+The genuine prior `InputInf.hpp` compiler receipts
+covered **3 sources/6 strict units**; the actual affected
+source-only cold replay passed **10/10 units in 3 objects**,
+including the existing 466B InputInf shutdown, 261B ctor,
+120B dtor, 49B compiler deleting support, 50B interface
+release and 26B view lookup. Five compiler-private `$SG`
+symbol renumberings were audited against real original PE
+literal targets, fields and complete native code before
+updating only private spelling. No global cold replay.
+[Complete original frame frontier](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md).
