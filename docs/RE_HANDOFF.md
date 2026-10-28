@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE201 integrates both native-exact 396B/305B EnemyState queued selectors into the single whole 41,967B Enemy dispatcher host; CORE200/199 and historical evidence remain protected.
+**Checkpoint:** CORE202 adds the complete original 403-byte Enemy opcode 600 PMR/queued-parameter reset into the same entire 41,967-byte boss root; CORE201/200 exact selector proofs and all older evidence preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -30,12 +30,37 @@ evidence documents are historical, not competing current status.
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
-  covers **134 effective opcode values / 102 primary heads** and passes
-  **42,973 / 42,973** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  covers **135 effective opcode values / 103 primary heads** and passes
+  **43,125 / 43,125** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE202 integrates the **entire original native opcode 600 primary branch**
+(`0x00492434..0x004925C6`: **403 bytes / 90 instructions / ten direct
+calls**) into the **same single 41,967-byte Enemy root source draft**.
+It calls the real native-byte-exact `EnemyState::writable_shot` COW selector
+before reconstructing the true 40B `ShotParameters` default, resetting the
+actual `EtamaArgInf` through default construction and **PMR-aware move
+assignment**, and writing precisely the original record offsets
+`+0x34/+0x38/+0x40/+0x44/+0x48/+0x30`. The native
+`record.vector_34.z` at `+0x3C` remains **bitwise preserved** (not a
+blanket record memset), and default metadata `sound=21` and
+`alternate_sound=38` with two default commands are retained.
+**152 new whole-host scenarios** cover 114 typed/PMR reset matrices,
+30 real shared-owner COW clones, 24 list extensions, 14 early/late
+exceptions and 24 opcode 700/701 → reset → 701 state transitions.
+Both 85-TU GCC13 full-host sanitizer configurations pass **43,125/43,125**
+O2/UBSan and ASan+UBSan scenarios (leaks checked, only unrelated
+`WeaponStoneInfo` vptr disabled). Source, original native calls and test
+products are SHA-protected in `.analysis/core202-enemy-whole-root-proof.json`
+with `.analysis/core202-native-600-audit.json`. Full findings:
+[CORE202 original opcode 600 whole-root reset](ENEMY_WHOLE_ROOT_OPCODE_600_RESET.md).
+Only *private semantic host inputs* changed, so **no new native cold
+replays** were needed; authored exact remains **224 functions / 58,692
+bytes**. The complete 41,967-byte original Enemy root is still nonexact.
+
 
 CORE201 now links **the actual source/COFF-exact production methods**
 `EnemyState::writable_shot` (`0x00498B80`, 396B, 22 original relocation
@@ -421,26 +446,26 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core201-enemy-dispatch-candidate.cpp` — same *complete*
-  41,967-byte Enemy root source draft with original 539/555, 609–612,
-  700/701/702/703 and 711/713 branches; all unhooked queued selections
-  invoke the genuine `EnemyState::writable_shot` production method.
-- `.analysis/core201-dispatch-host.cpp`,
-  `.analysis/core201-queued-owner-host-cases.inc`,
-  `.analysis/core201-exact-queued-selector-host-cases.inc`,
-  `.analysis/core201-dispatch-host-recipe.json` — current 85-TU whole-root
-  host, including real `src/EnemyQueuedSelection.cpp` and prior exact
-  474-byte Laser creator and 75-byte registration.
-- `.analysis/core201-dispatch-host.log`,
-  `.analysis/core201-dispatch-host-asan.log`,
-  `.analysis/core201-enemy-whole-root-proof.json` — both full sanitizer
-  configurations, 42,973 cases, five SHA-bound private inputs and two
-  binaries. Protect both `build/core201-dispatch-host` and
-  `build/core201-dispatch-host-asan` with their digests.
-- All CORE200 exact receipts, original CORE199, CORE198, CORE197 Laser
-  constructor frontier and older input/candidate/proof/binary artifacts
-  remain protected. Never discard dirty/ignored progress because of
-  historical filenames.
+- `.analysis/core202-enemy-dispatch-candidate.cpp` — the *same entire*
+  41,967-byte Enemy source draft, with newly integrated 600 alongside
+  previous 539/555, 609–612, 700–703 and 711/713.
+- `.analysis/core202-dispatch-host.cpp`,
+  `.analysis/core202-op600-host-cases.inc`,
+  `.analysis/core202-dispatch-host-recipe.json` — full 85-TU GCC host with
+  actual exact queued selectors, Laser creator/registration, native typed
+  ShotParameters/EtamaArgInf and all prior cases.
+- `.analysis/core202-dispatch-host.log`,
+  `.analysis/core202-dispatch-host-asan.log`,
+  `.analysis/core202-native-op600.asm`,
+  `.analysis/core202-native-600-audit.json`,
+  `.analysis/core202-enemy-whole-root-proof.json` — **43,125/43,125**
+  dual-sanitizer cases, complete original 403B native branch/call audit,
+  four SHA-bound current private inputs and two protected binaries.
+  Preserve `build/core202-dispatch-host` and
+  `build/core202-dispatch-host-asan` with their logs and receipts.
+- All prior CORE201/200/199/198/197/196 and older protected original
+  input, native source/probe, compiler-product and historical proof
+  artifacts remain intact. Do not remove or avoid dirty/ignored work.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
@@ -459,8 +484,8 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 
 1. **Continue the same 41,967-byte Enemy Boss function**, preserving CORE183,
    CORE185, CORE187, CORE188, CORE191, CORE192, CORE196, CORE198,
-   CORE199, CORE200 and CORE201 proof-bound inputs, real Context owners
-   and all **42,973** current dual-sanitizer tests. The original opcode **555** and larger
+   CORE199, CORE200, CORE201 and CORE202 proof-bound inputs, real
+   Context owners and all **43,125** current dual-sanitizer tests. The original opcode **555** and larger
    shared **609–612** caller are now integrated. Next independently resolve
    the still-unreconstructed **41,967-byte native root compiler/EH/switch
    partition** and remaining missing primary opcode heads. The separately
@@ -532,13 +557,13 @@ native strict unit comparisons passed. No unfiltered cold replay was run.
 source affect exactly **12** receipt-derived canonical providers, all **68/68**
 complete native strict units passed after **12** serial reduced-priority cold
 compiles. **For CORE185**, changed `Bullet.hpp` inputs affected five canonical
-providers: **33/33** prior units / **5** cold objects passed. **For CORE186/CORE187/CORE188/CORE191/CORE192/CORE196/CORE198/CORE199/CORE201 private entire-root host integrations**, changed
+providers: **33/33** prior units / **5** cold objects passed. **For CORE186/CORE187/CORE188/CORE191/CORE192/CORE196/CORE198/CORE199/CORE201/CORE202 private entire-root host integrations**, changed
 production compiler inputs = **zero**; they rebuilt only separate GCC13
 semantic hosts (and CORE187's additional AddressSanitizer variant), not any
 native cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
 full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
 protected product hashes and links; reuse the CORE185 native canonical
-replay and the current CORE201 full-root semantic host receipts. The older CORE192
+replay and the current CORE202 full-root semantic host receipts. The older CORE192
 boundary remains historical; the new CORE196 unhooked caller executes the
 actual exact Laser creator, though the concrete native allocation factories
 remain explicit fixture boundaries. The CORE190

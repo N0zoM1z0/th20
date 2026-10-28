@@ -21,6 +21,16 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE202 adds the original whole **403-byte opcode 600** queued record
+reset into the *same entire 41,967-byte Enemy boss draft*. It uses the
+accepted 396B native COW selector and real `ShotParameters` and
+`EtamaArgInf` value/move semantics, rather than zeroing the full 76B
+record. The native record's `vector_34.z` remains bitwise preserved.
+**152** new cases give **43,125/43,125** complete-root O2/UBSan and
+ASan+UBSan host scenarios, now covering **135 opcode values / 103 native
+primary heads**. The whole original Enemy root remains nonexact. See
+[the complete opcode 600 reset audit](ENEMY_WHOLE_ROOT_OPCODE_600_RESET.md).
+
 CORE201 integrates those two separately exact queued selectors into the
 *same complete 41,967-byte Enemy source-draft host*: all unhooked 609–612,
 700/701, 702/703 and 711/713 routes call the **real production 396B COW**
