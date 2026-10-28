@@ -21,6 +21,15 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE191 now links the **real already accepted 151-byte**
+`EnemyController::animation_file` into the entire Enemy source-draft host,
+instead of its former fake selector. With the original 555 calling path,
+**146 additional tests** exercise real four-route lookup, signed bounds,
+nested Context owners, Stage failure and native callback ordering. All
+**40,638/40,638** complete-root UBSan and ASan+UBSan fixture cases pass;
+**the original 41,967-byte boss remains nonexact**. See
+[real-selector full-root integration](ENEMY_WHOLE_ROOT_REAL_FILE_SELECTOR_INTEGRATION.md).
+
 CORE188 corrects the native 396B/305B queued selector result to a pair of
 record and metadata pointers, verified through their 55B native pair
 constructor and whole caller, not a by-value `shared_ptr`. The unchanged

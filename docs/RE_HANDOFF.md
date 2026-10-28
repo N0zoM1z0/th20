@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-190 whole 151-byte EnemyController resource selector native-exact, with the CORE188 entire Enemy root and its proofs preserved.
+**Checkpoint:** CORE191 integrates the already exact 151-byte EnemyController resource selector into the *same whole* 41,967-byte Enemy host; CORE190 strict native exactness preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -31,11 +31,32 @@ evidence documents are historical, not competing current status.
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
   covers **128 effective opcode values / 96 primary heads** and passes
-  **40,492 / 40,492** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  **40,638 / 40,638** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE191 integrates the **actual accepted 151-byte**
+`EnemyController::animation_file` from `src/EnemyResourceSelection.cpp`
+into the *single complete-root* Enemy dispatcher host. The prior historical
+selector-failure hook remains **private**, but the new 146 real-route cases
+(36 direct / 110 full original opcode 555) execute the exact production
+selector with native array bounds, separate inner/outer Contexts, live Stage
+global, sound-before-VM order and Stage exceptions. The Stage getter remains
+a test-only captured unimplemented boundary, not a guessed production body.
+All **40,638 / 40,638** scenarios pass in **both GCC13 O2/UBSan and
+O2/ASan+UBSan**, with `vptr` excluded solely due unlinked unrelated fixture
+RTTI; leak detection enabled. New current proof and logs:
+`.analysis/core191-enemy-whole-root-proof.json`,
+`.analysis/core191-dispatch-host.log` and
+`.analysis/core191-dispatch-host-asan.log`. Details:
+[CORE191 exact selector in whole root](ENEMY_WHOLE_ROOT_REAL_FILE_SELECTOR_INTEGRATION.md).
+CORE191 changes **no production compiler graph input**, so it requires
+**zero additional native cold-build/strict replay units**; CORE190's
+68/68 strict native units remain the validated baseline. The original
+41,967-byte boss root **is still not machine-code exact**.
+
 
 CORE/EXACT-190 independently recovered the **entire 151-byte**
 `EnemyController::animation_file(int)` at `0x004AAE10`, a genuine complete
@@ -162,24 +183,22 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core188-enemy-dispatch-candidate.cpp` — entire Enemy opcode root,
-  preserving 539/555/609–612 while using corrected native two-pointer pair
-  result at the queued-selector boundary.
-- `.analysis/core188-dispatch-host.cpp`,
-  `.analysis/core188-shot-command-host-cases.inc`,
-  `.analysis/core188-queued-owner-host-cases.inc`,
-  `.analysis/core188-dispatch-host-recipe.json` — current **81-TU** GCC whole
-  host with actual queued COW/ensure-only candidate execution.
-- `.analysis/core188-dispatch-host.log`,
-  `.analysis/core188-dispatch-host-asan.log`,
-  `.analysis/core188-queued-selector-native-audit.json`,
-  `.analysis/core188-enemy-whole-root-proof.json` — dual sanitizer outcomes,
-  complete native selector/pair ABI audit and hashes of **five** active
-  private inputs. Protect **both** `build/core188-dispatch-host` and
-  `build/core188-dispatch-host-asan` as proof-bound executables.
-- Historical CORE187, CORE185, CORE183 and earlier proof-bound candidates,
-  binaries, source recipes and original-input archives remain intact. Do
-  not reset or clean them as stray artifacts.
+- `.analysis/core191-enemy-dispatch-candidate.cpp` — current *entire* Enemy
+  root candidate with 539/555/609–612; historical selector failures use a
+  clearly private adapter, new paths invoke real `EnemyController` source.
+- `.analysis/core191-dispatch-host.cpp`,
+  `.analysis/core191-exact-selector-host-cases.inc`,
+  `.analysis/core191-dispatch-host-recipe.json` — 82-TU whole-root GCC host,
+  including real `src/EnemyResourceSelection.cpp` and all previous cases.
+- `.analysis/core191-dispatch-host.log`,
+  `.analysis/core191-dispatch-host-asan.log`,
+  `.analysis/core191-enemy-whole-root-proof.json` — two full successful
+  sanitizer configurations and four SHA-bound current private sources.
+  Both `build/core191-dispatch-host` and `build/core191-dispatch-host-asan`
+  are **protected, active binaries** in the private proof.
+- All original and prior CORE188, CORE187, CORE185, CORE183, and older
+  proof-bound candidate files, logs and binaries remain protected. Do not
+  use historical status counts in preference to the live current proof.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
@@ -197,14 +216,14 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 ## Next high-value research, including large functions
 
 1. **Continue the same 41,967-byte Enemy Boss function**, preserving CORE183,
-   CORE185, CORE187 and CORE188 proof-bound inputs, real Context owners and
-   all 40,492 current dual-sanitizer tests. The original opcode **555** and larger
+   CORE185, CORE187, CORE188 and CORE191 proof-bound inputs, real Context
+   owners and all **40,638** current dual-sanitizer tests. The original opcode **555** and larger
    shared **609–612** caller are now integrated. Next independently resolve
    native compiler/EH closure for the **396-byte** `0x00498B80` COW and
    **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now
-   tested). The **151-byte** `EnemyController::animation_file` is now exact;
-   integrate it into the *same whole-root host* with real branch receivers,
-   then tackle its still undefined Stage getter `0x004AADF0` and
+   tested). The **151-byte** `EnemyController::animation_file` is now exact
+   **and linked into the active whole-root host**; next tackle its still
+   undefined Stage getter `0x004AADF0` and
    Stage/Background owner `0x005C069C`, other missing primary heads and
    compiler/EH exactness. Nearby additional blockers: Renderer handle lookups for **502/503**, the actual ScreenInf
    factory and message cancellation for **517/518**, and the real Stage/Fog
@@ -249,15 +268,15 @@ products documented in
 source affect exactly **12** receipt-derived canonical providers, all **68/68**
 complete native strict units passed after **12** serial reduced-priority cold
 compiles. **For CORE185**, changed `Bullet.hpp` inputs affected five canonical
-providers: **33/33** prior units / **5** cold objects passed. **For CORE186/CORE187/CORE188 private entire-root host integrations**, changed
+providers: **33/33** prior units / **5** cold objects passed. **For CORE186/CORE187/CORE188/CORE191 private entire-root host integrations**, changed
 production compiler inputs = **zero**; they rebuilt only separate GCC13
 semantic hosts (and CORE187's additional AddressSanitizer variant), not any
 native cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
 full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
 protected product hashes and links; reuse the CORE185 native canonical
-replay and the current CORE188 full-root semantic host receipts. The CORE190 production
-  selector is not yet linked into that host; don't claim its private boundary
-  has become the true production method there until retested. To resume actual RE, inspect all dirty work (the user owns
+replay and the current CORE191 full-root semantic host receipts. The CORE190
+native-exact selector is linked into this host, but its Stage getter and
+actual renderer/VM producer remain separate private boundaries. To resume actual RE, inspect all dirty work (the user owns
 all modifications), review the specific native instructions with the attested
 Ghidra/PE workflows, select the true affected include closure from compiler
 receipts, then cold-build/replay **only those affected units**. Original
