@@ -37,6 +37,24 @@ evidence documents are historical, not competing current status.
 
 ## Latest work to resume
 
+CORE197 independently audits the **nine still-open complete native
+functions** immediately below CORE195's now-exact Laser creator: four
+**92-byte** concrete allocation wrappers (Line/Infinite/Beam/Curve),
+their **88/87/159/122-byte** typed derived constructors and the common
+**522-byte** Laser base constructor. Original allocated object sizes are
+`0x18F8/0x1338/0x1370/0x1D30`. The native call chains establish true
+`LaserTypeNParameters` at `+0x6F8`, real `Animation` subobjects,
+concrete vtables, and two 0x800-byte Curve arrays (not guesswork padding).
+Private typed MSVC probe for the 522B base constructor emitted 538B and
+**did not match**: it is not accepted or made artificially exact. Complete
+PE byte hashes, call sites and unresolved type layout are in
+[concrete Laser allocation native frontier](LASER_CONCRETE_ALLOCATION_NATIVE_AUDIT.md)
+and `.analysis/core197-laser-factory-constructor-frontier.json`.
+No production inputs changed: **zero further cold replay units**; previous
+CORE196 whole-root **42,087/42,087** dual-sanitizer scenarios and
+CORE195 **223/223** native strict provider replays remain intact.
+
+
 CORE196 continues the **one complete 41,967-byte Enemy root** using the
 *actual* already accepted native-exact 474-byte `LaserController::create_laser`
 from `src/LaserFactory.cpp` and complete 75-byte registration from
