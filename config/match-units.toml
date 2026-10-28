@@ -19881,7 +19881,7 @@ relocations = [
   { offset = 0x73, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
   { offset = 0xC7, type = "DIR32", symbol = "??0InputBindings@th20@@QAE@XZ", target = 0x0041FB10 },
   { offset = 0xDA, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
-  { offset = 0xDF, type = "DIR32", symbol = "$SG78649", target = 0x0056D4DC },
+  { offset = 0xDF, type = "DIR32", symbol = "$SG78651", target = 0x0056D4DC },
   { offset = 0xE4, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0xEF, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
 ]
@@ -19902,7 +19902,7 @@ relocations = [
   { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1InputInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x2B, type = "DIR32", symbol = "??_7InputInf@th20@@6B@", target = 0x0056D4D0 },
-  { offset = 0x30, type = "DIR32", symbol = "$SG78653", target = 0x0056D684 },
+  { offset = 0x30, type = "DIR32", symbol = "$SG78655", target = 0x0056D684 },
   { offset = 0x35, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x45, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 0x4A, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -19925,4 +19925,47 @@ size = 49
 relocations = [
   { offset = 0xB, type = "REL32", symbol = "??1InputInf@th20@@UAE@XZ", target = 0x0041FD70 },
   { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]
+
+# CORE/EXACT-476: entire original 466B genuine native
+# input manager device shutdown/DirectInput interface release. Independent
+# original E8 and PE HIGHLOW fields, natural COM and lock lifetime ABI.
+[units.input_inf_shutdown]
+source = "src/InputInfShutdown.cpp"
+object = "build/core476-canonical/InputInfShutdown.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::InputInf::shutdown"]
+symbol = "?shutdown@InputInf@th20@@QAEHXZ"
+target_address = 0x004202C0
+size = 466
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?shutdown@InputInf@th20@@QAEHXZ", target = 0x005676ED },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x78, type = "REL32", symbol = "?reset_header@InputDevice@th20@@QAEXXZ", target = 0x00421720 },
+  { offset = 0x8C, type = "DIR32", symbol = "$SG170763", target = 0x0056D6E4 },
+  { offset = 0x91, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x113, type = "DIR32", symbol = "$SG170766", target = 0x0056D6FC },
+  { offset = 0x118, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x18B, type = "DIR32", symbol = "$SG170768", target = 0x0056D718 },
+  { offset = 0x190, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x19B, type = "REL32", symbol = "?release_direct_input@InputInf@th20@@QAEXXZ", target = 0x004216E0 },
+  { offset = 0x1B2, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x1CA, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/EXACT-476: entire original 50B genuine native
+# input manager device shutdown/DirectInput interface release. Independent
+# original E8 and PE HIGHLOW fields, natural COM and lock lifetime ABI.
+[units.input_inf_release_direct_input]
+source = "src/InputInfShutdown.cpp"
+object = "build/core476-canonical/InputInfShutdown.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::InputInf::release_direct_input"]
+symbol = "?release_direct_input@InputInf@th20@@QAEXXZ"
+target_address = 0x004216E0
+size = 50
+relocations = [
 ]

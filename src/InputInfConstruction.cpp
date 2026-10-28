@@ -11,9 +11,9 @@ namespace th20 {
 extern InputInf* process_input_inf;
 
 InputInf::InputInf() noexcept
-    : state_10(0), state_14(0), state_18(0), state_1c(0),
-      devices(), field_2e10(0), field_2e14(0),
-      retained_2e18{}, routing_2e24{}, active_buttons{}, bindings()
+    : state_10(0), state_14(0), state_18(0), direct_input_1c(nullptr),
+      devices(), direct_device_2e10(nullptr), pad_devices{nullptr},
+      routing_2e24{}, active_buttons{}, bindings()
 {
     ecl_diagnostic_hint("initialize InputInf\n");
     process_input_inf = this;

@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-472 InputInf destructor and compiler deleting wrapper.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-476 complete 466B InputInf shutdown and 50B DirectInput release.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,162** |
-| Canonical strict native units | **1,163** |
-| Unique canonical object providers | **231**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **387**, covering **118,709 native bytes** |
+| Source-present mappings, all origins | **1,164** |
+| Canonical strict native units | **1,165** |
+| Unique canonical object providers | **232**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **389**, covering **119,225 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 231 current canonical object/receipt pairs, native proof documents,
+The 232 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::shutdown` / `release_direct_input` | `0x004202C0` / `0x004216E0` | **466 / 50** | [entire original 12-device/4-pad DirectInput COM shutdown](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) |
 | `InputInf::~InputInf` / MSVC deleting wrapper | `0x0041FD70` / `0x0041FE10` | **120 / 49 compiler support** | [whole InputInf virtual destructor and compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) |
 | `InputInf::InputInf` | `0x0041F8A0` | **261** (+5 PE CC compared) | [entire original RTTI InputInf 261B constructor and full 266B aligned source](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md) |
 | `InputButtonState::InputButtonState` / `InputDevice::InputDevice` | `0x0041F9B0` / `0x0041FCB0` | **340 / 102** | [complete genuine input state/device constructor ABI and original PE references](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) |
@@ -848,6 +849,46 @@ Current authored game exact **387 functions /
 231 canonical objects. InputInf 466B shutdown
 and 3,490B input update remain NONEXACT.
 [Complete native InputInf destructor proof](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-476 completes the **whole 466B /
+127-instruction native InputInf shutdown**
+at `0x004202C0` and the separate
+**50B / 20-instruction actual DirectInput
+interface release** at `0x004216E0`.
+The 466B boss has **9 independent original
+E8 calls and 6 PE HIGHLOW fields**, all
+original targets verified, under the real
+Microsoft DirectInput COM and native
+`std::lock_guard<std::recursive_mutex>`
+protocol. It resets twelve 0x3D4-byte
+InputDevices, Unacquires/Releases the true
+keyboard and four pad pointers, and releases
+the original `IDirectInput8W*` at +0x1C.
+Both complete bodies are **466/466 and
+50/50 strict original byte exact**.
+True C pad-array layout/`pad_devices{nullptr}`
+initialization also maintains the old 261B
+InputInf constructor, 120B virtual destructor,
+49B compiler deleting support and 26B input
+view lookup full original exact; no duplicate
+old native credit. Prior `InputInf.hpp`
+compiler receipts identified **2 existing
+source providers with 4 old exact units**;
+the new shutdown source owner gives **6/6
+strict original units across exactly 3
+cold objects**, no full graph replay.
+Two MSVC private `$SG` label changes were
+reconciled only after independently verifying
+their PE originals at `0x0056D4DC` and
+`0x0056D684` and complete unchanged
+nonrelocation bytes. Current game exact
+**389 functions / 119,225 original bytes**,
+**1,165 canonical strict units across
+232 provider objects**. Still-open large
+bosses include **3,490B input frame update**,
+555B Player movement and 3,111B Player
+main frame; no linked-game guarantee.
+[Whole native InputInf COM shutdown proof](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

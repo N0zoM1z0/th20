@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Entire 466B native InputInf DirectInput shutdown boss and 50B interface release — exact](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) — original 127+20 instructions, 9 E8/6 PE HIGHLOW, real recursive lock slot 15, 12 devices and four typed COM pad handles, all 466/466 and 50/50 original bytes; 6/6 receipt-dependent strict units in three source-scoped cold objects. 3,490B input processing remains NONEXACT.
+
 - [Whole original 120B InputInf virtual destructor and separate 49B compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) — 125/125 original aligned destructor, 49/49 original compiler support, 12 independent E8/HIGHLOW fields, real callback removal/global clear; 4/4 actual InputInf.hpp receipt-dependent strict units in two cold objects. 466B shutdown remains NONEXACT.
 
 - [Whole native 261B InputInf manager constructor — strict exact, plus five original CC bytes](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md) — RTTI-attested real game input manager; C-array 12 genuine 0x3D4 InputDevices and four 0x30 InputBindings; correct noexcept/EH/vector constructor ABI, all 11 original PE E8/HIGHLOW fields, **261/261 function + 266/266 full aligned bytes**, and 2/2 truly affected strict units across 2 cold objects.

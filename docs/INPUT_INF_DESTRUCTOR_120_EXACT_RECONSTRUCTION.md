@@ -106,3 +106,38 @@ The 49B compiler deleting wrapper is separately source-exact
 support without false gameplay authorship. The independently
 original 466B shutdown and 3,490B input processor remain
 open. No unfiltered whole-repository cold replay was run.
+
+
+## Subsequent CORE/EXACT-476 original InputInf device shutdown closure
+
+**CURRENT STATUS:** earlier assertions in this document
+that the native **466B `InputInf::shutdown`
+at `0x004202C0`** is still nonexact are now
+historical and superseded. Its entire original
+**466/466 native bytes, 127 instructions,
+nine immutable E8 fields and six PE HIGHLOW
+fields** are now independently strict exact
+using genuine DirectInput SDK methods, native
+recursive-mutex guard, 12 InputDevices and four
+typed pad-device COM pointers. The separate
+**50B `InputInf::release_direct_input`
+at `0x004216E0`** is also whole 50/50 exact.
+Original native memory types now include
+a `IDirectInput8W*` at +0x1C and
+`IDirectInputDevice8W*` at +0x2E10 and
+four genuine pad pointers at +0x2E14.
+Actual old `InputInf.hpp` receipts selected
+two source providers/four protected units;
+with two new complete methods in one new
+source, **6/6 strict original units in three
+cold objects** passed. Old 261B constructor
+(including its five real CC alignment bytes),
+120B destructor, 49B compiler deleting
+support and 26B view lookup are still
+whole exact. Only private MSVC diagnostic
+`$SG` identities were renumbered after
+independently verifying the unchanged original
+PE string targets and entire native bytes.
+The separate 3,490B input frame processing
+remains NONEXACT; no global cold replay ran.
+[Whole native 466B+50B InputInf shutdown and COM release proof](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md).

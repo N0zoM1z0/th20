@@ -1160,3 +1160,5 @@ th20::InputDevice::InputDevice
 th20::InputInf::InputInf
 th20::InputInf::~InputInf
 th20::InputInf::scalar_deleting_destructor
+th20::InputInf::shutdown
+th20::InputInf::release_direct_input

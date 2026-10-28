@@ -8,6 +8,7 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+struct IDirectInput8W;
 namespace th20 {
 class InputInf : public TaskInfo {
 public:
@@ -16,14 +17,22 @@ public:
     // Whole 120B native virtual destructor, five actual CC alignment
     // bytes and a distinct compiler-generated 49B scalar deleting wrapper.
     ~InputInf() override;
-    // The independent original 466B device/pad shutdown remains NONEXACT.
+    // Entire original 466B input-device/pad shutdown and 50B native
+    // DirectInput interface release; actual original COM pointer slots.
     std::int32_t shutdown();
-    std::uint32_t state_10, state_14, state_18, state_1c;
+    void release_direct_input();
+    std::uint32_t state_10, state_14, state_18;
+    // Original native COM input interface at +0x1C; the separate
+    // 50B release member invokes its real vtable Release slot.
+    IDirectInput8W* direct_input_1c;
     // The native vector constructor uses each 0x3D4-byte device's true
     // default constructor, not a std::array wrapper helper.
     InputDevice devices[12];
-    std::uint32_t field_2e10, field_2e14;
-    std::uint32_t retained_2e18[3];
+    // Native main keyboard device at +0x2E10 and four pad devices
+    // at +0x2E14; both are independently dereferenced through the
+    // real IDirectInputDevice8W vtable by original shutdown code.
+    IDirectInputDevice8W* direct_device_2e10;
+    IDirectInputDevice8W* pad_devices[4];
     std::int32_t routing_2e24[3];
     InputButtonState* active_buttons[2];
     InputBindings bindings[4];
@@ -35,8 +44,9 @@ static_assert(sizeof(TaskInfo) == 0x10);
 static_assert(sizeof(InputDevice) == 0x3d4);
 static_assert(sizeof(InputBindings) == 0x30);
 static_assert(offsetof(InputInf, devices) == 0x20);
-static_assert(offsetof(InputInf, field_2e10) == 0x2e10);
-static_assert(offsetof(InputInf, retained_2e18) == 0x2e18);
+static_assert(offsetof(InputInf, direct_input_1c) == 0x1c);
+static_assert(offsetof(InputInf, direct_device_2e10) == 0x2e10);
+static_assert(offsetof(InputInf, pad_devices) == 0x2e14);
 static_assert(offsetof(InputInf, routing_2e24) == 0x2e24);
 static_assert(offsetof(InputInf, active_buttons) == 0x2e30);
 static_assert(offsetof(InputInf, bindings) == 0x2e38);

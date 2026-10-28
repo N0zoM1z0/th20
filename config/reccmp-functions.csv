@@ -1161,3 +1161,5 @@ th20::InputDevice::InputDevice,0x0041FCB0,function
 th20::InputInf::InputInf,0x0041F8A0,function
 th20::InputInf::~InputInf,0x0041FD70,function
 th20::InputInf::scalar_deleting_destructor,0x0041FE10,function
+th20::InputInf::shutdown,0x004202C0,function
+th20::InputInf::release_direct_input,0x004216E0,function

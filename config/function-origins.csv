@@ -706,7 +706,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041FE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00420180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00420220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004202C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004202C0,authored,InputInf,authored,high,"CORE/EXACT-476; docs/INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md; fully original InputInf real COM device teardown, lock and native methods"
 0x004204A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00420510,authored,InputState,authored,high,REF-006; independent input storage and producer/consumer protocol; complete canonical replay
 0x00420580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -720,7 +720,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00421180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421680,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x004216A0,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
-0x004216E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004216E0,authored,InputInf,authored,high,"CORE/EXACT-476; docs/INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md; fully original InputInf real COM device teardown, lock and native methods"
 0x00421720,authored,InputState,authored,high,REF-006; independent input storage and producer/consumer protocol; complete canonical replay
 0x00421760,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x00421780,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
