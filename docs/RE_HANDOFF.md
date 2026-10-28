@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-480 InputInf routing/pad methods and complete 3,490B input frame original audit.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-484 complete 265-byte InputInf startup/configuration boss.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,168** |
-| Canonical strict native units | **1,169** |
-| Unique canonical object providers | **232**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **393**, covering **119,353 native bytes** |
+| Source-present mappings, all origins | **1,169** |
+| Canonical strict native units | **1,170** |
+| Unique canonical object providers | **233**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **394**, covering **119,618 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 232 current canonical object/receipt pairs, native proof documents,
+The 233 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::start` | `0x00420990` | **265** | [entire input startup and native Graphics configuration binding copies](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) |
 | `InputInf::routing_for_view` / `bindings_for_view` / `pad_device` / `pad_device_slot` | `0x00421990` / `0x004217F0` / `0x00421850` / `0x00421870` | **49 / 27 / 26 / 26** | [entire InputDevice frame original control frontier and four exact InputInf native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) |
 | `InputInf::shutdown` / `release_direct_input` | `0x004202C0` / `0x004216E0` | **466 / 50** | [entire original 12-device/4-pad DirectInput COM shutdown](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) |
 | `InputInf::~InputInf` / MSVC deleting wrapper | `0x0041FD70` / `0x0041FE10` | **120 / 49 compiler support** | [whole InputInf virtual destructor and compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) |
@@ -922,6 +923,51 @@ game-authored exact summary: **393 functions /
 232 canonical object providers**.
 [Original entire 3,490B input frame and four native
 exact InputInf methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md).
+
+CORE/EXACT-484 closes **the entire 265-byte /
+75-instruction native InputInf startup boss**
+at `0x00420990`, with **2 independent E8
+and 6 original PE HIGHLOW fields** all
+native strict exact. This real gameplay function
+initializes the input owner's state,
+copies two `InputBindings` records from
+actual `process_graphics.configuration.bindings`
+into InputInf's own two 48B records,
+then publishes four global InputButtonState
+pointers after calling the **still NONEXACT
+465-byte InputInf::initialize_devices**
+at `0x00420D80`. The original C++ copies
+the three 16B pad/alternate/keyboard
+binding subrecords separately, avoiding
+an incorrect `rep movsd` whole-aggregate
+copy. All three real graphics references
+use the one original global `0x005C4D40`
+with authentic COFF addends `+0x1D0/+0x1E0/+0x1F0`.
+The only edited existing header
+`InputInf.hpp` had a true previous receipt
+closure of three source providers / ten old
+strict units. The new complete function
+in one new owner passed **11/11 strict
+native original units across exactly four
+cold objects**. All old InputInf
+constructor, destructor, shutdown, view,
+routing/pad members and compiler glue
+remain complete original exact. MSVC-private
+`$SG` renumbering was independently
+re-attested against unchanged PE original
+string destinations, field offsets/types
+and entire nonrelocation bytes before
+updating only symbol spelling. No full
+repository cold replay. Current exact
+game summary **394 whole game-authored
+functions / 119,618 original native
+bytes**, **1,170 canonical strict units
+in 233 object providers**.
+The original **3,490B InputDevice frame**
+and **465B device initialization** remain
+NONEXACT independent boss frontiers.
+[Whole original 265B startup C++ and
+native references](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

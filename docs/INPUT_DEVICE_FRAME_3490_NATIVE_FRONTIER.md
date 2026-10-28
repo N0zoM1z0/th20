@@ -232,3 +232,23 @@ No global cold replay, new original bytes
 credited to the 3,490B input frame,
 manual padding, or linked runtime
 equivalence is claimed.
+
+
+## CORE/EXACT-484 — adjacent entire InputInf startup boss closed
+
+A distinct genuine InputInf **265-byte / 75-instruction**
+startup routine at `0x00420990`, which copies two
+native 48-byte Graphics.InputBindings records into
+the input manager, calls the still-open original
+465B `initialize_devices` at `0x00420D80`, and
+publishes four original InputButtonState process
+pointers, is now **entirely 265/265 original native
+byte exact**, with two E8 and six HIGHLOW fields.
+This is a substantive earlier stage in the same
+input-device ownership/protocol as the still-open
+**3,490B input polling update** at `0x00421B00`;
+it does not imply that polling routine is exact.
+Actual preedit `InputInf.hpp` source receipt closure
+passed **11/11 strict native units across four
+cold objects**, with no full cold replay.
+[Complete InputInf startup proof](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md).

@@ -1167,3 +1167,4 @@ th20::InputInf::routing_for_view,0x00421990,function
 th20::InputInf::bindings_for_view,0x004217F0,function
 th20::InputInf::pad_device,0x00421850,function
 th20::InputInf::pad_device_slot,0x00421870,function
+th20::InputInf::start,0x00420990,function

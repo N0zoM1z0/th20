@@ -17,6 +17,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Entire exact 265B InputInf startup/binding initialization boss](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) — original 75 instructions, 2 E8/6 original PE HIGHLOW, real Graphics configuration record submember copying and four process input pointers, 11/11 strict units in 4 source-scoped cold objects. The invoked 465B device initializer remains NONEXACT.
+
+
 - [Entire original 3,490B input polling frame and four exact 128B InputInf routing/bindings/pad native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) — whole 747 original instructions, 21 E8/18 HIGHLOW, authentic keyboard/DirectInput/XInput phases; 49/27/26/26 whole exact callees, original input frame now 11/21 exact direct-call destinations, 10/10 native strict units in 3 actual cold objects. The 3,490B parent is NONEXACT.
 
 

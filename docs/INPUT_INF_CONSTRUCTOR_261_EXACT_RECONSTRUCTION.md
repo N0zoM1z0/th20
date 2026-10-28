@@ -216,3 +216,27 @@ PE string targets and entire native bytes.
 The separate 3,490B input frame processing
 remains NONEXACT; no global cold replay ran.
 [Whole native 466B+50B InputInf shutdown and COM release proof](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md).
+
+
+## Subsequent CORE/EXACT-484 complete original InputInf start
+
+The real original 265B `InputInf::start` at
+`0x00420990` is now **265/265 native strict exact**,
+with all 75 original x86 instructions,
+two immutable E8 and six original HIGHLOW fields.
+Its three graphics-configuration accesses
+share one true original global `process_graphics`
+base `0x005C4D40` with authentic +0x1D0/+0x1E0/+0x1F0
+relocation addends, and its process input global
+view pointers are independently native-attested.
+Natural source copies the three 16B InputBindings
+submembers independently to preserve exact codegen.
+The original 465B device initializer it invokes
+remains NONEXACT. Actual original `InputInf.hpp`
+compiler receipts identified three prior providers
+with ten earlier strict units; the new one-source
+native start method yields **11/11 whole strict
+units across four serial cold objects**, including
+this unchanged exact 261B constructor.
+No full-repository cold replay was used.
+[Whole original 265B InputInf startup](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md).

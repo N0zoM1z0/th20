@@ -14,6 +14,11 @@ class InputInf : public TaskInfo {
 public:
     // Native noexcept constructor is 261B with five real trailing CC bytes.
     InputInf() noexcept;
+    // Entire original 265B InputInf startup config/binding publication.
+    std::int32_t start();
+    // Original 465B subordinate device initialization is a separate
+    // still-nonexact game method; do not infer its code from this caller.
+    std::int32_t initialize_devices();
     // Whole 120B native virtual destructor, five actual CC alignment
     // bytes and a distinct compiler-generated 49B scalar deleting wrapper.
     ~InputInf() override;
