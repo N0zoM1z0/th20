@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE187 entire-Enemy shared opcode 609–612 integration; previous CORE186 555 and CORE/EXACT-185 native Bullet file getter preserved.
+**Checkpoint:** CORE188 corrected native queued-selector pair ABI and tested real COW/ensure-only ownership inside the whole Enemy root; previous CORE187/186/EXACT-185 preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -11,9 +11,10 @@ evidence documents are historical, not competing current status.
 
 - Worktree: `main`, with CORE/EXACT-185 saved as commit `2713b35`
   (`gpt-web: reconstruct exact Bullet file getter for Enemy opcode 555`).
-  CORE186 555 integration was committed as `126eb2a`; CORE187 adds the
-  independently verified larger shared command branch. Check `git log -3
-  --oneline` and `git status` for the newest local checkpoint.
+  CORE186 555 integration is `126eb2a`; CORE187 shared 609–612 branch is
+  `25935c1`. CORE188 corrects the native queued selector ABI and advances
+  the complete-root ownership model. Check `git log --oneline -4` and the
+  full live Git status for the newest checkpoint.
   Factory has no network/push. **Do not discard dirty or ignored work:** the
   user explicitly said the single worker owns all modifications.
 - Target: Japanese TH20 **v1.00a Steamless**, `resources/th20.exe` (ignored),
@@ -29,11 +30,33 @@ evidence documents are historical, not competing current status.
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
   covers **128 effective opcode values / 96 primary heads** and passes
-  **39,861 / 39,861** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  **40,492 / 40,492** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE188 independently checked the original queued-selector return ABI.
+The genuine **396-byte** `0x00498B80` writable selector and **305-byte**
+`0x00498D10` ensure-only selector both call the separately decoded
+**55-byte** `0x00467CC0` result constructor, which writes two raw pointer
+words. The complete Enemy 609–612 caller consumes them as
+`std::pair<EnemyQueuedRecord*, ShotMetadata*>`, **not** a by-value
+`shared_ptr`. New private whole-root candidate and tests correct this prior
+simplification and implement actual native COW/ensure-only ownership using
+`std::pmr::forward_list`, `std::shared_ptr` and `DebugAllocator`.
+**631** additional real-owner scenarios cover 144 deep COW copies, 288
+initial allocations, 144 unique-owner reuses, 144 list expansions, 192
+command-vector expansions, 19 ensure-only selections and 36 post-selection
+operand exceptions. All **40,492 / 40,492** complete-host cases pass in
+GCC13 O2/UBSan **and** ASan+UBSan (only vptr disabled because of unrelated
+unlinked native RTTI; leak detection enabled). The original native functions
+remain **compiler-byte nonexact**, as does the entire 41,967-byte Enemy root.
+Proof-bound inputs, native call audit, limitations and next steps:
+[CORE188 selector pair/COW](ENEMY_QUEUED_SELECTOR_PAIR_COW_RECONSTRUCTION.md).
+CORE188 changes **zero canonical production replay units**, so no full or
+partial native cold replay was run for this private semantic refinement.
+
 
 CORE187 next attacked one **genuine large native case** rather than only
 leaf setters: original Enemy opcodes **609/610/611/612 all share the single
@@ -110,23 +133,24 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core187-enemy-dispatch-candidate.cpp` — **the entire** natural
-  Enemy dispatcher draft, including the existing 539/555 and four shared
-  609–612 values; this is not accepted as a byte-exact original function.
-- `.analysis/core187-dispatch-host.cpp`,
-  `.analysis/core187-shot-command-host-cases.inc`,
-  `.analysis/core187-dispatch-host-recipe.json` — full **81-TU** host with
-  original case tests and actual ShotMetadata PMR storage.
-- `.analysis/core187-dispatch-host.log`,
-  `.analysis/core187-dispatch-host-asan.log`,
-  `.analysis/core187-native-609-612-audit.json`,
-  `.analysis/core187-enemy-whole-root-proof.json` — two passed sanitizer
-  variants, 1,457 native bytes, all 29 native call targets and four SHA-bound
-  private source inputs. Protect **both** executables
-  `build/core187-dispatch-host` and `build/core187-dispatch-host-asan`.
-- CORE185 and CORE183 inputs/logs/proofs and original 555/539 audits remain
-  intact and protected, as do CORE181/179 and archived original-input records.
-  **Do not confuse older historical counts with the current host**.
+- `.analysis/core188-enemy-dispatch-candidate.cpp` — entire Enemy opcode root,
+  preserving 539/555/609–612 while using corrected native two-pointer pair
+  result at the queued-selector boundary.
+- `.analysis/core188-dispatch-host.cpp`,
+  `.analysis/core188-shot-command-host-cases.inc`,
+  `.analysis/core188-queued-owner-host-cases.inc`,
+  `.analysis/core188-dispatch-host-recipe.json` — current **81-TU** GCC whole
+  host with actual queued COW/ensure-only candidate execution.
+- `.analysis/core188-dispatch-host.log`,
+  `.analysis/core188-dispatch-host-asan.log`,
+  `.analysis/core188-queued-selector-native-audit.json`,
+  `.analysis/core188-enemy-whole-root-proof.json` — dual sanitizer outcomes,
+  complete native selector/pair ABI audit and hashes of **five** active
+  private inputs. Protect **both** `build/core188-dispatch-host` and
+  `build/core188-dispatch-host-asan` as proof-bound executables.
+- Historical CORE187, CORE185, CORE183 and earlier proof-bound candidates,
+  binaries, source recipes and original-input archives remain intact. Do
+  not reset or clean them as stray artifacts.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
@@ -144,11 +168,12 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 ## Next high-value research, including large functions
 
 1. **Continue the same 41,967-byte Enemy Boss function**, preserving CORE183,
-   CORE185 and CORE187 proof-bound inputs, real Context owners and the 39,861
-   current dual-sanitizer tests. The original opcode **555** and larger
+   CORE185, CORE187 and CORE188 proof-bound inputs, real Context owners and
+   all 40,492 current dual-sanitizer tests. The original opcode **555** and larger
    shared **609–612** caller are now integrated. Next independently resolve
-   the **396-byte** `0x00498B80` queued shared-owner selector (COW and
-   exception/resize semantics not yet proven), the **151-byte** native
+   native compiler/EH closure for the **396-byte** `0x00498B80` COW and
+   **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now
+   tested), the **151-byte** native
    `EnemyController::animation_file` selector, real Stage/Background owner at
    `0x005C069C`, other missing primary heads and compiler/EH exactness. Nearby additional blockers: Renderer handle lookups for **502/503**, the actual ScreenInf
    factory and message cancellation for **517/518**, and the real Stage/Fog
@@ -176,7 +201,7 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 ## Protected data and fast scoped verification
 
 `config/match-units.toml` is the **only** current canonical object inventory,
-not a static build-directory list copied from old handoffs. As of CORE187 it
+not a static build-directory list copied from old handoffs. As of CORE188 it
 selects **164** actual `build/**/*.obj` files with **164 sibling
 `.receipt.json` files**. Their distribution is core141 66, core142 6,
 core145 3, core149 1, core151 1, core154 5, core154-v2 1, core156 1,
@@ -190,13 +215,13 @@ products documented in
 [Animation pool](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
 **For CORE185**, changed production/header inputs affected five canonical
-providers: **33/33** scoped units / **5** cold objects passed. **For CORE186 and CORE187 private entire-root host integrations**, changed
+providers: **33/33** scoped units / **5** cold objects passed. **For CORE186/CORE187/CORE188 private entire-root host integrations**, changed
 production compiler inputs = **zero**; they rebuilt only separate GCC13
 semantic hosts (and CORE187's additional AddressSanitizer variant), not any
 native cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
 full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
 protected product hashes and links; reuse the CORE185 native canonical
-replay and the current CORE187 full-root semantic host receipts. To resume actual RE, inspect all dirty work (the user owns
+replay and the current CORE188 full-root semantic host receipts. To resume actual RE, inspect all dirty work (the user owns
 all modifications), review the specific native instructions with the attested
 Ghidra/PE workflows, select the true affected include closure from compiler
 receipts, then cold-build/replay **only those affected units**. Original
@@ -238,4 +263,4 @@ For historical checkpoint narrative and old retirement inventories, use
 `git show f709625:docs/RE_HANDOFF.md` and the focused evidence documents;
 those dated paragraphs are intentionally **not** duplicated in this current
 handoff. Private legacy original-input archives remain available under
-`.analysis/`, and all CORE183/CORE185/CORE187 root candidates/proofs listed above remain intact.
+`.analysis/`, and all CORE183/CORE185/CORE187/CORE188 root candidates/proofs listed above remain intact.

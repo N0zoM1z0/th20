@@ -22,8 +22,12 @@ under `.analysis/core187-native-609-612-audit.json`.
 
 The common code first evaluates `integer_argument(0)` and calls the **full
 396-byte native queued-metadata selector `0x00498B80`**, which works with
-`EnemyState+0x168` forward-list ownership and a `shared_ptr` result.
-That selector is a separately **unaccepted** game function: the private host
+`EnemyState+0x168` forward-list ownership and an eight-byte **pair of raw
+record/metadata pointers**, not a `shared_ptr` return. That ABI was
+independently verified in subsequent CORE188; see
+[the corrected pair and COW contract](ENEMY_QUEUED_SELECTOR_PAIR_COW_RECONSTRUCTION.md).
+That selector is a separately **unaccepted** game function: the original
+CORE187 private host
 captures only its interface and preserves real `ShotMetadata` owners and
 subsequent real C++ storage. It does not fabricate a complete production
 selector or claim its 396 bytes.

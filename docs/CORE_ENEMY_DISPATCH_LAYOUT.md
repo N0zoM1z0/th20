@@ -21,6 +21,14 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE188 corrects the native 396B/305B queued selector result to a pair of
+record and metadata pointers, verified through their 55B native pair
+constructor and whole caller, not a by-value `shared_ptr`. The unchanged
+128-value / 96-head whole-root draft now passes **40,492 / 40,492**
+O2/UBSan and ASan+UBSan host scenarios, adding 631 actual COW/ensure-only
+owner cases. **Neither selector nor the complete root is byte exact.** See
+[the selector ABI and COW audit](ENEMY_QUEUED_SELECTOR_PAIR_COW_RECONSTRUCTION.md).
+
 CORE187 subsequently integrated the larger 609–612 shared head, whose
 complete **1,457-byte / 314-instruction / 29-call** native branch updates
 real ShotMetadata/BulletCommand PMR storage. The active private whole-root
