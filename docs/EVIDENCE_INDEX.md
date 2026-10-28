@@ -31,6 +31,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Core ECL and Enemy dispatch reconstruction](CORE_ECL_DISPATCH_RECONSTRUCTION.md)
 - [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md) — includes the current bounded dependency audit.
 - [Enemy whole-root opcode 609–612 shared ShotMetadata command protocol](ENEMY_WHOLE_ROOT_609_612_SHOT_COMMAND_INTEGRATION.md) — original 1,457-byte head, 29 calls, real PMR command ownership, 888 new cases and 39,861 dual-sanitizer whole-root checks; selector/whole root still nonexact.
+- [Exact EnemyController four-way animation resource selector](ENEMY_RESOURCE_SELECTOR_EXACT_RECONSTRUCTION.md) — complete 151B strict original MSVC with all seven native anchors; 68/68 affected-only unit replay, whole Enemy root still open.
 - [Native Enemy queued selector return ABI and COW owner](ENEMY_QUEUED_SELECTOR_PAIR_COW_RECONSTRUCTION.md) — independently verified two-pointer result for 396B/305B owner functions, 631 actual shared/PMR scenarios and 40,492 complete-host tests; machine code still open.
 - [Enemy movement opcode source frontier and raw random words](ENEMY_DISPATCH_MOVEMENT_RECONSTRUCTION.md) — private whole-root source work, retained interpolation state and the complete word sampler.
 - [Enemy state opcode source frontier](ENEMY_DISPATCH_STATE_RECONSTRUCTION.md) — phase replacement, repeated operand reads, live receivers, conditional counter updates and five complete dependencies.

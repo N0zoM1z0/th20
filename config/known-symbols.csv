@@ -865,3 +865,4 @@ address,name,module,confidence,evidence
 0x004B96F0,th20::FrontInf::show_stage_title,FrontInf,high,CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; complete native owner/address and callable control flow
 0x004D2430,th20::LaserController::reset_all_lasers,LaserController,high,"CORE/EXACT-182; docs/ENEMY_OPCODE_539_LASER_RESET_EXACT_RECONSTRUCTION.md; full native, real owner, fresh scoped strict replay"
 0x004859B0,th20::BulletController::animation_file,BulletController,high,"CORE/EXACT-185; docs/ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md; 20B real file pointer view, original name inferred"
+0x004AAE10,th20::EnemyController::animation_file,EnemyController,high,"CORE/EXACT-190; docs/ENEMY_RESOURCE_SELECTOR_EXACT_RECONSTRUCTION.md; 151B full four-way native resource selector, stage owner spelling inferred"

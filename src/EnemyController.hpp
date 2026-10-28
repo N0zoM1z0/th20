@@ -33,7 +33,7 @@ struct EnemyController : TaskInfo {
     std::uint32_t field_c4, field_c8, field_cc;
     Timer timer_d0;
     std::uint32_t field_e0;
-    AnimationFile* animation_files[8];
+    std::array<AnimationFile*,8> animation_files;
     EclLoader* loader;
     IntrusiveList<Enemy> enemies;
     std::uint32_t field_120, field_124;
@@ -73,6 +73,7 @@ static_assert(sizeof(EnemyData)==0xa4);
 static_assert(offsetof(EnemyData, handles)==0x44);
 static_assert(offsetof(EnemyData, field_84)==0x84);
 static_assert(sizeof(EnemyController)==0x134);
+static_assert(offsetof(EnemyController,animation_files)==0xe4);
 static_assert(offsetof(EnemyController,context)==0x130);
 static_assert(offsetof(EnemyController,data) + offsetof(EnemyData,field_88) == 0x98);
 #endif

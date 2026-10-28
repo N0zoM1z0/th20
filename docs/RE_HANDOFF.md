@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE188 corrected native queued-selector pair ABI and tested real COW/ensure-only ownership inside the whole Enemy root; previous CORE187/186/EXACT-185 preserved.
+**Checkpoint:** CORE/EXACT-190 whole 151-byte EnemyController resource selector native-exact, with the CORE188 entire Enemy root and its proofs preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -12,19 +12,20 @@ evidence documents are historical, not competing current status.
 - Worktree: `main`, with CORE/EXACT-185 saved as commit `2713b35`
   (`gpt-web: reconstruct exact Bullet file getter for Enemy opcode 555`).
   CORE186 555 integration is `126eb2a`; CORE187 shared 609–612 branch is
-  `25935c1`. CORE188 corrects the native queued selector ABI and advances
-  the complete-root ownership model. Check `git log --oneline -4` and the
-  full live Git status for the newest checkpoint.
+  `25935c1`; CORE188 ABI/COW is `0358825`. CORE/EXACT-190 adds one
+  genuine complete 151-byte EnemyController resource selector and preserves
+  the unchanged CORE188 full-root host. Inspect the live Git status and
+  `git log -5 --oneline` for the newest checkpoint.
   Factory has no network/push. **Do not discard dirty or ignored work:** the
   user explicitly said the single worker owns all modifications.
 - Target: Japanese TH20 **v1.00a Steamless**, `resources/th20.exe` (ignored),
   SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
   Do not switch to the Steam-original backup or any other release. See
   [target provenance](TARGET_PROVENANCE.md) and `config/target.toml`.
-- Live ledgers: **6,928** target function candidates, **1,014** source-present
-  mappings, **1,005** physical canonical strict units, **219** confirmed
-  authored exact functions / **57,291** authored exact bytes. The 164 current
-  canonical objects cover **181,664** comparison bytes. **Nine**
+- Live ledgers: **6,928** target function candidates, **1,015** source-present
+  mappings, **1,006** physical canonical strict units, **220** confirmed
+  authored exact functions / **57,442** authored exact bytes. The 165 current
+  canonical objects cover **181,815** comparison bytes. **Nine**
   source-present whole-function mappings remain nonexact. These are not a
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
@@ -35,6 +36,34 @@ evidence documents are historical, not competing current status.
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-190 independently recovered the **entire 151-byte**
+`EnemyController::animation_file(int)` at `0x004AAE10`, a genuine complete
+callee of the 41,967-byte Enemy Boss dispatcher (including opcode 555).
+Index 7 calls the live Stage/Background global `0x005C069C` getter at
+`0x004AADF0`, index 0 calls Context/BulletController (with the CORE185 20B
+byte-exact getter), index 1 calls Context/EffectInfo, and other indices use
+the genuine checked `std::array<AnimationFile*,8>::at` helper `0x004AA130`.
+The original Stage owner tag/name is still **inferred** and its 20B getter
+remains undefined. Three private natural MSVC probes produced 124, 145 and
+finally **151** bytes; the accepted nested source emits **151/151 native
+bytes**, with **seven independently established relocation anchors** and
+zero differences under the locked compiler. Maintained source:
+`src/EnemyResourceSelection.cpp`, `src/StageResource.hpp`, and true eight-slot
+`EnemyController.hpp` array storage; canonical object is
+`build/core190-canonical/EnemyResourceSelection.obj`. The `EnemyController.hpp`
+header change expanded the receipt-derived affected closure to **12 provider
+TUs / 68 strict native units** (including new selector); **68/68** complete
+old/new units passed fresh cold build and canonical relocation-aware replay.
+Six changed internal MSVC `$SG` string labels were reconciled to their same
+independently verified target literals, with no shortened comparison or skipped
+old unit. Further evidence: [full 151-byte resource selector](ENEMY_RESOURCE_SELECTOR_EXACT_RECONSTRUCTION.md).
+**No full cold replay was run.** The 41,967-byte Enemy root remains
+**machine-code nonexact**, with the CORE188 **40,492-case** private semantic
+host and original proofs protected. Its old host captures the 151B routing
+boundary; a later integration should switch to real new selector without
+mistaking that host for native x86 codegen exactness.
+
 
 CORE188 independently checked the original queued-selector return ABI.
 The genuine **396-byte** `0x00498B80` writable selector and **305-byte**
@@ -85,7 +114,7 @@ selector at `0x004AAE10` independently establish the getter. The only five
 canonical providers including `Bullet.hpp` were cold-built, and **33/33**
 affected units strictly replayed. The Bullet TU now uses
 `build/core185-canonical/BulletController.obj`, not its superseded
-core180-canonical path. Canonical object count remains 164.
+core180-canonical path. Canonical object count increased to 165 only in CORE190.
 
 CORE186 then integrated the **whole original 555 branch** into the **same**
 41,967-byte Enemy root host. Native code at `0x0048C3F4..0x0048C577`
@@ -94,9 +123,9 @@ Capstone/locked-PE audit discovered that its File-spawn **layer is 3**, *not*
 the `-1` of the otherwise superficially similar Enemy defeat path. The full
 candidate calls the real existing SoundInf pan adapter, Motion/Enemy position,
 XY distance/direction and four-argument File wrapper; the real Bullet file
-getter is executed in the index-0 selection test. The still-unaccepted 151B
-file dispatcher, Stage owner and seven-argument VM producer are captured as
-explicit boundaries. **540 new host scenarios** cover both independent gates,
+getter is executed in the index-0 selection test. The then-unaccepted 151B file dispatcher, Stage owner and seven-argument
+VM producer were captured as explicit boundaries in CORE186; CORE190 now
+accepts the **complete 151B selector** separately, while Stage/VM remain open. **540 new host scenarios** cover both independent gates,
 strict 0.2 squared threshold, alternate Contexts, five routed indices, zero
 VM operand reads, full owner images and **18 exception** cases. All prior
 38,433 scenarios also pass, for **38,973/38,973** with GCC13 O2/UBSan.
@@ -173,9 +202,11 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
    shared **609–612** caller are now integrated. Next independently resolve
    native compiler/EH closure for the **396-byte** `0x00498B80` COW and
    **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now
-   tested), the **151-byte** native
-   `EnemyController::animation_file` selector, real Stage/Background owner at
-   `0x005C069C`, other missing primary heads and compiler/EH exactness. Nearby additional blockers: Renderer handle lookups for **502/503**, the actual ScreenInf
+   tested). The **151-byte** `EnemyController::animation_file` is now exact;
+   integrate it into the *same whole-root host* with real branch receivers,
+   then tackle its still undefined Stage getter `0x004AADF0` and
+   Stage/Background owner `0x005C069C`, other missing primary heads and
+   compiler/EH exactness. Nearby additional blockers: Renderer handle lookups for **502/503**, the actual ScreenInf
    factory and message cancellation for **517/518**, and the real Stage/Fog
    owner behind `0x005C069C` for **551**. Do not infer identities from old
    reference files or collapsed helper aliases. The full root's switch
@@ -201,12 +232,12 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 ## Protected data and fast scoped verification
 
 `config/match-units.toml` is the **only** current canonical object inventory,
-not a static build-directory list copied from old handoffs. As of CORE188 it
-selects **164** actual `build/**/*.obj` files with **164 sibling
+not a static build-directory list copied from old handoffs. As of CORE190 it
+selects **165** actual `build/**/*.obj` files with **165 sibling
 `.receipt.json` files**. Their distribution is core141 66, core142 6,
 core145 3, core149 1, core151 1, core154 5, core154-v2 1, core156 1,
 core158 10, core163 19, core164 8, core166 2, core167 1, core174 2,
-core178 9, core180 26, **core182 2 and core185 1**. Old probe objects/receipts may be
+core178 9, core180 26, **core182 2, core185 1 and core190 1**. Old probe objects/receipts may be
 retained as historical evidence but are not current acceptance units. Also
 preserve the twenty historical unfinished QueryProtocol/sound/Alignment
 products documented in
@@ -214,14 +245,19 @@ products documented in
 [sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Animation pool](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
-**For CORE185**, changed production/header inputs affected five canonical
-providers: **33/33** scoped units / **5** cold objects passed. **For CORE186/CORE187/CORE188 private entire-root host integrations**, changed
+**For CORE190**, changes to real `EnemyController.hpp` and new full selector
+source affect exactly **12** receipt-derived canonical providers, all **68/68**
+complete native strict units passed after **12** serial reduced-priority cold
+compiles. **For CORE185**, changed `Bullet.hpp` inputs affected five canonical
+providers: **33/33** prior units / **5** cold objects passed. **For CORE186/CORE187/CORE188 private entire-root host integrations**, changed
 production compiler inputs = **zero**; they rebuilt only separate GCC13
 semantic hosts (and CORE187's additional AddressSanitizer variant), not any
 native cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
 full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
 protected product hashes and links; reuse the CORE185 native canonical
-replay and the current CORE188 full-root semantic host receipts. To resume actual RE, inspect all dirty work (the user owns
+replay and the current CORE188 full-root semantic host receipts. The CORE190 production
+  selector is not yet linked into that host; don't claim its private boundary
+  has become the true production method there until retested. To resume actual RE, inspect all dirty work (the user owns
 all modifications), review the specific native instructions with the attested
 Ghidra/PE workflows, select the true affected include closure from compiler
 receipts, then cold-build/replay **only those affected units**. Original

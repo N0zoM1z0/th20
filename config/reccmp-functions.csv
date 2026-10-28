@@ -1013,3 +1013,4 @@ th20::Session::flag5_value,0x004B8390,function
 th20::FrontInf::show_stage_title,0x004B96F0,function
 th20::LaserController::reset_all_lasers,0x004D2430,function
 th20::BulletController::animation_file,0x004859B0,function
+th20::EnemyController::animation_file,0x004AAE10,function
