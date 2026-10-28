@@ -21,6 +21,16 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE196 now executes that exact 474-byte LaserController creator and its
+independently exact 75-byte registration **inside the same complete Enemy
+root host** for original 702/703, while retaining all prior cases.
+**1,146** new scenarios (including 96 genuine original Enemy-to-factory
+paths) bring the complete-root fixture to **42,087 / 42,087** O2/UBSan and
+ASan+UBSan tests. Four concrete 92-byte allocation factories remain explicit
+private boundaries, and the entire **41,967-byte Enemy root remains
+machine-code nonexact**. See
+[whole-root real Laser creator integration](ENEMY_WHOLE_ROOT_REAL_LASER_CREATOR_INTEGRATION.md).
+
 CORE/EXACT-195 now closes the **entire 474-byte** native
 `LaserController::create_laser` at `0x004D47F0`, consumed by opcode 702/703.
 The accepted source matches **474/474 original instruction bytes** plus the

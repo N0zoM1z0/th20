@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-195 complete 474-byte LaserController creation boss method and its 18-byte compiler switch-table tail, with CORE192 whole Enemy root evidence preserved.
+**Checkpoint:** CORE196 links the genuine byte-exact 474B Laser creator and 75B registration into the same whole Enemy dispatcher host; CORE195 original x86 exactness remains preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -31,11 +31,37 @@ evidence documents are historical, not competing current status.
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
   covers **130 effective opcode values / 98 primary heads** and passes
-  **40,941 / 40,941** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  **42,087 / 42,087** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE196 continues the **one complete 41,967-byte Enemy root** using the
+*actual* already accepted native-exact 474-byte `LaserController::create_laser`
+from `src/LaserFactory.cpp` and complete 75-byte registration from
+`src/LaserRegistration.cpp`. The previous CORE192 host still exists as
+protected evidence, but the active private `core196` source/host/recipe
+actually executes both production methods, with its four **92-byte concrete
+native allocation factories still explicitly captured**. Test-only 34-slot
+Laser classes provide correct signed virtual init ABI, without fabricating
+native concrete subclasses or accepting their source. **1,146 new semantic
+cases**, including **96 actual Enemy opcode-702/703 to production-creator
+calls**, cover count limits, handle wrap and floor, all four types, allocation
+failure, signed init rejection, real intrusive-list registration, and
+exception short-circuiting. The full 84-TU GCC13 host now passes
+**42,087 / 42,087** O2/UBSan and O2/ASan+UBSan tests (vptr excluded only
+because unrelated `WeaponStoneInfo` RTTI is not linked, leaks enabled).
+The five active source/recipe hashes, both binaries and full test logs are
+protected in `.analysis/core196-enemy-whole-root-proof.json` with
+`.analysis/core196-dispatch-host.log` and
+`.analysis/core196-dispatch-host-asan.log`. Full evidence:
+[actual byte-exact Laser factory in the entire Enemy root](ENEMY_WHOLE_ROOT_REAL_LASER_CREATOR_INTEGRATION.md).
+**No production compiler graph input changed in CORE196**: zero further
+native cold-build/replay units. The current total remains **222 authored
+exact functions, 57,991 bytes**. The 41,967-byte main Enemy switch,
+concrete allocators and derived Laser initialization remain nonexact.
+
 
 CORE/EXACT-195 reconstructs the **entire 474-byte** original
 `LaserController::create_laser` at `0x004D47F0`. Its real 4-entry native
@@ -262,23 +288,22 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core192-enemy-dispatch-candidate.cpp` — the *same complete*
-  Enemy root candidate now including 702/703 as well as 539/555/609–612.
-- `.analysis/core192-dispatch-host.cpp`,
-  `.analysis/core192-enemy-laser-spawn-host-cases.inc`,
-  `.analysis/core192-dispatch-host-recipe.json` — 82-TU full host, all
-  previous cases still linked to genuine production method boundaries.
-- `.analysis/core192-dispatch-host.log`,
-  `.analysis/core192-dispatch-host-asan.log`,
-  `.analysis/core192-native-op702.asm`, `.analysis/core192-native-op703.asm`,
-  `.analysis/core192-native-702-703-audit.json`,
-  `.analysis/core192-enemy-whole-root-proof.json` — current 40,941 test proof,
-  independent native source evidence and four SHA-bound private inputs.
-  Protect `build/core192-dispatch-host` and
-  `build/core192-dispatch-host-asan` as active proof-bound binaries.
-- All prior CORE191, CORE188, CORE187, CORE185, CORE183 and older original
-  inputs, candidate sources, build objects, logs and hashes remain protected.
-  Do not delete or ignore their dirty successors.
+- `.analysis/core196-enemy-dispatch-candidate.cpp` — *entire* Enemy root
+  candidate, preserving old 539/555/609–612/702/703 behavior and routing
+  unhooked Laser creation calls to the exact production creator.
+- `.analysis/core196-dispatch-host.cpp`,
+  `.analysis/core196-real-laser-factory-host-cases.inc`,
+  `.analysis/core196-laser-reset-host-cases.inc`,
+  `.analysis/core196-dispatch-host-recipe.json` — 84-TU native-owner host;
+  the corrected reset fixture virtual signature is test-only.
+- `.analysis/core196-dispatch-host.log`,
+  `.analysis/core196-dispatch-host-asan.log`,
+  `.analysis/core196-enemy-whole-root-proof.json` — both sanitizer profiles
+  pass 42,087 cases. Protect `build/core196-dispatch-host` and
+  `build/core196-dispatch-host-asan` plus all five SHA-bound private inputs.
+- Older CORE192/191/188/187/185/183 private source, object, native instruction
+  audits, logs and entire-root proof archives remain protected. Do not
+  erase them or assume they are competing sessions.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
@@ -296,16 +321,16 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 ## Next high-value research, including large functions
 
 1. **Continue the same 41,967-byte Enemy Boss function**, preserving CORE183,
-   CORE185, CORE187, CORE188, CORE191 and CORE192 proof-bound inputs,
-   real Context owners and all **40,941** current dual-sanitizer tests. The original opcode **555** and larger
+   CORE185, CORE187, CORE188, CORE191, CORE192 and CORE196 proof-bound
+   inputs, real Context owners and all **42,087** current dual-sanitizer tests. The original opcode **555** and larger
    shared **609–612** caller are now integrated. Next independently resolve
    native compiler/EH closure for the **396-byte** `0x00498B80` COW and
    **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now
    tested). The **474-byte native LaserController creator `0x004D47F0`**
    and its 75-byte registration callee are now **both exactly reconstructed**.
-   Integrate the complete production creator into the same whole-root host
-   and separately attack its **four unresolved 92-byte concrete Laser
-   allocators / virtual initializer bodies**, with four
+   The complete production creator is now **linked into the whole-root
+   host**; next independently attack its **four unresolved 92-byte concrete
+   Laser allocators / virtual initializer bodies**, with four
    concrete beam factory cases, virtual init and lifetime. The **151-byte**
    `EnemyController::animation_file` remains exact and already integrated;
    also attack the still undefined Stage getter `0x004AADF0` and
@@ -362,15 +387,16 @@ native strict unit comparisons passed. No unfiltered cold replay was run.
 source affect exactly **12** receipt-derived canonical providers, all **68/68**
 complete native strict units passed after **12** serial reduced-priority cold
 compiles. **For CORE185**, changed `Bullet.hpp` inputs affected five canonical
-providers: **33/33** prior units / **5** cold objects passed. **For CORE186/CORE187/CORE188/CORE191/CORE192 private entire-root host integrations**, changed
+providers: **33/33** prior units / **5** cold objects passed. **For CORE186/CORE187/CORE188/CORE191/CORE192/CORE196 private entire-root host integrations**, changed
 production compiler inputs = **zero**; they rebuilt only separate GCC13
 semantic hosts (and CORE187's additional AddressSanitizer variant), not any
 native cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
 full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
 protected product hashes and links; reuse the CORE185 native canonical
-replay and the still-current CORE192 full-root semantic host receipts. CORE195's
-474-byte exact Laser creator has not yet replaced CORE192's captured
-creation boundary; do not claim those historical tests execute it. The CORE190
+replay and the current CORE196 full-root semantic host receipts. The older CORE192
+boundary remains historical; the new CORE196 unhooked caller executes the
+actual exact Laser creator, though the concrete native allocation factories
+remain explicit fixture boundaries. The CORE190
 native-exact selector is linked into this host, but its Stage getter and
 actual renderer/VM producer remain separate private boundaries. To resume actual RE, inspect all dirty work (the user owns
 all modifications), review the specific native instructions with the attested

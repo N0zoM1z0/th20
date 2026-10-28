@@ -137,3 +137,13 @@ into that same whole-root fixture while keeping the four allocation/virtual
 initializers as explicitly captured dependencies, then attack the native
 92-byte allocators and full beam constructions. Do not claim full executable
 or game startup/runtime reconstruction from this local codegen acceptance.
+
+## Later CORE196 integration (not additional native credit)
+
+CORE196 subsequently compiled the *same whole Enemy draft* with the actual
+accepted `LaserController::create_laser` and 75-byte registration method linked,
+replacing the historical capture on **96 direct original opcode-702/703 paths**.
+All **42,087/42,087** full-host O2/UBSan and ASan+UBSan cases pass. The four
+concrete allocation interfaces remain explicit private fixtures; original
+41,967-byte Enemy machine code is still nonexact. See
+[CORE196 whole-root integration](ENEMY_WHOLE_ROOT_REAL_LASER_CREATOR_INTEGRATION.md).
