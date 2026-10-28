@@ -1040,3 +1040,5 @@ th20::BulletController::cancel_near
 th20::bullet_distance_within
 th20::BulletController::cancel_near_limited
 th20::BulletController::cancel_near_if
+th20::Bullet::cancel_drops
+th20::bullet_position_outside_screen

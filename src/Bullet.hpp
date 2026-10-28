@@ -80,6 +80,7 @@ struct Bullet {
     void select_context(std::int32_t index);
     void deactivate();
     std::int32_t cancel(std::int32_t mode);
+    void cancel_drops(const Vector3& position, std::int32_t mode);
     std::int32_t reflect_at_y_limit();
     std::int32_t reflect_at_upper_y();
     std::int32_t handle_boundary();

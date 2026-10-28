@@ -91,3 +91,14 @@ Enemy opcode root at `0x0048C010` likewise remain open whole functions.
 reconstruction source, tracking ledgers, or canonical matching inputs are
 changed by this audit; thus **zero units require replay**, and no
 unfiltered cold replay was executed.
+
+## CORE/EXACT-232 follow-on — genuine 419B item-drop callee now exact
+
+The entire original `Bullet::cancel_drops` at `0x0047D3D0` is now maintained
+in `src/BulletDrops.cpp` as **419/419 canonical byte-exact**, with all
+20 native relocations. Its actual original four-edge predicate at
+`0x00485390` is also **136/136 exact** in `src/BulletScreenBounds.cpp`
+(5 native relocations). The larger **662-byte** `Bullet::cancel` source
+remains **nonexact**: restoring these two downstream complete functions
+does not implicitly repair the boss's missing local/return-object ABI.
+See [complete drops and bounds proof](BULLET_DROPS_AND_SCREEN_EXACT_RECONSTRUCTION.md).

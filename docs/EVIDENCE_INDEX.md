@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact complete 419B Bullet cancellation item drops and 136B edge predicate](BULLET_DROPS_AND_SCREEN_EXACT_RECONSTRUCTION.md) — whole native original gameplay branching, signed counter/RNG, real ItemInf calls and native four-edge SSE; 25 original relocations and 54/54 scoped strict units.
+
 - [Exact entire 388-byte Bullet std::function-filtered cancellation](BULLET_FILTERED_CANCELLATION_EXACT_RECONSTRUCTION.md) — authentic by-value 40B standard callable with full-EAX return and EH destructor, 17 original relocations, 52/52 affected-only strict units.
 
 - [Complete original 662-byte Bullet cancellation frontier audit](BULLET_CANCEL_662_NATIVE_FRONTIER.md) — independent 199-instruction/25-call boss analysis and whole-body compiler counterexamples; **not** an exact code admission.
