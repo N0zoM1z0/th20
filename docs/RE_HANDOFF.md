@@ -1,5 +1,21 @@
 # Current reconstruction handoff
 
+CORE183 integrates original Enemy **opcode 539** into the SAME full
+**41,967-byte Enemy dispatcher** private natural source host, calling the
+real now-exact 263-byte `LaserController::reset_all_lasers`. The independently
+PE-decoded native case is 30 bytes / seven instructions; the real late
+Context getter is at `0041CA90`, with **no ECL operand reads**. All previous
+**38,241** scenarios survive, plus **192 new real-owner cases** (32 virtual
+throws, 208 erases, 64 Context retargets) for **38,433/38,433** whole-root
+O2/UBSan host checks from 80 actual TUs. The single draft covers **123
+effective values / 94 primary heads**. CORE181 private draft/checks remain
+protected; a private SHA-256 proof records 107 current input/fixture paths.
+All **164** current canonical compiler receipts verify without new cold builds.
+The **whole root remains nonexact**; canonical authored exactness is still
+**218 functions / 57,271 bytes**, all from complete independent functions.
+See [CORE183 whole-root 539 proof](ENEMY_WHOLE_ROOT_539_LASER_RESET_INTEGRATION.md)
+and `.analysis/core183-enemy-whole-root-proof.json`.
+
 CORE/EXACT-182 reconstructs the **entire 263-byte native
 `LaserController::reset_all_lasers`** call of Enemy opcode **539**, with
 independently decoded 34-slot beam vtables, original iterator EH and all
