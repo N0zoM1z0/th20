@@ -2373,7 +2373,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00485AE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485B00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00485B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00485B60,authored,Bullet,authored,high,"CORE/EXACT-262; docs/BULLET_PHYSICS_1846_EXACT_RECONSTRUCTION.md; Complete original native 1846-byte, 517-instruction Bullet physics update and original entire 1864-byte compiler contribution with 2-byte 66 90 alignment and original four-entry 16-byte jump table. All 84 original relocation sites independently decoded from immutable PE caller/data or table destinations, not inferred from COFF solver. 1528/1528 original non-relocation code/table bytes, every original native dispatch entry exact. True native switch(state) with cases 1..4, original Timer and slowdown expression evaluation, actual Bullet state2 reset fallthrough, source short-circuit physical command loop and real Vector3 ABI. 27 old header-affected objects/65 prior exact units all strict recompiled exact; 66/66 new+old exact units in 28 cold objects. Eight subsequent CC bytes are linker alignment outside COFF contribution. Large 1404B command11, 2018B collision, 3735B emitter, 12140B sequencer and 41967B Enemy opcode remain separate nonexact roots."
 0x004862B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004862F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -1070,3 +1070,4 @@ std::pmr::vector<th20::BulletCommand>::size
 th20::cross_components
 th20::dot_components
 th20::normalize_vector2
+th20::Bullet::update_physics

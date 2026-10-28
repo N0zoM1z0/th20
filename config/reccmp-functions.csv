@@ -1071,3 +1071,4 @@ std::pmr::vector<th20::BulletCommand>::size,0x00486600,function
 th20::cross_components,0x00480D30,function
 th20::dot_components,0x00480D70,function
 th20::normalize_vector2,0x0043E910,function
+th20::Bullet::update_physics,0x00485B60,function

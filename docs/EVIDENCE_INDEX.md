@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Whole original 1,846B Bullet physics boss exact with four-way switch table](BULLET_PHYSICS_1846_EXACT_RECONSTRUCTION.md) — 517 native instructions; complete 1,864B code/align/table contribution, 84 independently checked relocated sites; 66/66 scoped old/new strict units.
+
 - [Full 1,846B Bullet physics state machine and original four-way table audit](BULLET_PHYSICS_1846_NATIVE_FRONTIER.md) — independent complete 517-instruction boss audit, 1,872B total native code/table/alignment contribution; three entire C++20 probes improve to 490/517 instruction types but remain nonexact.
 
 - [Exact 255B command11 geometry dependency chain and 1,404B whole boss frontier](BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md) — three whole 50B/50B/155B native functions with three independently reviewed native relocations, plus a complete 357-instruction 1,404B parent candidate still nonexact.

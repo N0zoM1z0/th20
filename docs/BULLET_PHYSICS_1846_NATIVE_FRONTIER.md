@@ -142,3 +142,21 @@ Major separate whole roots remain nonexact: **273B** group drawing,
 **3,735B** single-shot Bullet emitter, **12,140B** Bullet update and
 **41,967B** Enemy opcode dispatcher. Work on original full functions,
 not tiny leaf-only extraction, remains the priority.
+
+## CORE/EXACT-262 follow-on — entire 1,846B physics boss now strict exact
+
+This document's 1,846B **nonexact** status and three candidate limits
+are historical. Subsequent independent whole-body compilation restored
+the native common state2/1 reset path, inline Timer fraction product,
+real `2.0f` C++ literal, switch `break`, and **actual source
+`switch(state)` / cases 1..4**. The resulting natural whole C++20
+`Bullet::update_physics()` is accepted in `src/BulletPhysics.cpp` with
+**1,846/1,846 original machine-code bytes and 1,864/1,864 original
+COFF compiler-contribution bytes** (two-byte `66 90` and the four
+real native jump-table entries included). All **84** code/global/table
+relocation sites were independently derived from the original PE
+instruction and table operands. **65/65 old** exact units across
+**27 genuinely affected source objects** were recompiled and strictly
+replayed; with this new complete function **66/66 strict units across
+28 cold source objects**. No whole-graph cold replay or fake padding.
+See [complete original physics state machine exact proof](BULLET_PHYSICS_1846_EXACT_RECONSTRUCTION.md).

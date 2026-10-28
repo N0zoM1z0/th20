@@ -83,6 +83,8 @@ struct Bullet {
     std::int32_t advance_command9();
     std::int32_t step_update();
     std::int32_t update_physics();
+    std::int32_t advance_command11();
+    void run_extended_commands();
     std::int32_t process_collision(std::int32_t mode);
     std::int32_t advance_command0();
     std::int32_t advance_command2();
