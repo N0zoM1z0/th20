@@ -92,3 +92,12 @@ The separately original `EnemyController::graze_reward_active` and other
 effect rendering/lifetime functions remain independent nonexact roots;
 this queue acceptance does not establish complete game linkage or runtime
 behavioral equivalence.
+
+## Later CORE/EXACT-358 consumer closure
+
+The separate original complete **271-byte** `EffectInfo::process_queued_effects`
+frame at `0x0049D4A0` is now strict exact. It reads precisely the 143-byte
+queue producer's `type`, `policy`, `delay` and 56-byte parameter payload,
+then runs both entire 1024-slot native gameplay loops. The original
+227-byte `spawn_effect` operation it calls remains separate and open.
+Read the [full 271-byte frame proof](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md).

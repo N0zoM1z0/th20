@@ -12630,7 +12630,7 @@ size = 344
 relocations = [
   { offset = 83, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 96, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 128, type = "DIR32", symbol = "$SG194238", target = 0x0056EC84 },
+  { offset = 128, type = "DIR32", symbol = "$SG194239", target = 0x0056EC84 },
   { offset = 140, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 174, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 179, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12638,7 +12638,7 @@ relocations = [
   { offset = 196, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
   { offset = 240, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 253, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 286, type = "DIR32", symbol = "$SG194244", target = 0x0056EC84 },
+  { offset = 286, type = "DIR32", symbol = "$SG194245", target = 0x0056EC84 },
   { offset = 298, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 328, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 333, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -17829,7 +17829,7 @@ relocations = [
   { offset = 0x7F, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x90, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x97, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
-  { offset = 0xC0, type = "DIR32", symbol = "$SG183034", target = 0x0056FD14 },
+  { offset = 0xC0, type = "DIR32", symbol = "$SG183035", target = 0x0056FD14 },
   { offset = 0xCC, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 0xF0, type = "REL32", symbol = "?store_cancel_handle@BulletController@th20@@QAEXHI@Z", target = 0x00486390 },
   { offset = 0x110, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
@@ -19009,4 +19009,25 @@ relocations = [
   { offset = 0x26, type = "REL32", symbol = "?end@?$array@UEnemyHandle@th20@@$0BA@@std@@QAE?AV?$_Array_iterator@UEnemyHandle@th20@@$0BA@@2@XZ", target = 0x004981A0 },
   { offset = 0x46, type = "REL32", symbol = "?begin@?$array@UEnemyHandle@th20@@$0BA@@std@@QAE?AV?$_Array_iterator@UEnemyHandle@th20@@$0BA@@2@XZ", target = 0x0045FD60 },
   { offset = 0x63, type = "REL32", symbol = "??$any_of@V?$_Array_iterator@UEnemyHandle@th20@@$0BA@@std@@V<lambda_1>@?2??graze_reward_active@EnemyController@th20@@QAE_NXZ@@std@@YA_NV?$_Array_iterator@UEnemyHandle@th20@@$0BA@@0@0V<lambda_1>@?2??graze_reward_active@EnemyController@th20@@QAE_NXZ@@Z", target = 0x0048A990 },
+]
+
+# CORE/EXACT-358: complete 271-byte EffectInfo scheduled effects processing boss.
+# 7 original native E8 fields and 1 original PE HIGHLOW independently attested.
+[units.effect_info_process_queued_effects]
+source = "src/EffectQueue.cpp"
+object = "build/core352-canonical/EffectQueue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EffectInfo::process_queued_effects"]
+symbol = "?process_queued_effects@EffectInfo@th20@@QAEHXZ"
+target_address = 0x0049D4A0
+size = 271
+relocations = [
+  { offset = 0x15, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x1A, type = "REL32", symbol = "?select_view@AnimationPoolOwner@th20@@QAEXH@Z", target = 0x004776A0 },
+  { offset = 0x4B, type = "REL32", symbol = "??A?$array@UEffectAnimationHandle@th20@@$0EAA@@std@@QAEAAUEffectAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x52, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x6D, type = "REL32", symbol = "??A?$array@UEffectAnimationHandle@th20@@$0EAA@@std@@QAEAAUEffectAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x74, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x8D, type = "REL32", symbol = "??A?$array@UEffectRequest@th20@@$0EAA@@std@@QAEAAUEffectRequest@th20@@I@Z", target = 0x00449490 },
+  { offset = 0xDC, type = "REL32", symbol = "?spawn_effect@EffectInfo@th20@@QAE?AUAnimationHandle@2@HABUEffectParameters@2@H@Z", target = 0x0049DB70 },
 ]

@@ -37,6 +37,9 @@ public:
     std::uint32_t publish_handle(std::uint32_t handle);
     // Native request scheduling returns void. Arguments are delay, effect
     // type, the source parameter value, and its later creation policy.
+    // Process 1024 animation handles and all 1024 scheduled effect requests.
+    // The native frame tick returns 1, independently from queue_effect().
+    std::int32_t process_queued_effects();
     void queue_effect(std::int32_t delay_frames, std::int32_t kind,
                       const EffectParameters& parameters, std::int32_t policy);
     AnimationHandle spawn_effect(std::int32_t kind, const EffectParameters& parameters,

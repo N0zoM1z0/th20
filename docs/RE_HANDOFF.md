@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-355 EnemyController graze reward.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-358 complete EffectInfo deferred-effects frame.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,126** |
-| Canonical strict native units | **1,115** |
+| Source-present mappings, all origins | **1,127** |
+| Canonical strict native units | **1,116** |
 | Unique canonical object providers | **225**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **328**, covering **82,214 native bytes** |
+| Exact game-authored whole functions | **329**, covering **82,485 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `EffectInfo::process_queued_effects` | `0x0049D4A0` | **271** | [entire two-queue lifecycle frame](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md) |
 | `EnemyController::graze_reward_active` | `0x0049BE20` | **123** | [whole 16-handle reward predicate](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::queue_effect` | `0x0049DC60` | **143** | [whole request scheduling protocol](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md) |
 | `PlayerRecord::add_field_e4` | `0x004FE8D0` | **87** | [complete graze counter wrap and clamp](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md) |
@@ -187,6 +188,14 @@ Player graze root, using the real `EnemyData.handles` 16-slot
 provider was cold replayed, **1/1 exact unit in one object**. The
 separate 107-byte native STL `std::any_of` callee at `0x0048A990`
 is not yet an exact helper and receives no new credit.
+
+CORE/EXACT-358 closes the entire **271-byte** `EffectInfo` deferred-
+effects frame at `0x0049D4A0`, with both complete 1024-entry native loops,
+all 90 original instructions and eight independently attested PE call/
+HIGHLOW targets. It shares the strict `src/EffectQueue.cpp` owner with the
+143-byte queue producer, and **26/26** actual affected units across
+**8 cold objects** were re-accepted. The separate original 227-byte
+effect spawner at `0x0049DB70` remains a nonexact frontier.
 
 ## Open complete-function roots — next agent's priorities
 
