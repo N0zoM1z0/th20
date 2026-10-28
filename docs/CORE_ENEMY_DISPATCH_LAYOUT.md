@@ -21,6 +21,16 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE192 extends the same complete-root source candidate with **two large,
+distinct native Laser shot cases**: opcode702 (682B/153 instructions) and
+opcode703 (787B/176 instructions). Their real typed Laser temporary owners,
+record/metadata COW pair, 0.9f position gate and copied PMR commands are
+now exercised. The host covers **130 values / 98 native primary heads** and
+**40,941/40,941** O2/UBSan and ASan+UBSan scenarios. The 474B Laser
+factory remains a captured boundary, so the 41,967-byte boss root is **not
+codegen exact**. See
+[702/703 complete-root Laser integration](ENEMY_WHOLE_ROOT_702_703_LASER_CREATION.md).
+
 CORE191 now links the **real already accepted 151-byte**
 `EnemyController::animation_file` into the entire Enemy source-draft host,
 instead of its former fake selector. With the original 555 calling path,
