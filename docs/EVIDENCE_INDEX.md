@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact PlayerRecord option count and WeaponStone virtual offsets (334B)](PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md) — complete 38B signed option count, three 64B distinct original clamps including the existing starting-power root, two 52B virtual forwarders; 267/267 affected-only strict units across 33 cold objects.
+
 - [Exact Player option management and fixed-coordinate chain (328B)](PLAYER_OPTION_MANAGEMENT_EXACT_RECONSTRUCTION.md) — entire 165B two-loop option broadcast, real shot-flag bitfield and float-to-fixed math, two independent native 19B end bodies; 87/87 affected-only strict units across 26 cold objects.
 
 - [Entire 115B PlayerFeedback capped hit recorder exact](PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md) — all 42 original instructions and three native call relocations, 9/9 strict PlayerStorage units cold replayed, no shared-header changes.

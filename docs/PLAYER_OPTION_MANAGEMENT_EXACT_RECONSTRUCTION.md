@@ -102,3 +102,12 @@ The full **1,518-byte** original `Player::rebuild_option_animations` remains
 **nonexact**, as do its unresolved WeaponStone virtual dispatch and active
 resource creation paths. Precise helpers and source declarations do not
 establish whole-parent exactness, whole-executable link or runtime closure.
+
+## Later CORE/EXACT-322 update
+
+The original PlayerRecord option count/clamps and both real WeaponStone
+offset forwarders are now strictly exact, totaling 334 additional original
+bytes, including the previously existing 64-byte `starting_power` canonical
+body (no duplicate native target). Read the
+[complete option-count proof](PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md).
+The 1,518-byte parent remains independently nonexact.

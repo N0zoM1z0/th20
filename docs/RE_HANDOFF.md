@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-320 Player option management chain.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-322 PlayerRecord and WeaponStone option dependency closure.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,111** |
-| Canonical strict native units | **1,101** |
-| Unique canonical object providers | **220**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **313**, covering **80,934 native bytes** |
+| Source-present mappings, all origins | **1,116** |
+| Canonical strict native units | **1,106** |
+| Unique canonical object providers | **222**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **319**, covering **81,268 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 220 current canonical object/receipt pairs, native proof documents,
+The 222 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `PlayerRecord::available_option_count` | `0x004B81A0` | **38** | [native option count and WeaponStone offsets](PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md) |
 | `Player::set_option_field_fc` | `0x004FB290` | **165** | [option management protocol](PLAYER_OPTION_MANAGEMENT_EXACT_RECONSTRUCTION.md) |
 | `PlayerFeedback::record_hit` | `0x004FB3A0` | **115** | [capped hit recorder](PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md) |
 | `Player::reset_initial_state` | `0x004FB450` | **966** | [whole reset state machine](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md) |
@@ -99,6 +100,15 @@ closure was **87/87 affected strict units across 26 cold objects**.
 The 1,518-byte `Player::rebuild_option_animations` is **still open** and
 should be reconstructed as a complete parent, not a prefix or a mere
 collection of these leaf methods.
+
+CORE/EXACT-322 adds five previously unmapped complete native functions
+and promotes the independently validated original 64-byte
+`PlayerRecord::starting_power` method from the existing canonical unit
+(**334 nonoverlapping original bytes**). The PlayerRecord clamps, signed
+option division and two actual Weapon virtual offset forwarders are exact.
+Only the `PlayerRecord.hpp`/`WeaponStoneInfo.hpp` receipt closure was cold
+replayed, **267/267 strict units in 33 objects**. The 1,518-byte
+`Player::rebuild_option_animations` still needs whole-parent reconstruction.
 
 ## Open complete-function roots — next agent's priorities
 
