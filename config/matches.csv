@@ -332,3 +332,9 @@ address,name,size,status,match_percent,unit,evidence
 0x0049E080,th20::AnimationFile::spawn_flag4,55,matching,100.00,animation_file_spawn_flag4,CORE/EXACT-362; docs/EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md; complete native 55B strict original
 0x0049DCF0,th20::EffectInfo::spawn_effect_variant,202,matching,100.00,effect_info_spawn_effect_variant,CORE/EXACT-362; docs/EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md; complete native 202B strict original
 0x004FACA0,th20::Player::rebuild_option_animations,1518,matching,100.00,player_rebuild_option_animations,CORE/EXACT-369; docs/PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md; original complete 418 instructions and all 60 native PE E8/HIGHLOW anchors exact
+0x00438540,th20::normalize_angle,187,matching,100.00,core376_normalize_angle,CORE/EXACT-376; docs/ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md; entire native 187B strict exact original
+0x00438600,th20::add_angles,29,matching,100.00,core376_add_angles,CORE/EXACT-376; docs/ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md; entire native 29B strict exact original
+0x00450590,th20::Animation::set_rotation,33,matching,100.00,core376_animation_set_rotation,CORE/EXACT-376; docs/ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md; entire native 33B strict exact original
+0x004505C0,th20::Animation::set_rotation_z,47,matching,100.00,core376_animation_set_rotation_z,CORE/EXACT-376; docs/ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md; entire native 47B strict exact original
+0x004864F0,th20::Animation::set_scale_58,60,matching,100.00,core376_animation_set_scale58,CORE/EXACT-376; docs/ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md; entire native 60B strict exact original
+0x004292E0,th20::ClockScalar::operator float,16,matching,100.00,core376_clock_scalar_float,CORE/EXACT-376; docs/ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md; entire native 16B strict exact original

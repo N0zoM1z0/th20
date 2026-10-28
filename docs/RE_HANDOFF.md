@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/RECON-375 typed Bullet group draw and Animation ABI closure.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-376 Angle normalization and Animation drawing ABI closure.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -17,9 +17,9 @@ old reports and probe filenames are **not** current status.
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
 | Source-present mappings, all origins | **1,130** |
-| Canonical strict native units | **1,120** |
+| Canonical strict native units | **1,126** |
 | Unique canonical object providers | **226**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **333**, covering **84,487 native bytes** |
+| Exact game-authored whole functions | **339**, covering **84,859 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Angle normalization and Animation rotation/scale drawing dependency chain` | `0x00438540` / `0x00438600` / `0x00450590` / `0x004505C0` / `0x004864F0` / `0x004292E0` | **187 / 29 / 33 / 47 / 60 / 16** | [six complete original bodies; folded float getter credited once](ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md) |
 | `Player::rebuild_option_animations` | `0x004FACA0` | **1,518** | [full original 418-instruction option rebuild boss](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::spawn_effect_variant` / `AnimationFile::spawn_flag4` | `0x0049DCF0` / `0x0049E080` | **202 / 55** | [complete alternate spawn and native flag4 wrapper](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::spawn_effect` | `0x0049DB70` | **227** | [whole original animation spawn and optional pointer protocol](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md) |
@@ -239,6 +240,17 @@ passed its one-object **1/1 focused strict cold replay**. The separate
 [Whole boss proof](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md).
 The old CORE/RECON-333/343 nonexact status is superseded, not credited
 twice.
+
+CORE/EXACT-376 additionally closes **six complete original drawing
+dependencies totaling 372 unique original bytes**, including the entire
+187-byte native angle normalization, 29-byte angle-add wrapper,
+33/47-byte Animation rotation pair, 60-byte native scale setter and
+one 16-byte physical float getter folded across `ClockScalar`/`Angle`
+source spellings. **36/36 strict units in three existing cold objects**
+pass using their original compiler profiles; none of these were counted
+twice. The full 273-byte Bullet drawing parent remains independently
+NONEXACT with two extra SSE argument spill/reloads. [Full
+independent native ABI proof](ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

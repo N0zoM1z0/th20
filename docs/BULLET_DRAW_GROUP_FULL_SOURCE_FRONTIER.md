@@ -133,3 +133,20 @@ exact source, canonical object or shared header was edited by CORE/RECON-304,
 so the previously accepted strict-unit replay scope is **zero**. A local
 whole-body compilation, original-target validation and source-ledger
 consistency check are appropriate; a full cold replay is not.
+
+
+## CORE/EXACT-376 — independently strict drawing callee closures
+
+The complete native `normalize_angle` 187B, `add_angles` 29B,
+`Animation::set_rotation` 33B, `Animation::set_rotation_z` 47B,
+`Animation::set_scale_58` 60B and *one* original folded 16B float
+converter at `0x004292E0` are now independently **strict exact**,
+with 10 native E8/HIGHLOW references and 36/36 scoped units in three
+cold objects. The folded `Angle`/`ClockScalar` getter physical address
+was deliberately credited only once. The **entire 273-byte
+BulletController::draw_group** is still **NONEXACT**: native high-bit
+flags and all eight call targets are now typed, but two extra SSE
+floating-point spills remain in its maintained 283-byte version.
+The known exact 81-byte six-group orchestration parent is also
+a separate native interval and should not be double counted.
+See [the independently audited six original callees](ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md).

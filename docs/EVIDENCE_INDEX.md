@@ -61,6 +61,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Animation and rendering
 
+- [Exact six whole Angle/Animation draw ABI functions (372 original bytes)](ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md) — 187B full angle normalization, 29B add wrapper, 33/47/60B Animation setters, one nonduplicated 16B ClockScalar/Angle folded float accessor; 36/36 actual scoped strict units in three cold source objects. The 273B draw-group parent remains nonexact.
+
 - [AsciiInf owner and shared text resources](ASCII_OWNER_RECONSTRUCTION.md) — complete native storage/construction, typed text queue, shared-file identity and full noexcept support.
 
 - [Animation template preparation and scoped child lookup](ANIMATION_BINDING_RECONSTRUCTION.md)

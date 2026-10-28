@@ -19157,3 +19157,85 @@ relocations = [
   { offset = 0x576, type = "REL32", symbol = "?set_option_field_fc@Player@th20@@QAEXH@Z", target = 0x004FB290 },
   { offset = 0x58D, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
 ]
+
+# CORE/EXACT-376: entire original native function, independently PE-attested relocation fields.
+[units.core376_normalize_angle]
+source = "src/Angle.cpp"
+object = "build/core141-canonical/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::normalize_angle"]
+symbol = "?normalize_angle@th20@@YAMM@Z"
+target_address = 0x00438540
+size = 187
+relocations = [
+  { offset = 0xE, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x1F, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x27, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x58, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x64, type = "DIR32", symbol = "__real@c0490fdb", target = 0x0056E0F8 },
+  { offset = 0x79, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0x81, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xAA, type = "DIR32", symbol = "__real@c0490fdb", target = 0x0056E0F8 },
+]
+
+# CORE/EXACT-376: entire original native function, independently PE-attested relocation fields.
+[units.core376_add_angles]
+source = "src/Angle.cpp"
+object = "build/core141-canonical/Angle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::add_angles"]
+symbol = "?add_angles@th20@@YAMMM@Z"
+target_address = 0x00438600
+size = 29
+relocations = [
+  { offset = 0x14, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+]
+
+# CORE/EXACT-376: entire original native function, independently PE-attested relocation fields.
+[units.core376_animation_set_rotation]
+source = "src/AnimationParameters.cpp"
+object = "build/core163-canonical/AnimationParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::set_rotation"]
+symbol = "?set_rotation@Animation@th20@@QAEXM@Z"
+target_address = 0x00450590
+size = 33
+relocations = [
+  { offset = 0x16, type = "REL32", symbol = "?set_rotation_z@Animation@th20@@QAEXM@Z", target = 0x004505C0 },
+]
+
+# CORE/EXACT-376: entire original native function, independently PE-attested relocation fields.
+[units.core376_animation_set_rotation_z]
+source = "src/AnimationParameters.cpp"
+object = "build/core163-canonical/AnimationParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::set_rotation_z"]
+symbol = "?set_rotation_z@Animation@th20@@QAEXM@Z"
+target_address = 0x004505C0
+size = 47
+relocations = [
+]
+
+# CORE/EXACT-376: entire original native function, independently PE-attested relocation fields.
+[units.core376_animation_set_scale58]
+source = "src/AnimationParameters.cpp"
+object = "build/core163-canonical/AnimationParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::set_scale_58"]
+symbol = "?set_scale_58@Animation@th20@@QAEXMM@Z"
+target_address = 0x004864F0
+size = 60
+relocations = [
+]
+
+# CORE/EXACT-376: entire original native function, independently PE-attested relocation fields.
+[units.core376_clock_scalar_float]
+source = "src/ClockScalar.cpp"
+object = "build/core141-canonical/ClockScalar.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ClockScalar::operator float"]
+symbol = "??BClockScalar@th20@@QBEMXZ"
+target_address = 0x004292E0
+size = 16
+relocations = [
+]
