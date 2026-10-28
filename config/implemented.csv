@@ -1054,3 +1054,4 @@ th20::bullet_velocity_magnitude
 th20::bullet_wrap_outside
 th20::bullet_wrap_outside_with_floor
 th20::Bullet::advance_command3
+th20::Bullet::advance_command7

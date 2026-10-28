@@ -1055,3 +1055,4 @@ th20::bullet_velocity_magnitude,0x0047A2A0,function
 th20::bullet_wrap_outside,0x004854D0,function
 th20::bullet_wrap_outside_with_floor,0x00485580,function
 th20::Bullet::advance_command3,0x00483580,function
+th20::Bullet::advance_command7,0x00480DB0,function

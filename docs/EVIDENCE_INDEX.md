@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact full 493-byte Bullet command7 player-homing velocity boss](BULLET_COMMAND7_EXACT_RECONSTRUCTION.md) — native Player direction plus genuine Vector3 subtraction/accumulation and Angle reset, all 21 original relocations, 61/61 affected-only strict units.
+
 - [Exact 898B Bullet command3 boss and original seven-entry native switch table](BULLET_COMMAND3_EXACT_RECONSTRUCTION.md) — complete 898B native command function, 928B full compiler/table contribution, all 41 relocations and 60/60 shared-header closure units strict replayed.
 
 - [Exact two Bullet screen-wrap boundaries and complete 781B caller audit](BULLET_WRAP_BOUNDARY_EXACT_RECONSTRUCTION.md) — whole 176B and 181B functions with 19 original relocation anchors; original 781B four-way wrap boss remains nonexact.

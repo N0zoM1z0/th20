@@ -2298,7 +2298,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047DCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00480D30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00480D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00480DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00480DB0,authored,Bullet,authored,high,CORE/EXACT-245; docs/BULLET_COMMAND7_EXACT_RECONSTRUCTION.md; original game-owned Bullet player direction/vector interpolation with complete 493B/21-native relocation proof and independent entire native Player/Vector3/Timer callees
 0x00480FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00481200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00481780,authored,BulletController,authored,high,"CORE/EXACT-210; docs/BULLET_FIRE_EXACT_RECONSTRUCTION.md; original gameplay-level signed shot formation, sound and player-directed loops; 103 original instructions / 11 relocation anchors"
