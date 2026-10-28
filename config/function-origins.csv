@@ -2311,7 +2311,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00483150,authored,Bullet,authored,high,"CORE/EXACT-218; docs/BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md; original 832B Bullet boundary handler direct call at 0x00482BD0, complete game-specific typed position/angle logic and all native 13 relocation addresses"
 0x00483270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00483580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00483920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00483920,authored,Bullet,authored,high,"CORE/EXACT-241; docs/BULLET_COMMAND2_EXACT_RECONSTRUCTION.md; complete native game-owned Bullet 424B command2 two-clock Angle/velocity gameplay path, original 16 real relocations, all original branch and Timer return behavior preserved"
 0x00483AD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00483D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00483F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

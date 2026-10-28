@@ -1047,3 +1047,4 @@ th20::Bullet::advance_command9
 th20::Timer::set(float)
 th20::Timer::operator=(float)
 th20::Bullet::advance_command0
+th20::Bullet::advance_command2

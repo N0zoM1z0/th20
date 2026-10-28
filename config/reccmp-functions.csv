@@ -1048,3 +1048,4 @@ th20::Bullet::advance_command9,0x0047C800,function
 th20::Timer::set(float),0x004841F0,function
 th20::Timer::operator=(float),0x0047C5F0,function
 th20::Bullet::advance_command0,0x004840E0,function
+th20::Bullet::advance_command2,0x00483920,function

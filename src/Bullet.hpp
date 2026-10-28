@@ -82,6 +82,7 @@ struct Bullet {
     std::int32_t cancel(std::int32_t mode);
     std::int32_t advance_command9();
     std::int32_t advance_command0();
+    std::int32_t advance_command2();
     void cancel_drops(const Vector3& position, std::int32_t mode);
     std::int32_t reflect_at_y_limit();
     std::int32_t reflect_at_upper_y();

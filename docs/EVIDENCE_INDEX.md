@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact complete 424-byte Bullet command-2 angle/speed update](BULLET_COMMAND2_EXACT_RECONSTRUCTION.md) — original 117 instructions, two ClockScalar/Angle transformations and Timer advance, 16 real native relocations and 57/57 affected-only strict units.
+
 - [Complete exact native Bullet command-0 motion curve](BULLET_COMMAND0_EXACT_RECONSTRUCTION.md) — whole 267B/73-instruction timed speed update, 11 original relocations and 56/56 affected-only strict units; separate major Bullet bosses remain open.
 
 - [Exact native float Timer setter and assignment wrapper](TIMER_FLOAT_SET_EXACT_RECONSTRUCTION.md) — complete 103B plus 33B native functions with four original relocations, 597/597 genuinely affected Timer.hpp strict units across 96 source objects; 662B Bullet cancel remains open.
