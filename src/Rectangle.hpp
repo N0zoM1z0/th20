@@ -15,8 +15,17 @@ struct IntPoint {
     IntPoint();
     IntPoint(std::int32_t x, std::int32_t y);
     IntPoint operator+(const IntPoint& other) const;
+    IntPoint operator-(const IntPoint& other) const;
+    IntPoint operator*(std::int32_t factor) const;
+    IntPoint operator/(std::int32_t divisor) const;
+    // The original addition assignment returns a whole 8-byte value,
+    // not a reference to its receiver.
+    IntPoint operator+=(const IntPoint& other);
     void assign_scaled(const Vector2& position);
 };
+
+// Native two-lane comparison against the same signed scalar.
+bool operator!=(const IntPoint& input, std::int32_t amount);
 
 struct IntRectangle {
     std::int32_t x;

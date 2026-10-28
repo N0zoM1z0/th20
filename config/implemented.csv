@@ -1134,3 +1134,8 @@ th20::PlayerShot::retire
 th20::PlayerShotController::return_to_free
 th20::PlayerShot::heap_owned
 th20::DamageHandle::resolve
+"th20::operator!=(const IntPoint&, int)"
+th20::IntPoint::operator*(int) const
+th20::IntPoint::operator-(const IntPoint&) const
+th20::IntPoint::operator/(int) const
+th20::IntPoint::operator+=(const IntPoint&)

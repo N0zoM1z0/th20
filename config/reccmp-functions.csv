@@ -1135,3 +1135,8 @@ th20::PlayerShot::retire,0x00506AF0,function
 th20::PlayerShotController::return_to_free,0x00506AB0,function
 th20::PlayerShot::heap_owned,0x00506540,function
 th20::DamageHandle::resolve,0x004C0E10,function
+"th20::operator!=(const IntPoint&, int)",0x004F5700,function
+th20::IntPoint::operator*(int) const,0x004F57C0,function
+th20::IntPoint::operator-(const IntPoint&) const,0x004F5890,function
+th20::IntPoint::operator/(int) const,0x004F5920,function
+th20::IntPoint::operator+=(const IntPoint&),0x004F70F0,function

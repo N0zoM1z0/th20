@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-407 complete DamageHandle/HitCtrlInf lookup ABI.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-410 five complete IntPoint option-coordinate dependencies.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,136** |
-| Canonical strict native units | **1,138** |
+| Source-present mappings, all origins | **1,141** |
+| Canonical strict native units | **1,143** |
 | Unique canonical object providers | **228**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **363**, covering **115,297 native bytes** |
+| Exact game-authored whole functions | **368**, covering **115,549 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Five native IntPoint option-coordinate operations` | `0x004F5700` / `0x004F57C0` / `0x004F5890` / `0x004F5920` / `0x004F70F0` | **49 / 45 / 48 / 45 / 65** | [whole original signed/wrapping coordinate dependencies](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) |
 | `DamageHandle::resolve` | `0x004C0E10` | **67** | [complete safe Identifier32 bit-cast and real Hit controller lookup](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md) |
 | `PlayerShot::retire` / `PlayerShotController::return_to_free` / `PlayerShot::heap_owned` | `0x00506AF0` / `0x00506AB0` / `0x00506540` | **166 / 55 / 41** | [complete original shot retirement and ownership lifecycle](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md) |
 | `PlayerShotController::reset_all` / `reset_timer_12400` | `0x00504950` / `0x00506CD0` | **269 / 32** | [complete PlayerShot lifetime iterator and Timer reset](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md) |
@@ -408,6 +409,29 @@ including complete 26B/264B original callees. This is
 outside the actual header-include closure and does
 not expand the 80-unit changed-source scope.
 [Whole original 67B PE/COFF proof](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-410 adds **five entire native C++ IntPoint
+gameplay methods totaling 252 physically unique original
+bytes**, discovered from the whole original **1,081-byte /
+325-instruction Player option-frame** at `0x004FA860`
+(which itself is **not yet strict exact**). The five
+originals are 49B nonzero comparison, 45B scalar
+multiplication, 48B subtraction, 45B signed division
+and 65B in-place coordinate addition, where the last
+method returns the *entire* eight-byte IntPoint value,
+not IntPoint&. All original instruction bytes and the
+three independently native original calls to the real
+`IntPoint(int,int)` constructor at `0x0040DE00`
+are strict exact. The **previous** `Rectangle.hpp`
+compiler receipts selected 31 actual source objects
+with 100 old strict units; the five new bodies in the
+**existing** Rectangle object result in **105/105
+strict units in 31 serial cold objects**, not a full
+repository cold replay. Six MSVC-private `$SG` labels
+were reconciled only with independent original PE
+target verification. The larger 1,081B option-frame
+and 3,111B Player frame bosses remain open.
+[Whole independent IntPoint ABI proof](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

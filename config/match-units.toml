@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82235", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82246", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -16131,7 +16131,7 @@ relocations = [
   { offset = 476, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
   { offset = 490, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
   { offset = 564, type = "REL32", symbol = "_memset", target = 5523296 },
-  { offset = 572, type = "DIR32", symbol = "$SG83987", target = 5699020 },
+  { offset = 572, type = "DIR32", symbol = "$SG83998", target = 5699020 },
   { offset = 577, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
   { offset = 588, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 625, type = "DIR32", symbol = "__real@3f800000", target = 5687500 },
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117930", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117941", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117931", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117942", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117932", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117943", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117933", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117944", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -19483,4 +19483,72 @@ size = 67
 relocations = [
   { offset = 0xC, type = "REL32", symbol = "?hit_controller@th20@@YAPAVHitCtrlInf@1@H@Z", target = 0x00478EC0 },
   { offset = 0x26, type = "REL32", symbol = "?find@HitCtrlInf@th20@@QAEPAVDamageRegion@2@UIdentifier32@2@@Z", target = 0x004C0D00 },
+]
+
+# CORE/EXACT-410: whole native 49B game-specific IntPoint
+# operation called from original Player option frame at 0x004FA860.
+[units.int_point_ne_scalar]
+source = "src/Rectangle.cpp"
+object = "build/core141-canonical/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::operator!=(const IntPoint&, int)"]
+symbol = "??9th20@@YA_NABUIntPoint@0@H@Z"
+target_address = 0x004F5700
+size = 49
+relocations = [
+]
+
+# CORE/EXACT-410: whole native 45B game-specific IntPoint
+# operation called from original Player option frame at 0x004FA860.
+[units.int_point_mul_scalar]
+source = "src/Rectangle.cpp"
+object = "build/core141-canonical/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntPoint::operator*(int) const"]
+symbol = "??DIntPoint@th20@@QBE?AU01@H@Z"
+target_address = 0x004F57C0
+size = 45
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??0IntPoint@th20@@QAE@HH@Z", target = 0x0040DE00 },
+]
+
+# CORE/EXACT-410: whole native 48B game-specific IntPoint
+# operation called from original Player option frame at 0x004FA860.
+[units.int_point_sub]
+source = "src/Rectangle.cpp"
+object = "build/core141-canonical/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntPoint::operator-(const IntPoint&) const"]
+symbol = "??GIntPoint@th20@@QBE?AU01@ABU01@@Z"
+target_address = 0x004F5890
+size = 48
+relocations = [
+  { offset = 0x23, type = "REL32", symbol = "??0IntPoint@th20@@QAE@HH@Z", target = 0x0040DE00 },
+]
+
+# CORE/EXACT-410: whole native 45B game-specific IntPoint
+# operation called from original Player option frame at 0x004FA860.
+[units.int_point_div_scalar]
+source = "src/Rectangle.cpp"
+object = "build/core141-canonical/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntPoint::operator/(int) const"]
+symbol = "??KIntPoint@th20@@QBE?AU01@H@Z"
+target_address = 0x004F5920
+size = 45
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??0IntPoint@th20@@QAE@HH@Z", target = 0x0040DE00 },
+]
+
+# CORE/EXACT-410: whole native 65B game-specific IntPoint
+# operation called from original Player option frame at 0x004FA860.
+[units.int_point_add_assign]
+source = "src/Rectangle.cpp"
+object = "build/core141-canonical/Rectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::IntPoint::operator+=(const IntPoint&)"]
+symbol = "??YIntPoint@th20@@QAE?AU01@ABU01@@Z"
+target_address = 0x004F70F0
+size = 65
+relocations = [
 ]

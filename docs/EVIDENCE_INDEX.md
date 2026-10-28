@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Five complete exact native IntPoint option-coordinate methods, 252B](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) — whole 49/45/48/45/65B originals, typed two-lane signed/wrapping math, unique 8-byte by-value operator+= return ABI, three independent original E8 calls to IntPoint constructor; 105/105 actually affected Rectangle.hpp strict units across 31 cold sources. The full 1,081B Player option-frame caller remains nonexact.
+
 - [Complete original 67B DamageHandle lookup — strict exact](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md) — defined bit-cast from native 4-byte storage to by-value Identifier32, both original E8 targets independently grounded by exact 26B getter/264B finder, 24/24 whole instructions; 80/80 real affected strict units in 27 cold objects.
 
 - [Complete exact 166B PlayerShot retirement + 55B free-list recycle + 41B heap predicate](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md) — actual Animation/DamageRegion/link/owner cleanup and native ownership semantics; 10 independently PE E8/HIGHLOW fields, 79/79 PlayerStorage.hpp affected native strict units across 26 cold providers. Its separate original 67B DamageHandle resolver is now exact in CORE/EXACT-407.
