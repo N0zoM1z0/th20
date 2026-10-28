@@ -1,5 +1,8 @@
 #include "InputInf.hpp"
 #include "Graphics.hpp"
+#include "GraphicsApi.hpp"
+#include <Xinput.h>
+#include <cstring>
 #include "LockRegistry.hpp"
 #include "EclDiagnostic.hpp"
 #include <mutex>
@@ -31,5 +34,23 @@ std::int32_t InputInf::initialize_devices() {
     }
     process_graphics.configuration.values_68.values[0] = routing_2e24[0];
     return 0;
+}
+
+// Complete original 170-byte XInput device discovery. The native
+// local result of XInputGetState is retained before comparing with
+// ERROR_SUCCESS, as observed in the original machine code.
+std::int32_t InputInf::discover_xinput_devices() {
+    std::int32_t found = 0;
+    for (std::int32_t i = 0; i < 4; ++i) {
+        XINPUT_STATE gamepad;
+        std::memset(&gamepad, 0, sizeof(gamepad));
+        const DWORD result = XInputGetState(i, &gamepad);
+        if (result == ERROR_SUCCESS) {
+            devices[state_14].initialize_xinput(i, state_14);
+            ++state_14;
+            ++found;
+        }
+    }
+    return found;
 }
 }

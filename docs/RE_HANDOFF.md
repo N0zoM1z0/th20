@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-487 entire 465-byte InputInf device initialization boss.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-489 entire 170-byte XInput device discovery and original SDK ABI.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,170** |
-| Canonical strict native units | **1,171** |
+| Source-present mappings, all origins | **1,171** |
+| Canonical strict native units | **1,172** |
 | Unique canonical object providers | **234**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **395**, covering **120,083 native bytes** |
+| Exact game-authored whole functions | **396**, covering **120,253 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::discover_xinput_devices` | `0x004210D0` | **170** | [complete original four-slot XInput SDK discovery and imported state thunk](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md) |
 | `InputInf::initialize_devices` | `0x00420D80` | **465** | [whole signed device discovery, lock and Graphics route initialization](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) |
 | `InputInf::start` | `0x00420990` | **265** | [entire input startup and native Graphics configuration binding copies](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) |
 | `InputInf::routing_for_view` / `bindings_for_view` / `pad_device` / `pad_device_slot` | `0x00421990` / `0x004217F0` / `0x00421850` / `0x00421870` | **49 / 27 / 26 / 26** | [entire InputDevice frame original control frontier and four exact InputInf native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) |
@@ -981,8 +982,8 @@ sequence shuts down devices with the separately
 exact 466B COM destructor, acquires native
 recursive mutex slot 15, sets a signed device
 count, initializes the first keyboard device,
-calls still-open **726B DirectInput** and
-**170B XInput** discovery, logs device count
+calls still-open **726B DirectInput** discovery and
+ the separately now exact **170B XInput** discovery, logs device count
 and selects the native persistent device route
 using the **original two-DWORD
 ConfigurationCounterPair.values[2]** array.
@@ -1010,12 +1011,46 @@ unchanged. Current game-authored exact
 **395 whole original functions /
 120,083 game-body bytes**, **1,171
 strict units / 234 canonical source objects**.
-The separate 726B/170B discovery callees,
+The separate 726B DirectInput discovery,
 3,490B InputDevice polling, 555B Player
 movement and 3,111B Player frame are
 **still NONEXACT**.
 [Complete original 465B InputInf device
 initialization proof](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-489 closes the complete native
+**170-byte/57-instruction
+InputInf::discover_xinput_devices** at
+`0x004210D0`, genuine Windows SDK
+`XINPUT_STATE` polling of four physical
+controllers, actual 16B state `memset`,
+saved `DWORD` result, original imported
+`XInputGetState` thunk at `0x005406C6`,
+and exact InputDevice XInput initialization
+at `0x00421AD0`. All **four original
+E8 and one PE HIGHLOW** fields are
+independently original-attested.
+The method resides in the same original
+pinned-profile canonical source as
+the already exact 465B InputInf
+device initialization boss:
+**2/2 strict native original units in
+one freshly cold-built source object**,
+with zero shared-header edits and
+no whole-repository replay. The only
+old unit's private MSVC `Pad Num`
+symbol was renumbered after checking
+the unchanged original PE destination
+`0x0056D6D4`, field and full bytes.
+Current game exact **396 complete
+game-owned bodies / 120,253 native
+original bytes**, **1,172 strict units
+in 234 existing canonical objects**.
+The separate **726B DirectInput
+discovery** and **3,490B InputDevice
+polling** remain independently NONEXACT.
+[Whole original 170B XInput native
+discovery proof](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

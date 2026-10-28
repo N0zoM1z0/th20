@@ -716,7 +716,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00420D80,authored,InputInf,authored,high,CORE/EXACT-487; docs/INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md; original whole real InputInf signed device discovery and typed graphics config route with 15 independently original PE E8/HIGHLOW fields
 0x00420F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004210D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004210D0,authored,InputInf,authored,high,"CORE/EXACT-489; docs/INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md; real native four-slot XInput discovery, exact XINPUT_STATE SDK and original DLL import with 5 actual original PE relocations"
 0x00421180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421680,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol
 0x004216A0,authored,TaskInfo,authored,high,REF-003; independent game storage/RTTI and custom member protocol

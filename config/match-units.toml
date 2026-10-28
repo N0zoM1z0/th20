@@ -20061,10 +20061,29 @@ relocations = [
   { offset = 0x78, type = "REL32", symbol = "?initialize_keyboard@InputDevice@th20@@QAEXH@Z", target = 0x00421AB0 },
   { offset = 0x8F, type = "REL32", symbol = "?discover_directinput_devices@InputInf@th20@@QAEHXZ", target = 0x00420AA0 },
   { offset = 0x97, type = "REL32", symbol = "?discover_xinput_devices@InputInf@th20@@QAEHXZ", target = 0x004210D0 },
-  { offset = 0xA3, type = "DIR32", symbol = "$SG171361", target = 0x0056D6D4 },
+  { offset = 0xA3, type = "DIR32", symbol = "$SG171489", target = 0x0056D6D4 },
   { offset = 0xA8, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0xC4, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x19B, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x1B1, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x1C9, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/EXACT-489: genuine original whole 170B InputInf XInput discovery:
+# four physical controller slots, real XINPUT_STATE/SDK, original 4 E8
+# and 1 HIGHLOW security cookie, separate from 465B input initializer.
+[units.input_inf_discover_xinput_devices]
+source = "src/InputInfDeviceInitialization.cpp"
+object = "build/core487-canonical/InputInfDeviceInitialization.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::InputInf::discover_xinput_devices"]
+symbol = "?discover_xinput_devices@InputInf@th20@@QAEHXZ"
+target_address = 0x004210D0
+size = 170
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x3B, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x4B, type = "REL32", symbol = "_XInputGetState@8", target = 0x005406C6 },
+  { offset = 0x7B, type = "REL32", symbol = "?initialize_xinput@InputDevice@th20@@QAEXHH@Z", target = 0x00421AD0 },
+  { offset = 0xA2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

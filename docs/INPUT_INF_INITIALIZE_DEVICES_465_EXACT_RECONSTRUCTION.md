@@ -217,3 +217,32 @@ open original functions and remain
 **NONEXACT**. No unfiltered whole-repository
 cold replay, binary patch or linked-game
 runtime equivalence is asserted.
+
+
+## Subsequent CORE/EXACT-489 — exact whole native XInput discovery
+
+Earlier descriptions of the separate original
+`InputInf::discover_xinput_devices` at `0x004210D0`
+as NONEXACT were historical. This native
+**170-byte / 57-instruction** complete original
+game function is now **170/170 strict exact**.
+The actual Windows SDK `XINPUT_STATE`
+has 16 native bytes; an original local
+`DWORD` result preserves the exact native
+`mov` and `cmp` after original
+`XInputGetState`. All **4 native E8
+plus 1 PE HIGHLOW** fields are separately
+original-attested, including the genuine
+imported XInputGetState thunk at
+`0x005406C6`. It compiles naturally in
+the same original profile and existing
+InputInf device-initialization source as
+the previously exact **465B** parent.
+**2/2 strict native units in one actual
+cold source object** passed with no
+shared-header change and no full replay.
+The separate **726B DirectInput discovery**
+and **3,490B InputDevice polling** remain
+NONEXACT, without inherited exact byte
+credit. See [whole original XInput discovery
+proof](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md).

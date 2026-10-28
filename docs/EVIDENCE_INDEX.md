@@ -17,6 +17,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Complete original 170B InputInf XInput device discovery — strict exact](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md) — true 16B Windows XINPUT_STATE, 4 physical slots, real DLL import thunk at 0x005406C6, original 4 E8 +1 HIGHLOW, separate retained HRESULT; source-only 2/2 strict units in one cold owner. 726B DirectInput discovery remains open.
+
+
 - [Whole original 465B InputInf device initialization boss — strict native exact](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) — authentic signed input device count, true two-element Graphics configuration route array, 9 original E8 and 6 independent PE HIGHLOW; entire 465/465 native bytes; **61/61 strict units in 18 actual prior-header-receipt source objects**. Separate 726B/170B device discovery and 3,490B input polling remain NONEXACT.
 
 
