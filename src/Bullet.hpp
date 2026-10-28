@@ -95,6 +95,7 @@ struct BulletController final : TaskInfo {
     void select_context(std::int32_t index);
     AnimationFile* animation_file() const;
     void set_vector_4c(float x, float y);
+    void set_scalar_48(float value);
     std::int32_t count();
     std::int32_t cancel_all(std::int32_t mode);
 };

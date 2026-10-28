@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE202 adds the complete original 403-byte Enemy opcode 600 PMR/queued-parameter reset into the same entire 41,967-byte boss root; CORE201/200 exact selector proofs and all older evidence preserved.
+**Checkpoint:** CORE/EXACT-203 closes the native 26-byte BulletController scalar owner needed by the original 593-byte Enemy opcode 601; CORE202 whole-root and earlier exact COW/laser proofs retained.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -22,10 +22,10 @@ evidence documents are historical, not competing current status.
   SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
   Do not switch to the Steam-original backup or any other release. See
   [target provenance](TARGET_PROVENANCE.md) and `config/target.toml`.
-- Live ledgers: **6,928** target function candidates, **1,019** source-present
-  mappings, **1,010** physical canonical strict units, **224** confirmed
-  authored exact functions / **58,692** authored exact bytes. The 168 current
-  canonical objects cover **183,083** comparison bytes. **Nine**
+- Live ledgers: **6,928** target function candidates, **1,020** source-present
+  mappings, **1,011** physical canonical strict units, **225** confirmed
+  authored exact functions / **58,718** authored exact bytes. The 168 current
+  canonical objects cover **183,109** comparison bytes. **Nine**
   source-present whole-function mappings remain nonexact. These are not a
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
@@ -36,6 +36,32 @@ evidence documents are historical, not competing current status.
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-203 independently recovered the entire native
+**26-byte** `BulletController::set_scalar_48(float)` at `0x0049C740`.
+Its `__thiscall` receiver writes the original `BulletController+0x48`
+float field, with **26/26 original x86 bytes exact and zero relocations**.
+The original large Enemy opcode 601 branch at
+`0x00492803..0x00492A53` calls it twice (set Enemy's `field_274`, then
+reset zero), while additionally calling the still-unaccepted 339-byte
+BulletController shot creation function `0x00481780`. The genuine owner
+is added to `src/BulletController.cpp` and real `src/Bullet.hpp`.
+Canonical 11-function TU `build/core185-canonical/BulletController.obj`
+was **replaced** by the 12-function
+`build/core203-canonical/BulletController.obj`, preserving physical object
+count. The header's real include closure is **six source providers / 35
+complete native units**, all **35/35** passed after affected-only cold
+compiles. Only five native-target-verified MSVC private `$SG` string names
+changed in two existing constructor units. No old code-body or target
+relocation differences remained. The private proof and scoped run log are
+`.analysis/core203-bullet-scalar-exact-proof.json` and
+`.analysis/core203-affected-replay.log`; detailed account:
+[exact Bullet scalar dependency](ENEMY_BULLET_SCALAR_601_DEPENDENCY.md).
+The still-current single Enemy root host is CORE202, with **43,125/43,125**
+UBSan and ASan+UBSan scenarios. No whole-native cold replay was performed;
+original 593B opcode 601/339B firing callee and the full 41,967B root
+remain nonexact. Current authored exact credit increases only **26 bytes**.
+
 
 CORE202 integrates the **entire original native opcode 600 primary branch**
 (`0x00492434..0x004925C6`: **403 bytes / 90 instructions / ten direct
@@ -397,8 +423,8 @@ Bullet owner at +0x286D8C and distinct `EnemyController::animation_file`
 selector at `0x004AAE10` independently establish the getter. The only five
 canonical providers including `Bullet.hpp` were cold-built, and **33/33**
 affected units strictly replayed. The Bullet TU now uses
-`build/core185-canonical/BulletController.obj`, not its superseded
-core180-canonical path. Canonical object count increased to 165 only in CORE190.
+`build/core203-canonical/BulletController.obj` as of CORE203, replacing
+core185-canonical (which had itself replaced core180-canonical). Canonical object count increased to 165 only in CORE190.
 
 CORE186 then integrated the **whole original 555 branch** into the **same**
 41,967-byte Enemy root host. Native code at `0x0048C3F4..0x0048C577`
@@ -532,7 +558,7 @@ selects **167** actual `build/**/*.obj` files with **167 sibling
 core145 3, core149 1, core151 1, core154 5, core154-v2 1, core156 1,
 core158 10, core163 19, core164 8, core166 2, core167 1, core174 2,
 core178 9, core180 26, **core182 2, core185 1, core190 1, core194 1
-core195 1 and core200 1**. Old probe objects/receipts may be
+core195 1, core200 1 and core203 1** (the latter replacing core185 1). Old probe objects/receipts may be
 retained as historical evidence but are not current acceptance units. Also
 preserve the twenty historical unfinished QueryProtocol/sound/Alignment
 products documented in
@@ -540,7 +566,11 @@ products documented in
 [sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Animation pool](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
-**For CORE200**, adding real `EnemyState::shared_shot` and `writable_shot`
+**For CORE203**, the real `Bullet.hpp` field method and canonical
+BulletController TU change affect exactly **six receipt-derived provider
+objects / 35 complete native units**; **35/35** strict exact replays
+passed. No unfiltered cold replay. **For CORE200**, adding real
+`EnemyState::shared_shot` and `writable_shot`
 to `src/EnemyState.hpp` affects **19 existing source providers / 110 old
 native units**, plus one new source provider / **two complete exact units**.
 **112/112** native whole-unit strict receipt replays passed, with only **20

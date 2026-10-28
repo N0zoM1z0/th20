@@ -21,6 +21,15 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE/EXACT-203 closes the complete **26-byte native BulletController
+scalar field setter** at `0x0049C740` with zero relocations, called twice
+by the still nonexact original **593-byte opcode 601**. All **35/35**
+actual `Bullet.hpp` affected native units across six source providers
+passed strict scoped cold replay, retaining the 20B Bullet file getter and
+151B EnemyController resource selector byte-exact. The 41,967B Enemy root
+remains unchanged; see
+[real opcode 601 Bullet field dependency](ENEMY_BULLET_SCALAR_601_DEPENDENCY.md).
+
 CORE202 adds the original whole **403-byte opcode 600** queued record
 reset into the *same entire 41,967-byte Enemy boss draft*. It uses the
 accepted 396B native COW selector and real `ShotParameters` and
