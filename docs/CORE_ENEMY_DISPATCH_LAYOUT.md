@@ -21,6 +21,13 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE186 subsequently integrated original opcode 555 (its separately
+byte-verified 20B Bullet animation-file getter and 388B native caller
+control flow) into the *same* entire root host. The live private draft now
+covers 124 opcode values / 95 primary heads with 38,973/38,973 whole-root
+host cases. See [the native 555 and integration audit](ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md).
+**The 41,967-byte native root, switch tables and EH are still nonexact.**
+
 The locked PE and attested Ghidra listing agree on all 8,896 instructions over
 41,967 body bytes. The signed opcode is reduced by 300 and unsigned-range checked
 through 1003. The 704-byte compressed index selects 174 distinct primary heads:

@@ -25,8 +25,17 @@ The branch through `0x0048C573` has two independent signed nonnegative gates:
   `EnemyController::animation_file` at `0x004AAE10`, with the complete
   `state.field_258` index. `AnimationFile::spawn` at `0x004790E0` is then
   called with a null stem, `field_254` script, a **fresh** position reference,
-  the selected direction, layer `-1`, and null output. Its temporary handle is
+  the selected direction, layer **`3`**, and null output. Its temporary handle is
   not published by this opcode.
+
+The layer `3` is independently verified by the original instruction
+`push 3` at `0x0048C540` (part of the ten native direct calls and 81 native
+instructions in the **388-byte** 555 branch at `0x0048C3F4..0x0048C577`).
+This corrects an earlier mistaken analogy with `Enemy::defeat`, which uses
+layer `-1`. The native branch SHA-256 is
+`5ab9c44d05b183785798d82102af4643c853bca652d0766f463c2548686016cd`.
+The input/root provenance and original call targets are independently checked
+in `.analysis/core185-native-555-audit.json`.
 
 The selected 151-byte controller file dispatcher (`0x004AAE10`) is a separate
 nonexact owner. Its native control flow distinguishes indices 7 (unresolved
@@ -70,15 +79,53 @@ unchanged; the manifest reflects the newly observed source-symbol names.
 No other provider was cold-built, and **no unfiltered replay** was performed.
 The local receipt log is `.analysis/core185-affected-replay.log`.
 
+## CORE186: same whole-root opcode 555 integration
+
+The 555 case is now inside **one entire existing** 41,967-byte Enemy root
+source draft: `.analysis/core185-enemy-dispatch-candidate.cpp`. Neither a
+standalone partial-root function nor a separate replacement dispatcher was
+introduced. The real maintained `geometry::squared_distance_xy` and
+`geometry::direction_xy` are linked alongside the already exact original
+SoundInf coordinate-to-pan method, EnemyState position owner, native
+`BulletController::animation_file` and the actual four-argument AnimationFile
+wrapper. The final renderer/VM seven-argument producer remains captured at its
+original interface. The index-0 file lookup actually uses the newly exact
+Bullet getter; other routes are honest private boundaries until their
+resource owners are independently reconstructed.
+
+`.analysis/core185-dispatch-host-recipe.json` selects 81 TUs (the previous
+80, plus real `src/GeometryMetrics.cpp`) and builds with GCC 13 `-O2`,
+`-Wall -Wextra -Werror -fsanitize=undefined`. Its
+`.analysis/core185-dispatch-host.log` passes **38,973 / 38,973** full-root
+host cases: **all 38,433 predecessors plus 540 new 555 cases**. The new
+matrix covers signed independent `field_250`/`field_254` gates,
+negative/zero/positive ids, nine XY displacements including both sides of
+0.2, two live Contexts, five distinct indices, real pan conversion and
+fresh position references. Of the new primary matrix, **252** run the real
+SoundInf path and **252** invoke the real File wrapper. Further cases capture
+**18 expected exceptions** at the sound queue, file selection and VM
+boundary, asserting call order, short circuit, zero VM operand reads and
+unchanged complete Enemy/Context/controller owner images. The original layer
+3 is asserted in every effect call, not copied from the defeat routine.
+
+The host executable `build/core185-dispatch-host`, the new private candidate,
+recipe, audit and proof are **protected live evidence**. The SHA-bound private
+proof `.analysis/core185-enemy-whole-root-proof.json` refers to four exact
+source inputs. CORE183 and all older root evidence remain intact.
+This batch changed no further production input/headers beyond CORE/EXACT-185,
+so its new **cold-build/replay affected-unit count is zero**; it reuses the
+33/33 complete already-verified canonical receipt outcome. No unfiltered
+native replay, whole-image replay or full cold build was run.
+
 ## Remaining work
 
-The full 555 branch is not yet integrated into the current private whole-root
-host candidate. It must be added to the *same* 41,967-byte Enemy dispatcher
-exercise, preserving real position/geometry/sound/File wrapper calls and the
-four resource selection routes. Independently test the exact threshold,
-signed sentinel gates, nonread VM operands, recipient pointer retargeting,
-exception paths, and no effect-publication side effect. The 151-byte
-`EnemyController::animation_file` and Stage owner at `0x005C069C` must be
-reconstructed without inventing an array-only shortcut or claiming that the
-full Enemy switch is machine-code exact. The target's 174 heads, EH and jump
-partition remain open.
+The complete native 41,967-byte root **is not codegen/byte exact**; its draft
+now covers **124 effective opcode values / 95 native primary heads** of
+174 total native primary heads. Original jump tables, exception scopes,
+compiler partition, missing case heads and VM/resource lifecycle remain open.
+The 151-byte genuine `EnemyController::animation_file` at `0x004AAE10` is
+still nonexact; it differentiates indices 0/1/7 from ordinary array indices.
+Its Stage/Background global owner `0x005C069C`, along with the downstream
+renderer and animation loader, must be resolved from native producers and
+consumers before integrating their actual production bodies. Do not claim
+that semantic host cases confer exact native credit on those large routines.

@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-185 exact Bullet file getter; 555 root integration next.
+**Checkpoint:** CORE186 whole-Enemy opcode 555 integration, following CORE/EXACT-185 native Bullet file getter.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -9,13 +9,12 @@ evidence documents are historical, not competing current status.
 
 ## Repository, target and canonical status
 
-- Worktree: `main`, last reconstruction commits `f709625` (whole Enemy opcode
-  539 integration) and `9d8c5bc` (byte-exact full Laser reset). Both use the
-  required `gpt-web: ` subject prefix. At cleanup start the worktree was clean,
-  and `main` was **21 commits ahead** of `origin/main`. Local commits have
-  **not** been pushed; the factory shell has no network. Always recheck Git
-  status at the next session. **Do not ignore or discard dirty work**: the user
-  explicitly stated that all modifications belong to this single session.
+- Worktree: `main`, with CORE/EXACT-185 saved as commit `2713b35`
+  (`gpt-web: reconstruct exact Bullet file getter for Enemy opcode 555`).
+  CORE186 preserves the complete-root investigation and its private inputs;
+  check `git log -2 --oneline` and `git status` for the newest local commit.
+  Factory has no network/push. **Do not discard dirty or ignored work:** the
+  user explicitly said the single worker owns all modifications.
 - Target: Japanese TH20 **v1.00a Steamless**, `resources/th20.exe` (ignored),
   SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
   Do not switch to the Steam-original backup or any other release. See
@@ -28,16 +27,40 @@ evidence documents are historical, not competing current status.
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
-  covers **123 effective opcode values / 94 primary heads** and passes
-  **38,433 / 38,433** `-O2`/UBSan whole-root host scenarios. Do not claim
+  covers **124 effective opcode values / 95 primary heads** and passes
+  **38,973 / 38,973** `-O2`/UBSan whole-root host scenarios. Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
 
-CORE185 added native `BulletController::animation_file() const` at `0x004859B0` (20/20 canonical bytes, zero relocations). Only the five providers including `Bullet.hpp` were cold-built; **33/33** impacted canonical units pass strict relocation replay. The whole 555 branch was independently decoded in [opcode 555 evidence](ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md), but is **not yet** integrated into the current private CORE183 root host. Continue there, not by creating an isolated replacement for the 41,967-byte dispatcher. The previous 164 canonical objects retain one logical object per provider: the BulletController object moved to `build/core185-canonical`, replacing its core180 manifest entry.
+CORE/EXACT-185 added native `BulletController::animation_file() const` at
+`0x004859B0`: **20/20** byte-exact native code, zero relocations. The actual
+Bullet owner at +0x286D8C and distinct `EnemyController::animation_file`
+selector at `0x004AAE10` independently establish the getter. The only five
+canonical providers including `Bullet.hpp` were cold-built, and **33/33**
+affected units strictly replayed. The Bullet TU now uses
+`build/core185-canonical/BulletController.obj`, not its superseded
+core180-canonical path. Canonical object count remains 164.
+
+CORE186 then integrated the **whole original 555 branch** into the **same**
+41,967-byte Enemy root host. Native code at `0x0048C3F4..0x0048C577`
+comprises **388 bytes / 81 instructions and ten direct calls**; an independent
+Capstone/locked-PE audit discovered that its File-spawn **layer is 3**, *not*
+the `-1` of the otherwise superficially similar Enemy defeat path. The full
+candidate calls the real existing SoundInf pan adapter, Motion/Enemy position,
+XY distance/direction and four-argument File wrapper; the real Bullet file
+getter is executed in the index-0 selection test. The still-unaccepted 151B
+file dispatcher, Stage owner and seven-argument VM producer are captured as
+explicit boundaries. **540 new host scenarios** cover both independent gates,
+strict 0.2 squared threshold, alternate Contexts, five routed indices, zero
+VM operand reads, full owner images and **18 exception** cases. All prior
+38,433 scenarios also pass, for **38,973/38,973** with GCC13 O2/UBSan.
+Source/proof and limits: [opcode 555 native and whole-root evidence](ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md).
+No additional source graph changed in CORE186: **zero further native cold
+replay units**, no full cold replay and no fresh root machine-byte credit.
 
 
-The first exact target is **Enemy opcode 539's real callee**,
+The previously verified exact target is **Enemy opcode 539's real callee**,
 `LaserController::reset_all_lasers` at `0x004D2430`. Full native body
 **263/263 bytes**, **14/14** independent relocation anchors including EH and
 cookie support, locked **MSVC 19.44.35211 x86**. It walks the native intrusive
@@ -65,24 +88,21 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core183-enemy-dispatch-candidate.cpp` — **whole** natural-source
-  root draft, including opcode 539; source of truth for further work.
-- `.analysis/core183-dispatch-host.cpp`,
-  `.analysis/core183-laser-reset-host-cases.inc`,
-  `.analysis/core183-dispatch-host-recipe.json` — exact existing semantic host,
-  including the entire suite of earlier case includes; use the recipe's
-  **80-TU** list, rather than inventing a new independent dispatcher.
-- `.analysis/core183-dispatch-host.log`,
-  `.analysis/core183-native-539-audit.json`,
-  `.analysis/core183-enemy-whole-root-proof.json` — passed host log,
-  independently decoded original seven-instruction case and SHA-bound inputs.
-  The active host executable is `build/core183-dispatch-host`, which is
-  **protected by the proof**. Do not delete it as an unused binary.
-- Previous `.analysis/core181-*`, `.analysis/core179-*` and prior host inputs,
-  native audits and proof files are historical protected evidence. The
-  CORE181 draft and host remain unchanged. Large `.analysis/*original-inputs*`
-  and `*pre-registration-ledgers*` archives preserve original SHA-bound
-  inputs and must **not** be confused with temporary logs.
+- `.analysis/core185-enemy-dispatch-candidate.cpp` — entire natural-source
+  Enemy root draft, now including opcode 539 **and** 555; it supersedes CORE183
+  only as the *current candidate*, never as whole-root exactness.
+- `.analysis/core185-dispatch-host.cpp`,
+  `.analysis/core185-enemy-effect-host-cases.inc`,
+  `.analysis/core185-dispatch-host-recipe.json` — one host with **81 TUs**,
+  previous 80 plus actual `src/GeometryMetrics.cpp`.
+- `.analysis/core185-dispatch-host.log`,
+  `.analysis/core185-native-555-audit.json`,
+  `.analysis/core185-enemy-whole-root-proof.json` — passed scenarios, original
+  independent opcode instructions and SHA-bound four private source inputs.
+  Protect the active executable `build/core185-dispatch-host` as evidence.
+- All CORE183 inputs/logs and original 539 proof remain protected and
+  unchanged, as do CORE181/179 and archived original-input records. **Do not
+  confuse older count summaries with the current active host**.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
@@ -94,16 +114,17 @@ For recent neighboring work see
 [517/518 Screen/message](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
 [502/503 visibility](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
 and the [whole switch layout](CORE_ENEMY_DISPATCH_LAYOUT.md).
-Original 539 is now **integrated**; do not use pre-CORE183 notes that say it
-is still pending. Original 548 is integrated as of CORE181.
+Original 539 **and 555** are now integrated in the one active whole-root
+candidate (neither native-exact). Original 548 was integrated as of CORE181.
 
 ## Next high-value research, including large functions
 
 1. **Continue the same 41,967-byte Enemy Boss function**, preserving CORE183
-   input hashes, real Context owners and current host tests. Investigate
-   original opcode **555** and other missing primary heads, and independently
-   decode the complete original branch and callee before adding code. Nearby
-   blockers: Renderer handle lookups for **502/503**, the actual ScreenInf
+   and CORE185 input hashes, real Context owners and the 38,973 current host
+   tests. The original opcode **555** caller is now integrated; continue with
+   the **151-byte** native `EnemyController::animation_file` selector, real
+   Stage/Background resource owner at `0x005C069C`, other missing primary heads
+   and compiler/EH exactness. Nearby additional blockers: Renderer handle lookups for **502/503**, the actual ScreenInf
    factory and message cancellation for **517/518**, and the real Stage/Fog
    owner behind `0x005C069C` for **551**. Do not infer identities from old
    reference files or collapsed helper aliases. The full root's switch
@@ -129,12 +150,12 @@ is still pending. Original 548 is integrated as of CORE181.
 ## Protected data and fast scoped verification
 
 `config/match-units.toml` is the **only** current canonical object inventory,
-not a static build-directory list copied from old handoffs. As of CORE184 it
+not a static build-directory list copied from old handoffs. As of CORE186 it
 selects **164** actual `build/**/*.obj` files with **164 sibling
 `.receipt.json` files**. Their distribution is core141 66, core142 6,
 core145 3, core149 1, core151 1, core154 5, core154-v2 1, core156 1,
 core158 10, core163 19, core164 8, core166 2, core167 1, core174 2,
-core178 9, core180 27 and **core182 2**. Old probe objects/receipts may be
+core178 9, core180 26, **core182 2 and core185 1**. Old probe objects/receipts may be
 retained as historical evidence but are not current acceptance units. Also
 preserve the twenty historical unfinished QueryProtocol/sound/Alignment
 products documented in
@@ -142,11 +163,13 @@ products documented in
 [sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Animation pool](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
-**For documentation/cleanup only**, changed reconstruction inputs = **zero**,
-affected cold-build/replay units = **zero**. Do **not** invoke whole-graph
-cold replay, Ghidra, MSVC or full CI just for a handoff. Verify `git status`,
-`git diff --check`, protected product hashes and links; reuse the CORE183
-attested result. To resume actual RE, inspect all dirty work (the user owns
+**For CORE185**, changed production/header inputs affected five canonical
+providers: **33/33** scoped units / **5** cold objects passed. **For CORE186's
+private entire-root host integration**, changed production compiler inputs =
+**zero**; it rebuilt only the separate GCC13 semantic host, not any native
+cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
+full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
+protected product hashes and links; reuse the CORE185 attested results. To resume actual RE, inspect all dirty work (the user owns
 all modifications), review the specific native instructions with the attested
 Ghidra/PE workflows, select the true affected include closure from compiler
 receipts, then cold-build/replay **only those affected units**. Original
@@ -188,4 +211,4 @@ For historical checkpoint narrative and old retirement inventories, use
 `git show f709625:docs/RE_HANDOFF.md` and the focused evidence documents;
 those dated paragraphs are intentionally **not** duplicated in this current
 handoff. Private legacy original-input archives remain available under
-`.analysis/`, and the exact root candidate/proofs listed above remain intact.
+`.analysis/`, and all CORE183/CORE185 root candidates/proofs listed above remain intact.
