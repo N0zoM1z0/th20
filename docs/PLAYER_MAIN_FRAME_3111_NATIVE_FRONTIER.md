@@ -178,6 +178,30 @@ parent itself remains **NONEXACT**, with no
 inferred exact native byte credit.
 [Original 320B SoundInf request proof](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md).
 
+## Subsequent CORE/EXACT-449 whole pool child interruption closure
+
+The original **246B** `AnimationPoolOwner::interrupt_handle`
+at `0x0044EE90` is now whole strict exact with all
+**77 original instructions, 12 E8 and 2 HIGHLOW**
+fields. It correctly has two stack arguments:
+the live pool handle and the child-interrupt event,
+and uses real exception-safe IntrusiveIterator
+lifetime rather than a fabricated AnimationHandle
+receiver. The distinct **35B**
+`AnimationHandle::interrupt` at `0x0044EF90`
+also now strict matches its complete 15 original
+instructions and native global pool forwarding.
+One more native original call from this 3,111B
+Player main frame is therefore independently
+closed: **65/67** exact direct E8 callees.
+The original 26B input lookup, 555B movement
+function and separate 456B pool handle resolver
+remain nonexact/uncredited. The actual
+AnimationRuntimeOwner.hpp receipt-source
+closure passed **27/27 units in 11 cold
+objects**, with no whole-repo replay.
+[Whole 281B pool/handle animation original proof](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md).
+
 ## Whole parent call-graph status and focused strict replay
 
 Before these two native methods were admitted, 45 of

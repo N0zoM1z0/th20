@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-445 entire 320-byte SoundInf effect request boss.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-449 whole AnimationPool interrupt and AnimationHandle bridge.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,154** |
-| Canonical strict native units | **1,155** |
+| Source-present mappings, all origins | **1,156** |
+| Canonical strict native units | **1,157** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **380**, covering **117,579 native bytes** |
+| Exact game-authored whole functions | **382**, covering **117,860 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `AnimationPoolOwner::interrupt_handle` / `AnimationHandle::interrupt` | `0x0044EE90` / `0x0044EF90` | **246 / 35** | [whole native pool/handle animation child-interrupt protocol](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md) |
 | `SoundInf::request_effect` | `0x00426D70` | **320** | [whole sound request queue, channel cooldown, original PE volume table](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md) |
 | `AnimationHandle::is_valid` / `set_position_forward` | `0x0047A340` / `0x004645E0` | **45 / 26** | [full native handle validity and position forwarders](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) |
 | `Player::suspend_option_animations` | `0x004BD0C0` | **237** | [entire native mode-3 suspension, distinct from mode-2 clearer](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md) |
@@ -642,6 +643,36 @@ call sites now have independently exact
 callees**, three remain. The parent
 remains NONEXACT. No unfiltered full replay.
 [Whole 320B original sound request proof](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-449 independently closes the
+**246-byte/77-instruction original
+AnimationPoolOwner::interrupt_handle** at
+`0x0044EE90` and distinct **35-byte/15-instruction
+AnimationHandle::interrupt` at `0x0044EF90`.
+**Corrected ABI**: 246B belongs to the large
+pool receiver, takes two stack args and walks
+exception-safe child links; 35B bridges the
+four-byte handle value and event through
+global pool `0x005C0028`. All **13
+original E8 and 3 original HIGHLOW**
+fields, including native EH/cookie and
+actual child-animation targets, are
+independently original-attested exact.
+The separately original 456B
+`AnimationPoolOwner::resolve_handle` at
+`0x0044CD00` stays NONEXACT. Real prior
+`AnimationRuntimeOwner.hpp` receipt closure
+had ten sources/20 strict units; adding the
+preexisting five-unit `AnimationHandle.cpp`
+provider and two new complete methods yields
+**27/27 strict units in 11 low-priority
+cold objects**. One compiler-private Bullet
+`$SG` renumber independently re-attested its
+original native string. The 3,111B Player
+main-frame now has **65/67** exact callee
+call sites, two remaining; parent remains
+NONEXACT. No global cold replay.
+[Whole animation pool/handle 281B original proof](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

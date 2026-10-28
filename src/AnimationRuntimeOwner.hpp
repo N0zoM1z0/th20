@@ -18,6 +18,9 @@ struct AnimationPoolOwner {
     AnimationFile* file_by_index(std::int32_t index);
     void select_view(std::int32_t view_index);
     Animation* resolve_handle(std::uint32_t index);
+    // Native 246-byte pool-owner interruption: handle ID then event code.
+    // The whole 456-byte resolve_handle remains a separate open function.
+    void interrupt_handle(std::uint32_t index, std::int32_t event);
     void set_handle_position(std::uint32_t index, const Vector3& position);
 };
 extern AnimationPoolOwner* current_animation_pool;

@@ -1,5 +1,6 @@
 #include "AnimationHandle.hpp"
 #include "Animation.hpp"
+#include "AnimationRuntimeOwner.hpp"
 
 namespace th20 {
 
@@ -26,6 +27,12 @@ bool AnimationHandle::is_valid() {
 // for the underlying setter's separate original physical entry.
 void AnimationHandle::set_position_forward(const Vector3& position) {
     set_position(position);
+}
+
+// Native 35-byte bridge from a four-byte AnimationHandle to the
+// genuine pool owner's two-argument handle/event interruption protocol.
+void AnimationHandle::interrupt(std::int32_t event) {
+    current_animation_pool->interrupt_handle(value, event);
 }
 
 void AnimationHandle::interrupt_offset_7(std::int32_t event) {

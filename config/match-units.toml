@@ -17829,7 +17829,7 @@ relocations = [
   { offset = 0x7F, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x90, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x97, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
-  { offset = 0xC0, type = "DIR32", symbol = "$SG183073", target = 0x0056FD14 },
+  { offset = 0xC0, type = "DIR32", symbol = "$SG183076", target = 0x0056FD14 },
   { offset = 0xCC, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 0xF0, type = "REL32", symbol = "?store_cancel_handle@BulletController@th20@@QAEXHI@Z", target = 0x00486390 },
   { offset = 0x110, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
@@ -19768,4 +19768,46 @@ relocations = [
   { offset = 0x107, type = "REL32", symbol = "??A?$array@USoundEffectRequest@th20@@$0M@@std@@QAEAAUSoundEffectRequest@th20@@I@Z", target = 0x004260B0 },
   { offset = 0x126, type = "REL32", symbol = "??A?$array@USoundEffectChannel@th20@@$0FK@@std@@QAEAAUSoundEffectChannel@th20@@I@Z", target = 0x004260F0 },
   { offset = 0x135, type = "REL32", symbol = "?set_cooldown@SoundEffectChannel@th20@@QAEXH@Z", target = 0x00411570 },
+]
+
+# CORE/EXACT-449: whole original 246B Animation
+# handle/pool interruption, independent E8 and original PE HIGHLOW fields.
+[units.animation_pool_interrupt_handle]
+source = "src/AnimationHandlePosition.cpp"
+object = "build/core252-canonical/AnimationHandlePosition.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationPoolOwner::interrupt_handle"]
+symbol = "?interrupt_handle@AnimationPoolOwner@th20@@QAEXIH@Z"
+target_address = 0x0044EE90
+size = 246
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?interrupt_handle@AnimationPoolOwner@th20@@QAEXIH@Z", target = 0x005685FD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x33, type = "REL32", symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAUAnimation@2@I@Z", target = 0x0044CD00 },
+  { offset = 0x57, type = "REL32", symbol = "??AAnimationChildLinks@th20@@QAEAAV?$IntrusiveLink@UAnimation@th20@@@1@H@Z", target = 0x004494B0 },
+  { offset = 0x64, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x70, type = "REL32", symbol = "?begin@?$IntrusiveLink@UAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@UAnimation@th20@@@2@XZ", target = 0x0044B9F0 },
+  { offset = 0x7F, type = "REL32", symbol = "?end@?$IntrusiveLink@UAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@UAnimation@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x8C, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x99, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0xA8, type = "REL32", symbol = "?get@?$IntrusiveIterator@UAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@UAnimation@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0xB3, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UAnimation@th20@@@th20@@QAEAAPAUAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xC4, type = "REL32", symbol = "?interrupt@Animation@th20@@QAEXH@Z", target = 0x004388F0 },
+  { offset = 0xD6, type = "REL32", symbol = "??1?$IntrusiveIterator@UAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0xEC, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/EXACT-449: whole original 35B Animation
+# handle/pool interruption, independent E8 and original PE HIGHLOW fields.
+[units.animation_handle_interrupt]
+source = "src/AnimationHandle.cpp"
+object = "build/core163-canonical/AnimationHandle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::AnimationHandle::interrupt"]
+symbol = "?interrupt@AnimationHandle@th20@@QAEXH@Z"
+target_address = 0x0044EF90
+size = 35
+relocations = [
+  { offset = 0x13, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x18, type = "REL32", symbol = "?interrupt_handle@AnimationPoolOwner@th20@@QAEXIH@Z", target = 0x0044EE90 },
 ]

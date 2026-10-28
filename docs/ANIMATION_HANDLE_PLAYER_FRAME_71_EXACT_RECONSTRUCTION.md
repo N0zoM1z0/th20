@@ -119,3 +119,28 @@ native exact credit.
 
 The two 71B methods are independent whole original game-owned
 bodies, not proof of linked whole-game runtime equivalence.
+
+
+## Subsequent CORE/EXACT-449 complete pool-owner interrupt and handle bridge
+
+The separately original whole **246-byte**
+`AnimationPoolOwner::interrupt_handle(uint32_t,int)`
+at `0x0044EE90` is now **246/246 strict exact**,
+and the distinct true **35-byte**
+`AnimationHandle::interrupt(int)` at
+`0x0044EF90` is **35/35 exact**. This is the
+correct native two-layer interface: the
+pool method takes two stack arguments and
+walks exception-safe child links, while the
+handle member passes its four-byte live value
+and event through the real global pool owner.
+Their complete **92 native instructions and
+16 original PE E8/HIGHLOW fields** agree.
+The 456B pool's handle-resolve method remains
+NONEXACT, with no inferred caller/callee
+credit. Actual native receipt scope replay was
+**27/27 strict units in 11 cold providers**,
+with no global replay. The still-open
+3,111B Player frame now has **65/67**
+direct-call sites independently exact.
+[Whole original pool/handle interrupt proof](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md).

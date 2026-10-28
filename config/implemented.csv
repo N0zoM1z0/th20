@@ -1152,3 +1152,5 @@ th20::Player::suspend_option_animations
 th20::AnimationHandle::is_valid
 th20::AnimationHandle::set_position_forward
 th20::SoundInf::request_effect
+th20::AnimationPoolOwner::interrupt_handle
+th20::AnimationHandle::interrupt
