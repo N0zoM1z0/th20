@@ -67,6 +67,7 @@ struct Bullet {
     ~Bullet();
     void select_context(std::int32_t index);
     void deactivate();
+    std::int32_t cancel(std::int32_t mode);
     std::int32_t reflect_at_y_limit();
     std::int32_t reflect_at_upper_y();
     std::int32_t handle_boundary();
@@ -112,6 +113,7 @@ struct BulletController final : TaskInfo {
     std::int32_t draw_group(std::int32_t group);
     std::int32_t draw_groups();
     IntrusiveList<Bullet>& free_list();
+    IntrusiveList<Bullet>& active_list();
     Vector2& vector_4c_ref();
     std::int32_t fire(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata);
     std::int32_t emit(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata,

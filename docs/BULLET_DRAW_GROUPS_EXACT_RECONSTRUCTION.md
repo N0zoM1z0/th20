@@ -69,3 +69,15 @@ single-group draw probe still differs in original floating/x87 argument
 ordering and real Animation flag field semantics; neither incomplete body
 is admitted as exact. Their original boundaries and attempted source are
 retained privately under `.analysis/core221-*` and `.analysis/core223-*`.
+
+## CORE/EXACT-226 correction to the initial include-closure claim
+
+The original CORE225 **45/45 old units over nine source objects** did pass,
+but was wrongly described above as the **complete** Bullet.hpp include closure.
+It omitted the previously exact `src/BulletBoundary.cpp` 832B boss,
+so the pre-CORE225 complete closure actually had **46 old units over ten
+source objects**. CORE/EXACT-226 independently recomputed the current
+compiler-receipt include graph and **fully reran 49/49 strict units over all
+twelve affected objects**, including the omitted boss and the new complete
+242B/19B cancel-all/active-list roots. No relaxation or full-graph replay.
+See [full corrected closure and original cancellation proof](BULLET_CANCELLATION_EXACT_RECONSTRUCTION.md).

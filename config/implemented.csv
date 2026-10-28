@@ -1034,3 +1034,5 @@ th20::Bullet::reflect_at_upper_y
 th20::bullet_outside_rectangle
 th20::Bullet::handle_boundary
 th20::BulletController::draw_groups
+th20::BulletController::cancel_all
+th20::BulletController::active_list
