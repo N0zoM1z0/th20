@@ -21,10 +21,19 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE187 subsequently integrated the larger 609–612 shared head, whose
+complete **1,457-byte / 314-instruction / 29-call** native branch updates
+real ShotMetadata/BulletCommand PMR storage. The active private whole-root
+host now covers **128 effective values / 96 primary heads** with
+**39,861/39,861** GCC13 O2/UBSan and ASan+UBSan (vptr excluded) cases.
+Its original 396-byte queued-owner/COW selector remains a captured boundary.
+See [the shared command-family native and host audit](ENEMY_WHOLE_ROOT_609_612_SHOT_COMMAND_INTEGRATION.md).
+No Enemy root byte-exact credit was issued; the same 174 original heads remain.
+
 CORE186 subsequently integrated original opcode 555 (its separately
 byte-verified 20B Bullet animation-file getter and 388B native caller
-control flow) into the *same* entire root host. The live private draft now
-covers 124 opcode values / 95 primary heads with 38,973/38,973 whole-root
+control flow) into the *same* entire root host. That intermediate private draft
+covered 124 opcode values / 95 primary heads with 38,973/38,973 whole-root
 host cases. See [the native 555 and integration audit](ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md).
 **The 41,967-byte native root, switch tables and EH are still nonexact.**
 
