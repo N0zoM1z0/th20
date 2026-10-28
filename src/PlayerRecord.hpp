@@ -109,6 +109,7 @@ struct PlayerRecord {
     void set_field_c0(std::int32_t value);
     void set_field_c4(std::int32_t value);
     void set_field_e4(std::int32_t value);
+    void add_field_e4(std::int32_t amount);
     void set_field_4c(std::int32_t value);
     void set_field_50(std::int32_t value);
     void set_field_54(std::int32_t value);

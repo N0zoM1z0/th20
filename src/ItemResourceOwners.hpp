@@ -35,6 +35,8 @@ public:
     AnimationFile* animation_file(std::int32_t index);
     std::int32_t select_handle_slot();
     std::uint32_t publish_handle(std::uint32_t handle);
+    EffectRequest* queue_effect(std::int32_t style, std::int32_t kind,
+                                const EffectParameters& parameters, std::int32_t delay);
     AnimationHandle spawn_effect(std::int32_t kind, const EffectParameters& parameters,
                                  std::int32_t policy);
 };

@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/RECON-343 entire Player option control-flow refinement.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-347 complete Player bullet graze feedback.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,122** |
-| Canonical strict native units | **1,111** |
-| Unique canonical object providers | **222**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **324**, covering **81,529 native bytes** |
+| Source-present mappings, all origins | **1,123** |
+| Canonical strict native units | **1,112** |
+| Unique canonical object providers | **223**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **325**, covering **81,861 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 222 current canonical object/receipt pairs, native proof documents,
+The 223 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::record_bullet_graze` | `0x004F8B90` | **332** | [complete graze feedback and effects](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md) |
 | `clear_animation_handle_value` | `0x0049DA50` | **20** | [whole native value clear](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) |
 | `AnimationFile::spawn_flag2` / `Player::animation_file_ref` | `0x0049CBF0` / `0x00421810` | **57 / 17** | [whole native resource access](PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md) |
 | `WeaponStoneInfo::option_script_variant` / `initialize_option_pair` | `0x00534130` / `0x00533180` | **77 / 90** | [complete virtual dispatches](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md) |
@@ -90,10 +91,11 @@ library-function label to a genuine `std::clamp<int>` call. The next
 substantial Player frontier is the separate **1,518-byte**
 `Player::rebuild_option_animations` at `0x004FACA0` (still nonexact).
 
-CORE/EXACT-316 subsequently closed the separate complete **115B**
-`PlayerFeedback::record_hit` with three originally attested native calls;
-**9/9** affected units in one PlayerStorage object remain exact. This is
-not the still-open **332B Player graze effect** at `0x004F8B90`.
+CORE/EXACT-316 closed the distinct complete **115B**
+`PlayerFeedback::record_hit` with three originally attested native calls.
+The separate **332B Player bullet graze** at `0x004F8B90` is also now
+**strict exact** in CORE/EXACT-347, with 20 independently grounded original
+references and 307/307 strict affected units across 42 cold objects.
 
 CORE/EXACT-320 now closes **six** independently original option-related
 functions (328 bytes), including the complete 165-byte two-array broadcast,
@@ -201,14 +203,13 @@ needed cold replay. See the focused whole-source frontier.
    are *historical only*, not a current CI or exactness gate. Animation
    VM, Renderer resource owners and Player damage lifecycle also remain
    substantial open work.
-5. **Player graze feedback `0x004F8B90` (332B)** remains private and
-   nonexact. Its whole tentative source is
-   `.analysis/core298-PlayerGrazeFeedback-Live.cpp`. Three provisional
-   member interfaces from the incomplete experiment were carefully
-   preserved in `.analysis/core298-pending-graze-interfaces-original.patch`
-   and `.analysis/core298-PENDING_GRAZE_FEEDBACK.md`, **not** left in
-   maintained headers without strict regression. Native callees
-   `0x004FE8D0`, `0x0049DC60`, `0x0049BE20` need independent review.
+5. **Player bullet graze feedback `0x004F8B90` (332B) is now strict
+   exact**, with maintained `src/PlayerGrazeFeedback.cpp` and
+   [independent full proof](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md).
+   Its three formerly speculative callee member interfaces were re-reviewed
+   against original Ghidra/PE evidence, and the 307-unit genuine include
+   closure passed. Their *separate callee implementations* and EffectInfo
+   lifecycle remain open and must not inherit the caller's exact credit.
 
 ## New large Player frontier after exact reset
 

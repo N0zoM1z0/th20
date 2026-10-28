@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact complete 332B Player bullet graze feedback](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md) — full 105 original instructions and 17 independent E8 calls / three PE HIGHLOW references; natural effects, reward and sound handling; 307/307 affected-only strict units across 42 rebuilt objects.
+
 - [Exact 20B AnimationHandle value clear and parent ABI correction](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) — original ECX-receiver store and 8/8 affected strict units in one object; restores the missing call in the maintained nonexact 1,518B Player option rebuild boss.
 
 - [Complete 1,518B Player option rebuild source frontier — nonexact](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md) — entire 418-instruction original boss now has maintained 1,518B / 411-instruction C++20 source, 410/418 aligned native mnemonic kinds, complete 57 original call and three PE relocation audit; parent is **not** credited exact.

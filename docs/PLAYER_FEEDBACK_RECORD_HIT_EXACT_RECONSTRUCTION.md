@@ -58,3 +58,13 @@ effect at `0x004F8B90`, which remains nonexact. The independently exact
 966-byte Player initialization/reset boss is likewise a separate complete
 parent; this smaller exact method does not replace its evidence or imply
 whole-executable linkage/runtime completeness.
+
+## Later CORE/EXACT-347 status
+
+The separate complete **332-byte** `Player::record_bullet_graze`
+(0x004F8B90) is **now independently strict native exact**. The preceding
+historical description of that whole graze caller as nonexact is
+superseded. See
+[the complete 332-byte proof](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md).
+The two PlayerFeedback/Player original functions remain distinct and are
+not double counted.
