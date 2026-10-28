@@ -1,5 +1,25 @@
 # Enemy drop protocol and dispatcher callers
 
+## CORE/EXACT-386 — current 630B complete emitter exact status
+
+The older **628-byte nonexact** `EnemyPattern::emit_items` source
+candidate discussed below has been **superseded**. A fresh whole
+original PE audit and ordinary C++20 expression experiment
+established the real count-first, Timer-second multiplication
+operand order, naturally recovering the native
+`mov edx,esi; imul edx,[eax]` at original `+0xDC`
+without an inert local or manually inserted padding. The
+complete 630-byte original emitter is now **630/630 strict
+exact, all 178 instructions, with 18 E8 calls and 12 original
+PE HIGHLOW fields independently checked**. Its existing
+1,576-byte `ItemInf::spawn` and 239-byte `EnemyPattern::drop`
+original roots remain exact: **3/3 scoped strict units
+in one cold source object**. The historical figures below
+do not represent the live source.
+[Complete 630-byte native proof](ENEMY_PATTERN_ITEM_EMITTER_630_EXACT_RECONSTRUCTION.md).
+
+
+
 ## CORE/EXACT-149 scope
 
 The same private whole EnemyState dispatcher draft at 0x48C010 now includes

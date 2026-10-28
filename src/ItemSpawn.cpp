@@ -109,9 +109,12 @@ void EnemyPattern::emit_items(const Vector3& origin) {
         if (duration && timer.less_than(static_cast<std::int32_t>(duration))) {
             if (static_cast<std::int32_t>(extra_counts[i]) > 0) {
                 // The native IMUL retains its low word before signed division.
+                // The original evaluates the positive extra count first,
+                // preserves Timer's converted low word, and uses a distinct
+                // signed division numerator after modulo-32 multiplication.
                 count += extra_counts[i] - static_cast<std::int32_t>(
-                    static_cast<std::uint32_t>(static_cast<std::int32_t>(timer))
-                        * extra_counts[i]) / static_cast<std::int32_t>(duration);
+                    extra_counts[i] * static_cast<std::uint32_t>(static_cast<std::int32_t>(timer)))
+                    / static_cast<std::int32_t>(duration);
             }
         }
         for (std::int32_t j = 0; j < static_cast<std::int32_t>(count); ++j) {

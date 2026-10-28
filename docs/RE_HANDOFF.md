@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-383 complete ProgressSaveManager Worker lifecycle.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-386 complete 630-byte EnemyPattern item emitter.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -17,9 +17,9 @@ old reports and probe filenames are **not** current status.
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
 | Source-present mappings, all origins | **1,130** |
-| Canonical strict native units | **1,128** |
+| Canonical strict native units | **1,129** |
 | Unique canonical object providers | **226**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **353**, covering **113,660 native bytes** |
+| Exact game-authored whole functions | **354**, covering **114,290 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `EnemyPattern::emit_items` | `0x004A5350` | **630** | [entire timed item scatter and native arithmetic](ENEMY_PATTERN_ITEM_EMITTER_630_EXACT_RECONSTRUCTION.md) |
 | `ProgressSaveManager` ctor / `commit` / copy / merge | `0x0050E5D0` / `0x0050F660` / `0x0050EEB0` / `0x0050F5F0` | **199 / 70 / 75 / 107** | [full Worker/ProgressSnapshot original methods](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md) |
 | `ProgressProfile::ProgressProfile` | `0x0050AF20` | **13,684** | [complete game-specific save Profile constructor](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
 | `Animation::update_geometry` | `0x00435C80` | **5,388** | [seven-selector geometry and attached tables](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
@@ -288,6 +289,18 @@ credit. All **5/5 affected source-owner strict units in one cold
 object** pass, with all 18 original E8/HIGHLOW anchors independently
 audited. No unrelated source or full cold replay.
 [Whole lifecycle native proof](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-386 closes the full original **630-byte** EnemyPattern
+timed scatter boss at `0x004A5350`: all **178 instructions** and
+**18 original E8 + 12 native PE HIGHLOW** references are now
+strict exact. Evaluating the positive extra count before
+Timer naturally restores native `mov edx,esi` before signed
+multiply/divide, with no artificial padding. The existing
+complete 1,576B ItemInf producer and 239B EnemyPattern drop
+caller remain exact: **3/3 truly affected strict units in one
+cold original source object**. No unrelated replay, no
+double-counted original native addresses.
+[Whole original emitter proof](ENEMY_PATTERN_ITEM_EMITTER_630_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

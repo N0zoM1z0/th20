@@ -174,6 +174,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## ECL and Enemy
 
+- [Exact complete 630B EnemyPattern timed item emitter](ENEMY_PATTERN_ITEM_EMITTER_630_EXACT_RECONSTRUCTION.md) — full 178-instruction original fifteen-kind spawn/Timer count boss, native ESI-to-EDX multiplication and all 18 E8/12 HIGHLOW refs independently attested, 3/3 affected strict units in one cold object.
+
 - [Core ECL and Enemy dispatch reconstruction](CORE_ECL_DISPATCH_RECONSTRUCTION.md)
 - [Whole Enemy dispatcher control flow and compiler tables](CORE_ENEMY_DISPATCH_LAYOUT.md) — includes the current bounded dependency audit.
 - [Enemy whole-root opcode 609–612 shared ShotMetadata command protocol](ENEMY_WHOLE_ROOT_609_612_SHOT_COMMAND_INTEGRATION.md) — original 1,457-byte head, 29 calls, real PMR command ownership, 888 new cases and 39,861 dual-sanitizer whole-root checks; selector/whole root still nonexact.
