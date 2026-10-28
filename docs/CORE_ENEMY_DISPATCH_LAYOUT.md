@@ -21,6 +21,16 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE201 integrates those two separately exact queued selectors into the
+*same complete 41,967-byte Enemy source-draft host*: all unhooked 609–612,
+700/701, 702/703 and 711/713 routes call the **real production 396B COW**
+method. Direct ensure-only tests also invoke the **real production 305B**
+method. Old injected-failure tests remain explicitly private.
+**42,973/42,973** O2/UBSan and ASan+UBSan whole-host cases pass with
+230 new ownership/record/VM-exception tests. The original 41,967-byte native
+root remains nonexact, despite its full-host behavioral integration. See
+[real accepted selectors in the complete Enemy root](ENEMY_WHOLE_ROOT_EXACT_QUEUED_SELECTOR_INTEGRATION.md).
+
 CORE/EXACT-200 now closes **both original EnemyState queued metadata
 selectors**: the 396B native writable COW function `0x00498B80` and the
 305B ensure-only function `0x00498D10`. Their authentic `forward_list`,

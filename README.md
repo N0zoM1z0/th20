@@ -60,7 +60,7 @@ separately 224 functions / 58,692 bytes; it is not whole-game completion.
 | Reference review | All 6,945 indexed implementations and 113 parser-gap files reviewed |
 | ECL Runtime | Whole tick, call/frame/argument and lifetime protocols; [evidence](docs/EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | Animation | Lifetime, children, templates, frame/geometry/operand updates and real callbacks; whole VM remains open; [source map](docs/SOURCE_MAP.md) |
-| Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft covers 134 values/102 heads with 42,743 host checks, but native root remains open; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
+| Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft covers 134 values/102 heads with 42,973 host checks, but native root remains open; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |
