@@ -16915,7 +16915,7 @@ relocations = [
   { offset = 0x1B, type = "REL32", symbol = "?detach@?$IntrusiveLink@UBullet@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
   { offset = 0x29, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x30, type = "REL32", symbol = "?free_list@BulletController@th20@@QAEAAU?$IntrusiveList@UBullet@th20@@@2@XZ", target = 0x00485900 },
-  { offset = 0x3F, type = "REL32", symbol = "?append@?$IntrusiveList@UBullet@th20@@@th20@@QAEXPAV?$IntrusiveLink@UBullet@th20@@@2@@Z", target = 0x0044A6B0 },
+  { offset = 0x3F, type = "REL32", symbol = "?prepend@?$IntrusiveList@UBullet@th20@@@th20@@QAEXPAV?$IntrusiveLink@UBullet@th20@@@2@@Z", target = 0x0044A6B0 },
   { offset = 0x59, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
   { offset = 0x69, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
   { offset = 0x79, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },

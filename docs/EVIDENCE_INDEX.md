@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Bullet emitter dependency audit and corrected head insertion](BULLET_EMIT_FRONTIER_AUDIT.md) — original 3,735B boss dependency map, correction of an exact caller’s append/prepend semantic error, 338B Animation script setup structural-only probe and the unresolved original Animation allocator path.
+
 - [Exact Bullet lifecycle and emitter dependencies](BULLET_LIFECYCLE_EMISSION_EXACT_RECONSTRUCTION.md) — complete 291B retirement with native shared_ptr reset, 54B context bind and 19B free-list reference, all fifteen relocation anchors, 38/38 scoped strict units.
 
 - [Exact entire Bullet firing boss](BULLET_FIRE_EXACT_RECONSTRUCTION.md) — native complete 339B/103-instruction shot traversal and owned metadata, all eleven original relocations, 36/36 affected strict units; genuine downstream 3,735B emitter and 41,967B Enemy root remain open.

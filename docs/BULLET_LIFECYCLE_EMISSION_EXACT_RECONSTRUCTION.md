@@ -25,7 +25,7 @@ The native `Bullet::deactivate` first tests the actual +0x50 state and
 **returns immediately** on zero; a straightforward wrapping `if(state != 0)`
 was *not* compiler-identical to the original jump shape. Active retirement
 then detaches the **real `IntrusiveLink<Bullet>`**, resolves the Bullet's
-actual +0x520 Context and its genuine BulletController owner, and appends
+actual +0x520 Context and its genuine BulletController owner, and prepends
 the Bullet's link to `BulletController::free` at +0x286D4C. It sets state to
 zero, assigns integer zero to **five distinct native Timers** at
 +0x4F8, +0x508, +0x4A0, +0x4B0 and +0x4C0, clears the actual +0x54 and
@@ -50,6 +50,22 @@ pointer +0x520 through the actual Session at `0x005BA568` and Session context
 accessor `0x0040BBC0`. The exact 19B `BulletController::free_list` exposes
 the typed intrusive-list reference at +0x286D4C. These are *not* duplicate
 bytes from the existing Controller context binding at `0x00486530`.
+
+## CORE/REVIEW-212 correction: prepend, not append
+
+The original exact caller `0x0047DA40` invokes complete original `0x0044A6B0`.
+Independent disassembly now establishes this callee is **head insertion**:
+its first call inserts after the list sentinel at `this+0`, it assigns the
+link's owner, and it updates `tail` only if it previously pointed to the
+sentinel (the empty-list case). The former canonical source used
+`free_list().append(&link)` with relocation target `0x0044A6B0`, which
+replayed bytes but described the **wrong semantics**. The maintained caller
+now uses `free_list().prepend(&link)`; its correct COFF relocation symbol
+maps to the *same independently verified* native address. The whole 291B
+caller, its thirteen relocations and its 54B/19B sibling units have freshly
+passed 3/3 strict replay after the correction. The 66B generic prepend callee
+itself remains nonexact (53/58 non-relocation bytes match) and is **not**
+newly credited. See [emitter frontier audit](BULLET_EMIT_FRONTIER_AUDIT.md).
 
 ## Full boss boundary audit and verification scope
 

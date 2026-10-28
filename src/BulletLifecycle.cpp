@@ -20,7 +20,7 @@ IntrusiveList<Bullet>& BulletController::free_list() { return free; }
 void Bullet::deactivate() {
     if (state == 0) return;
     link.detach();
-    context->bullet_controller()->free_list().append(&link);
+    context->bullet_controller()->free_list().prepend(&link);
     state = 0;
     timer_4f8 = 0;
     timer_508 = 0;

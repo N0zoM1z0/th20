@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
+**Checkpoint:** CORE/REVIEW-212 corrects real Bullet-list head insertion and the exact 291B caller’s symbol/semantics; CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 active-session commit subjects and **affected-only** replay requirements. This
@@ -46,6 +46,26 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/REVIEW-212 (web) independently corrected a **real source semantic error**:
+native list method `0x0044A6B0` prepends to the sentinel, not appends.
+`Bullet::deactivate` now invokes `free_list().prepend(&link)` with the correct
+symbol at the same native relocation destination. Its complete **291/291B**
+strict replay and the other two unchanged source units all pass (3/3, one
+cold object). The 66B prepend callee itself is **not exact** (53/58
+nonrelocation bytes) and receives no credit. The original 338B
+AnimationFile script-begin method `0x004383A0` now has a private natural
+compiler probe that structurally matches **306/306 nonrelocation bytes**,
+but its global Renderer/Animation owner +0xB8 layout remains unproven:
+**do not admit it as an exact unit or copy the private placeholder prefix**.
+The original 73B Animation allocator at `0x00447800` contains explicit
+zero-construction absent in the prior 60B template trial. Complete emitter
+`0x004818E0` remains **3,735B and nonexact**. See
+[focused original-callee audit](BULLET_EMIT_FRONTIER_AUDIT.md).
+This correction affects only `src/BulletLifecycle.cpp` (3 strict units,
+one cold object); **no whole-graph cold replay**. Current exact totals
+remain **232 functions / 59,716 bytes**.
+
 
 CORE/EXACT-211 (web) closes **all 291 original bytes** of real
 `Bullet::deactivate` `0x0047DA40`, its **13 native relocations**,
