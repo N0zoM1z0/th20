@@ -81,3 +81,32 @@ compiler-receipt include graph and **fully reran 49/49 strict units over all
 twelve affected objects**, including the omitted boss and the new complete
 242B/19B cancel-all/active-list roots. No relaxation or full-graph replay.
 See [full corrected closure and original cancellation proof](BULLET_CANCELLATION_EXACT_RECONSTRUCTION.md).
+
+## CORE/AUDIT-234 — the full native 273B single-group draw remains open
+
+A new original-PE audit of the entire `BulletController::draw_group` at
+`0x0047DB70` confirms **273 bytes / 82 complete x86 instructions** and the
+real four-stage child loop: publication of Bullet+`0x64` position to
+Animation+`0x5BC`; a **three-bit** mode test covering the high bits 5..7 of
+AnimationFlags byte at Animation+`0x4A2`; angle normalization and rotation
+through `Angle::operator float` `0x004292E0`, `add_angles`
+`0x00438600`, and `Animation::set_rotation` `0x00450590`; optional native
+`set_scale_58` at `0x004864F0`; and the true Renderer draw call at
+`0x00443880`, advancing the Bullet draw-list link at +`0x60`.
+
+The original x87 flow passes the native `pi/2` by SSE stack before calling
+the Angle getter, then passes the Angle getter's x87 float directly to
+`add_angles`. The latter's x87 return is **stored in a float local**, then
+reloaded with SSE `movss` when calling `set_rotation`. Private natural C++
+probes have attained **272B** with the native angle order but a direct x87
+return forwarding instead of the original local float, or **293B** with
+explicit float locals but extra argument spills/register moves. Further
+full-body trials of natural local assignment, braces, casts, and nested
+expressions have not produced all 273 original bytes. A high-bit union
+model was used only privately; the real shared `Animation.hpp` must not be
+edited for a nonexact source trial without revalidating its genuine include
+closure. Complete original evidence is in
+`.analysis/core234-native-47db70.asm` and private
+`.analysis/core223-*.cpp` / `.analysis/core234-*.cpp` whole-body probes.
+No exact-function credit has been assigned to this 273B native function,
+and the already exact 81B six-group parent remains unaffected.

@@ -102,3 +102,37 @@ in `src/BulletDrops.cpp` as **419/419 canonical byte-exact**, with all
 remains **nonexact**: restoring these two downstream complete functions
 does not implicitly repair the boss's missing local/return-object ABI.
 See [complete drops and bounds proof](BULLET_DROPS_AND_SCREEN_EXACT_RECONSTRUCTION.md).
+
+## CORE/AUDIT-234 — native float Timer assignment dependencies
+
+An additional independent complete PE disassembly identifies two original
+functions called along the native 662-byte Bullet cancellation chain:
+
+- `0x0047C5F0`, **33 bytes**, acts as a genuine 16-byte Timer member's
+  float assignment wrapper: it loads the original float argument, passes it
+  to native `0x004841F0` in the MSVC x86 `__thiscall` ABI and returns with
+  `ret 4`. The exact original wrapper has 13 x86 instructions and SHA-256
+  `evidence in .analysis/core234-native-47c5f0.asm`.
+- `0x004841F0`, **103 bytes**, is the original float-set implementation.
+  Only if `flags & 1` is clear does it invoke Timer reset at `0x00423F50`,
+  set mode zero through `0x00423FE0`, and set the initialized bit.
+  It then sets `current = trunc(float_value)`, writes the *untruncated*
+  float to `current_fraction` at +8, and sets
+  `previous = trunc(float_value - 1.0f)` using the independent original
+  `0x0056C8CC` float constant. The original method must **not** be
+  confused with the already accepted `Timer::set(int)` overload; its
+  truncation/previous-value semantics differ for nonintegral input.
+
+The actual native call graph includes two `0x0047C5F0` invocations from
+`Bullet::cancel` at `0x0047CB34` and `0x0047CB50`. Other attested direct
+callers include the 3,735-byte Bullet emitter `0x004818E0` and
+`0x00484A20`, `0x00485B60`, `0x0049CAE0`, `0x004D3230`.
+Complete native disassembly is saved under ignored
+`.analysis/core234-native-47c5f0.asm` and
+`.analysis/core234-native-4841f0.asm`. Both functions remain **nonexact**:
+no made-up free function, fake Timer layout or incorrect `__fastcall`
+stand-in is admitted to the maintained source. `Timer.hpp` alone currently
+appears in **93** canonical source providers and **593** strict units, so
+any real shared member declaration must be followed by its true affected
+closure, not a claim based only on the two Bullet sites. No code changed
+and no cold replay was needed for this audit.

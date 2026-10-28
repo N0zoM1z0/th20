@@ -47,6 +47,20 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/AUDIT-234 (web): independently re-audited full native 273B
+`BulletController::draw_group` and native 33B/103B Timer float member
+wrapper/set methods called by the 662B Bullet cancel and 3,735B emitter.
+Original x87 `add_angles` result is stored to a float local then SSE-reloaded;
+private 272B/293B source versions still **nonexact**. Timer float set is
+not the already exact `Timer::set(int)`; it stores an untruncated fraction.
+Both Timer methods and 273B draw remain **nonexact**, with no maintained
+source or exact-credit changes. See [Bullet cancel Timer frontier](BULLET_CANCEL_662_NATIVE_FRONTIER.md)
+and [single-group draw frontier](BULLET_DRAW_GROUPS_EXACT_RECONSTRUCTION.md).
+This documentation-only audit affected **zero exact source units**; no
+replay or whole-graph cold build was performed. Current exact totals remain
+**249 functions / 64,097 bytes**.
+
+
 CORE/EXACT-232 (web) newly reconstructs **two entire original native
 functions** in the real Bullet cancel-to-ItemInf path: `Bullet::cancel_drops`
 `0x0047D3D0` **419/419 bytes** (121 instructions, 20 original relocation
