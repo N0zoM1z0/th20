@@ -1043,3 +1043,4 @@ th20::BulletController::cancel_near_if
 th20::Bullet::cancel_drops
 th20::bullet_position_outside_screen
 th20::BulletController::cancel_in_rectangle
+th20::Bullet::advance_command9

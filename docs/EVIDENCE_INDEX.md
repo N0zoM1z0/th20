@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact native 226-byte Bullet command9 motion/Timer update](BULLET_COMMAND9_EXACT_RECONSTRUCTION.md) — complete original state-bit/clock/Timer branch, 10 native relocations and 55/55 affected strict units; full 662B cancel and 3735B emitter remain open.
+
 - [Exact complete 707-byte Bullet rectangular cancellation boss](BULLET_RECTANGLE_CANCELLATION_EXACT_RECONSTRUCTION.md) — full native 209-instruction gameplay loop and two original 669B geometry tests, all 25 relocations, 54/54 affected-only strict units; original child cancel remains open.
 
 - [Exact complete 419B Bullet cancellation item drops and 136B edge predicate](BULLET_DROPS_AND_SCREEN_EXACT_RECONSTRUCTION.md) — whole native original gameplay branching, signed counter/RNG, real ItemInf calls and native four-edge SSE; 25 original relocations and 54/54 scoped strict units.
