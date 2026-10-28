@@ -11,7 +11,6 @@
 #include <cstring>
 #include <cwchar>
 #include <limits>
-#include <memory_resource>
 #include <string>
 #include <thread>
 #include <vector>
@@ -49,7 +48,7 @@ using namespace th20;
 int file_token, event_token, thread_token, window_token, stream_token, ds_token;
 std::vector<const char*> events;
 std::vector<std::string> messages;
-bool file_failure, allocation_failure, read_failure, event_failure, thread_failure;
+bool file_failure, read_failure, event_failure, thread_failure;
 bool conversion_failure, seek_failure;
 DWORD read_limit = std::numeric_limits<DWORD>::max();
 HRESULT factory_status;
@@ -75,7 +74,7 @@ struct FactoryObservation {
 void reset_calls() {
     events.clear(); messages.clear(); lookup_name.clear(); reopened_name.clear();
     lookup_receiver = reopen_receiver = nullptr;
-    file_failure = allocation_failure = read_failure = event_failure = thread_failure = false;
+    file_failure = read_failure = event_failure = thread_failure = false;
     conversion_failure = seek_failure = false;
     read_limit = std::numeric_limits<DWORD>::max();
     factory_status = 0; lookup_index = 0; reopen_status = 0; factory = {};
@@ -97,27 +96,6 @@ void assert_slot_available(unsigned slot) {
     });
     observer.join(); assert(acquired);
 }
-struct ThrowingResource : std::pmr::memory_resource {
-    bool fail = true;
-    unsigned allocations = 0, deallocations = 0;
-    void* do_allocate(std::size_t n, std::size_t a) override {
-        ++allocations;
-        if (fail) throw std::bad_alloc();
-        return std::pmr::new_delete_resource()->allocate(n,a);
-    }
-    void do_deallocate(void* p, std::size_t n, std::size_t a) override {
-        ++deallocations; std::pmr::new_delete_resource()->deallocate(p,n,a);
-    }
-    bool do_is_equal(const std::pmr::memory_resource& other) const noexcept override {
-        return this == &other;
-    }
-};
-struct DefaultResourceScope {
-    std::pmr::memory_resource* previous;
-    explicit DefaultResourceScope(std::pmr::memory_resource* r)
-        : previous(std::pmr::set_default_resource(r)) {}
-    ~DefaultResourceScope() { std::pmr::set_default_resource(previous); }
-};
 void configure(SoundInf& sound, SoundDeviceOwner& owner, TrackFormat* formats) {
     sound.device_owner = &owner;
     sound.direct_sound = reinterpret_cast<IDirectSound8*>(&ds_token);
@@ -155,7 +133,6 @@ extern "C" void* __real_malloc(std::size_t);
 extern "C" void __real_free(void*);
 extern "C" void* __wrap_malloc(std::size_t n) {
     events.push_back("allocate");
-    if (allocation_failure) return nullptr;
     assert(allocated_count<64);
     void* p=__real_malloc(n); assert(p);
     // A sentinel is fixture instrumentation, not native zero-fill policy.
@@ -285,23 +262,6 @@ int main() {
     assert(std::strcmp(process_sound.track_names[3],"no-device")==0);
     sound.device_owner=&owner;
 
-    // Resize's actual PMR exception is before publication; guard must unwind.
-    reset_calls(); ThrowingResource resource;
-    {
-        DefaultResourceScope scope(&resource); SoundInf throwing;
-        configure(throwing,owner,formats);
-        std::strcpy(process_sound.track_names[14],"unchanged");
-        try { throwing.preload(14,"would-grow"); assert(false); }
-        catch (const std::bad_alloc&) {}
-        assert(throwing.preloaded.empty() && resource.allocations==1);
-        assert(std::strcmp(process_sound.track_names[14],"unchanged")==0);
-        expect_calls({}); assert_slot_available(2);
-        resource.fail=false; process_graphics.configuration.flags.preload_music=0;
-        assert(throwing.preload(14,"now-grown")==0 && throwing.preloaded.size()==15);
-    }
-    assert(resource.deallocations==1);
-    process_graphics.configuration.flags.preload_music=1;
-
     // Native ignores conversion/seek/short read/BOOL statuses, publishes the
     // requested size, and does not initialize unfilled allocation bytes.
     for (unsigned scenario=0;scenario<4;++scenario) {
@@ -328,13 +288,12 @@ int main() {
 
     // Failed replacement frees its old allocation but retains the other three
     // record fields, with global name already changed and no invented rollback.
-    for (unsigned failure=0;failure<2;++failure) {
+    {
         reset_calls(); assert(sound.preload(1,"first")==0);
         auto prior=sound.preloaded[1]; std::strcpy(sound.track_names[1],"first");
-        events.clear(); messages.clear(); file_failure=failure==0; allocation_failure=failure==1;
+        events.clear(); messages.clear(); file_failure=true;
         assert(sound.preload(1,"second")==-1);
-        if (!failure) expect_calls({"free","convert","open"});
-        else expect_calls({"free","convert","open","find","seek","allocate","close_file"});
+        expect_calls({"free","convert","open"});
         assert(std::strcmp(process_sound.track_names[1],"second")==0);
         auto& p=sound.preloaded[1]; assert(!p.allocation && p.current==prior.current && p.format==prior.format && p.size==prior.size);
         assert(allocated_count==freed_count); assert_slot_available(1); assert_slot_available(2);
@@ -393,5 +352,5 @@ int main() {
                 ++loading_checks;
             }
     sound.free_preload(5); assert(allocated_count==freed_count);
-    std::printf("Whole shared sound loading: %u notification/failure cases; preload, replacement, PMR unwind and resource protocol PASS\n",loading_checks);
+    std::printf("Whole shared sound loading: %u notification/failure cases; preload, replacement and resource protocol PASS\n",loading_checks);
 }

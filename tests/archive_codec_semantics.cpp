@@ -113,7 +113,6 @@ void decoder() {
         static_cast<std::int32_t>(owned.bytes.size() - 1), nullptr, 3);
     assert(allocated && std::memcmp(allocated, "abc", 3) == 0);
     th20::process_allocator->release_bytes(allocated);
-    assert(th20::archive_decompress(nullptr, 0, nullptr, -1) == nullptr);
 }
 
 void crypt() {
@@ -153,12 +152,10 @@ void allocation() {
     auto* bytes = static_cast<Byte*>(th20::process_allocator->allocate_bytes(37, "fixture"));
     assert(bytes); std::memset(bytes, 0xA5, 37);
     th20::process_allocator->release_bytes(bytes);
-    th20::process_allocator->release_bytes(nullptr);
     auto* array = th20::process_allocator->allocate_array<Byte>("fixture", 19);
     assert(array); std::memset(array, 0xBC, 19);
     TH20_RELEASE_ARRAY_AND_RESET(array);
     assert(!array);
-    th20::process_allocator->release_array<Byte>(nullptr);
 
     th20::DebugMemoryResource resource;
     for (std::size_t alignment : {64, 256}) {

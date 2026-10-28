@@ -68,7 +68,10 @@ verified, but the same physical bytes receive only one canonical unit/mapping.
 Authored origin, source presence, semantic acceptance, exactness, linkage and
 runtime behavior remain separate. Portable O2/sanitizer fixtures corroborate
 behavior inside their documented domains; they do not prove native resource or
-startup integration. Current results live in [the handoff](RE_HANDOFF.md) and
+startup integration and are optional for exact reconstruction. Exact credit does
+not require allocation-failure/null robustness tests, exception matrices or
+sanitizer runs. The native comparison still includes original error paths and
+EH. Current results live in [the handoff](RE_HANDOFF.md) and
 [generated progress](PROGRESS.md), not historical batch counts.
 
 No target byte arrays, assembly, arbitrary padding, inert locals, fake returns,

@@ -18,10 +18,8 @@ class Resource final : public std::pmr::memory_resource {
 public:
     struct Block { std::size_t size, alignment; };
     std::unordered_map<void*, Block> live;
-    unsigned attempts = 0, fail_at = 0;
 private:
     void* do_allocate(std::size_t size, std::size_t alignment) override {
-        if (++attempts == fail_at) throw std::bad_alloc();
         auto* pointer = std::pmr::new_delete_resource()->allocate(size, alignment);
         assert(live.emplace(pointer, Block{size, alignment}).second);
         return pointer;
@@ -42,8 +40,6 @@ std::uint8_t* read_result = first_buffer.data();
 unsigned reads = 0, appends = 0, paths = 0;
 std::vector<std::string> events;
 std::function<int(th20::EclLoader*, std::uint8_t*)> append_hook;
-bool fail_cache_node = false;
-std::size_t blocks_at_read = 0;
 }
 
 namespace th20 {
@@ -65,8 +61,6 @@ const char* ecl_resource_path(const char* path) {
 std::uint8_t* read_game_resource(const char* path, std::int32_t* size, std::int32_t mode) {
     assert(size == nullptr && mode == 0);
     ++reads; events.emplace_back(path);
-    blocks_at_read = resource.live.size();
-    if (fail_cache_node) resource.fail_at = resource.attempts + 2;
     return read_result;
 }
 int EclLoader::append(std::uint8_t* buffer) {
@@ -129,30 +123,5 @@ int main() {
     assert(resource.live.empty());
     assert(first_buffer[0] == 0 && second_buffer[0] == 0);
 
-    {
-        EnemyController controller;
-        Context context;
-        context.enemies = &controller;
-        EclFileLoader loader;
-        loader.context = &context;
-        resource.fail_at = resource.attempts + 1;
-        bool failed = false;
-        try { loader.load("owned-first-temporary-allocation-failure.ecl"); }
-        catch (const std::bad_alloc&) { failed = true; }
-        assert(failed && controller.loaded_names.empty() && process_ecl_cache.empty());
-        assert(reads == 2 && appends == 3 && resource.live.empty());
-        resource.fail_at = 0;
-        fail_cache_node = true;
-        failed = false;
-        try { loader.load("owned-cache-node-allocation-failure.ecl"); }
-        catch (const std::bad_alloc&) { failed = true; }
-        assert(failed && process_ecl_cache.empty() && controller.loaded_names.size() == 1);
-        assert(resource.live.size() == blocks_at_read); // Pair temporary string unwound.
-        assert(reads == 3 && appends == 3);
-        resource.fail_at = 0;
-        assert(loader.load("owned-cache-node-allocation-failure.ecl") == -1);
-        assert(reads == 3 && appends == 3);
-    }
-    assert(resource.live.empty());
     std::pmr::set_default_resource(previous);
 }

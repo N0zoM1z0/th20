@@ -1,5 +1,12 @@
 # Semantic reconstruction policy
 
+Exact reconstruction is the current priority. Use semantic fixtures only to
+answer a concrete target behavior or ABI question. Allocation-failure injection,
+null-pointer robustness, exhaustive exception cases and sanitizer matrices are
+not required for exact acceptance. Existing scenario totals document historical
+experiments; they do not require continuing or expanding those tests. Native
+error paths and EH remain part of the complete exact comparison.
+
 Use one canonical profile-independent owner declaration for each production
 type and one maintained semantic body. Recover field widths, offsets, signedness,
 lifetimes, pointer ownership, state transitions and protocols from target-local

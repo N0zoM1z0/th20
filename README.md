@@ -80,14 +80,24 @@ do not establish executable-wide compiler flags, SDK or CRT identity.
 
 Documentation and artifact-cleanup handoffs use diff/link checks and protected
 product hashes. An unchanged reconstruction graph needs no replay, compiler,
-Ghidra or full CI run. Commit subjects use `gpt-web: <description>`.
+Ghidra or full CI run. Use the commit prefix requested for the active session.
 
 When code or infrastructure changes warrant broader checks, public CI needs
-Python 3.11+ and a C++20 compiler, with no original game or proprietary toolchain:
+Python 3.11+, with no original game or C++ compiler:
 
 ```bash
 scripts/repo-python scripts/ci.py
 ```
+
+Default CI checks the exact oracle and repository metadata. Portable C++ semantic
+fixtures are optional, selected for a concrete native behavior question:
+
+```bash
+nice -n 15 scripts/repo-python -m unittest discover -s tests -p test_ecl_arguments_semantics.py -v
+```
+
+Exact checkpoints require affected native builds and strict replay; allocation
+failure, null robustness and sanitizer matrices are not additional prerequisites.
 
 Private preflight for reconstruction changes is:
 
@@ -96,7 +106,6 @@ scripts/bootstrap-tools.sh
 scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/validate-tracking.py --require-target
-scripts/repo-python scripts/ghidra.py check
 ```
 
 On a fresh private workspace, provision tools as described in

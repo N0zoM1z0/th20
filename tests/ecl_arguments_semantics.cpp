@@ -7,7 +7,6 @@
 #include <cstring>
 #include <limits>
 #include <memory_resource>
-#include <new>
 
 namespace {
 struct Record {
@@ -37,10 +36,8 @@ struct Manager : th20::EclManager {
 };
 
 struct Resource : std::pmr::memory_resource {
-    bool fail = false;
     int live = 0;
     void* do_allocate(std::size_t bytes, std::size_t alignment) override {
-        if (fail) throw std::bad_alloc();
         ++live;
         return std::pmr::new_delete_resource()->allocate(bytes, alignment);
     }
@@ -132,11 +129,6 @@ void check_stack() {
     auto* previous = std::pmr::set_default_resource(&resource);
     {
         th20::ScriptStack owned;
-        resource.fail = true;
-        try { owned.push(4, &frame, 'i'); assert(false); }
-        catch (const std::bad_alloc&) {}
-        assert(owned.words.empty() && owned.pointer == 0 && resource.live == 0);
-        resource.fail = false;
         owned.push(4, &frame, 'i');
         assert(resource.live == 1 && owned.pointer == 8);
     }

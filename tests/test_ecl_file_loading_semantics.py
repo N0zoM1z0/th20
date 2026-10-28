@@ -1,4 +1,4 @@
-"""Owned whole ECL loading/cache/cycle/failure protocol with real resource owners."""
+"""Owned ECL loading, cache and include-cycle protocol with real owners."""
 from pathlib import Path
 import shutil
 import subprocess
@@ -16,7 +16,7 @@ class EclFileLoadingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "ecl-file-loading"
             sources = ["EclFileLoader", "EclFileLoaderBinding", "Session", "PlayerRecord", "EclLoaderBase", "EclDiagnostic", "ScriptStack", "Context",
-                       "EnemyData", "TaskInfoConstruction", "EnemyCounters", "AnimationHandle", "Timer", "ClockScalar", "Identifier32"]
+                       "EnemyData", "TaskInfoConstruction", "EnemyCounters", "AnimationHandle", "Timer", "ClockScalar", "Identifier32", "Angle"]
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
                 "-fsanitize=undefined", "-ffunction-sections", "-fdata-sections",

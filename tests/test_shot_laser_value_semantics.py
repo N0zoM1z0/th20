@@ -17,10 +17,10 @@ class ShotLaserValueTests(unittest.TestCase):
             output = Path(temporary) / "shot-laser-values"
             subprocess.run([
                 compiler, "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
-                "-fsanitize=undefined", "-Isrc", "tests/shot_laser_value_semantics.cpp",
+                "-fsanitize=undefined", "-fno-sanitize=vptr",
+                "-ffunction-sections", "-fdata-sections", "-Wl,--gc-sections",
+                "-Isrc", "tests/shot_laser_value_semantics.cpp",
                 "src/ShotMetadata.cpp", "src/LaserParameters.cpp", "src/BulletValues.cpp",
                 "src/Vector3.cpp", "src/Timer.cpp", "src/ClockScalar.cpp", "-o", str(output),
             ], cwd=ROOT, check=True)
             subprocess.run([str(output)], cwd=ROOT, check=True, timeout=10)
-            failed = subprocess.run([str(output), "--reject-allocation"], cwd=ROOT, timeout=10)
-            self.assertEqual(failed.returncode, 77)

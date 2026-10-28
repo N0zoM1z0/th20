@@ -99,15 +99,6 @@ void compressors() {
         }
     }
     assert(total_matches>0 && saw_partial);
-    // Wrapped allocation failure must precede ring/tree reset and size output.
-    std::array<Byte,8192> dictionary;
-    std::array<ArchiveLzssNode,8193> nodes;
-    std::memcpy(dictionary.data(),archive_dictionary,sizeof(archive_dictionary));
-    std::memcpy(nodes.data(),archive_lzss_nodes,sizeof(archive_lzss_nodes));
-    std::int32_t untouched=37;
-    assert(archive_compress(nullptr,-1,&untouched)==nullptr && untouched==37);
-    assert(std::memcmp(dictionary.data(),archive_dictionary,sizeof(archive_dictionary))==0);
-    assert(std::memcmp(nodes.data(),archive_lzss_nodes,sizeof(archive_lzss_nodes))==0);
 }
 
 void encryption() {

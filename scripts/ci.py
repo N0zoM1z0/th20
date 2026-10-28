@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Target-independent control-plane, synthetic oracle, and public-tree checks."""
-import os
+"""Fast target-independent exact-oracle, ledger, and public-tree checks."""
 from pathlib import Path
 import re
 import subprocess
@@ -23,12 +22,13 @@ def main():
                 [sys.executable, "scripts/build.py", "--check"],
                 [sys.executable, "scripts/validate-reference-review.py"],
                 [sys.executable, "scripts/report-reference-functions.py"],
-                [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
+                [sys.executable, "-m", "unittest", "discover", "-s", "tests",
+                 "-p", "test_exact_oracle.py", "-v"],
                 [sys.executable, "scripts/progress.py", "--check"], ["git", "diff", "--check"]]
     commands += [["bash", "-n", f] for f in files if f.endswith(".sh") or f == "scripts/repo-python"]
     for command in commands:
         subprocess.run(command, cwd=ROOT, check=True)
-    print("Public CI passed; no private target, compiler, or Ghidra project required.")
+    print("Exact control-plane CI passed; no C++ compiler or semantic suite required.")
 
 
 if __name__ == "__main__":

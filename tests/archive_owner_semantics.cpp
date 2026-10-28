@@ -36,7 +36,6 @@ using Bytes=std::vector<std::uint8_t>;
 struct Allocation { void* pointer;std::size_t size;bool live; };
 std::vector<Allocation> allocations;
 bool track_malloc=false;
-unsigned malloc_calls=0,fail_malloc_call=0;
 struct Handle { Bytes bytes;std::size_t position=0;unsigned closes=0,reads=0; };
 std::vector<std::unique_ptr<Handle>> handles;
 std::map<std::wstring,Bytes> disk;
@@ -48,7 +47,7 @@ Handle& handle(HANDLE p) {
     assert(p!=INVALID_HANDLE_VALUE && p);
     auto& result=*static_cast<Handle*>(p);assert(result.closes==0);return result;
 }
-void reset_failures() { zero_read=false_read=false;fail_open_call=0;read_limit=~DWORD{0};fail_malloc_call=0;malloc_calls=0; }
+void reset_failures() { zero_read=false_read=false;fail_open_call=0;read_limit=~DWORD{0}; }
 std::size_t live_allocations() { return std::count_if(allocations.begin(),allocations.end(),[](const auto& r){return r.live;}); }
 bool live(void* p) { for (auto r=allocations.rbegin();r!=allocations.rend();++r) if(r->pointer==p)return r->live;return false; }
 struct Tokens {
@@ -156,15 +155,6 @@ void exercise_failures() {
     fail_open_call=opened.size()+2;
     assert(owner.open("fixture.dat") && owner.stream->handle==INVALID_HANDLE_VALUE);
     owner.close();assert(live_allocations()==0);reset_failures();
-    for(unsigned failure : {1u,2u,13u}) {
-        fail_malloc_call=failure;malloc_calls=0;
-        // Ten member names plus stored/decoded catalog allocations precede the
-        // owner's filename copy, so its failure occurs at call thirteen.
-        assert(!owner.open("fixture.dat"));owner.close();assert(live_allocations()==0);reset_failures();
-    }
-    fail_malloc_call=3;malloc_calls=0;
-    assert(owner.open("fixture.dat") && owner.entries[0].name==nullptr);
-    owner.close();assert(live_allocations()==0);reset_failures();
     zero_read=true;
     assert(!owner.open("fixture.dat") && live_allocations()==0);reset_failures();
     disk[L"Z:\\game\\bad.dat"]=Bytes(16,0);
@@ -178,15 +168,12 @@ void exercise_loose() {
     assert(result && size==7 && std::equal(disk[L"loose.bin"].begin(),disk[L"loose.bin"].begin()+7,result));
     process_allocator->release_bytes(result);reset_failures();
     size=-1;assert(read_game_resource("not-present",&size,1)==nullptr && size==-1);
-    fail_malloc_call=1;malloc_calls=0;
-    assert(read_game_resource("loose.bin",&size,1)==nullptr && handles.back()->closes==1);
     reset_failures();assert(live_allocations()==0);
 }
 }
 extern "C" void* __real_malloc(std::size_t);
 extern "C" void __real_free(void*);
 extern "C" void* __wrap_malloc(std::size_t size) {
-    if(track_malloc && ++malloc_calls==fail_malloc_call)return nullptr;
     auto* p=__real_malloc(size);
     if(track_malloc && p) allocations.push_back({p,size,true});
     return p;

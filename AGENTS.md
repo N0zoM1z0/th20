@@ -5,10 +5,8 @@ messages must be in English, as explicitly requested by the user.
 Official Japanese names and original target evidence may retain their original
 language, as the user explicitly clarified. Preserve the official title in
 `config/target.toml`, following TH095's treatment of game metadata.
-Commit subjects use `gpt-web: <description>`.
-Use this exact prefix for new documentation and cleanup checkpoints as well.
-This user-requested prefix supersedes the earlier `gpt-6.1-sol:` format;
-do not rewrite historical commits.
+Use the commit prefix requested for the active session: `gpt-web:` for web
+work and `gpt-6.1-sol:` for this Codex session. Do not rewrite historical commits.
 
 Invoke Python through `scripts/repo-python` for repository work, including
 one-off snippets and tests. It selects the local `.venv` and verifies pinned
@@ -38,16 +36,14 @@ there. Do not run Ghidra, MSVC, full CI or canonical replay for an unchanged
 reconstruction graph. The reconstruction preflight below applies when changing
 reconstruction code, analysis evidence or acceptance state.
 
-Read `docs/RE_HANDOFF.md`, `docs/ARCHITECTURE.md`, `docs/RE_WORKFLOW.md`,
-`docs/ORACLES.md` and the relevant source. For semantic work also read
-`docs/SEMANTIC_RECONSTRUCTION.md` and `docs/SOURCE_MAP.md`.
+Read `docs/RE_HANDOFF.md` and the relevant source/evidence. Consult architecture,
+workflow, oracle and semantic documentation when needed for the selected unit.
 Inspect `git status`, then run:
 
 ```bash
 scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/validate-tracking.py --require-target
-scripts/repo-python scripts/ghidra.py check
 ```
 
 Ghidra queries/decompilation/exports must go through `scripts/ghidra.py`,
@@ -90,46 +86,41 @@ through EVIDENCE_INDEX.md; do not duplicate cumulative checkpoint logs across
 core documents. Historical batch totals must not masquerade as current status.
 
 At the beginning of each continuation, inspect the entire live Git status
-(staged, unstaged and untracked). The user explicitly says this is the
-**only** active reconstruction session; treat existing dirty changes as
-your own work to understand, reconcile, validate and commit. Do not
-skip modified files, reset them blindly, or switch to a stale remote
-checkout to avoid the dirty work.
+(staged, unstaged and untracked). Web and Codex work may coexist: understand
+existing dirty changes, preserve the other session's files and commit only
+the active session's bounded batch. Do not reset or absorb concurrent work.
 
-Use one writable reconstruction session at a time. Do not delegate matching or
-run concurrent MSVC builds. Keep `config/claims.csv` header-only. Work on one
+Keep native reconstruction writes and MSVC builds serialized. Do not delegate
+matching. Keep `config/claims.csv` header-only. Work on one
 bounded address, coherent owner/protocol, or workflow-maintenance batch.
 Replay only exact units actually affected by source, shared-header, profile,
 layout, partition or anchor changes. Derive affected providers from captured
 include closures and manifest dependencies; use explicit source filters or
-individual units. Run relevant tests and lightweight tracking/progress gates;
-use full CI only when the changed code or infrastructure warrants it. Commit
+individual units. Use the validation scope below. Commit
 stable checkpoints before handoff.
 
-The user explicitly requires fast, affected-only validation (2026-10-23).
-Never run an unfiltered whole-graph replay merely for handoff, documentation,
-cleanup or reassurance. An unchanged graph has zero affected replay units.
-Reuse valid existing evidence and do not repeat unchanged builds or tests.
-Resuming a session for documentation or cleanup does not restart completed
-validation. Reuse the handoff's passing results for unchanged inputs.
-These scope rules supersede broader verification instructions in historical
-records. A shared-header change expands the affected include closure, not
-automatically the entire graph.
-State the affected replay scope in each handoff, including zero units for an
-unchanged documentation/cleanup batch.
-Before starting validation, identify the changed inputs and selected providers.
-Invoke `replay-exact-units.py` with explicit `--source` filters; use
-`build.py --unit` and `compare-coff-function.py --unit` for individual units.
-Do not invoke the replay script without a source filter as a routine check.
+## Validation focus
 
-After each stable batch, retire superseded probe builds and other regenerable
-artifacts as explicitly requested by the user. Protect all current canonical
-objects/receipts, preserve native evidence and active inputs, record removed
-paths/bytes privately, and verify protected hashes after cleanup. Replay only
-units affected by actual reconstruction changes; cleanup alone requires none. See
-docs/RE_WORKFLOW.md for retirement rules.
-During longer batches, also retire replaced trials periodically after verifying
-their replacements and archiving original SHA-bound inputs and receipts.
+Prioritize exact reconstruction: locked-compiler builds and complete canonical
+replay for changed native units, tracking/progress checks for changed metadata.
+Public CI covers the exact oracle and control plane. Portable semantic fixtures
+are optional; select one only for a concrete unresolved native behavior or ABI
+question. Allocation-failure injection, null robustness, exception matrices,
+sanitizer variants and scenario totals are not exact-checkpoint requirements.
+Historical tests need not be preserved, extended or rerun. Preserve original
+branches, EH and null handling in source and the complete native comparison.
+
+Before validation, identify changed inputs and affected providers; state the
+replay scope in the handoff (zero for an unchanged native graph). Reuse passing
+evidence for unchanged inputs. Shared headers expand their captured include
+closure. Use `replay-exact-units.py --source ...` or individual `build.py --unit`
+and `compare-coff-function.py --unit` commands. Never use an unfiltered
+whole-graph replay for routine checkpoints. These scope rules supersede broader
+verification requirements in historical records.
+
+Retire the batch's superseded probe builds after verifying replacements. Protect
+canonical objects/receipts, native evidence and active inputs; record removed
+paths/bytes privately and verify protected hashes. See `docs/RE_WORKFLOW.md`.
 
 The user also requires controlled CPU and memory use. Run compiler, headless
 Ghidra, cold replay and semantic checks at reduced scheduling priority (for

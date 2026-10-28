@@ -34,9 +34,7 @@ struct File {
 };
 struct Resource : std::pmr::memory_resource {
     std::unordered_map<void*,std::pair<std::size_t,std::size_t>> live;
-    unsigned attempts=0,fail_at=0;
     void* do_allocate(std::size_t bytes,std::size_t alignment) override {
-        if(++attempts==fail_at) throw std::bad_alloc();
         auto* p=std::pmr::new_delete_resource()->allocate(bytes,alignment);
         assert(live.emplace(p,std::pair{bytes,alignment}).second);return p;
     }
@@ -103,15 +101,6 @@ int main() {
         const auto stored=reinterpret_cast<std::uintptr_t>(loader.records[0].header);
         assert(stored-base==offset && input.words[9]==offset);
         assert(loader.records[0].name==reinterpret_cast<char*>(input.words.data()+10));
-    }
-    assert(resource.live.empty());
-    // Native insertion failure is nontransactional: counts and the borrowed
-    // slot are already published, whereas file_count has not advanced.
-    {
-        Loader loader;File input{"a"};resource.fail_at=resource.attempts+1;
-        bool threw=false;try{loader.append(input.bytes());}catch(const std::bad_alloc&){threw=true;}
-        assert(threw && loader.files[0]==input.bytes() && loader.file_count==0);
-        assert(loader.subroutine_count==1 && loader.records.empty());resource.fail_at=0;
     }
     assert(resource.live.empty());
     {

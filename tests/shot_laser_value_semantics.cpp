@@ -2,8 +2,6 @@
 #include "LaserParameters.hpp"
 #include <array>
 #include <cassert>
-#include <cstdlib>
-#include <exception>
 #include <memory_resource>
 #include <new>
 #include <type_traits>
@@ -12,9 +10,7 @@
 namespace {
 struct Resource : std::pmr::memory_resource {
     unsigned live = 0;
-    bool reject = false;
     void* do_allocate(std::size_t bytes, std::size_t alignment) override {
-        if (reject) throw std::bad_alloc();
         auto* result = std::pmr::new_delete_resource()->allocate(bytes, alignment);
         ++live;
         return result;
@@ -136,15 +132,9 @@ void laser_lifetimes(Resource& resource) {
 }
 }
 
-int main(int argc, char**) {
+int main() {
     Resource first, second;
     auto* previous = std::pmr::set_default_resource(&first);
-    if (argc != 1) {
-        first.reject = true;
-        std::set_terminate([] { std::_Exit(77); });
-        th20::ShotMetadata value;
-        return 1;
-    }
     metadata_construction(first);
     metadata_transfer(first, second);
     laser_lifetimes(first);

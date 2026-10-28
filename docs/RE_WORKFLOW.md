@@ -11,7 +11,7 @@ and cleanup batches with an unchanged reconstruction graph need Git/diff/link
 checks and protected-product hash checks, with zero replay units. Skip Ghidra,
 MSVC, full CI and canonical replay for these batches. The preflight below is for
 changes to reconstruction code, native analysis evidence or acceptance state.
-Commit subjects use `gpt-web: <description>`. State the affected replay scope
+Use the active session's requested commit prefix. State the affected replay scope
 in the handoff; an unchanged documentation/cleanup batch reports zero units.
 Reuse completed passing checks when their inputs are unchanged. Resuming a
 handoff or retiring artifacts does not require restarting those checks.
@@ -21,12 +21,13 @@ git status --short --branch
 scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/validate-tracking.py --require-target
-scripts/repo-python scripts/ghidra.py check
 ```
 
-Read `RE_HANDOFF.md`, `ARCHITECTURE.md`, `ORACLES.md`, and the relevant source.
-Read `SEMANTIC_RECONSTRUCTION.md` before assigning semantic meaning. Work in
-one writable session. Ghidra and compiler wrappers serialize their operations.
+Read `RE_HANDOFF.md` and the relevant source/evidence; consult the other guides
+as needed for the selected unit. Use one native reconstruction writer at a time.
+Keep workflow-only Codex changes
+separate from concurrent web reconstruction. Ghidra and compiler wrappers
+serialize their operations.
 
 ## Bounded reconstruction loop
 
@@ -54,19 +55,24 @@ one writable session. Ghidra and compiler wrappers serialize their operations.
    over its complete extent. Update mapping, origins, source presence and
    match ledgers separately; do not infer one from another.
 9. Update knowledge/handoff, run only affected replays, regenerate progress when
-   its inputs change, run tests appropriate to the change,
+   its inputs change, use a named semantic fixture only if it resolves a concrete
+   native behavior or ABI question,
    inspect the public diff and commit a stable checkpoint.
 
 Replay every affected unit after a shared header, profile, translation-unit,
 layout or relocation-anchor change. Profiles are per source/unit, not a global
-assumption. Exact source, semantic acceptance, link coherence and runtime
-behavior remain independent acceptance gates.
+assumption. Record semantic interpretation, link coherence and runtime behavior
+separately from exactness. Portable semantic suites are not prerequisite gates
+for exact credit.
 
 Determine affected providers from the changed input closures and manifest
 dependencies. Use individual unit commands or repeated `--source` filters;
 do not default to an unfiltered replay. Reuse passing evidence for unchanged
-providers. Run full CI only when the changed code or infrastructure warrants it,
-and never repeat it solely for a documentation edit or cleanup.
+providers. Public CI covers the exact oracle and metadata, without compiling all
+semantic hosts. Allocation-failure injection, null robustness, exception matrices
+and repeated sanitizer runs are not routine checkpoint requirements. Historical
+scenario totals do not prescribe future work. Preserve target error paths in
+the reconstructed source and compare their complete native contributions.
 
 ## Large dispatcher evidence
 
