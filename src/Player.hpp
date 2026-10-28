@@ -15,6 +15,7 @@ template<class T, unsigned Count> struct PlayerValues {
     T* begin();
     T& at(std::int32_t index);
     T* end();
+    std::uint32_t size() const;
 };
 template<class T, unsigned Count>
 PlayerValues<T,Count>::PlayerValues() noexcept {}
@@ -86,6 +87,9 @@ public:
     void rebuild_option_animations(std::int32_t mode);
     // Native original 1,081-byte Player frame child, one 300-byte option.
     std::int32_t update_option_frame(PlayerOption* option);
+    // Entire 555-byte native motion/clamp routine: maintained complete
+    // gameplay C++, but not yet strict machine-code exact.
+    void apply_move_delta(std::int32_t x, std::int32_t y);
     std::int32_t active_option_count() const;
     void set_option_field_fc(std::int32_t value);
     // Original complete Player movement bits and secondary option frame delay.

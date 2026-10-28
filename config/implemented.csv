@@ -1144,3 +1144,5 @@ th20::IntPoint::to_vector3
 th20::Player::movement_mode
 th20::Player::set_movement_mode
 th20::Player::set_secondary_option_field_fc
+"th20::PlayerValues<IntPoint,33>::size"
+th20::Player::apply_move_delta

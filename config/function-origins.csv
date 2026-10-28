@@ -4715,7 +4715,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FF890,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF8F0,authored,Player,authored,high,CORE/EXACT-307; docs/PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md; native typed Player option and scalar consumer
 0x004FF9E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FFA10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FFA10,authored,Player,authored,high,CORE/RECON-429; docs/PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md; independently original full Player frame caller and custom game state; 555B root remains nonexact
 0x004FFC40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FFC80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FFCB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4731,7 +4731,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FFF10,authored,Player,authored,high,CORE/EXACT-420; docs/PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md; original Player frame caller and real movement bitfield and option array game ownership
 0x004FFF60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FFFA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FFFE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FFFE0,authored,Player,authored,high,CORE/EXACT-429; docs/PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md; independently original full Player frame caller and custom game state; 555B root remains nonexact
 0x004FFFF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00500060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00500080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

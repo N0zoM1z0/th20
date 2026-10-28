@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [16B exact Player history-array size + complete 555B Player movement nonexact source](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) — full original 16/16 capacity unit with three independent calls from 3,111B Player frame; natural whole 555B movement/clamp C++ currently emits 561B / 136 instructions (135/135 original mnemonic kinds ordered, one extra 6B SSE spill), explicitly **NONEXACT**. 70/70 scoped original units in 25 cold providers.
+
 - [Three exact whole Player mode/secondary-option functions, 188 original bytes](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md) — complete 23B getter, 75B bit-field assignment/Timer mode setter, 90B twelve-entry secondary option delay update; three original E8 fields and 84/84 actual affected strict units in 28 cold source objects. The 3,111B Player frame caller remains open.
 
 - [Exact whole 1,081B Player option-frame gameplay boss and 70B fixed-to-Vector3 conversion](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md) — full 325+20 original i386 instructions, 42 independently original PE E8/HIGHLOW fields, real PlayerOption member-function callback pointers, chain-return IntPoint interpolation; 107/107 true header-affected strict units in 32 cold objects. The separate 3,111B Player frame boss remains open.

@@ -1145,3 +1145,5 @@ th20::IntPoint::to_vector3,0x004FEE00,function
 th20::Player::movement_mode,0x004FF870,function
 th20::Player::set_movement_mode,0x004FFF10,function
 th20::Player::set_secondary_option_field_fc,0x004FB340,function
+"th20::PlayerValues<IntPoint,33>::size",0x004FFFE0,function
+th20::Player::apply_move_delta,0x004FFA10,function

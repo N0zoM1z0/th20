@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-420 complete Player movement-mode and secondary-option methods.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-429 Player 33-point history capacity and CORE/RECON-429 complete movement C++ frontier.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,146** |
-| Canonical strict native units | **1,148** |
+| Source-present mappings, all origins | **1,148** |
+| Canonical strict native units | **1,149** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **373**, covering **116,888 native bytes** |
+| Exact game-authored whole functions | **374**, covering **116,904 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `PlayerValues<IntPoint,33>::size` | `0x004FFFE0` | **16** | [whole exact history-array capacity; real 3,111B frame calls](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) |
 | `Player::movement_mode` / `set_movement_mode` / `set_secondary_option_field_fc` | `0x004FF870` / `0x004FFF10` / `0x004FB340` | **23 / 75 / 90** | [whole Player mode and secondary option native ABI](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md) |
 | `Player::update_option_frame` / `IntPoint::to_vector3` | `0x004FA860` / `0x004FEE00` | **1,081 / 70** | [entire Player option gameplay boss and true ECX callback ABI](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md) |
 | `Five native IntPoint option-coordinate operations` | `0x004F5700` / `0x004F57C0` / `0x004F5890` / `0x004F5920` / `0x004F70F0` | **49 / 45 / 48 / 45 / 65** | [whole original signed/wrapping coordinate dependencies](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) |
@@ -494,6 +495,36 @@ receipt closure selects 28 source providers with
 replay, no duplicate physical original byte
 credit, and the 3,111B parent remains nonexact.
 [Complete 188-byte game native proof](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-429 independently closes the original
+**16-byte `PlayerValues<IntPoint,33>::size()`**
+at `0x004FFFE0` (8 native instructions, no
+relocations). The physical 3,111B Player frame
+calls it **three** times to bound 33 fixed
+history records. CORE/RECON-429 additionally
+maintains the **entire real 555-byte**
+`Player::apply_move_delta(int,int)` at
+`0x004FFA10` as complete typed C++20
+(**561B / 136 instructions currently emitted;
+all 135 original mnemonic kinds ordered; real
+17 E8 plus 10 PE HIGHLOW original refs**).
+**This 555B motion boss is NONEXACT**, with
+one observed extra 6B SSE y-bound float spill,
+and receives **0 game-exact bytes**. Its
+original caller is the separate still-open
+3,111B Player main frame. Only `Player.hpp`
+was shared-header changed, so the old
+canonical include receipts selected **25
+source objects / 69 existing strict units**;
+the new exact 16B template instantiation
+within existing `PlayerAccessors.cpp` yields
+**70/70 exact units in 25 scoped cold
+objects**. The new nonexact full source
+`src/PlayerMovement.cpp` was compiled
+independently. No repository-wide cold replay,
+duplicate physical byte or fake NOP padding.
+[Whole native evidence and honest 555B
+frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md).
 
 ## Open complete-function roots — next agent's priorities
 

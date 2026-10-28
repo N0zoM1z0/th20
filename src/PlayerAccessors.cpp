@@ -7,4 +7,10 @@ void Player::set_clock_scale(float value) { clock_scale = value; }
 template<class T, unsigned Count>
 T* PlayerValues<T,Count>::end() { return values + Count; }
 template IntPoint* PlayerValues<IntPoint,33>::end();
+
+// Original game-specific 33-frame Player fixed-position history capacity.
+// Native 16-byte __thiscall template instantiation at 0x004FFFE0.
+template<class T, unsigned Count>
+std::uint32_t PlayerValues<T,Count>::size() const { return Count; }
+template std::uint32_t PlayerValues<IntPoint,33>::size() const;
 } // namespace th20
