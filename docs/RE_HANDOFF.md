@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-322 PlayerRecord and WeaponStone option dependency closure.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-326 WeaponStone option dispatch closure.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,116** |
-| Canonical strict native units | **1,106** |
+| Source-present mappings, all origins | **1,118** |
+| Canonical strict native units | **1,108** |
 | Unique canonical object providers | **222**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **319**, covering **81,268 native bytes** |
+| Exact game-authored whole functions | **321**, covering **81,435 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `WeaponStoneInfo::option_script_variant` / `initialize_option_pair` | `0x00534130` / `0x00533180` | **77 / 90** | [complete virtual dispatches](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md) |
 | `PlayerRecord::available_option_count` | `0x004B81A0` | **38** | [native option count and WeaponStone offsets](PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md) |
 | `Player::set_option_field_fc` | `0x004FB290` | **165** | [option management protocol](PLAYER_OPTION_MANAGEMENT_EXACT_RECONSTRUCTION.md) |
 | `PlayerFeedback::record_hit` | `0x004FB3A0` | **115** | [capped hit recorder](PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md) |
@@ -109,6 +110,12 @@ option division and two actual Weapon virtual offset forwarders are exact.
 Only the `PlayerRecord.hpp`/`WeaponStoneInfo.hpp` receipt closure was cold
 replayed, **267/267 strict units in 33 objects**. The 1,518-byte
 `Player::rebuild_option_animations` still needs whole-parent reconstruction.
+
+CORE/EXACT-326 closes both complete WeaponStone option script and option
+initialization dispatchers, adding **167 exact native bytes** to the same
+canonical provider; its actual include closure passed **39/39** strict units
+across **8 cold rebuilt objects**. The large **1,518-byte** Player option
+rebuild remains an independent open full root.
 
 ## Open complete-function roots — next agent's priorities
 

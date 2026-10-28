@@ -18872,3 +18872,29 @@ target_address = 0x004FF760
 size = 52
 relocations = [
 ]
+
+# CORE/EXACT-326: whole original 77B Weapon/Player option dispatcher.
+[units.weapon_stone_option_script_variant]
+source = "src/WeaponStoneOptionOffsets.cpp"
+object = "build/core322-canonical/WeaponStoneOptionOffsets.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::WeaponStoneInfo::option_script_variant"]
+symbol = "?option_script_variant@WeaponStoneInfo@th20@@QAEHXZ"
+target_address = 0x00534130
+size = 77
+relocations = [
+  { offset = 0xA, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0x14, type = "REL32", symbol = "?focused_mode@Player@th20@@QAE_NXZ", target = 0x004FF5E0 },
+]
+
+# CORE/EXACT-326: whole original 90B Weapon/Player option dispatcher.
+[units.weapon_stone_initialize_option_pair]
+source = "src/WeaponStoneOptionOffsets.cpp"
+object = "build/core322-canonical/WeaponStoneOptionOffsets.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::WeaponStoneInfo::initialize_option_pair"]
+symbol = "?initialize_option_pair@WeaponStoneInfo@th20@@QAEXPAUPlayerOption@2@H@Z"
+target_address = 0x00533180
+size = 90
+relocations = [
+]

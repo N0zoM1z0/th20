@@ -26,6 +26,7 @@ static_assert(offsetof(StoneEnemyController,byte_b0)==0xb0);
 #endif
 struct Context;
 class Weapon;
+struct PlayerOption;
 class RenderMesh;
 class WeaponStoneInfo : public TaskInfo {
 public:
@@ -53,6 +54,8 @@ public:
     void disable() override;
     bool phase_one();
     Weapon* passive_weapon();
+    std::int32_t option_script_variant();
+    void initialize_option_pair(PlayerOption* option, std::int32_t index);
     const Vector2* focused_offset(std::int32_t count, std::int32_t index);
     const Vector2* unfocused_offset(std::int32_t count, std::int32_t index);
 };

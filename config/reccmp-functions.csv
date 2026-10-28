@@ -1115,3 +1115,5 @@ th20::PlayerRecord::clamped_option_cap,0x004B8210,function
 th20::PlayerRecord::available_option_count,0x004B81A0,function
 th20::WeaponStoneInfo::focused_offset,0x004FF630,function
 th20::WeaponStoneInfo::unfocused_offset,0x004FF760,function
+th20::WeaponStoneInfo::option_script_variant,0x00534130,function
+th20::WeaponStoneInfo::initialize_option_pair,0x00533180,function

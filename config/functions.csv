@@ -5584,7 +5584,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00532F40,103,0x00532FA6,FUN_00532f40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00532FB0,237,0x0053309C,FUN_00532fb0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005330A0,217,0x00533178,FUN_005330a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00533180,90,0x005331D9,FUN_00533180,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00533180,90,0x005331D9,FUN_00533180,th20::WeaponStoneInfo::initialize_option_pair,WeaponStoneOptions,matching,100.00,__thiscall,?initialize_option_pair@WeaponStoneInfo@th20@@QAEXPAUPlayerOption@2@H@Z,false,src/WeaponStoneOptionOffsets.cpp,CORE/EXACT-326; docs/WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md,authored,Entire native 90B option script/initialization virtual dispatch with genuine Weapon vtable; independent native call anchors.
 0x005331E0,198,0x005332A5,FUN_005331e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005332B0,252,0x005333AB,FUN_005332b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005333B0,834,0x005336F1,FUN_005333b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -5596,7 +5596,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00534070,13,0x0053407C,FUN_00534070,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00534080,134,0x00534105,FUN_00534080,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00534110,27,0x0053412A,FUN_00534110,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00534130,77,0x0053417C,FUN_00534130,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00534130,77,0x0053417C,FUN_00534130,th20::WeaponStoneInfo::option_script_variant,WeaponStoneOptions,matching,100.00,__thiscall,?option_script_variant@WeaponStoneInfo@th20@@QAEHXZ,false,src/WeaponStoneOptionOffsets.cpp,CORE/EXACT-326; docs/WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md,authored,Entire native 77B option script/initialization virtual dispatch with genuine Weapon vtable; independent native call anchors.
 0x00534180,134,0x00534205,FUN_00534180,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00534210,77,0x0053425C,FUN_00534210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00534260,74,0x005342A9,FUN_00534260,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

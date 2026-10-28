@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact WeaponStone option script and pair-initialization dispatchers (167B)](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md) — entire 77B focused-branch virtual script selector and 90B two-weapon virtual option setup; 39/39 affected-only strict units across eight objects.
+
 - [Exact PlayerRecord option count and WeaponStone virtual offsets (334B)](PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md) — complete 38B signed option count, three 64B distinct original clamps including the existing starting-power root, two 52B virtual forwarders; 267/267 affected-only strict units across 33 cold objects.
 
 - [Exact Player option management and fixed-coordinate chain (328B)](PLAYER_OPTION_MANAGEMENT_EXACT_RECONSTRUCTION.md) — entire 165B two-loop option broadcast, real shot-flag bitfield and float-to-fixed math, two independent native 19B end bodies; 87/87 affected-only strict units across 26 cold objects.

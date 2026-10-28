@@ -103,3 +103,11 @@ These now exact methods are **real dependencies** of the separate
 remains an independently open large gameplay root. Neither virtual
 forwarders nor clamps establish that original parent's complete exactness,
 resource ownership or whole-executable linkage/runtime completion.
+
+## Later CORE/EXACT-326 update
+
+The two complete WeaponStone option script selection/option pair initializers
+at `0x00534130` (77B) and `0x00533180` (90B) are separately strict exact,
+with explicit focused/unfocused virtual table slots and 39/39 affected-only
+strict units. Read [the complete two-dispatch proof](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md).
+The entire 1,518-byte Player option rebuild root remains nonexact.
