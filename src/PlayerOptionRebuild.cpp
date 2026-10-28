@@ -13,6 +13,7 @@
 namespace th20 {
 extern const float native_minus_999;
 void __fastcall cancel_animation_handle(const AnimationHandle&);
+void __fastcall clear_animation_handle_value(AnimationHandle&);
 
 void Player::rebuild_option_animations(std::int32_t requested_count) {
     current_animation_pool->select_view(view_index);
@@ -42,7 +43,7 @@ void Player::rebuild_option_animations(std::int32_t requested_count) {
         PlayerOption* option = &options.at(0);
         for (std::uint32_t i=0; i<10; ++i,++option) {
             cancel_animation_handle(option->handle_e0);
-            option->handle_e0.value = 0;
+            clear_animation_handle_value(option->handle_e0);
         }
     }
 

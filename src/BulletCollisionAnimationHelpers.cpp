@@ -23,6 +23,11 @@ void Animation::set_tint_channels(std::uint8_t red, std::uint8_t green,
     base.channels_494.alpha = alpha;
 }
 
+// The original fastcall head receives a live AnimationHandle and clears
+// only its four-byte value. Original member/free-function spelling is open.
+void __fastcall clear_animation_handle_value(AnimationHandle& handle) {
+    handle.value = 0u;
+}
 void __fastcall cancel_animation_handle(const AnimationHandle& handle) {
     const_cast<AnimationHandle&>(handle).interrupt(1);
 }

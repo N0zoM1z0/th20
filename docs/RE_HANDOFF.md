@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/RECON-333 complete Player option rebuild source frontier.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-335 AnimationHandle value-clear ABI.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,121** |
-| Canonical strict native units | **1,110** |
+| Source-present mappings, all origins | **1,122** |
+| Canonical strict native units | **1,111** |
 | Unique canonical object providers | **222**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **323**, covering **81,509 native bytes** |
+| Exact game-authored whole functions | **324**, covering **81,529 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `clear_animation_handle_value` | `0x0049DA50` | **20** | [whole native value clear](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) |
 | `AnimationFile::spawn_flag2` / `Player::animation_file_ref` | `0x0049CBF0` / `0x00421810` | **57 / 17** | [whole native resource access](PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md) |
 | `WeaponStoneInfo::option_script_variant` / `initialize_option_pair` | `0x00534130` / `0x00533180` | **77 / 90** | [complete virtual dispatches](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md) |
 | `PlayerRecord::available_option_count` | `0x004B81A0` | **38** | [native option count and WeaponStone offsets](PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md) |
@@ -130,13 +131,20 @@ CORE/RECON-333 now maintains the **whole 1,518-byte**
 `Player::rebuild_option_animations` at `src/PlayerOptionRebuild.cpp`
 as a **NONEXACT** complete-function C++20 source frontier. The locked
 MSVC `/GS-` plus live 8-byte-aligned `IntPoint` result matches the native
-stack prologue and full return, and emits **1,586B / 418 instructions**
-with **387/418 original instruction kinds in order**. Independent original
+stack prologue and full return, and emits **1,587B / 420 instructions**
+with **390/418 original instruction kinds in order**. Independent original
 reference audit: **57 E8 calls + 3 PE HIGHLOW fields**. It still lacks
 full original relocation/instruction/lifetime equivalence, so **zero
 canonical exact bytes** were claimed. The resource script fields at
 PlayerShotData+0x88/+0xA8 and stack-slot ownership need further review.
 Read [the full boss source frontier](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md).
+
+CORE/EXACT-335 closes the complete **20-byte** `AnimationHandle`
+value-clear operation at `0x0049DA50`, then restores its original call in
+the maintained full Player option rebuild parent. Only the owning existing
+`BulletCollisionAnimationHelpers.cpp` canonical object was cold rebuilt:
+**8/8** exact units remain accepted; the parent was separately compiled
+and is **still nonexact**.
 
 ## Open complete-function roots — next agent's priorities
 

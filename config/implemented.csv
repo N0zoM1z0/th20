@@ -1119,3 +1119,4 @@ th20::WeaponStoneInfo::initialize_option_pair
 th20::AnimationFile::spawn_flag2
 th20::Player::animation_file_ref
 th20::Player::rebuild_option_animations
+th20::clear_animation_handle_value

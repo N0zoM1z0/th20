@@ -17,7 +17,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
-- [Complete 1,518B Player option rebuild source frontier — nonexact](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md) — entire 418-instruction original boss now has maintained 1,586B / 418-instruction C++20 source, 387/418 aligned native mnemonic kinds, complete 57 original call and three PE relocation audit; parent is **not** credited exact.
+- [Exact 20B AnimationHandle value clear and parent ABI correction](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) — original ECX-receiver store and 8/8 affected strict units in one object; restores the missing call in the maintained nonexact 1,518B Player option rebuild boss.
+
+- [Complete 1,518B Player option rebuild source frontier — nonexact](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md) — entire 418-instruction original boss now has maintained 1,587B / 420-instruction C++20 source, 390/418 aligned native mnemonic kinds, complete 57 original call and three PE relocation audit; parent is **not** credited exact.
 
 - [Exact 57B AnimationFile flag-2 spawn and 17B Player file accessor](PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md) — original hidden-return ABI and sole 0x00450CB0 call at +0x2C, native Player+0x1C, with 232/232 affected strict units across 49 cold objects.
 

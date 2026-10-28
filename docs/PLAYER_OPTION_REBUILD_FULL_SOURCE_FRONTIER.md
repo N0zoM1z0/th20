@@ -68,10 +68,14 @@ candidate's bytes, are preserved in ignored
 
 Full source, compiled with locked MSVC 19.44.35211 i386
 `/std:c++20 /Od /Ob0 /GS- /Gy /Zl /arch:SSE2 /fp:precise /EHsc`, emits
-**1,586B and 418 complete i386 instructions**. Ordered original/candidate
-Capstone mnemonic alignment is **387/418 native instruction kinds**; the
-candidate has **61 COFF relocation fields** versus the original's **60
-independently observed native references**. The entire original
+**1,587B and 420 complete i386 instructions**. Ordered original/candidate
+Capstone mnemonic alignment is **390/418 native instruction kinds**; the
+candidate has **62 COFF relocation fields** versus the original's **60
+independently observed native references**. The latest revision restores
+the original `0x0049DA50` fastcall AnimationHandle value-clear call after
+cancellation, rather than replacing that call with an inline field store.
+The physical 20-byte callee is separately strictly exact in
+[CORE/EXACT-335](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md). The entire original
 8-byte-aligned stack realignment sequence through `+0x16` and the original
 nine-byte ending/`ret 4` are identical; the generated native frame still
 uses `sub esp,0xB4` instead of original `sub esp,0x9C` (24 extra bytes of
