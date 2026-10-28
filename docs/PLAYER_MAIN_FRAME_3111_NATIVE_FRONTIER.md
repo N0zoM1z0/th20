@@ -106,6 +106,28 @@ as the preexisting real game owners. Immutable whole
 original boundaries, SHA and true parent call offsets:
 `.analysis/core433-history-input-original-pe-proof.json`.
 
+## Subsequent CORE/EXACT-436 whole native option suspension
+
+The entire separate `Player::suspend_option_animations`
+at `0x004BD0C0` is now **237/237 native strict exact**,
+called by the 3,111-byte Player main frame at
+original `+0x75`. It **sets** Player flag bit 1,
+interrupts mode-3 on both handles of all ten primary
+and twelve secondary options, and resets the option
+frame counter. This is a **different original physical
+function** from the 237B mode-2
+`Player::clear_option_animations` at `0x004FF8F0`.
+All eight independently attested original E8 targets
+are previously strict exact: four index calls to
+`0x004BA3E0` and four mode-3 wrapper calls to
+`0x00486350`. The actual Player.hpp receipt closure
+passed **72/72 strict units in 25 cold source objects**,
+with no unfiltered whole-graph cold replay.
+The original 3,111B parent remains independently
+nonexact; only its callee's whole 237B original
+bytes are newly credited. Read the
+[complete mode-3 native proof](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md).
+
 ## Whole parent call-graph status and focused strict replay
 
 Before these two native methods were admitted, 45 of

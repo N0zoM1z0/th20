@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82279", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82280", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -19698,3 +19698,24 @@ symbol = "?replay_current_bits@InputButtonState@th20@@QBEII@Z"
 target_address = 0x004973A0
 size = 25
 relocations = []
+
+# CORE/EXACT-436: whole original 237B alternative Player option mode-3
+# suspender; separate physical address/semantics from 237B mode2 clearer.
+[units.player_option_suspend_animations]
+source = "src/PlayerOptionClear.cpp"
+object = "build/core307-canonical/PlayerOptionClear.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::suspend_option_animations"]
+symbol = "?suspend_option_animations@Player@th20@@QAEXXZ"
+target_address = 0x004BD0C0
+size = 237
+relocations = [
+  { offset = 0x44, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x50, type = "REL32", symbol = "?cancel_animation_handle_mode3@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486350 },
+  { offset = 0x67, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x73, type = "REL32", symbol = "?cancel_animation_handle_mode3@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486350 },
+  { offset = 0xA5, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0xB1, type = "REL32", symbol = "?cancel_animation_handle_mode3@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486350 },
+  { offset = 0xC9, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0xD5, type = "REL32", symbol = "?cancel_animation_handle_mode3@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486350 },
+]

@@ -83,6 +83,8 @@ public:
     std::int32_t damage_limit();
     PlayerFeedback* feedback_value();
     void clear_option_animations();
+    // Separate whole native 237B mode-3 sweep: sets entity flag bit 1.
+    void suspend_option_animations();
     void reset_initial_state();
     void rebuild_option_animations(std::int32_t mode);
     // Native original 1,081-byte Player frame child, one 300-byte option.

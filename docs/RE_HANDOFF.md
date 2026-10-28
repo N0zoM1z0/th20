@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-433 full Player 3,111B frame graph and exact history/replay-input callees.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-436 full 237-byte Player mode-3 option suspension.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,150** |
-| Canonical strict native units | **1,151** |
+| Source-present mappings, all origins | **1,151** |
+| Canonical strict native units | **1,152** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **376**, covering **116,951 native bytes** |
+| Exact game-authored whole functions | **377**, covering **117,188 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::suspend_option_animations` | `0x004BD0C0` | **237** | [entire native mode-3 suspension, distinct from mode-2 clearer](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md) |
 | `PlayerValues<IntPoint,33>::at` / `InputButtonState::replay_current_bits` | `0x0045D670` / `0x004973A0` | **22 / 25** | [complete original main-frame call graph and two exact ABI methods](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) |
 | `PlayerValues<IntPoint,33>::size` | `0x004FFFE0` | **16** | [whole exact history-array capacity; real 3,111B frame calls](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) |
 | `Player::movement_mode` / `set_movement_mode` / `set_secondary_option_field_fc` | `0x004FF870` / `0x004FFF10` / `0x004FB340` | **23 / 75 / 90** | [whole Player mode and secondary option native ABI](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md) |
@@ -555,6 +556,34 @@ cold objects**, with no full-repository replay or
 duplicate exact bytes.
 [Complete original Player 3,111B call graph and
 corrected identity](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md).
+
+CORE/EXACT-436 closes the **entire distinct 237-byte
+Player option mode-3 suspension boss** at `0x004BD0C0`,
+called by the **still nonexact** 3,111B original
+Player main frame at `+0x75`. It **sets** bit 1,
+unlike the *other* already exact 237B mode-2
+`Player::clear_option_animations` at
+`0x004FF8F0`. All 72 original instructions
+and eight immutable PE E8 reference fields are
+strict exact; four original calls invoke the
+folded 23B PlayerOption array indexer, and four
+the 22B mode-3 animation interrupt wrapper.
+Actual Player.hpp preedit receipts identify
+25 old source owners/71 strict units; one new
+function in an existing owner gives **72/72
+native strict units in 25 serialized cold objects**.
+One compiler-private Player `$SG` rename was
+independently checked against original string
+target `0x00572BB8` and unchanged native bytes.
+The 3,111B parent itself remains NONEXACT,
+now **59/67 direct original E8 call sites**
+have exact native callees; eight remain.
+The separately existing source object for the 22B
+mode-3 cancellation callee had a stale broad-input
+receipt; one additional focused cold replay passed
+**8/8 units in its own object**, separately from
+the actual 72-unit header closure.
+[Whole separate mode-3 original proof](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 
