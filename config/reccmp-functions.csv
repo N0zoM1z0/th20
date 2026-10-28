@@ -1032,3 +1032,5 @@ th20::BulletController::vector_4c_ref,0x00485990,function
 th20::Bullet::reflect_at_right_x,0x00483010,function
 th20::Bullet::reflect_at_left_x,0x00482EC0,function
 th20::Bullet::reflect_at_upper_y,0x00483150,function
+th20::bullet_outside_rectangle,0x00485420,function
+th20::Bullet::handle_boundary,0x00482A60,function

@@ -2304,11 +2304,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00481780,authored,BulletController,authored,high,"CORE/EXACT-210; docs/BULLET_FIRE_EXACT_RECONSTRUCTION.md; original gameplay-level signed shot formation, sound and player-directed loops; 103 original instructions / 11 relocation anchors"
 0x004818E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004827E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00482A60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00482A60,authored,Bullet,authored,high,"CORE/EXACT-220; docs/BULLET_BOUNDARY_BOSS_EXACT_RECONSTRUCTION.md; 832B original gameplay boss direct call topology, 235 native instructions, independent real rectangle/reflection/sound and command owners; full canonical relocation replay"
 0x00482DA0,authored,Bullet,authored,high,CORE/EXACT-214; docs/BULLET_REFLECTION_EXACT_RECONSTRUCTION.md; game-defined Bullet/Controller command-slot or field ownership with independent original caller/producer evidence; source spelling inferred; native complete exact body and independent relocations
 0x00482EC0,authored,Bullet,authored,high,"CORE/EXACT-216; docs/BULLET_HORIZONTAL_REFLECTION_EXACT_RECONSTRUCTION.md; original whole typed Bullet gameplay reflection with actual original caller and data/protocol anchors, 329 complete bytes exact"
 0x00483010,authored,Bullet,authored,high,"CORE/EXACT-216; docs/BULLET_HORIZONTAL_REFLECTION_EXACT_RECONSTRUCTION.md; original whole typed Bullet gameplay reflection with actual original caller and data/protocol anchors, 319 complete bytes exact"
-0x00483150,authored,Bullet,authored,high,"CORE/EXACT-218; docs/BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md; complete game-owned Bullet upper boundary logic and 832B original direct caller, native 277/277 bytes, all relocations matched"
+0x00483150,authored,Bullet,authored,high,"CORE/EXACT-218; docs/BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md; original 832B Bullet boundary handler direct call at 0x00482BD0, complete game-specific typed position/angle logic and all native 13 relocation addresses"
 0x00483270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00483580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00483920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2349,7 +2349,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00485340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00485420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00485420,authored,Bullet,authored,high,"CORE/EXACT-219; docs/BULLET_RECTANGLE_EXACT_RECONSTRUCTION.md; original four-edge game-frame constant 224f and two original gameplay Bullet boundary caller sites, complete locked native SSE and relocations"
 0x004854D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00485640,unknown,AnimationCallback,review,unknown,"CORE/EXACT-123: Complete native callback8 owner/five integer-return virtual slots, true cdecl unary-entry/script pointers and Bullet528 signed type/color accessors. Nine whole physical roots414B plus five folded aliases151B independently verified; no duplicate byte credit or native RTTI identity claim.149903 actual-owner O2/ASan/UBSan/float-cast-overflow cases and18 whole private migration roots3360B pass. Frozen276-source graph passes827 strict units/160 fresh objects/160921 disjoint bytes; maintained149903-case production semantics pass; original base SprtFuncBaseInf/direct derived EffectMenuWindowInf48 RTTI corroborates owner. Whole40752B VM, derived draw and Renderer+6000DFC remain open. See docs/ANIMATION_CALLBACK_RECONSTRUCTION.md."

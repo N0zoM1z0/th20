@@ -20,7 +20,11 @@ struct BulletColor {
     BulletColor();
 };
 struct BulletFlags { std::uint32_t bits; };
-struct BulletCommandFlags { std::uint64_t bits; };
+// Native 64-bit command flags also have a 32-bit low-word consumer in the
+// original full Bullet boundary dispatcher; preserve both views and size.
+struct BulletCommandFlags {
+    union { std::uint64_t bits; struct { std::uint32_t low, high; } words; };
+};
 struct BulletExtendedCommands {
     ExtendedCommand slots[14];
     BulletExtendedCommands() noexcept;
@@ -65,6 +69,7 @@ struct Bullet {
     void deactivate();
     std::int32_t reflect_at_y_limit();
     std::int32_t reflect_at_upper_y();
+    std::int32_t handle_boundary();
     std::int32_t reflect_at_right_x();
     std::int32_t reflect_at_left_x();
 };
@@ -115,6 +120,7 @@ BulletController* bullet_controller(std::int32_t index);
 #if defined(_M_IX86)
 static_assert(sizeof(Bullet)==0x528);
 static_assert(offsetof(Bullet,command_flags)==0x90);
+static_assert(sizeof(BulletCommandFlags)==8);
 static_assert(offsetof(Bullet,color)==0x88);
 static_assert(offsetof(Bullet,style)==0x58);
 static_assert(offsetof(Bullet,metadata)==0x98);

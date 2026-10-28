@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79823", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79850", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117759", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117786", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117760", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117787", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117761", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117788", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117762", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117789", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -17074,4 +17074,68 @@ relocations = [
   { offset = 0xD3, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
   { offset = 0xE7, type = "REL32", symbol = "??4Angle@th20@@QAEAAU01@M@Z", target = 0x00452F20 },
   { offset = 0xEF, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+]
+
+# CORE/EXACT-219: entire original 176B 4-edge Bullet/field rectangle test
+# used twice by the original 832B Bullet boundary boss, with real 224f center.
+[units.bullet_outside_rectangle]
+source = "src/BulletRectangle.cpp"
+object = "build/core219-canonical/BulletRectangle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::bullet_outside_rectangle"]
+symbol = "?bullet_outside_rectangle@th20@@YAHABUVector3@1@MMMM@Z"
+target_address = 0x00485420
+size = 176
+relocations = [
+  { offset = 0x18, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x20, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x3E, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x5D, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x65, type = "DIR32", symbol = "?native_frame_origin_y@th20@@3MB", target = 0x0056ED14 },
+  { offset = 0x88, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x90, type = "DIR32", symbol = "?native_frame_origin_y@th20@@3MB", target = 0x0056ED14 },
+]
+
+# CORE/EXACT-219: entire 832B Bullet four-way boundary boss; original
+# 31 relocation destinations fully independently inspected and anchored.
+[units.bullet_handle_boundary]
+source = "src/BulletBoundary.cpp"
+object = "build/core219-canonical/BulletBoundary.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Bullet::handle_boundary"]
+symbol = "?handle_boundary@Bullet@th20@@QAEHXZ"
+target_address = 0x00482A60
+size = 832
+relocations = [
+  { offset = 0x14, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x1B, type = "REL32", symbol = "?vector_4c_ref@BulletController@th20@@QAEAAUVector2@2@XZ", target = 0x00485990 },
+  { offset = 0x39, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x59, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x97, type = "REL32", symbol = "?bullet_outside_rectangle@th20@@YAHABUVector3@1@MMMM@Z", target = 0x00485420 },
+  { offset = 0xB0, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0xB7, type = "REL32", symbol = "?vector_4c_ref@BulletController@th20@@QAEAAUVector2@2@XZ", target = 0x00485990 },
+  { offset = 0xC2, type = "DIR32", symbol = "?native_zero@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0xD6, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0xDD, type = "REL32", symbol = "?vector_4c_ref@BulletController@th20@@QAEAAUVector2@2@XZ", target = 0x00485990 },
+  { offset = 0xF5, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0xFC, type = "REL32", symbol = "?vector_4c_ref@BulletController@th20@@QAEAAUVector2@2@XZ", target = 0x00485990 },
+  { offset = 0x139, type = "REL32", symbol = "?bullet_outside_rectangle@th20@@YAHABUVector3@1@MMMM@Z", target = 0x00485420 },
+  { offset = 0x161, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x171, type = "REL32", symbol = "?reflect_at_upper_y@Bullet@th20@@QAEHXZ", target = 0x00483150 },
+  { offset = 0x192, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1A2, type = "REL32", symbol = "?reflect_at_y_limit@Bullet@th20@@QAEHXZ", target = 0x00482DA0 },
+  { offset = 0x1C2, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1D2, type = "REL32", symbol = "?reflect_at_right_x@Bullet@th20@@QAEHXZ", target = 0x00483010 },
+  { offset = 0x1F3, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x203, type = "REL32", symbol = "?reflect_at_left_x@Bullet@th20@@QAEHXZ", target = 0x00482EC0 },
+  { offset = 0x22E, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x23A, type = "DIR32", symbol = "?native_speed_override_threshold@th20@@3MB", target = 0x0056FD74 },
+  { offset = 0x252, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x276, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x29B, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x2B4, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x2DE, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x2E3, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
+  { offset = 0x305, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x311, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
 ]

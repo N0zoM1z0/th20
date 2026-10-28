@@ -32,6 +32,10 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Complete exact 832-byte Bullet boundary boss](BULLET_BOUNDARY_BOSS_EXACT_RECONSTRUCTION.md) — native entire four-way dispatcher plus exact 176B rectangle, all 31/7 original relocations, all 45 earlier shared-header units reverified (47/47 scoped strict units).
+
+- [Exact entire 176-byte Bullet field rectangle test](BULLET_RECTANGLE_EXACT_RECONSTRUCTION.md) — all four ordered SSE edges, native center and real floats, seven original data relocations and 176/176 exact bytes; two original 832B boss call sites.
+
 - [Exact upper Bullet reflection](BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md) — complete 277B original upper Y mirror, thirteen original relocation anchors, 36/36 affected scoped units, closes the fourth independent bounce direction; native 832B caller remains open.
 
 - [Exact complete left and right Bullet reflections](BULLET_HORIZONTAL_REFLECTION_EXACT_RECONSTRUCTION.md) — 329B and 319B native whole functions, all thirty native relocations, 37/37 affected-only strict replay, original 832B bounding caller remains open.
