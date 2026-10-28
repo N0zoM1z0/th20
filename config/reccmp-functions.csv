@@ -1038,3 +1038,4 @@ th20::BulletController::draw_groups,0x0047DC90,function
 th20::BulletController::cancel_all,0x0047CB90,function
 th20::BulletController::active_list,0x00485970,function
 th20::BulletController::cancel_near,0x0047D100,function
+th20::bullet_distance_within,0x00485A60,function

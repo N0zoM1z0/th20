@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact Bullet radial distance and original caller](BULLET_DISTANCE_EXACT_RECONSTRUCTION.md) — entire 122B native vector-difference/squared-distance predicate with full-EAX return and five independently verified relocations; existing 320B cancellation boss remains exact.
+
 - [Full native 320-byte Bullet radial cancellation boss](BULLET_SPATIAL_CANCELLATION_EXACT_RECONSTRUCTION.md) — complete game-owned active-list iterator and original distance/cancellation calls, all 14 native relocations, 50/50 affected-only exact units; underlying 662B single Bullet cancellation remains open.
 
 - [Complete 242-byte Bullet cancel-all boss and 19-byte active-list getter](BULLET_CANCELLATION_EXACT_RECONSTRUCTION.md) — whole native iterator/SEH and true gameplay cancel protocol, thirteen original relocated fields, 49/49 actual affected units; corrects prior closure omission of 832B boundary boss.

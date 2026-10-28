@@ -68,3 +68,16 @@ source/COFF frontiers, as are the **3,735-byte** Bullet single-shot emitter
 and **41,967-byte** Enemy opcode root. Their correct call ABI does not grant
 byte-credit for the entire callee, nor does this prove a complete runnable
 link or original Renderer startup.
+
+## CORE/EXACT-228 follow-on — called distance routine now exact
+
+The original **122B** `bullet_distance_within` at `0x00485A60` has now
+been independently reconstructed as a separate complete native exact unit,
+including its **full-EAX integer return** and five original relocations.
+`src/BulletSpatialCancellation.cpp` now includes the maintained typed
+`BulletDistance.hpp` instead of a private forward declaration. The original
+complete **320/320B** caller still matches in a fresh affected-only replay
+with the new 122B callee, **2/2 strict units, two cold objects**.
+The earlier nonexact distance-callee status in the historical checkpoint
+above is superseded by this verified admission, not by conjecture. See
+[exact Bullet distance](BULLET_DISTANCE_EXACT_RECONSTRUCTION.md).

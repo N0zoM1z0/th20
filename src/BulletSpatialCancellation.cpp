@@ -2,9 +2,9 @@
 // Uses the native IntrusiveList<Bullet> lifetime; the separate native radius
 // predicate and 662B individual cancellation routine remain external ABI.
 #include "Bullet.hpp"
+#include "BulletDistance.hpp"
 namespace th20 {
 extern const float native_two;
-std::int32_t bullet_distance_within(const Vector3& first,const Vector3& second,float radius);
 std::int32_t BulletController::cancel_near(const Vector3& center,float radius,std::int32_t mode) {
     std::int32_t cancelled=0;
     {

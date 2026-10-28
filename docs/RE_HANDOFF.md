@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-227 admits full original 320B Bullet spatial cancellation with fourteen relocations, 50/50 exact affected-only units; CORE/EXACT-226 adds complete 242B Bullet cancel-all boss and 19B active-list owner, all 49/49 corrected scoped units including a previously missed 832B caller; CORE/EXACT-225 adds full 81B native Bullet six-group draw orchestration, unified one narrow external Renderer ABI, 46/46 strict affected-only units; CORE/EXACT-220 adds complete exact 832B Bullet boundary boss (31 relocations) and integrates exact 176B rectangle (47/47 affected strict units); CORE/EXACT-219 adds complete exact 176B Bullet four-edge rectangle with original SSE 224f center, seven relocations and two original 832B caller sites; CORE/EXACT-218 closes fourth complete 277B Bullet upper reflection, 36/36 affected native replay; CORE/EXACT-216 adds complete 329B/319B native Bullet horizontal reflection with all 30 relocations and 37/37 strict affected replay; CORE/EXACT-214 admits the whole 281B native Bullet reflection and 22B/17B typed helpers (38/38 strict affected replay); CORE/REVIEW-212 corrects real Bullet-list head insertion and the exact 291B caller’s symbol/semantics; CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
+**Checkpoint:** CORE/EXACT-228 adds exact 122B Bullet radial distance predicate, preserves full 320B cancel-near (2/2 scoped); CORE/EXACT-227 admits full original 320B Bullet spatial cancellation with fourteen relocations, 50/50 exact affected-only units; CORE/EXACT-226 adds complete 242B Bullet cancel-all boss and 19B active-list owner, all 49/49 corrected scoped units including a previously missed 832B caller; CORE/EXACT-225 adds full 81B native Bullet six-group draw orchestration, unified one narrow external Renderer ABI, 46/46 strict affected-only units; CORE/EXACT-220 adds complete exact 832B Bullet boundary boss (31 relocations) and integrates exact 176B rectangle (47/47 affected strict units); CORE/EXACT-219 adds complete exact 176B Bullet four-edge rectangle with original SSE 224f center, seven relocations and two original 832B caller sites; CORE/EXACT-218 closes fourth complete 277B Bullet upper reflection, 36/36 affected native replay; CORE/EXACT-216 adds complete 329B/319B native Bullet horizontal reflection with all 30 relocations and 37/37 strict affected replay; CORE/EXACT-214 admits the whole 281B native Bullet reflection and 22B/17B typed helpers (38/38 strict affected replay); CORE/REVIEW-212 corrects real Bullet-list head insertion and the exact 291B caller’s symbol/semantics; CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 active-session commit subjects and **affected-only** replay requirements. This
@@ -46,6 +46,20 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-228 (web) independently closes **all 122 bytes** of native
+Bullet radial distance predicate `0x00485A60`, including original Vector3
+construction/subtraction, XY-only squared norm, radius-square SSE comparison,
+**full-EAX integer return** (confirmed by the original 320B caller),
+and five independently anchored native relocations. The now typed
+`src/BulletDistance.hpp/.cpp` is called from real maintained
+`BulletSpatialCancellation.cpp`, and both **122/122 and 320/320B** remain
+exact in **2/2 scoped strict units across two fresh cold objects**, no
+whole-graph cold replay. Real 662B Bullet::cancel and 3,735B Bullet
+single-shot emitter, 41,967B Enemy dispatcher still nonexact.
+See [exact radial predicate](BULLET_DISTANCE_EXACT_RECONSTRUCTION.md).
+Current authored-exact totals **245 functions / 62,753 bytes**.
+
 
 CORE/EXACT-227 (web) reconstructs the entire original **320-byte
 BulletController radial cancellation boss** at `0x0047D100`: real active

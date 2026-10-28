@@ -1037,3 +1037,4 @@ th20::BulletController::draw_groups
 th20::BulletController::cancel_all
 th20::BulletController::active_list
 th20::BulletController::cancel_near
+th20::bullet_distance_within
