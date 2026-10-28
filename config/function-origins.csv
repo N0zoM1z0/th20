@@ -3143,7 +3143,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004AB480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AB4C0,unknown,EnemyScript,review,pending,"EXACT-080: Three complete State script/Manager traversal/Timer step contributions add 419 bytes. Frozen 597-unit /113 fresh-object graph strictly replays 104292 disjoint bytes. Actual 752-byte State uses a four-byte single-inheritance int member callback at +2E0, with real ECX receiver, null default and full signed failure. State bit26 gates movement, then reads the real Timer clock step and runs actual EclManager before optional callback; failures retain the gate. Full 217-byte Manager saves next before real VM dispatch, retains current on primary failure, destroys failed async runtime before real detach/link release and restores main on success. Native one-slot clock source only establishes mode0; nonzero modes are outside the supported lookup domain. Owned O2/UBSan checks execute actual production VM tick, Manager/State orchestration and full lifetimes/typed PMR release across completion subsets, distinct primary retention/restoration, deferred spawn, movement/VM/callback failures, recursion, null callback and IEEE step values. Loader resolution, spawn body, Enemy opcode/outer retirement and movement are explicit bounded fixtures; no whole original runtime claim follows. Complete typed folded endpoints/releases have no duplicate credit. Whole State tick keeps its 1280-byte nonexact NOP finding; prefix/in-class natural advancement experiments did not close it. No ABI substitution or partial root/reader credit. Reference Services/raw interfaces are not imported; original names/authored identity remain pending. See docs/EXACT_ENEMY_SCRIPT_PIPELINE_RECONSTRUCTION.md."
 0x004AB570,library,EnemyPhase,exclude,high,"CORE/EXACT-147; docs/ENEMY_PHASE_PRODUCER_INVESTIGATION.md; Complete pinned STL size-only resize wrapper; independently reviewed136-byte record growth, shrink/no-op and value-construction body anchors its delegate. Origin evidence is separate from strict exact acceptance; full actual receiver and storage/control flow are reviewed."
-0x004AB590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AB590,authored,Player,authored,high,CORE/EXACT-307; docs/PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md; native typed Player option and scalar consumer
 0x004AB5B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AB610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AB630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3562,7 +3562,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004B9DF0,unknown,GameController,review,pending,"EXACT-077: Five whole Game construction/state contributions add362body/367comparisonbytes. Frozen580unit/106fresh-object graph replays100983disjointbytes. Native110allocation, GameInf RTTI/vtable, GameTaskInf literal, Task/twoTimer/Configuration ownership, two actual double fields and complete nonthrowing EH establish genuine272-byte owner. Full-width int flag observations preserve original EAX ABI; restart and bit6clear touch actual storage. O2/UBSan dirty guards, retained Configuration high bits/natural gaps,512flagstates, signed restart extremes and whole-state snapshots pass. Game destruction is an explicit fixture; allocation/startup/loading/update/cleanup, Player tail/whole owner, both whole readers and41KB opcode root remain open. 4992F0+44 is reached through Context slot0 both directly and via process478E80; the real primary owner remains unresolved. Actual EnemyController process lookup is478060. No Game or EnemyController storage attribution follows from these reader routes. Source-only Services are not imported; authored origins stay pending. See docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md."
 0x004B9EF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BA3C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004BA3E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004BA3E0,authored,Player,authored,high,CORE/EXACT-307; docs/PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md; native typed Player option and scalar consumer
 0x004BA400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BA440,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004BA4A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4630,7 +4630,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FCDC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCDF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCE20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FCE40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FCE40,authored,Player,authored,high,CORE/EXACT-307; docs/PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md; native typed Player option and scalar consumer
 0x004FCE60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCEA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4700,7 +4700,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FF610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF670,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FF690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FF690,authored,Player,authored,high,CORE/EXACT-307; docs/PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md; native typed Player option and scalar consumer
 0x004FF6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF6D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF6F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4713,7 +4713,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FF840,unknown,Player,review,pending,"CORE/EXACT-102: Twelve complete actual Player construction/arrays, SHT resource relocation, damage-cap/focus selection and Overlay construction/phase/disable/typed Context roots add1810 disjoint compared bytes/70 independent relocations. Actual Player0x1485C/Overlay0x84 storage, untouched14850, actual121-by-three SHT schema and global Context0 lookup are preserved. Four independently exact store-only scalar default constructors are nonthrowing; actual TaskInfo destructor and enclosing potentially-throwing Overlay constructor/EHsc profile are preserved. Full EH, array helper, getter aliases and deleting destructors replay as support; no duplicate byte credit. Frozen250-file source passes718 strict units/141 fresh objects/137378 disjoint bytes; synthetic/original768 cap selections pass O2/ASan/UBSan with explicit unresolved lifetime/startup fixtures. Native whole Overlay initializer/setter corroborate typed publication; initializer remains undefined. Original noexcept/template/finalness/RTTI spelling and strong vector deleting slot/full-link resolution remain unknown. Original Player/Overlay/ANM lifetime, whole1707B damage query and game startup/runtime remain open. Authored/reference/origin credit unchanged. See docs/PLAYER_SHT_RECONSTRUCTION.md."
 0x004FF870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF890,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FF8F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FF8F0,authored,Player,authored,high,CORE/EXACT-307; docs/PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md; native typed Player option and scalar consumer
 0x004FF9E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FFA10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FFC40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

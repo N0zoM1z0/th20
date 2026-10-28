@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/RECON-304 Bullet single-group draw.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-307 Player option reset.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,096** |
-| Canonical strict native units | **1,085** |
-| Unique canonical object providers | **214**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **297**, covering **79,079 native bytes** |
+| Source-present mappings, all origins | **1,101** |
+| Canonical strict native units | **1,090** |
+| Unique canonical object providers | **216**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **302**, covering **79,406 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 214 current canonical object/receipt pairs, native proof documents,
+The 216 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::clear_option_animations` | `0x004FF8F0` | **237** | [full sweep and accessor chain](PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md) |
 | `Player::draw` | `0x004F8AF0` | **145** | [draw and flush](PLAYER_DRAW_EXACT_RECONSTRUCTION.md) |
 | `player_draw_callback` | `0x004FEFB0` | **13** | [whole forwarded callback](PLAYER_DRAW_EXACT_RECONSTRUCTION.md) |
 | `Player::collision_rectangle_circle` | `0x004F91D0` | **661** | [rotated hit/graze](PLAYER_ROTATED_COLLISION_661_EXACT_RECONSTRUCTION.md) |
@@ -66,6 +67,13 @@ was revalidated with **57/57** scoped exact units across **22** cold objects,
 including all 21 previously exact header consumers. Its separate 13-byte
 `player_draw_callback` forwards the native EAX result and passes 1/1
 additional scoped strict unit. See the focused proof.
+
+The freshly closed Player option state sweep and four typed accessors add
+**327 strict bytes**; all **49/49** units affected by new Player.hpp
+declarations replayed across **18** source objects, with no full replay.
+The still-open **966-byte** Player initialization/root `0x004FB450` directly
+calls the accepted 237-byte sweep and 19/29/19-byte accessors; prioritize
+this full root as a larger next challenge.
 
 ## Open complete-function roots — next agent's priorities
 

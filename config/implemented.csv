@@ -1094,3 +1094,8 @@ th20::Player::draw
 th20::Bullet::advance_command11
 th20::player_draw_callback
 th20::BulletController::draw_group
+th20::Player::clear_option_animations
+"th20::PlayerValues<PlayerOption, 10>::at"
+th20::Player::fixed_position_ref
+th20::Player::set_clock_scale
+"th20::PlayerValues<IntPoint, 33>::end"

@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82056", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82072", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -18566,3 +18566,65 @@ size = 13
 relocations = [
   { offset = 0x07, type = "REL32", symbol = "?draw@Player@th20@@QAEHXZ", target = 0x004F8AF0 },
 ]
+
+# CORE/EXACT-307: all 72 original instructions of Player option handle sweep.
+[units.player_option_clear]
+source = "src/PlayerOptionClear.cpp"
+object = "build/core307-canonical/PlayerOptionClear.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::clear_option_animations"]
+symbol = "?clear_option_animations@Player@th20@@QAEXXZ"
+target_address = 0x004FF8F0
+size = 237
+relocations = [
+  { offset = 0x44, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x50, type = "REL32", symbol = "?cancel_animation_handle_mode2@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486310 },
+  { offset = 0x67, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x73, type = "REL32", symbol = "?cancel_animation_handle_mode2@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486310 },
+  { offset = 0xA5, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0xB1, type = "REL32", symbol = "?cancel_animation_handle_mode2@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486310 },
+  { offset = 0xC9, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0xD5, type = "REL32", symbol = "?cancel_animation_handle_mode2@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486310 },
+]
+
+# CORE/EXACT-307: both 10-slot and 12-slot index method instances emit the
+# same original 23 physical bytes; only one original address gets credit.
+[units.player_values_option_at]
+source = "src/PlayerOptionClear.cpp"
+object = "build/core307-canonical/PlayerOptionClear.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerValues<PlayerOption, 10>::at"]
+symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z"
+target_address = 0x004BA3E0
+size = 23
+relocations = []
+
+[units.player_fixed_position_ref]
+source = "src/PlayerAccessors.cpp"
+object = "build/core307-canonical/PlayerAccessors.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::fixed_position_ref"]
+symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ"
+target_address = 0x004FF690
+size = 19
+relocations = []
+
+[units.player_set_clock_scale]
+source = "src/PlayerAccessors.cpp"
+object = "build/core307-canonical/PlayerAccessors.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::set_clock_scale"]
+symbol = "?set_clock_scale@Player@th20@@QAEXM@Z"
+target_address = 0x004AB590
+size = 29
+relocations = []
+
+[units.player_values_int_point_end]
+source = "src/PlayerAccessors.cpp"
+object = "build/core307-canonical/PlayerAccessors.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerValues<IntPoint, 33>::end"]
+symbol = "?end@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAEPAUIntPoint@2@XZ"
+target_address = 0x004FCE40
+size = 19
+relocations = []

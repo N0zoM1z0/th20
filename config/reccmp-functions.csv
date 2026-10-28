@@ -1095,3 +1095,8 @@ th20::Player::draw,0x004F8AF0,function
 th20::Bullet::advance_command11,0x00481200,function
 th20::player_draw_callback,0x004FEFB0,function
 th20::BulletController::draw_group,0x0047DB70,function
+th20::Player::clear_option_animations,0x004FF8F0,function
+"th20::PlayerValues<PlayerOption, 10>::at",0x004BA3E0,function
+th20::Player::fixed_position_ref,0x004FF690,function
+th20::Player::set_clock_scale,0x004AB590,function
+"th20::PlayerValues<IntPoint, 33>::end",0x004FCE40,function
