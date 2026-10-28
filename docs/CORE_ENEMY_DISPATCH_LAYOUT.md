@@ -21,6 +21,17 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE207 integrates the complete original **572-byte Enemy opcode 614**
+(129 native instructions, 19 original calls) into the same 41,967-byte
+source-draft root. Both ECL index arguments precede independently ordered
+PMR queue resizes; the actual native-exact 119-byte
+`EnemyQueuedRecord::operator=` copies the complete record rather than
+swapping pointers. **308** new real owner, shared-copy, early error and
+614→602→700 COW tests raise the full-root GCC UBSan and ASan+UBSan
+host to **44,230/44,230**, covering **140 values / 108 native primary
+heads**. The full original root itself remains machine-code nonexact.
+See [complete opcode 614 queue copy](ENEMY_WHOLE_ROOT_614_QUEUE_COPY.md).
+
 CORE205 integrates *three distinct complete original Enemy native heads*
 into the same 41,967-byte full-root source draft: opcode 602 (181B/43
 instructions), 603 (189B/43 instructions) and 604 (213B/51 instructions).

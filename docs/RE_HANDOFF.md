@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE205 integrates the full original 602/603/604 queued parameter heads into the same 41,967-byte Enemy root, preserving CORE204/203 exact Bullet and CORE200/201 queue proofs.
+**Checkpoint:** CORE207 integrates the complete native opcode 614 queue-copy branch into the same 41,967-byte Enemy Boss draft, keeping CORE206 exact record assignment and all older evidence intact.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -30,12 +30,37 @@ evidence documents are historical, not competing current status.
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
-  covers **139 effective opcode values / 107 primary heads** and passes
-  **43,922 / 43,922** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  covers **140 effective opcode values / 108 primary heads** and passes
+  **44,230 / 44,230** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE207 adds the entire original **572-byte** Enemy opcode 614 branch at
+`0x004925C7..0x00492802`, **129 actual x86 instructions and 19 native direct
+calls**, to the **same complete 41,967-byte root**. The source reads ECL
+integer index 0 (destination) then index 1 (source) before any mutation,
+ensures the real PMR forward-list length first for destination then source,
+and invokes native exact **119-byte `EnemyQueuedRecord::operator=`** for
+`queued[destination]=queued[source]` — not swap/COW or flattened memcpy.
+The **308** new whole-root cases include 288 real 76-byte record assignments,
+56 self copies, ordered queue growths, 32 owner aliases, 64 replaced-owner
+releases, 12 early ECL errors, and eight original 614→602→700 shared-owner
+copy/COW chains. Both complete **86-source** GCC13 O2/UBSan and O2/ASan+UBSan
+hosts pass **44,230/44,230** cases, including all 43,922 predecessors.
+The independent original native case/call SHA audit, current source/recipe
+SHA hashes and both passing host binaries/logs are protected in
+`.analysis/core207-native-614-audit.json` and
+`.analysis/core207-enemy-whole-root-proof.json`. See
+[whole original 614 integration](ENEMY_WHOLE_ROOT_614_QUEUE_COPY.md).
+CORE207 modifies **zero maintained production compiler inputs**, so native
+cold replay scope is **zero**; the previous CORE206 whole exact 119B method
+and its 113/113 original strict native unit replays remain accepted.
+Current authored native exactness remains **226 functions / 58,837 bytes**.
+The entire original 41,967B Enemy root still lacks native codegen exactness;
+continue with other large missing heads (621/632) and original EH/switch.
+
 
 CORE205 adds **three independently decoded complete original native
 Enemy queued parameter heads** to the same single 41,967-byte source
@@ -535,25 +560,20 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core205-enemy-dispatch-candidate.cpp` — the *same entire*
-  Enemy source-draft root, now with original 602/603/604 and all prior
-  CORE204/202 and earlier integrated opcode families.
-- `.analysis/core205-dispatch-host.cpp`,
-  `.analysis/core205-queued-602-604-host-cases.inc`,
-  `.analysis/core205-dispatch-host-recipe.json` — complete 85-TU C++ host
-  with real exact queued shared-owner and Bullet scalar source.
-- `.analysis/core205-dispatch-host.log`,
-  `.analysis/core205-dispatch-host-asan.log`,
-  `.analysis/core205-native-op602.asm`,
-  `.analysis/core205-native-op603.asm`,
-  `.analysis/core205-native-op604.asm`,
-  `.analysis/core205-native-602-604-audit.json`,
-  `.analysis/core205-enemy-whole-root-proof.json` — 43,922 full-root
-  cases, three independent original native byte/call audits and four
-  SHA-pinned private inputs. Protect both `build/core205-dispatch-host*`
-  binaries and all historical CORE204/203/202/201/200 proof artifacts.
-- All prior dirty/untracked/ignored source and native object proofs belong
-  to this same worktree; do not reset, skip or discard them.
+- `.analysis/core207-enemy-dispatch-candidate.cpp` — same *entire* Enemy root
+  candidate with the original 614 branch and all older opcode families.
+- `.analysis/core207-dispatch-host.cpp`,
+  `.analysis/core207-op614-queue-copy-host-cases.inc`,
+  `.analysis/core207-dispatch-host-recipe.json` — current 86-TU host with
+  actual `src/EnemyQueuedRecordAssignment.cpp` source linked in.
+- `.analysis/core207-dispatch-host.log`,
+  `.analysis/core207-dispatch-host-asan.log`,
+  `.analysis/core207-native-614-audit.json`,
+  `.analysis/core207-enemy-whole-root-proof.json` — original 572B native
+  case/call audit plus 4 SHA-bound live inputs, both binaries/logs. Protect
+  `build/core207-dispatch-host` and `build/core207-dispatch-host-asan`.
+- All original CORE206 exact member receipts and older CORE205/204/203
+  source, binary and native case proofs remain intact; never discard them.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
