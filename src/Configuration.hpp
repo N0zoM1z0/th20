@@ -46,7 +46,11 @@ struct ConfigurationFlags {
 
 static_assert(sizeof(ConfigurationFlags) == 4);
 
-struct ConfigurationCounterPair { std::uint32_t first, second; };
+// Original InputInf initialization indexes these two DWORDs at [0].
+// The C array ABI preserves the native 4*0 address calculations in
+// InputInf::initialize_devices; both records remain eight bytes.
+struct ConfigurationCounterPair { std::uint32_t values[2]; };
+static_assert(sizeof(ConfigurationCounterPair) == 8);
 struct ConfigurationByteFlag { std::uint8_t bit0:1, retained:7; };
 struct Configuration {
     std::uint32_t version, size;

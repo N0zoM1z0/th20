@@ -19,6 +19,10 @@ public:
     // Original 465B subordinate device initialization is a separate
     // still-nonexact game method; do not infer its code from this caller.
     std::int32_t initialize_devices();
+    // Separate 726B DirectInput and 170B XInput discovery callees from
+    // the immutable 465B native initialization boss (still nonexact).
+    std::int32_t discover_directinput_devices();
+    std::int32_t discover_xinput_devices();
     // Whole 120B native virtual destructor, five actual CC alignment
     // bytes and a distinct compiler-generated 49B scalar deleting wrapper.
     ~InputInf() override;
@@ -26,7 +30,10 @@ public:
     // DirectInput interface release; actual original COM pointer slots.
     std::int32_t shutdown();
     void release_direct_input();
-    std::uint32_t state_10, state_14, state_18;
+    std::uint32_t state_10;
+    // Native signed comparisons of the number of discovered devices.
+    std::int32_t state_14;
+    std::uint32_t state_18;
     // Original native COM input interface at +0x1C; the separate
     // 50B release member invokes its real vtable Release slot.
     IDirectInput8W* direct_input_1c;

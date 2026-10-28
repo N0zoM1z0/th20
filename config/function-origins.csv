@@ -713,7 +713,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00420760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00420990,authored,InputInf,authored,high,"CORE/EXACT-484; docs/INPUT_INF_START_265_EXACT_RECONSTRUCTION.md; original native PE startup, Graphics.Configuration binding and exact typed InputInf RTTI/game ownership"
 0x00420AA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00420D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00420D80,authored,InputInf,authored,high,CORE/EXACT-487; docs/INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md; original whole real InputInf signed device discovery and typed graphics config route with 15 independently original PE E8/HIGHLOW fields
 0x00420F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004210D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

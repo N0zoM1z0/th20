@@ -17,6 +17,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Whole original 465B InputInf device initialization boss — strict native exact](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) — authentic signed input device count, true two-element Graphics configuration route array, 9 original E8 and 6 independent PE HIGHLOW; entire 465/465 native bytes; **61/61 strict units in 18 actual prior-header-receipt source objects**. Separate 726B/170B device discovery and 3,490B input polling remain NONEXACT.
+
+
 - [Entire exact 265B InputInf startup/binding initialization boss](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) — original 75 instructions, 2 E8/6 original PE HIGHLOW, real Graphics configuration record submember copying and four process input pointers, 11/11 strict units in 4 source-scoped cold objects. The invoked 465B device initializer remains NONEXACT.
 
 

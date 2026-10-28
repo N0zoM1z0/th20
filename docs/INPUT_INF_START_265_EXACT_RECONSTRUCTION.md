@@ -174,3 +174,26 @@ Player main-frame are separately
 **NONEXACT**. The exact 265B start
 does not prove their code or linked
 whole-game runtime.
+
+
+## Subsequent CORE/EXACT-487 — entire 465B device initialization callee closed
+
+**Current status:** this document's earlier statement that the
+direct `InputInf::initialize_devices` callee at `0x00420D80`
+remains NONEXACT is historical and superseded. Its **entire
+465B / 118 original i386 instructions** are now
+**465/465 strict native exact** with all **nine immutable E8
+and six original PE HIGHLOW references** independently checked.
+Native signed device-count comparisons and a true two-DWORD
+`ConfigurationCounterPair::values[2]` layout naturally reproduce
+the original code, including two original Graphics base
+`+0x230` COFF addends. The actual old
+`Configuration.hpp` and `InputInf.hpp` compiler receipt
+source closure was **17 old sources / 60 strict units**;
+adding a single source provider for the original 465B
+callee gives **61/61 strict native exact units in 18
+low-priority cold objects**, with no full graph replay.
+The further 726B DirectInput and 170B XInput discovery
+callees, plus the 3,490B InputDevice frame processing,
+remain separately NONEXACT. See
+[whole original 465B InputInf discovery/route initialization proof](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md).

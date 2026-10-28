@@ -248,3 +248,25 @@ symbol renumberings were audited against real original PE
 literal targets, fields and complete native code before
 updating only private spelling. No global cold replay.
 [Complete original frame frontier](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md).
+
+
+## Subsequent CORE/EXACT-487 signed device initialization caller
+
+The separately original **465B
+`InputInf::initialize_devices`** at `0x00420D80`,
+which first invokes this already exact 466B
+shutdown, then locks, constructs the keyboard
+device, discovers DirectInput/XInput and
+selects persistent Graphics routing, is now
+**465/465 complete strict native exact**.
+All nine E8 and six original PE HIGHLOW
+references are independently original-attested.
+Its correct signed InputInf device count and
+actual Configuration two-element counter array
+leave this 466B shutdown method, its 50B
+DirectInput COM release and other prior InputInf
+native functions exact under **61/61 affected
+strict units in 18 source-specific cold builds**.
+The 726B DirectInput and 170B XInput discovery
+callees remain open.
+[Whole original input device initialization proof](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md).

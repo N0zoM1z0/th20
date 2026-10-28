@@ -1167,3 +1167,4 @@ th20::InputInf::bindings_for_view
 th20::InputInf::pad_device
 th20::InputInf::pad_device_slot
 th20::InputInf::start
+th20::InputInf::initialize_devices

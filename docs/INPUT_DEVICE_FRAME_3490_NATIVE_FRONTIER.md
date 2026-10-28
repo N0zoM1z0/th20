@@ -252,3 +252,27 @@ Actual preedit `InputInf.hpp` source receipt closure
 passed **11/11 strict native units across four
 cold objects**, with no full cold replay.
 [Complete InputInf startup proof](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md).
+
+
+## Subsequent CORE/EXACT-487 complete original input device initialization
+
+The original **465-byte / 118-instruction**
+`InputInf::initialize_devices` at `0x00420D80`
+now is **entirely 465/465 strict native exact**, with
+**9 independently original E8 and 6 original
+PE HIGHLOW** fields. It closes a real stage in
+the same input system: previous InputInf COM
+shutdown, native keyboard device creation, DirectInput
+and XInput device discovery calls, signed device
+routing and persistent Graphics configuration.
+Its genuine **726B/170B** discovery callees
+still remain **NONEXACT**. The separately
+original **3,490-byte InputDevice polling frame**
+at `0x00421B00` also remains **NONEXACT**;
+the 465B initialization does not imply any of that
+parent/other-root original byte credit. Previous
+Configuration/InputInf header compiler receipts
+yielded **61/61 strict original units across 18
+freshly cold-built source objects**, and no full
+repository replay was performed.
+[Original 465B game device initialization proof](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md).

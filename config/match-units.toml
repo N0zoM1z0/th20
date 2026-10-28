@@ -19881,7 +19881,7 @@ relocations = [
   { offset = 0x73, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
   { offset = 0xC7, type = "DIR32", symbol = "??0InputBindings@th20@@QAE@XZ", target = 0x0041FB10 },
   { offset = 0xDA, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
-  { offset = 0xDF, type = "DIR32", symbol = "$SG78661", target = 0x0056D4DC },
+  { offset = 0xDF, type = "DIR32", symbol = "$SG78663", target = 0x0056D4DC },
   { offset = 0xE4, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0xEF, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
 ]
@@ -19902,7 +19902,7 @@ relocations = [
   { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1InputInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x2B, type = "DIR32", symbol = "??_7InputInf@th20@@6B@", target = 0x0056D4D0 },
-  { offset = 0x30, type = "DIR32", symbol = "$SG78665", target = 0x0056D684 },
+  { offset = 0x30, type = "DIR32", symbol = "$SG78667", target = 0x0056D684 },
   { offset = 0x35, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x45, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 0x4A, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -19945,11 +19945,11 @@ relocations = [
   { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
   { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
   { offset = 0x78, type = "REL32", symbol = "?reset_header@InputDevice@th20@@QAEXXZ", target = 0x00421720 },
-  { offset = 0x8C, type = "DIR32", symbol = "$SG170773", target = 0x0056D6E4 },
+  { offset = 0x8C, type = "DIR32", symbol = "$SG170775", target = 0x0056D6E4 },
   { offset = 0x91, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
-  { offset = 0x113, type = "DIR32", symbol = "$SG170776", target = 0x0056D6FC },
+  { offset = 0x113, type = "DIR32", symbol = "$SG170778", target = 0x0056D6FC },
   { offset = 0x118, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
-  { offset = 0x18B, type = "DIR32", symbol = "$SG170778", target = 0x0056D718 },
+  { offset = 0x18B, type = "DIR32", symbol = "$SG170780", target = 0x0056D718 },
   { offset = 0x190, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x19B, type = "REL32", symbol = "?release_direct_input@InputInf@th20@@QAEXXZ", target = 0x004216E0 },
   { offset = 0x1B2, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
@@ -20030,7 +20030,7 @@ symbol = "?start@InputInf@th20@@QAEHXZ"
 target_address = 0x00420990
 size = 265
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG171305", target = 0x0056D674 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG171307", target = 0x0056D674 },
   { offset = 0xF, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x42, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x6F, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
@@ -20038,4 +20038,33 @@ relocations = [
   { offset = 0xCE, type = "REL32", symbol = "?initialize_devices@InputInf@th20@@QAEHXZ", target = 0x00420D80 },
   { offset = 0xF3, type = "DIR32", symbol = "?process_button_states@th20@@3PAUInputButtonState@1@A", target = 0x005B88B0 },
   { offset = 0xFD, type = "DIR32", symbol = "?process_input_views@th20@@3PAPAUInputButtonState@1@A", target = 0x005B889C },
+]
+
+# CORE/EXACT-487: entire original 465B InputInf device initialization,
+# 118 original instructions, independent 9 E8+6 HIGHLOW, signed count
+# and original two-DWORD indexed Graphics configuration route.
+[units.input_inf_initialize_devices]
+source = "src/InputInfDeviceInitialization.cpp"
+object = "build/core487-canonical/InputInfDeviceInitialization.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::InputInf::initialize_devices"]
+symbol = "?initialize_devices@InputInf@th20@@QAEHXZ"
+target_address = 0x00420D80
+size = 465
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?initialize_devices@InputInf@th20@@QAEHXZ", target = 0x0056808D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2F, type = "REL32", symbol = "?shutdown@InputInf@th20@@QAEHXZ", target = 0x004202C0 },
+  { offset = 0x36, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x3B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x44, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x78, type = "REL32", symbol = "?initialize_keyboard@InputDevice@th20@@QAEXH@Z", target = 0x00421AB0 },
+  { offset = 0x8F, type = "REL32", symbol = "?discover_directinput_devices@InputInf@th20@@QAEHXZ", target = 0x00420AA0 },
+  { offset = 0x97, type = "REL32", symbol = "?discover_xinput_devices@InputInf@th20@@QAEHXZ", target = 0x004210D0 },
+  { offset = 0xA3, type = "DIR32", symbol = "$SG171361", target = 0x0056D6D4 },
+  { offset = 0xA8, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xC4, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x19B, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x1B1, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x1C9, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

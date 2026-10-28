@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-484 complete 265-byte InputInf startup/configuration boss.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-487 entire 465-byte InputInf device initialization boss.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,169** |
-| Canonical strict native units | **1,170** |
-| Unique canonical object providers | **233**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **394**, covering **119,618 native bytes** |
+| Source-present mappings, all origins | **1,170** |
+| Canonical strict native units | **1,171** |
+| Unique canonical object providers | **234**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **395**, covering **120,083 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 233 current canonical object/receipt pairs, native proof documents,
+The 234 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::initialize_devices` | `0x00420D80` | **465** | [whole signed device discovery, lock and Graphics route initialization](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) |
 | `InputInf::start` | `0x00420990` | **265** | [entire input startup and native Graphics configuration binding copies](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) |
 | `InputInf::routing_for_view` / `bindings_for_view` / `pad_device` / `pad_device_slot` | `0x00421990` / `0x004217F0` / `0x00421850` / `0x00421870` | **49 / 27 / 26 / 26** | [entire InputDevice frame original control frontier and four exact InputInf native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) |
 | `InputInf::shutdown` / `release_direct_input` | `0x004202C0` / `0x004216E0` | **466 / 50** | [entire original 12-device/4-pad DirectInput COM shutdown](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) |
@@ -934,9 +935,9 @@ copies two `InputBindings` records from
 actual `process_graphics.configuration.bindings`
 into InputInf's own two 48B records,
 then publishes four global InputButtonState
-pointers after calling the **still NONEXACT
-465-byte InputInf::initialize_devices**
-at `0x00420D80`. The original C++ copies
+pointers after calling the **465-byte InputInf::initialize_devices**
+at `0x00420D80`, which was NONEXACT at CORE/EXACT-484
+but independently closed whole strict exact by CORE/EXACT-487. The original C++ copies
 the three 16B pad/alternate/keyboard
 binding subrecords separately, avoiding
 an incorrect `rep movsd` whole-aggregate
@@ -964,10 +965,57 @@ functions / 119,618 original native
 bytes**, **1,170 canonical strict units
 in 233 object providers**.
 The original **3,490B InputDevice frame**
-and **465B device initialization** remain
-NONEXACT independent boss frontiers.
+remains NONEXACT; the historical 465B input-device
+initialization frontier was subsequently closed in
+CORE/EXACT-487.
 [Whole original 265B startup C++ and
 native references](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-487 independently closes the **entire original
+465B / 118-instruction InputInf device initialization
+boss** at `0x00420D80`, exact **465/465
+game-authored original native bytes** with **9
+original E8 and 6 PE HIGHLOW** independently
+attested relocation fields. Its real gameplay
+sequence shuts down devices with the separately
+exact 466B COM destructor, acquires native
+recursive mutex slot 15, sets a signed device
+count, initializes the first keyboard device,
+calls still-open **726B DirectInput** and
+**170B XInput** discovery, logs device count
+and selects the native persistent device route
+using the **original two-DWORD
+ConfigurationCounterPair.values[2]** array.
+Two original Graphics `0x005C4F70` field
+references use one genuine
+`process_graphics` base `0x005C4D40`
+plus two **+0x230** COFF addends.
+Earlier scalar `first/second` Configuration
+and unsigned InputInf count types were
+corrected based on immutable original signed
+branches and address calculations, NOT on
+assumptions in old documentation.
+The original previous compiler receipt union
+of `Configuration.hpp` and `InputInf.hpp`
+covered **17 existing source providers / 60
+old strict units**. With one new initialization
+owner, serial low-priority replay passed
+**61/61 whole strict native units across
+18 cold objects**; no whole-repository replay.
+Six compiler-private `$SG` label renumberings
+were admitted only after comparing original
+PE field/target and full original nonrelocation
+code; original targets and byte extents remain
+unchanged. Current game-authored exact
+**395 whole original functions /
+120,083 game-body bytes**, **1,171
+strict units / 234 canonical source objects**.
+The separate 726B/170B discovery callees,
+3,490B InputDevice polling, 555B Player
+movement and 3,111B Player frame are
+**still NONEXACT**.
+[Complete original 465B InputInf device
+initialization proof](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 
