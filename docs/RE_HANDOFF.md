@@ -47,6 +47,20 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/AUDIT-247 (web): the complete original **662B Bullet::cancel** at
+`0x0047C8F0` has been freshly recompiled in *private complete-body*
+probes against the already exact Timer float-assign and Bullet cancel-drop
+interfaces. Whole candidates compile to 667B (197/199 original instruction
+mnemonics aligned) and 676B (**199/199 mnemonic order aligned**, but
+**still not native byte-exact**). Original native code saves the
+`Vector3::operator*(float)` returned EAX to `[ebp-0x70]` and later reloads
+it as the divide receiver, whereas the candidate's temporaries/frame
+remain different. **No source, canonical match or authored credit change**;
+zero affected replay units and no whole-graph replay. See
+[full Bullet cancellation frontier](BULLET_CANCEL_662_NATIVE_FRONTIER.md).
+Current authored exact total remains **263 functions / 69,211 bytes**.
+
+
 CORE/EXACT-246 (web) adds **full original 637B native Bullet command8
 interpolation** at `0x004827E0` (**189 original x86 instructions, 22
 independently anchored native relocations**). The real Bullet command

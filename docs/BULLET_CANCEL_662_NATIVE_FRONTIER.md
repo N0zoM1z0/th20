@@ -136,3 +136,60 @@ appears in **93** canonical source providers and **593** strict units, so
 any real shared member declaration must be followed by its true affected
 closure, not a claim based only on the two Bullet sites. No code changed
 and no cold replay was needed for this audit.
+
+## CORE/AUDIT-247 — native Timer contract confirmed; whole-body temporary ABI still open
+
+A new whole-function rebuild used **the actual already exact**
+`Timer::operator=(float)` (`0x0047C5F0`, 33B) in place of the earlier
+private fake fastcall timer setter and the actual already exact
+`Bullet::cancel_drops` at `0x0047D3D0` (419B). The private types now start
+from the real maintained Bullet, Animation, Effect, Timer, Vector3 and
+AnimationRuntimeOwner headers, with unresolved unowned native Animation
+methods added **only in ignored analysis-header copies**. The original
+662-byte executable remained independently immutable throughout.
+
+The first complete updated trial, using explicit local `AnimationHandle`
+copy and normal `Vector3 delta = velocity * float(default_timer_clock)`,
+emitted **667 bytes**, with **197 of the original 199 x86 instruction
+mnemonics** retaining their native order. The real Timer member symbol now
+appears at the two exact native original callee addresses rather than a
+free function with coincidentally similar calling registers.
+
+Sixteen additional **complete** C++20 expression variants explored inlining
+both Vector3 operations, explicitly invoking the native member operator,
+using natural value/reference category variations, naming the local clock
+and divisor, and using actual `operator+=` syntax. Several ordinary
+inline forms produce a **676-byte** full compiler contribution with
+**199/199 original instruction mnemonics in the same order and 34 COFF
+relocations**. This is important structural evidence, **not a native
+byte-exact result**: the original contribution is **662 bytes**, with a
+different local stack-frame allocation, order of saving operator-return
+pointers, and an extra SSE divisor temporary in the candidate. Equal
+instruction *names* do not establish equal encodings, relocations, ABI
+or full original bytes. The exact original function is still nonexact.
+
+Native original instructions at `0x0047CAD9..0x0047CB12` establish the
+hidden-return sequence unambiguously: after `Vector3::operator*(float)`
+returns, the caller saves **EAX** into `[ebp-0x70]` before passing the
+original `2.0f` (`0x0056C8D0`) to `Vector3::operator/(float)`; the divide
+receiver is loaded back from that saved pointer, and the divide result
+then feeds the real `Vector3::operator+=` on Bullet position. Several
+natural named-`Vector3` candidates instead pass the local object's
+address directly, whereas inline candidates can preserve EAX but add
+other mismatched scalar spills. This defines the precise pending
+C++ temporary/value-category question without claiming that a manually
+shaped ABI is acceptable.
+
+Private reproducible evidence:
+`.analysis/core247-Bullet.hpp`,
+`.analysis/core247-Animation.hpp`,
+`.analysis/core247-ItemResourceOwners.hpp`,
+`.analysis/core247-AnimationRuntimeOwner.hpp`,
+`.analysis/core247-real-owned-Timer-BulletCancel.cpp`, and
+`.analysis/core247-motion-evaluation-search.py`;
+all locked-MSVC outputs and receipts are retained in
+`build/core247-probes/`. None of these provisional wrappers is imported
+into maintained `src/`, no native exact unit was added, and **the
+reconstruction graph is unchanged**. This documentation-only audit has
+**zero affected replay units**, requires no new cold replay, and does
+not imply native exactness for the 3,735B emitter or 41,967B Enemy root.
