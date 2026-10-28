@@ -15,6 +15,19 @@ Animation* AnimationHandle::find_child(std::int32_t identifier, std::int32_t ord
     return result;
 }
 
+// Original 45-byte member validity: full resolve() (including stale-ID
+// clearing) is observed, and the returned pointer is tested for null.
+bool AnimationHandle::is_valid() {
+    return resolve() != nullptr;
+}
+
+// The native 26-byte wrapper forwards the live position through the
+// actual AnimationHandle member position setter. This is not an alias
+// for the underlying setter's separate original physical entry.
+void AnimationHandle::set_position_forward(const Vector3& position) {
+    set_position(position);
+}
+
 void AnimationHandle::interrupt_offset_7(std::int32_t event) {
     interrupt(static_cast<std::int32_t>(static_cast<std::uint32_t>(event) + 7u));
 }

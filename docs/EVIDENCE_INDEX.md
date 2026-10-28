@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Two complete native AnimationHandle forwarders — 45B validity and 26B position](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) — actual resolve()/set_position call targets independently attested from original PE (two E8 fields), 71/71 whole original bytes, 27 instructions; 473/473 strict native units in 106 source objects from prior AnimationHandle.hpp compiler receipts. Player 3,111B parent stays NONEXACT.
+
 - [Exact complete 237B Player mode-3 option suspension boss](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md) — all ten plus twelve option handles, eight original native E8 fields to independently exact 23B index/22B mode-3 interrupt, distinct from the existing 237B mode-2 clearer. Actual 72/72 header-dependent strict units in 25 cold objects.
 
 - [Complete 3,111B Player main-frame original PE call-graph audit + 47B exact history/replay-input methods](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) — 783 original instructions, 67 E8/37 HIGHLOW native fields, independently corrected identity distinct from the existing 25B frame_changed member; exact 22B 33-history index and 25B replay mask, 17/17 scoped strict units in two cold objects. 3,111B parent remains NONEXACT.

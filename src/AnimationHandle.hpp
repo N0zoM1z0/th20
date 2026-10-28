@@ -17,6 +17,10 @@ struct AnimationHandle {
     // Native word assignment; the shared physical head is audited separately.
     void operator=(std::uint32_t input);
     Animation* resolve();
+    // Original whole 45-byte native live-handle validity predicate.
+    bool is_valid();
+    // Original whole 26-byte positional member forwarding wrapper.
+    void set_position_forward(const Vector3& position);
     Animation* find_child(std::int32_t identifier, std::int32_t ordinal);
     void interrupt(std::int32_t event);
     void interrupt_offset_7(std::int32_t event);

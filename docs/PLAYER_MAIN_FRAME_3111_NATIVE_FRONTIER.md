@@ -128,6 +128,33 @@ nonexact; only its callee's whole 237B original
 bytes are newly credited. Read the
 [complete mode-3 native proof](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md).
 
+## Subsequent CORE/EXACT-439 AnimationHandle callback closure
+
+The distinct full native `AnimationHandle::is_valid`
+at `0x0047A340` (**45/45B**, called twice)
+and `AnimationHandle::set_position_forward` at
+`0x004645E0` (**26/26B**, called once) are
+now **separately strict exact**. Their immutable
+original E8 targets are the previously exact
+`AnimationHandle::resolve` at `0x0044CED0`
+and `AnimationHandle::set_position` at
+`0x004502C0`; the two full original bodies
+have **27 instruction heads and zero PE HIGHLOW**
+sites. At CORE/EXACT-436 the Player parent had
+59/67 direct call sites to exact native
+callees. These original three additional
+call sites give **62/67**, leaving five still
+unclosed. The real `AnimationHandle.hpp`
+old receipt include closure was **106
+source objects/471 strict units**; the
+two new whole units yielded **473/473**
+strict native units in those same 106 cold
+objects, run in 22 source-scoped serial
+batches, **not a full-repository cold replay**.
+The 3,111B parent remains independently
+NONEXACT. See [both complete original game
+handle methods](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md).
+
 ## Whole parent call-graph status and focused strict replay
 
 Before these two native methods were admitted, 45 of

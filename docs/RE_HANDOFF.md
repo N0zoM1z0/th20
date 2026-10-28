@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-436 full 237-byte Player mode-3 option suspension.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-439 two complete AnimationHandle Player frame forwarders.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,151** |
-| Canonical strict native units | **1,152** |
+| Source-present mappings, all origins | **1,153** |
+| Canonical strict native units | **1,154** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **377**, covering **117,188 native bytes** |
+| Exact game-authored whole functions | **379**, covering **117,259 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `AnimationHandle::is_valid` / `set_position_forward` | `0x0047A340` / `0x004645E0` | **45 / 26** | [full native handle validity and position forwarders](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) |
 | `Player::suspend_option_animations` | `0x004BD0C0` | **237** | [entire native mode-3 suspension, distinct from mode-2 clearer](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md) |
 | `PlayerValues<IntPoint,33>::at` / `InputButtonState::replay_current_bits` | `0x0045D670` / `0x004973A0` | **22 / 25** | [complete original main-frame call graph and two exact ABI methods](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) |
 | `PlayerValues<IntPoint,33>::size` | `0x004FFFE0` | **16** | [whole exact history-array capacity; real 3,111B frame calls](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) |
@@ -584,6 +585,35 @@ receipt; one additional focused cold replay passed
 **8/8 units in its own object**, separately from
 the actual 72-unit header closure.
 [Whole separate mode-3 original proof](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-439 adds **two whole original
+AnimationHandle game members totaling 71B**:
+`is_valid` at `0x0047A340` (**45/45B**)
+and `set_position_forward` at `0x004645E0`
+(**26/26B**). The original independently
+attested E8 calls target already strict
+`AnimationHandle::resolve` `0x0044CED0`
+and `set_position` `0x004502C0`.
+All 27 complete original instruction heads
+and both independent PE reference fields
+are strict exact; no original HIGHLOW fields.
+The still-open 3,111B Player main-frame
+calls the first twice and the second once,
+raising exact callee original call sites to
+**62/67**, leaving five separately open.
+The genuine `AnimationHandle.hpp` preedit
+compiler receipts cover **106 old source
+objects and 471 earlier exact units**;
+with two new methods in the same canonical
+owner, **473/473 strict units in exactly
+106 serial cold source objects** passed
+in 22 batches, with no full all-repository
+replay. Compiler-private `$SG` symbols were
+reconciled only against independent original
+PE addresses, fields and full unchanged
+nonrelocation bytes. Original gameplay
+bosses retain their strict exact matches.
+[71-byte original native ABI proof](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

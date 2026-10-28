@@ -1150,3 +1150,5 @@ th20::Player::apply_move_delta,0x004FFA10,function
 "th20::PlayerValues<IntPoint,33>::at",0x0045D670,function
 th20::InputButtonState::replay_current_bits,0x004973A0,function
 th20::Player::suspend_option_animations,0x004BD0C0,function
+th20::AnimationHandle::is_valid,0x0047A340,function
+th20::AnimationHandle::set_position_forward,0x004645E0,function
