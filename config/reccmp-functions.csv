@@ -1040,3 +1040,4 @@ th20::BulletController::active_list,0x00485970,function
 th20::BulletController::cancel_near,0x0047D100,function
 th20::bullet_distance_within,0x00485A60,function
 th20::BulletController::cancel_near_limited,0x0047CF60,function
+th20::BulletController::cancel_near_if,0x0047D240,function

@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact entire 388-byte Bullet std::function-filtered cancellation](BULLET_FILTERED_CANCELLATION_EXACT_RECONSTRUCTION.md) — authentic by-value 40B standard callable with full-EAX return and EH destructor, 17 original relocations, 52/52 affected-only strict units.
+
 - [Complete original 662-byte Bullet cancellation frontier audit](BULLET_CANCEL_662_NATIVE_FRONTIER.md) — independent 199-instruction/25-call boss analysis and whole-body compiler counterexamples; **not** an exact code admission.
 
 - [Exact complete 401-byte bounded Bullet radius cancellation](BULLET_LIMITED_CANCELLATION_EXACT_RECONSTRUCTION.md) — whole native list/limit/early-exit gameplay boss, newly recovered real bits 11..12 of Bullet flags, all 16 native relocations, 51/51 affected strict units.

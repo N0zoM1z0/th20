@@ -8,6 +8,7 @@
 #include "ShotMetadata.hpp"
 #include "Context.hpp"
 #include <memory>
+#include <functional>
 namespace th20 {
 // EXACT-078: native BulletInf and its typed 2001-entry pool. Offset names
 // retain unresolved roles; alignment gaps are supplied by actual members.
@@ -133,6 +134,8 @@ struct BulletController final : TaskInfo {
     std::int32_t cancel_near(const Vector3& center, float radius, std::int32_t mode);
     std::int32_t cancel_near_limited(const Vector3& center, float radius,
                                      std::int32_t mode, std::int32_t limit, std::uint32_t effects);
+    std::int32_t cancel_near_if(const Vector3& center, float radius,
+                                std::function<std::int32_t(const Vector3&)> predicate);
 };
 BulletController* bullet_controller(std::int32_t index);
 #if defined(_M_IX86)
