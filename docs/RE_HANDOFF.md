@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-429 Player 33-point history capacity and CORE/RECON-429 complete movement C++ frontier.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-433 full Player 3,111B frame graph and exact history/replay-input callees.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,148** |
-| Canonical strict native units | **1,149** |
+| Source-present mappings, all origins | **1,150** |
+| Canonical strict native units | **1,151** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **374**, covering **116,904 native bytes** |
+| Exact game-authored whole functions | **376**, covering **116,951 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `PlayerValues<IntPoint,33>::at` / `InputButtonState::replay_current_bits` | `0x0045D670` / `0x004973A0` | **22 / 25** | [complete original main-frame call graph and two exact ABI methods](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) |
 | `PlayerValues<IntPoint,33>::size` | `0x004FFFE0` | **16** | [whole exact history-array capacity; real 3,111B frame calls](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) |
 | `Player::movement_mode` / `set_movement_mode` / `set_secondary_option_field_fc` | `0x004FF870` / `0x004FFF10` / `0x004FB340` | **23 / 75 / 90** | [whole Player mode and secondary option native ABI](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md) |
 | `Player::update_option_frame` / `IntPoint::to_vector3` | `0x004FA860` / `0x004FEE00` | **1,081 / 70** | [entire Player option gameplay boss and true ECX callback ABI](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md) |
@@ -463,9 +464,11 @@ owner gives **107/107 strict units in exactly
 Player/Dialogue/Ascii `$SG` identifiers were
 accepted only against independently real native
 string targets, reference offsets and full
-nonrelocation bytes. The original **3,111-byte
-Player::frame_changed** enclosing caller remains
-independently NONEXACT. No unfiltered full cold
+nonrelocation bytes. The original **3,111-byte unnamed Player
+main-frame** enclosing caller remains independently
+NONEXACT. The historical `Player::frame_changed`
+name was wrong (distinct exact native 25B at
+`0x004C0CE0`). No unfiltered full cold
 replay. [Independent entire Player option frame
 proof](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md).
 
@@ -525,6 +528,33 @@ independently. No repository-wide cold replay,
 duplicate physical byte or fake NOP padding.
 [Whole native evidence and honest 555B
 frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md).
+
+CORE/RECON-432 independently audits the entire original
+**3,111B / 783-instruction** *unnamed* Player main-frame
+routine at `0x004F9C30`, including its **67
+native E8 call fields, 37 PE HIGHLOW sites**
+and original live Player/Input/Option fields.
+**Do not call this original `Player::frame_changed`**:
+that decorated source name already belongs to a
+different **25B exact original member** at
+`0x004C0CE0`. The original 3,111B body still
+remains nonexact.
+CORE/EXACT-433 closes two real native original
+game callees: **22B** `PlayerValues<IntPoint,33>::at`
+at `0x0045D670` (three direct original calls),
+and **25B** `InputButtonState::replay_current_bits`
+at `0x004973A0` (ten calls to real input word
+`+0x29C`). Thus **58/67 original direct call sites**
+now have independently canonical-exact callees;
+the other nine still include the separate full
+nonexact 555B Player movement boss. The only
+affected existing source objects were
+`src/PlayerAccessors.cpp` and `src/InputState.cpp`:
+**17/17 actual scoped strict units in two
+cold objects**, with no full-repository replay or
+duplicate exact bytes.
+[Complete original Player 3,111B call graph and
+corrected identity](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md).
 
 ## Open complete-function roots — next agent's priorities
 

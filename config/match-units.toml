@@ -19674,3 +19674,27 @@ symbol = "?size@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QBEIXZ"
 target_address = 0x004FFFE0
 size = 16
 relocations = []
+
+# CORE/EXACT-433: entire original game-owned Player-frame helper;
+# native caller at 0x004F9C30 independently decoded, no E8/HIGHLOW.
+[units.player_history_index_33]
+source = "src/PlayerAccessors.cpp"
+object = "build/core307-canonical/PlayerAccessors.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerValues<IntPoint,33>::at"]
+symbol = "?at@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAEAAUIntPoint@2@H@Z"
+target_address = 0x0045D670
+size = 22
+relocations = []
+
+# CORE/EXACT-433: entire original game-owned Player-frame helper;
+# native caller at 0x004F9C30 independently decoded, no E8/HIGHLOW.
+[units.input_replay_current_bits]
+source = "src/InputState.cpp"
+object = "build/core141-canonical/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::replay_current_bits"]
+symbol = "?replay_current_bits@InputButtonState@th20@@QBEII@Z"
+target_address = 0x004973A0
+size = 25
+relocations = []

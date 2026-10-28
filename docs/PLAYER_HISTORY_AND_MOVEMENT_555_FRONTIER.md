@@ -185,3 +185,30 @@ through `batch4.log`, and
 `.analysis/core429-reconciled-private-symbols.json`.
 
 No unfiltered full repository cold replay was run.
+
+
+## CORE/EXACT-433 — subsequent actual native history index/input callee closure
+
+The entire original **3,111-byte Player main frame**
+at `0x004F9C30` is now independently audited
+as **783 original x86 instruction heads, 67
+direct E8 fields and 37 PE HIGHLOW sites**.
+The newly exact **22-byte**
+`PlayerValues<IntPoint,33>::at(int)` at
+`0x0045D670` is called three times by the
+native 33-history shifter. The genuine
+`InputButtonState::replay_current_bits` at
+`0x004973A0`, 25B whole exact, is called ten times
+by the same original parent. Both complete bodies
+have no external relocations and were independently
+native x86 verified; **17/17 strict units in two
+cold source objects** pass. These new separate
+functions do not credit extra bytes to the exact 16B
+size accessor or the **still nonexact** 555B
+movement C++ source from the earlier checkpoint.
+Historical naming of the 3,111B parent as
+`Player::frame_changed` is mistaken: that is
+already a **different** 25B canonical method at
+`0x004C0CE0`.
+See [the immutable 3,111B native call graph and
+two exact original callees](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md).

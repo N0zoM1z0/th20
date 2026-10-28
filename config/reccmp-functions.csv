@@ -1147,3 +1147,5 @@ th20::Player::set_movement_mode,0x004FFF10,function
 th20::Player::set_secondary_option_field_fc,0x004FB340,function
 "th20::PlayerValues<IntPoint,33>::size",0x004FFFE0,function
 th20::Player::apply_move_delta,0x004FFA10,function
+"th20::PlayerValues<IntPoint,33>::at",0x0045D670,function
+th20::InputButtonState::replay_current_bits,0x004973A0,function

@@ -4,6 +4,11 @@ std::uint32_t InputButtonState::current_bits(std::uint32_t mask) const {
     return current & mask;
 }
 
+// Actual Player frame replay-mask read, from this receiver's native +0x29C.
+std::uint32_t InputButtonState::replay_current_bits(std::uint32_t mask) const {
+    return replay_current & mask;
+}
+
 std::uint32_t InputButtonState::held_frame_count(std::uint32_t index) const {
     return current_bits(1u << index) ? held_frames[index] : 0;
 }

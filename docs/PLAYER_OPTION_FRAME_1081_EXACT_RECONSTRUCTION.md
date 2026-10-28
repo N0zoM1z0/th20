@@ -28,7 +28,17 @@ and
 
 ## Independent native caller and concrete typed ownership
 
-The **3,111-byte** original `Player::frame_changed` at
+**Updated identity (CORE/RECON-432):** The old tentative name
+`Player::frame_changed` at `0x004F9C30` was wrong.
+A completely different **25B exact canonical**
+`Player::frame_changed()` already exists at
+`0x004C0CE0`. The enclosing 3,111B body is
+currently an unnamed, independently nonexact
+Player main-frame routine. See its
+[full native 783-instruction call-graph audit](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md).
+
+
+The **3,111-byte** original *unnamed Player main-frame routine* at
 `0x004F9C30` calls the option-frame routine at **two separate
 original call sites**, once per source-array traversal. Its
 real receiver is `Player*` in ECX and its single stack argument

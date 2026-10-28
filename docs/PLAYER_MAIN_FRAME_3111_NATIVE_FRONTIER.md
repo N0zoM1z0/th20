@@ -1,0 +1,138 @@
+# CORE/RECON-432 / CORE/EXACT-433 — full original 3,111B Player frame call graph and two exact native callees
+
+Immutable original: Japanese TH20 v1.00a Steamless executable,
+whole SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
+
+**The complete 3,111-byte enclosing Player main-frame routine remains
+NONEXACT.** The present work independently audits its *whole original*
+machine-code flow and closes two separate game-owned methods it
+actually calls. No bytes of the 3,111-byte parent are credited
+by exactness of its children.
+
+## Complete original 3,111-byte body and corrected identity
+
+The original physical interval `0x004F9C30..0x004FA856` contains
+**3,111 bytes / 783 fully decoded i386 instructions**, SHA-256
+`7f0bff5c2e175ff3d223c9e958fd908e39016b136fd1ff0eb0e1ce0cf6672467`.
+Independent native E8 displacement decoding yields **67 direct call sites**
+to **36 unique native addresses**; the original PE `.reloc` section
+has **37 original HIGHLOW absolute fields** in this entire function.
+Each site and target is recorded in
+`.analysis/core432-player-main-native-original-callgraph.json`.
+
+**Critical correction of old notes:** this 3,111B routine was previously
+loosely called `Player::frame_changed`. That name is already the
+distinct existing **25-byte strict canonical** `Player::frame_changed()`
+at **`0x004C0CE0`**, unit `player_frame_changed`. It reads
+the actual Player Timer at `+0x644`. Never assign that decorated
+name/ABI to the still-unnamed 3,111B parent at `0x004F9C30`.
+An attested read-only Ghidra 12.1.3 decompilation of only this
+original parent is preserved privately as
+`.analysis/core430-player-main-frame-decompile.txt`;
+it is a research hypothesis, not the original-byte oracle.
+
+## Audited entire gameplay phases
+
+1. **Input and movement modes:** resolve the true Player input source
+   through native `view_index` at `Player+0x14854`, process movement
+   mode bits 6–7 and `timer_2070` transitions, call the complete
+   75-byte native movement-mode setter and 90-byte option-delay
+   broadcaster. Input masks 0x50, 0x60, 0x90, 0xA0, 0x20, 0x10,
+   0x40, 0x80 and focus bit 8 use the genuine InputButtonState.
+2. **Focus and animation:** consume live Context and `timer_654`,
+   update focused byte at `+0x204C`, previous fixed positions and
+   the true Player AnimationHandle and movement effects.
+3. **Game movement and speed:** select x/y directions from original
+   `0x00572C48` table indexed by `Player+0x67C`, apply focused/
+   unfocused speed fields at `+0x20B4..+0x20C0` and original
+   `+0x20EC` motion scale. Call the separate real
+   `Player::apply_move_delta(int,int)` at original parent offset
+   **`+0x9EF`**. That 555B original has complete maintained
+   C++ source, but remains **NONEXACT** (561B/136 instructions
+   versus 555B/135; one extra SSE spill), so receives zero exact
+   credit. [Independent full motion source](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md).
+4. **33-point history:** shift genuine 8-byte `IntPoint` values
+   in the 33-entry `Player+0x20FC` coordinate history.
+   The previously exact 16B size method at `0x004FFFE0`
+   is called three times, at parent `+0xA58`, `+0xA81`,
+   `+0xAC0`. The new exact 22B indexed accessor is called
+   at **`+0xA93`, `+0xAD2` and `+0xB1C`**. Store the actual
+   Player fixed coordinate at history index zero.
+5. **Two full option arrays:** walk the true ten-primary and
+   twelve-secondary 300-byte `PlayerOption` records and call
+   the independently exact **1,081-byte Player per-option frame**
+   at `0x004FA860`, twice at `+0xBA4` and `+0xBFD`.
+   Maintain the original option frame counter and state flags.
+
+This analysis is of the full original native body. The source
+implementation of the entire 3,111B parent is still open.
+
+## Two independently complete native methods admitted in CORE/EXACT-433
+
+| Physical game-owned original | Entry | Entire original | Original instructions | Direct parent calls |
+| --- | --- | ---: | ---: | ---: |
+| `PlayerValues<IntPoint,33>::at(int)` | `0x0045D670` | **22/22B** | **10/10** | 3 |
+| `InputButtonState::replay_current_bits(uint32_t) const` | `0x004973A0` | **25/25B** | **10/10** | 10 |
+
+**47 new nonoverlapping exact original bytes**; full immutable SHA-256
+values respectively
+`dfb4f7584787b079a479a612acfdfe25e88554f36f15b23a16e771443d887b78`
+and
+`2fe8bdf4fdc96bdc23b57337fc6eb66bae8f9537376e754e49cf400210023b53`.
+
+The 22B getter has the actual `PlayerValues<IntPoint,33>`
+receiver in ECX and a stack index, returning `IntPoint&` via
+`lea eax,[ecx+eax*8]`, then native `ret 4`.
+Its class template method was already declared, and is now
+implemented by natural `values[index]` in the existing
+`src/PlayerAccessors.cpp` original canonical provider.
+
+The 25B input getter is an actual `InputButtonState`
+member: it reads the live `replay_current` word at
+**receiver+0x29C**, intersects it with a by-value
+input mask and returns the result. Its true 0x2C0-byte
+source class and the newly added field offset assertion
+are in `src/InputState.hpp`; the method lives in the
+existing `src/InputState.cpp` canonical object.
+The original 3,111B parent calls this method ten times
+as independently decoded original E8 sites, not from
+compiler-generated test scaffolding.
+
+The complete original 22B and 25B functions each have
+**zero original direct E8 calls and zero PE HIGHLOW fields**.
+Their 20 original instruction heads and full bytes match
+the same pinned MSVC 19.44 i386 `/Od /Ob0` source profiles
+as the preexisting real game owners. Immutable whole
+original boundaries, SHA and true parent call offsets:
+`.analysis/core433-history-input-original-pe-proof.json`.
+
+## Whole parent call-graph status and focused strict replay
+
+Before these two native methods were admitted, 45 of
+the original parent's 67 direct call sites led to
+already canonical-exact native function bodies.
+The **3+10** original call sites to these two real
+new methods bring that count to **58/67 original
+direct calls**. **Nine** calls remain to noncanonical
+callees, including the still-nonexact 555-byte Player
+movement function, input provider dispatch,
+gameplay-state event and animation state methods.
+The 3,111-byte parent remains **NONEXACT**.
+
+The Player history `at(int)` method requires **no new
+shared Player header**, because it was already declared;
+its existing `PlayerAccessors.cpp` owner grows from
+four to **five** exact units. The Input replay mask
+getter adds its true declaration and field-offset assertion
+in `InputState.hpp`. Actual *pre-edit compiler receipts*
+for that header established exactly **one affected
+source provider with eleven old strict units**, namely
+`InputState.cpp`. Its owner now has twelve exact units.
+Thus only **two** real source providers were cold rebuilt:
+**17/17 strict original units across two cold objects**.
+The complete scoped proof is
+`.analysis/core433-history-input-scoped-replay.log`;
+the original include closure is
+`.analysis/core431-input-preedit-closure.json`.
+No global cold replay, original executable patching,
+duplicate native credit or manual instruction padding.

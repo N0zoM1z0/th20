@@ -18,6 +18,8 @@ struct InputButtonState {
     void reset_replay();
     void update_replay();
     std::uint32_t current_bits(std::uint32_t mask) const;
+    // Native 25B current replay-input masked bits, original offset +0x29C.
+    std::uint32_t replay_current_bits(std::uint32_t mask) const;
     // Physical button index must be in 0..31; the receiver must be valid.
     std::uint32_t held_frame_count(std::uint32_t index) const;
     std::uint32_t pressed_bits(std::uint32_t mask) const;
@@ -26,6 +28,7 @@ struct InputButtonState {
 static_assert(sizeof(InputButtonState) == 0x2c0);
 static_assert(offsetof(InputButtonState, held_frames) == 0x198);
 static_assert(offsetof(InputButtonState, held8) == 0x2b0);
+static_assert(offsetof(InputButtonState, replay_current) == 0x29c);
 
 struct InputDevice {
     std::int32_t kind, logical_index;

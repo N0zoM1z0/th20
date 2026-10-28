@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Complete 3,111B Player main-frame original PE call-graph audit + 47B exact history/replay-input methods](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) — 783 original instructions, 67 E8/37 HIGHLOW native fields, independently corrected identity distinct from the existing 25B frame_changed member; exact 22B 33-history index and 25B replay mask, 17/17 scoped strict units in two cold objects. 3,111B parent remains NONEXACT.
+
 - [16B exact Player history-array size + complete 555B Player movement nonexact source](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) — full original 16/16 capacity unit with three independent calls from 3,111B Player frame; natural whole 555B movement/clamp C++ currently emits 561B / 136 instructions (135/135 original mnemonic kinds ordered, one extra 6B SSE spill), explicitly **NONEXACT**. 70/70 scoped original units in 25 cold providers.
 
 - [Three exact whole Player mode/secondary-option functions, 188 original bytes](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md) — complete 23B getter, 75B bit-field assignment/Timer mode setter, 90B twelve-entry secondary option delay update; three original E8 fields and 84/84 actual affected strict units in 28 cold source objects. The 3,111B Player frame caller remains open.
