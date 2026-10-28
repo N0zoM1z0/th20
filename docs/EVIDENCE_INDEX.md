@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact complete 145B Player drawing callback](PLAYER_DRAW_EXACT_RECONSTRUCTION.md) — all 43 instructions, eight PE-verified original references and 57/57 affected-only strict units across 22 fresh MSVC objects; Renderer flush remains external.
+
 - [Entire 661B rotated rectangle/circle Player hit/graze boss exact](PLAYER_ROTATED_COLLISION_661_EXACT_RECONSTRUCTION.md) — two original full 669B geometry calls, 181 x86 instructions, 24 independently attested native relocations, 42/42 scoped strict native units.
 
 - [Exact Player spatial reference and direction](PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md) — complete 19B and 157B original native methods, 7 original relocation anchors, 32/32 affected-only strict units; the original 339B firing caller is now exact (emitter remains nonexact).

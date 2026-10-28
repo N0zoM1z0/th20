@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82055", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82056", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -17829,7 +17829,7 @@ relocations = [
   { offset = 0x7F, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x90, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x97, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
-  { offset = 0xC0, type = "DIR32", symbol = "$SG183023", target = 0x0056FD14 },
+  { offset = 0xC0, type = "DIR32", symbol = "$SG183024", target = 0x0056FD14 },
   { offset = 0xCC, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 0xF0, type = "REL32", symbol = "?store_cancel_handle@BulletController@th20@@QAEXHI@Z", target = 0x00486390 },
   { offset = 0x110, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
@@ -18530,4 +18530,25 @@ relocations = [
   { offset = 0x269, type = "REL32", symbol = "?greater_than@Timer@th20@@QBE_NH@Z", target = 0x00461070 },
   { offset = 0x27C, type = "REL32", symbol = "?apply_player_hit@Player@th20@@QAEXXZ", target = 0x004F86F0 },
   { offset = 0x28B, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/EXACT-301: original 145-byte Player drawing root, 43 instructions,
+# three original PE-base relocations and five independent native call targets.
+[units.player_draw]
+source = "src/PlayerDraw.cpp"
+object = "build/core301-canonical/PlayerDraw.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::draw"]
+symbol = "?draw@Player@th20@@QAEHXZ"
+target_address = 0x004F8AF0
+size = 145
+relocations = [
+  { offset = 0x0B, type = "REL32", symbol = "?state_value@Player@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x29, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x2E, type = "REL32", symbol = "?select_draw_layer@AnimationPoolOwner@th20@@QAEXHH@Z", target = 0x0044F3D0 },
+  { offset = 0x36, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x74, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x79, type = "REL32", symbol = "?draw@AnimationPoolOwner@th20@@QAEHPAUAnimation@2@@Z", target = 0x00443880 },
+  { offset = 0x7F, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x84, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
 ]

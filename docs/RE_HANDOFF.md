@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; checkpoint `e7fa30d`.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-301 Player drawing checkpoint.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,092** |
-| Canonical strict native units | **1,083** |
-| Unique canonical object providers | **212**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **295**, covering **78,921 native bytes** |
+| Source-present mappings, all origins | **1,093** |
+| Canonical strict native units | **1,084** |
+| Unique canonical object providers | **213**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **296**, covering **79,066 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 212 current canonical object/receipt pairs, native proof documents,
+The 213 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::draw` | `0x004F8AF0` | **145** | [draw and flush](PLAYER_DRAW_EXACT_RECONSTRUCTION.md) |
 | `Player::collision_rectangle_circle` | `0x004F91D0` | **661** | [rotated hit/graze](PLAYER_ROTATED_COLLISION_661_EXACT_RECONSTRUCTION.md) |
 | `BulletController::rebuild_active_bullets` | `0x0047D600` | **863** | [active frame, six draw groups](BULLET_ACTIVE_UPDATE_863_EXACT_RECONSTRUCTION.md) |
 | Bullet aim direction-mode selector | `0x00485740` | **434** | [aim modes](BULLET_AIM_SELECTOR_EXACT_RECONSTRUCTION.md) |
@@ -58,6 +59,10 @@ See the ledgers for all earlier accepted small/medium functions, including
 Timer, Bullet command 0/1/2/3/7/8/9/10, reflection, drawing orchestration,
 AnimationHandle and Player direction. Original compiler padding, data
 jump tables and shared/folded helper aliases **must not be double counted**.
+
+The new `Player::draw()` preserves all eight native Renderer references and
+was revalidated with **57/57** scoped exact units across **22** cold objects,
+including all 21 previously exact header consumers. See the focused proof.
 
 ## Open complete-function roots — next agent's priorities
 

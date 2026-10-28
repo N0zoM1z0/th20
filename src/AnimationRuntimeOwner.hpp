@@ -14,6 +14,7 @@ struct AnimationPoolOwner {
     std::int32_t release_animation(Animation* animation);
     void select_draw_layer(std::int32_t layer, std::int32_t view_index);
     std::int32_t draw(Animation* animation);
+    void flush_draws();
     AnimationFile* file_by_index(std::int32_t index);
     void select_view(std::int32_t view_index);
     Animation* resolve_handle(std::uint32_t index);
