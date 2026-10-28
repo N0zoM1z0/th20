@@ -1055,7 +1055,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043DCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043DF30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043E2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043E910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0043E910,authored,BulletGeometry,authored,high,"CORE/EXACT-256; docs/BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md; Original exact 155B Vector2 conditional normalization: scalar_math::square_root of squared length, geometry::absolute, native 0.01f epsilon 0x0056E1A0, then copy original two-lane value if small or divide both lanes if large. All 3 native original relocations attested. Whole 155/155 bytes; four original callers in command11 boss."
 0x0043E9B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043EB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043EB40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2296,8 +2296,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047DB70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047DC90,authored,Bullet,authored,high,"CORE/EXACT-225; docs/BULLET_DRAW_GROUPS_EXACT_RECONSTRUCTION.md; complete six-group BulletController game draw orchestration, independently grounded native original callers and process Renderer constant layer 12, 81B/three relocations strict"
 0x0047DCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00480D30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00480D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00480D30,authored,BulletGeometry,authored,high,"CORE/EXACT-256; docs/BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md; Original exact 50B 2D Vector2 cross product, x*y - y*x, real x87 ST0 float return, 50/50 complete native bytes, 0 relocations. Four complete original callers in 1404B Bullet command-11 boss."
+0x00480D70,authored,BulletGeometry,authored,high,"CORE/EXACT-256; docs/BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md; Original exact 50B 2D Vector2 dot product, x*x + y*y, real x87 ST0 float return, 50/50 complete native bytes, 0 relocations. Four complete original callers in 1404B Bullet command-11 boss."
 0x00480DB0,authored,Bullet,authored,high,CORE/EXACT-245; docs/BULLET_COMMAND7_EXACT_RECONSTRUCTION.md; original game-owned Bullet player direction/vector interpolation with complete 493B/21-native relocation proof and independent entire native Player/Vector3/Timer callees
 0x00480FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00481200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

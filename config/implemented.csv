@@ -1067,3 +1067,6 @@ th20::AnimationHandle::set_position
 th20::AnimationPoolOwner::set_handle_position
 std::pmr::vector<th20::BulletCommand>::operator[]
 std::pmr::vector<th20::BulletCommand>::size
+th20::cross_components
+th20::dot_components
+th20::normalize_vector2

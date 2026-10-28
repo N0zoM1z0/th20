@@ -17936,3 +17936,19 @@ symbol = "?size@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCo
 target_address = 0x00486600
 size = 41
 relocations = []
+
+# CORE/EXACT-256: three complete original Bullet command11 Vector2 geometry
+# helpers. Native geometry call identities were independently attested.
+[units.bullet_command11_normalize]
+source = "src/BulletCommand11Geometry.cpp"
+object = "build/core256-canonical/BulletCommand11Geometry.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::normalize_vector2"]
+symbol = "?normalize_vector2@th20@@YAXAAUVector2@1@ABU21@@Z"
+target_address = 0x0043E910
+size = 155
+relocations = [
+  { offset = 0x2F, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+  { offset = 0x45, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+  { offset = 0x53, type = "DIR32", symbol = "?native_0_01@th20@@3MB", target = 0x0056E1A0 },
+]

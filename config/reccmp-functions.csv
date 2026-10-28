@@ -1068,3 +1068,6 @@ th20::AnimationHandle::set_position,0x004502C0,function
 th20::AnimationPoolOwner::set_handle_position,0x00450270,function
 std::pmr::vector<th20::BulletCommand>::operator[],0x0047C6C0,function
 std::pmr::vector<th20::BulletCommand>::size,0x00486600,function
+th20::cross_components,0x00480D30,function
+th20::dot_components,0x00480D70,function
+th20::normalize_vector2,0x0043E910,function
