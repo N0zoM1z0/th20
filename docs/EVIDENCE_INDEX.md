@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Entire 2,018B Bullet hit/graze collision boss exact](BULLET_COLLISION_2018_EXACT_RECONSTRUCTION.md) — whole 532-instruction source with 81 independent native relocation sites, 1,694 non-relocation bytes and 299/299 scoped strict units across 53 rebuilt objects.
+
 - [Complete exact native 23B/46B Timer collision operators](TIMER_BULLET_COLLISION_EXACT_RECONSTRUCTION.md) — authentic signed current-frame scaling and nonzero animation predicate, 631/631 actual affected-only strict units across 114 cold objects.
 
 - [Complete original 51B AnimationHandle resolve and 44B Bullet handle-valid wrapper](BULLET_COLLISION_HANDLE_EXACT_RECONSTRUCTION.md) — three original native call/data relocations, corrected full-int ABI and 2/2 new strict units; full 2,018B collision parent remains nonexact.

@@ -64,6 +64,7 @@ public:
     bool focused_mode();
     std::int32_t state_value() const;
     void apply_player_hit();
+    void record_bullet_graze(const Vector3& position, std::uint32_t bullet_color);
     std::int32_t collision_rectangle(const Vector3& bullet_position,
                                     const Vector2& extents, std::int32_t mode);
     std::int32_t collision_circle(const Vector3& bullet_position,

@@ -47,6 +47,35 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/EXACT-283 (web) completes **the entire 2,018B** original
+`Bullet::process_collision(int)` at `0x00484A20`, **532 original x86
+instructions**, **81 native relocation sites** (68 direct calls, 13
+original data references) independently derived from actual PE
+instruction operands, **2,018/2,018 strict original bytes** and
+**1,694/1,694 native non-relocation bytes**. Natural typed source:
+`src/BulletCollision.cpp` with full 2x2 Player circle/rectangle
+classification, real native Animation/handle hidden returns, hit state,
+3-stage graze reward RNG/weapon feedback, Timer age and fade RGBA.
+The exact native `10.0f` is a literal, the true BulletColor getter
+`0x0040C300` is a **shared original 16B entry already counted once**
+as `Identifier32::get`, and the native false branch falls through to
+one shared return. No duplicate owner or invented code is credited.
+Changed narrow methods in `Bullet.hpp`, `Player.hpp`, `PlayerRecord.hpp`
+affect **52 old source providers / 298 prior strict native units**:
+all 52 freshly compiled and **298/298 native exact**, including
+complete 1,846B physics, 662B cancel, 781B wrap and both Player
+circle/rectangle bosses. With the new full collision function
+**299/299 scoped native units across 53 cold objects**. Only private
+`$SG` string symbol numbering changed without relocating any original
+target. **No unfiltered whole-repository cold replay.** See
+[entire original 2,018B Bullet collision exact proof](BULLET_COLLISION_2018_EXACT_RECONSTRUCTION.md).
+Live authored totals **292 exact functions / 76,963 native bytes**.
+Remaining large nonexact whole roots: **1,404B** Bullet command11,
+**273B** single-group draw, **3,735B** shot emitter, **12,140B**
+Bullet command sequencer and **41,967B** Enemy ECL opcode dispatcher.
+Historical older collision nonexact statements are dated snapshots.
+
+
 CORE/EXACT-280 (web) closes two additional complete original native
 `Timer` methods used in the still nonexact **2,018B Bullet collision
 root**: **23B** `Timer::operator*(int)` at `0x0045C2E0` and **46B**

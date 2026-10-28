@@ -19,6 +19,7 @@ struct BulletStyle;
 struct BulletColor {
     std::uint32_t value;
     BulletColor();
+    std::uint32_t get() const;
 };
 // The native low word has a two-bit cancellation effect mode in bits 11..12.
 // Keep the full raw word for the existing independent flag consumers.
