@@ -204,7 +204,7 @@ objects**, with no whole-repo replay.
 
 ## Subsequent CORE/EXACT-454 whole Player input-source accessor
 
-The genuine `InputController::for_view(int)`
+The genuine input lookup (now RTTI-corrected as `InputInf::for_view(int)`)
 at `0x00498FB0` is now a separate complete
 **26-byte / 10-instruction strict native exact**
 method. It receives the actual runtime controller
@@ -260,3 +260,28 @@ the original include closure is
 `.analysis/core431-input-preedit-closure.json`.
 No global cold replay, original executable patching,
 duplicate native credit or manual instruction padding.
+
+
+## Subsequent CORE/EXACT-455 original InputInf owner correction
+
+Fresh independent original PE RTTI at `0x005B41F8`
+names the owner of the already exact 26-byte
+`0x00498FB0` input source accessor **`InputInf`**,
+not the provisional `InputController` owner
+recorded at CORE/EXACT-454 time. The complete
+original 261B constructor `0x0041F8A0` actually
+builds twelve 0x3D4 InputDevice records at +0x20,
+two 32-bit view pointers at +0x2E30, and four
+0x30 InputBindings records at +0x2E38.
+The maintained 26B method now indexes genuine
+`InputInf::active_buttons[logical_index]`,
+with strict x86 offsets and original bytes unchanged.
+This is a **type/source ownership correction**;
+it adds **zero new exact game-original bytes**.
+Affected cold sources passed **13/13 strict
+units in two objects**, plus the separate
+1,081B exact Player option frame was rechecked.
+The 3,111B main-frame still has **66/67**
+exact callees, and its remaining 555B motion
+callee and entire parent stay NONEXACT.
+[Original RTTI and typed input owner proof](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md).

@@ -1155,4 +1155,4 @@ th20::AnimationHandle::set_position_forward,0x004645E0,function
 th20::SoundInf::request_effect,0x00426D70,function
 th20::AnimationPoolOwner::interrupt_handle,0x0044EE90,function
 th20::AnimationHandle::interrupt,0x0044EF90,function
-th20::InputController::for_view,0x00498FB0,function
+th20::InputInf::for_view,0x00498FB0,function

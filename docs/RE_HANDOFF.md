@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-454 complete native InputController Player view lookup.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-455 RTTI-corrected InputInf owner, original constructor layout.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -18,7 +18,7 @@ old reports and probe filenames are **not** current status.
 | Provisional target boundaries | 6,928 |
 | Source-present mappings, all origins | **1,157** |
 | Canonical strict native units | **1,158** |
-| Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
+| Unique canonical object providers | **230**, each with an exact `.obj` and `.receipt.json` |
 | Exact game-authored whole functions | **383**, covering **117,886 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 229 current canonical object/receipt pairs, native proof documents,
+The 230 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,7 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
-| `InputController::for_view` | `0x00498FB0` | **26** | [native Player view index / input pointer table ABI, no fake owner padding](INPUT_CONTROLLER_PLAYER_VIEW_26_EXACT_RECONSTRUCTION.md) |
+| `InputInf::for_view` | `0x00498FB0` | **26 (existing)** | [immutable PE RTTI InputInf, 261B original constructor and real input owner](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md) |
 | `AnimationPoolOwner::interrupt_handle` / `AnimationHandle::interrupt` | `0x0044EE90` / `0x0044EF90` | **246 / 35** | [whole native pool/handle animation child-interrupt protocol](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md) |
 | `SoundInf::request_effect` | `0x00426D70` | **320** | [whole sound request queue, channel cooldown, original PE volume table](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md) |
 | `AnimationHandle::is_valid` / `set_position_forward` | `0x0047A340` / `0x004645E0` | **45 / 26** | [full native handle validity and position forwarders](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) |
@@ -684,10 +684,13 @@ Player index `+0x14854`, and controller
 input pointer table `+0x2E30 + index*4`;
 the typed result is `InputButtonState*`
 and the original member has no E8 or PE
-HIGHLOW fields. The whole manager layout is
-still unknown: no fictitious 0x2E30-byte
-padding member or fake owner class size
-was added. Prior real `InputState.hpp`
+HIGHLOW fields. At CORE/EXACT-454 time, the manager
+prefix layout was not yet known, and the
+source deliberately avoided fake padding.
+CORE/EXACT-455 subsequently recovered its
+original RTTI `InputInf` name and constructor-
+observed device/slot/bindings prefix; the
+old partial owner is superseded. Prior real `InputState.hpp`
 compiler receipt closure had **one old
 source object / 12 strict units**; the
 new entire native method yields **13/13
@@ -703,6 +706,39 @@ NONEXACT (561B current source);
 the enclosing 3,111B parent is also
 NONEXACT. No whole-repository replay.
 [Whole native Player InputController proof](INPUT_CONTROLLER_PLAYER_VIEW_26_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-455 **corrects the owner, not the
+physical native match**, for the already strict
+original 26B input lookup at `0x00498FB0`.
+Independent original RTTI at `0x005B41F8`
+is **`.?AVInputInf@@`**; the original complete
+261B `InputInf` constructor at `0x0041F8A0`
+builds a real 16B TaskInfo base, 12×0x3D4
+InputDevices at +0x20, real state arrays
+and two `InputButtonState*` view slots at
++0x2E30, plus four 0x30 InputBindings at
++0x2E38. The previous partial and raw-pointer
+cast `InputController::for_view` source was
+retired in favor of real
+`InputInf::for_view`, whose 26/26 original
+bytes remain unchanged. **Do not add 26
+game exact bytes again.** The existing
+InputState owner is now 12/12 strict,
+the new InputInf owner 1/1, for **13/13
+changed-source strict units in two cold
+objects**. The 1,081B PlayerOptionFrame
+boss was additionally individually replayed
+1/1 after its old broad-input receipt
+became stale. Canonical provider count
+is **230**; authored exact function count
+**383** and original exact bytes **117,886**
+are unchanged. The 261B InputInf ctor,
+555B Player motion and 3,111B enclosing
+Player main frame remain **NONEXACT**;
+the enclosing frame still has **66/67**
+exact original direct-call targets. No
+whole-repository cold replay.
+[Immutable RTTI/InputInf layout proof](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

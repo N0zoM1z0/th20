@@ -17,7 +17,7 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
-- [Entire original 26B InputController Player view-index lookup — strict exact](INPUT_CONTROLLER_PLAYER_VIEW_26_EXACT_RECONSTRUCTION.md) — real global manager at 0x005B8898, actual pointer table +0x2E30, Player view index +0x14854, 26/26 whole native bytes; no fake huge class padding; 13/13 old+new InputState units in one cold source object. Player 3,111B parent now 66/67 exact callees, remains NONEXACT.
+- [RTTI-proven InputInf ownership of the same whole-exact 26B Player view lookup](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md) — corrected original RTTI name, 261B constructor, true TaskInfo + 12 native 0x3D4 InputDevices + two pointers at +0x2E30 + four bindings at +0x2E38; migrated the existing 26/26 strict unit to its real owner with **zero additional native credit**, 13/13 actually affected units in two cold objects.
 
 - [Two complete native AnimationHandle forwarders — 45B validity and 26B position](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) — actual resolve()/set_position call targets independently attested from original PE (two E8 fields), 71/71 whole original bytes, 27 instructions; 473/473 strict native units in 106 source objects from prior AnimationHandle.hpp compiler receipts. Player 3,111B parent stays NONEXACT.
 

@@ -1,15 +1,5 @@
 #include "InputState.hpp"
 namespace th20 {
-// Complete original 26-byte InputController logical-player input pointer
-// lookup. The receiver is the real global InputController at 0x005B8898;
-// its externally verified native +0x2E30 pointer table is read directly.
-// The owner's remaining storage/lifetime is deliberately not invented.
-InputButtonState* InputController::for_view(std::int32_t logical_index) {
-    return *reinterpret_cast<InputButtonState**>(
-        reinterpret_cast<std::uintptr_t>(this) + 0x2E30u
-        + static_cast<std::uint32_t>(logical_index) * sizeof(InputButtonState*));
-}
-
 std::uint32_t InputButtonState::current_bits(std::uint32_t mask) const {
     return current & mask;
 }

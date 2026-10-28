@@ -1,5 +1,22 @@
 # CORE/EXACT-454 — exact whole 26-byte Player input controller view lookup
 
+
+**Current ownership correction (CORE/EXACT-455):** The original
+immutable PE RTTI proves this receiver is actually
+`InputInf` (native `.?AVInputInf@@` at `0x005B41F8`).
+The separate original **261B InputInf constructor**
+at `0x0041F8A0` independently proves its TaskInfo base,
+12 real InputDevices at +0x20, two actual pointer
+slots at +0x2E30 and four InputBindings at +0x2E38.
+The early `InputController` and raw-pointer-cast
+implementation below are **historical and superseded**.
+The current `th20::InputInf::for_view` has the
+**same original 26/26 exact bytes** in a newly
+correct real typed `src/InputInf.cpp` provider:
+this ownership change adds **zero game-original exact
+bytes**. See the
+[original RTTI and real constructor layout proof](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md).
+
 Original comparison target: immutable TH20 Japanese v1.00a Steamless
 `resources/th20.exe`, whole SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

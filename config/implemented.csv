@@ -1154,4 +1154,4 @@ th20::AnimationHandle::set_position_forward
 th20::SoundInf::request_effect
 th20::AnimationPoolOwner::interrupt_handle
 th20::AnimationHandle::interrupt
-th20::InputController::for_view
+th20::InputInf::for_view

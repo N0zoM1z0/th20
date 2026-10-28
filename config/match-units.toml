@@ -19812,15 +19812,15 @@ relocations = [
   { offset = 0x18, type = "REL32", symbol = "?interrupt_handle@AnimationPoolOwner@th20@@QAEXIH@Z", target = 0x0044EE90 },
 ]
 
-# CORE/EXACT-454: complete original 26B InputController
-# player/view input state lookup via observed native pointer table +0x2e30.
-# No synthetic complete controller storage, and no relocations in body.
-[units.input_controller_for_view]
-source = "src/InputState.cpp"
-object = "build/core141-canonical/InputState.obj"
+# CORE/EXACT-455: reattribute existing exact 26B Player input lookup
+# to the original PE RTTI InputInf owner, ctor-proven 12 InputDevices and
+# live player pointer table +0x2E30. No new physical native byte credit.
+[units.input_inf_for_view]
+source = "src/InputInf.cpp"
+object = "build/core455-canonical/InputInf.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
-functions = ["th20::InputController::for_view"]
-symbol = "?for_view@InputController@th20@@QAEPAUInputButtonState@2@H@Z"
+functions = ["th20::InputInf::for_view"]
+symbol = "?for_view@InputInf@th20@@QAEPAUInputButtonState@2@H@Z"
 target_address = 0x00498FB0
 size = 26
 relocations = []
