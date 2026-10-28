@@ -49,10 +49,13 @@ are excluded from Git.
 
 ## Repository status
 
-The maintained graph has **1,021 source-present mappings**, **1,012 physical strict
-units** and **169 comparison objects** covering 183,228 disjoint comparison bytes.
-Nine mapped whole functions remain nonexact. Confirmed authored exactness is
-separately 226 functions / 58,837 bytes; it is not whole-game completion.
+As of the October 28, 2026 checkpoint, the maintained graph has **1,092
+source-present mappings**, **1,083 canonical strict units** and **212
+canonical object providers**. Verified game-authored exactness is **295
+complete functions / 78,921 original bytes**; this does *not* establish
+whole-game buildability or a playable game. These counts are dated snapshots:
+run `scripts/repo-python scripts/report-reconstruction-status.py --summary`
+for the live inventory rather than treating this README as a status oracle.
 
 | Area | Current position |
 | --- | --- |

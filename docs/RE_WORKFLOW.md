@@ -166,3 +166,24 @@ checking their terminal success marker and successful test summary. Record the
 original path, original SHA-256, archive path and archive SHA-256 in the private
 retirement inventory; verify decompressed bytes before removing the original.
 Keep current CI evidence, failed logs, native exports and active inputs intact.
+
+## Protected storage and ignored artifact retirement (CORE/CLEANUP-300)
+
+Treat `build/` as a regenerable object cache, **not** as a stable evidence
+archive. The live `config/match-units.toml` is the source of truth for
+protected canonical objects; each currently selected object also has a
+corresponding `.receipt.json` describing its actual included headers.
+Never retire either file, or any original executable, source/toolchain,
+private Ghidra database, original native disassembly or cited research
+snapshot. Do not run whole-graph replay for documentation and storage
+cleanup if native compiler inputs are unchanged.
+
+The completed [CORE/CLEANUP-300 audit](ARTIFACT_RETIREMENT_2026_10_28.md)
+retired 2,496 obsolete ignored products and reclaimed 203.65 MiB,
+without touching 212 canonical object/receipt pairs. The private
+`.analysis/core300-safe-artifact-prune.py` is dry-run by default,
+rechecks manifest/target protection and records deleted file names,
+sizes and SHA-256 values. Regenerate any retired private host or probe
+from retained source rather than treating legacy build outputs as
+exactness evidence. Preserve any ongoing nonexact source hypothesis
+privately before removing its speculative public declarations.

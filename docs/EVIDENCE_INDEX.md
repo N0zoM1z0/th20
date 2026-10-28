@@ -1,17 +1,25 @@
 # Focused evidence index
 
 These documents retain unique native observations, source contracts, compiler
-results, fixture domains and reference-review decisions. Counts and pending-work
-statements are dated to each document's checkpoint; later admissions do not
-retroactively change historical compiler receipts. For present status, use the
-[handoff](RE_HANDOFF.md), [source map](SOURCE_MAP.md), [progress](PROGRESS.md) and
-live ledgers. Superseded cumulative session logs remain available in Git history.
+results, fixture domains and reference-review decisions. Every checkpoint and
+host-scenario count is **dated historical evidence**, not a competing live
+status. Later exact admissions supersede earlier descriptions of their
+callers/parents as nonexact, without altering earlier receipts. For the live
+native exact inventory use the [current handoff](RE_HANDOFF.md),
+[generated progress](PROGRESS.md) and canonical source ledgers. Historical
+private `build/` paths may have been retired for storage; native evidence and
+cited private snapshots are retained, and disposable probe objects can be
+regenerated from original sources. The old 1,689-line handoff is in Git history.
+
+## Workflow and storage
+
+- [CORE/CLEANUP-300 artifact retirement and protected storage](ARTIFACT_RETIREMENT_2026_10_28.md) — 2,496 obsolete ignored files / 203.65 MiB retired, every canonical object/receipt and native target preserved, recorded SHA/path inventory.
 
 ## Player
 
 - [Entire 661B rotated rectangle/circle Player hit/graze boss exact](PLAYER_ROTATED_COLLISION_661_EXACT_RECONSTRUCTION.md) — two original full 669B geometry calls, 181 x86 instructions, 24 independently attested native relocations, 42/42 scoped strict native units.
 
-- [Exact Player spatial reference and direction](PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md) — complete 19B and 157B original native methods, 7 original relocation anchors, 32/32 affected-only strict units; original firing caller remains nonexact.
+- [Exact Player spatial reference and direction](PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md) — complete 19B and 157B original native methods, 7 original relocation anchors, 32/32 affected-only strict units; the original 339B firing caller is now exact (emitter remains nonexact).
 
 ## Animation and rendering
 
@@ -44,7 +52,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 - [Complete exact native 23B/46B Timer collision operators](TIMER_BULLET_COLLISION_EXACT_RECONSTRUCTION.md) — authentic signed current-frame scaling and nonzero animation predicate, 631/631 actual affected-only strict units across 114 cold objects.
 
-- [Complete original 51B AnimationHandle resolve and 44B Bullet handle-valid wrapper](BULLET_COLLISION_HANDLE_EXACT_RECONSTRUCTION.md) — three original native call/data relocations, corrected full-int ABI and 2/2 new strict units; full 2,018B collision parent remains nonexact.
+- [Complete original 51B AnimationHandle resolve and 44B Bullet handle-valid wrapper](BULLET_COLLISION_HANDLE_EXACT_RECONSTRUCTION.md) — three original native call/data relocations, corrected full-int ABI and 2/2 new strict units; the original whole 2,018B collision parent is now exact (see its newer proof).
 
 - [Whole exact 466B Player circle collision and real 73B/23B record/flag methods](PLAYER_COLLISION_CIRCLE_EXACT_RECONSTRUCTION.md) — complete 121-instruction native circle graze/hit path, 18 original relocations and 562B newly exact, all 252/252 scoped old/new native units.
 
@@ -54,7 +62,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 - [Whole original 1,846B Bullet physics boss exact with four-way switch table](BULLET_PHYSICS_1846_EXACT_RECONSTRUCTION.md) — 517 native instructions; complete 1,864B code/align/table contribution, 84 independently checked relocated sites; 66/66 scoped old/new strict units.
 
-- [Full 1,846B Bullet physics state machine and original four-way table audit](BULLET_PHYSICS_1846_NATIVE_FRONTIER.md) — independent complete 517-instruction boss audit, 1,872B total native code/table/alignment contribution; three entire C++20 probes improve to 490/517 instruction types but remain nonexact.
+- [Historical 1,846B Bullet physics frontier (superseded)](BULLET_PHYSICS_1846_NATIVE_FRONTIER.md) — prior complete 517-instruction audit and rejected probes; the entire 1,846B body and original jump-table contribution are now exact (see the newer full proof above).
 
 - [Exact 255B command11 geometry dependency chain and 1,404B whole boss frontier](BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md) — three whole 50B/50B/155B native functions with three independently reviewed native relocations, plus a complete 357-instruction 1,404B parent candidate still nonexact.
 
@@ -72,7 +80,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 - [Exact 898B Bullet command3 boss and original seven-entry native switch table](BULLET_COMMAND3_EXACT_RECONSTRUCTION.md) — complete 898B native command function, 928B full compiler/table contribution, all 41 relocations and 60/60 shared-header closure units strict replayed.
 
-- [Exact two Bullet screen-wrap boundaries and complete 781B caller audit](BULLET_WRAP_BOUNDARY_EXACT_RECONSTRUCTION.md) — whole 176B and 181B functions with 19 original relocation anchors; original 781B four-way wrap boss remains nonexact.
+- [Exact two Bullet screen-wrap boundaries and complete 781B caller audit](BULLET_WRAP_BOUNDARY_EXACT_RECONSTRUCTION.md) — whole 176B and 181B functions with 19 original relocation anchors; the full 781B four-way wrap boss is now exact; this note is historical.
 
 - [Two exact full Bullet velocity/angle bosses and native XY magnitude](BULLET_COMMAND_VELOCITY_EXACT_RECONSTRUCTION.md) — whole original 471B/473B command paths and 25B actual ST0-return magnitude, 42 native relocations, 60/60 affected-only strict units.
 
@@ -80,23 +88,23 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 - [Complete exact native Bullet command-0 motion curve](BULLET_COMMAND0_EXACT_RECONSTRUCTION.md) — whole 267B/73-instruction timed speed update, 11 original relocations and 56/56 affected-only strict units; separate major Bullet bosses remain open.
 
-- [Exact native float Timer setter and assignment wrapper](TIMER_FLOAT_SET_EXACT_RECONSTRUCTION.md) — complete 103B plus 33B native functions with four original relocations, 597/597 genuinely affected Timer.hpp strict units across 96 source objects; 662B Bullet cancel remains open.
+- [Exact native float Timer setter and assignment wrapper](TIMER_FLOAT_SET_EXACT_RECONSTRUCTION.md) — complete 103B plus 33B native functions with four original relocations, 597/597 genuinely affected Timer.hpp strict units across 96 source objects; the original 662B Bullet cancel is now exact (historical frontier snapshot).
 
-- [Exact native 226-byte Bullet command9 motion/Timer update](BULLET_COMMAND9_EXACT_RECONSTRUCTION.md) — complete original state-bit/clock/Timer branch, 10 native relocations and 55/55 affected strict units; full 662B cancel and 3735B emitter remain open.
+- [Exact native 226-byte Bullet command9 motion/Timer update](BULLET_COMMAND9_EXACT_RECONSTRUCTION.md) — complete original state-bit/clock/Timer branch, 10 native relocations and 55/55 affected strict units; the 662B cancel is now exact; the 3,735B emitter remains nonexact.
 
-- [Exact complete 707-byte Bullet rectangular cancellation boss](BULLET_RECTANGLE_CANCELLATION_EXACT_RECONSTRUCTION.md) — full native 209-instruction gameplay loop and two original 669B geometry tests, all 25 relocations, 54/54 affected-only strict units; original child cancel remains open.
+- [Exact complete 707-byte Bullet rectangular cancellation boss](BULLET_RECTANGLE_CANCELLATION_EXACT_RECONSTRUCTION.md) — full native 209-instruction gameplay loop and two original 669B geometry tests, all 25 relocations, 54/54 affected-only strict units; the original 662B cancellation child is now exact.
 
 - [Exact complete 419B Bullet cancellation item drops and 136B edge predicate](BULLET_DROPS_AND_SCREEN_EXACT_RECONSTRUCTION.md) — whole native original gameplay branching, signed counter/RNG, real ItemInf calls and native four-edge SSE; 25 original relocations and 54/54 scoped strict units.
 
 - [Exact entire 388-byte Bullet std::function-filtered cancellation](BULLET_FILTERED_CANCELLATION_EXACT_RECONSTRUCTION.md) — authentic by-value 40B standard callable with full-EAX return and EH destructor, 17 original relocations, 52/52 affected-only strict units.
 
-- [Complete original 662-byte Bullet cancellation frontier audit](BULLET_CANCEL_662_NATIVE_FRONTIER.md) — independent 199-instruction/25-call boss analysis and whole-body compiler counterexamples; **not** an exact code admission.
+- [Historical original 662-byte Bullet cancellation frontier (superseded)](BULLET_CANCEL_662_NATIVE_FRONTIER.md) — independent 199-instruction/25-call analysis and rejected compiler probes; complete 662B cancel is now exact (see the newer admission above).
 
 - [Exact complete 401-byte bounded Bullet radius cancellation](BULLET_LIMITED_CANCELLATION_EXACT_RECONSTRUCTION.md) — whole native list/limit/early-exit gameplay boss, newly recovered real bits 11..12 of Bullet flags, all 16 native relocations, 51/51 affected strict units.
 
 - [Exact Bullet radial distance and original caller](BULLET_DISTANCE_EXACT_RECONSTRUCTION.md) — entire 122B native vector-difference/squared-distance predicate with full-EAX return and five independently verified relocations; existing 320B cancellation boss remains exact.
 
-- [Full native 320-byte Bullet radial cancellation boss](BULLET_SPATIAL_CANCELLATION_EXACT_RECONSTRUCTION.md) — complete game-owned active-list iterator and original distance/cancellation calls, all 14 native relocations, 50/50 affected-only exact units; underlying 662B single Bullet cancellation remains open.
+- [Full native 320-byte Bullet radial cancellation boss](BULLET_SPATIAL_CANCELLATION_EXACT_RECONSTRUCTION.md) — complete game-owned active-list iterator and original distance/cancellation calls, all 14 native relocations, 50/50 affected-only exact units; the underlying 662B single-Bullet cancel is now exact.
 
 - [Complete 242-byte Bullet cancel-all boss and 19-byte active-list getter](BULLET_CANCELLATION_EXACT_RECONSTRUCTION.md) — whole native iterator/SEH and true gameplay cancel protocol, thirteen original relocated fields, 49/49 actual affected units; corrects prior closure omission of 832B boundary boss.
 
@@ -106,11 +114,11 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 - [Exact entire 176-byte Bullet field rectangle test](BULLET_RECTANGLE_EXACT_RECONSTRUCTION.md) — all four ordered SSE edges, native center and real floats, seven original data relocations and 176/176 exact bytes; two original 832B boss call sites.
 
-- [Exact upper Bullet reflection](BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md) — complete 277B original upper Y mirror, thirteen original relocation anchors, 36/36 affected scoped units, closes the fourth independent bounce direction; native 832B caller remains open.
+- [Exact upper Bullet reflection](BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md) — complete 277B original upper Y mirror, thirteen original relocation anchors, 36/36 affected scoped units, closes the fourth independent bounce direction; the entire native 832B caller is now exact.
 
-- [Exact complete left and right Bullet reflections](BULLET_HORIZONTAL_REFLECTION_EXACT_RECONSTRUCTION.md) — 329B and 319B native whole functions, all thirty native relocations, 37/37 affected-only strict replay, original 832B bounding caller remains open.
+- [Exact complete left and right Bullet reflections](BULLET_HORIZONTAL_REFLECTION_EXACT_RECONSTRUCTION.md) — 329B and 319B native whole functions, all thirty native relocations, 37/37 affected-only strict replay, the entire native 832B boundary caller is now exact.
 
-- [Complete original Bullet vertical reflection and command access](BULLET_REFLECTION_EXACT_RECONSTRUCTION.md) — full 281-byte bounce/reflection with all 13 native relocations, true 22/17-byte command/vector helpers, 38/38 affected-only strict units; original 832-byte update handler remains nonexact.
+- [Complete original Bullet vertical reflection and command access](BULLET_REFLECTION_EXACT_RECONSTRUCTION.md) — full 281-byte bounce/reflection with all 13 native relocations, true 22/17-byte command/vector helpers, 38/38 affected-only strict units; the original 832B boundary handler is now exact; this is a historical frontier note.
 
 - [Bullet emitter dependency audit and corrected head insertion](BULLET_EMIT_FRONTIER_AUDIT.md) — original 3,735B boss dependency map, correction of an exact caller’s append/prepend semantic error, 338B Animation script setup structural-only probe and the unresolved original Animation allocator path.
 
@@ -137,7 +145,7 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Real exact queued selectors in the complete Enemy root host](ENEMY_WHOLE_ROOT_EXACT_QUEUED_SELECTOR_INTEGRATION.md) — production 396B/305B methods now execute inside all ten related opcodes; 230 new cases, 42,973/42,973 dual-sanitizer host checks; original 41,967B root still nonexact.
 - [Whole Enemy opcode 600 queue reset and PMR move](ENEMY_WHOLE_ROOT_OPCODE_600_RESET.md) — original complete 403B branch, true ShotParameters/EtamaArgInf move, vector_34.z bit preservation, 152 new tests and 43,125 dual-sanitizer whole-root scenarios; x86 root nonexact.
 - [Exact BulletController scalar from original Enemy 601](ENEMY_BULLET_SCALAR_601_DEPENDENCY.md) — genuine complete 26B native float setter, zero relocations and 35/35 affected strict replays over six source objects; whole 593B Enemy caller remains open.
-- [Whole Enemy opcode 601 genuine shared-shot and Bullet firing caller](ENEMY_WHOLE_ROOT_OPCODE_601_BULLET_FIRE.md) — complete original 593B/136-instruction primary head, 314 actual queued selector/scalar/exception tests, 43,439 dual-sanitizer root cases; native 339B firing callee and 41,967B root remain nonexact.
+- [Whole Enemy opcode 601 genuine shared-shot and Bullet firing caller](ENEMY_WHOLE_ROOT_OPCODE_601_BULLET_FIRE.md) — complete original 593B/136-instruction primary head, 314 actual queued selector/scalar/exception tests, 43,439 dual-sanitizer root cases; native 339B firing callee is now exact; the 41,967B Enemy root remains nonexact.
 - [Whole Enemy 602/603/604 queued parameter heads](ENEMY_WHOLE_ROOT_602_604_QUEUED_PARAMETERS.md) — three complete original 181/189/213B native heads, 483 real ensure-only/shared-owner/partial-write tests, 43,922 full-root dual-sanitizer scenarios; original root remains nonexact.
 - [Whole Enemy 614 real 119B record-copy assignment](ENEMY_WHOLE_ROOT_614_QUEUE_COPY.md) — full original 572B/129-instruction opcode head, 308 shared-pointer/queue growth/COW cross-op tests, 44,230 dual-sanitizer entire-root host scenarios; root machine code nonexact.
 - [Whole Enemy opcode 632 borrowed ECL script pointer](ENEMY_WHOLE_ROOT_OPCODE_632_SCRIPT_POINTER.md) — complete 252B original head, real exact 396B COW/PMR storage and ECL+0x1C raw script field, 324 new cases, 44,554 dual-sanitizer whole-root passes; native root nonexact.

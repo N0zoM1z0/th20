@@ -5,8 +5,8 @@ messages must be in English, as explicitly requested by the user.
 Official Japanese names and original target evidence may retain their original
 language, as the user explicitly clarified. Preserve the official title in
 `config/target.toml`, following TH095's treatment of game metadata.
-Use the commit prefix requested for the active session: `gpt-web:` for web
-work and `gpt-6.1-sol:` for this Codex session. Do not rewrite historical commits.
+Use the user's current commit prefix **`gpt-web:`** for every new checkpoint.
+Do not rewrite historical commits or use a different prefix for cleanup work.
 
 Invoke Python through `scripts/repo-python` for repository work, including
 one-off snippets and tests. It selects the local `.venv` and verifies pinned
@@ -86,9 +86,11 @@ through EVIDENCE_INDEX.md; do not duplicate cumulative checkpoint logs across
 core documents. Historical batch totals must not masquerade as current status.
 
 At the beginning of each continuation, inspect the entire live Git status
-(staged, unstaged and untracked). Web and Codex work may coexist: understand
-existing dirty changes, preserve the other session's files and commit only
-the active session's bounded batch. Do not reset or absorb concurrent work.
+(staged, unstaged and untracked). Do not assume dirty work belongs to another
+worker: inspect and continue its investigation, without resetting, hiding or
+silently discarding any meaningful changes. For an unfinished ABI hypothesis,
+retain its exact diff and private source before restoring validated public
+headers; keep exact claims separate from unverified hypotheses.
 
 Keep native reconstruction writes and MSVC builds serialized. Do not delegate
 matching. Keep `config/claims.csv` header-only. Work on one
