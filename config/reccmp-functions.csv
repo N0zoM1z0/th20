@@ -1110,3 +1110,8 @@ th20::IntPoint::assign_scaled,0x004FEE50,function
 th20::Player::set_option_field_fc,0x004FB290,function
 "th20::PlayerValues<PlayerOption, 10>::end",0x004FCE60,function
 "th20::PlayerValues<PlayerOption, 12>::end",0x004FCE80,function
+th20::PlayerRecord::clamped_option_units,0x004993B0,function
+th20::PlayerRecord::clamped_option_cap,0x004B8210,function
+th20::PlayerRecord::available_option_count,0x004B81A0,function
+th20::WeaponStoneInfo::focused_offset,0x004FF630,function
+th20::WeaponStoneInfo::unfocused_offset,0x004FF760,function

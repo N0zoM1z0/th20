@@ -1109,3 +1109,8 @@ th20::IntPoint::assign_scaled
 th20::Player::set_option_field_fc
 "th20::PlayerValues<PlayerOption, 10>::end"
 "th20::PlayerValues<PlayerOption, 12>::end"
+th20::PlayerRecord::clamped_option_units
+th20::PlayerRecord::clamped_option_cap
+th20::PlayerRecord::available_option_count
+th20::WeaponStoneInfo::focused_offset
+th20::WeaponStoneInfo::unfocused_offset

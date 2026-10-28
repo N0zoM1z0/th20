@@ -53,6 +53,8 @@ public:
     void disable() override;
     bool phase_one();
     Weapon* passive_weapon();
+    const Vector2* focused_offset(std::int32_t count, std::int32_t index);
+    const Vector2* unfocused_offset(std::int32_t count, std::int32_t index);
 };
 WeaponStoneInfo* weapon_stone_info(std::int32_t index);
 #if defined(_M_IX86)

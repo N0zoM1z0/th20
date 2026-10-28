@@ -82,6 +82,11 @@ struct PlayerRecord {
     void add_field_68(std::int32_t amount);
     void add_field_6c(std::int32_t amount);
     void add_field_70(std::int32_t amount);
+    // Four native clamped option-count operands. The original source names
+    // remain inferred, but their fields, bounds and call ABI are observed.
+    std::int32_t clamped_option_units();
+    std::int32_t clamped_option_cap();
+    std::int32_t available_option_count();
     std::int32_t reward_limit();
     std::int32_t collision_radius_multiplier();
     void add_bullet_graze(std::int32_t amount);
