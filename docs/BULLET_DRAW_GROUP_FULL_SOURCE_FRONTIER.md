@@ -1,5 +1,60 @@
 # CORE/RECON-304 — complete typed Bullet single-group drawing loop (nonexact)
 
+## CORE/RECON-375 — native byte bitfield and full affected-only regression
+
+Current maintained `src/BulletDrawGroup.cpp` is still **NONEXACT**,
+but now uses the actual one-byte `AnimationFlags` upper-three-bit view:
+`Animation+0x4A2` bits 5 through 7 are a genuine C++ 3-bit byte
+field, retaining the original raw `field_0a` alias for other consumers.
+The locked MSVC i386 source emits original
+`mov al,byte ptr [edx+0x4A2]; shr al,5; and al,7`,
+not the earlier nonnative 32-bit signed `sar eax,5`.
+
+The whole maintained function now emits **283B / 84 instructions** and
+all **82/82 original mnemonic kinds in order**, with the expected eight
+external COFF reference locations/types in the candidate. The original
+whole function remains **273B / 82 instructions**: two unwanted float
+offset `movss` spills add **10 bytes** around the native pi/2 rotation
+argument. Therefore there is **no newly accepted exact original draw
+range**. Current pinned native compiler probe:
+`build/core375-probes/BulletDrawGroup-maintained.obj` and receipt, with
+private complete-score evidence
+`.analysis/core375-bullet-draw-typed-abi-score.txt`.
+Original floating-point evaluation/profiles were independently tested
+in `.analysis/core371-*` through `.analysis/core374-*`; none of those
+bounded candidates passed strict native comparison. No NOPs, manual
+asm, fake returns, inert variables or shortened comparison ranges.
+
+From the **previous canonical compiler receipts**, the affected actual
+`Animation.hpp` include closure is **56 source providers with 263 old
+strict units**. All **263/263** original exact units were cold rebuilt
+in **56 objects**, across twelve serial reduced-priority batches
+**66+34+15+6+29+10+43+23+8+12+13+4**, including the complete 2,018B
+Bullet collision and 1,518B Player option rebuild roots. The draw
+function itself remains nonexact, was compiled in full as an isolated
+probe, and received **zero exact credit**. There was no unfiltered
+all-repository cold replay.
+
+Five MSVC-private `$SG` identities in RenderMesh and Ascii
+constructors renumbered after the shared-header change. Each retained
+its independently original PE string destination, original reference
+offset/type, receipt and complete nonrelocation bytes, then passed
+the unchanged strict comparator. The already present, dirty
+`bullet_cancel` private `$SG` renumbering was likewise retained and
+strictly checked against original `0x0056FD14`, not hidden or discarded.
+Full private evidence:
+`.analysis/core375-animation-receipt-closure.json`,
+`.analysis/core375-replay-groups.json`,
+`.analysis/core375-replay-batch0.log` through `batch11.log` and
+`.analysis/core375-reconciled-private-symbols.json`.
+
+The former CORE/RECON-304 **279B / 79-of-82** candidate measurements
+below are **historical**. The production source now uses the native
+byte bitfield and produces the **283B / 84-instruction** nonexact
+candidate above. Original six-group drawing parent `draw_groups` at
+`0x0047DC90` remains separately exact (81B).
+
+
 The entire original game-authored `BulletController::draw_group(int)` at
 `0x0047DB70..0x0047DC80` is **273 native bytes / 82 original x86
 instructions**. Its direct caller is the separately exact original

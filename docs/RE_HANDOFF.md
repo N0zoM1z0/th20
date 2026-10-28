@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-369 complete 1,518-byte Player option-animation boss.** This file is the concise
+**Updated 2026-10-29; CORE/RECON-375 typed Bullet group draw and Animation ABI closure.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -257,11 +257,16 @@ twice.
    Maintained entire function source now lives at `src/BulletDrawGroup.cpp`;
    read [the whole typed source frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md).
    Original parent `draw_groups` at `0x0047DC90` is separately exact (81B).
-   Full private candidate `.analysis/core285-draw-result-after-offset.cpp`
-   aligns all **82 original instruction kinds** but emits **283B**:
-   original x87-to-SSE rotation argument temporary ownership differs.
-   Check actual `Angle` return and `Animation::set_rotation` ABI; do not
-   pad/de-pad manually. See [draw proof](BULLET_DRAW_GROUPS_EXACT_RECONSTRUCTION.md).
+   CORE/RECON-375 restored genuine **Animation+0x4A2 high-three-bit**
+   mode access in maintained `Animation.hpp` while preserving the original
+   raw alias; complete typed source now emits **283B / 84 instructions**
+   and aligns **82/82 original mnemonic kinds**, but still contains two
+   extra SSE float-offset spill/reloads (+10B) against original
+   **273B / 82 instructions**. The genuine Animation.hpp receipt
+   closure replayed **263/263 exact units across 56 cold objects**.
+   The entire original draw-group parent is still NONEXACT; seek its
+   actual pi/2 and Angle return ABI without manual padding.
+   See [complete updated draw frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md).
 3. **Whole Bullet single-shot emitter `0x004818E0`: 3,735 native
    code bytes plus one NOP and two native switch tables (13+11 entries),
    **3,832B whole compiler contribution** and eight linker `CC` bytes.

@@ -54,7 +54,13 @@ struct AnimationFlags {
     std::uint8_t other_09_low : 2;
     std::uint8_t color_mode : 3;
     std::uint8_t other_09_high : 3;
-    std::uint8_t field_0a;
+    // Native Animation+0x4A2 high three bits are read as a true byte bitfield
+    // by the entire BulletController single draw-group loop. Keep the exact
+    // original one-byte raw alias for existing consumers.
+    union {
+        std::uint8_t field_0a;
+        struct { std::uint8_t low_5 : 5; std::uint8_t upper_3 : 3; } bits_0a;
+    };
     std::uint8_t layer_mode : 2;
     std::uint8_t other_0b : 6;
     std::uint8_t field_0c : 8;

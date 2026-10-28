@@ -1,5 +1,8 @@
-// Complete nonexact original BulletController single draw-group iteration.
-// The 273-byte original uses a distinct /Od float argument/temp ownership.
+// Complete original 273-byte BulletController single-group draw loop.
+// Still NONEXACT: the true high-three-bit mode and all 82 native mnemonic
+// kinds are now reproduced, but /Od emits two extra SSE offset spill/reloads.
+// All 8 original relocation targets and whole original boundary remain open
+// to strict canonical acceptance until the float argument ABI is closed.
 #include "Bullet.hpp"
 #include "Animation.hpp"
 #include "AnimationRuntimeOwner.hpp"
@@ -10,7 +13,7 @@ std::int32_t BulletController::draw_group(std::int32_t group) {
     Bullet* current = draw_heads[group];
     while (current) {
         current->animation->vector_5bc = current->position;
-        if ((current->animation->base.flags.field_0a >> 5) != 0) {
+        if (current->animation->base.flags.bits_0a.upper_3 != 0) {
             Animation* a = current->animation;
             float offset = native_pi / native_two;
             float rotation = add_angles(static_cast<float>(current->angle), offset);
