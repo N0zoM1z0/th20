@@ -19084,3 +19084,76 @@ relocations = [
   { offset = 0x83, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 0x0044CED0 },
   { offset = 0x92, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
 ]
+
+# CORE/EXACT-369: entire independently decoded original 1518-byte / 418-instruction
+# Player option animation boss; 57 original E8 and 3 original PE HIGHLOW fields.
+[units.player_rebuild_option_animations]
+source = "src/PlayerOptionRebuild.cpp"
+object = "build/core369-canonical/PlayerOptionRebuild.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::Player::rebuild_option_animations"]
+symbol = "?rebuild_option_animations@Player@th20@@QAEXH@Z"
+target_address = 0x004FACA0
+size = 1518
+relocations = [
+  { offset = 0x2C, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x31, type = "REL32", symbol = "?select_view@AnimationPoolOwner@th20@@QAEXH@Z", target = 0x004776A0 },
+  { offset = 0x47, type = "REL32", symbol = "?set_flag0@PlayerShotController@th20@@QAEXI@Z", target = 0x004FFD50 },
+  { offset = 0x5C, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 0x63, type = "REL32", symbol = "?available_option_count@PlayerRecord@th20@@QAEHXZ", target = 0x004B81A0 },
+  { offset = 0x74, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 0x7B, type = "REL32", symbol = "?available_option_count@PlayerRecord@th20@@QAEHXZ", target = 0x004B81A0 },
+  { offset = 0x8C, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 0x93, type = "REL32", symbol = "?clamped_option_units@PlayerRecord@th20@@QAEHXZ", target = 0x004993B0 },
+  { offset = 0xA3, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 0xAA, type = "REL32", symbol = "?clamped_option_cap@PlayerRecord@th20@@QAEHXZ", target = 0x004B8210 },
+  { offset = 0xC8, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x102, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x111, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x118, type = "REL32", symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ", target = 0x00421810 },
+  { offset = 0x12A, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x131, type = "REL32", symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ", target = 0x00421810 },
+  { offset = 0x14D, type = "REL32", symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z", target = 0x00464230 },
+  { offset = 0x157, type = "REL32", symbol = "?option_script_variant@WeaponStoneInfo@th20@@QAEHXZ", target = 0x00534130 },
+  { offset = 0x181, type = "REL32", symbol = "?spawn_flag2@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 0x0049CBF0 },
+  { offset = 0x19A, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x1A1, type = "REL32", symbol = "?vector_5bc_ref@Animation@th20@@QAEAAUVector3@2@XZ", target = 0x0044CB20 },
+  { offset = 0x1A9, type = "DIR32", symbol = "__real@c479c000", target = 0x0056FD7C },
+  { offset = 0x1CA, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x1FF, type = "REL32", symbol = "?cancel_animation_handle@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00479040 },
+  { offset = 0x20D, type = "REL32", symbol = "?clear_animation_handle_value@th20@@YIXAAUAnimationHandle@1@@Z", target = 0x0049DA50 },
+  { offset = 0x21E, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x225, type = "REL32", symbol = "?active_option_count@Player@th20@@QBEHXZ", target = 0x004FF670 },
+  { offset = 0x244, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x277, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0x281, type = "REL32", symbol = "?focused_mode@Player@th20@@QAE_NXZ", target = 0x004FF5E0 },
+  { offset = 0x298, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x2C7, type = "REL32", symbol = "?weapon_stone_info@Context@th20@@QAEPAVWeaponStoneInfo@2@XZ", target = 0x00464250 },
+  { offset = 0x2DA, type = "REL32", symbol = "?unfocused_offset@WeaponStoneInfo@th20@@QAEPBUVector2@2@HH@Z", target = 0x004FF760 },
+  { offset = 0x2E3, type = "REL32", symbol = "?assign_scaled@IntPoint@th20@@QAEXABUVector2@2@@Z", target = 0x004FEE50 },
+  { offset = 0x306, type = "REL32", symbol = "?weapon_stone_info@Context@th20@@QAEPAVWeaponStoneInfo@2@XZ", target = 0x00464250 },
+  { offset = 0x319, type = "REL32", symbol = "?focused_offset@WeaponStoneInfo@th20@@QAEPBUVector2@2@HH@Z", target = 0x004FF630 },
+  { offset = 0x322, type = "REL32", symbol = "?assign_scaled@IntPoint@th20@@QAEXABUVector2@2@@Z", target = 0x004FEE50 },
+  { offset = 0x331, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x338, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x349, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x350, type = "REL32", symbol = "?focused_mode@Player@th20@@QAE_NXZ", target = 0x004FF5E0 },
+  { offset = 0x36E, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x39A, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x3CB, type = "REL32", symbol = "??HIntPoint@th20@@QBE?AU01@ABU01@@Z", target = 0x004F58F0 },
+  { offset = 0x3F4, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+  { offset = 0x42D, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x434, type = "REL32", symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ", target = 0x00421810 },
+  { offset = 0x44F, type = "REL32", symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z", target = 0x00464230 },
+  { offset = 0x459, type = "REL32", symbol = "?option_script_variant@WeaponStoneInfo@th20@@QAEHXZ", target = 0x00534130 },
+  { offset = 0x483, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x49C, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x4A3, type = "REL32", symbol = "?vector_5bc_ref@Animation@th20@@QAEAAUVector3@2@XZ", target = 0x0044CB20 },
+  { offset = 0x4AB, type = "DIR32", symbol = "__real@c479c000", target = 0x0056FD7C },
+  { offset = 0x4EF, type = "REL32", symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z", target = 0x00464230 },
+  { offset = 0x505, type = "REL32", symbol = "?initialize_option_pair@WeaponStoneInfo@th20@@QAEXPAUPlayerOption@2@H@Z", target = 0x00533180 },
+  { offset = 0x54C, type = "REL32", symbol = "?cancel_animation_handle@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00479040 },
+  { offset = 0x569, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x576, type = "REL32", symbol = "?set_option_field_fc@Player@th20@@QAEXH@Z", target = 0x004FB290 },
+  { offset = 0x58D, type = "REL32", symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEAAUPlayerOption@2@H@Z", target = 0x004BA3E0 },
+]

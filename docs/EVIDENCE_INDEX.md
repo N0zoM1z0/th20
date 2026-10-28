@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Complete original 1,518B Player option animation rebuild — strict exact](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md) — entire original 418-instruction boss, 57 independent E8 calls and 3 PE HIGHLOW fields, 1,518/1,518 strict native bytes; focused 1/1 cold unit. Earlier nonexact experiments superseded.
+
 - [Exact 202B alternate EffectInfo spawn and 55B flag-4 AnimationFile wrapper](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md) — two entire native function bodies, 94 instructions and all eight independently attested E8/PE HIGHLOW refs; 239/239 affected-only strict units in 52 cold objects.
 
 - [Exact entire 227B EffectInfo animation spawn and corrected optional Animation pointer ABI](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md) — real native 32B script table, hidden handle return, optional existing Animation*, recursive flag setter and callback; eight independently attested original references and 32/32 scoped strict units.
@@ -31,9 +33,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 - [Exact complete 332B Player bullet graze feedback](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md) — full 105 original instructions and 17 independent E8 calls / three PE HIGHLOW references; natural effects, reward and sound handling; 307/307 affected-only strict units across 42 rebuilt objects.
 
-- [Exact 20B AnimationHandle value clear and parent ABI correction](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) — original ECX-receiver store and 8/8 affected strict units in one object; restores the missing call in the maintained nonexact 1,518B Player option rebuild boss.
+- [Exact 20B AnimationHandle value clear and parent ABI correction](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) — original ECX-receiver store and 8/8 affected strict units in one object; restored the missing call in the historical nonexact 1,518B Player option rebuild; the complete parent is now strict exact in CORE/EXACT-369.
 
-- [Complete 1,518B Player option rebuild source frontier — nonexact](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md) — entire 418-instruction original boss now has maintained 1,518B / 411-instruction C++20 source, 410/418 aligned native mnemonic kinds, complete 57 original call and three PE relocation audit; parent is **not** credited exact.
+- [Historical full Player option rebuild nonexact frontier — superseded by strict CORE/EXACT-369](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md) — historical nonexact 1,518B / 411-instruction C++20 candidate with 410/418 mnemonic kinds; superseded by the now strict-exact entire 1,518B native parent in CORE/EXACT-369.
 
 - [Exact 57B AnimationFile flag-2 spawn and 17B Player file accessor](PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md) — original hidden-return ABI and sole 0x00450CB0 call at +0x2C, native Player+0x1C, with 232/232 affected strict units across 49 cold objects.
 

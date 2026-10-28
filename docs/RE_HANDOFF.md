@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-362 full alternate EffectInfo spawn and flag-4 ANM ABI.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-369 complete 1,518-byte Player option-animation boss.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -17,9 +17,9 @@ old reports and probe filenames are **not** current status.
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
 | Source-present mappings, all origins | **1,130** |
-| Canonical strict native units | **1,119** |
-| Unique canonical object providers | **225**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **332**, covering **82,969 native bytes** |
+| Canonical strict native units | **1,120** |
+| Unique canonical object providers | **226**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **333**, covering **84,487 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 225 current canonical object/receipt pairs, native proof documents,
+The 226 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::rebuild_option_animations` | `0x004FACA0` | **1,518** | [full original 418-instruction option rebuild boss](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::spawn_effect_variant` / `AnimationFile::spawn_flag4` | `0x0049DCF0` / `0x0049E080` | **202 / 55** | [complete alternate spawn and native flag4 wrapper](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::spawn_effect` | `0x0049DB70` | **227** | [whole original animation spawn and optional pointer protocol](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::process_queued_effects` | `0x0049D4A0` | **271** | [entire two-queue lifecycle frame](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md) |
@@ -95,7 +96,7 @@ strict units across 21 cold objects**, with no full-graph replay. Earlier
 CORE/EXACT-308 independently corrected Ghidra's tentative 0x00471170
 library-function label to a genuine `std::clamp<int>` call. The next
 substantial Player frontier is the separate **1,518-byte**
-`Player::rebuild_option_animations` at `0x004FACA0` (still nonexact).
+`Player::rebuild_option_animations` at `0x004FACA0` (now CORE/EXACT-369 full strict exact).
 
 CORE/EXACT-316 closed the distinct complete **115B**
 `PlayerFeedback::record_hit` with three originally attested native calls.
@@ -108,8 +109,8 @@ functions (328 bytes), including the complete 165-byte two-array broadcast,
 42-byte typed ShotController bit-zero setter, and 63-byte float-to-fixed
 conversion. The `Player.hpp`/`PlayerStorage.hpp`/`Rectangle.hpp` receipt
 closure was **87/87 affected strict units across 26 cold objects**.
-The 1,518-byte `Player::rebuild_option_animations` is **still open** and
-should be reconstructed as a complete parent, not a prefix or a mere
+The 1,518-byte `Player::rebuild_option_animations` was still open at that historical checkpoint; its entire original is now
+strict exact under CORE/EXACT-369, not a prefix or a mere
 collection of these leaf methods.
 
 CORE/EXACT-322 adds five previously unmapped complete native functions
@@ -119,31 +120,32 @@ and promotes the independently validated original 64-byte
 option division and two actual Weapon virtual offset forwarders are exact.
 Only the `PlayerRecord.hpp`/`WeaponStoneInfo.hpp` receipt closure was cold
 replayed, **267/267 strict units in 33 objects**. The 1,518-byte
-`Player::rebuild_option_animations` still needs whole-parent reconstruction.
+`Player::rebuild_option_animations` was then awaiting whole-parent reconstruction; CORE/EXACT-369 has since closed it.
 
 CORE/EXACT-326 closes both complete WeaponStone option script and option
 initialization dispatchers, adding **167 exact native bytes** to the same
 canonical provider; its actual include closure passed **39/39** strict units
 across **8 cold rebuilt objects**. The large **1,518-byte** Player option
-rebuild remains an independent open full root.
+rebuild was still open at this checkpoint; CORE/EXACT-369 now closes it whole.
 
 CORE/EXACT-330 also closes the 57-byte native AnimationFile flag-2
 spawn wrapper and 17-byte real Player AnimationFile getter. The actual
 `AnimationFile.hpp`/`Player.hpp` receipt include closure passed **232/232
 strict units across 49 cold source objects**, retaining the previous
-compiler profiles. The 1,518-byte parent remains **nonexact**: these new
+compiler profiles. The 1,518-byte parent was **nonexact at that checkpoint** (now strict exact in CORE/EXACT-369): these new
 ABIs distinguish its native 5-arg resource creation from a speculative
 direct 7-arg call.
 
-CORE/RECON-333 now maintains the **whole 1,518-byte**
+At historical CORE/RECON-333, we maintained the **whole 1,518-byte**
 `Player::rebuild_option_animations` at `src/PlayerOptionRebuild.cpp`
-as a **NONEXACT** complete-function C++20 source frontier. The locked
+as a historical **NONEXACT** complete-function C++20 source frontier,
+subsequently closed whole exact by CORE/EXACT-369. The locked
 MSVC `/GS-` plus live 8-byte-aligned `IntPoint` result matches the native
 stack prologue and full return, and emits **1,518B / 411 instructions**
 with **410/418 original instruction kinds in order**. Independent original
-reference audit: **57 E8 calls + 3 PE HIGHLOW fields**. It still lacks
-full original relocation/instruction/lifetime equivalence, so **zero
-canonical exact bytes** were claimed. The resource script fields at
+reference audit: **57 E8 calls + 3 PE HIGHLOW fields**. At that prior checkpoint, full original relocation/instruction/lifetime
+correspondence was still missing, so **zero canonical exact bytes** were
+then claimed (since superseded by the entire 1,518B exact parent). The resource script fields at
 PlayerShotData+0x88/+0xA8 and stack-slot ownership need further review.
 Read [the full boss source frontier](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md).
 
@@ -152,14 +154,14 @@ value-clear operation at `0x0049DA50`, then restores its original call in
 the maintained full Player option rebuild parent. Only the owning existing
 `BulletCollisionAnimationHelpers.cpp` canonical object was cold rebuilt:
 **8/8** exact units remain accepted; the parent was separately compiled
-and is **still nonexact**.
+and was **still nonexact at that time**, before CORE/EXACT-369.
 
 CORE/RECON-343: a fresh whole-parent audit corrected an original-absent
 late AnimationFile null guard, restored native script-table base-plus-byte-
 displacement indexing, and used original `-999.0f` float literals.
 The complete natural source now emits **1,518B / 411 i386 instructions**,
 with **410/418 native instruction kinds aligned**, and the same 57 direct
-call / three absolute relocation counts. **It remains NONEXACT**: eight
+call / three absolute relocation counts. **It was NONEXACT at that earlier checkpoint**: eight
 native instructions are still absent, COFF second literal offset
 `+0x49F` differs from native `+0x4AB`, and full byte/relo replay fails.
 Only this nonexact source/evidence changed, so zero accepted exact units
@@ -222,6 +224,22 @@ lifecycle root inherits credit. The **actual shared-header compiler receipt
 closure**, not a full cold replay, passed **239/239 strict units across 52
 cold objects**; private MSVC `$SG` renumberings were independently verified.
 
+CORE/EXACT-369 finally closes the **entire 1,518-byte**
+`Player::rebuild_option_animations` at `0x004FACA0`: all **418 native x86
+instructions** and **60 independently original PE E8/HIGHLOW reference
+fields**, **1,518/1,518 strict bytes**. The source is now canonical
+`src/PlayerOptionRebuild.cpp`, retaining only the real original
+shot-data word accesses at +0x88/+0xA8 without inventing the larger
+serialized schema. Sharing the one real option pointer/counter across
+four loops, 8-byte-aligned active IntPoint move/copy and **whole**
+AnimationHandle return assignments restored the actual original
+`sub esp,0x9C` frame and the last 10 native bytes. The exact unit
+passed its one-object **1/1 focused strict cold replay**. The separate
+966-byte original Player reset caller also remains strict exact.
+[Whole boss proof](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md).
+The old CORE/RECON-333/343 nonexact status is superseded, not credited
+twice.
+
 ## Open complete-function roots — next agent's priorities
 
 1. **Bullet command 11 `0x00481200`: 1,404 bytes / 357 native
@@ -274,16 +292,19 @@ cold objects**; private MSVC `$SG` renumberings were independently verified.
    closure passed. Their *separate callee implementations* and EffectInfo
    lifecycle remain open and must not inherit the caller's exact credit.
 
-## New large Player frontier after exact reset
+## Closed complete Player reset and option-animation rebuild chain
 
-The full `Player::rebuild_option_animations` at `0x004FACA0` is
-**1,518 native bytes, still nonexact**. Its maintained C++20 whole-function
-source is now [here](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md). It is called directly by the
-now complete 966B reset root and contains resource/AnimationHandle
-replacement, Player option assignment and animation-file selection.
-Work on its own whole-function evidence and genuine callees, not a
-shortened prefix or speculative owner interface. See
-[the complete reset proof](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md).
+The separately complete **966-byte** `Player::reset_initial_state` at
+`0x004FB450` and its genuine complete **1,518-byte** callee
+`Player::rebuild_option_animations` at `0x004FACA0` are now **both
+independently strictly exact**. The rebuilt options function is
+**418/418 original instructions** with all 57 native direct-call and
+three original PE HIGHLOW fields. Its maintained source and entire
+original proof are [here](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md);
+the earlier 966-byte caller proof is
+[here](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md). The original
+embedded shot-data schema beyond consumed words and other large gameplay
+functions remain open, not the entire option rebuild boundary.
 
 ## Resume workflow and bounded verification
 

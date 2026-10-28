@@ -1,4 +1,14 @@
-# CORE/RECON-333 — entire 1,518-byte Player option rebuilding boss: maintained nonexact C++ frontier
+# Historical CORE/RECON-333/343 — 1,518-byte Player option rebuild nonexact frontier, superseded by CORE/EXACT-369
+
+**CURRENT STATUS (2026-10-29): THE COMPLETE 1,518-BYTE PLAYER OPTION BOSS
+IS NOW STRICT EXACT.** The source and all 60 independent original PE
+references passed the complete [1,518-byte whole-function exact proof](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md).
+The nonexact metrics and observations below are preserved exclusively
+as earlier experiments and **do not describe the current maintained
+source, canonical status or native bytes**. CORE/RECON-333/343
+has been superseded, not double counted.
+
+
 
 The immutable TH20 v1.00a Japanese Steamless target has SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

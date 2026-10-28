@@ -331,3 +331,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0049DB70,th20::EffectInfo::spawn_effect,227,matching,100.00,effect_info_spawn_effect,CORE/EXACT-361; docs/EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md; full original 227B with eight independent native original E8 and PE HIGHLOW refs
 0x0049E080,th20::AnimationFile::spawn_flag4,55,matching,100.00,animation_file_spawn_flag4,CORE/EXACT-362; docs/EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md; complete native 55B strict original
 0x0049DCF0,th20::EffectInfo::spawn_effect_variant,202,matching,100.00,effect_info_spawn_effect_variant,CORE/EXACT-362; docs/EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md; complete native 202B strict original
+0x004FACA0,th20::Player::rebuild_option_animations,1518,matching,100.00,player_rebuild_option_animations,CORE/EXACT-369; docs/PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md; original complete 418 instructions and all 60 native PE E8/HIGHLOW anchors exact

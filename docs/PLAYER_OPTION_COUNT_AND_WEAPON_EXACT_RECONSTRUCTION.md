@@ -111,3 +111,14 @@ at `0x00534130` (77B) and `0x00533180` (90B) are separately strict exact,
 with explicit focused/unfocused virtual table slots and 39/39 affected-only
 strict units. Read [the complete two-dispatch proof](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md).
 The entire 1,518-byte Player option rebuild root remains nonexact.
+
+
+## Subsequent CORE/EXACT-369 whole-parent closure
+
+The *separate* complete **1,518-byte** Player option rebuild boss at
+0x004FACA0 is now independently **1,518/1,518 native strict exact**,
+with all 418 original instructions and 60 independently attested
+E8/HIGHLOW references. Any earlier reference in this historical
+checkpoint to that parent as still nonexact/open is **superseded**.
+This proof's own helper or original function is not double counted.
+Read the [new entire Player option rebuild exact proof](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md).

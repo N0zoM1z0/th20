@@ -43,3 +43,14 @@ Private evidence: `.analysis/core334-AnimationHandleClear.cpp`,
 `.analysis/core335-handle-clear-replay.log`, and
 `.analysis/core335-maintained-parent-check.txt`. No shared-header edits,
 no unrelated cold replay and no whole-graph build occurred.
+
+
+## Subsequent CORE/EXACT-369 whole-parent closure
+
+The *separate* complete **1,518-byte** Player option rebuild boss at
+0x004FACA0 is now independently **1,518/1,518 native strict exact**,
+with all 418 original instructions and 60 independently attested
+E8/HIGHLOW references. Any earlier reference in this historical
+checkpoint to that parent as still nonexact/open is **superseded**.
+This proof's own helper or original function is not double counted.
+Read the [new entire Player option rebuild exact proof](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md).
