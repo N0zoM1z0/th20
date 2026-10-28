@@ -9013,7 +9013,7 @@ relocations = [
   { offset = 0x69, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x79, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 0x112, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 0x13E, type = "DIR32", symbol = "$SG7231", target = 0x0056FD94 },
+  { offset = 0x13E, type = "DIR32", symbol = "$SG7232", target = 0x0056FD94 },
   { offset = 0x143, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9223,7 +9223,7 @@ relocations = [
   { offset = 0x3E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x49, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x68, type = "REL32", symbol = "??0Configuration@th20@@QAE@XZ", target = 0x004B9C10 },
-  { offset = 0xD7, type = "DIR32", symbol = "$SG7248", target = 0x00570B10 },
+  { offset = 0xD7, type = "DIR32", symbol = "$SG7249", target = 0x00570B10 },
   { offset = 0xDC, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG85527", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG85528", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -10946,7 +10946,7 @@ relocations = [
   { offset = 89, type = "REL32", symbol = "??0?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 103, type = "REL32", symbol = "??0?$IntrusiveList@VDamageRegion@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 130, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 161, type = "DIR32", symbol = "$SG79270", target = 0x00570C94 },
+  { offset = 161, type = "DIR32", symbol = "$SG79271", target = 0x00570C94 },
   { offset = 166, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11027,7 +11027,7 @@ relocations = [
   { offset = 67, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEPAVDamageRegion@2@XZ", target = 0x0040C300 },
   { offset = 94, type = "REL32", symbol = "??4Identifier32@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 102, type = "REL32", symbol = "?advance_handle@HitCtrlInf@th20@@QAEXXZ", target = 0x004C0C60 },
-  { offset = 112, type = "DIR32", symbol = "$SG79368", target = 0x00570D00 },
+  { offset = 112, type = "DIR32", symbol = "$SG79369", target = 0x00570D00 },
   { offset = 118, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 123, type = "REL32", symbol = "??$allocate_object@VDamageRegion@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVDamageRegion@1@PBD@Z", target = 0x004BFE30 },
   { offset = 144, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VDamageRegion@th20@@@th20@@QAEXPAVDamageRegion@2@@Z", target = 0x0044A670 },
@@ -11175,7 +11175,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1HitCtrlInf@th20@@UAE@XZ", target = 0x005699D0 },
   { offset = 21, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 48, type = "DIR32", symbol = "??_7HitCtrlInf@th20@@6B@", target = 0x00570C88 },
-  { offset = 53, type = "DIR32", symbol = "$SG79310", target = 0x00570CAC },
+  { offset = 53, type = "DIR32", symbol = "$SG79311", target = 0x00570CAC },
   { offset = 58, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 74, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 79, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -11480,7 +11480,7 @@ relocations = [
   { offset = 42, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
   { offset = 51, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
   { offset = 92, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 137, type = "DIR32", symbol = "$SG79517", target = 0x0056FAA0 },
+  { offset = 137, type = "DIR32", symbol = "$SG79518", target = 0x0056FAA0 },
   { offset = 142, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11497,7 +11497,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1BombController@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
-  { offset = 48, type = "DIR32", symbol = "$SG79528", target = 0x0056FAB8 },
+  { offset = 48, type = "DIR32", symbol = "$SG79529", target = 0x0056FAB8 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 74, type = "REL32", symbol = "??$release_object@VBomb@th20@@@DiagnosticAllocator@th20@@QAEXPAVBomb@1@@Z", target = 0x0041F7C0 },
@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82030", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82036", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -12105,7 +12105,7 @@ relocations = [
   { offset = 110, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 124, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 269, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 300, type = "DIR32", symbol = "$SG97951", target = 0x00570D4C },
+  { offset = 300, type = "DIR32", symbol = "$SG97952", target = 0x00570D4C },
   { offset = 305, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -12122,7 +12122,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1ItemInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7ItemInf@th20@@6B@", target = 0x00570D40 },
-  { offset = 48, type = "DIR32", symbol = "$SG97967", target = 0x00570D60 },
+  { offset = 48, type = "DIR32", symbol = "$SG97968", target = 0x00570D60 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 74, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -12630,7 +12630,7 @@ size = 344
 relocations = [
   { offset = 83, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 96, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 128, type = "DIR32", symbol = "$SG194210", target = 0x0056EC84 },
+  { offset = 128, type = "DIR32", symbol = "$SG194211", target = 0x0056EC84 },
   { offset = 140, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 174, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 179, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12638,7 +12638,7 @@ relocations = [
   { offset = 196, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
   { offset = 240, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 253, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 286, type = "DIR32", symbol = "$SG194216", target = 0x0056EC84 },
+  { offset = 286, type = "DIR32", symbol = "$SG194217", target = 0x0056EC84 },
   { offset = 298, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 328, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 333, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -16001,7 +16001,7 @@ relocations = [
   { offset = 718, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 4337040 },
   { offset = 801, type = "DIR32", symbol = "??0FrontBossPanel@th20@@QAE@XZ", target = 4909888 },
   { offset = 820, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
-  { offset = 838, type = "DIR32", symbol = "$SG179883", target = 5703232 },
+  { offset = 838, type = "DIR32", symbol = "$SG179884", target = 5703232 },
   { offset = 843, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
   { offset = 854, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 6031012 },
 ]
@@ -16362,7 +16362,7 @@ relocations = [
   { offset = 62, type = "REL32", symbol = "??0?$IntrusiveList@VLaser@th20@@@th20@@QAE@XZ", target = 4295248 },
   { offset = 93, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 4337168 },
   { offset = 104, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 4337168 },
-  { offset = 149, type = "DIR32", symbol = "$SG79140", target = 5706764 },
+  { offset = 149, type = "DIR32", symbol = "$SG79141", target = 5706764 },
   { offset = 154, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
 ]
 
@@ -18211,4 +18211,59 @@ relocations = [
   { offset = 0x2DA, type = "REL32", symbol = "?greater_than@Timer@th20@@QBE_NH@Z", target = 0x00461070 },
   { offset = 0x2F0, type = "REL32", symbol = "?apply_player_hit@Player@th20@@QAEXXZ", target = 0x004F86F0 },
   { offset = 0x2FF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/EXACT-273: original entire 466B typed Player circle protocol.
+[units.player_collision_circle]
+source = "src/PlayerCollisionCircle.cpp"
+object = "build/core273-canonical/PlayerCollisionCircle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::collision_circle"]
+symbol = "?collision_circle@Player@th20@@QAEHABUVector3@2@MH@Z"
+target_address = 0x004F8FF0
+size = 466
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x17, type = "REL32", symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 0x004560D0 },
+  { offset = 0x65, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 0x6C, type = "REL32", symbol = "?collision_radius_multiplier@PlayerRecord@th20@@QAEHXZ", target = 0x004FF490 },
+  { offset = 0x7D, type = "DIR32", symbol = "?native_radius_hundred@th20@@3MB", target = 0x0056E04C },
+  { offset = 0x8A, type = "REL32", symbol = "?collision_expansion_enabled@Player@th20@@QBEIXZ", target = 0x004FF800 },
+  { offset = 0xA1, type = "DIR32", symbol = "?native_boost_factor@th20@@3MB", target = 0x00573164 },
+  { offset = 0xDA, type = "DIR32", symbol = "?native_radius_margin_divisor@th20@@3MB", target = 0x0056C8D4 },
+  { offset = 0xE7, type = "DIR32", symbol = "?native_radius_margin_minimum@th20@@3MB", target = 0x00570560 },
+  { offset = 0xF5, type = "DIR32", symbol = "?native_radius_margin_minimum@th20@@3MB", target = 0x00570560 },
+  { offset = 0x141, type = "DIR32", symbol = "?process_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x14A, type = "DIR32", symbol = "?process_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x14F, type = "REL32", symbol = "?has_dialogue@FrontInf@th20@@QAEHXZ", target = 0x00478160 },
+  { offset = 0x16C, type = "REL32", symbol = "?state_value@Player@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x17D, type = "REL32", symbol = "?state_value@Player@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x18E, type = "REL32", symbol = "?state_value@Player@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x1AD, type = "REL32", symbol = "?greater_than@Timer@th20@@QBE_NH@Z", target = 0x00461070 },
+  { offset = 0x1C3, type = "REL32", symbol = "?apply_player_hit@Player@th20@@QAEXXZ", target = 0x004F86F0 },
+]
+
+# CORE/EXACT-273: original entire 73B typed Player circle protocol.
+[units.player_record_collision_multiplier]
+source = "src/PlayerCollisionCircle.cpp"
+object = "build/core273-canonical/PlayerCollisionCircle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerRecord::collision_radius_multiplier"]
+symbol = "?collision_radius_multiplier@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x004FF490
+size = 73
+relocations = [
+  { offset = 0x2A, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+# CORE/EXACT-273: original entire 23B typed Player circle protocol.
+[units.player_collision_expansion_flag]
+source = "src/PlayerCollisionCircle.cpp"
+object = "build/core273-canonical/PlayerCollisionCircle.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::collision_expansion_enabled"]
+symbol = "?collision_expansion_enabled@Player@th20@@QBEIXZ"
+target_address = 0x004FF800
+size = 23
+relocations = [
 ]

@@ -83,6 +83,7 @@ struct PlayerRecord {
     void add_field_6c(std::int32_t amount);
     void add_field_70(std::int32_t amount);
     std::int32_t reward_limit();
+    std::int32_t collision_radius_multiplier();
     std::uint64_t current_score() const;
     std::int32_t field_10_value();
     std::int32_t field_14_value();

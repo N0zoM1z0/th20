@@ -123,3 +123,17 @@ The separate **466-byte** original circular Player collision handler
 **12,140B** command sequencer and **41,967B** Enemy opcode bosses remain
 nonexact independently. Whole-game linkage/runtime is not inferred
 from this 777B function.
+
+## CORE/EXACT-273 follow-on: independent entire 466B Player circle now exact
+
+The above dated note that the original 466B Player circle handler was
+still nonexact is superseded. Its complete separate game-owned
+`Player::collision_circle` at `0x004F8FF0` now replays **466/466 whole
+native bytes**, all 121 original instructions and 18 true relocation
+sites. Its real PlayerRecord clamp method **73B** and Player flag bit4
+getter **23B** are independently complete exact. The union of altered
+Player/PlayerRecord headers affected **29 previous objects/249 old
+strict native units**, all freshly rebuilt and **249/249 exact**;
+with new methods **252/252 scoped units in 30 cold objects**. The
+2,018B Bullet collision parent remains nonexact. See
+[whole original Player circle collision and record exact proof](PLAYER_COLLISION_CIRCLE_EXACT_RECONSTRUCTION.md).

@@ -134,3 +134,15 @@ whole-repository cold replay occurred. The original locked target hash
 is unchanged. The 2,018B collision, 1,404B command11, 273B draw group,
 3,735B single-shot emitter, 12,140B Bullet command sequencer and
 41,967B Enemy opcode root remain independently nonexact.
+
+## CORE/EXACT-273: both native Player collision selectors now whole exact
+
+The earlier unfinished **777B rectangle** and **466B circle**
+Player collision children are now each fully native exact. The original
+466B circle uses real `PlayerCollisionBounds` radii, native 100.0f
+multiplier from genuine 73B PlayerRecord clamp, 3.6f expansion and
+2.5f/40.0f graze-margin floats, then the same FrontInf/state/Timer/hit
+outcomes. See [whole Player circle and record evidence](PLAYER_COLLISION_CIRCLE_EXACT_RECONSTRUCTION.md).
+The original 2,018B `Bullet::process_collision` parent is **not yet
+exact**, regardless of its now-complete two main Player collision
+children and seven exact native Animation/handle wrappers.

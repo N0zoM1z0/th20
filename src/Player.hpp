@@ -66,6 +66,9 @@ public:
     void apply_player_hit();
     std::int32_t collision_rectangle(const Vector3& bullet_position,
                                     const Vector2& extents, std::int32_t mode);
+    std::int32_t collision_circle(const Vector3& bullet_position,
+                                  float bullet_radius, std::int32_t mode);
+    std::uint32_t collision_expansion_enabled() const;
     void set_entity_flag_10(std::uint32_t value);
     std::int32_t damage_limit();
     PlayerFeedback* feedback_value();

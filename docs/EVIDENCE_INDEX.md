@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Whole exact 466B Player circle collision and real 73B/23B record/flag methods](PLAYER_COLLISION_CIRCLE_EXACT_RECONSTRUCTION.md) — complete 121-instruction native circle graze/hit path, 18 original relocations and 562B newly exact, all 252/252 scoped old/new native units.
+
 - [Whole exact 777B Player rectangle hit/graze boss](PLAYER_COLLISION_RECTANGLE_EXACT_RECONSTRUCTION.md) — full two-stage focused/unfocused Player AABB and 48px graze, all 212 native instructions/35 original relocations, 36/36 scoped strict units.
 
 - [Seven original exact collision Animation/handle methods (233B)](BULLET_COLLISION_ANIMATION_PROTOCOL_EXACT_RECONSTRUCTION.md) — genuine 45B color mode, 38B Vector3 copy, 62B RGBA channels and four different 22B mode-specific Animation/AnimationHandle forwarding wrappers; 224/224 scoped strict units.

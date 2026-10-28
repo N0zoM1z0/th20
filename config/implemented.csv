@@ -1079,3 +1079,6 @@ th20::cancel_animation_handle_mode2
 th20::cancel_animation_handle_mode3
 th20::interrupt_animation_mode3
 th20::Player::collision_rectangle
+th20::Player::collision_circle
+th20::PlayerRecord::collision_radius_multiplier
+th20::Player::collision_expansion_enabled
