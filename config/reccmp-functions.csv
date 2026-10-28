@@ -1049,3 +1049,6 @@ th20::Timer::set(float),0x004841F0,function
 th20::Timer::operator=(float),0x0047C5F0,function
 th20::Bullet::advance_command0,0x004840E0,function
 th20::Bullet::advance_command2,0x00483920,function
+th20::Bullet::advance_command1,0x00483F00,function
+th20::Bullet::advance_command10,0x00483D20,function
+th20::bullet_velocity_magnitude,0x0047A2A0,function

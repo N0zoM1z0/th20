@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Two exact full Bullet velocity/angle bosses and native XY magnitude](BULLET_COMMAND_VELOCITY_EXACT_RECONSTRUCTION.md) — whole original 471B/473B command paths and 25B actual ST0-return magnitude, 42 native relocations, 60/60 affected-only strict units.
+
 - [Exact complete 424-byte Bullet command-2 angle/speed update](BULLET_COMMAND2_EXACT_RECONSTRUCTION.md) — original 117 instructions, two ClockScalar/Angle transformations and Timer advance, 16 real native relocations and 57/57 affected-only strict units.
 
 - [Complete exact native Bullet command-0 motion curve](BULLET_COMMAND0_EXACT_RECONSTRUCTION.md) — whole 267B/73-instruction timed speed update, 11 original relocations and 56/56 affected-only strict units; separate major Bullet bosses remain open.
