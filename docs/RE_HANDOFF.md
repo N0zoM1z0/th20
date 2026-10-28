@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-303 Player draw callback.** This file is the concise
+**Updated 2026-10-28; CORE/RECON-304 Bullet single-group draw.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,7 +16,7 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,095** |
+| Source-present mappings, all origins | **1,096** |
 | Canonical strict native units | **1,085** |
 | Unique canonical object providers | **214**, each with an exact `.obj` and `.receipt.json` |
 | Exact game-authored whole functions | **297**, covering **79,079 native bytes** |
@@ -81,6 +81,8 @@ additional scoped strict unit. See the focused proof.
    merely for bytes. Read
    [complete command11 geometry frontier](BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md).
 2. **BulletController single-group draw `0x0047DB70`: 273 bytes.**
+   Maintained entire function source now lives at `src/BulletDrawGroup.cpp`;
+   read [the whole typed source frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md).
    Original parent `draw_groups` at `0x0047DC90` is separately exact (81B).
    Full private candidate `.analysis/core285-draw-result-after-offset.cpp`
    aligns all **82 original instruction kinds** but emits **283B**:

@@ -42,6 +42,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 - [Mesh resource access and ANM creation origins](MESH_RESOURCE_ORIGIN_AUDIT.md) — five existing exact helpers and the complete source-absent producer.
 - [Mesh flag ownership, exact grid creation and origin review](MESH_FLAGS_EXACT_RECONSTRUCTION.md)
 
+- [Maintained full 273B Bullet single-group draw source frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) — original 82 instructions and eight native references independently reviewed; maintained typed C++20 implementation compiles 279B, remains nonexact without padding.
+
 ## Bullet firing
 
 - [Entire 863B Bullet active-list update and six-group rebuild boss exact](BULLET_ACTIVE_UPDATE_863_EXACT_RECONSTRUCTION.md) — all 237 native instructions/35 PE-attested relocations and real intrusive iterator RAII; 68/68 old/new scoped strict units across 30 cold objects.

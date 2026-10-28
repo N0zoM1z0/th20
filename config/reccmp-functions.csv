@@ -1094,3 +1094,4 @@ th20::Player::collision_rectangle_circle,0x004F91D0,function
 th20::Player::draw,0x004F8AF0,function
 th20::Bullet::advance_command11,0x00481200,function
 th20::player_draw_callback,0x004FEFB0,function
+th20::BulletController::draw_group,0x0047DB70,function

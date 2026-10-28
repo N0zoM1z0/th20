@@ -121,3 +121,13 @@ original native relocations and real AnimationHandle position ownership.
 The complete 45/35/66B handle dependencies are also strict exact.
 The **273B single-group drawing function remains nonexact**.
 See [complete 211B step and AnimationHandle chain](BULLET_STEP_AND_ANIMATION_HANDLE_EXACT_RECONSTRUCTION.md).
+
+## CORE/RECON-304 update (later source-present checkpoint)
+
+The entire 273B `BulletController::draw_group(int)` now lives in maintained
+`src/BulletDrawGroup.cpp` using existing typed production headers. It remains
+**nonexact**: locked compiler yields 279B / 82 instructions with 79/82
+aligned original mnemonics; the independently re-read eight original native
+relocations, flag byte, loop and SSE/x87 rotation path remain documented.
+Previous claims above that only ignored private source exists are historical.
+See [the maintained full-function frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md).
