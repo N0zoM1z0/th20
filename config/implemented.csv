@@ -1022,3 +1022,6 @@ th20::EnemyQueuedRecord::operator=
 th20::Player::position_ref
 th20::Player::direction_to
 th20::BulletController::fire
+th20::Bullet::deactivate
+th20::Bullet::select_context
+th20::BulletController::free_list

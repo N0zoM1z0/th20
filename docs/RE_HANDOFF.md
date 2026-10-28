@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
+**Checkpoint:** CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 active-session commit subjects and **affected-only** replay requirements. This
@@ -46,6 +46,21 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-211 (web) closes **all 291 original bytes** of real
+`Bullet::deactivate` `0x0047DA40`, its **13 native relocations**,
+`Bullet::select_context` `0x00486570` (**54/54 B, two relocations**),
+and `BulletController::free_list` `0x00485900` (**19/19 B**). The deactivation
+uses real active-link detach, live Context free-list return, five native Timer
+resets, four preserved flag clears, AnimationHandle retirement and **real
+shared_ptr metadata reset**. Complete 3,735B Bullet single-shot emitter
+`0x004818E0` separately audited at 935 original instructions/60 calls but
+**not exact**, nor is 41,967B Enemy root. Six shared-header objects/35 old
+units fully revalidated after `$SG`-only compiler renumbering; **38/38
+scoped exact units, seven cold objects, no whole-graph replay**. See
+[complete lifecycle evidence](BULLET_LIFECYCLE_EMISSION_EXACT_RECONSTRUCTION.md).
+Current maintained authored-exact totals: **232 functions / 59,716 bytes**.
+
 
 CORE/EXACT-210 (web) admits **the full original 339-byte**
 `BulletController::fire` at `0x00481780`: 103 original instructions,

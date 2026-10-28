@@ -1023,3 +1023,6 @@ th20::EnemyQueuedRecord::operator=,0x0048BC00,function
 th20::Player::position_ref,0x00460850,function
 th20::Player::direction_to,0x004FF350,function
 th20::BulletController::fire,0x00481780,function
+th20::Bullet::deactivate,0x0047DA40,function
+th20::Bullet::select_context,0x00486570,function
+th20::BulletController::free_list,0x00485900,function
