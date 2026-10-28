@@ -151,3 +151,20 @@ The whole 1,707-byte damage query remains unimplemented and unaccepted. Native
 heap release before later query reads and the unconsumed visit counter remain
 open; no inert counter or invented lifetime repair is added. Startup, complete
 resource ownership, whole-game linkage and native playable behavior remain open.
+
+
+## Later CORE/EXACT-394 — complete game factory source closure
+
+The earlier **113/123-byte Bomb** and **82/92-byte Hit** whole
+factory nonexact measurements are historical. Both actual original
+game-owned factories are now **123/123** and **92/92** strict native
+exact after restoring real `goto cleanup` allocation-release flow
+and the original post-release local-pointer invalidation.
+The whole native functions each contain a short jump omitted from
+Ghidra's `body_addresses`, but present in the independently decoded
+original executable and the strict comparison extent. All
+**15/15 independent E8/HIGHLOW fields**, game diagnostics and actual
+Session/Context/HitCtrlInf owner call paths agree with native.
+Existing six strict units plus the two new methods pass
+**8/8 actual-source-only units across two cold objects**.
+Read the [complete original factory proof](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md).

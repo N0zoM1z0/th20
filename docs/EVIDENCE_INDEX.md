@@ -254,6 +254,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Ownership, gameplay and shared values
 
+- [Two exact complete native Bomb and HitCtrlInf game factories, 215B](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md) — 123B/41-instruction Bomb producer and 92B/32-instruction Hit controller producer, real cleanup/pointer invalidation, all 15 native E8/HIGHLOW reference fields, including Ghidra-omitted internal jumps; 8/8 affected strict units in two cold existing objects.
+
 - [Exact complete 162B FunctionChainController owned-node removal](FUNCTION_CHAIN_REMOVE_162_EXACT_RECONSTRUCTION.md) — actual update/draw intrusive-chain search, current cursor fix, release, and original by-value node-slot zeroing; five E8 and one PE HIGHLOW native refs, 15/15 scoped strict units in one rebuilt owner object.
 
 - [Actual Bomb ownership and dispatch](BOMB_OWNER_RECONSTRUCTION.md)

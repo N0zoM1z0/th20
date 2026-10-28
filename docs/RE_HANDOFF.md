@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-387 complete FunctionChain owned-node removal.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-394 complete Bomb and Hit allocation factories.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -17,9 +17,9 @@ old reports and probe filenames are **not** current status.
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
 | Source-present mappings, all origins | **1,130** |
-| Canonical strict native units | **1,130** |
+| Canonical strict native units | **1,132** |
 | Unique canonical object providers | **226**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **355**, covering **114,452 native bytes** |
+| Exact game-authored whole functions | **357**, covering **114,667 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `create_bomb_controller` / `create_hit_controller` | `0x00478300` / `0x004C20D0` | **123 / 92** | [whole native Bomb and Hit factories](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md) |
 | `FunctionChainController::remove_unlocked` | `0x00412400` | **162** | [exact whole owned-node scheduler removal](FUNCTION_CHAIN_REMOVE_162_EXACT_RECONSTRUCTION.md) |
 | `EnemyPattern::emit_items` | `0x004A5350` | **630** | [entire timed item scatter and native arithmetic](ENEMY_PATTERN_ITEM_EMITTER_630_EXACT_RECONSTRUCTION.md) |
 | `ProgressSaveManager` ctor / `commit` / copy / merge | `0x0050E5D0` / `0x0050F660` / `0x0050EEB0` / `0x0050F5F0` | **199 / 70 / 75 / 107** | [full Worker/ProgressSnapshot original methods](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md) |
@@ -314,6 +315,22 @@ Only its real existing source owner was cold rebuilt:
 **15/15 strict units in one object**, including native
 611B update and 587B draw scheduler roots. No full replay.
 [Complete native function proof](FUNCTION_CHAIN_REMOVE_162_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-394 closes both complete original game factories:
+`create_bomb_controller` at `0x00478300` (**123B/41 instructions**)
+and `create_hit_controller` at `0x004C20D0` (**92B/32 instructions**).
+Both use a genuine initialization failure `goto cleanup` path
+and invalidation of the retired local pointer. The entire native
+original includes an otherwise Ghidra-omitted short jump inside
+each function; neither original 123/92-byte interval is truncated.
+All **15 independent E8/HIGHLOW reference fields** agree with the
+real immutable original and locked COFF objects. Only the
+actual two source providers and their six earlier exact units
+were cold rebuilt, **8/8 strict units in two objects**,
+with zero unrelated/all-graph replay. The Bomb diagnostic,
+real Session/Context publisher and Hit allocator establish
+the original TH20 gameplay object ownership.
+[Two complete native factories](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

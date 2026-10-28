@@ -19336,3 +19336,44 @@ relocations = [
   { offset = 0x8C, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x91, type = "REL32", symbol = "??$release_object@VFunctionChainNode@th20@@@DiagnosticAllocator@th20@@QAEXPAVFunctionChainNode@1@@Z", target = 0x004118A0 },
 ]
+
+# CORE/EXACT-394: complete original 123B game-owned factory, including
+# the original otherwise Ghidra-omitted short jump and real cleanup.
+[units.bomb_controller_create]
+source = "src/BombCreation.cpp"
+object = "build/core180-canonical/BombCreation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::create_bomb_controller"]
+symbol = "?create_bomb_controller@th20@@YAPAVBombController@1@H@Z"
+target_address = 0x00478300
+size = 123
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "$SG79427", target = 0x0056FACC },
+  { offset = 0xD, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x12, type = "REL32", symbol = "??$allocate_object@VBombController@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVBombController@1@PBD@Z", target = 0x00477960 },
+  { offset = 0x2B, type = "REL32", symbol = "?initialize@BombController@th20@@QAEHH@Z", target = 0x00477DC0 },
+  { offset = 0x3C, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x41, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+  { offset = 0x50, type = "REL32", symbol = "?set_bomb_controller@Context@th20@@QAEXPAVBombController@2@@Z", target = 0x0041DE90 },
+  { offset = 0x65, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x6A, type = "REL32", symbol = "??$release_object@VBombController@th20@@@DiagnosticAllocator@th20@@QAEXPAVBombController@1@@Z", target = 0x0041F7C0 },
+]
+
+# CORE/EXACT-394: complete original 92B game-owned factory, including
+# the original otherwise Ghidra-omitted short jump and real cleanup.
+[units.hit_controller_create]
+source = "src/HitCtrlInfCreation.cpp"
+object = "build/core180-canonical/HitCtrlInfCreation.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc", "/Gd"]
+functions = ["th20::create_hit_controller"]
+symbol = "?create_hit_controller@th20@@YAPAVHitCtrlInf@1@H@Z"
+target_address = 0x004C20D0
+size = 92
+relocations = [
+  { offset = 0x5, type = "DIR32", symbol = "$SG79219", target = 0x00570CC4 },
+  { offset = 0xB, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x10, type = "REL32", symbol = "??$allocate_object@VHitCtrlInf@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVHitCtrlInf@1@PBD@Z", target = 0x004BFDE0 },
+  { offset = 0x29, type = "REL32", symbol = "?initialize@HitCtrlInf@th20@@QAEHH@Z", target = 0x004C0B30 },
+  { offset = 0x46, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x4B, type = "REL32", symbol = "??$release_object@VHitCtrlInf@th20@@@DiagnosticAllocator@th20@@QAEXPAVHitCtrlInf@1@@Z", target = 0x0041F7C0 },
+]
