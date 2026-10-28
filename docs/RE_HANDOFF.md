@@ -47,6 +47,29 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/AUDIT-258 (web) freshly built and independently compared **three
+entire natural C++20** versions of the **1,846-byte** original Bullet
+physics-state boss `0x00485B60`, 517 original x86 instructions and
+**four-entry native jump table** `0x00486298`. The immutable complete
+compiler contribution is **1,872B** including `66 90`, the 16B switch
+table and eight trailing `CC` bytes; complete SHA-256 attested.
+The first fully sourced probe emitted **1,952B / 467/517 native mnemonic
+positions aligned**; restoring true right-shift flag masks, postfix Timer
+and common state2 reset path reduced it to **1,860B total / 1,844B code
+and 487/517 aligned**. Further native flag checks produced **1,868B total
+/ 1,849B code and 490/517 aligned**, still **nonexact** owing to a
+missing command26 reentry block, native Vector3 return-ABI temporaries,
+actual shared control flow and complete four-pointer-table alignment.
+Private complete roots `.analysis/core258-BulletUpdatePhysics*.cpp` and
+compiled objects remain intact; no partial/length-only match credited.
+See [full original physics-state root and 1,872B contribution audit](BULLET_PHYSICS_1846_NATIVE_FRONTIER.md). This documentation-only audit
+changes **zero canonical code inputs: zero affected replay units**,
+no all-graph cold replay. Authored strict totals stay **275 functions /
+71,363 original bytes**. The 273B draw, 1,404B command11,
+2,018B collision, 3,735B emitter, 12,140B Bullet update and 41,967B
+Enemy opcode root also remain nonexact.
+
+
 CORE/EXACT-256 (web) completes three actual typed `Vector2` geometry
 functions directly called by the native 1,404B command11 boss:
 `cross_components` **50B** `0x00480D30`, `dot_components` **50B**

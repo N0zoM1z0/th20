@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Full 1,846B Bullet physics state machine and original four-way table audit](BULLET_PHYSICS_1846_NATIVE_FRONTIER.md) — independent complete 517-instruction boss audit, 1,872B total native code/table/alignment contribution; three entire C++20 probes improve to 490/517 instruction types but remain nonexact.
+
 - [Exact 255B command11 geometry dependency chain and 1,404B whole boss frontier](BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md) — three whole 50B/50B/155B native functions with three independently reviewed native relocations, plus a complete 357-instruction 1,404B parent candidate still nonexact.
 
 - [Native shot vector STL origin and full 3,735B emitter branch-table audit](BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md) — actual 33B/41B MSVC STL vector methods 2/2 strict but library-excluded from authored credit; full 3,840B emitter and 1,872B physics table-containing contributions plus 2,018B collision-root SHA independently attested.
