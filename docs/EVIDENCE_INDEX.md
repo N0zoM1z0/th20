@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact 202B alternate EffectInfo spawn and 55B flag-4 AnimationFile wrapper](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md) — two entire native function bodies, 94 instructions and all eight independently attested E8/PE HIGHLOW refs; 239/239 affected-only strict units in 52 cold objects.
+
 - [Exact entire 227B EffectInfo animation spawn and corrected optional Animation pointer ABI](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md) — real native 32B script table, hidden handle return, optional existing Animation*, recursive flag setter and callback; eight independently attested original references and 32/32 scoped strict units.
 
 - [Exact complete 271B EffectInfo deferred-effects frame](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md) — whole 1024-slot handle loop and 1024-slot request timer/spawn loop, 90/90 original instructions and eight independent E8/HIGHLOW anchors; 26/26 scoped strict units in eight cold objects.

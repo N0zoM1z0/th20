@@ -131,3 +131,13 @@ This checkpoint establishes complete native game-owned function exactness;
 it is not evidence for fully linked executable equivalence, a complete
 Renderer/Animation lifetime, or the separately open Enemy/ECL and Bullet
 large bosses.
+
+## CORE/EXACT-362 separate alternate-spawn closure
+
+The *different* complete **202-byte** EffectInfo spawner at `0x0049DCF0`
+and its actual **55-byte** `AnimationFile::spawn_flag4` dependency at
+`0x0049E080` are now separately strict exact, with native flag **4** and
+fixed layer **-1**, and no recursive Animation flag setter after resolve.
+These are distinct physical original functions, not extensions of the
+already exact 227-byte spawner. See the
+[complete alternate-spawn proof](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md).

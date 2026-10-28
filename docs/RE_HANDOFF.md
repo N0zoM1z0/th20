@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-361 complete EffectInfo animation spawning and ABI correction.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-362 full alternate EffectInfo spawn and flag-4 ANM ABI.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,128** |
-| Canonical strict native units | **1,117** |
+| Source-present mappings, all origins | **1,130** |
+| Canonical strict native units | **1,119** |
 | Unique canonical object providers | **225**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **330**, covering **82,712 native bytes** |
+| Exact game-authored whole functions | **332**, covering **82,969 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `EffectInfo::spawn_effect_variant` / `AnimationFile::spawn_flag4` | `0x0049DCF0` / `0x0049E080` | **202 / 55** | [complete alternate spawn and native flag4 wrapper](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::spawn_effect` | `0x0049DB70` | **227** | [whole original animation spawn and optional pointer protocol](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::process_queued_effects` | `0x0049D4A0` | **271** | [entire two-queue lifecycle frame](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md) |
 | `EnemyController::graze_reward_active` | `0x0049BE20` | **123** | [whole 16-handle reward predicate](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md) |
@@ -211,6 +212,15 @@ integer policy to actual optional `Animation*`**. All three original
 662B Bullet cancel and 2,018B Bullet collision still match strictly:
 **32/32 affected-only units across nine cold objects**. No unfiltered
 whole-graph replay. [Focused full proof](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-362 independently closes the **202-byte** alternate
+`EffectInfo::spawn_effect_variant` and genuine **55-byte**
+`AnimationFile::spawn_flag4`. Both whole original native bodies are strict
+exact, including six calls/one PE HIGHLOW in the 202B method and the
+flag-4 wrapper's sole original E8 target. No other ANM or EffectInfo
+lifecycle root inherits credit. The **actual shared-header compiler receipt
+closure**, not a full cold replay, passed **239/239 strict units across 52
+cold objects**; private MSVC `$SG` renumberings were independently verified.
 
 ## Open complete-function roots — next agent's priorities
 

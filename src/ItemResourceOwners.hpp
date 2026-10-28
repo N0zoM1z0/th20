@@ -44,6 +44,11 @@ public:
                       const EffectParameters& parameters, Animation* existing_animation);
     AnimationHandle spawn_effect(std::int32_t kind, const EffectParameters& parameters,
                                  Animation* existing_animation);
+    // Alternate original effect spawn: flag-4 AnimationFile creation and
+    // the same callback table, but no recursive Animation flag setting.
+    AnimationHandle spawn_effect_variant(std::int32_t kind,
+                                         const EffectParameters& parameters,
+                                         Animation* existing_animation);
 };
 class StoneMenuInfo : public TaskInfo {
 public:

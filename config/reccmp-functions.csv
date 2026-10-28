@@ -1127,3 +1127,5 @@ th20::EffectInfo::queue_effect,0x0049DC60,function
 th20::EnemyController::graze_reward_active,0x0049BE20,function
 th20::EffectInfo::process_queued_effects,0x0049D4A0,function
 th20::EffectInfo::spawn_effect,0x0049DB70,function
+th20::AnimationFile::spawn_flag4,0x0049E080,function
+th20::EffectInfo::spawn_effect_variant,0x0049DCF0,function

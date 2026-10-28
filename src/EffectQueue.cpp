@@ -82,4 +82,27 @@ AnimationHandle EffectInfo::spawn_effect(std::int32_t kind, const EffectParamete
     return result;
 }
 
+// The separate original alternate 202-byte spawner uses the same observed
+// 32-byte specification records and callback, but flag-4 ANM creation
+// skips recursive Animation flag updates present in the 227-byte variant.
+AnimationHandle EffectInfo::spawn_effect_variant(std::int32_t kind,const EffectParameters& parameters,
+                                                 Animation* existing_animation) {
+    const EffectScriptSpec* spec = &native_effect_scripts[kind];
+    AnimationHandle result;
+    clear_animation_handle_value(result);
+    if (spec->script_index >= 0) {
+        if (!existing_animation) {
+            AnimationFile* file = files[spec->file_index];
+            const std::int32_t script = spec->script_index;
+            result = file->spawn_flag4(nullptr,script,nullptr);
+            existing_animation = result.resolve();
+        } else {
+            result = 0;
+        }
+        if (spec->callback)
+            spec->callback(existing_animation,parameters,view_index);
+    }
+    return result;
+}
+
 } // namespace th20
