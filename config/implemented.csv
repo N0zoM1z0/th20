@@ -1046,3 +1046,4 @@ th20::BulletController::cancel_in_rectangle
 th20::Bullet::advance_command9
 th20::Timer::set(float)
 th20::Timer::operator=(float)
+th20::Bullet::advance_command0

@@ -252,3 +252,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0047C800,th20::Bullet::advance_command9,226,matching,100.00,bullet_advance_command9,"CORE/EXACT-237; docs/BULLET_COMMAND9_EXACT_RECONSTRUCTION.md; complete native 226B ten relocation targets, 55/55 strict scoped units"
 0x004841F0,th20::Timer::set(float),103,matching,100.00,timer_set_float,CORE/EXACT-238; docs/TIMER_FLOAT_SET_EXACT_RECONSTRUCTION.md; full original 103B strictly exact; all 595 Timer.hpp affected old units rebuilt and verified
 0x0047C5F0,th20::Timer::operator=(float),33,matching,100.00,timer_assign_float,CORE/EXACT-238; docs/TIMER_FLOAT_SET_EXACT_RECONSTRUCTION.md; full original 33B strictly exact; all 595 Timer.hpp affected old units rebuilt and verified
+0x004840E0,th20::Bullet::advance_command0,267,matching,100.00,bullet_advance_command0,"CORE/EXACT-240; docs/BULLET_COMMAND0_EXACT_RECONSTRUCTION.md; native complete 267/267 and 11 relocations, 56/56 affected-only strict native units"
