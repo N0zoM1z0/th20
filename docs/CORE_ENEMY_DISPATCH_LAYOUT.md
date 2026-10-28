@@ -21,6 +21,18 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE199 additionally integrates two complete larger Laser opcode heads
+in the **same entire 41,967-byte Enemy source draft**: opcode 711
+(619 original bytes / 141 instructions) and opcode 713 (611 bytes /
+137 instructions). Real LaserType2/3 parameter owners, 0.9f position
+semantics, PMR command deep copies, COW metadata and late Context dispatch
+are exercised, including actual calls into the separately byte-exact 474B
+Laser creation and 75B registration methods. **42,743/42,743** whole-host
+GCC13 UBSan and ASan+UBSan cases pass; the original Enemy root remains
+**machine-code nonexact**, covering 134 effective values / 102 original
+primary heads of 174. See
+[whole-root 711/713 Laser branch integration](ENEMY_WHOLE_ROOT_711_713_LASER_TYPED_CREATION.md).
+
 CORE198 independently re-attests the queued-parameter branch integration adds two complete
 original Enemy primary heads, **opcode 700 (269B / 59 native instructions)**
 and **701 (289B / 67 instructions)**. The same whole-root draft now covers
