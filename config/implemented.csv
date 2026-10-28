@@ -1065,3 +1065,5 @@ th20::Bullet::step_update
 th20::AnimationHandle::operator!=
 th20::AnimationHandle::set_position
 th20::AnimationPoolOwner::set_handle_position
+std::pmr::vector<th20::BulletCommand>::operator[]
+std::pmr::vector<th20::BulletCommand>::size

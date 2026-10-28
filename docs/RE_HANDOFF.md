@@ -47,6 +47,31 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/LIB-254 (web) independently reconstructed two genuine MSVC STL
+instantiations used by the whole **3,735B** Bullet shot emitter:
+`std::pmr::vector<BulletCommand>::operator[]` at `0x0047C6C0`
+(**33/33 whole native bytes**) and `size()` at `0x00486600`
+(**41/41 bytes**). They compile from the **real existing 44-byte**
+`BulletCommand` and `EtamaArgInf::commands` vector layout; original
+COFF/local call sites establish genuine STL origin. **2/2 library units
+in one cold object** are strict exact; `function-origins.csv` marks
+`library/exclude` and no game-authored exact bytes are credited.
+
+The **entire** original 3,735B Bullet emitter was independently decoded
+(935 x86 instructions, 60 direct calls); it has a **13-entry native
+switch table at `0x00482778`** and **11-entry second switch table at
+`0x004827AC`**, one NOP after body and eight final alignment bytes:
+**3,840 bytes complete function+tables/alignment contribution**, all
+still nonexact pending real emitter C++ body. The separate native
+**1,846B** Bullet physics root at `0x00485B60` is 517 instructions,
+57 direct calls and a genuine four-way switch; complete native physics
+and the original 2,018B collision boss are not yet exact. See
+[STL origin and two large Bullet native boss audits](BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md).
+This checkpoint edits one new STL-source TU, classification and docs
+only; **zero old exact units affected**, **2/2 scoped new library units**.
+Author exact status remains **272 funcs / 71,108B**.
+
+
 CORE/EXACT-251/252 (web): complete original **211-byte**
 `Bullet::step_update()` at `0x0047D960` now **211/211 native strict
 exact** (73 x86 instructions, six original relocations). Its original

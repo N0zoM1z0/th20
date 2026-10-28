@@ -17914,3 +17914,25 @@ size = 66
 relocations = [
   { offset = 0x11, type = "REL32", symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAUAnimation@2@I@Z", target = 0x0044CD00 },
 ]
+
+# CORE/LIB-254: real MSVC STL vector<BulletCommand, pmr_allocator> bodies.
+# Verified in the locked PE; excluded from game-authored exact coverage.
+[units.shot_command_vector_index_library]
+source = "src/ShotMetadataVectorInstantiation.cpp"
+object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::BulletCommand>::operator[]"]
+symbol = "??A?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEAAUBulletCommand@th20@@I@Z"
+target_address = 0x0047C6C0
+size = 33
+relocations = []
+
+[units.shot_command_vector_size_library]
+source = "src/ShotMetadataVectorInstantiation.cpp"
+object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::BulletCommand>::size"]
+symbol = "?size@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QBEIXZ"
+target_address = 0x00486600
+size = 41
+relocations = []

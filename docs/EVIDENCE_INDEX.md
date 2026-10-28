@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Native shot vector STL origin and full 3,735B emitter branch-table audit](BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md) — actual 33B/41B MSVC std::pmr::vector<BulletCommand> methods both strict exact as library (not authored), original 13/11-entry emitter switch tables and separate 1,846B physics boss evidence.
+
 - [Entire 211B Bullet physics/collision step and 45B/35B/66B AnimationHandle chain](BULLET_STEP_AND_ANIMATION_HANDLE_EXACT_RECONSTRUCTION.md) — original complete 73-instruction state boss, 9 real relocation anchors across four exact functions and all 403/403 scoped old/new strict units.
 
 - [Exact entire 662-byte Bullet cancellation boss](BULLET_CANCEL_662_EXACT_RECONSTRUCTION.md) — all 199 native instructions and 34 relocation anchors, original hidden AnimationHandle result and different mode-1/mode-3 wrappers, 251/251 scoped strict units.
