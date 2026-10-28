@@ -62,6 +62,10 @@ public:
     void enable() override;
     std::int32_t load_shot_data(PlayerShotData** output,const char* path);
     bool focused_mode();
+    std::int32_t state_value() const;
+    void apply_player_hit();
+    std::int32_t collision_rectangle(const Vector3& bullet_position,
+                                    const Vector2& extents, std::int32_t mode);
     void set_entity_flag_10(std::uint32_t value);
     std::int32_t damage_limit();
     PlayerFeedback* feedback_value();

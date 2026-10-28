@@ -4553,7 +4553,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004F8840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F8AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F8B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F8CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F8CE0,authored,Player,authored,high,"CORE/EXACT-268; docs/PLAYER_COLLISION_RECTANGLE_EXACT_RECONSTRUCTION.md; Complete original 777B/212-instruction Player rectangle hit and graze gameplay boss, 35 independently PE-disassembled original relocations. Genuine PlayerCollisionBounds normal_extent at +209C, focus_extent at +20A8, player position at +614, actual 8-byte two-lane Vector2 rect and original true 48.0f graze width at 0x0056FB7C, 2.0f divisor, expanded rectangle rewrites original locals before second short-circuit test. Real FrontInf dialogue at 0x005C06A4, Player state getter alias 0x00411700, original Timer+2050 greater-than test and full external 336B Player hit handler 0x004F86F0. All 777/777 native bytes exact and 35/35 anchors; 9 old Player.hpp-affected objects/35 prior strict units freshly recompiled exact; new+old 36/36 strict units over 10 cold objects. The parent 2018B Bullet collision and alternative Player circle 466B remain separate nonexact roots."
 0x004F8FF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F91D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F9470,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -1079,3 +1079,4 @@ th20::cancel_animation_handle,0x00479040,function
 th20::cancel_animation_handle_mode2,0x00486310,function
 th20::cancel_animation_handle_mode3,0x00486350,function
 th20::interrupt_animation_mode3,0x00486370,function
+th20::Player::collision_rectangle,0x004F8CE0,function
