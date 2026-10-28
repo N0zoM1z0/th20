@@ -5,6 +5,8 @@
 
 namespace th20 {
 
+struct Vector2;
+
 // Actual atlas return value and Player fixed coordinates, without resources.
 struct IntPoint {
     std::int32_t x;
@@ -13,6 +15,7 @@ struct IntPoint {
     IntPoint();
     IntPoint(std::int32_t x, std::int32_t y);
     IntPoint operator+(const IntPoint& other) const;
+    void assign_scaled(const Vector2& position);
 };
 
 struct IntRectangle {

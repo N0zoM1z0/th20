@@ -1103,3 +1103,9 @@ th20::PlayerTable::clamped_field_1e4
 th20::Session::flag0_value
 th20::Player::clear_entity_flag2
 th20::Player::reset_initial_state
+th20::Player::active_option_count
+th20::PlayerShotController::set_flag0
+th20::IntPoint::assign_scaled
+th20::Player::set_option_field_fc
+"th20::PlayerValues<PlayerOption, 10>::end"
+"th20::PlayerValues<PlayerOption, 12>::end"

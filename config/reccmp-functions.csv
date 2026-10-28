@@ -1104,3 +1104,9 @@ th20::PlayerTable::clamped_field_1e4,0x004C5DB0,function
 th20::Session::flag0_value,0x00474E00,function
 th20::Player::clear_entity_flag2,0x004790C0,function
 th20::Player::reset_initial_state,0x004FB450,function
+th20::Player::active_option_count,0x004FF670,function
+th20::PlayerShotController::set_flag0,0x004FFD50,function
+th20::IntPoint::assign_scaled,0x004FEE50,function
+th20::Player::set_option_field_fc,0x004FB290,function
+"th20::PlayerValues<PlayerOption, 10>::end",0x004FCE60,function
+"th20::PlayerValues<PlayerOption, 12>::end",0x004FCE80,function

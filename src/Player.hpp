@@ -83,6 +83,8 @@ public:
     void clear_option_animations();
     void reset_initial_state();
     void rebuild_option_animations(std::int32_t mode);
+    std::int32_t active_option_count() const;
+    void set_option_field_fc(std::int32_t value);
     void enter_special_state();
     void clear_entity_flag2();
     IntPoint& fixed_position_ref();

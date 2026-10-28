@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact Player option management and fixed-coordinate chain (328B)](PLAYER_OPTION_MANAGEMENT_EXACT_RECONSTRUCTION.md) — entire 165B two-loop option broadcast, real shot-flag bitfield and float-to-fixed math, two independent native 19B end bodies; 87/87 affected-only strict units across 26 cold objects.
+
 - [Entire 115B PlayerFeedback capped hit recorder exact](PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md) — all 42 original instructions and three native call relocations, 9/9 strict PlayerStorage units cold replayed, no shared-header changes.
 
 - [Entire 966B Player initialization/reset boss exact](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md) — all 208 original instructions, 19 original calls plus 21 independent PE HIGHLOW relocations, native four-float shot header and 33-point history, and 61/61 affected-only strict units across 21 cold objects.

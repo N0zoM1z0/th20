@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82084", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82105", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -16131,7 +16131,7 @@ relocations = [
   { offset = 476, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
   { offset = 490, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
   { offset = 564, type = "REL32", symbol = "_memset", target = 5523296 },
-  { offset = 572, type = "DIR32", symbol = "$SG83960", target = 5699020 },
+  { offset = 572, type = "DIR32", symbol = "$SG83962", target = 5699020 },
   { offset = 577, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
   { offset = 588, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 625, type = "DIR32", symbol = "__real@3f800000", target = 5687500 },
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117893", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117895", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117894", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117896", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117895", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117897", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117896", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117898", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -18729,4 +18729,82 @@ relocations = [
   { offset = 0x11, type = "REL32", symbol = "??YPlayerFeedback@th20@@QAEXH@Z", target = 0x0045C300 },
   { offset = 0x22, type = "REL32", symbol = "?greater_than@Timer@th20@@QBE_NH@Z", target = 0x00461070 },
   { offset = 0x33, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]
+
+# CORE/EXACT-320: complete native original 20B, observed ABI and relocations.
+[units.player_option_active_count]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::active_option_count"]
+symbol = "?active_option_count@Player@th20@@QBEHXZ"
+target_address = 0x004FF670
+size = 20
+relocations = [
+]
+
+# CORE/EXACT-320: complete native original 42B, observed ABI and relocations.
+[units.player_shot_set_flag0]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShotController::set_flag0"]
+symbol = "?set_flag0@PlayerShotController@th20@@QAEXI@Z"
+target_address = 0x004FFD50
+size = 42
+relocations = [
+]
+
+# CORE/EXACT-320: complete native original 63B, observed ABI and relocations.
+[units.player_option_fixedpoint]
+source = "src/PlayerFixedPoint.cpp"
+object = "build/core320-canonical/PlayerFixedPoint.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::IntPoint::assign_scaled"]
+symbol = "?assign_scaled@IntPoint@th20@@QAEXABUVector2@2@@Z"
+target_address = 0x004FEE50
+size = 63
+relocations = [
+  { offset = 0x12, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x2B, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+]
+
+# CORE/EXACT-320: complete native original 165B, observed ABI and relocations.
+[units.player_option_set_field_fc]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::set_option_field_fc"]
+symbol = "?set_option_field_fc@Player@th20@@QAEXH@Z"
+target_address = 0x004FB290
+size = 165
+relocations = [
+  { offset = 0x18, type = "REL32", symbol = "?begin@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEPAUPlayerOption@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x23, type = "REL32", symbol = "?end@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEPAUPlayerOption@2@XZ", target = 0x004FCE60 },
+  { offset = 0x63, type = "REL32", symbol = "?begin@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEPAUPlayerOption@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x6E, type = "REL32", symbol = "?end@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEPAUPlayerOption@2@XZ", target = 0x004FCE80 },
+]
+
+# CORE/EXACT-320: complete native original 19B, observed ABI and relocations.
+[units.player_options_end10]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerValues<PlayerOption, 10>::end"]
+symbol = "?end@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEPAUPlayerOption@2@XZ"
+target_address = 0x004FCE60
+size = 19
+relocations = [
+]
+
+# CORE/EXACT-320: complete native original 19B, observed ABI and relocations.
+[units.player_options_end12]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerValues<PlayerOption, 12>::end"]
+symbol = "?end@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEPAUPlayerOption@2@XZ"
+target_address = 0x004FCE80
+size = 19
+relocations = [
 ]

@@ -19,6 +19,7 @@ struct PlayerWordFlags {
     union {
         std::uint32_t bits;
         struct { std::uint32_t lower:10, bit_10:1, upper:21; } fields;
+        struct { std::uint32_t bit0:1, remaining:31; } bit0_view;
     };
 };
 static_assert(sizeof(PlayerWordFlags) == 4);
@@ -123,6 +124,7 @@ struct PlayerShotController {
     Context* context;
     PlayerShotController();
     void reset_all();
+    void set_flag0(std::uint32_t flag);
     PlayerShot* find(std::int32_t identifier);
 };
 // No explicit padding fields: byte flags and pointers use native alignment.
