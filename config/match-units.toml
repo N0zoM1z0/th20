@@ -18410,3 +18410,38 @@ relocations = [
   { offset = 0x7CA, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
   { offset = 0x7D8, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-294: entire original 434-byte native 109-instruction Bullet
+# shot direction-mode boss, 22 independently attested original PE anchors.
+[units.bullet_aim_selector]
+source = "src/BulletAimSelector.cpp"
+object = "build/core294-canonical/BulletAimSelector.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::select_bullet_aim"]
+symbol = "?select_bullet_aim@th20@@YAMHMABUVector3@1@MM@Z"
+target_address = 0x00485740
+size = 434
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "?native_selector_min@th20@@3MB", target = 0x0056FD80 },
+  { offset = 0x18, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+  { offset = 0x25, type = "DIR32", symbol = "?native_selector_min@th20@@3MB", target = 0x0056FD80 },
+  { offset = 0x46, type = "DIR32", symbol = "?native_selector_player_lo@th20@@3MB", target = 0x0056FD54 },
+  { offset = 0x50, type = "DIR32", symbol = "?native_selector_player_hi@th20@@3MB", target = 0x0056FD58 },
+  { offset = 0x5F, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0x71, type = "REL32", symbol = "?direction_to@Player@th20@@QAEMABUVector3@2@@Z", target = 0x004FF350 },
+  { offset = 0x94, type = "DIR32", symbol = "?native_selector_wobble_lo@th20@@3MB", target = 0x0056FD5C },
+  { offset = 0x9E, type = "DIR32", symbol = "?native_selector_wobble_hi@th20@@3MB", target = 0x0056FD60 },
+  { offset = 0xAD, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0xBF, type = "REL32", symbol = "?direction_to@Player@th20@@QAEMABUVector3@2@@Z", target = 0x004FF350 },
+  { offset = 0xCC, type = "DIR32", symbol = "?process_bullet_random@th20@@3UGameRandom@1@A", target = 0x005BA4A8 },
+  { offset = 0xD6, type = "REL32", symbol = "?signed_unit@GameRandom@th20@@QAEMXZ", target = 0x004298E0 },
+  { offset = 0x102, type = "DIR32", symbol = "?native_selector_wobble_hi@th20@@3MB", target = 0x0056FD60 },
+  { offset = 0x10C, type = "DIR32", symbol = "?native_selector_random_hi@th20@@3MB", target = 0x0056FD64 },
+  { offset = 0x117, type = "DIR32", symbol = "?process_bullet_random@th20@@3UGameRandom@1@A", target = 0x005BA4A8 },
+  { offset = 0x11C, type = "REL32", symbol = "?signed_unit@GameRandom@th20@@QAEMXZ", target = 0x004298E0 },
+  { offset = 0x141, type = "DIR32", symbol = "?native_selector_random_hi@th20@@3MB", target = 0x0056FD64 },
+  { offset = 0x14C, type = "REL32", symbol = "?enemy_controller@th20@@YAPAUEnemyController@1@H@Z", target = 0x00478060 },
+  { offset = 0x15C, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x163, type = "REL32", symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ", target = 0x0047A2C0 },
+  { offset = 0x16D, type = "REL32", symbol = "?direction_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 0x0047A2E0 },
+]

@@ -1087,3 +1087,4 @@ th20::bullet_animation_handle_valid
 th20::Timer::operator*(int)
 th20::Timer::operator!=(int)
 th20::Bullet::process_collision
+th20::select_bullet_aim

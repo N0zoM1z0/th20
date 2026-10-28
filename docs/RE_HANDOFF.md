@@ -47,6 +47,24 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/EXACT-294 (web) closes an independent **entire 434-byte** Bullet
+aim direction-mode boss `0x00485740`, 109 native instructions,
+**22 independent original relocations**, 434/434 strict original bytes.
+It supports true fixed/player-aimed/selected Enemy-aimed and random
+angle modes, with float sentinel bands (-999990, 999990, 1999990,
+2999990, 3999990, 4999990), native pi, real player/Enemy direction
+interfaces and global GameRandom. Original nested `?:` source shape
+was required; a plausible equivalent `if` emitted only 413B.
+Maintained natural source `src/BulletAimSelector.cpp` and isolated new
+header have **no prior include-closure dependents**: exactly 1/1 new
+strict unit in one cold object, **zero old units affected**. No whole
+cold replay. See [whole 434B aim selector evidence](BULLET_AIM_SELECTOR_EXACT_RECONSTRUCTION.md).
+Current authored strict total **293 functions / 77,397 native bytes**.
+The full 1,404B Bullet command11, 273B single-group draw, 3,735B
+emitter, 12,140B Bullet command root and 41,967B Enemy opcode boss
+remain nonexact independently.
+
+
 CORE/AUDIT-292 (web) attacks the **entire original 3,735B**
 `BulletController::emit` gameplay boss at `0x004818E0` with the first
 **complete compiling C++20 source** in

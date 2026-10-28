@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Complete exact 434-byte Bullet aim direction-mode boss](BULLET_AIM_SELECTOR_EXACT_RECONSTRUCTION.md) — all 109 original instructions and 22 PE-derived relocation sites, true player/enemy/random aim modes and 1/1 scoped native strict units.
+
 - [Entire 3,735B Bullet emitter C++20 root trials and original 13+11 switch tables](BULLET_EMITTER_FULL_CXX_FRONTIER.md) — full compiler-managed root drafts, 911/890 emitted instructions, 787–789 of 935 native kinds aligned, 24 genuine table relocations, original old-STL move-assignment mismatch identified; parent still nonexact.
 
 - [Entire 2,018B Bullet hit/graze collision boss exact](BULLET_COLLISION_2018_EXACT_RECONSTRUCTION.md) — whole 532-instruction source with 81 independent native relocation sites, 1,694 non-relocation bytes and 299/299 scoped strict units across 53 rebuilt objects.
