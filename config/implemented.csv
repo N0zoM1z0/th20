@@ -1169,3 +1169,6 @@ th20::InputInf::pad_device_slot
 th20::InputInf::start
 th20::InputInf::initialize_devices
 th20::InputInf::discover_xinput_devices
+th20::InputInf::discover_directinput_devices
+th20::InputDevice::initialize_directinput
+th20::InputInf::direct_input_handle_slot

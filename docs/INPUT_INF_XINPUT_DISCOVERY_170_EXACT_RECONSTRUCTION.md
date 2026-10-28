@@ -159,3 +159,45 @@ at `0x00420AA0` and complete
 **NONEXACT**. Exact XInput discovery is
 not proof that the whole game's
 input polling/linked runtime is complete.
+
+
+## Subsequent CORE/EXACT-495 — actual original DirectInput boss closed
+
+**Current status:** the entire original game-owned
+`InputInf::discover_directinput_devices` at
+`0x00420AA0` (**726/726B, 209 original x86
+instructions, 16 native E8 + 18 PE HIGHLOW**)
+and `InputDevice::initialize_directinput`
+at `0x004219D0` (**218/218B, 68 original
+instructions, 3 E8 + 8 HIGHLOW**) are now
+separately whole strict exact. The distinct
+17B `InputInf::direct_input_handle_slot`
+at `0x00421830` is also 17/17 exact.
+All three contribute **961 unique native
+game-authored original bytes**. Four source-level
+WindowState/InputInf C++ getters/setters whose
+original physical addresses were *already*
+strict exact remain native folded aliases:
+**zero duplicate original byte credit**.
+
+They recover the actual Windows DirectInput8
+SDK COM device creation, keyboard format/cooperative
+level and failure rollback, native game-controller
+enumeration, real 0x2EF8-byte InputInf layout,
+true COM pad attachment, Graphics DIDEVCAPS
+and original diagnostic strings.
+Actual previous locked compiler receipt union
+of InputState.hpp, WindowState.hpp and InputInf.hpp
+was **17 old source providers/82 strict units**.
+Two new entire game method source owners and one
+new method in existing InputInf owner yield
+**85/85 strict native units in 19 serial
+source-only cold objects**, no full replay.
+All original targets were independently PE-attested
+before canonical admission. **Historical claims**
+above that the 726B DirectInput discovery remains
+NONEXACT are superseded. The separate
+3,490B InputDevice polling boss at
+`0x00421B00` remains **NONEXACT**.
+[Whole original 726B DirectInput and 218B
+native pad methods](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md).

@@ -1170,3 +1170,6 @@ th20::InputInf::pad_device_slot,0x00421870,function
 th20::InputInf::start,0x00420990,function
 th20::InputInf::initialize_devices,0x00420D80,function
 th20::InputInf::discover_xinput_devices,0x004210D0,function
+th20::InputInf::discover_directinput_devices,0x00420AA0,function
+th20::InputDevice::initialize_directinput,0x004219D0,function
+th20::InputInf::direct_input_handle_slot,0x00421830,function

@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-489 entire 170-byte XInput device discovery and original SDK ABI.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-495 whole 726B DirectInput discovery and 218B pad attach plus 17B COM slot.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,171** |
-| Canonical strict native units | **1,172** |
-| Unique canonical object providers | **234**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **396**, covering **120,253 native bytes** |
+| Source-present mappings, all origins | **1,174** |
+| Canonical strict native units | **1,175** |
+| Unique canonical object providers | **236**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **399**, covering **121,214 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 234 current canonical object/receipt pairs, native proof documents,
+The 236 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::discover_directinput_devices` / `InputDevice::initialize_directinput` / `InputInf::direct_input_handle_slot` | `0x00420AA0` / `0x004219D0` / `0x00421830` | **726 / 218 / 17** | [full original DirectInput COM device creation and registration plus original folded aliases](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md) |
 | `InputInf::discover_xinput_devices` | `0x004210D0` | **170** | [complete original four-slot XInput SDK discovery and imported state thunk](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md) |
 | `InputInf::initialize_devices` | `0x00420D80` | **465** | [whole signed device discovery, lock and Graphics route initialization](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) |
 | `InputInf::start` | `0x00420990` | **265** | [entire input startup and native Graphics configuration binding copies](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) |
@@ -1051,6 +1052,57 @@ discovery** and **3,490B InputDevice
 polling** remain independently NONEXACT.
 [Whole original 170B XInput native
 discovery proof](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-495 now closes the **whole original
+726-byte/209-instruction InputInf DirectInput
+discovery boss** at `0x00420AA0`, the entire
+**218-byte/68-instruction InputDevice native pad
+registration** at `0x004219D0`, and the
+distinct **17-byte/9-instruction actual InputInf
+DirectInput COM pointer-slot getter** at
+`0x00421830`. The original 726B+218B bodies
+contain **45 independently original PE E8/
+HIGHLOW relocation fields**. Actual Windows
+DirectInput8/DirectInputDevice8 COM creation,
+correct WindowState HINSTANCE/HWND, keyboard
+GUID and DInput formats, native device error
+rollback, gamepad enumeration, 0x3D4 device
+storage, real Graphics DIDEVCAPS +0x1C
+and original log callback all compile to the
+full source-original bytes. Four further
+WindowState/InputInf getter/setter source
+members are exact C++ native **linker folded
+aliases**, already previously original-credited
+at `0x0040C300`, `0x0041CAB0`,
+`0x00421810` and `0x0041DE70`:
+**no duplicate body byte credit**.
+
+Locked preedit compiler receipt include union
+of `InputState.hpp`, `WindowState.hpp` and
+`InputInf.hpp` was **17 old source providers/
+82 strict native units**. The two new sources
+and one new method in existing InputInf owner
+yield **85/85 strict native units across
+exactly 19 low-priority cold objects**, in
+five independent source-filtered batches,
+without full repository cold replay.
+Existing original big InputInf lifecycle,
+Enemy/Animation/RenderMesh and all touched
+WindowState methods remain strict exact.
+Compiler-private `$SG` renumberings were
+individually reconciled against original
+PE literal destinations, field offsets/types
+and unchanged whole nonrelocation code.
+Current **399 game-authored whole exact
+functions /121,214 original native bytes**,
+**1,175 canonical strict units in 236
+native object providers**. The original
+**3,490B InputDevice polling boss** is
+still NONEXACT; so are independent
+original callback and log functions not
+otherwise canonically accepted.
+[Complete original DirectInput game boss
+and pad attachment proof](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

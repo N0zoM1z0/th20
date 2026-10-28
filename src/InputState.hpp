@@ -43,6 +43,8 @@ struct InputDevice {
     void reset_header();
     void initialize_keyboard(std::int32_t index);
     void initialize_xinput(std::int32_t physical, std::int32_t logical);
+    // Native whole 218B DirectInput pad registration with real WinSDK COM.
+    void initialize_directinput(std::int32_t physical, std::int32_t logical);
 };
 static_assert(sizeof(void*) != 4 || sizeof(InputDevice) == 0x3d4);
 static_assert(sizeof(void*) != 4 || offsetof(InputDevice, buttons) == 0x10);

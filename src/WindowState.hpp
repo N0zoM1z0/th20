@@ -65,6 +65,10 @@ struct WindowState {
     };
     std::array<RepeatCounter, 4> repeat;
 
+    // Folded original native getters: the physical 16B and 17B bodies
+    // are already strict exact under other game-class aliases.
+    HWND__* window_handle() const;
+    HINSTANCE__* instance_handle() const;
     float scale_value();
     std::int32_t field_0058_value();
     std::int32_t field_005c_value();

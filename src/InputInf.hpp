@@ -57,6 +57,12 @@ public:
     // Whole original COM pad pointer and pointer-slot getters.
     IDirectInputDevice8W* pad_device(std::int32_t index) const;
     IDirectInputDevice8W** pad_device_slot(std::int32_t index);
+    // Original COM interface getters/setter at +0x1C. Only the pointer
+    // slot getter is a NEW physical 17B game body. Other methods fold to
+    // already exact physical getters/setters, no duplicate byte credit.
+    IDirectInput8W* direct_input_handle() const;
+    IDirectInput8W** direct_input_handle_slot();
+    void set_direct_input_handle(IDirectInput8W* value);
 };
 #if defined(_M_IX86)
 static_assert(sizeof(TaskInfo) == 0x10);

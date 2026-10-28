@@ -17,6 +17,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Whole original 726B DirectInput discovery, 218B pad attachment and 17B COM slot — strict exact](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md) — 277+9 original x86 instructions, 45 immutable E8/HIGHLOW fields, actual Windows DirectInput COM/GUID/HDI lifecycle; 961 distinct game-owned original bytes, four folded aliases credited zero extra, 85/85 real header-dependent strict units in 19 low-priority cold objects. 3,490B polling parent stays NONEXACT.
+
+
 - [Complete original 170B InputInf XInput device discovery — strict exact](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md) — true 16B Windows XINPUT_STATE, 4 physical slots, real DLL import thunk at 0x005406C6, original 4 E8 +1 HIGHLOW, separate retained HRESULT; source-only 2/2 strict units in one cold owner. 726B DirectInput discovery remains open.
 
 

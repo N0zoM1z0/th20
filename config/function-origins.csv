@@ -712,7 +712,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00420580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00420760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00420990,authored,InputInf,authored,high,"CORE/EXACT-484; docs/INPUT_INF_START_265_EXACT_RECONSTRUCTION.md; original native PE startup, Graphics.Configuration binding and exact typed InputInf RTTI/game ownership"
-0x00420AA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00420AA0,authored,InputInf,authored,high,CORE/EXACT-495; docs/INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md; whole original SDK DirectInput COM discovery/registration with independent PE relocations and no folded-alias double credit
 0x00420D80,authored,InputInf,authored,high,CORE/EXACT-487; docs/INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md; original whole real InputInf signed device discovery and typed graphics config route with 15 independently original PE E8/HIGHLOW fields
 0x00420F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -727,14 +727,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004217C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004217F0,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
 0x00421810,authored,PlayerOptions,authored,high,CORE/EXACT-330; docs/PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md; complete native resource Player object ABI
-0x00421830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00421830,authored,InputInf,authored,high,CORE/EXACT-495; docs/INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md; whole original SDK DirectInput COM discovery/registration with independent PE relocations and no folded-alias double credit
 0x00421850,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
 0x00421870,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
 0x00421890,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00421990,authored,InputInf,authored,high,CORE/EXACT-480; docs/INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md; actual InputInf RTTI/native fields and original 3490B input device frame consumer
-0x004219D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004219D0,authored,InputState,authored,high,CORE/EXACT-495; docs/INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md; whole original SDK DirectInput COM discovery/registration with independent PE relocations and no folded-alias double credit
 0x00421AB0,authored,InputState,authored,high,REF-006; independent input storage and producer/consumer protocol; complete canonical replay
 0x00421AD0,authored,InputState,authored,high,REF-006; independent input storage and producer/consumer protocol; complete canonical replay
 0x00421B00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -29,4 +29,20 @@ IDirectInputDevice8W** InputInf::pad_device_slot(std::int32_t index) {
     return &pad_devices[index];
 }
 
+// These three methods expose the true original COM interface pointer
+// at +0x1C. The 17B slot getter at 0x00421830 is a new physical body;
+// the value getter and setter are native linker-folded aliases that
+// already have independent canonical physical exact units elsewhere.
+IDirectInput8W* InputInf::direct_input_handle() const {
+    return direct_input_1c;
+}
+
+IDirectInput8W** InputInf::direct_input_handle_slot() {
+    return &direct_input_1c;
+}
+
+void InputInf::set_direct_input_handle(IDirectInput8W* value) {
+    direct_input_1c = value;
+}
+
 } // namespace th20
