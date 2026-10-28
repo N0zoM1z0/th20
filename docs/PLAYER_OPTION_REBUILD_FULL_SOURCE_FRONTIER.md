@@ -112,3 +112,66 @@ resource-layout and gameplay-branch differences are reconciled with
 independent original evidence and strict whole-unit canonical replay.
 This full-source checkpoint is not a claim of a buildable linked game or
 runtime-equivalent original executable.
+
+## CORE/RECON-343 later whole-parent control-flow and literal audit
+
+The maintained complete C++20 owner `src/PlayerOptionRebuild.cpp` has been
+corrected after re-reading the **whole original** i386 call graph, not simply
+trusting the earlier decompiler/control-flow hypothesis:
+
+1. The late option-Animation spawn at original native `+0x423..+0x4B4`
+   **unconditionally** obtains the Player's AnimationFile and issues one
+   real 57-byte `AnimationFile::spawn(...)` wrapper call. An earlier source
+   version introduced a second file-null guard that the native PE does
+   *not* contain. That guard and its extra `Context::player()` and
+   `Player::animation_file_ref()` calls were removed. The genuine earlier
+   branch at original `+0x110..+0x190` still checks for a null file and
+   calls the distinct `spawn_flag2` wrapper only when non-null.
+2. Each script slot at native PlayerShotData `+0xA8` / `+0x88` is now read
+   via an independently formed base pointer and a **separate 4-byte
+   displacement** from the real WeaponStone option-variant index. Using
+   a direct `script_table[index]` emits a different scaled-SIB access in
+   MSVC `/Od`; the native original instead shifts the index by two bits
+   and adds the displacement to the previously saved table base. The
+   actual resource sub-schema remains unresolved, and no new permanent
+   resource arrays were declared.
+3. Both original Animation Y markers are actual literal **`-999.0f`**,
+   confirmed by the original PE `0x0056FD7C` float bytes. Using that
+   natural C++ literal instead of a separate `extern const float`
+   avoids extra `/Od` floating-point spill/reload operations in both
+   branches. The generated COFF constant is `__real@c479c000`.
+4. The original option-offset `IntPoint` destinations are now acquired
+   **before** evaluating the WeaponStone focused/unfocused float source,
+   preserving the native method call and destination evaluation order.
+   The real aligned eight-byte result still participates in both final
+   fixed-coordinate copies; no inert locals, inline assembly, manual
+   NOPs or exact-build conditional branches were introduced.
+
+Fresh compiler run: original **1,518B / 418 instructions / 57 direct E8
+calls / 3 original PE HIGHLOW fields**; maintained natural C++20 source
+**1,518B / 411 instructions / 410 of the original 418 mnemonic kinds in
+order / 57 REL32 and 3 DIR32 COFF relocations**. The first complete
+22-byte stack-realignment prologue and final nine-byte return sequence
+match the original, but the intermediate frame and option fixed-position
+lifetime remain different. Of the three independently grounded native
+absolute fields, the Renderer global still occurs at `+0x2C`, the early
+-999.0f literal now matches the native `+0x1A9`, **but the late float
+literal is at COFF `+0x49F`, versus original `+0x4AB`**. Therefore,
+**the function is still NOT exact** despite the coincidentally identical
+overall 1,518-byte length and same number of relocation sites. The
+independent full-function diagnostic reports only **704/1,278
+nonrelocation bytes aligned**, not a strict match.
+
+Proof files (ignored private analysis): the source-shape experiments
+`.analysis/core336-*`, `.analysis/core337-*`, `.analysis/core338-*`,
+`.analysis/core339-*`, `.analysis/core341-*`, and `.analysis/core342-*`,
+and the chosen latest locked compiler build
+`build/core343-probes/PlayerOptionRebuild.obj` with matching receipt.
+Quantitative result: `.analysis/core343-refined-boss-evidence.txt`.
+
+The affected **accepted exact-unit replay scope is zero**: only one
+already source-present but nonexact C++ provider and its evidence record
+changed; no canonical headers, exact source, exact object profiles or
+original anchors changed. The full original root remains on the open list,
+with 8 native instructions and coordinate/temporary ownership not yet
+reconstructed. No full cold replay was run.

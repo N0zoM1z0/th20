@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-335 AnimationHandle value-clear ABI.** This file is the concise
+**Updated 2026-10-28; CORE/RECON-343 entire Player option control-flow refinement.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -131,8 +131,8 @@ CORE/RECON-333 now maintains the **whole 1,518-byte**
 `Player::rebuild_option_animations` at `src/PlayerOptionRebuild.cpp`
 as a **NONEXACT** complete-function C++20 source frontier. The locked
 MSVC `/GS-` plus live 8-byte-aligned `IntPoint` result matches the native
-stack prologue and full return, and emits **1,587B / 420 instructions**
-with **390/418 original instruction kinds in order**. Independent original
+stack prologue and full return, and emits **1,518B / 411 instructions**
+with **410/418 original instruction kinds in order**. Independent original
 reference audit: **57 E8 calls + 3 PE HIGHLOW fields**. It still lacks
 full original relocation/instruction/lifetime equivalence, so **zero
 canonical exact bytes** were claimed. The resource script fields at
@@ -145,6 +145,17 @@ the maintained full Player option rebuild parent. Only the owning existing
 `BulletCollisionAnimationHelpers.cpp` canonical object was cold rebuilt:
 **8/8** exact units remain accepted; the parent was separately compiled
 and is **still nonexact**.
+
+CORE/RECON-343: a fresh whole-parent audit corrected an original-absent
+late AnimationFile null guard, restored native script-table base-plus-byte-
+displacement indexing, and used original `-999.0f` float literals.
+The complete natural source now emits **1,518B / 411 i386 instructions**,
+with **410/418 native instruction kinds aligned**, and the same 57 direct
+call / three absolute relocation counts. **It remains NONEXACT**: eight
+native instructions are still absent, COFF second literal offset
+`+0x49F` differs from native `+0x4AB`, and full byte/relo replay fails.
+Only this nonexact source/evidence changed, so zero accepted exact units
+needed cold replay. See the focused whole-source frontier.
 
 ## Open complete-function roots — next agent's priorities
 

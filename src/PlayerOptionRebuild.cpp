@@ -1,8 +1,8 @@
-// Complete-function, NONEXACT source frontier for the game-owned
-// Player option rebuild state machine at original 0x004FACA0 (1,518B).
-// Script words at +0x88 and +0xA8 in the actual PlayerShotData resource are
-// observed, but the enclosing serialized resource schema is not established.
-// This source is not a canonical native match or a finished game runtime.
+// Whole original Player option rebuild state machine: source-present but
+// NONEXACT. Native original 0x004FACA0 covers 1,518B and 418 instructions.
+// The table words at +0x88/+0xA8 in the shot-data resource are observed, but
+// their enclosing serialized metadata schema is not yet established.
+// Never give this parent whole-native exact credit from length alone.
 #include "Player.hpp"
 #include "PlayerRecord.hpp"
 #include "WeaponStoneInfo.hpp"
@@ -11,7 +11,6 @@
 #include "Session.hpp"
 
 namespace th20 {
-extern const float native_minus_999;
 void __fastcall cancel_animation_handle(const AnimationHandle&);
 void __fastcall clear_animation_handle_value(AnimationHandle&);
 
@@ -32,12 +31,14 @@ void Player::rebuild_option_animations(std::int32_t requested_count) {
                 AnimationFile* file = context->player()->animation_file_ref();
                 // The shot-data script tables at +0xA8 are not yet
                 // semantically classified in the maintained file schema.
-                const std::int32_t variant = weapon_stone_info(0)->option_script_variant();
-                const std::int32_t script = reinterpret_cast<const std::int32_t*>(shot_data)[0xA8/4+variant];
+                // Original early resource branch uses the independent +0xA8
+                // script-table base before computing the index displacement.
+                const std::int32_t* script_table = reinterpret_cast<const std::int32_t*>(reinterpret_cast<const std::uint8_t*>(shot_data) + 0xA8);
+                const std::int32_t displacement = weapon_stone_info(0)->option_script_variant() * 4;
+                const std::int32_t script = *reinterpret_cast<const std::int32_t*>(reinterpret_cast<const std::uint8_t*>(script_table)+displacement);
                 option->handle_e0.value = file->spawn_flag2(nullptr,script,-1,nullptr).value;
             }
-            Animation* animation = option->handle_e0.resolve();
-            animation->vector_5bc_ref().y = native_minus_999;
+            option->handle_e0.resolve()->vector_5bc_ref().y = -999.0f;
         }
     } else {
         PlayerOption* option = &options.at(0);
@@ -55,10 +56,10 @@ void Player::rebuild_option_animations(std::int32_t requested_count) {
             option->handle_dc.retire();
             option->field_f8 = i;
 
-            const Vector2* unfocused = context->weapon_stone_info()->unfocused_offset(count,i);
-            option->offsets[0].assign_scaled(*unfocused);
-            const Vector2* focused = context->weapon_stone_info()->focused_offset(count,i);
-            option->offsets[1].assign_scaled(*focused);
+            IntPoint& first_dest = option->offsets[0];
+            first_dest.assign_scaled(*context->weapon_stone_info()->unfocused_offset(count,i));
+            IntPoint& second_dest = option->offsets[1];
+            second_dest.assign_scaled(*context->weapon_stone_info()->focused_offset(count,i));
 
             const IntPoint& player_position = context->player()->fixed_position_ref();
             const IntPoint* offset;
@@ -73,14 +74,14 @@ void Player::rebuild_option_animations(std::int32_t requested_count) {
             options.at(i).fixed_position = new_position;
             option->previous_fixed_position = option->fixed_position;
 
-            if (context->player()->animation_file_ref() != nullptr) {
-                AnimationFile* file = context->player()->animation_file_ref();
-                const std::int32_t variant = weapon_stone_info(0)->option_script_variant();
-                const std::int32_t script = reinterpret_cast<const std::int32_t*>(shot_data)[0x88/4+variant];
-                option->handle_dc.value = file->spawn(nullptr,script,14,nullptr).value;
-            }
-            Animation* animation = option->handle_dc.resolve();
-            animation->vector_5bc_ref().y = native_minus_999;
+            AnimationFile* file = context->player()->animation_file_ref();
+            // The original indexes by a 4-byte displacement after first
+            // taking the shot-data script-table base, not by direct SIB form.
+            const std::int32_t* script_table = reinterpret_cast<const std::int32_t*>(reinterpret_cast<const std::uint8_t*>(shot_data) + 0x88);
+            const std::int32_t displacement = weapon_stone_info(0)->option_script_variant() * 4;
+            const std::int32_t script = *reinterpret_cast<const std::int32_t*>(reinterpret_cast<const std::uint8_t*>(script_table)+displacement);
+            option->handle_dc.value = file->spawn(nullptr,script,14,nullptr).value;
+            option->handle_dc.resolve()->vector_5bc_ref().y = -999.0f;
             option->state=2;
             option->field_108=0;
             option->state_100.flags &= ~2u;
