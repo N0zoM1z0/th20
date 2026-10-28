@@ -1015,3 +1015,5 @@ th20::BulletController::animation_file
 th20::EnemyController::animation_file
 th20::LaserController::register_laser
 th20::LaserController::create_laser
+th20::EnemyState::shared_shot
+th20::EnemyState::writable_shot

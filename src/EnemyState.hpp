@@ -13,6 +13,7 @@
 #include <forward_list>
 #include <memory>
 #include <memory_resource>
+#include <utility>
 #include <vector>
 
 namespace th20 {
@@ -110,6 +111,10 @@ struct EnemyState {
     Vector3& position_ref();
     // The whole 48C010 dispatcher remains undefined while its owners are closed.
     int execute_opcode();
+    // Original 305B ensure-only and 396B COW queued record/metadata pair
+    // selectors. They return raw record and value pointers, NOT a shared_ptr.
+    std::pair<EnemyQueuedRecord*, ShotMetadata*> shared_shot(std::uint32_t index);
+    std::pair<EnemyQueuedRecord*, ShotMetadata*> writable_shot(std::uint32_t index);
     void change_animation();
     int spawn_from_opcode();
     std::int32_t integer_argument_value(std::int32_t index, std::int32_t value);

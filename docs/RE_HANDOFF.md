@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE199 integrates original 711/713 large typed-Laser branches into the entire 41,967-byte Enemy boss root host; CORE198 queued branches and CORE197 concrete constructor audit retained.
+**Checkpoint:** CORE/EXACT-200 closes the full 396-byte writable COW and 305-byte ensure-only EnemyState queued selectors; whole-root CORE199 and older evidence remain preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -22,10 +22,10 @@ evidence documents are historical, not competing current status.
   SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
   Do not switch to the Steam-original backup or any other release. See
   [target provenance](TARGET_PROVENANCE.md) and `config/target.toml`.
-- Live ledgers: **6,928** target function candidates, **1,017** source-present
-  mappings, **1,008** physical canonical strict units, **222** confirmed
-  authored exact functions / **57,991** authored exact bytes. The 167 current
-  canonical objects cover **182,382** comparison bytes. **Nine**
+- Live ledgers: **6,928** target function candidates, **1,019** source-present
+  mappings, **1,010** physical canonical strict units, **224** confirmed
+  authored exact functions / **58,692** authored exact bytes. The 168 current
+  canonical objects cover **183,083** comparison bytes. **Nine**
   source-present whole-function mappings remain nonexact. These are not a
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
@@ -36,6 +36,46 @@ evidence documents are historical, not competing current status.
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-200 reconstructs **both complete original native queued
+metadata selectors** on the real game-owned `EnemyState`:
+`writable_shot` at `0x00498B80` (396/396 bytes and 22 independently
+original-PE-verified relocations) and `shared_shot` at `0x00498D10`
+(305/305 bytes, 16 native relocations). Both return the authentic pair of
+**raw pointers** to the indexed `EnemyQueuedRecord` and its owned
+`EtamaArgInf`, using actual `std::pmr::forward_list`, `std::shared_ptr`,
+`DebugAllocator`, real COW cloning and ensure-only reuse, rather than
+fabricated selectors. The earlier wrong codegen assumption about a
+conditional local allocator was experimentally corrected with a real
+function-scope C++ object. The production source
+`src/EnemyQueuedSelection.cpp` and declarations `src/EnemyState.hpp`
+strictly emit all original 701 native instruction bytes. Actual compiler
+receipts gave **19 preexisting provider TUs / 110 old strict units** plus
+the one new TU / 2 new exact units. Only those **20 source objects** were
+cold-built, and **all 112/112 complete affected native units** passed,
+including every original relocation and complete MSVC source/object receipt.
+Six old internal `$SG` debug-string symbol renumberings were checked against
+original PE literal content, offsets and independently fixed target values.
+See [CORE200 full 701-byte selector acceptance](ENEMY_QUEUED_SELECTORS_EXACT_RECONSTRUCTION.md)
+and `.analysis/core200-selectors-full-proof.json`.
+
+**Important provenance correction:** A copied private verification script
+mistakenly overwrote the ignored historical CORE195 223-unit proof JSON.
+CORE195's original code and full original unit scope were independently
+re-attested as **223/223 native-exact**. The exact old JSON SHA could not
+be regenerated because pinned MSVC emits variable COFF timestamps.
+The original SHA and newly generated proof SHA are retained with the
+transparent recovery record in `.analysis/core200-historical-proof-recovery.json`;
+no claim that historical file bytes are unchanged is made. All production
+source and native bytes remain verifiable. No full cold replay was run.
+
+The **41,967-byte Enemy dispatcher is still nonexact** and its previously
+protected CORE199 same-root semantic host still passes **42,743/42,743**
+in both sanitizer modes. Its private COW selector boundary has **not yet
+been replaced** by these real newly accepted production methods; that
+integration is the next major Boss-step, along with missing opcode heads
+and compiler EH/switch work.
+
 
 CORE199 adds the **entire original native opcode 711 and 713 Laser branches**
 to the same full 41,967B Enemy source-draft root, not an isolated fake
@@ -397,9 +437,10 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
    CORE199 proof-bound inputs, real Context owners and all **42,743**
    current dual-sanitizer tests. The original opcode **555** and larger
    shared **609–612** caller are now integrated. Next independently resolve
-   native compiler/EH closure for the **396-byte** `0x00498B80` COW and
-   **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now
-   tested). The **474-byte native LaserController creator `0x004D47F0`**
+   the **now native-exact 396-byte COW and 305-byte ensure-only selectors**
+   by linking them into the single full-root CORE199/next host rather than
+   retaining its old private COW replacement. The complete 41KB native
+   switch and EH are still open. The **474-byte native LaserController creator `0x004D47F0`**
    and its 75-byte registration callee are now **both exactly reconstructed**.
    The complete production creator is now **linked into the whole-root
    host**; next independently attack its **four unresolved 92-byte concrete
@@ -448,6 +489,11 @@ products documented in
 [sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Animation pool](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
+**For CORE200**, adding real `EnemyState::shared_shot` and `writable_shot`
+to `src/EnemyState.hpp` affects **19 existing source providers / 110 old
+native units**, plus one new source provider / **two complete exact units**.
+**112/112** native whole-unit strict receipt replays passed, with only **20
+actual affected cold objects**; no unfiltered or full graph replay.
 **For CORE195**, the changed `LaserParameters.hpp` virtual signature
 and new `DiagnosticAllocator.hpp` concrete factory interfaces affect exactly
 **33 receipt-derived canonical providers / 223 units**. Every one of those

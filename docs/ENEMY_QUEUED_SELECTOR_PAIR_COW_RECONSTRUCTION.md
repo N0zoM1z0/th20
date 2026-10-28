@@ -113,3 +113,16 @@ without fake temporaries or changing the shared ownership contract to match
 a preferred compiler output. The real 151-byte
 `EnemyController::animation_file` routing, native laser commands and the
 remaining Enemy branch heads are also significant whole-root dependencies.
+
+## Later native exactness admission (CORE/EXACT-200)
+
+The two native method bodies formerly still open at this CORE188 checkpoint
+were subsequently fully matched under the real original pinned compiler:
+`EnemyState::writable_shot` at `0x00498B80` (**396/396 native bytes,
+22 original relocations**) and `EnemyState::shared_shot` at `0x00498D10`
+(**305/305 bytes, 16 original relocations**). All 112/112 actual
+header-affected unit comparisons passed, without a full cold replay.
+This historical CORE188 semantic evidence remains intact; see
+[CORE/EXACT-200 complete acceptance](ENEMY_QUEUED_SELECTORS_EXACT_RECONSTRUCTION.md)
+for the authoritative modern compiler receipt, native evidence and disclosed
+historical private proof re-attestation.

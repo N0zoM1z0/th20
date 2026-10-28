@@ -21,6 +21,16 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE/EXACT-200 now closes **both original EnemyState queued metadata
+selectors**: the 396B native writable COW function `0x00498B80` and the
+305B ensure-only function `0x00498D10`. Their authentic `forward_list`,
+shared `EtamaArgInf` and two-pointer record/value return ABI now produce
+**701/701 original code bytes and 38/38 native relocation anchors**, after
+all **112/112** affected native units across **20** source objects strictly
+replayed. The current 41,967B whole Enemy root is **still nonexact** and
+its older CORE199 host has *not yet* linked these new production methods.
+See [complete queued selector byte-exact reconstruction](ENEMY_QUEUED_SELECTORS_EXACT_RECONSTRUCTION.md).
+
 CORE199 additionally integrates two complete larger Laser opcode heads
 in the **same entire 41,967-byte Enemy source draft**: opcode 711
 (619 original bytes / 141 instructions) and opcode 713 (611 bytes /
