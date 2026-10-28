@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-314 entire Player initialization/reset.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-316 PlayerFeedback hit recorder.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -17,9 +17,9 @@ old reports and probe filenames are **not** current status.
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
 | Source-present mappings, all origins | **1,105** |
-| Canonical strict native units | **1,094** |
+| Canonical strict native units | **1,095** |
 | Unique canonical object providers | **218**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **306**, covering **80,491 native bytes** |
+| Exact game-authored whole functions | **307**, covering **80,606 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `PlayerFeedback::record_hit` | `0x004FB3A0` | **115** | [capped hit recorder](PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md) |
 | `Player::reset_initial_state` | `0x004FB450` | **966** | [whole reset state machine](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md) |
 | `PlayerTable::clamped_field_1e4` | `0x004C5DB0` | **73** | [mode clamp and state flags](PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md) |
 | `Player::clear_option_animations` | `0x004FF8F0` | **237** | [full sweep and accessor chain](PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md) |
@@ -83,6 +84,11 @@ CORE/EXACT-308 independently corrected Ghidra's tentative 0x00471170
 library-function label to a genuine `std::clamp<int>` call. The next
 substantial Player frontier is the separate **1,518-byte**
 `Player::rebuild_option_animations` at `0x004FACA0` (still nonexact).
+
+CORE/EXACT-316 subsequently closed the separate complete **115B**
+`PlayerFeedback::record_hit` with three originally attested native calls;
+**9/9** affected units in one PlayerStorage object remain exact. This is
+not the still-open **332B Player graze effect** at `0x004F8B90`.
 
 ## Open complete-function roots — next agent's priorities
 

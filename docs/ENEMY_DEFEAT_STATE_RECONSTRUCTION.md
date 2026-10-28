@@ -138,3 +138,11 @@ actual-owner test logs and graph audit. `core156-pre-state-inputs.json.gz` and
 `core156-member-call-original-inputs.json.gz` archives retain all rejected/current
 probe texts and receipts. Cleanup verifies protected hashes with zero extra
 build or replay invocations; current paths are in the handoff.
+
+## Later CORE/EXACT-316 update
+
+The entire original 115-byte `PlayerFeedback::record_hit(int)` is now
+**strict native exact**, resolving the historical one-byte post-call NOP
+without artificial padding. The maintained source and all 9/9 affected
+PlayerStorage units pass the complete canonical comparator. See
+[the complete 115-byte proof](PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md).

@@ -18714,3 +18714,19 @@ relocations = [
   { offset = 0x3A5, type = "REL32", symbol = "?flag0_value@Session@th20@@QBEIXZ", target = 0x00474E00 },
   { offset = 0x3BD, type = "REL32", symbol = "?enter_special_state@Player@th20@@QAEXXZ", target = 0x004FFD20 },
 ]
+
+# CORE/EXACT-316: whole original 115-byte PlayerFeedback capped hit recorder.
+# Three native REL32 callees are derived independently from the original PE.
+[units.player_feedback_record_hit]
+source = "src/PlayerStorage.cpp"
+object = "build/core166-canonical/PlayerStorage.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerFeedback::record_hit"]
+symbol = "?record_hit@PlayerFeedback@th20@@QAEXH@Z"
+target_address = 0x004FB3A0
+size = 115
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "??YPlayerFeedback@th20@@QAEXH@Z", target = 0x0045C300 },
+  { offset = 0x22, type = "REL32", symbol = "?greater_than@Timer@th20@@QBE_NH@Z", target = 0x00461070 },
+  { offset = 0x33, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]

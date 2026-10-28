@@ -305,3 +305,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00474E00,th20::Session::flag0_value,20,matching,100.00,session_flag0_value,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md; locked compiler whole-function exact and native references
 0x004790C0,th20::Player::clear_entity_flag2,26,matching,100.00,player_clear_entity_flag2,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md; locked compiler whole-function exact and native references
 0x004FB450,th20::Player::reset_initial_state,966,matching,100.00,player_reset_initial_state,CORE/EXACT-314; docs/PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md; full native 208 instructions and 40 independent original relocations strictly matching 966/966 bytes
+0x004FB3A0,th20::PlayerFeedback::record_hit,115,matching,100.00,player_feedback_record_hit,CORE/EXACT-316; docs/PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md; original complete 115B / three native call relocations exact

@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Entire 115B PlayerFeedback capped hit recorder exact](PLAYER_FEEDBACK_RECORD_HIT_EXACT_RECONSTRUCTION.md) — all 42 original instructions and three native call relocations, 9/9 strict PlayerStorage units cold replayed, no shared-header changes.
+
 - [Entire 966B Player initialization/reset boss exact](PLAYER_INITIAL_RESET_966_EXACT_RECONSTRUCTION.md) — all 208 original instructions, 19 original calls plus 21 independent PE HIGHLOW relocations, native four-float shot header and 33-point history, and 61/61 affected-only strict units across 21 cold objects.
 
 - [Exact PlayerTable mode clamp, Session flag0 and Player flag2 clear (119B)](PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md) — reidentifies original 0x00471170 as the `std::clamp<int>` dependency, reconstructs three complete original Player reset-chain accessors and passes all 195/195 affected-only exact units across 36 cold objects.

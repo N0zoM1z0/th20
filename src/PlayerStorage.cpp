@@ -21,7 +21,10 @@ PlayerShotController::PlayerShotController()
 std::int32_t PlayerFeedback::count_value() { return static_cast<std::int32_t>(field_38); }
 void PlayerFeedback::operator+=(std::int32_t amount) { Timer::operator+=(amount); }
 void PlayerFeedback::record_hit(std::int32_t amount) {
-    *this += amount;
+    // Advance the timer before reading its capped value.
+    {
+        *this += amount;
+    }
     Timer& timer = *this;
     if (timer.greater_than(30)) Timer::operator=(30);
     ++field_38;
