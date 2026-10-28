@@ -123,3 +123,22 @@ belong to the current-first interpolation owner. Array getters 0x0048BCE0 and
 0x0048BD10 corroborate twenty-byte animation and 388-byte movement strides but
 retain their distinct PMR container ownership. None is promoted through an
 incomplete owner facade or receives exact coverage in this batch.
+
+
+## Later CORE/EXACT-381 independent game-owned origin revalidation
+
+The relevant whole original game-owned function from this historical
+checkpoint has been *independently* reaudited against the immutable
+original PE's entire x86 code, E8 and HIGHLOW fields and full
+dispatch-table comparison spans (where present), including nonzero
+COFF symbol addends and separately real TH20 class caller contexts.
+The historical `origin=unknown/review` attribution is now
+superseded by CORE/EXACT-381 game-owned exact credit, comprising ten
+nonoverlapping already source-present native bodies / **28,350
+original code bytes**. The source and locked compiler objects
+were previously reconstructed; this is **new, independently
+verified original-source attribution and progress accounting**, not
+a claim of newly implementing these 28,350 bytes in this turn.
+Exactly **16/16 strict units from five actual unchanged source
+providers** passed focused cold replay; no repository-wide cold build.
+Read [the current complete native provenance proof](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md).

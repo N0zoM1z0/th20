@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-376 Angle normalization and Animation drawing ABI closure.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-381 five large and five small native gameplay provenance closures.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -19,7 +19,7 @@ old reports and probe filenames are **not** current status.
 | Source-present mappings, all origins | **1,130** |
 | Canonical strict native units | **1,126** |
 | Unique canonical object providers | **226**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **339**, covering **84,859 native bytes** |
+| Exact game-authored whole functions | **349**, covering **113,209 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,11 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `ProgressProfile::ProgressProfile` | `0x0050AF20` | **13,684** | [complete game-specific save Profile constructor](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
+| `Animation::update_geometry` | `0x00435C80` | **5,388** | [seven-selector geometry and attached tables](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
+| `easing` | `0x00454EF0` | **4,154** | [whole game easing dispatcher plus jump table](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
+| `EnemyMotionInterpolation::sample` | `0x004A8D70` | **2,433** | [full Enemy interpolation and axis modes](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
+| `EnemyState::update_movements` | `0x004A7710` | **1,675** | [complete original Enemy movement boss](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
 | `Angle normalization and Animation rotation/scale drawing dependency chain` | `0x00438540` / `0x00438600` / `0x00450590` / `0x004505C0` / `0x004864F0` / `0x004292E0` | **187 / 29 / 33 / 47 / 60 / 16** | [six complete original bodies; folded float getter credited once](ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md) |
 | `Player::rebuild_option_animations` | `0x004FACA0` | **1,518** | [full original 418-instruction option rebuild boss](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::spawn_effect_variant` / `AnimationFile::spawn_flag4` | `0x0049DCF0` / `0x0049E080` | **202 / 55** | [complete alternate spawn and native flag4 wrapper](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md) |
@@ -251,6 +256,23 @@ pass using their original compiler profiles; none of these were counted
 twice. The full 273-byte Bullet drawing parent remains independently
 NONEXACT with two extra SSE argument spill/reloads. [Full
 independent native ABI proof](ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-381 independently rescanned the immutable original
+PE, complete body instructions, E8/HIGHLOW references (including
+real COFF symbol addends and attached tables), and TH20 class
+callers for **ten previously undercredited game-owned original
+functions, 28,350 unique native bytes**. Five are large bosses:
+**13,684B Profile constructor**, **5,388B Animation geometry**,
+**4,154B easing switch**, **2,433B EnemyMotionInterpolation sample**,
+and **1,675B EnemyState movement update**, plus five smaller
+Animation/ProgressScore/Enemy factor methods. These C++ source
+implementations and strict canonical units *already existed*; the
+new result is an evidence-grounded **authored-origin accounting
+correction**, not freshly typed 28,350 bytes of source. All **16/16
+original units across exactly five existing source objects** were
+cold recompiled/replayed, with no public header changes and no
+unfiltered full cold replay.
+[Independent original provenance and table proof](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

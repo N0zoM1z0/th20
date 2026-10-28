@@ -146,3 +146,22 @@ remains 94 functions / 30,383 bytes, with 98 confirmed authored functions; no
 origin conclusion is inferred solely from this batch's exact emission.
 The 39,470-byte VM, 922-byte File VM creation, reset zero-lifetime questions,
 unknown Renderer +6000DFC ownership and Item update/draw remain open.
+
+
+## Later CORE/EXACT-381 independent game-owned origin revalidation
+
+The relevant whole original game-owned function from this historical
+checkpoint has been *independently* reaudited against the immutable
+original PE's entire x86 code, E8 and HIGHLOW fields and full
+dispatch-table comparison spans (where present), including nonzero
+COFF symbol addends and separately real TH20 class caller contexts.
+The historical `origin=unknown/review` attribution is now
+superseded by CORE/EXACT-381 game-owned exact credit, comprising ten
+nonoverlapping already source-present native bodies / **28,350
+original code bytes**. The source and locked compiler objects
+were previously reconstructed; this is **new, independently
+verified original-source attribution and progress accounting**, not
+a claim of newly implementing these 28,350 bytes in this turn.
+Exactly **16/16 strict units from five actual unchanged source
+providers** passed focused cold replay; no repository-wide cold build.
+Read [the current complete native provenance proof](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md).

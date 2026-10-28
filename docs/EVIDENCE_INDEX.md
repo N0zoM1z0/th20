@@ -61,6 +61,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Animation and rendering
 
+- [Ten complete game-owned large and smaller roots, 28,350 original native bytes](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) — independently native PE-audited 13,684B ProgressProfile constructor, 5,388B Animation geometry and tables, 4,154B easing dispatcher, 2,433B Enemy sampler, 1,675B Enemy movement boss, plus five smaller real member methods; 16/16 scoped strict units in five cold objects. Existing C++ source; newly independently corroborated game-owned provenance, no duplicate physical credit.
+
 - [Exact six whole Angle/Animation draw ABI functions (372 original bytes)](ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md) — 187B full angle normalization, 29B add wrapper, 33/47/60B Animation setters, one nonduplicated 16B ClockScalar/Angle folded float accessor; 36/36 actual scoped strict units in three cold source objects. The 273B draw-group parent remains nonexact.
 
 - [AsciiInf owner and shared text resources](ASCII_OWNER_RECONSTRUCTION.md) — complete native storage/construction, typed text queue, shared-file identity and full noexcept support.
