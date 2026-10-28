@@ -133,6 +133,8 @@ struct BulletController final : TaskInfo {
                       int column, int row, float direction);
     std::int32_t cancel_all(std::int32_t mode);
     std::int32_t cancel_near(const Vector3& center, float radius, std::int32_t mode);
+    std::int32_t cancel_in_rectangle(const Vector3& center, const Vector3& dimensions,
+                                     float direction, std::int32_t mode, std::uint32_t effects);
     std::int32_t cancel_near_limited(const Vector3& center, float radius,
                                      std::int32_t mode, std::int32_t limit, std::uint32_t effects);
     std::int32_t cancel_near_if(const Vector3& center, float radius,
