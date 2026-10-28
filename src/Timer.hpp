@@ -32,6 +32,7 @@ struct Timer {
     // Unchecked native clock lookup; the established source slot is mode 0.
     float step() const;
     void operator=(std::int32_t value);
+    void operator=(float value);
     // The divisor must be nonzero; INT32_MIN / -1 is outside the C++ domain.
     std::int32_t operator%(std::int32_t divisor) const;
     void operator+=(std::int32_t amount);
@@ -42,6 +43,7 @@ struct Timer {
     void reset();
     void set_mode(std::uint32_t mode);
     void set(std::int32_t value);
+    void set(float value);
     void add(float delta);
     std::int32_t tick();
     bool at_least(std::int32_t value) const;

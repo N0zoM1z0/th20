@@ -1045,3 +1045,5 @@ th20::Bullet::cancel_drops,0x0047D3D0,function
 th20::bullet_position_outside_screen,0x00485390,function
 th20::BulletController::cancel_in_rectangle,0x0047CC90,function
 th20::Bullet::advance_command9,0x0047C800,function
+th20::Timer::set(float),0x004841F0,function
+th20::Timer::operator=(float),0x0047C5F0,function
