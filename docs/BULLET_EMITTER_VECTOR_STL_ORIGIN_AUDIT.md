@@ -117,3 +117,35 @@ actual native replay scope is precisely **one cold MSVC object and two
 new 33B/41B library units**, as recorded in
 `.analysis/core254-shot-vector-stl-exact-replay.log`. **Zero old strict
 units require replay**; no unfiltered full-graph cold replay was run.
+
+## Independent whole compiler-contribution hash and collision-root checks
+
+The original native-PE full contribution from `0x004818E0` through
+`0x004827DF` is **3,840 bytes** with SHA-256
+`69955b759b7c702bb8a2ae4f379ebcb365e54bb2bdacd616bc658853c3b9e615`.
+The **13-entry** original table's SHA-256 is
+`4e48be290d3aaa49d4861fac2de14664ac556bf956b5d01fa71d6105d2a80a55`;
+the **11-entry** table's SHA-256 is
+`62eaa2431569f56870b2f3a04ea1ef55d54de507fc84811a0c60231058664866`.
+These whole extents include the real **`90`** align byte at
+`0x00482777` and eight `CC` bytes at `0x004827D8..0x004827DF`.
+
+The real 1,846B physics root at `0x00485B60` is followed by its original
+**two-byte `66 90` alignment** at `0x00486296`, the four-entry native
+pointer table at `0x00486298..0x004862A7` (SHA-256
+`cc64f81603834e6264a7dff016a0ac580be9515ba62507bf02221b6cd3bb555a`),
+and exactly eight `CC` bytes to `0x004862AF`. Its **entire 1,872-byte
+compiler contribution** has independently checked original SHA-256
+`57585b00033af007f11038d2758c4231800fcc861675ee851460be9140e3f996`.
+This corrects the temptation to compare the 1,846B code prefix alone.
+
+Finally, the separate complete native **2,018-byte** `Bullet::process_collision`
+root at `0x00484A20` has **532 decoded x86 instructions** and
+**68 direct calls to 45 distinct original targets**. Original body
+SHA-256 is
+`7b565186781d77f6a0120ff031b59a849def7798460ffc5d91278ae873688ee3`.
+It is not an accepted exact body. Original emitter and physics whole
+contribution hashes and every original switch destination were decoded
+from the locked PE and preserved privately in
+`.analysis/core254-boss-native-table-audit.txt`; the 2,018B root call
+inventory is in `.analysis/core254-native-00484a20-calls.txt`.

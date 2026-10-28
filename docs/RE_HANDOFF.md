@@ -65,7 +65,13 @@ switch table at `0x00482778`** and **11-entry second switch table at
 still nonexact pending real emitter C++ body. The separate native
 **1,846B** Bullet physics root at `0x00485B60` is 517 instructions,
 57 direct calls and a genuine four-way switch; complete native physics
-and the original 2,018B collision boss are not yet exact. See
+and the original 2,018B collision boss are not yet exact.
+Its separately attested full **1,872-byte** compiler contribution includes
+a `66 90` alignment, four real native pointer entries and eight `CC`
+trailing alignment bytes. The entire 3,840B emitter contribution and
+1,872B physics contribution have independent original PE SHA-256 in
+the focused evidence; the 2,018B collision root is also independently
+532 native instructions / 68 direct calls and remains nonexact. See
 [STL origin and two large Bullet native boss audits](BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md).
 This checkpoint edits one new STL-source TU, classification and docs
 only; **zero old exact units affected**, **2/2 scoped new library units**.

@@ -89,3 +89,17 @@ Private diagnostics: `.analysis/core212-native-004383a0.asm`,
 scope replay `.analysis/core212-bullet-lifecycle-semantic-correction-replay.log`.
 These are exploratory evidence, not native accepted machine code for the
 three still-open methods.
+
+## CORE/LIB-254 follow-on: real 44B command-vector STL origins and full switch tables
+
+The original 3,735B shot emitter has two physical jump tables: 13 entries
+at `0x00482778` and 11 entries at `0x004827AC`, with original complete
+3,840B code-plus-table/compiler contribution. Independent strict builds
+also identify its three `0x0047C6C0` command index calls and one
+`0x00486600` size call as **standard-library instantiations**, not
+additional game-authored helpers. The original exact 33B index and 41B
+size bodies are now modeled as real `std::pmr::vector<BulletCommand>`
+template instantiations, **2/2 strict exact units in one new object**,
+but deliberately excluded from authored exact functions/bytes.
+The 3,735B gameplay source is still nonexact. See
+[entire emitter table and STL ownership audit](BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md).
