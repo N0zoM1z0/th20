@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82145", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82230", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -19376,4 +19376,47 @@ relocations = [
   { offset = 0x29, type = "REL32", symbol = "?initialize@HitCtrlInf@th20@@QAEHH@Z", target = 0x004C0B30 },
   { offset = 0x46, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0x4B, type = "REL32", symbol = "??$release_object@VHitCtrlInf@th20@@@DiagnosticAllocator@th20@@QAEXPAVHitCtrlInf@1@@Z", target = 0x0041F7C0 },
+]
+
+# CORE/EXACT-398: entire original PlayerShotController native 269B.
+# Original E8 targets and PE .reloc HIGHLOW fields independently audited.
+[units.player_shot_controller_reset_all]
+source = "src/PlayerShotReset.cpp"
+object = "build/core398-canonical/PlayerShotReset.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShotController::reset_all"]
+symbol = "?reset_all@PlayerShotController@th20@@QAEXXZ"
+target_address = 0x00504950
+size = 269
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?reset_all@PlayerShotController@th20@@QAEXXZ", target = 0x0056863D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x3C, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x48, type = "REL32", symbol = "?begin@?$IntrusiveList@UPlayerShot@th20@@@th20@@QAE?AV?$IntrusiveIterator@UPlayerShot@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x57, type = "REL32", symbol = "?end@?$IntrusiveList@UPlayerShot@th20@@@th20@@QAEPAV?$IntrusiveIterator@UPlayerShot@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x64, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x71, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x80, type = "REL32", symbol = "?get@?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAEPAV?$IntrusiveLink@UPlayerShot@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0x8B, type = "REL32", symbol = "?node_access@?$IntrusiveLink@UPlayerShot@th20@@@th20@@QAEAAPAUPlayerShot@2@XZ", target = 0x0040F160 },
+  { offset = 0x92, type = "REL32", symbol = "?retire@PlayerShot@th20@@QAEXXZ", target = 0x00506AF0 },
+  { offset = 0xA4, type = "REL32", symbol = "??1?$IntrusiveIterator@UPlayerShot@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0xAF, type = "REL32", symbol = "?reset_timer_12400@PlayerShotController@th20@@QAEXH@Z", target = 0x00506CD0 },
+  { offset = 0xBF, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0xCF, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0xEF, type = "REL32", symbol = "?fill@?$array@I$0BO@@std@@QAEXABI@Z", target = 0x00506080 },
+  { offset = 0x105, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/EXACT-398: entire original PlayerShotController native 32B.
+# Original E8 targets and PE .reloc HIGHLOW fields independently audited.
+[units.player_shot_controller_reset_timer_12400]
+source = "src/PlayerShotReset.cpp"
+object = "build/core398-canonical/PlayerShotReset.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShotController::reset_timer_12400"]
+symbol = "?reset_timer_12400@PlayerShotController@th20@@QAEXH@Z"
+target_address = 0x00506CD0
+size = 32
+relocations = [
+  { offset = 0x15, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]

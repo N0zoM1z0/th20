@@ -4794,7 +4794,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005041B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00504210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00504480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00504950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00504950,authored,PlayerShotController,authored,high,CORE/EXACT-398; docs/PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md; real original Player reset caller and native intrusive PlayerShot lifetime
 0x00504A60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00504AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00504BD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4853,7 +4853,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00506C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506C60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506C80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00506CD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00506CD0,authored,PlayerShotController,authored,high,CORE/EXACT-398; docs/PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md; real original Player reset caller and native intrusive PlayerShot lifetime
 0x00506CF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Strict exact complete 269B PlayerShotController reset boss plus 32B Timer wrapper](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md) — full active-shot iterator/retirement, three native Timer resets and 30-entry array fill; 82+13 original instructions, 17 independent original PE references and 76/76 actual header-dependent strict units across 26 cold sources. Separate 166B shot-retire remains open.
+
 - [Complete original 1,518B Player option animation rebuild — strict exact](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md) — entire original 418-instruction boss, 57 independent E8 calls and 3 PE HIGHLOW fields, 1,518/1,518 strict native bytes; focused 1/1 cold unit. Earlier nonexact experiments superseded.
 
 - [Exact 202B alternate EffectInfo spawn and 55B flag-4 AnimationFile wrapper](EFFECT_SPAWN_FLAG4_VARIANT_EXACT_RECONSTRUCTION.md) — two entire native function bodies, 94 instructions and all eight independently attested E8/PE HIGHLOW refs; 239/239 affected-only strict units in 52 cold objects.

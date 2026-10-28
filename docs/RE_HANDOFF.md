@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-394 complete Bomb and Hit allocation factories.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-398 complete PlayerShotController reset boss and Timer wrapper.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,130** |
-| Canonical strict native units | **1,132** |
-| Unique canonical object providers | **226**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **357**, covering **114,667 native bytes** |
+| Source-present mappings, all origins | **1,132** |
+| Canonical strict native units | **1,134** |
+| Unique canonical object providers | **227**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **359**, covering **114,968 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 226 current canonical object/receipt pairs, native proof documents,
+The 227 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `PlayerShotController::reset_all` / `reset_timer_12400` | `0x00504950` / `0x00506CD0` | **269 / 32** | [complete PlayerShot lifetime iterator and Timer reset](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md) |
 | `create_bomb_controller` / `create_hit_controller` | `0x00478300` / `0x004C20D0` | **123 / 92** | [whole native Bomb and Hit factories](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md) |
 | `FunctionChainController::remove_unlocked` | `0x00412400` | **162** | [exact whole owned-node scheduler removal](FUNCTION_CHAIN_REMOVE_162_EXACT_RECONSTRUCTION.md) |
 | `EnemyPattern::emit_items` | `0x004A5350` | **630** | [entire timed item scatter and native arithmetic](ENEMY_PATTERN_ITEM_EMITTER_630_EXACT_RECONSTRUCTION.md) |
@@ -331,6 +332,27 @@ with zero unrelated/all-graph replay. The Bomb diagnostic,
 real Session/Context publisher and Hit allocator establish
 the original TH20 gameplay object ownership.
 [Two complete native factories](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-398 closes the complete **269B native
+PlayerShotController reset boss** at `0x00504950`, and its separate
+complete **32B Timer reset wrapper** at `0x00506CD0`. Both are
+strict whole-original exact: **82+13 i386 instructions and
+17 independent PE E8/HIGHLOW references**. The actual native
+PlayerShot iterator is destroyed before three Timer resets;
+the 30-counter native `std::array` fill uses actual field
+`+0x12468`. The prior exact 966B Player initialization caller
+and complete 1,518B Player option rebuild still pass strictly.
+The genuine *previous* PlayerStorage.hpp compiler receipts
+identify 25 existing source providers/74 strict units. Adding
+one new provider with two exact units yields **76/76 actual
+affected strict units across 26 serialized cold objects**, with
+no full/unfiltered cold replay. One MSVC private `$SG` renumber
+in the original Player constructor was reconciled only after
+confirming native original string target `0x00572BB8`, field
+offset/type and all nonrelocation bytes. Separately original
+166B `PlayerShot::retire` remains unclosed, not credited by
+the exact caller.
+[Whole original shot reset and Timer proof](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

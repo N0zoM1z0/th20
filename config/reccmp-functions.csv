@@ -1129,3 +1129,5 @@ th20::EffectInfo::process_queued_effects,0x0049D4A0,function
 th20::EffectInfo::spawn_effect,0x0049DB70,function
 th20::AnimationFile::spawn_flag4,0x0049E080,function
 th20::EffectInfo::spawn_effect_variant,0x0049DCF0,function
+th20::PlayerShotController::reset_all,0x00504950,function
+th20::PlayerShotController::reset_timer_12400,0x00506CD0,function

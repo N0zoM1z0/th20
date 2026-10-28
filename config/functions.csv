@@ -4794,7 +4794,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x005041B0,92,0x0050420B,FUN_005041b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00504210,617,0x00504478,FUN_00504210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00504480,1198,0x0050492D,FUN_00504480,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00504950,269,0x00504A5C,FUN_00504950,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00504950,269,0x00504A5C,FUN_00504950,th20::PlayerShotController::reset_all,PlayerShotController,matching,100.00,__thiscall,?reset_all@PlayerShotController@th20@@QAEXXZ,false,src/PlayerShotReset.cpp,CORE/EXACT-398; docs/PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md,authored,"Entire original 269B PlayerShotController native game-owned body, full 82 instructions and 16 independently observed PE E8/HIGHLOW relocation targets. Actual 0x12430 intrusive PlayerShot list, real iterator lifetime, three Timer resets and native 30-entry std::array fill. Independent original 966B Player reset direct caller; source-only 76/76 affected strict unit proof, no duplicate retirement callee credit."
 0x00504A60,141,0x00504AEC,FUN_00504a60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00504AF0,216,0x00504BC7,FUN_00504af0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00504BD0,333,0x00504D1C,FUN_00504bd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -4853,7 +4853,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00506C40,25,0x00506C58,FUN_00506c40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00506C60,25,0x00506C78,FUN_00506c60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00506C80,66,0x00506CC1,FUN_00506c80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00506CD0,32,0x00506CEF,FUN_00506cd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00506CD0,32,0x00506CEF,FUN_00506cd0,th20::PlayerShotController::reset_timer_12400,PlayerShotController,matching,100.00,__thiscall,?reset_timer_12400@PlayerShotController@th20@@QAEXH@Z,false,src/PlayerShotReset.cpp,CORE/EXACT-398; docs/PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md,authored,"Entire original 32B PlayerShotController native game-owned body, full 13 instructions and 1 independently observed PE E8/HIGHLOW relocation targets. Actual 0x12430 intrusive PlayerShot list, real iterator lifetime, three Timer resets and native 30-entry std::array fill. Independent original 966B Player reset direct caller; source-only 76/76 affected strict unit proof, no duplicate retirement callee credit."
 0x00506CF0,39,0x00506D16,FUN_00506cf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00506D20,25,0x00506D38,FUN_00506d20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00506D40,54,0x00506D75,FUN_00506d40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

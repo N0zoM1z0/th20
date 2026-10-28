@@ -127,3 +127,20 @@ E8/HIGHLOW references. Any earlier reference in this historical
 checkpoint to that parent as still nonexact/open is **superseded**.
 This proof's own helper or original function is not double counted.
 Read the [new entire Player option rebuild exact proof](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md).
+
+
+## CORE/EXACT-398 subsequent whole shot-controller reset closure
+
+The separate complete **269-byte** PlayerShotController reset at
+0x00504950, directly called from the original exact
+966-byte Player initialization boss, is **now strict exact**
+(82 original x86 instructions, 16 original E8/HIGHLOW references).
+Its independent 32-byte Timer wrapper at 0x00506CD0 is also
+**strict exact**. Earlier descriptions of those callees as
+nonexact/open in this historical checkpoint are now superseded.
+The original separate 166-byte PlayerShot::retire remains unclosed.
+The original PlayerStorage.hpp compiler receipt closure
+revalidated **76/76 strict units in 26 serial cold source objects**,
+including this still-exact 966-byte Player reset and 1,518-byte
+option-animation rebuild. See the
+[whole PlayerShotController reset and Timer proof](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md).

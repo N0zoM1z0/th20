@@ -97,6 +97,9 @@ struct PlayerShot {
     PlayerShotController* owner;
     Context* context;
     PlayerShot();
+    // Native original 0x00506AF0 retirement, resolved separately from the
+    // calling PlayerShotController reset and not automatically exact.
+    void retire();
 };
 // Native 0x4f41d0 constructs exactly 256 typed Shot objects at stride 0x124.
 // Its full nonthrowing EH protocol establishes the array owner's contract;
@@ -111,7 +114,8 @@ struct PlayerShotController {
     Timer timer_12400,timer_12410,timer_12420;
     IntrusiveList<PlayerShot> active,free;
     std::uint32_t field_12460,field_12464;
-    std::uint32_t counters_12468[30],counters_124e0[30];
+    // Actual native std::array<uint32_t,30>::fill call at 0x00506080.
+    std::array<std::uint32_t,30> counters_12468,counters_124e0;
     std::uint32_t field_12558;
     PlayerWordFlags flags_1255c;
     Identifier32 identifier_12560;
@@ -123,6 +127,8 @@ struct PlayerShotController {
     std::int32_t player_index;
     Context* context;
     PlayerShotController();
+    // Native 32-byte wrapper for the owner +0x12400 Timer assignment.
+    void reset_timer_12400(std::int32_t value);
     void reset_all();
     void set_flag0(std::uint32_t flag);
     PlayerShot* find(std::int32_t identifier);
@@ -141,6 +147,7 @@ static_assert(offsetof(PlayerShot,damage)==0xdc);
 static_assert(offsetof(PlayerShot,context)==0x120);
 static_assert(sizeof(PlayerShotController)==0x12598);
 static_assert(offsetof(PlayerShotController,active)==0x12430);
+static_assert(offsetof(PlayerShotController,counters_12468)==0x12468);
 static_assert(offsetof(PlayerShotController,context)==0x12594);
 #endif
 }

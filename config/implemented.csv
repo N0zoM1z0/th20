@@ -1128,3 +1128,5 @@ th20::EffectInfo::process_queued_effects
 th20::EffectInfo::spawn_effect
 th20::AnimationFile::spawn_flag4
 th20::EffectInfo::spawn_effect_variant
+th20::PlayerShotController::reset_all
+th20::PlayerShotController::reset_timer_12400
