@@ -2593,7 +2593,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0048BA20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BA60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BB00,unknown,ShotMetadata,review,pending,"EXACT-063: Actual Enemy dispatcher ShotMetadata and four laser temporary lifetimes; real PMR BulletCommand vectors, implicit padding, native flags5 nonthrowing construction and allocator-sensitive move assignment. All eleven complete bodies /1384 instruction+5 alignment bytes and seven complete PMR/EH support contributions independently replay; no duplicate support credit. Frozen-source full cold453units/86objects/85406disjointbytes. Owned C++20/O2/UBSan defaults/copy/allocator-sensitive move/reset/failure-boundary/vector lifetime tests; queue accessors, factories, full Enemy dispatch/tables/EH and whole-game link/runtime remain pending. See docs/EXACT_ENEMY_TEMPORARY_RECONSTRUCTION.md."
-0x0048BC00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0048BC00,authored,EnemyQueuedRecord,authored,high,"CORE/EXACT-206; docs/ENEMY_QUEUED_RECORD_ASSIGNMENT_EXACT_RECONSTRUCTION.md; game-owned original EnemyQueuedRecord (76B) member with verified 119B actual native source, real std::shared_ptr copy helper; not a generic CRT/STL function. Whether operator= was handwritten or implicit originally remains unknown; full 113/113 affected unit receipt matching."
 0x0048BC80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BCA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0048BCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

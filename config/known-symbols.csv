@@ -871,3 +871,4 @@ address,name,module,confidence,evidence
 0x00498D10,th20::EnemyState::shared_shot,EnemyState,high,"CORE/EXACT-200; docs/ENEMY_QUEUED_SELECTORS_EXACT_RECONSTRUCTION.md; complete native typed queue selection body, symbol spelling inferred"
 0x00498B80,th20::EnemyState::writable_shot,EnemyState,high,"CORE/EXACT-200; docs/ENEMY_QUEUED_SELECTORS_EXACT_RECONSTRUCTION.md; complete native typed queue selection body, symbol spelling inferred"
 0x0049C740,th20::BulletController::set_scalar_48,BulletController,high,"CORE/EXACT-203; docs/ENEMY_BULLET_SCALAR_601_DEPENDENCY.md; native +0x48 float view, full body exact, spelling inferred"
+0x0048BC00,th20::EnemyQueuedRecord::operator=,EnemyQueuedRecord,high,"CORE/EXACT-206; docs/ENEMY_QUEUED_RECORD_ASSIGNMENT_EXACT_RECONSTRUCTION.md; 119B full native typed record assignment and original 0x48BA20 shared_ptr copy, original handwritten/implicit authorship unresolved"

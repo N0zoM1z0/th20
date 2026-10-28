@@ -37,6 +37,7 @@ struct EnemyQueuedRecord {
     std::uint32_t field_30;
     Vector3 vector_34, vector_40;
     EnemyQueuedRecord();
+    EnemyQueuedRecord& operator=(const EnemyQueuedRecord& source);
 };
 
 // Native phase configuration writes two independently terminated 64-byte names.

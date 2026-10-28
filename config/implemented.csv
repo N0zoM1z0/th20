@@ -1018,3 +1018,4 @@ th20::LaserController::create_laser
 th20::EnemyState::shared_shot
 th20::EnemyState::writable_shot
 th20::BulletController::set_scalar_48
+th20::EnemyQueuedRecord::operator=
