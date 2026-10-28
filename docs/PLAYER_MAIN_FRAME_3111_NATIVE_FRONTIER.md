@@ -202,6 +202,34 @@ closure passed **27/27 units in 11 cold
 objects**, with no whole-repo replay.
 [Whole 281B pool/handle animation original proof](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md).
 
+## Subsequent CORE/EXACT-454 whole Player input-source accessor
+
+The genuine `InputController::for_view(int)`
+at `0x00498FB0` is now a separate complete
+**26-byte / 10-instruction strict native exact**
+method. It receives the actual runtime controller
+global from `0x005B8898`, and indexes its
+`InputButtonState*` pointer table at controller
+`+0x2E30` using the Player's real `view_index`
+(`Player+0x14854`). This native input lookup
+is called at original frame `+0x3D`.
+The full 26-byte original has zero E8 and
+zero PE HIGHLOW fields; no invented large
+class padding or unsupported full controller
+size is introduced. The caller's ten native
+uses of exact `replay_current_bits` follow
+from this actual pointer. The only changed
+existing source provider was `src/InputState.cpp`:
+**13/13 strict original units in one
+source-only cold object** passed. The main
+frame now has **66/67 original E8 call
+sites to separately exact native functions**.
+The sole remaining nonexact called body
+is the distinct 555-byte `Player::apply_move_delta`,
+while the entire 3,111-byte enclosing main
+frame stays NONEXACT.
+[Whole original input controller native proof](INPUT_CONTROLLER_PLAYER_VIEW_26_EXACT_RECONSTRUCTION.md).
+
 ## Whole parent call-graph status and focused strict replay
 
 Before these two native methods were admitted, 45 of

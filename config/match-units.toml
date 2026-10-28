@@ -19811,3 +19811,16 @@ relocations = [
   { offset = 0x13, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0x18, type = "REL32", symbol = "?interrupt_handle@AnimationPoolOwner@th20@@QAEXIH@Z", target = 0x0044EE90 },
 ]
+
+# CORE/EXACT-454: complete original 26B InputController
+# player/view input state lookup via observed native pointer table +0x2e30.
+# No synthetic complete controller storage, and no relocations in body.
+[units.input_controller_for_view]
+source = "src/InputState.cpp"
+object = "build/core141-canonical/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputController::for_view"]
+symbol = "?for_view@InputController@th20@@QAEPAUInputButtonState@2@H@Z"
+target_address = 0x00498FB0
+size = 26
+relocations = []

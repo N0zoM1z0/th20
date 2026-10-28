@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Entire original 26B InputController Player view-index lookup — strict exact](INPUT_CONTROLLER_PLAYER_VIEW_26_EXACT_RECONSTRUCTION.md) — real global manager at 0x005B8898, actual pointer table +0x2E30, Player view index +0x14854, 26/26 whole native bytes; no fake huge class padding; 13/13 old+new InputState units in one cold source object. Player 3,111B parent now 66/67 exact callees, remains NONEXACT.
+
 - [Two complete native AnimationHandle forwarders — 45B validity and 26B position](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) — actual resolve()/set_position call targets independently attested from original PE (two E8 fields), 71/71 whole original bytes, 27 instructions; 473/473 strict native units in 106 source objects from prior AnimationHandle.hpp compiler receipts. Player 3,111B parent stays NONEXACT.
 
 - [Exact complete 237B Player mode-3 option suspension boss](PLAYER_OPTION_MODE3_SUSPEND_237_EXACT_RECONSTRUCTION.md) — all ten plus twelve option handles, eight original native E8 fields to independently exact 23B index/22B mode-3 interrupt, distinct from the existing 237B mode-2 clearer. Actual 72/72 header-dependent strict units in 25 cold objects.

@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-449 whole AnimationPool interrupt and AnimationHandle bridge.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-454 complete native InputController Player view lookup.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,156** |
-| Canonical strict native units | **1,157** |
+| Source-present mappings, all origins | **1,157** |
+| Canonical strict native units | **1,158** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **382**, covering **117,860 native bytes** |
+| Exact game-authored whole functions | **383**, covering **117,886 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputController::for_view` | `0x00498FB0` | **26** | [native Player view index / input pointer table ABI, no fake owner padding](INPUT_CONTROLLER_PLAYER_VIEW_26_EXACT_RECONSTRUCTION.md) |
 | `AnimationPoolOwner::interrupt_handle` / `AnimationHandle::interrupt` | `0x0044EE90` / `0x0044EF90` | **246 / 35** | [whole native pool/handle animation child-interrupt protocol](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md) |
 | `SoundInf::request_effect` | `0x00426D70` | **320** | [whole sound request queue, channel cooldown, original PE volume table](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md) |
 | `AnimationHandle::is_valid` / `set_position_forward` | `0x0047A340` / `0x004645E0` | **45 / 26** | [full native handle validity and position forwarders](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) |
@@ -673,6 +674,35 @@ main-frame now has **65/67** exact callee
 call sites, two remaining; parent remains
 NONEXACT. No global cold replay.
 [Whole animation pool/handle 281B original proof](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-454 independently closes the
+**26-byte/10-instruction complete original
+InputController::for_view(int)** at `0x00498FB0`.
+The original Player frame uses the genuine
+input manager global pointer `0x005B8898`,
+Player index `+0x14854`, and controller
+input pointer table `+0x2E30 + index*4`;
+the typed result is `InputButtonState*`
+and the original member has no E8 or PE
+HIGHLOW fields. The whole manager layout is
+still unknown: no fictitious 0x2E30-byte
+padding member or fake owner class size
+was added. Prior real `InputState.hpp`
+compiler receipt closure had **one old
+source object / 12 strict units**; the
+new entire native method yields **13/13
+strict units in that one cold source**
+with all old Replay and input routines
+still exact. The **3,111-byte original
+Player main-frame** now has **66/67
+native direct E8 call sites** pointing
+to independently exact game callees.
+The remaining original 555B
+`Player::apply_move_delta` body is still
+NONEXACT (561B current source);
+the enclosing 3,111B parent is also
+NONEXACT. No whole-repository replay.
+[Whole native Player InputController proof](INPUT_CONTROLLER_PLAYER_VIEW_26_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

@@ -30,6 +30,14 @@ static_assert(offsetof(InputButtonState, held_frames) == 0x198);
 static_assert(offsetof(InputButtonState, held8) == 0x2b0);
 static_assert(offsetof(InputButtonState, replay_current) == 0x29c);
 
+// Partial original runtime InputController receiver: the entire containing
+// device/observer storage is not reconstructed. Its live pointer table is
+// independently read by the original Player frame at byte offset +0x2E30.
+// No guessed large padding arrays, dummy fields, or fake complete size.
+struct InputController {
+    InputButtonState* for_view(std::int32_t logical_index);
+};
+
 struct InputDevice {
     std::int32_t kind, logical_index;
     IDirectInputDevice8W* direct_input;
