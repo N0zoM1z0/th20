@@ -119,6 +119,7 @@ struct BulletController final : TaskInfo {
     std::int32_t emit(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata,
                       int column, int row, float direction);
     std::int32_t cancel_all(std::int32_t mode);
+    std::int32_t cancel_near(const Vector3& center, float radius, std::int32_t mode);
 };
 BulletController* bullet_controller(std::int32_t index);
 #if defined(_M_IX86)

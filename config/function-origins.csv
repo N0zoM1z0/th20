@@ -2286,7 +2286,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047CB90,authored,BulletController,authored,high,"CORE/EXACT-226; docs/BULLET_CANCELLATION_EXACT_RECONSTRUCTION.md; original gameplay-owned active Bullet cancellation protocol, authentic 0x004AF310 caller, complete 242B native member and independently anchored ABI"
 0x0047CC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047CF60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0047D100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0047D100,authored,BulletController,authored,high,"CORE/EXACT-227; docs/BULLET_SPATIAL_CANCELLATION_EXACT_RECONSTRUCTION.md; six independent gameplay native callers using exact owner, original full 320B active intrusive-list cancel path and 14 original relocation anchors; no native-prefix credit"
 0x0047D240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047D3D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047D580,unknown,AnimationCallback,review,unknown,"CORE/EXACT-123: Complete native callback8 owner/five integer-return virtual slots, true cdecl unary-entry/script pointers and Bullet528 signed type/color accessors. Nine whole physical roots414B plus five folded aliases151B independently verified; no duplicate byte credit or native RTTI identity claim.149903 actual-owner O2/ASan/UBSan/float-cast-overflow cases and18 whole private migration roots3360B pass. Frozen276-source graph passes827 strict units/160 fresh objects/160921 disjoint bytes; maintained149903-case production semantics pass; original base SprtFuncBaseInf/direct derived EffectMenuWindowInf48 RTTI corroborates owner. Whole40752B VM, derived draw and Renderer+6000DFC remain open. See docs/ANIMATION_CALLBACK_RECONSTRUCTION.md."
