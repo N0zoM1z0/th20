@@ -4658,7 +4658,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004FE850,24,0x004FE867,FUN_004fe850,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FE870,37,0x004FE894,FUN_004fe870,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FE8A0,37,0x004FE8C4,FUN_004fe8a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004FE8D0,87,0x004FE926,FUN_004fe8d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004FE8D0,87,0x004FE926,FUN_004fe8d0,th20::PlayerRecord::add_field_e4,PlayerRecord,matching,100.00,__thiscall,?add_field_e4@PlayerRecord@th20@@QAEXH@Z,false,src/PlayerRecord.cpp,CORE/EXACT-348; docs/PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md,authored,"Complete native 87B Player graze count update at field_e4, modulo-32 addition and signed clamp to [0,99999999], independent single E8 call to 0x00471170; only PlayerRecord source owner scoped strict replay."
 0x004FE930,28,0x004FE94B,FUN_004fe930,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FE950,87,0x004FE9A6,FUN_004fe950,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FE9B0,75,0x004FE9FA,FUN_004fe9b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-347 complete Player bullet graze feedback.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-348 PlayerRecord graze counter accumulator.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,123** |
-| Canonical strict native units | **1,112** |
+| Source-present mappings, all origins | **1,124** |
+| Canonical strict native units | **1,113** |
 | Unique canonical object providers | **223**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **325**, covering **81,861 native bytes** |
+| Exact game-authored whole functions | **326**, covering **81,948 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `PlayerRecord::add_field_e4` | `0x004FE8D0` | **87** | [complete graze counter wrap and clamp](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md) |
 | `Player::record_bullet_graze` | `0x004F8B90` | **332** | [complete graze feedback and effects](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md) |
 | `clear_animation_handle_value` | `0x0049DA50` | **20** | [whole native value clear](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) |
 | `AnimationFile::spawn_flag2` / `Player::animation_file_ref` | `0x0049CBF0` / `0x00421810` | **57 / 17** | [whole native resource access](PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md) |
@@ -158,6 +159,13 @@ native instructions are still absent, COFF second literal offset
 `+0x49F` differs from native `+0x4AB`, and full byte/relo replay fails.
 Only this nonexact source/evidence changed, so zero accepted exact units
 needed cold replay. See the focused whole-source frontier.
+
+CORE/EXACT-348 also closes the complete **87-byte**
+`PlayerRecord::add_field_e4` callee used by the 332-byte Player graze
+feedback root. The true `PlayerRecord.cpp` object and all **59/59**
+scoped strict units pass; no shared header changes or full cold replay.
+`EffectInfo::queue_effect` at `0x0049DC60` and Enemy graze predicate
+`0x0049BE20` remain separate unclosed original functions.
 
 ## Open complete-function roots — next agent's priorities
 

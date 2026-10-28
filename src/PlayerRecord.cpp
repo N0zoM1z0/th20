@@ -261,6 +261,13 @@ std::int32_t PlayerRecord::field_14_value() {return field_14;}
 std::uint8_t PlayerRecord::field_a5_value() {return field_a5;}
 std::uint8_t PlayerRecord::field_2f_value() {return field_2f;}
 
+// Native original graze-count addition wraps the scalar as a 32-bit word
+// before applying the real capped signed PlayerRecord field protocol.
+void PlayerRecord::add_field_e4(std::int32_t amount) {
+    field_e4 = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_e4)
+        + static_cast<std::uint32_t>(amount));
+    field_e4 = std::clamp(field_e4, 0, 99999999);
+}
 void PlayerRecord::add_field_44(std::int32_t amount) {
     field_44 = static_cast<std::int32_t>(static_cast<std::uint32_t>(field_44)
         + static_cast<std::uint32_t>(amount));

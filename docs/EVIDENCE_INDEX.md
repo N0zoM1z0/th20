@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact 87B PlayerRecord graze counter addition and clamp](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md) — entire 26-instruction native counter, 32-bit wrap plus signed std::clamp, independent original +0x3F call; 59/59 PlayerRecord scoped strict units in one rebuilt object.
+
 - [Exact complete 332B Player bullet graze feedback](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md) — full 105 original instructions and 17 independent E8 calls / three PE HIGHLOW references; natural effects, reward and sound handling; 307/307 affected-only strict units across 42 rebuilt objects.
 
 - [Exact 20B AnimationHandle value clear and parent ABI correction](ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md) — original ECX-receiver store and 8/8 affected strict units in one object; restores the missing call in the maintained nonexact 1,518B Player option rebuild boss.

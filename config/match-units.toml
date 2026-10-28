@@ -18967,3 +18967,16 @@ relocations = [
   { offset = 0x137, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 0x00426EB0 },
   { offset = 0x142, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-348: whole original 87-byte graze count accumulator.
+[units.player_record_graze_counter_add]
+source = "src/PlayerRecord.cpp"
+object = "build/core156-canonical/PlayerRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::add_field_e4"]
+symbol = "?add_field_e4@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004FE8D0
+size = 87
+relocations = [
+  { offset = 0x3F, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]

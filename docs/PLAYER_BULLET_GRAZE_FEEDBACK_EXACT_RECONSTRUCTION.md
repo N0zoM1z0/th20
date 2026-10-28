@@ -131,3 +131,13 @@ The original game's whole linker startup, GameRandom/EffectInfo runtime
 lifetimes, and other large Player/Bullet/Enemy roots remain independent
 open tasks. This proof accepts **one entire native function**, not
 whole-game behavioral equivalence.
+
+## CORE/EXACT-348 later callee closure
+
+The independent whole **87-byte** `PlayerRecord::add_field_e4` callee
+at `0x004FE8D0` is now also **strict native exact**. The entire game-owned
+332-byte caller and the separate graze counter are credited at their two
+nonoverlapping original boundaries. See the
+[complete original counter proof](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md).
+The original EffectInfo queue operation and EnemyController predicate remain
+separately open; the graze caller's exact status does not close them.

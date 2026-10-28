@@ -324,3 +324,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00421810,th20::Player::animation_file_ref,17,matching,100.00,player_animation_file_ref,CORE/EXACT-330; docs/PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md; entire original strict exact
 0x0049DA50,th20::clear_animation_handle_value,20,matching,100.00,animation_handle_clear_value,CORE/EXACT-335; docs/ANIMATION_HANDLE_VALUE_CLEAR_EXACT_RECONSTRUCTION.md; entire native 20B strict exact
 0x004F8B90,th20::Player::record_bullet_graze,332,matching,100.00,player_record_bullet_graze,CORE/EXACT-347; docs/PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md; full 105 native instructions and 20 original E8/HIGHLOW references
+0x004FE8D0,th20::PlayerRecord::add_field_e4,87,matching,100.00,player_record_graze_counter_add,CORE/EXACT-348; docs/PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md; exact whole 87B and independent native std::clamp call
