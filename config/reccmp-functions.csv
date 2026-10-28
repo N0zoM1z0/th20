@@ -1052,3 +1052,5 @@ th20::Bullet::advance_command2,0x00483920,function
 th20::Bullet::advance_command1,0x00483F00,function
 th20::Bullet::advance_command10,0x00483D20,function
 th20::bullet_velocity_magnitude,0x0047A2A0,function
+th20::bullet_wrap_outside,0x004854D0,function
+th20::bullet_wrap_outside_with_floor,0x00485580,function

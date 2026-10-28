@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact two Bullet screen-wrap boundaries and complete 781B caller audit](BULLET_WRAP_BOUNDARY_EXACT_RECONSTRUCTION.md) — whole 176B and 181B functions with 19 original relocation anchors; original 781B four-way wrap boss remains nonexact.
+
 - [Two exact full Bullet velocity/angle bosses and native XY magnitude](BULLET_COMMAND_VELOCITY_EXACT_RECONSTRUCTION.md) — whole original 471B/473B command paths and 25B actual ST0-return magnitude, 42 native relocations, 60/60 affected-only strict units.
 
 - [Exact complete 424-byte Bullet command-2 angle/speed update](BULLET_COMMAND2_EXACT_RECONSTRUCTION.md) — original 117 instructions, two ClockScalar/Angle transformations and Timer advance, 16 real native relocations and 57/57 affected-only strict units.

@@ -17565,3 +17565,46 @@ relocations = [
   { offset = 0x8, type = "REL32", symbol = "?squared_norm_xy@th20@@YAMABUVector3@1@@Z", target = 0x00456130 },
   { offset = 0x10, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
 ]
+
+# CORE/EXACT-243: original complete 176B gameplay Bullet playfield-exit predicate.
+[units.bullet_wrap_outside]
+source = "src/BulletWrapBounds.cpp"
+object = "build/core243-canonical/BulletWrapBounds.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::bullet_wrap_outside"]
+symbol = "?bullet_wrap_outside@th20@@YAHABUVector3@1@MM@Z"
+target_address = 0x004854D0
+size = 176
+relocations = [
+  { offset = 0xD, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1C, type = "DIR32", symbol = "?native_left_wrap_width@th20@@3MB", target = 0x0056FD6C },
+  { offset = 0x24, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x36, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x49, type = "DIR32", symbol = "?native_384@th20@@3MB", target = 0x0056CDA4 },
+  { offset = 0x51, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x63, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x80, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x93, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+]
+
+# CORE/EXACT-243: original complete 181B gameplay Bullet playfield-exit predicate.
+[units.bullet_wrap_outside_with_floor]
+source = "src/BulletWrapBounds.cpp"
+object = "build/core243-canonical/BulletWrapBounds.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::bullet_wrap_outside_with_floor"]
+symbol = "?bullet_wrap_outside_with_floor@th20@@YAHABUVector3@1@MM@Z"
+target_address = 0x00485580
+size = 181
+relocations = [
+  { offset = 0xD, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1C, type = "DIR32", symbol = "?native_left_wrap_width@th20@@3MB", target = 0x0056FD6C },
+  { offset = 0x24, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x36, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x49, type = "DIR32", symbol = "?native_384@th20@@3MB", target = 0x0056CDA4 },
+  { offset = 0x51, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x63, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x73, type = "DIR32", symbol = "?native_floor_margin@th20@@3MB", target = 0x0056FD68 },
+  { offset = 0x85, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x98, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+]
