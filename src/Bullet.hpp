@@ -140,6 +140,7 @@ struct BulletController final : TaskInfo {
     std::int32_t count();
     std::int32_t draw_group(std::int32_t group);
     std::int32_t draw_groups();
+    std::int32_t rebuild_active_bullets();
     IntrusiveList<Bullet>& free_list();
     IntrusiveList<Bullet>& active_list();
     void store_cancel_handle(std::int32_t index, std::uint32_t value);

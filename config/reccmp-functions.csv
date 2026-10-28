@@ -1089,3 +1089,4 @@ th20::Timer::operator*(int),0x0045C2E0,function
 th20::Timer::operator!=(int),0x0047C620,function
 th20::Bullet::process_collision,0x00484A20,function
 th20::select_bullet_aim,0x00485740,function
+th20::BulletController::rebuild_active_bullets,0x0047D600,function

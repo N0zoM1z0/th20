@@ -47,6 +47,32 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/EXACT-296 (web) closes the **entire original 863-byte** active
+Bullet frame and six-group draw-list **boss** `0x0047D600`.
+The genuine normal `BulletController::rebuild_active_bullets()` C++20
+owner emits **237/237 original x86 instructions, 723/723 native
+non-relocation bytes and 35 independently PE-anchored relocations**, with
+**863/863 complete strict canonical replay**. Actual managed intrusive
+iterator begin/end/get/advance/destruction, `node_access()` returning
+**`Bullet*&`**, true `GameController` bit-11 physics pause at global
+`0x005BA828`, native 2,018B Bullet collision / 211B Bullet step and all
+six native draw heads/tails/Timer paths are preserved. A natural scoped
+iterator lifetime restores the native 0x34-byte frame, and the real
+freeze-state `goto publish_draw` restores the original separate
+conditional and common-body jumps; no synthetic padding.
+The new shared `Bullet.hpp` declaration affects **29 previous source
+objects / 67 old exact native units** according to *real include
+receipts*: all 29 freshly rebuilt, **67/67 previously exact**; with
+the new entire 863B boss **68/68 scoped old+new strict units across
+30 fresh objects**. Only compiler-private `$SG` names renumbered,
+never original relocated targets. **No full unfiltered cold replay**.
+See [whole native active-Bullet update and draw-group exact proof](BULLET_ACTIVE_UPDATE_863_EXACT_RECONSTRUCTION.md).
+Live authored total now **294 whole exact functions / 78,260 original
+native bytes**. Remaining open full roots include **1,404B** command11,
+**273B** per-group draw, **3,735B** emitter, **12,140B** full Bullet
+commands and **41,967B** Enemy ECL opcode dispatcher.
+
+
 CORE/EXACT-294 (web) closes an independent **entire 434-byte** Bullet
 aim direction-mode boss `0x00485740`, 109 native instructions,
 **22 independent original relocations**, 434/434 strict original bytes.
