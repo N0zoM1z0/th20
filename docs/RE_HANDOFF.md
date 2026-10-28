@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE207 integrates the complete native opcode 614 queue-copy branch into the same 41,967-byte Enemy Boss draft, keeping CORE206 exact record assignment and all older evidence intact.
+**Checkpoint:** CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -30,12 +30,34 @@ evidence documents are historical, not competing current status.
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
-  covers **140 effective opcode values / 108 primary heads** and passes
-  **44,230 / 44,230** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  covers **141 effective opcode values / 109 primary heads** and passes
+  **44,554 / 44,554** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE208 integrates the **entire native 252-byte / 62-instruction / 10-call**
+opcode 632 at `0x00493831..0x0049392C` into the same full 41,967B
+Enemy source draft. Unlike numeric-command cases 609–612, 632 reads ECL
+integer index 0 then 1, runs the **real byte-exact 396B writable COW
+selector**, grows the real `std::pmr::vector<BulletCommand>` if needed,
+then stores the raw **borrowed `EclInstruction+0x1C` pointer** into
+`BulletCommand::script` at +0x28. The pointer is not a string copy or a
+VM argument read. New **324** scenarios (304 normal / 80 COW copies / 144
+new metadata owners / 112 PMR resizes / 12 ECL failures / eight
+632→609→632 pointer-preservation chains) bring both 86-TU GCC13
+O2 UBSan and ASan+UBSan complete-root hosts to **44,554/44,554**.
+The current four SHA-bound private inputs, original call-site audit,
+both protected binaries and successful logs are in
+`.analysis/core208-native-632-audit.json` and
+`.analysis/core208-enemy-whole-root-proof.json`; explanation:
+[whole original 632 script-pointer branch](ENEMY_WHOLE_ROOT_OPCODE_632_SCRIPT_POINTER.md).
+CORE208 changed **zero maintained native compiler inputs**, so native
+cold replay affected scope is **zero**. Original full 41,967B root
+remains nonexact; conservative authored exact credit remains
+**226 functions / 58,837 bytes**.
+
 
 CORE207 adds the entire original **572-byte** Enemy opcode 614 branch at
 `0x004925C7..0x00492802`, **129 actual x86 instructions and 19 native direct
@@ -560,20 +582,20 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core207-enemy-dispatch-candidate.cpp` — same *entire* Enemy root
-  candidate with the original 614 branch and all older opcode families.
-- `.analysis/core207-dispatch-host.cpp`,
-  `.analysis/core207-op614-queue-copy-host-cases.inc`,
-  `.analysis/core207-dispatch-host-recipe.json` — current 86-TU host with
-  actual `src/EnemyQueuedRecordAssignment.cpp` source linked in.
-- `.analysis/core207-dispatch-host.log`,
-  `.analysis/core207-dispatch-host-asan.log`,
-  `.analysis/core207-native-614-audit.json`,
-  `.analysis/core207-enemy-whole-root-proof.json` — original 572B native
-  case/call audit plus 4 SHA-bound live inputs, both binaries/logs. Protect
-  `build/core207-dispatch-host` and `build/core207-dispatch-host-asan`.
-- All original CORE206 exact member receipts and older CORE205/204/203
-  source, binary and native case proofs remain intact; never discard them.
+- `.analysis/core208-enemy-dispatch-candidate.cpp` — same entire Enemy
+  source-draft root with opcode 632 added to all previous families.
+- `.analysis/core208-dispatch-host.cpp`,
+  `.analysis/core208-op632-script-pointer-host-cases.inc`,
+  `.analysis/core208-dispatch-host-recipe.json` — current whole 86-TU host,
+  executing the maintained byte-exact writable COW selector.
+- `.analysis/core208-dispatch-host.log`,
+  `.analysis/core208-dispatch-host-asan.log`,
+  `.analysis/core208-native-632-audit.json`,
+  `.analysis/core208-enemy-whole-root-proof.json` — 44,554 passed cases,
+  four SHA-bound private inputs, exact original 252B call targets and two
+  proof-bound `build/core208-dispatch-host*` executables.
+- All original CORE207/206 and older protected original PE, MSVC receipt,
+  source, whole-root host and acceptance evidence remain intact.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),

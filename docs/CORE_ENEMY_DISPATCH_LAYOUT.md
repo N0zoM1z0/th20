@@ -21,6 +21,17 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE208 additionally integrates the complete original **252-byte**
+Enemy opcode 632 (62 native instructions / ten calls) into the *same*
+41,967-byte whole-root draft. Two ECL integer reads precede the genuine
+396B exact COW selector and real PMR command-vector resize. The original
+command's `script` receives the **borrowed pointer to EclInstruction+0x1C**
+without copying script bytes. **324** new true-owner/pointer-identity/
+exception cases raise whole-root O2/UBSan and ASan+UBSan passes to
+**44,554/44,554**, covering **141 values / 109 original primary heads**.
+The native root remains machine-code nonexact. See
+[opcode 632 whole-root integration](ENEMY_WHOLE_ROOT_OPCODE_632_SCRIPT_POINTER.md).
+
 CORE207 integrates the complete original **572-byte Enemy opcode 614**
 (129 native instructions, 19 original calls) into the same 41,967-byte
 source-draft root. Both ECL index arguments precede independently ordered
