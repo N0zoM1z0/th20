@@ -17,11 +17,13 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact entire 227B EffectInfo animation spawn and corrected optional Animation pointer ABI](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md) — real native 32B script table, hidden handle return, optional existing Animation*, recursive flag setter and callback; eight independently attested original references and 32/32 scoped strict units.
+
 - [Exact complete 271B EffectInfo deferred-effects frame](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md) — whole 1024-slot handle loop and 1024-slot request timer/spawn loop, 90/90 original instructions and eight independent E8/HIGHLOW anchors; 26/26 scoped strict units in eight cold objects.
 
 - [Exact original 123B EnemyController graze reward predicate](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md) — entire 47-instruction original 16-slot EnemyHandle any_of and real bool branch, three independent native E8 refs; 1/1 scoped strict unit, separate 107B library callee still open.
 
-- [Complete native 143B EffectInfo request queue](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md) — real 1024-entry ×72-byte scheduler, original 56B payload memcpy and two independent E8 calls, corrected `void`/policy/delay ABI; 30/30 affected-only strict units in 9 objects.
+- [Complete native 143B EffectInfo request queue](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md) — real 1024-entry ×72-byte scheduler, original 56B payload memcpy and two independent E8 calls, corrected `void`/optional Animation pointer/delay ABI; 30/30 affected-only strict units in 9 objects.
 
 - [Exact 87B PlayerRecord graze counter addition and clamp](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md) — entire 26-instruction native counter, 32-bit wrap plus signed std::clamp, independent original +0x3F call; 59/59 PlayerRecord scoped strict units in one rebuilt object.
 

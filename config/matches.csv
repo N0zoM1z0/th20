@@ -328,3 +328,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0049DC60,th20::EffectInfo::queue_effect,143,matching,100.00,effect_info_queue_effect,CORE/EXACT-352; docs/EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md; 143 native bytes and two E8 targets exact
 0x0049BE20,th20::EnemyController::graze_reward_active,123,matching,100.00,enemy_graze_reward_active,CORE/EXACT-355; docs/ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md; whole original 123B with three independent E8 anchors
 0x0049D4A0,th20::EffectInfo::process_queued_effects,271,matching,100.00,effect_info_process_queued_effects,CORE/EXACT-358; docs/EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md; full original 271B 90 instructions 8 E8/HIGHLOW references exact
+0x0049DB70,th20::EffectInfo::spawn_effect,227,matching,100.00,effect_info_spawn_effect,CORE/EXACT-361; docs/EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md; full original 227B with eight independent native original E8 and PE HIGHLOW refs

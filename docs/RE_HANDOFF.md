@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-358 complete EffectInfo deferred-effects frame.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-361 complete EffectInfo animation spawning and ABI correction.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,127** |
-| Canonical strict native units | **1,116** |
+| Source-present mappings, all origins | **1,128** |
+| Canonical strict native units | **1,117** |
 | Unique canonical object providers | **225**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **329**, covering **82,485 native bytes** |
+| Exact game-authored whole functions | **330**, covering **82,712 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `EffectInfo::spawn_effect` | `0x0049DB70` | **227** | [whole original animation spawn and optional pointer protocol](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::process_queued_effects` | `0x0049D4A0` | **271** | [entire two-queue lifecycle frame](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md) |
 | `EnemyController::graze_reward_active` | `0x0049BE20` | **123** | [whole 16-handle reward predicate](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::queue_effect` | `0x0049DC60` | **143** | [whole request scheduling protocol](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md) |
@@ -174,8 +175,9 @@ remains a separate unclosed original function.
 CORE/EXACT-352 reconstructs the complete **143B** EffectInfo request
 scheduler at `0x0049DC60`, including its real `void` ABI and exact two
 original E8 call anchors. Re-evaluation of actual request consumers
-corrected `EffectRequest+8` to a creation policy instead of an
-`Animation*`, and `+0xC` is the delay countdown. The two shared-header
+initially **mistyped** `EffectRequest+8` as an integer creation
+policy. CORE/EXACT-361 independently corrected it to a real optional
+`Animation*`; `+0xC` remains the delay countdown. The two shared-header
 include closures were replayed only for **30/30 strict units across nine
 cold objects**; the existing 332B graze caller still replays exact after
 correcting the callee's compiler symbol identity. The enemy graze reward
@@ -195,7 +197,20 @@ all 90 original instructions and eight independently attested PE call/
 HIGHLOW targets. It shares the strict `src/EffectQueue.cpp` owner with the
 143-byte queue producer, and **26/26** actual affected units across
 **8 cold objects** were re-accepted. The separate original 227-byte
-effect spawner at `0x0049DB70` remains a nonexact frontier.
+effect spawner at `0x0049DB70` was subsequently closed whole exact by
+CORE/EXACT-361.
+
+CORE/EXACT-361 now also closes the complete **227-byte**
+`EffectInfo::spawn_effect` at `0x0049DB70`, including the original 32-byte
+static effect-spec records, optional preexisting `Animation*`, native hidden
+result, `Animation::set_flag0_recursively` and true callback. All eight
+original relocation fields (7 E8 + 1 PE HIGHLOW) independently agree.
+This discovery **corrects the old `EffectRequest+8` field from erroneous
+integer policy to actual optional `Animation*`**. All three original
+143/227/271-byte EffectInfo functions and the 332B Player graze,
+662B Bullet cancel and 2,018B Bullet collision still match strictly:
+**32/32 affected-only units across nine cold objects**. No unfiltered
+whole-graph replay. [Focused full proof](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

@@ -28,12 +28,14 @@ The second loop obtains the first of **1024 `EffectRequest` records**, at
 `EffectInfo+0x103C`, each of actual 72-byte stride. Records with a
 negative `type` are skipped. For active requests, `delay > 0` is
 counted down by one, while `delay <= 0` invokes the actual
-`EffectInfo::spawn_effect(type,parameters,policy)` operation via its
+`EffectInfo::spawn_effect(type,parameters,existing_animation)` operation via its
 original hidden `AnimationHandle` result and real C++ member ABI.
 After submitting the effect, it sets `type = -1` to mark the request free.
-This branch reads exactly the record's `policy` at `+0x8`, `delay` at
+This branch reads exactly the record's optional `Animation*` at `+0x8`, `delay` at
 `+0xC`, and its 56-byte `EffectParameters` value at `+0x10`, corroborating
-**independently** the type correction from CORE/EXACT-352. The complete
+the separately confirmed 227-byte original spawner's optional pointer
+ABI. The earlier integer `policy` interpretation at CORE/EXACT-352 was
+incorrect and is superseded by CORE/EXACT-361. The complete
 frame method then returns the native integer constant **1**.
 
 Initial full C++ compilation emitted 279 bytes and 92 instructions.
@@ -92,8 +94,9 @@ Details: `.analysis/core358-effect-frame-header-impact.json`,
 `.analysis/core358-replay-batch{0,1}.log`, and
 `.analysis/core358-reconciled-private-symbols.json`.
 
-The separate original `EffectInfo::spawn_effect` at `0x0049DB70` is
-**227 bytes and remains independently open**. Neither its implementation
-nor the broader EffectInfo construction, renderer lifecycle or whole
-game executable linkage is made exact by this 271-byte frame. No
+The separate original `EffectInfo::spawn_effect` at `0x0049DB70` is now
+**227/227 independently strict exact** in CORE/EXACT-361, including the
+real `Animation*` optional argument and original 32-byte effect-spec table.
+Broader EffectInfo construction, Renderer/Animation lifetime and whole-game
+executable linkage remain independent and open. No
 unfiltered all-repository cold replay was performed.

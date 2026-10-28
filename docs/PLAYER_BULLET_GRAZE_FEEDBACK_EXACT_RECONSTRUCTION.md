@@ -162,3 +162,14 @@ and genuine `std::any_of` predicate. See
 [the native 123-byte proof](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md).
 Its own separate compiler-generated 107-byte `std::any_of` implementation
 is **not** credited exact, despite the 123-byte caller now being exact.
+
+## Later CORE/EXACT-361 real optional animation ABI
+
+The separate full **227-byte** `EffectInfo::spawn_effect` consumer proves
+that the already exact 143-byte queue's final argument and request word
+at `+8` are **optional existing `Animation*` values**, not the previously
+inferred integer creation policy. This 332-byte Player graze caller passes
+a null pointer and remains **332/332 strict exact** after correcting only
+the MSVC-decorated callee symbol to the true pointer ABI. All other native
+original offsets/targets are unchanged. See the
+[real effect spawning and ABI proof](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md).

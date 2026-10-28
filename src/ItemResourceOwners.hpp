@@ -35,15 +35,15 @@ public:
     AnimationFile* animation_file(std::int32_t index);
     std::int32_t select_handle_slot();
     std::uint32_t publish_handle(std::uint32_t handle);
-    // Native request scheduling returns void. Arguments are delay, effect
-    // type, the source parameter value, and its later creation policy.
+    // Native scheduler returns void. The final pointer selects an existing
+    // animation for the later deferred creator (null means spawn new).
     // Process 1024 animation handles and all 1024 scheduled effect requests.
     // The native frame tick returns 1, independently from queue_effect().
     std::int32_t process_queued_effects();
     void queue_effect(std::int32_t delay_frames, std::int32_t kind,
-                      const EffectParameters& parameters, std::int32_t policy);
+                      const EffectParameters& parameters, Animation* existing_animation);
     AnimationHandle spawn_effect(std::int32_t kind, const EffectParameters& parameters,
-                                 std::int32_t policy);
+                                 Animation* existing_animation);
 };
 class StoneMenuInfo : public TaskInfo {
 public:

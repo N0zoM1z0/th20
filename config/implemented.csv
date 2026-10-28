@@ -1125,3 +1125,4 @@ th20::PlayerRecord::add_field_e4
 th20::EffectInfo::queue_effect
 th20::EnemyController::graze_reward_active
 th20::EffectInfo::process_queued_effects
+th20::EffectInfo::spawn_effect

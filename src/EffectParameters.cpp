@@ -16,7 +16,7 @@ EffectParameters::EffectParameters()
       scalar_24(0), enabled(1), vector_2c() {}
 
 EffectRequest::EffectRequest()
-    : type(-1), original_parameters(nullptr), policy(0), delay(0),
+    : type(-1), original_parameters(nullptr), animation(nullptr), delay(0),
       parameters() {}
 
 } // namespace th20

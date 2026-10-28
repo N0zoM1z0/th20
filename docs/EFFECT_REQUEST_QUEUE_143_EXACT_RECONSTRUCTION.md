@@ -20,7 +20,7 @@ field at the front of each **72-byte** request, scanning up to **1024**
 requests and incrementing the record pointer by 72 bytes whenever a slot
 is in use. For the first `type < 0`, it writes the incoming effect kind to
 `+0`, preserves the address of the caller's actual `EffectParameters` in
-`+4`, stores the incoming **effect creation policy** at `+8`, and stores
+`+4`, stores the optional original **`Animation*` existing-animation pointer** at `+8`, and stores
 the incoming **delay frames** at `+0xC`. It then copies **56 bytes** of
 original parameter payload by calling the actual native `memcpy`, writing
 into `EffectRequest+0x10`. The loop ends after the first accepted entry;
@@ -28,15 +28,18 @@ if none is available, it ends without allocation.
 
 Independently inspected the actual consumer at `0x0049D4A0`: it reads
 `EffectRequest+0xC` as the countdown (decrements when positive) and
-passes `EffectRequest+0x8` to the later effect creation call as a separate
-policy argument. That independent behavior corrects the earlier tentative
-`Animation* animation` interpretation of offset `+8` in
-`src/EffectParameters.hpp`. The native method also has **`void` return**:
+passes `EffectRequest+0x8` to the later effect creation call as its
+optional existing-animation argument. The separate entire original
+**227-byte** spawner at `0x0049DB70` proves that the value is an
+**`Animation*`**, not the signed integer policy inferred at the earlier
+CORE/EXACT-352 checkpoint. That earlier type interpretation was incorrect
+and has been explicitly corrected in CORE/EXACT-361. The native queue
+method also has **`void` return**:
 its previous provisional `EffectRequest*` signature reflected incidental
 `EAX` contents, not a real return path. The public
 `src/ItemResourceOwners.hpp` ABI is now typed as
 `void queue_effect(int delay_frames,int kind,const EffectParameters&
-parameters,int policy)`, and the maintained source contains **no**
+parameters,Animation* existing_animation)`, and the maintained source contains **no**
 artificial integer-to-pointer casting or guessed return value.
 
 ## Original call references and exactness
@@ -97,7 +100,18 @@ behavioral equivalence.
 
 The separate original complete **271-byte** `EffectInfo::process_queued_effects`
 frame at `0x0049D4A0` is now strict exact. It reads precisely the 143-byte
-queue producer's `type`, `policy`, `delay` and 56-byte parameter payload,
-then runs both entire 1024-slot native gameplay loops. The original
-227-byte `spawn_effect` operation it calls remains separate and open.
+queue producer's `type`, optional existing `Animation*`, `delay` and 56-byte
+parameter payload, then runs both entire 1024-slot native gameplay loops.
+The original 227-byte `spawn_effect` operation it calls is now independently
+strict exact as of CORE/EXACT-361.
 Read the [full 271-byte frame proof](EFFECT_REQUEST_FRAME_271_EXACT_RECONSTRUCTION.md).
+
+## CORE/EXACT-361 independently revised field-type evidence
+
+The original 227-byte spawner independently proves the old `policy` member
+type at request offset `+8` was wrong. The actual field is an optional
+existing `Animation*` and is now maintained as such in both producer and
+consumer, without changing any of the 143-byte queue's native bytes.
+The real complete 143B method and corrected 332B Player graze caller
+replayed strict exact along with all 32/32 affected units. See
+[the full native 227B spawn and ABI correction](EFFECT_SPAWN_227_EXACT_RECONSTRUCTION.md).
