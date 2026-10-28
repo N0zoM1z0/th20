@@ -60,7 +60,7 @@ separately 226 functions / 58,837 bytes; it is not whole-game completion.
 | Reference review | All 6,945 indexed implementations and 113 parser-gap files reviewed |
 | ECL Runtime | Whole tick, call/frame/argument and lifetime protocols; [evidence](docs/EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | Animation | Lifetime, children, templates, frame/geometry/operand updates and real callbacks; whole VM remains open; [source map](docs/SOURCE_MAP.md) |
-| Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft covers 141 values/109 heads with 44,554 host checks, but native root remains open; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
+| Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft remains machine-code nonexact; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |
@@ -89,15 +89,11 @@ Python 3.11+, with no original game or C++ compiler:
 scripts/repo-python scripts/ci.py
 ```
 
-Default CI checks the exact oracle and repository metadata. Portable C++ semantic
-fixtures are optional, selected for a concrete native behavior question:
-
-```bash
-nice -n 15 scripts/repo-python -m unittest discover -s tests -p test_ecl_arguments_semantics.py -v
-```
-
-Exact checkpoints require affected native builds and strict replay; allocation
-failure, null robustness and sanitizer matrices are not additional prerequisites.
+Default CI checks the exact oracle and repository metadata. The historical
+portable C++ semantic suite has been retired; [retained tests](tests/README.md)
+cover exact comparison and repository tools. Exact checkpoints require affected
+native builds and complete strict replay. A specific unresolved behavior or ABI
+question can use a temporary probe under `.analysis/`.
 
 Private preflight for reconstruction changes is:
 

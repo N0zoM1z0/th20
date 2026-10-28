@@ -37,7 +37,6 @@ packages or change the working directory.
 | Report/generate state | `scripts/repo-python scripts/report-reconstruction-status.py`, `scripts/repo-python scripts/progress.py` | ledger-derived, not prose-derived |
 | Compile/link/runtime smoke | `scripts/repo-python scripts/toolchain-smoke.py` | infrastructure only, zero reconstruction credit |
 | Public CI for control-plane changes | `scripts/repo-python scripts/ci.py` | exact-oracle fixtures and metadata; no C++ compiler; skip documentation/cleanup batches |
-| Optional focused semantic question | `nice -n 15 scripts/repo-python -m unittest discover -s tests -p test_ecl_arguments_semantics.py -v` | select the named fixture for the native question; no whole-suite or sanitizer-matrix requirement |
 
 `.venv` pins pefile/capstone for raw-PE/disassembly experiments and Tree-sitter
 0.25.2/C++ grammar 0.23.4 for the explicit reference-body inventory. The

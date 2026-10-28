@@ -54,25 +54,23 @@ serialize their operations.
 8. Record an exact result only after the canonical replay has zero differences
    over its complete extent. Update mapping, origins, source presence and
    match ledgers separately; do not infer one from another.
-9. Update knowledge/handoff, run only affected replays, regenerate progress when
-   its inputs change, use a named semantic fixture only if it resolves a concrete
-   native behavior or ABI question,
-   inspect the public diff and commit a stable checkpoint.
+9. Record the evidence and affected replay scope, regenerate progress when its
+   inputs change, inspect the public diff and commit a stable checkpoint.
 
 Replay every affected unit after a shared header, profile, translation-unit,
 layout or relocation-anchor change. Profiles are per source/unit, not a global
 assumption. Record semantic interpretation, link coherence and runtime behavior
-separately from exactness. Portable semantic suites are not prerequisite gates
-for exact credit.
+separately from exactness.
 
 Determine affected providers from the changed input closures and manifest
 dependencies. Use individual unit commands or repeated `--source` filters;
 do not default to an unfiltered replay. Reuse passing evidence for unchanged
-providers. Public CI covers the exact oracle and metadata, without compiling all
-semantic hosts. Allocation-failure injection, null robustness, exception matrices
-and repeated sanitizer runs are not routine checkpoint requirements. Historical
-scenario totals do not prescribe future work. Preserve target error paths in
-the reconstructed source and compare their complete native contributions.
+providers. Public CI covers the exact oracle and metadata when those tools
+change. The historical portable semantic suite is retired; its paths and scenario
+counts in evidence documents describe dated experiments, available in Git history
+(see [retained tests](../tests/README.md)). Investigate a specific unresolved native
+behavior or ABI question with a temporary probe under `.analysis/`. Preserve
+target error paths in source and compare their complete native contributions.
 
 ## Large dispatcher evidence
 

@@ -37,7 +37,7 @@ reconstruction graph. The reconstruction preflight below applies when changing
 reconstruction code, analysis evidence or acceptance state.
 
 Read `docs/RE_HANDOFF.md` and the relevant source/evidence. Consult architecture,
-workflow, oracle and semantic documentation when needed for the selected unit.
+workflow and oracle documentation when needed for the selected unit.
 Inspect `git status`, then run:
 
 ```bash
@@ -101,14 +101,13 @@ stable checkpoints before handoff.
 
 ## Validation focus
 
-Prioritize exact reconstruction: locked-compiler builds and complete canonical
-replay for changed native units, tracking/progress checks for changed metadata.
-Public CI covers the exact oracle and control plane. Portable semantic fixtures
-are optional; select one only for a concrete unresolved native behavior or ABI
-question. Allocation-failure injection, null robustness, exception matrices,
-sanitizer variants and scenario totals are not exact-checkpoint requirements.
-Historical tests need not be preserved, extended or rerun. Preserve original
-branches, EH and null handling in source and the complete native comparison.
+Validate changed native units with locked-compiler builds and complete canonical
+replay; check tracking/progress only when their inputs change. Public CI covers
+the exact oracle and control plane when those tools change. The historical
+portable semantic suite is retired; do not restore allocation-failure, null
+robustness, exception or sanitizer matrices as checkpoint gates. Use a temporary
+probe under `.analysis/` only for a specific unresolved native behavior or ABI
+question. Preserve original branches, EH and null handling in the native source.
 
 Before validation, identify changed inputs and affected providers; state the
 replay scope in the handoff (zero for an unchanged native graph). Reuse passing
@@ -123,7 +122,7 @@ canonical objects/receipts, native evidence and active inputs; record removed
 paths/bytes privately and verify protected hashes. See `docs/RE_WORKFLOW.md`.
 
 The user also requires controlled CPU and memory use. Run compiler, headless
-Ghidra, cold replay and semantic checks at reduced scheduling priority (for
+Ghidra, cold replay and focused probes at reduced scheduling priority (for
 example `nice -n 15`), keep heavy jobs serial and reuse existing evidence.
 Keep queries bounded to the reviewed scope. Do not repeat cold builds of an
 unchanged graph solely for documentation or cleanup.

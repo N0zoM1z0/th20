@@ -3,9 +3,19 @@
 **Checkpoint:** CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
-`gpt-web: ` commit subjects and **affected-only** replay requirements. This
+active-session commit subjects and **affected-only** replay requirements. This
 handoff describes the live state on 2026-10-28; older batch counts in focused
 evidence documents are historical, not competing current status.
+
+## Validation maintenance (Codex, 2026-10-28)
+
+The historical portable semantic suite is retired: 142 fixture/runner files,
+including allocation/null/exception scenarios and sanitizer hosts. Five
+exact-oracle/control-plane test files remain; see [retained tests](../tests/README.md).
+This cleanup changes no reconstruction input: **zero affected replay units**.
+Use affected native builds and complete strict replay for exact checkpoints;
+old scenario totals and test paths below remain historical evidence. Concurrent
+web reconstruction is a separate batch. Commit prefixes follow the active session.
 
 ## Repository, target and canonical status
 
@@ -727,7 +737,7 @@ invocations, serial `nice -n 15` for heavy jobs, never patch the target PE
 or Ghidra database bytes, and distinguish **real x86 canonical exactness**
 from isolated O2/UBSan scenario counts. Keep source/docs/commit messages in
 English (preserving official Japanese target metadata). Commit substantive
-progress promptly with **`gpt-web: <description>`**.
+progress promptly with the active session's requested commit prefix.
 
 ## Cleanup and history lookup
 
