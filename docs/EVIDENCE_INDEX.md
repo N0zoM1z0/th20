@@ -154,3 +154,5 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Stage background, fog, camera and STD review](REFERENCE_STAGE_BACKGROUND_REVIEW.md)
 - [REF-044: tooling, historical bridges and exhaustive review closure](REFERENCE_SUPPORT_REVIEW.md)
 - [REF-026: Title batch review](REFERENCE_TITLE_REVIEW.md)
+
+- [Enemy opcode 555 resource path and exact Bullet file getter](ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md) — complete 20B native getter, 33 affected-only strict replays; whole root still open.

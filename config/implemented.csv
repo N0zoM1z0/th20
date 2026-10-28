@@ -1011,3 +1011,4 @@ th20::Graphics::field_b0c_value
 th20::Session::flag5_value
 th20::FrontInf::show_stage_title
 th20::LaserController::reset_all_lasers
+th20::BulletController::animation_file

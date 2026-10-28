@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE184 documentation/artifact retirement after CORE183.
+**Checkpoint:** CORE/EXACT-185 exact Bullet file getter; 555 root integration next.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -20,10 +20,10 @@ evidence documents are historical, not competing current status.
   SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
   Do not switch to the Steam-original backup or any other release. See
   [target provenance](TARGET_PROVENANCE.md) and `config/target.toml`.
-- Live ledgers: **6,928** target function candidates, **1,013** source-present
-  mappings, **1,004** physical canonical strict units, **218** confirmed
-  authored exact functions / **57,271** authored exact bytes. The 164 current
-  canonical objects cover **181,644** comparison bytes. **Nine**
+- Live ledgers: **6,928** target function candidates, **1,014** source-present
+  mappings, **1,005** physical canonical strict units, **219** confirmed
+  authored exact functions / **57,291** authored exact bytes. The 164 current
+  canonical objects cover **181,664** comparison bytes. **Nine**
   source-present whole-function mappings remain nonexact. These are not a
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
@@ -33,6 +33,9 @@ evidence documents are historical, not competing current status.
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE185 added native `BulletController::animation_file() const` at `0x004859B0` (20/20 canonical bytes, zero relocations). Only the five providers including `Bullet.hpp` were cold-built; **33/33** impacted canonical units pass strict relocation replay. The whole 555 branch was independently decoded in [opcode 555 evidence](ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md), but is **not yet** integrated into the current private CORE183 root host. Continue there, not by creating an isolated replacement for the 41,967-byte dispatcher. The previous 164 canonical objects retain one logical object per provider: the BulletController object moved to `build/core185-canonical`, replacing its core180 manifest entry.
+
 
 The first exact target is **Enemy opcode 539's real callee**,
 `LaserController::reset_all_lasers` at `0x004D2430`. Full native body

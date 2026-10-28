@@ -27,6 +27,7 @@ void BulletController::set_vector_4c(float x, float y) {
     vector_4c.x = x;
     vector_4c.y = y;
 }
+AnimationFile* BulletController::animation_file() const { return file; }
 std::int32_t BulletController::count() {return bullet_count;}
 BulletController* bullet_controller(std::int32_t index) {
     return session.context(index).bullet_controller();

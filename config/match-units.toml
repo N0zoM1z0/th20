@@ -9314,7 +9314,7 @@ relocations = [
 
 [units.bullet_extended_commands_ctor]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletExtendedCommands::BulletExtendedCommands"]
 symbol = "??0BulletExtendedCommands@th20@@QAE@XZ"
@@ -9330,7 +9330,7 @@ relocations = [
 
 [units.bullet_pool_ctor]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletPool::BulletPool"]
 symbol = "??0BulletPool@th20@@QAE@XZ"
@@ -9344,7 +9344,7 @@ relocations = [
 
 [units.bullet_handles_ctor]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletHandles::BulletHandles"]
 symbol = "??0BulletHandles@th20@@QAE@XZ"
@@ -9360,7 +9360,7 @@ relocations = [
 
 [units.bullet_controller_ctor]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::BulletController"]
 symbol = "??0BulletController@th20@@QAE@XZ"
@@ -9378,13 +9378,13 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG79800", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG79801", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
 [units.bullet_pool_destroy]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletPool::~BulletPool"]
 symbol = "??1BulletPool@th20@@QAE@XZ"
@@ -9400,7 +9400,7 @@ relocations = [
 
 [units.bullet_controller_disable]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::disable"]
 symbol = "?disable@BulletController@th20@@UAEXXZ"
@@ -9416,7 +9416,7 @@ relocations = [
 
 [units.bullet_controller_count]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::count"]
 symbol = "?count@BulletController@th20@@QAEHXZ"
@@ -9427,7 +9427,7 @@ relocations = [
 
 [units.bullet_select_context]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::select_context"]
 symbol = "?select_context@BulletController@th20@@QAEXH@Z"
@@ -9440,7 +9440,7 @@ relocations = [
 
 [units.process_bullet_controller]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::bullet_controller"]
 symbol = "?bullet_controller@th20@@YAPAUBulletController@1@H@Z"
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117645", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117646", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117646", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117647", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117647", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117648", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117648", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117649", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16563,7 +16563,7 @@ relocations = [
 
 [units.bullet_controller_set_vector_4c]
 source = "src/BulletController.cpp"
-object = "build/core180-canonical/BulletController.obj"
+object = "build/core185-canonical/BulletController.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::set_vector_4c"]
 symbol = "?set_vector_4c@BulletController@th20@@QAEXMM@Z"
@@ -16673,3 +16673,14 @@ relocations = [
   { offset = 0xE7, type = "REL32", symbol = "??1?$IntrusiveIterator@VLaser@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 0xFF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-185: real BulletController file owner (native 0x4859B0).
+[units.bullet_controller_animation_file]
+source = "src/BulletController.cpp"
+object = "build/core185-canonical/BulletController.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::BulletController::animation_file"]
+symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ"
+target_address = 0x004859B0
+size = 20
+relocations = []
