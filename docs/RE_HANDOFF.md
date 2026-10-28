@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-216 adds complete 329B/319B native Bullet horizontal reflection with all 30 relocations and 37/37 strict affected replay; CORE/EXACT-214 admits the whole 281B native Bullet reflection and 22B/17B typed helpers (38/38 strict affected replay); CORE/REVIEW-212 corrects real Bullet-list head insertion and the exact 291B caller’s symbol/semantics; CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
+**Checkpoint:** CORE/EXACT-218 closes fourth complete 277B Bullet upper reflection, 36/36 affected native replay; CORE/EXACT-216 adds complete 329B/319B native Bullet horizontal reflection with all 30 relocations and 37/37 strict affected replay; CORE/EXACT-214 admits the whole 281B native Bullet reflection and 22B/17B typed helpers (38/38 strict affected replay); CORE/REVIEW-212 corrects real Bullet-list head insertion and the exact 291B caller’s symbol/semantics; CORE/EXACT-211 adds three fully exact Bullet lifecycle/emitter dependencies (291+54+19B), all 38/38 affected units; CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 active-session commit subjects and **affected-only** replay requirements. This
@@ -46,6 +46,23 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-218 (web) admits complete **277/277 byte** original
+`Bullet::reflect_at_upper_y` at `0x00483150`, all 13 native relocations,
+using the real Bullet/Context and `448.0f / 2.0f` upper-Y native SSE
+comparison (including unordered/NaN behavior) and Angle/position reflection.
+This closes all **four independent horizontal/vertical bounce methods**
+used by the still nonexact **832B** root `0x00482A60`. The existing five
+same-object units still replay byte-exact. All 35 other affected units in six
+`Bullet.hpp`-dependent old objects freshly compile and exact replay:
+**36/36 new plus old affected units, seven cold objects**, no whole-graph
+replay. Only compiler-private Dialogue `$SG` local symbol numbers changed;
+relocation targets are unchanged. See
+[upper-bounce exact evidence](BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md).
+Current authored-exact ledger: **238 functions / 60,961 bytes**. The 832B
+Bullet boundary boss, 3,735B Bullet spawn and 41,967B Enemy root are still
+**source/COFF nonexact**, not partial exact.
+
 
 CORE/EXACT-216 (web) admits **two full original Bullet horizontal bounce
 methods**: `Bullet::reflect_at_right_x` at `0x00483010` (**319/319B**,

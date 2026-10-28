@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact upper Bullet reflection](BULLET_UPPER_REFLECTION_EXACT_RECONSTRUCTION.md) — complete 277B original upper Y mirror, thirteen original relocation anchors, 36/36 affected scoped units, closes the fourth independent bounce direction; native 832B caller remains open.
+
 - [Exact complete left and right Bullet reflections](BULLET_HORIZONTAL_REFLECTION_EXACT_RECONSTRUCTION.md) — 329B and 319B native whole functions, all thirty native relocations, 37/37 affected-only strict replay, original 832B bounding caller remains open.
 
 - [Complete original Bullet vertical reflection and command access](BULLET_REFLECTION_EXACT_RECONSTRUCTION.md) — full 281-byte bounce/reflection with all 13 native relocations, true 22/17-byte command/vector helpers, 38/38 affected-only strict units; original 832-byte update handler remains nonexact.

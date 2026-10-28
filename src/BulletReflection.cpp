@@ -60,3 +60,21 @@ int Bullet::reflect_at_left_x() {
     return 0;
 }
 } // namespace th20
+
+namespace th20 {
+// Complementary full upper Y reflection: original 448-pixel frame offset,
+// command-slot fallback and real unordered native floating boundary rules.
+int Bullet::reflect_at_upper_y() {
+    float upper = context->bullet_controller()->vector_4c_ref().y <= 0.0f
+        ? commands.at(4).vector_18.y
+        : context->bullet_controller()->vector_4c_ref().y;
+    if (position.y < native_448/native_two - upper/native_two) {
+        if (!(commands.at(4).word_3c & 0x10)) {
+            angle = -static_cast<float>(angle);
+            position.y = (native_448 - upper) - position.y;
+        }
+        return 1;
+    }
+    return 0;
+}
+} // namespace th20

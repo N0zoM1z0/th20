@@ -1031,3 +1031,4 @@ th20::BulletExtendedCommands::at,0x0047C680,function
 th20::BulletController::vector_4c_ref,0x00485990,function
 th20::Bullet::reflect_at_right_x,0x00483010,function
 th20::Bullet::reflect_at_left_x,0x00482EC0,function
+th20::Bullet::reflect_at_upper_y,0x00483150,function
