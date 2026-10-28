@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE196 links the genuine byte-exact 474B Laser creator and 75B registration into the same whole Enemy dispatcher host; CORE195 original x86 exactness remains preserved.
+**Checkpoint:** CORE197 adds complete native Enemy 700/701 queued-parameter branches to the same whole-root host; CORE197 native concrete-Laser allocation audit and CORE195 exact creator remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -30,12 +30,38 @@ evidence documents are historical, not competing current status.
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
   is still **not machine-code exact**. Its *single complete-root source draft*
-  covers **130 effective opcode values / 98 primary heads** and passes
-  **42,087 / 42,087** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
+  covers **132 effective opcode values / 100 primary heads** and passes
+  **42,424 / 42,424** `-O2`/UBSan **and** ASan+UBSan whole-root host scenarios
   (ASan `vptr` excluded for unresolved fixture RTTI; leak checks enabled). Do not claim
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE197's further **whole Enemy queued-parameter** integration has now
+added two original primary heads **opcode 700 (269B/59 native instructions/10
+calls)** and **701 (289B/67 instructions/11 calls)**, independently verified
+from the locked PE and case-path catalogue. Both use the real 396B queued
+record/metadata two-pointer COW selector semantics; 700 writes four floats
+across the selected record's true ShotParameters position and metadata
+`field_14`, and 701 writes five integer words to metadata `+0x24..+0x34`.
+Original read order, full state images, COW isolation and earlier partial
+writes on exceptions are checked. **337 added scenarios** include 80 actual
+shared-owner COW copies, 144 first-time owner creation, 64 list growth cases
+and 33 staged exceptions. All previous 42,087 cases remain passing, so the
+active **84-TU entire-root** host passes **42,424/42,424** under both GCC13
+O2/UBSan and O2/ASan+UBSan (only unrelated vptr unavailable, leaks on).
+This new private draft is `.analysis/core197-enemy-dispatch-candidate.cpp`,
+with `.analysis/core197-queued-parameters-host-cases.inc`, full logs and
+SHA-bound `.analysis/core197-enemy-whole-root-proof.json`. Independent native
+originals are `.analysis/core197-native-700-701-audit.json` and complete
+.asm files. [Read opcode 700/701 whole-root evidence](ENEMY_WHOLE_ROOT_700_701_QUEUED_PARAMETERS.md).
+It adds **zero native exact credit** and requires **zero new canonical cold
+replay units**; the unchanged CORE195 **223/223** affected native strict
+unit receipts remain valid. The original 41,967-byte Enemy root stays
+nonexact. This queued-opcode work and the separately labeled CORE197 concrete
+Laser constructor audit are distinct focused source/proof artifacts, not
+competing reconstruction roots.
+
 
 CORE197 independently audits the **nine still-open complete native
 functions** immediately below CORE195's now-exact Laser creator: four
@@ -306,22 +332,24 @@ preserving all **38,241** predecessor tests. See
 
 The most recent **active private** root work is:
 
-- `.analysis/core196-enemy-dispatch-candidate.cpp` — *entire* Enemy root
-  candidate, preserving old 539/555/609–612/702/703 behavior and routing
-  unhooked Laser creation calls to the exact production creator.
-- `.analysis/core196-dispatch-host.cpp`,
-  `.analysis/core196-real-laser-factory-host-cases.inc`,
-  `.analysis/core196-laser-reset-host-cases.inc`,
-  `.analysis/core196-dispatch-host-recipe.json` — 84-TU native-owner host;
-  the corrected reset fixture virtual signature is test-only.
-- `.analysis/core196-dispatch-host.log`,
-  `.analysis/core196-dispatch-host-asan.log`,
-  `.analysis/core196-enemy-whole-root-proof.json` — both sanitizer profiles
-  pass 42,087 cases. Protect `build/core196-dispatch-host` and
-  `build/core196-dispatch-host-asan` plus all five SHA-bound private inputs.
-- Older CORE192/191/188/187/185/183 private source, object, native instruction
-  audits, logs and entire-root proof archives remain protected. Do not
-  erase them or assume they are competing sessions.
+- `.analysis/core197-enemy-dispatch-candidate.cpp` — the current entire
+  41,967-byte Enemy source draft with new 700/701 plus all previous
+  539/555/609–612/702/703 branches, real 474B Laser creator and 75B register.
+- `.analysis/core197-dispatch-host.cpp`,
+  `.analysis/core197-queued-parameters-host-cases.inc`,
+  `.analysis/core197-dispatch-host-recipe.json` — complete 84-TU GCC host
+  retaining all CORE196 original-owner and exception scenarios.
+- `.analysis/core197-dispatch-host.log`,
+  `.analysis/core197-dispatch-host-asan.log`,
+  `.analysis/core197-native-700-701-audit.json`,
+  `.analysis/core197-enemy-whole-root-proof.json` — 42,424/42,424 two-mode
+  host cases, native instruction/call audits and four SHA-bound inputs.
+  Protect both `build/core197-dispatch-host*` binaries and older proof hashes.
+- CORE197's **separate concrete-Laser allocation audit** remains at
+  `.analysis/core197-laser-factory-constructor-frontier.json` and the
+  associated private nonmatching constructor probe, not part of this host.
+  All prior CORE196/192/191/188/187/185/183 proof-bound originals and
+  binary artifacts are protected and must not be discarded.
 
 For recent neighboring work see
 [548 exact FrontInf](ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md),
@@ -333,14 +361,14 @@ For recent neighboring work see
 [517/518 Screen/message](ENEMY_SCREEN_MESSAGE_517_518_RECONSTRUCTION.md),
 [502/503 visibility](ENEMY_VISIBILITY_OPCODE_502_503_RECONSTRUCTION.md)
 and the [whole switch layout](CORE_ENEMY_DISPATCH_LAYOUT.md).
-Original 539, 555, 609–612, **702 and 703** are integrated in the one active
+Original 539, 555, 609–612, **700, 701, 702 and 703** are integrated in the one active
 whole-root candidate (none implies whole-root native exactness). Original 548 was integrated as of CORE181.
 
 ## Next high-value research, including large functions
 
 1. **Continue the same 41,967-byte Enemy Boss function**, preserving CORE183,
    CORE185, CORE187, CORE188, CORE191, CORE192 and CORE196 proof-bound
-   inputs, real Context owners and all **42,087** current dual-sanitizer tests. The original opcode **555** and larger
+   inputs, real Context owners and all **42,424** current dual-sanitizer tests. The original opcode **555** and larger
    shared **609–612** caller are now integrated. Next independently resolve
    native compiler/EH closure for the **396-byte** `0x00498B80` COW and
    **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now

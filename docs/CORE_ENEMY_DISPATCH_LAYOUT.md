@@ -21,6 +21,16 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE197's independent queued-parameter branch integration adds two complete
+original Enemy primary heads, **opcode 700 (269B / 59 native instructions)**
+and **701 (289B / 67 instructions)**. The same whole-root draft now covers
+**132 effective opcode values / 100 native heads**, with 337 new real queue
+record/COW/VM operand scenarios. The current **42,424 / 42,424** O2/UBSan
+and ASan+UBSan complete-root fixture tests pass. No canonical native
+replay was required because no production source changed; the whole
+**41,967-byte Enemy original remains machine-code nonexact**. See
+[complete 700/701 queued-parameter audit](ENEMY_WHOLE_ROOT_700_701_QUEUED_PARAMETERS.md).
+
 CORE196 now executes that exact 474-byte LaserController creator and its
 independently exact 75-byte registration **inside the same complete Enemy
 root host** for original 702/703, while retaining all prior cases.
