@@ -3963,7 +3963,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D4150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D4660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D46E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D47F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D47F0,authored,LaserController,authored,high,"CORE/EXACT-195; docs/LASER_CONTROLLER_CREATE_WHOLE_EXACT_RECONSTRUCTION.md; original 474B game-specific four-variant Laser creation with true 4-entry 16B switch table, native label/globals, 4 allocator/virtual init/registration consumer paths, real intrusivelist registration at exact 0x4C9300; complete 492B comparison with 21 native original relocations and 33 affected TUs/223 whole strict units."
 0x004D49E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D50A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D5310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

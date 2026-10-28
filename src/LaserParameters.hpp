@@ -86,6 +86,7 @@ public:
     std::int32_t cancel_all(std::int32_t mode, std::int32_t argument);
     std::int32_t reset_all_lasers();
     void register_laser(Laser* chosen);
+    std::int32_t create_laser(std::int32_t type, const void* parameters);
 };
 
 LaserController* laser_controller(std::int32_t index);
@@ -125,7 +126,7 @@ public:
     virtual void slot_08() = 0;
     virtual void set_parameter_flag(std::uint32_t) = 0;   // slot 0C
     virtual void slot_10() = 0;
-    virtual void slot_14() = 0;
+    virtual std::int32_t initialize_laser(const void* parameters) = 0; // Native slot +0x14; returns negative on failure
     virtual void slot_18() = 0;
     virtual std::int32_t update() = 0;                    // slot 1C
     virtual std::int32_t draw() = 0;                      // slot 20

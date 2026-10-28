@@ -867,3 +867,4 @@ address,name,module,confidence,evidence
 0x004859B0,th20::BulletController::animation_file,BulletController,high,"CORE/EXACT-185; docs/ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md; 20B real file pointer view, original name inferred"
 0x004AAE10,th20::EnemyController::animation_file,EnemyController,high,"CORE/EXACT-190; docs/ENEMY_RESOURCE_SELECTOR_EXACT_RECONSTRUCTION.md; 151B full four-way native resource selector, stage owner spelling inferred"
 0x004C9300,th20::LaserController::register_laser,LaserController,high,"CORE/EXACT-194; docs/LASER_REGISTRATION_NATIVE_EXACT_RECONSTRUCTION.md; game-specific original Laser list registration, exact complete body, spelling inferred"
+0x004D47F0,th20::LaserController::create_laser,LaserController,high,"CORE/EXACT-195; docs/LASER_CONTROLLER_CREATE_WHOLE_EXACT_RECONSTRUCTION.md; complete four-way native 474B factory, real 4-entry jump table, 21 original relocations, original method name inferred"

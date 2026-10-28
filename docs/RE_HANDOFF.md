@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-194 admits the complete native 75-byte LaserController registration callee; CORE192 whole Enemy 702/703 proof remains intact.
+**Checkpoint:** CORE/EXACT-195 complete 474-byte LaserController creation boss method and its 18-byte compiler switch-table tail, with CORE192 whole Enemy root evidence preserved.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 `gpt-web: ` commit subjects and **affected-only** replay requirements. This
@@ -22,10 +22,10 @@ evidence documents are historical, not competing current status.
   SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
   Do not switch to the Steam-original backup or any other release. See
   [target provenance](TARGET_PROVENANCE.md) and `config/target.toml`.
-- Live ledgers: **6,928** target function candidates, **1,016** source-present
-  mappings, **1,007** physical canonical strict units, **221** confirmed
-  authored exact functions / **57,517** authored exact bytes. The 166 current
-  canonical objects cover **181,890** comparison bytes. **Nine**
+- Live ledgers: **6,928** target function candidates, **1,017** source-present
+  mappings, **1,008** physical canonical strict units, **222** confirmed
+  authored exact functions / **57,991** authored exact bytes. The 167 current
+  canonical objects cover **182,382** comparison bytes. **Nine**
   source-present whole-function mappings remain nonexact. These are not a
   whole-game completion percentage; see generated [progress](PROGRESS.md).
 - The **41,967-byte** native `EnemyState::execute_opcode()` at `0x0048C010`
@@ -37,13 +37,42 @@ evidence documents are historical, not competing current status.
 
 ## Latest work to resume
 
+CORE/EXACT-195 reconstructs the **entire 474-byte** original
+`LaserController::create_laser` at `0x004D47F0`. Its real 4-entry native
+switch table at `0x004D49CC`, original 2-byte `66 90` alignment, four
+separate 92-byte allocator call targets, signed count/handle gates, true
+vtable `+0x14` integer-returning initializer and previously exact 75-byte
+LaserController registration now compile from natural maintained C++20
+(`src/LaserFactory.cpp`, corrected `LaserParameters.hpp` and four unresolved
+concrete allocator interfaces in `DiagnosticAllocator.hpp`). Canonical unit
+`laser_controller_create_laser` strictly matches **474/474 native function
+bytes** and **492/492 full compiler-contribution bytes** with **all 21
+original native relocations**, *including all four table entries*, under
+locked MSVC19.44 x86. The actual header closure selects **33 provider
+sources / 223 canonical units**. Only these 33 objects were cold-compiled,
+and every one of **223/223 complete prior/new units** strictly replayed
+against the real PE with fresh source/object receipts. Independent complete
+COFF audit found no other code-byte mismatch; 42 internal compiler `$SG`
+source symbol renumbers were reconciled against the **unchanged original
+relocation offsets, target addresses, types and literal bytes**, not invented
+or waived. Complete evidence:
+[474-byte factory and whole switch exact proof](LASER_CONTROLLER_CREATE_WHOLE_EXACT_RECONSTRUCTION.md),
+`.analysis/core195-native-laser-creator-audit.json`,
+`.analysis/core195-223-strict-attested.json` and
+`.analysis/core195-all-42-sg-renames.json`.
+**No full cold replay** was run. This adds **474 authored exact bytes** but
+*does not accept* the four allocator factory bodies or the **41,967-byte**
+Enemy boss root; the last CORE192 40,941-case entire-root private host still
+captures this 474B method and must explicitly integrate the real source.
+
+
 CORE/EXACT-194 reconstructs the **entire genuine native 75-byte**
 `LaserController::register_laser(Laser*)` at `0x004C9300` from real
 `Laser.link+0x8`, `LaserController.active+0x10` and `count+0x28` fields.
 Both native direct calls (`IntrusiveLink::initialize` at `0x0044A670`
 and `IntrusiveList::prepend` at `0x0044A6B0`) were independently
 established; **75/75 original bytes with two relocations** replay exact
-under locked MSVC 19.44 x86. The original still-nonexact **474-byte**
+under locked MSVC 19.44 x86. The now independently byte-exact in CORE195 **474-byte**
 LaserController creator at `0x004D47F0` calls this method at four verified
 sites after allocation/virtual init. The only affected compiler-receipt
 closure is **3 production TUs**, **22/22** complete strict units all passed
@@ -55,8 +84,9 @@ fresh cold build; other providers were not cold-built. Current source:
 `.analysis/core194-native-laser-registration-audit.json` and
 `.analysis/core194-affected-replay.log`; complete evidence at
 [real laser registration exact reconstruction](LASER_REGISTRATION_NATIVE_EXACT_RECONSTRUCTION.md).
-This adds **one authored exact / 75 bytes** but *no native credit for the
-474-byte factory or the 41,967-byte Enemy boss*. CORE192's 40,941 whole-root
+CORE194 added **one authored exact / 75 bytes**; CORE195 subsequently
+accepted the entire separate 474-byte factory. Neither adds native byte
+credit for the 41,967-byte Enemy boss. CORE192's 40,941 whole-root
 scenarios remain protected; they were compiled before the new nonvirtual
 member declaration and do not yet execute the real registration method.
 
@@ -71,8 +101,9 @@ record+metadata pair via writable queued COW, *actual* PMR
 `BulletCommand` copies, type0/type1 distinct layouts, optional
 `integer_argument(1)` on 703, angle normalization and late actual
 `Context::laser_controller`. The original **474-byte** LaserController
-creator at `0x004D47F0` remains an explicit nonexact host boundary,
-**not** a fabricated production method. New **303** complete-root cases
+creator at `0x004D47F0` was an explicit nonexact host boundary in CORE192;
+CORE195 now accepts its **whole native body** separately, but the old host
+still uses the capture until explicitly reintegrated. New **303** complete-root cases
 include 96 COW copies, 96 missing-owner creations, 288 real PMR deep
 copies, 48 operand-retargeted Contexts and 15 exceptions. Both full 82-TU
 O2/UBSan and ASan+UBSan hosts pass **40,941/40,941** scenarios (only vptr
@@ -270,9 +301,11 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
    shared **609–612** caller are now integrated. Next independently resolve
    native compiler/EH closure for the **396-byte** `0x00498B80` COW and
    **305-byte** `0x00498D10` ensure-only selectors (semantic pair ABI now
-   tested). The next large concrete dependency is the **474-byte native
-   LaserController creator `0x004D47F0`** consumed by 702/703; its exact
-   **75-byte registration** callee is now separately fully reconstructed, with four
+   tested). The **474-byte native LaserController creator `0x004D47F0`**
+   and its 75-byte registration callee are now **both exactly reconstructed**.
+   Integrate the complete production creator into the same whole-root host
+   and separately attack its **four unresolved 92-byte concrete Laser
+   allocators / virtual initializer bodies**, with four
    concrete beam factory cases, virtual init and lifetime. The **151-byte**
    `EnemyController::animation_file` remains exact and already integrated;
    also attack the still undefined Stage getter `0x004AADF0` and
@@ -303,12 +336,13 @@ whole-root candidate (none implies whole-root native exactness). Original 548 wa
 ## Protected data and fast scoped verification
 
 `config/match-units.toml` is the **only** current canonical object inventory,
-not a static build-directory list copied from old handoffs. As of CORE194 it
-selects **166** actual `build/**/*.obj` files with **166 sibling
+not a static build-directory list copied from old handoffs. As of CORE195 it
+selects **167** actual `build/**/*.obj` files with **167 sibling
 `.receipt.json` files**. Their distribution is core141 66, core142 6,
 core145 3, core149 1, core151 1, core154 5, core154-v2 1, core156 1,
 core158 10, core163 19, core164 8, core166 2, core167 1, core174 2,
-core178 9, core180 26, **core182 2, core185 1, core190 1 and core194 1**. Old probe objects/receipts may be
+core178 9, core180 26, **core182 2, core185 1, core190 1, core194 1
+and core195 1**. Old probe objects/receipts may be
 retained as historical evidence but are not current acceptance units. Also
 preserve the twenty historical unfinished QueryProtocol/sound/Alignment
 products documented in
@@ -316,6 +350,11 @@ products documented in
 [sound protocol](SOUND_PROTOCOL_RECONSTRUCTION.md) and
 [Animation pool](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md).
 
+**For CORE195**, the changed `LaserParameters.hpp` virtual signature
+and new `DiagnosticAllocator.hpp` concrete factory interfaces affect exactly
+**33 receipt-derived canonical providers / 223 units**. Every one of those
+33 sources was rebuilt under its own pinned flags and all **223/223** full
+native strict unit comparisons passed. No unfiltered cold replay was run.
 **For CORE194**, new real `LaserController::register_laser` and
 `LaserParameters.hpp` affect **3 provider objects / 22 native units**;
 **22/22** strict cold replays pass, other source providers not rebuilt.
@@ -329,7 +368,9 @@ semantic hosts (and CORE187's additional AddressSanitizer variant), not any
 native cold replay unit. Do **not** invoke whole-graph cold replay, Ghidra, MSVC or
 full CI just for an evidence handoff. Verify `git status`, `git diff --check`,
 protected product hashes and links; reuse the CORE185 native canonical
-replay and the current CORE192 full-root semantic host receipts. The CORE190
+replay and the still-current CORE192 full-root semantic host receipts. CORE195's
+474-byte exact Laser creator has not yet replaced CORE192's captured
+creation boundary; do not claim those historical tests execute it. The CORE190
 native-exact selector is linked into this host, but its Stage getter and
 actual renderer/VM producer remain separate private boundaries. To resume actual RE, inspect all dirty work (the user owns
 all modifications), review the specific native instructions with the attested

@@ -21,6 +21,18 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE/EXACT-195 now closes the **entire 474-byte** native
+`LaserController::create_laser` at `0x004D47F0`, consumed by opcode 702/703.
+The accepted source matches **474/474 original instruction bytes** plus the
+compiler's complete 2-byte alignment and 16-byte 4-entry switch table:
+**492/492** native original compared bytes and **21/21** independently
+grounded relocation targets. All **223/223** exact native units from the
+33 actual header-affected source providers passed strict scoped cold replay.
+Four concrete type factories and the **41,967-byte** whole Enemy boss remain
+open. CORE192's older 40,941-case host still captures this newly exact
+callee and must be updated explicitly before claiming it executes there.
+See [the complete LaserController creation native proof](LASER_CONTROLLER_CREATE_WHOLE_EXACT_RECONSTRUCTION.md).
+
 CORE192 extends the same complete-root source candidate with **two large,
 distinct native Laser shot cases**: opcode702 (682B/153 instructions) and
 opcode703 (787B/176 instructions). Their real typed Laser temporary owners,

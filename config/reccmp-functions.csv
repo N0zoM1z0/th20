@@ -1015,3 +1015,4 @@ th20::LaserController::reset_all_lasers,0x004D2430,function
 th20::BulletController::animation_file,0x004859B0,function
 th20::EnemyController::animation_file,0x004AAE10,function
 th20::LaserController::register_laser,0x004C9300,function
+th20::LaserController::create_laser,0x004D47F0,function

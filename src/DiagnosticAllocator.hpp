@@ -8,8 +8,16 @@ namespace th20 {
 
 // Native startup allocates eight bytes: an observed zero word followed by the
 // real four-slot PMR resource. The word's meaning and startup body remain open.
+class Laser;
 class DiagnosticAllocator {
 public:
+    // Four original 92-byte native concrete Laser factory boundaries.
+    // Only the ABI/call targets are established here; their C++ bodies and
+    // the four large concrete beam constructors remain open.
+    Laser* allocate_laser_line(const char* source_label);
+    Laser* allocate_laser_infinite(const char* source_label);
+    Laser* allocate_laser_beam(const char* source_label);
+    Laser* allocate_laser_curve(const char* source_label);
     DiagnosticAllocator();
     ~DiagnosticAllocator();
 
