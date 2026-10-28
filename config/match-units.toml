@@ -18954,7 +18954,7 @@ relocations = [
   { offset = 0x65, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 0x6D, type = "DIR32", symbol = "?process_bullet_random@th20@@3UGameRandom@1@A", target = 0x005BA4A8 },
   { offset = 0x72, type = "REL32", symbol = "?next@GameRandom@th20@@QAEIXZ", target = 0x00423EE0 },
-  { offset = 0x92, type = "REL32", symbol = "?queue_effect@EffectInfo@th20@@QAEPAUEffectRequest@2@HHABUEffectParameters@2@H@Z", target = 0x0049DC60 },
+  { offset = 0x92, type = "REL32", symbol = "?queue_effect@EffectInfo@th20@@QAEXHHABUEffectParameters@2@H@Z", target = 0x0049DC60 },
   { offset = 0x9A, type = "REL32", symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z", target = 0x00464230 },
   { offset = 0xA5, type = "REL32", symbol = "?stone_enemy_controller@th20@@YAPAUStoneEnemyController@1@XZ", target = 0x00513DD0 },
   { offset = 0xAC, type = "REL32", symbol = "?byte_b0_value@StoneEnemyController@th20@@QAEEXZ", target = 0x00485A40 },
@@ -18979,4 +18979,18 @@ target_address = 0x004FE8D0
 size = 87
 relocations = [
   { offset = 0x3F, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+# CORE/EXACT-352: independently original 143-byte EffectInfo request queue.
+[units.effect_info_queue_effect]
+source = "src/EffectQueue.cpp"
+object = "build/core352-canonical/EffectQueue.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EffectInfo::queue_effect"]
+symbol = "?queue_effect@EffectInfo@th20@@QAEXHHABUEffectParameters@2@H@Z"
+target_address = 0x0049DC60
+size = 143
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "??A?$array@UEffectRequest@th20@@$0EAA@@std@@QAEAAUEffectRequest@th20@@I@Z", target = 0x00449490 },
+  { offset = 0x75, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
 ]

@@ -35,7 +35,8 @@ struct Animation;
 struct EffectRequest {
     std::int32_t type;
     const EffectParameters* original_parameters;
-    Animation* animation;
+    // Native EffectRequest+8 is the effect creation policy, not an Animation*.
+    std::int32_t policy;
     std::int32_t delay;
     EffectParameters parameters;
     EffectRequest();

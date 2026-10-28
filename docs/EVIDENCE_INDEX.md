@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Complete native 143B EffectInfo request queue](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md) — real 1024-entry ×72-byte scheduler, original 56B payload memcpy and two independent E8 calls, corrected `void`/policy/delay ABI; 30/30 affected-only strict units in 9 objects.
+
 - [Exact 87B PlayerRecord graze counter addition and clamp](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md) — entire 26-instruction native counter, 32-bit wrap plus signed std::clamp, independent original +0x3F call; 59/59 PlayerRecord scoped strict units in one rebuilt object.
 
 - [Exact complete 332B Player bullet graze feedback](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md) — full 105 original instructions and 17 independent E8 calls / three PE HIGHLOW references; natural effects, reward and sound handling; 307/307 affected-only strict units across 42 rebuilt objects.

@@ -1123,3 +1123,4 @@ th20::Player::rebuild_option_animations,0x004FACA0,function
 th20::clear_animation_handle_value,0x0049DA50,function
 th20::Player::record_bullet_graze,0x004F8B90,function
 th20::PlayerRecord::add_field_e4,0x004FE8D0,function
+th20::EffectInfo::queue_effect,0x0049DC60,function

@@ -141,3 +141,14 @@ nonoverlapping original boundaries. See the
 [complete original counter proof](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md).
 The original EffectInfo queue operation and EnemyController predicate remain
 separately open; the graze caller's exact status does not close them.
+
+## Later CORE/EXACT-352 callee acceptance
+
+The separate complete **143-byte** EffectInfo scheduled request queue at
+`0x0049DC60` is now also strict native exact, with its real `void`
+return ABI, original 1024/72-byte queue shape, and corrected policy and
+delay request fields. The earlier description of this callee as unaccepted
+is superseded. Read the independent
+[143-byte queue proof](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md).
+The 332-byte Player graze caller was recompiled with the corrected `void`
+relocation symbol and remains 332/332 strict exact.
