@@ -1155,3 +1155,5 @@ th20::SoundInf::request_effect
 th20::AnimationPoolOwner::interrupt_handle
 th20::AnimationHandle::interrupt
 th20::InputInf::for_view
+th20::InputButtonState::InputButtonState
+th20::InputDevice::InputDevice

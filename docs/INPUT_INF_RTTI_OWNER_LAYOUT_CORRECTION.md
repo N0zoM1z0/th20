@@ -138,3 +138,28 @@ to the already-accepted game total. The canonical provider count
 rises by one solely because the real input owner now has its own
 translation unit. No full-repository cold replay or linked-game
 runtime claim is made.
+
+
+## Subsequent CORE/EXACT-463 two genuine InputInf child constructors
+
+The constructor-attested `InputInf+0x20` array
+has now gained both real whole native element
+constructors as separate strict exact game functions:
+`InputButtonState::InputButtonState()`
+at `0x0041F9B0` (**340/340B**, 81 original
+instructions, six original CRT memset E8 fields);
+and `InputDevice::InputDevice()` at
+`0x0041FCB0` (**102/102B**, 28 instructions,
+a true E8 to the ButtonState ctor and a raw
+0x100-byte memset). The two complete original
+functions total **442 new disjoint native exact bytes**.
+They use the class layout proven above, with
+source-derived constructor interfaces and all
+eight independently attested native PE E8 targets.
+The full native **261B InputInf constructor** is
+still separate and **NONEXACT**, with no inferred
+byte credit. Real previous `InputState.hpp`
+receipt closure passed **15/15 strict native
+units in two cold source objects**; no
+unfiltered full replay was run.
+[Full original input child-constructor proof](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md).

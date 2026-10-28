@@ -19824,3 +19824,37 @@ symbol = "?for_view@InputInf@th20@@QAEPAUInputButtonState@2@H@Z"
 target_address = 0x00498FB0
 size = 26
 relocations = []
+
+# CORE/EXACT-463: original whole 340B constructor called by
+# original InputInf 261B; complete E8 refs independently decoded.
+[units.input_button_state_ctor]
+source = "src/InputState.cpp"
+object = "build/core141-canonical/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputButtonState::InputButtonState"]
+symbol = "??0InputButtonState@th20@@QAE@XZ"
+target_address = 0x0041F9B0
+size = 340
+relocations = [
+  { offset = 0x51, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x6A, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x83, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x9B, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0xB4, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x146, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]
+
+# CORE/EXACT-463: original whole 102B constructor called by
+# original InputInf 261B; complete E8 refs independently decoded.
+[units.input_device_ctor]
+source = "src/InputState.cpp"
+object = "build/core141-canonical/InputState.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
+functions = ["th20::InputDevice::InputDevice"]
+symbol = "??0InputDevice@th20@@QAE@XZ"
+target_address = 0x0041FCB0
+size = 102
+relocations = [
+  { offset = 0x35, type = "REL32", symbol = "??0InputButtonState@th20@@QAE@XZ", target = 0x0041F9B0 },
+  { offset = 0x4B, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]

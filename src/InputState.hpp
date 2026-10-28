@@ -6,8 +6,10 @@ struct IDirectInputDevice8W;
 namespace th20 {
 
 // REF-006: retained words are live input history copied by the frame owner.
-// Construction, polling and the enclosing controller are not reconstructed.
+// The two whole native input constructors are exact; device polling and
+// complete manager initialization remain independently unfinished.
 struct InputButtonState {
+    InputButtonState();
     std::uint32_t current, previous, repeat8, repeat12, pressed, released;
     std::array<std::uint32_t, 32> repeat8_count, repeat12_count;
     std::array<std::uint32_t, 32> retained_118, held_frames, retained_218;
@@ -31,6 +33,7 @@ static_assert(offsetof(InputButtonState, held8) == 0x2b0);
 static_assert(offsetof(InputButtonState, replay_current) == 0x29c);
 
 struct InputDevice {
+    InputDevice();
     std::int32_t kind, logical_index;
     IDirectInputDevice8W* direct_input;
     std::int32_t xinput_index;

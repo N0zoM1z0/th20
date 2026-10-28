@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-455 RTTI-corrected InputInf owner, original constructor layout.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-463 complete InputButtonState/InputDevice native constructors.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,157** |
-| Canonical strict native units | **1,158** |
+| Source-present mappings, all origins | **1,159** |
+| Canonical strict native units | **1,160** |
 | Unique canonical object providers | **230**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **383**, covering **117,886 native bytes** |
+| Exact game-authored whole functions | **385**, covering **118,328 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputButtonState::InputButtonState` / `InputDevice::InputDevice` | `0x0041F9B0` / `0x0041FCB0` | **340 / 102** | [complete genuine input state/device constructor ABI and original PE references](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) |
 | `InputInf::for_view` | `0x00498FB0` | **26 (existing)** | [immutable PE RTTI InputInf, 261B original constructor and real input owner](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md) |
 | `AnimationPoolOwner::interrupt_handle` / `AnimationHandle::interrupt` | `0x0044EE90` / `0x0044EF90` | **246 / 35** | [whole native pool/handle animation child-interrupt protocol](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md) |
 | `SoundInf::request_effect` | `0x00426D70` | **320** | [whole sound request queue, channel cooldown, original PE volume table](SOUND_EFFECT_REQUEST_QUEUE_320_EXACT_RECONSTRUCTION.md) |
@@ -739,6 +740,41 @@ the enclosing frame still has **66/67**
 exact original direct-call targets. No
 whole-repository cold replay.
 [Immutable RTTI/InputInf layout proof](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md).
+
+CORE/EXACT-463 independently closes **two whole
+game-owned original native input constructors**
+in the true `InputInf` construction chain:
+**340B/81-instruction**
+`InputButtonState::InputButtonState` at
+`0x0041F9B0`, and **102B/28-instruction**
+`InputDevice::InputDevice` at
+`0x0041FCB0`. Both are complete source-owned
+i386 exact functions with **all eight original
+PE E8 fields** targeting actual CRT memset
+and the 340B child ctor. The 340B method
+value-initializes five separate 128B arrays
+and performs the genuine final four-byte
+state reset; 102B initializes the real
+0x3D4-byte device and its 256B raw input
+region, then clears its tail state.
+The original **261B `InputInf::InputInf`**
+at `0x0041F8A0` actually builds twelve
+of these devices at +0x20, but the entire
+manager ctor itself remains **NONEXACT**.
+Previous actual `InputState.hpp` compiler
+receipt closure had only **two source owners
+and 13 strict native units**. Adding two
+complete constructors in the same existing
+`InputState.cpp` object gives **15/15 strict
+native units in two cold objects**,
+without any global cold replay. The exact
+26B `InputInf::for_view` and existing
+583B input update/475B replay update
+remain full strict exact. Authored total
+is **385 complete native functions /
+118,328 original bytes**, canonical
+units **1,160** in 230 physical providers.
+[Both entire original native input constructors](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

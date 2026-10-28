@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Whole original 340B InputButtonState and 102B InputDevice constructors — strict exact](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) — 81+28 entire native instructions, six independently original CRT memset calls plus genuine child-constructor/raw-input calls, 442 nonoverlapping exact bytes; 15/15 actual InputState.hpp affected strict units in 2 cold source objects. Their 261B InputInf owner ctor remains separately open.
+
 - [RTTI-proven InputInf ownership of the same whole-exact 26B Player view lookup](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md) — corrected original RTTI name, 261B constructor, true TaskInfo + 12 native 0x3D4 InputDevices + two pointers at +0x2E30 + four bindings at +0x2E38; migrated the existing 26/26 strict unit to its real owner with **zero additional native credit**, 13/13 actually affected units in two cold objects.
 
 - [Two complete native AnimationHandle forwarders — 45B validity and 26B position](ANIMATION_HANDLE_PLAYER_FRAME_71_EXACT_RECONSTRUCTION.md) — actual resolve()/set_position call targets independently attested from original PE (two E8 fields), 71/71 whole original bytes, 27 instructions; 473/473 strict native units in 106 source objects from prior AnimationHandle.hpp compiler receipts. Player 3,111B parent stays NONEXACT.

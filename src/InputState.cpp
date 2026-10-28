@@ -1,5 +1,26 @@
 #include "InputState.hpp"
+#include <cstring>
+
 namespace th20 {
+
+// Complete original 340-byte input button-state constructor. The five
+// 128-byte counter arrays and final current-word reset are actual native
+// operations, rather than compiler-padding or synthetic state changes.
+InputButtonState::InputButtonState()
+    : current(0), previous(0), repeat8(0), repeat12(0),
+      pressed(0), released(0),
+      repeat8_count{}, repeat12_count{}, retained_118{},
+      held_frames{}, retained_218{},
+      field_298(0), replay_current(0), replay_previous(0),
+      replay_repeat(0), replay_pressed(0), replay_released(0),
+      held8(0), retained_2b4(0), last_input_kind(0),
+      suppress_previous(0) {
+    std::memset(&current, 0, sizeof current);
+}
+InputDevice::InputDevice()
+    : kind(0), logical_index(0), direct_input(nullptr), xinput_index(0),
+      buttons(), raw{}, retained_3d0(0) {}
+
 std::uint32_t InputButtonState::current_bits(std::uint32_t mask) const {
     return current & mask;
 }
