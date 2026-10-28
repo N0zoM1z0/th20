@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
+**Checkpoint:** CORE/EXACT-210 adds the entire exact 339-byte Bullet firing boss with 11 relocations and 36/36 affected strict units; CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 active-session commit subjects and **affected-only** replay requirements. This
@@ -46,6 +46,20 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-210 (web) admits **the full original 339-byte**
+`BulletController::fire` at `0x00481780`: 103 original instructions,
+11 independently anchored canonical relocations, natural C++20 signed nested
+shot loops with by-value metadata ownership and early-stop/sound paths.
+**339/339 original bytes exact** after canonical replay. Freshly recompiled
+all **35 old Bullet.hpp-dependent units**, which remain exact after only
+compiler-private `$SG` symbol labels shifted; total **36/36 exact across
+seven affected cold objects** and no whole-graph replay.
+The real **3,735B** `BulletController::emit` at `0x004818E0` and the
+**41,967B** Enemy opcode boss at `0x0048C010` remain nonexact. Focused
+[evidence](BULLET_FIRE_EXACT_RECONSTRUCTION.md). Current admitted authored
+exact totals: **229 functions / 59,352 bytes**.
+
 
 CORE/EXACT-209 (web) admits complete native `Player::position_ref` at
 `0x00460850` (19B) and `Player::direction_to` at `0x004FF350` (157B).

@@ -30,6 +30,10 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 - [Mesh resource access and ANM creation origins](MESH_RESOURCE_ORIGIN_AUDIT.md) — five existing exact helpers and the complete source-absent producer.
 - [Mesh flag ownership, exact grid creation and origin review](MESH_FLAGS_EXACT_RECONSTRUCTION.md)
 
+## Bullet firing
+
+- [Exact entire Bullet firing boss](BULLET_FIRE_EXACT_RECONSTRUCTION.md) — native complete 339B/103-instruction shot traversal and owned metadata, all eleven original relocations, 36/36 affected strict units; genuine downstream 3,735B emitter and 41,967B Enemy root remain open.
+
 ## ECL and Enemy
 
 - [Core ECL and Enemy dispatch reconstruction](CORE_ECL_DISPATCH_RECONSTRUCTION.md)
