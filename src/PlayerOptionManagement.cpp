@@ -16,6 +16,31 @@ void Player::set_option_field_fc(std::int32_t value) {
     for (auto& option : secondary_options) option.field_fc = value;
 }
 
+// Original two-bit Player movement-mode getter at 0x004FF870.
+std::uint32_t Player::movement_mode() const {
+    return entity_flags.mode_6_view.mode;
+}
+
+// The native 75-byte setter returns the actual *assigned bitfield value*.
+// Returning the assignment expression preserves MSVC's original single
+// temporary state word, rather than reloading the field or fabricating data.
+std::uint32_t Player::set_movement_mode(std::uint32_t value) {
+    timer_2070 = 0;
+    return entity_flags.mode_6_view.mode = value;
+}
+
+// The original 90-byte method updates only the twelve secondary options;
+// the previously exact set_option_field_fc updates both option arrays.
+void Player::set_secondary_option_field_fc(std::int32_t value) {
+    auto& items = secondary_options;
+    auto* current = items.begin();
+    auto* end = items.end();
+    for (; current != end; ++current) {
+        PlayerOption* entry = current;
+        entry->field_fc = value;
+    }
+}
+
 template<class T, unsigned Count>
 T* PlayerValues<T,Count>::begin() { return values; }
 template<class T, unsigned Count>

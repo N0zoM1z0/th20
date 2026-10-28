@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-417 full 1,081-byte Player option-frame boss.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-420 complete Player movement-mode and secondary-option methods.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,143** |
-| Canonical strict native units | **1,145** |
+| Source-present mappings, all origins | **1,146** |
+| Canonical strict native units | **1,148** |
 | Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **370**, covering **116,700 native bytes** |
+| Exact game-authored whole functions | **373**, covering **116,888 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::movement_mode` / `set_movement_mode` / `set_secondary_option_field_fc` | `0x004FF870` / `0x004FFF10` / `0x004FB340` | **23 / 75 / 90** | [whole Player mode and secondary option native ABI](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md) |
 | `Player::update_option_frame` / `IntPoint::to_vector3` | `0x004FA860` / `0x004FEE00` | **1,081 / 70** | [entire Player option gameplay boss and true ECX callback ABI](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md) |
 | `Five native IntPoint option-coordinate operations` | `0x004F5700` / `0x004F57C0` / `0x004F5890` / `0x004F5920` / `0x004F70F0` | **49 / 45 / 48 / 45 / 65** | [whole original signed/wrapping coordinate dependencies](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) |
 | `DamageHandle::resolve` | `0x004C0E10` | **67** | [complete safe Identifier32 bit-cast and real Hit controller lookup](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md) |
@@ -466,6 +467,33 @@ Player::frame_changed** enclosing caller remains
 independently NONEXACT. No unfiltered full cold
 replay. [Independent entire Player option frame
 proof](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-420 closes **three complete Player
+mode and secondary-option methods** called from the
+still-open 3,111B Player frame boss: **23B**
+`movement_mode` at `0x004FF870`, **75B**
+`set_movement_mode` at `0x004FFF10`, and
+**90B** `set_secondary_option_field_fc` at
+`0x004FB340`. The true two-bit mode lives in
+Player flags bits 6..7; the native setter resets
+`timer_2070` then **returns the bit-field
+assignment expression** (not a separate reload),
+reproducing all 75 native bytes naturally.
+The exact 90B method walks the real 12-entry
+`secondary_options` only, using the native
+begin/end pair (the original begin body is folded
+with the existing 14B Motion accessor). All
+65 original instructions and **three independent
+native PE E8 call fields** are strict exact.
+Real old `Player.hpp`/`PlayerStorage.hpp`
+receipt closure selects 28 source providers with
+81 exact units; adding three functions in the
+**same existing canonical object** produces
+**84/84 strictly original exact units across
+28 serialized cold objects**. No full cold
+replay, no duplicate physical original byte
+credit, and the 3,111B parent remains nonexact.
+[Complete 188-byte game native proof](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

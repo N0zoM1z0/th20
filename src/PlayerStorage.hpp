@@ -20,6 +20,8 @@ struct PlayerWordFlags {
         std::uint32_t bits;
         struct { std::uint32_t lower:10, bit_10:1, upper:21; } fields;
         struct { std::uint32_t bit0:1, remaining:31; } bit0_view;
+        // Native bits 6..7 store the current two-bit Player movement mode.
+        struct { std::uint32_t low6:6, mode:2, high24:24; } mode_6_view;
     };
 };
 static_assert(sizeof(PlayerWordFlags) == 4);

@@ -248,3 +248,26 @@ not a claim about invalid resource safety,
 whole-game executable linkage, or the still-open
 3,111-byte parent Player frame controller and
 41,967-byte Enemy ECL dispatcher.
+
+
+## Subsequent CORE/EXACT-420 Player frame mode and secondary-option closure
+
+The still-open complete 3,111-byte enclosing Player frame
+caller additionally uses three whole game-owned methods
+now strict exact: **23B** `movement_mode`
+at `0x004FF870`, **75B** `set_movement_mode`
+at `0x004FFF10`, and **90B**
+`set_secondary_option_field_fc` at `0x004FB340`.
+These are independent original native source bodies
+with all **three original PE E8 references** attested.
+The two-bit movement setter's native 75B code relies
+on returning the genuine bit-field assignment
+expression, and the secondary delay setter iterates
+12 real 300-byte options. They do **not** alter or
+recredit the already exact 1,081-byte per-option frame.
+The actual previous two-header receipt closure passed
+**84/84 native strict units across 28 cold objects**,
+without any global full replay. The 3,111-byte
+enclosing Player frame remains separately open.
+See the [three Player mode and secondary-option whole
+native proofs](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md).

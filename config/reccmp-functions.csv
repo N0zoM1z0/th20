@@ -1142,3 +1142,6 @@ th20::IntPoint::operator/(int) const,0x004F5920,function
 th20::IntPoint::operator+=(const IntPoint&),0x004F70F0,function
 th20::Player::update_option_frame,0x004FA860,function
 th20::IntPoint::to_vector3,0x004FEE00,function
+th20::Player::movement_mode,0x004FF870,function
+th20::Player::set_movement_mode,0x004FFF10,function
+th20::Player::set_secondary_option_field_fc,0x004FB340,function

@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82252", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82272", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -19619,4 +19619,46 @@ size = 70
 relocations = [
   { offset = 0x12, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
   { offset = 0x29, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+]
+
+# CORE/EXACT-420: whole original 23B Player movement/option
+# gameplay source with original independent PE E8 / HIGHLOW references.
+[units.player_movement_mode_get]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::movement_mode"]
+symbol = "?movement_mode@Player@th20@@QBEIXZ"
+target_address = 0x004FF870
+size = 23
+relocations = [
+]
+
+# CORE/EXACT-420: whole original 75B Player movement/option
+# gameplay source with original independent PE E8 / HIGHLOW references.
+[units.player_movement_mode_set]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::set_movement_mode"]
+symbol = "?set_movement_mode@Player@th20@@QAEII@Z"
+target_address = 0x004FFF10
+size = 75
+relocations = [
+  { offset = 0x15, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]
+
+# CORE/EXACT-420: whole original 90B Player movement/option
+# gameplay source with original independent PE E8 / HIGHLOW references.
+[units.player_secondary_option_field_fc]
+source = "src/PlayerOptionManagement.cpp"
+object = "build/core320-canonical/PlayerOptionManagement.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::set_secondary_option_field_fc"]
+symbol = "?set_secondary_option_field_fc@Player@th20@@QAEXH@Z"
+target_address = 0x004FB340
+size = 90
+relocations = [
+  { offset = 0x18, type = "REL32", symbol = "?begin@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEPAUPlayerOption@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x23, type = "REL32", symbol = "?end@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEPAUPlayerOption@2@XZ", target = 0x004FCE80 },
 ]

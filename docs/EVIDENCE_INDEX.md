@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Three exact whole Player mode/secondary-option functions, 188 original bytes](PLAYER_MOVEMENT_MODE_188_EXACT_RECONSTRUCTION.md) — complete 23B getter, 75B bit-field assignment/Timer mode setter, 90B twelve-entry secondary option delay update; three original E8 fields and 84/84 actual affected strict units in 28 cold source objects. The 3,111B Player frame caller remains open.
+
 - [Exact whole 1,081B Player option-frame gameplay boss and 70B fixed-to-Vector3 conversion](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md) — full 325+20 original i386 instructions, 42 independently original PE E8/HIGHLOW fields, real PlayerOption member-function callback pointers, chain-return IntPoint interpolation; 107/107 true header-affected strict units in 32 cold objects. The separate 3,111B Player frame boss remains open.
 
 - [Five complete exact native IntPoint option-coordinate methods, 252B](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) — whole 49/45/48/45/65B originals, typed two-lane signed/wrapping math, unique 8-byte by-value operator+= return ABI, three independent original E8 calls to IntPoint constructor; 105/105 actually affected Rectangle.hpp strict units across 31 cold sources. The full 1,081B Player option-frame caller remains nonexact.

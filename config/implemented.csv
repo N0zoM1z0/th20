@@ -1141,3 +1141,6 @@ th20::IntPoint::operator/(int) const
 th20::IntPoint::operator+=(const IntPoint&)
 th20::Player::update_option_frame
 th20::IntPoint::to_vector3
+th20::Player::movement_mode
+th20::Player::set_movement_mode
+th20::Player::set_secondary_option_field_fc

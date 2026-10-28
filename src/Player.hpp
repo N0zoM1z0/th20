@@ -88,6 +88,10 @@ public:
     std::int32_t update_option_frame(PlayerOption* option);
     std::int32_t active_option_count() const;
     void set_option_field_fc(std::int32_t value);
+    // Original complete Player movement bits and secondary option frame delay.
+    void set_secondary_option_field_fc(std::int32_t value);
+    std::uint32_t movement_mode() const;
+    std::uint32_t set_movement_mode(std::uint32_t mode);
     void enter_special_state();
     void clear_entity_flag2();
     IntPoint& fixed_position_ref();
