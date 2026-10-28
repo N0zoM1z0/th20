@@ -64,6 +64,8 @@ struct Bullet {
     void select_context(std::int32_t index);
     void deactivate();
     std::int32_t reflect_at_y_limit();
+    std::int32_t reflect_at_right_x();
+    std::int32_t reflect_at_left_x();
 };
 struct BulletPool {
     Bullet slots[2001];

@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact complete left and right Bullet reflections](BULLET_HORIZONTAL_REFLECTION_EXACT_RECONSTRUCTION.md) — 329B and 319B native whole functions, all thirty native relocations, 37/37 affected-only strict replay, original 832B bounding caller remains open.
+
 - [Complete original Bullet vertical reflection and command access](BULLET_REFLECTION_EXACT_RECONSTRUCTION.md) — full 281-byte bounce/reflection with all 13 native relocations, true 22/17-byte command/vector helpers, 38/38 affected-only strict units; original 832-byte update handler remains nonexact.
 
 - [Bullet emitter dependency audit and corrected head insertion](BULLET_EMIT_FRONTIER_AUDIT.md) — original 3,735B boss dependency map, correction of an exact caller’s append/prepend semantic error, 338B Animation script setup structural-only probe and the unresolved original Animation allocator path.

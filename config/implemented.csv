@@ -1028,3 +1028,5 @@ th20::BulletController::free_list
 th20::Bullet::reflect_at_y_limit
 th20::BulletExtendedCommands::at
 th20::BulletController::vector_4c_ref
+th20::Bullet::reflect_at_right_x
+th20::Bullet::reflect_at_left_x
