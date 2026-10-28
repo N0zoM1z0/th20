@@ -18994,3 +18994,19 @@ relocations = [
   { offset = 0x1A, type = "REL32", symbol = "??A?$array@UEffectRequest@th20@@$0EAA@@std@@QAEAAUEffectRequest@th20@@I@Z", target = 0x00449490 },
   { offset = 0x75, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
 ]
+
+# CORE/EXACT-355: whole original 123-byte EnemyController graze reward predicate.
+# Original three E8 targets independently decoded from the immutable PE.
+[units.enemy_graze_reward_active]
+source = "src/EnemyGrazeReward.cpp"
+object = "build/core355-canonical/EnemyGrazeReward.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyController::graze_reward_active"]
+symbol = "?graze_reward_active@EnemyController@th20@@QAE_NXZ"
+target_address = 0x0049BE20
+size = 123
+relocations = [
+  { offset = 0x26, type = "REL32", symbol = "?end@?$array@UEnemyHandle@th20@@$0BA@@std@@QAE?AV?$_Array_iterator@UEnemyHandle@th20@@$0BA@@2@XZ", target = 0x004981A0 },
+  { offset = 0x46, type = "REL32", symbol = "?begin@?$array@UEnemyHandle@th20@@$0BA@@std@@QAE?AV?$_Array_iterator@UEnemyHandle@th20@@$0BA@@2@XZ", target = 0x0045FD60 },
+  { offset = 0x63, type = "REL32", symbol = "??$any_of@V?$_Array_iterator@UEnemyHandle@th20@@$0BA@@std@@V<lambda_1>@?2??graze_reward_active@EnemyController@th20@@QAE_NXZ@@std@@YA_NV?$_Array_iterator@UEnemyHandle@th20@@$0BA@@0@0V<lambda_1>@?2??graze_reward_active@EnemyController@th20@@QAE_NXZ@@Z", target = 0x0048A990 },
+]

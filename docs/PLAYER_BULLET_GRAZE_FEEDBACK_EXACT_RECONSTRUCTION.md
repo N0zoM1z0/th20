@@ -152,3 +152,13 @@ is superseded. Read the independent
 [143-byte queue proof](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md).
 The 332-byte Player graze caller was recompiled with the corrected `void`
 relocation symbol and remains 332/332 strict exact.
+
+## Later CORE/EXACT-355 graze reward condition
+
+The separate entire **123-byte** `EnemyController::graze_reward_active`
+method at `0x0049BE20` is now strict native exact, independently verifying
+its sixteen original `EnemyHandle` values, standard-library iterator ABI,
+and genuine `std::any_of` predicate. See
+[the native 123-byte proof](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md).
+Its own separate compiler-generated 107-byte `std::any_of` implementation
+is **not** credited exact, despite the 123-byte caller now being exact.

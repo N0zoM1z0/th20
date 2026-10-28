@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-352 complete EffectInfo graze request queue.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-355 EnemyController graze reward.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,125** |
-| Canonical strict native units | **1,114** |
-| Unique canonical object providers | **224**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **327**, covering **82,091 native bytes** |
+| Source-present mappings, all origins | **1,126** |
+| Canonical strict native units | **1,115** |
+| Unique canonical object providers | **225**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **328**, covering **82,214 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 224 current canonical object/receipt pairs, native proof documents,
+The 225 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `EnemyController::graze_reward_active` | `0x0049BE20` | **123** | [whole 16-handle reward predicate](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md) |
 | `EffectInfo::queue_effect` | `0x0049DC60` | **143** | [whole request scheduling protocol](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md) |
 | `PlayerRecord::add_field_e4` | `0x004FE8D0` | **87** | [complete graze counter wrap and clamp](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md) |
 | `Player::record_bullet_graze` | `0x004F8B90` | **332** | [complete graze feedback and effects](PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md) |
@@ -177,7 +178,15 @@ corrected `EffectRequest+8` to a creation policy instead of an
 include closures were replayed only for **30/30 strict units across nine
 cold objects**; the existing 332B graze caller still replays exact after
 correcting the callee's compiler symbol identity. The enemy graze reward
-predicate remains open.
+predicate was separately closed by CORE/EXACT-355; its STL helper is open.
+
+CORE/EXACT-355 now also closes the complete **123-byte**
+`EnemyController::graze_reward_active` called by the original 332-byte
+Player graze root, using the real `EnemyData.handles` 16-slot
+`std::any_of` predicate and original bool branching. Only its new
+provider was cold replayed, **1/1 exact unit in one object**. The
+separate 107-byte native STL `std::any_of` callee at `0x0048A990`
+is not yet an exact helper and receives no new credit.
 
 ## Open complete-function roots — next agent's priorities
 

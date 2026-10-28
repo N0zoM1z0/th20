@@ -326,3 +326,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004F8B90,th20::Player::record_bullet_graze,332,matching,100.00,player_record_bullet_graze,CORE/EXACT-347; docs/PLAYER_BULLET_GRAZE_FEEDBACK_EXACT_RECONSTRUCTION.md; full 105 native instructions and 20 original E8/HIGHLOW references
 0x004FE8D0,th20::PlayerRecord::add_field_e4,87,matching,100.00,player_record_graze_counter_add,CORE/EXACT-348; docs/PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md; exact whole 87B and independent native std::clamp call
 0x0049DC60,th20::EffectInfo::queue_effect,143,matching,100.00,effect_info_queue_effect,CORE/EXACT-352; docs/EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md; 143 native bytes and two E8 targets exact
+0x0049BE20,th20::EnemyController::graze_reward_active,123,matching,100.00,enemy_graze_reward_active,CORE/EXACT-355; docs/ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md; whole original 123B with three independent E8 anchors

@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact original 123B EnemyController graze reward predicate](ENEMY_GRAZE_REWARD_123_EXACT_RECONSTRUCTION.md) — entire 47-instruction original 16-slot EnemyHandle any_of and real bool branch, three independent native E8 refs; 1/1 scoped strict unit, separate 107B library callee still open.
+
 - [Complete native 143B EffectInfo request queue](EFFECT_REQUEST_QUEUE_143_EXACT_RECONSTRUCTION.md) — real 1024-entry ×72-byte scheduler, original 56B payload memcpy and two independent E8 calls, corrected `void`/policy/delay ABI; 30/30 affected-only strict units in 9 objects.
 
 - [Exact 87B PlayerRecord graze counter addition and clamp](PLAYER_GRAZE_COUNTER_ADD_EXACT_RECONSTRUCTION.md) — entire 26-instruction native counter, 32-bit wrap plus signed std::clamp, independent original +0x3F call; 59/59 PlayerRecord scoped strict units in one rebuilt object.
