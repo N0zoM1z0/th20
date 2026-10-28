@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Seven original exact collision Animation/handle methods (233B)](BULLET_COLLISION_ANIMATION_PROTOCOL_EXACT_RECONSTRUCTION.md) — genuine 45B color mode, 38B Vector3 copy, 62B RGBA channels and four different 22B mode-specific Animation/AnimationHandle forwarding wrappers; 224/224 scoped strict units.
+
 - [Whole original 1,846B Bullet physics boss exact with four-way switch table](BULLET_PHYSICS_1846_EXACT_RECONSTRUCTION.md) — 517 native instructions; complete 1,864B code/align/table contribution, 84 independently checked relocated sites; 66/66 scoped old/new strict units.
 
 - [Full 1,846B Bullet physics state machine and original four-way table audit](BULLET_PHYSICS_1846_NATIVE_FRONTIER.md) — independent complete 517-instruction boss audit, 1,872B total native code/table/alignment contribution; three entire C++20 probes improve to 490/517 instruction types but remain nonexact.

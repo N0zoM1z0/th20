@@ -1072,3 +1072,10 @@ th20::cross_components,0x00480D30,function
 th20::dot_components,0x00480D70,function
 th20::normalize_vector2,0x0043E910,function
 th20::Bullet::update_physics,0x00485B60,function
+th20::Animation::set_collision_color_mode,0x004863C0,function
+th20::Animation::set_base_position,0x00470AF0,function
+th20::Animation::set_tint_channels,0x004864B0,function
+th20::cancel_animation_handle,0x00479040,function
+th20::cancel_animation_handle_mode2,0x00486310,function
+th20::cancel_animation_handle_mode3,0x00486350,function
+th20::interrupt_animation_mode3,0x00486370,function

@@ -1071,3 +1071,10 @@ th20::cross_components
 th20::dot_components
 th20::normalize_vector2
 th20::Bullet::update_physics
+th20::Animation::set_collision_color_mode
+th20::Animation::set_base_position
+th20::Animation::set_tint_channels
+th20::cancel_animation_handle
+th20::cancel_animation_handle_mode2
+th20::cancel_animation_handle_mode3
+th20::interrupt_animation_mode3

@@ -160,6 +160,10 @@ struct Animation {
     void stop();
     void set_position(const Vector3& position);
     void activate_display(std::int32_t value);
+    void set_collision_color_mode(std::uint8_t value);
+    void set_base_position(const Vector3& value);
+    void set_tint_channels(std::uint8_t red, std::uint8_t green,
+                           std::uint8_t blue, std::uint8_t alpha);
     SpriteTexturedVertex* mesh_vertices();
     Vector3& position_ref();
     AnimationFile* animation_file();
