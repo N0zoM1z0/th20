@@ -6,6 +6,7 @@
 namespace th20 {
 
 struct Animation;
+struct Vector3;
 
 // REF-017: four-byte values constructed in Notice's seven-element array and
 // secondary member. Native resolve clears a value when its lookup fails.
@@ -20,6 +21,8 @@ struct AnimationHandle {
     void interrupt(std::int32_t event);
     void interrupt_offset_7(std::int32_t event);
     void retire();
+    bool operator!=(std::uint32_t input) const;
+    void set_position(const Vector3& position);
 };
 
 static_assert(sizeof(AnimationHandle) == 4);

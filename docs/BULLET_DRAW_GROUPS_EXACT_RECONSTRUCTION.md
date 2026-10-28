@@ -110,3 +110,14 @@ closure. Complete original evidence is in
 `.analysis/core223-*.cpp` / `.analysis/core234-*.cpp` whole-body probes.
 No exact-function credit has been assigned to this 273B native function,
 and the already exact 81B six-group parent remains unaffected.
+
+## CORE/EXACT-251/252 update: original 211B movement step is now exact
+
+The historical 212B one-NOP-too-long movement-step diagnostic above was
+correct at CORE225. Later independent complete native reconstruction
+converged to **211/211 strict exact bytes** at `0x0047D960`, using the
+real collision-return short-circuit in the state-1/2 branch, all six
+original native relocations and real AnimationHandle position ownership.
+The complete 45/35/66B handle dependencies are also strict exact.
+The **273B single-group drawing function remains nonexact**.
+See [complete 211B step and AnimationHandle chain](BULLET_STEP_AND_ANIMATION_HANDLE_EXACT_RECONSTRUCTION.md).

@@ -81,6 +81,9 @@ struct Bullet {
     void deactivate();
     std::int32_t cancel(std::int32_t mode);
     std::int32_t advance_command9();
+    std::int32_t step_update();
+    std::int32_t update_physics();
+    std::int32_t process_collision(std::int32_t mode);
     std::int32_t advance_command0();
     std::int32_t advance_command2();
     std::int32_t advance_command3();

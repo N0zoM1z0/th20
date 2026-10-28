@@ -1061,3 +1061,7 @@ th20::AnimationFile::sprite
 th20::Animation::sprite_data
 th20::Bullet::wrap_screen
 th20::Bullet::cancel
+th20::Bullet::step_update
+th20::AnimationHandle::operator!=
+th20::AnimationHandle::set_position
+th20::AnimationPoolOwner::set_handle_position

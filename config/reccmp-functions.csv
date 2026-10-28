@@ -1062,3 +1062,7 @@ th20::AnimationFile::sprite,0x00437C80,function
 th20::Animation::sprite_data,0x00437CD0,function
 th20::Bullet::wrap_screen,0x00483270,function
 th20::Bullet::cancel,0x0047C8F0,function
+th20::Bullet::step_update,0x0047D960,function
+th20::AnimationHandle::operator!=,0x0047C650,function
+th20::AnimationHandle::set_position,0x004502C0,function
+th20::AnimationPoolOwner::set_handle_position,0x00450270,function
