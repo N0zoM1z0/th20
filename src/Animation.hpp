@@ -159,6 +159,7 @@ struct Animation {
     void set_slowdown(float value);
     void stop();
     void set_position(const Vector3& position);
+    void activate_display(std::int32_t value);
     SpriteTexturedVertex* mesh_vertices();
     Vector3& position_ref();
     AnimationFile* animation_file();

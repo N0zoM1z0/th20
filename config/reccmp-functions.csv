@@ -1061,3 +1061,4 @@ th20::Animation::animation_file,0x00437500,function
 th20::AnimationFile::sprite,0x00437C80,function
 th20::Animation::sprite_data,0x00437CD0,function
 th20::Bullet::wrap_screen,0x00483270,function
+th20::Bullet::cancel,0x0047C8F0,function

@@ -9378,7 +9378,7 @@ relocations = [
   { offset = 0xC1, type = "REL32", symbol = "??0BulletHandles@th20@@QAE@XZ", target = 0x0047B7C0 },
   { offset = 0xCF, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 0xDD, type = "REL32", symbol = "??0?$IntrusiveList@UBullet@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
-  { offset = 0x164, type = "DIR32", symbol = "$SG85512", target = 0x0056FC68 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG85517", target = 0x0056FC68 },
   { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82009", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82011", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -12105,7 +12105,7 @@ relocations = [
   { offset = 110, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 124, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 269, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 300, type = "DIR32", symbol = "$SG97936", target = 0x00570D4C },
+  { offset = 300, type = "DIR32", symbol = "$SG97938", target = 0x00570D4C },
   { offset = 305, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -12122,7 +12122,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1ItemInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7ItemInf@th20@@6B@", target = 0x00570D40 },
-  { offset = 48, type = "DIR32", symbol = "$SG97952", target = 0x00570D60 },
+  { offset = 48, type = "DIR32", symbol = "$SG97954", target = 0x00570D60 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 74, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -12630,7 +12630,7 @@ size = 344
 relocations = [
   { offset = 83, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 96, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 128, type = "DIR32", symbol = "$SG194191", target = 0x0056EC84 },
+  { offset = 128, type = "DIR32", symbol = "$SG194197", target = 0x0056EC84 },
   { offset = 140, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 174, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 179, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12638,7 +12638,7 @@ relocations = [
   { offset = 196, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
   { offset = 240, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 253, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 286, type = "DIR32", symbol = "$SG194197", target = 0x0056EC84 },
+  { offset = 286, type = "DIR32", symbol = "$SG194203", target = 0x0056EC84 },
   { offset = 298, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
   { offset = 328, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 333, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12819,16 +12819,16 @@ relocations = [
   { offset = 101, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 117, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 137, type = "REL32", symbol = "?select_context@RenderMesh@th20@@QAEXH@Z", target = 0x0049E050 },
-  { offset = 159, type = "DIR32", symbol = "$SG176147", target = 0x0057002C },
+  { offset = 159, type = "DIR32", symbol = "$SG176149", target = 0x0057002C },
   { offset = 176, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 181, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
-  { offset = 192, type = "DIR32", symbol = "$SG176148", target = 0x00570068 },
+  { offset = 192, type = "DIR32", symbol = "$SG176150", target = 0x00570068 },
   { offset = 209, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 214, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
-  { offset = 225, type = "DIR32", symbol = "$SG176149", target = 0x005700A8 },
+  { offset = 225, type = "DIR32", symbol = "$SG176151", target = 0x005700A8 },
   { offset = 240, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 245, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
-  { offset = 256, type = "DIR32", symbol = "$SG176150", target = 0x005700EC },
+  { offset = 256, type = "DIR32", symbol = "$SG176152", target = 0x005700EC },
   { offset = 271, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 276, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
   { offset = 305, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
@@ -12902,7 +12902,7 @@ symbol = "?allocate_geometry@Animation@th20@@QAEPAXH@Z"
 target_address = 0x0042B590
 size = 63
 relocations = [
-  { offset = 20, type = "DIR32", symbol = "$SG72989", target = 0x0056E0A8 },
+  { offset = 20, type = "DIR32", symbol = "$SG72991", target = 0x0056E0A8 },
   { offset = 30, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 35, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
 ]
@@ -16131,7 +16131,7 @@ relocations = [
   { offset = 476, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
   { offset = 490, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 4349120 },
   { offset = 564, type = "REL32", symbol = "_memset", target = 5523296 },
-  { offset = 572, type = "DIR32", symbol = "$SG83941", target = 5699020 },
+  { offset = 572, type = "DIR32", symbol = "$SG83943", target = 5699020 },
   { offset = 577, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
   { offset = 588, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 625, type = "DIR32", symbol = "__real@3f800000", target = 5687500 },
@@ -16213,11 +16213,11 @@ relocations = [
   { offset = 485, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 4338976 },
   { offset = 503, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 508, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 522, type = "DIR32", symbol = "$SG117861", target = 5701148 },
+  { offset = 522, type = "DIR32", symbol = "$SG117868", target = 5701148 },
   { offset = 534, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 548, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 553, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 567, type = "DIR32", symbol = "$SG117862", target = 5701148 },
+  { offset = 567, type = "DIR32", symbol = "$SG117869", target = 5701148 },
   { offset = 579, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 606, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 617, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -16226,11 +16226,11 @@ relocations = [
   { offset = 671, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
   { offset = 684, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 689, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 703, type = "DIR32", symbol = "$SG117863", target = 5701148 },
+  { offset = 703, type = "DIR32", symbol = "$SG117870", target = 5701148 },
   { offset = 715, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 729, type = "DIR32", symbol = "?current_ascii@th20@@3PAVAsciiInf@1@A", target = 6031000 },
   { offset = 734, type = "REL32", symbol = "?text_animation_file@AsciiInf@th20@@QAEPAVAnimationFile@2@XZ", target = 4654704 },
-  { offset = 748, type = "DIR32", symbol = "$SG117864", target = 5701148 },
+  { offset = 748, type = "DIR32", symbol = "$SG117871", target = 5701148 },
   { offset = 760, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z", target = 4525168 },
   { offset = 787, type = "REL32", symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z", target = 4605200 },
   { offset = 798, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAUAnimation@2@XZ", target = 4509392 },
@@ -17808,4 +17808,51 @@ relocations = [
   { offset = 0x2AC, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
   { offset = 0x2CF, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
   { offset = 0x2DB, type = "REL32", symbol = "?at@BulletExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+]
+
+# CORE/EXACT-250: entire 662-byte Bullet cancel lifecycle and animation-
+# effect/Timer native boss, all independently reviewed 34 relocation sites.
+[units.bullet_cancel]
+source = "src/BulletCancel.cpp"
+object = "build/core250-canonical/BulletCancel.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Bullet::cancel"]
+symbol = "?cancel@Bullet@th20@@QAEHH@Z"
+target_address = 0x0047C8F0
+size = 662
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x33, type = "REL32", symbol = "?select_view@AnimationPoolOwner@th20@@QAEXH@Z", target = 0x004776A0 },
+  { offset = 0x46, type = "REL32", symbol = "?activate_display@Animation@th20@@QAEXH@Z", target = 0x00477450 },
+  { offset = 0x51, type = "REL32", symbol = "?cancel_animation_handle@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00479040 },
+  { offset = 0x7F, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x90, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x97, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0xC0, type = "DIR32", symbol = "$SG182993", target = 0x0056FD14 },
+  { offset = 0xCC, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAUAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0xF0, type = "REL32", symbol = "?store_cancel_handle@BulletController@th20@@QAEXHI@Z", target = 0x00486390 },
+  { offset = 0x110, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x12C, type = "REL32", symbol = "?get_cancel_handle@BulletController@th20@@QAE?AUAnimationHandle@2@H@Z", target = 0x00485690 },
+  { offset = 0x133, type = "REL32", symbol = "?cancel_animation_handle_mode3@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00486350 },
+  { offset = 0x14D, type = "REL32", symbol = "??0EffectParameters@th20@@QAE@XZ", target = 0x0047BA30 },
+  { offset = 0x186, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
+  { offset = 0x19D, type = "REL32", symbol = "?spawn_effect@EffectInfo@th20@@QAE?AUAnimationHandle@2@HABUEffectParameters@2@H@Z", target = 0x0049DB70 },
+  { offset = 0x1B3, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x1B8, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 0x00426EB0 },
+  { offset = 0x1CB, type = "REL32", symbol = "?cancel_drops@Bullet@th20@@QAEXABUVector3@2@H@Z", target = 0x0047D3D0 },
+  { offset = 0x1DA, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x1DF, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x1F2, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x1FE, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x212, type = "REL32", symbol = "??KVector3@th20@@QBE?AU01@M@Z", target = 0x00452FF0 },
+  { offset = 0x21E, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x232, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x245, type = "REL32", symbol = "??4Timer@th20@@QAEXM@Z", target = 0x0047C5F0 },
+  { offset = 0x24E, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x261, type = "REL32", symbol = "??4Timer@th20@@QAEXM@Z", target = 0x0047C5F0 },
+  { offset = 0x271, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x27B, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x280, type = "REL32", symbol = "?select_view@AnimationPoolOwner@th20@@QAEXH@Z", target = 0x004776A0 },
+  { offset = 0x28C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

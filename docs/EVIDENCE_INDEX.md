@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Exact entire 662-byte Bullet cancellation boss](BULLET_CANCEL_662_EXACT_RECONSTRUCTION.md) — all 199 native instructions and 34 relocation anchors, original hidden AnimationHandle result and different mode-1/mode-3 wrappers, 251/251 scoped strict units.
+
 - [Full original 781B Bullet screen-wrap boss and typed Animation SpriteData chain](BULLET_WRAP_BOSS_EXACT_RECONSTRUCTION.md) — all 202 native instructions and 25 original relocations; separate exact 29B/23B/45B SpriteData getters; 319/319 affected-only strict units.
 
 - [Complete exact 637-byte Bullet command8 VectorInterpolation boss](BULLET_COMMAND8_EXACT_RECONSTRUCTION.md) — original whole 189-instruction gameplay interpolation including genuine native Vector3 hidden returns, all 22 native relocations and 62/62 affected strict units.

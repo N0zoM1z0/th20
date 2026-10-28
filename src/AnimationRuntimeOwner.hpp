@@ -14,6 +14,7 @@ struct AnimationPoolOwner {
     void select_draw_layer(std::int32_t layer, std::int32_t view_index);
     std::int32_t draw(Animation* animation);
     AnimationFile* file_by_index(std::int32_t index);
+    void select_view(std::int32_t view_index);
 };
 extern AnimationPoolOwner* current_animation_pool;
 } // namespace th20

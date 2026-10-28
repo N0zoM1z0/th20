@@ -136,6 +136,8 @@ struct BulletController final : TaskInfo {
     std::int32_t draw_groups();
     IntrusiveList<Bullet>& free_list();
     IntrusiveList<Bullet>& active_list();
+    void store_cancel_handle(std::int32_t index, std::uint32_t value);
+    AnimationHandle get_cancel_handle(std::int32_t index);
     Vector2& vector_4c_ref();
     std::int32_t fire(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata);
     std::int32_t emit(const ShotParameters& parameters, std::shared_ptr<ShotMetadata> metadata,

@@ -193,3 +193,17 @@ into maintained `src/`, no native exact unit was added, and **the
 reconstruction graph is unchanged**. This documentation-only audit has
 **zero affected replay units**, requires no new cold replay, and does
 not imply native exactness for the 3,735B emitter or 41,967B Enemy root.
+
+## CORE/EXACT-250 follow-on — full original 662-byte function now exact
+
+This historical nonexact frontier has now been closed by independent
+full-function codegen and original-relocation proof, not by relaxing the
+previous rejection. Normal maintained `src/BulletCancel.cpp` passes strict
+**662/662 byte-for-byte replay** over the whole native 199-instruction
+function, all **34 original relocation anchors**. The original 2.0f
+literal and hidden AnimationHandle return use preserve the original stack;
+two distinct mode-1/mode-3 native wrapper identities are retained.
+All **250 previously exact shared-header-affected units** remain strict
+exact in fresh builds: **251/251 total scoped units across 53 objects**,
+without whole-graph cold replay. See
+[whole original Bullet cancellation exact evidence](BULLET_CANCEL_662_EXACT_RECONSTRUCTION.md).
