@@ -19,7 +19,18 @@ struct BulletColor {
     std::uint32_t value;
     BulletColor();
 };
-struct BulletFlags { std::uint32_t bits; };
+// The native low word has a two-bit cancellation effect mode in bits 11..12.
+// Keep the full raw word for the existing independent flag consumers.
+struct BulletFlags {
+    union {
+        std::uint32_t bits;
+        struct {
+            std::uint32_t lower_11 : 11;
+            std::uint32_t effect_mode : 2;
+            std::uint32_t upper_19 : 19;
+        } fields;
+    };
+};
 // Native 64-bit command flags also have a 32-bit low-word consumer in the
 // original full Bullet boundary dispatcher; preserve both views and size.
 struct BulletCommandFlags {
@@ -120,12 +131,15 @@ struct BulletController final : TaskInfo {
                       int column, int row, float direction);
     std::int32_t cancel_all(std::int32_t mode);
     std::int32_t cancel_near(const Vector3& center, float radius, std::int32_t mode);
+    std::int32_t cancel_near_limited(const Vector3& center, float radius,
+                                     std::int32_t mode, std::int32_t limit, std::uint32_t effects);
 };
 BulletController* bullet_controller(std::int32_t index);
 #if defined(_M_IX86)
 static_assert(sizeof(Bullet)==0x528);
 static_assert(offsetof(Bullet,command_flags)==0x90);
 static_assert(sizeof(BulletCommandFlags)==8);
+static_assert(sizeof(BulletFlags)==4);
 static_assert(offsetof(Bullet,color)==0x88);
 static_assert(offsetof(Bullet,style)==0x58);
 static_assert(offsetof(Bullet,metadata)==0x98);
