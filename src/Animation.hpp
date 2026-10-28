@@ -12,6 +12,8 @@
 #include <cstdint>
 namespace th20 {
 struct Animation;
+struct SpriteData;
+class AnimationFile;
 // Native indices 0/1 select the sibling node and child sentinel. The separate
 // +53C publication node is independently initialized and appended.
 struct AnimationChildLinks {
@@ -159,6 +161,8 @@ struct Animation {
     void set_position(const Vector3& position);
     SpriteTexturedVertex* mesh_vertices();
     Vector3& position_ref();
+    AnimationFile* animation_file();
+    SpriteData* sprite_data();
     float inherited_scale_y();
     float inherited_scale_x();
     float height();

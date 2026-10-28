@@ -86,6 +86,7 @@ struct Bullet {
     std::int32_t advance_command3();
     std::int32_t advance_command7();
     std::int32_t advance_command8();
+    std::int32_t wrap_screen();
     std::int32_t advance_command1();
     std::int32_t advance_command10();
     void cancel_drops(const Vector3& position, std::int32_t mode);

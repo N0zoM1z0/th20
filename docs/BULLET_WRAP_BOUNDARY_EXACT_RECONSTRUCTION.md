@@ -74,3 +74,18 @@ cancellation body `0x0047C8F0`, **273B** single-group Bullet drawer and
 **41,967B** Enemy ECL opcode root likewise remain nonexact. These two
 new real standalone wrappers require only **one changed MSVC object /
 two strict units**, no shared-header regressions and **no full cold replay**.
+
+## CORE/EXACT-248 follow-on: original complete 781B parent now exact
+
+The preceding "nonexact parent" statement records the state at
+CORE/EXACT-243, **not the current reconstruction status**. A later
+independent complete 781B C++20 probe was discovered and reconciled with
+real `Animation::sprite_data`, `AnimationFile::sprite`, and the original
+animation manager file identity method. The maintained entire
+`Bullet::wrap_screen` at `0x00483270` now replays **781/781 native bytes**,
+including all 25 original relocations and 202 original instructions.
+The three actual SpriteData dependency methods (29/23/45B) are also
+separately complete exact native units. All **315 prior shared-header
+include-affected units** remain strict exact; **319/319 new plus old**
+replay across **63 cold objects**, with no whole-graph replay.
+See [full original screen-wrap boss and SpriteData owner exact proof](BULLET_WRAP_BOSS_EXACT_RECONSTRUCTION.md).

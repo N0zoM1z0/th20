@@ -52,6 +52,7 @@ public:
     AnmInstruction* script(std::int32_t index);
     std::uint32_t texture_id(std::uint32_t index);
     void store_sprite(std::int32_t index,const SpriteData& source);
+    SpriteData* sprite(std::int32_t index);
     void apply_template(Animation* animation, std::int32_t script);
     AnimationFile();
     ~AnimationFile();
