@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82230", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82235", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -19419,4 +19419,53 @@ target_address = 0x00506CD0
 size = 32
 relocations = [
   { offset = 0x15, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]
+
+# CORE/EXACT-402: complete native original 166B PlayerShot
+# lifetime method, with independently original E8/HIGHLOW reference proof.
+[units.player_shot_retire]
+source = "src/PlayerShotReset.cpp"
+object = "build/core398-canonical/PlayerShotReset.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShot::retire"]
+symbol = "?retire@PlayerShot@th20@@QAEXXZ"
+target_address = 0x00506AF0
+size = 166
+relocations = [
+  { offset = 0x1D, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x2C, type = "REL32", symbol = "?hit_controller@Context@th20@@QAEPAVHitCtrlInf@2@XZ", target = 0x00412710 },
+  { offset = 0x3E, type = "REL32", symbol = "?resolve@DamageHandle@th20@@QAEPAVDamageRegion@2@XZ", target = 0x004C0E10 },
+  { offset = 0x4F, type = "REL32", symbol = "?retire@DamageRegion@th20@@QAEXXZ", target = 0x004C1F30 },
+  { offset = 0x58, type = "REL32", symbol = "?detach@?$IntrusiveLink@UPlayerShot@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
+  { offset = 0x70, type = "REL32", symbol = "?return_to_free@PlayerShotController@th20@@QAEXPAUPlayerShot@2@@Z", target = 0x00506AB0 },
+  { offset = 0x98, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x9D, type = "REL32", symbol = "??$release_object@UPlayerShot@th20@@@DiagnosticAllocator@th20@@QAEXPAUPlayerShot@1@@Z", target = 0x00413B70 },
+]
+
+# CORE/EXACT-402: complete native original 55B PlayerShot
+# lifetime method, with independently original E8/HIGHLOW reference proof.
+[units.player_shot_controller_return_to_free]
+source = "src/PlayerShotReset.cpp"
+object = "build/core398-canonical/PlayerShotReset.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShotController::return_to_free"]
+symbol = "?return_to_free@PlayerShotController@th20@@QAEXPAUPlayerShot@2@@Z"
+target_address = 0x00506AB0
+size = 55
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?heap_owned@PlayerShot@th20@@QBE_NXZ", target = 0x00506540 },
+  { offset = 0x2C, type = "REL32", symbol = "?prepend@?$IntrusiveList@UPlayerShot@th20@@@th20@@QAEXPAV?$IntrusiveLink@UPlayerShot@th20@@@2@@Z", target = 0x0044A6B0 },
+]
+
+# CORE/EXACT-402: complete native original 41B PlayerShot
+# lifetime method, with independently original E8/HIGHLOW reference proof.
+[units.player_shot_heap_owned]
+source = "src/PlayerShotReset.cpp"
+object = "build/core398-canonical/PlayerShotReset.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerShot::heap_owned"]
+symbol = "?heap_owned@PlayerShot@th20@@QBE_NXZ"
+target_address = 0x00506540
+size = 41
+relocations = [
 ]

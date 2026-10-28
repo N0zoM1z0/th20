@@ -1,5 +1,25 @@
 # CORE/EXACT-398 — entire 269-byte PlayerShotController reset boss and 32-byte Timer wrapper
 
+## Current later CORE/EXACT-402 retirement callee closure
+
+The separate entire original **166-byte** `PlayerShot::retire`
+at `0x00506AF0`, its native **55-byte**
+`PlayerShotController::return_to_free` helper at `0x00506AB0`,
+and genuine **41-byte** `PlayerShot::heap_owned` at `0x00506540`
+are **now independently strict exact** in their complete original
+bodies, with all **10 native E8/HIGHLOW** references attested.
+Any historical statement *below* that the 166B retirement callee
+is still unclosed is **superseded**. The independent 67B
+`DamageHandle::resolve` at `0x004C0E10` remains open.
+The actual previous `PlayerStorage.hpp` compiler receipts selected
+26 sources/76 original strict units; the three new game methods
+produced **79/79 exact source-scoped units across 26 cold objects**.
+The original 269B shot reset and 32B Timer wrapper remain exact;
+nothing is double-counted. See
+[the current complete shot retirement and owner proof](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md).
+
+
+
 Immutable comparison original: user-approved Japanese TH20 v1.00a
 Steamless executable, whole SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

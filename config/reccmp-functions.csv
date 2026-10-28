@@ -1131,3 +1131,6 @@ th20::AnimationFile::spawn_flag4,0x0049E080,function
 th20::EffectInfo::spawn_effect_variant,0x0049DCF0,function
 th20::PlayerShotController::reset_all,0x00504950,function
 th20::PlayerShotController::reset_timer_12400,0x00506CD0,function
+th20::PlayerShot::retire,0x00506AF0,function
+th20::PlayerShotController::return_to_free,0x00506AB0,function
+th20::PlayerShot::heap_owned,0x00506540,function

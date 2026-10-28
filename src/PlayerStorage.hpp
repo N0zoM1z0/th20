@@ -26,9 +26,12 @@ static_assert(sizeof(PlayerWordFlags) == 4);
 struct PlayerOptionState { std::uint32_t flags; std::uint8_t focused; };
 // Shot +0xdc is a damage identifier, independently resolved by the native
 // consumer. This scalar constructor shares PackedColor's physical head.
+class DamageRegion;
 struct DamageHandle {
     std::uint32_t value;
     explicit DamageHandle(std::uint32_t initial=0);
+    // Separate original native 0x004C0E10 lookup: still unclosed.
+    DamageRegion* resolve();
 };
 struct PlayerOption {
     std::uint32_t state;
@@ -98,8 +101,10 @@ struct PlayerShot {
     Context* context;
     PlayerShot();
     // Native original 0x00506AF0 retirement, resolved separately from the
-    // calling PlayerShotController reset and not automatically exact.
+    // calling PlayerShotController reset; full 166-byte original now
+    // reconstructed separately, with ownership and damage retirement.
     void retire();
+    bool heap_owned() const;
 };
 // Native 0x4f41d0 constructs exactly 256 typed Shot objects at stride 0x124.
 // Its full nonthrowing EH protocol establishes the array owner's contract;
@@ -130,6 +135,8 @@ struct PlayerShotController {
     // Native 32-byte wrapper for the owner +0x12400 Timer assignment.
     void reset_timer_12400(std::int32_t value);
     void reset_all();
+    // Return a native non-heap Shot to the original free intrusive list.
+    void return_to_free(PlayerShot* shot);
     void set_flag0(std::uint32_t flag);
     PlayerShot* find(std::int32_t identifier);
 };

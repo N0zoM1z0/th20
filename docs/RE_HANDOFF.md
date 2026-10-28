@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-398 complete PlayerShotController reset boss and Timer wrapper.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-402 complete PlayerShot retirement and free-list ownership.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,132** |
-| Canonical strict native units | **1,134** |
+| Source-present mappings, all origins | **1,135** |
+| Canonical strict native units | **1,137** |
 | Unique canonical object providers | **227**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **359**, covering **114,968 native bytes** |
+| Exact game-authored whole functions | **362**, covering **115,230 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `PlayerShot::retire` / `PlayerShotController::return_to_free` / `PlayerShot::heap_owned` | `0x00506AF0` / `0x00506AB0` / `0x00506540` | **166 / 55 / 41** | [complete original shot retirement and ownership lifecycle](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md) |
 | `PlayerShotController::reset_all` / `reset_timer_12400` | `0x00504950` / `0x00506CD0` | **269 / 32** | [complete PlayerShot lifetime iterator and Timer reset](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md) |
 | `create_bomb_controller` / `create_hit_controller` | `0x00478300` / `0x004C20D0` | **123 / 92** | [whole native Bomb and Hit factories](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md) |
 | `FunctionChainController::remove_unlocked` | `0x00412400` | **162** | [exact whole owned-node scheduler removal](FUNCTION_CHAIN_REMOVE_162_EXACT_RECONSTRUCTION.md) |
@@ -350,9 +351,34 @@ no full/unfiltered cold replay. One MSVC private `$SG` renumber
 in the original Player constructor was reconciled only after
 confirming native original string target `0x00572BB8`, field
 offset/type and all nonrelocation bytes. Separately original
-166B `PlayerShot::retire` remains unclosed, not credited by
-the exact caller.
+At the earlier CORE/EXACT-398 checkpoint, the separate
+166B `PlayerShot::retire` remained unclosed; CORE/EXACT-402
+has since reconstructed the complete original in its own
+independent exact unit.
 [Whole original shot reset and Timer proof](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-402 separately closes all three entire original
+PlayerShot retirement methods: **166B `PlayerShot::retire`** at
+`0x00506AF0`, **55B owner return-to-free** at `0x00506AB0`,
+and **41B heap-owned bit predicate** at `0x00506540`. Their
+complete original **84 native instructions and ten independent
+PE E8/HIGHLOW references** match strict game C++ without
+stubs or dead locals. The 166B method tears down the real
+AnimationHandle, conditionally resolves/retires DamageRegion,
+detaches shot from the active intrusive list, returns non-heap
+shot storage to `PlayerShotController::free` and conditionally
+releases heap-owned PlayerShot through the native allocator.
+The original 269B shot reset, 32B Timer wrapper, 966B Player
+initializer and 1,518B Player options boss remain independently
+exact. Existing true `PlayerStorage.hpp` compiler receipts
+identify **26 old source providers, 76 earlier strict units**;
+the three new units give **79/79 exact units in 26 serial
+cold objects**, not a full cold replay. A single MSVC-private
+`$SG` rename retained its original PE string destination
+`0x00572BB8` and the strict original byte comparison.
+**The separate 67B `DamageHandle::resolve` at `0x004C0E10`
+remains open** and gains no inferred exact credit.
+[Whole original retirement proof](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

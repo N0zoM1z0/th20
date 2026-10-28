@@ -144,3 +144,19 @@ revalidated **76/76 strict units in 26 serial cold source objects**,
 including this still-exact 966-byte Player reset and 1,518-byte
 option-animation rebuild. See the
 [whole PlayerShotController reset and Timer proof](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md).
+
+
+## CORE/EXACT-402 subsequent PlayerShot retirement/ownership closure
+
+The separately native **166B** `PlayerShot::retire`, its
+**55B** Controller return-to-free member, and the native
+**41B** heap-ownership predicate are now whole-function
+strict exact, with ten independent original PE references.
+This supersedes the previous statement that the 166-byte
+retirement callee remained unclosed. The original **269B**
+shot-controller reset, **32B** Timer wrapper and this
+**966B** Player initializer all still compare strict exact.
+Scoped `PlayerStorage.hpp` consumers again passed
+**79/79 strict units across 26 cold objects**, no full replay.
+The different 67B DamageHandle resolver remains open.
+See [the new whole retirement lifecycle proof](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md).

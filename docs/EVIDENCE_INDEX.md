@@ -17,7 +17,9 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
-- [Strict exact complete 269B PlayerShotController reset boss plus 32B Timer wrapper](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md) — full active-shot iterator/retirement, three native Timer resets and 30-entry array fill; 82+13 original instructions, 17 independent original PE references and 76/76 actual header-dependent strict units across 26 cold sources. Separate 166B shot-retire remains open.
+- [Complete exact 166B PlayerShot retirement + 55B free-list recycle + 41B heap predicate](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md) — actual Animation/DamageRegion/link/owner cleanup and native ownership semantics; 10 independently PE E8/HIGHLOW fields, 79/79 PlayerStorage.hpp affected native strict units across 26 cold providers. Separate 67B DamageHandle resolver remains open.
+
+- [Strict exact complete 269B PlayerShotController reset boss plus 32B Timer wrapper](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md) — full active-shot iterator/retirement, three native Timer resets and 30-entry array fill; 82+13 original instructions, 17 independent original PE references and 76/76 actual header-dependent strict units across 26 cold sources. Its previously open 166B shot-retire callee was independently closed in CORE/EXACT-402.
 
 - [Complete original 1,518B Player option animation rebuild — strict exact](PLAYER_OPTION_REBUILD_1518_EXACT_RECONSTRUCTION.md) — entire original 418-instruction boss, 57 independent E8 calls and 3 PE HIGHLOW fields, 1,518/1,518 strict native bytes; focused 1/1 cold unit. Earlier nonexact experiments superseded.
 

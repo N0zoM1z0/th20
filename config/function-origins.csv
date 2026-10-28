@@ -4828,7 +4828,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005064B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005064D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005064F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00506540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00506540,authored,PlayerShotController,authored,high,CORE/EXACT-402; docs/PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md; independent native PlayerShot ownership lifecycle and controller free-list
 0x00506570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005068A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4844,8 +4844,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00506A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506A90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00506AB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00506AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00506AB0,authored,PlayerShotController,authored,high,CORE/EXACT-402; docs/PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md; independent native PlayerShot ownership lifecycle and controller free-list
+0x00506AF0,authored,PlayerShotController,authored,high,CORE/EXACT-402; docs/PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md; independent native PlayerShot ownership lifecycle and controller free-list
 0x00506BA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506BC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00506BF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
