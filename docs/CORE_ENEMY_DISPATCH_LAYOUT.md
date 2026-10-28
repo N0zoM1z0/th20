@@ -21,6 +21,17 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
+CORE205 integrates *three distinct complete original Enemy native heads*
+into the same 41,967-byte full-root source draft: opcode 602 (181B/43
+instructions), 603 (189B/43 instructions) and 604 (213B/51 instructions).
+Their actual 305B byte-exact ensure-only queued selector, raw type/color
+writes, float XY stores and independent angle normalization now execute,
+including failures after earlier writes. **483 additional** full-owner
+cases yield **43,922/43,922** complete GCC O2/UBSan and ASan+UBSan
+host passes, covering 139 opcode values / 107 original primary heads.
+The native complete root remains byte nonexact. See
+[602/603/604 whole-root integration](ENEMY_WHOLE_ROOT_602_604_QUEUED_PARAMETERS.md).
+
 CORE204 now adds the *complete 593-byte* original Enemy opcode 601
 (136 native instructions, 16 independently verified calls) to the **same
 whole 41,967-byte Enemy source draft**. Its actual 305B ensure-only
