@@ -19,6 +19,10 @@ AnimationHandle AnimationFile::spawn(const char* expected,std::int32_t script,
                                     std::int32_t layer,Animation** output) {
     return spawn(expected,script,&position,rotation,layer,0,output);
 }
+AnimationHandle AnimationFile::spawn_flag2(const char* expected,std::int32_t script,
+                                    std::int32_t layer,Animation** output) {
+    return spawn(expected,script,nullptr,0.0f,layer,2,output);
+}
 AnimationHandle AnimationFile::spawn_flag8(const char* expected,std::int32_t script,
                                     const Vector3& position,float rotation,
                                     std::int32_t layer,Animation** output) {

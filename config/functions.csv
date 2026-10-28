@@ -726,7 +726,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00421780,53,0x004217B4,FUN_00421780,th20::TaskInfo::disable_callbacks,TaskInfo,matching,100.00,__thiscall,void TaskInfo::disable_callbacks(),false,src/TaskInfo.cpp,REF-003; docs/REFERENCE_FUNCTION_REVIEW.md,authored,"Complete canonical exact replay; independent receiver/layout and call/vtable anchors; enclosing allocation, global or thread lifetimes remain open"
 0x004217C0,42,0x004217E9,FUN_004217c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004217F0,27,0x0042180A,FUN_004217f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00421810,17,0x00421820,FUN_00421810,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00421810,17,0x00421820,FUN_00421810,th20::Player::animation_file_ref,PlayerOptionResource,matching,100.00,__thiscall,?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ,false,src/Player.cpp,CORE/EXACT-330; docs/PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md,authored,"Entire 17-byte original method, independently observed resource/Player link and relocation."
 0x00421830,17,0x00421840,FUN_00421830,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00421850,26,0x00421869,FUN_00421850,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00421870,26,0x00421889,FUN_00421870,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -2770,7 +2770,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0049CB60,41,0x0049CB88,FUN_0049cb60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0049CB90,25,0x0049CBA8,FUN_0049cb90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0049CBB0,61,0x0049CBEC,FUN_0049cbb0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0049CBF0,57,0x0049CC28,FUN_0049cbf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0049CBF0,57,0x0049CC28,FUN_0049cbf0,th20::AnimationFile::spawn_flag2,PlayerOptionResource,matching,100.00,__thiscall,?spawn_flag2@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAUAnimation@2@@Z,false,src/MeshResourceAccess.cpp,CORE/EXACT-330; docs/PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md,authored,"Entire 57-byte original method, independently observed resource/Player link and relocation."
 0x0049CC30,38,0x0049CC55,FUN_0049cc30,th20::EclManager::subtract_time,EnemyRankControl,reconstructed,100.00,__thiscall,?subtract_time@EclManager@th20@@QAEXM@Z,false,src/EclSelection.cpp,CORE/EXACT-158; docs/ENEMY_RANK_CONTROL_RECONSTRUCTION.md,unknown,"Complete38-byte current Runtime time subtraction, not Timer or health mutation. Full native receiver loads the current_runtime pointer twice and subtracts binary32 before storing time. Maintained ownership is the genuine EclManager base; original derived/base source qualification and authored origin are unproven. Whole root callers542/574 corroborate live receiver selection and flag08bit6 gating."
 0x0049CC60,48,0x0049CC8F,pDNameNode::length,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0049CC90,73,0x0049CCD8,FUN_0049cc90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

@@ -1117,3 +1117,5 @@ th20::WeaponStoneInfo::focused_offset,0x004FF630,function
 th20::WeaponStoneInfo::unfocused_offset,0x004FF760,function
 th20::WeaponStoneInfo::option_script_variant,0x00534130,function
 th20::WeaponStoneInfo::initialize_option_pair,0x00533180,function
+th20::AnimationFile::spawn_flag2,0x0049CBF0,function
+th20::Player::animation_file_ref,0x00421810,function

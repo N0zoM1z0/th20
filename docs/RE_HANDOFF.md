@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-326 WeaponStone option dispatch closure.** This file is the concise
+**Updated 2026-10-28; CORE/EXACT-330 Player/AnimationFile resource ABI.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,118** |
-| Canonical strict native units | **1,108** |
+| Source-present mappings, all origins | **1,120** |
+| Canonical strict native units | **1,110** |
 | Unique canonical object providers | **222**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **321**, covering **81,435 native bytes** |
+| Exact game-authored whole functions | **323**, covering **81,509 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `AnimationFile::spawn_flag2` / `Player::animation_file_ref` | `0x0049CBF0` / `0x00421810` | **57 / 17** | [whole native resource access](PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md) |
 | `WeaponStoneInfo::option_script_variant` / `initialize_option_pair` | `0x00534130` / `0x00533180` | **77 / 90** | [complete virtual dispatches](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md) |
 | `PlayerRecord::available_option_count` | `0x004B81A0` | **38** | [native option count and WeaponStone offsets](PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md) |
 | `Player::set_option_field_fc` | `0x004FB290` | **165** | [option management protocol](PLAYER_OPTION_MANAGEMENT_EXACT_RECONSTRUCTION.md) |
@@ -116,6 +117,14 @@ initialization dispatchers, adding **167 exact native bytes** to the same
 canonical provider; its actual include closure passed **39/39** strict units
 across **8 cold rebuilt objects**. The large **1,518-byte** Player option
 rebuild remains an independent open full root.
+
+CORE/EXACT-330 also closes the 57-byte native AnimationFile flag-2
+spawn wrapper and 17-byte real Player AnimationFile getter. The actual
+`AnimationFile.hpp`/`Player.hpp` receipt include closure passed **232/232
+strict units across 49 cold source objects**, retaining the previous
+compiler profiles. The 1,518-byte parent remains **nonexact**: these new
+ABIs distinguish its native 5-arg resource creation from a speculative
+direct 7-arg call.
 
 ## Open complete-function roots — next agent's priorities
 

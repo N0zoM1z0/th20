@@ -59,6 +59,7 @@ public:
     std::int32_t view_index;
     Context* context;
     Player() noexcept;
+    AnimationFile* animation_file_ref() const;
     std::int32_t draw();
     std::int32_t frame_changed();
     PlayerShot* find_shot(std::int32_t identifier);

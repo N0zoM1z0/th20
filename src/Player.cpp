@@ -11,6 +11,7 @@ Player::Player() noexcept
       view_index(0),context(nullptr) {
     ecl_diagnostic_hint("initialize PlayerInf\n");
 }
+AnimationFile* Player::animation_file_ref() const {return animation_file;}
 PlayerFeedback* Player::feedback_value() { return &feedback; }
 void Player::set_entity_flag_10(std::uint32_t value) {
     entity_flags.fields.bit_10 = value;

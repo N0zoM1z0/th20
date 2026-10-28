@@ -66,6 +66,9 @@ public:
                           std::int32_t layer, Animation** output);
     AnimationHandle spawn(const char* expected_stem,std::int32_t script,
                           std::int32_t layer,Animation** output);
+    // Real 57-byte native wrapper: non-spatial spawn with flag bit 1 set.
+    AnimationHandle spawn_flag2(const char* expected_stem,std::int32_t script,
+                                std::int32_t layer,Animation** output);
     AnimationHandle spawn_flag8(const char* expected_stem,std::int32_t script,
                                const Vector3& position,float rotation,
                                std::int32_t layer,Animation** output);
