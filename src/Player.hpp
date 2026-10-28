@@ -65,6 +65,8 @@ public:
     void set_entity_flag_10(std::uint32_t value);
     std::int32_t damage_limit();
     PlayerFeedback* feedback_value();
+    Vector3& position_ref();
+    float direction_to(const Vector3& target);
 };
 Player* player(std::int32_t index);
 #if defined(_M_IX86)

@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG81998", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82001", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -16842,4 +16842,37 @@ target_address = 0x0048BC00
 size = 119
 relocations = [
   { offset = 0x11, type = "REL32", symbol = "??4?$shared_ptr@UEtamaArgInf@@@std@@QAEAAV01@ABV01@@Z", target = 0x0048BA20 },
+]
+
+# CORE/EXACT-208: entire native Player::position_ref at 0x00460850;
+# real float position, target direction and original .rdata constant identities.
+[units.player_position_ref]
+source = "src/PlayerDirection.cpp"
+object = "build/core208-canonical/PlayerDirection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::position_ref"]
+symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ"
+target_address = 0x00460850
+size = 19
+relocations = [
+]
+
+# CORE/EXACT-208: entire native Player::direction_to at 0x004FF350;
+# real float position, target direction and original .rdata constant identities.
+[units.player_direction_to]
+source = "src/PlayerDirection.cpp"
+object = "build/core208-canonical/PlayerDirection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::direction_to"]
+symbol = "?direction_to@Player@th20@@QAEMABUVector3@2@@Z"
+target_address = 0x004FF350
+size = 157
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x25, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x43, type = "DIR32", symbol = "?native_zero@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0x55, type = "DIR32", symbol = "?native_zero@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0x63, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+  { offset = 0x6B, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x90, type = "REL32", symbol = "?arctangent@scalar_math@th20@@YAMMM@Z", target = 0x00459280 },
 ]

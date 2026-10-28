@@ -1020,3 +1020,5 @@ th20::EnemyState::shared_shot,0x00498D10,function
 th20::EnemyState::writable_shot,0x00498B80,function
 th20::BulletController::set_scalar_48,0x0049C740,function
 th20::EnemyQueuedRecord::operator=,0x0048BC00,function
+th20::Player::position_ref,0x00460850,function
+th20::Player::direction_to,0x004FF350,function

@@ -7,6 +7,10 @@ retroactively change historical compiler receipts. For present status, use the
 [handoff](RE_HANDOFF.md), [source map](SOURCE_MAP.md), [progress](PROGRESS.md) and
 live ledgers. Superseded cumulative session logs remain available in Git history.
 
+## Player
+
+- [Exact Player spatial reference and direction](PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md) — complete 19B and 157B original native methods, 7 original relocation anchors, 32/32 affected-only strict units; original firing caller remains nonexact.
+
 ## Animation and rendering
 
 - [AsciiInf owner and shared text resources](ASCII_OWNER_RECONSTRUCTION.md) — complete native storage/construction, typed text queue, shared-file identity and full noexcept support.

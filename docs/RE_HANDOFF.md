@@ -1,6 +1,6 @@
 # Current TH20 reconstruction handoff
 
-**Checkpoint:** CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
+**Checkpoint:** CORE/EXACT-209 strictly reconstructs both the 19-byte native Player position getter and the 157-byte direction method (32/32 affected-only strict replays). CORE208 adds the complete original 252-byte Enemy opcode 632 raw script-pointer branch to the same entire 41,967-byte root; CORE207 queue copying and all native exact proofs remain protected.
 This is the **current** entrypoint for the next agent, not a cumulative session
 log. Read [AGENTS.md](../AGENTS.md) first for exactness policy, source rules,
 active-session commit subjects and **affected-only** replay requirements. This
@@ -46,6 +46,19 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
   partial native root bytes as exact functions.
 
 ## Latest work to resume
+
+CORE/EXACT-209 (web) admits complete native `Player::position_ref` at
+`0x00460850` (19B) and `Player::direction_to` at `0x004FF350` (157B).
+The locked original PE and Ghidra agree on the XY/zero/pi/two/atan2 flow.
+Two new exact units and **all 30 previously exact include-affected units**
+were freshly rebuilt and strict-compared: 32/32 exact, six MSVC objects.
+One compiler-generated Player diagnostic `$SG` label shifted, with original
+relocation target unchanged. The original 339B Bullet firing caller and
+41,967B Enemy root remain nonexact. See
+[Player direction evidence](PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md).
+Affected-only validation; no full cold replay. Current admitted totals:
+**228 authored exact functions / 59,013 bytes** (including this checkpoint).
+
 
 CORE208 integrates the **entire native 252-byte / 62-instruction / 10-call**
 opcode 632 at `0x00493831..0x0049392C` into the same full 41,967B

@@ -1698,7 +1698,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00460620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00460800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00460830,unknown,EnemyDefeat,review,unknown,"CORE/EXACT-155; docs/ENEMY_DEFEAT_RECONSTRUCTION.md; Complete26-byte process Session-to-Context-to-Player routing, with existing independent Session/Context anchors. Full signed index and actual owner types are retained. Broader origin pending."
-0x00460850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00460850,authored,Player,authored,high,CORE/EXACT-209; docs/PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md; real +0x614 Player spatial field and original game caller
 0x00460870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00460910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004609A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4692,7 +4692,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FF090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF0B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF0D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FF350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FF350,authored,Player,authored,high,CORE/EXACT-209; docs/PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md; game-specific Player displacement/angle method and real Bullet firing caller
 0x004FF3F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF4E0,unknown,Player,review,pending,"CORE/EXACT-102: Twelve complete actual Player construction/arrays, SHT resource relocation, damage-cap/focus selection and Overlay construction/phase/disable/typed Context roots add1810 disjoint compared bytes/70 independent relocations. Actual Player0x1485C/Overlay0x84 storage, untouched14850, actual121-by-three SHT schema and global Context0 lookup are preserved. Four independently exact store-only scalar default constructors are nonthrowing; actual TaskInfo destructor and enclosing potentially-throwing Overlay constructor/EHsc profile are preserved. Full EH, array helper, getter aliases and deleting destructors replay as support; no duplicate byte credit. Frozen250-file source passes718 strict units/141 fresh objects/137378 disjoint bytes; synthetic/original768 cap selections pass O2/ASan/UBSan with explicit unresolved lifetime/startup fixtures. Native whole Overlay initializer/setter corroborate typed publication; initializer remains undefined. Original noexcept/template/finalness/RTTI spelling and strong vector deleting slot/full-link resolution remain unknown. Original Player/Overlay/ANM lifetime, whole1707B damage query and game startup/runtime remain open. Authored/reference/origin credit unchanged. See docs/PLAYER_SHT_RECONSTRUCTION.md."
