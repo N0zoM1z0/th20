@@ -35,6 +35,9 @@ struct Timer {
     void operator=(float value);
     // The divisor must be nonzero; INT32_MIN / -1 is outside the C++ domain.
     std::int32_t operator%(std::int32_t divisor) const;
+    // Original signed 32-bit current-frame multiply and nonzero comparison.
+    std::int32_t operator*(std::int32_t factor) const;
+    bool operator!=(std::int32_t value) const;
     void operator+=(std::int32_t amount);
     void operator-=(std::int32_t amount);
     void operator++(int);

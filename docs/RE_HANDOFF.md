@@ -47,6 +47,26 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/EXACT-280 (web) closes two additional complete original native
+`Timer` methods used in the still nonexact **2,018B Bullet collision
+root**: **23B** `Timer::operator*(int)` at `0x0045C2E0` and **46B**
+`Timer::operator!=(int)` at `0x0047C620`, strict **23/23 and 46/46
+native bytes**, no relocations. Original caller uses these as real
+callee identities, not inlined `timer.current * 2` or
+`!timer.equals(0)`. Natural typed implementations are maintained in
+`src/TimerCollision.cpp` and the real existing `Timer.hpp`.
+That broadly used header's **actual compiler-receipt include closure is
+113 previously accepted source providers / 629 old strict native
+units**: all cold compiled and **629/629 exact**, with only original-
+target-preserving compiler-private `$SG` label renumbering. With two
+new methods **631/631 exact native units across 114 fresh objects**;
+no unfiltered cold replay. The complete original 2,018B collision
+parent is **not yet exact**. See [Timer collision ABI exact proof](TIMER_BULLET_COLLISION_EXACT_RECONSTRUCTION.md).
+Live authored coverage should now be **291 functions / 74,945 bytes**.
+Remaining 1,404B command11, 273B draw group, 3,735B emitter, 12,140B
+command sequencer and 41,967B Enemy opcode dispatcher are also open.
+
+
 CORE/EXACT-275 (web) independently closes the true **51B
 `AnimationHandle::resolve`** (`0x0044CED0`) and complete **44B Bullet
 fastcall handle-valid wrapper** (`0x00485A10`) used in the original

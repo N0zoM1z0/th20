@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Complete exact native 23B/46B Timer collision operators](TIMER_BULLET_COLLISION_EXACT_RECONSTRUCTION.md) — authentic signed current-frame scaling and nonzero animation predicate, 631/631 actual affected-only strict units across 114 cold objects.
+
 - [Complete original 51B AnimationHandle resolve and 44B Bullet handle-valid wrapper](BULLET_COLLISION_HANDLE_EXACT_RECONSTRUCTION.md) — three original native call/data relocations, corrected full-int ABI and 2/2 new strict units; full 2,018B collision parent remains nonexact.
 
 - [Whole exact 466B Player circle collision and real 73B/23B record/flag methods](PLAYER_COLLISION_CIRCLE_EXACT_RECONSTRUCTION.md) — complete 121-instruction native circle graze/hit path, 18 original relocations and 562B newly exact, all 252/252 scoped old/new native units.

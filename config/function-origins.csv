@@ -1545,7 +1545,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045C1F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045C2A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045C2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045C2E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045C2E0,authored,Timer,authored,high,"CORE/EXACT-280; docs/BULLET_COLLISION_TIMER_EXACT_RECONSTRUCTION.md; Complete original 23B game-owned Timer signed32 current-frame multiplication, real Timer+0x04 current field times argument. No relocations, complete 23/23 native strict code, consumed by 2018B Bullet collision fade."
 0x0045C300,unknown,EnemyDefeatState,review,unknown,"CORE/EXACT-156; docs/ENEMY_DEFEAT_STATE_RECONSTRUCTION.md; Complete26-byte Timer-backed Feedback forwarding operation delegates to the previously anchored real Timer integer addition. Full92-byte Feedback storage, Timer base at0 and two further Timer subobjects are retained; no prefix type. Original method spelling and folded-owner provenance remain pending."
 0x0045C320,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045CEB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2270,7 +2270,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0047C530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047C570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0047C5F0,authored,Timer,authored,high,"CORE/EXACT-238; docs/TIMER_FLOAT_SET_EXACT_RECONSTRUCTION.md; original 16B Timer class ownership, exact reset/mode and Bullet/Timer native caller ABI, complete 33B original body and relocation identity"
-0x0047C620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0047C620,authored,Timer,authored,high,"CORE/EXACT-280; docs/BULLET_COLLISION_TIMER_EXACT_RECONSTRUCTION.md; Complete original 46B game-owned Timer integer inequality with real Timer+0x04 signed current field and true bool return ABI. No relocations, complete 46/46 native strict code, consumed by 2018B Bullet collision."
 0x0047C650,authored,Animation,authored,high,"CORE/EXACT-251/252; docs/BULLET_STEP_AND_ANIMATION_HANDLE_EXACT_RECONSTRUCTION.md; Complete native 45-byte four-byte AnimationHandle integer comparison, unsigned word comparison and full bool return. No relocations; 45/45 native bytes."
 0x0047C680,authored,Bullet,authored,high,CORE/EXACT-214; docs/BULLET_REFLECTION_EXACT_RECONSTRUCTION.md; game-defined Bullet/Controller command-slot or field ownership with independent original caller/producer evidence; source spelling inferred; native complete exact body and independent relocations
 0x0047C6A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

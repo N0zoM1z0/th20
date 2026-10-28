@@ -1084,3 +1084,5 @@ th20::PlayerRecord::collision_radius_multiplier
 th20::Player::collision_expansion_enabled
 th20::AnimationHandle::resolve
 th20::bullet_animation_handle_valid
+th20::Timer::operator*(int)
+th20::Timer::operator!=(int)

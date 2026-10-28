@@ -1085,3 +1085,5 @@ th20::PlayerRecord::collision_radius_multiplier,0x004FF490,function
 th20::Player::collision_expansion_enabled,0x004FF800,function
 th20::AnimationHandle::resolve,0x0044CED0,function
 th20::bullet_animation_handle_valid,0x00485A10,function
+th20::Timer::operator*(int),0x0045C2E0,function
+th20::Timer::operator!=(int),0x0047C620,function
