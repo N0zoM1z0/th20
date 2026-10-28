@@ -20,6 +20,7 @@ struct PlayerTable {
     void add_continue_count(std::int32_t delta);
     PlayerRecord& player(std::int32_t index);
     std::int32_t mode();
+    std::int32_t clamped_field_1e4();
     void set_field_1fc(std::int32_t value);
     std::int32_t clamped_field_1fc();
     std::int32_t clamped_field_1f4();
@@ -40,6 +41,7 @@ struct Session {
     Session() noexcept;
     bool field_70_is_two();
     std::int32_t flag5_value() const;
+    std::uint32_t flag0_value() const;
     void add_score(std::uint32_t amount);
     void increment_continue_count();
     void set_flag0(std::uint32_t value);

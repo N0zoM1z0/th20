@@ -2069,7 +2069,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00474D60,unknown,EnemyDispatchState,review,unknown,CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete25-byte Session forwarding query reaches actual PlayerTable+88 and its independently reviewed mutating field1F4 clamp. Source/exactness do not establish origin.
 0x00474D80,unknown,EnemyDispatchState,review,unknown,"CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete73-byte PlayerTable query clamps signed field1F4 to0..999, writes it back and returns it. Existing independent integer-clamp anchor0x471170 is reused. Source/exactness do not establish origin."
 0x00474DD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00474E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00474E00,authored,Player,authored,high,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md; typed original Session and Player state accessors
 0x00474E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2154,7 +2154,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00479060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00479080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004790A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004790C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004790C0,authored,Player,authored,high,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md; typed original Session and Player state accessors
 0x004790E0,authored,MeshResource,authored,high,"CORE/EXACT-138: Actual Item effect calls preserve Item+BE4 position, script94, layer-1 and flags-zero forwarding into the custom File/VM producer with separate optional output and hidden result. Complete boundary and existing-object strict replay verified; no new physical bytes or compiler calls. See docs/MESH_RESOURCE_ORIGIN_AUDIT.md."
 0x00479120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00479140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3834,7 +3834,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C5D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C5D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C5D90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C5DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C5DB0,authored,Player,authored,high,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md; typed original Session and Player state accessors
 0x004C5E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C5E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C5E50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

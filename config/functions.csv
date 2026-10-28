@@ -2069,7 +2069,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00474D60,25,0x00474D78,FUN_00474d60,th20::Session::clamped_field_1f4,EnemyDispatchState,reconstructed,100.00,__thiscall,?clamped_field_1f4@Session@th20@@QAEHXZ,false,src/Session.cpp,CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md,unknown,Complete25-byte Session forwarding query reaches actual PlayerTable+88 and its independently reviewed mutating field1F4 clamp. Complete fresh canonical relocation replay is exact; authored/compiler/library origin is separately pending. No partial dispatcher credit.
 0x00474D80,73,0x00474DC8,FUN_00474d80,th20::PlayerTable::clamped_field_1f4,EnemyDispatchState,reconstructed,100.00,__thiscall,?clamped_field_1f4@PlayerTable@th20@@QAEHXZ,false,src/Session.cpp,CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md,unknown,"Complete73-byte PlayerTable query clamps signed field1F4 to0..999, writes it back and returns it. Existing independent integer-clamp anchor0x471170 is reused. Complete fresh canonical relocation replay is exact; authored/compiler/library origin is separately pending. No partial dispatcher credit."
 0x00474DD0,42,0x00474DF9,FUN_00474dd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00474E00,20,0x00474E13,FUN_00474e00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00474E00,20,0x00474E13,FUN_00474e00,th20::Session::flag0_value,Session,matching,100.00,__thiscall,?flag0_value@Session@th20@@QBEIXZ,false,src/PlayerResetStateAccessors.cpp,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md,authored,whole 20-byte Session+0x6C low flag query
 0x00474E20,20,0x00474E33,FUN_00474e20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00474E40,36,0x00474E63,FUN_00474e40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00474E70,555,0x0047509A,FUN_00474e70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -2154,7 +2154,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00479060,32,0x0047907F,FUN_00479060,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00479080,29,0x0047909C,FUN_00479080,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004790A0,26,0x004790B9,FUN_004790a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004790C0,26,0x004790D9,FUN_004790c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004790C0,26,0x004790D9,FUN_004790c0,th20::Player::clear_entity_flag2,Player,matching,100.00,__thiscall,?clear_entity_flag2@Player@th20@@QAEXXZ,false,src/PlayerResetStateAccessors.cpp,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md,authored,whole 26-byte Player+0x14 bit2 clear
 0x004790E0,61,0x0047911C,FUN_004790e0,"th20::AnimationFile::spawn(const char*,int,const Vector3&,float,int,Animation**)",MeshResourceAccess,matching,100.00,__thiscall,"AnimationHandle AnimationFile::spawn(const char*,int32,const Vector3&,float,int32,Animation**)",false,src/MeshResourceAccess.cpp,CORE/EXACT-138; docs/MESH_RESOURCE_ORIGIN_AUDIT.md,authored,"CORE/EXACT-138: Actual Item effect calls preserve Item+BE4 position, script94, layer-1 and flags-zero forwarding into the custom File/VM producer with separate optional output and hidden result. Complete boundary and existing-object strict replay verified; no new physical bytes or compiler calls. See docs/MESH_RESOURCE_ORIGIN_AUDIT.md."
 0x00479120,21,0x00479134,FUN_00479120,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00479140,135,0x004791C6,FUN_00479140,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -3834,7 +3834,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004C5D70,13,0x004C5D7C,FUN_004c5d70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C5D80,13,0x004C5D8C,FUN_004c5d80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C5D90,19,0x004C5DA2,FUN_004c5d90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004C5DB0,73,0x004C5DF8,FUN_004c5db0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004C5DB0,73,0x004C5DF8,FUN_004c5db0,th20::PlayerTable::clamped_field_1e4,PlayerTable,matching,100.00,__thiscall,?clamped_field_1e4@PlayerTable@th20@@QAEHXZ,false,src/PlayerResetStateAccessors.cpp,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md,authored,"whole 73-byte clamp [0,1] of actual PlayerTable+0x1E4; real std::clamp template call"
 0x004C5E00,29,0x004C5E1C,FUN_004c5e00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C5E20,37,0x004C5E44,FUN_004c5e20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C5E50,40,0x004C5E77,FUN_004c5e50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

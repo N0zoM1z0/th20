@@ -1100,3 +1100,6 @@ th20::Player::clear_option_animations,0x004FF8F0,function
 th20::Player::fixed_position_ref,0x004FF690,function
 th20::Player::set_clock_scale,0x004AB590,function
 "th20::PlayerValues<IntPoint, 33>::end",0x004FCE40,function
+th20::PlayerTable::clamped_field_1e4,0x004C5DB0,function
+th20::Session::flag0_value,0x00474E00,function
+th20::Player::clear_entity_flag2,0x004790C0,function

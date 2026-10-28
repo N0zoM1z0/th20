@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Exact PlayerTable mode clamp, Session flag0 and Player flag2 clear (119B)](PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md) — reidentifies original 0x00471170 as the `std::clamp<int>` dependency, reconstructs three complete original Player reset-chain accessors and passes all 195/195 affected-only exact units across 36 cold objects.
+
 - [Exact complete Player option animation sweep (237B) and typed accessor chain](PLAYER_OPTION_RESET_EXACT_RECONSTRUCTION.md) — full 72-instruction gameplay boss, four true indexed interrupt pairs, 5 exact functions / 327B, 49/49 strictly replayed affected units over 18 cold objects, and independently verified folded 10/12-slot template body.
 
 - [Exact 145B Player draw method and 13B forwarding callback](PLAYER_DRAW_EXACT_RECONSTRUCTION.md) — complete 43-instruction draw root with eight original relocations, 57/57 previous affected-only strict units; independently exact 13B callback with native return and single strict unit; Renderer flush remains external.

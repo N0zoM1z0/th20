@@ -1099,3 +1099,6 @@ th20::Player::clear_option_animations
 th20::Player::fixed_position_ref
 th20::Player::set_clock_scale
 "th20::PlayerValues<IntPoint, 33>::end"
+th20::PlayerTable::clamped_field_1e4
+th20::Session::flag0_value
+th20::Player::clear_entity_flag2
