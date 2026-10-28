@@ -17,7 +17,10 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
-- [Whole original 340B InputButtonState and 102B InputDevice constructors — strict exact](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) — 81+28 entire native instructions, six independently original CRT memset calls plus genuine child-constructor/raw-input calls, 442 nonoverlapping exact bytes; 15/15 actual InputState.hpp affected strict units in 2 cold source objects. Their 261B InputInf owner ctor remains separately open.
+- [Whole native 261B InputInf manager constructor — strict exact, plus five original CC bytes](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md) — RTTI-attested real game input manager; C-array 12 genuine 0x3D4 InputDevices and four 0x30 InputBindings; correct noexcept/EH/vector constructor ABI, all 11 original PE E8/HIGHLOW fields, **261/261 function + 266/266 full aligned bytes**, and 2/2 truly affected strict units across 2 cold objects.
+
+
+- [Whole original 340B InputButtonState and 102B InputDevice constructors — strict exact](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) — 81+28 entire native instructions, six independently original CRT memset calls plus genuine child-constructor/raw-input calls, 442 nonoverlapping exact bytes; 15/15 actual InputState.hpp affected strict units in 2 cold source objects. Their separate 261B InputInf owner ctor was later fully closed in CORE/EXACT-467.
 
 - [RTTI-proven InputInf ownership of the same whole-exact 26B Player view lookup](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md) — corrected original RTTI name, 261B constructor, true TaskInfo + 12 native 0x3D4 InputDevices + two pointers at +0x2E30 + four bindings at +0x2E38; migrated the existing 26/26 strict unit to its real owner with **zero additional native credit**, 13/13 actually affected units in two cold objects.
 

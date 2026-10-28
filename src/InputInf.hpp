@@ -11,8 +11,12 @@
 namespace th20 {
 class InputInf : public TaskInfo {
 public:
+    // Native noexcept constructor is 261B with five real trailing CC bytes.
+    InputInf() noexcept;
     std::uint32_t state_10, state_14, state_18, state_1c;
-    std::array<InputDevice,12> devices;
+    // The native vector constructor uses each 0x3D4-byte device's true
+    // default constructor, not a std::array wrapper helper.
+    InputDevice devices[12];
     std::uint32_t field_2e10, field_2e14;
     std::uint32_t retained_2e18[3];
     std::int32_t routing_2e24[3];

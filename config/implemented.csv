@@ -1157,3 +1157,4 @@ th20::AnimationHandle::interrupt
 th20::InputInf::for_view
 th20::InputButtonState::InputButtonState
 th20::InputDevice::InputDevice
+th20::InputInf::InputInf

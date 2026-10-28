@@ -163,3 +163,30 @@ receipt closure passed **15/15 strict native
 units in two cold source objects**; no
 unfiltered full replay was run.
 [Full original input child-constructor proof](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md).
+
+
+## Subsequent CORE/EXACT-467 complete original InputInf manager constructor
+
+**CURRENT STATUS:** the original 261-byte `InputInf::InputInf()`
+at `0x0041F8A0`, previously open in this historical
+checkpoint, is now **261/261 complete strict original
+native exact** (72 i386 instruction heads, 4 independent
+E8 call fields and 7 independent PE HIGHLOW fields).
+The source's **real C-array construction** and
+`noexcept` ABI naturally invoke the original
+four-argument native vector constructor iterator,
+without the two unobserved compiler EH cleanup
+state writes. The entire source compiler contribution
+of **266 bytes** including the **five actual
+original PE trailing CC alignment bytes** is
+**266/266 strictly exact**, while **only 261
+native game-body bytes** are credited.
+The actual original `InputInf.hpp` compiler
+receipt include closure passed **2/2 strict units
+in two cold sources**. All earlier exact 26B
+input accessor, 340B ButtonState and 102B Device
+constructors remain separately full exact and
+are not recredited. Historical statements above
+that the 261B manager ctor remains nonexact
+are **superseded**. See
+[the entire InputInf manager construction PE proof](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md).

@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-463 complete InputButtonState/InputDevice native constructors.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-467 complete 261-byte native InputInf manager constructor.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,159** |
-| Canonical strict native units | **1,160** |
-| Unique canonical object providers | **230**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **385**, covering **118,328 native bytes** |
+| Source-present mappings, all origins | **1,160** |
+| Canonical strict native units | **1,161** |
+| Unique canonical object providers | **231**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **386**, covering **118,589 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 230 current canonical object/receipt pairs, native proof documents,
+The 231 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::InputInf` | `0x0041F8A0` | **261** (+5 PE CC compared) | [entire original RTTI InputInf 261B constructor and full 266B aligned source](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md) |
 | `InputButtonState::InputButtonState` / `InputDevice::InputDevice` | `0x0041F9B0` / `0x0041FCB0` | **340 / 102** | [complete genuine input state/device constructor ABI and original PE references](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) |
 | `InputInf::for_view` | `0x00498FB0` | **26 (existing)** | [immutable PE RTTI InputInf, 261B original constructor and real input owner](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md) |
 | `AnimationPoolOwner::interrupt_handle` / `AnimationHandle::interrupt` | `0x0044EE90` / `0x0044EF90` | **246 / 35** | [whole native pool/handle animation child-interrupt protocol](ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md) |
@@ -775,6 +776,49 @@ is **385 complete native functions /
 118,328 original bytes**, canonical
 units **1,160** in 230 physical providers.
 [Both entire original native input constructors](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-467 independently closes the
+**complete original 261-byte InputInf manager
+constructor boss** at `0x0041F8A0`, with
+all **72 native i386 instructions**,
+**4 genuine E8 fields and 7 immutable PE
+HIGHLOW fields** strictly exact. The
+source's true RTTI-owned
+`InputDevice devices[12]` and
+`InputBindings bindings[4]` C-array
+construction uses the original
+four-argument `_eh vector constructor
+iterator`; an authentic `noexcept`
+compiler form eliminates two unobserved
+EH cleanup-state stores. The original
+physical compiler function is **266
+bytes**, consisting of 261 game native
+body bytes plus **five true original PE
+`CC` alignment bytes**: the canonical
+unit separately tracks `size=261`
+and `compare_size=266`. **All 266/266
+physical bytes match**, with **only
+261 original game bytes credited**.
+The original `InputInf.hpp` prior
+compiler receipt include graph selected
+one old source/one exact 26B lookup;
+adding a new source owner for the
+different `/GS /sdl /EHsc` ctor yields
+**2/2 strict native units in two low
+priority cold source objects**, no global
+replay. The entire preexisting 340B
+ButtonState, 102B InputDevice and 26B
+input view accessor remain independently
+exact and are not double-counted.
+The current total is **386 authored exact
+game functions, 118,589 original
+game-body bytes, 1,161 strict units
+across 231 canonical objects**.
+The still nonexact 555B Player motion,
+3,111B main frame and full linked game
+remain independent open work.
+[Entire 261B native InputInf constructor
+and five original CC bytes](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

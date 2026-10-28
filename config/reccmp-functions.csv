@@ -1158,3 +1158,4 @@ th20::AnimationHandle::interrupt,0x0044EF90,function
 th20::InputInf::for_view,0x00498FB0,function
 th20::InputButtonState::InputButtonState,0x0041F9B0,function
 th20::InputDevice::InputDevice,0x0041FCB0,function
+th20::InputInf::InputInf,0x0041F8A0,function
