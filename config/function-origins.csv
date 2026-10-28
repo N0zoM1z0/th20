@@ -4684,7 +4684,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FEF10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FEF50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FEF70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FEFB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FEFB0,authored,Player,authored,high,CORE/EXACT-303; docs/PLAYER_DRAW_EXACT_RECONSTRUCTION.md; original draw method callback adapter
 0x004FEFC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FEFF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FF020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -1092,3 +1092,4 @@ th20::BulletController::rebuild_active_bullets
 th20::Player::collision_rectangle_circle
 th20::Player::draw
 th20::Bullet::advance_command11
+th20::player_draw_callback

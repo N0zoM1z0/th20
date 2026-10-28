@@ -4684,7 +4684,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004FEF10,49,0x004FEF40,do_grouping,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FEF50,18,0x004FEF61,FUN_004fef50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FEF70,49,0x004FEFA0,FUN_004fef70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004FEFB0,13,0x004FEFBC,FUN_004fefb0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004FEFB0,13,0x004FEFBC,FUN_004fefb0,th20::player_draw_callback,Player,matching,100.00,__cdecl,?player_draw_callback@th20@@YAHPAX@Z,false,src/PlayerDrawCallback.cpp,CORE/EXACT-303; docs/PLAYER_DRAW_EXACT_RECONSTRUCTION.md,authored,Exact thirteen-byte original draw callback forwarding Player pointer and EAX return; one independently attested native call to 0x004F8AF0
 0x004FEFC0,36,0x004FEFE3,FUN_004fefc0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FEFF0,39,0x004FF016,FUN_004feff0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004FF020,55,0x004FF056,FUN_004ff020,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

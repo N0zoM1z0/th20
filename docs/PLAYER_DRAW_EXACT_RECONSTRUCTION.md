@@ -7,8 +7,8 @@ method at `0x004F8AF0..0x004F8B80`. The original complete interval has SHA-256
 `6386222c009954ece0b6924f01e5f887d7ba078e078435fb595f482e85567caf`.
 The independent Ghidra target-attested function/caller/callee read and direct
 Capstone PE disassembly agree on the whole extent. The only observed native
-caller is the separate 13-byte `0x004FEFB0` callback wrapper, which is **not**
-claimed exact by this reconstruction.
+caller is the separate 13-byte `0x004FEFB0` callback wrapper, separately
+closed in CORE/EXACT-303 below.
 
 The complete natural C++ implementation lives at `src/PlayerDraw.cpp` as
 `std::int32_t Player::draw()`. It first checks the native `Player::state_value()`
@@ -78,3 +78,24 @@ remained strict exact. No whole-graph cold replay was run.
 This proof establishes one entire function's exact native codegen and
 relocations, **not** whole-executable closure, finished Renderer
 implementation, or runtime equivalence of the game.
+
+## CORE/EXACT-303: complete 13-byte Player draw callback
+
+Fresh target-attested Ghidra and independent complete-target byte decode
+identify the entire original callback at `0x004FEFB0..0x004FEFBC`, SHA-256
+`8b57d3c9efbbc40fd8ba3d0379dbb2ce0e6f0fe8fc936348bbb48e885f06f460`.
+The full six-instruction body loads the pointer argument into `ECX` and
+calls the independently exact `Player::draw` at `0x004F8AF0`; its native
+`EAX` value is *left untouched* and forwarded to the original caller.
+Ghidra's tentative `void` annotation is therefore not authoritative.
+
+The complete natural C++ source is `src/PlayerDrawCallback.cpp` returning
+`std::int32_t`; choosing an `int` return reflects the original code, whereas
+an otherwise identical `void` wrapper adds a compiler NOP absent from the
+native function. One independently observed native `REL32` call relocation
+at `+0x07` targets `0x004F8AF0`. The strictly fresh locked-MSVC 19.44 x86
+canonical `player_draw_callback` unit reports **13/13 exact bytes** and no
+differences. Exactly **one** new object/provider and **one** strict unit
+were cold rebuilt and tested; no existing exact source or shared header was
+changed in this CORE/EXACT-303 revision. Callback registration and any
+associated task lifetime remain unresolved.
