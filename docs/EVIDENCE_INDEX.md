@@ -9,6 +9,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Player
 
+- [Entire 661B rotated rectangle/circle Player hit/graze boss exact](PLAYER_ROTATED_COLLISION_661_EXACT_RECONSTRUCTION.md) — two original full 669B geometry calls, 181 x86 instructions, 24 independently attested native relocations, 42/42 scoped strict native units.
+
 - [Exact Player spatial reference and direction](PLAYER_DIRECTION_EXACT_RECONSTRUCTION.md) — complete 19B and 157B original native methods, 7 original relocation anchors, 32/32 affected-only strict units; original firing caller remains nonexact.
 
 ## Animation and rendering

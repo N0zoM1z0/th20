@@ -1089,3 +1089,4 @@ th20::Timer::operator!=(int)
 th20::Bullet::process_collision
 th20::select_bullet_aim
 th20::BulletController::rebuild_active_bullets
+th20::Player::collision_rectangle_circle

@@ -47,6 +47,29 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/EXACT-297 (web) closes the **entire original 661-byte** Player
+rotated rectangle/circle hit/graze boss at `0x004F91D0`,
+**181 native x86 instructions**, **24 independent original PE
+relocation sites** and **661/661 original bytes strict exact**.
+A real focus-selected radius must first be saved, then copied into
+the independently scaled hit radius; omitting that original float
+lifetime emitted 651B instead of 661B. The normal typed C++ method
+uses actual 669B `geometry::rectangle_circle` *twice*, the genuine
+100.0f PlayerRecord-scaled hit radius, separate 30.0f graze margin,
+real Player position reads, dialogue inhibition, mode/state/
+invulnerability checks and original hit handler. Natural source:
+`src/PlayerRotatedCollision.cpp`. Its added narrow `Player.hpp`
+member declaration affects **13 prior source providers/41 previous
+complete strict native units**, all recompiled and **41/41 native
+strict exact**. Together with new entire 661B root **42/42 units
+across 14 fresh MSVC objects**, no full unfiltered cold replay.
+See [whole original Player rotated collision exact evidence](PLAYER_ROTATED_COLLISION_661_EXACT_RECONSTRUCTION.md).
+Live authored total **295 exact whole game functions / 78,921
+original native bytes**. Original large unresolved roots still include
+1,404B Bullet command11, 273B draw group, 3,735B emitter, 12,140B
+Bullet command sequencer and 41,967B Enemy opcode dispatcher.
+
+
 CORE/EXACT-296 (web) closes the **entire original 863-byte** active
 Bullet frame and six-group draw-list **boss** `0x0047D600`.
 The genuine normal `BulletController::rebuild_active_bullets()` C++20

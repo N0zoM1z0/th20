@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82049", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82055", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -18493,4 +18493,41 @@ relocations = [
   { offset = 0x327, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
   { offset = 0x33C, type = "REL32", symbol = "??1?$IntrusiveIterator@UBullet@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 0x357, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/EXACT-297: whole original 661-byte Player rotated box vs circle
+# collision/graze boss, all 181 instructions and 24 independent PE anchors.
+[units.player_rotated_rectangle_circle]
+source = "src/PlayerRotatedCollision.cpp"
+object = "build/core297-canonical/PlayerRotatedCollision.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::collision_rectangle_circle"]
+symbol = "?collision_rectangle_circle@Player@th20@@QAEHABUVector3@2@MMMH@Z"
+target_address = 0x004F91D0
+size = 661
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x17, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x33, type = "REL32", symbol = "?focused_mode@Player@th20@@QAE_NXZ", target = 0x004FF5E0 },
+  { offset = 0x74, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 0x7B, type = "REL32", symbol = "?collision_radius_multiplier@PlayerRecord@th20@@QAEHXZ", target = 0x004FF490 },
+  { offset = 0x8C, type = "DIR32", symbol = "?native_radius_hundred@th20@@3MB", target = 0x0056E04C },
+  { offset = 0x99, type = "REL32", symbol = "?focused_mode@Player@th20@@QAE_NXZ", target = 0x004FF5E0 },
+  { offset = 0xB3, type = "DIR32", symbol = "?native_rotated_graze_margin@th20@@3MB", target = 0x0056F280 },
+  { offset = 0xCD, type = "DIR32", symbol = "?native_rotated_graze_margin@th20@@3MB", target = 0x0056F280 },
+  { offset = 0xDA, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0xEC, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x152, type = "REL32", symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00457610 },
+  { offset = 0x16B, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x17D, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x1E3, type = "REL32", symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00457610 },
+  { offset = 0x1FD, type = "DIR32", symbol = "?process_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x206, type = "DIR32", symbol = "?process_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x20B, type = "REL32", symbol = "?has_dialogue@FrontInf@th20@@QAEHXZ", target = 0x00478160 },
+  { offset = 0x228, type = "REL32", symbol = "?state_value@Player@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x239, type = "REL32", symbol = "?state_value@Player@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x24A, type = "REL32", symbol = "?state_value@Player@th20@@QBEHXZ", target = 0x00411700 },
+  { offset = 0x269, type = "REL32", symbol = "?greater_than@Timer@th20@@QBE_NH@Z", target = 0x00461070 },
+  { offset = 0x27C, type = "REL32", symbol = "?apply_player_hit@Player@th20@@QAEXXZ", target = 0x004F86F0 },
+  { offset = 0x28B, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

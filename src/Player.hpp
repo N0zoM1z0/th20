@@ -67,6 +67,9 @@ public:
     void record_bullet_graze(const Vector3& position, std::uint32_t bullet_color);
     std::int32_t collision_rectangle(const Vector3& bullet_position,
                                     const Vector2& extents, std::int32_t mode);
+    std::int32_t collision_rectangle_circle(const Vector3& position,
+                                           float width, float height, float angle,
+                                           std::int32_t mode);
     std::int32_t collision_circle(const Vector3& bullet_position,
                                   float bullet_radius, std::int32_t mode);
     std::uint32_t collision_expansion_enabled() const;
