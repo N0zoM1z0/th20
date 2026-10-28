@@ -1,6 +1,6 @@
-# CORE197: native Enemy opcodes 700/701 inside the entire boss root
+# CORE198: native Enemy opcodes 700/701 inside the entire boss root
 
-CORE197 continues the **same 41,967-byte original `EnemyState::execute_opcode`**
+CORE198 continues the **same 41,967-byte original `EnemyState::execute_opcode`**
 at `0x0048C010`, against the user-selected Japanese Steamless TH20 v1.00a
 locked SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
@@ -42,9 +42,9 @@ side effects.
 
 The original complete instructions, original PE branch bytes, SHA-256 and
 every original direct call are recorded at
-`.analysis/core197-native-op700.asm`,
-`.analysis/core197-native-op701.asm`, and
-`.analysis/core197-native-700-701-audit.json`. These were independently
+`.analysis/core198-native-op700.asm`,
+`.analysis/core198-native-op701.asm`, and
+`.analysis/core198-native-700-701-audit.json`. These were independently
 redecoded from the locked PE and checked against the existing native
 case-path catalog, not accepted from older reconstruction notes without
 verification.
@@ -52,9 +52,9 @@ verification.
 ## Same-root implementation and two sanitizer runs
 
 The new opcodes live in the *single continuing* entire Enemy root candidate
-`.analysis/core197-enemy-dispatch-candidate.cpp`, preserving every earlier
+`.analysis/core198-enemy-dispatch-candidate.cpp`, preserving every earlier
 opcode and its test coverage. The new
-`.analysis/core197-queued-parameters-host-cases.inc` runs a matrix of **337
+`.analysis/core198-queued-parameters-host-cases.inc` runs a matrix of **337
 additional scenarios**: 152 successful four-float writes and 152 successful
 five-integer writes, with two actual native parameter owner structures,
 80 real deep COW copies, 144 first-time metadata owners, 64 real queue-list
@@ -75,9 +75,9 @@ Both complete-host variants pass **42,424/42,424**: GCC 13 `-O2 -Wall
 were excluded due to unrelated unavailable `WeaponStoneInfo` fixture RTTI;
 ASan leak detection remained enabled. All active source/recipe hashes, both
 complete-host binaries and both logs are in
-`.analysis/core197-enemy-whole-root-proof.json`. Logs are
-`.analysis/core197-dispatch-host.log` and
-`.analysis/core197-dispatch-host-asan.log`. The original CORE196 and all
+`.analysis/core198-enemy-whole-root-proof.json`. Logs are
+`.analysis/core198-dispatch-host.log` and
+`.analysis/core198-dispatch-host-asan.log`. The original CORE196 and all
 older protected sources, logs, binaries and proofs remain preserved.
 
 ## Exactness boundary and next work
@@ -85,7 +85,7 @@ older protected sources, logs, binaries and proofs remain preserved.
 The entire Enemy draft currently covers **132 effective opcode values
 and 100 original primary heads** of 174 native primary heads. These are
 semantic behavior fixtures, **not** an authored exact percentage or a
-complete executable. This CORE197 integration changed **zero production
+complete executable. This CORE198 integration changed **zero production
 compiler inputs/headers**, so the affected canonical native cold-build
 scope is **zero units**; there was no full cold replay. Conservative native
 acceptance remains **222 authored exact functions / 57,991 code bytes /

@@ -21,7 +21,7 @@ The accepted graph remains 442 units / 84 objects / 84,017 comparison bytes.
 
 ## Full native graph
 
-CORE197's independent queued-parameter branch integration adds two complete
+CORE198 independently re-attests the queued-parameter branch integration adds two complete
 original Enemy primary heads, **opcode 700 (269B / 59 native instructions)**
 and **701 (289B / 67 instructions)**. The same whole-root draft now covers
 **132 effective opcode values / 100 native heads**, with 337 new real queue
