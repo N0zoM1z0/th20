@@ -103,3 +103,24 @@ template instantiations, **2/2 strict exact units in one new object**,
 but deliberately excluded from authored exact functions/bytes.
 The 3,735B gameplay source is still nonexact. See
 [entire emitter table and STL ownership audit](BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md).
+
+## CORE/AUDIT-292 follow-on — entire 3,735B typed C++20 source now compiles
+
+Later independent analysis confirms two original jump tables at
+`0x00482778` (13 native destinations) and `0x004827AC` (11 destinations)
+and the **3,832-byte original entire compiler contribution** (3,735B
+function code, one NOP, 96B tables, excluding eight separate linker
+alignment bytes). Complete C++20 emitter source, not just isolated shot
+pattern branches, now compiles under `.analysis/core288-BulletEmitterFull.cpp`
+and the native ownership-corrected
+`.analysis/core290-BulletEmitterFull-RealMetadataLifetime.cpp`. The
+first full build emits 3,629B code/911 instructions and **787/935 native
+mnemonic positions aligned**; the corrected real one-time
+`shared_ptr::get()` and moved-ownership version emits 3,516B code/890
+instructions and also **787/935 aligned**, plus the correct **two
+24-entry-total tables** (13+11). Eight more whole-body ownership variants
+reach **789/935 aligned**, but all remain **nonexact**. Genuine 63B
+original old-MSVC `std::shared_ptr<EtamaArgInf>` move assignment also
+remains nonexact using the modern installed STL. No source or exact-byte
+credit has been assigned to the 3,735B gameplay root.
+See [whole emitter typed source and native switch-table frontier](BULLET_EMITTER_FULL_CXX_FRONTIER.md).

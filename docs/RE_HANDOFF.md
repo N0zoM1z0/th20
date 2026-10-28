@@ -47,6 +47,35 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/AUDIT-292 (web) attacks the **entire original 3,735B**
+`BulletController::emit` gameplay boss at `0x004818E0` with the first
+**complete compiling C++20 source** in
+`.analysis/core288-BulletEmitterFull.cpp` and corrected ownership version
+`.analysis/core290-BulletEmitterFull-RealMetadataLifetime.cpp`.
+Native 935 instructions, original compiler span **3,832B** = 3,735B
+code + one NOP + two true switch tables (13+11 entries/96B), plus
+**eight separate linker-alignment CC bytes** to the next method.
+The first full candidate compiles to 3,629B code/911 instructions,
+**787/935 original mnemonic kinds aligned**, plus both tables. Correct
+one-time `ShotMetadata* = incoming_shared_ptr.get()` before moving the
+actual shared_ptr, `ShotParameters::count` parity (not rows) and native
+single pre-switch speed assignment produce 3,516B code/890 instructions,
+**787/935 aligned** and both 13+11 native switch tables (24 code-label
+relocations). Eight full shared_ptr move variants reached **789/935**
+ordered native instruction kinds, still **nonexact**. Modern locked
+MSVC emits **54B** for original **63B** `std::shared_ptr<EtamaArgInf>`
+move assignment at `0x0047C530`; a private manual legacy STL hypothesis
+emits **87B**, also nonexact. Original Renderer Animation allocation
+298B, script setup 338B and the 66B Bullet list prepend still require
+full independent source ABI closure; never import private fake owners.
+See [full typed shot-emitter C++20 research and switch-table audit](BULLET_EMITTER_FULL_CXX_FRONTIER.md).
+This is **documentation-only**: zero changed canonical code inputs,
+**zero native units require replay**, and no unfiltered cold replay.
+Live game-authored exact total remains **292 functions / 76,963B**.
+The 1,404B command11, 273B draw group, 12,140B Bullet command root,
+41,967B Enemy opcode and this 3,735B emitter remain nonexact.
+
+
 CORE/EXACT-283 (web) completes **the entire 2,018B** original
 `Bullet::process_collision(int)` at `0x00484A20`, **532 original x86
 instructions**, **81 native relocation sites** (68 direct calls, 13
