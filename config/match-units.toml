@@ -19469,3 +19469,18 @@ target_address = 0x00506540
 size = 41
 relocations = [
 ]
+
+# CORE/EXACT-407: entire original 67B DamageHandle lookup with a defined
+# Identifier32 bit-cast and actual original Hit controller ownership.
+[units.damage_handle_resolve]
+source = "src/DamageHandleLookup.cpp"
+object = "build/core407-canonical/DamageHandleLookup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::DamageHandle::resolve"]
+symbol = "?resolve@DamageHandle@th20@@QAEPAVDamageRegion@2@XZ"
+target_address = 0x004C0E10
+size = 67
+relocations = [
+  { offset = 0xC, type = "REL32", symbol = "?hit_controller@th20@@YAPAVHitCtrlInf@1@H@Z", target = 0x00478EC0 },
+  { offset = 0x26, type = "REL32", symbol = "?find@HitCtrlInf@th20@@QAEPAVDamageRegion@2@UIdentifier32@2@@Z", target = 0x004C0D00 },
+]

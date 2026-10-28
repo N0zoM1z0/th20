@@ -128,3 +128,22 @@ its full function. Private audit:
 No unrelated source is cold replayed; no unfiltered
 repository cold replay or whole-game runtime equivalence
 is asserted.
+
+
+## Subsequent CORE/EXACT-407 complete DamageHandle lookup callee
+
+The separate native **67-byte** `DamageHandle::resolve` at
+`0x004C0E10`, still open at this historical checkpoint,
+is now **67/67 whole original strict exact**. It copies the
+existing raw 4-byte DamageHandle word into the genuine
+`Identifier32` by-value lookup using a defined compiler
+bit-cast, retaining the original DamageHandle scalar
+constructor ABI; no unsafe alias casting or false
+member retyping is introduced. The original two E8
+references target the separately exact 26B
+`hit_controller(0)` and 264B `HitCtrlInf::find`.
+The actual PlayerStorage.hpp compiler-receipt
+closure passed **80/80 strict units in 27 cold source
+objects**, no full replay. Earlier statements that
+the 67B lookup remains unclosed are superseded.
+Read the [complete independent 67B native method proof](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md).

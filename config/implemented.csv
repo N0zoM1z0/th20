@@ -1133,3 +1133,4 @@ th20::PlayerShotController::reset_timer_12400
 th20::PlayerShot::retire
 th20::PlayerShotController::return_to_free
 th20::PlayerShot::heap_owned
+th20::DamageHandle::resolve

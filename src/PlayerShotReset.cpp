@@ -1,7 +1,7 @@
 // Complete native PlayerShot lifetime and controller reset chain.
 // Independently exact physical originals: 269B reset, 32B timer wrapper,
 // 166B PlayerShot retire, 55B controller recycle, 41B heap ownership.
-// The distinct 67B DamageHandle::resolve callee remains unimplemented.
+// The distinct 67B DamageHandle::resolve is exact in its own source owner.
 #include "PlayerStorage.hpp"
 #include "DamageRegion.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -41,8 +41,8 @@ void PlayerShotController::return_to_free(PlayerShot* shot) {
 }
 
 // Complete original 166B PlayerShot retirement and conditional destruction.
-// The independent DamageHandle::resolve callee remains a separate native
-// method to reconstruct and does not gain exact credit from this caller.
+// DamageHandle::resolve is independently whole exact in its own source
+// provider and has its own original native 67-byte accounting.
 void PlayerShot::retire() {
     field_9c = 0;
     { handle_18.retire(); }

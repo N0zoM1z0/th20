@@ -30,7 +30,7 @@ class DamageRegion;
 struct DamageHandle {
     std::uint32_t value;
     explicit DamageHandle(std::uint32_t initial=0);
-    // Separate original native 0x004C0E10 lookup: still unclosed.
+    // Native complete 67-byte hit-controller lookup, separately strict exact.
     DamageRegion* resolve();
 };
 struct PlayerOption {

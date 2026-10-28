@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-402 complete PlayerShot retirement and free-list ownership.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-407 complete DamageHandle/HitCtrlInf lookup ABI.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,135** |
-| Canonical strict native units | **1,137** |
-| Unique canonical object providers | **227**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **362**, covering **115,230 native bytes** |
+| Source-present mappings, all origins | **1,136** |
+| Canonical strict native units | **1,138** |
+| Unique canonical object providers | **228**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **363**, covering **115,297 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 227 current canonical object/receipt pairs, native proof documents,
+The 228 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `DamageHandle::resolve` | `0x004C0E10` | **67** | [complete safe Identifier32 bit-cast and real Hit controller lookup](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md) |
 | `PlayerShot::retire` / `PlayerShotController::return_to_free` / `PlayerShot::heap_owned` | `0x00506AF0` / `0x00506AB0` / `0x00506540` | **166 / 55 / 41** | [complete original shot retirement and ownership lifecycle](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md) |
 | `PlayerShotController::reset_all` / `reset_timer_12400` | `0x00504950` / `0x00506CD0` | **269 / 32** | [complete PlayerShot lifetime iterator and Timer reset](PLAYER_SHOT_CONTROLLER_RESET_269_EXACT_RECONSTRUCTION.md) |
 | `create_bomb_controller` / `create_hit_controller` | `0x00478300` / `0x004C20D0` | **123 / 92** | [whole native Bomb and Hit factories](BOMB_HIT_FACTORY_COMPLETE_EXACT_RECONSTRUCTION.md) |
@@ -376,9 +377,37 @@ the three new units give **79/79 exact units in 26 serial
 cold objects**, not a full cold replay. A single MSVC-private
 `$SG` rename retained its original PE string destination
 `0x00572BB8` and the strict original byte comparison.
-**The separate 67B `DamageHandle::resolve` at `0x004C0E10`
-remains open** and gains no inferred exact credit.
+At that earlier checkpoint, the separate 67B `DamageHandle::resolve`
+at `0x004C0E10` remained open; CORE/EXACT-407 now closes it
+separately, without inferring exactness from its caller.
 [Whole original retirement proof](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-407 independently closes the entire **67B
+DamageHandle::resolve** native game method at `0x004C0E10`,
+**24/24 original instructions** and two original native E8
+references, resolving to the previously exact 26B
+`hit_controller(0)` and 264B `HitCtrlInf::find`.
+The correct source retains DamageHandle's original raw
+4B member and exact folded 24B scalar constructor;
+the defined MSVC `__builtin_bit_cast` copies the ID to
+a genuine by-value Identifier32 without an unobserved
+`/Od` helper or undefined pointer alias cast.
+Only the real previous `PlayerStorage.hpp` receipt closure
+of **26 old source providers / 79 old strict units**
+plus one new source object is rebuilt:
+**80/80 whole native strict units in 27 cold objects**
+across six serialized batches. No global cold replay,
+duplicated native byte credit or ABI-breaking header
+retyping. The complete prior 166B shot retire, 269B
+shot reset, 966B Player reset and 1,518B option boss
+remain exact.
+A separate existing `src/HitCtrlInf.cpp` provider was cold
+rebuilt after its previous global-input receipt became stale:
+**16/16 strict units in one additional object** passed,
+including complete 26B/264B original callees. This is
+outside the actual header-include closure and does
+not expand the 80-unit changed-source scope.
+[Whole original 67B PE/COFF proof](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 
