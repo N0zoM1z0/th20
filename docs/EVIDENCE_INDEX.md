@@ -17,6 +17,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Player
 
+- [Complete 1,518B Player option rebuild source frontier — nonexact](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md) — entire 418-instruction original boss now has maintained 1,586B / 418-instruction C++20 source, 387/418 aligned native mnemonic kinds, complete 57 original call and three PE relocation audit; parent is **not** credited exact.
+
 - [Exact 57B AnimationFile flag-2 spawn and 17B Player file accessor](PLAYER_OPTION_RESOURCE_ABI_EXACT_RECONSTRUCTION.md) — original hidden-return ABI and sole 0x00450CB0 call at +0x2C, native Player+0x1C, with 232/232 affected strict units across 49 cold objects.
 
 - [Exact WeaponStone option script and pair-initialization dispatchers (167B)](WEAPON_STONE_OPTION_DISPATCH_EXACT_RECONSTRUCTION.md) — entire 77B focused-branch virtual script selector and 90B two-weapon virtual option setup; 39/39 affected-only strict units across eight objects.

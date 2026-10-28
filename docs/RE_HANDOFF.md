@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-28; CORE/EXACT-330 Player/AnimationFile resource ABI.** This file is the concise
+**Updated 2026-10-28; CORE/RECON-333 complete Player option rebuild source frontier.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,7 +16,7 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,120** |
+| Source-present mappings, all origins | **1,121** |
 | Canonical strict native units | **1,110** |
 | Unique canonical object providers | **222**, each with an exact `.obj` and `.receipt.json` |
 | Exact game-authored whole functions | **323**, covering **81,509 native bytes** |
@@ -126,6 +126,18 @@ compiler profiles. The 1,518-byte parent remains **nonexact**: these new
 ABIs distinguish its native 5-arg resource creation from a speculative
 direct 7-arg call.
 
+CORE/RECON-333 now maintains the **whole 1,518-byte**
+`Player::rebuild_option_animations` at `src/PlayerOptionRebuild.cpp`
+as a **NONEXACT** complete-function C++20 source frontier. The locked
+MSVC `/GS-` plus live 8-byte-aligned `IntPoint` result matches the native
+stack prologue and full return, and emits **1,586B / 418 instructions**
+with **387/418 original instruction kinds in order**. Independent original
+reference audit: **57 E8 calls + 3 PE HIGHLOW fields**. It still lacks
+full original relocation/instruction/lifetime equivalence, so **zero
+canonical exact bytes** were claimed. The resource script fields at
+PlayerShotData+0x88/+0xA8 and stack-slot ownership need further review.
+Read [the full boss source frontier](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md).
+
 ## Open complete-function roots — next agent's priorities
 
 1. **Bullet command 11 `0x00481200`: 1,404 bytes / 357 native
@@ -182,7 +194,8 @@ direct 7-arg call.
 ## New large Player frontier after exact reset
 
 The full `Player::rebuild_option_animations` at `0x004FACA0` is
-**1,518 native bytes, not yet exact**. It is called directly by the
+**1,518 native bytes, still nonexact**. Its maintained C++20 whole-function
+source is now [here](PLAYER_OPTION_REBUILD_FULL_SOURCE_FRONTIER.md). It is called directly by the
 now complete 966B reset root and contains resource/AnimationHandle
 replacement, Player option assignment and animation-file selection.
 Work on its own whole-function evidence and genuine callees, not a
