@@ -147,3 +147,25 @@ unfinished source reconstruction**, not automatically
 credited from these newly exact five real coordinate
 dependencies. Whole-game linkage and runtime behavior
 are also separate unproven tasks.
+
+
+## Subsequent CORE/EXACT-417 complete 1,081-byte caller closure
+
+The previously open full original **1,081-byte Player per-option
+frame** at `0x004FA860` is now **strict whole native exact**:
+**1,081/1,081 bytes, all 325 original instructions and
+all 40 native E8/HIGHLOW references**. The five full
+IntPoint methods established in this original checkpoint
+are used as genuine chained aggregate operations by the
+new exact source; their original addresses are **not**
+re-credited. The independent **70B `IntPoint::to_vector3`**
+at `0x004FEE00` is also strict whole exact, with
+two independently original PE float references.
+The real callback fields have four-byte native
+PlayerOption **member-function pointer** ABI, not
+free-function pointers. Actual shared-header receipt
+closure replay passed **107/107 exact units across
+32 cold source objects**, without any full-repository
+replay. Original 3,111B enclosing Player frame root
+remains separately nonexact. See the
+[full native Player option-frame proof](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md).

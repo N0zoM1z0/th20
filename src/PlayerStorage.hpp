@@ -48,10 +48,19 @@ struct PlayerOption {
     std::uint32_t field_108,field_10c;
     float field_110;
     AnimationHandle handle_114;
-    std::uint32_t field_118,field_11c,field_120;
+    std::uint32_t field_118;
+    // Native ECX-receiver callbacks in the per-option frame method.
+    // These are single-inheritance 4-byte *member* function pointers,
+    // not integer addresses or free-function pointers.
+    void (PlayerOption::*field_11c)();
+    void (PlayerOption::*field_120)();
     std::int32_t player_index;
     Context* context;
     PlayerOption() noexcept;
+#if defined(_M_IX86)
+    static_assert(sizeof(decltype(field_11c)) == 4);
+    static_assert(sizeof(decltype(field_120)) == 4);
+#endif
 };
 struct PlayerFeedback : Timer {
     Timer timer_10,timer_20;

@@ -1140,3 +1140,5 @@ th20::IntPoint::operator*(int) const,0x004F57C0,function
 th20::IntPoint::operator-(const IntPoint&) const,0x004F5890,function
 th20::IntPoint::operator/(int) const,0x004F5920,function
 th20::IntPoint::operator+=(const IntPoint&),0x004F70F0,function
+th20::Player::update_option_frame,0x004FA860,function
+th20::IntPoint::to_vector3,0x004FEE00,function

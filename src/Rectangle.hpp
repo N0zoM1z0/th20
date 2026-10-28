@@ -6,6 +6,7 @@
 namespace th20 {
 
 struct Vector2;
+struct Vector3;
 
 // Actual atlas return value and Player fixed coordinates, without resources.
 struct IntPoint {
@@ -21,6 +22,8 @@ struct IntPoint {
     // The original addition assignment returns a whole 8-byte value,
     // not a reference to its receiver.
     IntPoint operator+=(const IntPoint& other);
+    // Original 70-byte signed fixed-coordinate to presentation vector.
+    void to_vector3(Vector3& output) const;
     void assign_scaled(const Vector2& position);
 };
 

@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-410 five complete IntPoint option-coordinate dependencies.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-417 full 1,081-byte Player option-frame boss.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,141** |
-| Canonical strict native units | **1,143** |
-| Unique canonical object providers | **228**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **368**, covering **115,549 native bytes** |
+| Source-present mappings, all origins | **1,143** |
+| Canonical strict native units | **1,145** |
+| Unique canonical object providers | **229**, each with an exact `.obj` and `.receipt.json` |
+| Exact game-authored whole functions | **370**, covering **116,700 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -35,7 +35,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 per-source locked MSVC x86 profiles. The target is the agreed Steamless
 variant; embedded 1.00c title strings do not change its verified v1.00a
 package identity. Never swap the target with the Steam-original backup.
-The 228 current canonical object/receipt pairs, native proof documents,
+The 229 current canonical object/receipt pairs, native proof documents,
 private Ghidra data and toolchains must be protected. **A native exact
 function is not proof of whole-game linkage or runtime completeness.**
 
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `Player::update_option_frame` / `IntPoint::to_vector3` | `0x004FA860` / `0x004FEE00` | **1,081 / 70** | [entire Player option gameplay boss and true ECX callback ABI](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md) |
 | `Five native IntPoint option-coordinate operations` | `0x004F5700` / `0x004F57C0` / `0x004F5890` / `0x004F5920` / `0x004F70F0` | **49 / 45 / 48 / 45 / 65** | [whole original signed/wrapping coordinate dependencies](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) |
 | `DamageHandle::resolve` | `0x004C0E10` | **67** | [complete safe Identifier32 bit-cast and real Hit controller lookup](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md) |
 | `PlayerShot::retire` / `PlayerShotController::return_to_free` / `PlayerShot::heap_owned` | `0x00506AF0` / `0x00506AB0` / `0x00506540` | **166 / 55 / 41** | [complete original shot retirement and ownership lifecycle](PLAYER_SHOT_RETIRE_166_EXACT_RECONSTRUCTION.md) |
@@ -429,9 +430,42 @@ with 100 old strict units; the five new bodies in the
 strict units in 31 serial cold objects**, not a full
 repository cold replay. Six MSVC-private `$SG` labels
 were reconciled only with independent original PE
-target verification. The larger 1,081B option-frame
-and 3,111B Player frame bosses remain open.
+target verification. At CORE/EXACT-410 time, the larger 1,081B
+option-frame and 3,111B Player frame bosses were
+both open. The former is now fully exact in
+CORE/EXACT-417, while the latter remains open.
 [Whole independent IntPoint ABI proof](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-417 closes the entire **1,081-byte Player
+per-option frame gameplay boss** at `0x004FA860`,
+**325/325 original i386 instructions and all
+40 independent PE E8/HIGHLOW references**. The
+true 4-byte `PlayerOption` callback fields are
+**single-inheritance member-function pointers**,
+giving the original ECX receiver and avoiding two
+unobserved 5-byte function-pointer spills.
+A chained actual IntPoint interpolation expression
+retains the true aggregate hidden-result ABI and
+signed frame gates, in addition to animation and
+resource ownership. Its separate native **70-byte
+IntPoint::to_vector3** at `0x004FEE00` is also
+**70/70 exact**, with two independently original
+128.0f PE HIGHLOW fields; the previous five full
+IntPoint helpers remain exact and are not duplicated.
+The previous `Player.hpp`/`PlayerStorage.hpp`/
+`Rectangle.hpp` receipt union covers **31 old source
+providers / 105 old strict units**; adding one
+new actual provider and one method to an existing
+owner gives **107/107 strict units in exactly
+32 serialized cold objects**. Six compiler-private
+Player/Dialogue/Ascii `$SG` identifiers were
+accepted only against independently real native
+string targets, reference offsets and full
+nonrelocation bytes. The original **3,111-byte
+Player::frame_changed** enclosing caller remains
+independently NONEXACT. No unfiltered full cold
+replay. [Independent entire Player option frame
+proof](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 
