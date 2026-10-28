@@ -699,9 +699,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041FC50,unknown,Configuration,review,pending,REF-007; default member/bitfield initializer emission cannot distinguish explicit authored constructor from compiler synthesis
 0x0041FCB0,authored,InputState,authored,high,CORE/EXACT-463; docs/INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md; original 261B InputInf ctor calls this true InputDevice/ButtonState gameplay storage constructor with independent PE fields
 0x0041FD20,unknown,TaskInfo,review,pending,"EXACT-074: Complete actual Task68 and Controller312/317 construction add380body/385comparisonbytes. Frozen562unit/103fresh-object graph replays98392disjointbytes. Explicit aggregate flag zeroing before setting bit1, native EnemyCtrlInf RTTI/vtable identity, all real member constructors, full padding/EH/nonthrowing information and original log literal are checked independently. Owned creation tests now use production Controller/Task construction, dirty guards and real generation side effects. Factory60/73, whole find241/251, statistics219, sentinel constructor31/40, other child emissions, Controller disposal,41KB opcode root and whole-game link/runtime remain open. No authored origin or whole reference association closure follows. See docs/EXACT_CONTROLLER_CONSTRUCTION_RECONSTRUCTION.md."
-0x0041FD70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041FD70,authored,InputInf,authored,high,"CORE/EXACT-472; docs/INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md; 120B original whole game destructor, 49B compiler-emitted scalar deleting wrapper, independently original native fields and RTTI"
 0x0041FDF0,unknown,TaskInfo,review,pending,REF-003; custom class RTTI known; empty/defaulted lifetime contribution authorship versus compiler synthesis unresolved
-0x0041FE10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041FE10,compiler,InputInf,review,high,"CORE/EXACT-472; docs/INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md; 120B original whole game destructor, 49B compiler-emitted scalar deleting wrapper, independently original native fields and RTTI"
 0x0041FE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041FE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00420180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

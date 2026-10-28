@@ -4,6 +4,7 @@
 // have independently observed original storage and constructor calls.
 #include "InputInf.hpp"
 #include "EclDiagnostic.hpp"
+#include "FunctionChainController.hpp"
 
 namespace th20 {
 // Original native startup publishes the actual InputInf* at 0x005B8898.
@@ -17,4 +18,15 @@ InputInf::InputInf() noexcept
     ecl_diagnostic_hint("initialize InputInf\n");
     process_input_inf = this;
 }
+// Whole original 120-byte owner destruction: announce teardown,
+// unregister the live scheduled update callback, shut down input devices,
+// clear the actual global owner and destroy the true TaskInfo base.
+// The compiler emits the distinct 49B virtual scalar-deleting wrapper.
+InputInf::~InputInf() {
+    ecl_diagnostic_hint("shutdown InputInf\n");
+    process_chain->remove(update_node);
+    shutdown();
+    process_input_inf = nullptr;
+}
+
 } // namespace th20

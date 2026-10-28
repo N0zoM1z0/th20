@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-467 complete 261-byte native InputInf manager constructor.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-472 InputInf destructor and compiler deleting wrapper.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,160** |
-| Canonical strict native units | **1,161** |
+| Source-present mappings, all origins | **1,162** |
+| Canonical strict native units | **1,163** |
 | Unique canonical object providers | **231**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **386**, covering **118,589 native bytes** |
+| Exact game-authored whole functions | **387**, covering **118,709 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `InputInf::~InputInf` / MSVC deleting wrapper | `0x0041FD70` / `0x0041FE10` | **120 / 49 compiler support** | [whole InputInf virtual destructor and compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) |
 | `InputInf::InputInf` | `0x0041F8A0` | **261** (+5 PE CC compared) | [entire original RTTI InputInf 261B constructor and full 266B aligned source](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md) |
 | `InputButtonState::InputButtonState` / `InputDevice::InputDevice` | `0x0041F9B0` / `0x0041FCB0` | **340 / 102** | [complete genuine input state/device constructor ABI and original PE references](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) |
 | `InputInf::for_view` | `0x00498FB0` | **26 (existing)** | [immutable PE RTTI InputInf, 261B original constructor and real input owner](INPUT_INF_RTTI_OWNER_LAYOUT_CORRECTION.md) |
@@ -819,6 +820,34 @@ The still nonexact 555B Player motion,
 remain independent open work.
 [Entire 261B native InputInf constructor
 and five original CC bytes](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-472 closes the **full original 120-byte /
+35-instruction InputInf virtual destructor** at
+`0x0041FD70` (**120/120 game body, 125/125
+physical original bytes with five real CC**).
+Its distinct **49B/18-instruction MSVC deleting
+wrapper** at `0x0041FE10` is a separately
+strict exact **compiler support** unit, not an
+extra authored gameplay function or game-byte
+credit. Ten real original PE E8/HIGHLOW fields
+in the destructor and two in the deleting wrapper
+were independently attested. The original dtor
+removes the real TaskInfo callback, calls the
+**still-open 466B InputInf::shutdown** at
+`0x004202C0`, clears the true global and runs
+the exact TaskInfo base destructor. One compiler
+private `$SG` symbol changed only after verifying
+the unchanged original target `0x0056D4DC` and
+complete original bytes. The true prior
+`InputInf.hpp` receipt graph was two
+sources/two old strict units; new lifetime bodies
+pass **4/4 strict units across two cold objects**,
+including still-exact 261B ctor and 26B input lookup.
+Current authored game exact **387 functions /
+118,709 bytes**, strict units **1,163** in
+231 canonical objects. InputInf 466B shutdown
+and 3,490B input update remain NONEXACT.
+[Complete native InputInf destructor proof](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

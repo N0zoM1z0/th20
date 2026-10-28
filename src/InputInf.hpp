@@ -13,6 +13,11 @@ class InputInf : public TaskInfo {
 public:
     // Native noexcept constructor is 261B with five real trailing CC bytes.
     InputInf() noexcept;
+    // Whole 120B native virtual destructor, five actual CC alignment
+    // bytes and a distinct compiler-generated 49B scalar deleting wrapper.
+    ~InputInf() override;
+    // The independent original 466B device/pad shutdown remains NONEXACT.
+    std::int32_t shutdown();
     std::uint32_t state_10, state_14, state_18, state_1c;
     // The native vector constructor uses each 0x3D4-byte device's true
     // default constructor, not a std::array wrapper helper.

@@ -19881,7 +19881,48 @@ relocations = [
   { offset = 0x73, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
   { offset = 0xC7, type = "DIR32", symbol = "??0InputBindings@th20@@QAE@XZ", target = 0x0041FB10 },
   { offset = 0xDA, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
-  { offset = 0xDF, type = "DIR32", symbol = "$SG50531", target = 0x0056D4DC },
+  { offset = 0xDF, type = "DIR32", symbol = "$SG78649", target = 0x0056D4DC },
   { offset = 0xE4, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0xEF, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+]
+
+# CORE/EXACT-472: entire original 120B InputInf
+# lifetime member;
+# exact complete 125B/49B source contribution and immutable PE relocations.
+[units.input_inf_destroy]
+source = "src/InputInfConstruction.cpp"
+object = "build/core467-canonical/InputInfConstruction.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::InputInf::~InputInf"]
+symbol = "??1InputInf@th20@@UAE@XZ"
+target_address = 0x0041FD70
+size = 120
+compare_size = 125
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1InputInf@th20@@UAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2B, type = "DIR32", symbol = "??_7InputInf@th20@@6B@", target = 0x0056D4D0 },
+  { offset = 0x30, type = "DIR32", symbol = "$SG78653", target = 0x0056D684 },
+  { offset = 0x35, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x45, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 0x4A, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
+  { offset = 0x52, type = "REL32", symbol = "?shutdown@InputInf@th20@@QAEHXZ", target = 0x004202C0 },
+  { offset = 0x58, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+  { offset = 0x64, type = "REL32", symbol = "??1TaskInfo@th20@@UAE@XZ", target = 0x0041FDF0 },
+]
+
+# CORE/EXACT-472: entire original 49B InputInf
+# lifetime compiler-generated deleting-wrapper support;
+# exact complete 125B/49B source contribution and immutable PE relocations.
+[units.input_inf_scalar_deleting_destroy]
+source = "src/InputInfConstruction.cpp"
+object = "build/core467-canonical/InputInfConstruction.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::InputInf::scalar_deleting_destructor"]
+symbol = "??_GInputInf@th20@@UAEPAXI@Z"
+target_address = 0x0041FE10
+size = 49
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??1InputInf@th20@@UAE@XZ", target = 0x0041FD70 },
+  { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
 ]

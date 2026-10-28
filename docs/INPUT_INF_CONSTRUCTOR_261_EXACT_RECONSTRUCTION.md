@@ -164,3 +164,20 @@ still-open whole **555B Player movement** and
 **3,111B Player main-frame** routines do not gain
 exactness from this InputInf ctor. No unfiltered
 whole-repository cold replay was run.
+
+
+## CORE/EXACT-472 — subsequent native InputInf lifetime closure
+
+The original 120B `InputInf::~InputInf` at `0x0041FD70`
+is now **120/120 game body +125/125 full original compiler
+alignment bytes strictly exact**. Its separate compiler-emitted
+49B scalar deleting wrapper at `0x0041FE10` is **49/49
+strictly exact support**, not a second authored game function.
+They share this existing canonical translation unit with the
+still exact 261B constructor. The only compiler-private
+string renumber preserved its independent original native target
+`0x0056D4DC` and the full unchanged original body.
+**4/4 strict units in two source-scoped cold objects** passed,
+no full replay. The separate 466B InputInf shutdown remains
+NONEXACT.
+[Whole original destructor and deleting-wrapper proof](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md).
