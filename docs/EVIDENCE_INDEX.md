@@ -32,6 +32,8 @@ live ledgers. Superseded cumulative session logs remain available in Git history
 
 ## Bullet firing
 
+- [Complete original 662-byte Bullet cancellation frontier audit](BULLET_CANCEL_662_NATIVE_FRONTIER.md) — independent 199-instruction/25-call boss analysis and whole-body compiler counterexamples; **not** an exact code admission.
+
 - [Exact complete 401-byte bounded Bullet radius cancellation](BULLET_LIMITED_CANCELLATION_EXACT_RECONSTRUCTION.md) — whole native list/limit/early-exit gameplay boss, newly recovered real bits 11..12 of Bullet flags, all 16 native relocations, 51/51 affected strict units.
 
 - [Exact Bullet radial distance and original caller](BULLET_DISTANCE_EXACT_RECONSTRUCTION.md) — entire 122B native vector-difference/squared-distance predicate with full-EAX return and five independently verified relocations; existing 320B cancellation boss remains exact.

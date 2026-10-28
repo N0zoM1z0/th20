@@ -47,6 +47,20 @@ web reconstruction is a separate batch. Commit prefixes follow the active sessio
 
 ## Latest work to resume
 
+CORE/AUDIT-230 (web) independently re-attests the **entire nonexact
+662-byte** original `Bullet::cancel` at `0x0047C8F0`: 199 native x86
+instructions, 25 direct calls to 21 distinct addresses, full animation
+handle/spawn/effects/drops/positional sound/Vector3 motion/Timer/manager
+view protocol. Twelve full C++20 native probes compiled to 640..680B;
+**a candidate with exactly 662B length still matches just 245/526
+non-relocation bytes** due wrong local/result ABI and register allocation.
+No source or exact-credit change. See
+[complete Bullet cancel frontier](BULLET_CANCEL_662_NATIVE_FRONTIER.md).
+The 3,735-byte Bullet single-shot emitter and 41,967-byte Enemy opcode
+root also remain nonexact. Documentation-only scope: **zero affected units**,
+no canonical or whole-graph replay. Exact totals remain **246 / 63,154B**.
+
+
 CORE/EXACT-229 (web) admits complete original **401-byte** capped
 `BulletController::cancel_near_limited` at `0x0047CF60`, all **16 native
 relocations**, full SEH/iterator lifetime and bounded early return. The real
