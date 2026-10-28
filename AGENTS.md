@@ -89,6 +89,13 @@ role. Put unique native findings in focused evidence documents and link them
 through EVIDENCE_INDEX.md; do not duplicate cumulative checkpoint logs across
 core documents. Historical batch totals must not masquerade as current status.
 
+At the beginning of each continuation, inspect the entire live Git status
+(staged, unstaged and untracked). The user explicitly says this is the
+**only** active reconstruction session; treat existing dirty changes as
+your own work to understand, reconcile, validate and commit. Do not
+skip modified files, reset them blindly, or switch to a stale remote
+checkout to avoid the dirty work.
+
 Use one writable reconstruction session at a time. Do not delegate matching or
 run concurrent MSVC builds. Keep `config/claims.csv` header-only. Work on one
 bounded address, coherent owner/protocol, or workflow-maintenance batch.
