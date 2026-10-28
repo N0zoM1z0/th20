@@ -125,3 +125,20 @@ Historical CORE-087 checkpoint: 57 public tests pass (131.530 seconds); 614/614 
 strictly replay over 120 fresh objects /119857 disjoint bytes. Protected
 retirement saves 179919 net bytes, preserves 240 canonical hashes and repeats
 614/614 strict replay with 120 existing objects and no rebuild.
+
+
+## CORE/EXACT-382/383 — later complete constructor, commit and origin closure
+
+The earlier statement that the 199B constructor and 70B
+`ProgressSaveManager::commit` were nonexact is now **superseded**.
+The natural real Worker side-effect scopes reproduce the original
+one and two NOPs respectively; both entire original bodies now
+pass strict canonical matching including nine and three
+independently attested original E8/HIGHLOW fields. The 75B
+backup-copy and 107B merge game-function bodies, already separately
+canonical exact before this checkpoint, also have newly reviewed
+authored origin; their physical function bytes are credited only
+once. The 299B destructor was already authored exact and is not
+newly counted. Complete source-local strict replay: **5/5 units
+in one rebuilt object**, no shared header or full cold replay.
+See [the complete independent ProgressSaveManager original proof](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md).

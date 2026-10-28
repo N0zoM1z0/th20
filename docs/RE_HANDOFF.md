@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-381 five large and five small native gameplay provenance closures.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-383 complete ProgressSaveManager Worker lifecycle.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -17,9 +17,9 @@ old reports and probe filenames are **not** current status.
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
 | Source-present mappings, all origins | **1,130** |
-| Canonical strict native units | **1,126** |
+| Canonical strict native units | **1,128** |
 | Unique canonical object providers | **226**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **349**, covering **113,209 native bytes** |
+| Exact game-authored whole functions | **353**, covering **113,660 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `ProgressSaveManager` ctor / `commit` / copy / merge | `0x0050E5D0` / `0x0050F660` / `0x0050EEB0` / `0x0050F5F0` | **199 / 70 / 75 / 107** | [full Worker/ProgressSnapshot original methods](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md) |
 | `ProgressProfile::ProgressProfile` | `0x0050AF20` | **13,684** | [complete game-specific save Profile constructor](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
 | `Animation::update_geometry` | `0x00435C80` | **5,388** | [seven-selector geometry and attached tables](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
 | `easing` | `0x00454EF0` | **4,154** | [whole game easing dispatcher plus jump table](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md) |
@@ -273,6 +274,20 @@ original units across exactly five existing source objects** were
 cold recompiled/replayed, with no public header changes and no
 unfiltered full cold replay.
 [Independent original provenance and table proof](LARGE_GAMEPLAY_BOSSES_28350_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-382/383 newly reconstructs the complete **199-byte**
+`ProgressSaveManager` constructor and **70-byte** save submission,
+with natural real Worker lexical scopes emitting the original one/two
+post-call NOPs. The separately maintained **75-byte** copy and
+**107-byte** merge methods were already canonical exact, and their
+game-owned origin is now confirmed. Four nonoverlapping game-owned
+original functions add **451 authored exact bytes**, of which **269B
+are actually newly codegen-exact C++ this turn**. The previously
+exact 299B destructor remains exact and receives no duplicate
+credit. All **5/5 affected source-owner strict units in one cold
+object** pass, with all 18 original E8/HIGHLOW anchors independently
+audited. No unrelated source or full cold replay.
+[Whole lifecycle native proof](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

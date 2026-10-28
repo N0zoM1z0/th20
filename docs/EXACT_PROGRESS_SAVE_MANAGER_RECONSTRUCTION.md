@@ -142,3 +142,20 @@ graph strictly replays613/613 units /119 fresh objects /119777 disjoint
 bytes. Protected retirement removes10 probe products, saves 254260 net
 bytes after original receipt/input and replay archives, preserves all238
 canonical hashes and replays613/613 using119 existing objects without rebuilding.
+
+
+## CORE/EXACT-382/383 — later complete constructor, commit and origin closure
+
+The earlier statement that the 199B constructor and 70B
+`ProgressSaveManager::commit` were nonexact is now **superseded**.
+The natural real Worker side-effect scopes reproduce the original
+one and two NOPs respectively; both entire original bodies now
+pass strict canonical matching including nine and three
+independently attested original E8/HIGHLOW fields. The 75B
+backup-copy and 107B merge game-function bodies, already separately
+canonical exact before this checkpoint, also have newly reviewed
+authored origin; their physical function bytes are credited only
+once. The 299B destructor was already authored exact and is not
+newly counted. Complete source-local strict replay: **5/5 units
+in one rebuilt object**, no shared header or full cold replay.
+See [the complete independent ProgressSaveManager original proof](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md).

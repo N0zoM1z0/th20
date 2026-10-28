@@ -5,17 +5,27 @@
 namespace th20 {
 
 ProgressSaveManager::ProgressSaveManager() {
-    worker.close_and_join();
+    // The native Worker shutdown is a real completed lifecycle statement.
+    // This scope naturally emits the original MSVC /Od post-call NOP.
+    {
+        worker.close_and_join();
+    }
     auto& owned_worker=worker;
     void* argument=nullptr;
     owned_worker.start(this, &ProgressSaveManager::load, argument);
 }
 
 std::int32_t ProgressSaveManager::commit() {
-    worker.close_and_join();
+    // Wait for the previous task before scheduling a new save.
+    {
+        worker.close_and_join();
+    }
     auto& owned_worker=worker;
     void* argument=nullptr;
-    owned_worker.start(this, &ProgressSaveManager::save, argument);
+    // The native standalone Worker start has its own completed scope.
+    {
+        owned_worker.start(this, &ProgressSaveManager::save, argument);
+    }
     return 0;
 }
 

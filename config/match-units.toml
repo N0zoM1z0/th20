@@ -19239,3 +19239,39 @@ target_address = 0x004292E0
 size = 16
 relocations = [
 ]
+
+# CORE/EXACT-382: complete original 199B ProgressSaveManager constructor.
+[units.progress_save_manager_ctor]
+source = "src/ProgressSaveManager.cpp"
+object = "build/core164-canonical/ProgressSaveManager.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::ProgressSaveManager::ProgressSaveManager"]
+symbol = "??0ProgressSaveManager@th20@@QAE@XZ"
+target_address = 0x0050E5D0
+size = 199
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0ProgressSaveManager@th20@@QAE@XZ", target = 0x0056A923 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2C, type = "REL32", symbol = "??0ProgressSnapshot@th20@@QAE@XZ", target = 0x0050E540 },
+  { offset = 0x3A, type = "REL32", symbol = "??0ProgressSnapshot@th20@@QAE@XZ", target = 0x0050E540 },
+  { offset = 0x5A, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x6B, type = "REL32", symbol = "??0Worker@th20@@QAE@XZ", target = 0x0040B780 },
+  { offset = 0x80, type = "REL32", symbol = "?close_and_join@Worker@th20@@QAEXXZ", target = 0x0040BCF0 },
+  { offset = 0x9D, type = "DIR32", symbol = "?load@ProgressSaveManager@th20@@QAEXPAX@Z", target = 0x0050F3B0 },
+  { offset = 0xA9, type = "REL32", symbol = "??$start@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAEXPAUProgressSaveManager@1@P821@AEXPAX@ZAAPAX@Z", target = 0x0050AB10 },
+]
+
+# CORE/EXACT-383: complete native 70-byte Worker save commit, genuine C++ lexical scopes.
+[units.progress_save_manager_commit]
+source = "src/ProgressSaveManager.cpp"
+object = "build/core164-canonical/ProgressSaveManager.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::ProgressSaveManager::commit"]
+symbol = "?commit@ProgressSaveManager@th20@@QAEHXZ"
+target_address = 0x0050F660
+size = 70
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?close_and_join@Worker@th20@@QAEXXZ", target = 0x0040BCF0 },
+  { offset = 0x2F, type = "DIR32", symbol = "?save@ProgressSaveManager@th20@@QAEXPAX@Z", target = 0x0050FB60 },
+  { offset = 0x3B, type = "REL32", symbol = "??$start@UProgressSaveManager@th20@@P812@AEXPAX@ZPAX@Worker@th20@@QAEXPAUProgressSaveManager@1@P821@AEXPAX@ZAAPAX@Z", target = 0x0050AB10 },
+]

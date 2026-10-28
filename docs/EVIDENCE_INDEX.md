@@ -287,6 +287,8 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 ## Archive, Progress and sound
 
+- [Exact full ProgressSaveManager constructor/commit and copy/merge (451B)](PROGRESS_SAVE_MANAGER_LIFECYCLE_EXACT_RECONSTRUCTION.md) — new complete 199B native ctor and 70B Worker save submission from natural C++ scopes, plus existing strict 75B copy/107B merge game-origin confirmation; destructor already exact. 5/5 scoped strict units in one cold object.
+
 - [Complete byte-exact ProgressMetadata checksum](PROGRESS_INTEGRITY_BYTE_EXACT.md) — corrected native uint8 return, signed x86 address comparison, full 134-byte strict replay and eight-provider dependency validation.
 
 - [Whole archive-owner and resource-reader candidates](ARCHIVE_OWNER_RECONSTRUCTION.md)
