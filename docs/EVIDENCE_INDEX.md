@@ -40,6 +40,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-510 — four 120B exact game-owned Player frame dependencies, original whole E8/caller audit, 14B option-begin linker-fold identity](PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md) — original 45B handle equality, 17B Context effect getter, 38B EffectInfo file getter, 20B EnemyController count; fresh 20/20 strict units in two original owners. Physical 14B PlayerValues primary/secondary begin instantiations exactly match the original folded `0x0040BDA0`, zero duplicate original credit; 3,111B parent remains NONEXACT.
 
+## Full Archive LZSS compressor original strict native code
+
+- [CORE/EXACT-540 — exact original 1,036-byte whole LZSS compression boss](ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) — locked original 315 x86 instructions, independently original six E8 + six PE HIGHLOW fields and **988/988** other bytes, seven real native output running-sum read/add/store chains and original mask-first match predicate. Natural C++ `/Od` source newly emits strict **1,036/1,036 full native exact**, one fresh canonical source/object/1 strict unit; former 964B nonexact historical assumption superseded, no global cold replay.
+
 ## Game owner/graphics/player/codec entire original native exactness
 
 - [CORE/ORIGIN-535 — ten full Graphics, Player, Bullet, Item, Input, Progress, Archive and PBG game-owner functions, 6,057 original bytes](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md) — includes **941B Graphics**, **794B Player**, **712B PlayerRecord**, **706B LZSS decompression**, **612B ProgressMetadata** and **596B Item pool** complete strict original bodies. Immutable PE **106 original E8 / 17 PE HIGHLOW** fields and 1,479 original instruction heads independently audited; 6,067B complete compiler comparisons with only 6,057B authored body credit. Nine fresh existing canonical objects **119/119 strict units**, 4 high and 6 medium original authored confidence. Native 73B Animation factory still NONEXACT after bounded construct_at/SDL probes.

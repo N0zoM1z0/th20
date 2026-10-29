@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/ORIGIN-535.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-540.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -18,9 +18,9 @@ historical NONEXACT claims there must not override later exact proofs.
 | Original SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional PE boundaries | 6,928 |
 | Source-present mappings | **1,181** |
-| Strict canonical complete native units | **1,181** |
-| Unique canonical MSVC object/receipt providers | **241** |
-| Exact game-authored whole original functions | **475**, covering **167,819 original body bytes** |
+| Strict canonical complete native units | **1,182** |
+| Unique canonical MSVC object/receipt providers | **242** |
+| Exact game-authored whole original functions | **476**, covering **168,855 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -324,6 +324,40 @@ value/placement construction and MSVC `/sdl` flags; it remains
 The full Bullet emitter, Enemy ECL dispatcher and Player/Animation
 whole-frame bosses remain open.
 
+## Newly exact entire 1,036-byte Archive LZSS compressor boss
+
+**CORE/EXACT-540:** The entire original game-authored Archive compressor
+`0x00539550..0x0053995B`, **1,036 native bytes / 315 original x86
+instructions**, is now maintained as a **strict 1,036/1,036 original
+exact** canonical C++20 unit. The old 964B/293-instruction hypothesis
+omitted the actual original sum initialized at stack `[EBP-0x1C]` and
+persistently read/add/written during **all seven complete encoded-byte
+flush sites**. The original /Od genuinely retains that local although
+its eventual consumer is still unknown. Restoring **one genuine init +
+seven genuine three-instruction update chains** reproduces the native
+whole extent; correcting the commutative match-bit expression to
+original `weight & match` fixes the last **two original stack operand
+displacement bytes**. This is a real native accumulator and original
+expression-evaluation order, not artificial padding, source-fake
+checksum output, assembly or shortened prefix.
+
+The independently immutable PE whole-body audit covers **all six
+original E8 direct calls and six original PE HIGHLOW fields**, every
+native call/data target including the original LzssUtil label and
+8192-byte dictionary, plus **988/988 remaining native bytes**.
+Only `src/ArchiveLzssEncode.cpp` changed, no public/shared headers
+or old canonical objects; the one new whole source unit was cold
+compiled, with **1/1 strict native replay exact**. The existing
+**706B whole original LZSS decoder**, ArchiveOwner and Progress
+save-file semantics are untouched.
+[Whole original 315-instruction source, seven sum chains, PE field
+and canonical proof](ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md).
+Authored exact moves to **476 functions / 168,855 disjoint native
+bytes**, canonical strict units **1,182**, unique compiler providers
+**242**; source-present mappings stay **1,181**. The original
+SaveManager load/write/save/whole archive runtime remains open.
+No unfiltered whole-repository cold replay or linked game claim.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
@@ -333,7 +367,6 @@ whole-frame bosses remain open.
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
 | `0x004818E0` **3,735B** Bullet emitter | [Complete maintained real-owner C++20](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) now emits 3,516B / 890 instructions / 792 aligned mnemonic kinds, against original 3,735B/935. Emitter original `0x00482241` now calls exact 298B native Animation pool allocation, and `0x004822C5` calls exact 338B direct script loader (rather than distinct old 32B wrapper); genuine 13/11 original table cases and 3,832B original compiler contribution separately attested | Whole parent **NONEXACT**: finish historical 63B shared_ptr move-assignment ABI and original native 60 E8 vs candidate call/branch lifetimes and switch target positions; do not credit until entire exact original replay. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
-| `0x00539550` **1,036B** Archive LZSS encoder | `src/ArchiveLzssEncode.cpp` previous private 964B probe; [historical encoder evidence](ARCHIVE_WRITE_RECONSTRUCTION.md) | Original byte-flush accumulation has unverified observable use; do not introduce dead scalar solely for matching. |
 | `0x0047DCF0` **12,140B** Bullet controller dispatcher and `0x0048C010` **41,967B** Enemy ECL dispatcher | [Enemy dispatch layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and [source map](SOURCE_MAP.md) | Major real gameplay ownership and complete control-flow work; historical host/sanitizer counts are **not** current native exactness. |
 | `0x0042B5D0` **39,470B** Animation VM update | [Animation source map](SOURCE_MAP.md) | Separate large nonexact controller from already exact smaller Animation geometry and support routines. |
 

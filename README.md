@@ -50,10 +50,10 @@ are excluded from Git.
 ## Repository status
 
 At the October 29, 2026 checkpoint the maintained graph has **1,181
-source-present mappings**, **1,181 strict canonical native units** and
-**241 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **475 complete functions /
-167,819 original native bytes**. These are dated values, not a
+source-present mappings**, **1,182 strict canonical native units** and
+**242 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **476 complete functions /
+168,855 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -67,7 +67,7 @@ for the live inventory and consult the
 | Animation | Lifetime, child links, script/frame geometry and operands; 17 newly [origin-reviewed native-exact gameplay methods](docs/ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) add 5,527B, while the 39,470B VM parent is open; [source map](docs/SOURCE_MAP.md) |
 | Enemy | Whole defeat plus **ten complete 416–967B Enemy/Motion gameplay bosses** now [origin-reviewed and strict exact](docs/ENEMY_MOTION_7204_EXACT_ORIGIN_AUDIT.md), adding **7,204 disjoint native bytes**; the enclosing 41,967B original Enemy ECL dispatcher remains nonexact; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; the complete 3,111B [Player main-frame C++ frontier](docs/PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) is source-present but NONEXACT; four directly called 120B [original game leafs are now strict exact](docs/PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md) |
-| Archive and Progress | Entire **706B LZSS decompressor**, 612B ProgressMetadata and 346B PBG File::open have been [whole-native origin-reviewed](docs/GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md); remaining compressor and file/runtime bosses are separate NONEXACT roots |
+| Archive and Progress | Entire **1,036B [LZSS compressor boss now whole strict exact](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md)**, paired with independently authored-exact 706B decoder, 612B ProgressMetadata and 346B PBG File::open; remaining SaveManager file/runtime pipelines are separate nonexact roots |
 | Collision geometry | **19 complete original whole-function** geometry predicates, including 1,452B rectangle/rectangle and 1,439B line/rectangle bosses, now independently [origin-reviewed and strictly exact](docs/GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md); **13,360B disjoint authored credit** |
 | Input devices | Complete 3,490B [keyboard/DirectInput/XInput poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) strict exact; [corrected signed InputInf selector ABI](docs/INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md) from three original callers; game link/runtime remain open |
 | Interpolation gameplay | Ten complete [interpolation bosses and evaluators](docs/INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) add 8,571 native exact bytes, including 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog and independent ECL/Animation/Enemy/Bullet whole callers |

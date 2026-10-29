@@ -4,21 +4,24 @@
 namespace th20 {
 const char lzss_compressed_label[] = "D:\\cygwin\\home\\zun\\prog\\th20\\src\\pack\\LzssUtil.cpp:57 BYTE";
 
-// Shared MSB-first byte emission. Native discards the final partial byte.
-// Native also updates an unobserved local sum. Its protocol owner is unresolved;
-// no emission-only accumulator is introduced and this whole body is nonexact.
+// Original whole 1,036B / 315-instruction MSB-first LZSS compressor.
+// The immutable original performs seven genuine emitted-byte running-sum
+// updates and retains the resulting source-local value under MSVC /Od.
+// Its eventual owner/consumer is unobserved; do not invent an output or
+// change the caller ABI. The original also discards its final partial byte.
 #define ARCHIVE_ADVANCE_OUTPUT() \
     mask >>= 1; \
     if (!mask) { \
         *output = static_cast<std::uint8_t>(pending); \
         ++output; \
+        emitted_sum += pending; \
         pending = 0; \
         mask = 0x80; \
     }
 #define ARCHIVE_WRITE_BITS(value, first_weight) \
     weight = first_weight; \
     while (weight) { \
-        if ((value) & weight) pending |= mask; \
+        if (weight & (value)) pending |= mask; \
         ARCHIVE_ADVANCE_OUTPUT() \
         weight >>= 1; \
     }
@@ -30,6 +33,7 @@ std::uint8_t* archive_compress(const std::uint8_t* data, std::int32_t size,
     std::int32_t* output_size) {
     std::uint8_t mask=0x80;
     std::uint32_t pending=0;
+    std::uint32_t emitted_sum=0;
     auto* owned=static_cast<std::uint8_t*>(process_allocator->allocate_bytes(
         static_cast<std::int32_t>(static_cast<std::uint32_t>(size)<<1), lzss_compressed_label));
     if (!owned) return nullptr;

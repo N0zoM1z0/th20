@@ -1,5 +1,22 @@
 # Whole compression and encryption protocol
 
+**Later original native strict code status — CORE/EXACT-540:** The
+complete original 1,036B/315-instruction Archive LZSS compressor at
+`0x00539550` has since been
+[reconstructed as a full 1,036/1,036 byte native-exact C++ boss](ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md).
+The original physical code contains one initial zero and seven genuine
+read/add/write source-local emission-sum updates. Those observations
+now have a natural compiled source counterpart; the two remaining
+original mask-vs-value operand ordering bytes were fixed separately.
+All original six direct E8 and six PE HIGHLOW fields plus the 988
+remaining original native bytes are independently PE/COFF verified.
+The historical 964B/293-instruction and "never add an unused
+accumulator" NONEXACT claims **below predate this result**. The
+original sum's outward use is still unknown; no output or fake result
+was added. Encoder is now whole exact; complete GameFile/SaveManager
+runtime and malformed-input domains remain separate work.
+
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
