@@ -1,5 +1,7 @@
 # Whole ECL argument and tagged stack protocol
 
+**Later [CORE/ORIGIN-708](ECL_ARGUMENT_TAGGED_STACK_2073_ORIGINAL_GAME_EXACT_ORIGIN.md) independently establishes original game ownership for twelve of these previously native-strict ECL argument and tagged stack methods, adding exactly 2,073 disjoint game-authored original bytes. The existing float_argument 287B, consuming_float 261B and ScriptStack::push 265B were already credited and remain counted once. The complete 11,110B ECL interpreter and 923B invocation provide independent original call evidence. Historical original-origin counts below predate this review; actual compiler source/byte matches do not change.**
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
