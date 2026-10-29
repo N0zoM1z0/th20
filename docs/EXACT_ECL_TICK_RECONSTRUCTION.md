@@ -1,5 +1,16 @@
 # Complete ECL runtime dispatcher
 
+**Later CORE/ORIGIN-555 exact-game-origin audit:** Full original
+project-authored ownership for the **four 272B Animation child
+recursion bodies** and original **287B ECL float argument, 261B
+consuming float and 265B script stack push** is now
+[independently native PE and E8-caller validated](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md).
+These are origin admissions for existing real strict-exact C++ and COFF
+bodies; they do not close the independently nonexact 41,967B Enemy
+ECL dispatcher or alter previously accepted original native unit
+extents. Historical origin-pending statuses below are superseded.
+
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

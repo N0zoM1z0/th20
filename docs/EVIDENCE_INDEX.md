@@ -36,6 +36,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-507: 17 whole Animation gameplay methods, 5,527 native bytes](ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) — 1,106B reset, 931B motion, 944B interpolation and 835B float VM operand; independent original 93 E8 and 140 HIGHLOW fields, 50/50 strict units in three cold MSVC objects. The 39,470B VM parent is still nonexact.
 
+## ECL, Bullet, Animation and whole game-owner original exact provenance
+
+- [CORE/ORIGIN-555 — 21 complete ECL/Bullet/Animation/Item/Player/Archive original game-owned roots, 6,836B strict native exact](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md) — full 1,829 original x86 instructions, **187 genuine E8 and 62 PE HIGHLOW fields**, 40 real attached native compiler-alignment bytes compared but not credited; 122/122 strict original units in fourteen freshly cold-built real source providers, 13 high/8 medium original caller confidence statuses. The real whole-exact 11,110B ECL runtime and original 41,967B nonexact Enemy dispatcher call into these children; the giant parent is not claimed exact.
+
 ## Player main-frame complete 3,111B original behavioral/ABI correction
 
 - [CORE/RECON-550 — correct original two Context getter E8s, separate float sprite-scale arguments and local security-cookie profile in complete 3,111B Player parent](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md) — entire real maintained method now 3,239B/805 instructions, **730/783 ordered original mnemonic heads** aligned (up from 672); candidate 67 E8 and 37 DIR32 count agree with independent original 67 E8 and 37 HIGHLOW, but field sites/code still NONEXACT. No header or existing canonical unit modified, no full cold replay.

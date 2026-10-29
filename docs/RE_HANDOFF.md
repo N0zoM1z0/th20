@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-540.** This is a live navigation
+**Current: 2026-10-29, after CORE/ORIGIN-555.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -20,7 +20,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Source-present mappings | **1,181** |
 | Strict canonical complete native units | **1,182** |
 | Unique canonical MSVC object/receipt providers | **242** |
-| Exact game-authored whole original functions | **476**, covering **168,855 original body bytes** |
+| Exact game-authored whole original functions | **497**, covering **175,691 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -357,6 +357,44 @@ bytes**, canonical strict units **1,182**, unique compiler providers
 **242**; source-present mappings stay **1,181**. The original
 SaveManager load/write/save/whole archive runtime remains open.
 No unfiltered whole-repository cold replay or linked game claim.
+
+## Twenty-one complete ECL/Bullet/Animation game-owned original roots — 6,836B exact
+
+**CORE/ORIGIN-555:** Independently revalidated and origin-admitted **21
+complete original ECL/Bullet/Animation/GameConfig/Item/Player/Archive
+functions**, each **251–556B**, totaling **6,836 disjoint original
+project-authored bytes / 1,829 native i386 instruction heads**.
+These are existing real game source and pinned strict canonical units,
+not a claim of writing 21 new C++ functions. Whole game methods include
+the **556B EclFileLoader::load**, 473B Configuration constructor,
+440B PlayerOption, 413B PlayerShot, 386B BulletController, 348B Card,
+330B Item controller, 312B EnemyController, four 272B recursive
+Animation child/flag updates, 287/261B ECL float argument/consume,
+265B ScriptStack push, 284B game LZSS match-tree insertion, 255B
+ShotMetadata and 251B Enemy lookup.
+
+Original-game provenance is independently confirmed by real **11,110B
+whole-exact EclRuntime::tick** (35 float operand and 45 stack-push E8s),
+original 41,967B Enemy ECL opcode calls, real exact 1,036B Archive
+compressor, Player/Graphics/Animation/Session owners, and original
+73–92B constructor wrappers. **13** functions have high-confidence
+original gameplay callers; **eight** retain medium confidence
+because of anonymous original constructor wrappers or missing native
+direct E8 (not assumed absent from the game's runtime). All **187
+original E8 and 62 PE HIGHLOW fields** are original-PE-attested,
+with every remaining byte exact. The entire original C++ comparison
+spans **6,876B**, but **40 compiler CC/alignment bytes** are
+not double counted as game function-body credit.
+
+Only **14 real C++ source/object providers** were cold rebuilt under
+their existing compiler profiles; **122/122 affected old strict units
+replayed exact**. No changes to those C++ sources or public headers,
+no global cold replay. [Complete original PE/caller provenance](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md).
+Authored exact grows **476 / 168,855B -> 497 / 175,691B**;
+source-present mappings **1,181**, native canonical units **1,182**
+and compiler object providers **242** remain unchanged. The enclosing
+**41,967B Enemy ECL dispatcher remains NONEXACT**; original direct E8
+child calls do not prove the whole parent or linked game runtime.
 
 ## Actual open whole-function bosses (priority, NOT exact)
 
