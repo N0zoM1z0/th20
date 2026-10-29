@@ -1,5 +1,17 @@
 # CORE/RECON-615 — original 16-bit row masking and direct Player-position reference ABI, entire 3,735B Bullet emitter
 
+**Later CORE/RECON-624 current whole-boss x87 checkpoint:**
+[Original RNG/cosine/sine returned-float lifetimes](BULLET_EMITTER_3735_X87_RETURNS_934_FRONTIER.md)
+are restored in the full 3,735B Bullet emitter game C++ source.
+The maintained whole code generates **3,736B/936 instructions with
+934/935 original mnemonic heads aligned**, and **all 60 original
+physical E8 callees correct in ordinal order**. The remaining mode12
+x87 float/parameter reload order and one extra compiler NOP are
+not yet natively exact. Historical older scores below remain as
+evidence, not the current whole-source status. No original parent
+exact-byte credit or full graph cold replay.
+
+
 Immutable game target: Japanese TH20 v1.00a Steamless,
 `resources/th20.exe` SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

@@ -116,19 +116,36 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         heading += (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
         heading = static_cast<float>(row)*shot.angle_step+shot.angle+heading;
         break;
-      case 6:
-        heading = process_bullet_random.signed_range(shot.angle_step) + shot.angle;
+      case 6: {
+        // Original x87 RNG result first lives in its own float slot;
+        // only afterward does the game fetch shot.angle and add it.
+        float sample_angle6;
+        sample_angle6 = process_bullet_random.signed_range(shot.angle_step);
+        heading = sample_angle6 + shot.angle;
         break;
-      case 7:
-        speed = process_bullet_random.range(shot.speed_step) + shot.speed;
+      }
+      case 7: {
+        // Native RNG x87 range return is stored before the independent
+        // shot.speed operand is fetched; do not fuse call and addition.
+        float sample_speed7;
+        sample_speed7 = process_bullet_random.range(shot.speed_step);
+        speed = sample_speed7 + shot.speed;
         // Original adds column/pi fraction to heading first, not last.
         heading += (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
         heading = static_cast<float>(row)*shot.angle_step+shot.angle+heading;
         break;
-      case 8:
-        heading = process_bullet_random.signed_range(shot.angle_step) + shot.angle;
-        speed = process_bullet_random.range(shot.speed_step) + shot.speed;
+      }
+      case 8: {
+        // Both original RNG calls have independent x87->stack float
+        // lifetimes, then separate real ShotParameters member loads.
+        float sample_angle8;
+        sample_angle8 = process_bullet_random.signed_range(shot.angle_step);
+        heading = sample_angle8 + shot.angle;
+        float sample_speed8;
+        sample_speed8 = process_bullet_random.range(shot.speed_step);
+        speed = sample_speed8 + shot.speed;
         break;
+      }
       case 9: case 10:
         heading = (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
         // Original +0x48A also executes ODD rows first and jumps to
@@ -157,8 +174,14 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
       case 11: {
         float circle_angle = (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
         heading=circle_angle;
-        const float a=scalar_math::cosine(circle_angle)*shot.speed;
-        const float b=scalar_math::sine(circle_angle)*shot.speed_step;
+        // Native cosine and sine x87 returns each have distinct saved
+        // stack float values before reading the original shot speed fields.
+        float cos_sample;
+        cos_sample=scalar_math::cosine(circle_angle);
+        const float a=cos_sample*shot.speed;
+        float sin_sample;
+        sin_sample=scalar_math::sine(circle_angle);
+        const float b=sin_sample*shot.speed_step;
         // Original 0x00481F45 and 0x00481F66 directly call the custom
         // game XY-norm and arctangent functions, NOT CRT hypot/atan2.
         speed=geometry::norm_xy(a,b);
