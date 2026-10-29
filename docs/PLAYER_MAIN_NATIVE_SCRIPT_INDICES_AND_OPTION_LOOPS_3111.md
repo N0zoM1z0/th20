@@ -1,5 +1,8 @@
 # CORE/RECON-704 — original Player main 3,111B: correct direction-script indices, cached option bounds and by-value history copy
 
+**Later [CORE/RECON-721](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md) operand audit:** genuine unchanged whole Player 3,114B/783 candidate and original 3,111B/783 share **164/164 nonrelocated ordinary immediate values** and **67/67 positive nonstack game member field displacements** under explicitly filtered operand definitions. Seven native original ADD accumulator/register encoding differences cause the net +3B, but many other operand and relocation positions remain unequal. The original parent is still NONEXACT.
+
+
 **The entire original game Player::update_main_frame at 0x004F9C30 remains NONEXACT.** The original complete physical body is **3,111 bytes / 783 x86 instructions** in the locked Japanese TH20 v1.00a Steamless executable, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897. This checkpoint fixes actual gameplay and compiler value lifetimes in the maintained whole game function src/PlayerMainFrame.cpp; it does **not** claim partial native exact credit for the parent.
 
 ## Real gameplay bug: original uses Animation scripts 1 through 4, not 0 through 3
