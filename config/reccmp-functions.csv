@@ -1198,3 +1198,5 @@ th20::VectorInterpolation::set_tangent_start,0x00439480,function
 th20::VectorInterpolation::set_mode,0x004394F0,function
 th20::FloatInterpolation::reset_timer,0x004395B0,function
 th20::VectorInterpolation::reset_timer,0x004396A0,function
+std::_Ptr_base<EtamaArgInf>::_Move_construct_from(std::shared_ptr<EtamaArgInf>&&),0x0047ADA0,function
+std::shared_ptr<EtamaArgInf>::shared_ptr(std::shared_ptr<EtamaArgInf>&&),0x0047B820,function

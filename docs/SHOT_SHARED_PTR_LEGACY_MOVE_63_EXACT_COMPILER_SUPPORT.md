@@ -1,5 +1,7 @@
 # CORE/STL-577 — full original 63-byte `std::shared_ptr<EtamaArgInf>` move assignment, exact C++ toolchain support
 
+**Later [CORE/EXACT-749](BULLET_SHARED_PTR_LEGACY_CTOR_100_LIBRARY_EXACT.md) update:** the original 46B shared_ptr move temporary constructor and original 54B pointer-base move helper now have actual natural pinned MSVC C++ whole native exact source in the same legacy STL owner; all three methods 63/46/54B pass **3/3 scoped strict**. The 33B _Ptr_base initializer and 8B std::move instruction bodies are real but fold-compatible with already credited physical heads, so no duplicate code is counted. The historical statement below that the separate **3,735B Bullet emitter parent** was nonexact has since been superseded by its full [3,735B original strict exact acceptance](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md). The 12,140B game command dispatcher remains NONEXACT.
+
 Target: immutable Japanese TH20 v1.00a Steamless executable
 `resources/th20.exe`, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

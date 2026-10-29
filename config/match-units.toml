@@ -20826,3 +20826,33 @@ target_address = 0x004394F0
 size = 25
 relocations = [
 ]
+
+# CORE/EXACT-748: original Bullet shared_ptr<EtamaArgInf> temporary move
+# constructor and its true std::_Ptr_base move helper; genuine native STL.
+# Source remains the one existing 63B move-assign owner; 33B and 8B
+# folded compatible physical aliases are already accepted elsewhere.
+
+[units.shot_shared_ptr_move_ctor_library]
+source = "src/ShotSharedPtrMoveLegacy.cpp"
+object = "build/core577-canonical/ShotSharedPtrMoveLegacy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/sdl-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["std::shared_ptr<EtamaArgInf>::shared_ptr(shared_ptr<EtamaArgInf>&&)"]
+symbol = "??0?$shared_ptr@UEtamaArgInf@@@std@@QAE@$$QAV01@@Z"
+target_address = 0x47b820
+size = 46
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0?$_Ptr_base@UEtamaArgInf@@@std@@IAE@XZ", target = 0x00414030 },
+  { offset = 0x14, type = "REL32", symbol = "??$move@AAV?$shared_ptr@UEtamaArgInf@@@std@@@std@@YA$$QAV?$shared_ptr@UEtamaArgInf@@@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x20, type = "REL32", symbol = "??$_Move_construct_from@UEtamaArgInf@@@?$_Ptr_base@UEtamaArgInf@@@std@@IAEX$$QAV01@@Z", target = 0x0047ADA0 },
+]
+
+[units.shot_ptr_base_move_construct_from_library]
+source = "src/ShotSharedPtrMoveLegacy.cpp"
+object = "build/core577-canonical/ShotSharedPtrMoveLegacy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/sdl-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["std::_Ptr_base<EtamaArgInf>::_Move_construct_from(shared_ptr<EtamaArgInf>&&)"]
+symbol = "??$_Move_construct_from@UEtamaArgInf@@@?$_Ptr_base@UEtamaArgInf@@@std@@IAEX$$QAV01@@Z"
+target_address = 0x47ada0
+size = 54
+relocations = [
+]

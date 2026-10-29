@@ -26,4 +26,11 @@ shared_ptr<EtamaArgInf>::operator=(shared_ptr<EtamaArgInf>&& other) noexcept {
     shared_ptr<EtamaArgInf>(std::move(other)).swap(*this);
     return *this;
 }
+
+// Real original Bullet and shared_ptr move-assignment both call this 46B
+// move constructor. Its natural _Ptr_base move helper emits the separate
+// complete 54B original STL code, not an invented game wrapper. The genuine
+// game-owned ShotMetadata value and already-exact 63B move assignment remain
+// unchanged.
+template shared_ptr<EtamaArgInf>::shared_ptr(shared_ptr<EtamaArgInf>&&) noexcept;
 }
