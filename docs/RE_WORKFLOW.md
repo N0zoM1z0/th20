@@ -167,6 +167,31 @@ original path, original SHA-256, archive path and archive SHA-256 in the private
 retirement inventory; verify decompressed bytes before removing the original.
 Keep current CI evidence, failed logs, native exports and active inputs intact.
 
+## Current guarded build-object cleanup (CORE/CLEANUP-497)
+
+The [2026-10-29 artifact retirement report](ARTIFACT_RETIREMENT_2026_10_29.md)
+supersedes *live* artifact counts in the dated CORE/CLEANUP-300
+report. Use the tracked dry-run-first
+`scripts/prune-generated-artifacts.py` for follow-on cleanup.
+It reads the **live manifest** for exact protected objects and
+receipts and explicitly retains the active, unfinished complete-boss
+probe sets. A previous safety-audited application retired
+**1,670 ignored noncanonical compiler objects/receipts, reclaiming
+55.82 MiB**; **all 236 current canonical object/receipt pairs**
+and the immutable game executable SHA-256 remained unchanged.
+Each deleted file's path, original byte count and SHA-256 are in
+the private `.analysis/core497-build-retirement-inventory.json`.
+
+Do not treat the 126 MiB of private historical `.analysis/*.gz`
+archives as disposable merely because they are old: retained
+historical research scripts explicitly reference these snapshots.
+The 1,253-line old handoff is available at
+`git show 9eed65c:docs/RE_HANDOFF.md`; the current
+[compact handoff](RE_HANDOFF.md) is the authoritative source
+for current exact/nonexact status. Old native exact counts and
+old NONEXACT descriptions in focused proof documents must be
+read with their checkpoint date and later supersession notes.
+
 ## Protected storage and ignored artifact retirement (CORE/CLEANUP-300)
 
 Treat `build/` as a regenerable object cache, **not** as a stable evidence

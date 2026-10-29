@@ -6,8 +6,9 @@ struct IDirectInputDevice8W;
 namespace th20 {
 
 // REF-006: retained words are live input history copied by the frame owner.
-// The two whole native input constructors are exact; device polling and
-// complete manager initialization remain independently unfinished.
+// Whole InputButtonState/InputDevice constructors and the InputInf manager
+// initialization/discovery/lifecycle are independently exact. The distinct
+// 3,490B InputDevice polling frame is still NONEXACT.
 struct InputButtonState {
     InputButtonState();
     std::uint32_t current, previous, repeat8, repeat12, pressed, released;

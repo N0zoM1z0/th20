@@ -16,11 +16,12 @@ public:
     InputInf() noexcept;
     // Entire original 265B InputInf startup config/binding publication.
     std::int32_t start();
-    // Original 465B subordinate device initialization is a separate
-    // still-nonexact game method; do not infer its code from this caller.
+    // Complete original 465B device initialization is separately strict
+    // exact. Its device discovery callees also have independent exact units.
     std::int32_t initialize_devices();
-    // Separate 726B DirectInput and 170B XInput discovery callees from
-    // the immutable 465B native initialization boss (still nonexact).
+    // Both original whole device discovery functions are independently
+    // exact: DirectInput 726B and XInput 170B. Do not imply exactness
+    // for the distinct 3,490B InputDevice polling frame.
     std::int32_t discover_directinput_devices();
     std::int32_t discover_xinput_devices();
     // Whole 120B native virtual destructor, five actual CC alignment

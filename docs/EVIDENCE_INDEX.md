@@ -9,37 +9,36 @@ native exact inventory use the [current handoff](RE_HANDOFF.md),
 [generated progress](PROGRESS.md) and canonical source ledgers. Historical
 private `build/` paths may have been retired for storage; native evidence and
 cited private snapshots are retained, and disposable probe objects can be
-regenerated from original sources. The old 1,689-line handoff is in Git history.
+regenerated from original sources. The 1,253-line superseded handoff is preserved via Git
+revision 9eed65c; the even older 1,689-line handoff also
+remains in history. Current exact status is in the concise
+[handoff](RE_HANDOFF.md).
 
 ## Workflow and storage
 
+- [CORE/CLEANUP-497 — current handoff consolidation, exact-status corrections and protected build-prune inventory](ARTIFACT_RETIREMENT_2026_10_29.md) — current cleanup, guarded canonical object/receipt protection, active boss probe retention and default dry-run artifact retirement.
+
 - [CORE/CLEANUP-300 artifact retirement and protected storage](ARTIFACT_RETIREMENT_2026_10_28.md) — 2,496 obsolete ignored files / 203.65 MiB retired, every canonical object/receipt and native target preserved, recorded SHA/path inventory.
 
-## Player
+## Input system and Player
 
 - [Different whole-exact 215B append-only diagnostic and 221B error log originals](DIAGNOSTIC_LOG_MESSAGE_215_EXACT_RECONSTRUCTION.md) — the 215B original does not set the error flag, unlike the preexisting 221B; six native DirectInput caller E8 target fields resolve to the genuine append-only function. 6/6 bounded exact units in 4 cold objects.
 
-- [Whole original 726B DirectInput discovery, 218B pad attachment and 17B COM slot — strict exact](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md) — 277+9 original x86 instructions, 45 immutable E8/HIGHLOW fields, actual Windows DirectInput COM/GUID/HDI lifecycle; 961 distinct game-owned original bytes, four folded aliases credited zero extra, 85/85 real header-dependent strict units in 19 low-priority cold objects. 3,490B polling parent stays NONEXACT.
+- [Whole original 726B DirectInput discovery, 218B pad attachment and 17B COM slot — strict exact](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md) — 277+9 original x86 instructions, 45 immutable E8/HIGHLOW fields, actual Windows DirectInput COM/GUID/HWND lifecycle; 961 distinct game-owned original bytes, four folded aliases credited zero extra, 85/85 real header-dependent strict units in 19 low-priority cold objects. 3,490B polling parent stays NONEXACT.
 
+- [Complete original 170B InputInf XInput device discovery — strict exact](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md) — true 16B Windows XINPUT_STATE, 4 physical slots, real DLL import thunk at 0x005406C6, original 4 E8 +1 HIGHLOW, separate retained HRESULT; source-only 2/2 strict units in one cold owner. The separate 726B DirectInput discovery was later closed whole strict exact in CORE/EXACT-495.
 
-- [Complete original 170B InputInf XInput device discovery — strict exact](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md) — true 16B Windows XINPUT_STATE, 4 physical slots, real DLL import thunk at 0x005406C6, original 4 E8 +1 HIGHLOW, separate retained HRESULT; source-only 2/2 strict units in one cold owner. 726B DirectInput discovery remains open.
+- [Whole original 465B InputInf device initialization boss — strict native exact](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) — authentic signed input device count, true two-element Graphics configuration route array, 9 original E8 and 6 independent PE HIGHLOW; entire 465/465 native bytes; **61/61 strict units in 18 actual prior-header-receipt source objects**. Both 726B DirectInput and 170B XInput discovery are now separately strict exact; only the 3,490B input polling parent remains NONEXACT.
 
-
-- [Whole original 465B InputInf device initialization boss — strict native exact](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) — authentic signed input device count, true two-element Graphics configuration route array, 9 original E8 and 6 independent PE HIGHLOW; entire 465/465 native bytes; **61/61 strict units in 18 actual prior-header-receipt source objects**. Separate 726B/170B device discovery and 3,490B input polling remain NONEXACT.
-
-
-- [Entire exact 265B InputInf startup/binding initialization boss](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) — original 75 instructions, 2 E8/6 original PE HIGHLOW, real Graphics configuration record submember copying and four process input pointers, 11/11 strict units in 4 source-scoped cold objects. The invoked 465B device initializer remains NONEXACT.
-
+- [Entire exact 265B InputInf startup/binding initialization boss](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) — original 75 instructions, 2 E8/6 original PE HIGHLOW, real Graphics configuration record submember copying and four process input pointers, 11/11 strict units in 4 source-scoped cold objects. The invoked 465B device initializer was independently closed strict exact in CORE/EXACT-487.
 
 - [Entire original 3,490B input polling frame and four exact 128B InputInf routing/bindings/pad native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) — whole 747 original instructions, 21 E8/18 HIGHLOW, authentic keyboard/DirectInput/XInput phases; 49/27/26/26 whole exact callees, original input frame now 11/21 exact direct-call destinations, 10/10 native strict units in 3 actual cold objects. The 3,490B parent is NONEXACT.
 
-
 - [Entire 466B native InputInf DirectInput shutdown boss and 50B interface release — exact](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) — original 127+20 instructions, 9 E8/6 PE HIGHLOW, real recursive lock slot 15, 12 devices and four typed COM pad handles, all 466/466 and 50/50 original bytes; 6/6 receipt-dependent strict units in three source-scoped cold objects. 3,490B input processing remains NONEXACT.
 
-- [Whole original 120B InputInf virtual destructor and separate 49B compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) — 125/125 original aligned destructor, 49/49 original compiler support, 12 independent E8/HIGHLOW fields, real callback removal/global clear; 4/4 actual InputInf.hpp receipt-dependent strict units in two cold objects. 466B shutdown remains NONEXACT.
+- [Whole original 120B InputInf virtual destructor and separate 49B compiler deleting wrapper](INPUT_INF_DESTRUCTOR_120_EXACT_RECONSTRUCTION.md) — 125/125 original aligned destructor, 49/49 original compiler support, 12 independent E8/HIGHLOW fields, real callback removal/global clear; 4/4 actual InputInf.hpp receipt-dependent strict units in two cold objects. The 466B shutdown was separately closed whole exact in CORE/EXACT-476.
 
 - [Whole native 261B InputInf manager constructor — strict exact, plus five original CC bytes](INPUT_INF_CONSTRUCTOR_261_EXACT_RECONSTRUCTION.md) — RTTI-attested real game input manager; C-array 12 genuine 0x3D4 InputDevices and four 0x30 InputBindings; correct noexcept/EH/vector constructor ABI, all 11 original PE E8/HIGHLOW fields, **261/261 function + 266/266 full aligned bytes**, and 2/2 truly affected strict units across 2 cold objects.
-
 
 - [Whole original 340B InputButtonState and 102B InputDevice constructors — strict exact](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) — 81+28 entire native instructions, six independently original CRT memset calls plus genuine child-constructor/raw-input calls, 442 nonoverlapping exact bytes; 15/15 actual InputState.hpp affected strict units in 2 cold source objects. Their separate 261B InputInf owner ctor was later fully closed in CORE/EXACT-467.
 
@@ -57,7 +56,7 @@ regenerated from original sources. The old 1,689-line handoff is in Git history.
 
 - [Exact whole 1,081B Player option-frame gameplay boss and 70B fixed-to-Vector3 conversion](PLAYER_OPTION_FRAME_1081_EXACT_RECONSTRUCTION.md) — full 325+20 original i386 instructions, 42 independently original PE E8/HIGHLOW fields, real PlayerOption member-function callback pointers, chain-return IntPoint interpolation; 107/107 true header-affected strict units in 32 cold objects. The separate 3,111B Player frame boss remains open.
 
-- [Five complete exact native IntPoint option-coordinate methods, 252B](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) — whole 49/45/48/45/65B originals, typed two-lane signed/wrapping math, unique 8-byte by-value operator+= return ABI, three independent original E8 calls to IntPoint constructor; 105/105 actually affected Rectangle.hpp strict units across 31 cold sources. The full 1,081B Player option-frame caller remains nonexact.
+- [Five complete exact native IntPoint option-coordinate methods, 252B](INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md) — whole 49/45/48/45/65B originals, typed two-lane signed/wrapping math, unique 8-byte by-value operator+= return ABI, three independent original E8 calls to IntPoint constructor; 105/105 actually affected Rectangle.hpp strict units across 31 cold sources. The full 1,081B Player option-frame caller was subsequently closed whole strict exact; the separate 3,111B main frame remains NONEXACT.
 
 - [Complete original 67B DamageHandle lookup — strict exact](DAMAGE_HANDLE_LOOKUP_67_EXACT_RECONSTRUCTION.md) — defined bit-cast from native 4-byte storage to by-value Identifier32, both original E8 targets independently grounded by exact 26B getter/264B finder, 24/24 whole instructions; 80/80 real affected strict units in 27 cold objects.
 

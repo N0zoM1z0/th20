@@ -49,13 +49,15 @@ are excluded from Git.
 
 ## Repository status
 
-As of the October 28, 2026 checkpoint, the maintained graph has **1,092
-source-present mappings**, **1,083 canonical strict units** and **212
-canonical object providers**. Verified game-authored exactness is **295
-complete functions / 78,921 original bytes**; this does *not* establish
-whole-game buildability or a playable game. These counts are dated snapshots:
-run `scripts/repo-python scripts/report-reconstruction-status.py --summary`
-for the live inventory rather than treating this README as a status oracle.
+At the October 29, 2026 checkpoint the maintained graph has **1,175
+source-present mappings**, **1,176 strict canonical native units** and
+**236 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **400 complete functions /
+121,429 original native bytes**. These are dated values, not a
+whole-game buildability or playable-game claim: always run
+`scripts/repo-python scripts/report-reconstruction-status.py --summary`
+for the live inventory and consult the
+[current concise handoff](docs/RE_HANDOFF.md) for the unfinished bosses.
 
 | Area | Current position |
 | --- | --- |
@@ -82,8 +84,10 @@ do not establish executable-wide compiler flags, SDK or CRT identity.
 ## Build and verify
 
 Documentation and artifact-cleanup handoffs use diff/link checks and protected
-product hashes. An unchanged reconstruction graph needs no replay, compiler,
-Ghidra or full CI run. Use the commit prefix requested for the active session.
+product hashes. An unchanged native compiler-input graph needs no replay,
+compiler, Ghidra or full CI run. Shared-header text edits can invalidate
+pinned compiler receipt hashes: replay only the actual pre-edit receipt include
+closure in that case. Use the `gpt-web:` commit prefix.
 
 When code or infrastructure changes warrant broader checks, public CI needs
 Python 3.11+, with no original game or C++ compiler:
@@ -140,6 +144,7 @@ limits; nonexact implementations remain documented for further reconstruction.
 - [Focused evidence index](docs/EVIDENCE_INDEX.md)
 - [Architecture and target inventory](docs/ARCHITECTURE.md)
 - [Reconstruction workflow](docs/RE_WORKFLOW.md)
+- [Guarded artifact retirement and storage audit](docs/ARTIFACT_RETIREMENT_2026_10_29.md)
 - [Independent oracles](docs/ORACLES.md)
 - [Build and strict matching](docs/BUILD_MATCHING.md)
 - [Ghidra setup and attestation](docs/GHIDRA.md)
