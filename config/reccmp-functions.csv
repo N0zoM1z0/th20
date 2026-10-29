@@ -1183,3 +1183,4 @@ th20::AnimationPoolOwner::allocate_animation,0x0044C9B0,function
 th20::type_to_script,0x004856C0,function
 std::shared_ptr<EtamaArgInf>::operator=(std::shared_ptr<EtamaArgInf>&&),0x0047C530,function
 th20::Player::clock_scale_value,0x004AAA40,function
+th20::DiagnosticAllocator::allocate_object<Animation>,0x00447800,function

@@ -11,7 +11,7 @@
 #include <cstddef>
 #include <cstdint>
 namespace th20 {
-struct Animation;
+class Animation;
 struct SpriteData;
 class AnimationFile;
 // Native indices 0/1 select the sibling node and child sentinel. The separate
@@ -101,7 +101,8 @@ struct AnimationBase {
     float field_4b8, field_4bc;
     AnimationBase() noexcept;
 };
-struct Animation {
+class Animation {
+public:
     AnimationBase base;
     AnimationHandle handle;
     std::uint32_t index;

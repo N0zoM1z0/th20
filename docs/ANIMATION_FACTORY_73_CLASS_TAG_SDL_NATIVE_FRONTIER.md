@@ -1,5 +1,7 @@
 # CORE/RECON-685 — original 73-byte Animation allocation and MSVC class-tag `/sdl` zero-init code generation
 
+**Superseded by [CORE/EXACT-696](ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md): the coherent public class-tag migration, unique `/sdl` factory, 73/73B exact native strict acceptance and 492/492 affected-only old unit replay are now complete. The NONEXACT language below is the older 685 private-probe status, retained as historical evidence.**
+
 **Status: the original `0x00447800` 73-byte Animation allocation method remains NONEXACT in the maintained project.** This investigation is a complete original-PE versus real pinned-MSVC whole-function compiler experiment, and isolates a concrete source/ABI blocker without changing the linked game target, creating a fake class layout, patching compiler output, or accepting structural similarity as strict exactness.
 
 Original target: Japanese TH20 v1.00a Steamless `resources/th20.exe`, SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

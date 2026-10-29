@@ -5,7 +5,7 @@
 
 namespace th20 {
 
-struct Animation;
+class Animation;
 struct Vector3;
 
 // REF-017: four-byte values constructed in Notice's seven-element array and

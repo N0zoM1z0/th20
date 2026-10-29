@@ -6,7 +6,7 @@
 #include <cstdint>
 
 namespace th20 {
-struct Animation;
+class Animation;
 struct Context;
 
 // Native constructor, allocation widths and grid/strip consumers establish all

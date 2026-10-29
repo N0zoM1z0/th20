@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 29, 2026 checkpoint the maintained graph has **1,184
-source-present mappings**, **1,186 strict canonical native units** and
-**244 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **503 complete functions /
-179,538 original native bytes**. These are dated values, not a
+At the October 29, 2026 checkpoint the maintained graph has **1,185
+source-present mappings**, **1,187 strict canonical native units** and
+**245 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **504 complete functions /
+179,611 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -72,6 +72,7 @@ for the live inventory and consult the
 | Input devices | Complete 3,490B [keyboard/DirectInput/XInput poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) strict exact; [corrected signed InputInf selector ABI](docs/INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md) from three original callers; game link/runtime remain open |
 | Interpolation gameplay | Ten complete [interpolation bosses and evaluators](docs/INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) add 8,571 native exact bytes, including 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog and independent ECL/Animation/Enemy/Bullet whole callers |
 | Direct animation script and VM forward | Original 338B [AnimationFile script loader and 21B Renderer VM forwarding wrapper](docs/ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) both whole **strict exact**; fixes the real Bullet emitter original call target; 39,470B VM remains open, 61 original source providers/266 old units preserved |
+| Animation allocation factory | Complete original **73B/22-instruction** [game-owned Animation diagnostic allocation](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) is now **73/73B strict exact**. Seven coherent `class Animation` headers and `/sdl` emit the authentic automatic class clear, with all three original E8 destinations; `extern template` prevents a 60B duplicate from the non-SDL 298B pool. **492/492 existing affected strict units protected by 117 affected-only cold objects**; the 31B compiler helper is not duplicate authored credit. |
 | Animation pool allocation boss | Complete native **298B/78-instruction** [Renderer Animation pool allocation and reuse](docs/ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) now **298/298 strict exact**, original 14 E8 and 2 HIGHLOW fields; genuine 0x600 PooledAnimation slots and physically folded typed front/detach/initialize helpers, no duplicate bytes |
 | Bullet emitter boss | Entire original **3,735B/935-x86 BulletController::emit strict original exact**, including **3,832/3,832** original compiler code/NOP/13+11 switch-table bytes and **129/129 independently anchored true E8/HIGHLOW relocations**. Corrected original velocity **4.0f**, not wrongly inferred 2.0f, and restored native float lifetimes and Timer EH boundary in [full whole-game-boss proof](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md). One new targeted source cold replay **1/1 exact**, no global replay and no extra alignment/compiler byte credit; larger Bullet dispatcher still separate and nonexact. |
 | Legacy STL compatibility | Complete original **63B std::shared_ptr<EtamaArgInf> move assignment** now [whole native strict-exact compiler/library source](docs/SHOT_SHARED_PTR_LEGACY_MOVE_63_EXACT_COMPILER_SUPPORT.md), plus separately exact folded 8B `std::move`; **library excluded**, no duplicate game-authored byte credit; the 3,735B original emitter parent is separately exact |

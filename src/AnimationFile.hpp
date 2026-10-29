@@ -7,7 +7,7 @@
 #include <string>
 struct IDirect3DTexture9;
 namespace th20 {
-struct Animation;
+class Animation;
 struct AnmInstruction;
 struct AnmHeader;
 struct TextureRecordFlags { std::uint32_t bits; };

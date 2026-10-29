@@ -31,7 +31,7 @@ struct EffectParameters {
     EffectParameters();
 };
 
-struct Animation;
+class Animation;
 struct EffectRequest {
     std::int32_t type;
     const EffectParameters* original_parameters;

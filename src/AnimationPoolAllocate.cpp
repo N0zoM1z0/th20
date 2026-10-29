@@ -14,6 +14,10 @@
 #include <cstddef>
 #include <cstdint>
 namespace th20 {
+// The original 298B game boss uses the canonical 73B allocation function.
+// This parent is compiled without /sdl: do not instantiate a conflicting
+// same-symbol 60B factory instead of the original /sdl 73B code.
+extern template Animation* DiagnosticAllocator::allocate_object<Animation>(const char*);
 // The original pool free-list front and existing 17B Timer integer getter
 // share one physical original head at 0x0040FF90: each reads +4 from ECX.
 // A real typed specialization returns the already modeled next link without

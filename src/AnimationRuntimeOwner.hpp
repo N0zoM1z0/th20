@@ -2,7 +2,7 @@
 #include <cstdint>
 
 namespace th20 {
-struct Animation;
+class Animation;
 struct Vector3;
 class AnimationFile;
 // Only the independently observed external ABI is declared here. The

@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/RECON-685.** This file is a
+**Last reconciled: 2026-10-29, CORE/EXACT-696.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -18,10 +18,10 @@ what is accepted.
 | Game target | `resources/th20.exe`, **1,858,560 bytes** |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional function heads | **6,928**; unresolved boundaries are *not* exact |
-| Source-present function mappings | **1,184**, all origins |
-| Configured whole-native strict units | **1,186**, including library/compiler |
-| Distinct canonical MSVC object + receipt providers | **244** |
-| **Game-authored original whole-body exact** | **503 distinct functions / 179,538 disjoint original `.text` bytes** |
+| Source-present function mappings | **1,185**, all origins |
+| Configured whole-native strict units | **1,187**, including library/compiler |
+| Distinct canonical MSVC object + receipt providers | **245** |
+| **Game-authored original whole-body exact** | **504 distinct functions / 179,611 disjoint original `.text` bytes** |
 | Whole-program link / playable game | **Not yet available** |
 
 These counts are a dated snapshot. Run `scripts/repo-python
@@ -41,6 +41,7 @@ both true of this exact [locked target](TARGET_PROVENANCE.md).
 | `0x00539550` archive LZSS compressor | **1,036B / 315 x86**, [actual seven original accumulator writes and byte-exact original native encoder](ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md); prior 964B nonexact hypothesis **superseded** |
 | `0x005391F0` archive LZSS decompressor | **706B**, [whole original archive/game provenance](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md) |
 | `0x0053B5C0` ECL runtime tick | **11,110B**, [whole strict original interpreter runtime](EXACT_ECL_TICK_RECONSTRUCTION.md); **not** the 41,967B Enemy opcode dispatcher |
+| `0x00447800` Animation allocation factory | **73B/22 x86 complete strict exact**, [real game factory + coherent class tag and all 3 native physical E8 proof](ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md); one normal C++ `class Animation` declaration in seven headers, one canonical `/sdl` explicit template definition, `extern template` in non-SDL 298B caller. **492/492 previous exact units and 117/117 affected cold objects preserved**, zero overlapping original compiler-helper credit. |
 | `0x0044C9B0` Animation pool allocator | **298B**, [true game-owned pool allocation and recycled slot ABI](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) |
 | `0x004383A0` Animation direct script load | **338B**, plus 21B VM-forward helper, [whole native caller ABI](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) |
 | Real geometry | **19 whole methods, 13,360B**, [complete original rectangles, circles, polygons and intersections](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) |
@@ -67,14 +68,13 @@ that entire parent is reconstructed.
 | `0x0047DCF0` Bullet command dispatcher | **12,140B** | Distinct **NONEXACT** controller parent even though the 1,404B command-11 child is exact. [Source map](SOURCE_MAP.md). |
 | `0x0048C010` Enemy ECL dispatcher | **41,967B** | Huge original VM/controller parent **NONEXACT**. [Dispatch layout / table analysis](CORE_ENEMY_DISPATCH_LAYOUT.md). |
 | `0x0042B5D0` Animation VM update | **39,470B** | **NONEXACT** giant original parent; native-exact child parsers, loaders, reset and frame helpers cannot be counted as this body. [Animation owner map](SOURCE_MAP.md). |
-| `0x00447800` Animation factory | **73B, 22 x86** | [Independent full native PE vs pinned MSVC compiler-tag proof](ANIMATION_FACTORY_73_CLASS_TAG_SDL_NATIVE_FRONTIER.md): original three physical E8 calls are operator new, genuine 31B `__autoclassinit2` clear, and original 498B Animation ctor. An unchanged-layout **private `class Animation` + `/sdl`** factory emits **73B/22 x86**, 61/61 original nonrelocated bytes and all three original E8 positions; the real maintained `struct Animation` source emits 60B with no zero helper. Different class/struct tags change decorated factory/caller names; shared `Animation.hpp` affects **62 existing canonical objects /284 exact units**. Do NOT introduce duplicate class or claim strict exact before one coherent public declaration, scoped replays and strict linker-anchored canonical 73B acceptance. Current factory **NONEXACT**, no new original byte credit. |
 
-**Near-term priority:** Bullet emitter is now fully strict original exact:
-**one new 3,735B game-owned boss, 3,832B whole native contribution**,
-with only one new source-scoped cold replay. Continue the Player 555B
-compiler SSE spill and 3,111B main-frame handle/type ABI; then the
-12,140B Bullet command dispatcher, 39,470B Animation VM and 41,967B
-Enemy opcode parent. Do not infer exact giant parent bodies merely from
+**Near-term priority:** Bullet emitter remains fully strict exact at
+3,735B / 3,832B full contribution, and the previously open 73B Animation
+factory is now strict exact with all old 492 affected units protected.
+Continue the 555B Player movement SSE spill and 3,111B Player main-frame
+register/frame ABI; then the 12,140B Bullet command dispatcher,
+39,470B Animation VM and 41,967B Enemy opcode parent. Do not infer exact giant parent bodies merely from
 their exact children. All source/code work should be validated with
 affected-only native replays, never automatic global cold replay.
 

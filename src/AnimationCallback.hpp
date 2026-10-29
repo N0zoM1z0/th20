@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 namespace th20 {
-struct Animation;
+class Animation;
 // Native SprtFuncBaseInf: vptr followed by its Animation receiver.
 struct AnimationCallback {
     Animation* animation;
