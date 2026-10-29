@@ -59,14 +59,19 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->timer_4d8 = native_one;
     bullet->timer_4e8 = native_one;
 
-    float speed;
+    // Native original first keeps its computed base velocity in a separate
+    // stack float, then copies it into the mutable pattern speed before
+    // initializing Bullet+0x24. Sharing a single source local removes the
+    // original /Od stack copy and alters the machine-code lifetimes.
+    float base_speed;
     // Original native +0x112..+0x16E tests rows > 1 before entering the
     // stepped-speed branch; under /Od the branch direction is visible.
     if (shot.rows > 1)
-        speed = shot.speed - ((shot.speed-shot.speed_step)*static_cast<float>(row)) /
+        base_speed = shot.speed - ((shot.speed-shot.speed_step)*static_cast<float>(row)) /
                 (static_cast<float>(shot.rows)-native_one);
     else
-        speed = shot.speed;
+        base_speed = shot.speed;
+    float speed = base_speed;
     bullet->field_24 = speed;
     const std::uint32_t mode = static_cast<std::uint16_t>(metadata_source->field_38);
     switch (mode) {
@@ -81,35 +86,43 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
             angular = static_cast<float>(column/2) * shot.angle_step + shot.angle_step*native_half;
         heading+=angular;
         if (column & 1) heading*=native_alternate_sign;
-        if (mode==0) heading+=player_direction;
+        // Original +0x223 re-reads the actual 16-bit mode from metadata
+        // and tests it as an unsigned word, rather than using the earlier
+        // widened switch-local copy.
+        if (static_cast<std::uint16_t>(metadata_source->field_38)==0) heading+=player_direction;
         heading+=shot.angle;
         break;
       }
       case 2: heading+=player_direction; [[fallthrough]];
       case 3:
-        heading = static_cast<float>(row)*shot.angle_step + shot.angle +
-             (static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count)+heading;
+        // Original SSE computes pi*two first, then multiplies the column,
+        // adds the resulting fraction to heading BEFORE row/angle terms.
+        heading += (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
+        heading = static_cast<float>(row)*shot.angle_step+shot.angle+heading;
         break;
       case 4: heading+=player_direction; [[fallthrough]];
       case 5:
-        heading = static_cast<float>(row)*shot.angle_step + shot.angle +
-             (static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count) +
-             native_pi/static_cast<float>(shot.count)+heading;
+        // Original 0x2B9..0x33A accumulates pi/count, column fraction,
+        // then the row/shot angle in this precise floating-point order.
+        heading += native_pi/static_cast<float>(shot.count);
+        heading += (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
+        heading = static_cast<float>(row)*shot.angle_step+shot.angle+heading;
         break;
       case 6:
         heading = process_bullet_random.signed_range(shot.angle_step) + shot.angle;
         break;
       case 7:
         speed = process_bullet_random.range(shot.speed_step) + shot.speed;
-        heading = static_cast<float>(row)*shot.angle_step + shot.angle +
-             (static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count)+heading;
+        // Original adds column/pi fraction to heading first, not last.
+        heading += (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
+        heading = static_cast<float>(row)*shot.angle_step+shot.angle+heading;
         break;
       case 8:
         heading = process_bullet_random.signed_range(shot.angle_step) + shot.angle;
         speed = process_bullet_random.range(shot.speed_step) + shot.speed;
         break;
       case 9: case 10:
-        heading = (static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count);
+        heading = (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
         // Original +0x48A also executes ODD rows first and jumps to
         // the even branch at +0x4FE. Both paths retain their real
         // signed-half arithmetic and independent stepped-speed formula.
@@ -125,11 +138,12 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
                    static_cast<float>(shot.rows-1)+shot.speed;
         }
         if (row&1)heading*=native_alternate_sign;
-        if (mode==9)heading+=player_direction;
+        // Original +0x596 reloads the 16-bit metadata mode separately.
+        if (static_cast<std::uint16_t>(metadata_source->field_38)==9)heading+=player_direction;
         heading+=shot.angle;
         break;
       case 11: {
-        float circle_angle = (static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count);
+        float circle_angle = (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
         heading=circle_angle;
         const float a=scalar_math::cosine(circle_angle)*shot.speed;
         const float b=scalar_math::sine(circle_angle)*shot.speed_step;
@@ -140,7 +154,7 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         break;
       }
       case 12: {
-        float circle_angle=(static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count)+native_pi/static_cast<float>(shot.count);
+        float circle_angle=(static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count)+native_pi/static_cast<float>(shot.count);
         // Original +0x1FDD adds the previous heading, not an overwrite.
         heading+=circle_angle+shot.angle;
         // Original 0x00481FF2 sine -> 0x00481FFA absolute; omitting abs

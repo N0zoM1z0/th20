@@ -1,5 +1,19 @@
 # CORE/RECON-514 — complete 3,735-byte Bullet emitter boss in maintained C++
 
+**Later CORE/RECON-594 current whole native source:** The complete
+3,735B original Bullet emitter remains **NONEXACT**, but original
+floating-point source order has been further
+[recovered from all six pi×2 SSE groups, sequential angle accumulations,
+two speed locals and real metadata field re-reads](BULLET_EMITTER_3735_ORIGINAL_FLOAT_ORDER_911_FRONTIER.md).
+The current maintained C++ generates **3,685B/930 x86 instructions,
+911/935 original ordered mnemonic heads**, with **all 60/60 real
+physical original E8 callee identities matching in ordinal order**.
+Older historical 3,609B/914/831 and odd-first 875 checkpoint scores
+below are superseded. Native E8 physical field sites, remaining
+original SSE/stack/EH bytes and 13+11 jump tables still differ;
+**no original parent-byte exact credit or global cold replay**.
+
+
 **Later CORE/RECON-587 original parity control-flow correction:** Both
 native game shot-pattern parity checks in the 3,735B emitter use **odd
 branch first**, with the even branch reached by original
