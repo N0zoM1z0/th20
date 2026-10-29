@@ -1,5 +1,7 @@
 # Enemy State and ECL Manager script pipeline
 
+**Later [CORE/ORIGIN-706](ENEMY_ECL_LIFECYCLE_762_ORIGINAL_GAME_EXACT_ORIGIN.md):** the complete 168B EnemyState::advance_scripts and 217B EclManager::tick original methods are independently game-authored strict native exact; the original ECL Manager twice invokes the already exact 11,110B ECL Runtime. Earlier unknown-origin annotations below are superseded.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/RECON-704.** This file is a
+**Last reconciled: 2026-10-29, CORE/ORIGIN-706.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -21,7 +21,7 @@ what is accepted.
 | Source-present function mappings | **1,185**, all origins |
 | Configured whole-native strict units | **1,187**, including library/compiler |
 | Distinct canonical MSVC object + receipt providers | **245** |
-| **Game-authored original whole-body exact** | **504 distinct functions / 179,611 disjoint original `.text` bytes** |
+| **Game-authored original whole-body exact** | **508 distinct functions / 180,373 disjoint original `.text` bytes** |
 | Whole-program link / playable game | **Not yet available** |
 
 These counts are a dated snapshot. Run `scripts/repo-python
@@ -46,6 +46,7 @@ both true of this exact [locked target](TARGET_PROVENANCE.md).
 | `0x004383A0` Animation direct script load | **338B**, plus 21B VM-forward helper, [whole native caller ABI](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) |
 | Real geometry | **19 whole methods, 13,360B**, [complete original rectangles, circles, polygons and intersections](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) |
 | Real game owner constructors/codec/graphics | **10 whole methods, 6,057B**, including 941B Graphics and 794B Player; [native project-origin audit](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md) |
+| Enemy and ECL original lifecycle | **4 complete game-authored, strictly exact functions / 762 disjoint original bytes**, [original EnemyController::create 155B, Enemy::initialize 222B, EnemyState::advance_scripts 168B and EclManager::tick 217B](ENEMY_ECL_LIFECYCLE_762_ORIGINAL_GAME_EXACT_ORIGIN.md). Independently decoded original **29 E8 /4 PE HIGHLOW** sites, original 12,140B (NONEXACT) dispatcher to Enemy creation, original 1,371B exact Enemy::defeat to ECL Manager, and both original ECL Manager calls to the separately exact 11,110B Runtime. Targeted-only receipt refresh for two existing original ECL native objects, zero broad replay or duplicate original code credit. |
 | ECL/Bullet/Animation methods | **21 whole methods, 6,836B**, including ECL operand parser and four Animation child recursions; [original user call graph](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md) |
 | Enemy/Motion and interpolation | **7,204B** [Enemy/Motion](ENEMY_MOTION_7204_EXACT_ORIGIN_AUDIT.md) and **8,571B** [interpolation](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md), complete independently PE-verified original game-owned bodies |
 

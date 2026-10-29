@@ -1,5 +1,7 @@
 # Whole Enemy creation, initialization and script selection
 
+**Later [CORE/ORIGIN-706](ENEMY_ECL_LIFECYCLE_762_ORIGINAL_GAME_EXACT_ORIGIN.md):** the entire original 155B EnemyController::create and 222B Enemy::initialize methods are independently game-authored strict native exact, with original direct Enemy creation to initialization E8 and original large-dispatch call witnesses. Other historical review status below predates this game ownership admission.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

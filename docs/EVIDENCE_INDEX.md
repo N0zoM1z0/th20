@@ -44,6 +44,10 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [CORE/EXACT-507: 17 whole Animation gameplay methods, 5,527 native bytes](ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) — 1,106B reset, 931B motion, 944B interpolation and 835B float VM operand; independent original 93 E8 and 140 HIGHLOW fields, 50/50 strict units in three cold MSVC objects. The 39,470B VM parent is still nonexact.
 
+## Four complete original Enemy/ECL game lifecycle methods newly accepted authored exact
+
+- [CORE/ORIGIN-706 — whole 155B EnemyController create, 222B Enemy initialize, 168B EnemyState script progression and 217B EclManager tick original game-owned strict exact](ENEMY_ECL_LIFECYCLE_762_ORIGINAL_GAME_EXACT_ORIGIN.md) — independently read all four original PE whole instruction bodies, **29 real original E8 /4 physical original PE HIGHLOW** and 10 original parent/callee links, including the NONEXACT 12,140B dispatcher to Enemy creation, exact 1,371B Enemy defeat to Manager, and EclManager twice invoking the separately exact original **11,110B ECL Runtime interpreter**. All four original canonical strict receipts and independent 1,675B Enemy movement source were checked; 762 disjoint native game bytes now accepted as **four complete authored methods, 508 exact /180,373 original bytes**. Only two stale existing ECL receipts were refreshed by unit-specific builds, with no new source/manifest or global cold replay.
+
 ## ECL, Bullet, Animation and whole game-owner original exact provenance
 
 - [CORE/ORIGIN-555 — 21 complete ECL/Bullet/Animation/Item/Player/Archive original game-owned roots, 6,836B strict native exact](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md) — full 1,829 original x86 instructions, **187 genuine E8 and 62 PE HIGHLOW fields**, 40 real attached native compiler-alignment bytes compared but not credited; 122/122 strict original units in fourteen freshly cold-built real source providers, 13 high/8 medium original caller confidence statuses. The real whole-exact 11,110B ECL runtime and original 41,967B nonexact Enemy dispatcher call into these children; the giant parent is not claimed exact.
