@@ -40,6 +40,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-510 — four 120B exact game-owned Player frame dependencies, original whole E8/caller audit, 14B option-begin linker-fold identity](PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md) — original 45B handle equality, 17B Context effect getter, 38B EffectInfo file getter, 20B EnemyController count; fresh 20/20 strict units in two original owners. Physical 14B PlayerValues primary/secondary begin instantiations exactly match the original folded `0x0040BDA0`, zero duplicate original credit; 3,111B parent remains NONEXACT.
 
+## Enemy and Motion whole native game-boss exact origin
+
+- [CORE/ORIGIN-529 — ten original complete Enemy/EnemyState/Motion game bosses, 7,204 native body bytes](ENEMY_MOTION_7204_EXACT_ORIGIN_AUDIT.md) — includes 967B original Enemy animation opcode dispatcher, 844B Motion combination, 818B float variable destination, 809B Motion position and 780B Enemy spawn; all 1,930 native instruction heads, **247 native E8 + 128 PE HIGHLOW** fields independently verified across full **7,826B** original code/table extents, no double credit for 622 compiler table/CC bytes. Six fresh compiled objects **24/24 strict units exact**; 8 original game-user/high and 2 currently caller-unidentified/medium authored confidence. Giant 41,967B Enemy ECL parent is still NONEXACT.
+
 ## Interpolation big whole-function exact owners
 
 - [CORE/EXACT-511 — ten whole game interpolation bosses/evaluators, 8,571 native bytes](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) — 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog, 1,022B Vector2 and other whole samplers/evaluators; independent original PE **117 E8 / 90 HIGHLOW**, 2,421 complete x86 instructions, 41/41 native strict units in one fresh MSVC object; original game ECL/Animation/Enemy/Bullet and Wonder Stone callers. Earlier origin-pending descriptions superseded, no double counting or full cold replay.

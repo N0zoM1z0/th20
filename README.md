@@ -52,8 +52,8 @@ are excluded from Git.
 At the October 29, 2026 checkpoint the maintained graph has **1,181
 source-present mappings**, **1,181 strict canonical native units** and
 **241 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **455 complete functions /
-154,558 original native bytes**. These are dated values, not a
+game-authored whole-function exactness is **465 complete functions /
+161,762 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -65,7 +65,7 @@ for the live inventory and consult the
 | Reference review | All 6,945 indexed implementations and 113 parser-gap files reviewed |
 | ECL Runtime | Whole tick, call/frame/argument and lifetime protocols; [evidence](docs/EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | Animation | Lifetime, child links, script/frame geometry and operands; 17 newly [origin-reviewed native-exact gameplay methods](docs/ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) add 5,527B, while the 39,470B VM parent is open; [source map](docs/SOURCE_MAP.md) |
-| Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft remains machine-code nonexact; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
+| Enemy | Whole defeat plus **ten complete 416–967B Enemy/Motion gameplay bosses** now [origin-reviewed and strict exact](docs/ENEMY_MOTION_7204_EXACT_ORIGIN_AUDIT.md), adding **7,204 disjoint native bytes**; the enclosing 41,967B original Enemy ECL dispatcher remains nonexact; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; the complete 3,111B [Player main-frame C++ frontier](docs/PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) is source-present but NONEXACT; four directly called 120B [original game leafs are now strict exact](docs/PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Collision geometry | **19 complete original whole-function** geometry predicates, including 1,452B rectangle/rectangle and 1,439B line/rectangle bosses, now independently [origin-reviewed and strictly exact](docs/GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md); **13,360B disjoint authored credit** |

@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-525.** This is a live navigation
+**Current: 2026-10-29, after CORE/ORIGIN-529.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -20,7 +20,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Source-present mappings | **1,181** |
 | Strict canonical complete native units | **1,181** |
 | Unique canonical MSVC object/receipt providers | **241** |
-| Exact game-authored whole original functions | **455**, covering **154,558 original body bytes** |
+| Exact game-authored whole original functions | **465**, covering **161,762 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -256,6 +256,40 @@ bytes**, **1,181 source functions and strict canonical units / 241
 compiled providers**. The distinct 73B Animation factory at
 `0x00447800`, entire 3,735B Bullet emitter and 39,470B Animation VM
 remain separate **NONEXACT** fronts.
+
+## Ten independently origin-audited full Enemy and Motion gameplay bosses
+
+**CORE/ORIGIN-529:** Ten existing complete Enemy, EnemyState and Motion
+methods **416B–967B**, totaling **7,204 original nonoverlapping game
+body bytes and 1,930 actual native instruction heads**, now have
+independently original-PE-validated authored origins. Large whole methods
+include **967B Enemy animation opcode dispatcher**, **844B multi-Motion
+combiner**, **818B Enemy float variable destination**, **809B Motion
+position update**, **780B Enemy spawn application**, **765B EnemyState
+construction**, **694B velocity update** and **663B integer destination**.
+Their native user call graph includes the real **41,967B original Enemy
+ECL dispatcher** and separately whole-exact 1,675B Enemy movements.
+The original immutable game has **247 E8 and 128 PE HIGHLOW fields**
+across the complete original comparisons, all 375 independently
+reconciled. The actual method code is 7,204B; **622 extra original
+compiler switch/CC/table bytes** are fully compared in 7,826B strict
+canonical contributions but **not credited as additional game bytes**.
+Two negative-ID variable resolver roots have no discovered *incoming*
+original direct E8 call and deliberately retain **medium authored
+confidence**; the other eight have **high** original game-origin
+confidence from direct game parent callers.
+
+Exactly **six existing source/object providers** were freshly cold
+built and **24/24 configured whole native strict units replayed exact**
+using only those six source filters. These ten bodies already had
+exact native source and canonical units: this checkpoint audits and
+admits their **original game-authored ownership**; it does not invent
+new C++ implementations. [Original whole-game E8/HIGHLOW, source and
+scope evidence](ENEMY_MOTION_7204_EXACT_ORIGIN_AUDIT.md).
+Current authored exact rises **455 / 154,558B -> 465 / 161,762B**.
+Strict canonical units/source mappings stay **1,181**, real compiled
+providers **241**. The 41,967B parent Enemy ECL dispatcher remains
+independently **NONEXACT**; no whole cold replay or game-runtime claim.
 
 ## Actual open whole-function bosses (priority, NOT exact)
 
