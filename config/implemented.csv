@@ -1190,3 +1190,10 @@ std::pmr::vector<th20::BulletCommand>::operator=(const std::pmr::vector<th20::Bu
 std::_Copy_memmove_n<BulletCommand*>
 std::_Uninitialized_copy_n<BulletCommand*>
 std::pmr::vector<BulletCommand>::_Clear_and_reserve_geometric
+th20::FloatInterpolation::set_tangent_end
+th20::VectorInterpolation::set_tangent_end
+th20::FloatInterpolation::set_tangent_start
+th20::VectorInterpolation::set_tangent_start
+th20::VectorInterpolation::set_mode
+th20::FloatInterpolation::reset_timer
+th20::VectorInterpolation::reset_timer

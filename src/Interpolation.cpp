@@ -23,6 +23,18 @@ template<class T> void Interpolation<T>::set_end(const T& value) {
     end = value;
 }
 
+// Original Bullet +0x420 Vector3 and +0x474 float interpolation command
+// setters. These are genuine members on the same native typed instance.
+template<class T> void Interpolation<T>::set_tangent_start(const T& value) {
+    tangent_start = value;
+}
+template<class T> void Interpolation<T>::set_tangent_end(const T& value) {
+    tangent_end = value;
+}
+template<class T> void Interpolation<T>::reset_timer() {
+    timer = 0;
+}
+
 template<class T> void Interpolation<T>::begin(std::int32_t frames,
     std::int32_t easing_mode, const T& from, const T& to) {
     set_duration(frames);

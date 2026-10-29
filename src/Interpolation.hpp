@@ -34,6 +34,11 @@ template<class T> struct Interpolation {
     std::int32_t set_mode(std::int32_t value);
     void set_start(const T& value);
     void set_end(const T& value);
+    // Native Bullet command paths update independent cubic interpolation
+    // tangent values and restart the real Timer without altering duration.
+    void set_tangent_start(const T& value);
+    void set_tangent_end(const T& value);
+    void reset_timer();
     void begin(std::int32_t duration, std::int32_t mode,
                const T& from, const T& to);
 };

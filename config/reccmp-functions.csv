@@ -1191,3 +1191,10 @@ std::pmr::vector<th20::BulletCommand>::operator=(const std::pmr::vector<th20::Bu
 std::_Copy_memmove_n<BulletCommand*>,0x0047AB60,function
 std::_Uninitialized_copy_n<BulletCommand*>,0x0047B050,function
 std::pmr::vector<BulletCommand>::_Clear_and_reserve_geometric,0x004844A0,function
+th20::FloatInterpolation::set_tangent_end,0x00438B00,function
+th20::VectorInterpolation::set_tangent_end,0x00438B20,function
+th20::FloatInterpolation::set_tangent_start,0x00439460,function
+th20::VectorInterpolation::set_tangent_start,0x00439480,function
+th20::VectorInterpolation::set_mode,0x004394F0,function
+th20::FloatInterpolation::reset_timer,0x004395B0,function
+th20::VectorInterpolation::reset_timer,0x004396A0,function

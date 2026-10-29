@@ -1,5 +1,7 @@
 # CORE/ORIGIN-511 and CORE/EXACT-511 — ten whole native interpolation game functions, 8,571 bytes
 
+**Later [CORE/EXACT-746](BULLET_199_INTERPOLATION_TANGENT_TIMER_EXACT.md):** seven other originally untracked Bullet Vector3/Float tangent, Timer reset and mode whole methods now have natural native exact C++20 source and add **199 separate original game code bytes**. This is additional physical original game code, NOT a change to the prior ten 8,571B whole interpolation Bosses. The shared-header affected-only cold replay preserved all 542 old exact functions across 114 objects; private MSVC literal-label changes were independently original-PE proven, not bypassed.
+
 Immutable target: Japanese TH20 v1.00a Steamless original, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 
