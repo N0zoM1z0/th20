@@ -36,6 +36,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-507: 17 whole Animation gameplay methods, 5,527 native bytes](ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) — 1,106B reset, 931B motion, 944B interpolation and 835B float VM operand; independent original 93 E8 and 140 HIGHLOW fields, 50/50 strict units in three cold MSVC objects. The 39,470B VM parent is still nonexact.
 
+## Player main-frame complete 3,111B original behavioral/ABI correction
+
+- [CORE/RECON-550 — correct original two Context getter E8s, separate float sprite-scale arguments and local security-cookie profile in complete 3,111B Player parent](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md) — entire real maintained method now 3,239B/805 instructions, **730/783 ordered original mnemonic heads** aligned (up from 672); candidate 67 E8 and 37 DIR32 count agree with independent original 67 E8 and 37 HIGHLOW, but field sites/code still NONEXACT. No header or existing canonical unit modified, no full cold replay.
+
 ## Player main-frame leaf provenance and folded C++ template ABI
 
 - [CORE/EXACT-510 — four 120B exact game-owned Player frame dependencies, original whole E8/caller audit, 14B option-begin linker-fold identity](PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md) — original 45B handle equality, 17B Context effect getter, 38B EffectInfo file getter, 20B EnemyController count; fresh 20/20 strict units in two original owners. Physical 14B PlayerValues primary/secondary begin instantiations exactly match the original folded `0x0040BDA0`, zero duplicate original credit; 3,111B parent remains NONEXACT.

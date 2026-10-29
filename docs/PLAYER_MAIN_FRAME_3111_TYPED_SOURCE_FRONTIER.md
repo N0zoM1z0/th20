@@ -1,5 +1,22 @@
 # CORE/RECON-508 — entire original 3,111-byte Player main-frame typed C++ frontier
 
+**CORE/RECON-550 supersedes the historical 3,235B codegen score below.**
+The **complete 3,111B original Player parent is still NONEXACT**, but
+the current real maintained source now restores **two independent
+Context::enemy_controller getter E8s** and **two independent native
+sprite scale argument calculations**, rather than caching either
+source result. The old `/sdl` compile introduced an erroneous
+security-cookie call absent in the original method. The bounded
+corrected `/Od /GS /EHsc` source emits **3,239B/805 instructions**,
+**730/783 original mnemonic kinds aligned** (up from 672), and
+exactly **67 REL32 calls / 37 DIR32 fields** by count, matching
+original immutable PE's 67 E8/37 HIGHLOW count. These references
+have not yet been independently reconciled by original position or
+callee identity; no new exact native code is credited. Read
+[the complete native call and branch proof](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md)
+for the current source, scoped compiler flags and remaining ABI limits.
+
+
 Comparison original: user-selected Japanese TH20 v1.00a Steamless,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 

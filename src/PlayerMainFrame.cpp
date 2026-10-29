@@ -1,6 +1,9 @@
 // Complete original 0x004F9C30..0x004FA856 Player main-frame protocol.
-// Source-present, NONEXACT: the native whole 3111-byte root has no accepted
-// canonical unit. Its own original calls and relocations are audited separately.
+// Source-present, NONEXACT: complete original 3111B/783-instruction game
+// Player parent has no accepted whole-byte unit. Native audits recover
+// BOTH independent original EnemyController getter calls and BOTH original
+// floating sprite-scale evaluations, with no fake /sdl security cookie;
+// all 67 native E8 and 37 HIGHLOW *counts* now align (sites still differ).
 #include "Player.hpp"
 #include "InputInf.hpp"
 #include "EnemyController.hpp"
@@ -97,12 +100,13 @@ std::int32_t Player::update_main_frame() {
                 }
             }
 
-        const auto* enemies = context->enemy_controller();
-        if (enemies == nullptr || enemies->count() == 0 ||
-            !timer_654.at_least(4)) {
-            focused = 0;
-            field_20e4 = 30;
-        } else {
+        // The immutable original deliberately fetches the Context controller
+        // twice: first to test presence, then again to read its count.
+        // Do not cache one result or mask a missing original E8 behind the
+        // compiler's /sdl-induced security-cookie call.
+        if (context->enemy_controller() != nullptr &&
+            context->enemy_controller()->count() != 0 &&
+            timer_654.at_least(4)) {
             const std::uint32_t first_focus =
                 (input_view < 0 || process_input_views[input_view] == nullptr)
                     ? 0 : process_input_views[input_view]->replay_current_bits(8);
@@ -113,6 +117,9 @@ std::int32_t Player::update_main_frame() {
                 (input_view < 0 || process_input_views[input_view] == nullptr)
                     ? 0 : process_input_views[input_view]->replay_current_bits(8);
             focused = static_cast<std::uint8_t>(second_focus != 0);
+        } else {
+            focused = 0;
+            field_20e4 = 30;
         }
     }
 
@@ -127,11 +134,15 @@ std::int32_t Player::update_main_frame() {
             handle_60c = effect_file->spawn("effect", 19, -1, nullptr);
         }
         if (Animation* active = handle_60c.resolve()) {
-            if (!collision_expansion_enabled()) {
-                active->set_scale_58(native_one, native_one);
+            // Native original computes BOTH float scale argument expressions
+            // independently; sharing a local scale changes original globals
+            // and compiler reference fields even though normal values agree.
+            if (collision_expansion_enabled()) {
+                active->set_scale_58(
+                    (collision_expansion - native_one) * native_two + native_one,
+                    (collision_expansion - native_one) * native_two + native_one);
             } else {
-                const float scale = (collision_expansion - native_one) * native_two + native_one;
-                active->set_scale_58(scale, scale);
+                active->set_scale_58(native_one, native_one);
             }
         }
         const std::int32_t x_speed = field_67c < 5 ? speed_20b8 : speed_20c0;
