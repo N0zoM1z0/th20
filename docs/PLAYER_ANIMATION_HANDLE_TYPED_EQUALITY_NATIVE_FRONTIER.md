@@ -63,17 +63,17 @@ original-compatible member's concrete C++ symbol.
 
 Independently auditing the physical original 67 E8 identities
 against the current complete candidate gives **61 known
-correct**, **zero known incorrect**, and **six still requiring
-individual alias/source-origin reconciliation**. In particular,
-two Context::enemy_controller folded getter roles, one
-AnimationHandle word assignment, the 555-byte
-Player::apply_move_delta child, and two typed PlayerValues
-begin instantiations still require independent ownership
-work. A correct call *role* is not byte-exact acceptance of
+correct**, **zero known incorrect**, and **six at this dated checkpoint still requiring
+individual alias/source-origin reconciliation**. A subsequent
+[independent complete original 67-callee audit](PLAYER_MAIN_FRAME_67_ORIGINAL_CALLEE_ROLES_FRONTIER.md)
+now corroborates all six remaining source/physical call roles
+(five fully native-byte-identical folded helper occurrences,
+plus the genuine mapped 555B nonexact Player movement child).
+The exact historical linker ICF settings remain unknown.
+A correct call *role* is not byte-exact acceptance of
 the 3,111-byte enclosing boss. Real stack lifetimes,
-branch shapes, original 37 absolute field positions,
-and the six unresolved physical callee identities remain
-open. The complete parent is **NONEXACT**.
+branch shapes and actual physical original 37 absolute field
+positions remain unresolved. The complete parent is **NONEXACT**.
 
 The 45-byte equality candidate is a new noncanonical source
 component and is deliberately **not** added as a separate
