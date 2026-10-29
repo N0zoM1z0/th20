@@ -1,6 +1,7 @@
 #include "Bullet.hpp"
 namespace th20 {
 BulletColor::BulletColor():value(0) {}
+std::uint32_t BulletColor::operator=(std::uint32_t input) { value = input; return input; }
 Bullet::Bullet()
     :link(this),flags{},field_18(0),animation(nullptr),speed(0),field_24(0),
      index(0),field_2c(0),command_index(0),cancel_script(0),field_38(0),field_3c(0),

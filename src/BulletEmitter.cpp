@@ -24,7 +24,6 @@ extern GameRandom process_bullet_random;
 extern const float native_zero, native_one, native_two;
 extern const float native_pi, native_half, native_alternate_sign;
 extern const float native_origin_z;
-extern std::int32_t type_to_script(std::int32_t type);
 
 std::int32_t BulletController::emit(const ShotParameters& shot,
                                     std::shared_ptr<ShotMetadata> descriptor,
@@ -152,11 +151,16 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->field_4d4=3;
 
     bullet->animation=current_animation_pool->allocate_animation();
+    // Original native +0x972 immediately E8-calls 0x004299D0 reset
+    // on the newly returned pool Animation before binding its bullet owner.
+    bullet->animation->reset();
     bullet->animation->user_data=bullet;
     bullet->animation->set_field_5e0(bullet_animation_script);
     // Original emitter E8 at 0x004822C5 goes to the 338B direct
     // script loader, not the distinct 32B bind_animation wrapper.
-    file->load_script(bullet->animation,bullet_styles[shot.type].script);
+    // Original 0x00482297 separately calls 0x004856C0 to resolve script
+    // by shot type; directly reading style.script lost this real E8.
+    file->load_script(bullet->animation,type_to_script(shot.type));
     bullet->flags.bits|=0x10u;
     bullet->animation->base.flags.layer_mode=1;
     BulletStyle& style=bullet_styles[shot.type];
@@ -164,7 +168,7 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         bullet->animation_handle=file->spawn(nullptr,style.child_script,bullet->position,0.0f,-1,nullptr);
     }
     bullet->style=&style;
-    bullet->color.value=0xffd08080u;
+    bullet->color=0xffd08080u;
     switch(style.cancel_type) {
       case 0: bullet->cancel_script=static_cast<int>(shot.color)*2+6;break;
       case 1: bullet->cancel_script=static_cast<int>(shot.color);break;
@@ -173,7 +177,7 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
       case 4: bullet->cancel_script=8;break;
       case 6:
         bullet->cancel_script=style.colors[shot.color].words[3];
-        bullet->color.value=style.colors[shot.color].words[4];
+        bullet->color=style.colors[shot.color].words[4];
         bullet->flags.bits|=0x10u;break;
       case 7: bullet->cancel_script=263;bullet->flags.bits|=0x10u;break;
       case 8: bullet->cancel_script=266;bullet->flags.bits|=0x10u;break;

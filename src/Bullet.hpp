@@ -19,6 +19,10 @@ struct BulletStyle;
 struct BulletColor {
     std::uint32_t value;
     BulletColor();
+    // Original 24-byte physical PackedColor word assignment at 0x0045D650
+    // is shared by this genuine four-byte Bullet color owner: source roles
+    // fold at one physical native head; no duplicate original byte credit.
+    std::uint32_t operator=(std::uint32_t input);
     std::uint32_t get() const;
 };
 // The native low word has a two-bit cancellation effect mode in bits 11..12.

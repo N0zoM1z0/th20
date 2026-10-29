@@ -31,5 +31,8 @@ static_assert(offsetof(BulletStyle, child_script) == 0x154);
 extern BulletStyle bullet_styles[50];
 // Valid type indices are0..49, matching the original unchecked array access.
 float bullet_radius(std::int32_t type);
+// Independent original 18B type/script lookup at native 0x004856C0,
+// called from original Bullet emitter at 0x00482297 (before file load).
+std::int32_t type_to_script(std::int32_t type);
 
 } // namespace th20

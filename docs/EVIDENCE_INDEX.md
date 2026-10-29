@@ -68,6 +68,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-511 — ten whole game interpolation bosses/evaluators, 8,571 native bytes](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) — 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog, 1,022B Vector2 and other whole samplers/evaluators; independent original PE **117 E8 / 90 HIGHLOW**, 2,421 complete x86 instructions, 41/41 native strict units in one fresh MSVC object; original game ECL/Animation/Enemy/Bullet and Wonder Stone callers. Earlier origin-pending descriptions superseded, no double counting or full cold replay.
 
+## Bullet emitter four original calls and strict 18B style script getter
+
+- [CORE/EXACT-563 — original full 18B Bullet type-to-script mapping plus four recovered real emitter E8 game calls](BULLET_EMITTER_REAL_CALLS_18_EXACT_RECONSTRUCTION.md) — whole native 18/18 original strict, real PE HIGHLOW field `0x004856CC -> 0x005C06A8`, real 3,735B emitter caller; restored Animation reset E8, script lookup E8 and two 24B typed color assignments physically folded with already exact PackedColor. Whole emitter now 3,561B/904 instructions and **809/935** mnemonic heads aligned, **57/60** actual native E8 calls; still NONEXACT. Frozen 32 old source providers/71 old strict units; 72/72 final original native strict after six independent compiler-private string proof reconciliations, no full cold replay or duplicate physical color credit.
+
 ## Complete native Bullet emitter source frontier
 
 - [CORE/RECON-514 — entire 3,735B Bullet emitter now in maintained C++20, whole native nonexact](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) — original immutable whole 935 instructions, 60 actual E8/43 unique callees, 13/11 real jump-table entries; real free/active, shot metadata ownership, style/cancel and Animation update phases; 3,516B/890-instruction candidate improves to 792/935 opcode alignment. Frozen 38-source shared-header closure rebuilt and **91/91 existing native strict units exact**; one independently verified private original-string symbol renaming, no whole cold replay or new exact bytes.

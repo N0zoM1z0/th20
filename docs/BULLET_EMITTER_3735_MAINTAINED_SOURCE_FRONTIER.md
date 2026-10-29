@@ -1,5 +1,23 @@
 # CORE/RECON-514 — complete 3,735-byte Bullet emitter boss in maintained C++
 
+**Later CORE/EXACT-563 entire-parent correction:** The maintained
+3,735B Bullet emitter now restores **four actual original game E8 calls**:
+`0x00482252 -> 0x004299D0` (Animation reset),
+`0x00482297 -> 0x004856C0` (newly whole-exact **18B** BulletStyle
+`type_to_script`), and both `0x00482390`/`0x00482481 -> 0x0045D650`
+(typed BulletColor word assignments, physically folded with the
+already exact 24B PackedColor body, **zero duplicate byte credit**).
+The full C++ source currently emits **3,561B / 904 instructions**
+with **809/935 original mnemonic heads** aligned and 57/60 native
+original direct E8 calls represented, versus the older checkpoint's
+3,516B/890/792/53. **The entire 3,735B Bullet emitter remains
+NONEXACT**; original switch tables, STL move-ownership and other
+callees remain open. Only 32 original header-dependent compiler
+sources and 72 strict units were freshly replayed, 72/72 exact;
+no whole global cold replay. [Full immutable original E8,
+source/canonical 18B and physical folded alias proof](BULLET_EMITTER_REAL_CALLS_18_EXACT_RECONSTRUCTION.md).
+
+
 **CORE/EXACT-525 follow-up — original complete 298B Animation
 allocation callee is now strict exact.** The native Bullet emitter's
 original `0x00482241` E8 calls the complete 298B pool alloc/recycle
