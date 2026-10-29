@@ -13,7 +13,7 @@ extern InputInf* process_input_inf;
 InputInf::InputInf() noexcept
     : state_10(0), state_14(0), state_18(0), direct_input_1c(nullptr),
       devices(), direct_device_2e10(nullptr), pad_devices{nullptr},
-      routing_2e24{}, active_buttons{}, bindings()
+      routing_2e24{}, view_indices_2e30{}, bindings()
 {
     ecl_diagnostic_hint("initialize InputInf\n");
     process_input_inf = this;

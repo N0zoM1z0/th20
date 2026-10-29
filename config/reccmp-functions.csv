@@ -1175,3 +1175,4 @@ th20::InputDevice::initialize_directinput,0x004219D0,function
 th20::InputInf::direct_input_handle_slot,0x00421830,function
 th20::report_log_message,0x00454150,function
 th20::InputDevice::poll,0x00421B00,function
+th20::Player::update_main_frame,0x004F9C30,function

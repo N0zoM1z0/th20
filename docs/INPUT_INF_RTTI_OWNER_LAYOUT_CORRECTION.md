@@ -1,5 +1,8 @@
 # CORE/EXACT-455 — original InputInf RTTI and constructor-proven input owner correction
 
+**CORE/RECON-508 correction:** The original `+0x2E30` pair are signed integer process-view selectors, **not** InputButtonState pointers. The previous pointer interpretation and related claims below were mistaken; the same 26-byte getter remains whole strict exact. See the independent [signed-index proof](INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md).
+
+
 This is an **original-native ownership and C++ type accuracy correction** of an
 **already exact** original function. The immutable comparison target remains
 Japanese TH20 v1.00a Steamless, whole SHA-256

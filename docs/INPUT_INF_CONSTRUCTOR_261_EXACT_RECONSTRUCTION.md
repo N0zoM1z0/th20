@@ -1,5 +1,8 @@
 # CORE/EXACT-467 — entire native InputInf manager constructor, 261B plus five original CC alignment bytes
 
+**CORE/RECON-508 correction:** The native constructor clears two four-byte **signed process-view indices** at `+0x2E30`, not two InputButtonState pointers. The historical pointer label below was disproved by three original Player/controller consumers. See the independent [signed-index proof](INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md).
+
+
 Original comparison target: immutable Japanese TH20 v1.00a Steamless,
 whole executable SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

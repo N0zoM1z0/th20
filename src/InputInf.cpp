@@ -1,6 +1,6 @@
-// Whole original 26-byte InputInf per-Player input source lookup.
-// This RTTI-attested original class owns the live pointer table; no
-// pointer-alias casts or fake 0x2E30-byte padding are needed.
+// Whole native 26-byte signed InputInf logical-to-process-view lookup.
+// The original Player main frame consumes its result as an integer
+// subscript of independent process_input_views[], not as a pointer.
 #include "InputInf.hpp"
 
 namespace th20 {
@@ -11,8 +11,8 @@ void InputInf::set_last_input_kind(std::int32_t kind) {
     state_18 = static_cast<std::uint32_t>(kind);
 }
 
-InputButtonState* InputInf::for_view(std::int32_t logical_index) {
-    return active_buttons[logical_index];
+std::int32_t InputInf::for_view(std::int32_t logical_index) {
+    return view_indices_2e30[logical_index];
 }
 // Original 49B native logical-view routing lookup. View 1 is a native
 // disabled-routing sentinel; other views use the genuine +0x2E24 table.

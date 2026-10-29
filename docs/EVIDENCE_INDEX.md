@@ -30,6 +30,10 @@ remains in history. Current exact status is in the concise
 
 ## Input system and Player
 
+- [CORE/RECON-508 — complete 3,111B Player main-frame source frontier](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) — full typed C++ for native input/special movement, nine signed directions, animation/focus, 33-slot history and 22 PlayerOptions; 3,235B/807 candidate against 3,111B/783 original, still NONEXACT; 89/89 affected exact units in 33 source objects replayed with no global cold run.
+
+- [CORE/EXACT-508 — signed InputInf+0x2E30 process-view index, not two InputButtonState pointers](INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md) — three independent original E8 callers prove genuine signed selector into `process_input_views` at `0x005B889C`; correcting the C++ type and decorated symbol preserves the **same physical 26/26 exact byte unit**; one separately original-attested compiler-private `$SG` name reconciled without changing its original PE destination.
+
 - [CORE/EXACT-501 — entire 3,490B InputDevice keyboard/DirectInput/XInput polling boss strict exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) — 747 original x86 instructions and 39 separately original-attested E8/HIGHLOW fields; fresh locked MSVC i386 complete 3,490/3,490 strict canonical bytes, one new game-authored exact function, **no full replay**. Supersedes prior nonexact polling-frontier descriptions.
 
 - [Historical CORE/RECON-497 full 3,490B InputDevice polling C++ source frontier, since superseded by CORE/EXACT-501](INPUT_DEVICE_FRAME_3490_SOURCE_FRONTIER.md) — native keyboard, XInput and DirectInput semantics now have a real compiled typed whole-function implementation; candidate 3,720B/759 instructions against original 3,490B/747, **NONEXACT**, zero new original exact credit.

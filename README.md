@@ -49,7 +49,7 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 29, 2026 checkpoint the maintained graph has **1,176
+At the October 29, 2026 checkpoint the maintained graph has **1,177
 source-present mappings**, **1,177 strict canonical native units** and
 **237 canonical MSVC object/receipt providers**. Independently verified
 game-authored whole-function exactness is **437 complete functions /
@@ -66,10 +66,10 @@ for the live inventory and consult the
 | ECL Runtime | Whole tick, call/frame/argument and lifetime protocols; [evidence](docs/EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | Animation | Lifetime, child links, script/frame geometry and operands; 17 newly [origin-reviewed native-exact gameplay methods](docs/ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) add 5,527B, while the 39,470B VM parent is open; [source map](docs/SOURCE_MAP.md) |
 | Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft remains machine-code nonexact; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
-| Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
+| Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; the complete 3,111B [Player main-frame C++ frontier](docs/PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) is now source-present but remains NONEXACT |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Collision geometry | **19 complete original whole-function** geometry predicates, including 1,452B rectangle/rectangle and 1,439B line/rectangle bosses, now independently [origin-reviewed and strictly exact](docs/GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md); **13,360B disjoint authored credit** |
-| Input devices | Complete 3,490B original keyboard/DirectInput/XInput poll is now [whole strict exact](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), along with manager startup/discovery/lifetime and button-state updates; game link/runtime remain open |
+| Input devices | Complete 3,490B [keyboard/DirectInput/XInput poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) strict exact; [corrected signed InputInf selector ABI](docs/INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md) from three original callers; game link/runtime remain open |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |
 | HUD and text | Complete FrontInf, AsciiInf and [Dialogue construction/destruction/follow-box protocol](docs/DIALOGUE_OWNER_RECONSTRUCTION.md); native resource lifetime and frame execution remain open |
 | Whole-program build and runtime | Not yet available |

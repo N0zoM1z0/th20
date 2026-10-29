@@ -92,6 +92,8 @@ public:
     // Entire 555-byte native motion/clamp routine: maintained complete
     // gameplay C++, but not yet strict machine-code exact.
     void apply_move_delta(std::int32_t x, std::int32_t y);
+    // Entire original 3111B frame owner: source present, not yet native exact.
+    std::int32_t update_main_frame();
     std::int32_t active_option_count() const;
     void set_option_field_fc(std::int32_t value);
     // Original complete Player movement bits and secondary option frame delay.

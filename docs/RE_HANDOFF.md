@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-507.** This is a live navigation
+**Current: 2026-10-29, after CORE/RECON-508.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -17,7 +17,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Original length | 1,858,560 bytes |
 | Original SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional PE boundaries | 6,928 |
-| Source-present mappings | **1,176** |
+| Source-present mappings | **1,177** |
 | Strict canonical complete native units | **1,177** |
 | Unique canonical MSVC object/receipt providers | **237** |
 | Exact game-authored whole original functions | **437**, covering **143,806 original body bytes** |
@@ -78,6 +78,14 @@ all independently verified. Existing canonical counts stay 1,177 units and
 | `0x0041F9B0` and `0x0041FCB0` button/device constructors | **340B / 102B** | [Entire original nested-input construction](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) |
 | `0x00454150` vs `0x00454230` normal append-only vs error-flag diagnostic | **215B new / 221B prior** | [True distinct log semantics and original six DirectInput call sites](DIAGNOSTIC_LOG_MESSAGE_215_EXACT_RECONSTRUCTION.md) |
 
+**CORE/EXACT-508 ABI correction:** InputInf at `+0x2E30` owns two
+**signed process-view indices, not InputButtonState pointers**. Three
+original Player/controller callers independently use its 26B getter result
+as a signed index into the distinct process pointer array at `0x005B889C`.
+The getter remains 26/26 exact with its corrected integer return signature;
+**33 header-dependent C++ objects / 89 strict units** were cold rebuilt
+and replayed without a full-graph run. See the [three-caller proof](INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md).
+
 Original input route/bindings/pad/view getters are also exact:
 `0x00421990` (49B), `0x004217F0` (27B),
 `0x00421850` and `0x00421870` (26B each),
@@ -96,7 +104,7 @@ units; do not create duplicate physical matches.
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
 | --- | --- | --- |
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
-| `0x004F9C30` **3,111B** Player main frame | [Whole original E8/HIGHLOW caller audit](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) | Enclosing frame is NONEXACT despite most child calls being exact. Verify remaining E8 target and movement callee independently. |
+| `0x004F9C30` **3,111B** Player main frame | [Full typed source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) now compiles **3,235B / 807 instructions / 67 REL32**, versus native 3,111B/783/67 E8/37 HIGHLOW. [Original 783-head audit](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) | Enclosing boss remains **NONEXACT**, no exact credit. Resolve original full source control-flow and 35/37 absolute-reference mismatch; its separate 555B movement callee remains NONEXACT. |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
 | `0x00481200` **1,404B** Bullet command 11 | `src/BulletCommand11.cpp`; [whole boss C++ frontier](BULLET_COMMAND11_FULL_SOURCE_FRONTIER.md) | Four missing original instruction kinds; distinguish true state/lifetimes from compiler shaping. |
 | `0x004818E0` **3,735B** Bullet emitter | Switch-table/CC comparison extends physical compiler contribution; [whole emitter frontier](BULLET_EMITTER_FULL_CXX_FRONTIER.md) | Actual STL move ownership, emitter arrays, native switch-table relocations. |

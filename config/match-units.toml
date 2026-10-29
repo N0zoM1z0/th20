@@ -11711,7 +11711,7 @@ relocations = [
   { offset = 680, type = "REL32", symbol = "??0PlayerFeedback@th20@@QAE@XZ", target = 0x004F4580 },
   { offset = 719, type = "REL32", symbol = "??0PlayerShotController@th20@@QAE@XZ", target = 0x004F4B80 },
   { offset = 733, type = "REL32", symbol = "??0Angle@th20@@QAE@XZ", target = 0x00447DE0 },
-  { offset = 764, type = "DIR32", symbol = "$SG82283", target = 0x00572BB8 },
+  { offset = 764, type = "DIR32", symbol = "$SG82284", target = 0x00572BB8 },
   { offset = 769, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -19820,7 +19820,7 @@ source = "src/InputInf.cpp"
 object = "build/core455-canonical/InputInf.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/Gd"]
 functions = ["th20::InputInf::for_view"]
-symbol = "?for_view@InputInf@th20@@QAEPAUInputButtonState@2@H@Z"
+symbol = "?for_view@InputInf@th20@@QAEHH@Z"
 target_address = 0x00498FB0
 size = 26
 relocations = []

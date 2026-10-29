@@ -1,5 +1,8 @@
 # CORE/EXACT-476 — complete 466B InputInf device shutdown boss and 50B DirectInput release
 
+**CORE/RECON-508 correction:** InputInf `+0x2E30` holds two signed process-view indices, not `InputButtonState*` view pointers. The old pointer wording below is historical and disproved by native consumers; the original shutdown and its exact proof are unchanged. See the independent [signed-index proof](INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md).
+
+
 Immutable original comparison target: Japanese TH20 v1.00a
 Steamless PE, whole SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

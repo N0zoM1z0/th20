@@ -1,5 +1,8 @@
 # CORE/RECON-432 / CORE/EXACT-433 — full original 3,111B Player frame call graph and two exact native callees
 
+**CORE/RECON-508 correction:** The 3,111B Player main-frame method is now [source-present but NONEXACT](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md). Original InputInf `for_view` returns a signed integer used to index `process_input_views[4]`; historical `InputInf+0x2E30` pointer claims below were mistaken. The earlier complete original callgraph/child exactness evidence stays valid. See the independent [signed-index proof](INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md).
+
+
 Immutable original: Japanese TH20 v1.00a Steamless executable,
 whole SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 

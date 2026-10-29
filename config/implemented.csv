@@ -1174,3 +1174,4 @@ th20::InputDevice::initialize_directinput
 th20::InputInf::direct_input_handle_slot
 th20::report_log_message
 th20::InputDevice::poll
+th20::Player::update_main_frame

@@ -49,10 +49,12 @@ public:
     IDirectInputDevice8W* direct_device_2e10;
     IDirectInputDevice8W* pad_devices[4];
     std::int32_t routing_2e24[3];
-    InputButtonState* active_buttons[2];
+    // Signed indices into the independent process_input_views[] pointer table;
+    // the original Player frame uses these values as scaled array subscripts.
+    std::int32_t view_indices_2e30[2];
     InputBindings bindings[4];
-    // Entire original 26B accessor, native thiscall receiver and int index.
-    InputButtonState* for_view(std::int32_t logical_index);
+    // Whole original 26B signed selector: returns a view index, not a pointer.
+    std::int32_t for_view(std::int32_t logical_index);
     // The entire original 3490B device polling frame calls both of these
     // authentic input-owner address/routing methods.
     std::int32_t routing_for_view(std::int32_t view) const;
@@ -76,7 +78,7 @@ static_assert(offsetof(InputInf, direct_input_1c) == 0x1c);
 static_assert(offsetof(InputInf, direct_device_2e10) == 0x2e10);
 static_assert(offsetof(InputInf, pad_devices) == 0x2e14);
 static_assert(offsetof(InputInf, routing_2e24) == 0x2e24);
-static_assert(offsetof(InputInf, active_buttons) == 0x2e30);
+static_assert(offsetof(InputInf, view_indices_2e30) == 0x2e30);
 static_assert(offsetof(InputInf, bindings) == 0x2e38);
 // Original constructor initializes members through the end of bindings
 // at +0x2EF8. This is an attested prefix, NOT proof that the full original
