@@ -13,6 +13,16 @@ void polar(Vector3& destination, float direction, float length) {
     destination.y = std::sin(direction) * length;
 }
 
+// Native 89-byte 2D/3D polar body at 0x00439330 is linker-folded.
+// The original Bullet command-11 E8 targets the very same whole native
+// implementation even though its destination is a real eight-byte Vector2.
+// Preserve a genuine typed second symbol rather than an unresolved alias,
+// illegal Vector3 reinterpret cast, or an additional exact byte count.
+void polar2(Vector2& destination, float direction, float length) {
+    destination.x = std::cos(direction) * length;
+    destination.y = std::sin(direction) * length;
+}
+
 void ellipse_polar(Vector3& destination, float direction, float axis_x, float axis_y) {
     destination.x = std::cos(direction) * axis_x;
     destination.y = std::sin(direction) * axis_y;

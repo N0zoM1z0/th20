@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-511.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-512.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -18,9 +18,9 @@ historical NONEXACT claims there must not override later exact proofs.
 | Original SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional PE boundaries | 6,928 |
 | Source-present mappings | **1,177** |
-| Strict canonical complete native units | **1,177** |
-| Unique canonical MSVC object/receipt providers | **237** |
-| Exact game-authored whole original functions | **451**, covering **152,497 original body bytes** |
+| Strict canonical complete native units | **1,178** |
+| Unique canonical MSVC object/receipt providers | **238** |
+| Exact game-authored whole original functions | **452**, covering **153,901 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -138,6 +138,27 @@ The previous 1,177 strict units, 237 compiler object providers and
 1,177 source-present functions remain unchanged. No parent exactness,
 folded-helper double credit, game runtime or full cold replay claim.
 
+## Closed whole Bullet command-11 boss — 1,404B strict native exact
+
+**CORE/EXACT-512:** Entire original `0x00481200` Bullet command-11
+four-corner edge-ray state machine, **1,404 original bytes / 357 x86
+instructions**, is now a fresh strict canonical **1,404/1,404 exact**
+whole-function unit. Recovered two authentic original 384.0f/448.0f
+stack-local initializations at original `+0x105..+0x11E` instead of
+mistaking them for artificial padding. All original **33 E8 call sites
+and 35 PE HIGHLOW absolute fields** were independently read from the
+locked original; every original target and remaining byte agrees with
+the pinned real MSVC source. The previously unresolved `polar2` symbol
+is now defined as an actual typed Vector2 helper whose complete **89B
+original code is physically folded with the already strict Vector3
+polar** at `0x00439330`, with no duplicate original credit. Only
+`src/BulletCommand11.cpp` and `src/MotionMath.cpp` were cold built:
+**12/12 entire native units strict exact**, two real objects. [Complete
+original source, folded ABI and immutable PE relocation proof](BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md).
+The distinct **12,140B Bullet controller dispatcher and 3,735B Bullet
+emitter remain NONEXACT**. New canonical count is **1,178 units / 238
+object providers**. No full cold replay, link or runtime claim.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
@@ -145,7 +166,6 @@ folded-helper double credit, game runtime or full cold replay claim.
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
 | `0x004F9C30` **3,111B** Player main frame | [Full typed source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) now compiles **3,235B / 807 instructions / 67 REL32**, versus native 3,111B/783/67 E8/37 HIGHLOW. [Original 783-head audit](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) | Enclosing boss remains **NONEXACT**, no exact credit. Resolve original full source control-flow and 35/37 absolute-reference mismatch; its separate 555B movement callee remains NONEXACT. |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
-| `0x00481200` **1,404B** Bullet command 11 | `src/BulletCommand11.cpp`; [whole boss C++ frontier](BULLET_COMMAND11_FULL_SOURCE_FRONTIER.md) | Four missing original instruction kinds; distinguish true state/lifetimes from compiler shaping. |
 | `0x004818E0` **3,735B** Bullet emitter | Switch-table/CC comparison extends physical compiler contribution; [whole emitter frontier](BULLET_EMITTER_FULL_CXX_FRONTIER.md) | Actual STL move ownership, emitter arrays, native switch-table relocations. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
 | `0x00539550` **1,036B** Archive LZSS encoder | `src/ArchiveLzssEncode.cpp` previous private 964B probe; [historical encoder evidence](ARCHIVE_WRITE_RECONSTRUCTION.md) | Original byte-flush accumulation has unverified observable use; do not introduce dead scalar solely for matching. |

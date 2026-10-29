@@ -1,6 +1,8 @@
-// Complete provisional Bullet command-11 edge-ray state machine.
-// Its full native 1,404-byte contribution remains NONEXACT: source does not
-// manufacture original /Od-only dead locals for the sake of instruction size.
+// Entire original Bullet command-11 edge-ray state machine.
+// Original native MSVC /Od code initializes two 32-bit scalar screen bounds
+// after polar2; the initializations survive in the original even though
+// their local stack slots are not subsequently loaded. Preserve the actual
+// native local writes, not arbitrary padding or dead invented instructions.
 #include "Bullet.hpp"
 #include "Animation.hpp"
 #include "AnimationFile.hpp"
@@ -29,6 +31,12 @@ std::int32_t Bullet::advance_command11() {
             float crossed[4]{};
             float projected[4]{};
             polar2(direction, static_cast<float>(angle), 1.0f);
+            // Original +0x105..+0x11E performs four real instructions:
+            // load original 384.0f / 448.0f and initialize distinct local
+            // stack slots -0x78 / -0x7C. No later instructions read them;
+            // the original source-level scalar initializations survive /Od.
+            const float screen_half_width = native_384;
+            const float screen_half_height = native_448;
 
             corner.x = (native_minus_384 - animation->sprite_data()->extent_4c) / native_two - position.x;
             corner.y = (native_448 / native_two + (native_minus_448 - animation->sprite_data()->extent_48) / native_two) - position.y;

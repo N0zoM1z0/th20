@@ -1,5 +1,18 @@
 # CORE/RECON-302 — entire 1,404-byte Bullet command-11 boss, maintained source frontier
 
+**Historical NONEXACT compiler checkpoint, superseded by
+[CORE/EXACT-512](BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md).** The
+complete original `0x00481200` now has a real 1,404/1,404 native strict
+canonical C++ unit. A fresh original PE proof verified the 384/448
+screen-bound local initializations omitted by this old checkpoint, all
+33 native E8 plus 35 original PE HIGHLOW relocations, and the real typed
+89B `polar2(Vector2&)` symbol physically shared with `polar(Vector3&)`.
+The historical 1,378B/353-instruction NONEXACT experiments documented
+below remain useful to understand the source compiler frontier but are
+**not current exactness status**. No duplicate exact bytes or full
+cold replay were used.
+
+
 The complete original game-owned `Bullet::advance_command11` at
 `0x00481200..0x0048177B` (1,404 bytes / 357 x86 instructions,
 SHA-256 `48a4da455a231997829ed66a57a9604d32988b2d8eb604749a935da80f94f546`)

@@ -36,6 +36,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-511 — ten whole game interpolation bosses/evaluators, 8,571 native bytes](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) — 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog, 1,022B Vector2 and other whole samplers/evaluators; independent original PE **117 E8 / 90 HIGHLOW**, 2,421 complete x86 instructions, 41/41 native strict units in one fresh MSVC object; original game ECL/Animation/Enemy/Bullet and Wonder Stone callers. Earlier origin-pending descriptions superseded, no double counting or full cold replay.
 
+## Bullet command-11 whole strict native boss
+
+- [CORE/EXACT-512 — complete original 1,404-byte Bullet command-11 game boss and genuine typed polar2 folded alias](BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md) — full 357 x86 instructions, original native 33 E8/35 PE HIGHLOW field destinations, independent 384/448 local stack initialization re-evaluation, 1,404/1,404 full strict native bytes; real Vector2/Vector3 shared 89B original polar without duplicate credit; 12/12 strict units in two source objects, no full cold replay. Earlier CORE/RECON-302 NONEXACT description is historical and superseded.
+
 ## Input system and Player
 
 - [CORE/RECON-508 — complete 3,111B Player main-frame source frontier](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) — full typed C++ for native input/special movement, nine signed directions, animation/focus, 33-slot history and 22 PlayerOptions; 3,235B/807 candidate against 3,111B/783 original, still NONEXACT; 89/89 affected exact units in 33 source objects replayed with no global cold run.
