@@ -562,3 +562,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044FB80,th20::AnimationPoolOwner::mark_animation_tree_for_retirement,282,matching,100.00,animation_retire_tree_282,CORE/RECON-753; docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md; complete native strict 282/282 B
 0x0044FCA0,th20::AnimationPoolOwner::retire_handle,43,matching,100.00,animation_retire_owner_43,CORE/RECON-753; docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md; complete native strict 43/43 B
 0x0044FCD0,th20::AnimationHandle::retire,37,matching,100.00,animation_retire_handle_37,CORE/RECON-753; docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md; complete native strict 37/37 B
+0x00449460,th20::SprtID::operator!=(const SprtID&),47,matching,100.00,sprtid_inequality_47,CORE/RECON-768; docs/SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md; complete original source and native strict 47/47 B

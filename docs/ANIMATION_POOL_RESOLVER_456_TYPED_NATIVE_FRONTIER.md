@@ -56,6 +56,30 @@ one maintained typed method in `src/AnimationPoolHandleResolve.cpp`, with a
 natural `std::function<bool(IntrusiveLink<Animation>&)>` finder and real
 `std::array`/`PooledAnimation` layouts.
 
+## CORE/RECON-768 subsequent compiler evidence and actual current state
+
+The original 456B game method remains **NONEXACT** publicly, but independently
+reviewed native `SprtID` value ABI and natural two-list/three repeated
+pool-index body have now been reproduced in an ignored **456/456-byte,
+141/141-instruction, 20/20 original-REL32-field private source probe**.
+The private model still has unresolved C++ owner/handle tag and aliasing
+identities, so that structural proof does **not** add original native exact
+credit. One real callee, 47B `SprtID::operator!=(const SprtID&)` at
+`0x00449460`, is separately whole strict exact and recorded in the canonical
+ledger. The published scalar-interface semantic source now emits
+**410B/122 instructions/13 COFF relocations** after more faithful typed
+list and pool access (up from 364B/111/12 at CORE/RECON-757). A proposed
+public SprtID signature change broke four already strict caller lengths,
+so its diff was preserved privately, the public ABI restored, and all
+**nine affected prior canonical units from three actually rebuilt old
+objects** were rigorously revalidated. See
+[CORE/RECON-768 original exactness and ABI experiment](SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md)
+for independent original-PE proofs and scoped compiler evidence.
+
+The earlier 364B measurements below are dated **CORE/RECON-757** compiler
+results, not the current public maintained-source build. They are not new
+strict exact credit.
+
 ## Pinned compiler experiment and what is NOT exact
 
 The new source compiles successfully with the installed pinned MSVC

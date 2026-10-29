@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-757):** [live accepted
+**Current next-agent reading order (CORE/RECON-768):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,210 strict units, 563 authored exact whole functions,
-187,092 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,211 strict units, 564 authored exact whole functions,
+187,139 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -28,9 +28,13 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## Original 47-byte SprtID comparison and full 456-byte compiler frontier
+
+- [CORE/RECON-768 — strict-original 47/47-byte `SprtID::operator!=(const SprtID&)` and genuine typed source compiler frontier for the 456-byte `getSprt` boss](SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md) — independent original native 0x0044CE8B caller, locked RTTI and 47/47 MSVC function, zero relocations. A private source-only SprtID/owner hypothesis produces the **entire** original 456B/141-instruction parent with 20/20 original-PE independent E8/COFF positions and zero nonrelocated byte differences, but its provisional alias/ABI identities are **not accepted exact**. Public native `uint32_t` signature restored to preserve four previously exact callers after their +6B compiler regressions were captured, and the actually touched 3 providers /9 units replayed 9/9 original strict exact. Only one new canonical 47B unit cold compiled; no unfiltered cold replay. Live totals: **564 original game functions /187,139B**; complete original 456B parent and 12,140B Bullet parent remain NONEXACT.
+
 ## Entire 456-byte original Animation pool handle resolver semantic source, still NONEXACT
 
-- [CORE/RECON-757 — original `SprtCtrlInf::getSprt(SprtID)` RTTI, 20/20 original native E8, normal/0xFFFF-special handle path and whole maintained 456-byte game function source frontier](ANIMATION_POOL_RESOLVER_456_TYPED_NATIVE_FRONTIER.md) — original 141 x86 instructions, real +0x710 0x600-stride pooled slots, +0x5F8 active, +0x4C0 ID and 0x48-stride two-list std::function lookup. New natural C++ compiles to 364B/111 x86, remains **NONEXACT**, no native byte credit. Original PE verifier independently checks all 20 E8 and original RTTI. Zero affected old strict native units, no cold replay. Source-present mapping now 1,209, authored exact remains 563 /187,092 bytes.
+- [CORE/RECON-757 — original `SprtCtrlInf::getSprt(SprtID)` RTTI, 20/20 original native E8, normal/0xFFFF-special handle path and whole maintained 456-byte game function source frontier](ANIMATION_POOL_RESOLVER_456_TYPED_NATIVE_FRONTIER.md) — original 141 x86 instructions, real +0x710 0x600-stride pooled slots, +0x5F8 active, +0x4C0 ID and 0x48-stride two-list std::function lookup. New natural C++ compiles to 364B/111 x86, remains **NONEXACT**, no native byte credit. Original PE verifier independently checks all 20 E8 and original RTTI. Zero affected old strict native units, no cold replay. Historical CORE/RECON-757 was source-present 1,209 and authored exact 563 /187,092 bytes; the CORE/RECON-768 current totals are below.
 
 ## Complete 282B original Animation retirement subtree and five newly closed Bullet helpers
 
