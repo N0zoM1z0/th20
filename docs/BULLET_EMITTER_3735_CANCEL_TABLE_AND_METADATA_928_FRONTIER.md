@@ -1,5 +1,19 @@
 # CORE/RECON-605 — original Bullet cancel-script data table, typed palette lookups and true game-state fields in the whole 3,735B emitter
 
+**Later CORE/RECON-615 current whole native source:** The original
+Bullet emitter's **two real `&0x0000FFFE` 6B masks** and direct
+`Player::position_ref()` return-reference passing are now restored
+in [the full C++ game method](BULLET_EMITTER_3735_NATIVE_ROW_MASK_AND_PLAYER_DIRECT_ABI.md).
+Whole candidate **3,736B/936 instructions**, immutable native original
+3,735B/935; correct **60/60 original E8 physical callee identities**
+in order and original/candidate whole code+table span **3,832B** each,
+but **49 source E8 physical sites +1B** after a real extra C++ NOP
+at method +0x112, along with other original stack/EH/switch-byte
+mismatches. Old 3,742B/938 score below is historical. This original
+parent remains **NONEXACT**, no authored byte credit or full cold
+replay.
+
+
 Target: immutable Japanese TH20 v1.00a Steamless
 `resources/th20.exe`, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

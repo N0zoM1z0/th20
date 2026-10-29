@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/RECON-605.** This is a live navigation
+**Current: 2026-10-29, after CORE/RECON-615.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -658,6 +658,45 @@ Authored original whole exact remains **498 functions / 175,709B**,
 canonical strict units **1,184**, source mappings **1,183**,
 compiled providers **243**.
 
+## Bullet emitter 3,735B — real 16-bit row mask and direct Player reference ABI
+
+**CORE/RECON-615:** Complete original Bullet emitter's native
+`+0x4BF` and `+0x53F` are actual **6-byte `and r32,0x0000FFFE`**
+instructions, unlike earlier C++ `&~1` emitting 3-byte
+`and r32,0xFFFFFFFE`. This changes real game row speed indices for
+out-of-range/negative values, not just compiler byte counts. The
+current source uses `&0xfffe` twice and emits both complete original
+6-byte instructions with actual native opcode/imm bytes. Also,
+Player-position squared-distance receives `context->player()->position_ref()`
+**directly**, as original E8 returns EAX and is immediately pushed,
+not through a compiler-only const-reference stack temporary.
+Removing two original-absent `mov` instructions takes 12B away.
+[Independent original PE, full C++ and negative NOP experiments](BULLET_EMITTER_3735_NATIVE_ROW_MASK_AND_PLAYER_DIRECT_ABI.md).
+
+Current entire maintained game C++ **3,736B/936 x86 instructions**
+versus immutable original **3,735B/935**; original ordered
+mnemonic score remains 928/935. Full original game compiler section
+is **3,832B** and current COFF section also **3,832B**. The
+**60/60 native physical original E8 callee identities remain correct
+in original ordinal order**. However only the **first 11** E8 field
+offsets are identical; the subsequent **49** original E8 sites
+are shifted **+1 byte** in candidate because of a single extra
+`nop` after the second Timer float setter at game relative `+0x112`.
+Both original and candidate have 69 whole code/table absolute
+references **by count**; physical offsets, original stack/SSE values,
+EH and switch-label destinations still differ. **Entire parent
+remains NONEXACT**, with zero new accepted authored game code bytes.
+
+Private whole-function MSVC tests moving base-speed declarations to
+ten positions and changing Timer assignment and rows predicates in
+fifteen variants all failed to naturally eliminate that NOP. We
+deliberately did **not** patch machine bytes, inject assembly or
+label the parent exact. Only noncanonical `src/BulletEmitter.cpp`
+changed; no previous strict units are configured in it, no public
+header edits or whole-graph cold replay. Current exact authored
+stays **498 /175,709B**, native strict units **1,184**, mapped
+functions **1,183**, compiler providers **243**.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
@@ -665,7 +704,7 @@ compiled providers **243**.
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
 | `0x004F9C30` **3,111B** Player main frame | [Complete typed C++ source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) with [current original gameplay/call ABI correction](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md): **3,254B/808 instructions, 733/783 original mnemonic heads aligned**. Real two EnemyController getter calls and separately computed two native sprite scale float args. Candidate **67 E8 + 37 DIR32** now matches original **67 E8 + 37 HIGHLOW by count**, after removing mistaken `/sdl` cookie. | **NONEXACT**: original 3,111B/783 and candidate code/relocation positions still differ; separate 555B Player movement and handle equality/folded ABI remain unresolved. No exact parent body credit., [original Timer postfix E8 and remaining handle equality ABI](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md) |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
-| `0x004818E0` **3,735B** Bullet emitter | [Original eight-word 32B cancel-script `.data` table, signed Bullet type, metadata offsets and x87 radius](BULLET_EMITTER_3735_CANCEL_TABLE_AND_METADATA_928_FRONTIER.md) now give full **3,742B/938 C++ candidate, 928/935 native mnemonics aligned**; original **60/60 physical E8 callee targets** in order; **69 COFF DIR32 count** matches original 45 code+24 switch PE HIGHLOW by count. | **NONEXACT** original full 3,735B: 7 bytes and 3 net instructions longer; original field offsets/SSE/EH and 13+11 switch labels remain unmatched. No game-authored parent byte credit, only its noncanonical source compiled. |
+| `0x004818E0` **3,735B** Bullet emitter | [Native 16-bit `0xFFFE` row mask and direct Player position-ref ABI](BULLET_EMITTER_3735_NATIVE_ROW_MASK_AND_PLAYER_DIRECT_ABI.md) now yield **3,736B /936 instructions**, one byte and instruction longer than original 3,735B/935; all **60/60 E8 original callee identities**, 3,832B compiler extent and 69 absolute ref **counts**. Prior [928/935 original mnemonic/source table](BULLET_EMITTER_3735_CANCEL_TABLE_AND_METADATA_928_FRONTIER.md) retained. | **NONEXACT**: a current 1B extra NOP at +0x112 shifts 49 physical E8 sites by +1; SSE stack offsets/EH and 13+11 jump-label targets not yet identical, zero parent game exact byte credit. Source-only affected native compile. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
 | `0x0047DCF0` **12,140B** Bullet controller dispatcher and `0x0048C010` **41,967B** Enemy ECL dispatcher | [Enemy dispatch layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and [source map](SOURCE_MAP.md) | Major real gameplay ownership and complete control-flow work; historical host/sanitizer counts are **not** current native exactness. |
 | `0x0042B5D0` **39,470B** Animation VM update | [Animation source map](SOURCE_MAP.md) | Separate large nonexact controller from already exact smaller Animation geometry and support routines. |

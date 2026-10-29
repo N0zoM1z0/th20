@@ -134,15 +134,19 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         // Original +0x48A also executes ODD rows first and jumps to
         // the even branch at +0x4FE. Both paths retain their real
         // signed-half arithmetic and independent stepped-speed formula.
+        // Original native 0x00481D9F and 0x00481E1F use `and r32,
+        // 0x0000FFFE` (6-byte immediate), NOT `& ~1` (3-byte sign-
+        // extended 0xFFFFFFFE). This intentionally zeros high 16 bits
+        // of the signed row-derived value before the speed adjustment.
         if (shot.rows&1) {
            heading = static_cast<float>((row+1)/2)*shot.angle_step+heading;
            if (shot.rows>1)
-             speed=(static_cast<float>((row+1)&~1)*(shot.speed_step-shot.speed)) /
+             speed=(static_cast<float>((row+1)&0xfffe)*(shot.speed_step-shot.speed)) /
                    static_cast<float>(shot.rows-1)+shot.speed;
         } else {
            heading = static_cast<float>(row/2)*shot.angle_step+shot.angle_step*native_half+heading;
            if (shot.rows>1)
-             speed=(static_cast<float>(row&~1)*(shot.speed_step-shot.speed)) /
+             speed=(static_cast<float>(row&0xfffe)*(shot.speed_step-shot.speed)) /
                    static_cast<float>(shot.rows-1)+shot.speed;
         }
         if (row&1)heading*=native_alternate_sign;
@@ -286,8 +290,12 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->run_extended_commands();
     bullet->animation->update();
     if (field_48>0.0f) {
-        const auto& player_position=context->player()->position_ref();
-        if (geometry::squared_distance_xy(bullet->position,player_position)<field_48) {
+        // Original 0x004826E5..0x004826F4 passes Player::position_ref's
+        // returned reference directly as an EAX argument to the native
+        // squared-distance helper. Saving a local const-reference introduces
+        // two non-original mov instructions and changes the EH stack frame.
+        if (geometry::squared_distance_xy(
+                bullet->position,context->player()->position_ref())<field_48) {
             bullet->deactivate();
             return -1;
         }
