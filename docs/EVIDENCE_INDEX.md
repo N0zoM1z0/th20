@@ -48,6 +48,10 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [CORE/ORIGIN-555 — 21 complete ECL/Bullet/Animation/Item/Player/Archive original game-owned roots, 6,836B strict native exact](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md) — full 1,829 original x86 instructions, **187 genuine E8 and 62 PE HIGHLOW fields**, 40 real attached native compiler-alignment bytes compared but not credited; 122/122 strict original units in fourteen freshly cold-built real source providers, 13 high/8 medium original caller confidence statuses. The real whole-exact 11,110B ECL runtime and original 41,967B nonexact Enemy dispatcher call into these children; the giant parent is not claimed exact.
 
+## Player main-frame original 32-bit focus and 33-slot history lifetime
+
+- [CORE/RECON-673 — genuine Player main two mask-eight DWORD results and dy-first history shift](PLAYER_MAIN_FOCUS_AND_HISTORY_NATIVE_LIFETIMES.md) — immutable native `+0x52F/+0x5AE` focus comparisons use 32-bit `[ebp-0x48]/[ebp-0x50]` and second byte `[ebp-0x11]`, with **two actual** replay mask calls; original motion guard tests **dy then dx**, and its source-index `size()` return is used directly. Maintained full C++ **3,093B/779 instructions vs original 3,111B/783**, ordered mnemonic alignment **764/783**, all 67 real native E8 role identities preserved. Entire parent remains **NONEXACT**, no full cold replay, no new exact credit.
+
 ## Original 9×2 Player direction indexing inside the complete main-frame boss
 
 - [CORE/RECON-669 — true original signed 9×2 Player direction table indexing](PLAYER_MAIN_FRAME_NATIVE_9X2_DIRECTION_TABLE.md) — independently verified original 72B table at 0x00572C48 and native explicit `4*0`/`4<<0` scalar second subscripts, rather than older inferred IntPoint member loads. Real complete Player frame now emits **3,126B/788 x86 with 763/783 original mnemonic heads aligned** (versus previous 3,110B/784 and 759/783), all 67 original callee roles checked in order. Native 3,111B parent remains **NONEXACT**, only one noncanonical source rebuilt, zero original byte credit and no global replay.

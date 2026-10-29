@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/RECON-663.** This file is a
+**Last reconciled: 2026-10-29, CORE/RECON-673.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -60,7 +60,7 @@ that entire parent is reconstructed.
 
 | Original head | Real whole original | Current evidence / most useful next work |
 | --- | --- | --- |
-| `0x004F9C30` Player main frame | **3,111B, 783 x86** | Complete maintained [C++](../src/PlayerMainFrame.cpp) now emits **3,126B/788 x86, 763/783 original mnemonic heads aligned** (earlier 3,254B/808 and 733/783). [Original 9×2 signed direction indexing](PLAYER_MAIN_FRAME_NATIVE_9X2_DIRECTION_TABLE.md) restores two real /Od inner-subscript arithmetic chains absent from previous IntPoint member access. [Input/Timer/signed-speed recovery](PLAYER_MAIN_FRAME_3111_INPUT_AND_SIGNED_SPEED_NATIVE_FRONTIER.md) and [typed 45B handle equality](PLAYER_ANIMATION_HANDLE_TYPED_EQUALITY_NATIVE_FRONTIER.md) retained. [All 67 original E8 callee roles](PLAYER_MAIN_FRAME_67_ORIGINAL_CALLEE_ROLES_FRONTIER.md) independently corroborated; original 67 E8/37 HIGHLOW and C++ 67/37 still agree by count only, real byte/field positions differ. **NONEXACT**, no parent credit; zero accepted units affected by this source-only edit. |
+| `0x004F9C30` Player main frame | **3,111B, 783 x86** | Whole maintained [source](../src/PlayerMainFrame.cpp) now emits **3,093B/779 x86**, **764/783 original mnemonics in order**, recovering the [two original DWORD focus-return slots and dy-first 33-history shift](PLAYER_MAIN_FOCUS_AND_HISTORY_NATIVE_LIFETIMES.md) without false compiler locals. [9×2 original direction table](PLAYER_MAIN_FRAME_NATIVE_9X2_DIRECTION_TABLE.md), [signed speed branches](PLAYER_MAIN_FRAME_3111_INPUT_AND_SIGNED_SPEED_NATIVE_FRONTIER.md) and [typed native 45B equality](PLAYER_ANIMATION_HANDLE_TYPED_EQUALITY_NATIVE_FRONTIER.md) remain. [All 67 original physical E8 source roles](PLAYER_MAIN_FRAME_67_ORIGINAL_CALLEE_ROLES_FRONTIER.md) reconciled in order; original E8/HIGHLOW 67/37 and C++ 67/37 still agree by count only. Later history/option iterator stack lifetimes and exact physical relocations unresolved. **NONEXACT**, no parent code credit; no old exact units affected by this source-only correction. |
 | `0x004FFA10` Player movement | **555B, 135 x86** | [Complete source](../src/PlayerMovement.cpp) emits **561B /136**, all original mnemonic kinds but one unwanted 6B SSE spill before `cvttss2si esi,xmm0`; not fixed by `/fp` changes or SSE intrinsics. [Full immutable PE history](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md). **NONEXACT**. |
 | `0x0047DB70` Bullet drawing group | **273B** | [Complete source and extra SSE spill frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md); compiler currently emits ~283B. **NONEXACT**. |
 | `0x004A4190` Enemy mesh | **1,649B** | [Whole C++ owner and original transient lifetime](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md); existing source is nonexact, do not forge an unused byte. |

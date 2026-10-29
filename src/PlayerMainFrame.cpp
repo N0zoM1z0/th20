@@ -109,16 +109,17 @@ std::int32_t Player::update_main_frame() {
         if (context->enemy_controller() != nullptr &&
             context->enemy_controller()->count() != 0 &&
             timer_654.at_least(4)) {
-            const std::uint32_t first_focus =
-                (input_view < 0 || process_input_views[input_view] == nullptr)
-                    ? 0 : process_input_views[input_view]->replay_current_bits(8);
-            const bool new_focus = first_focus != 0;
-            if (focused != static_cast<std::uint8_t>(new_focus))
+            // Both native focus-mask reads return into one-use 32-bit
+            // conditional slots ([ebp-0x48] and [ebp-0x50]). Directly
+            // using their results recovers the original DWORD comparisons,
+            // rather than introducing bool/local-to-local copies.
+            if (focused != (((input_view < 0 || process_input_views[input_view] == nullptr)
+                             ? 0 : process_input_views[input_view]->replay_current_bits(8)) != 0))
                 point_630 = fixed_position;
-            const std::uint32_t second_focus =
-                (input_view < 0 || process_input_views[input_view] == nullptr)
-                    ? 0 : process_input_views[input_view]->replay_current_bits(8);
-            focused = static_cast<std::uint8_t>(second_focus != 0);
+            // The game intentionally requests focus a second time.
+            focused = static_cast<std::uint8_t>(
+                ((input_view < 0 || process_input_views[input_view] == nullptr)
+                 ? 0 : process_input_views[input_view]->replay_current_bits(8)) != 0);
         } else {
             focused = 0;
             field_20e4 = 30;
@@ -214,11 +215,14 @@ finish_normal_movement:
 
     // Reverse shift the original 33-slot fixed-position history only when
     // actual horizontal/vertical motion was requested.
-    if (dx || dy) {
+    // Original tests dy before dx (+0xA2D..+0xA37). The 33-slot
+    // history source index consumes the size() return immediately;
+    // a named n local incorrectly lengthened its stack lifetime.
+    if (dy || dx) {
         for (std::int32_t index = 0;
              index < static_cast<std::int32_t>(points_20fc.size()) - 1; ++index) {
-            const auto n = static_cast<std::int32_t>(points_20fc.size());
-            const IntPoint saved = points_20fc.at(n - 2 - index);
+            const IntPoint saved = points_20fc.at(
+                static_cast<std::int32_t>(points_20fc.size()) - 2 - index);
             points_20fc.at(static_cast<std::int32_t>(points_20fc.size()) - 1 - index) = saved;
         }
         points_20fc.at(0) = fixed_position_ref();
