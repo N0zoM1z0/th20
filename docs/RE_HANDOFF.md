@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/RECON-594.** This is a live navigation
+**Current: 2026-10-29, after CORE/RECON-605.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -616,6 +616,48 @@ Current exact authored totals unchanged **498 /175,709B**, canonical
 units **1,184**, source mappings **1,183** and compiler providers
 **243**.
 
+## Bullet emitter 3,735B — original cancel-script table, native metadata fields and uncached styles
+
+**CORE/RECON-605:** The immutable TH20 game PE contains an original
+**eight-element writable 32-bit cancel-script lookup table** at
+`0x005AEFF8` containing exactly **6,10,14,18,22,26,30,36**,
+followed by a distinct packed-color palette at `0x005AF018`.
+Original emitter cancel mode 1 reads this table at native instruction
+`+0xAFA` / **PE HIGHLOW field `+0xAFD`**, while the previous
+source incorrectly used the raw shot color index. The newly typed
+`bullet_cancel_scripts_by_color[8]` C++ `.data` section independently
+matches **32/32 original PE bytes**. Original whole emitter
+**45 native code PE HIGHLOW plus 24 native switch-label HIGHLOW**
+fields total **69**; with this missing real table reference restored,
+the C++ object has **69 DIR32 fields by count**, not yet original
+field-offset/target exactness.
+
+The original also recomputes native `0x158`-stride BulletStyle on
+successive uses instead of a cached `BulletStyle&`. Two mode6
+palette accesses use **signed16 stored `Bullet+0x4C` type** (`movsx`
+at `+0xB48/+0xB74`) and 32-bit ShotParameters.color index. Actual
+`Bullet+0x40 <- ShotMetadata+0x40`, zero `Bullet+0x3C`, then
+`Bullet+0x38 <- full 32-bit ShotMetadata+0x44` repair real wrong
+metadata fields and missing game state reset. One native x87 radius
+value is stored, then MOVSS writes Bullet size **Y before X**.
+The native uint16 ECL mode switch consumes the direct owner value
+without the previous extra named uint32 switch copy.
+
+Complete pinned C++ source now compiles to **3,742B / 938 x86 heads,
+928/935 original ordered mnemonic heads**, vs original 3,735B/935.
+All **60/60 original physical E8 callee identities still match in
+original ordinal order**. The 3,735B parent remains **NONEXACT**:
+7B/3 net instructions longer, original call/relocation field sites,
+compiler EH/SSE stack and 13+11 switch table code labels still
+differ; **zero new authored original-body credit**. Only
+`src/BulletEmitter.cpp` was modified and compiled, with no shared
+header or previously canonical exact units affected; no global
+cold replay. [Independent original PE `.data`/HIGHLOW proof, source
+semantics and whole C++ frontier](BULLET_EMITTER_3735_CANCEL_TABLE_AND_METADATA_928_FRONTIER.md).
+Authored original whole exact remains **498 functions / 175,709B**,
+canonical strict units **1,184**, source mappings **1,183**,
+compiled providers **243**.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
@@ -623,7 +665,7 @@ units **1,184**, source mappings **1,183** and compiler providers
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
 | `0x004F9C30` **3,111B** Player main frame | [Complete typed C++ source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) with [current original gameplay/call ABI correction](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md): **3,254B/808 instructions, 733/783 original mnemonic heads aligned**. Real two EnemyController getter calls and separately computed two native sprite scale float args. Candidate **67 E8 + 37 DIR32** now matches original **67 E8 + 37 HIGHLOW by count**, after removing mistaken `/sdl` cookie. | **NONEXACT**: original 3,111B/783 and candidate code/relocation positions still differ; separate 555B Player movement and handle equality/folded ABI remain unresolved. No exact parent body credit., [original Timer postfix E8 and remaining handle equality ABI](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md) |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
-| `0x004818E0` **3,735B** Bullet emitter | [Six original SSE pi×2 groups, 3 sequential mode-angle paths, two speed locals and signed mode re-reads](BULLET_EMITTER_3735_ORIGINAL_FLOAT_ORDER_911_FRONTIER.md) yield entire **3,685B/930 x86 C++ candidate with 911/935 original opcode mnemonics aligned**. [All 60/60 native original E8 callee identities](BULLET_EMITTER_60_ORIGINAL_E8_CALL_IDENTITY.md) still match in ordinal order; prior [odd-first mode branch source frontier](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md) is preserved. | **NONEXACT** full original game boss: 50B and 5 net x86 instructions short, original E8 field offsets, EH/stack and 13+11 switch labels still differ; no parent original-byte credit, only its noncanonical source rebuilt. |
+| `0x004818E0` **3,735B** Bullet emitter | [Original eight-word 32B cancel-script `.data` table, signed Bullet type, metadata offsets and x87 radius](BULLET_EMITTER_3735_CANCEL_TABLE_AND_METADATA_928_FRONTIER.md) now give full **3,742B/938 C++ candidate, 928/935 native mnemonics aligned**; original **60/60 physical E8 callee targets** in order; **69 COFF DIR32 count** matches original 45 code+24 switch PE HIGHLOW by count. | **NONEXACT** original full 3,735B: 7 bytes and 3 net instructions longer; original field offsets/SSE/EH and 13+11 switch labels remain unmatched. No game-authored parent byte credit, only its noncanonical source compiled. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
 | `0x0047DCF0` **12,140B** Bullet controller dispatcher and `0x0048C010` **41,967B** Enemy ECL dispatcher | [Enemy dispatch layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and [source map](SOURCE_MAP.md) | Major real gameplay ownership and complete control-flow work; historical host/sanitizer counts are **not** current native exactness. |
 | `0x0042B5D0` **39,470B** Animation VM update | [Animation source map](SOURCE_MAP.md) | Separate large nonexact controller from already exact smaller Animation geometry and support routines. |

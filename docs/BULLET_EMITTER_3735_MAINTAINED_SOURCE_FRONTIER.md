@@ -1,5 +1,22 @@
 # CORE/RECON-514 — complete 3,735-byte Bullet emitter boss in maintained C++
 
+**Later CORE/RECON-605 whole original game-body correction:** The
+3,735B Bullet emitter remains NONEXACT, but its actual original
+[eight-value writable cancel-script lookup, independent per-use
+BulletStyle indexing and correct native ShotMetadata/typed-radius
+state](BULLET_EMITTER_3735_CANCEL_TABLE_AND_METADATA_928_FRONTIER.md)
+have now been restored. A single real original `.data` table at
+`0x005AEFF8` contains 32 exact bytes and contributes the formerly
+missing original HIGHLOW field `+0xAFD`. The maintained source now
+emits **3,742B/938 x86 instructions / 928 of 935 original mnemonic
+heads aligned**, with all **60 native physical E8 targets in order**
+and **69 DIR32** fields matching the original 45 code+24 switch
+HIGHLOW *count only*. Dated 3,685B/930/911 scores below are
+superseded; the complete parent field offsets, EH/SSE and two
+switch labels remain NONEXACT. No original authored byte inflation,
+no public-header or canonical-unit edit, no global cold replay.
+
+
 **Later CORE/RECON-594 current whole native source:** The complete
 3,735B original Bullet emitter remains **NONEXACT**, but original
 floating-point source order has been further

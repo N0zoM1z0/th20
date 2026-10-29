@@ -39,6 +39,13 @@ shared_ptr<EtamaArgInf>::operator=(shared_ptr<EtamaArgInf>&&) noexcept;
 #include <cmath>
 
 namespace th20 {
+// Original game .data (0x005AEFF8..0x005AF017): eight real script IDs.
+// This is NOT the adjacent palette beginning at 0x005AF018. Native
+// emitter case-1 at 0x004823DA reads this 32-bit table with shot.color.
+// Values are independently original PE-attested and the entire new COFF
+// .data section is a byte-for-byte copy of the original eight words.
+std::int32_t bullet_cancel_scripts_by_color[8] = {6,10,14,18,22,26,30,36};
+
 extern GameRandom process_bullet_random;
 extern const float native_zero, native_one, native_two;
 extern const float native_pi, native_half, native_alternate_sign;
@@ -73,8 +80,9 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         base_speed = shot.speed;
     float speed = base_speed;
     bullet->field_24 = speed;
-    const std::uint32_t mode = static_cast<std::uint16_t>(metadata_source->field_38);
-    switch (mode) {
+    // The original /Od source stores exactly one switch-word copy rather
+    // than both a named `mode` local and a compiler switch temporary.
+    switch (static_cast<std::uint16_t>(metadata_source->field_38)) {
       case 0: case 1: {
         float angular;
         // Original +0x1AD checks odd count, executing the odd branch
@@ -203,28 +211,37 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     // Original emitter E8 at 0x004822C5 goes to the 338B direct
     // script loader, not the distinct 32B bind_animation wrapper.
     // Original 0x00482297 separately calls 0x004856C0 to resolve script
-    // by shot type; directly reading style.script lost this real E8.
+    // by shot type; directly reading bullet_styles[shot.type].script lost this real E8.
     file->load_script(bullet->animation,type_to_script(shot.type));
     bullet->flags.bits|=0x10u;
     bullet->animation->base.flags.layer_mode=1;
-    BulletStyle& style=bullet_styles[shot.type];
-    if (style.child_script!=0) {
+
+    // Original x86 recalculates the 0x158-byte BulletStyle index for
+    // each independent use, rather than caching a style reference.
+    if (bullet_styles[shot.type].child_script!=0) {
         // Original 0x00482310 calls Context::bullet_controller() (the
         // shared physical 0x0040C300 getter), then loads that owner's
         // +0x286D8C file for the child; not this controller's file.
-        bullet->animation_handle=context->bullet_controller()->file->spawn(nullptr,style.child_script,bullet->position,0.0f,-1,nullptr);
+        bullet->animation_handle=context->bullet_controller()->file->spawn(nullptr,bullet_styles[shot.type].child_script,bullet->position,0.0f,-1,nullptr);
     }
-    bullet->style=&style;
+    bullet->style=&bullet_styles[shot.type];
     bullet->color=0xffd08080u;
-    switch(style.cancel_type) {
+    switch(bullet_styles[shot.type].cancel_type) {
       case 0: bullet->cancel_script=static_cast<int>(shot.color)*2+6;break;
-      case 1: bullet->cancel_script=static_cast<int>(shot.color);break;
+      case 1:
+        // Original +0xAFA MOV reads a real writable eight-word map at
+        // 0x005AEFF8, not the raw shot.color integer.
+        bullet->cancel_script=bullet_cancel_scripts_by_color[shot.color];
+        break;
       case 2: bullet->cancel_script=-1;bullet->flags.bits|=0x10u;break;
       case 3: bullet->cancel_script=18;break;
       case 4: bullet->cancel_script=8;break;
       case 6:
-        bullet->cancel_script=style.colors[shot.color].words[3];
-        bullet->color=style.colors[shot.color].words[4];
+        // Original +0xB48/+0xB74 sign-extends the *stored Bullet type*
+        // at +0x4C, not the 32-bit ShotParameters.type, before each
+        // independently indexed 0x158-byte style/palette read.
+        bullet->cancel_script=bullet_styles[static_cast<std::int16_t>(bullet->field_4c)].colors[shot.color].words[3];
+        bullet->color=bullet_styles[static_cast<std::int16_t>(bullet->field_4c)].colors[shot.color].words[4];
         bullet->flags.bits|=0x10u;break;
       case 7: bullet->cancel_script=263;bullet->flags.bits|=0x10u;break;
       case 8: bullet->cancel_script=266;bullet->flags.bits|=0x10u;break;
@@ -232,13 +249,21 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
       case 10: bullet->cancel_script=278;bullet->flags.bits|=0x10u;break;
     }
     bullet->flags.bits &= ~0x1800u;
-    bullet->draw_group=style.draw_group;
-    bullet->field_40=metadata_source->field_44;
+    bullet->draw_group=bullet_styles[shot.type].draw_group;
+    // Native +0xC4D reads metadata+0x40 (alternate_sound), NOT +0x44.
+    bullet->field_40=metadata_source->alternate_sound;
     bullet->command_index=5;
-    bullet->size.x=bullet_radius(static_cast<int>(shot.type));
-    bullet->size.y=bullet->size.x;
+    // Original x87 result is stored once at [EBP-0x54], then separately
+    // MOVSS-copied into Bullet+0x80 (Y) followed by +0x7C (X).
+    float native_radius = bullet_radius(static_cast<int>(shot.type));
+    bullet->size.y=native_radius;
+    bullet->size.x=native_radius;
     bullet->command_flags.bits=0;
-    bullet->field_38=metadata_source->field_48;
+    // Original writes zero to Bullet+0x3C, then the full 32-bit
+    // metadata+0x44 word to Bullet+0x38. Prior source incorrectly
+    // read a signed byte from metadata+0x48 and skipped the clear.
+    bullet->field_3c=0;
+    bullet->field_38=metadata_source->field_44;
     // Original out-of-range (0x004825A5) and non-opcode-1 (0x004825CD)
     // branches share ONE native interrupt(2) site at 0x004826AC,
     // not the two independent calls emitted by the previous nested if.
