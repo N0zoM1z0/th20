@@ -52,8 +52,8 @@ are excluded from Git.
 At the October 29, 2026 checkpoint the maintained graph has **1,177
 source-present mappings**, **1,177 strict canonical native units** and
 **237 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **441 complete functions /
-143,926 original native bytes**. These are dated values, not a
+game-authored whole-function exactness is **451 complete functions /
+152,497 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -70,6 +70,7 @@ for the live inventory and consult the
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
 | Collision geometry | **19 complete original whole-function** geometry predicates, including 1,452B rectangle/rectangle and 1,439B line/rectangle bosses, now independently [origin-reviewed and strictly exact](docs/GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md); **13,360B disjoint authored credit** |
 | Input devices | Complete 3,490B [keyboard/DirectInput/XInput poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) strict exact; [corrected signed InputInf selector ABI](docs/INPUT_INF_VIEW_INDEX_ABI_CORRECTION.md) from three original callers; game link/runtime remain open |
+| Interpolation gameplay | Ten complete [interpolation bosses and evaluators](docs/INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) add 8,571 native exact bytes, including 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog and independent ECL/Animation/Enemy/Bullet whole callers |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |
 | HUD and text | Complete FrontInf, AsciiInf and [Dialogue construction/destruction/follow-box protocol](docs/DIALOGUE_OWNER_RECONSTRUCTION.md); native resource lifetime and frame execution remain open |
 | Whole-program build and runtime | Not yet available |

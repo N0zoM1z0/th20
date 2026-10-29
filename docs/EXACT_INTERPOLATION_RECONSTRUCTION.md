@@ -1,5 +1,18 @@
 # EXACT-046: shared easing and interpolation evaluation
 
+**Current original source-origin admission:** CORE/EXACT-511 has
+independently original-PE verified and newly **game-authored credited**
+ten of the already existing complete interpolation bodies, totaling
+**8,571 distinct original game bytes**, including five 923–1,489B
+whole samplers. Fresh **41/41 exact units** from the actual
+Interpolation.cpp compiler object, all native **117 E8/90 HIGHLOW**
+fields and actual original game-owner callers are
+[documented separately](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md).
+Historical statements below describing these ten as origin-pending
+are superseded. The previously exact separate 4,154B easing root is
+not re-credited and the giant enclosing game bosses remain nonexact.
+
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

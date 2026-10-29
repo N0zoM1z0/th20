@@ -27,7 +27,7 @@ the original game's translation-unit partition.
 | Archive/File/resource I/O | Archive*, PbgFile*, GameFileIo*, GameResourceIo* | [Resource graph](ARCHIVE_RESOURCE_EXACT_RECONSTRUCTION.md), [writing](ARCHIVE_WRITE_RECONSTRUCTION.md) |
 | Progress persistence | Progress*, SecureCrt.hpp | [File protocol](PROGRESS_FILE_EXACT_RECONSTRUCTION.md), [loading/lifetime](PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md), [parser](PROGRESS_FILE_PARSE_RECONSTRUCTION.md) |
 | Graphics/mesh/sound | Graphics*, RenderMesh*, MeshResourceAccess*, SoundInf.hpp, SoundLoading.cpp | [Texture formats/accessors](ANIMATION_TEXTURE_FORMAT_RECONSTRUCTION.md), [mesh](RENDER_MESH_RECONSTRUCTION.md), [mesh flags](MESH_FLAGS_EXACT_RECONSTRUCTION.md), [sound](SOUND_PROTOCOL_RECONSTRUCTION.md) |
-| Shared math/time/random | Vector*, Angle*, Timer*, ClockScalar*, Interpolation*, GameRandom* | [Interpolation](EXACT_INTERPOLATION_RECONSTRUCTION.md), [random/locks](EXACT_LOCK_RANDOM_RECONSTRUCTION.md) |
+| Shared math/time/random | Vector*, Angle*, Timer*, ClockScalar*, Interpolation*, GameRandom* | [Interpolation](EXACT_INTERPOLATION_RECONSTRUCTION.md), [random/locks](EXACT_LOCK_RANDOM_RECONSTRUCTION.md), [ten whole native game interpolation exact bodies](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) |
 | Input device frame and owner | InputDeviceFrame.cpp, InputState.hpp/cpp, InputInf.hpp/cpp | [Whole native 3,490B polling boss strict exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [device construction](INPUT_DEVICE_BUTTON_CTORS_442_EXACT_RECONSTRUCTION.md) |
 | Platform/UI/value components | Window*, Input*, Cursor*, text/flags/record owners | [Reference evidence index](EVIDENCE_INDEX.md) |
 

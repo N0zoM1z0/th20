@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-510.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-511.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -20,7 +20,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Source-present mappings | **1,177** |
 | Strict canonical complete native units | **1,177** |
 | Unique canonical MSVC object/receipt providers | **237** |
-| Exact game-authored whole original functions | **441**, covering **143,926 original body bytes** |
+| Exact game-authored whole original functions | **451**, covering **152,497 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -116,6 +116,27 @@ share the same exact 14B body as typed PlayerValues primary/secondary
 The original 45B equality and typed 45B inequality helpers are distinct
 physical code, so their parent call-target mismatch remains open.
 See [full leaf origin, PE calls, binary fold and precise replay proof](PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md).
+
+## Ten whole interpolation gameplay routines — independent native exact
+
+**CORE/EXACT-511:** Ten existing whole game interpolation bodies,
+**8,571 disjoint original bytes / 2,421 original instructions**, now
+independently PE-verified, freshly source-provider rebuilt and authored-origin
+admitted. This is a **source-origin admission**, not a claim of writing
+ten new C++ functions. Largest original roots include **1,489B
+IntegerTriple, 1,129B Vector3, 1,074B Fog, 1,022B Vector2 and 923B
+Angle**; additional full float/int/byte sample and evaluate bodies are
+included. Actual original E8 callers include previously exact Animation,
+Enemy, ECL Runtime, Bullet and identifiable Wonder Stone game scene code.
+All **117 native E8** and **90 PE HIGHLOW** fields plus all original
+nonrelocated bytes were independently reaudited. The one real
+`src/Interpolation.cpp` compiler source was cold built; **41/41 strict
+units replayed exact**. Four original user roots are unclassified, so
+those particular bodies retain medium-confidence authored origin.
+[Full independent whole-PE/caller evidence](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md).
+The previous 1,177 strict units, 237 compiler object providers and
+1,177 source-present functions remain unchanged. No parent exactness,
+folded-helper double credit, game runtime or full cold replay claim.
 
 ## Actual open whole-function bosses (priority, NOT exact)
 
