@@ -18,7 +18,10 @@
 namespace th20 {
 extern InputInf* process_input_inf;
 extern InputButtonState* process_input_views[4];
-extern const IntPoint native_player_direction_table[9]; // original 0x00572C48
+// Original +0x5EC..+0x616 computes genuine sizeof(int)*0 and
+// sizeof(int)*1 inner subscripts, then indexes nine signed (x,y) rows.
+// A flat IntPoint[9] matched the values but omitted those native i386 ops.
+extern const std::int32_t native_player_direction_table[9][2]; // original 0x00572C48
 extern const float native_one, native_two, native_128;
 
 // Source-level owner of the entire original frame; this is independent of
@@ -131,8 +134,8 @@ std::int32_t Player::update_main_frame() {
     // All nine signed (dx,dy) direction pairs were independently read from
     // the locked original 0x00572C48 table. Multiplication/addition wraps as
     // observed by the 32-bit original IMUL and integer input lanes.
-    dx = native_player_direction_table[field_67c].x;
-    dy = native_player_direction_table[field_67c].y;
+    dx = native_player_direction_table[field_67c][0];
+    dy = native_player_direction_table[field_67c][1];
     if (focused_mode()) {
         // Native Player+0x60C is constructed as a real AnimationHandle.
         // Its equality call has the exact 45-byte original physical code
