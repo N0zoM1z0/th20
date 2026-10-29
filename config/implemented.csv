@@ -1220,3 +1220,6 @@ th20::graphics_enable_fog
 th20::graphics_disable_fog
 th20::graphics_disable_depth_writes
 th20::AnimationPoolOwner::flush_draws
+th20::AnimationDrawModeOwner::draw_quad_mode0
+th20::AnimationDrawModeOwner::draw_quad_mode1
+th20::AnimationDrawModeOwner::draw_quad_mode2

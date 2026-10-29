@@ -22,6 +22,13 @@ SUB_TABLE = 0x004450B0
 SUB_COUNT = 31
 # Exact game Graphics cache transitions called by the 5,993B renderer;
 # each is a separate 92B native method with two real original PE fields.
+# Three whole game-owned 97B quad wrappers called by four original modes.
+# The data target is the original 4*28B shared SpriteTexturedVertex array.
+QUAD_WRAPPERS = {
+    0x0043F550: (0x0043EB40, 1, (0,)),
+    0x0043F630: (0x0043EF20, 0, (1, 3)),
+    0x0043F5C0: (0x0043EB40, 0, (2,)),
+}
 GRAPHICS_TRANSITIONS = {
     0x004DDAC0: (2, 0xDB8, 1, 0x1C, "enable fog"),
     0x004DDA60: (2, 0xDB8, 0, 0x1C, "disable fog"),
@@ -247,6 +254,30 @@ def verify() -> None:
         assert child[-1].mnemonic == "ret" and child[-1].op_str == ""
         assert child[-1].address + child[-1].size == address + size
         print(f"PASS native draw Boss {role}: {count} actual E8 sites to one complete {size}B original child at {address:#010x}")
+    # Three real game-owned 97-byte quad mode functions, 4*28B array
+    # operands and two true native E8 setup/submit calls each.
+    for head, (setup_target, submit_mode, main_modes) in QUAD_WRAPPERS.items():
+        native_quad = decoded(image, base, sections, head, 97)
+        assert len(native_quad) == 32 and native_quad[-1].mnemonic == "ret"
+        assert native_quad[-1].op_str == "4"
+        expected_fields = {0x11, 0x1F, 0x2D, 0x3C}
+        for off in expected_fields:
+            assert head + off in relocs
+            assert struct.unpack("<I", raw_at(image, base, sections, head + off, 4))[0] == 0x005AEF10
+        assert len(raw_at(image, base, sections, 0x005AEF10, 4 * 28)) == 112
+        for off, target in ((0x48, setup_target), (0x56, 0x0043F6A0)):
+            insn = next(ins for ins in native_quad if ins.address == head + off)
+            assert insn.mnemonic == "call" and insn.bytes[0] == 0xE8
+            assert (insn.address + 5 + struct.unpack_from("<i", insn.bytes, 1)[0]) & 0xFFFFFFFF == target
+        assert any(i.mnemonic == "push" and i.op_str == str(submit_mode) for i in native_quad)
+        sites = [i.address for i in instructions if i.mnemonic == "call" and i.op_str == f"{head:#x}"]
+        assert len(sites) == len(main_modes), (hex(head), sites)
+        selected_modes = [int(r["mode"]) for r in csv.DictReader((Path(__file__).resolve().parents[1] /
+                "config/animation-draw-boss-mode-e8.csv").open()) if r["render_target"] == f"0x{head:08X}"]
+        assert tuple(selected_modes) == main_modes, (hex(head), selected_modes)
+        print(f"PASS original 97B quad draw {head:#010x}: complete 32 x86, "
+              "4 real PE HIGHLOW to shared native 4x28B vertex data, 2 original setup/submit E8")
+
     # Three native Graphics D3D9 state transitions: compare the original
     # complete 92B /30 x86 shape, real original HIGHLOW global reference,
     # the original E8 to Renderer flush, and the real virtual API slot.

@@ -1062,9 +1062,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043EF20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043F4F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043F520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043F550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043F5C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043F630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0043F550,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
+0x0043F5C0,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
+0x0043F630,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
 0x0043F6A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00440310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00440340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -21174,3 +21174,57 @@ relocations = [
   { offset = 0x41, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x46, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
 ]
+
+# CORE/RECON-793: original full 97B/32-i386 Animation draw quad mode 1.
+[units.animation_draw_quad_mode0_97]
+source = "src/AnimationDrawQuadModes.cpp"
+object = "build/core793-canonical/AnimationDrawQuadModes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawModeOwner::draw_quad_mode0"]
+symbol = "?draw_quad_mode0@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x0043F550
+size = 97
+relocations = [
+  { offset = 0x11, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x1F, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x2D, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x3C, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x49, type = "REL32", symbol = "?setup_quad_a@AnimationDrawModeOwner@th20@@QAEXPAVAnimation@2@PAUSpriteTexturedVertex@2@111@Z", target = 0x0043EB40 },
+  { offset = 0x57, type = "REL32", symbol = "?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z", target = 0x0043F6A0 },
+]
+
+# CORE/RECON-793: original full 97B/32-i386 Animation draw quad mode 0.
+[units.animation_draw_quad_mode1_97]
+source = "src/AnimationDrawQuadModes.cpp"
+object = "build/core793-canonical/AnimationDrawQuadModes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawModeOwner::draw_quad_mode1"]
+symbol = "?draw_quad_mode1@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x0043F630
+size = 97
+relocations = [
+  { offset = 0x11, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x1F, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x2D, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x3C, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x49, type = "REL32", symbol = "?setup_quad_b@AnimationDrawModeOwner@th20@@QAEXPAVAnimation@2@PAUSpriteTexturedVertex@2@111@Z", target = 0x0043EF20 },
+  { offset = 0x57, type = "REL32", symbol = "?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z", target = 0x0043F6A0 },
+]
+
+# CORE/RECON-793: original full 97B/32-i386 Animation draw quad mode 0.
+[units.animation_draw_quad_mode2_97]
+source = "src/AnimationDrawQuadModes.cpp"
+object = "build/core793-canonical/AnimationDrawQuadModes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawModeOwner::draw_quad_mode2"]
+symbol = "?draw_quad_mode2@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x0043F5C0
+size = 97
+relocations = [
+  { offset = 0x11, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x1F, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x2D, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x3C, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x49, type = "REL32", symbol = "?setup_quad_a@AnimationDrawModeOwner@th20@@QAEXPAVAnimation@2@PAUSpriteTexturedVertex@2@111@Z", target = 0x0043EB40 },
+  { offset = 0x57, type = "REL32", symbol = "?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z", target = 0x0043F6A0 },
+]

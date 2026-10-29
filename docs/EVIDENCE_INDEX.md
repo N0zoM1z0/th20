@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-792):** [live accepted
+**Current next-agent reading order (CORE/RECON-793):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,224 strict units, 577 authored exact whole functions,
-188,625 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,227 strict units, 580 authored exact whole functions,
+188,916 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Three full native 97B renderer quad-mode wrappers exact from the 5,993B Draw Boss
+
+- [CORE/RECON-793 — three full 97B/32-i386 original Animation quad modes](ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md) — complete game-owned mode 0 (`0x0043F550`), mode 1/3 (`0x0043F630`), mode 2 (`0x0043F5C0`) each compiled original **97/97B**, distinct true setup E8 (`0x0043EB40`/`0x0043EF20`), shared submit E8 (`0x0043F6A0`), **four PE HIGHLOW** each to the actual original 4x28B `SpriteTexturedVertex` global at `0x005AEF10`. All 18 original fields independently PE verified, three full native methods **3/3 strict** from **one new canonical object**, zero old sources/headers changed and no full replay. Live **580 whole physical game methods /188,916B**, 1,227 strict units/253 providers. 5,993B parent still NONEXACT.
 
 ## Complete 49-mode original Animation draw Boss path-specific x86/actual E8 routing
 

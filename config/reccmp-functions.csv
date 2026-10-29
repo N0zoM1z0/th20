@@ -1221,3 +1221,6 @@ th20::graphics_enable_fog,0x004DDAC0,function
 th20::graphics_disable_fog,0x004DDA60,function
 th20::graphics_disable_depth_writes,0x004DDF80,function
 th20::AnimationPoolOwner::flush_draws,0x004455C0,function
+th20::AnimationDrawModeOwner::draw_quad_mode0,0x0043F550,function
+th20::AnimationDrawModeOwner::draw_quad_mode1,0x0043F630,function
+th20::AnimationDrawModeOwner::draw_quad_mode2,0x0043F5C0,function
