@@ -1,5 +1,7 @@
 # CORE/RECON-808 — all forty game-call roles recovered in maintained 3,159B quad submission Boss C++ (NONEXACT)
 
+> **Subsequent CORE/RECON-813:** The original separate 1,163B quad-renderer four-mode D3D9 state child at 0x00446690 is now independently whole strict native exact, including original after-RET four-pointer table and 54 PE/E8 fields. See [full 1,163B native exact proof](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md). This does not make the 3,159B parent exact; counts below describe the earlier CORE/RECON-808 snapshot.
+
 > **Subsequent CORE/RECON-809/810:** Original 60B texture lookup is strict exact; its real `std::array<AnimationFile*,42>::at` 34B plus `_Xran` 16B (not the old Ghidra 13B guess) are two further whole strict STL methods, excluded from game authored byte credit. [Three native exact functions and original PE proof](ANIMATION_TEXTURE_LOOKUP_60_STL_ARRAY_34_16_EXACT.md). Earlier totals remain historical; parent still NONEXACT.
 
 > **Subsequent CORE/RECON-809/810:** The original 60B texture-lookup callee is now strict exact, along with its separate **34B checked std::array::at STL helper**; the 34B method is excluded from authored game code credit. [Original native 60B+34B exact evidence](ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md). The quad parent remains NONEXACT; this older checkpoint's call-role totals are not the newest exact inventory.

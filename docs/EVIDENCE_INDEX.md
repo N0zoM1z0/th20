@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-810):** [live accepted
+**Current next-agent reading order (CORE/RECON-813):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,235 strict units, 587 authored exact whole functions,
-189,624 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,237 strict units, 588 authored exact whole functions,
+190,787 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -28,9 +28,13 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## Original full 1,163B/343-x86 game-owned four-mode D3D9 texture-stage renderer Boss strictly exact
+
+- [CORE/RECON-813 — entire 1,163B original game renderer blend-stage state machine strictly native exact](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md) — native 0x00446690 real 4-mode D3D9 `SetTextureStageState` six calls per mode, original 25 physical E8 (24 real Graphics getter +1 previously strict 192B flush), **29 actual PE HIGHLOW** (24 real Graphics global, 1 indirect switch operand, 4 original after-RET table pointers). Natural i386 MSVC source first produced 1188B false case-chain, then original four-mode jump table recovered by direct real owner-byte access and explicit `case 0/default`. **Entire 1,163/1,163 real code, 343/343 x86, 1 NOP+16 pointer table, 1,180/1,180 full compared bytes, 54/54 independent native relocation fields** strict from ONE new canonical source/object. No old shared header or unit changed, no all-graph replay. Live **588 original game exact /190,787B, 1,237 units/258 providers**; outer 3159B/5993B parent remains NONEXACT.
+
 ## Original game 60B texture lookup exact, plus genuine 34B checked STL std::array::at exact (library excluded)
 
-- [CORE/RECON-809/810 — original complete 60B/21-x86 game `texture_for_sprite` and real 34B/14-x86 `std::array<AnimationFile*,42>::at`](ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md) — actual signed ID high-24 bits index 42 file pointer slots at owner `+0x06000730`, low ID byte selects 24B TextureRecord from real `AnimationFile::textures` `+0x58`. Immutable original source-independent real E8 `0x00445A1E→0x0043EB10`; original library `at` has real bounds check 42/0x2A and E8 `0x0043EB1D→0x00428C80`. Natural C++ direct chain `.at(...)` matches both **60/60B game** and **34/34B STL library (EXCLUDED from authored game bytes)**, pinned 2/2 full strict one new canonical object/receipt, zero old compiler inputs changed, no all-graph replay. Live **587 game exact methods/189,624B**, 1,235 source mappings and strict units /257 providers. Original 3159B quad parent still NONEXACT.
+- [CORE/RECON-809/810 — original complete 60B/21-x86 game `texture_for_sprite` and real 34B/14-x86 `std::array<AnimationFile*,42>::at`](ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md) — actual signed ID high-24 bits index 42 file pointer slots at owner `+0x06000730`, low ID byte selects 24B TextureRecord from real `AnimationFile::textures` `+0x58`. Immutable original source-independent real E8 `0x00445A1E→0x0043EB10`; original library `at` has real bounds check 42/0x2A and E8 `0x0043EB1D→0x00428C80`. Natural C++ direct chain `.at(...)` matches both **60/60B game** and **34/34B STL library (EXCLUDED from authored game bytes)**, pinned 2/2 full strict one new canonical object/receipt, zero old compiler inputs changed, no all-graph replay. Live **587 game exact methods/189,624B**, 1,236 source mappings and strict units /257 providers; the separately exact 16B `_Xran` remains library-excluded. Original 3159B quad parent still NONEXACT.
 
 ## Original game 60B texture lookup strict, plus genuine 34B checked array and 16B error STL strict (library-excluded)
 
