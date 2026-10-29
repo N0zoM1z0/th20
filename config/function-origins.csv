@@ -869,7 +869,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00428BA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428C60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00428C80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00428C80,library,STL,exclude,high,"CORE/RECON-810; docs/ANIMATION_TEXTURE_LOOKUP_60_STL_ARRAY_34_16_EXACT.md; independently corrected old auto function 13B to full original 16B by real ret 0x00428C8F, genuine MSVC std::array<AnimationFile*,42>::_Xran, true original 30B library string and two physical PE HIGHLOW/E8 fields, whole code strict but game credit excluded"
 0x00428C90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1057,7 +1057,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043E2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043E910,authored,BulletGeometry,authored,high,"CORE/EXACT-256; docs/BULLET_COMMAND11_GEOMETRY_EXACT_RECONSTRUCTION.md; Original exact 155B Vector2 conditional normalization: scalar_math::square_root of squared length, geometry::absolute, native 0.01f epsilon 0x0056E1A0, then copy original two-lane value if small or divide both lanes if large. All 3 native original relocations attested. Whole 155/155 bytes; four original callers in command11 boss."
 0x0043E9B0,authored,Animation,authored,high,"CORE/RECON-806; docs/ANIMATION_QUAD_BATCH_APPEND_352_STRICT_EXACT.md; actual game custom 6x28-byte triangle-list batch append, original 3159B renderer E8 0x004402E0, whole 352-byte real native body, 98 instruction heads, 0 PE relocations"
-0x0043EB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0043EB10,library,STL,exclude,high,"CORE/RECON-809; docs/ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md; entire original 34B x86 and real PE E8 to 0x00428c80, MSVC std::array<AnimationFile*,42>::at compiler STL implementation, excluded from game-authored code credit"
 0x0043EB40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043EF20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043F4F0,authored,Animation,authored,high,"CORE/RECON-801; docs/ANIMATION_RENDER_3159_COLOR_MATH_80_EXACT.md; full 35B original custom renderer per-channel arithmetic, real original 0x0043F6A0 whole Boss references 4 direct E8 sites, exact whole native compiler code and no PE relocations"
@@ -1089,7 +1089,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00445940,authored,Animation,authored,high,"CORE/ORIGIN-507; docs/ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md; native Animation VM 0x0042B5D0 original E8 callers, independent game owner state, old strict compiler unit, full 17-root PE verification"
 0x004459A0,authored,Animation,authored,high,"CORE/ORIGIN-507; docs/ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md; native Animation VM 0x0042B5D0 original E8 callers, independent game owner state, old strict compiler unit, full 17-root PE verification"
 0x004459D0,authored,Animation,authored,high,"CORE/ORIGIN-507; docs/ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md; native Animation VM 0x0042B5D0 original E8 callers, independent game owner state, old strict compiler unit, full 17-root PE verification"
-0x00445A00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00445A00,authored,Animation,authored,high,"CORE/RECON-809; docs/ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md; entire original 60B x86 and real PE E8 to 0x0043eb10, game custom texture ownership called by original whole 3159B renderer"
 0x00445A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00445AB0,authored,Animation,authored,high,CORE/RECON-782; docs/ANIMATION_DRAW_BOSS_5993_NATIVE_DISPATCH_AND_EXACT_ACCESSORS.md; complete original 26B real Animation render field access/protocol and independently original 5993B full Draw boss consumer evidence
 0x00445AD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

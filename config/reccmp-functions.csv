@@ -1232,3 +1232,6 @@ th20::multiply_color_255,0x0043F4F0,function
 th20::AnimationDrawModeOwner::render_quad,0x0043F6A0,function
 th20::AnimationQuadSubmitOwner::append_quad,0x0043E9B0,function
 th20::AnimationQuadSubmitOwner::prepare_texture_states,0x00445BA0,function
+th20::AnimationQuadSubmitOwner::texture_for_sprite,0x00445A00,function
+"std::array<th20::AnimationFile*,42>::at",0x0043EB10,function
+"std::array<th20::AnimationFile*,42>::_Xran",0x00428C80,function

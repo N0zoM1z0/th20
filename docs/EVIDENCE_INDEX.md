@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-808):** [live accepted
+**Current next-agent reading order (CORE/RECON-810):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,233 strict units, 586 authored exact whole functions,
-189,564 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,235 strict units, 587 authored exact whole functions,
+189,624 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,14 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original game 60B texture lookup exact, plus genuine 34B checked STL std::array::at exact (library excluded)
+
+- [CORE/RECON-809/810 — original complete 60B/21-x86 game `texture_for_sprite` and real 34B/14-x86 `std::array<AnimationFile*,42>::at`](ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md) — actual signed ID high-24 bits index 42 file pointer slots at owner `+0x06000730`, low ID byte selects 24B TextureRecord from real `AnimationFile::textures` `+0x58`. Immutable original source-independent real E8 `0x00445A1E→0x0043EB10`; original library `at` has real bounds check 42/0x2A and E8 `0x0043EB1D→0x00428C80`. Natural C++ direct chain `.at(...)` matches both **60/60B game** and **34/34B STL library (EXCLUDED from authored game bytes)**, pinned 2/2 full strict one new canonical object/receipt, zero old compiler inputs changed, no all-graph replay. Live **587 game exact methods/189,624B**, 1,235 source mappings and strict units /257 providers. Original 3159B quad parent still NONEXACT.
+
+## Original game 60B texture lookup strict, plus genuine 34B checked array and 16B error STL strict (library-excluded)
+
+- [CORE/RECON-809/810 — whole original 60B game texture lookup, 34B genuine `std::array<AnimationFile*,42>::at`, and 16B native `_Xran` range-error](ANIMATION_TEXTURE_LOOKUP_60_STL_ARRAY_34_16_EXACT.md) — independently original PE-verified full **21+14+7 i386** and original E8 chain `0x00445A1E→0x0043EB10→0x00428C80→0x00540EF5`, true packed texture ID index and 24B record, 42-file bounds, error original PE HIGHLOW diagnostic string. Initial Ghidra recorded only 13B for `_Xran`; actual physical `ret` at `0x00428C8F` establishes whole **16B**. Pinned **3/3 full strict** in **one new canonical source/object**; only **60B** is newly original authored game code, 34+16B STL excluded. Zero old exact compiler inputs, no full cold replay. Live **587 whole game functions/189,624B**, 1,236 source mappings and strict units/257 providers; 3,159B parent still NONEXACT.
 
 ## Whole 3,159B renderer quad Boss source revision: 40/40 game E8 roles verified, parent NONEXACT
 

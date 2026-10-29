@@ -21310,3 +21310,43 @@ size = 26
 relocations = [
   { offset = 0xF, type = "REL32", symbol = "?bind_native_texture_state@AnimationQuadSubmitOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x00445BC0 },
 ]
+
+# CORE/RECON-809: original 60B authored 42-file packed texture lookup.
+[units.animation_texture_lookup_60]
+source = "src/AnimationTextureLookup.cpp"
+object = "build/core809-canonical/AnimationTextureLookup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationQuadSubmitOwner::texture_for_sprite"]
+symbol = "?texture_for_sprite@AnimationQuadSubmitOwner@th20@@QAEPAUIDirect3DBaseTexture9@@I@Z"
+target_address = 0x00445A00
+size = 60
+relocations = [
+  { offset = 0x1F, type = "REL32", symbol = "?at@?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x0043EB10 },
+]
+
+# CORE/RECON-809: original 34B library 42-file packed texture lookup.
+[units.animation_texture_array_at_34]
+source = "src/AnimationTextureLookup.cpp"
+object = "build/core809-canonical/AnimationTextureLookup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationFile*,42>::at"]
+symbol = "?at@?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z"
+target_address = 0x0043EB10
+size = 34
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "?_Xran@?$array@PAVAnimationFile@th20@@$0CK@@std@@CAXXZ", target = 0x00428C80 },
+]
+
+# CORE/RECON-810: corrected original native 16B STL range failure (auto-inventory guessed 13B).
+[units.animation_texture_array_xran_16]
+source = "src/AnimationTextureLookup.cpp"
+object = "build/core809-canonical/AnimationTextureLookup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationFile*,42>::_Xran"]
+symbol = "?_Xran@?$array@PAVAnimationFile@th20@@$0CK@@std@@CAXXZ"
+target_address = 0x00428C80
+size = 16
+relocations = [
+  { offset = 0x4, type = "DIR32", symbol = "??_C@_0BO@IMBPEJAE@invalid?5array?$DMT?0?5N?$DO?5subscript@", target = 0x0056DC28 },
+  { offset = 0x9, type = "REL32", symbol = "?_Xout_of_range@std@@YAXPBD@Z", target = 0x00540EF5 },
+]

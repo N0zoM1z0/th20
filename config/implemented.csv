@@ -1231,3 +1231,6 @@ th20::multiply_color_255
 th20::AnimationDrawModeOwner::render_quad
 th20::AnimationQuadSubmitOwner::append_quad
 th20::AnimationQuadSubmitOwner::prepare_texture_states
+th20::AnimationQuadSubmitOwner::texture_for_sprite
+"std::array<th20::AnimationFile*,42>::at"
+"std::array<th20::AnimationFile*,42>::_Xran"

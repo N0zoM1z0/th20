@@ -1,5 +1,9 @@
 # CORE/RECON-808 — all forty game-call roles recovered in maintained 3,159B quad submission Boss C++ (NONEXACT)
 
+> **Subsequent CORE/RECON-809/810:** Original 60B texture lookup is strict exact; its real `std::array<AnimationFile*,42>::at` 34B plus `_Xran` 16B (not the old Ghidra 13B guess) are two further whole strict STL methods, excluded from game authored byte credit. [Three native exact functions and original PE proof](ANIMATION_TEXTURE_LOOKUP_60_STL_ARRAY_34_16_EXACT.md). Earlier totals remain historical; parent still NONEXACT.
+
+> **Subsequent CORE/RECON-809/810:** The original 60B texture-lookup callee is now strict exact, along with its separate **34B checked std::array::at STL helper**; the 34B method is excluded from authored game code credit. [Original native 60B+34B exact evidence](ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md). The quad parent remains NONEXACT; this older checkpoint's call-role totals are not the newest exact inventory.
+
 Locked original: Japanese TH20 v1.00a Steamless, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The real original **`0x0043F6A0` 3,159B/763 x86** game-owned
