@@ -1186,3 +1186,5 @@ th20::Player::clock_scale_value,0x004AAA40,function
 th20::DiagnosticAllocator::allocate_object<Animation>,0x00447800,function
 th20::VectorInterpolation::set_end,0x00438A90,function
 th20::VectorInterpolation::set_duration,0x00438E70,function
+std::pmr::vector<th20::BulletCommand>::~vector,0x0047C300,function
+std::pmr::vector<th20::BulletCommand>::operator=(const std::pmr::vector<th20::BulletCommand>&),0x0047C570,function

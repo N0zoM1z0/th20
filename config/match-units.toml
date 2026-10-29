@@ -20652,3 +20652,35 @@ symbol = "?set_duration@?$Interpolation@UVector3@th20@@@th20@@QAEXH@Z"
 target_address = 0x00438E70
 size = 22
 relocations = []
+
+# CORE/EXACT-734: native standard-library PMR BulletCommand vector copy
+# and destruction in the original 12140B Bullet command sequencer. Both
+# are genuine library template bodies and excluded from authored-byte credit.
+
+[units.shot_command_vector_copy_assignment_library]
+source = "src/ShotMetadataVectorInstantiation.cpp"
+object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::BulletCommand>::operator=(const std::pmr::vector<th20::BulletCommand>&)"]
+symbol = "??4?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEAAV01@ABV01@@Z"
+target_address = 0x0047C570
+size = 121
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??$addressof@$$CBV?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@@std@@YAPBV?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x23, type = "REL32", symbol = "?_Getal@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@AAEAAV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x2E, type = "REL32", symbol = "?_Getal@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@ABEABV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x3E, type = "REL32", symbol = "??$_Pocca@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@YAXAAV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@0@ABV120@@Z", target = 0x0040C6B0 },
+  { offset = 0x6C, type = "REL32", symbol = "??$_Assign_counted_range@PAUBulletCommand@th20@@@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@AAEXPAUBulletCommand@th20@@I@Z", target = 0x0047A8D0 },
+]
+
+[units.shot_command_vector_dtor_library]
+source = "src/ShotMetadataVectorInstantiation.cpp"
+object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<th20::BulletCommand>::~vector"]
+symbol = "??1?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ"
+target_address = 0x0047C300
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?_Tidy@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@AAEXXZ", target = 0x00484570 },
+]

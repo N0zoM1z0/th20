@@ -16,3 +16,12 @@ template std::size_t
 std::vector<th20::BulletCommand,
             std::pmr::polymorphic_allocator<th20::BulletCommand>>::size()
     const noexcept;
+
+// The original 12,140-byte Bullet command runner copies and retires the
+// actual PMR vector of 44-byte BulletCommand values. Preserve both native
+// library template instantiations here, alongside its existing operator[]
+// and size() specializations, not as dummy game-owned wrapper functions.
+// The runtime's 121B copy and 20B destructor are distinct STL-origin code.
+using BulletCommandVector = std::pmr::vector<th20::BulletCommand>;
+template BulletCommandVector& BulletCommandVector::operator=(const BulletCommandVector&);
+template BulletCommandVector::~vector();
