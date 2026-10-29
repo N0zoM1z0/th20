@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/ORIGIN-715.** This file is a
+**Last reconciled: 2026-10-29, CORE/RECON-716.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -69,7 +69,7 @@ that entire parent is reconstructed.
 | `0x0047DB70` Bullet drawing group | **273B** | [Complete source and extra SSE spill frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md); compiler currently emits ~283B. **NONEXACT**. |
 | `0x004A4190` Enemy mesh | **1,649B** | [Whole C++ owner and original transient lifetime](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md); existing source is nonexact, do not forge an unused byte. |
 | 0x0047DCF0 Bullet::run_extended_commands | **12,140B / 2,490 original x86** | New [independently original 34+8+11 nested-switch full-case CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) corrects the older [primary-only 34-case frontier](BULLET_12140_ORIGINAL_34_CASE_DISPATCHER_FRONTIER.md). Entire real PE has **53 original post-RET switch-table HIGHLOW** across 212B, 38 body HIGHLOW, 210 E8; **2,387/2,490 native instructions and 204/210 E8 are case-reachable**, remaining six native E8 belong to actual command prelude/security epilogue, zero unresolved nested indirect branches. Main cases 5/14/28 share default; nested 8-way command 4 and 11-way command 9 sprite/style are authentic integer selectors (Ghidra float-case decompiler types were wrong). Two independently strict large parents 3,735B emitter and 1,846B Bullet physics physically E8-call this genuine Bullet method. **No complete maintained C++ body yet, source-absent, NONEXACT and zero exact body credit.** |
-| `0x0048C010` Enemy ECL dispatcher | **41,967B** | Huge original VM/controller parent **NONEXACT**. [Dispatch layout / table analysis](CORE_ENEMY_DISPATCH_LAYOUT.md). |
+| 0x0048C010 Enemy ECL dispatcher | **41,967B /8,896 original x86** | [Independent original 704-byte opcode compression and 174 actual PE HIGHLOW code pointers](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). Physical opcodes **702/703/711/713** map to selectors 154/155/163/165 and true LaserType0/1/2/3 original ctor/dtor branches, with 153/176/141/137 bounded native x86 heads and genuine original E8 destinations. Their ten separate Laser game classes/controller functions are already **936B whole native strict exact**, but the enclosing entire Enemy Boss remains source-absent **NONEXACT** and gets no code credit; [prior historical layout](CORE_ENEMY_DISPATCH_LAYOUT.md) retains dated host-probe context. |
 | `0x0042B5D0` Animation VM update | **39,470B** | **NONEXACT** giant original parent; native-exact child parsers, loaders, reset and frame helpers cannot be counted as this body. [Animation owner map](SOURCE_MAP.md). |
 
 **Near-term priority:** Bullet emitter remains fully strict exact at

@@ -1,5 +1,7 @@
 # Whole Enemy dispatcher control flow and compiler tables
 
+**Later [CORE/RECON-716](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md) independent original PE check:** original 704-byte compressed opcode map and 174 real PE HIGHLOW case pointers were reverified from the immutable target. Native opcodes 702/703/711/713 map to selectors 154/155/163/165 and all four genuine LaserType0/1/2/3 construction/destruction branches. This confirms those older opcode identities without giving the still-nonexact 41,967B parent original body credit.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

@@ -16,6 +16,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## Entire native 41,967B Enemy opcode Boss: independently authenticated Laser command branches
+
+- [CORE/RECON-716 — original 704-byte compressed opcode index and 174 PE HIGHLOW pointers, bounded native 702/703/711/713 Laser case CFG](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md) — original whole **41,967B/8,896 native x86** uses integer opcode-base 300, 704 actual index bytes and 174 independently attested original PE HIGHLOW case heads. Opcodes 702/703/711/713 select original indexes 154/155/163/165 and each real case reaches the corresponding **LaserType0/1/2/3 constructor and destructor E8**. Four full original case CFGs independently verified with zero unresolved jumps; older Laser opcode naming crosschecked rather than assumed. Entire giant parent remains **NONEXACT**, exact Laser children already separately credited and not added again.
+
 ## Four complete original Laser parameter-class lifetimes and controller accessors game-owned exact
 
 - [CORE/ORIGIN-715 — ten complete LaserType0/1/2/3 parameter constructors/destructors and LaserController context/lookup bodies, 936 disjoint original strict bytes](LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md) — all twelve src/LaserParameters.cpp canonical original methods **12/12 strict with ONE affected-only cold MSVC object**, but 179B LaserController ctor and 263B reset were already game-credited. Genuine original PE **17 E8/3 HIGHLOW** within the ten newly reviewed whole methods, plus actual 12,140B Bullet command and 41,967B Enemy ECL opcode Boss E8 constructor/destructor references for all four Laser parameter classes and exact 1,738B Dialogue constructor lookup reference. Exactly **ten original physical game methods /936 newly credited bytes**, now **530 authored exact originals /183,382 disjoint bytes**; both giant parents remain NONEXACT, no full cold replay.

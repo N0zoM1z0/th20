@@ -40,6 +40,10 @@ These are genuine original machine-code relative call targets, not inferred sole
 
 The separate LaserController::select_context original at 0x004D7E10 is called at **0x004D3D3A** by a 186-byte native context-routing candidate. The real LaserController lookup at 0x00478EE0 has **19 native physical PE direct callers across the function inventory**, including an independent already strict **1,738-byte original Dialogue constructor** E8 at **0x004AF92E → 0x00478EE0**. The controller source accesses the real Session context owner and genuine typed LaserController field and pointer. The context routing candidate remains separately NONEXACT and receives no credit.
 
+## Verified native Enemy opcode mapping (after original game origin admission)
+
+An independent original [41,967-byte Enemy opcode case CFG](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md) now confirms that opcode **702 constructs LaserType0**, **703 constructs LaserType1**, **711 constructs LaserType2**, and **713 constructs LaserType3**. The actual original compressed-index selector byte, native HIGHLOW jump pointer, whole case entry, and BOTH real constructor/destructor E8 sites were independently decoded for each. This independently checks rather than merely trusts the older 702/703/711/713 hypotheses. There is no new original body credit or assertion that the entire Enemy Boss is exact.
+
 ## Independent native strict receipts, relocation evidence and no double credit
 
 The entire one-source Laser parameter family was rebuilt with the **pinned original MSVC compiler** and strictly replayed with only:
