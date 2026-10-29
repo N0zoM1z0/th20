@@ -1235,3 +1235,4 @@ th20::AnimationQuadSubmitOwner::texture_for_sprite
 "std::array<th20::AnimationFile*,42>::at"
 "std::array<th20::AnimationFile*,42>::_Xran"
 th20::AnimationQuadSubmitOwner::select_render_color_mode
+th20::AnimationQuadSubmitOwner::bind_native_texture_state
