@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/ORIGIN-529.** This is a live navigation
+**Current: 2026-10-29, after CORE/ORIGIN-535.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -20,7 +20,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Source-present mappings | **1,181** |
 | Strict canonical complete native units | **1,181** |
 | Unique canonical MSVC object/receipt providers | **241** |
-| Exact game-authored whole original functions | **465**, covering **161,762 original body bytes** |
+| Exact game-authored whole original functions | **475**, covering **167,819 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -290,6 +290,39 @@ Current authored exact rises **455 / 154,558B -> 465 / 161,762B**.
 Strict canonical units/source mappings stay **1,181**, real compiled
 providers **241**. The 41,967B parent Enemy ECL dispatcher remains
 independently **NONEXACT**; no whole cold replay or game-runtime claim.
+
+## Ten newly original-origin-reviewed custom game object/codec/graphics bosses
+
+**CORE/ORIGIN-535:** Independent original whole-PE/ABI review accepts
+**ten existing native strict-exact custom game/project methods**, **6,057
+original disjoint game-body bytes / 1,479 native x86 instructions**.
+Largest whole roots: **941B Graphics::Graphics**, **794B Player
+construction**, **712B PlayerRecord**, **706B LZSS decompressor**,
+**612B ProgressMetadata**, **596B Item pool initialization**, **556B
+Bullet construction**, plus Input replay 475B, PBG file open 346B and
+Viewport 319B. Actual original game callers include the separately exact
+ArchiveOwner read/catalog and Progress parser, Item controller,
+progress snapshot constructor and Player/graphics constructor wrappers.
+Original PE **106 native E8 / 17 genuine HIGHLOW** reference fields
+and all other native code bytes were independently checked; **10
+original compiler alignment bytes** in the Graphics/Player constructor
+comparisons were compared but excluded from authored-body byte totals.
+Four roots have **high-confidence original game-owned** provenance; six
+(anonymous constructor wrappers, virtual/indirect PBG, absent direct E8)
+retain **medium confidence**. This is an **origin audit of existing
+source**, not ten newly typed C++ bodies or proof of the full linker.
+
+Only **nine real MSVC source/object providers** were cold rebuilt;
+**119/119 source-scoped complete original canonical units replayed
+strict exact**, without source/header edits or an unfiltered global
+cold replay. [Entire original PE and caller audit](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md).
+Authored exact **465 / 161,762B -> 475 / 167,819B**, strict units and
+source-present functions remain **1,181**, compiler providers **241**.
+The separate **73B Animation factory** was retested under real C++
+value/placement construction and MSVC `/sdl` flags; it remains
+**NONEXACT** and is not masked with an artificial constructor ABI.
+The full Bullet emitter, Enemy ECL dispatcher and Player/Animation
+whole-frame bosses remain open.
 
 ## Actual open whole-function bosses (priority, NOT exact)
 
