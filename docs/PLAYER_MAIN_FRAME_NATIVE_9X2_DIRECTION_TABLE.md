@@ -1,5 +1,7 @@
 # CORE/RECON-669 — original 9×2 signed Player direction table and full-frame C++ indexing
 
+**Later [CORE/RECON-729](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md) production data recovery:** the original PE signed 9×2 direction table now also has a real externally linked C++ definition in src/PlayerDirectionTable.cpp. Pinned MSVC emits **72/72 byte-identical original .rdata**, and both Player main references use exactly that symbol. Independent complete parent data audit now grounds **37/37 actual original PE HIGHLOW roles**: 34 previously accepted game globals, two new table references and the byte-identical 7-byte effect literal. The whole 3,111B parent remains NONEXACT; the source measurements below are historical.
+
 **The 3,111-byte / 783-instruction original Player main frame is still NONEXACT.**
 The pinned Japanese TH20 v1.00a Steamless executable is resources/th20.exe,
 SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
