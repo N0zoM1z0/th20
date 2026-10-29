@@ -16,6 +16,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## Original nine game-owned PBG, Fog, Geometry, Player-shot, Session and Graphics methods, 1,686 new exact bytes
+
+- [CORE/ORIGIN-726 — nine complete original native game methods 55B/38B/246B Player shot query, 248B CP932 PBG filename, 229B Vector3 normalization, two 226B Fog arithmetic, 214B Session and 204B Graphics flags](GAME_FOG_GEOMETRY_PLAYER_PBG_SESSION_1686_ORIGIN.md) — independently immutable original whole-code PE **31 E8 and ten PE HIGHLOW**, actual 1,074B whole exact Fog interpolator /313+324B geometry /346B PBG File open /941B Graphics /16B Session compiler static initializer as real caller witnesses. Eight affected-only cold source objects fully protected **121/121** previously exact canonical units, including two stale receipts properly rebuilt; original 16B compiler initialization wrapper is NOT credited as authored. Original game-authored coverage advances **546 complete functions /186,351 nonoverlapping original bytes**, no full cold replay.
+
 ## Original 555B Player movement actual shared 128.0f data owner restored
 
 - [CORE/RECON-724 — complete original 555B Player movement native shared `native_128` denominator addresses at 0x0056CD98](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md) — actual immutable native world X/Y DIVSS at `+0x1DA/+0x205` and nine independently already exact Player original COFF units corroborate **one real shared game float 128.0f**. Two old private `__real@43000000` source literals replaced in maintained full `src/PlayerMovement.cpp` with genuine `native_128`. Fresh complete MSVC 561B/136 x86 still NONEXACT due to the single extra SSE `movss` spill, but **561/561 compiled code bytes and 27/27 original COFF field locations unchanged**, only two symbol identities corrected. Affected old strict units ZERO; no global cold replay or exact byte credit.

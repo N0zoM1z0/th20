@@ -1,5 +1,7 @@
 # Actual damage-query consumer protocol
 
+**Later [CORE/ORIGIN-726](GAME_FOG_GEOMETRY_PLAYER_PBG_SESSION_1686_ORIGIN.md) original game ownership:** complete original 55B DamageRegion::player_shot, 38B Player::find_shot and 246B PlayerShotController::find are now independently proven native authored exact as a genuine 55->38->246 game call chain (339 distinct original bytes). Two real original 131/126B collision parents physically call the first method and remain NONEXACT. Original query and Player/shot ownership source C++ itself is unchanged; earlier origin-pending counts below are historical.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

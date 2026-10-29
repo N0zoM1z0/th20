@@ -1,5 +1,7 @@
 # Actual process Session and player-table reconstruction
 
+**Later [CORE/ORIGIN-726](GAME_FOG_GEOMETRY_PLAYER_PBG_SESSION_1686_ORIGIN.md):** full original 214B game Session constructor is independently authored and exact, called by real original 16B compiler-generated static Session initializer at 0x00401188. The 16B startup thunk is authentic original caller evidence but deliberately NOT credited as game-authored body. Current origin totals supersede historical unreviewed status below.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

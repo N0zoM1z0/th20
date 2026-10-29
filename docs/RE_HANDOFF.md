@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/RECON-724.** This file is a
+**Last reconciled: 2026-10-29, CORE/ORIGIN-726.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -21,7 +21,7 @@ what is accepted.
 | Source-present function mappings | **1,185**, all origins |
 | Configured whole-native strict units | **1,187**, including library/compiler |
 | Distinct canonical MSVC object + receipt providers | **245** |
-| **Game-authored original whole-body exact** | **537 distinct functions / 184,665 disjoint original `.text` bytes** |
+| **Game-authored original whole-body exact** | **546 distinct functions / 186,351 disjoint original `.text` bytes** |
 | Whole-program link / playable game | **Not yet available** |
 
 These counts are a dated snapshot. Run `scripts/repo-python
@@ -46,6 +46,7 @@ both true of this exact [locked target](TARGET_PROVENANCE.md).
 | `0x004383A0` Animation direct script load | **338B**, plus 21B VM-forward helper, [whole native caller ABI](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) |
 | Real geometry | **19 whole methods, 13,360B**, [complete original rectangles, circles, polygons and intersections](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) |
 | Real game owner constructors/codec/graphics | **10 whole methods, 6,057B**, including 941B Graphics and 794B Player; [native project-origin audit](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md) |
+| Game PBG/Fog/geometry/PlayerShot/Session/Graphics whole methods | **Nine complete original game-native functions /1,686 newly accepted disjoint exact bytes**, [native source, original PE HIGHLOW, 31 E8 and actual original callers proof](GAME_FOG_GEOMETRY_PLAYER_PBG_SESSION_1686_ORIGIN.md). Typed original Player damage-to-shot chain **55B -> 38B -> 246B** completed, true 1,074B original Fog boss calls two separate 226B operations, 313/324B exact polygons call 229B normalization, 346B exact PBG File opens call 248B CP932 path converter, 941B Graphics ctor calls 204B flags, real 16B compiler dynamic initializer calls 214B Session ctor without extra helper credit. All **8 relevant MSVC source objects /121/121 old exact units scoped cold rebuilt**, including fixed stale Fog/geometry receipts, never full replay. |
 | Game Animation, ECL, Item and Player complete native child methods | **Seven whole-game original functions /1,283 distinct strict exact original bytes**: [243B Animation child-list begin, 241B recursive find, 217B layer, 182B ECL async spawn, 147B Item spawn-many, 133B PlayerFeedback constructor, 120B ScriptStack local](GAME_PLAYER_ANIMATION_ECL_SEVEN_ORIGINAL_1283_EXACT_ORIGIN.md). Newly attested original PE **30 E8/13 HIGHLOW**, real previously exact 967B Enemy animation, 878B RenderMesh, 11,110B ECL Runtime, 419B Bullet cancel, 794B Player constructor and ten ECL arguments caller chains. False earlier assumption that the ECL interpolation setter was Animation::set_layer **rejected** from physical E8. Only **7 bounded source cold objects /66/66 exact units** replayed, original giant parents remain NONEXACT. |
 | Laser parameters and controller protocol | **Ten complete originally game-owned Laser function bodies / 936 disjoint native strict exact bytes**, [four LaserType0/1/2/3 parameter construction and destruction pairs plus real context selection and lookup](LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md). Independently decoded ten original bodies, **17 E8/3 true PE HIGHLOW**, physical 12,140B Bullet command case-27 and 41,967B Enemy opcode dispatch callers; exact 1,738B Dialogue constructor independently calls Laser controller lookup. One affected source cold replay **12/12 strict**, but the previously game-credited 179B controller constructor and 263B reset function are **not** counted again. Both original giant dispatchers remain NONEXACT. |
 | Enemy and ECL original lifecycle | **4 complete game-authored, strictly exact functions / 762 disjoint original bytes**, [original EnemyController::create 155B, Enemy::initialize 222B, EnemyState::advance_scripts 168B and EclManager::tick 217B](ENEMY_ECL_LIFECYCLE_762_ORIGINAL_GAME_EXACT_ORIGIN.md). Independently decoded original **29 E8 /4 PE HIGHLOW** sites, original 12,140B (NONEXACT) dispatcher to Enemy creation, original 1,371B exact Enemy::defeat to ECL Manager, and both original ECL Manager calls to the separately exact 11,110B Runtime. Targeted-only receipt refresh for two existing original ECL native objects, zero broad replay or duplicate original code credit. |
