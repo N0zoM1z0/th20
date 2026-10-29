@@ -1,5 +1,7 @@
 # EXACT-063: Enemy dispatcher temporary owners
 
+**Later [CORE/ORIGIN-715](LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md) update:** original 12,140B Bullet case-27 and original 41,967B Enemy ECL opcode dispatcher independently demonstrate all four Laser parameter constructor/destructor families as genuine game-owned. Eight of these complete 180/23/246/23/198/23/149/23-byte methods are already whole-native strict and now separately credited once. The previous original-origin-pending statement below was historical; the giant dispatcher itself remains source-absent/NONEXACT. The two additional LaserController lookup/context methods were reviewed in the same 12/12 source-only native cold replay. No old ECL or Laser object code was changed.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
