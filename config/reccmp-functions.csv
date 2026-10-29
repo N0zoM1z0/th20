@@ -1226,3 +1226,4 @@ th20::AnimationDrawModeOwner::draw_quad_mode1,0x0043F630,function
 th20::AnimationDrawModeOwner::draw_quad_mode2,0x0043F5C0,function
 th20::AnimationDrawModeOwner::draw_quad_mode4,0x00440310,function
 th20::AnimationDrawModeOwner::draw_quad_mode5,0x004413A0,function
+th20::AnimationPoolOwner::draw,0x00443880,function

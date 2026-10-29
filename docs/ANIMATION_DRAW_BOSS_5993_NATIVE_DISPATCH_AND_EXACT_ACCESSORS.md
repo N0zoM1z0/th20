@@ -1,4 +1,6 @@
 # CORE/RECON-782 — the original 5,993-byte Animation draw Boss and four complete exact game accessors
+
+> **Subsequent CORE/RECON-800:** The whole 5,993B Animation draw parent now has one maintained, compilable 49-mode C++ candidate and a 123/123 source/native E8 target-role census. It is **SOURCE-PRESENT but NONEXACT** (5,141 actual compiled instruction bytes vs 5,993 original). [Current whole-parent evidence](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md). Earlier SOURCE-ABSENT labels below were accurate only at this dated checkpoint.
 > **Later CORE/RECON-793:** Three separate complete 97-byte quad renderer mode wrappers (modes 0,1/3,2) are now strict exact, with original vertex array and E8 calls independently attested. [291B native quad proof](ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md). Original 5,993B parent still NONEXACT; the counts below are dated historical evidence.
 
 > **Subsequent CORE/RECON-792:** All 49 original mode paths now have source-independent PE32/Capstone CFG + exact direct E8 callsite/callee mappings, including 28 real nested-table routes and two default/non-render cases. [Original 49-mode path proof and machine-readable manifest](ANIMATION_DRAW_BOSS_49_MODE_ORIGINAL_E8_CFG.md). The 5,993B parent remains SOURCE-ABSENT/NONEXACT; the counts below belong to this older checkpoint.

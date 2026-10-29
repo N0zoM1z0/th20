@@ -5,26 +5,10 @@
 #include "AnimationRuntimeOwner.hpp"
 #include "Animation.hpp"
 #include "SpriteVertices.hpp"
+#include "AnimationDrawModeOwner.hpp"
 
 namespace th20 {
-extern SpriteTexturedVertex native_quad_vertices[4];
 static_assert(sizeof(SpriteTexturedVertex) == 0x1C);
-
-struct AnimationDrawModeOwner : AnimationPoolOwner {
-    void setup_quad_a(Animation*, SpriteTexturedVertex*, SpriteTexturedVertex*,
-                      SpriteTexturedVertex*, SpriteTexturedVertex*);
-    void setup_quad_b(Animation*, SpriteTexturedVertex*, SpriteTexturedVertex*,
-                      SpriteTexturedVertex*, SpriteTexturedVertex*);
-    std::int32_t render_quad(Animation*, std::int32_t mode);
-    std::int32_t draw_quad_mode0(Animation* animation);
-    std::int32_t draw_quad_mode1(Animation* animation);
-    std::int32_t draw_quad_mode2(Animation* animation);
-    std::int32_t draw_quad_mode4(Animation* animation);
-    std::int32_t draw_quad_mode5(Animation* animation);
-    std::int32_t prepare_quad_mode4(Animation* animation);
-    void prepare_quad_mode5(Animation* animation);
-};
-
 std::int32_t AnimationDrawModeOwner::draw_quad_mode0(Animation* animation) {
     setup_quad_a(animation, &native_quad_vertices[0], &native_quad_vertices[1],
                  &native_quad_vertices[2], &native_quad_vertices[3]);

@@ -1074,7 +1074,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00441C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00441F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00443020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00443880,authored,Animation,authored,high,"CORE/RECON-782; docs/ANIMATION_DRAW_BOSS_5993_NATIVE_DISPATCH_AND_EXACT_ACCESSORS.md; original native 5993B complete custom Animation mode draw dispatcher, exact PlayerDraw caller role plus original 49+31 HIGHLOW switches and 123 E8 attested; SOURCE-ABSENT NONEXACT, no original byte credit"
+0x00443880,authored,Animation,authored,high,"CORE/RECON-800; docs/ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md; source-present original whole 49-mode game renderer parent, original PE two 49+31 actual jump tables and 123 E8/43 destinations independently attested, compiled 123/43 full role histograms exact, entire original 5993B body still NONEXACT, no original game byte credit"
 0x00445130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00445350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004455C0,authored,Animation,authored,high,"CORE/RECON-790; docs/ANIMATION_DRAW_QUEUE_FLUSH_192_STRICT_EXACT_RECONSTRUCTION.md; original complete 192B 55 x86, actual 2 genuine PE HIGHLOW process Graphics and 2 original E8 device getter identities plus DrawPrimitiveUP virtual D3D9 slot 0x14C, queue protocol independently original; game-owned strict physical bytes complete."

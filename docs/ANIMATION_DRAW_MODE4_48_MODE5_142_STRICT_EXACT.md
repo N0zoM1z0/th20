@@ -1,5 +1,7 @@
 # CORE/RECON-796 — entire native mode-4 48B and mode-5 142B Animation draw paths strict exact
 
+> **Subsequent CORE/RECON-800:** The whole 5,993B Animation draw parent now has one maintained, compilable 49-mode C++ candidate and a 123/123 source/native E8 target-role census. It is **SOURCE-PRESENT but NONEXACT** (5,141 actual compiled instruction bytes vs 5,993 original). [Current whole-parent evidence](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md). Earlier SOURCE-ABSENT labels below were accurate only at this dated checkpoint.
+
 Locked original Japanese TH20 v1.00a Steamless SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 After the earlier [three complete original 97B quad wrappers](ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md), this checkpoint

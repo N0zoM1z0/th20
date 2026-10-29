@@ -1,7 +1,7 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-796):** [live accepted
+**Current next-agent reading order (CORE/RECON-800):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Entire 5,993B Animation draw Boss source-present typed C++ with exact 123-call role census (NONEXACT)
+
+- [CORE/RECON-800 — complete 49-mode main/28-mode nested typed `AnimationPoolOwner::draw(Animation*)` parent source](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md) — original whole 5,993B/1,501 real x86, 123 original direct E8/43 physical targets, 49+31 original PE jump pointers and 32 native in-body relocations independently attested. New natural C++ uses real Animation/Graphics/WindowState and 49 mode cases, reaches all 29 original render callee heads, and **all 123/123 original E8 target identities *and multiplicities* match the actual 123 compiled COFF REL32 call refs**. **NONEXACT** compiler machine code: **5,141 executable bytes/1,358 actual i386** plus 247B generated switch/data tables, originally 5,993B/1,501, and compressed 17-pointer+49-byte index differs from original direct 49-pointer switch. Added one source-present original game method, **zero exact parent byte credit**. One existing 5/5 strict quad source object replayed after extracting only a local renderer ABI declaration header, no all-graph replay. Live **1,228 source-present, 582 exact game methods/189,106B, 1,229 strict units/253 providers**.
 
 ## Original whole 48B mode 4 +142B mode 5 Animation draw methods strict exact
 
