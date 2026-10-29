@@ -22,6 +22,8 @@ remains in history. Current exact status is in the concise
 
 ## Input system and Player
 
+- [Whole 3,490B InputDevice polling C++ source; 22B setter morphology; 30/30 strict prior units preserved](INPUT_DEVICE_FRAME_3490_SOURCE_FRONTIER.md) — native keyboard, XInput and DirectInput semantics now have a real compiled typed whole-function implementation; candidate 3,720B/759 instructions against original 3,490B/747, **NONEXACT**, zero new original exact credit.
+
 - [Different whole-exact 215B append-only diagnostic and 221B error log originals](DIAGNOSTIC_LOG_MESSAGE_215_EXACT_RECONSTRUCTION.md) — the 215B original does not set the error flag, unlike the preexisting 221B; six native DirectInput caller E8 target fields resolve to the genuine append-only function. 6/6 bounded exact units in 4 cold objects.
 
 - [Whole original 726B DirectInput discovery, 218B pad attachment and 17B COM slot — strict exact](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md) — 277+9 original x86 instructions, 45 immutable E8/HIGHLOW fields, actual Windows DirectInput COM/GUID/HWND lifecycle; 961 distinct game-owned original bytes, four folded aliases credited zero extra, 85/85 real header-dependent strict units in 19 low-priority cold objects. 3,490B polling parent stays NONEXACT.

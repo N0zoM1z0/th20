@@ -49,7 +49,7 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 29, 2026 checkpoint the maintained graph has **1,175
+At the October 29, 2026 checkpoint the maintained graph has **1,176
 source-present mappings**, **1,176 strict canonical native units** and
 **236 canonical MSVC object/receipt providers**. Independently verified
 game-authored whole-function exactness is **400 complete functions /

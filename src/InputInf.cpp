@@ -4,6 +4,13 @@
 #include "InputInf.hpp"
 
 namespace th20 {
+// Original polling path calls the shared 0x0041DE90 physical setter.
+// The same native bytes admit another source-present interpolation setter;
+// this alias has no separately accepted canonical exact unit.
+void InputInf::set_last_input_kind(std::int32_t kind) {
+    state_18 = static_cast<std::uint32_t>(kind);
+}
+
 InputButtonState* InputInf::for_view(std::int32_t logical_index) {
     return active_buttons[logical_index];
 }

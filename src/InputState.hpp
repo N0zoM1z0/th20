@@ -39,11 +39,14 @@ struct InputDevice {
     IDirectInputDevice8W* direct_input;
     std::int32_t xinput_index;
     InputButtonState buttons;
-    std::array<std::uint8_t, 256> raw;
+    // Actual contiguous 256-byte native keyboard/pad byte buffer.
+    std::uint8_t raw[256];
     std::uint32_t retained_3d0;
     void reset_header();
     void initialize_keyboard(std::int32_t index);
     void initialize_xinput(std::int32_t physical, std::int32_t logical);
+    // Whole 3490B native poll; source present, not yet a strict exact unit.
+    std::uint32_t poll();
     // Native whole 218B DirectInput pad registration with real WinSDK COM.
     void initialize_directinput(std::int32_t physical, std::int32_t logical);
 };

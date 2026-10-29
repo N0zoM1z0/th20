@@ -35,6 +35,8 @@ public:
     // Native signed comparisons of the number of discovered devices.
     std::int32_t state_14;
     std::uint32_t state_18;
+    // Folded physical 22B state setter also used by an interpolation instance.
+    void set_last_input_kind(std::int32_t kind);
     // Original native COM input interface at +0x1C; the separate
     // 50B release member invokes its real vtable Release slot.
     IDirectInput8W* direct_input_1c;
