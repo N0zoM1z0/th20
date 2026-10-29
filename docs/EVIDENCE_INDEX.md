@@ -20,6 +20,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/CLEANUP-300 artifact retirement and protected storage](ARTIFACT_RETIREMENT_2026_10_28.md) — 2,496 obsolete ignored files / 203.65 MiB retired, every canonical object/receipt and native target preserved, recorded SHA/path inventory.
 
+## Collision geometry — native provenance and exactness
+
+- [CORE/EXACT-503 complete 19-function geometry origin admission, 13,360 native authored bytes](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) — two fresh pinned MSVC `/fp:strict` objects, **19/19 whole 3,530-instruction functions strict exact**; 160 independent native E8 and 181 original PE HIGHLOW fields, verified original constants and rectangle-edge table, real DamageRegion/Bullet/Player caller graph; prior origin-pending records superseded, no new compiler units or full cold replay.
+
 ## Input system and Player
 
 - [CORE/EXACT-501 — entire 3,490B InputDevice keyboard/DirectInput/XInput polling boss strict exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) — 747 original x86 instructions and 39 separately original-attested E8/HIGHLOW fields; fresh locked MSVC i386 complete 3,490/3,490 strict canonical bytes, one new game-authored exact function, **no full replay**. Supersedes prior nonexact polling-frontier descriptions.

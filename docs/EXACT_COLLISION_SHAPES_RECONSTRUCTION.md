@@ -1,5 +1,13 @@
 # EXACT-048: native collision shapes and vector dependencies
 
+**Current origin admission:** CORE/EXACT-503 independently verified native
+DamageRegion/Bullet/Player consumers, rebuilt the 19 existing exact units
+under the original locked strict-FP profile and accepted 13,360 disjoint
+game-authored original bytes. This later [origin/exactness review](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md)
+supersedes the historical origin-pending statements below, not their
+original native ABI/caller observations.
+
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

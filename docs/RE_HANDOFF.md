@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-501.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-503.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -20,7 +20,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Source-present mappings | **1,176** |
 | Strict canonical complete native units | **1,177** |
 | Unique canonical MSVC object/receipt providers | **237** |
-| Exact game-authored whole original functions | **401**, covering **124,919 original body bytes** |
+| Exact game-authored whole original functions | **420**, covering **138,279 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -30,6 +30,24 @@ Some complete compiler contributions include real PE `CC` alignment
 bytes; compare them fully, but credit only actual original game-body
 bytes. Original package v1.00a and embedded title/replay version
 1.00c are both observed in the **same locked executable**.
+
+
+## Newly origin-admitted complete collision geometry: strict native exact
+
+**CORE/EXACT-503:** 19 original entire collision-geometry functions,
+**13,360 distinct original game-body bytes / 3,530 instructions**,
+including **1,452B rectangle/rectangle**, **1,439B line/rectangle**,
+**1,250B rectangle/star** and **1,195B rectangle/polygon** bosses. Their
+actual maintained C++ and manifest units were already present but earlier
+authored-origin classification was pending, so prior records did not count
+them. Fresh pinned `/fp:strict` MSVC builds of exactly two source objects
+strictly replay **19/19 original units**, including **160 original E8** and
+**181 original PE HIGHLOW** fields separately independently audited.
+Original game-owned DamageRegion/Bullet/Player callers prove active custom
+geometry roles; four currently anonymous caller roots remain medium-confidence
+authored classifications. See the [origin and whole-PE exactness audit](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md).
+Canonical unit/provider counts stay **1,177 / 237** because these preexisted.
+No whole-repository cold replay, linked executable or game-runtime claim.
 
 ## Recently solved input system — do not reopen as nonexact
 
