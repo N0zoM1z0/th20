@@ -36,12 +36,28 @@ static_assert(offsetof(Animation, handle) == 0x4c0);
 #endif
 }
 
-IntrusiveLink<Animation>* AnimationLookupList::find_if(LinkPredicate predicate) {
-    for (IntrusiveLink<Animation>* link = this->next_value();
-         link != nullptr; link = link->next_value()) {
-        if (predicate(*link)) return link;
+static IntrusiveLink<Animation>* __fastcall find_link_with_predicate(
+    IntrusiveLink<Animation>* first, LinkPredicate predicate) {
+    IntrusiveLink<Animation>* current = first;
+    while (current != nullptr) {
+        if (predicate(*current)) return current;
+        current = current->next_value();
     }
     return nullptr;
+}
+
+// The native 159-byte ECX/40-byte-by-value predicate loop is a separate
+// original game method from the 154-byte list entry wrapper. Both operate on
+// the real intrusive link representation, without a fabricated owner object.
+IntrusiveLink<Animation>* AnimationLookupList::find_if(LinkPredicate predicate) {
+    IntrusiveLink<Animation>* result;
+    if (next_value()) {
+        IntrusiveLink<Animation>* first = next_value();
+        result = find_link_with_predicate(first, predicate);
+    } else {
+        result = nullptr;
+    }
+    return result;
 }
 
 Animation* AnimationPoolOwner::resolve_handle(std::uint32_t raw_id) {

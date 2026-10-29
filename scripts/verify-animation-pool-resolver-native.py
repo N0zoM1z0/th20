@@ -63,6 +63,49 @@ def original_bytes(original: bytes, address: int, size: int) -> bytes:
     raise AssertionError(f"address {address:#x} not in PE raw sections")
 
 
+# The two original game-owned intrusive-list helpers directly called by the
+# 456B resolver. All sites/destinations come from immutable original PE.
+LINK_SEARCH_BODIES = (
+    (0x0044A500, 159, 47,
+     {0x0044A542: 0x00449630, 0x0044A55E: 0x00414400,
+      0x0044A56B: 0x0040FF90, 0x0044A586: 0x00414400},
+     {0x0044A506: 0x0056844D, 0x0044A515: 0x005B25C0}),
+    (0x0044A5A0, 154, 46,
+     {0x0044A5D2: 0x0040FF90, 0x0044A5DE: 0x0040FF90,
+      0x0044A5F2: 0x004140F0, 0x0044A5FA: 0x0044A500,
+      0x0044A621: 0x00414400},
+     {0x0044A5A6: 0x0056847D, 0x0044A5B5: 0x005B25C0}),
+)
+
+
+def original_highlow_fields(original: bytes) -> set[int]:
+    """Read physical IMAGE_REL_BASED_HIGHLOW entries from original PE32."""
+    nt = struct.unpack_from("<I", original, 0x3C)[0]
+    section_count = struct.unpack_from("<H", original, nt + 6)[0]
+    optional_size = struct.unpack_from("<H", original, nt + 20)[0]
+    image_base = struct.unpack_from("<I", original, nt + 24 + 28)[0]
+    highlow: set[int] = set()
+    for index in range(section_count):
+        at = nt + 24 + optional_size + 40 * index
+        name, _, _, raw_size, raw_offset = struct.unpack_from("<8sIIII", original, at)
+        if name.rstrip(b"\0") != b".reloc":
+            continue
+        data = original[raw_offset:raw_offset + raw_size]
+        offset = 0
+        while offset + 8 <= len(data):
+            page, length = struct.unpack_from("<II", data, offset)
+            if length == 0:
+                break
+            assert 8 <= length <= len(data) - offset
+            for field in range(offset + 8, offset + length, 2):
+                word = struct.unpack_from("<H", data, field)[0]
+                if word >> 12 == 3:
+                    highlow.add(image_base + page + (word & 0xFFF))
+            offset += length
+    assert len(highlow) > 1000
+    return highlow
+
+
 def decode(original: bytes, address: int, size: int):
     result = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(original_bytes(original, address, size), address))
     assert result and result[-1].address + result[-1].size == address + size
@@ -105,6 +148,26 @@ def main() -> None:
     comparison = decode(image, 0x00449400, 47)
     assert len(comparison) == 16 and any(x.mnemonic == "cmp" for x in comparison)
     assert comparison[-1].mnemonic == "ret" and comparison[-1].op_str == "4"
+    # Original 159B predicate-node walker and 154B list wrapper form
+    # independently complete native game functions; compare every original
+    # E8 call and every PE HIGHLOW field, including true SEH/cookie data.
+    highlow = original_highlow_fields(image)
+    for head, size, instruction_count, expected_calls, expected_data in LINK_SEARCH_BODIES:
+        helper = decode(image, head, size)
+        assert len(helper) == instruction_count and helper[-1].mnemonic == "ret"
+        observed_calls = {
+            insn.address: (insn.address + 5 + struct.unpack_from("<i", insn.bytes, 1)[0]) & 0xFFFFFFFF
+            for insn in helper if len(insn.bytes) == 5 and insn.bytes[0] == 0xE8
+        }
+        assert observed_calls == expected_calls, (hex(head), observed_calls)
+        observed_highlow = {at for at in highlow if head <= at < head + size}
+        assert observed_highlow == set(expected_data), (hex(head), observed_highlow)
+        for field, physical_target in expected_data.items():
+            assert struct.unpack("<I", original_bytes(image, field, 4))[0] == physical_target
+        print(f"PASS original Animation link search {head:#010x}: {size}/{size}B, "
+              f"{instruction_count}/{instruction_count} x86, {len(expected_calls)} native E8, "
+              f"{len(expected_data)} true PE HIGHLOW")
+
     # These exact names are real bytes embedded in this locked executable's
     # RTTI, not guesses made from C++ or an imported reference repository.
     for address, role in ((0x005B31B0, b"<lambda_2>"), (0x005B3200, b"<lambda_1>")):

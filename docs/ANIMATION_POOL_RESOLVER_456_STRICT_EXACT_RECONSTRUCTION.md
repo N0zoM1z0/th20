@@ -1,5 +1,7 @@
 # CORE/RECON-772 — entire 456-byte original Animation pool handle resolver, native strict exact
 
+> **Subsequent exact-child closure (CORE/RECON-774):** Both original 159B and 154B link search methods below this already exact parent are now whole strict exact from the same maintained C++ owner. See [the complete native list proof](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md). Counts below reflect the earlier CORE/RECON-772 checkpoint.
+
 **The entire original function at `0x0044CD00` is now byte exact.** Its
 maintained single C++ body lives in `src/AnimationPoolHandleResolve.cpp`.
 The Japanese TH20 v1.00a Steamless immutable comparison PE is attested by

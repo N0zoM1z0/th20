@@ -1210,3 +1210,5 @@ th20::AnimationHandle::retire,0x0044FCD0,function
 th20::AnimationPoolOwner::resolve_handle,0x0044CD00,function
 th20::SprtID::operator!=(const SprtID&),0x00449460,function
 th20::SprtID::operator==(const SprtID&),0x00449400,function
+th20::find_link_with_predicate,0x0044A500,function
+th20::AnimationLookupList::find_if,0x0044A5A0,function

@@ -6,14 +6,14 @@ provisional until each boundary is reconciled with exact target control flow.
 | Measure | Count |
 | --- | ---: |
 | Tracked 1.00a function candidates | 6,928 |
-| Origin/boundary review pending | 6,272 |
-| Confirmed authored functions | 577 |
+| Origin/boundary review pending | 6,270 |
+| Confirmed authored functions | 579 |
 | Classified exclusions | 79 |
-| Source-present mappings, all origins | 1,211 |
-| Source-present authored mappings | 570 |
-| Canonical exact functions | 566 |
-| Canonical exact authored bytes | 187,642 |
-| Exact / currently confirmed authored bytes | 89.62% |
+| Source-present mappings, all origins | 1,213 |
+| Source-present authored mappings | 572 |
+| Canonical exact functions | 568 |
+| Canonical exact authored bytes | 187,955 |
+| Exact / currently confirmed authored bytes | 89.64% |
 
 Exact totals count only functions whose configured MSVC x86 unit passes the
 canonical zero-difference comparator and is recorded consistently in both

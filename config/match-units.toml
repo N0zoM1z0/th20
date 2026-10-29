@@ -21015,3 +21015,40 @@ symbol = "??8SprtID@th20@@QBE_NABU01@@Z"
 target_address = 0x00449400
 size = 47
 relocations = []
+
+# CORE/RECON-774: complete original 159B Animation link predicate lookup.
+[units.animation_link_find_predicate_159]
+source = "src/AnimationPoolHandleResolve.cpp"
+object = "build/core772-canonical/AnimationPoolHandleResolve.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::find_link_with_predicate"]
+symbol = "?find_link_with_predicate@th20@@YIPAV?$IntrusiveLink@VAnimation@th20@@@1@PAV21@V?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@@Z"
+target_address = 0x0044A500
+size = 159
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?find_link_with_predicate@th20@@YIPAV?$IntrusiveLink@VAnimation@th20@@@1@PAV21@V?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@@Z", target = 0x0056844D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x43, type = "REL32", symbol = "??R?$_Func_class@_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@std@@QBE_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z", target = 0x00449630 },
+  { offset = 0x5F, type = "REL32", symbol = "??1?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@QAE@XZ", target = 0x00414400 },
+  { offset = 0x6C, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
+  { offset = 0x87, type = "REL32", symbol = "??1?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@QAE@XZ", target = 0x00414400 },
+]
+
+# CORE/RECON-774: complete original 154B Animation link predicate lookup.
+[units.animation_list_find_predicate_154]
+source = "src/AnimationPoolHandleResolve.cpp"
+object = "build/core772-canonical/AnimationPoolHandleResolve.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationLookupList::find_if"]
+symbol = "?find_if@AnimationLookupList@?A0xaa9a8330@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@3@V?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@@Z"
+target_address = 0x0044A5A0
+size = 154
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?find_if@AnimationLookupList@?A0xaa9a8330@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@3@V?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@@Z", target = 0x0056847D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x33, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
+  { offset = 0x3F, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
+  { offset = 0x53, type = "REL32", symbol = "??0?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@QAE@ABV01@@Z", target = 0x004140F0 },
+  { offset = 0x5B, type = "REL32", symbol = "?find_link_with_predicate@th20@@YIPAV?$IntrusiveLink@VAnimation@th20@@@1@PAV21@V?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@@Z", target = 0x0044A500 },
+  { offset = 0x82, type = "REL32", symbol = "??1?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@QAE@XZ", target = 0x00414400 },
+]

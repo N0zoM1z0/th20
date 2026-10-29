@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-773):** [live accepted
+**Current next-agent reading order (CORE/RECON-774):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,213 strict units, 566 authored exact whole functions,
-187,642 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,215 strict units, 568 authored exact whole functions,
+187,955 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original 159B +154B native Animation link predicate and list wrapper complete strict exact
+
+- [CORE/RECON-774 — original full 159B intrusive-link predicate walker and 154B list entry with native EH and 40B std::function value ABI](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md) — original original-PE **nine E8 + four true HIGHLOW** independently anchored; 159/159B/47 x86 and 154/154B/46 x86 strict zero differences. One existing 456B Animation pool resolver source/object changed, fully replayed together with two new strict units **3/3**, no shared header, no full replay. Game authored **568 methods /187,955B**, source present **1,213**, canonical **1,215** units in unchanged 249 providers. The 12,140B Bullet parent remains NONEXACT.
 
 ## Original whole 47-byte SprtID reference equality closes the live pool-lookup predicate
 

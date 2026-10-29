@@ -1202,8 +1202,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044A090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A3A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044A500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044A5A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044A500,authored,Animation,authored,high,"CORE/RECON-774; docs/ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md; original real intrusive-link/predicate game method, original E8s and SEH cookie, full pinned compiler whole-native exact"
+0x0044A5A0,authored,Animation,authored,high,"CORE/RECON-774; docs/ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md; original real intrusive-link/predicate game method, original E8s and SEH cookie, full pinned compiler whole-native exact"
 0x0044A640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A670,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x0044A6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
