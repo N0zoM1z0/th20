@@ -1,147 +1,125 @@
-# CORE/RECON-813 — whole original 1,163-byte /343-x86 quad renderer texture-stage state Boss strict exact
+# CORE/RECON-813 — complete original 1,163B D3D9 four-mode texture-stage state boss, strict native exact
 
-Original locked Japanese TH20 v1.00a Steamless PE SHA-256:
+Immutable Japanese TH20 v1.00a Steamless executable SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
-**The entire original game-owned `0x00446690` four-mode graphics texture-state
-machine is now 1,163/1,163 bytes, 343/343 native x86 instruction heads
-strictly exact.** The original after-return **1-byte NOP and four 4-byte
-switch entries are additionally 17/17 bytes exact**. Every one of the
-complete **54 independently PE-verified relocation fields** is preserved
-at the actual offset, with the true original destination and COFF symbol
-identity, not inferred by reverse-solving the under-comparison addresses.
+**The entire original game-owned `0x00446690` D3D9 texture-stage state machine
+is now strict whole-native exact** under the maintained method
+`AnimationQuadSubmitOwner::select_render_color_mode(std::uint8_t)` in
+`src/AnimationQuadBlendState.cpp`. This is a complete substantial game function,
+not a compiler/runtime helper and not a prefix or a source-only approximate
+match. The enclosing **3,159B** quad submission and **5,993B** Animation draw
+parent functions remain independently **SOURCE-PRESENT / NONEXACT**.
 
-## Native whole behavior, not a 25-byte padded C++ prefix
+## Original x86 truth, four real modes, and 54 physical call/data fields
 
-The genuine game renderer receiver is the already maintained
-`AnimationQuadSubmitOwner`, which is a declaration-only ABI view of the
-existing `AnimationPoolOwner` runtime object. The original function takes
-one `uint8_t` source mode, compares it with the first physical byte of
-its ECX receiver and, only when the mode changes, calls the existing strict
-**192-byte `AnimationPoolOwner::flush_draws`** at original `0x004455C0`
-*before* any D3D9 state changes. It then selects one of four native
-texture-stage mode paths, calls `process_graphics.get_device()` **six times
-per mode**, and immediately invokes the returned genuine D3D9
-`IDirect3DDevice9::SetTextureStageState` virtual method at vtable
-**`+0x10C`** for each of the following six state/value pairs. The first
-argument to every original call is texture stage 0.
+The real original function starts at **`0x00446690`** and ends its native
+`ret 4` at **`0x00446B18`**. It contains exactly **1,163 executable bytes /
+343 x86 instruction heads**, plus a real **one-byte alignment NOP** and a
+**16-byte direct 4-pointer switch table** at `0x00446B1C`. Original four
+code-pointer targets (all actual original instruction heads) are:
 
-| Original mode | ALPHAARG1 (5) | ALPHAARG2 (6) | COLORARG1 (2) | COLORARG2 (3) | ALPHAOP (4) | COLOROP (1) |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 0, and out-of-range default | 2 | 0 | 2 | 0 | 4 | 4 |
-| 1 | 2 | 3 | 2 | 3 | 4 | 4 |
-| 2 | 0 | 0 | 0 | 0 | 2 | 2 |
-| 3 | 2 | 0 | 2 | 0 | 3 | 4 |
+| Native mode | Original PE table field | Original branch target |
+| --- | --- | --- |
+| 0 | `0x00446B1C` | `0x004466CE` |
+| 1 | `0x00446B20` | `0x004467C4` |
+| 2 | `0x00446B24` | `0x004468DE` |
+| 3 | `0x00446B28` | `0x004469F8` |
 
-Once the full six-state path has completed, the original stores the new
-byte back to the first owner byte and performs the genuine original
-`ret 4`. It does **not** repeat D3D9 setup when the requested state equals
-the cached byte. These are observable gameplay renderer-state transitions,
-not individual generic D3D9 library functions; the entire owner method is
-correctly credited once as original authored-game code.
+The original first compares the incoming mode with the actual first
+byte of its ECX renderer-owner instance. An unchanged value skips the
+entire operation. On change it calls the already separate **192B
+strict-exact `AnimationPoolOwner::flush_draws()` at `0x004455C0`** before
+modifying device state. The main dispatch has an actual unsigned
+`cmp [ebp-8],3`, one true `ja` fallback, and one **absolute indirect x86
+`jmp [ecx*4+0x00446B1C]`**. After a selected state transition, it writes
+the new one-byte mode into the original receiver at `+0x00`.
 
-## The original PE's executable boundary and after-body real jump table
+All **24 actual D3D9 `SetTextureStageState`** calls are indirect
+through the original device's **vtable slot +`0x10C`**. For each mode,
+there are exactly six stage-zero operations, each preceded by a separate
+`Graphics::get_device()` **native `E8`**. Their actual stage-state
+operations are:
 
-The immutable executable starts at **`0x00446690`**, and its last
-complete instruction is the original `ret 4` at **`0x00446B18`**.
-The *entire native executable function body is exactly 1,163B*, ending
-just before the **single original `NOP` at `0x00446B1B`**. The four
-actual switch-table code pointers at original **`0x00446B1C..0x00446B2B`**
-are physically separate `.text` *data*, and every table element has its
-own genuine PE32 `IMAGE_REL_BASED_HIGHLOW` relocation:
+| State argument | Default/mode 0 | Mode 1 | Mode 2 | Mode 3 |
+| --- | ---: | ---: | ---: | ---: |
+| `D3DTSS_ALPHAARG1` | 2 | 2 | 0 | 2 |
+| `D3DTSS_ALPHAARG2` | 0 | 3 | 0 | 0 |
+| `D3DTSS_COLORARG1` | 2 | 2 | 0 | 2 |
+| `D3DTSS_COLORARG2` | 0 | 3 | 0 | 0 |
+| `D3DTSS_ALPHAOP` | 4 | 4 | 2 | 3 |
+| `D3DTSS_COLOROP` | 4 | 4 | 2 | 4 |
 
-| Original 32-bit PE field | Original physical target |
-| --- | --- |
-| `0x00446B1C` | `0x004466CE` — mode 0 |
-| `0x00446B20` | `0x004467C4` — mode 1 |
-| `0x00446B24` | `0x004468DE` — mode 2 |
-| `0x00446B28` | `0x004469F8` — mode 3 |
+The immutable original whole body contains **25 actual direct `E8`
+operands**: **one** call to `0x004455C0` and **24** calls to
+`0x00412730` (`Graphics::get_device()`). It also contains **29 genuine
+original PE32 `IMAGE_REL_BASED_HIGHLOW` fields** over the full
+**1,180-byte code+padding+table extent**: 24 original references to
+`process_graphics` **`0x005C4D40`**, one instruction-field pointer to
+the real four-way switch table **`0x00446B1C`**, plus all **four original
+PE-relocated switch target entries**. The 24 D3D9 `SetTextureStageState`
+virtual calls are not incorrectly counted as direct `E8` relocations.
+Original parent quad submission calls this physical method at native
+`0x0044015B`, without granting that enclosing 3,159-byte parent
+any new byte credit.
 
-The real x86 indirect jump at **`0x004466C7`** uses one more real
-in-function HIGHLOW field at **`0x004466CA`** and points to the actual
-switch-table **address** `0x00446B1C`. It guards unsigned mode indices
-`0..3` with `cmp index,3; ja default`, making default values outside
-that range use the mode-0 semantics. No pointer-table data is treated
-as extra native x86 instructions, no synthetic code tail is credited
-as a game function, and there is no 1,163-byte prefix-only comparison.
+`scripts/verify-animation-quad-blend-native.py` independently verifies all
+these facts from the locked original PE, `.reloc` directory and disassembled
+x86, not from our modern compiler or old Ghidra function names.
 
-**Whole original native reference census** (independently from the
-immutable original `.reloc` directory and E8 machine-code displacements):
+## The actual original C++ control-flow/codegen frontier
 
-- **25 real original E8/REL32:** 24 direct calls to the genuine original
-  `Graphics::get_device()` compatible original function `0x00412730`,
-  and one call to the previously exact 192B game draw-queue flush
-  `0x004455C0`. The original **24 virtual D3D9 calls** at `+0x10C`
-  are *indirect*, not additional E8 relocations.
-- **29 real original HIGHLOW/DIR32** across the complete 1,180B extent:
-  24 direct pointer references to the existing `process_graphics` global
-  `0x005C4D40`, one in-body table operand `0x004466CA →0x00446B1C`,
-  and four switch-table target entries listed above.
-- **54/54 original relocation fields across the full 1,180B original
-  code/NOP/data extent**, with zero wrong call/data role or target.
+Prior source hypotheses already had correct device-method behavior but
+were **NONEXACT**. When the source used a locally cached renderer-byte
+reference, pinned MSVC emitted extra receiver spills and a 1,192B COFF
+contribution. Even with the direct byte view, an ordinary `default:`
+followed by cases 1..3 produced a 1,176B non-table code contribution
+based on a sequence of three `cmp/je` branches, rather than the original
+four-entry x86 jump table.
 
-## The original MSVC source spelling and exact compiler extent
+An ordinary, semantically valid **explicit `case 0:` merged with
+`default:`**, paired with directly reading and writing the one-byte
+renderer owner state, made MSVC emit the original 4-way jump-table
+lowering. The whole resulting emitted **1,180B** contribution has exactly
+**1,163 executable bytes /343 real original x86 instructions**, followed
+by the same **one byte NOP and four original 32-bit jump table fields**.
+All 54 COFF relocation entries match the original *kind*, *physical
+offset*, *MSVC symbol*, and *independently original PE target*. Every
+other source byte matches. No NOP, hard-coded machine instruction, inline
+assembler, fake dead branch, patched binary or truncated prefix was used.
 
-The source in `src/AnimationQuadBlendState.cpp` is one entirely natural
-`void AnimationQuadSubmitOwner::select_render_color_mode(uint8_t)`
-implementation: a true direct byte comparison, natural guard/flush, one
-`switch` with explicit `case 0` and out-of-range `default`, 24 *real*
-repeated `process_graphics.get_device()->SetTextureStageState(...)`
-invocations using the official SDK enum names, and a genuine byte-state
-assignment on exit. No fake vtable, padding, inert compiler variable,
-assembly/NOP patch, PE patch or fabricated external call is involved.
+This includes original D3D9 state lifetimes and all 24 genuine repeated
+device getter calls: the C++ intentionally does not cache one device
+across the six separate native setters.
 
-The initial credible C++ body with a cached `uint8_t&` receiver and
-`case 1/2/3` plus `default` produced **1,188B** of compiler contribution,
-with the original switch lowered to a comparison chain instead of the
-original indexed jump. Independently testing natural source variants
-showed that directly reading the real owner byte removes the extra
-compiler reference temporary, and explicitly listing `case 0` beside
-`default` instructs **the same pinned MSVC x86 compiler** to generate the
-original four-entry direct dispatch table. The actual compiler
-contribution is **1,180B**: **1,163B executable /343 x86** followed
-by the same original **1B NOP and 16B table**.
+## Full canonical match, scope, and honest accounting
 
-The new canonical unit `animation_quad_blend_stage_boss_1163` records
-`size=1163`, **`compare_size=1180`** to include the *entire* original
-C++ compiler contribution, and **all 54 independently original-PE-verified
-relocation kind/offset/symbol/absolute-target identities**, including
-those four after-return HIGHLOW fields. Native pinned MSVC
-19.44.35211 i386 flags `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise
-/sdl /EHsc` compile one new
-`build/core813-canonical/AnimationQuadBlendState.obj` and matching
-compiler receipt. The strict full-original replay passes exactly:
+The pinned MSVC **19.44.35211 i386** `/Od /Ob0 /GS /Gy /Zl
+/arch:SSE2 /fp:precise /sdl /EHsc` cold compiles exactly one new
+translation unit `src/AnimationQuadBlendState.cpp`, with protected receipt,
+into `build/core813-canonical/AnimationQuadBlendState.obj`. The new unit
+`animation_quad_blend_stage_boss_1163` uses original `size = 1163` for
+**real game-owned executable code credit** and `compare_size = 1180` to
+also require **all 17 original padding/table data bytes and four table
+relocation fields** to match. Thus the original 17 trailing data bytes
+are not falsely credited as extra game instructions.
 
-    nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/AnimationQuadBlendState.cpp
-
-    animation_quad_blend_stage_boss_1163: exact
-      1163/1163 original coverage bytes,
-      1180/1180 original code + NOP + table compared bytes
-
-The independent source-blind `scripts/verify-animation-quad-blend-native.py`
-reads all original 343 i386 instructions, 24 virtual D3D9 call argument
-triplets, 25 original physical E8 sites and destinations, 29 physical
-PE HIGHLOW sites and target values, plus all four original switch entries,
-without using the compiled C++ or prior Ghidra decompilation as an oracle.
-It is a separate evidence gate, not a substitute for canonical replay:
-
+    scripts/repo-python scripts/verify-target.py
     scripts/repo-python scripts/verify-animation-quad-blend-native.py
+    nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/AnimationQuadBlendState.cpp
+    scripts/repo-python scripts/validate-tracking.py --require-target
 
-## Local impact, exact code accounting and large parent boundary
+Strict acceptance: **1/1 whole-native function**, **1,163/1,163 code
+bytes**, **1,180/1,180 comparison bytes**, **343/343 x86 heads**,
+**25/25 original E8** and **29/29 genuine PE HIGHLOW fields**. No
+pre-existing canonical source/header was changed, so the old protected
+strict-unit replay closure is **zero**; exactly one new provider/object
+was compiled. There was **no unfiltered all-repository cold replay**.
 
-This checkpoint edits **only one new source/provider** plus tracking,
-original-PE audit and documentation. The already accepted shared
-`AnimationQuadSubmitOwner.hpp`, the five-mode wrapper unit, texture
-lookup and 352B append retain their original source/header bytes and
-compiler receipts. Existing affected strict units = **zero**; one new
-1163B native unit is cold-compiled/replayed. No all-graph cold replay.
-
-Author-owned exact original game coverage advances **587 →588 complete
-distinct game functions**, **189,624 →190,787 original `.text` bytes**;
-source mappings **1,236 →1,237**, native strict units **1,236 →1,237**,
-protected canonical object/receipt providers **257 →258**. The original
-3,159B renderer quad submit Boss **calls this entire strict-exact state
-method once**, as well as the separately exact 352B append and real
-45B/35B color math, but its own parent still produces a different
-3,796B/973-instruction C++ body from the original 3,159B/763 x86.
-The 5,993B Animation draw and 12,140B Bullet command parent bosses
-also remain separately NONEXACT, not recredited by this exact child.
+Original authored game exact advances from **587 distinct physical
+functions /189,624 nonoverlapping `.text` bytes** to **588 /190,787B**;
+source-present methods **1,236 →1,237**, configured native strict units
+**1,236 →1,237**, protected distinct compiler object/receipt providers
+**257 →258**. The original 3,159B renderer parent retains its previously
+verified 40/40 game E8 source-role graph, but **remains NONEXACT**;
+the unrelated 5,993B Animation draw dispatcher, 12,140B Bullet command,
+41,967B Enemy ECL and 39,470B Animation VM also remain not whole exact.

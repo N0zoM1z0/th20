@@ -1,4 +1,5 @@
 # CORE/RECON-808 — all forty game-call roles recovered in maintained 3,159B quad submission Boss C++ (NONEXACT)
+> **Subsequent CORE/RECON-813:** Original 1,163B/343-x86 D3D9 texture-stage state machine called by this renderer at `0x0044015B` is now **whole-native exact**, including all 54 original E8/HIGHLOW COFF fields and the full original 4-entry jump table. [Whole original state machine proof](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md). This 3,159B parent remains independently NONEXACT; counts below are historical.
 
 > **Subsequent CORE/RECON-813:** The original separate 1,163B quad-renderer four-mode D3D9 state child at 0x00446690 is now independently whole strict native exact, including original after-RET four-pointer table and 54 PE/E8 fields. See [full 1,163B native exact proof](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md). This does not make the 3,159B parent exact; counts below describe the earlier CORE/RECON-808 snapshot.
 
