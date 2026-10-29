@@ -1,5 +1,7 @@
 # CORE/RECON-673 — complete Player main frame: native two-focus results and 33-slot history lifetimes
 
+**Later [CORE/RECON-704](PLAYER_MAIN_NATIVE_SCRIPT_INDICES_AND_OPTION_LOOPS_3111.md):** immutable native original script slots [1..4], cached begin/end per option group and one-value history copy now yield **3,114B/783 C++ instructions, 783/783 native mnemonic kinds in order**. Original 3,111B parent remains NONEXACT; the measurement below is historical.
+
 **Later [CORE/RECON-699](PLAYER_MAIN_3111_NATIVE_XY_ACCUMULATION_ORDER.md) update:** the maintained nonexact parent now emits **3,077B/777 instructions**, original ordered mnemonic alignment **766/783**, by restoring original X-then-Y residual update order. The 3,093B measurement below is the older pre-699 checkpoint, not current exactness.
 
 **The complete original 3,111-byte, 783-instruction Player::update_main_frame at 0x004F9C30 remains NONEXACT.**

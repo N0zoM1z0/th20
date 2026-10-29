@@ -204,43 +204,55 @@ std::int32_t Player::update_main_frame() {
     }
 
 finish_normal_movement:
-    // The native frame selects animation scripts as X direction crosses zero,
-    // but keeps its previous direction in 0x674 for each transition.
+    // Original native four script lookups at Player+0x22A0 index the
+    // SECOND THROUGH FIFTH entries: +4,+8,+12,+16 bytes. The older
+    // [0..3] source was an actual off-by-one animation behavior error.
+    // Keep the previous X direction in +0x674 for each transition.
     if (dx < 0 && static_cast<std::int32_t>(field_674) >= 0)
-        animation_file->bind_animation(&animation, animation_scripts[0], nullptr);
-    else if (dx == 0 && static_cast<std::int32_t>(field_674) < 0)
         animation_file->bind_animation(&animation, animation_scripts[1], nullptr);
-    if (dx > 0 && static_cast<std::int32_t>(field_674) <= 0)
+    else if (dx == 0 && static_cast<std::int32_t>(field_674) < 0)
         animation_file->bind_animation(&animation, animation_scripts[2], nullptr);
-    else if (dx == 0 && static_cast<std::int32_t>(field_674) > 0)
+    if (dx > 0 && static_cast<std::int32_t>(field_674) <= 0)
         animation_file->bind_animation(&animation, animation_scripts[3], nullptr);
+    else if (dx == 0 && static_cast<std::int32_t>(field_674) > 0)
+        animation_file->bind_animation(&animation, animation_scripts[4], nullptr);
 
     field_674 = static_cast<std::uint32_t>(dx);
     field_678 = static_cast<std::uint32_t>(dy);
     apply_move_delta(dx, dy);
     if (handle_60c.is_valid()) handle_60c.set_position_forward(position_ref());
 
-    // Reverse shift the original 33-slot fixed-position history only when
-    // actual horizontal/vertical motion was requested.
-    // Original tests dy before dx (+0xA2D..+0xA37). The 33-slot
-    // history source index consumes the size() return immediately;
-    // a named n local incorrectly lengthened its stack lifetime.
+    // The original tests dy before dx, and each of the 33 history slots
+    // shifts one element at a time. The RHS element is fully loaded into
+    // an eight-byte value before calling the destination accessor.
+    // Natural direct struct assignment gives those native value lifetimes
+    // without copying an additional temporary into another stack slot.
     if (dy || dx) {
         for (std::int32_t index = 0;
              index < static_cast<std::int32_t>(points_20fc.size()) - 1; ++index) {
-            const IntPoint saved = points_20fc.at(
-                static_cast<std::int32_t>(points_20fc.size()) - 2 - index);
-            points_20fc.at(static_cast<std::int32_t>(points_20fc.size()) - 1 - index) = saved;
+            points_20fc.at(static_cast<std::int32_t>(points_20fc.size()) - 1 - index) =
+                points_20fc.at(static_cast<std::int32_t>(points_20fc.size()) - 2 - index);
         }
         points_20fc.at(0) = fixed_position_ref();
     }
 
     if (((entity_flags.bits >> 1) & 1u) != 0) ++field_20e8;
-    for (auto* option = options.begin(); option != options.end(); ++option)
-        update_option_frame(option);
-    for (auto* option = secondary_options.begin();
-         option != secondary_options.end(); ++option)
-        update_option_frame(option);
+    // Original 0x004FA78D/0x004FA798 call begin/end ONCE, on one
+    // saved receiver, then compare the cached pointers during iteration.
+    // A copied per-frame option pointer is the original call-argument
+    // local; recomputing end() inside the loop is not the native ABI.
+    auto& primary_group = options;
+    for (auto* primary_it = primary_group.begin(), *primary_end = primary_group.end();
+         primary_it != primary_end; ++primary_it) {
+        PlayerOption* const primary_current = primary_it;
+        update_option_frame(primary_current);
+    }
+    auto& secondary_group = secondary_options;
+    for (auto* secondary_it = secondary_group.begin(), *secondary_end = secondary_group.end();
+         secondary_it != secondary_end; ++secondary_it) {
+        PlayerOption* const secondary_current = secondary_it;
+        update_option_frame(secondary_current);
+    }
     if (static_cast<std::int32_t>(field_20e8) >= 30) field_680 = 0;
     return 0;
 }

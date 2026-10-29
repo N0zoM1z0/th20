@@ -1,5 +1,7 @@
 # CORE/RECON-699 — original 3,111B Player main-frame motion accumulation order
 
+**Later [CORE/RECON-704](PLAYER_MAIN_NATIVE_SCRIPT_INDICES_AND_OPTION_LOOPS_3111.md):** immutable native original script slots [1..4], cached begin/end per option group and one-value history copy now yield **3,114B/783 C++ instructions, 783/783 native mnemonic kinds in order**. Original 3,111B parent remains NONEXACT; the measurement below is historical.
+
 **Whole original `Player::update_main_frame` at 0x004F9C30 is still NONEXACT**. The immutable Japanese TH20 v1.00a Steamless original has **3,111 bytes /783 x86 instructions**, target SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`. The maintained complete game owner is `src/PlayerMainFrame.cpp`. This correction is measured across that entire large parent and receives zero game-authored exact byte credit until the entire original method matches.
 
 ## Original source-order evidence from actual native machine code
