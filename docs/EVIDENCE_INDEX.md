@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-752):** [live accepted
+**Current next-agent reading order (CORE/RECON-753):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
-[whole Bullet 203/210 original E8 boundary](BULLET_12140_E8_203_7_SOURCE_CLOSURE.md)
+[whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,207 strict units, 560 authored exact whole functions,
-186,730 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,210 strict units, 563 authored exact whole functions,
+187,092 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Complete 282B original Animation retirement subtree and five newly closed Bullet helpers
+
+- [CORE/RECON-753 — 282B complete recursive Animation subtree retirement, 43B handle wrapper and 37B AnimationHandle retire](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md) — real 16 original PE-attested recursive relocs plus four upstream E8/HIGHLOW; three new whole native methods, **362/362 original bytes**. Changed header's exactly 15 old provider/31 strict unit include-closure plus 1 new object/3 units cold-replayed **34/34**, with two independently PE-proven MSVC-private `$SG` label shifts; no full cold replay. Alongside [CORE/RECON-752 four complete Animation flag/interrupt children (85B)](BULLET_COMMAND_ANIMATION_HELPERS_EXACT_RECONSTRUCTION.md), entire 12,140B Bullet command original E8 mapping increases **203 to 208 /210** (the remaining two are compiler runtime only). The 12,140B parent is **NONEXACT**. Current game authored coverage **563 /187,092 bytes**, not a byte count for the parent.
 
 ## Original nine game-owned PBG, Fog, Geometry, Player-shot, Session and Graphics methods, 1,686 new exact bytes
 

@@ -1203,3 +1203,6 @@ th20::set_animation_flag_byte_01_zero
 th20::set_animation_flag_byte_01_one
 th20::set_animation_flag_byte_01_two
 th20::interrupt_animation_mode2
+th20::AnimationPoolOwner::mark_animation_tree_for_retirement
+th20::AnimationPoolOwner::retire_handle
+th20::AnimationHandle::retire

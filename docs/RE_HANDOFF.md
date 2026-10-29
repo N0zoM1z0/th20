@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-752.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-753.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -14,9 +14,9 @@ NONEXACT labels are not current acceptance facts.**
 | Required SHA-256 | a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897 |
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
-| Source-present mapped methods | **1,205** across game, compiler and STL/library |
-| Complete native strict units | **1,207**, supplied by **246** distinct canonical MSVC objects with **246** matching receipts |
-| **Original authored-game whole-function exact** | **560 distinct physical game functions /186,730 original .text bytes** |
+| Source-present mapped methods | **1,208** across game, compiler and STL/library |
+| Complete native strict units | **1,210**, supplied by **247** distinct canonical MSVC objects with **247** matching receipts |
+| **Original authored-game whole-function exact** | **563 distinct physical game functions /187,092 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -50,7 +50,7 @@ although the 12,140B Bullet command parent which it calls remains NONEXACT.
 
 | Priority and immutable original head | Current evidence and next task |
 | --- | --- |
-| **1. Bullet command Boss 0x0047DCF0, 12,140B /2,490 x86** | **Parent remains source-absent and NONEXACT.** Fresh whole-native audit: **210 E8** calls, **207 now have complete strict canonical child units**, **three** targets still unsourced. The original three 21B Animation+0x499 flag setters (0/1/2), plus 22B `Animation::interrupt(2)` forwarding wrapper, are newly 4/4 strict exact (**85B**) from one new C++ source/object. Remaining game child: **37B AnimationHandle::retire at 0x0044FCD0**, which invokes as-yet unsourced 43B pool-owner wrapper 0x0044FCA0; two other gaps are compiler helpers (14B security cookie /31B signed shift). Original three switch tables contain **34+8+11 real code pointers /53 PE HIGHLOW** and 38 in-body HIGHLOW. Next: complete handle retirement and the real 34-case main C++ dispatcher, not small-helper-only. [New exact helper proof](BULLET_COMMAND_ANIMATION_HELPERS_EXACT_RECONSTRUCTION.md), [live original call/switch verifier](../scripts/verify-bullet-command-call-coverage.py), [historical 203/210 audit](BULLET_12140_E8_203_7_SOURCE_CLOSURE.md). |
+| **1. Bullet command Boss 0x0047DCF0, 12,140B /2,490 x86** | **Parent source-absent and NONEXACT.** Full original 210 E8 call audit now verifies **208/210 original direct-call targets have complete native exact child source**. Both new batches added 4 whole original Animation flag/interrupt helpers (85B) plus whole **282B recursive Animation retire subtree**, **43B pool handle release** and **37B AnimationHandle retirement**, all **7/7** new methods exact (**447 game bytes**). Remaining **two** original E8 gaps are the compiler-runtime-only 14B `__security_check_cookie` and 31B `__allshl`, not missing game logic. Three original main/nested switch tables still have **34+8+11 pointers /53 original PE HIGHLOW** and 38 in-function HIGHLOW. **Main 34-case/8-case/11-case command dispatcher itself still must be reconstructed and matched.** [New recursive retire proof](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md), [four helper proof](BULLET_COMMAND_ANIMATION_HELPERS_EXACT_RECONSTRUCTION.md), [whole native call/switch verifier](../scripts/verify-bullet-command-call-coverage.py). |
 | **2. Player main 0x004F9C30, 3,111B /783 x86** | Source present, **3,114B/783** under MSVC, 783/783 mnemonic order, 67 E8 /37 whole-frame data roles, **NONEXACT**. Seven differing ADD register encodings account for the **net +3B**, but other register/stack/branch fields remain different. Next: natural C++ temporary/receiver lifetimes. [Native operand proof](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [72B genuine 9x2 data table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
 | **3. Player movement 0x004FFA10, 555B** | Source present, **561B/136 vs 555B/135**, one excess 6B SSE spill; **NONEXACT**. Two world-coordinate denominators already correctly refer to real native_128. Next: correct compiler SSE value lifetime, not fabricated register hints. [Original data and code frontier](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
 | **4. Bullet draw group 0x0047DB70, 273B** | Source present, about **283B/84 vs273B/82**, excess SSE offset spill; **NONEXACT**. [Full method study](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |

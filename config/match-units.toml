@@ -17829,7 +17829,7 @@ relocations = [
   { offset = 0x7F, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x90, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
   { offset = 0x97, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
-  { offset = 0xC0, type = "DIR32", symbol = "$SG183133", target = 0x0056FD14 },
+  { offset = 0xC0, type = "DIR32", symbol = "$SG183137", target = 0x0056FD14 },
   { offset = 0xCC, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
   { offset = 0xF0, type = "REL32", symbol = "?store_cancel_handle@BulletController@th20@@QAEXHI@Z", target = 0x00486390 },
   { offset = 0x110, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
@@ -20387,7 +20387,7 @@ relocations = [
   { offset = 0xC3, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXPAVAnimation@2@@Z", target = 0x44a670 },
   { offset = 0xD9, type = "REL32", symbol = "??AAnimationChildLinks@th20@@QAEAAV?$IntrusiveLink@VAnimation@th20@@@1@H@Z", target = 0x4494b0 },
   { offset = 0xE8, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXPAVAnimation@2@@Z", target = 0x44a670 },
-  { offset = 0xF4, type = "DIR32", symbol = "$SG79268", target = 0x56e5bc },
+  { offset = 0xF4, type = "DIR32", symbol = "$SG79272", target = 0x56e5bc },
   { offset = 0xFA, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x5b8894 },
   { offset = 0xFF, type = "REL32", symbol = "??$allocate_object@VAnimation@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVAnimation@1@PBD@Z", target = 0x447800 },
   { offset = 0x10A, type = "REL32", symbol = "?reset@Animation@th20@@QAEXXZ", target = 0x4299d0 },
@@ -20904,4 +20904,60 @@ target_address = 0x00486330
 size = 22
 relocations = [
   { offset = 0xD, type = "REL32", symbol = "?interrupt@Animation@th20@@QAEXH@Z", target = 0x004388F0 },
+]
+
+# CORE/RECON-753: complete original 282B Animation retirement method.
+[units.animation_retire_tree_282]
+source = "src/AnimationHandleRetire.cpp"
+object = "build/core753-canonical/AnimationHandleRetire.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationPoolOwner::mark_animation_tree_for_retirement"]
+symbol = "?mark_animation_tree_for_retirement@AnimationPoolOwner@th20@@QAEXPAVAnimation@2@@Z"
+target_address = 0x0044FB80
+size = 282
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?mark_animation_tree_for_retirement@AnimationPoolOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x0056863D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x55, type = "REL32", symbol = "??AAnimationChildLinks@th20@@QAEAAV?$IntrusiveLink@VAnimation@th20@@@1@H@Z", target = 0x004494B0 },
+  { offset = 0x5C, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
+  { offset = 0x7A, type = "REL32", symbol = "??AAnimationChildLinks@th20@@QAEAAV?$IntrusiveLink@VAnimation@th20@@@1@H@Z", target = 0x004494B0 },
+  { offset = 0x81, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
+  { offset = 0x8E, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x9A, type = "REL32", symbol = "?begin@?$IntrusiveLink@VAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x0044B9F0 },
+  { offset = 0xA9, type = "REL32", symbol = "?end@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0xB6, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0xC3, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0xD2, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0xDD, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xE8, type = "REL32", symbol = "?mark_animation_tree_for_retirement@AnimationPoolOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x0044FB80 },
+  { offset = 0xFA, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0x110, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-753: complete original 43B Animation retirement method.
+[units.animation_retire_owner_43]
+source = "src/AnimationHandleRetire.cpp"
+object = "build/core753-canonical/AnimationHandleRetire.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationPoolOwner::retire_handle"]
+symbol = "?retire_handle@AnimationPoolOwner@th20@@QAEXI@Z"
+target_address = 0x0044FCA0
+size = 43
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@2@I@Z", target = 0x0044CD00 },
+  { offset = 0x20, type = "REL32", symbol = "?mark_animation_tree_for_retirement@AnimationPoolOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x0044FB80 },
+]
+
+# CORE/RECON-753: complete original 37B Animation retirement method.
+[units.animation_retire_handle_37]
+source = "src/AnimationHandleRetire.cpp"
+object = "build/core753-canonical/AnimationHandleRetire.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationHandle::retire"]
+symbol = "?retire@AnimationHandle@th20@@QAEXXZ"
+target_address = 0x0044FCD0
+size = 37
+relocations = [
+  { offset = 0xF, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x14, type = "REL32", symbol = "?retire_handle@AnimationPoolOwner@th20@@QAEXI@Z", target = 0x0044FCA0 },
 ]

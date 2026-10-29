@@ -559,3 +559,6 @@ address,name,size,status,match_percent,unit,evidence
 0x0045E5B0,th20::set_animation_flag_byte_01_one,21,matching,100.00,bullet_command_anm_mode1,CORE/RECON-752; docs/BULLET_COMMAND_ANIMATION_HELPERS_EXACT_RECONSTRUCTION.md; original 21B full strict native function
 0x004865D0,th20::set_animation_flag_byte_01_two,21,matching,100.00,bullet_command_anm_mode2,CORE/RECON-752; docs/BULLET_COMMAND_ANIMATION_HELPERS_EXACT_RECONSTRUCTION.md; original 21B full strict native function
 0x00486330,th20::interrupt_animation_mode2,22,matching,100.00,bullet_command_anm_interrupt2,CORE/RECON-752; docs/BULLET_COMMAND_ANIMATION_HELPERS_EXACT_RECONSTRUCTION.md; original 22B full strict native function
+0x0044FB80,th20::AnimationPoolOwner::mark_animation_tree_for_retirement,282,matching,100.00,animation_retire_tree_282,CORE/RECON-753; docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md; complete native strict 282/282 B
+0x0044FCA0,th20::AnimationPoolOwner::retire_handle,43,matching,100.00,animation_retire_owner_43,CORE/RECON-753; docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md; complete native strict 43/43 B
+0x0044FCD0,th20::AnimationHandle::retire,37,matching,100.00,animation_retire_handle_37,CORE/RECON-753; docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md; complete native strict 37/37 B
