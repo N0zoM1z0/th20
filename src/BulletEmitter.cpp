@@ -1,8 +1,9 @@
-// Maintained whole-function source frontier for original 0x004818E0 Bullet
-// emitter (3735B code + 97B original NOP and two native jump tables).
-// NONEXACT: the actual original 935-instruction body plus 24 native switch
-// table relocs still differ from this compiled C++20 candidate. Preserve
-// authentic Bullet/shot/animation owners, not fabricated Renderer storage.
+// Whole original Bullet emitter at 0x004818E0: 3735B/935 x86 game-owned
+// method, one real post-body NOP and two 13/11-entry native switch tables.
+// Canonical strict exact: 3735/3735B original method and 3832/3832B
+// complete original contribution including 60 E8/69 HIGHLOW fields.
+// Preserve authentic Bullet/shot/animation owners, not fabricated storage.
+// The enclosing 12140B Bullet command dispatcher remains NONEXACT.
 // The original source depended on a legacy MSVC STL specialization: its
 // move conversion is a REAL noninlined 8B helper at 0x0040B280 and its
 // shared_ptr move assignment a real 63B method at 0x0047C530. Both are

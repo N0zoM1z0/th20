@@ -93,6 +93,37 @@ includes all 3,735 original code bytes, one original NOP, all 24
 switch target words, compiler code after the nested two-level switch,
 early return/EH setup, original real call sites and epilogue.
 
+## Fresh independent source and destination cross-checks
+
+CORE/VERIFY-646 separately reexamined the accepted source and immutable
+original PE rather than trusting earlier report text. The native EH
+handler destination was derived **without using the emitter's own
+prologue relocated address**: an original .text scan returned four
+similarly prefixed handlers at 0x0056918D, 0x0056A4B0, 0x0056A50D
+and 0x0056AFF0. Only **0x0056918D** uses the second native cookie
+slot [edx-4], two calls to 0x005429EE and the original 0x00544722
+dispatcher tail. The other similar handlers are not interchangeable.
+
+The original scalar 4.0f stored at 0x0056C8E0 is corroborated by
+**65 original code references outside this emitter** and at least one
+previously accepted canonical unit using this actual value. The
+native Z default at 0x0056EF28 is file-backed 0.1f and has
+**14 other original code references**. The original eight-value
+cancel-script lookup is **unique in original .data** and has
+an independent original function reference at 0x0047F4C9.
+The original Bullet animation callback at 0x0047D580 is also
+used by original function 0x0047F30B.
+
+These are independently located producer/consumer and byte-level
+checks of especially easy-to-confuse relocation identities, *before*
+the strict comparator checks its original fields. The source
+contains the genuine literal 4.0f correction; it is not just
+an entry in an exactness manifest.
+
+Private reproducible evidence:
+.analysis/core646-emitter-independent-anchor-crosschecks.py and
+.analysis/core646-emitter-independent-anchor-crosschecks.json.
+
 ## Actual locked canonical exact admission and scoped replay
 
 Canonical unit: **bullet_emitter_whole_3735** in config/match-units.toml.
