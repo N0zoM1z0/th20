@@ -1,5 +1,23 @@
 # CORE/EXACT-563 and CORE/RECON-563 — complete original Bullet style script getter and four recovered 3,735B emitter game calls
 
+**Later CORE/RECON-571 current whole-boss status:** The complete
+original 3,735-byte Bullet emitter remains **NONEXACT** but its real
+maintained C++ was subsequently corrected for the original
+`Context::bullet_controller()->file` child-Animation ownership path,
+true game `geometry::norm_xy` and `scalar_math::arctangent` calls,
+original `scalar_math::absolute(sine)` wave amplitude, additive
+heading, and **`Vector3::operator-=` instead of +=**. The opcode-1
+command now does **three independent original pmr::vector index
+E8 calls and signed 16-bit `operand_10` reads**, rather than caching
+one 32-bit value. [Complete original immutable PE gameplay evidence](BULLET_EMITTER_3735_COMMAND_AND_MATH_GAMEPLAY_CORRECTION.md).
+Current full compiled C++ emits **3,628B/919 instructions with 828/935
+original ordered mnemonics aligned**, and **60 candidate E8 vs 60
+original E8 by count only**; original legacy STL move E8 and bytes
+remain mismatched. Older 3,516B and 3,561B nonexact compiler
+checkpoints below are historical, not current. No original parent
+byte credit, public header edit or global cold replay in this pass.
+
+
 Immutable original Japanese TH20 v1.00a Steamless executable:
 `resources/th20.exe`, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

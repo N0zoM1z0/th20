@@ -1,5 +1,23 @@
 # CORE/RECON-514 — complete 3,735-byte Bullet emitter boss in maintained C++
 
+**Later CORE/RECON-571 current whole-boss status:** The complete
+original 3,735-byte Bullet emitter remains **NONEXACT** but its real
+maintained C++ was subsequently corrected for the original
+`Context::bullet_controller()->file` child-Animation ownership path,
+true game `geometry::norm_xy` and `scalar_math::arctangent` calls,
+original `scalar_math::absolute(sine)` wave amplitude, additive
+heading, and **`Vector3::operator-=` instead of +=**. The opcode-1
+command now does **three independent original pmr::vector index
+E8 calls and signed 16-bit `operand_10` reads**, rather than caching
+one 32-bit value. [Complete original immutable PE gameplay evidence](BULLET_EMITTER_3735_COMMAND_AND_MATH_GAMEPLAY_CORRECTION.md).
+Current full compiled C++ emits **3,628B/919 instructions with 828/935
+original ordered mnemonics aligned**, and **60 candidate E8 vs 60
+original E8 by count only**; original legacy STL move E8 and bytes
+remain mismatched. Older 3,516B and 3,561B nonexact compiler
+checkpoints below are historical, not current. No original parent
+byte credit, public header edit or global cold replay in this pass.
+
+
 **Later CORE/EXACT-563 entire-parent correction:** The maintained
 3,735B Bullet emitter now restores **four actual original game E8 calls**:
 `0x00482252 -> 0x004299D0` (Animation reset),

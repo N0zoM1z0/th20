@@ -108,14 +108,19 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         heading=circle_angle;
         const float a=scalar_math::cosine(circle_angle)*shot.speed;
         const float b=scalar_math::sine(circle_angle)*shot.speed_step;
-        speed=std::hypot(a,b);
-        heading=std::atan2(b,a)+shot.angle;
+        // Original 0x00481F45 and 0x00481F66 directly call the custom
+        // game XY-norm and arctangent functions, NOT CRT hypot/atan2.
+        speed=geometry::norm_xy(a,b);
+        heading=scalar_math::arctangent(b,a)+shot.angle;
         break;
       }
       case 12: {
         float circle_angle=(static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count)+native_pi/static_cast<float>(shot.count);
-        heading=circle_angle+shot.angle;
-        const float value=scalar_math::sine(circle_angle);
+        // Original +0x1FDD adds the previous heading, not an overwrite.
+        heading+=circle_angle+shot.angle;
+        // Original 0x00481FF2 sine -> 0x00481FFA absolute; omitting abs
+        // changes the actual wave/amplitude for negative sine values.
+        const float value=scalar_math::absolute(scalar_math::sine(circle_angle));
         speed=(native_one-value*shot.speed_step)*speed;
         break;
       }
@@ -165,7 +170,10 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->animation->base.flags.layer_mode=1;
     BulletStyle& style=bullet_styles[shot.type];
     if (style.child_script!=0) {
-        bullet->animation_handle=file->spawn(nullptr,style.child_script,bullet->position,0.0f,-1,nullptr);
+        // Original 0x00482310 calls Context::bullet_controller() (the
+        // shared physical 0x0040C300 getter), then loads that owner's
+        // +0x286D8C file for the child; not this controller's file.
+        bullet->animation_handle=context->bullet_controller()->file->spawn(nullptr,style.child_script,bullet->position,0.0f,-1,nullptr);
     }
     bullet->style=&style;
     bullet->color=0xffd08080u;
@@ -194,11 +202,18 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->field_38=metadata_source->field_48;
     if (bullet->field_38<metadata_source->commands.size()) {
         if (metadata_source->commands[bullet->field_38].opcode==1) {
-            const BulletCommand& command=metadata_source->commands[bullet->field_38];
-            if (command.operand_10!=1)
-                bullet->animation->interrupt(command.operand_10+7);
+            // Original native 0x004825EC and 0x0048261F make TWO
+            // additional, separate pmr::vector::operator[] calls after
+            // testing opcode at 0x004825C4. The opcode-1 operand at +0x10
+            // is a genuine signed 16-bit ECL event ID (MOVSX WORD), not
+            // the 32-bit view used for other BulletCommand opcodes.
+            if (static_cast<std::int16_t>(metadata_source->commands[bullet->field_38].operand_10)!=1)
+                bullet->animation->interrupt(
+                    static_cast<std::int16_t>(metadata_source->commands[bullet->field_38].operand_10)+7);
             bullet->state=2;
-            bullet->position+=bullet->velocity*2.0f;
+            // Original 0x00482681 calls Vector3::operator-=, not +=:
+            // native first-command advance moves back two velocity steps.
+            bullet->position-=bullet->velocity*2.0f;
             ++bullet->field_38;
         } else bullet->animation->interrupt(2);
     } else bullet->animation->interrupt(2);
