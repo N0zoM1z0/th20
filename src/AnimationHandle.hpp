@@ -26,6 +26,11 @@ struct AnimationHandle {
     void interrupt_offset_7(std::int32_t event);
     void retire();
     bool operator!=(std::uint32_t input) const;
+    // Native Player caller observes genuine word equality. The complete
+    // 45-byte body is byte-identical to the independently accepted
+    // EffectAnimationHandle equality (possible original COMDAT folding);
+    // no second physical original body is credited.
+    bool operator==(std::uint32_t input) const;
     void set_position(const Vector3& position);
 };
 

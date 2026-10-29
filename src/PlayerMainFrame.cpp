@@ -134,7 +134,10 @@ std::int32_t Player::update_main_frame() {
     dx = native_player_direction_table[field_67c].x;
     dy = native_player_direction_table[field_67c].y;
     if (focused_mode()) {
-        if (!(handle_60c != std::uint32_t{0})) {
+        // Native Player+0x60C is constructed as a real AnimationHandle.
+        // Its equality call has the exact 45-byte original physical code
+        // also used by EffectAnimationHandle::matches_value at 0x00449430.
+        if (handle_60c == std::uint32_t{0}) {
             AnimationFile* effect_file = context->effect_info()->animation_file(0);
             handle_60c = effect_file->spawn("effect", 19, -1, nullptr);
         }

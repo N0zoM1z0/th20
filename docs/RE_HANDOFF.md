@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/EXACT-645.** This file is a
+**Last reconciled: 2026-10-29, CORE/RECON-663.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -60,7 +60,7 @@ that entire parent is reconstructed.
 
 | Original head | Real whole original | Current evidence / most useful next work |
 | --- | --- | --- |
-| `0x004F9C30` Player main frame | **3,111B, 783 x86** | Complete [maintained C++](../src/PlayerMainFrame.cpp) now emits **3,110B/784 x86, 758/783 original mnemonic kinds aligned** (was 3,254B/808, 733/783). [Independent original native input/Timer/signed speed proof](PLAYER_MAIN_FRAME_3111_INPUT_AND_SIGNED_SPEED_NATIVE_FRONTIER.md) restores eight short-circuit mask checks, four genuine signed JL speed branches and the original Timer call/EH boundary. 67 E8/37 HIGHLOW agree with source by count only. 60 confirmed correct E8 callees, 1 known incorrect EffectAnimationHandle equality ABI, six unresolved folded identities; **NONEXACT**, zero parent credit. |
+| `0x004F9C30` Player main frame | **3,111B, 783 x86** | Complete [maintained C++](../src/PlayerMainFrame.cpp) now emits **3,110B/784 x86, 759/783 original mnemonic kinds aligned** (was 3,254B/808, 733/783). [Native input/Timer/signed speed](PLAYER_MAIN_FRAME_3111_INPUT_AND_SIGNED_SPEED_NATIVE_FRONTIER.md) restores eight input checks and four signed JL speed branches. [Typed Player handle equality](PLAYER_ANIMATION_HANDLE_TYPED_EQUALITY_NATIVE_FRONTIER.md) reproduces the entire 45B original physical equality at 0x00449430 on a real AnimationHandle, without an invalid alias cast or duplicate byte credit; **61 known correct real callee identities, 0 known wrong, six roles under investigation**. Original 67 E8/37 HIGHLOW and source 67/37 agree by count only. Still **NONEXACT**, no parent credit; all 486 previously accepted header-affected units freshly replayed exact. |
 | `0x004FFA10` Player movement | **555B, 135 x86** | [Complete source](../src/PlayerMovement.cpp) emits **561B /136**, all original mnemonic kinds but one unwanted 6B SSE spill before `cvttss2si esi,xmm0`; not fixed by `/fp` changes or SSE intrinsics. [Full immutable PE history](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md). **NONEXACT**. |
 | `0x0047DB70` Bullet drawing group | **273B** | [Complete source and extra SSE spill frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md); compiler currently emits ~283B. **NONEXACT**. |
 | `0x004A4190` Enemy mesh | **1,649B** | [Whole C++ owner and original transient lifetime](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md); existing source is nonexact, do not forge an unused byte. |
