@@ -104,6 +104,8 @@ public:
     void clear_entity_flag2();
     IntPoint& fixed_position_ref();
     void set_clock_scale(float value);
+    // Original 20B x87 getter at 0x004AAA40; real field +0x223C.
+    float clock_scale_value() const;
     Vector3& position_ref();
     float direction_to(const Vector3& target);
 };
@@ -119,6 +121,7 @@ static_assert(offsetof(Player,motion_parameters)==0x2080);
 static_assert(offsetof(Player,collision_bounds)==0x2094);
 static_assert(offsetof(Player,field_20ec)==0x20ec);
 static_assert(offsetof(Player,shot_data)==0x2208);
+static_assert(offsetof(Player,clock_scale)==0x223c);
 static_assert(offsetof(Player,feedback)==0x2244);
 static_assert(offsetof(Player,shots)==0x22b4);
 static_assert(offsetof(Player,field_14850)==0x14850);

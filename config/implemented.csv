@@ -1181,3 +1181,4 @@ th20::AnimationFile::load_script
 th20::AnimationPoolOwner::allocate_animation
 th20::type_to_script
 std::shared_ptr<EtamaArgInf>::operator=(std::shared_ptr<EtamaArgInf>&&)
+th20::Player::clock_scale_value

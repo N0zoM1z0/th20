@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 29, 2026 checkpoint the maintained graph has **1,183
-source-present mappings**, **1,185 strict canonical native units** and
+At the October 29, 2026 checkpoint the maintained graph has **1,184
+source-present mappings**, **1,186 strict canonical native units** and
 **244 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **502 complete functions /
-179,518 original native bytes**. These are dated values, not a
+game-authored whole-function exactness is **503 complete functions /
+179,538 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the

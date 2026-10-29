@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/ORIGIN-679.** This file is a
+**Last reconciled: 2026-10-29, CORE/EXACT-684.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -18,10 +18,10 @@ what is accepted.
 | Game target | `resources/th20.exe`, **1,858,560 bytes** |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional function heads | **6,928**; unresolved boundaries are *not* exact |
-| Source-present function mappings | **1,183**, all origins |
-| Configured whole-native strict units | **1,185**, including library/compiler |
+| Source-present function mappings | **1,184**, all origins |
+| Configured whole-native strict units | **1,186**, including library/compiler |
 | Distinct canonical MSVC object + receipt providers | **244** |
-| **Game-authored original whole-body exact** | **502 distinct functions / 179,518 disjoint original `.text` bytes** |
+| **Game-authored original whole-body exact** | **503 distinct functions / 179,538 disjoint original `.text` bytes** |
 | Whole-program link / playable game | **Not yet available** |
 
 These counts are a dated snapshot. Run `scripts/repo-python
