@@ -16,6 +16,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## Original 555B Player movement actual shared 128.0f data owner restored
+
+- [CORE/RECON-724 — complete original 555B Player movement native shared `native_128` denominator addresses at 0x0056CD98](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md) — actual immutable native world X/Y DIVSS at `+0x1DA/+0x205` and nine independently already exact Player original COFF units corroborate **one real shared game float 128.0f**. Two old private `__real@43000000` source literals replaced in maintained full `src/PlayerMovement.cpp` with genuine `native_128`. Fresh complete MSVC 561B/136 x86 still NONEXACT due to the single extra SSE `movss` spill, but **561/561 compiled code bytes and 27/27 original COFF field locations unchanged**, only two symbol identities corrected. Affected old strict units ZERO; no global cold replay or exact byte credit.
+
 ## Original 3,111B Player main semantic operands and seven register-length differences
 
 - [CORE/RECON-721 — whole original Player main 3,111B vs maintained 3,114B, all 164 ordinary literal values and 67 game field displacements independently verified](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md) — genuine complete method native 783/783 mnemonic heads, independent original PE vs real COFF **164/164 nonrelocated nonbranch immediate values** and **67/67 positive nonstack member displacements** identical, all original E8/COFF REL32 67/67 and PE HIGHLOW/COFF DIR32 37/37 by count. Precisely seven original vs compiled ADD register encodings account for net +3B physical length difference, with many other register/stack/relocation differences still unresolved. Four full-parent MSVC /fp and /sdl profiles yielded identical nonexact result. Original entire Player parent and separate 555B movement remain **NONEXACT**; no C++ source, canonical unit or accepted byte credit changed.

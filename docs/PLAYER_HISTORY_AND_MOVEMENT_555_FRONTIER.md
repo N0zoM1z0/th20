@@ -1,5 +1,7 @@
 # CORE/EXACT-429 and CORE/RECON-429 — exact 16-byte Player history size; entire 555-byte movement C++ frontier
 
+**Later [CORE/RECON-724](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md) correction:** the original world X and Y conversion denominators both use the already exact-game-attested physical float `0x0056CD98`. Maintained whole `src/PlayerMovement.cpp` now uses the actual `native_128` symbol, replacing two compiler-private constant references without changing any of the 561 generated code bytes, 27 relocation field locations or game behavior. The six-byte extra SSE spill remains and the 555B original parent stays **NONEXACT**.
+
 Comparison original: the immutable Japanese TH20 v1.00a Steamless
 `resources/th20.exe`, original whole SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

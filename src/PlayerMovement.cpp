@@ -3,6 +3,10 @@
 // 555B/135 instructions. All original opcode kinds align, but an additional
 // real SSE float temporary spill remains; do not credit original bytes.
 // Native boundaries, clock source, clamps and gameplay are implemented whole.
+// The final two world-coordinate divisions use the original shared native
+// Player float 128 value at 0x0056CD98, not a compiler-private 128 literal.
+// This strengthens actual physical relocation identity without claiming
+// the remaining extra SSE spill or entire 555B original as byte exact.
 #include "Player.hpp"
 #include "ClockScalar.hpp"
 #include <cstdint>
@@ -44,7 +48,7 @@ void Player::apply_move_delta(std::int32_t x, std::int32_t y) {
             fixed_position_ref().y = static_cast<std::int32_t>(upper);
         }
     }
-    position_ref().x = static_cast<float>(fixed_position_ref().x) / 128.0f;
-    position_ref().y = static_cast<float>(fixed_position_ref().y) / 128.0f;
+    position_ref().x = static_cast<float>(fixed_position_ref().x) / native_128;
+    position_ref().y = static_cast<float>(fixed_position_ref().y) / native_128;
 }
 }
