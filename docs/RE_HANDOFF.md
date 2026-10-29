@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-512.** This is a live navigation
+**Current: 2026-10-29, after CORE/RECON-514.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -17,7 +17,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Original length | 1,858,560 bytes |
 | Original SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional PE boundaries | 6,928 |
-| Source-present mappings | **1,177** |
+| Source-present mappings | **1,178** |
 | Strict canonical complete native units | **1,178** |
 | Unique canonical MSVC object/receipt providers | **238** |
 | Exact game-authored whole original functions | **452**, covering **153,901 original body bytes** |
@@ -159,6 +159,36 @@ The distinct **12,140B Bullet controller dispatcher and 3,735B Bullet
 emitter remain NONEXACT**. New canonical count is **1,178 units / 238
 object providers**. No full cold replay, link or runtime claim.
 
+## Newly maintained complete Bullet emitter source — whole nonexact boss
+
+**CORE/RECON-514:** Original `0x004818E0` Bullet emitter is a real
+**3,735-byte / 935-instruction** author-owned boss, called directly
+from the already whole-exact **339B BulletController::fire** at
+`0x00481839`. Its original **60 E8 calls**, 13+11 original switch
+cases, 1Nop/96B tables, and eight CC alignment bytes were
+independently rechecked from the immutable original. The previous
+complete private C++ source has now been corrected and promoted to
+**`src/BulletEmitter.cpp`** in the actual maintained tree, with real
+`Bullet`, `ShotParameters`, `ShotMetadata` shared_ptr move, all 13
+shot patterns and 11 cancel types, Animation, command and bullet
+retirement logic. The original signed `rows > 1` speed-branch ordering
+was restored, improving ordered opcode alignment from **787/935 to
+792/935**. The pinned C++ builds a complete **3,516B/890-instruction**
+method and 3,612B generated method/table contribution, versus original
+3,735B/935 and 3,832B. It is emphatically **NONEXACT** with zero
+new exact bytes and no accepted unit. The original 298B Animation
+pool allocator ABI is now declared, but its source and final linked
+runtime remain open. The header edit touched exactly **38 original
+source providers / 91 strict units**; all were freshly cold built and
+**91/91 native full units replayed exact**, including original 1,404B
+command11 and 1,846B physics. One private compiler `$SG` label shift
+was independently original PE/string-attested at `0x0056FD14` and
+reconciled without changing its original relocation destination.
+[Entire original function, compilation, ownership and scoped proof](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md).
+Source-present mapping count rises to **1,178**, while game-authored
+exact remains **452 / 153,901B** and canonical units/object providers
+stay **1,178 / 238**. No unfiltered full replay.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
@@ -166,7 +196,7 @@ object providers**. No full cold replay, link or runtime claim.
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
 | `0x004F9C30` **3,111B** Player main frame | [Full typed source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) now compiles **3,235B / 807 instructions / 67 REL32**, versus native 3,111B/783/67 E8/37 HIGHLOW. [Original 783-head audit](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) | Enclosing boss remains **NONEXACT**, no exact credit. Resolve original full source control-flow and 35/37 absolute-reference mismatch; its separate 555B movement callee remains NONEXACT. |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
-| `0x004818E0` **3,735B** Bullet emitter | Switch-table/CC comparison extends physical compiler contribution; [whole emitter frontier](BULLET_EMITTER_FULL_CXX_FRONTIER.md) | Actual STL move ownership, emitter arrays, native switch-table relocations. |
+| `0x004818E0` **3,735B** Bullet emitter | [Complete maintained real-owner C++20](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) now emits 3,516B / 890 instructions / 792 aligned mnemonic kinds, against original 3,735B/935. Genuine 13/11 original table cases and 3,832B original compiler contribution separately attested | Whole parent **NONEXACT**: finish historical 63B shared_ptr move-assignment ABI and original native 60 E8 vs candidate call/branch lifetimes and switch target positions; do not credit until entire exact original replay. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
 | `0x00539550` **1,036B** Archive LZSS encoder | `src/ArchiveLzssEncode.cpp` previous private 964B probe; [historical encoder evidence](ARCHIVE_WRITE_RECONSTRUCTION.md) | Original byte-flush accumulation has unverified observable use; do not introduce dead scalar solely for matching. |
 | `0x0047DCF0` **12,140B** Bullet controller dispatcher and `0x0048C010` **41,967B** Enemy ECL dispatcher | [Enemy dispatch layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and [source map](SOURCE_MAP.md) | Major real gameplay ownership and complete control-flow work; historical host/sanitizer counts are **not** current native exactness. |

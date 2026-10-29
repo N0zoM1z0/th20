@@ -1,5 +1,21 @@
 # CORE/AUDIT-292 — complete C++20 shot-emitter root trials and real 3,832-byte MSVC contribution
 
+**Historical CORE/AUDIT-292 private-source checkpoint, superseded by
+[CORE/RECON-514](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md).**
+The complete original 3,735B Bullet emitter is now a real whole typed
+`src/BulletEmitter.cpp` in the maintained game-source graph, not only
+private `.analysis` experiments. Independent native 60 E8/43 unique
+call targets and 13+11 original jump-table cases were rechecked; the
+original `rows > 1` speed-branch shape was repaired and the current
+native candidate emits 3,516B / 890 x86 instructions with 792/935
+original opcode kinds aligned. It remains **NONEXACT**, with no newly
+accepted original function bytes. The authentic 298B allocator ABI was
+added to the real production header; 38 actual affected source objects
+and **91/91 original strict units** were cold rebuilt and replayed,
+without a global replay. The older full source tests below are retained
+as historical evidence, not current source-presence status.
+
+
 Native source of truth: immutable Japanese TH20 v1.00a Steamless PE,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This audit pursues the **whole 3,735-byte, 935-instruction**

@@ -15,6 +15,9 @@ struct AnimationPoolOwner {
     void select_draw_layer(std::int32_t layer, std::int32_t view_index);
     std::int32_t draw(Animation* animation);
     void flush_draws();
+    // Original 298B pool allocation is a distinct nonexact game owner;
+    // needed by the complete native Bullet emit state machine.
+    Animation* allocate_animation();
     AnimationFile* file_by_index(std::int32_t index);
     void select_view(std::int32_t view_index);
     Animation* resolve_handle(std::uint32_t index);
