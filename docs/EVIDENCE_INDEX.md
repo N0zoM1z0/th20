@@ -1,7 +1,7 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-785):** [live accepted
+**Current next-agent reading order (CORE/RECON-789):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole original 192B Animation queued-draw flush semantic C++ source and native operand frontier (NONEXACT)
+
+- [CORE/RECON-789 — complete original 192B/55 x86 `AnimationPoolOwner::flush_draws` batch submission code](ANIMATION_DRAW_QUEUE_FLUSH_192_NATIVE_SOURCE_FRONTIER.md) — independently immutable original native four relocations (2 true PE HIGHLOW to `Graphics 0x005C4D40`, 2 original E8 to device getter `0x00412730`); real device D3D9 SetFVF(0x144), DrawPrimitiveUP triangle-list double primitive count/stride28, genuine owner+0x6000E70 and +0x7C00E74/+0x7C00E78 queue reset/counter. New maintained natural typed C++ compiles to complete original **192B /55 instruction kinds**, but **23 nonrelocation byte differences** remain in native D3D9 function-pointer/parameter evaluation order; **NONEXACT, zero original strict byte credit**. Only new noncanonical source mapped; no old strict inputs, no cold replay. Original 5,993B draw parent also NONEXACT. Source-present **1,222**; exact remains **576/188,433B /1,223 units/251 providers**.
 
 ## Original three full 92B Graphics D3D9 state cache transitions strict exact (276B)
 

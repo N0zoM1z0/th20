@@ -1220,3 +1220,4 @@ th20::animation_inherited_aux_scale_x,0x00445880,function
 th20::graphics_enable_fog,0x004DDAC0,function
 th20::graphics_disable_fog,0x004DDA60,function
 th20::graphics_disable_depth_writes,0x004DDF80,function
+th20::AnimationPoolOwner::flush_draws,0x004455C0,function

@@ -1,5 +1,7 @@
 # CORE/RECON-785 — three complete original Graphics render-state cache methods (276B) from the 5,993B draw Boss
 
+> **Subsequent CORE/RECON-789:** The separate 192B `AnimationPoolOwner::flush_draws` callee now has complete maintained typed game semantics and original-PE relocation proof but remains **NONEXACT** (192B/55 x86 yet 23 nonrelocation byte differences). See [the source frontier](ANIMATION_DRAW_QUEUE_FLUSH_192_NATIVE_SOURCE_FRONTIER.md). Earlier exact 92B Graphics method proofs remain valid.
+
 The selected, immutable original Japanese TH20 v1.00a Steamless PE is fixed
 by SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This checkpoint closes **three separate complete original game-authored

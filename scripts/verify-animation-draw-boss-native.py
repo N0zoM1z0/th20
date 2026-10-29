@@ -182,6 +182,42 @@ def verify() -> None:
         print(f"PASS original Graphics {role}: complete 92/92B, 30/30 x86, "
               f"{frequency} actual draw-Boss calls, real PE HIGHLOW and E8 flush")
 
+    # Separate original 192B /55-x86 renderer submission-queue flush.
+    # Its body is now maintained C++ but still NONEXACT. The original device
+    # uses real D3D9 vtable methods SetFVF(+0x164) and DrawPrimitiveUP(+0x14C).
+    flush_head = 0x004455C0
+    flush = decoded(image, base, sections, flush_head, 192)
+    assert len(flush) == 55 and flush[-1].mnemonic == "ret"
+    assert flush[-1].op_str == ""
+    by_offset = {i.address - flush_head: i for i in flush}
+    for offset, global_target in ((0x1A, 0x005C4D40), (0x41, 0x005C4D40)):
+        field = flush_head + offset
+        assert field in relocs
+        assert struct.unpack("<I", raw_at(image, base, sections, field, 4))[0] == global_target
+    for opcode, target in ((0x1E, 0x00412730), (0x45, 0x00412730)):
+        insn = by_offset[opcode]
+        assert insn.mnemonic == "call" and insn.bytes[0] == 0xE8
+        resolved = (insn.address + 5 + struct.unpack_from("<i", insn.bytes, 1)[0]) & 0xFFFFFFFF
+        assert resolved == target
+    for offset, mn, text in ((0x0C, "cmp", "dword ptr [eax + 0x6000e70], 0"),
+                             (0x2B, "mov", "eax, dword ptr [edx + 0x164]"),
+                             (0x52, "mov", "ecx, dword ptr [eax + 0x14c]"),
+                             (0x5E, "mov", "eax, dword ptr [edx + 0x7c00e78]"),
+                             (0x6A, "mov", "edx, dword ptr [ecx + 0x6000e70]"),
+                             (0x9D, "mov", "dword ptr [eax + 0x6000e70], 0"),
+                             (0xAA, "mov", "edx, dword ptr [ecx + 0xc4]")):
+        assert by_offset[offset].mnemonic == mn and by_offset[offset].op_str == text
+    assert by_offset[0x34].mnemonic == "push" and by_offset[0x34].op_str == "0x144"
+    assert by_offset[0x75].mnemonic == "push" and by_offset[0x75].op_str == "0x1c"
+    assert by_offset[0x7F].mnemonic == "push" and by_offset[0x7F].op_str == "4"
+    assert by_offset[0x88].mnemonic == "mov" and by_offset[0x88].op_str == "eax, dword ptr [ebp - 4]"
+    assert by_offset[0x8E].mnemonic == "mov" and by_offset[0x8E].op_str == "edx, dword ptr [ecx + 0x7c00e74]"
+    assert by_offset[0x94].mnemonic == "mov" and by_offset[0x94].op_str == "dword ptr [eax + 0x7c00e78], edx"
+    print("PASS original 192B renderer flush: 55 x86, two PE HIGHLOW to 0x005C4D40, "
+          "two original E8 device getters, native FVF 0x144 and DrawPrimitiveUP vtable slots")
+    print("Original 192B flush has maintained typed semantic source, but remains NONEXACT: "
+          "no original code credit for its compiler-evaluation-order differences")
+
     # Original 93B recursive scale uses the *same 1.0f literal source* as
     # the already strict 93B x/y parent-scale game methods. Its self call
     # remains the original native E8, not a fabricated recursion symbol.
