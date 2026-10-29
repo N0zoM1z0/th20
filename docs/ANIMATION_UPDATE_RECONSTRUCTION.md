@@ -1,5 +1,13 @@
 # Animation motion, interpolation and parent binding
 
+**Current origin/exactness status:** CORE/EXACT-507 independently audited all
+original E8 and PE HIGHLOW fields, cold rebuilt the three actual native
+Animation providers, and accepted 17 whole game-authored methods (5,527B).
+See the [new original whole-function evidence](ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md).
+Historical origin-pending totals below predate this review; the entire
+39,470B Animation VM still remains nonexact.
+
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

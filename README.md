@@ -52,8 +52,8 @@ are excluded from Git.
 At the October 29, 2026 checkpoint the maintained graph has **1,176
 source-present mappings**, **1,177 strict canonical native units** and
 **237 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **420 complete functions /
-138,279 original native bytes**. These are dated values, not a
+game-authored whole-function exactness is **437 complete functions /
+143,806 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -64,7 +64,7 @@ for the live inventory and consult the
 | Target and analysis | Locked Japanese Steamless target and attested Ghidra 12.1.3 |
 | Reference review | All 6,945 indexed implementations and 113 parser-gap files reviewed |
 | ECL Runtime | Whole tick, call/frame/argument and lifetime protocols; [evidence](docs/EXACT_ECL_TICK_RECONSTRUCTION.md) |
-| Animation | Lifetime, children, templates, frame/geometry/operand updates and real callbacks; whole VM remains open; [source map](docs/SOURCE_MAP.md) |
+| Animation | Lifetime, child links, script/frame geometry and operands; 17 newly [origin-reviewed native-exact gameplay methods](docs/ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) add 5,527B, while the 39,470B VM parent is open; [source map](docs/SOURCE_MAP.md) |
 | Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft remains machine-code nonexact; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |

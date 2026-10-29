@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-503.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-507.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -20,7 +20,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Source-present mappings | **1,176** |
 | Strict canonical complete native units | **1,177** |
 | Unique canonical MSVC object/receipt providers | **237** |
-| Exact game-authored whole original functions | **420**, covering **138,279 original body bytes** |
+| Exact game-authored whole original functions | **437**, covering **143,806 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -48,6 +48,18 @@ geometry roles; four currently anonymous caller roots remain medium-confidence
 authored classifications. See the [origin and whole-PE exactness audit](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md).
 Canonical unit/provider counts stay **1,177 / 237** because these preexisted.
 No whole-repository cold replay, linked executable or game-runtime claim.
+
+## Newly origin-reviewed Animation frame and VM helpers
+
+**CORE/EXACT-507:** 17 complete Animation gameplay functions totaling
+**5,527 original authored bytes**, including the 1,106B reset, 931B motion
+update, 944B interpolation update and 835B float-value interpreter. The
+original 39,470B Animation VM directly calls the integer and float evaluator
+117 and 156 times respectively; the giant parent remains **NONEXACT**.
+Three existing source providers were cold rebuilt and 50/50 affected strict
+units replayed. Original code yielded 93 E8 calls and 140 PE HIGHLOW fields,
+all independently verified. Existing canonical counts stay 1,177 units and
+237 objects. [Full origin/whole-PE proof](ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md).
 
 ## Recently solved input system — do not reopen as nonexact
 
@@ -91,7 +103,7 @@ units; do not create duplicate physical matches.
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
 | `0x00539550` **1,036B** Archive LZSS encoder | `src/ArchiveLzssEncode.cpp` previous private 964B probe; [historical encoder evidence](ARCHIVE_WRITE_RECONSTRUCTION.md) | Original byte-flush accumulation has unverified observable use; do not introduce dead scalar solely for matching. |
 | `0x0047DCF0` **12,140B** Bullet controller dispatcher and `0x0048C010` **41,967B** Enemy ECL dispatcher | [Enemy dispatch layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and [source map](SOURCE_MAP.md) | Major real gameplay ownership and complete control-flow work; historical host/sanitizer counts are **not** current native exactness. |
-| `0x0042B5D0` **39,356B** Animation update | [Animation source map](SOURCE_MAP.md) | Separate large nonexact controller from already exact smaller Animation geometry and support routines. |
+| `0x0042B5D0` **39,470B** Animation VM update | [Animation source map](SOURCE_MAP.md) | Separate large nonexact controller from already exact smaller Animation geometry and support routines. |
 
 Additional completed whole large game bosses include the **13,684B**
 ProgressProfile constructor, **5,388B** Animation geometry,

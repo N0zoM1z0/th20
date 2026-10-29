@@ -24,6 +24,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-503 complete 19-function geometry origin admission, 13,360 native authored bytes](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) — two fresh pinned MSVC `/fp:strict` objects, **19/19 whole 3,530-instruction functions strict exact**; 160 independent native E8 and 181 original PE HIGHLOW fields, verified original constants and rectangle-edge table, real DamageRegion/Bullet/Player caller graph; prior origin-pending records superseded, no new compiler units or full cold replay.
 
+## Animation gameplay — original PE and authored-origin audit
+
+- [CORE/EXACT-507: 17 whole Animation gameplay methods, 5,527 native bytes](ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) — 1,106B reset, 931B motion, 944B interpolation and 835B float VM operand; independent original 93 E8 and 140 HIGHLOW fields, 50/50 strict units in three cold MSVC objects. The 39,470B VM parent is still nonexact.
+
 ## Input system and Player
 
 - [CORE/EXACT-501 — entire 3,490B InputDevice keyboard/DirectInput/XInput polling boss strict exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) — 747 original x86 instructions and 39 separately original-attested E8/HIGHLOW fields; fresh locked MSVC i386 complete 3,490/3,490 strict canonical bytes, one new game-authored exact function, **no full replay**. Supersedes prior nonexact polling-frontier descriptions.
