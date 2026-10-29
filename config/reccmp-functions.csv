@@ -1207,3 +1207,4 @@ th20::interrupt_animation_mode2,0x00486330,function
 th20::AnimationPoolOwner::mark_animation_tree_for_retirement,0x0044FB80,function
 th20::AnimationPoolOwner::retire_handle,0x0044FCA0,function
 th20::AnimationHandle::retire,0x0044FCD0,function
+th20::AnimationPoolOwner::resolve_handle,0x0044CD00,function

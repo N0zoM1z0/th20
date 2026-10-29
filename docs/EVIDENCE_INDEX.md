@@ -1,7 +1,7 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-753):** [live accepted
+**Current next-agent reading order (CORE/RECON-757):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Entire 456-byte original Animation pool handle resolver semantic source, still NONEXACT
+
+- [CORE/RECON-757 — original `SprtCtrlInf::getSprt(SprtID)` RTTI, 20/20 original native E8, normal/0xFFFF-special handle path and whole maintained 456-byte game function source frontier](ANIMATION_POOL_RESOLVER_456_TYPED_NATIVE_FRONTIER.md) — original 141 x86 instructions, real +0x710 0x600-stride pooled slots, +0x5F8 active, +0x4C0 ID and 0x48-stride two-list std::function lookup. New natural C++ compiles to 364B/111 x86, remains **NONEXACT**, no native byte credit. Original PE verifier independently checks all 20 E8 and original RTTI. Zero affected old strict native units, no cold replay. Source-present mapping now 1,209, authored exact remains 563 /187,092 bytes.
 
 ## Complete 282B original Animation retirement subtree and five newly closed Bullet helpers
 

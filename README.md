@@ -49,7 +49,7 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,208
+At the October 30, 2026 checkpoint the maintained graph has **1,209
 source-present mappings**, **1,210 strict canonical native units** and
 **247 canonical MSVC object/receipt providers**. Independently verified
 game-authored whole-function exactness is **563 complete functions /
@@ -62,7 +62,7 @@ for the live inventory and consult the
 | Area | Verified current state |
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
-| Source-present, **NONEXACT** | [3,111B Player main](docs/PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [555B Player movement](docs/PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md), [273B Bullet draw group](docs/BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md), and [1,649B Enemy mesh](docs/ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). Native register/stack/SSE differences remain. |
+| Source-present, **NONEXACT** | [3,111B Player main](docs/PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [555B Player movement](docs/PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md), [273B Bullet draw group](docs/BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md), and [1,649B Enemy mesh](docs/ENEMY_MESH_LIFETIME_RECONSTRUCTION.md), and [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_TYPED_NATIVE_FRONTIER.md). Compiler, stack and ABI/codegen differences remain. |
 | Giant source-absent, **NONEXACT** | [12,140B Bullet command processor](docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md), [41,967B Enemy ECL dispatcher](docs/ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md) and **39,470B Animation VM**. Exact children do not close these parent bodies. |
 | Bullet command call graph | Entire original 12,140B has **210 original native E8 calls, 208 with fully strict-canonical source targets and two compiler-runtime-only outstanding**. Seven new Animation methods in two batches add 447 whole native original bytes, but the parent remains NONEXACT. The [three original switch tables](docs/BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) contain **53 genuine PE HIGHLOW code pointers**. |
 | Typed gameplay and native library source | [199B Bullet interpolation game methods](docs/BULLET_199_INTERPOLATION_TANGENT_TIMER_EXACT.md), [Animation/Player/ECL game methods](docs/GAME_PLAYER_ANIMATION_ECL_SEVEN_ORIGINAL_1283_EXACT_ORIGIN.md), [Laser lifetimes](docs/LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md), [geometry and value methods](docs/GAME_FOG_GEOMETRY_PLAYER_PBG_SESSION_1686_ORIGIN.md). Separate [PMR vector STL](docs/BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md) and [shared_ptr STL](docs/BULLET_SHARED_PTR_LEGACY_CTOR_100_LIBRARY_EXACT.md) code is **library-excluded**, not additional game-authored exact credit. |

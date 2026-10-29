@@ -1206,3 +1206,4 @@ th20::interrupt_animation_mode2
 th20::AnimationPoolOwner::mark_animation_tree_for_retirement
 th20::AnimationPoolOwner::retire_handle
 th20::AnimationHandle::retire
+th20::AnimationPoolOwner::resolve_handle

@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-753.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-757.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -14,7 +14,7 @@ NONEXACT labels are not current acceptance facts.**
 | Required SHA-256 | a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897 |
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
-| Source-present mapped methods | **1,208** across game, compiler and STL/library |
+| Source-present mapped methods | **1,209** across game, compiler and STL/library |
 | Complete native strict units | **1,210**, supplied by **247** distinct canonical MSVC objects with **247** matching receipts |
 | **Original authored-game whole-function exact** | **563 distinct physical game functions /187,092 original .text bytes** |
 | Whole game linked/playable | **No** |
@@ -54,10 +54,11 @@ although the 12,140B Bullet command parent which it calls remains NONEXACT.
 | **2. Player main 0x004F9C30, 3,111B /783 x86** | Source present, **3,114B/783** under MSVC, 783/783 mnemonic order, 67 E8 /37 whole-frame data roles, **NONEXACT**. Seven differing ADD register encodings account for the **net +3B**, but other register/stack/branch fields remain different. Next: natural C++ temporary/receiver lifetimes. [Native operand proof](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [72B genuine 9x2 data table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
 | **3. Player movement 0x004FFA10, 555B** | Source present, **561B/136 vs 555B/135**, one excess 6B SSE spill; **NONEXACT**. Two world-coordinate denominators already correctly refer to real native_128. Next: correct compiler SSE value lifetime, not fabricated register hints. [Original data and code frontier](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
 | **4. Bullet draw group 0x0047DB70, 273B** | Source present, about **283B/84 vs273B/82**, excess SSE offset spill; **NONEXACT**. [Full method study](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |
-| **5. Enemy ECL dispatcher 0x0048C010, 41,967B /8,896 x86** | **NONEXACT**. Integer opcode base 300, 704-byte compressed indices and 174 real PE HIGHLOW case pointers; genuine Laser opcode 702/703/711/713 object lifetimes proven. [Original opcode paths](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
-| **6. Animation VM update 0x0042B5D0, 39,470B** | **NONEXACT** despite exact parsers/loaders/interpolation children. [Source map](SOURCE_MAP.md). |
-| **7. Enemy mesh 0x004A4190, 1,649B** | Natural C++ source present but **NONEXACT**, transient lifetime unresolved. [Mesh evidence](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). |
-| **8. STL counted-range 0x0047A8D0, 470B** | **Library, NONEXACT**. Actual 470B/174 x86/12 E8 vs coherent pinned C++17 **458B/170/11**; native extra call to std::is_constant_evaluated at 0x0047A99F. Do not patch installed STL, fake the call, or mix conflicting C++17/C++20 COMDATs. [Real child proofs](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md). |
+| **5. Animation pool handle lookup 0x0044CD00, 456B/141 x86** | Newly source-present **NONEXACT** whole-method semantic reconstruction in `src/AnimationPoolHandleResolve.cpp`, independently confirmed by original original-PE 20/20 E8 calls and native RTTI `SprtCtrlInf::getSprt(SprtID)` with two `LinkInf<SprtInf*>` lambdas. Normal record path validates 0x600 stride/+0x5F8 active/+0x4C0 identity; special 0xFFFF ID path searches two native intrusive lists in a 0x48-stride group with `std::function` predicates. Current pinned compiler **364B/111 x86** versus original **456B/141**; no exact byte credit. This callee is used by newly exact 282/43/37B retirement chain. [Native resolver investigation](ANIMATION_POOL_RESOLVER_456_TYPED_NATIVE_FRONTIER.md), [native PE audit](../scripts/verify-animation-pool-resolver-native.py). |
+| **6. Enemy ECL dispatcher 0x0048C010, 41,967B /8,896 x86** | **NONEXACT**. Integer opcode base 300, 704-byte compressed indices and 174 real PE HIGHLOW case pointers; genuine Laser opcode 702/703/711/713 object lifetimes proven. [Original opcode paths](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
+| **7. Animation VM update 0x0042B5D0, 39,470B** | **NONEXACT** despite exact parsers/loaders/interpolation children. [Source map](SOURCE_MAP.md). |
+| **8. Enemy mesh 0x004A4190, 1,649B** | Natural C++ source present but **NONEXACT**, transient lifetime unresolved. [Mesh evidence](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). |
+| **9. STL counted-range 0x0047A8D0, 470B** | **Library, NONEXACT**. Actual 470B/174 x86/12 E8 vs coherent pinned C++17 **458B/170/11**; native extra call to std::is_constant_evaluated at 0x0047A99F. Do not patch installed STL, fake the call, or mix conflicting C++17/C++20 COMDATs. [Real child proofs](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md). |
 
 Completed Bullet library support includes **610B PMR vector functions**
 ([proof](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md)) and **100B
