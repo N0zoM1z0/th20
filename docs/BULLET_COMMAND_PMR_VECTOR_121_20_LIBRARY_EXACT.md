@@ -1,5 +1,7 @@
 # CORE/EXACT-734 — original Bullet command-vector STL copy and destructor, 141 complete native bytes
 
+**Later [CORE/EXACT-738](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md) update:** the one coherent PMR BulletCommand source profile was switched to native C++17 after confirming its original 33/41/121/20-byte functions stay **4/4 whole strict exact**. This also matches three real original 200/196/73-byte upstream STL allocation/copy helpers, now **7/7 strict total** in one affected-only cold object. The original 470B counted-range helper still has an independently verified std::is_constant_evaluated branch absent from current pinned C++17 code; it is NONEXACT. The original C++20 profile in the dated first acceptance below is historical.
+
 **Two real standard-library PMR vector methods in the original 12,140-byte Bullet command Boss now have whole native strict source.** These are library functions, not game-authored methods, and contribute **zero** new game-authored code bytes. The 12,140B original game Boss remains source-absent and NONEXACT.
 
 Locked target: Japanese TH20 v1.00a Steamless, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.

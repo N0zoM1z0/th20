@@ -1188,3 +1188,6 @@ th20::VectorInterpolation::set_end,0x00438A90,function
 th20::VectorInterpolation::set_duration,0x00438E70,function
 std::pmr::vector<th20::BulletCommand>::~vector,0x0047C300,function
 std::pmr::vector<th20::BulletCommand>::operator=(const std::pmr::vector<th20::BulletCommand>&),0x0047C570,function
+std::_Copy_memmove_n<BulletCommand*>,0x0047AB60,function
+std::_Uninitialized_copy_n<BulletCommand*>,0x0047B050,function
+std::pmr::vector<BulletCommand>::_Clear_and_reserve_geometric,0x004844A0,function

@@ -17920,7 +17920,7 @@ relocations = [
 [units.shot_command_vector_index_library]
 source = "src/ShotMetadataVectorInstantiation.cpp"
 object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::BulletCommand>::operator[]"]
 symbol = "??A?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEAAUBulletCommand@th20@@I@Z"
 target_address = 0x0047C6C0
@@ -17930,7 +17930,7 @@ relocations = []
 [units.shot_command_vector_size_library]
 source = "src/ShotMetadataVectorInstantiation.cpp"
 object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::BulletCommand>::size"]
 symbol = "?size@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QBEIXZ"
 target_address = 0x00486600
@@ -20660,7 +20660,7 @@ relocations = []
 [units.shot_command_vector_copy_assignment_library]
 source = "src/ShotMetadataVectorInstantiation.cpp"
 object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::BulletCommand>::operator=(const std::pmr::vector<th20::BulletCommand>&)"]
 symbol = "??4?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEAAV01@ABV01@@Z"
 target_address = 0x0047C570
@@ -20676,11 +20676,69 @@ relocations = [
 [units.shot_command_vector_dtor_library]
 source = "src/ShotMetadataVectorInstantiation.cpp"
 object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<th20::BulletCommand>::~vector"]
 symbol = "??1?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ"
 target_address = 0x0047C300
 size = 20
 relocations = [
   { offset = 0xB, type = "REL32", symbol = "?_Tidy@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@AAEXXZ", target = 0x00484570 },
+]
+
+# CORE/EXACT-738: original 470B Bullet STL counted-range helper has three
+# real full 200B/196B/73B native original helper callees. The whole
+# counted-range parent is still NONEXACT. Source remains the one coherent
+# PMR BulletCommand vector template owner under native C++17 STL ABI.
+
+[units.shot_command_vector_clear_reserve_geometric_library]
+source = "src/ShotMetadataVectorInstantiation.cpp"
+object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<BulletCommand>::_Clear_and_reserve_geometric"]
+symbol = "?_Clear_and_reserve_geometric@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@AAEXI@Z"
+target_address = 0x004844A0
+size = 200
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@AAEAAV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x39, type = "REL32", symbol = "?max_size@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QBEIXZ", target = 0x00485B20 },
+  { offset = 0x43, type = "REL32", symbol = "?_Xlength@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@CAXXZ", target = 0x00414FE0 },
+  { offset = 0x50, type = "REL32", symbol = "?_Calculate_growth@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@ABEII@Z", target = 0x00484390 },
+  { offset = 0x70, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@YAXPAUBulletCommand@th20@@QAU12@AAV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@0@@Z", target = 0x0040C6B0 },
+  { offset = 0x96, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@QAEXQAUBulletCommand@th20@@I@Z", target = 0x004852B0 },
+  { offset = 0xBD, type = "REL32", symbol = "?_Buy_raw@?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@AAEXI@Z", target = 0x00484320 },
+]
+
+[units.shot_command_vector_uninitialized_copy_n_library]
+source = "src/ShotMetadataVectorInstantiation.cpp"
+object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Uninitialized_copy_n<BulletCommand*,polymorphic_allocator<BulletCommand>>"]
+symbol = "??$_Uninitialized_copy_n@PAUBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@YAPAUBulletCommand@th20@@PAU12@I0AAV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@0@@Z"
+target_address = 0x0047B050
+size = 196
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$_Uninitialized_copy_n@PAUBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@YAPAUBulletCommand@th20@@PAU12@I0AAV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@0@@Z", target = 0x00567D6D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2D, type = "REL32", symbol = "??$move@AAPAUBulletCommand@th20@@@std@@YA$$QAPAUBulletCommand@th20@@AAPAU12@@Z", target = 0x0040B280 },
+  { offset = 0x36, type = "REL32", symbol = "??$_Get_unwrapped@PAUBulletCommand@th20@@@std@@YA?A_T$$QAPAUBulletCommand@th20@@@Z", target = 0x0040B2A0 },
+  { offset = 0x4A, type = "REL32", symbol = "?__autoclassinit2@?$_Uninitialized_backout_al@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x5A, type = "REL32", symbol = "??0?$_Uninitialized_backout_al@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@PAUBulletCommand@th20@@AAV?$polymorphic_allocator@UBulletCommand@th20@@@pmr@1@@Z", target = 0x00414060 },
+  { offset = 0x87, type = "REL32", symbol = "??$_Emplace_back@AAUBulletCommand@th20@@@?$_Uninitialized_backout_al@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEXAAUBulletCommand@th20@@@Z", target = 0x0047ACB0 },
+  { offset = 0x92, type = "REL32", symbol = "?_Release@?$_Uninitialized_backout_al@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAEPAUBulletCommand@th20@@XZ", target = 0x00414B70 },
+  { offset = 0xA4, type = "REL32", symbol = "??1?$_Uninitialized_backout_al@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@XZ", target = 0x004143D0 },
+  { offset = 0xBC, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.shot_command_vector_copy_memmove_n_library]
+source = "src/ShotMetadataVectorInstantiation.cpp"
+object = "build/core254-canonical/ShotMetadataVectorInstantiation.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Copy_memmove_n<BulletCommand*>"]
+symbol = "??$_Copy_memmove_n@PAUBulletCommand@th20@@PAU12@@std@@YAPAUBulletCommand@th20@@PAU12@I0@Z"
+target_address = 0x0047AB60
+size = 73
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??$_To_address@PAUBulletCommand@th20@@@std@@YA?A_PABQAUBulletCommand@th20@@@Z", target = 0x00425620 },
+  { offset = 0x2F, type = "REL32", symbol = "??$move@AAPAUBulletCommand@th20@@@std@@YA$$QAPAUBulletCommand@th20@@AAPAU12@@Z", target = 0x0040B280 },
+  { offset = 0x3E, type = "REL32", symbol = "??$_Copy_memmove_tail@PAUBulletCommand@th20@@@std@@YAPAUBulletCommand@th20@@QBDQAU12@II@Z", target = 0x00452450 },
 ]

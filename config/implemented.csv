@@ -1187,3 +1187,6 @@ th20::VectorInterpolation::set_end
 th20::VectorInterpolation::set_duration
 std::pmr::vector<th20::BulletCommand>::~vector
 std::pmr::vector<th20::BulletCommand>::operator=(const std::pmr::vector<th20::BulletCommand>&)
+std::_Copy_memmove_n<BulletCommand*>
+std::_Uninitialized_copy_n<BulletCommand*>
+std::pmr::vector<BulletCommand>::_Clear_and_reserve_geometric
