@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-782):** [live accepted
+**Current next-agent reading order (CORE/RECON-785):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,220 strict units, 573 authored exact whole functions,
-188,157 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,223 strict units, 576 authored exact whole functions,
+188,433 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original three full 92B Graphics D3D9 state cache transitions strict exact (276B)
+
+- [CORE/RECON-785 — entire original 92B+92B+92B Graphics render-state cache transitions from the 5,993B Animation draw Boss](GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md) — true game Graphics cache +0xDB8/+0xDBC, original D3D9 SetRenderState vtbl+0xE4 for Fog 0x1C and depth-write 0x0E; each original exact function includes real E8 to 0x004455C0 draw-queue flush and actual PE HIGHLOW global 0x005C0028. Native C++ uses natural explicit `else { return 0; }` to recover original 2B short jump without NOPs or compiler shims; all **3/3 whole 92/92B** strict exact under one new pinned MSVC object; original PE validator independently confirms entire 5,993B/123 E8/49+31 switch parent (still NONEXACT). **ZERO old compiler inputs changed**, no all-graph replay. Live **576 game functions /188,433B**, **1,223 canonical units**, 251 source providers.
 
 ## Original 5,993B Animation Draw Boss, two real jump tables and four exact native game children
 

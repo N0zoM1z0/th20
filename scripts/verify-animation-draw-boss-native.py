@@ -19,6 +19,13 @@ MAIN_TABLE = 0x00444FEC
 MAIN_COUNT = 49
 SUB_TABLE = 0x004450B0
 SUB_COUNT = 31
+# Exact game Graphics cache transitions called by the 5,993B renderer;
+# each is a separate 92B native method with two real original PE fields.
+GRAPHICS_TRANSITIONS = {
+    0x004DDAC0: (2, 0xDB8, 1, 0x1C, "enable fog"),
+    0x004DDA60: (2, 0xDB8, 0, 0x1C, "disable fog"),
+    0x004DDF80: (1, 0xDBC, 0, 0x0E, "disable depth writes"),
+}
 CHILDREN = {
     0x004456E0: (20, 32, "Animation packed color +0x490"),
     0x004456C0: (20, 22, "Animation packed color +0x494"),
@@ -149,6 +156,32 @@ def verify() -> None:
         assert child[-1].mnemonic == "ret" and child[-1].op_str == ""
         assert child[-1].address + child[-1].size == address + size
         print(f"PASS native draw Boss {role}: {count} actual E8 sites to one complete {size}B original child at {address:#010x}")
+    # Three native Graphics D3D9 state transitions: compare the original
+    # complete 92B /30 x86 shape, real original HIGHLOW global reference,
+    # the original E8 to Renderer flush, and the real virtual API slot.
+    for address, (frequency, cache_offset, value, render_state, role) in GRAPHICS_TRANSITIONS.items():
+        assert called[address] == frequency, (hex(address), called[address])
+        native = decoded(image, base, sections, address, 92)
+        by_site = {ins.address: ins for ins in native}
+        assert len(native) == 30 and native[-1].address + native[-1].size == address + 92
+        assert native[-1].mnemonic == "ret" and native[-1].op_str == ""
+        assert address + 0x17 in relocs, hex(address + 0x17)
+        global_value = struct.unpack("<I", raw_at(image, base, sections, address + 0x17, 4))[0]
+        assert global_value == 0x005C0028
+        native_call = by_site[address + 0x1B]
+        assert native_call.bytes[0] == 0xE8 and len(native_call.bytes) == 5
+        direct_target = (native_call.address + 5 + struct.unpack_from("<i", native_call.bytes, 1)[0]) & 0xFFFFFFFF
+        assert direct_target == 0x004455C0, (hex(address), hex(direct_target))
+        assert by_site[address + 0x0C].mnemonic == "cmp"
+        assert by_site[address + 0x0C].op_str == f"dword ptr [eax + {cache_offset:#x}], {value}"
+        assert any(ins.mnemonic == "mov" and
+                   ins.op_str == f"dword ptr [ecx + {cache_offset:#x}], {value}" for ins in native)
+        assert any(ins.mnemonic == "mov" and ins.op_str == "ecx, dword ptr [eax + 0xe4]" for ins in native)
+        assert any(ins.mnemonic == "push" and ins.op_str == f"{render_state:#x}" for ins in native)
+        assert any(ins.mnemonic == "call" and ins.op_str == "dword ptr [ebp - 0xc]" for ins in native)
+        print(f"PASS original Graphics {role}: complete 92/92B, 30/30 x86, "
+              f"{frequency} actual draw-Boss calls, real PE HIGHLOW and E8 flush")
+
     # Original 93B recursive scale uses the *same 1.0f literal source* as
     # the already strict 93B x/y parent-scale game methods. Its self call
     # remains the original native E8, not a fabricated recursion symbol.

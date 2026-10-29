@@ -21116,3 +21116,45 @@ relocations = [
   { offset = 0xD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
   { offset = 0x3D, type = "REL32", symbol = "?animation_inherited_aux_scale_x@th20@@YIMPAVAnimation@1@@Z", target = 0x00445880 },
 ]
+
+# CORE/RECON-785: entire original 92B Graphics SetRenderState cache method.
+[units.graphics_draw_fog_enable_92]
+source = "src/GraphicsDrawRenderStates.cpp"
+object = "build/core785-canonical/GraphicsDrawRenderStates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::graphics_enable_fog"]
+symbol = "?graphics_enable_fog@th20@@YIHPAUGraphics@1@@Z"
+target_address = 0x004DDAC0
+size = 92
+relocations = [
+  { offset = 0x17, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x1C, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+]
+
+# CORE/RECON-785: entire original 92B Graphics SetRenderState cache method.
+[units.graphics_draw_fog_disable_92]
+source = "src/GraphicsDrawRenderStates.cpp"
+object = "build/core785-canonical/GraphicsDrawRenderStates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::graphics_disable_fog"]
+symbol = "?graphics_disable_fog@th20@@YIHPAUGraphics@1@@Z"
+target_address = 0x004DDA60
+size = 92
+relocations = [
+  { offset = 0x17, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x1C, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+]
+
+# CORE/RECON-785: entire original 92B Graphics SetRenderState cache method.
+[units.graphics_draw_depth_write_disable_92]
+source = "src/GraphicsDrawRenderStates.cpp"
+object = "build/core785-canonical/GraphicsDrawRenderStates.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::graphics_disable_depth_writes"]
+symbol = "?graphics_disable_depth_writes@th20@@YIHPAUGraphics@1@@Z"
+target_address = 0x004DDF80
+size = 92
+relocations = [
+  { offset = 0x17, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x1C, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+]

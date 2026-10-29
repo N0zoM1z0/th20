@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,218
-source-present mappings**, **1,220 strict canonical native units** and
-**250 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **573 complete functions /
-188,157 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,221
+source-present mappings**, **1,223 strict canonical native units** and
+**251 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **576 complete functions /
+188,433 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -65,6 +65,7 @@ for the live inventory and consult the
 | Source-present, **NONEXACT** | [3,111B Player main](docs/PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [555B Player movement](docs/PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md), [273B Bullet draw group](docs/BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md), and [1,649B Enemy mesh](docs/ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). Compiler, stack and ABI/codegen differences remain. |
 | Giant source-absent, **NONEXACT** | [12,140B Bullet command processor](docs/ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md), [5,993B Animation draw Boss](docs/ANIMATION_DRAW_BOSS_5993_NATIVE_DISPATCH_AND_EXACT_ACCESSORS.md), [41,967B Enemy ECL dispatcher](docs/ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md) and **39,470B Animation VM**. Exact children do not close these parent bodies. |
 | Bullet command call graph | Entire original 12,140B has **210 original native E8 calls, 208 with fully strict-canonical source targets and two compiler-runtime-only outstanding**. Seven new Animation methods in two batches add 447 whole native original bytes, but the parent remains NONEXACT. The [three original switch tables](docs/BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) contain **53 genuine PE HIGHLOW code pointers**. |
+| Graphics draw state | [Three full 92B D3D9 state cache transitions](docs/GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md) strict whole original, preserving genuine flush-before-state semantics. The [5,993B draw parent](docs/ANIMATION_DRAW_BOSS_5993_NATIVE_DISPATCH_AND_EXACT_ACCESSORS.md) remains NONEXACT. |
 | Typed gameplay and native library source | [199B Bullet interpolation game methods](docs/BULLET_199_INTERPOLATION_TANGENT_TIMER_EXACT.md), [Animation/Player/ECL game methods](docs/GAME_PLAYER_ANIMATION_ECL_SEVEN_ORIGINAL_1283_EXACT_ORIGIN.md), [Laser lifetimes](docs/LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md), [geometry and value methods](docs/GAME_FOG_GEOMETRY_PLAYER_PBG_SESSION_1686_ORIGIN.md). Separate [PMR vector STL](docs/BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md) and [shared_ptr STL](docs/BULLET_SHARED_PTR_LEGACY_CTOR_100_LIBRARY_EXACT.md) code is **library-excluded**, not additional game-authored exact credit. |
 | Original game data | [72B signed 9x2 Player movement direction table](docs/PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md) is exact original .rdata and real maintained C++; **not** counted as authored .text. |
 | Whole-program link or playability | **Not yet available.** Strict mapping, provenance, game-origin credit and executable runtime are distinct. |

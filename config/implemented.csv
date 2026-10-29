@@ -1216,3 +1216,6 @@ th20::animation_draw_color_490
 th20::animation_draw_color_494
 th20::animation_draw_enabled
 th20::animation_inherited_aux_scale_x
+th20::graphics_enable_fog
+th20::graphics_disable_fog
+th20::graphics_disable_depth_writes

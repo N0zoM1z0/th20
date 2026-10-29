@@ -1,5 +1,7 @@
 # CORE/RECON-782 — the original 5,993-byte Animation draw Boss and four complete exact game accessors
 
+> **Subsequent CORE/RECON-785:** Three more complete original 92B Graphics render-state transitions are now strictly exact (**276B game .text**) on this same 5,993B Boss call graph. [Native D3D9 state transition proof](GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md). The counts below are the historical CORE/RECON-782 snapshot, not live totals.
+
 The hash-locked original is Japanese TH20 v1.00a Steamless, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This checkpoint independently investigates the complete, previously source-absent

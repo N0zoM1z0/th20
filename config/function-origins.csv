@@ -4080,10 +4080,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004DD910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DDA10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DDA30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DDA60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DDAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DDA60,authored,Graphics,authored,high,"CORE/RECON-785; docs/GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md; original game Graphics render cache own state 1C, actual 5993B custom Animation draw boss caller 2x, 92 whole original bytes and physical E8/HIGHLOW independently proven"
+0x004DDAC0,authored,Graphics,authored,high,"CORE/RECON-785; docs/GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md; original game Graphics render cache own state 1C, actual 5993B custom Animation draw boss caller 2x, 92 whole original bytes and physical E8/HIGHLOW independently proven"
 0x004DDB20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DDF80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DDF80,authored,Graphics,authored,high,"CORE/RECON-785; docs/GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md; original game Graphics render cache own state E, actual 5993B custom Animation draw boss caller 1x, 92 whole original bytes and physical E8/HIGHLOW independently proven"
 0x004DDFE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DE040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DE1F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
