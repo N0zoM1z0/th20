@@ -1,6 +1,6 @@
 # CORE/RECON-772 — entire 456-byte original Animation pool handle resolver, native strict exact
 
-> **Subsequent exact-child closure (CORE/RECON-774):** Both original 159B and 154B link search methods below this already exact parent are now whole strict exact from the same maintained C++ owner. See [the complete native list proof](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md). Counts below reflect the earlier CORE/RECON-772 checkpoint.
+> **Subsequent exact-child closure (CORE/RECON-774/777):** Both original 159B and 154B link search methods below this already exact parent are now whole strict exact from the same maintained C++ owner. See [the complete native list proof](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md). The original ID capture is independently corrected to **by-value**, not the earlier assumed by-reference capture, in the [43B original lambda and vtable proof](ANIMATION_POOL_SPRT_LAMBDA_VALUE_CAPTURE_43_EXACT_RECONSTRUCTION.md). Counts below reflect the earlier CORE/RECON-772 checkpoint.
 
 **The entire original function at `0x0044CD00` is now byte exact.** Its
 maintained single C++ body lives in `src/AnimationPoolHandleResolve.cpp`.
@@ -25,7 +25,7 @@ integer, and that the real receiver visits an owner array at +`0x6C8`
 The original normal path checks a full ID's `0xFFFF` low-word special
 selector, validates the target record `active` byte at +`0x5F8`, compares
 its `Animation+0x4C0` live ID with the complete input and returns the real
-`Animation*`. The special path constructs **two distinct reference-capturing
+`Animation*`. The special path constructs **two distinct four-byte value-capturing
 lambda predicates** as genuine by-value `std::function<bool(IntrusiveLink<Animation>&)>`
 objects (40-byte argument ABI), asks the first then second live intrusive
 list to find the captured ID, and returns the matching live link's node.

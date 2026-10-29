@@ -69,18 +69,20 @@ Animation* AnimationPoolOwner::resolve_handle(std::uint32_t raw_id) {
     if (reinterpret_cast<SprtID&>(raw_id) == 0) return nullptr;
     if ((reinterpret_cast<SprtID&>(raw_id) & 0xffffu) == 0xffffu) {
         // Special IDs (low word FFFF) search the two observed live-link
-        // lists. The original uses two distinct reference-capturing lambdas
+        // lists. The original uses two distinct four-byte value-capturing lambdas
         // and passes each as a 40-byte std::function object by value.
         for (std::int32_t index = 0; index < 1; ++index) {
             auto& groups = *reinterpret_cast<std::array<AnimationLookupGroup, 1>*>(
                 reinterpret_cast<unsigned char*>(this) + 0x6c8);
-            if ((selected = groups[index].first.find_if([&raw_id](IntrusiveLink<Animation>& node) {
-                return node.node_value()->handle.value == raw_id;
+            if ((selected = groups[index].first.find_if([raw_id](IntrusiveLink<Animation>& node) {
+                return reinterpret_cast<const SprtID&>(node.node_value()->handle) ==
+                       reinterpret_cast<const SprtID&>(raw_id);
             }))) return selected->node_value();
             auto& second_groups = *reinterpret_cast<std::array<AnimationLookupGroup, 1>*>(
                 reinterpret_cast<unsigned char*>(this) + 0x6c8);
-            if ((selected = second_groups[index].second.find_if([&raw_id](IntrusiveLink<Animation>& node) {
-                return node.node_value()->handle.value == raw_id;
+            if ((selected = second_groups[index].second.find_if([raw_id](IntrusiveLink<Animation>& node) {
+                return reinterpret_cast<const SprtID&>(node.node_value()->handle) ==
+                       reinterpret_cast<const SprtID&>(raw_id);
             }))) return selected->node_value();
         }
         reinterpret_cast<SprtID&>(raw_id) = 0;

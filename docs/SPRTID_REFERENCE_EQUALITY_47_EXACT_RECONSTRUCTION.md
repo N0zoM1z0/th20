@@ -12,7 +12,7 @@ their contained words and returns `bool` with the real original `ret 4`.
 This method is not inferred from two identically sized bodies alone. The
 original **456-byte game `SprtCtrlInf::getSprt(SprtID)` resolver** now has
 independently verified exact source and immutable original RTTI showing its
-`LinkInf<SprtInf*>` reference-capturing lambdas. The linked native predicate
+`LinkInf<SprtInf*>` lambdas. Later original PE constructor and vtable audits prove the four-byte `SprtID` is **captured by value**, not by reference; see [CORE/RECON-777](ANIMATION_POOL_SPRT_LAMBDA_VALUE_CAPTURE_43_EXACT_RECONSTRUCTION.md). The linked native predicate
 caller at original **`0x00449600`** resolves the current linked `Animation*`,
 selects its live ID at `Animation+0x4C0`, and **physically E8-calls the
 `0x00449400` comparison at `0x00449620`**. The source-level owner `SprtID`

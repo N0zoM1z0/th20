@@ -168,6 +168,38 @@ def main() -> None:
               f"{instruction_count}/{instruction_count} x86, {len(expected_calls)} native E8, "
               f"{len(expected_data)} true PE HIGHLOW")
 
+    # The actual 26-byte original lambda constructor copies four ID value
+    # bytes from the argument pointer *into* the closure object. It is not
+    # a source expression that only stores an external reference pointer.
+    closure_constructor = decode(image, 0x00447960, 26)
+    assert len(closure_constructor) == 12
+    assert any(x.address == 0x0044796A and x.mnemonic == "mov"
+               and x.op_str == "ecx, dword ptr [eax]" for x in closure_constructor)
+    assert any(x.address == 0x0044796F and x.mnemonic == "mov"
+               and x.op_str == "dword ptr [edx], ecx" for x in closure_constructor)
+
+    # Both physically distinct original RTTI lambda types share a single
+    # original _Do_call implementation and one physical 43B operator() body.
+    # Verify real PE32 relocated original vtables, not Ghidra names.
+    for table in (0x0056E600, 0x0056E61C):
+        assert table + 8 in highlow
+        assert struct.unpack("<I", original_bytes(image, table + 8, 4))[0] == 0x0044B3D0
+    shared_invoker = decode(image, 0x0044B3D0, 41)
+    assert any(x.address == 0x0044B3EB and x.op_str == "0x447920"
+               for x in shared_invoker if x.mnemonic == "call")
+    forwarding_call = decode(image, 0x00447920, 17)
+    assert any(x.mnemonic == "call" and x.op_str == "0x449600" for x in forwarding_call)
+    original_lambda = decode(image, 0x00449600, 43)
+    assert len(original_lambda) == 15
+    observed_lambda_calls = {
+        x.address: (x.address + 5 + struct.unpack_from("<i", x.bytes, 1)[0]) & 0xFFFFFFFF
+        for x in original_lambda if len(x.bytes) == 5 and x.bytes[0] == 0xE8
+    }
+    assert observed_lambda_calls == {0x0044960C: 0x0040C300, 0x00449620: 0x00449400}
+    assert original_lambda[-1].mnemonic == "ret" and original_lambda[-1].op_str == "4"
+    print("PASS original by-value SprtID lambda capture, two real PE vtables sharing one 43B predicate body")
+    print("PASS original 43B/15 x86 lambda uses 0x0040C300 node +0x00449400 SprtID equality calls")
+
     # These exact names are real bytes embedded in this locked executable's
     # RTTI, not guesses made from C++ or an imported reference repository.
     for address, role in ((0x005B31B0, b"<lambda_2>"), (0x005B3200, b"<lambda_1>")):

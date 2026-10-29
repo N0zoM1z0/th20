@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-774):** [live accepted
+**Current next-agent reading order (CORE/RECON-777):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,215 strict units, 568 authored exact whole functions,
-187,955 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,216 strict units, 569 authored exact whole functions,
+187,998 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original 43B SprtID lambda predicate exact and corrected by-value ID capture
+
+- [CORE/RECON-777 — original full 43B SprtID live-link predicate and immutable by-value capture proof](ANIMATION_POOL_SPRT_LAMBDA_VALUE_CAPTURE_43_EXACT_RECONSTRUCTION.md) — native 26B lambda constructor copies four ID bytes, two different RTTI callable vtables contain genuine PE HIGHLOW to the SAME original `_Do_call`, forwarding to the single original 43B lambda predicate at 0x00449600. Two original E8 to actual link node and previously exact 47B SprtID reference equality; both modern lambda bodies compile 43/43 but credit ONE original physical game function only. Only the one source/object containing already whole exact 456B resolver/159B walker/154B wrapper was recompiled; **4/4 full strict zero-difference**. Live exact **569 methods /187,998B**, **1,216** strict units, 249 providers, no full cold replay.
 
 ## Original 159B +154B native Animation link predicate and list wrapper complete strict exact
 
