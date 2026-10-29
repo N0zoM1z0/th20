@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/ORIGIN-708.** This file is a
+**Last reconciled: 2026-10-29, CORE/RECON-710.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -67,7 +67,7 @@ that entire parent is reconstructed.
 | `0x004FFA10` Player movement | **555B, 135 x86** | [Complete source](../src/PlayerMovement.cpp) emits **561B /136**, all original mnemonic kinds but one unwanted 6B SSE spill before `cvttss2si esi,xmm0`; not fixed by `/fp` changes or SSE intrinsics. [Full immutable PE history](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md). **NONEXACT**. |
 | `0x0047DB70` Bullet drawing group | **273B** | [Complete source and extra SSE spill frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md); compiler currently emits ~283B. **NONEXACT**. |
 | `0x004A4190` Enemy mesh | **1,649B** | [Whole C++ owner and original transient lifetime](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md); existing source is nonexact, do not forge an unused byte. |
-| `0x0047DCF0` Bullet command dispatcher | **12,140B** | Distinct **NONEXACT** controller parent even though the 1,404B command-11 child is exact. [Source map](SOURCE_MAP.md). |
+| 0x0047DCF0 Bullet::run_extended_commands | **12,140B / 2,490 original x86** | Independent [whole original 34-case native command-switch and exact caller proof](BULLET_12140_ORIGINAL_34_CASE_DISPATCHER_FRONTIER.md). Genuine original PE has 34 relocated 32-bit switch words (32 distinct physical entries, IDs 5/14/28 share default), **210 E8 / 38 body HIGHLOW + 34 switch-table HIGHLOW**. Independently exact **3,735B emitter E8 at 0x004826B5** and **1,846B Bullet physics E8 at 0x00485D7B** both link to the same true Bullet::run_extended_commands typed C++ symbol. 188 original E8 call occurrences point to known canonical heads; no complete maintained C++ method definition exists. Real game owner high-confidence but **still source-absent, unclassified, NONEXACT, zero new game-exact bytes**; post-body table is distinct support, not authored body credit. |
 | `0x0048C010` Enemy ECL dispatcher | **41,967B** | Huge original VM/controller parent **NONEXACT**. [Dispatch layout / table analysis](CORE_ENEMY_DISPATCH_LAYOUT.md). |
 | `0x0042B5D0` Animation VM update | **39,470B** | **NONEXACT** giant original parent; native-exact child parsers, loaders, reset and frame helpers cannot be counted as this body. [Animation owner map](SOURCE_MAP.md). |
 
@@ -75,7 +75,7 @@ that entire parent is reconstructed.
 3,735B / 3,832B full contribution, and the previously open 73B Animation
 factory is now strict exact with all old 492 affected units protected.
 Continue the 555B Player movement SSE spill and 3,111B Player main-frame
-register/frame ABI; then the 12,140B Bullet command dispatcher,
+register/frame ABI; then the original 12,140B source-absent Bullet 34-command sequencer,
 39,470B Animation VM and 41,967B Enemy opcode parent. Do not infer exact giant parent bodies merely from
 their exact children. All source/code work should be validated with
 affected-only native replays, never automatic global cold replay.

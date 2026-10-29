@@ -16,6 +16,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## Complete original 12,140-byte Bullet command Boss native switch and game-owner evidence
+
+- [CORE/RECON-710 — genuine original 12,140B Bullet::run_extended_commands 34-way switch table and 210 original E8 calls](BULLET_12140_ORIGINAL_34_CASE_DISPATCHER_FRONTIER.md) — complete original **2,490 i386 instruction heads**, 210 real original E8, **38 actual body PE HIGHLOW plus 34 genuine post-body table HIGHLOW**, 34 original case indices /32 distinct native entries (5, 14, 28 share the default tail). Exact **3,735B Bullet emitter and 1,846B Bullet physics** have two genuine original physical E8 calls to this method and identical typed C++ symbol; **188/210 original E8 occurrences** target already configured canonical whole-function heads. The real class/game owner is confirmed independently; **the full maintained C++ definition still does not exist**, so original 12,140B remains source-absent NONEXACT and receives **zero** exact byte credit. No global cold replay.
+
 ## Bullet emission large whole-boss strict original exact acceptance
 
 - [CORE/EXACT-645 — original complete 3,735B BulletController::emit 100% strict exact plus 3,832B whole compiler contribution](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md) — **935/935 native instructions; 60/60 independently attested original E8 physical callees; 69/69 independently anchored original HIGHLOW including all 24 switch-table targets and the true old EH handler; 3,316/3,316 nonrelocated bytes and final 3,832/3,832 whole native strict equality.** Discovered and corrected historic **4.0f vs wrongly assumed 2.0f velocity multiplier** from original 0x0056C8E0 data. Exactly one new whole game owner cold built/replayed **1/1**, no full cold replay; game-authored strict exact **499 functions / 179,444 bytes**, unrelated large parents still open.
