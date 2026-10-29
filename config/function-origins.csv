@@ -1065,7 +1065,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043F550,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
 0x0043F5C0,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
 0x0043F630,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
-0x0043F6A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0043F6A0,authored,Animation,authored,high,"CORE/RECON-802; docs/ANIMATION_QUAD_RENDER_3159_TYPED_SOURCE_FRONTIER_AND_COLOR_80_EXACT.md; entire native 3159B/763i386 custom quad submit game renderer called by five separately exact game quad modes, 41 native E8/11 heads, 96 in-body genuine PE HIGHLOW, 5 color-mode PE pointers, source-present but NONEXACT"
 0x00440310,authored,Animation,authored,high,"CORE/RECON-796; docs/ANIMATION_DRAW_MODE4_48_MODE5_142_STRICT_EXACT.md; original 5993B Animation renderer native case directly E8 calls whole 48B game-owned method, original 2 real PE E8/HIGHLOW fields independently attested"
 0x00440340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004408B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

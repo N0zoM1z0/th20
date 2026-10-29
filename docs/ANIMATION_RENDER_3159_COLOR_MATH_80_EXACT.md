@@ -1,5 +1,7 @@
 # CORE/RECON-801 — original 3159B Animation quad renderer: 80B exact color math and native whole-function audit
 
+> **Subsequent CORE/RECON-802:** The entire original 3,159B renderer quad submit parent now has one maintained, typed, compiling C++ candidate, but remains **NONEXACT** (2,085 executable C++ bytes/558 x86 vs 3,159 original/763). [Current whole-source proof and 80B strict exact children](ANIMATION_QUAD_RENDER_3159_TYPED_SOURCE_FRONTIER_AND_COLOR_80_EXACT.md). Old SOURCE-ABSENT labeling and totals below describe this earlier CORE801 checkpoint only.
+
 Target is the immutable Japanese TH20 v1.00a Steamless executable,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This checkpoint independently audits **the entire original 3,159B /763 x86

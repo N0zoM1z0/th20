@@ -1,7 +1,7 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-801):** [live accepted
+**Current next-agent reading order (CORE/RECON-802):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Entire original 3,159B Animation quad submit Boss typed C++ source-present, still NONEXACT
+
+- [CORE/RECON-802 — complete native typed C++ submission/clip/texture/color/UV pipeline for original 3,159B renderer](ANIMATION_QUAD_RENDER_3159_TYPED_SOURCE_FRONTIER_AND_COLOR_80_EXACT.md) — now **source-present game Boss**, integrated with existing exact five caller quad modes and 80B whole strict exact custom color arithmetic. Original PE verifies **41 native E8 /11 destination types**, **96 real HIGHLOW /10 targets**, and the actual **five-pointer color-mode dispatch after a single NOP**; original graphics viewport at `0x005C5840` is existing `Graphics::current_viewport` at +0xB00 (typed view bounds +0x11C/+0x124). Pinned full C++ compiles in one private probe to **2,085 actual executable bytes/558 x86 +23B after-return table/alignment =2,108B COFF**, still **NONEXACT vs original 3,159B/763 i386**; neither source exact credit nor all-backend linkage is claimed. New source does not touch old strict inputs, no full cold replay. Live **1,231 source mappings**, 584 original game methods/189,186 exact bytes, 1,231 strict units/254 objects.
 
 ## Original 3,159B renderer quad submit Boss audit plus 80B native exact color arithmetic
 

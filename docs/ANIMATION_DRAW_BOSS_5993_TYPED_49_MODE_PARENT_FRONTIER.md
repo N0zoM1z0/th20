@@ -1,5 +1,7 @@
 # CORE/RECON-800 — the original entire 5,993B Animation draw Boss now has one maintained 49-mode typed C++ parent source (NONEXACT)
 
+> **Subsequent CORE/RECON-802:** The original 3,159B quad submission callee used by five exact renderer modes now has typed C++ source, still NONEXACT; [whole semantic frontier and full original PE proof](ANIMATION_QUAD_RENDER_3159_TYPED_SOURCE_FRONTIER_AND_COLOR_80_EXACT.md). This is not extra original byte credit for the 5,993B draw Boss.
+
 Original immutable target: Japanese TH20 v1.00a Steamless,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This checkpoint moves the genuine **`0x00443880` `AnimationPoolOwner::draw(Animation*)`**
