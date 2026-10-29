@@ -36,7 +36,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | Enemy | Actual EnemyState/Enemy, movement, parameters, handles and whole defeat; independently identified 0xB4 StoneEnemyController | Whole 0x48C010 dispatcher, queue/factory emission and resource/VM integration |
 | Scheduler | Actual controller/nodes, observed lists, sorted registration/dispatch and scalar allocation/release | Unlocked removal emission and process-global startup |
 | Player/Bomb/Bullet/Item/Hit | Typed ownership, pools, Context publication, SHT/damage consumers, Hit allocation/lifecycle and Item spawning | Whole damage query, full gameplay, resource callbacks and remaining controller factories |
-| Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction | Remaining compressor/SaveManager emission and startup |
+| Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction; **whole original 1,036B compressor and 706B decoder are already strict exact** | Remaining File write/SaveManager emission, integration and startup |
 | Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned mesh allocation/retirement, surface/geometry records and two-bit flag view | Renderer declaration, mesh creation, full rendering and resource integration |
 | Sound | Actual SoundInf storage and loading/preload protocol | Whole dispatcher, startup and resource-owning retirement |
 | Platform/UI | Verified window/input/value/menu components; complete FrontInf, AsciiInf and Dialogue storage/construction, real ready/callback routing and Laser cancellation receiver | Native Dialogue/HUD/text resource retirement and frame execution, follow-box geometry, complete scene owners, OS resources and global initialization |
@@ -50,15 +50,28 @@ See [source ownership](SOURCE_MAP.md) for maintained files and focused evidence.
 
 ## Whole-function frontier
 
-The 40,752-byte Animation VM and the whole Enemy opcode dispatcher remain open.
-The ECL Runtime tick at 0x53B5C0 is accepted with its complete 11,504-byte compiler
-contribution, including alignment and its 98-entry table. Source and exact credit
-for dependencies do not establish partial exactness of their callers.
+The original **39,470-byte Animation VM at 0x0042B5D0** and separate
+**41,967-byte Enemy opcode dispatcher at 0x0048C010** remain open.
+The 12,140B Bullet command parent at 0x0047DCF0 is also source-absent
+NONEXACT, despite 203/210 native original E8s targeting existing canonical
+heads and verified 34+8+11 switch pointers. The original **3,735B Bullet
+emitter is already whole strict exact**; its earlier one-instruction
+compiler frontier was superseded.
 
-The Renderer allocation and its unresolved +6000DFC interval are recorded in
-[the handoff](RE_HANDOFF.md). Do not invent an owner field or padding from negative
-search results. Ghidra function bodies can omit valid listing instructions;
-complete PE control flow and tables establish reviewed extents.
+The independent ECL Runtime tick at 0x0053B5C0 is accepted with its complete
+11,504-byte compiler contribution (11,110B game-body coverage), including
+alignment and its 98-entry switch table. Exact callees do not establish
+exactness of an unimplemented whole parent. Refer to the [current handoff](RE_HANDOFF.md)
+and [original Bullet E8 map](BULLET_12140_E8_203_7_SOURCE_CLOSURE.md).
+
+The Renderer allocation and still-unresolved original
+Renderer+0x6000DFC..0x6000DFF field are documented in the focused
+[Animation pool lifetime proof](ANIMATION_POOL_LIFETIME_RECONSTRUCTION.md)
+and [native knowledge base](KNOWLEDGE_BASE.md), not necessarily repeated in
+the short current handoff. Do not invent an owner field or padding from
+negative searches. Ghidra function bodies can omit valid listing
+instructions; only the complete original PE control flow/tables establish
+whole native extents.
 
 No whole-game compile/link or playable reconstruction is available. Test fixtures
 exercise maintained owners with explicit unresolved boundaries; they do not

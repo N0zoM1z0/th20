@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import tomllib
 from pathlib import Path
@@ -20,7 +21,8 @@ TARGET_SHA256 = "a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a089
 # Revisit this list against native source/frontier evidence at every cleanup.
 ACTIVE_PROBE_DIRECTORIES = frozenset(
     {
-        # Bullet command-11 / emitter / drawing / intrusive resource ABI.
+        # Historical exact command-11/emitter probes retained as selected
+        # original-CFG comparison inputs for unresolved Bullet draw/dispatch.
         "core255-probes", "core263-probes", "core264-probes",
         "core285-probes", "core287-probes", "core288-probes",
         "core290-probes", "core291-probes", "core292-probes",
@@ -32,9 +34,9 @@ ACTIVE_PROBE_DIRECTORIES = frozenset(
         "core456-probes", "core457-probes", "core459-probes",
         # Still-open EnemyState mesh and archive compression.
         "core384-probes", "core388-probes",
-        # Active exact-byte frontier of the 3,735B Bullet emitter. Retain
-        # the current verified 934/935 probe and important counterexamples;
-        # older, reproducible full-source trials can be retired safely.
+        # Selected original Bullet emitter codegen benchmarks. The 3,735B
+        # emitter is now STRICT EXACT; these are dated private diagnostics,
+        # not an indication that its own native body remains nonexact.
         "core601-probes", "core614-probes", "core616-probes",
         "core620-probes", "core621-probes", "core622-probes",
         "core626-probes",
@@ -50,6 +52,41 @@ def digest(path: Path) -> str:
         for chunk in iter(lambda: source.read(1024 * 1024), b""):
             result.update(chunk)
     return result.hexdigest()
+
+
+def documented_native_probes(root: Path) -> set[Path]:
+    """Protect actual build objects directly named by tracked source/proof text.
+
+    A Markdown/script citation to an exact private .obj path is stronger
+    evidence of current provenance than a dated directory-number allowlist.
+    This guard protects *individual* referenced artifacts without retaining
+    thousands of unused variants in the same experimental directory.
+    Missing historical paths cannot be deleted and require no fake entries.
+    """
+    paths = subprocess.check_output(
+        ["git", "ls-files", "-z", "--", "README.md", "docs", "scripts"],
+        cwd=root,
+    ).decode().split("\0")
+    # All artifacts remain confined to build/, never accept arbitrary file
+    # paths from a Markdown comment as external deletion/protection requests.
+    pattern = re.compile(
+        r"(?<![\w/])build/[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+"
+        r"(?:\.receipt\.json|\.obj)\b"
+    )
+    references: set[Path] = set()
+    for name in paths:
+        if not name:
+            continue
+        document = root / name
+        if not document.is_file() or document.suffix not in {
+            ".md", ".py", ".toml", ".json", ".txt",
+        }:
+            continue
+        for raw in pattern.findall(document.read_text(errors="replace")):
+            relative = Path(raw)
+            if (root / relative).is_file() and not (root / relative).is_symlink():
+                references.add(relative)
+    return references
 
 
 def main() -> None:
@@ -76,7 +113,8 @@ def main() -> None:
     units = manifest["units"]
     canonical_objects = {Path(u["object"]) for u in units.values()}
     canonical_receipts = {p.with_suffix(".receipt.json") for p in canonical_objects}
-    protected = canonical_objects | canonical_receipts
+    proof_references = documented_native_probes(root)
+    protected = canonical_objects | canonical_receipts | proof_references
     assert len(units) > 1000 and len(canonical_objects) > 200
     assert all((root / path).is_file() for path in protected)
     assert digest(root / "resources/th20.exe") == TARGET_SHA256
@@ -120,7 +158,9 @@ def main() -> None:
     )
     print(
         f"PROTECTED: {len(canonical_objects)} canonical objects, "
-        f"{len(canonical_receipts)} receipts, {len(active_files)} active probe files"
+        f"{len(canonical_receipts)} receipts, "
+        f"{len(proof_references)} referenced proof artifacts, "
+        f"{len(active_files)} active probe files"
     )
 
     if options.apply and files:
@@ -147,6 +187,7 @@ def main() -> None:
                     "canonical_objects": len(canonical_objects),
                     "canonical_receipts": len(canonical_receipts),
                     "protected_path_sha256": original_hashes,
+                    "tracked_proof_artifacts": sorted(map(str, proof_references)),
                     "active_probe_directories": sorted(ACTIVE_PROBE_DIRECTORIES),
                     "deleted_files": len(files),
                     "deleted_bytes": bytes_retired,

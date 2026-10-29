@@ -1,5 +1,16 @@
 # CORE/DOC-CLEANUP-628 — current-state documentation and guarded probe-cache retirement
 
+
+**Later current-state correction (CORE/MAINT-751, 2026-10-29):** This
+report is an *archived checkpoint*, not the live exact inventory.
+The 3,735B Bullet emitter and 73B Animation factory were subsequently
+admitted whole-native exact, and the graph subsequently reached
+1,203 strict units /245 canonical object/receipt pairs. See
+[current RE_HANDOFF](RE_HANDOFF.md) and the later
+[guarded cleanup](MAINTENANCE_STORAGE_2026_10_29.md). The historical
+498/175,709 and 243-provider counts below are dated, not current;
+do not discard private original ABI snapshots to increase reclaimed space.
+
 **Date:** 2026-10-29. This is a **documentation/control-plane and ignored
 artifact** cleanup, not a new native reconstruction checkpoint. The target,
 real C++/public headers, function ledger classification, pinned canonical

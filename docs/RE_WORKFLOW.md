@@ -169,18 +169,21 @@ Keep current CI evidence, failed logs, native exports and active inputs intact.
 
 ## Live guarded artifact-retirement procedure (CORE/DOC-CLEANUP-628)
 
-The newer [CORE/DOC-CLEANUP-628 storage audit](ARTIFACT_RETIREMENT_CORE628.md)
-supersedes earlier **live artifact/provider counts**, not their recorded
-historical facts. The current original native graph uses **243 canonical
-object/receipt providers (486 protected files)** and **1,184 configured
-strict units**. All 243 objects and sibling receipts are protected from
-retirement by the *live* `config/match-units.toml`; no hardcoded prior
-236/212-provider numbers should be treated as live.
+The [CORE/DOC-CLEANUP-628 storage audit](ARTIFACT_RETIREMENT_CORE628.md)
+recorded **243 canonical object/receipt pairs and 1,184 strict native
+units at that historical checkpoint**, NOT as live figures. CORE/MAINT-751
+has **245 canonical pairs and 1,203 strict units** from the live manifest.
+Future agents must derive these counts from config/match-units.toml, not
+dated prose. The older 236/212-provider audits similarly retain only
+their historical checkpoint significance.
 
-The audited follow-on retired **1,148 noncanonical `.obj`/receipt files,
-45,337,123 bytes (43.24 MiB)** from ignored `build/`, while retaining
-1,696 active probe files and **all 486 live protected SHA-256 hashes**,
-including the immutable original target. The proof includes a unique private
+That **historical CORE628** retirement deleted **1,148 noncanonical
+object/receipt files and 45,337,123 bytes (43.24 MiB)** while retaining
+the then-current 486 protected hashes, 1,696 active probe files and
+the immutable original target. The later
+[CORE/MAINT-751 storage audit](MAINTENANCE_STORAGE_2026_10_29.md)
+protects **245 current canonical pairs** and individually cited
+original-code probe objects. The proof includes a unique private
 `.analysis/core628-build-retirement-inventory.json`, a dry-run transcript
 and an apply transcript. Actual active Bullet 3,735B and Player
 555B/3,111B source inputs and selected compiler probe objects were retained.
