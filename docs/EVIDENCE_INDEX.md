@@ -1,7 +1,7 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-790):** [live accepted
+**Current next-agent reading order (CORE/RECON-792):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Complete 49-mode original Animation draw Boss path-specific x86/actual E8 routing
+
+- [CORE/RECON-792 — all 49 original main/nested mode entry paths and their real E8 callsite/callee mapping](ANIMATION_DRAW_BOSS_49_MODE_ORIGINAL_E8_CFG.md) — machine-readable [49-row mode call matrix](../config/animation-draw-boss-mode-e8.csv), independently regenerated/tested through original 5,993-byte x86 CFG, original 49+31 real PE HIGHLOW tables, true branches and E8 displacement targets. **47 selected render/action routes through 43 distinct original physical E8 call instructions to 29 native callee heads**; modes 10/23 take no such E8; modes 9/12/13/14 and 24/25 intentionally share physical callsites. Second table is reached by **28** modes, not every index in its 31-element range. Original 5,993B parent is still SOURCE-ABSENT/NONEXACT; no new exact bytes. **Compiler input changed: zero; no cold replay**. Live strict game total remains 577/188,625B in 1,224 units/252 providers.
 
 ## Original 192B/55-instruction Animation draw queue flush whole strict exact
 

@@ -6,6 +6,7 @@ boundaries as ground truth. This script verifies both of the *distinct* native
 switch tables; it does not assert source-level exactness for the parent body.
 """
 from collections import Counter
+import csv
 from pathlib import Path
 import struct
 import sys
@@ -86,6 +87,95 @@ def decoded(image, base, sections, address, length):
     return insns
 
 
+def verify_mode_dispatch_paths(instructions, main, nested) -> None:
+    """Check all 49 original main modes against the original-PE-only CFG.
+
+    This does not assume the Ghidra decompiler's guessed C++ switch or any
+    original source method names. Branches and E8 destinations come directly
+    from the same locked 5,993-byte x86 body as the real jump-table targets.
+    """
+    path = Path(__file__).resolve().parents[1] / "config/animation-draw-boss-mode-e8.csv"
+    with path.open(newline="") as f:
+        rows = list(csv.DictReader(f))
+    required = ("mode", "main_entry", "nested_entry", "render_e8_site",
+                "render_target", "reachable_x86_heads")
+    assert len(rows) == 49
+    assert tuple(rows[0]) == required
+    modes = [int(row["mode"]) for row in rows]
+    assert modes == list(range(49))
+    heads = {ins.address: ins for ins in instructions}
+    render_callees = {int(row["render_target"], 16)
+                      for row in rows if row["render_target"]}
+    assert len(render_callees) == 29, len(render_callees)
+
+    confirmed_render_modes = []
+    covered_modes_using_nested_switch = []
+    confirmed_call_sites = set()
+    for mode, row in enumerate(rows):
+        target_main = int(row["main_entry"], 16)
+        assert target_main == main[mode], (mode, hex(target_main), hex(main[mode]))
+        target_nested = int(row["nested_entry"], 16) if row["nested_entry"] else None
+        assert target_nested == (nested[mode - 16] if target_main == 0x00443C1D else None)
+        if target_nested is not None:
+            assert 16 <= mode <= 46
+            covered_modes_using_nested_switch.append(mode)
+        visited = set()
+        stack = [target_main]
+        actual_mode_draw_e8 = []
+        encountered_nested_dispatch = False
+        while stack:
+            address = stack.pop()
+            if address in visited:
+                continue
+            assert address in heads, (mode, hex(address), "branch outside original function")
+            visited.add(address)
+            ins = heads[address]
+            end = address + ins.size
+            if len(ins.bytes) == 5 and ins.bytes[0] == 0xE8:
+                destination = (end + struct.unpack_from("<i", ins.bytes, 1)[0]) & 0xFFFFFFFF
+                if destination in render_callees:
+                    actual_mode_draw_e8.append((address, destination))
+            if ins.mnemonic in ("ret", "retn", "iret"):
+                continue
+            if ins.mnemonic == "jmp":
+                if address == 0x00443D64:
+                    assert target_nested is not None
+                    encountered_nested_dispatch = True
+                    stack.append(target_nested)
+                elif address == 0x0044391F:
+                    # Kept for completeness if the initial entry changes.
+                    stack.append(target_main)
+                elif ins.op_str.startswith("0x"):
+                    stack.append(int(ins.op_str, 16))
+                else:
+                    raise AssertionError((mode, hex(address), ins.op_str))
+            elif ins.mnemonic.startswith("j") and ins.op_str.startswith("0x"):
+                stack.extend((end, int(ins.op_str, 16)))
+            else:
+                stack.append(end)
+        assert encountered_nested_dispatch == (target_nested is not None)
+        assert len(visited) == int(row["reachable_x86_heads"]), (mode, len(visited))
+        expected = ([] if not row["render_e8_site"] and not row["render_target"]
+                    else [(int(row["render_e8_site"], 16), int(row["render_target"], 16))])
+        assert sorted(actual_mode_draw_e8) == expected, (mode, actual_mode_draw_e8, expected)
+        if expected:
+            assert expected[0][0] in heads and heads[expected[0][0]].mnemonic == "call"
+            confirmed_render_modes.append(mode)
+            confirmed_call_sites.add(expected[0][0])
+    assert len(covered_modes_using_nested_switch) == 28
+    assert all(mode not in covered_modes_using_nested_switch for mode in (23, 24, 25))
+    assert len(confirmed_render_modes) == 47
+    # Several original main switch cases intentionally share exactly the
+    # SAME compiled E8 site: modes 9/12/13/14 and 24/25.
+    assert len(confirmed_call_sites) == 43
+    assert [mode for mode in range(49) if mode not in confirmed_render_modes] == [10, 23]
+    print("PASS original full 49-mode draw Boss CFG: 47 dispatched modes, "
+          "43 physically distinct original E8 call sites, 29 renderer callee heads")
+    print("PASS original shared call sites: mode 9/12/13/14, mode 24/25; "
+          "modes 10/23 have no renderer E8")
+    print("PASS 28 actual main-to-nested switch traversals; mode 24/25 use their main table directly")
+
+
 def verify() -> None:
     image, _ = verified_target()
     base, sections = parse_sections(image)
@@ -134,6 +224,7 @@ def verify() -> None:
     assert main[47] == 0x00443B59
     assert nested[0] == 0x00443E06 and nested[30] == 0x00444EF9
     assert all(nested[index] == 0x00444FD7 for index in (7, 8, 9))
+    verify_mode_dispatch_paths(instructions, main, nested)
     assert heads[0x00443912].mnemonic == "cmp" and heads[0x00443912].op_str == "dword ptr [ebp - 0x28], 0x30"
     assert heads[0x00443D57].mnemonic == "cmp" and heads[0x00443D57].op_str == "dword ptr [ebp - 0x24], 0x1e"
     assert heads[0x00443D51].mnemonic == "sub" and heads[0x00443D51].op_str == "ecx, 0x10"

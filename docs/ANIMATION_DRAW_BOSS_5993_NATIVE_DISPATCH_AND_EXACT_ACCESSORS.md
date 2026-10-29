@@ -1,5 +1,7 @@
 # CORE/RECON-782 — the original 5,993-byte Animation draw Boss and four complete exact game accessors
 
+> **Subsequent CORE/RECON-792:** All 49 original mode paths now have source-independent PE32/Capstone CFG + exact direct E8 callsite/callee mappings, including 28 real nested-table routes and two default/non-render cases. [Original 49-mode path proof and machine-readable manifest](ANIMATION_DRAW_BOSS_49_MODE_ORIGINAL_E8_CFG.md). The 5,993B parent remains SOURCE-ABSENT/NONEXACT; the counts below belong to this older checkpoint.
+
 > **Subsequent CORE/RECON-785:** Three more complete original 92B Graphics render-state transitions are now strictly exact (**276B game .text**) on this same 5,993B Boss call graph. [Native D3D9 state transition proof](GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md). The counts below are the historical CORE/RECON-782 snapshot, not live totals.
 
 The hash-locked original is Japanese TH20 v1.00a Steamless, SHA-256
