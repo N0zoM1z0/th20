@@ -1,5 +1,7 @@
 # CORE/RECON-673 — complete Player main frame: native two-focus results and 33-slot history lifetimes
 
+**Later [CORE/RECON-699](PLAYER_MAIN_3111_NATIVE_XY_ACCUMULATION_ORDER.md) update:** the maintained nonexact parent now emits **3,077B/777 instructions**, original ordered mnemonic alignment **766/783**, by restoring original X-then-Y residual update order. The 3,093B measurement below is the older pre-699 checkpoint, not current exactness.
+
 **The complete original 3,111-byte, 783-instruction Player::update_main_frame at 0x004F9C30 remains NONEXACT.**
 All machine-code evidence was independently read from the original
 Japanese TH20 v1.00a Steamless executable (SHA-256

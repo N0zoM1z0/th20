@@ -186,16 +186,23 @@ std::int32_t Player::update_main_frame() {
                                        static_cast<std::uint32_t>(y_speed));
     }
     {
-    const std::int32_t stored_x = static_cast<std::int32_t>(vector_20f0.x * native_128);
-    const std::int32_t stored_y = static_cast<std::int32_t>(vector_20f0.y * native_128);
+    // Original +0x849..+0x880 accumulates X *before* loading Y:
+    // convert vector_20f0.x, add to dx, store dx; only then convert
+    // vector_20f0.y, add to dy, store dy. The previous stored_x/stored_y
+    // pair kept both results live and generated non-original stack copies.
+    // Unsigned intermediate addition preserves native 32-bit wraparound.
     dx = static_cast<std::int32_t>(
-        static_cast<float>(static_cast<std::int32_t>(static_cast<std::uint32_t>(stored_x)
-                          + static_cast<std::uint32_t>(dx))) * field_20ec);
+        static_cast<std::uint32_t>(dx) +
+        static_cast<std::uint32_t>(static_cast<std::int32_t>(vector_20f0.x * native_128)));
     dy = static_cast<std::int32_t>(
-        static_cast<float>(static_cast<std::int32_t>(static_cast<std::uint32_t>(stored_y)
-                          + static_cast<std::uint32_t>(dy))) * field_20ec);
-
+        static_cast<std::uint32_t>(dy) +
+        static_cast<std::uint32_t>(static_cast<std::int32_t>(vector_20f0.y * native_128)));
+    // The original scales both accumulated components only after both
+    // native source vector contributions have been consumed.
+    dx = static_cast<std::int32_t>(static_cast<float>(dx) * field_20ec);
+    dy = static_cast<std::int32_t>(static_cast<float>(dy) * field_20ec);
     }
+
 finish_normal_movement:
     // The native frame selects animation scripts as X direction crosses zero,
     // but keeps its previous direction in 0x674 for each transition.
