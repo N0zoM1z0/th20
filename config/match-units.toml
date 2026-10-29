@@ -21264,3 +21264,25 @@ relocations = [
   { offset = 0x79, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
   { offset = 0x81, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
 ]
+
+# CORE/RECON-801: complete 45B game-owned render-channel arithmetic.
+[units.animation_color_128_saturating_45]
+source = "src/AnimationDrawColorMath.cpp"
+object = "build/core801-canonical/AnimationDrawColorMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::multiply_color_128_saturating"]
+symbol = "?multiply_color_128_saturating@th20@@YAEEE@Z"
+target_address = 0x0043F520
+size = 45
+relocations = []
+
+# CORE/RECON-801: complete 35B game-owned render-channel arithmetic.
+[units.animation_color_divide_255_35]
+source = "src/AnimationDrawColorMath.cpp"
+object = "build/core801-canonical/AnimationDrawColorMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::multiply_color_255"]
+symbol = "?multiply_color_255@th20@@YAEEE@Z"
+target_address = 0x0043F4F0
+size = 35
+relocations = []

@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-800):** [live accepted
+**Current next-agent reading order (CORE/RECON-801):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,229 strict units, 582 authored exact whole functions,
-189,106 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,231 strict units, 584 authored exact whole functions,
+189,186 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original 3,159B renderer quad submit Boss audit plus 80B native exact color arithmetic
+
+- [CORE/RECON-801 — complete original 3,159B/763 i386 quad-renderer original call/data audit plus two exact color methods](ANIMATION_RENDER_3159_COLOR_MATH_80_EXACT.md) — independent locked-PE census **41/41 real E8** over 11 actual targets and **96/96 original PE HIGHLOW** over ten physical targets. Original byte-channel `>>7`/saturate (`0x0043F520`, 24 original parent calls) and `/255` (`0x0043F4F0`, four calls) are now **45/45B +35/35B whole native strict** from one new object. The parent 3,159B is still SOURCE-ABSENT/NONEXACT; no all-graph replay, old exact inputs untouched. Live 584 exact game functions /189,186B, 1,231 strict units from 254 providers.
 
 ## Entire 5,993B Animation draw Boss source-present typed C++ with exact 123-call role census (NONEXACT)
 

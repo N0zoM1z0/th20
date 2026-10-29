@@ -1226,3 +1226,5 @@ th20::AnimationDrawModeOwner::draw_quad_mode2
 th20::AnimationDrawModeOwner::draw_quad_mode4
 th20::AnimationDrawModeOwner::draw_quad_mode5
 th20::AnimationPoolOwner::draw
+th20::multiply_color_128_saturating
+th20::multiply_color_255

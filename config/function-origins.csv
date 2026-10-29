@@ -1060,8 +1060,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043EB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043EB40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043EF20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043F4F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043F520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0043F4F0,authored,Animation,authored,high,"CORE/RECON-801; docs/ANIMATION_RENDER_3159_COLOR_MATH_80_EXACT.md; full 35B original custom renderer per-channel arithmetic, real original 0x0043F6A0 whole Boss references 4 direct E8 sites, exact whole native compiler code and no PE relocations"
+0x0043F520,authored,Animation,authored,high,"CORE/RECON-801; docs/ANIMATION_RENDER_3159_COLOR_MATH_80_EXACT.md; full 45B original custom renderer per-channel arithmetic, real original 0x0043F6A0 whole Boss references 24 direct E8 sites, exact whole native compiler code and no PE relocations"
 0x0043F550,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
 0x0043F5C0,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"
 0x0043F630,authored,Animation,authored,high,"CORE/RECON-793; docs/ANIMATION_DRAW_QUAD_THREE_97B_STRICT_EXACT.md; native 5993B renderer main path direct E8, real data four PE HIGHLOW + two original setup/render E8, complete 97B game-owned mode method"

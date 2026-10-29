@@ -1227,3 +1227,5 @@ th20::AnimationDrawModeOwner::draw_quad_mode2,0x0043F5C0,function
 th20::AnimationDrawModeOwner::draw_quad_mode4,0x00440310,function
 th20::AnimationDrawModeOwner::draw_quad_mode5,0x004413A0,function
 th20::AnimationPoolOwner::draw,0x00443880,function
+th20::multiply_color_128_saturating,0x0043F520,function
+th20::multiply_color_255,0x0043F4F0,function
