@@ -32,6 +32,14 @@ ACTIVE_PROBE_DIRECTORIES = frozenset(
         "core456-probes", "core457-probes", "core459-probes",
         # Still-open EnemyState mesh and archive compression.
         "core384-probes", "core388-probes",
+        # Active exact-byte frontier of the 3,735B Bullet emitter. Retain
+        # the current verified 934/935 probe and important counterexamples;
+        # older, reproducible full-source trials can be retired safely.
+        "core601-probes", "core614-probes", "core616-probes",
+        "core620-probes", "core621-probes", "core622-probes",
+        "core626-probes",
+        # The adjacent nonexact Player movement and 3,111B frame probes.
+        "core541-probes", "core558-probes",
     }
 )
 
@@ -50,6 +58,14 @@ def main() -> None:
         "--apply",
         action="store_true",
         help="Delete reviewed disposable build products and retain SHA-256 inventory.",
+    )
+    parser.add_argument(
+        "--inventory",
+        type=str,
+        help=(
+            "Unique new .analysis/*.json audit inventory for --apply; "
+            "never overwrite a prior cleanup audit."
+        ),
     )
     options = parser.parse_args()
 
@@ -108,8 +124,21 @@ def main() -> None:
     )
 
     if options.apply and files:
-        audit = root / ".analysis/core497-build-retirement-inventory.json"
-        assert audit.parent.is_dir()
+        if not options.inventory:
+            parser.error("--apply requires a unique --inventory .analysis/*.json path")
+        relative_audit = Path(options.inventory)
+        if (
+            relative_audit.is_absolute()
+            or len(relative_audit.parts) != 2
+            or relative_audit.parts[0] != ".analysis"
+            or relative_audit.suffix != ".json"
+            or any(part in (".", "..") for part in relative_audit.parts)
+        ):
+            parser.error("inventory must be a new top-level .analysis/*.json file")
+        audit = root / relative_audit
+        assert audit.parent.is_dir() and not audit.parent.is_symlink()
+        if audit.exists() or audit.is_symlink():
+            parser.error(f"audit inventory already exists, refusing overwrite: {audit}")
         # Write durable private inventory *before* deleting any paths.
         audit.write_text(
             json.dumps(

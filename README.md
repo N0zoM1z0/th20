@@ -152,7 +152,7 @@ limits; nonexact implementations remain documented for further reconstruction.
 - [Focused evidence index](docs/EVIDENCE_INDEX.md)
 - [Architecture and target inventory](docs/ARCHITECTURE.md)
 - [Reconstruction workflow](docs/RE_WORKFLOW.md)
-- [Guarded artifact retirement and storage audit](docs/ARTIFACT_RETIREMENT_2026_10_29.md)
+- [Current concise handoff and guarded storage cleanup (CORE628)](docs/ARTIFACT_RETIREMENT_CORE628.md)
 - [Independent oracles](docs/ORACLES.md)
 - [Build and strict matching](docs/BUILD_MATCHING.md)
 - [Ghidra setup and attestation](docs/GHIDRA.md)

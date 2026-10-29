@@ -22,7 +22,9 @@ naming, original translation-unit identity or whole-game runtime.
 
 ## Whole dispatch and ownership
 
-The ECL Runtime tick is exact as a complete 11,504-byte contribution. The whole
+The ECL Runtime tick is exact as an **11,110-byte whole original
+function body** with **11,504 bytes in its complete compiler
+contribution** (the additional bytes are not extra authored code). The whole
 Enemy and Animation VMs remain open. Ghidra function membership omits valid
 instruction heads in large dispatchers. Complete listing/PE interval audits
 retain every case, internal jump and associated table; omitted jumps are not

@@ -25,9 +25,9 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 
 Read `RE_HANDOFF.md` and the relevant source/evidence; consult the other guides
 as needed for the selected unit. Use one native reconstruction writer at a time.
-Keep workflow-only Codex changes
-separate from concurrent web reconstruction. Ghidra and compiler wrappers
-serialize their operations.
+Own all live dirty and untracked work in this single-worker repository;
+there is no other session whose changes should be skipped. Ghidra and compiler
+wrappers serialize their operations.
 
 ## Bounded reconstruction loop
 
@@ -167,7 +167,45 @@ original path, original SHA-256, archive path and archive SHA-256 in the private
 retirement inventory; verify decompressed bytes before removing the original.
 Keep current CI evidence, failed logs, native exports and active inputs intact.
 
-## Current guarded build-object cleanup (CORE/CLEANUP-497)
+## Live guarded artifact-retirement procedure (CORE/DOC-CLEANUP-628)
+
+The newer [CORE/DOC-CLEANUP-628 storage audit](ARTIFACT_RETIREMENT_CORE628.md)
+supersedes earlier **live artifact/provider counts**, not their recorded
+historical facts. The current original native graph uses **243 canonical
+object/receipt providers (486 protected files)** and **1,184 configured
+strict units**. All 243 objects and sibling receipts are protected from
+retirement by the *live* `config/match-units.toml`; no hardcoded prior
+236/212-provider numbers should be treated as live.
+
+The audited follow-on retired **1,148 noncanonical `.obj`/receipt files,
+45,337,123 bytes (43.24 MiB)** from ignored `build/`, while retaining
+1,696 active probe files and **all 486 live protected SHA-256 hashes**,
+including the immutable original target. The proof includes a unique private
+`.analysis/core628-build-retirement-inventory.json`, a dry-run transcript
+and an apply transcript. Actual active Bullet 3,735B and Player
+555B/3,111B source inputs and selected compiler probe objects were retained.
+
+**Do not overwrite previous retirement audits.** The guarded script now
+requires an explicit **new, unique** audit inventory for applying a nonempty
+deletion set:
+
+```sh
+scripts/repo-python scripts/prune-generated-artifacts.py
+# Review the target/protected/dry-run scope before explicitly applying:
+scripts/repo-python scripts/prune-generated-artifacts.py \
+    --apply --inventory .analysis/unique-new-retirement-inventory.json
+```
+
+Deleting historical `.analysis/*.json.gz` archives for their age is unsafe:
+retained source freeze/replay records and native evidence cite many of these
+exact snapshots. Preserve the Ghidra project, original executable, installed
+MSVC/Wine/D3DX, private references, native source, canonical receipts,
+independent PE proofs and current active hypotheses. An unchanged native
+source/manifest graph has **zero affected exact units** and does not require
+cold replay. The current [short handoff](RE_HANDOFF.md) is authoritative;
+check dated old proof documents via [the evidence index](EVIDENCE_INDEX.md).
+
+## Historical guarded build-object cleanup (CORE/CLEANUP-497)
 
 The [2026-10-29 artifact retirement report](ARTIFACT_RETIREMENT_2026_10_29.md)
 supersedes *live* artifact counts in the dated CORE/CLEANUP-300

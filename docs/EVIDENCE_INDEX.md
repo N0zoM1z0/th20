@@ -9,14 +9,18 @@ native exact inventory use the [current handoff](RE_HANDOFF.md),
 [generated progress](PROGRESS.md) and canonical source ledgers. Historical
 private `build/` paths may have been retired for storage; native evidence and
 cited private snapshots are retained, and disposable probe objects can be
-regenerated from original sources. The 1,253-line superseded handoff is preserved via Git
-revision 9eed65c; the even older 1,689-line handoff also
-remains in history. Current exact status is in the concise
-[handoff](RE_HANDOFF.md).
+regenerated from original sources. The immediately preceding **813-line**
+long handoff is preserved at `git show 3e0f343:docs/RE_HANDOFF.md`;
+earlier 1,253/1,689-line handoffs are also in Git history. The concise
+[handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
+Compiler scores labelled "current" in historical entries below mean
+**current at that checkpoint**, not the live source or accepted count.
 
 ## Workflow and storage
 
-- [CORE/CLEANUP-497 — current handoff consolidation, exact-status corrections and protected build-prune inventory](ARTIFACT_RETIREMENT_2026_10_29.md) — current cleanup, guarded canonical object/receipt protection, active boss probe retention and default dry-run artifact retirement.
+- [CORE/DOC-CLEANUP-628 — current concise handoff and live artifact retention](ARTIFACT_RETIREMENT_CORE628.md) — 813-line historical handoff consolidated to 147 current-state lines, 1,148 ignored reproducible probes / 43.24 MiB retired after dry-run and native-target plus 486 canonical SHA checks, no original game code changes or full cold replay. Unique private `--inventory` prevents loss of previous cleanup evidence.
+
+- [CORE/CLEANUP-497 — historical handoff and object-cache retirement](ARTIFACT_RETIREMENT_2026_10_29.md) — 1,670 files / 55.82 MiB retired, **236 canonical providers at that date**, not the live native graph.
 
 - [CORE/CLEANUP-300 artifact retirement and protected storage](ARTIFACT_RETIREMENT_2026_10_28.md) — 2,496 obsolete ignored files / 203.65 MiB retired, every canonical object/receipt and native target preserved, recorded SHA/path inventory.
 
@@ -86,7 +90,7 @@ remains in history. Current exact status is in the concise
 
 ## Bullet emitter complete 3,735B native IEEE float evaluation/order frontier
 
-- [CORE/RECON-594 — complete 3,735B Bullet emitter six native pi×2 SSE and three cumulative angle/stack source reconstructions](BULLET_EMITTER_3735_ORIGINAL_FLOAT_ORDER_911_FRONTIER.md) — builds on existing [CORE/RECON-587 odd-first source](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md), restores IEEE evaluation order in modes2/4/7, six original pi-then-two before column multiplies, real two speed locals and separate uint16 metadata re-reads. Current full source **3,685B/930 instructions and 911/935 native mnemonics aligned**, retains independent **60/60** original PE physical E8 callee destinations in order; still NONEXACT with no added authored bytes, only one noncanonical source compiled and no global cold replay.
+- [CORE/RECON-594 — complete 3,735B Bullet emitter six native pi×2 SSE and three cumulative angle/stack source reconstructions](BULLET_EMITTER_3735_ORIGINAL_FLOAT_ORDER_911_FRONTIER.md) — builds on existing [CORE/RECON-587 odd-first source](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md), restores IEEE evaluation order in modes2/4/7, six original pi-then-two before column multiplies, real two speed locals and separate uint16 metadata re-reads. At that checkpoint the full source was **3,685B/930 instructions and 911/935 native mnemonics aligned**, retains independent **60/60** original PE physical E8 callee destinations in order; still NONEXACT with no added authored bytes, only one noncanonical source compiled and no global cold replay.
 
 ## Bullet emitter entire original physical E8 call graph fully aligned
 

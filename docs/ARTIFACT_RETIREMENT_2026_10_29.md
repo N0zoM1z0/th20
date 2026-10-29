@@ -1,5 +1,17 @@
 # CORE/CLEANUP-497 — live handoff correction and guarded object-cache retirement
 
+**Historical checkpoint; superseded for live counts by
+[CORE/DOC-CLEANUP-628](ARTIFACT_RETIREMENT_CORE628.md).** The 1,670 files,
+55.82 MiB, 236 canonical providers and 151-line handoff below accurately
+describe **this earlier batch only**. Subsequent reconstruction raised
+canonical providers to 243, and repeated session updates expanded the handoff
+to 813 lines; the newer cleanup returned it to 147 current-state lines and
+removed another 1,148 reproducible probes / 43.24 MiB. The guarded cleanup
+command now requires a unique `--inventory` filename so it cannot overwrite
+this checkpoint's private SHA/path audit. Historical findings below are
+retained unchanged.
+
+
 **Date:** 2026-10-29. Reconstruction semantics and original physical
 matching claims are **unchanged** by this maintenance checkpoint. The
 preceding CORE/EXACT-496 native 215-byte diagnostic result was
