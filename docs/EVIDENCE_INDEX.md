@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/MAINT-751):** [live accepted
+**Current next-agent reading order (CORE/RECON-752):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 203/210 original E8 boundary](BULLET_12140_E8_203_7_SOURCE_CLOSURE.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,203 strict units, 556 authored exact whole functions,
-186,645 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,207 strict units, 560 authored exact whole functions,
+186,730 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler

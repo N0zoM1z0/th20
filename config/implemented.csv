@@ -1199,3 +1199,7 @@ th20::FloatInterpolation::reset_timer
 th20::VectorInterpolation::reset_timer
 std::_Ptr_base<EtamaArgInf>::_Move_construct_from(std::shared_ptr<EtamaArgInf>&&)
 std::shared_ptr<EtamaArgInf>::shared_ptr(std::shared_ptr<EtamaArgInf>&&)
+th20::set_animation_flag_byte_01_zero
+th20::set_animation_flag_byte_01_one
+th20::set_animation_flag_byte_01_two
+th20::interrupt_animation_mode2

@@ -27,7 +27,7 @@ TABLES = (
     (0x00480CE4, 8, 0x0047E8FF),
     (0x00480D04, 11, 0x0047F48A),
 )
-EXPECTED_UNMAPPED = {
+ORIGINAL_SEVEN = {
     0x0044FCD0: (37, "game animation resource/link helper"),
     0x0045E590: (21, "game animation flag byte +0x499 = 0"),
     0x0045E5B0: (21, "game animation flag byte +0x499 = 1"),
@@ -95,19 +95,19 @@ def main() -> None:
     assert len(calls) == 210
     known = [r for r in calls if r[1] in owners]
     unknown = [r for r in calls if r[1] not in owners]
-    assert len(known) == 203, (len(known), unknown)
-    assert len(unknown) == 7
-    assert {target for _, target in unknown} == set(EXPECTED_UNMAPPED)
-    assert all(
-        len([r for r in unknown if r[1] == target]) == 1
-        for target in EXPECTED_UNMAPPED
-    )
-
-    for address, (size, role) in sorted(EXPECTED_UNMAPPED.items()):
+    # Preserve the independently decoded original seven E8 roles while
+    # tracking which targets have gained strict canonical source units.
+    seven = [(site, target) for site, target in calls if target in ORIGINAL_SEVEN]
+    assert len(seven) == 7 and {target for _, target in seven} == set(ORIGINAL_SEVEN)
+    expected_open = set(ORIGINAL_SEVEN) - set(owners)
+    assert len(known) + len(unknown) == 210
+    assert {target for _, target in unknown} == expected_open, unknown
+    for address, (size, role) in sorted(ORIGINAL_SEVEN.items()):
         method = list(dis.disasm(comparator["pe_bytes_at"](pe, address, size), address))
         assert method and method[-1].address + method[-1].size == address + size
-        site = next(site for site, target in unknown if target == address)
-        print(f"OPEN native Bullet E8 {site:#010x} -> {address:#010x}: "
+        site = next(site for site, target in seven if target == address)
+        state = "CANONICAL" if address in owners else "OPEN"
+        print(f"{state} native Bullet E8 {site:#010x} -> {address:#010x}: "
               f"whole {size}B {role}")
 
     for address, value in (

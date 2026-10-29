@@ -20856,3 +20856,52 @@ target_address = 0x47ada0
 size = 54
 relocations = [
 ]
+
+# CORE/RECON-752: original complete 21B Animation helper from Bullet Boss call graph.
+[units.bullet_command_anm_mode0]
+source = "src/BulletCommandAnimationHelpers.cpp"
+object = "build/core752-canonical/BulletCommandAnimationHelpers.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::set_animation_flag_byte_01_zero"]
+symbol = "?set_animation_flag_byte_01_zero@th20@@YIXPAVAnimation@1@@Z"
+target_address = 0x0045E590
+size = 21
+relocations = [
+]
+
+# CORE/RECON-752: original complete 21B Animation helper from Bullet Boss call graph.
+[units.bullet_command_anm_mode1]
+source = "src/BulletCommandAnimationHelpers.cpp"
+object = "build/core752-canonical/BulletCommandAnimationHelpers.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::set_animation_flag_byte_01_one"]
+symbol = "?set_animation_flag_byte_01_one@th20@@YIXPAVAnimation@1@@Z"
+target_address = 0x0045E5B0
+size = 21
+relocations = [
+]
+
+# CORE/RECON-752: original complete 21B Animation helper from Bullet Boss call graph.
+[units.bullet_command_anm_mode2]
+source = "src/BulletCommandAnimationHelpers.cpp"
+object = "build/core752-canonical/BulletCommandAnimationHelpers.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::set_animation_flag_byte_01_two"]
+symbol = "?set_animation_flag_byte_01_two@th20@@YIXPAVAnimation@1@@Z"
+target_address = 0x004865D0
+size = 21
+relocations = [
+]
+
+# CORE/RECON-752: original complete 22B Animation helper from Bullet Boss call graph.
+[units.bullet_command_anm_interrupt2]
+source = "src/BulletCommandAnimationHelpers.cpp"
+object = "build/core752-canonical/BulletCommandAnimationHelpers.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::interrupt_animation_mode2"]
+symbol = "?interrupt_animation_mode2@th20@@YIXPAVAnimation@1@@Z"
+target_address = 0x00486330
+size = 22
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?interrupt@Animation@th20@@QAEXH@Z", target = 0x004388F0 },
+]

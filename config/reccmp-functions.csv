@@ -1200,3 +1200,7 @@ th20::FloatInterpolation::reset_timer,0x004395B0,function
 th20::VectorInterpolation::reset_timer,0x004396A0,function
 std::_Ptr_base<EtamaArgInf>::_Move_construct_from(std::shared_ptr<EtamaArgInf>&&),0x0047ADA0,function
 std::shared_ptr<EtamaArgInf>::shared_ptr(std::shared_ptr<EtamaArgInf>&&),0x0047B820,function
+th20::set_animation_flag_byte_01_zero,0x0045E590,function
+th20::set_animation_flag_byte_01_one,0x0045E5B0,function
+th20::set_animation_flag_byte_01_two,0x004865D0,function
+th20::interrupt_animation_mode2,0x00486330,function
