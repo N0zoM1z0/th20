@@ -1229,3 +1229,5 @@ th20::AnimationPoolOwner::draw
 th20::multiply_color_128_saturating
 th20::multiply_color_255
 th20::AnimationDrawModeOwner::render_quad
+th20::AnimationQuadSubmitOwner::append_quad
+th20::AnimationQuadSubmitOwner::prepare_texture_states

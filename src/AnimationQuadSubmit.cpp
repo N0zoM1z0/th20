@@ -2,7 +2,7 @@
 // 3,159B/763 real native x86. Semantic C++ candidate: still NONEXACT.
 // Uses the already strict real Animation types and D3D9 submission roles;
 // no 3,159B whole-function byte credit until complete canonical replay.
-#include "AnimationDrawModeOwner.hpp"
+#include "AnimationQuadSubmitOwner.hpp"
 #include "Animation.hpp"
 #include "AnimationFile.hpp"
 #include "SpriteVertices.hpp"
@@ -12,6 +12,7 @@
 #include <cstdint>
 
 namespace th20 {
+float __cdecl animation_snap_round(float); // real original 0x00445B80 20B wrapper
 std::uint8_t __cdecl multiply_color_128_saturating(std::uint8_t,std::uint8_t);
 std::uint8_t __cdecl multiply_color_255(std::uint8_t,std::uint8_t);
 
@@ -25,56 +26,18 @@ static_assert(offsetof(AnimationBase, flags) == 0x498);
 static_assert(offsetof(Animation, parent_55c) == 0x55C);
 #endif
 
-namespace {
-// Each value below is an independently original-PE-observed renderer-owner
-// scalar or byte. Do not invent a multi-megabyte source class layout.
-template<typename T> T& renderer_field(AnimationPoolOwner* owner,std::size_t offset) {
-    return *reinterpret_cast<T*>(reinterpret_cast<std::uint8_t*>(owner)+offset);
-}
-
-// Original four-byte packed Animation color channels have native Blue/Green/
-// Red/Alpha byte order, not a Ghidra float reinterpretation.
-std::uint32_t multiply_channels(std::uint32_t color,std::uint32_t mask,
-                                bool divide_255) {
-    std::uint32_t result=0;
-    for (unsigned channel=0;channel<4;++channel) {
-        std::uint8_t a=std::uint8_t(color>>(channel*8));
-        std::uint8_t b=std::uint8_t(mask>>(channel*8));
-        const std::uint8_t combined=divide_255
-            ? multiply_color_255(a,b)
-            : multiply_color_128_saturating(a,b);
-        result |= std::uint32_t(combined)<<(channel*8);
-    }
-    return result;
-}
-
-bool any_reaches_minimum(const SpriteTexturedVertex (&quad)[4],float min_x,float min_y) {
-    bool some_x=false,some_y=false;
-    for (const auto& vertex:quad) {
-        some_x |= vertex.position.x>=min_x;
-        some_y |= vertex.position.y>=min_y;
-    }
-    return some_x&&some_y;
-}
-bool any_before_maximum(const SpriteTexturedVertex (&quad)[4],float max_x,float max_y) {
-    bool some_x=false,some_y=false;
-    for (const auto& vertex:quad) {
-        some_x |= vertex.position.x<=max_x;
-        some_y |= vertex.position.y<=max_y;
-    }
-    return some_x&&some_y;
-}
-}
-
-// The distinct, unsourced native texture/state/submit helper heads are
-// provisional declarations only. Their real actual E8 destinations are
-// independently attested, not claims that those methods are exact.
-struct AnimationQuadSubmitOwner : AnimationDrawModeOwner {
-    IDirect3DBaseTexture9* texture_for_sprite(std::uint32_t); // 0x00445A00
-    void prepare_texture_states(Animation*);                // 0x00445BA0
-    void select_render_color_mode(std::uint8_t);             // 0x00446690
-    std::int32_t append_quad(SpriteTexturedVertex*);         // 0x0043E9B0
-};
+// Four real original E8 operations per packed color are explicitly written
+// here, not hidden in compiler-generated helper bodies. This semantic
+// source macro models natural per-channel game operations; exact original
+// source-level macro spelling is not claimed.
+#define ANM_MUL4_COLOR_INTO(value, other, fn) do { \
+    const std::uint32_t anm_c0 = (value); \
+    const std::uint32_t anm_c1 = (other); \
+    (value) = std::uint32_t(fn(std::uint8_t(anm_c0), std::uint8_t(anm_c1))) | \
+       (std::uint32_t(fn(std::uint8_t(anm_c0 >> 8), std::uint8_t(anm_c1 >> 8))) << 8) | \
+       (std::uint32_t(fn(std::uint8_t(anm_c0 >> 16), std::uint8_t(anm_c1 >> 16))) << 16) | \
+       (std::uint32_t(fn(std::uint8_t(anm_c0 >> 24), std::uint8_t(anm_c1 >> 24))) << 24); \
+} while(false)
 
 std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
                                                 std::int32_t options) {
@@ -83,8 +46,8 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
 
     // The original body offsets are owner +C8/+D0, +CC/+D4. They are not
     // Animation offsets, nor Renderer global coordinates.
-    const float dx=renderer_field<float>(this,0xC8)+renderer_field<float>(this,0xD0);
-    const float dy=renderer_field<float>(this,0xCC)+renderer_field<float>(this,0xD4);
+    const float dx=*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this)+0xC8)+*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this)+0xD0);
+    const float dy=*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this)+0xCC)+*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this)+0xD4);
     for (auto& vertex:quad) {
         vertex.position.x+=dx;
         vertex.position.y+=dy;
@@ -92,13 +55,13 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
     if (options&1) {
         // Original native 0x00445B80 normalization is a C-runtime float
         // rounding wrapper; exact rounding-mode details remain to verify.
-        quad[0].position.x=std::round(quad[0].position.x)-0.5f;
+        quad[0].position.x=animation_snap_round(quad[0].position.x)-0.5f;
         quad[2].position.x=quad[0].position.x;
-        quad[0].position.y=std::round(quad[0].position.y)-0.5f;
+        quad[0].position.y=animation_snap_round(quad[0].position.y)-0.5f;
         quad[1].position.y=quad[0].position.y;
-        quad[1].position.x=std::round(quad[1].position.x)-0.5f;
+        quad[1].position.x=animation_snap_round(quad[1].position.x)-0.5f;
         quad[3].position.x=quad[1].position.x;
-        quad[2].position.y=std::round(quad[2].position.y)-0.5f;
+        quad[2].position.y=animation_snap_round(quad[2].position.y)-0.5f;
         quad[3].position.y=quad[2].position.y;
     }
 
@@ -106,48 +69,65 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
     // process_graphics current_viewport member at Graphics+0xB00. Bounds
     // +11C/+124 are true typed native ViewportState Vector2 members.
     const ViewportState* view=process_graphics.current_viewport;
-    if (any_reaches_minimum(quad,view->bounds_11c.x,view->bounds_11c.y) &&
-        any_before_maximum(quad,view->bounds_124.x,view->bounds_124.y)) {
+    if (
+        (quad[0].position.x>=view->bounds_11c.x ||
+         quad[1].position.x>=view->bounds_11c.x ||
+         quad[2].position.x>=view->bounds_11c.x ||
+         quad[3].position.x>=view->bounds_11c.x) &&
+        (quad[0].position.y>=view->bounds_11c.y ||
+         quad[1].position.y>=view->bounds_11c.y ||
+         quad[2].position.y>=view->bounds_11c.y ||
+         quad[3].position.y>=view->bounds_11c.y) &&
+        (quad[0].position.x<=view->bounds_124.x ||
+         quad[1].position.x<=view->bounds_124.x ||
+         quad[2].position.x<=view->bounds_124.x ||
+         quad[3].position.x<=view->bounds_124.x) &&
+        (quad[0].position.y<=view->bounds_124.y ||
+         quad[1].position.y<=view->bounds_124.y ||
+         quad[2].position.y<=view->bounds_124.y ||
+         quad[3].position.y<=view->bounds_124.y)) {
         // Original real SpriteData::texture_id at +8, actual custom D3D9
         // texture cache +0x06000E08. Native state transitions flush first.
         SpriteData* sprite=animation->sprite_data();
-        std::uint32_t& cached_texture=renderer_field<std::uint32_t>(this,0x6000E08);
+        std::uint32_t& cached_texture=*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E08);
         if (cached_texture!=sprite->texture_id) {
             cached_texture=sprite->texture_id;
             flush_draws();
             process_graphics.get_device()->SetTexture(
                 0,renderer->texture_for_sprite(cached_texture));
         }
-        auto& texture_ready=renderer_field<std::uint8_t>(this,0x6000E0E);
+        auto& texture_ready=*reinterpret_cast<std::uint8_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E0E);
         if (texture_ready!=1) { flush_draws();texture_ready=1; }
         if ((options&2)==0) {
             auto channel_mode=animation->base.flags.color_mode;
             const bool inherited=(animation->base.flags.word_04&(1u<<24))!=0 &&
                                   animation->parent_55c!=nullptr;
-            const std::uint32_t tint=renderer_field<std::uint32_t>(this,0x7D40E8C);
-            const bool tinted=renderer_field<std::uint32_t>(this,0x7D40E90)!=0;
-            auto global_tint=[&](std::uint32_t value) {
-                return tinted ? multiply_channels(value,tint,false) : value;
-            };
-            auto inherit_tint=[&](std::uint32_t value) {
-                if (inherited)
-                    value=multiply_channels(value,animation->parent_55c->field_5cc,false);
-                return value;
-            };
+            const std::uint32_t tint=*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E8C);
+            const bool tinted=*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0;
             const std::uint32_t color0=animation->base.color_490;
             const std::uint32_t color1=animation->base.color_494;
             switch (channel_mode) {
             case 0:
             case 1: {
                 std::uint32_t color=channel_mode==0?color0:color1;
-                color=global_tint(inherit_tint(color));
+                if (inherited) {
+                    ANM_MUL4_COLOR_INTO(color,animation->parent_55c->field_5cc,
+                                        multiply_color_128_saturating);
+                }
                 animation->field_5cc=color;
+                if (tinted) {
+                    ANM_MUL4_COLOR_INTO(color,tint,multiply_color_128_saturating);
+                }
                 for (auto& vertex:quad) vertex.color=color;
                 break;
             }
             case 2:
             case 3: {
-                std::uint32_t a=global_tint(color0),b=global_tint(color1);
+                std::uint32_t a=color0,b=color1;
+                if (tinted) {
+                    ANM_MUL4_COLOR_INTO(a,tint,multiply_color_128_saturating);
+                    ANM_MUL4_COLOR_INTO(b,tint,multiply_color_128_saturating);
+                }
                 quad[0].color=a;
                 quad[3].color=b;
                 quad[1].color=(channel_mode==2?b:a);
@@ -155,9 +135,16 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
                 break;
             }
             case 4: {
-                std::uint32_t c=multiply_channels(color0,color1,true);
-                c=global_tint(inherit_tint(c));
+                std::uint32_t c=color0;
+                ANM_MUL4_COLOR_INTO(c,color1,multiply_color_255);
+                if (inherited) {
+                    ANM_MUL4_COLOR_INTO(c,animation->parent_55c->field_5cc,
+                                        multiply_color_128_saturating);
+                }
                 animation->field_5cc=c;
+                if (tinted) {
+                    ANM_MUL4_COLOR_INTO(c,tint,multiply_color_128_saturating);
+                }
                 for (auto& vertex:quad)vertex.color=c;
                 break;
             }
@@ -182,4 +169,6 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
     }
     return 0;
 }
+
+#undef ANM_MUL4_COLOR_INTO
 } // namespace th20

@@ -21286,3 +21286,27 @@ symbol = "?multiply_color_255@th20@@YAEEE@Z"
 target_address = 0x0043F4F0
 size = 35
 relocations = []
+
+# CORE/RECON-806: whole original 352B custom game renderer 6-vertex batch append.
+[units.animation_quad_append_six_vertices_352]
+source = "src/AnimationQuadBatchAppend.cpp"
+object = "build/core806-canonical/AnimationQuadBatchAppend.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationQuadSubmitOwner::append_quad"]
+symbol = "?append_quad@AnimationQuadSubmitOwner@th20@@QAEHPAUSpriteTexturedVertex@2@@Z"
+target_address = 0x0043E9B0
+size = 352
+relocations = []
+
+# CORE/RECON-807: complete original 26B renderer texture-state wrapper.
+[units.animation_quad_texture_prepare_26]
+source = "src/AnimationTexturePrepare.cpp"
+object = "build/core807-canonical/AnimationTexturePrepare.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationQuadSubmitOwner::prepare_texture_states"]
+symbol = "?prepare_texture_states@AnimationQuadSubmitOwner@th20@@QAEXPAVAnimation@2@@Z"
+target_address = 0x00445BA0
+size = 26
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "?bind_native_texture_state@AnimationQuadSubmitOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x00445BC0 },
+]

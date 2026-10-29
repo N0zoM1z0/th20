@@ -83,6 +83,35 @@ def verify()->None:
   assert not any(addr<=r<addr+n for r in relocations)
   assert calls[addr]==frequency
   print(f'PASS original per-channel game math {addr:#010x}: whole {n}B, {frequency} original quad-Boss E8 calls, no PE relocations')
+ # Two independently complete source-backed game helpers now strict exact:
+ # the six-vertex batch append and the texture preparation forwarding
+ # wrapper. The 3,159B parent itself remains separate and NONEXACT.
+ assert calls[0x0043E9B0] == 1
+ append_head=0x0043E9B0
+ append_body=original.decoded(image,base,sections,append_head,352)
+ assert len(append_body)==98 and append_body[-1].mnemonic=='ret'
+ assert append_body[-1].op_str=='4'
+ assert not any(append_head <=r<append_head+352 for r in relocations)
+ assert sum(i.bytes==bytes.fromhex("f3a5") for i in append_body)==6
+ assert all(any(prev.mnemonic=='mov' and prev.op_str=='ecx, 7'
+                for prev in append_body if cp.address-8<=prev.address<cp.address)
+            for cp in append_body if cp.bytes==bytes.fromhex("f3a5"))
+ assert any(i.address==0x004402E0 and i.mnemonic=='call' and i.op_str=='0x43e9b0' for i in ins)
+ assert any('0x6000e70' in i.op_str for i in append_body)
+ assert any('0x7c00e74' in i.op_str for i in append_body)
+ assert any(i.mnemonic=='add' and i.op_str=='edx, 0xa8' for i in append_body)
+ assert any(i.mnemonic=='imul' and '0xffffa' in i.op_str for i in append_body)
+ assert calls[0x00445BA0]==1
+ wrapper_head=0x00445BA0
+ wrapper=original.decoded(image,base,sections,wrapper_head,26)
+ assert len(wrapper)==12 and wrapper[-1].mnemonic=='ret' and wrapper[-1].op_str=='4'
+ assert not any(wrapper_head<=r<wrapper_head+26 for r in relocations)
+ native_call=next(i for i in wrapper if i.address==0x00445BAE)
+ assert native_call.bytes[0]==0xE8 and native_call.mnemonic=='call'
+ assert native_call.address+5+struct.unpack_from('<i',native_call.bytes,1)[0]==0x00445BC0
+ print("PASS separate native 352B/98-x86 game quad append: 6 x 28B REP MOVSD, original full pool guard, pointer/count update, no relocs")
+ print("PASS separate native 26B/12-x86 texture state wrapper: original E8 0x00445BAE -> 0x00445BC0, no PE HIGHLOW")
+
  assert calls[0x004455C0]==2
  # The original custom submit's cache writes are physically real offset
  # references within the opaque renderer owner, not a fake oversized type.

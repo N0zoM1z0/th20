@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-802):** [live accepted
+**Current next-agent reading order (CORE/RECON-808):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,231 strict units, 584 authored exact whole functions,
-189,186 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,233 strict units, 586 authored exact whole functions,
+189,564 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,14 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole 3,159B renderer quad Boss source revision: 40/40 game E8 roles verified, parent NONEXACT
+
+- [CORE/RECON-808 — complete maintanable AnimationQuadSubmit C++ body, all 40/40 original game-call roles](ANIMATION_QUAD_RENDER_3159_TYPED_SOURCE_FRONTIER_AND_COLOR_80_EXACT.md) — [new source-to-immutable-PE scoped verifier](../scripts/verify-animation-quad-submit-source-roles.py) compiles the complete 5-color-mode C++ renderer and attests each real original **24/24 saturation, 4/4 divide-255, 4/4 numeric snap, 2/2 flush, 1/1 352B append** and all ten distinct genuine game E8 targets. Compiler-probe executable is **3,796B/973 x86**, plus after-RET **20B of five generated jump pointers =3,816B COFF**; immutable original **3,159B/763** and genuine 96 HIGHLOW differ; original 41st E8 is security cookie, not a game method or fabricated source call. The 352B and 26B children pass **2/2 native strict**, but the whole 3159B Boss remains SOURCE-PRESENT/NONEXACT. Changed-only, no full replay. Live **586 game exact/189,564B**, **1,233** native units/256 providers.
+
+## Entire original 352-byte/98-x86 quad batch append and 26B texture-state wrapper strictly exact
+
+- [CORE/RECON-806/807 — full original 352B six-vertex renderer batch append plus full 26B native texture-state wrapper](ANIMATION_QUAD_BATCH_APPEND_352_AND_TEXTURE_PREPARE_26_EXACT.md) — original 3,159B quad submit parent E8 links both. Genuine `SpriteTexturedVertex[0xFFFFB]` native array-index capacity expression is essential to recovering original `imul` x86 code (not an inline pointer arithmetic constant), and all **six 7-dword REP MOVSD** store two original triangles in 28B vertex records, advancing native stream 168B/queued-count+1. Full **352/352B/98 x86 no relocations** and **26/26B/12 x86 with original E8 `0x00445BAE→0x00445BC0`**; same shared native ABI owner, no duplicate mapping. Only two new strict source/objects replayed **2/2**, original 3,159B parent remains typed NONEXACT; live **586 physical exact game functions/189,564B**, **1,233 source-present /1,233 strict units /256 providers**. No all-graph cold replay.
 
 ## Entire original 3,159B Animation quad submit Boss typed C++ source-present, still NONEXACT
 
