@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/EXACT-684.** This file is a
+**Last reconciled: 2026-10-29, CORE/RECON-685.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -67,7 +67,7 @@ that entire parent is reconstructed.
 | `0x0047DCF0` Bullet command dispatcher | **12,140B** | Distinct **NONEXACT** controller parent even though the 1,404B command-11 child is exact. [Source map](SOURCE_MAP.md). |
 | `0x0048C010` Enemy ECL dispatcher | **41,967B** | Huge original VM/controller parent **NONEXACT**. [Dispatch layout / table analysis](CORE_ENEMY_DISPATCH_LAYOUT.md). |
 | `0x0042B5D0` Animation VM update | **39,470B** | **NONEXACT** giant original parent; native-exact child parsers, loaders, reset and frame helpers cannot be counted as this body. [Animation owner map](SOURCE_MAP.md). |
-| `0x00447800` Animation factory | **73B** | Original clear-before-construct path differs from ordinary `new Animation`; earlier natural placement/new tests unsuccessful. Do not alter otherwise exact Animation constructor or introduce fake zeroing. [Allocation history](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md). |
+| `0x00447800` Animation factory | **73B, 22 x86** | [Independent full native PE vs pinned MSVC compiler-tag proof](ANIMATION_FACTORY_73_CLASS_TAG_SDL_NATIVE_FRONTIER.md): original three physical E8 calls are operator new, genuine 31B `__autoclassinit2` clear, and original 498B Animation ctor. An unchanged-layout **private `class Animation` + `/sdl`** factory emits **73B/22 x86**, 61/61 original nonrelocated bytes and all three original E8 positions; the real maintained `struct Animation` source emits 60B with no zero helper. Different class/struct tags change decorated factory/caller names; shared `Animation.hpp` affects **62 existing canonical objects /284 exact units**. Do NOT introduce duplicate class or claim strict exact before one coherent public declaration, scoped replays and strict linker-anchored canonical 73B acceptance. Current factory **NONEXACT**, no new original byte credit. |
 
 **Near-term priority:** Bullet emitter is now fully strict original exact:
 **one new 3,735B game-owned boss, 3,832B whole native contribution**,
