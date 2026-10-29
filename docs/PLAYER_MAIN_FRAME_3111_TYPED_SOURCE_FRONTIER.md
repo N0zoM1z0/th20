@@ -147,3 +147,29 @@ The enclosing Player state root at `0x004F7430`, main frame at
 checkpoint adds **one newly source-present whole Player function**,
 **corrects an important physical ABI error**, preserves all 437
 existing authored exact roots, and makes no new original exact-byte claim.
+
+## CORE/EXACT-510 follow-up: original whole-frame folded child identities
+
+A fresh original-PE caller audit found **four separately game-owned exact
+leafs** consumed by this entire nonexact parent: physical 45B
+`EffectAnimationHandle::matches_value` at original call `0x004FA273`,
+17B `Context::effect_info` at `0x004FA288`, 38B
+`EffectInfo::animation_file` at `0x004FA29B`, and 20B
+`EnemyController::count` at `0x004FA0EF`. They are original whole-function
+strict units and are now independently origin-reviewed, adding **120B** of
+separate original exact bytes with **20/20** scoped native unit replay
+across their two real MSVC sources. See [CORE/EXACT-510](PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md).
+The 3,111-byte Player main frame remains **NONEXACT**; no original parent
+bytes are credited from these callers.
+
+The original Player main frame's **two** calls to the folded 14B
+`0x0040BDA0` helper, at `0x004FA793` and `0x004FA7EB`, are now
+explained by byte-identical natural `PlayerValues<PlayerOption,10/12>::begin`
+compiler contributions. The exact historical ICF/source spelling remains
+unknown, and this is **zero new physical original credit**, not a new
+partial-extent trick. In contrast, the source-level
+`AnimationHandle::operator!=` emits a 45B *inequality* function, while
+the original parent calls the distinct 45B *equality* physical function
+`0x00449430`; their opposite `je`/`jne` branches must not be conflated
+under a linker-folded alias claim. The caller-target ABI remains a real
+parent code-generation frontier.

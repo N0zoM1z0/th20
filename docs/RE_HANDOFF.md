@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/RECON-508.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-510.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -20,7 +20,7 @@ historical NONEXACT claims there must not override later exact proofs.
 | Source-present mappings | **1,177** |
 | Strict canonical complete native units | **1,177** |
 | Unique canonical MSVC object/receipt providers | **237** |
-| Exact game-authored whole original functions | **437**, covering **143,806 original body bytes** |
+| Exact game-authored whole original functions | **441**, covering **143,926 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -98,6 +98,24 @@ four 0x30-byte bindings. Some native getters/setters have
 physically folded aliases: `0x0040C300`, `0x0041CAB0`,
 `0x00421810` and `0x0041DE70` are **already** strict
 units; do not create duplicate physical matches.
+
+## Newly admitted complete game-owned Player-frame leafs
+
+**CORE/EXACT-510:** Four existing whole native strict game leafs with
+original physical heads `0x00449430` (45B handle-word equality),
+`0x0041CAD0` (17B Context effect manager), `0x0045D100` (38B effect
+animation file) and `0x00478080` (20B EnemyController count) are now
+independently original-PE/caller origin-reviewed. They add **four
+game-authored exact original bodies / 120 nonoverlapping bytes**. The
+full original Player main-frame calls every one of them; both actual
+canonical C++ provider objects were freshly rebuilt and **20/20** strict
+units passed. The Player main frame is still **NONEXACT**. Two other
+original main-frame calls to physical `0x0040BDA0` are now proven to
+share the same exact 14B body as typed PlayerValues primary/secondary
+`begin()` compilers; this is **not** additional physical byte credit.
+The original 45B equality and typed 45B inequality helpers are distinct
+physical code, so their parent call-target mismatch remains open.
+See [full leaf origin, PE calls, binary fold and precise replay proof](PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md).
 
 ## Actual open whole-function bosses (priority, NOT exact)
 

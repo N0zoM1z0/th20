@@ -89,3 +89,15 @@ The still **NONEXACT** enclosing Player main-frame source is analyzed
 separately in [CORE/RECON-508](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md).
 This ABI correction proves actual runtime data shape and preserves old
 strict native code, but does not prove a linked or playable full game.
+
+## CORE/EXACT-510 follow-up: original Player frame callee identity
+
+A further independent whole-parent E8 audit confirmed the corrected
+`InputInf::for_view` ABI is not sufficient to make `0x004F9C30` byte-exact.
+Two unrelated option-array iteration calls physically target the **same**
+14B `0x0040BDA0` identity helper (read-only original calls at
+`0x004FA793` and `0x004FA7EB`), rather than returning an InputButtonState
+pointer directly. The natural typed `PlayerValues<PlayerOption,10/12>::begin`
+compiler contributions are both 14/14 native-byte identical to that helper.
+See [the whole parent callee and folded-alias proof](PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md);
+no duplicate physical original bytes are credited for this alias.
