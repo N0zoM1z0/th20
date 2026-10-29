@@ -76,6 +76,10 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [CORE/RECON-587 — two independently original-PE proven odd-first shooting parity branches in complete 3,735B Bullet emitter](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md) — immutable x86 `+0x1AD je even` on signed shot count and `+0x48A je even` on signed rows, each with the odd branch in original fallthrough order. Four whole locked MSVC variants improve ordered original mnemonic alignment **831 → 875/935** without changing current 3,609B/914 instructions, original **60/60 in-order E8 physical callee identities remain correct**. Whole parent still NONEXACT; only one noncanonical source rebuilt, no full cold replay.
 
+## Bullet emitter original mode-11 heading operand recovery
+
+- [CORE/RECON-630 — entire 3,735B emitter mode-11 native trig operands](BULLET_EMITTER_MODE11_HEADING_OPERANDS_788_FRONTIER.md) — original source argument loads both read the stored heading, not the angle temporary. Natural maintained C++ now reproduces the original mode-11 operand stack life, improves whole-method aligned operand matches **747 → 788** at unchanged 3,736B/936 x86 and 934/935 original mnemonic heads; all **60/60 true E8 callee targets** remain correct, full parent NONEXACT and no global cold replay.
+
 ## Bullet emitter whole native 3,735B x87 RNG/trigonometric return-local source audit
 
 - [CORE/RECON-624 — six original x87 return-local/ShotParameters/SSE chains in entire 3,735B Bullet emitter](BULLET_EMITTER_3735_X87_RETURNS_934_FRONTIER.md) — restored native RNG sample locals in modes6/7/8, independent cosine/sine returns in mode11. Entire maintained pinned C++ **3,736B/936 instructions, 934/935 original mnemonic heads** aligned; immutable PE original has six genuine `fstp`→pointer→`movss` groups and C++ seven because mode12 remains different, so unsupported volatile source was rejected. All **60 original E8 physical callee targets** remain correct in native order, 69 original/code absolute field count, original parent still NONEXACT and no full cold replay.

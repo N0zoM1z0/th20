@@ -174,13 +174,14 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
       case 11: {
         float circle_angle = (static_cast<float>(column)*(native_pi*native_two))/static_cast<float>(shot.count);
         heading=circle_angle;
-        // Native cosine and sine x87 returns each have distinct saved
-        // stack float values before reading the original shot speed fields.
+        // Original 0x00481EE0 and 0x00481F08 pass the stored heading,
+        // not the temporary circle-angle slot, to both x87 trig calls.
+        // This also preserves the original local lifetimes and call ABI.
         float cos_sample;
-        cos_sample=scalar_math::cosine(circle_angle);
+        cos_sample=scalar_math::cosine(heading);
         const float a=cos_sample*shot.speed;
         float sin_sample;
-        sin_sample=scalar_math::sine(circle_angle);
+        sin_sample=scalar_math::sine(heading);
         const float b=sin_sample*shot.speed_step;
         // Original 0x00481F45 and 0x00481F66 directly call the custom
         // game XY-norm and arctangent functions, NOT CRT hypot/atan2.
