@@ -21158,3 +21158,19 @@ relocations = [
   { offset = 0x17, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0x1C, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
 ]
+
+# CORE/RECON-790: original whole 192-byte AnimationPoolOwner queue flush strict.
+[units.animation_draw_queue_flush_192]
+source = "src/AnimationDrawFlush.cpp"
+object = "build/core790-canonical/AnimationDrawFlush.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationPoolOwner::flush_draws"]
+symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ"
+target_address = 0x004455C0
+size = 192
+relocations = [
+  { offset = 0x1A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x1F, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x41, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x46, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+]

@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-789):** [live accepted
+**Current next-agent reading order (CORE/RECON-790):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,223 strict units, 576 authored exact whole functions,
-188,433 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,224 strict units, 577 authored exact whole functions,
+188,625 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original 192B/55-instruction Animation draw queue flush whole strict exact
+
+- [CORE/RECON-790 — entire original 192B AnimationPoolOwner::flush_draws native strict exact](ANIMATION_DRAW_QUEUE_FLUSH_192_STRICT_EXACT_RECONSTRUCTION.md) — actual D3D9 SetFVF(0x144), DrawPrimitiveUP triangle-list count*2/stream/stride28, real native owner+0x06000E70 and +0x07C00E74/78 queue reset. Four independent original PE HIGHLOW/E8 field targets proven; natural source writes two actual D3D9 arguments inside the method call to match original function pointer and argument evaluation order. Pinned MSVC x86 **192/192 whole code bytes, 55/55 x86, four relocations strict** from **one new source/object, zero old provider replay**, no whole cold replay. Supersedes CORE/RECON-789 23-byte NONEXACT gap. Live **577 game exact /188,625B**, 1,224 canonical units and 252 providers. The original 5,993B Animation Draw Boss remains NONEXACT.
 
 ## Whole original 192B Animation queued-draw flush semantic C++ source and native operand frontier (NONEXACT)
 

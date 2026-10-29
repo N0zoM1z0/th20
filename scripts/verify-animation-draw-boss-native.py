@@ -215,8 +215,8 @@ def verify() -> None:
     assert by_offset[0x94].mnemonic == "mov" and by_offset[0x94].op_str == "dword ptr [eax + 0x7c00e78], edx"
     print("PASS original 192B renderer flush: 55 x86, two PE HIGHLOW to 0x005C4D40, "
           "two original E8 device getters, native FVF 0x144 and DrawPrimitiveUP vtable slots")
-    print("Original 192B flush has maintained typed semantic source, but remains NONEXACT: "
-          "no original code credit for its compiler-evaluation-order differences")
+    print("Original 192B flush now has whole-native strict canonical source; "
+          "independent pinned-compiler byte/relocation proof is animation_draw_queue_flush_192")
 
     # Original 93B recursive scale uses the *same 1.0f literal source* as
     # the already strict 93B x/y parent-scale game methods. Its self call

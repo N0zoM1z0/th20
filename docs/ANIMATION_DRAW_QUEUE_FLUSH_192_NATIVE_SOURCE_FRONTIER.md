@@ -1,5 +1,7 @@
 # CORE/RECON-789 — complete original 192-byte Animation draw-queue flush semantic source (NONEXACT)
 
+> **Historical NONEXACT frontier, superseded by CORE/RECON-790:** the real 192-byte flush is now strict exact with genuine natural D3D9 argument materialization, full 55/55 native instructions and four independently original-PE-proven fields. See [complete exact proof](ANIMATION_DRAW_QUEUE_FLUSH_192_STRICT_EXACT_RECONSTRUCTION.md). Counts and mismatches below describe only the dated earlier source.
+
 Locked Japanese TH20 v1.00a Steamless original SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This checkpoint reconstructs **the complete behavior of the original

@@ -1,5 +1,7 @@
 # CORE/RECON-785 — three complete original Graphics render-state cache methods (276B) from the 5,993B draw Boss
 
+> **Subsequent CORE/RECON-790:** original `0x004455C0` flush callee is now separate whole-native strict exact **192/192B**, not the earlier NONEXACT source described below. [Exact source and original PE proof](ANIMATION_DRAW_QUEUE_FLUSH_192_STRICT_EXACT_RECONSTRUCTION.md). Other date-specific totals remain historical.
+
 > **Subsequent CORE/RECON-789:** The separate 192B `AnimationPoolOwner::flush_draws` callee now has complete maintained typed game semantics and original-PE relocation proof but remains **NONEXACT** (192B/55 x86 yet 23 nonrelocation byte differences). See [the source frontier](ANIMATION_DRAW_QUEUE_FLUSH_192_NATIVE_SOURCE_FRONTIER.md). Earlier exact 92B Graphics method proofs remain valid.
 
 The selected, immutable original Japanese TH20 v1.00a Steamless PE is fixed

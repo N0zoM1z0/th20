@@ -1,8 +1,8 @@
-// Entire natural gameplay implementation of the original 192-byte
-// AnimationPoolOwner submission-queue flush at 0x004455C0. NONEXACT until
-// a full-original-byte and relocation strict comparison passes: the current
-// candidate has the original 192B/55 x86 extent but differs in D3D virtual
-// dispatch evaluation order. Do not award original code byte credit.
+// Complete native-exact 192-byte AnimationPoolOwner submission-queue
+// flush at original 0x004455C0. Original D3D9 DrawPrimitiveUP evaluates
+// the true virtual call receiver before the source argument temporaries;
+// both named arguments are written during the original call expression.
+// Confirmed with all four independently PE-attested relocation operands.
 // Keep unknown multi-megabyte owner fields as separately native-attested
 // offsets instead of inventing a padded 130-MiB Renderer layout.
 #include "AnimationRuntimeOwner.hpp"
@@ -17,14 +17,15 @@ void AnimationPoolOwner::flush_draws() {
         graphics_api::Device* device = process_graphics.get_device();
         device->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
         graphics_api::Device* draw_device = process_graphics.get_device();
-        std::uint32_t primitive_count =
-            *reinterpret_cast<std::uint32_t*>(
-                reinterpret_cast<std::uint8_t*>(this) + 0x6000E70) * 2;
-        void* stream = *reinterpret_cast<void**>(
-            reinterpret_cast<std::uint8_t*>(this) + 0x7C00E78);
-        draw_device->DrawPrimitiveUP(D3DPT_TRIANGLELIST,
-                                     primitive_count, stream,
-                                     sizeof(SpriteTexturedVertex));
+        std::uint32_t primitive_count;
+        void* stream;
+        draw_device->DrawPrimitiveUP(
+            D3DPT_TRIANGLELIST,
+            (primitive_count = *reinterpret_cast<std::uint32_t*>(
+                reinterpret_cast<std::uint8_t*>(this) + 0x6000E70) * 2),
+            (stream = *reinterpret_cast<void**>(
+                reinterpret_cast<std::uint8_t*>(this) + 0x7C00E78)),
+            sizeof(SpriteTexturedVertex));
         *reinterpret_cast<void**>(reinterpret_cast<std::uint8_t*>(this) + 0x7C00E78) =
             *reinterpret_cast<void**>(reinterpret_cast<std::uint8_t*>(this) + 0x7C00E74);
         *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this) + 0x6000E70) = 0;
