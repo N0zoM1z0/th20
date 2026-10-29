@@ -1,5 +1,8 @@
 # CORE/RECON-710 — original 12,140-byte Bullet command sequencer: complete 34-way switch and independent game-owner ABI
 
+
+**CORE/RECON-713 supersedes the incomplete one-table scope below:** the immutable original actually contains **THREE consecutive switch tables: 34 + 8 + 11 original PE HIGHLOW words (53 total)** at 0x00480C5C..0x00480D2F. Actual native CFG resolves all original nested switch edges and all 210 original E8 into 204 branch-reachable + six prelude/epilogue. See [complete native three-switch CFG evidence](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md). The original whole Boss is still source-absent and NONEXACT; the dated CORE/RECON-710 34-word table below covers only its primary switch and is NOT the full native support data.
+
 **The full 12,140-byte original Bullet::run_extended_commands() game Boss is NOT YET source-present or byte-exact.** This native-source frontier establishes its exact game-class ownership, original 2,490-instruction body, 34-element relocated switch table, 210 original physical E8 and independently strict 3,735B/1,846B callers. It does not invent a partial C++ implementation or claim any of the original 12,140 code bytes as new exact credit.
 
 Original original target: Japanese TH20 v1.00a Steamless PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
