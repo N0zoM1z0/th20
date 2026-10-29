@@ -1,5 +1,19 @@
 # CORE/RECON-583 — all 60 original Bullet emitter E8 callee identities now agree in native order; whole boss still NONEXACT
 
+**Later CORE/RECON-587 original parity control-flow correction:** Both
+native game shot-pattern parity checks in the 3,735B emitter use **odd
+branch first**, with the even branch reached by original
+`+0x1AD je +0x1CD` (count) and `+0x48A je +0x4FE` (rows).
+Restoring that natural C++ branch ordering improves complete original
+x86 mnemonic alignment **831/935 → 875/935**, while current C++
+remains **3,609B/914 instructions**, still original call graph
+**60/60 E8 physical callees matching in ordinal order**. [Immutable
+original two-branch and complete native C++ proof](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md).
+Earlier scores and reversed branch source notes below are historical;
+the entire 3,735B parent is still NONEXACT with no new authored
+original bytes, global cold replay or linked game claim.
+
+
 Target: immutable Japanese TH20 v1.00a Steamless game
 `resources/th20.exe`, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

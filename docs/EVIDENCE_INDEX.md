@@ -68,6 +68,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-511 — ten whole game interpolation bosses/evaluators, 8,571 native bytes](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) — 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog, 1,022B Vector2 and other whole samplers/evaluators; independent original PE **117 E8 / 90 HIGHLOW**, 2,421 complete x86 instructions, 41/41 native strict units in one fresh MSVC object; original game ECL/Animation/Enemy/Bullet and Wonder Stone callers. Earlier origin-pending descriptions superseded, no double counting or full cold replay.
 
+## Bullet emitter original odd-first parity native branch ordering
+
+- [CORE/RECON-587 — two independently original-PE proven odd-first shooting parity branches in complete 3,735B Bullet emitter](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md) — immutable x86 `+0x1AD je even` on signed shot count and `+0x48A je even` on signed rows, each with the odd branch in original fallthrough order. Four whole locked MSVC variants improve ordered original mnemonic alignment **831 → 875/935** without changing current 3,609B/914 instructions, original **60/60 in-order E8 physical callee identities remain correct**. Whole parent still NONEXACT; only one noncanonical source rebuilt, no full cold replay.
+
 ## Bullet emitter entire original physical E8 call graph fully aligned
 
 - [CORE/RECON-583 — all 60 original PE Bullet emitter physical E8 callee destinations match full maintained C++ in original ordinal order](BULLET_EMITTER_60_ORIGINAL_E8_CALL_IDENTITY.md) — original 3,735B/935 x86 PE direct E8 table independently decoded, current 3,609B/914 C++ with 831/935 original mnemonic kinds, **60/60 native targets correct, 0 wrong/unmapped**. Restored legacy 8B std::move and 63B shared_ptr assignment real calls and original unified out-of-range/non-opcode error `Animation::interrupt(2)` branch. Original call-site offsets and entire 13+11 tables remain NONEXACT, no parent byte credit or full cold replay.

@@ -72,10 +72,13 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     switch (mode) {
       case 0: case 1: {
         float angular;
-        if ((shot.count & 1) == 0)
-            angular = static_cast<float>(column/2) * shot.angle_step + shot.angle_step*native_half;
-        else
+        // Original +0x1AD checks odd count, executing the odd branch
+        // FIRST; even parity jumps to the second branch at +0x1CD.
+        // Do not reverse the logically equivalent branch under MSVC /Od.
+        if (shot.count & 1)
             angular = static_cast<float>((column+1)/2) * shot.angle_step;
+        else
+            angular = static_cast<float>(column/2) * shot.angle_step + shot.angle_step*native_half;
         heading+=angular;
         if (column & 1) heading*=native_alternate_sign;
         if (mode==0) heading+=player_direction;
@@ -107,15 +110,18 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         break;
       case 9: case 10:
         heading = (static_cast<float>(column)*native_pi*native_two)/static_cast<float>(shot.count);
-        if (!(shot.rows&1)) {
-           heading = static_cast<float>(row/2)*shot.angle_step+shot.angle_step*native_half+heading;
-           if (shot.rows>1)
-             speed=(static_cast<float>(row&~1)*(shot.speed_step-shot.speed)) /
-                   static_cast<float>(shot.rows-1)+shot.speed;
-        } else {
+        // Original +0x48A also executes ODD rows first and jumps to
+        // the even branch at +0x4FE. Both paths retain their real
+        // signed-half arithmetic and independent stepped-speed formula.
+        if (shot.rows&1) {
            heading = static_cast<float>((row+1)/2)*shot.angle_step+heading;
            if (shot.rows>1)
              speed=(static_cast<float>((row+1)&~1)*(shot.speed_step-shot.speed)) /
+                   static_cast<float>(shot.rows-1)+shot.speed;
+        } else {
+           heading = static_cast<float>(row/2)*shot.angle_step+shot.angle_step*native_half+heading;
+           if (shot.rows>1)
+             speed=(static_cast<float>(row&~1)*(shot.speed_step-shot.speed)) /
                    static_cast<float>(shot.rows-1)+shot.speed;
         }
         if (row&1)heading*=native_alternate_sign;

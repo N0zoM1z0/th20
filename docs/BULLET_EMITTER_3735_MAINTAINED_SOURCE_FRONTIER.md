@@ -1,5 +1,19 @@
 # CORE/RECON-514 — complete 3,735-byte Bullet emitter boss in maintained C++
 
+**Later CORE/RECON-587 original parity control-flow correction:** Both
+native game shot-pattern parity checks in the 3,735B emitter use **odd
+branch first**, with the even branch reached by original
+`+0x1AD je +0x1CD` (count) and `+0x48A je +0x4FE` (rows).
+Restoring that natural C++ branch ordering improves complete original
+x86 mnemonic alignment **831/935 → 875/935**, while current C++
+remains **3,609B/914 instructions**, still original call graph
+**60/60 E8 physical callees matching in ordinal order**. [Immutable
+original two-branch and complete native C++ proof](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md).
+Earlier scores and reversed branch source notes below are historical;
+the entire 3,735B parent is still NONEXACT with no new authored
+original bytes, global cold replay or linked game claim.
+
+
 **Later CORE/RECON-583 complete E8 identity audit:** The real maintained
 3,735B Bullet emitter parent now emits a C++ **3,609B / 914-instruction**
 whole candidate, **831/935 original mnemonic kinds aligned**, and
