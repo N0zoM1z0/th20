@@ -195,8 +195,9 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
         heading+=circle_angle+shot.angle;
         // Original 0x00481FF2 sine -> 0x00481FFA absolute; omitting abs
         // changes the actual wave/amplitude for negative sine values.
-        const float value=scalar_math::absolute(scalar_math::sine(circle_angle));
-        speed=(native_one-value*shot.speed_step)*speed;
+        // The nested return is immediately reloaded before fetching the
+        // independent shot.speed_step operand (native +0x722..+0x72D).
+        speed=(native_one-scalar_math::absolute(scalar_math::sine(circle_angle))*shot.speed_step)*speed;
         break;
       }
     }
