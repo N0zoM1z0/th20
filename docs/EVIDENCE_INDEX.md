@@ -24,6 +24,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-503 complete 19-function geometry origin admission, 13,360 native authored bytes](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) — two fresh pinned MSVC `/fp:strict` objects, **19/19 whole 3,530-instruction functions strict exact**; 160 independent native E8 and 181 original PE HIGHLOW fields, verified original constants and rectangle-edge table, real DamageRegion/Bullet/Player caller graph; prior origin-pending records superseded, no new compiler units or full cold replay.
 
+## Direct Animation VM script-loader and Renderer forwarding exact ABI
+
+- [CORE/EXACT-520 — entire original 338B AnimationFile script loader and 21B Renderer→Animation VM forward wrapper strict exact](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) — fixes Bullet emitter original script call target; 338/338 and 21/21 exact native, original five-plus-one E8 and three PE HIGHLOW fields independently verified. Actual high-two-bit `AnimationFlags` clear/low-two-bit mode transition, atomic implicit bool, real +0xB8 renderer counter and integer-return VM forwarding. 61-source public-header cold closure **266/266 old units strict replay**; 12 independently PE-attested MSVC-private string label shifts, no full cold replay or parent VM exactness.
+
 ## Animation gameplay — original PE and authored-origin audit
 
 - [CORE/EXACT-507: 17 whole Animation gameplay methods, 5,527 native bytes](ANIMATION_FRAME_5527_EXACT_ORIGIN_AUDIT.md) — 1,106B reset, 931B motion, 944B interpolation and 835B float VM operand; independent original 93 E8 and 140 HIGHLOW fields, 50/50 strict units in three cold MSVC objects. The 39,470B VM parent is still nonexact.

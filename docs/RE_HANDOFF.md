@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/RECON-514.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-520.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -17,10 +17,10 @@ historical NONEXACT claims there must not override later exact proofs.
 | Original length | 1,858,560 bytes |
 | Original SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional PE boundaries | 6,928 |
-| Source-present mappings | **1,178** |
-| Strict canonical complete native units | **1,178** |
-| Unique canonical MSVC object/receipt providers | **238** |
-| Exact game-authored whole original functions | **452**, covering **153,901 original body bytes** |
+| Source-present mappings | **1,180** |
+| Strict canonical complete native units | **1,180** |
+| Unique canonical MSVC object/receipt providers | **240** |
+| Exact game-authored whole original functions | **454**, covering **154,260 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -189,6 +189,41 @@ Source-present mapping count rises to **1,178**, while game-authored
 exact remains **452 / 153,901B** and canonical units/object providers
 stay **1,178 / 238**. No unfiltered full replay.
 
+## Newly exact direct Animation script loader and VM-forward wrapper
+
+**CORE/EXACT-520:** Reconstructed the entire **338B / 93-instruction**
+original direct `AnimationFile` VM script loader at `0x004383A0`
+(**338/338 strict native bytes**) and distinct **21B / 9-instruction**
+Renderer-owner VM forwarding wrapper at `0x00435500` (**21/21 exact**).
+This fixes a true error in the maintained **3,735B Bullet emitter**:
+its original E8 at `0x004822C5` calls the 338B *direct script loader*,
+not the unrelated previously exact **32B** `bind_animation` wrapper at
+`0x00438380` or the separate **194B** parent-binding method at
+`0x004382B0`. The new loaded-script source preserves the original
+atomic stage/boolean branch, 0x5E4-byte Animation zeroing,
+original **two-stage mode bitfield mutation**, real Timer and callback
+updates, three Renderer global loads and actual +0xB8 native script
+counter. The 21B wrapper preserves the original integer return of
+`Animation::update`, avoiding a spurious compiler NOP; the called
+**39,470B Animation VM remains NONEXACT**. All **six original E8** and
+**three original PE HIGHLOW** fields plus every original nonrelocated
+byte are independently checked. New source/profiles are canonical
+and fully replayed **2/2 strict exact**.
+
+Frozen pre-edit public-header receipt closure: exactly **61 real
+source providers / 266 previously exact original units**. All 61 were
+cold rebuilt under their existing pinned profiles, and **266/266 full
+original units replayed exact**. Twelve MSVC-private `$SG` label changes
+were individually original-PE/site/full-string attested before
+reconciling only the compiler-private names; no original targets
+changed. [Complete 338+21 original-PE and scoped receipt proof](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md).
+Source-present/strict units increase to **1,180**, canonical source
+object providers to **240**, authored original exact code to
+**454 functions / 154,260 disjoint bytes**. The original Bullet emitter
+3,735B and Animation VM 39,470B are *still whole NONEXACT* and do not
+inherit their child's accepted bytes. No global cold replay, full
+link or game-runtime claim.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
@@ -196,7 +231,7 @@ stay **1,178 / 238**. No unfiltered full replay.
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
 | `0x004F9C30` **3,111B** Player main frame | [Full typed source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) now compiles **3,235B / 807 instructions / 67 REL32**, versus native 3,111B/783/67 E8/37 HIGHLOW. [Original 783-head audit](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) | Enclosing boss remains **NONEXACT**, no exact credit. Resolve original full source control-flow and 35/37 absolute-reference mismatch; its separate 555B movement callee remains NONEXACT. |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
-| `0x004818E0` **3,735B** Bullet emitter | [Complete maintained real-owner C++20](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) now emits 3,516B / 890 instructions / 792 aligned mnemonic kinds, against original 3,735B/935. Genuine 13/11 original table cases and 3,832B original compiler contribution separately attested | Whole parent **NONEXACT**: finish historical 63B shared_ptr move-assignment ABI and original native 60 E8 vs candidate call/branch lifetimes and switch target positions; do not credit until entire exact original replay. |
+| `0x004818E0` **3,735B** Bullet emitter | [Complete maintained real-owner C++20](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) now emits 3,516B / 890 instructions / 792 aligned mnemonic kinds, against original 3,735B/935. Emitter original `0x004822C5` now correctly calls new exact 338B direct script loader (rather than distinct old 32B wrapper); genuine 13/11 original table cases and 3,832B original compiler contribution separately attested | Whole parent **NONEXACT**: finish historical 63B shared_ptr move-assignment ABI and original native 60 E8 vs candidate call/branch lifetimes and switch target positions; do not credit until entire exact original replay. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
 | `0x00539550` **1,036B** Archive LZSS encoder | `src/ArchiveLzssEncode.cpp` previous private 964B probe; [historical encoder evidence](ARCHIVE_WRITE_RECONSTRUCTION.md) | Original byte-flush accumulation has unverified observable use; do not introduce dead scalar solely for matching. |
 | `0x0047DCF0` **12,140B** Bullet controller dispatcher and `0x0048C010` **41,967B** Enemy ECL dispatcher | [Enemy dispatch layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and [source map](SOURCE_MAP.md) | Major real gameplay ownership and complete control-flow work; historical host/sanitizer counts are **not** current native exactness. |

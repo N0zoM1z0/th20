@@ -154,7 +154,9 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->animation=current_animation_pool->allocate_animation();
     bullet->animation->user_data=bullet;
     bullet->animation->set_field_5e0(bullet_animation_script);
-    file->bind_animation(bullet->animation,bullet_styles[shot.type].script);
+    // Original emitter E8 at 0x004822C5 goes to the 338B direct
+    // script loader, not the distinct 32B bind_animation wrapper.
+    file->load_script(bullet->animation,bullet_styles[shot.type].script);
     bullet->flags.bits|=0x10u;
     bullet->animation->base.flags.layer_mode=1;
     BulletStyle& style=bullet_styles[shot.type];

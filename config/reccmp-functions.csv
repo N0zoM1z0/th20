@@ -1177,3 +1177,5 @@ th20::report_log_message,0x00454150,function
 th20::InputDevice::poll,0x00421B00,function
 th20::Player::update_main_frame,0x004F9C30,function
 th20::BulletController::emit,0x004818E0,function
+th20::AnimationPoolOwner::update_animation,0x00435500,function
+th20::AnimationFile::load_script,0x004383A0,function

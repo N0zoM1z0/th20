@@ -18,6 +18,9 @@ struct AnimationPoolOwner {
     // Original 298B pool allocation is a distinct nonexact game owner;
     // needed by the complete native Bullet emit state machine.
     Animation* allocate_animation();
+    // Original 21B pool-owner wrapper at 0x00435500 invokes the
+    // complete, still nonexact 39,470B Animation VM on this instance.
+    std::int32_t update_animation(Animation* animation);
     AnimationFile* file_by_index(std::int32_t index);
     void select_view(std::int32_t view_index);
     Animation* resolve_handle(std::uint32_t index);

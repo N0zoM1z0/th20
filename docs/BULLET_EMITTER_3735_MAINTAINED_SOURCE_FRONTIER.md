@@ -1,5 +1,20 @@
 # CORE/RECON-514 — complete 3,735-byte Bullet emitter boss in maintained C++
 
+**CORE/EXACT-520 follow-up — original Bullet emitter target corrected.**
+Original emitter E8 at `0x004822C5` calls a previously unmapped
+**338B direct `AnimationFile` script loader at `0x004383A0`**,
+*not* the separate 32B two-argument `bind_animation` wrapper at
+`0x00438380` as this earlier maintained draft once did. The entire
+338B loader and its real 21B Renderer→Animation VM wrapper at
+`0x00435500` have since been recovered as typed maintained C++ and
+[formally **338/338 + 21/21 native exact**](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md),
+with independently original six E8 and three PE HIGHLOW fields. The
+emitter now calls `file->load_script` with the true physical original
+callee; its entire 3,735B root **remains NONEXACT** and receives no
+child-borne exact credit. The shared-header edit was protected by
+61-source/266-unit targeted cold compilation and strict replay.
+
+
 Comparison source of truth: the immutable Japanese TH20 v1.00a Steamless
 original at `resources/th20.exe`, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

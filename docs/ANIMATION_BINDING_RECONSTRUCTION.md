@@ -1,5 +1,17 @@
 # Animation template preparation and scoped child lookup
 
+**Later CORE/EXACT-520 distinct direct script-loader admission:** The
+native `AnimationFile` also owns a **separate full 338B** `load_script`
+operation at `0x004383A0`, directly called by original Bullet emitter
+`0x004822C5` and other game consumers. It is now a maintained whole
+strict [338/338B exact body](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md)
+with a separate **21/21B** Renderer VM forwarding wrapper. This is
+**neither** the existing exact 32B two-argument wrapper at `0x00438380`
+**nor** the existing 194B parent-binding function at `0x004382B0`.
+The older template/binding research below remains valid but must not
+hide or conflate these three different original physical functions.
+
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

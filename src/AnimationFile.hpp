@@ -58,6 +58,9 @@ public:
     ~AnimationFile();
     // Loaded-resource retirement still requires the actual Renderer protocol.
     void clear();
+    // Separate 338B native script load/reset at 0x004383A0, not the
+    // 32B bind_animation wrapper at 0x00438380.
+    void load_script(Animation* animation, std::int32_t script);
     void bind_animation(Animation* animation, std::int32_t script);
     // Parent binding prepares the actual Animation before its VM update.
     void bind_animation(Animation* animation, std::int32_t script, Animation* parent);
