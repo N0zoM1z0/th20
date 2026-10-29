@@ -21066,3 +21066,53 @@ relocations = [
   { offset = 0xD, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAVAnimation@2@XZ", target = 0x0040C300 },
   { offset = 0x21, type = "REL32", symbol = "??8SprtID@th20@@QBE_NABU01@@Z", target = 0x00449400 },
 ]
+
+# CORE/RECON-782: complete original 20B real Animation Draw boss child.
+[units.animation_draw_color_490_20]
+source = "src/AnimationDrawAccess.cpp"
+object = "build/core782-canonical/AnimationDrawAccess.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_draw_color_490"]
+symbol = "?animation_draw_color_490@th20@@YIIPAVAnimation@1@@Z"
+target_address = 0x004456E0
+size = 20
+relocations = [
+]
+
+# CORE/RECON-782: complete original 20B real Animation Draw boss child.
+[units.animation_draw_color_494_20]
+source = "src/AnimationDrawAccess.cpp"
+object = "build/core782-canonical/AnimationDrawAccess.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_draw_color_494"]
+symbol = "?animation_draw_color_494@th20@@YIIPAVAnimation@1@@Z"
+target_address = 0x004456C0
+size = 20
+relocations = [
+]
+
+# CORE/RECON-782: complete original 26B real Animation Draw boss child.
+[units.animation_draw_enabled_26]
+source = "src/AnimationDrawAccess.cpp"
+object = "build/core782-canonical/AnimationDrawAccess.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_draw_enabled"]
+symbol = "?animation_draw_enabled@th20@@YIIPAVAnimation@1@@Z"
+target_address = 0x00445AB0
+size = 26
+relocations = [
+]
+
+# CORE/RECON-782: complete original 93B real Animation Draw boss child.
+[units.animation_draw_inherited_aux_scale_93]
+source = "src/AnimationDrawAccess.cpp"
+object = "build/core782-canonical/AnimationDrawAccess.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_inherited_aux_scale_x"]
+symbol = "?animation_inherited_aux_scale_x@th20@@YIMPAVAnimation@1@@Z"
+target_address = 0x00445880
+size = 93
+relocations = [
+  { offset = 0xD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x3D, type = "REL32", symbol = "?animation_inherited_aux_scale_x@th20@@YIMPAVAnimation@1@@Z", target = 0x00445880 },
+]

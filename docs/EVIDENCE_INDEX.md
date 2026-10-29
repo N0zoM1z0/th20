@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-777):** [live accepted
+**Current next-agent reading order (CORE/RECON-782):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,216 strict units, 569 authored exact whole functions,
-187,998 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,220 strict units, 573 authored exact whole functions,
+188,157 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original 5,993B Animation Draw Boss, two real jump tables and four exact native game children
+
+- [CORE/RECON-782 — entire original 5,993B/1,501 x86 AnimationPoolOwner::draw Boss, original 49+31 nested switch pointers and 159B exact accessor children](ANIMATION_DRAW_BOSS_5993_NATIVE_DISPATCH_AND_EXACT_ACCESSORS.md) — independent original entire 123 E8/43 unique destination census; **49+31 authentic PE HIGHLOW case pointers** (17+29 distinct internal code heads), 32 genuine in-body PE HIGHLOW, original 3B after-body alignment, exact callback/visibility/mode guards. Native source return types correct Ghidra's false float inference for the actual 20B packed-color getters. Four newly separate original game children — complete **20B +20B packed-color, 26B flag and 93B recursive parent scale** — are 4/4 whole strict exact with their true original two E8/HIGHLOW fields; exactly **one** new compiler object and **zero** old exact providers affected. The giant 5,993B parent remains SOURCE-ABSENT, NONEXACT. Live **573 exact physical game methods /188,157B**, **1,220** strict units from 250 providers, no all-graph cold replay.
 
 ## Original 43B SprtID lambda predicate exact and corrected by-value ID capture
 

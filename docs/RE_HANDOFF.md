@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-777.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-782.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -14,9 +14,9 @@ NONEXACT labels are not current acceptance facts.**
 | Required SHA-256 | a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897 |
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
-| Source-present mapped methods | **1,214** across game, compiler and STL/library |
-| Complete native strict units | **1,216**, supplied by **249** distinct canonical MSVC objects with **249** matching receipts |
-| **Original authored-game whole-function exact** | **569 distinct physical game functions /187,998 original .text bytes** |
+| Source-present mapped methods | **1,218** across game, compiler and STL/library |
+| Complete native strict units | **1,220**, supplied by **250** distinct canonical MSVC objects with **250** matching receipts |
+| **Original authored-game whole-function exact** | **573 distinct physical game functions /188,157 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -52,10 +52,10 @@ although the 12,140B Bullet command parent which it calls remains NONEXACT.
 | Priority and immutable original head | Current evidence and next task |
 | --- | --- |
 | **1. Bullet command Boss 0x0047DCF0, 12,140B /2,490 x86** | **Parent source-absent and NONEXACT.** Full original 210 E8 call audit now verifies **208/210 original direct-call targets have complete native exact child source**. Both new batches added 4 whole original Animation flag/interrupt helpers (85B) plus whole **282B recursive Animation retire subtree**, **43B pool handle release** and **37B AnimationHandle retirement**, all **7/7** new methods exact (**447 game bytes**). Remaining **two** original E8 gaps are the compiler-runtime-only 14B `__security_check_cookie` and 31B `__allshl`, not missing game logic. Three original main/nested switch tables still have **34+8+11 pointers /53 original PE HIGHLOW** and 38 in-function HIGHLOW. **Main 34-case/8-case/11-case command dispatcher itself still must be reconstructed and matched.** [New recursive retire proof](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md), [four helper proof](BULLET_COMMAND_ANIMATION_HELPERS_EXACT_RECONSTRUCTION.md), [whole native call/switch verifier](../scripts/verify-bullet-command-call-coverage.py). |
-| **2. Player main 0x004F9C30, 3,111B /783 x86** | Source present, **3,114B/783** under MSVC, 783/783 mnemonic order, 67 E8 /37 whole-frame data roles, **NONEXACT**. Seven differing ADD register encodings account for the **net +3B**, but other register/stack/branch fields remain different. Next: natural C++ temporary/receiver lifetimes. [Native operand proof](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [72B genuine 9x2 data table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
-| **3. Player movement 0x004FFA10, 555B** | Source present, **561B/136 vs 555B/135**, one excess 6B SSE spill; **NONEXACT**. Two world-coordinate denominators already correctly refer to real native_128. Next: correct compiler SSE value lifetime, not fabricated register hints. [Original data and code frontier](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
-| **4. Bullet draw group 0x0047DB70, 273B** | Source present, about **283B/84 vs273B/82**, excess SSE offset spill; **NONEXACT**. [Full method study](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |
-| **5. Animation pool resolver 0x0044CD00, 456B /141 x86** | **Now whole-native strict exact.** Genuine original `SprtCtrlInf::getSprt(SprtID)` RTTI and both list-lookup lambda paths under the maintained `AnimationPoolOwner::resolve_handle(uint32_t)` four-byte caller ABI. The complete maintained body cold compiles to **456/456B, 141/141 original x86 and 20/20 independently original-PE-E8-anchored COFF REL32 fields, zero differences**. Separate **47B `SprtID` equality and 47B inequality** are both original whole strict exact. Its downstream **159B predicate walker and 154B list wrapper** now both whole exact, with the **unchanged 456B parent revalidated 3/3 in one source/object**. Additional **43B original SprtID equality lambda predicate** is now whole strict exact and both original lambdas capture ID **by value**, not by reference; final affected-source replay **4/4**. This latest batch changed zero shared headers; no full replay. [Native list proof](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md), [value-captured lambda original exact proof](ANIMATION_POOL_SPRT_LAMBDA_VALUE_CAPTURE_43_EXACT_RECONSTRUCTION.md). [Full canonical proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md); the [earlier ABI frontier](SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md) is dated historical NONEXACT evidence. |
+| **2. Animation draw Boss 0x00443880, 5,993B /1,501 x86** | **Parent source-absent and NONEXACT.** Independently original-PE-verified **123 E8 /43 destinations**, **49 + 31** original mode/nested HIGHLOW jump pointers (**80** real original entry fields, 17 +29 distinct heads) plus **32 real in-body HIGHLOW**. Four game-owned native helper functions are newly whole strict exact (**20B+20B packed colors, 26B flag, 93B recursive scale =159B**) from one new C++ source/object, without a public-header ABI edit. Next reconstruct native original 17 primary and 29 nested draw pathways as one complete C++ owner, preserving original 3B table alignment and actual callback lifetime. [Original full-native proof](ANIMATION_DRAW_BOSS_5993_NATIVE_DISPATCH_AND_EXACT_ACCESSORS.md), [live PE validator](../scripts/verify-animation-draw-boss-native.py). |
+| **3. Player main 0x004F9C30, 3,111B /783 x86** | Source present, **3,114B/783** under MSVC, 783/783 mnemonic order, 67 E8 /37 whole-frame data roles, **NONEXACT**. Seven differing ADD register encodings account for the **net +3B**, but other register/stack/branch fields remain different. Next: natural C++ temporary/receiver lifetimes. [Native operand proof](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [72B genuine 9x2 data table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
+| **4. Player movement 0x004FFA10, 555B** | Source present, **561B/136 vs 555B/135**, one excess 6B SSE spill; **NONEXACT**. Two world-coordinate denominators already correctly refer to real native_128. Next: correct compiler SSE value lifetime, not fabricated register hints. [Original data and code frontier](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
+| **5. Bullet draw group 0x0047DB70, 273B** | Source present, about **283B/84 vs273B/82**, excess SSE offset spill; **NONEXACT**. [Full method study](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |
 | **6. Enemy ECL dispatcher 0x0048C010, 41,967B /8,896 x86** | **NONEXACT**. Integer opcode base 300, 704-byte compressed indices and 174 real PE HIGHLOW case pointers; genuine Laser opcode 702/703/711/713 object lifetimes proven. [Original opcode paths](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
 | **7. Animation VM update 0x0042B5D0, 39,470B** | **NONEXACT** despite exact parsers/loaders/interpolation children. [Source map](SOURCE_MAP.md). |
 | **8. Enemy mesh 0x004A4190, 1,649B** | Natural C++ source present but **NONEXACT**, transient lifetime unresolved. [Mesh evidence](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). |
@@ -117,7 +117,7 @@ Keep original resources/th20.exe, private provenance, _reference/, attested
 ghidra-project/, installed MSVC/Wine/D3DX in .tools/, .venv/, source,
 Git history, original PE native research and unique .analysis/*.json.gz
 frozen snapshots. Do **not** delete build/ or .analysis/ as a whole.
-All **249 protected canonical .obj plus 249 matching receipt files** are
+All **250 protected canonical .obj plus 250 matching receipt files** are
 taken from the **live** match-units.toml, not hardcoded old 243/236/212
 counts.
 

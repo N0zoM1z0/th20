@@ -1212,3 +1212,7 @@ th20::SprtID::operator==(const SprtID&)
 th20::find_link_with_predicate
 th20::AnimationLookupList::find_if
 th20::AnimationPoolOwner::resolve_handle::<lambda_1>::operator()
+th20::animation_draw_color_490
+th20::animation_draw_color_494
+th20::animation_draw_enabled
+th20::animation_inherited_aux_scale_x
