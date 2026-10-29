@@ -24,6 +24,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-503 complete 19-function geometry origin admission, 13,360 native authored bytes](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) — two fresh pinned MSVC `/fp:strict` objects, **19/19 whole 3,530-instruction functions strict exact**; 160 independent native E8 and 181 original PE HIGHLOW fields, verified original constants and rectangle-edge table, real DamageRegion/Bullet/Player caller graph; prior origin-pending records superseded, no new compiler units or full cold replay.
 
+## Native Animation pool allocation / real recycled-slot identity
+
+- [CORE/EXACT-525 — full 298B original AnimationPoolOwner allocation and reuse boss strictly exact](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) — original `0x0044C9B0`, full 78 native instruction heads, independent 14 E8 / 2 original PE HIGHLOW fields, actual 0x06000718 free-list, PooledAnimation +0x5FC index and Animation +0x4C4 (not +0x4C0 handle). Original folded 17B front/16B node_value/55B detach/61B initialize typed code verified without duplicate authored bytes. One new cold canonical unit, 14-source pre-edit header closure **30/30 strict preserved**, no full replay or Bullet emitter parent exactness claim.
+
 ## Direct Animation VM script-loader and Renderer forwarding exact ABI
 
 - [CORE/EXACT-520 — entire original 338B AnimationFile script loader and 21B Renderer→Animation VM forward wrapper strict exact](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) — fixes Bullet emitter original script call target; 338/338 and 21/21 exact native, original five-plus-one E8 and three PE HIGHLOW fields independently verified. Actual high-two-bit `AnimationFlags` clear/low-two-bit mode transition, atomic implicit bool, real +0xB8 renderer counter and integer-return VM forwarding. 61-source public-header cold closure **266/266 old units strict replay**; 12 independently PE-attested MSVC-private string label shifts, no full cold replay or parent VM exactness.

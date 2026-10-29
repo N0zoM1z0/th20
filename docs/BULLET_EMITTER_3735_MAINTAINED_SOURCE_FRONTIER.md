@@ -1,5 +1,23 @@
 # CORE/RECON-514 — complete 3,735-byte Bullet emitter boss in maintained C++
 
+**CORE/EXACT-525 follow-up — original complete 298B Animation
+allocation callee is now strict exact.** The native Bullet emitter's
+original `0x00482241` E8 calls the complete 298B pool alloc/recycle
+owner at `0x0044C9B0`. Maintained natural
+`AnimationPoolOwner::allocate_animation()` in
+`src/AnimationPoolAllocate.cpp` now emits the entire
+[**298/298 native exact source**](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md),
+with genuine PooledAnimation index/active/free-link ownership,
+independently verified 14 E8 and 2 PE HIGHLOW fields, and the real
+17B folded free-list head. This supersedes the historical statements
+below that the 298B function is still source-absent/nonexact. The
+3,735B enclosing emitter **remains NONEXACT** and gains no parent
+original-byte credit. The separate 73B Animation factory callee
+`0x00447800` remains open; complete linked game execution is not
+established. Public owner-header receipts were scoped to 14 source
+objects/30 original units, all 30/30 fresh strict after the edit.
+
+
 **CORE/EXACT-520 follow-up — original Bullet emitter target corrected.**
 Original emitter E8 at `0x004822C5` calls a previously unmapped
 **338B direct `AnimationFile` script loader at `0x004383A0`**,

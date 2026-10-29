@@ -1179,3 +1179,4 @@ th20::Player::update_main_frame,0x004F9C30,function
 th20::BulletController::emit,0x004818E0,function
 th20::AnimationPoolOwner::update_animation,0x00435500,function
 th20::AnimationFile::load_script,0x004383A0,function
+th20::AnimationPoolOwner::allocate_animation,0x0044C9B0,function

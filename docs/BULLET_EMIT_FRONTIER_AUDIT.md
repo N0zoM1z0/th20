@@ -1,5 +1,15 @@
 # CORE/REVIEW-212 — Bullet single-shot boss dependencies and a corrected list operation
 
+**Later CORE/EXACT-525 correction:** The original **298B
+`0x0044C9B0` Animation pool allocate/reuse boss**, called from the
+3,735B Bullet emitter, now has genuine
+[whole strict-exact maintained C++](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md).
+Original source-candidate state claims below predate that result.
+The native 73B allocation template `0x00447800` remains separate
+and nonexact; the huge Renderer lifecycle and Bullet emitter parent
+are not accepted solely from this 298B child.
+
+
 This audit was made directly against the original locked Japanese TH20 v1.00a
 Steamless PE, SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`,
 not by assuming earlier reconstruction naming was right. Source probes were

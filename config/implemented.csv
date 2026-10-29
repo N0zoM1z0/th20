@@ -1178,3 +1178,4 @@ th20::Player::update_main_frame
 th20::BulletController::emit
 th20::AnimationPoolOwner::update_animation
 th20::AnimationFile::load_script
+th20::AnimationPoolOwner::allocate_animation
