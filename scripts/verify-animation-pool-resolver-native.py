@@ -100,9 +100,11 @@ def main() -> None:
     # Animation+0x4C0 handle word. Independently corroborate its E8 graph.
     closure = decode(image, 0x00449600, 43)
     assert any(x.mnemonic == "add" and x.op_str.endswith(", 0x4c0") for x in closure)
-    assert any(x.mnemonic == "call" and x.op_str == "0x449400" for x in closure)
+    equality_call = next(x for x in closure if x.address == 0x00449620)
+    assert equality_call.mnemonic == "call" and equality_call.op_str == "0x449400"
     comparison = decode(image, 0x00449400, 47)
-    assert any(x.mnemonic == "cmp" for x in comparison)
+    assert len(comparison) == 16 and any(x.mnemonic == "cmp" for x in comparison)
+    assert comparison[-1].mnemonic == "ret" and comparison[-1].op_str == "4"
     # These exact names are real bytes embedded in this locked executable's
     # RTTI, not guesses made from C++ or an imported reference repository.
     for address, role in ((0x005B31B0, b"<lambda_2>"), (0x005B3200, b"<lambda_1>")):
@@ -111,6 +113,7 @@ def main() -> None:
     print("PASS original Animation pool getSprt native 456/456B, 141/141 i386, 20/20 E8 original destinations")
     print("PASS native 0x48 special-slot / 0x600 pooled-record strides, +0x5F8 active, +0x4C0 handle identity")
     print("PASS two distinct original RTTI lambda captures and native 40B std::function call ABI")
+    print("PASS original 0x00449620 E8 to complete 47B/16-instruction SprtID-by-reference equality")
     print("Original PE verifier is independent of the pinned canonical C++ replay; see animation_pool_resolve_handle_whole_456.")
 
 

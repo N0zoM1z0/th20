@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-772):** [live accepted
+**Current next-agent reading order (CORE/RECON-773):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,212 strict units, 565 authored exact whole functions,
-187,595 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,213 strict units, 566 authored exact whole functions,
+187,642 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original whole 47-byte SprtID reference equality closes the live pool-lookup predicate
+
+- [CORE/RECON-773 — complete original 47B/16-instruction `SprtID::operator==(const SprtID&)` reference equality at 0x00449400](SPRTID_REFERENCE_EQUALITY_47_EXACT_RECONSTRUCTION.md) — independently original E8 at `0x00449620` from the linked original 43B `getSprt(SprtID)` predicate helper; distinct physical native method from already accepted `SprtID` inequality 47B and other handle immediate equality 45B. Natural C++ compiles 47/47 exact with no relocations, after only **two pre-edit `SprtID.hpp` include providers /two old units** and new member replayed **3/3** full strict in **two** serial cold objects. Live exact **566 functions /187,642 bytes**, **1,213** strict units; no full cold replay.
 
 ## Whole-native exact 456-byte Animation handle resolver after genuine SprtID ABI recovery
 

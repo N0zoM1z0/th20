@@ -21004,3 +21004,14 @@ relocations = [
   { offset = 0x19D, type = "REL32", symbol = "??4SprtID@th20@@QAEXI@Z", target = 0x004117A0 },
   { offset = 0x1B9, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
 ]
+
+# CORE/RECON-773: entire 47B game-authored SprtID reference equality.
+[units.sprtid_ref_equality_47]
+source = "src/SprtID.cpp"
+object = "build/core768-canonical/SprtID.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::SprtID::operator==(const SprtID&)"]
+symbol = "??8SprtID@th20@@QBE_NABU01@@Z"
+target_address = 0x00449400
+size = 47
+relocations = []

@@ -1209,3 +1209,4 @@ th20::AnimationPoolOwner::retire_handle,0x0044FCA0,function
 th20::AnimationHandle::retire,0x0044FCD0,function
 th20::AnimationPoolOwner::resolve_handle,0x0044CD00,function
 th20::SprtID::operator!=(const SprtID&),0x00449460,function
+th20::SprtID::operator==(const SprtID&),0x00449400,function

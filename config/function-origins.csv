@@ -1174,7 +1174,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00449370,authored,AnimationFileLifetime,authored,high,CORE/EXACT-132: Actual array/scalar deletion callbacks and complete geometry/callback/handle retirement establish game destruction. Complete native control flow and full configured compiler contributions strictly replay with independent relocations. All 128 previous affected units remain exact after 31 actual including objects build once; 132 objects are reused. Loaded File clearing/Renderer and native startup/runtime remain open. See docs/ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md.
 0x004493C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004493E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00449400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00449400,authored,Animation,authored,high,"CORE/RECON-773; docs/SPRTID_REFERENCE_EQUALITY_47_EXACT_RECONSTRUCTION.md; independent original RTTI SprtCtrlInf::getSprt(SprtID), native 0x00449620 E8 to this complete 47B original SprtID-by-reference comparison; not confused with distinct 45B 0x00449430"
 0x00449430,authored,EffectAnimation,authored,high,"CORE/ORIGIN-510; docs/PLAYER_FRAME_LEAF_120_EXACT_RECONSTRUCTION.md; full original native code/relocations, actual 3111B Player main frame E8 call and independent gameplay owner source; no duplicate physical credit"
 0x00449460,authored,Animation,authored,high,"CORE/RECON-768; docs/SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md; immutable original 47B member inequality, original E8 from 0x0044CE8B, SprtID original RTTI corroboration, complete canonical byte match"
 0x00449490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

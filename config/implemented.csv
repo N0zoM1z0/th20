@@ -1208,3 +1208,4 @@ th20::AnimationPoolOwner::retire_handle
 th20::AnimationHandle::retire
 th20::AnimationPoolOwner::resolve_handle
 th20::SprtID::operator!=(const SprtID&)
+th20::SprtID::operator==(const SprtID&)

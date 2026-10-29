@@ -11,6 +11,7 @@ struct SprtID {
     bool operator==(std::uint32_t rhs) const;
     std::uint32_t operator&(std::uint32_t mask) const;
     void operator=(std::uint32_t rhs);
+    bool operator==(const SprtID& rhs) const;
     bool operator!=(const SprtID& rhs) const;
 };
 static_assert(sizeof(SprtID) == 4);
