@@ -1,9 +1,10 @@
 // Complete original 0x004F9C30..0x004FA856 Player main-frame protocol.
-// Source-present, NONEXACT: complete original 3111B/783-instruction game
-// Player parent has no accepted whole-byte unit. Native audits recover
-// BOTH independent original EnemyController getter calls and BOTH original
-// floating sprite-scale evaluations, with no fake /sdl security cookie;
-// all 67 native E8 and 37 HIGHLOW *counts* now align (sites still differ).
+// Source-present, NONEXACT: original 3111B/783-instruction game method.
+// Typed input evaluation and signed movement-speed branches now recover
+// most of the original control-flow shape (still NOT byte exact).
+// Both genuine EnemyController getters, both sprite-scale evaluations,
+// and the original 67 E8/37 PE HIGHLOW reference counts are maintained.
+// Do not count this parent as original exact without strict replay.
 #include "Player.hpp"
 #include "InputInf.hpp"
 #include "EnemyController.hpp"
@@ -54,46 +55,41 @@ std::int32_t Player::update_main_frame() {
                 set_secondary_option_field_fc(1);
             }
         }
-        timer_2070.equals(8);
-        if (!timer_2070.at_least(16)) goto finish_normal_movement;
-        clear_option_animations();
-        set_movement_mode(0);
+        // Original preserves the otherwise ignored equals(8) E8 before
+        // checking the 16-frame endpoint. Both calls share the native
+        // Timer statement/EH boundary without an extra compiler NOP.
+        if (timer_2070.equals(8); timer_2070.at_least(16)) {
+            clear_option_animations();
+            set_movement_mode(0);
+        } else goto finish_normal_movement;
     }
 
     // Original input routing is a live, possibly absent process view. Do not
     // invent a fallback device or apply masks to the wrong Player.
     {
-            const std::uint32_t diagonal_left_up = (input_view < 0 || process_input_views[input_view] == nullptr)
-                ? 0 : process_input_views[input_view]->replay_current_bits(0x50);
-            if (diagonal_left_up == 0x50) field_67c = 5;
+            if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                ? 0 : process_input_views[input_view]->replay_current_bits(0x50)) == 0x50) field_67c = 5;
             else {
-                const std::uint32_t diagonal_left_down = (input_view < 0 || process_input_views[input_view] == nullptr)
-                    ? 0 : process_input_views[input_view]->replay_current_bits(0x60);
-                if (diagonal_left_down == 0x60) field_67c = 7;
+                if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                    ? 0 : process_input_views[input_view]->replay_current_bits(0x60)) == 0x60) field_67c = 7;
                 else {
-                    const std::uint32_t diagonal_right_up = (input_view < 0 || process_input_views[input_view] == nullptr)
-                        ? 0 : process_input_views[input_view]->replay_current_bits(0x90);
-                    if (diagonal_right_up == 0x90) field_67c = 6;
+                    if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                        ? 0 : process_input_views[input_view]->replay_current_bits(0x90)) == 0x90) field_67c = 6;
                     else {
-                        const std::uint32_t diagonal_right_down = (input_view < 0 || process_input_views[input_view] == nullptr)
-                            ? 0 : process_input_views[input_view]->replay_current_bits(0xA0);
-                        if (diagonal_right_down == 0xA0) field_67c = 8;
+                        if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                            ? 0 : process_input_views[input_view]->replay_current_bits(0xA0)) == 0xA0) field_67c = 8;
                         else {
-                            const std::uint32_t left = (input_view < 0 || process_input_views[input_view] == nullptr)
-                                ? 0 : process_input_views[input_view]->replay_current_bits(0x20);
-                            if (left != 0) field_67c = 2;
+                            if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                                ? 0 : process_input_views[input_view]->replay_current_bits(0x20)) != 0) field_67c = 2;
                             else {
-                                const std::uint32_t up = (input_view < 0 || process_input_views[input_view] == nullptr)
-                                    ? 0 : process_input_views[input_view]->replay_current_bits(0x10);
-                                if (up != 0) field_67c = 1;
+                                if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                                    ? 0 : process_input_views[input_view]->replay_current_bits(0x10)) != 0) field_67c = 1;
                                 else {
-                                    const std::uint32_t down = (input_view < 0 || process_input_views[input_view] == nullptr)
-                                        ? 0 : process_input_views[input_view]->replay_current_bits(0x40);
-                                    if (down != 0) field_67c = 3;
+                                    if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                                        ? 0 : process_input_views[input_view]->replay_current_bits(0x40)) != 0) field_67c = 3;
                                     else {
-                                        const std::uint32_t right = (input_view < 0 || process_input_views[input_view] == nullptr)
-                                            ? 0 : process_input_views[input_view]->replay_current_bits(0x80);
-                                        if (right != 0) field_67c = 4;
+                                        if (((input_view < 0 || process_input_views[input_view] == nullptr)
+                                            ? 0 : process_input_views[input_view]->replay_current_bits(0x80)) != 0) field_67c = 4;
                                         else field_67c = 0;
                                     }
                                 }
@@ -126,6 +122,12 @@ std::int32_t Player::update_main_frame() {
         }
     }
 
+    // The original uses each of the eight input-mask results only once.
+    // Keeping each conditional read in its test avoids /Od locals that
+    // copied the return value again before comparing it; every absent
+    // view still produces the original zero and every valid view calls
+    // the genuine replay_current_bits exactly once per tested direction.
+
     // All nine signed (dx,dy) direction pairs were independently read from
     // the locked original 0x00572C48 table. Multiplication/addition wraps as
     // observed by the 32-bit original IMUL and integer input lanes.
@@ -148,10 +150,16 @@ std::int32_t Player::update_main_frame() {
                 active->set_scale_58(native_one, native_one);
             }
         }
-        const std::int32_t x_speed = field_67c < 5 ? speed_20b8 : speed_20c0;
+        // Original native CMP/JL makes direction slot 5 a SIGNED
+        // boundary and tests the high (diagonal) speed branch first.
+        std::int32_t x_speed;
+        if (static_cast<std::int32_t>(field_67c) >= 5) x_speed = speed_20c0;
+        else x_speed = speed_20b8;
         dx = static_cast<std::int32_t>(static_cast<std::uint32_t>(dx) *
                                        static_cast<std::uint32_t>(x_speed));
-        const std::int32_t y_speed = field_67c < 5 ? speed_20b8 : speed_20c0;
+        std::int32_t y_speed;
+        if (static_cast<std::int32_t>(field_67c) >= 5) y_speed = speed_20c0;
+        else y_speed = speed_20b8;
         dy = static_cast<std::int32_t>(static_cast<std::uint32_t>(dy) *
                                        static_cast<std::uint32_t>(y_speed));
     } else {
@@ -159,10 +167,14 @@ std::int32_t Player::update_main_frame() {
             current_animation_pool->interrupt_handle(handle_60c.value, 1);
             handle_60c = std::uint32_t{0};
         }
-        const std::int32_t x_speed = field_67c < 5 ? speed_20b4 : speed_20bc;
+        std::int32_t x_speed;
+        if (static_cast<std::int32_t>(field_67c) >= 5) x_speed = speed_20bc;
+        else x_speed = speed_20b4;
         dx = static_cast<std::int32_t>(static_cast<std::uint32_t>(dx) *
                                        static_cast<std::uint32_t>(x_speed));
-        const std::int32_t y_speed = field_67c < 5 ? speed_20b4 : speed_20bc;
+        std::int32_t y_speed;
+        if (static_cast<std::int32_t>(field_67c) >= 5) y_speed = speed_20bc;
+        else y_speed = speed_20b4;
         dy = static_cast<std::int32_t>(static_cast<std::uint32_t>(dy) *
                                        static_cast<std::uint32_t>(y_speed));
     }

@@ -48,6 +48,10 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [CORE/ORIGIN-555 — 21 complete ECL/Bullet/Animation/Item/Player/Archive original game-owned roots, 6,836B strict native exact](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md) — full 1,829 original x86 instructions, **187 genuine E8 and 62 PE HIGHLOW fields**, 40 real attached native compiler-alignment bytes compared but not credited; 122/122 strict original units in fourteen freshly cold-built real source providers, 13 high/8 medium original caller confidence statuses. The real whole-exact 11,110B ECL runtime and original 41,967B nonexact Enemy dispatcher call into these children; the giant parent is not claimed exact.
 
+## Player main-frame original input lifetimes and signed speed branches
+
+- [CORE/RECON-655 — whole original 3,111B Player main-frame native input, Timer and signed-speed source recovery](PLAYER_MAIN_FRAME_3111_INPUT_AND_SIGNED_SPEED_NATIVE_FRONTIER.md) — four genuine native signed JL speed selections and eight one-use input checks, original positive Timer completion branch. Complete pinned C++ improves **3,254B/808 to 3,110B/784**, original ordered mnemonic kinds **733/783 to 758/783**, with 67 E8 and 37 HIGHLOW by count; parent still NONEXACT, one known wrong handle-call ABI, zero accepted old units affected and no global cold replay.
+
 ## Player whole-main-frame Timer postfix native ABI correction
 
 - [CORE/RECON-557 — native 3,111B Player main E8 uses the original 22B Timer postfix, not the distinct 20B prefix](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md) — repaired real maintained `timer_2070++`, true original native `0x004F9CBC -> 0x00423540` full-code dependency. Pinned complete C++ 3,254B/808 instructions, 733/783 original mnemonics aligned, candidate 67 E8/37 DIR32 equal only original reference counts; original 45B handle-equality source mismatch and complete parent still NONEXACT. No shared-header edit or whole cold replay.
