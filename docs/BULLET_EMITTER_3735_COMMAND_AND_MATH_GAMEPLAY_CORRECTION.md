@@ -1,5 +1,13 @@
 # CORE/RECON-571 — restore original cross-controller child Animation, native ellipse mathematics and signed-16 Bullet command state in the entire 3,735B emitter
 
+**Later native-value correction (CORE/EXACT-645):** The historical
+description below of velocity*2.0f after Vector3::operator-= is
+**incorrect for the original game**. Independent immutable PE data at
+0x0056C8E0 is 4.0f (00 00 80 40), and full original emitter strict
+replay requires velocity*4.0f. See
+[the complete 3,735-byte original exact reconstruction](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md).
+
+
 **Later CORE/RECON-594 current whole native source:** The complete
 3,735B original Bullet emitter remains **NONEXACT**, but original
 floating-point source order has been further

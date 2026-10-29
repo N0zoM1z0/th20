@@ -16,6 +16,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## Bullet emission large whole-boss strict original exact acceptance
+
+- [CORE/EXACT-645 — original complete 3,735B BulletController::emit 100% strict exact plus 3,832B whole compiler contribution](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md) — **935/935 native instructions; 60/60 independently attested original E8 physical callees; 69/69 independently anchored original HIGHLOW including all 24 switch-table targets and the true old EH handler; 3,316/3,316 nonrelocated bytes and final 3,832/3,832 whole native strict equality.** Discovered and corrected historic **4.0f vs wrongly assumed 2.0f velocity multiplier** from original 0x0056C8E0 data. Exactly one new whole game owner cold built/replayed **1/1**, no full cold replay; game-authored strict exact **499 functions / 179,444 bytes**, unrelated large parents still open.
+
 ## Workflow and storage
 
 - [CORE/DOC-CLEANUP-628 — current concise handoff and live artifact retention](ARTIFACT_RETIREMENT_CORE628.md) — 813-line historical handoff consolidated to 147 current-state lines, 1,148 ignored reproducible probes / 43.24 MiB retired after dry-run and native-target plus 486 canonical SHA checks, no original game code changes or full cold replay. Unique private `--inventory` prevents loss of previous cleanup evidence.

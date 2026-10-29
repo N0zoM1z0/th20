@@ -1,5 +1,7 @@
 # CORE/RECON-641 — whole original Bullet emitter code and relocation-site recovery
 
+**Historical frontier superseded:** CORE/EXACT-645 independently anchored all 129 real relocations, fixed the original velocity scalar from the former wrong 2.0f to original 4.0f, and passed full 3,832/3,832 native strict source-scoped cold replay. See [accepted whole boss](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md). The NONEXACT status below applies only to CORE/RECON-641 before this later admission.
+
 **Original game-owned BulletController::emit at 0x004818E0 remains NONEXACT until strict whole-relocation replay is accepted.**
 The immutable Japanese TH20 Steamless executable SHA-256 is
 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.

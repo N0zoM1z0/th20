@@ -308,9 +308,10 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
                 bullet->animation->interrupt(
                     static_cast<std::int16_t>(metadata_source->commands[bullet->field_38].operand_10)+7);
             bullet->state=2;
-            // Original 0x00482681 calls Vector3::operator-=, not +=:
-            // native first-command advance moves back two velocity steps.
-            bullet->position-=bullet->velocity*2.0f;
+            // Original 0x00482681 uses Vector3::operator-=, not +=.
+            // Its native scalar at +0xD7F is the actual file-backed 4.0f
+            // at 0x0056C8E0; the older assumed 2.0f was a gameplay bug.
+            bullet->position-=bullet->velocity*4.0f;
             ++bullet->field_38;
     } else bullet->animation->interrupt(2);
     bullet->run_extended_commands();

@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/DOC-CLEANUP-628.** This file is a
+**Last reconciled: 2026-10-29, CORE/EXACT-645.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -19,9 +19,9 @@ what is accepted.
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional function heads | **6,928**; unresolved boundaries are *not* exact |
 | Source-present function mappings | **1,183**, all origins |
-| Configured whole-native strict units | **1,184**, including library/compiler |
-| Distinct canonical MSVC object + receipt providers | **243** |
-| **Game-authored original whole-body exact** | **498 distinct functions / 175,709 disjoint original `.text` bytes** |
+| Configured whole-native strict units | **1,185**, including library/compiler |
+| Distinct canonical MSVC object + receipt providers | **244** |
+| **Game-authored original whole-body exact** | **499 distinct functions / 179,444 disjoint original `.text` bytes** |
 | Whole-program link / playable game | **Not yet available** |
 
 These counts are a dated snapshot. Run `scripts/repo-python
@@ -37,6 +37,7 @@ both true of this exact [locked target](TARGET_PROVENANCE.md).
 | --- | --- |
 | `0x00421B00` InputDevice polling | **3,490B / 747 x86**, [complete DirectInput/XInput source and PE proof](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) |
 | `0x00481200` Bullet command-11 | **1,404B / 357 x86**, [full original command state and canonical replay](BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md) |
+| `0x004818E0` Bullet emitter | **3,735B / 935 x86 full native exact**, [whole 3,832B code/NOP/two-switch-table strict source and 129 original relocated field proof](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md); authentic 4.0f velocity scalar corrects earlier false 2.0f, isolated new source **1/1 strict cold replay**, zero overlapping compiler/table byte credit |
 | `0x00539550` archive LZSS compressor | **1,036B / 315 x86**, [actual seven original accumulator writes and byte-exact original native encoder](ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md); prior 964B nonexact hypothesis **superseded** |
 | `0x005391F0` archive LZSS decompressor | **706B**, [whole original archive/game provenance](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md) |
 | `0x0053B5C0` ECL runtime tick | **11,110B**, [whole strict original interpreter runtime](EXACT_ECL_TICK_RECONSTRUCTION.md); **not** the 41,967B Enemy opcode dispatcher |
@@ -59,7 +60,6 @@ that entire parent is reconstructed.
 
 | Original head | Real whole original | Current evidence / most useful next work |
 | --- | --- | --- |
-| `0x004818E0` Bullet emitter | **3,735B, 935 x86** | [Full native source](../src/BulletEmitter.cpp) now emits **3,735B/935 x86**, plus exact-size original post-function NOP and 13+11 switch tables for a **3,832B whole contribution**. [Independent original PE/COFF audit](BULLET_EMITTER_3735_COMPLETE_CODE_RELOCATION_FRONTIER.md): **3,316/3,316 nonrelocated bytes identical**, **129/129 physical E8/DIR32 field offsets/types**, all **60/60 native E8 callee destinations independently verified**. Original-absent internal NOP eliminated through real Timer if-initializer; mode-11/12 float argument order recovered. **69 absolute target identities and whole new strict replay still outstanding; NONEXACT, no authored byte credit yet.** |
 | `0x004F9C30` Player main frame | **3,111B, 783 x86** | [Complete typed C++](../src/PlayerMainFrame.cpp) emits **3,254B /808**, **733/783** native mnemonics aligned. Native 67 E8/37 HIGHLOW and candidate 67/37 agree by count **only**. Correct two Context EnemyController getter calls, separate sprite floats, real 22B Timer **postfix**; original 45B effect-handle equality vs source inequality still unresolved. [Current ABI proof](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md). **NONEXACT**. |
 | `0x004FFA10` Player movement | **555B, 135 x86** | [Complete source](../src/PlayerMovement.cpp) emits **561B /136**, all original mnemonic kinds but one unwanted 6B SSE spill before `cvttss2si esi,xmm0`; not fixed by `/fp` changes or SSE intrinsics. [Full immutable PE history](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md). **NONEXACT**. |
 | `0x0047DB70` Bullet drawing group | **273B** | [Complete source and extra SSE spill frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md); compiler currently emits ~283B. **NONEXACT**. |
@@ -69,13 +69,14 @@ that entire parent is reconstructed.
 | `0x0042B5D0` Animation VM update | **39,470B** | **NONEXACT** giant original parent; native-exact child parsers, loaders, reset and frame helpers cannot be counted as this body. [Animation owner map](SOURCE_MAP.md). |
 | `0x00447800` Animation factory | **73B** | Original clear-before-construct path differs from ordinary `new Animation`; earlier natural placement/new tests unsuccessful. Do not alter otherwise exact Animation constructor or introduce fake zeroing. [Allocation history](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md). |
 
-**Near-term priority:** independently anchor all 69 absolute relocations
-of the entire Bullet emitter, add its 3,832B canonical unit, and perform
-**only that new owner's** complete strict native replay. The 60 original
-E8 callees are already independently checked. Do not grant 3,735B authored
-credit until replay accepts the complete relocation-resolved contribution.
-Next continue the Player 555B spill and 3,111B main-frame ABI; do not
-abandon giant parents.
+**Near-term priority:** Bullet emitter is now fully strict original exact:
+**one new 3,735B game-owned boss, 3,832B whole native contribution**,
+with only one new source-scoped cold replay. Continue the Player 555B
+compiler SSE spill and 3,111B main-frame handle/type ABI; then the
+12,140B Bullet command dispatcher, 39,470B Animation VM and 41,967B
+Enemy opcode parent. Do not infer exact giant parent bodies merely from
+their exact children. All source/code work should be validated with
+affected-only native replays, never automatic global cold replay.
 
 ## Evidence and source ownership discipline
 
