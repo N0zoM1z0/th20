@@ -1,5 +1,7 @@
 # Player storage construction
 
+**Later [CORE/ORIGIN-719](GAME_PLAYER_ANIMATION_ECL_SEVEN_ORIGINAL_1283_EXACT_ORIGIN.md) game ownership admission:** original 133B PlayerFeedback constructor is independently called by exact original 794B Player ctor E8 at 0x004F4947, with the genuine Player+0x2244 receiver. The complete constructor was already native-strict, now credited once; other historical source statuses below remain dated.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

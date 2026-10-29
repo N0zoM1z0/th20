@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Last reconciled: 2026-10-29, CORE/RECON-716.** This file is a
+**Last reconciled: 2026-10-29, CORE/ORIGIN-719.** This file is a
 **current-state/next-work guide**, not a chronological checkpoint log. The
 previous 813-line handoff, with its historical exact counters and repeated
 Bullet emitter milestones, remains in Git at
@@ -21,7 +21,7 @@ what is accepted.
 | Source-present function mappings | **1,185**, all origins |
 | Configured whole-native strict units | **1,187**, including library/compiler |
 | Distinct canonical MSVC object + receipt providers | **245** |
-| **Game-authored original whole-body exact** | **530 distinct functions / 183,382 disjoint original `.text` bytes** |
+| **Game-authored original whole-body exact** | **537 distinct functions / 184,665 disjoint original `.text` bytes** |
 | Whole-program link / playable game | **Not yet available** |
 
 These counts are a dated snapshot. Run `scripts/repo-python
@@ -46,6 +46,7 @@ both true of this exact [locked target](TARGET_PROVENANCE.md).
 | `0x004383A0` Animation direct script load | **338B**, plus 21B VM-forward helper, [whole native caller ABI](ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) |
 | Real geometry | **19 whole methods, 13,360B**, [complete original rectangles, circles, polygons and intersections](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md) |
 | Real game owner constructors/codec/graphics | **10 whole methods, 6,057B**, including 941B Graphics and 794B Player; [native project-origin audit](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md) |
+| Game Animation, ECL, Item and Player complete native child methods | **Seven whole-game original functions /1,283 distinct strict exact original bytes**: [243B Animation child-list begin, 241B recursive find, 217B layer, 182B ECL async spawn, 147B Item spawn-many, 133B PlayerFeedback constructor, 120B ScriptStack local](GAME_PLAYER_ANIMATION_ECL_SEVEN_ORIGINAL_1283_EXACT_ORIGIN.md). Newly attested original PE **30 E8/13 HIGHLOW**, real previously exact 967B Enemy animation, 878B RenderMesh, 11,110B ECL Runtime, 419B Bullet cancel, 794B Player constructor and ten ECL arguments caller chains. False earlier assumption that the ECL interpolation setter was Animation::set_layer **rejected** from physical E8. Only **7 bounded source cold objects /66/66 exact units** replayed, original giant parents remain NONEXACT. |
 | Laser parameters and controller protocol | **Ten complete originally game-owned Laser function bodies / 936 disjoint native strict exact bytes**, [four LaserType0/1/2/3 parameter construction and destruction pairs plus real context selection and lookup](LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md). Independently decoded ten original bodies, **17 E8/3 true PE HIGHLOW**, physical 12,140B Bullet command case-27 and 41,967B Enemy opcode dispatch callers; exact 1,738B Dialogue constructor independently calls Laser controller lookup. One affected source cold replay **12/12 strict**, but the previously game-credited 179B controller constructor and 263B reset function are **not** counted again. Both original giant dispatchers remain NONEXACT. |
 | Enemy and ECL original lifecycle | **4 complete game-authored, strictly exact functions / 762 disjoint original bytes**, [original EnemyController::create 155B, Enemy::initialize 222B, EnemyState::advance_scripts 168B and EclManager::tick 217B](ENEMY_ECL_LIFECYCLE_762_ORIGINAL_GAME_EXACT_ORIGIN.md). Independently decoded original **29 E8 /4 PE HIGHLOW** sites, original 12,140B (NONEXACT) dispatcher to Enemy creation, original 1,371B exact Enemy::defeat to ECL Manager, and both original ECL Manager calls to the separately exact 11,110B Runtime. Targeted-only receipt refresh for two existing original ECL native objects, zero broad replay or duplicate original code credit. |
 | ECL native typed arguments and tagged ScriptStack | **Twelve distinct complete game-authored whole original native methods, 2,073 disjoint strict exact bytes**, [complete original ECL argument and custom ScriptStack provenance](ECL_ARGUMENT_TAGGED_STACK_2073_ORIGINAL_GAME_EXACT_ORIGIN.md). Independently verified original **31 E8/9 PE HIGHLOW** fields, 185 physical original calls from the already exact 11,110B interpreter into the 15-method ECL argument/stack protocol, and 12 from the separately exact 923B call_into. The three prior exact siblings and both giant original full parents are **not recounted**; affected-only two-source cold replay **12/12 and 3/3 strict**, no full cold replay. |

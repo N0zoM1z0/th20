@@ -1,5 +1,7 @@
 # Whole ECL async creation, lookup, invalidation and call setup
 
+**Later [CORE/ORIGIN-719](GAME_PLAYER_ANIMATION_ECL_SEVEN_ORIGINAL_1283_EXACT_ORIGIN.md) game ownership admission:** full 182B EclManager::spawn native strict source is independently called twice at 0x0053B7CA /0x0053B847 by the already exact complete 11,110B EclRuntime::tick original. The original 182B is now credited once as game-owned; whole giant Enemy opcode root remains NONEXACT.
+
 CORE/EXACT-142 closes the node scalar factory through the shared production
 allocation body and removes its specialized fixture. See
 [node allocation](ECL_NODE_ALLOCATION_EXACT_RECONSTRUCTION.md).
