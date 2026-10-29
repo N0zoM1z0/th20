@@ -76,6 +76,10 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [CORE/RECON-587 — two independently original-PE proven odd-first shooting parity branches in complete 3,735B Bullet emitter](BULLET_EMITTER_3735_PARITY_BRANCH_875_NATIVE_FRONTIER.md) — immutable x86 `+0x1AD je even` on signed shot count and `+0x48A je even` on signed rows, each with the odd branch in original fallthrough order. Four whole locked MSVC variants improve ordered original mnemonic alignment **831 → 875/935** without changing current 3,609B/914 instructions, original **60/60 in-order E8 physical callee identities remain correct**. Whole parent still NONEXACT; only one noncanonical source rebuilt, no full cold replay.
 
+## Bullet emitter complete original 3,832-byte native contribution
+
+- [CORE/RECON-641 — whole 3,735B Bullet emitter method and two switch tables](BULLET_EMITTER_3735_COMPLETE_CODE_RELOCATION_FRONTIER.md) — real C++17 if-init preserves both unconditional Timer setter side effects, removes the original-absent internal MSVC NOP. Fresh **3,735B/935-instruction method**, original post-body NOP and full 13+11 jump tables yield **3,832B** entire contribution. Independent original PE .reloc and new COFF comparison yields **3,316/3,316 identical non-relocated bytes, all 129/129 original physical relocation field positions/types and 60/60 E8 callees**. **NONEXACT** pending independent anchors for 69 absolute targets and new whole native strict replay, no global cold replay.
+
 ## Bullet emitter whole original mnemonic sequence and natural mode-12 scalar evaluation
 
 - [CORE/RECON-632 — all 935 original Bullet emitter x86 mnemonic heads now align in natural C++](BULLET_EMITTER_3735_935_NATIVE_MNEMONICS_FRONTIER.md) — genuine original mode-12 fstp → movss → ShotParameters mov is reproduced by nested sine/absolute source without invented volatile; whole 3,735B native parent vs compiled 3,736B/936 x86 has **935/935 original mnemonic order**, **60/60 physical E8 callees**, 69 absolute fields by count, but still one compiler NOP and wrong byte/relocation offsets. Entire parent NONEXACT; zero canonical units affected and no global replay.

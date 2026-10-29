@@ -63,9 +63,10 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->metadata = std::move(descriptor);
     bullet->select_context(view_index);
     float heading = 0.0f;
-    bullet->timer_4d8 = native_one;
-    bullet->timer_4e8 = native_one;
 
+    // The two native Timer setters initialize every shot before its row-speed
+    // decision. The C++17 if-initializer keeps both real side effects together
+    // without introducing an EH call-site padding NOP in this /Od body.
     // Native original first keeps its computed base velocity in a separate
     // stack float, then copies it into the mutable pattern speed before
     // initializing Bullet+0x24. Sharing a single source local removes the
@@ -73,7 +74,7 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     float base_speed;
     // Original native +0x112..+0x16E tests rows > 1 before entering the
     // stepped-speed branch; under /Od the branch direction is visible.
-    if (shot.rows > 1)
+    if (bullet->timer_4d8 = native_one, bullet->timer_4e8 = native_one; shot.rows > 1)
         base_speed = shot.speed - ((shot.speed-shot.speed_step)*static_cast<float>(row)) /
                 (static_cast<float>(shot.rows)-native_one);
     else

@@ -59,7 +59,7 @@ that entire parent is reconstructed.
 
 | Original head | Real whole original | Current evidence / most useful next work |
 | --- | --- | --- |
-| `0x004818E0` Bullet emitter | **3,735B, 935 x86** | Complete maintained [C++](../src/BulletEmitter.cpp) emits **3,736B /936 x86**, **935/935 original mnemonic kinds in order**; all **60/60 original E8 physical callees correct in order**. Native/COFF compiler contributions both 3,832B, DIR32/HIGHLOW **69 by count only**. Mode-11 cosine and sine now use the **original heading operand**; [original native operand proof](BULLET_EMITTER_MODE11_HEADING_OPERANDS_788_FRONTIER.md) increases whole-method aligned operand matches **747 → 788** without changing size or E8. [Natural nested mode-12 sine/abs source](BULLET_EMITTER_3735_935_NATIVE_MNEMONICS_FRONTIER.md) also restores the exact original float reload sequence and raises overall ordered mnemonic alignment to **935/935**, with 789 matching operands. Remaining extra NOP at `+0x112` shifts 49 E8 physical sites by +1B; remaining stack-locals, EH and two 13+11 switch tables still differ. [Latest original x87 PE proof](BULLET_EMITTER_3735_X87_RETURNS_934_FRONTIER.md); [exact 60-E8 ordinal proof](BULLET_EMITTER_60_ORIGINAL_E8_CALL_IDENTITY.md). **NONEXACT**. |
+| `0x004818E0` Bullet emitter | **3,735B, 935 x86** | [Full native source](../src/BulletEmitter.cpp) now emits **3,735B/935 x86**, plus exact-size original post-function NOP and 13+11 switch tables for a **3,832B whole contribution**. [Independent original PE/COFF audit](BULLET_EMITTER_3735_COMPLETE_CODE_RELOCATION_FRONTIER.md): **3,316/3,316 nonrelocated bytes identical**, **129/129 physical E8/DIR32 field offsets/types**, all **60/60 native E8 callee destinations independently verified**. Original-absent internal NOP eliminated through real Timer if-initializer; mode-11/12 float argument order recovered. **69 absolute target identities and whole new strict replay still outstanding; NONEXACT, no authored byte credit yet.** |
 | `0x004F9C30` Player main frame | **3,111B, 783 x86** | [Complete typed C++](../src/PlayerMainFrame.cpp) emits **3,254B /808**, **733/783** native mnemonics aligned. Native 67 E8/37 HIGHLOW and candidate 67/37 agree by count **only**. Correct two Context EnemyController getter calls, separate sprite floats, real 22B Timer **postfix**; original 45B effect-handle equality vs source inequality still unresolved. [Current ABI proof](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md). **NONEXACT**. |
 | `0x004FFA10` Player movement | **555B, 135 x86** | [Complete source](../src/PlayerMovement.cpp) emits **561B /136**, all original mnemonic kinds but one unwanted 6B SSE spill before `cvttss2si esi,xmm0`; not fixed by `/fp` changes or SSE intrinsics. [Full immutable PE history](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md). **NONEXACT**. |
 | `0x0047DB70` Bullet drawing group | **273B** | [Complete source and extra SSE spill frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md); compiler currently emits ~283B. **NONEXACT**. |
@@ -69,12 +69,13 @@ that entire parent is reconstructed.
 | `0x0042B5D0` Animation VM update | **39,470B** | **NONEXACT** giant original parent; native-exact child parsers, loaders, reset and frame helpers cannot be counted as this body. [Animation owner map](SOURCE_MAP.md). |
 | `0x00447800` Animation factory | **73B** | Original clear-before-construct path differs from ordinary `new Animation`; earlier natural placement/new tests unsuccessful. Do not alter otherwise exact Animation constructor or introduce fake zeroing. [Allocation history](ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md). |
 
-**Near-term priority:** reconcile Bullet emitter's one remaining compiler NOP,
-original frame/relocation offsets **without**
-byte-patching or unsupported `volatile`; then work through the Player 555B
-spill and Player 3,111B handle/type ABI. Continue genuinely large parent
-functions, not only small leaf exact counts. Native source names/units remain
-provisional unless independently attested.
+**Near-term priority:** independently anchor all 69 absolute relocations
+of the entire Bullet emitter, add its 3,832B canonical unit, and perform
+**only that new owner's** complete strict native replay. The 60 original
+E8 callees are already independently checked. Do not grant 3,735B authored
+credit until replay accepts the complete relocation-resolved contribution.
+Next continue the Player 555B spill and 3,111B main-frame ABI; do not
+abandon giant parents.
 
 ## Evidence and source ownership discipline
 
