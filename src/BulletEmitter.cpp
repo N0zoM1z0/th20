@@ -3,6 +3,25 @@
 // NONEXACT: the actual original 935-instruction body plus 24 native switch
 // table relocs still differ from this compiled C++20 candidate. Preserve
 // authentic Bullet/shot/animation owners, not fabricated Renderer storage.
+// The original source depended on a legacy MSVC STL specialization: its
+// move conversion is a REAL noninlined 8B helper at 0x0040B280 and its
+// shared_ptr move assignment a real 63B method at 0x0047C530. Both are
+// reconstructed independently in ShotSharedPtrMoveLegacy.cpp under its
+// distinct /GS- /sdl- profile. Forward declarations here preserve the
+// original E8 call sequence without faking a game-owned trampoline.
+// This is a pinned-library ABI overlay; final linked COMDAT/ODR selection
+// and portable standard-library behavior remain unverified.
+#include "ShotMetadata.hpp"
+#include <memory>
+#include <utility>
+namespace std {
+template <>
+__declspec(noinline)
+shared_ptr<EtamaArgInf>&& move<shared_ptr<EtamaArgInf>&>(shared_ptr<EtamaArgInf>&) noexcept;
+template <>
+shared_ptr<EtamaArgInf>&
+shared_ptr<EtamaArgInf>::operator=(shared_ptr<EtamaArgInf>&&) noexcept;
+}
 #include "Bullet.hpp"
 #include "BulletStyle.hpp"
 #include "Animation.hpp"
@@ -200,8 +219,11 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     bullet->size.y=bullet->size.x;
     bullet->command_flags.bits=0;
     bullet->field_38=metadata_source->field_48;
-    if (bullet->field_38<metadata_source->commands.size()) {
-        if (metadata_source->commands[bullet->field_38].opcode==1) {
+    // Original out-of-range (0x004825A5) and non-opcode-1 (0x004825CD)
+    // branches share ONE native interrupt(2) site at 0x004826AC,
+    // not the two independent calls emitted by the previous nested if.
+    if (bullet->field_38<metadata_source->commands.size() &&
+        metadata_source->commands[bullet->field_38].opcode==1) {
             // Original native 0x004825EC and 0x0048261F make TWO
             // additional, separate pmr::vector::operator[] calls after
             // testing opcode at 0x004825C4. The opcode-1 operand at +0x10
@@ -215,7 +237,6 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
             // native first-command advance moves back two velocity steps.
             bullet->position-=bullet->velocity*2.0f;
             ++bullet->field_38;
-        } else bullet->animation->interrupt(2);
     } else bullet->animation->interrupt(2);
     bullet->run_extended_commands();
     bullet->animation->update();

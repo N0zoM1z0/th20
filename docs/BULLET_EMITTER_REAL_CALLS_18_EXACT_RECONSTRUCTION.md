@@ -1,5 +1,20 @@
 # CORE/EXACT-563 and CORE/RECON-563 — complete original Bullet style script getter and four recovered 3,735B emitter game calls
 
+**Later CORE/RECON-583 complete E8 identity audit:** The real maintained
+3,735B Bullet emitter parent now emits a C++ **3,609B / 914-instruction**
+whole candidate, **831/935 original mnemonic kinds aligned**, and
+all **60/60 immutable original PE physical E8 callee destinations
+match in the original order**. The true anonymous-temporary
+old `std::shared_ptr` move assignment and separate 8B `std::move`
+are now referenced by the emitter source, and two original error
+conditions share one actual `Animation::interrupt(2)` branch.
+[Complete original 60-E8 ordinal callee proof](BULLET_EMITTER_60_ORIGINAL_E8_CALL_IDENTITY.md).
+Older 3,628B/919 and 60-E8 *count-only* claims below are historical.
+The original complete 3,735B/935 parent is **STILL NONEXACT**;
+field sites, EH cleanup, switch tables and other code bytes differ,
+with no parent exact-byte credit or global cold replay.
+
+
 **Later CORE/RECON-571 current whole-boss status:** The complete
 original 3,735-byte Bullet emitter remains **NONEXACT** but its real
 maintained C++ was subsequently corrected for the original
