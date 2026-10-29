@@ -1,5 +1,7 @@
 # CORE/RECON-757 — entire original 456-byte Animation handle resolver: typed C++ / original-PE semantic frontier (NONEXACT)
 
+> **Historical frontier.** The complete 456B resolver became strictly native exact at CORE/RECON-772; see [the verified full-source proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md). The NONEXACT wording below describes this earlier checkpoint, not live status.
+
 The immutable Japanese TH20 v1.00a Steamless original PE (SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`)
 contains one **456-byte /141 i386-instruction** original game-owned

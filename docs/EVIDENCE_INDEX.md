@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-768):** [live accepted
+**Current next-agent reading order (CORE/RECON-772):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,211 strict units, 564 authored exact whole functions,
-187,139 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,212 strict units, 565 authored exact whole functions,
+187,595 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole-native exact 456-byte Animation handle resolver after genuine SprtID ABI recovery
+
+- [CORE/RECON-772 — entire original 456B/141 x86 AnimationPoolOwner::resolve_handle / SprtCtrlInf::getSprt source strict exact](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md) — real original 20/20 E8 relocation sites independently verified, typed 4-byte `SprtID` member operations at the original stack argument, true two `std::function` live-list searches and 0x600-stride pooled record paths. Natural maintained C++ under unchanged exact caller ABI emits complete **456/456B /141/141 i386**, all 20 original-target-anchored relocations, **zero differences**. One new canonical object/receipt and unit, **zero old compiler inputs changed**; the separate [47/47B SprtID reference inequality](SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md) remains independently strict. Live accepted status **565 /187,595B /1,212 units**, with the 12,140B Bullet command parent still NONEXACT.
 
 ## Original 47-byte SprtID comparison and full 456-byte compiler frontier
 

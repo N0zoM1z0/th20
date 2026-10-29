@@ -111,7 +111,7 @@ def main() -> None:
     print("PASS original Animation pool getSprt native 456/456B, 141/141 i386, 20/20 E8 original destinations")
     print("PASS native 0x48 special-slot / 0x600 pooled-record strides, +0x5F8 active, +0x4C0 handle identity")
     print("PASS two distinct original RTTI lambda captures and native 40B std::function call ABI")
-    print("Maintained C++ resolver remains NONEXACT; no whole-function byte credit.")
+    print("Original PE verifier is independent of the pinned canonical C++ replay; see animation_pool_resolve_handle_whole_456.")
 
 
 if __name__ == "__main__":

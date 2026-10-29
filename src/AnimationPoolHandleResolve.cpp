@@ -1,14 +1,13 @@
-// Complete original 0x0044CD00 pool handle resolution behavior, including
-// actual two-list search and repeated native subscript semantics. NONEXACT:
-// the original uses a four-byte SprtID by value, while the maintained public
-// callers currently have a signed/unsigned 32-bit scalar ABI. Keep the 456B
-// private typed compiler proof separate until existing callsites stay exact.
-// Native RTTI independently names SprtCtrlInf::getSprt(SprtID) and two
-// LinkInf<SprtInf*> predicate closures; current public owner/handle aliases
-// retain the ABI of already exact C++ callers.
+// Complete original native 456-byte SprtCtrlInf::getSprt(SprtID) behavior,
+// retained under the existing ABI-compatible AnimationPoolOwner::resolve_handle
+// name because its many already native-exact callers supply a four-byte word.
+// The source uses SprtID lvalue views only at true native member-operation
+// boundaries; do not add an artificial adapter or change the public ABI.
+// Two original list predicates and normal pool lookups share this one body.
 #include "AnimationRuntimeOwner.hpp"
 #include "Animation.hpp"
 #include "AnimationHandle.hpp"
+#include "SprtID.hpp"
 #include <array>
 #include <functional>
 #include <cstdint>
@@ -45,44 +44,50 @@ IntrusiveLink<Animation>* AnimationLookupList::find_if(LinkPredicate predicate) 
     return nullptr;
 }
 
-Animation* AnimationPoolOwner::resolve_handle(std::uint32_t id) {
-    // A zero ID has no owner. The locked original stores its four-byte
-    // by-value identifier at [ebp+8]; a rejected ID is not cleared in the
-    // caller, only in the original callee's local copy.
+Animation* AnimationPoolOwner::resolve_handle(std::uint32_t raw_id) {
+    // The immutable original argument is a 4-byte SprtID, while previously
+    // accepted callers use the compatible 4-byte uint32_t ABI. Each direct
+    // type view refers to the existing by-value stack argument (not a copy).
+    // No pointer, ownership or game state is changed by this local view.
     IntrusiveLink<Animation>* selected;
-    if (id == 0) return nullptr;
-    if ((id & 0xffffu) == 0xffffu) {
+    if (reinterpret_cast<SprtID&>(raw_id) == 0) return nullptr;
+    if ((reinterpret_cast<SprtID&>(raw_id) & 0xffffu) == 0xffffu) {
         // Special IDs (low word FFFF) search the two observed live-link
         // lists. The original uses two distinct reference-capturing lambdas
         // and passes each as a 40-byte std::function object by value.
         for (std::int32_t index = 0; index < 1; ++index) {
             auto& groups = *reinterpret_cast<std::array<AnimationLookupGroup, 1>*>(
                 reinterpret_cast<unsigned char*>(this) + 0x6c8);
-            if ((selected = groups[index].first.find_if([&id](IntrusiveLink<Animation>& node) {
-                return node.node_value()->handle.value == id;
+            if ((selected = groups[index].first.find_if([&raw_id](IntrusiveLink<Animation>& node) {
+                return node.node_value()->handle.value == raw_id;
             }))) return selected->node_value();
             auto& second_groups = *reinterpret_cast<std::array<AnimationLookupGroup, 1>*>(
                 reinterpret_cast<unsigned char*>(this) + 0x6c8);
-            if ((selected = second_groups[index].second.find_if([&id](IntrusiveLink<Animation>& node) {
-                return node.node_value()->handle.value == id;
+            if ((selected = second_groups[index].second.find_if([&raw_id](IntrusiveLink<Animation>& node) {
+                return node.node_value()->handle.value == raw_id;
             }))) return selected->node_value();
         }
-        id = 0;
+        reinterpret_cast<SprtID&>(raw_id) = 0;
     } else {
-    // Normal IDs index real 0x600-byte pooled records at owner+0x710.
-    // Active lives at record+0x5f8, with the handle word at +0x4c0.
-    // Every original lookup invokes its true typed 0x600-byte subscript
-    // anew, rather than retaining a pointer through a potentially invalid ID.
-    const std::uint32_t record_index = id & 0xffffu;
-    auto& records_a = *reinterpret_cast<std::array<PooledAnimation, 65536>*>(
-        reinterpret_cast<unsigned char*>(this) + 0x710);
-    if (!records_a[record_index].active) { id = 0; return nullptr; }
-    auto& records_b = *reinterpret_cast<std::array<PooledAnimation, 65536>*>(
-        reinterpret_cast<unsigned char*>(this) + 0x710);
-    if (records_b[record_index].animation.handle.value != id) { id = 0; return nullptr; }
-    auto& records_c = *reinterpret_cast<std::array<PooledAnimation, 65536>*>(
-        reinterpret_cast<unsigned char*>(this) + 0x710);
-    return &records_c[record_index].animation;
+        // Normal IDs index real 0x600-byte pooled records at owner+0x710.
+        // Active lives at record+0x5f8, with the handle word at +0x4c0.
+        const std::uint32_t record_index = reinterpret_cast<SprtID&>(raw_id) & 0xffffu;
+        auto& records_a = *reinterpret_cast<std::array<PooledAnimation, 65536>*>(
+            reinterpret_cast<unsigned char*>(this) + 0x710);
+        if (!records_a[record_index].active) {
+            reinterpret_cast<SprtID&>(raw_id) = 0;
+            return nullptr;
+        }
+        auto& records_b = *reinterpret_cast<std::array<PooledAnimation, 65536>*>(
+            reinterpret_cast<unsigned char*>(this) + 0x710);
+        if (reinterpret_cast<const SprtID&>(records_b[record_index].animation.handle) !=
+            reinterpret_cast<SprtID&>(raw_id)) {
+            reinterpret_cast<SprtID&>(raw_id) = 0;
+            return nullptr;
+        }
+        auto& records_c = *reinterpret_cast<std::array<PooledAnimation, 65536>*>(
+            reinterpret_cast<unsigned char*>(this) + 0x710);
+        return &records_c[record_index].animation;
     }
     return nullptr;
 }

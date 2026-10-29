@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-768.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-772.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -15,8 +15,8 @@ NONEXACT labels are not current acceptance facts.**
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
 | Source-present mapped methods | **1,210** across game, compiler and STL/library |
-| Complete native strict units | **1,211**, supplied by **248** distinct canonical MSVC objects with **248** matching receipts |
-| **Original authored-game whole-function exact** | **564 distinct physical game functions /187,139 original .text bytes** |
+| Complete native strict units | **1,212**, supplied by **249** distinct canonical MSVC objects with **249** matching receipts |
+| **Original authored-game whole-function exact** | **565 distinct physical game functions /187,595 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -40,6 +40,7 @@ of the entire game binary.
 | 0x00539550 LZSS compressor | **1,036B** exact (historical 964B attempt was NONEXACT), [native compressor](ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) |
 | 0x00447800 Animation factory | **73B** exact with coherent class tag and SDL ABI, [native allocation proof](ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) |
 | 0x0044C9B0 Animation pool allocation | **298B** exact, [pool allocator](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) |
+| 0x0044CD00 Animation pool handle resolver | **456B /141 x86** whole strict exact, [original SprtID identity and 20 E8 proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md) |
 | Other completed original methods | [Geometry](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md), [Interpolation](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md), [game owner constructors](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md), [Laser lifetimes](LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md), [ECL argument/ScriptStack](ECL_ARGUMENT_TAGGED_STACK_2073_ORIGINAL_GAME_EXACT_ORIGIN.md); historical group sums are not additional current byte credit. |
 
 **11,110B ECL runtime and 41,967B Enemy ECL opcode dispatcher are
@@ -54,7 +55,7 @@ although the 12,140B Bullet command parent which it calls remains NONEXACT.
 | **2. Player main 0x004F9C30, 3,111B /783 x86** | Source present, **3,114B/783** under MSVC, 783/783 mnemonic order, 67 E8 /37 whole-frame data roles, **NONEXACT**. Seven differing ADD register encodings account for the **net +3B**, but other register/stack/branch fields remain different. Next: natural C++ temporary/receiver lifetimes. [Native operand proof](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [72B genuine 9x2 data table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
 | **3. Player movement 0x004FFA10, 555B** | Source present, **561B/136 vs 555B/135**, one excess 6B SSE spill; **NONEXACT**. Two world-coordinate denominators already correctly refer to real native_128. Next: correct compiler SSE value lifetime, not fabricated register hints. [Original data and code frontier](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
 | **4. Bullet draw group 0x0047DB70, 273B** | Source present, about **283B/84 vs273B/82**, excess SSE offset spill; **NONEXACT**. [Full method study](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |
-| **5. Animation pool handle lookup 0x0044CD00, 456B/141 x86** | The published complete semantic method is still source-present **NONEXACT** under existing `uint32_t` public ABI: pinned MSVC **410B/122 x86/13 COFF relocations**, versus original **456B/141 x86/20 direct E8**. The immutable original game RTTI exposes `SprtCtrlInf::getSprt(SprtID)`; a separately saved private **typed `SprtID` candidate** emits whole **456B/141 native instruction kinds with all 20 original-relocation field positions and zero nonrelocated original byte differences**, but it uses unresolved owner/tag/aliasing identities and is **not accepted exact**. One native **47B `SprtID::operator!=(const SprtID&)` callee at 0x00449460 is now independently 47/47 strict exact**. A direct public SprtID ABI conversion would break four previously exact callers (+6B each): the entire failed dirty diff and exact private source are preserved, public ABI restored, all **9/9** actually touched canonical units reverified. No all-graph cold replay. [Typed ABI exact/remaining frontier](SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md), [original 20/20 E8 and source](ANIMATION_POOL_RESOLVER_456_TYPED_NATIVE_FRONTIER.md). |
+| **5. Animation pool resolver 0x0044CD00, 456B /141 x86** | **Now whole-native strict exact.** Genuine original `SprtCtrlInf::getSprt(SprtID)` RTTI and both list-lookup lambda paths under the maintained `AnimationPoolOwner::resolve_handle(uint32_t)` four-byte caller ABI. The complete maintained body cold compiles to **456/456B, 141/141 original x86 and 20/20 independently original-PE-E8-anchored COFF REL32 fields, zero differences**. Separately original **47B `SprtID` inequality exact**. Zero old strict units affected, no full replay. [Full canonical proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md); the [earlier ABI frontier](SPRTID_47_NATIVE_EXACT_AND_RESOLVER_ABI_FRONTIER.md) is dated historical NONEXACT evidence. |
 | **6. Enemy ECL dispatcher 0x0048C010, 41,967B /8,896 x86** | **NONEXACT**. Integer opcode base 300, 704-byte compressed indices and 174 real PE HIGHLOW case pointers; genuine Laser opcode 702/703/711/713 object lifetimes proven. [Original opcode paths](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
 | **7. Animation VM update 0x0042B5D0, 39,470B** | **NONEXACT** despite exact parsers/loaders/interpolation children. [Source map](SOURCE_MAP.md). |
 | **8. Enemy mesh 0x004A4190, 1,649B** | Natural C++ source present but **NONEXACT**, transient lifetime unresolved. [Mesh evidence](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). |
@@ -116,7 +117,7 @@ Keep original resources/th20.exe, private provenance, _reference/, attested
 ghidra-project/, installed MSVC/Wine/D3DX in .tools/, .venv/, source,
 Git history, original PE native research and unique .analysis/*.json.gz
 frozen snapshots. Do **not** delete build/ or .analysis/ as a whole.
-All **245 protected canonical .obj plus 245 matching receipt files** are
+All **249 protected canonical .obj plus 249 matching receipt files** are
 taken from the **live** match-units.toml, not hardcoded old 243/236/212
 counts.
 

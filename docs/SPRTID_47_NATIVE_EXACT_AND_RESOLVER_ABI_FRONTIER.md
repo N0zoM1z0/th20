@@ -1,5 +1,7 @@
 # CORE/RECON-768 — native-exact 47-byte SprtID inequality and full original 456-byte resolver compiler frontier
 
+> **Historical frontier.** The complete 456B resolver became strictly native exact at CORE/RECON-772; see [the verified full-source proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md). The NONEXACT wording below describes this earlier checkpoint, not live status.
+
 The target remains the hash-locked Japanese TH20 v1.00a Steamless binary,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This milestone admits **one newly original-native-exact game-owned 47-byte

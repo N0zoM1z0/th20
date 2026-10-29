@@ -20972,3 +20972,35 @@ symbol = "??9SprtID@th20@@QBE_NABU01@@Z"
 target_address = 0x00449460
 size = 47
 relocations = []
+
+# CORE/RECON-772: complete original 456B / 141-instruction Animation handle resolver.
+[units.animation_pool_resolve_handle_whole_456]
+source = "src/AnimationPoolHandleResolve.cpp"
+object = "build/core772-canonical/AnimationPoolHandleResolve.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationPoolOwner::resolve_handle"]
+symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@2@I@Z"
+target_address = 0x0044CD00
+size = 456
+relocations = [
+  { offset = 0x10, type = "REL32", symbol = "??8SprtID@th20@@QBE_NI@Z", target = 0x00449430 },
+  { offset = 0x2B, type = "REL32", symbol = "??ISprtID@th20@@QBEII@Z", target = 0x004495A0 },
+  { offset = 0x6A, type = "REL32", symbol = "??A?$array@UAnimationLookupGroup@?A0xaa9a8330@th20@@$00@std@@QAEAAUAnimationLookupGroup@?A0xaa9a8330@th20@@I@Z", target = 0x00449490 },
+  { offset = 0x81, type = "REL32", symbol = "??0<lambda_1>@?9??resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@3@I@Z@QAE@AAI@Z", target = 0x00447960 },
+  { offset = 0x89, type = "REL32", symbol = "??$?0V<lambda_1>@?9??resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@3@I@Z@$0A@@?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@QAE@$$QAV<lambda_1>@?9??resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@5@I@Z@@Z", target = 0x00446CC0 },
+  { offset = 0x91, type = "REL32", symbol = "?find_if@AnimationLookupList@?A0xaa9a8330@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@3@V?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@@Z", target = 0x0044A5A0 },
+  { offset = 0xA8, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAVAnimation@2@XZ", target = 0x0040C300 },
+  { offset = 0xC4, type = "REL32", symbol = "??A?$array@UAnimationLookupGroup@?A0xaa9a8330@th20@@$00@std@@QAEAAUAnimationLookupGroup@?A0xaa9a8330@th20@@I@Z", target = 0x00449490 },
+  { offset = 0xDE, type = "REL32", symbol = "??0<lambda_2>@?M@??resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@3@I@Z@QAE@AAI@Z", target = 0x00447960 },
+  { offset = 0xE6, type = "REL32", symbol = "??$?0V<lambda_2>@?M@??resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@3@I@Z@$0A@@?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@QAE@$$QAV<lambda_2>@?M@??resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@5@I@Z@@Z", target = 0x00446D30 },
+  { offset = 0xEE, type = "REL32", symbol = "?find_if@AnimationLookupList@?A0xaa9a8330@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@3@V?$function@$$A6A_NAAV?$IntrusiveLink@VAnimation@th20@@@th20@@@Z@std@@@Z", target = 0x0044A5A0 },
+  { offset = 0x105, type = "REL32", symbol = "?node_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAVAnimation@2@XZ", target = 0x0040C300 },
+  { offset = 0x119, type = "REL32", symbol = "??4SprtID@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x12C, type = "REL32", symbol = "??ISprtID@th20@@QBEII@Z", target = 0x004495A0 },
+  { offset = 0x147, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
+  { offset = 0x15C, type = "REL32", symbol = "??4SprtID@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x178, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
+  { offset = 0x18C, type = "REL32", symbol = "??9SprtID@th20@@QBE_NABU01@@Z", target = 0x00449460 },
+  { offset = 0x19D, type = "REL32", symbol = "??4SprtID@th20@@QAEXI@Z", target = 0x004117A0 },
+  { offset = 0x1B9, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
+]
