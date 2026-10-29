@@ -1,5 +1,19 @@
 # CORE/RECON-550 — native gameplay call and floating-argument corrections in entire 3,111B Player frame
 
+**Later CORE/RECON-557 original Timer call correction:** The real native
+Player frame E8 at `0x004F9CBC` calls the **22B postfix**
+`Timer::operator++(int)` at `0x00423540`; the old `++timer_2070`
+selected the different 20B prefix body `0x00429400` despite similar
+gameplay. The maintained whole source now uses `timer_2070++;`.
+[Original native call and corrected whole-parent proof](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md)
+supersedes this historical **3,239B / 730-aligned** candidate score:
+current compiled whole parent is **3,254B / 808 instruction heads,
+733/783 ordered original mnemonic kinds aligned**, with original
+67 E8/37 HIGHLOW reference **counts** only and no parent exact-byte
+credit. The real 45B effect-handle equality remains an independently
+open source/ABI difference.
+
+
 Original executable: Japanese TH20 v1.00a Steamless,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 

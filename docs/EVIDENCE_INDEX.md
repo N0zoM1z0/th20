@@ -40,6 +40,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/ORIGIN-555 — 21 complete ECL/Bullet/Animation/Item/Player/Archive original game-owned roots, 6,836B strict native exact](ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md) — full 1,829 original x86 instructions, **187 genuine E8 and 62 PE HIGHLOW fields**, 40 real attached native compiler-alignment bytes compared but not credited; 122/122 strict original units in fourteen freshly cold-built real source providers, 13 high/8 medium original caller confidence statuses. The real whole-exact 11,110B ECL runtime and original 41,967B nonexact Enemy dispatcher call into these children; the giant parent is not claimed exact.
 
+## Player whole-main-frame Timer postfix native ABI correction
+
+- [CORE/RECON-557 — native 3,111B Player main E8 uses the original 22B Timer postfix, not the distinct 20B prefix](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md) — repaired real maintained `timer_2070++`, true original native `0x004F9CBC -> 0x00423540` full-code dependency. Pinned complete C++ 3,254B/808 instructions, 733/783 original mnemonics aligned, candidate 67 E8/37 DIR32 equal only original reference counts; original 45B handle-equality source mismatch and complete parent still NONEXACT. No shared-header edit or whole cold replay.
+
 ## Player main-frame complete 3,111B original behavioral/ABI correction
 
 - [CORE/RECON-550 — correct original two Context getter E8s, separate float sprite-scale arguments and local security-cookie profile in complete 3,111B Player parent](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md) — entire real maintained method now 3,239B/805 instructions, **730/783 ordered original mnemonic heads** aligned (up from 672); candidate 67 E8 and 37 DIR32 count agree with independent original 67 E8 and 37 HIGHLOW, but field sites/code still NONEXACT. No header or existing canonical unit modified, no full cold replay.

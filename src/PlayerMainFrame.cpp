@@ -31,7 +31,10 @@ std::int32_t Player::update_main_frame() {
     // suppresses normal direction decoding until the native mode timer ends.
     if (movement_mode() != 0) {
         if (timer_2070.equals(0)) suspend_option_animations();
-        ++timer_2070;
+        // Original E8 at 0x004F9CBC targets the distinct 22B
+        // Timer::operator++(int) at 0x00423540, not the 20B prefix
+        // Timer::operator++() at 0x00429400. Both are real native bodies.
+        timer_2070++;
         if (movement_mode() == 1) {
             if (timer_2070.equals(1)) process_sound.request_effect(0x51, 0);
             dx = -0x100;

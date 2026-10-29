@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/ORIGIN-555.** This is a live navigation
+**Current: 2026-10-29, after CORE/RECON-557.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -396,12 +396,36 @@ and compiler object providers **242** remain unchanged. The enclosing
 **41,967B Enemy ECL dispatcher remains NONEXACT**; original direct E8
 child calls do not prove the whole parent or linked game runtime.
 
+## Player 3,111B whole main frame: original postfix Timer E8 corrected
+
+**CORE/RECON-557:** Independently original-PE decoded E8 at
+`0x004F9CBC` directly calls **22B `Timer::operator++(int)`**
+`0x00423540` (real push-zero and native `ret 4`), whereas the prior
+maintained source's `++timer_2070` wrongly called the distinct
+**20B prefix** `0x00429400`. Repaired real source to
+`timer_2070++;`, with no fake shim or altered original callee.
+Complete locked i386 compiler output is **3,254B / 808 heads**
+against original 3,111B / 783, with **733/783** original ordered
+mnemonic heads aligned versus 730 before this correction. Original
+67 E8/37 PE HIGHLOW and candidate 67 E8/37 DIR32 still match by
+**count only**, not full original positions/bytes. New native call
+identity census shows **60/67 known physical call identities matched
+in order**; original 45B effect-handle equality vs source inequality
+is a real independent call mismatch requiring valid C++ owner type
+work, not an undefined reinterpret cast. Twenty focus-lifetime probe
+variants failed to improve this whole-body codegen and remain private.
+[Exact original source ABI/call comparison](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md).
+The 3,111B parent and its separate 555B movement child both remain
+**NONEXACT**, zero new exact bytes. Only noncanonical
+`src/PlayerMainFrame.cpp` was edited; no existing strict unit or
+public header was touched, so no unrelated cold replay was performed.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
 | --- | --- | --- |
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
-| `0x004F9C30` **3,111B** Player main frame | [Complete typed C++ source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) with [current original gameplay/call ABI correction](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md): **3,239B/805 instructions, 730/783 original mnemonic heads aligned**. Real two EnemyController getter calls and separately computed two native sprite scale float args. Candidate **67 E8 + 37 DIR32** now matches original **67 E8 + 37 HIGHLOW by count**, after removing mistaken `/sdl` cookie. | **NONEXACT**: original 3,111B/783 and candidate code/relocation positions still differ; separate 555B Player movement and handle equality/folded ABI remain unresolved. No exact parent body credit. |
+| `0x004F9C30` **3,111B** Player main frame | [Complete typed C++ source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) with [current original gameplay/call ABI correction](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md): **3,254B/808 instructions, 733/783 original mnemonic heads aligned**. Real two EnemyController getter calls and separately computed two native sprite scale float args. Candidate **67 E8 + 37 DIR32** now matches original **67 E8 + 37 HIGHLOW by count**, after removing mistaken `/sdl` cookie. | **NONEXACT**: original 3,111B/783 and candidate code/relocation positions still differ; separate 555B Player movement and handle equality/folded ABI remain unresolved. No exact parent body credit., [original Timer postfix E8 and remaining handle equality ABI](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md) |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
 | `0x004818E0` **3,735B** Bullet emitter | [Complete maintained real-owner C++20](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) now emits 3,516B / 890 instructions / 792 aligned mnemonic kinds, against original 3,735B/935. Emitter original `0x00482241` now calls exact 298B native Animation pool allocation, and `0x004822C5` calls exact 338B direct script loader (rather than distinct old 32B wrapper); genuine 13/11 original table cases and 3,832B original compiler contribution separately attested | Whole parent **NONEXACT**: finish historical 63B shared_ptr move-assignment ABI and original native 60 E8 vs candidate call/branch lifetimes and switch target positions; do not credit until entire exact original replay. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
