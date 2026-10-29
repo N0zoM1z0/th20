@@ -33,7 +33,8 @@ std::uint32_t InputDevice::poll() {
             GetKeyboardState(raw);
             if (initial_flags != flags)
                 process_input_inf->set_last_input_kind(kind);
-            if (kind == 0) {
+            switch (kind) {
+            case 0: {
                 flags |= (raw[bindings.keyboard.slot4] & 0x80) ? 0x10u : 0;
                 flags |= (raw[bindings.keyboard.slot5] & 0x80) ? 0x20u : 0;
                 flags |= (raw[bindings.keyboard.slot6] & 0x80) ? 0x40u : 0;
@@ -55,6 +56,7 @@ std::uint32_t InputDevice::poll() {
                 flags |= (raw[VK_NUMPAD9] & 0x80) ? 0x90u : 0;
                 flags |= (raw[VK_NUMPAD1] & 0x80) ? 0x60u : 0;
                 flags |= (raw[VK_NUMPAD3] & 0x80) ? 0xA0u : 0;
+            } break;
             }
         }
     } break;
@@ -104,12 +106,13 @@ std::uint32_t InputDevice::poll() {
         if (FAILED(status)) {
             std::int32_t attempts = 0;
             status = direct_input->Acquire();
-            do {
-                if (status != DIERR_INPUTLOST)
-                    return flags;
+        retry_input_lost:
+            if (status == DIERR_INPUTLOST) {
                 status = direct_input->Acquire();
                 ++attempts;
-            } while (attempts < 400);
+                if (attempts >= 400) return flags;
+                goto retry_input_lost;
+            }
             return flags;
         }
 

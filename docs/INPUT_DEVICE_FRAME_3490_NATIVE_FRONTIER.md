@@ -1,5 +1,12 @@
 # CORE/EXACT-480 — four InputInf native accessors and the complete 3,490-byte InputDevice frame frontier
 
+**Historical checkpoint, superseded:** The complete `0x00421B00` input polling
+boss is now **strictly native exact (3,490/3,490)** as independently proven in
+[CORE/EXACT-501](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md). All
+NONEXACT/caller-frontier statements below describe the earlier checkpoint,
+not current status.
+
+
 Immutable original: Japanese TH20 v1.00a Steamless
 PE, full SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

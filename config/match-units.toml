@@ -20198,3 +20198,55 @@ relocations = [
   { offset = 0xB4, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0xCF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-501: entire 3490B original native InputDevice polling boss.
+# All 21 original E8 and 18 PE HIGHLOW relocations separately PE-attested.
+[units.input_device_poll]
+source = "src/InputDeviceFrame.cpp"
+object = "build/core501-canonical/InputDeviceFrame.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::InputDevice::poll"]
+symbol = "?poll@InputDevice@th20@@QAEIXZ"
+target_address = 0x00421B00
+size = 3490
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?poll@InputDevice@th20@@QAEIXZ", target = 0x0056810D },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x56, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x60, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x65, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x6E, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x7D, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+  { offset = 0x82, type = "REL32", symbol = "?routing_for_view@InputInf@th20@@QBEHH@Z", target = 0x00421990 },
+  { offset = 0xBC, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+  { offset = 0xC1, type = "REL32", symbol = "?bindings_for_view@InputInf@th20@@QAEPAUInputBindings@2@H@Z", target = 0x004217F0 },
+  { offset = 0x104, type = "DIR32", symbol = "?keyboard_input_enabled@th20@@3EA", target = 0x005B67C0 },
+  { offset = 0x11F, type = "DIR32", symbol = "__imp__GetKeyboardState@4", target = 0x0056C294 },
+  { offset = 0x13A, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+  { offset = 0x13F, type = "REL32", symbol = "?set_last_input_kind@InputInf@th20@@QAEXH@Z", target = 0x0041DE90 },
+  { offset = 0x6B7, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x6CD, type = "REL32", symbol = "_XInputGetState@8", target = 0x005406C6 },
+  { offset = 0x7F4, type = "DIR32", symbol = "?xinput_button_masks@th20@@3QBIB", target = 0x005AE220 },
+  { offset = 0x816, type = "DIR32", symbol = "?xinput_button_masks@th20@@3QBIB", target = 0x005AE220 },
+  { offset = 0x838, type = "DIR32", symbol = "?xinput_button_masks@th20@@3QBIB", target = 0x005AE220 },
+  { offset = 0x85A, type = "DIR32", symbol = "?xinput_button_masks@th20@@3QBIB", target = 0x005AE220 },
+  { offset = 0xA07, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+  { offset = 0xA0C, type = "REL32", symbol = "?set_last_input_kind@InputInf@th20@@QAEXH@Z", target = 0x0041DE90 },
+  { offset = 0xAD1, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xAF6, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xB14, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0xB7A, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xBA1, type = "REL32", symbol = "?map_input_byte@th20@@YAIPAIFIPBE@Z", target = 0x00420510 },
+  { offset = 0xBC1, type = "REL32", symbol = "?map_input_byte@th20@@YAIPAIFIPBE@Z", target = 0x00420510 },
+  { offset = 0xBE4, type = "REL32", symbol = "?map_input_byte@th20@@YAIPAIFIPBE@Z", target = 0x00420510 },
+  { offset = 0xC04, type = "REL32", symbol = "?map_input_byte@th20@@YAIPAIFIPBE@Z", target = 0x00420510 },
+  { offset = 0xC0E, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xC3F, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xC72, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xCA3, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xD34, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+  { offset = 0xD39, type = "REL32", symbol = "?set_last_input_kind@InputInf@th20@@QAEXH@Z", target = 0x0041DE90 },
+  { offset = 0xD66, type = "REL32", symbol = "?update@InputButtonState@th20@@QAEXXZ", target = 0x004228B0 },
+  { offset = 0xD7F, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xD9A, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

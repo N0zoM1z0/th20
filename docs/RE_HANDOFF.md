@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/EXACT-496.** This is a live navigation
+**Current: 2026-10-29, after CORE/EXACT-501.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -18,9 +18,9 @@ historical NONEXACT claims there must not override later exact proofs.
 | Original SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional PE boundaries | 6,928 |
 | Source-present mappings | **1,176** |
-| Strict canonical complete native units | **1,176** |
-| Unique canonical MSVC object/receipt providers | **236** |
-| Exact game-authored whole original functions | **400**, covering **121,429 original body bytes** |
+| Strict canonical complete native units | **1,177** |
+| Unique canonical MSVC object/receipt providers | **237** |
+| Exact game-authored whole original functions | **401**, covering **124,919 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
 unit count includes compiler-generated or library-support bodies that are
@@ -35,6 +35,7 @@ bytes. Original package v1.00a and embedded title/replay version
 
 | Original entry | Whole strict body | Source / decisive evidence |
 | --- | ---: | --- |
+| `0x00421B00` InputDevice whole keyboard/DirectInput/XInput poll | **3,490B**, 747 instructions | [Complete original PE 21 E8/18 HIGHLOW and strict fresh MSVC proof](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md); previous source frontier is superseded |
 | `0x00420AA0` InputInf DirectInput discovery | **726B**, 209 instructions | [Windows COM creation, GUID, errors and enumeration](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md) |
 | `0x004219D0` InputDevice DirectInput pad registration | **218B**, 68 instructions | Same original 726B/218B PE proof |
 | `0x00421830` InputInf DirectInput COM pointer slot | **17B** | Same proof; distinct physical address |
@@ -64,7 +65,6 @@ units; do not create duplicate physical matches.
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
 | --- | --- | --- |
-| `0x00421B00` **3,490B** InputDevice polling | **Complete typed C++ now exists** in `src/InputDeviceFrame.cpp`; original 747 instructions/21 E8/18 HIGHLOW; current compiled **3,720B/759** vs 3,490B/747; [entire-source frontier](INPUT_DEVICE_FRAME_3490_SOURCE_FRONTIER.md) | Resolve remaining 230-byte/12-instruction gap and original relocation differences across real keyboard/XInput/DirectInput paths. Parent remains **NONEXACT**; no exact bytes credited. |
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
 | `0x004F9C30` **3,111B** Player main frame | [Whole original E8/HIGHLOW caller audit](PLAYER_MAIN_FRAME_3111_NATIVE_FRONTIER.md) | Enclosing frame is NONEXACT despite most child calls being exact. Verify remaining E8 target and movement callee independently. |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |

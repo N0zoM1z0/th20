@@ -50,10 +50,10 @@ are excluded from Git.
 ## Repository status
 
 At the October 29, 2026 checkpoint the maintained graph has **1,176
-source-present mappings**, **1,176 strict canonical native units** and
-**236 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **400 complete functions /
-121,429 original native bytes**. These are dated values, not a
+source-present mappings**, **1,177 strict canonical native units** and
+**237 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **401 complete functions /
+124,919 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -68,6 +68,7 @@ for the live inventory and consult the
 | Enemy | Actual owners and [whole defeat](docs/ENEMY_DEFEAT_RECONSTRUCTION.md); private whole opcode draft remains machine-code nonexact; [layout](docs/CORE_ENEMY_DISPATCH_LAYOUT.md) |
 | Gameplay cores | Scheduler, hit ownership, Player/SHT, Bomb and Item protocols; [evidence index](docs/EVIDENCE_INDEX.md) |
 | Archive and Progress | Actual codec/resource/file pipelines and serialization; remaining whole nonexact functions recorded in ledgers |
+| Input devices | Complete 3,490B original keyboard/DirectInput/XInput poll is now [whole strict exact](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), along with manager startup/discovery/lifetime and button-state updates; game link/runtime remain open |
 | Graphics and sound | Maintained mesh/lifecycle and sound loading; Renderer and full runtime ownership remain open |
 | HUD and text | Complete FrontInf, AsciiInf and [Dialogue construction/destruction/follow-box protocol](docs/DIALOGUE_OWNER_RECONSTRUCTION.md); native resource lifetime and frame execution remain open |
 | Whole-program build and runtime | Not yet available |

@@ -22,7 +22,9 @@ remains in history. Current exact status is in the concise
 
 ## Input system and Player
 
-- [Whole 3,490B InputDevice polling C++ source; 22B setter morphology; 30/30 strict prior units preserved](INPUT_DEVICE_FRAME_3490_SOURCE_FRONTIER.md) — native keyboard, XInput and DirectInput semantics now have a real compiled typed whole-function implementation; candidate 3,720B/759 instructions against original 3,490B/747, **NONEXACT**, zero new original exact credit.
+- [CORE/EXACT-501 — entire 3,490B InputDevice keyboard/DirectInput/XInput polling boss strict exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) — 747 original x86 instructions and 39 separately original-attested E8/HIGHLOW fields; fresh locked MSVC i386 complete 3,490/3,490 strict canonical bytes, one new game-authored exact function, **no full replay**. Supersedes prior nonexact polling-frontier descriptions.
+
+- [Historical CORE/RECON-497 full 3,490B InputDevice polling C++ source frontier, since superseded by CORE/EXACT-501](INPUT_DEVICE_FRAME_3490_SOURCE_FRONTIER.md) — native keyboard, XInput and DirectInput semantics now have a real compiled typed whole-function implementation; candidate 3,720B/759 instructions against original 3,490B/747, **NONEXACT**, zero new original exact credit.
 
 - [Different whole-exact 215B append-only diagnostic and 221B error log originals](DIAGNOSTIC_LOG_MESSAGE_215_EXACT_RECONSTRUCTION.md) — the 215B original does not set the error flag, unlike the preexisting 221B; six native DirectInput caller E8 target fields resolve to the genuine append-only function. 6/6 bounded exact units in 4 cold objects.
 
@@ -34,7 +36,7 @@ remains in history. Current exact status is in the concise
 
 - [Entire exact 265B InputInf startup/binding initialization boss](INPUT_INF_START_265_EXACT_RECONSTRUCTION.md) — original 75 instructions, 2 E8/6 original PE HIGHLOW, real Graphics configuration record submember copying and four process input pointers, 11/11 strict units in 4 source-scoped cold objects. The invoked 465B device initializer was independently closed strict exact in CORE/EXACT-487.
 
-- [Entire original 3,490B input polling frame and four exact 128B InputInf routing/bindings/pad native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) — whole 747 original instructions, 21 E8/18 HIGHLOW, authentic keyboard/DirectInput/XInput phases; 49/27/26/26 whole exact callees, original input frame now 11/21 exact direct-call destinations, 10/10 native strict units in 3 actual cold objects. The 3,490B parent is NONEXACT.
+- [Historical original 3,490B polling-frame audit and four exact 128B InputInf routing/bindings/pad native methods](INPUT_DEVICE_FRAME_3490_NATIVE_FRONTIER.md) — whole 747 original instructions, 21 E8/18 HIGHLOW, authentic keyboard/DirectInput/XInput phases; 49/27/26/26 whole exact callees, original input frame now 11/21 exact direct-call destinations, 10/10 native strict units in 3 actual cold objects. The 3,490B parent is NONEXACT.
 
 - [Entire 466B native InputInf DirectInput shutdown boss and 50B interface release — exact](INPUT_INF_SHUTDOWN_466_EXACT_RECONSTRUCTION.md) — original 127+20 instructions, 9 E8/6 PE HIGHLOW, real recursive lock slot 15, 12 devices and four typed COM pad handles, all 466/466 and 50/50 original bytes; 6/6 receipt-dependent strict units in three source-scoped cold objects. 3,490B input processing remains NONEXACT.
 
