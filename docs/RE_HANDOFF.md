@@ -1,6 +1,6 @@
 # TH20 reconstruction — current handoff
 
-**Current: 2026-10-29, after CORE/RECON-571.** This is a live navigation
+**Current: 2026-10-29, after CORE/STL-577.** This is a live navigation
 and risk summary, not a checkpoint transcript. Use the authoritative
 `config/match-units.toml`, `config/functions.csv` and
 `config/function-origins.csv` for current per-function status. The
@@ -17,9 +17,9 @@ historical NONEXACT claims there must not override later exact proofs.
 | Original length | 1,858,560 bytes |
 | Original SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional PE boundaries | 6,928 |
-| Source-present mappings | **1,182** |
-| Strict canonical complete native units | **1,183** |
-| Unique canonical MSVC object/receipt providers | **242** |
+| Source-present mappings | **1,183** |
+| Strict canonical complete native units | **1,184** |
+| Unique canonical MSVC object/receipt providers | **243** |
 | Exact game-authored whole original functions | **498**, covering **175,709 original body bytes** |
 
 These are not whole-game linkage or runtime equivalence claims. The exact
@@ -489,6 +489,36 @@ changed and **no full cold replay** is relevant. Exact inventory
 remains **498 complete game bodies / 175,709 original bytes**, with
 1,183 strict units and 242 source objects.
 
+## Old MSVC STL shared_ptr move assignment: complete 63B native exact, library only
+
+**CORE/STL-577:** The full original library-support
+`std::shared_ptr<EtamaArgInf>::operator=(shared_ptr&&)` at native
+`0x0047C530`, **63B / 23 complete x86 instructions**, now has a
+strict **63/63 exact native C++20 compatibility translation unit**
+`src/ShotSharedPtrMoveLegacy.cpp`. Its actual historical expression
+`shared_ptr(std::move(other)).swap(*this)` creates an **anonymous
+move temporary**, not the earlier incorrect named `temporary` local.
+A narrow, typed noninlined old `std::move` source-level specialization
+reproduces the original **8/8B** physical wrapper at `0x0040B280`,
+already canonical via another folded source; it is not credited again.
+All **four original PE E8** callee targets and **47/47 other native
+bytes** match independently, with **zero PE HIGHLOW** fields. The
+original STL 63B method is now a real **single-source canonical strict
+unit** with fresh locked MSVC `/GS- /sdl-` compilation and **1/1
+scoped strict replay**. It is **library/compiler origin**,
+`disposition=exclude`, deliberately **not** new authored-game exact
+credit; standard-library specialization/whole linker ODR behavior
+is still unverified. [Native PE/COFF, anonymous temporary ABI
+and library classification proof](SHOT_SHARED_PTR_LEGACY_MOVE_63_EXACT_COMPILER_SUPPORT.md).
+
+Canonical native units **1,183 → 1,184**, unique actual compiler
+providers **242 → 243**, source-present mappings **1,182 → 1,183**.
+**Game-authored exact remains 498 whole originals / 175,709B**.
+The entire **3,735B Bullet emitter parent remains NONEXACT**:
+its own legacy `std::move` call in that translation unit and final
+whole-program template/COMDAT selection have not been restored.
+No public-header edits or global cold replay.
+
 ## Actual open whole-function bosses (priority, NOT exact)
 
 | Native address / original bytes | Known C++ / exact frontier | Immediate next investigation |
@@ -496,7 +526,7 @@ remains **498 complete game bodies / 175,709 original bytes**, with
 | `0x004FFA10` **555B** Player movement | `src/PlayerMovement.cpp` emits **561B / 136 instructions** against 555B/135; [original movement frontier](PLAYER_HISTORY_AND_MOVEMENT_555_FRONTIER.md) | Recover one extra SSE y-bound float spill through real source lifetime/ABI, not artificial locals. |
 | `0x004F9C30` **3,111B** Player main frame | [Complete typed C++ source](PLAYER_MAIN_FRAME_3111_TYPED_SOURCE_FRONTIER.md) with [current original gameplay/call ABI correction](PLAYER_FRAME_3111_GAMEPLAY_ABI_CORRECTION.md): **3,254B/808 instructions, 733/783 original mnemonic heads aligned**. Real two EnemyController getter calls and separately computed two native sprite scale float args. Candidate **67 E8 + 37 DIR32** now matches original **67 E8 + 37 HIGHLOW by count**, after removing mistaken `/sdl` cookie. | **NONEXACT**: original 3,111B/783 and candidate code/relocation positions still differ; separate 555B Player movement and handle equality/folded ABI remain unresolved. No exact parent body credit., [original Timer postfix E8 and remaining handle equality ABI](PLAYER_MAIN_TIMER_POSTFIX_3111_NATIVE_ABI.md) |
 | `0x0047DB70` **273B** Bullet group drawing | `src/BulletDrawGroup.cpp` emits 283B/84 vs 273B/82; [typed original drawing ABI](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md) | Two extra native SSE spills remain. Parent `draw_groups` 81B is already exact. |
-| `0x004818E0` **3,735B** Bullet emitter | [Entire maintained real C++ source](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) and [current original math/Context/opcode1 semantic corrections](BULLET_EMITTER_3735_COMMAND_AND_MATH_GAMEPLAY_CORRECTION.md) now compile to **3,628B /919 instructions, 828/935 original mnemonic heads aligned**; 60 E8 source fields matching original 60 **by count only**. Original 3 vector index calls and signed16 event read, cross-owner child file, custom norm/atan/abs and subtractive Vector3 are restored. | **NONEXACT** entire parent: original 63B historical STL shared_ptr move and original `0x00481989` std::move E8, compiler EH/lifetimes, exact original fields/switch tables still differ. No parent byte credit, only its noncanonical source rebuilt. |
+| `0x004818E0` **3,735B** Bullet emitter | [Entire maintained real C++ source](BULLET_EMITTER_3735_MAINTAINED_SOURCE_FRONTIER.md) and [current original math/Context/opcode1 semantic corrections](BULLET_EMITTER_3735_COMMAND_AND_MATH_GAMEPLAY_CORRECTION.md) now compile to **3,628B /919 instructions, 828/935 original mnemonic heads aligned**; 60 E8 source fields matching original 60 **by count only**. Original 3 vector index calls and signed16 event read, cross-owner child file, custom norm/atan/abs and subtractive Vector3 are restored. | **NONEXACT** entire parent: original 63B historical STL shared_ptr move now separately exact as [library support](SHOT_SHARED_PTR_LEGACY_MOVE_63_EXACT_COMPILER_SUPPORT.md) but emitter still emits a different template ABI, and original `0x00481989` std::move E8, compiler EH/lifetimes, exact original fields/switch tables still differ. No parent byte credit, only its noncanonical source rebuilt. |
 | `0x004A4190` **1,649B** Enemy mesh update | `src/EnemyMesh.cpp` previous native probe 1,548B; [lifetime frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md) | Recover complete radius/byte conversion, original clamp and register flow. |
 | `0x0047DCF0` **12,140B** Bullet controller dispatcher and `0x0048C010` **41,967B** Enemy ECL dispatcher | [Enemy dispatch layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and [source map](SOURCE_MAP.md) | Major real gameplay ownership and complete control-flow work; historical host/sanitizer counts are **not** current native exactness. |
 | `0x0042B5D0` **39,470B** Animation VM update | [Animation source map](SOURCE_MAP.md) | Separate large nonexact controller from already exact smaller Animation geometry and support routines. |

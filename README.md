@@ -49,9 +49,9 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 29, 2026 checkpoint the maintained graph has **1,182
-source-present mappings**, **1,183 strict canonical native units** and
-**242 canonical MSVC object/receipt providers**. Independently verified
+At the October 29, 2026 checkpoint the maintained graph has **1,183
+source-present mappings**, **1,184 strict canonical native units** and
+**243 canonical MSVC object/receipt providers**. Independently verified
 game-authored whole-function exactness is **498 complete functions /
 175,709 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
@@ -74,6 +74,7 @@ for the live inventory and consult the
 | Direct animation script and VM forward | Original 338B [AnimationFile script loader and 21B Renderer VM forwarding wrapper](docs/ANIMATION_DIRECT_SCRIPT_359_EXACT_RECONSTRUCTION.md) both whole **strict exact**; fixes the real Bullet emitter original call target; 39,470B VM remains open, 61 original source providers/266 old units preserved |
 | Animation pool allocation boss | Complete native **298B/78-instruction** [Renderer Animation pool allocation and reuse](docs/ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) now **298/298 strict exact**, original 14 E8 and 2 HIGHLOW fields; genuine 0x600 PooledAnimation slots and physically folded typed front/detach/initialize helpers, no duplicate bytes |
 | Bullet emitter boss | [Original math/Context/command-state reconstruction](docs/BULLET_EMITTER_3735_COMMAND_AND_MATH_GAMEPLAY_CORRECTION.md) advances the entire original **3,735B / 935-instruction** boss to maintained **3,628B/919 instruction** C++ candidate, **828/935** original mnemonic heads aligned and **60/60 E8 by count only**; original 16-bit opcode1 signedness and subtractive Vector3 movement fixed. Parent remains **NONEXACT** and no original bytes are falsely counted; [exact 18B script lookup and folded color](docs/BULLET_EMITTER_REAL_CALLS_18_EXACT_RECONSTRUCTION.md) |
+| Legacy STL compatibility | Complete original **63B std::shared_ptr<EtamaArgInf> move assignment** now [whole native strict-exact compiler/library source](docs/SHOT_SHARED_PTR_LEGACY_MOVE_63_EXACT_COMPILER_SUPPORT.md), plus separately exact folded 8B `std::move`; **library excluded**, no game-authored byte credit and 3,735B emitter parent still NONEXACT |
 | Bullet command-11 | The entire **1,404B** original Bullet edge-ray state machine is now [whole canonical native exact](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), with 33 original E8/35 PE HIGHLOW positions and a real typed 89B Vector2 polar linker-folded alias (no duplicate credit); 12,140B controller dispatcher and 3,735B emitter remain open |
 | Graphics and sound | Entire **941B Graphics constructor** and 319B native ViewportState construction now [game-owned whole strict exact](docs/GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md); full Graphics/Renderer runtime remains open |
 | HUD and text | Complete FrontInf, AsciiInf and [Dialogue construction/destruction/follow-box protocol](docs/DIALOGUE_OWNER_RECONSTRUCTION.md); native resource lifetime and frame execution remain open |

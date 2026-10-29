@@ -20433,3 +20433,20 @@ size = 18
 relocations = [
   { offset = 0xC, type = "DIR32", symbol = "?bullet_styles@th20@@3PAUBulletStyle@1@A", target = 0x005C06A8 },
 ]
+
+# CORE/STL-577: exact physical original 63B old STL shared_ptr move assignment.
+# Library support, not game-authored coverage; exact original 4 native E8.
+[units.shot_shared_ptr_legacy_move_assignment]
+source = "src/ShotSharedPtrMoveLegacy.cpp"
+object = "build/core577-canonical/ShotSharedPtrMoveLegacy.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/sdl-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["std::shared_ptr<EtamaArgInf>::operator=(std::shared_ptr<EtamaArgInf>&&)"]
+symbol = "??4?$shared_ptr@UEtamaArgInf@@@std@@QAEAAV01@$$QAV01@@Z"
+target_address = 0x0047C530
+size = 63
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??$move@AAV?$shared_ptr@UEtamaArgInf@@@std@@@std@@YA$$QAV?$shared_ptr@UEtamaArgInf@@@0@AAV10@@Z", target = 0x40b280 },
+  { offset = 0x1A, type = "REL32", symbol = "??0?$shared_ptr@UEtamaArgInf@@@std@@QAE@$$QAV01@@Z", target = 0x47b820 },
+  { offset = 0x29, type = "REL32", symbol = "?swap@?$shared_ptr@UEtamaArgInf@@@std@@QAEXAAV12@@Z", target = 0x486690 },
+  { offset = 0x31, type = "REL32", symbol = "??1?$shared_ptr@UEtamaArgInf@@@std@@QAE@XZ", target = 0x47c300 },
+]

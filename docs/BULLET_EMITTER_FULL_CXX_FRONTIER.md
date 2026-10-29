@@ -1,5 +1,21 @@
 # CORE/AUDIT-292 — complete C++20 shot-emitter root trials and real 3,832-byte MSVC contribution
 
+**Later CORE/STL-577 original library ABI discovery:** The entire
+63-byte original `std::shared_ptr<EtamaArgInf>` move assignment at
+`0x0047C530` has been independently
+[reconstructed as a 63/63 native-exact compiler-library support unit](SHOT_SHARED_PTR_LEGACY_MOVE_63_EXACT_COMPILER_SUPPORT.md).
+The real original STL uses `shared_ptr(std::move(other)).swap(*this)`
+with an **anonymous** move temporary and a noninline 8B old
+`std::move`; the earlier named-temp trial and old 54B modern library
+were not exact. The 8B helper is physically folded with an already
+canonical source, zero duplicate byte credit. This new library code
+is **not game authored**, and the **3,735B enclosing Bullet emitter
+is STILL NONEXACT**, because its own translation unit's old move call
+and whole-program template/linker selection have not been restored.
+The standard-library compatibility specialization is a pinned native
+source reconstruction, not proof of portable C++ or linked game runtime.
+
+
 **Later CORE/RECON-571 current whole-boss status:** The complete
 original 3,735-byte Bullet emitter remains **NONEXACT** but its real
 maintained C++ was subsequently corrected for the original

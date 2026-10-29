@@ -1,5 +1,21 @@
 # CORE/RECON-571 — restore original cross-controller child Animation, native ellipse mathematics and signed-16 Bullet command state in the entire 3,735B emitter
 
+**Later CORE/STL-577 original library ABI discovery:** The entire
+63-byte original `std::shared_ptr<EtamaArgInf>` move assignment at
+`0x0047C530` has been independently
+[reconstructed as a 63/63 native-exact compiler-library support unit](SHOT_SHARED_PTR_LEGACY_MOVE_63_EXACT_COMPILER_SUPPORT.md).
+The real original STL uses `shared_ptr(std::move(other)).swap(*this)`
+with an **anonymous** move temporary and a noninline 8B old
+`std::move`; the earlier named-temp trial and old 54B modern library
+were not exact. The 8B helper is physically folded with an already
+canonical source, zero duplicate byte credit. This new library code
+is **not game authored**, and the **3,735B enclosing Bullet emitter
+is STILL NONEXACT**, because its own translation unit's old move call
+and whole-program template/linker selection have not been restored.
+The standard-library compatibility specialization is a pinned native
+source reconstruction, not proof of portable C++ or linked game runtime.
+
+
 Target: immutable Japanese TH20 v1.00a Steamless `resources/th20.exe`,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 

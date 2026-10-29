@@ -68,6 +68,10 @@ remains in history. Current exact status is in the concise
 
 - [CORE/EXACT-511 — ten whole game interpolation bosses/evaluators, 8,571 native bytes](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md) — 1,489B IntegerTriple, 1,129B Vector3, 1,074B Fog, 1,022B Vector2 and other whole samplers/evaluators; independent original PE **117 E8 / 90 HIGHLOW**, 2,421 complete x86 instructions, 41/41 native strict units in one fresh MSVC object; original game ECL/Animation/Enemy/Bullet and Wonder Stone callers. Earlier origin-pending descriptions superseded, no double counting or full cold replay.
 
+## Legacy STL shared ownership whole-native exact compiler support
+
+- [CORE/STL-577 — full original 63B `std::shared_ptr<EtamaArgInf>` move assignment and physically folded 8B `std::move`, strict native exact](SHOT_SHARED_PTR_LEGACY_MOVE_63_EXACT_COMPILER_SUPPORT.md) — native 63B/23 whole instructions, four independently original PE E8 calls, 47/47 original nonreloc bytes, true `shared_ptr(std::move(other)).swap(*this)` anonymous-temp lifetime vs historical named-local incorrect hypothesis. Source isolated, `/GS- /sdl-` MSVC canonical **1/1 whole native strict**; **library-origin exclude**, no authored game byte credit and no claim of whole 3,735B emitter linkage/parent exactness.
+
 ## Bullet emitter whole-boss native game math, Context ownership and signed ECL opcode1
 
 - [CORE/RECON-571 — complete 3,735B Bullet emitter native cross-Context/maths/signed opcode-1 correction](BULLET_EMITTER_3735_COMMAND_AND_MATH_GAMEPLAY_CORRECTION.md) — original PE independently proves E8 targets `0x00481F45` norm, `0x00481F66` arctangent, `0x00481FFA` absolute, `0x00482310` Context controller getter (folded 16B, zero duplicate credit), `0x00482681` **Vector3 subtract**, and **three original vector `operator[]`** E8s with two signed16 MOVSX reads. Full C++ now 3,628B/919 instructions, **828/935** original mnemonic heads aligned, **60/60 E8 by count only**. Entire parent remains NONEXACT; only its noncanonical source compiled, no public headers or unrelated strict units touched, no global cold replay.
