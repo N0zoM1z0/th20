@@ -1,5 +1,7 @@
 # CORE/RECON-793 — three original 97B Animation renderer quad modes, all whole-native strict exact
 
+> **Subsequent CORE/RECON-796:** Two more distinct original mode 4/5 methods (48B and 142B) are now strictly native exact from the same source. All **five** methods pass scoped full replay; [mode4/mode5 full PE evidence](ANIMATION_DRAW_MODE4_48_MODE5_142_STRICT_EXACT.md). The previous three-unit counts below are historical.
+
 The immutable original TH20 Japanese v1.00a Steamless PE has whole-file SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This checkpoint closes **three genuinely distinct, complete original 97B

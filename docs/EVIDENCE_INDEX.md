@@ -1,15 +1,15 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-793):** [live accepted
+**Current next-agent reading order (CORE/RECON-796):** [live accepted
 state and unfinished bosses](RE_HANDOFF.md) ->
 [whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
 -> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
 -> [source ownership](SOURCE_MAP.md) ->
 [bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
 Only the live handoff and ledgers define the current count (at this
-checkpoint **1,227 strict units, 580 authored exact whole functions,
-188,916 original game-code bytes**). All later checkpoint counts below
+checkpoint **1,229 strict units, 582 authored exact whole functions,
+189,106 original game-code bytes**). All later checkpoint counts below
 are *historical snapshots*, not competing current measurements or sums.
 
 These documents retain unique native observations, source contracts, compiler
@@ -27,6 +27,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original whole 48B mode 4 +142B mode 5 Animation draw methods strict exact
+
+- [CORE/RECON-796 — full native 48B/20 x86 mode-4 integer guard and 142B/34 x86 mode-5 quad-perspective-W postdraw reset](ANIMATION_DRAW_MODE4_48_MODE5_142_STRICT_EXACT.md) — original 5,993B draw Boss cases 4/5 and actual separate E8 to original guard/setup/render targets. Mode 5's **eight real PE HIGHLOW** include four true 1.0f literals and four actual vertex member fields at effective original `0x005AEF1C`, with **COFF addend +0xC** to physical symbol base `0x005AEF10`, independently reconciled after an initial replay failure. All **five** existing/new 97/97/97/48/142B whole native methods **5/5** strict after only **one** affected source/object cold rebuild, no full replay or public header changes. Live **582 game-authored /189,106B**, 1,229 units/253 providers; 5,993B parent remains NONEXACT.
 
 ## Three full native 97B renderer quad-mode wrappers exact from the 5,993B Draw Boss
 

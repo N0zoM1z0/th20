@@ -278,6 +278,41 @@ def verify() -> None:
         print(f"PASS original 97B quad draw {head:#010x}: complete 32 x86, "
               "4 real PE HIGHLOW to shared native 4x28B vertex data, 2 original setup/submit E8")
 
+    # More original whole renderer mode wrappers: 48B integer-return guard
+    # and 142B quad reset after drawing. This is checked from original PE,
+    # not inferred from the C++ target or physical base symbol value.
+    for head, size, mode, setup, expected_data in (
+        (0x00440310, 48, 4, 0x00440340, {}),
+        (0x004413A0, 142, 5, 0x00441430,
+         {0x32: 0x0056C8CC, 0x3A: 0x005AEF1C,
+          0x49: 0x0056C8CC, 0x51: 0x005AEF1C,
+          0x61: 0x0056C8CC, 0x69: 0x005AEF1C,
+          0x79: 0x0056C8CC, 0x81: 0x005AEF1C}),
+    ):
+        body = decoded(image, base, sections, head, size)
+        assert body[-1].mnemonic == "ret" and body[-1].op_str == "4"
+        assert len(body) == (20 if size == 48 else 34)
+        assert {location for location in relocs if head <= location < head + size} == {
+            head + off for off in expected_data}
+        for offset, physical in expected_data.items():
+            assert struct.unpack("<I", raw_at(image, base, sections, head + offset, 4))[0] == physical
+        for offset, destination in ((0x0E if size==48 else 0x10, setup),
+                                    (0x25 if size==48 else 0x1E, 0x0043F6A0)):
+            insn = next(x for x in body if x.address == head + offset)
+            assert insn.mnemonic == "call" and insn.bytes[0] == 0xE8
+            assert insn.address + 5 + struct.unpack_from("<i", insn.bytes, 1)[0] == destination
+        original_modes = list(csv.DictReader((Path(__file__).resolve().parents[1] /
+            "config/animation-draw-boss-mode-e8.csv").open()))
+        assert next(r for r in original_modes if int(r["mode"])==mode)["render_target"] == f"0x{head:08X}"
+        if size == 142:
+            assert len([x for x in body if x.mnemonic == "movss" and "0x5aef1c" in x.op_str]) == 4
+            assert all(struct.unpack("<f", raw_at(image, base, sections, 0x0056C8CC, 4))[0] == 1.0 for _ in range(4))
+        else:
+            assert any(x.mnemonic == "test" and x.op_str == "eax, eax" for x in body)
+        print(f"PASS original 0x{head:08X} mode {mode} whole {size}B native: "
+              f"two original E8, {len(expected_data)} real original HIGHLOW, "
+              "full return and x86 boundary")
+
     # Three native Graphics D3D9 state transitions: compare the original
     # complete 92B /30 x86 shape, real original HIGHLOW global reference,
     # the original E8 to Renderer flush, and the real virtual API slot.

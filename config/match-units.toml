@@ -21228,3 +21228,39 @@ relocations = [
   { offset = 0x49, type = "REL32", symbol = "?setup_quad_a@AnimationDrawModeOwner@th20@@QAEXPAVAnimation@2@PAUSpriteTexturedVertex@2@111@Z", target = 0x0043EB40 },
   { offset = 0x57, type = "REL32", symbol = "?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z", target = 0x0043F6A0 },
 ]
+
+# CORE/RECON-796: complete original 48B game renderer Animation draw mode.
+[units.animation_draw_quad_mode4_48]
+source = "src/AnimationDrawQuadModes.cpp"
+object = "build/core793-canonical/AnimationDrawQuadModes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawModeOwner::draw_quad_mode4"]
+symbol = "?draw_quad_mode4@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x00440310
+size = 48
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "?prepare_quad_mode4@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@@Z", target = 0x00440340 },
+  { offset = 0x26, type = "REL32", symbol = "?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z", target = 0x0043F6A0 },
+]
+
+# CORE/RECON-796: complete original 142B game renderer Animation draw mode.
+[units.animation_draw_quad_mode5_142]
+source = "src/AnimationDrawQuadModes.cpp"
+object = "build/core793-canonical/AnimationDrawQuadModes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawModeOwner::draw_quad_mode5"]
+symbol = "?draw_quad_mode5@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x004413A0
+size = 142
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?prepare_quad_mode5@AnimationDrawModeOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x00441430 },
+  { offset = 0x1F, type = "REL32", symbol = "?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z", target = 0x0043F6A0 },
+  { offset = 0x32, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x3A, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x49, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x51, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x61, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x69, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+  { offset = 0x79, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x81, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
+]
