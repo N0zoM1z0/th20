@@ -20627,3 +20627,28 @@ relocations = [
   { offset = 0x28, type = "REL32", symbol = "?__autoclassinit2@Animation@th20@@QAEXI@Z", target = 0x0040C080 },
   { offset = 0x30, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
 ]
+
+# CORE/EXACT-730: original real Bullet+0x420 VectorInterpolation child
+# boundaries in the 12,140-byte original command sequencer, complete game
+# source already emitted by the existing typed Interpolation<Vector3> template.
+# The 35B set_start is a legitimate same-byte Motion::set_position alias at
+# original 0x004393F0; keep its one prior canonical unit and no duplicate.
+[units.vector3_interpolation_set_end]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::VectorInterpolation::set_end"]
+symbol = "?set_end@?$Interpolation@UVector3@th20@@@th20@@QAEXABUVector3@2@@Z"
+target_address = 0x00438A90
+size = 38
+relocations = []
+
+[units.vector3_interpolation_set_duration]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::VectorInterpolation::set_duration"]
+symbol = "?set_duration@?$Interpolation@UVector3@th20@@@th20@@QAEXH@Z"
+target_address = 0x00438E70
+size = 22
+relocations = []

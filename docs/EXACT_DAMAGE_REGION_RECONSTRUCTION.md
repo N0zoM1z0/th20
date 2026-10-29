@@ -1,5 +1,7 @@
 # Damage Region routing and configuration
 
+**Later [CORE/EXACT-730](BULLET_VECTOR3_INTERPOLATION_95_EXACT_FOLDED_ALIAS.md) source-owner verification:** existing exact 35B Motion::set_position physical original at 0x004393F0 is also a genuine fold-compatible VectorInterpolation::set_start call target in original Bullet command-8 and the 12,140B Bullet sequencer. Two separate real typed MSVC whole function bodies are identical to the one original physical 35B. The original Motion code is now counted as game-authored exactly ONCE; two separate VectorInterpolation set_end/set_duration original heads add 38B/22B exact without duplicate credit.
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 
