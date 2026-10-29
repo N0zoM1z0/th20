@@ -20,7 +20,7 @@ void InputDevice::initialize_directinput(std::int32_t physical, std::int32_t log
         device->GetCapabilities(&process_graphics.input_device_caps);
         direct_input = device;
         device->EnumObjects(original_directinput_device_object, nullptr, DIDFT_ALL);
-        report_log_error(&diagnostic_log, original_directinput_pad_attached_message);
+        report_log_message(&diagnostic_log, original_directinput_pad_attached_message);
         kind = 1;
         xinput_index = -1;
         logical_index = logical;

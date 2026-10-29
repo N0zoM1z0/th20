@@ -1173,3 +1173,4 @@ th20::InputInf::discover_xinput_devices,0x004210D0,function
 th20::InputInf::discover_directinput_devices,0x00420AA0,function
 th20::InputDevice::initialize_directinput,0x004219D0,function
 th20::InputInf::direct_input_handle_slot,0x00421830,function
+th20::report_log_message,0x00454150,function

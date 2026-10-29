@@ -14,6 +14,9 @@ struct DiagnosticLog {
 extern DiagnosticLog diagnostic_log;
 // Native variadic cdecl entry returns its format pointer after formatting.
 const char* report_log_error(DiagnosticLog* log, const char* format, ...);
+// A physically separate 215-byte original append-only message logger;
+// unlike the 221B error entry, this does not set DiagnosticLog::error.
+const char* report_log_message(DiagnosticLog* log, const char* format, ...);
 #if defined(_M_IX86)
 static_assert(sizeof(std::pmr::string) == 28);
 static_assert(offsetof(DiagnosticLog, error) == 0x1c);

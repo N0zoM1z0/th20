@@ -21,13 +21,13 @@ std::int32_t InputInf::discover_directinput_devices() {
         reinterpret_cast<void**>(direct_input_handle_slot()), nullptr);
     if (FAILED(status)) {
         set_direct_input_handle(nullptr);
-        report_log_error(&diagnostic_log, original_directinput_create_error);
+        report_log_message(&diagnostic_log, original_directinput_create_error);
         return -1;
     }
     IDirectInput8W* dinput = direct_input_handle();
     if (FAILED(dinput->CreateDevice(GUID_SysKeyboard, &direct_device_2e10, nullptr))) {
         release_direct_input();
-        report_log_error(&diagnostic_log, original_keyboard_create_error);
+        report_log_message(&diagnostic_log, original_keyboard_create_error);
         return -1;
     }
     if (FAILED(direct_device_2e10->SetDataFormat(&c_dfDIKeyboard))) {
@@ -36,7 +36,7 @@ std::int32_t InputInf::discover_directinput_devices() {
             direct_device_2e10 = nullptr;
         }
         release_direct_input();
-        report_log_error(&diagnostic_log, original_keyboard_format_error);
+        report_log_message(&diagnostic_log, original_keyboard_format_error);
         return -1;
     }
     status = direct_device_2e10->SetCooperativeLevel(
@@ -48,11 +48,11 @@ std::int32_t InputInf::discover_directinput_devices() {
             direct_device_2e10 = nullptr;
         }
         release_direct_input();
-        report_log_error(&diagnostic_log, original_keyboard_cooperative_error);
+        report_log_message(&diagnostic_log, original_keyboard_cooperative_error);
         return -1;
     }
     direct_device_2e10->Acquire();
-    report_log_error(&diagnostic_log, original_directinput_started);
+    report_log_message(&diagnostic_log, original_directinput_started);
     direct_input_handle()->EnumDevices(DI8DEVCLASS_GAMECTRL,
        original_directinput_enumerate_devices, nullptr, DIEDFL_ATTACHEDONLY);
     for (std::int32_t i=0; i<4; ++i) {

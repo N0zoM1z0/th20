@@ -1,6 +1,6 @@
 # TH20 reconstruction: current handoff
 
-**Updated 2026-10-29; CORE/EXACT-495 whole 726B DirectInput discovery and 218B pad attach plus 17B COM slot.** This file is the concise
+**Updated 2026-10-29; CORE/EXACT-496 physically distinct 215B append-only diagnostic.** This file is the concise
 entrypoint, **not** a running transcript. Previous 1,689-line historical
 handoff is available with `git show e7fa30d:docs/RE_HANDOFF.md`.
 Use the [focused evidence index](EVIDENCE_INDEX.md) for individual native
@@ -16,10 +16,10 @@ old reports and probe filenames are **not** current status.
 | Target size | 1,858,560 bytes |
 | SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Provisional target boundaries | 6,928 |
-| Source-present mappings, all origins | **1,174** |
-| Canonical strict native units | **1,175** |
+| Source-present mappings, all origins | **1,175** |
+| Canonical strict native units | **1,176** |
 | Unique canonical object providers | **236**, each with an exact `.obj` and `.receipt.json` |
-| Exact game-authored whole functions | **399**, covering **121,214 native bytes** |
+| Exact game-authored whole functions | **400**, covering **121,429 native bytes** |
 
 The **live ledgers, not this dated table**, are authoritative. Before
 reconstruction work run:
@@ -43,6 +43,7 @@ function is not proof of whole-game linkage or runtime completeness.**
 
 | Entire original function | Address | Native bytes | Focused proof |
 | --- | --- | ---: | --- |
+| `report_log_message` / `report_log_error` (prior exact) | `0x00454150` / `0x00454230` | **215 / 221 prior** | [distinct append-only vs error-flagging original diagnostics](DIAGNOSTIC_LOG_MESSAGE_215_EXACT_RECONSTRUCTION.md) |
 | `InputInf::discover_directinput_devices` / `InputDevice::initialize_directinput` / `InputInf::direct_input_handle_slot` | `0x00420AA0` / `0x004219D0` / `0x00421830` | **726 / 218 / 17** | [full original DirectInput COM device creation and registration plus original folded aliases](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md) |
 | `InputInf::discover_xinput_devices` | `0x004210D0` | **170** | [complete original four-slot XInput SDK discovery and imported state thunk](INPUT_INF_XINPUT_DISCOVERY_170_EXACT_RECONSTRUCTION.md) |
 | `InputInf::initialize_devices` | `0x00420D80` | **465** | [whole signed device discovery, lock and Graphics route initialization](INPUT_INF_INITIALIZE_DEVICES_465_EXACT_RECONSTRUCTION.md) |
@@ -1103,6 +1104,24 @@ original callback and log functions not
 otherwise canonically accepted.
 [Complete original DirectInput game boss
 and pad attachment proof](INPUT_INF_DIRECTINPUT_DISCOVERY_726_EXACT_RECONSTRUCTION.md).
+
+CORE/EXACT-496 independently closes an additional, physically
+distinct native **215B append-only logger** at `0x00454150`.
+It has **57 original x86 instructions, 7 E8 and 3 HIGHLOW**
+fields. The preexisting strict 221B error logger at
+`0x00454230` additionally sets the native
+`DiagnosticLog::error` byte; the 215B original
+does not. Five calls in the exact 726B DirectInput
+boss and one in the exact 218B pad registration
+were fixed to use the actual **0x00454150**
+normal logger C++ symbol, with no physical code
+change to their original callers.
+The exact original header-dependent closure was
+**6/6 strict units in 4 source-specific cold objects**.
+Current game-exact **400 functions / 121,429 original
+body bytes**, **1,176 canonical strict units /
+236 original compiler providers**. No global replay.
+[Two independently exact diagnostic entries](DIAGNOSTIC_LOG_MESSAGE_215_EXACT_RECONSTRUCTION.md).
 
 ## Open complete-function roots — next agent's priorities
 

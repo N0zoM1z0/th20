@@ -20108,27 +20108,27 @@ relocations = [
   { offset = 0x43, type = "REL32", symbol = "?set_direct_input_handle@InputInf@th20@@QAEXPAUIDirectInput8W@@@Z", target = 0x0041DE70 },
   { offset = 0x48, type = "DIR32", symbol = "?original_directinput_create_error@th20@@3QBDB", target = 0x0056D5A8 },
   { offset = 0x4D, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
-  { offset = 0x52, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
+  { offset = 0x52, type = "REL32", symbol = "?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
   { offset = 0x65, type = "REL32", symbol = "?direct_input_handle@InputInf@th20@@QBEPAUIDirectInput8W@@XZ", target = 0x00421810 },
   { offset = 0x84, type = "DIR32", symbol = "_GUID_SysKeyboard", target = 0x00576C18 },
   { offset = 0x97, type = "REL32", symbol = "?release_direct_input@InputInf@th20@@QAEXXZ", target = 0x004216E0 },
   { offset = 0x9C, type = "DIR32", symbol = "?original_keyboard_create_error@th20@@3QBDB", target = 0x0056D5A8 },
   { offset = 0xA1, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
-  { offset = 0xA6, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
+  { offset = 0xA6, type = "REL32", symbol = "?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
   { offset = 0xD3, type = "DIR32", symbol = "_c_dfDIKeyboard", target = 0x00576B48 },
   { offset = 0x119, type = "REL32", symbol = "?release_direct_input@InputInf@th20@@QAEXXZ", target = 0x004216E0 },
   { offset = 0x11E, type = "DIR32", symbol = "?original_keyboard_format_error@th20@@3QBDB", target = 0x0056D5C8 },
   { offset = 0x123, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
-  { offset = 0x128, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
+  { offset = 0x128, type = "REL32", symbol = "?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
   { offset = 0x155, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
   { offset = 0x15A, type = "REL32", symbol = "?window_handle@WindowState@th20@@QBEPAUHWND__@@XZ", target = 0x0040C300 },
   { offset = 0x1AE, type = "REL32", symbol = "?release_direct_input@InputInf@th20@@QAEXXZ", target = 0x004216E0 },
   { offset = 0x1B3, type = "DIR32", symbol = "?original_keyboard_cooperative_error@th20@@3QBDB", target = 0x0056D5F8 },
   { offset = 0x1B8, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
-  { offset = 0x1BD, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
+  { offset = 0x1BD, type = "REL32", symbol = "?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
   { offset = 0x1E7, type = "DIR32", symbol = "?original_directinput_started@th20@@3QBDB", target = 0x0056D62C },
   { offset = 0x1EC, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
-  { offset = 0x1F1, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
+  { offset = 0x1F1, type = "REL32", symbol = "?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
   { offset = 0x1FC, type = "REL32", symbol = "?direct_input_handle@InputInf@th20@@QBEPAUIDirectInput8W@@XZ", target = 0x00421810 },
   { offset = 0x213, type = "DIR32", symbol = "?original_directinput_enumerate_devices@th20@@YGHPBUDIDEVICEINSTANCEW@@PAX@Z", target = 0x00420220 },
   { offset = 0x25C, type = "DIR32", symbol = "?most_recent_pad_device@th20@@3PAUIDirectInputDevice8W@@A", target = 0x005B88AC },
@@ -20158,7 +20158,7 @@ relocations = [
   { offset = 0x9B, type = "DIR32", symbol = "?original_directinput_device_object@th20@@YGHPBUDIDEVICEOBJECTINSTANCEW@@PAX@Z", target = 0x00420180 },
   { offset = 0xA7, type = "DIR32", symbol = "?original_directinput_pad_attached_message@th20@@3QBDB", target = 0x0056D654 },
   { offset = 0xAC, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
-  { offset = 0xB1, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
+  { offset = 0xB1, type = "REL32", symbol = "?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454150 },
 ]
 
 # CORE/EXACT-495: complete native 17B InputInf real input-device
@@ -20173,4 +20173,28 @@ symbol = "?direct_input_handle_slot@InputInf@th20@@QAEPAPAUIDirectInput8W@@XZ"
 target_address = 0x00421830
 size = 17
 relocations = [
+]
+
+# CORE/EXACT-496: whole original 215B append-only game diagnostic.
+# Distinct from the already exact 221B flag-setting error entry;
+# original 7 native E8 + 3 PE HIGHLOW independently original-attested.
+[units.diagnostic_log_message]
+source = "src/DiagnosticLog.cpp"
+object = "build/core141-canonical/DiagnosticLog.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/sdl", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc", "/Gd"]
+functions = ["th20::report_log_message"]
+symbol = "?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ"
+target_address = 0x00454150
+size = 215
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?report_log_message@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x005687D0 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3F, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x59, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x7C, type = "REL32", symbol = "??$vsprintf_s@$0EAA@@@YAHAAY0EAA@DPBDPAD@Z", target = 0x00452D60 },
+  { offset = 0x98, type = "REL32", symbol = "??Y?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV01@QBD@Z", target = 0x004530A0 },
+  { offset = 0xB4, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xCF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
