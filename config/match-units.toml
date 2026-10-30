@@ -24923,3 +24923,15 @@ relocations = [
  { offset = 0x59, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
  { offset = 0x67, type = "DIR32", symbol = "?native_0_01@th20@@3MB", target = 0x0056E1A0 },
 ]
+
+# CORE/RECON-954: entire original 20B 200-Vector3 STL index; four
+# original 2,884B particle update calls. Compiler-generated origin review.
+[units.animation_particle_grid_vector_index_20]
+source = "src/AnimationParticleGridVectorIndex20.cpp"
+object = "build/core954-canonical/AnimationParticleGridVectorIndex20.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::Vector3,200>::operator[]"]
+symbol = "??A?$array@UVector3@th20@@$0MI@@std@@QAEAAUVector3@th20@@I@Z"
+target_address = 0x0045C2C0
+size = 20
+relocations = []

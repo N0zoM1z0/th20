@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,388** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,388**, from **349** pinned MSVC object/receipt providers |
+| Source-present function mappings | **1,389** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,389**, from **350** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **670 distinct function heads /241,394 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -50,6 +50,7 @@ older local-variable names or assumptions.
 
 | Three original 75B `Vector2[60]/[64]/[61]` constructors | **ORIGINAL PE VERIFIED, SOURCE NONEXACT**. Native 75B/27 x86 each and five real `INT3` each; one genuine E8/3 HIGHLOW and independent ctor parent calls. Isolated MSVC `Vector2() noexcept` matches all three **80B structural contributions**, but real global ODR/class declaration remains unchanged (**230 strict provider/871-unit affected closure**). No false exact admission or game code credit. [Evidence and original verifier](ANIMATION_VECTOR2_ARRAY_60_64_61_NOEXCEPT_FRONTIER.md). |
 | Original 202B 3D vector normalize `0x0045CF10` | **202B/58-i386 whole strict exact**: native square_root/absolute E8 and PE 0.01f HIGHLOW, real `comiss/jbe` copy-versus-3-divide semantics. **+202 authored game bytes**, one local object only. [Original proof](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). |
+| Original 20B Vector3×200 native index `0x0045C2C0` | **20B/9-i386 whole strict exact**, natural STL `std::array<Vector3,200>::operator[]`, four genuine E8 from 2,884B Update parent, zero PE relocations. Generated/template source origin unknown: **zero new authored-game bytes**. [Original PE and complete replay](ANIMATION_PARTICLE_GRID_VECTOR_INDEX_20_STRICT_EXACT.md). |
 | 200-particle virtual Update Boss `0x0045C360` | **ORIGINAL NATIVE VERIFIED, SOURCE ABSENT / NONEXACT:** recovered missed native function entry through vtable `0x56EC14`, entire **2,884B/768-i386** body ending ret at `0x45CEA3` plus 12 native INT3 alignment. **99 genuine E8 and 25 HIGHLOW** exhaustive original pair fingerprints, all physical branch targets inside span; 202B normalize called twice. No parent source or exact credit. [Entire original-native CFG/relocation proof](ANIMATION_PARTICLE_GRID_UPDATE_2884_ORIGINAL_NATIVE_FRONTIER.md). |
 | Original 51B particle-grid virtual event `0x0045D060` | **ORIGINAL PE VERIFIED, SOURCE NONEXACT**. Event1 forwards 300 at Timer+0x1930 through **0x0045C300 folded 26B wrapper**, not Timer += at 0x4297A0. A private derived clock emits matching 51B but changes the already exact 172B group ctor E8 symbol from native Timer ctor 0x422D90 to a new 23B subclass ctor; rejected. Authoritative class restored, **8/8 existing units replay exact**, zero credit. [Detailed ABI frontier](ANIMATION_PARTICLE_GRID_EVENT51_FOLDED_TIMER_ABI_FRONTIER.md). |
 | 200-particle original 92B virtual stop `0x0045CEB0` | **92B/32-i386 strict exact**, original 200-element AnimationHandle resolve/conditional stop flow, 3 original E8 and real vtable 0x56EC14 slot, zero in-body HIGHLOW. Natural direct `resolve()` fixes unwanted 4B compiler local; class-pointer mangling verified. **+92 game-authored bytes**; 5/5 local replay. [Original/native proof](ANIMATION_PARTICLE_GRID_STOP92_STRICT_EXACT.md). |

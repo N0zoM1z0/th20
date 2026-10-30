@@ -1387,3 +1387,4 @@ th20::create_particle_grid_45d000,0x0045D000,function
 th20::NativeParticleGridGroup::configure_45cfe0,0x0045CFE0,function
 th20::NativeParticleGridGroup::slot_0c,0x0045CEB0,function
 th20::normalize_vector3_45cf10,0x0045CF10,function
+"std::array<th20::Vector3,200>::operator[]",0x0045C2C0,function

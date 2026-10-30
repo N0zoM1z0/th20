@@ -46,6 +46,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-951 — entire native 202B/58-x86 Vector3 epsilon normalization](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). Original immutable PE 2 E8 and one genuine HIGHLOW to native 0.01f, SSE3 lanes and real `comiss/jbe`, copy near zero versus three divisions. One natural C++20 source **202/202 strict exact**, **+202 authored game code bytes**; source-specific local replay only.
 
+## Original native 20B Vector3×200 index helper whole strict exact
+
+- [CORE/RECON-954 — complete original 20B/9-i386 `std::array<Vector3,200>::operator[]`](ANIMATION_PARTICLE_GRID_VECTOR_INDEX_20_STRICT_EXACT.md). Four physically original E8 in the 2,884B particle Update Boss, 12B array stride, no relocation fields; ordinary natural MSVC C++20 **20/20 strict exact**. Original STL/template origin unverified, **zero authored game bytes**; parent remains SOURCE ABSENT.
+
 ## Original 2,884B/768-i386 particle-grid virtual Update Boss — SOURCE ABSENT
 
 - [CORE/RECON-953 — complete original native 2,884B update vtable entry, 99 E8 and 25 HIGHLOW](ANIMATION_PARTICLE_GRID_UPDATE_2884_ORIGINAL_NATIVE_FRONTIER.md). Original-only PE confirms precise ret at 0x45CEA3, 12 genuine INT3, six-entry vtable `0x56EC14` and frozen complete role fingerprints, including two original calls to the already accepted 202B vector normalization. **SOURCE ABSENT/NONEXACT**; no fabricated C++ source, strict unit or original authored-game credit.
@@ -245,8 +249,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,388 source-present mappings, 1,388
-strict units from 349 pinned object/receipt providers, and 670 distinct
+**Current verified checkpoint:** **1,389 source-present mappings, 1,389
+strict units from 350 pinned object/receipt providers, and 670 distinct
 original authored whole-exact game functions /241,394 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
