@@ -84,7 +84,9 @@ whole-native-exact renderer child bodies at `0x00445BC0` (2,725B),
 - Real current source vs original E8 and HIGHLOW-target roles:
   `nice -n 15 scripts/repo-python scripts/verify-animation-quad-submit-source-roles.py`.
 - Retained source-specific compiler proof object:
-  `build/core829-probe/AnimationQuadSubmitRoles.obj` (noncanonical).
+  `build/core829-probe/AnimationQuadSubmitRoles.obj` and matching
+  `build/core829-probe/AnimationQuadSubmitRoles.receipt.json`
+  (noncanonical, preserved as cited compiler-probe evidence).
 - Original 40-game-call historical frontier:
   [CORE/RECON-808](ANIMATION_QUAD_RENDER_3159_40_GAME_E8_SOURCE_CLOSURE.md).
 - Exact independent 2,725B and 1,163B child proofs:

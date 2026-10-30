@@ -167,26 +167,33 @@ original path, original SHA-256, archive path and archive SHA-256 in the private
 retirement inventory; verify decompressed bytes before removing the original.
 Keep current CI evidence, failed logs, native exports and active inputs intact.
 
-## Live guarded artifact-retirement procedure (CORE/DOC-CLEANUP-628)
+## Guarded artifact retirement: live script, dated historical checkpoints
 
 The [CORE/DOC-CLEANUP-628 storage audit](ARTIFACT_RETIREMENT_CORE628.md)
 recorded **243 canonical object/receipt pairs and 1,184 strict native
-units at that historical checkpoint**, NOT as live figures. CORE/MAINT-751
-has **245 canonical pairs and 1,203 strict units** from the live manifest.
+units at that historical checkpoint**, NOT as live figures. CORE/MAINT-751 historically had **245 canonical pairs and 1,203 strict
+units**. The newer CORE/MAINT-830 live inventory is **259 canonical pairs and
+1,238 strict units** (subject to later live ledger updates).
 Future agents must derive these counts from config/match-units.toml, not
 dated prose. The older 236/212-provider audits similarly retain only
 their historical checkpoint significance.
 
-That **historical CORE628** retirement deleted **1,148 noncanonical
-object/receipt files and 45,337,123 bytes (43.24 MiB)** while retaining
-the then-current 486 protected hashes, 1,696 active probe files and
-the immutable original target. The later
-[CORE/MAINT-751 storage audit](MAINTENANCE_STORAGE_2026_10_29.md)
-protects **245 current canonical pairs** and individually cited
-original-code probe objects. The proof includes a unique private
-`.analysis/core628-build-retirement-inventory.json`, a dry-run transcript
-and an apply transcript. Actual active Bullet 3,735B and Player
-555B/3,111B source inputs and selected compiler probe objects were retained.
+The **historical CORE628** retirement deleted **1,148 noncanonical files /
+45,337,123 bytes (43.24 MiB)** while retaining the then-current 486
+protected hashes, 1,696 active probe files and the original PE. Its archived
+private inventory is `.analysis/core628-build-retirement-inventory.json`.
+The [October 29 CORE/MAINT-751 audit](MAINTENANCE_STORAGE_2026_10_29.md)
+subsequently protected its then-current **245 canonical pairs** and retired
+**1,042 more noncanonical files /48,417,387 bytes**; those numbers are
+**historical, not today's manifest**.
+
+The [October 30 CORE/MAINT-830 guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md)
+records the later **259 canonical object/receipt pairs** and the exact
+new disposable set, private hash inventory and preserved original evidence.
+Check its dated details and re-run the guarded dry-run to obtain future live
+counts. The original PE, Ghidra project, active Player/Bullet/mesh experiments,
+private native evidence, installed toolchain and all canonical receipts remain
+protected.
 
 **Do not overwrite previous retirement audits.** The guarded script now
 requires an explicit **new, unique** audit inventory for applying a nonempty

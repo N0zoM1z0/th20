@@ -37,7 +37,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | Scheduler | Actual controller/nodes, observed lists, sorted registration/dispatch and scalar allocation/release | Unlocked removal emission and process-global startup |
 | Player/Bomb/Bullet/Item/Hit | Typed ownership, pools, Context publication, SHT/damage consumers, Hit allocation/lifecycle and Item spawning | Whole damage query, full gameplay, resource callbacks and remaining controller factories |
 | Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction; **whole original 1,036B compressor and 706B decoder are already strict exact** | Remaining File write/SaveManager emission, integration and startup |
-| Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned mesh allocation/retirement, surface/geometry records and two-bit flag view | Renderer declaration, mesh creation, full rendering and resource integration |
+| Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned mesh allocation/retirement, real 28-byte quad vertices; **2,725B texture/sampler-state** and **1,163B blend-state** D3D9 renderer bosses each whole strict exact, with real PE switch tables | 3,159B quad submission and 5,993B draw dispatcher have complete C++ but are **NONEXACT**; whole renderer creation, mesh/resource integration and full-program linkage remain open |
 | Sound | Actual SoundInf storage and loading/preload protocol | Whole dispatcher, startup and resource-owning retirement |
 | Platform/UI | Verified window/input/value/menu components; complete FrontInf, AsciiInf and Dialogue storage/construction, real ready/callback routing and Laser cancellation receiver | Native Dialogue/HUD/text resource retirement and frame execution, follow-box geometry, complete scene owners, OS resources and global initialization |
 
@@ -53,8 +53,14 @@ See [source ownership](SOURCE_MAP.md) for maintained files and focused evidence.
 The original **39,470-byte Animation VM at 0x0042B5D0** and separate
 **41,967-byte Enemy opcode dispatcher at 0x0048C010** remain open.
 The 12,140B Bullet command parent at 0x0047DCF0 is also source-absent
-NONEXACT, despite 203/210 native original E8s targeting existing canonical
-heads and verified 34+8+11 switch pointers. The original **3,735B Bullet
+NONEXACT, despite **208/210 native original E8 occurrences** now mapping
+to wholly strict-exact game-callee sources; the other two direct calls are
+compiler runtime, not outstanding game helper implementations. Its genuine
+34+8+11 switch pointer groups remain a complete-original-CFG challenge.
+The whole **5,993B Animation draw Boss** and **3,159B quad submit Boss** are
+both maintained typed **SOURCE-PRESENT but NONEXACT** C++; their 123 and 41
+original E8 role multiplicities are accounted for, without matching the
+complete instruction/code/relocation layout. The original **3,735B Bullet
 emitter is already whole strict exact**; its earlier one-instruction
 compiler frontier was superseded.
 
@@ -62,7 +68,9 @@ The independent ECL Runtime tick at 0x0053B5C0 is accepted with its complete
 11,504-byte compiler contribution (11,110B game-body coverage), including
 alignment and its 98-entry switch table. Exact callees do not establish
 exactness of an unimplemented whole parent. Refer to the [current handoff](RE_HANDOFF.md)
-and [original Bullet E8 map](BULLET_12140_E8_203_7_SOURCE_CLOSURE.md).
+and [current original Bullet E8 verifier](../scripts/verify-bullet-command-call-coverage.py).
+The [historical 203/210 partial map](BULLET_12140_E8_203_7_SOURCE_CLOSURE.md)
+is a dated earlier checkpoint, not five missing game methods today.
 
 The Renderer allocation and still-unresolved original
 Renderer+0x6000DFC..0x6000DFF field are documented in the focused

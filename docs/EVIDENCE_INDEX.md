@@ -1,16 +1,18 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-813):** [live accepted
-state and unfinished bosses](RE_HANDOFF.md) ->
-[whole Bullet 208/210 E8 boundary](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md)
--> [Player main compiler gap](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
--> [source ownership](SOURCE_MAP.md) ->
-[bounded workflow and cleanup](MAINTENANCE_STORAGE_2026_10_29.md).
-Only the live handoff and ledgers define the current count (at this
-checkpoint **1,237 strict units, 588 authored exact whole functions,
-190,787 original game-code bytes**). All later checkpoint counts below
-are *historical snapshots*, not competing current measurements or sums.
+**Current next-agent reading order (CORE/MAINT-830):**
+[current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
+[original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
+[current 3,159B quad parent 41-E8/96-HIGHLOW source proof](ANIMATION_QUAD_RENDER_3159_41_E8_96_HIGHLOW_TYPED_SOURCE_FRONTIER.md) ->
+[49-mode Animation draw source](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md) ->
+[source ownership](SOURCE_MAP.md) ->
+[latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
+The **live** verified status on October 30 is **1,238 source-present /1,238
+strict units from 259 object/receipt providers, 589 authored-game exact whole
+functions /193,512 original `.text` bytes**. Historical snapshot counts
+below are not updated or added together. Confirm live state from the
+[reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
 These documents retain unique native observations, source contracts, compiler
 results, fixture domains and reference-review decisions. Every checkpoint and
@@ -32,17 +34,9 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [CORE/RECON-829 — original 3,159B/763-x86 quad submit and complete 41/96 original PE source-role histogram](ANIMATION_QUAD_RENDER_3159_41_E8_96_HIGHLOW_TYPED_SOURCE_FRONTIER.md) — independent original PE and pinned modern C++ COFF now agree on **41 E8 physical targets including one real compiler cookie**, all **96 in-body HIGHLOW target-class occurrences** (23/22/16/6/6 native quad x/y/color/U/V, 16 viewport, four half constants, device/cookie/switch), and five after-body code-pointer roles. The revised complete candidate is **3,212B/810 i386 +20B generated table**, vs actual **3,159B/763 x86**; **NONEXACT**, no new game credit. It repairs old global-alias, channel-field, gradient-store and viewport-cache codegen hypotheses and touches zero canonical exact units.
 
-## Original full 1,163B/343-x86 game-owned four-mode D3D9 texture-stage renderer Boss strictly exact
-
-- [CORE/RECON-813 — entire 1,163B original game renderer blend-stage state machine strictly native exact](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md) — native 0x00446690 real 4-mode D3D9 `SetTextureStageState` six calls per mode, original 25 physical E8 (24 real Graphics getter +1 previously strict 192B flush), **29 actual PE HIGHLOW** (24 real Graphics global, 1 indirect switch operand, 4 original after-RET table pointers). Natural i386 MSVC source first produced 1188B false case-chain, then original four-mode jump table recovered by direct real owner-byte access and explicit `case 0/default`. **Entire 1,163/1,163 real code, 343/343 x86, 1 NOP+16 pointer table, 1,180/1,180 full compared bytes, 54/54 independent native relocation fields** strict from ONE new canonical source/object. No old shared header or unit changed, no all-graph replay. Live **588 original game exact /190,787B, 1,237 units/258 providers**; outer 3159B/5993B parent remains NONEXACT.
-
 ## Whole 1,163B/343-x86 original D3D9 quad blend-state Boss strictly native exact
 
 - [CORE/RECON-813 — complete 1,163B D3D9 four-mode texture-stage state machine, whole full-original code and switch table exact](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md) — original 25 direct E8 (24 native `Graphics::get_device()`, one exact 192B flush) and 24 genuine indirect device SetTextureStageState virtual calls; 29 genuine original PE HIGHLOW (24 process Graphics, one switch pointer, four real native case entries). Recovering actual mode-0 plus default shared C++ switch and direct first-byte renderer owner lvalue yields **1,163/1,163 executable code +1B alignment/16B four-way original table =1,180/1,180 strict bytes** under one new pinned MSVC source/object with 54 exact real relocation fields. **No old exact inputs touched; no full cold replay.** Live **588 original exact game functions /190,787B, 1,237 strict units/258 providers**. The separate 3,159B quad submission parent is still SOURCE-PRESENT/NONEXACT.
-
-## Original game 60B texture lookup exact, plus genuine 34B checked STL std::array::at exact (library excluded)
-
-- [CORE/RECON-809/810 — original complete 60B/21-x86 game `texture_for_sprite` and real 34B/14-x86 `std::array<AnimationFile*,42>::at`](ANIMATION_TEXTURE_LOOKUP_60_AND_STL_ARRAY_34_STRICT.md) — actual signed ID high-24 bits index 42 file pointer slots at owner `+0x06000730`, low ID byte selects 24B TextureRecord from real `AnimationFile::textures` `+0x58`. Immutable original source-independent real E8 `0x00445A1E→0x0043EB10`; original library `at` has real bounds check 42/0x2A and E8 `0x0043EB1D→0x00428C80`. Natural C++ direct chain `.at(...)` matches both **60/60B game** and **34/34B STL library (EXCLUDED from authored game bytes)**, pinned 2/2 full strict one new canonical object/receipt, zero old compiler inputs changed, no all-graph replay. Live **587 game exact methods/189,624B**, 1,236 source mappings and strict units /257 providers; the separately exact 16B `_Xran` remains library-excluded. Original 3159B quad parent still NONEXACT.
 
 ## Original game 60B texture lookup strict, plus genuine 34B checked array and 16B error STL strict (library-excluded)
 
@@ -50,7 +44,7 @@ Compiler scores labelled "current" in historical entries below mean
 
 ## Whole 3,159B renderer quad Boss source revision: 40/40 game E8 roles verified, parent NONEXACT
 
-- [CORE/RECON-808 — complete maintained 3,159B AnimationQuadSubmit C++ candidate and 40/40 original game E8 roles](ANIMATION_QUAD_RENDER_3159_40_GAME_E8_SOURCE_CLOSURE.md) — [new source-to-immutable-PE scoped verifier](../scripts/verify-animation-quad-submit-source-roles.py) compiles the complete 5-color-mode C++ renderer and attests each real original **24/24 saturation, 4/4 divide-255, 4/4 numeric snap, 2/2 flush, 1/1 352B append** and all ten distinct genuine game E8 targets. Compiler-probe executable is **3,796B/973 x86**, plus after-RET **20B of five generated jump pointers =3,816B COFF**; immutable original **3,159B/763** and genuine 96 HIGHLOW differ; original 41st E8 is security cookie, not a game method or fabricated source call. The 352B and 26B children pass **2/2 native strict**, but the whole 3159B Boss remains SOURCE-PRESENT/NONEXACT. Changed-only, no full replay. Live **586 game exact/189,564B**, **1,233** native units/256 providers.
+- [CORE/RECON-808 — complete maintained 3,159B AnimationQuadSubmit C++ candidate and 40/40 original game E8 roles](ANIMATION_QUAD_RENDER_3159_40_GAME_E8_SOURCE_CLOSURE.md) — the *then-current* C++ experiment and original native roles attested each real original **24/24 saturation, 4/4 divide-255, 4/4 numeric snap, 2/2 flush, 1/1 352B append** and all ten distinct genuine game E8 targets. Historical compiler-probe executable was **3,796B/973 x86**, plus after-RET **20B of five generated jump pointers =3,816B COFF**; the [new maintained verifier](../scripts/verify-animation-quad-submit-source-roles.py) checks the subsequent CORE/RECON-829 **3,212B** candidate instead; immutable original **3,159B/763** and genuine 96 HIGHLOW differ; original 41st E8 is security cookie, not a game method or fabricated source call. The 352B and 26B children pass **2/2 native strict**, but the whole 3159B Boss remains SOURCE-PRESENT/NONEXACT. Changed-only, no full replay. Live **586 game exact/189,564B**, **1,233** native units/256 providers.
 
 ## Entire original 352-byte/98-x86 quad batch append and 26B texture-state wrapper strictly exact
 

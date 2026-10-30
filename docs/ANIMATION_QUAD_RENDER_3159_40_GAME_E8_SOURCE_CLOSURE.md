@@ -1,4 +1,13 @@
 # CORE/RECON-808 — all forty game-call roles recovered in maintained 3,159B quad submission Boss C++ (NONEXACT)
+
+> **CORE/RECON-829 supersession note (2026-10-30):** Compiler sizes and
+> call-role verification below describe a *historical* unrefined NONEXACT
+> candidate. The maintained `src/AnimationQuadSubmit.cpp` now emits **3,212B /
+> 810 x86 +20B pointer data**, matches **all 41 original E8 target roles**
+> including the real compiler security call and **all 96 original in-body
+> HIGHLOW target multiplicities**, but the original **3,159B /763 x86**
+> parent is **still NONEXACT**. See the [current PE/COFF evidence](ANIMATION_QUAD_RENDER_3159_41_E8_96_HIGHLOW_TYPED_SOURCE_FRONTIER.md)
+> and [live handoff](RE_HANDOFF.md) before relying on old codegen counts.
 > **Subsequent CORE/RECON-819:** The actual 2,725B/699-i386 texture/sampler-state backend called by the strict 26B wrapper is now **whole strict exact**, including all 107 native E8/HIGHLOW and ten original switch entries over 2,768B compiler extent. [Full original PE and canonical proof](ANIMATION_QUAD_TEXTURE_STATES_2725_STRICT_EXACT.md). The separate 3,159B quad submission parent remains SOURCE-PRESENT/NONEXACT; older counts below are historical.
 > **Subsequent CORE/RECON-813:** Original 1,163B/343-x86 D3D9 texture-stage state machine called by this renderer at `0x0044015B` is now **whole-native exact**, including all 54 original E8/HIGHLOW COFF fields and the full original 4-entry jump table. [Whole original state machine proof](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md). This 3,159B parent remains independently NONEXACT; counts below are historical.
 
