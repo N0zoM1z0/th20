@@ -43,7 +43,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
                             std::uint32_t, std::uint32_t, int, int);
     // Native mode26 pushes Animation flag words +0x4AC AND +0x4A8;
     // callee 0x0043CD40 ends in RET 0x20, eight stack arguments.
-    void draw_shape_43cd40(float, float, float, float,
+    // Whole original 1116B two-point LINESTRIP EAX=0/RET 0x20.
+    std::int32_t draw_shape_43cd40(float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);
     // Original 2169B closed line-strip returns EAX=0 / RET 0x24, not void.
     std::int32_t draw_shape_43b0e0(float, float, float, float, float,
@@ -57,7 +58,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // Native mode33 consumes BOTH packed colors; callee RET 0x20.
     void draw_shape_43c4e0(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43c780(float, float, float, float, float, float, int,
+    // Whole original 1001B rotated TRIANGLESTRIP EAX=0/RET 0x24.
+    std::int32_t draw_shape_43c780(float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     // 1174B original center+rounded ring returns EAX zero, RET 0x24.
     std::int32_t draw_shape_43a2b0(float, float, float, float, float, float, int,
