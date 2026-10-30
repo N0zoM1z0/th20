@@ -19,7 +19,8 @@ struct NativeRibbonSoloSegmentArray {
     NativeRibbonSoloSegmentArray();
     NativeRibbonSegment* end_45dce0();
 };
-struct NativeRibbonSoloGroup : AnimationCallback {
+class NativeRibbonSoloGroup : public AnimationCallback {
+public:
     std::array<NativeRibbonSegment,1> segments_08;
     union { std::uint32_t control_3c8; float control_3c8_float; };
     Timer timer_3cc;

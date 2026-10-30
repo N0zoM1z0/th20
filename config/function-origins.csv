@@ -1563,7 +1563,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045D190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045D2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045D2C0,unknown,CxxAllocator,review,pending,"CORE/RECON-932; docs/ANIMATION_RIBBON_SOLO_FACTORY_156_STRICT_EXACT.md; genuine C++17 template allocation for 0x3E0 pointer-bearing class, original 4 E8/2 HIGHLOW and 156/156 pinned canonical strict exact; compiler/allocator source ownership unknown"
 0x0045D360,unknown,CxxRuntime,review,pending,"CORE/RECON-925; docs/ANIMATION_RIBBON_FILL_N_123_202_STRICT_EXACT.md; whole original float std::fill_n native 202/202 via MSVC C++20 unsigned count and real fast memset path. Likely library compiler instantiation, no game authored credit"
 0x0045D430,unknown,CxxRuntime,review,pending,"CORE/RECON-925; docs/ANIMATION_RIBBON_FILL_N_123_202_STRICT_EXACT.md; complete original color std::fill_n native 123/123 via actual MSVC C++20 unsigned count. STL-template authorship strongly supported but historical linker/folding origin review pending, no authored code credit"
 0x0045D4B0,unknown,CxxContainer,review,pending,"CORE/RECON-924; docs/ANIMATION_RIBBON_COLOR_ARRAY_75_STRICT_EXACT.md; original C++20 60 AnimationHandle array template, complete 75B native +5 INT3, original EH/cookie/zero color ctor PE fields, 80/80 pinned COFF exact; source authorship unproven"

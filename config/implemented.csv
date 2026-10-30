@@ -1363,3 +1363,4 @@ th20::NativeRibbonSoloSegmentUpdateView::update_45d780
 "std::array<th20::NativeRibbonSegment,1>::array"
 th20::NativeRibbonSoloGroup::NativeRibbonSoloGroup
 th20::NativeRibbonSoloGroup::scalar_deleting_destructor
+"th20::DiagnosticAllocator::allocate_object<NativeRibbonSoloGroup,Animation*>"
