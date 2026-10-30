@@ -1414,3 +1414,4 @@ th20::NativeAnimationHandleLookupView::find_child_handle_44c830
 th20::AnimationFile::clear
 th20::NativeFileClearPoolView::cleanup_texture_44c510
 th20::NativeFileClearPoolView::release_file_slot_44c430
+th20::NativeFileClearPoolView::detach_file_44fd30

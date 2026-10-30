@@ -25388,3 +25388,48 @@ relocations = [
  { offset = 0xA4, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
  { offset = 0xC1, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
 ]
+
+
+# CORE/RECON-972: complete original 691B/205-i386 Renderer file detach
+# Boss, original 29 E8 and 2 HIGHLOW, child 284B file clear exact.
+[units.animation_renderer_file_detach_691]
+source = "src/AnimationRendererFileDetach691.cpp"
+object = "build/core972-canonical/AnimationRendererFileDetach691.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeFileClearPoolView::detach_file_44fd30"]
+symbol = "?detach_file_44fd30@NativeFileClearPoolView@th20@@QAEXPAVAnimationFile@2@D@Z"
+target_address = 0x0044FD30
+size = 691
+relocations = [
+ { offset = 0x006, type = "DIR32", symbol = "__ehhandler$?detach_file_44fd30@NativeFileClearPoolView@th20@@QAEXPAVAnimationFile@2@D@Z", target = 0x005686C5 },
+ { offset = 0x015, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x066, type = "REL32", symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z", target = 0x00449490 },
+ { offset = 0x073, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+ { offset = 0x07F, type = "REL32", symbol = "?begin@?$IntrusiveList@VAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412280 },
+ { offset = 0x08E, type = "REL32", symbol = "?end@?$IntrusiveList@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412540 },
+ { offset = 0x09B, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+ { offset = 0x0A8, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+ { offset = 0x0BB, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
+ { offset = 0x0C6, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x0E2, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x0FE, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x114, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x130, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x14C, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x16C, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+ { offset = 0x185, type = "REL32", symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z", target = 0x00449490 },
+ { offset = 0x195, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+ { offset = 0x1A1, type = "REL32", symbol = "?begin@?$IntrusiveList@VAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412280 },
+ { offset = 0x1B0, type = "REL32", symbol = "?end@?$IntrusiveList@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412540 },
+ { offset = 0x1BD, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+ { offset = 0x1CA, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+ { offset = 0x1DD, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
+ { offset = 0x1E8, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x204, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x220, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x236, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x252, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x26E, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+ { offset = 0x28E, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+ { offset = 0x2A9, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

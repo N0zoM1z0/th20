@@ -1,5 +1,11 @@
 # CORE/RECON-971 — complete 209B RendererPool 42-slot `AnimationFile` release strict exact
 
+> **CORE/RECON-972 update:** The previously unresolved 691B Renderer
+> file-detachment callee is now [whole original strict exact](ANIMATION_RENDERER_FILE_DETACH691_STRICT_EXACT.md)
+> at **691/691B**. The original file lifecycle chain, including the 284B
+> clear, 94B texture cleanup and 209B slot retire, replayed **4/4**.
+> Earlier references to the 691B function as source-absent are historical.
+
 Locked Japanese TH20 Steamless v1.00a original SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 Original `0x0044C430` is the complete game-owned **209B/61-i386**
