@@ -664,3 +664,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0045E520,th20::create_trail_gray_45e520,47,matching,100.00,animation_ribbon_trail_gray_wrapper_47,CORE/RECON-942; docs/ANIMATION_RIBBON_TRAIL_WRAPPERS_47_49_STRICT_EXACT.md
 0x0045E550,th20::create_trail_pink_45e550,49,matching,100.00,animation_ribbon_trail_pink_wrapper_49,CORE/RECON-942; docs/ANIMATION_RIBBON_TRAIL_WRAPPERS_47_49_STRICT_EXACT.md
 0x0043EF20,th20::NativeAnimationCornerProjector::project_rotated_corners_43ef20,1486,matching,100.00,animation_corner_rotated_1486,CORE/RECON-945; docs/ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md
+0x0045C1F0,th20::NativeParticleGridGroup::NativeParticleGridGroup,172,matching,100.00,animation_particle_grid_group_ctor_172,CORE/RECON-947; docs/ANIMATION_PARTICLE_GRID_GROUP_CTOR172_STRICT_EXACT.md
