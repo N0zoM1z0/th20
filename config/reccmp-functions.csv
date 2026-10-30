@@ -1413,3 +1413,4 @@ th20::NativeParticleAnimationAccess::color_ref_45d0e0,0x0045D0E0,function
 th20::NativeAnimationHandleForwardView::find_child_handle_44c7b0,0x0044C7B0,function
 th20::NativeAnimationHandleLookupView::find_child_handle_44c830,0x0044C830,function
 th20::AnimationFile::clear,0x0044AB00,function
+th20::NativeFileClearPoolView::cleanup_texture_44c510,0x0044C510,function

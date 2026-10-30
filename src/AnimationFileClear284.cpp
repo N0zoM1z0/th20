@@ -1,13 +1,10 @@
 #include "AnimationFile.hpp"
 #include "Animation.hpp"
 #include "AnimationRuntimeOwner.hpp"
+#include "NativeFileClearPoolView.hpp"
 #include "DiagnosticAllocator.hpp"
 #include <cstdint>
 namespace th20 {
-struct NativeFileClearPoolView : AnimationPoolOwner {
-    void detach_file_44fd30(AnimationFile* file, char flag);
-    void cleanup_texture_44c510(TextureRecord* record);
-};
 void AnimationFile::clear() {
     if (bytes != nullptr) {
         reinterpret_cast<NativeFileClearPoolView*>(current_animation_pool)->detach_file_44fd30(this,0);

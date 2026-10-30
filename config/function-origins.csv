@@ -1253,7 +1253,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044C240,authored,AnimationFileLifetime,authored,high,"CORE/EXACT-132: Independent geometry allocation, actual virtual callback retirement and handle consumers establish application resource release, including the observed nonreturning +550 path. Complete native control flow and full configured compiler contributions strictly replay with independent relocations. All 128 previous affected units remain exact after 31 actual including objects build once; 132 objects are reused. Loaded File clearing/Renderer and native startup/runtime remain open. See docs/ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md."
 0x0044C2F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044C430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044C510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044C510,authored,AnimationFileLifetime,authored,high,"CORE/RECON-970; docs/ANIMATION_TEXTURE_RELEASE94_STRICT_EXACT.md; original 94B/33-i386 custom game Renderer TextureRecord release, true native Direct3D COM virtual Release plus external owned memory retirement, physical 284B clear parent E8, whole C++20 94/94 strict"
 0x0044C570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044C590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044C5F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

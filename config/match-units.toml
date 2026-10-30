@@ -25351,3 +25351,18 @@ relocations = [
  { offset = 0x105, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
  { offset = 0x10A, type = "REL32", symbol = "??$release_array@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x004472C0 },
 ]
+
+# CORE/RECON-970: original whole 94B/33-i386 Renderer TextureRecord
+# cleanup, COM virtual Release and genuine allocator bytes release.
+[units.animation_texture_record_release_94]
+source = "src/AnimationTextureRelease94.cpp"
+object = "build/core970-canonical/AnimationTextureRelease94.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeFileClearPoolView::cleanup_texture_44c510"]
+symbol = "?cleanup_texture_44c510@NativeFileClearPoolView@th20@@QAEXPAUTextureRecord@2@@Z"
+target_address = 0x0044C510
+size = 94
+relocations = [
+ { offset = 0x45, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x4A, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+]
