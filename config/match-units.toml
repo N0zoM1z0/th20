@@ -25550,3 +25550,26 @@ target_address = 0x004494D0
 size = 23
 relocations = [
 ]
+
+
+# CORE/RECON-976: real whole 150B/44-i386 renderer-list update wrapper,
+# native 508B caller target remains separately NONEXACT.
+[units.animation_renderer_update_150]
+source = "src/AnimationRendererUpdate150.cpp"
+object = "build/core976-canonical/AnimationRendererUpdate150.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_renderer_update_4497d0"]
+symbol = "?animation_renderer_update_4497d0@th20@@YIHPAUAnimationPoolOwner@1@@Z"
+target_address = 0x004497D0
+size = 150
+relocations = [
+ { offset = 0x06, type = "DIR32", symbol = "__ehhandler$?animation_renderer_update_4497d0@th20@@YIHPAUAnimationPoolOwner@1@@Z", target = 0x0056808D },
+ { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+ { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+ { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+ { offset = 0x58, type = "REL32", symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z", target = 0x00449490 },
+ { offset = 0x5F, type = "REL32", symbol = "?animation_list_update_449870@th20@@YIXPAU?$IntrusiveList@VAnimation@th20@@@1@@Z", target = 0x00449870 },
+ { offset = 0x76, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+ { offset = 0x8E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
