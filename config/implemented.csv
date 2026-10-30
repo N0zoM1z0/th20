@@ -1259,3 +1259,5 @@ th20::AnimationDrawDetailedOwner::draw_shape_43a1c0
 th20::AnimationDrawDetailedOwner::draw_shape_43a2b0
 th20::AnimationDrawDetailedOwner::draw_shape_43a750
 th20::AnimationDrawDetailedOwner::draw_shape_43b960
+th20::AnimationDrawDetailedOwner::draw_shape_43bc60
+th20::AnimationDrawDetailedOwner::draw_shape_43be80

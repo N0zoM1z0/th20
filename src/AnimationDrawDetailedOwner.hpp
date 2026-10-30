@@ -33,8 +33,10 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // Original whole 755B simple triangle fan EAX=0/RET 0x1C.
     std::int32_t draw_shape_43b960(float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43bc60(float, float, float, float, int, std::uint32_t);
-    void draw_shape_43be80(float, float, float, float, float, int,
+    // Original 541B simple circle LINESTRIP EAX-zero/RET 0x18.
+    std::int32_t draw_shape_43bc60(float, float, float, float, int, std::uint32_t);
+    // Original 766B inner/outer polar TRIANGLESTRIP EAX-zero/RET 0x20.
+    std::int32_t draw_shape_43be80(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     // 240B original double-pass outline returns EAX zero, RET 0x24.
     std::int32_t draw_shape_43a1c0(float, float, float, float, float,
