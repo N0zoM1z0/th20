@@ -52,11 +52,13 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // Native 1601B triangle draw returns EAX zero, RET 0x24.
     std::int32_t draw_shape_43e2c0(float, float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);
-    void draw_shape_43c180(float, float, float, float, float, int,
+    // Original 863B elliptic TRIANGLEFAN EAX=0, RET 0x20.
+    std::int32_t draw_shape_43c180(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     void draw_shape_43d830(float, float, std::uint32_t);
     // Native mode33 consumes BOTH packed colors; callee RET 0x20.
-    void draw_shape_43c4e0(float, float, float, float, float, int,
+    // Original 660B elliptic LINESTRIP EAX=0, RET 0x20.
+    std::int32_t draw_shape_43c4e0(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     // Whole original 1001B rotated TRIANGLESTRIP EAX=0/RET 0x24.
     std::int32_t draw_shape_43c780(float, float, float, float, float, float, int,
