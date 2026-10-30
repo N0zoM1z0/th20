@@ -50,6 +50,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-922 — 252B/77-i386 ribbon-group configuration Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). Full original 11 E8/zero HIGHLOW and C++20 strict **252/252 native bytes**, genuine token/palette/Animation state; **+252 authored game bytes**. Separate original [23B segment index](ANIMATION_RIBBON_SEGMENT_AT23_STRICT_EXACT.md) is independently 23/23 strict exact, origin unknown/uncredited; 88B palette subsequently strict exact in CORE/RECON-923. Local replay only the two changed sources and actual header-dependent closure.
 
+## Original three 75B Vector2[60]/[64]/[61] array native ABI frontier — NONEXACT
+
+- [CORE/RECON-944 — immutable original 75B/27-i386 Vector2 arrays, 60/64/61 counts and controlled `noexcept` compiler probe](ANIMATION_VECTOR2_ARRAY_60_64_61_NOEXCEPT_FRONTIER.md). All three native bodies and original parent E8, three HIGHLOW plus an E8, five `INT3` verified. Isolated unchanged-ODR diagnostic copy yields 80B structural matches with explicit `Vector2() noexcept`, whereas actual shared declaration generates only 33B. **Still NONEXACT/uncredited**; real header edit would touch 230 strict source providers/871 units. No global source/header change or cold replay occurred.
+
 ## Original 75B trail-ribbon 64-color array constructor and INT3 whole strict exact
 
 - [CORE/RECON-943 — complete native 75B/27-i386 64-cell AnimationHandle array constructor](ANIMATION_RIBBON_TRAIL_COLOR_ARRAY75_STRICT_EXACT.md). Genuine three native EH/cookie/constructor HIGHLOW and E8 vector construction, real 103B ctor parent, five actual `INT3` alignment bytes. Whole C++20 **75/75 native plus 80/80 compared exact**, 3/3 local replay; generated origin unknown and **zero authored game bytes**.
