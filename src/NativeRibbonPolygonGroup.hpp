@@ -5,6 +5,7 @@
 #include "AnimationCallback.hpp"
 #include "Timer.hpp"
 #include "Vector2.hpp"
+#include "Vector3.hpp"
 #include "AnimationHandle.hpp"
 #include "NativeRibbonArraySpans.hpp"
 #include <array>
@@ -23,14 +24,22 @@ struct NativeRibbonSegment {
     NativeRibbonSegment() noexcept;
     void update_ribbon_45e800(float scale);
     void draw_ribbon_45eac0(const Vector3* position);
+    void initialize_palette_45ec10(std::uint32_t color);
 };
 static_assert(offsetof(NativeRibbonSegment, color_cells_1e0) == 0x1E0);
 static_assert(offsetof(NativeRibbonSegment, radius_2d0) == 0x2D0);
 struct NativeRibbonSegmentArray {
     std::array<NativeRibbonSegment, 3> elements;
     NativeRibbonSegmentArray();
+    NativeRibbonSegment* at_45d690(std::int32_t index);
     NativeRibbonSegment* end_45eca0();
 };
+struct NativeRibbonGroupOptions {
+    Vector3 position;
+    std::uint8_t unresolved_0c_to_24[0x18];
+    std::uint32_t control_24;
+};
+static_assert(offsetof(NativeRibbonGroupOptions, control_24) == 0x24);
 class NativeRibbonGroup : public AnimationCallback {
 public:
     // Native group constructor invokes the actual std::array constructor

@@ -24168,3 +24168,38 @@ relocations = [
   { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeRibbonGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045E5D0 },
   { offset = 0x27, type = "REL32", symbol = "?configure_group_45eb10@NativeRibbonGroup@th20@@QAEHABUNativeRibbonGroupOptions@2@H@Z", target = 0x0045EB10 },
 ]
+
+# CORE/RECON-921: original 23B ribbon 0x3C0 segment index; provenance
+# could be generated/templated, so no authored game credit without proof.
+[units.animation_ribbon_segment_at_23]
+source = "src/AnimationRibbonSegmentAt23.cpp"
+object = "build/core921-canonical/AnimationRibbonSegmentAt23.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonSegmentArray::at_45d690"]
+symbol = "?at_45d690@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@H@Z"
+target_address = 0x0045D690
+size = 23
+relocations = []
+
+# CORE/RECON-921: entire original 252B game-authored ribbon configuration Boss.
+[units.animation_ribbon_group_config_252]
+source = "src/AnimationRibbonGroupConfig252.cpp"
+object = "build/core921-canonical/AnimationRibbonGroupConfig252.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonGroup::configure_group_45eb10"]
+symbol = "?configure_group_45eb10@NativeRibbonGroup@th20@@QAEHABUNativeRibbonGroupOptions@2@H@Z"
+target_address = 0x0045EB10
+size = 252
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x43, type = "REL32", symbol = "?at_45d690@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@H@Z", target = 0x0045D690 },
+  { offset = 0x53, type = "REL32", symbol = "?initialize_palette_45ec10@NativeRibbonSegment@th20@@QAEXI@Z", target = 0x0045EC10 },
+  { offset = 0x66, type = "REL32", symbol = "?at_45d690@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@H@Z", target = 0x0045D690 },
+  { offset = 0x76, type = "REL32", symbol = "?initialize_palette_45ec10@NativeRibbonSegment@th20@@QAEXI@Z", target = 0x0045EC10 },
+  { offset = 0x89, type = "REL32", symbol = "?at_45d690@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@H@Z", target = 0x0045D690 },
+  { offset = 0x99, type = "REL32", symbol = "?initialize_palette_45ec10@NativeRibbonSegment@th20@@QAEXI@Z", target = 0x0045EC10 },
+  { offset = 0xAE, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
+  { offset = 0xC1, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
+  { offset = 0xDD, type = "REL32", symbol = "?configure_438c60@NativeRibbonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+  { offset = 0xF0, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
+]

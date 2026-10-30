@@ -1347,3 +1347,5 @@ th20::NativeRibbonGroup::~NativeRibbonGroup
 th20::NativeRibbonGroup::scalar_deleting_destructor
 "th20::DiagnosticAllocator::allocate_object<NativeRibbonGroup,Animation*>"
 th20::configure_ribbon_group_45ec70
+th20::NativeRibbonSegmentArray::at_45d690
+th20::NativeRibbonGroup::configure_group_45eb10

@@ -1,5 +1,9 @@
 # CORE/RECON-920 — original 47B ribbon allocation/configuration wrapper exact
 
+> **CORE/RECON-922 follow-up:** The original separate 252B configuration
+> function is now independently [whole 252/252 native strict exact](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md).
+> The previously accepted 47B wrapper receipt is unchanged.
+
 Locked Japanese TH20 Steamless v1.00a SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The original game-specific **47B/18-i386** CDECL function at
@@ -37,8 +41,10 @@ Exact replay: 1/1 units, 1 cold objects
 ```
 
 The shared ribbon group header was extended only with the authentic
-252B method interface; **11 existing canonical ribbon exact units**
-in nine affected objects were independently cold replayed **11/11**.
+252B method interface. The new source alone is **1/1 exact**; its actual
+affected-header closure also preserves all **11 prior exact units** in
+nine existing objects. The combined scoped replay confirms **12/12 units
+from 10 cold objects** without any whole-graph cold replay.
 The 47B body is original game registration/configuration logic,
 adding **one authored original game head /47 distinct `.text` bytes**.
 Its 252B configuration child remains independent and does not
