@@ -24955,3 +24955,17 @@ relocations = [
  { offset = 0x4B, type = "REL32", symbol = "?set_tangent_end@?$Interpolation@UVector3@th20@@@th20@@QAEXABUVector3@2@@Z", target = 0x00438B20 },
  { offset = 0x71, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]
+
+# CORE/RECON-956: complete original 57B/24-i386 Animation interpolation
+# forwarding, two original E8 parents in 2,884B particle Update Boss.
+[units.animation_particle_interpolation_forward_57]
+source = "src/AnimationParticleInterpolationForward57.cpp"
+object = "build/core956-canonical/AnimationParticleInterpolationForward57.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationInterpolationForwardView::configure_45d150"]
+symbol = "?configure_45d150@NativeAnimationInterpolationForwardView@th20@@QAEXHABUVector3@2@000@Z"
+target_address = 0x0045D150
+size = 57
+relocations = [
+ { offset = 0x2E, type = "REL32", symbol = "?configure_45d190@NativeVectorInterpolationConfigView@th20@@QAEXHHABUVector3@2@000@Z", target = 0x0045D190 },
+]

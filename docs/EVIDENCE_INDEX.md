@@ -46,6 +46,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-951 — entire native 202B/58-x86 Vector3 epsilon normalization](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). Original immutable PE 2 E8 and one genuine HIGHLOW to native 0.01f, SSE3 lanes and real `comiss/jbe`, copy near zero versus three divisions. One natural C++20 source **202/202 strict exact**, **+202 authored game code bytes**; source-specific local replay only.
 
+## Original 57B Animation+0x8C Vector3 interpolation forwarder whole strict exact
+
+- [CORE/RECON-956 — complete original 57B/24-i386 interpolation forwarder](ANIMATION_PARTICLE_INTERPOLATION_FORWARD_57_STRICT_EXACT.md). Original two E8 caller sites inside 2,884B Update, one native E8 to independently exact 124B config, authentic typed Animation+0x8C and fixed mode8; **57/57 exact**, **+57 authored game bytes**, both affected source objects 2/2 locally strict replayed.
+
 ## Original 124B Vector3 interpolation configuration method whole strict exact
 
 - [CORE/RECON-955 — entire original 124B/45-i386 six-parameter `VectorInterpolation` setup](ANIMATION_PARTICLE_INTERPOLATION_124_STRICT_EXACT.md). Seven native E8, zero HIGHLOW; natural typed duration/mode/start/end/tangent setters, current vector and Timer zero. **124/124 canonical strict exact**, one new authored original function/+124 game bytes. Its direct 57B parent and 2,884B Update remain distinct.
@@ -253,9 +257,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,390 source-present mappings, 1,390
-strict units from 351 pinned object/receipt providers, and 671 distinct
-original authored whole-exact game functions /241,518 `.text` bytes**.
+**Current verified checkpoint:** **1,391 source-present mappings, 1,391
+strict units from 352 pinned object/receipt providers, and 672 distinct
+original authored whole-exact game functions /241,575 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
