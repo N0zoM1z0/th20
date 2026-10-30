@@ -5,6 +5,7 @@
 #include "AnimationCallback.hpp"
 #include "Timer.hpp"
 #include "Vector2.hpp"
+#include "AnimationHandle.hpp"
 #include "NativeRibbonArraySpans.hpp"
 #include <array>
 #include <cstddef>
@@ -16,8 +17,9 @@ struct Vector3;
 // 60 four-byte color cells, and 60 float radii: 0x1E0+0xF0+0xF0=0x3C0.
 struct NativeRibbonSegment {
     NativeRibbonPointSpan perimeter_00;
-    std::array<std::uint32_t, 60> color_cells_1e0;
+    std::array<AnimationHandle, 60> color_cells_1e0;
     NativeRibbonScalarSpan radius_2d0;
+    NativeRibbonSegment() noexcept;
     void update_ribbon_45e800(float scale);
     void draw_ribbon_45eac0(const Vector3* position);
 };

@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Complete 60B original ribbon segment constructor whole strict exact
+
+- [CORE/RECON-916 — entire native 60B/20-i386 ribbon segment ctor strict exact](ANIMATION_RIBBON_SEGMENT_CTOR_60_STRICT_EXACT.md). Original PE three E8/zero HIGHLOW, true 60 Vector2/60 four-byte color and 60-float radius zeroing, independently original 78B array callback. **60/60 whole C++20 strict exact**, +60 authored game bytes. Five affected old ribbon objects replay 5/5; no full graph replay.
+
 ## Complete 538B original ribbon dynamics Boss strictly exact
 
 - [CORE/RECON-915 — entire 538B/149-i386 native ribbon radius/polar Boss strict exact](ANIMATION_RIBBON_SEGMENT_DYNAMICS_538_STRICT_EXACT.md). Complete original 13 E8 and ten HIGHLOW site/target pairs, authentic native `+0x115` scoped NOP, real 60-radius clamp and 60-vertex polar update, closure copy index59. Ordinary C++20 `/Od /EHsc` emits **538/538 complete canonical relocated bytes**, one new source/object local cold replay. **+538 authored-game bytes**. The previously exact 140B update/156B draw/76B LINESTRIP and 19B array-end children are independently accepted, not counted again.
@@ -96,9 +100,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,342 source-present mappings, 1,341
-strict units from 311 pinned object/receipt providers, and 644 distinct
-original authored whole-exact game functions /235,712 `.text` bytes**.
+**Current verified checkpoint:** **1,343 source-present mappings, 1,342
+strict units from 312 pinned object/receipt providers, and 645 distinct
+original authored whole-exact game functions /235,772 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
