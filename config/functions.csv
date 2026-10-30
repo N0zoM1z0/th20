@@ -1566,7 +1566,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0045D2C0,156,0x0045D35B,FUN_0045d2c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0045D360,202,0x0045D429,FUN_0045d360,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0045D430,123,0x0045D4AA,FUN_0045d430,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0045D4B0,75,0x0045D4FA,FUN_0045d4b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0045D4B0,75,0x0045D4FA,FUN_0045d4b0,"std::array<th20::AnimationHandle,60>::array",CxxContainer,reconstructed,100.00,__thiscall,??0?$array@UAnimationHandle@th20@@$0DM@@std@@QAE@XZ,false,src/AnimationRibbonColorArrayCtor75.cpp,CORE/RECON-924; docs/ANIMATION_RIBBON_COLOR_ARRAY_75_STRICT_EXACT.md,unknown,"Whole original 75B/27-i386 C++ color 60x4 array constructor, +5 true native INT3, native EH/cookie/0x425CC0 callback and original 0x40BC20 iterator. Original 60B segment ctor calls at 0x45D628; natural C++20 emits 80/80 canonical comparison; generated/template origin unproven and no authored-game code credit."
 0x0045D500,75,0x0045D54A,FUN_0045d500,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0045D550,78,0x0045D59D,FUN_0045d550,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0045D5B0,89,0x0045D608,FUN_0045d5b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

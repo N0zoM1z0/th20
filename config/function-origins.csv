@@ -1566,7 +1566,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045D2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045D4B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045D4B0,unknown,CxxContainer,review,pending,"CORE/RECON-924; docs/ANIMATION_RIBBON_COLOR_ARRAY_75_STRICT_EXACT.md; original C++20 60 AnimationHandle array template, complete 75B native +5 INT3, original EH/cookie/zero color ctor PE fields, 80/80 pinned COFF exact; source authorship unproven"
 0x0045D500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D5B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

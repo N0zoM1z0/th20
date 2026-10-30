@@ -1352,3 +1352,4 @@ th20::NativeRibbonGroup::configure_group_45eb10
 th20::NativeRibbonSegment::initialize_palette_45ec10
 th20::NativeRibbonColorFields::forward_color_45dd20
 th20::NativeRibbonRadiusFields::forward_radius_45dd00
+"std::array<th20::AnimationHandle,60>::array"

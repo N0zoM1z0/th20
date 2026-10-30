@@ -24244,3 +24244,21 @@ size = 31
 relocations = [
   { offset = 0x12, type = "REL32", symbol = "?native_polygon_apply_radius_45d360@th20@@YAXPAXHPBM@Z", target = 0x0045D360 },
 ]
+
+# CORE/RECON-924: original 75B ribbon 60x4-byte color-array ctor plus five
+# authentic following INT3 bytes; C++ compiler-generated/source origin review.
+[units.animation_ribbon_color_array_ctor_75]
+source = "src/AnimationRibbonColorArrayCtor75.cpp"
+object = "build/core924-canonical/AnimationRibbonColorArrayCtor75.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,60>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$0DM@@std@@QAE@XZ"
+target_address = 0x0045D4B0
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$0DM@@std@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]

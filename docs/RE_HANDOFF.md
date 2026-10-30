@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,354** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,353**, from **319** pinned MSVC object/receipt providers |
+| Source-present function mappings | **1,355** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,354**, from **320** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **649 distinct function heads /236,248 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -48,6 +48,7 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
+| Ribbon color-array constructor `0x0045D4B0` | **75B/27-i386 + five real INT3 strict exact**, original 60×4-byte `AnimationHandle` array and 60B parent constructor call, all native EH/cookie/callback/E8 roles. 80/80 full contribution; compiler/template origin unverified and **zero authored game credit**. The separate 75B Vector2[60] ctor remains open. [Whole PE/COFF proof](ANIMATION_RIBBON_COLOR_ARRAY_75_STRICT_EXACT.md). |
 | **Ribbon segment palette `0x0045EC10`, 88B** | **88B/29-i386 whole strict exact**, two real 31B color/radius forwarding children 31/31 exact; +0x2C/+0x51 native NOP, three original E8/one physical HIGHLOW 32.0f, three real 252B caller E8. **+88 game authored bytes**; 31B helpers origin unknown/uncredited. [Full source/PE/COFF proof](ANIMATION_RIBBON_PALETTE_88_31_STRICT_EXACT.md). |
 | **Polygon outline caller `0x0045FAA0`, 104B /36 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonMotionCall104.cpp` (102B /34 x86); original saves ESI and computes a stride before `Motion::position_ref`, whereas source computes it afterward. Eight source indexing variants did **not** fix it. Its 233B caller and 1,204B callee **are exact**, independently. [Caller frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md). |
 | **Rotated four-corner projection `0x0043EF20`, 1,486B /372 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationCornerRotated1486.cpp` (1,485B /371 x86). One genuine original NOP follows the Angle constructor; in-memory alignment is diagnostic **only**. The shared **96B 2×3×4 `.rdata` table is exact**. Do not fake compiler padding. [Original proof](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). |
