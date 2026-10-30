@@ -1,42 +1,53 @@
-# CORE/RECON-907 — whole 113B polygon group Boss constructor and 49B scalar-deleting wrapper native exact
+# CORE/RECON-907 — original 113B polygon Motion group constructor and 49B scalar-deleting wrapper strict exact
 
-Immutable original target: Japanese TH20 v1.00a Steamless PE, SHA-256
-`a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
+This checkpoint is grounded in the immutable Japanese TH20 Steamless 1.00a target, SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`. The **entire original 113-byte, 30-instruction game-authored polygon Motion group constructor `0x0045F340`** and the separate **49-byte, 18-instruction compiler-generated scalar deleting destructor `0x0045F5A0`** pass fresh pinned MSVC x86 **complete canonical relocation replay**. They are distinct original executable addresses; the latter is **excluded** from authored-game credit.
 
-The complete game-owned **`0x0045F340` 113B/30-i386 polygon Motion group constructor** is now **113/113 whole canonical relocated bytes exact**, a genuine parent of the already exact 78B three-segment array constructor and called directly from the exact 156B C++17 allocation factory. The separately generated **`0x0045F5A0` 49B/18-i386 scalar-deleting destructor wrapper** is **49/49 whole native exact**, but compiler-owned rather than authored-game code. The ordinary 20B destructor at `0x0045C2A0` remains **NONEXACT**; wrapper exactness is not evidence of its callee's exactness.
+## Original-only executable and virtual table observations
 
-## Independent original PE ABI and vtable evidence
+[`scripts/verify-animation-polygon-group-ctor113-native.py`](../scripts/verify-animation-polygon-group-ctor113-native.py) checks the *locked original PE only*, independently of reconstructed source and COFF. It attests the complete original 113B, 49B and separate 20B function boundaries; all native E8 site/actual absolute callee pairs, all original PE HIGHLOW fields and the six native vtable pointer values at `0x0056EE50`.
 
-The [original-only verifier](../scripts/verify-animation-polygon-group-ctor113-native.py) reads the locked `.text` and PE `.reloc` directly, not any candidate object. It checks all complete 113B/49B/20B original instruction extents and **all physical native call/destination pairs and HIGHLOW roles**. The original 113B constructor has four genuine E8 and one PE HIGHLOW field:
+The 113B original game constructor has four genuine E8 calls and one PE HIGHLOW:
 
-| Native relocation field | Original physical destination | Meaning |
+| Native field offset | Kind | Physical original target | Purpose |
+| --- | --- | --- | --- |
+| `+0x0F` | REL32 | `0x00446B60` | `AnimationCallback(Animation*)` base constructor |
+| `+0x18` | DIR32 | `0x0056EE50` | Actual derived vtable, not an invented private table |
+| `+0x23` | REL32 | `0x0045F2B0` | Complete exact 78B `std::array<Segment,3>` constructor |
+| `+0x3F` | REL32 | `0x00422D90` | Original Timer default constructor |
+| `+0x5A` | REL32 | `0x00422E10` | Original Vector3 default constructor |
+
+It then returns the real `this` pointer by `ret 4`. Its original 0xBAC-byte layout consists of the 8B polymorphic `AnimationCallback` base, `3 × 0x3D4B` segment array at `+0x08`, a float-initialized four-byte control at `+0xB84`, Timer at `+0xB88`, an **opaque four-byte field** at `+0xB98`, Vector3 at `+0xB9C`, and a byte at `+0xBA8` initialized to one. Only its physical 32-bit storage/use is proven for the opaque field; the current pointer view is still a type hypothesis, **not** independent proof of object ownership.
+
+The actual original vtable `0x0056EE50` contains the physical slots:
+
+| Slot | Original pointer | Native identity |
 | --- | --- | --- |
-| `+0x0F` REL32 | `0x00446B60` | Real `AnimationCallback(Animation*)` base constructor |
-| `+0x18` DIR32 | `0x0056EE50` | Native derived polygon group vtable |
-| `+0x23` REL32 | `0x0045F2B0` | Complete 78B C++20 triple-segment `std::array` constructor |
-| `+0x3F` REL32 | `0x00422D90` | Timer default constructor |
-| `+0x5A` REL32 | `0x00422E10` | Vector3 default constructor |
+| `+0x00` | `0x0045F5A0` | 49B scalar deleting destructor wrapper |
+| `+0x04` | `0x0045F5E0` | Already whole exact 140B virtual `update()` |
+| `+0x08` | `0x0045F9B0` | Already whole exact 233B virtual `draw()` |
+| `+0x0C` | `0x00412540` | inherited/folded base slot |
+| `+0x10`, `+0x14` | `0x00414B50` | inherited/folded base slots |
 
-Its authentic member order is native 8B polymorphic base with `Animation*` at `+4`, three `0x3D4` segments at `+8`, a float-zero lane at `+0xB84`, Timer at `+0xB88`, a four-byte opaque token at `+0xB98`, Vector3 at `+0xB9C`, and a true byte `+0xBA8 = 1`; whole allocation size **0xBAC**. It returns the original object pointer with `ret 4`.
+**Remaining vtable-linking frontier:** the original PE has six virtual slots, while the current source-emitted derived vtable has five directly defined slots. The additional sixth folded/inherited original slot remains unresolved; whole ctor exactness does not imply complete runtime vtable parity.
 
-The independently file-backed native vtable at `0x0056EE50` has original first entries `0x0045F5A0` scalar delete, `0x0045F5E0` whole-exact 140B update, `0x0045F9B0` whole-exact 233B draw. The source now declares a real `NativePolygonMotionGroup : AnimationCallback` (not a parallel flat class) and correctly exports **`update()` and `draw()` as virtual overrides**, using those same original 140B/233B method bodies. They preserve 140/140 and 233/233 entire original bytes under their updated linker symbols. The fifth and sixth virtual table slots represent inherited/folded original source identities; the present MSVC source table exposes five entries, and the additional native sixth entry is still to be reconciled for whole-program linkage. **Constructor exactness alone does not prove a complete exact vtable or a playable game.**
+This proves the C++ owner uses a genuine `AnimationCallback` base rather than an unrelated flat record with a guessed vptr. The original 156B C++17 diagnostic allocation factory **E8-calls this 113B constructor** at its physical `+0x6A` site.
 
-## Why source expression order and field type matter
+The 49B original scalar-deleting wrapper has E8 `+0x0A → 0x0045C2A0` (the original **20B ordinary destructor**, independently verified but **still NONEXACT**) and `+0x20 → 0x0054278D` (real native sized delete). It has no PE HIGHLOW data fields. Generating that MSVC wrapper naturally from the real virtual destructor declaration emits its **complete 49/49B** original bytes. This exact wrapper **does not accept its separate 20B destructor child**, nor imply original object construction or game linkage is fully complete.
 
-An initial candidate with real derived `std::array` member **value initialization `segments_08()`** caused MSVC C++20 to emit a redundant `memset(0xB7C)` before constructing the array, producing **135B/37 instructions** and a wrong third E8. The original PE has no pre-clear in the derived constructor: the actual segment-array object is **default-initialized**. Omitting that explicit value initializer produces exactly **113B/30 x86**, and the original `std::array` ctor call at `+0x22`. The class/member initializer order naturally emits the native float-zero store, Timer, zero word, Vector3 and terminal Boolean. No manual byte padding or assembly was introduced.
+## Full natural C++ reconstruction and exact unit preservation
 
-The 156B original C++17 `/sdl` allocation template also genuinely needs a pointer-bearing class to generate the native auto-initializer. The base class provides the original verified `Animation*` at `+4`; a separate **existing four-byte token at `+0xB98`** is retained as a direct `void*` *codegen/ABI view* with no pointer dereference or invented extra storage. The original only writes zero and assigns an opaque four-byte configuration argument to this slot; its precise semantic meaning (pointer or integer token) **remains unproven**. The `void*` spelling therefore denotes a provisional 32-bit source interpretation, not a claim of confirmed pointer behavior. It does reproduce both the original `/sdl` 156B factory's class auto-init and the original 296B configuration's raw four-byte assignment. The factory forwards **`Animation*`**, rather than the former provisional `uint32_t` handle, to the original 8B base constructor. The factory's six native relocations, the 47B caller's four original roles and all original machine bytes remain exact.
+One shared [`src/NativePolygonMotionGroup.hpp`](../src/NativePolygonMotionGroup.hpp) now declares `NativePolygonMotionGroup : AnimationCallback`, the correct inherited virtual `update()` and `draw()` overrides, and actual 3-segment C++20 array. Its constructor is maintained in [`src/AnimationPolygonGroupCtor113.cpp`](../src/AnimationPolygonGroupCtor113.cpp). The original `0x0045F340` genuinely **does not pre-clear** the whole `0xB7C` array before array construction: explicitly adding `segments_08()` to the member initializer list emitted a nonnative whole-array memset and increased the candidate to 135B. Leaving that aggregate member to its natural *default initialization* while explicitly initializing the true float control, Timer, opaque value, Vector3 and flag yields the entire original **113B/30 x86**, exactly **93/93 nonrelocation bytes** with all five original relocation positions/kinds/targets. No artificial NOP, dead compiler-shaping local or target-byte patch was used.
 
-The 49B compiler scalar-deleting wrapper calls original physical `0x0045C2A0` at E8 `+0x0A` and the native sized delete `0x0054278D` at E8 `+0x20`, with no PE HIGHLOW. Ordinary C++ `virtual ~NativePolygonMotionGroup()` produces precisely the 49B complete wrapper without source padding, and the compiler's separate ordinary destructor body is **29B**, not the actual **20B**. Thus this 49B unit is accepted as a whole original compiler wrapper, but **the 20B destructor is explicitly not accepted**, and native runtime destruction still needs its source/ABI repair.
+This 113B constructor uses the real original **C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl` without `/EHsc`**, avoiding an otherwise extraneous 169B exception prologue. The separate [`src/AnimationPolygonMotionGroupFactory156.cpp`](../src/AnimationPolygonMotionGroupFactory156.cpp) retains its authentic **C++17 `/EHsc /sdl`** profile, and now instantiates `DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,Animation*>`, matching the actual inherited `Animation*` receiver. Its old nominal `uint32_t` handle signature was a proxy; the original **156B/46-x86 and all six physical relocation roles are unchanged**. The 47B caller source simply reinterprets its 32-bit handle as the observed native Animation pointer, preserving that original cdecl body.
 
-## Canonical strict proof and conservative accounting
+The original 140B and 233B game-owned methods' physically exact original addresses are unchanged; their **correct compiler symbols** are now `?update@NativePolygonMotionGroup@th20@@UAEHXZ` and `?draw@NativePolygonMotionGroup@th20@@UAEHXZ`, rather than provisional nonvirtual descriptive names. All previously accepted exact game/group/helper units retain the identical physical original `.text` bytes and original relocation destinations. Compiler-generated vtable `.rdata` labels do not receive new `.text` credit.
 
-One pinned `/std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl` (no `/EHsc`) source provider `src/AnimationPolygonGroupCtor113.cpp` emits both new complete exact functions with **5/5** ctor relocations and **2/2** scalar deleting wrapper relocations, independently matched to the original PE. In `config/match-units.toml` the exact units are `animation_polygon_group_ctor_113` and `animation_polygon_group_scalar_delete_49`. The two already exact group methods and C++17 factory preserve the original physical targets but now have correctly typed C++ mangled symbols.
-
-The affected-only cold replay gives:
+The actual affected-only bounded native replay for **four source providers** (including the triple-array constructor source, which includes the changed group header) is:
 
 ```text
 animation_polygon_motion_group_233: exact (233/233 bytes)
+animation_polygon_segment_at_23: exact (23/23 bytes)
+animation_polygon_segment_end_19: exact (19/19 bytes)
 animation_polygon_motion_config_296: exact (296/296 bytes)
 animation_polygon_registry_wrapper_47: exact (47/47 bytes)
 animation_polygon_group_tick_140: exact (140/140 bytes)
@@ -48,9 +59,11 @@ animation_polygon_group_scalar_delete_49: exact (49/49 bytes)
 Exact replay: 11/11 units, 4 cold objects
 ```
 
-This adds **one whole game-authored original 113B function**, credited exactly once to `config/matches.csv`: live authored coverage becomes **640 distinct functions /234,802 disjoint original bytes**. The separate 49B compiler scalar-deleting wrapper stays `origin=compiler/exclude`; the already accepted 156B factory and 78B/75B array constructors remain non-authored-origin credited. Source mappings become **1,334**, strict canonical units **1,333**, pinned compiler object/receipt providers **304**. The game is still not globally linked or playable.
+The new **113B authored original game code** is credited once in `config/matches.csv`. The **49B compiler-generated virtual wrapper** is `origin=compiler, disposition=exclude`, is still separately strict exact, and contributes zero to authored-game total. Neither previous 156B allocation factory nor previous exact group methods are double counted.
 
-### Reproduce only the affected source closure
+Live after this checkpoint: **1,334 source-present mappings, 1,333 strict canonical units, 304 pinned compiler object/receipt providers; 640 distinct game-authored whole exact functions /234,802 native `.text` bytes**. This is not evidence that TH20 as a whole links or plays.
+
+### Narrow reproduction
 
 ```bash
 scripts/repo-python scripts/verify-target.py
@@ -62,4 +75,4 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 ```
 
-No unfiltered whole-graph cold replay, artificial target/object byte patching, compiler-only dead local or invented executable body was used.
+Only the actual four affected native C++ source providers are cold-rebuilt: **no unfiltered whole-repository replay**. The separately original-only verified 20B ordinary destructor, 75B Vector2 array constructor, 104B outline caller and 5,993B Animation Draw dispatcher remain open as independent nonexact heads.
