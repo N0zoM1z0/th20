@@ -1390,3 +1390,4 @@ th20::normalize_vector3_45cf10,0x0045CF10,function
 "std::array<th20::Vector3,200>::operator[]",0x0045C2C0,function
 th20::NativeVectorInterpolationConfigView::configure_45d190,0x0045D190,function
 th20::NativeAnimationInterpolationForwardView::configure_45d150,0x0045D150,function
+th20::NativeParticleSpawnFileView::spawn_45d210,0x0045D210,function

@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,391** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,391**, from **352** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **672 distinct function heads /241,575 original `.text` bytes** |
+| Source-present function mappings | **1,392** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,392**, from **353** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **673 distinct function heads /241,658 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -50,6 +50,7 @@ older local-variable names or assumptions.
 
 | Three original 75B `Vector2[60]/[64]/[61]` constructors | **ORIGINAL PE VERIFIED, SOURCE NONEXACT**. Native 75B/27 x86 each and five real `INT3` each; one genuine E8/3 HIGHLOW and independent ctor parent calls. Isolated MSVC `Vector2() noexcept` matches all three **80B structural contributions**, but real global ODR/class declaration remains unchanged (**230 strict provider/871-unit affected closure**). No false exact admission or game code credit. [Evidence and original verifier](ANIMATION_VECTOR2_ARRAY_60_64_61_NOEXCEPT_FRONTIER.md). |
 | Original 202B 3D vector normalize `0x0045CF10` | **202B/58-i386 whole strict exact**: native square_root/absolute E8 and PE 0.01f HIGHLOW, real `comiss/jbe` copy-versus-3-divide semantics. **+202 authored game bytes**, one local object only. [Original proof](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). |
+| Original 83B particle AnimationFile spawn wrapper `0x0045D210` | **83B/30-i386 whole strict exact**, special==1 selects flag16, one original E8 to distinct 922B spawn at 0x450CB0, four physical 2,884B Update E8 sites, no HIGHLOW. **+83 authored game bytes**; enclosing and 922B callee separate open tasks. [Original exact proof](ANIMATION_PARTICLE_SPAWN_WRAPPER_83_STRICT_EXACT.md). |
 | Original 57B Animation interpolation forwarder `0x0045D150` | **57B/24-i386 strict exact**, real `AnimationBase::interpolation_8c` and native mode 8, one E8 to separately exact 124B setter and two original E8 from the 2,884B Update Boss. **+57 game-authored bytes**; 124B callee replays unchanged. [Original native +COFF proof](ANIMATION_PARTICLE_INTERPOLATION_FORWARD_57_STRICT_EXACT.md). |
 | Original 124B interpolation configuration `0x0045D190` | **124B/45-i386 whole strict exact**, six real Vector3 interpolation setters (duration/mode/start/end/tangent pair), current+0x30 and Timer+0x3C; original seven E8 and zero HIGHLOW plus genuine 57B parent E8. **+124 authored game bytes**, Update 2,884B still open. [PE/COFF proof](ANIMATION_PARTICLE_INTERPOLATION_124_STRICT_EXACT.md). |
 | Original 20B Vector3×200 native index `0x0045C2C0` | **20B/9-i386 whole strict exact**, natural STL `std::array<Vector3,200>::operator[]`, four genuine E8 from 2,884B Update parent, zero PE relocations. Generated/template source origin unknown: **zero new authored-game bytes**. [Original PE and complete replay](ANIMATION_PARTICLE_GRID_VECTOR_INDEX_20_STRICT_EXACT.md). |

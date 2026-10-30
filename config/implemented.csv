@@ -1389,3 +1389,4 @@ th20::normalize_vector3_45cf10
 "std::array<th20::Vector3,200>::operator[]"
 th20::NativeVectorInterpolationConfigView::configure_45d190
 th20::NativeAnimationInterpolationForwardView::configure_45d150
+th20::NativeParticleSpawnFileView::spawn_45d210

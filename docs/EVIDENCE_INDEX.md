@@ -46,6 +46,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-951 — entire native 202B/58-x86 Vector3 epsilon normalization](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). Original immutable PE 2 E8 and one genuine HIGHLOW to native 0.01f, SSE3 lanes and real `comiss/jbe`, copy near zero versus three divisions. One natural C++20 source **202/202 strict exact**, **+202 authored game code bytes**; source-specific local replay only.
 
+## Original 83B particle spawn wrapper around 922B AnimationFile core whole strict exact
+
+- [CORE/RECON-957 — complete original 83B/30-i386 Animation file spawn wrapper](ANIMATION_PARTICLE_SPAWN_WRAPPER_83_STRICT_EXACT.md). Native six-argument mode flag 16/0, one authentic E8 to original 922B spawn and four actual 2,884B parent E8 locations; ordinary C++20 **83/83 strict exact, +83 authored game bytes**. Both 922B callee and 2,884B parent remain distinct nonexact tasks.
+
 ## Original 57B Animation+0x8C Vector3 interpolation forwarder whole strict exact
 
 - [CORE/RECON-956 — complete original 57B/24-i386 interpolation forwarder](ANIMATION_PARTICLE_INTERPOLATION_FORWARD_57_STRICT_EXACT.md). Original two E8 caller sites inside 2,884B Update, one native E8 to independently exact 124B config, authentic typed Animation+0x8C and fixed mode8; **57/57 exact**, **+57 authored game bytes**, both affected source objects 2/2 locally strict replayed.
@@ -257,9 +261,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,391 source-present mappings, 1,391
-strict units from 352 pinned object/receipt providers, and 672 distinct
-original authored whole-exact game functions /241,575 `.text` bytes**.
+**Current verified checkpoint:** **1,392 source-present mappings, 1,392
+strict units from 353 pinned object/receipt providers, and 673 distinct
+original authored whole-exact game functions /241,658 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

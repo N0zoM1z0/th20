@@ -24969,3 +24969,17 @@ size = 57
 relocations = [
  { offset = 0x2E, type = "REL32", symbol = "?configure_45d190@NativeVectorInterpolationConfigView@th20@@QAEXHHABUVector3@2@000@Z", target = 0x0045D190 },
 ]
+
+# CORE/RECON-957: native 83B/30-i386 wrapper for original 922B
+# AnimationFile spawn. Four distinct E8 callers in 2,884B particle Boss.
+[units.animation_particle_spawn_wrapper_83]
+source = "src/AnimationParticleSpawnWrapper83.cpp"
+object = "build/core957-canonical/AnimationParticleSpawnWrapper83.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeParticleSpawnFileView::spawn_45d210"]
+symbol = "?spawn_45d210@NativeParticleSpawnFileView@th20@@QAEPAXPAXIIIMH@Z"
+target_address = 0x0045D210
+size = 83
+relocations = [
+ { offset = 0x46, type = "REL32", symbol = "?spawn_core_450cb0@NativeParticleSpawnFileView@th20@@QAEXPAXIIIMHHH@Z", target = 0x00450CB0 },
+]
