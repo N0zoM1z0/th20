@@ -1419,3 +1419,7 @@ th20::NativeFileClearPoolView::detach_file_44fd30,0x0044FD30,function
 th20::NativeDiagnosticFileAllocator::release_file_entry_447330,0x00447330,function
 "std::array<th20::AnimationFile*,42>::size",0x00450870,function
 th20::format_text_447940,0x00447940,function
+th20::AnimationPoolOwner::release_animation,0x0044C2F0,function
+th20::NativeAnimationGeometryReleaseView::release_geometry_44c5f0,0x0044C5F0,function
+th20::NativeAnimationPoolRecordView::belongs_to_pool_44d970,0x0044D970,function
+"std::array<th20::PooledAnimation,65536>::operator[]",0x004494D0,function

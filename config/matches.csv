@@ -689,3 +689,6 @@ address,name,size,status,match_percent,unit,evidence
 0x0044C510,th20::NativeFileClearPoolView::cleanup_texture_44c510,94,matching,100.00,animation_texture_record_release_94,CORE/RECON-970; docs/ANIMATION_TEXTURE_RELEASE94_STRICT_EXACT.md
 0x0044C430,th20::NativeFileClearPoolView::release_file_slot_44c430,209,matching,100.00,animation_file_slot_release_209,CORE/RECON-971; docs/ANIMATION_FILE_SLOT_RELEASE209_STRICT_EXACT.md
 0x0044FD30,th20::NativeFileClearPoolView::detach_file_44fd30,691,matching,100.00,animation_renderer_file_detach_691,CORE/RECON-972; docs/ANIMATION_RENDERER_FILE_DETACH691_STRICT_EXACT.md
+0x0044C2F0,th20::AnimationPoolOwner::release_animation,308,matching,100.00,animation_pool_release_308,CORE/RECON-976; docs/ANIMATION_POOL_RELEASE_308_AND_HELPERS_STRICT_EXACT.md
+0x0044C5F0,th20::NativeAnimationGeometryReleaseView::release_geometry_44c5f0,82,matching,100.00,animation_geometry_release_82,CORE/RECON-976; docs/ANIMATION_POOL_RELEASE_308_AND_HELPERS_STRICT_EXACT.md
+0x0044D970,th20::NativeAnimationPoolRecordView::belongs_to_pool_44d970,90,matching,100.00,animation_pool_membership_90,CORE/RECON-976; docs/ANIMATION_POOL_RELEASE_308_AND_HELPERS_STRICT_EXACT.md

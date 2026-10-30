@@ -1418,3 +1418,7 @@ th20::NativeFileClearPoolView::detach_file_44fd30
 th20::NativeDiagnosticFileAllocator::release_file_entry_447330
 "std::array<th20::AnimationFile*,42>::size"
 th20::format_text_447940
+th20::AnimationPoolOwner::release_animation
+th20::NativeAnimationGeometryReleaseView::release_geometry_44c5f0
+th20::NativeAnimationPoolRecordView::belongs_to_pool_44d970
+"std::array<th20::PooledAnimation,65536>::operator[]"

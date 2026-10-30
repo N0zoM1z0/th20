@@ -25481,3 +25481,72 @@ size = 30
 relocations = [
  { offset = 0x15, type = "REL32", symbol = "__vswprintf_s", target = 0x00439880 },
 ]
+
+
+# CORE/RECON-976: original complete 308B, whole original head and roles.
+[units.animation_pool_release_308]
+source = "src/AnimationPoolRelease308.cpp"
+object = "build/core976-canonical/AnimationPoolRelease308.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationPoolOwner::release_animation"]
+symbol = "?release_animation@AnimationPoolOwner@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x0044C2F0
+size = 308
+relocations = [
+ { offset = 0x03A, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x03F, type = "REL32", symbol = "??$release_object@UAnimationCallback@th20@@@DiagnosticAllocator@th20@@QAEXPAUAnimationCallback@1@@Z", target = 0x0041F7C0 },
+ { offset = 0x054, type = "REL32", symbol = "?release_geometry_44c5f0@NativeAnimationGeometryReleaseView@th20@@QAEXXZ", target = 0x0044C5F0 },
+ { offset = 0x062, type = "REL32", symbol = "?detach@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
+ { offset = 0x070, type = "REL32", symbol = "?detach@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
+ { offset = 0x096, type = "REL32", symbol = "?belongs_to_pool_44d970@NativeAnimationPoolRecordView@th20@@QAEHPAVAnimation@2@@Z", target = 0x0044D970 },
+ { offset = 0x0B8, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
+ { offset = 0x0E9, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
+ { offset = 0x0F7, type = "REL32", symbol = "?insert_after@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXPAV12@@Z", target = 0x00411EE0 },
+ { offset = 0x0FF, type = "REL32", symbol = "?release_resources@Animation@th20@@QAEXXZ", target = 0x0044C240 },
+ { offset = 0x10F, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+ { offset = 0x11C, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x121, type = "REL32", symbol = "??$release_object@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x00447410 },
+]
+
+
+# CORE/RECON-976: original complete 82B, whole original head and roles.
+[units.animation_geometry_release_82]
+source = "src/AnimationPoolReleaseHelpers.cpp"
+object = "build/core976-canonical/AnimationPoolReleaseHelpers.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationGeometryReleaseView::release_geometry_44c5f0"]
+symbol = "?release_geometry_44c5f0@NativeAnimationGeometryReleaseView@th20@@QAEXXZ"
+target_address = 0x0044C5F0
+size = 82
+relocations = [
+ { offset = 0x02B, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x030, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+]
+
+
+# CORE/RECON-976: original complete 90B, whole original head and roles.
+[units.animation_pool_membership_90]
+source = "src/AnimationPoolReleaseHelpers.cpp"
+object = "build/core976-canonical/AnimationPoolReleaseHelpers.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationPoolRecordView::belongs_to_pool_44d970"]
+symbol = "?belongs_to_pool_44d970@NativeAnimationPoolRecordView@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x0044D970
+size = 90
+relocations = [
+ { offset = 0x01A, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
+ { offset = 0x038, type = "REL32", symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z", target = 0x004494D0 },
+]
+
+
+# CORE/RECON-976: original complete 23B, whole original head and roles.
+[units.animation_pooled_record_index_23]
+source = "src/AnimationPoolReleaseHelpers.cpp"
+object = "build/core976-canonical/AnimationPoolReleaseHelpers.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::PooledAnimation,65536>::operator[]"]
+symbol = "??A?$array@UPooledAnimation@th20@@$0BAAAA@@std@@QAEAAUPooledAnimation@th20@@I@Z"
+target_address = 0x004494D0
+size = 23
+relocations = [
+]
