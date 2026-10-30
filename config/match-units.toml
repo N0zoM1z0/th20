@@ -25263,3 +25263,27 @@ relocations = [
  { offset = 0xD4, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
  { offset = 0xE2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-967: original 25B Animation Timer integer getter and 19B
+# color-word reference access; both physically called by 2,884B Update.
+[units.animation_particle_age_timer_25]
+source = "src/AnimationParticleAnimationAccess.cpp"
+object = "build/core967-canonical/AnimationParticleAnimationAccess.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeParticleAnimationAccess::age_45d0a0"]
+symbol = "?age_45d0a0@NativeParticleAnimationAccess@th20@@QBEHXZ"
+target_address = 0x0045D0A0
+size = 25
+relocations = [
+ { offset = 0x11, type = "REL32", symbol = "??BTimer@th20@@QBEHXZ", target = 0x0040FF90 },
+]
+
+[units.animation_particle_color_ref_19]
+source = "src/AnimationParticleAnimationAccess.cpp"
+object = "build/core967-canonical/AnimationParticleAnimationAccess.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeParticleAnimationAccess::color_ref_45d0e0"]
+symbol = "?color_ref_45d0e0@NativeParticleAnimationAccess@th20@@QAEAAIXZ"
+target_address = 0x0045D0E0
+size = 19
+relocations = []

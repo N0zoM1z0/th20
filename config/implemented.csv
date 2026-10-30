@@ -1407,3 +1407,5 @@ th20::NativeStemStringView::equals_44b400
 th20::native_stem_equal_len_447200
 th20::native_stem_compare_bytes_44be00
 th20::NativeAnimationRawPositionView::raw_position_44cb80
+th20::NativeParticleAnimationAccess::age_45d0a0
+th20::NativeParticleAnimationAccess::color_ref_45d0e0
