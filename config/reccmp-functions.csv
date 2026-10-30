@@ -1435,3 +1435,4 @@ th20::NativeRendererClassificationOwner::select_renderer_group_449e40,0x00449E40
 th20::apply_renderer_staging_449fa0,0x00449FA0,function
 th20::NativeRendererClassificationOwner::perform_classification_44f3d0,0x0044F3D0,function
 th20::NativeGraphicsModeAction::set_mode_44f720,0x0044F720,function
+th20::NativeGraphicsModeAction::set_mode_44f700,0x0044F700,function
