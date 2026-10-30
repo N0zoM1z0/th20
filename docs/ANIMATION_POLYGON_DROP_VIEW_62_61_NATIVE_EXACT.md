@@ -1,5 +1,7 @@
 # CORE/RECON-900: TH20 polygon dynamics typed ranges and four complete helper matches
 
+> **Later CORE/RECON-901 result:** The enclosing 827B dynamics Boss is now [whole strict exact](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). The 768B NONEXACT status and 637-game-function counts below describe this intermediate checkpoint only.
+
 The immutable Japanese TH20 Steamless 1.00a target is identified by SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The original 827-byte polygon dynamics Boss at `0x0045F670` is **source-present,

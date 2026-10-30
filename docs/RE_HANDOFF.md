@@ -18,8 +18,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
 | Source-present function mappings | **1,301** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,299**, from **300** pinned MSVC objects and **300** matching receipts |
-| Credited original authored-game whole exact | **637 distinct function heads /233,802 original `.text` bytes** |
+| Whole-native strict units | **1,300**, from **300** pinned MSVC objects and **300** matching receipts |
+| Credited original authored-game whole exact | **638 distinct function heads /234,629 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -47,7 +47,6 @@ older local-variable names or assumptions.
 | **Enemy ECL opcode dispatcher `0x0048C010`, 41,967B /8,896 x86** | **SOURCE-ABSENT.** Original 174 PE switch fields and large opcode CFG need a complete parent source; exact Laser children do not close it. [Original graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
-| **Polygon dynamics `0x0045F670`, 827B /237 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonDynamics827.cpp` (768B /225 x86 current candidate). Original **31 E8 /10 HIGHLOW**, two authentic `std::views::drop(1)` loops over `std::array<float,62>` and `std::array<Vector2,61>`, GameRandom radius clamp and 59-step polar geometry. **Seven iterator helpers plus four 16B/93B range-size/begin helpers are whole strict exact**; parent stack alignment, local lifetimes and byte positions remain wrong. [New native closure](ANIMATION_POLYGON_DROP_VIEW_62_61_NATIVE_EXACT.md), [earlier frontier](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md). |
 | **Polygon outline caller `0x0045FAA0`, 104B /36 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonMotionCall104.cpp` (102B /34 x86); original saves ESI and computes a stride before `Motion::position_ref`, whereas source computes it afterward. Eight source indexing variants did **not** fix it. Its 233B caller and 1,204B callee **are exact**, independently. [Caller frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md). |
 | **Rotated four-corner projection `0x0043EF20`, 1,486B /372 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationCornerRotated1486.cpp` (1,485B /371 x86). One genuine original NOP follows the Angle constructor; in-memory alignment is diagnostic **only**. The shared **96B 2×3×4 `.rdata` table is exact**. Do not fake compiler padding. [Original proof](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). |
 | **Player main `0x004F9C30`, 3,111B /783 x86** | **SOURCE-PRESENT, NONEXACT**, candidate 3,114B/783 x86; real register/stack/branch differences despite instruction-count agreement. [Operand frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md). |
@@ -58,22 +57,19 @@ older local-variable names or assumptions.
 
 ### High-value directions
 
-1. For the **827B polygon dynamics Boss**, seven range helpers plus four `size()`/`begin()`
-   instantiations already compile strict exact. Both real dropped
-   ranges and the **62/61** array bounds are now recovered. Resolve
-   remaining **827B parent stack realignment, local lifetimes and code
-   positions** without artificial padding; preserve native COMISS/NaN
-   semantics. Its original **140B group tick caller is already whole
-   exact**, including a separate four-byte INT3 gap.
-2. For the **104B polygon wrapper**, recover the original pointer
-   stride's register lifetime by real source expression/ABI evidence;
-   changing signatures solely to manufacture instructions is invalid.
-3. For the **5,993B Animation Draw parent**, the actual missing x87
-   return spill and later SSE/local stack roles are more useful than
-   re-opening its already exact 1,378B/1,996B/2,769B/4,347B children.
-4. The larger **12,140B Bullet** and **41,967B Enemy ECL** parents
-   remain real source-absent bosses; do not spend an entire session
-   matching only unrelated tiny leaves.
+1. The **5,993B Animation Draw dispatcher** still has unresolved x87
+   return spill and SSE/stack lifetimes despite its whole-exact backends.
+   Fix genuine source expressions and verify all 123 E8/32 HIGHLOW original
+   call/data roles, not just equal function length.
+2. The **104B polygon outline wrapper** still has incorrect saved-ESI
+   lifetime around the 8-byte point stride and `Motion::position_ref`.
+   Its enclosing 233B and sibling 827B/1,204B Bosses are now whole exact.
+3. The **12,140B Bullet extended command** is still source absent. Its
+   original three native switch tables and almost entirely known exact
+   callees make a genuine full-parent reconstruction worthwhile.
+4. The **41,967B Enemy ECL dispatcher** and **39,470B Animation VM update**
+   remain major source-absent Bosses; do not mistake exact children for
+   accepted parent coverage.
 
 ## Recently confirmed whole-native exact — do not undo
 
@@ -84,11 +80,12 @@ and [canonical units](../config/match-units.toml) are authoritative.
 
 | Original head / subsystem | Whole strict status |
 | --- | --- |
+| `0x0045F670` polygon dynamics update | **827B /237-i386 whole strict exact**, all **31 E8 and ten HIGHLOW** physical sites/targets; both original C++20 `drop(1)` arrays, 62/61 bounds, float clamp and closing point. [Complete original proof](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). |
 | `0x0053B5C0` ECL runtime tick | **11,110B** [exact](EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | `0x004818E0` Bullet emitter | **3,735B original body** and **3,832B compiler contribution** [exact](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md) |
 | `0x0043F6A0` Animation quad submission | **3,159B body /3,180B with original NOP+table** [exact](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md); genuine adjacent **20B `round(float)` is library**, [not authored game credit](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) |
 | Animation renderer backends | **4,347B Mode8**, **2,769B Mode6**, **1,378B Mode6 setup**, **1,996B Mode7 setup**, **753B Mode7**, and **2,136B mesh24/25** independently exact. [Mode8](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md), [Mode6](ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md), [setup](ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md), [Mode7](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md). Only enclosing 5,993B Draw is open. |
-| Polygon shape and Motion group chain | **1,204B** outline Boss, **296B** group configuration, **233B** group draw, **140B** group tick, **120B** palette, **76B** fan caller and **47B** registry wrapper all individually whole exact. [Polygon proof](ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md), [group](ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md), [tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md), [palette](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md). The 827B update, 104B wrapper and 156B registry resolver are **not exact**. |
+| Polygon shape and Motion group chain | **1,204B** outline Boss, **827B** dynamics Boss, **296B** group configuration, **233B** group draw, **140B** group tick, **120B** palette, **76B** fan caller and **47B** registry wrapper all individually whole exact. [Polygon proof](ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md), [group](ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md), [tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md), [palette](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md). The **104B wrapper and 156B registry resolver are still not exact**. [827B proof](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). |
 | Shape draw backend catalog | **2,169B LINESTRIP, 1,980B rectangle, 1,601B triangle, 1,468B ring**, plus several whole exact **375B–1,174B ellipse/fan/strip** sources. [Closed line](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md), [shape ring](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md), [remaining original PE proofs](EVIDENCE_INDEX.md). |
 | Exact original game data | **96B corner axes**, **8B polygon scalar constants**, **72B Player direction table** are genuine `.rdata` data, **not additional authored `.text` code credit**. [Corner data](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md), [polygon data](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md), [Player table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
 

@@ -23418,3 +23418,57 @@ relocations = [
   { offset = 0x39, type = "REL32", symbol = "??$?RABV?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@ranges@std@@@_Cpo@_Begin@ranges@std@@SA?A_PABV?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@23@@Z", target = 0x0045EF70 },
   { offset = 0x4F, type = "REL32", symbol = "??H?$_Array_iterator@UVector2@th20@@$0DN@@std@@QBE?AV01@H@Z", target = 0x0045F4F0 },
 ]
+
+# CORE/RECON-901: whole original 827B/237 x86 polygon update, all 31 E8
+# and ten independently attested native HIGHLOW destination/site roles.
+[units.animation_polygon_dynamics_827]
+source = "src/AnimationPolygonDynamics827.cpp"
+object = "build/core900-canonical/AnimationPolygonDynamics827.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonSegmentSlot::update_polygon_dynamics_45f670"]
+symbol = "?update_polygon_dynamics_45f670@NativePolygonSegmentSlot@th20@@QAEXM@Z"
+target_address = 0x0045F670
+size = 827
+relocations = [
+  { offset = 0x1D, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x3A, type = "REL32", symbol = "??A?$array@M$0DO@@std@@QAEAAMI@Z", target = 0x00414580 },
+  { offset = 0x57, type = "REL32", symbol = "??A?$array@M$0DO@@std@@QAEAAMI@Z", target = 0x00414580 },
+  { offset = 0x70, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0DN@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+  { offset = 0x90, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0xAA, type = "REL32", symbol = "??$?RH@_Drop_fn@views@ranges@std@@SA?A_P$$QAH@Z", target = 0x0045EFF0 },
+  { offset = 0xC0, type = "REL32", symbol = "??$?UAAV?$array@M$0DO@@std@@V?$_Range_closure@V_Drop_fn@views@ranges@std@@H@ranges@1@@_Pipe@ranges@std@@YA?A_TAAV?$array@M$0DO@@2@$$QAV?$_Range_closure@V_Drop_fn@views@ranges@std@@H@12@@Z", target = 0x0045F010 },
+  { offset = 0xD3, type = "REL32", symbol = "?__autoclassinit2@?$_Array_iterator@M$0DO@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0xDF, type = "REL32", symbol = "?begin@?$drop_view@V?$ref_view@V?$array@M$0DO@@std@@@ranges@std@@@ranges@std@@QBE@XZ", target = 0x0045FDA0 },
+  { offset = 0xE9, type = "REL32", symbol = "?__autoclassinit2@?$_Array_iterator@M$0DO@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0xF5, type = "REL32", symbol = "?end@?$drop_view@V?$ref_view@V?$array@M$0DO@@std@@@ranges@std@@@ranges@std@@QBE@XZ", target = 0x0045FF00 },
+  { offset = 0x100, type = "REL32", symbol = "??E?$_Array_iterator@M$0DO@@std@@QAEAAV01@XZ", target = 0x0045F480 },
+  { offset = 0x10D, type = "REL32", symbol = "??8?$_Array_const_iterator@M$0DO@@std@@QBE_NABV01@@Z", target = 0x00449400 },
+  { offset = 0x120, type = "REL32", symbol = "??D?$_Array_iterator@M$0DO@@std@@QBEAAMXZ", target = 0x0045F420 },
+  { offset = 0x128, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x12D, type = "REL32", symbol = "?signed_unit@GameRandom@th20@@QAEMXZ", target = 0x004298E0 },
+  { offset = 0x13D, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x16C, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x185, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x19B, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x1B0, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x1D4, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+  { offset = 0x1EC, type = "REL32", symbol = "??$?RH@_Drop_fn@views@ranges@std@@SA?A_P$$QAH@Z", target = 0x0045EFF0 },
+  { offset = 0x1FD, type = "REL32", symbol = "??$?UAAV?$array@UVector2@th20@@$0DN@@std@@V?$_Range_closure@V_Drop_fn@views@ranges@std@@H@ranges@1@@_Pipe@ranges@std@@YA?A_TAAV?$array@UVector2@th20@@$0DN@@2@$$QAV?$_Range_closure@V_Drop_fn@views@ranges@std@@H@12@@Z", target = 0x0045F010 },
+  { offset = 0x210, type = "REL32", symbol = "?__autoclassinit2@?$_Array_iterator@UVector2@th20@@$0DN@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x21C, type = "REL32", symbol = "?begin@?$drop_view@V?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@ranges@std@@@ranges@std@@QBE@XZ", target = 0x0045FE00 },
+  { offset = 0x226, type = "REL32", symbol = "?__autoclassinit2@?$_Array_iterator@UVector2@th20@@$0DN@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x232, type = "REL32", symbol = "?end@?$drop_view@V?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@ranges@std@@@ranges@std@@QBE@XZ", target = 0x0045FF20 },
+  { offset = 0x23D, type = "REL32", symbol = "??E?$_Array_iterator@UVector2@th20@@$0DN@@std@@QAEAAV01@XZ", target = 0x0045F4A0 },
+  { offset = 0x24A, type = "REL32", symbol = "??8?$_Array_const_iterator@UVector2@th20@@$0DN@@std@@QBE_NABV01@@Z", target = 0x00449400 },
+  { offset = 0x25D, type = "REL32", symbol = "??D?$_Array_iterator@UVector2@th20@@$0DN@@std@@QBEAAUVector2@th20@@XZ", target = 0x0045F420 },
+  { offset = 0x278, type = "REL32", symbol = "??A?$array@M$0DO@@std@@QAEAAMI@Z", target = 0x00414580 },
+  { offset = 0x289, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x2AB, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x2B6, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+  { offset = 0x2BE, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2C6, type = "DIR32", symbol = "?native_fifty_nine@th20@@3MB", target = 0x0056EE48 },
+  { offset = 0x2D4, type = "REL32", symbol = "??YAngle@th20@@QAEAAU01@M@Z", target = 0x004530C0 },
+  { offset = 0x2F2, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0DN@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+  { offset = 0x313, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0DN@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+  { offset = 0x32E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

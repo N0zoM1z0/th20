@@ -1,5 +1,7 @@
 # CORE/RECON-893/894 — original 827B polygon dynamics Boss source, 140B group tick strict exact and seven native iterator helpers whole exact
 
+> **Later CORE/RECON-901 result:** The original 827B dynamics Boss is now [whole strict exact](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). The earlier 513B/768B parent hypotheses below are historical.
+
 > **2026-10-30 correction (CORE/RECON-900):** Earlier 60-item bounds and the plain-loop hypothesis below are superseded by [original PE 62/61 `std::array` size evidence and C++20 `drop(1)` source](ANIMATION_POLYGON_DROP_VIEW_62_61_NATIVE_EXACT.md). Four additional 16B/93B native STL helpers are strict exact; the 827B parent remains NONEXACT. The 513B result below is a historical candidate, not current source.
 
 The original Japanese TH20 v1.00a Steamless image is locked by SHA-256

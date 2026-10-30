@@ -4,8 +4,8 @@
 Records whole original extent, uncommon native 8B ESP-alignment prologue,
 31 genuine E8 site/target pairs and 10 real PE HIGHLOW data field/target
 pairs, including two native loops, random clamp and copied closure point.
-The 827B source is *NONEXACT* and must never enter the strict manifest
-until a whole independently accepted canonical COFF replay succeeds.
+Original-PE-only checks do not establish source exactness. An independent
+whole-function 827B canonical replay now passes (CORE/RECON-901).
 The original 19B dereference uses a genuine float* return in EAX; its
 source is exact only after whole native canonical relocation replay.
 """
@@ -84,7 +84,7 @@ def verify():
  print('PASS immutable entire original 827B/237-native-x86 dynamic polygon Boss, real 8B stack realignment and RET4')
  print('PASS all 31 original E8 physical site/true absolute target pairs and 10 PE HIGHLOW field/target pairs')
  print('PASS two native iterator loops, original GameRandom randomizer, 4.0f limit and 59.0f angular denominator, point[1]->point[60] closure')
- print(f'PASS independent original upstream game E8 {caller_site:#x} from {upstream_head:#x}; entire 827B body remains NONEXACT')
+ print(f'PASS independent original upstream game E8 {caller_site:#x} from {upstream_head:#x}; native-only check; full 827B canonical acceptance independently verified')
  for name,(head,size,nins,target,site,caller) in LEAVES.items():
   ins=list(disasm.disasm(pe.raw_at(image,base,sects,head,size),head))
   assert len(ins)==nins and ins[-1].address+ins[-1].size==head+size

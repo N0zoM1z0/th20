@@ -1,5 +1,5 @@
-// Original 827B polygon segment dynamics: native range and storage semantics
-// reconstructed, but the complete parent remains NONEXACT pending COFF replay.
+// Original full 827B polygon dynamics Boss. Authentic two C++20 dropped
+// arrays, first vertex pointer, ordered index/Angle lifetimes and native ABI.
 // Original array sizes are independently exposed by the native 0x45FFE0
 // (62 floats) and 0x45FFF0 (61 Vector2) array-size accessors. The original
 // two C++20 drop(1) ranges use their library iterator/cursor call chains.
@@ -27,16 +27,13 @@ static_assert(offsetof(NativePolygonGeometryView, colors) == 0x1E8);
 static_assert(offsetof(NativePolygonGeometryView, radius) == 0x2DC);
 
 void NativePolygonSegmentSlot::update_polygon_dynamics_45f670(float limit) {
-    auto& geometry = *reinterpret_cast<NativePolygonGeometryView*>(this);
-    auto& radius = geometry.radius;
-    auto& perimeter = geometry.perimeter;
-    radius[0] = 0.0f;
-    const float first_radius = radius[0];
-    polar(*reinterpret_cast<Vector3*>(&perimeter[0]), 0.0f, first_radius);
+    reinterpret_cast<NativePolygonGeometryView*>(this)->radius[0] = 0.0f;
+    const float first_radius = reinterpret_cast<NativePolygonGeometryView*>(this)->radius[0];
+    Vector3* const initial_point = reinterpret_cast<Vector3*>(&reinterpret_cast<NativePolygonGeometryView*>(this)->perimeter[0]);
+    polar(*initial_point, 0.0f, first_radius);
 
-    // The original uses a dropped array range, not a handwritten 1..59 loop.
-    // It updates indices 1..61, preserving the original COMISS NaN behavior.
-    for (float& current_radius : radius | std::views::drop(1)) {
+    // Native std::views::drop(1) visits radii 1..61, with COMISS bounds.
+    for (float& current_radius : reinterpret_cast<NativePolygonGeometryView*>(this)->radius | std::views::drop(1)) {
         current_radius += native_polygon_random_5ba4c4.signed_unit() * native_two;
         if (current_radius > limit + native_four) {
             current_radius = limit + native_four;
@@ -45,16 +42,16 @@ void NativePolygonSegmentSlot::update_polygon_dynamics_45f670(float limit) {
         }
     }
 
-    Angle angle(0.0f);
     std::int32_t index = 1;
-    // 61 vertices, so the native drop view visits points 1..60.
-    for (Vector2& vertex : perimeter | std::views::drop(1)) {
+    Angle angle(0.0f);
+    // This second native drop view visits vertices 1..60.
+    for (Vector2& vertex : reinterpret_cast<NativePolygonGeometryView*>(this)->perimeter | std::views::drop(1)) {
         polar(*reinterpret_cast<Vector3*>(&vertex),
-              static_cast<float>(angle), radius[index]);
+              static_cast<float>(angle), reinterpret_cast<NativePolygonGeometryView*>(this)->radius[index]);
         angle += (native_pi * native_two) / native_fifty_nine;
         ++index;
     }
     // The original explicitly duplicates point 1 into the closure point 60.
-    perimeter[60] = perimeter[1];
+    reinterpret_cast<NativePolygonGeometryView*>(this)->perimeter[60] = reinterpret_cast<NativePolygonGeometryView*>(this)->perimeter[1];
 }
 } // namespace th20

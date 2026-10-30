@@ -22,8 +22,9 @@ not current facts when newer canonical units supersede them.
   and [independent target-role verifier](../scripts/verify-animation-draw-boss-source-roles.py).
   The [3,159B quad-submit parent](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
   and other render children are **already exact**, not the dispatcher.
-- **827B polygon dynamics — SOURCE-PRESENT, NONEXACT:**
-  [real 62/61 `std::array` dropped ranges, improved parent source and four strict 16B/93B helpers](ANIMATION_POLYGON_DROP_VIEW_62_61_NATIVE_EXACT.md);
+- **827B polygon dynamics — WHOLE STRICT EXACT:**
+  [entire 827B original Boss 31 E8/10 HIGHLOW full strict exact](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md);
+  [earlier 62/61 `std::array` dropped-range reconstruction and four strict 16B/93B helpers](ANIMATION_POLYGON_DROP_VIEW_62_61_NATIVE_EXACT.md);
   [original 31-E8 /10-HIGHLOW graph and seven earlier strict range leaves](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md).
   Its [140B native parent tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md)
   **is** independently whole exact.
@@ -61,8 +62,8 @@ not current facts when newer canonical units supersede them.
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
 **Current verified checkpoint:** **1,297 source-present mappings, 1,295
-strict units from 299 pinned object/receipt providers, and 637 distinct
-original authored whole-exact game functions /233,802 `.text` bytes**.
+strict units from 300 pinned object/receipt providers, and 638 distinct
+original authored whole-exact game functions /234,629 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
@@ -86,6 +87,10 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Entire original 827B polygon dynamics Boss whole strict exact
+
+- [CORE/RECON-901 — **827B/237-i386 original game dynamics whole strict exact**](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). All **31/31 original REL32 E8** plus **10/10 original DIR32 HIGHLOW** site and target roles independently attested, **663/663 nonrelocation and 827/827 complete original bytes** exact from natural MSVC C++20 after native array access and index-before-Angle lifetime reconstruction. This credits **one authored game Boss and 827 original `.text` bytes**; seven older iterator leaves and four 16B/93B helpers remain origin-unverified and excluded from authored code. Only the changed three-source include closure is cold-replayed; no full graph replay. Live **638 authored exact /234,629 native bytes**, 1,301 source-present /1,300 strict units /300 objects.
 
 ## Original polygon C++20 62/61 array bounds and four additional strict native helpers
 
