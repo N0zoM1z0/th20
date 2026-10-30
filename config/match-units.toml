@@ -22380,3 +22380,15 @@ relocations = [
   { offset = 0x548, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x54D, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
 ]
+
+# CORE/RECON-854: full original game-owned 78B cdecl XY rotate/translate.
+# Source independent 20 native i386 heads; zero original PE relocations.
+[units.animation_shape_xy_78]
+source = "src/AnimationShapeXY78.cpp"
+object = "build/core854-canonical/AnimationShapeXY78.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_shape_xy"]
+symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z"
+target_address = 0x00445AD0
+size = 78
+relocations = []

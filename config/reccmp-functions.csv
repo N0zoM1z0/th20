@@ -1252,3 +1252,4 @@ th20::AnimationDrawDetailedOwner::draw_simple_mode8,0x00441F00,function
 th20::AnimationDrawDetailedOwner::draw_strip_mode11,0x00445130,function
 th20::AnimationDrawDetailedOwner::draw_strip_mode9,0x00445350,function
 th20::AnimationDrawDetailedOwner::draw_shape_43ab20,0x0043AB20,function
+th20::animation_shape_xy,0x00445AD0,function
