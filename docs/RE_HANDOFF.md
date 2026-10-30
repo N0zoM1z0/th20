@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-848.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-849.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -14,9 +14,9 @@ NONEXACT labels are not current acceptance facts.**
 | Required SHA-256 | a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897 |
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
-| Source-present mapped methods | **1,248** across game, compiler and STL/library |
-| Complete native strict units | **1,249**, supplied by **267** distinct canonical MSVC objects with **267** matching receipts |
-| **Original authored-game whole-function exact** | **602 distinct physical game functions /206,008 original .text bytes** |
+| Source-present mapped methods | **1,249** across game, compiler and STL/library |
+| Complete native strict units | **1,250**, supplied by **268** distinct canonical MSVC objects with **268** matching receipts |
+| **Original authored-game whole-function exact** | **603 distinct physical game functions /206,100 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -42,6 +42,7 @@ of the entire game binary.
 | 0x00447800 Animation factory | **73B** exact with coherent class tag and SDL ABI, [native allocation proof](ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) |
 | 0x0044C9B0 Animation pool allocation | **298B** exact, [pool allocator](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) |
 | 0x0044CD00 Animation pool handle resolver | **456B /141 x86** whole strict exact, plus [159B/154B exact linked-list predicate and wrapper](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md), [original SprtID identity and 20 E8 proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md) |
+| 0x004DDFE0 Graphics depth-write enable leaf | **Whole 92B /30 native x86 strict exact**, one real `Graphics+DBC` state-1 game transition; actual `IDirect3DDevice9::SetRenderState(14,1)`, original AnimationPool `flush_draws` E8 and one independent original PE HIGHLOW `0x005C0028` global. **92/92B** full pinned COFF and canonical relocated bytes exact; [independent native and whole strict proof](GRAPHICS_DEPTH_WRITE_ENABLE_92_STRICT_EXACT.md). Its 2,136B Mesh caller is already separately whole exact; no duplicate code credit. |
 | 0x00443020 Animation Mesh mode24/25 render Boss | **Whole 2,136B /504 x86 native strict exact**, `0x130` frame /`ret 0xC`, all 32 original E8 and 20 true PE HIGHLOW physical sites/destinations, original D3DX XYZ matrix rotations, texture matrix/quad caching, original D3D9 FVF and texture stage state. **2,136/2,136B** canonical relocated code zero differences; [independent original and strict compiler proof](ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md). Three genuine 5,993B main Draw dispatcher E8 callers; enclosing parent remains NONEXACT. |
 | 0x004408B0 Animation whole 2,769B color/fog renderer Boss | **Whole 2,769B/683-i386 game-authored strict exact**, original `0x64` stack, 28 original E8 and 83 physical original HIGHLOW (78 body +5 after-RET pointers) all independently target/offset exact. Actual genuine 3B NOP, five original 2/2/1 case pointers and three physical entry heads, full **2,792/2,792 canonical relocated bytes zero differences**; [complete independent native/COFF proof](ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md). Enclosing 5,993B Draw dispatcher remains separate NONEXACT. |
 | 0x00440340 Animation Mode6 1,378B screen-projection preparation Boss | **Whole 1,378B/335-i386 game-authored native strict exact**, true 17 original E8 /21 PE HIGHLOW physical fields, actual [2][3][4] screen offset tensor, real D3DX viewport/project and four strict projected XY subcalls; [complete independent native/replay proof](ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md). Its 2,769B mode6 caller is separately whole strict exact; only the 5,993B enclosing dispatcher remains nonexact. |
