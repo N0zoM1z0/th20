@@ -28,6 +28,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
 
+## 3,159B renderer quad-submit Boss: complete 41 E8 /96 HIGHLOW source-role graph, still NONEXACT
+
+- [CORE/RECON-829 — original 3,159B/763-x86 quad submit and complete 41/96 original PE source-role histogram](ANIMATION_QUAD_RENDER_3159_41_E8_96_HIGHLOW_TYPED_SOURCE_FRONTIER.md) — independent original PE and pinned modern C++ COFF now agree on **41 E8 physical targets including one real compiler cookie**, all **96 in-body HIGHLOW target-class occurrences** (23/22/16/6/6 native quad x/y/color/U/V, 16 viewport, four half constants, device/cookie/switch), and five after-body code-pointer roles. The revised complete candidate is **3,212B/810 i386 +20B generated table**, vs actual **3,159B/763 x86**; **NONEXACT**, no new game credit. It repairs old global-alias, channel-field, gradient-store and viewport-cache codegen hypotheses and touches zero canonical exact units.
+
 ## Original full 1,163B/343-x86 game-owned four-mode D3D9 texture-stage renderer Boss strictly exact
 
 - [CORE/RECON-813 — entire 1,163B original game renderer blend-stage state machine strictly native exact](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md) — native 0x00446690 real 4-mode D3D9 `SetTextureStageState` six calls per mode, original 25 physical E8 (24 real Graphics getter +1 previously strict 192B flush), **29 actual PE HIGHLOW** (24 real Graphics global, 1 indirect switch operand, 4 original after-RET table pointers). Natural i386 MSVC source first produced 1188B false case-chain, then original four-mode jump table recovered by direct real owner-byte access and explicit `case 0/default`. **Entire 1,163/1,163 real code, 343/343 x86, 1 NOP+16 pointer table, 1,180/1,180 full compared bytes, 54/54 independent native relocation fields** strict from ONE new canonical source/object. No old shared header or unit changed, no all-graph replay. Live **588 original game exact /190,787B, 1,237 units/258 providers**; outer 3159B/5993B parent remains NONEXACT.

@@ -2,9 +2,10 @@
 """Whole native 3159B quad-submit parent: original E8 roles vs maintained C++.
 
 This is a deliberately NONEXACT source-coverage proof: it checks all native
-original game call identities/multiplicities against a complete isolated
-pinned-MSVC compile of the real candidate, without claiming original byte
-identity or inventing the compiler-generated security-cookie call.
+all original call identities/multiplicities AND the physical 96 in-body
+absolute-data relocation target histogram against a complete isolated
+pinned-MSVC compile of this still-NONEXACT game method. We do not conflate
+matching source call/data *roles* with identical x86, reloc offsets or ABI.
 """
 from collections import Counter
 import importlib.util
@@ -29,7 +30,7 @@ ORIG=module('original_quad',ROOT/'scripts/verify-animation-quad-submit-native.py
 HEAD=0x0043F6A0
 SIZE=3159
 SOURCE=ROOT/'src/AnimationQuadSubmit.cpp'
-OBJECT=ROOT/'build/core808-probe/AnimationQuadSubmit.obj'
+OBJECT=ROOT/'build/core829-probe/AnimationQuadSubmitRoles.obj'
 SYMBOL='?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z'
 ORIGINAL_CALLS={
     0x00445B80:4, 0x00437CD0:1, 0x004455C0:2, 0x00412730:1,
@@ -47,6 +48,7 @@ PROVISIONAL_SOURCE_IDENTITIES={
     'prepare_texture_states@AnimationQuadSubmitOwner':0x00445BA0,
     'select_render_color_mode@AnimationQuadSubmitOwner':0x00446690,
     'append_quad@AnimationQuadSubmitOwner':0x0043E9B0,
+    '__security_check_cookie':0x005429EE,
 }
 
 def verify():
@@ -64,7 +66,12 @@ def verify():
     assert 'AnimationDrawModeOwner::render_quad' in source
     assert all(f'case {i}:' in source for i in range(5))
     assert 'ANM_MUL4_COLOR_INTO' in source
-    assert 'renderer->append_quad(quad)' in source
+    assert 'renderer->append_quad(native_quad_vertices)' in source
+    assert 'union SourcePackedColor' in source
+    assert 'SourcePackedColor main_color;' in source
+    assert 'process_graphics.current_viewport->bounds_11c.x' in source
+    assert 'if (channel_mode==2)' in source
+    assert 'float snap_left' in source
     command=[str(ROOT/'scripts/compile-probe.sh'),str(SOURCE),str(OBJECT),
              '/nologo','/c','/std:c++20','/Od','/Ob0','/GS','/Gy','/Zl',
              '/arch:SSE2','/fp:precise','/sdl','/EHsc']
@@ -75,40 +82,96 @@ def verify():
         m=re.search(r'complete COFF contribution is (\d+) bytes',str(exc))
         assert m,exc
         generated,rel=COFF.object_function(OBJECT,SYMBOL,int(m.group(1)))
-    assert len(generated)==3816
+    assert len(generated)==3232
     marker=bytes.fromhex('c20800')
     assert generated.count(marker)==1
     end=generated.index(marker)+3
-    assert end==3796
+    assert end==3212
     instructions=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(generated[:end],HEAD))
-    assert len(instructions)==973 and instructions[-1].mnemonic=='ret'
+    assert len(instructions)==810 and instructions[-1].mnemonic=='ret'
+    assert instructions[-1].op_str=='8'
     assert instructions[-1].address+instructions[-1].size==HEAD+end
-    # Original switch is an after-body, .reloc-backed five pointer table.
-    # Candidate likewise stores five compiler DIR32 jump-table pointers but
-    # not the original instruction/table layout.
+    # Both the native and our candidate have 5 genuine 32-bit code pointer
+    # data words after the body. The physical original requires one NOP
+    # alignment byte before its table; the different candidate does not.
     pointers=[r for r in rel if r['type']=='DIR32' and end<=r['offset']<len(generated)]
     assert len(pointers)==5
-    assert [r['symbol'] for r in pointers]==['$LN43','$LN43','$LN47','$LN47','$LN50']
+    assert Counter(r['symbol'] for r in pointers).most_common(3)[-1][1]==1
+    assert sorted(Counter(r['symbol'] for r in pointers).values())==[1,2,2]
     assert len(generated)-end==20
+
+    # Verify the original physical game/code paths from real signed E8 fields,
+    # including the one compiler-generated security check. Its source target
+    # must arise from the compiler, NOT a fabricated game call in the C++.
     e8=[r for r in rel if r['type']=='REL32']
-    assert len(e8)==40
+    assert len(e8)==41
     observed=Counter()
     for r in e8:
         sym=r['symbol']
         hits={target for spelling,target in PROVISIONAL_SOURCE_IDENTITIES.items() if spelling in sym}
         assert len(hits)==1,('Unassigned/multiple source call roles',sym,hits)
         observed[next(iter(hits))]+=1
-    original_game=Counter(physical)
-    del original_game[0x005429EE]
-    assert sum(original_game.values())==40 and len(original_game)==10
-    assert observed==original_game,[(hex(t),observed[t],original_game[t])
-                                      for t in sorted(set(observed)|set(original_game))
-                                      if observed[t]!=original_game[t]]
-    print('PASS original complete quad Boss 3159B/763 true x86 and 41 original E8 roles (including 1 compiler security call)')
-    print('PASS maintained native C++ method exactly 40/40 original GAME E8 call roles across all 10 physical game target heads')
-    print('PASS original per-channel helper counts 24/24 saturation and 4/4 divide-255, 4/4 snap, 2/2 flush, 1/1 six-vertex append')
-    print('PASS candidate 5 C++ color-mode jump entry refs distinct from original true PE table, no false instruction counting')
-    print(f'NONEXACT candidate: {len(generated)}B COFF, {end}B executable/{len(instructions)} i386 +20B table; original {SIZE}B/{len(ops)} i386')
-    print('NONEXACT: original 96 original PE HIGHLOW body references vs different candidate relocations; missing true compiler cookie call')
+    assert observed==physical,[
+        (hex(t),observed[t],physical[t])
+        for t in sorted(set(observed)|set(physical))
+        if observed[t]!=physical[t]
+    ]
+    assert observed[0x005429EE]==1
+    assert sum(v for k,v in observed.items() if k!=0x005429EE)==40
+
+    # Independently retrieve each original PE .reloc HIGHLOW. Target values,
+    # multiplicities and the actual self-owned 5-pointer jump table are
+    # SOURCE-LEVEL EVIDENCE, but still not proof of equal instruction offsets.
+    base,sections=ORIG.original.parse_sections(image)
+    relocated=ORIG.original.physical_highlow(image,base,sections)
+    physical_sites=[at for at in relocated if HEAD<=at<HEAD+SIZE]
+    assert len(physical_sites)==96
+    real_values=Counter(struct.unpack('<I',ORIG.original.raw_at(
+        image,base,sections,at,4))[0] for at in physical_sites)
+    assert real_values==Counter(ORIG.HIGHLOW_DESTINATIONS)
+    real_values['jump_table']+=real_values.pop(ORIG.TABLE)
+    actual_dir32=[r for r in rel if r['type']=='DIR32']
+    body_fields=[r for r in actual_dir32 if r['offset']<end]
+    assert len(body_fields)==96 and len(actual_dir32)==101
+    candidate_values=Counter()
+    for row in body_fields:
+        sym=row['symbol']
+        addend=int(row['addend'])
+        if 'native_quad_vertices@' in sym:
+            target=0x005AEF10+addend
+        elif 'process_graphics@' in sym:
+            target=0x005C4D40+addend
+        elif '__real@3f000000' in sym:
+            target=0x0056E0EC+addend
+        elif '___security_cookie' in sym:
+            target=0x005B25C0+addend
+        elif sym.startswith('$LN'):
+            assert addend==0
+            target='jump_table'
+        else:
+            raise AssertionError(('unmapped compiler source DIR32 role',row))
+        candidate_values[target]+=1
+    assert candidate_values==real_values,[
+        (str(k),candidate_values[k],real_values[k])
+        for k in set(candidate_values)|set(real_values)
+        if candidate_values[k]!=real_values[k]
+    ]
+    assert candidate_values[0x005C5840]==16
+    assert candidate_values[0x005AEF20]==16
+    assert candidate_values[0x005AEF10]==23
+    assert candidate_values[0x005AEF14]==22
+    assert candidate_values[0x0056E0EC]==4
+    assert candidate_values['jump_table']==1
+    assert candidate_values[0x005B25C0]==1
+    assert sum(candidate_values.values())==96
+    assert len([x for x in relocated if ORIG.TABLE<=x<ORIG.TABLE+20])==5
+
+    print('PASS immutable original whole 3159B/763 i386 and all 41 real E8 targets (10 game targets +1 compiler security)')
+    print('PASS C++ 41/41 source/real E8 target identities and per-target multiplicities; actual compiler cookie restored naturally')
+    print('PASS complete original 96/96 in-body PE HIGHLOW source target MULTIPLICITIES (73 quad vertices, 16 viewport, 4 half, one device, cookie and switch)')
+    print('PASS five original after-RET PE code pointers and five generated C++ switch pointer roles; this is NOT exact table codegen')
+    print('PASS 24 saturating and 4 divide-255 real color calls, 4 snap, 2 flush, one 352B append, byte-channel stores across both gradient paths')
+    print(f'NONEXACT candidate: {len(generated)}B full COFF = {end}B executable/{len(instructions)} x86 +20B five-pointer data; original {SIZE}B/{len(ops)} i386 +1-byte pad/20B table')
+    print('NONEXACT: original physical E8/DIR32 OFFSETS/stack/branch code still differ; no parent original .text byte credit')
 
 if __name__=='__main__':verify()
