@@ -46,6 +46,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-951 — entire native 202B/58-x86 Vector3 epsilon normalization](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). Original immutable PE 2 E8 and one genuine HIGHLOW to native 0.01f, SSE3 lanes and real `comiss/jbe`, copy near zero versus three divisions. One natural C++20 source **202/202 strict exact**, **+202 authored game code bytes**; source-specific local replay only.
 
+## Original 2,884B/768-i386 particle-grid virtual Update Boss — SOURCE ABSENT
+
+- [CORE/RECON-953 — complete original native 2,884B update vtable entry, 99 E8 and 25 HIGHLOW](ANIMATION_PARTICLE_GRID_UPDATE_2884_ORIGINAL_NATIVE_FRONTIER.md). Original-only PE confirms precise ret at 0x45CEA3, 12 genuine INT3, six-entry vtable `0x56EC14` and frozen complete role fingerprints, including two original calls to the already accepted 202B vector normalization. **SOURCE ABSENT/NONEXACT**; no fabricated C++ source, strict unit or original authored-game credit.
+
 ## Original 51B particle-grid virtual event and folded Timer caller — NONEXACT frontier
 
 - [CORE/RECON-952 — complete original 51B event and 26B folded forwarding E8, native ctor ABI constraint](ANIMATION_PARTICLE_GRID_EVENT51_FOLDED_TIMER_ABI_FRONTIER.md). Original 51B/18-i386 native E8+0x25 -> 0x45C300 folded wrapper, original 172B ctor E8+0x9D -> 0x422D90 **Timer::Timer**, but direct Timer call targets wrong original 0x4297A0. A derived member yields a structural 51B event but a different synthetic 23B ctor symbol; rejected and archived. **NONEXACT/uncredited**, 8/8 affected previous strict units locally replay unchanged.
