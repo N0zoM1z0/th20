@@ -24908,3 +24908,18 @@ relocations = [
  { offset = 0x3C, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CED0 },
  { offset = 0x4F, type = "REL32", symbol = "?stop@Animation@th20@@QAEXXZ", target = 0x0044FD00 },
 ]
+
+# CORE/RECON-951: entire original 202B/58-i386 native Vector3 normalize.
+[units.animation_particle_grid_normalize_202]
+source = "src/AnimationParticleGridNormalize202.cpp"
+object = "build/core951-canonical/AnimationParticleGridNormalize202.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::normalize_vector3_45cf10"]
+symbol = "?normalize_vector3_45cf10@th20@@YAXAAUVector3@1@ABU21@@Z"
+target_address = 0x0045CF10
+size = 202
+relocations = [
+ { offset = 0x43, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+ { offset = 0x59, type = "REL32", symbol = "?absolute@geometry@th20@@YAMM@Z", target = 0x00445680 },
+ { offset = 0x67, type = "DIR32", symbol = "?native_0_01@th20@@3MB", target = 0x0056E1A0 },
+]

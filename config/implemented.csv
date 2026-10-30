@@ -1385,3 +1385,4 @@ th20::NativeParticleGridGroup::scalar_deleting_destructor
 th20::create_particle_grid_45d000
 th20::NativeParticleGridGroup::configure_45cfe0
 th20::NativeParticleGridGroup::slot_0c
+th20::normalize_vector3_45cf10
