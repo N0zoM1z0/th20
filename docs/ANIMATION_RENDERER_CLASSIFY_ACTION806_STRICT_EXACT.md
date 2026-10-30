@@ -81,7 +81,7 @@ Exact replay: 5/5 units, 4 cold objects
 Credits **one distinct original game-authored whole exact head/+806
 unique `.text` bytes**. Existing 347B/382B/394B/230B Renderer
 functions and folded Graphics helpers are not counted twice.
-The separate 280B Graphics mode setup, 5,993B Animation draw Boss,
+The separate 280B Graphics viewport setup is now [fully original strict exact](ANIMATION_GRAPHICS_VIEWPORT_SWITCH280_STRICT_EXACT.md) using the SAME actual Graphics class/symbol, in 6/6 affected-only regression. The 5,993B Animation draw Boss,
 508B/511B active-list update, 2,884B particle Update, and
 39,470B Animation VM remain independently unfinished. No full
 cold replay, whole-game link or playability claim.

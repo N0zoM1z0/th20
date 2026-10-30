@@ -102,6 +102,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-980 — full original 92B/30-i386 Renderer random next/publish method](ANIMATION_RENDERER_RANDOM_PULSE92_STRICT_EXACT.md). Native 5 E8 and two genuine PE HIGHLOW, actual original `RandomState::next` library E8 (not Timer), member state at+0x04 and last byte+0x14, process lock slot 10. Natural C++20 **92/92 original strict** when compiled `/GS` **without** original-absent EH frame, **+92 game-authored bytes** and no library double-credit.
 
+## Original complete 280B Graphics viewport setter and real 806B category caller ABI
+
+- [CORE/RECON-986 — full original 280B/66-i386 Graphics viewport selector](ANIMATION_GRAPHICS_VIEWPORT_SWITCH280_STRICT_EXACT.md). Native 0x16C ViewportState stride/Graphics+0xB00, actual D3D9 device SetViewport and 2 E8/4 PE HIGHLOW, *same* decorated C++ symbol as original 806B Graphics category Boss at four original E8 sites; **280/280 original strict, +280 authored bytes**. Shared type regression replays 806B/347B/382B/394B/230B 6/6 in 5 affected cold objects.
+
 ## Original entire 806B Renderer graphics mode classification Boss whole strict exact
 
 - [CORE/RECON-985 — complete 806B/211-i386 Renderer classification Graphics action](ANIMATION_RENDERER_CLASSIFY_ACTION806_STRICT_EXACT.md). Full original 22 E8 and 28 HIGHLOW, true Graphics + Pool physical globals, genuine +0x6C0 state and six native float-zero stores. Natural C++20 **806/806 original-bound strict**, **+806 authored game bytes**; original 347B/382B/394B/230B related chain still exact 5/5 with 4 affected cold objects.
@@ -381,9 +385,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,435 source-present mappings, 1,435
-strict units from 382 pinned object/receipt providers, and 704 distinct
-original authored whole-exact game functions /248,615 `.text` bytes**.
+**Current verified checkpoint:** **1,436 source-present mappings, 1,436
+strict units from 383 pinned object/receipt providers, and 705 distinct
+original authored whole-exact game functions /248,895 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

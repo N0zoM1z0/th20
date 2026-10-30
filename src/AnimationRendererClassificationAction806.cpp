@@ -6,18 +6,10 @@
 // remain separate original code, not inferred exact by this match.
 #include "NativeRendererClassificationOwner.hpp"
 #include "Graphics.hpp"
+#include "NativeGraphicsModeAction.hpp"
 #include "AnimationRuntimeOwner.hpp"
 #include <cstdint>
 namespace th20 {
-struct NativeGraphicsModeAction : Graphics {
-    void set_mode_44f720(int mode,int variant);
-    void set_mode_44f700(int mode,int variant);
-    void set_clip_41dce0(int value);
-    void reset_stage_4dda60();
-    void reset_view_4ddf80();
-    void set_render_state_4d9db0(int mode,int value);
-};
-static_assert(sizeof(NativeGraphicsModeAction)==sizeof(Graphics));
 
 void NativeRendererClassificationOwner::perform_classification_44f3d0(int identifier,int view_index) {
     if(identifier==0x29) {
