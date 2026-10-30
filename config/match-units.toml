@@ -16402,7 +16402,7 @@ symbol = "?interrupt_offset_7@AnimationHandle@th20@@QAEXH@Z"
 target_address = 4605200
 size = 29
 relocations = [
-  { offset = 18, type = "REL32", symbol = "?interrupt@AnimationHandle@th20@@QAEXH@Z", target = 4518096 },
+  { offset = 18, type = "REL32", symbol = "?update_descendants_event_44f0d0@AnimationHandle@th20@@QAEXH@Z", target = 4518096 },
 ]
 
 [units.dialogue_dtor]
@@ -25974,4 +25974,20 @@ relocations = [
  { offset = 0x0D3, type = "REL32", symbol = "?update@Animation@th20@@QAEHXZ", target = 0x0042B5D0 },
  { offset = 0x0E5, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
  { offset = 0x0FB, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+
+# CORE/RECON-990: 35B actual handle child-event/VM bridge;
+# fixes previous exact 29B Dialogue offset+7 caller symbol vs distinct 35B.
+[units.animation_handle_event_descendants_bridge_35]
+source = "src/AnimationHandleEventDescendantsBridge35.cpp"
+object = "build/core990-canonical/AnimationHandleEventDescendantsBridge35.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationHandle::update_descendants_event_44f0d0"]
+symbol = "?update_descendants_event_44f0d0@AnimationHandle@th20@@QAEXH@Z"
+target_address = 0x0044F0D0
+size = 35
+relocations = [
+ { offset = 0x13, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x18, type = "REL32", symbol = "?update_descendants_44efc0@NativeEventDescendantPoolView@th20@@QAEXIH@Z", target = 0x0044EFC0 },
 ]

@@ -23,6 +23,8 @@ struct AnimationHandle {
     void set_position_forward(const Vector3& position);
     Animation* find_child(std::int32_t identifier, std::int32_t ordinal);
     void interrupt(std::int32_t event);
+    // Genuine distinct original 35B bridge to the 261B child-event/VM pass.
+    void update_descendants_event_44f0d0(std::int32_t event);
     void interrupt_offset_7(std::int32_t event);
     void retire();
     bool operator!=(std::uint32_t input) const;

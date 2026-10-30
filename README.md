@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,439
-source-present mappings**, **1,439 strict canonical native units** and
-**386 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **708 complete functions /
-249,525 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,440
+source-present mappings**, **1,440 strict canonical native units** and
+**387 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **709 complete functions /
+249,560 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -91,6 +91,7 @@ for the live inventory and consult the
 | **59B GameController-gated Renderer update** | Original entire **59B/18-i386 strict exact**, genuine current GameController original 3 PE HIGHLOW, two independently exact status checks, E8 to existing exact 150B Renderer gate. **+59 authored bytes**, 2/2 scoped replay. [Full proof](docs/ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md). |
 | **411B recursive Animation retirement queue** | Whole original **411B/116-i386 strict exact**: real self recursion, child list traversal and 57B staged `append` instead of distinct 76B free-list `insert_after`, all native 18 E8/2 HIGHLOW. **+411 game-authored bytes**. [Complete evidence](docs/ANIMATION_QUEUE_RETIREMENT411_STRICT_EXACT.md). |
 | **150B Renderer locked list-update wrapper** | Whole original **150B/44-i386 strict exact**, true slot9 lock and pool+0x6C8 first Renderer, native 6 E8/3 HIGHLOW, directly calls still NONEXACT 508B update Boss. **+150 authored game bytes**, 1/1 scoped replay. [Original proof](docs/ANIMATION_RENDERER_UPDATE150_STRICT_EXACT.md). |
+| **35B Handle event forwarding and 29B caller ABI correction** | Whole distinct **35B/15-i386 strict exact** at original `0x0044F0D0` → exact 261B child-event/VM traversal; **29B Dialogue offset+7** originally calls this 35B, not separate older 35B → 246B ordinary interrupt. Shared decorated symbol corrected, 8/8 scoped exact, **+35 authored bytes**. [Original PE evidence](docs/ANIMATION_HANDLE_EVENT_DESCENDANTS_BRIDGE35_STRICT_EXACT.md). |
 | **261B Animation child interrupt/VM visit** | Whole original **261B/81-i386 strict exact**, true 456B handle resolver, real child-links[1] iteration, native `Animation::interrupt(event)` followed by real **39,470B VM** E8 (VM still NONEXACT), **14 E8/2 HIGHLOW**, +261 game-authored bytes. Resolver dependency 5/5 scoped strict. [PE native proof](docs/ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md). |
 | **339B Renderer two-list Animation full retirement Boss** | Whole original **339B/106-i386 strict exact**, native primary/secondary list traversal, all 19 E8/4 HIGHLOW including two genuine 308B pool-retirement calls; **+339 game-authored bytes**. Strict scoped regression **5/5** across the Renderer and pool chain. [Native PE evidence](docs/ANIMATION_RENDERER_ALL_RETIRE339_STRICT_EXACT.md). |
 | **308B AnimationPool release Boss and two game-specific helpers** | Original whole **308B/80, 82B/22, 90B/27 i386 strict exact**, plus uncredited 23B STL 0x600-step index; original 11 E8/2 HIGHLOW in 308B parent. **+3 authored game heads/+480 bytes**, source-affected 4/4 replay. [Native original proof](docs/ANIMATION_POOL_RELEASE_308_AND_HELPERS_STRICT_EXACT.md). |

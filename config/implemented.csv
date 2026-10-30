@@ -1437,3 +1437,4 @@ th20::NativeGraphicsModeAction::set_mode_44f720
 th20::NativeGraphicsModeAction::set_mode_44f700
 th20::retire_all_renderer_44a3a0
 th20::NativeEventDescendantPoolView::update_descendants_44efc0
+th20::AnimationHandle::update_descendants_event_44f0d0

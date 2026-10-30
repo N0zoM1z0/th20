@@ -200,3 +200,11 @@ core161-canonical-build-recipe.json, core161-independent-bindings.json,
 core161-existing-role-reconciliation.json, core161-protocol-native-identity.json,
 strict result archives, public/whole-root test recipes and the retirement plan.
 They are relative to .analysis/; raw native evidence is not committed.
+
+> **CORE/RECON-990 update:** The actual 29B Dialogue `interrupt_offset_7` E8
+> at `0x00464521` targets the distinct 35B child-event Handle wrapper
+> `0x0044F0D0`, not the older 35B ordinary `AnimationHandle::interrupt`
+> at `0x0044EF90`. Both original 35B wrappers and their separate
+> 261B/246B callees are now explicitly distinguished, with corrected
+> C++ caller symbol and 8/8 scoped exact replay.
+> [Original evidence](ANIMATION_HANDLE_EVENT_DESCENDANTS_BRIDGE35_STRICT_EXACT.md).

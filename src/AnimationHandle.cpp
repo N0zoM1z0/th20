@@ -36,6 +36,8 @@ void AnimationHandle::interrupt(std::int32_t event) {
 }
 
 void AnimationHandle::interrupt_offset_7(std::int32_t event) {
-    interrupt(static_cast<std::int32_t>(static_cast<std::uint32_t>(event) + 7u));
+    // Native 0x00464510 E8 targets 0x0044F0D0 child-event traversal,
+    // not 0x0044EF90 AnimationHandle::interrupt/246B pool interrupt.
+    update_descendants_event_44f0d0(static_cast<std::int32_t>(static_cast<std::uint32_t>(event) + 7u));
 }
 } // namespace th20
