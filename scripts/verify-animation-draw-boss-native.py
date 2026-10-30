@@ -394,7 +394,7 @@ def verify() -> None:
           f"{len(native_calls)} E8 / {len(called)} callees, {len(original_body_relocs)} body HIGHLOW")
     print("PASS combined original dispatch tables: 80/80 .reloc pointers, "
           "main 49 and nested 31; return/padding and mode guards verified")
-    print("PARENT remains SOURCE-ABSENT and NONEXACT; exact child coverage never implies boss byte exactness.")
+    print("PARENT SOURCE-PRESENT but NONEXACT; native PE evidence and exact children never imply parent byte equality.")
 
 
 if __name__ == "__main__":

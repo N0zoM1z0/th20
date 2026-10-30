@@ -1,11 +1,11 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-833):**
+**Current next-agent reading order (CORE/RECON-834):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
-[49-mode Animation draw source](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md) ->
+[current 49+31 original-pointer Animation draw Boss and ABI frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_80_TABLE_ABI_FRONTIER.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
 The **live** verified status on October 30 is **1,239 source-present /1,240
@@ -29,6 +29,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original 5,993B Animation Draw Boss: exact 80-mode pointer structure and native backend ABI recovered (parent NONEXACT)
+
+- [CORE/RECON-834 — original physical 49+31 direct-table and native renderer ABI source frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_80_TABLE_ABI_FRONTIER.md) — real original PE has 49+31 PE HIGHLOW case pointers and all 123 original E8/43 target roles; maintainable one-method C++ now emits **49+31 genuine direct table pointers** with the original 17/29 alias partitions, **all 123 original E8 roles in original physical order** and **first 81 E8 exact instruction sites**, **32/32 original in-body HIGHLOW target roles with first 14 matching sites**. Corrected previously wrong free-fastcall ABI for original 2,769B mode6 (`ECX` renderer plus stack Animation*, RET 4) and two wrong seven-argument backend declarations (mode26/33 both native RET 0x20, real flags/color payloads); independent original PE validates **18 backend RET cleanup widths**. Candidate **6,085B/1,514 x86** +3B alignment and 80 direct pointers (**6,408B COFF**) remains **NONEXACT** versus full original **5,993B/1,501 x86**, frame/late-case lifetimes differ. Only one noncanonical source probe, **zero affected exact units or cold replay**. Historical CORE/RECON-800 5,141B compressed candidate is below and is not live; no original game exact credit added.
 
 ## Complete 20B round(float) native C++ library wrapper, strict exact; original Boss stays exact
 

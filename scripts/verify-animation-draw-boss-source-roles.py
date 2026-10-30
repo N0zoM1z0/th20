@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Attest full-source/provisional 5,993B Animation draw Boss native call-role coverage.
+"""Independently attest full 5,993B Animation Draw Boss source/PE roles.
 
-This is NOT a native-exact comparator. It compiles the maintained typed 49-mode
-source in one isolated probe object, proves that all 123 original native E8
-call destination identities and *multiplicities* are represented by its
-actual x86 COFF call relocations, and explicitly records the still-NONEXACT
-5,993-byte whole-body status. It never promotes the source to a strict unit.
+The maintained one-method C++ has two original physical switch tables:
+49 direct main case pointers and 31 nested pointers, each preserving native
+mode aliasing. The original 123 E8 call roles and *their complete order*,
+32 original in-body HIGHLOW targets and original thiscall stack contracts
+are checked against one pinned-MSVC source/object. Still NONEXACT: the whole
+parent executable bytes and relocated field sites do not yet match.
 """
 from collections import Counter
 import csv
@@ -33,7 +34,7 @@ def load_module(name: str, path: Path):
 COFF = load_module("native_compare", ROOT / "scripts/compare-coff-function.py")
 ORIGINAL = load_module("native_draw_boss", ROOT / "scripts/verify-animation-draw-boss-native.py")
 SOURCE = ROOT / "src/AnimationDrawBoss.cpp"
-OUTPUT = ROOT / "build/core797-probe/AnimationDrawBoss.obj"
+OUTPUT = ROOT / "build/core834-probe/AnimationDrawBoss.obj"
 SYMBOL = "?draw@AnimationPoolOwner@th20@@QAEHPAVAnimation@2@@Z"
 HEAD = 0x00443880
 SIZE = 5993
@@ -47,7 +48,7 @@ NAME_TARGETS = {
     "draw_quad_mode2": 0x0043F5C0,
     "draw_quad_mode4": 0x00440310,
     "draw_quad_mode5": 0x004413A0,
-    "animation_draw_mode6": 0x004408B0,
+    "draw_complex_mode6": 0x004408B0,
     "draw_simple_mode7": 0x00441C00,
     "draw_simple_mode8": 0x00441F00,
     "draw_strip_mode9": 0x00445350,
@@ -64,7 +65,7 @@ NAME_TARGETS = {
     "width@Animation": 0x004459D0,
     "height@Animation": 0x004459A0,
     "position@Animation": 0x004376E0,
-    "prepare_render_geometry": 0x00445BC0,
+    "bind_native_texture_state": 0x00445BC0,
     "??0Vector3": 0x00422E10,
     "@__security_check_cookie": 0x005429EE,
 }
@@ -92,7 +93,17 @@ def main():
 
     text = SOURCE.read_text()
     case_labels = [int(value) for value in re.findall(r"\bcase\s+(\d+)\s*:", text)]
-    assert len(case_labels) == 49 and sorted(case_labels) == list(range(49)), case_labels
+    expected_case_labels = Counter(range(49))
+    for mode in list(range(16,23)) + list(range(26,47)):
+        expected_case_labels[mode] += 1
+    assert Counter(case_labels) == expected_case_labels, Counter(case_labels)-expected_case_labels
+    assert text.count("switch (animation->base.flags.bytes_00.field_00)") == 2
+    assert "draw_complex_mode6(animation)" in text
+    assert "->bind_native_texture_state(animation)" in text
+    assert "draw_shape_43cd40(float, float, float, float," in text
+    assert "std::uint32_t, std::uint32_t, int, int);" in text
+    assert "draw_shape_43c4e0(float, float, float, float, float, int," in text
+    assert "ANIMATION_DRAW_BOSS" not in text  # no separate exactness branch
     assert "std::int32_t AnimationPoolOwner::draw(Animation* animation)" in text
     assert "graphics_disable_depth_writes(&process_graphics)" in text
     assert "animation->callback->draw()" in text
@@ -122,38 +133,41 @@ def main():
         if not match:
             raise
         compiled, relocations = COFF.object_function(OUTPUT, SYMBOL, int(match.group(1)))
-    # MSVC places jump tables AFTER the candidate executable RET in the
-    # very same COFF function contribution. Never disassemble that data as
-    # x86 instructions and count phantom opcodes (a past probe did this).
+    # A real C++ source produces one entire function and TWO genuine direct
+    # pointer tables after RET: 49 main cases +31 nested, *no* compressed
+    # index bytes. The 3B alignment is true compiler data, never x86.
     marker = bytes.fromhex("c204000f1f00")
     assert compiled.count(marker) == 1
-    marker_offset = compiled.index(marker)
-    code_end = marker_offset + 3
-    assert code_end == 0x1415
-    assert compiled[code_end:code_end + 3] == bytes.fromhex("0f1f00")
-    assert len(compiled) == 0x150C
-    body = compiled[:code_end]
-    code = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(body, HEAD))
-    assert code[-1].address + code[-1].size == HEAD + code_end
-    assert code[-1].mnemonic == "ret" and code[-1].op_str == "4"
-    assert len(code) == 1358, len(code)
-    # Candidate primary dispatch uses a compressed 17-pointer table and a
-    # distinct 49-byte index table, unlike the original direct 49-pointer
-    # table. Its inner switch uses a separate 31-pointer table. No table
-    # data receives original x86 instruction credit.
-    start = code_end + 3
-    after_primary = start + 17 * 4
-    after_indexes = after_primary + 49
-    after_alignment = after_indexes + 3
-    assert all(r["type"] == "DIR32" for r in relocations
-               if start <= r["offset"] < after_primary)
-    assert len([r for r in relocations if r["type"] == "DIR32"
-                and start <= r["offset"] < after_primary]) == 17
-    assert compiled[after_indexes:after_alignment] == bytes.fromhex("0f1f00")
-    assert len([r for r in relocations if r["type"] == "DIR32"
-                and after_alignment <= r["offset"] < len(compiled)]) == 31
-    assert len(compiled[after_primary:after_indexes]) == 49
-    assert after_alignment + 31 * 4 == len(compiled)
+    code_end = compiled.index(marker) + 3
+    assert code_end == 6085
+    assert compiled[code_end:code_end+3] == bytes.fromhex("0f1f00")
+    assert len(compiled) == 6408
+    code = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(compiled[:code_end], HEAD))
+    assert len(code)==1514
+    assert code[-1].address+code[-1].size == HEAD+code_end
+    assert code[-1].mnemonic=="ret" and code[-1].op_str=="4"
+    assert len(compiled)-code_end == 3+49*4+31*4
+    table_relocs=sorted((r for r in relocations if r["type"]=="DIR32" and
+                        r["offset"]>=code_end), key=lambda r:r["offset"])
+    assert len(table_relocs)==80
+    assert compiled[code_end+3:] == bytes(80*4)
+    assert [r["offset"] for r in table_relocs] == list(range(code_end+3,len(compiled),4))
+
+    # Original physical table values are independent original-PE evidence.
+    # The exact case entry positions may still differ, but the source's
+    # pointer alias partition for ALL 49+31 entries must match the original.
+    native_main=[struct.unpack("<I", COFF.pe_bytes_at(exe,ORIGINAL.MAIN_TABLE+4*i,4))[0]
+                 for i in range(49)]
+    native_nested=[struct.unpack("<I", COFF.pe_bytes_at(exe,ORIGINAL.SUB_TABLE+4*i,4))[0]
+                   for i in range(31)]
+    for native_table,candidate_table,distinct in (
+        (native_main,table_relocs[:49],17),
+        (native_nested,table_relocs[49:],29),
+    ):
+        assert len(set(native_table))==len({r["symbol"] for r in candidate_table})==distinct
+        assert all((native_table[i]==native_table[j]) ==
+                   (candidate_table[i]["symbol"]==candidate_table[j]["symbol"])
+                   for i in range(len(native_table)) for j in range(len(native_table)))
     actual_rels = [row for row in relocations if row["type"] == "REL32"]
     assert len(actual_rels) == 123, len(actual_rels)
     source_calls = Counter(source_call_target(str(row["symbol"])) for row in actual_rels)
@@ -162,6 +176,18 @@ def main():
         for address in sorted(set(native_calls) | set(source_calls))
         if native_calls[address] != source_calls[address]
     ]
+    # The first 81 E8 physical byte offsets and *all 123* E8 target ordering
+    # match exactly; later offsets still differ (parent NONEXACT).
+    physical_calls=[(inst.address-HEAD,
+           (inst.address+5+struct.unpack_from('<i',inst.bytes,1)[0])&0xffffffff)
+           for inst in native if len(inst.bytes)==5 and inst.bytes[0]==0xE8]
+    candidate_calls=[(int(r["offset"])-1,source_call_target(str(r["symbol"])))
+                     for r in actual_rels]
+    assert len(physical_calls)==len(candidate_calls)==123
+    assert [value for _,value in physical_calls] == [value for _,value in candidate_calls]
+    assert physical_calls[:81]==candidate_calls[:81]
+    assert physical_calls!=candidate_calls
+
     assert chosen_render_targets <= set(source_calls), chosen_render_targets - set(source_calls)
 
     # Retain crucial source-level ABI/data distinctions that Ghidra formerly
@@ -174,21 +200,50 @@ def main():
     base, sections = ORIGINAL.parse_sections(exe)
     reloc_sites = ORIGINAL.physical_highlow(exe, base, sections)
     assert len([r for r in reloc_sites if HEAD <= r < HEAD + SIZE]) == 32
+    # In-body native PE data-role histogram, independent of source
+    # declarations: 18 original 2.0f, five Graphics, four window-scale,
+    # two 0.5f, cookie and both true dispatch table references.
+    pe_data=Counter(struct.unpack('<I',ORIGINAL.raw_at(exe,base,sections,site,4))[0]
+                    for site in reloc_sites if HEAD<=site<HEAD+SIZE)
+    assert pe_data==Counter({
+        0x0056C8D0:18,0x005C4D40:5,0x005B8818:4,0x0056E0EC:2,
+        0x005B25C0:1,0x00444FEC:1,0x004450B0:1,
+    })
+    body_dirs=[r for r in relocations if r["type"]=="DIR32" and r["offset"]<code_end]
+    assert len(body_dirs)==32
+    observed_data=Counter()
+    for row in body_dirs:
+        sym=str(row["symbol"]);addend=int(row["addend"]);offset=int(row["offset"])
+        if "?native_two@" in sym:target=0x0056C8D0+addend
+        elif "?process_graphics@" in sym:target=0x005C4D40+addend
+        elif "?window_state@" in sym:target=0x005B6758+addend
+        elif sym=="__real@3f000000":target=0x0056E0EC+addend
+        elif sym=="___security_cookie":target=0x005B25C0+addend
+        else:
+            assert sym.startswith("$LN"),(hex(offset),sym)
+            target="table_main" if offset<0x400 else "table_nested"
+        observed_data[target]+=1
+    expected_data=pe_data.copy()
+    expected_data["table_main"]=expected_data.pop(0x00444FEC)
+    expected_data["table_nested"]=expected_data.pop(0x004450B0)
+    assert observed_data==expected_data,(observed_data,expected_data)
+    assert [row["offset"] for row in body_dirs[:14]]==[
+        0xA,0x7B,0xA2,0x23E,0x254,0x301,0x323,0x44E,
+        0x460,0x491,0x499,0x4AB,0x4B3,0x4E7,
+    ]
+
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),
                                              (ORIGINAL.SUB_TABLE, 31))
                for addr in range(t, t + n * 4, 4))
 
-    print("PASS original entire 5,993B/1,501-i386 Animation draw Boss native census")
-    print("PASS typed whole 49-mode main/nested C++ source compiles as ONE original-method candidate")
-    print("PASS exact all 123/123 E8 source call roles including each original native target's multiplicity (43/43 distinct)")
-    print("PASS all 29/29 physically selected renderer helper target roles from the original 49-mode CFG")
-    print("PASS original 49+31 PE jump entries, 32 original in-body HIGHLOW roles and color/scale call distinctions")
-    print(f"NONEXACT: proposed C++ executable body {len(body)}B/{len(code)} real x86, "
-          f"original {SIZE}B/{len(native)} real x86; no parent original code byte credit")
-    print("NONEXACT: compiler COFF function contribution 5,388B includes 247B "
-          "jump-table/index/alignment DATA, not 247B additional x86 instructions")
-    print("NONEXACT: compiler primary switch uses 17 pointer entries +49 index bytes, "
-          "original uses direct 49 real PE HIGHLOW pointer entries")
+    print("PASS original complete 5,993B/1,501-i386 draw Boss native PE census")
+    print("PASS full 49-main +31-nested pointer alias partitions, all 80/80 true direct COFF entries (no 49-byte compression index)")
+    print("PASS all 123 original E8 target roles in original physical sequence, 43 distinct target addresses")
+    print("PASS first 81/123 E8 call targets AND exact relative instruction sites")
+    print("PASS all 32 native PE in-body HIGHLOW target-role counts, first 14 body relocation sites aligned")
+    print("PASS mode6 native thiscall and two original eight-parameter draw helper receiver/stack roles are in source")
+    print(f"NONEXACT current pinned MSVC body {code_end}B/{len(code)} x86 vs original {SIZE}B/{len(native)}; entire COFF {len(compiled)}B including 3B NOP and 80 case pointers")
+    print("NONEXACT parent: remaining nested-case local lifetime and stack/branch/relocation offsets differ; no new game exact credit")
 
 
 if __name__ == "__main__":
