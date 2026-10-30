@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,386** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,386**, from **347** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **668 distinct function heads /241,100 original `.text` bytes** |
+| Source-present function mappings | **1,387** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,387**, from **348** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **669 distinct function heads /241,192 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -49,6 +49,7 @@ older local-variable names or assumptions.
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
 | Three original 75B `Vector2[60]/[64]/[61]` constructors | **ORIGINAL PE VERIFIED, SOURCE NONEXACT**. Native 75B/27 x86 each and five real `INT3` each; one genuine E8/3 HIGHLOW and independent ctor parent calls. Isolated MSVC `Vector2() noexcept` matches all three **80B structural contributions**, but real global ODR/class declaration remains unchanged (**230 strict provider/871-unit affected closure**). No false exact admission or game code credit. [Evidence and original verifier](ANIMATION_VECTOR2_ARRAY_60_64_61_NOEXCEPT_FRONTIER.md). |
+| 200-particle original 92B virtual stop `0x0045CEB0` | **92B/32-i386 strict exact**, original 200-element AnimationHandle resolve/conditional stop flow, 3 original E8 and real vtable 0x56EC14 slot, zero in-body HIGHLOW. Natural direct `resolve()` fixes unwanted 4B compiler local; class-pointer mangling verified. **+92 game-authored bytes**; 5/5 local replay. [Original/native proof](ANIMATION_PARTICLE_GRID_STOP92_STRICT_EXACT.md). |
 | 200-particle original 47B create wrapper `0x0045D000` and 31B Timer config `0x0045CFE0` | **47B/18-i386 +31B/12-i386 whole strict exact**, actual marker0x56EC30/process pool0x5B8894, real 156B factory and group Timer+0x1930 reset. Original two-argument RET8 config ignores both values. **+2 authored heads/+78 bytes**, affected-only 7/7 strict replay. [Original full proof](ANIMATION_PARTICLE_GRID_CREATE47_CONFIG31_STRICT_EXACT.md). |
 | 200-particle C++17 factory `0x0045C090` | **156B/46-i386 full strict exact**, true `0x1940` operator new, original `/sdl` class autozero, forwarded Animation and independently exact 172B ctor. All 4 native E8/2 HIGHLOW, physical 47B parent; ODR-consistent provisional float/pointer view at `+0x192C` restores original codegen, actual pointer lifecycle unknown. Template origin uncredited. [Full proof](ANIMATION_PARTICLE_GRID_FACTORY156_STRICT_EXACT.md). |
 | 0x1940-byte 200-particle native group ctor `0x0045C1F0` and deleting wrapper `0x0045C320` | **172B/46-i386 +49B/18-i386 strict exact** from one natural class, 9 ctor E8/one PE HIGHLOW to real 0x56EC14 vtable, 200 color and 2×200 Vector3, 800B float zero, 3 Vector3 and Timer. **+172 game-authored bytes**, generated 49B uncredited; 156B factory separate. [Native and COFF proof](ANIMATION_PARTICLE_GRID_GROUP_CTOR172_STRICT_EXACT.md). |

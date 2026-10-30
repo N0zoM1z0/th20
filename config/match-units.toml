@@ -24893,3 +24893,18 @@ size = 31
 relocations = [
  { offset = 0x13, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]
+
+# CORE/RECON-950: original 92B/32-i386 virtual 200-handle stop loop.
+[units.animation_particle_grid_stop_92]
+source = "src/AnimationParticleGridStop92.cpp"
+object = "build/core950-canonical/AnimationParticleGridStop92.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeParticleGridGroup::slot_0c"]
+symbol = "?slot_0c@NativeParticleGridGroup@th20@@UAEHXZ"
+target_address = 0x0045CEB0
+size = 92
+relocations = [
+ { offset = 0x35, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x3C, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CED0 },
+ { offset = 0x4F, type = "REL32", symbol = "?stop@Animation@th20@@QAEXXZ", target = 0x0044FD00 },
+]

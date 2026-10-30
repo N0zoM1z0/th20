@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The historical polygon-derived destructor source was NONEXACT; the **same original physical 20B folded destructor** has since become **whole strict exact** through the single-ODR ribbon-group constructor/destructor chain. A unique polygon-derived C++ ownership identity remains unproven; do not double-credit compiler bytes. The polygon 113B constructor and 49B deleting wrapper remain strict exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Original complete 92B particle grid virtual Animation stop method
+
+- [CORE/RECON-950 — full original 92B/32-i386 particle group 200-handle stop loop](ANIMATION_PARTICLE_GRID_STOP92_STRICT_EXACT.md). Original three physical E8, zero HIGHLOW, true 0x56EC14 vtable slot; source direct resolved-handle expression avoids 96B rejected extra local. Original COFF class-pointer return symbol corrected rather than reassigning target. **92/92 strict exact, +92 authored game bytes**, 5/5 affected-only replay.
+
 ## Original 47B particle-grid creation wrapper and 31B Timer configuration
 
 - [CORE/RECON-949 — complete 47B/18-i386 native particle grid entry and 31B/12-i386 group-specific Timer reset](ANIMATION_PARTICLE_GRID_CREATE47_CONFIG31_STRICT_EXACT.md). Two real wrapper E8/two HIGHLOW, original 156B factory/31B configuration, one native Timer assignment E8; **47/47 +31/31 strict exact, +2 authored game heads/+78 bytes**, 7/7 affected-only units.
@@ -229,9 +233,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,386 source-present mappings, 1,386
-strict units from 347 pinned object/receipt providers, and 668 distinct
-original authored whole-exact game functions /241,100 `.text` bytes**.
+**Current verified checkpoint:** **1,387 source-present mappings, 1,387
+strict units from 348 pinned object/receipt providers, and 669 distinct
+original authored whole-exact game functions /241,192 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

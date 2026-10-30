@@ -1385,3 +1385,4 @@ th20::NativeParticleGridGroup::scalar_deleting_destructor,0x0045C320,function
 "th20::DiagnosticAllocator::allocate_object<NativeParticleGridGroup,Animation*>",0x0045C090,function
 th20::create_particle_grid_45d000,0x0045D000,function
 th20::NativeParticleGridGroup::configure_45cfe0,0x0045CFE0,function
+th20::NativeParticleGridGroup::slot_0c,0x0045CEB0,function
