@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,277
-source-present mappings**, **1,277 strict canonical native units** and
-**294 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **630 complete functions /
-231,686 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,278
+source-present mappings**, **1,278 strict canonical native units** and
+**295 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **631 complete functions /
+232,890 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -63,6 +63,7 @@ for the live inventory and consult the
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
 | Animation closed five-vertex line-strip Boss | [Whole original 2,169B/533-x86 game line-strip renderer, 2,169/2,169B whole strict native exact](docs/ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md), real typed 5×20B vertices and native D3D9 `LINESTRIP=3` (not triangle fan). All 12 E8 and 17 HIGHLOW original site/destinations attested, no duplicate 78B callee/1,980B sibling or 5,993B main Draw parent credit. |
+| Animation polygon outline TRIANGLESTRIP Boss | [Whole original 1,204B/354-x86 game polygon stroke renderer 1,204/1,204 native strict exact](docs/ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md), original 20 E8/8 HIGHLOW physical source roles, first/last/closed polygon joins and authentic count-only persistent cursor advance despite 2×count generated vertices. No parent/leaf duplicate credit. |
 | Vector2 value-return compound leaf pair | [Whole original 72B multiply-assign and 77B add-assign strict native exact](docs/ANIMATION_VECTOR2_COMPOUND_VALUE_72_77_STRICT_EXACT.md): both mutate `Vector2` but return by VALUE, using the original hidden result pointer/`ret 8`; real direct callers from unfinished 1,204B polygon stroke Boss; 149 authored original native bytes credited once. |
 | Animation exact corner anchor data and rotated-corner Boss frontier | [Original 96B quad anchor `.rdata` now true source-defined and exactly identical; 1,486B rotated projection whole semantic source remains NONEXACT](docs/ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). The original real `Angle` post-constructor NOP at +0x41 is absent from natural 1,485B candidate despite matching all 13 call/9 data roles; no forged strict unit or code byte credit. |
 | Animation four-corner projection Boss | [Whole original 985B/233-x86 genuine 2×3×4 corner geometry and strict 985/985 native bytes](docs/ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md), original six E8/13 PE HIGHLOW roles and original 96B fixed mode-indexed table; enclosing game Draw parent remains NONEXACT. |

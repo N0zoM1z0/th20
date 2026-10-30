@@ -1275,3 +1275,4 @@ th20::AnimationDrawDetailedOwner::draw_vertex_line_43d1a0
 th20::NativeAnimationCornerProjector::project_rotated_corners_43ef20
 th20::Vector2::operator*=
 th20::Vector2::operator+=
+th20::AnimationDrawDetailedOwner::draw_polygon_outline_43d370

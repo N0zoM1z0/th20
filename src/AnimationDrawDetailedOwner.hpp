@@ -27,6 +27,12 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     std::int32_t draw_strip_mode11(Animation*, void*, int);  // 0x00445130
     std::int32_t draw_mesh_2425(Animation*, void*, int);     // 0x00443020
 
+    // Complete original native 1204B/354-x86 polygon outline strict exact;
+    // returns EAX=0/RET 0x18, reserves count+1 but publishes only count
+    // vertices to its mutable cursor after writing 2*count records.
+    std::int32_t draw_polygon_outline_43d370(std::int32_t count,
+        const Vector2* origin, const Vector2* points, const std::uint32_t* colors,
+        float thickness, std::uint8_t closed);
     // Whole original native 455B colored vertex renders: fan >=3, line >=2.
     // Both return EAX zero and RET 0x10, with a 0x20 native frame.
     std::int32_t draw_vertex_fan_43cb70(std::int32_t count, const Vector2* origin,
