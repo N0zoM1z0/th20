@@ -25467,3 +25467,17 @@ symbol = "?size@?$array@PAVAnimationFile@th20@@$0CK@@std@@QBEIXZ"
 target_address = 0x00450870
 size = 16
 relocations = []
+
+# CORE/RECON-975: original 30B/13-i386 wide-format C ABI wrapper;
+# source ownership generic/library and not game-authored byte credit.
+[units.animation_text_format_30]
+source = "src/AnimationTextFormat30.cpp"
+object = "build/core975-canonical/AnimationTextFormat30.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::format_text_447940"]
+symbol = "?format_text_447940@th20@@YAXPA_WPB_WPAD@Z"
+target_address = 0x00447940
+size = 30
+relocations = [
+ { offset = 0x15, type = "REL32", symbol = "__vswprintf_s", target = 0x00439880 },
+]
