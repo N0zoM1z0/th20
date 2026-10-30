@@ -41,7 +41,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // callee 0x0043CD40 ends in RET 0x20, eight stack arguments.
     void draw_shape_43cd40(float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);
-    void draw_shape_43b0e0(float, float, float, float, float,
+    // Original 2169B closed line-strip returns EAX=0 / RET 0x24, not void.
+    std::int32_t draw_shape_43b0e0(float, float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);
     void draw_shape_43e2c0(float, float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);

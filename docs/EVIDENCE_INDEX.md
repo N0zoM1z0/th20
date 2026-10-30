@@ -1,11 +1,13 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-855):**
+**Current next-agent reading order (CORE/RECON-856):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict original 2169B closed line-strip Boss](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) ->
+[whole strict original 2169B closed line-strip Boss](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) ->
 [whole strict original 1980B 4-vertex rectangle Boss](ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md) ->
 [whole strict original 78B shape XY transformation](ANIMATION_SHAPE_XY78_STRICT_EXACT.md) ->
 [whole strict original 1468B polygon ring generator](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md) ->
@@ -23,9 +25,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,255 source-present /1,256
-strict units from 274 object/receipt providers, 609 authored-game exact whole
-functions /215,119 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,256 source-present /1,257
+strict units from 275 object/receipt providers, 610 authored-game exact whole
+functions /217,288 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -44,6 +46,14 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
+
+- [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Whole 2,169B original closed LINESTRIP shape Boss strict exact
+
+- [CORE/RECON-856 — complete 2,169B/533-x86 Animation closed line-strip shape renderer strictly exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — original PE independently attests 12 native E8/17 HIGHLOW physical positions/true targets, 4 sign-mask/4 half/5 one globals, 0x68 original frame and 5×20B real ring vertices. The original D3D9 DrawPrimitiveUP type **3 LINESTRIP**, four primitives, is materially different from triangle fan type6; correcting this one real argument resolves the last nonrelocation byte at original +0x835, completing **2,053/2,053 nonrelocation bytes and 2,169/2,169 strict relocated bytes**. Original sibling rectangle 1,980B and helper XY 78B remain distinct; shared real int-return ABI corrected and affected already exact units scoped replayed. Live **610 whole authored exact game functions /217,288 game `.text` bytes**, **1,256 mapped /1,257 units /275 objects**. Enclosing 5,993B main Draw dispatcher remains NONEXACT; no full cold replay.
 
 ## Entire original 1,980B rectangle shape Boss now complete strict native exact
 

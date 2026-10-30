@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,255
-source-present mappings**, **1,256 strict canonical native units** and
-**274 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **609 complete functions /
-215,119 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,256
+source-present mappings**, **1,257 strict canonical native units** and
+**275 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **610 complete functions /
+217,288 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -62,6 +62,8 @@ for the live inventory and consult the
 | Area | Verified current state |
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
+| Animation closed five-vertex line-strip Boss | [Whole original 2,169B/533-x86 game line-strip renderer, 2,169/2,169B whole strict native exact](docs/ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md), real typed 5×20B vertices and native D3D9 `LINESTRIP=3` (not triangle fan). All 12 E8 and 17 HIGHLOW original site/destinations attested, no duplicate 78B callee/1,980B sibling or 5,993B main Draw parent credit. |
+| Animation closed five-vertex LINESTRIP Boss | [Entire 2,169B/533-x86 original closed line strip, 2,169/2,169 whole-native strict exact](docs/ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md). Real 5×20B vertex closure, 12 native E8/17 PE HIGHLOW exact positions/targets; correct original D3D9 primitive type3 (LINESTRIP), not a type6 fan. Enclosing 5,993B main Draw still NONEXACT. |
 | Animation four-vertex rectangle Boss | [Entire original 1,980B/486-i386 shape rectangle renderer and 1,980/1,980 whole strict exact native proof](docs/ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md), authentic signed 4-float anchor arrays, real 65,536×20B sprite pool guard, all 12 physical E8 and 16 PE HIGHLOW targets independently attested. Original 5,993B enclosing Draw dispatcher remains NONEXACT. |
 | Animation game shape XY transform leaf | [Original 78B/20-i386 custom Vector2 cdecl rotate-translate, entire 78/78B native strict exact](docs/ANIMATION_SHAPE_XY78_STRICT_EXACT.md). Original independently authenticates 11 direct E8 game callers across three large geometry Bosses; no original PE relocations and no parent code credit. |
 | Animation polygon ring/strip Boss | [Whole 1,468B/387-i386 original game shape-ring generator, 1,468/1,468B strict exact](docs/ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md). Genuine 65,536 ×20B original vertex pool, one real inner/outer cursor, ring angle/width calculation, full 11 E8 and 26 native PE HIGHLOW positions/targets. The corrected real int-return receiver ABI retains ten formerly exact affected units under scoped replay; enclosing 5,993B Animation Draw Boss remains NONEXACT. |
