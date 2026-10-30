@@ -1,16 +1,17 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-835):**
+**Current next-agent reading order (CORE/RECON-836):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
 The **live** verified status on October 30 is **1,239 source-present /1,240
-strict units from 260 object/receipt providers, 590 authored-game exact whole
-functions /196,671 original `.text` bytes**. Historical snapshot counts
+strict units from 260 object/receipt providers, 593 authored-game exact whole
+functions /196,722 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -29,6 +30,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Three tiny native Animation value getters: 51B game-authored exact origin promotion
+
+- [CORE/RECON-836 — all three 17B/9-x86 Animation rotation/scale accessors originally at 0x00437930/0x004379A0/0x004379C0](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) — independent locked PE proves three distinct **whole original 17B** custom Animation getters with native ECX thiscall and real float-field x87 FLD at +0x40/+0x54/+0x50; all three are called by **12 genuine E8 original game sites** across exact 5,388B geometry Boss, exact 660B transform and current source-present 5,993B Draw Boss. The old origin=unknown was cautious but not permanent. Fresh pinned existing-source **6/6 targeted canonical replay, one cold MSVC provider**, validates all three **17/17** and their existing exact parents, no source/manifest/header changes. Only **3 newly authored game credit rows /+51 original .text bytes** are admitted; existing 1,240 strict units/260 providers and 1,239 source mappings do **not** change. Live **593 game-authored exact functions /196,722 native original bytes**. Generic Vector3 ctor origins remain pending rather than assumed.
 
 ## 5,993B Animation Draw Boss: original executable length, i386 count and 0x204 stack recovered (still NONEXACT)
 

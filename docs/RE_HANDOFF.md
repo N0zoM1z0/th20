@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-835.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-836.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -16,7 +16,7 @@ NONEXACT labels are not current acceptance facts.**
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
 | Source-present mapped methods | **1,239** across game, compiler and STL/library |
 | Complete native strict units | **1,240**, supplied by **260** distinct canonical MSVC objects with **260** matching receipts |
-| **Original authored-game whole-function exact** | **590 distinct physical game functions /196,671 original .text bytes** |
+| **Original authored-game whole-function exact** | **593 distinct physical game functions /196,722 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -42,6 +42,7 @@ of the entire game binary.
 | 0x00447800 Animation factory | **73B** exact with coherent class tag and SDL ABI, [native allocation proof](ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) |
 | 0x0044C9B0 Animation pool allocation | **298B** exact, [pool allocator](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) |
 | 0x0044CD00 Animation pool handle resolver | **456B /141 x86** whole strict exact, plus [159B/154B exact linked-list predicate and wrapper](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md), [original SprtID identity and 20 E8 proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md) |
+| 0x00437930 /0x004379A0 /0x004379C0 Animation gameplay value getters | **3 ×17B =51B original game-authored strict exact**; original full nine-instruction thiscall FLD and 12 native E8 game-caller sites; previously strict but origin unreviewed, [independent authorship proof](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) |
 | Other completed original methods | [Geometry](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md), [Interpolation](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md), [game owner constructors](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md), [Laser lifetimes](LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md), [ECL argument/ScriptStack](ECL_ARGUMENT_TAGGED_STACK_2073_ORIGINAL_GAME_EXACT_ORIGIN.md); historical group sums are not additional current byte credit. |
 
 The [complete 3,159B quad submission Boss](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
