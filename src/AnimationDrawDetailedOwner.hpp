@@ -27,7 +27,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     std::int32_t draw_strip_mode11(Animation*, void*, int);  // 0x00445130
     std::int32_t draw_mesh_2425(Animation*, void*, int);     // 0x00443020
 
-    void draw_rect_439a00(float, float, float, float, float,
+    // Native original 1980B rectangle source is int-returning, RET 0x24.
+    std::int32_t draw_rect_439a00(float, float, float, float, float,
                            std::uint32_t, std::uint32_t, int, int);
     void draw_shape_43b960(float, float, float, float, int,
                             std::uint32_t, std::uint32_t);

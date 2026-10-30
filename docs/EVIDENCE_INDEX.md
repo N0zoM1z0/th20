@@ -1,11 +1,12 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-854):**
+**Current next-agent reading order (CORE/RECON-855):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict original 1980B 4-vertex rectangle Boss](ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md) ->
 [whole strict original 78B shape XY transformation](ANIMATION_SHAPE_XY78_STRICT_EXACT.md) ->
 [whole strict original 1468B polygon ring generator](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md) ->
 [whole strict original 4347B Mode8 six-order renderer Boss](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md) ->
@@ -22,9 +23,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,254 source-present /1,255
-strict units from 273 object/receipt providers, 608 authored-game exact whole
-functions /213,139 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,255 source-present /1,256
+strict units from 274 object/receipt providers, 609 authored-game exact whole
+functions /215,119 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -43,6 +44,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Entire original 1,980B rectangle shape Boss now complete strict native exact
+
+- [CORE/RECON-855 — whole native original 1,980B/486-i386 4-vertex rectangle renderer, strict exact](ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md) — independent original PE confirms 12 E8 game/native call site/targets, 16 original HIGHLOW fields (including 4 authentic 128-bit SSE sign-XOR mask owners), real `0x68` frame and two genuine four-float X/Y anchor arrays, original typed 65,536×20B pool and 4 typed vertices with full D3D9 submission. Natural C++ meaningful used anchor-local operands, three original modes per dimension and separate eight vertex XY updates yield **486/486 native instruction heads, 12/12 call sites, 16/16 data sites, 1,868/1,868 nonrelocation bytes, 1,980/1,980 whole relocated exact bytes**. Shared signature corrected to real int ABI; 11 affected previously exact units replayed individually; enclosing 5,993B Draw main remains NONEXACT. Live **609 authored game exact heads /215,119 native code bytes**, **1,255 source mappings /1,256 strict units /274 objects**; no full cold replay.
 
 ## Whole original 78B/20-i386 game shape XY transformation now strict exact
 

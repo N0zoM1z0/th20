@@ -1252,3 +1252,4 @@ th20::AnimationDrawDetailedOwner::draw_strip_mode11
 th20::AnimationDrawDetailedOwner::draw_strip_mode9
 th20::AnimationDrawDetailedOwner::draw_shape_43ab20
 th20::animation_shape_xy
+th20::AnimationDrawDetailedOwner::draw_rect_439a00
