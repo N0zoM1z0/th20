@@ -23364,3 +23364,57 @@ target_address = 0x0045F460
 size = 27
 relocations = [
 ]
+
+# CORE/RECON-900: original 62/61 std::array drop-view helper; stdlib origin, no authored-game credit.
+[units.animation_polygon_radius_size_16]
+source = "src/AnimationPolygonDynamics827.cpp"
+object = "build/core900-canonical/AnimationPolygonDynamics827.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<float,62>::size"]
+symbol = "?size@?$array@M$0DO@@std@@QBEIXZ"
+target_address = 0x0045FFE0
+size = 16
+relocations = []
+
+# CORE/RECON-900: original 62/61 std::array drop-view helper; stdlib origin, no authored-game credit.
+[units.animation_polygon_vertex_size_16]
+source = "src/AnimationPolygonDynamics827.cpp"
+object = "build/core900-canonical/AnimationPolygonDynamics827.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<Vector2,61>::size"]
+symbol = "?size@?$array@UVector2@th20@@$0DN@@std@@QBEIXZ"
+target_address = 0x0045FFF0
+size = 16
+relocations = []
+
+# CORE/RECON-900: original 62/61 std::array drop-view helper; stdlib origin, no authored-game credit.
+[units.animation_polygon_radius_drop_begin_93]
+source = "src/AnimationPolygonDynamics827.cpp"
+object = "build/core900-canonical/AnimationPolygonDynamics827.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::ranges::drop_view<float[62]>::begin"]
+symbol = "?begin@?$drop_view@V?$ref_view@V?$array@M$0DO@@std@@@ranges@std@@@ranges@std@@QBE@XZ"
+target_address = 0x0045FDA0
+size = 93
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??$?RABV?$ref_view@V?$array@M$0DO@@std@@@ranges@std@@@_Distance_fn@ranges@std@@SAHABV?$ref_view@V?$array@M$0DO@@std@@@12@@Z", target = 0x0045EF50 },
+  { offset = 0x24, type = "REL32", symbol = "??$min@H@std@@YAABHABH0@Z", target = 0x0045F140 },
+  { offset = 0x39, type = "REL32", symbol = "??$?RABV?$ref_view@V?$array@M$0DO@@std@@@ranges@std@@@_Cpo@_Begin@ranges@std@@SA?A_PABV?$ref_view@V?$array@M$0DO@@std@@@23@@Z", target = 0x0045EEF0 },
+  { offset = 0x4F, type = "REL32", symbol = "??H?$_Array_iterator@M$0DO@@std@@QBE?AV01@H@Z", target = 0x0045F4C0 },
+]
+
+# CORE/RECON-900: original 62/61 std::array drop-view helper; stdlib origin, no authored-game credit.
+[units.animation_polygon_vertex_drop_begin_93]
+source = "src/AnimationPolygonDynamics827.cpp"
+object = "build/core900-canonical/AnimationPolygonDynamics827.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::ranges::drop_view<Vector2[61]>::begin"]
+symbol = "?begin@?$drop_view@V?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@ranges@std@@@ranges@std@@QBE@XZ"
+target_address = 0x0045FE00
+size = 93
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??$?RABV?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@ranges@std@@@_Distance_fn@ranges@std@@SAHABV?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@12@@Z", target = 0x0045EFD0 },
+  { offset = 0x24, type = "REL32", symbol = "??$min@H@std@@YAABHABH0@Z", target = 0x0045F140 },
+  { offset = 0x39, type = "REL32", symbol = "??$?RABV?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@ranges@std@@@_Cpo@_Begin@ranges@std@@SA?A_PABV?$ref_view@V?$array@UVector2@th20@@$0DN@@std@@@23@@Z", target = 0x0045EF70 },
+  { offset = 0x4F, type = "REL32", symbol = "??H?$_Array_iterator@UVector2@th20@@$0DN@@std@@QBE?AV01@H@Z", target = 0x0045F4F0 },
+]

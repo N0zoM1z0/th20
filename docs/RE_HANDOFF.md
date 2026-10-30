@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,297** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,295**, from **299** pinned MSVC objects and **299** matching receipts |
+| Source-present function mappings | **1,301** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,299**, from **300** pinned MSVC objects and **300** matching receipts |
 | Credited original authored-game whole exact | **637 distinct function heads /233,802 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -47,7 +47,7 @@ older local-variable names or assumptions.
 | **Enemy ECL opcode dispatcher `0x0048C010`, 41,967B /8,896 x86** | **SOURCE-ABSENT.** Original 174 PE switch fields and large opcode CFG need a complete parent source; exact Laser children do not close it. [Original graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
-| **Polygon dynamics `0x0045F670`, 827B /237 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonDynamics827.cpp` (513B /137 x86 candidate). Original **31 E8 /10 HIGHLOW**, two counted-range loops, GameRandom radius clamp, 59-step polar geometry. **Seven directly related 19B–32B iterator helpers are strict exact**, but true range-construction/zip/sentinel code and bounds are still missing. [Original full native/semantic frontier](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md). |
+| **Polygon dynamics `0x0045F670`, 827B /237 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonDynamics827.cpp` (768B /225 x86 current candidate). Original **31 E8 /10 HIGHLOW**, two authentic `std::views::drop(1)` loops over `std::array<float,62>` and `std::array<Vector2,61>`, GameRandom radius clamp and 59-step polar geometry. **Seven iterator helpers plus four 16B/93B range-size/begin helpers are whole strict exact**; parent stack alignment, local lifetimes and byte positions remain wrong. [New native closure](ANIMATION_POLYGON_DROP_VIEW_62_61_NATIVE_EXACT.md), [earlier frontier](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md). |
 | **Polygon outline caller `0x0045FAA0`, 104B /36 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonMotionCall104.cpp` (102B /34 x86); original saves ESI and computes a stride before `Motion::position_ref`, whereas source computes it afterward. Eight source indexing variants did **not** fix it. Its 233B caller and 1,204B callee **are exact**, independently. [Caller frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md). |
 | **Rotated four-corner projection `0x0043EF20`, 1,486B /372 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationCornerRotated1486.cpp` (1,485B /371 x86). One genuine original NOP follows the Angle constructor; in-memory alignment is diagnostic **only**. The shared **96B 2×3×4 `.rdata` table is exact**. Do not fake compiler padding. [Original proof](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). |
 | **Player main `0x004F9C30`, 3,111B /783 x86** | **SOURCE-PRESENT, NONEXACT**, candidate 3,114B/783 x86; real register/stack/branch differences despite instruction-count agreement. [Operand frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md). |
@@ -58,12 +58,13 @@ older local-variable names or assumptions.
 
 ### High-value directions
 
-1. For the **827B polygon dynamics Boss**, the first five native
-   range helpers and their two pointer steppers already compile strict
-   exact. Reconstruct the remaining original C++ range factories,
-   counted end iterators, comparison and true loop bounds; preserve
-   native COMISS/NaN semantics. Its original **140B group tick caller
-   is already whole exact**, including a separate four-byte INT3 gap.
+1. For the **827B polygon dynamics Boss**, seven range helpers plus four `size()`/`begin()`
+   instantiations already compile strict exact. Both real dropped
+   ranges and the **62/61** array bounds are now recovered. Resolve
+   remaining **827B parent stack realignment, local lifetimes and code
+   positions** without artificial padding; preserve native COMISS/NaN
+   semantics. Its original **140B group tick caller is already whole
+   exact**, including a separate four-byte INT3 gap.
 2. For the **104B polygon wrapper**, recover the original pointer
    stride's register lifetime by real source expression/ABI evidence;
    changing signatures solely to manufacture instructions is invalid.

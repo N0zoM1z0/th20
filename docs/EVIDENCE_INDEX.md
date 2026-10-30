@@ -23,7 +23,8 @@ not current facts when newer canonical units supersede them.
   The [3,159B quad-submit parent](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
   and other render children are **already exact**, not the dispatcher.
 - **827B polygon dynamics — SOURCE-PRESENT, NONEXACT:**
-  [original 31-E8 /10-HIGHLOW graph and seven exact range leaves](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md).
+  [real 62/61 `std::array` dropped ranges, improved parent source and four strict 16B/93B helpers](ANIMATION_POLYGON_DROP_VIEW_62_61_NATIVE_EXACT.md);
+  [original 31-E8 /10-HIGHLOW graph and seven earlier strict range leaves](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md).
   Its [140B native parent tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md)
   **is** independently whole exact.
 - **104B Motion polygon wrapper and 1,486B rotated corner — NONEXACT:**
@@ -85,6 +86,10 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Original polygon C++20 62/61 array bounds and four additional strict native helpers
+
+- [CORE/RECON-900 — source-native C++20 `drop(1)` reconstruction plus four 16B/93B exact helper bodies](ANIMATION_POLYGON_DROP_VIEW_62_61_NATIVE_EXACT.md). The original 827B/237-instruction Boss has 31 real E8 and ten HIGHLOW; natural source now compiles 768B/225 x86/31 E8 versus previous 513B/137 x86/7 E8. **Parent NONEXACT.** Four whole helper bodies are fully strict exact, **218B of origin-unproven library code**, not new authored game credit; bounded one-source cold replay. Live 1,301 source, 1,299 strict units, 300 object providers, game exact still 637/233,802B.
 
 ## Polygon group native 140B tick Boss exact; 827B counted-range dynamic update source and seven exact iterator leaves
 

@@ -1296,3 +1296,7 @@ th20::NativePolygonRangeScalarIterator::next_45f480,0x0045F480,function
 th20::NativePolygonRangeVertexIterator::next_45f4a0,0x0045F4A0,function
 th20::NativePolygonScalarRange::begin_45ff00,0x0045FF00,function
 th20::NativePolygonVertexRange::end_45ff20,0x0045FF20,function
+"std::array<float,62>::size",0x0045FFE0,function
+"std::array<Vector2,61>::size",0x0045FFF0,function
+std::ranges::drop_view<float[62]>::begin,0x0045FDA0,function
+std::ranges::drop_view<Vector2[61]>::begin,0x0045FE00,function

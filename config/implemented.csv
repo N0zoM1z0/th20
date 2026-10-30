@@ -1295,3 +1295,7 @@ th20::NativePolygonRangeScalarIterator::next_45f480
 th20::NativePolygonRangeVertexIterator::next_45f4a0
 th20::NativePolygonScalarRange::begin_45ff00
 th20::NativePolygonVertexRange::end_45ff20
+"std::array<float,62>::size"
+"std::array<Vector2,61>::size"
+std::ranges::drop_view<float[62]>::begin
+std::ranges::drop_view<Vector2[61]>::begin
