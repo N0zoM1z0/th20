@@ -42,9 +42,13 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
-## Complete native polygon field-address accessor at original `0x0045ECA0`
+## Whole exact original 140B ribbon update Boss
 
-- [CORE/RECON-910 — complete 19B/9-i386 polygon-area receiver+0xB40 accessor strictly exact](POLYGON_SLOT_B40_ACCESSOR_19_STRICT_EXACT.md). The entire original body, zero E8/HIGHLOW, real 0x45E7A2/0x45EA7A physical callers and natural x86 C++17 19/19 byte match independently checked. One affected new source/object/unit cold-replayed; class identity and authored vs template provenance unproven; **zero authored-game credit**.
+- [CORE/RECON-911 — independent original 140B/46-i386 ribbon AnimationCallback update Boss whole strict exact](ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md). Six original physical E8/zero HIGHLOW, genuine vtable at 0x56EDDC and three 0x3C0-byte segments with Timer +0xB4C. **140/140 complete canonical code, newly +140 authored game bytes**, its real 19B array-end child remains 19/19 exact but uncredited; the 538B segment updater and 156B draw remain NONEXACT/source-absent. Only two changed providers/units cold recompiled and replayed.
+
+## Complete native ribbon array-end accessor at original `0x0045ECA0`
+
+- [CORE/RECON-910 — complete 19B/9-i386 three-segment ribbon array-end accessor strictly exact](POLYGON_SLOT_B40_ACCESSOR_19_STRICT_EXACT.md). The entire original body, zero E8/HIGHLOW, real 0x45E7A2/0x45EA7A physical callers and natural x86 C++17 19/19 byte match independently checked. One affected new source/object/unit cold-replayed; template authorship still unproven; typed array-end now confirmed; **zero authored-game credit**.
 
 ## Whole exact original C++ reference-forwarding constructor
 
@@ -76,9 +80,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,336 source-present mappings, 1,335
-strict units from 306 pinned object/receipt providers, and 640 distinct
-original authored whole-exact game functions /234,802 `.text` bytes**.
+**Current verified checkpoint:** **1,337 source-present mappings, 1,336
+strict units from 307 pinned object/receipt providers, and 641 distinct
+original authored whole-exact game functions /234,942 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

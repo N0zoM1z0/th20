@@ -1606,14 +1606,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045E670,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045E6D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045E730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045E770,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045E770,authored,Animation,authored,high,"CORE/RECON-911; docs/ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md; genuine polymorphic AnimationCallback native update vtable at 0x56EDDC plus real 3x0x3C0 dynamic segment loop and Timer, complete original x86/PE roles and fresh canonical 140/140 bytes"
 0x0045E800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EA20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EC10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045ECA0,unknown,Animation,review,pending,"CORE/RECON-910; docs/POLYGON_SLOT_B40_ACCESSOR_19_STRICT_EXACT.md; original whole 19B/9-i386 receiver+0xB40 pointer accessor and two parent PE E8 proven, canonical 19/19 natural C++17 exact; original owner class not attested"
+0x0045ECA0,unknown,Animation,review,pending,"CORE/RECON-910/911; docs/POLYGON_SLOT_B40_ACCESSOR_19_STRICT_EXACT.md; semantic correction from +0xB40 opaque field to actual one-past-end of 3x0x3C0 polygon array; whole 19/19 strict exact retained, likely generated array end helper; no authored credit"
 0x0045ECC0,unknown,CxxContainer,review,pending,"CORE/RECON-909; docs/CXX_FORWARD_REF_SLOT_42_STRICT_EXACT.md; full 42B original PE plus canonical i386 C++17 object exact, likely C++ reference-forwarding template but no proof of original class or authored origin"
 0x0045ECF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045ED60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -23931,14 +23931,32 @@ relocations = [
   { offset = 0x15, type = "REL32", symbol = "??$forward@AAI@std@@YAAAIAAI@Z", target = 0x0040B280 },
 ]
 
-# CORE/RECON-910: whole 19B native polygon owner +0xB40 address accessor.
-# Original class and authored-vs-template provenance still need review.
-[units.polygon_slot_b40_address_19]
-source = "src/PolygonNativeSlotB40.cpp"
-object = "build/core910-canonical/PolygonNativeSlotB40.obj"
+# CORE/RECON-910/911: actual three-segment 3*0x3C0 array one-past-end.
+# Original source class and authored-vs-template provenance still need review.
+[units.animation_ribbon_segment_array_end_19]
+source = "src/AnimationRibbonSegmentArrayEnd19.cpp"
+object = "build/core911-canonical/AnimationRibbonSegmentArrayEnd19.obj"
 profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
-functions = ["th20::NativePolygonSlotB40::value_address_45eca0"]
-symbol = "?value_address_45eca0@NativePolygonSlotB40@th20@@QAEPAIXZ"
+functions = ["th20::NativeRibbonSegmentArray::end_45eca0"]
+symbol = "?end_45eca0@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@XZ"
 target_address = 0x0045ECA0
 size = 19
 relocations = []
+
+# CORE/RECON-911: full original 140B/46-x86 game-authored ribbon update.
+[units.animation_ribbon_group_update_140]
+source = "src/AnimationRibbonGroupUpdate140.cpp"
+object = "build/core911-canonical/AnimationRibbonGroupUpdate140.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonGroup::update"]
+symbol = "?update@NativeRibbonGroup@th20@@UAEHXZ"
+target_address = 0x0045E770
+size = 140
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?changed_45d030@NativeRibbonGate@th20@@QAEHXZ", target = 0x0045D030 },
+  { offset = 0x28, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x33, type = "REL32", symbol = "?end_45eca0@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@XZ", target = 0x0045ECA0 },
+  { offset = 0x5D, type = "REL32", symbol = "?scale_x_value@Animation@th20@@QAEMXZ", target = 0x004379C0 },
+  { offset = 0x69, type = "REL32", symbol = "?update_ribbon_45e800@NativeRibbonSegment@th20@@QAEXM@Z", target = 0x0045E800 },
+  { offset = 0x82, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
