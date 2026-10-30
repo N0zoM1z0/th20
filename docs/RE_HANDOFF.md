@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,372** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,371**, from **334** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **659 distinct function heads /238,381 original `.text` bytes** |
+| Source-present function mappings | **1,373** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,372**, from **335** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **660 distinct function heads /238,546 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -48,7 +48,8 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
-| 64-point ribbon trail 520B update Boss `0x0045DF80` | **520B/149-i386 whole strict exact**, original 15 E8 + five HIGHLOW and actual alpha decay/64-point polar/cumulative geometry, RNG and Timer. **+520 authored game bytes**, 3/3 affected-unit cold replay; sibling 165B draw and config remain open. [Full PE and strict proof](ANIMATION_RIBBON_TRAIL_UPDATE520_STRICT_EXACT.md). |
+| 64-point ribbon trail draw Boss `0x0045E190` | **165B/53-i386 whole strict exact**, eight authentic E8/three HIGHLOW, true 0x56ED1C virtual draw slot, 64 color/geometry cells, Timer point count and real colored LINESTRIP backend. **+165 game-authored bytes**, 4/4 scoped exact replay. [Original/COFF proof](ANIMATION_RIBBON_TRAIL_DRAW165_STRICT_EXACT.md). |
+| 64-point ribbon trail 520B update Boss `0x0045DF80` | **520B/149-i386 whole strict exact**, original 15 E8 + five HIGHLOW and actual alpha decay/64-point polar/cumulative geometry, RNG and Timer. **+520 authored game bytes**, 3/3 affected-unit cold replay; 165B draw subsequently exact in CORE/RECON-938; configuration remains open. [Full PE and strict proof](ANIMATION_RIBBON_TRAIL_UPDATE520_STRICT_EXACT.md). |
 | 64-point ribbon trail group ctor `0x0045DED0` and deleting wrapper `0x0045DF40` | **103B/28-i386 +49B/18-i386 whole strict exact**, true 0x320 object and 0x56ED1C vtable, two independent 64-element arrays and Timer +0x30C. **+103 authored game bytes**; 49B generated wrapper uncredited; 520B update later accepted in CORE/RECON-937, 165B draw still open. [Complete original/COFF proof](ANIMATION_RIBBON_TRAIL_GROUP_CTOR103_STRICT_EXACT.md). |
 | 123B solo-ribbon palette Boss `0x0045DBF0` | **123B/39-i386 whole strict exact**, five real native E8/one HIGHLOW, three genuine NOPs, real `0x80FFFF80` first-cell override and original 32.0f radius. Original 182B parent call independently checked. **+123 authored game bytes**. [Complete native proof](ANIMATION_RIBBON_SOLO_PALETTE_123_STRICT_EXACT.md). |
 | 182B solo-ribbon config Boss `0x0045DB30` | **182B/57-i386 whole strict exact**, 7 original native E8/zero HIGHLOW, actual 0x3DC token, Timer+0x3CC, real 23B segment index and 123B palette child, Animation position/layer/style/flag. **+182 authored game bytes**; palette child separately accepted in CORE/RECON-935. [Whole native proof](ANIMATION_RIBBON_SOLO_CONFIG_182_STRICT_EXACT.md). |

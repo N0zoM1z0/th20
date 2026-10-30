@@ -1370,3 +1370,4 @@ th20::NativeRibbonSoloPaletteView::initialize_palette_45dbf0
 th20::NativeRibbonTrailGroup::NativeRibbonTrailGroup
 th20::NativeRibbonTrailGroup::scalar_deleting_destructor
 th20::NativeRibbonTrailGroup::update
+th20::NativeRibbonTrailGroup::draw

@@ -50,6 +50,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-922 — 252B/77-i386 ribbon-group configuration Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). Full original 11 E8/zero HIGHLOW and C++20 strict **252/252 native bytes**, genuine token/palette/Animation state; **+252 authored game bytes**. Separate original [23B segment index](ANIMATION_RIBBON_SEGMENT_AT23_STRICT_EXACT.md) is independently 23/23 strict exact, origin unknown/uncredited; 88B palette subsequently strict exact in CORE/RECON-923. Local replay only the two changed sources and actual header-dependent closure.
 
+## Entire original 165B 64-point ribbon LINESTRIP virtual Draw Boss strict exact
+
+- [CORE/RECON-938 — full original 165B/53-i386 trail-ribbon virtual draw](ANIMATION_RIBBON_TRAIL_DRAW165_STRICT_EXACT.md). Original true 0x56ED1C vtable slot, 8 E8/3 HIGHLOW actual PE fields, 64 colors/points, Timer current point count, whole strict natural C++20 **165/165 native relocated exact**, **+165 authored game bytes**, 4/4 local strict replay. 340B/382B configuration remains separate.
+
 ## Entire 520B original 64-point trail ribbon update Boss whole strict exact
 
 - [CORE/RECON-937 — original 520B/149-i386 64-point ribbon trail polymorphic update](ANIMATION_RIBBON_TRAIL_UPDATE520_STRICT_EXACT.md). Independent original PE all 15 E8 plus five HIGHLOW fields/targets, 64-frame Timer gate, alpha fade 16, signed/radial RNG and 5x+4 geometry, original Vector2 `+=` and angle/Timer paths. Full natural C++20 **520/520 relocated strict native exact**, 3/3 local units in two objects, **+520 authored game bytes**. 165B draw and two configuration Bosses remain independent.
@@ -181,9 +185,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,372 source-present mappings, 1,371
-strict units from 334 pinned object/receipt providers, and 659 distinct
-original authored whole-exact game functions /238,381 `.text` bytes**.
+**Current verified checkpoint:** **1,373 source-present mappings, 1,372
+strict units from 335 pinned object/receipt providers, and 660 distinct
+original authored whole-exact game functions /238,546 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
