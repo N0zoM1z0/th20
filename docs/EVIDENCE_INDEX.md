@@ -54,6 +54,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-961 — entire original 187B/56-i386 RendererPool Handle generation](ANIMATION_RENDERER_HANDLE_REGISTER_187_STRICT_EXACT.md). Six native E8/zero HIGHLOW and four real 72B/75B parent references, original `+0x07D40E88` counter post-increment/AND0xFFFF/zero guard, composed `(generation << 16)|(index&0xFFFF)` into `Animation+0x4C0`. Natural typed C++20 **187/187 strict exact**; four original renderer modes recompiled unchanged 5/5, **+187 authored game code bytes**. Giant pool owner remains non-allocating view.
 
+## Three original generation counter operators whole strict exact
+
+- [CORE/RECON-962 — original 39B/26B/23B counter operations](ANIMATION_RENDERER_GENERATION_COUNTER_39_26_23_STRICT_EXACT.md). Genuine postfix increment, mask, and highbits shift; four parent E8, no PE relocations, natural C++20 **39/39,26/26,23/23** and 187B parent **187/187**. Proven source code, original authorship under review and no additional authored-game byte credit.
+
 ## Original three RendererPool 20B/20B/38B selector/stride members whole strict exact
 
 - [CORE/RECON-960 — original mode20, renderer select38 and native index20](ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md). Real `AnimationPoolOwner` source view: preference +0x6C4, slots +0x6C8 and index stride0x48; whole **20/20+20/20+38/38 native exact** and original 922B parent still 922/922 after shared header reconciliation, **+58 authored game bytes** from game-specific preference/selector only (20B array indexing origin unknown/uncredited). 4/4 source-affected units locally replayed.
