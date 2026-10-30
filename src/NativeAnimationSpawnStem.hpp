@@ -8,6 +8,7 @@
 #include <memory_resource>
 namespace th20 {
 std::int32_t __cdecl native_stem_strlen_411180(const char* text);
+std::int32_t __cdecl native_stem_compare_bytes_44be00(const char* first, const char* second, std::int32_t length);
 bool __cdecl native_stem_equal_len_447200(const char* first,std::int32_t first_size,
                                              const char* second,std::int32_t second_size);
 struct NativeStemStorageView {
