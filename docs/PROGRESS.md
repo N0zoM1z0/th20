@@ -6,10 +6,10 @@ provisional until each boundary is reconciled with exact target control flow.
 | Measure | Count |
 | --- | ---: |
 | Tracked 1.00a function candidates | 6,928 |
-| Origin/boundary review pending | 6,245 |
+| Origin/boundary review pending | 6,244 |
 | Confirmed authored functions | 602 |
-| Classified exclusions | 81 |
-| Source-present mappings, all origins | 1,238 |
+| Classified exclusions | 82 |
+| Source-present mappings, all origins | 1,239 |
 | Source-present authored mappings | 595 |
 | Canonical exact functions | 590 |
 | Canonical exact authored bytes | 196,671 |

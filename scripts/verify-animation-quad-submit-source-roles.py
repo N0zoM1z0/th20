@@ -29,7 +29,7 @@ ORIG=module('original_quad',ROOT/'scripts/verify-animation-quad-submit-native.py
 HEAD=0x0043F6A0
 SIZE=3159
 SOURCE=ROOT/'src/AnimationQuadSubmit.cpp'
-OBJECT=ROOT/'build/core832-probe/AnimationQuadSubmitRoles.obj'
+OBJECT=ROOT/'build/core833-probe/AnimationQuadSubmitRoles.obj'
 SYMBOL='?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z'
 ORIGINAL_CALLS={
     0x00445B80:4, 0x00437CD0:1, 0x004455C0:2, 0x00412730:1,
@@ -37,7 +37,7 @@ ORIGINAL_CALLS={
     0x00446690:1, 0x0043E9B0:1, 0x005429EE:1,
 }
 PROVISIONAL_SOURCE_IDENTITIES={
-    'animation_snap_round':0x00445B80,
+    'round@@YAMM@Z':0x00445B80,
     'sprite_data@Animation':0x00437CD0,
     'flush_draws@AnimationPoolOwner':0x004455C0,
     'get_device@Graphics':0x00412730,
@@ -80,10 +80,10 @@ def verify():
     assert 'native_quad_vertices[1].v=animation->base.vectors_378[1].y' in source
     assert 'native_quad_vertices[2].v=native_quad_vertices[0].v+' in source
     assert 'native_quad_vertices[3].v=native_quad_vertices[1].v+' in source
-    assert 'float snap_left = animation_snap_round(native_quad_vertices[0].position.x) - 0.5f;' in source
+    assert 'float snap_left = std::round(native_quad_vertices[0].position.x) - 0.5f;' in source
     command=[str(ROOT/'scripts/compile-probe.sh'),str(SOURCE),str(OBJECT),
              '/nologo','/c','/std:c++20','/Od','/Ob0','/GS','/Gy','/Zl',
-             '/arch:SSE2','/fp:precise','/sdl','/EHsc']
+             '/arch:SSE2','/fp:strict','/sdl','/EHsc']
     subprocess.run(command,cwd=ROOT,check=True)
     try:
         generated,rel=COFF.object_function(OBJECT,SYMBOL,SIZE)
@@ -91,6 +91,20 @@ def verify():
         m=re.search(r'complete COFF contribution is (\d+) bytes',str(exc))
         assert m,exc
         generated,rel=COFF.object_function(OBJECT,SYMBOL,int(m.group(1)))
+    # The genuine <cmath> overload is naturally compiled from the same
+    # parent call source. It is a distinct library wrapper, not an authored
+    # game function or a fabricated trampoline.
+    round_code,round_relocs=COFF.object_function(OBJECT,'?round@@YAMM@Z',20)
+    assert len(round_code)==20 and len(round_relocs)==1
+    row=round_relocs[0]
+    assert (row['offset'],row['type'],row['symbol'],row['addend'])==(0xB,'REL32','_roundf',0)
+    pe_round=COFF.pe_bytes_at(image,0x00445B80,20)
+    round_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(pe_round,0x00445B80))
+    assert len(round_ins)==9 and round_ins[-1].mnemonic=='ret'
+    assert round_ins[5].mnemonic=='call' and round_ins[5].address==0x00445B8A
+    assert (round_ins[5].address+5+struct.unpack_from('<i',round_ins[5].bytes,1)[0])==0x00550060
+    assert all(x==y for i,(x,y) in enumerate(zip(pe_round,round_code)) if not 0xB<=i<0xF)
+
     assert len(generated)==3180
     marker=bytes.fromhex('c20800')
     assert generated.count(marker)==1
@@ -243,5 +257,6 @@ def verify():
     print('PASS 24 saturating and 4 divide-255 real color calls, 4 snap, 2 flush, one 352B append, byte-channel stores across both gradient paths')
     print(f'PASS original/probe whole {len(generated)}B = {end}B executable/{len(instructions)} i386 +1B NOP/20B five-pointer data')
     print('PASS all non-relocation bytes equal; canonical strict replay independently proves every relocated field')
+    print('PASS natural standard-library round(float) 20B/9 x86 wrapper with real E8 _roundf at 0x00550060; excluded from authored game code')
 
 if __name__=='__main__':verify()

@@ -21541,8 +21541,8 @@ relocations = [
 # CORE/RECON-832: complete original renderer quad submission (native 3159B/763 + 21B NOP/table).
 [units.animation_quad_submit_boss_3159]
 source = "src/AnimationQuadSubmit.cpp"
-object = "build/core832-canonical/AnimationQuadSubmit.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+object = "build/core833-canonical/AnimationQuadSubmit.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawModeOwner::render_quad"]
 symbol = "?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z"
 target_address = 0x0043F6A0
@@ -21567,22 +21567,22 @@ relocations = [
   { offset = 0x154, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x169, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x186, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
-  { offset = 0x190, type = "REL32", symbol = "?animation_snap_round@th20@@YAMM@Z", target = 0x00445B80 },
+  { offset = 0x190, type = "REL32", symbol = "?round@@YAMM@Z", target = 0x00445B80 },
   { offset = 0x1A3, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
   { offset = 0x1BC, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x1D1, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x1E2, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
-  { offset = 0x1EC, type = "REL32", symbol = "?animation_snap_round@th20@@YAMM@Z", target = 0x00445B80 },
+  { offset = 0x1EC, type = "REL32", symbol = "?round@@YAMM@Z", target = 0x00445B80 },
   { offset = 0x1FF, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
   { offset = 0x219, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x22E, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x23F, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
-  { offset = 0x249, type = "REL32", symbol = "?animation_snap_round@th20@@YAMM@Z", target = 0x00445B80 },
+  { offset = 0x249, type = "REL32", symbol = "?round@@YAMM@Z", target = 0x00445B80 },
   { offset = 0x25C, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
   { offset = 0x276, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x28B, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x29B, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
-  { offset = 0x2A5, type = "REL32", symbol = "?animation_snap_round@th20@@YAMM@Z", target = 0x00445B80 },
+  { offset = 0x2A5, type = "REL32", symbol = "?round@@YAMM@Z", target = 0x00445B80 },
   { offset = 0x2B8, type = "DIR32", symbol = "__real@3f000000", target = 0x0056E0EC },
   { offset = 0x2D2, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x2E6, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
@@ -21691,4 +21691,18 @@ relocations = [
   { offset = 0xC60, type = "DIR32", symbol = "$LN18", target = 0x0043FDCC },
   { offset = 0xC64, type = "DIR32", symbol = "$LN18", target = 0x0043FDCC },
   { offset = 0xC68, type = "DIR32", symbol = "$LN23", target = 0x0043FF70 },
+]
+
+# CORE/RECON-833: real 20B compiler-emitted global round(float) STL wrapper;
+# NOT an original authored-game credit. The parent owns its natural instantiation.
+[units.animation_std_round_float_20]
+source = "src/AnimationQuadSubmit.cpp"
+object = "build/core833-canonical/AnimationQuadSubmit.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["::round(float)"]
+symbol = "?round@@YAMM@Z"
+target_address = 0x00445B80
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "_roundf", target = 0x00550060 },
 ]

@@ -1,14 +1,14 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-832):**
+**Current next-agent reading order (CORE/RECON-833):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
-[strict exact full 3,159B quad parent](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md) ->
+[strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [49-mode Animation draw source](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,238 source-present /1,239
+The **live** verified status on October 30 is **1,239 source-present /1,240
 strict units from 260 object/receipt providers, 590 authored-game exact whole
 functions /196,671 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
@@ -29,6 +29,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Complete 20B round(float) native C++ library wrapper, strict exact; original Boss stays exact
+
+- [CORE/RECON-833 — complete original `0x00445B80` 20B global C++ `round(float)` overload](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) — original PE nine instructions with one E8 at +0xA to actual 123B CRT `_roundf` at `0x00550060`, and no PE HIGHLOW; source ownership corrected from provisional `th20::animation_snap_round` to the real ordinary `<cmath>` standard overload. Pinned `/fp:strict` (not `/fp:precise`) naturally emits the native **20/20B** symbol `?round@@YAMM@Z` and keeps the **3,180/3,180B quad parent** exact in a *single original C++ translation unit*. Two strict units/one refreshed canonical object, only affected-source replay, not whole cold replay. The wrapper is **library, excluded** from authored credit: current 1,239 source mappings, 1,240 strict units/260 objects, **590 game exact functions /196,671B**. The original parent evidence below remains valid; its source now uses the genuine standard overload.
 
 ## Whole original 3,159B renderer quad-submit Boss strictly native exact
 

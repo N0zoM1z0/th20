@@ -1237,3 +1237,4 @@ th20::AnimationQuadSubmitOwner::texture_for_sprite,0x00445A00,function
 "std::array<th20::AnimationFile*,42>::_Xran",0x00428C80,function
 th20::AnimationQuadSubmitOwner::select_render_color_mode,0x00446690,function
 th20::AnimationQuadSubmitOwner::bind_native_texture_state,0x00445BC0,function
+::round(float),0x00445B80,function

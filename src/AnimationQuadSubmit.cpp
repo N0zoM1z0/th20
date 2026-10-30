@@ -13,7 +13,6 @@
 #include <cstdint>
 
 namespace th20 {
-float __cdecl animation_snap_round(float); // real original 0x00445B80 20B wrapper
 std::uint8_t __cdecl multiply_color_128_saturating(std::uint8_t,std::uint8_t);
 std::uint8_t __cdecl multiply_color_255(std::uint8_t,std::uint8_t);
 
@@ -75,21 +74,22 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
     if (options&1) {
         // Keep the x87-return spill separate from the final rounded vertex
         // value: that is the actual original compiler lifetime and stack.
-        // Its original 20B runtime rounding callee is attested as a real
-        // native E8 destination, not counted as an exact game leaf here.
-        float snap_left = animation_snap_round(native_quad_vertices[0].position.x) - 0.5f;
+        // The natural <cmath> round(float) overload emits the original
+        // 20B E8-to-CRT wrapper under /fp:strict; it is library, not game
+        // authorship, and independently matched with this parent.
+        float snap_left = std::round(native_quad_vertices[0].position.x) - 0.5f;
 
         native_quad_vertices[2].position.x = snap_left;
         native_quad_vertices[0].position.x = snap_left;
-        float snap_top = animation_snap_round(native_quad_vertices[0].position.y) - 0.5f;
+        float snap_top = std::round(native_quad_vertices[0].position.y) - 0.5f;
 
         native_quad_vertices[1].position.y = snap_top;
         native_quad_vertices[0].position.y = snap_top;
-        float snap_right = animation_snap_round(native_quad_vertices[1].position.x) - 0.5f;
+        float snap_right = std::round(native_quad_vertices[1].position.x) - 0.5f;
 
         native_quad_vertices[3].position.x = snap_right;
         native_quad_vertices[1].position.x = snap_right;
-        float snap_bottom = animation_snap_round(native_quad_vertices[2].position.y) - 0.5f;
+        float snap_bottom = std::round(native_quad_vertices[2].position.y) - 0.5f;
 
         native_quad_vertices[3].position.y = snap_bottom;
         native_quad_vertices[2].position.y = snap_bottom;

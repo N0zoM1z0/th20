@@ -38,9 +38,21 @@ the entire original function. Their physical PE relocations at
 attested from the PE. The table, target code offsets and trailing NOP
 are **not** arbitrary padding or synthesized pointers.
 
+The latest CORE/RECON-833 source revision replaces the provisional
+`th20::animation_snap_round` declaration with natural `std::round(float)`
+and therefore emits the original separate **20B global `round(float)`
+standard library overload** from the same original renderer translation
+unit. Its real E8 to `_roundf` at `0x00550060` is separately strict exact
+but **library-excluded**, not additional game credit. See the
+[20B library exact proof](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md).
+The original 3,159B parent remains whole strict exact from the new common
+`/fp:strict` source profile with four real calls to the compiler-generated
+`?round@@YAMM@Z`. The original game code and data/call sites remain
+unchanged in this update.
+
 The pinned x86 MSVC 19.44.35211 compile from the maintained
 [`src/AnimationQuadSubmit.cpp`](../src/AnimationQuadSubmit.cpp) uses
-`/std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`
+`/std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:strict /sdl /EHsc`
 with the repository-locked environment and headers. The whole function
 produces a genuine ordinary COFF contribution of exactly **3,180B**:
 **3,159B /763 x86**, the native **one-byte NOP**, and the **20B** five-way
@@ -133,14 +145,17 @@ scripts/repo-python scripts/progress.py --check
 ```
 
 The preserved **canonical** compiler object and fully pinned source/include
-receipt are at `build/core832-canonical/AnimationQuadSubmit.obj` and its
+receipt are at `build/core833-canonical/AnimationQuadSubmit.obj` and its
 matching `.receipt.json`. The source-role diagnostic object and receipt are
-separate at `build/core832-probe/AnimationQuadSubmitRoles.*`. The original
+separate at `build/core833-probe/AnimationQuadSubmitRoles.*`. The original
 locked target, previous canonical objects and their receipts remain unchanged.
 No previously exact C++ source, shared header, compiler profile or original
 comparison target was changed: **previous exact-provider replay scope is zero**.
-One **new** source/object and one **new** 3,180B canonical unit were freshly
-built/replayed. No unfiltered all-graph cold replay was run.
+In CORE/RECON-832, one **new** source/object and one **new** 3,180B canonical
+unit were freshly built/replayed. Subsequent CORE/RECON-833 uses the same
+source to cold-build/replay **exactly two units in one canonical object**:
+this unchanged whole game parent and the newly accepted 20B library overload.
+No unfiltered all-graph cold replay was run.
 
 This adds **one whole original game-authored exact function /3,159 original
 .text bytes**, not the additional NOP/table bytes and not any of the ten

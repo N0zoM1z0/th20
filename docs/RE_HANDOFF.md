@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-832.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-833.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -14,8 +14,8 @@ NONEXACT labels are not current acceptance facts.**
 | Required SHA-256 | a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897 |
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
-| Source-present mapped methods | **1,238** across game, compiler and STL/library |
-| Complete native strict units | **1,239**, supplied by **260** distinct canonical MSVC objects with **260** matching receipts |
+| Source-present mapped methods | **1,239** across game, compiler and STL/library |
+| Complete native strict units | **1,240**, supplied by **260** distinct canonical MSVC objects with **260** matching receipts |
 | **Original authored-game whole-function exact** | **590 distinct physical game functions /196,671 original .text bytes** |
 | Whole game linked/playable | **No** |
 
@@ -44,6 +44,17 @@ of the entire game binary.
 | 0x0044CD00 Animation pool handle resolver | **456B /141 x86** whole strict exact, plus [159B/154B exact linked-list predicate and wrapper](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md), [original SprtID identity and 20 E8 proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md) |
 | Other completed original methods | [Geometry](GEOMETRY_ORIGIN_13360_EXACT_RECONSTRUCTION.md), [Interpolation](INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md), [game owner constructors](GAME_OWNER_CONSTRUCTION_6057_EXACT_ORIGIN_AUDIT.md), [Laser lifetimes](LASER_PARAMETERS_936_ORIGINAL_GAME_EXACT_ORIGIN.md), [ECL argument/ScriptStack](ECL_ARGUMENT_TAGGED_STACK_2073_ORIGINAL_GAME_EXACT_ORIGIN.md); historical group sums are not additional current byte credit. |
 
+The [complete 3,159B quad submission Boss](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
+is still whole strict exact. Its genuine `0x00445B80` callee has now been
+independently identified as the C++ `round(float)` standard-header overload:
+[20B/9-x86 library exact](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md),
+forwarding to native `_roundf` at `0x00550060`. The pinned shared
+`/fp:strict` compilation naturally emits both from
+`src/AnimationQuadSubmit.cpp`: **3,180/3,180B parent +20/20B library**, one
+canonical source object and **two scoped units**. The 20B library wrapper
+is excluded from **590 original authored game functions /196,671B**; it
+adds a source-present mapping and strict unit, not game byte credit.
+
 **11,110B ECL runtime and 41,967B Enemy ECL opcode dispatcher are
 different functions.** The 3,735B Bullet emitter is already whole exact,
 although the 12,140B Bullet command parent which it calls remains NONEXACT.
@@ -69,7 +80,8 @@ are not current. Verify each claim against the original PE and live ledgers.
 | **9. STL counted-range `0x0047A8D0` — 470B** | **LIBRARY, NONEXACT (not authored game credit).** Real original **470B /174 x86 /12 E8** vs modern C++17 **458B /170 x86 /11 E8**; real missing `std::is_constant_evaluated` call is a toolchain/STL issue. Do not fabricate a game call. [Library proof](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md). |
 
 The **3,159B quad submission parent is now entire whole-native strict exact**,
-not merely source-present with exact children. The 5,993B Animation draw
+not merely source-present with exact children. Its natural 20B `std::round(float)`
+callee is independently strict exact but library-excluded. The 5,993B Animation draw
 parent calling it remains separate and NONEXACT. See the
 [complete renderer parent proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md).
 
@@ -117,6 +129,11 @@ A previous real interpolation header edit affected **114 objects /542 old
 whole strict units**, all separately replayed with 25 original-PE-proven
 private compiler string symbol renames; that was a **historical change
 closure**, not a reason to replay it again on an unchanged graph.
+
+The latest `src/AnimationQuadSubmit.cpp` changes affect only its **one
+canonical provider/two exact units** under `/fp:strict`: the original 3,159B
+quad parent and 20B C++ library `round(float)` wrapper. No other canonical
+source, header, profile or original target changed; no unfiltered replay.
 
 For **documentation and ignored-cache cleanup only**, there are **zero
 native compiler-input changes and zero cold replay units**. Check target
