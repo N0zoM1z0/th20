@@ -3,6 +3,11 @@
 // original 0x56ECA4 vtable. Distinct from the three-segment 0x56EDDC group.
 #include "NativeRibbonPolygonGroup.hpp"
 namespace th20 {
+// Non-owning receiver ABI view of the original distinct solo segment fan.
+// This adds no constructed object or conflicting native segment storage.
+struct NativeRibbonSoloSegmentDrawView {
+    void draw_45dae0(const Vector3* position);
+};
 struct NativeRibbonSoloSegmentArray {
     std::array<NativeRibbonSegment,1> elements;
     NativeRibbonSegment* end_45dce0();

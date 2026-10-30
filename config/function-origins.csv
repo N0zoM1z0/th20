@@ -1577,7 +1577,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045D6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D6F0,authored,Animation,authored,high,"CORE/RECON-926; docs/ANIMATION_RIBBON_SOLO_UPDATE_140_END19_STRICT_EXACT.md; genuine second ribbon AnimationCallback game group one 0x3C0 segment, original real 0x56ECA4 vtable and six E8/zero HIGHLOW, whole pinned MSVC 140/140 exact"
 0x0045D780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045DA40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045DA40,authored,Animation,authored,high,"CORE/RECON-927; docs/ANIMATION_RIBBON_SOLO_DRAW_156_STRICT_EXACT.md; native virtual draw under actual 0x56ECA4 solo ribbon group vtable, original seven E8/two HIGHLOW and full 156B/53-i386 code from natural scoped C++20"
 0x0045DAE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DBF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

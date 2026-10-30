@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,359** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,358**, from **323** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **650 distinct function heads /236,388 original `.text` bytes** |
+| Source-present function mappings | **1,360** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,359**, from **324** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **651 distinct function heads /236,544 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -48,7 +48,8 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
-| Separate one-segment ribbon update Boss `0x0045D6F0` /end `0x0045DCE0` | **140B/46-i386 update and 19B/9-i386 end strict exact**, real distinct vtable 0x56ECA4, Timer +0x3CC and 0x3C0 stride. **+140 authored game bytes**, 19B template origin unknown. The 697B updater and 156B draw remain open. [Complete original proof](ANIMATION_RIBBON_SOLO_UPDATE_140_END19_STRICT_EXACT.md). |
+| Solo ribbon virtual draw Boss `0x0045DA40` | Complete **156B/53-i386 strict exact**, original independent 0x56ECA4 vtable, seven E8, two HIGHLOW, genuine +0x42 scope NOP, one 0x3C0 segment. **+156 authored game bytes**, separate 76B fan and 697B dynamics remain open. [Whole original/COFF proof](ANIMATION_RIBBON_SOLO_DRAW_156_STRICT_EXACT.md). |
+| Separate one-segment ribbon update Boss `0x0045D6F0` /end `0x0045DCE0` | **140B/46-i386 update and 19B/9-i386 end strict exact**, real distinct vtable 0x56ECA4, Timer +0x3CC and 0x3C0 stride. **+140 authored game bytes**, 19B template origin unknown. The 697B updater and 76B renderer remain open; 156B draw has now been independently accepted in CORE/RECON-927. [Complete original proof](ANIMATION_RIBBON_SOLO_UPDATE_140_END19_STRICT_EXACT.md). |
 | Native C++20 `std::fill_n` color/radius `0x0045D430`/`0x0045D360` | **123B/45-x86 and 202B/73-x86 whole strict exact**, authentic unsigned `jbe`, all 11 native E8/two HIGHLOW original roles and actual 31B callers. Template origins unknown, **zero authored game credit**. [Whole PE/COFF proof](ANIMATION_RIBBON_FILL_N_123_202_STRICT_EXACT.md). |
 | Ribbon color-array constructor `0x0045D4B0` | **75B/27-i386 + five real INT3 strict exact**, original 60×4-byte `AnimationHandle` array and 60B parent constructor call, all native EH/cookie/callback/E8 roles. 80/80 full contribution; compiler/template origin unverified and **zero authored game credit**. The separate 75B Vector2[60] ctor remains open. [Whole PE/COFF proof](ANIMATION_RIBBON_COLOR_ARRAY_75_STRICT_EXACT.md). |
 | **Ribbon segment palette `0x0045EC10`, 88B** | **88B/29-i386 whole strict exact**, two real 31B color/radius forwarding children 31/31 exact; +0x2C/+0x51 native NOP, three original E8/one physical HIGHLOW 32.0f, three real 252B caller E8. **+88 game authored bytes**; 31B helpers origin unknown/uncredited. [Full source/PE/COFF proof](ANIMATION_RIBBON_PALETTE_88_31_STRICT_EXACT.md). |

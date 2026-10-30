@@ -1,5 +1,11 @@
 # CORE/RECON-926 — original one-segment ribbon 140B update Boss and 19B array-end whole strict exact
 
+> **CORE/RECON-927 update:** The original one-segment **156B virtual draw**
+> is now [independently whole exact](ANIMATION_RIBBON_SOLO_DRAW_156_STRICT_EXACT.md).
+> Earlier nonexact draw comments below are historical; the 140B/19B
+> unit receipts and attribution are unchanged.
+
+
 Locked original Japanese TH20 1.00a Steamless executable, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The original `0x0045D6F0` is a **140B/46-i386** virtual update method

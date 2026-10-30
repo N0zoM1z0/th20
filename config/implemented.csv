@@ -1357,3 +1357,4 @@ th20::NativeRibbonRadiusFields::forward_radius_45dd00
 "std::fill_n<float*,uint32_t,float>"
 th20::NativeRibbonSoloGroup::update
 th20::NativeRibbonSoloSegmentArray::end_45dce0
+th20::NativeRibbonSoloGroup::draw
