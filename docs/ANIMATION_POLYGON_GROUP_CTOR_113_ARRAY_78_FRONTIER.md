@@ -1,5 +1,7 @@
 # CORE/RECON-904/905 — independent original 113B polygon group constructor and 78B array constructor frontier
 
+> **CORE/RECON-906 correction:** The original 78B three-segment `std::array` constructor is now [whole canonical strict exact](ANIMATION_POLYGON_SEGMENT_ARRAY_78_STRICT_EXACT.md). Its own five following original INT3 bytes are included in 83/83 full contribution comparison. The 113B group ctor and 75B Vector2 array ctor remain NONEXACT. Historical 78B constructor tests below describe the previous checkpoint.
+
 The original 113B/30-i386 group method at `0x0045F340` is invoked by the
 now whole-exact [156B C++17 allocation factory](ANIMATION_POLYGON_GROUP_FACTORY_156_NATIVE_EXACT.md).
 It is **not yet accepted as a canonical strict unit**. Its source and ABI

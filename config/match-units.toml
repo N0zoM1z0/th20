@@ -23839,7 +23839,7 @@ relocations = [
 [units.animation_polygon_segment_ctor_60]
 source = "src/AnimationPolygonSegmentCtor60.cpp"
 object = "build/core905-canonical/AnimationPolygonSegmentCtor60.obj"
-profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
 functions = ["th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot"]
 symbol = "??0NativePolygonSegmentSlot@th20@@QAE@XZ"
 target_address = 0x0045F3C0
@@ -23852,8 +23852,8 @@ relocations = [
 
 # CORE/RECON-905: complete native 75B body + authentic 5B INT3 gap.
 [units.animation_polygon_color_array_ctor_75]
-source = "src/AnimationPolygonSegmentCtor60.cpp"
-object = "build/core905-canonical/AnimationPolygonSegmentCtor60.obj"
+source = "src/AnimationPolygonSegmentArrayCtor78.cpp"
+object = "build/core906-canonical/AnimationPolygonSegmentArrayCtor78.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::array<th20::AnimationHandle,61>::array"]
 symbol = "??0?$array@UAnimationHandle@th20@@$0DN@@std@@QAE@XZ"
@@ -23865,4 +23865,22 @@ relocations = [
   { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x27, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
   { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
+
+# CORE/RECON-906: original 78B/27 x86 C++20 three-segment std::array ctor,
+# with five authentic following original INT3 bytes and all four PE roles.
+[units.animation_polygon_segment_array_ctor_78]
+source = "src/AnimationPolygonSegmentArrayCtor78.cpp"
+object = "build/core906-canonical/AnimationPolygonSegmentArrayCtor78.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::NativePolygonSegmentSlot,3>::array"]
+symbol = "??0?$array@UNativePolygonSegmentSlot@th20@@$02@std@@QAE@XZ"
+target_address = 0x0045F2B0
+size = 78
+compare_size = 83
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$array@UNativePolygonSegmentSlot@th20@@$02@std@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0NativePolygonSegmentSlot@th20@@QAE@XZ", target = 0x0045F3C0 },
+  { offset = 0x37, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
 ]

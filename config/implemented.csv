@@ -1329,3 +1329,4 @@ th20::native_polygon_std_range_00460020
 "th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,std::uint32_t>"
 th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot
 "std::array<th20::AnimationHandle,61>::array"
+"std::array<th20::NativePolygonSegmentSlot,3>::array"

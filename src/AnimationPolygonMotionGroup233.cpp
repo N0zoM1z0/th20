@@ -19,7 +19,7 @@
 namespace th20 {
 
 NativePolygonSegmentSlot* NativePolygonSegmentArray::at(std::int32_t index) {
-    return &segments[index];
+    return reinterpret_cast<NativePolygonSegmentSlot*>(this) + index;
 }
 NativePolygonSegmentSlot* NativePolygonSegmentArray::end() {
     return reinterpret_cast<NativePolygonSegmentSlot*>(

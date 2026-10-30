@@ -4,13 +4,16 @@
 #include "Timer.hpp"
 #include "Vector3.hpp"
 #include "NativePolygonSegmentSlot.hpp"
+#include <array>
 #include <cstddef>
 #include <cstdint>
 namespace th20 {
 class Animation;
 
 struct NativePolygonSegmentArray {
-    NativePolygonSegmentSlot segments[3];
+    // Native 78B C++20 STL constructor owns this original three-segment array.
+    std::array<NativePolygonSegmentSlot,3> segments;
+    NativePolygonSegmentArray();
     NativePolygonSegmentSlot* at(std::int32_t index);
     NativePolygonSegmentSlot* end();
 };

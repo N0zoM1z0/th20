@@ -1,5 +1,7 @@
 # CORE/RECON-905 — original polygon segment 60B constructor and 75B C++ array helper whole-native exact
 
+> **CORE/RECON-906 update:** The native [78B three-segment `std::array` constructor](ANIMATION_POLYGON_SEGMENT_ARRAY_78_STRICT_EXACT.md) is now whole strict exact. The 60B `noexcept` segment ctor uses its natural no-`/EHsc` profile; the 75B color-cell array ctor has moved to the separate normal `/EHsc` C++20 source provider. Both remain whole exact, with 45/45 affected units. Historical prior-source/provider counts below are checkpoint data only.
+
 The locked Japanese TH20 v1.00a Steamless target is SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The entire **game-owned 60B /20-i386 polygon segment constructor at

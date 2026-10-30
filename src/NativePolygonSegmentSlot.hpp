@@ -14,7 +14,7 @@ struct NativePolygonSegmentSlot {
     std::array<AnimationHandle,61> color_handles;
     std::array<float,62> radius;
 
-    NativePolygonSegmentSlot();
+    NativePolygonSegmentSlot() noexcept;
     void initialize_palette_45fc90(std::uint32_t diffuse_color);
     // Original complete 827B/237-x86 dynamic update: whole native strict exact.
     void update_polygon_dynamics_45f670(float limit);
