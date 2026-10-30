@@ -24532,3 +24532,35 @@ relocations = [
  { offset = 0x5F, type = "DIR32", symbol = "?native_polygon_radius32@th20@@3MB", target = 0x0056CD94 },
  { offset = 0x70, type = "REL32", symbol = "?forward_radius_45dd00@NativeRibbonRadiusFields@th20@@QAEXPBM@Z", target = 0x0045DD00 },
 ]
+
+# CORE/RECON-936: original 103B native 64-point ribbon group constructor.
+[units.animation_ribbon_trail_group_ctor_103]
+source = "src/AnimationRibbonTrailGroupCtor103.cpp"
+object = "build/core936-canonical/AnimationRibbonTrailGroupCtor103.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonTrailGroup::NativeRibbonTrailGroup"]
+symbol = "??0NativeRibbonTrailGroup@th20@@QAE@PAVAnimation@1@@Z"
+target_address = 0x0045DED0
+size = 103
+relocations = [
+ { offset = 0x0F, type = "REL32", symbol = "??0AnimationCallback@th20@@QAE@PAVAnimation@1@@Z", target = 0x00446B60 },
+ { offset = 0x18, type = "DIR32", symbol = "??_7NativeRibbonTrailGroup@th20@@6B@", target = 0x0056ED1C },
+ { offset = 0x23, type = "REL32", symbol = "??0?$array@UVector2@th20@@$0EA@@std@@QAE@XZ", target = 0x0045DE80 },
+ { offset = 0x31, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$0EA@@std@@QAE@XZ", target = 0x0045DE30 },
+ { offset = 0x4D, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+# CORE/RECON-936: native 49B generated scalar deletion; the physical 20B
+# ordinary destructor is already exact at 0x45C2A0, not double-listed.
+[units.animation_ribbon_trail_scalar_delete_49]
+source = "src/AnimationRibbonTrailGroupCtor103.cpp"
+object = "build/core936-canonical/AnimationRibbonTrailGroupCtor103.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonTrailGroup::scalar_deleting_destructor"]
+symbol = "??_GNativeRibbonTrailGroup@th20@@UAEPAXI@Z"
+target_address = 0x0045DF40
+size = 49
+relocations = [
+ { offset = 0x0B, type = "REL32", symbol = "??1NativeRibbonTrailGroup@th20@@UAE@XZ", target = 0x0045C2A0 },
+ { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]

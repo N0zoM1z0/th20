@@ -1592,8 +1592,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045DD90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DE30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045DED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045DF40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045DED0,authored,Animation,authored,high,"CORE/RECON-936; docs/ANIMATION_RIBBON_TRAIL_GROUP_CTOR103_STRICT_EXACT.md; genuine native 0x56ED1C polymorphic vtable, original 64 two-float/64 color arrays and 0x320 class, complete 103B native 4 E8 and 1 PE HIGHLOW, strict canonical 103/103"
+0x0045DF40,unknown,CxxRuntime,review,pending,"CORE/RECON-936; docs/ANIMATION_RIBBON_TRAIL_GROUP_CTOR103_STRICT_EXACT.md; whole native 49B scalar deleting wrapper, physical shared ordinary destructor 0x45C2A0 and true 0x320 sized delete, natural C++20 49/49; compiler origin review, no authored credit"
 0x0045DF80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045E190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045E240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

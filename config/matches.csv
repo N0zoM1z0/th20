@@ -656,3 +656,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0045DC70,th20::configure_ribbon_solo_group_45dc70,47,matching,100.00,animation_ribbon_solo_config_wrapper_47,CORE/RECON-933; docs/ANIMATION_RIBBON_SOLO_WRAPPER_47_STRICT_EXACT.md
 0x0045DB30,th20::NativeRibbonSoloGroup::configure_group_45db30,182,matching,100.00,animation_ribbon_solo_group_config_182,CORE/RECON-934; docs/ANIMATION_RIBBON_SOLO_CONFIG_182_STRICT_EXACT.md
 0x0045DBF0,th20::NativeRibbonSoloPaletteView::initialize_palette_45dbf0,123,matching,100.00,animation_ribbon_solo_segment_palette_123,CORE/RECON-935; docs/ANIMATION_RIBBON_SOLO_PALETTE_123_STRICT_EXACT.md
+0x0045DED0,th20::NativeRibbonTrailGroup::NativeRibbonTrailGroup,103,matching,100.00,animation_ribbon_trail_group_ctor_103,CORE/RECON-936; docs/ANIMATION_RIBBON_TRAIL_GROUP_CTOR103_STRICT_EXACT.md
