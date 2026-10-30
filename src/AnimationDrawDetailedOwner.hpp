@@ -35,7 +35,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     void draw_shape_43bc60(float, float, float, float, int, std::uint32_t);
     void draw_shape_43be80(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43a1c0(float, float, float, float, float,
+    // 240B original double-pass outline returns EAX zero, RET 0x24.
+    std::int32_t draw_shape_43a1c0(float, float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);
     // Native mode26 pushes Animation flag words +0x4AC AND +0x4A8;
     // callee 0x0043CD40 ends in RET 0x20, eight stack arguments.
@@ -55,7 +56,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
                             std::uint32_t, std::uint32_t);
     void draw_shape_43c780(float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43a2b0(float, float, float, float, float, float, int,
+    // 1174B original center+rounded ring returns EAX zero, RET 0x24.
+    std::int32_t draw_shape_43a2b0(float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     void draw_shape_43a750(float, float, float, float, float, float, int,
                             std::uint32_t);

@@ -22518,3 +22518,61 @@ relocations = [
   { offset = 0x5D3, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
   { offset = 0x637, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-858: entire original 240B/76-x86 game shape-outline wrapper.
+# Original two E8 and two true PE HIGHLOW physical site/target pairs.
+[units.animation_shape_outline_240]
+source = "src/AnimationShapeOutline240.cpp"
+object = "build/core858-canonical/AnimationShapeOutline240.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43a1c0"]
+symbol = "?draw_shape_43a1c0@AnimationDrawDetailedOwner@th20@@QAEHMMMMMIIHH@Z"
+target_address = 0x0043A1C0
+size = 240
+relocations = [
+  { offset = 0x5E, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x71, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x95, type = "REL32", symbol = "?draw_rect_439a00@AnimationDrawDetailedOwner@th20@@QAEHMMMMMIIHH@Z", target = 0x00439A00 },
+  { offset = 0xE4, type = "REL32", symbol = "?draw_rect_439a00@AnimationDrawDetailedOwner@th20@@QAEHMMMMMIIHH@Z", target = 0x00439A00 },
+]
+
+# CORE/RECON-859: whole original 1174B/303-i386 rounded fan Boss.
+# Native 9 E8 and 19 PE HIGHLOW physical sites/targets verified independently.
+[units.animation_shape_roundedfan_1174]
+source = "src/AnimationShapeRoundedFan1174.cpp"
+object = "build/core859-canonical/AnimationShapeRoundedFan1174.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43a2b0"]
+symbol = "?draw_shape_43a2b0@AnimationDrawDetailedOwner@th20@@QAEHMMMMMMHII@Z"
+target_address = 0x0043A2B0
+size = 1174
+relocations = [
+  { offset = 0x55, type = "DIR32", symbol = "?native_negative_pi@th20@@3MB", target = 0x0056E0F8 },
+  { offset = 0x62, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+  { offset = 0x6A, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x80, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0xD2, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x158, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x173, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1C1, type = "REL32", symbol = "?polar2@th20@@YAXAAUVector2@1@MM@Z", target = 0x00439330 },
+  { offset = 0x1DA, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x205, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x224, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x25D, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x278, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2B0, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2CB, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2F2, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x311, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x342, type = "REL32", symbol = "??$rotate_xy@UVector2@th20@@@th20@@YAXAAUVector2@0@ABU10@M@Z", target = 0x00458FA0 },
+  { offset = 0x3C5, type = "REL32", symbol = "?add_angles@th20@@YAMMM@Z", target = 0x00438600 },
+  { offset = 0x3D5, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x3DA, type = "REL32", symbol = "?graphics_disable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDF80 },
+  { offset = 0x3E3, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x3E8, type = "REL32", symbol = "?set_render_state@NativeRoundedGraphicsView@th20@@QAEHHH@Z", target = 0x004D9DB0 },
+  { offset = 0x3FC, type = "REL32", symbol = "?select_render_color_mode@AnimationQuadSubmitOwner@th20@@QAEXE@Z", target = 0x00446690 },
+  { offset = 0x401, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x406, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x425, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x42A, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+]
