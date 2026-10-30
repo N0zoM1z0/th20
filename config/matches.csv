@@ -683,3 +683,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0044CB80,th20::NativeAnimationRawPositionView::raw_position_44cb80,236,matching,100.00,animation_raw_world_position_236,CORE/RECON-965; docs/ANIMATION_RAW_WORLD_POSITION236_STRICT_EXACT.md
 0x0045D0A0,th20::NativeParticleAnimationAccess::age_45d0a0,25,matching,100.00,animation_particle_age_timer_25,CORE/RECON-967; docs/ANIMATION_PARTICLE_ANIMATION_ACCESS_25_19_STRICT_EXACT.md
 0x0045D0E0,th20::NativeParticleAnimationAccess::color_ref_45d0e0,19,matching,100.00,animation_particle_color_ref_19,CORE/RECON-967; docs/ANIMATION_PARTICLE_ANIMATION_ACCESS_25_19_STRICT_EXACT.md
+0x0044C7B0,th20::NativeAnimationHandleForwardView::find_child_handle_44c7b0,127,matching,100.00,animation_child_handle_forward_127,CORE/RECON-968; docs/ANIMATION_CHILD_HANDLE_LOOKUP108127_STRICT_EXACT.md
+0x0044C830,th20::NativeAnimationHandleLookupView::find_child_handle_44c830,108,matching,100.00,animation_child_handle_lookup_108,CORE/RECON-968; docs/ANIMATION_CHILD_HANDLE_LOOKUP108127_STRICT_EXACT.md

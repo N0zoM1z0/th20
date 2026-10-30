@@ -1410,3 +1410,5 @@ th20::native_stem_compare_bytes_44be00,0x0044BE00,function
 th20::NativeAnimationRawPositionView::raw_position_44cb80,0x0044CB80,function
 th20::NativeParticleAnimationAccess::age_45d0a0,0x0045D0A0,function
 th20::NativeParticleAnimationAccess::color_ref_45d0e0,0x0045D0E0,function
+th20::NativeAnimationHandleForwardView::find_child_handle_44c7b0,0x0044C7B0,function
+th20::NativeAnimationHandleLookupView::find_child_handle_44c830,0x0044C830,function

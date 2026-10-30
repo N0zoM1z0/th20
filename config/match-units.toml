@@ -25287,3 +25287,38 @@ symbol = "?color_ref_45d0e0@NativeParticleAnimationAccess@th20@@QAEAAIXZ"
 target_address = 0x0045D0E0
 size = 19
 relocations = []
+
+# CORE/RECON-968: two whole original 108B/127B AnimationHandle child-query
+# methods, real Animation/Handle class views and hidden return-object ABI.
+[units.animation_child_handle_lookup_108]
+source = "src/AnimationChildHandleLookup108127.cpp"
+object = "build/core968-canonical/AnimationChildHandleLookup108127.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationHandleLookupView::find_child_handle_44c830"]
+symbol = "?find_child_handle_44c830@NativeAnimationHandleLookupView@th20@@QAE?AUAnimationHandle@2@HH@Z"
+target_address = 0x0044C830
+size = 108
+relocations = [
+ { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x1F, type = "REL32", symbol = "?find_child@Animation@th20@@QAEPAV12@HH@Z", target = 0x0044C6B0 },
+ { offset = 0x43, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+ { offset = 0x4D, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+ { offset = 0x62, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.animation_child_handle_forward_127]
+source = "src/AnimationChildHandleLookup108127.cpp"
+object = "build/core968-canonical/AnimationChildHandleLookup108127.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationHandleForwardView::find_child_handle_44c7b0"]
+symbol = "?find_child_handle_44c7b0@NativeAnimationHandleForwardView@th20@@QAE?AUAnimationHandle@2@HH@Z"
+target_address = 0x0044C7B0
+size = 127
+relocations = [
+ { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x17, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+ { offset = 0x1F, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CED0 },
+ { offset = 0x2C, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+ { offset = 0x47, type = "REL32", symbol = "?find_child_handle_44c830@NativeAnimationHandleLookupView@th20@@QAE?AUAnimationHandle@2@HH@Z", target = 0x0044C830 },
+ { offset = 0x75, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

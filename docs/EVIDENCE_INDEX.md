@@ -74,6 +74,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-963 — complete 77B/29-i386 stem string comparison and 17B/8-i386 forwarding](ANIMATION_SPAWN_STEM_77_17_STRICT_EXACT.md). True original 922B E8 to 17B forward, 17B to 77B and original 77B E8 to length/Myptr/equality helpers, no PE HIGHLOW; natural **77/77+17/17 strict**, 922B parent unchanged in 3/3 affected replay; generic original PMR/library provenance unknown and no new game-authored credit.
 
+## Original full 108B/127B AnimationHandle child-query path whole strict exact
+
+- [CORE/RECON-968 — whole 108B/37 and 127B/45 original AnimationHandle child-query chain](ANIMATION_CHILD_HANDLE_LOOKUP108127_STRICT_EXACT.md). Native 9 E8/2 cookie HIGHLOW with genuine existing `Animation::find_child` 241B, Handle resolve, zero fallback and actual compiler-hidden `AnimationHandle` return. Source-owned zero-extra-storage classes; MSVC original **108/108+127/127 exact**, **+235 game-authored bytes**, scoped 2/2 replay.
+
 ## Two original 25B/19B particle Animation member getters whole strict exact
 
 - [CORE/RECON-967 — original 25B Timer+0x4D8 and 19B color+0x490 accessors](ANIMATION_PARTICLE_ANIMATION_ACCESS_25_19_STRICT_EXACT.md). Independently verified native exact Timer integer call to folded `0x0040FF90`, color-word reference, actual two E8 parent sites in 2,884B Update, no HIGHLOW. Natural C++20 **25/25+19/19 strict exact**, +2 game-authored heads/+44 bytes, still no 2,884B parent exact credit.
@@ -305,9 +309,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,411 source-present mappings, 1,411
-strict units from 362 pinned object/receipt providers, and 684 distinct
-original authored whole-exact game functions /243,399 `.text` bytes**.
+**Current verified checkpoint:** **1,413 source-present mappings, 1,413
+strict units from 363 pinned object/receipt providers, and 686 distinct
+original authored whole-exact game functions /243,634 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
