@@ -1424,3 +1424,4 @@ th20::NativeAnimationGeometryReleaseView::release_geometry_44c5f0,0x0044C5F0,fun
 th20::NativeAnimationPoolRecordView::belongs_to_pool_44d970,0x0044D970,function
 "std::array<th20::PooledAnimation,65536>::operator[]",0x004494D0,function
 th20::animation_renderer_update_4497d0,0x004497D0,function
+th20::NativeAnimationRetirePoolView::queue_retired_animation_44f840,0x0044F840,function
