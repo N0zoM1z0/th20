@@ -1328,3 +1328,5 @@ th20::native_polygon_std_range_0045fe90,0x0045FE90,function
 th20::native_polygon_std_range_00460000,0x00460000,function
 th20::native_polygon_std_range_00460020,0x00460020,function
 "th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,std::uint32_t>",0x0045F0A0,function
+th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot,0x0045F3C0,function
+"std::array<th20::AnimationHandle,61>::array",0x0045F210,function

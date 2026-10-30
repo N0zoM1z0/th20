@@ -19,11 +19,11 @@ extern const float native_two, native_four, native_pi, native_fifty_nine;
 
 struct NativePolygonGeometryView {
     std::array<Vector2, 61> perimeter;
-    std::array<std::uint32_t, 61> colors;
+    std::array<AnimationHandle, 61> color_handles;
     std::array<float, 62> radius;
 };
 static_assert(sizeof(NativePolygonGeometryView) == sizeof(NativePolygonSegmentSlot));
-static_assert(offsetof(NativePolygonGeometryView, colors) == 0x1E8);
+static_assert(offsetof(NativePolygonGeometryView, color_handles) == 0x1E8);
 static_assert(offsetof(NativePolygonGeometryView, radius) == 0x2DC);
 
 void NativePolygonSegmentSlot::update_polygon_dynamics_45f670(float limit) {

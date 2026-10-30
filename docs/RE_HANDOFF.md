@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,329** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,328**, from **301** pinned MSVC objects and **301** matching receipts |
-| Credited original authored-game whole exact | **638 distinct function heads /234,629 original `.text` bytes** |
+| Source-present function mappings | **1,331** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,330**, from **302** pinned MSVC objects and **302** matching receipts |
+| Credited original authored-game whole exact | **639 distinct function heads /234,689 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -82,6 +82,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | --- | --- |
 | Polygon native C++20 range closure | **27 additional whole strict exact C++20 STL-like helpers /811 original physical bytes**, spanning `std::array`, ref-view, iterators and shared `std::min`. **No authored game credit**; all origins remain review. [27-body proof](ANIMATION_POLYGON_DROP_CLOSURE_27_STRICT_EXACT.md). |
 | `0x0045F0A0` group allocation factory | **156B /46-i386 whole-native strict exact**, C++17 diagnostic allocator + true 0xBAC pointer-bearing class auto-zero, forward and constructor call; unknown library-template origin. [Complete proof](ANIMATION_POLYGON_GROUP_FACTORY_156_NATIVE_EXACT.md). |
+| `0x0045F3C0` polygon segment ctor | **60B /20-i386 whole strict exact** from natural 61-vertex and 61-word array construction plus 62-radius value initialization, and independent **75B/80B with real INT3** array wrapper (origin review). The **113B polymorphic group ctor, 78B array ctor and 75B vector ctor remain open**. [60B source proof](ANIMATION_POLYGON_SEGMENT_CONSTRUCTION_60_75_NATIVE_EXACT.md), [group ABI frontier](ANIMATION_POLYGON_GROUP_CTOR_113_ARRAY_78_FRONTIER.md). |
 | `0x0045F670` polygon dynamics update | **827B /237-i386 whole strict exact**, all **31 E8 and ten HIGHLOW** physical sites/targets; both original C++20 `drop(1)` arrays, 62/61 bounds, float clamp and closing point. [Complete original proof](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). |
 | `0x0053B5C0` ECL runtime tick | **11,110B** [exact](EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | `0x004818E0` Bullet emitter | **3,735B original body** and **3,832B compiler contribution** [exact](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md) |

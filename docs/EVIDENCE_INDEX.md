@@ -61,9 +61,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,329 source-present mappings, 1,328
-strict units from 301 pinned object/receipt providers, and 638 distinct
-original authored whole-exact game functions /234,629 `.text` bytes**.
+**Current verified checkpoint:** **1,331 source-present mappings, 1,330
+strict units from 302 pinned object/receipt providers, and 639 distinct
+original authored whole-exact game functions /234,689 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
@@ -87,6 +87,12 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Polygon 60B segment and 75B/80B array constructor whole strict exact; 113B/78B still open
+
+- [CORE/RECON-905 — 60B whole polygon segment constructor strict exact and 75B/80B original 4-byte cell array constructor strict exact](ANIMATION_POLYGON_SEGMENT_CONSTRUCTION_60_75_NATIVE_EXACT.md). Original PE independently authenticates three plus one E8 and all 3 HIGHLOW roles of the array helper; exact 60B C++20 source uses **61 Vector2, 61 four-byte cells, 62 radii**. 75B array constructor includes **five genuine original INT3 alignment bytes**, whole **80/80 comparison** with 75/75 actual function coverage. After changing shared segment header, only **4 actual affected providers /42 old strict units** cold rebuilt, **42/42 remain exact**, and a fifth new native provider replays 2/2. The game constructor adds **one authored original head /60 native bytes**; origin-unproven 75B helper does not add authored credit. Live 1,331 source /1,330 strict units /302 objects, game exact 639/234,689B.
+
+- [CORE/RECON-904/905 — original 113B polymorphic group ctor and 78B three-segment/75B Vector2 array constructor frontier](ANIMATION_POLYGON_GROUP_CTOR_113_ARRAY_78_FRONTIER.md). An original-PE-informed 113B C++ polymorphic derived constructor yields **113/113 structural candidate when `/EHsc` omitted** (93/93 nonrelocation), but disagrees with the accepted 156B C++17 factory's direct-pointer `/sdl` auto-zero protocol. Preserved all failed dirty source hypotheses in ignored `.analysis`; **no incorrect second class or invented pointer field admitted**, no 113B exact credit.
 
 ## Original polygon 156B C++17 allocation factory whole strict exact
 

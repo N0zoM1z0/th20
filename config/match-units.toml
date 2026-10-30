@@ -23834,3 +23834,35 @@ relocations = [
   { offset = 0x57, type = "REL32", symbol = "??$forward@I@std@@YA$$QAIAAI@Z", target = 0x0040B280 },
   { offset = 0x6B, type = "REL32", symbol = "??0NativePolygonMotionGroup@th20@@QAE@I@Z", target = 0x0045F340 },
 ]
+
+# CORE/RECON-905: complete native 60B body.
+[units.animation_polygon_segment_ctor_60]
+source = "src/AnimationPolygonSegmentCtor60.cpp"
+object = "build/core905-canonical/AnimationPolygonSegmentCtor60.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot"]
+symbol = "??0NativePolygonSegmentSlot@th20@@QAE@XZ"
+target_address = 0x0045F3C0
+size = 60
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0?$array@UVector2@th20@@$0DN@@std@@QAE@XZ", target = 0x0045F260 },
+  { offset = 0x19, type = "REL32", symbol = "??0?$array@UAnimationHandle@th20@@$0DN@@std@@QAE@XZ", target = 0x0045F210 },
+  { offset = 0x2E, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]
+
+# CORE/RECON-905: complete native 75B body + authentic 5B INT3 gap.
+[units.animation_polygon_color_array_ctor_75]
+source = "src/AnimationPolygonSegmentCtor60.cpp"
+object = "build/core905-canonical/AnimationPolygonSegmentCtor60.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,61>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$0DN@@std@@QAE@XZ"
+target_address = 0x0045F210
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$0DN@@std@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
