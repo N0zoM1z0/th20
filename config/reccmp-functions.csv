@@ -1437,3 +1437,4 @@ th20::NativeRendererClassificationOwner::perform_classification_44f3d0,0x0044F3D
 th20::NativeGraphicsModeAction::set_mode_44f720,0x0044F720,function
 th20::NativeGraphicsModeAction::set_mode_44f700,0x0044F700,function
 th20::retire_all_renderer_44a3a0,0x0044A3A0,function
+th20::NativeEventDescendantPoolView::update_descendants_44efc0,0x0044EFC0,function

@@ -706,3 +706,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044F720,th20::NativeGraphicsModeAction::set_mode_44f720,280,matching,100.00,animation_graphics_viewport_switch_280,CORE/RECON-986; docs/ANIMATION_GRAPHICS_VIEWPORT_SWITCH280_STRICT_EXACT.md
 0x0044F700,th20::NativeGraphicsModeAction::set_mode_44f700,30,matching,100.00,animation_graphics_viewport_forward_30,CORE/RECON-987; docs/ANIMATION_GRAPHICS_VIEWPORT_FORWARD30_STRICT_EXACT.md
 0x0044A3A0,th20::retire_all_renderer_44a3a0,339,matching,100.00,animation_renderer_all_retire_339,CORE/RECON-988; docs/ANIMATION_RENDERER_ALL_RETIRE339_STRICT_EXACT.md
+0x0044EFC0,th20::NativeEventDescendantPoolView::update_descendants_44efc0,261,matching,100.00,animation_pool_event_descendants_261,CORE/RECON-989; docs/ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md

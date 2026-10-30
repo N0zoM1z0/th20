@@ -1301,7 +1301,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044EE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044EE90,authored,AnimationPool,authored,high,CORE/EXACT-449; docs/ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md; independently original AnimationPoolOwner and AnimationHandle ABI with full exception aware child walk
 0x0044EF90,authored,AnimationPool,authored,high,CORE/EXACT-449; docs/ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md; independently original AnimationPoolOwner and AnimationHandle ABI with full exception aware child walk
-0x0044EFC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044EFC0,authored,AnimationChildren,authored,high,"CORE/RECON-989; docs/ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md; original complete game-specific 261B/81-i386 two-phase animation descendant interrupt/VM visit, actual 14 E8/2 PE HIGHLOW, 456B exact resolver child and 39470B VM still NONEXACT; whole 261/261 strict"
 0x0044F0D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044F100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044F130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

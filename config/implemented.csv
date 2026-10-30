@@ -1436,3 +1436,4 @@ th20::NativeRendererClassificationOwner::perform_classification_44f3d0
 th20::NativeGraphicsModeAction::set_mode_44f720
 th20::NativeGraphicsModeAction::set_mode_44f700
 th20::retire_all_renderer_44a3a0
+th20::NativeEventDescendantPoolView::update_descendants_44efc0

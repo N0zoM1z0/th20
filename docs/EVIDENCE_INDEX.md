@@ -146,6 +146,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-976 — original 150B/44-i386 renderer lock9 and typed list-update forwarding](ANIMATION_RENDERER_UPDATE150_STRICT_EXACT.md). Original 6 physical E8/3 HIGHLOW (EH/stack cookie/process locks), real `std::lock_guard` and `0x48` Renderer slot lookup at +0x6C8, direct ECX call to separately NONEXACT 508B list update. Natural **150/150 whole strict**, **+150 authored game bytes**, only 1 affected cold object replayed.
 
+## Original 261B Animation descendant interrupt/VM event pass whole strict exact
+
+- [CORE/RECON-989 — full native 261B/81-i386 Animation child-event traversal](ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md). Real 456B exact handle resolver parent, actual child-links[1] iterator, 14 original E8/2 PE HIGHLOW and honest 39,470B VM call NONEXACT. **261/261 strict and +261 authored original bytes**, 5/5 affected original-bound replay with resolver source.
+
 ## Original complete 339B Renderer primary/secondary Animation all-retirement Boss whole strict exact
 
 - [CORE/RECON-988 — original whole 339B/106-i386 Renderer two-list Animation retirement](ANIMATION_RENDERER_ALL_RETIRE339_STRICT_EXACT.md). Native 19 E8/4 physical PE HIGHLOW, true two-list+0x18 receiver and duplicate real 308B pool-retirement E8; **339/339 original whole strict, +339 game-authored bytes**, 308B/82B/90B/23B dependencies all exact in scoped 5/5 replay.
@@ -393,9 +397,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,438 source-present mappings, 1,438
-strict units from 385 pinned object/receipt providers, and 707 distinct
-original authored whole-exact game functions /249,264 `.text` bytes**.
+**Current verified checkpoint:** **1,439 source-present mappings, 1,439
+strict units from 386 pinned object/receipt providers, and 708 distinct
+original authored whole-exact game functions /249,525 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
