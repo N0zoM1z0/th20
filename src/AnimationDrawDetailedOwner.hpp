@@ -55,7 +55,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // Original 863B elliptic TRIANGLEFAN EAX=0, RET 0x20.
     std::int32_t draw_shape_43c180(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43d830(float, float, std::uint32_t);
+    // Whole original 375B single point, EAX=0/RET 0xC.
+    std::int32_t draw_shape_43d830(float, float, std::uint32_t);
     // Native mode33 consumes BOTH packed colors; callee RET 0x20.
     // Original 660B elliptic LINESTRIP EAX=0, RET 0x20.
     std::int32_t draw_shape_43c4e0(float, float, float, float, float, int,
@@ -72,9 +73,11 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // Original whole 1468B ring emitter: EAX=0 and RET 0x28, not void.
     std::int32_t draw_shape_43ab20(float, float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43d9b0(float, float, float, float, float, int,
+    // Whole original 809B alternating triangle fan, RET 0x20.
+    std::int32_t draw_shape_43d9b0(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43dce0(float, float, float, float, float, int, std::uint32_t);
+    // Whole original 583B alternating LINESTRIP, RET 0x1C.
+    std::int32_t draw_shape_43dce0(float, float, float, float, float, int, std::uint32_t);
     // Original whole 899B alternating polar TRIANGLESTRIP EAX=0/RET 0x24.
     std::int32_t draw_shape_43df30(float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);

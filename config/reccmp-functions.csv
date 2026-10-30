@@ -1267,3 +1267,6 @@ th20::AnimationDrawDetailedOwner::draw_shape_43cd40,0x0043CD40,function
 th20::AnimationDrawDetailedOwner::draw_shape_43df30,0x0043DF30,function
 th20::AnimationDrawDetailedOwner::draw_shape_43c4e0,0x0043C4E0,function
 th20::AnimationDrawDetailedOwner::draw_shape_43c180,0x0043C180,function
+th20::AnimationDrawDetailedOwner::draw_shape_43d830,0x0043D830,function
+th20::AnimationDrawDetailedOwner::draw_shape_43d9b0,0x0043D9B0,function
+th20::AnimationDrawDetailedOwner::draw_shape_43dce0,0x0043DCE0,function
