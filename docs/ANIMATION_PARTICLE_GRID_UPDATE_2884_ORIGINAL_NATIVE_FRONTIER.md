@@ -3,6 +3,14 @@
 Immutable original target: Japanese TH20 Steamless v1.00a, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 
+> **CORE/RECON-966 updated frontier:** The original boundaries and native
+> relocation fingerprints below remain valid. A temporary in-memory Ghidra
+> function transaction recovered the entire provisional decompilation,
+> and a [tracked whole typed C++20 research probe](ANIMATION_PARTICLE_GRID_UPDATE_2884_TEMP_GHIDRA_AND_TYPED_FRONTIER.md)
+> now compiles to **2,953B/764-i386**, with 99 call and 25 data relocation
+> fields versus original 2,884B/768. **Still NONEXACT and not canonically
+> source-present**; do not count probe source as accepted game code.
+
 This original **2,884B/768-i386** particle-grid virtual Update Boss
 was **not correctly represented as a function** at `0x0045C360` in the
 initial Ghidra function ledger. This checkpoint recovers its **actual
