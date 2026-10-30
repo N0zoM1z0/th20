@@ -1281,3 +1281,4 @@ th20::NativeMotionPolygonOwner::draw_polygon_outline_45faa0
 th20::NativePolygonMotionGroup::draw_motion_group_45f9b0
 th20::NativePolygonSegmentArray::at
 th20::NativePolygonSegmentArray::end
+th20::NativePolygonMotionGroup::configure_group_45fb60

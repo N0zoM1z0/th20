@@ -23150,3 +23150,27 @@ target_address = 0x0045FD40
 size = 19
 relocations = [
 ]
+
+# CORE/RECON-887: whole original 296B/90-i386 polygon group configuration.
+# Original eleven E8 site/targets, zero PE HIGHLOW, independently PE-proven.
+[units.animation_polygon_motion_config_296]
+source = "src/AnimationPolygonMotionGroup233.cpp"
+object = "build/core884-canonical/AnimationPolygonMotionGroup233.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonMotionGroup::configure_group_45fb60"]
+symbol = "?configure_group_45fb60@NativePolygonMotionGroup@th20@@QAEHABUNativePolygonGroupOptions@2@H@Z"
+target_address = 0x0045FB60
+size = 296
+relocations = [
+  { offset = 0x5C, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x6F, type = "REL32", symbol = "?at@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@H@Z", target = 0x0045F400 },
+  { offset = 0x7F, type = "REL32", symbol = "?initialize_palette_45fc90@NativePolygonSegmentSlot@th20@@QAEXI@Z", target = 0x0045FC90 },
+  { offset = 0x92, type = "REL32", symbol = "?at@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@H@Z", target = 0x0045F400 },
+  { offset = 0xA2, type = "REL32", symbol = "?initialize_palette_45fc90@NativePolygonSegmentSlot@th20@@QAEXI@Z", target = 0x0045FC90 },
+  { offset = 0xB5, type = "REL32", symbol = "?at@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@H@Z", target = 0x0045F400 },
+  { offset = 0xC5, type = "REL32", symbol = "?initialize_palette_45fc90@NativePolygonSegmentSlot@th20@@QAEXI@Z", target = 0x0045FC90 },
+  { offset = 0xDA, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
+  { offset = 0xED, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
+  { offset = 0x109, type = "REL32", symbol = "?configure_438c60@NativePolygonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+  { offset = 0x11C, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
+]

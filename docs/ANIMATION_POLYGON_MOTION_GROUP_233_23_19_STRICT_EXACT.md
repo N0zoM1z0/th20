@@ -131,7 +131,9 @@ providers; replay is restricted to just this one modified source, not
 an unfiltered full-graph cold replay.
 
 This checkpoint credits **one new original authored whole game
-function and 233 `.text` bytes**. The additional **42 complete native
+function and 233 `.text` bytes**. The same source has since gained an
+independently [whole-native exact 296B group configuration method](ANIMATION_POLYGON_GROUP_CONFIG_296_STRICT_EXACT.md),
+without modifying its original 233B/23B/19B strict bodies. The additional **42 complete native
 bytes of two helpers** are strict exact but remain origin-pending
 rather than counted as authored game. Live totals are therefore
 **633 original authored whole-native exact functions /233,199 code
