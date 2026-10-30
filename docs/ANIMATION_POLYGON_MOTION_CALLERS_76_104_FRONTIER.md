@@ -94,10 +94,15 @@ count two source guesses as separate original game functions.
 
 The two original wrappers' nominal receiver is declared only in the
 new header, so existing strict game source providers are not modified.
+Their upstream 233B group method has since been independently recovered
+as a [whole-native strict exact Boss](ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md).
+This does **not** make the remaining 104B outline wrapper exact.
 The 76B source itself is cold-replayed alone. The 104B semantic source
 is compiled as a diagnostic probe, not exact replay. Neither its
 original 233B parent nor the two already accepted 455B/1,204B
-rendering children receive duplicate code credit, and the large
+rendering children received duplicate code credit at this prior
+checkpoint; the 233B parent is credited independently in the later
+linked evidence. The large
 5,993B Animation Draw parent independently remains NONEXACT.
 No unfiltered graph-wide cold replay is run.
 

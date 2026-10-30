@@ -23100,3 +23100,53 @@ relocations = [
   { offset = 0x3C, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0x41, type = "REL32", symbol = "?draw_vertex_fan_43cb70@AnimationDrawDetailedOwner@th20@@QAEHHPBUVector2@2@0PBI@Z", target = 0x0043CB70 },
 ]
+
+# CORE/RECON-884: original 233B group, 23B index and 19B end pointer,
+# each whole original i386 body and true physical call/data roles.
+[units.animation_polygon_motion_group_233]
+source = "src/AnimationPolygonMotionGroup233.cpp"
+object = "build/core884-canonical/AnimationPolygonMotionGroup233.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonMotionGroup::draw_motion_group_45f9b0"]
+symbol = "?draw_motion_group_45f9b0@NativePolygonMotionGroup@th20@@QAEHXZ"
+target_address = 0x0045F9B0
+size = 233
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1C, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x21, type = "REL32", symbol = "?bind_native_texture_state@AnimationQuadSubmitOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x00445BC0 },
+  { offset = 0x29, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x4D, type = "REL32", symbol = "?position@Animation@th20@@QAEAAUVector3@2@AAU32@@Z", target = 0x004376E0 },
+  { offset = 0x7B, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x86, type = "REL32", symbol = "?end@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@XZ", target = 0x0045FD40 },
+  { offset = 0xB0, type = "REL32", symbol = "?draw_polygon_outline_45faa0@NativeMotionPolygonOwner@th20@@QAEXPBUVector2@2@@Z", target = 0x0045FAA0 },
+  { offset = 0xC6, type = "REL32", symbol = "?at@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@H@Z", target = 0x0045F400 },
+  { offset = 0xD5, type = "REL32", symbol = "?draw_polygon_fan_45fb10@NativeMotionPolygonOwner@th20@@QAEXPBUVector2@2@@Z", target = 0x0045FB10 },
+  { offset = 0xE1, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-884: original 233B group, 23B index and 19B end pointer,
+# each whole original i386 body and true physical call/data roles.
+[units.animation_polygon_segment_at_23]
+source = "src/AnimationPolygonMotionGroup233.cpp"
+object = "build/core884-canonical/AnimationPolygonMotionGroup233.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonSegmentArray::at"]
+symbol = "?at@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@H@Z"
+target_address = 0x0045F400
+size = 23
+relocations = [
+]
+
+# CORE/RECON-884: original 233B group, 23B index and 19B end pointer,
+# each whole original i386 body and true physical call/data roles.
+[units.animation_polygon_segment_end_19]
+source = "src/AnimationPolygonMotionGroup233.cpp"
+object = "build/core884-canonical/AnimationPolygonMotionGroup233.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonSegmentArray::end"]
+symbol = "?end@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@XZ"
+target_address = 0x0045FD40
+size = 19
+relocations = [
+]

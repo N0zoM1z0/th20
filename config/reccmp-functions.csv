@@ -1279,3 +1279,6 @@ th20::Vector2::operator+=,0x00439960,function
 th20::AnimationDrawDetailedOwner::draw_polygon_outline_43d370,0x0043D370,function
 th20::NativeMotionPolygonOwner::draw_polygon_fan_45fb10,0x0045FB10,function
 th20::NativeMotionPolygonOwner::draw_polygon_outline_45faa0,0x0045FAA0,function
+th20::NativePolygonMotionGroup::draw_motion_group_45f9b0,0x0045F9B0,function
+th20::NativePolygonSegmentArray::at,0x0045F400,function
+th20::NativePolygonSegmentArray::end,0x0045FD40,function
