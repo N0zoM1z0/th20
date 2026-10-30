@@ -46,6 +46,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-951 — entire native 202B/58-x86 Vector3 epsilon normalization](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). Original immutable PE 2 E8 and one genuine HIGHLOW to native 0.01f, SSE3 lanes and real `comiss/jbe`, copy near zero versus three divisions. One natural C++20 source **202/202 strict exact**, **+202 authored game code bytes**; source-specific local replay only.
 
+## Original full 187B RendererPool generation/AnimationHandle registration strict exact
+
+- [CORE/RECON-961 — entire original 187B/56-i386 RendererPool Handle generation](ANIMATION_RENDERER_HANDLE_REGISTER_187_STRICT_EXACT.md). Six native E8/zero HIGHLOW and four real 72B/75B parent references, original `+0x07D40E88` counter post-increment/AND0xFFFF/zero guard, composed `(generation << 16)|(index&0xFFFF)` into `Animation+0x4C0`. Natural typed C++20 **187/187 strict exact**; four original renderer modes recompiled unchanged 5/5, **+187 authored game code bytes**. Giant pool owner remains non-allocating view.
+
 ## Original three RendererPool 20B/20B/38B selector/stride members whole strict exact
 
 - [CORE/RECON-960 — original mode20, renderer select38 and native index20](ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md). Real `AnimationPoolOwner` source view: preference +0x6C4, slots +0x6C8 and index stride0x48; whole **20/20+20/20+38/38 native exact** and original 922B parent still 922/922 after shared header reconciliation, **+58 authored game bytes** from game-specific preference/selector only (20B array indexing origin unknown/uncredited). 4/4 source-affected units locally replayed.
@@ -273,9 +277,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,400 source-present mappings, 1,400
-strict units from 356 pinned object/receipt providers, and 680 distinct
-original authored whole-exact game functions /242,932 `.text` bytes**.
+**Current verified checkpoint:** **1,401 source-present mappings, 1,401
+strict units from 357 pinned object/receipt providers, and 681 distinct
+original authored whole-exact game functions /243,119 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

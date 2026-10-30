@@ -25135,3 +25135,23 @@ size = 38
 relocations = [
  { offset = 0x1C, type = "REL32", symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z", target = 0x00449490 },
 ]
+
+
+# CORE/RECON-961: original full 187B RendererPool generation/handle register,
+# real 0x07D40E88 counter member, no duplicate 26B leaf credit.
+[units.animation_renderer_handle_register_187]
+source = "src/AnimationRendererHandleRegister187.cpp"
+object = "build/core961-canonical/AnimationRendererHandleRegister187.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererPoolRegister::register_44c8f0"]
+symbol = "?register_44c8f0@NativeRendererPoolRegister@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z"
+target_address = 0x0044C8F0
+size = 187
+relocations = [
+ { offset = 0x1A, type = "REL32", symbol = "??ENativeGenerationPool@th20@@QAEIH@Z", target = 0x00449570 },
+ { offset = 0x2D, type = "REL32", symbol = "??_4NativeGenerationPool@th20@@QAEXI@Z", target = 0x00449690 },
+ { offset = 0x44, type = "REL32", symbol = "?slot_matches_449430@NativeGenerationPool@th20@@QAE_NH@Z", target = 0x00449430 },
+ { offset = 0x60, type = "REL32", symbol = "??ENativeGenerationPool@th20@@QAEIH@Z", target = 0x00449570 },
+ { offset = 0x77, type = "REL32", symbol = "?generation_bits_4493e0@NativeGenerationPool@th20@@QAEIH@Z", target = 0x004493E0 },
+ { offset = 0xA0, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
+]

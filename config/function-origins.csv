@@ -1264,7 +1264,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044C830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044C8A0,authored,Animation,authored,high,"CORE/RECON-960; docs/ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md; preference RendererPool native 20B, 922B original physical caller and actual +0x6C4/+0x6C8 offsets; 20/20 whole exact; game-specific authored policy"
 0x0044C8C0,authored,Animation,authored,high,"CORE/RECON-960; docs/ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md; selector RendererPool native 38B, 922B original physical caller and actual +0x6C4/+0x6C8 offsets; 38/38 whole exact; game-specific authored policy"
-0x0044C8F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044C8F0,authored,Animation,authored,high,"CORE/RECON-961; docs/ANIMATION_RENDERER_HANDLE_REGISTER_187_STRICT_EXACT.md; original 187B game RendererPool generation+index handle publication, true pool counter +0x07D40E88 and Animation+0x4C0/+0x4C4, native 6 E8/0 HIGHLOW and four real 72B/75B parent paths, strict 187/187"
 0x0044C9B0,authored,AnimationPool,authored,high,"CORE/ORIGIN-525; docs/ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md; immutable direct BulletController::emit E8 at 0x00482241, native 14 E8/2 HIGHLOW, actual 0x600 record reuse, real initialized flags/index, complete 298B native strict C++ game method"
 0x0044CAE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044CB00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

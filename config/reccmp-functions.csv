@@ -1399,3 +1399,4 @@ th20::NativeSpawnRendererView::spawn_flag4_44b8e0,0x0044B8E0,function
 th20::NativeRendererPoolSelector::renderer_index_449490,0x00449490,function
 th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0,0x0044C8A0,function
 th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0,0x0044C8C0,function
+th20::NativeRendererPoolRegister::register_44c8f0,0x0044C8F0,function

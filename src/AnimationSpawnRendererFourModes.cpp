@@ -5,11 +5,9 @@
 #include "IntrusiveLink.hpp"
 #include "AnimationHandle.hpp"
 #include "NativeSpawnRendererView.hpp"
+#include "NativeRendererPoolRegister.hpp"
 #include <cstdint>
 namespace th20 {
-struct NativeRendererPoolRegister : AnimationPoolOwner {
-    AnimationHandle register_44c8f0(Animation* anim);
-};
 AnimationHandle NativeSpawnRendererView::spawn_normal_44b7f0(Animation* anim) {
     anim->field_4e8=reinterpret_cast<std::uintptr_t>(this);
     auto* const list=&main;
