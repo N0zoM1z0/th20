@@ -680,3 +680,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044C8A0,th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0,20,matching,100.00,animation_spawn_pool_preference_20,CORE/RECON-960; docs/ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md
 0x0044C8C0,th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0,38,matching,100.00,animation_spawn_pool_selector_38,CORE/RECON-960; docs/ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md
 0x0044C8F0,th20::NativeRendererPoolRegister::register_44c8f0,187,matching,100.00,animation_renderer_handle_register_187,CORE/RECON-961; docs/ANIMATION_RENDERER_HANDLE_REGISTER_187_STRICT_EXACT.md
+0x0044CB80,th20::NativeAnimationRawPositionView::raw_position_44cb80,236,matching,100.00,animation_raw_world_position_236,CORE/RECON-965; docs/ANIMATION_RAW_WORLD_POSITION236_STRICT_EXACT.md

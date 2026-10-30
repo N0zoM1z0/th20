@@ -1407,3 +1407,4 @@ th20::native_spawn_stem_equals_446de0,0x00446DE0,function
 th20::NativeStemStringView::equals_44b400,0x0044B400,function
 th20::native_stem_equal_len_447200,0x00447200,function
 th20::native_stem_compare_bytes_44be00,0x0044BE00,function
+th20::NativeAnimationRawPositionView::raw_position_44cb80,0x0044CB80,function

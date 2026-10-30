@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,408
-source-present mappings**, **1,408 strict canonical native units** and
-**360 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **681 complete functions /
-243,119 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,409
+source-present mappings**, **1,409 strict canonical native units** and
+**361 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **682 complete functions /
+243,355 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -74,6 +74,7 @@ for the live inventory and consult the
 | **187B original RendererPool AnimationHandle registration** | Full **187B/56-i386 whole strict exact**, native pool `+0x07D40E88` generation post-increment/AND0xFFFF/zero guard and `Animation+0x4C0/0x4C4` combined 32-bit Handle. Four parent 72/75B registration paths remain strict exact. **+187 authored game bytes**. [PE/COFF proof](docs/ANIMATION_RENDERER_HANDLE_REGISTER_187_STRICT_EXACT.md). |
 | **RendererPool mode/selection/stride chain** | Original **20B mode getter, 38B pool selector and 20B 72-stride slot index all whole strict exact**; shared actual `+0x6C4/+0x6C8` pool views, parent 922B original still exact, **+58 authored game bytes** (index20 uncredited as compiler-like source). [Complete proof](docs/ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md). |
 | **Four exact Renderer spawn modes** | Original complete **72B/72B/75B/75B** primary/secondary `IntrusiveList<Animation>` append/prepend and handle publication, all C++ ABI original; **294 native authored bytes /4 heads** and full 922B parent remained 922/922. [Original four-mode proof](docs/ANIMATION_SPAWN_RENDERER_FOUR_MODES_STRICT_EXACT.md). |
+| **236B recursive Animation raw-world-position Boss** | Genuine original **236B/77-i386 whole strict exact** with three Vector3 component operands, native parent Z rotation and original recursive self E8 plus cookie, **+236 authored native bytes**. [Complete original proof](docs/ANIMATION_RAW_WORLD_POSITION236_STRICT_EXACT.md). |
 | **922B AnimationFile spawn Boss whole strict exact** | **922B/269-i386 full native original exact**, actual seven visible args plus compiler-hidden `AnimationHandle` return, original lock/allocate/script/position/flag/render selection. **20 E8 and 14 HIGHLOW** entirely verified. The 83B caller was retyped to the same actual original member and replayed 83/83 exact. **+922 authored game bytes**. [Complete PE/COFF proof](docs/ANIMATION_FILE_SPAWN_922_STRICT_EXACT.md). |
 | **83B particle AnimationFile spawn wrapper** | Original **83B/30-i386 whole strict exact**, mode 1 selects flag16, six incoming arguments passed to native 922B Animation file spawn with additional fixed flags; called four times from 2,884B particle Boss. **+83 authored-game bytes**. [Whole original proof](docs/ANIMATION_PARTICLE_SPAWN_WRAPPER_83_STRICT_EXACT.md). |
 | **57B original Animation interpolation forwarding** | Native **57B/24-i386 whole strict exact**, Animation `+0x8C` interpolator with mode8 and five original arguments, E8 to already exact 124B configuration; called twice in original 2,884B Boss. **+57 authored game bytes**, 2/2 local affected replay. [Whole proof](docs/ANIMATION_PARTICLE_INTERPOLATION_FORWARD_57_STRICT_EXACT.md). |
