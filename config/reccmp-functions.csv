@@ -1433,3 +1433,4 @@ th20::NativeRendererClassificationView::classify_primary_44a090,0x0044A090,funct
 th20::NativeRendererClassificationView::classify_secondary_44a210,0x0044A210,function
 th20::NativeRendererClassificationOwner::select_renderer_group_449e40,0x00449E40,function
 th20::apply_renderer_staging_449fa0,0x00449FA0,function
+th20::NativeRendererClassificationOwner::perform_classification_44f3d0,0x0044F3D0,function

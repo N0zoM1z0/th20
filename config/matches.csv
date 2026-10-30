@@ -702,3 +702,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044A210,th20::NativeRendererClassificationView::classify_secondary_44a210,394,matching,100.00,animation_renderer_classify_secondary_394,CORE/RECON-982; docs/ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md
 0x00449E40,th20::NativeRendererClassificationOwner::select_renderer_group_449e40,347,matching,100.00,animation_renderer_classification_dispatch_347,CORE/RECON-983; docs/ANIMATION_RENDERER_CLASSIFY_DISPATCH347_STRICT_EXACT.md
 0x00449FA0,th20::apply_renderer_staging_449fa0,230,matching,100.00,animation_renderer_staging_apply_230,CORE/RECON-984; docs/ANIMATION_RENDERER_STAGING_APPLY230_STRICT_EXACT.md
+0x0044F3D0,th20::NativeRendererClassificationOwner::perform_classification_44f3d0,806,matching,100.00,animation_renderer_classification_action_806,CORE/RECON-985; docs/ANIMATION_RENDERER_CLASSIFY_ACTION806_STRICT_EXACT.md

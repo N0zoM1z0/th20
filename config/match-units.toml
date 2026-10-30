@@ -25809,3 +25809,67 @@ relocations = [
  { offset = 0x0C8, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
  { offset = 0x0DE, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/RECON-985: complete original 806B/211-i386 Renderer classification
+# graphics mode action Boss, all 22 E8 and 28 genuine PE HIGHLOW sites.
+[units.animation_renderer_classification_action_806]
+source = "src/AnimationRendererClassificationAction806.cpp"
+object = "build/core985-canonical/AnimationRendererClassificationAction806.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererClassificationOwner::perform_classification_44f3d0"]
+symbol = "?perform_classification_44f3d0@NativeRendererClassificationOwner@th20@@QAEXHH@Z"
+target_address = 0x0044F3D0
+size = 806
+relocations = [
+ { offset = 0x014, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x019, type = "REL32", symbol = "?set_mode_44f720@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x0044F720 },
+ { offset = 0x01E, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x023, type = "REL32", symbol = "?reset_stage_4dda60@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDA60 },
+ { offset = 0x04A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x04F, type = "REL32", symbol = "?set_clip_41dce0@NativeGraphicsModeAction@th20@@QAEXH@Z", target = 0x0041DCE0 },
+ { offset = 0x054, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x059, type = "REL32", symbol = "?reset_stage_4dda60@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDA60 },
+ { offset = 0x0B1, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x0B6, type = "REL32", symbol = "?set_mode_44f720@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x0044F720 },
+ { offset = 0x0BB, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x0C0, type = "REL32", symbol = "?reset_stage_4dda60@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDA60 },
+ { offset = 0x0F6, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x0FB, type = "REL32", symbol = "?set_mode_44f720@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x0044F720 },
+ { offset = 0x100, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x105, type = "REL32", symbol = "?reset_stage_4dda60@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDA60 },
+ { offset = 0x13B, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x140, type = "REL32", symbol = "?set_mode_44f720@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x0044F720 },
+ { offset = 0x145, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x14A, type = "REL32", symbol = "?reset_stage_4dda60@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDA60 },
+ { offset = 0x180, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x185, type = "REL32", symbol = "?set_mode_44f700@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x0044F700 },
+ { offset = 0x18A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x18F, type = "REL32", symbol = "?reset_view_4ddf80@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDF80 },
+ { offset = 0x198, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x19D, type = "REL32", symbol = "?set_render_state_4d9db0@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x004D9DB0 },
+ { offset = 0x1BC, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x1C1, type = "REL32", symbol = "?set_clip_41dce0@NativeGraphicsModeAction@th20@@QAEXH@Z", target = 0x0041DCE0 },
+ { offset = 0x1C6, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x1CB, type = "REL32", symbol = "?reset_view_4ddf80@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDF80 },
+ { offset = 0x1D4, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x1D9, type = "REL32", symbol = "?set_render_state_4d9db0@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x004D9DB0 },
+ { offset = 0x1DE, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x1EF, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x249, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x24E, type = "REL32", symbol = "?set_clip_41dce0@NativeGraphicsModeAction@th20@@QAEXH@Z", target = 0x0041DCE0 },
+ { offset = 0x253, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x258, type = "REL32", symbol = "?reset_view_4ddf80@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDF80 },
+ { offset = 0x261, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x266, type = "REL32", symbol = "?set_render_state_4d9db0@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x004D9DB0 },
+ { offset = 0x26C, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x27D, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x2CE, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x2D3, type = "REL32", symbol = "?set_mode_44f700@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x0044F700 },
+ { offset = 0x2D8, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x2DD, type = "REL32", symbol = "?reset_view_4ddf80@NativeGraphicsModeAction@th20@@QAEXXZ", target = 0x004DDF80 },
+ { offset = 0x2E6, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+ { offset = 0x2EB, type = "REL32", symbol = "?set_render_state_4d9db0@NativeGraphicsModeAction@th20@@QAEXHH@Z", target = 0x004D9DB0 },
+ { offset = 0x2F1, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x302, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+]
