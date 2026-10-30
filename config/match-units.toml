@@ -22031,3 +22031,68 @@ relocations = [
   { offset = 0xAE0, type = "DIR32", symbol = "$LN16", target = 0x00440CFE },
   { offset = 0xAE4, type = "DIR32", symbol = "$LN24", target = 0x004410D2 },
 ]
+
+# CORE/RECON-848: full original 2136B/504-x86 game mesh renderer.
+# All native 32 E8 +20 PE HIGHLOW site/target identities independently proven.
+[units.animation_draw_mesh2425_2136]
+source = "src/AnimationDrawMesh2425.cpp"
+object = "build/core848-canonical/AnimationDrawMesh2425.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::draw_mesh_2425"]
+symbol = "?draw_mesh_2425@AnimationDrawDetailedOwner@th20@@QAEHPAVAnimation@2@PAXH@Z"
+target_address = 0x00443020
+size = 2136
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x22, type = "REL32", symbol = "??0Matrix4@th20@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0Matrix4@th20@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x33, type = "REL32", symbol = "?animation_draw_enabled@th20@@YIIPAVAnimation@1@@Z", target = 0x00445AB0 },
+  { offset = 0x7D, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0x94, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x99, type = "REL32", symbol = "?graphics_enable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDFE0 },
+  { offset = 0xA1, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xA6, type = "REL32", symbol = "?graphics_disable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDF80 },
+  { offset = 0xBA, type = "DIR32", symbol = "?native_projection_identity@th20@@3UMatrix4@1@B", target = 0x0056E100 },
+  { offset = 0x196, type = "DIR32", symbol = "__real@0000000000000000", target = 0x0056CD50 },
+  { offset = 0x1B6, type = "REL32", symbol = "_D3DXMatrixRotationX@8", target = 0x00540684 },
+  { offset = 0x1C4, type = "REL32", symbol = "?data@NativeMeshMatrixView@th20@@QAEPAUD3DXMATRIX@@XZ", target = 0x0040BDA0 },
+  { offset = 0x1D8, type = "REL32", symbol = "?data@NativeMeshMatrixView@th20@@QAEPAUD3DXMATRIX@@XZ", target = 0x0040BDA0 },
+  { offset = 0x1F8, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x0054067E },
+  { offset = 0x209, type = "DIR32", symbol = "__real@0000000000000000", target = 0x0056CD50 },
+  { offset = 0x229, type = "REL32", symbol = "_D3DXMatrixRotationY@8", target = 0x0054068A },
+  { offset = 0x237, type = "REL32", symbol = "?data@NativeMeshMatrixView@th20@@QAEPAUD3DXMATRIX@@XZ", target = 0x0040BDA0 },
+  { offset = 0x24B, type = "REL32", symbol = "?data@NativeMeshMatrixView@th20@@QAEPAUD3DXMATRIX@@XZ", target = 0x0040BDA0 },
+  { offset = 0x26B, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x0054067E },
+  { offset = 0x27C, type = "DIR32", symbol = "__real@0000000000000000", target = 0x0056CD50 },
+  { offset = 0x29C, type = "REL32", symbol = "_D3DXMatrixRotationZ@8", target = 0x00540690 },
+  { offset = 0x2AA, type = "REL32", symbol = "?data@NativeMeshMatrixView@th20@@QAEPAUD3DXMATRIX@@XZ", target = 0x0040BDA0 },
+  { offset = 0x2BE, type = "REL32", symbol = "?data@NativeMeshMatrixView@th20@@QAEPAUD3DXMATRIX@@XZ", target = 0x0040BDA0 },
+  { offset = 0x2DE, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x0054067E },
+  { offset = 0x36A, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x36F, type = "REL32", symbol = "?mesh_x@NativeMeshWindowGetter@th20@@QAEHXZ", target = 0x0041CAD0 },
+  { offset = 0x3CA, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x3CF, type = "REL32", symbol = "?mesh_y@NativeMeshWindowGetter@th20@@QAEHXZ", target = 0x0041CAF0 },
+  { offset = 0x497, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x49C, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x4DB, type = "REL32", symbol = "?bind_native_texture_state@AnimationQuadSubmitOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x00445BC0 },
+  { offset = 0x4E3, type = "REL32", symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@XZ", target = 0x00437CD0 },
+  { offset = 0x51A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x51F, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x551, type = "REL32", symbol = "?texture_for_sprite@AnimationQuadSubmitOwner@th20@@QAEPAUIDirect3DBaseTexture9@@I@Z", target = 0x00445A00 },
+  { offset = 0x591, type = "DIR32", symbol = "?native_zero@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0x5A6, type = "DIR32", symbol = "?native_zero@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0x5BB, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x5D0, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x6F5, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x6FA, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x738, type = "REL32", symbol = "?select_render_color_mode@AnimationQuadSubmitOwner@th20@@QAEXE@Z", target = 0x00446690 },
+  { offset = 0x754, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x759, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x78A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x78F, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x7C1, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x7C6, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x805, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x80A, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x84E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

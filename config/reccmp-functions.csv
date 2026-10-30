@@ -1246,3 +1246,4 @@ th20::animation_vector3_length,0x004399B0,function
 th20::AnimationDrawDetailedOwner::transform_projected_xy,0x00445B20,function
 th20::AnimationDrawDetailedOwner::prepare_complex_mode6,0x00440340,function
 th20::AnimationDrawDetailedOwner::draw_complex_mode6,0x004408B0,function
+th20::AnimationDrawDetailedOwner::draw_mesh_2425,0x00443020,function
