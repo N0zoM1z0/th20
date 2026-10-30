@@ -1359,3 +1359,4 @@ th20::NativeRibbonSoloGroup::update
 th20::NativeRibbonSoloSegmentArray::end_45dce0
 th20::NativeRibbonSoloGroup::draw
 th20::NativeRibbonSoloSegmentDrawView::draw_45dae0
+th20::NativeRibbonSoloSegmentUpdateView::update_45d780

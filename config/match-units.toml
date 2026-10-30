@@ -24367,3 +24367,46 @@ relocations = [
   { offset = 0x3C, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0x41, type = "REL32", symbol = "?draw_vertex_fan_43cb70@AnimationDrawDetailedOwner@th20@@QAEHHPBUVector2@2@0PBI@Z", target = 0x0043CB70 },
 ]
+
+# CORE/RECON-929: complete native solo ribbon 697B/190-x86 color/radius
+# dynamics Boss; physical 17 E8 plus 13 PE HIGHLOW independently proven.
+[units.animation_ribbon_solo_dynamics_697]
+source = "src/AnimationRibbonSoloSegmentDynamics697.cpp"
+object = "build/core929-canonical/AnimationRibbonSoloSegmentDynamics697.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonSoloSegmentUpdateView::update_45d780"]
+symbol = "?update_45d780@NativeRibbonSoloSegmentUpdateView@th20@@QAEXM@Z"
+target_address = 0x0045D780
+size = 697
+relocations = [
+  { offset = 0x01A, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x035, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x040, type = "REL32", symbol = "?end_45dca0@NativeRibbonScalarSpan@th20@@QAEPAMXZ", target = 0x0045DCA0 },
+  { offset = 0x061, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x066, type = "REL32", symbol = "?signed_unit@GameRandom@th20@@QAEMXZ", target = 0x004298E0 },
+  { offset = 0x076, type = "DIR32", symbol = "?native_sixteen@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x07E, type = "DIR32", symbol = "?native_ribbon_color_bias224@th20@@3MB", target = 0x0056ED14 },
+  { offset = 0x09D, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x0A8, type = "REL32", symbol = "?end_45dca0@NativeRibbonScalarSpan@th20@@QAEPAMXZ", target = 0x0045DCA0 },
+  { offset = 0x0CD, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x0D2, type = "REL32", symbol = "?signed_unit@GameRandom@th20@@QAEMXZ", target = 0x004298E0 },
+  { offset = 0x0E2, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x111, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x12F, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x14A, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x168, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x195, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+  { offset = 0x1AB, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+  { offset = 0x1C0, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x1CB, type = "REL32", symbol = "?end_45dcc0@NativeRibbonPointSpan@th20@@QAEPAUVector2@2@XZ", target = 0x0045DCC0 },
+  { offset = 0x202, type = "REL32", symbol = "??A?$array@M$0DM@@std@@QAEAAMI@Z", target = 0x00414580 },
+  { offset = 0x213, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x235, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x240, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+  { offset = 0x248, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x250, type = "DIR32", symbol = "?native_fifty_eight@th20@@3MB", target = 0x0056ED10 },
+  { offset = 0x25E, type = "REL32", symbol = "??YAngle@th20@@QAEAAU01@M@Z", target = 0x004530C0 },
+  { offset = 0x27C, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0DM@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+  { offset = 0x297, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0DM@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+  { offset = 0x2AC, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

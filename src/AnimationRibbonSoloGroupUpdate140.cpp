@@ -3,7 +3,6 @@
 #include "Motion.hpp"
 namespace th20 {
 struct NativeRibbonGate { std::int32_t changed_45d030(); };
-struct NativeRibbonSoloSegmentUpdateView { void update_45d780(float limit); };
 std::int32_t NativeRibbonSoloGroup::update() {
     if (reinterpret_cast<NativeRibbonGate*>(&timer_3cc)->changed_45d030()) {
         NativeRibbonSoloSegmentArray* const array = reinterpret_cast<NativeRibbonSoloSegmentArray*>(&segments_08);

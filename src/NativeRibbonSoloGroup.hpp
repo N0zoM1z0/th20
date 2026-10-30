@@ -8,6 +8,12 @@ namespace th20 {
 struct NativeRibbonSoloSegmentDrawView {
     void draw_45dae0(const Vector3* position);
 };
+// Non-owning segment receiver for the genuine separate 697B dynamics. It
+// shares the actual NativeRibbonSegment storage without a second allocation.
+struct NativeRibbonSoloSegmentUpdateView : NativeRibbonSegment {
+    void update_45d780(float limit);
+};
+static_assert(sizeof(NativeRibbonSoloSegmentUpdateView)==0x3C0);
 struct NativeRibbonSoloSegmentArray {
     std::array<NativeRibbonSegment,1> elements;
     NativeRibbonSegment* end_45dce0();
