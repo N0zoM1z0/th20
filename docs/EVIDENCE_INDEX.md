@@ -7,8 +7,8 @@
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
 [whole strict original 4347B Mode8 six-order renderer Boss](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md) ->
-[whole strict original 612B strip9 renderer](ANIMATION_DRAW_STRIP_MODE9_612_STRICT_EXACT.md) ->
 [whole strict original 534B strip11 renderer](ANIMATION_DRAW_STRIP_MODE11_534_STRICT_EXACT.md) ->
+[whole strict original 612B strip9 renderer](ANIMATION_DRAW_STRIP_MODE9_612_STRICT_EXACT.md) ->
 [whole strict original 2136B mesh24/25 renderer Boss](ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md) ->
 [strict 92B Graphics depth-write enable leaf](GRAPHICS_DEPTH_WRITE_ENABLE_92_STRICT_EXACT.md) ->
 [whole strict original 2769B Mode6 renderer Boss](ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md) ->
