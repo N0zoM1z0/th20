@@ -1248,3 +1248,4 @@ th20::AnimationDrawDetailedOwner::prepare_complex_mode6,0x00440340,function
 th20::AnimationDrawDetailedOwner::draw_complex_mode6,0x004408B0,function
 th20::AnimationDrawDetailedOwner::draw_mesh_2425,0x00443020,function
 th20::graphics_enable_depth_writes,0x004DDFE0,function
+th20::AnimationDrawDetailedOwner::draw_simple_mode8,0x00441F00,function

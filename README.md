@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,249
-source-present mappings**, **1,250 strict canonical native units** and
-**268 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **603 complete functions /
-206,100 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,250
+source-present mappings**, **1,251 strict canonical native units** and
+**269 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **604 complete functions /
+210,447 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -62,6 +62,7 @@ for the live inventory and consult the
 | Area | Verified current state |
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
+| Animation Mode8 six-order complete renderer Boss | [Whole original 4,347B/1,063 native x86 Mode8 Animation renderer and genuine six-case code-pointer table](docs/ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md), **4,372/4,372 strict relocated bytes** including genuine 1B NOP and six original direct 32-bit PE case pointers. All **101 real E8 and 45 HIGHLOW physical fields/targets exact**, natural MSVC typed C++ source. Its enclosing 5,993B main Draw dispatcher remains NONEXACT. |
 | Graphics depth-write enable leaf | [Whole original 92B native D3D9 Z-write game state transition strict exact](docs/GRAPHICS_DEPTH_WRITE_ENABLE_92_STRICT_EXACT.md), true `Graphics+DBC` state=1, original AnimationPool flush and D3D9 SetRenderState(14,1), 92/92B native relocated bytes, independent new leaf credited separately from the exact 2,136B Mesh caller. |
 | Animation mode24/25 complete mesh render Boss | [Whole original 2,136B/504-x86 mesh/texture renderer with 32 native E8 and 20 PE HIGHLOW, 2,136/2,136B strict exact](docs/ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md). All original D3DX/Graphics device/texture calls preserved; original matrix/view folded aliases do not duplicate game byte credit. Its 5,993B enclosing Draw Boss remains NONEXACT. |
 | Animation Mode6 complete render Boss | [Entire original 2,769B/683-x86 game renderer plus genuine five-pointer case table, 2,792/2,792 strict exact](docs/ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md). Independently verified all 28 original E8, 78 in-body HIGHLOW and five post-RET case pointers. Native fog-first COMISS/NaN handling, exact `0x64` frame and real game RGBA channel math, one newly credited full game function. The enclosing 5,993B Draw dispatcher remains NONEXACT. |

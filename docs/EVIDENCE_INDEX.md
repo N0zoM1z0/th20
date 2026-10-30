@@ -1,11 +1,12 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-849):**
+**Current next-agent reading order (CORE/RECON-850):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict original 4347B Mode8 six-order renderer Boss](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md) ->
 [whole strict original 2136B mesh24/25 renderer Boss](ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md) ->
 [strict 92B Graphics depth-write enable leaf](GRAPHICS_DEPTH_WRITE_ENABLE_92_STRICT_EXACT.md) ->
 [whole strict original 2769B Mode6 renderer Boss](ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md) ->
@@ -17,9 +18,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,249 source-present /1,250
-strict units from 268 object/receipt providers, 603 authored-game exact whole
-functions /206,100 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,250 source-present /1,251
+strict units from 269 object/receipt providers, 604 authored-game exact whole
+functions /210,447 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -38,6 +39,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Complete original 4,347B Animation Mode8 renderer, all six native rotation-order cases strict exact
+
+- [CORE/RECON-850 — whole 4,347B/1,063-x86 Mode8 native Animation Draw renderer with six real six-pointer switch modes, 4,372/4,372B strict exact](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md) — immutable original PE independently validates original `0x1BC` frame, 101 actual E8 site/target roles (including 41 folded getter/constructor calls, 18 multiplies and 18 imported X/Y/Z rotations), 39 code-body HIGHLOW and all six separate after-RET case pointers, one real compiler NOP. Natural C++ restores original `Animation+0x493` byte guard, `+0x4A2` real bitfield, every original XYZ rotation ordering, true matrix row pointer and original Graphics/texture/FVF/DrawPrimitive timeline. All **101 E8 physical offsets and 39+6 HIGHLOW field sites/targets** match; seven compiler generated local COFF case/table labels exactly coincide with independently physical PE original code heads; **3,788/3,788 non-relocation code/table bytes identical**. Fresh one-source/one-provider strict replay **4,372/4,372B zero differences**. One genuine original game Boss credited, live **604 whole-authored exact functions /210,447 `.text` bytes**, **1,250 source mappings /1,251 strict units /269 canonical objects**. Enclosing 5,993B Animation Draw main Boss remains distinct NONEXACT; no whole cold replay.
 
 ## Graphics D3D9 depth-write enable state, full 92B original exact
 
