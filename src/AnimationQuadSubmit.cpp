@@ -1,9 +1,9 @@
 // Entire original game renderer quad submission source at 0x0043F6A0,
-// 3,159B /763 genuine native x86. Semantically reconstructed, NONEXACT:
-// pinned MSVC still emits different code. All actual 41 original E8 call
-// target roles (including compiler security cookie) and ALL 96 original
-// in-body PE HIGHLOW target multiplicities are independently recovered.
-// Five original after-return jump-table pointers are also present.
+// 3,159B /763 genuine native x86. Source is still NONEXACT despite the
+// same pinned-MSVC code length/instruction count, all 41 identical native
+// E8 call-site offsets and roles, all 96 PE HIGHLOW target roles (89 exact
+// physical sites), and matching five-pointer switch table / alignment.
+// Stack layout and remaining UV/other instruction bytes still differ.
 // No whole-original parent game-code byte credit without canonical replay.
 #include "AnimationQuadSubmitOwner.hpp"
 #include "Animation.hpp"
@@ -30,26 +30,33 @@ static_assert(offsetof(Animation, parent_55c) == 0x55C);
 #endif
 
 // The original per-channel game math modifies a real 4-byte packed color.
-// Reuse two typed color unions across the original five-mode switch instead
-// of reconstructing the output with unrelated 32-bit shifts and ORs.
-// The original call order processes R, G, B, then A; all 28 color E8 calls
-// remain genuinely observable source operations, not fake padding.
+// Maintain actual four-byte packed channel unions rather than copying every
+// multiply result through extra temporary 32-bit colors. The actual R, G, B,
+// A call sequence is native; no compiler-only do/while(false) branches.
 union SourcePackedColor { std::uint32_t word; AnimationColorChannels fields; };
 static_assert(sizeof(SourcePackedColor) == 4);
-#define ANM_MUL4_COLOR_INTO(value, other, fn) do { \
-    main_color.word = (value); \
+#define ANM_MUL4_COLOR_INTO(packed, other, fn) { \
     other_color.word = (other); \
-    main_color.fields.red = fn(main_color.fields.red, other_color.fields.red); \
-    main_color.fields.green = fn(main_color.fields.green, other_color.fields.green); \
-    main_color.fields.blue = fn(main_color.fields.blue, other_color.fields.blue); \
-    main_color.fields.alpha = fn(main_color.fields.alpha, other_color.fields.alpha); \
-    (value) = main_color.word; \
-} while(false)
+    (packed).fields.red = fn((packed).fields.red, other_color.fields.red); \
+    (packed).fields.green = fn((packed).fields.green, other_color.fields.green); \
+    (packed).fields.blue = fn((packed).fields.blue, other_color.fields.blue); \
+    (packed).fields.alpha = fn((packed).fields.alpha, other_color.fields.alpha); \
+}
+
+// The renderer tint is a live packed color; each channel has a native read.
+#define ANM_MUL4_TINT_INTO(packed, fn) { \
+    (packed).fields.red = fn((packed).fields.red, reinterpret_cast<const SourcePackedColor*>(reinterpret_cast<const std::uint8_t*>(this)+0x7D40E8C)->fields.red); \
+    (packed).fields.green = fn((packed).fields.green, reinterpret_cast<const SourcePackedColor*>(reinterpret_cast<const std::uint8_t*>(this)+0x7D40E8C)->fields.green); \
+    (packed).fields.blue = fn((packed).fields.blue, reinterpret_cast<const SourcePackedColor*>(reinterpret_cast<const std::uint8_t*>(this)+0x7D40E8C)->fields.blue); \
+    (packed).fields.alpha = fn((packed).fields.alpha, reinterpret_cast<const SourcePackedColor*>(reinterpret_cast<const std::uint8_t*>(this)+0x7D40E8C)->fields.alpha); \
+}
+
+// Real renderer fields are read at each use, with no pointer-lifetime alias.
+#define ANM_TEXTURE_CACHE (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E08))
+#define ANM_TEXTURE_READY (*reinterpret_cast<std::uint8_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E0E))
 
 std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
                                                 std::int32_t options) {
-    auto* renderer=reinterpret_cast<AnimationQuadSubmitOwner*>(this);
-
     // The original body offsets are owner +C8/+D0, +CC/+D4. They are not
     // Animation offsets, nor Renderer global coordinates.
     const float dx=*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this)+0xC8)+*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this)+0xD0);
@@ -70,149 +77,147 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
     if (options&1) {
         // Original native 0x00445B80 normalization is a C-runtime float
         // rounding wrapper; exact rounding-mode details remain to verify.
-float snap_left = animation_snap_round(native_quad_vertices[0].position.x);
+        float snap_left = animation_snap_round(native_quad_vertices[0].position.x);
         snap_left -= 0.5f;
-        native_quad_vertices[0].position.x = snap_left;
         native_quad_vertices[2].position.x = snap_left;
+        native_quad_vertices[0].position.x = snap_left;
         float snap_top = animation_snap_round(native_quad_vertices[0].position.y);
         snap_top -= 0.5f;
-        native_quad_vertices[0].position.y = snap_top;
         native_quad_vertices[1].position.y = snap_top;
+        native_quad_vertices[0].position.y = snap_top;
         float snap_right = animation_snap_round(native_quad_vertices[1].position.x);
         snap_right -= 0.5f;
-        native_quad_vertices[1].position.x = snap_right;
         native_quad_vertices[3].position.x = snap_right;
+        native_quad_vertices[1].position.x = snap_right;
         float snap_bottom = animation_snap_round(native_quad_vertices[2].position.y);
         snap_bottom -= 0.5f;
-        native_quad_vertices[2].position.y = snap_bottom;
         native_quad_vertices[3].position.y = snap_bottom;
+        native_quad_vertices[2].position.y = snap_bottom;
     }
 
     // The immutable pointer global at 0x005C5840 is exactly the existing
     // process_graphics current_viewport member at Graphics+0xB00. Bounds
     // +11C/+124 are true typed native ViewportState Vector2 members.
 
-    // Every original clipping comparison independently reads the real
-    // Graphics+0xB00 viewport pointer. Do not cache it once: all 16 genuine
-    // original PE HIGHLOW viewport references must remain observable.
-    if (
-        (native_quad_vertices[0].position.x>=process_graphics.current_viewport->bounds_11c.x ||
-         native_quad_vertices[1].position.x>=process_graphics.current_viewport->bounds_11c.x ||
-         native_quad_vertices[2].position.x>=process_graphics.current_viewport->bounds_11c.x ||
-         native_quad_vertices[3].position.x>=process_graphics.current_viewport->bounds_11c.x) &&
-        (native_quad_vertices[0].position.y>=process_graphics.current_viewport->bounds_11c.y ||
-         native_quad_vertices[1].position.y>=process_graphics.current_viewport->bounds_11c.y ||
-         native_quad_vertices[2].position.y>=process_graphics.current_viewport->bounds_11c.y ||
-         native_quad_vertices[3].position.y>=process_graphics.current_viewport->bounds_11c.y) &&
-        (native_quad_vertices[0].position.x<=process_graphics.current_viewport->bounds_124.x ||
-         native_quad_vertices[1].position.x<=process_graphics.current_viewport->bounds_124.x ||
-         native_quad_vertices[2].position.x<=process_graphics.current_viewport->bounds_124.x ||
-         native_quad_vertices[3].position.x<=process_graphics.current_viewport->bounds_124.x) &&
-        (native_quad_vertices[0].position.y<=process_graphics.current_viewport->bounds_124.y ||
-         native_quad_vertices[1].position.y<=process_graphics.current_viewport->bounds_124.y ||
-         native_quad_vertices[2].position.y<=process_graphics.current_viewport->bounds_124.y ||
-         native_quad_vertices[3].position.y<=process_graphics.current_viewport->bounds_124.y)) {
+    // Every original clipping comparison independently reads Graphics+0xB00:
+    // all 16 original PE HIGHLOW viewport references remain observable.
+    // The native COMISS/JBE comparisons also accept unordered (NaN) inputs.
+    // !(lower > vertex) and !(vertex > upper), not >=/<=, preserve that.
+    // The native offscreen path returns before texture or color submission.
+    if (!(
+        (!(process_graphics.current_viewport->bounds_11c.x>native_quad_vertices[0].position.x) ||
+         !(process_graphics.current_viewport->bounds_11c.x>native_quad_vertices[1].position.x) ||
+         !(process_graphics.current_viewport->bounds_11c.x>native_quad_vertices[2].position.x) ||
+         !(process_graphics.current_viewport->bounds_11c.x>native_quad_vertices[3].position.x)) &&
+        (!(process_graphics.current_viewport->bounds_11c.y>native_quad_vertices[0].position.y) ||
+         !(process_graphics.current_viewport->bounds_11c.y>native_quad_vertices[1].position.y) ||
+         !(process_graphics.current_viewport->bounds_11c.y>native_quad_vertices[2].position.y) ||
+         !(process_graphics.current_viewport->bounds_11c.y>native_quad_vertices[3].position.y)) &&
+        (!(native_quad_vertices[0].position.x>process_graphics.current_viewport->bounds_124.x) ||
+         !(native_quad_vertices[1].position.x>process_graphics.current_viewport->bounds_124.x) ||
+         !(native_quad_vertices[2].position.x>process_graphics.current_viewport->bounds_124.x) ||
+         !(native_quad_vertices[3].position.x>process_graphics.current_viewport->bounds_124.x)) &&
+        (!(native_quad_vertices[0].position.y>process_graphics.current_viewport->bounds_124.y) ||
+         !(native_quad_vertices[1].position.y>process_graphics.current_viewport->bounds_124.y) ||
+         !(native_quad_vertices[2].position.y>process_graphics.current_viewport->bounds_124.y) ||
+         !(native_quad_vertices[3].position.y>process_graphics.current_viewport->bounds_124.y)))) return 0;
         // Original real SpriteData::texture_id at +8, actual custom D3D9
         // texture cache +0x06000E08. Native state transitions flush first.
         SpriteData* sprite=animation->sprite_data();
-        std::uint32_t& cached_texture=*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E08);
-        if (cached_texture!=sprite->texture_id) {
-            cached_texture=sprite->texture_id;
+        if (ANM_TEXTURE_CACHE!=sprite->texture_id) {
+            ANM_TEXTURE_CACHE=sprite->texture_id;
             flush_draws();
             process_graphics.get_device()->SetTexture(
-                0,renderer->texture_for_sprite(cached_texture));
+                0,reinterpret_cast<AnimationQuadSubmitOwner*>(this)->texture_for_sprite(ANM_TEXTURE_CACHE));
         }
-        auto& texture_ready=*reinterpret_cast<std::uint8_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E0E);
-        if (texture_ready!=1) { flush_draws();texture_ready=1; }
+        if (ANM_TEXTURE_READY!=1) { flush_draws();ANM_TEXTURE_READY=1; }
         if ((options&2)==0) {
-            auto channel_mode=animation->base.flags.color_mode;
-            const bool inherited=(animation->base.flags.word_04&(1u<<24))!=0 &&
-                                  animation->parent_55c!=nullptr;
-            const std::uint32_t tint=*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E8C);
-            const bool tinted=*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0;
-            const std::uint32_t color0=animation->base.color_490;
-            const std::uint32_t color1=animation->base.color_494;
             SourcePackedColor main_color;
             SourcePackedColor other_color;
-            switch (channel_mode) {
+            switch (animation->base.flags.color_mode) {
+            default: break;
             case 0:
             case 1: {
-                std::uint32_t color=channel_mode==0?color0:color1;
-                if (inherited) {
-                    ANM_MUL4_COLOR_INTO(color,animation->parent_55c->field_5cc,
+                main_color.word=animation->base.flags.color_mode==0?animation->base.color_490:animation->base.color_494;
+                if (animation->base.flags.bits_04.bit_24 && animation->parent_55c!=nullptr) {
+                    ANM_MUL4_COLOR_INTO(main_color,animation->parent_55c->field_5cc,
                                         multiply_color_128_saturating);
                 }
-                animation->field_5cc=color;
-                if (tinted) {
-                    ANM_MUL4_COLOR_INTO(color,tint,multiply_color_128_saturating);
+                animation->field_5cc=main_color.word;
+                if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) {
+                    ANM_MUL4_TINT_INTO(main_color,multiply_color_128_saturating);
                 }
-                native_quad_vertices[0].color=color;
-                native_quad_vertices[1].color=color;
-                native_quad_vertices[2].color=color;
-                native_quad_vertices[3].color=color;
+                native_quad_vertices[0].color=main_color.word;
+                native_quad_vertices[1].color=main_color.word;
+                native_quad_vertices[2].color=main_color.word;
+                native_quad_vertices[3].color=main_color.word;
                 break;
             }
             case 2:
             case 3: {
-                std::uint32_t a=color0,b=color1;
-                if (tinted) {
-                    ANM_MUL4_COLOR_INTO(a,tint,multiply_color_128_saturating);
-                    ANM_MUL4_COLOR_INTO(b,tint,multiply_color_128_saturating);
+                SourcePackedColor a, b;
+                a.word=animation->base.color_490;
+                b.word=animation->base.color_494;
+                if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) {
+                    ANM_MUL4_TINT_INTO(a,multiply_color_128_saturating);
+                    ANM_MUL4_TINT_INTO(b,multiply_color_128_saturating);
                 }
                 // The real original game has separate four-store branches
                 // for modes 2 and 3 (8 physical color output references),
                 // even though two output colors coincide in both branches.
-                if (channel_mode==2) {
-                    native_quad_vertices[0].color=a;
-                    native_quad_vertices[1].color=b;
-                    native_quad_vertices[2].color=a;
-                    native_quad_vertices[3].color=b;
+                if (animation->base.flags.color_mode==2) {
+                    native_quad_vertices[0].color=a.word;
+                    native_quad_vertices[1].color=b.word;
+                    native_quad_vertices[2].color=a.word;
+                    native_quad_vertices[3].color=b.word;
                 } else {
-                    native_quad_vertices[0].color=a;
-                    native_quad_vertices[1].color=a;
-                    native_quad_vertices[2].color=b;
-                    native_quad_vertices[3].color=b;
+                    native_quad_vertices[0].color=a.word;
+                    native_quad_vertices[1].color=a.word;
+                    native_quad_vertices[2].color=b.word;
+                    native_quad_vertices[3].color=b.word;
                 }
                 break;
             }
             case 4: {
-                std::uint32_t c=color0;
-                ANM_MUL4_COLOR_INTO(c,color1,multiply_color_255);
-                if (inherited) {
-                    ANM_MUL4_COLOR_INTO(c,animation->parent_55c->field_5cc,
+                main_color.word=animation->base.color_490;
+                ANM_MUL4_COLOR_INTO(main_color,animation->base.color_494,multiply_color_255);
+                if (animation->base.flags.bits_04.bit_24 && animation->parent_55c!=nullptr) {
+                    ANM_MUL4_COLOR_INTO(main_color,animation->parent_55c->field_5cc,
                                         multiply_color_128_saturating);
                 }
-                animation->field_5cc=c;
-                if (tinted) {
-                    ANM_MUL4_COLOR_INTO(c,tint,multiply_color_128_saturating);
+                animation->field_5cc=main_color.word;
+                if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) {
+                    ANM_MUL4_TINT_INTO(main_color,multiply_color_128_saturating);
                 }
-                native_quad_vertices[0].color=c;
-                native_quad_vertices[1].color=c;
-                native_quad_vertices[2].color=c;
-                native_quad_vertices[3].color=c;
+                native_quad_vertices[0].color=main_color.word;
+                native_quad_vertices[1].color=main_color.word;
+                native_quad_vertices[2].color=main_color.word;
+                native_quad_vertices[3].color=main_color.word;
                 break;
             }
-            default: break;
             }
         }
-        renderer->prepare_texture_states(animation);
-        const std::uint8_t mode=(animation->base.flags.byte_08>>4)&3u;
-        renderer->select_render_color_mode(mode==3?3:0);
+        reinterpret_cast<AnimationQuadSubmitOwner*>(this)->prepare_texture_states(animation);
+        reinterpret_cast<AnimationQuadSubmitOwner*>(this)->select_render_color_mode(
+            animation->base.flags.bits_08.field_4_5 != 3 ? std::uint8_t{0} : std::uint8_t{3});
 
-        // Real mutable UV values belong to AnimationBase+0x378/0x398 and
-        // +0x78/+0x7C, with true inherited UV scaling at +0x68/+0x6C.
+        // Original base UV reads are vectors_378[0] and [1] (8B stride),
+        // not [0] and [2]; shared UV scaling is +0x398 and +0x68/+0x6C.
+        // The original writes output v1 before base v2, as below.
         native_quad_vertices[0].u=animation->base.vectors_378[0].x+animation->base.field_78;
-        native_quad_vertices[1].u=animation->base.vector_398.x*animation->base.vector_68.x+native_quad_vertices[0].u;
-        native_quad_vertices[2].u=animation->base.vectors_378[2].x+animation->base.field_78;
-        native_quad_vertices[3].u=animation->base.vector_398.x*animation->base.vector_68.x+native_quad_vertices[2].u;
+        native_quad_vertices[1].u=native_quad_vertices[0].u+animation->base.vector_398.x*animation->base.vector_68.x;
+        native_quad_vertices[2].u=animation->base.vectors_378[1].x+animation->base.field_78;
+        native_quad_vertices[3].u=native_quad_vertices[2].u+animation->base.vector_398.x*animation->base.vector_68.x;
         native_quad_vertices[0].v=animation->base.vectors_378[0].y+animation->base.field_7c;
-        native_quad_vertices[2].v=animation->base.vectors_378[2].y+animation->base.field_7c;
-        native_quad_vertices[1].v=animation->base.vector_398.y*animation->base.vector_68.y+native_quad_vertices[0].v;
-        native_quad_vertices[3].v=animation->base.vector_398.y*animation->base.vector_68.y+native_quad_vertices[2].v;
-        renderer->append_quad(native_quad_vertices);
-    }
+        native_quad_vertices[1].v=native_quad_vertices[0].v+animation->base.vector_398.y*animation->base.vector_68.y;
+        native_quad_vertices[2].v=animation->base.vectors_378[1].y+animation->base.field_7c;
+        native_quad_vertices[3].v=native_quad_vertices[2].v+animation->base.vector_398.y*animation->base.vector_68.y;
+        reinterpret_cast<AnimationQuadSubmitOwner*>(this)->append_quad(native_quad_vertices);
     return 0;
 }
 
+#undef ANM_TEXTURE_CACHE
+#undef ANM_TEXTURE_READY
 #undef ANM_MUL4_COLOR_INTO
+#undef ANM_MUL4_TINT_INTO
 } // namespace th20

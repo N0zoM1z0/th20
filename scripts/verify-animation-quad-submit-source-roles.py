@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Whole native 3159B quad-submit parent: original E8 roles vs maintained C++.
+"""Whole original 3159B quad-submit parent: original PE vs source codegen.
 
-This is a deliberately NONEXACT source-coverage proof: it checks all native
-all original call identities/multiplicities AND the physical 96 in-body
-absolute-data relocation target histogram against a complete isolated
-pinned-MSVC compile of this still-NONEXACT game method. We do not conflate
-matching source call/data *roles* with identical x86, reloc offsets or ABI.
+The original and isolated pinned-MSVC C++ candidate have identical code lengths,
+instruction counts, 41 actual E8 call locations/roles and five table locations.
+The 96 in-body original PE HIGHLOW target roles also agree; 89 of their
+physical sites agree. This is deliberately NONEXACT: stack and remaining
+instruction/relocation bytes differ. It is not an accepted canonical unit.
 """
 from collections import Counter
 import importlib.util
@@ -30,7 +30,7 @@ ORIG=module('original_quad',ROOT/'scripts/verify-animation-quad-submit-native.py
 HEAD=0x0043F6A0
 SIZE=3159
 SOURCE=ROOT/'src/AnimationQuadSubmit.cpp'
-OBJECT=ROOT/'build/core829-probe/AnimationQuadSubmitRoles.obj'
+OBJECT=ROOT/'build/core831-probe/AnimationQuadSubmitRoles.obj'
 SYMBOL='?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z'
 ORIGINAL_CALLS={
     0x00445B80:4, 0x00437CD0:1, 0x004455C0:2, 0x00412730:1,
@@ -66,12 +66,19 @@ def verify():
     assert 'AnimationDrawModeOwner::render_quad' in source
     assert all(f'case {i}:' in source for i in range(5))
     assert 'ANM_MUL4_COLOR_INTO' in source
-    assert 'renderer->append_quad(native_quad_vertices)' in source
+    assert 'reinterpret_cast<AnimationQuadSubmitOwner*>(this)->append_quad(native_quad_vertices)' in source
     assert 'union SourcePackedColor' in source
     assert 'SourcePackedColor main_color;' in source
     assert 'process_graphics.current_viewport->bounds_11c.x' in source
-    assert 'if (channel_mode==2)' in source
+    assert 'if (animation->base.flags.color_mode==2)' in source
     assert 'float snap_left' in source
+    assert 'ANM_MUL4_TINT_INTO' in source
+    assert source.index('default: break;') < source.index('case 0:')
+    assert 'if (!(' in source and 'return 0;' in source
+    assert '!(process_graphics.current_viewport->bounds_11c.x>native_quad_vertices[0].position.x)' in source
+    assert '!(native_quad_vertices[3].position.y>process_graphics.current_viewport->bounds_124.y)' in source
+    assert 'native_quad_vertices[2].u=animation->base.vectors_378[1].x' in source
+    assert 'native_quad_vertices[2].v=animation->base.vectors_378[1].y' in source
     command=[str(ROOT/'scripts/compile-probe.sh'),str(SOURCE),str(OBJECT),
              '/nologo','/c','/std:c++20','/Od','/Ob0','/GS','/Gy','/Zl',
              '/arch:SSE2','/fp:precise','/sdl','/EHsc']
@@ -82,23 +89,24 @@ def verify():
         m=re.search(r'complete COFF contribution is (\d+) bytes',str(exc))
         assert m,exc
         generated,rel=COFF.object_function(OBJECT,SYMBOL,int(m.group(1)))
-    assert len(generated)==3232
+    assert len(generated)==3180
     marker=bytes.fromhex('c20800')
     assert generated.count(marker)==1
     end=generated.index(marker)+3
-    assert end==3212
+    assert end==3159
+    assert generated[end:end+1]==b'\x90'
     instructions=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(generated[:end],HEAD))
-    assert len(instructions)==810 and instructions[-1].mnemonic=='ret'
+    assert len(instructions)==763 and instructions[-1].mnemonic=='ret'
     assert instructions[-1].op_str=='8'
     assert instructions[-1].address+instructions[-1].size==HEAD+end
-    # Both the native and our candidate have 5 genuine 32-bit code pointer
-    # data words after the body. The physical original requires one NOP
-    # alignment byte before its table; the different candidate does not.
-    pointers=[r for r in rel if r['type']=='DIR32' and end<=r['offset']<len(generated)]
+    # Native and candidate both place a one-byte NOP and the five 32-bit
+    # mode-table pointer relocations at the same physical relative offsets.
+    pointers=[r for r in rel if r['type']=='DIR32' and end+1<=r['offset']<len(generated)]
     assert len(pointers)==5
     assert Counter(r['symbol'] for r in pointers).most_common(3)[-1][1]==1
     assert sorted(Counter(r['symbol'] for r in pointers).values())==[1,2,2]
-    assert len(generated)-end==20
+    assert len(generated)-end==21
+    assert sorted(r['offset'] for r in pointers)==[3160,3164,3168,3172,3176]
 
     # Verify the original physical game/code paths from real signed E8 fields,
     # including the one compiler-generated security check. Its source target
@@ -118,6 +126,30 @@ def verify():
     ]
     assert observed[0x005429EE]==1
     assert sum(v for k,v in observed.items() if k!=0x005429EE)==40
+    original_call_sites=sorted((i.address-HEAD,
+        (i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xffffffff)
+        for i in ops if i.bytes[0]==0xe8 and len(i.bytes)==5)
+    candidate_call_sites=[]
+    for row in e8:
+        source_targets={target for spelling,target in PROVISIONAL_SOURCE_IDENTITIES.items()
+                        if spelling in row['symbol']}
+        assert len(source_targets)==1
+        candidate_call_sites.append((row['offset']-1,next(iter(source_targets))))
+    assert sorted(candidate_call_sites)==original_call_sites, [
+        (o,c) for o,c in zip(original_call_sites,sorted(candidate_call_sites)) if o!=c
+    ]
+
+    # Native clip comparisons are unordered-inclusive (COMISS/JBE), which
+    # the positive >= and <= C++ comparisons had previously miscompiled.
+    # The source now uses !(a > b), preserving all 16 operand orientations
+    # and the 13 JBE / three JA branches, including NaN cases.
+    native_clips=[ops[i+1].mnemonic for i,x in enumerate(ops[:-1])
+                  if x.mnemonic=='comiss' and HEAD+0x2E0<=x.address<HEAD+0x4E0]
+    candidate_clips=[instructions[i+1].mnemonic for i,x in enumerate(instructions[:-1])
+                     if x.mnemonic=='comiss' and HEAD+0x2E0<=x.address<HEAD+0x4E0]
+    assert len(native_clips)==len(candidate_clips)==16
+    assert native_clips==candidate_clips
+    assert Counter(native_clips)==Counter({'jbe':13,'ja':3})
 
     # Independently retrieve each original PE .reloc HIGHLOW. Target values,
     # multiplicities and the actual self-owned 5-pointer jump table are
@@ -164,14 +196,42 @@ def verify():
     assert candidate_values['jump_table']==1
     assert candidate_values[0x005B25C0]==1
     assert sum(candidate_values.values())==96
+
+    # Field *positions* are now independently compared, not merely their
+    # histograms. The remaining seven misaligned sites are in UV math;
+    # equal histograms and equal code length are never whole-byte exactness.
+    native_sites={(site-HEAD, struct.unpack('<I',ORIG.original.raw_at(
+        image,base,sections,site,4))[0]) for site in physical_sites}
+    native_sites={(offset,'jump_table' if target==ORIG.TABLE else target)
+                  for offset,target in native_sites}
+    candidate_sites=set()
+    for row in body_fields:
+        sym=row['symbol']
+        addend=int(row['addend'])
+        if 'native_quad_vertices@' in sym:target=0x005AEF10+addend
+        elif 'process_graphics@' in sym:target=0x005C4D40+addend
+        elif '__real@3f000000' in sym:target=0x0056E0EC+addend
+        elif '___security_cookie' in sym:target=0x005B25C0+addend
+        else:
+            assert sym.startswith('$LN')
+            target='jump_table'
+        candidate_sites.add((row['offset'],target))
+    matched_sites=len(native_sites&candidate_sites)
+    assert matched_sites>=89 and len(native_sites)==len(candidate_sites)==96
+    assert all(0xB40<=offset<=0xC10 and target in (0x005AEF24,0x005AEF28)
+               for offset,target in native_sites-candidate_sites)
+    # Prologue remains different; no exact acceptance or byte credit.
+    assert original[5]==0x54 and generated[5]==0x4c
     assert len([x for x in relocated if ORIG.TABLE<=x<ORIG.TABLE+20])==5
 
     print('PASS immutable original whole 3159B/763 i386 and all 41 real E8 targets (10 game targets +1 compiler security)')
     print('PASS C++ 41/41 source/real E8 target identities and per-target multiplicities; actual compiler cookie restored naturally')
     print('PASS complete original 96/96 in-body PE HIGHLOW source target MULTIPLICITIES (73 quad vertices, 16 viewport, 4 half, one device, cookie and switch)')
-    print('PASS five original after-RET PE code pointers and five generated C++ switch pointer roles; this is NOT exact table codegen')
+    print('PASS original and candidate 3159B/763 instruction heads, all 41 actual E8 call target roles AND identical instruction offsets')
+    print(f'PASS {matched_sites}/96 physical body HIGHLOW site-and-target pairs plus 5/5 after-RET pointer positions and one native NOP')
+    print('PASS all 16 native COMISS/JBE-or-JA ordered/unordered clip branch identities and real UV source index 1')
     print('PASS 24 saturating and 4 divide-255 real color calls, 4 snap, 2 flush, one 352B append, byte-channel stores across both gradient paths')
-    print(f'NONEXACT candidate: {len(generated)}B full COFF = {end}B executable/{len(instructions)} x86 +20B five-pointer data; original {SIZE}B/{len(ops)} i386 +1-byte pad/20B table')
-    print('NONEXACT: original physical E8/DIR32 OFFSETS/stack/branch code still differ; no parent original .text byte credit')
+    print(f'NONEXACT candidate: {len(generated)}B whole COFF = {end}B executable/{len(instructions)} i386 +1B NOP/20B five-pointer data; original same size/count')
+    print('NONEXACT: original stack frame and seven UV relocation sites/remaining instruction bytes differ; zero parent exact credit')
 
 if __name__=='__main__':verify()

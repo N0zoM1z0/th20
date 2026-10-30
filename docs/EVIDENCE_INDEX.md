@@ -1,10 +1,10 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/MAINT-830):**
+**Current next-agent reading order (CORE/RECON-831):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
-[current 3,159B quad parent 41-E8/96-HIGHLOW source proof](ANIMATION_QUAD_RENDER_3159_41_E8_96_HIGHLOW_TYPED_SOURCE_FRONTIER.md) ->
+[current 3,159B quad parent 41 E8 physical-site convergence](ANIMATION_QUAD_SUBMIT_3159_NATIVE_CONVERGENCE_NONEXACT.md) ->
 [49-mode Animation draw source](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
@@ -29,6 +29,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## 3,159B quad-submit Boss: all 41 original E8 instruction sites, still NONEXACT
+
+- [CORE/RECON-831 — original-length 3,159B/763-x86 quad submit with full physical 41-E8 site convergence](ANIMATION_QUAD_SUBMIT_3159_NATIVE_CONVERGENCE_NONEXACT.md) — source/independent PE now agree on the **entire original code length and instruction count**, **41/41 actual E8 instruction offsets and target roles**, **96/96 in-body HIGHLOW target multiplicities and 89/96 identical original relocation sites**, all 16 viewport COMISS branch roles, and the original NOP/five pointer jump table at identical positions. The original `vectors_378[1]` UV source and unordered clipping behavior are corrected; native source remains **NONEXACT** due to true stack, UV and opcode bytes. Zero exact replay units affected; no changed canonical providers and no extra game credit. Previous CORE/RECON-829 3,212B/810-x86 candidate below is historical, not the live source.
 
 ## 3,159B renderer quad-submit Boss: complete 41 E8 /96 HIGHLOW source-role graph, still NONEXACT
 
