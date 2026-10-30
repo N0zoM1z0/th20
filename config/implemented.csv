@@ -1387,3 +1387,4 @@ th20::NativeParticleGridGroup::configure_45cfe0
 th20::NativeParticleGridGroup::slot_0c
 th20::normalize_vector3_45cf10
 "std::array<th20::Vector3,200>::operator[]"
+th20::NativeVectorInterpolationConfigView::configure_45d190

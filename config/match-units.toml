@@ -24935,3 +24935,23 @@ symbol = "??A?$array@UVector3@th20@@$0MI@@std@@QAEAAUVector3@th20@@I@Z"
 target_address = 0x0045C2C0
 size = 20
 relocations = []
+
+# CORE/RECON-955: complete original 124B Vector3 interpolation with
+# six source-level parameters, original typed setters and native Timer.
+[units.animation_particle_interpolation_config_124]
+source = "src/AnimationParticleInterpolationConfig124.cpp"
+object = "build/core955-canonical/AnimationParticleInterpolationConfig124.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeVectorInterpolationConfigView::configure_45d190"]
+symbol = "?configure_45d190@NativeVectorInterpolationConfigView@th20@@QAEXHHABUVector3@2@000@Z"
+target_address = 0x0045D190
+size = 124
+relocations = [
+ { offset = 0x0F, type = "REL32", symbol = "?set_duration@?$Interpolation@UVector3@th20@@@th20@@QAEXH@Z", target = 0x00438E70 },
+ { offset = 0x1B, type = "REL32", symbol = "?set_mode@?$Interpolation@UVector3@th20@@@th20@@QAEHH@Z", target = 0x004394F0 },
+ { offset = 0x27, type = "REL32", symbol = "?set_start@?$Interpolation@UVector3@th20@@@th20@@QAEXABUVector3@2@@Z", target = 0x004393F0 },
+ { offset = 0x33, type = "REL32", symbol = "?set_end@?$Interpolation@UVector3@th20@@@th20@@QAEXABUVector3@2@@Z", target = 0x00438A90 },
+ { offset = 0x3F, type = "REL32", symbol = "?set_tangent_start@?$Interpolation@UVector3@th20@@@th20@@QAEXABUVector3@2@@Z", target = 0x00439480 },
+ { offset = 0x4B, type = "REL32", symbol = "?set_tangent_end@?$Interpolation@UVector3@th20@@@th20@@QAEXABUVector3@2@@Z", target = 0x00438B20 },
+ { offset = 0x71, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]

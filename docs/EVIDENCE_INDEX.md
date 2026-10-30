@@ -46,6 +46,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-951 — entire native 202B/58-x86 Vector3 epsilon normalization](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). Original immutable PE 2 E8 and one genuine HIGHLOW to native 0.01f, SSE3 lanes and real `comiss/jbe`, copy near zero versus three divisions. One natural C++20 source **202/202 strict exact**, **+202 authored game code bytes**; source-specific local replay only.
 
+## Original 124B Vector3 interpolation configuration method whole strict exact
+
+- [CORE/RECON-955 — entire original 124B/45-i386 six-parameter `VectorInterpolation` setup](ANIMATION_PARTICLE_INTERPOLATION_124_STRICT_EXACT.md). Seven native E8, zero HIGHLOW; natural typed duration/mode/start/end/tangent setters, current vector and Timer zero. **124/124 canonical strict exact**, one new authored original function/+124 game bytes. Its direct 57B parent and 2,884B Update remain distinct.
+
 ## Original native 20B Vector3×200 index helper whole strict exact
 
 - [CORE/RECON-954 — complete original 20B/9-i386 `std::array<Vector3,200>::operator[]`](ANIMATION_PARTICLE_GRID_VECTOR_INDEX_20_STRICT_EXACT.md). Four physically original E8 in the 2,884B particle Update Boss, 12B array stride, no relocation fields; ordinary natural MSVC C++20 **20/20 strict exact**. Original STL/template origin unverified, **zero authored game bytes**; parent remains SOURCE ABSENT.
@@ -249,9 +253,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,389 source-present mappings, 1,389
-strict units from 350 pinned object/receipt providers, and 670 distinct
-original authored whole-exact game functions /241,394 `.text` bytes**.
+**Current verified checkpoint:** **1,390 source-present mappings, 1,390
+strict units from 351 pinned object/receipt providers, and 671 distinct
+original authored whole-exact game functions /241,518 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

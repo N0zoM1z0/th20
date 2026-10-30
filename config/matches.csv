@@ -669,3 +669,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0045CFE0,th20::NativeParticleGridGroup::configure_45cfe0,31,matching,100.00,animation_particle_grid_config_31,CORE/RECON-949; docs/ANIMATION_PARTICLE_GRID_CREATE47_CONFIG31_STRICT_EXACT.md
 0x0045CEB0,th20::NativeParticleGridGroup::slot_0c,92,matching,100.00,animation_particle_grid_stop_92,CORE/RECON-950; docs/ANIMATION_PARTICLE_GRID_STOP92_STRICT_EXACT.md
 0x0045CF10,th20::normalize_vector3_45cf10,202,matching,100.00,animation_particle_grid_normalize_202,CORE/RECON-951; docs/ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md
+0x0045D190,th20::NativeVectorInterpolationConfigView::configure_45d190,124,matching,100.00,animation_particle_interpolation_config_124,CORE/RECON-955; docs/ANIMATION_PARTICLE_INTERPOLATION_124_STRICT_EXACT.md
