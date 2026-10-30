@@ -49,8 +49,9 @@ The genuine eight PE HIGHLOW fields are one cookie
 `0x0056E0F8`, two 1.0f `0x0056C8CC`, and two Graphics owner globals
 `0x005C4D40`. The original independently authenticates a game
 **104B caller** at `0x0045FAA0` with an actual direct E8 at
-`0x0045FAFB` into the 1,204B polygon Boss. That original caller is
-not made exact by this result.
+`0x0045FAFB` into the 1,204B polygon Boss. That original caller now has a
+[complete but still NONEXACT semantic source](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md);
+it is not credited as native exact.
 
 The genuine 72B and 77B original compound value-return operators were
 first recovered independently as
@@ -145,8 +146,8 @@ The new method declaration extends the shared
 sources in the affected header include closure are recompiled and
 strictly replayed individually. The separate **5,993B Animation Draw
 parent remains NONEXACT** and gets only its focused role/switch
-regression. The newly recovered real 104B caller also remains
-source-absent. No unfiltered full-graph cold replay is run.
+regression. The real 104B caller has a separate source-present NONEXACT
+semantic reconstruction and does not earn exact credit. No unfiltered full-graph cold replay is run.
 
 This credits **one unique whole original authored game function and
 1,204 real `.text` bytes**, not the existing exact math/Graphics/

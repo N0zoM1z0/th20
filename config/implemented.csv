@@ -1276,3 +1276,5 @@ th20::NativeAnimationCornerProjector::project_rotated_corners_43ef20
 th20::Vector2::operator*=
 th20::Vector2::operator+=
 th20::AnimationDrawDetailedOwner::draw_polygon_outline_43d370
+th20::NativeMotionPolygonOwner::draw_polygon_fan_45fb10
+th20::NativeMotionPolygonOwner::draw_polygon_outline_45faa0
