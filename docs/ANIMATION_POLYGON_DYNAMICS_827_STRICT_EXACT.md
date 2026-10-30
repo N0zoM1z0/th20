@@ -1,5 +1,7 @@
 # CORE/RECON-901 — complete original 827-byte polygon dynamics Boss strict exact
 
+> **Later CORE/RECON-902 progress:** [27 additional original STL-like range closure functions](ANIMATION_POLYGON_DROP_CLOSURE_27_STRICT_EXACT.md) are now whole native strict exact (811B), with original authorship still unknown. Live source/unit counts below were taken before that separate helper batch; the game-authored 638/234,629B total is unchanged.
+
 The immutable Japanese TH20 v1.00a Steamless target is SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The **entire original game-authored 827B /237-i386 function at `0x0045F670`**

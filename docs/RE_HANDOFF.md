@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,301** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,300**, from **300** pinned MSVC objects and **300** matching receipts |
+| Source-present function mappings | **1,328** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,327**, from **300** pinned MSVC objects and **300** matching receipts |
 | Credited original authored-game whole exact | **638 distinct function heads /234,629 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -80,6 +80,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 
 | Original head / subsystem | Whole strict status |
 | --- | --- |
+| Polygon native C++20 range closure | **27 additional whole strict exact C++20 STL-like helpers /811 original physical bytes**, spanning `std::array`, ref-view, iterators and shared `std::min`. **No authored game credit**; all origins remain review. [27-body proof](ANIMATION_POLYGON_DROP_CLOSURE_27_STRICT_EXACT.md). |
 | `0x0045F670` polygon dynamics update | **827B /237-i386 whole strict exact**, all **31 E8 and ten HIGHLOW** physical sites/targets; both original C++20 `drop(1)` arrays, 62/61 bounds, float clamp and closing point. [Complete original proof](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). |
 | `0x0053B5C0` ECL runtime tick | **11,110B** [exact](EXACT_ECL_TICK_RECONSTRUCTION.md) |
 | `0x004818E0` Bullet emitter | **3,735B original body** and **3,832B compiler contribution** [exact](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md) |
@@ -90,8 +91,9 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | Exact original game data | **96B corner axes**, **8B polygon scalar constants**, **72B Player direction table** are genuine `.rdata` data, **not additional authored `.text` code credit**. [Corner data](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md), [polygon data](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md), [Player table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
 
 Original-sourced **23B/19B native array helpers**, **31B/31B tag
-forwarders** and **seven 19B–32B counted-range helpers** are independently
-strict exact but may be STL/compiler instantiations. Their provenance
+forwarders**, **seven 19B–32B counted-range helpers**, **four 16B/93B
+drop-view helpers**, and **27 more 17B–48B range closure helpers** are
+independently strict exact but may be STL/compiler instantiations. Their provenance
 stays `unknown/review`; **do not add them to authored game totals** without
 proof. Likewise the genuine 20B standard-header `round(float)` wrapper
 is `library/exclude`.
