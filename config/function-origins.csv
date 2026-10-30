@@ -1614,7 +1614,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045EC10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045ECA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045ECC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045ECC0,unknown,CxxContainer,review,pending,"CORE/RECON-909; docs/CXX_FORWARD_REF_SLOT_42_STRICT_EXACT.md; full 42B original PE plus canonical i386 C++17 object exact, likely C++ reference-forwarding template but no proof of original class or authored origin"
 0x0045ECF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045ED60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045ED90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

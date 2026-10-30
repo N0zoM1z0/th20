@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Whole exact original C++ reference-forwarding constructor
+
+- [CORE/RECON-909 — 42B /17-i386 original forwarded-reference slot constructor whole native strict exact](CXX_FORWARD_REF_SLOT_42_STRICT_EXACT.md): two real E8 to the original folded 8B helper, zero HIGHLOW, and independent original caller at 0x0045EE77. One new C++17 object/unit passes whole canonical 42/42 relocation-aware replay. Nominal C++ type and game-vs-STL provenance unproven, **zero authored-game code credit**.
+
 ## Completed native originals and recent source provenance
 
 - [Complete 3,159B quad-submit Boss](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
@@ -68,8 +72,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,334 source-present mappings, 1,333
-strict units from 304 pinned object/receipt providers, and 640 distinct
+**Current verified checkpoint:** **1,335 source-present mappings, 1,334
+strict units from 305 pinned object/receipt providers, and 640 distinct
 original authored whole-exact game functions /234,802 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py

@@ -23915,3 +23915,18 @@ relocations = [
   { offset = 0xB, type = "REL32", symbol = "??1NativePolygonMotionGroup@th20@@UAE@XZ", target = 0x0045C2A0 },
   { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
 ]
+
+# CORE/RECON-909: native C++ forwarding ref slot; compiler/template origin
+# remains unknown and must not be credited as authored-game .text bytes.
+[units.cxx_forward_ref_slot_42]
+source = "src/CxxForwardRefSlot42.cpp"
+object = "build/core909-canonical/CxxForwardRefSlot42.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeForwardedRefSlot::NativeForwardedRefSlot(std::uint32_t&)"]
+symbol = "??0NativeForwardedRefSlot@th20@@QAE@AAI@Z"
+target_address = 0x0045ECC0
+size = 42
+relocations = [
+  { offset = 0xC, type = "REL32", symbol = "??$forward@AAI@std@@YAAAIAAI@Z", target = 0x0040B280 },
+  { offset = 0x15, type = "REL32", symbol = "??$forward@AAI@std@@YAAAIAAI@Z", target = 0x0040B280 },
+]

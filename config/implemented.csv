@@ -1332,3 +1332,4 @@ th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot
 "std::array<th20::NativePolygonSegmentSlot,3>::array"
 th20::NativePolygonMotionGroup::NativePolygonMotionGroup(Animation*)
 th20::NativePolygonMotionGroup::scalar_deleting_destructor
+th20::NativeForwardedRefSlot::NativeForwardedRefSlot
