@@ -6,7 +6,6 @@
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
-[complete strict 1996B Animation mode7 matrix preparation](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) ->
 [whole strict 1,996B Animation mode7 setup Boss](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) ->
 [whole strict 753B Animation mode7 render Boss](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md) ->
 [two newly strict original Animation depth functions](ANIMATION_DEPTH_MATH_25_70_STRICT_EXACT.md) ->
