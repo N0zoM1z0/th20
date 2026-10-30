@@ -32,7 +32,8 @@ ACTIVE_PROBE_DIRECTORIES = frozenset(
         "core360-probes", "core363-pos", "core364-probes",
         "core418-probes", "core419-probes", "core428-probes",
         "core456-probes", "core457-probes", "core459-probes",
-        # Still-open EnemyState mesh and archive compression.
+        # Still-open EnemyState mesh and historical archive codegen evidence.
+        # The original archive LZSS compressor itself is now whole strict exact.
         "core384-probes", "core388-probes",
         # Selected original Bullet emitter codegen benchmarks. The 3,735B
         # emitter is now STRICT EXACT; these are dated private diagnostics,
@@ -42,6 +43,14 @@ ACTIVE_PROBE_DIRECTORIES = frozenset(
         "core626-probes",
         # The adjacent nonexact Player movement and 3,111B frame probes.
         "core541-probes", "core558-probes",
+        # CORE/RECON-894 active still-NONEXACT source frontier: original
+        # 5,993B Animation Draw, Player 555B, 1,486B rotated corner,
+        # 104B polygon wrapper and 827B dynamics. Keep the actual working
+        # candidate objects, not just their code/proof text. Historical
+        # now-exact 120B/233B/296B/2,169B/4,347B variants can be retired.
+        "core835-probe", "core872-probe", "core873-probe",
+        "core877-probe", "core881-probe", "core894-probe",
+        "core897-probe", "core898-probe",
     }
 )
 

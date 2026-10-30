@@ -12,19 +12,29 @@ are complete. Current reconstruction counts and open boundaries are recorded in
    switch pointers** and 38 function-body HIGHLOW are independently known;
    the parent is still **SOURCE-ABSENT / NONEXACT**. [Current original CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md),
    [original PE call verifier](../scripts/verify-bullet-command-call-coverage.py).
-2. Resolve both **source-present large Animation bosses**: the **5,993B
-   49-mode draw dispatcher** has all 123 original E8 roles but a different
-   compiled switch layout, and the **3,159B quad submission** has all 41 E8
-   and 96 original HIGHLOW source-target roles but a longer x86 body.
-   Their **2,725B texture/sampler** and **1,163B blend state** children are
-   independently whole strict exact. [Draw source gap](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md),
-   [quad current gap](ANIMATION_QUAD_RENDER_3159_41_E8_96_HIGHLOW_TYPED_SOURCE_FRONTIER.md).
-3. Continue the **3,111B Player main** register/stack-lifetime gap,
-   **555B Player movement** SSE spill and **273B Bullet draw group**
-   SSE-temporary gap using only natural C++ source experiments. The
-   **3,735B Bullet emitter, 1,404B Bullet command 11 and original
-   73B Animation factory are already whole-native strict exact**;
-   do not repeat their old unclosed-compiler hypotheses as live work.
+2. Recover the **5,993B 49-mode Animation Draw dispatcher**, which is
+   **SOURCE-PRESENT, NONEXACT** despite a native-length 5,993B/1,501-x86
+   candidate and 49+31 original switch pointers. All 123 E8 callee
+   targets are known but only 86 physical E8 sites currently align;
+   the mode35/36 x87 spill and late SSE/stack layout remain open.
+   The separate **3,159B quad-submit Boss is already whole strict
+   exact** (3,180B with genuine NOP and table), as are its 2,725B
+   texture/sampler and 1,163B blend-state children. The historical
+   3,212B quad candidate is superseded. [Current Draw frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md),
+   [accepted quad-submit proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md).
+3. Attack the **827B polygon dynamics Boss** next to its already
+   whole-exact **140B group tick** and seven original-native-exact
+   counted-range iterator helpers: reconstruct the two real range
+   factory, sentinel, comparison and loop-bound sequences rather than
+   claiming the current 513B/137-x86 high-level candidate exact.
+   Then resolve the **104B polygon-outline wrapper** ESI lifetime and
+   **1,486B rotated-corner projection** native constructor NOP.
+   Continue the **3,111B Player main**, **555B Player movement**, and
+   **273B Bullet draw group** native codegen gaps. [Polygon frontier](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md),
+   [104B wrapper](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md),
+   [Player operand frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md).
+   The **3,735B Bullet emitter, 1,404B command-11 and 73B Animation
+   factory** are already whole strict exact; do not reopen old hypotheses.
 4. Reconstruct full source and control flow of the **39,470B Animation
    VM update** and separate **41,967B Enemy ECL opcode dispatcher**;
    exact child parsers and typed Laser lifetimes do not close either

@@ -1,5 +1,15 @@
 # CORE/RECON-829 — 3,159-byte original quad submission Boss, fully sourced but NONEXACT
 
+**SUPERSEDED HISTORICAL SOURCE CANDIDATE (CORE/MAINT-896).** This
+report accurately records an *earlier NONEXACT experiment*, not current
+quad-submit acceptance. The actual 3,159B parent is now **whole strict
+exact**, including its 3,180B NOP/case-table compiler contribution; see
+[the accepted original PE/COFF proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md).
+Its genuine 20B `round(float)` sibling is a
+[standard-library method](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md),
+not authored-game code. Do not reopen the obsolete 3,212B candidate as
+current work. Dated raw observations below are retained for provenance.
+
 This report records the **complete maintained C++ source**, not a strict native
 match, for the original game-authored renderer method at `0x0043F6A0`.
 It is independently compared with the locked Japanese TH20 v1.00a Steamless

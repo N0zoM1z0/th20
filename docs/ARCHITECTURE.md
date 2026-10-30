@@ -37,7 +37,7 @@ acceptance boundaries; a complete declaration may still have undefined methods.
 | Scheduler | Actual controller/nodes, observed lists, sorted registration/dispatch and scalar allocation/release | Unlocked removal emission and process-global startup |
 | Player/Bomb/Bullet/Item/Hit | Typed ownership, pools, Context publication, SHT/damage consumers, Hit allocation/lifecycle and Item spawning | Whole damage query, full gameplay, resource callbacks and remaining controller factories |
 | Archive/File/Progress | Real PMR/heap ownership, cipher/LZSS, file I/O, typed records, load/parse/serialization and destruction; **whole original 1,036B compressor and 706B decoder are already strict exact** | Remaining File write/SaveManager emission, integration and startup |
-| Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned mesh allocation/retirement, real 28-byte quad vertices; **2,725B texture/sampler-state** and **1,163B blend-state** D3D9 renderer bosses each whole strict exact, with real PE switch tables | 3,159B quad submission and 5,993B draw dispatcher have complete C++ but are **NONEXACT**; whole renderer creation, mesh/resource integration and full-program linkage remain open |
+| Graphics/mesh | Actual Graphics, device/format accessors, RenderMesh, owned mesh allocation/retirement, real 28-byte quad vertices; **2,725B texture/sampler-state** and **1,163B blend-state** D3D9 renderer bosses each whole strict exact, with real PE switch tables | 3,159B quad submission is **whole strict exact** (3,180B including genuine NOP/case table); the separate 5,993B Animation Draw dispatcher is **SOURCE-PRESENT/NONEXACT**; renderer creation, mesh/resource integration and full-program linkage remain open |
 | Sound | Actual SoundInf storage and loading/preload protocol | Whole dispatcher, startup and resource-owning retirement |
 | Platform/UI | Verified window/input/value/menu components; complete FrontInf, AsciiInf and Dialogue storage/construction, real ready/callback routing and Laser cancellation receiver | Native Dialogue/HUD/text resource retirement and frame execution, follow-box geometry, complete scene owners, OS resources and global initialization |
 
@@ -57,12 +57,17 @@ NONEXACT, despite **208/210 native original E8 occurrences** now mapping
 to wholly strict-exact game-callee sources; the other two direct calls are
 compiler runtime, not outstanding game helper implementations. Its genuine
 34+8+11 switch pointer groups remain a complete-original-CFG challenge.
-The whole **5,993B Animation draw Boss** and **3,159B quad submit Boss** are
-both maintained typed **SOURCE-PRESENT but NONEXACT** C++; their 123 and 41
-original E8 role multiplicities are accounted for, without matching the
-complete instruction/code/relocation layout. The original **3,735B Bullet
-emitter is already whole strict exact**; its earlier one-instruction
-compiler frontier was superseded.
+The **5,993B Animation Draw dispatcher** is still maintained typed
+**SOURCE-PRESENT/NONEXACT** C++; its 123 original E8 callee roles and
+49+31 switch pointers are known, but physical site and stack-layout
+bytes differ. The **3,159B quad-submit Boss** is separately now
+**whole strict exact**, including the genuine original NOP and case
+pointers (**3,180/3,180B relocated contribution**) and an independent
+**20B standard-header `round(float)` library/excluded wrapper**.
+The **3,735B Bullet emitter is also whole strict exact**; older
+quad/emitter NONEXACT frontiers are superseded. See
+[full quad proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md) and
+[current Draw frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md).
 
 The independent ECL Runtime tick at 0x0053B5C0 is accepted with its complete
 11,504-byte compiler contribution (11,110B game-body coverage), including

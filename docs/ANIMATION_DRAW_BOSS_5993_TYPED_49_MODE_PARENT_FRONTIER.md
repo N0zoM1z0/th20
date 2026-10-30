@@ -1,5 +1,14 @@
 # CORE/RECON-800 — the original entire 5,993B Animation draw Boss now has one maintained 49-mode typed C++ parent source (NONEXACT)
 
+**SUPERSEDED COMPILER CANDIDATE (CORE/MAINT-896).** The native 5,993B
+Draw parent **still is NONEXACT**, but the current C++ candidate also
+emits **5,993B/1,501 x86** and original 49+31 direct switch pointers.
+The **old 5,141B/1,358-x86 candidate and the note that its 3,159B
+quad-submit child is NONEXACT are historical**, not live status.
+Read the [current full-length Draw frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)
+and [whole strict quad-submit child](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
+before editing. The original evidence below remains dated and intact.
+
 > **Subsequent CORE/RECON-802:** The original 3,159B quad submission callee used by five exact renderer modes now has typed C++ source, still NONEXACT; [whole semantic frontier and full original PE proof](ANIMATION_QUAD_RENDER_3159_TYPED_SOURCE_FRONTIER_AND_COLOR_80_EXACT.md). This is not extra original byte credit for the 5,993B draw Boss.
 
 Original immutable target: Japanese TH20 v1.00a Steamless,

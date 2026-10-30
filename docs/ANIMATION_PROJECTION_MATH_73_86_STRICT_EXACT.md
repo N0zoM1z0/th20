@@ -1,5 +1,11 @@
 # CORE/RECON-841 — two complete original Animation projection/math helpers: 73B and 86B strict exact
 
+**LATER ACCEPTANCE NOTE (CORE/MAINT-896).** Both 73B/86B math helpers
+remain whole strict exact; their original **1,378B Mode6 geometry
+preparation caller is also now independently whole strict exact**.
+The opening historical description of that caller as unfinished is no
+longer current. [Original 1,378B acceptance](ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md).
+
 The immutable locked Japanese TH20 v1.00a Steamless original executable,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`,
 contains two separate physical gameplay projection helpers called from the

@@ -1,5 +1,14 @@
 # CORE/MAINT-830 — current agent handoff correction and protected probe storage retirement
 
+**HISTORICAL STORAGE SNAPSHOT (CORE/MAINT-830), SUPERSEDED.** This
+report preserves the earlier **259 canonical objects /589 credited
+game methods** and its own **27.26 MiB** guarded deletion as they were
+verified then. Current coverage, active probes, counts and cleanup
+protection are in the [live handoff](RE_HANDOFF.md) and the subsequent
+[CORE/MAINT-896 storage audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
+The earlier 3,159B quad parent NONEXACT claim below is **also superseded
+by whole native strict exact acceptance**.
+
 **Date: 2026-10-30.** This is a **documentation and ignored-product cleanup**
 after [the separately committed original-PE-backed 3,159B quad parent source
 refinement](ANIMATION_QUAD_RENDER_3159_41_E8_96_HIGHLOW_TYPED_SOURCE_FRONTIER.md)

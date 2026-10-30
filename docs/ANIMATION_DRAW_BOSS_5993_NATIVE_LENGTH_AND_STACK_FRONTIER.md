@@ -1,5 +1,13 @@
 # CORE/RECON-835 — native-length 5,993B Animation Draw Boss / 0x204 frame (still NONEXACT)
 
+**STATUS NOTE (CORE/MAINT-896).** This original 5,993B parent
+**remains SOURCE-PRESENT/NONEXACT**. Its same-length 1,501-instruction
+candidate, original case tables and E8 target order do not equal the
+original full relocated code. All exact children are separate
+original functions; live counts and next steps are in the
+[current handoff](RE_HANDOFF.md). Numeric experiment snapshots below
+are dated and need not be summed as live coverage.
+
 This is a **fresh source-level convergence checkpoint**, not a strict native
 admission. The independently locked Japanese TH20 v1.00a Steamless PE
 (SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`)

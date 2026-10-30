@@ -1,5 +1,13 @@
 # CORE/RECON-854 — complete 78B original game shape XY transform strict exact
 
+**LATER ACCEPTANCE NOTE (CORE/MAINT-896).** The distinct original
+**1,980B rectangle, 2,169B closed LINESTRIP and 1,601B triangle
+callers** of this 78B leaf are now each **whole strict exact**; their
+historical source-absent labels in this report are superseded.
+[Rectangle](ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md),
+[closed LINESTRIP](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md),
+[triangle](ANIMATION_SHAPE_TRIANGLE_1601_STRICT_EXACT.md).
+
 The selected locked Japanese TH20 v1.00a Steamless executable, original
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`,
 contains a native **78B /20-i386** game-owned 2D shape coordinate helper at

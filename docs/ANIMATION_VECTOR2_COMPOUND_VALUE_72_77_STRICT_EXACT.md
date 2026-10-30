@@ -1,5 +1,11 @@
 # CORE/RECON-879 — original 72B/77B Vector2 compound value-return operators, whole-native strict exact
 
+**LATER ACCEPTANCE NOTE (CORE/MAINT-896).** The 72B and 77B leaves
+remain whole strict exact. The original **1,204B polygon outline caller
+has since become whole strict exact**, too; its old SOURCE-ABSENT state
+in this dated evidence is superseded. [Entire 1,204B original-native
+proof](ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md).
+
 The locked original Japanese TH20 v1.00a Steamless executable SHA-256 is
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 Two original **game-authored value operations** are now restored using real

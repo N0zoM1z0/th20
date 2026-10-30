@@ -1,54 +1,70 @@
-# Focused evidence index
+# TH20 original-native evidence index
 
+**Live navigation, reconciled 2026-10-30 (CORE/MAINT-896).** For the live
+repository status, **first read the [current handoff](RE_HANDOFF.md)**,
+[accepted author-code ledger](../config/matches.csv), and
+[strict unit graph](../config/match-units.toml). The following detailed
+investigations preserve their **original dated checkpoint observations**;
+earlier `NONEXACT`, missing-source, object-count or scope claims are
+not current facts when newer canonical units supersede them.
 
-**Current next-agent reading order (CORE/RECON-894):**
-[current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
-[original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
-[strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
-[current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
-[whole strict 140B dynamic tick, seven original exact range leaves and 827B NONEXACT Boss](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md) ->
-[whole strict original 47B cdecl registry-to-polygon group wrapper](ANIMATION_POLYGON_REGISTRY_WRAPPER_47_STRICT_EXACT.md) ->
-[whole strict original 120B palette Boss and two 31B tag leaves plus exact 8B native data](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md) ->
-[whole strict original 296B polygon group configuration Boss](ANIMATION_POLYGON_GROUP_CONFIG_296_STRICT_EXACT.md) ->
-[whole original strict 233B Motion polygon group Boss and two original 23B/19B pointer helpers](ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md) ->
-[whole strict original 76B filled-fan Motion polygon caller and NONEXACT 104B sibling](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md) ->
-[whole original strict 1204B polygon stroke Boss with unusual cursor accounting](ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md) ->
-[whole strict original 72B/77B Vector2 compound value-return leaves for 1204B polygon stroke](ANIMATION_VECTOR2_COMPOUND_VALUE_72_77_STRICT_EXACT.md) ->
-[complete original 96B exact corner data and near-native 1486B rotated-corner NONEXACT source](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md) ->
-[whole strict original 985B four-corner projector and two 455B colored draw functions](ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md) ->
-[whole strict original 375B point, 809B alternating fan and 583B alternating line](ANIMATION_SHAPE_FINAL_THREE_375_809_583_STRICT_EXACT.md) ->
-[whole strict original 660B ellipse outline and 863B elliptic fan](ANIMATION_SHAPE_ELLIPTIC_660_863_STRICT_EXACT.md) ->
-[whole strict original 899B alternating-radius triangle strip](ANIMATION_SHAPE_ALTERNATING_899_STRICT_EXACT.md) ->
-[whole strict original 1001B rotated ring and 1116B two-point line](ANIMATION_SHAPE_ROTATEDRING_1001_TWOPOINT_1116_STRICT_EXACT.md) ->
-[whole strict original 541B simple circular and 766B dual-radius polar strips](ANIMATION_SHAPE_POLAR_LINES_541_766_STRICT_EXACT.md) ->
-[whole strict original 971B rounded LINESTRIP Boss](ANIMATION_SHAPE_ROUNDEDLINE_971_STRICT_EXACT.md) ->
-[whole strict original 755B simple TRIANGLEFAN Boss](ANIMATION_SHAPE_SIMPLEFAN_755_STRICT_EXACT.md) ->
-[whole strict original 1174B rounded-fan Boss](ANIMATION_SHAPE_ROUNDEDFAN_1174_STRICT_EXACT.md) ->
-[whole strict original 240B outline wrapper leaf](ANIMATION_SHAPE_OUTLINE_240_STRICT_EXACT.md) ->
-[whole strict original 1601B 3-vertex triangle Boss](ANIMATION_SHAPE_TRIANGLE_1601_STRICT_EXACT.md) ->
-[whole strict original 2169B closed line-strip Boss](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) ->
-[whole strict original 1980B 4-vertex rectangle Boss](ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md) ->
-[whole strict original 78B shape XY transformation](ANIMATION_SHAPE_XY78_STRICT_EXACT.md) ->
-[whole strict original 1468B polygon ring generator](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md) ->
-[whole strict original 4347B Mode8 six-order renderer Boss](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md) ->
-[whole strict original 534B strip11 renderer](ANIMATION_DRAW_STRIP_MODE11_534_STRICT_EXACT.md) ->
-[whole strict original 612B strip9 renderer](ANIMATION_DRAW_STRIP_MODE9_612_STRICT_EXACT.md) ->
-[whole strict original 2136B mesh24/25 renderer Boss](ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md) ->
-[strict 92B Graphics depth-write enable leaf](GRAPHICS_DEPTH_WRITE_ENABLE_92_STRICT_EXACT.md) ->
-[whole strict original 2769B Mode6 renderer Boss](ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md) ->
-[whole strict 1378B Mode6 screen-projection Boss](ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md) ->
-[two strict Mode6 projection math helpers](ANIMATION_PROJECTION_MATH_73_86_STRICT_EXACT.md) ->
-[whole strict 1,996B Animation mode7 setup Boss](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) ->
-[whole strict 753B Animation mode7 render Boss](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md) ->
-[two newly strict original Animation depth functions](ANIMATION_DEPTH_MATH_25_70_STRICT_EXACT.md) ->
-[three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
-[source ownership](SOURCE_MAP.md) ->
-[latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,297 source-present /1,295
-strict units from 299 object/receipt providers, 637 authored-game exact whole
-functions /233,802 original `.text` bytes**. Historical snapshot counts
-below are not updated or added together. Confirm live state from the
-[reporter](../scripts/report-reconstruction-status.py), not dated prose.
+## Reading order for outstanding original Bosses
+
+- **12,140B Bullet extended command — SOURCE-ABSENT:**
+  [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md)
+  and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).
+- **41,967B Enemy ECL — SOURCE-ABSENT:**
+  [original opcode graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md).
+  The original **39,470B Animation VM update** is also source-absent;
+  see [source ownership](SOURCE_MAP.md).
+- **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**
+  [latest native x87/stack frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)
+  and [independent target-role verifier](../scripts/verify-animation-draw-boss-source-roles.py).
+  The [3,159B quad-submit parent](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
+  and other render children are **already exact**, not the dispatcher.
+- **827B polygon dynamics — SOURCE-PRESENT, NONEXACT:**
+  [original 31-E8 /10-HIGHLOW graph and seven exact range leaves](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md).
+  Its [140B native parent tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md)
+  **is** independently whole exact.
+- **104B Motion polygon wrapper and 1,486B rotated corner — NONEXACT:**
+  [ESI lifetime frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md),
+  [genuine constructor NOP and 96B exact corner table](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md).
+- **Player frame / movement:** [3,111B main](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
+  and [555B movement](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md)
+  remain source-present but nonexact.
+
+## Completed native originals and recent source provenance
+
+- [Complete 3,159B quad-submit Boss](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
+  and [20B standard C++ `round(float)` library leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md)
+  (**not** authored game credit).
+- [1,204B polygon stroke](ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md),
+  [296B group configuration](ANIMATION_POLYGON_GROUP_CONFIG_296_STRICT_EXACT.md),
+  [233B group draw +23B/19B array helpers](ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md),
+  [140B group tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md),
+  [120B palette +31B/31B tag forwarders](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md),
+  [76B fan wrapper](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md),
+  [47B registry wrapper](ANIMATION_POLYGON_REGISTRY_WRAPPER_47_STRICT_EXACT.md).
+  Some STL-like array/range and tag helpers are **origin-pending**, despite
+  being fully strict exact.
+- [Original 985B four-corner projection and two 455B colored shape methods](ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md),
+  [660B ellipse LINESTRIP /863B ellipse TRIANGLEFAN](ANIMATION_SHAPE_ELLIPTIC_660_863_STRICT_EXACT.md),
+  and [375B point /809B alternate fan /583B alternate line](ANIMATION_SHAPE_FINAL_THREE_375_809_583_STRICT_EXACT.md).
+- [Original 4,347B Animation Mode8](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md),
+  [2,769B Mode6](ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md),
+  [1,378B Mode6 setup](ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md),
+  [1,996B Mode7 setup](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md),
+  [2,136B mesh24/25](ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md),
+  and [2,169B closed LINESTRIP](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md).
+- [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
+  and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
+
+**Current verified checkpoint:** **1,297 source-present mappings, 1,295
+strict units from 299 pinned object/receipt providers, and 637 distinct
+original authored whole-exact game functions /233,802 `.text` bytes**.
+This is a dated snapshot, not a whole-game completion fraction. Refresh
+it with `scripts/repo-python scripts/report-reconstruction-status.py
+--summary` when new source is admitted.
 
 These documents retain unique native observations, source contracts, compiler
 results, fixture domains and reference-review decisions. Every checkpoint and
