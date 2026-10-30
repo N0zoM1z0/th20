@@ -1426,3 +1426,4 @@ th20::NativeAnimationPoolRecordView::belongs_to_pool_44d970,0x0044D970,function
 th20::animation_renderer_update_4497d0,0x004497D0,function
 th20::NativeAnimationRetirePoolView::queue_retired_animation_44f840,0x0044F840,function
 th20::animation_renderer_update_if_running_450880,0x00450880,function
+th20::animation_renderer_update_secondary_449a70,0x00449A70,function

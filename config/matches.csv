@@ -695,3 +695,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004497D0,th20::animation_renderer_update_4497d0,150,matching,100.00,animation_renderer_update_150,CORE/RECON-976; docs/ANIMATION_RENDERER_UPDATE150_STRICT_EXACT.md
 0x0044F840,th20::NativeAnimationRetirePoolView::queue_retired_animation_44f840,411,matching,100.00,animation_queue_retirement_411,CORE/RECON-977; docs/ANIMATION_QUEUE_RETIREMENT411_STRICT_EXACT.md
 0x00450880,th20::animation_renderer_update_if_running_450880,59,matching,100.00,animation_renderer_update_gate_59,CORE/RECON-978; docs/ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md
+0x00449A70,th20::animation_renderer_update_secondary_449a70,164,matching,100.00,animation_renderer_update_secondary_164,CORE/RECON-979; docs/ANIMATION_RENDERER_UPDATE_SECONDARY164_STRICT_EXACT.md
