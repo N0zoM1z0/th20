@@ -25031,3 +25031,67 @@ relocations = [
   { offset = 0x378, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x390, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/RECON-959: original whole 72B Renderer normal list-registration.
+[units.animation_spawn_renderer_normal_72]
+source = "src/AnimationSpawnRendererFourModes.cpp"
+object = "build/core959-canonical/AnimationSpawnRendererFourModes.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSpawnRendererView::spawn_normal_44b7f0"]
+symbol = "?spawn_normal_44b7f0@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z"
+target_address = 0x0044B7F0
+size = 72
+relocations = [
+ { offset = 0x28, type = "REL32", symbol = "?append@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXPAV?$IntrusiveLink@VAnimation@th20@@@2@@Z", target = 0x00411EA0 },
+ { offset = 0x36, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x3B, type = "REL32", symbol = "?register_44c8f0@NativeRendererPoolRegister@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044C8F0 },
+]
+
+
+# CORE/RECON-959: original whole 72B Renderer flag2 list-registration.
+[units.animation_spawn_renderer_flag2_72]
+source = "src/AnimationSpawnRendererFourModes.cpp"
+object = "build/core959-canonical/AnimationSpawnRendererFourModes.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSpawnRendererView::spawn_flag2_44b840"]
+symbol = "?spawn_flag2_44b840@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z"
+target_address = 0x0044B840
+size = 72
+relocations = [
+ { offset = 0x28, type = "REL32", symbol = "?prepend@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXPAV?$IntrusiveLink@VAnimation@th20@@@2@@Z", target = 0x0044A6B0 },
+ { offset = 0x36, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x3B, type = "REL32", symbol = "?register_44c8f0@NativeRendererPoolRegister@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044C8F0 },
+]
+
+
+# CORE/RECON-959: original whole 75B Renderer flag4 list-registration.
+[units.animation_spawn_renderer_flag4_75]
+source = "src/AnimationSpawnRendererFourModes.cpp"
+object = "build/core959-canonical/AnimationSpawnRendererFourModes.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSpawnRendererView::spawn_flag4_44b8e0"]
+symbol = "?spawn_flag4_44b8e0@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z"
+target_address = 0x0044B8E0
+size = 75
+relocations = [
+ { offset = 0x2B, type = "REL32", symbol = "?append@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXPAV?$IntrusiveLink@VAnimation@th20@@@2@@Z", target = 0x00411EA0 },
+ { offset = 0x39, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x3E, type = "REL32", symbol = "?register_44c8f0@NativeRendererPoolRegister@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044C8F0 },
+]
+
+
+# CORE/RECON-959: original whole 75B Renderer flag6 list-registration.
+[units.animation_spawn_renderer_flag6_75]
+source = "src/AnimationSpawnRendererFourModes.cpp"
+object = "build/core959-canonical/AnimationSpawnRendererFourModes.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSpawnRendererView::spawn_flag6_44b890"]
+symbol = "?spawn_flag6_44b890@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z"
+target_address = 0x0044B890
+size = 75
+relocations = [
+ { offset = 0x2B, type = "REL32", symbol = "?prepend@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXPAV?$IntrusiveLink@VAnimation@th20@@@2@@Z", target = 0x0044A6B0 },
+ { offset = 0x39, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x3E, type = "REL32", symbol = "?register_44c8f0@NativeRendererPoolRegister@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044C8F0 },
+]

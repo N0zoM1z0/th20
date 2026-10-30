@@ -1392,3 +1392,7 @@ th20::NativeVectorInterpolationConfigView::configure_45d190,0x0045D190,function
 th20::NativeAnimationInterpolationForwardView::configure_45d150,0x0045D150,function
 th20::NativeParticleSpawnFileView::spawn_45d210,0x0045D210,function
 "th20::AnimationFile::spawn(full 7-arg protocol)",0x00450CB0,function
+th20::NativeSpawnRendererView::spawn_normal_44b7f0,0x0044B7F0,function
+th20::NativeSpawnRendererView::spawn_flag2_44b840,0x0044B840,function
+th20::NativeSpawnRendererView::spawn_flag6_44b890,0x0044B890,function
+th20::NativeSpawnRendererView::spawn_flag4_44b8e0,0x0044B8E0,function

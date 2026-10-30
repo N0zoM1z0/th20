@@ -673,3 +673,7 @@ address,name,size,status,match_percent,unit,evidence
 0x0045D150,th20::NativeAnimationInterpolationForwardView::configure_45d150,57,matching,100.00,animation_particle_interpolation_forward_57,CORE/RECON-956; docs/ANIMATION_PARTICLE_INTERPOLATION_FORWARD_57_STRICT_EXACT.md
 0x0045D210,th20::NativeParticleSpawnFileView::spawn_45d210,83,matching,100.00,animation_particle_spawn_wrapper_83,CORE/RECON-957; docs/ANIMATION_PARTICLE_SPAWN_WRAPPER_83_STRICT_EXACT.md
 0x00450CB0,"th20::AnimationFile::spawn(full 7-arg protocol)",922,matching,100.00,animation_file_spawn_922,CORE/RECON-958; docs/ANIMATION_FILE_SPAWN_922_STRICT_EXACT.md
+0x0044B7F0,th20::NativeSpawnRendererView::spawn_normal_44b7f0,72,matching,100.00,animation_spawn_renderer_normal_72,CORE/RECON-959; docs/ANIMATION_SPAWN_RENDERER_FOUR_MODES_STRICT_EXACT.md
+0x0044B840,th20::NativeSpawnRendererView::spawn_flag2_44b840,72,matching,100.00,animation_spawn_renderer_flag2_72,CORE/RECON-959; docs/ANIMATION_SPAWN_RENDERER_FOUR_MODES_STRICT_EXACT.md
+0x0044B890,th20::NativeSpawnRendererView::spawn_flag6_44b890,75,matching,100.00,animation_spawn_renderer_flag6_75,CORE/RECON-959; docs/ANIMATION_SPAWN_RENDERER_FOUR_MODES_STRICT_EXACT.md
+0x0044B8E0,th20::NativeSpawnRendererView::spawn_flag4_44b8e0,75,matching,100.00,animation_spawn_renderer_flag4_75,CORE/RECON-959; docs/ANIMATION_SPAWN_RENDERER_FOUR_MODES_STRICT_EXACT.md

@@ -6,6 +6,7 @@
 #include "AnimationFile.hpp"
 #include "Animation.hpp"
 #include "AnimationRuntimeOwner.hpp"
+#include "NativeSpawnRendererView.hpp"
 #include "LockRegistry.hpp"
 #include "EclDiagnostic.hpp"
 #include <mutex>
@@ -20,12 +21,6 @@ bool __cdecl native_spawn_stem_equals_446de0(const std::pmr::string* stem,
 struct NativeSpawnAnimationPoolView : AnimationPoolOwner {
     void* choose_renderer_44c8c0(int view);
     int prefer_alternate_44c8a0();
-};
-struct NativeSpawnRendererView {
-    AnimationHandle spawn_normal_44b7f0(Animation* anim);
-    AnimationHandle spawn_flag2_44b840(Animation* anim);
-    AnimationHandle spawn_flag4_44b8e0(Animation* anim);
-    AnimationHandle spawn_flag6_44b890(Animation* anim);
 };
 AnimationHandle AnimationFile::spawn(const char* expected_stem,std::int32_t script,
     const Vector3* position,float rotation,std::int32_t layer,

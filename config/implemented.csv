@@ -1391,3 +1391,7 @@ th20::NativeVectorInterpolationConfigView::configure_45d190
 th20::NativeAnimationInterpolationForwardView::configure_45d150
 th20::NativeParticleSpawnFileView::spawn_45d210
 "th20::AnimationFile::spawn(full 7-arg protocol)"
+th20::NativeSpawnRendererView::spawn_normal_44b7f0
+th20::NativeSpawnRendererView::spawn_flag2_44b840
+th20::NativeSpawnRendererView::spawn_flag6_44b890
+th20::NativeSpawnRendererView::spawn_flag4_44b8e0
