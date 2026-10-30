@@ -1248,3 +1248,4 @@ th20::AnimationDrawDetailedOwner::draw_complex_mode6
 th20::AnimationDrawDetailedOwner::draw_mesh_2425
 th20::graphics_enable_depth_writes
 th20::AnimationDrawDetailedOwner::draw_simple_mode8
+th20::AnimationDrawDetailedOwner::draw_strip_mode11
