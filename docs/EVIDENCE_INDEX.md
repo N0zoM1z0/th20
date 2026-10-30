@@ -50,6 +50,11 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-922 — 252B/77-i386 ribbon-group configuration Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). Full original 11 E8/zero HIGHLOW and C++20 strict **252/252 native bytes**, genuine token/palette/Animation state; **+252 authored game bytes**. Separate original [23B segment index](ANIMATION_RIBBON_SEGMENT_AT23_STRICT_EXACT.md) is independently 23/23 strict exact, origin unknown/uncredited; 88B palette subsequently strict exact in CORE/RECON-923. Local replay only the two changed sources and actual header-dependent closure.
 
+## Original one-segment ribbon 140B update and two C++20 fill_n bodies
+
+- [CORE/RECON-926 — whole original 140B/46-i386 solo ribbon group update and 19B array end](ANIMATION_RIBBON_SOLO_UPDATE_140_END19_STRICT_EXACT.md). Independent real 0x56ECA4 six-slot vtable, 6 native E8/zero HIGHLOW and Timer +0x3CC; true separate 697B callee remains source-absent. Canonical **140/140 +19/19 exact**, **+140 authored game bytes**, 19B unknown origin.
+- [CORE/RECON-925 — whole original C++20 `std::fill_n<PackedColor*,uint32_t>` 123B and `std::fill_n<float*,uint32_t>` 202B](ANIMATION_RIBBON_FILL_N_123_202_STRICT_EXACT.md). Original 4+7 E8/two HIGHLOW, real unsigned `jbe` at two sites per body versus rejected signed `jle` candidates; **123/123 +202/202 strict exact** from one new provider, **zero authored game bytes**.
+
 ## Complete 75B ribbon color-cell std::array constructor exact
 
 - [CORE/RECON-924 — complete original 75B/27-i386 60-cell `std::array<AnimationHandle,60>` construction](ANIMATION_RIBBON_COLOR_ARRAY_75_STRICT_EXACT.md). Three true native EH/cookie/callback HIGHLOW and E8 to 0x40BC20, original 60B segment parent E8 and five real `INT3` bytes. Full pinned MSVC C++20 **75/75 native, 80/80 complete COFF strict exact**; compiler/template provenance unknown, zero authored game bytes. The distinct 75B Vector2 array constructor remains NONEXACT.
@@ -132,9 +137,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,355 source-present mappings, 1,354
-strict units from 320 pinned object/receipt providers, and 649 distinct
-original authored whole-exact game functions /236,248 `.text` bytes**.
+**Current verified checkpoint:** **1,359 source-present mappings, 1,358
+strict units from 323 pinned object/receipt providers, and 650 distinct
+original authored whole-exact game functions /236,388 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

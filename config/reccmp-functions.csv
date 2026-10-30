@@ -1354,3 +1354,7 @@ th20::NativeRibbonSegment::initialize_palette_45ec10,0x0045EC10,function
 th20::NativeRibbonColorFields::forward_color_45dd20,0x0045DD20,function
 th20::NativeRibbonRadiusFields::forward_radius_45dd00,0x0045DD00,function
 "std::array<th20::AnimationHandle,60>::array",0x0045D4B0,function
+"std::fill_n<PackedColor*,uint32_t,PackedColor>",0x0045D430,function
+"std::fill_n<float*,uint32_t,float>",0x0045D360,function
+th20::NativeRibbonSoloGroup::update,0x0045D6F0,function
+th20::NativeRibbonSoloSegmentArray::end_45dce0,0x0045DCE0,function

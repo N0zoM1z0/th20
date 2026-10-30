@@ -24262,3 +24262,71 @@ relocations = [
   { offset = 0x27, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
   { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
 ]
+
+# CORE/RECON-925: complete native C++20 std::fill_n<PackedColor*,uint32_t>
+# for color array, not hand-authored game code; unsigned branch ABI matters.
+[units.animation_ribbon_color_fill_n_123]
+source = "src/AnimationRibbonFillN123202.cpp"
+object = "build/core925-canonical/AnimationRibbonFillN123202.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::fill_n<PackedColor*,uint32_t,PackedColor>"]
+symbol = "??$fill_n@PAUPackedColor@th20@@IU12@@std@@YAPAUPackedColor@th20@@PAU12@IABU12@@Z"
+target_address = 0x0045D430
+size = 123
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x25, type = "REL32", symbol = "??$_Get_unwrapped_n@AAPAUPackedColor@th20@@I@std@@YA?A_TAAPAUPackedColor@th20@@I@Z", target = 0x0040B2A0 },
+  { offset = 0x30, type = "REL32", symbol = "?is_constant_evaluated@std@@YA_NXZ", target = 0x00411170 },
+  { offset = 0x63, type = "REL32", symbol = "??$_Seek_wrapped@PAUPackedColor@th20@@AAPAU12@@std@@YAXAAPAUPackedColor@th20@@0@Z", target = 0x004185E0 },
+  { offset = 0x73, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-925: complete native C++20 std::fill_n<float*,uint32_t>
+# including real is_constant_evaluated and float zero-memset fast path.
+[units.animation_ribbon_radius_fill_n_202]
+source = "src/AnimationRibbonFillN123202.cpp"
+object = "build/core925-canonical/AnimationRibbonFillN123202.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::fill_n<float*,uint32_t,float>"]
+symbol = "??$fill_n@PAMIM@std@@YAPAMPAMIABM@Z"
+target_address = 0x0045D360
+size = 202
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x29, type = "REL32", symbol = "??$_Get_unwrapped_n@AAPAMI@std@@YA?A_TAAPAMI@Z", target = 0x0040B2A0 },
+  { offset = 0x34, type = "REL32", symbol = "?is_constant_evaluated@std@@YA_NXZ", target = 0x00411170 },
+  { offset = 0x44, type = "REL32", symbol = "??$_Is_all_bits_zero@M@std@@YA_NABM@Z", target = 0x0045D270 },
+  { offset = 0x5B, type = "REL32", symbol = "??$_Fill_zero_memset@PAM@std@@YAXPAMI@Z", target = 0x00425320 },
+  { offset = 0x77, type = "REL32", symbol = "??$_Seek_wrapped@PAMPAM@std@@YAXAAPAM$$QAPAM@Z", target = 0x004185E0 },
+  { offset = 0xB2, type = "REL32", symbol = "??$_Seek_wrapped@PAMAAPAM@std@@YAXAAPAM0@Z", target = 0x004185E0 },
+  { offset = 0xC2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-926: entire separate original one-segment ribbon update Boss.
+[units.animation_ribbon_solo_tick_140]
+source = "src/AnimationRibbonSoloGroupUpdate140.cpp"
+object = "build/core925-canonical/AnimationRibbonSoloGroupUpdate140.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonSoloGroup::update"]
+symbol = "?update@NativeRibbonSoloGroup@th20@@UAEHXZ"
+target_address = 0x0045D6F0
+size = 140
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?changed_45d030@NativeRibbonGate@th20@@QAEHXZ", target = 0x0045D030 },
+  { offset = 0x28, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x33, type = "REL32", symbol = "?end_45dce0@NativeRibbonSoloSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@XZ", target = 0x0045DCE0 },
+  { offset = 0x5D, type = "REL32", symbol = "?scale_x_value@Animation@th20@@QAEMXZ", target = 0x004379C0 },
+  { offset = 0x69, type = "REL32", symbol = "?update_45d780@NativeRibbonSoloSegmentUpdateView@th20@@QAEXM@Z", target = 0x0045D780 },
+  { offset = 0x82, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
+
+# CORE/RECON-926: original 19B solo-ribbon one-past-end pointer helper.
+[units.animation_ribbon_solo_end_19]
+source = "src/AnimationRibbonSoloArrayEnd19.cpp"
+object = "build/core925-canonical/AnimationRibbonSoloArrayEnd19.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonSoloSegmentArray::end_45dce0"]
+symbol = "?end_45dce0@NativeRibbonSoloSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@XZ"
+target_address = 0x0045DCE0
+size = 19
+relocations = []
