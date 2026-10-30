@@ -25649,3 +25649,24 @@ relocations = [
  { offset = 0x84, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
  { offset = 0x9C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/RECON-980: whole original 92B Renderer random pulse, compiled
+# without EHsc because immutable native has /GS cookie but NO EH frame.
+[units.animation_renderer_random_pulse_92]
+source = "src/AnimationRendererRandomPulse92.cpp"
+object = "build/core980-canonical/AnimationRendererRandomPulse92.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRendererRandomPulse::random_byte_449d20"]
+symbol = "?random_byte_449d20@NativeRendererRandomPulse@th20@@QAEEXZ"
+target_address = 0x00449D20
+size = 92
+relocations = [
+ { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x16, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+ { offset = 0x1B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+ { offset = 0x24, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+ { offset = 0x2F, type = "REL32", symbol = "?next@RandomState@th20@@QAEIXZ", target = 0x004235F0 },
+ { offset = 0x46, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+ { offset = 0x54, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
