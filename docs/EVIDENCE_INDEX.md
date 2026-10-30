@@ -102,6 +102,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-980 — full original 92B/30-i386 Renderer random next/publish method](ANIMATION_RENDERER_RANDOM_PULSE92_STRICT_EXACT.md). Native 5 E8 and two genuine PE HIGHLOW, actual original `RandomState::next` library E8 (not Timer), member state at+0x04 and last byte+0x14, process lock slot 10. Natural C++20 **92/92 original strict** when compiled `/GS` **without** original-absent EH frame, **+92 game-authored bytes** and no library double-credit.
 
+## Native entire 347B RendererPool layer classification dispatch Boss strict exact
+
+- [CORE/RECON-983 — complete original 347B/105-i386 Renderer classification dispatcher](ANIMATION_RENDERER_CLASSIFY_DISPATCH347_STRICT_EXACT.md). True lock9, 14 native E8/3 PE HIGHLOW, four physical renderer-index helper calls and already exact 382B/394B classification methods; 806B application and 230B staging remain NONEXACT. **347/347 strict**, +347 authored original bytes, all three classifying units 3/3 in 2-object affected replay.
+
 ## Both native 382B/394B Renderer classification/third-list staging Bosses whole strict exact
 
 - [CORE/RECON-982 — complete original 382B/114-i386 and 394B/117-i386 classification Bosses](ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md). Genuine live list heads at Renderer offsets 0/+0x18, staging at +0x30, original `Animation+0x500` link, physical native **16 E8/2 HIGHLOW per function** and real 347B parent E8 twice. Original nested node-access ordering restored by natural C++20; **382/382+394/394 strict**, **+776 game-authored bytes**, 2/2 original-bound single-source replay.
@@ -369,9 +373,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,432 source-present mappings, 1,432
-strict units from 379 pinned object/receipt providers, and 701 distinct
-original authored whole-exact game functions /247,232 `.text` bytes**.
+**Current verified checkpoint:** **1,433 source-present mappings, 1,433
+strict units from 380 pinned object/receipt providers, and 702 distinct
+original authored whole-exact game functions /247,579 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

@@ -1430,3 +1430,4 @@ th20::NativeRendererRandomPulse::random_byte_449d20
 th20::clear_texture_surface_449d80
 th20::NativeRendererClassificationView::classify_primary_44a090
 th20::NativeRendererClassificationView::classify_secondary_44a210
+th20::NativeRendererClassificationOwner::select_renderer_group_449e40
