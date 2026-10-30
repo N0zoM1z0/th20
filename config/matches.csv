@@ -708,3 +708,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044A3A0,th20::retire_all_renderer_44a3a0,339,matching,100.00,animation_renderer_all_retire_339,CORE/RECON-988; docs/ANIMATION_RENDERER_ALL_RETIRE339_STRICT_EXACT.md
 0x0044EFC0,th20::NativeEventDescendantPoolView::update_descendants_44efc0,261,matching,100.00,animation_pool_event_descendants_261,CORE/RECON-989; docs/ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md
 0x0044F0D0,th20::AnimationHandle::update_descendants_event_44f0d0,35,matching,100.00,animation_handle_event_descendants_bridge_35,CORE/RECON-990; docs/ANIMATION_HANDLE_EVENT_DESCENDANTS_BRIDGE35_STRICT_EXACT.md
+0x00449260,th20::NativeAnimationPoolDestructorLayout::~NativeAnimationPoolDestructorLayout,138,matching,100.00,animation_pool_destructor_138,CORE/RECON-991; docs/ANIMATION_POOL_DESTRUCTOR138_STRICT_EXACT.md

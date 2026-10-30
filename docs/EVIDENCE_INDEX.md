@@ -154,6 +154,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-989 — full native 261B/81-i386 Animation child-event traversal](ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md). Real 456B exact handle resolver parent, actual child-links[1] iterator, 14 original E8/2 PE HIGHLOW and honest 39,470B VM call NONEXACT. **261/261 strict and +261 authored original bytes**, 5/5 affected original-bound replay with resolver source.
 
+## Whole original 138B RendererPool owner destructor + five genuine INT3, fully typed 96MiB lifetime
+
+- [CORE/RECON-991 — complete native 138B/41-i386 AnimationPool owner destructor](ANIMATION_POOL_DESTRUCTOR138_STRICT_EXACT.md). Original 5 trailing INT3 compared as **143/143 whole COFF**, real `Worker+4`, resident `Animation+0xDC`, 72B Renderer+0x6C8, true 65,536 × 0x600 AnimationPool+0x710, final Animation+0x6000818. All 6 actual E8 to exact Worker/Animation/Array/339B Renderer functions and 2 PE HIGHLOW; **+138 authored native bytes**, Worker/339B/308B 12/12 affected replay with 4 objects.
+
 ## Original complete 339B Renderer primary/secondary Animation all-retirement Boss whole strict exact
 
 - [CORE/RECON-988 — original whole 339B/106-i386 Renderer two-list Animation retirement](ANIMATION_RENDERER_ALL_RETIRE339_STRICT_EXACT.md). Native 19 E8/4 physical PE HIGHLOW, true two-list+0x18 receiver and duplicate real 308B pool-retirement E8; **339/339 original whole strict, +339 game-authored bytes**, 308B/82B/90B/23B dependencies all exact in scoped 5/5 replay.
@@ -401,9 +405,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,440 source-present mappings, 1,440
-strict units from 387 pinned object/receipt providers, and 709 distinct
-original authored whole-exact game functions /249,560 `.text` bytes**.
+**Current verified checkpoint:** **1,441 source-present mappings, 1,441
+strict units from 388 pinned object/receipt providers, and 710 distinct
+original authored whole-exact game functions /249,698 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

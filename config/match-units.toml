@@ -25991,3 +25991,27 @@ relocations = [
  { offset = 0x13, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
  { offset = 0x18, type = "REL32", symbol = "?update_descendants_44efc0@NativeEventDescendantPoolView@th20@@QAEXIH@Z", target = 0x0044EFC0 },
 ]
+
+
+# CORE/RECON-991: native complete 138B RendererPool destructor + FIVE
+# physical original INT3 alignment bytes, not a truncated 138B prefix.
+# Genuine Worker, Animation, 65536x600 PooledAnimation and Renderer fields.
+[units.animation_pool_destructor_138]
+source = "src/AnimationPoolDestructor138.cpp"
+object = "build/core991-canonical/AnimationPoolDestructor138.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationPoolDestructorLayout::~NativeAnimationPoolDestructorLayout"]
+symbol = "??1NativeAnimationPoolDestructorLayout@th20@@QAE@XZ"
+target_address = 0x00449260
+size = 138
+compare_size = 143
+relocations = [
+ { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??1NativeAnimationPoolDestructorLayout@th20@@QAE@XZ", target = 0x005679A0 },
+ { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x39, type = "REL32", symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z", target = 0x00449490 },
+ { offset = 0x40, type = "REL32", symbol = "?retire_all_renderer_44a3a0@th20@@YIXPAUNativeSpawnRendererView@1@@Z", target = 0x0044A3A0 },
+ { offset = 0x4F, type = "REL32", symbol = "??1Animation@th20@@QAE@XZ", target = 0x00449370 },
+ { offset = 0x5D, type = "REL32", symbol = "??1AnimationPool@th20@@QAE@XZ", target = 0x004491E0 },
+ { offset = 0x6B, type = "REL32", symbol = "??1Animation@th20@@QAE@XZ", target = 0x00449370 },
+ { offset = 0x76, type = "REL32", symbol = "??1Worker@th20@@QAE@XZ", target = 0x0040B980 },
+]
