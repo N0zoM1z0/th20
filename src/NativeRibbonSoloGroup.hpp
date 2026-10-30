@@ -16,6 +16,7 @@ struct NativeRibbonSoloSegmentUpdateView : NativeRibbonSegment {
 static_assert(sizeof(NativeRibbonSoloSegmentUpdateView)==0x3C0);
 struct NativeRibbonSoloSegmentArray {
     std::array<NativeRibbonSegment,1> elements;
+    NativeRibbonSoloSegmentArray();
     NativeRibbonSegment* end_45dce0();
 };
 struct NativeRibbonSoloGroup : AnimationCallback {
@@ -23,6 +24,7 @@ struct NativeRibbonSoloGroup : AnimationCallback {
     union { std::uint32_t control_3c8; float control_3c8_float; };
     Timer timer_3cc;
     void* resource_token_3dc;
+    explicit NativeRibbonSoloGroup(Animation* owner);
     std::int32_t update() override;
     std::int32_t draw() override;
 };

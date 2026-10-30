@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,362** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,361**, from **326** pinned MSVC object/receipt providers |
+| Source-present function mappings | **1,363** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,362**, from **327** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **653 distinct function heads /237,317 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -48,6 +48,7 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
+| Solo ribbon single-segment array ctor `0x0045D550` | **78B/27-i386 +5 genuine `INT3` whole strict exact** with actual count1/stride0x3C0, native EH/60B element callback. One C++20 provider reproduces 83/83 complete bytes. Template source origin unproven; **zero authored game credit**. [Whole original and canonical proof](ANIMATION_RIBBON_SOLO_ARRAY_CTOR_78_STRICT_EXACT.md). |
 | Original solo ribbon 697B dynamics Boss `0x0045D780` | **697B/190-i386 whole strict exact**, 17 real E8/13 HIGHLOW, two random 60-cell passes, native color byte+2, radius ±limit/4, polar 2π/58 and vertex1→59 close. **+697 authored game bytes**, 5/5 affected solo strict replay. [Original/whole PE+COFF proof](ANIMATION_RIBBON_SOLO_DYNAMICS_697_STRICT_EXACT.md). |
 | Solo ribbon 76B TRIANGLEFAN renderer | Complete **76B/27-i386 strict exact**, real 60-point fan, +0x1E0 packed-color stream, all three physical E8/one HIGHLOW, genuine native 156B parent E8; **+76 authored game bytes**. [Original + strict proof](ANIMATION_RIBBON_SOLO_FAN_76_STRICT_EXACT.md). |
 | Solo ribbon virtual draw Boss `0x0045DA40` | Complete **156B/53-i386 strict exact**, original independent 0x56ECA4 vtable, seven E8, two HIGHLOW, genuine +0x42 scope NOP, one 0x3C0 segment. **+156 authored game bytes**, separate 76B fan now also strict exact; the 697B dynamics became whole strict exact in CORE/RECON-929. [Whole original/COFF proof](ANIMATION_RIBBON_SOLO_DRAW_156_STRICT_EXACT.md). |
