@@ -1,5 +1,9 @@
 # CORE/RECON-927 — complete original 156B one-segment ribbon group virtual draw strictly exact
 
+> **CORE/RECON-928 follow-up:** The separate original 76B segment
+> TRIANGLEFAN callee is now independently [whole 76/76 strict exact](ANIMATION_RIBBON_SOLO_FAN_76_STRICT_EXACT.md).
+> The previously accepted 156B parent receipt is unchanged.
+
 Immutable Japanese TH20 1.00a Steamless executable SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 Original `0x0045DA40` is a whole **156B/53-i386** virtual draw Boss

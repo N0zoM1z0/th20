@@ -50,9 +50,13 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-922 — 252B/77-i386 ribbon-group configuration Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). Full original 11 E8/zero HIGHLOW and C++20 strict **252/252 native bytes**, genuine token/palette/Animation state; **+252 authored game bytes**. Separate original [23B segment index](ANIMATION_RIBBON_SEGMENT_AT23_STRICT_EXACT.md) is independently 23/23 strict exact, origin unknown/uncredited; 88B palette subsequently strict exact in CORE/RECON-923. Local replay only the two changed sources and actual header-dependent closure.
 
+## Complete solo ribbon 76B TRIANGLEFAN renderer
+
+- [CORE/RECON-928 — complete original 76B/27-i386 solo ribbon 60-point TRIANGLEFAN wrapper](ANIMATION_RIBBON_SOLO_FAN_76_STRICT_EXACT.md). Distinct from the original three-segment 76B line-strip and 61-vertex fan, genuine +0x1E0 colors, original 3 E8/1 HIGHLOW and exact 156B virtual draw caller; whole **76/76 strict exact**, +76 authored-game bytes, only four actual solo providers locally replayed.
+
 ## Complete 156B solo-ribbon polymorphic draw Boss strict exact
 
-- [CORE/RECON-927 — full original 156B/53-i386 one-segment ribbon virtual draw](ANIMATION_RIBBON_SOLO_DRAW_156_STRICT_EXACT.md): true 0x56ECA4 vtable, seven original E8/two HIGHLOW fields, lexical scope NOP+0x42 and one real 0x3C0 segment; natural **156/156 canonical exact**, 3/3 local strict replay. **+156 authored game bytes**. Separate 697B segment dynamics and 76B fan remain open.
+- [CORE/RECON-927 — full original 156B/53-i386 one-segment ribbon virtual draw](ANIMATION_RIBBON_SOLO_DRAW_156_STRICT_EXACT.md): true 0x56ECA4 vtable, seven original E8/two HIGHLOW fields, lexical scope NOP+0x42 and one real 0x3C0 segment; natural **156/156 canonical exact**, 3/3 local strict replay. **+156 authored game bytes**. 76B fan separately exact in CORE/RECON-928; 697B segment dynamics remains open.
 
 ## Original one-segment ribbon 140B update and two C++20 fill_n bodies
 
@@ -141,9 +145,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,360 source-present mappings, 1,359
-strict units from 324 pinned object/receipt providers, and 651 distinct
-original authored whole-exact game functions /236,544 `.text` bytes**.
+**Current verified checkpoint:** **1,361 source-present mappings, 1,360
+strict units from 325 pinned object/receipt providers, and 652 distinct
+original authored whole-exact game functions /236,620 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

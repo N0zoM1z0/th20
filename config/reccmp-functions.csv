@@ -1359,3 +1359,4 @@ th20::NativeRibbonRadiusFields::forward_radius_45dd00,0x0045DD00,function
 th20::NativeRibbonSoloGroup::update,0x0045D6F0,function
 th20::NativeRibbonSoloSegmentArray::end_45dce0,0x0045DCE0,function
 th20::NativeRibbonSoloGroup::draw,0x0045DA40,function
+th20::NativeRibbonSoloSegmentDrawView::draw_45dae0,0x0045DAE0,function
