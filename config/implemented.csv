@@ -1333,3 +1333,4 @@ th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot
 th20::NativePolygonMotionGroup::NativePolygonMotionGroup(Animation*)
 th20::NativePolygonMotionGroup::scalar_deleting_destructor
 th20::NativeForwardedRefSlot::NativeForwardedRefSlot
+th20::NativePolygonSlotB40::value_address_45eca0

@@ -23930,3 +23930,15 @@ relocations = [
   { offset = 0xC, type = "REL32", symbol = "??$forward@AAI@std@@YAAAIAAI@Z", target = 0x0040B280 },
   { offset = 0x15, type = "REL32", symbol = "??$forward@AAI@std@@YAAAIAAI@Z", target = 0x0040B280 },
 ]
+
+# CORE/RECON-910: whole 19B native polygon owner +0xB40 address accessor.
+# Original class and authored-vs-template provenance still need review.
+[units.polygon_slot_b40_address_19]
+source = "src/PolygonNativeSlotB40.cpp"
+object = "build/core910-canonical/PolygonNativeSlotB40.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativePolygonSlotB40::value_address_45eca0"]
+symbol = "?value_address_45eca0@NativePolygonSlotB40@th20@@QAEPAIXZ"
+target_address = 0x0045ECA0
+size = 19
+relocations = []

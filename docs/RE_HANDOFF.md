@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,335** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,334**, from **305** pinned MSVC objects and **304** matching receipts |
+| Source-present function mappings | **1,336** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,335**, from **306** pinned MSVC objects and **304** matching receipts |
 | Credited original authored-game whole exact | **640 distinct function heads /234,802 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -93,6 +93,11 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | Polygon shape and Motion group chain | **1,204B** outline Boss, **827B** dynamics Boss, **296B** group configuration, **233B** group draw, **140B** group tick, **120B** palette, **76B** fan caller and **47B** registry wrapper all individually whole exact. [Polygon proof](ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md), [group](ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md), [tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md), [palette](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md). The **104B wrapper remains NONEXACT**; the 156B original group allocation factory is now **whole exact**, with library/template authorship unresolved. [Factory proof](ANIMATION_POLYGON_GROUP_FACTORY_156_NATIVE_EXACT.md). [827B proof](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). |
 | Shape draw backend catalog | **2,169B LINESTRIP, 1,980B rectangle, 1,601B triangle, 1,468B ring**, plus several whole exact **375B–1,174B ellipse/fan/strip** sources. [Closed line](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md), [shape ring](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md), [remaining original PE proofs](EVIDENCE_INDEX.md). |
 | Exact original game data | **96B corner axes**, **8B polygon scalar constants**, **72B Player direction table** are genuine `.rdata` data, **not additional authored `.text` code credit**. [Corner data](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md), [polygon data](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md), [Player table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
+
+The original **19B polygon-area `+0xB40` field accessor** `0x0045ECA0`
+is whole **19/19 strict exact**, independently called by 140B and 156B
+nonexact parents. Its original owner class and authored/library status remain
+review-pending. [Physical E8 + canonical evidence](POLYGON_SLOT_B40_ACCESSOR_19_STRICT_EXACT.md).
 
 The original **42B nested forwarding/ref-slot constructor** at `0x0045ECC0` is
 whole strict exact under a single C++17 provider, with two true folded-helper
