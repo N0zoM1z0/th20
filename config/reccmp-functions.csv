@@ -1362,3 +1362,5 @@ th20::NativeRibbonSoloGroup::draw,0x0045DA40,function
 th20::NativeRibbonSoloSegmentDrawView::draw_45dae0,0x0045DAE0,function
 th20::NativeRibbonSoloSegmentUpdateView::update_45d780,0x0045D780,function
 "std::array<th20::NativeRibbonSegment,1>::array",0x0045D550,function
+th20::NativeRibbonSoloGroup::NativeRibbonSoloGroup,0x0045D5B0,function
+th20::NativeRibbonSoloGroup::scalar_deleting_destructor,0x0045D6B0,function

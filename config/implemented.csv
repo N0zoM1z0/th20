@@ -1361,3 +1361,5 @@ th20::NativeRibbonSoloGroup::draw
 th20::NativeRibbonSoloSegmentDrawView::draw_45dae0
 th20::NativeRibbonSoloSegmentUpdateView::update_45d780
 "std::array<th20::NativeRibbonSegment,1>::array"
+th20::NativeRibbonSoloGroup::NativeRibbonSoloGroup
+th20::NativeRibbonSoloGroup::scalar_deleting_destructor

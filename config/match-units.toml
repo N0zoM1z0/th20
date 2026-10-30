@@ -24428,3 +24428,34 @@ relocations = [
   { offset = 0x27, type = "DIR32", symbol = "??0NativeRibbonSegment@th20@@QAE@XZ", target = 0x0045D610 },
   { offset = 0x37, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
 ]
+
+# CORE/RECON-931: whole native 89B/25-i386 solo ribbon polymorphic ctor.
+[units.animation_ribbon_solo_group_ctor_89]
+source = "src/AnimationRibbonSoloGroupCtor89.cpp"
+object = "build/core931-canonical/AnimationRibbonSoloGroupCtor89.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonSoloGroup::NativeRibbonSoloGroup"]
+symbol = "??0NativeRibbonSoloGroup@th20@@QAE@PAVAnimation@1@@Z"
+target_address = 0x0045D5B0
+size = 89
+relocations = [
+  { offset = 0x0F, type = "REL32", symbol = "??0AnimationCallback@th20@@QAE@PAVAnimation@1@@Z", target = 0x00446B60 },
+  { offset = 0x18, type = "DIR32", symbol = "??_7NativeRibbonSoloGroup@th20@@6B@", target = 0x0056ECA4 },
+  { offset = 0x23, type = "REL32", symbol = "??0?$array@UNativeRibbonSegment@th20@@$00@std@@QAE@XZ", target = 0x0045D550 },
+  { offset = 0x3F, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+# CORE/RECON-931: genuine generated 49B solo group scalar deletion, same
+# original shared 20B destructor is already an independent accepted head.
+[units.animation_ribbon_solo_scalar_delete_49]
+source = "src/AnimationRibbonSoloGroupCtor89.cpp"
+object = "build/core931-canonical/AnimationRibbonSoloGroupCtor89.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonSoloGroup::scalar_deleting_destructor"]
+symbol = "??_GNativeRibbonSoloGroup@th20@@UAEPAXI@Z"
+target_address = 0x0045D6B0
+size = 49
+relocations = [
+  { offset = 0x0B, type = "REL32", symbol = "??1NativeRibbonSoloGroup@th20@@UAE@XZ", target = 0x0045C2A0 },
+  { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]
