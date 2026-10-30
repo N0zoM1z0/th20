@@ -1244,3 +1244,4 @@ th20::AnimationDrawDetailedOwner::prepare_simple_mode7
 th20::animation_vector3_length
 th20::AnimationDrawDetailedOwner::transform_projected_xy
 th20::AnimationDrawDetailedOwner::prepare_complex_mode6
+th20::AnimationDrawDetailedOwner::draw_complex_mode6

@@ -1,11 +1,12 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-842):**
+**Current next-agent reading order (CORE/RECON-843):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole source-present 2769B Mode6 renderer Boss frontier](ANIMATION_DRAW_MODE6_2769_FIVE_CASE_SOURCE_FRONTIER.md) ->
 [whole strict 1378B Mode6 screen-projection Boss](ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md) ->
 [two strict Mode6 projection math helpers](ANIMATION_PROJECTION_MATH_73_86_STRICT_EXACT.md) ->
 [whole strict 1,996B Animation mode7 setup Boss](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) ->
@@ -14,7 +15,7 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,246 source-present /1,247
+The **live** verified status on October 30 is **1,247 source-present /1,247
 strict units from 265 object/receipt providers, 600 authored-game exact whole
 functions /201,103 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
@@ -35,6 +36,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## One maintained complete original 2,769B Mode6 renderer source (still NONEXACT)
+
+- [CORE/RECON-843 — original whole 2,769B/683 i386 renderer Mode6 five-case source and 28-E8/78-HIGHLOW graph](ANIMATION_DRAW_MODE6_2769_FIVE_CASE_SOURCE_FRONTIER.md) — one maintainable complete C++ mode6 function now natural MSVC **2,769B executable +3B NOP +five source-generated 32-bit switch table pointers at original physical offsets** (2,792B COFF). All 28 original native E8 target identities/multiplicities in original order (first six physical sites exact), **78/78 original PE HIGHLOW body target-role multiplicities** (15/78 exact physical sites), same 2/2/1 case-target aliasing; original 0x64 frame/683 i386 vs candidate 0x70/682, substantial opcode and stack debt. Corrected fog processing to direct live quad channels, native color mode branches, owner tint/viewport access, entire exact 1,378B setup and exact 3,159B quad submission callees. **NONEXACT, zero newly credited game bytes or strict units; +1 source-present mapping to 1,247**. A single isolated pinned MSVC source probe and immutable original PE role verifier; no affected exact providers and no full cold replay.
 
 ## Whole 1,378B Mode6 screen-projection Boss now strict native exact
 
