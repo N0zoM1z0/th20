@@ -22475,3 +22475,46 @@ relocations = [
   { offset = 0x80B, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
   { offset = 0x86F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-857: entire original 1601B/394-x86 authored triangle Boss.
+# Original 11 E8 and 19 PE HIGHLOW exact native target/physical roles.
+[units.animation_shape_triangle_1601]
+source = "src/AnimationShapeTriangle1601.cpp"
+object = "build/core857-canonical/AnimationShapeTriangle1601.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43e2c0"]
+symbol = "?draw_shape_43e2c0@AnimationDrawDetailedOwner@th20@@QAEHMMMMMIIHH@Z"
+target_address = 0x0043E2C0
+size = 1601
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x51, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0x61, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x77, type = "REL32", symbol = "?cosine@scalar_math@th20@@YAMM@Z", target = 0x004397C0 },
+  { offset = 0xF9, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x101, type = "DIR32", symbol = "?native_three@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x138, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x140, type = "DIR32", symbol = "?native_three@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x15C, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x1D6, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x207, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x20F, type = "DIR32", symbol = "?native_half@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0x23B, type = "DIR32", symbol = "?native_half@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0x256, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x270, type = "DIR32", symbol = "__xmm@80000000800000008000000080000000", target = 0x0056D7D0 },
+  { offset = 0x278, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2FB, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
+  { offset = 0x362, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
+  { offset = 0x3C6, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
+  { offset = 0x51A, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x533, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x54C, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x58C, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x591, type = "REL32", symbol = "?graphics_disable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDF80 },
+  { offset = 0x5A5, type = "REL32", symbol = "?select_render_color_mode@AnimationQuadSubmitOwner@th20@@QAEXE@Z", target = 0x00446690 },
+  { offset = 0x5AA, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x5AF, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x5CE, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x5D3, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x637, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

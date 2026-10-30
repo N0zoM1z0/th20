@@ -1,11 +1,12 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-856):**
+**Current next-agent reading order (CORE/RECON-857):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict original 1601B 3-vertex triangle Boss](ANIMATION_SHAPE_TRIANGLE_1601_STRICT_EXACT.md) ->
 [whole strict original 2169B closed line-strip Boss](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) ->
 [whole strict original 2169B closed line-strip Boss](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) ->
 [whole strict original 1980B 4-vertex rectangle Boss](ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md) ->
@@ -25,9 +26,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,256 source-present /1,257
-strict units from 275 object/receipt providers, 610 authored-game exact whole
-functions /217,288 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,257 source-present /1,258
+strict units from 276 object/receipt providers, 611 authored-game exact whole
+functions /218,889 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -50,6 +51,10 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Whole original 1,601B three-vertex triangle renderer strict exact
+
+- [CORE/RECON-857 — entire original 1,601B/394-i386 game-authored triangle Boss whole-native exact](ANIMATION_SHAPE_TRIANGLE_1601_STRICT_EXACT.md) — immutable PE independently validates 11 E8 and 19 HIGHLOW physical site/targets, real `0x50` frame/RET0x24, native fixed 65,536×20B pool, true 3-slot X/Y anchor arrays and original negative/third/half scalar constants. Natural C++ uses three genuine 78B XY calls and native D3D9 TRIANGLESTRIP type5 primitive count1. Pinned MSVC whole source **1,481/1,481 nonrelocation and 1,601/1,601 strict relocated original bytes exact**, one full original authored game Boss newly credited; live **611 whole exact /218,889 bytes, 1,257 mapped /1,258 strict /276 providers**. Shared return ABI corrected and affected old sources replayed in scope; 5,993B main Draw Boss still NONEXACT and no all-graph replay.
 
 ## Whole 2,169B original closed LINESTRIP shape Boss strict exact
 

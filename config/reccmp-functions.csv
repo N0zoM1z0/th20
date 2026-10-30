@@ -1255,3 +1255,4 @@ th20::AnimationDrawDetailedOwner::draw_shape_43ab20,0x0043AB20,function
 th20::animation_shape_xy,0x00445AD0,function
 th20::AnimationDrawDetailedOwner::draw_rect_439a00,0x00439A00,function
 th20::AnimationDrawDetailedOwner::draw_shape_43b0e0,0x0043B0E0,function
+th20::AnimationDrawDetailedOwner::draw_shape_43e2c0,0x0043E2C0,function

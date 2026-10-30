@@ -44,7 +44,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // Original 2169B closed line-strip returns EAX=0 / RET 0x24, not void.
     std::int32_t draw_shape_43b0e0(float, float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);
-    void draw_shape_43e2c0(float, float, float, float, float,
+    // Native 1601B triangle draw returns EAX zero, RET 0x24.
+    std::int32_t draw_shape_43e2c0(float, float, float, float, float,
                             std::uint32_t, std::uint32_t, int, int);
     void draw_shape_43c180(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
