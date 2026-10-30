@@ -1396,3 +1396,6 @@ th20::NativeSpawnRendererView::spawn_normal_44b7f0,0x0044B7F0,function
 th20::NativeSpawnRendererView::spawn_flag2_44b840,0x0044B840,function
 th20::NativeSpawnRendererView::spawn_flag6_44b890,0x0044B890,function
 th20::NativeSpawnRendererView::spawn_flag4_44b8e0,0x0044B8E0,function
+th20::NativeRendererPoolSelector::renderer_index_449490,0x00449490,function
+th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0,0x0044C8A0,function
+th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0,0x0044C8C0,function

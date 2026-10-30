@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,397** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,397**, from **355** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **678 distinct function heads /242,874 original `.text` bytes** |
+| Source-present function mappings | **1,400** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,400**, from **356** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **680 distinct function heads /242,932 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -50,6 +50,7 @@ older local-variable names or assumptions.
 
 | Three original 75B `Vector2[60]/[64]/[61]` constructors | **ORIGINAL PE VERIFIED, SOURCE NONEXACT**. Native 75B/27 x86 each and five real `INT3` each; one genuine E8/3 HIGHLOW and independent ctor parent calls. Isolated MSVC `Vector2() noexcept` matches all three **80B structural contributions**, but real global ODR/class declaration remains unchanged (**230 strict provider/871-unit affected closure**). No false exact admission or game code credit. [Evidence and original verifier](ANIMATION_VECTOR2_ARRAY_60_64_61_NOEXCEPT_FRONTIER.md). |
 | Original 202B 3D vector normalize `0x0045CF10` | **202B/58-i386 whole strict exact**: native square_root/absolute E8 and PE 0.01f HIGHLOW, real `comiss/jbe` copy-versus-3-divide semantics. **+202 authored game bytes**, one local object only. [Original proof](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). |
+| Three original RendererPool selector leaves `0x00449490/0x0044C8A0/0x0044C8C0` | **20B/20B/38B whole strict exact**: native `0x48` stride index, `+0x6C4` mode flag and `+0x6C8` slot-indexed Renderer selection. Three complete physical bodies, genuine 922B parent 3 E8, **+58 authored game bytes** for the custom 20B+38B pool methods; 20B array index generated origin uncredited. [Proof](ANIMATION_SPAWN_POOL_SELECTION_20_38_STRICT_EXACT.md). |
 | Four native Renderer registration modes `0x0044B7F0/0x0044B840/0x0044B8E0/0x0044B890` | **72B+72B+75B+75B all whole strict exact**. One shared two-24B-list Renderer view, real append/prepend, Animation+4E8/+4EC, four parent 922B E8 and original AnimationHandle hidden return. **+4 authored game heads/294 native bytes**, 922B parent recompiled 922/922 local exact. [Full original evidence](ANIMATION_SPAWN_RENDERER_FOUR_MODES_STRICT_EXACT.md). |
 | Original complete 922B AnimationFile::spawn Boss `0x00450CB0` | **922B/269-i386 whole strict exact**, real C++20 resource lock/Animation allocation/expected-stem check/script bind/positions/flags/4 renderer creation branches and typed `AnimationHandle` hidden return. All native **20 E8/14 PE HIGHLOW**, original `ret 0x20`, **+922 game-authored bytes**. Existing 83B caller retyped and original 83/83 replayed alongside 922/922. [Whole native proof](ANIMATION_FILE_SPAWN_922_STRICT_EXACT.md). |
 | Original 83B particle AnimationFile spawn wrapper `0x0045D210` | **83B/30-i386 whole strict exact**, special==1 selects flag16, one original E8 to distinct 922B spawn at 0x450CB0, four physical 2,884B Update E8 sites, no HIGHLOW. **+83 authored game bytes**; enclosing 2,884B parent remains source absent, but 922B callee later became whole exact in CORE/RECON-958. [Original exact proof](ANIMATION_PARTICLE_SPAWN_WRAPPER_83_STRICT_EXACT.md). |

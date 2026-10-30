@@ -25095,3 +25095,43 @@ relocations = [
  { offset = 0x39, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
  { offset = 0x3E, type = "REL32", symbol = "?register_44c8f0@NativeRendererPoolRegister@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044C8F0 },
 ]
+
+
+# CORE/RECON-960: whole 20B native RendererPool index.
+[units.animation_spawn_pool_index_20]
+source = "src/AnimationSpawnPoolSelection.cpp"
+object = "build/core960-canonical/AnimationSpawnPoolSelection.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererPoolSelector::renderer_index_449490"]
+symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z"
+target_address = 0x00449490
+size = 20
+relocations = [
+]
+
+
+# CORE/RECON-960: whole 20B native RendererPool preference.
+[units.animation_spawn_pool_preference_20]
+source = "src/AnimationSpawnPoolSelection.cpp"
+object = "build/core960-canonical/AnimationSpawnPoolSelection.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0"]
+symbol = "?prefer_alternate_44c8a0@NativeSpawnAnimationPoolView@th20@@QAEHXZ"
+target_address = 0x0044C8A0
+size = 20
+relocations = [
+]
+
+
+# CORE/RECON-960: whole 38B native RendererPool selector.
+[units.animation_spawn_pool_selector_38]
+source = "src/AnimationSpawnPoolSelection.cpp"
+object = "build/core960-canonical/AnimationSpawnPoolSelection.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0"]
+symbol = "?choose_renderer_44c8c0@NativeSpawnAnimationPoolView@th20@@QAEPAXH@Z"
+target_address = 0x0044C8C0
+size = 38
+relocations = [
+ { offset = 0x1C, type = "REL32", symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z", target = 0x00449490 },
+]

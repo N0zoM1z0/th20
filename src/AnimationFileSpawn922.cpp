@@ -7,6 +7,7 @@
 #include "Animation.hpp"
 #include "AnimationRuntimeOwner.hpp"
 #include "NativeSpawnRendererView.hpp"
+#include "NativeSpawnAnimationPoolView.hpp"
 #include "LockRegistry.hpp"
 #include "EclDiagnostic.hpp"
 #include <mutex>
@@ -18,10 +19,6 @@ extern const char native_spawn_bad_name_hint[];
 // Unknown native resource name predicate, real original 17B callee.
 bool __cdecl native_spawn_stem_equals_446de0(const std::pmr::string* stem,
                                               const char* requested);
-struct NativeSpawnAnimationPoolView : AnimationPoolOwner {
-    void* choose_renderer_44c8c0(int view);
-    int prefer_alternate_44c8a0();
-};
 AnimationHandle AnimationFile::spawn(const char* expected_stem,std::int32_t script,
     const Vector3* position,float rotation,std::int32_t layer,
     std::uint32_t flags,Animation** output) {
