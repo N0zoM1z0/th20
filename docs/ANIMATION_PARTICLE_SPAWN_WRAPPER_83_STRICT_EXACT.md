@@ -1,5 +1,13 @@
 # CORE/RECON-957 — original full 83B particle AnimationFile spawn wrapper strict exact
 
+> **CORE/RECON-958 update:** The original 922B callee `0x00450CB0` is now
+> [independently whole strict exact](ANIMATION_FILE_SPAWN_922_STRICT_EXACT.md).
+> The 83B wrapper now uses the same actual `AnimationFile::spawn`
+> typed return-by-value `AnimationHandle` ABI and symbol, instead of the
+> original provisional `void*` shim. Its entire original **83/83** body
+> was recompiled and revalidated after this correction; historical source
+> guesses below remain for evidence only.
+
 Original Japanese TH20 Steamless v1.00a SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 Native `0x0045D210` is an **83B/30-i386** game-specific six-parameter

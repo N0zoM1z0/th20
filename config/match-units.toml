@@ -24977,9 +24977,57 @@ source = "src/AnimationParticleSpawnWrapper83.cpp"
 object = "build/core957-canonical/AnimationParticleSpawnWrapper83.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeParticleSpawnFileView::spawn_45d210"]
-symbol = "?spawn_45d210@NativeParticleSpawnFileView@th20@@QAEPAXPAXIIIMH@Z"
+symbol = "?spawn_45d210@NativeParticleSpawnFileView@th20@@QAE?AUAnimationHandle@2@PBDHPBUVector3@2@MH@Z"
 target_address = 0x0045D210
 size = 83
 relocations = [
- { offset = 0x46, type = "REL32", symbol = "?spawn_core_450cb0@NativeParticleSpawnFileView@th20@@QAEXPAXIIIMHHH@Z", target = 0x00450CB0 },
+ { offset = 0x46, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHPBUVector3@2@MHIPAPAVAnimation@2@@Z", target = 0x00450CB0 },
+]
+
+
+# CORE/RECON-958: entire original native 922B/269-i386 AnimationFile
+# spawn Boss. True 20 E8/14 HIGHLOW original PE physical roles.
+[units.animation_file_spawn_922]
+source = "src/AnimationFileSpawn922.cpp"
+object = "build/core958-canonical/AnimationFileSpawn922.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationFile::spawn(full 7-arg protocol)"]
+symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHPBUVector3@2@MHIPAPAVAnimation@2@@Z"
+target_address = 0x00450CB0
+size = 922
+relocations = [
+  { offset = 0x006, type = "DIR32", symbol = "__ehhandler$?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHPBUVector3@2@MHIPAPAVAnimation@2@@Z", target = 0x0056872D },
+  { offset = 0x015, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x02E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x033, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x03C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x058, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x05D, type = "REL32", symbol = "?allocate_animation@AnimationPoolOwner@th20@@QAEPAVAnimation@2@XZ", target = 0x0044C9B0 },
+  { offset = 0x084, type = "REL32", symbol = "?native_spawn_stem_equals_446de0@th20@@YA_NPBV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@PBD@Z", target = 0x00446DE0 },
+  { offset = 0x093, type = "DIR32", symbol = "?native_spawn_bad_name_hint@th20@@3QBDB", target = 0x0056E584 },
+  { offset = 0x098, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x0A3, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x0A8, type = "REL32", symbol = "?choose_renderer_44c8c0@NativeSpawnAnimationPoolView@th20@@QAEPAXH@Z", target = 0x0044C8C0 },
+  { offset = 0x0C0, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x0C5, type = "REL32", symbol = "?prefer_alternate_44c8a0@NativeSpawnAnimationPoolView@th20@@QAEHXZ", target = 0x0044C8A0 },
+  { offset = 0x0D8, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x0DD, type = "REL32", symbol = "?choose_renderer_44c8c0@NativeSpawnAnimationPoolView@th20@@QAEPAXH@Z", target = 0x0044C8C0 },
+  { offset = 0x0F0, type = "REL32", symbol = "?apply_template@AnimationFile@th20@@QAEXPAVAnimation@2@H@Z", target = 0x00438B70 },
+  { offset = 0x169, type = "DIR32", symbol = "?native_spawn_width_640@th20@@3MB", target = 0x0056CDAC },
+  { offset = 0x171, type = "DIR32", symbol = "?native_spawn_width_384@th20@@3MB", target = 0x0056CDA4 },
+  { offset = 0x179, type = "DIR32", symbol = "?native_spawn_divisor_2@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x181, type = "DIR32", symbol = "?native_spawn_width_384@th20@@3MB", target = 0x0056CDA4 },
+  { offset = 0x189, type = "DIR32", symbol = "?native_spawn_divisor_2@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1AF, type = "DIR32", symbol = "?native_spawn_shift_16@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x211, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x296, type = "REL32", symbol = "?update@Animation@th20@@QAEHXZ", target = 0x0042B5D0 },
+  { offset = 0x29E, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x2AA, type = "REL32", symbol = "?position@Animation@th20@@QAEAAUVector3@2@AAU32@@Z", target = 0x004376E0 },
+  { offset = 0x2B2, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x2DE, type = "REL32", symbol = "?spawn_flag6_44b890@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B890 },
+  { offset = 0x313, type = "REL32", symbol = "?spawn_flag4_44b8e0@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B8E0 },
+  { offset = 0x349, type = "REL32", symbol = "?spawn_flag2_44b840@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B840 },
+  { offset = 0x362, type = "REL32", symbol = "?spawn_normal_44b7f0@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B7F0 },
+  { offset = 0x378, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x390, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
