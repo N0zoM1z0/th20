@@ -24738,3 +24738,39 @@ relocations = [
  { offset = 0x27, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
  { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
 ]
+
+
+# CORE/RECON-945: whole original 1486B/372-i386 rotated corner Boss.
+# Authentic +0x41 NOP emitted by real lexical scope after Angle ctor.
+[units.animation_corner_rotated_1486]
+source = "src/AnimationCornerRotated1486.cpp"
+object = "build/core945-canonical/AnimationCornerRotated1486.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationCornerProjector::project_rotated_corners_43ef20"]
+symbol = "?project_rotated_corners_43ef20@NativeAnimationCornerProjector@th20@@QAEXPAVAnimation@2@PAUVector3@2@111@Z"
+target_address = 0x0043EF20
+size = 1486
+relocations = [
+  { offset = 0x007, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x017, type = "REL32", symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@XZ", target = 0x00437CD0 },
+  { offset = 0x022, type = "REL32", symbol = "?rotation_sum@Animation@th20@@QAEAAUVector3@2@XZ", target = 0x00437770 },
+  { offset = 0x03D, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+  { offset = 0x046, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x04F, type = "REL32", symbol = "?sine@scalar_math@th20@@YAMM@Z", target = 0x00439820 },
+  { offset = 0x05D, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x066, type = "REL32", symbol = "?cosine@scalar_math@th20@@YAMM@Z", target = 0x004397C0 },
+  { offset = 0x087, type = "DIR32", symbol = "?native_quad_axis_layout@th20@@3QBUNativeQuadAxisLayout@1@B", target = 0x0056E140 },
+  { offset = 0x0A5, type = "DIR32", symbol = "?native_quad_axis_layout@th20@@3QBUNativeQuadAxisLayout@1@B", target = 0x0056E140 },
+  { offset = 0x19A, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x1AC, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x1DD, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x1E5, type = "DIR32", symbol = "?native_half@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0x1F7, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x1FF, type = "DIR32", symbol = "?native_half@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0x3D1, type = "REL32", symbol = "?position@Animation@th20@@QAEAAUVector3@2@AAU32@@Z", target = 0x004376E0 },
+  { offset = 0x433, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
+  { offset = 0x498, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
+  { offset = 0x4FB, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
+  { offset = 0x560, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
+  { offset = 0x5C4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

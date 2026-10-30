@@ -1,5 +1,14 @@
 # CORE/RECON-878 — exact original 96B corner-axis data; whole 1,486B rotated-corner Boss source, still NONEXACT
 
+> **CORE/RECON-945 resolution:** The 1,486B rotated corner Boss described
+> as NONEXACT in this historical frontier is now independently
+> [whole 1,486/1,486 strict exact](ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md).
+> An authentic nested lexical lifetime after Angle construction naturally
+> generates the original `+0x41` NOP. The existing 96B table and 985B
+> sibling remain independently exact. Historical failures below are
+> retained as evidence, not current status.
+
+
 The target is the immutable Japanese TH20 v1.00a Steamless PE,
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This work follows the separately accepted

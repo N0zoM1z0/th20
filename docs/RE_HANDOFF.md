@@ -18,8 +18,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
 | Source-present function mappings | **1,379** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,378**, from **341** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **664 distinct function heads /239,364 original `.text` bytes** |
+| Whole-native strict units | **1,379**, from **342** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **665 distinct function heads /240,850 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -71,7 +71,7 @@ older local-variable names or assumptions.
 | Ribbon color-array constructor `0x0045D4B0` | **75B/27-i386 + five real INT3 strict exact**, original 60×4-byte `AnimationHandle` array and 60B parent constructor call, all native EH/cookie/callback/E8 roles. 80/80 full contribution; compiler/template origin unverified and **zero authored game credit**. The separate 75B Vector2[60] ctor remains open. [Whole PE/COFF proof](ANIMATION_RIBBON_COLOR_ARRAY_75_STRICT_EXACT.md). |
 | **Ribbon segment palette `0x0045EC10`, 88B** | **88B/29-i386 whole strict exact**, two real 31B color/radius forwarding children 31/31 exact; +0x2C/+0x51 native NOP, three original E8/one physical HIGHLOW 32.0f, three real 252B caller E8. **+88 game authored bytes**; 31B helpers origin unknown/uncredited. [Full source/PE/COFF proof](ANIMATION_RIBBON_PALETTE_88_31_STRICT_EXACT.md). |
 | **Polygon outline caller `0x0045FAA0`, 104B /36 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonMotionCall104.cpp` (102B /34 x86); original saves ESI and computes a stride before `Motion::position_ref`, whereas source computes it afterward. Eight source indexing variants did **not** fix it. Its 233B caller and 1,204B callee **are exact**, independently. [Caller frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md). |
-| **Rotated four-corner projection `0x0043EF20`, 1,486B /372 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationCornerRotated1486.cpp` (1,485B /371 x86). One genuine original NOP follows the Angle constructor; in-memory alignment is diagnostic **only**. The shared **96B 2×3×4 `.rdata` table is exact**. Do not fake compiler padding. [Original proof](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). |
+| **Rotated four-corner projection `0x0043EF20`, 1,486B /372 x86** | **WHOLE STRICT EXACT**: **1,486/1,486**, real original `+0x41` NOP from natural post-Angle lexical scope; all **13 E8/9 HIGHLOW** true original roles and 96B source-owned corner table. **+1,486 authored game bytes**, 985B exact sibling still 985/985; original physical WindowState scale has 0x20C0 COFF addend. [Whole new proof](ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md), [earlier nonexact investigation](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). |
 | **Player main `0x004F9C30`, 3,111B /783 x86** | **SOURCE-PRESENT, NONEXACT**, candidate 3,114B/783 x86; real register/stack/branch differences despite instruction-count agreement. [Operand frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md). |
 | **Player movement `0x004FFA10`, 555B** | **SOURCE-PRESENT, NONEXACT**; maintained candidate 561B/136 x86 vs original 555B/135; alternate 559B experiments affected stack layout and were **not** accepted. [Original evidence](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
 | **Bullet group drawing `0x0047DB70`, 273B** | **SOURCE-PRESENT, NONEXACT**; original SSE expression/spill layout is unresolved. [Frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |

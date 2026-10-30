@@ -1,9 +1,7 @@
-// Entire semantic original 1486B/372-i386 rotated sprite corner Boss.
-// SOURCE-PRESENT NONEXACT: pinned MSVC gives 1485B/371-x86, missing the
-// original single Angle-constructor NOP at +0x41, with identical native
-// 13 E8/9 HIGHLOW target roles. Do not insert artificial padding, count
-// the missing original byte as exact, or patch the original PE/object.
-// The genuine shared 96B 2x3x4 native corner table is defined separately.
+// Original full 1486B/372-i386 rotated corner projection Boss.
+// The real nested lifetime after Angle construction produces an original
+// +0x41 compiler NOP naturally; no machine padding, asm or PE edits.
+// Original 96-byte corner axis table is owned by AnimationCornerAxisTable.
 #include "AnimationCornerProjectionOwner.hpp"
 #include "AnimationFile.hpp"
 #include "WindowState.hpp"
@@ -19,6 +17,7 @@ void NativeAnimationCornerProjector::project_rotated_corners_43ef20(
         Animation* animation, Vector3* a, Vector3* b, Vector3* c, Vector3* d) {
     SpriteData* const sprite=animation->sprite_data();
     Angle angle(animation->rotation_sum().z+sprite->field_34);
+    {
     const float sine=scalar_math::sine(static_cast<float>(angle));
     const float cosine=scalar_math::cosine(static_cast<float>(angle));
     const float* x_offsets=native_quad_axis_layout[0].corners[animation->base.flags.word_10];
@@ -57,5 +56,6 @@ void NativeAnimationCornerProjector::project_rotated_corners_43ef20(
     c->z=z;
     b->z=z;
     a->z=z;
+    }
 }
 }

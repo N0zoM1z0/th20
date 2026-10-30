@@ -29,9 +29,9 @@ not current facts when newer canonical units supersede them.
   [original 31-E8 /10-HIGHLOW graph and seven earlier strict range leaves](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md).
   Its [140B native parent tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md)
   **is** independently whole exact.
-- **104B Motion polygon wrapper and 1,486B rotated corner — NONEXACT:**
+- **104B Motion polygon wrapper — NONEXACT; 1,486B rotated corner — now STRICT EXACT:**
   [ESI lifetime frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md),
-  [genuine constructor NOP and 96B exact corner table](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md);
+  [rotated whole strict exact](ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md); [historical original NOP and 96B exact corner table](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md);
   [bounded Angle ABI/constructor probes and original 44B two-word helper](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md).
 - **Player frame / movement:** [3,111B main](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
   and [555B movement](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md)
@@ -41,6 +41,10 @@ not current facts when newer canonical units supersede them.
 
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The historical polygon-derived destructor source was NONEXACT; the **same original physical 20B folded destructor** has since become **whole strict exact** through the single-ODR ribbon-group constructor/destructor chain. A unique polygon-derived C++ ownership identity remains unproven; do not double-credit compiler bytes. The polygon 113B constructor and 49B deleting wrapper remain strict exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
+
+## Original complete 1,486B rotated four-corner projection Boss strict exact
+
+- [CORE/RECON-945 — whole 1,486B/372-i386 rotated corner projection](ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md). Previously 1,485B/371 NONEXACT; ordinary lexical scope after Angle naturally emits native `+0x41` NOP. Full original 13 E8/9 HIGHLOW, 22 genuine COFF relocations, including `window_state.scale` physical 0x5B8818 from base 0x5B6758 +0x20C0 addend. **1,486/1,486 strict exact, +1 authored head/+1,486 bytes**, sibling 985B local replay unchanged. The 96B `.rdata` table stays separately exact/uncredited as code.
 
 ## Entire original 88B ribbon palette and two 31B wrappers
 
@@ -209,9 +213,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,379 source-present mappings, 1,378
-strict units from 341 pinned object/receipt providers, and 664 distinct
-original authored whole-exact game functions /239,364 `.text` bytes**.
+**Current verified checkpoint:** **1,379 source-present mappings, 1,379
+strict units from 342 pinned object/receipt providers, and 665 distinct
+original authored whole-exact game functions /240,850 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
