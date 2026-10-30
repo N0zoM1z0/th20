@@ -4,12 +4,10 @@
 #include "AnimationRuntimeOwner.hpp"
 #include "NativeFileClearPoolView.hpp"
 #include "DiagnosticAllocator.hpp"
+#include "NativeFileClearAllocatorView.hpp"
 #include <array>
 #include <cstdint>
 namespace th20 {
-struct NativeDiagnosticFileAllocator : DiagnosticAllocator {
-    void release_file_entry_447330(AnimationFile** entry);
-};
 void NativeFileClearPoolView::release_file_slot_44c430(std::int32_t index) {
     // The genuine original /Od lexical guard emits a short JL and JB plus
     // one unconditional JMP. Combining both branches into one expression

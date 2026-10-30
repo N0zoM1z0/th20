@@ -25433,3 +25433,25 @@ relocations = [
  { offset = 0x28E, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
  { offset = 0x2A9, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/RECON-973: real original 103B native file/allocator lifetime helper;
+# original C++ compiler/template authorship review, no authored game credit.
+[units.animation_file_entry_release_103]
+source = "src/AnimationFileEntryRelease103.cpp"
+object = "build/core973-canonical/AnimationFileEntryRelease103.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeDiagnosticFileAllocator::release_file_entry_447330"]
+symbol = "?release_file_entry_447330@NativeDiagnosticFileAllocator@th20@@QAEXPAPAVAnimationFile@2@@Z"
+target_address = 0x00447330
+size = 103
+relocations = [
+ { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x24, type = "REL32", symbol = "??$destroy_at@VAnimationFile@th20@@@std@@YAXQAVAnimationFile@th20@@@Z", target = 0x00447850 },
+ { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+ { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+ { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+ { offset = 0x47, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x005429FC },
+ { offset = 0x52, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+ { offset = 0x5D, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
