@@ -73,7 +73,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     void draw_shape_43d9b0(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     void draw_shape_43dce0(float, float, float, float, float, int, std::uint32_t);
-    void draw_shape_43df30(float, float, float, float, float, float, int,
+    // Original whole 899B alternating polar TRIANGLESTRIP EAX=0/RET 0x24.
+    std::int32_t draw_shape_43df30(float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
 };
 
