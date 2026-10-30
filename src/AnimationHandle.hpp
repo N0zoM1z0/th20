@@ -17,6 +17,10 @@ struct AnimationHandle {
     // Native word assignment; the shared physical head is audited separately.
     void operator=(std::uint32_t input);
     Animation* resolve();
+    // Native alternate 56B resolver: non-null result or resident pool Animation.
+    Animation* resolve_or_resident_44cf10();
+    // Native 39B wrapper publishes a callback to resolved/resident Animation.
+    void set_entry_callback_forward_44f100(std::int32_t (*callback)(Animation*));
     // Original whole 45-byte native live-handle validity predicate.
     bool is_valid();
     // Original whole 26-byte positional member forwarding wrapper.

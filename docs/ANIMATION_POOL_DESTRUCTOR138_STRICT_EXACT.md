@@ -14,6 +14,10 @@ plus native alignment, not merely a convenient first 138B prefix.
 
 ## Independently evidenced real object layout
 
+This resident Animation at `+0xDC` is now independently confirmed
+by the [whole-exact 56B expired Handle resolver](ANIMATION_HANDLE_RESOLVE_RESIDENT56_CALLBACK39_STRICT_EXACT.md),
+which uses precisely that native fallback address.
+
 The original native destructor order is a stronger constraint than
 old provisional Ghidra labels. Every original call target was resolved
 against the immutable PE and previously accepted source:
