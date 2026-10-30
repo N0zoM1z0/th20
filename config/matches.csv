@@ -654,3 +654,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0045D780,th20::NativeRibbonSoloSegmentUpdateView::update_45d780,697,matching,100.00,animation_ribbon_solo_dynamics_697,CORE/RECON-929; docs/ANIMATION_RIBBON_SOLO_DYNAMICS_697_STRICT_EXACT.md
 0x0045D5B0,th20::NativeRibbonSoloGroup::NativeRibbonSoloGroup,89,matching,100.00,animation_ribbon_solo_group_ctor_89,CORE/RECON-931; docs/ANIMATION_RIBBON_SOLO_GROUP_CTOR_89_DELETE_49_STRICT_EXACT.md
 0x0045DC70,th20::configure_ribbon_solo_group_45dc70,47,matching,100.00,animation_ribbon_solo_config_wrapper_47,CORE/RECON-933; docs/ANIMATION_RIBBON_SOLO_WRAPPER_47_STRICT_EXACT.md
+0x0045DB30,th20::NativeRibbonSoloGroup::configure_group_45db30,182,matching,100.00,animation_ribbon_solo_group_config_182,CORE/RECON-934; docs/ANIMATION_RIBBON_SOLO_CONFIG_182_STRICT_EXACT.md

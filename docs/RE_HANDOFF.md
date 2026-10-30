@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,367** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,366**, from **330** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **655 distinct function heads /237,453 original `.text` bytes** |
+| Source-present function mappings | **1,368** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,367**, from **331** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **656 distinct function heads /237,635 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -48,6 +48,7 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
+| 182B solo-ribbon config Boss `0x0045DB30` | **182B/57-i386 whole strict exact**, 7 original native E8/zero HIGHLOW, actual 0x3DC token, Timer+0x3CC, real 23B segment index and 123B palette child, Animation position/layer/style/flag. **+182 authored game bytes**; palette child separately open. [Whole native proof](ANIMATION_RIBBON_SOLO_CONFIG_182_STRICT_EXACT.md). |
 | 47B solo-ribbon create wrapper `0x0045DC70` | **47B/18-i386 strict exact**, real native marker 0x56ECC0 and process allocator 0x5B8894, original E8 to exact 156B allocation and separate 182B config. **+47 authored game bytes**; 182B remains independent. [Whole proof](ANIMATION_RIBBON_SOLO_WRAPPER_47_STRICT_EXACT.md). |
 | Solo ribbon 156B C++17 factory `0x0045D2C0` | **156B/46-i386 original allocation whole strict exact**, genuine 0x3E0 new/autozero, 4 native E8/2 HIGHLOW and real 89B ctor. Natural polymorphic `class`/pointer ABI triggers actual `/sdl` clearing; eight affected providers replay 9/9. Template origin unresolved, **zero game-authored credit**. [Native original/COFF proof](ANIMATION_RIBBON_SOLO_FACTORY_156_STRICT_EXACT.md). |
 | Solo ribbon 89B group ctor and 49B deleting wrapper | **89B/25-i386 original polymorphic group ctor strict exact** with actual 0x56ECA4 vtable, 0x3E0 size, inherited base/78B array/Timer; **49B native scalar deleting wrapper** also whole exact. **+89 authored game bytes**; 49B compiler origin unknown and shared folded 20B destructor uncredited. [Complete PE/COFF proof](ANIMATION_RIBBON_SOLO_GROUP_CTOR_89_DELETE_49_STRICT_EXACT.md). |

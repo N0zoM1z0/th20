@@ -24494,3 +24494,22 @@ relocations = [
  { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeRibbonSoloGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonSoloGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045D2C0 },
  { offset = 0x27, type = "REL32", symbol = "?configure_group_45db30@NativeRibbonSoloGroup@th20@@QAEHABUNativeRibbonSoloGroupOptions@2@H@Z", target = 0x0045DB30 },
 ]
+
+# CORE/RECON-934: entire 182B/57-x86 solo ribbon game configuration Boss.
+[units.animation_ribbon_solo_group_config_182]
+source = "src/AnimationRibbonSoloGroupConfig182.cpp"
+object = "build/core934-canonical/AnimationRibbonSoloGroupConfig182.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonSoloGroup::configure_group_45db30"]
+symbol = "?configure_group_45db30@NativeRibbonSoloGroup@th20@@QAEHABUNativeRibbonSoloGroupOptions@2@H@Z"
+target_address = 0x0045DB30
+size = 182
+relocations = [
+ { offset = 0x30, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+ { offset = 0x43, type = "REL32", symbol = "?at_45d690@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@H@Z", target = 0x0045D690 },
+ { offset = 0x53, type = "REL32", symbol = "?initialize_palette_45dbf0@NativeRibbonSoloPaletteView@th20@@QAEXI@Z", target = 0x0045DBF0 },
+ { offset = 0x68, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
+ { offset = 0x7B, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
+ { offset = 0x97, type = "REL32", symbol = "?configure_438c60@NativeRibbonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+ { offset = 0xAA, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
+]

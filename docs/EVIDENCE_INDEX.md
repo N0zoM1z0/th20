@@ -50,6 +50,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-922 — 252B/77-i386 ribbon-group configuration Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). Full original 11 E8/zero HIGHLOW and C++20 strict **252/252 native bytes**, genuine token/palette/Animation state; **+252 authored game bytes**. Separate original [23B segment index](ANIMATION_RIBBON_SEGMENT_AT23_STRICT_EXACT.md) is independently 23/23 strict exact, origin unknown/uncredited; 88B palette subsequently strict exact in CORE/RECON-923. Local replay only the two changed sources and actual header-dependent closure.
 
+## Complete 182B original solo-ribbon configuration Boss
+
+- [CORE/RECON-934 — full original 182B/57-i386 single-segment ribbon configuration](ANIMATION_RIBBON_SOLO_CONFIG_182_STRICT_EXACT.md). 7 true E8 and zero HIGHLOW, native token/control/Timer offsets, one 0x3C0 segment palette and Animation state; **182/182 whole canonical strict exact, +182 authored game bytes**, 3/3 local replay; separate 123B palette child still open.
+
 ## Solo-ribbon 47B creation wrapper complete native exact
 
 - [CORE/RECON-933 — full original 47B/18-i386 solo-ribbon creation wrapper](ANIMATION_RIBBON_SOLO_WRAPPER_47_STRICT_EXACT.md). Genuine native 2 E8/two HIGHLOW to real process allocator, original marker, strict 156B factory and separate 182B configuration; **47/47 native exact, +47 original authored bytes**, scoped 7/7 local replay.
@@ -165,9 +169,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,367 source-present mappings, 1,366
-strict units from 330 pinned object/receipt providers, and 655 distinct
-original authored whole-exact game functions /237,453 `.text` bytes**.
+**Current verified checkpoint:** **1,368 source-present mappings, 1,367
+strict units from 331 pinned object/receipt providers, and 656 distinct
+original authored whole-exact game functions /237,635 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
