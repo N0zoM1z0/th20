@@ -1,5 +1,11 @@
 # CORE/RECON-911 — complete 140B ribbon-group update Boss strictly exact
 
+> **CORE/RECON-912 follow-up:** The separate original **156B virtual draw
+> `0x0045EA20`** is now also [whole 156/156 native exact](ANIMATION_RIBBON_GROUP_DRAW_156_STRICT_EXACT.md).
+> This updates the earlier draw-NONEXACT observations below without changing
+> the independently accepted 140B update, original 19B end, or their receipts.
+
+
 Locked original: Japanese TH20 Steamless v1.00a, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This is an **independent polymorphic ribbon/polygon AnimationCallback group**,

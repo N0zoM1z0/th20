@@ -23960,3 +23960,25 @@ relocations = [
   { offset = 0x69, type = "REL32", symbol = "?update_ribbon_45e800@NativeRibbonSegment@th20@@QAEXM@Z", target = 0x0045E800 },
   { offset = 0x82, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
 ]
+
+# CORE/RECON-912: native ribbon-group polymorphic draw, distinct from 233B
+# polygon group. 156B complete body, including the physical scope NOP.
+[units.animation_ribbon_group_draw_156]
+source = "src/AnimationRibbonGroupDraw156.cpp"
+object = "build/core912-canonical/AnimationRibbonGroupDraw156.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonGroup::draw"]
+symbol = "?draw@NativeRibbonGroup@th20@@UAEHXZ"
+target_address = 0x0045EA20
+size = 156
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1C, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x21, type = "REL32", symbol = "?bind_native_texture_state@AnimationQuadSubmitOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x00445BC0 },
+  { offset = 0x29, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x3E, type = "REL32", symbol = "?position@Animation@th20@@QAEAAUVector3@2@AAU32@@Z", target = 0x004376E0 },
+  { offset = 0x50, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x5B, type = "REL32", symbol = "?end_45eca0@NativeRibbonSegmentArray@th20@@QAEPAUNativeRibbonSegment@2@XZ", target = 0x0045ECA0 },
+  { offset = 0x85, type = "REL32", symbol = "?draw_ribbon_45eac0@NativeRibbonSegment@th20@@QAEXPBUVector3@2@@Z", target = 0x0045EAC0 },
+  { offset = 0x94, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

@@ -1335,3 +1335,4 @@ th20::NativePolygonMotionGroup::scalar_deleting_destructor
 th20::NativeForwardedRefSlot::NativeForwardedRefSlot
 th20::NativeRibbonSegmentArray::end_45eca0
 th20::NativeRibbonGroup::update
+th20::NativeRibbonGroup::draw

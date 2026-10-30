@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,337** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,336**, from **307** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **641 distinct function heads /234,942 original `.text` bytes** |
+| Source-present function mappings | **1,338** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,337**, from **308** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **642 distinct function heads /235,098 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -47,7 +47,7 @@ older local-variable names or assumptions.
 | **Enemy ECL opcode dispatcher `0x0048C010`, 41,967B /8,896 x86** | **SOURCE-ABSENT.** Original 174 PE switch fields and large opcode CFG need a complete parent source; exact Laser children do not close it. [Original graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
-| **Ribbon segment updater `0x0045E800`, 538B and enclosing group draw `0x0045EA20`, 156B** | **SOURCE-ABSENT** at this checkpoint. Distinct 3x0x3C0 ribbon system; original 140B sibling `0x0045E770` and its 19B end helper now independently whole strict exact, including native six E8 and true polymorphic vtable. [140B native proof](ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md). |
+| **Ribbon segment updater `0x0045E800`, 538B and segment renderer `0x0045EAC0`, 76B** | **SOURCE-ABSENT** at this checkpoint. The distinct 3x0x3C0 ribbon group now has both original 140B update and 156B draw whole strict exact; their exact child 19B array end does not imply 538B/76B exactness. [Update native proof](ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md), [draw native proof](ANIMATION_RIBBON_GROUP_DRAW_156_STRICT_EXACT.md). |
 | **Polygon outline caller `0x0045FAA0`, 104B /36 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonMotionCall104.cpp` (102B /34 x86); original saves ESI and computes a stride before `Motion::position_ref`, whereas source computes it afterward. Eight source indexing variants did **not** fix it. Its 233B caller and 1,204B callee **are exact**, independently. [Caller frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md). |
 | **Rotated four-corner projection `0x0043EF20`, 1,486B /372 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationCornerRotated1486.cpp` (1,485B /371 x86). One genuine original NOP follows the Angle constructor; in-memory alignment is diagnostic **only**. The shared **96B 2×3×4 `.rdata` table is exact**. Do not fake compiler padding. [Original proof](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). |
 | **Player main `0x004F9C30`, 3,111B /783 x86** | **SOURCE-PRESENT, NONEXACT**, candidate 3,114B/783 x86; real register/stack/branch differences despite instruction-count agreement. [Operand frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md). |
@@ -81,6 +81,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 
 | Original head / subsystem | Whole strict status |
 | --- | --- |
+| Ribbon/polygon virtual draw Boss `0x0045EA20` | **156B/53-i386 whole native strict exact**, seven real E8/two HIGHLOW, three original 0x3C0 segments and genuine native scope NOP. **+156 authored game bytes**. [Complete native proof](ANIMATION_RIBBON_GROUP_DRAW_156_STRICT_EXACT.md). |
 | Separate ribbon/polygon update Boss `0x0045E770` | **140B /46-i386 whole native exact**, independent 0x56EDDC vtable, real 3x0x3C0 segments, six physical E8 and Timer +0xB4C; **+140 newly credited authored game bytes**. Its 19B array end remains strict exact and origin unproven; 538B update child and 156B draw remain open. [Complete native proof](ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md). |
 | Original polygon group construction Boss | **113B/30-i386 whole native strict exact**, genuine `AnimationCallback` base/vtable, 78B segment array, Timer/Vector3. **49B compiler scalar-deleting wrapper also strict exact**; its separate 20B ordinary destructor remains NONEXACT. [113B/49B proof](ANIMATION_POLYGON_GROUP_CTOR_113_DELETE_49_STRICT_EXACT.md). |
 | Original polygon three-segment array ctor | Original **78B +5B INT3** C++20 `std::array<Segment,3>` complete **83/83 strict exact**, with 60B child and original 75B color-cell array ctor preserved; 113B parent is separate and NONEXACT. [Native proof](ANIMATION_POLYGON_SEGMENT_ARRAY_78_STRICT_EXACT.md). |
@@ -98,7 +99,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 
 The original **19B ribbon three-segment array-end pointer** `0x0045ECA0`
 is whole **19/19 strict exact**, independently called by the now exact 140B
-update and the unresolved 156B draw. Its original STL/compiler authorship remains
+update and 156B draw. Its original STL/compiler authorship remains
 review-pending. [Physical E8 + canonical evidence](POLYGON_SLOT_B40_ACCESSOR_19_STRICT_EXACT.md).
 
 The original **42B nested forwarding/ref-slot constructor** at `0x0045ECC0` is
