@@ -7,5 +7,6 @@ namespace th20 {
 struct NativeFileClearPoolView : AnimationPoolOwner {
     void detach_file_44fd30(AnimationFile* file,char flag);
     void cleanup_texture_44c510(TextureRecord* record);
+    void release_file_slot_44c430(std::int32_t index);
 };
 }

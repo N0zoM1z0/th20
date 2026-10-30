@@ -1414,3 +1414,4 @@ th20::NativeAnimationHandleForwardView::find_child_handle_44c7b0,0x0044C7B0,func
 th20::NativeAnimationHandleLookupView::find_child_handle_44c830,0x0044C830,function
 th20::AnimationFile::clear,0x0044AB00,function
 th20::NativeFileClearPoolView::cleanup_texture_44c510,0x0044C510,function
+th20::NativeFileClearPoolView::release_file_slot_44c430,0x0044C430,function

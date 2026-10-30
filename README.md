@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,415
-source-present mappings**, **1,415 strict canonical native units** and
-**365 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **688 complete functions /
-244,012 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,416
+source-present mappings**, **1,416 strict canonical native units** and
+**366 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **689 complete functions /
+244,221 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -77,6 +77,7 @@ for the live inventory and consult the
 | **Particle Update animation timer/color accessors** | Full **25B/19B** original Timer+0x4D8 and color+0x490 getters with true native PE caller E8 from 2,884B Update; **+44 authored-game bytes**. [Complete native strict evidence](docs/ANIMATION_PARTICLE_ANIMATION_ACCESS_25_19_STRICT_EXACT.md). |
 | **AnimationHandle child lookup path** | Entire original **108B/37-i386 child query plus 127B/45-i386 Handle forwarder**, original four+five E8 and real security cookies, true hidden `AnimationHandle` result. **+235 game-authored bytes**, both 108/108+127/127 strict exact. [Complete native evidence](docs/ANIMATION_CHILD_HANDLE_LOOKUP108127_STRICT_EXACT.md). |
 | **236B recursive Animation raw-world-position Boss** | Genuine original **236B/77-i386 whole strict exact** with three Vector3 component operands, native parent Z rotation and original recursive self E8 plus cookie, **+236 authored native bytes**. [Complete original proof](docs/ANIMATION_RAW_WORLD_POSITION236_STRICT_EXACT.md). |
+| **209B RendererPool AnimationFile slot release** | Whole native **209B/61-i386 strict exact**, 42-entry `AnimationFile*` table at original pool+0x06000730, correct original `jl/jb/jmp` source branch, 8 E8/1 HIGHLOW, actual 284B file clear and object retirement. **+209 authored bytes**; three-unit local lifecycle replay. [Full original proof](docs/ANIMATION_FILE_SLOT_RELEASE209_STRICT_EXACT.md). |
 | **94B texture record COM/allocator retirement** | Original **94B/33-i386 whole strict exact**, typed Direct3D9 `Release()`, buffer owner reset and original 284B file-clear parent E8; **+94 authored game bytes**, 2/2 local replay. [Native proof](docs/ANIMATION_TEXTURE_RELEASE94_STRICT_EXACT.md). |
 | **284B `AnimationFile::clear()` resource-retirement Boss** | Entire **284B/81-i386 native whole strict exact**, real renderer file detach/texture release and allocator arrays/bytes retirement, all original **8 E8 and 8 HIGHLOW** anchored. **+284 game-authored bytes**, 1/1 affected-only replay. [Whole proof](docs/ANIMATION_FILE_CLEAR284_STRICT_EXACT.md). |
 | **922B AnimationFile spawn Boss whole strict exact** | **922B/269-i386 full native original exact**, actual seven visible args plus compiler-hidden `AnimationHandle` return, original lock/allocate/script/position/flag/render selection. **20 E8 and 14 HIGHLOW** entirely verified. The 83B caller was retyped to the same actual original member and replayed 83/83 exact. **+922 authored game bytes**. [Complete PE/COFF proof](docs/ANIMATION_FILE_SPAWN_922_STRICT_EXACT.md). |
