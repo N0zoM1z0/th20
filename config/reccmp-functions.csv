@@ -1374,3 +1374,4 @@ th20::NativeRibbonTrailGroup::update,0x0045DF80,function
 th20::NativeRibbonTrailGroup::draw,0x0045E190,function
 "th20::DiagnosticAllocator::allocate_object<NativeRibbonTrailGroup,Animation*>",0x0045DD90,function
 th20::NativeRibbonTrailGroup::configure_gray_45e240,0x0045E240,function
+th20::NativeRibbonTrailGroup::configure_pink_45e3a0,0x0045E3A0,function

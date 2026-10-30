@@ -24664,3 +24664,28 @@ relocations = [
  { offset = 0x13C, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
  { offset = 0x147, type = "REL32", symbol = "?set_animation_flag_byte_01_zero@th20@@YIXPAVAnimation@1@@Z", target = 0x0045E590 },
 ]
+
+# CORE/RECON-941: original whole 382B magenta ribbon configuration Boss.
+[units.animation_ribbon_trail_pink_382]
+source = "src/AnimationRibbonTrailGroupPink382.cpp"
+object = "build/core941-canonical/AnimationRibbonTrailGroupPink382.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonTrailGroup::configure_pink_45e3a0"]
+symbol = "?configure_pink_45e3a0@NativeRibbonTrailGroup@th20@@QAEHABUVector3@2@H@Z"
+target_address = 0x0045E3A0
+size = 382
+relocations = [
+ { offset = 0x025, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0EA@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+ { offset = 0x03F, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0EA@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+ { offset = 0x050, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+ { offset = 0x05A, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+ { offset = 0x05F, type = "REL32", symbol = "?range@GameRandom@th20@@QAEMM@Z", target = 0x004298B0 },
+ { offset = 0x078, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+ { offset = 0x0B2, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x0E3, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x111, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x137, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
+ { offset = 0x14A, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
+ { offset = 0x155, type = "REL32", symbol = "?set_animation_flag_byte_01_one@th20@@YIXPAVAnimation@1@@Z", target = 0x0045E5B0 },
+ { offset = 0x171, type = "REL32", symbol = "?configure_438c60@NativeTrailAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+]
