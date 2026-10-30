@@ -11,9 +11,9 @@ provisional until each boundary is reconciled with exact target control flow.
 | Classified exclusions | 82 |
 | Source-present mappings, all origins | 1,247 |
 | Source-present authored mappings | 606 |
-| Canonical exact functions | 600 |
-| Canonical exact authored bytes | 201,103 |
-| Exact / currently confirmed authored bytes | 86.84% |
+| Canonical exact functions | 601 |
+| Canonical exact authored bytes | 203,872 |
+| Exact / currently confirmed authored bytes | 88.03% |
 
 Exact totals count only functions whose configured MSVC x86 unit passes the
 canonical zero-difference comparator and is recorded consistently in both

@@ -1,5 +1,11 @@
 # CORE/RECON-843 — whole original 2,769B Mode6 renderer source, native 5-case/data roles (NONEXACT)
 
+
+**Superseded as current status by [CORE/RECON-844 — whole native strict
+2,792/2,792B exact](ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md).** The
+NONEXACT findings and source sizes below describe the earlier candidate
+at CORE/RECON-843, not the live renderer source or current exact ledger.
+
 The locked original Japanese TH20 v1.00a Steamless executable, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`,
 contains a complete game-owned Animation Mode6 render method at **`0x004408B0`**.

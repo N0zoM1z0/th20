@@ -50,10 +50,10 @@ are excluded from Git.
 ## Repository status
 
 At the October 30, 2026 checkpoint the maintained graph has **1,247
-source-present mappings**, **1,247 strict canonical native units** and
-**265 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **600 complete functions /
-201,103 original native bytes**. These are dated values, not a
+source-present mappings**, **1,248 strict canonical native units** and
+**266 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **601 complete functions /
+203,872 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -62,8 +62,8 @@ for the live inventory and consult the
 | Area | Verified current state |
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
-| Animation Mode6 complete render parent | [Original 2,769B Mode6 renderer with complete maintained five-case C++ source](docs/ANIMATION_DRAW_MODE6_2769_FIVE_CASE_SOURCE_FRONTIER.md), all 28 original direct E8 roles and 78 PE HIGHLOW destination counts recovered with native-sized 2,769B code and genuine five-pointer switch data. **NONEXACT**, frame/opcode/physical-site debt remains, zero game exact credit. |
-| Animation Mode6 complete screen-projection Boss | [Original 1,378B/335 x86 screen projection and four real projected XY corners](docs/ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md), full **1,378/1,378B strict exact** with 17 original E8, 21 PE HIGHLOW and independently proven 2×3×4 screen offset tensor. Its larger 2,769B Mode6 caller/5,993B main Draw dispatcher remain NONEXACT. |
+| Animation Mode6 complete render Boss | [Entire original 2,769B/683-x86 game renderer plus genuine five-pointer case table, 2,792/2,792 strict exact](docs/ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md). Independently verified all 28 original E8, 78 in-body HIGHLOW and five post-RET case pointers. Native fog-first COMISS/NaN handling, exact `0x64` frame and real game RGBA channel math, one newly credited full game function. The enclosing 5,993B Draw dispatcher remains NONEXACT. |
+| Animation Mode6 complete screen-projection Boss | [Original 1,378B/335 x86 screen projection and four real projected XY corners](docs/ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md), full **1,378/1,378B strict exact** with 17 original E8, 21 PE HIGHLOW and independently proven 2×3×4 screen offset tensor. Its larger 2,769B Mode6 caller is now independently whole strict exact; only the 5,993B enclosing Draw dispatcher remains NONEXACT. |
 | Animation mode6 projection math leaves | [73B Vector3 magnitude +86B renderer XY rotation and translation](docs/ANIMATION_PROJECTION_MATH_73_86_STRICT_EXACT.md), both complete original strict native exact **159/159B**, independently identified five genuine original 1,378B Mode6 setup E8 sites. The parent remains NONEXACT. |
 | Animation mode7 setup / matrix Boss | [Original complete 1,996B Animation matrix, rotations and four-corner setup strict exact](docs/ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md), including 11 actual original calls/26 PE HIGHLOW, one natural 459-x86 C++ method, D3DX and window/parent state. Its separately exact 753B mode7 caller remains zero-difference after the genuine int-return ABI was corrected. |
 | Animation mode7 renderer Boss | [Whole 753B original D3DX projection/fog quad renderer strict exact](docs/ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md), including all seven real native calls, all 29 original PE data relocation sites, 178 exact x86 instructions and complete 753/753B canonical relocation replay. Shared receiver header keeps the still-NONEXACT 5,993B main Draw Boss candidate byte-for-byte unchanged. |

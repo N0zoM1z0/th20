@@ -1,7 +1,9 @@
-// Complete semantic C++ candidate for original 2769B Animation mode6 draw.
-// Still NONEXACT until original full i386 and all 28 E8/78 PE HIGHLOW roles
-// can be strictly compared. The exact 1378B mode6 setup, 25B depth and
-// 3159B quad-submit parents are called by their genuine existing ABIs.
+// Whole original 2769B/683-x86 Mode6 renderer, complete native strict exact.
+// Canonical 2792/2792B comparison includes genuine 3B alignment, five
+// compiler-generated original case pointers and all 111 independent COFF
+// relocations (28 E8, 78 body HIGHLOW, five after-RET pointer fields).
+// Original 1378B setup, 25B depth, 3159B quad submit are separate exact
+// callees; the enclosing 5993B Draw dispatcher remains NONEXACT.
 #include "AnimationDrawDetailedOwner.hpp"
 #include "Animation.hpp"
 #include "AnimationDepthMath.hpp"
@@ -51,18 +53,17 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
         camera_vector.y+=(static_cast<float>(window_state.scaled_height)-native_448)/native_two;
     }
     float depth=animation_depth(camera_vector);
-    const auto channel_mode=animation->base.flags.color_mode;
     Mode6PackedColor main_color, other_color;
 
-    switch(channel_mode) {
+    switch(animation->base.flags.color_mode) {
+    default: break;
     case 0:
     case 1: {
+        float fade;
         main_color.word=(animation->base.flags.color_mode==0)?animation->base.color_490:animation->base.color_494;
         if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) { ANM6_TINT(main_color); }
-        if (!(depth > process_graphics.current_viewport->fog.near_distance)) {
-            native_quad_vertices[0].color=main_color.word;
-        } else {
-            float fade=(process_graphics.current_viewport->fog.near_distance-depth)/fog_span;
+        if (depth > process_graphics.current_viewport->fog.near_distance) {
+            fade=(process_graphics.current_viewport->fog.near_distance-depth)/fog_span;
             if (fade>=native_one) return -1;
             // The original fog float channels are truncated to signed int
             // before computing their per-byte normalized differences.
@@ -81,11 +82,15 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
             native_quad_vertices[0].channels.alpha=static_cast<std::uint8_t>(static_cast<std::int32_t>(
                 static_cast<float>(main_color.lanes.alpha)*(native_one-fade*fade*fade)));
 
+        } else {
+            native_quad_vertices[0].color=main_color.word;
         }
-        if (animation->base.flags.word_04&(1u<<20)) {
-            if (!(depth>animation->base.field_4bc)) return -1;
+        if ((animation->base.flags.word_04 >> 20) & 1u) {
+            // Compare original lower bound first: unordered values follow
+            // the original JB pass path rather than an inverted JA check.
+            if (animation->base.field_4bc >= depth) return -1;
             if (depth<animation->base.field_4b8) {
-                float fade=(animation->base.field_4b8-depth)/
+                fade=(animation->base.field_4b8-depth)/
                            (animation->base.field_4b8-animation->base.field_4bc);
                 native_quad_vertices[0].channels.alpha=static_cast<std::uint8_t>(
                     static_cast<std::int32_t>(static_cast<float>(native_quad_vertices[0].channels.alpha)*(native_one-fade)));
@@ -101,10 +106,7 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
         main_color.word=animation->base.color_490;
         other_color.word=animation->base.color_494;
         if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) { ANM6_TINT(main_color); ANM6_TINT(other_color); }
-        if (!(depth>process_graphics.current_viewport->fog.near_distance)) {
-            native_quad_vertices[0].color=main_color.word;
-            native_quad_vertices[3].color=other_color.word;
-        } else {
+        if (depth > process_graphics.current_viewport->fog.near_distance) {
             depth=(process_graphics.current_viewport->fog.near_distance-depth)/fog_span;
             if (depth>=native_one) return -1;
             // In this original mode both endpoints interpolate independently;
@@ -139,6 +141,9 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
                 static_cast<float>(other_color.lanes.alpha)*(native_one-depth)));
 
 
+        } else {
+            native_quad_vertices[0].color=main_color.word;
+            native_quad_vertices[3].color=other_color.word;
         }
         if (animation->base.flags.color_mode==2) {
             native_quad_vertices[2].color=native_quad_vertices[0].color;
@@ -154,30 +159,30 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
         other_color.word=animation->base.color_494;
         ANM6_BLEND_COLOR(main_color,other_color);
         if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) { ANM6_TINT(main_color); }
-        if (!(depth>process_graphics.current_viewport->fog.near_distance)) {
-            native_quad_vertices[0].color=main_color.word;
-        } else {
-            float fade=(process_graphics.current_viewport->fog.near_distance-depth)/fog_span;
-            if (fade>=native_one) return -1;
+        if (depth > process_graphics.current_viewport->fog.near_distance) {
+            depth=(process_graphics.current_viewport->fog.near_distance-depth)/fog_span;
+            if (depth>=native_one) return -1;
             native_quad_vertices[0].channels.blue=static_cast<std::uint8_t>(main_color.lanes.blue-
                 static_cast<std::uint8_t>(static_cast<std::int32_t>((static_cast<float>(
-                    static_cast<std::int32_t>(main_color.lanes.blue)-static_cast<std::int32_t>(process_graphics.current_viewport->fog.channels[0])))*fade)));
+                    static_cast<std::int32_t>(main_color.lanes.blue)-static_cast<std::int32_t>(process_graphics.current_viewport->fog.channels[0])))*depth)));
             native_quad_vertices[0].channels.green=static_cast<std::uint8_t>(main_color.lanes.green-
                 static_cast<std::uint8_t>(static_cast<std::int32_t>((static_cast<float>(
-                    static_cast<std::int32_t>(main_color.lanes.green)-static_cast<std::int32_t>(process_graphics.current_viewport->fog.channels[1])))*fade)));
+                    static_cast<std::int32_t>(main_color.lanes.green)-static_cast<std::int32_t>(process_graphics.current_viewport->fog.channels[1])))*depth)));
             native_quad_vertices[0].channels.red=static_cast<std::uint8_t>(main_color.lanes.red-
                 static_cast<std::uint8_t>(static_cast<std::int32_t>((static_cast<float>(
-                    static_cast<std::int32_t>(main_color.lanes.red)-static_cast<std::int32_t>(process_graphics.current_viewport->fog.channels[2])))*fade)));
+                    static_cast<std::int32_t>(main_color.lanes.red)-static_cast<std::int32_t>(process_graphics.current_viewport->fog.channels[2])))*depth)));
             native_quad_vertices[0].channels.alpha=static_cast<std::uint8_t>(static_cast<std::int32_t>(
-                static_cast<float>(main_color.lanes.alpha)*(native_one-fade*fade*fade)));
+                static_cast<float>(main_color.lanes.alpha)*(native_one-depth*depth*depth)));
 
+        } else {
+            native_quad_vertices[0].color=main_color.word;
         }
         native_quad_vertices[1].color=native_quad_vertices[0].color;
         native_quad_vertices[2].color=native_quad_vertices[0].color;
         native_quad_vertices[3].color=native_quad_vertices[0].color;
         break;
     }
-    default:break;
+
     }
     return render_quad(animation,2);
 }
