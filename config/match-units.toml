@@ -24564,3 +24564,36 @@ relocations = [
  { offset = 0x0B, type = "REL32", symbol = "??1NativeRibbonTrailGroup@th20@@UAE@XZ", target = 0x0045C2A0 },
  { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
 ]
+
+# CORE/RECON-937: full original 520B/149-i386 64-point trail ribbon
+# AnimationCallback update Boss, original 15 E8 +5 PE HIGHLOW.
+[units.animation_ribbon_trail_update_520]
+source = "src/AnimationRibbonTrailGroupUpdate520.cpp"
+object = "build/core937-canonical/AnimationRibbonTrailGroupUpdate520.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonTrailGroup::update"]
+symbol = "?update@NativeRibbonTrailGroup@th20@@UAEHXZ"
+target_address = 0x0045DF80
+size = 520
+relocations = [
+ { offset = 0x01A, type = "REL32", symbol = "?less_than@Timer@th20@@QBE_NH@Z", target = 0x00423560 },
+ { offset = 0x033, type = "REL32", symbol = "?changed_45d030@NativeRibbonGate@th20@@QAEHXZ", target = 0x0045D030 },
+ { offset = 0x049, type = "REL32", symbol = "??BTimer@th20@@QBEHXZ", target = 0x0040FF90 },
+ { offset = 0x07E, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x09F, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x0CC, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x0D7, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+ { offset = 0x0DC, type = "REL32", symbol = "?unit@GameRandom@th20@@QAEMXZ", target = 0x00429830 },
+ { offset = 0x0EC, type = "DIR32", symbol = "?native_five@th20@@3MB", target = 0x0056EDD4 },
+ { offset = 0x0F4, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+ { offset = 0x11E, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0EA@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+ { offset = 0x140, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+ { offset = 0x161, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0EA@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+ { offset = 0x181, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0EA@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+ { offset = 0x188, type = "REL32", symbol = "??YVector2@th20@@QAE?AU01@ABU01@@Z", target = 0x00439960 },
+ { offset = 0x18E, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+ { offset = 0x193, type = "REL32", symbol = "?radians@GameRandom@th20@@QAEMXZ", target = 0x004297D0 },
+ { offset = 0x1A3, type = "DIR32", symbol = "?native_five@th20@@3MB", target = 0x0056EDD4 },
+ { offset = 0x1D3, type = "REL32", symbol = "?add_angles@th20@@YAMMM@Z", target = 0x00438600 },
+ { offset = 0x1FE, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
