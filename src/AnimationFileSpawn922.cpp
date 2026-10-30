@@ -10,15 +10,13 @@
 #include "NativeSpawnAnimationPoolView.hpp"
 #include "LockRegistry.hpp"
 #include "EclDiagnostic.hpp"
+#include "NativeAnimationSpawnStem.hpp"
 #include <mutex>
 #include <cstdint>
 namespace th20 {
 extern const float native_spawn_width_640, native_spawn_width_384;
 extern const float native_spawn_divisor_2, native_spawn_shift_16;
 extern const char native_spawn_bad_name_hint[];
-// Unknown native resource name predicate, real original 17B callee.
-bool __cdecl native_spawn_stem_equals_446de0(const std::pmr::string* stem,
-                                              const char* requested);
 AnimationHandle AnimationFile::spawn(const char* expected_stem,std::int32_t script,
     const Vector3* position,float rotation,std::int32_t layer,
     std::uint32_t flags,Animation** output) {

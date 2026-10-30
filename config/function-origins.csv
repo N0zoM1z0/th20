@@ -1110,7 +1110,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00446D30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446DA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446DC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00446DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00446DE0,unknown,CxxUtility,review,pending,"CORE/RECON-963; docs/ANIMATION_SPAWN_STEM_77_17_STRICT_EXACT.md; whole original 17B typed PMR string comparison and physical E8 original, strict full 17/17; C++ STL/PMR original source provenance uncertain"
 0x00446E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446EA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1219,7 +1219,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044B380,library,AnimationPmr,exclude,high,"CORE/EXACT-135: Actual string pointer/capacity producer, capacity-plus-one count and allocator callee corroborate the explicit SDK deallocation helper. Complete native control flow and whole fresh production contribution strictly replay with independent anchors. One actual Animation object rebuild preserves all22 prior affected units;162 objects are reused. SDK/compiler source presence is separate from authored exact coverage. See docs/ANIMATION_PMR_RETIREMENT_RECONSTRUCTION.md."
 0x0044B3A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B3D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044B400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044B400,unknown,CxxUtility,review,pending,"CORE/RECON-963; docs/ANIMATION_SPAWN_STEM_77_17_STRICT_EXACT.md; whole original 77B typed PMR string comparison and physical E8 original, strict full 77/77; C++ STL/PMR original source provenance uncertain"
 0x0044B450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B4E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

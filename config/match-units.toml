@@ -25187,3 +25187,31 @@ symbol = "?generation_bits_4493e0@NativeGenerationPool@th20@@QAEIH@Z"
 target_address = 0x004493E0
 size = 23
 relocations = []
+
+# CORE/RECON-963: actual native 77B stem string compare and real 17B
+# free-function PMR string forwarding to original 922B spawn Boss.
+[units.animation_spawn_stem_compare_77]
+source = "src/AnimationSpawnStemCompare77.cpp"
+object = "build/core963-canonical/AnimationSpawnStemCompare77.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeStemStringView::equals_44b400"]
+symbol = "?equals_44b400@NativeStemStringView@th20@@QBE_NPBD@Z"
+target_address = 0x0044B400
+size = 77
+relocations = [
+ { offset = 0x0E, type = "REL32", symbol = "?native_stem_strlen_411180@th20@@YAHPBD@Z", target = 0x00411180 },
+ { offset = 0x28, type = "REL32", symbol = "?myptr_40f2c0@NativeStemStorageView@th20@@QAEPADXZ", target = 0x0040F2C0 },
+ { offset = 0x40, type = "REL32", symbol = "?native_stem_equal_len_447200@th20@@YA_NPBDH0H@Z", target = 0x00447200 },
+]
+
+[units.animation_spawn_stem_forward_17]
+source = "src/AnimationSpawnStemCompare77.cpp"
+object = "build/core963-canonical/AnimationSpawnStemCompare77.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_spawn_stem_equals_446de0"]
+symbol = "?native_spawn_stem_equals_446de0@th20@@YA_NPBV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@PBD@Z"
+target_address = 0x00446DE0
+size = 17
+relocations = [
+ { offset = 0x0B, type = "REL32", symbol = "?equals_44b400@NativeStemStringView@th20@@QBE_NPBD@Z", target = 0x0044B400 },
+]

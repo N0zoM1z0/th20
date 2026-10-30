@@ -1403,3 +1403,5 @@ th20::NativeRendererPoolRegister::register_44c8f0,0x0044C8F0,function
 "th20::NativeGenerationPool::generation_bits_4493e0",0x004493E0,function
 "th20::NativeGenerationPool::operator++(postfix)",0x00449570,function
 "th20::NativeGenerationPool::operator&=",0x00449690,function
+th20::native_spawn_stem_equals_446de0,0x00446DE0,function
+th20::NativeStemStringView::equals_44b400,0x0044B400,function

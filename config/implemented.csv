@@ -1402,3 +1402,5 @@ th20::NativeRendererPoolRegister::register_44c8f0
 "th20::NativeGenerationPool::generation_bits_4493e0"
 "th20::NativeGenerationPool::operator++(postfix)"
 "th20::NativeGenerationPool::operator&="
+th20::native_spawn_stem_equals_446de0
+th20::NativeStemStringView::equals_44b400
