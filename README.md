@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,426
-source-present mappings**, **1,426 strict canonical native units** and
-**374 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **695 complete functions /
-245,953 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,427
+source-present mappings**, **1,427 strict canonical native units** and
+**375 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **696 complete functions /
+246,012 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -79,6 +79,7 @@ for the live inventory and consult the
 | **236B recursive Animation raw-world-position Boss** | Genuine original **236B/77-i386 whole strict exact** with three Vector3 component operands, native parent Z rotation and original recursive self E8 plus cookie, **+236 authored native bytes**. [Complete original proof](docs/ANIMATION_RAW_WORLD_POSITION236_STRICT_EXACT.md). |
 | **16B STL file-slot capacity leaf** | Native **16B/8-i386** real `std::array<AnimationFile*,42>::size()`, 0x2A return, original 209B file-slot parent E8. **16/16 strict exact**, compiler/STL source excluded from game-authored credit; 2/2 local replay. [Proof](docs/ANIMATION_FILE_SLOT_SIZE16_STRICT_EXACT.md). |
 | **103B original file pointer retirement, no duplicate STL head** | Entire **103B/36-i386 strict exact**, original lock slot1, existing `std::destroy_at<AnimationFile>` E8 to **already exact original 16B** physical address, and actual `operator delete`; 103B original unknown template origin **uncredited**. Full 691B/284B/209B/94B lifecycle 5/5 local replay. [Original proof](docs/ANIMATION_FILE_ENTRY_RELEASE103_STRICT_EXACT.md). |
+| **59B GameController-gated Renderer update** | Original entire **59B/18-i386 strict exact**, genuine current GameController original 3 PE HIGHLOW, two independently exact status checks, E8 to existing exact 150B Renderer gate. **+59 authored bytes**, 2/2 scoped replay. [Full proof](docs/ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md). |
 | **411B recursive Animation retirement queue** | Whole original **411B/116-i386 strict exact**: real self recursion, child list traversal and 57B staged `append` instead of distinct 76B free-list `insert_after`, all native 18 E8/2 HIGHLOW. **+411 game-authored bytes**. [Complete evidence](docs/ANIMATION_QUEUE_RETIREMENT411_STRICT_EXACT.md). |
 | **150B Renderer locked list-update wrapper** | Whole original **150B/44-i386 strict exact**, true slot9 lock and pool+0x6C8 first Renderer, native 6 E8/3 HIGHLOW, directly calls still NONEXACT 508B update Boss. **+150 authored game bytes**, 1/1 scoped replay. [Original proof](docs/ANIMATION_RENDERER_UPDATE150_STRICT_EXACT.md). |
 | **308B AnimationPool release Boss and two game-specific helpers** | Original whole **308B/80, 82B/22, 90B/27 i386 strict exact**, plus uncredited 23B STL 0x600-step index; original 11 E8/2 HIGHLOW in 308B parent. **+3 authored game heads/+480 bytes**, source-affected 4/4 replay. [Native original proof](docs/ANIMATION_POOL_RELEASE_308_AND_HELPERS_STRICT_EXACT.md). |

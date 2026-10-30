@@ -1345,7 +1345,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004506F0,authored,AnimationFileDescriptors,authored,high,"CORE/EXACT-133: Independent postload producer and geometry/texture consumers establish whole 88-byte descriptor copy, ordered UV/dimension writes and original input-scale reads on the actual File array. Complete native control flow and whole compiler contributions strictly replay with independent relocations. All 106 prior affected units remain exact after 23 actual including objects build once; 140 objects are reused. Loaded File clear, Renderer ownership, packet lifetime and native startup/runtime remain open. See docs/ANIMATION_DESCRIPTOR_RECONSTRUCTION.md."
 0x00450850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00450870,library,STL,exclude,high,"CORE/RECON-974; docs/ANIMATION_FILE_SLOT_SIZE16_STRICT_EXACT.md; native entire 16B/8-i386 std::array<AnimationFile*,42>::size() compiler-generated 42 constant, true 209B parent physical E8; 16/16 MSVC strict exact library origin"
-0x00450880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00450880,authored,AnimationPool,authored,high,"CORE/RECON-978; docs/ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md; full original 59B/18-i386 GameController two native status flags and conditional renderer update, real 3 E8 and 3 HIGHLOW; complete C++20 original strict 59/59"
 0x004508C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004508D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004508E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

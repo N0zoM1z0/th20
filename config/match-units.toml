@@ -25607,3 +25607,22 @@ relocations = [
  { offset = 0x17B, type = "REL32", symbol = "?detach@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXXZ", target = 0x00411CE0 },
  { offset = 0x191, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-978: full original 59B GameController gate to separately
+# exact 150B renderer update. Original 3 E8/3 PE HIGHLOW true roles.
+[units.animation_renderer_update_gate_59]
+source = "src/AnimationRendererUpdateGate59.cpp"
+object = "build/core978-canonical/AnimationRendererUpdateGate59.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_renderer_update_if_running_450880"]
+symbol = "?animation_renderer_update_if_running_450880@th20@@YAHPAUAnimationPoolOwner@1@@Z"
+target_address = 0x00450880
+size = 59
+relocations = [
+ { offset = 0x05, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+ { offset = 0x0E, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+ { offset = 0x13, type = "REL32", symbol = "?update_suppressed@GameController@th20@@QBEHXZ", target = 0x00424030 },
+ { offset = 0x1D, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+ { offset = 0x22, type = "REL32", symbol = "?animation_frozen@GameController@th20@@QBEHXZ", target = 0x00424060 },
+ { offset = 0x35, type = "REL32", symbol = "?animation_renderer_update_4497d0@th20@@YIHPAUAnimationPoolOwner@1@@Z", target = 0x004497D0 },
+]

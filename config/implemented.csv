@@ -1424,3 +1424,4 @@ th20::NativeAnimationPoolRecordView::belongs_to_pool_44d970
 "std::array<th20::PooledAnimation,65536>::operator[]"
 th20::animation_renderer_update_4497d0
 th20::NativeAnimationRetirePoolView::queue_retired_animation_44f840
+th20::animation_renderer_update_if_running_450880

@@ -98,6 +98,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-975 — full original 30B/13-i386 wide text `_vswprintf_s` wrapper](ANIMATION_TEXT_FORMAT30_STRICT_EXACT.md). Genuine 417B Animation text Boss parent E8, one native E8 to 0x00439880, original constant 0x500 and `va_list`, zero HIGHLOW. Natural **30/30 strict** with one utility-origin source unit, no authored game credit; 417B parent still nonexact.
 
+## Original 59B GameController-gated Renderer update entry whole strict exact
+
+- [CORE/RECON-978 — complete native 59B/18-i386 GameController update gate](ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md). Original global at `0x005BA828` three PE HIGHLOW and three real E8 to existing exact GameController predicates/150B Renderer wrapper. Whole natural **59/59 original strict**, +59 authored game bytes, 2/2 local regression replay; 508B list-update remains NONEXACT.
+
 ## Complete original 411B recursive Animation retired-queue Boss whole strict exact
 
 - [CORE/RECON-977 — full 411B/116-i386 recursive Animation queued retirement](ANIMATION_QUEUE_RETIREMENT411_STRICT_EXACT.md). Original child-link recursion, native 18 E8/2 PE EH/cookie HIGHLOW, actual 57B `IntrusiveList::append` original distinct from 76B `insert_after`. Natural typed C++20 **411/411 original strict, +411 distinct game-authored bytes**; the 508B parent remains NONEXACT and 57B folded leaf uncredited.
@@ -349,9 +353,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,426 source-present mappings, 1,426
-strict units from 374 pinned object/receipt providers, and 695 distinct
-original authored whole-exact game functions /245,953 `.text` bytes**.
+**Current verified checkpoint:** **1,427 source-present mappings, 1,427
+strict units from 375 pinned object/receipt providers, and 696 distinct
+original authored whole-exact game functions /246,012 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
