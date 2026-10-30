@@ -1372,3 +1372,4 @@ th20::NativeRibbonTrailGroup::scalar_deleting_destructor
 th20::NativeRibbonTrailGroup::update
 th20::NativeRibbonTrailGroup::draw
 "th20::DiagnosticAllocator::allocate_object<NativeRibbonTrailGroup,Animation*>"
+th20::NativeRibbonTrailGroup::configure_gray_45e240

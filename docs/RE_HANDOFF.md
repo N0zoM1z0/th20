@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,374** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,373**, from **336** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **660 distinct function heads /238,546 original `.text` bytes** |
+| Source-present function mappings | **1,375** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,374**, from **337** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **661 distinct function heads /238,886 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -48,6 +48,7 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
+| 64-point ribbon gray config Boss `0x0045E240` | **340B/101-i386 whole strict exact**, 10 native E8/two HIGHLOW, real 64-point gray/alpha gradient and Animation layer19/flag0. Corrected genuine *unused second argument* to produce original RET8. **+340 authored game bytes**; alternate 382B config remains independent. [Strict PE/COFF proof](ANIMATION_RIBBON_TRAIL_GRAY340_STRICT_EXACT.md). |
 | 64-point ribbon trail factory `0x0045DD90` | Complete **156B/46-i386 C++17 allocation strict exact**, native 0x320 class new/autozero/forward and already exact 103B ctor, two real wrapper E8, all four E8/two HIGHLOW verified; template provenance unknown, **zero authored-game byte credit**. [Original native proof](ANIMATION_RIBBON_TRAIL_FACTORY156_STRICT_EXACT.md). |
 | 64-point ribbon trail draw Boss `0x0045E190` | **165B/53-i386 whole strict exact**, eight authentic E8/three HIGHLOW, true 0x56ED1C virtual draw slot, 64 color/geometry cells, Timer point count and real colored LINESTRIP backend. **+165 game-authored bytes**, 4/4 scoped exact replay. [Original/COFF proof](ANIMATION_RIBBON_TRAIL_DRAW165_STRICT_EXACT.md). |
 | 64-point ribbon trail 520B update Boss `0x0045DF80` | **520B/149-i386 whole strict exact**, original 15 E8 + five HIGHLOW and actual alpha decay/64-point polar/cumulative geometry, RNG and Timer. **+520 authored game bytes**, 3/3 affected-unit cold replay; 165B draw subsequently exact in CORE/RECON-938; configuration remains open. [Full PE and strict proof](ANIMATION_RIBBON_TRAIL_UPDATE520_STRICT_EXACT.md). |

@@ -24639,3 +24639,28 @@ relocations = [
  { offset = 0x57, type = "REL32", symbol = "??$forward@PAVAnimation@th20@@@std@@YA$$QAPAVAnimation@th20@@AAPAV12@@Z", target = 0x0040B280 },
  { offset = 0x6B, type = "REL32", symbol = "??0NativeRibbonTrailGroup@th20@@QAE@PAVAnimation@1@@Z", target = 0x0045DED0 },
 ]
+
+# CORE/RECON-940: original full 340B 64-point gray trail-ribbon config;
+# the second original thiscall parameter is present but unused (RET 8).
+[units.animation_ribbon_trail_gray_340]
+source = "src/AnimationRibbonTrailGroupGray340.cpp"
+object = "build/core940-canonical/AnimationRibbonTrailGroupGray340.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonTrailGroup::configure_gray_45e240"]
+symbol = "?configure_gray_45e240@NativeRibbonTrailGroup@th20@@QAEHABUVector3@2@H@Z"
+target_address = 0x0045E240
+size = 340
+relocations = [
+ { offset = 0x019, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0EA@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+ { offset = 0x033, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0EA@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+ { offset = 0x044, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+ { offset = 0x04E, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+ { offset = 0x053, type = "REL32", symbol = "?range@GameRandom@th20@@QAEMM@Z", target = 0x004298B0 },
+ { offset = 0x06C, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+ { offset = 0x0A7, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x0D7, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x103, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x129, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
+ { offset = 0x13C, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
+ { offset = 0x147, type = "REL32", symbol = "?set_animation_flag_byte_01_zero@th20@@YIXPAVAnimation@1@@Z", target = 0x0045E590 },
+]

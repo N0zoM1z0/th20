@@ -10,6 +10,7 @@
 #include <cstdint>
 namespace th20 {
 class Animation;
+struct Vector3;
 class NativeRibbonTrailGroup : public AnimationCallback {
 public:
     std::array<Vector2,64> vertices_08;
@@ -18,6 +19,8 @@ public:
     Timer timer_30c;
     void* token_31c;
     explicit NativeRibbonTrailGroup(Animation* owner);
+    std::int32_t configure_gray_45e240(const Vector3& position, std::int32_t unused_token);
+    std::int32_t configure_pink_45e3a0(const Vector3& position, std::int32_t token);
     std::int32_t update() override;
     std::int32_t draw() override;
 };
