@@ -1364,3 +1364,4 @@ th20::NativeRibbonSoloSegmentUpdateView::update_45d780
 th20::NativeRibbonSoloGroup::NativeRibbonSoloGroup
 th20::NativeRibbonSoloGroup::scalar_deleting_destructor
 "th20::DiagnosticAllocator::allocate_object<NativeRibbonSoloGroup,Animation*>"
+th20::configure_ribbon_solo_group_45dc70

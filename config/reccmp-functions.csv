@@ -1365,3 +1365,4 @@ th20::NativeRibbonSoloSegmentUpdateView::update_45d780,0x0045D780,function
 th20::NativeRibbonSoloGroup::NativeRibbonSoloGroup,0x0045D5B0,function
 th20::NativeRibbonSoloGroup::scalar_deleting_destructor,0x0045D6B0,function
 "th20::DiagnosticAllocator::allocate_object<NativeRibbonSoloGroup,Animation*>",0x0045D2C0,function
+th20::configure_ribbon_solo_group_45dc70,0x0045DC70,function

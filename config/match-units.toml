@@ -24478,3 +24478,19 @@ relocations = [
   { offset = 0x57, type = "REL32", symbol = "??$forward@PAVAnimation@th20@@@std@@YA$$QAPAVAnimation@th20@@AAPAV12@@Z", target = 0x0040B280 },
   { offset = 0x6B, type = "REL32", symbol = "??0NativeRibbonSoloGroup@th20@@QAE@PAVAnimation@1@@Z", target = 0x0045D5B0 },
 ]
+
+# CORE/RECON-933: complete original 47B solo ribbon factory/config wrapper.
+[units.animation_ribbon_solo_config_wrapper_47]
+source = "src/AnimationRibbonSoloConfigWrapper47.cpp"
+object = "build/core933-canonical/AnimationRibbonSoloConfigWrapper47.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::configure_ribbon_solo_group_45dc70"]
+symbol = "?configure_ribbon_solo_group_45dc70@th20@@YAHIPBUNativeRibbonSoloGroupOptions@1@H@Z"
+target_address = 0x0045DC70
+size = 47
+relocations = [
+ { offset = 0x09, type = "DIR32", symbol = "?native_ribbon_solo_marker_56ecc0@th20@@3QBEB", target = 0x0056ECC0 },
+ { offset = 0x0F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeRibbonSoloGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonSoloGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045D2C0 },
+ { offset = 0x27, type = "REL32", symbol = "?configure_group_45db30@NativeRibbonSoloGroup@th20@@QAEHABUNativeRibbonSoloGroupOptions@2@H@Z", target = 0x0045DB30 },
+]

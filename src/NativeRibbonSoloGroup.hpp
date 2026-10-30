@@ -3,6 +3,7 @@
 // original 0x56ECA4 vtable. Distinct from the three-segment 0x56EDDC group.
 #include "NativeRibbonPolygonGroup.hpp"
 namespace th20 {
+struct NativeRibbonSoloGroupOptions;
 // Non-owning receiver ABI view of the original distinct solo segment fan.
 // This adds no constructed object or conflicting native segment storage.
 struct NativeRibbonSoloSegmentDrawView {
@@ -26,6 +27,7 @@ public:
     Timer timer_3cc;
     void* resource_token_3dc;
     explicit NativeRibbonSoloGroup(Animation* owner);
+    std::int32_t configure_group_45db30(const NativeRibbonSoloGroupOptions& config, std::int32_t token);
     std::int32_t update() override;
     std::int32_t draw() override;
 };
