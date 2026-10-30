@@ -61,9 +61,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,332 source-present mappings, 1,331
-strict units from 303 pinned object/receipt providers, and 639 distinct
-original authored whole-exact game functions /234,689 `.text` bytes**.
+**Current verified checkpoint:** **1,334 source-present mappings, 1,333
+strict units from 304 pinned object/receipt providers, and 640 distinct
+original authored whole-exact game functions /234,802 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
@@ -93,6 +93,10 @@ Compiler scores labelled "current" in historical entries below mean
 - [CORE/RECON-905 — 60B whole polygon segment constructor strict exact and 75B/80B original 4-byte cell array constructor strict exact](ANIMATION_POLYGON_SEGMENT_CONSTRUCTION_60_75_NATIVE_EXACT.md). Original PE independently authenticates three plus one E8 and all 3 HIGHLOW roles of the array helper; exact 60B C++20 source uses **61 Vector2, 61 four-byte cells, 62 radii**. 75B array constructor includes **five genuine original INT3 alignment bytes**, whole **80/80 comparison** with 75/75 actual function coverage. After changing shared segment header, only **4 actual affected providers /42 old strict units** cold rebuilt, **42/42 remain exact**, and a fifth new native provider replays 2/2. The game constructor adds **one authored original head /60 native bytes**; origin-unproven 75B helper does not add authored credit. Live 1,331 source /1,330 strict units /302 objects, game exact 639/234,689B.
 
 - [CORE/RECON-904/905 — original 113B polymorphic group ctor and 78B three-segment/75B Vector2 array constructor frontier](ANIMATION_POLYGON_GROUP_CTOR_113_ARRAY_78_FRONTIER.md). An original-PE-informed 113B C++ polymorphic derived constructor yields **113/113 structural candidate when `/EHsc` omitted** (93/93 nonrelocation), but disagrees with the accepted 156B C++17 factory's direct-pointer `/sdl` auto-zero protocol. Preserved all failed dirty source hypotheses in ignored `.analysis`; **no incorrect second class or invented pointer field admitted**, no 113B exact credit.
+
+## Original 113B polygon Motion group constructor and 49B scalar deleting wrapper whole strict exact
+
+- [CORE/RECON-907 — **113B/30-i386 complete group construction Boss whole strict exact** plus **49B/18-i386 compiler scalar deleting wrapper exact**](ANIMATION_POLYGON_GROUP_CTOR_113_DELETE_49_STRICT_EXACT.md). Original-only PE verifies ctor four true E8 +one vtable HIGHLOW, deleting wrapper two E8, real polymorphic 8B AnimationCallback base, original three-segment array ctor and Timer/Vector3, and real native vtable 0x56EE50 update/draw destinations. Correct C++20 default- (not value-) initialization eliminates a spurious `memset(0xB7C)`. Also restores virtual `update`/`draw` source identities and C++17 factory forwarding `Animation*` without changing accepted whole native code. **11/11 strict units across four affected cold objects**. +113 game authored bytes; 49B wrapper compiler-excluded. Original 20B ordinary destructor still NONEXACT, sixth original vtable slot still a linkage frontier; no full replay. Live authored 640/234,802B, source 1,334, units 1,333, objects 304.
 
 ## Original 78B C++20 polygon segment array constructor whole strict exact
 

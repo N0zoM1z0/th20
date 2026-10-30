@@ -1,5 +1,7 @@
 # CORE/RECON-906 — complete original 78B polygon segment-array constructor strictly exact
 
+> **CORE/RECON-907 update:** The enclosing original [113B group constructor is now whole strict exact](ANIMATION_POLYGON_GROUP_CTOR_113_DELETE_49_STRICT_EXACT.md) using this 78B helper. Original 78B/83B code credit is unchanged and remains origin-unverified. The earlier NONEXACT 113B statement below is now a historical status.
+
 The locked Japanese TH20 Steamless 1.00a target SHA-256 is
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The complete physical original **`0x0045F2B0` 78B /27-i386 `std::array<NativePolygonSegmentSlot,3>` default constructor** is now canonical **78/78 native bytes exact**, with an independently verified **83/83 complete COFF contribution** incorporating five genuine following original `INT3` bytes. It is a *separate* function from the already whole strict exact 60B segment constructor and 75B color-cell array constructor; it does **not** make the still-open 113B group constructor exact.

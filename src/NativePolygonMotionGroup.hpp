@@ -1,6 +1,7 @@
 #pragma once
 // Native 0xBAC-byte polygon Motion group, shared with its C++17 factory.
 // One canonical C++ class owns the real three 0x3D4-byte polygon segments.
+#include "AnimationCallback.hpp"
 #include "Timer.hpp"
 #include "Vector3.hpp"
 #include "NativePolygonSegmentSlot.hpp"
@@ -28,27 +29,29 @@ struct NativePolygonGroupOptions {
 static_assert(offsetof(NativePolygonGroupOptions,control_24)==0x24);
 static_assert(offsetof(NativePolygonGroupOptions,choose_animation_28)==0x28);
 
-// A real Animation pointer member is required for native C++17 /sdl
-// class auto-initialization; storage and offsets are original PE backed.
-class NativePolygonMotionGroup {
+// The native 8B AnimationCallback base owns the vptr and Animation* at +4.
+// A further opaque four-byte token at +0xB98 has provisional pointer
+// semantics; its address/storage and native raw-word assignments are proven.
+class NativePolygonMotionGroup : public AnimationCallback {
 public:
-    std::uint32_t native_field_00;
-    Animation* animation_04;
-    NativePolygonSegmentArray segments_08;
-    std::uint32_t control_b84;
+    // The actual group ctor constructs std::array directly at offset 0x08.
+    std::array<NativePolygonSegmentSlot,3> segments_08;
+    union { std::uint32_t control_b84; float control_b84_float; };
     Timer timer_b88;
-    std::uint32_t value_b98;
+    // Opaque four-byte resource token, pointer interpretation provisional.
+    void* value_b98;
     Vector3 saved_position_b9c;
     std::uint8_t use_animation_position_ba8;
 
-    explicit NativePolygonMotionGroup(std::uint32_t handle);
-    std::int32_t tick_polygon_group_45f5e0();
-    std::int32_t draw_motion_group_45f9b0();
+    explicit NativePolygonMotionGroup(Animation* owner);
+    ~NativePolygonMotionGroup() override;
+    std::int32_t update() override;
+    std::int32_t draw() override;
     std::int32_t configure_group_45fb60(const NativePolygonGroupOptions& config,
                                        std::int32_t value);
 };
 static_assert(sizeof(NativePolygonMotionGroup)==0xBAC);
-static_assert(offsetof(NativePolygonMotionGroup,animation_04)==4);
+static_assert(offsetof(AnimationCallback,animation)==4);
 static_assert(offsetof(NativePolygonMotionGroup,segments_08)==8);
 static_assert(offsetof(NativePolygonMotionGroup,control_b84)==0xB84);
 static_assert(offsetof(NativePolygonMotionGroup,timer_b88)==0xB88);

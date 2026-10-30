@@ -1,5 +1,7 @@
 # CORE/RECON-903 — complete original 156B polygon class allocation factory strict exact
 
+> **CORE/RECON-907 correction:** The 113B called constructor now [whole native exact](ANIMATION_POLYGON_GROUP_CTOR_113_DELETE_49_STRICT_EXACT.md), and the C++17 factory forwards a real `Animation*` (not the earlier guessed `uint32_t` handle) into an 8B polymorphic `AnimationCallback` base. Its own 156B original code and all six native fields remain exact; a separate +0xB98 four-byte token has provisional pointer semantics. The older template spelling and nonexact-parent claim below are historical.
+
 The immutable Japanese TH20 v1.00a Steamless target has SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 

@@ -1279,7 +1279,7 @@ th20::Vector2::operator+=,0x00439960,function
 th20::AnimationDrawDetailedOwner::draw_polygon_outline_43d370,0x0043D370,function
 th20::NativeMotionPolygonOwner::draw_polygon_fan_45fb10,0x0045FB10,function
 th20::NativeMotionPolygonOwner::draw_polygon_outline_45faa0,0x0045FAA0,function
-th20::NativePolygonMotionGroup::draw_motion_group_45f9b0,0x0045F9B0,function
+th20::NativePolygonMotionGroup::draw,0x0045F9B0,function
 th20::NativePolygonSegmentArray::at,0x0045F400,function
 th20::NativePolygonSegmentArray::end,0x0045FD40,function
 th20::NativePolygonMotionGroup::configure_group_45fb60,0x0045FB60,function
@@ -1287,7 +1287,7 @@ th20::NativePolygonSegmentSlot::initialize_palette_45fc90,0x0045FC90,function
 th20::NativePolygonColorFields::forward_color_45ffc0,0x0045FFC0,function
 th20::NativePolygonRadiusFields::forward_radius_45ffa0,0x0045FFA0,function
 th20::configure_polygon_group_45fd10,0x0045FD10,function
-th20::NativePolygonMotionGroup::tick_polygon_group_45f5e0,0x0045F5E0,function
+th20::NativePolygonMotionGroup::update,0x0045F5E0,function
 th20::NativePolygonSegmentSlot::update_polygon_dynamics_45f670,0x0045F670,function
 th20::NativePolygonRangeAngleCursor::dereference_45f420,0x0045F420,function
 th20::NativePolygonScalarCursorStorage::step_45f440,0x0045F440,function
@@ -1327,7 +1327,9 @@ th20::native_polygon_std_range_0045fe60,0x0045FE60,function
 th20::native_polygon_std_range_0045fe90,0x0045FE90,function
 th20::native_polygon_std_range_00460000,0x00460000,function
 th20::native_polygon_std_range_00460020,0x00460020,function
-"th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,std::uint32_t>",0x0045F0A0,function
+"th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,Animation*>",0x0045F0A0,function
 th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot,0x0045F3C0,function
 "std::array<th20::AnimationHandle,61>::array",0x0045F210,function
 "std::array<th20::NativePolygonSegmentSlot,3>::array",0x0045F2B0,function
+th20::NativePolygonMotionGroup::NativePolygonMotionGroup(Animation*),0x0045F340,function
+th20::NativePolygonMotionGroup::scalar_deleting_destructor,0x0045F5A0,function

@@ -1,5 +1,7 @@
 # CORE/RECON-904/905 — independent original 113B polygon group constructor and 78B array constructor frontier
 
+> **CORE/RECON-907 correction:** The previously open [113B group ctor is now canonical whole strict exact](ANIMATION_POLYGON_GROUP_CTOR_113_DELETE_49_STRICT_EXACT.md), together with its 49B compiler scalar-deleting wrapper. C++20 default initialization (not `segments_08()` value initialization) removes a spurious 0xB7C memset; coherent base/allocator source and 11/11 affected strict units pass. The native 20B ordinary destructor and sixth vtable slot still need reconciliation. Prior NONEXACT claims below are historical checkpoints.
+
 > **CORE/RECON-906 correction:** The original 78B three-segment `std::array` constructor is now [whole canonical strict exact](ANIMATION_POLYGON_SEGMENT_ARRAY_78_STRICT_EXACT.md). Its own five following original INT3 bytes are included in 83/83 full contribution comparison. The 113B group ctor and 75B Vector2 array ctor remain NONEXACT. Historical 78B constructor tests below describe the previous checkpoint.
 
 The original 113B/30-i386 group method at `0x0045F340` is invoked by the

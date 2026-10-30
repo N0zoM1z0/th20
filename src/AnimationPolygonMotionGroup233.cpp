@@ -36,31 +36,31 @@ struct NativePolygonAnimationConfigView {
 // provisional ABI names, separate from the accepted group state.
 struct NativePolygonTimerGate { std::int32_t changed_45d030(); };
 
-std::int32_t NativePolygonMotionGroup::tick_polygon_group_45f5e0() {
+std::int32_t NativePolygonMotionGroup::update() {
     if (reinterpret_cast<NativePolygonTimerGate*>(&timer_b88)->changed_45d030()) {
-        NativePolygonSegmentArray* const segment_array=&segments_08;
+        NativePolygonSegmentArray* const segment_array=reinterpret_cast<NativePolygonSegmentArray*>(&segments_08);
         auto* current = reinterpret_cast<NativePolygonSegmentSlot*>(
             &reinterpret_cast<Motion*>(segment_array)->position_ref());
         auto* finish = segment_array->end();
         for (; current != finish; ++current) {
             NativePolygonSegmentSlot* const active=current;
-            active->update_polygon_dynamics_45f670(animation_04->scale_x_value());
+            active->update_polygon_dynamics_45f670(animation->scale_x_value());
         }
     }
     timer_b88++;
     return 0;
 }
 
-std::int32_t NativePolygonMotionGroup::draw_motion_group_45f9b0() {
-    reinterpret_cast<AnimationQuadSubmitOwner*>(current_animation_pool)->bind_native_texture_state(animation_04);
+std::int32_t NativePolygonMotionGroup::draw() {
+    reinterpret_cast<AnimationQuadSubmitOwner*>(current_animation_pool)->bind_native_texture_state(animation);
     Vector3 position;
     if (use_animation_position_ba8 != 0) {
-        animation_04->position(position);
+        animation->position(position);
     } else {
         position = saved_position_b9c;
     }
     {
-        NativePolygonSegmentArray* const segment_array=&segments_08;
+        NativePolygonSegmentArray* const segment_array=reinterpret_cast<NativePolygonSegmentArray*>(&segments_08);
         auto* current = reinterpret_cast<NativePolygonSegmentSlot*>(
             &reinterpret_cast<Motion*>(segment_array)->position_ref());
         auto* finish = segment_array->end();
@@ -71,7 +71,7 @@ std::int32_t NativePolygonMotionGroup::draw_motion_group_45f9b0() {
                 reinterpret_cast<const Vector2*>(&position));
         }
     }
-    NativePolygonSegmentArray* const first_segment_array=&segments_08;
+    NativePolygonSegmentArray* const first_segment_array=reinterpret_cast<NativePolygonSegmentArray*>(&segments_08);
     reinterpret_cast<NativeMotionPolygonOwner*>(first_segment_array->at(0))->draw_polygon_fan_45fb10(
         reinterpret_cast<const Vector2*>(&position));
     return 0;
@@ -83,27 +83,27 @@ std::int32_t NativePolygonMotionGroup::draw_motion_group_45f9b0() {
 // eleven E8/zero HIGHLOW roles and complete 296/296 bytes match the PE.
 std::int32_t NativePolygonMotionGroup::configure_group_45fb60(
         const NativePolygonGroupOptions& config, std::int32_t value) {
-    value_b98 = value;
+    value_b98 = reinterpret_cast<void*>(static_cast<std::uintptr_t>(value));
     control_b84 = config.control_24;
     saved_position_b9c = config.position;
     use_animation_position_ba8 = config.choose_animation_28;
     timer_b88 = 0;
-    NativePolygonSegmentArray* const array0 = &segments_08;
+    NativePolygonSegmentArray* const array0 = reinterpret_cast<NativePolygonSegmentArray*>(&segments_08);
     NativePolygonSegmentSlot* const slot0 = array0->at(0);
     slot0->initialize_palette_45fc90(0x8040F010u);
-    NativePolygonSegmentArray* const array1 = &segments_08;
+    NativePolygonSegmentArray* const array1 = reinterpret_cast<NativePolygonSegmentArray*>(&segments_08);
     NativePolygonSegmentSlot* const slot1 = array1->at(1);
     slot1->initialize_palette_45fc90(0xFF20F000u);
-    NativePolygonSegmentArray* const array2 = &segments_08;
+    NativePolygonSegmentArray* const array2 = reinterpret_cast<NativePolygonSegmentArray*>(&segments_08);
     NativePolygonSegmentSlot* const slot2 = array2->at(2);
     slot2->initialize_palette_45fc90(0x80FF1010u);
-    Animation* const animation0 = animation_04;
+    Animation* const animation0 = animation;
     animation0->set_position(config.position);
-    Animation* const animation1 = animation_04;
+    Animation* const animation1 = animation;
     animation1->set_layer(11);
-    Animation* const animation2 = animation_04;
+    Animation* const animation2 = animation;
     reinterpret_cast<NativePolygonAnimationConfigView*>(animation2)->configure_438c60(30,0,255,0);
-    Animation* const animation3 = animation_04;
+    Animation* const animation3 = animation;
     animation3->set_flag_byte_01(1);
     return 0;
 }
@@ -113,14 +113,15 @@ std::int32_t NativePolygonMotionGroup::configure_group_45fb60(
 // not a registry. The 156B C++17 scalar factory has one separate owner.
 extern const std::uint8_t native_polygon_type_marker_56ee68[];
 extern template NativePolygonMotionGroup* DiagnosticAllocator::allocate_object<
-    NativePolygonMotionGroup, std::uint32_t>(const char*, std::uint32_t);
+    NativePolygonMotionGroup, Animation*>(const char*, Animation*);
 
 std::int32_t __cdecl configure_polygon_group_45fd10(
         std::uint32_t handle, const NativePolygonGroupOptions* options,
         std::int32_t value) {
     NativePolygonMotionGroup* group = process_allocator->allocate_object<
-        NativePolygonMotionGroup, std::uint32_t>(
-            reinterpret_cast<const char*>(native_polygon_type_marker_56ee68),handle);
+        NativePolygonMotionGroup, Animation*>(
+            reinterpret_cast<const char*>(native_polygon_type_marker_56ee68),
+            reinterpret_cast<Animation*>(handle));
     return group->configure_group_45fb60(*options,value);
 }
 } // namespace th20

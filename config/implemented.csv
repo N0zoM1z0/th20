@@ -1278,7 +1278,7 @@ th20::Vector2::operator+=
 th20::AnimationDrawDetailedOwner::draw_polygon_outline_43d370
 th20::NativeMotionPolygonOwner::draw_polygon_fan_45fb10
 th20::NativeMotionPolygonOwner::draw_polygon_outline_45faa0
-th20::NativePolygonMotionGroup::draw_motion_group_45f9b0
+th20::NativePolygonMotionGroup::draw
 th20::NativePolygonSegmentArray::at
 th20::NativePolygonSegmentArray::end
 th20::NativePolygonMotionGroup::configure_group_45fb60
@@ -1286,7 +1286,7 @@ th20::NativePolygonSegmentSlot::initialize_palette_45fc90
 th20::NativePolygonColorFields::forward_color_45ffc0
 th20::NativePolygonRadiusFields::forward_radius_45ffa0
 th20::configure_polygon_group_45fd10
-th20::NativePolygonMotionGroup::tick_polygon_group_45f5e0
+th20::NativePolygonMotionGroup::update
 th20::NativePolygonSegmentSlot::update_polygon_dynamics_45f670
 th20::NativePolygonRangeAngleCursor::dereference_45f420
 th20::NativePolygonScalarCursorStorage::step_45f440
@@ -1326,7 +1326,9 @@ th20::native_polygon_std_range_0045fe60
 th20::native_polygon_std_range_0045fe90
 th20::native_polygon_std_range_00460000
 th20::native_polygon_std_range_00460020
-"th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,std::uint32_t>"
+"th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,Animation*>"
 th20::NativePolygonSegmentSlot::NativePolygonSegmentSlot
 "std::array<th20::AnimationHandle,61>::array"
 "std::array<th20::NativePolygonSegmentSlot,3>::array"
+th20::NativePolygonMotionGroup::NativePolygonMotionGroup(Animation*)
+th20::NativePolygonMotionGroup::scalar_deleting_destructor
