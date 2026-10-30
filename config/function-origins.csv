@@ -1550,8 +1550,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045C320,unknown,CxxRuntime,review,pending,"CORE/RECON-947; docs/ANIMATION_PARTICLE_GRID_GROUP_CTOR172_STRICT_EXACT.md; whole original native 49B scalar deleting wrapper, 0x1940 sized delete and existing folded 20B destructor, 49/49 strict but generated original ownership unresolved"
 0x0045CEB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045CF10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045CFE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045D000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045CFE0,authored,Animation,authored,high,"CORE/RECON-949; docs/ANIMATION_PARTICLE_GRID_CREATE47_CONFIG31_STRICT_EXACT.md; original group-specific Timer+0x1930 reset with two unused config arguments and RET8, whole native 31/31 strict"
+0x0045D000,authored,Animation,authored,high,"CORE/RECON-949; docs/ANIMATION_PARTICLE_GRID_CREATE47_CONFIG31_STRICT_EXACT.md; original custom particle-grid creation wrapper, two physical E8/two HIGHLOW, real 156B allocator and 31B config, whole strict 47/47"
 0x0045D030,unknown,Cursor,review,pending,REF-024: complete natural canonical contribution with independent native owner/consumer and library anchor evidence. Real PMR vector and two std::stack<int> owners; original constructor EH unresolved. Original type/method spelling and authored/compiler/shared origin pending; no authored credit. Full cold relocation replay and independent portable resource/state checks pass. See docs/REFERENCE_FUNCTION_REVIEW.md.
 0x0045D060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045D0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

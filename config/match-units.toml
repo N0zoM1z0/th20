@@ -24864,3 +24864,32 @@ relocations = [
  { offset = 0x57, type = "REL32", symbol = "??$forward@PAVAnimation@th20@@@std@@YA$$QAPAVAnimation@th20@@AAPAV12@@Z", target = 0x0040B280 },
  { offset = 0x6B, type = "REL32", symbol = "??0NativeParticleGridGroup@th20@@QAE@PAVAnimation@1@@Z", target = 0x0045C1F0 },
 ]
+
+# CORE/RECON-949: complete original 47B grid diagnostic allocation wrapper
+# plus true 31B two-unused-argument Timer reset configuration method.
+[units.animation_particle_grid_create_47]
+source = "src/AnimationParticleGridCreate47.cpp"
+object = "build/core949-canonical/AnimationParticleGridCreate47.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::create_particle_grid_45d000"]
+symbol = "?create_particle_grid_45d000@th20@@YAHIPBUVector3@1@H@Z"
+target_address = 0x0045D000
+size = 47
+relocations = [
+ { offset = 0x09, type = "DIR32", symbol = "?native_particle_grid_marker_56ec30@th20@@3QBEB", target = 0x0056EC30 },
+ { offset = 0x0F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeParticleGridGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeParticleGridGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045C090 },
+ { offset = 0x27, type = "REL32", symbol = "?configure_45cfe0@NativeParticleGridGroup@th20@@QAEHABUVector3@2@H@Z", target = 0x0045CFE0 },
+]
+
+[units.animation_particle_grid_config_31]
+source = "src/AnimationParticleGridConfig31.cpp"
+object = "build/core949-canonical/AnimationParticleGridConfig31.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeParticleGridGroup::configure_45cfe0"]
+symbol = "?configure_45cfe0@NativeParticleGridGroup@th20@@QAEHABUVector3@2@H@Z"
+target_address = 0x0045CFE0
+size = 31
+relocations = [
+ { offset = 0x13, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]

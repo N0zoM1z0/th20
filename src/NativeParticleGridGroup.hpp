@@ -23,6 +23,7 @@ public:
     union { float scalar_192c; void* provisional_pointer_192c; };
     Timer timer_1930;
     explicit NativeParticleGridGroup(Animation* owner);
+    std::int32_t configure_45cfe0(const Vector3& unused_position, std::int32_t unused_token);
     std::int32_t update() override;
     std::int32_t slot_0c() override;
     std::int32_t interrupt(std::int32_t event) override;
