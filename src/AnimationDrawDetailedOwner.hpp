@@ -27,6 +27,12 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     std::int32_t draw_strip_mode11(Animation*, void*, int);  // 0x00445130
     std::int32_t draw_mesh_2425(Animation*, void*, int);     // 0x00443020
 
+    // Whole original native 455B colored vertex renders: fan >=3, line >=2.
+    // Both return EAX zero and RET 0x10, with a 0x20 native frame.
+    std::int32_t draw_vertex_fan_43cb70(std::int32_t count, const Vector2* origin,
+                                        const Vector2* points, const std::uint32_t* colors);
+    std::int32_t draw_vertex_line_43d1a0(std::int32_t count, const Vector2* origin,
+                                         const Vector2* points, const std::uint32_t* colors);
     // Native original 1980B rectangle source is int-returning, RET 0x24.
     std::int32_t draw_rect_439a00(float, float, float, float, float,
                            std::uint32_t, std::uint32_t, int, int);

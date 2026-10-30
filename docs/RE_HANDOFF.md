@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-871.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-876.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -14,9 +14,9 @@ NONEXACT labels are not current acceptance facts.**
 | Required SHA-256 | a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897 |
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
-| Source-present mapped methods | **1,271** across game, compiler and STL/library |
-| Complete native strict units | **1,272**, supplied by **290** distinct canonical MSVC objects with **290** matching receipts |
-| **Original authored-game whole-function exact** | **625 distinct physical game functions /229,642 original .text bytes** |
+| Source-present mapped methods | **1,274** across game, compiler and STL/library |
+| Complete native strict units | **1,275**, supplied by **293** distinct canonical MSVC objects with **293** matching receipts |
+| **Original authored-game whole-function exact** | **628 distinct physical game functions /231,537 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -49,6 +49,9 @@ of the entire game binary.
 | 0x004399B0 /0x00445B20 Animation Mode6 projection math | **73B Vector3 magnitude +86B projected XY rotate/translate =159 original game bytes**, each original whole strict exact. Five physical E8 sites in the original 1,378B Mode6 preparation parent, one real sqrt E8, no other data relocations. [Full original/strict projection math proof](ANIMATION_PROJECTION_MATH_73_86_STRICT_EXACT.md). Enclosing 1,378B Mode6 preparation remains open. |
 | 0x00441430 Animation draw mode7 setup / matrix + corners Boss | **1,996B/459 i386 full original game-authored strict exact**, all original 11 E8 and 26 HIGHLOW physical sites, actual 3×64B matrix copies, D3DX XYZ rotations/multiplications, original parent/window translation and four Vector3 corners. [Full original PE/native strict proof](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md). Already strict 753B caller remains 753/753 after real int-return ABI symbol correction. |
 | 0x0043B0E0 Animation five-vertex closed line-strip Boss | **Whole original 2,169B /533-i386 strict exact**, real `0x68` frame and 9-arg `ret 0x24`, native 65,536×20B renderer pool guard and typed 5-vertex closed contour. Corrected original D3D9 `D3DPT_LINESTRIP=3` (not triangle fan), five W1/XY/color stores, four exact 78B XY callee calls, **12/12 native E8 and 17/17 PE HIGHLOW** original site/targets, **2,053/2,053 nonrelocation and 2,169/2,169 full original relocated bytes exact**; [immutable native/strict proof](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md). Original 5,993B main Draw parent remains NONEXACT. |
+| 0x0043EB40 Animation four-corner projector | **Whole original 985B/233-x86 strict exact**, native `0x24` frame and five-argument RET0x14, genuine **2 axes ×3 modes ×4 corners** source index at `0x56E140` and 16B grouped mode stride. All **6 E8 and 13 PE HIGHLOW** original physical site/targets, **909/909 nonrelocation plus 985/985 entire relocated bytes**; [independent PE/COFF proof](ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md). Historical nominal owner remains provisional, original game caller sites verified. |
+| 0x0043CB70 Animation colored vertex TRIANGLEFAN Boss | **Whole original 455B/129-x86 strict exact**, real 65,536×20B buffer, count>=3, D3D9 TRIANGLEFAN=6 and count−2 primitives. All **4 E8+3 HIGHLOW** true original roles and entire **455/455 bytes**, [PE evidence](ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md). |
+| 0x0043D1A0 Animation colored vertex LINESTRIP Boss | **Whole original 455B/129-x86 strict exact**, original count>=2 and D3D9 LINESTRIP=3, count−1 primitives, **4 E8+3 HIGHLOW** physical roles, **455/455 original native bytes**, [original proof](ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md). |
 | 0x0043D830 Animation single-point renderer | **Whole original 375B/100-x86 POINTLIST strict exact**, real fixed 65,536×20B pool and typed vertex[0] access; **5 original E8 +4 HIGHLOW physical site/targets**, full 375/375 native bytes, [source/PE evidence](ANIMATION_SHAPE_FINAL_THREE_375_809_583_STRICT_EXACT.md). Enclosing 5,993B main Draw NONEXACT. |
 | 0x0043D9B0 Animation alternating-radius TRIANGLEFAN | **Whole original 809B/214-x86 strict exact**, native center[0] and true signed i%2 radius alternate, D3D9 type6, **8 E8/8 HIGHLOW** and full 809/809 original bytes; [independent PE proof](ANIMATION_SHAPE_FINAL_THREE_375_809_583_STRICT_EXACT.md). |
 | 0x0043DCE0 Animation alternating-radius LINESTRIP | **Whole original 583B/160-x86 strict exact**, original signed i%2 perimeter and D3D9 LINESTRIP type3, **6 E8/5 HIGHLOW** and full 583/583 original bytes; [original PE proof](ANIMATION_SHAPE_FINAL_THREE_375_809_583_STRICT_EXACT.md). Main Draw still NONEXACT. |

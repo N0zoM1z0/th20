@@ -22946,3 +22946,75 @@ relocations = [
   { offset = 0x1D6, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x1DB, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
 ]
+
+# CORE/RECON-874/875/876: complete original PE-authored geometry and renderer.
+# Actual independent source/ABI native E8 and PE HIGHLOW physical sites/targets.
+[units.animation_corner_projection_985]
+source = "src/AnimationCornerProjection985.cpp"
+object = "build/core874-canonical/AnimationCornerProjection985.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationCornerProjector::project_corners_43eb40"]
+symbol = "?project_corners_43eb40@NativeAnimationCornerProjector@th20@@QAEXPAVAnimation@2@PAUVector3@2@111@Z"
+target_address = 0x0043EB40
+size = 985
+relocations = [
+  { offset = 0x20, type = "DIR32", symbol = "?native_quad_axis_layout@th20@@3QBUNativeQuadAxisLayout@1@B", target = 0x0056E140 },
+  { offset = 0x3E, type = "DIR32", symbol = "?native_quad_axis_layout@th20@@3QBUNativeQuadAxisLayout@1@B", target = 0x0056E140 },
+  { offset = 0x49, type = "REL32", symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@XZ", target = 0x00437CD0 },
+  { offset = 0x13E, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x150, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x181, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x189, type = "DIR32", symbol = "?native_half@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0x19B, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x1A3, type = "DIR32", symbol = "?native_half@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0x33C, type = "DIR32", symbol = "?native_projection_world_position@th20@@3UVector3@1@A", target = 0x005C0018 },
+  { offset = 0x344, type = "REL32", symbol = "?position@Animation@th20@@QAEAAUVector3@2@AAU32@@Z", target = 0x004376E0 },
+  { offset = 0x349, type = "DIR32", symbol = "?native_projection_world_position@th20@@3UVector3@1@A", target = 0x005C0018 },
+  { offset = 0x351, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x356, type = "DIR32", symbol = "?native_projection_world_position@th20@@3UVector3@1@A", target = 0x005C0018 },
+  { offset = 0x35E, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x363, type = "DIR32", symbol = "?native_projection_world_position@th20@@3UVector3@1@A", target = 0x005C0018 },
+  { offset = 0x36B, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x370, type = "DIR32", symbol = "?native_projection_world_position@th20@@3UVector3@1@A", target = 0x005C0018 },
+  { offset = 0x378, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+]
+
+# CORE/RECON-874/875/876: complete original PE-authored geometry and renderer.
+# Actual independent source/ABI native E8 and PE HIGHLOW physical sites/targets.
+[units.animation_vertex_fan_455]
+source = "src/AnimationVertexFan455.cpp"
+object = "build/core875-canonical/AnimationVertexFan455.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::draw_vertex_fan_43cb70"]
+symbol = "?draw_vertex_fan_43cb70@AnimationDrawDetailedOwner@th20@@QAEHHPBUVector2@2@0PBI@Z"
+target_address = 0x0043CB70
+size = 455
+relocations = [
+  { offset = 0x55, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0xB7, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x12F, type = "REL32", symbol = "?select_render_color_mode@AnimationQuadSubmitOwner@th20@@QAEXE@Z", target = 0x00446690 },
+  { offset = 0x134, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x139, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x158, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x15D, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+]
+
+# CORE/RECON-874/875/876: complete original PE-authored geometry and renderer.
+# Actual independent source/ABI native E8 and PE HIGHLOW physical sites/targets.
+[units.animation_vertex_line_455]
+source = "src/AnimationVertexLine455.cpp"
+object = "build/core876-canonical/AnimationVertexLine455.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::draw_vertex_line_43d1a0"]
+symbol = "?draw_vertex_line_43d1a0@AnimationDrawDetailedOwner@th20@@QAEHHPBUVector2@2@0PBI@Z"
+target_address = 0x0043D1A0
+size = 455
+relocations = [
+  { offset = 0x55, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0xB7, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x12F, type = "REL32", symbol = "?select_render_color_mode@AnimationQuadSubmitOwner@th20@@QAEXE@Z", target = 0x00446690 },
+  { offset = 0x134, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x139, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x158, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x15D, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+]

@@ -1270,3 +1270,6 @@ th20::AnimationDrawDetailedOwner::draw_shape_43c180,0x0043C180,function
 th20::AnimationDrawDetailedOwner::draw_shape_43d830,0x0043D830,function
 th20::AnimationDrawDetailedOwner::draw_shape_43d9b0,0x0043D9B0,function
 th20::AnimationDrawDetailedOwner::draw_shape_43dce0,0x0043DCE0,function
+th20::NativeAnimationCornerProjector::project_corners_43eb40,0x0043EB40,function
+th20::AnimationDrawDetailedOwner::draw_vertex_fan_43cb70,0x0043CB70,function
+th20::AnimationDrawDetailedOwner::draw_vertex_line_43d1a0,0x0043D1A0,function
