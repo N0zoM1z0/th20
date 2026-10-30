@@ -126,4 +126,21 @@ std::int32_t NativePolygonMotionGroup::configure_group_45fb60(
     animation3->set_flag_byte_01(1);
     return 0;
 }
+
+// Genuine original 47B/18-i386 cdecl registry-to-polygon configuration
+// wrapper. Its true return is the int32_t EAX from the 296B game method;
+// treating this wrapper as void emits a nonoriginal extra NOP.
+struct NativePolygonRegistryOwner {
+    NativePolygonMotionGroup* resolve_45f0a0(const std::uint8_t*,std::uint32_t);
+};
+extern NativePolygonRegistryOwner* native_polygon_registry_5b8894;
+extern const std::uint8_t native_polygon_type_marker_56ee68[];
+
+std::int32_t __cdecl configure_polygon_group_45fd10(
+        std::uint32_t handle, const NativePolygonGroupOptions* options,
+        std::int32_t value) {
+    NativePolygonMotionGroup* group = native_polygon_registry_5b8894->resolve_45f0a0(
+        native_polygon_type_marker_56ee68, handle);
+    return group->configure_group_45fb60(*options,value);
+}
 } // namespace th20

@@ -23224,3 +23224,20 @@ size = 31
 relocations = [
   { offset = 0x12, type = "REL32", symbol = "?native_polygon_apply_radius_45d360@th20@@YAXPAXHPBM@Z", target = 0x0045D360 },
 ]
+
+# CORE/RECON-892: complete native original 47B cdecl registry->polygon
+# configuration wrapper; 2 E8 and 2 PE HIGHLOW original true site/targets.
+[units.animation_polygon_registry_wrapper_47]
+source = "src/AnimationPolygonMotionGroup233.cpp"
+object = "build/core884-canonical/AnimationPolygonMotionGroup233.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::configure_polygon_group_45fd10"]
+symbol = "?configure_polygon_group_45fd10@th20@@YAHIPBUNativePolygonGroupOptions@1@H@Z"
+target_address = 0x0045FD10
+size = 47
+relocations = [
+  { offset = 0x9, type = "DIR32", symbol = "?native_polygon_type_marker_56ee68@th20@@3QBEB", target = 0x0056EE68 },
+  { offset = 0xF, type = "DIR32", symbol = "?native_polygon_registry_5b8894@th20@@3PAUNativePolygonRegistryOwner@1@A", target = 0x005B8894 },
+  { offset = 0x14, type = "REL32", symbol = "?resolve_45f0a0@NativePolygonRegistryOwner@th20@@QAEPAUNativePolygonMotionGroup@2@PBEI@Z", target = 0x0045F0A0 },
+  { offset = 0x27, type = "REL32", symbol = "?configure_group_45fb60@NativePolygonMotionGroup@th20@@QAEHABUNativePolygonGroupOptions@2@H@Z", target = 0x0045FB60 },
+]

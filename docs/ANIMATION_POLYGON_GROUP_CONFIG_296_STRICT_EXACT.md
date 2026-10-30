@@ -30,6 +30,10 @@ references from the actual original PE relocation directory, and
 checks the caller from the separately original game 47B wrapper
 `0x0045FD10`, E8 at **`0x0045FD36`**.
 
+Its real upstream cdecl wrapper at `0x0045FD10` has since been
+[whole-native strictly reconstructed as 47B/18 x86](ANIMATION_POLYGON_REGISTRY_WRAPPER_47_STRICT_EXACT.md).
+This does not promote the separate 156B registry resolver.
+
 The true eleven call roles are: one original `Timer::operator=(int)`
 at `0x00423520`; **three** indexed `0x0045F400` native array-member
 calls; **three** `0x0045FC90` polygon palette initializers;

@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,287
-source-present mappings**, **1,286 strict canonical native units** and
+At the October 30, 2026 checkpoint the maintained graph has **1,288
+source-present mappings**, **1,287 strict canonical native units** and
 **298 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **635 complete functions /
-233,615 original native bytes**. These are dated values, not a
+game-authored whole-function exactness is **636 complete functions /
+233,662 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -63,6 +63,7 @@ for the live inventory and consult the
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
 | Animation closed five-vertex line-strip Boss | [Whole original 2,169B/533-x86 game line-strip renderer, 2,169/2,169B whole strict native exact](docs/ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md), real typed 5×20B vertices and native D3D9 `LINESTRIP=3` (not triangle fan). All 12 E8 and 17 HIGHLOW original site/destinations attested, no duplicate 78B callee/1,980B sibling or 5,993B main Draw parent credit. |
+| Polygon registry cdecl entry wrapper | [Whole original 47B/18-i386 registry-to-296B group configuration wrapper strict exact](docs/ANIMATION_POLYGON_REGISTRY_WRAPPER_47_STRICT_EXACT.md), native `int32_t` result forwarded through EAX, 2 original E8/2 PE HIGHLOW physical roles and 47/47 native bytes. Original 156B registry resolver remains a separate NONEXACT source task. |
 | Polygon Motion palette Boss + typed forwarding leaves | [Whole original 120B/39-x86 palette and 31B/31B color/radius tag wrappers strictly exact](docs/ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md), native five+one+one genuine E8s and 32.0f original global; both 31B wrapper authorship unresolved. Also restores true adjacent 16.0f/32.0f original `.rdata` 8/8 bytes, no executable-code credit for data. |
 | Polygon Motion three-slot configuration Boss | [Whole original 296B/90-x86 game group configuration strictly exact](docs/ANIMATION_POLYGON_GROUP_CONFIG_296_STRICT_EXACT.md), native Timer, three palette colors, eleven true E8 roles and zero PE HIGHLOW. Normal C++ corrected extra /Od block-scope NOPs; 296/296 strict bytes, same object also preserves existing 233B/23B/19B strict units. |
 | Polygon Motion group Boss and native container helper pair | [Whole original 233B/78-i386 group Boss strict exact plus whole 23B/19B array pointer helpers](docs/ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md): real 3×`0x3D4` item layout, nine original E8/two HIGHLOW site/targets and 3/3 scoped canonical units. Container helpers' original authorship unresolved, excluded from authored count; 104B outline child still NONEXACT. |

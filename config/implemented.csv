@@ -1285,3 +1285,4 @@ th20::NativePolygonMotionGroup::configure_group_45fb60
 th20::NativePolygonSegmentSlot::initialize_palette_45fc90
 th20::NativePolygonColorFields::forward_color_45ffc0
 th20::NativePolygonRadiusFields::forward_radius_45ffa0
+th20::configure_polygon_group_45fd10
