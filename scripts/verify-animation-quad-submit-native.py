@@ -83,9 +83,8 @@ def verify()->None:
   assert not any(addr<=r<addr+n for r in relocations)
   assert calls[addr]==frequency
   print(f'PASS original per-channel game math {addr:#010x}: whole {n}B, {frequency} original quad-Boss E8 calls, no PE relocations')
- # Two independently complete source-backed game helpers now strict exact:
- # the six-vertex batch append and the texture preparation forwarding
- # wrapper. The 3,159B parent itself remains separate and NONEXACT.
+ # Source-independent native support children and original call roles.
+ # Whole parent exactness is established separately by canonical replay.
  assert calls[0x0043E9B0] == 1
  append_head=0x0043E9B0
  append_body=original.decoded(image,base,sections,append_head,352)
@@ -117,6 +116,23 @@ def verify()->None:
  # references within the opaque renderer owner, not a fake oversized type.
  assert any('0x6000e08' in x.op_str for x in ins)
  assert any('0x6000e0e' in x.op_str for x in ins)
+ # Original UV indexing/order differs across U and V axes: U base 0/2,
+ # V base 0/1; original V writes output vertices 0, 2, 1, 3.
+ native_heads={x.address-HEAD:x for x in ins}
+ uv_sites={
+   0xB24:('shl','ecx, 1'),        # U base index 2 (8 << 1)
+   0xB2C:('movss','xmm0, dword ptr [edx + ecx + 0x378]'),
+   0xBCF:('shl','edx, 1'),        # output V vertex index 2
+   0xBD1:('movss','dword ptr [edx + 0x5aef28], xmm0'),
+   0xBDE:('shl','eax, 0'),        # V base index 1 (8 << 0)
+   0xBE7:('movss','xmm0, dword ptr [ecx + eax + 0x37c]'),
+   0xC0A:('shl','ecx, 0'),        # V1 is input to V3
+   0xC20:('addss','xmm0, dword ptr [ecx + 0x5aef28]'),
+ }
+ for offset,(mnemonic,operand) in uv_sites.items():
+  assert offset in native_heads,(hex(offset),'missing native head')
+  head_ins=native_heads[offset]
+  assert (head_ins.mnemonic,head_ins.op_str)==(mnemonic,operand),(hex(offset),head_ins)
  assert any('0x7d40e90' in x.op_str for x in ins)
  # Actual per-mode switch color bit extraction (3bits at animation+0x4A1).
  assert any('0x4a1' in x.op_str for x in ins)
@@ -124,6 +140,7 @@ def verify()->None:
  print('PASS 96 in-body true PE HIGHLOW with all 10 physical destination classes')
  print('PASS 5/5 real original PE HIGHLOW color-mode pointer entries after genuine RET and single NOP')
  print('PASS real graphics viewport global 0x005C5840 = Graphics+0xB00; D3D9 texture/quad batching roles')
- print('PARENT NONEXACT: original PE graph evidence is not whole-C++ strict replay or linked program')
+ print('PASS native U0/U2 and V0/V2/V1/V3 index/ordering attested from immutable original PE')
+ print('Original PE-only checks are independent from whole C++ canonical strict acceptance')
 
 if __name__=='__main__':verify()

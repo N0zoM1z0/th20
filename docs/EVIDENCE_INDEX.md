@@ -1,16 +1,16 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-831):**
+**Current next-agent reading order (CORE/RECON-832):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
-[current 3,159B quad parent 41 E8 physical-site convergence](ANIMATION_QUAD_SUBMIT_3159_NATIVE_CONVERGENCE_NONEXACT.md) ->
+[strict exact full 3,159B quad parent](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md) ->
 [49-mode Animation draw source](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,238 source-present /1,238
-strict units from 259 object/receipt providers, 589 authored-game exact whole
-functions /193,512 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,238 source-present /1,239
+strict units from 260 object/receipt providers, 590 authored-game exact whole
+functions /196,671 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -29,6 +29,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole original 3,159B renderer quad-submit Boss strictly native exact
+
+- [CORE/RECON-832 — complete original 3,159B /763 x86 renderer submission Boss exact, including NOP and original five-pointer switch](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md) — independently native-verified original 41 E8 direct calls, 96 in-body HIGHLOW entries and five genuine after-RET PE case pointers; the natural pinned-MSVC C++ compiles to the **same 3,159B/763 x86 plus 1B native NOP and 20B five-way table**, with independently mapped 142 genuine COFF relocation targets and **3,180/3,180 zero-difference strict canonical bytes**. Original RGBA local lifetime and separate x87 spill fix the real 0x54 stack; U base indices 0/2, V base indices 0/1 and V output ordering 0/2/1/3 overturn an earlier wrong hypothesis. One new original authored whole game function /3,159 native .text bytes; live **590 exact game functions /196,671 native bytes**, 1,239 canonical units/260 providers. Only the one affected source/new canonical unit was compiled/replayed, not the full graph. Historical CORE/RECON-831/829 rows below remain dated experimental states, **not current**.
 
 ## 3,159B quad-submit Boss: all 41 original E8 instruction sites, still NONEXACT
 

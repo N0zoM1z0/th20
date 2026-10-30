@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-831.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-832.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -15,8 +15,8 @@ NONEXACT labels are not current acceptance facts.**
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
 | Source-present mapped methods | **1,238** across game, compiler and STL/library |
-| Complete native strict units | **1,238**, supplied by **259** distinct canonical MSVC objects with **259** matching receipts |
-| **Original authored-game whole-function exact** | **589 distinct physical game functions /193,512 original .text bytes** |
+| Complete native strict units | **1,239**, supplied by **260** distinct canonical MSVC objects with **260** matching receipts |
+| **Original authored-game whole-function exact** | **590 distinct physical game functions /196,671 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -37,6 +37,7 @@ of the entire game binary.
 | 0x004818E0 Bullet emitter | **3,735B** original, **3,832B** whole compiler extent exact, [emitter proof](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md) |
 | 0x00481200 Bullet command-11 | **1,404B** exact, [state machine](BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md) |
 | 0x00421B00 InputDevice polling | **3,490B** exact, [input source](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md) |
+| 0x0043F6A0 Animation quad-submit renderer Boss | **3,159B /763 x86** whole original game body strict exact; **3,180/3,180B** including genuine NOP and five native relocated case-table pointers, 41 E8 plus 101 DIR32 independent roles, [full parent proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md) |
 | 0x00539550 LZSS compressor | **1,036B** exact (historical 964B attempt was NONEXACT), [native compressor](ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) |
 | 0x00447800 Animation factory | **73B** exact with coherent class tag and SDL ABI, [native allocation proof](ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) |
 | 0x0044C9B0 Animation pool allocation | **298B** exact, [pool allocator](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) |
@@ -59,14 +60,18 @@ are not current. Verify each claim against the original PE and live ledgers.
 | --- | --- |
 | **1. Bullet extended-command Boss `0x0047DCF0` — 12,140B /2,490 x86** | **SOURCE-ABSENT, NONEXACT.** Original 210 E8 occurrences: **208** have whole-native-exact game-callee source; remaining **two are compiler runtime** (`__security_check_cookie`, `__allshl`), not game-function gaps. Original 34+8+11 switch pointers (53 PE HIGHLOW) and 38 body HIGHLOW. Next: author the **complete 34/8/11-switch command parent**, verify each native case and its source, then match full x86/relocations. [Immutable original CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md), [current native 210-call verifier](../scripts/verify-bullet-command-call-coverage.py), [exact recursive Animation children](ANIMATION_RETIRE_SUBTREE_362_EXACT_RECONSTRUCTION.md). |
 | **2. Animation 49-mode draw Boss `0x00443880` — 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. All **123/123 real E8 call-target roles** across 43 original destinations recovered; real original main/nested case tables contain **49+31 PE pointers**, plus 32 body HIGHLOW. Modern C++ emits **5,141B /1,358 x86** plus 247B switch data and compresses the main switch to 17 pointers +49 indices. Next: recover direct **49-pointer** switch lowering and native case/stack ordering, not more leaf-only work. [49-mode source and original audit](ANIMATION_DRAW_BOSS_5993_TYPED_49_MODE_PARENT_FRONTIER.md), [PE-only verifier](../scripts/verify-animation-draw-boss-native.py). Five quad mode helpers and the original 192B draw queue flush are independently strict exact. |
-| **3. Quad submission Boss `0x0043F6A0` — 3,159B /763 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationQuadSubmit.cpp`. New source-independent original PE and pinned-MSVC source checks now agree on the **entire 3,159B/763-x86 executable length**, **41/41 actual E8 call targets *and exact instruction locations***, **96/96 in-body PE HIGHLOW destination roles (89/96 physically identical offset-and-target pairs)**, 16 native viewport comparison branches, and the original after-RET NOP +five pointer table; whole candidate **3,180B including those 21B**. Recovering native unordered clip predicates, actual `vectors_378[1]` UV reads, 5-case switch default placement, packed-color lifetimes and direct renderer state substantially closes prior codegen gap, but **stack frame `0x4C` versus native `0x54` and seven UV relocation locations and other bytes still differ**. Zero new exact credit. Next: restore original local/frame lifetime and remaining UV instructions/relocation offsets, then full canonical zero-difference verification. [Current whole-parent native site convergence](ANIMATION_QUAD_SUBMIT_3159_NATIVE_CONVERGENCE_NONEXACT.md), [focused source verifier](../scripts/verify-animation-quad-submit-source-roles.py). Separate **2,725B texture/sampler** and **1,163B blend-state** children remain individually strict exact: [2,725B proof](ANIMATION_QUAD_TEXTURE_STATES_2725_STRICT_EXACT.md), [1,163B proof](ANIMATION_QUAD_BLEND_STAGE_1163_STRICT_EXACT.md). |
-| **4. Player main `0x004F9C30` — 3,111B /783 x86** | **SOURCE-PRESENT, NONEXACT.** Source candidate **3,114B /783 x86**, 67 actual call roles and 37 frame-data references; differences persist in register/stack/branch encoding despite matching mnemonic count. Next: expression and receiver lifetime. [Full operand evidence](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [independent 72B input data table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
-| **5. Player movement `0x004FFA10` — 555B** | **SOURCE-PRESENT, NONEXACT.** Candidate **561B /136 x86** vs original **555B /135**; one excess 6B SSE lifetime spill remains. [Native movement source evidence](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
-| **6. Bullet group drawing `0x0047DB70` — 273B** | **SOURCE-PRESENT, NONEXACT.** Candidate approximately **283B /84 x86** vs original **273B /82**, extra SSE expression spill. [Full source frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |
-| **7. Enemy ECL opcode dispatcher `0x0048C010` — 41,967B /8,896 x86** | **SOURCE-ABSENT, NONEXACT.** Original opcode base 300, 704B compressed mode index, 174 actual PE HIGHLOW case pointers. Next: complete parent opcode source/CFG; separate exact Laser children do not close it. [Original native opcode graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
-| **8. Animation VM update `0x0042B5D0` — 39,470B** | **SOURCE-ABSENT, NONEXACT.** Native child script parsers and Animation helpers are exact, but whole interpreter source and codegen are not. [Source ownership](SOURCE_MAP.md). |
-| **9. Enemy mesh `0x004A4190` — 1,649B** | **SOURCE-PRESENT, NONEXACT.** Coherent C++ exists, but original temporary/retirement lifetime codegen differs. [Native mesh frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). |
-| **10. STL counted-range `0x0047A8D0` — 470B** | **LIBRARY, NONEXACT (not authored game credit).** Real original **470B /174 x86 /12 E8** vs modern C++17 **458B /170 x86 /11 E8**; real missing `std::is_constant_evaluated` call is a toolchain/STL issue. Do not fabricate a game call. [Library proof](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md). |
+| **3. Player main `0x004F9C30` — 3,111B /783 x86** | **SOURCE-PRESENT, NONEXACT.** Source candidate **3,114B /783 x86**, 67 actual call roles and 37 frame-data references; differences persist in register/stack/branch encoding despite matching mnemonic count. Next: expression and receiver lifetime. [Full operand evidence](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), [independent 72B input data table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
+| **4. Player movement `0x004FFA10` — 555B** | **SOURCE-PRESENT, NONEXACT.** Candidate **561B /136 x86** vs original **555B /135**; one excess 6B SSE lifetime spill remains. [Native movement source evidence](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
+| **5. Bullet group drawing `0x0047DB70` — 273B** | **SOURCE-PRESENT, NONEXACT.** Candidate approximately **283B /84 x86** vs original **273B /82**, extra SSE expression spill. [Full source frontier](BULLET_DRAW_GROUP_FULL_SOURCE_FRONTIER.md). |
+| **6. Enemy ECL opcode dispatcher `0x0048C010` — 41,967B /8,896 x86** | **SOURCE-ABSENT, NONEXACT.** Original opcode base 300, 704B compressed mode index, 174 actual PE HIGHLOW case pointers. Next: complete parent opcode source/CFG; separate exact Laser children do not close it. [Original native opcode graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md). |
+| **7. Animation VM update `0x0042B5D0` — 39,470B** | **SOURCE-ABSENT, NONEXACT.** Native child script parsers and Animation helpers are exact, but whole interpreter source and codegen are not. [Source ownership](SOURCE_MAP.md). |
+| **8. Enemy mesh `0x004A4190` — 1,649B** | **SOURCE-PRESENT, NONEXACT.** Coherent C++ exists, but original temporary/retirement lifetime codegen differs. [Native mesh frontier](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). |
+| **9. STL counted-range `0x0047A8D0` — 470B** | **LIBRARY, NONEXACT (not authored game credit).** Real original **470B /174 x86 /12 E8** vs modern C++17 **458B /170 x86 /11 E8**; real missing `std::is_constant_evaluated` call is a toolchain/STL issue. Do not fabricate a game call. [Library proof](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md). |
+
+The **3,159B quad submission parent is now entire whole-native strict exact**,
+not merely source-present with exact children. The 5,993B Animation draw
+parent calling it remains separate and NONEXACT. See the
+[complete renderer parent proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md).
 
 Completed Bullet library support includes **610B PMR vector functions**
 ([proof](BULLET_COMMAND_PMR_CXX17_469_LIBRARY_EXACT.md)) and **100B
@@ -124,7 +129,7 @@ Keep original resources/th20.exe, private provenance, _reference/, attested
 ghidra-project/, installed MSVC/Wine/D3DX in .tools/, .venv/, source,
 Git history, original PE native research and unique .analysis/*.json.gz
 frozen snapshots. Do **not** delete build/ or .analysis/ as a whole.
-All **259 protected canonical .obj plus 259 matching receipt files** are
+All **260 protected canonical .obj plus 260 matching receipt files** are
 taken from the **live** match-units.toml, not hardcoded old 243/236/212
 counts.
 

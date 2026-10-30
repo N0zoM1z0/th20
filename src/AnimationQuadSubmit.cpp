@@ -1,10 +1,8 @@
-// Entire original game renderer quad submission source at 0x0043F6A0,
-// 3,159B /763 genuine native x86. Source is still NONEXACT despite the
-// same pinned-MSVC code length/instruction count, all 41 identical native
-// E8 call-site offsets and roles, all 96 PE HIGHLOW target roles (89 exact
-// physical sites), and matching five-pointer switch table / alignment.
-// Stack layout and remaining UV/other instruction bytes still differ.
-// No whole-original parent game-code byte credit without canonical replay.
+// Complete 3,159B/763-x86 original renderer quad submission boss at
+// 0x0043F6A0. A single pinned-MSVC natural C++ method is strict whole-native
+// exact, including the original NOP and five relocated switch table pointers
+// (3,180B total). All 41 original E8 and 101 DIR32 roles are independently
+// source-identified. Strict credit is only for the full 3,159B game body.
 #include "AnimationQuadSubmitOwner.hpp"
 #include "Animation.hpp"
 #include "AnimationFile.hpp"
@@ -75,22 +73,24 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
     // write that same value to both corresponding native vertices. The
     // original does not reload the first global after storing it.
     if (options&1) {
-        // Original native 0x00445B80 normalization is a C-runtime float
-        // rounding wrapper; exact rounding-mode details remain to verify.
-        float snap_left = animation_snap_round(native_quad_vertices[0].position.x);
-        snap_left -= 0.5f;
+        // Keep the x87-return spill separate from the final rounded vertex
+        // value: that is the actual original compiler lifetime and stack.
+        // Its original 20B runtime rounding callee is attested as a real
+        // native E8 destination, not counted as an exact game leaf here.
+        float snap_left = animation_snap_round(native_quad_vertices[0].position.x) - 0.5f;
+
         native_quad_vertices[2].position.x = snap_left;
         native_quad_vertices[0].position.x = snap_left;
-        float snap_top = animation_snap_round(native_quad_vertices[0].position.y);
-        snap_top -= 0.5f;
+        float snap_top = animation_snap_round(native_quad_vertices[0].position.y) - 0.5f;
+
         native_quad_vertices[1].position.y = snap_top;
         native_quad_vertices[0].position.y = snap_top;
-        float snap_right = animation_snap_round(native_quad_vertices[1].position.x);
-        snap_right -= 0.5f;
+        float snap_right = animation_snap_round(native_quad_vertices[1].position.x) - 0.5f;
+
         native_quad_vertices[3].position.x = snap_right;
         native_quad_vertices[1].position.x = snap_right;
-        float snap_bottom = animation_snap_round(native_quad_vertices[2].position.y);
-        snap_bottom -= 0.5f;
+        float snap_bottom = animation_snap_round(native_quad_vertices[2].position.y) - 0.5f;
+
         native_quad_vertices[3].position.y = snap_bottom;
         native_quad_vertices[2].position.y = snap_bottom;
     }
@@ -155,26 +155,25 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
             }
             case 2:
             case 3: {
-                SourcePackedColor a, b;
-                a.word=animation->base.color_490;
-                b.word=animation->base.color_494;
+                main_color.word=animation->base.color_490;
+                other_color.word=animation->base.color_494;
                 if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) {
-                    ANM_MUL4_TINT_INTO(a,multiply_color_128_saturating);
-                    ANM_MUL4_TINT_INTO(b,multiply_color_128_saturating);
+                    ANM_MUL4_TINT_INTO(main_color,multiply_color_128_saturating);
+                    ANM_MUL4_TINT_INTO(other_color,multiply_color_128_saturating);
                 }
                 // The real original game has separate four-store branches
                 // for modes 2 and 3 (8 physical color output references),
                 // even though two output colors coincide in both branches.
                 if (animation->base.flags.color_mode==2) {
-                    native_quad_vertices[0].color=a.word;
-                    native_quad_vertices[1].color=b.word;
-                    native_quad_vertices[2].color=a.word;
-                    native_quad_vertices[3].color=b.word;
+                    native_quad_vertices[0].color=main_color.word;
+                    native_quad_vertices[1].color=other_color.word;
+                    native_quad_vertices[2].color=main_color.word;
+                    native_quad_vertices[3].color=other_color.word;
                 } else {
-                    native_quad_vertices[0].color=a.word;
-                    native_quad_vertices[1].color=a.word;
-                    native_quad_vertices[2].color=b.word;
-                    native_quad_vertices[3].color=b.word;
+                    native_quad_vertices[0].color=main_color.word;
+                    native_quad_vertices[1].color=main_color.word;
+                    native_quad_vertices[2].color=other_color.word;
+                    native_quad_vertices[3].color=other_color.word;
                 }
                 break;
             }
@@ -201,17 +200,19 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
         reinterpret_cast<AnimationQuadSubmitOwner*>(this)->select_render_color_mode(
             animation->base.flags.bits_08.field_4_5 != 3 ? std::uint8_t{0} : std::uint8_t{3});
 
-        // Original base UV reads are vectors_378[0] and [1] (8B stride),
-        // not [0] and [2]; shared UV scaling is +0x398 and +0x68/+0x6C.
-        // The original writes output v1 before base v2, as below.
+        // Original U uses base UV indices 0 and 2; V uses 0 and 1.
+        // The original writes V output in vertex order 0, 2, 1, 3: the
+        // second V is derived from V0, and V3 is derived from V1.
+        // The independent native indexed 8-byte shifts establish both.
+        // Texture UV scaling uses +0x398 and +0x68/+0x6C.
         native_quad_vertices[0].u=animation->base.vectors_378[0].x+animation->base.field_78;
         native_quad_vertices[1].u=native_quad_vertices[0].u+animation->base.vector_398.x*animation->base.vector_68.x;
-        native_quad_vertices[2].u=animation->base.vectors_378[1].x+animation->base.field_78;
+        native_quad_vertices[2].u=animation->base.vectors_378[2].x+animation->base.field_78;
         native_quad_vertices[3].u=native_quad_vertices[2].u+animation->base.vector_398.x*animation->base.vector_68.x;
         native_quad_vertices[0].v=animation->base.vectors_378[0].y+animation->base.field_7c;
-        native_quad_vertices[1].v=native_quad_vertices[0].v+animation->base.vector_398.y*animation->base.vector_68.y;
-        native_quad_vertices[2].v=animation->base.vectors_378[1].y+animation->base.field_7c;
-        native_quad_vertices[3].v=native_quad_vertices[2].v+animation->base.vector_398.y*animation->base.vector_68.y;
+        native_quad_vertices[2].v=native_quad_vertices[0].v+animation->base.vector_398.y*animation->base.vector_68.y;
+        native_quad_vertices[1].v=animation->base.vectors_378[1].y+animation->base.field_7c;
+        native_quad_vertices[3].v=native_quad_vertices[1].v+animation->base.vector_398.y*animation->base.vector_68.y;
         reinterpret_cast<AnimationQuadSubmitOwner*>(this)->append_quad(native_quad_vertices);
     return 0;
 }

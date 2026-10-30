@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Whole original 3159B quad-submit parent: original PE vs source codegen.
+"""Original whole 3159B quad-submit parent: independent PE/source roles.
 
-The original and isolated pinned-MSVC C++ candidate have identical code lengths,
-instruction counts, 41 actual E8 call locations/roles and five table locations.
-The 96 in-body original PE HIGHLOW target roles also agree; 89 of their
-physical sites agree. This is deliberately NONEXACT: stack and remaining
-instruction/relocation bytes differ. It is not an accepted canonical unit.
+An isolated pinned MSVC probe checks actual original E8/HIGHLOW relocation
+identities and locations, original code+table extent and all non-relocation
+bytes. Canonical exact admission requires the separate pinned-receipt unit
+comparison; this script neither promotes counts nor solves PE target fields.
 """
 from collections import Counter
 import importlib.util
@@ -30,7 +29,7 @@ ORIG=module('original_quad',ROOT/'scripts/verify-animation-quad-submit-native.py
 HEAD=0x0043F6A0
 SIZE=3159
 SOURCE=ROOT/'src/AnimationQuadSubmit.cpp'
-OBJECT=ROOT/'build/core831-probe/AnimationQuadSubmitRoles.obj'
+OBJECT=ROOT/'build/core832-probe/AnimationQuadSubmitRoles.obj'
 SYMBOL='?render_quad@AnimationDrawModeOwner@th20@@QAEHPAVAnimation@2@H@Z'
 ORIGINAL_CALLS={
     0x00445B80:4, 0x00437CD0:1, 0x004455C0:2, 0x00412730:1,
@@ -77,8 +76,11 @@ def verify():
     assert 'if (!(' in source and 'return 0;' in source
     assert '!(process_graphics.current_viewport->bounds_11c.x>native_quad_vertices[0].position.x)' in source
     assert '!(native_quad_vertices[3].position.y>process_graphics.current_viewport->bounds_124.y)' in source
-    assert 'native_quad_vertices[2].u=animation->base.vectors_378[1].x' in source
-    assert 'native_quad_vertices[2].v=animation->base.vectors_378[1].y' in source
+    assert 'native_quad_vertices[2].u=animation->base.vectors_378[2].x' in source
+    assert 'native_quad_vertices[1].v=animation->base.vectors_378[1].y' in source
+    assert 'native_quad_vertices[2].v=native_quad_vertices[0].v+' in source
+    assert 'native_quad_vertices[3].v=native_quad_vertices[1].v+' in source
+    assert 'float snap_left = animation_snap_round(native_quad_vertices[0].position.x) - 0.5f;' in source
     command=[str(ROOT/'scripts/compile-probe.sh'),str(SOURCE),str(OBJECT),
              '/nologo','/c','/std:c++20','/Od','/Ob0','/GS','/Gy','/Zl',
              '/arch:SSE2','/fp:precise','/sdl','/EHsc']
@@ -197,9 +199,8 @@ def verify():
     assert candidate_values[0x005B25C0]==1
     assert sum(candidate_values.values())==96
 
-    # Field *positions* are now independently compared, not merely their
-    # histograms. The remaining seven misaligned sites are in UV math;
-    # equal histograms and equal code length are never whole-byte exactness.
+    # Compare all physical PE HIGHLOW field positions and independently
+    # declared target identities; multiplicities alone are insufficient.
     native_sites={(site-HEAD, struct.unpack('<I',ORIG.original.raw_at(
         image,base,sections,site,4))[0]) for site in physical_sites}
     native_sites={(offset,'jump_table' if target==ORIG.TABLE else target)
@@ -217,21 +218,30 @@ def verify():
             target='jump_table'
         candidate_sites.add((row['offset'],target))
     matched_sites=len(native_sites&candidate_sites)
-    assert matched_sites>=89 and len(native_sites)==len(candidate_sites)==96
-    assert all(0xB40<=offset<=0xC10 and target in (0x005AEF24,0x005AEF28)
-               for offset,target in native_sites-candidate_sites)
-    # Prologue remains different; no exact acceptance or byte credit.
-    assert original[5]==0x54 and generated[5]==0x4c
+    assert matched_sites==96 and native_sites==candidate_sites
+    assert original[5]==generated[5]==0x54
     assert len([x for x in relocated if ORIG.TABLE<=x<ORIG.TABLE+20])==5
+
+    # Structural byte equality outside *all* actual relocations (body E8,
+    # body PE HIGHLOW, table) is checked separately from the canonical
+    # zero-difference full relocation replay. Relocation values themselves
+    # are independently checked against original PE roles above.
+    native_extent=COFF.pe_bytes_at(image,HEAD,len(generated))
+    ignored=set()
+    for row in rel:
+        ignored.update(range(row['offset'],row['offset']+4))
+    assert all(left==right for index,(left,right) in enumerate(zip(generated,native_extent))
+               if index not in ignored)
+    assert len(rel)==142 and len(ignored)==142*4
 
     print('PASS immutable original whole 3159B/763 i386 and all 41 real E8 targets (10 game targets +1 compiler security)')
     print('PASS C++ 41/41 source/real E8 target identities and per-target multiplicities; actual compiler cookie restored naturally')
     print('PASS complete original 96/96 in-body PE HIGHLOW source target MULTIPLICITIES (73 quad vertices, 16 viewport, 4 half, one device, cookie and switch)')
     print('PASS original and candidate 3159B/763 instruction heads, all 41 actual E8 call target roles AND identical instruction offsets')
-    print(f'PASS {matched_sites}/96 physical body HIGHLOW site-and-target pairs plus 5/5 after-RET pointer positions and one native NOP')
-    print('PASS all 16 native COMISS/JBE-or-JA ordered/unordered clip branch identities and real UV source index 1')
+    print(f'PASS {matched_sites}/96 physical body HIGHLOW site-and-target pairs plus 5/5 after-RET pointer positions and one original NOP')
+    print('PASS all 16 viewport COMISS branches and U indices 0/2, V indices 0/1 and V vertex writes 0/2/1/3')
     print('PASS 24 saturating and 4 divide-255 real color calls, 4 snap, 2 flush, one 352B append, byte-channel stores across both gradient paths')
-    print(f'NONEXACT candidate: {len(generated)}B whole COFF = {end}B executable/{len(instructions)} i386 +1B NOP/20B five-pointer data; original same size/count')
-    print('NONEXACT: original stack frame and seven UV relocation sites/remaining instruction bytes differ; zero parent exact credit')
+    print(f'PASS original/probe whole {len(generated)}B = {end}B executable/{len(instructions)} i386 +1B NOP/20B five-pointer data')
+    print('PASS all non-relocation bytes equal; canonical strict replay independently proves every relocated field')
 
 if __name__=='__main__':verify()
