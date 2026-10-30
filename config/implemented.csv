@@ -1374,3 +1374,5 @@ th20::NativeRibbonTrailGroup::draw
 "th20::DiagnosticAllocator::allocate_object<NativeRibbonTrailGroup,Animation*>"
 th20::NativeRibbonTrailGroup::configure_gray_45e240
 th20::NativeRibbonTrailGroup::configure_pink_45e3a0
+th20::create_trail_gray_45e520
+th20::create_trail_pink_45e550

@@ -24689,3 +24689,34 @@ relocations = [
  { offset = 0x155, type = "REL32", symbol = "?set_animation_flag_byte_01_one@th20@@YIXPAVAnimation@1@@Z", target = 0x0045E5B0 },
  { offset = 0x171, type = "REL32", symbol = "?configure_438c60@NativeTrailAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
 ]
+
+# CORE/RECON-942: complete original gray and pink native creation wrappers.
+[units.animation_ribbon_trail_gray_wrapper_47]
+source = "src/AnimationRibbonTrailGrayWrapper47.cpp"
+object = "build/core942-canonical/AnimationRibbonTrailGrayWrapper47.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::create_trail_gray_45e520"]
+symbol = "?create_trail_gray_45e520@th20@@YAHIPBUVector3@1@H@Z"
+target_address = 0x0045E520
+size = 47
+relocations = [
+ { offset = 0x09, type = "DIR32", symbol = "?native_ribbon_trail_gray_marker_56ed88@th20@@3QBEB", target = 0x0056ED88 },
+ { offset = 0x0F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeRibbonTrailGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonTrailGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045DD90 },
+ { offset = 0x27, type = "REL32", symbol = "?configure_gray_45e240@NativeRibbonTrailGroup@th20@@QAEHABUVector3@2@H@Z", target = 0x0045E240 },
+]
+
+[units.animation_ribbon_trail_pink_wrapper_49]
+source = "src/AnimationRibbonTrailPinkWrapper49.cpp"
+object = "build/core942-canonical/AnimationRibbonTrailPinkWrapper49.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::create_trail_pink_45e550"]
+symbol = "?create_trail_pink_45e550@th20@@YAHIPBUVector3@1@H@Z"
+target_address = 0x0045E550
+size = 49
+relocations = [
+ { offset = 0x09, type = "DIR32", symbol = "?native_ribbon_trail_pink_marker_56ed38@th20@@3QBEB", target = 0x0056ED38 },
+ { offset = 0x0F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeRibbonTrailGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonTrailGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045DD90 },
+ { offset = 0x27, type = "REL32", symbol = "?configure_pink_45e3a0@NativeRibbonTrailGroup@th20@@QAEHABUVector3@2@H@Z", target = 0x0045E3A0 },
+]

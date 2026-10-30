@@ -661,3 +661,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0045E190,th20::NativeRibbonTrailGroup::draw,165,matching,100.00,animation_ribbon_trail_draw_165,CORE/RECON-938; docs/ANIMATION_RIBBON_TRAIL_DRAW165_STRICT_EXACT.md
 0x0045E240,th20::NativeRibbonTrailGroup::configure_gray_45e240,340,matching,100.00,animation_ribbon_trail_gray_340,CORE/RECON-940; docs/ANIMATION_RIBBON_TRAIL_GRAY340_STRICT_EXACT.md
 0x0045E3A0,th20::NativeRibbonTrailGroup::configure_pink_45e3a0,382,matching,100.00,animation_ribbon_trail_pink_382,CORE/RECON-941; docs/ANIMATION_RIBBON_TRAIL_PINK382_STRICT_EXACT.md
+0x0045E520,th20::create_trail_gray_45e520,47,matching,100.00,animation_ribbon_trail_gray_wrapper_47,CORE/RECON-942; docs/ANIMATION_RIBBON_TRAIL_WRAPPERS_47_49_STRICT_EXACT.md
+0x0045E550,th20::create_trail_pink_45e550,49,matching,100.00,animation_ribbon_trail_pink_wrapper_49,CORE/RECON-942; docs/ANIMATION_RIBBON_TRAIL_WRAPPERS_47_49_STRICT_EXACT.md
