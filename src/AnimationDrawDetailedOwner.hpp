@@ -18,6 +18,7 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // 2-float output pointer; native RET 0x1C, no additional instance.
     void transform_projected_xy(Vector2* output, float x, float y,
                                 float sine, float cosine, float tx, float ty);
+    std::int32_t prepare_complex_mode6(Animation*);       // full original 0x00440340, strict exact
     std::int32_t draw_complex_mode6(Animation*);             // 0x004408B0 native thiscall
     std::int32_t prepare_simple_mode7(Animation*);          // actual original 0x00441430; EAX=0, RET 4
     std::int32_t draw_simple_mode7(Animation*);              // 0x00441C00

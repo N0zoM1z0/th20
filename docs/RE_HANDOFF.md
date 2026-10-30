@@ -1,6 +1,6 @@
 # TH20 reconstruction — current agent handoff
 
-**Reconciled 2026-10-30, CORE/RECON-841.** Start here, then consult the
+**Reconciled 2026-10-30, CORE/RECON-842.** Start here, then consult the
 [evidence index](EVIDENCE_INDEX.md) for dated native experiments and original
 PE proofs. The old 813-line handoff is in Git history at
 git show 3e0f343:docs/RE_HANDOFF.md. **Historical checkpoint numbers and old
@@ -14,9 +14,9 @@ NONEXACT labels are not current acceptance facts.**
 | Required SHA-256 | a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897 |
 | Embedded title/replay label | 1.00c in that **same** locked file, not a separate target |
 | Provisional Ghidra function heads | **6,928**, not all native-confirmed boundaries |
-| Source-present mapped methods | **1,245** across game, compiler and STL/library |
-| Complete native strict units | **1,246**, supplied by **264** distinct canonical MSVC objects with **264** matching receipts |
-| **Original authored-game whole-function exact** | **599 distinct physical game functions /199,725 original .text bytes** |
+| Source-present mapped methods | **1,246** across game, compiler and STL/library |
+| Complete native strict units | **1,247**, supplied by **265** distinct canonical MSVC objects with **265** matching receipts |
+| **Original authored-game whole-function exact** | **600 distinct physical game functions /201,103 original .text bytes** |
 | Whole game linked/playable | **No** |
 
 Get live status with:
@@ -42,6 +42,7 @@ of the entire game binary.
 | 0x00447800 Animation factory | **73B** exact with coherent class tag and SDL ABI, [native allocation proof](ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) |
 | 0x0044C9B0 Animation pool allocation | **298B** exact, [pool allocator](ANIMATION_POOL_ALLOCATE_298_EXACT_RECONSTRUCTION.md) |
 | 0x0044CD00 Animation pool handle resolver | **456B /141 x86** whole strict exact, plus [159B/154B exact linked-list predicate and wrapper](ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md), [original SprtID identity and 20 E8 proof](ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md) |
+| 0x00440340 Animation Mode6 1,378B screen-projection preparation Boss | **Whole 1,378B/335-i386 game-authored native strict exact**, true 17 original E8 /21 PE HIGHLOW physical fields, actual [2][3][4] screen offset tensor, real D3DX viewport/project and four strict projected XY subcalls; [complete independent native/replay proof](ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md). Main 2,769B mode6 caller/5,993B dispatcher remain nonexact. |
 | 0x004399B0 /0x00445B20 Animation Mode6 projection math | **73B Vector3 magnitude +86B projected XY rotate/translate =159 original game bytes**, each original whole strict exact. Five physical E8 sites in the original 1,378B Mode6 preparation parent, one real sqrt E8, no other data relocations. [Full original/strict projection math proof](ANIMATION_PROJECTION_MATH_73_86_STRICT_EXACT.md). Enclosing 1,378B Mode6 preparation remains open. |
 | 0x00441430 Animation draw mode7 setup / matrix + corners Boss | **1,996B/459 i386 full original game-authored strict exact**, all original 11 E8 and 26 HIGHLOW physical sites, actual 3×64B matrix copies, D3DX XYZ rotations/multiplications, original parent/window translation and four Vector3 corners. [Full original PE/native strict proof](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md). Already strict 753B caller remains 753/753 after real int-return ABI symbol correction. |
 | 0x00441C00 Animation draw mode7 fog/projection Boss | **753B /178 x86 whole-native strict exact**, 7 actual E8 calls +29 in-body HIGHLOW original sites, true D3DX four-corner transform, native 25B depth/math and exact 3,159B quad-submit; [complete original/COFF proof](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md). Main 5,993B parent stays NONEXACT. |
