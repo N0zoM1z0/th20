@@ -1,5 +1,13 @@
 # CORE/RECON-918 — complete 89B ribbon group ctor and native 20B/49B destructor chain
 
+> **CORE/RECON-919 follow-up:** The separate original **156B C++17
+> diagnostic allocation factory at `0x0045E5D0`** is now independently
+> [whole 156/156 strict exact](ANIMATION_RIBBON_GROUP_FACTORY_156_STRICT_EXACT.md).
+> A pointer-semantic type for the observed zero word at `+0xB5C` naturally
+> restores the factory's genuine `/sdl` auto-class initialization without
+> changing the 89B constructor or 20B/49B destructor acceptance.
+
+
 Locked Japanese TH20 Steamless v1.00a SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This batch reconstructs an actual **0xB60-byte** polymorphic ribbon group

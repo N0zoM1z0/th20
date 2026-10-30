@@ -66,6 +66,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-913 — original 76B/27-i386 native ribbon segment LINESTRIP wrapper strictly exact](ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md). Original +0x1E0 color stream/60 vertices, all 3 original E8 site/destinations plus true pool HIGHLOW, whole exact 455B original backend. **76/76 whole canonical replay, +76 authored game code bytes**, one new cold provider. Its 156B caller remains separately strict exact. The 538B segment updater became whole strict exact in CORE/RECON-915.
 
+## Whole strict exact 156B ribbon allocation factory
+
+- [CORE/RECON-919 — complete native 156B/46-i386 C++17 ribbon diagnostic allocation factory strict exact](ANIMATION_RIBBON_GROUP_FACTORY_156_STRICT_EXACT.md). Original PE verifies 4 true E8/two HIGHLOW physical targets and both `0xB60` allocation/auto-zero sizes, real 89B constructor. Restoring the native **pointer-bearing +0xB5C field** turns a rejected 143B source into complete 156/156 natural `/sdl` MSVC code without regressing ctor/children; **11/11 canonical units in 9 affected cold objects**, no whole replay. Template-origin unproven, **zero game-author credit**.
+
 ## Whole exact 89B ribbon constructor and genuine generated destructor chain
 
 - [CORE/RECON-918 — native 89B ribbon group constructor plus 20B ordinary/49B deleting destructor whole strict exact](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). Original polymorphic base and real vtable, three original ctor E8/one native HIGHLOW, physical Timer and 3x0x3C0 segment construction; natural C++20 makes entire **89/89 authored ctor**, plus **20/20 and 49/49 compiler contributions**. Eight actually affected native objects/ten strict units **10/10 exact**, +89 original authored game bytes; original 20B folded destructor C++ template/type unique ownership unresolved. Whole-game linkage and group allocation factory remain open.
@@ -112,8 +116,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,347 source-present mappings, 1,346
-strict units from 314 pinned object/receipt providers, and 646 distinct
+**Current verified checkpoint:** **1,348 source-present mappings, 1,347
+strict units from 315 pinned object/receipt providers, and 646 distinct
 original authored whole-exact game functions /235,861 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py

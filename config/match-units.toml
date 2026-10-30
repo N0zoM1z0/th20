@@ -24133,3 +24133,22 @@ relocations = [
   { offset = 0x0B, type = "REL32", symbol = "??1NativeRibbonGroup@th20@@UAE@XZ", target = 0x0045C2A0 },
   { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
 ]
+
+# CORE/RECON-919: original whole 156B C++17 ribbon-group allocation factory;
+# game-authored vs compiler-template source provenance still under review.
+[units.animation_ribbon_group_factory_156]
+source = "src/AnimationRibbonGroupFactory156.cpp"
+object = "build/core919-canonical/AnimationRibbonGroupFactory156.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::allocate_object<NativeRibbonGroup,Animation*>"]
+symbol = "??$allocate_object@VNativeRibbonGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonGroup@1@PBDPAVAnimation@1@@Z"
+target_address = 0x0045E5D0
+size = 156
+relocations = [
+  { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??$allocate_object@VNativeRibbonGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonGroup@1@PBDPAVAnimation@1@@Z", target = 0x00568957 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x0054275D },
+  { offset = 0x4E, type = "REL32", symbol = "?__autoclassinit2@NativeRibbonGroup@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x57, type = "REL32", symbol = "??$forward@PAVAnimation@th20@@@std@@YA$$QAPAVAnimation@th20@@AAPAV12@@Z", target = 0x0040B280 },
+  { offset = 0x6B, type = "REL32", symbol = "??0NativeRibbonGroup@th20@@QAE@PAVAnimation@1@@Z", target = 0x0045E6D0 },
+]

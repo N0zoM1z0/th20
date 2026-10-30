@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,347** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,346**, from **314** pinned MSVC object/receipt providers |
+| Source-present function mappings | **1,348** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,347**, from **315** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **646 distinct function heads /235,861 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -82,6 +82,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | Original head / subsystem | Whole strict status |
 | --- | --- |
 | Ribbon original radius/vertex end helpers `0x0045DCA0` / `0x0045DCC0` | **19B/19B whole native exact**, true 60 float/60 Vector2 array ends. Confirmed two genuine E8 edges from now exact 538B updater. Authorship still unknown; no game-code credit. [Complete original and strict proofs](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md). |
+| Ribbon C++17 allocation factory `0x0045E5D0` | **156B/46-i386 whole native strict exact**, genuine 0xB60 allocation, `__autoclassinit2`, folded `std::forward`, real exact 89B group constructor, four original E8 and two HIGHLOW. Pointer-bearing +0xB5C natural type is compiler-corroborated, historic name/ownership unresolved; zero authored credit. Nine affected cold objects, eleven units **11/11 exact**. [Full original PE and native proof](ANIMATION_RIBBON_GROUP_FACTORY_156_STRICT_EXACT.md). |
 | Ribbon polymorphic group ctor `0x0045E6D0` plus generated destructor pair | **89B/25-i386 whole native strict exact**; original 0x56EDDC derived vtable, 3x0x3C0 array and Timer/float/tail members. Separate **20B ordinary folded destructor and 49B scalar-deleting wrapper whole strict exact** but excluded from authored game credit. **+89 game-authored bytes**; local 8 affected object/10 unit cold replay. [Entire native proof](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). |
 | Ribbon 89B group constructor and implicit deletion chain | **89B/25-i386 constructor**, **49B deleting wrapper** and **20B folded ordinary destructor** all independently strict exact under one vtable/ODR-consistent C++ source. +89 newly credited authored bytes; 20B/49B compiler origin review, zero authored credit. [Whole original PE and canonical proofs](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). |
 | Ribbon three-segment array ctor `0x0045E670` | **78B/27-i386 plus five genuine `INT3` whole strict exact**, real 3×0x3C0 C++20 array, independent EH-vector callback to 60B ctor. Compiler/STL attribution unknown, no new authored-game credit. [83B full proof](ANIMATION_RIBBON_SEGMENT_ARRAY_CTOR_78_STRICT_EXACT.md). |

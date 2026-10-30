@@ -7,5 +7,5 @@
 namespace th20 {
 NativeRibbonGroup::NativeRibbonGroup(Animation* owner)
     : AnimationCallback(owner), control_b48_float(0.0f), timer_b4c(),
-      zero_initialized_b5c(0) {}
+      resource_token_b5c(nullptr) {}
 } // namespace th20
