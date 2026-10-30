@@ -21830,3 +21830,27 @@ relocations = [
   { offset = 0x734, type = "DIR32", symbol = "?native_negative_256@th20@@3MB", target = 0x0056E1A4 },
   { offset = 0x7C2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-841: complete original vector magnitude and projected XY helpers.
+# Physical native modes, E8 callee and original empty PE HIGHLOW independently audited.
+[units.animation_projection_length_73]
+source = "src/AnimationProjectionMath.cpp"
+object = "build/core841-canonical/AnimationProjectionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_vector3_length"]
+symbol = "?animation_vector3_length@th20@@YAMABUVector3@1@@Z"
+target_address = 0x004399B0
+size = 73
+relocations = [
+  { offset = 0x40, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+]
+
+[units.animation_projection_xy_86]
+source = "src/AnimationProjectionMath.cpp"
+object = "build/core841-canonical/AnimationProjectionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::transform_projected_xy"]
+symbol = "?transform_projected_xy@AnimationDrawDetailedOwner@th20@@QAEXPAUVector2@2@MMMMMM@Z"
+target_address = 0x00445B20
+size = 86
+relocations = []

@@ -7,12 +7,17 @@
 #include <cstdint>
 
 namespace th20 {
+struct Vector2;
 // The original main object is AnimationPoolOwner (already exact external
 // callers); this shared declaration supplies its drawing member ABI.
 // Unimplemented members remain provisional. No new storage is constructed.
 // Each provisional method corresponds to a distinct original physical E8
 // destination recorded in config/animation-draw-boss-mode-e8.csv.
 struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
+    // Original mode6 projected quad helper: six float parameters and one
+    // 2-float output pointer; native RET 0x1C, no additional instance.
+    void transform_projected_xy(Vector2* output, float x, float y,
+                                float sine, float cosine, float tx, float ty);
     std::int32_t draw_complex_mode6(Animation*);             // 0x004408B0 native thiscall
     std::int32_t prepare_simple_mode7(Animation*);          // actual original 0x00441430; EAX=0, RET 4
     std::int32_t draw_simple_mode7(Animation*);              // 0x00441C00

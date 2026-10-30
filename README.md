@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,243
-source-present mappings**, **1,244 strict canonical native units** and
-**263 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **597 complete functions /
-199,566 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,245
+source-present mappings**, **1,246 strict canonical native units** and
+**264 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **599 complete functions /
+199,725 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -62,6 +62,7 @@ for the live inventory and consult the
 | Area | Verified current state |
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
+| Animation mode6 projection math leaves | [73B Vector3 magnitude +86B renderer XY rotation and translation](docs/ANIMATION_PROJECTION_MATH_73_86_STRICT_EXACT.md), both complete original strict native exact **159/159B**, independently identified five genuine original 1,378B Mode6 setup E8 sites. The parent remains NONEXACT. |
 | Animation mode7 setup / matrix Boss | [Original complete 1,996B Animation matrix, rotations and four-corner setup strict exact](docs/ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md), including 11 actual original calls/26 PE HIGHLOW, one natural 459-x86 C++ method, D3DX and window/parent state. Its separately exact 753B mode7 caller remains zero-difference after the genuine int-return ABI was corrected. |
 | Animation mode7 renderer Boss | [Whole 753B original D3DX projection/fog quad renderer strict exact](docs/ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md), including all seven real native calls, all 29 original PE data relocation sites, 178 exact x86 instructions and complete 753/753B canonical relocation replay. Shared receiver header keeps the still-NONEXACT 5,993B main Draw Boss candidate byte-for-byte unchanged. |
 | Animation renderer Euclidean depth leaves | [25B original depth wrapper +70B squared XYZ length](docs/ANIMATION_DEPTH_MATH_25_70_STRICT_EXACT.md) are now complete whole-native **95/95B strict exact** with independently proven native mode6/mode7 call sites and real sqrt dependency; counted once as two original game-authored functions. The two larger renderer callers remain NONEXACT. |
