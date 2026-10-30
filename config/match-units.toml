@@ -24152,3 +24152,19 @@ relocations = [
   { offset = 0x57, type = "REL32", symbol = "??$forward@PAVAnimation@th20@@@std@@YA$$QAPAVAnimation@th20@@AAPAV12@@Z", target = 0x0040B280 },
   { offset = 0x6B, type = "REL32", symbol = "??0NativeRibbonGroup@th20@@QAE@PAVAnimation@1@@Z", target = 0x0045E6D0 },
 ]
+
+# CORE/RECON-920: original complete 47B ribbon allocation/config caller.
+[units.animation_ribbon_config_wrapper_47]
+source = "src/AnimationRibbonConfigWrapper47.cpp"
+object = "build/core920-canonical/AnimationRibbonConfigWrapper47.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::configure_ribbon_group_45ec70"]
+symbol = "?configure_ribbon_group_45ec70@th20@@YAHIPBUNativeRibbonGroupOptions@1@H@Z"
+target_address = 0x0045EC70
+size = 47
+relocations = [
+  { offset = 0x09, type = "DIR32", symbol = "?native_ribbon_type_marker_56edf8@th20@@3QBEB", target = 0x0056EDF8 },
+  { offset = 0x0F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeRibbonGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045E5D0 },
+  { offset = 0x27, type = "REL32", symbol = "?configure_group_45eb10@NativeRibbonGroup@th20@@QAEHABUNativeRibbonGroupOptions@2@H@Z", target = 0x0045EB10 },
+]

@@ -13,6 +13,7 @@
 namespace th20 {
 class Animation;
 struct Vector3;
+struct NativeRibbonGroupOptions;
 // Native element boundaries independently confirm 60 two-float positions,
 // 60 four-byte color cells, and 60 float radii: 0x1E0+0xF0+0xF0=0x3C0.
 struct NativeRibbonSegment {
@@ -41,6 +42,8 @@ public:
     // attested by group ctor and original 0xB60 deleting-wrapper extent.
     void* resource_token_b5c;
     explicit NativeRibbonGroup(Animation* owner);
+    std::int32_t configure_group_45eb10(const NativeRibbonGroupOptions& options,
+                                          std::int32_t token);
     std::int32_t update() override;
     std::int32_t draw() override;
 };

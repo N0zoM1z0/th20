@@ -42,6 +42,14 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Complete 47B ribbon factory/config wrapper exact
+
+- [CORE/RECON-920 — original 47B/18-i386 ribbon allocation/configuration wrapper](ANIMATION_RIBBON_CONFIG_WRAPPER_47_STRICT_EXACT.md). Four true PE relocation sites to native ribbon type marker, allocator, whole-exact C++17 factory and separately open 252B configuration. Fresh C++20 source whole **47/47 exact**, +47 authored-game bytes, 11/11 old affected ribbon strict units preserved.
+
+## Full original ribbon 156B allocation factory exact
+
+- [CORE/RECON-919 — 156B/46-i386 ribbon class allocation and automatic initialization](ANIMATION_RIBBON_GROUP_FACTORY_156_STRICT_EXACT.md). Four independently native E8/two HIGHLOW roles, original 0xB60 class new/autozero, actual whole-exact 89B constructor; pointer-bearing +0xB5C naturally restores 156/156 vs prior 143B raw-word hypothesis. Eight affected old ribbon objects/ten strict units all exact, no whole replay; template origin unknown and zero authored code credit.
+
 ## Original ribbon constructor and native generated destruction chain
 
 - [CORE/RECON-918 — complete 89B ribbon group constructor, 49B scalar deletion, 20B folded ordinary destructor](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). One natural ODR-consistent C++20 class with original 0xB60 size and real 0x56EDDC six-entry vtable. All three native bodies whole canonical strict exact (89/89, 49/49, 20/20); seven shared-header-affected old ribbon source providers remain 7/7 strict exact. **+89 authored-game bytes**, compiler deletion bodies origin unknown/uncredited. Earlier isolated `novtable` wrong for polygon 113B vtable remains rejected.
@@ -116,9 +124,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,348 source-present mappings, 1,347
-strict units from 315 pinned object/receipt providers, and 646 distinct
-original authored whole-exact game functions /235,861 `.text` bytes**.
+**Current verified checkpoint:** **1,349 source-present mappings, 1,348
+strict units from 316 pinned object/receipt providers, and 647 distinct
+original authored whole-exact game functions /235,908 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

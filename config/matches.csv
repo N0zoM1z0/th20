@@ -645,3 +645,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0045E800,th20::NativeRibbonSegment::update_ribbon_45e800,538,matching,100.00,animation_ribbon_segment_dynamics_538,CORE/RECON-915; docs/ANIMATION_RIBBON_SEGMENT_DYNAMICS_538_STRICT_EXACT.md
 0x0045D610,th20::NativeRibbonSegment::NativeRibbonSegment,60,matching,100.00,animation_ribbon_segment_ctor_60,CORE/RECON-916; docs/ANIMATION_RIBBON_SEGMENT_CTOR_60_STRICT_EXACT.md
 0x0045E6D0,th20::NativeRibbonGroup::NativeRibbonGroup,89,matching,100.00,animation_ribbon_group_ctor_89,CORE/RECON-918; docs/ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md
+0x0045EC70,th20::configure_ribbon_group_45ec70,47,matching,100.00,animation_ribbon_config_wrapper_47,CORE/RECON-920; docs/ANIMATION_RIBBON_CONFIG_WRAPPER_47_STRICT_EXACT.md

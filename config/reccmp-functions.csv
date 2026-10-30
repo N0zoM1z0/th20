@@ -1347,3 +1347,4 @@ th20::NativeRibbonGroup::NativeRibbonGroup,0x0045E6D0,function
 th20::NativeRibbonGroup::~NativeRibbonGroup,0x0045C2A0,function
 th20::NativeRibbonGroup::scalar_deleting_destructor,0x0045E730,function
 "th20::DiagnosticAllocator::allocate_object<NativeRibbonGroup,Animation*>",0x0045E5D0,function
+th20::configure_ribbon_group_45ec70,0x0045EC70,function

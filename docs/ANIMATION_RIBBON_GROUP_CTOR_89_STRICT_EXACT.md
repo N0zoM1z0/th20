@@ -39,6 +39,12 @@ vtable and initializes a native float control at `+0xB48`, Timer at
 The last member is not padding guessed to shape the compiler: it is a
 literal original word write and makes the authentic object **0xB60**.
 
+> **CORE/RECON-919 update:** The final four-byte field is now represented
+> as a provisional **pointer-bearing resource token**. This naturally
+> regenerates the [original 156B C++17 /sdl allocation autozero](ANIMATION_RIBBON_GROUP_FACTORY_156_STRICT_EXACT.md)
+> without changing any earlier exact constructor/destructor bytes. The
+> historical runtime field ownership remains unknown.
+
 ## C++ source and complete canonical strict acceptance
 
 [`src/NativeRibbonPolygonGroup.hpp`](../src/NativeRibbonPolygonGroup.hpp)
