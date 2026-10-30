@@ -12,15 +12,10 @@
 #include "Vector3.hpp"
 #include "Vector2.hpp"
 #include "Timer.hpp"
+#include "NativePolygonSegmentSlot.hpp"
 #include <cstddef>
 #include <cstdint>
 namespace th20 {
-
-struct NativePolygonSegmentSlot {
-    alignas(4) std::uint8_t original_bytes[0x3D4];
-    void initialize_palette_45fc90(std::uint32_t diffuse_color);
-};
-static_assert(sizeof(NativePolygonSegmentSlot)==0x3D4);
 
 struct NativePolygonSegmentArray {
     NativePolygonSegmentSlot segments[3];

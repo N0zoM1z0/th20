@@ -37,8 +37,10 @@ and one each of `Animation::set_position` `0x0045DD60`,
 `Animation::set_layer` `0x00450350`, original native Animation
 configuration `0x00438C60`, and
 `Animation::set_flag_byte_01` `0x0045DD40`.
-The native `0x0045FC90` 120B palette callee remains separately open;
-whole caller matching does not make all callees exact.
+The native `0x0045FC90` 120B palette callee was separate at the time
+of this checkpoint; it now has [a complete strict exact source alongside
+two 31B native tag wrappers](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md).
+Whole caller matching alone did not make the callee exact.
 
 The actual group writes the input integer to receiver **`+0xB98`**,
 copies its source control from `config+0x24` to **`+0xB84`**,

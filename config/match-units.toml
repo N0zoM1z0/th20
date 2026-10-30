@@ -23174,3 +23174,53 @@ relocations = [
   { offset = 0x109, type = "REL32", symbol = "?configure_438c60@NativePolygonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
   { offset = 0x11C, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
 ]
+
+# CORE/RECON-889: original 120B polygon palette and two 31B tag leaves,
+# independently PE-attested E8 and HIGHLOW roles. Original native no-cookie
+# method compiled under real /GS without /sdl (separate original source TU).
+[units.animation_polygon_palette_120]
+source = "src/AnimationPolygonPalette120.cpp"
+object = "build/core889-canonical/AnimationPolygonPalette120.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativePolygonSegmentSlot::initialize_palette_45fc90"]
+symbol = "?initialize_palette_45fc90@NativePolygonSegmentSlot@th20@@QAEXI@Z"
+target_address = 0x0045FC90
+size = 120
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "??0PackedColor@th20@@QAE@I@Z", target = 0x004142A0 },
+  { offset = 0x28, type = "REL32", symbol = "?forward_color_45ffc0@NativePolygonColorFields@th20@@QAEXPBUPackedColor@2@@Z", target = 0x0045FFC0 },
+  { offset = 0x40, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+  { offset = 0x47, type = "REL32", symbol = "??4PackedColor@th20@@QAEII@Z", target = 0x0045D650 },
+  { offset = 0x5C, type = "DIR32", symbol = "?native_polygon_radius32@th20@@3MB", target = 0x0056CD94 },
+  { offset = 0x6D, type = "REL32", symbol = "?forward_radius_45ffa0@NativePolygonRadiusFields@th20@@QAEXPBM@Z", target = 0x0045FFA0 },
+]
+
+# CORE/RECON-889: original 120B polygon palette and two 31B tag leaves,
+# independently PE-attested E8 and HIGHLOW roles. Original native no-cookie
+# method compiled under real /GS without /sdl (separate original source TU).
+[units.animation_polygon_color_forward_31]
+source = "src/AnimationPolygonPalette120.cpp"
+object = "build/core889-canonical/AnimationPolygonPalette120.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativePolygonColorFields::forward_color_45ffc0"]
+symbol = "?forward_color_45ffc0@NativePolygonColorFields@th20@@QAEXPBUPackedColor@2@@Z"
+target_address = 0x0045FFC0
+size = 31
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?native_polygon_apply_color_45d430@th20@@YAXPAXHPBUPackedColor@1@@Z", target = 0x0045D430 },
+]
+
+# CORE/RECON-889: original 120B polygon palette and two 31B tag leaves,
+# independently PE-attested E8 and HIGHLOW roles. Original native no-cookie
+# method compiled under real /GS without /sdl (separate original source TU).
+[units.animation_polygon_radius_forward_31]
+source = "src/AnimationPolygonPalette120.cpp"
+object = "build/core889-canonical/AnimationPolygonPalette120.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativePolygonRadiusFields::forward_radius_45ffa0"]
+symbol = "?forward_radius_45ffa0@NativePolygonRadiusFields@th20@@QAEXPBM@Z"
+target_address = 0x0045FFA0
+size = 31
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?native_polygon_apply_radius_45d360@th20@@YAXPAXHPBM@Z", target = 0x0045D360 },
+]

@@ -1283,3 +1283,6 @@ th20::NativePolygonMotionGroup::draw_motion_group_45f9b0,0x0045F9B0,function
 th20::NativePolygonSegmentArray::at,0x0045F400,function
 th20::NativePolygonSegmentArray::end,0x0045FD40,function
 th20::NativePolygonMotionGroup::configure_group_45fb60,0x0045FB60,function
+th20::NativePolygonSegmentSlot::initialize_palette_45fc90,0x0045FC90,function
+th20::NativePolygonColorFields::forward_color_45ffc0,0x0045FFC0,function
+th20::NativePolygonRadiusFields::forward_radius_45ffa0,0x0045FFA0,function
