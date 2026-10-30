@@ -24774,3 +24774,37 @@ relocations = [
   { offset = 0x560, type = "REL32", symbol = "?animation_shape_xy@th20@@YAXAAUVector2@1@MMMMMM@Z", target = 0x00445AD0 },
   { offset = 0x5C4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-946: two complete native 78B 200-cell C++20 array constructors,
+# each followed by five original alignment INT3; source attribution review.
+[units.animation_particle_grid_color_array200_78]
+source = "src/AnimationParticleGridArrays200.cpp"
+object = "build/core946-canonical/AnimationParticleGridArrays200.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,200>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$0MI@@std@@QAE@XZ"
+target_address = 0x0045C190
+size = 78
+compare_size = 83
+relocations = [
+ { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$0MI@@std@@QAE@XZ", target = 0x00567600 },
+ { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x27, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+ { offset = 0x37, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
+
+[units.animation_particle_grid_vector_array200_78]
+source = "src/AnimationParticleGridArrays200.cpp"
+object = "build/core946-canonical/AnimationParticleGridArrays200.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::Vector3,200>::array"]
+symbol = "??0?$array@UVector3@th20@@$0MI@@std@@QAE@XZ"
+target_address = 0x0045C130
+size = 78
+compare_size = 83
+relocations = [
+ { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??0?$array@UVector3@th20@@$0MI@@std@@QAE@XZ", target = 0x00567600 },
+ { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x27, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+ { offset = 0x37, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]

@@ -1377,3 +1377,5 @@ th20::NativeRibbonTrailGroup::configure_pink_45e3a0
 th20::create_trail_gray_45e520
 th20::create_trail_pink_45e550
 "std::array<th20::AnimationHandle,64>::array"
+"std::array<th20::Vector3,200>::array"
+"std::array<th20::AnimationHandle,200>::array"

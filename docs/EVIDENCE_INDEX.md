@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The historical polygon-derived destructor source was NONEXACT; the **same original physical 20B folded destructor** has since become **whole strict exact** through the single-ODR ribbon-group constructor/destructor chain. A unique polygon-derived C++ ownership identity remains unproven; do not double-credit compiler bytes. The polygon 113B constructor and 49B deleting wrapper remain strict exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Original 200-cell color and Vector3 78B arrays whole strict exact
+
+- [CORE/RECON-946 — two complete original 78B/27-i386 200-element array constructors](ANIMATION_PARTICLE_GRID_ARRAYS200_78_STRICT_EXACT.md). Genuine 200×4 color and 200×12 Vector3, native 1 E8/3 HIGHLOW each, 5 original INT3 each; one ordinary C++20 provider yields **83/83 complete relocated bytes for both**. Physical 172B parent caller checks pass. Compiler/STL provenance unknown and zero authored-game credit.
+
 ## Original complete 1,486B rotated four-corner projection Boss strict exact
 
 - [CORE/RECON-945 — whole 1,486B/372-i386 rotated corner projection](ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md). Previously 1,485B/371 NONEXACT; ordinary lexical scope after Angle naturally emits native `+0x41` NOP. Full original 13 E8/9 HIGHLOW, 22 genuine COFF relocations, including `window_state.scale` physical 0x5B8818 from base 0x5B6758 +0x20C0 addend. **1,486/1,486 strict exact, +1 authored head/+1,486 bytes**, sibling 985B local replay unchanged. The 96B `.rdata` table stays separately exact/uncredited as code.
@@ -213,8 +217,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,379 source-present mappings, 1,379
-strict units from 342 pinned object/receipt providers, and 665 distinct
+**Current verified checkpoint:** **1,381 source-present mappings, 1,381
+strict units from 343 pinned object/receipt providers, and 665 distinct
 original authored whole-exact game functions /240,850 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
