@@ -1399,3 +1399,6 @@ th20::NativeRendererPoolSelector::renderer_index_449490
 th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0
 th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0
 th20::NativeRendererPoolRegister::register_44c8f0
+"th20::NativeGenerationPool::generation_bits_4493e0"
+"th20::NativeGenerationPool::operator++(postfix)"
+"th20::NativeGenerationPool::operator&="

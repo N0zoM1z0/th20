@@ -1400,3 +1400,6 @@ th20::NativeRendererPoolSelector::renderer_index_449490,0x00449490,function
 th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0,0x0044C8A0,function
 th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0,0x0044C8C0,function
 th20::NativeRendererPoolRegister::register_44c8f0,0x0044C8F0,function
+"th20::NativeGenerationPool::generation_bits_4493e0",0x004493E0,function
+"th20::NativeGenerationPool::operator++(postfix)",0x00449570,function
+"th20::NativeGenerationPool::operator&=",0x00449690,function

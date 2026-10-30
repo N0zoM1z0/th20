@@ -25155,3 +25155,35 @@ relocations = [
  { offset = 0x77, type = "REL32", symbol = "?generation_bits_4493e0@NativeGenerationPool@th20@@QAEIH@Z", target = 0x004493E0 },
  { offset = 0xA0, type = "REL32", symbol = "??4AnimationHandle@th20@@QAEXI@Z", target = 0x004117A0 },
 ]
+
+# CORE/RECON-962: whole real 39B/26B/23B generation-counter operations,
+# three distinct complete original physical functions, original authorship review.
+[units.animation_renderer_generation_postincrement_39]
+source = "src/AnimationRendererGenerationCounter.cpp"
+object = "build/core962-canonical/AnimationRendererGenerationCounter.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGenerationPool::operator++(postfix)"]
+symbol = "??ENativeGenerationPool@th20@@QAEIH@Z"
+target_address = 0x00449570
+size = 39
+relocations = []
+
+[units.animation_renderer_generation_mask_26]
+source = "src/AnimationRendererGenerationCounter.cpp"
+object = "build/core962-canonical/AnimationRendererGenerationCounter.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGenerationPool::operator&="]
+symbol = "??_4NativeGenerationPool@th20@@QAEXI@Z"
+target_address = 0x00449690
+size = 26
+relocations = []
+
+[units.animation_renderer_generation_highbits_23]
+source = "src/AnimationRendererGenerationCounter.cpp"
+object = "build/core962-canonical/AnimationRendererGenerationCounter.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGenerationPool::generation_bits_4493e0"]
+symbol = "?generation_bits_4493e0@NativeGenerationPool@th20@@QAEIH@Z"
+target_address = 0x004493E0
+size = 23
+relocations = []
