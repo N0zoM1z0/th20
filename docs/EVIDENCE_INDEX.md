@@ -1,17 +1,18 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-836):**
+**Current next-agent reading order (CORE/RECON-838):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[two newly strict original Animation depth functions](ANIMATION_DEPTH_MATH_25_70_STRICT_EXACT.md) ->
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,239 source-present /1,240
-strict units from 260 object/receipt providers, 593 authored-game exact whole
-functions /196,722 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,241 source-present /1,242
+strict units from 261 object/receipt providers, 595 authored-game exact whole
+functions /196,817 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -30,6 +31,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Two complete original Animation renderer depth helpers strictly native exact (+95B game-authored)
+
+- [CORE/RECON-838 — original 25B depth wrapper and 70B Vector3 squared-depth helper, both strict native exact](ANIMATION_DEPTH_MATH_25_70_STRICT_EXACT.md) — independently original PE verifies 25B/10 i386, actual two E8 targets `0x00445720` and `0x00446B30`, and complete 70B/22 i386 `x*x+y*y+z*z` with x87 float return, no physical HIGHLOW data. Real original mode6 (2,769B) and mode7 (753B) caller E8 positions independently checked. Natural C++ one source provider, two original physical match units, **25/25 +70/70B** strict canonical replay (two REL32, no artificial byte credit). Live **595 authored exact game functions /196,817 `.text` bytes**, **1,241 source mappings /1,242 strict units /261 providers**. Only new single provider cold-compiled; no full replay. Larger mode6/mode7 parents remain NONEXACT.
 
 ## Three tiny native Animation value getters: 51B game-authored exact origin promotion
 

@@ -1237,3 +1237,5 @@ th20::AnimationQuadSubmitOwner::texture_for_sprite
 th20::AnimationQuadSubmitOwner::select_render_color_mode
 th20::AnimationQuadSubmitOwner::bind_native_texture_state
 ::round(float)
+th20::animation_depth
+th20::animation_depth_squared

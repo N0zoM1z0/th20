@@ -21706,3 +21706,28 @@ size = 20
 relocations = [
   { offset = 0xB, type = "REL32", symbol = "_roundf", target = 0x00550060 },
 ]
+
+# CORE/RECON-838: two complete native game-owned animation Euclidean-depth
+# helpers; each whole i386 body follows the original source/thiscall graph.
+[units.animation_depth_squared_70]
+source = "src/AnimationDepthMath.cpp"
+object = "build/core838-canonical/AnimationDepthMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_depth_squared"]
+symbol = "?animation_depth_squared@th20@@YAMABUVector3@1@@Z"
+target_address = 0x00445720
+size = 70
+relocations = []
+
+[units.animation_depth_25]
+source = "src/AnimationDepthMath.cpp"
+object = "build/core838-canonical/AnimationDepthMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_depth"]
+symbol = "?animation_depth@th20@@YAMABUVector3@1@@Z"
+target_address = 0x00445700
+size = 25
+relocations = [
+  { offset = 0x8, type = "REL32", symbol = "?animation_depth_squared@th20@@YAMABUVector3@1@@Z", target = 0x00445720 },
+  { offset = 0x10, type = "REL32", symbol = "?square_root@scalar_math@th20@@YAMM@Z", target = 0x00446B30 },
+]
