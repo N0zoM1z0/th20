@@ -1609,7 +1609,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045E770,authored,Animation,authored,high,"CORE/RECON-911; docs/ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md; genuine polymorphic AnimationCallback native update vtable at 0x56EDDC plus real 3x0x3C0 dynamic segment loop and Timer, complete original x86/PE roles and fresh canonical 140/140 bytes"
 0x0045E800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EA20,authored,Animation,authored,high,"CORE/RECON-912; docs/ANIMATION_RIBBON_GROUP_DRAW_156_STRICT_EXACT.md; native 0x56EDDC polymorphic ribbon group vtable, original rendering preparation/three 0x3C0 segment iteration, 7 real E8 and two physical HIGHLOW, whole 156B canonical native exact"
-0x0045EAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045EAC0,authored,Animation,authored,high,"CORE/RECON-913; docs/ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md; genuine native ribbon segment LINESTRIP 76B caller of authored exact 455B line backend, 3 E8/one HIGHLOW complete strict canonical 76/76 and 156B native polymorphic caller"
 0x0045EB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EC10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045EC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

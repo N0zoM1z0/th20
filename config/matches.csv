@@ -641,3 +641,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0045F340,th20::NativePolygonMotionGroup::NativePolygonMotionGroup(Animation*),113,matching,100.00,animation_polygon_group_ctor_113,CORE/RECON-907; docs/ANIMATION_POLYGON_GROUP_CTOR_113_DELETE_49_STRICT_EXACT.md
 0x0045E770,th20::NativeRibbonGroup::update,140,matching,100.00,animation_ribbon_group_update_140,CORE/RECON-911; docs/ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md
 0x0045EA20,th20::NativeRibbonGroup::draw,156,matching,100.00,animation_ribbon_group_draw_156,CORE/RECON-912; docs/ANIMATION_RIBBON_GROUP_DRAW_156_STRICT_EXACT.md
+0x0045EAC0,th20::NativeRibbonSegment::draw_ribbon_45eac0,76,matching,100.00,animation_ribbon_segment_draw_76,CORE/RECON-913; docs/ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md

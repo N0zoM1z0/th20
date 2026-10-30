@@ -1337,3 +1337,4 @@ th20::NativeForwardedRefSlot::NativeForwardedRefSlot,0x0045ECC0,function
 th20::NativeRibbonSegmentArray::end_45eca0,0x0045ECA0,function
 th20::NativeRibbonGroup::update,0x0045E770,function
 th20::NativeRibbonGroup::draw,0x0045EA20,function
+th20::NativeRibbonSegment::draw_ribbon_45eac0,0x0045EAC0,function

@@ -1336,3 +1336,4 @@ th20::NativeForwardedRefSlot::NativeForwardedRefSlot
 th20::NativeRibbonSegmentArray::end_45eca0
 th20::NativeRibbonGroup::update
 th20::NativeRibbonGroup::draw
+th20::NativeRibbonSegment::draw_ribbon_45eac0

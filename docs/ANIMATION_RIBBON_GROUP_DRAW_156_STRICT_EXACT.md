@@ -1,5 +1,11 @@
 # CORE/RECON-912 — complete 156B polymorphic ribbon-group draw Boss strictly exact
 
+> **CORE/RECON-913 update:** The separate original **76B segment draw
+> `0x0045EAC0`** is now independently [whole 76/76 native exact](ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md).
+> The earlier source-absent child descriptions below remain historical;
+> parent 156B code and receipts do not change.
+
+
 Immutable target: Japanese TH20 1.00a Steamless SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The original `0x0045EA20` is the **156B/53-i386** virtual draw method
