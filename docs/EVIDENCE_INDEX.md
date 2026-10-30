@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The historical polygon-derived destructor source was NONEXACT; the **same original physical 20B folded destructor** has since become **whole strict exact** through the single-ODR ribbon-group constructor/destructor chain. A unique polygon-derived C++ ownership identity remains unproven; do not double-credit compiler bytes. The polygon 113B constructor and 49B deleting wrapper remain strict exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Real original 156B C++17 200-particle diagnostic allocation factory
+
+- [CORE/RECON-948 — complete original 156B/46-i386 allocation factory for genuine 0x1940 group](ANIMATION_PARTICLE_GRID_FACTORY156_STRICT_EXACT.md). Four true PE E8/two HIGHLOW original fields and 47B physical caller, real `operator new`/class autozero/forward/172B ctor. Natural C++17 same class with float/pointer-compatible original four-byte `+0x192C` storage yields **156/156 relocated strict exact**; original pointer semantics provisional, generated template origin uncredited. Existing 172B/49B/78B/78B bodies retested **5/5** locally.
+
 ## Original entire 172B/46-i386 200-particle polymorphic constructor and deletion chain
 
 - [CORE/RECON-947 — complete original 172B native multi-200-element constructor and 49B deleting wrapper](ANIMATION_PARTICLE_GRID_GROUP_CTOR172_STRICT_EXACT.md). Actual 0x1940 group and 0x56EC14 vtable, nine original E8 plus one HIGHLOW ctor and two native deleting wrapper E8. Ordinary C++20 **172/172 and 49/49**; **+172 unique authored game bytes**, generated deletion and original shared 20B folded destructor uncredited. Prior 200-cell helper arrays 83/83 each exact.
@@ -221,8 +225,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,383 source-present mappings, 1,383
-strict units from 344 pinned object/receipt providers, and 666 distinct
+**Current verified checkpoint:** **1,384 source-present mappings, 1,384
+strict units from 345 pinned object/receipt providers, and 666 distinct
 original authored whole-exact game functions /241,022 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py

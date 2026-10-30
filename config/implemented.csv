@@ -1381,3 +1381,4 @@ th20::create_trail_pink_45e550
 "std::array<th20::AnimationHandle,200>::array"
 th20::NativeParticleGridGroup::NativeParticleGridGroup
 th20::NativeParticleGridGroup::scalar_deleting_destructor
+"th20::DiagnosticAllocator::allocate_object<NativeParticleGridGroup,Animation*>"

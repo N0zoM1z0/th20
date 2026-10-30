@@ -17,7 +17,10 @@ public:
     Vector3 extra_1908;
     Vector3 extra_1914;
     Vector3 extra_1920;
-    float scalar_192c;
+    // The physical 4-byte field is zeroed as float in the original ctor.
+    // A pointer-like union view is provisional; C++17 MSVC /sdl requires
+    // pointer-bearing class classification to emit the native autozero.
+    union { float scalar_192c; void* provisional_pointer_192c; };
     Timer timer_1930;
     explicit NativeParticleGridGroup(Animation* owner);
     std::int32_t update() override;
