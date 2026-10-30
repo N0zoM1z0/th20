@@ -18,7 +18,8 @@ not current facts when newer canonical units supersede them.
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).
 - **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**
-  [latest native x87/stack frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)
+  [mode35/36 x87 return-spill, SSE operand and full-body compiler probes](ANIMATION_DRAW_BOSS_5993_MODE35_X87_PROBES.md);
+  [earlier native x87/stack frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)
   and [independent target-role verifier](../scripts/verify-animation-draw-boss-source-roles.py).
   The [3,159B quad-submit parent](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md)
   and other render children are **already exact**, not the dispatcher.
@@ -30,10 +31,16 @@ not current facts when newer canonical units supersede them.
   **is** independently whole exact.
 - **104B Motion polygon wrapper and 1,486B rotated corner — NONEXACT:**
   [ESI lifetime frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md),
-  [genuine constructor NOP and 96B exact corner table](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md).
+  [genuine constructor NOP and 96B exact corner table](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md);
+  [bounded Angle ABI/constructor probes and original 44B two-word helper](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md).
 - **Player frame / movement:** [3,111B main](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
   and [555B movement](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md)
   remain source-present but nonexact.
+
+## Unresolved polygon group ordinary destructor and C++ constructor helper
+
+- [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
+- [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
 ## Completed native originals and recent source provenance
 
