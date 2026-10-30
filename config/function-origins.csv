@@ -1071,7 +1071,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004408B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004413A0,authored,Animation,authored,high,"CORE/RECON-796; docs/ANIMATION_DRAW_MODE4_48_MODE5_142_STRICT_EXACT.md; original 5993B Animation renderer native case directly E8 calls whole 142B game-owned method, original 10 real PE E8/HIGHLOW fields independently attested"
 0x00441430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00441C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00441C00,authored,Animation,authored,high,"CORE/RECON-839; docs/ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md; original entire game renderer mode7 753B/178 x86; 5993B game-authored draw parent calls 0x00441C00 at 0x00443A5A; original D3DX projection, gameplay fog color, native quad vertices and exact render_quad interoperation; full x86 and 36 E8/HIGHLOW fields independently original PE proven and strict pinned compiler replay; original class names provisional, no library/native import byte credit"
 0x00441F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00443020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00443880,authored,Animation,authored,high,"CORE/RECON-835; docs/ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md; full original 5993B/1501 Animation draw Boss owner, source-present typed game function but still NONEXACT. Physical 49+31 PE pointer tables, 123 E8 ordered roles, 32 body HIGHLOW target roles independently verified; pinned C++ native-sized 5993B/1501 x86 and 0x204 frame, only 86/123 E8 and 23/32 body relocation physical sites match; zero game parent exact credit"

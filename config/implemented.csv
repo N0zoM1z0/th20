@@ -1239,3 +1239,4 @@ th20::AnimationQuadSubmitOwner::bind_native_texture_state
 ::round(float)
 th20::animation_depth
 th20::animation_depth_squared
+th20::AnimationDrawDetailedOwner::draw_simple_mode7

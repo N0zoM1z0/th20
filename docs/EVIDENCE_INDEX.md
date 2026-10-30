@@ -1,18 +1,19 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-838):**
+**Current next-agent reading order (CORE/RECON-839):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict 753B Animation mode7 render Boss](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md) ->
 [two newly strict original Animation depth functions](ANIMATION_DEPTH_MATH_25_70_STRICT_EXACT.md) ->
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,241 source-present /1,242
-strict units from 261 object/receipt providers, 595 authored-game exact whole
-functions /196,817 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,242 source-present /1,243
+strict units from 262 object/receipt providers, 596 authored-game exact whole
+functions /197,570 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -31,6 +32,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole 753B Animation mode7 projection/fog renderer Boss now strict native exact
+
+- [CORE/RECON-839 — original whole 753B/178-i386 mode7 D3DX transform, fog color and quad submit, full strict exact](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md) — complete original native entire 753B code, `sub esp,0x6C`, **7/7 actual E8 calls and 29/29 actual original HIGHLOW sites with exact physical positions**, independently original-PE-verifiable. Natural shared renderer ABI C++ with four real native 16B constructed transforms, genuine D3DXVec3Transform import, new exact 25B depth helper, native byte-channel interpolation and original 3,159B whole quad-submit callee. Actual C++ compiler emitted **753B/178 x86, 609/609 non-relocation bytes and all 36 native relocation-site roles exact**; fresh **753/753 full canonical replay, one newly affected source/unit/object**. Main 5,993B Draw Boss still SOURCE-PRESENT/NONEXACT; exact child receives one new authored game credit /753 `.text` bytes, not its parent. Live **596 authored exact functions /197,570 native bytes**, **1,242 source mappings /1,243 strict units /262 pinned objects**. No full cold replay.
 
 ## Two complete original Animation renderer depth helpers strictly native exact (+95B game-authored)
 

@@ -1240,3 +1240,4 @@ th20::AnimationQuadSubmitOwner::bind_native_texture_state,0x00445BC0,function
 ::round(float),0x00445B80,function
 th20::animation_depth,0x00445700,function
 th20::animation_depth_squared,0x00445720,function
+th20::AnimationDrawDetailedOwner::draw_simple_mode7,0x00441C00,function

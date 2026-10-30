@@ -101,9 +101,15 @@ def main():
     assert text.count("switch (animation->base.flags.bytes_00.field_00)") == 2
     assert "draw_complex_mode6(animation)" in text
     assert "->bind_native_texture_state(animation)" in text
-    assert "draw_shape_43cd40(float, float, float, float," in text
-    assert "std::uint32_t, std::uint32_t, int, int);" in text
-    assert "draw_shape_43c4e0(float, float, float, float, float, int," in text
+    # One real renderer ABI declaration is now shared with the independently
+    # strict 753B mode7 child, not duplicated in this noncanonical parent.
+    shared_abi=(ROOT / "src/AnimationDrawDetailedOwner.hpp").read_text()
+    assert '#include "AnimationDrawDetailedOwner.hpp"' in text
+    assert "draw_shape_43cd40(float, float, float, float," in shared_abi
+    assert "std::uint32_t, std::uint32_t, int, int);" in shared_abi
+    assert "draw_shape_43c4e0(float, float, float, float, float, int," in shared_abi
+    assert "void prepare_simple_mode7(Animation*);" in shared_abi
+    assert "std::int32_t draw_simple_mode7(Animation*);" in shared_abi
     assert "ANIMATION_DRAW_BOSS" not in text  # no separate exactness branch
     assert "std::int32_t AnimationPoolOwner::draw(Animation* animation)" in text
     assert "graphics_disable_depth_writes(&process_graphics)" in text
