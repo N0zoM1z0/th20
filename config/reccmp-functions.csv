@@ -1250,3 +1250,4 @@ th20::AnimationDrawDetailedOwner::draw_mesh_2425,0x00443020,function
 th20::graphics_enable_depth_writes,0x004DDFE0,function
 th20::AnimationDrawDetailedOwner::draw_simple_mode8,0x00441F00,function
 th20::AnimationDrawDetailedOwner::draw_strip_mode11,0x00445130,function
+th20::AnimationDrawDetailedOwner::draw_strip_mode9,0x00445350,function

@@ -1,12 +1,13 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-851):**
+**Current next-agent reading order (CORE/RECON-852):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
 [whole strict original 4347B Mode8 six-order renderer Boss](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md) ->
+[whole strict original 612B strip9 renderer](ANIMATION_DRAW_STRIP_MODE9_612_STRICT_EXACT.md) ->
 [whole strict original 534B strip11 renderer](ANIMATION_DRAW_STRIP_MODE11_534_STRICT_EXACT.md) ->
 [whole strict original 2136B mesh24/25 renderer Boss](ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md) ->
 [strict 92B Graphics depth-write enable leaf](GRAPHICS_DEPTH_WRITE_ENABLE_92_STRICT_EXACT.md) ->
@@ -19,9 +20,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,251 source-present /1,252
-strict units from 270 object/receipt providers, 605 authored-game exact whole
-functions /210,981 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,252 source-present /1,253
+strict units from 271 object/receipt providers, 606 authored-game exact whole
+functions /211,593 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -40,6 +41,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole native 612B Animation strip9 rendering method now strict exact
+
+- [CORE/RECON-852 — original full 612B/182-i386 Animation strip9 renderer and true 2-bit render-color mode, strict exact](ANIMATION_DRAW_STRIP_MODE9_612_STRICT_EXACT.md) — independent original 11 E8 positions/target heads, five true PE Graphics HIGHLOW sites, original `0x40` frame/ret0xC, 28B vertex stride, actual Animation+0x4A0 native byte SHR/AND/MOVZX/JE protocol and D3D9 FVF/state. Genuine observable texture prep is sequenced before original flag read, allowing the pinned compiler to emit **no extra NOP**, exactly the original **612B/182 x86 and 548/548 non-relocation bytes**. One new physical game-authored function with **612/612 canonical strict relocated bytes** via one cold source/provider; live **606 game exact /211,593 original bytes**, 1,252 mappings/1,253 units/271 providers. The larger enclosing 5,993B Draw Boss still NONEXACT; no full replay.
 
 ## Entire 534B Animation strip11 renderer whole-native strict exact
 
