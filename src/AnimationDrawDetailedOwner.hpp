@@ -56,7 +56,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
                             std::uint32_t, std::uint32_t);
     void draw_shape_43a750(float, float, float, float, float, float, int,
                             std::uint32_t);
-    void draw_shape_43ab20(float, float, float, float, float, float, float, int,
+    // Original whole 1468B ring emitter: EAX=0 and RET 0x28, not void.
+    std::int32_t draw_shape_43ab20(float, float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     void draw_shape_43d9b0(float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);

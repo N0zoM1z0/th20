@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,252
-source-present mappings**, **1,253 strict canonical native units** and
-**271 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **606 complete functions /
-211,593 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,253
+source-present mappings**, **1,254 strict canonical native units** and
+**272 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **607 complete functions /
+213,061 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -62,6 +62,7 @@ for the live inventory and consult the
 | Area | Verified current state |
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
+| Animation polygon ring/strip Boss | [Whole 1,468B/387-i386 original game shape-ring generator, 1,468/1,468B strict exact](docs/ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md). Genuine 65,536 ×20B original vertex pool, one real inner/outer cursor, ring angle/width calculation, full 11 E8 and 26 native PE HIGHLOW positions/targets. The corrected real int-return receiver ABI retains ten formerly exact affected units under scoped replay; enclosing 5,993B Animation Draw Boss remains NONEXACT. |
 | Animation strip9 entire renderer | [Whole original 612B/182-x86 game strip9 draw strict native exact](docs/ANIMATION_DRAW_STRIP_MODE9_612_STRICT_EXACT.md), real 28B vertex stride, D3D FVF/texture-state cache and original `Animation+0x4A0` two-bit mode, 11 exact native E8 and five genuine Graphics PE HIGHLOW roles, 612/612B complete original. Main 5,993B enclosing Draw Boss remains NONEXACT. |
 | Animation strip11 entire renderer | [Whole original 534B/159-x86 game strip11 draw strict native exact](docs/ANIMATION_DRAW_STRIP_MODE11_534_STRICT_EXACT.md), real seven-float/28B vertex stride and renderer texture/FVF pipeline, all ten original direct E8 and six Graphics HIGHLOW roles full original site/target exact; one source exact 534/534B. Enclosing 5,993B Draw dispatcher remains NONEXACT. |
 | Animation Mode8 six-order complete renderer Boss | [Whole original 4,347B/1,063 native x86 Mode8 Animation renderer and genuine six-case code-pointer table](docs/ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md), **4,372/4,372 strict relocated bytes** including genuine 1B NOP and six original direct 32-bit PE case pointers. All **101 real E8 and 45 HIGHLOW physical fields/targets exact**, natural MSVC typed C++ source. Its enclosing 5,993B main Draw dispatcher remains NONEXACT. |

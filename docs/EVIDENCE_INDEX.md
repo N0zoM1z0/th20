@@ -1,11 +1,12 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-852):**
+**Current next-agent reading order (CORE/RECON-853):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict original 1468B polygon ring generator](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md) ->
 [whole strict original 4347B Mode8 six-order renderer Boss](ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md) ->
 [whole strict original 534B strip11 renderer](ANIMATION_DRAW_STRIP_MODE11_534_STRICT_EXACT.md) ->
 [whole strict original 612B strip9 renderer](ANIMATION_DRAW_STRIP_MODE9_612_STRICT_EXACT.md) ->
@@ -20,9 +21,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,252 source-present /1,253
-strict units from 271 object/receipt providers, 606 authored-game exact whole
-functions /211,593 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,253 source-present /1,254
+strict units from 272 object/receipt providers, 607 authored-game exact whole
+functions /213,061 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -41,6 +42,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole 1,468B original polygon ring/strip renderer Boss now strict native exact
+
+- [CORE/RECON-853 — full original 1,468B/387-i386 game-authored shape-ring generator, whole-native strict exact](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md) — immutable original PE independently attests eleven real E8 calls and 26 HIGHLOW fields, authentic `±π`, 18 `2.0f`, 2 `1.0f` and four Graphics globals. Original unsigned 65,536×20B capacity guard, one advancing inner/outer vertex cursor, signed quarter-angle ring dimensions and 20B native triangle-strip draw. Natural C++ compiler emits **1,468B/387 x86**, original `0x2C` frame and `ret 0x28`, **11/11 E8 and 26/26 HIGHLOW site/target pairs**, **1,320/1,320 nonreloc** and full **1,468/1,468 strict relocated bytes**. Shared header changed from provisional void to real int ABI; 10 affected strict units independently cold-replayed with zero differences and focused 5,993B Draw dispatcher probe preserves NONEXACT original roles. Live **607 game-authored exact functions /213,061 code bytes**, **1,253 source mappings /1,254 strict units /272 objects**; no unfiltered replay.
 
 ## Whole native 612B Animation strip9 rendering method now strict exact
 
