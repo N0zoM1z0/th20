@@ -46,6 +46,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-951 — entire native 202B/58-x86 Vector3 epsilon normalization](ANIMATION_PARTICLE_NORMALIZE202_STRICT_EXACT.md). Original immutable PE 2 E8 and one genuine HIGHLOW to native 0.01f, SSE3 lanes and real `comiss/jbe`, copy near zero versus three divisions. One natural C++20 source **202/202 strict exact**, **+202 authored game code bytes**; source-specific local replay only.
 
+## Original 51B particle-grid virtual event and folded Timer caller — NONEXACT frontier
+
+- [CORE/RECON-952 — complete original 51B event and 26B folded forwarding E8, native ctor ABI constraint](ANIMATION_PARTICLE_GRID_EVENT51_FOLDED_TIMER_ABI_FRONTIER.md). Original 51B/18-i386 native E8+0x25 -> 0x45C300 folded wrapper, original 172B ctor E8+0x9D -> 0x422D90 **Timer::Timer**, but direct Timer call targets wrong original 0x4297A0. A derived member yields a structural 51B event but a different synthetic 23B ctor symbol; rejected and archived. **NONEXACT/uncredited**, 8/8 affected previous strict units locally replay unchanged.
+
 ## Original complete 92B particle grid virtual Animation stop method
 
 - [CORE/RECON-950 — full original 92B/32-i386 particle group 200-handle stop loop](ANIMATION_PARTICLE_GRID_STOP92_STRICT_EXACT.md). Original three physical E8, zero HIGHLOW, true 0x56EC14 vtable slot; source direct resolved-handle expression avoids 96B rejected extra local. Original COFF class-pointer return symbol corrected rather than reassigning target. **92/92 strict exact, +92 authored game bytes**, 5/5 affected-only replay.
