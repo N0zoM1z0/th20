@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,429** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,429**, from **377** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **698 distinct function heads /246,268 original `.text` bytes** |
+| Source-present function mappings | **1,430** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,430**, from **378** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **699 distinct function heads /246,456 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -64,6 +64,7 @@ older local-variable names or assumptions.
 | Native original 103B file-object pointer release `0x00447330` | Whole **103B/36-i386 strict exact** with true source `std::destroy_at<AnimationFile>` E8 to **pre-existing 16B** library exact, lock slot1 and native delete; original template provenance unknown, **zero authored-game credit**. Duplicate 16B proposed unit discarded after inspecting real repo. Affected lifecycle 5/5 scoped replay. [Evidence](ANIMATION_FILE_ENTRY_RELEASE103_STRICT_EXACT.md). |
 | Native 30B wide-text format `0x00447940` | **30B/13-i386 whole strict exact** C ABI utility forwarding original `0x500` limit and `va_list` into native `_vswprintf_s` (one original E8); real 417B Animation text Boss E8 verifies the caller. **+1 library/utility strict unit, zero authored-game credit**. [PE/COFF proof](ANIMATION_TEXT_FORMAT30_STRICT_EXACT.md). |
 | Original Renderer locked RNG pulse `0x00449D20` | **92B/30-i386 whole strict exact**, source-native `RandomState` at receiver+0x04, output word+0x14 and byte return, actual slot10 lock and 5 PE E8/2 HIGHLOW. No C++ EH frame in original; pinned C++20 `/GS` without `/EHsc` yields **92/92 exact**, **+92 authored native bytes**; separate `0x004235F0` library PRNG callee uncredited. [Proof](ANIMATION_RENDERER_RANDOM_PULSE92_STRICT_EXACT.md). |
+| Original 188B Direct3D9 texture surface clear `0x00449D80` | Native **188B/75-i386 whole strict exact**, actual COM surface vtable methods, pitch×height memset, true empty null arm and post-Release local pointer reset; original 2 E8/1 PE HIGHLOW. **+188 authored bytes**, scoped 1/1 replay. [Native proof](ANIMATION_TEXTURE_SURFACE_CLEAR188_STRICT_EXACT.md). |
 | Original 164B secondary Renderer list-update `0x00449A70` | Whole **164B/46-i386 strict exact**, real ECX owner and locked pool flag+0xD8 clear before actual Renderer+0x6C8 72B slot selection, native call to separate **511B still NONEXACT** second-list loop. Original 6 E8/3 HIGHLOW; **+164 authored native bytes**, previously exact 150B/59B replay 3/3. [Proof](ANIMATION_RENDERER_UPDATE_SECONDARY164_STRICT_EXACT.md). |
 | Original 59B GameController-gated Renderer entry `0x00450880` | Native **59B/18-i386 whole strict exact**: GameController native global 3 HIGHLOW at `0x005BA828`, two actual E8 Game status predicates, native 150B renderer update E8 and original return one. **+59 authored game bytes**, 150B wrapper still exact 2/2 local replay. [Evidence](ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md). |
 | Original 411B recursive Animation retirement staging `0x0044F840` | **411B/116-i386 whole strict exact**, real recursive child-link traversal, staged **57B native append 0x411EA0** distinct from 76B pool insert-after; 18 native E8 and two EH/cookie HIGHLOW, called twice by still NONEXACT 508B update. **+411 authored original bytes**, 1/1 local exact replay. [Proof](ANIMATION_QUEUE_RETIREMENT411_STRICT_EXACT.md). |

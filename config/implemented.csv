@@ -1427,3 +1427,4 @@ th20::NativeAnimationRetirePoolView::queue_retired_animation_44f840
 th20::animation_renderer_update_if_running_450880
 th20::animation_renderer_update_secondary_449a70
 th20::NativeRendererRandomPulse::random_byte_449d20
+th20::clear_texture_surface_449d80
