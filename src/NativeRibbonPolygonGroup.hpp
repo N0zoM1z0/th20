@@ -27,6 +27,7 @@ static_assert(offsetof(NativeRibbonSegment, color_cells_1e0) == 0x1E0);
 static_assert(offsetof(NativeRibbonSegment, radius_2d0) == 0x2D0);
 struct NativeRibbonSegmentArray {
     std::array<NativeRibbonSegment, 3> elements;
+    NativeRibbonSegmentArray();
     NativeRibbonSegment* end_45eca0();
 };
 class NativeRibbonGroup : public AnimationCallback {

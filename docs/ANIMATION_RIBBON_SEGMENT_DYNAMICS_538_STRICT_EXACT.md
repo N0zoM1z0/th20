@@ -56,7 +56,14 @@ models the complete original control flow:
 The necessary single NOP after Angle construction at physical `+0x115`
 is emitted **naturally** by a real block lifetime for the vertex loop.
 The initially tested unscoped natural source generated 537B/148 instructions
-and was rejected. A real lexical scope changed it to the exact 538B/149
+and was rejected.
+An additional range-for/`NativeRibbonPointIndex` source candidate emitted
+544B/151-i386 and did not meet original native lifetime/call-site order.
+Its complete source was preserved with a SHA-256 inventory in ignored
+`.analysis/gptweb-ribbon538-probes/superseded-range-for-544.cpp`; the
+public candidate was consolidated into the already whole-exact canonical
+`src/AnimationRibbonSegmentDynamics538.cpp`, avoiding two definitions of
+one physical native function. A real lexical scope changed it to the exact 538B/149
 while preserving the natural parameter/array semantics; no explicit assembly,
 fake return, synthetic local, byte padding, or exactness-specific conditional
 is present.

@@ -1342,3 +1342,4 @@ th20::NativeRibbonScalarSpan::end_45dca0,0x0045DCA0,function
 th20::NativeRibbonPointSpan::end_45dcc0,0x0045DCC0,function
 th20::NativeRibbonSegment::update_ribbon_45e800,0x0045E800,function
 th20::NativeRibbonSegment::NativeRibbonSegment,0x0045D610,function
+"std::array<th20::NativeRibbonSegment,3>::array",0x0045E670,function

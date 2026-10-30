@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,343** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,342**, from **312** pinned MSVC object/receipt providers |
+| Source-present function mappings | **1,344** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,343**, from **313** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **645 distinct function heads /235,772 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -82,6 +82,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | Original head / subsystem | Whole strict status |
 | --- | --- |
 | Ribbon original radius/vertex end helpers `0x0045DCA0` / `0x0045DCC0` | **19B/19B whole native exact**, true 60 float/60 Vector2 array ends. Confirmed two genuine E8 edges from now exact 538B updater. Authorship still unknown; no game-code credit. [Complete original and strict proofs](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md). |
+| Ribbon three-segment array ctor `0x0045E670` | **78B/27-i386 plus five genuine `INT3` whole strict exact**, real 3×0x3C0 C++20 array, independent EH-vector callback to 60B ctor. Compiler/STL attribution unknown, no new authored-game credit. [83B full proof](ANIMATION_RIBBON_SEGMENT_ARRAY_CTOR_78_STRICT_EXACT.md). |
 | Ribbon 60B segment constructor `0x0045D610` | **60B/20-i386 whole native exact**, real 60 Vector2/60 `AnimationHandle` word arrays, 60-float zeroing and actual original 78B parent callback; **+60 game authored bytes**. [Whole native proof](ANIMATION_RIBBON_SEGMENT_CTOR_60_STRICT_EXACT.md). |
 | Ribbon segment dynamics Boss `0x0045E800` | **538B/149-i386 whole strict exact**, actual 60 radii/60 Vector2 loop, signed RNG, clamp +/-4, polar step 2*pi/59, authentic scope NOP and vertex 59 closure. Independently **13 E8/10 HIGHLOW** original physical roles. **+538 authored game bytes**. [Whole native proof](ANIMATION_RIBBON_SEGMENT_DYNAMICS_538_STRICT_EXACT.md). |
 | Ribbon segment LINESTRIP wrapper `0x0045EAC0` | **76B/27-i386 whole native exact**, genuine `+0x1E0` color stream, 60-point primitive, all three original E8/one HIGHLOW roles and original 156B parent E8 confirmed. **+76 authored game bytes**. [Whole native proof](ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md). |
@@ -123,7 +124,7 @@ stays `unknown/review`; **do not add them to authored game totals** without
 proof. Likewise the genuine 20B standard-header `round(float)` wrapper
 is `library/exclude`.
 
-Original ribbon **75B/75B position/color array constructors, 78B three-segment array, 89B group constructor, 156B allocation factory and 49B deleting wrapper** remain independent native reconstruction candidates; do not claim exactness of these parents from the accepted 60B child.
+Original ribbon **75B/75B position/color array constructors, 89B group constructor, 156B allocation factory and 49B deleting wrapper** remain independent native reconstruction candidates; do not claim exactness of these parents from the accepted 60B child.
 
 ## Working discipline and scoped validation
 

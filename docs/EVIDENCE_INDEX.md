@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Whole exact 78B native three-ribbon segment array constructor
+
+- [CORE/RECON-917 — complete 78B/27-i386 original ribbon three-segment C++20 array ctor](ANIMATION_RIBBON_SEGMENT_ARRAY_CTOR_78_STRICT_EXACT.md). Entire original 3×0x3C0 EH-vector constructor, three HIGHLOW + one E8 physical fields, five genuine `INT3`; **83/83 complete canonical bytes exact**, six affected old ribbon providers 6/6 exact. Template origin unverified, zero authored game credit.
+
 ## Complete 60B original ribbon segment constructor whole strict exact
 
 - [CORE/RECON-916 — entire native 60B/20-i386 ribbon segment ctor strict exact](ANIMATION_RIBBON_SEGMENT_CTOR_60_STRICT_EXACT.md). Original PE three E8/zero HIGHLOW, true 60 Vector2/60 four-byte color and 60-float radius zeroing, independently original 78B array callback. **60/60 whole C++20 strict exact**, +60 authored game bytes. Five affected old ribbon objects replay 5/5; no full graph replay.
@@ -100,8 +104,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,343 source-present mappings, 1,342
-strict units from 312 pinned object/receipt providers, and 645 distinct
+**Current verified checkpoint:** **1,344 source-present mappings, 1,343
+strict units from 313 pinned object/receipt providers, and 645 distinct
 original authored whole-exact game functions /235,772 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
