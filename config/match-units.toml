@@ -25322,3 +25322,32 @@ relocations = [
  { offset = 0x47, type = "REL32", symbol = "?find_child_handle_44c830@NativeAnimationHandleLookupView@th20@@QAE?AUAnimationHandle@2@HH@Z", target = 0x0044C830 },
  { offset = 0x75, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-969: complete game-owned 284B AnimationFile::clear(), 8
+# genuine original E8 and 8 real PE HIGHLOW; no caller double credit.
+[units.animation_file_clear_284]
+source = "src/AnimationFileClear284.cpp"
+object = "build/core969-canonical/AnimationFileClear284.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationFile::clear"]
+symbol = "?clear@AnimationFile@th20@@QAEXXZ"
+target_address = 0x0044AB00
+size = 284
+relocations = [
+ { offset = 0x1E, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x23, type = "REL32", symbol = "?detach_file_44fd30@NativeFileClearPoolView@th20@@QAEXPAVAnimationFile@2@D@Z", target = 0x0044FD30 },
+ { offset = 0x52, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+ { offset = 0x57, type = "REL32", symbol = "?cleanup_texture_44c510@NativeFileClearPoolView@th20@@QAEXPAUTextureRecord@2@@Z", target = 0x0044C510 },
+ { offset = 0x67, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x6C, type = "REL32", symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z", target = 0x0040D840 },
+ { offset = 0x83, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x88, type = "REL32", symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z", target = 0x0040D840 },
+ { offset = 0x9F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0xA4, type = "REL32", symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z", target = 0x0040D840 },
+ { offset = 0xC4, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0xC9, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+ { offset = 0xE9, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0xEE, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+ { offset = 0x105, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+ { offset = 0x10A, type = "REL32", symbol = "??$release_array@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x004472C0 },
+]

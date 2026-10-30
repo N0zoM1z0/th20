@@ -1,5 +1,13 @@
 # AnimationFile destruction and template-array lifetime
 
+> **Updated original-bound C++ result (CORE/RECON-969):** The 284B
+> `AnimationFile::clear` source-absent frontier below has now been
+> [resolved to a complete 284/284 native strict C++20 unit](ANIMATION_FILE_CLEAR284_STRICT_EXACT.md).
+> The earlier provenance conclusion remains valid; statements below
+> that no maintained clear source/unit exists describe the historical
+> checkpoint and have been superseded. Renderer child `0x0044FD30`
+> remains a separate unresolved function.
+
 CORE/EXACT-132 accepts nine complete physical units / 866 disjoint comparison
 bytes from the actual File and Animation owners. File-loaded resource clearing
 remains an undefined interface; these results do not establish Renderer

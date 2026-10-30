@@ -86,6 +86,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-965 — entire 236B/77-i386 raw world position with recursive parent composition](ANIMATION_RAW_WORLD_POSITION236_STRICT_EXACT.md). Two actual Vector3 sum E8, conditional parent rotation and self recursion, parent `Vector3::operator+=`, true native 8 E8/one cookie HIGHLOW, and four true INT3. Natural typed C++20 **236/236 strict**, **+236 distinct game-authored bytes**; no shared Animation header edit.
 
+## Original complete 284B AnimationFile resource-retirement Boss whole strict exact
+
+- [CORE/RECON-969 — whole 284B/81-i386 `AnimationFile::clear()`](ANIMATION_FILE_CLEAR284_STRICT_EXACT.md). Original physical eight E8/eight HIGHLOW targets, 24B TextureRecord cleanup, three byte-array and file/template retirement; two independently verified original game callers. Natural typed C++20 **284/284 strict exact, +284 authored game bytes**. Supersedes historical source-absent status in lifetime audit, without assuming 691B renderer-detach callee is exact.
+
 ## Complete original 922B AnimationFile::spawn game Boss whole strict exact
 
 - [CORE/RECON-958 — original complete 922B/269-i386 resource/Animation spawning Boss](ANIMATION_FILE_SPAWN_922_STRICT_EXACT.md). Entire original native 20 E8 and 14 physical PE HIGHLOW verified; true lock9, pool allocation, script binding, renderer selection, flag/position branches and hidden `AnimationHandle` result ABI. Ordinary natural MSVC x86 C++20 **922/922 strict exact**, **+922 game-authored bytes**; 83B parent wrapper retyped to actual `AnimationFile::spawn` member and locally replayed alongside it **2/2**. Complete renderer/39,470B VM remains separate.
@@ -309,9 +313,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,413 source-present mappings, 1,413
-strict units from 363 pinned object/receipt providers, and 686 distinct
-original authored whole-exact game functions /243,634 `.text` bytes**.
+**Current verified checkpoint:** **1,414 source-present mappings, 1,414
+strict units from 364 pinned object/receipt providers, and 687 distinct
+original authored whole-exact game functions /243,918 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.
