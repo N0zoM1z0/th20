@@ -1,5 +1,11 @@
 # CORE/RECON-934 — complete 182B solo ribbon group configuration Boss strict exact
 
+> **CORE/RECON-935 update:** The previously separate 123B palette callee
+> `0x0045DBF0` is now [independently whole strict exact](ANIMATION_RIBBON_SOLO_PALETTE_123_STRICT_EXACT.md).
+> The original 182B parent source and accepted receipt remain unchanged;
+> references below to a source-absent palette are historical.
+
+
 Original Japanese TH20 1.00a Steamless SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The original `0x0045DB30` is the entire **182B/57-i386** polymorphic

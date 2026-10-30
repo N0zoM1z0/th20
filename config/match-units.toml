@@ -24513,3 +24513,22 @@ relocations = [
  { offset = 0x97, type = "REL32", symbol = "?configure_438c60@NativeRibbonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
  { offset = 0xAA, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
 ]
+
+# CORE/RECON-935: original full 123B solo ribbon segment palette, genuine
+# packed-color override 0x80FFFF80 and three actual scope NOPs.
+[units.animation_ribbon_solo_segment_palette_123]
+source = "src/AnimationRibbonSoloSegmentPalette123.cpp"
+object = "build/core935-canonical/AnimationRibbonSoloSegmentPalette123.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativeRibbonSoloPaletteView::initialize_palette_45dbf0"]
+symbol = "?initialize_palette_45dbf0@NativeRibbonSoloPaletteView@th20@@QAEXI@Z"
+target_address = 0x0045DBF0
+size = 123
+relocations = [
+ { offset = 0x1C, type = "REL32", symbol = "??0PackedColor@th20@@QAE@I@Z", target = 0x004142A0 },
+ { offset = 0x28, type = "REL32", symbol = "?forward_color_45dd20@NativeRibbonColorFields@th20@@QAEXPBUPackedColor@2@@Z", target = 0x0045DD20 },
+ { offset = 0x43, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x4A, type = "REL32", symbol = "??4PackedColor@th20@@QAEII@Z", target = 0x0045D650 },
+ { offset = 0x5F, type = "DIR32", symbol = "?native_polygon_radius32@th20@@3MB", target = 0x0056CD94 },
+ { offset = 0x70, type = "REL32", symbol = "?forward_radius_45dd00@NativeRibbonRadiusFields@th20@@QAEXPBM@Z", target = 0x0045DD00 },
+]
