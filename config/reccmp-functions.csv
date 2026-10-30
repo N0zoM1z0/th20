@@ -1372,3 +1372,4 @@ th20::NativeRibbonTrailGroup::NativeRibbonTrailGroup,0x0045DED0,function
 th20::NativeRibbonTrailGroup::scalar_deleting_destructor,0x0045DF40,function
 th20::NativeRibbonTrailGroup::update,0x0045DF80,function
 th20::NativeRibbonTrailGroup::draw,0x0045E190,function
+"th20::DiagnosticAllocator::allocate_object<NativeRibbonTrailGroup,Animation*>",0x0045DD90,function

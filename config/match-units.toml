@@ -24620,3 +24620,22 @@ relocations = [
  { offset = 0x91, type = "REL32", symbol = "?draw_vertex_line_43d1a0@AnimationDrawDetailedOwner@th20@@QAEHHPBUVector2@2@0PBI@Z", target = 0x0043D1A0 },
  { offset = 0x9D, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-939: whole native 156B 64-point ribbon trail factory;
+# allocator template origin remains review and uncredited for game bytes.
+[units.animation_ribbon_trail_factory_156]
+source = "src/AnimationRibbonTrailGroupFactory156.cpp"
+object = "build/core939-canonical/AnimationRibbonTrailGroupFactory156.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::allocate_object<NativeRibbonTrailGroup,Animation*>"]
+symbol = "??$allocate_object@VNativeRibbonTrailGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonTrailGroup@1@PBDPAVAnimation@1@@Z"
+target_address = 0x0045DD90
+size = 156
+relocations = [
+ { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??$allocate_object@VNativeRibbonTrailGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonTrailGroup@1@PBDPAVAnimation@1@@Z", target = 0x00568917 },
+ { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x2E, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x0054275D },
+ { offset = 0x4E, type = "REL32", symbol = "?__autoclassinit2@NativeRibbonTrailGroup@th20@@QAEXI@Z", target = 0x0040C080 },
+ { offset = 0x57, type = "REL32", symbol = "??$forward@PAVAnimation@th20@@@std@@YA$$QAPAVAnimation@th20@@AAPAV12@@Z", target = 0x0040B280 },
+ { offset = 0x6B, type = "REL32", symbol = "??0NativeRibbonTrailGroup@th20@@QAE@PAVAnimation@1@@Z", target = 0x0045DED0 },
+]
