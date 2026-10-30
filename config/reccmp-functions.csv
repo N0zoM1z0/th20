@@ -1377,3 +1377,4 @@ th20::NativeRibbonTrailGroup::configure_gray_45e240,0x0045E240,function
 th20::NativeRibbonTrailGroup::configure_pink_45e3a0,0x0045E3A0,function
 th20::create_trail_gray_45e520,0x0045E520,function
 th20::create_trail_pink_45e550,0x0045E550,function
+"std::array<th20::AnimationHandle,64>::array",0x0045DE30,function

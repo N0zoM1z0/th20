@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,378** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,377**, from **340** pinned MSVC object/receipt providers |
+| Source-present function mappings | **1,379** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,378**, from **341** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **664 distinct function heads /239,364 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -48,6 +48,7 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
+| 64-point ribbon color-cell array ctor `0x0045DE30` | **75B/27-i386 + five real INT3 whole exact**, true 64×4-byte `AnimationHandle` records, actual original EH/cookie/callback and 103B parent. Full **80/80 compared bytes**, generated origin pending/uncredited. 75B Vector2[64] constructor remains separately open. [Full PE/COFF proof](ANIMATION_RIBBON_TRAIL_COLOR_ARRAY75_STRICT_EXACT.md). |
 | 64-point ribbon original gray/magenta creation entry wrappers `0x0045E520/0x0045E550` | **47B/18-i386 and 49B/19-i386 whole strict exact**, both original 2 E8/2 HIGHLOW marker/pool/factory/real configuration, pink returns explicit zero while gray forwards result. **+2 authored heads /96 bytes**, 5/5 local replay. [Whole PE+COFF proof](ANIMATION_RIBBON_TRAIL_WRAPPERS_47_49_STRICT_EXACT.md). |
 | 64-point ribbon magenta config Boss `0x0045E3A0` | **382B/113-i386 whole strict exact**, real 11 E8/2 HIGHLOW, original token+0x31C, 64 magenta/blue/alpha cells and Animation layer15/flag1/style64. **+382 authored game bytes**, local 7/7 strict replay. [Complete original proof](ANIMATION_RIBBON_TRAIL_PINK382_STRICT_EXACT.md). |
 | 64-point ribbon gray config Boss `0x0045E240` | **340B/101-i386 whole strict exact**, 10 native E8/two HIGHLOW, real 64-point gray/alpha gradient and Animation layer19/flag0. Corrected genuine *unused second argument* to produce original RET8. **+340 authored game bytes**; alternate 382B config also whole exact in CORE/RECON-941. [Strict PE/COFF proof](ANIMATION_RIBBON_TRAIL_GRAY340_STRICT_EXACT.md). |

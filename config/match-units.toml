@@ -24720,3 +24720,21 @@ relocations = [
  { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativeRibbonTrailGroup@th20@@PAVAnimation@2@@DiagnosticAllocator@th20@@QAEPAVNativeRibbonTrailGroup@1@PBDPAVAnimation@1@@Z", target = 0x0045DD90 },
  { offset = 0x27, type = "REL32", symbol = "?configure_pink_45e3a0@NativeRibbonTrailGroup@th20@@QAEHABUVector3@2@H@Z", target = 0x0045E3A0 },
 ]
+
+# CORE/RECON-943: original complete 75B 64 color-cell array constructor
+# plus five true original INT3 alignment bytes; template source origin review.
+[units.animation_ribbon_trail_color_array_ctor_75]
+source = "src/AnimationRibbonTrailColorArrayCtor75.cpp"
+object = "build/core943-canonical/AnimationRibbonTrailColorArrayCtor75.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationHandle,64>::array"]
+symbol = "??0?$array@UAnimationHandle@th20@@$0EA@@std@@QAE@XZ"
+target_address = 0x0045DE30
+size = 75
+compare_size = 80
+relocations = [
+ { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??0?$array@UAnimationHandle@th20@@$0EA@@std@@QAE@XZ", target = 0x00567600 },
+ { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x27, type = "DIR32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+ { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
