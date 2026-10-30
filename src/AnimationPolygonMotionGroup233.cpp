@@ -58,6 +58,7 @@ struct NativePolygonMotionGroup {
     Vector3 saved_position_b9c;
     std::uint8_t use_animation_position_ba8;
 
+    std::int32_t tick_polygon_group_45f5e0();
     std::int32_t draw_motion_group_45f9b0();
     std::int32_t configure_group_45fb60(const NativePolygonGroupOptions& config,
                                        std::int32_t value);
@@ -69,6 +70,27 @@ static_assert(offsetof(NativePolygonMotionGroup,timer_b88)==0xB88);
 static_assert(offsetof(NativePolygonMotionGroup,value_b98)==0xB98);
 static_assert(offsetof(NativePolygonMotionGroup,saved_position_b9c)==0xB9C);
 static_assert(offsetof(NativePolygonMotionGroup,use_animation_position_ba8)==0xBA8);
+
+// Complete original game 140B/46-x86 polygon dynamic dispatch Boss.
+// The following 4 PE INT3 bytes are alignment, not game function code.
+// The unaccepted 827B per-segment update and the timer gate keep
+// provisional ABI names, separate from the accepted group state.
+struct NativePolygonTimerGate { std::int32_t changed_45d030(); };
+
+std::int32_t NativePolygonMotionGroup::tick_polygon_group_45f5e0() {
+    if (reinterpret_cast<NativePolygonTimerGate*>(&timer_b88)->changed_45d030()) {
+        NativePolygonSegmentArray* const segment_array=&segments_08;
+        auto* current = reinterpret_cast<NativePolygonSegmentSlot*>(
+            &reinterpret_cast<Motion*>(segment_array)->position_ref());
+        auto* finish = segment_array->end();
+        for (; current != finish; ++current) {
+            NativePolygonSegmentSlot* const active=current;
+            active->update_polygon_dynamics_45f670(animation_04->scale_x_value());
+        }
+    }
+    timer_b88++;
+    return 0;
+}
 
 std::int32_t NativePolygonMotionGroup::draw_motion_group_45f9b0() {
     reinterpret_cast<AnimationQuadSubmitOwner*>(current_animation_pool)->bind_native_texture_state(animation_04);

@@ -1286,3 +1286,12 @@ th20::NativePolygonSegmentSlot::initialize_palette_45fc90
 th20::NativePolygonColorFields::forward_color_45ffc0
 th20::NativePolygonRadiusFields::forward_radius_45ffa0
 th20::configure_polygon_group_45fd10
+th20::NativePolygonMotionGroup::tick_polygon_group_45f5e0
+th20::NativePolygonSegmentSlot::update_polygon_dynamics_45f670
+th20::NativePolygonRangeAngleCursor::dereference_45f420
+th20::NativePolygonScalarCursorStorage::step_45f440
+th20::NativePolygonVertexCursorStorage::step_45f460
+th20::NativePolygonRangeScalarIterator::next_45f480
+th20::NativePolygonRangeVertexIterator::next_45f4a0
+th20::NativePolygonScalarRange::begin_45ff00
+th20::NativePolygonVertexRange::end_45ff20

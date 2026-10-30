@@ -23241,3 +23241,126 @@ relocations = [
   { offset = 0x14, type = "REL32", symbol = "?resolve_45f0a0@NativePolygonRegistryOwner@th20@@QAEPAUNativePolygonMotionGroup@2@PBEI@Z", target = 0x0045F0A0 },
   { offset = 0x27, type = "REL32", symbol = "?configure_group_45fb60@NativePolygonMotionGroup@th20@@QAEHABUNativePolygonGroupOptions@2@H@Z", target = 0x0045FB60 },
 ]
+
+# CORE/RECON-893: whole original counted-range helper native body.
+# True original E8 source symbol, site and target attested from locked PE.
+# Authorship uncertain (C++ iterator/template), no hand-authored game credit.
+[units.animation_polygon_range_deref_19]
+source = "src/AnimationPolygonIteratorLeaves.cpp"
+object = "build/core893-canonical/AnimationPolygonIteratorLeaves.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonRangeAngleCursor::dereference_45f420"]
+symbol = "?dereference_45f420@NativePolygonRangeAngleCursor@th20@@QAEPAMXZ"
+target_address = 0x0045F420
+size = 19
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?polygon_iterator_deref_40c300@th20@@YIPAMPAX@Z", target = 0x0040C300 },
+]
+
+# CORE/RECON-893: whole original counted-range helper native body.
+# True original E8 source symbol, site and target attested from locked PE.
+# Authorship uncertain (C++ iterator/template), no hand-authored game credit.
+[units.animation_polygon_range_next_scalar_22]
+source = "src/AnimationPolygonIteratorLeaves.cpp"
+object = "build/core893-canonical/AnimationPolygonIteratorLeaves.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonRangeScalarIterator::next_45f480"]
+symbol = "?next_45f480@NativePolygonRangeScalarIterator@th20@@QAEPAU12@XZ"
+target_address = 0x0045F480
+size = 22
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?polygon_iterator_angle_step_45f440@th20@@YIXPAX@Z", target = 0x0045F440 },
+]
+
+# CORE/RECON-893: whole original counted-range helper native body.
+# True original E8 source symbol, site and target attested from locked PE.
+# Authorship uncertain (C++ iterator/template), no hand-authored game credit.
+[units.animation_polygon_range_next_vertex_22]
+source = "src/AnimationPolygonIteratorLeaves.cpp"
+object = "build/core893-canonical/AnimationPolygonIteratorLeaves.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonRangeVertexIterator::next_45f4a0"]
+symbol = "?next_45f4a0@NativePolygonRangeVertexIterator@th20@@QAEPAU12@XZ"
+target_address = 0x0045F4A0
+size = 22
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?polygon_iterator_vertex_step_45f460@th20@@YIXPAX@Z", target = 0x0045F460 },
+]
+
+# CORE/RECON-893: whole original counted-range helper native body.
+# True original E8 source symbol, site and target attested from locked PE.
+# Authorship uncertain (C++ iterator/template), no hand-authored game credit.
+[units.animation_polygon_range_begin_32]
+source = "src/AnimationPolygonIteratorLeaves.cpp"
+object = "build/core893-canonical/AnimationPolygonIteratorLeaves.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonScalarRange::begin_45ff00"]
+symbol = "?begin_45ff00@NativePolygonScalarRange@th20@@QAEPAXPAX@Z"
+target_address = 0x0045FF00
+size = 32
+relocations = [
+  { offset = 0x10, type = "REL32", symbol = "?polygon_iterator_begin_45ef10@th20@@YAXPAX0@Z", target = 0x0045EF10 },
+]
+
+# CORE/RECON-893: whole original counted-range helper native body.
+# True original E8 source symbol, site and target attested from locked PE.
+# Authorship uncertain (C++ iterator/template), no hand-authored game credit.
+[units.animation_polygon_range_end_32]
+source = "src/AnimationPolygonIteratorLeaves.cpp"
+object = "build/core893-canonical/AnimationPolygonIteratorLeaves.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonVertexRange::end_45ff20"]
+symbol = "?end_45ff20@NativePolygonVertexRange@th20@@QAEPAXPAX@Z"
+target_address = 0x0045FF20
+size = 32
+relocations = [
+  { offset = 0x10, type = "REL32", symbol = "?polygon_iterator_end_45ef90@th20@@YAXPAX0@Z", target = 0x0045EF90 },
+]
+
+# CORE/RECON-894: original whole physical function, independent PE E8/HI
+# mapping and original ret/padding boundary checked. Two 27B steppers
+# have unresolved likely library/template authorship; no game code credit.
+[units.animation_polygon_group_tick_140]
+source = "src/AnimationPolygonMotionGroup233.cpp"
+object = "build/core884-canonical/AnimationPolygonMotionGroup233.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonMotionGroup::tick_polygon_group_45f5e0"]
+symbol = "?tick_polygon_group_45f5e0@NativePolygonMotionGroup@th20@@QAEHXZ"
+target_address = 0x0045F5E0
+size = 140
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?changed_45d030@NativePolygonTimerGate@th20@@QAEHXZ", target = 0x0045D030 },
+  { offset = 0x28, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x33, type = "REL32", symbol = "?end@NativePolygonSegmentArray@th20@@QAEPAUNativePolygonSegmentSlot@2@XZ", target = 0x0045FD40 },
+  { offset = 0x5D, type = "REL32", symbol = "?scale_x_value@Animation@th20@@QAEMXZ", target = 0x004379C0 },
+  { offset = 0x69, type = "REL32", symbol = "?update_polygon_dynamics_45f670@NativePolygonSegmentSlot@th20@@QAEXM@Z", target = 0x0045F670 },
+  { offset = 0x82, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
+
+# CORE/RECON-894: original whole physical function, independent PE E8/HI
+# mapping and original ret/padding boundary checked. Two 27B steppers
+# have unresolved likely library/template authorship; no game code credit.
+[units.animation_polygon_scalar_step_27]
+source = "src/AnimationPolygonIteratorLeaves.cpp"
+object = "build/core893-canonical/AnimationPolygonIteratorLeaves.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonScalarCursorStorage::step_45f440"]
+symbol = "?step_45f440@NativePolygonScalarCursorStorage@th20@@QAEPAU12@XZ"
+target_address = 0x0045F440
+size = 27
+relocations = [
+]
+
+# CORE/RECON-894: original whole physical function, independent PE E8/HI
+# mapping and original ret/padding boundary checked. Two 27B steppers
+# have unresolved likely library/template authorship; no game code credit.
+[units.animation_polygon_vertex_step_27]
+source = "src/AnimationPolygonIteratorLeaves.cpp"
+object = "build/core893-canonical/AnimationPolygonIteratorLeaves.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativePolygonVertexCursorStorage::step_45f460"]
+symbol = "?step_45f460@NativePolygonVertexCursorStorage@th20@@QAEPAU12@XZ"
+target_address = 0x0045F460
+size = 27
+relocations = [
+]

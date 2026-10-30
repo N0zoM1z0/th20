@@ -1,11 +1,12 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-892):**
+**Current next-agent reading order (CORE/RECON-894):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict 140B dynamic tick, seven original exact range leaves and 827B NONEXACT Boss](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md) ->
 [whole strict original 47B cdecl registry-to-polygon group wrapper](ANIMATION_POLYGON_REGISTRY_WRAPPER_47_STRICT_EXACT.md) ->
 [whole strict original 120B palette Boss and two 31B tag leaves plus exact 8B native data](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md) ->
 [whole strict original 296B polygon group configuration Boss](ANIMATION_POLYGON_GROUP_CONFIG_296_STRICT_EXACT.md) ->
@@ -43,9 +44,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,288 source-present /1,287
-strict units from 298 object/receipt providers, 636 authored-game exact whole
-functions /233,662 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,297 source-present /1,295
+strict units from 299 object/receipt providers, 637 authored-game exact whole
+functions /233,802 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -68,6 +69,10 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Polygon group native 140B tick Boss exact; 827B counted-range dynamic update source and seven exact iterator leaves
+
+- [CORE/RECON-893/894 — original 140B/46-i386 polygon tick whole strict exact, 827B/237-i386 dynamics source PRESENT/NONEXACT and seven original 19B–32B counted-range helpers whole strict exact](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md) — source-independent original PE verifies **all six real tick E8 site/targets, zero HIGHLOW**, **all 31 native 827B E8 and ten original HIGHLOW site/targets**, and genuine 4/8-byte pointer stepping/float-pointer EAX results. The original 140B function ends at `ret +0x8B` followed by **four distinct INT3 alignment bytes** before the 827B next head; ordinary C++ correctly emits **140/140 strict bytes** and does not fake padding. Seven iterator helpers **19/19 +22/22 +22/22 +27/27 +27/27 +32/32 +32/32** original native bytes accepted (seven strict units/one object) but their likely C++ STL/template provenance remains unknown, so no game-authored code credit. 827B source uses the real existing polygon segment owner but currently compiles 513B/137 x86 and is explicitly **NONEXACT**. Live **637 authored whole-original game exact functions /233,802 native bytes**, **1,297 source-present mappings /1,295 strict native units /299 pinned objects**, scoped replay of only affected group, palette and iterator source providers, never graph-wide cold replay.
 
 ## Original 47B registry-to-polygon group cdecl wrapper now whole strict exact
 

@@ -1287,3 +1287,12 @@ th20::NativePolygonSegmentSlot::initialize_palette_45fc90,0x0045FC90,function
 th20::NativePolygonColorFields::forward_color_45ffc0,0x0045FFC0,function
 th20::NativePolygonRadiusFields::forward_radius_45ffa0,0x0045FFA0,function
 th20::configure_polygon_group_45fd10,0x0045FD10,function
+th20::NativePolygonMotionGroup::tick_polygon_group_45f5e0,0x0045F5E0,function
+th20::NativePolygonSegmentSlot::update_polygon_dynamics_45f670,0x0045F670,function
+th20::NativePolygonRangeAngleCursor::dereference_45f420,0x0045F420,function
+th20::NativePolygonScalarCursorStorage::step_45f440,0x0045F440,function
+th20::NativePolygonVertexCursorStorage::step_45f460,0x0045F460,function
+th20::NativePolygonRangeScalarIterator::next_45f480,0x0045F480,function
+th20::NativePolygonRangeVertexIterator::next_45f4a0,0x0045F4A0,function
+th20::NativePolygonScalarRange::begin_45ff00,0x0045FF00,function
+th20::NativePolygonVertexRange::end_45ff20,0x0045FF20,function
