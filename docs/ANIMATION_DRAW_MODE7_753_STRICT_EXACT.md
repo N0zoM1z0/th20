@@ -19,6 +19,12 @@ offsets**. Every genuine byte after independently established relocation
 replay passes **753/753 strict canonical exact**. This adds one real
 original game-authored exact function, **753 original `.text` bytes**.
 
+The original 1,996B setup callee at `0x00441430` has since become
+[whole native strict exact](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md).
+Its real `std::int32_t` zero return changes only this 753B caller's
+COFF relocation **symbol spelling**, not any original PE target or code
+byte; fresh scoped replay still proves 753/753 exact.
+
 The 5,993-byte whole Animation Draw Boss at `0x00443880` stays
 **SOURCE-PRESENT, NONEXACT**: a strict child never makes its parent
 exact. Its whole current source-generated 5,993B/1,501 x86 and switch
@@ -35,7 +41,7 @@ values are guessed by solving candidate relocation fields.
 
 | Whole original native location | Real physical source role |
 | --- | --- |
-| E8 `+0x1A` -> `0x00441430` | Original renderer setup/geometry mode7 method (1,996B), still independently NONEXACT |
+| E8 `+0x1A` -> `0x00441430` | Original renderer matrix/corner mode7 setup (1,996B), now independently full-native strict exact [CORE/RECON-840](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) |
 | E8 `+0x2C` -> `0x0040BC20` | Genuine `_eh vector constructor iterator` for four 16B zero-valued points, compiler/library—not game credit |
 | E8 `+0x34` -> `0x00422E10` | Genuine `Vector3` 12B zero constructor, preexisting strict source |
 | E8 `+0xCF` -> `0x00540672` | Real D3DX9 `D3DXVec3Transform` import thunk, not authored game bytes |

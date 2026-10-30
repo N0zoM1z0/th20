@@ -21744,7 +21744,7 @@ target_address = 0x00441C00
 size = 753
 relocations = [
   { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
-  { offset = 0x1B, type = "REL32", symbol = "?prepare_simple_mode7@AnimationDrawDetailedOwner@th20@@QAEXPAVAnimation@2@@Z", target = 0x00441430 },
+  { offset = 0x1B, type = "REL32", symbol = "?prepare_simple_mode7@AnimationDrawDetailedOwner@th20@@QAEHPAVAnimation@2@@Z", target = 0x00441430 },
   { offset = 0x20, type = "DIR32", symbol = "??0EnemyBounds@th20@@QAE@XZ", target = 0x004398D0 },
   { offset = 0x2D, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
   { offset = 0x35, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
@@ -21779,4 +21779,54 @@ relocations = [
   { offset = 0x2D2, type = "DIR32", symbol = "?native_one@th20@@3MB", target = 0x0056C8CC },
   { offset = 0x2DA, type = "DIR32", symbol = "?native_quad_vertices@th20@@3PAUSpriteTexturedVertex@1@A", target = 0x005AEF10 },
   { offset = 0x2E7, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-840: original whole native 1996B renderer mode7 matrix/corners.
+# Independently attested original 11 E8 and 26 PE HIGHLOW physical sites.
+[units.animation_draw_mode7_setup_1996]
+source = "src/AnimationDrawMode7Setup.cpp"
+object = "build/core840-canonical/AnimationDrawMode7Setup.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationDrawDetailedOwner::prepare_simple_mode7"]
+symbol = "?prepare_simple_mode7@AnimationDrawDetailedOwner@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x00441430
+size = 1996
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1F, type = "REL32", symbol = "??0TransformMatrix@th20@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0TransformMatrix@th20@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x112, type = "REL32", symbol = "?rotation_sum@Animation@th20@@QAEAAUVector3@2@XZ", target = 0x00437770 },
+  { offset = 0x130, type = "DIR32", symbol = "__real@0000000000000000", target = 0x0056CD50 },
+  { offset = 0x14D, type = "REL32", symbol = "_D3DXMatrixRotationX@8", target = 0x00540684 },
+  { offset = 0x16C, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x0054067E },
+  { offset = 0x17A, type = "DIR32", symbol = "__real@0000000000000000", target = 0x0056CD50 },
+  { offset = 0x197, type = "REL32", symbol = "_D3DXMatrixRotationY@8", target = 0x0054068A },
+  { offset = 0x1B7, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x0054067E },
+  { offset = 0x1C5, type = "DIR32", symbol = "__real@0000000000000000", target = 0x0056CD50 },
+  { offset = 0x1E2, type = "REL32", symbol = "_D3DXMatrixRotationZ@8", target = 0x00540690 },
+  { offset = 0x201, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x0054067E },
+  { offset = 0x2A9, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x2B1, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x2EB, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x2F3, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+  { offset = 0x2FB, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x501, type = "DIR32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x50E, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+  { offset = 0x56E, type = "DIR32", symbol = "?native_256@th20@@3MB", target = 0x0056CDA0 },
+  { offset = 0x584, type = "DIR32", symbol = "?native_256@th20@@3MB", target = 0x0056CDA0 },
+  { offset = 0x59E, type = "DIR32", symbol = "?native_negative_128@th20@@3MB", target = 0x0056CDBC },
+  { offset = 0x5B4, type = "DIR32", symbol = "?native_negative_128@th20@@3MB", target = 0x0056CDBC },
+  { offset = 0x5CA, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x5E0, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x5F7, type = "DIR32", symbol = "?native_negative_256@th20@@3MB", target = 0x0056E1A4 },
+  { offset = 0x60D, type = "DIR32", symbol = "?native_negative_256@th20@@3MB", target = 0x0056E1A4 },
+  { offset = 0x695, type = "DIR32", symbol = "?native_256@th20@@3MB", target = 0x0056CDA0 },
+  { offset = 0x6AA, type = "DIR32", symbol = "?native_256@th20@@3MB", target = 0x0056CDA0 },
+  { offset = 0x6C5, type = "DIR32", symbol = "?native_negative_128@th20@@3MB", target = 0x0056CDBC },
+  { offset = 0x6DB, type = "DIR32", symbol = "?native_negative_128@th20@@3MB", target = 0x0056CDBC },
+  { offset = 0x6F1, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x706, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x71E, type = "DIR32", symbol = "?native_negative_256@th20@@3MB", target = 0x0056E1A4 },
+  { offset = 0x734, type = "DIR32", symbol = "?native_negative_256@th20@@3MB", target = 0x0056E1A4 },
+  { offset = 0x7C2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

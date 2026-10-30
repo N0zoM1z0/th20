@@ -108,7 +108,7 @@ def main():
     assert "draw_shape_43cd40(float, float, float, float," in shared_abi
     assert "std::uint32_t, std::uint32_t, int, int);" in shared_abi
     assert "draw_shape_43c4e0(float, float, float, float, float, int," in shared_abi
-    assert "void prepare_simple_mode7(Animation*);" in shared_abi
+    assert "std::int32_t prepare_simple_mode7(Animation*);" in shared_abi
     assert "std::int32_t draw_simple_mode7(Animation*);" in shared_abi
     assert "ANIMATION_DRAW_BOSS" not in text  # no separate exactness branch
     assert "std::int32_t AnimationPoolOwner::draw(Animation* animation)" in text

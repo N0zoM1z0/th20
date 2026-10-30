@@ -39,8 +39,11 @@ position vectors; the two original helper bodies are therefore game-owned
 logic, not automatic C++ standard-library templates or CRT plumbing.
 Names `animation_depth` and `animation_depth_squared` are descriptive
 reconstruction spellings, **not** claims about original source identifiers.
-The mode6 and mode7 callers themselves remain separate open NONEXACT
-functions; exact callee code does not imply a matched parent.
+The mode6 caller remains open NONEXACT. The 753B mode7 caller was
+subsequently completed as whole-native [strict exact](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md),
+and its 1,996B setup callee likewise became
+[whole exact](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md). The
+5,993B enclosing Draw dispatcher remains independently NONEXACT.
 
 ## Full canonical source and relocation replay
 
@@ -105,7 +108,9 @@ scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/progress.py --check
 ```
 
-The uncredited 753-byte original mode7 renderer caller is a useful
-subsequent target: it transforms four renderer input vertices using the
-actual native D3DX vector operation and performs distance-based fog color
-interpolation before the independently exact 3,159-byte quad-submit Boss.
+The original 753B mode7 D3DX projection/fog caller was subsequently
+[whole exact](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md), using this original
+25B depth helper, as was its 1,996B matrix/corner
+[setup function](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md).
+Those later admissions do not duplicate these two independent depth leaf
+match units or their 95 native game-authored bytes.

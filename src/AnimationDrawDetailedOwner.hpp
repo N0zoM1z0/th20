@@ -14,7 +14,7 @@ namespace th20 {
 // destination recorded in config/animation-draw-boss-mode-e8.csv.
 struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     std::int32_t draw_complex_mode6(Animation*);             // 0x004408B0 native thiscall
-    void prepare_simple_mode7(Animation*);                  // actual original 0x00441430
+    std::int32_t prepare_simple_mode7(Animation*);          // actual original 0x00441430; EAX=0, RET 4
     std::int32_t draw_simple_mode7(Animation*);              // 0x00441C00
     std::int32_t draw_simple_mode8(Animation*);              // 0x00441F00
     std::int32_t draw_strip_mode9(Animation*, void*, int);   // 0x00445350

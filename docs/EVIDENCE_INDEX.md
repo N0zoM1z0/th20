@@ -1,19 +1,21 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-839):**
+**Current next-agent reading order (CORE/RECON-840):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[complete strict 1996B Animation mode7 matrix preparation](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) ->
+[whole strict 1,996B Animation mode7 setup Boss](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) ->
 [whole strict 753B Animation mode7 render Boss](ANIMATION_DRAW_MODE7_753_STRICT_EXACT.md) ->
 [two newly strict original Animation depth functions](ANIMATION_DEPTH_MATH_25_70_STRICT_EXACT.md) ->
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,242 source-present /1,243
-strict units from 262 object/receipt providers, 596 authored-game exact whole
-functions /197,570 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,243 source-present /1,244
+strict units from 263 object/receipt providers, 597 authored-game exact whole
+functions /199,566 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -32,6 +34,14 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## Whole 1,996B Animation mode7 matrix/corner preparation Boss now strict native exact
+
+- [CORE/RECON-840 — full original 1,996B /459-i386 mode7 setup matrix, recursive rotation and bounds, strict exact](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) — independent original PE 11 true E8 roles and **26 actual PE HIGHLOW site/target pairs**, natural 64B temporary/matrix construction, original D3DX XYZ rotations/multiplies, Animation recursive rotation, parent and window coordinates, four Vector3 bound corners and actual renderer matrix publication; native `0xCC` frame and `EAX=0/ret 4`. The pinned C++ matched 1,996/1,996 native bytes with all 37 relocations. Original return type corrected from provisional void to `int`, and the previously accepted 753B caller was freshly replayed 753/753. One newly credited game function /1,996 native bytes. Live totals **597 authored exact /199,566B**, **1,243 source mappings /1,244 strict units /263 pinned objects**; no unfiltered cold replay.
+
+## Whole 1,996B Animation mode7 renderer setup / matrix and corners Boss, strict native exact
+
+- [CORE/RECON-840 — entire original 1,996B/459 x86 Animation matrix/setup Boss now native strict exact](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md) — full original 11 true E8 and 26 original PE HIGHLOW physical site/target pairs independently verified, native `0xCC` frame and **3 real 64B `REP MOVSD` matrix copies**, genuine D3DX XYZ rotations/multiplications, parent/window translation, 4 real 12B corner constructors and native renderer matrix publication. A single natural C++ body compiled to **1,996B/459 x86**, **1,848/1,848 non-relocation bytes identical**, full **1,996/1,996B strict canonical zero-difference**; no target fields solved from comparisons. Original return `xor eax,eax; ret 4` corrects a previously provisional `void` ABI; only the already exact 753B mode7 caller was separately rebuilt after the COFF symbol changed, and remains **753/753 exact**. One game-authored original physical function /+1,996 `.text` bytes, live **597 authored exact game functions /199,566 native bytes**, **1,243 source mappings/1,244 strict units/263 pinned objects**. Larger 5,993B renderer draw dispatcher remains independently SOURCE-PRESENT/NONEXACT; no full cold replay.
 
 ## Whole 753B Animation mode7 projection/fog renderer Boss now strict native exact
 
