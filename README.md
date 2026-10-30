@@ -49,11 +49,11 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,430
-source-present mappings**, **1,430 strict canonical native units** and
-**378 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **699 complete functions /
-246,456 original native bytes**. These are dated values, not a
+At the October 30, 2026 checkpoint the maintained graph has **1,432
+source-present mappings**, **1,432 strict canonical native units** and
+**379 canonical MSVC object/receipt providers**. Independently verified
+game-authored whole-function exactness is **701 complete functions /
+247,232 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the
@@ -80,6 +80,7 @@ for the live inventory and consult the
 | **16B STL file-slot capacity leaf** | Native **16B/8-i386** real `std::array<AnimationFile*,42>::size()`, 0x2A return, original 209B file-slot parent E8. **16/16 strict exact**, compiler/STL source excluded from game-authored credit; 2/2 local replay. [Proof](docs/ANIMATION_FILE_SLOT_SIZE16_STRICT_EXACT.md). |
 | **103B original file pointer retirement, no duplicate STL head** | Entire **103B/36-i386 strict exact**, original lock slot1, existing `std::destroy_at<AnimationFile>` E8 to **already exact original 16B** physical address, and actual `operator delete`; 103B original unknown template origin **uncredited**. Full 691B/284B/209B/94B lifecycle 5/5 local replay. [Original proof](docs/ANIMATION_FILE_ENTRY_RELEASE103_STRICT_EXACT.md). |
 | **92B Renderer locked PRNG pulse** | Real native **92B/30-i386 whole strict exact**, genuine `RandomState::next()` (library callee uncredited), lock slot10, Game Renderer counter+0x04/output+0x14. Native 5 E8/2 HIGHLOW; **+92 authored game bytes** under original no-EH `/GS` MSVC profile. [Full PE/COFF proof](docs/ANIMATION_RENDERER_RANDOM_PULSE92_STRICT_EXACT.md). |
+| **382B/394B dual Renderer classification Bosses** | Both game-owned classification and +0x500 link-staging methods **382/382 +394/394 whole strict exact**, true 347B parent E8, 16 native E8/2 HIGHLOW each, first/second 24B lists and third list+0x30. **+776 authored game bytes** and 2/2 affected unit replay. [Complete native proof](docs/ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md). |
 | **188B Direct3D9 surface clearing** | Native **188B/75-i386 whole strict exact**, real texture GetSurfaceLevel/Surface GetDesc/LockRect/UnlockRect/Release, original locked pitch×height `memset`; 2 original E8/one PE HIGHLOW, **+188 game-authored bytes**. [Original proof](docs/ANIMATION_TEXTURE_SURFACE_CLEAR188_STRICT_EXACT.md). |
 | **164B Renderer second-list update wrapper** | Native complete **164B/46-i386 strict exact**, genuine lock9, pool+0xD8 reset and typed 0x48 Renderer first slot, E8 into distinct **511B NONEXACT** secondary update. **+164 authored game bytes**, 3/3 scoped replay. [PE/COFF evidence](docs/ANIMATION_RENDERER_UPDATE_SECONDARY164_STRICT_EXACT.md). |
 | **59B GameController-gated Renderer update** | Original entire **59B/18-i386 strict exact**, genuine current GameController original 3 PE HIGHLOW, two independently exact status checks, E8 to existing exact 150B Renderer gate. **+59 authored bytes**, 2/2 scoped replay. [Full proof](docs/ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md). |

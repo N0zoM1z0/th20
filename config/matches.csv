@@ -698,3 +698,5 @@ address,name,size,status,match_percent,unit,evidence
 0x00449A70,th20::animation_renderer_update_secondary_449a70,164,matching,100.00,animation_renderer_update_secondary_164,CORE/RECON-979; docs/ANIMATION_RENDERER_UPDATE_SECONDARY164_STRICT_EXACT.md
 0x00449D20,th20::NativeRendererRandomPulse::random_byte_449d20,92,matching,100.00,animation_renderer_random_pulse_92,CORE/RECON-980; docs/ANIMATION_RENDERER_RANDOM_PULSE92_STRICT_EXACT.md
 0x00449D80,th20::clear_texture_surface_449d80,188,matching,100.00,animation_texture_surface_clear_188,CORE/RECON-981; docs/ANIMATION_TEXTURE_SURFACE_CLEAR188_STRICT_EXACT.md
+0x0044A090,th20::NativeRendererClassificationView::classify_primary_44a090,382,matching,100.00,animation_renderer_classify_primary_382,CORE/RECON-982; docs/ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md
+0x0044A210,th20::NativeRendererClassificationView::classify_secondary_44a210,394,matching,100.00,animation_renderer_classify_secondary_394,CORE/RECON-982; docs/ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md

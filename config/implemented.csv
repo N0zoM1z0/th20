@@ -1428,3 +1428,5 @@ th20::animation_renderer_update_if_running_450880
 th20::animation_renderer_update_secondary_449a70
 th20::NativeRendererRandomPulse::random_byte_449d20
 th20::clear_texture_surface_449d80
+th20::NativeRendererClassificationView::classify_primary_44a090
+th20::NativeRendererClassificationView::classify_secondary_44a210

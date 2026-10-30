@@ -1199,8 +1199,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00449D80,authored,AnimationTexture,authored,high,"CORE/RECON-981; docs/ANIMATION_TEXTURE_SURFACE_CLEAR188_STRICT_EXACT.md; whole original 188B/75-i386 game-specific D3D9 texture surface zeroing via real COM vtable methods and memory pitch/height, original 2 E8/1 HIGHLOW and C++20 188/188 strict"
 0x00449E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00449FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044A090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044A210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044A090,authored,AnimationPool,authored,high,"CORE/RECON-982; docs/ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md; original complete 382B game Renderer active-link classification, genuine 16 E8/2 HIGHLOW, native parent 347B original E8, full 382/382 strict game-specific source"
+0x0044A210,authored,AnimationPool,authored,high,"CORE/RECON-982; docs/ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md; original complete 394B game Renderer active-link classification, genuine 16 E8/2 HIGHLOW, native parent 347B original E8, full 394/394 strict game-specific source"
 0x0044A3A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A500,authored,Animation,authored,high,"CORE/RECON-774; docs/ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md; original real intrusive-link/predicate game method, original E8s and SEH cookie, full pinned compiler whole-native exact"
 0x0044A5A0,authored,Animation,authored,high,"CORE/RECON-774; docs/ANIMATION_LINK_FIND_159_154_EXACT_RECONSTRUCTION.md; original real intrusive-link/predicate game method, original E8s and SEH cookie, full pinned compiler whole-native exact"
