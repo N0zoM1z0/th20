@@ -42,9 +42,17 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The historical polygon-derived destructor source was NONEXACT; the **same original physical 20B folded destructor** has since become **whole strict exact** through the single-ODR ribbon-group constructor/destructor chain. A unique polygon-derived C++ ownership identity remains unproven; do not double-credit compiler bytes. The polygon 113B constructor and 49B deleting wrapper remain strict exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Entire original 88B ribbon palette and two 31B wrappers
+
+- [CORE/RECON-923 — 88B original ribbon palette and 31B+31B native tag forwarding helpers all exact](ANIMATION_RIBBON_PALETTE_88_31_STRICT_EXACT.md). Genuine 32.0f HIGHLOW, color ctor, two original real NOPs, five authentic E8 across three native bodies and three 252B parent E8 independently PE-attested. **88/88 +31/31 +31/31 strict exact**, one new local compiler object, **+88 authored game bytes**; both forwarding helpers original compiler/STL origin unknown and uncredited.
+
 ## Whole exact 252B original ribbon group configuration
 
-- [CORE/RECON-922 — 252B/77-i386 ribbon-group configuration Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). Full original 11 E8/zero HIGHLOW and C++20 strict **252/252 native bytes**, genuine token/palette/Animation state; **+252 authored game bytes**. Separate original [23B segment index](ANIMATION_RIBBON_SEGMENT_AT23_STRICT_EXACT.md) is independently 23/23 strict exact, origin unknown/uncredited; 88B palette setup remains open. Local replay only the two changed sources and actual header-dependent closure.
+- [CORE/RECON-922 — 252B/77-i386 ribbon-group configuration Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). Full original 11 E8/zero HIGHLOW and C++20 strict **252/252 native bytes**, genuine token/palette/Animation state; **+252 authored game bytes**. Separate original [23B segment index](ANIMATION_RIBBON_SEGMENT_AT23_STRICT_EXACT.md) is independently 23/23 strict exact, origin unknown/uncredited; 88B palette subsequently strict exact in CORE/RECON-923. Local replay only the two changed sources and actual header-dependent closure.
+
+## Whole exact 88B ribbon segment palette and two native 31B forwarders
+
+- [CORE/RECON-923 — full original 88B/29-i386 ribbon palette and two 31B/14-i386 forwarding helpers](ANIMATION_RIBBON_PALETTE_88_31_STRICT_EXACT.md). Original 3 E8 and physical 32.0f HIGHLOW in 88B plus genuine tag60 E8 in each 31B child, real +0x2C and +0x51 NOP and three calls from accepted 252B configuration Boss. One C++20 object generates **88/88 +31/31 +31/31 whole strict exact**. **+88 game-authored bytes**; 31B origins unknown/uncredited.
 
 ## Complete 47B ribbon factory/config wrapper exact
 
@@ -120,9 +128,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,351 source-present mappings, 1,350
-strict units from 318 pinned object/receipt providers, and 648 distinct
-original authored whole-exact game functions /236,160 `.text` bytes**.
+**Current verified checkpoint:** **1,354 source-present mappings, 1,353
+strict units from 319 pinned object/receipt providers, and 649 distinct
+original authored whole-exact game functions /236,248 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

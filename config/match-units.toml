@@ -24203,3 +24203,44 @@ relocations = [
   { offset = 0xDD, type = "REL32", symbol = "?configure_438c60@NativeRibbonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
   { offset = 0xF0, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
 ]
+
+# CORE/RECON-923: entire original 88B ribbon palette and two true 31B
+# color/radius forwarding helpers; 3 independent whole original native heads.
+[units.animation_ribbon_palette_88]
+source = "src/AnimationRibbonPalette88.cpp"
+object = "build/core923-canonical/AnimationRibbonPalette88.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativeRibbonSegment::initialize_palette_45ec10"]
+symbol = "?initialize_palette_45ec10@NativeRibbonSegment@th20@@QAEXI@Z"
+target_address = 0x0045EC10
+size = 88
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "??0PackedColor@th20@@QAE@I@Z", target = 0x004142A0 },
+  { offset = 0x28, type = "REL32", symbol = "?forward_color_45dd20@NativeRibbonColorFields@th20@@QAEXPBUPackedColor@2@@Z", target = 0x0045DD20 },
+  { offset = 0x3C, type = "DIR32", symbol = "?native_polygon_radius32@th20@@3MB", target = 0x0056CD94 },
+  { offset = 0x4D, type = "REL32", symbol = "?forward_radius_45dd00@NativeRibbonRadiusFields@th20@@QAEXPBM@Z", target = 0x0045DD00 },
+]
+
+[units.animation_ribbon_color_forward_31]
+source = "src/AnimationRibbonPalette88.cpp"
+object = "build/core923-canonical/AnimationRibbonPalette88.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativeRibbonColorFields::forward_color_45dd20"]
+symbol = "?forward_color_45dd20@NativeRibbonColorFields@th20@@QAEXPBUPackedColor@2@@Z"
+target_address = 0x0045DD20
+size = 31
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?native_polygon_apply_color_45d430@th20@@YAXPAXHPBUPackedColor@1@@Z", target = 0x0045D430 },
+]
+
+[units.animation_ribbon_radius_forward_31]
+source = "src/AnimationRibbonPalette88.cpp"
+object = "build/core923-canonical/AnimationRibbonPalette88.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativeRibbonRadiusFields::forward_radius_45dd00"]
+symbol = "?forward_radius_45dd00@NativeRibbonRadiusFields@th20@@QAEXPBM@Z"
+target_address = 0x0045DD00
+size = 31
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?native_polygon_apply_radius_45d360@th20@@YAXPAXHPBM@Z", target = 0x0045D360 },
+]

@@ -1,5 +1,10 @@
 # CORE/RECON-922 — complete 252B ribbon group configuration Boss strictly exact
 
+> **CORE/RECON-923 follow-up:** The original 88B segment palette child
+> and both 31B forwarding wrappers are now [independently whole strict
+> exact](ANIMATION_RIBBON_PALETTE_88_31_STRICT_EXACT.md). This does not
+> change the previously accepted 252B canonical object or receipt.
+
 Locked Japanese TH20 Steamless v1.00a SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The original `0x0045EB10` is **252B /77-i386** of genuine

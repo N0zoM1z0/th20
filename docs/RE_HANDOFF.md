@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,351** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,350**, from **318** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **648 distinct function heads /236,160 original `.text` bytes** |
+| Source-present function mappings | **1,354** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,353**, from **319** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **649 distinct function heads /236,248 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -48,7 +48,7 @@ older local-variable names or assumptions.
 | **Animation VM update `0x0042B5D0`, 39,470B** | **SOURCE-ABSENT.** Parser and helper leaves already exist; interpreter parent remains unresolved. [Source map](SOURCE_MAP.md). |
 | **Animation 49-mode Draw `0x00443880`, 5,993B /1,501 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationDrawBoss.cpp`. Current candidate has original *length, mnemonic count and `0x204` frame* but **not identical code bytes**: 86/123 true E8 site/targets, 23/32 in-body HIGHLOW sites/targets. First mode35/36 inherited-scale x87 spill and later operand/stack slots remain wrong. Full 49+31 direct tables and exact backend children do not imply parent exact. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [focused role verifier](../scripts/verify-animation-draw-boss-source-roles.py). |
 
-| **Ribbon segment palette `0x0045EC10`, 88B** | **SOURCE-ABSENT/NONEXACT**. Its original three genuine E8 callers from the now independently whole-exact **252B ribbon configuration Boss** do not by themselves establish an exact 88B child. [252B native Boss](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). |
+| **Ribbon segment palette `0x0045EC10`, 88B** | **88B/29-i386 whole strict exact**, two real 31B color/radius forwarding children 31/31 exact; +0x2C/+0x51 native NOP, three original E8/one physical HIGHLOW 32.0f, three real 252B caller E8. **+88 game authored bytes**; 31B helpers origin unknown/uncredited. [Full source/PE/COFF proof](ANIMATION_RIBBON_PALETTE_88_31_STRICT_EXACT.md). |
 | **Polygon outline caller `0x0045FAA0`, 104B /36 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationPolygonMotionCall104.cpp` (102B /34 x86); original saves ESI and computes a stride before `Motion::position_ref`, whereas source computes it afterward. Eight source indexing variants did **not** fix it. Its 233B caller and 1,204B callee **are exact**, independently. [Caller frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md). |
 | **Rotated four-corner projection `0x0043EF20`, 1,486B /372 x86** | **SOURCE-PRESENT, NONEXACT**, `src/AnimationCornerRotated1486.cpp` (1,485B /371 x86). One genuine original NOP follows the Angle constructor; in-memory alignment is diagnostic **only**. The shared **96B 2×3×4 `.rdata` table is exact**. Do not fake compiler padding. [Original proof](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). |
 | **Player main `0x004F9C30`, 3,111B /783 x86** | **SOURCE-PRESENT, NONEXACT**, candidate 3,114B/783 x86; real register/stack/branch differences despite instruction-count agreement. [Operand frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md). |
@@ -85,7 +85,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | Ribbon original radius/vertex end helpers `0x0045DCA0` / `0x0045DCC0` | **19B/19B whole native exact**, true 60 float/60 Vector2 array ends. Confirmed two genuine E8 edges from now exact 538B updater. Authorship still unknown; no game-code credit. [Complete original and strict proofs](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md). |
 | Ribbon C++17 allocation factory `0x0045E5D0` | **156B/46-i386 whole native strict exact**, genuine 0xB60 allocation, `__autoclassinit2`, folded `std::forward`, real exact 89B group constructor, four original E8 and two HIGHLOW. Pointer-bearing +0xB5C natural type is compiler-corroborated, historic name/ownership unresolved; zero authored credit. Nine affected cold objects, eleven units **11/11 exact**. [Full original PE and native proof](ANIMATION_RIBBON_GROUP_FACTORY_156_STRICT_EXACT.md). |
 | Ribbon polymorphic group ctor `0x0045E6D0` plus generated destructor pair | **89B/25-i386 whole native strict exact**; original 0x56EDDC derived vtable, 3x0x3C0 array and Timer/float/tail members. Separate **20B ordinary folded destructor and 49B scalar-deleting wrapper whole strict exact** but excluded from authored game credit. **+89 game-authored bytes**; local 8 affected object/10 unit cold replay. [Entire native proof](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). |
-| Ribbon 252B config Boss and 23B segment index helper | Original **252B/77-i386 game-specific configuration** and complete **23B/9-i386 array index**, both whole strict exact. Eleven true native E8, zero HIGHLOW; **+252 authored game bytes**, 23B likely template uncredited. Separate 88B palette child remains open. [252B whole native proof](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). |
+| Ribbon 252B config Boss and 23B segment index helper | Original **252B/77-i386 game-specific configuration** and complete **23B/9-i386 array index**, both whole strict exact. Eleven true native E8, zero HIGHLOW; **+252 authored game bytes**, 23B likely template uncredited. The separate 88B palette child was subsequently accepted whole exact in CORE/RECON-923. [252B whole native proof](ANIMATION_RIBBON_GROUP_CONFIG_252_STRICT_EXACT.md). |
 | Ribbon allocation/configuration CDECL wrapper `0x0045EC70` | **47B/18-i386 whole strict exact**, native type marker/allocator global and real 156B factory/252B group configure E8; **+47 authored game bytes**. [Complete proof](ANIMATION_RIBBON_CONFIG_WRAPPER_47_STRICT_EXACT.md). |
 | Ribbon three-segment array ctor `0x0045E670` | **78B/27-i386 plus five genuine `INT3` whole strict exact**, real 3×0x3C0 C++20 array, independent EH-vector callback to 60B ctor. Compiler/STL attribution unknown, no new authored-game credit. [83B full proof](ANIMATION_RIBBON_SEGMENT_ARRAY_CTOR_78_STRICT_EXACT.md). |
 | Ribbon 60B segment constructor `0x0045D610` | **60B/20-i386 whole native exact**, real 60 Vector2/60 `AnimationHandle` word arrays, 60-float zeroing and actual original 78B parent callback; **+60 game authored bytes**. [Whole native proof](ANIMATION_RIBBON_SEGMENT_CTOR_60_STRICT_EXACT.md). |
@@ -134,7 +134,7 @@ stays `unknown/review`; **do not add them to authored game totals** without
 proof. Likewise the genuine 20B standard-header `round(float)` wrapper
 is `library/exclude`.
 
-Original ribbon **75B/75B position/color array constructors and 88B per-segment palette** remain independent native reconstruction candidates; do not claim exactness of these parents from the accepted 60B child.
+Original ribbon **75B/75B position/color array constructors** and backing 123B color/202B radius application functions remain separate native reconstruction targets; the 88B palette and its two 31B forwarding wrappers are now independently strict exact. Do not infer exactness of unaccepted native children from accepted parents.
 
 ## Working discipline and scoped validation
 
