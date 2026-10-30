@@ -1,5 +1,10 @@
 # CORE/RECON-911 — complete 140B ribbon-group update Boss strictly exact
 
+> **CORE/RECON-915 update:** The originally source-absent 538B per-segment
+> update child is now [independently whole strict exact](ANIMATION_RIBBON_SEGMENT_DYNAMICS_538_STRICT_EXACT.md).
+> The parent 140B exactness and earlier receipt do not change.
+
+
 > **CORE/RECON-912 follow-up:** The separate original **156B virtual draw
 > `0x0045EA20`** is now also [whole 156/156 native exact](ANIMATION_RIBBON_GROUP_DRAW_156_STRICT_EXACT.md).
 > This updates the earlier draw-NONEXACT observations below without changing

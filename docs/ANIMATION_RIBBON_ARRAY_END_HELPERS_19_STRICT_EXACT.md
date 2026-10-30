@@ -1,5 +1,11 @@
 # CORE/RECON-914 — 60-element ribbon point/radius array ends whole native exact, 538B original frontier
 
+> **CORE/RECON-915 update:** The earlier source-absent 538B parent is now
+> independently [whole 538/538 strict exact](ANIMATION_RIBBON_SEGMENT_DYNAMICS_538_STRICT_EXACT.md).
+> The previously accepted two 19B leaf receipts and origin decisions
+> are unchanged.
+
+
 Target: locked Japanese TH20 v1.00a Steamless image SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The native `0x0045E800` **538B/149-i386** ribbon segment dynamics Boss is

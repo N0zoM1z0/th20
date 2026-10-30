@@ -24020,3 +24020,39 @@ symbol = "?end_45dcc0@NativeRibbonPointSpan@th20@@QAEPAUVector2@2@XZ"
 target_address = 0x0045DCC0
 size = 19
 relocations = []
+
+# CORE/RECON-915: complete native 538B ribbon-segment dynamics Boss.
+# Original single 60-element random/clamped radius loop and polar vertex loop.
+[units.animation_ribbon_segment_dynamics_538]
+source = "src/AnimationRibbonSegmentDynamics538.cpp"
+object = "build/core915-canonical/AnimationRibbonSegmentDynamics538.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRibbonSegment::update_ribbon_45e800"]
+symbol = "?update_ribbon_45e800@NativeRibbonSegment@th20@@QAEXM@Z"
+target_address = 0x0045E800
+size = 538
+relocations = [
+  { offset = 0x01A, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x035, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x040, type = "REL32", symbol = "?end_45dca0@NativeRibbonScalarSpan@th20@@QAEPAMXZ", target = 0x0045DCA0 },
+  { offset = 0x065, type = "DIR32", symbol = "?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A", target = 0x005BA4C4 },
+  { offset = 0x06A, type = "REL32", symbol = "?signed_unit@GameRandom@th20@@QAEMXZ", target = 0x004298E0 },
+  { offset = 0x07A, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x0A9, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x0C2, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x0D8, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x0ED, type = "DIR32", symbol = "?native_four@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x111, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+  { offset = 0x120, type = "REL32", symbol = "?position_ref@Motion@th20@@QAEAAUVector3@2@XZ", target = 0x0040BDA0 },
+  { offset = 0x12B, type = "REL32", symbol = "?end_45dcc0@NativeRibbonPointSpan@th20@@QAEPAUVector2@2@XZ", target = 0x0045DCC0 },
+  { offset = 0x163, type = "REL32", symbol = "??A?$array@M$0DM@@std@@QAEAAMI@Z", target = 0x00414580 },
+  { offset = 0x174, type = "REL32", symbol = "??BAngle@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x196, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x1A1, type = "DIR32", symbol = "?native_pi@th20@@3MB", target = 0x0056E0F0 },
+  { offset = 0x1A9, type = "DIR32", symbol = "?native_two@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1B1, type = "DIR32", symbol = "?native_fifty_nine@th20@@3MB", target = 0x0056EE48 },
+  { offset = 0x1BF, type = "REL32", symbol = "??YAngle@th20@@QAEAAU01@M@Z", target = 0x004530C0 },
+  { offset = 0x1DD, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0DM@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+  { offset = 0x1F8, type = "REL32", symbol = "??A?$array@UVector2@th20@@$0DM@@std@@QAEAAUVector2@th20@@I@Z", target = 0x0045D670 },
+  { offset = 0x20D, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
