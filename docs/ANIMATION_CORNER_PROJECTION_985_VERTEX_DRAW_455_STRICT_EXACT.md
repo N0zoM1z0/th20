@@ -86,10 +86,12 @@ mode-specific multiplication order, four separate X/Y corner source
 transformations, four `Vector3::operator+=` calls to the original
 world-position global, and exactly four Z stores of the original
 `Animation+0x34`, `+0x5C4`, `+0x48C` combined depth. The original
-96B table is currently an external source declaration; this result
-**does not claim** that the table definition/linkage or whole game
-linkability has been completed. Its physical data owner and all
-original references are now independently established.
+96B table is now also defined by natural source with **96/96 exact
+`.rdata` bytes**; see [CORE/RECON-878](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md).
+This is a separate native data result, not original `.text` code
+credit and not a claim that whole game linkability is completed.
+Its physical data owner and original references are independently
+established.
 
 ## Two different, complete 455B vertex submission functions
 

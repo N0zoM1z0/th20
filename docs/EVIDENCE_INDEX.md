@@ -1,11 +1,12 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-876):**
+**Current next-agent reading order (CORE/RECON-878):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[complete original 96B exact corner data and near-native 1486B rotated-corner NONEXACT source](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md) ->
 [whole strict original 985B four-corner projector and two 455B colored draw functions](ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md) ->
 [whole strict original 375B point, 809B alternating fan and 583B alternating line](ANIMATION_SHAPE_FINAL_THREE_375_809_583_STRICT_EXACT.md) ->
 [whole strict original 660B ellipse outline and 863B elliptic fan](ANIMATION_SHAPE_ELLIPTIC_660_863_STRICT_EXACT.md) ->
@@ -35,7 +36,7 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,274 source-present /1,275
+The **live** verified status on October 30 is **1,275 source-present /1,275
 strict units from 293 object/receipt providers, 628 authored-game exact whole
 functions /231,537 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
@@ -60,6 +61,10 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Original 96B quad corner anchor `.rdata` now exact; whole 1,486B rotated corner Boss source (NONEXACT)
+
+- [CORE/RECON-878 — real 96B/24-float 2-axis ×3-mode ×4-corner data source exactly matches original game `.rdata`, and entire 1,486B rotated projection Boss source frontier](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md) — original PE proves the full 96B at `0x56E140` SHA-256 `8621c0...`, **96/96 compiled COFF data bytes** under one authentic external C++ symbol, plus entire **1,486B/372-i386** rotated game method, original **13 E8 +9 HIGHLOW** physical roles and two real game callers. Natural C++ parent is still **1,485B/371-x86 NONEXACT**; MSVC does not naturally emit the original single `NOP` after Angle ctor at `+0x41` despite 12 source initialization and three compiler-profile probes. Only a private in-memory alignment diagnostic matches **1,398/1,398 other nonrelocation bytes**; no patch, fake strict unit or new code credit. Source-present count **1,275**, original whole code remains **628 heads /231,537 bytes, 1,275 strict units /293 objects**. Only affected old exact 985B source rebuilt; no global cold replay.
 
 ## Whole original 985B quad projection and two independent 455B colored vertex methods now strict exact
 

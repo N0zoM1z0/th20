@@ -49,7 +49,7 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,274
+At the October 30, 2026 checkpoint the maintained graph has **1,275
 source-present mappings**, **1,275 strict canonical native units** and
 **293 canonical MSVC object/receipt providers**. Independently verified
 game-authored whole-function exactness is **628 complete functions /
@@ -63,6 +63,7 @@ for the live inventory and consult the
 | --- | --- |
 | Large game-original exact bodies | [11,110B ECL Runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter /3,832B complete compiler extent](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice poll](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), [456B Animation handle resolver](docs/ANIMATION_POOL_RESOLVER_456_STRICT_EXACT_RECONSTRUCTION.md), [1,404B Bullet command-11](docs/BULLET_COMMAND11_1404_EXACT_RECONSTRUCTION.md), [1,036B LZSS compressor](docs/ARCHIVE_LZSS_COMPRESS_1036_EXACT_RECONSTRUCTION.md) and [73B Animation factory](docs/ANIMATION_FACTORY_73_CLASS_TAG_STRICT_EXACT_RECONSTRUCTION.md) are **whole native strict exact**. |
 | Animation closed five-vertex line-strip Boss | [Whole original 2,169B/533-x86 game line-strip renderer, 2,169/2,169B whole strict native exact](docs/ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md), real typed 5×20B vertices and native D3D9 `LINESTRIP=3` (not triangle fan). All 12 E8 and 17 HIGHLOW original site/destinations attested, no duplicate 78B callee/1,980B sibling or 5,993B main Draw parent credit. |
+| Animation exact corner anchor data and rotated-corner Boss frontier | [Original 96B quad anchor `.rdata` now true source-defined and exactly identical; 1,486B rotated projection whole semantic source remains NONEXACT](docs/ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md). The original real `Angle` post-constructor NOP at +0x41 is absent from natural 1,485B candidate despite matching all 13 call/9 data roles; no forged strict unit or code byte credit. |
 | Animation four-corner projection Boss | [Whole original 985B/233-x86 genuine 2×3×4 corner geometry and strict 985/985 native bytes](docs/ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md), original six E8/13 PE HIGHLOW roles and original 96B fixed mode-indexed table; enclosing game Draw parent remains NONEXACT. |
 | Animation colored-vertex fan and line methods | [Two independent whole original 455B/129-i386 TRIANGLEFAN and LINESTRIP strict exact functions](docs/ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md), original 4 E8/3 PE HIGHLOW roles each, true count thresholds and D3D9 type6 versus type3. |
 | Animation single-vertex POINTLIST renderer | [Whole original 375B/100-i386 game POINTLIST strict native exact](docs/ANIMATION_SHAPE_FINAL_THREE_375_809_583_STRICT_EXACT.md), typed fixed-pool vertex[0], 5 actual E8/4 PE HIGHLOW site/targets and complete 375/375 bytes. |

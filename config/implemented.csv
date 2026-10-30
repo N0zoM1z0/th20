@@ -1272,3 +1272,4 @@ th20::AnimationDrawDetailedOwner::draw_shape_43dce0
 th20::NativeAnimationCornerProjector::project_corners_43eb40
 th20::AnimationDrawDetailedOwner::draw_vertex_fan_43cb70
 th20::AnimationDrawDetailedOwner::draw_vertex_line_43d1a0
+th20::NativeAnimationCornerProjector::project_rotated_corners_43ef20

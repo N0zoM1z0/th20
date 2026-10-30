@@ -2,22 +2,14 @@
 // Two genuine typed 3x4 angle-axis arrays and 16B mode indexing, original
 // 6 E8 and 13 PE HIGHLOW physical roles and full 985/985 original bytes.
 // Original saved ECX receiver is unused; source class name is provisional.
-#include "Animation.hpp"
+#include "AnimationCornerProjectionOwner.hpp"
 #include "AnimationFile.hpp"
 #include "WindowState.hpp"
 #include "Vector3.hpp"
 #include <cstdint>
 
 namespace th20 {
-struct NativeQuadAxisLayout { float corners[3][4]; };
-extern const NativeQuadAxisLayout native_quad_axis_layout[2];
 extern const float native_half;
-extern Vector3 native_projection_world_position;
-
-struct NativeAnimationCornerProjector {
-    void project_corners_43eb40(Animation* animation,
-                                Vector3* a, Vector3* b, Vector3* c, Vector3* d);
-};
 
 void NativeAnimationCornerProjector::project_corners_43eb40(
         Animation* animation, Vector3* a, Vector3* b, Vector3* c, Vector3* d) {
