@@ -1,11 +1,11 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-834):**
+**Current next-agent reading order (CORE/RECON-835):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
-[current 49+31 original-pointer Animation draw Boss and ABI frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_80_TABLE_ABI_FRONTIER.md) ->
+[current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
 The **live** verified status on October 30 is **1,239 source-present /1,240
@@ -29,6 +29,10 @@ earlier 1,253/1,689-line handoffs are also in Git history. The concise
 [handoff](RE_HANDOFF.md) is **the sole current status/priority page**.
 Compiler scores labelled "current" in historical entries below mean
 **current at that checkpoint**, not the live source or accepted count.
+
+## 5,993B Animation Draw Boss: original executable length, i386 count and 0x204 stack recovered (still NONEXACT)
+
+- [CORE/RECON-835 — complete original 5,993B/1,501-x86 renderer draw parent and naturally equal-sized C++ source](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) — pinned source is now **5,993B/1,501 genuine x86, `sub esp,0x204`**, with **original 3B alignment and same 80 49+31 direct switch-pointer field positions** (full **6,316B** compiler contribution). All **123** original E8 targets in actual original physical order, first **81** contiguous sites and **86/123** total original E8 site/target pairs identical; **32/32** original body PE HIGHLOW target multiplicities, **23/32 exact field/target locations**. Natural per-case **used** color/count/height-half/auxiliary-value evaluation sequences for modes35/36, 29/30, 46 correct compiler hoisting; rejected a private trial with an otherwise unconsumed x87 return-spill local rather than add a fake compiler-shaping statement. **NONEXACT**: only **3,819/5,376 nonrelocation bytes** equal, nine data-field locations and real x87/branch code differ. Prior CORE/RECON-834 6,085B/1,514 candidate is historical; **zero new original game exact credit and zero affected canonical units**, only one focused noncanonical MSVC compile.
 
 ## Original 5,993B Animation Draw Boss: exact 80-mode pointer structure and native backend ABI recovered (parent NONEXACT)
 

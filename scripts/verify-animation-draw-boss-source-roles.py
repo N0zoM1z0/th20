@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Independently attest full 5,993B Animation Draw Boss source/PE roles.
 
-The maintained one-method C++ has two original physical switch tables:
-49 direct main case pointers and 31 nested pointers, each preserving native
-mode aliasing. The original 123 E8 call roles and *their complete order*,
-32 original in-body HIGHLOW targets and original thiscall stack contracts
-are checked against one pinned-MSVC source/object. Still NONEXACT: the whole
-parent executable bytes and relocated field sites do not yet match.
+The pinned-MSVC C++ emits a full 5993B/1501-x86 executable body and two
+original 49+31-pointer switch tables, preserving native case aliasing and
+exact physical table alignment. All 123 E8 call roles agree in native order;
+86 physical call positions match (81 consecutive), and 23/32 original PE
+body data relocation offsets/targets coincide. The native 0x204 frame is
+matched, but real instruction/branch/relocation bytes still differ:
+this remains SOURCE-PRESENT, NONEXACT, not a canonical match unit.
 """
 from collections import Counter
 import csv
@@ -34,7 +35,7 @@ def load_module(name: str, path: Path):
 COFF = load_module("native_compare", ROOT / "scripts/compare-coff-function.py")
 ORIGINAL = load_module("native_draw_boss", ROOT / "scripts/verify-animation-draw-boss-native.py")
 SOURCE = ROOT / "src/AnimationDrawBoss.cpp"
-OUTPUT = ROOT / "build/core834-probe/AnimationDrawBoss.obj"
+OUTPUT = ROOT / "build/core835-probe/AnimationDrawBoss.obj"
 SYMBOL = "?draw@AnimationPoolOwner@th20@@QAEHPAVAnimation@2@@Z"
 HEAD = 0x00443880
 SIZE = 5993
@@ -139,14 +140,18 @@ def main():
     marker = bytes.fromhex("c204000f1f00")
     assert compiled.count(marker) == 1
     code_end = compiled.index(marker) + 3
-    assert code_end == 6085
+    assert code_end == SIZE == 5993
     assert compiled[code_end:code_end+3] == bytes.fromhex("0f1f00")
-    assert len(compiled) == 6408
+    assert len(compiled) == 6316
     code = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(compiled[:code_end], HEAD))
-    assert len(code)==1514
+    assert len(code)==len(native)==1501
+    assert code[2].mnemonic=="sub" and code[2].op_str=="esp, 0x204"
+    assert native[2].mnemonic=="sub" and native[2].op_str=="esp, 0x204"
     assert code[-1].address+code[-1].size == HEAD+code_end
     assert code[-1].mnemonic=="ret" and code[-1].op_str=="4"
     assert len(compiled)-code_end == 3+49*4+31*4
+    assert ORIGINAL.MAIN_TABLE-HEAD == code_end+3
+    assert ORIGINAL.SUB_TABLE-HEAD == code_end+3+49*4
     table_relocs=sorted((r for r in relocations if r["type"]=="DIR32" and
                         r["offset"]>=code_end), key=lambda r:r["offset"])
     assert len(table_relocs)==80
@@ -176,8 +181,9 @@ def main():
         for address in sorted(set(native_calls) | set(source_calls))
         if native_calls[address] != source_calls[address]
     ]
-    # The first 81 E8 physical byte offsets and *all 123* E8 target ordering
-    # match exactly; later offsets still differ (parent NONEXACT).
+    # The first 81 E8 instruction offsets and all 123 physical target roles
+    # agree; 86 of the 123 physical E8 positions agree across the entire
+    # original code, including the compiler cookie. This is NOT full exact.
     physical_calls=[(inst.address-HEAD,
            (inst.address+5+struct.unpack_from('<i',inst.bytes,1)[0])&0xffffffff)
            for inst in native if len(inst.bytes)==5 and inst.bytes[0]==0xE8]
@@ -187,6 +193,10 @@ def main():
     assert [value for _,value in physical_calls] == [value for _,value in candidate_calls]
     assert physical_calls[:81]==candidate_calls[:81]
     assert physical_calls!=candidate_calls
+    matched_call_sites=sum(a==b for a,b in zip(physical_calls,candidate_calls))
+    assert matched_call_sites==86
+    assert physical_calls[-1]==candidate_calls[-1]  # real compiler cookie
+
 
     assert chosen_render_targets <= set(source_calls), chosen_render_targets - set(source_calls)
 
@@ -231,6 +241,41 @@ def main():
         0xA,0x7B,0xA2,0x23E,0x254,0x301,0x323,0x44E,
         0x460,0x491,0x499,0x4AB,0x4B3,0x4E7,
     ]
+    original_data_sites={
+        site-HEAD:struct.unpack('<I',ORIGINAL.raw_at(exe,base,sections,site,4))[0]
+        for site in reloc_sites if HEAD<=site<HEAD+SIZE
+    }
+    native_site_roles={
+        offset:('table_main' if value==ORIGINAL.MAIN_TABLE else
+                'table_nested' if value==ORIGINAL.SUB_TABLE else value)
+        for offset,value in original_data_sites.items()
+    }
+    current_site_roles={}
+    for row in body_dirs:
+        sym=row['symbol'];addend=int(row['addend'])
+        if '?native_two@' in sym:target=0x0056C8D0+addend
+        elif '?process_graphics@' in sym:target=0x005C4D40+addend
+        elif '?window_state@' in sym:target=0x005B6758+addend
+        elif sym=='__real@3f000000':target=0x0056E0EC+addend
+        elif sym=='___security_cookie':target=0x005B25C0+addend
+        else:
+            assert sym.startswith('$LN')
+            target='table_main' if row['offset']<0x400 else 'table_nested'
+        current_site_roles[row['offset']]=target
+    matched_data_sites=len(set(native_site_roles.items())&set(current_site_roles.items()))
+    assert matched_data_sites==23 and len(native_site_roles)==len(current_site_roles)==32
+
+    # Compare code and after-RET data as a provisional strict-replay
+    # diagnostic: no relocation targets are solved from original bytes.
+    # Structural agreement alone is not canonical exact acceptance.
+    original_extent=COFF.pe_bytes_at(exe,HEAD,len(compiled))
+    ignored=set()
+    for row in relocations:
+        ignored.update(range(int(row['offset']),int(row['offset'])+4))
+    comparable_bytes=sum(original_extent[i]==compiled[i]
+                         for i in range(len(compiled)) if i not in ignored)
+    assert comparable_bytes==3819 and len(compiled)-len(ignored)==5376
+
 
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),
                                              (ORIGINAL.SUB_TABLE, 31))
@@ -239,11 +284,11 @@ def main():
     print("PASS original complete 5,993B/1,501-i386 draw Boss native PE census")
     print("PASS full 49-main +31-nested pointer alias partitions, all 80/80 true direct COFF entries (no 49-byte compression index)")
     print("PASS all 123 original E8 target roles in original physical sequence, 43 distinct target addresses")
-    print("PASS first 81/123 E8 call targets AND exact relative instruction sites")
-    print("PASS all 32 native PE in-body HIGHLOW target-role counts, first 14 body relocation sites aligned")
+    print(f"PASS first 81 consecutive E8 instruction sites and {matched_call_sites}/123 complete original E8 physical positions (all 123 targets in order)")
+    print(f"PASS 32/32 native PE in-body HIGHLOW roles, {matched_data_sites}/32 exact site/target pairs")
     print("PASS mode6 native thiscall and two original eight-parameter draw helper receiver/stack roles are in source")
-    print(f"NONEXACT current pinned MSVC body {code_end}B/{len(code)} x86 vs original {SIZE}B/{len(native)}; entire COFF {len(compiled)}B including 3B NOP and 80 case pointers")
-    print("NONEXACT parent: remaining nested-case local lifetime and stack/branch/relocation offsets differ; no new game exact credit")
+    print(f"PASS candidate code {code_end}B/{len(code)} x86 with native stack frame 0x204; complete COFF {len(compiled)}B including 3B alignment+80 true pointer fields")
+    print(f"NONEXACT parent: only {comparable_bytes}/5376 nonrelocation bytes equal; remaining nested-case local life and relocation offsets differ; zero game exact credit")
 
 
 if __name__ == "__main__":

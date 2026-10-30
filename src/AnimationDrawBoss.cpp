@@ -2,10 +2,11 @@
 // immutable 5,993-byte original at 0x00443880. SOURCE-PRESENT NONEXACT:
 // original 123 E8 calls, 49+31 genuine pointer tables and 32 in-body PE
 // relocation target roles are independently known. Current source compiles
-// to both real switch pointer partitions, all 123 original call roles in
-// original physical order (first 81 also at exact E8 instruction sites),
-// and all 32 original data target-role counts. It is still NONEXACT:
-// whole-parent native bytes/frame and later site locations differ.
+// to both real switch pointer partitions and the native 5993B/1501-x86
+// body length, 0x204 frame, all 123 call roles in physical order (81-site
+// exact prefix; 86 physical E8 sites total), and all 32 original data roles
+// (23 absolute relocation sites aligned). The other bytes still differ:
+// same size and instruction count do NOT imply native exactness.
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
 #include "AnimationDrawModeOwner.hpp"
@@ -268,30 +269,61 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     case 34:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780((position.x),(position.y),animation_inherited_aux_scale_x(animation),width,height,angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
-    case 35:
-        // Original computes auxiliary inherited scale twice in this mode.
+    case 35: {
+        // The native calls inherited-scale twice, then color494/color490,
+        // then the second scale within the size expression. Preserve that
+        // observable order and the two separate original /2 operations.
         animation_inherited_aux_scale_x(animation);
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780((position.x),(position.y),animation_inherited_aux_scale_x(animation)+(height / native_two),width+(height / native_two),height,
-                                     angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
+        const auto second_color=animation_draw_color_494(animation);
+        const auto first_color=animation_draw_color_490(animation);
+        const auto quad_count=animation->base.variables.field_00;
+        const float aux_half=height/native_two;
+        const float adjusted_scale=animation_inherited_aux_scale_x(animation)+aux_half;
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780(
+            position.x,position.y,adjusted_scale,width+(height/native_two),height,
+            angle,quad_count,first_color,second_color);
         break;
-    case 36:
-        // Original computes auxiliary inherited scale twice in this mode.
+    }
+    case 36: {
+        // Same native double inherited-scale call order as mode35, but with
+        // subtraction for both real width and auxiliary-scale arguments.
         animation_inherited_aux_scale_x(animation);
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780((position.x),(position.y),animation_inherited_aux_scale_x(animation)-(height / native_two),width-(height / native_two),height,
-                                     angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
+        const auto second_color=animation_draw_color_494(animation);
+        const auto first_color=animation_draw_color_490(animation);
+        const auto quad_count=animation->base.variables.field_00;
+        const float aux_half=height/native_two;
+        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-aux_half;
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780(
+            position.x,position.y,adjusted_scale,width-(height/native_two),height,
+            angle,quad_count,first_color,second_color);
         break;
+    }
     case 18:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43bc60((position.x),(position.y),width,angle,(animation->base.variables.field_00),animation_draw_color_490(animation));
         break;
     case 19:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43be80((position.x),(position.y),width,height,angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
-    case 29:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43be80((position.x),(position.y),width + (height / native_two),height,angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
+    case 29: {
+        // Original getters run before the size expression. These are the
+        // actual passed colors/count, not codegen-only temporary values.
+        const auto second_color=animation_draw_color_494(animation);
+        const auto first_color=animation_draw_color_490(animation);
+        const auto quad_count=animation->base.variables.field_00;
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43be80(
+            position.x,position.y,width + (height/native_two),height,angle,
+            quad_count,first_color,second_color);
         break;
-    case 30:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43be80((position.x),(position.y),width - (height / native_two),height,angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
+    }
+    case 30: {
+        const auto second_color=animation_draw_color_494(animation);
+        const auto first_color=animation_draw_color_490(animation);
+        const auto quad_count=animation->base.variables.field_00;
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43be80(
+            position.x,position.y,width - (height/native_two),height,angle,
+            quad_count,first_color,second_color);
         break;
+    }
     case 32:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43d830((position.x),(position.y),animation_draw_color_490(animation));
         break;
@@ -308,10 +340,19 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width+(height / native_two),animation_inherited_aux_scale_x(animation)+(height / native_two),height,
                                      angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
-    case 46:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width-(height / native_two),animation_inherited_aux_scale_x(animation)-(height / native_two),height,
-                                     angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
+    case 46: {
+        // Original color/count calls are evaluated before the inherited
+        // scale; the width expression is evaluated when passed to renderer.
+        const auto secondary_color=animation_draw_color_494(animation);
+        const auto primary_color=animation_draw_color_490(animation);
+        const auto quad_count=animation->base.variables.field_00;
+        const float half_for_scale=height/native_two;
+        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-half_for_scale;
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
+            position.x,position.y,width-(height/native_two),adjusted_scale,height,
+            angle,quad_count,primary_color,secondary_color);
         break;
+    }
     default:
         break;
     }

@@ -1074,7 +1074,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00441C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00441F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00443020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00443880,authored,Animation,authored,high,"CORE/RECON-834; docs/ANIMATION_DRAW_BOSS_5993_NATIVE_80_TABLE_ABI_FRONTIER.md; original independently original-PE-attested 5993B game drawn main 49 and nested31 control-flow tables, 123 E8 real destinations and 32 PE HIGHLOW; typed source recovers true mode6 thiscall and two backend 32B call contracts; compiled 49+31 direct pointer tables and full ordered native E8 role graph, still NONEXACT game parent"
+0x00443880,authored,Animation,authored,high,"CORE/RECON-835; docs/ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md; full original 5993B/1501 Animation draw Boss owner, source-present typed game function but still NONEXACT. Physical 49+31 PE pointer tables, 123 E8 ordered roles, 32 body HIGHLOW target roles independently verified; pinned C++ native-sized 5993B/1501 x86 and 0x204 frame, only 86/123 E8 and 23/32 body relocation physical sites match; zero game parent exact credit"
 0x00445130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00445350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004455C0,authored,Animation,authored,high,"CORE/RECON-790; docs/ANIMATION_DRAW_QUEUE_FLUSH_192_STRICT_EXACT_RECONSTRUCTION.md; original complete 192B 55 x86, actual 2 genuine PE HIGHLOW process Graphics and 2 original E8 device getter identities plus DrawPrimitiveUP virtual D3D9 slot 0x14C, queue protocol independently original; game-owned strict physical bytes complete."
