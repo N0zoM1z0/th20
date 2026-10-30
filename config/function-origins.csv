@@ -1636,7 +1636,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045EFF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045F010,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045F050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045F0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045F0A0,unknown,Animation,review,pending,"CORE/RECON-903; docs/ANIMATION_POLYGON_GROUP_FACTORY_156_NATIVE_EXACT.md; original C++17 class auto-init & std::forward factory template, whole 156B strict exact; compiler-template vs handwritten origin unproven"
 0x0045F140,unknown,Animation,review,pending,"CORE/RECON-902; docs/ANIMATION_POLYGON_DROP_CLOSURE_27_STRICT_EXACT.md; full 0x0045F140 PE/COFF accepted C++20 range helper, compiler/template provenance unproven; no authored-game credit"
 0x0045F170,unknown,Animation,review,pending,"CORE/RECON-902; docs/ANIMATION_POLYGON_DROP_CLOSURE_27_STRICT_EXACT.md; full 0x0045F170 PE/COFF accepted C++20 range helper, compiler/template provenance unproven; no authored-game credit"
 0x0045F190,unknown,Animation,review,pending,"CORE/RECON-902; docs/ANIMATION_POLYGON_DROP_CLOSURE_27_STRICT_EXACT.md; full 0x0045F190 PE/COFF accepted C++20 range helper, compiler/template provenance unproven; no authored-game credit"

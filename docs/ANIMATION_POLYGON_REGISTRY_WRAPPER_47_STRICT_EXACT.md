@@ -1,5 +1,7 @@
 # CORE/RECON-892 — whole original 47B registry-to-polygon configuration wrapper strict exact
 
+> **CORE/RECON-903 correction:** The original `0x0045F0A0` 156B function is now [whole strict exact as the C++17 diagnostic allocator factory](ANIMATION_POLYGON_GROUP_FACTORY_156_NATIVE_EXACT.md), **not** a registry resolver. The original global `0x005B8894` is `process_allocator` and the old `NativePolygonRegistryOwner` name was provisional. The 47B wrapper retains all original byte/relocation roles after correction. Historical labels below document the earlier hypothesis only.
+
 The immutable Japanese TH20 v1.00a Steamless original executable has
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The original cdecl wrapper at **`0x0045FD10`** now has a natural C++

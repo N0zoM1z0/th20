@@ -12,17 +12,11 @@
 #include "Vector3.hpp"
 #include "Vector2.hpp"
 #include "Timer.hpp"
-#include "NativePolygonSegmentSlot.hpp"
+#include "NativePolygonMotionGroup.hpp"
+#include "DiagnosticObjectFactories.hpp"
 #include <cstddef>
 #include <cstdint>
 namespace th20 {
-
-struct NativePolygonSegmentArray {
-    NativePolygonSegmentSlot segments[3];
-    NativePolygonSegmentSlot* at(std::int32_t index);
-    NativePolygonSegmentSlot* end();
-};
-static_assert(sizeof(NativePolygonSegmentArray)==0xB7C);
 
 NativePolygonSegmentSlot* NativePolygonSegmentArray::at(std::int32_t index) {
     return &segments[index];
@@ -32,44 +26,9 @@ NativePolygonSegmentSlot* NativePolygonSegmentArray::end() {
         reinterpret_cast<std::uint8_t*>(this) + sizeof(segments));
 }
 
-// The real original input has Vector3 at +0, control word at +0x24
-// and the original position-choice byte at +0x28.
-struct NativePolygonGroupOptions {
-    Vector3 position;
-    std::uint8_t unresolved_0c_to_24[0x18];
-    std::uint32_t control_24;
-    std::uint8_t choose_animation_28;
-};
-static_assert(offsetof(NativePolygonGroupOptions,control_24)==0x24);
-static_assert(offsetof(NativePolygonGroupOptions,choose_animation_28)==0x28);
-
 struct NativePolygonAnimationConfigView {
-    // Original 86B Animation call takes two integers then two byte values.
     void configure_438c60(std::int32_t, std::int32_t, std::uint8_t, std::uint8_t);
 };
-
-struct NativePolygonMotionGroup {
-    std::uint32_t native_field_00;
-    Animation* animation_04;
-    NativePolygonSegmentArray segments_08;
-    std::uint32_t control_b84;
-    Timer timer_b88;
-    std::uint32_t value_b98;
-    Vector3 saved_position_b9c;
-    std::uint8_t use_animation_position_ba8;
-
-    std::int32_t tick_polygon_group_45f5e0();
-    std::int32_t draw_motion_group_45f9b0();
-    std::int32_t configure_group_45fb60(const NativePolygonGroupOptions& config,
-                                       std::int32_t value);
-};
-static_assert(offsetof(NativePolygonMotionGroup,animation_04)==4);
-static_assert(offsetof(NativePolygonMotionGroup,segments_08)==8);
-static_assert(offsetof(NativePolygonMotionGroup,control_b84)==0xB84);
-static_assert(offsetof(NativePolygonMotionGroup,timer_b88)==0xB88);
-static_assert(offsetof(NativePolygonMotionGroup,value_b98)==0xB98);
-static_assert(offsetof(NativePolygonMotionGroup,saved_position_b9c)==0xB9C);
-static_assert(offsetof(NativePolygonMotionGroup,use_animation_position_ba8)==0xBA8);
 
 // Complete original game 140B/46-x86 polygon dynamic dispatch Boss.
 // The following 4 PE INT3 bytes are alignment, not game function code.
@@ -149,20 +108,19 @@ std::int32_t NativePolygonMotionGroup::configure_group_45fb60(
     return 0;
 }
 
-// Genuine original 47B/18-i386 cdecl registry-to-polygon configuration
-// wrapper. Its true return is the int32_t EAX from the 296B game method;
-// treating this wrapper as void emits a nonoriginal extra NOP.
-struct NativePolygonRegistryOwner {
-    NativePolygonMotionGroup* resolve_45f0a0(const std::uint8_t*,std::uint32_t);
-};
-extern NativePolygonRegistryOwner* native_polygon_registry_5b8894;
+// Genuine original 47B/18-i386 allocation-to-polygon configuration.
+// The global at 0x005B8894 is the actual DiagnosticAllocator instance,
+// not a registry. The 156B C++17 scalar factory has one separate owner.
 extern const std::uint8_t native_polygon_type_marker_56ee68[];
+extern template NativePolygonMotionGroup* DiagnosticAllocator::allocate_object<
+    NativePolygonMotionGroup, std::uint32_t>(const char*, std::uint32_t);
 
 std::int32_t __cdecl configure_polygon_group_45fd10(
         std::uint32_t handle, const NativePolygonGroupOptions* options,
         std::int32_t value) {
-    NativePolygonMotionGroup* group = native_polygon_registry_5b8894->resolve_45f0a0(
-        native_polygon_type_marker_56ee68, handle);
+    NativePolygonMotionGroup* group = process_allocator->allocate_object<
+        NativePolygonMotionGroup, std::uint32_t>(
+            reinterpret_cast<const char*>(native_polygon_type_marker_56ee68),handle);
     return group->configure_group_45fb60(*options,value);
 }
 } // namespace th20

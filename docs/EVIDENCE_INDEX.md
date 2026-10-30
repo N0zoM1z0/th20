@@ -61,8 +61,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,328 source-present mappings, 1,327
-strict units from 300 pinned object/receipt providers, and 638 distinct
+**Current verified checkpoint:** **1,329 source-present mappings, 1,328
+strict units from 301 pinned object/receipt providers, and 638 distinct
 original authored whole-exact game functions /234,629 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
@@ -87,6 +87,10 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Original polygon 156B C++17 allocation factory whole strict exact
+
+- [CORE/RECON-903 — original complete 156B/46-i386 group diagnostic allocator template factory strict exact](ANIMATION_POLYGON_GROUP_FACTORY_156_NATIVE_EXACT.md). Original-only PE verifies **four E8 absolute call destinations** (`operator new`, class zero-init, `std::forward`, 113B group constructor) and **two HIGHLOW** EH/cookie fields. Natural typed original `class NativePolygonMotionGroup` at 0xBAC and C++17 `/sdl` compiler generate **156/156 complete canonical bytes**; corrected original 47B group wrapper now calls the genuine diagnostic allocator global at `0x5B8894` and stays **47/47 exact**. Affected-only **7/7 units, two cold objects**, no broad replay; the new template function remains `origin=unknown/review`, no authored-game code credit. Live 1,329 source/1,328 strict/301 objects, authored unchanged 638/234,629B.
 
 ## Polygon 27 native C++20 STL range closure helpers whole strict exact
 

@@ -1326,3 +1326,4 @@ th20::native_polygon_std_range_0045fe60
 th20::native_polygon_std_range_0045fe90
 th20::native_polygon_std_range_00460000
 th20::native_polygon_std_range_00460020
+"th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,std::uint32_t>"

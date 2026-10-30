@@ -23237,8 +23237,8 @@ target_address = 0x0045FD10
 size = 47
 relocations = [
   { offset = 0x9, type = "DIR32", symbol = "?native_polygon_type_marker_56ee68@th20@@3QBEB", target = 0x0056EE68 },
-  { offset = 0xF, type = "DIR32", symbol = "?native_polygon_registry_5b8894@th20@@3PAUNativePolygonRegistryOwner@1@A", target = 0x005B8894 },
-  { offset = 0x14, type = "REL32", symbol = "?resolve_45f0a0@NativePolygonRegistryOwner@th20@@QAEPAUNativePolygonMotionGroup@2@PBEI@Z", target = 0x0045F0A0 },
+  { offset = 0xF, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x14, type = "REL32", symbol = "??$allocate_object@VNativePolygonMotionGroup@th20@@I@DiagnosticAllocator@th20@@QAEPAVNativePolygonMotionGroup@1@PBDI@Z", target = 0x0045F0A0 },
   { offset = 0x27, type = "REL32", symbol = "?configure_group_45fb60@NativePolygonMotionGroup@th20@@QAEHABUNativePolygonGroupOptions@2@H@Z", target = 0x0045FB60 },
 ]
 
@@ -23814,4 +23814,23 @@ target_address = 0x00460020
 size = 25
 relocations = [
   { offset = 0xE, type = "REL32", symbol = "??$?RAAV?$array@UVector2@th20@@$0DN@@std@@@_Cpo@_Size@ranges@std@@SA?A_PAAV?$array@UVector2@th20@@$0DN@@3@@Z", target = 0x0045EED0 },
+]
+
+# CORE/RECON-903: original full C++17 diagnostic allocator factory;
+# 156B/46 x86, four real E8 and two true PE HIGHLOW roles, all exact.
+[units.animation_polygon_group_factory_156]
+source = "src/AnimationPolygonMotionGroupFactory156.cpp"
+object = "build/core903-canonical/AnimationPolygonMotionGroupFactory156.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::allocate_object<NativePolygonMotionGroup,std::uint32_t>"]
+symbol = "??$allocate_object@VNativePolygonMotionGroup@th20@@I@DiagnosticAllocator@th20@@QAEPAVNativePolygonMotionGroup@1@PBDI@Z"
+target_address = 0x0045F0A0
+size = 156
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$allocate_object@VNativePolygonMotionGroup@th20@@I@DiagnosticAllocator@th20@@QAEPAVNativePolygonMotionGroup@1@PBDI@Z", target = 0x00568997 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x0054275D },
+  { offset = 0x4E, type = "REL32", symbol = "?__autoclassinit2@NativePolygonMotionGroup@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x57, type = "REL32", symbol = "??$forward@I@std@@YA$$QAIAAI@Z", target = 0x0040B280 },
+  { offset = 0x6B, type = "REL32", symbol = "??0NativePolygonMotionGroup@th20@@QAE@I@Z", target = 0x0045F340 },
 ]
