@@ -1,15 +1,16 @@
 # Focused evidence index
 
 
-**Current next-agent reading order (CORE/RECON-859):**
+**Current next-agent reading order (CORE/RECON-861):**
 [current accepted game counts and actual open large parents](RE_HANDOFF.md) ->
 [original 12,140B Bullet command CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) ->
 [strict exact full 3,159B quad parent and recovered 20B C++ rounding leaf](ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) ->
 [current native-length 5993B/1501-x86 Animation Draw Boss frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) ->
+[whole strict original 971B rounded LINESTRIP Boss](ANIMATION_SHAPE_ROUNDEDLINE_971_STRICT_EXACT.md) ->
+[whole strict original 755B simple TRIANGLEFAN Boss](ANIMATION_SHAPE_SIMPLEFAN_755_STRICT_EXACT.md) ->
 [whole strict original 1174B rounded-fan Boss](ANIMATION_SHAPE_ROUNDEDFAN_1174_STRICT_EXACT.md) ->
 [whole strict original 240B outline wrapper leaf](ANIMATION_SHAPE_OUTLINE_240_STRICT_EXACT.md) ->
 [whole strict original 1601B 3-vertex triangle Boss](ANIMATION_SHAPE_TRIANGLE_1601_STRICT_EXACT.md) ->
-[whole strict original 2169B closed line-strip Boss](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) ->
 [whole strict original 2169B closed line-strip Boss](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) ->
 [whole strict original 1980B 4-vertex rectangle Boss](ANIMATION_SHAPE_RECT_1980_STRICT_EXACT.md) ->
 [whole strict original 78B shape XY transformation](ANIMATION_SHAPE_XY78_STRICT_EXACT.md) ->
@@ -28,9 +29,9 @@
 [three recovered game-authored Animation value getters](ANIMATION_VALUE_GETTERS_51_AUTHORED_ORIGIN.md) ->
 [source ownership](SOURCE_MAP.md) ->
 [latest guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md).
-The **live** verified status on October 30 is **1,259 source-present /1,260
-strict units from 278 object/receipt providers, 613 authored-game exact whole
-functions /220,303 original `.text` bytes**. Historical snapshot counts
+The **live** verified status on October 30 is **1,261 source-present /1,262
+strict units from 280 object/receipt providers, 615 authored-game exact whole
+functions /222,029 original `.text` bytes**. Historical snapshot counts
 below are not updated or added together. Confirm live state from the
 [reporter](../scripts/report-reconstruction-status.py), not dated prose.
 
@@ -53,6 +54,11 @@ Compiler scores labelled "current" in historical entries below mean
 ## Original 2,169B closed five-vertex line-strip renderer whole-native strict exact
 
 - [CORE/RECON-856 — whole 2,169B/533-i386 original five-vertex closed line-strip shape renderer strict native exact](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md) — independently original PE all 12 true E8 call/destination roles and 17 HIGHLOW site/targets, natural two four-float anchor arrays, 5×20B typed output vertices and real 65,536×20B pool capacity. Corrected native `D3DPT_LINESTRIP=3` vs rejected triangle-fan guess, five geometry/color/XY updates, native 0x68 frame and ret0x24. **2,169/2,169 whole strict original relocated bytes, 533/533 x86, 2,053/2,053 nonreloc**. Single new provider/whole unit and scoped shared-header closure replays, original 5,993B main Draw stays NONEXACT. Live **610 authored whole exact /217,288 native code bytes**, **1,256 source mappings /1,257 strict units /275 objects**; no full replay.
+
+## Original 971B rounded LINESTRIP Boss and 755B simple TRIANGLEFAN Boss strictly exact
+
+- [CORE/RECON-860 — entire original 971B/255-x86 rounded LINESTRIP renderer](ANIMATION_SHAPE_ROUNDEDLINE_971_STRICT_EXACT.md) — full original source and immutable PE original-body attestation, exact `0x28` frame/`ret 0x20`, unsigned typed 65,536×20B renderer pool, signed-quarter rotated perimeter without a center, original D3D9 type3 LINESTRIP, **9/9 E8 and 18/18 HIGHLOW original physical site/targets**, **863/863 nonrelocation plus 971/971 whole strict relocated bytes**. Distinct from already strict 1,174B rounded TRIANGLEFAN.
+- [CORE/RECON-861 — entire original 755B/197-x86 simple TRIANGLEFAN renderer](ANIMATION_SHAPE_SIMPLEFAN_755_STRICT_EXACT.md) — real typed center vertex[0], original source input angle slot reused for `2*pi/count` step, one genuine center and perimeter geometry, original D3D9 type6 TRIANGLEFAN with **8/8 E8 and 8/8 HIGHLOW native field/target roles** and **691/691 nonrelocation /755/755 complete strict bytes**. Combined two real authored game functions add 1,726 unique native bytes. Live **615 game functions /222,029 `.text` bytes**, **1,261 mapped /1,262 strict units /280 canonical objects**. Only changed source/header consumers replayed; the 5,993B main Draw remains independently NONEXACT and no full graph cold replay was run.
 
 ## Original 1,174B rounded-triangle fan Boss and 240B outline wrapper leaf both strict exact
 

@@ -30,7 +30,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // Native original 1980B rectangle source is int-returning, RET 0x24.
     std::int32_t draw_rect_439a00(float, float, float, float, float,
                            std::uint32_t, std::uint32_t, int, int);
-    void draw_shape_43b960(float, float, float, float, int,
+    // Original whole 755B simple triangle fan EAX=0/RET 0x1C.
+    std::int32_t draw_shape_43b960(float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
     void draw_shape_43bc60(float, float, float, float, int, std::uint32_t);
     void draw_shape_43be80(float, float, float, float, float, int,
@@ -59,7 +60,8 @@ struct AnimationDrawDetailedOwner : AnimationDrawModeOwner {
     // 1174B original center+rounded ring returns EAX zero, RET 0x24.
     std::int32_t draw_shape_43a2b0(float, float, float, float, float, float, int,
                             std::uint32_t, std::uint32_t);
-    void draw_shape_43a750(float, float, float, float, float, float, int,
+    // Original whole 971B rounded line strip EAX=0/RET 0x20.
+    std::int32_t draw_shape_43a750(float, float, float, float, float, float, int,
                             std::uint32_t);
     // Original whole 1468B ring emitter: EAX=0 and RET 0x28, not void.
     std::int32_t draw_shape_43ab20(float, float, float, float, float, float, float, int,
