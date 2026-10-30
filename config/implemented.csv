@@ -1416,3 +1416,4 @@ th20::NativeFileClearPoolView::cleanup_texture_44c510
 th20::NativeFileClearPoolView::release_file_slot_44c430
 th20::NativeFileClearPoolView::detach_file_44fd30
 th20::NativeDiagnosticFileAllocator::release_file_entry_447330
+"std::array<th20::AnimationFile*,42>::size"

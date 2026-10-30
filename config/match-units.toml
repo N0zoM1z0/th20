@@ -25455,3 +25455,15 @@ relocations = [
  { offset = 0x52, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
  { offset = 0x5D, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-974: original STL std::array<AnimationFile*,42>::size()
+# physical native 16B; compiler/library provenance, not game-authored.
+[units.animation_file_slot_size_16]
+source = "src/AnimationFileSlotSize16.cpp"
+object = "build/core974-canonical/AnimationFileSlotSize16.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<th20::AnimationFile*,42>::size"]
+symbol = "?size@?$array@PAVAnimationFile@th20@@$0CK@@std@@QBEIXZ"
+target_address = 0x00450870
+size = 16
+relocations = []
