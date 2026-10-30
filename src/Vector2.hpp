@@ -14,6 +14,10 @@ struct Vector2 {
     Vector2 operator+(const Vector2& other) const;
     Vector2 operator-(const Vector2& other) const;
     Vector2 operator*(float factor) const;
+    // Original game operators mutate the receiver but return a Vector2
+    // by value: hidden output pointer and native thiscall RET 8.
+    Vector2 operator*=(float factor);
+    Vector2 operator+=(const Vector2& other);
 };
 
 static_assert(sizeof(Vector2) == 8);
