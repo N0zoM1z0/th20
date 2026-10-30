@@ -23998,3 +23998,25 @@ relocations = [
   { offset = 0x3C, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0x41, type = "REL32", symbol = "?draw_vertex_line_43d1a0@AnimationDrawDetailedOwner@th20@@QAEHHPBUVector2@2@0PBI@Z", target = 0x0043D1A0 },
 ]
+
+# CORE/RECON-914: native 60-scalar radius array one-past-end 19B helper.
+[units.animation_ribbon_scalar_end_19]
+source = "src/AnimationRibbonArraySpanEnds19.cpp"
+object = "build/core914-canonical/AnimationRibbonArraySpanEnds19.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonScalarSpan::end_45dca0"]
+symbol = "?end_45dca0@NativeRibbonScalarSpan@th20@@QAEPAMXZ"
+target_address = 0x0045DCA0
+size = 19
+relocations = []
+
+# CORE/RECON-914: native 60-Vector2 point array one-past-end 19B helper.
+[units.animation_ribbon_point_end_19]
+source = "src/AnimationRibbonArraySpanEnds19.cpp"
+object = "build/core914-canonical/AnimationRibbonArraySpanEnds19.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonPointSpan::end_45dcc0"]
+symbol = "?end_45dcc0@NativeRibbonPointSpan@th20@@QAEPAUVector2@2@XZ"
+target_address = 0x0045DCC0
+size = 19
+relocations = []

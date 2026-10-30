@@ -1582,8 +1582,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045DB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DBF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045DCA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0045DCC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045DCA0,unknown,CxxContainer,review,pending,"CORE/RECON-914; docs/ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md; whole 19B radius/60-float end helper, original E8 in 538B ribbon updater and independent 19/19 C++17 canonical acceptance, original source authorship unresolved"
+0x0045DCC0,unknown,CxxContainer,review,pending,"CORE/RECON-914; docs/ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md; whole 19B 60-Vector2 point end helper, original E8 in 538B ribbon updater and independent 19/19 C++17 canonical acceptance, original source authorship unresolved"
 0x0045DCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DD00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045DD20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

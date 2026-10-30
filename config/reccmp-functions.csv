@@ -1338,3 +1338,5 @@ th20::NativeRibbonSegmentArray::end_45eca0,0x0045ECA0,function
 th20::NativeRibbonGroup::update,0x0045E770,function
 th20::NativeRibbonGroup::draw,0x0045EA20,function
 th20::NativeRibbonSegment::draw_ribbon_45eac0,0x0045EAC0,function
+th20::NativeRibbonScalarSpan::end_45dca0,0x0045DCA0,function
+th20::NativeRibbonPointSpan::end_45dcc0,0x0045DCC0,function

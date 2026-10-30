@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Two whole exact original 19B ribbon 60-element array ends
+
+- [CORE/RECON-914 — original 0x45DCA0 19B radii end and 0x45DCC0 19B vertex end](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md). Both fully source reconstructed and 19/19 native canonical exact, original 538B parent E8 sites independently verified, no authored credit. Four old affected ribbon objects remain whole exact after shared header type reconciliation, no full cold replay.
+
 ## Whole exact original 76B ribbon LINESTRIP caller
 
 - [CORE/RECON-913 — original 76B/27-i386 native ribbon segment LINESTRIP wrapper strictly exact](ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md). Original +0x1E0 color stream/60 vertices, all 3 original E8 site/destinations plus true pool HIGHLOW, whole exact 455B original backend. **76/76 whole canonical replay, +76 authored game code bytes**, one new cold provider. Its 156B caller remains separately strict exact. The 538B segment updater remains source absent.
@@ -88,8 +92,8 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,339 source-present mappings, 1,338
-strict units from 309 pinned object/receipt providers, and 643 distinct
+**Current verified checkpoint:** **1,341 source-present mappings, 1,340
+strict units from 310 pinned object/receipt providers, and 643 distinct
 original authored whole-exact game functions /235,174 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py

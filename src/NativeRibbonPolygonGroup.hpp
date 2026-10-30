@@ -4,19 +4,25 @@
 // has update 0x45E770 and draw 0x45EA20, with 3 * 0x3C0 segments at +8.
 #include "AnimationCallback.hpp"
 #include "Timer.hpp"
+#include "Vector2.hpp"
+#include "NativeRibbonArraySpans.hpp"
 #include <array>
 #include <cstddef>
 #include <cstdint>
 namespace th20 {
 class Animation;
 struct Vector3;
+// Native element boundaries independently confirm 60 two-float positions,
+// 60 four-byte color cells, and 60 float radii: 0x1E0+0xF0+0xF0=0x3C0.
 struct NativeRibbonSegment {
-    // Original element size/stride and beginning/end addresses are native
-    // verified; internals of the 538B updater have not been reconstructed.
-    std::uint8_t unresolved_record_3c0[0x3C0];
+    NativeRibbonPointSpan perimeter_00;
+    std::array<std::uint32_t, 60> color_cells_1e0;
+    NativeRibbonScalarSpan radius_2d0;
     void update_ribbon_45e800(float scale);
     void draw_ribbon_45eac0(const Vector3* position);
 };
+static_assert(offsetof(NativeRibbonSegment, color_cells_1e0) == 0x1E0);
+static_assert(offsetof(NativeRibbonSegment, radius_2d0) == 0x2D0);
 struct NativeRibbonSegmentArray {
     std::array<NativeRibbonSegment, 3> elements;
     NativeRibbonSegment* end_45eca0();

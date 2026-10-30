@@ -17,8 +17,8 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,339** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,338**, from **309** pinned MSVC object/receipt providers |
+| Source-present function mappings | **1,341** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,340**, from **310** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **643 distinct function heads /235,174 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
@@ -81,6 +81,7 @@ and [canonical units](../config/match-units.toml) are authoritative.
 
 | Original head / subsystem | Whole strict status |
 | --- | --- |
+| Ribbon original radius/vertex end helpers `0x0045DCA0` / `0x0045DCC0` | **19B/19B whole native exact**, true 60 float/60 Vector2 array ends. Confirmed two genuine E8 edges from source-absent 538B updater. Authorship still unknown; no game-code credit. [Complete original and strict proofs](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md). |
 | Ribbon segment LINESTRIP wrapper `0x0045EAC0` | **76B/27-i386 whole native exact**, genuine `+0x1E0` color stream, 60-point primitive, all three original E8/one HIGHLOW roles and original 156B parent E8 confirmed. **+76 authored game bytes**. [Whole native proof](ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md). |
 | Ribbon/polygon virtual draw Boss `0x0045EA20` | **156B/53-i386 whole native strict exact**, seven real E8/two HIGHLOW, three original 0x3C0 segments and genuine native scope NOP. **+156 authored game bytes**. [Complete native proof](ANIMATION_RIBBON_GROUP_DRAW_156_STRICT_EXACT.md). |
 | Separate ribbon/polygon update Boss `0x0045E770` | **140B /46-i386 whole native exact**, independent 0x56EDDC vtable, real 3x0x3C0 segments, six physical E8 and Timer +0xB4C; **+140 newly credited authored game bytes**. Its 19B array end remains strict exact and origin unproven; 538B update child and 156B draw remain open. [Complete native proof](ANIMATION_RIBBON_GROUP_UPDATE_140_STRICT_EXACT.md). |
@@ -97,6 +98,10 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | Polygon shape and Motion group chain | **1,204B** outline Boss, **827B** dynamics Boss, **296B** group configuration, **233B** group draw, **140B** group tick, **120B** palette, **76B** fan caller and **47B** registry wrapper all individually whole exact. [Polygon proof](ANIMATION_POLYGON_OUTLINE_1204_STRICT_EXACT.md), [group](ANIMATION_POLYGON_MOTION_GROUP_233_23_19_STRICT_EXACT.md), [tick](ANIMATION_POLYGON_DYNAMICS_827_TICK140_ITERATORS_STRICT_FRONTIER.md), [palette](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md). The **104B wrapper remains NONEXACT**; the 156B original group allocation factory is now **whole exact**, with library/template authorship unresolved. [Factory proof](ANIMATION_POLYGON_GROUP_FACTORY_156_NATIVE_EXACT.md). [827B proof](ANIMATION_POLYGON_DYNAMICS_827_STRICT_EXACT.md). |
 | Shape draw backend catalog | **2,169B LINESTRIP, 1,980B rectangle, 1,601B triangle, 1,468B ring**, plus several whole exact **375B–1,174B ellipse/fan/strip** sources. [Closed line](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md), [shape ring](ANIMATION_SHAPE_RING_1468_STRICT_EXACT.md), [remaining original PE proofs](EVIDENCE_INDEX.md). |
 | Exact original game data | **96B corner axes**, **8B polygon scalar constants**, **72B Player direction table** are genuine `.rdata` data, **not additional authored `.text` code credit**. [Corner data](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md), [polygon data](ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md), [Player table](PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
+
+The 538B ribbon updater also has **two separately exact 19B array-end leaves**
+with true 60-element radii and vertices; original attribution remains unknown.
+[Native helper proofs](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md).
 
 The original **19B ribbon three-segment array-end pointer** `0x0045ECA0`
 is whole **19/19 strict exact**, independently called by the now exact 140B
