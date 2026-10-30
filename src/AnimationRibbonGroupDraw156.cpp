@@ -13,7 +13,8 @@ std::int32_t NativeRibbonGroup::draw() {
     Vector3 position;
     animation->position(position);
     {
-        NativeRibbonSegmentArray* const segment_array = &segments_08;
+        NativeRibbonSegmentArray* const segment_array =
+            reinterpret_cast<NativeRibbonSegmentArray*>(&segments_08);
         auto* current = reinterpret_cast<NativeRibbonSegment*>(
             &reinterpret_cast<Motion*>(segment_array)->position_ref());
         auto* finish = segment_array->end_45eca0();

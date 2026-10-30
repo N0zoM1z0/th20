@@ -1342,3 +1342,6 @@ th20::NativeRibbonPointSpan::end_45dcc0
 th20::NativeRibbonSegment::update_ribbon_45e800
 th20::NativeRibbonSegment::NativeRibbonSegment
 "std::array<th20::NativeRibbonSegment,3>::array"
+th20::NativeRibbonGroup::NativeRibbonGroup
+th20::NativeRibbonGroup::~NativeRibbonGroup
+th20::NativeRibbonGroup::scalar_deleting_destructor

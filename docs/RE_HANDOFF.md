@@ -17,9 +17,9 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,344** (authored game **plus** compiler/library and unaccepted sources) |
-| Whole-native strict units | **1,343**, from **313** pinned MSVC object/receipt providers |
-| Credited original authored-game whole exact | **645 distinct function heads /235,772 original `.text` bytes** |
+| Source-present function mappings | **1,347** (authored game **plus** compiler/library and unaccepted sources) |
+| Whole-native strict units | **1,346**, from **314** pinned MSVC object/receipt providers |
+| Credited original authored-game whole exact | **646 distinct function heads /235,861 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
 
 The exact authored totals come from `config/matches.csv`, not the sum
@@ -82,6 +82,8 @@ and [canonical units](../config/match-units.toml) are authoritative.
 | Original head / subsystem | Whole strict status |
 | --- | --- |
 | Ribbon original radius/vertex end helpers `0x0045DCA0` / `0x0045DCC0` | **19B/19B whole native exact**, true 60 float/60 Vector2 array ends. Confirmed two genuine E8 edges from now exact 538B updater. Authorship still unknown; no game-code credit. [Complete original and strict proofs](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md). |
+| Ribbon polymorphic group ctor `0x0045E6D0` plus generated destructor pair | **89B/25-i386 whole native strict exact**; original 0x56EDDC derived vtable, 3x0x3C0 array and Timer/float/tail members. Separate **20B ordinary folded destructor and 49B scalar-deleting wrapper whole strict exact** but excluded from authored game credit. **+89 game-authored bytes**; local 8 affected object/10 unit cold replay. [Entire native proof](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). |
+| Ribbon 89B group constructor and implicit deletion chain | **89B/25-i386 constructor**, **49B deleting wrapper** and **20B folded ordinary destructor** all independently strict exact under one vtable/ODR-consistent C++ source. +89 newly credited authored bytes; 20B/49B compiler origin review, zero authored credit. [Whole original PE and canonical proofs](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). |
 | Ribbon three-segment array ctor `0x0045E670` | **78B/27-i386 plus five genuine `INT3` whole strict exact**, real 3×0x3C0 C++20 array, independent EH-vector callback to 60B ctor. Compiler/STL attribution unknown, no new authored-game credit. [83B full proof](ANIMATION_RIBBON_SEGMENT_ARRAY_CTOR_78_STRICT_EXACT.md). |
 | Ribbon 60B segment constructor `0x0045D610` | **60B/20-i386 whole native exact**, real 60 Vector2/60 `AnimationHandle` word arrays, 60-float zeroing and actual original 78B parent callback; **+60 game authored bytes**. [Whole native proof](ANIMATION_RIBBON_SEGMENT_CTOR_60_STRICT_EXACT.md). |
 | Ribbon segment dynamics Boss `0x0045E800` | **538B/149-i386 whole strict exact**, actual 60 radii/60 Vector2 loop, signed RNG, clamp +/-4, polar step 2*pi/59, authentic scope NOP and vertex 59 closure. Independently **13 E8/10 HIGHLOW** original physical roles. **+538 authored game bytes**. [Whole native proof](ANIMATION_RIBBON_SEGMENT_DYNAMICS_538_STRICT_EXACT.md). |
@@ -106,6 +108,11 @@ The 538B ribbon updater also has **two separately exact 19B array-end leaves**
 with true 60-element radii and vertices; original attribution remains unknown.
 [Native helper proofs](ANIMATION_RIBBON_ARRAY_END_HELPERS_19_STRICT_EXACT.md).
 
+The original 89B ribbon constructor now preserves all six real vtable entries
+and generates the 49B deleting wrapper plus the folded 20B ordinary destructor
+without breaking the 140B/156B virtual methods.
+[Complete proof](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md).
+
 The original **19B ribbon three-segment array-end pointer** `0x0045ECA0`
 is whole **19/19 strict exact**, independently called by the now exact 140B
 update and 156B draw. Its original STL/compiler authorship remains
@@ -124,7 +131,7 @@ stays `unknown/review`; **do not add them to authored game totals** without
 proof. Likewise the genuine 20B standard-header `round(float)` wrapper
 is `library/exclude`.
 
-Original ribbon **75B/75B position/color array constructors, 89B group constructor, 156B allocation factory and 49B deleting wrapper** remain independent native reconstruction candidates; do not claim exactness of these parents from the accepted 60B child.
+Original ribbon **75B/75B position/color array constructors and 156B allocation factory** remain independent native reconstruction candidates; do not claim exactness of these parents from the accepted 60B child.
 
 ## Working discipline and scoped validation
 

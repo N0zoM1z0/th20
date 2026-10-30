@@ -42,6 +42,10 @@ not current facts when newer canonical units supersede them.
 - [20B native polygon group destructor: real vtable ABI vs `novtable` compiler frontier](POLYGON_GROUP_DTOR20_NOVTABLE_COMPILER_FRONTIER.md). The 20B body remains NONEXACT, while its single-ODR 113B constructor and 49B deleting wrapper remain strictly exact.
 - [44B original dual-word C++ constructor: five physical callers and 8B folded helper, independently PE-verified](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md) via [original-only validator](../scripts/verify-cxx-pair44-native.py). Complete native body/field roles are verified, but source candidate is NONEXACT and origin unproven.
 
+## Original ribbon constructor and native generated destruction chain
+
+- [CORE/RECON-918 — complete 89B ribbon group constructor, 49B scalar deletion, 20B folded ordinary destructor](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). One natural ODR-consistent C++20 class with original 0xB60 size and real 0x56EDDC six-entry vtable. All three native bodies whole canonical strict exact (89/89, 49/49, 20/20); seven shared-header-affected old ribbon source providers remain 7/7 strict exact. **+89 authored-game bytes**, compiler deletion bodies origin unknown/uncredited. Earlier isolated `novtable` wrong for polygon 113B vtable remains rejected.
+
 ## Whole exact 78B native three-ribbon segment array constructor
 
 - [CORE/RECON-917 — complete 78B/27-i386 original ribbon three-segment C++20 array ctor](ANIMATION_RIBBON_SEGMENT_ARRAY_CTOR_78_STRICT_EXACT.md). Entire original 3×0x3C0 EH-vector constructor, three HIGHLOW + one E8 physical fields, five genuine `INT3`; **83/83 complete canonical bytes exact**, six affected old ribbon providers 6/6 exact. Template origin unverified, zero authored game credit.
@@ -61,6 +65,10 @@ not current facts when newer canonical units supersede them.
 ## Whole exact original 76B ribbon LINESTRIP caller
 
 - [CORE/RECON-913 — original 76B/27-i386 native ribbon segment LINESTRIP wrapper strictly exact](ANIMATION_RIBBON_SEGMENT_DRAW_76_STRICT_EXACT.md). Original +0x1E0 color stream/60 vertices, all 3 original E8 site/destinations plus true pool HIGHLOW, whole exact 455B original backend. **76/76 whole canonical replay, +76 authored game code bytes**, one new cold provider. Its 156B caller remains separately strict exact. The 538B segment updater became whole strict exact in CORE/RECON-915.
+
+## Whole exact 89B ribbon constructor and genuine generated destructor chain
+
+- [CORE/RECON-918 — native 89B ribbon group constructor plus 20B ordinary/49B deleting destructor whole strict exact](ANIMATION_RIBBON_GROUP_CTOR_89_STRICT_EXACT.md). Original polymorphic base and real vtable, three original ctor E8/one native HIGHLOW, physical Timer and 3x0x3C0 segment construction; natural C++20 makes entire **89/89 authored ctor**, plus **20/20 and 49/49 compiler contributions**. Eight actually affected native objects/ten strict units **10/10 exact**, +89 original authored game bytes; original 20B folded destructor C++ template/type unique ownership unresolved. Whole-game linkage and group allocation factory remain open.
 
 ## Whole exact original 156B ribbon draw Boss
 
@@ -104,9 +112,9 @@ not current facts when newer canonical units supersede them.
 - [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
   and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
 
-**Current verified checkpoint:** **1,344 source-present mappings, 1,343
-strict units from 313 pinned object/receipt providers, and 645 distinct
-original authored whole-exact game functions /235,772 `.text` bytes**.
+**Current verified checkpoint:** **1,347 source-present mappings, 1,346
+strict units from 314 pinned object/receipt providers, and 646 distinct
+original authored whole-exact game functions /235,861 `.text` bytes**.
 This is a dated snapshot, not a whole-game completion fraction. Refresh
 it with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary` when new source is admitted.

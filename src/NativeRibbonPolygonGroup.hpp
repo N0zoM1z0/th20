@@ -32,9 +32,15 @@ struct NativeRibbonSegmentArray {
 };
 class NativeRibbonGroup : public AnimationCallback {
 public:
-    NativeRibbonSegmentArray segments_08;
-    std::uint32_t control_b48;
+    // Native group constructor invokes the actual std::array constructor
+    // directly at +8, not a competing wrapper object constructor.
+    std::array<NativeRibbonSegment, 3> segments_08;
+    union { std::uint32_t control_b48; float control_b48_float; };
     Timer timer_b4c;
+    // Original +0xB5C 4-byte zero-initialized storage is independently
+    // attested by group ctor and original 0xB60 deleting-wrapper extent.
+    std::uint32_t zero_initialized_b5c;
+    explicit NativeRibbonGroup(Animation* owner);
     std::int32_t update() override;
     std::int32_t draw() override;
 };
@@ -42,4 +48,6 @@ static_assert(sizeof(NativeRibbonSegment) == 0x3C0);
 static_assert(sizeof(NativeRibbonSegmentArray) == 0xB40);
 static_assert(offsetof(NativeRibbonGroup, segments_08) == 8);
 static_assert(offsetof(NativeRibbonGroup, timer_b4c) == 0xB4C);
+static_assert(offsetof(NativeRibbonGroup, zero_initialized_b5c) == 0xB5C);
+static_assert(sizeof(NativeRibbonGroup) == 0xB60);
 } // namespace th20

@@ -10,7 +10,8 @@ namespace th20 {
 struct NativeRibbonGate { std::int32_t changed_45d030(); };
 std::int32_t NativeRibbonGroup::update() {
     if (reinterpret_cast<NativeRibbonGate*>(&timer_b4c)->changed_45d030()) {
-        NativeRibbonSegmentArray* const segment_array = &segments_08;
+        NativeRibbonSegmentArray* const segment_array =
+            reinterpret_cast<NativeRibbonSegmentArray*>(&segments_08);
         auto* current = reinterpret_cast<NativeRibbonSegment*>(
             &reinterpret_cast<Motion*>(segment_array)->position_ref());
         auto* finish = segment_array->end_45eca0();

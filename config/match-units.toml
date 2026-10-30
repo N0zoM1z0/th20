@@ -24089,3 +24089,47 @@ relocations = [
   { offset = 0x27, type = "DIR32", symbol = "??0NativeRibbonSegment@th20@@QAE@XZ", target = 0x0045D610 },
   { offset = 0x37, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
 ]
+
+# CORE/RECON-918: complete original 89B ribbon polymorphic group ctor.
+[units.animation_ribbon_group_ctor_89]
+source = "src/AnimationRibbonGroupCtor89.cpp"
+object = "build/core918-canonical/AnimationRibbonGroupCtor89.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonGroup::NativeRibbonGroup"]
+symbol = "??0NativeRibbonGroup@th20@@QAE@PAVAnimation@1@@Z"
+target_address = 0x0045E6D0
+size = 89
+relocations = [
+  { offset = 0x0F, type = "REL32", symbol = "??0AnimationCallback@th20@@QAE@PAVAnimation@1@@Z", target = 0x00446B60 },
+  { offset = 0x18, type = "DIR32", symbol = "??_7NativeRibbonGroup@th20@@6B@", target = 0x0056EDDC },
+  { offset = 0x23, type = "REL32", symbol = "??0?$array@UNativeRibbonSegment@th20@@$02@std@@QAE@XZ", target = 0x0045E670 },
+  { offset = 0x3F, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+]
+
+# CORE/RECON-918: genuine implicit 20B destructor. Compiler/folded
+# authorship, not game-specific authored byte credit.
+[units.animation_ribbon_group_ordinary_dtor_20]
+source = "src/AnimationRibbonGroupCtor89.cpp"
+object = "build/core918-canonical/AnimationRibbonGroupCtor89.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonGroup::~NativeRibbonGroup"]
+symbol = "??1NativeRibbonGroup@th20@@UAE@XZ"
+target_address = 0x0045C2A0
+size = 20
+relocations = [
+  { offset = 0x0B, type = "REL32", symbol = "??1AnimationCallback@th20@@UAE@XZ", target = 0x00446BA0 },
+]
+
+# CORE/RECON-918: actual 49B generated ribbon group scalar deletion.
+[units.animation_ribbon_group_scalar_delete_49]
+source = "src/AnimationRibbonGroupCtor89.cpp"
+object = "build/core918-canonical/AnimationRibbonGroupCtor89.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl"]
+functions = ["th20::NativeRibbonGroup::scalar_deleting_destructor"]
+symbol = "??_GNativeRibbonGroup@th20@@UAEPAXI@Z"
+target_address = 0x0045E730
+size = 49
+relocations = [
+  { offset = 0x0B, type = "REL32", symbol = "??1NativeRibbonGroup@th20@@UAE@XZ", target = 0x0045C2A0 },
+  { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]
