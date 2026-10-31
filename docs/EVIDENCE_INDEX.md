@@ -129,6 +129,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1077 — correct original 12B global PMR glyph task-list object, not an external pointer](GLYPH_QUEUE_GLOBAL12_NATIVE_OWNER.md) — four original 254B queue-pump HIGHLOW and original 2,227B producer HIGHLOW +0x820 all point directly to `0x005B66E0`; exact 56B queue submit receiver uses +4 node, 13/13 scoped strict units unchanged.
 
+- [CORE/RECON-1078 — complete original 188B std::_Func_class<void>::_Swap frontier: three extra native `_Unfancy` calls](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md) — original 63 i386/15 E8/one HIGHLOW vs natural MSVC 161B/54 i386/12 E8, precisely 27B live pointer-forwarding gap, SOURCE-PRESENT NONEXACT, no false game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

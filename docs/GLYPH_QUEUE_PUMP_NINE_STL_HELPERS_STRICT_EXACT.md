@@ -74,3 +74,15 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextQueuePump254.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1078 — separate original 188B callback swap frontier now sourced
+
+The native 26B `std::function<void()>::swap` accepted here really calls a
+[complete original 188B `std::_Func_class<void>::_Swap` body](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md)
+at native E8 `+0x0E`. The full original 188B/63 uses three extra
+live folded `_Unfancy` E8 groups absent from the installed C++20 STL
+161B/54 compiler source. The larger native 188B method is now
+SOURCE-PRESENT, NONEXACT with its physical original SHA and complete
+15-E8/one-HIGHLOW graph independently recorded. It receives no
+original exact credit; the 26B wrapper, 60B assignment and native
+254B TH20 queue pump stay separately whole exact.
