@@ -1556,3 +1556,12 @@ th20::AnimationPoolOwner::file_by_index
 th20::NativeRendererSurfaceBlitView::blit_surface_rect_44bb10
 th20::NativeRendererSurfaceBlitView::blit_surface_effect_44be40
 th20::NativeAnimationFileLoadView::load_resource_44a700
+std::sprintf_s<260>
+std::filesystem::path::path<char const*>
+std::filesystem::path::filename
+std::filesystem::path::stem
+std::filesystem::path::string<char>(allocator)
+std::pmr::string::operator=(std::string)
+std::filesystem::_Find_extension
+std::filesystem::_Find_filename
+std::pmr::string::assign_bytes_44b970

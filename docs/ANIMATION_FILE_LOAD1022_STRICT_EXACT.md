@@ -146,3 +146,17 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnimationFileLoad1022.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1094 — nine independent whole-exact generic descendants
+
+The same native game loader source now additionally generates
+[nine distinct original CRT/filesystem/PMR code heads, 686B total](ANIMATION_FILE_PATH_PMR_NINE_STRICT_EXACT.md):
+39B `sprintf_s<260>`, 44B filesystem path constructor, 82B
+filename and stem, 75B allocator-parametrized conversion,
+25B/118B PMR string assignments and 141B/80B native path helpers.
+All nine complete original bodies and their genuine independent
+native parent E8 are SHA-pinned and whole strict exact from the same
+C++20 source object (**10/10 scoped units**). Their
+`origin=unknown/review` is maintained; the 1,022B game-authored
+parent is not credited twice. The original 336B Renderer group
+parser remains an independent outstanding larger function.

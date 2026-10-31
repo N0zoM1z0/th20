@@ -27908,3 +27908,128 @@ relocations = [
   { offset = 0x3D9, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
   { offset = 0x3F4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1094: complete 39B original generic AnimationFile loader support.
+[units.animation_load_sprintf_s_260_39]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::sprintf_s<260>"]
+symbol = "??$sprintf_s@$0BAE@@@YAHAAY0BAE@DPBDZZ"
+target_address = 0x00429120
+size = 39
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "_vsprintf_s", target = 0x00439880 },
+]
+
+# CORE/RECON-1094: complete 44B original generic AnimationFile loader support.
+[units.animation_load_path_ctor_44]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::path::path<char const*>"]
+symbol = "??$?0PBD$0A@@path@filesystem@std@@QAE@ABQBDW4format@012@@Z"
+target_address = 0x0040C720
+size = 44
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "??$_Convert_Source_to_wide@PBDU_Normal_conversion@filesystem@std@@@filesystem@std@@YA?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@1@ABQBDU_Normal_conversion@01@@Z", target = 0x0040CDF0 },
+]
+
+# CORE/RECON-1094: complete 82B original generic AnimationFile loader support.
+[units.animation_load_path_filename_82]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::path::filename"]
+symbol = "?filename@path@filesystem@std@@QBE?AV123@XZ"
+target_address = 0x0044C590
+size = 82
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??B?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QBE?AV?$basic_string_view@_WU?$char_traits@_W@std@@@1@XZ", target = 0x0040E7C0 },
+  { offset = 0x30, type = "REL32", symbol = "?_Parse_filename@filesystem@std@@YA?AV?$basic_string_view@_WU?$char_traits@_W@std@@@2@V32@@Z", target = 0x0044B630 },
+  { offset = 0x3C, type = "REL32", symbol = "??$?0V?$basic_string_view@_WU?$char_traits@_W@std@@@std@@$0A@@path@filesystem@std@@QAE@ABV?$basic_string_view@_WU?$char_traits@_W@std@@@2@W4format@012@@Z", target = 0x00417DC0 },
+]
+
+# CORE/RECON-1094: complete 82B original generic AnimationFile loader support.
+[units.animation_load_path_stem_82]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::path::stem"]
+symbol = "?stem@path@filesystem@std@@QBE?AV123@XZ"
+target_address = 0x00451580
+size = 82
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??B?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QBE?AV?$basic_string_view@_WU?$char_traits@_W@std@@@1@XZ", target = 0x0040E7C0 },
+  { offset = 0x30, type = "REL32", symbol = "?_Parse_stem@filesystem@std@@YA?AV?$basic_string_view@_WU?$char_traits@_W@std@@@2@V32@@Z", target = 0x0044B690 },
+  { offset = 0x3C, type = "REL32", symbol = "??$?0V?$basic_string_view@_WU?$char_traits@_W@std@@@std@@$0A@@path@filesystem@std@@QAE@ABV?$basic_string_view@_WU?$char_traits@_W@std@@@2@W4format@012@@Z", target = 0x00417DC0 },
+]
+
+# CORE/RECON-1094: complete 75B original generic AnimationFile loader support.
+[units.animation_load_path_string_alloc_75]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::path::string<char>(allocator)"]
+symbol = "??$string@DU?$char_traits@D@std@@V?$allocator@D@2@$0A@@path@filesystem@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABV?$allocator@D@2@@Z"
+target_address = 0x004189C0
+size = 75
+relocations = [
+  { offset = 0x22, type = "REL32", symbol = "??B?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QBE?AV?$basic_string_view@_WU?$char_traits@_W@std@@@1@XZ", target = 0x0040E7C0 },
+  { offset = 0x32, type = "REL32", symbol = "??$_Convert_wide_to@U?$char_traits@D@std@@V?$allocator@D@2@D@filesystem@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@V?$basic_string_view@_WU?$char_traits@_W@std@@@1@ABV?$allocator@D@1@@Z", target = 0x00418100 },
+]
+
+# CORE/RECON-1094: complete 25B original generic AnimationFile loader support.
+[units.animation_load_pmr_string_assign_25]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::operator=(std::string)"]
+symbol = "??$?4V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$0A@@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV01@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z"
+target_address = 0x00446DC0
+size = 25
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "??$assign@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$0A@@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV01@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z", target = 0x00447250 },
+]
+
+# CORE/RECON-1094: complete 141B original generic AnimationFile loader support.
+[units.animation_load_find_extension_141]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::_Find_extension"]
+symbol = "?_Find_extension@filesystem@std@@YAPB_WQB_W0@Z"
+target_address = 0x0044B450
+size = 141
+relocations = [
+]
+
+# CORE/RECON-1094: complete 80B original generic AnimationFile loader support.
+[units.animation_load_find_filename_80]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::_Find_filename"]
+symbol = "?_Find_filename@filesystem@std@@YAPB_WQB_WPB_W@Z"
+target_address = 0x0044B4E0
+size = 80
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Find_relative_path@filesystem@std@@YAPB_WQB_W0@Z", target = 0x0041B8E0 },
+  { offset = 0x30, type = "REL32", symbol = "??R_Is_slash_oper@filesystem@std@@SA_N_W@Z", target = 0x00419150 },
+]
+
+# CORE/RECON-1094: complete 118B original generic AnimationFile loader support.
+[units.animation_load_pmr_string_assign_bytes_118]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::assign_bytes_44b970"]
+symbol = "?assign@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV12@QBDI@Z"
+target_address = 0x0044B970
+size = 118
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QAEPADXZ", target = 0x0040F2C0 },
+  { offset = 0x38, type = "REL32", symbol = "?move@?$_Char_traits@DH@std@@SAPADQADQBDI@Z", target = 0x00411480 },
+  { offset = 0x4F, type = "REL32", symbol = "?assign@?$_Narrow_char_traits@DH@std@@SAXAADABD@Z", target = 0x0040FE90 },
+  { offset = 0x6C, type = "REL32", symbol = "??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV34@QBDI@Z@PBD@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEAAV01@IV<lambda_1>@?1??assign@01@QAEAAV01@QBDI@Z@PBD@Z", target = 0x00447050 },
+]

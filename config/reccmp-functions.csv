@@ -1573,3 +1573,12 @@ th20::NativeAnimationLegacyFileView::previous_file_437470,0x00437470,function
 th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0,0x0044BCD0,function
 th20::AnimationPoolOwner::file_by_index,0x00437970,function
 th20::NativeAnimationFileLoadView::load_resource_44a700,0x0044A700,function
+std::sprintf_s<260>,0x00429120,function
+std::filesystem::path::path<char const*>,0x0040C720,function
+std::filesystem::path::filename,0x0044C590,function
+std::filesystem::path::stem,0x00451580,function
+std::filesystem::path::string<char>(allocator),0x004189C0,function
+std::pmr::string::operator=(std::string),0x00446DC0,function
+std::filesystem::_Find_extension,0x0044B450,function
+std::filesystem::_Find_filename,0x0044B4E0,function
+std::pmr::string::assign_bytes_44b970,0x0044B970,function

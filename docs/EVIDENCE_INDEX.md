@@ -159,6 +159,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1093 — original 1,022B AnimationFile resource loader Boss whole strict exact](ANIMATION_FILE_LOAD1022_STRICT_EXACT.md) — complete 219 i386, 23 E8/12 PE HIGHLOW, narrow 260B `sprintf_s` path, actual allocator-aware PMR filename/stem, group counts and original Renderer 336B parse dependency, 1,022/1,022 full native and +1,022 authored-game bytes.
 
+- [CORE/RECON-1094 — nine whole original 686B filesystem/PMR/CRT helpers from 1,022B AnimationFile loader](ANIMATION_FILE_PATH_PMR_NINE_STRICT_EXACT.md) — 141B `_Find_extension`, 118B PMR assign, 82B filename/stem, 75B allocator-aware string conversion and other authentic native path functions; 10/10 local exact units, zero authored-game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
