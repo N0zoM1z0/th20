@@ -47,9 +47,15 @@ functions in [`TextureTexels.hpp`](../src/TextureTexels.hpp) /
 [`TextureTexels.cpp`](../src/TextureTexels.cpp):
 `accumulate_texel8888`, `accumulate_texel1555`,
 `accumulate_texel4444`, and `accumulate_texel8332`.
-These original **139B/183B/183B/187B** physical heads already have
-separate source and remain independently **NONEXACT**; they are not
-admitted by transitive reachability from this parent. The finalizer
+These original **139B/183B/183B/187B** physical heads have separate
+natural source and were already **WHOLE STRICT EXACT** under historical
+REF-042 (4/4 native units), not NONEXACT as incorrectly asserted
+in the original CORE/RECON-1101 frontier. CORE/RECON-1102 now
+[independently re-attests their complete original code and corrects
+custom game-origin classification](ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md).
+They remain separate original function heads and their prior exact
+bytes are never added again by transitive reachability from this
+still-NONEXACT 2,745B parent. The finalizer
 shares the sole non-allocating Renderer method declaration
 [`NativeRendererTextureMemoryView.hpp`](../src/NativeRendererTextureMemoryView.hpp)
 with the already exact 562B uploader, not two conflicting definitions

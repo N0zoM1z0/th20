@@ -175,6 +175,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1101 — original 2,745B Renderer four-format texture alpha-fringe finalizer game Boss](ANIMATION_TEXTURE_FINALIZER2745_NATIVE_FRONTIER.md) — real 759 native x86, 17 E8/3 PE HIGHLOW and separate original switch tables; meaningful natural D3D9/texel C++ source 2,558B contribution, still NONEXACT and no authored-game credit; exact 562B caller preserved.
 
+- [CORE/RECON-1102 — original four custom Renderer BGRA/ARGB alpha-fringe texel kernels, 692B whole exact and game-origin correction](ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md) — existing REF-042 4/4 exact units, newly established exclusive original 2,745B Renderer parent four E8 per format, medium-confidence authored-game attribution (4 heads/692B recategorized; zero newly matched units), parent still NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

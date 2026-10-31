@@ -22,6 +22,17 @@ rejected; Controller/file/callback/global and whole Enemy work remain pending.
 See EXACT_ANIMATION_LIFETIME_RECONSTRUCTION.md. Review findings below are
 historical and are not claims that these newly closed ten bodies remain open.
 
+**CORE/RECON-1102 current provenance correction:** The four original
+139B/183B/183B/187B texel accumulation functions already passed
+whole-native strict exact under REF-042. A later independent locked
+2,745B Renderer alpha-fringe parent analysis now proves **four physical
+native calls per distinct custom pixel format**, supporting a
+[medium-confidence original game-authored attribution for these
+previously exact 692B](ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md).
+This changes authored accounting, not source code, exact-unit count,
+or the original historical REF-042 observation below; the 2,745B
+parent itself remains NONEXACT.
+
 ## REF-042 — 2026-10-07
 
 All **540 remaining Sprite implementations** were individually read across

@@ -159,3 +159,16 @@ Renderer borrow through `NativeRendererTextureMemoryView.hpp`.
 The original 562B upload has been **source-scoped rebuilt and
 revalidated 562/562 exact** after the header migration. No 2,745B
 byte count is credited as exact or merged with the uploader.
+
+## CORE/RECON-1102 — four existing exact texture-neighbor helpers now credited game-owned
+
+The separately still-NONEXACT 2,745B original game texture finalizer
+invoked by this WHOLE-EXACT 562B uploader calls four original
+[format-specialized RGB/alpha neighbor kernels](ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md)
+exactly four times each. All four original kernels (139B/183B/183B/187B)
+were already WHOLE strict exact under REF-042. Their original game
+Renderer domain ownership is now independently attested with
+medium provenance confidence, reclassifying the already exact
+**692 native bytes as authored** but adding **zero new exact units**.
+This 562B uploader remains independently exact without recrediting
+its finalizer or any pixel-helper executable bytes.
