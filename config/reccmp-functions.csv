@@ -1582,3 +1582,4 @@ std::pmr::string::operator=(std::string),0x00446DC0,function
 std::filesystem::_Find_extension,0x0044B450,function
 std::filesystem::_Find_filename,0x0044B4E0,function
 std::pmr::string::assign_bytes_44b970,0x0044B970,function
+th20::NativeRendererAnmGroupView::parse_group_44ebf0,0x0044EBF0,function

@@ -160,3 +160,24 @@ C++20 source object (**10/10 scoped units**). Their
 `origin=unknown/review` is maintained; the 1,022B game-authored
 parent is not credited twice. The original 336B Renderer group
 parser remains an independent outstanding larger function.
+
+## CORE/RECON-1095 — the native 336B Renderer group decoder is now sourced
+
+The genuine Renderer-global callee `0x0044EBF0`, E8 `+0x332` from
+this exact 1,022B game loader, now has a distinct
+[complete 336B/83-i386 source candidate](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md)
+implementing the observed ANM group signature/embedded name,
+original Japanese CP932 diagnostics, external resource byte load,
+and 24B texture metadata writes. Its six original E8/eight PE
+HIGHLOW are all matched naturally, but **two native frame/local
+bytes still differ** (278/280 comparable). The 336B method
+remains SOURCE-PRESENT/NONEXACT; no original loader or child
+code is recredited.
+
+The shared 0x28B ANM group header now correctly records the original
+`header+0x20` as one `uint8_t flag_20` (plus the three remaining
+native bytes) instead of a guessed full `uint32_t` field, while
+preserving all required `sprite_count`, `script_count`, embedded
+name and next-header offsets. A focused exact replay of this single
+affected C++20 file object preserved **10/10 whole strict units**
+after its header's include-closure change.
