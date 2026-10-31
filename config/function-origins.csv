@@ -517,13 +517,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004156E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415800,authored,GlyphText,authored,high,"CORE/RECON-1051; docs/GLYPH_CANVAS_WIDTH20_STRICT_EXACT.md; genuine custom TH20 glyph canvas+0x104 width read, 2245B original source-absent compositor four physical E8, whole 20/20 native exact"
 0x00415820,unknown,CxxRuntime,review,pending,"CORE/RECON-1054; docs/GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md; original 10B generic C++ PMR vector lifecycle code; Native 24B polymorphic allocator constructor E8+0x07; physical native E8 and whole source exact, library/template provenance uncredited"
-0x00415830,authored,GlyphText,authored,high,"CORE/RECON-1058; docs/GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md; original full 2227B/470-i386 GDI rendering & queued job game protocol, 25 E8/43 PE HIGHLOW and true two 294B callers; natural native-typed source 2052B/481 NONEXACT"
+0x00415830,authored,GlyphText,authored,high,"CORE/RECON-1058; docs/GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md; original full 2227B/470-i386 GDI rendering & queued job game protocol, 25 E8/43 PE HIGHLOW and true two 294B callers; natural native-typed source 2052B/481 NONEXACT; CORE/RECON-1060 queue arg is borrowed std::function&; 2072B/484 source candidate 25 E8/54 DIR32"
 0x00416140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004162B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004162F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004162F0,authored,GlyphText,authored,high,"CORE/RECON-1060; docs/GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md; true 56B game glyph submission wrapper, nested this+4, borrowed std::function& and two real E8 to std::_Unfancy +151B backend, whole native exact"
 0x00416330,unknown,,review,unknown,"CORE/RECON-1055; docs/GLYPH_MASK_EMPLACE35_NATIVE_FRONTIER.md; 35B original two-E8 glyph-mask vector insertion called twice by 2245B source-present compositor; current natural std::pmr::vector emplace_back source 33B/one E8, provenance and exact ABI still under review"
 0x00416360,authored,GlyphText,authored,high,"CORE/RECON-1046; docs/GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md; true game-owned glyph canvas GDI release with 3 original imported GDI calls and 681B original caller, 182/182 natural C++20 and correct bool return"
 0x00416420,authored,GlyphText,authored,high,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; 2245B game outline/mask compositor native two pixel branches with actual GDI resource, 37 E8/5 HIGHLOW independently reviewed; maintained typed 1961B/536 nonexact source; CORE/RECON-1053 22B packed 16-bit color constructor restored, parent 1987B/538 still NONEXACT"

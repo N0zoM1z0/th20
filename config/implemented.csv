@@ -1501,3 +1501,4 @@ std::pmr::vector<GlyphMaskOffset>::_Xlength
 std::pmr::vector<GlyphMaskOffset>::_Change_array
 std::pmr::vector<GlyphMaskOffset>::_Reallocation_guard::~_Reallocation_guard
 th20::NativeGlyphRenderJob::NativeGlyphRenderJob
+th20::NativeGlyphQueueView::submit_4162f0

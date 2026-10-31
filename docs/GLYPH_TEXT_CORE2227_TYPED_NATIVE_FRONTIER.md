@@ -1,3 +1,5 @@
+**CORE/RECON-1060 CURRENT STATUS:** The real queue submission method `0x004162F0` is now [whole 56/56B strict exact](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md). Its original input is a borrowed `std::function<void()>&`; the main source now constructs a real lvalue before passing it to the native `std::_Unfancy`/queue bridge. The current 2,227B source candidate is **2,072B/484 i386, 25 E8/54 DIR32**, still NONEXACT. Earlier 2,052B/481/24-E8 statistics below are historical.
+
 # CORE/RECON-1058 — complete original 2,227B glyph text rasterizer, typed game-source frontier
 
 Target: original Japanese TH20 Steamless v1.00a SHA-256
@@ -103,3 +105,15 @@ scripts/repo-python scripts/verify-glyph-text-job-capture132-native.py
 scripts/repo-python scripts/verify-ascii-text-submit294-native.py \
   --candidate-object build/core1058-probes/AsciiTextSubmit294.obj
 ```
+
+## CORE/RECON-1060 — real borrowed queue task bridge recovered
+
+The source now uses the [whole-exact 56B
+`NativeGlyphQueueView::submit_4162f0`](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md)
+with a true `std::function<void()>&` lvalue instead of erroneously
+passing a newly owned function by value. The original 56B E8
+`+0x0D` calls the folded standard-library `_Unfancy` and E8 `+0x2C`
+calls the original 151B queue backend. This raises the 2,227B C++
+source candidate to **2,072B/484 i386** and **25 E8**, vs original
+2,227B/470 and 25 E8/43 HIGHLOW. The native game queue backend,
+function wrapper and main Boss remain independently nonexact.

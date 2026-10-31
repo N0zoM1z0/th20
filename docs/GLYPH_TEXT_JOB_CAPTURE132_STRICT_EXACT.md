@@ -72,3 +72,13 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextCore2227.cpp \
   --source src/AsciiTextRender578.cpp
 ```
+
+## CORE/RECON-1060 — job submission lifetime corrected without changing capture
+
+The separate native [56B glyph queue submit bridge](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md)
+now receives the callback wrapped by this exact 132B capture as a
+borrowed `std::function<void()>&`, forwards through genuine native
+`std::_Unfancy`, then calls the original 151B append. This corrects
+the 2,227B parent source's earlier by-value temporary assumption.
+The 132B whole-exact constructor is unchanged and replays 132/132
+under the affected source-object closure.

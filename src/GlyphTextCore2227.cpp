@@ -3,6 +3,7 @@
 // submission stages are maintained; original compiler/EH and the queued
 // functor/task producer have independent source boundaries still open.
 #include "NativeGlyphTextCore.hpp"
+#include "NativeGlyphTextQueueView.hpp"
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphCanvasStorage.hpp"
 #include "LockRegistry.hpp"
@@ -55,10 +56,6 @@ struct NativeGlyphRenderJob {
 #if defined(_M_IX86)
 static_assert(sizeof(NativeGlyphRenderJob)==0x58);
 #endif
-struct NativeGlyphQueueView {
-    void submit_4162f0(std::function<void()> task);
-};
-extern NativeGlyphQueueView* native_glyph_queue_5b66e0;
 
 // The native 542B canvas alpha processor and 2,245B outline compositor
 // are independently accounted for. This Boss invokes those real methods
@@ -156,8 +153,10 @@ std::uint64_t __cdecl native_text_core_415830(
         const std::int32_t glyph_mode=mode;
         NativeGlyphRenderJob glyph_job(canvas,color,native_rectangle,pixel_rectangle,
                                        glyph_mode,callback);
-        native_glyph_queue_5b66e0->submit_4162f0(
-            std::function<void()>(std::move(glyph_job)));
+        // The original 56B queue bridge takes an already-constructed
+        // std::function lvalue by reference, preserving its owner lifetime.
+        std::function<void()> submitted(std::move(glyph_job));
+        native_glyph_queue_5b66e0->submit_4162f0(submitted);
     }
     // Original returned text SIZE is a native EDX:EAX value (not pixels).
     return (static_cast<std::uint64_t>(static_cast<std::uint32_t>(extent.cy))<<32) |

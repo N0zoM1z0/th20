@@ -93,6 +93,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1058 — complete-source 2,227B GDI glyph text core Boss frontier](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md) — native entire 470 instructions, 25 E8/43 HIGHLOW, full font/CP932/GDI/outline/alpha/queued-job pipeline, 2,052B/481 typed source remains NONEXACT.
 
+- [CORE/RECON-1060 — exact 56B native glyph text queue bridge with borrowed std::function](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md) — real 2,227B caller, original `_Unfancy` and 151B append E8, whole 56/56, +56 game-authored bytes; 2,227B parent 2,072B source NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
