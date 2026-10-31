@@ -762,3 +762,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044A700,th20::NativeAnimationFileLoadView::load_resource_44a700,1022,matching,100.00,animation_file_load_resource_1022,CORE/RECON-1093; docs/ANIMATION_FILE_LOAD1022_STRICT_EXACT.md
 0x0044ED40,th20::NativeRendererAnmPreloadView::preload_anm_44ed40,269,matching,100.00,animation_file_preload_269,CORE/RECON-1097; docs/ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md
 0x0044EB30,th20::NativeRendererAnmFindOrLoadView::find_or_load_file_44eb30,182,matching,100.00,animation_file_find_or_load_182,CORE/RECON-1098; docs/ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md
+0x0044E8F0,th20::NativeRendererTextureMemoryView::create_uploaded_texture_44e8f0,562,matching,100.00,animation_texture_upload_from_memory_562,CORE/RECON-1100; docs/ANIMATION_TEXTURE_UPLOAD562_STRICT_EXACT.md

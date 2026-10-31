@@ -1592,3 +1592,4 @@ th20::NativeRendererAnmPreloadView::preload_anm_44ed40,0x0044ED40,function
 th20::NativeRendererAnmFindOrLoadView::find_or_load_file_44eb30,0x0044EB30,function
 std::atomic<std::uint32_t>::operator=(uint32_t),0x004493C0,function
 std::atomic<std::uint32_t>::operator uint32_t(),0x004292C0,function
+th20::NativeRendererTextureMemoryView::create_uploaded_texture_44e8f0,0x0044E8F0,function

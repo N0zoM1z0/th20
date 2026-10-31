@@ -28194,3 +28194,34 @@ size = 21
 relocations = [
   { offset = 0xD, type = "REL32", symbol = "?load@?$_Atomic_storage@I$03@std@@QBEIW4memory_order@2@@Z", target = 0x0040C420 },
 ]
+
+# CORE/RECON-1100: complete native game texture memory upload 562B.
+[units.animation_texture_upload_from_memory_562]
+source = "src/AnimationFileTextureLoad562.cpp"
+object = "build/core1100-canonical/AnimationFileTextureLoad562.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererTextureMemoryView::create_uploaded_texture_44e8f0"]
+symbol = "?create_uploaded_texture_44e8f0@NativeRendererTextureMemoryView@th20@@QAEHPAUTextureRecord@2@HHHHHHHH@Z"
+target_address = 0x0044E8F0
+size = 562
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x18, type = "REL32", symbol = "?select_texture_format@th20@@YAII@Z", target = 0x0044CFB0 },
+  { offset = 0x99, type = "DIR32", symbol = "?native_texture_nominal_scale_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xA0, type = "DIR32", symbol = "?native_texture_scale_5b8818@th20@@3MA", target = 0x005B8818 },
+  { offset = 0xAF, type = "DIR32", symbol = "?native_texture_scale_5b8818@th20@@3MA", target = 0x005B8818 },
+  { offset = 0xB7, type = "DIR32", symbol = "?native_texture_scale_factor_56e0ec@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0xCB, type = "DIR32", symbol = "?native_texture_scale_5b8818@th20@@3MA", target = 0x005B8818 },
+  { offset = 0xD3, type = "DIR32", symbol = "?native_texture_scale_factor_56e0ec@th20@@3MB", target = 0x0056E0EC },
+  { offset = 0xFE, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", target = 0x0056E208 },
+  { offset = 0x106, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x10B, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x12D, type = "REL32", symbol = "_D3DXCreateTexture@32", target = 0x005406A2 },
+  { offset = 0x16D, type = "DIR32", symbol = "?native_texture_nominal_scale_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x174, type = "DIR32", symbol = "?native_texture_scale_5b8818@th20@@3MA", target = 0x005B8818 },
+  { offset = 0x1AF, type = "REL32", symbol = "_D3DXLoadSurfaceFromFileInMemory@36", target = 0x00540696 },
+  { offset = 0x1FC, type = "REL32", symbol = "?finalize_uploaded_texture_451910@NativeRendererTextureMemoryView@th20@@QAEXPAUIDirect3DTexture9@@@Z", target = 0x00451910 },
+  { offset = 0x209, type = "DIR32", symbol = "?texture_byte_sizes@th20@@3QBIB", target = 0x0056E22C },
+  { offset = 0x21E, type = "DIR32", symbol = "?texture_byte_sizes@th20@@3QBIB", target = 0x0056E22C },
+  { offset = 0x228, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
