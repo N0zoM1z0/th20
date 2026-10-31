@@ -96,3 +96,12 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 
 The previously accepted four 32B/61B/19B/23B spell helpers are unchanged
 and remain individually exact under the prior [Card leaf audit](CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md).
+
+## CORE/RECON-1001 follow-up — HUD cleanup child chain accepted
+
+The prior HUD child boundary is now independently reconstructed as a whole
+**71B** HUD two-animation cleanup, plus the **22B** event-3 wrapper and the
+**34B** native Animation VM-event setter. See the [separate original and
+canonical proof](CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md). These add
+three authentic game heads/+127 exact bytes; they do **not** make the
+602B parent or the 39,470B Animation VM exact.

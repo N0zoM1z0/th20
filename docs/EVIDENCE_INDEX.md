@@ -15,6 +15,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1000 — source-present whole 602B Card finish Boss and two 41B/23B exact leaves](CARD_FINISH_602_TYPED_SOURCE_AND_41_23_EXACT.md) — whole original 26 E8/13 HIGHLOW and 113-record scan, pinned C++ candidate NONEXACT 577B; real 32-bit play-state return corrects Ghidra bool, 23 new authored bytes.
 
+- [CORE/RECON-1001 — original 71B Card HUD cleanup Boss plus 22B/34B Animation VM bridge strictly exact](CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md) — genuine 602B parent call and six original E8, three complete accepted game-authored bodies/+127B, no invented inheritance.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

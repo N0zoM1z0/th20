@@ -2079,7 +2079,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00475170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004751B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004773C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00477450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00477450,authored,Animation,authored,high,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md; Original genuine Animation+0x438 event word and VM update E8 0x42B5D0; native game protocol original E8 and complete source original exact
 0x00477480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00477520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00477640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2458,7 +2458,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004888A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004888C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004888E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00488900,authored,CardSpell,authored,high,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md; Original game-specific event 3 forwarding through 34B Animation method; native game protocol original E8 and complete source original exact
 0x00488920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2466,7 +2466,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00488A00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488A20,unknown,Card,review,pending,"EXACT-075: Six whole Card construction/time-state/binding/lookup contributions add725body/730comparisonbytes. Frozen568unit/104fresh-object graph replays99122disjointbytes. Native200-byte allocation, CardInf RTTI/vtable/string, real five typed handles/Timer/Vector3, aligned double clocks/natural gaps and complete nonthrowing EH establish actual owner. Defined32-bit wrapping encoding preserves all three native stores and signed remainders; validation returns full-width int0/1. Actual Session/Context binds stored index and publishes borrowed Card pointer. Shared Context getter/setter physical folding adds no duplicate coverage. O2/UBSan dirty guards, independent wide arithmetic, valid/corrupted words and whole-state/two-context checks pass. Card destruction remains an explicit fixture; factory/initialization/gameplay/disposal, Player/game owners, whole readers,41KB opcode root and whole-game runtime remain open. Authored origins stay pending. See docs/EXACT_CARD_RECONSTRUCTION.md."
 0x00488A60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488AB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00488AB0,authored,CardSpell,authored,high,"CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md; Original two separate HUD+0x88 2-element borrowed-animation references, each invokes 22B bridge; native game protocol original E8 and complete source original exact"
 0x00488B00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488B80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

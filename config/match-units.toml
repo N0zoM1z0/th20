@@ -26146,3 +26146,45 @@ symbol = "?requires_extra_sound_488880@NativeCardEndFlagView@th20@@QAEIXZ"
 target_address = 0x00488880
 size = 23
 relocations = []
+
+# CORE/RECON-1001: whole original 34B Card HUD/Animation method with complete physical role replay.
+[units.card_hud_animation_vm_event_34]
+source = "src/CardHudSpellCleanup71.cpp"
+object = "build/core1001-canonical/CardHudSpellCleanup71.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeHudAnimationView::set_vm_event_477450"]
+symbol = "?set_vm_event_477450@NativeHudAnimationView@th20@@QAEXH@Z"
+target_address = 0x00477450
+size = 34
+relocations = [
+ { offset = 0x17, type = "REL32", symbol = "?update@Animation@th20@@QAEHXZ", target = 0x0042B5D0 },
+]
+
+# CORE/RECON-1001: whole original 22B Card HUD/Animation method with complete physical role replay.
+[units.card_hud_finish_event_bridge_22]
+source = "src/CardHudSpellCleanup71.cpp"
+object = "build/core1001-canonical/CardHudSpellCleanup71.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeHudAnimationView::finish_stage_488900"]
+symbol = "?finish_stage_488900@NativeHudAnimationView@th20@@QAEXXZ"
+target_address = 0x00488900
+size = 22
+relocations = [
+ { offset = 0xD, type = "REL32", symbol = "?set_vm_event_477450@NativeHudAnimationView@th20@@QAEXH@Z", target = 0x00477450 },
+]
+
+# CORE/RECON-1001: whole original 71B Card HUD/Animation method with complete physical role replay.
+[units.card_hud_spell_cleanup_71]
+source = "src/CardHudSpellCleanup71.cpp"
+object = "build/core1001-canonical/CardHudSpellCleanup71.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardHudView::clear_spell_effects_488ab0"]
+symbol = "?clear_spell_effects_488ab0@NativeCardHudView@th20@@QAEXXZ"
+target_address = 0x00488AB0
+size = 71
+relocations = [
+ { offset = 0x1A, type = "REL32", symbol = "??A?$array@PAUNativeHudAnimationView@th20@@$01@std@@QAEAAPAUNativeHudAnimationView@th20@@I@Z", target = 0x00414580 },
+ { offset = 0x21, type = "REL32", symbol = "?finish_stage_488900@NativeHudAnimationView@th20@@QAEXXZ", target = 0x00488900 },
+ { offset = 0x37, type = "REL32", symbol = "??A?$array@PAUNativeHudAnimationView@th20@@$01@std@@QAEAAPAUNativeHudAnimationView@th20@@I@Z", target = 0x00414580 },
+ { offset = 0x3E, type = "REL32", symbol = "?finish_stage_488900@NativeHudAnimationView@th20@@QAEXXZ", target = 0x00488900 },
+]

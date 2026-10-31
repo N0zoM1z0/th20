@@ -1454,3 +1454,6 @@ th20::NativeSpellRecordArrayView::record_486e10,0x00486E10,function
 th20::Card::finish_spell,0x004878B0,function
 th20::NativeCardPlayView::is_paused_488800,0x00488800,function
 th20::NativeCardEndFlagView::requires_extra_sound_488880,0x00488880,function
+th20::NativeHudAnimationView::set_vm_event_477450,0x00477450,function
+th20::NativeHudAnimationView::finish_stage_488900,0x00488900,function
+th20::NativeCardHudView::clear_spell_effects_488ab0,0x00488AB0,function

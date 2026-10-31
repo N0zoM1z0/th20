@@ -1449,3 +1449,6 @@ th20::NativeCardRecordArchive::secondary_488700
 th20::NativeSpellRecordArrayView::record_486e10
 th20::NativeCardPlayView::is_paused_488800
 th20::NativeCardEndFlagView::requires_extra_sound_488880
+th20::NativeHudAnimationView::set_vm_event_477450
+th20::NativeHudAnimationView::finish_stage_488900
+th20::NativeCardHudView::clear_spell_effects_488ab0
