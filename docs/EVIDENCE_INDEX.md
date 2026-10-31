@@ -81,6 +81,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1053 — native whole 22B ARGB4444 glyph color default constructor strict exact](GLYPH_PACKED_COLOR4444_CTOR22_STRICT_EXACT.md) — actual 2,245B compositor E8 +0x505, true 16-bit packed-color initialization, natural 22/22 with 5/5 source-scoped units, +22 authored-game bytes, no parent credit.
 
+- [CORE/RECON-1054 — four PMR glyph vector lifecycle helpers 10/24/43/153B whole strict exact](GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md) — real original E8 chain beneath 63B vector ctor/20B destructor, 230 distinct native STL bytes and 9/9 focused strict units in existing one object; no authored game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

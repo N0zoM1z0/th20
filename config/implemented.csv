@@ -1493,3 +1493,7 @@ std::pmr::vector<GlyphMaskOffset>::~vector
 std::pmr::vector<GlyphMaskOffset>::_Unchecked_begin
 std::pmr::vector<GlyphMaskOffset>::_Unchecked_end
 th20::NativeGlyphColor4444::NativeGlyphColor4444
+std::pmr::get_default_resource
+std::pmr::polymorphic_allocator<GlyphMaskOffset>::polymorphic_allocator
+std::_Compressed_pair<GlyphMaskOffset::Vector>::constructor
+std::pmr::vector<GlyphMaskOffset>::_Tidy

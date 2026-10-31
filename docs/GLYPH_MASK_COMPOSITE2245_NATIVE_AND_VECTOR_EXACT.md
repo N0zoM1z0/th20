@@ -124,3 +124,14 @@ the already exact 24B `PackedColor` constructor invoked at `+0x4FD`.
 The main Boss now compiles 1,987B/538 instructions (27 E8/5 DIR32)
 versus native 2,245B/612; it remains NONEXACT. Four original PMR-vector
 children and this 22B color ctor all still replay exact in one object.
+
+## CORE/RECON-1054 — four deeper native PMR lifecycle callees accepted
+
+The genuine original 63B offset-vector ctor and 20B vector destructor
+have [four more independently whole-exact 10/24/43/153B PMR
+lifecycle callees](GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md):
+`get_default_resource`, the allocator default ctor, the compressed-pair
+ctor and vector `_Tidy`. The same one original C++ source emits
+all nine currently exact child/color units; **no** previous vector,
+color or lower native physical code is counted twice. The enclosing
+2,245B glyph compositor is still NONEXACT.

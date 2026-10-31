@@ -382,7 +382,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00412DA0,authored,FunctionChain,authored,high,REF-002
 0x00412DC0,authored,FunctionChain,authored,high,REF-002
 0x00412DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00412E10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412E10,unknown,CxxRuntime,review,pending,"CORE/RECON-1054; docs/GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md; original 43B generic C++ PMR vector lifecycle code; Native 63B PMR vector ctor E8+0x17; physical native E8 and whole source exact, library/template provenance uncredited"
 0x00412E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412ED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -441,7 +441,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004140F0,unknown,CxxRuntime,review,pending,"CORE/RECON-1036; docs/ASCII_FUNCTION_COPY_DTOR_93_20_STRICT_EXACT.md; Original 93B std::function<void()> copy constructor, genuine EH and security cookie, original 578B text Boss E8 +0x1B6; original source/library folding and game authorship uncredited"
 0x00414150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004141A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004141A0,unknown,CxxRuntime,review,pending,"CORE/RECON-1054; docs/GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md; original 24B generic C++ PMR vector lifecycle code; Native 43B compressed_pair constructor E8+0x11; physical native E8 and whole source exact, library/template provenance uncredited"
 0x004141C0,unknown,CxxRuntime,review,pending,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; actual standard PMR vector of two signed 32-bit glyph displacements, source-generated whole 63B exact; native two 2245B compositor caller sites; library origin uncredited"
 0x00414200,authored,GlyphText,authored,high,"CORE/RECON-1047; docs/GLYPH_CANVAS_CONSTRUCTOR124_STRICT_EXACT.md; native 0x124-size custom font bitmap owner construct with real +0x100..+0x120 GDI suffix fields and original 73B heap allocation caller, source whole 124/124"
 0x00414280,authored,GlyphText,authored,high,"CORE/RECON-1053; docs/GLYPH_PACKED_COLOR4444_CTOR22_STRICT_EXACT.md; original game-specific 16-bit packed glyph color local and independent 2245B compositor E8 +0x505, exact 22B native default zero constructor"
@@ -489,7 +489,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414D50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414DC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414E10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414E10,unknown,CxxRuntime,review,pending,"CORE/RECON-1054; docs/GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md; original 153B generic C++ PMR vector lifecycle code; Native 20B PMR vector destructor E8+0x0A; physical native E8 and whole source exact, library/template provenance uncredited"
 0x00414EB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414F30,unknown,CxxRuntime,review,pending,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; actual standard PMR vector of two signed 32-bit glyph displacements, source-generated whole 26B exact; native two 2245B compositor caller sites; library origin uncredited"
 0x00414F50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -516,7 +516,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004156C0,authored,GlyphText,authored,high,"CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md; original game-specific 0x124-byte GDI glyph canvas member field at +0x110, native 2227B/2245B text core physical call edges and entire 20B natural exact"
 0x004156E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415800,authored,GlyphText,authored,high,"CORE/RECON-1051; docs/GLYPH_CANVAS_WIDTH20_STRICT_EXACT.md; genuine custom TH20 glyph canvas+0x104 width read, 2245B original source-absent compositor four physical E8, whole 20/20 native exact"
-0x00415820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00415820,unknown,CxxRuntime,review,pending,"CORE/RECON-1054; docs/GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md; original 10B generic C++ PMR vector lifecycle code; Native 24B polymorphic allocator constructor E8+0x07; physical native E8 and whole source exact, library/template provenance uncredited"
 0x00415830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
