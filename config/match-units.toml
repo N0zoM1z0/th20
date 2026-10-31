@@ -26559,3 +26559,14 @@ relocations = [
   { offset = 0x7C, type = "DIR32", symbol = "?texture_byte_sizes@th20@@3QBIB", target = 0x0056E22C },
   { offset = 0x91, type = "DIR32", symbol = "?texture_byte_sizes@th20@@3QBIB", target = 0x0056E22C },
 ]
+
+# CORE/RECON-1034: original 7B std::function _Test_callable from real 65B reset.
+[units.card_text_callable_test_7]
+source = "src/CardStartSpell1896.cpp"
+object = "build/core1009-canonical/CardStartSpell1896.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Test_callable<NativeCardTextPayload>"]
+symbol = "??$_Test_callable@UNativeCardTextPayload@th20@@@std@@YA_NABUNativeCardTextPayload@th20@@@Z"
+target_address = 0x00413910
+size = 7
+relocations = []

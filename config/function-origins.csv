@@ -407,7 +407,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004138C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413910,unknown,CxxRuntime,review,pending,"CORE/RECON-1034; docs/CARD_TEXT_CALLABLE_TEST7_STRICT_EXACT.md; original 65B std::function _Reset E8 and natural C++20 std::_Test_callable, 7/7 source exact, generic compiler origin uncredited"
 0x00413920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004139F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

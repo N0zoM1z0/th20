@@ -122,3 +122,12 @@ on the real 36B capture. The getter and its `c_str()` callee are
 independently proved from the PE. The callable's own 111B body,
 its constructed 102B `std::function`, 578B text draw Boss and
 Card start's 1,896B parent remain separate unresolved code.
+
+## CORE/RECON-1034 — source-generated 7B callable-test child accepted
+
+The original 65B `_Reset` calls a genuine [whole-exact 7B
+`std::_Test_callable<NativeCardTextPayload>`](CARD_TEXT_CALLABLE_TEST7_STRICT_EXACT.md)
+at `0x00413910`. It is now a separate strict source unit generated
+by the existing Card start C++ translation unit. Original 65B `_Reset`,
+102B `std::function` constructor and the 1,896B parent remain
+NONEXACT; no authored-game credit is inferred from this generic child.

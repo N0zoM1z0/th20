@@ -45,6 +45,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1032 — full original 155B Renderer dynamic D3D9 texture Boss now whole strict exact](ANIMATION_DYNAMIC_TEXTURE_155_STRICT_EXACT.md) — real native vtable-then-format local evaluation, 51 instructions, two original E8/five HIGHLOW, complete 155/155 natural C++20 and canonical exact. +155 game-authored bytes.
 
+- [CORE/RECON-1034 — whole original 7B std::function callable test strict exact](CARD_TEXT_CALLABLE_TEST7_STRICT_EXACT.md) — real native 65B `_Reset` caller E8, complete 7/7 std::_Test_callable from existing Card-start source owner, generic source credit withheld.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
