@@ -70,13 +70,23 @@ def verify(candidate):
  import tomllib
  units=tomllib.loads((ROOT/'config/match-units.toml').read_text())['units']
  affected=[k for k,u in units.items() if u.get('source')=='src/GlyphMaskComposite2245.cpp']
- assert len(affected)==15
+ # CORE/RECON-1081 adds nine native whole-exact PMR growth/backout
+ # descendants to the original fifteen code owners of this same C++ file.
+ # The old exact-count assertion must follow the actual source closure.
+ assert len(affected)==24
+ new_descendants={
+   'glyph_vec_calculate_growth_84','glyph_vec_allocate_at_least_19',
+   'glyph_vec_pmr_array_allocate_58','glyph_vec_count_size_42',
+   'glyph_vec_capacity_36','glyph_vec_backout_ctor_42',
+   'glyph_vec_backout_release_28','glyph_vec_backout_dtor_39',
+   'glyph_vec_orphan_range_13'}
+ assert new_descendants.issubset(affected)
  for unit in affected:
   result=cm.compare_unit(unit)
   assert result['result']=='exact' and result['matched_bytes']==result['size']
  print('PASS immutable original whole 2245B/612 game Boss, 37 native E8/5 PE HIGHLOW and two 16/32-bit glyph stencil branches')
  print('PASS original four E8 +0x29E/+0x2B0/+0x666/+0x678 to folded 22B native 0x414580 with exact std::array<int32_t,2>::operator[] 22/22')
- print('PASS real array-of-two-int32 element size 8B, PMR vector 16B under i386, all 15 prior generic/color canonical units still whole native exact')
+ print('PASS real std::array<int32_t,2> element size 8B, PMR vector 16B, all 24 current distinct generic/color canonical units whole native exact (original 15 plus 9 growth/rollback)')
  print('SOURCE-PRESENT NONEXACT 2245B parent: meaningful C++20 candidate 2061B/545 i386, 36 E8/5 DIR32, original 37 E8/5 PE HIGHLOW')
  print('Original folded 22B index at 0x414580 ALREADY independently whole exact in other provider, zero duplicate credit')
 if __name__=='__main__':

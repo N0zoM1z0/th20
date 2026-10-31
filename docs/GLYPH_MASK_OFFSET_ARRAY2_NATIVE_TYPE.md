@@ -128,3 +128,15 @@ All are ordinary C++20 generated from the corrected native two-int32
 array vector and replay **24/24** strict units in one affected source
 object. The original 488B and 2,245B parents are still NONEXACT,
 and generic source is not credited to game-authored `.text`.
+
+## CORE/RECON-1086 — verifier count corrected after nine additional helpers
+
+The original indexed-array source initially had **15** whole-exact
+PMR/color units at the time the `std::array<int32_t,2>` ABI was
+accepted. CORE/RECON-1081 subsequently added **nine distinct complete
+original PMR growth/rollback functions** from the SAME source file.
+The current strict closure is therefore **24/24**, not the historical
+15/15. The independent native offset-index proof now verifies all
+24 current original heads, including the nine new descendants.
+This is an evidence/verification-count correction, not a new original
+function, a new compiler source or new authored-game byte credit.
