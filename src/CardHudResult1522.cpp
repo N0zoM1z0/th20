@@ -16,7 +16,7 @@ struct NativeCardGlyphView {
     void hide_leading_450120();
     void show_digit_44fa30();
 };
-// Original getter is a true 20B native game field accessor; the observed
+// Original getter is a true 20B native field accessor; the observed
 // field at +0x1A244 is a borrowed AnimationFile pointer, not a new owner.
 struct NativeCardRendererFileView {
     AnimationFile* current_file_437950();

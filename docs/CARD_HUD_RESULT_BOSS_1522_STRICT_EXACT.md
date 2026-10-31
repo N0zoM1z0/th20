@@ -113,3 +113,11 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardHudResult1522.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1005 — real 20-byte borrowed file getter now exact
+
+The three original `0x00437950` calls in the 1,522B HUD Boss now have a
+[separately accepted whole 20B/9-i386 source unit](CARD_HUD_FILE_GETTER20_STRICT_EXACT.md)
+in the **same** canonical C++ provider. The parent still replays its
+complete 1,552B contribution; the generic getter retains uncertain
+original source ownership and does not add authored-game byte credit.

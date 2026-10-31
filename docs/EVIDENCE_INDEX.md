@@ -23,6 +23,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1004 — whole original 1,522B/416-i386 Card HUD result Boss strict exact](CARD_HUD_RESULT_BOSS_1522_STRICT_EXACT.md) — both native 602B parent calls, all 51 original E8/19 PE HIGHLOW fields including 7 switch table entries, entire 1,552B original C++20 compiler contribution exact. +1 authored head/1,522B.
 
+- [CORE/RECON-1005 — original 20B renderer AnimationFile borrowed getter, whole strict exact](CARD_HUD_FILE_GETTER20_STRICT_EXACT.md) — 3 genuine PE calls from complete 1,522B Card HUD result Boss, 20/20 and prior 1,552/1,552 rechecked in the same one cold object; origin uncredited.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

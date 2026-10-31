@@ -26390,3 +26390,15 @@ relocations = [
   { offset = 0x608, type = "DIR32", symbol = "$LN18", target = 0x004B96CC },
   { offset = 0x60C, type = "DIR32", symbol = "$LN17", target = 0x004B9651 },
 ]
+
+# CORE/RECON-1005: original 20B/9-i386 Renderer AnimationFile borrowed getter,
+# 3 independent E8 from original 1,522B Card result HUD Boss.
+[units.card_hud_renderer_file_getter_20]
+source = "src/CardHudResult1522.cpp"
+object = "build/core1004-canonical/CardHudResult1522.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardRendererFileView::current_file_437950"]
+symbol = "?current_file_437950@NativeCardRendererFileView@th20@@QAEPAVAnimationFile@2@XZ"
+target_address = 0x00437950
+size = 20
+relocations = []
