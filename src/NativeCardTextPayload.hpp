@@ -14,6 +14,9 @@ struct NativeCardTextPayload {
     Animation* animation;
     NativeCardTextPayload(Card* card, const std::pmr::string& text,
                           Animation* animation);
+    // Original lambda/callback capture move: the PMR string is transferred,
+    // not copied; the underlying STL move implementation is separate.
+    NativeCardTextPayload(NativeCardTextPayload&& source);
     ~NativeCardTextPayload();
 };
 #if defined(_M_IX86)

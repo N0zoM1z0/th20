@@ -1467,3 +1467,4 @@ std::pmr::string::basic_string(copy)
 std::pmr::string::basic_string(const char*)
 th20::NativeCardAsciiTaskQueueView::enqueue_470180
 std::list<std::function<void()>>::push_back(std::function<void()>&&)
+th20::NativeCardTextPayload::NativeCardTextPayload(move)

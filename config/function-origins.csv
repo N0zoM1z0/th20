@@ -2407,7 +2407,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00486A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486AD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486AE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00486AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00486AF0,unknown,CardText,review,pending,"CORE/RECON-1029; docs/CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md; 64B source exact typed lambda payload move, real 66B wrapper and 108B PMR move callee remain independently scoped; generated compiler or authored ownership uncertain"
 0x00486B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486B70,unknown,CardText,review,pending,"CORE/RECON-1007; docs/CARD_TEXT_PAYLOAD_56_23_167_STRICT_EXACT.md; Construct 36B Card name/animation capture with a real PMR string at +4; real original physical native body and source C++20 exact, compiler-generated/template ownership uncredited"
 0x00486BB0,authored,Card,authored,medium,"CORE/ORIGIN-555; docs/ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md; full immutable original PE x86 E8 and real PE HIGHLOW / 249 original call+absolute fields, original source-specific MSVC 14 real objects 122/122 strict. High confidence if real original gameplay caller; medium for absent E8 or anonymous constructor wrapper; whole original physical source present."

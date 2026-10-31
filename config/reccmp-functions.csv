@@ -1472,3 +1472,4 @@ th20::Card::start_spell,0x00487C30,function
 std::pmr::string::basic_string(const char*),0x0046A830,function
 th20::NativeCardAsciiTaskQueueView::enqueue_470180,0x00470180,function
 std::list<std::function<void()>>::push_back(std::function<void()>&&),0x00470A20,function
+th20::NativeCardTextPayload::NativeCardTextPayload(move),0x00486AF0,function
