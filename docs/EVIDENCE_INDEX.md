@@ -133,6 +133,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1079 — source-correct original 2,245B glyph-mask Boss DIB pixel and live stride lifetime](GLYPH_MASK_BOSS2245_LIVE_BITMAP_FRONTIER.md) — original nine stride E8/one pixel getter vs old candidate one stride/three pixels, meaningful source 1987B/538/27 E8 → 2041B/557/32 E8, 15/15 scoped helper exact; parent remains NONEXACT.
 
+- [CORE/RECON-1080 — native glyph-mask offset is real two-int32 indexed array, four original folded 22B E8 restored](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md) — true std::array<int32_t,2> code, 2,245B compositor source 2,061B/545 i386 with 36 E8, all 15 original PMR/color strict units recompiled under corrected template symbol ABI, parent NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

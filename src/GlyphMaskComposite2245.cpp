@@ -1,9 +1,6 @@
 // Game-owned 2,245B glyph compositor at 0x00416420. SOURCE-PRESENT,
-// NONEXACT: both original pixel-format branches are meaningful native
-// C++. The actual original pixels pointer is fetched once BEFORE the
-// allocator snapshot, while the canvas stride is re-read live in the
-// native BGRA32 row advance and the 16-bit stencil neighborhood. The
-// original PMR iterator/index lowering remains a separate frontier.
+// NONEXACT: its two native pixel-format branches and 16B PMR-vector
+// offsets are reconstructed, but the full Win32/PMR EH lowering is open.
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -26,8 +23,6 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
     // before applying any alpha changes to the live mapped DIB memory.
     const std::int32_t row_stride=pixel_stride_4156c0();
     const std::int32_t length=row_stride*rows;
-    // Original native E8 fetches the DIB pixel base only ONCE, before
-    // allocation and the subsequent immutable stencil snapshot.
     auto* pixels=bitmap_pixels_4156a0();
     auto* original=process_allocator->allocate_array<std::uint8_t>(
         "D:\\cygwin\\home\\zun\\prog\\th20\\src\\core\\grpfont.cpp:615 u_char",length);
@@ -49,8 +44,6 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
         const PackedColor opaque(color);
         const std::uint32_t outlined=opaque.value^0xff000000u;
         const std::int32_t row_words=pixel_stride_4156c0()/4;
-        // Keep the native live row advance instead of multiplying a
-        // permanently cached stride by y (the game re-reads it).
         std::int32_t row_advance=0;
         for (std::int32_t y=0;y<rows;++y) {
             auto* dest=reinterpret_cast<std::uint32_t*>(
@@ -60,14 +53,18 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     const auto* stencil=reinterpret_cast<const std::uint32_t*>(original);
                     bool touches_outline=false;
                     for (const GlyphMaskOffset& off:offsets) {
-                        if (((x-off.x>=0 && y-off.y>=0) &&
-                             (stencil[(y-off.y)*row_words+x-off.x]>>24)!=0xff) ||
-                            ((x+off.x<canvas_width_415800() && y-off.y>=0) &&
-                             (stencil[(y-off.y)*row_words+x+off.x]>>24)!=0xff) ||
-                            ((x-off.x>=0 && y+off.y<rows) &&
-                             (stencil[(y+off.y)*row_words+x-off.x]>>24)!=0xff) ||
-                            ((x+off.x<canvas_width_415800() && y+off.y<rows) &&
-                             (stencil[(y+off.y)*row_words+x+off.x]>>24)!=0xff)) {
+                    // The original has two genuine E8 calls per vector
+                    // element to the folded 22B array-index helper.
+                    const std::int32_t delta_x=off[0];
+                    const std::int32_t delta_y=off[1];
+                        if (((x-delta_x>=0 && y-delta_y>=0) &&
+                             (stencil[(y-delta_y)*row_words+x-delta_x]>>24)!=0xff) ||
+                            ((x+delta_x<canvas_width_415800() && y-delta_y>=0) &&
+                             (stencil[(y-delta_y)*row_words+x+delta_x]>>24)!=0xff) ||
+                            ((x-delta_x>=0 && y+delta_y<rows) &&
+                             (stencil[(y+delta_y)*row_words+x-delta_x]>>24)!=0xff) ||
+                            ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
+                             (stencil[(y+delta_y)*row_words+x+delta_x]>>24)!=0xff)) {
                             touches_outline=true;
                             break;
                         }
@@ -110,14 +107,18 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                 const auto* stencil=reinterpret_cast<const std::uint16_t*>(original);
                 bool touches_outline=false;
                 for (const GlyphMaskOffset& off:offsets) {
-                    if (((x-off.x>=0 && y-off.y>=0) &&
-                         (stencil[(y-off.y)*(pixel_stride_4156c0()/2)+x-off.x]>>12)!=0xf) ||
-                        ((x+off.x<canvas_width_415800() && y-off.y>=0) &&
-                         (stencil[(y-off.y)*(pixel_stride_4156c0()/2)+x+off.x]>>12)!=0xf) ||
-                        ((x-off.x>=0 && y+off.y<rows) &&
-                         (stencil[(y+off.y)*(pixel_stride_4156c0()/2)+x-off.x]>>12)!=0xf) ||
-                        ((x+off.x<canvas_width_415800() && y+off.y<rows) &&
-                         (stencil[(y+off.y)*(pixel_stride_4156c0()/2)+x+off.x]>>12)!=0xf)) {
+                    // The original has two genuine E8 calls per vector
+                    // element to the folded 22B array-index helper.
+                    const std::int32_t delta_x=off[0];
+                    const std::int32_t delta_y=off[1];
+                    if (((x-delta_x>=0 && y-delta_y>=0) &&
+                         (stencil[(y-delta_y)*(pixel_stride_4156c0()/2)+x-delta_x]>>12)!=0xf) ||
+                        ((x+delta_x<canvas_width_415800() && y-delta_y>=0) &&
+                         (stencil[(y-delta_y)*(pixel_stride_4156c0()/2)+x+delta_x]>>12)!=0xf) ||
+                        ((x-delta_x>=0 && y+delta_y<rows) &&
+                         (stencil[(y+delta_y)*(pixel_stride_4156c0()/2)+x-delta_x]>>12)!=0xf) ||
+                        ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
+                         (stencil[(y+delta_y)*(pixel_stride_4156c0()/2)+x+delta_x]>>12)!=0xf)) {
                         touches_outline=true;
                         break;
                     }

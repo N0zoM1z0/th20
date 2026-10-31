@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independently locked 2245B original Boss; one DIB pixel source + live stride.
+"""Locked 2245B original Boss, one bitmap fetch/live stride and real array index.
 
 This verifies a meaningful full C++ source candidate, not a shortened
 original or a whole-exact parent. Native original E8 and physical HIGHLOW
@@ -41,26 +41,26 @@ def verify(candidate):
          for x in hl if HEAD<=x<HEAD+2245}
  assert actual==DATA
  p=ROOT/candidate
- body,rel=cm.object_function(p,SYM,2041)
+ body,rel=cm.object_function(p,SYM,2061)
  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
- assert len(body)==2041 and len(ci)==557
- assert len(rel)==37
- assert sum(x['type']=='REL32' for x in rel)==32
+ assert len(body)==2061 and len(ci)==545
+ assert len(rel)==41
+ assert sum(x['type']=='REL32' for x in rel)==36
  assert sum(x['type']=='DIR32' for x in rel)==5
  assert all(x['addend']==0 for x in rel)
  fromcollections=collections.Counter()
  for x in rel:
-  for text in ['pixel_stride_4156c0','bitmap_pixels_4156a0','canvas_width_415800']:
+  for text in ['pixel_stride_4156c0','bitmap_pixels_4156a0','canvas_width_415800','??A?$array@H$01@']:
    if text in x['symbol']:fromcollections[text]+=1
- assert fromcollections=={'pixel_stride_4156c0':8,'bitmap_pixels_4156a0':1,'canvas_width_415800':4}
+ assert fromcollections=={'pixel_stride_4156c0':8,'bitmap_pixels_4156a0':1,'canvas_width_415800':4,'??A?$array@H$01@':4}
  for unit in ['glyph_mask_offsets_vector_ctor_63','glyph_mask_offsets_vector_dtor_20',
               'glyph_mask_offsets_vector_begin_26','glyph_mask_offsets_vector_end_26',
               'glyph_vec_max_size_59','glyph_vec_allocator_max_size_13']:
   assert cm.compare_unit(unit)['result']=='exact'
  print('PASS locked original complete 2245B/612-i386 game glyph Boss, 37 real E8/5 native HIGHLOW')
  print('PASS original one bitmap_pixels getter at E8+0x44, nine native stride calls, four genuine folded 22B offset-index E8')
- print('SOURCE-PRESENT NONEXACT: meaningful current C++20 complete 2041B/557 i386, 32 E8/5 DIR32')
- print('PASS source restores original one-time pixel getter BEFORE allocator/snapshot and eight live stride calls vs previous source one stride/three pixels')
+ print('SOURCE-PRESENT NONEXACT: meaningful current C++20 complete 2061B/545 i386, 36 E8/5 DIR32')
+ print('PASS source restores one-time bitmap pixels getter, eight live stride E8 and four folded std::array<int32_t,2> offset-index E8')
  print('PASS six representative separate exact generic PMR vector units; original game 2245B parent not exact and not credited')
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--candidate-object',type=Path,required=True)

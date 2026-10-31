@@ -26817,11 +26817,11 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::vector"]
-symbol = "??0?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@QAE@XZ"
+symbol = "??0?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ"
 target_address = 0x004141C0
 size = 63
 relocations = [
-  { offset = 0x18, type = "REL32", symbol = "??$?0$$V@?$_Compressed_pair@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@V?$_Vector_val@U?$_Simple_types@UGlyphMaskOffset@th20@@@std@@@3@$0A@@std@@QAE@U_Zero_then_variadic_args_t@1@@Z", target = 0x00412E10 },
+  { offset = 0x18, type = "REL32", symbol = "??$?0$$V@?$_Compressed_pair@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@V?$_Vector_val@U?$_Simple_types@V?$array@H$01@std@@@std@@@3@$0A@@std@@QAE@U_Zero_then_variadic_args_t@1@@Z", target = 0x00412E10 },
   { offset = 0x33, type = "REL32", symbol = "?_Alloc_proxy@_Container_base0@std@@QAEXABU_Fake_allocator@2@@Z", target = 0x0040EC90 },
 ]
 
@@ -26831,11 +26831,11 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::~vector"]
-symbol = "??1?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@QAE@XZ"
+symbol = "??1?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ"
 target_address = 0x00414440
 size = 20
 relocations = [
-  { offset = 0xB, type = "REL32", symbol = "?_Tidy@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@AAEXXZ", target = 0x00414E10 },
+  { offset = 0xB, type = "REL32", symbol = "?_Tidy@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEXXZ", target = 0x00414E10 },
 ]
 
 # CORE/RECON-1052: full 26B original PMR glyph mask offset vector helper.
@@ -26844,11 +26844,11 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::_Unchecked_begin"]
-symbol = "?_Unchecked_begin@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@QAEPAUGlyphMaskOffset@th20@@XZ"
+symbol = "?_Unchecked_begin@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEPAV?$array@H$01@2@XZ"
 target_address = 0x00414F30
 size = 26
 relocations = [
-  { offset = 0xF, type = "REL32", symbol = "??$_Unfancy_maybe_null@UGlyphMaskOffset@th20@@@std@@YAPAUGlyphMaskOffset@th20@@PAU12@@Z", target = 0x0040B280 },
+  { offset = 0xF, type = "REL32", symbol = "??$_Unfancy_maybe_null@V?$array@H$01@std@@@std@@YAPAV?$array@H$01@0@PAV10@@Z", target = 0x0040B280 },
 ]
 
 # CORE/RECON-1052: full 26B original PMR glyph mask offset vector helper.
@@ -26857,11 +26857,11 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::_Unchecked_end"]
-symbol = "?_Unchecked_end@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@QAEPAUGlyphMaskOffset@th20@@XZ"
+symbol = "?_Unchecked_end@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEPAV?$array@H$01@2@XZ"
 target_address = 0x00414F70
 size = 26
 relocations = [
-  { offset = 0xF, type = "REL32", symbol = "??$_Unfancy_maybe_null@UGlyphMaskOffset@th20@@@std@@YAPAUGlyphMaskOffset@th20@@PAU12@@Z", target = 0x0040B280 },
+  { offset = 0xF, type = "REL32", symbol = "??$_Unfancy_maybe_null@V?$array@H$01@std@@@std@@YAPAV?$array@H$01@0@PAV10@@Z", target = 0x0040B280 },
 ]
 
 # CORE/RECON-1053: whole original 22B i386 game ARGB4444 packed color ctor.
@@ -26894,7 +26894,7 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::polymorphic_allocator<GlyphMaskOffset>::polymorphic_allocator"]
-symbol = "??0?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAE@XZ"
+symbol = "??0?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAE@XZ"
 target_address = 0x004141A0
 size = 24
 relocations = [
@@ -26907,12 +26907,12 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Compressed_pair<GlyphMaskOffset::Vector>::constructor"]
-symbol = "??$?0$$V@?$_Compressed_pair@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@V?$_Vector_val@U?$_Simple_types@UGlyphMaskOffset@th20@@@std@@@3@$0A@@std@@QAE@U_Zero_then_variadic_args_t@1@@Z"
+symbol = "??$?0$$V@?$_Compressed_pair@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@V?$_Vector_val@U?$_Simple_types@V?$array@H$01@std@@@std@@@3@$0A@@std@@QAE@U_Zero_then_variadic_args_t@1@@Z"
 target_address = 0x00412E10
 size = 43
 relocations = [
-  { offset = 0x12, type = "REL32", symbol = "??0?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAE@XZ", target = 0x004141A0 },
-  { offset = 0x1D, type = "REL32", symbol = "??0?$_Vector_val@U?$_Simple_types@UGlyphMaskOffset@th20@@@std@@@std@@QAE@XZ", target = 0x00414090 },
+  { offset = 0x12, type = "REL32", symbol = "??0?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAE@XZ", target = 0x004141A0 },
+  { offset = 0x1D, type = "REL32", symbol = "??0?$_Vector_val@U?$_Simple_types@V?$array@H$01@std@@@std@@@std@@QAE@XZ", target = 0x00414090 },
 ]
 
 # CORE/RECON-1054: original complete 153B PMR glyph-offset lifecycle helper.
@@ -26921,14 +26921,14 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::_Tidy"]
-symbol = "?_Tidy@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@AAEXXZ"
+symbol = "?_Tidy@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEXXZ"
 target_address = 0x00414E10
 size = 153
 relocations = [
-  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@AAEAAV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@XZ", target = 0x0040F160 },
   { offset = 0x39, type = "REL32", symbol = "?_Orphan_all@_Container_base0@std@@QAEXXZ", target = 0x0040E5E0 },
-  { offset = 0x57, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@YAXPAUGlyphMaskOffset@th20@@QAU12@AAV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@0@@Z", target = 0x0040C6B0 },
-  { offset = 0x76, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAEXQAUGlyphMaskOffset@th20@@I@Z", target = 0x004154C0 },
+  { offset = 0x57, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@YAXPAV?$array@H$01@0@QAV10@AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x0040C6B0 },
+  { offset = 0x76, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@3@I@Z", target = 0x004154C0 },
 ]
 
 # CORE/RECON-1056: full 16B native standard-library glyph PMR growth helper.
@@ -26937,7 +26937,7 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::_Xlength"]
-symbol = "?_Xlength@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@CAXXZ"
+symbol = "?_Xlength@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@CAXXZ"
 target_address = 0x00414FE0
 size = 16
 relocations = [
@@ -26951,14 +26951,14 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::_Change_array"]
-symbol = "?_Change_array@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@AAEXQAUGlyphMaskOffset@th20@@II@Z"
+symbol = "?_Change_array@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEXQAV?$array@H$01@2@II@Z"
 target_address = 0x00414960
 size = 165
 relocations = [
-  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@AAEAAV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@XZ", target = 0x0040F160 },
   { offset = 0x39, type = "REL32", symbol = "?_Orphan_all@_Container_base0@std@@QAEXXZ", target = 0x0040E5E0 },
-  { offset = 0x57, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@YAXPAUGlyphMaskOffset@th20@@QAU12@AAV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@0@@Z", target = 0x0040C6B0 },
-  { offset = 0x76, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAEXQAUGlyphMaskOffset@th20@@I@Z", target = 0x004154C0 },
+  { offset = 0x57, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@YAXPAV?$array@H$01@0@QAV10@AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x0040C6B0 },
+  { offset = 0x76, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@3@I@Z", target = 0x004154C0 },
 ]
 
 # CORE/RECON-1056: full 81B native standard-library glyph PMR growth helper.
@@ -26967,12 +26967,12 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::_Reallocation_guard::~_Reallocation_guard"]
-symbol = "??1_Reallocation_guard@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@QAE@XZ"
+symbol = "??1_Reallocation_guard@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ"
 target_address = 0x004144E0
 size = 81
 relocations = [
-  { offset = 0x27, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@YAXPAUGlyphMaskOffset@th20@@QAU12@AAV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@0@@Z", target = 0x0040C6B0 },
-  { offset = 0x48, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAEXQAUGlyphMaskOffset@th20@@I@Z", target = 0x004154C0 },
+  { offset = 0x27, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@YAXPAV?$array@H$01@0@QAV10@AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x0040C6B0 },
+  { offset = 0x48, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@3@I@Z", target = 0x004154C0 },
 ]
 
 # CORE/RECON-1059: real 132B glyph render task capture, const std::function&.
@@ -27091,12 +27091,12 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::vector<GlyphMaskOffset>::max_size"]
-symbol = "?max_size@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@QBEIXZ"
+symbol = "?max_size@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QBEIXZ"
 target_address = 0x004162B0
 size = 59
 relocations = [
-  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@ABEABV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@2@XZ", target = 0x0040F160 },
-  { offset = 0x13, type = "REL32", symbol = "?max_size@?$_Normal_allocator_traits@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@SAIABV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@2@@Z", target = 0x00416260 },
+  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@ABEABV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x13, type = "REL32", symbol = "?max_size@?$_Normal_allocator_traits@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@SAIABV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@Z", target = 0x00416260 },
   { offset = 0x1E, type = "REL32", symbol = "??$_Max_limit@H@std@@YAHXZ", target = 0x0040D0E0 },
   { offset = 0x2E, type = "REL32", symbol = "??$min@I@std@@YAABIABI0@Z", target = 0x0040D980 },
 ]
@@ -27107,7 +27107,7 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::max_size"]
-symbol = "?max_size@?$_Normal_allocator_traits@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@SAIABV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@2@@Z"
+symbol = "?max_size@?$_Normal_allocator_traits@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@SAIABV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@Z"
 target_address = 0x00416260
 size = 13
 relocations = [
@@ -27120,11 +27120,11 @@ source = "src/GlyphMaskComposite2245.cpp"
 object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::construct"]
-symbol = "??$construct@UGlyphMaskOffset@th20@@ABU12@@?$_Normal_allocator_traits@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@1@PAUGlyphMaskOffset@th20@@ABU45@@Z"
+symbol = "??$construct@V?$array@H$01@std@@ABV12@@?$_Normal_allocator_traits@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@1@PAV?$array@H$01@1@ABV41@@Z"
 target_address = 0x00415440
 size = 22
 relocations = [
-  { offset = 0xF, type = "REL32", symbol = "??$construct@UGlyphMaskOffset@th20@@ABU12@@?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAEXQAUGlyphMaskOffset@th20@@ABU34@@Z", target = 0x00415460 },
+  { offset = 0xF, type = "REL32", symbol = "??$construct@V?$array@H$01@std@@ABV12@@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@2@ABV32@@Z", target = 0x00415460 },
 ]
 
 # CORE/RECON-1065: complete original 542B/164-i386 TH20 GDI canvas

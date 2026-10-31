@@ -1,3 +1,5 @@
+**CORE/RECON-1080 CURRENT SOURCE UPDATE:** The native 8B glyph-offset object now uses a real [two-int32 indexed `std::array` instead of the historical plain struct](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md). The complete current source parent is **2,061B/545 i386, 36 E8/5 DIR32** (original whole **2,245B/612 i386, 37 E8/5 HIGHLOW**). Four native folded index calls are present, and the 15 earlier PMR/color strict units still replay exact with the corrected vector template type. Earlier 2,041B/1,987B snapshots below are historical.
+
 # CORE/RECON-1079 — corrected live bitmap and stride ownership in 2,245B GDI glyph-mask Boss
 
 Pinned original TH20 Japanese Steamless v1.00a SHA-256
