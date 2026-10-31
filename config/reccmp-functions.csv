@@ -1569,3 +1569,5 @@ th20::read_game_input_bytes_410990,0x00410990,function
 th20::game_file_exists_4107a0,0x004107A0,function
 th20::NativeRendererSurfaceBlitView::blit_surface_rect_44bb10,0x0044BB10,function
 th20::NativeRendererSurfaceBlitView::blit_surface_effect_44be40,0x0044BE40,function
+th20::NativeAnimationLegacyFileView::previous_file_437470,0x00437470,function
+th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0,0x0044BCD0,function

@@ -754,3 +754,5 @@ address,name,size,status,match_percent,unit,evidence
 0x00410CF0,th20::open_game_input_cp932_410cf0,368,matching,100.00,game_input_cp932_open_368,CORE/RECON-1083; docs/GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md
 0x00410E70,th20::write_game_cp932_file_410e70,493,matching,100.00,game_cp932_write_once_493,CORE/RECON-1083; docs/GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md
 0x00410990,th20::read_game_input_bytes_410990,266,matching,100.00,game_input_bytes_read_266,CORE/RECON-1084; docs/GAME_FILE_INPUT_READ266_STRICT_EXACT.md
+0x00437470,th20::NativeAnimationLegacyFileView::previous_file_437470,29,matching,100.00,animation_legacy_file_29,CORE/RECON-1089; docs/ANIMATION_HANDLE_REFRESH_118_29_STRICT_EXACT.md
+0x0044BCD0,th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0,118,matching,100.00,animation_handle_refresh_boss_118,CORE/RECON-1089; docs/ANIMATION_HANDLE_REFRESH_118_29_STRICT_EXACT.md

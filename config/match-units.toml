@@ -27770,3 +27770,36 @@ relocations = [
   { offset = 0xEA, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x102, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1089: whole original 29B game Animation rebind or distinct file index.
+[units.animation_legacy_file_29]
+source = "src/AnimationHandleRefresh118.cpp"
+object = "build/core1089-canonical/AnimationHandleRefresh118.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationLegacyFileView::previous_file_437470"]
+symbol = "?previous_file_437470@NativeAnimationLegacyFileView@th20@@QAEPAVAnimationFile@2@XZ"
+target_address = 0x00437470
+size = 29
+relocations = [
+  { offset = 0x10, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x15, type = "REL32", symbol = "?file_by_index@AnimationPoolOwner@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x00437970 },
+]
+
+# CORE/RECON-1089: whole original 118B game Animation rebind or distinct file index.
+[units.animation_handle_refresh_boss_118]
+source = "src/AnimationHandleRefresh118.cpp"
+object = "build/core1089-canonical/AnimationHandleRefresh118.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0"]
+symbol = "?rebind_animation_44bcd0@NativeAnimationHandleRefreshView@th20@@QAEXH@Z"
+target_address = 0x0044BCD0
+size = 118
+relocations = [
+  { offset = 0x11, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x16, type = "REL32", symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@2@I@Z", target = 0x0044CD00 },
+  { offset = 0x27, type = "REL32", symbol = "?previous_file_437470@NativeAnimationLegacyFileView@th20@@QAEPAVAnimationFile@2@XZ", target = 0x00437470 },
+  { offset = 0x32, type = "REL32", symbol = "?stop@Animation@th20@@QAEXXZ", target = 0x0044FD00 },
+  { offset = 0x49, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x58, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+  { offset = 0x66, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
+]

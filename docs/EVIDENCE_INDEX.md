@@ -149,6 +149,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1088 — original complete 581B D3D9 Renderer surface color-effect Boss, 580B natural C++ source](ANIMATION_SURFACE_EFFECT581_NATIVE_FRONTIER.md) — original 9 E8/4 HIGHLOW, real texture/RECT/LockRect pixel RGB randomized effect with native existing 92B pulse, signed division and pitch stride; one true original NOP prevents full exact, no invented padding.
 
+- [CORE/RECON-1089 — whole exact 118B game Animation handle rebind Boss and distinct 29B native file getter](ANIMATION_HANDLE_REFRESH_118_29_STRICT_EXACT.md) — original six E8/one HIGHLOW rebind resolves/stops/re-spawns and assigns actual AnimationHandle struct, alternate game 29B file+0x18 source instead of old file+0x1C; +147 game-authored native bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
