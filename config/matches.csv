@@ -714,3 +714,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044C150,th20::NativeRendererTextureOwner::create_render_target_44c150,139,matching,100.00,animation_render_target_139,CORE/RECON-997; docs/ANIMATION_RENDER_TARGET_139_STRICT_EXACT.md
 0x004883A0,th20::NativeCardUiDirtyView::mark_finished_4883a0,32,matching,100.00,card_finished_ui_mark_32,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md
 0x00488510,th20::NativeSpellRecordView::increment_capture_488510,61,matching,100.00,card_spell_capture_counter_61,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md
+0x00488880,th20::NativeCardEndFlagView::requires_extra_sound_488880,23,matching,100.00,card_extra_sound_flag_23,CORE/RECON-1000; docs/CARD_FINISH_602_TYPED_SOURCE_AND_41_23_EXACT.md

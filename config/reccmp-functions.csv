@@ -1451,3 +1451,6 @@ th20::NativeCardUiDirtyView::mark_finished_4883a0,0x004883A0,function
 th20::NativeSpellRecordView::increment_capture_488510,0x00488510,function
 th20::NativeCardRecordArchive::secondary_488700,0x00488700,function
 th20::NativeSpellRecordArrayView::record_486e10,0x00486E10,function
+th20::Card::finish_spell,0x004878B0,function
+th20::NativeCardPlayView::is_paused_488800,0x00488800,function
+th20::NativeCardEndFlagView::requires_extra_sound_488880,0x00488880,function

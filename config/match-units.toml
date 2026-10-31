@@ -26124,3 +26124,25 @@ symbol = "?record_486e10@NativeSpellRecordArrayView@th20@@QAEPAUNativeSpellRecor
 target_address = 0x00486E10
 size = 23
 relocations = []
+
+# CORE/RECON-1000: exact original Card spell-finish caller/status leaf.
+[units.card_play_pause_41]
+source = "src/CardFinishStatusHelpers.cpp"
+object = "build/core1000-canonical/CardFinishStatusHelpers.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardPlayView::is_paused_488800"]
+symbol = "?is_paused_488800@NativeCardPlayView@th20@@QBEHXZ"
+target_address = 0x00488800
+size = 41
+relocations = []
+
+# CORE/RECON-1000: exact original Card spell-finish caller/status leaf.
+[units.card_extra_sound_flag_23]
+source = "src/CardFinishStatusHelpers.cpp"
+object = "build/core1000-canonical/CardFinishStatusHelpers.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardEndFlagView::requires_extra_sound_488880"]
+symbol = "?requires_extra_sound_488880@NativeCardEndFlagView@th20@@QAEIXZ"
+target_address = 0x00488880
+size = 23
+relocations = []

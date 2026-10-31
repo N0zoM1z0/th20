@@ -155,3 +155,13 @@ Continue the same root through real UI/record, clear/selection and laser owners.
 Preserve full Card start/finish, the original Renderer boundary and all rejected
 emission evidence. See [whole dispatcher layout](CORE_ENEMY_DISPATCH_LAYOUT.md)
 and [health/boss state](ENEMY_HEALTH_BOSS_STATE_RECONSTRUCTION.md).
+
+## CORE/RECON-1000 update: original 602B finish now has complete source
+
+The historical source-absent status above has been superseded by a
+[complete maintained Card finish C++ body](CARD_FINISH_602_TYPED_SOURCE_AND_41_23_EXACT.md)
+that includes both capture-record groups, the 113-record completion scan and
+all resource/sound branches. The compiler candidate is 577B versus native
+602B, so it is **NONEXACT** and receives **no authored game byte credit**.
+Two new 41B/23B physical Card caller leaves are whole strict exact, with just
+23B credited to game-authored code; the 1,896B start remains open.

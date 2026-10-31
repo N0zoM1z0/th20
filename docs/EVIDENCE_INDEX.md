@@ -13,6 +13,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-999 — complete 32B/61B/19B/23B Card finish helper source and PE](CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md) — four strict units from one source object, nine actual 602B original parent E8 sites, two game-authored heads/+93B; Card 602B/1896B parents remain open.
 
+- [CORE/RECON-1000 — source-present whole 602B Card finish Boss and two 41B/23B exact leaves](CARD_FINISH_602_TYPED_SOURCE_AND_41_23_EXACT.md) — whole original 26 E8/13 HIGHLOW and 113-record scan, pinned C++ candidate NONEXACT 577B; real 32-bit play-state return corrects Ghidra bool, 23 new authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
