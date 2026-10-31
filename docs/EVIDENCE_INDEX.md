@@ -57,6 +57,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1040 — complete-source native 294B Renderer text submit Boss, two real core paths](ASCII_TEXT_SUBMIT294_TYPED_NATIVE_FRONTIER.md) — original 294B/106 i386, 7 E8/2 HIGHLOW, 578B parent E8, natural by-value task and packed 8B result C++20 319B/112-i386 frontier, NONEXACT.
 
+- [CORE/RECON-1041 — four whole-original standard function base helpers, 25/71/20/30B exact](ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md) — natural 578B text renderer source instantiates 146 bytes of standard runtime, actual 93B/20B parent native edges, full six-unit exact replay in existing one provider, zero authored-game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

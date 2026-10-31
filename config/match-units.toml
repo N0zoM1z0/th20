@@ -26631,3 +26631,56 @@ relocations = [
   { offset = 0x13, type = "REL32", symbol = "?_Large_mode_engaged@?$_String_val@U?$_Simple_types@D@std@@@std@@QBE_NXZ", target = 0x0040F180 },
   { offset = 0x25, type = "REL32", symbol = "??$_Unfancy@D@std@@YAPADPAD@Z", target = 0x0040B280 },
 ]
+
+# CORE/RECON-1041: whole original 25B standard function class helper.
+[units.ascii_func_class_ctor_25]
+source = "src/AsciiTextRender578.cpp"
+object = "build/core1036-canonical/AsciiTextRender578.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void()>::_Func_class"]
+symbol = "??0?$_Func_class@X$$V@std@@QAE@XZ"
+target_address = 0x00413F80
+size = 25
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+]
+
+# CORE/RECON-1041: whole original 71B standard function class helper.
+[units.ascii_func_class_reset_copy_71]
+source = "src/AsciiTextRender578.cpp"
+object = "build/core1036-canonical/AsciiTextRender578.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void()>::_Reset_copy"]
+symbol = "?_Reset_copy@?$_Func_class@X$$V@std@@IAEXABV12@@Z"
+target_address = 0x00414B90
+size = 71
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Empty@?$_Func_class@X$$V@std@@IBE_NXZ", target = 0x00414A80 },
+  { offset = 0x1C, type = "REL32", symbol = "?_Getimpl@?$_Func_class@X$$V@std@@ABEPAV?$_Func_base@X$$V@2@XZ", target = 0x00414AD0 },
+  { offset = 0x3C, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+]
+
+# CORE/RECON-1041: whole original 20B standard function class helper.
+[units.ascii_func_class_dtor_20]
+source = "src/AsciiTextRender578.cpp"
+object = "build/core1036-canonical/AsciiTextRender578.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void()>::~_Func_class"]
+symbol = "??1?$_Func_class@X$$V@std@@QAE@XZ"
+target_address = 0x00414310
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "?_Tidy@?$_Func_class@X$$V@std@@IAEXXZ", target = 0x00414D50 },
+]
+
+# CORE/RECON-1041: whole original 30B standard function class helper.
+[units.ascii_func_class_set_30]
+source = "src/AsciiTextRender578.cpp"
+object = "build/core1036-canonical/AsciiTextRender578.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void()>::_Set"]
+symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z"
+target_address = 0x00414C60
+size = 30
+relocations = [
+]

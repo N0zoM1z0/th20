@@ -128,3 +128,12 @@ which now has complete two-path C++20 source, seven pinned original
 callee roles and two physical PE HIGHLOW. The 294B child still compiles
 319B/112 and remains NONEXACT, as does this 578B parent at five
 SSE register bytes. No parent or child game exact credit follows.
+
+## CORE/RECON-1041 — native standard-function base closure now exact
+
+The original 93B std::function copy/20B destructor in this 578B Boss
+have four separately exact [25B/71B/20B/30B function base children](ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md).
+Their complete 146 physical bytes and original E8 graph are reproduced
+naturally from this **same** C++ owner in a six-unit scoped replay.
+The 578B parent still differs at five real SSE operand bytes and
+retains NONEXACT status.

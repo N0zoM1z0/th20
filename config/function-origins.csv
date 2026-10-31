@@ -430,7 +430,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413EC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413F50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413F80,unknown,CxxRuntime,review,pending,CORE/RECON-1041; docs/ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md; exact original physical 25B standard callable helper; 93B std::function copy constructor native E8 +0x29; original library/folded ownership not independently authored
 0x00413FA0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 33-byte iterator_ctor contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x00413FD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414000,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 37-byte const_iterator_ctor contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
@@ -448,7 +448,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004142A0,unknown,EffectParameters,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004142C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004142E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414310,unknown,CxxRuntime,review,pending,CORE/RECON-1041; docs/ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md; exact original physical 20B standard callable helper; 20B std::function destructor native E8 +0x0A; original library/folded ownership not independently authored
 0x00414330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004143D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -482,9 +482,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414B50,unknown,EclResourceLifetime,review,pending,"EXACT-068: Five complete ECL base resource initialization/destruction contributions; 252bytes. Frozen-source505units/94coldobjects/90373disjointbytes strictly replay. Actual PMR record/word containers capture their default allocator and release only owned storage; file buffers remain borrowed. Native original global RTTI name is SptResourceInf; maintained EclLoader denotes its role. Complete append876, derived resource loading and first virtual callback remain pending. See docs/EXACT_ECL_RESOURCE_LIFETIME_RECONSTRUCTION.md."
 0x00414B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414B70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414B90,unknown,CxxRuntime,review,pending,CORE/RECON-1041; docs/ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md; exact original physical 71B standard callable helper; 93B std::function copy constructor native E8 +0x3C; original library/folded ownership not independently authored
 0x00414BE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414C60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414C60,unknown,CxxRuntime,review,pending,CORE/RECON-1041; docs/ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md; exact original physical 30B standard callable helper; native 25B ctor E8 +0x0C and 71B reset-copy E8 +0x3B; original library/folded ownership not independently authored
 0x00414C80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414D50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -52,3 +52,14 @@ scripts/repo-python scripts/verify-ascii-function-copy-dtor-native.py
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AsciiTextRender578.cpp
 ```
+
+## CORE/RECON-1041 — nested standard-function base graph now covered
+
+The original 93B copy constructor invokes independent exact 25B
+`_Func_class` construction and 71B `_Reset_copy`; the 20B destructor
+invokes an independent 20B `_Func_class` destructor. Both constructors
+also lead to the native 30B `_Set` helper. All four physical heads
+are now [separately whole exact](ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md)
+in this same canonical source object. This adds four distinct
+STL/generic exact units/+146 native bytes, with no new authored-game
+credit and no strict credit for the still-nonexact 578B parent.
