@@ -252,7 +252,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040F1B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F1E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040F2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040F2C0,unknown,CxxRuntime,review,pending,"CORE/RECON-1038; docs/CARD_TEXT_STRING_MYPTR54_STRICT_EXACT.md; real PMR String_val native two branches, original c_str E8, whole generated C++20 54/54 strict, source library folding uncredited"
 0x0040F300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040F560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

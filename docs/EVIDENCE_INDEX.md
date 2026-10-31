@@ -53,6 +53,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1037 — original 111B Card text callback whole strict exact and 22B PMR getter receiver correction](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — native 4 E8/1 HIGHLOW, actual 0x00FFFFFF layer and c_str on capture+4; complete 111/111 and corrected 22/22 strict, 8/8 scoped units, +111 game-authored bytes.
 
+- [CORE/RECON-1038 — whole exact 54B PMR String_val `_Myptr` below Card callback](CARD_TEXT_STRING_MYPTR54_STRICT_EXACT.md) — genuine 22B `c_str` original caller, two native E8 to already exact 42B/8B leaves, 3/3 canonical scope and 54/54 native bytes, generic source provenance uncredited.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

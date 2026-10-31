@@ -107,3 +107,12 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardTextCallback111.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1038 — native PMR pointer dependency whole exact
+
+The actual original `std::pmr::string::c_str()` method used by this
+111B Card callback itself invokes a [complete exact 54B `_String_val::_Myptr`
+implementation](CARD_TEXT_STRING_MYPTR54_STRICT_EXACT.md) at `0x0040F2C0`.
+Its 42B capacity test and 8B pointer-unfancy callee were already exact.
+One original 54B STL source head is newly covered without duplicating
+its PMR/c_str/callback callers or changing any authored-game credit.

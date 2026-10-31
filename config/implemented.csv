@@ -1474,3 +1474,4 @@ std::_Test_callable<NativeCardTextPayload>
 std::function<void()>::function(const std::function&)
 std::function<void()>::~function
 th20::NativeCardTextPayload::operator()
+std::_String_val<Char>::_Myptr

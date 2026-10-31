@@ -39,3 +39,10 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardStartSpell1896.cpp \
   --source src/CardTextCallback111.cpp
 ```
+
+## CORE/RECON-1038 — native `_Myptr` implementation separately accepted
+
+The physical E8 `+0x0D` below this corrected PMR `c_str` now targets a
+[whole-exact original 54B `_String_val::_Myptr` source unit](CARD_TEXT_STRING_MYPTR54_STRICT_EXACT.md).
+The canonical 22B `c_str` remains unchanged, exactly once counted,
+with the same correct embedded-string receiver.

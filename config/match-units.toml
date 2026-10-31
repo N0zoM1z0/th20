@@ -26617,3 +26617,17 @@ relocations = [
   { offset = 0x5D, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0x63, type = "REL32", symbol = "?draw_44b020@NativeTextSubmitOwner@th20@@QAA?AUNativeTextDrawResult8@2@PAVAnimation@2@HIHHHV?$function@$$A6AXXZ@std@@PBDZZ", target = 0x0044B020 },
 ]
+
+# CORE/RECON-1038: complete native 54B std::_String_val::_Myptr from PMR c_str.
+[units.card_text_string_myptr_54]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_String_val<Char>::_Myptr"]
+symbol = "?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QBEPBDXZ"
+target_address = 0x0040F2C0
+size = 54
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?_Large_mode_engaged@?$_String_val@U?$_Simple_types@D@std@@@std@@QBE_NXZ", target = 0x0040F180 },
+  { offset = 0x25, type = "REL32", symbol = "??$_Unfancy@D@std@@YAPADPAD@Z", target = 0x0040B280 },
+]

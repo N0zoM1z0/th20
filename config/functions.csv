@@ -252,7 +252,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0040F1B0,42,0x0040F1D9,FUN_0040f1b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040F1E0,26,0x0040F1F9,make_error_code,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040F200,184,0x0040F2B7,FUN_0040f200,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0040F2C0,54,0x0040F2F5,Myptr,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0040F2C0,54,0x0040F2F5,Myptr,std::_String_val<Char>::_Myptr,CxxRuntime,reconstructed,100.00,__thiscall,?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QBEPBDXZ,false,src/CardTextCallback111.cpp,CORE/RECON-1038; docs/CARD_TEXT_STRING_MYPTR54_STRICT_EXACT.md,unknown,Whole original 54B/21-i386 std::_String_val::_Myptr() method used by embedded PMR string c_str at 0x0044BAF0 original E8+0x0D; own native E8 +0x12 -> already-exact 42B _Large_mode_engaged 0x0040F180 and +0x24 -> already-exact 8B std::_Unfancy 0x0040B280. Natural Card callback text.c_str() emits full 54/54 and both authentic original relocation roles; no duplicate lower helper original credit; generic/library source origin unresolved/uncredited game-authored.
 0x0040F300,54,0x0040F335,Myptr,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040F340,533,0x0040F554,FUN_0040f340,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0040F560,270,0x0040F66D,FUN_0040f560,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
