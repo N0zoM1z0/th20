@@ -1,127 +1,144 @@
-# CORE/RECON-1099 — entire original 562B D3D9 texture-from-memory game Boss WHOLE strict exact
+# CORE/RECON-1100 — original 562B D3D9 Renderer texture-file-memory upload Boss, whole strict exact
 
-Immutable Japanese TH20 Steamless v1.00a executable SHA-256
+Immutable Japanese TH20 Steamless v1.00a SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 
-The original game-owned Renderer `0x0044E8F0` is a complete
-**562B/177-i386** native texture-record file-image upload method, original
-full SHA-256 `1b0d6d08d535765761f1cfaf5f9140a7e0963f0b04b00daae23cac98cb182a19`.
-It has genuine C++20 source in
-[`src/AnimationFileTextureLoad562.cpp`](../src/AnimationFileTextureLoad562.cpp)
-which now emits the **whole exact native 562/562**, including **486/486
-nonrelocated bytes** and all **six physical original E8 /13 PE HIGHLOW**
-fields. Original return ABI is `ret 0x24`: the full nine-stack-word
-argument contract is preserved, including one original input at stack
-`+0x10` not read by this complete native body. Its game-specific role
-is not invented by the reconstruction.
+The original game-owned `0x0044E8F0` is a complete **562B/177-i386**
+Renderer texture file-memory upload method, original whole SHA-256
+`1b0d6d08d535765761f1cfaf5f9140a7e0963f0b04b00daae23cac98cb182a19`.
+Its authentic source is now
+[`src/AnimationFileTextureLoad562.cpp`](../src/AnimationFileTextureLoad562.cpp),
+which pinned MSVC19.44 C++20 x86 emits as **562/562 whole strict
+exact**, with **486/486 nonrelocated native bytes, 6 E8 and 13 genuine
+PE HIGHLOW fields** at every original physical location.
 
-## True D3D9 texture creation, clipping and surface copy
+## Real original Renderer and D3D9 resource semantics
 
-The original takes a `TextureRecord*` pointing at the genuine native
-24B owner. It updates original `TextureRecord::flags.bits` at offset
-`+0x14` by clearing low two bits and selects its texture pixel format
-via the separately accepted **77B** native `select_texture_format`
-`0x0044CFB0` (native E8 `+0x17`). It computes clipped region
-width/height as `min(region,requested)` and sets a source Win32 `RECT`
-from the input source x/y and clipped dimensions. Its native texture
-header pointer is at record `+0x10`; the actual one-byte flag at
-header `+0x22` controls whether a scaled bitmap should be created.
+The native method is a game Renderer `__thiscall` with one borrowed
+`TextureRecord*` argument and eight additional native 32-bit stack
+arguments (final `ret 0x24`). One original stack input at `+0x10`
+is intentionally named `original_parameter_10` because the whole
+original does not read it; no speculative purpose is assigned.
+The original clears `TextureRecord::flags` bits 0/1, maps the
+incoming texture format using the separately exact original **77B**
+`select_texture_format` at `0x0044CFB0`, and **updates the incoming
+by-value native format parameter itself**. It computes a source
+`RECT` using original source left/top plus
+`min(original_width, clipped_width)` and equivalent height; an
+independent destination `RECT` starts at `(0,0)` and spans the
+potentially resized output width/height.
 
-The original compares the graphics scaling float at global
-`0x005B8818` against the reference float at `0x0056C8D0`. When
-scaling is enabled and below reference, the source uses genuine
-SSE float `cvtsi2ss`, multiplication by the live scale and source
-constant `0x0056E0EC`, and native signed truncation back to the
-width/height arguments. The D3D destination `RECT` is zero-origin
-and uses the resulting output dimensions. Original D3D9 format
-values are read from `texture_api_formats[9]` at `0x0056E208`; the
-actual Graphics instance `0x005C4D40` supplies its device through
-the original folded 17B getter `0x00412730`.
+The original ANM group header pointer lives at `TextureRecord+0x10`.
+It reads a native **single byte at group-header `+0x22`**, a distinct
+observed texture flag from the previously verified `+0x20` flag.
+When this byte is nonzero and process-global graphics scale
+`0x005B8818` is strictly below original `0x0056C8D0`
+(**2.0f**), the destination dimensions are converted to float,
+multiplied by the live graphics scale and original constant
+`0x0056E0EC` (**0.5f**), then truncated to signed 32-bit integers.
+The source retains exact SSE2 `cvtsi2ss/mulss/cvttss2si` lowering,
+not an invented floating-point approximation.
 
-The method then uses native D3DX9 **`D3DXCreateTexture`** (not a
-synthetic direct `Device::CreateTexture`) with one mip level, managed
-pool, chosen native D3DFORMAT, and the actual `record->texture`
-pointer. It acquires a level-zero `IDirect3DSurface9*` through the
-real texture vtable and calls
-**`D3DXLoadSurfaceFromFileInMemory`** with the DIB bytes at
-`record+0x04/+0x08` and source/destination RECTs. A nonzero HRESULT
-releases the acquired surface and returns original `-1`; success
-releases the surface, invokes a **separate original 2,745B**
-texture finalize method `0x00451910`, stores the actual original
-byte-per-pixel table `0x0056E22C` at `record+0x0C`, and returns the
-original signed `width * height * byte_size`.
+The original reads real D3D9 texture format table `0x0056E208`,
+obtains the actual device from `Graphics` at global `0x005C4D40`
+via previously whole exact `Graphics::get_device`, and calls
+`D3DXCreateTexture` (actual IAT `0x005406A2`) with one mipmap
+level, usage zero, selected format, `D3DPOOL_MANAGED`, and
+`&TextureRecord::texture`. It then uses genuine texture COM
+`GetSurfaceLevel(0)` with a temporary `IDirect3DSurface9*`,
+including the native real compiler NOP after the COM virtual call.
+It calls the real D3DX9 `D3DXLoadSurfaceFromFileInMemory`
+`0x00540696` with original `external_bytes` at `TextureRecord+0x04`,
+`external_size` at `+0x08`, and both actual source/destination RECTs.
+The native filter is specifically **`D3DX_FILTER_NONE` = 1** without
+scaling, or **`0x30004`** under the ANM flag/graphics-scale test;
+using the superficially similar `D3DX_FILTER_POINT` = 2 would be
+native incorrect. The surface is released through real COM
+`Release()` in both failure and success paths, with correct clearing
+of the temporary pointer. On D3DX failure the game returns `-1`.
+On success it invokes the **independent original 2,745B** texture
+finalization method at `0x00451910`, stores bytes-per-pixel from the
+true original table `0x0056E22C` to `TextureRecord+0x0C`, and
+returns original `width*height*bytes_per_pixel`.
 
-## Why the natural compiler now matches exactly
+## What changed to obtain true whole-native exact code
 
-Several plausible C++ spellings yielded 567–572B compiler bodies,
-with exactly the correct physical E8/data roles but wrong local
-stack and branch lowering. Rechecking the entire original proved:
+The first meaningful C++20 source was **569B/180 i386**, already
+with all six native E8 and 13 data relocation types, but used a
+separate `mapped_format` local, the wrong `D3DX_FILTER_POINT`
+constant, reversed short-circuit/comparison evaluation, and an
+extra staged `filtering` local before the D3DX call. These were
+real native stack and filter-protocol differences, not alignment.
+Controlled source probes first corrected the original source-vs-clip
+comparison, the **`nominal_scale > current_scale`** float predicate,
+and the early failure/COM release ordering. The generated body
+narrowed to **567B/178** after removing the stale header pointer.
 
-- The native format selection updates the actual original stack
-  parameter, rather than an invented separate local format variable.
-- The source/destination clip selection uses the original signed
-  order `requested > region ? region : requested`, preserving the
-  original `jle` compare operation.
-- The scaled-output condition compares the native original reference
-  float *against* the live graphics scale, preserving original
-  `comiss` and `jbe` semantics.
-- The original D3DX filter constant **`1` is
-  `D3DX_FILTER_NONE`**, not `D3DX_FILTER_POINT` (whose SDK value is
-  `2`). Its alternative scaled filter is exactly `0x30004`.
-- A real, **explicit `if/else`** assigning the filter to a live DWORD
-  produces the original evaluation and argument-push order. A
-  seemingly equivalent `const DWORD filtering = condition ? ...`
-  generated extra stack moves and missed the native body. This is a
-  genuine change in D3D filter semantics and scope, not padding.
-- The failure path evaluates the real D3DX HRESULT and releases the
-  surface before returning `-1`; the successful finalizer and
-  byte-count computation are independent of that failure return.
+Two authentic source changes then restored the exact native ABI:
 
-With pinned MSVC19.44 x86 C++20
-`/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`, these
-actual semantic expressions emit the whole **562B/177 instructions**
-including the genuine post-COM compiler NOP. No handwritten assembly,
-synthetic dead locals, `nop` source patch, fake native DLL shim or
-shortened target extent was used.
+1. Reassign the **actual by-value `native_format` argument** from
+   `select_texture_format` rather than creating a second format
+   temporary. Original x86 stores back to the caller-frame parameter
+   at relative `+0x1F` before using its index twice in the byte-size
+   table.
+2. Express the **actual filter decision directly as the
+   `D3DXLoadSurfaceFromFileInMemory` argument**, rather than storing
+   an extra intermediate DWORD. The pinned compiler naturally
+   generates the original one actual filter local, genuine COM
+   GetSurfaceLevel NOP, exact native jumps and the original result
+   branches without a manufactured instruction.
 
-## Original physical PE and strict-unit verification
+These operations are meaningful texture/upload decisions, not an
+unused compiler-shaping variable, target byte patch, hand-coded
+assembly or truncated match. The exact whole result is **562B/177**.
 
-Read-only
-[`verify-animation-texture-upload562-native.py`](../scripts/verify-animation-texture-upload562-native.py)
-independently SHA-attests the entire original 562B, checks complete
-native x86 instruction boundaries and the actual `ret 0x24`, and
-verifies all six original physical E8 destinations:
+## Independent original executable and canonical proof
 
-| Native E8 offset | Immutable original target |
+The original function has six genuine native E8:
+
+| Original E8 | Original destination |
 | --- | --- |
-| `+0x17` | game 77B texture-format selector `0x0044CFB0` |
-| `+0x10A` | folded Graphics device getter `0x00412730` |
-| `+0x12C` | D3DX9 `D3DXCreateTexture` `0x005406A2` |
-| `+0x1AE` | D3DX9 `D3DXLoadSurfaceFromFileInMemory` `0x00540696` |
-| `+0x1FB` | separate original 2,745B texture finalizer `0x00451910` |
-| `+0x227` | native security cookie check `0x005429EE` |
+| `+0x17` | game format selector `0x0044CFB0` (77B) |
+| `+0x10A` | `Graphics::get_device` `0x00412730` |
+| `+0x12C` | genuine `D3DXCreateTexture` IAT `0x005406A2` |
+| `+0x1AE` | genuine `D3DXLoadSurfaceFromFileInMemory` IAT `0x00540696` |
+| `+0x1FB` | separate game **2,745B** texture finalizer `0x00451910` |
+| `+0x227` | native cookie check `0x005429EE` |
 
-The thirteen physical original PE HIGHLOW fields include true
-security cookie, live scaling reference variables, 9-entry texture
-format and byte-count tables, and the original process Graphics
-device owner. The verifier checks each actual HIGHLOW site/target
-and then compares all nineteen generated COFF field roles to the
-physical PE evidence, **not merely the number of references**.
+The full original immutable format table `0x0056E208` contains nine
+32-bit D3DFORMAT words `(0,21,21,21,21,21,21,21,21)`; the matching
+nine texture-byte-size words at `0x0056E22C` are all `4`. Both real
+36-byte original tables are now locked by the independent verifier,
+not assumed from prior source comments. The source definitions in
+`Graphics.cpp` and `AnimationDynamicTexture155.cpp` agree with those
+actual original data words.
+
+The **13 PE HIGHLOW fields** include the real security cookie,
+four live scale references to `0x005B8818`, two original native
+2.0f comparisons at `0x0056C8D0`, two float 0.5f constants at
+`0x0056E0EC`, the selected D3D9 format table `0x0056E208`,
+actual Graphics global `0x005C4D40`, and both byte-size lookups
+at `0x0056E22C`. The checker
+[`verify-animation-texture-upload562-native.py`](../scripts/verify-animation-texture-upload562-native.py)
+reads and SHA-pins the **entire original** 562B/177-i386, all
+19 true native PE physical reference site/target pairs and the
+real original native 2,745B finalizer extent, then compares the
+complete canonical C++ object and its fresh strict receipt.
 
 ```text
 animation_texture_upload_from_memory_562: exact (562/562 bytes)
-Original complete game method: 562B /177 i386
+Original whole function: 562B /177 i386
 Nonrelocated original bytes: 486/486
-Original relocations: 6 E8 REL32 /13 PE HIGHLOW
+Original reference fields: 6 E8 REL32 +13 PE HIGHLOW
 Exact replay: 1/1 unit, ONE affected cold object
 ```
 
-This adds **one distinct game-authored original function /562 native
-`.text` bytes**. The earlier 77B format selector, folded Graphics
-accessor, D3DX system libraries, and original **2,745B** texture
-finalizer are separately owned and are **not** credited again.
-The game still does not build/link/run as a whole, and **no
-project-wide cold replay** was executed.
+This contributes **one distinct game-authored exact function /
+562 original executable `.text` bytes**. Previously credited
+format selection, Graphics accessor, D3DX SDK calls, and the
+independent **still source-absent/nonexact 2,745B finalizer** are
+not recredited by transitivity. The whole game still does not
+build/link/play. No full-project cold replay was run.
 
 ```sh
 scripts/repo-python scripts/verify-animation-texture-upload562-native.py

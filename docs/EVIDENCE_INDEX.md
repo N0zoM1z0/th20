@@ -171,7 +171,7 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1099 — original 28B/21B native atomic store/value conversion wrappers strict exact](ANIMATION_FILE_ATOMIC_28_21_STRICT_EXACT.md) — real 182B game polling parent E8 and two separate atomic-storage original callees; 49B distinct generic code, 3/3 focused units, zero new authored-game credit.
 
-- [CORE/RECON-1099 — whole original 562B D3D9 TextureRecord file-memory upload Boss strict exact](ANIMATION_TEXTURE_UPLOAD562_STRICT_EXACT.md) — real clipping and scaling, D3DXCreateTexture+LoadSurfaceFromFileInMemory, original explicit NONE=1/0x30004 filter branch, 562/562 native with 486/486 ordinary bytes and six E8/thirteen PE HIGHLOW, +562 authored game bytes; 2,745B finalizer remains independent.
+- [CORE/RECON-1100 — whole original 562B D3D9 TextureRecord file-memory upload Boss strict exact](ANIMATION_TEXTURE_UPLOAD562_STRICT_EXACT.md) — real clipping and scaling, D3DXCreateTexture+LoadSurfaceFromFileInMemory, original explicit NONE=1/0x30004 filter branch, 562/562 native with 486/486 ordinary bytes and six E8/thirteen PE HIGHLOW, +562 authored game bytes; 2,745B finalizer remains independent.
 
 ## Reading order for outstanding original Bosses
 

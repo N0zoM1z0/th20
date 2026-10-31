@@ -40,6 +40,13 @@ def verify():
  assert [high[x] for x in (0xA0,0xAF,0xCB,0x174)]==[0x005B8818]*4
  assert high[0xFE]==0x0056E208
  assert high[0x209]==high[0x21E]==0x0056E22C
+ # Lock actual immutable D3D format and texture-byte-size tables, not
+ # merely the relocation positions. The real source uses precisely
+ # one unknown format then eight D3DFMT_A8R8G8B8 (21), all 4B texels.
+ assert struct.unpack('<9I',pe.raw_at(im,base,sec,0x0056E208,36))==(0,21,21,21,21,21,21,21,21)
+ assert struct.unpack('<9I',pe.raw_at(im,base,sec,0x0056E22C,36))==(4,)*9
+ assert struct.unpack('<f',pe.raw_at(im,base,sec,0x0056C8D0,4))[0]==2.0
+ assert struct.unpack('<f',pe.raw_at(im,base,sec,0x0056E0EC,4))[0]==0.5
  assert any(i.mnemonic=='mov' and i.op_str=='dword ptr [ebp - 0x34], 0x30004' for i in instr)
  assert any(i.mnemonic=='mov' and i.op_str=='dword ptr [ebp - 0x34], 1' for i in instr)
  assert any(i.mnemonic=='nop' and i.address-HEAD==0x15A for i in instr)
