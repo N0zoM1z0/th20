@@ -3,8 +3,11 @@
 namespace th20 {
 // Non-owning view of the native 0x124-byte font bitmap surface. No instance,
 // hidden base, vtable or allocation ownership is invented by this interface.
+struct NativeGlyphPixelFormat;
 struct NativeGlyphCanvasView {
-    // Entire original 0x00415120 bitmap/DC creation remains a separate Boss.
+    // Original 681B bitmap/DC creator is source-present, but not exact.
+    void release_surface_416360();
+    const NativeGlyphPixelFormat* pixel_format_415640(std::int32_t format);
     bool create_gdi_surface_415120(std::int32_t width,
                                    std::int32_t height,
                                    std::int32_t pixel_format);

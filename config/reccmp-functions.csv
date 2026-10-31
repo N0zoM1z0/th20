@@ -1489,3 +1489,4 @@ th20::NativeGlyphCanvasView::ensure_format_4153d0,0x004153D0,function
 th20::NativeGlyphCanvasView::device_context_415620,0x00415620,function
 th20::NativeGlyphCanvasView::bitmap_pixels_4156a0,0x004156A0,function
 th20::NativeGlyphCanvasView::pixel_stride_4156c0,0x004156C0,function
+th20::NativeGlyphCanvasView::create_gdi_surface_415120,0x00415120,function

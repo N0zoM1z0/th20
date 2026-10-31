@@ -78,3 +78,12 @@ Original 2,227B/2,245B large text rendering callers were independently
 verified. All four methods (including this 104B format fallback) stay
 strict exact in one native C++ source/one focused canonical receipt.
 No large boss or existing 104B head is double-counted.
+
+## CORE/RECON-1044 update — 681B GDI creation now source-present
+
+The original 681B initializer has [maintained whole source under the
+actual 108B `BITMAPV4HEADER` ABI](GLYPH_CANVAS_CREATE681_NATIVE_FRONTIER.md).
+Its new complete candidate is 684B/176 i386 and remains **NONEXACT**;
+all previously strict 104B/20B glyph methods remain exact after their
+single affected source object was recompiled. No native-parent credit
+follows merely from the exact children.

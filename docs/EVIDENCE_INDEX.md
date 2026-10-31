@@ -63,6 +63,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1043 — three whole-exact 20B TH20 glyph canvas field getters](GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md) — original 2,227B and 2,245B glyph/text boss physical E8 calls, true HDC/pixel/stride receiver offsets, 4/4 exact in one canonical object, +3 authored/60B.
 
+- [CORE/RECON-1044 — whole original 681B GDI glyph surface creation Boss typed source frontier](GLYPH_CANVAS_CREATE681_NATIVE_FRONTIER.md) — real 108B BITMAPV4HEADER, four native E8/four HIGHLOW, all three actual GDI IAT sites exact in source, maintained 684B/176-i386 candidate; original 104B fallback parent E8x3, NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
