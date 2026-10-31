@@ -136,7 +136,7 @@ Exact replay: 1/1 unit, ONE affected cold object
 This contributes **one distinct game-authored exact function /
 562 original executable `.text` bytes**. Previously credited
 format selection, Graphics accessor, D3DX SDK calls, and the
-independent **still source-absent/nonexact 2,745B finalizer** are
+independent **now SOURCE-PRESENT, NONEXACT 2,745B finalizer** are
 not recredited by transitivity. The whole game still does not
 build/link/play. No full-project cold replay was run.
 
@@ -146,3 +146,16 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnimationFileTextureLoad562.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1101 — native 2,745B finalizer now has its own game source
+
+The original `0x00451910` texture-alpha finalizer invoked at this
+exact 562B uploader's physical E8 `+0x1FB` is now
+[source-present but still NONEXACT](ANIMATION_TEXTURE_FINALIZER2745_NATIVE_FRONTIER.md).
+Its source reconstructs the full four-format D3D9 surface scan and
+actual 16 RGB neighborhood helper calls, preserves genuine original
+switch tables outside the 2,745B code extent, and shares one typed
+Renderer borrow through `NativeRendererTextureMemoryView.hpp`.
+The original 562B upload has been **source-scoped rebuilt and
+revalidated 562/562 exact** after the header migration. No 2,745B
+byte count is credited as exact or merged with the uploader.

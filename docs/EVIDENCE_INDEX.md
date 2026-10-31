@@ -173,6 +173,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1100 — whole original 562B D3D9 TextureRecord file-memory upload Boss strict exact](ANIMATION_TEXTURE_UPLOAD562_STRICT_EXACT.md) — real clipping and scaling, D3DXCreateTexture+LoadSurfaceFromFileInMemory, original explicit NONE=1/0x30004 filter branch, 562/562 native with 486/486 ordinary bytes and six E8/thirteen PE HIGHLOW, +562 authored game bytes; 2,745B finalizer remains independent.
 
+- [CORE/RECON-1101 — original 2,745B Renderer four-format texture alpha-fringe finalizer game Boss](ANIMATION_TEXTURE_FINALIZER2745_NATIVE_FRONTIER.md) — real 759 native x86, 17 E8/3 PE HIGHLOW and separate original switch tables; meaningful natural D3D9/texel C++ source 2,558B contribution, still NONEXACT and no authored-game credit; exact 562B caller preserved.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

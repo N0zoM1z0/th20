@@ -4,6 +4,7 @@
 // D3DX filtering expression is a true direct API argument; no artificial
 // temporary, padding, assembly or shortened target comparison.
 // The called 2745B native texture finalizer remains independently open.
+#include "NativeRendererTextureMemoryView.hpp"
 #include "AnimationFile.hpp"
 #include "Graphics.hpp"
 #include "NativeAnimationFileLoadView.hpp"
@@ -17,15 +18,7 @@ extern const float native_texture_scale_factor_56e0ec;
 extern const std::uint32_t texture_byte_sizes[9];
 // Existing Renderer owner, non-allocating view; actual Renderer layout
 // is not reconstructed by this texture code.
-struct NativeRendererTextureMemoryView {
-    void finalize_uploaded_texture_451910(IDirect3DTexture9* texture);
-    std::int32_t create_uploaded_texture_44e8f0(
-        TextureRecord* record, std::int32_t native_format,
-        std::int32_t original_parameter_10,
-        std::int32_t width, std::int32_t height,
-        std::int32_t left,std::int32_t top,
-        std::int32_t clipped_width,std::int32_t clipped_height);
-};
+
 std::int32_t NativeRendererTextureMemoryView::create_uploaded_texture_44e8f0(
     TextureRecord* record, std::int32_t native_format,
     std::int32_t /*original_parameter_10*/,
