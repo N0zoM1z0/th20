@@ -10,9 +10,10 @@ not current facts when newer canonical units supersede them.
 
 ## Reading order for outstanding original Bosses
 
-- **508B Renderer primary list update — SOURCE-PRESENT, NONEXACT:**
+- **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
   [whole original native and 10B compiler-tag frontier](ANIMATION_RENDERER_LIST_UPDATE_508_511_NATIVE_FRONTIER.md);
-  complete two-pass C++ loop exists, but no exact credit from normalized bytes.
+  complete two-pass C++ loops exist and both physical E8/HIGHLOW sets are verified,
+  but no exact credit from normalized bytes.
 - **12,140B Bullet extended command — SOURCE-ABSENT:**
   [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md)
   and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).

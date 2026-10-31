@@ -67,3 +67,34 @@ The next step is a **scoped class-tag/ODR and real decoration dependency audit**
 Native constructor `0x00418A50` and reset `0x0044A640` also need separate
 source-owner review. **Do not** claim an exact parent by normalizing out
 missing source instructions or changing the canonical 508B function extent.
+
+## CORE/RECON-994 — complete 511B secondary update source
+
+The secondary wrapper at `0x00449A70` has an original physical E8 to
+`0x00449B20`. The separate source
+[`src/AnimationRendererListUpdate511.cpp`](../src/AnimationRendererListUpdate511.cpp)
+uses the same active-update/recursive-queue/deferred-release protocol, with
+one additional **`+0x18`** second-list selection. Its original entire native
+body is **511B/153 x86 instructions** (SHA-256
+`82610fc6e8e74938e509de8a188f053c31e2e9e08ff4039f498b7046861258d8`).
+The verifier checks the 30 actual E8 targets, all five HIGHLOW original PE
+relocations, original branch-to-VM/recursive-queue calls, the genuine additional
+three-byte list displacement and one-byte post-function alignment. This
+independently proves the body and distinguishes it from the 508B primary one.
+
+Pinned MSVC with unchanged actual headers emits a complete 501B candidate.
+The original 10B `/sdl` initialization at `0x2B` is the **only** missing
+sequence: after independently masking the 35 native field sites (30 E8, five
+HIGHLOW) and 34 candidate relocations, the other **501/501 bytes match**.
+This is a byte-for-byte normalized *diagnostic*, not exactness. The original
+511B extent must remain 511B. Neither this secondary Boss nor the primary
+Boss is admitted to the strict-unit manifest, and no game-authored exact code
+credit is added; all previously exact direct callers remain protected.
+
+```sh
+nice -n 15 scripts/repo-python scripts/compile-probe.py \
+  src/AnimationRendererListUpdate511.cpp build/core993-probes/AnimationRendererListUpdate511.obj \
+  /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
+scripts/repo-python scripts/verify-animation-renderer-list-update-native.py \
+  --variant 511 --candidate-object build/core993-probes/AnimationRendererListUpdate511.obj
+```
