@@ -1,3 +1,5 @@
+**CORE/RECON-1073 STATUS CORRECTION:** Original **118B native queue-node guard destructor** `0x00414350` is now [WHOLE 118/118 STRICT EXACT, including five native INT3 tail bytes in 123/123 full comparison](GLYPH_QUEUE_NODE_GUARD118_STRICT_EXACT.md). The prior 123B-vs-118B compiler-lowering hypothesis below misclassified genuine native alignment as executable function code. The 151B `_Emplace` and 158B node constructor remain NONEXACT.
+
 # CORE/RECON-1061 — original 151B glyph queue list Emplace frontier and five whole-exact PMR list helpers
 
 Immutable target: Japanese TH20 Steamless v1.00a SHA-256

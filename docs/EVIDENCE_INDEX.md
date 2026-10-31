@@ -119,6 +119,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1072 — five complete original 47B/58B/59B/17B/16B PMR glyph queue descendants strict exact](GLYPH_QUEUE_PMR_DESCENDANTS_47_58_59_17_16_STRICT_EXACT.md) — independently attested real E8 chains beneath 158B node ctor and 118B guard dtor, 197 distinct native generic `.text` bytes, 10/10 source-scoped units, zero new game-authored credit.
 
+- [CORE/RECON-1073 — whole exact original 118B PMR queue node guard destructor, complete 123B with five real INT3 bytes](GLYPH_QUEUE_NODE_GUARD118_STRICT_EXACT.md) — original 151B `_Emplace` E8, 3 native E8/2 HIGHLOW, 118/118 strict coverage and 123/123 full comparison; 11/11 scoped units, 118 generic original bytes and no game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

@@ -1,3 +1,5 @@
+**CORE/RECON-1073 CURRENT STATUS:** The original 118B queue-node guard destructor `0x00414350` is now [WHOLE STRICT EXACT](GLYPH_QUEUE_NODE_GUARD118_STRICT_EXACT.md). The previously suspected 5B surplus in its 123B generated COFF object is exactly five original native `INT3` alignment bytes after the genuine 118B return, not an incomplete source method. The original 151B list `_Emplace` and 158B node constructor remain NONEXACT; earlier 118B-NONEXACT statements below are historical.
+
 # CORE/RECON-1072 — five whole-exact original PMR glyph queue allocation and destruction descendants
 
 Locked Japanese TH20 Steamless v1.00a target SHA-256

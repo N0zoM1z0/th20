@@ -58,5 +58,5 @@ def verify():
  for old in ['glyph_queue_list_max_size_59','glyph_queue_list_transfer_124','glyph_queue_allocator_construct_34','glyph_queue_allocator_max_size_19','glyph_queue_allocator_destroy_48']:
   assert cm.compare_unit(old)['result']=='exact'
  print('PASS original entire 151B/51 list Emplace parents 158B node ctor and 118B guard dtor, all five new nested children and five prior original generic exact units')
- print('Original 151B, 158B and 118B parent functions remain individually NONEXACT; five new generic library heads/197 native bytes, zero authored-game credit')
+ print('Original 151B and 158B remain NONEXACT; original 118B guard dtor now independently WHOLE exact under CORE/RECON-1073')
 if __name__=='__main__': verify()

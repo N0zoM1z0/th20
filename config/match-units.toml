@@ -27379,3 +27379,22 @@ size = 16
 relocations = [
   { offset = 0x9, type = "REL32", symbol = "??_G?$function@$$A6AXXZ@std@@QAEPAXI@Z", target = 0x004147B0 },
 ]
+
+# CORE/RECON-1073: complete 118B original PMR node guard destructor.
+# Genuine five original INT3 alignment bytes belong to its full COFF 123B.
+[units.glyph_queue_node_guard_dtor_118]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_node_emplace_op2<GlyphTaskNode>::~_List_node_emplace_op2"]
+symbol = "??1?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ"
+target_address = 0x00414350
+size = 118
+compare_size = 123
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ", target = 0x00567750 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x3C, type = "REL32", symbol = "??$addressof@V?$function@$$A6AXXZ@std@@@std@@YAPAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x57, type = "REL32", symbol = "??$destroy@V?$function@$$A6AXXZ@std@@@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@PAV?$function@$$A6AXXZ@1@@Z", target = 0x00413CA0 },
+  { offset = 0x62, type = "REL32", symbol = "??1?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ", target = 0x004142E0 },
+]
