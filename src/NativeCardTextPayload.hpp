@@ -24,6 +24,8 @@ struct NativeCardTextPayload {
     // Actual Card text lambda entry at 0x00486E80, 111B. Its UI drawing
     // body is still under separate native reconstruction, not a fake stub.
     void operator()() const;
+    // Real 22B original member getter used by the 111B callable body.
+    const char* name_c_str_44baf0() const;
 };
 #if defined(_M_IX86)
 static_assert(sizeof(NativeCardTextPayload)==0x24);

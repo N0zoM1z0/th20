@@ -26525,3 +26525,17 @@ size = 64
 relocations = [
   { offset = 0x27, type = "REL32", symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@$$QAV01@@Z", target = 0x0046A710 },
 ]
+
+# CORE/RECON-1031: actual Card text capture PMR string pointer getter,
+# original 111B callback E8 at +0x10; no native PE HIGHLOW.
+[units.card_text_capture_cstr_22]
+source = "src/CardTextPayloadNative.cpp"
+object = "build/core1007-canonical/CardTextPayloadNative.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTextPayload::name_c_str_44baf0"]
+symbol = "?name_c_str_44baf0@NativeCardTextPayload@th20@@QBEPBDXZ"
+target_address = 0x0044BAF0
+size = 22
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QBEPBDXZ", target = 0x0040F2C0 },
+]

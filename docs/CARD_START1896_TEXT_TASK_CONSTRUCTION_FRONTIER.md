@@ -113,3 +113,12 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardAsciiTaskQueue153.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1031 — native name getter now accepted beneath callback
+
+The original 111B Card text callable's first E8 call targets a complete
+[22B source-exact PMR name getter](CARD_TEXT_CAPTURE_CSTR22_STRICT_EXACT.md)
+on the real 36B capture. The getter and its `c_str()` callee are
+independently proved from the PE. The callable's own 111B body,
+its constructed 102B `std::function`, 578B text draw Boss and
+Card start's 1,896B parent remain separate unresolved code.

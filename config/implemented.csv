@@ -1468,3 +1468,4 @@ std::pmr::string::basic_string(const char*)
 th20::NativeCardAsciiTaskQueueView::enqueue_470180
 std::list<std::function<void()>>::push_back(std::function<void()>&&)
 th20::NativeCardTextPayload::NativeCardTextPayload(move)
+th20::NativeCardTextPayload::name_c_str_44baf0

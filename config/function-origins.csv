@@ -1238,7 +1238,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044B930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B9F0,authored,Animation,authored,high,"CORE/EXACT-118: Whole Animation child propagation protocol, genuine two-node indexed storage and separate publication node. Six roots1351B and complete independent EH code/data replay;1025 actual-owner O2/ASan/UBSan tree cases. Original names/group spelling/cardinality beyond consumed indices remain inferred; origin unknown. Frozen269-source graph passes787 strict units/154 fresh objects/149070 disjoint bytes. Maintained production O2/ASan/UBSan passes1025 cases. See docs/ANIMATION_CHILDREN_RECONSTRUCTION.md. CORE/ORIGIN-719: whole original 243B/78 i386 game method; 6 literal original E8 and 2 native PE HIGHLOW fields, 5 independent whole strict game parent original E8 call sites; seven affected-only cold source objects preserved 66/66 original canonical units; seven original game-owned physical ranges 1283 disjoint bytes; docs/GAME_PLAYER_ANIMATION_ECL_SEVEN_ORIGINAL_1283_EXACT_ORIGIN.md."
-0x0044BAF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044BAF0,unknown,CardText,review,pending,"CORE/RECON-1031; docs/CARD_TEXT_CAPTURE_CSTR22_STRICT_EXACT.md; 22B original capture text member getter, real 111B callback E8 and actual native PMR pointer E8, source ownership unknown"
 0x0044BB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044BCD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044BD50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

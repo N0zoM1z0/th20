@@ -76,3 +76,12 @@ has three existing canonical objects and seven exact units (56B, 23B,
 167B, 64B, 128B, 153B, 32B); all seven were freshly rebuilt and remain
 whole exact. The original 1,896B Card parent remains NONEXACT. See the
 [true text producer frontier](CARD_START1896_TEXT_TASK_CONSTRUCTION_FRONTIER.md).
+
+## CORE/RECON-1031 — first native callback getter accepted
+
+The separate original 111B callable uses a genuine [22B getter on
+this exact 36B capture](CARD_TEXT_CAPTURE_CSTR22_STRICT_EXACT.md)
+for its PMR string name. Its natural `text.c_str()` implementation
+and the preexisting 64B move/56B ctor/23B dtor/167B copy
+replay strictly exact in the same canonical provider. The callback
+body itself is still NONEXACT.
