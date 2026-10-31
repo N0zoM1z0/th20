@@ -1552,3 +1552,4 @@ th20::write_game_cp932_file_410e70
 th20::read_game_input_bytes_410990
 th20::NativeAnimationLegacyFileView::previous_file_437470
 th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0
+th20::AnimationPoolOwner::file_by_index

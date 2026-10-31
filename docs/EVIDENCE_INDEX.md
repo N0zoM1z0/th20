@@ -151,6 +151,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1089 — whole exact 118B game Animation handle rebind Boss and distinct 29B native file getter](ANIMATION_HANDLE_REFRESH_118_29_STRICT_EXACT.md) — original six E8/one HIGHLOW rebind resolves/stops/re-spawns and assigns actual AnimationHandle struct, alternate game 29B file+0x18 source instead of old file+0x1C; +147 game-authored native bytes.
 
+- [CORE/RECON-1090 — entire 40B real Renderer AnimationFile indexed lookup whole strict exact](ANIMATION_FILE_BY_INDEX40_STRICT_EXACT.md) — one 42-pointer table at Renderer+0x06000730, original exact folded 22B array-index E8, called by two distinct native 29B Animation file getters, +40 original game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

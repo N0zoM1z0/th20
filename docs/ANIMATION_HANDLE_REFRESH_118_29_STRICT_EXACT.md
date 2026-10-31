@@ -109,3 +109,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnimationHandleRefresh118.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1090 — the original common 40B Renderer lookup is now exact
+
+Both original 29B game Animation file getters use the same actual
+[40B/15-i386 Renderer 42-file index method](ANIMATION_FILE_BY_INDEX40_STRICT_EXACT.md)
+at original `0x00437970`. That entire physical 40B game method now
+has a distinct whole-exact C++20 source from the genuine
+`std::array<AnimationFile*,42>` at Renderer+0x06000730. No original
+22B folded array method or the two already exact 29B game callers
+is counted twice; the three game-function extents remain physically
+distinct.

@@ -27803,3 +27803,16 @@ relocations = [
   { offset = 0x58, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
   { offset = 0x66, type = "REL32", symbol = "?get@Identifier32@th20@@QBEIXZ", target = 0x0040C300 },
 ]
+
+# CORE/RECON-1090: whole original game 40B 42-file Renderer index.
+[units.animation_pool_file_by_index_40]
+source = "src/AnimationFileByIndex40.cpp"
+object = "build/core1090-canonical/AnimationFileByIndex40.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationPoolOwner::file_by_index"]
+symbol = "?file_by_index@AnimationPoolOwner@th20@@QAEPAVAnimationFile@2@H@Z"
+target_address = 0x00437970
+size = 40
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
+]
