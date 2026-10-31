@@ -14,7 +14,4 @@ NativeCardTextPayload::NativeCardTextPayload(const NativeCardTextPayload& source
 NativeCardTextPayload::NativeCardTextPayload(NativeCardTextPayload&& source)
     : card(source.card), text(std::move(source.text)), animation(source.animation) {}
 NativeCardTextPayload::~NativeCardTextPayload() {}
-const char* NativeCardTextPayload::name_c_str_44baf0() const {
-    return text.c_str();
-}
 }

@@ -1,3 +1,5 @@
+**Current CORE/RECON-1037 update:** The actual Card text lambda body at `0x00486E80` has [whole 111/111 strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md), with the real `std::pmr::string::c_str` receiver at capture+4 and native layer 0x00FFFFFF. All historical comments below calling the 111B callback unresolved are dated. The 102B `std::function` constructor, the enclosing 1,896B Card start and the 578B text renderer remain NONEXACT.
+
 # CORE/RECON-1030 — Card start 1,896B native text producer: real callable, PMR capture and locked task enqueue
 
 The independent immutable target is Japanese TH20 Steamless v1.00a,

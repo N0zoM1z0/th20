@@ -1,3 +1,5 @@
+**CORE/RECON-1037 update:** The 111B Card text lambda calling this renderer is now [whole strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md); the 578B renderer still has five SSE operand bytes and an unverified correction-data symbol, so this original 578B function is still NONEXACT.
+
 # CORE/RECON-1035 — whole 578-byte ASCII text rendering Boss, five SSE source-code bytes from native exactness
 
 Locked target: TH20 Japanese Steamless v1.00a, SHA-256

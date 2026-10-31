@@ -728,3 +728,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00478130,th20::NativeCardBombActiveView::active_478130,42,matching,100.00,card_start_bomb_active_42,CORE/RECON-1006; docs/CARD_START_BOMB_ACTIVE42_STRICT_EXACT.md
 0x00470180,th20::NativeCardAsciiTaskQueueView::enqueue_470180,153,matching,100.00,card_ascii_task_queue_153,CORE/RECON-1027; docs/CARD_ASCII_TASK_QUEUE153_STRICT_EXACT.md
 0x0044C0B0,th20::NativeRendererTextureOwner::create_dynamic_texture_44c0b0,155,matching,100.00,animation_dynamic_texture_155,CORE/RECON-1032; docs/ANIMATION_DYNAMIC_TEXTURE_155_STRICT_EXACT.md
+0x00486E80,th20::NativeCardTextPayload::operator(),111,matching,100.00,card_text_callback_111,CORE/RECON-1037; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md

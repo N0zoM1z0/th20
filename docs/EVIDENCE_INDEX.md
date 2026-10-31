@@ -51,6 +51,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1036 — native 93B std::function copy and 20B destructor whole strict exact](ASCII_FUNCTION_COPY_DTOR_93_20_STRICT_EXACT.md) — real 578B ASCII render parent E8s, original two EH/HIGHLOW and three E8, one scoped canonical object with 2/2 exact, no authored-game credit.
 
+- [CORE/RECON-1037 — original 111B Card text callback whole strict exact and 22B PMR getter receiver correction](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — native 4 E8/1 HIGHLOW, actual 0x00FFFFFF layer and c_str on capture+4; complete 111/111 and corrected 22/22 strict, 8/8 scoped units, +111 game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

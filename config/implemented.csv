@@ -1468,8 +1468,9 @@ std::pmr::string::basic_string(const char*)
 th20::NativeCardAsciiTaskQueueView::enqueue_470180
 std::list<std::function<void()>>::push_back(std::function<void()>&&)
 th20::NativeCardTextPayload::NativeCardTextPayload(move)
-th20::NativeCardTextPayload::name_c_str_44baf0
+std::pmr::string::c_str
 th20::NativeRendererTextureOwner::create_dynamic_texture_44c0b0
 std::_Test_callable<NativeCardTextPayload>
 std::function<void()>::function(const std::function&)
 std::function<void()>::~function
+th20::NativeCardTextPayload::operator()

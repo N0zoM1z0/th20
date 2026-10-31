@@ -85,3 +85,13 @@ for its PMR string name. Its natural `text.c_str()` implementation
 and the preexisting 64B move/56B ctor/23B dtor/167B copy
 replay strictly exact in the same canonical provider. The callback
 body itself is still NONEXACT.
+
+## CORE/RECON-1037 — complete original Card text callable now exact
+
+The actual [111B Card text lambda](CARD_TEXT_CALLBACK111_STRICT_EXACT.md)
+now compiles whole native exact. The previously credited 22B
+`name_c_str_44baf0` payload-style wrapper had a misleading receiver:
+physical original is `std::pmr::string::c_str` on the embedded string
+at capture+4. Its one physical strict unit was migrated to the real
+standard string template implementation, not counted again.
+The 64B capture move and prior 56/23/167B methods remain whole exact.

@@ -1473,8 +1473,9 @@ std::pmr::string::basic_string(const char*),0x0046A830,function
 th20::NativeCardAsciiTaskQueueView::enqueue_470180,0x00470180,function
 std::list<std::function<void()>>::push_back(std::function<void()>&&),0x00470A20,function
 th20::NativeCardTextPayload::NativeCardTextPayload(move),0x00486AF0,function
-th20::NativeCardTextPayload::name_c_str_44baf0,0x0044BAF0,function
+std::pmr::string::c_str,0x0044BAF0,function
 std::_Test_callable<NativeCardTextPayload>,0x00413910,function
 th20::NativeTextSubmitOwner::draw_44b020,0x0044B020,function
 std::function<void()>::function(const std::function&),0x004140F0,function
 std::function<void()>::~function,0x00414400,function
+th20::NativeCardTextPayload::operator(),0x00486E80,function
