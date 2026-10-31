@@ -19,6 +19,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1002 — complete 602B Card finish Boss now whole strict exact](CARD_FINISH_602_STRICT_EXACT.md) — original 172 instructions, all 26 E8/13 HIGHLOW, native local EBP-8 reuse, 602/602 canonical relocated replay and +602 authored bytes. Supersedes earlier Card finish NONEXACT hypothesis.
 
+- [CORE/RECON-1003 — five exact complete native Card start helpers, 225 authored bytes](CARD_START_FIVE_225_STRICT_EXACT.md) — original 1,896B parent/62 E8/26 HIGHLOW, bit7/bit9/capture/HUD two-list/event2 chain, 15/15 scoped C++20 strict replay across five objects; parent not accepted.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

@@ -1453,3 +1453,8 @@ th20::NativeHudAnimationView::set_vm_event_477450
 th20::NativeHudAnimationView::finish_stage_488900
 th20::NativeCardHudView::clear_spell_effects_488ab0
 th20::Card::finish_spell
+th20::NativeCardStartFlagsView::clear_capture_effect_flag_4888c0
+th20::NativeCardStartFlagsView::set_spell_flag9_488960
+th20::NativeSpellRecordView::increment_attempt_488590
+th20::NativeHudAnimationView::start_stage_4888e0
+th20::NativeCardHudView::start_spell_effects_488a60

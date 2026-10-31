@@ -1,3 +1,5 @@
+**CORE/RECON-1003 update:** Five whole native Card-start helper heads (29B+42B+61B+22B+71B) are now [exact under pinned MSVC](CARD_START_FIVE_225_STRICT_EXACT.md). The full 1,896B Card::start_spell remains source-absent/NONEXACT; no parent exact credit follows.
+
 **Current status correction (CORE/RECON-1002):** `Card::finish_spell` at `0x004878B0` is now [whole 602/602B strict exact](CARD_FINISH_602_STRICT_EXACT.md). Dated NONEXACT statements below predate the accepted complete original source. `Card::start_spell` 1,896B remains source-absent.
 
 # Enemy Card caller protocol and flag ownership

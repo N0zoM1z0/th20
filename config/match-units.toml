@@ -26240,3 +26240,68 @@ relocations = [
   { offset = 0x24C, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 0x251, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
 ]
+
+# CORE/RECON-1003: original 29B Card start native child, independently physical parent E8.
+[units.card_start_flags_clear_29]
+source = "src/CardStartNativeLeaves.cpp"
+object = "build/core1003-canonical/CardStartNativeLeaves.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardStartFlagsView::clear_capture_effect_flag_4888c0"]
+symbol = "?clear_capture_effect_flag_4888c0@NativeCardStartFlagsView@th20@@QAEXXZ"
+target_address = 0x004888C0
+size = 29
+relocations = [
+]
+
+# CORE/RECON-1003: original 42B Card start native child, independently physical parent E8.
+[units.card_start_bit9_42]
+source = "src/CardStartNativeLeaves.cpp"
+object = "build/core1003-canonical/CardStartNativeLeaves.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardStartFlagsView::set_spell_flag9_488960"]
+symbol = "?set_spell_flag9_488960@NativeCardStartFlagsView@th20@@QAEXI@Z"
+target_address = 0x00488960
+size = 42
+relocations = [
+]
+
+# CORE/RECON-1003: original 61B Card start native child, independently physical parent E8.
+[units.card_start_attempt_counter_61]
+source = "src/CardStartNativeLeaves.cpp"
+object = "build/core1003-canonical/CardStartNativeLeaves.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSpellRecordView::increment_attempt_488590"]
+symbol = "?increment_attempt_488590@NativeSpellRecordView@th20@@QAEXH@Z"
+target_address = 0x00488590
+size = 61
+relocations = [
+]
+
+# CORE/RECON-1003: original 22B Card start native child, independently physical parent E8.
+[units.card_start_vm_start_22]
+source = "src/CardStartNativeLeaves.cpp"
+object = "build/core1003-canonical/CardStartNativeLeaves.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeHudAnimationView::start_stage_4888e0"]
+symbol = "?start_stage_4888e0@NativeHudAnimationView@th20@@QAEXXZ"
+target_address = 0x004888E0
+size = 22
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?set_vm_event_477450@NativeHudAnimationView@th20@@QAEXH@Z", target = 0x00477450 },
+]
+
+# CORE/RECON-1003: original 71B Card start native child, independently physical parent E8.
+[units.card_start_hud_start_71]
+source = "src/CardStartNativeLeaves.cpp"
+object = "build/core1003-canonical/CardStartNativeLeaves.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardHudView::start_spell_effects_488a60"]
+symbol = "?start_spell_effects_488a60@NativeCardHudView@th20@@QAEXXZ"
+target_address = 0x00488A60
+size = 71
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "??A?$array@PAUNativeHudAnimationView@th20@@$01@std@@QAEAAPAUNativeHudAnimationView@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x21, type = "REL32", symbol = "?start_stage_4888e0@NativeHudAnimationView@th20@@QAEXXZ", target = 0x004888E0 },
+  { offset = 0x37, type = "REL32", symbol = "??A?$array@PAUNativeHudAnimationView@th20@@$01@std@@QAEAAPAUNativeHudAnimationView@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x3E, type = "REL32", symbol = "?start_stage_4888e0@NativeHudAnimationView@th20@@QAEXXZ", target = 0x004888E0 },
+]

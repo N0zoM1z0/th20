@@ -8,6 +8,7 @@ struct NativeCardUiDirtyView {
 };
 struct NativeSpellRecordView {
     void increment_capture_488510(std::int32_t kind);
+    void increment_attempt_488590(std::int32_t kind);
 };
 struct NativeCardRecordArchive {
     std::uint8_t* secondary_488700();

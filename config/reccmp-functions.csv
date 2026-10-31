@@ -1457,3 +1457,8 @@ th20::NativeCardEndFlagView::requires_extra_sound_488880,0x00488880,function
 th20::NativeHudAnimationView::set_vm_event_477450,0x00477450,function
 th20::NativeHudAnimationView::finish_stage_488900,0x00488900,function
 th20::NativeCardHudView::clear_spell_effects_488ab0,0x00488AB0,function
+th20::NativeCardStartFlagsView::clear_capture_effect_flag_4888c0,0x004888C0,function
+th20::NativeCardStartFlagsView::set_spell_flag9_488960,0x00488960,function
+th20::NativeSpellRecordView::increment_attempt_488590,0x00488590,function
+th20::NativeHudAnimationView::start_stage_4888e0,0x004888E0,function
+th20::NativeCardHudView::start_spell_effects_488a60,0x00488A60,function

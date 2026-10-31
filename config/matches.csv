@@ -719,3 +719,8 @@ address,name,size,status,match_percent,unit,evidence
 0x00488900,th20::NativeHudAnimationView::finish_stage_488900,22,matching,100.00,card_hud_finish_event_bridge_22,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md
 0x00488AB0,th20::NativeCardHudView::clear_spell_effects_488ab0,71,matching,100.00,card_hud_spell_cleanup_71,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md
 0x004878B0,th20::Card::finish_spell,602,matching,100.00,card_finish_spell_602,CORE/RECON-1002; docs/CARD_FINISH_602_STRICT_EXACT.md
+0x004888C0,th20::NativeCardStartFlagsView::clear_capture_effect_flag_4888c0,29,matching,100.00,card_start_flags_clear_29,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md
+0x00488960,th20::NativeCardStartFlagsView::set_spell_flag9_488960,42,matching,100.00,card_start_bit9_42,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md
+0x00488590,th20::NativeSpellRecordView::increment_attempt_488590,61,matching,100.00,card_start_attempt_counter_61,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md
+0x004888E0,th20::NativeHudAnimationView::start_stage_4888e0,22,matching,100.00,card_start_vm_start_22,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md
+0x00488A60,th20::NativeCardHudView::start_spell_effects_488a60,71,matching,100.00,card_start_hud_start_71,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md

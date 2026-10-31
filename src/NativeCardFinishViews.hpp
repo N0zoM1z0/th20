@@ -7,6 +7,7 @@
 namespace th20 {
 struct AnimationHandle;
 struct NativeCardHudView {
+    void start_spell_effects_488a60();
     void clear_spell_effects_488ab0();
     void report_spell_result_4b90e0(std::int32_t mode, std::int32_t capture_bonus);
 };
