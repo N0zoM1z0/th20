@@ -1444,3 +1444,4 @@ th20::AnimationHandle::resolve_or_resident_44cf10,0x0044CF10,function
 th20::AnimationHandle::set_entry_callback_forward_44f100,0x0044F100,function
 th20::animation_list_update_449870,0x00449870,function
 th20::animation_list_update_secondary_449b20,0x00449B20,function
+th20::particle_float_is_zero,0x0045D270,function

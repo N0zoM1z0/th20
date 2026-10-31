@@ -26047,3 +26047,19 @@ relocations = [
  { offset = 0x0D, type = "REL32", symbol = "?resolve_or_resident_44cf10@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CF10 },
  { offset = 0x1C, type = "REL32", symbol = "?set_field_5dc@Animation@th20@@QAEXP6AHPAV12@@Z@Z", target = 0x00438A50 },
 ]
+
+# CORE/RECON-996: true 80B original float object-representation zero test,
+# physically invoked by already exact 202B std::fill_n<float> at 0x0045D360.
+[units.animation_float_zero_bits_80]
+source = "src/AnimationFloatZeroBits80.cpp"
+object = "build/core996-canonical/AnimationFloatZeroBits80.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::particle_float_is_zero"]
+symbol = "?particle_float_is_zero@th20@@YA_NPBM@Z"
+target_address = 0x0045D270
+size = 80
+relocations = [
+ { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+ { offset = 0x23, type = "REL32", symbol = "_memcmp", target = 0x00544D77 },
+ { offset = 0x48, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

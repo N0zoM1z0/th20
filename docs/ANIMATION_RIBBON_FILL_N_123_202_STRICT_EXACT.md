@@ -67,3 +67,12 @@ scripts/repo-python scripts/verify-animation-ribbon-fill-n-native.py
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/AnimationRibbonFillN123202.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## Follow-up CORE/RECON-996 — original float zero-byte predicate exact
+
+The original 202B float `std::fill_n` body E8 at `+0x43` calls the
+original `0x0045D270` **80B** bytewise positive-zero comparison. Its
+complete original 27 instructions, true CRT memcmp/cookie E8 and PE HIGHLOW
+are now independently proven with a natural C++20 80/80 match.
+See [the separately accepted helper and negative-zero semantic distinction](ANIMATION_FLOAT_ZERO_BITS_80_STRICT_EXACT.md).
+This does not create a new authored-game code claim for this library helper.

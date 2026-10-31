@@ -213,6 +213,7 @@ not current facts when newer canonical units supersede them.
 
 ## Original 2,884B particle Update Boss temporary Ghidra and compiled whole C++ frontier — NONEXACT
 
+- [CORE/RECON-996 — independently whole-exact 80B float positive-zero byte predicate](ANIMATION_FLOAT_ZERO_BITS_80_STRICT_EXACT.md). Real 202B `std::fill_n<float>` parent E8, natural 80B MSVC `std::memcmp`, 2 E8 and 1 HIGHLOW exact; probable compiler/library code, zero authored-game credit.
 - [CORE/RECON-966 — full 2,884B Update recoverable read-only Ghidra and 2,953B typed native C++ probe](ANIMATION_PARTICLE_GRID_UPDATE_2884_TEMP_GHIDRA_AND_TYPED_FRONTIER.md). Immutable original PE vtable/99 E8/25 HIGHLOW and 12 INT3, Ghidra missed native function corrected in rolled-back transaction, 13KB full provisional decompilation. Real compiler probe reconstructs four spawns, four color/variable branches, 200-child two-stage update and fourth-channel inversion; **2,953B/764 instructions, 99 REL32/25 DIR32**, but **NONEXACT** against 2,884B/768 original and absolutely no canonical game credit.
 
 ## Original 2,884B/768-i386 particle-grid virtual Update Boss — SOURCE ABSENT

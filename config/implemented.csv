@@ -1441,3 +1441,4 @@ th20::AnimationHandle::update_descendants_event_44f0d0
 th20::NativeAnimationPoolDestructorLayout::~NativeAnimationPoolDestructorLayout
 th20::AnimationHandle::resolve_or_resident_44cf10
 th20::AnimationHandle::set_entry_callback_forward_44f100
+th20::particle_float_is_zero
