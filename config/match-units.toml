@@ -27556,3 +27556,118 @@ size = 26
 relocations = [
   { offset = 0xF, type = "REL32", symbol = "?_Swap@?$_Func_class@X$$V@std@@IAEXAAV12@@Z", target = 0x00414C80 },
 ]
+
+# CORE/RECON-1081: original complete 84B PMR-vector glyph-array descendant.
+[units.glyph_vec_calculate_growth_84]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::_Calculate_growth"]
+symbol = "?_Calculate_growth@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@ABEII@Z"
+target_address = 0x00414900
+size = 84
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?capacity@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QBEIXZ", target = 0x004150F0 },
+  { offset = 0x18, type = "REL32", symbol = "?max_size@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QBEIXZ", target = 0x004162B0 },
+]
+
+# CORE/RECON-1081: original complete 19B PMR-vector glyph-array descendant.
+[units.glyph_vec_allocate_at_least_19]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Allocate_at_least_helper<GlyphMaskOffset>"]
+symbol = "??$_Allocate_at_least_helper@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@YAPAV?$array@H$01@0@AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@AAI@Z"
+target_address = 0x00413120
+size = 19
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?allocate@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEPAV?$array@H$01@3@I@Z", target = 0x00415030 },
+]
+
+# CORE/RECON-1081: original complete 58B PMR-vector glyph-array descendant.
+[units.glyph_vec_pmr_array_allocate_58]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::polymorphic_allocator<GlyphMaskOffset>::allocate"]
+symbol = "?allocate@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEPAV?$array@H$01@3@I@Z"
+target_address = 0x00415030
+size = 58
+relocations = [
+  { offset = 0x16, type = "REL32", symbol = "??$_Get_size_of_n@$07@std@@YAII@Z", target = 0x00413700 },
+  { offset = 0x2A, type = "REL32", symbol = "?allocate@memory_resource@pmr@std@@QAEPAXII@Z", target = 0x00415070 },
+]
+
+# CORE/RECON-1081: original complete 42B PMR-vector glyph-array descendant.
+[units.glyph_vec_count_size_42]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Get_size_of_n<8>"]
+symbol = "??$_Get_size_of_n@$07@std@@YAII@Z"
+target_address = 0x00413700
+size = 42
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "?_Throw_bad_array_new_length@std@@YAXXZ", target = 0x0040F880 },
+]
+
+# CORE/RECON-1081: original complete 36B PMR-vector glyph-array descendant.
+[units.glyph_vec_capacity_36]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::capacity"]
+symbol = "?capacity@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QBEIXZ"
+target_address = 0x004150F0
+size = 36
+relocations = [
+]
+
+# CORE/RECON-1081: original complete 42B PMR-vector glyph-array descendant.
+[units.glyph_vec_backout_ctor_42]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Uninitialized_backout_al<GlyphMaskOffset>::ctor"]
+symbol = "??0?$_Uninitialized_backout_al@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@QAE@PAV?$array@H$01@1@AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@1@@Z"
+target_address = 0x00414060
+size = 42
+relocations = [
+]
+
+# CORE/RECON-1081: original complete 28B PMR-vector glyph-array descendant.
+[units.glyph_vec_backout_release_28]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Uninitialized_backout_al<GlyphMaskOffset>::_Release"]
+symbol = "?_Release@?$_Uninitialized_backout_al@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@QAEPAV?$array@H$01@2@XZ"
+target_address = 0x00414B70
+size = 28
+relocations = [
+]
+
+# CORE/RECON-1081: original complete 39B PMR-vector glyph-array descendant.
+[units.glyph_vec_backout_dtor_39]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Uninitialized_backout_al<GlyphMaskOffset>::dtor"]
+symbol = "??1?$_Uninitialized_backout_al@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@QAE@XZ"
+target_address = 0x004143D0
+size = 39
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@YAXPAV?$array@H$01@0@QAV10@AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x0040C6B0 },
+]
+
+# CORE/RECON-1081: original complete 13B PMR-vector glyph-array descendant.
+[units.glyph_vec_orphan_range_13]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::_Orphan_range"]
+symbol = "?_Orphan_range@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@ABEXPAV?$array@H$01@2@0@Z"
+target_address = 0x00414B60
+size = 13
+relocations = [
+]

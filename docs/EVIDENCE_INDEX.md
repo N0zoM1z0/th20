@@ -135,6 +135,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1080 — native glyph-mask offset is real two-int32 indexed array, four original folded 22B E8 restored](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md) — true std::array<int32_t,2> code, 2,245B compositor source 2,061B/545 i386 with 36 E8, all 15 original PMR/color strict units recompiled under corrected template symbol ABI, parent NONEXACT.
 
+- [CORE/RECON-1081 — nine complete original 84B/19B/58B/42B/36B/42B/28B/39B/13B PMR glyph-vector descendant functions](GLYPH_VECTOR_GROWTH_DEEP_NINE_STRICT_EXACT.md) — native 488B growth, 200B backout-move and 140B no-growth construction parents; complete original 361B generic code, 24/24 local exact units, zero new game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

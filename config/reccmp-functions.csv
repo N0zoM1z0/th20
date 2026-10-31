@@ -1550,3 +1550,12 @@ std::_List_val<GlyphTask>::_Unlinknode,0x00414F90,function
 std::pmr::list<GlyphTask>::_Make_iter,0x00414B20,function
 std::function<void()>::swap,0x00417A90,function
 std::_Func_class<void>::_Swap,0x00414C80,function
+std::pmr::vector<GlyphMaskOffset>::_Calculate_growth,0x00414900,function
+std::_Allocate_at_least_helper<GlyphMaskOffset>,0x00413120,function
+std::pmr::polymorphic_allocator<GlyphMaskOffset>::allocate,0x00415030,function
+std::_Get_size_of_n<8>,0x00413700,function
+std::pmr::vector<GlyphMaskOffset>::capacity,0x004150F0,function
+std::_Uninitialized_backout_al<GlyphMaskOffset>::ctor,0x00414060,function
+std::_Uninitialized_backout_al<GlyphMaskOffset>::_Release,0x00414B70,function
+std::_Uninitialized_backout_al<GlyphMaskOffset>::dtor,0x004143D0,function
+std::pmr::vector<GlyphMaskOffset>::_Orphan_range,0x00414B60,function

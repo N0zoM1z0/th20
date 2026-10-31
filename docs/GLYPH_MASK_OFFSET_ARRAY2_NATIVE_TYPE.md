@@ -115,3 +115,16 @@ scripts/repo-python scripts/verify-glyph-mask-offset-array2-native.py \
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphMaskComposite2245.cpp
 ```
+
+## CORE/RECON-1081 — nine deeper original PMR vector children now exact
+
+The full original 488B vector-growth Boss and its exception-safe
+200B/140B construction subtrees now have [nine additional whole-exact
+original STL descendants, totaling 361 distinct native bytes](GLYPH_VECTOR_GROWTH_DEEP_NINE_STRICT_EXACT.md):
+84B growth calculator, 19B allocator-at-least, 58B PMR allocation,
+42B overflow-size helper, 36B capacity, 42B/28B/39B backout
+constructor/release/destructor, and 13B orphan-range.
+All are ordinary C++20 generated from the corrected native two-int32
+array vector and replay **24/24** strict units in one affected source
+object. The original 488B and 2,245B parents are still NONEXACT,
+and generic source is not credited to game-authored `.text`.
