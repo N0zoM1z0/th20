@@ -26570,3 +26570,32 @@ symbol = "??$_Test_callable@UNativeCardTextPayload@th20@@@std@@YA_NABUNativeCard
 target_address = 0x00413910
 size = 7
 relocations = []
+
+# CORE/RECON-1036: original whole 93B standard function library body.
+[units.ascii_function_copy_93]
+source = "src/AsciiTextRender578.cpp"
+object = "build/core1036-canonical/AsciiTextRender578.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::function<void()>::function(const std::function&)"]
+symbol = "??0?$function@$$A6AXXZ@std@@QAE@ABV01@@Z"
+target_address = 0x004140F0
+size = 93
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$function@$$A6AXXZ@std@@QAE@ABV01@@Z", target = 0x00567C8D },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0?$_Func_class@X$$V@std@@QAE@XZ", target = 0x00413F80 },
+  { offset = 0x3D, type = "REL32", symbol = "?_Reset_copy@?$_Func_class@X$$V@std@@IAEXABV12@@Z", target = 0x00414B90 },
+]
+
+# CORE/RECON-1036: original whole 20B standard function library body.
+[units.ascii_function_dtor_20]
+source = "src/AsciiTextRender578.cpp"
+object = "build/core1036-canonical/AsciiTextRender578.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::function<void()>::~function"]
+symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ"
+target_address = 0x00414400
+size = 20
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??1?$_Func_class@X$$V@std@@QAE@XZ", target = 0x00414310 },
+]

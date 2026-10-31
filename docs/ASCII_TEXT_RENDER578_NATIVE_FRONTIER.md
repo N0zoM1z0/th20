@@ -107,3 +107,13 @@ scripts/repo-python scripts/verify-ascii-text-render578-native.py \
   --candidate-object build/core1035-probes/AsciiTextRender578.obj
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1036 — exact native 93B/20B standard-function children
+
+Both original `std::function<void()>` copy and destructor E8 callees
+inside the 578B text render Boss now have [their own distinct complete
+93/93B and 20/20B canonical exact units](ASCII_FUNCTION_COPY_DTOR_93_20_STRICT_EXACT.md).
+Both are naturally emitted from the same maintained 578B C++ parent
+translation unit; the original 578B text render remains NONEXACT
+at five SSE register bytes and its unsigned correction data-symbol
+ownership. No game-authored parent credit is inferred.

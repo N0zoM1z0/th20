@@ -49,6 +49,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1035 — complete original 578B text-rendering Boss source and five SSE-operand-byte frontier](ASCII_TEXT_RENDER578_NATIVE_FRONTIER.md) — real 111B Card callback E8, 294B submit thiscall ABI, 11 native E8/8 PE HIGHLOW, 578B/139-instruction C++ source 497/502 ordinary bytes. NONEXACT, no authored-game credit.
 
+- [CORE/RECON-1036 — native 93B std::function copy and 20B destructor whole strict exact](ASCII_FUNCTION_COPY_DTOR_93_20_STRICT_EXACT.md) — real 578B ASCII render parent E8s, original two EH/HIGHLOW and three E8, one scoped canonical object with 2/2 exact, no authored-game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

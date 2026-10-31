@@ -1471,3 +1471,5 @@ th20::NativeCardTextPayload::NativeCardTextPayload(move)
 th20::NativeCardTextPayload::name_c_str_44baf0
 th20::NativeRendererTextureOwner::create_dynamic_texture_44c0b0
 std::_Test_callable<NativeCardTextPayload>
+std::function<void()>::function(const std::function&)
+std::function<void()>::~function
