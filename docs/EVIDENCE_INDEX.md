@@ -11,6 +11,8 @@ not current facts when newer canonical units supersede them.
 - [CORE/RECON-998 — original 155B dynamic texture creator complete-source compiler frontier](ANIMATION_DYNAMIC_TEXTURE_155_NATIVE_COMPILER_FRONTIER.md) — full source, original 2 E8/5 HIGHLOW, native-sized 155B candidate but the format/vtable evaluation ordering remains NONEXACT.
 - [CORE/RECON-997 — original 139B Renderer render-target creation strict exact](ANIMATION_RENDER_TARGET_139_STRICT_EXACT.md) — native D3D9 `CreateTexture`, 2 original E8 /3 HIGHLOW, whole 139B relocated C++20, +139 authored-game bytes; 155B adjacent dynamic creator separate.
 
+- [CORE/RECON-999 — complete 32B/61B/19B/23B Card finish helper source and PE](CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md) — four strict units from one source object, nine actual 602B original parent E8 sites, two game-authored heads/+93B; Card 602B/1896B parents remain open.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

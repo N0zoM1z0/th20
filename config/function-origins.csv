@@ -2413,7 +2413,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00486BB0,authored,Card,authored,medium,"CORE/ORIGIN-555; docs/ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md; full immutable original PE x86 E8 and real PE HIGHLOW / 249 original call+absolute fields, original source-specific MSVC 14 real objects 122/122 strict. High confidence if real original gameplay caller; medium for absent E8 or anonymous constructor wrapper; whole original physical source present."
 0x00486D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00486E10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00486E10,unknown,CardSpell,review,pending,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; 0xE0-stride record array subscript; original compiler/template ownership uncertain; full native verified and origin classification separate from code exactness
 0x00486E30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486E50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486E80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2428,7 +2428,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00487B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487BB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487C30,authored,CardSpell,authored,high,"CORE/EXACT-151; docs/ENEMY_CARD_STATE_RECONSTRUCTION.md; Complete1896-byte ordinary native Card start has game-specific flags/name/timer, paired capture-record initialization, custom UI/ANM ownership, boss position, bonus/stage state and real sound/record consumers. Full listing bytes and direct branches are reconciled; associated EH contribution and genuine remaining UI/record owners stay open. Only the real Card interface is declared. No maintained body, mapping, source presence, canonical unit or exact credit."
-0x004883A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004883A0,authored,CardSpell,authored,high,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Card UI owner flag +0x3344 bit0 publication on Card finish; full native verified and origin classification separate from code exactness
 0x004883C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004883F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488410,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2437,7 +2437,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00488480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004884F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00488510,authored,CardSpell,authored,high,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Game-specific capped 99999 spell capture-count state at record+0xC0/+0xC4; full native verified and origin classification separate from code exactness
 0x00488550,unknown,DamageQueryProtocol,review,pending,"CORE/EXACT-103: Thirteen new complete actual query consumers980B plus the existing45B Timer/Cursor shared head with real Player/Shot/Enemy/Session/Overlay owners. Full246B Shot and251B Enemy search, native unsigned64 score division/addition/cap and Session uint32 zero extension, actual frame/period gating, forced defeat and preserved-bit marker protocols. Complete typed templates/EH and existing-head aliases replay as support; no duplicate physical credit. O2/ASan/UBSan actual protocol scope passes. Whole private query1685/native1707 remains nonexact and unaccepted; native post-retirement heap lifetime, callbacks, original Item spawn, enclosing lifetime/RTTI/full-link/startup remain open. Authored/reference attribution stays independent. See docs/DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md. Frozen251-file graph passes731 strict units/142 fresh objects/138358 disjoint bytes;14 complete maintained candidates include45B Timer/Cursor alias;13 new physical roots980B and36 independent relocations. Full45 support contributions replay."
 0x00488590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004885D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2445,7 +2445,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00488680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004886B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00488700,unknown,CardSpell,review,pending,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Folded 0x8A460 offset to secondary card record group; generic accessor authorship not proven; full native verified and origin classification separate from code exactness
 0x00488720,unknown,Session,review,pending,"EXACT-073: Twenty whole Session/PlayerTable construction, real process initializer, indexed/current-record/Controller lookups, mode/clamp queries, continue and flag updates add1167body/1177comparisonbytes. Complete560unit/101fresh-object graph replays98007disjointbytes. Actual704-byte BSS, original CRT registration, two real Contexts/two PlayerRecords, independent double-clock consumer, natural alignment gaps and complete EH/array helper establish the owned protocol. O2/UBSan checks run actual production lifetimes/lookups, whole-object preservation, signed/wrapped counters and retained flags. Whole Enemy readers, Player/card/game/Controller owners,41KB opcode root and whole-game link/runtime remain open; authored origins are not inferred. See docs/EXACT_SESSION_RECONSTRUCTION.md."
 0x00488740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488770,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

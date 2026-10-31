@@ -1443,3 +1443,7 @@ th20::AnimationHandle::resolve_or_resident_44cf10
 th20::AnimationHandle::set_entry_callback_forward_44f100
 th20::particle_float_is_zero
 th20::NativeRendererTextureOwner::create_render_target_44c150
+th20::NativeCardUiDirtyView::mark_finished_4883a0
+th20::NativeSpellRecordView::increment_capture_488510
+th20::NativeCardRecordArchive::secondary_488700
+th20::NativeSpellRecordArrayView::record_486e10
