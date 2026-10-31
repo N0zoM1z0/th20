@@ -1465,3 +1465,6 @@ th20::NativeCardHudView::start_spell_effects_488a60,0x00488A60,function
 th20::NativeCardHudView::report_spell_result_4b90e0,0x004B90E0,function
 th20::NativeCardRendererFileView::current_file_437950,0x00437950,function
 th20::NativeCardBombActiveView::active_478130,0x00478130,function
+th20::NativeCardTextPayload::NativeCardTextPayload,0x00486B70,function
+th20::NativeCardTextPayload::~NativeCardTextPayload,0x0046ADE0,function
+std::pmr::string::basic_string(copy),0x0046A780,function

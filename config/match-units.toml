@@ -26413,3 +26413,48 @@ symbol = "?active_478130@NativeCardBombActiveView@th20@@QBE_NXZ"
 target_address = 0x00478130
 size = 42
 relocations = []
+
+# CORE/RECON-1007: original whole 56B Card typed PMR text capture helper.
+[units.card_text_payload_ctor_56]
+source = "src/CardTextPayloadNative.cpp"
+object = "build/core1007-canonical/CardTextPayloadNative.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTextPayload::NativeCardTextPayload"]
+symbol = "??0NativeCardTextPayload@th20@@QAE@PAUCard@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@PAVAnimation@1@@Z"
+target_address = 0x00486B70
+size = 56
+relocations = [
+  { offset = 0x22, type = "REL32", symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@ABV01@@Z", target = 0x0046A780 },
+]
+
+# CORE/RECON-1007: original whole 23B Card typed PMR text capture helper.
+[units.card_text_payload_dtor_23]
+source = "src/CardTextPayloadNative.cpp"
+object = "build/core1007-canonical/CardTextPayloadNative.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTextPayload::~NativeCardTextPayload"]
+symbol = "??1NativeCardTextPayload@th20@@QAE@XZ"
+target_address = 0x0046ADE0
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@XZ", target = 0x00449240 },
+]
+
+# CORE/RECON-1007: original whole 167B Card typed PMR text capture helper.
+[units.card_text_payload_pmr_copy_167]
+source = "src/CardTextPayloadNative.cpp"
+object = "build/core1007-canonical/CardTextPayloadNative.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::basic_string(copy)"]
+symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@ABV01@@Z"
+target_address = 0x0046A780
+size = 167
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@ABV01@@Z", target = 0x00568CFD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x32, type = "REL32", symbol = "?_Getal@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@ABEABV?$polymorphic_allocator@D@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x3C, type = "REL32", symbol = "?select_on_container_copy_construction@?$_Normal_allocator_traits@V?$polymorphic_allocator@D@pmr@std@@@std@@SA?AV?$polymorphic_allocator@D@pmr@2@ABV342@@Z", target = 0x00470A40 },
+  { offset = 0x59, type = "REL32", symbol = "??$?0V?$polymorphic_allocator@D@pmr@std@@$$V@?$_Compressed_pair@V?$polymorphic_allocator@D@pmr@std@@V?$_String_val@U?$_Simple_types@D@std@@@3@$0A@@std@@QAE@U_One_then_variadic_args_t@1@$$QAV?$polymorphic_allocator@D@pmr@1@@Z", target = 0x00467FA0 },
+  { offset = 0x74, type = "REL32", symbol = "?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QBEPBDXZ", target = 0x0040F2C0 },
+  { offset = 0x87, type = "REL32", symbol = "??$_Construct@$01PBD@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEXQBDI@Z", target = 0x00468180 },
+]

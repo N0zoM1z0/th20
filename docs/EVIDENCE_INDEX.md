@@ -27,6 +27,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1006 — whole-exact 42B BombController state predicate from Card start](CARD_START_BOMB_ACTIVE42_STRICT_EXACT.md) — original 1,896B parent E8 +0x1D6, true BombController+0x18 member, native `bool` and 42/42 localized strict replay. +42 authored bytes.
 
+- [CORE/RECON-1007 — whole-original Card text payload 56B constructor, 23B destructor and 167B PMR string copy](CARD_TEXT_PAYLOAD_56_23_167_STRICT_EXACT.md) — native 1,896B Card start original callers, independent 7 E8/2 PE HIGHLOW, typed 36B capture, 3/3 pinned C++20 exact and provenance uncredited.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

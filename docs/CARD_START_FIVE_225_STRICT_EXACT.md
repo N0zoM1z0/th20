@@ -95,3 +95,10 @@ The same original Card start uses a genuine BombController active-state
 predicate at `0x00478130`, native E8 `+0x1D6`. Its [independent whole
 42B strict match](CARD_START_BOMB_ACTIVE42_STRICT_EXACT.md) adds one game
 head/+42B and **does not** make the 1,896B Card parent exact.
+
+## CORE/RECON-1007 — typed original Card text payload accepted
+
+The previously unowned original start text capture now has a [natural 36B
+Card*/PMR string/Animation* owner and three whole strict-exact helpers](CARD_TEXT_PAYLOAD_56_23_167_STRICT_EXACT.md), including the real 167B PMR
+string copy with compiler EH metadata. The original full 1,896B parent
+remains separate and NONEXACT, and the helper ownership is uncredited.
