@@ -750,3 +750,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004147E0,th20::NativeGlyphCanvasStorage::scalar_deleting_destructor,49,matching,100.00,glyph_canvas_scalar_deleting_dtor_49,CORE/RECON-1070; docs/GLYPH_CANVAS_ALLOCATOR_LIFETIME_97_16_49_62_STRICT_EXACT.md
 0x00414460,th20::NativeGlyphCanvasStorage::~NativeGlyphCanvasStorage,62,matching,100.00,glyph_canvas_destructor_62,CORE/RECON-1070; docs/GLYPH_CANVAS_ALLOCATOR_LIFETIME_97_16_49_62_STRICT_EXACT.md
 0x00413C50,th20::DiagnosticAllocator::allocate_object<NativeGlyphCanvasStorage>,73,matching,100.00,glyph_canvas_allocator_allocate_73,CORE/RECON-1071; docs/GLYPH_CANVAS_ALLOCATE73_CLASS_NOEXCEPT_STRICT_EXACT.md
+0x00416140,th20::glyph_task_pump_416140,254,matching,100.00,glyph_text_queue_pump_254,CORE/RECON-1075; docs/GLYPH_TEXT_QUEUE_PUMP254_STRICT_EXACT.md

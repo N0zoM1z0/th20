@@ -123,6 +123,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1074 — original complete 158B glyph task-list node constructor, typed source NONEXACT frontier](GLYPH_QUEUE_NODE_CTOR158_NATIVE_FRONTIER.md) — original parent 151B `_Emplace` E8 and five native calls including two separate `_Unfancy`, actual 143B/46-i386 STL C++20 source vs 158B/51 native; independently whole exact 34B/47B/118B children, 11/11 scoped units, zero parent credit.
 
+- [CORE/RECON-1075 — original 254B game glyph task queue dispatcher WHOLE STRICT EXACT](GLYPH_TEXT_QUEUE_PUMP254_STRICT_EXACT.md) — real 12B global PMR list and two game locks, copy front/erase begin/invoke callback, 254B/74 i386, 15 original E8/8 HIGHLOW, 162/162 nonreloc, +254 authored-game bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

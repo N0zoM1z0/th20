@@ -98,3 +98,14 @@ two HIGHLOW; current real PMR-list C++20 naturally emits 143B/46,
 missing one original folded pointer forwarding call. The original
 118B guard destructor and all accepted PMR allocation/destruction
 children stay WHOLE STRICT EXACT; none grants exact credit for 158B.
+
+## CORE/RECON-1075 — independently whole-exact game queue execution
+
+The physical list whose native 151B `_Emplace` uses this whole-exact
+118B guard is now consumed by a distinct
+[WHOLE EXACT 254B original TH20 queue pump](GLYPH_TEXT_QUEUE_PUMP254_STRICT_EXACT.md).
+It checks `list::size`, copies the front callable, erases the first
+node, then executes the callback under the two original native locks.
+The pump is one game-authored physical code head (+254 game bytes);
+this guard stays a separate exact **generic** 118B head, with no
+double counting of original STL or parent code.

@@ -27398,3 +27398,38 @@ relocations = [
   { offset = 0x57, type = "REL32", symbol = "??$destroy@V?$function@$$A6AXXZ@std@@@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@PAV?$function@$$A6AXXZ@1@@Z", target = 0x00413CA0 },
   { offset = 0x62, type = "REL32", symbol = "??1?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ", target = 0x004142E0 },
 ]
+
+# CORE/RECON-1075: complete original game-owned 254B i386 queue dispatcher.
+[units.glyph_text_queue_pump_254]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::glyph_task_pump_416140"]
+symbol = "?glyph_task_pump_416140@th20@@YAXXZ"
+target_address = 0x00416140
+size = 254
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?glyph_task_pump_416140@th20@@YAXXZ", target = 0x00567E2D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x29, type = "DIR32", symbol = "?native_glyph_task_queue_5b66e0@th20@@3V?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@A", target = 0x005B66E0 },
+  { offset = 0x2E, type = "REL32", symbol = "?size@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QBEIXZ", target = 0x00412730 },
+  { offset = 0x3D, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x42, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x4B, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x59, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x5E, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x67, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x73, type = "REL32", symbol = "??0?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414150 },
+  { offset = 0x7C, type = "DIR32", symbol = "?native_glyph_task_queue_5b66e0@th20@@3V?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@A", target = 0x005B66E0 },
+  { offset = 0x81, type = "REL32", symbol = "?front@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAEAAV?$function@$$A6AXXZ@2@XZ", target = 0x00415600 },
+  { offset = 0x8A, type = "REL32", symbol = "??4?$function@$$A6AXXZ@std@@QAEAAV01@ABV01@@Z", target = 0x00414540 },
+  { offset = 0x94, type = "DIR32", symbol = "?native_glyph_task_queue_5b66e0@th20@@3V?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@A", target = 0x005B66E0 },
+  { offset = 0x99, type = "REL32", symbol = "?begin@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@XZ", target = 0x004150B0 },
+  { offset = 0xAB, type = "DIR32", symbol = "?native_glyph_task_queue_5b66e0@th20@@3V?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@A", target = 0x005B66E0 },
+  { offset = 0xB0, type = "REL32", symbol = "?erase@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@V?$_List_const_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@@Z", target = 0x00415550 },
+  { offset = 0xB9, type = "REL32", symbol = "??R?$_Func_class@X$$V@std@@QBEXXZ", target = 0x00414740 },
+  { offset = 0xC5, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+  { offset = 0xD1, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xE0, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xF6, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
