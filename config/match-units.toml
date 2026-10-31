@@ -28033,3 +28033,84 @@ relocations = [
   { offset = 0x4F, type = "REL32", symbol = "?assign@?$_Narrow_char_traits@DH@std@@SAXAADABD@Z", target = 0x0040FE90 },
   { offset = 0x6C, type = "REL32", symbol = "??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV34@QBDI@Z@PBD@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEAAV01@IV<lambda_1>@?1??assign@01@QAEAAV01@QBDI@Z@PBD@Z", target = 0x00447050 },
 ]
+
+# CORE/RECON-1096: complete native 81B original nested path/PMR helper.
+[units.animation_load_parse_filename_81]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::_Parse_filename"]
+symbol = "?_Parse_filename@filesystem@std@@YA?AV?$basic_string_view@_WU?$char_traits@_W@std@@@2@V32@@Z"
+target_address = 0x0044B630
+size = 81
+relocations = [
+  { offset = 0xA, type = "REL32", symbol = "?data@?$basic_string_view@_WU?$char_traits@_W@std@@@std@@QBEPB_WXZ", target = 0x0040C300 },
+  { offset = 0x15, type = "REL32", symbol = "?size@?$basic_string_view@_WU?$char_traits@_W@std@@@std@@QBEIXZ", target = 0x0040FF90 },
+  { offset = 0x2B, type = "REL32", symbol = "?_Find_filename@filesystem@std@@YAPB_WQB_WPB_W@Z", target = 0x0044B4E0 },
+  { offset = 0x46, type = "REL32", symbol = "??0?$basic_string_view@_WU?$char_traits@_W@std@@@std@@QAE@QB_WI@Z", target = 0x0040DE00 },
+]
+
+# CORE/RECON-1096: complete native 132B original nested path/PMR helper.
+[units.animation_load_parse_stem_132]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::_Parse_stem"]
+symbol = "?_Parse_stem@filesystem@std@@YA?AV?$basic_string_view@_WU?$char_traits@_W@std@@@2@V32@@Z"
+target_address = 0x0044B690
+size = 132
+relocations = [
+  { offset = 0xA, type = "REL32", symbol = "?data@?$basic_string_view@_WU?$char_traits@_W@std@@@std@@QBEPB_WXZ", target = 0x0040C300 },
+  { offset = 0x15, type = "REL32", symbol = "?size@?$basic_string_view@_WU?$char_traits@_W@std@@@std@@QBEIXZ", target = 0x0040FF90 },
+  { offset = 0x2B, type = "REL32", symbol = "?_Find_filename@filesystem@std@@YAPB_WQB_WPB_W@Z", target = 0x0044B4E0 },
+  { offset = 0x4B, type = "REL32", symbol = "??$find@PB_W_W@std@@YAPB_WPB_WQB_WAB_W@Z", target = 0x004478B0 },
+  { offset = 0x5E, type = "REL32", symbol = "?_Find_extension@filesystem@std@@YAPB_WQB_W0@Z", target = 0x0044B450 },
+  { offset = 0x79, type = "REL32", symbol = "??0?$basic_string_view@_WU?$char_traits@_W@std@@@std@@QAE@QB_WI@Z", target = 0x0040DE00 },
+]
+
+# CORE/RECON-1096: complete native 104B original nested path/PMR helper.
+[units.animation_load_pmr_assign_string_104]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::assign_std_string"]
+symbol = "??$assign@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$0A@@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV01@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z"
+target_address = 0x00447250
+size = 104
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x19, type = "REL32", symbol = "?__autoclassinit2@?$basic_string_view@DU?$char_traits@D@std@@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x25, type = "REL32", symbol = "??B?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string_view@DU?$char_traits@D@std@@@1@XZ", target = 0x004494F0 },
+  { offset = 0x2D, type = "REL32", symbol = "?size@?$basic_string_view@DU?$char_traits@D@std@@@std@@QBEIXZ", target = 0x0040FF90 },
+  { offset = 0x33, type = "REL32", symbol = "??$_Convert_size@II@std@@YAII@Z", target = 0x0040B280 },
+  { offset = 0x41, type = "REL32", symbol = "?data@?$basic_string_view@DU?$char_traits@D@std@@@std@@QBEPBDXZ", target = 0x0040C300 },
+  { offset = 0x54, type = "REL32", symbol = "?assign@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAEAAV12@QBDI@Z", target = 0x0044B970 },
+  { offset = 0x5E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1096: complete native 54B original nested path/PMR helper.
+[units.animation_load_wstring_view_54]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::wstring::operator_string_view"]
+symbol = "??B?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QBE?AV?$basic_string_view@_WU?$char_traits@_W@std@@@1@XZ"
+target_address = 0x0040E7C0
+size = 54
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Myptr@?$_String_val@U?$_Simple_types@_W@std@@@std@@QBEPB_WXZ", target = 0x0040F300 },
+  { offset = 0x29, type = "REL32", symbol = "??0?$basic_string_view@_WU?$char_traits@_W@std@@@std@@QAE@QB_WI@Z", target = 0x0040DE00 },
+]
+
+# CORE/RECON-1096: complete native 44B original nested path/PMR helper.
+[units.animation_load_path_view_ctor_44]
+source = "src/AnimationFileLoad1022.cpp"
+object = "build/core1093-canonical/AnimationFileLoad1022.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::filesystem::path::path_wstring_view"]
+symbol = "??$?0V?$basic_string_view@_WU?$char_traits@_W@std@@@std@@$0A@@path@filesystem@std@@QAE@ABV?$basic_string_view@_WU?$char_traits@_W@std@@@2@W4format@012@@Z"
+target_address = 0x00417DC0
+size = 44
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "??$_Convert_Source_to_wide@V?$basic_string_view@_WU?$char_traits@_W@std@@@std@@U_Normal_conversion@filesystem@2@@filesystem@std@@YA?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@1@ABV?$basic_string_view@_WU?$char_traits@_W@std@@@1@U_Normal_conversion@01@@Z", target = 0x00418070 },
+]

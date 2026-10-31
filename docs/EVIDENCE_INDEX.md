@@ -163,6 +163,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1095 — original 336B Renderer ANM group parser whole C++ source, 278/280 ordinary bytes NONEXACT](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md) — native 6 E8/8 HIGHLOW, true 0x28B group header, original CP932 errors and texture data; original 0x120 stack zero slot differs from current C++ 0x11C without fabricating padding.
 
+- [CORE/RECON-1096 — whole exact 81B/132B/104B/54B/44B nested AnimationFile filesystem/PMR helpers](ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md) — 415 new distinct generic native bytes, original parent E8 and true 104B security HIGHLOW, 15/15 source-scoped exact receipts, no game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

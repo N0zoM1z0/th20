@@ -101,3 +101,12 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnimationFileLoad1022.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1096 — deeper parser and PMR subfunctions exact
+
+[Five further original whole-exact filesystem/PMR methods](ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md)
+(81B parse-filename, 132B parse-stem, 104B PMR assignment, 54B wide
+string-view and 44B view-to-path construction) naturally compile from
+the same existing 1,022B game AnimationFile loader. They contribute
+415 distinct native generic `.text` bytes with no additional game
+code credit. This owner now replays **15/15** original strict units.

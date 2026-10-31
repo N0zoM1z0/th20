@@ -1565,3 +1565,8 @@ std::pmr::string::operator=(std::string)
 std::filesystem::_Find_extension
 std::filesystem::_Find_filename
 std::pmr::string::assign_bytes_44b970
+std::filesystem::_Parse_filename
+std::filesystem::_Parse_stem
+std::pmr::string::assign_std_string
+std::wstring::operator_string_view
+std::filesystem::path::path_wstring_view

@@ -211,7 +211,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040E700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040E7C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040E7C0,unknown,CxxRuntime,review,pending,"CORE/RECON-1096; docs/ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md; full native original 54B standard library source, genuine original E8 from 0x44c590+0x1f; generic uncredited"
 0x0040E800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -533,7 +533,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00417AB0,authored,GlyphText,authored,high,"CORE/RECON-1065; docs/GLYPH_CANVAS_ALPHA542_STRICT_EXACT.md; immutable native entire 542B/164-i386 three game glyph pixel modes, full source exact 526/526 ordinary bytes 4 true native E8, original 2227B Boss caller"
 0x00417CD0,library,ProgressFileSdk,exclude,high,"CORE/EXACT-128: Complete 44-byte native std::filesystem::path::path<char[4096]> body, actual receiver/argument/result flow and pinned SDK implementation independently establish library origin. Whole fresh compiled callee agrees outside relocation fields; no standalone canonical unit or authored exact credit is claimed. This is independent support for the complete load root, whose own relocations are strictly replayed. See docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md."
 0x00417D00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00417DC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00417DC0,unknown,CxxRuntime,review,pending,"CORE/RECON-1096; docs/ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md; full native original 44B standard library source, genuine original E8 from 0x44c590+0x3b; generic uncredited"
 0x00417DF0,library,ProgressFileSdk,exclude,high,"CORE/EXACT-128: Complete 68-byte native std::filesystem::path::operator=<char[4096]> body, actual receiver/argument/result flow and pinned SDK implementation independently establish library origin. Whole fresh compiled callee agrees outside relocation fields; no standalone canonical unit or authored exact credit is claimed. This is independent support for the complete load root, whose own relocations are strictly replayed. See docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md."
 0x00417E40,library,ProgressFileSdk,exclude,high,"CORE/EXACT-128: Complete 120-byte native std::filesystem::path::operator/=<char[]> body, actual receiver/argument/result flow and pinned SDK implementation independently establish library origin. Whole fresh compiled callee agrees outside relocation fields; no standalone canonical unit or authored exact credit is claimed. This is independent support for the complete load root, whose own relocations are strictly replayed. See docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md."
 0x00417EC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1122,7 +1122,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00447140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004471A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00447200,unknown,CxxUtility,review,pending,"CORE/RECON-964; docs/ANIMATION_SPAWN_STEM_BYTE_EQUAL_73_34_STRICT_EXACT.md; complete original 73B, physical E8 chain to PMR comparison, C++20 whole 73/73 strict; compiler/standard-library original source provenance unknown"
-0x00447250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00447250,unknown,CxxRuntime,review,pending,"CORE/RECON-1096; docs/ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md; full native original 104B standard library source, genuine original E8 from 0x446dc0+0xe; generic uncredited"
 0x004472C0,authored,AnimationFileLifetime,authored,high,CORE/EXACT-132: Actual File clearing invokes custom array release under game lock 1; real reverse Animation destruction and cookie-based sized array deletion establish the application protocol. Complete native control flow and full configured compiler contributions strictly replay with independent relocations. All 128 previous affected units remain exact after 31 actual including objects build once; 132 objects are reused. Loaded File clearing/Renderer and native startup/runtime remain open. See docs/ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md.
 0x00447330,unknown,DiagnosticAllocator,review,pending,"CORE/RECON-973; docs/ANIMATION_FILE_ENTRY_RELEASE103_STRICT_EXACT.md; 103B/36 native original pointer-allocator file retirement exact 103/103, calls existing 16B std::destroy_at original 0x447850; template/generic author identity uncertain and no game-authored byte credit"
 0x004473A0,authored,AnimationFileLifetime,authored,high,CORE/EXACT-132: Actual game preload failure uses custom allocator scalar release; real File destruction precedes game-lock-slot 1 acquisition and unsized scalar storage deletion. Complete native control flow and full configured compiler contributions strictly replay with independent relocations. All 128 previous affected units remain exact after 31 actual including objects build once; 132 objects are reused. Loaded File clearing/Renderer and native startup/runtime remain open. See docs/ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md.
@@ -1225,8 +1225,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044B530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B5C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044B630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044B690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044B630,unknown,CxxRuntime,review,pending,"CORE/RECON-1096; docs/ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md; full native original 81B standard library source, genuine original E8 from 0x44c590+0x2f; generic uncredited"
+0x0044B690,unknown,CxxRuntime,review,pending,"CORE/RECON-1096; docs/ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md; full native original 132B standard library source, genuine original E8 from 0x451580+0x2f; generic uncredited"
 0x0044B720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B740,library,AnimationPmr,exclude,high,"CORE/EXACT-135: Actual PMR string destructor and complete allocator/value flow establish the explicit SDK tidy implementation, including external/inline storage branches and final size/capacity/terminator writes. Complete native control flow and whole fresh production contribution strictly replay with independent anchors. One actual Animation object rebuild preserves all22 prior affected units;162 objects are reused. SDK/compiler source presence is separate from authored exact coverage. See docs/ANIMATION_PMR_RETIREMENT_RECONSTRUCTION.md."
