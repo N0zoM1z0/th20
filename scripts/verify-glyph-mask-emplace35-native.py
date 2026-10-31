@@ -24,7 +24,7 @@ PARENT=0x00416420
 PARENT_SHA='06b62972af7ef2644b5a17d032b4124525d9b6aab0a5097f740ec777d14a40ad'
 CALLS={0x0B:0x0040B280,0x17:0x00413370}
 PARENT_SITES=(0x165,0x4DD)
-PREFIX='??$emplace_back@ABUGlyphMaskOffset@th20@@@?$vector@'
+PREFIX='??$emplace_back@ABV?$array@H$01@'
 def calls(ins,head):
     return {i.address-head:(i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xFFFFFFFF
             for i in ins if i.size==5 and i.bytes[0]==0xE8}
@@ -56,5 +56,5 @@ def verify():
     assert '_Emplace_one_at_back' in relocations[0]['symbol']
     print('NONEXACT: natural std::pmr::vector<GlyphMaskOffset>::emplace_back(const&) compiles 33B/13 i386,')
     print('one E8 to _Emplace_one_at_back rather than original two E8 /35B direct call chain')
-    print('Native 35B helper still unclassified with no canonical strict or authored-game credit')
+    print('Original 35B helper SOURCE-PRESENT NONEXACT, no canonical strict or authored-game credit')
 if __name__=='__main__': verify()

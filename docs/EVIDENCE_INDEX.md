@@ -137,6 +137,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1081 — nine complete original 84B/19B/58B/42B/36B/42B/28B/39B/13B PMR glyph-vector descendant functions](GLYPH_VECTOR_GROWTH_DEEP_NINE_STRICT_EXACT.md) — native 488B growth, 200B backout-move and 140B no-growth construction parents; complete original 361B generic code, 24/24 local exact units, zero new game-authored credit.
 
+- [CORE/RECON-1082 — five full native 35B/108B/488B/200B/140B glyph offset PMR insertion/growth parent compiler frontiers](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md) — entire original E8/SEH chain and true current C++20 source sizes verified; false source-absent statuses corrected; all five NONEXACT, 24/24 child units preserved, zero extra game exact credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

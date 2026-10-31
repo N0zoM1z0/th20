@@ -1559,3 +1559,7 @@ std::_Uninitialized_backout_al<GlyphMaskOffset>::ctor,0x00414060,function
 std::_Uninitialized_backout_al<GlyphMaskOffset>::_Release,0x00414B70,function
 std::_Uninitialized_backout_al<GlyphMaskOffset>::dtor,0x004143D0,function
 std::pmr::vector<GlyphMaskOffset>::_Orphan_range,0x00414B60,function
+std::pmr::vector<GlyphMaskOffset>::emplace_back,0x00416330,function
+std::pmr::vector<GlyphMaskOffset>::_Emplace_one_at_back,0x00413370,function
+std::_Uninitialized_move<GlyphMaskOffset>,0x00413920,function
+std::pmr::vector<GlyphMaskOffset>::_Emplace_back_with_unused_capacity,0x004132E0,function

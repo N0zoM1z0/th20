@@ -90,3 +90,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphMaskComposite2245.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1082 — all five original parent source boundaries now tracked
+
+The physical native 35B vector insertion, 108B insertion backend,
+488B reallocation, 200B uninitialized move and 140B no-growth
+construction are all now [source-present NONEXACT, with full native
+boundaries and current generated sizes recorded](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md).
+The genuine nine exact PMR descendants accepted here remain 9/9
+and their one shared canonical source's previously exact PMR/color
+units remain 24/24. Original parent exactness and game-authored
+credit are not inferred from their children.

@@ -21,7 +21,7 @@ ORIGINAL_E8={0x02E:0x0040F160,0x06F:0x004162B0,0x079:0x00414FE0,
  0x162:0x00413920,0x18B:0x00413920,0x1A9:0x00414960,
  0x1C5:0x004144E0,0x1DD:0x005429EE}
 DATA={0x06:0x00567CED,0x15:0x005B25C0}
-SYM='??$_Emplace_reallocate@ABUGlyphMaskOffset@th20@@@?$vector@UGlyphMaskOffset@th20@@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@AAEPAUGlyphMaskOffset@th20@@QAU23@ABU23@@Z'
+SYM='??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z'
 def calls(ins,head):
  return {i.address-head:(i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xFFFFFFFF
          for i in ins if i.size==5 and i.bytes[0]==0xE8}

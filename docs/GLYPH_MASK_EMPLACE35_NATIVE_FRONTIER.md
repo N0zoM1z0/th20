@@ -1,3 +1,5 @@
+**CORE/RECON-1082 UPDATED STATUS:** This original 35B helper and its complete 108B backend, 488B vector reallocation, 200B uninitialized move, and 140B non-growth construction now have [real std::pmr::vector<std::array<int32_t,2>> source-present NONEXACT records](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md). The original complete 35B still differs from the current natural 33B/13 C++20 template; old SOURCE-ABSENT/unclassified claims below are historical. All 24 already accepted PMR/color descendants remain whole exact.
+
 # CORE/RECON-1055 — original 35B glyph-mask offset insertion, genuine native 2-call ABI frontier
 
 The original TH20 Japanese Steamless v1.00a executable is locked to
