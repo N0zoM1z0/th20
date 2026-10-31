@@ -115,3 +115,16 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextCore2227.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1071 — real 73B canvas class factory now whole strict exact
+
+The same concrete GDI canvas is now produced by an
+[independently whole-exact original 73B allocator factory](GLYPH_CANVAS_ALLOCATE73_CLASS_NOEXCEPT_STRICT_EXACT.md)
+called from the real 2,227B text Boss E8 `+0x89`. The canonical C++
+owner is a `class` with real observed public 0x124B fields and a
+`noexcept` constructor. The source naturally reproduces original
+scalar `operator new`, folded 31B class-zeroing E8 and already exact
+124B constructor; its entire 97B/16B/49B/62B release chain remains
+whole-exact under the corrected C++ `class` mangling. The original
+2,227B text producer remains SOURCE-PRESENT/NONEXACT; no previous
+constructor, destructor or generic helper code is counted twice.

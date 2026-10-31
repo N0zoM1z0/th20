@@ -5,7 +5,7 @@
 #include "NativeGlyphCanvasStorage.hpp"
 #include <cstring>
 namespace th20 {
-NativeGlyphCanvasStorage::NativeGlyphCanvasStorage() {
+NativeGlyphCanvasStorage::NativeGlyphCanvasStorage() noexcept {
     std::memset(this,0,sizeof(*this));
     format=-1;
     width=0;

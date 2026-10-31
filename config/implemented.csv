@@ -1521,3 +1521,4 @@ th20::DiagnosticAllocator::release_object<NativeGlyphCanvasStorage>
 std::destroy_at<NativeGlyphCanvasStorage>
 th20::NativeGlyphCanvasStorage::scalar_deleting_destructor
 th20::NativeGlyphCanvasStorage::~NativeGlyphCanvasStorage
+th20::DiagnosticAllocator::allocate_object<NativeGlyphCanvasStorage>

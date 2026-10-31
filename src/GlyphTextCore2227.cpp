@@ -29,9 +29,11 @@ extern const float native_font_size_56c8d8;
 extern const float native_font_size_56c8dc;
 extern const float native_font_size_56c8e0;
 
-struct NativeGlyphCanvasFactoryView {
-    NativeGlyphCanvasStorage* allocate_canvas_413c50(const char* label);
-};
+// Native original 73B allocator-body owner now has its own canonical
+// template instantiation; this large nonexact producer borrows that exact
+// executable head instead of a provisional wrapper with the same target.
+extern template NativeGlyphCanvasStorage* DiagnosticAllocator::allocate_object<
+    NativeGlyphCanvasStorage>(const char*);
 
 
 // The native 542B canvas alpha processor and 2,245B outline compositor
@@ -46,8 +48,8 @@ std::uint64_t __cdecl native_text_core_415830(
     std::lock_guard<std::recursive_mutex> raster_guard(process_locks.slot(0x12));
     // The original selects an existing native font via array-index helper.
     HFONT selected_font=native_glyph_fonts_5b66f0[font];
-    auto* canvas=reinterpret_cast<NativeGlyphCanvasFactoryView*>(
-        process_allocator)->allocate_canvas_413c50("glyph GDI text canvas");
+    auto* canvas=process_allocator->allocate_object<NativeGlyphCanvasStorage>(
+        "glyph GDI text canvas");
     auto* glyph=reinterpret_cast<NativeGlyphCanvasView*>(canvas);
     float outline_radius=native_font_size_56c8d0;
     std::int32_t baseline=2;

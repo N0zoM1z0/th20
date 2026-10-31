@@ -7,14 +7,15 @@ namespace th20 {
 // members start at +0x100. The preceding 0x100 bytes are genuine allocated
 // storage with unresolved glyph/render state, not invented padding or RTTI.
 // NativeGlyphCanvasView is the borrowing interface for this same storage.
-struct NativeGlyphCanvasStorage {
+class NativeGlyphCanvasStorage {
+public:
     std::uint8_t unresolved_glyph_state_00[0x100];
     std::int32_t format, width, height, byte_count, stride;
     HDC device_context;
     HGDIOBJ previous_object;
     HBITMAP bitmap;
     void* pixel_bytes;
-    NativeGlyphCanvasStorage();
+    NativeGlyphCanvasStorage() noexcept;
     // Original nonvirtual game-owned dtor; scalar delete wrapper and
     // std::destroy_at exist as distinct physical native heads.
     ~NativeGlyphCanvasStorage();

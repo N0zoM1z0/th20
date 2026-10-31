@@ -115,6 +115,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1070 — complete original GDI canvas allocator/destruction graph 97B/16B/49B/62B whole strict exact](GLYPH_CANVAS_ALLOCATOR_LIFETIME_97_16_49_62_STRICT_EXACT.md) — real 360B D3D9 upload E8 to game allocator, genuine std::destroy_at, scalar deleting dtor and 62B canvas cleanup plus five native INT3 alignment bytes, 10/10 affected exact; +208 authored-game bytes and 16 generic bytes.
 
+- [CORE/RECON-1071 — complete original 73B GDI canvas allocation via real class/noexcept C++ ABI strict exact](GLYPH_CANVAS_ALLOCATE73_CLASS_NOEXCEPT_STRICT_EXACT.md) — original 2,227B parent E8+0x89, native scalar new/31B folded class init/124B exact ctor; corrected struct-to-class C++ owner and ctor exception contract gives natural 73/73, +73 game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
