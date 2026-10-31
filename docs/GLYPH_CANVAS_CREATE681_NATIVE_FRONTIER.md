@@ -130,3 +130,13 @@ GDI IAT calls and native `bool` return. The earlier provisional
 `void` declaration was wrong and is now corrected. All six strict
 subchain units were rebuilt in three affected providers; the
 681B parent still compiles to 684B/176 and remains NONEXACT.
+
+## CORE/RECON-1047 — original 0x124 glyph canvas constructor exact
+
+The native GDI canvas allocation object now has its own
+[whole 124B original constructor](GLYPH_CANVAS_CONSTRUCTOR124_STRICT_EXACT.md),
+including native `memset(0x124)` and the observed +0x100..+0x120
+resource suffix. The 73B allocation wrapper is still separate.
+This 681B GDI create method remains NONEXACT despite having its
+constructor, 182B cleanup, 82B descriptor lookup and 104B caller
+now separately whole exact.

@@ -26765,3 +26765,16 @@ relocations = [
   { offset = 0x3D, type = "DIR32", symbol = "__imp__DeleteDC@4", target = 0x0056C03C },
   { offset = 0x4D, type = "DIR32", symbol = "__imp__DeleteObject@4", target = 0x0056C038 },
 ]
+
+# CORE/RECON-1047: whole 124B native constructor of 0x124-byte glyph canvas.
+[units.glyph_canvas_constructor_124]
+source = "src/GlyphCanvasConstruct124.cpp"
+object = "build/core1047-canonical/GlyphCanvasConstruct124.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasStorage::NativeGlyphCanvasStorage"]
+symbol = "??0NativeGlyphCanvasStorage@th20@@QAE@XZ"
+target_address = 0x00414200
+size = 124
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]

@@ -69,6 +69,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1046 — complete original 182B GDI glyph canvas cleanup whole strict exact](GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md) — real original 681B parent E8, three genuine GDI import HIGHLOW, source bool return corrected from earlier void, 6/6 affected units exact, +182 authored bytes.
 
+- [CORE/RECON-1047 — original whole 124B glyph canvas owner constructor strict exact](GLYPH_CANVAS_CONSTRUCTOR124_STRICT_EXACT.md) — physical 0x124-byte allocation, native 73B wrapper and 2,227B text Boss parent E8s, full 124/124 typed owner initialization and +124 authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

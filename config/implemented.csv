@@ -1485,3 +1485,4 @@ th20::NativeGlyphCanvasView::bitmap_pixels_4156a0
 th20::NativeGlyphCanvasView::pixel_stride_4156c0
 th20::NativeGlyphCanvasView::pixel_format_415640
 th20::NativeGlyphCanvasView::release_surface_416360
+th20::NativeGlyphCanvasStorage::NativeGlyphCanvasStorage

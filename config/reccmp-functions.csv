@@ -1492,3 +1492,4 @@ th20::NativeGlyphCanvasView::pixel_stride_4156c0,0x004156C0,function
 th20::NativeGlyphCanvasView::create_gdi_surface_415120,0x00415120,function
 th20::NativeGlyphCanvasView::pixel_format_415640,0x00415640,function
 th20::NativeGlyphCanvasView::release_surface_416360,0x00416360,function
+th20::NativeGlyphCanvasStorage::NativeGlyphCanvasStorage,0x00414200,function
