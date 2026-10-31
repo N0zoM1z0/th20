@@ -26974,3 +26974,16 @@ relocations = [
   { offset = 0x27, type = "REL32", symbol = "??$_Destroy_range@V?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@@std@@YAXPAUGlyphMaskOffset@th20@@QAU12@AAV?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@0@@Z", target = 0x0040C6B0 },
   { offset = 0x48, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAEXQAUGlyphMaskOffset@th20@@I@Z", target = 0x004154C0 },
 ]
+
+# CORE/RECON-1059: real 132B glyph render task capture, const std::function&.
+[units.glyph_text_job_capture_132]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/core1059-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphRenderJob::NativeGlyphRenderJob"]
+symbol = "??0NativeGlyphRenderJob@th20@@QAE@PAUNativeGlyphCanvasStorage@1@ABIABUNativeTextTransform4@1@2ABHABV?$function@$$A6AXXZ@std@@@Z"
+target_address = 0x00413EC0
+size = 132
+relocations = [
+  { offset = 0x76, type = "REL32", symbol = "??0?$function@$$A6AXXZ@std@@QAE@ABV01@@Z", target = 0x004140F0 },
+]

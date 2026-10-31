@@ -1,3 +1,5 @@
+**CORE/RECON-1058/1059 status correction:** The original 2,227B glyph text core previously called source-absent is now [SOURCE-PRESENT, NONEXACT](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md) with a complete 2,052B/481-instruction native-typed candidate. Its separate original 132B game-specific queued-job capture is [WHOLE STRICT EXACT](GLYPH_TEXT_JOB_CAPTURE132_STRICT_EXACT.md). Historical source-absent claims below are dated; the 2,227B parent is still not exact.
+
 # CORE/RECON-1040 — original 294B native text submission Boss, real two-path C++20 frontier
 
 The target is the locked Japanese TH20 v1.00a Steamless executable,

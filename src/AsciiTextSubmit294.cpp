@@ -4,17 +4,12 @@
 // At pinned /Od the natural two-path C++ owner still generates 319B, not the
 // original 294B, though all seven genuine call identities are preserved.
 #include "NativeAsciiTextDrawView.hpp"
+#include "NativeGlyphTextCore.hpp"
 #include <cstdint>
 #include <functional>
 namespace th20 {
 // The separately original 2227-byte text renderer core at 0x00415830.
 // Its complete implementation and original C++ spelling remain unresolved.
-extern std::uint64_t __cdecl native_text_core_415830(
-    const NativeTextTransform4* transform, std::int32_t x,
-    std::int32_t layer, std::uint32_t color, const char* formatted,
-    IDirect3DBaseTexture9* texture, std::int32_t font,
-    std::int32_t align, std::int32_t is_special,
-    std::int32_t mode, std::function<void()> callback);
 
 // MSVC's native 8-byte return has the two 32-bit fields as one packed word;
 // the observed 2227B core returns the same data directly in EDX:EAX.

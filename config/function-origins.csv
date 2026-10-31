@@ -428,7 +428,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413D50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413EC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413EC0,authored,GlyphText,authored,high,"CORE/RECON-1059; docs/GLYPH_TEXT_JOB_CAPTURE132_STRICT_EXACT.md; game-specific 0x58-byte async GDI text job capture of canvas, color, two native geometry spans and std::function, native 132B 49-i386 single original copy93 E8, complete C++20 exact"
 0x00413F50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413F80,unknown,CxxRuntime,review,pending,CORE/RECON-1041; docs/ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md; exact original physical 25B standard callable helper; 93B std::function copy constructor native E8 +0x29; original library/folded ownership not independently authored
 0x00413FA0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 33-byte iterator_ctor contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
@@ -517,7 +517,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004156E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415800,authored,GlyphText,authored,high,"CORE/RECON-1051; docs/GLYPH_CANVAS_WIDTH20_STRICT_EXACT.md; genuine custom TH20 glyph canvas+0x104 width read, 2245B original source-absent compositor four physical E8, whole 20/20 native exact"
 0x00415820,unknown,CxxRuntime,review,pending,"CORE/RECON-1054; docs/GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md; original 10B generic C++ PMR vector lifecycle code; Native 24B polymorphic allocator constructor E8+0x07; physical native E8 and whole source exact, library/template provenance uncredited"
-0x00415830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00415830,authored,GlyphText,authored,high,"CORE/RECON-1058; docs/GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md; original full 2227B/470-i386 GDI rendering & queued job game protocol, 25 E8/43 PE HIGHLOW and true two 294B callers; natural native-typed source 2052B/481 NONEXACT"
 0x00416140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

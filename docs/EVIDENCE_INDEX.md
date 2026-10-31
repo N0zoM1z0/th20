@@ -89,6 +89,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1057 — complete-source native 542B GDI Alpha-processing Boss](GLYPH_CANVAS_ALPHA542_TYPED_NATIVE_FRONTIER.md) — actual 2,227B text-core caller, three original alpha formats, 4 physical native E8/0 HIGHLOW, meaningful 540B/164-i386 source candidate NONEXACT.
 
+- [CORE/RECON-1059 — whole original 132B glyph text queued job capture strict exact](GLYPH_TEXT_JOB_CAPTURE132_STRICT_EXACT.md) — real original 2,227B parent E8, borrowed const std::function input and one copy93 E8, 132/132B plus 7/7 scoped units, +132 game-authored bytes.
+
+- [CORE/RECON-1058 — complete-source 2,227B GDI glyph text core Boss frontier](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md) — native entire 470 instructions, 25 E8/43 HIGHLOW, full font/CP932/GDI/outline/alpha/queued-job pipeline, 2,052B/481 typed source remains NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
