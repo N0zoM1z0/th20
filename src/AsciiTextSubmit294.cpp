@@ -1,8 +1,9 @@
-// Original 294B text submit member: complete two-path native gameplay source.
-// Original strict matching remains open: the 2227B core returns packed 64-bit
-// integer output, while this member returns the eight-byte result aggregate.
-// At pinned /Od the natural two-path C++ owner still generates 319B, not the
-// original 294B, though all seven genuine call identities are preserved.
+// Original 294B text submit Boss, full two-path game source, NONEXACT.
+// The core's genuine EDX:EAX uint64 result is published directly into the
+// native hidden eight-byte result object, separately in each real path.
+// Pinned MSVC i386 emits 292B/104 instructions versus 294B/106 original:
+// only two original compiler-generated post-destructor NOPs are absent.
+// The exact original full 294B extent is NOT claimed or truncated.
 #include "NativeAsciiTextDrawView.hpp"
 #include "NativeGlyphTextCore.hpp"
 #include <cstdint>
@@ -11,14 +12,12 @@ namespace th20 {
 // The separately original 2227-byte text renderer core at 0x00415830.
 // Its complete implementation and original C++ spelling remain unresolved.
 
-// MSVC's native 8-byte return has the two 32-bit fields as one packed word;
-// the observed 2227B core returns the same data directly in EDX:EAX.
-union NativePackedTextResult {
-    std::uint64_t packed;
-    NativeTextDrawResult8 fields;
-};
+// This is an explicitly MSVC-i386-specific representation operation:
+// the same eight valid return bytes are written as a packed integer and
+// read as the original pair of 32-bit result words. It does not allocate
+// an extra buffer, invent a helper call or change native pixel semantics.
 #if defined(_M_IX86)
-static_assert(sizeof(NativePackedTextResult) == 8);
+static_assert(sizeof(NativeTextDrawResult8) == sizeof(std::uint64_t));
 #endif
 NativeTextDrawResult8 NativeTextSubmitOwner::submit_text_44fff0(
     IDirect3DBaseTexture9* texture, SpriteData* sprite,
@@ -29,17 +28,18 @@ NativeTextDrawResult8 NativeTextSubmitOwner::submit_text_44fff0(
     std::int32_t mode, std::function<void()> callback)
 {
     if (bit10 == 0) {
-        NativePackedTextResult result;
-        result.packed = native_text_core_415830(
+        NativeTextDrawResult8 out;
+        *reinterpret_cast<std::uint64_t*>(&out)=native_text_core_415830(
             transform, horizontal_offset, layer, color, formatted,
             texture, font, align, 1, mode, callback);
-        return result.fields;
+        return out;
     } else {
-        NativePackedTextResult result;
-        result.packed = native_text_core_415830(
+        NativeTextDrawResult8 out;
+        *reinterpret_cast<std::uint64_t*>(&out)=native_text_core_415830(
             transform, horizontal_offset, layer, 0, formatted,
             texture, font, align, 0, mode, callback);
-        return result.fields;
+        return out;
     }
 }
+
 } // namespace th20

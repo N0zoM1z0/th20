@@ -99,6 +99,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1062 — original 23B glyph render job destructor whole exact](GLYPH_TEXT_JOB_DTOR23_STRICT_EXACT.md) — actual 2,227B parent E8, 40B std::function at capture+0x30 and native exact 20B library destructor, 2/2 scoped glyph job units, +23 authored-game bytes.
 
+- [CORE/RECON-1063 — original 294B text submit Boss now two NOPs from native exact](ASCII_TEXT_SUBMIT294_TWO_NOP_FRONTIER.md) — true packed EDX:EAX into 8B return, all 104 remaining native instructions align after the two real post-dtor NOPs, 292B/104 source vs 294B/106 original, NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

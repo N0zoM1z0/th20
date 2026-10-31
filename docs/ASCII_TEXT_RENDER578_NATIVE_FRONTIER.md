@@ -137,3 +137,12 @@ Their complete 146 physical bytes and original E8 graph are reproduced
 naturally from this **same** C++ owner in a six-unit scoped replay.
 The 578B parent still differs at five real SSE operand bytes and
 retains NONEXACT status.
+
+## CORE/RECON-1063 — native text submit 294B gap narrowed to two NOPs
+
+The separate original 294B text submit child called by this 578B
+text renderer at E8 `+0x202` now has a [292B/104-i386 source candidate](ASCII_TEXT_SUBMIT294_TWO_NOP_FRONTIER.md)
+with the true direct packed EDX:EAX/8B return and all native
+instruction mnemonics/sizes equal except two original post-dtor
+NOPs. Both original 294B and original 578B parents remain NONEXACT;
+no newly authored exact credit is inferred from the source gap.

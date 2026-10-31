@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """Immutable original 294B ASCII text submit and nonexact typed C++20 frontier.
 
-The source 319B candidate is never compared to a shortened original extent.
+The source 292B candidate is NEVER compared to a shortened native extent.
 All seven original E8 destinations are read from the locked original PE.
 """
 import argparse,hashlib,importlib.util,struct,sys
 from pathlib import Path
-from collections import Counter
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
@@ -47,9 +46,9 @@ def verify(candidate):
  print('PASS three genuine function destructors/two copies; 7 original E8/2 PE HIGHLOW, ret 0x58')
  print('PASS original 578B text renderer E8 +0x202 to this 294B native method')
  if candidate:
-  b,rel=coff.object_function(candidate,SYM,319)
+  b,rel=coff.object_function(candidate,SYM,292)
   ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b),0))
-  assert len(b)==319 and len(ci)==112 and len(rel)==9
+  assert len(b)==292 and len(ci)==104 and len(rel)==9
   assert sum(r['type']=='REL32' for r in rel)==7
   assert sum(r['type']=='DIR32' for r in rel)==2
   mapped=[]
@@ -62,8 +61,22 @@ def verify(candidate):
     else:raise AssertionError(('Unknown source E8 role',sym))
   assert mapped==list(E8.values())
   assert all(row['addend']==0 for row in rel)
-  print('FRONTIER: natural C++20 source 319B/112 i386, 7 E8 in exact native semantic order, two DIR32')
-  print('NONEXACT: unmatched original EH/aggregate-copy lowering, 25B/6 instructions too long')
+  native_filtered=[i for i in ins if i.address-HEAD not in (0x97,0xFF)]
+  assert len(native_filtered)==len(ci)==104
+  native_nops=[i.address-HEAD for i in ins if i.mnemonic=='nop']
+  assert native_nops==[0x97,0xFF,0x114]
+  # Both native NOP sites are immediately after the first two implicit
+  # function-lifetime destructor calls; the third cleanup NOP is retained.
+  for index,(left,right) in enumerate(zip(ci,native_filtered)):
+   assert left.mnemonic==right.mnemonic and left.size==right.size,(index,left,right)
+   if left.mnemonic not in ('call','je','jne','jmp') and right.address-HEAD not in (0x05,0x14):
+    assert left.bytes==right.bytes,(index,left,right)
+  expected_fields={0x06:'DIR32',0x15:'DIR32',0x42:'REL32',0x6D:'REL32',0x93:'REL32',
+                   0xAB:'REL32',0xD4:'REL32',0xFA:'REL32',0x10E:'REL32'}
+  assert {row['offset']:row['type'] for row in rel}==expected_fields
+  print('FRONTIER: natural C++20 292B/104 i386, seven E8 original semantic roles/two data HIGHLOW')
+  print('PASS 104/104 native instruction mnemonics and sizes after excluding ONLY the two authentic native NOPs')
+  print('NONEXACT: two original one-byte post-destruction NOPs at +0x97 and +0xFF are absent; branch displacements adjust')
  print('No canonical strict unit or game-authored exact credit for 294B body or 2,227B core')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)

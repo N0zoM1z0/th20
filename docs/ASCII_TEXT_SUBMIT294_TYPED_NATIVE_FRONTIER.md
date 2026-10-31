@@ -1,3 +1,5 @@
+**CORE/RECON-1063 CURRENT STATUS CORRECTION:** The original 294B text submit Boss now has a [much closer complete 292B/104-i386 C++20 candidate](ASCII_TEXT_SUBMIT294_TWO_NOP_FRONTIER.md), preserving the actual EDX:EAX 8B return without redundant union intermediate copies. The whole native original differs by two compiler-emitted post-destructor NOP instructions (+0x97/+0xFF). The earlier 319B source/frontier below is dated, not current. Original 294B still NONEXACT; no new game-authored exact bytes.
+
 **CORE/RECON-1058/1059 status correction:** The original 2,227B glyph text core previously called source-absent is now [SOURCE-PRESENT, NONEXACT](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md) with a complete 2,052B/481-instruction native-typed candidate. Its separate original 132B game-specific queued-job capture is [WHOLE STRICT EXACT](GLYPH_TEXT_JOB_CAPTURE132_STRICT_EXACT.md). Historical source-absent claims below are dated; the 2,227B parent is still not exact.
 
 # CORE/RECON-1040 — original 294B native text submission Boss, real two-path C++20 frontier
