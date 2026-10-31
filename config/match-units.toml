@@ -26799,3 +26799,14 @@ relocations = [
   { offset = 0x133, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
   { offset = 0x29F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1051: whole original 20B TH20 glyph canvas width+0x104 getter.
+[units.glyph_canvas_width_20]
+source = "src/GlyphCanvasEnsure104.cpp"
+object = "build/core1042-canonical/GlyphCanvasEnsure104.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::canvas_width_415800"]
+symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ"
+target_address = 0x00415800
+size = 20
+relocations = []

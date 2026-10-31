@@ -27,4 +27,9 @@ std::int32_t NativeGlyphCanvasView::pixel_stride_4156c0() const {
         reinterpret_cast<const std::uint8_t*>(this) + 0x110);
 }
 
+std::int32_t NativeGlyphCanvasView::canvas_width_415800() const {
+    return *reinterpret_cast<const std::int32_t*>(
+        reinterpret_cast<const std::uint8_t*>(this) + 0x104);
+}
+
 }

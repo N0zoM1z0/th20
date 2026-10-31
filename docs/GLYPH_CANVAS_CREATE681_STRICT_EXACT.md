@@ -91,3 +91,11 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphCanvasCreate681.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1051 — the fourth glyph canvas field accessor
+
+A [whole-exact 20B width getter on the same native canvas](GLYPH_CANVAS_WIDTH20_STRICT_EXACT.md)
+is now separately admitted below the 2,245B glyph compositor.
+Recompiling the shared-view include closure preserves this 681B
+GDI surface source's whole 681/681 strict result. No native parent
+or previously accepted field getter is double-counted.

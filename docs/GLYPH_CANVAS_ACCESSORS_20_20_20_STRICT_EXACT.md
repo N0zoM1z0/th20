@@ -77,3 +77,13 @@ Its new complete candidate is 684B/176 i386 and remains **NONEXACT**;
 all previously strict 104B/20B glyph methods remain exact after their
 single affected source object was recompiled. No native-parent credit
 follows merely from the exact children.
+
+## CORE/RECON-1051 — fourth distinct 20B width accessor now exact
+
+The original custom canvas also has an independently exact
+[`0x00415800` width+0x104 getter](GLYPH_CANVAS_WIDTH20_STRICT_EXACT.md),
+called four times by the original 2,245B glyph compositor.
+It shares this native source/view with the three earlier 20B
+GDI getters. Their four physical native heads remain distinct;
+8/8 scoped units were recompiled in four affected providers.
+The full glyph compositor remains NONEXACT.

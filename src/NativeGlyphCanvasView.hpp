@@ -19,5 +19,7 @@ struct NativeGlyphCanvasView {
     void* device_context_415620() const;
     std::uint8_t* bitmap_pixels_4156a0() const;
     std::int32_t pixel_stride_4156c0() const;
+    // Original glyph compositor reads this width four times from +0x104.
+    std::int32_t canvas_width_415800() const;
 };
 }

@@ -75,6 +75,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1050 — original whole 681B GDI bitmap surface Boss source exact](GLYPH_CANVAS_CREATE681_STRICT_EXACT.md) — native 108B BITMAPV4HEADER, real committed-format switch and meaningful pixel-writer lifetime, all four E8/four HIGHLOW, pinned 681/681 and +681 game-authored bytes. Historical 684B nonexact hypothesis superseded.
 
+- [CORE/RECON-1051 — 20B whole-exact GDI glyph canvas width getter](GLYPH_CANVAS_WIDTH20_STRICT_EXACT.md) — complete original native 2,245B glyph compositor four E8 calls, width at actual owner+0x104, full 20/20 and 8/8 affected unit replay, +20 authored-game bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
