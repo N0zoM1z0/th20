@@ -14,10 +14,16 @@ struct NativeCardTextPayload {
     Animation* animation;
     NativeCardTextPayload(Card* card, const std::pmr::string& text,
                           Animation* animation);
+    // A std::function target must be copyable for its own copy requests.
+    // This is ordinary PMR string copying, separate from the accepted move.
+    NativeCardTextPayload(const NativeCardTextPayload& source);
     // Original lambda/callback capture move: the PMR string is transferred,
     // not copied; the underlying STL move implementation is separate.
     NativeCardTextPayload(NativeCardTextPayload&& source);
     ~NativeCardTextPayload();
+    // Actual Card text lambda entry at 0x00486E80, 111B. Its UI drawing
+    // body is still under separate native reconstruction, not a fake stub.
+    void operator()() const;
 };
 #if defined(_M_IX86)
 static_assert(sizeof(NativeCardTextPayload)==0x24);

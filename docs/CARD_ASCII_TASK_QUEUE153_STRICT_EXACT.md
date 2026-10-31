@@ -71,3 +71,12 @@ The original `0x00470A20` task-list push-back invoked at `+0x5D` is
 [now a separate whole 32B/15-i386 strict unit](CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md)
 replayed from this same canonical object. It remains library-origin
 review/uncredited rather than a duplicate authored-game contribution.
+
+## CORE/RECON-1030 — true Card producer now calls this exact queue
+
+The [current source-present Card start Boss](CARD_START1896_TEXT_TASK_CONSTRUCTION_FRONTIER.md)
+constructs a copyable PMR/Card/Animation callable in a real
+`std::function<void()>` and directly passes it by value through the
+shared borrowed [`NativeCardAsciiTaskQueueView`](../src/NativeCardAsciiTaskQueueView.hpp).
+This 153B queue and its 32B STL caller remain whole strict exact;
+Card start and its 102B callable constructor remain independently NONEXACT.

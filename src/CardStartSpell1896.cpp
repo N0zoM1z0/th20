@@ -8,6 +8,7 @@
 #include "NativeCardFinishViews.hpp"
 #include "NativeCardSpellViews.hpp"
 #include "NativeCardTextPayload.hpp"
+#include "NativeCardAsciiTaskQueueView.hpp"
 #include "Bomb.hpp"
 #include "EnemyController.hpp"
 #include "Enemy.hpp"
@@ -19,6 +20,8 @@
 #include "AnimationFile.hpp"
 #include <cstdint>
 #include <cstring>
+#include <functional>
+#include <utility>
 #include <memory_resource>
 #include <string>
 
@@ -26,13 +29,6 @@ namespace th20 {
 // This borrowed view uses the independently whole-exact 42B BombController
 // predicate; no new BombController base/class is introduced.
 struct NativeCardStartBombView { bool active_478130() const; };
-
-// The native typed 36B capture is now exact; the std::function allocation,
-// movement and AsciiInf queueing method are still unresolved. This callback
-// names only that remaining queue boundary; it does not replace or claim
-// the source of the real 102B std::function wrapper at 0x00486800.
-extern void __fastcall enqueue_card_name_display_task(
-    AsciiInf*, const NativeCardTextPayload&);
 
 // The original table is reached through the process-owned pointer at
 // 0x005C6110; it has a 0x34-byte group stride and 0x0C-byte subrecords.
@@ -101,14 +97,15 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
 
     // Original retains a local PMR string and builds a separate task using
     // this Card, the name, and the second animation's resolved VM object.
-    // The actual 56B/23B capture constructor/destructor and its 167B PMR
-    // copy constructor are independently whole exact; the queue's own
+    // The actual 56B/23B capture constructor/destructor, 64B move and
+    // 167B PMR copy constructor are independently whole exact; the queue's own
     // std::function capture/move EH remains a separate unresolved owner.
     {
         std::pmr::string display_name(spell_name);
         NativeCardTextPayload payload(this,display_name,
                                      info_handles[1].resolve());
-        enqueue_card_name_display_task(current_ascii,payload);
+        reinterpret_cast<NativeCardAsciiTaskQueueView*>(current_ascii)->
+            enqueue_470180(std::function<void()>(std::move(payload)));
     }
     process_sound.request_effect(0x21,0);
 

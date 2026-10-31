@@ -25,6 +25,8 @@ CHILDREN={
  0x0AB:0x004888C0,   # native Card bit7 clear
  0x1D6:0x00478130,  # native Bomb active predicate
  0x30D:0x00486B70,  # typed original Card text capture constructor
+ 0x325:0x00486800,  # original callable std::function construction
+ 0x330:0x00470180,  # original locked-by-value ASCII task queue
  0x33F:0x0046ADE0,  # original PMR capture destructor
  0x68D:0x00488960,  # original Card bit9 publication
 }
@@ -46,7 +48,7 @@ def verify(candidate):
     if candidate:
         # This is a semantic/ABI research probe, *not* a canonical exact unit.
         name='?start_spell@Card@th20@@QAEXHPBDHH@Z'
-        for size in (SIZE,1732):
+        for size in (SIZE,1750):
             try:
                 source,relocs=coff.object_function(candidate,name,size)
                 break
@@ -54,13 +56,13 @@ def verify(candidate):
                 if size==SIZE and 'complete COFF contribution is' in str(error):continue
                 raise
         cs=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(source),0))
-        assert len(source)==1732 and len(cs)==472
-        assert len(relocs)==76
-        assert sum(r['type']=='REL32' for r in relocs)==60
+        assert len(source)==1750 and len(cs)==478
+        assert len(relocs)==77
+        assert sum(r['type']=='REL32' for r in relocs)==61
         assert sum(r['type']=='DIR32' for r in relocs)==16
         assert len(source)!=len(native)
-        print('FRONTIER NONEXACT: maintained C++20 Card start 1,732B/472 i386, 60 REL32/16 DIR32 fields')
-        print('Original 1,896B EH/text-task enqueue and live owner graph not yet reconciled; zero parent strict credit')
+        print('FRONTIER NONEXACT: maintained C++20 Card start 1,750B/478 i386, 61 REL32/16 DIR32 fields')
+        print('Original 1,896B callable constructor/111B callback EH and live owner graph not yet reconciled; zero parent strict credit')
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)
     a=p.parse_args();verify(a.candidate_object)

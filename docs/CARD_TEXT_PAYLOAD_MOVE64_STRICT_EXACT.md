@@ -65,3 +65,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardTextPayloadNative.cpp \
   --source src/CardStartSpell1896.cpp
 ```
+
+## CORE/RECON-1030 — copyable target ownership and unchanged move ABI
+
+The actual `std::function<void()>` target must be copy constructible.
+A normal PMR-string copy overload and the **declaration only** of the
+unreconstructed 111B original lambda `operator()()` are now maintained
+beside the real exact 64B move constructor. The scoped source closure
+has three existing canonical objects and seven exact units (56B, 23B,
+167B, 64B, 128B, 153B, 32B); all seven were freshly rebuilt and remain
+whole exact. The original 1,896B Card parent remains NONEXACT. See the
+[true text producer frontier](CARD_START1896_TEXT_TASK_CONSTRUCTION_FRONTIER.md).

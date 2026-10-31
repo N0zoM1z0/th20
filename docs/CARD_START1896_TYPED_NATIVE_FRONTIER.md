@@ -1,3 +1,5 @@
+**Current milestone (CORE/RECON-1030):** The original 1,896B Card start now [constructs a real copyable PMR/Card/Animation callable and directly passes a std::function prvalue to the native-exact 153B ASCII queue](CARD_START1896_TEXT_TASK_CONSTRUCTION_FRONTIER.md). The older 1,732B/472-instruction statistics below remain dated evidence; current parent source compiles to 1,750B/478 instructions with 61 REL32/16 DIR32, still NONEXACT.
+
 # CORE/RECON-1008 — Card::start_spell 1,896B native original and maintainable C++20 gameplay source frontier
 
 The locked target is Japanese TH20 Steamless v1.00a, SHA-256

@@ -2427,7 +2427,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00487B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487BB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00487C30,authored,CardSpell,authored,high,"CORE/RECON-1008; docs/CARD_START1896_TYPED_NATIVE_FRONTIER.md; original whole 1896B original role and 62 E8/26 PE HIGHLOW pinned; source-present typed C++ gameplay skeleton and genuine 36B PMR capture; unresolved 102B text job, EH, 164B missing code; still NONEXACT"
+0x00487C30,authored,CardSpell,authored,high,"CORE/RECON-1030; docs/CARD_START1896_TEXT_TASK_CONSTRUCTION_FRONTIER.md; complete source-present 1750B 61 E8/16 HL generated C++20 candidate, true 1896B 62 E8/26 HL, real capture/std::function/AsciiInf queue producer and lock-18 consumer, native std::move and text callback/EH frontier NONEXACT"
 0x004883A0,authored,CardSpell,authored,high,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Card UI owner flag +0x3344 bit0 publication on Card finish; full native verified and origin classification separate from code exactness
 0x004883C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004883F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
