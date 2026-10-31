@@ -117,6 +117,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1071 — complete original 73B GDI canvas allocation via real class/noexcept C++ ABI strict exact](GLYPH_CANVAS_ALLOCATE73_CLASS_NOEXCEPT_STRICT_EXACT.md) — original 2,227B parent E8+0x89, native scalar new/31B folded class init/124B exact ctor; corrected struct-to-class C++ owner and ctor exception contract gives natural 73/73, +73 game-authored bytes.
 
+- [CORE/RECON-1072 — five complete original 47B/58B/59B/17B/16B PMR glyph queue descendants strict exact](GLYPH_QUEUE_PMR_DESCENDANTS_47_58_59_17_16_STRICT_EXACT.md) — independently attested real E8 chains beneath 158B node ctor and 118B guard dtor, 197 distinct native generic `.text` bytes, 10/10 source-scoped units, zero new game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

@@ -97,3 +97,16 @@ scripts/repo-python scripts/verify-glyph-queue-list-native.py
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextQueueList151.cpp
 ```
+
+## CORE/RECON-1072 — five deeper native PMR list child methods exact
+
+The original 151B `_Emplace` invokes physical 158B/118B node ctor/guard
+dtor methods that themselves call
+[five now WHOLE EXACT generic allocation/destruction functions](GLYPH_QUEUE_PMR_DESCENDANTS_47_58_59_17_16_STRICT_EXACT.md):
+47B node allocation, 58B PMR allocator, 59B memory-resource allocation,
+17B allocator-traits destroy and 16B std::destroy_at. All are genuine
+independently original native heads, generated from this existing
+source's real PMR list insertion; 10/10 scoped units are exact in one
+canonical object, no code is re-credited, and the full 151B `_Emplace`
+remains SOURCE-PRESENT/NONEXACT. The 158B/118B parent boundaries are
+independently SHA-pinned, but are themselves not whole exact yet.

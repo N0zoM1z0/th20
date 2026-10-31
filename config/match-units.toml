@@ -27313,3 +27313,69 @@ relocations = [
   { offset = 0x28, type = "REL32", symbol = "?__autoclassinit2@NativeGlyphCanvasStorage@th20@@QAEXI@Z", target = 0x0040C080 },
   { offset = 0x30, type = "REL32", symbol = "??0NativeGlyphCanvasStorage@th20@@QAE@XZ", target = 0x00414200 },
 ]
+
+# CORE/RECON-1072: complete native 47B PMR glyph task-list descendant.
+[units.glyph_queue_node_allocator_allocate_47]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Alloc_construct_ptr<GlyphTaskNode>::_Allocate"]
+symbol = "?_Allocate@?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAEXXZ"
+target_address = 0x004148D0
+size = 47
+relocations = [
+  { offset = 0x21, type = "REL32", symbol = "?allocate@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@3@I@Z", target = 0x00414FF0 },
+]
+
+# CORE/RECON-1072: complete native 58B PMR glyph task-list descendant.
+[units.glyph_queue_pmr_node_allocate_58]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::polymorphic_allocator<GlyphTaskNode>::allocate"]
+symbol = "?allocate@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@3@I@Z"
+target_address = 0x00414FF0
+size = 58
+relocations = [
+  { offset = 0x16, type = "REL32", symbol = "??$_Get_size_of_n@$0DA@@std@@YAII@Z", target = 0x00413730 },
+  { offset = 0x2A, type = "REL32", symbol = "?allocate@memory_resource@pmr@std@@QAEPAXII@Z", target = 0x00415070 },
+]
+
+# CORE/RECON-1072: complete native 59B PMR glyph task-list descendant.
+[units.glyph_queue_memory_resource_allocate_59]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::memory_resource::allocate"]
+symbol = "?allocate@memory_resource@pmr@std@@QAEPAXII@Z"
+target_address = 0x00415070
+size = 59
+relocations = [
+  { offset = 0x2E, type = "REL32", symbol = "??2@YAPAXIPAX@Z", target = 0x0040E700 },
+]
+
+# CORE/RECON-1072: complete native 17B PMR glyph task-list descendant.
+[units.glyph_queue_allocator_destroy_17]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Normal_allocator_traits<GlyphTaskNode>::destroy"]
+symbol = "??$destroy@V?$function@$$A6AXXZ@std@@@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@PAV?$function@$$A6AXXZ@1@@Z"
+target_address = 0x00413CA0
+size = 17
+relocations = [
+  { offset = 0x8, type = "REL32", symbol = "??$destroy_at@V?$function@$$A6AXXZ@std@@@std@@YAXQAV?$function@$$A6AXXZ@0@@Z", target = 0x00413CC0 },
+]
+
+# CORE/RECON-1072: complete native 16B PMR glyph task-list descendant.
+[units.glyph_queue_function_destroy_at_16]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::destroy_at<std::function<void()>>"]
+symbol = "??$destroy_at@V?$function@$$A6AXXZ@std@@@std@@YAXQAV?$function@$$A6AXXZ@0@@Z"
+target_address = 0x00413CC0
+size = 16
+relocations = [
+  { offset = 0x9, type = "REL32", symbol = "??_G?$function@$$A6AXXZ@std@@QAEPAXI@Z", target = 0x004147B0 },
+]

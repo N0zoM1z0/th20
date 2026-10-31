@@ -1532,3 +1532,8 @@ std::destroy_at<NativeGlyphCanvasStorage>,0x00413CD0,function
 th20::NativeGlyphCanvasStorage::scalar_deleting_destructor,0x004147E0,function
 th20::NativeGlyphCanvasStorage::~NativeGlyphCanvasStorage,0x00414460,function
 th20::DiagnosticAllocator::allocate_object<NativeGlyphCanvasStorage>,0x00413C50,function
+std::_Alloc_construct_ptr<GlyphTaskNode>::_Allocate,0x004148D0,function
+std::pmr::polymorphic_allocator<GlyphTaskNode>::allocate,0x00414FF0,function
+std::pmr::memory_resource::allocate,0x00415070,function
+std::_Normal_allocator_traits<GlyphTaskNode>::destroy,0x00413CA0,function
+std::destroy_at<std::function<void()>>,0x00413CC0,function
