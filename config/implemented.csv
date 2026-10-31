@@ -1512,3 +1512,5 @@ std::pmr::vector<GlyphMaskOffset>::max_size
 std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::max_size
 std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::construct
 th20::NativeGlyphCanvasView::invert_alpha_417ab0
+th20::release_glyph_fonts_4155b0
+"std::array<HFONT,22>::_Unchecked_end"

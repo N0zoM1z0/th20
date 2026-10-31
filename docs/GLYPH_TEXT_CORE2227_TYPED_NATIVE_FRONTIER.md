@@ -137,3 +137,16 @@ Its authentic 0x15/0x19/0x1A pixel modes compile to all 164 original
 instructions and four genuine E8 fields. This does not grant exact
 credit to the 2,227B text-core or 294B submit source, and none of its
 previously accepted canvas getter/creator physical heads are counted again.
+
+## CORE/RECON-1066 — correct 22-entry native HFONT array, not 32
+
+The native static font table at `0x005B66F0` is a real
+[`std::array<HFONT,22>`](GLYPH_FONT_ARRAY22_RELEASE79_STRICT_EXACT.md)
+with 0x58-byte i386 element span. The previous provisional 32-entry
+declaration in this large Boss was wrong; the same genuine owner
+has a whole-exact 79B GDI font resource release and a distinct
+17B native array-end method returning `this+0x58`. Original this
+text core E8 `+0x57` to the already folded 22B array index confirms
+its table use. The corrected C++ header is shared across both
+source owners; the full 2,227B native Boss remains NONEXACT even
+though this concrete data-layout hypothesis is now verified.

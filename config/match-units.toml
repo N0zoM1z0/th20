@@ -27143,3 +27143,31 @@ relocations = [
   { offset = 0x6C, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
   { offset = 0x199, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
 ]
+
+# CORE/RECON-1066: original complete 79B glyph HFONT array lifecycle.
+[units.glyph_font_release_79]
+source = "src/GlyphFontRelease79.cpp"
+object = "build/core1066-canonical/GlyphFontRelease79.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::release_glyph_fonts_4155b0"]
+symbol = "?release_glyph_fonts_4155b0@th20@@YAXXZ"
+target_address = 0x004155B0
+size = 79
+relocations = [
+  { offset = 0x9, type = "DIR32", symbol = "?native_glyph_fonts_5b66f0@th20@@3V?$array@PAUHFONT__@@$0BG@@std@@A", target = 0x005B66F0 },
+  { offset = 0x11, type = "REL32", symbol = "?_Unchecked_begin@?$array@PAUHFONT__@@$0BG@@std@@QAEPAPAUHFONT__@@XZ", target = 0x0040BDA0 },
+  { offset = 0x1C, type = "REL32", symbol = "?_Unchecked_end@?$array@PAUHFONT__@@$0BG@@std@@QAEPAPAUHFONT__@@XZ", target = 0x00414F50 },
+  { offset = 0x44, type = "DIR32", symbol = "__imp__DeleteObject@4", target = 0x0056C038 },
+]
+
+# CORE/RECON-1066: original complete 17B glyph HFONT array lifecycle.
+[units.glyph_font_array_end_17]
+source = "src/GlyphFontRelease79.cpp"
+object = "build/core1066-canonical/GlyphFontRelease79.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::array<HFONT,22>::_Unchecked_end"]
+symbol = "?_Unchecked_end@?$array@PAUHFONT__@@$0BG@@std@@QAEPAPAUHFONT__@@XZ"
+target_address = 0x00414F50
+size = 17
+relocations = [
+]

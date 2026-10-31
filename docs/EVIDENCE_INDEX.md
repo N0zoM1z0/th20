@@ -105,6 +105,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1065 — complete original 542B GDI glyph Alpha Boss WHOLE STRICT EXACT](GLYPH_CANVAS_ALPHA542_STRICT_EXACT.md) — original 2,227B parent E8, actual BGRA32/RGB555A1/RGBA4444 bitfields, meaningful normal if/else and row-pointer lifetime; natural 542/542, four authentic E8, +542 game-authored bytes.
 
+- [CORE/RECON-1066 — correct TH20 22-HFONT native font table and whole-exact 79B font cleanup](GLYPH_FONT_ARRAY22_RELEASE79_STRICT_EXACT.md) — native 0x58-byte font array, original 79B game DeleteObject lifecycle, 17B STL array end exact, 5/5 focused replay, +79 game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

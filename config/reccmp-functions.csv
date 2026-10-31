@@ -1522,3 +1522,5 @@ th20::NativeGlyphRenderJob::~NativeGlyphRenderJob,0x004142C0,function
 std::pmr::vector<GlyphMaskOffset>::max_size,0x004162B0,function
 std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::max_size,0x00416260,function
 std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::construct,0x00415440,function
+th20::release_glyph_fonts_4155b0,0x004155B0,function
+"std::array<HFONT,22>::_Unchecked_end",0x00414F50,function

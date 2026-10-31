@@ -3,6 +3,7 @@
 // submission stages are maintained; original compiler/EH and the queued
 // functor/task producer have independent source boundaries still open.
 #include "NativeGlyphTextCore.hpp"
+#include "NativeGlyphFontResources.hpp"
 #include "NativeGlyphTextQueueView.hpp"
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphCanvasStorage.hpp"
@@ -19,7 +20,6 @@
 namespace th20 {
 // Borrowed native font objects, current resource allocation and task queue.
 // The matching original absolute-address owners are kept external.
-extern std::array<HFONT,32> native_glyph_fonts_5b66f0;
 extern bool native_font_extra_padding_5b66ec;
 extern float native_font_outline_scale_5ae120;
 extern const float native_font_size_56c8d0;
