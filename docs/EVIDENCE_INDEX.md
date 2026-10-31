@@ -143,6 +143,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1084 — whole original 266B persistent CP932 input ReadFile Boss strict exact](GAME_FILE_INPUT_READ266_STRICT_EXACT.md) — native global HANDLE at 0x5AE060, original 88B allocation, lock slot2 and exact ReadFile/CloseHandle/error flow, 266/266, 8 E8/11 HIGHLOW, +266 game-authored bytes.
 
+- [CORE/RECON-1085 — complete original 157B game filesystem-exists wrapper, 155B natural MSVC STL NONEXACT frontier](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md) — real slot2 lock and 44B legacy path ctor with format=0, original seven E8/three HIGHLOW, current 155B/46 source differs by native two-byte/one-instruction path-copy ABI; no false exact credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

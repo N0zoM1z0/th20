@@ -238,3 +238,15 @@ The 266B reader (8 E8/11 HIGHLOW) is a separate physical source
 owner, adding +266 original game-authored `.text` bytes without
 re-crediting any existing exact 368B/493B file Boss or native
 allocator/Win32 helper.
+
+## CORE/RECON-1085 — game filesystem existence wrapper source frontier
+
+The adjacent original game slot2-serialized
+[`0x004107A0` 157B filesystem-exists function](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md)
+now has complete meaningful C++ source, but remains **NONEXACT**.
+The locked native path-copy constructor has a real extra format=0
+argument which the installed C++20 STL copy constructor does not
+emit, leaving a complete 155B/46 vs original 157B/47 method.
+All native seven E8 and three HIGHLOW are independently verified.
+The 368B/266B/493B file I/O Bosses remain separate whole-exact
+code heads; no new exact credit is awarded for the 157B function.
