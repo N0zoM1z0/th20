@@ -1,105 +1,81 @@
-# CORE/RECON-1068 — complete original 360B D3D9 glyph texture upload Boss, whole strict exact
+# CORE/RECON-1068 — complete original 360B queued D3D9 glyph texture-upload Boss, strict exact
 
-Locked original Japanese TH20 Steamless v1.00a SHA-256
+Pinned original Japanese TH20 Steamless v1.00a SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
-
-The native game-owned `0x004145D0` is a **complete 360B/128-i386**
-queued GDI-to-D3D9 glyph texture upload Boss, original SHA-256
+The actual game-owned `0x004145D0` glyph-render job executor occupies an
+entire **360B/128-i386** native function, original SHA-256
 `76223b12344a822e9f79546f3b197ce349d9b3467ebbbe2f3b65f73c411b0dcc`.
-It is the actual task invoked by the 40B `std::function<void()>` at
-`+0x30` of the previously whole-exact **132B glyph render-job capture**.
-The source reconstructs real D3D9/COM calls and the complete game
-pixel-copy, cleanup, completion and callback sequence; this is not an
-inline surrogate of the original 2,227B text producer.
+It is the downstream executable action of the separately accepted 132B
+glyph-text render-job capture; it is **not** a 360B arbitrary GDI
+texture stub, nor a folded standard-library function.
 
-## Correcting the original 0x58B job receiver hypothesis
+## True upload job fields, native Direct3D9 and pixel flow
 
-Original native code proves the following physical job fields:
+The source [`GlyphTextureUpload360.cpp`](../src/GlyphTextureUpload360.cpp)
+uses an observed borrowed [0x58-byte glyph job layout](../src/NativeGlyphUploadJobView.hpp):
 
-| Native receiver field | Actual operation/evidence |
+| Native job offset | Independently demonstrated role |
 | --- | --- |
-| `+0x00` | borrowed genuine `NativeGlyphCanvasStorage*`, 0x124B font bitmap owner |
-| **`+0x04`** | **`IDirect3DTexture9*`**, loaded and invoked via true COM vtable `+0x48` for `GetSurfaceLevel` (**not** the earlier guessed color word) |
-| `+0x08..+0x17` | 16B Win32 `RECT` used in actual D3D9 surface `LockRect` |
-| `+0x18..+0x27` | 16B source pixel rectangle, originally byte-start/row offsets and four-byte copy width |
-| **`+0x28`** | **optional `uint8_t*` completion flag**, conditionally written with `1` (**not** an arbitrary integer mode) |
-| `+0x2C` | genuine 32-bit job storage, not initialized by the original 132B constructor |
-| `+0x30..+0x57` | real 40B `std::function<void()>` completion callback |
+| `+0x00` | `NativeGlyphCanvasStorage*` producing source glyph pixels |
+| `+0x04` | `IDirect3DTexture9*` destination COM object (**not** an opaque color word) |
+| `+0x08 .. +0x17` | 16B destination `RECT` for the locked D3D9 surface |
+| `+0x18 .. +0x27` | 16B source/region `RECT` with row/column source offsets |
+| `+0x28` | Optional `uint8_t*` completion flag, set to 1 after cleanup |
+| `+0x2C` | Unobserved 32-bit member; **not** initialized by the exact 132B constructor |
+| `+0x30 .. +0x57` | 40B `std::function<void()>` post-upload callback |
 
-The maintained
-[`NativeGlyphUploadJobView.hpp`](../src/NativeGlyphUploadJobView.hpp)
-uses a **borrowed** full-size 0x58B typed layout with offset and size
-assertions. The separately accepted original 132B glyph-job constructor
-has an identical physical byte layout but still has provisional
-color/mode field names in its producer source, now contradicted by
-**direct native D3D usage**. This is explicitly an outstanding type
-reconciliation, **not** proof that a color word is a texture pointer;
-the original code bytes and both callback lifetimes remain separate.
+The entire original method obtains D3D9 surface level 0 from the
+texture (`GetSurfaceLevel` vtable offset `0x48`); locks the destination
+`RECT` via `LockRect` (`+0x34`), then copies each real glyph scanline
+from the native canvas using `std::memcpy`, source pixel stride and
+D3D9 destination pitch. The source byte origin uses `pixel_region.left`
+while copy width is `(right-left)*4` bytes. After the scanlines,
+it genuinely `UnlockRect`s, `Release`s the COM surface and clears
+that temporary pointer. It calls the original independently exact
+**182B GDI canvas release**, invokes the distinct original **97B
+allocator-owned canvas release** `0x00413BE0`, signals the optional
+completion pointer, and conditionally executes the task's real
+`std::function<void()>`. No extra `ReleaseDC`, unexpected null
+fallback or artificial cleanup handler has been added.
 
-The full maintained
-[`GlyphTextureUpload360.cpp`](../src/GlyphTextureUpload360.cpp)
-uses the real `IDirect3DTexture9::GetSurfaceLevel(0,...)` COM method,
-`IDirect3DSurface9::LockRect`, native `D3DLOCKED_RECT::Pitch/pBits`
-and a real Win32 rectangle. It copies a rectangular region from the
-already exact native GDI bitmap's pixel pointer, stepping the source
-rows by the actual canvas stride, stepping destination rows by the
-locked surface pitch, and copying genuine `(right-left)*4` bytes per
-row via CRT `memcpy`. Its source pixel left offset is applied in
-**actual native byte units**; the source does not secretly normalize
-it to four-byte pixels or add a defensive bounds check that is absent
-from the original. It then unlocks the surface, releases the COM
-surface, calls the separately exact 182B canvas GDI cleanup,
-uses the genuine game allocator's separate 97B release method,
-sets the observed optional completion flag and invokes the real
-`std::function` callback only when nonempty.
+The initial legitimate `NativeGlyphCanvasView* glyph` local was an
+extra cached alias of the real canvas field. Pinned MSVC emitted a
+360B candidate with incorrect stack frame and getter receiver
+lifetime, not the native instructions. Removing that redundant local
+and using each live source canvas field access restored the original
+32-byte/frame stack ownership. The final code naturally compiles to
+**360B/128 instructions and all 316/316 nonrelocation bytes**, with
+**nine original E8 and two native PE HIGHLOW** fields:
 
-## Native source exactness and originally attested relocations
+| Original instruction offset | Physical target |
+| --- | --- |
+| `+0x61` | `0x004156A0` whole-exact 20B bitmap pixels getter |
+| `+0x6E`, `+0xD7` | `0x004156C0` whole-exact 20B canvas stride getter |
+| `+0xC1` | `0x00543E20` original CRT memcpy |
+| `+0x113` | `0x00416360` whole-exact 182B native canvas GDI release |
+| `+0x124` | `0x00413BE0` separate 97B original allocator release |
+| `+0x142` | `0x004145A0` already exact 48B `std::function` nonempty check |
+| `+0x154` | `0x00414740` newly whole exact 59B `std::function` invocation |
+| `+0x15F` | `0x005429EE` actual security-cookie check |
 
-A private first C++ source cached an extra `NativeGlyphCanvasView*`
-alias in a local pointer, adding a stack slot and moving true native
-getter calls. Its full extent happened to remain **360B**, but its
-ordinary machine-code/relocation fields did not match. Removing the
-redundant alias, so that each real getter is called directly on the
-job's `canvas` field, naturally compiles the entire original
-**360B/128 instructions**, all **316/316 ordinary bytes** and all
-**nine physical native E8/two PE HIGHLOW** relocation roles.
-No manually patched instruction, byte array, fake COM call, raw NOP,
-artificial allocation or shortened comparison is used.
+Original PE HIGHLOW fields `+0x07 -> 0x005B25C0` (security cookie) and
+`+0x120 -> 0x005B8894` (genuine allocator-global pointer) are
+independently verified. D3D9 COM vtable calls are *indirect*, not
+counted as E8. The same source naturally emits the native complete
+**59B/23-i386 standard-library callback operator** at `0x00414740`,
+with three genuine nested E8 to original `_Empty` 45B
+`0x00414A80`, CRT bad function call `0x00540E98` and
+`_Getimpl` `0x00414AD0`. Its 47/47 comparable bytes are exact.
+All previously exact callback helpers are not counted again.
 
-Independent original PE attestation
+Read-only independent original verification
 [`verify-glyph-texture-upload360-native.py`](../scripts/verify-glyph-texture-upload360-native.py)
-checks the entire immutable 360B body, original 128 instruction
-boundaries through its bare `ret`, genuine D3D9 vtable methods
-`+0x48`/`+0x34`/`+0x38`/IUnknown `+0x08`, the native completion-byte
-store, and all the independently original call/data sites:
-
-| Native original field/site | Original true target |
-| --- | --- |
-| HIGHLOW `+0x07` | security cookie `0x005B25C0` |
-| E8 `+0x61` (REL32 `+0x62`) | exact 20B glyph pixels getter `0x004156A0` |
-| E8 `+0x6E` (REL32 `+0x6F`) | exact 20B glyph stride getter `0x004156C0` |
-| E8 `+0xC1` (REL32 `+0xC2`) | CRT `memcpy` `0x00543E20` |
-| E8 `+0xD7` (REL32 `+0xD8`) | glyph stride getter again `0x004156C0` |
-| E8 `+0x113` (REL32 `+0x114`) | exact 182B native GDI release `0x00416360` |
-| HIGHLOW `+0x120` | global game allocator `0x005B8894` |
-| E8 `+0x124` (REL32 `+0x125`) | separate 97B native allocator release `0x00413BE0` |
-| E8 `+0x142` (REL32 `+0x143`) | already exact folded 48B callable-nonempty check `0x004145A0` |
-| E8 `+0x154` (REL32 `+0x155`) | distinct 59B `std::_Func_class<void()>::operator()` `0x00414740` |
-| E8 `+0x15F` (REL32 `+0x160`) | security cookie verification `0x005429EE` |
-
-The nested original **59B/23-i386** generic standard-library callback
-operator has SHA-256
-`046e82dc1916704a61693bbbdce1a6efd5bb769dc093e70b82fbda342ba7f8ca`,
-**three real original E8** to `0x00414A80`, `0x00540E98`, `0x00414AD0`,
-and zero native HIGHLOW. The source naturally generates that
-complete **59/59B** at its own distinct physical original head.
-Its preexisting empty/nonempty and `_Getimpl` folded lower functions
-are *not* credited again. The callback operator itself is generic
-STL (`origin=unknown/review`) and earns **zero game-authored bytes**.
-
-Pinned MSVC 19.44 i386 C++20
-`/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`
-canonical replay only recompiles the new source owner:
+SHA-attests the entire 360B original body and 59B callback helper,
+all 128 and 23 x86 instruction boundaries, native COM slot offsets,
+physical original E8 and PE HIGHLOW sites/targets, and the separate
+original 132B task-capture and 182B GDI release physical bodies.
+Pinnned MSVC 19.44 i386 C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2
+/fp:precise /sdl /EHsc` generates both authentic entire methods:
 
 ```text
 glyph_texture_upload_360: exact (360/360 bytes)
@@ -107,13 +83,21 @@ glyph_upload_callback_invoke_59: exact (59/59 bytes)
 Exact replay: 2/2 units, 1 cold object
 ```
 
-This adds **one game-authored exact head /360 original `.text` bytes**
-and one distinct **generic exact head /59 original bytes**.
-The independently exact 132B job constructor, 23B job destructor,
-182B GDI cleanup and all original canvas accessors are not counted
-twice. The 2,227B text core, 294B submit wrapper and allocator's
-97B deallocation method remain independently unresolved original
-functions. No whole-repository cold replay was performed.
+This adds **one game-authored entire original function/360 distinct
+`.text` bytes**, plus **one generic STL whole-native 59B unit**
+(`origin=unknown/review`, zero game-authored credit). The already exact
+132B game job capture, 23B destructor, folded 48B bool helper, 182B
+canvas release and 20B getters are **not** re-credited. Earlier
+source-internal names calling `+0x04` a color and `+0x28` a mode
+were incorrect: this independent native body establishes their
+actual *consumer* roles. The full source-present 2,227B glyph text
+rasterization parent remains **NONEXACT** pending complete producer
+layout/queue ABI reconciliation; source-level member names do not
+imply the original 2,227B physical code was exact.
+
+No original target was patched, no machine-code literals substituted
+for real D3D COM APIs, no shortened original extent was compared,
+and no full-project cold replay was run.
 
 ```sh
 scripts/repo-python scripts/verify-glyph-texture-upload360-native.py
