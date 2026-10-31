@@ -1446,3 +1446,4 @@ th20::animation_list_update_449870,0x00449870,function
 th20::animation_list_update_secondary_449b20,0x00449B20,function
 th20::particle_float_is_zero,0x0045D270,function
 th20::NativeRendererTextureOwner::create_render_target_44c150,0x0044C150,function
+th20::NativeRendererTextureOwner::create_dynamic_texture_44c0b0,0x0044C0B0,function
