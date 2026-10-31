@@ -1,12 +1,55 @@
 # TH20 original-native evidence index
 
-**Live navigation, reconciled 2026-10-30 (CORE/MAINT-896).** For the live
+**Native evidence navigation, current entry points checked 2026-10-31 (CORE/DOC-CLEANUP).** For the live
 repository status, **first read the [current handoff](RE_HANDOFF.md)**,
 [accepted author-code ledger](../config/matches.csv), and
 [strict unit graph](../config/match-units.toml). The following detailed
 investigations preserve their **original dated checkpoint observations**;
 earlier `NONEXACT`, missing-source, object-count or scope claims are
 not current facts when newer canonical units supersede them.
+
+## Start here: current state and remaining Bosses
+
+The short [current handoff](RE_HANDOFF.md) and
+[open Boss backlog](RE_OPEN_BOSS_BACKLOG.md) are **the active state**, not
+the historical evidence entries below. As of 2026-10-31:
+**1,578 strict source units /432 canonical object-receipt providers**,
+**769 game-authored exact native heads/264,067 code bytes**. Validate
+these snapshot numbers against the live CSV/TOML before relying on them.
+
+- **Recently completed large game code:**
+  [2,745B D3D9 alpha-fringe finalizer](ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md)
+  is **whole strict exact**, including `compare_size=2798` with all
+  53B of genuine after-ret tables (table data never credited as function
+  code). [562B texture uploader](ANIMATION_TEXTURE_UPLOAD562_STRICT_EXACT.md),
+  [439B surface copy](ANIMATION_SURFACE_BLIT439_STRICT_EXACT.md),
+  [581B surface effect](ANIMATION_SURFACE_EFFECT581_STRICT_EXACT.md),
+  [1,022B ANM resource loader](ANIMATION_FILE_LOAD1022_STRICT_EXACT.md),
+  [269B preloader](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md), and
+  [182B file find/wait](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md)
+  are also independently exact.
+- **Still open:** 508B/511B Renderer list updates, 5,993B Animation
+  Draw, 2,245B glyph compositor, 2,227B GDI text core, 1,896B Card
+  start, 336B ANM group parse, plus very large 12,140B Bullet, 41,967B
+  Enemy ECL, and 39,470B Animation VM dispatch. Use the
+  [open-function backlog](RE_OPEN_BOSS_BACKLOG.md) for exact addresses,
+  maintained-source paths and individual original PE proofs.
+- **Storage:** [2026-10-31 audited pruning](MAINTENANCE_STORAGE_2026_10_31.md)
+  removed 2,875 *noncanonical* compiled products/121.80MiB. Every
+  canonical receipt, tracked native proof and active probe remained
+  protected. The live build tree, compiler installation and private
+  `.analysis/` evidence must not be globally deleted.
+
+## Historical investigation index — dated source-status statements
+
+The entries below preserve original checkpoint hypotheses and exact proof
+references, even when later native evidence corrected them. For example,
+CORE/RECON-998's earlier **155B dynamic-texture NONEXACT frontier** was
+superseded by [CORE/RECON-1032 full 155B strict exact](ANIMATION_DYNAMIC_TEXTURE_155_STRICT_EXACT.md);
+CORE/RECON-1101's earlier **2,745B NONEXACT finalizer** was superseded
+by [CORE/RECON-1103 2,745B and full 2,798B comparison exact](ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md).
+Use the physical game ledger/manifest for current acceptance, never an old
+checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-998 — original 155B dynamic texture creator complete-source compiler frontier](ANIMATION_DYNAMIC_TEXTURE_155_NATIVE_COMPILER_FRONTIER.md) — full source, original 2 E8/5 HIGHLOW, native-sized 155B candidate but the format/vtable evaluation ordering remains NONEXACT.
 - [CORE/RECON-997 — original 139B Renderer render-target creation strict exact](ANIMATION_RENDER_TARGET_139_STRICT_EXACT.md) — native D3D9 `CreateTexture`, 2 original E8 /3 HIGHLOW, whole 139B relocated C++20, +139 authored-game bytes; 155B adjacent dynamic creator separate.
