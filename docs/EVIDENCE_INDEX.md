@@ -55,6 +55,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1038 — whole exact 54B PMR String_val `_Myptr` below Card callback](CARD_TEXT_STRING_MYPTR54_STRICT_EXACT.md) — genuine 22B `c_str` original caller, two native E8 to already exact 42B/8B leaves, 3/3 canonical scope and 54/54 native bytes, generic source provenance uncredited.
 
+- [CORE/RECON-1040 — complete-source native 294B Renderer text submit Boss, two real core paths](ASCII_TEXT_SUBMIT294_TYPED_NATIVE_FRONTIER.md) — original 294B/106 i386, 7 E8/2 HIGHLOW, 578B parent E8, natural by-value task and packed 8B result C++20 319B/112-i386 frontier, NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

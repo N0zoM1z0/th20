@@ -119,3 +119,12 @@ Both are naturally emitted from the same maintained 578B C++ parent
 translation unit; the original 578B text render remains NONEXACT
 at five SSE register bytes and its unsigned correction data-symbol
 ownership. No game-authored parent credit is inferred.
+
+## CORE/RECON-1040 — native 294B text submit child source now maintained
+
+The original E8 `+0x202` inside this native 578B Boss targets the actual
+[294B/106-instruction text submit member](ASCII_TEXT_SUBMIT294_TYPED_NATIVE_FRONTIER.md),
+which now has complete two-path C++20 source, seven pinned original
+callee roles and two physical PE HIGHLOW. The 294B child still compiles
+319B/112 and remains NONEXACT, as does this 578B parent at five
+SSE register bytes. No parent or child game exact credit follows.

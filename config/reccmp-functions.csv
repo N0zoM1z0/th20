@@ -1480,3 +1480,4 @@ std::function<void()>::function(const std::function&),0x004140F0,function
 std::function<void()>::~function,0x00414400,function
 th20::NativeCardTextPayload::operator(),0x00486E80,function
 std::_String_val<Char>::_Myptr,0x0040F2C0,function
+th20::NativeTextSubmitOwner::submit_text_44fff0,0x0044FFF0,function
