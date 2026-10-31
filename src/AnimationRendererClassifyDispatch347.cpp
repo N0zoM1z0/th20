@@ -1,6 +1,7 @@
 // Complete original 347B RendererPool classification, two real 382B/394B
 // whole-exact classification calls, 806B dispatch and 230B staging follow-up.
-// The 806B/230B callees remain separately nonexact until scoped replay.
+// The separate 806B classification-action and 230B staging callees are
+// both now WHOLE STRICT EXACT; original code heads remain independent.
 #include "AnimationRuntimeOwner.hpp"
 #include "NativeSpawnAnimationPoolView.hpp"
 #include "NativeRendererClassificationView.hpp"

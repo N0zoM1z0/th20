@@ -8,7 +8,8 @@ namespace th20 {
 // REF-006: retained words are live input history copied by the frame owner.
 // Whole InputButtonState/InputDevice constructors and the InputInf manager
 // initialization/discovery/lifecycle are independently exact. The distinct
-// 3,490B InputDevice polling frame is still NONEXACT.
+// 3,490B InputDevice polling frame is now WHOLE STRICT EXACT;
+// this history buffer is its authentic native source-owned member.
 struct InputButtonState {
     InputButtonState();
     std::uint32_t current, previous, repeat8, repeat12, pressed, released;
@@ -45,7 +46,7 @@ struct InputDevice {
     void reset_header();
     void initialize_keyboard(std::int32_t index);
     void initialize_xinput(std::int32_t physical, std::int32_t logical);
-    // Whole 3490B native poll; source present, not yet a strict exact unit.
+    // Whole 3490B native poll; source and canonical unit are strict exact.
     std::uint32_t poll();
     // Native whole 218B DirectInput pad registration with real WinSDK COM.
     void initialize_directinput(std::int32_t physical, std::int32_t logical);

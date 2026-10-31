@@ -4,7 +4,8 @@
 // the FULL 1,180-byte COFF extent (code + 1-byte pad + 16B PE table).
 // No separate renderer instance or owner storage is introduced. Original
 // D3D9 device state method is SetTextureStageState (vtable +0x10C).
-// This is a child of the independently NONEXACT 3,159-byte quad submit boss.
+// This is a distinct exact child of the separately WHOLE STRICT EXACT
+// 3159B quad submit Boss; neither native body is recredited twice.
 #include "AnimationQuadSubmitOwner.hpp"
 #include "Graphics.hpp"
 #include <cstdint>

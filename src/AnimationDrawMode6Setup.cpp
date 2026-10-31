@@ -1,7 +1,8 @@
 // Complete native-original 1378B/335-x86 Mode6 screen projection setup.
 // One natural C++ source function strict exact for all 17 original E8
 // calls/21 actual PE HIGHLOW sites with genuine 2x3x4 coordinate tensor.
-// The 2769B Mode6 renderer caller remains separate and NONEXACT.
+// The separate 2769B Mode6 renderer caller is also WHOLE STRICT EXACT.
+// The enclosing 5993B Animation Draw dispatcher still remains NONEXACT.
 #include "AnimationDrawDetailedOwner.hpp"
 #include "AnimationProjectionMath.hpp"
 #include "Animation.hpp"

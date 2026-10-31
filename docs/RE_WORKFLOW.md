@@ -95,6 +95,34 @@ receiver/producer/consumer flow before assigning field ownership or meaning.
 No matching instruction does not establish padding or absence of dynamic access.
 See TOOLS.md and ANIMATION_BINDING_RECONSTRUCTION.md for the verified CORE119 use.
 
+## Comment-only C++/header edits and canonical literal-name receipts
+
+Documentation-only edits under `docs/` do not modify compiler inputs and
+need **zero native replay**. However, even a **comment-only** change under
+`src/*.cpp` or a shared `src/*.hpp` changes the pinned compiler input
+fingerprint. A header change also affects all transitive C++ consumers,
+regardless of whether any generated machine-code instruction changes.
+Determine the actual *quoted-include closure* and replay only the
+currently accepted exact units from those sources. Noncanonical and
+source-present/NONEXACT consumers have no strict receipt to refresh.
+
+MSVC may renumber the compiler-generated `$SG...` **symbol names** of
+string literals when a header's source line numbering changes. This
+was observed during the 2026-10-31 `InputState.hpp` status-comment
+correction: original `InputInf::start` had a genuine PE HIGHLOW at
+`0x00420990+0x0A -> 0x0056D674`, and `InputInf::initialize_devices`
+had one at `0x00420D80+0xA3 -> 0x0056D6D4`. The canonical COFF
+symbols shifted from `$SG171238` to `$SG171248` and `$SG171420` to
+`$SG171430`, *without changing any original native code bytes or
+physical relocation destinations*. These two and **only** these two
+actual symbol-name fields were adjusted in `config/match-units.toml`
+after independently verifying the original PE HIGHLOW and all
+nonrelocated original x86 bytes. The 17 genuinely affected pinned
+source objects then replayed **42/42 exact native units** with no
+full-graph cold compilation. This is a narrow compiler-evidence
+receipt update, not an ABI change or license to rename unknown
+relocations without original-PE proof.
+
 ## Retiring generated artifacts
 
 Keep current handoff, architecture, oracle and source-map documents concise and

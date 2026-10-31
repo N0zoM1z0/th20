@@ -28,6 +28,10 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   [269B preloader](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md), and
   [182B file find/wait](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md)
   are also independently exact.
+- **Original input:** [3,490B InputDevice polling native exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md)
+  includes keyboard, DirectInput, XInput and input-history update,
+  preserving the full original native `input_device_poll` source. Older
+  text describing this parent as NONEXACT was stale.
 - **Still open:** 508B/511B Renderer list updates, 5,993B Animation
   Draw, 2,245B glyph compositor, 2,227B GDI text core, 1,896B Card
   start, 336B ANM group parse, plus very large 12,140B Bullet, 41,967B

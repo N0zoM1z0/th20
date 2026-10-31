@@ -1,6 +1,7 @@
 // Whole native InputDevice input frame at 0x00421B00: keyboard,
 // DirectInput, XInput and shared input-history update.
-// SOURCE-PRESENT / NONEXACT: there is no strict canonical unit for this boss.
+// WHOLE STRICT EXACT through canonical unit input_device_poll (3490B);
+// the InputInf manager and higher-level Player frame remain separate.
 #include "InputState.hpp"
 #include "InputInf.hpp"
 #include "Graphics.hpp"

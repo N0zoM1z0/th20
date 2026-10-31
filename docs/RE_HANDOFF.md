@@ -64,6 +64,10 @@ scripts/repo-python scripts/validate-tracking.py --require-target
   **medium confidence** by four physical E8 per format in the
   2,745B finalizer. The **692B attribution correction did NOT
   create new strict units**. [Original ancestry proof](ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md).
+- **InputDevice keyboard/DirectInput/XInput polling `0x00421B00`
+  (3,490B/747-i386)** is also [WHOLE STRICT EXACT](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md),
+  not source-present/NONEXACT as a few historical `InputState.hpp`
+  and source comments once claimed. Canonical unit: `input_device_poll`.
 - Other very large already accepted native bodies include **11,110B
   ECL tick**, **3,735B Bullet emitter**, **3,159B quad submit**,
   **4,347B Mode8 draw**, **2,769B Mode6 draw** and

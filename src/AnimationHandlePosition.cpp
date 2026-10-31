@@ -16,7 +16,8 @@ void AnimationHandle::set_position(const Vector3& position) {
 // the original exception-safe IntrusiveIterator lifetime and child walk.
 // Resolves the handle through the real separate pool resolver; an invalid
 // handle exits before iterator construction. Each child receives the
-// original integer interruption event; the 456B resolver stays nonexact.
+// original integer interruption event; the 456B handle resolver is
+// independently WHOLE STRICT EXACT, not an unresolved helper.
 void AnimationPoolOwner::interrupt_handle(std::uint32_t index, std::int32_t event) {
     Animation* animation = resolve_handle(index);
     if (!animation) return;

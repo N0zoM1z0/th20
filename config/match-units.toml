@@ -20030,7 +20030,7 @@ symbol = "?start@InputInf@th20@@QAEHXZ"
 target_address = 0x00420990
 size = 265
 relocations = [
-  { offset = 0xA, type = "DIR32", symbol = "$SG171238", target = 0x0056D674 },
+  { offset = 0xA, type = "DIR32", symbol = "$SG171248", target = 0x0056D674 },
   { offset = 0xF, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0x42, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x6F, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
@@ -20061,7 +20061,7 @@ relocations = [
   { offset = 0x78, type = "REL32", symbol = "?initialize_keyboard@InputDevice@th20@@QAEXH@Z", target = 0x00421AB0 },
   { offset = 0x8F, type = "REL32", symbol = "?discover_directinput_devices@InputInf@th20@@QAEHXZ", target = 0x00420AA0 },
   { offset = 0x97, type = "REL32", symbol = "?discover_xinput_devices@InputInf@th20@@QAEHXZ", target = 0x004210D0 },
-  { offset = 0xA3, type = "DIR32", symbol = "$SG171420", target = 0x0056D6D4 },
+  { offset = 0xA3, type = "DIR32", symbol = "$SG171430", target = 0x0056D6D4 },
   { offset = 0xA8, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 0xC4, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x19B, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },

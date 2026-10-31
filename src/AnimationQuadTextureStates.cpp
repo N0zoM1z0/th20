@@ -3,7 +3,8 @@
 // original PE HIGHLOW fields. Canonical comparison MUST include the complete
 // 2,768-byte COFF contribution: executable body, 3-byte alignment and ten
 // original 32-bit after-RET mode table pointers. The parent 3,159-byte quad
-// submit and 5,993-byte Animation draw dispatcher remain NONEXACT.
+// submit is also WHOLE STRICT EXACT; only the separate 5,993-byte
+// Animation Draw dispatcher remains NONEXACT. Keep independent coverage.
 #include "AnimationQuadSubmitOwner.hpp"
 #include "Animation.hpp"
 #include "Graphics.hpp"

@@ -3,7 +3,8 @@
 // original native texture format argument is remapped in place and the
 // D3DX filtering expression is a true direct API argument; no artificial
 // temporary, padding, assembly or shortened target comparison.
-// The called 2745B native texture finalizer remains independently open.
+// The separate 2745B native texture finalizer is now WHOLE STRICT EXACT
+// (CORE/RECON-1103), including the real post-return 53B data comparison.
 #include "NativeRendererTextureMemoryView.hpp"
 #include "AnimationFile.hpp"
 #include "Graphics.hpp"
