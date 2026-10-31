@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Entire immutable original 681B GDI surface creation and C++20 frontier.
+"""Immutable 681B GDI DIB creator plus complete canonical source exactness.
 
-The physical target is never shortened to the compiled 684B candidate.
-Exact credit remains restricted to separately canonical 104B/20B children.
+All original E8 and HIGHLOW targets are established from PE evidence, not
+solved via the COFF candidate or folded child source byte identity.
 """
 import hashlib,importlib.util,struct,sys
 from pathlib import Path
@@ -42,32 +42,36 @@ def verify(obj):
  assert hashlib.sha256(parent).hexdigest()=='20fdd9d772ec1d057d3a77d9795c7c974d44a790a02dff9a3fffdc0fafa78c47'
  pins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(parent,0x004153D0))
  assert len(pins)==43 and calls(pins,0x004153D0)=={0x016:HEAD,0x03F:HEAD,0x059:HEAD}
- print('PASS immutable original 681B/176-i386 GDI surface boss, four native E8 and four PE HIGHLOW')
- print('PASS 108B bitmap V4 header and original three physical Win32 GDI imports at +0xFB/+0x119/+0x133')
- print('PASS original whole-exact 104B format fallback: E8 +0x16/+0x3F/+0x59 to this 681B head')
+ print('PASS native entire 681B/176-i386 DIB surface, 4 E8 and 4 PE HIGHLOW')
+ print('PASS original 108B BITMAPV4HEADER, 3 real GDI IAT, true signed row stride and native pixel mask paths')
+ print('PASS native independent 104B format fallback E8 +0x16/+0x3F/+0x59 to whole 681B head')
+ canonical=cm.compare_unit('glyph_canvas_create_681')
+ assert canonical['result']=='exact' and canonical['size']==SIZE and canonical['matched_bytes']==SIZE
+ assert len(canonical['relocations'])==8
  if obj:
-  blob,rel=cm.object_function(obj,SYM,684)
-  ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(blob),0))
-  assert len(blob)==684 and len(ins)==176 and len(rel)==8
-  assert sum(row['type']=='REL32' for row in rel)==4
-  assert sum(row['type']=='DIR32' for row in rel)==4
+  blob,rel=cm.object_function(obj,SYM,SIZE)
+  assert len(blob)==SIZE and len(rel)==8
+  cins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(blob),0))
+  assert len(cins)==176
+  role_fields={off+1:('REL32',dest) for off,dest in CALLS.items()}
+  role_fields.update({off:('DIR32',dest) for off,dest in DATA.items()})
+  assert len(role_fields)==8
   sites={r['offset']:r for r in rel}
-  assert {off for off,r in sites.items() if r['type']=='DIR32'}==set(DATA)
-  for off in DATA:
-   symbol=sites[off]['symbol'];actual=DATA[off]
-   if actual==0x005B25C0:assert symbol=='___security_cookie'
-   if actual==0x0056C020:assert symbol=='__imp__CreateDIBSection@24'
-   if actual==0x0056C044:assert symbol=='__imp__CreateCompatibleDC@4'
-   if actual==0x0056C02C:assert symbol=='__imp__SelectObject@8'
-  reloc_call_sites={off for off,r in sites.items() if r['type']=='REL32'}
-  assert reloc_call_sites=={0x01A,0x027,0x036,0x2A2}
-  assert sites[0x01A]['symbol'].startswith('?release_surface_416360@')
-  assert sites[0x027]['symbol']=='_memset'
-  assert sites[0x036]['symbol'].startswith('?pixel_format_415640@')
-  assert sites[0x2A2]['symbol']=='@__security_check_cookie@4'
-  print('FRONTIER NONEXACT: 684B/176 i386 natural BITMAPV4HEADER C++20, 4 E8/4 DIR32 roles')
-  print('Three Win32 import relocations and first three E8 physical sites align; final cookie +3B different')
- print('No exact unit or authored-game exact byte credit for the 681B parent')
+  assert {off:r['type'] for off,r in sites.items()}=={off:role[0] for off,role in role_fields.items()}
+  for off,role in role_fields.items():
+   assert sites[off]['addend']==0
+  expected_symbols={0x00A:'___security_cookie',0x01A:'?release_surface_416360@',
+     0x027:'_memset',0x036:'?pixel_format_415640@',0x0FB:'__imp__CreateDIBSection@24',
+     0x119:'__imp__CreateCompatibleDC@4',0x133:'__imp__SelectObject@8',
+     0x29F:'@__security_check_cookie@4'}
+  for off,prefix in expected_symbols.items():
+   assert sites[off]['symbol'].startswith(prefix)
+  outcome=cm.compare(obj,SYM,HEAD,SIZE)
+  assert outcome['result']=='structural-exact'
+  assert (outcome['matched_comparable_bytes'],outcome['comparable_bytes'])==(649,649)
+  print('PASS all 649/649 ordinary source bytes, all 8 immutable relocation locations/roles, full 176 instructions')
+ print('PASS canonical complete original 681/681 game-authored bytes, independent GDI release/format/getter children uncredited twice')
+
 if __name__=='__main__':
  import argparse
  p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)

@@ -26778,3 +26778,24 @@ size = 124
 relocations = [
   { offset = 0x13, type = "REL32", symbol = "_memset", target = 0x00544760 },
 ]
+
+# CORE/RECON-1050: complete native 681B game GDI DIB surface owner,
+# 8 independently attested real original E8/GDI IAT/cookie fields.
+[units.glyph_canvas_create_681]
+source = "src/GlyphCanvasCreate681.cpp"
+object = "build/core1050-canonical/GlyphCanvasCreate681.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::create_gdi_surface_415120"]
+symbol = "?create_gdi_surface_415120@NativeGlyphCanvasView@th20@@QAE_NHHH@Z"
+target_address = 0x00415120
+size = 681
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1A, type = "REL32", symbol = "?release_surface_416360@NativeGlyphCanvasView@th20@@QAE_NXZ", target = 0x00416360 },
+  { offset = 0x27, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x36, type = "REL32", symbol = "?pixel_format_415640@NativeGlyphCanvasView@th20@@QAEPBUNativeGlyphPixelFormat@2@H@Z", target = 0x00415640 },
+  { offset = 0xFB, type = "DIR32", symbol = "__imp__CreateDIBSection@24", target = 0x0056C020 },
+  { offset = 0x119, type = "DIR32", symbol = "__imp__CreateCompatibleDC@4", target = 0x0056C044 },
+  { offset = 0x133, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
+  { offset = 0x29F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

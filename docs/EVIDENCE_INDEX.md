@@ -73,6 +73,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1048 — original 73B glyph canvas allocator preclear ABI frontier](GLYPH_CANVAS_ALLOCATOR73_NATIVE_FRONTIER.md) — real 2,227B glyph text Boss caller, native new(0x124)/31B preclear/124B constructor E8 graph; normal C++20 new/placement trials still NONEXACT, no new exact or authored credit.
 
+- [CORE/RECON-1050 — original whole 681B GDI bitmap surface Boss source exact](GLYPH_CANVAS_CREATE681_STRICT_EXACT.md) — native 108B BITMAPV4HEADER, real committed-format switch and meaningful pixel-writer lifetime, all four E8/four HIGHLOW, pinned 681/681 and +681 game-authored bytes. Historical 684B nonexact hypothesis superseded.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

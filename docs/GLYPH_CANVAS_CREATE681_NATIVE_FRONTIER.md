@@ -1,3 +1,5 @@
+**CORE/RECON-1050 CURRENT STATUS CORRECTION:** The original 681B surface create Boss is now [whole canonical 681/681B STRICT EXACT](GLYPH_CANVAS_CREATE681_STRICT_EXACT.md). Earlier 684B NONEXACT observations below remain historical hypotheses: they were superseded by directly using the native `this` receiver, a committed-format `switch`, and genuine pixel-writer-before-alpha-local lifetimes. All eight independently original physical relocation roles are exact; +681 game-authored bytes.
+
 # CORE/RECON-1044 — full 681-byte GDI glyph bitmap lifecycle source with original 108-byte V4 header
 
 Locked target: Japanese TH20 v1.00a Steamless SHA-256

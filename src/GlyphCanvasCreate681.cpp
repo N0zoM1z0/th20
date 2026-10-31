@@ -1,19 +1,18 @@
-// Entire game-owned original 681B/176-i386 GDI glyph canvas lifecycle.
-// NONEXACT: real source compiles to 684B under pinned MSVC; all original
-// Win32/GDI IAT field positions and semantic calls are independently verified.
+// Entire original 681B/176-i386 game-owned GDI bitmap surface creator.
+// Resource publication uses the original receiver directly, not a cached
+// bytes alias; after publication the code switches on the committed format.
+// In each alpha-fill arm the pixel pointer is acquired before constructing
+// its meaningful 32-bit or 16-bit alpha value, as in native machine code.
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphPixelFormat.hpp"
 #include <windows.h>
 #include <cstdint>
 #include <cstring>
-namespace th20 {
-// Real descriptor fields read by the native 681B DIB creator. Pixel format
-// code, bits/pixel and four observed packed masks occupy six native words;
-// the complete lookup table remains a separately unresolved provider.
-
 #if defined(_M_IX86)
 static_assert(sizeof(BITMAPV4HEADER)==0x6C);
 #endif
+namespace th20 {
+
 bool NativeGlyphCanvasView::create_gdi_surface_415120(
     std::int32_t width,std::int32_t height,std::int32_t format) {
  release_surface_416360();
@@ -40,31 +39,33 @@ bool NativeGlyphCanvasView::create_gdi_surface_415120(
  if (bitmap==nullptr) return false;
  auto hdc=CreateCompatibleDC(nullptr);
  auto previous=SelectObject(hdc,bitmap);
- auto* bytes=reinterpret_cast<std::uint8_t*>(this);
- *reinterpret_cast<HDC*>(bytes+0x114)=hdc;
- *reinterpret_cast<HBITMAP*>(bytes+0x11C)=bitmap;
- *reinterpret_cast<void**>(bytes+0x120)=pixels;
- *reinterpret_cast<std::int32_t*>(bytes+0x10C)=info.bV4SizeImage;
- *reinterpret_cast<HGDIOBJ*>(bytes+0x118)=previous;
- *reinterpret_cast<std::int32_t*>(bytes+0x104)=width;
- *reinterpret_cast<std::int32_t*>(bytes+0x108)=height;
- *reinterpret_cast<std::int32_t*>(bytes+0x100)=format;
- *reinterpret_cast<std::int32_t*>(bytes+0x110)=stride;
- // The native code re-reads the committed resource format after the GDI
- // allocation and publication, rather than trusting the original argument.
- const auto committed_format=*reinterpret_cast<std::int32_t*>(bytes+0x100);
- if (committed_format==0x15) {
-  const std::uint32_t opaque_pixel=0xff000000u;
+ *reinterpret_cast<HDC*>(reinterpret_cast<std::uint8_t*>(this)+0x114)=hdc;
+ *reinterpret_cast<HBITMAP*>(reinterpret_cast<std::uint8_t*>(this)+0x11C)=bitmap;
+ *reinterpret_cast<void**>(reinterpret_cast<std::uint8_t*>(this)+0x120)=pixels;
+ *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x10C)=info.bV4SizeImage;
+ *reinterpret_cast<HGDIOBJ*>(reinterpret_cast<std::uint8_t*>(this)+0x118)=previous;
+ *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x104)=width;
+ *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x108)=height;
+ *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x100)=format;
+ *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x110)=stride;
+ switch(*reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x100)) {
+ case 0x15: {
   auto* writer=static_cast<std::uint32_t*>(pixels);
-  for (std::int32_t offset=0;offset<*reinterpret_cast<std::int32_t*>(bytes+0x10C);offset+=4,++writer) {
+  std::uint32_t opaque_pixel=0xff000000u;
+  for (std::int32_t offset=0;offset<*reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x10C);offset+=4,++writer) {
    *writer=opaque_pixel;
   }
- } else if (committed_format==0x1A) {
-  const std::uint16_t translucent_pixel=0xf000;
+  break;
+ }
+ case 0x1A: {
   auto* writer=static_cast<std::uint16_t*>(pixels);
-  for (std::int32_t offset=0;offset<*reinterpret_cast<std::int32_t*>(bytes+0x10C);offset+=2,++writer) {
+  std::uint16_t translucent_pixel=0xf000;
+  for (std::int32_t offset=0;offset<*reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x10C);offset+=2,++writer) {
    *writer=translucent_pixel;
   }
+  break;
+ }
+ default: break;
  }
  return true;
 }

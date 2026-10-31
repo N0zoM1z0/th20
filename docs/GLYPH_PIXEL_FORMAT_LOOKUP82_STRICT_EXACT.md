@@ -1,3 +1,5 @@
+**CORE/RECON-1050 STATUS UPDATE:** The formerly NONEXACT original 681B GDI canvas creation parent is now [WHOLE STRICT EXACT, 681/681B](GLYPH_CANVAS_CREATE681_STRICT_EXACT.md). Earlier notes about its 684B candidate below are historical. The separate original 73B allocator and 2,227B glyph text Boss remain unaccepted.
+
 # CORE/RECON-1045 — whole exact original 82B glyph pixel format descriptor lookup
 
 Target: immutable Japanese TH20 Steamless v1.00a SHA-256

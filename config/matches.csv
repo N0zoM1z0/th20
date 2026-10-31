@@ -736,3 +736,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00415640,th20::NativeGlyphCanvasView::pixel_format_415640,82,matching,100.00,glyph_pixel_format_lookup_82,CORE/RECON-1045; docs/GLYPH_PIXEL_FORMAT_LOOKUP82_STRICT_EXACT.md
 0x00416360,th20::NativeGlyphCanvasView::release_surface_416360,182,matching,100.00,glyph_canvas_release_182,CORE/RECON-1046; docs/GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md
 0x00414200,th20::NativeGlyphCanvasStorage::NativeGlyphCanvasStorage,124,matching,100.00,glyph_canvas_constructor_124,CORE/RECON-1047; docs/GLYPH_CANVAS_CONSTRUCTOR124_STRICT_EXACT.md
+0x00415120,th20::NativeGlyphCanvasView::create_gdi_surface_415120,681,matching,100.00,glyph_canvas_create_681,CORE/RECON-1050; docs/GLYPH_CANVAS_CREATE681_STRICT_EXACT.md
