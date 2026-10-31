@@ -121,6 +121,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1073 — whole exact original 118B PMR queue node guard destructor, complete 123B with five real INT3 bytes](GLYPH_QUEUE_NODE_GUARD118_STRICT_EXACT.md) — original 151B `_Emplace` E8, 3 native E8/2 HIGHLOW, 118/118 strict coverage and 123/123 full comparison; 11/11 scoped units, 118 generic original bytes and no game-authored credit.
 
+- [CORE/RECON-1074 — original complete 158B glyph task-list node constructor, typed source NONEXACT frontier](GLYPH_QUEUE_NODE_CTOR158_NATIVE_FRONTIER.md) — original parent 151B `_Emplace` E8 and five native calls including two separate `_Unfancy`, actual 143B/46-i386 STL C++20 source vs 158B/51 native; independently whole exact 34B/47B/118B children, 11/11 scoped units, zero parent credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

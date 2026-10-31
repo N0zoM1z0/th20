@@ -1,7 +1,10 @@
 // Original 151B native glyph-task list insertion under 56B queue bridge.
 // SOURCE-PRESENT, NONEXACT: the real std::pmr::list function ownership is
-// identified by nested 59/124B helpers, but its native _Emplace ABI has an
-// extra pointer-forwarding stage absent from this modern C++20 compiler.
+// identified by nested 59/124B helpers. Original 151B _Emplace, 158B
+// node-emplacement constructor and 118B guard cleanup are distinct real
+// stages: modern C++20 emits 130B/143B for the first two (NONEXACT),
+// while the third is WHOLE EXACT 118B plus five actual INT3 alignment bytes.
+// The original constructors retain additional live std::_Unfancy calls.
 #include <functional>
 #include <list>
 #include <memory>

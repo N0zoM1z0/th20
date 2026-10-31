@@ -87,3 +87,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextQueueList151.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1074 — full 158B native node constructor source frontier
+
+The larger original node constructor `0x00413000`, invoked by 151B
+`_Emplace` E8 `+0x5B`, is now separately
+[documented as SOURCE-PRESENT, NONEXACT](GLYPH_QUEUE_NODE_CTOR158_NATIVE_FRONTIER.md).
+Its original complete 158B/51-instruction body has five genuine E8 and
+two HIGHLOW; current real PMR-list C++20 naturally emits 143B/46,
+missing one original folded pointer forwarding call. The original
+118B guard destructor and all accepted PMR allocation/destruction
+children stay WHOLE STRICT EXACT; none grants exact credit for 158B.

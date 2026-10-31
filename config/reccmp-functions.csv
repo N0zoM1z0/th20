@@ -1538,3 +1538,4 @@ std::pmr::memory_resource::allocate,0x00415070,function
 std::_Normal_allocator_traits<GlyphTaskNode>::destroy,0x00413CA0,function
 std::destroy_at<std::function<void()>>,0x00413CC0,function
 std::_List_node_emplace_op2<GlyphTaskNode>::~_List_node_emplace_op2,0x00414350,function
+std::_List_node_emplace_op2<GlyphTaskNode>::_List_node_emplace_op2,0x00413000,function

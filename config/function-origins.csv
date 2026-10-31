@@ -388,7 +388,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00412ED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412F90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413000,unknown,CxxRuntime,review,pending,"CORE/RECON-1074; docs/GLYPH_QUEUE_NODE_CTOR158_NATIVE_FRONTIER.md; full native 158B node-emplace constructor original 5 E8/2 HIGHLOW, parent 151B E8; natural C++20 source 143B/46 and missing pointer forwarding, still NONEXACT, compiler library origin uncredited"
 0x004130A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004130E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
