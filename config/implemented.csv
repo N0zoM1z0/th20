@@ -1570,3 +1570,4 @@ std::filesystem::_Parse_stem
 std::pmr::string::assign_std_string
 std::wstring::operator_string_view
 std::filesystem::path::path_wstring_view
+th20::NativeRendererAnmPreloadView::preload_anm_44ed40

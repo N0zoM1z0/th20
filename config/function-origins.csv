@@ -1296,7 +1296,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044E8F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044EB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044EBF0,authored,AnimationFile,review,high,"CORE/RECON-1095; docs/ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md; genuine original 336B/83 x86 Renderer group parse under exact 1022B AnimationFile loader, all original 6E8/8HIGHLOW, source complete 336B but two stack-local byte differences; NONEXACT no game byte credit"
-0x0044ED40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044ED40,authored,AnimationFile,authored,high,"CORE/RECON-1096; docs/ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md; whole original 269B/79 native Renderer preload; exact 10 E8/9 HIGHLOW under real lock17, checked array and 1022B load, full whole canonical source"
 0x0044EE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044EE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044EE90,authored,AnimationPool,authored,high,CORE/EXACT-449; docs/ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md; independently original AnimationPoolOwner and AnimationHandle ABI with full exception aware child walk

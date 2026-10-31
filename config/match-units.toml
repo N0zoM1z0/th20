@@ -28114,3 +28114,34 @@ size = 44
 relocations = [
   { offset = 0x1C, type = "REL32", symbol = "??$_Convert_Source_to_wide@V?$basic_string_view@_WU?$char_traits@_W@std@@@std@@U_Normal_conversion@filesystem@2@@filesystem@std@@YA?AV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@1@ABV?$basic_string_view@_WU?$char_traits@_W@std@@@1@U_Normal_conversion@01@@Z", target = 0x00418070 },
 ]
+
+# CORE/RECON-1096: original complete game Renderer 269B ANM file preload.
+[units.animation_file_preload_269]
+source = "src/AnimationFilePreload269.cpp"
+object = "build/core1096-canonical/AnimationFilePreload269.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererAnmPreloadView::preload_anm_44ed40"]
+symbol = "?preload_anm_44ed40@NativeRendererAnmPreloadView@th20@@QAEPAUNativeAnimationFileLoadView@2@IPBD@Z"
+target_address = 0x0044ED40
+size = 269
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?preload_anm_44ed40@NativeRendererAnmPreloadView@th20@@QAEPAUNativeAnimationFileLoadView@2@IPBD@Z", target = 0x005676ED },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x30, type = "DIR32", symbol = "?native_anm_preload_format_56e378@th20@@3QBDB", target = 0x0056E378 },
+  { offset = 0x35, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x43, type = "DIR32", symbol = "?native_anm_slots_error_56e38c@th20@@3QBDB", target = 0x0056E38C },
+  { offset = 0x48, type = "DIR32", symbol = "?diagnostic_log@th20@@3UDiagnosticLog@1@A", target = 0x005C0678 },
+  { offset = 0x4D, type = "REL32", symbol = "?report_log_error@th20@@YAPBDPAUDiagnosticLog@1@PBDZZ", target = 0x00454230 },
+  { offset = 0x5E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x63, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x6C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x78, type = "DIR32", symbol = "$SG79892", target = 0x0056E3B0 },
+  { offset = 0x7E, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x83, type = "REL32", symbol = "??$allocate_object@VAnimationFile@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVAnimationFile@1@PBD@Z", target = 0x004477B0 },
+  { offset = 0x9E, type = "REL32", symbol = "?at@?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x0043EB10 },
+  { offset = 0xC0, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xCD, type = "REL32", symbol = "?load_resource_44a700@NativeAnimationFileLoadView@th20@@QAEHPBD@Z", target = 0x0044A700 },
+  { offset = 0xDB, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0xE0, type = "REL32", symbol = "??$release_object@VAnimationFile@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimationFile@1@@Z", target = 0x004473A0 },
+  { offset = 0x103, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

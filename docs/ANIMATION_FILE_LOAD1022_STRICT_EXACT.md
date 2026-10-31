@@ -181,3 +181,16 @@ preserving all required `sprite_count`, `script_count`, embedded
 name and next-header offsets. A focused exact replay of this single
 affected C++20 file object preserved **10/10 whole strict units**
 after its header's include-closure change.
+
+## CORE/RECON-1096 — upstream original 269B Renderer preload now exact
+
+The actual game Renderer `0x0044ED40` now has a
+[whole original 269B native exact preload function](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md).
+Its original E8 `+0xCC` invokes this complete 1,022B loader
+*after* the Renderer releases its lock17 critical section; on
+nonzero result, the caller separately invokes existing 97B
+`DiagnosticAllocator::release_object<AnimationFile>` and returns
+null. The upstream 269B game preload and 1,022B game loader are
+**different original code heads**, each independently whole exact,
+with no re-crediting of allocation, checked 42-file array or
+file-IO callee code.

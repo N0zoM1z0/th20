@@ -760,3 +760,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0044BB10,th20::NativeRendererSurfaceBlitView::blit_surface_rect_44bb10,439,matching,100.00,animation_renderer_surface_blit_439,CORE/RECON-1091; docs/ANIMATION_SURFACE_BLIT439_STRICT_EXACT.md
 0x0044BE40,th20::NativeRendererSurfaceBlitView::blit_surface_effect_44be40,581,matching,100.00,animation_renderer_surface_effect_581,CORE/RECON-1092; docs/ANIMATION_SURFACE_EFFECT581_STRICT_EXACT.md
 0x0044A700,th20::NativeAnimationFileLoadView::load_resource_44a700,1022,matching,100.00,animation_file_load_resource_1022,CORE/RECON-1093; docs/ANIMATION_FILE_LOAD1022_STRICT_EXACT.md
+0x0044ED40,th20::NativeRendererAnmPreloadView::preload_anm_44ed40,269,matching,100.00,animation_file_preload_269,CORE/RECON-1096; docs/ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md
