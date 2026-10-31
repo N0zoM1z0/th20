@@ -525,7 +525,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004162B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004162F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00416360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00416360,authored,GlyphText,authored,high,"CORE/RECON-1046; docs/GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md; true game-owned glyph canvas GDI release with 3 original imported GDI calls and 681B original caller, 182/182 natural C++20 and correct bool return"
 0x00416420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416CF0,authored,TextOutline,authored,high,"REF-022; Complete18-byte cdecl setter stores float bits in5AE120. Independent original raster producer415830 multiplies font outline radius by this scalar then resets1; PE initialfloat1 read before acceptance. Producer diagnostic identifies original authored core/grpfont.cpp, and proprietary shared raster global links this setter to authored text support. Original setter spelling inferred. Storage declaration is extern; global construction and whole raster remain unresolved."
 0x00416D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

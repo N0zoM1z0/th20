@@ -120,3 +120,13 @@ with this maintained 681B source and contains the original six color
 mask values followed by a signed `-1` sentinel. The 681B bitmap
 creator remains NONEXACT at 684B/176 source bytes; no parent or
 `.rdata` table credit is inferred.
+
+## CORE/RECON-1046 — whole GDI/DC release child now exact
+
+The original GDI owner cleanup `0x00416360` invoked by this 681B
+method at E8 `+0x19` is now a [whole-exact 182B/42-instruction
+source](GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md), with three real
+GDI IAT calls and native `bool` return. The earlier provisional
+`void` declaration was wrong and is now corrected. All six strict
+subchain units were rebuilt in three affected providers; the
+681B parent still compiles to 684B/176 and remains NONEXACT.

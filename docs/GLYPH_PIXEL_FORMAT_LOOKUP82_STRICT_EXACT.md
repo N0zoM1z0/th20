@@ -73,3 +73,12 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphCanvasFormatLookup82.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1046 — real cleanup before lookup accepted
+
+The original 681B GDI bitmap creator first invokes the now
+[whole-exact 182B release method](GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md)
+before entering this 82B exact table lookup. Its original return
+is a boolean, not the speculative void declaration. Both distinct
+physical helper heads remain strict exact under a 6/6 scoped replay;
+the 681B parent is still NONEXACT.

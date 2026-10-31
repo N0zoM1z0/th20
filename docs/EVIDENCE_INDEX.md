@@ -67,6 +67,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1045 — whole exact 82B glyph pixel-format lookup](GLYPH_PIXEL_FORMAT_LOOKUP82_STRICT_EXACT.md) — six real 24B format descriptors/signed -1 sentinel, three native HIGHLOW and exact 681B caller E8, 82/82 original C++20, +82 game-authored bytes.
 
+- [CORE/RECON-1046 — complete original 182B GDI glyph canvas cleanup whole strict exact](GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md) — real original 681B parent E8, three genuine GDI import HIGHLOW, source bool return corrected from earlier void, 6/6 affected units exact, +182 authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

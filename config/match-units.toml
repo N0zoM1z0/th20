@@ -26749,3 +26749,19 @@ relocations = [
   { offset = 0x2E, type = "DIR32", symbol = "?native_glyph_pixel_formats_5ae078@th20@@3QBUNativeGlyphPixelFormat@1@B", target = 0x005AE078 },
   { offset = 0x48, type = "DIR32", symbol = "?native_glyph_pixel_formats_5ae078@th20@@3QBUNativeGlyphPixelFormat@1@B", target = 0x005AE078 },
 ]
+
+# CORE/RECON-1046: native whole 182B/42-i386 GDI glyph resource cleanup,
+# independently original PE IAT fields and native 681B caller.
+[units.glyph_canvas_release_182]
+source = "src/GlyphCanvasRelease182.cpp"
+object = "build/core1046-canonical/GlyphCanvasRelease182.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::release_surface_416360"]
+symbol = "?release_surface_416360@NativeGlyphCanvasView@th20@@QAE_NXZ"
+target_address = 0x00416360
+size = 182
+relocations = [
+  { offset = 0x2D, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
+  { offset = 0x3D, type = "DIR32", symbol = "__imp__DeleteDC@4", target = 0x0056C03C },
+  { offset = 0x4D, type = "DIR32", symbol = "__imp__DeleteObject@4", target = 0x0056C038 },
+]

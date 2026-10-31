@@ -6,7 +6,7 @@ namespace th20 {
 struct NativeGlyphPixelFormat;
 struct NativeGlyphCanvasView {
     // Original 681B bitmap/DC creator is source-present, but not exact.
-    void release_surface_416360();
+    bool release_surface_416360();
     const NativeGlyphPixelFormat* pixel_format_415640(std::int32_t format);
     bool create_gdi_surface_415120(std::int32_t width,
                                    std::int32_t height,
