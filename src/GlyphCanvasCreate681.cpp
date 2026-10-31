@@ -2,6 +2,7 @@
 // NONEXACT: real source compiles to 684B under pinned MSVC; all original
 // Win32/GDI IAT field positions and semantic calls are independently verified.
 #include "NativeGlyphCanvasView.hpp"
+#include "NativeGlyphPixelFormat.hpp"
 #include <windows.h>
 #include <cstdint>
 #include <cstring>
@@ -9,11 +10,7 @@ namespace th20 {
 // Real descriptor fields read by the native 681B DIB creator. Pixel format
 // code, bits/pixel and four observed packed masks occupy six native words;
 // the complete lookup table remains a separately unresolved provider.
-struct NativeGlyphPixelFormat {
-    std::uint32_t code, bits_per_pixel, alpha_mask;
-    std::uint32_t red_mask, green_mask, blue_mask;
-};
-static_assert(sizeof(NativeGlyphPixelFormat)==0x18);
+
 #if defined(_M_IX86)
 static_assert(sizeof(BITMAPV4HEADER)==0x6C);
 #endif

@@ -733,3 +733,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00415620,th20::NativeGlyphCanvasView::device_context_415620,20,matching,100.00,glyph_canvas_device_context_20,CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md
 0x004156A0,th20::NativeGlyphCanvasView::bitmap_pixels_4156a0,20,matching,100.00,glyph_canvas_bitmap_pixels_20,CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md
 0x004156C0,th20::NativeGlyphCanvasView::pixel_stride_4156c0,20,matching,100.00,glyph_canvas_pixel_stride_20,CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md
+0x00415640,th20::NativeGlyphCanvasView::pixel_format_415640,82,matching,100.00,glyph_pixel_format_lookup_82,CORE/RECON-1045; docs/GLYPH_PIXEL_FORMAT_LOOKUP82_STRICT_EXACT.md

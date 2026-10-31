@@ -110,3 +110,13 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphCanvasEnsure104.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1045 — exact pixel format selector nested inside 681B Boss
+
+The original `0x00415640` format lookup called at E8 `+0x35` is now
+[whole 82/82 strict exact](GLYPH_PIXEL_FORMAT_LOOKUP82_STRICT_EXACT.md).
+Its actual 24B `NativeGlyphPixelFormat` descriptor type is shared
+with this maintained 681B source and contains the original six color
+mask values followed by a signed `-1` sentinel. The 681B bitmap
+creator remains NONEXACT at 684B/176 source bytes; no parent or
+`.rdata` table credit is inferred.

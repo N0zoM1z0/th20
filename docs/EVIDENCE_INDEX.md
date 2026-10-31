@@ -65,6 +65,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1044 — whole original 681B GDI glyph surface creation Boss typed source frontier](GLYPH_CANVAS_CREATE681_NATIVE_FRONTIER.md) — real 108B BITMAPV4HEADER, four native E8/four HIGHLOW, all three actual GDI IAT sites exact in source, maintained 684B/176-i386 candidate; original 104B fallback parent E8x3, NONEXACT.
 
+- [CORE/RECON-1045 — whole exact 82B glyph pixel-format lookup](GLYPH_PIXEL_FORMAT_LOOKUP82_STRICT_EXACT.md) — six real 24B format descriptors/signed -1 sentinel, three native HIGHLOW and exact 681B caller E8, 82/82 original C++20, +82 game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

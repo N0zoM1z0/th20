@@ -26733,3 +26733,19 @@ symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ"
 target_address = 0x004156C0
 size = 20
 relocations = []
+
+# CORE/RECON-1045: complete original 82B/26-i386 native glyph format lookup,
+# original three PE descriptors and true original 681B caller.
+[units.glyph_pixel_format_lookup_82]
+source = "src/GlyphCanvasFormatLookup82.cpp"
+object = "build/core1045-canonical/GlyphCanvasFormatLookup82.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::pixel_format_415640"]
+symbol = "?pixel_format_415640@NativeGlyphCanvasView@th20@@QAEPBUNativeGlyphPixelFormat@2@H@Z"
+target_address = 0x00415640
+size = 82
+relocations = [
+  { offset = 0x21, type = "DIR32", symbol = "?native_glyph_pixel_formats_5ae078@th20@@3QBUNativeGlyphPixelFormat@1@B", target = 0x005AE078 },
+  { offset = 0x2E, type = "DIR32", symbol = "?native_glyph_pixel_formats_5ae078@th20@@3QBUNativeGlyphPixelFormat@1@B", target = 0x005AE078 },
+  { offset = 0x48, type = "DIR32", symbol = "?native_glyph_pixel_formats_5ae078@th20@@3QBUNativeGlyphPixelFormat@1@B", target = 0x005AE078 },
+]
