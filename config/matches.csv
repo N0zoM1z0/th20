@@ -711,3 +711,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00449260,th20::NativeAnimationPoolDestructorLayout::~NativeAnimationPoolDestructorLayout,138,matching,100.00,animation_pool_destructor_138,CORE/RECON-991; docs/ANIMATION_POOL_DESTRUCTOR138_STRICT_EXACT.md
 0x0044CF10,th20::AnimationHandle::resolve_or_resident_44cf10,56,matching,100.00,animation_handle_resolve_resident_56,CORE/RECON-992; docs/ANIMATION_HANDLE_RESOLVE_RESIDENT56_CALLBACK39_STRICT_EXACT.md
 0x0044F100,th20::AnimationHandle::set_entry_callback_forward_44f100,39,matching,100.00,animation_handle_entry_callback_forward_39,CORE/RECON-992; docs/ANIMATION_HANDLE_RESOLVE_RESIDENT56_CALLBACK39_STRICT_EXACT.md
+0x0044C150,th20::NativeRendererTextureOwner::create_render_target_44c150,139,matching,100.00,animation_render_target_139,CORE/RECON-997; docs/ANIMATION_RENDER_TARGET_139_STRICT_EXACT.md

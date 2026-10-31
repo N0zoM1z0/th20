@@ -8,6 +8,8 @@ investigations preserve their **original dated checkpoint observations**;
 earlier `NONEXACT`, missing-source, object-count or scope claims are
 not current facts when newer canonical units supersede them.
 
+- [CORE/RECON-997 — original 139B Renderer render-target creation strict exact](ANIMATION_RENDER_TARGET_139_STRICT_EXACT.md) — native D3D9 `CreateTexture`, 2 original E8 /3 HIGHLOW, whole 139B relocated C++20, +139 authored-game bytes; 155B adjacent dynamic creator separate.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
