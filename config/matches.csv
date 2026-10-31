@@ -744,3 +744,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004142C0,th20::NativeGlyphRenderJob::~NativeGlyphRenderJob,23,matching,100.00,glyph_text_job_dtor_23,CORE/RECON-1062; docs/GLYPH_TEXT_JOB_DTOR23_STRICT_EXACT.md
 0x00417AB0,th20::NativeGlyphCanvasView::invert_alpha_417ab0,542,matching,100.00,glyph_canvas_alpha_invert_542,CORE/RECON-1065; docs/GLYPH_CANVAS_ALPHA542_STRICT_EXACT.md
 0x004155B0,th20::release_glyph_fonts_4155b0,79,matching,100.00,glyph_font_release_79,CORE/RECON-1066; docs/GLYPH_FONT_ARRAY22_RELEASE79_STRICT_EXACT.md
+0x004156E0,th20::measure_glyph_text_4156e0,274,matching,100.00,glyph_text_measure_274,CORE/RECON-1067; docs/GLYPH_TEXT_MEASURE274_STRICT_EXACT.md

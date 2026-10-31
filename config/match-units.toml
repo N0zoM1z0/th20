@@ -27171,3 +27171,29 @@ target_address = 0x00414F50
 size = 17
 relocations = [
 ]
+
+# CORE/RECON-1067: complete original 274B/71-i386 glyph extent Boss,
+# real 22-HFONT owner, original 5 E8 and 8 PE HIGHLOW independently verified.
+[units.glyph_text_measure_274]
+source = "src/GlyphTextMeasure274.cpp"
+object = "build/core1067-canonical/GlyphTextMeasure274.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::measure_glyph_text_4156e0"]
+symbol = "?measure_glyph_text_4156e0@th20@@YA_KPBDH@Z"
+target_address = 0x004156E0
+size = 274
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x18, type = "DIR32", symbol = "?native_glyph_fonts_5b66f0@th20@@3V?$array@PAUHFONT__@@$0BG@@std@@A", target = 0x005B66F0 },
+  { offset = 0x1D, type = "REL32", symbol = "??A?$array@PAUHFONT__@@$0BG@@std@@QAEAAPAUHFONT__@@I@Z", target = 0x00414580 },
+  { offset = 0x38, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x5A, type = "DIR32", symbol = "__imp__MultiByteToWideChar@24", target = 0x0056C124 },
+  { offset = 0x5F, type = "DIR32", symbol = "?native_window_host_5b6758@th20@@3UNativeWindowHostView@1@A", target = 0x005B6758 },
+  { offset = 0x64, type = "REL32", symbol = "?current_window_40c300@NativeWindowHostView@th20@@QBEPAUHWND__@@XZ", target = 0x0040C300 },
+  { offset = 0x6B, type = "DIR32", symbol = "__imp__GetDC@4", target = 0x0056C2AC },
+  { offset = 0x85, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
+  { offset = 0x97, type = "REL32", symbol = "_wcslen", target = 0x00548300 },
+  { offset = 0xC2, type = "DIR32", symbol = "__imp__GetTextExtentPoint32W@16", target = 0x0056C030 },
+  { offset = 0xF4, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
+  { offset = 0x10A, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

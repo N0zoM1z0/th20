@@ -52,8 +52,8 @@ are excluded from Git.
 At the October 30, 2026 checkpoint the maintained graph has **1,443
 source-present mappings**, **1,443 strict canonical native units** and
 **390 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **745 complete functions /
-255,092 original native bytes**. These are dated values, not a
+game-authored whole-function exactness is **746 complete functions /
+255,366 original native bytes**. These are dated values, not a
 whole-game buildability or playable-game claim: always run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
 for the live inventory and consult the

@@ -88,3 +88,13 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextQueueSubmit56.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1067 — whole 274B text measurement Boss validates table owner
+
+The same corrected 22-HFONT global is used in the independently
+[WHOLE STRICT EXACT 274B GDI text measurement Boss](GLYPH_TEXT_MEASURE274_STRICT_EXACT.md).
+The original 274B native source calls the already exact folded 22B font
+index and true 16B window getter, then the actual CP932/Win32 GDI extent
+sequence. These are distinct physical native code heads: the font cleanup
+79B, array-end 17B and measurement 274B are each credited only once
+according to their independently attested original source owners.

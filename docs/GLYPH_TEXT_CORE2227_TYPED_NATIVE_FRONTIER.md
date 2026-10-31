@@ -150,3 +150,12 @@ text core E8 `+0x57` to the already folded 22B array index confirms
 its table use. The corrected C++ header is shared across both
 source owners; the full 2,227B native Boss remains NONEXACT even
 though this concrete data-layout hypothesis is now verified.
+
+## CORE/RECON-1067 — independent native 274B GDI text measurement exact
+
+The corrected 22-HFONT owner used by this large raster core is also
+used by a separate [WHOLE EXACT 274B CP932/GDI text extent Boss](GLYPH_TEXT_MEASURE274_STRICT_EXACT.md),
+with the real native window getter, GDI selected-font lifecycle and +4
+margins. The 274B measurement and 79B font cleanup are independent
+native heads, not extra executable bytes of this 2,227B raster core.
+The core remains SOURCE-PRESENT/NONEXACT and is not double-counted.

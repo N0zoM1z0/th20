@@ -1524,3 +1524,4 @@ std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::max_
 std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::construct,0x00415440,function
 th20::release_glyph_fonts_4155b0,0x004155B0,function
 "std::array<HFONT,22>::_Unchecked_end",0x00414F50,function
+th20::measure_glyph_text_4156e0,0x004156E0,function
