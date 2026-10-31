@@ -101,6 +101,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1063 — original 294B text submit Boss now two NOPs from native exact](ASCII_TEXT_SUBMIT294_TWO_NOP_FRONTIER.md) — true packed EDX:EAX into 8B return, all 104 remaining native instructions align after the two real post-dtor NOPs, 292B/104 source vs 294B/106 original, NONEXACT.
 
+- [CORE/RECON-1064 — three PMR glyph vector generic max-size and construct helpers 59B/13B/22B whole strict exact](GLYPH_PMR_EXTRA_59_13_22_STRICT_EXACT.md) — original 488B growth E8 and 59B allocator limit nested call, 94 additional unique STL machine bytes, one affected canonical provider, no game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

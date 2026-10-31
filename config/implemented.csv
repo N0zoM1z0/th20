@@ -1508,3 +1508,6 @@ std::_Alloc_construct_ptr<std::pmr::list<std::function<void()>>>::constructor
 std::_Normal_allocator_traits<glyph task list>::max_size
 std::_Alloc_construct_ptr<glyph task list>::destructor
 th20::NativeGlyphRenderJob::~NativeGlyphRenderJob
+std::pmr::vector<GlyphMaskOffset>::max_size
+std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::max_size
+std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::construct

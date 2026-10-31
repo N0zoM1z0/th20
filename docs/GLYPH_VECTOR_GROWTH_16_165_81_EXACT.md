@@ -59,3 +59,12 @@ scripts/repo-python scripts/verify-glyph-vector-growth488-native.py \
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphMaskComposite2245.cpp
 ```
+
+## CORE/RECON-1064 — true nested PMR max-size helpers exact
+
+The original 488B vector growth Boss also calls a now
+[WHOLE EXACT 59B PMR vector `max_size`](GLYPH_PMR_EXTRA_59_13_22_STRICT_EXACT.md)
+at native E8 `+0x6F`; its further original 13B allocator-traits
+`max_size` is exact, as is the separate physical 22B construction
+wrapper. They contribute another 94 native STL bytes, zero authored
+game byte credit, and do not close the 488B/2,245B original parents.
