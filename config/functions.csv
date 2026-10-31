@@ -502,7 +502,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004150B0,63,0x004150EE,FUN_004150b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004150F0,36,0x00415113,FUN_004150f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00415120,681,0x004153C8,FUN_00415120,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004153D0,104,0x00415437,FUN_004153d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004153D0,104,0x00415437,FUN_004153d0,th20::NativeGlyphCanvasView::ensure_format_4153d0,GlyphText,matching,100.00,__thiscall,?ensure_format_4153d0@NativeGlyphCanvasView@th20@@QAE_NHHH@Z,false,src/GlyphCanvasEnsure104.cpp,CORE/RECON-1042; docs/GLYPH_CANVAS_FORMAT104_STRICT_EXACT.md,authored,"Complete game-specific 104B/43-i386 bitmap format fallback: try native 681B create at input requested format; if failed 0x19/0x1A -> 0x15, if failed 0x17 -> 0x16, otherwise false. Original entire 2227B glyph text core E8+0x362 -> this head; three actual E8+0x16/+0x3F/+0x59 to 0x00415120 and no PE HIGHLOW. Natural C++20 104/104 strict match, 92/92 nonreloc, +104 authored bytes. Whole 681B GDI initializer and 2227B parent still source-absent/nonexact."
 0x00415440,22,0x00415455,FUN_00415440,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00415460,85,0x004154B4,FUN_00415460,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004154C0,87,0x00415516,FUN_004154c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

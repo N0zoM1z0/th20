@@ -1485,3 +1485,4 @@ std::_Func_class<void()>::_Func_class,0x00413F80,function
 std::_Func_class<void()>::_Reset_copy,0x00414B90,function
 std::_Func_class<void()>::~_Func_class,0x00414310,function
 std::_Func_class<void()>::_Set,0x00414C60,function
+th20::NativeGlyphCanvasView::ensure_format_4153d0,0x004153D0,function

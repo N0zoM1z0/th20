@@ -59,6 +59,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1041 — four whole-original standard function base helpers, 25/71/20/30B exact](ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md) — natural 578B text renderer source instantiates 146 bytes of standard runtime, actual 93B/20B parent native edges, full six-unit exact replay in existing one provider, zero authored-game credit.
 
+- [CORE/RECON-1042 — complete 104B game-authored glyph canvas format fallback whole exact](GLYPH_CANVAS_FORMAT104_STRICT_EXACT.md) — authentic 2,227B text Boss E8, three original 681B surface-initializer calls and pixel-format fallback branches, full 104/104 natural C++20, +104 authored-game bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

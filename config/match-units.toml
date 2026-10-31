@@ -26684,3 +26684,19 @@ target_address = 0x00414C60
 size = 30
 relocations = [
 ]
+
+# CORE/RECON-1042: genuine 104B glyph bitmap pixel-format fallback,
+# actual 2227B original text core parent and three original create E8.
+[units.glyph_canvas_format_fallback_104]
+source = "src/GlyphCanvasEnsure104.cpp"
+object = "build/core1042-canonical/GlyphCanvasEnsure104.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::ensure_format_4153d0"]
+symbol = "?ensure_format_4153d0@NativeGlyphCanvasView@th20@@QAE_NHHH@Z"
+target_address = 0x004153D0
+size = 104
+relocations = [
+  { offset = 0x17, type = "REL32", symbol = "?create_gdi_surface_415120@NativeGlyphCanvasView@th20@@QAE_NHHH@Z", target = 0x00415120 },
+  { offset = 0x40, type = "REL32", symbol = "?create_gdi_surface_415120@NativeGlyphCanvasView@th20@@QAE_NHHH@Z", target = 0x00415120 },
+  { offset = 0x5A, type = "REL32", symbol = "?create_gdi_surface_415120@NativeGlyphCanvasView@th20@@QAE_NHHH@Z", target = 0x00415120 },
+]

@@ -84,3 +84,13 @@ scripts/repo-python scripts/verify-ascii-text-submit294-native.py \
   --candidate-object build/core1040-probes/AsciiTextSubmit294.obj
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1042 — bitmap-format fallback beneath 2,227B core whole exact
+
+The original 2,227B glyph text core called twice by this 294B submit
+method now has an independently exact [104B/43-i386 glyph bitmap
+format negotiation child](GLYPH_CANVAS_FORMAT104_STRICT_EXACT.md).
+It retries original pixel formats 0x19/0x1A as 0x15 and 0x17 as 0x16,
+with all three real E8 to the 681B surface initializer. This adds
+104 authored native bytes while the 2,227B core and 294B wrapper
+remain unaccepted.
