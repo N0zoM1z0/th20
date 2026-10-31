@@ -510,10 +510,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00415550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004155B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00415620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00415620,authored,GlyphText,authored,high,"CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md; original game-specific 0x124-byte GDI glyph canvas member field at +0x114, native 2227B/2245B text core physical call edges and entire 20B natural exact"
 0x00415640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004156A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004156C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004156A0,authored,GlyphText,authored,high,"CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md; original game-specific 0x124-byte GDI glyph canvas member field at +0x120, native 2227B/2245B text core physical call edges and entire 20B natural exact"
+0x004156C0,authored,GlyphText,authored,high,"CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md; original game-specific 0x124-byte GDI glyph canvas member field at +0x110, native 2227B/2245B text core physical call edges and entire 20B natural exact"
 0x004156E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -1480,3 +1480,6 @@ std::_Func_class<void()>::_Reset_copy
 std::_Func_class<void()>::~_Func_class
 std::_Func_class<void()>::_Set
 th20::NativeGlyphCanvasView::ensure_format_4153d0
+th20::NativeGlyphCanvasView::device_context_415620
+th20::NativeGlyphCanvasView::bitmap_pixels_4156a0
+th20::NativeGlyphCanvasView::pixel_stride_4156c0

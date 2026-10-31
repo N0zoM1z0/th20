@@ -11,5 +11,10 @@ struct NativeGlyphCanvasView {
     bool ensure_format_4153d0(std::int32_t width,
                               std::int32_t height,
                               std::int32_t pixel_format);
+    // Three distinct native 20-byte accessors observed directly in the
+    // original 2,227B text core /2,245B glyph compositor call graph.
+    void* device_context_415620() const;
+    std::uint8_t* bitmap_pixels_4156a0() const;
+    std::int32_t pixel_stride_4156c0() const;
 };
 }

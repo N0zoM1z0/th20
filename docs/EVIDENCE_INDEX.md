@@ -61,6 +61,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1042 — complete 104B game-authored glyph canvas format fallback whole exact](GLYPH_CANVAS_FORMAT104_STRICT_EXACT.md) — authentic 2,227B text Boss E8, three original 681B surface-initializer calls and pixel-format fallback branches, full 104/104 natural C++20, +104 authored-game bytes.
 
+- [CORE/RECON-1043 — three whole-exact 20B TH20 glyph canvas field getters](GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md) — original 2,227B and 2,245B glyph/text boss physical E8 calls, true HDC/pixel/stride receiver offsets, 4/4 exact in one canonical object, +3 authored/60B.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

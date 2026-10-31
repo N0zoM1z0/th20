@@ -730,3 +730,6 @@ address,name,size,status,match_percent,unit,evidence
 0x0044C0B0,th20::NativeRendererTextureOwner::create_dynamic_texture_44c0b0,155,matching,100.00,animation_dynamic_texture_155,CORE/RECON-1032; docs/ANIMATION_DYNAMIC_TEXTURE_155_STRICT_EXACT.md
 0x00486E80,th20::NativeCardTextPayload::operator(),111,matching,100.00,card_text_callback_111,CORE/RECON-1037; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md
 0x004153D0,th20::NativeGlyphCanvasView::ensure_format_4153d0,104,matching,100.00,glyph_canvas_format_fallback_104,CORE/RECON-1042; docs/GLYPH_CANVAS_FORMAT104_STRICT_EXACT.md
+0x00415620,th20::NativeGlyphCanvasView::device_context_415620,20,matching,100.00,glyph_canvas_device_context_20,CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md
+0x004156A0,th20::NativeGlyphCanvasView::bitmap_pixels_4156a0,20,matching,100.00,glyph_canvas_bitmap_pixels_20,CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md
+0x004156C0,th20::NativeGlyphCanvasView::pixel_stride_4156c0,20,matching,100.00,glyph_canvas_pixel_stride_20,CORE/RECON-1043; docs/GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md

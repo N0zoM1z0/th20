@@ -14,4 +14,17 @@ bool NativeGlyphCanvasView::ensure_format_4153d0(
     }
     return false;
 }
+void* NativeGlyphCanvasView::device_context_415620() const {
+    return *reinterpret_cast<void* const*>(
+        reinterpret_cast<const std::uint8_t*>(this) + 0x114);
+}
+std::uint8_t* NativeGlyphCanvasView::bitmap_pixels_4156a0() const {
+    return *reinterpret_cast<std::uint8_t* const*>(
+        reinterpret_cast<const std::uint8_t*>(this) + 0x120);
+}
+std::int32_t NativeGlyphCanvasView::pixel_stride_4156c0() const {
+    return *reinterpret_cast<const std::int32_t*>(
+        reinterpret_cast<const std::uint8_t*>(this) + 0x110);
+}
+
 }

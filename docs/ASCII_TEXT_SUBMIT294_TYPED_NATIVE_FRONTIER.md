@@ -94,3 +94,13 @@ It retries original pixel formats 0x19/0x1A as 0x15 and 0x17 as 0x16,
 with all three real E8 to the 681B surface initializer. This adds
 104 authored native bytes while the 2,227B core and 294B wrapper
 remain unaccepted.
+
+## CORE/RECON-1043 — bitmap memory/DC/stride getters under core accepted
+
+The separate original 2,227B text core (called twice here) and its
+2,245B glyph mask/compositing Boss now have [three new whole-exact
+20B game-specific glyph canvas getters](GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md).
+Their actual HDC/pixels/stride offsets are confirmed by the locked
+original original callers and share a 104B native-exact format-fallback
+owner. They do not establish source/exact status for either large Boss
+or this 294B submit wrapper.

@@ -68,3 +68,13 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphCanvasEnsure104.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1043 — three real glyph canvas accessors now exact
+
+The same native GDI glyph canvas owner now has [three new whole-exact
+20B/9-i386 member reads](GLYPH_CANVAS_ACCESSORS_20_20_20_STRICT_EXACT.md)
+for HDC `+0x114`, pixel memory `+0x120`, and stride `+0x110`.
+Original 2,227B/2,245B large text rendering callers were independently
+verified. All four methods (including this 104B format fallback) stay
+strict exact in one native C++ source/one focused canonical receipt.
+No large boss or existing 104B head is double-counted.
