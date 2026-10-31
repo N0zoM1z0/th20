@@ -167,6 +167,21 @@ original path, original SHA-256, archive path and archive SHA-256 in the private
 retirement inventory; verify decompressed bytes before removing the original.
 Keep current CI evidence, failed logs, native exports and active inputs intact.
 
+## Latest guarded storage audit: 2026-10-31 (historical checkpoint)
+
+[October 31 guarded generated-build cleanup](MAINTENANCE_STORAGE_2026_10_31.md)
+retired **2,875** noncanonical `.obj`/receipt files totaling
+**127,712,939 bytes (121.80 MiB)**. The exact original PE and **923
+protected artifact SHA-256 hashes** remained unchanged; 432 canonical
+object/receipt pairs, 164 individually referenced proof files, and
+1,881 active probe files were retained. The precise private SHA inventory
+is `.analysis/gptweb-cleanup-2026-10-31-build-retirement.json`.
+A subsequent dry-run had **zero** eligible files. These are dated
+counts; derive the live count from the unit manifest and a new dry-run.
+The 4.2GB installed MSVC/Wine/SDK and historical `.analysis` evidence
+were deliberately protected. No native replay is warranted for an
+unchanged code/manifest graph.
+
 ## Guarded artifact retirement: live script, dated historical checkpoints
 
 The [CORE/DOC-CLEANUP-628 storage audit](ARTIFACT_RETIREMENT_CORE628.md)
