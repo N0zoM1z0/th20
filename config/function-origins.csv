@@ -398,7 +398,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004132E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413370,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004133E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004133E0,unknown,CxxRuntime,review,pending,"CORE/RECON-1056; docs/GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md; genuine original 488B/170 i386 14 E8/2 HL native vector _Emplace_reallocate, natural template 467B/163 13 E8/2 DIR32, three exact native children, generic source ownership and original ABI NONEXACT"
 0x004135D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -457,7 +457,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414440,unknown,CxxRuntime,review,pending,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; actual standard PMR vector of two signed 32-bit glyph displacements, source-generated whole 20B exact; native two 2245B compositor caller sites; library origin uncredited"
 0x00414460,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004144B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004144E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004144E0,unknown,CxxRuntime,review,pending,CORE/RECON-1056; docs/GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md; complete 81B original PMR vector STL growth dependency; native 488B growth Boss E8+0x1C5; independently native-parent verified; generic compiler ownership uncredited
 0x00414540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414580,unknown,Vector3,review,pending,"EXACT-047: current-first/per-axis Enemy interpolation and direct movement dependencies. Complete flow/ABI/native388stride, signed duration, actual indexed float subobjects, shared stop head, constants and caller bindings audited. Cold strict replay299units/60objects/37560disjointbytes and C++20/UBSan mixed-axis/terminal/clock/storage/acceleration checks pass. Names/origins pending. See docs/EXACT_ENEMY_INTERPOLATION_RECONSTRUCTION.md."
 0x004145A0,library,EnemyDefeatSdk,exclude,high,"CORE/EXACT-155; docs/ENEMY_DEFEAT_RECONSTRUCTION.md; Complete48-byte std::function nonempty predicate over the actual Enemy* callback. Whole SDK implementation, actual native empty-test role and strict replay independently establish library origin. No authored credit."
@@ -470,7 +470,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004148D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414960,unknown,CxxRuntime,review,pending,CORE/RECON-1056; docs/GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md; complete 165B original PMR vector STL growth dependency; native 488B growth Boss E8+0x1A9; independently native-parent verified; generic compiler ownership uncredited
 0x00414A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414A60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -495,7 +495,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414F50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414F70,unknown,CxxRuntime,review,pending,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; actual standard PMR vector of two signed 32-bit glyph displacements, source-generated whole 26B exact; native two 2245B compositor caller sites; library origin uncredited"
 0x00414F90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414FE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414FE0,unknown,CxxRuntime,review,pending,CORE/RECON-1056; docs/GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md; complete 16B original PMR vector STL growth dependency; native 488B growth Boss E8+0x79; independently native-parent verified; generic compiler ownership uncredited
 0x00414FF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415070,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

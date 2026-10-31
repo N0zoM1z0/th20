@@ -1504,3 +1504,7 @@ std::pmr::get_default_resource,0x00415820,function
 std::pmr::polymorphic_allocator<GlyphMaskOffset>::polymorphic_allocator,0x004141A0,function
 std::_Compressed_pair<GlyphMaskOffset::Vector>::constructor,0x00412E10,function
 std::pmr::vector<GlyphMaskOffset>::_Tidy,0x00414E10,function
+std::pmr::vector<GlyphMaskOffset>::_Xlength,0x00414FE0,function
+std::pmr::vector<GlyphMaskOffset>::_Change_array,0x00414960,function
+std::pmr::vector<GlyphMaskOffset>::_Reallocation_guard::~_Reallocation_guard,0x004144E0,function
+std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate,0x004133E0,function

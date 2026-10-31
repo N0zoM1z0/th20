@@ -85,6 +85,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1055 — native 35B glyph PMR vector insertion two-E8 ABI frontier](GLYPH_MASK_EMPLACE35_NATIVE_FRONTIER.md) — original 2,245B compositor E8 twice, native 35B/15 with two authentic calls vs source-generated 33B/13 with one; NONEXACT, no original exact credit.
 
+- [CORE/RECON-1056 — 488B PMR glyph vector growth native Boss frontier and three 16B/165B/81B exact children](GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md) — native 488B/170 14 E8/2 HL vs C++20 467B/163 candidate; three original exact STL growth paths +262 code bytes without game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

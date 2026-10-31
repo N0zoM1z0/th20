@@ -146,3 +146,13 @@ backend; natural source `std::pmr::vector<GlyphMaskOffset>::emplace_back`
 currently generates 33B/13-i386 with only a single backend E8.
 The 35B helper and 2,245B parent stay NONEXACT, without changing any
 of the nine separately strict PMR and glyph-color child heads.
+
+## CORE/RECON-1056 — genuine PMR growth method and three exact children
+
+The real vector used in both outline passes naturally instantiates a
+[488B original native growth/reallocation Boss](GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md).
+The full MSVC source candidate is 467B/163 instructions, NONEXACT;
+its *independent* original 16B `_Xlength`, 165B `_Change_array`, and
+81B reallocation guard are all now WHOLE STRICT EXACT under the same
+source object. These generic template heads are not game-authored and
+do not close the original 2,245B compositor.
