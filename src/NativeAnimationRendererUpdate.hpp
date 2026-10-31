@@ -1,6 +1,7 @@
 #pragma once
-// Two adjacent original renderer update methods. The 150B wrapper is whole
-// exact; its 508B list-walking callee remains under separate reconstruction.
+// Two adjacent original renderer update methods. Both 150B/164B
+// wrappers are strict exact; their complete 508B/511B list-walking C++
+// sources remain NONEXACT solely at the shared MSVC 10B list preclear ABI.
 #include "AnimationRuntimeOwner.hpp"
 #include "IntrusiveLink.hpp"
 namespace th20 {

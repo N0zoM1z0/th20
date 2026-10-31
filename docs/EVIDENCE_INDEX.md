@@ -13,7 +13,8 @@ not current facts when newer canonical units supersede them.
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
   [whole original native and 10B compiler-tag frontier](ANIMATION_RENDERER_LIST_UPDATE_508_511_NATIVE_FRONTIER.md);
   complete two-pass C++ loops exist and both physical E8/HIGHLOW sets are verified,
-  but no exact credit from normalized bytes.
+  but no exact credit from normalized bytes;
+  [original 40B/42B helper and already-exact 63B/61B leaf audit](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md).
 - **12,140B Bullet extended command — SOURCE-ABSENT:**
   [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md)
   and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).

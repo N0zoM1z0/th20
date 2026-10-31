@@ -64,8 +64,10 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 ```
 
 The next step is a **scoped class-tag/ODR and real decoration dependency audit**.
-Native constructor `0x00418A50` and reset `0x0044A640` also need separate
-source-owner review. **Do not** claim an exact parent by normalizing out
+Native constructor `0x00418A50` and reset `0x0044A640` have a separate
+[scoped original/helper investigation](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md):
+40B versus 31B and 42B with one opcode byte mismatch; 63B/61B lower
+link primitives are **already** strict exact (EXACT-051), not new credit. **Do not** claim an exact parent by normalizing out
 missing source instructions or changing the canonical 508B function extent.
 
 ## CORE/RECON-994 — complete 511B secondary update source

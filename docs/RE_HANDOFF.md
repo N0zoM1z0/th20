@@ -17,10 +17,12 @@ not override current source, Git history, or a fresh canonical receipt.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded title/replay version | **1.00c in the same v1.00a target**, not a replacement executable |
 | Provisional Ghidra function inventory | **6,928**, not all native-confirmed function boundaries |
-| Source-present function mappings | **1,443** (authored game **plus** compiler/library and unaccepted sources) |
+| Strict-tracked source mappings / all source-file inventory rows | **1,443** in `implemented.csv`; **1,445** nonempty `source_file` rows in `functions.csv` after the two NONEXACT Renderer Boss source additions. The extra two are **not** strict units. |
 | Whole-native strict units | **1,443**, from **390** pinned MSVC object/receipt providers |
 | Credited original authored-game whole exact | **712 distinct function heads /249,793 original `.text` bytes** |
 | Whole game builds/links/plays | **No** |
+
+The 40B/42B list-helper compiler frontier has separate [native evidence](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md); its 63B/61B folded link leaves were **already exact** under EXACT-051 and are not new heads.
 
 The exact authored totals come from `config/matches.csv`, not the sum
 of source-present methods, aliases, `.rdata`, library implementations or
