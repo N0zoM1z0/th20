@@ -1469,3 +1469,4 @@ th20::NativeCardAsciiTaskQueueView::enqueue_470180
 std::list<std::function<void()>>::push_back(std::function<void()>&&)
 th20::NativeCardTextPayload::NativeCardTextPayload(move)
 th20::NativeCardTextPayload::name_c_str_44baf0
+th20::NativeRendererTextureOwner::create_dynamic_texture_44c0b0

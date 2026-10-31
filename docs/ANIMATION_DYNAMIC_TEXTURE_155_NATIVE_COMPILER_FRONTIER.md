@@ -1,3 +1,5 @@
+**Current status correction (CORE/RECON-1032):** This historical 155B NONEXACT compiler-order frontier is now [whole 155/155 strict exact](ANIMATION_DYNAMIC_TEXTURE_155_STRICT_EXACT.md). A real format local assigned *within the D3D9 CreateTexture argument* preserves the original COM vtable lookup-before-format order; all seven original relocation roles match. The older alternatives below are retained as evidence, not current acceptance state.
+
 # CORE/RECON-998 — complete 155B Renderer dynamic texture creator source frontier
 
 The immutable original at `0x0044C0B0..0x0044C14A` is a **155-byte /

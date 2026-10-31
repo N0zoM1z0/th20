@@ -1,6 +1,7 @@
-// Complete game-owned dynamic D3D9 texture creation; whole source NONEXACT.
-// The remaining compiler frontier is the order of the device's virtual method
-// lookup and the texture-format table load, not a missing gameplay branch.
+// Entire original 155B game-owned dynamic D3D9 texture creator.
+// The native method-pointer lookup precedes the format-value assignment:
+// the true format local is assigned during the CreateTexture argument.
+// This preserves original COM call evaluation and all seven physical roles.
 #include "NativeRendererTextureCreate.hpp"
 #include "AnimationFile.hpp"
 #include "Graphics.hpp"
@@ -18,9 +19,10 @@ std::int32_t NativeRendererTextureOwner::create_dynamic_texture_44c0b0(
     std::int32_t format) {
     record->flags.bits = (record->flags.bits & ~3u) | 2u;
     auto* device = process_graphics.get_device();
-    const graphics_api::TextureFormat selected_format = texture_api_formats[format];
+    graphics_api::TextureFormat selected_format;
     if (device->CreateTexture(width, height, 1, D3DUSAGE_DYNAMIC,
-                              selected_format, D3DPOOL_DEFAULT,
+                              (selected_format = texture_api_formats[format]),
+                              D3DPOOL_DEFAULT,
                               &record->texture, nullptr) != 0) {
         ecl_diagnostic_hint("error D3DXCreateTexture\n");
     }

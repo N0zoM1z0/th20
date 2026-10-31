@@ -26539,3 +26539,23 @@ size = 22
 relocations = [
   { offset = 0xE, type = "REL32", symbol = "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QBEPBDXZ", target = 0x0040F2C0 },
 ]
+
+# CORE/RECON-1032: entire original 155B/51 x86 D3D9 dynamic texture creator,
+# independent native original two E8/five PE HIGHLOW and exact compiler body.
+[units.animation_dynamic_texture_155]
+source = "src/AnimationDynamicTexture155.cpp"
+object = "build/core1032-canonical/AnimationDynamicTexture155.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererTextureOwner::create_dynamic_texture_44c0b0"]
+symbol = "?create_dynamic_texture_44c0b0@NativeRendererTextureOwner@th20@@QAEHPAUTextureRecord@2@HHH@Z"
+target_address = 0x0044C0B0
+size = 155
+relocations = [
+  { offset = 0x1C, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x21, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x39, type = "DIR32", symbol = "?texture_api_formats@th20@@3QBW4_D3DFORMAT@@B", target = 0x0056E208 },
+  { offset = 0x67, type = "DIR32", symbol = "$SG176278", target = 0x0056E250 },
+  { offset = 0x6C, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x7C, type = "DIR32", symbol = "?texture_byte_sizes@th20@@3QBIB", target = 0x0056E22C },
+  { offset = 0x91, type = "DIR32", symbol = "?texture_byte_sizes@th20@@3QBIB", target = 0x0056E22C },
+]

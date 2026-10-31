@@ -1,3 +1,5 @@
+**Current status correction (CORE/RECON-1032):** Both native Renderer texture creators are now independently [whole exact](ANIMATION_DYNAMIC_TEXTURE_155_STRICT_EXACT.md): the original 155B dynamic texture source and adjacent original 139B render-target source. Historical source-absent/NONEXACT creator statements below predate their acceptance and do not override the current canonical receipts.
+
 # ANM texture-format selection and Graphics accessors
 
 CORE/EXACT-134 accepts the complete 77-byte texture-format selection function at

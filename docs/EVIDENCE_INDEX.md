@@ -43,6 +43,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1031 — native 22B Card text capture PMR name getter whole exact](CARD_TEXT_CAPTURE_CSTR22_STRICT_EXACT.md) — true 111B callback original E8 +0x10, source `text.c_str()` with original PMR E8, 6/6 localized strict units, original generic source owner uncredited.
 
+- [CORE/RECON-1032 — full original 155B Renderer dynamic D3D9 texture Boss now whole strict exact](ANIMATION_DYNAMIC_TEXTURE_155_STRICT_EXACT.md) — real native vtable-then-format local evaluation, 51 instructions, two original E8/five HIGHLOW, complete 155/155 natural C++20 and canonical exact. +155 game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
