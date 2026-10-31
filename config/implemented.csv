@@ -1575,3 +1575,4 @@ th20::NativeRendererAnmFindOrLoadView::find_or_load_file_44eb30
 std::atomic<std::uint32_t>::operator=(uint32_t)
 std::atomic<std::uint32_t>::operator uint32_t()
 th20::NativeRendererTextureMemoryView::create_uploaded_texture_44e8f0
+th20::NativeRendererTextureMemoryView::finalize_uploaded_texture_451910

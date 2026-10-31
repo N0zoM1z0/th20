@@ -1,75 +1,93 @@
 #!/usr/bin/env python3
-"""Whole native original 2745B ANM texture alpha-fringe Boss frontier.
+"""Whole original game 2745B alpha-fringe finalizer strict native proof.
 
-Original jump tables after the code extent are genuine PE data, not
-code to shave off or synthetic exact units. Source remains NONEXACT.
+Coverage is the complete 2745B game function. Entire indivisible 2798B
+COFF contribution is also compared against original actual code + 53B
+post-return alignment/jump-table/format data. No truncated comparisons.
 """
-import csv,hashlib,importlib.util,struct,sys
+import hashlib,importlib.util,struct,sys
 from pathlib import Path
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
 s=importlib.util.spec_from_file_location('texfinpe',ROOT/'scripts/verify-animation-draw-boss-native.py');pe=importlib.util.module_from_spec(s);s.loader.exec_module(pe)
 s=importlib.util.spec_from_file_location('texfincm',ROOT/'scripts/compare-coff-function.py');cm=importlib.util.module_from_spec(s);s.loader.exec_module(cm)
-HEAD=0x00451910
-SHA='1b4a86d1336a36cd506b27e58c8e750b26874ec42a1a8da94e8e96fadfa58924'
+HEAD=0x00451910;CODE=2745;COMPARED=2798
+CODE_SHA='1b4a86d1336a36cd506b27e58c8e750b26874ec42a1a8da94e8e96fadfa58924'
 E8={0x18C:0x00451880,0x1B6:0x00451880,0x1E4:0x00451880,0x215:0x00451880,
     0x3C3:0x00451640,0x3ED:0x00451640,0x417:0x00451640,0x444:0x00451640,
     0x652:0x00451700,0x67C:0x00451700,0x6A6:0x00451700,0x6D3:0x00451700,
     0x8E5:0x004517C0,0x90F:0x004517C0,0x939:0x004517C0,0x966:0x004517C0,
     0xAAE:0x005429EE}
-HL={0x0A:0x005B25C0,0xA7:0x004523E0,0xAE:0x004523CC}
-CALLS={0x00451880:(139,'?accumulate_texel8888@'),0x00451640:(183,'?accumulate_texel1555@'),
-       0x00451700:(183,'?accumulate_texel4444@'),0x004517C0:(187,'?accumulate_texel8332@')}
+DATA={0x0A:0x005B25C0,0xA7:0x004523E0,0xAE:0x004523CC,
+      0xABC:0x004519C2,0xAC0:0x00451BEF,0xAC4:0x00451E7E,
+      0xAC8:0x0045210D,0xACC:0x0045239B}
+CHILDREN={0x00451880:(139,'256e84d8c656400232a00d5e608bd748bbfcbe09642036993da93c0df08eceaa'),
+          0x00451640:(183,'2aa5d4dc48a27a2c145a83ee7243f1120ed52e256404d4af72b66c3f1e14d1d6'),
+          0x00451700:(183,'055a3aa98aff47c9d79add63f2fbd065e9cdbd0056ee64ad91b221b786987f86'),
+          0x004517C0:(187,'44ddd8633afe50deac4cef887897e2f3c072ffea4e089b5bcbf8d7a7a0beddd6')}
 SYM='?finalize_uploaded_texture_451910@NativeRendererTextureMemoryView@th20@@QAEXPAUIDirect3DTexture9@@@Z'
-def calls(ins,head):
- return {i.address-head:(i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xffffffff
+def native_calls(ins,head):
+ return {i.address-head:(i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xFFFFFFFF
          for i in ins if i.size==5 and i.bytes[0]==0xE8}
 def verify():
- im,_=pe.verified_target();base,sec=pe.parse_sections(im);high=pe.physical_highlow(im,base,sec)
- raw=pe.raw_at(im,base,sec,HEAD,2745)
- assert hashlib.sha256(raw).hexdigest()==SHA
- ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(raw,HEAD))
- assert len(ins)==759 and ins[-1].address+ins[-1].size==HEAD+2745
- assert (ins[-1].mnemonic,ins[-1].op_str)==('ret','4')
- assert calls(ins,HEAD)==E8
- data={p-HEAD:struct.unpack('<I',pe.raw_at(im,base,sec,p,4))[0]
-       for p in high if HEAD<=p<HEAD+2745}
- assert data==HL
- assert all(list(E8.values()).count(a)==4 for a in CALLS)
- assert list(E8.values()).count(0x005429EE)==1
- assert HEAD+2745==0x004523C9
- assert pe.raw_at(im,base,sec,0x004523CC,20)==struct.pack('<5I',
+ im,_=pe.verified_target();base,sec=pe.parse_sections(im);hl=pe.physical_highlow(im,base,sec)
+ original=pe.raw_at(im,base,sec,HEAD,COMPARED);code=original[:CODE]
+ assert hashlib.sha256(code).hexdigest()==CODE_SHA
+ instructions=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(code,HEAD))
+ assert len(instructions)==759 and instructions[-1].address+instructions[-1].size==HEAD+CODE
+ assert (instructions[-1].mnemonic,instructions[-1].op_str)==('ret','4')
+ assert native_calls(instructions,HEAD)==E8
+ native_data={p-HEAD:struct.unpack('<I',pe.raw_at(im,base,sec,p,4))[0]
+              for p in hl if HEAD<=p<HEAD+COMPARED}
+ assert native_data==DATA
+ assert {k:v for k,v in DATA.items() if k<CODE}=={
+  0x0A:0x005B25C0,0xA7:0x004523E0,0xAE:0x004523CC}
+ assert original[CODE:CODE+3]==bytes.fromhex('0f1f00')
+ assert original[CODE+3:CODE+23]==struct.pack('<5I',
   0x004519C2,0x00451BEF,0x00451E7E,0x0045210D,0x0045239B)
- assert [p for p in high if 0x004523CC<=p<0x004523E0]==[
-  0x004523CC,0x004523D0,0x004523D4,0x004523D8,0x004523DC]
- # Native second format-index mapping table is 28 bytes and contains
- # no HIGHLOW; it is separate from the physical 2745B function body.
- fmtmap=pe.raw_at(im,base,sec,0x004523E0,28)
- assert fmtmap.hex()=='00040404040404040404040404040404040404040400040404010204'
- assert not any(0x004523E0<=p<0x004523FC for p in high)
- for addr,(n,_) in CALLS.items():
-  child=pe.raw_at(im,base,sec,addr,n)
-  decoded=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(child,addr))
-  assert decoded and decoded[-1].address+decoded[-1].size==addr+n
-  assert decoded[-1].mnemonic=='ret'
- obj=ROOT/'build/core1101-probes/AnimationTextureFinalize2745.obj'
- body,rels=cm.object_function(obj,SYM,2558)
- ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,0))
- assert len(body)==2558 and len(ci)==718 and len(rels)==25
- assert sum(x['type']=='REL32' for x in rels)==17
- assert sum(x['type']=='DIR32' for x in rels)==8
- assert all(x['addend']==0 for x in rels)
- lastret=next(i for i in reversed(ci) if i.mnemonic=='ret')
- assert lastret.address+lastret.size==0x9C9 and lastret.op_str=='4'
- assert [x['offset'] for x in rels if x['type']=='DIR32']==[
-   0x0A,0xA5,0xAC,0x9CC,0x9D0,0x9D4,0x9D8,0x9DC]
- for addr,(_,prefix) in CALLS.items():
-  assert sum(x['type']=='REL32' and x['symbol'].startswith(prefix) for x in rels)==4,hex(addr)
- assert sum(x['type']=='REL32' and x['symbol']=='@__security_check_cookie@4' for x in rels)==1
- assert cm.compare_unit('animation_texture_upload_from_memory_562')['result']=='exact'
- print('PASS immutable entire original 2745B/759-i386 game Renderer texture alpha-fringe finalizer, 17 real E8/3 in-code PE HIGHLOW')
- print('PASS original four different native format branches UNKNOWN/A8R8G8B8, A1R5G5B5, A4R4G4B4, A8R3G3B2; each 4 genuine E8 to distinct 139B/183B/183B/187B neighbor helpers')
- print('PASS original five-target PE jump table at 0x004523CC and 28B format mapping table at 0x004523E0, both OUTSIDE the 2745B physical function extent')
- print('SOURCE-PRESENT NONEXACT: real four-format C++20 source compiles 2558B COFF contribution /718 decoder instructions; 17 correct call roles but 8 COFF DIR32 incl 5 jump-table data relocations')
- print('PASS distinct original whole 562B texture upload caller remains strict exact; no 2745B or helper authored-game code credited')
+ format_map=original[CODE+23:]
+ assert len(format_map)==30
+ assert format_map.hex()=='000404040404040404040404040404040404040404000404040102040403'
+ assert list(native_data)==[0x0A,0xA7,0xAE,0xABC,0xAC0,0xAC4,0xAC8,0xACC]
+ for addr,(n,sha) in CHILDREN.items():
+  raw=pe.raw_at(im,base,sec,addr,n)
+  assert hashlib.sha256(raw).hexdigest()==sha
+  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(raw,addr))
+  assert ci and ci[-1].address+ci[-1].size==addr+n
+  assert list(E8.values()).count(addr)==4
+ uploader=pe.raw_at(im,base,sec,0x0044E8F0,562)
+ assert hashlib.sha256(uploader).hexdigest()=='1b0d6d08d535765761f1cfaf5f9140a7e0963f0b04b00daae23cac98cb182a19'
+ ui=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(uploader,0x0044E8F0))
+ assert native_calls(ui,0x0044E8F0)[0x1FB]==HEAD
+ obj=ROOT/'build/core1103-canonical/AnimationTextureFinalize2745.obj'
+ raw_coff,rel=cm.object_function(obj,SYM,COMPARED)
+ assert len(raw_coff)==COMPARED and len(rel)==25
+ assert sum(r['type']=='REL32' for r in rel)==17
+ assert sum(r['type']=='DIR32' for r in rel)==8
+ assert all(r['addend']==0 for r in rel)
+ ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(raw_coff[:CODE],0))
+ assert len(ci)==759 and ci[-1].address+ci[-1].size==CODE
+ assert ci[-1].mnemonic=='ret' and ci[-1].op_str=='4'
+ roles={**{k:('DIR32',v) for k,v in DATA.items()},
+        **{k+1:('REL32',v) for k,v in E8.items()}}
+ assert set(roles)=={r['offset'] for r in rel}
+ for r in rel:assert r['type']==roles[r['offset']][0]
+ left=bytearray(raw_coff);right=bytearray(original)
+ for r in rel:
+  k=r['offset'];left[k:k+4]=right[k:k+4]=b'\0'*4
+ assert left==right
+ exact=cm.compare_unit('animation_texture_finalize_alpha_2745')
+ assert exact['result']=='exact' and exact['size']==CODE
+ assert exact['matched_bytes']==CODE and exact['compared_size']==COMPARED
+ assert exact['matched_compared_bytes']==COMPARED
+ assert len(exact['relocations'])==len(roles)==25
+ for r in exact['relocations']:
+  k=int(r['offset'],16)
+  assert k in roles and r['type']==roles[k][0]
+  assert int(r['target'],16)==roles[k][1]
+ print('PASS entire original game Renderer alpha-fringe finalizer 2745B/759 i386, native 17 E8/3 in-function PE HIGHLOW, exact complete code')
+ print('PASS four real native custom texel kernels, 4 E8 each, source and original 562B uploader actual original edge into this 2745B Boss')
+ print('PASS original SEPARATE after-ret 53B region = 3B alignment, 20B 5 relocated jump targets, 30B byte-format selector; no extra game function credit for data')
+ print('PASS entire natural MSVC COFF contribution 2798/2798 bytes, 2698/2698 nonrelocated bytes, all 25 true original relocation site/type/target roles')
+ print('PASS strict source-scoped canonical animation_texture_finalize_alpha_2745 exact 2745/2745 original game code, compare_size 2798/2798, one cold object')
 if __name__=='__main__':verify()

@@ -177,6 +177,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1102 — original four custom Renderer BGRA/ARGB alpha-fringe texel kernels, 692B whole exact and game-origin correction](ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md) — existing REF-042 4/4 exact units, newly established exclusive original 2,745B Renderer parent four E8 per format, medium-confidence authored-game attribution (4 heads/692B recategorized; zero newly matched units), parent still NONEXACT.
 
+- [CORE/RECON-1103 — original entire 2,745B/759-i386 Renderer D3D9 alpha-fringe texture finalizer WHOLE STRICT EXACT](ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md) — natural original RGB pixel-array/chained resets/signed pitch/byte truncation, 17 E8 and 3 in-code PE HIGHLOW, all five original post-return jump-target HIGHLOW; 2,798/2,798 full actual PE and COFF comparison, +2,745 authored-game bytes (53B attached table not credited).
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

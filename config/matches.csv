@@ -767,3 +767,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00451700,th20::accumulate_texel4444,183,matching,100.00,accumulate_texel4444,CORE/RECON-1102; docs/ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md
 0x004517C0,th20::accumulate_texel8332,187,matching,100.00,accumulate_texel8332,CORE/RECON-1102; docs/ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md
 0x00451880,th20::accumulate_texel8888,139,matching,100.00,accumulate_texel8888,CORE/RECON-1102; docs/ANIMATION_TEXEL_FOUR_GAME_ORIGIN_692_STRICT_EXACT.md
+0x00451910,th20::NativeRendererTextureMemoryView::finalize_uploaded_texture_451910,2745,matching,100.00,animation_texture_finalize_alpha_2745,CORE/RECON-1103; docs/ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md

@@ -1,3 +1,5 @@
+**CORE/RECON-1103 CURRENT CORRECTION:** The complete original 2,745B/759 i386 Renderer texture-alpha finalizer is now [WHOLE STRICT EXACT](ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md). Real C++ `pixel[0]` texel access, signed `(-Pitch)/texel_width`, `std::uint32_t rgb[3]{}` with chained three-channel reset, unsigned x/y `>0`, and byte truncation into packed 16-bit color fields restore full original code. The strict comparison covers **ALL 2,798 original bytes including 53B of genuine post-ret tables**, all 17 E8 and eight true original PE HIGHLOW roles; only 2,745 real code bytes are credited. All older 2,558B/NONEXACT observations below are historical compiler probes, not current project status.
+
 # CORE/RECON-1101 — original 2,745B Renderer texture alpha-fringe Boss: full source, nonexact native frontier
 
 Immutable Japanese TH20 Steamless v1.00a original SHA-256

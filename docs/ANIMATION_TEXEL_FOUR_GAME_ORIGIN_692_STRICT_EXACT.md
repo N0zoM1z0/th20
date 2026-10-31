@@ -88,3 +88,12 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/TextureTexels.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1103 — whole 2,745B Renderer finalizer now native exact
+
+The original game Renderer alpha-fringe finalizer at `0x00451910`
+is now [WHOLE STRICT EXACT 2,745/2,745 source-produced game code](ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md), with independently verified full 2,798B COFF contribution and post-return jump/format tables. The four game-owned
+texel helper functions remain independently exact and already
+credited, and the upstream 562B original game texture uploader
+remains separately exact. Neither existing game function nor the
+53B following original data receives duplicate code credit.

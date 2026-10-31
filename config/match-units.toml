@@ -28225,3 +28225,44 @@ relocations = [
   { offset = 0x21E, type = "DIR32", symbol = "?texture_byte_sizes@th20@@3QBIB", target = 0x0056E22C },
   { offset = 0x228, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1103: original whole 2745B code AND all 53 native bytes
+# after its ret (three alignment bytes, 20B jump targets, 30B format map).
+# size credits only actual game function code; compare_size compares entire
+# indivisible COFF contribution and both original PE tables.
+[units.animation_texture_finalize_alpha_2745]
+source = "src/AnimationTextureFinalize2745.cpp"
+object = "build/core1103-canonical/AnimationTextureFinalize2745.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererTextureMemoryView::finalize_uploaded_texture_451910"]
+symbol = "?finalize_uploaded_texture_451910@NativeRendererTextureMemoryView@th20@@QAEXPAUIDirect3DTexture9@@@Z"
+target_address = 0x00451910
+size = 2745
+compare_size = 2798
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0xA7, type = "DIR32", symbol = "$LN60", target = 0x004523E0 },
+  { offset = 0xAE, type = "DIR32", symbol = "$LN61", target = 0x004523CC },
+  { offset = 0x18D, type = "REL32", symbol = "?accumulate_texel8888@th20@@YAXPAIPBUTexel8888@1@AAI@Z", target = 0x00451880 },
+  { offset = 0x1B7, type = "REL32", symbol = "?accumulate_texel8888@th20@@YAXPAIPBUTexel8888@1@AAI@Z", target = 0x00451880 },
+  { offset = 0x1E5, type = "REL32", symbol = "?accumulate_texel8888@th20@@YAXPAIPBUTexel8888@1@AAI@Z", target = 0x00451880 },
+  { offset = 0x216, type = "REL32", symbol = "?accumulate_texel8888@th20@@YAXPAIPBUTexel8888@1@AAI@Z", target = 0x00451880 },
+  { offset = 0x3C4, type = "REL32", symbol = "?accumulate_texel1555@th20@@YAXPAIPBUTexel1555@1@AAI@Z", target = 0x00451640 },
+  { offset = 0x3EE, type = "REL32", symbol = "?accumulate_texel1555@th20@@YAXPAIPBUTexel1555@1@AAI@Z", target = 0x00451640 },
+  { offset = 0x418, type = "REL32", symbol = "?accumulate_texel1555@th20@@YAXPAIPBUTexel1555@1@AAI@Z", target = 0x00451640 },
+  { offset = 0x445, type = "REL32", symbol = "?accumulate_texel1555@th20@@YAXPAIPBUTexel1555@1@AAI@Z", target = 0x00451640 },
+  { offset = 0x653, type = "REL32", symbol = "?accumulate_texel4444@th20@@YAXPAIPBUTexel4444@1@AAI@Z", target = 0x00451700 },
+  { offset = 0x67D, type = "REL32", symbol = "?accumulate_texel4444@th20@@YAXPAIPBUTexel4444@1@AAI@Z", target = 0x00451700 },
+  { offset = 0x6A7, type = "REL32", symbol = "?accumulate_texel4444@th20@@YAXPAIPBUTexel4444@1@AAI@Z", target = 0x00451700 },
+  { offset = 0x6D4, type = "REL32", symbol = "?accumulate_texel4444@th20@@YAXPAIPBUTexel4444@1@AAI@Z", target = 0x00451700 },
+  { offset = 0x8E6, type = "REL32", symbol = "?accumulate_texel8332@th20@@YAXPAIPBUTexel8332@1@AAI@Z", target = 0x004517C0 },
+  { offset = 0x910, type = "REL32", symbol = "?accumulate_texel8332@th20@@YAXPAIPBUTexel8332@1@AAI@Z", target = 0x004517C0 },
+  { offset = 0x93A, type = "REL32", symbol = "?accumulate_texel8332@th20@@YAXPAIPBUTexel8332@1@AAI@Z", target = 0x004517C0 },
+  { offset = 0x967, type = "REL32", symbol = "?accumulate_texel8332@th20@@YAXPAIPBUTexel8332@1@AAI@Z", target = 0x004517C0 },
+  { offset = 0xAAF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0xABC, type = "DIR32", symbol = "$LN29", target = 0x004519C2 },
+  { offset = 0xAC0, type = "DIR32", symbol = "$LN37", target = 0x00451BEF },
+  { offset = 0xAC4, type = "DIR32", symbol = "$LN44", target = 0x00451E7E },
+  { offset = 0xAC8, type = "DIR32", symbol = "$LN51", target = 0x0045210D },
+  { offset = 0xACC, type = "DIR32", symbol = "$LN58", target = 0x0045239B },
+]
