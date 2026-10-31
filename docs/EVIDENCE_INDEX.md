@@ -127,6 +127,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1076 — nine nested PMR/std::function glyph task queue helpers, 434B whole exact native STL](GLYPH_QUEUE_PUMP_NINE_STL_HELPERS_STRICT_EXACT.md) — real original 254B pump E8 to 23B/22B/60B/63B/93B methods plus 33B/70B/44B/26B original descendants, 10/10 focused source units, zero new game-authored credit.
 
+- [CORE/RECON-1077 — correct original 12B global PMR glyph task-list object, not an external pointer](GLYPH_QUEUE_GLOBAL12_NATIVE_OWNER.md) — four original 254B queue-pump HIGHLOW and original 2,227B producer HIGHLOW +0x820 all point directly to `0x005B66E0`; exact 56B queue submit receiver uses +4 node, 13/13 scoped strict units unchanged.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

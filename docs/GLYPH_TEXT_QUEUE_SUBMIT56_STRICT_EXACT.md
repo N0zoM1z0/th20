@@ -86,3 +86,7 @@ but five distinct original standard-library child code heads
 (59B/124B/34B/19B/48B) are whole strict exact from one canonical
 source/receipt. The original 56B game bridge and 132B job capture
 remain independently accepted; generic code is not double-counted.
+
+## CORE/RECON-1077 — native 12B queue global owner corrected
+
+Native `0x005B66E0` is the real 12B PMR list object, and the original 56B submission receiver is that object address; the 56B method borrows actual `+0x04` node storage. The 2,227B text producer source now uses that true global, preserving the originally accepted 56/56B and 2,227B nonexact distinction. [Independent native PE and source evidence](GLYPH_QUEUE_GLOBAL12_NATIVE_OWNER.md).

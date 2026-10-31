@@ -128,3 +128,7 @@ chain now has [nine further whole exact physical native methods](GLYPH_QUEUE_PUM
 all nine, for 434 distinct native **generic** code bytes. No original
 254B game code is recredited, and 188B std::function swap /93B list
 node disposal remain separate unresolved parents.
+
+## CORE/RECON-1077 — native 12B queue global owner corrected
+
+The exact game queue pump physically proves all four native `0x005B66E0` HIGHLOW fields address the same genuine 12B PMR-list object. The previously provisional 2,227B text-core producer was corrected to pass that actual global object address to the exact 56B submission bridge, rather than treating the first PMR allocator word as a queue pointer. All existing 254B pump code remains exact; no extra game bytes are credited. [Independent native PE and source evidence](GLYPH_QUEUE_GLOBAL12_NATIVE_OWNER.md).

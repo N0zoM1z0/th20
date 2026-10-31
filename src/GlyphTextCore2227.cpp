@@ -6,6 +6,7 @@
 #include "NativeGlyphTextCore.hpp"
 #include "NativeGlyphFontResources.hpp"
 #include "NativeGlyphTextQueueView.hpp"
+#include "NativeGlyphTaskQueue.hpp"
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphCanvasStorage.hpp"
 #include "LockRegistry.hpp"
@@ -141,7 +142,11 @@ std::uint64_t __cdecl native_text_core_415830(
         // The original 56B queue bridge takes an already-constructed
         // std::function lvalue by reference, preserving its owner lifetime.
         std::function<void()> submitted(std::move(glyph_job));
-        native_glyph_queue_5b66e0->submit_4162f0(submitted);
+        // Original 0x005B66E0 is the 12B PMR list object itself, not
+        // a global pointer. Borrow the identical native head/count layout
+        // for its whole-exact 56B member bridge without copying the list.
+        reinterpret_cast<NativeGlyphQueueView*>(&native_glyph_task_queue_5b66e0)
+            ->submit_4162f0(submitted);
     }
     // Original returned text SIZE is a native EDX:EAX value (not pixels).
     return (static_cast<std::uint64_t>(static_cast<std::uint32_t>(extent.cy))<<32) |

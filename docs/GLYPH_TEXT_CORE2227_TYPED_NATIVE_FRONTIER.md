@@ -196,3 +196,7 @@ scalar `operator new`, folded 31B class-zeroing E8 and already exact
 whole-exact under the corrected C++ `class` mangling. The original
 2,227B text producer remains SOURCE-PRESENT/NONEXACT; no previous
 constructor, destructor or generic helper code is counted twice.
+
+## CORE/RECON-1077 — native 12B queue global owner corrected
+
+The original global at `0x005B66E0` is the actual native 12B PMR glyph task list, not a pointer to a separate queue view. The original entire text core PE HIGHLOW `+0x820` directly names this object before native submit E8 `+0x824`. The maintained source now passes its true global address while preserving the whole exact 132B/23B task lifecycle. The full 2,227B core remains NONEXACT. [Independent native PE and source evidence](GLYPH_QUEUE_GLOBAL12_NATIVE_OWNER.md).
