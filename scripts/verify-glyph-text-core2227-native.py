@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Original whole 2227B GDI text rasterization Boss, 2072B typed source frontier.
+"""Original whole 2227B GDI text rasterization Boss, 2080B typed source frontier.
 
 This never accepts a shortened code extent and does not infer native target
 roles from a generated COFF input. Children have independent match units.
@@ -57,9 +57,9 @@ def verify(candidate):
  print('PASS immutable whole 2227B/470-i386 glyph text Boss: 25 real native E8 and 43 PE HIGHLOW')
  print('PASS original 294B submit Boss two E8 into text core and native 2245B outline/542B alpha/104B canvas child links')
  if candidate:
-  b,r=cm.object_function(candidate,SYM,2072)
+  b,r=cm.object_function(candidate,SYM,2080)
   ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b),0))
-  assert len(b)==2072 and len(ins)==484 and len(r)==79
+  assert len(b)==2080 and len(ins)==486 and len(r)==79
   assert sum(x['type']=='REL32' for x in r)==25
   assert sum(x['type']=='DIR32' for x in r)==54
   assert all(x['addend']==0 for x in r)
@@ -68,7 +68,7 @@ def verify(candidate):
   assert any('ensure_format_4153d0' in x['symbol'] for x in r)
   assert any('submit_4162f0' in x['symbol'] for x in r)
   assert cm.compare_unit('glyph_text_queue_submit_56')['result']=='exact'
-  print('SOURCE-PRESENT NONEXACT C++20 candidate 2072B/484 x86, 25 E8/54 DIR32 (vs native 2227B/470 and 25/43)')
+  print('SOURCE-PRESENT NONEXACT C++20 candidate 2080B/486 x86, 25 E8/54 DIR32 (vs native 2227B/470 and 25/43)')
   assert cm.compare_unit('glyph_text_job_capture_132')['result']=='exact'
   original_job=pe.raw_at(img,base,sec,0x00413EC0,132)
   assert hashlib.sha256(original_job).hexdigest()=='1bdff818be6f3097007f19698a72a5e969b7e0922c69ca783a23efa6148247fa'

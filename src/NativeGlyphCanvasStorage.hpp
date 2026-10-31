@@ -15,6 +15,9 @@ struct NativeGlyphCanvasStorage {
     HBITMAP bitmap;
     void* pixel_bytes;
     NativeGlyphCanvasStorage();
+    // Original nonvirtual game-owned dtor; scalar delete wrapper and
+    // std::destroy_at exist as distinct physical native heads.
+    ~NativeGlyphCanvasStorage();
 };
 #if defined(_M_IX86)
 static_assert(sizeof(NativeGlyphCanvasStorage)==0x124);

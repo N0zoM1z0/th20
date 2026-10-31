@@ -12,12 +12,12 @@ texture stub, nor a folded standard-library function.
 ## True upload job fields, native Direct3D9 and pixel flow
 
 The source [`GlyphTextureUpload360.cpp`](../src/GlyphTextureUpload360.cpp)
-uses an observed borrowed [0x58-byte glyph job layout](../src/NativeGlyphUploadJobView.hpp):
+uses the [single canonical 0x58-byte `NativeGlyphRenderJob`](../src/NativeGlyphRenderJob.hpp) type, shared with the native-exact 132B constructor and 23B destructor. [CORE/RECON-1069](GLYPH_RENDER_JOB_58_NATIVE_UNIFIED.md) corrected the earlier parallel borrowed view without changing the uploaded native bytes:
 
 | Native job offset | Independently demonstrated role |
 | --- | --- |
 | `+0x00` | `NativeGlyphCanvasStorage*` producing source glyph pixels |
-| `+0x04` | `IDirect3DTexture9*` destination COM object (**not** an opaque color word) |
+| `+0x04` | captured `IDirect3DBaseTexture9*`, invoked as real `IDirect3DTexture9*` destination COM object (**not** an opaque color word) |
 | `+0x08 .. +0x17` | 16B destination `RECT` for the locked D3D9 surface |
 | `+0x18 .. +0x27` | 16B source/region `RECT` with row/column source offsets |
 | `+0x28` | Optional `uint8_t*` completion flag, set to 1 after cleanup |
@@ -105,3 +105,26 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextureUpload360.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1069 — canonical shared glyph render job type
+
+The earlier parallel `NativeGlyphUploadJobView` is now superseded by
+[one true 0x58B native glyph render job](GLYPH_RENDER_JOB_58_NATIVE_UNIFIED.md)
+with a correct D3D texture at +0x04 and completion-byte pointer +0x28.
+The actual original 360B method is directly compiled as
+`NativeGlyphRenderJob::operator() const` on the **same class** whose
+132B constructor and 23B destructor are already whole exact.
+All three unique game-authored native extents remain exact, with no
+new head/byte credit and no invented forwarding method.
+
+## CORE/RECON-1070 — original 97B allocator release now real typed source
+
+This whole-exact 360B uploader's original E8 `+0x124` now has a
+[complete separate strict 97B `DiagnosticAllocator::release_object`
+implementation](GLYPH_CANVAS_ALLOCATOR_LIFETIME_97_16_49_62_STRICT_EXACT.md)
+for the actual 0x124B `NativeGlyphCanvasStorage`. Its genuine 16B
+`std::destroy_at`, 49B deleting destructor and 62B GDI cleanup are
+also independently exact. The uploader no longer uses a borrowed
+untyped `release_canvas` alias; its exact 360B and 11 native relocation
+roles remain unchanged, and the 97/16/49/62 code heads are only
+counted once at their original physical addresses.

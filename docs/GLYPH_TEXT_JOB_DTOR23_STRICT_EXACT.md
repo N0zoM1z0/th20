@@ -55,3 +55,11 @@ scripts/repo-python scripts/verify-glyph-text-job-dtor23-native.py
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextCore2227.cpp
 ```
+
+## CORE/RECON-1069 — canonical job ABI now shared with D3D upload
+
+The real +0x30 function member destructor is now maintained on
+[the single 0x58B `NativeGlyphRenderJob` class](GLYPH_RENDER_JOB_58_NATIVE_UNIFIED.md)
+together with the exact 132B D3D-texture/geometry/flag constructor and
+its exact 360B D3D9 `operator() const`. The original 23B destructor
+remains unchanged, 23/23 exact; no duplicate native code credit.

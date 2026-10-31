@@ -26981,7 +26981,7 @@ source = "src/GlyphTextCore2227.cpp"
 object = "build/core1059-canonical/GlyphTextCore2227.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeGlyphRenderJob::NativeGlyphRenderJob"]
-symbol = "??0NativeGlyphRenderJob@th20@@QAE@PAUNativeGlyphCanvasStorage@1@ABIABUNativeTextTransform4@1@2ABHABV?$function@$$A6AXXZ@std@@@Z"
+symbol = "??0NativeGlyphRenderJob@th20@@QAE@PAUNativeGlyphCanvasStorage@1@ABQAUIDirect3DBaseTexture9@@ABUNativeTextTransform4@1@2ABQAEABV?$function@$$A6AXXZ@std@@@Z"
 target_address = 0x00413EC0
 size = 132
 relocations = [
@@ -27203,8 +27203,8 @@ relocations = [
 source = "src/GlyphTextureUpload360.cpp"
 object = "build/core1068-canonical/GlyphTextureUpload360.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
-functions = ["th20::NativeGlyphUploadJobView::upload_4145d0"]
-symbol = "?upload_4145d0@NativeGlyphUploadJobView@th20@@QAEXXZ"
+functions = ["th20::NativeGlyphRenderJob::operator() const"]
+symbol = "??RNativeGlyphRenderJob@th20@@QBEXXZ"
 target_address = 0x004145D0
 size = 360
 relocations = [
@@ -27215,7 +27215,7 @@ relocations = [
   { offset = 0xD8, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
   { offset = 0x114, type = "REL32", symbol = "?release_surface_416360@NativeGlyphCanvasView@th20@@QAE_NXZ", target = 0x00416360 },
   { offset = 0x120, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
-  { offset = 0x125, type = "REL32", symbol = "?release_canvas_413be0@NativeGlyphAllocatorBorrow@th20@@QAEXPAUNativeGlyphCanvasStorage@2@@Z", target = 0x00413BE0 },
+  { offset = 0x125, type = "REL32", symbol = "??$release_object@UNativeGlyphCanvasStorage@th20@@@DiagnosticAllocator@th20@@QAEXPAUNativeGlyphCanvasStorage@1@@Z", target = 0x00413BE0 },
   { offset = 0x143, type = "REL32", symbol = "??B?$function@$$A6AXXZ@std@@QBE_NXZ", target = 0x004145A0 },
   { offset = 0x155, type = "REL32", symbol = "??R?$_Func_class@X$$V@std@@QBEXXZ", target = 0x00414740 },
   { offset = 0x160, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
@@ -27234,4 +27234,67 @@ relocations = [
   { offset = 0xD, type = "REL32", symbol = "?_Empty@?$_Func_class@X$$V@std@@IBE_NXZ", target = 0x00414A80 },
   { offset = 0x19, type = "REL32", symbol = "?_Xbad_function_call@std@@YAXXZ", target = 0x00540E98 },
   { offset = 0x22, type = "REL32", symbol = "?_Getimpl@?$_Func_class@X$$V@std@@ABEPAV?$_Func_base@X$$V@2@XZ", target = 0x00414AD0 },
+]
+
+# CORE/RECON-1070: whole real 97B native GDI glyph canvas lifetime.
+[units.glyph_canvas_allocator_release_97]
+source = "src/GlyphCanvasAllocatorLifetime.cpp"
+object = "build/core1070-canonical/GlyphCanvasAllocatorLifetime.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::DiagnosticAllocator::release_object<NativeGlyphCanvasStorage>"]
+symbol = "??$release_object@UNativeGlyphCanvasStorage@th20@@@DiagnosticAllocator@th20@@QAEXPAUNativeGlyphCanvasStorage@1@@Z"
+target_address = 0x00413BE0
+size = 97
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x20, type = "REL32", symbol = "??$destroy_at@UNativeGlyphCanvasStorage@th20@@@std@@YAXQAUNativeGlyphCanvasStorage@th20@@@Z", target = 0x00413CD0 },
+  { offset = 0x2A, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x2F, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x38, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x41, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x005429FC },
+  { offset = 0x4C, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x57, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1070: whole real 16B native GDI glyph canvas lifetime.
+[units.glyph_canvas_destroy_at_16]
+source = "src/GlyphCanvasAllocatorLifetime.cpp"
+object = "build/core1070-canonical/GlyphCanvasAllocatorLifetime.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::destroy_at<NativeGlyphCanvasStorage>"]
+symbol = "??$destroy_at@UNativeGlyphCanvasStorage@th20@@@std@@YAXQAUNativeGlyphCanvasStorage@th20@@@Z"
+target_address = 0x00413CD0
+size = 16
+relocations = [
+  { offset = 0x9, type = "REL32", symbol = "??_GNativeGlyphCanvasStorage@th20@@QAEPAXI@Z", target = 0x004147E0 },
+]
+
+# CORE/RECON-1070: whole real 49B native GDI glyph canvas lifetime.
+[units.glyph_canvas_scalar_deleting_dtor_49]
+source = "src/GlyphCanvasAllocatorLifetime.cpp"
+object = "build/core1070-canonical/GlyphCanvasAllocatorLifetime.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasStorage::scalar_deleting_destructor"]
+symbol = "??_GNativeGlyphCanvasStorage@th20@@QAEPAXI@Z"
+target_address = 0x004147E0
+size = 49
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??1NativeGlyphCanvasStorage@th20@@QAE@XZ", target = 0x00414460 },
+  { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]
+
+# CORE/RECON-1070: whole real 62B native GDI glyph canvas lifetime.
+[units.glyph_canvas_destructor_62]
+source = "src/GlyphCanvasAllocatorLifetime.cpp"
+object = "build/core1070-canonical/GlyphCanvasAllocatorLifetime.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasStorage::~NativeGlyphCanvasStorage"]
+symbol = "??1NativeGlyphCanvasStorage@th20@@QAE@XZ"
+target_address = 0x00414460
+size = 62
+compare_size = 67
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1NativeGlyphCanvasStorage@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "?release_surface_416360@NativeGlyphCanvasView@th20@@QAE_NXZ", target = 0x00416360 },
 ]

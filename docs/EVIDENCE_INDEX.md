@@ -111,6 +111,10 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1068 — complete 360B native D3D9/GDI glyph texture upload Boss strict exact](GLYPH_TEXTURE_UPLOAD360_STRICT_EXACT.md) — COM surface lock, native canvas pixel copy, exact cleanup and completion callback, original 9 E8/2 HIGHLOW, 360/360 game authored +360B and separate generic 59/59 callback.
 
+- [CORE/RECON-1069 — unify original 0x58B glyph render job ctor/dtor/D3D9 upload onto one canonical class](GLYPH_RENDER_JOB_58_NATIVE_UNIFIED.md) — source field +4 is native D3D texture, +0x28 completion pointer, correct 132/23/360B original exact under two affected objects; no new native head or authored byte credit.
+
+- [CORE/RECON-1070 — complete original GDI canvas allocator/destruction graph 97B/16B/49B/62B whole strict exact](GLYPH_CANVAS_ALLOCATOR_LIFETIME_97_16_49_62_STRICT_EXACT.md) — real 360B D3D9 upload E8 to game allocator, genuine std::destroy_at, scalar deleting dtor and 62B canvas cleanup plus five native INT3 alignment bytes, 10/10 affected exact; +208 authored-game bytes and 16 generic bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

@@ -1,3 +1,5 @@
+**CORE/RECON-1069 CURRENT STATUS CORRECTION:** The queued glyph job is now represented by [one exact 0x58-byte `NativeGlyphRenderJob` class](GLYPH_RENDER_JOB_58_NATIVE_UNIFIED.md) for its 132B constructor, 23B destructor and 360B native D3D9 `operator() const`. Its +0x04 word is a texture COM pointer, +0x28 a completion flag pointer, and +0x30 the same 40B function callback. Earlier notes below calling them provisional color/mode names are historical; all original native code was preserved.
+
 # CORE/RECON-1059 — complete original 132B glyph text job capture, whole strict exact
 
 Original target: immutable Japanese TH20 v1.00a Steamless executable SHA-256

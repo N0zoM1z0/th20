@@ -2,6 +2,7 @@
 // SOURCE-PRESENT NONEXACT: all native font, GDI, outline, alpha and
 // submission stages are maintained; original compiler/EH and the queued
 // functor/task producer have independent source boundaries still open.
+#include "NativeGlyphRenderJob.hpp"
 #include "NativeGlyphTextCore.hpp"
 #include "NativeGlyphFontResources.hpp"
 #include "NativeGlyphTextQueueView.hpp"
@@ -31,31 +32,7 @@ extern const float native_font_size_56c8e0;
 struct NativeGlyphCanvasFactoryView {
     NativeGlyphCanvasStorage* allocate_canvas_413c50(const char* label);
 };
-struct NativeGlyphRenderJob {
-    NativeGlyphCanvasStorage* canvas;
-    std::uint32_t color;
-    NativeTextTransform4 geometry;
-    NativeTextTransform4 texture_region;
-    std::int32_t mode;
-    std::int32_t other_flags; // Native +0x2C remains uninitialized here.
-    std::function<void()> callback;
-    // Whole-exact 132B native job capture at 0x00413EC0: the original
-    // borrows the input std::function and copies it into the 40B member;
-    // it does NOT move an owned by-value function or clear +0x2C.
-    NativeGlyphRenderJob(NativeGlyphCanvasStorage* source,
-                         const std::uint32_t& color_value,
-                         const NativeTextTransform4& geometry_value,
-                         const NativeTextTransform4& texture_value,
-                         const std::int32_t& mode_value,
-                         const std::function<void()>& task)
-      : canvas(source),color(color_value),geometry(geometry_value),
-        texture_region(texture_value),mode(mode_value),
-        callback(task) {}
-    void operator()() const; // Original native drawing job body is separate.
-};
-#if defined(_M_IX86)
-static_assert(sizeof(NativeGlyphRenderJob)==0x58);
-#endif
+
 
 // The native 542B canvas alpha processor and 2,245B outline compositor
 // are independently accounted for. This Boss invokes those real methods
@@ -151,8 +128,14 @@ std::uint64_t __cdecl native_text_core_415830(
             pixel_rectangle.field_d+=6;
         }
         const std::int32_t glyph_mode=mode;
-        NativeGlyphRenderJob glyph_job(canvas,color,native_rectangle,pixel_rectangle,
-                                       glyph_mode,callback);
+        // Native upload code proves this original 32-bit argument word
+        // becomes a borrowed completion-byte pointer in the captured job.
+        // The submit/format caller's external parameter spelling is still
+        // unresolved; preserve every i386 pointer bit from that input.
+        std::uint8_t* completion_flag=reinterpret_cast<std::uint8_t*>(
+            static_cast<std::uintptr_t>(static_cast<std::uint32_t>(mode)));
+        NativeGlyphRenderJob glyph_job(canvas,texture,native_rectangle,pixel_rectangle,
+                                       completion_flag,callback);
         // The original 56B queue bridge takes an already-constructed
         // std::function lvalue by reference, preserving its owner lifetime.
         std::function<void()> submitted(std::move(glyph_job));

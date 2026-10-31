@@ -1,3 +1,5 @@
+**CORE/RECON-1069 CURRENT STATUS CORRECTION:** The 132B native glyph job capture, 23B destructor and 360B D3D9 upload now share [one correct `NativeGlyphRenderJob` class](GLYPH_RENDER_JOB_58_NATIVE_UNIFIED.md). The old `color`/numeric `mode` member names were wrong: true +0x04 texture COM pointer and +0x28 optional completion pointer were proven by the exact upload. Source-parent candidate now **2,080B/486 i386, 25 E8/54 DIR32** versus original 2,227B/470, 25 E8/43 HIGHLOW. Earlier 2,072B or 2,052B parent candidates are historical. Source still NONEXACT; external completion argument provenance remains open.
+
 **CORE/RECON-1060 CURRENT STATUS:** The real queue submission method `0x004162F0` is now [whole 56/56B strict exact](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md). Its original input is a borrowed `std::function<void()>&`; the main source now constructs a real lvalue before passing it to the native `std::_Unfancy`/queue bridge. The current 2,227B source candidate is **2,072B/484 i386, 25 E8/54 DIR32**, still NONEXACT. Earlier 2,052B/481/24-E8 statistics below are historical.
 
 # CORE/RECON-1058 — complete original 2,227B glyph text rasterizer, typed game-source frontier
@@ -171,3 +173,13 @@ provisional capture source field labels `color` and `mode`. Those
 capture parameter/owner types require separate correction; the 132B
 capture machine code itself is already whole exact. The 2,227B
 text core remains NONEXACT even with its execution body accepted.
+
+## CORE/RECON-1070 — real GDI glyph canvas destructor and allocator
+
+The native queued D3D9 upload now calls the original
+[97B allocator release →16B `std::destroy_at` →49B scalar delete →
+62B GDI canvas destructor](GLYPH_CANVAS_ALLOCATOR_LIFETIME_97_16_49_62_STRICT_EXACT.md)
+as independently exact physical native code, on the same concrete
+canvas that this text-core producer allocates. The queued 360B upload
+and the actual 0x58B glyph job class remain separately strict exact,
+but the original 2,227B producer is still SOURCE-PRESENT/NONEXACT.
