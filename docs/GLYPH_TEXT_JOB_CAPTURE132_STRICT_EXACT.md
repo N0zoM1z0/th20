@@ -92,3 +92,15 @@ on the original `0x004142C0` head, called by the actual original
 member at +0x30 via the existing original 20B std::function destructor.
 Both separate game-specific 132B ctor and 23B dtor replay whole exact
 in one canonical source, with no transitive parent or generic credit.
+
+## CORE/RECON-1068 — native 360B upload establishes capture field types
+
+The actual captured glyph job is executed by the independent
+[whole-exact 360B D3D9 upload Boss](GLYPH_TEXTURE_UPLOAD360_STRICT_EXACT.md).
+That original body treats the word at **+0x04 as a D3D9 texture COM
+pointer**, not as an opaque color value, and the word **+0x28 as an
+optional `uint8_t*` completion flag**, not a numeric glyph mode.
+The historical names in this 132B constructor's semantic parent
+source are therefore provisional and should be corrected without
+changing the accepted 132B native machine-code extent. The source's
+40B std::function capture at +0x30 is independently confirmed.

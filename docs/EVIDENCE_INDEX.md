@@ -109,6 +109,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1067 — original whole 274B GDI font text measurement Boss strict exact](GLYPH_TEXT_MEASURE274_STRICT_EXACT.md) — real 22-HFONT table, CP932/Win32 `GetDC` and text extent plus margins, direct HWND getter lifetime, all 5 E8/8 HIGHLOW, full 274/274 and +274 game-authored bytes.
 
+- [CORE/RECON-1068 — complete 360B native D3D9/GDI glyph texture upload Boss strict exact](GLYPH_TEXTURE_UPLOAD360_STRICT_EXACT.md) — COM surface lock, native canvas pixel copy, exact cleanup and completion callback, original 9 E8/2 HIGHLOW, 360/360 game authored +360B and separate generic 59/59 callback.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

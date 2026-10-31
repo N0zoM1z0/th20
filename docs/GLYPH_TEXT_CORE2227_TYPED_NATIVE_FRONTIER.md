@@ -159,3 +159,15 @@ with the real native window getter, GDI selected-font lifecycle and +4
 margins. The 274B measurement and 79B font cleanup are independent
 native heads, not extra executable bytes of this 2,227B raster core.
 The core remains SOURCE-PRESENT/NONEXACT and is not double-counted.
+
+## CORE/RECON-1068 — original queued D3D9 upload body now exact
+
+The game-specific glyph task created by this core is executed through
+the independently [WHOLE EXACT 360B D3D9 font-texture upload
+Boss](GLYPH_TEXTURE_UPLOAD360_STRICT_EXACT.md). Its native receiver
+layout proves that object `+0x04` is a D3D9 texture COM pointer and
+`+0x28` is an optional completion byte pointer, contradicting the
+provisional capture source field labels `color` and `mode`. Those
+capture parameter/owner types require separate correction; the 132B
+capture machine code itself is already whole exact. The 2,227B
+text core remains NONEXACT even with its execution body accepted.
