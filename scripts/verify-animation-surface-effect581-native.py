@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Whole immutable original Renderer 581B surface-copy/pulse effect Boss.
+"""Whole original Renderer 581B D3D9 color surface effect, strict exact.
 
-Natural C++20 source emits 580B/200 i386 with exactly one missing
-original flush-boundary NOP. Mask-only diagnostics are NEVER exact credit.
+A genuinely separate D3D9 acquired surface/pixel-lifetime C++ scope
+naturally emits the original post-flush NOP, without fake source padding.
+Native E8/PE HIGHLOW destinations are independently read from locked PE.
 """
 import hashlib,importlib.util,struct,subprocess,sys
 from pathlib import Path
@@ -40,30 +41,31 @@ def verify():
  # Original three channel-source references all bind to ONE actual
  # locked game renderer random state at 0x005BA4C4, not a new instance.
  assert all(hl[x]==0x005BA4C4 for x in (0x17C,0x1A6,0x1CD))
- obj=ROOT/'build/core1088-probes/AnimationSurfaceEffect581.obj'
+ obj=ROOT/'build/core1092-canonical/AnimationSurfaceEffect581.obj'
  syms=subprocess.run(['strings',str(obj)],capture_output=True,text=True,check=True).stdout.splitlines()
  assert SYM in syms
- candidate,rel=cm.object_function(obj,SYM,580)
+ candidate,rel=cm.object_function(obj,SYM,581)
  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(candidate,0))
- assert len(candidate)==580 and len(ci)==200 and len(rel)==13
+ assert len(candidate)==581 and len(ci)==201 and len(rel)==13
  assert sum(x['type']=='REL32' for x in rel)==9
  assert sum(x['type']=='DIR32' for x in rel)==4
  assert all(x['addend']==0 for x in rel)
- # Compare original full 581B read, then omit ONE real NOP for a
- # deliberately noncanonical compiler-difference diagnostic only.
- normalized=bytearray(raw);del normalized[0x48]
- generated=bytearray(candidate)
+ assert candidate[0x48]==0x90
+ assert next(i for i in ci if i.address==0x48).mnemonic=='nop'
  sites={**{k:('DIR32',v) for k,v in DATA.items()},
         **{k+1:('REL32',v) for k,v in CALLS.items()}}
- assert len(sites)==len(rel)==13
- for r in rel:
-  off=r['offset'];orig_off=off+(off>=0x48)
-  assert orig_off in sites,(off,orig_off)
-  assert r['type']==sites[orig_off][0]
-  generated[off:off+4]=normalized[off:off+4]=b'\0'*4
- diff=[x for x in range(580) if normalized[x]!=generated[x]]
- assert diff==[0x3C],diff
- assert generated[0x3C]==0xF2 and normalized[0x3C]==0xF3
+ assert {r['offset'] for r in rel}==set(sites)
+ for r in rel:assert r['type']==sites[r['offset']][0]
+ cmp=cm.compare(obj,SYM,HEAD,581)
+ assert cmp['result']=='structural-exact'
+ assert cmp['matched_comparable_bytes']==cmp['comparable_bytes']==529
+ for r in cmp['relocations']:
+  off=int(r['offset'],16)
+  assert r['type']==sites[off][0]
+  assert int(r['solved_destination'],16)==sites[off][1]
+ unit=cm.compare_unit('animation_renderer_surface_effect_581')
+ assert unit['result']=='exact' and unit['size']==581 and unit['matched_bytes']==581
+ assert len(unit['relocations'])==13
  # These are earlier independently accepted complete functions. Their
  # original physical PE SHA is enough here: their canonical providers
  # are unchanged, and forcing a cold recompile would expand the scope.
@@ -71,10 +73,9 @@ def verify():
       (0x00425CC0,23,'fa052edde7f97f93d22de573e59ac5de5a972ba6e485c81dbddcdc8bdab58180'),
       (0x00449D20,92,'4c9c514de33a85505908e34b68c1e966f231132bcf66364d1858d38ee76cb860')]:
   assert hashlib.sha256(pe.raw_at(image,base,sec,head,size)).hexdigest()==sha
- print('PASS original whole 581B/201-i386 Renderer D3D9 surface effect, nine physical E8 and four native PE HIGHLOW')
- print('PASS native 42-file array lookup, real Draw flush, D3DXLoadSurfaceFromSurface, LockRect/UnlockRect/Release and signed channel arithmetic')
- print('PASS three original separate random_byte_449d20 calls, all bound to actual global 0x005BA4C4 and existing whole-exact 92B native pulse')
- print('PASS natural 580B/200-i386 C++ source: nine REL32/four DIR32, genuine signed /0x300 and /0x500 divisions, actual image pixel/stride handling')
- print('NONEXACT: native one genuine +0x48 NOP after flush; diagnostic-only 579/580 equal ordinary bytes after omission, plus changed jump distance 0xF3 vs 0xF2')
- print('No whole-original 581B strict unit or game exact code credit; no fake padding/inert locals/target edits')
+ print('PASS original whole 581B/201-i386 Renderer D3D9 surface effect, nine physical E8/four HIGHLOW')
+ print('PASS actual 42-file Renderer array, flush, D3DX surface blit, optional LockRect/UnlockRect, three native game random_byte calls and signed channel arithmetic')
+ print('PASS genuine C++ acquired surface/pixel lifetime scope naturally emits actual original +0x48 post-flush NOP and original branch displacement')
+ print('PASS pinned canonical whole 581/581 native bytes, 529/529 ordinary bytes and all 13 true original relocation field/target roles')
+ print('PASS one newly credited game-authored original 581B physical function, existing 23B/92B and folded helpers not recredited')
 if __name__=='__main__':verify()

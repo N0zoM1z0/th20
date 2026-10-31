@@ -27836,3 +27836,28 @@ relocations = [
   { offset = 0x15E, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
   { offset = 0x1AD, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1092: whole original 581B game D3D9 surface random color effect.
+[units.animation_renderer_surface_effect_581]
+source = "src/AnimationSurfaceEffect581.cpp"
+object = "build/core1092-canonical/AnimationSurfaceEffect581.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererSurfaceBlitView::blit_surface_effect_44be40"]
+symbol = "?blit_surface_effect_44be40@NativeRendererSurfaceBlitView@th20@@QAEXHHPAUIDirect3DSurface9@@PBUtagRECT@@1H@Z"
+target_address = 0x0044BE40
+size = 581
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x28, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x44, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0x5D, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
+  { offset = 0xAA, type = "REL32", symbol = "_D3DXLoadSurfaceFromSurface@32", target = 0x0054069C },
+  { offset = 0x13F, type = "REL32", symbol = "??0PackedColor@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x17C, type = "DIR32", symbol = "?native_renderer_pulse_5ba4c4@th20@@3UNativeRendererRandomPulse@1@A", target = 0x005BA4C4 },
+  { offset = 0x181, type = "REL32", symbol = "?random_byte_449d20@NativeRendererRandomPulse@th20@@QAEEXZ", target = 0x00449D20 },
+  { offset = 0x1A6, type = "DIR32", symbol = "?native_renderer_pulse_5ba4c4@th20@@3UNativeRendererRandomPulse@1@A", target = 0x005BA4C4 },
+  { offset = 0x1AB, type = "REL32", symbol = "?random_byte_449d20@NativeRendererRandomPulse@th20@@QAEEXZ", target = 0x00449D20 },
+  { offset = 0x1CD, type = "DIR32", symbol = "?native_renderer_pulse_5ba4c4@th20@@3UNativeRendererRandomPulse@1@A", target = 0x005BA4C4 },
+  { offset = 0x1D2, type = "REL32", symbol = "?random_byte_449d20@NativeRendererRandomPulse@th20@@QAEEXZ", target = 0x00449D20 },
+  { offset = 0x23B, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

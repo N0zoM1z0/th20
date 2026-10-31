@@ -1,3 +1,5 @@
+**CORE/RECON-1092 CURRENT CORRECTION:** The original 581B game Renderer color-effect surface Boss is now [WHOLE STRICT EXACT 581/581](ANIMATION_SURFACE_EFFECT581_STRICT_EXACT.md). The real nested C++ acquired surface/pixel lifetime after draw flush naturally produces the original one-byte `NOP` and its original branch displacement under pinned MSVC; the complete 581B/201 source matches 529/529 ordinary bytes and all nine E8/four PE HIGHLOW. Historical NONEXACT 580B source observations below are superseded; no source padding or target-byte patch was used.
+
 **CORE/RECON-1091 CURRENT CORRECTION:** Original Renderer 439B D3D9 surface blit at `0x0044BB10` is now [WHOLE STRICT EXACT 439/439](ANIMATION_SURFACE_BLIT439_STRICT_EXACT.md). A genuine nested C++ surface-lifetime scope after Renderer draw flush naturally makes MSVC emit the original one-byte `NOP`, 407/407 nonrelocated bytes and all six E8/two HIGHLOW. Earlier 438B/NONEXACT statements below are historical; no fake padding or truncated original boundary was used.
 
 # CORE/RECON-1088 — whole original 581B D3D9 texture surface color-effect Boss, natural 580B source frontier

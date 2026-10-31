@@ -155,6 +155,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1091 — original entire 439B D3D9 Renderer sprite RECT surface blit Boss WHOLE STRICT EXACT](ANIMATION_SURFACE_BLIT439_STRICT_EXACT.md) — native 6 E8/2 HIGHLOW and complete 439B source, original post-flush NOP naturally emitted through genuine acquired-surface C++ scope, 407/407 ordinary bytes, +439 authored-game original code bytes.
 
+- [CORE/RECON-1092 — original 581B D3D9 Renderer RGB surface effect Boss whole strict exact](ANIMATION_SURFACE_EFFECT581_STRICT_EXACT.md) — genuine surface/pixel lifetime scope after flush emits original NOP naturally, full 581B/201 i386 with 529/529 ordinary bytes and 9 E8/4 HIGHLOW, three real game random calls, +581 authored game `.text` bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

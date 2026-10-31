@@ -121,3 +121,13 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnimationSurfaceBlit439.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1092 — neighboring 581B Renderer surface-effect Boss now exact
+
+The adjacent original 581B/201-i386
+[Renderer optional color effect](ANIMATION_SURFACE_EFFECT581_STRICT_EXACT.md)
+is now independently WHOLE STRICT EXACT using its own genuine
+D3D9 surface/pixel resource-lifetime scope after draw flush. Native
+nine E8/four HIGHLOW, three calls to the exact 92B game random pulse,
+and 581/581 full original bytes are checked separately from this
+439B blit. Neither game function is credited twice.
