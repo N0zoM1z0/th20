@@ -165,7 +165,7 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1096 — whole exact 81B/132B/104B/54B/44B nested AnimationFile filesystem/PMR helpers](ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md) — 415 new distinct generic native bytes, original parent E8 and true 104B security HIGHLOW, 15/15 source-scoped exact receipts, no game-authored credit.
 
-- [CORE/RECON-1096 — original complete 269B Renderer AnimationFile preload/register Boss strict exact](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md) — real original lock17/42-file table, exact 67B allocator and 97B release, whole exact 1,022B loader downstream, 269/269, 10E8/9HIGHLOW, +269 game-authored original `.text` bytes.
+- [CORE/RECON-1097 — original complete 269B Renderer AnimationFile preload/register Boss strict exact](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md) — real original lock17/42-file table, exact 67B allocator and 97B release, whole exact 1,022B loader downstream, 269/269, 10E8/9HIGHLOW, +269 game-authored original `.text` bytes.
 
 ## Reading order for outstanding original Bosses
 

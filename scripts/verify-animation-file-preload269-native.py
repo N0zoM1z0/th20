@@ -48,7 +48,7 @@ def verify():
   assert hashlib.sha256(pe.raw_at(im,base,sec,orighead,n)).hexdigest()==sha
  assert pe.raw_at(im,base,sec,0x0056E378,19).startswith(b'::preloadAnim')
  assert pe.raw_at(im,base,sec,0x0056E3B0,68).startswith(b'D:\\cygwin')
- obj=ROOT/'build/core1096-canonical/AnimationFilePreload269.obj'
+ obj=ROOT/'build/core1097-canonical/AnimationFilePreload269.obj'
  cmp=cm.compare(obj,SYM,HEAD,269)
  assert cmp['result']=='structural-exact'
  assert cmp['matched_comparable_bytes']==cmp['comparable_bytes']==193

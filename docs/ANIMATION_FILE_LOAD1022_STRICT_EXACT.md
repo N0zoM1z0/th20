@@ -182,7 +182,7 @@ name and next-header offsets. A focused exact replay of this single
 affected C++20 file object preserved **10/10 whole strict units**
 after its header's include-closure change.
 
-## CORE/RECON-1096 — upstream original 269B Renderer preload now exact
+## CORE/RECON-1097 — upstream original 269B Renderer preload now exact
 
 The actual game Renderer `0x0044ED40` now has a
 [whole original 269B native exact preload function](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md).
