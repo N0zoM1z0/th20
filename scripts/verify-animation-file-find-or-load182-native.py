@@ -59,9 +59,35 @@ def verify():
  result=cm.compare_unit('animation_file_find_or_load_182')
  assert result['result']=='exact' and result['size']==182 and result['matched_bytes']==182
  assert len(result['relocations'])==11
+ # The two generic atomic wrappers are separate complete original
+ # native heads with real caller E8 sites. Verify full original bytes
+ # and canonical receipts, but never credit them as game authorship.
+ for unit,head,size,sha,sym,callee,site in [
+   ('animation_file_atomic_assign_28',0x004493C0,28,
+     '92b9ef8a164060015ffd17d7e4fd8dc3b4e51cb2035abcc33df7051c195705c7',
+     '??4?$atomic@I@std@@QAEII@Z',0x0040C550,0x0E),
+   ('animation_file_atomic_value_21',0x004292C0,21,
+     'c0826eff4a5d0e01f268b19ea363af174e4165357bef14133664b1cf291bd715',
+     '??B?$atomic@I@std@@QBEIXZ',0x0040C420,0x0C)]:
+  body=pe.raw_at(image,base,sec,head,size)
+  assert hashlib.sha256(body).hexdigest()==sha
+  instructions=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,head))
+  assert instructions[-1].address+instructions[-1].size==head+size
+  assert calls(instructions,head)=={site:callee}
+  assert not any(head<=x<head+size for x in hls)
+  z_atomic=cm.compare_unit(unit)
+  assert z_atomic['result']=='exact' and z_atomic['size']==size and z_atomic['matched_bytes']==size
+  comp_atomic=cm.compare(obj,sym,head,size)
+  assert comp_atomic['result']=='structural-exact'
+  assert comp_atomic['matched_comparable_bytes']==comp_atomic['comparable_bytes']==size-4
+  assert len(comp_atomic['relocations'])==1
+  rel=comp_atomic['relocations'][0]
+  assert int(rel['offset'],16)==site+1 and rel['type']=='REL32'
+  assert int(rel['solved_destination'],16)==callee
+  print(f'PASS {unit} whole original {size}/{size} generic STL wrapper, one original E8 to {callee:#x}, zero PE HIGHLOW')
  print('PASS original 182B/64-i386 Renderer AnimationFile find/preload/poll whole game Boss, seven native E8/four PE HIGHLOW')
  print('PASS two original calls to exact 40B Renderer file_by_index, distinct exact 269B preload and two genuine atomic<uint32_t> wrapper heads')
  print('PASS native atomic bool conversion not integer load, original shared mode global at 0x005C5888 and Sleep(1) IAT 0x0056C16C, original NOPs and logs')
  print('PASS source entire 182/182 native, 138/138 ordinary bytes, all 11 independent original relocated sites and physical destinations')
- print('PASS 1 newly authored game head/182 bytes; existing 40B/269B game and 28B/21B generic wrappers not credited twice')
+ print('PASS one newly authored game head/182B and TWO additional generic STL heads/49B; prior 40B/269B game children not recredited')
 if __name__=='__main__':verify()

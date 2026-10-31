@@ -1590,3 +1590,5 @@ std::wstring::operator_string_view,0x0040E7C0,function
 std::filesystem::path::path_wstring_view,0x00417DC0,function
 th20::NativeRendererAnmPreloadView::preload_anm_44ed40,0x0044ED40,function
 th20::NativeRendererAnmFindOrLoadView::find_or_load_file_44eb30,0x0044EB30,function
+std::atomic<std::uint32_t>::operator=(uint32_t),0x004493C0,function
+std::atomic<std::uint32_t>::operator uint32_t(),0x004292C0,function

@@ -41,11 +41,14 @@ original contains:
 | `+0x5D` | original 28B `std::atomic<uint32_t>::operator=(uint32_t)` `0x004493C0` |
 | `+0x69` | **original 21B atomic Boolean conversion** `0x004292C0`, not a no-argument `.load()` body |
 
-Expressing the real semantic operation as
-`static_cast<bool>(file->stage)` naturally causes MSVC to invoke
-the original 21B conversion wrapper, generate the original two
-conditional branches and temporary boolean, and retain the two genuine
-post-atomic/Sleep original compiler NOPs. This is not padding or an
+Expressing the real semantic operation as the implicit Boolean test
+`while (file->stage && ((native_renderer_async_mode_5c5888 >> 5) & 3) == 0)`
+naturally causes MSVC to invoke the original 21B conversion wrapper,
+generate the original two conditional branches and temporary Boolean,
+and retain the two genuine post-atomic/Sleep compiler NOPs.
+The explicit `static_cast<uint32_t>(file->stage)` and direct `.load()`
+forms were separately compiled and did **not** reproduce the original
+native method. This is not padding or an
 inert code-shaping local: an atomic value is actually used as a Boolean
 completion predicate. The entire compiled method is now **182B/64
 instructions** with **138/138 nonrelocated bytes** and all original
@@ -76,13 +79,17 @@ animation_file_find_or_load_182: exact (182/182 bytes)
 Original physical function: 182B /64 i386
 Ordinary bytes: 138/138
 Original relocation roles: 7 E8 REL32 +4 PE HIGHLOW
-Exact replay: 1/1 unit, 1 affected cold object
+animation_file_atomic_assign_28: exact (28/28 bytes), generic STL
+animation_file_atomic_value_21: exact (21/21 bytes), generic STL
+Exact replay: 3/3 units, 1 affected cold object
 ```
 
 **One newly distinct game-authored original physical head /182 native
 `.text` bytes** is credited. Previously exact 40B game file lookup,
 269B game preload and downstream 1,022B resource loader remain separate
-physical code; the 28B/21B generic atomic helpers are not double-counted.
+physical code; the separately whole-exact **28B/21B generic atomic wrappers add
+49 distinct original STL bytes** but are never counted as game-authored
+code. The existing game-owner credits are not duplicated.
 Original executable global linking and playability remain unresolved.
 No full-project cold replay, executable patch, fake local or handwritten
 instruction was used.
