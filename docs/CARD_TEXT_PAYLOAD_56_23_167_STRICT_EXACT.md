@@ -63,3 +63,11 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardTextPayloadNative.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1008: payload integrated into maintained Card start source
+
+The [full-route, NONEXACT Card start candidate](CARD_START1896_TYPED_NATIVE_FRONTIER.md)
+now constructs and destroys the *real* `NativeCardTextPayload` around its
+text task submission scope, rather than hiding the already exact 56B/23B
+lifetime inside a single speculative function call. The original 1,896B
+parent remains unaccepted while the text queue and EH details are open.

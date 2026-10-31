@@ -1,3 +1,5 @@
+**CORE/RECON-1008 update:** The original 1,896B Card::start_spell now has [maintained typed C++20 gameplay source](CARD_START1896_TYPED_NATIVE_FRONTIER.md), compiling to a 1,732B research candidate. Its original 62 E8/26 PE HIGHLOW remain independently pinned, but the original task/EH/owner path is still unresolved and the Boss is **NONEXACT**. Earlier SOURCE-ABSENT descriptions are dated evidence.
+
 **CORE/RECON-1003 update:** Five whole native Card-start helper heads (29B+42B+61B+22B+71B) are now [exact under pinned MSVC](CARD_START_FIVE_225_STRICT_EXACT.md). The full 1,896B Card::start_spell remains source-absent/NONEXACT; no parent exact credit follows.
 
 **Current status correction (CORE/RECON-1002):** `Card::finish_spell` at `0x004878B0` is now [whole 602/602B strict exact](CARD_FINISH_602_STRICT_EXACT.md). Dated NONEXACT statements below predate the accepted complete original source. `Card::start_spell` 1,896B remains source-absent.

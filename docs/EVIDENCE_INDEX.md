@@ -29,6 +29,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1007 — whole-original Card text payload 56B constructor, 23B destructor and 167B PMR string copy](CARD_TEXT_PAYLOAD_56_23_167_STRICT_EXACT.md) — native 1,896B Card start original callers, independent 7 E8/2 PE HIGHLOW, typed 36B capture, 3/3 pinned C++20 exact and provenance uncredited.
 
+- [CORE/RECON-1008 — source-present 1,896B Card start Boss typed gameplay/PMR frontier](CARD_START1896_TYPED_NATIVE_FRONTIER.md) — independently original 62 E8/26 HIGHLOW, maintained 1,732B/472 x86 C++20 research candidate, 36B PMR capture and original script/record stages. NONEXACT, no parent credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

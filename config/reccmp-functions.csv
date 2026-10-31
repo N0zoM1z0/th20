@@ -1468,3 +1468,4 @@ th20::NativeCardBombActiveView::active_478130,0x00478130,function
 th20::NativeCardTextPayload::NativeCardTextPayload,0x00486B70,function
 th20::NativeCardTextPayload::~NativeCardTextPayload,0x0046ADE0,function
 std::pmr::string::basic_string(copy),0x0046A780,function
+th20::Card::start_spell,0x00487C30,function
