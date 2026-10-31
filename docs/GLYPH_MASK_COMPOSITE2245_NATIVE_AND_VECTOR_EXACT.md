@@ -135,3 +135,14 @@ ctor and vector `_Tidy`. The same one original C++ source emits
 all nine currently exact child/color units; **no** previous vector,
 color or lower native physical code is counted twice. The enclosing
 2,245B glyph compositor is still NONEXACT.
+
+## CORE/RECON-1055 — 35B insertion helper ABI remains open
+
+The actual 2,245B source invokes a whole original
+[35B glyph-mask offset insertion helper](GLYPH_MASK_EMPLACE35_NATIVE_FRONTIER.md)
+at both native E8 `+0x165/+0x4DD`. Original helper has two E8 to
+an already-exact pointer forwarder and a distinct 108B vector
+backend; natural source `std::pmr::vector<GlyphMaskOffset>::emplace_back`
+currently generates 33B/13-i386 with only a single backend E8.
+The 35B helper and 2,245B parent stay NONEXACT, without changing any
+of the nine separately strict PMR and glyph-color child heads.

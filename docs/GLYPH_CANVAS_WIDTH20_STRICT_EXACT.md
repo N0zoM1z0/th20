@@ -1,3 +1,5 @@
+**CORE/RECON-1055 status correction:** The 2,245B compositor is now **SOURCE-PRESENT, NONEXACT**, with maintained [`GlyphMaskComposite2245.cpp`](../src/GlyphMaskComposite2245.cpp); the historical SOURCE-ABSENT statement and older 1,961B candidate size below predate its reconstruction. Its current separate source candidate is 1,987B/538-i386. This existing 20B width getter remains whole strict exact.
+
 # CORE/RECON-1051 — native 20B glyph canvas width member, whole strict exact
 
 Locked target: Japanese TH20 Steamless v1.00a SHA-256

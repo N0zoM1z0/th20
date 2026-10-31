@@ -83,6 +83,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1054 — four PMR glyph vector lifecycle helpers 10/24/43/153B whole strict exact](GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md) — real original E8 chain beneath 63B vector ctor/20B destructor, 230 distinct native STL bytes and 9/9 focused strict units in existing one object; no authored game credit.
 
+- [CORE/RECON-1055 — native 35B glyph PMR vector insertion two-E8 ABI frontier](GLYPH_MASK_EMPLACE35_NATIVE_FRONTIER.md) — original 2,245B compositor E8 twice, native 35B/15 with two authentic calls vs source-generated 33B/13 with one; NONEXACT, no original exact credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
