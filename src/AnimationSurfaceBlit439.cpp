@@ -1,22 +1,13 @@
 // TH20 original 439B Renderer D3D9 sprite-rectangle surface copy Boss.
 // Source-present candidate; whole native original extent/ABI is separate.
-#include "AnimationRuntimeOwner.hpp"
+#include "NativeRendererSurfaceBlitView.hpp"
 #include "AnimationFile.hpp"
 #include <d3d9.h>
 #include <d3dx9tex.h>
 #include <array>
 #include <cstdint>
 namespace th20 {
-struct NativeSurfaceBlitCommand {
-    std::int32_t file_index, texture_index;
-    std::int32_t src_left, src_top, src_width, src_height;
-    std::int32_t dest_left, dest_top, dest_width, dest_height;
-};
-static_assert(sizeof(NativeSurfaceBlitCommand)==40);
 extern IDirect3DSurface9* source_texture_surface_5c4ee4;
-struct NativeRendererSurfaceBlitView : AnimationPoolOwner {
-    void blit_surface_rect_44bb10(const NativeSurfaceBlitCommand* command);
-};
 void NativeRendererSurfaceBlitView::blit_surface_rect_44bb10(const NativeSurfaceBlitCommand* command) {
     auto& files=*reinterpret_cast<std::array<AnimationFile*,42>*>(
         reinterpret_cast<std::uint8_t*>(this)+0x06000730);

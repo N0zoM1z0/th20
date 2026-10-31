@@ -1568,3 +1568,4 @@ th20::write_game_cp932_file_410e70,0x00410E70,function
 th20::read_game_input_bytes_410990,0x00410990,function
 th20::game_file_exists_4107a0,0x004107A0,function
 th20::NativeRendererSurfaceBlitView::blit_surface_rect_44bb10,0x0044BB10,function
+th20::NativeRendererSurfaceBlitView::blit_surface_effect_44be40,0x0044BE40,function

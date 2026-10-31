@@ -147,6 +147,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1087 — complete native 439B D3D9 Renderer texture blit, natural 438B source one true NOP frontier](ANIMATION_SURFACE_BLIT439_NATIVE_FRONTIER.md) — original six E8/two HIGHLOW, real texture slot lookup, D3DX RECT blit and AddDirtyRect/Release; 438B/157 modern C++ vs 439B/158 original, diagnostic 437/438 normalized code bytes, no false exact credit.
 
+- [CORE/RECON-1088 — original complete 581B D3D9 Renderer surface color-effect Boss, 580B natural C++ source](ANIMATION_SURFACE_EFFECT581_NATIVE_FRONTIER.md) — original 9 E8/4 HIGHLOW, real texture/RECT/LockRect pixel RGB randomized effect with native existing 92B pulse, signed division and pitch stride; one true original NOP prevents full exact, no invented padding.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

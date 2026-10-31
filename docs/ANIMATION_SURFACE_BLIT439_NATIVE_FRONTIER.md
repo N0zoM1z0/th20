@@ -97,3 +97,16 @@ nice -n 15 scripts/repo-python scripts/compile-probe.py \
 scripts/repo-python scripts/verify-animation-surface-blit439-native.py
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1088 — adjacent original 581B optional pixel-effect Boss
+
+The neighboring original game Renderer method `0x0044BE40` is now
+[fully sourced and native-attested](ANIMATION_SURFACE_EFFECT581_NATIVE_FRONTIER.md).
+It shares the real 42-file texture table, complete native D3D9
+surface copy, and original 192B draw flush. Unlike the 439B simple
+RECT blit, its true optional per-pixel effect calls the exact 92B
+locked Renderer random byte three times and handles actual
+`LockRect`/`UnlockRect` with native signed channel arithmetic.
+Both functions are SOURCE-PRESENT/NONEXACT, each independently one
+native compiler `NOP` away from a full-size natural source body;
+**neither game Boss is credited exact or padded by hand**.
