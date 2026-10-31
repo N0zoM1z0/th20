@@ -103,6 +103,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1064 — three PMR glyph vector generic max-size and construct helpers 59B/13B/22B whole strict exact](GLYPH_PMR_EXTRA_59_13_22_STRICT_EXACT.md) — original 488B growth E8 and 59B allocator limit nested call, 94 additional unique STL machine bytes, one affected canonical provider, no game-authored credit.
 
+- [CORE/RECON-1065 — complete original 542B GDI glyph Alpha Boss WHOLE STRICT EXACT](GLYPH_CANVAS_ALPHA542_STRICT_EXACT.md) — original 2,227B parent E8, actual BGRA32/RGB555A1/RGBA4444 bitfields, meaningful normal if/else and row-pointer lifetime; natural 542/542, four authentic E8, +542 game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

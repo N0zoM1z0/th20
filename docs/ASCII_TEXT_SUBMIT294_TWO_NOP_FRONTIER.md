@@ -91,3 +91,13 @@ scripts/repo-python scripts/verify-ascii-text-submit294-native.py \
   --candidate-object build/core1063-probes/AsciiTextSubmit294.obj
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1065 — whole original 542B Alpha processor accepted
+
+The original native GDI glyph Alpha sibling `0x00417AB0`, invoked by
+true text-core E8 `+0x6D6`, is now
+[WHOLE 542/542 STRICT EXACT](GLYPH_CANVAS_ALPHA542_STRICT_EXACT.md).
+Its authentic 0x15/0x19/0x1A pixel modes compile to all 164 original
+instructions and four genuine E8 fields. This does not grant exact
+credit to the 2,227B text-core or 294B submit source, and none of its
+previously accepted canvas getter/creator physical heads are counted again.

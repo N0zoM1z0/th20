@@ -1511,3 +1511,4 @@ th20::NativeGlyphRenderJob::~NativeGlyphRenderJob
 std::pmr::vector<GlyphMaskOffset>::max_size
 std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::max_size
 std::_Normal_allocator_traits<pmr::polymorphic_allocator<GlyphMaskOffset>>::construct
+th20::NativeGlyphCanvasView::invert_alpha_417ab0

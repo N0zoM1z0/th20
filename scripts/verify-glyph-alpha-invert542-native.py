@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Original whole 542B glyph canvas alpha Boss, typed source frontier only."""
+"""Independently original 542B glyph alpha Boss and whole strict canonical source."""
 import argparse,hashlib,importlib.util,struct,sys
 from pathlib import Path
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32
@@ -37,16 +37,25 @@ def verify(obj):
  print('PASS native entire 542B/164-i386 Alpha Boss: format 0x15/0x19/0x1A, 4 native E8/0 HIGHLOW, ret 0x10')
  print('PASS physical original 2227B text core E8 +0x6D6 -> original 542B canvas method')
  if obj:
-  candidate,rel=cm.object_function(obj,SYM,540)
+  candidate,rel=cm.object_function(obj,SYM,542)
   ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(candidate),0))
-  assert len(candidate)==540 and len(ci)==164 and len(rel)==4
-  assert all(r['type']=='REL32' and r['addend']==0 for r in rel)
-  assert [r['offset'] for r in rel]==[0x0D,0x1C,0x72,0x1AD]
+  assert len(candidate)==542 and len(ci)==164 and len(rel)==4
+  expected={0x0D:0x004156C0,0x1C:0x004156A0,0x6C:0x00415800,0x199:0x00415800}
+  assert {r['offset']:r['type'] for r in rel}=={k:'REL32' for k in expected}
+  assert all(r['addend']==0 for r in rel)
   assert 'pixel_stride_4156c0@' in rel[0]['symbol']
   assert 'bitmap_pixels_4156a0@' in rel[1]['symbol']
   assert all('canvas_width_415800@' in r['symbol'] for r in rel[2:])
-  print('SOURCE-PRESENT NONEXACT: natural C++20 540B/164 i386; 4 source E8/0 data; first 2 reloc sites align')
- print('No canonical strict admission for 542B parent, 2227B caller, or unknown fourth argument')
+  result=cm.compare(obj,SYM,HEAD,542)
+  assert result['result']=='structural-exact'
+  assert (result['matched_comparable_bytes'],result['comparable_bytes'])==(526,526)
+  print('PASS whole candidate 542B/164 x86, 526/526 nonrelocated native bytes, 4 genuine original E8 sites/roles')
+ unit=cm.compare_unit('glyph_canvas_alpha_invert_542')
+ assert unit['result']=='exact' and unit['size']==542 and unit['matched_bytes']==542
+ assert len(unit['relocations'])==4
+ print('PASS original full 542/542 canonical strict game-authored Alpha Boss, native four physical E8 anchored independently')
+ print('Original 2227B text core still SOURCE-PRESENT/NONEXACT and earns no transitive parent bytes')
+
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--candidate-object',type=Path)
  args=parser.parse_args();verify(args.candidate_object)

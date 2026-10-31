@@ -27126,3 +27126,20 @@ size = 22
 relocations = [
   { offset = 0xF, type = "REL32", symbol = "??$construct@UGlyphMaskOffset@th20@@ABU12@@?$polymorphic_allocator@UGlyphMaskOffset@th20@@@pmr@std@@QAEXQAUGlyphMaskOffset@th20@@ABU34@@Z", target = 0x00415460 },
 ]
+
+# CORE/RECON-1065: complete original 542B/164-i386 TH20 GDI canvas
+# three-mode Alpha inversion, all four native E8 independently verified.
+[units.glyph_canvas_alpha_invert_542]
+source = "src/GlyphCanvasAlphaInvert542.cpp"
+object = "build/core1065-canonical/GlyphCanvasAlphaInvert542.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::invert_alpha_417ab0"]
+symbol = "?invert_alpha_417ab0@NativeGlyphCanvasView@th20@@QAE_NHHHH@Z"
+target_address = 0x00417AB0
+size = 542
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x1C, type = "REL32", symbol = "?bitmap_pixels_4156a0@NativeGlyphCanvasView@th20@@QBEPAEXZ", target = 0x004156A0 },
+  { offset = 0x6C, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
+  { offset = 0x199, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
+]

@@ -1,3 +1,5 @@
+**CORE/RECON-1065 CURRENT STATUS UPDATE:** The original 542B/164-i386 canvas Alpha Boss is now [WHOLE 542/542 STRICT EXACT](GLYPH_CANVAS_ALPHA542_STRICT_EXACT.md). The earlier 540B/164 NONEXACT observation below is historical: native RGB555A1/RGBA4444 pixel bitfields, the real first-row pointer initialization and meaningful two-way Alpha clearing branch recovered all 526 nonrelocated bytes and four authentic native E8 roles. The original 2,227B text core still remains NONEXACT.
+
 **CORE/RECON-1058/1059 status correction:** The original 2,227B glyph text core previously called source-absent is now [SOURCE-PRESENT, NONEXACT](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md) with a complete 2,052B/481-instruction native-typed candidate. Its separate original 132B game-specific queued-job capture is [WHOLE STRICT EXACT](GLYPH_TEXT_JOB_CAPTURE132_STRICT_EXACT.md). Historical source-absent claims below are dated; the 2,227B parent is still not exact.
 
 # CORE/RECON-1057 — original 542B glyph canvas Alpha-processing Boss, complete typed C++ source frontier
