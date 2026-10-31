@@ -17,6 +17,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1001 — original 71B Card HUD cleanup Boss plus 22B/34B Animation VM bridge strictly exact](CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md) — genuine 602B parent call and six original E8, three complete accepted game-authored bodies/+127B, no invented inheritance.
 
+- [CORE/RECON-1002 — complete 602B Card finish Boss now whole strict exact](CARD_FINISH_602_STRICT_EXACT.md) — original 172 instructions, all 26 E8/13 HIGHLOW, native local EBP-8 reuse, 602/602 canonical relocated replay and +602 authored bytes. Supersedes earlier Card finish NONEXACT hypothesis.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

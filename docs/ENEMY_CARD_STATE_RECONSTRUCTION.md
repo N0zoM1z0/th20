@@ -1,3 +1,5 @@
+**Current status correction (CORE/RECON-1002):** `Card::finish_spell` at `0x004878B0` is now [whole 602/602B strict exact](CARD_FINISH_602_STRICT_EXACT.md). Dated NONEXACT statements below predate the accepted complete original source. `Card::start_spell` 1,896B remains source-absent.
+
 # Enemy Card caller protocol and flag ownership
 
 ## CORE/EXACT-151 scope

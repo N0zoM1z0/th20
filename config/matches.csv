@@ -718,3 +718,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00477450,th20::NativeHudAnimationView::set_vm_event_477450,34,matching,100.00,card_hud_animation_vm_event_34,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md
 0x00488900,th20::NativeHudAnimationView::finish_stage_488900,22,matching,100.00,card_hud_finish_event_bridge_22,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md
 0x00488AB0,th20::NativeCardHudView::clear_spell_effects_488ab0,71,matching,100.00,card_hud_spell_cleanup_71,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md
+0x004878B0,th20::Card::finish_spell,602,matching,100.00,card_finish_spell_602,CORE/RECON-1002; docs/CARD_FINISH_602_STRICT_EXACT.md

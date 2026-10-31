@@ -1452,3 +1452,4 @@ th20::NativeCardEndFlagView::requires_extra_sound_488880
 th20::NativeHudAnimationView::set_vm_event_477450
 th20::NativeHudAnimationView::finish_stage_488900
 th20::NativeCardHudView::clear_spell_effects_488ab0
+th20::Card::finish_spell

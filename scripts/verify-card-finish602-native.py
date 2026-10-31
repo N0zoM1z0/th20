@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Read-only Card::finish_spell original CFG, PE relocation and candidate frontier.
+"""Attest complete original 602B Card finish and the canonical C++20 replay.
 
-The 602B original must NEVER be reduced to the 577B candidate extent.
+Native targets are anchored from the immutable PE's physical E8 instructions
+and HIGHLOW directory, never solved from a comparison object's fields.
 """
 import argparse
 import hashlib
@@ -70,12 +71,24 @@ def verify(helpers=None,parent=None):
    assert report['relocations']==[]
   print(f'PASS {key}: complete {size}B/{count} i386, original Card E8 and natural compiler zero-reloc equality' if helpers else f'PASS original {key} {size}B/{count} i386 and actual Card E8')
  if parent:
-  obj,rels=coff.object_function(parent,'?finish_spell@Card@th20@@QAEXXZ',577)
-  assert len(obj)==577 and len(rels)==len(CALLS)+len(DATA)
+  obj,rels=coff.object_function(parent,'?finish_spell@Card@th20@@QAEXXZ',SIZE)
+  assert len(obj)==SIZE and len(rels)==len(CALLS)+len(DATA)
   assert sum(x['type']=='REL32' for x in rels)==len(CALLS)
   assert sum(x['type']=='DIR32' for x in rels)==len(DATA)
-  print('FRONTIER: source-present 577B complete candidate / original 602B; 26 call and 13 data roles, relocated sites/CFG NONEXACT')
- print('Original Card start 1896B, Card finish 602B and whole game NOT declared exact')
+  independent_fields={off+1:('REL32',dst) for off,dst in CALLS.items()}
+  independent_fields.update({off:('DIR32',dst) for off,dst in DATA.items()})
+  assert {row['offset']:(row['type'],independent_fields[row['offset']][1])
+          for row in rels}==independent_fields
+  assert all(row['addend']==0 for row in rels)
+  structural=coff.compare(parent,'?finish_spell@Card@th20@@QAEXXZ',HEAD,SIZE)
+  assert structural['result']=='structural-exact'
+  assert structural['matched_comparable_bytes']==446 and structural['comparable_bytes']==446
+  canonical=coff.compare_unit('card_finish_spell_602')
+  assert canonical['result']=='exact' and canonical['size']==SIZE
+  assert canonical['object_sha256']==structural.get('object_sha256',canonical['object_sha256'])
+  print('PASS entire original 602B/172 source: 446/446 nonreloc bytes; all 26 E8 and 13 HIGHLOW field locations and independent destinations')
+  print('PASS canonical card_finish_spell_602: strict exact (602/602 bytes), fresh pinned compiler receipt')
+ print('Original Card start 1896B and whole-game linkage remain unfinished')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--helper-object',type=Path);p.add_argument('--parent-object',type=Path)
  a=p.parse_args();verify(a.helper_object,a.parent_object)

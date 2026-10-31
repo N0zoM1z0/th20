@@ -2423,7 +2423,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004872D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004878B0,authored,CardSpell,authored,high,"CORE/RECON-1000; docs/CARD_FINISH_602_TYPED_SOURCE_AND_41_23_EXACT.md; full semantic typed source present, original 602B and 26 E8/13 HIGHLOW verified, generated 577B candidate still NONEXACT"
+0x004878B0,authored,CardSpell,authored,high,CORE/RECON-1002; docs/CARD_FINISH_602_STRICT_EXACT.md; entire game-specific Card bonus+records+achievement+animations+sound protocol source C++20 whole 602B/172-instruction relocated strict exact; no duplicated callee bytes
 0x00487B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00487BB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

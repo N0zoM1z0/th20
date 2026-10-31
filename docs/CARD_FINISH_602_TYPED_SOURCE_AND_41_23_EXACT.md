@@ -1,3 +1,5 @@
+**Superseded by [CORE/RECON-1002](CARD_FINISH_602_STRICT_EXACT.md):** the entire 602B Card parent now has one maintained native-exact C++20 source and its own canonical relocated replay. All NONEXACT parent language below is the dated 1000 frontier, retained as evidence of the earlier compiler hypothesis.
+
 # CORE/RECON-1000 — original 602B Card::finish_spell complete typed source, and 41B/23B exact caller leaves
 
 The target is Japanese TH20 Steamless v1.00a SHA-256

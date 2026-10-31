@@ -1,3 +1,5 @@
+**Current status update (CORE/RECON-1002):** The previously NONEXACT 602B Card finish parent is now [whole strict exact](CARD_FINISH_602_STRICT_EXACT.md). The children below keep their independent 71B/22B/34B exact identity and are not credited twice.
+
 # CORE/RECON-1001 — complete native 71B HUD two-animation cleanup and 22B/34B VM bridge chain
 
 Locked target: Japanese TH20 Steamless v1.00a SHA-256

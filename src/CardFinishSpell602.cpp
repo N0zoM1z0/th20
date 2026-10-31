@@ -1,6 +1,8 @@
-// Complete source reconstruction of original Card spell-finish protocol.
-// The original 602B method is NOT YET exact: local lifetimes, indexed-record
-// accesses and control-flow lowering differ under pinned MSVC 19.44.
+// Complete original 602-byte Card spell-finish gameplay and record scan.
+// The same meaningful local stores the binary capture kind, then is reset
+// to count completed records, reproducing the native EBP-8 lifetime.
+// Record counts are genuine two-element 32-bit arrays, and each original
+// record access performs its own lookup. The whole body is C++20 native exact.
 #include "Card.hpp"
 #include "NativeCardFinishViews.hpp"
 #include "Session.hpp"
@@ -19,33 +21,37 @@ void Card::finish_spell() {
     spell_flags.bits &= ~0x20u;
     native_card_hud_5c06a4->clear_spell_effects_488ab0();
     effect_handle.retire();
-    if (((spell_flags.bits>>1)&1u)==0) {
-        native_card_hud_5c06a4->report_spell_result_4b90e0(1,0);
-    } else {
+    if (((spell_flags.bits>>1)&1u)!=0) {
         session.add_score(static_cast<std::uint32_t>(bonus));
         native_card_hud_5c06a4->report_spell_result_4b90e0(0,bonus);
         if (!native_card_play_5c60fc->is_paused_488800()) {
-            std::uint32_t capture_kind = session.field_70_is_two()?1u:0u;
+            // Capture kind is consumed before the same local is recycled for
+            // the 113-record completion count, as observed in original x86.
+            std::int32_t capture_progress = session.field_70_is_two()?1:0;
             auto* primary = reinterpret_cast<NativeSpellRecordArrayView*>(
                 reinterpret_cast<std::uint8_t*>(native_primary_records_50fc50(native_card_records_5c6108))+0xB08);
-            primary->record_486e10(spell_index)->increment_capture_488510(capture_kind);
+            std::int32_t primary_spell_index = spell_index;
+            primary->record_486e10(primary_spell_index)->increment_capture_488510(capture_progress);
             auto* secondary = reinterpret_cast<NativeSpellRecordArrayView*>(
                 native_card_records_5c6108->secondary_488700()+0xB08);
-            secondary->record_486e10(spell_index)->increment_capture_488510(capture_kind);
-            int completed=0;
+            std::int32_t secondary_spell_index = spell_index;
+            secondary->record_486e10(secondary_spell_index)->increment_capture_488510(capture_progress);
+            capture_progress=0;
             for (int i=0;i<113;i++) {
-                auto* entry = reinterpret_cast<NativeSpellRecordArrayView*>(
-                    native_card_records_5c6108->secondary_488700()+0xB08)->record_486e10(i);
-                if (*reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(entry)+0xC0)!=0 ||
-                    *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::uint8_t*>(
+                if ((*reinterpret_cast<std::int32_t(*)[2]>(reinterpret_cast<std::uint8_t*>(
+                    reinterpret_cast<NativeSpellRecordArrayView*>(
+                        native_card_records_5c6108->secondary_488700()+0xB08)->record_486e10(i))+0xC0))[0]!=0 ||
+                    (*reinterpret_cast<std::int32_t(*)[2]>(reinterpret_cast<std::uint8_t*>(
                        reinterpret_cast<NativeSpellRecordArrayView*>(
-                        native_card_records_5c6108->secondary_488700()+0xB08)->record_486e10(i))+0xC4)!=0) {
-                    ++completed;
+                        native_card_records_5c6108->secondary_488700()+0xB08)->record_486e10(i))+0xC0))[1]!=0) {
+                    ++capture_progress;
                 }
             }
-            if (completed>=113) native_achievement_unlock_52f900(0x28);
+            if (capture_progress>=113) native_achievement_unlock_52f900(0x28);
         }
         process_sound.request_effect(0x2E,0);
+    } else {
+        native_card_hud_5c06a4->report_spell_result_4b90e0(1,0);
     }
     if (reinterpret_cast<NativeCardEndFlagView*>(this)->requires_extra_sound_488880()) {
         process_sound.request_effect(0x45,0);
