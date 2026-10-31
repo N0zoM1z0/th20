@@ -71,3 +71,10 @@ now constructs and destroys the *real* `NativeCardTextPayload` around its
 text task submission scope, rather than hiding the already exact 56B/23B
 lifetime inside a single speculative function call. The original 1,896B
 parent remains unaccepted while the text queue and EH details are open.
+
+## Original PMR char* initializer acceptance (CORE/RECON-1009)
+
+The local name string used to create this payload comes from the
+[separately whole-exact 128B original PMR char* constructor](CARD_START_PMR_STRING_CHAR128_STRICT_EXACT.md).
+Original whole Card start remains NONEXACT and all four PMR/capture
+physical heads are tracked separately without duplicated code credit.

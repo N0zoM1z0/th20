@@ -1464,3 +1464,4 @@ th20::NativeCardBombActiveView::active_478130
 th20::NativeCardTextPayload::NativeCardTextPayload
 th20::NativeCardTextPayload::~NativeCardTextPayload
 std::pmr::string::basic_string(copy)
+std::pmr::string::basic_string(const char*)

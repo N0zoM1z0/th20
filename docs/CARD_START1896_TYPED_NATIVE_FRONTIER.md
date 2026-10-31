@@ -89,3 +89,11 @@ scripts/repo-python scripts/verify-card-start1896-native-frontier.py \
   --candidate-object build/gptweb-nextcard/CardStartSpell1896.obj
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1009 — the real PMR spell-name constructor is now whole exact
+
+The maintained 1,896B Card start source naturally instantiates the complete
+[128B original `std::pmr::string(const char*)` constructor](CARD_START_PMR_STRING_CHAR128_STRICT_EXACT.md)
+that the original parent calls at `+0x2D3`. Its entire 4 E8/2 PE HIGHLOW
+code is independently source-exact in a separate unit; the parent itself
+remains NONEXACT and no game-authored credit is added by this STL helper.

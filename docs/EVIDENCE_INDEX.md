@@ -31,6 +31,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1008 — source-present 1,896B Card start Boss typed gameplay/PMR frontier](CARD_START1896_TYPED_NATIVE_FRONTIER.md) — independently original 62 E8/26 HIGHLOW, maintained 1,732B/472 x86 C++20 research candidate, 36B PMR capture and original script/record stages. NONEXACT, no parent credit.
 
+- [CORE/RECON-1009 — whole-exact original 128B PMR spell-name char-string constructor](CARD_START_PMR_STRING_CHAR128_STRICT_EXACT.md) — original 1,896B Card start E8 +0x2D3, four genuine E8 and EH/cookie PE HIGHLOW; actual nonexact parent source emits 128/128 native exact. Generic uncredited.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
