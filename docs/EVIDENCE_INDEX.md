@@ -35,6 +35,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1027 — whole 153B Card ASCII name-display task enqueue, strict exact](CARD_ASCII_TASK_QUEUE153_STRICT_EXACT.md) — true original 1,896B Card start E8, tracked recursive lock slot18, 40B std::function queue and true EH; complete six E8/three HIGHLOW; +153 authored game bytes.
 
+- [CORE/RECON-1028 — whole 32B original Card ASCII task list push-back](CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md) — native 153B parent E8, genuine 32B helper and original nested E8, both 153/153 and 32/32 exact in one pinned object, STL origin uncredited.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

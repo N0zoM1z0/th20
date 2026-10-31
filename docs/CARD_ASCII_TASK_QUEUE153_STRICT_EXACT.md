@@ -64,3 +64,10 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardAsciiTaskQueue153.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1028 — native 32B list helper now independently exact
+
+The original `0x00470A20` task-list push-back invoked at `+0x5D` is
+[now a separate whole 32B/15-i386 strict unit](CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md)
+replayed from this same canonical object. It remains library-origin
+review/uncredited rather than a duplicate authored-game contribution.

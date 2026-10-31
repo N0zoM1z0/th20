@@ -2003,7 +2003,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00470970,81,0x004709C0,FUN_00470970,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004709D0,10,0x004709D9,FUN_004709d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004709E0,59,0x00470A1A,FUN_004709e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00470A20,32,0x00470A3F,FUN_00470a20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00470A20,32,0x00470A3F,FUN_00470a20,std::list<std::function<void()>>::push_back(std::function<void()>&&),CxxRuntime,reconstructed,100.00,__thiscall,?push_back@?$list@V?$function@$$A6AXXZ@std@@V?$allocator@V?$function@$$A6AXXZ@std@@@2@@std@@QAEX$$QAV?$function@$$A6AXXZ@2@@Z,false,src/CardAsciiTaskQueue153.cpp,CORE/RECON-1028; docs/CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md,unknown,"Original 32B/15-i386 std::list<std::function<void()>>::push_back from genuine original 153B AsciiInf task queue E8+0x5D. Native push E8+0x14 to 0x004682E0, no native PE HIGHLOW. Natural C++20 std::list push_back(std::move(task)) generates whole 32/32 original; standard-library owner uncertain/uncredited game-authored. Same canonical object as 153B caller, no extra provider."
 0x00470A40,20,0x00470A53,FUN_00470a40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00470A60,31,0x00470A7E,FUN_00470a60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00470A80,37,0x00470AA4,FUN_00470a80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

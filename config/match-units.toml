@@ -26498,3 +26498,17 @@ relocations = [
   { offset = 0x79, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
   { offset = 0x8F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1028: original std::list<std::function<void()>> task push from
+# native Card ASCII queue, whole native code + physical parent E8.
+[units.card_ascii_list_push_back_32]
+source = "src/CardAsciiTaskQueue153.cpp"
+object = "build/core1027-canonical/CardAsciiTaskQueue153.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::list<std::function<void()>>::push_back(std::function<void()>&&)"]
+symbol = "?push_back@?$list@V?$function@$$A6AXXZ@std@@V?$allocator@V?$function@$$A6AXXZ@std@@@2@@std@@QAEX$$QAV?$function@$$A6AXXZ@2@@Z"
+target_address = 0x00470A20
+size = 32
+relocations = [
+  { offset = 0x15, type = "REL32", symbol = "??$_Emplace@V?$function@$$A6AXXZ@std@@@?$list@V?$function@$$A6AXXZ@std@@V?$allocator@V?$function@$$A6AXXZ@std@@@2@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@1@QAU21@$$QAV?$function@$$A6AXXZ@1@@Z", target = 0x004682E0 },
+]

@@ -2003,7 +2003,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00470970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004709D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004709E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00470A20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00470A20,unknown,CxxRuntime,review,pending,"CORE/RECON-1028; docs/CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md; native physical original list/std::function push_back and 153B parent physical E8, STL-generated original source owner uncredited"
 0x00470A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470A60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
