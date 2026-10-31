@@ -33,6 +33,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1009 — whole-exact original 128B PMR spell-name char-string constructor](CARD_START_PMR_STRING_CHAR128_STRICT_EXACT.md) — original 1,896B Card start E8 +0x2D3, four genuine E8 and EH/cookie PE HIGHLOW; actual nonexact parent source emits 128/128 native exact. Generic uncredited.
 
+- [CORE/RECON-1027 — whole 153B Card ASCII name-display task enqueue, strict exact](CARD_ASCII_TASK_QUEUE153_STRICT_EXACT.md) — true original 1,896B Card start E8, tracked recursive lock slot18, 40B std::function queue and true EH; complete six E8/three HIGHLOW; +153 authored game bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

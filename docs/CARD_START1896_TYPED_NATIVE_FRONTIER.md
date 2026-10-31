@@ -97,3 +97,13 @@ The maintained 1,896B Card start source naturally instantiates the complete
 that the original parent calls at `+0x2D3`. Its entire 4 E8/2 PE HIGHLOW
 code is independently source-exact in a separate unit; the parent itself
 remains NONEXACT and no game-authored credit is added by this STL helper.
+
+## CORE/RECON-1027 update — Card ASCII enqueue callee now whole exact
+
+The original `0x00470180` task enqueue invoked by `Card::start_spell`
+at `+0x330` now has a [full 153/153 native-exact implementation](CARD_ASCII_TASK_QUEUE153_STRICT_EXACT.md)
+using the real process recursive lock 18 and AsciiInf's borrowed
+`pending_tasks` list. This resolves the queue *consumer*, not the
+remaining text lambda producer or Card start parent EH. The 1,896B
+Card start parent is still NONEXACT; previously described missing
+callee code is superseded only for this 153B subproblem.

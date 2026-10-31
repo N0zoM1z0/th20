@@ -1976,7 +1976,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0046FFD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00470180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00470180,authored,AsciiInf,authored,high,"CORE/RECON-1027; docs/CARD_ASCII_TASK_QUEUE153_STRICT_EXACT.md; original lock slot18, AsciiInf-specific list publication, real original Card start parent E8 and complete 153B/45 native strict, all 9 relocations anchored"
 0x00470220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00470270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

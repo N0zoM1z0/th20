@@ -1976,7 +1976,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0046FFD0,81,0x00470020,FUN_0046ffd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00470030,271,0x0047013E,FUN_00470030,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00470140,64,0x0047017F,FUN_00470140,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00470180,153,0x00470218,FUN_00470180,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00470180,153,0x00470218,FUN_00470180,th20::NativeCardAsciiTaskQueueView::enqueue_470180,AsciiInf,matching,100.00,__thiscall,?enqueue_470180@NativeCardAsciiTaskQueueView@th20@@QAEXV?$function@$$A6AXXZ@std@@@Z,false,src/CardAsciiTaskQueue153.cpp,CORE/RECON-1027; docs/CARD_ASCII_TASK_QUEUE153_STRICT_EXACT.md,authored,"Whole original 153B/45 i386 Card ASCII text-task enqueue uses process LockRegistry slot18, native std::lock_guard<recursive_mutex>, moves value std::function<void()> (40B) into AsciiInf::pending_tasks at +0x1A234, releases lock and destroys by-value task exception-safely. True original 1896B Card start E8+0x330, six genuine original E8/3 PE HIGHLOW. Pinned MSVC 19.44 C++20 153/153 strict exact, one new game-authored head/153 bytes."
 0x00470220,34,0x00470241,allocate,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00470250,30,0x0047026D,begin,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00470270,59,0x004702AA,FUN_00470270,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

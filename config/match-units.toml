@@ -26476,3 +26476,25 @@ relocations = [
   { offset = 0x50, type = "REL32", symbol = "??$_Convert_size@II@std@@YAII@Z", target = 0x0040B280 },
   { offset = 0x60, type = "REL32", symbol = "??$_Construct@$00PBD@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEXQBDI@Z", target = 0x00468030 },
 ]
+
+# CORE/RECON-1027: original 153B/45 x86 Card ASCII task enqueue,
+# 1,896B Card start E8 parent, genuine lock 18 and list push-back.
+[units.card_ascii_task_queue_153]
+source = "src/CardAsciiTaskQueue153.cpp"
+object = "build/core1027-canonical/CardAsciiTaskQueue153.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardAsciiTaskQueueView::enqueue_470180"]
+symbol = "?enqueue_470180@NativeCardAsciiTaskQueueView@th20@@QAEXV?$function@$$A6AXXZ@std@@@Z"
+target_address = 0x00470180
+size = 153
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?enqueue_470180@NativeCardAsciiTaskQueueView@th20@@QAEXV?$function@$$A6AXXZ@std@@@Z", target = 0x00568E75 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x35, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x3A, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x43, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x5E, type = "REL32", symbol = "?push_back@?$list@V?$function@$$A6AXXZ@std@@V?$allocator@V?$function@$$A6AXXZ@std@@@2@@std@@QAEX$$QAV?$function@$$A6AXXZ@2@@Z", target = 0x00470A20 },
+  { offset = 0x6A, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x79, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+  { offset = 0x8F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
