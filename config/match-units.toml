@@ -26305,3 +26305,88 @@ relocations = [
   { offset = 0x37, type = "REL32", symbol = "??A?$array@PAUNativeHudAnimationView@th20@@$01@std@@QAEAAPAUNativeHudAnimationView@th20@@I@Z", target = 0x00414580 },
   { offset = 0x3E, type = "REL32", symbol = "?start_stage_4888e0@NativeHudAnimationView@th20@@QAEXXZ", target = 0x004888E0 },
 ]
+
+# CORE/RECON-1004: complete Card result HUD 1,522B/416 x86 with exact original
+# 2B alignment and 7 x86 switch pointer entries (1,552B whole COFF).
+# 51 original E8 and 19 PE HIGHLOW physically verified independently.
+[units.card_hud_spell_result_boss_1522]
+source = "src/CardHudResult1522.cpp"
+object = "build/core1004-canonical/CardHudResult1522.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardHudView::report_spell_result_4b90e0"]
+symbol = "?report_spell_result_4b90e0@NativeCardHudView@th20@@QAEXHH@Z"
+target_address = 0x004B90E0
+size = 1522
+compare_size = 1552
+relocations = [
+  { offset = 0x22, type = "DIR32", symbol = "$LN20", target = 0x004B96D4 },
+  { offset = 0x38, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x3F, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x57, type = "DIR32", symbol = "$SG79740", target = 0x00570638 },
+  { offset = 0x66, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x81, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0xCE, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0xD5, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0xDC, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0xE1, type = "REL32", symbol = "?current_file_437950@NativeCardRendererFileView@th20@@QAEPAVAnimationFile@2@XZ", target = 0x00437950 },
+  { offset = 0x100, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x11D, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x14C, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x164, type = "REL32", symbol = "?set_digit_44bd70@NativeCardGlyphView@th20@@QAEXH@Z", target = 0x0044BD70 },
+  { offset = 0x183, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x18A, type = "REL32", symbol = "?hide_leading_450120@NativeCardGlyphView@th20@@QAEXXZ", target = 0x00450120 },
+  { offset = 0x1A4, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x1AB, type = "REL32", symbol = "?show_digit_44fa30@NativeCardGlyphView@th20@@QAEXXZ", target = 0x0044FA30 },
+  { offset = 0x1DF, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x1E6, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x1F6, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x1FB, type = "REL32", symbol = "?current_file_437950@NativeCardRendererFileView@th20@@QAEPAVAnimationFile@2@XZ", target = 0x00437950 },
+  { offset = 0x215, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x230, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x24B, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x25B, type = "REL32", symbol = "?set_digit_44bd70@NativeCardGlyphView@th20@@QAEXH@Z", target = 0x0044BD70 },
+  { offset = 0x271, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x278, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x288, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x28D, type = "REL32", symbol = "?current_file_437950@NativeCardRendererFileView@th20@@QAEPAVAnimationFile@2@XZ", target = 0x00437950 },
+  { offset = 0x2A7, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x2C1, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x2DC, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$09@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x2EC, type = "REL32", symbol = "?set_digit_44bd70@NativeCardGlyphView@th20@@QAEXH@Z", target = 0x0044BD70 },
+  { offset = 0x311, type = "DIR32", symbol = "$SG79746", target = 0x00570638 },
+  { offset = 0x320, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x345, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x34C, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x367, type = "DIR32", symbol = "$SG79748", target = 0x00570638 },
+  { offset = 0x379, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x39D, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x3CC, type = "DIR32", symbol = "$SG79749", target = 0x00570638 },
+  { offset = 0x3DE, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x40A, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x411, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x42C, type = "DIR32", symbol = "$SG79751", target = 0x00570638 },
+  { offset = 0x43E, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x462, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x48A, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x491, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x4AC, type = "DIR32", symbol = "$SG79753", target = 0x00570638 },
+  { offset = 0x4BE, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x4E2, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x50B, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x512, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x52D, type = "DIR32", symbol = "$SG79755", target = 0x00570638 },
+  { offset = 0x53F, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x563, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x588, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x58F, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x5AA, type = "DIR32", symbol = "$SG79757", target = 0x00570638 },
+  { offset = 0x5BC, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x00450C70 },
+  { offset = 0x5E0, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$01@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x5F4, type = "DIR32", symbol = "$LN7", target = 0x004B9106 },
+  { offset = 0x5F8, type = "DIR32", symbol = "$LN13", target = 0x004B9414 },
+  { offset = 0x5FC, type = "DIR32", symbol = "$LN14", target = 0x004B94D2 },
+  { offset = 0x600, type = "DIR32", symbol = "$LN15", target = 0x004B9553 },
+  { offset = 0x604, type = "DIR32", symbol = "$LN16", target = 0x004B95D3 },
+  { offset = 0x608, type = "DIR32", symbol = "$LN18", target = 0x004B96CC },
+  { offset = 0x60C, type = "DIR32", symbol = "$LN17", target = 0x004B9651 },
+]

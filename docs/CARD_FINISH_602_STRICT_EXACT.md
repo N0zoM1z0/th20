@@ -100,3 +100,11 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardFinishSpell602.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1004 update — original 1,522B Card HUD result child exact
+
+Both original physical `Card::finish_spell` E8 calls at `+0xD0` and `+0x235`
+now target an independently [whole-exact 1,522B Card HUD result/bonus
+Boss](CARD_HUD_RESULT_BOSS_1522_STRICT_EXACT.md). The entire seven-entry
+switch contribution is covered by its own 1,552B relocated canonical
+comparison; no child byte is added twice to the original 602B parent.

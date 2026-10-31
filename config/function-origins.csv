@@ -3549,7 +3549,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004B8F60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B9050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B9090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004B90E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004B90E0,authored,CardSpell,authored,high,"CORE/RECON-1004; docs/CARD_HUD_RESULT_BOSS_1522_STRICT_EXACT.md; full six-case bonus number UI, real 10-digit handles/2-result slots, signed score thresholds and repeated live ANM spawn, original Card602 true parents; whole source 1552B strictly relocated exact including original 7-case pointer table"
 0x004B96F0,authored,FrontInf,authored,high,"CORE/EXACT-180; docs/ENEMY_OPCODE_548_STAGE_TITLE_EXACT_RECONSTRUCTION.md; Genuine native opcode548 and independent Graphics/Session/FrontInf owner/storage, complete pinned MSVC whole-body replay and short-circuit exercise: Complete 75-byte real FrontInf title animation method. If process_graphics.field_b0c_value()!=8 and !session.flag5_value(), calls real FrontInf::message_file at native +0x170 via AnimationFile::spawn(nullptr,0,-1,nullptr) with native hidden four-byte return temporary. Five independently mapped Graphics/Session globals, two getters and accepted ANM spawn. Tested 112 genuine owner short circuit/spawn/error scenarios; 199 affected strict units exact, Enemy whole root remains unaccepted."
 0x004B9740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B99C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

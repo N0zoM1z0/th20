@@ -1462,3 +1462,4 @@ th20::NativeCardStartFlagsView::set_spell_flag9_488960,0x00488960,function
 th20::NativeSpellRecordView::increment_attempt_488590,0x00488590,function
 th20::NativeHudAnimationView::start_stage_4888e0,0x004888E0,function
 th20::NativeCardHudView::start_spell_effects_488a60,0x00488A60,function
+th20::NativeCardHudView::report_spell_result_4b90e0,0x004B90E0,function

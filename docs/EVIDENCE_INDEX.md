@@ -21,6 +21,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1003 — five exact complete native Card start helpers, 225 authored bytes](CARD_START_FIVE_225_STRICT_EXACT.md) — original 1,896B parent/62 E8/26 HIGHLOW, bit7/bit9/capture/HUD two-list/event2 chain, 15/15 scoped C++20 strict replay across five objects; parent not accepted.
 
+- [CORE/RECON-1004 — whole original 1,522B/416-i386 Card HUD result Boss strict exact](CARD_HUD_RESULT_BOSS_1522_STRICT_EXACT.md) — both native 602B parent calls, all 51 original E8/19 PE HIGHLOW fields including 7 switch table entries, entire 1,552B original C++20 compiler contribution exact. +1 authored head/1,522B.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
