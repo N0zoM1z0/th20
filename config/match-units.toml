@@ -28169,7 +28169,7 @@ relocations = [
   { offset = 0xA6, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
-# CORE/RECON-1098: entire native 28B compiler atomic wrapper.
+# CORE/RECON-1099: entire native 28B compiler atomic wrapper.
 [units.animation_file_atomic_assign_28]
 source = "src/AnimationFileFindOrLoad182.cpp"
 object = "build/core1098-canonical/AnimationFileFindOrLoad182.obj"
@@ -28182,7 +28182,7 @@ relocations = [
   { offset = 0xF, type = "REL32", symbol = "?store@?$_Atomic_storage@I$03@std@@QAEXI@Z", target = 0x0040C550 },
 ]
 
-# CORE/RECON-1098: entire native 21B compiler atomic wrapper.
+# CORE/RECON-1099: entire native 21B compiler atomic wrapper.
 [units.animation_file_atomic_value_21]
 source = "src/AnimationFileFindOrLoad182.cpp"
 object = "build/core1098-canonical/AnimationFileFindOrLoad182.obj"

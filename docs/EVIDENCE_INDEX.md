@@ -169,6 +169,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1098 — whole original 182B Renderer AnimationFile find/preload/wait game Boss strict exact](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md) — native 40B lookup/269B preload, real atomic<uint32_t> Boolean poll, exact 182/182 with 7 E8/4 PE HIGHLOW, +182 authored game bytes.
 
+- [CORE/RECON-1099 — original 28B/21B native atomic store/value conversion wrappers strict exact](ANIMATION_FILE_ATOMIC_28_21_STRICT_EXACT.md) — real 182B game polling parent E8 and two separate atomic-storage original callees; 49B distinct generic code, 3/3 focused units, zero new authored-game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

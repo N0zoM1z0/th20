@@ -100,3 +100,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnimationFileFindOrLoad182.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1099 — two original atomic wrappers independently accepted
+
+The genuine 28B `std::atomic<uint32_t>::operator=(uint32_t)` and 21B
+`std::atomic<uint32_t>::operator uint32_t()` methods invoked by
+this 182B game Boss are now separately
+[WHOLE strict exact under their own original native heads](ANIMATION_FILE_ATOMIC_28_21_STRICT_EXACT.md).
+Their two original E8 into atomic-storage backends and their true
+original parent E8 are independently verified. The two wrappers
+contribute **49 distinct native generic/library bytes**, with no
+additional authored-game credit or duplicate parent coverage.
