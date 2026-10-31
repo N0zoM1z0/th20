@@ -1211,7 +1211,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044AB00,authored,AnimationFileLifetime,authored,high,"CORE/RECON-969; docs/ANIMATION_FILE_CLEAR284_STRICT_EXACT.md: real original 284B/81-i386 authored AnimationFile::clear full native 8 E8/8 HIGHLOW, independently exact natural C++20 284/284; original original CORE/EXACT-132; docs/ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md correctly established game ownership but its historical no-source/no-exact statement is superseded"
 0x0044AC20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044ADD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044B020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044B020,authored,AnimationText,authored,high,"CORE/RECON-1035; docs/ASCII_TEXT_RENDER578_NATIVE_FRONTIER.md; native game render lock9/Animation sprite+texture+font+submit original 578B, 11 calls and 8 PE data, complete C++20 semantics 5 SSE operand bytes NONEXACT"
 0x0044B270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B2B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B320,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -47,6 +47,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1034 — whole original 7B std::function callable test strict exact](CARD_TEXT_CALLABLE_TEST7_STRICT_EXACT.md) — real native 65B `_Reset` caller E8, complete 7/7 std::_Test_callable from existing Card-start source owner, generic source credit withheld.
 
+- [CORE/RECON-1035 — complete original 578B text-rendering Boss source and five SSE-operand-byte frontier](ASCII_TEXT_RENDER578_NATIVE_FRONTIER.md) — real 111B Card callback E8, 294B submit thiscall ABI, 11 native E8/8 PE HIGHLOW, 578B/139-instruction C++ source 497/502 ordinary bytes. NONEXACT, no authored-game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
