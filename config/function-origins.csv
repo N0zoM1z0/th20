@@ -1294,7 +1294,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044E150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044E350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044E8F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044EB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044EB30,authored,AnimationFile,authored,high,"CORE/RECON-1098; docs/ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md; real original 182B/64 complete Renderer file find-or-load/wait, actual stage atomic bool conversion, all 7 original E8/4 HIGHLOW and strict entire native bytes"
 0x0044EBF0,authored,AnimationFile,review,high,"CORE/RECON-1095; docs/ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md; genuine original 336B/83 x86 Renderer group parse under exact 1022B AnimationFile loader, all original 6E8/8HIGHLOW, source complete 336B but two stack-local byte differences; NONEXACT no game byte credit"
 0x0044ED40,authored,AnimationFile,authored,high,"CORE/RECON-1097; docs/ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md; whole original 269B/79 native Renderer preload; exact 10 E8/9 HIGHLOW under real lock17, checked array and 1022B load, full whole canonical source"
 0x0044EE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

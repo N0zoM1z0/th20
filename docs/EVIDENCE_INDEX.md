@@ -167,6 +167,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1097 — original complete 269B Renderer AnimationFile preload/register Boss strict exact](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md) — real original lock17/42-file table, exact 67B allocator and 97B release, whole exact 1,022B loader downstream, 269/269, 10E8/9HIGHLOW, +269 game-authored original `.text` bytes.
 
+- [CORE/RECON-1098 — whole original 182B Renderer AnimationFile find/preload/wait game Boss strict exact](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md) — native 40B lookup/269B preload, real atomic<uint32_t> Boolean poll, exact 182/182 with 7 E8/4 PE HIGHLOW, +182 authored game bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

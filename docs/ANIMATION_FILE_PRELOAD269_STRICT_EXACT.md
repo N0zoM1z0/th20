@@ -121,3 +121,15 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnimationFilePreload269.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1098 — original 182B find/preload caller now strict exact
+
+The complete original [182B Renderer AnimationFile find/preload/wait
+Boss](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md) is now whole exact.
+It calls this 269B game preloader at physical original E8
+`0x0044EB30+0x43`, after first checking the real Renderer file
+registry. On success the caller writes the original atomic stage,
+waits via real atomic Boolean conversion and `Sleep(1)` under the
+original async-mode flag, then returns the file. The 182B caller is
+a distinct game native function; it does not recredit this already
+accepted 269B preload or the 1,022B resource-load code.

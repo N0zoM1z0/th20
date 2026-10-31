@@ -1571,3 +1571,4 @@ std::pmr::string::assign_std_string
 std::wstring::operator_string_view
 std::filesystem::path::path_wstring_view
 th20::NativeRendererAnmPreloadView::preload_anm_44ed40
+th20::NativeRendererAnmFindOrLoadView::find_or_load_file_44eb30

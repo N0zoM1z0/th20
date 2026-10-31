@@ -28145,3 +28145,26 @@ relocations = [
   { offset = 0xE0, type = "REL32", symbol = "??$release_object@VAnimationFile@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimationFile@1@@Z", target = 0x004473A0 },
   { offset = 0x103, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1098: complete game Renderer AnimationFile find/preload/wait.
+[units.animation_file_find_or_load_182]
+source = "src/AnimationFileFindOrLoad182.cpp"
+object = "build/core1098-canonical/AnimationFileFindOrLoad182.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererAnmFindOrLoadView::find_or_load_file_44eb30"]
+symbol = "?find_or_load_file_44eb30@NativeRendererAnmFindOrLoadView@th20@@QAEPAVAnimationFile@2@HPBD@Z"
+target_address = 0x0044EB30
+size = 182
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?file_by_index@AnimationPoolOwner@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x00437970 },
+  { offset = 0x1E, type = "DIR32", symbol = "$SG167977", target = 0x0056E3F4 },
+  { offset = 0x23, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x32, type = "REL32", symbol = "?file_by_index@AnimationPoolOwner@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x00437970 },
+  { offset = 0x44, type = "REL32", symbol = "?preload_anm_44ed40@NativeRendererAnmPreloadView@th20@@QAEPAUNativeAnimationFileLoadView@2@IPBD@Z", target = 0x0044ED40 },
+  { offset = 0x5E, type = "REL32", symbol = "??4?$atomic@I@std@@QAEII@Z", target = 0x004493C0 },
+  { offset = 0x6A, type = "REL32", symbol = "??B?$atomic@I@std@@QBEIXZ", target = 0x004292C0 },
+  { offset = 0x85, type = "DIR32", symbol = "?native_renderer_async_mode_5c5888@th20@@3IA", target = 0x005C5888 },
+  { offset = 0x95, type = "DIR32", symbol = "__imp__Sleep@4", target = 0x0056C16C },
+  { offset = 0xA1, type = "DIR32", symbol = "$SG167979", target = 0x0056E410 },
+  { offset = 0xA6, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+]
