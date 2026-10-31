@@ -145,6 +145,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1085 — complete original 157B game filesystem-exists wrapper, 155B natural MSVC STL NONEXACT frontier](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md) — real slot2 lock and 44B legacy path ctor with format=0, original seven E8/three HIGHLOW, current 155B/46 source differs by native two-byte/one-instruction path-copy ABI; no false exact credit.
 
+- [CORE/RECON-1087 — complete native 439B D3D9 Renderer texture blit, natural 438B source one true NOP frontier](ANIMATION_SURFACE_BLIT439_NATIVE_FRONTIER.md) — original six E8/two HIGHLOW, real texture slot lookup, D3DX RECT blit and AddDirtyRect/Release; 438B/157 modern C++ vs 439B/158 original, diagnostic 437/438 normalized code bytes, no false exact credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
