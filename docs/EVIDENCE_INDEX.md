@@ -79,6 +79,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1052 — complete-source 2,245B glyph mask compositor plus four strict-exact PMR vector children](GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md) — original 612 x86/37 E8/5 HIGHLOW, two actual alpha formats and reflected outline stencils, 1,961B typed main NONEXACT; four original vector template heads 135B exact, 12/12 focused units and no authored-game credit.
 
+- [CORE/RECON-1053 — native whole 22B ARGB4444 glyph color default constructor strict exact](GLYPH_PACKED_COLOR4444_CTOR22_STRICT_EXACT.md) — actual 2,245B compositor E8 +0x505, true 16-bit packed-color initialization, natural 22/22 with 5/5 source-scoped units, +22 authored-game bytes, no parent credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

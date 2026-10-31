@@ -50,8 +50,8 @@ neighborhood loops live in the main function** instead of being
 lifted into calls absent from the original 2,245B body.
 A first high-level source with separate loop helpers compiled its
 parent to 837B; integrating the actual stencil and four-direction
-loops improved it to a **1,961B/536-i386** main candidate under
-pinned MSVC 19.44 C++20, with **26 REL32 /5 DIR32**.
+loops improved it to a **1,987B/538-i386** main candidate under
+pinned MSVC 19.44 C++20, with **27 REL32 /5 DIR32**.
 The original remains **2,245B/612-i386, 37 E8/5 HIGHLOW**. Missing
 native 2245B/612 byte/branch/EH code is not credited; the candidate
 is a semantic **SOURCE-PRESENT, NONEXACT** frontier, not a whole
@@ -113,3 +113,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphCanvasFormatLookup82.cpp \
   --source src/GlyphCanvasRelease182.cpp
 ```
+
+## CORE/RECON-1053 — original packed 16-bit color local recovered
+
+The native `0x00414280` ARGB4444 color default ctor invoked by this
+2,245B Boss at `+0x505` is now [a separate full 22/22 strict unit](GLYPH_PACKED_COLOR4444_CTOR22_STRICT_EXACT.md).
+Its `NativeGlyphColor4444` value is now default constructed within
+the real 16-bit branch before color nibbles are assigned, following
+the already exact 24B `PackedColor` constructor invoked at `+0x4FD`.
+The main Boss now compiles 1,987B/538 instructions (27 E8/5 DIR32)
+versus native 2,245B/612; it remains NONEXACT. Four original PMR-vector
+children and this 22B color ctor all still replay exact in one object.

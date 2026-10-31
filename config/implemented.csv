@@ -1492,3 +1492,4 @@ std::pmr::vector<GlyphMaskOffset>::vector
 std::pmr::vector<GlyphMaskOffset>::~vector
 std::pmr::vector<GlyphMaskOffset>::_Unchecked_begin
 std::pmr::vector<GlyphMaskOffset>::_Unchecked_end
+th20::NativeGlyphColor4444::NativeGlyphColor4444

@@ -26863,3 +26863,14 @@ size = 26
 relocations = [
   { offset = 0xF, type = "REL32", symbol = "??$_Unfancy_maybe_null@UGlyphMaskOffset@th20@@@std@@YAPAUGlyphMaskOffset@th20@@PAU12@@Z", target = 0x0040B280 },
 ]
+
+# CORE/RECON-1053: whole original 22B i386 game ARGB4444 packed color ctor.
+[units.glyph_packed_color4444_ctor_22]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphColor4444::NativeGlyphColor4444"]
+symbol = "??0NativeGlyphColor4444@th20@@QAE@XZ"
+target_address = 0x00414280
+size = 22
+relocations = []

@@ -10,6 +10,12 @@
 #include <memory_resource>
 #include <vector>
 namespace th20 {
+// Native original 16-bit color word is default-constructed before
+// alpha/RGB nibbles are subsequently assigned on the true ARGB4444 path.
+struct NativeGlyphColor4444 {
+    std::uint16_t packed;
+    NativeGlyphColor4444() : packed(0) {}
+};
 bool NativeGlyphCanvasView::composite_glyph_mask_416420(
     std::int32_t rows,std::int32_t start,std::int32_t end,
     std::uint32_t color,float radius) {
@@ -81,7 +87,8 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
             }
         }
         const PackedColor unpacked(color);
-        const std::uint16_t packed=static_cast<std::uint16_t>(
+        NativeGlyphColor4444 packed_color;
+        packed_color.packed=static_cast<std::uint16_t>(
               ((unpacked.value>>4)&0xf)
              |(((unpacked.value>>12)&0xf)<<4)
              |(((unpacked.value>>20)&0xf)<<8)
@@ -107,10 +114,10 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     }
                 }
                 if (touches_outline) {
-                    *dest=packed;
+                    *dest=packed_color.packed;
                 } else {
                     // The original retains the destination alpha nibble.
-                    *dest=static_cast<std::uint16_t>((*dest&0xf000)|(packed&0x0fff));
+                    *dest=static_cast<std::uint16_t>((*dest&0xf000)|(packed_color.packed&0x0fff));
                 }
             }
         }

@@ -1499,3 +1499,4 @@ std::pmr::vector<GlyphMaskOffset>::~vector,0x00414440,function
 std::pmr::vector<GlyphMaskOffset>::_Unchecked_begin,0x00414F30,function
 std::pmr::vector<GlyphMaskOffset>::_Unchecked_end,0x00414F70,function
 th20::NativeGlyphCanvasView::composite_glyph_mask_416420,0x00416420,function
+th20::NativeGlyphColor4444::NativeGlyphColor4444,0x00414280,function

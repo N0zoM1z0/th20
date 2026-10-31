@@ -444,7 +444,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004141A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004141C0,unknown,CxxRuntime,review,pending,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; actual standard PMR vector of two signed 32-bit glyph displacements, source-generated whole 63B exact; native two 2245B compositor caller sites; library origin uncredited"
 0x00414200,authored,GlyphText,authored,high,"CORE/RECON-1047; docs/GLYPH_CANVAS_CONSTRUCTOR124_STRICT_EXACT.md; native 0x124-size custom font bitmap owner construct with real +0x100..+0x120 GDI suffix fields and original 73B heap allocation caller, source whole 124/124"
-0x00414280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414280,authored,GlyphText,authored,high,"CORE/RECON-1053; docs/GLYPH_PACKED_COLOR4444_CTOR22_STRICT_EXACT.md; original game-specific 16-bit packed glyph color local and independent 2245B compositor E8 +0x505, exact 22B native default zero constructor"
 0x004142A0,unknown,EffectParameters,review,pending,"REF-027: complete natural typed value/member contribution, independently decoded whole native routine and owner consumers; canonical129-unit cold replay and dirty-padding/alias/raw-float tests pass. Original names and authored/compiler/shared origins pending; no whole Effect/Special State acceptance. See docs/REFERENCE_EFFECT_SPECIAL_REVIEW.md."
 0x004142C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004142E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -526,7 +526,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004162F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00416360,authored,GlyphText,authored,high,"CORE/RECON-1046; docs/GLYPH_CANVAS_RELEASE182_STRICT_EXACT.md; true game-owned glyph canvas GDI release with 3 original imported GDI calls and 681B original caller, 182/182 natural C++20 and correct bool return"
-0x00416420,authored,GlyphText,authored,high,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; 2245B game outline/mask compositor native two pixel branches with actual GDI resource, 37 E8/5 HIGHLOW independently reviewed; maintained typed 1961B/536 nonexact source"
+0x00416420,authored,GlyphText,authored,high,"CORE/RECON-1052; docs/GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md; 2245B game outline/mask compositor native two pixel branches with actual GDI resource, 37 E8/5 HIGHLOW independently reviewed; maintained typed 1961B/536 nonexact source; CORE/RECON-1053 22B packed 16-bit color constructor restored, parent 1987B/538 still NONEXACT"
 0x00416CF0,authored,TextOutline,authored,high,"REF-022; Complete18-byte cdecl setter stores float bits in5AE120. Independent original raster producer415830 multiplies font outline radius by this scalar then resets1; PE initialfloat1 read before acceptance. Producer diagnostic identifies original authored core/grpfont.cpp, and proprietary shared raster global links this setter to authored text support. Original setter spelling inferred. Storage declaration is extern; global construction and whole raster remain unresolved."
 0x00416D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00417A90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
