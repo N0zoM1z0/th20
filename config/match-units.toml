@@ -27001,3 +27001,73 @@ relocations = [
   { offset = 0xE, type = "REL32", symbol = "??$_Unfancy@V?$function@$$A6AXXZ@std@@@std@@YAPAV?$function@$$A6AXXZ@0@PAV10@@Z", target = 0x0040B280 },
   { offset = 0x2D, type = "REL32", symbol = "?append_4131e0@NativeGlyphQueueView@th20@@QAEXPAX$$QAV?$function@$$A6AXXZ@std@@@Z", target = 0x004131E0 },
 ]
+
+# CORE/RECON-1061: original complete 59B glyph queue standard list helper.
+[units.glyph_queue_list_max_size_59]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::list<std::function<void()>>::max_size"]
+symbol = "?max_size@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QBEIXZ"
+target_address = 0x00416270
+size = 59
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Getal@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@ABEABV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x13, type = "REL32", symbol = "?max_size@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAIABV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@2@@Z", target = 0x00416240 },
+  { offset = 0x1E, type = "REL32", symbol = "??$_Max_limit@H@std@@YAHXZ", target = 0x0040D0E0 },
+  { offset = 0x2E, type = "REL32", symbol = "??$min@I@std@@YAABIABI0@Z", target = 0x0040D980 },
+]
+
+# CORE/RECON-1061: original complete 124B glyph queue standard list helper.
+[units.glyph_queue_list_transfer_124]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_node_emplace_op2::_Transfer_before"]
+symbol = "?_Transfer_before@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@QAU32@@Z"
+target_address = 0x00414EB0
+size = 124
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x28, type = "REL32", symbol = "??$_Construct_in_place@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@ABQAU12@@std@@YAXAAPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@0@ABQAU10@@Z", target = 0x0040CD70 },
+  { offset = 0x3E, type = "REL32", symbol = "??$_Construct_in_place@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@ABQAU12@@std@@YAXAAPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@0@ABQAU10@@Z", target = 0x0040CD70 },
+  { offset = 0x72, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1061: original complete 34B glyph queue standard list helper.
+[units.glyph_queue_allocator_construct_34]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Alloc_construct_ptr<std::pmr::list<std::function<void()>>>::constructor"]
+symbol = "??0?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@@Z"
+target_address = 0x00413F50
+size = 34
+relocations = [
+]
+
+# CORE/RECON-1061: original complete 19B glyph queue standard list helper.
+[units.glyph_queue_allocator_max_size_19]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Normal_allocator_traits<glyph task list>::max_size"]
+symbol = "?max_size@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAIABV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@2@@Z"
+target_address = 0x00416240
+size = 19
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??$_Max_limit@I@std@@YAIXZ", target = 0x004111E0 },
+]
+
+# CORE/RECON-1061: original complete 48B glyph queue standard list helper.
+[units.glyph_queue_allocator_destroy_48]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Alloc_construct_ptr<glyph task list>::destructor"]
+symbol = "??1?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ"
+target_address = 0x004142E0
+size = 48
+relocations = [
+  { offset = 0x27, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEXQAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@3@I@Z", target = 0x00415460 },
+]

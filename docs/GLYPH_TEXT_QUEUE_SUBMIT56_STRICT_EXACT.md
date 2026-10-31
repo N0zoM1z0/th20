@@ -75,3 +75,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextQueueSubmit56.cpp \
   --source src/GlyphTextCore2227.cpp
 ```
+
+## CORE/RECON-1061 — original list backend and five exact nested methods
+
+The original 151B native list Emplace invoked by this strict 56B
+queue bridge is now [maintained as an actual
+`std::pmr::list<std::function<void()>>` source frontier](GLYPH_QUEUE_LIST_59_124_34_19_48_STRICT_EXACT.md).
+It remains NONEXACT at 130B/44 generated C++20 versus 151B/51 native,
+but five distinct original standard-library child code heads
+(59B/124B/34B/19B/48B) are whole strict exact from one canonical
+source/receipt. The original 56B game bridge and 132B job capture
+remain independently accepted; generic code is not double-counted.

@@ -1512,3 +1512,9 @@ th20::NativeGlyphCanvasView::invert_alpha_417ab0,0x00417AB0,function
 th20::NativeGlyphRenderJob::NativeGlyphRenderJob,0x00413EC0,function
 th20::native_text_core_415830,0x00415830,function
 th20::NativeGlyphQueueView::submit_4162f0,0x004162F0,function
+std::pmr::list<std::function<void()>>::max_size,0x00416270,function
+std::_List_node_emplace_op2::_Transfer_before,0x00414EB0,function
+std::_Alloc_construct_ptr<std::pmr::list<std::function<void()>>>::constructor,0x00413F50,function
+std::_Normal_allocator_traits<glyph task list>::max_size,0x00416240,function
+std::_Alloc_construct_ptr<glyph task list>::destructor,0x004142E0,function
+std::pmr::list<std::function<void()>>::_Emplace,0x004131E0,function

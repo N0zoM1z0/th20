@@ -1502,3 +1502,8 @@ std::pmr::vector<GlyphMaskOffset>::_Change_array
 std::pmr::vector<GlyphMaskOffset>::_Reallocation_guard::~_Reallocation_guard
 th20::NativeGlyphRenderJob::NativeGlyphRenderJob
 th20::NativeGlyphQueueView::submit_4162f0
+std::pmr::list<std::function<void()>>::max_size
+std::_List_node_emplace_op2::_Transfer_before
+std::_Alloc_construct_ptr<std::pmr::list<std::function<void()>>>::constructor
+std::_Normal_allocator_traits<glyph task list>::max_size
+std::_Alloc_construct_ptr<glyph task list>::destructor

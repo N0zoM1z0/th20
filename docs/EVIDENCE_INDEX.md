@@ -95,6 +95,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1060 — exact 56B native glyph text queue bridge with borrowed std::function](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md) — real 2,227B caller, original `_Unfancy` and 151B append E8, whole 56/56, +56 game-authored bytes; 2,227B parent 2,072B source NONEXACT.
 
+- [CORE/RECON-1061 — original 151B PMR glyph list insertion and five 59/124/34/19/48B exact methods](GLYPH_QUEUE_LIST_59_124_34_19_48_STRICT_EXACT.md) — original 56B queue caller and eight native E8/two HIGHLOW, C++20 `_Emplace` 130B/44 NONEXACT, five original standard helpers 284B whole exact and zero game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
