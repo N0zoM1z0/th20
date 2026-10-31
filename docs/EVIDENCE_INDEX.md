@@ -77,6 +77,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1051 — 20B whole-exact GDI glyph canvas width getter](GLYPH_CANVAS_WIDTH20_STRICT_EXACT.md) — complete original native 2,245B glyph compositor four E8 calls, width at actual owner+0x104, full 20/20 and 8/8 affected unit replay, +20 authored-game bytes.
 
+- [CORE/RECON-1052 — complete-source 2,245B glyph mask compositor plus four strict-exact PMR vector children](GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md) — original 612 x86/37 E8/5 HIGHLOW, two actual alpha formats and reflected outline stencils, 1,961B typed main NONEXACT; four original vector template heads 135B exact, 12/12 focused units and no authored-game credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

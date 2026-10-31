@@ -1494,3 +1494,8 @@ th20::NativeGlyphCanvasView::pixel_format_415640,0x00415640,function
 th20::NativeGlyphCanvasView::release_surface_416360,0x00416360,function
 th20::NativeGlyphCanvasStorage::NativeGlyphCanvasStorage,0x00414200,function
 th20::NativeGlyphCanvasView::canvas_width_415800,0x00415800,function
+std::pmr::vector<GlyphMaskOffset>::vector,0x004141C0,function
+std::pmr::vector<GlyphMaskOffset>::~vector,0x00414440,function
+std::pmr::vector<GlyphMaskOffset>::_Unchecked_begin,0x00414F30,function
+std::pmr::vector<GlyphMaskOffset>::_Unchecked_end,0x00414F70,function
+th20::NativeGlyphCanvasView::composite_glyph_mask_416420,0x00416420,function

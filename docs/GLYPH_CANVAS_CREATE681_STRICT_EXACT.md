@@ -99,3 +99,12 @@ is now separately admitted below the 2,245B glyph compositor.
 Recompiling the shared-view include closure preserves this 681B
 GDI surface source's whole 681/681 strict result. No native parent
 or previously accepted field getter is double-counted.
+
+## CORE/RECON-1052 — associated 2,245B compositor source frontier
+
+The game-owned GDI canvas used by this exact 681B creator now has a
+[2,245B source-present two-format glyph mask compositor](GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md).
+Its source calls the real observed pixel, stride and width getters and
+reproduces the native 16B PMR-vector neighbor offset protocol. The
+new 2,245B parent remains NONEXACT; this 681B method and four
+existing GDI-view functions remain strictly exact after scoped builds.

@@ -60,3 +60,12 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphCanvasFormatLookup82.cpp \
   --source src/GlyphCanvasRelease182.cpp
 ```
+
+## CORE/RECON-1052 — original 2,245B glyph compositor now source-present
+
+The native compositor invoking this exact width getter four times has
+[maintained complete two-format glyph mask/outline source](GLYPH_MASK_COMPOSITE2245_NATIVE_AND_VECTOR_EXACT.md).
+Its own complete code remains NONEXACT at 1,961B/536 source instructions
+versus original 2,245B/612, while four nested PMR-vector methods are
+independently whole exact. The original 20B width source and prior
+strict credit remain unchanged after the shared-view local replay.

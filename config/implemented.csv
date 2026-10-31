@@ -1488,3 +1488,7 @@ th20::NativeGlyphCanvasView::release_surface_416360
 th20::NativeGlyphCanvasStorage::NativeGlyphCanvasStorage
 th20::NativeGlyphCanvasView::create_gdi_surface_415120
 th20::NativeGlyphCanvasView::canvas_width_415800
+std::pmr::vector<GlyphMaskOffset>::vector
+std::pmr::vector<GlyphMaskOffset>::~vector
+std::pmr::vector<GlyphMaskOffset>::_Unchecked_begin
+std::pmr::vector<GlyphMaskOffset>::_Unchecked_end
