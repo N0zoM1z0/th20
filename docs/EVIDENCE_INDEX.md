@@ -125,6 +125,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1075 — original 254B game glyph task queue dispatcher WHOLE STRICT EXACT](GLYPH_TEXT_QUEUE_PUMP254_STRICT_EXACT.md) — real 12B global PMR list and two game locks, copy front/erase begin/invoke callback, 254B/74 i386, 15 original E8/8 HIGHLOW, 162/162 nonreloc, +254 authored-game bytes.
 
+- [CORE/RECON-1076 — nine nested PMR/std::function glyph task queue helpers, 434B whole exact native STL](GLYPH_QUEUE_PUMP_NINE_STL_HELPERS_STRICT_EXACT.md) — real original 254B pump E8 to 23B/22B/60B/63B/93B methods plus 33B/70B/44B/26B original descendants, 10/10 focused source units, zero new game-authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

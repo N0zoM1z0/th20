@@ -117,3 +117,14 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphTextQueuePump254.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1076 — nine complete native STL queue children exact
+
+The original 254B game queue pump's real standard-library execution
+chain now has [nine further whole exact physical native methods](GLYPH_QUEUE_PUMP_NINE_STL_HELPERS_STRICT_EXACT.md):
+23B default function ctor, 22B list front, 60B function copy assignment,
+63B list begin, 93B list erase, 33B iterator ctor, 70B unlink,
+44B make-iterator and 26B swap. The same exact source naturally emits
+all nine, for 434 distinct native **generic** code bytes. No original
+254B game code is recredited, and 188B std::function swap /93B list
+node disposal remain separate unresolved parents.

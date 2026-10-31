@@ -1529,3 +1529,12 @@ std::_Normal_allocator_traits<GlyphTaskNode>::destroy
 std::destroy_at<std::function<void()>>
 std::_List_node_emplace_op2<GlyphTaskNode>::~_List_node_emplace_op2
 th20::glyph_task_pump_416140
+std::function<void()>::function
+std::pmr::list<GlyphTask>::front
+std::function<void()>::copy_assign
+std::pmr::list<GlyphTask>::begin
+std::pmr::list<GlyphTask>::erase
+std::_List_iterator<GlyphTask>::constructor
+std::_List_val<GlyphTask>::_Unlinknode
+std::pmr::list<GlyphTask>::_Make_iter
+std::function<void()>::swap

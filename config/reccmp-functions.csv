@@ -1540,3 +1540,12 @@ std::destroy_at<std::function<void()>>,0x00413CC0,function
 std::_List_node_emplace_op2<GlyphTaskNode>::~_List_node_emplace_op2,0x00414350,function
 std::_List_node_emplace_op2<GlyphTaskNode>::_List_node_emplace_op2,0x00413000,function
 th20::glyph_task_pump_416140,0x00416140,function
+std::function<void()>::function,0x00414150,function
+std::pmr::list<GlyphTask>::front,0x00415600,function
+std::function<void()>::copy_assign,0x00414540,function
+std::pmr::list<GlyphTask>::begin,0x004150B0,function
+std::pmr::list<GlyphTask>::erase,0x00415550,function
+std::_List_iterator<GlyphTask>::constructor,0x00413FD0,function
+std::_List_val<GlyphTask>::_Unlinknode,0x00414F90,function
+std::pmr::list<GlyphTask>::_Make_iter,0x00414B20,function
+std::function<void()>::swap,0x00417A90,function

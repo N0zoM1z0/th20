@@ -27433,3 +27433,126 @@ relocations = [
   { offset = 0xE0, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0xF6, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1076: genuine whole original 23B glyph queue STL child.
+[units.glyph_queue_func_default_ctor_23]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::function<void()>::function"]
+symbol = "??0?$function@$$A6AXXZ@std@@QAE@XZ"
+target_address = 0x00414150
+size = 23
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0?$_Func_class@X$$V@std@@QAE@XZ", target = 0x00413F80 },
+]
+
+# CORE/RECON-1076: genuine whole original 22B glyph queue STL child.
+[units.glyph_queue_list_front_22]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::list<GlyphTask>::front"]
+symbol = "?front@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAEAAV?$function@$$A6AXXZ@2@XZ"
+target_address = 0x00415600
+size = 22
+relocations = [
+]
+
+# CORE/RECON-1076: genuine whole original 60B glyph queue STL child.
+[units.glyph_queue_func_copy_assign_60]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::function<void()>::copy_assign"]
+symbol = "??4?$function@$$A6AXXZ@std@@QAEAAV01@ABV01@@Z"
+target_address = 0x00414540
+size = 60
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "??0?$function@$$A6AXXZ@std@@QAE@ABV01@@Z", target = 0x004140F0 },
+  { offset = 0x26, type = "REL32", symbol = "?swap@?$function@$$A6AXXZ@std@@QAEXAAV12@@Z", target = 0x00417A90 },
+  { offset = 0x2E, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+]
+
+# CORE/RECON-1076: genuine whole original 63B glyph queue STL child.
+[units.glyph_queue_list_begin_63]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::list<GlyphTask>::begin"]
+symbol = "?begin@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@XZ"
+target_address = 0x004150B0
+size = 63
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "??$addressof@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@std@@YAPAV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x32, type = "REL32", symbol = "??0?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@std@@QAE@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@1@PBV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@1@@Z", target = 0x00413FD0 },
+]
+
+# CORE/RECON-1076: genuine whole original 93B glyph queue STL child.
+[units.glyph_queue_list_erase_93]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::list<GlyphTask>::erase"]
+symbol = "?erase@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@V?$_List_const_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@@Z"
+target_address = 0x00415550
+size = 93
+relocations = [
+  { offset = 0x22, type = "REL32", symbol = "?_Unlinknode@?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@PAU32@@Z", target = 0x00414F90 },
+  { offset = 0x2D, type = "REL32", symbol = "?_Getal@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@AAEAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x3D, type = "REL32", symbol = "??$_Freenode@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@SAXAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@PAU01@@Z", target = 0x00413690 },
+  { offset = 0x50, type = "REL32", symbol = "?_Make_iter@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QBE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@@Z", target = 0x00414B20 },
+]
+
+# CORE/RECON-1076: genuine whole original 33B glyph queue STL child.
+[units.glyph_queue_list_iterator_ctor_33]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_iterator<GlyphTask>::constructor"]
+symbol = "??0?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@std@@QAE@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@1@PBV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@1@@Z"
+target_address = 0x00413FD0
+size = 33
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "??0?$_List_const_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@std@@QAE@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@1@PBV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@1@@Z", target = 0x00413FA0 },
+]
+
+# CORE/RECON-1076: genuine whole original 70B glyph queue STL child.
+[units.glyph_queue_list_unlinknode_70]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_val<GlyphTask>::_Unlinknode"]
+symbol = "?_Unlinknode@?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@PAU32@@Z"
+target_address = 0x00414F90
+size = 70
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "?_Orphan_ptr2@?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@QAEXPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@@Z", target = 0x0040EC90 },
+]
+
+# CORE/RECON-1076: genuine whole original 44B glyph queue STL child.
+[units.glyph_queue_list_make_iter_44]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::list<GlyphTask>::_Make_iter"]
+symbol = "?_Make_iter@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QBE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@@Z"
+target_address = 0x00414B20
+size = 44
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "??$addressof@$$CBV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@std@@YAPBV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x1F, type = "REL32", symbol = "??0?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@std@@QAE@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@1@PBV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@1@@Z", target = 0x00413FD0 },
+]
+
+# CORE/RECON-1076: genuine whole original 26B glyph queue STL child.
+[units.glyph_queue_func_swap_26]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::function<void()>::swap"]
+symbol = "?swap@?$function@$$A6AXXZ@std@@QAEXAAV12@@Z"
+target_address = 0x00417A90
+size = 26
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "?_Swap@?$_Func_class@X$$V@std@@IAEXAAV12@@Z", target = 0x00414C80 },
+]
