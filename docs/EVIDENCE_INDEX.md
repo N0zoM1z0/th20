@@ -139,6 +139,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1082 — five full native 35B/108B/488B/200B/140B glyph offset PMR insertion/growth parent compiler frontiers](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md) — entire original E8/SEH chain and true current C++20 source sizes verified; false source-absent statuses corrected; all five NONEXACT, 24/24 child units preserved, zero extra game exact credit.
 
+- [CORE/RECON-1083 — whole original 368B CP932 file opener and 493B Win32 one-shot file writer game Bosses strict exact](GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md) — original complete 94/125 i386, lock slot2, UTF16 CP932 and Win32 file operations, natural 368/368 and 493/493 exact, original 18 E8/26 HIGHLOW, +861 authored-game executable bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

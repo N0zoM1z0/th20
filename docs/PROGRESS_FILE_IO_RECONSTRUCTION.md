@@ -209,3 +209,18 @@ All 250 canonical object/receipt hashes and retained evidence remain unchanged.
 Post-cleanup 623/623 strict replay reuses 125 objects. Net storage savings after
 archives and verification: 996949 bytes. No unchanged cold build is repeated.
 Private proof paths above are historical evidence, not public build inputs.
+
+## CORE/RECON-1083 — separate CP932 one-shot Win32 file Bosses exact
+
+The file-I/O protocol also includes two previously unclassified
+[whole-original strict-exact game functions](GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md):
+`0x00410CF0` native 368B persistent input-file opener and
+`0x00410E70` native 493B one-shot output-file writer. These functions
+use the real slot2 lock and CP932 Win32 name conversion, but are
+**distinct native executable code** from the already exact persistent
+output open/write/close methods listed above. The 493B writer opens
+a local handle, closes it on successful and short-write paths, and
+has the genuine native short-write failure branch before success.
+Both compile 368/368 and 493/493 strictly exact, adding 861 distinct
+game-authored `.text` bytes with no earlier game/file output code
+credited twice.

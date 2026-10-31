@@ -1547,3 +1547,5 @@ std::_Uninitialized_backout_al<GlyphMaskOffset>::ctor
 std::_Uninitialized_backout_al<GlyphMaskOffset>::_Release
 std::_Uninitialized_backout_al<GlyphMaskOffset>::dtor
 std::pmr::vector<GlyphMaskOffset>::_Orphan_range
+th20::open_game_input_cp932_410cf0
+th20::write_game_cp932_file_410e70

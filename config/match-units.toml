@@ -27671,3 +27671,71 @@ target_address = 0x00414B60
 size = 13
 relocations = [
 ]
+
+# CORE/RECON-1083: complete original 368B game CP932 Win32 file Boss.
+[units.game_input_cp932_open_368]
+source = "src/GameFileCp932Bosses.cpp"
+object = "build/core1083-canonical/GameFileCp932Bosses.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::open_game_input_cp932_410cf0"]
+symbol = "?open_game_input_cp932_410cf0@th20@@YAHPBD@Z"
+target_address = 0x00410CF0
+size = 368
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?open_game_input_cp932_410cf0@th20@@YAHPBD@Z", target = 0x00567AD0 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3F, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x59, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x7B, type = "DIR32", symbol = "__imp__MultiByteToWideChar@24", target = 0x0056C124 },
+  { offset = 0x9A, type = "DIR32", symbol = "__imp__CreateFileW@28", target = 0x0056C164 },
+  { offset = 0x9F, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0xA5, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0xC8, type = "DIR32", symbol = "__imp__GetLastError@0", target = 0x0056C130 },
+  { offset = 0xD6, type = "DIR32", symbol = "__imp__FormatMessageW@28", target = 0x0056C128 },
+  { offset = 0xE6, type = "DIR32", symbol = "$SG163251", target = 0x0056C658 },
+  { offset = 0xEB, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xFB, type = "DIR32", symbol = "__imp__LocalFree@4", target = 0x0056C12C },
+  { offset = 0x118, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x129, type = "DIR32", symbol = "$SG163253", target = 0x0056C6A0 },
+  { offset = 0x12E, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x14D, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x168, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1083: complete original 493B game CP932 Win32 file Boss.
+[units.game_cp932_write_once_493]
+source = "src/GameFileCp932Bosses.cpp"
+object = "build/core1083-canonical/GameFileCp932Bosses.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::write_game_cp932_file_410e70"]
+symbol = "?write_game_cp932_file_410e70@th20@@YAHPBDPBXI@Z"
+target_address = 0x00410E70
+size = 493
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?write_game_cp932_file_410e70@th20@@YAHPBDPBXI@Z", target = 0x00567B10 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3F, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x59, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x7B, type = "DIR32", symbol = "__imp__MultiByteToWideChar@24", target = 0x0056C124 },
+  { offset = 0x9A, type = "DIR32", symbol = "__imp__CreateFileW@28", target = 0x0056C164 },
+  { offset = 0xC9, type = "DIR32", symbol = "__imp__GetLastError@0", target = 0x0056C130 },
+  { offset = 0xD7, type = "DIR32", symbol = "__imp__FormatMessageW@28", target = 0x0056C128 },
+  { offset = 0xE7, type = "DIR32", symbol = "$SG163269", target = 0x0056C658 },
+  { offset = 0xEC, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xFC, type = "DIR32", symbol = "__imp__LocalFree@4", target = 0x0056C12C },
+  { offset = 0x119, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x142, type = "DIR32", symbol = "__imp__WriteFile@20", target = 0x0056C138 },
+  { offset = 0x15B, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+  { offset = 0x164, type = "DIR32", symbol = "$SG163272", target = 0x0056C674 },
+  { offset = 0x169, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x188, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x19D, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+  { offset = 0x1A6, type = "DIR32", symbol = "$SG163274", target = 0x0056C690 },
+  { offset = 0x1AB, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x1CA, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x1E5, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
