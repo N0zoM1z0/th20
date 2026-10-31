@@ -1,3 +1,5 @@
+**CORE/RECON-1079 CURRENT CORRECTION:** The old 1,987B/538/27-E8 source statistic below is historical. The original 2,245B Boss fetches DIB pixels exactly once, BEFORE snapshot allocation, and calls the native pixel stride getter nine times across its real BGRA32/ARGB4444 loops. After correcting source data lifetime the [recompiled whole Boss candidate is 2,041B/557 i386, 32 E8/5 DIR32](GLYPH_MASK_BOSS2245_LIVE_BITMAP_FRONTIER.md), still NONEXACT; 15/15 existing strict PMR/vector/color units remain exact.
+
 **CORE/RECON-1058/1059 status correction:** The original 2,227B glyph text core previously called source-absent is now [SOURCE-PRESENT, NONEXACT](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md) with a complete 2,052B/481-instruction native-typed candidate. Its separate original 132B game-specific queued-job capture is [WHOLE STRICT EXACT](GLYPH_TEXT_JOB_CAPTURE132_STRICT_EXACT.md). Historical source-absent claims below are dated; the 2,227B parent is still not exact.
 
 # CORE/RECON-1052 — whole original 2,245B glyph mask compositor source, four nested PMR vector helpers strict exact

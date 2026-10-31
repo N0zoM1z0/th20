@@ -1,6 +1,9 @@
 // Game-owned 2,245B glyph compositor at 0x00416420. SOURCE-PRESENT,
-// NONEXACT: its two native pixel-format branches and 16B PMR-vector
-// offsets are reconstructed, but the full Win32/PMR EH lowering is open.
+// NONEXACT: both original pixel-format branches are meaningful native
+// C++. The actual original pixels pointer is fetched once BEFORE the
+// allocator snapshot, while the canvas stride is re-read live in the
+// native BGRA32 row advance and the 16-bit stencil neighborhood. The
+// original PMR iterator/index lowering remains a separate frontier.
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -23,9 +26,12 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
     // before applying any alpha changes to the live mapped DIB memory.
     const std::int32_t row_stride=pixel_stride_4156c0();
     const std::int32_t length=row_stride*rows;
+    // Original native E8 fetches the DIB pixel base only ONCE, before
+    // allocation and the subsequent immutable stencil snapshot.
+    auto* pixels=bitmap_pixels_4156a0();
     auto* original=process_allocator->allocate_array<std::uint8_t>(
         "D:\\cygwin\\home\\zun\\prog\\th20\\src\\core\\grpfont.cpp:615 u_char",length);
-    std::memcpy(original,bitmap_pixels_4156a0(),length);
+    std::memcpy(original,pixels,length);
     const auto pixel_format=*reinterpret_cast<const std::int32_t*>(
         reinterpret_cast<const std::uint8_t*>(this)+0x100);
     if (pixel_format==0x15) {
@@ -42,13 +48,16 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
         }
         const PackedColor opaque(color);
         const std::uint32_t outlined=opaque.value^0xff000000u;
+        const std::int32_t row_words=pixel_stride_4156c0()/4;
+        // Keep the native live row advance instead of multiplying a
+        // permanently cached stride by y (the game re-reads it).
+        std::int32_t row_advance=0;
         for (std::int32_t y=0;y<rows;++y) {
             auto* dest=reinterpret_cast<std::uint32_t*>(
-                bitmap_pixels_4156a0()+y*row_stride+start*4);
+                pixels+row_advance+start*4);
             for (std::int32_t x=start;x<end;++x,++dest) {
                 if (reinterpret_cast<const std::uint8_t*>(dest)[3]!=0) {
                     const auto* stencil=reinterpret_cast<const std::uint32_t*>(original);
-                    const std::int32_t row_words=row_stride/4;
                     bool touches_outline=false;
                     for (const GlyphMaskOffset& off:offsets) {
                         if (((x-off.x>=0 && y-off.y>=0) &&
@@ -73,6 +82,7 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     }
                 }
             }
+            row_advance+=pixel_stride_4156c0();
         }
     } else if (pixel_format==0x1a) {
         GlyphMaskOffsets offsets;
@@ -95,20 +105,19 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
              |((((unpacked.value>>28)&0xf)^0xf)<<12));
         for (std::int32_t y=0;y<rows;++y) {
             auto* dest=reinterpret_cast<std::uint16_t*>(
-                bitmap_pixels_4156a0()+y*row_stride+start*2);
+                pixels+y*pixel_stride_4156c0()+start*2);
             for (std::int32_t x=start;x<end;++x,++dest) {
                 const auto* stencil=reinterpret_cast<const std::uint16_t*>(original);
                 bool touches_outline=false;
                 for (const GlyphMaskOffset& off:offsets) {
-                    const std::int32_t row_pixels=row_stride/2;
                     if (((x-off.x>=0 && y-off.y>=0) &&
-                         (stencil[(y-off.y)*row_pixels+x-off.x]>>12)!=0xf) ||
+                         (stencil[(y-off.y)*(pixel_stride_4156c0()/2)+x-off.x]>>12)!=0xf) ||
                         ((x+off.x<canvas_width_415800() && y-off.y>=0) &&
-                         (stencil[(y-off.y)*row_pixels+x+off.x]>>12)!=0xf) ||
+                         (stencil[(y-off.y)*(pixel_stride_4156c0()/2)+x+off.x]>>12)!=0xf) ||
                         ((x-off.x>=0 && y+off.y<rows) &&
-                         (stencil[(y+off.y)*row_pixels+x-off.x]>>12)!=0xf) ||
+                         (stencil[(y+off.y)*(pixel_stride_4156c0()/2)+x-off.x]>>12)!=0xf) ||
                         ((x+off.x<canvas_width_415800() && y+off.y<rows) &&
-                         (stencil[(y+off.y)*row_pixels+x+off.x]>>12)!=0xf)) {
+                         (stencil[(y+off.y)*(pixel_stride_4156c0()/2)+x+off.x]>>12)!=0xf)) {
                         touches_outline=true;
                         break;
                     }

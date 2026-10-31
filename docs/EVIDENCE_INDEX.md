@@ -131,6 +131,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1078 — complete original 188B std::_Func_class<void>::_Swap frontier: three extra native `_Unfancy` calls](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md) — original 63 i386/15 E8/one HIGHLOW vs natural MSVC 161B/54 i386/12 E8, precisely 27B live pointer-forwarding gap, SOURCE-PRESENT NONEXACT, no false game credit.
 
+- [CORE/RECON-1079 — source-correct original 2,245B glyph-mask Boss DIB pixel and live stride lifetime](GLYPH_MASK_BOSS2245_LIVE_BITMAP_FRONTIER.md) — original nine stride E8/one pixel getter vs old candidate one stride/three pixels, meaningful source 1987B/538/27 E8 → 2041B/557/32 E8, 15/15 scoped helper exact; parent remains NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
