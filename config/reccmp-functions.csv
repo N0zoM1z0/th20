@@ -1565,3 +1565,4 @@ std::_Uninitialized_move<GlyphMaskOffset>,0x00413920,function
 std::pmr::vector<GlyphMaskOffset>::_Emplace_back_with_unused_capacity,0x004132E0,function
 th20::open_game_input_cp932_410cf0,0x00410CF0,function
 th20::write_game_cp932_file_410e70,0x00410E70,function
+th20::read_game_input_bytes_410990,0x00410990,function

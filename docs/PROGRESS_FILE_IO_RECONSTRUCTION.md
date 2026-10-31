@@ -224,3 +224,17 @@ has the genuine native short-write failure branch before success.
 Both compile 368/368 and 493/493 strictly exact, adding 861 distinct
 game-authored `.text` bytes with no earlier game/file output code
 credited twice.
+
+## CORE/RECON-1084 — 266B persistent input reader whole exact
+
+The same native persistent HANDLE `0x005AE060` opened by the original
+368B CP932 input opener is consumed by a distinct
+[WHOLE EXACT 266B game input `ReadFile` Boss](GAME_FILE_INPUT_READ266_STRICT_EXACT.md).
+It locks slot2, allocates via the separately exact 88B
+`DiagnosticAllocator::allocate_bytes` with the original native
+filectrl.cpp label, handles allocation failure with `CloseHandle`,
+then reads and logs without inventing short-read failure handling.
+The 266B reader (8 E8/11 HIGHLOW) is a separate physical source
+owner, adding +266 original game-authored `.text` bytes without
+re-crediting any existing exact 368B/493B file Boss or native
+allocator/Win32 helper.

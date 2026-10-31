@@ -27739,3 +27739,34 @@ relocations = [
   { offset = 0x1CA, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x1E5, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1084: actual game 266B persistent CP932 file reader.
+[units.game_input_bytes_read_266]
+source = "src/GameFileInputRead266.cpp"
+object = "build/core1084-canonical/GameFileInputRead266.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::read_game_input_bytes_410990"]
+symbol = "?read_game_input_bytes_410990@th20@@YAPAXI@Z"
+target_address = 0x00410990
+size = 266
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?read_game_input_bytes_410990@th20@@YAPAXI@Z", target = 0x0056755D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2B, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x30, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x46, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x5F, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x6C, type = "DIR32", symbol = "$SG166803", target = 0x0056C6D4 },
+  { offset = 0x76, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x7B, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 0x8A, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0x91, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x0056C134 },
+  { offset = 0xA8, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xC1, type = "DIR32", symbol = "?game_file_handle@th20@@3PAXA", target = 0x005AE060 },
+  { offset = 0xC8, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x0056C0B0 },
+  { offset = 0xCD, type = "DIR32", symbol = "$SG166806", target = 0x0056C710 },
+  { offset = 0xD2, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xEA, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x102, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

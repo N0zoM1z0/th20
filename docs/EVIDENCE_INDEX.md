@@ -141,6 +141,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1083 — whole original 368B CP932 file opener and 493B Win32 one-shot file writer game Bosses strict exact](GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md) — original complete 94/125 i386, lock slot2, UTF16 CP932 and Win32 file operations, natural 368/368 and 493/493 exact, original 18 E8/26 HIGHLOW, +861 authored-game executable bytes.
 
+- [CORE/RECON-1084 — whole original 266B persistent CP932 input ReadFile Boss strict exact](GAME_FILE_INPUT_READ266_STRICT_EXACT.md) — native global HANDLE at 0x5AE060, original 88B allocation, lock slot2 and exact ReadFile/CloseHandle/error flow, 266/266, 8 E8/11 HIGHLOW, +266 game-authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

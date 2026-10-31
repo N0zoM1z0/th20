@@ -753,3 +753,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00416140,th20::glyph_task_pump_416140,254,matching,100.00,glyph_text_queue_pump_254,CORE/RECON-1075; docs/GLYPH_TEXT_QUEUE_PUMP254_STRICT_EXACT.md
 0x00410CF0,th20::open_game_input_cp932_410cf0,368,matching,100.00,game_input_cp932_open_368,CORE/RECON-1083; docs/GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md
 0x00410E70,th20::write_game_cp932_file_410e70,493,matching,100.00,game_cp932_write_once_493,CORE/RECON-1083; docs/GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md
+0x00410990,th20::read_game_input_bytes_410990,266,matching,100.00,game_input_bytes_read_266,CORE/RECON-1084; docs/GAME_FILE_INPUT_READ266_STRICT_EXACT.md
