@@ -741,3 +741,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00414280,th20::NativeGlyphColor4444::NativeGlyphColor4444,22,matching,100.00,glyph_packed_color4444_ctor_22,CORE/RECON-1053; docs/GLYPH_PACKED_COLOR4444_CTOR22_STRICT_EXACT.md
 0x00413EC0,th20::NativeGlyphRenderJob::NativeGlyphRenderJob,132,matching,100.00,glyph_text_job_capture_132,CORE/RECON-1059; docs/GLYPH_TEXT_JOB_CAPTURE132_STRICT_EXACT.md
 0x004162F0,th20::NativeGlyphQueueView::submit_4162f0,56,matching,100.00,glyph_text_queue_submit_56,CORE/RECON-1060; docs/GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md
+0x004142C0,th20::NativeGlyphRenderJob::~NativeGlyphRenderJob,23,matching,100.00,glyph_text_job_dtor_23,CORE/RECON-1062; docs/GLYPH_TEXT_JOB_DTOR23_STRICT_EXACT.md

@@ -27071,3 +27071,16 @@ size = 48
 relocations = [
   { offset = 0x27, type = "REL32", symbol = "?deallocate@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEXQAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@3@I@Z", target = 0x00415460 },
 ]
+
+# CORE/RECON-1062: original complete 23B game-specific glyph task destructor.
+[units.glyph_text_job_dtor_23]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/core1059-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphRenderJob::~NativeGlyphRenderJob"]
+symbol = "??1NativeGlyphRenderJob@th20@@QAE@XZ"
+target_address = 0x004142C0
+size = 23
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+]

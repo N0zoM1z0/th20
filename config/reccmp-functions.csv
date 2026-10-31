@@ -1518,3 +1518,4 @@ std::_Alloc_construct_ptr<std::pmr::list<std::function<void()>>>::constructor,0x
 std::_Normal_allocator_traits<glyph task list>::max_size,0x00416240,function
 std::_Alloc_construct_ptr<glyph task list>::destructor,0x004142E0,function
 std::pmr::list<std::function<void()>>::_Emplace,0x004131E0,function
+th20::NativeGlyphRenderJob::~NativeGlyphRenderJob,0x004142C0,function

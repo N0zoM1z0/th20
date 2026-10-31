@@ -97,6 +97,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1061 — original 151B PMR glyph list insertion and five 59/124/34/19/48B exact methods](GLYPH_QUEUE_LIST_59_124_34_19_48_STRICT_EXACT.md) — original 56B queue caller and eight native E8/two HIGHLOW, C++20 `_Emplace` 130B/44 NONEXACT, five original standard helpers 284B whole exact and zero game-authored credit.
 
+- [CORE/RECON-1062 — original 23B glyph render job destructor whole exact](GLYPH_TEXT_JOB_DTOR23_STRICT_EXACT.md) — actual 2,227B parent E8, 40B std::function at capture+0x30 and native exact 20B library destructor, 2/2 scoped glyph job units, +23 authored-game bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

@@ -1507,3 +1507,4 @@ std::_List_node_emplace_op2::_Transfer_before
 std::_Alloc_construct_ptr<std::pmr::list<std::function<void()>>>::constructor
 std::_Normal_allocator_traits<glyph task list>::max_size
 std::_Alloc_construct_ptr<glyph task list>::destructor
+th20::NativeGlyphRenderJob::~NativeGlyphRenderJob

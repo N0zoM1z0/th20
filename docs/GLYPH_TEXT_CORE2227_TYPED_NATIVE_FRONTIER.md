@@ -117,3 +117,13 @@ calls the original 151B queue backend. This raises the 2,227B C++
 source candidate to **2,072B/484 i386** and **25 E8**, vs original
 2,227B/470 and 25 E8/43 HIGHLOW. The native game queue backend,
 function wrapper and main Boss remain independently nonexact.
+
+## CORE/RECON-1062 — actual glyph render job destruction now exact
+
+The native glyph render closure created by the previously exact 132B
+constructor has a [whole exact 23B destruction method](GLYPH_TEXT_JOB_DTOR23_STRICT_EXACT.md)
+called by original core E8 `+0x842`; its only E8 calls the already exact
+20B std::function destructor on the +0x30 captured task member.
+The custom glyph job ctor+dtor are both whole strict exact. This
+2,227B game core itself remains SOURCE-PRESENT/NONEXACT and receives
+no additional parent credit.

@@ -82,3 +82,13 @@ borrowed `std::function<void()>&`, forwards through genuine native
 the 2,227B parent source's earlier by-value temporary assumption.
 The 132B whole-exact constructor is unchanged and replays 132/132
 under the affected source-object closure.
+
+## CORE/RECON-1062 — native job destructor now separately whole exact
+
+The same captured glyph render closure has a complete
+[23B source-exact destructor](GLYPH_TEXT_JOB_DTOR23_STRICT_EXACT.md)
+on the original `0x004142C0` head, called by the actual original
+2,227B text core at `+0x842`. It only destroys the 40B function
+member at +0x30 via the existing original 20B std::function destructor.
+Both separate game-specific 132B ctor and 23B dtor replay whole exact
+in one canonical source, with no transitive parent or generic credit.
