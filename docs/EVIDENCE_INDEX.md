@@ -157,6 +157,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1092 — original 581B D3D9 Renderer RGB surface effect Boss whole strict exact](ANIMATION_SURFACE_EFFECT581_STRICT_EXACT.md) — genuine surface/pixel lifetime scope after flush emits original NOP naturally, full 581B/201 i386 with 529/529 ordinary bytes and 9 E8/4 HIGHLOW, three real game random calls, +581 authored game `.text` bytes.
 
+- [CORE/RECON-1093 — original 1,022B AnimationFile resource loader Boss whole strict exact](ANIMATION_FILE_LOAD1022_STRICT_EXACT.md) — complete 219 i386, 23 E8/12 PE HIGHLOW, narrow 260B `sprintf_s` path, actual allocator-aware PMR filename/stem, group counts and original Renderer 336B parse dependency, 1,022/1,022 full native and +1,022 authored-game bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

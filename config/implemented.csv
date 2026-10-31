@@ -1555,3 +1555,4 @@ th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0
 th20::AnimationPoolOwner::file_by_index
 th20::NativeRendererSurfaceBlitView::blit_surface_rect_44bb10
 th20::NativeRendererSurfaceBlitView::blit_surface_effect_44be40
+th20::NativeAnimationFileLoadView::load_resource_44a700

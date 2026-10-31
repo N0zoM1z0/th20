@@ -1207,7 +1207,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044A640,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044A670,unknown,IntrusiveLink,review,pending,"EXACT-051: Shared typed intrusive link/list/observation protocol, nonthrowing Region construction/update and position/vector dependencies. Native storage/lifecycle/RET/AL/reference/hidden-result ABI, complete handler/FuncInfo flags5 corroboration, whole contributions and independent anchors audited. Full cold strict replay363units/66objects/57534disjointbytes and all22 public C++20/UBSan checks pass. Origin remains unknown; list constructor/reset and controller/retirement/locking remain pending. See docs/EXACT_INTRUSIVE_LIFETIME_RECONSTRUCTION.md."
 0x0044A6B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044A700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044A700,authored,AnimationFile,authored,high,"CORE/RECON-1093; docs/ANIMATION_FILE_LOAD1022_STRICT_EXACT.md; entire original game 1022B/219 i386 resource loader, native 23 E8/12 PE HIGHLOW, real typed AnimationFile, 260B path, physical 0x28 header and Renderer global parse, true allocator and C++ EH whole strict exact"
 0x0044AB00,authored,AnimationFileLifetime,authored,high,"CORE/RECON-969; docs/ANIMATION_FILE_CLEAR284_STRICT_EXACT.md: real original 284B/81-i386 authored AnimationFile::clear full native 8 E8/8 HIGHLOW, independently exact natural C++20 284/284; original original CORE/EXACT-132; docs/ANIMATION_FILE_LIFETIME_RECONSTRUCTION.md correctly established game ownership but its historical no-source/no-exact statement is superseded"
 0x0044AC20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044ADD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

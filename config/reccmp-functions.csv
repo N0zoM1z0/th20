@@ -1572,3 +1572,4 @@ th20::NativeRendererSurfaceBlitView::blit_surface_effect_44be40,0x0044BE40,funct
 th20::NativeAnimationLegacyFileView::previous_file_437470,0x00437470,function
 th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0,0x0044BCD0,function
 th20::AnimationPoolOwner::file_by_index,0x00437970,function
+th20::NativeAnimationFileLoadView::load_resource_44a700,0x0044A700,function
