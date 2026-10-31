@@ -79,3 +79,13 @@ scripts/repo-python scripts/verify-glyph-canvas-construct124-native.py
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphCanvasConstruct124.cpp
 ```
+
+## CORE/RECON-1048 — original allocator preclear ABI separately pinned
+
+The 73B original `0x00413C50` wrapper invoking this whole-exact 124B
+constructor has a separately [SHA-pinned three-E8 allocation graph](GLYPH_CANVAS_ALLOCATOR73_NATIVE_FRONTIER.md):
+`operator new(0x124)`, native 31B `__autoclassinit2` preclear, then
+this real constructor. No natural pinned C++20 allocation trial
+reproduced the entire 73B wrapper without extra or missing real
+compiler helpers, so **only the 124B ctor remains exact**, not
+its allocator or the 2,227B parent.

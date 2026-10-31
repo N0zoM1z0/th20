@@ -71,6 +71,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1047 — original whole 124B glyph canvas owner constructor strict exact](GLYPH_CANVAS_CONSTRUCTOR124_STRICT_EXACT.md) — physical 0x124-byte allocation, native 73B wrapper and 2,227B text Boss parent E8s, full 124/124 typed owner initialization and +124 authored bytes.
 
+- [CORE/RECON-1048 — original 73B glyph canvas allocator preclear ABI frontier](GLYPH_CANVAS_ALLOCATOR73_NATIVE_FRONTIER.md) — real 2,227B glyph text Boss caller, native new(0x124)/31B preclear/124B constructor E8 graph; normal C++20 new/placement trials still NONEXACT, no new exact or authored credit.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

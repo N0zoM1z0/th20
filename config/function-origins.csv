@@ -417,7 +417,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413B70,authored,EclRuntimeLifetime,authored,high,"CORE/EXACT-131: Independent ECL and Region callers share the custom allocator receiver, destruction-before-game-lock-slot 1 and scalar delete protocol; this is application code using SDK helpers. Complete native body/control flow and full configured compiler contribution strictly replay with independent canonical relocations. Only the 73-byte Region factory adds physical coverage; the 97-byte ECL/Region release and 31/5-byte compiler/trivial-destruction aliases receive no duplicate credit. Six actual header consumers build once and all 57 prior affected units remain exact; 157 objects are reused. Original source spelling/global compiler profile, whole query and native game startup/runtime remain open. See docs/DAMAGE_REGION_ALLOCATION_EXACT_RECONSTRUCTION.md."
 0x00413BE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413C50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413C50,unknown,,review,unknown,"CORE/RECON-1048; docs/GLYPH_CANVAS_ALLOCATOR73_NATIVE_FRONTIER.md; original 73B allocator physical E8 to operator new, folded native 31B preclear and exact 124B game GDI ctor; source and authored-vs-template origin still unresolved"
 0x00413CA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413CC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413CD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
