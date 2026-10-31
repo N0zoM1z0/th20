@@ -88,3 +88,10 @@ nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/CardStartNativeLeaves.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```
+
+## CORE/RECON-1006 — original 42B Bomb predicate accepted separately
+
+The same original Card start uses a genuine BombController active-state
+predicate at `0x00478130`, native E8 `+0x1D6`. Its [independent whole
+42B strict match](CARD_START_BOMB_ACTIVE42_STRICT_EXACT.md) adds one game
+head/+42B and **does not** make the 1,896B Card parent exact.

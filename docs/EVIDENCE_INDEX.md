@@ -25,6 +25,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1005 — original 20B renderer AnimationFile borrowed getter, whole strict exact](CARD_HUD_FILE_GETTER20_STRICT_EXACT.md) — 3 genuine PE calls from complete 1,522B Card HUD result Boss, 20/20 and prior 1,552/1,552 rechecked in the same one cold object; origin uncredited.
 
+- [CORE/RECON-1006 — whole-exact 42B BombController state predicate from Card start](CARD_START_BOMB_ACTIVE42_STRICT_EXACT.md) — original 1,896B parent E8 +0x1D6, true BombController+0x18 member, native `bool` and 42/42 localized strict replay. +42 authored bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

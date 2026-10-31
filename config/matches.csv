@@ -725,3 +725,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004888E0,th20::NativeHudAnimationView::start_stage_4888e0,22,matching,100.00,card_start_vm_start_22,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md
 0x00488A60,th20::NativeCardHudView::start_spell_effects_488a60,71,matching,100.00,card_start_hud_start_71,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md
 0x004B90E0,th20::NativeCardHudView::report_spell_result_4b90e0,1522,matching,100.00,card_hud_spell_result_boss_1522,CORE/RECON-1004; docs/CARD_HUD_RESULT_BOSS_1522_STRICT_EXACT.md
+0x00478130,th20::NativeCardBombActiveView::active_478130,42,matching,100.00,card_start_bomb_active_42,CORE/RECON-1006; docs/CARD_START_BOMB_ACTIVE42_STRICT_EXACT.md

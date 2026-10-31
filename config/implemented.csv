@@ -1460,3 +1460,4 @@ th20::NativeHudAnimationView::start_stage_4888e0
 th20::NativeCardHudView::start_spell_effects_488a60
 th20::NativeCardHudView::report_spell_result_4b90e0
 th20::NativeCardRendererFileView::current_file_437950
+th20::NativeCardBombActiveView::active_478130
