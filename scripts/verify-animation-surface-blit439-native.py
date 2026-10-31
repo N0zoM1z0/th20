@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Immutable original Renderer 439B D3D9 surface blit vs real 438B C++ source.
+"""Immutable original Renderer 439B D3D9 surface blit: WHOLE strict exact.
 
-The one-byte native NOP after flush_draws() is real original code; the
-C++ source is NONEXACT. Diagnostic byte normalization does NOT grant credit.
+Natural lifetime scope around the acquired surface recreates genuine
+original post-flush compiler NOP without assembly, dead code or padding.
+All native E8 and PE HIGHLOW are pinned independently from original PE.
 """
 import hashlib,importlib.util,struct,sys,subprocess
 from pathlib import Path
@@ -36,35 +37,35 @@ def verify():
  assert native[0x56]==0x90
  assert next(i for i in ins if i.address==HEAD+0x56).mnemonic=='nop'
  assert [k for k,v in CALLS.items() if v==0x00414580]==[0x27,0x6C,0x15D]
- obj=ROOT/'build/core1086-probes/AnimationSurfaceBlit439.obj'
+ obj=ROOT/'build/core1091-canonical/AnimationSurfaceBlit439.obj'
  symbols=subprocess.run(['strings',str(obj)],capture_output=True,text=True,check=True).stdout.splitlines()
  assert SYM in symbols
- b,rel=cm.object_function(obj,SYM,438)
- ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(b,0))
- assert len(b)==438 and len(ci)==157 and len(rel)==8
+ body,rel=cm.object_function(obj,SYM,439)
+ ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,0))
+ assert len(body)==439 and len(ci)==158 and len(rel)==8
  assert sum(x['type']=='REL32' for x in rel)==6
  assert sum(x['type']=='DIR32' for x in rel)==2
  assert all(x['addend']==0 for x in rel)
- # For diagnosis only: omit exactly one attested genuine native NOP.
- # Mask each independently established original native PE relocation
- # and corresponding COFF relocation field using original positions.
- physical=bytearray(native);del physical[0x56]
- natural=bytearray(b)
- native_fields={**{k:('DIR32',v) for k,v in HIGHLOW.items()},
-                **{k+1:('REL32',v) for k,v in CALLS.items()}}
- assert len(native_fields)==len(rel)==8
- for x in rel:
-  off=x['offset'];old_off=off+(off>=0x56)
-  assert old_off in native_fields,(off,old_off)
-  kind,dst=native_fields[old_off]
-  assert x['type']==kind
-  natural[off:off+4]=physical[off:off+4]=b'\0'*4
- diffs=[x for x in range(438) if natural[x]!=physical[x]]
- assert diffs==[0x4A],diffs
- assert natural[0x4A]==0x58 and physical[0x4A]==0x59
- print('PASS immutable original whole 439B/158-i386 game Renderer D3D9 surface blit, 6 real native E8/2 PE HIGHLOW')
- print('PASS original 3 folded array-index E8, 192B draw-queue flush, native D3DXLoadSurfaceFromSurface and source-surface original 0x005C4EE4')
- print('PASS natural 438B/157-i386 real D3D9 source, 6 REL32/2 DIR32, correct GetSurfaceLevel/AddDirtyRect/Release and native RECT geometry')
- print('NONEXACT: original has one genuine +0x56 NOP after flush; after diagnostic-only removal, 437/438 native ordinary code bytes match except one jump displacement 0x59 vs 0x58')
- print('No shortened canonical unit or game-authored exact credit; original must remain complete 439B')
+ assert body[0x56]==0x90
+ assert next(i for i in ci if i.address==0x56).mnemonic=='nop'
+ fields={**{k:('DIR32',v) for k,v in HIGHLOW.items()},
+         **{k+1:('REL32',v) for k,v in CALLS.items()}}
+ assert set(fields)=={r['offset'] for r in rel}
+ for r in rel:
+  assert r['type']==fields[r['offset']][0]
+ comp=cm.compare(obj,SYM,HEAD,439)
+ assert comp['result']=='structural-exact'
+ assert comp['matched_comparable_bytes']==comp['comparable_bytes']==407
+ for r in comp['relocations']:
+  off=int(r['offset'],16)
+  assert r['type']==fields[off][0]
+  assert int(r['solved_destination'],16)==fields[off][1]
+ result=cm.compare_unit('animation_renderer_surface_blit_439')
+ assert result['result']=='exact' and result['size']==439 and result['matched_bytes']==439
+ assert len(result['relocations'])==8
+ print('PASS immutable original whole 439B/158-i386 game D3D9 texture surface blit, six E8 and two native PE HIGHLOW')
+ print('PASS original 3 folded array-index E8, 192B draw-queue flush, native D3DXLoadSurfaceFromSurface and actual source surface global')
+ print('PASS real scoped C++20 surface owner naturally emits original post-flush one-byte NOP at +0x56 and matching actual native branch displacement')
+ print('PASS canonical WHOLE STRICT EXACT 439/439 native bytes, 407/407 ordinary bytes and all original eight original PE relocation field/target roles')
+ print('PASS one additional whole native game-authored head/439 bytes; folded 22B array index and 192B flush not recredited')
 if __name__=='__main__':verify()

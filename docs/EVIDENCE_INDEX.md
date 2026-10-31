@@ -153,6 +153,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1090 — entire 40B real Renderer AnimationFile indexed lookup whole strict exact](ANIMATION_FILE_BY_INDEX40_STRICT_EXACT.md) — one 42-pointer table at Renderer+0x06000730, original exact folded 22B array-index E8, called by two distinct native 29B Animation file getters, +40 original game-authored bytes.
 
+- [CORE/RECON-1091 — original entire 439B D3D9 Renderer sprite RECT surface blit Boss WHOLE STRICT EXACT](ANIMATION_SURFACE_BLIT439_STRICT_EXACT.md) — native 6 E8/2 HIGHLOW and complete 439B source, original post-flush NOP naturally emitted through genuine acquired-surface C++ scope, 407/407 ordinary bytes, +439 authored-game original code bytes.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**

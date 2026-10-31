@@ -1553,3 +1553,4 @@ th20::read_game_input_bytes_410990
 th20::NativeAnimationLegacyFileView::previous_file_437470
 th20::NativeAnimationHandleRefreshView::rebind_animation_44bcd0
 th20::AnimationPoolOwner::file_by_index
+th20::NativeRendererSurfaceBlitView::blit_surface_rect_44bb10

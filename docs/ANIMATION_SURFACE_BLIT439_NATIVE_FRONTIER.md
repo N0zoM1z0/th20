@@ -1,3 +1,5 @@
+**CORE/RECON-1091 CURRENT CORRECTION:** Original Renderer 439B D3D9 surface blit at `0x0044BB10` is now [WHOLE STRICT EXACT 439/439](ANIMATION_SURFACE_BLIT439_STRICT_EXACT.md). A genuine nested C++ surface-lifetime scope after Renderer draw flush naturally makes MSVC emit the original one-byte `NOP`, 407/407 nonrelocated bytes and all six E8/two HIGHLOW. Earlier 438B/NONEXACT statements below are historical; no fake padding or truncated original boundary was used.
+
 # CORE/RECON-1087 — entire original 439B D3D9 sprite texture surface-copy Boss, 438B source frontier
 
 Original immutable Japanese TH20 Steamless v1.00a target SHA-256

@@ -27816,3 +27816,23 @@ size = 40
 relocations = [
   { offset = 0x1C, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
 ]
+
+# CORE/RECON-1091: whole original 439B game D3D9 surface RECT transfer.
+[units.animation_renderer_surface_blit_439]
+source = "src/AnimationSurfaceBlit439.cpp"
+object = "build/core1091-canonical/AnimationSurfaceBlit439.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererSurfaceBlitView::blit_surface_rect_44bb10"]
+symbol = "?blit_surface_rect_44bb10@NativeRendererSurfaceBlitView@th20@@QAEXPBUNativeSurfaceBlitCommand@2@@Z"
+target_address = 0x0044BB10
+size = 439
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x28, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x52, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0x6D, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x120, type = "DIR32", symbol = "?source_texture_surface_5c4ee4@th20@@3PAUIDirect3DSurface9@@A", target = 0x005C4EE4 },
+  { offset = 0x130, type = "REL32", symbol = "_D3DXLoadSurfaceFromSurface@32", target = 0x0054069C },
+  { offset = 0x15E, type = "REL32", symbol = "??A?$array@PAVAnimationFile@th20@@$0CK@@std@@QAEAAPAVAnimationFile@th20@@I@Z", target = 0x00414580 },
+  { offset = 0x1AD, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

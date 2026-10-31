@@ -1,5 +1,5 @@
 // TH20 original 439B Renderer D3D9 sprite-rectangle surface copy Boss.
-// Source-present candidate; whole native original extent/ABI is separate.
+// CORE/RECON-1091: WHOLE STRICT EXACT 439/439 native i386 game Boss.
 #include "NativeRendererSurfaceBlitView.hpp"
 #include "AnimationFile.hpp"
 #include <d3d9.h>
@@ -14,24 +14,30 @@ void NativeRendererSurfaceBlitView::blit_surface_rect_44bb10(const NativeSurface
     if (files[command->file_index]->textures[command->texture_index].texture == nullptr)
         return;
     flush_draws();
-    auto& second_files=*reinterpret_cast<std::array<AnimationFile*,42>*>(
-        reinterpret_cast<std::uint8_t*>(this)+0x06000730);
-    IDirect3DSurface9* surface;
-    if (second_files[command->file_index]->textures[command->texture_index].texture
-            ->GetSurfaceLevel(0,&surface)!=D3D_OK)
-        return;
-    RECT source{command->src_left,command->src_top,
-        command->src_left+command->src_width,command->src_top+command->src_height};
-    RECT destination{command->dest_left,command->dest_top,
-        command->dest_left+command->dest_width,command->dest_top+command->dest_height};
-    if (D3DXLoadSurfaceFromSurface(surface,nullptr,&destination,
-            source_texture_surface_5c4ee4,nullptr,&source,D3DX_FILTER_POINT,0)!=D3D_OK) {
+    // The original lifetime for the acquired D3D9 surface begins in a
+    // distinct nested scope after flushing pending renderer draw commands.
+    // This genuine surface-owner scope also restores the native /Od NOP
+    // after the flush call; do not substitute a synthetic empty statement.
+    {
+        auto& second_files=*reinterpret_cast<std::array<AnimationFile*,42>*>(
+            reinterpret_cast<std::uint8_t*>(this)+0x06000730);
+        IDirect3DSurface9* surface;
+        if (second_files[command->file_index]->textures[command->texture_index].texture
+                ->GetSurfaceLevel(0,&surface)!=D3D_OK)
+            return;
+        RECT source{command->src_left,command->src_top,
+            command->src_left+command->src_width,command->src_top+command->src_height};
+        RECT destination{command->dest_left,command->dest_top,
+            command->dest_left+command->dest_width,command->dest_top+command->dest_height};
+        if (D3DXLoadSurfaceFromSurface(surface,nullptr,&destination,
+                source_texture_surface_5c4ee4,nullptr,&source,D3DX_FILTER_POINT,0)!=D3D_OK) {
+            surface->Release();
+            return;
+        }
+        auto& third_files=*reinterpret_cast<std::array<AnimationFile*,42>*>(
+            reinterpret_cast<std::uint8_t*>(this)+0x06000730);
+        third_files[command->file_index]->textures[command->texture_index].texture->AddDirtyRect(nullptr);
         surface->Release();
-        return;
     }
-    auto& third_files=*reinterpret_cast<std::array<AnimationFile*,42>*>(
-        reinterpret_cast<std::uint8_t*>(this)+0x06000730);
-    third_files[command->file_index]->textures[command->texture_index].texture->AddDirtyRect(nullptr);
-    surface->Release();
 }
 }
