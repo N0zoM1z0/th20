@@ -1508,3 +1508,4 @@ std::pmr::vector<GlyphMaskOffset>::_Xlength,0x00414FE0,function
 std::pmr::vector<GlyphMaskOffset>::_Change_array,0x00414960,function
 std::pmr::vector<GlyphMaskOffset>::_Reallocation_guard::~_Reallocation_guard,0x004144E0,function
 std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate,0x004133E0,function
+th20::NativeGlyphCanvasView::invert_alpha_417ab0,0x00417AB0,function

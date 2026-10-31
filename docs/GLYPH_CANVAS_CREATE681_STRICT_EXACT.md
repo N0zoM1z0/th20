@@ -108,3 +108,13 @@ Its source calls the real observed pixel, stride and width getters and
 reproduces the native 16B PMR-vector neighbor offset protocol. The
 new 2,245B parent remains NONEXACT; this 681B method and four
 existing GDI-view functions remain strictly exact after scoped builds.
+
+## CORE/RECON-1057 — alpha-processing Canvas sibling source frontier
+
+The same native custom GDI canvas now has [whole-source 542B Alpha
+processing](GLYPH_CANVAS_ALPHA542_TYPED_NATIVE_FRONTIER.md) in a
+separate C++20 owner, called by the original 2,227B glyph-text core.
+Its three actual 0x15/0x19/0x1A modes are maintained but compile to
+540B/164 and remain NONEXACT. The original 681B creation Boss and its
+existing child physical exact units are unaffected and replay whole
+exact in the shared-view include closure.

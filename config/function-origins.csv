@@ -530,7 +530,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00416CF0,authored,TextOutline,authored,high,"REF-022; Complete18-byte cdecl setter stores float bits in5AE120. Independent original raster producer415830 multiplies font outline radius by this scalar then resets1; PE initialfloat1 read before acceptance. Producer diagnostic identifies original authored core/grpfont.cpp, and proprietary shared raster global links this setter to authored text support. Original setter spelling inferred. Storage declaration is extern; global construction and whole raster remain unresolved."
 0x00416D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00417A90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00417AB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00417AB0,authored,GlyphText,authored,high,"CORE/RECON-1057; docs/GLYPH_CANVAS_ALPHA542_TYPED_NATIVE_FRONTIER.md; complete native 542B GDI alpha game-specific 3 format cases, original 2227B parent and four native getter E8, current natural 540B/164 nonexact source"
 0x00417CD0,library,ProgressFileSdk,exclude,high,"CORE/EXACT-128: Complete 44-byte native std::filesystem::path::path<char[4096]> body, actual receiver/argument/result flow and pinned SDK implementation independently establish library origin. Whole fresh compiled callee agrees outside relocation fields; no standalone canonical unit or authored exact credit is claimed. This is independent support for the complete load root, whose own relocations are strictly replayed. See docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md."
 0x00417D00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00417DC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

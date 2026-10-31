@@ -21,6 +21,10 @@ struct NativeGlyphCanvasView {
     std::int32_t pixel_stride_4156c0() const;
     // Original glyph compositor reads this width four times from +0x104.
     std::int32_t canvas_width_415800() const;
+    // Native caller passes four stack words and the method returns bool;
+    // the observed fourth parameter currently has no identified use.
+    bool invert_alpha_417ab0(std::int32_t rows, std::int32_t start,
+                             std::int32_t span, std::int32_t unused_flag);
     // Real original 2,245B glyph shadow/outline compositing Boss.
     // Its full source is maintained separately; the exact body is open.
     bool composite_glyph_mask_416420(std::int32_t rows, std::int32_t start,

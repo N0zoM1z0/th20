@@ -87,6 +87,8 @@ not current facts when newer canonical units supersede them.
 
 - [CORE/RECON-1056 — 488B PMR glyph vector growth native Boss frontier and three 16B/165B/81B exact children](GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md) — native 488B/170 14 E8/2 HL vs C++20 467B/163 candidate; three original exact STL growth paths +262 code bytes without game-authored credit.
 
+- [CORE/RECON-1057 — complete-source native 542B GDI Alpha-processing Boss](GLYPH_CANVAS_ALPHA542_TYPED_NATIVE_FRONTIER.md) — actual 2,227B text-core caller, three original alpha formats, 4 physical native E8/0 HIGHLOW, meaningful 540B/164-i386 source candidate NONEXACT.
+
 ## Reading order for outstanding original Bosses
 
 - **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
