@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Serial, hash-attested x86 MSVC compilation with explicit flags and receipts."""
 import fcntl
+
+from shared_runtime import command as shared_command
 import json
 import os
 from pathlib import Path
@@ -74,7 +76,7 @@ def compile_probe(source, output, profile):
         output.unlink(missing_ok=True)
         receipt.unlink(missing_ok=True)
         inputs = source_fingerprint(source)
-        command = ["wine", str(vc / "bin/HostX64/x86/cl.exe"), "/nologo", "/c", "/showIncludes",
+        command = [*shared_command("wine"), str(vc / "bin/HostX64/x86/cl.exe"), "/nologo", "/c", "/showIncludes",
                    *profile, "/I" + wine_path(ROOT / "src"), wine_path(source),
                    "/Fo" + wine_path(output), "/Fd" + wine_path(output.with_suffix(".pdb"))]
         completed = subprocess.run(command, cwd=ROOT, env=compiler_environment(),

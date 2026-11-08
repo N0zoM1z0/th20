@@ -133,3 +133,13 @@ Never commit original executables/data, downloaded proprietary toolchains,
 credentials, generated decompiler text, private Ghidra/IDA databases or build
 products. Keep them in ignored `.tools/`, `.analysis/`, `ghidra-project/`,
 `build/` and `resources/th20.exe`; preserve the supplied `../game_exe/` files.
+
+## Shared Factory runtime
+
+Follow [the shared tools instructions](docs/SHARED_TOOLS.md). Ghidra/JDK and
+Wine executables are shared through Factory; repository scripts also work
+without MCP. Use `scripts/shared_runtime.py` and the existing compiler/analysis
+frontends. Keep this game's prefix, analyzer project, Java home/cache, target
+and compiler profile isolated. Do not install duplicate tools or inherit
+another game's `WINEPREFIX`. This shared-runtime procedure supersedes older
+per-repository installation instructions; pinned versions/hashes still apply.
