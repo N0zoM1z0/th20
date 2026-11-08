@@ -1,5 +1,11 @@
 # TH20 reconstruction workflow
 
+> Current workflow: follow the **Highest priority** section in `AGENTS.md`.
+> Prefer affected exact comparisons and useful Markdown knowledge. Ordinary
+> notes do not require full CI, native replay or document-hash/pin refreshes.
+> Older broad validation instructions apply only when their impact is relevant.
+
+
 This control plane follows the local TH095 reconstruction repository. Its
 accepted source, function addresses, VC7.1 flags, CRT library assumptions, and
 special assembly exceptions are not TH20 evidence.

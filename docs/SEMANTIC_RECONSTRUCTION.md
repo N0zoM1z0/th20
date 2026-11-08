@@ -1,5 +1,11 @@
 # Semantic reconstruction policy
 
+> Current workflow: follow the **Highest priority** section in `AGENTS.md`.
+> Prefer affected exact comparisons and useful Markdown knowledge. Ordinary
+> notes do not require full CI, native replay or document-hash/pin refreshes.
+> Older broad validation instructions apply only when their impact is relevant.
+
+
 Exact reconstruction is the current priority. The historical portable semantic
 suite has been retired; old test paths and scenario totals in evidence documents
 refer to dated experiments preserved in Git (see [retained tests](../tests/README.md)).

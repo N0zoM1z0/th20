@@ -1,5 +1,11 @@
 # Tool routing
 
+> Current workflow: follow the **Highest priority** section in `AGENTS.md`.
+> Prefer affected exact comparisons and useful Markdown knowledge. Ordinary
+> notes do not require full CI, native replay or document-hash/pin refreshes.
+> Older broad validation instructions apply only when their impact is relevant.
+
+
 Use `scripts/repo-python` for all Python commands, following TH10's interpreter
 selection convention. It resolves paths from the script location, so it also
 works from another directory. An explicit `TH20_PYTHON` path or command takes

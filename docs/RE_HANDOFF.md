@@ -1,5 +1,11 @@
 # TH20 native reconstruction — current working handoff
 
+> Current workflow: follow the **Highest priority** section in `AGENTS.md`.
+> Prefer affected exact comparisons and useful Markdown knowledge. Ordinary
+> notes do not require full CI, native replay or document-hash/pin refreshes.
+> Older broad validation instructions apply only when their impact is relevant.
+
+
 **Reconciled 2026-10-31.** This is the short, current entry point for
 the next agent, **not** the 100KB chronological checkpoint log.
 Read [AGENTS.md](../AGENTS.md) first, then this page, the
