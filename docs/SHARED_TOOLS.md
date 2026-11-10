@@ -49,3 +49,23 @@ compiler and cannot replace TH20's locked payload. Share a matching installation
 only after checking its complete compiler/SDK contents; keep the same local
 selector path and this game's prefix. Download caches and superseded manifests
 are disposable.
+
+TH20 now keeps a desktop-x86 subset of this installation: the locked HostX64/x86
+compiler/linker, desktop x86 CRT and SDK libraries, configured include trees,
+SDK x86/x64 host tools, x86 runtime DLLs and release D3DX. ARM64/x64 target
+libraries, OneCore/UWP libraries, managed/packaging/test components, old SDK tools,
+Clang sanitizer/fuzzer libraries and unused D3DX variants have been removed.
+Keep the entire TH20 Wine prefix. The local tools occupy about 2.14 GiB.
+
+The reduced payload passed Win32/DirectX compile/link/runtime smoke, Win32
+resource compilation, and desktop C++ EH/RTTI/PMR execution with static/dynamic
+release/debug CRTs. Fresh private objects for AnimationTextureFinalize2745,
+InputDeviceFrame, EclRuntimeTick, EclRuntimeLifetime, ProgressFileLoad and
+CardHudResult1522 passed all 18 complete canonical comparisons, including owned
+extents and relocations. Current canonical products and captured headers were
+unchanged; other providers retained their prior evidence.
+
+For a private `/MDd` runtime probe, supply both the x86 Microsoft.VC143.DebugCRT
+DLLs and `Windows Kits/10/bin/10.0.26100.0/x86/ucrt/ucrtbased.dll` in its runtime
+search path. Copying only the VC debug DLLs leaves a missing UCRT dependency;
+this failure occurs with the full installation too. Keep that SDK DLL.

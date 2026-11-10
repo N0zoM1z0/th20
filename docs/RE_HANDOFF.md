@@ -150,8 +150,11 @@ Ghidra/JDK/Wine already use Factory. `.tools/msvc` is the locked 19.44 compiler
 and SDK; `.tools/wine` is TH20's isolated mutable prefix. Factory's 14.10/v141
 compiler is not interchangeable. See [shared tools](SHARED_TOOLS.md).
 
-Current maintenance changes only CI, artifact cleanup and documentation. Native
-source, headers, profiles, ledgers and target are unchanged: **zero affected
-providers and zero exact replay units**. Basic CI checks syntax, ledgers and build
-configuration; `--full` adds synthetic exact-oracle tests. Resume native work from
-the open Boss backlog, using scoped compilation and complete canonical comparison.
+Current maintenance reduced the local tool payload to desktop x86 after testing
+with surplus components temporarily unavailable. Native source, headers, profiles,
+ledgers and target are unchanged: **zero affected canonical providers**. Six
+representative providers were freshly compiled to private objects and all 18
+complete units passed strict comparison; canonical objects/receipts were preserved.
+Win32/DirectX, resource compilation and desktop CRT runtime checks also passed.
+See [shared tools](SHARED_TOOLS.md) for retained components and the debug UCRT
+runtime dependency. Resume reconstruction from the open Boss backlog.
