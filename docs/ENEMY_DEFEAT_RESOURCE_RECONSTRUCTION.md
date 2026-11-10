@@ -129,9 +129,5 @@ and complete owner dependencies with independent relocation/EH replay. The 151-b
 its remaining genuine resource owners; captured resource calls do not close it.
 
 Private evidence under `.analysis/` includes `core153-native-body-audit.json`,
-`core153-independent-bindings.json`, `core153-symbol-role-reconciliation.json`,
-`core153-cold-proof.json`, `core153-slot-order-exact-results.json.gz` and
-`core153-new-exact-results.json.gz`. Original inputs/receipts are preserved in
-`core153-pre-defeat-inputs.json.gz` and `core153-pre-slot-order-inputs.json.gz`.
-Current frozen sources and cleanup are recorded in the handoff. Receipts remain
-immutable; cleanup verifies protected hashes with zero extra builds or replay.
+`core153-independent-bindings.json`, `core153-symbol-role-reconciliation.json`
+and `core153-cold-proof.json`.

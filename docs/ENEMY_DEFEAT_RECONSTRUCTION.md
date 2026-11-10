@@ -148,12 +148,5 @@ unreconstructed VM execution, feedback/reward bodies and resource creation are
 explicit captures. Portable fixture execution does not prove Windows resource
 integration or a whole-program product.
 
-Private evidence is retained under `.analysis/`: the `core153..155-*native.asm`
-exports, `core155-independent-bindings.json`, `core155-new-exact-results.json.gz`,
-`core155-counter-exact-results.json.gz`, graph audit and semantic log. Authentic
-inputs/receipts are in `core155-pre-counter-inputs.json.gz`,
-`core155-pre-registration-ledgers.json.gz`, `core154-pre-acceptance-inputs.json.gz`,
-`core154-pre-geometry-namespace-inputs.json.gz`,
-`core154-pre-publication-inputs.json.gz` and `core154-v4-original-inputs.json.gz`.
-The handoff identifies the current freeze and retirement inventory. Cleanup
-checks protected hashes and adds zero compiler or replay invocations.
+Private evidence under `.analysis/` includes the `core153..155-*native.asm`
+exports, `core155-independent-bindings.json`, graph audit and semantic log.

@@ -57,8 +57,7 @@ Original full-method private proofs:
   immutable original PE x86 and real COFF relocation+byte audit.
 - .analysis/core641-emitter-native-60-call-proof.py/json:
   60 independent physical original E8 destinations checked in order.
-- build/core641-probes/BulletEmitter.obj and receipt: pinned MSVC x86
-  whole-source object; ignored, not an accepted canonical receipt.
+
 
 **Affected existing canonical replay scope: zero.** This noncanonical
 source had no previously accepted units; only the full original

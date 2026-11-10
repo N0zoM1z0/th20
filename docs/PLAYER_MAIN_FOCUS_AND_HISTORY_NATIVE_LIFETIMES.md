@@ -107,9 +107,7 @@ its call *identity* is not matching its body.
   independent all-67 original E8 ordinal callee role reconciliation,
   including whole-byte folded-compatible helpers and the separately
   nonexact movement child; no duplicate original-byte credit.
-- `build/core672-probes/PlayerMainFrame.obj` and input-closure receipt:
-  pinned MSVC 19.44.35211 x86 `/std:c++20 /Od /Ob0 /GS /Gy /Zl
-  /arch:SSE2 /fp:precise /EHsc` full maintained source build.
+
 
 **Affected existing strict canonical units: zero.** The only changed
 source is the noncanonical `src/PlayerMainFrame.cpp`. There are no

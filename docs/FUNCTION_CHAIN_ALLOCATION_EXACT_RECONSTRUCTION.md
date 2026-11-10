@@ -124,11 +124,9 @@ passes all 851 complete units using existing objects, with zero compiler
 invocations. Rejected probe sources, copied input headers and complete emission
 observations remain retained privately.
 
-Private proof is retained in core130-pre-header-inputs.json.gz,
-core130-cold-proof.json, core130-affected-results.json.gz,
-core130-new-exact-results.json, core130-folded-initializer.json,
-core130-boundaries.json, rejected probe sources and attested native exports
-under `.analysis/`. Completed proof/retirement writers must never rerun.
+Private proof is in core130-cold-proof.json, core130-new-exact-results.json,
+core130-folded-initializer.json, core130-boundaries.json, rejected probe sources
+and attested native exports under `.analysis/`.
 
 
 ## CORE/EXACT-387 — later complete owned-node unlinking

@@ -130,14 +130,8 @@ whole-graph replay is run.
 
 Private evidence under `.analysis/` includes `core156-*native.asm`,
 `core156-timer-wrapper-callers.txt`, `core156-independent-bindings.json`,
-`core156-feedback-emission.json`, affected/new strict reports, EH reuse audit,
-actual-owner test logs and graph audit. `core156-pre-state-inputs.json.gz` and
-`core156-pre-registration-ledgers.json.gz` retain authentic originals. The
-`core156-probe-v1-original-inputs.json.gz`, `core156-probe-v2-original-inputs.json.gz`,
-`core156-probe-final-original-inputs.json.gz` and
-`core156-member-call-original-inputs.json.gz` archives retain all rejected/current
-probe texts and receipts. Cleanup verifies protected hashes with zero extra
-build or replay invocations; current paths are in the handoff.
+`core156-feedback-emission.json`, EH reuse audit, actual-owner test logs and graph
+audit. Rejected candidate sources remain separate from maintained source.
 
 ## Later CORE/EXACT-316 update
 

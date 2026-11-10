@@ -101,11 +101,9 @@ production admission. The private exercise's unsupported-opcode exception must
 never replace the native default return. Whole-game 95% exactness and playable
 integration remain unachieved.
 
-Private evidence lives under `.analysis/`: `core145-enemy-movement-candidate.cpp`,
+Private evidence under `.analysis/` includes `core145-enemy-movement-candidate.cpp`,
 `core145-movement-host.cpp`, the v7 recipe/build log, native movement read-order
-JSON, configuration/remaining/accessor exports, `core145-word-strict.json`,
-`core145-affected-results.json.gz` and literal-role reconciliation. Original
-inputs are preserved in `core145-pre-header-inputs.json.gz` and
-`core145-host-original-inputs.json.gz`. The refreshed complete root dependency
-inventory is `core145-enemy-current-dependencies.json` (91 canonical entry targets
-/ 751 of 1,264 call sites); those navigation counts do not measure root completion.
+JSON, configuration/remaining/accessor exports, `core145-word-strict.json` and
+literal-role reconciliation. The complete root dependency inventory is
+`core145-enemy-current-dependencies.json` (91 canonical entry targets / 751 of
+1,264 call sites); those navigation counts do not measure root completion.

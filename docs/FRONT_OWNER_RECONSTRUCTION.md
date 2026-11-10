@@ -136,10 +136,9 @@ Paths below are relative to `.analysis/`:
 
 - `core159-front-layout-native.asm`, `core159-front-typed-consumers-native.asm`, `core159-front-native-identity.json`
 - `core159-front-v1-diagnostic.json`, `core159-independent-bindings.json`, `core159-cold-proof.json`
-- `core159-affected-results.json.gz`, `core159-new-exact-results.json.gz`, `core159-front-semantics-v3.log`
+- `core159-front-semantics-v3.log`
 - `core159-enemy-dispatch-candidate.cpp`, `core159-dispatch-host.cpp`, `core159-front-host-cases.inc`, `core159-dispatch-host-recipe.json`, `core159-dispatch-host-v4.log`
-- `core159-pre-front-inputs.json.gz`, `core159-pre-registration-ledgers.json.gz`, `core159-probe-original-inputs.json.gz`, `core159-canonical-v1-original-inputs.json.gz`, `core159-dispatch-host-v3-original-inputs.json.gz`
-- `core159-graph-audit.json`, `core159-retirement-plan.json`, `core159-cleanup.json`, `core159-gates.json`
+- `core159-graph-audit.json`, `core159-gates.json`
 
 Original REF-032/033 exports and rejected reference-body decisions remain
 protected. Read [whole dispatcher evidence](CORE_ENEMY_DISPATCH_LAYOUT.md) and

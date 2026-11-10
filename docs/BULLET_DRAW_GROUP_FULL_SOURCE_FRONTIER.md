@@ -16,9 +16,7 @@ external COFF reference locations/types in the candidate. The original
 whole function remains **273B / 82 instructions**: two unwanted float
 offset `movss` spills add **10 bytes** around the native pi/2 rotation
 argument. Therefore there is **no newly accepted exact original draw
-range**. Current pinned native compiler probe:
-`build/core375-probes/BulletDrawGroup-maintained.obj` and receipt, with
-private complete-score evidence
+range**. Private complete-score evidence is in
 `.analysis/core375-bullet-draw-typed-abi-score.txt`.
 Original floating-point evaluation/profiles were independently tested
 in `.analysis/core371-*` through `.analysis/core374-*`; none of those

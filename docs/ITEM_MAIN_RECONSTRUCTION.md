@@ -60,24 +60,11 @@ origins remain pending. Authored exact coverage is now 85 functions/25,785 bytes
 confirmed authored 88, mappings 770, fourteen whole nonexact methods, reference
 absorption 238 and all 6,945 terminal reviews remain separate facts.
 
-Before shared-source migration, original 143 canonical and five private receipt
-closures were verified and losslessly archived in core107-pre-admission-inputs.json.gz.
-Installed SDK headers remain protected in original bytes. Interim retirement
-removes 286 replaced object/receipt products totaling 7,594,435 bytes; all 756
-current existing-object replay results and all protected source/native/active
-input hashes remain unchanged. No unchanged-source cold rebuild runs for cleanup.
-All69 public tests pass in233.276 seconds. Final retirement preserves historical
-CORE105 v4 and CORE106 source/receipt/host closures in
-core107-final-retired-inputs.json.gz and the original pre-admission archive,
-then removes their superseded copied sources and six private object pairs.
-Both cleanup passes remove458 products and save5,933,478 net bytes after the
-original-source archives. All756 replay results and current290 canonical hashes,
-256 source and retained native/proof/active query hashes remain unchanged.
-Build is about8.2MiB; analysis112MiB. Public CI's temporary Python/compiler caches
-are automatically retired. Detailed records stay private.
-Next main work is complete Item update (4,757 bytes), followed by draw (815 bytes)
-with the genuine renderer storage/ownership boundary below. Original frame
-callbacks, creator/factory, RTTI/full linkage and game runtime remain open.
+At this checkpoint all 756 units replayed with unchanged protected inputs.
+Next work was complete Item update (4,757 bytes), followed by draw (815 bytes)
+with the renderer storage/ownership boundary below. Original frame callbacks,
+creator/factory, RTTI/full linkage and game runtime remained open; consult the
+live ledgers for later acceptance.
 
 ## CORE-106: complete private spawn and actual protocol checks
 
@@ -241,17 +228,9 @@ remain separate from private byte comparison.
 ## Private evidence and retirement
 
 Use the ignored CORE105 main/callee/renderer/ABI Ghidra exports and attestations,
-the current private header closure and `core105-primary-v4-report.json`.
-Original v1/v2/v3 trial inputs and receipts are archived before their object
-pairs are retired. `core105-retired-primary-inputs.json.gz` retains their exact
-source/receipt envelopes and the hashes needed to reproduce every legacy archive
-byte for byte. Redundant SDK text is recovered from the protected installed
-headers, with original-file and normalized-text hashes both checked. Original
-tool bytes, rather than normalized text copies, establish receipt freshness.
-Periodic cleanup preserves current canonical pairs, native exports, archived
-inputs, active candidates, original game/reference and installed tools.
-Cleanup replays existing objects at reduced priority; it does not cold-build
-an unchanged source graph. No completed proof writer is overwritten.
+the private header closure and `core105-primary-v4-report.json` for the original
+hypothesis. Installed SDK bytes establish receipt freshness; normalized copies
+are insufficient. Current acceptance requires a fresh build of maintained source.
 
 All 68 public tests pass in 213.961 seconds. The periodic retirement removes
 nine files/208,194 bytes and preserves all 747 existing-object results. Final

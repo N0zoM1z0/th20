@@ -144,9 +144,8 @@ Private paths are relative to `.analysis/`:
 - `core150-enemy-dispatch-candidate.cpp`, `core150-draft-scope.json`, `core150-health-host-cases.inc`
 - `core150-dispatch-host-recipe.json`, `core150-dispatch-host.log`, `core150-creation-semantics.log`
 - `core150-independent-bindings.json`, `core150-unaccepted-emission.json`
-- `core150-pre-owner-inputs.json.gz`, `core150-retired-inputs.json.gz`
-- `core150-cold-proof.json`, `core150-affected-results.json.gz`, `core150-new-exact-results.json.gz`
-- `core150-graph-audit.json`, `core150-cleanup.json`, `core150-retirement-plan.json`, `core150-gates.json`
+- `core150-cold-proof.json`
+- `core150-graph-audit.json`, `core150-gates.json`
 
 Continue the same whole-root source through genuine remaining HUD, Card, laser,
 selection/clear and state receivers. Preserve the unresolved scalar return,

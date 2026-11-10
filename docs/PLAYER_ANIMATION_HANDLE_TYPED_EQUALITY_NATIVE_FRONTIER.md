@@ -156,9 +156,7 @@ original relocation positions, types and destinations.
   every manifest relocation location, type and target stays fixed.
   This complete proof does not depend on intermediate private
   batch JSON artifacts retaining their old contents.
-- build/core659-probes/AnimationHandleEquality.obj and
-  build/core659-probes/PlayerMainFrame.obj:
-  complete actual noncanonical native source probes with receipts.
+
 
 **Replay scope: precisely 486 previously strict units in 116
 affected canonical objects, and two current noncanonical native

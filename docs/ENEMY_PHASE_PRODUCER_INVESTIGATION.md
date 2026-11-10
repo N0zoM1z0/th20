@@ -96,12 +96,11 @@ affected and seven new units are replayed; cleanup adds no replay requirement.
 
 Private results are relative to `.analysis/`:
 
-- `core147-independent-bindings.json`, `core147-new-exact-results.json.gz`
+- `core147-independent-bindings.json`
 - `core147-value-construction-corroboration.json`
-- `core147-cold-proof.json`, `core147-affected-results.json.gz`
+- `core147-cold-proof.json`
 - `core147-enemy-phase-semantics.log`, `core147-core-semantics.log`
-- `core147-pre-phase-inputs.json.gz`, `core147-retired-inputs.json.gz`
-- `core147-graph-audit.json`, `core147-cleanup.json`, `core147-gates.json`
+- `core147-graph-audit.json`, `core147-gates.json`
 
 Preserve the CORE146 and CORE147 attested native exports, Ghidra logs, private
 probe sources and original receipts/inputs in the retirement archive. Rejected

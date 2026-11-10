@@ -43,8 +43,8 @@ Pre-edit current pinned MSVC receipts establish that changing the actual shared 
 Reproducible private proofs:
 
 - `.analysis/core685-animation-factory-compiler-tag-native-proof.py/json` — immutable original 73B/22 instructions, all three original E8 roles, 31B auto-helper and 61/61+27/27 bytes; independent comparable code and correct physical destinations.
-- `.analysis/core681-class-Animation.hpp` and `.analysis/core681-class-Animation-factory.cpp` — only class-tag-changed private exact-shape source probe; `build/core681-probes/class-exactprofile.obj` and `class-nosdl.obj` — genuinely compiled pinned MSVC i386.
-- `.analysis/core675-factory-Original.cpp`, `build/core678-probes/Animation-generic-gssdl.obj` — real maintained struct-tag template compiled under the same `/sdl` option.
+- `.analysis/core681-class-Animation.hpp` and `.analysis/core681-class-Animation-factory.cpp` — class-tag source variants compiled with pinned MSVC i386 under the exact profile and without `/sdl`.
+- `.analysis/core675-factory-Original.cpp` — maintained struct-tag template compiled under the same `/sdl` option.
 - `.analysis/core682-forward-class-factory.cpp` — private controlled experiment showing that one opposite-tag forward declaration is insufficient; no public type declaration edited.
 - `.analysis/core683-animation-class-conversion-existing-closure.json` — receipt-derived **62/284** previous native strict-unit impact boundary.
 

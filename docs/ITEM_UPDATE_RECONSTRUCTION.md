@@ -66,14 +66,10 @@ lifetime is abort-only for host RTTI. An initial new fixture assertion used the
 wrong node-flag expectation; the corrected independent test uses the maintained
 bit-one enable contract. Production behavior did not change for that correction.
 
-Original261-source canonical and nine active private object/receipt closures are
-verified and losslessly archived before migration. Existing147 objects are each
-rebuilt once because shared-header fingerprints change; two freshly compiled
-Item TUs are reused. Full original literal payloads independently identify any
-new compiler labels. Keep exact115-canonical-results.json.gz, the264-source
-freeze, both production replays,651-case sanitizer receipt and pre-admission
-archive. Earlier sound probes now have historical frozen closures; they are not
-fresh receipts for the new source graph and must be rebuilt before new acceptance.
+The shared-header change required 147 existing objects to be rebuilt; two freshly
+compiled Item translation units were reused. Full original literal payloads
+independently identified new compiler labels. Historical sound probes require
+fresh builds against current headers before new acceptance.
 
 The whole Item update remains4,820 bytes including its60-byte table; draw is815.
 The genuine renderer's four-byte interval after its second Animation remains
@@ -302,11 +298,6 @@ Completed writers must not overwrite their reports. Current canonical pairs,
 source, native evidence and active query inputs remain protected; heavy work
 is serial at reduced priority and no unchanged graph is cold-built for cleanup.
 
-Protected retirement removes three regenerable bytecode files totaling 33,919
-bytes and three empty directories. All 756 existing-object exact results stay
-identical to CORE107, and all 256 source files and 290 canonical object/receipt
-hashes are unchanged. All 69 public tests pass in 271.776 seconds. Temporary CI
-caches retire automatically; build remains about 8.2 MiB and analysis 113 MiB.
-No compiler trials are generated in this investigation. Normal-flow reachability
-and actual current dependency names are retained in core108-normal-flow.json
-and core108-dependency-owners.json.gz; cleanup is core108-cleanup.json.gz.
+No compiler trials were generated in this investigation. Normal-flow reachability
+and dependency ownership are recorded in core108-normal-flow.json and
+core108-dependency-owners.json.gz.

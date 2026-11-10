@@ -116,8 +116,8 @@ links to original PE evidence. The immediate priorities are:
 
 - **Every** code/metadata change starts from the live `git status`;
   staged, dirty and untracked work belongs to the active agent.
-  Preserve unfinished work under `.analysis/` with its SHA and
-  reason if it cannot yet be admitted to maintained source.
+  Preserve unfinished work under `.analysis/` with its unresolved
+  question if it cannot yet be admitted to maintained source.
 - Read original PE SHA, whole native boundaries and physical
   E8/HIGHLOW **independently** before accepting source exactness.
   Keep actual ABI, C++ ownership, EH, vtable, COM and original
@@ -130,25 +130,28 @@ links to original PE evidence. The immediate priorities are:
   **never run an unfiltered full cold replay**.
 - For **docs and regenerable-artifact cleanup with unchanged native
   graph**: **zero affected native units and zero cold replay**.
-  Validate target hashes, Markdown relative links, tracking and
+  Validate protected hashes, Markdown relative links and
   `git diff --check` instead.
 - Commit meaningful checkpoints promptly and make multiple commits
   when warranted, always **`gpt-web: ...`**. Maintain English source
   comments, docs and commit messages.
 
-## Protected storage and last retirement
+## Storage and current maintenance
 
-Protect `resources/th20.exe`, original game provenance, `_reference/`,
-`ghidra-project/`, `.tools/` pinned MSVC/Wine/SDK, `.venv/`,
-original-native `.analysis/` proof/snapshots and all current canonical
-`.obj`/`.receipt.json`. Do not remove either `build/` or `.analysis/`
-wholesale. [2026-10-31 guarded retirement](MAINTENANCE_STORAGE_2026_10_31.md)
-removed **2,875 noncanonical compiler products, 127,712,939 bytes
-(121.80 MiB)**, retaining every protected SHA. `build/` reduced
-from ~228MB to ~100MB. The one-time private SHA audit is
-`.analysis/gptweb-cleanup-2026-10-31-build-retirement.json`.
-Future cleanup uses the existing guarded
-[`scripts/prune-generated-artifacts.py`](../scripts/prune-generated-artifacts.py)
-**dry-run first**, with a *new* private inventory on application.
-The installed ~4.2GB toolchain and ~308MB retained native analysis
-archives were **deliberately not deleted**.
+Keep the locked target/provenance, reference inputs, pinned tools, Ghidra project,
+current source and ledgers, canonical manifest objects/receipts, and useful native
+knowledge. Retain unresolved source drafts, including
+`.analysis/gptweb-open-animation-formatted-text417.cpp`. Historical snapshots,
+comparison logs, cleanup reports and noncanonical objects are disposable unless
+a specific open question needs a difficult-to-reproduce compiler context.
+Document references do not confer retention. See [the workflow](RE_WORKFLOW.md).
+
+Ghidra/JDK/Wine already use Factory. `.tools/msvc` is the locked 19.44 compiler
+and SDK; `.tools/wine` is TH20's isolated mutable prefix. Factory's 14.10/v141
+compiler is not interchangeable. See [shared tools](SHARED_TOOLS.md).
+
+Current maintenance changes only CI, artifact cleanup and documentation. Native
+source, headers, profiles, ledgers and target are unchanged: **zero affected
+providers and zero exact replay units**. Basic CI checks syntax, ledgers and build
+configuration; `--full` adds synthetic exact-oracle tests. Resume native work from
+the open Boss backlog, using scoped compilation and complete canonical comparison.

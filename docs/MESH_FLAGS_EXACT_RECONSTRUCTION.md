@@ -108,7 +108,6 @@ receipts. All 324 current canonical object/receipt hashes remain unchanged.
 Post-cleanup strict replay passes all 847 complete units using existing objects,
 with zero compiler invocations.
 
-Private evidence is retained in core129-original-inputs.json.gz,
-core129-header-invalidation.json, core129-cold-proof.json,
-core129-affected-results.json.gz, core129-grid-exact-result.json,
-core129-boundaries.json and attested native exports under `.analysis/`.
+Private evidence includes core129-header-invalidation.json,
+core129-cold-proof.json, core129-grid-exact-result.json, core129-boundaries.json
+and attested native exports under `.analysis/`.

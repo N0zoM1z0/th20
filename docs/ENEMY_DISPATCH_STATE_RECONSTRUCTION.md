@@ -112,9 +112,8 @@ Private paths are relative to `.analysis/`:
 - `core148-state-caller-evidence.json`, `core148-helper-probe-diagnostic.json`
 - `core148-dispatch-host.cpp`, `core148-dispatch-host-recipe.json`, `core148-dispatch-host.log`
 - `core148-session-semantics.log`, `core148-independent-bindings.json`
-- `core148-cold-proof.json`, `core148-affected-results.json.gz`, `core148-new-exact-results.json.gz`
-- `core148-pre-session-inputs.json.gz`, `core148-retired-inputs.json.gz`
-- `core148-graph-audit.json`, `core148-cleanup.json`, `core148-gates.json`
+- `core148-cold-proof.json`
+- `core148-graph-audit.json`, `core148-gates.json`
 
 Preserve original inputs/receipts and native exports; retire superseded binaries
 only after verified replacements. Continue the same whole-root source beyond

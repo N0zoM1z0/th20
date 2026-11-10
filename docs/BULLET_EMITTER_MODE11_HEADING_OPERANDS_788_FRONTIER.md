@@ -73,8 +73,7 @@ The entire 3,735B gameplay boss is still NONEXACT.
 - .analysis/core630-emitter-native-60-call-proof.py and corresponding JSON —
   newly rebuilt source checked against all 60 original real PE E8
   physical destinations and independent known-symbol identities.
-- build/core630-probes/BulletEmitter.obj — ignored pinned compiler
-  build with /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc.
+
 
 **Replay scope is zero configured canonical match units:** the changed
 src/BulletEmitter.cpp is not a canonical-unit provider. A filtered request

@@ -153,9 +153,9 @@ Private paths are relative to `.analysis/`:
 - `core151-native-body-audit.json`, `core151-flags-probe-diagnostic.json`, `core151-independent-bindings.json`
 - `core151-flags/`, `core151-enemy-dispatch-candidate.cpp`, `core151-draft-scope.json`
 - `core151-card-host-cases.inc`, `core151-dispatch-host-recipe.json`, `core151-dispatch-host.log`
-- `core151-card-semantics.log`, `core151-pre-card-inputs.json.gz`, `core151-retired-inputs.json.gz`
-- `core151-cold-proof.json`, `core151-affected-results.json.gz`, `core151-new-exact-results.json.gz`
-- `core151-graph-audit.json`, `core151-cleanup.json`, `core151-retirement-plan.json`, `core151-gates.json`
+- `core151-card-semantics.log`
+- `core151-cold-proof.json`
+- `core151-graph-audit.json`, `core151-gates.json`
 
 Continue the same root through real UI/record, clear/selection and laser owners.
 Preserve full Card start/finish, the original Renderer boundary and all rejected

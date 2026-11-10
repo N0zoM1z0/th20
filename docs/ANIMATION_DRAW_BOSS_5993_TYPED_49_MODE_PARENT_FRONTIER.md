@@ -159,15 +159,12 @@ Reproduce the true source coverage and the original executable separately:
     nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/AnimationDrawQuadModes.cpp
     scripts/repo-python scripts/validate-tracking.py --require-target
 
-The one new parent source compiles to ignored
-`build/core797-probe/AnimationDrawBoss.obj` and is **never** promoted
-as a canonical exact object. For the shared renderer-method header refactor,
+The parent source compiled as a noncanonical probe and remained NONEXACT. For the shared renderer-method header refactor,
 **only one previously accepted canonical source/object and its five
 original game methods** required cold replay. The rest of the original
 1,229 exact-unit graph was not touched; **no full/all-graph cold replay**.
-The earlier private `core797` and `core798` candidate probes and actual
-COFF mode-table details remain in ignored `.analysis` and `build`
-without being falsely credited.
+The private `core797` and `core798` candidate sources and COFF mode-table
+findings remain under `.analysis/`.
 
 This checkpoint increases **source-present methods 1,227 →1,228**, while
 original authored exact stays **582 distinct physical whole functions /

@@ -58,7 +58,7 @@ The original 456-byte full function was *also* fully regenerated in a
 `SprtIDProbe` value, natural member methods, genuine two-list
 `std::function` searches, shared result variable, real repeated array
 subscripts and one common no-match return. The low-priority pinned-compiler
-x86 object `build/core763-probe/before_zero-assign_in_if.obj` has exactly
+x86 compilation had exactly
 **456 bytes /141 x86 instruction heads and 20 ordinary COFF REL32 fields**.
 Every nonrelocated whole code byte matches the locked original. The original
 **20/20 true native E8 destinations, operand positions and field sizes**

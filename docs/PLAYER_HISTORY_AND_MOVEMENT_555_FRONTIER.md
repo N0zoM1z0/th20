@@ -126,9 +126,7 @@ measurement:
 and
 `.analysis/core427-movement-nonexact-score.json`;
 complete semantic source variant,
-`.analysis/core427-movement-wrap-safe.cpp` and
-MSVC locked-compiler probe
-`build/core428-probes/PlayerMovement.obj`.
+`.analysis/core427-movement-wrap-safe.cpp`.
 Other private probes in `.analysis/core421-*`
 through `core425-*` test genuine scoped coordinate
 locals, boundary values, live register lifetimes

@@ -42,7 +42,8 @@ packages or change the working directory.
 | Validate tracking | `scripts/repo-python scripts/validate-tracking.py --require-target` | ledger consistency; does not prove exactness |
 | Report/generate state | `scripts/repo-python scripts/report-reconstruction-status.py`, `scripts/repo-python scripts/progress.py` | ledger-derived, not prose-derived |
 | Compile/link/runtime smoke | `scripts/repo-python scripts/toolchain-smoke.py` | infrastructure only, zero reconstruction credit |
-| Public CI for control-plane changes | `scripts/repo-python scripts/ci.py` | exact-oracle fixtures and metadata; no C++ compiler; skip documentation/cleanup batches |
+| Basic public checks | `scripts/repo-python scripts/ci.py` | public-tree syntax, ledgers and build configuration; no private tools or target |
+| Comparator tests | `scripts/repo-python scripts/ci.py --full` | adds synthetic exact-oracle fixtures when relevant tools change |
 
 `.venv` pins pefile/capstone for raw-PE/disassembly experiments and Tree-sitter
 0.25.2/C++ grammar 0.23.4 for the explicit reference-body inventory. The

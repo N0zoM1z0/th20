@@ -70,11 +70,8 @@ both sections independently of the compared root relocation fields. Complete
 canonical relocation replay then verifies every byte. Shared EH and SDK support
 receive no additional physical or authored credit.
 
-Private records include `core152-native-body-audit.json`,
-`core152-independent-bindings.json`, `core152-cold-proof.json`,
-`core152-affected-results.json.gz` and `core152-new-exact-results.json.gz` under
-`.analysis/`. Original SHA-bound sources and receipts are preserved in
-`core152-pre-clear-inputs.json.gz`; receipts are never rewritten.
+Private records under `.analysis/` include `core152-native-body-audit.json`,
+`core152-independent-bindings.json` and `core152-cold-proof.json`.
 
 ## Whole-root caller construction
 

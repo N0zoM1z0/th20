@@ -9,14 +9,12 @@ established below. Canonical unit `pbg_file_allocate` strictly replays all
 its original `/EHsc` profile and all twelve accepted methods. No constructor,
 layout, exception declaration or allocation semantics changed.
 
-Adding the provider changes the conservative receipt snapshot path set from
-278 to 279 entries. Original inputs and receipts were preserved before editing
-in `.analysis/core141-pre-header-inputs.json.gz`. All 163 prior objects were
-rebuilt under their unchanged profiles, then all 890 prior units strictly
-replayed. The new provider adds one object and one complete physical unit:
-891 units / 164 objects / 167,737 disjoint comparison bytes. The graph audit
-preserves all previous extents, targets and relocation roles. No old receipt was
-rewritten. This one-time path-set migration is distinct from cleanup replay.
+Adding the provider changed the conservative receipt snapshot path set from
+278 to 279 entries. All 163 prior objects were rebuilt under unchanged profiles,
+then all 890 prior units strictly replayed. The new provider added one object and
+one complete physical unit: 891 units / 164 objects / 167,737 disjoint comparison
+bytes at this checkpoint. Every previous extent, target and relocation role was
+preserved. No old receipt was rewritten.
 
 The 162 unchanged providers also preserve every section payload, relocation,
 size and flag outside compiler debug/checksum sections; the changed object-path

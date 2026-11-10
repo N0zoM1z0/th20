@@ -109,16 +109,7 @@ root, both whole variable readers, full State tick and runtime remain open.
 
 ## Final verification and storage
 
-All 50 public tests pass (135.233 seconds); target/tracking/reference/progress
-gates pass. Protected cleanup retires 14 completed probe object/receipt products,
-481332 bytes. Original receipts and 16 historical source/header versions are
-losslessly preserved in compressed archives of 113827 and 9495 bytes; net savings
-358010 bytes. All 220 current canonical product hashes and all native/failed
-source evidence remain unchanged. Post-cleanup 594/594 strict replay uses existing
-objects without a cold rebuild. Cumulative retired products: 2560 files /
-1002980835 bytes; separate prior archival savings: 12865565 bytes. Analysis is
-about 76 MiB and build 4.9 MiB; installed tools/game/reference remain protected.
-Final source is frozen in core079-final-frozen-source.json; current complete proofs
-are exact079-canonical-results.json.gz and core079-post-cleanup-results.json.gz.
-One-time configuration/registration/cleanup writers are completed; never rerun.
+At this checkpoint all 594 units strictly replayed using the existing objects.
+The one-time configuration and registration writers are complete; use maintained
+build/comparison scripts to reproduce current results.
 

@@ -157,8 +157,6 @@ acceptance of the maintained constructor/resource consumer scope is separate
 from those remaining protocols and whole-game compile/link/runtime.
 
 Evidence: core102-production-bindings.json, core102-native-roots-audit.json,
-core102-contract-proof.json, core102-semantics.json, core102-publication-evidence.json,
-core102-final-frozen-source.json, exact102-canonical-results.json.gz and
-core102-registered.json. CORE-101's asset hashes and attested exports remain
-native evidence. Historical SHA-bound inputs/receipts are losslessly archived
-before superseded trial products are retired; completed writers never rerun.
+core102-contract-proof.json, core102-semantics.json,
+core102-publication-evidence.json and core102-registered.json.
+CORE-101's asset hashes and attested exports remain native evidence.

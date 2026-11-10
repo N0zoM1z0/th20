@@ -165,9 +165,8 @@ Private paths are relative to `.analysis/`:
 - `core149-enemy-dispatch-candidate.cpp`, `core149-draft-scope.json`, `core149-drop-host-cases.inc`
 - `core149-dispatch-host-recipe.json`, `core149-dispatch-host.log`, `core149-item-semantics.log`
 - `core149-drop*-diagnostic.json`, `core149-value-probe-diagnostic.json`, `core149-independent-bindings.json`
-- `core149-pre-pattern-inputs.json.gz`, `core149-retired-inputs.json.gz`
-- `core149-cold-proof.json`, `core149-affected-results.json.gz`, `core149-new-exact-results.json.gz`
-- `core149-graph-audit.json`, `core149-cleanup.json`, `core149-retirement-plan.json`, `core149-gates.json`
+- `core149-cold-proof.json`
+- `core149-graph-audit.json`, `core149-gates.json`
 
 Continue the same whole root through the remaining HUD, laser and state receivers;
 retain the nonexact scatter producer and its rejected emission evidence. Preserve

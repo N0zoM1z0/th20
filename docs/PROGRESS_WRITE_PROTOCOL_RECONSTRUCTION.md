@@ -83,11 +83,7 @@ fixtures. Native disk/game execution and allocation/CRT failure domains remain
 open.
 
 Ignored proofs include core090-protocol-audit.json, the bounded range/SDK native
-exports, core090-literal-diagnostics.json, core090-addition-diagnostics.json,
-core090-final-frozen-source.json and exact090-canonical-results.json.gz. Retired
-probe receipts retain original SHA-bound inputs and negative results. Completed
-replay and cleanup writers must never rerun; historical experiments require
-restoring their entire original input set.
+exports, core090-literal-diagnostics.json and core090-addition-diagnostics.json.
 
 The frozen graph strictly replays623 units across125 fresh objects and122227
 disjoint bytes. All59 public tests pass in178.205 seconds. Exact/source/origin

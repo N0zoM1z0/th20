@@ -165,9 +165,13 @@ and `compare-coff-function.py --unit` commands. Never use an unfiltered
 whole-graph replay for routine checkpoints. These scope rules supersede broader
 verification requirements in historical records.
 
-Retire the batch's superseded probe builds after verifying replacements. Protect
-canonical objects/receipts, native evidence and active inputs; record removed
-paths/bytes privately and verify protected hashes. See `docs/RE_WORKFLOW.md`.
+Keep required inputs, current reconstruction products and useful knowledge.
+Delete obsolete archives, duplicate evidence, old outputs and cleanup reports;
+a document citation alone is not a retention reason. Keep an old compiler
+context only when an unresolved question depends on hard-to-reproduce inputs.
+Do not create replacement archives, cleanup reports or mandatory inventories.
+Protect canonical objects/receipts, useful native evidence and active inputs;
+verify retained hashes. See `docs/RE_WORKFLOW.md`.
 
 The user also requires controlled CPU and memory use. Run compiler, headless
 Ghidra, cold replay and focused probes at reduced scheduling priority (for

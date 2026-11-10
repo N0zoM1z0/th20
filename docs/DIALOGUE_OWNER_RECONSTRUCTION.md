@@ -194,12 +194,10 @@ nondefault Enemy dispatch paths remain unverified. All completed follows use
 the independently supported WindowState owner, not a facade. Reuse existing
 negative trials and follow the affected-only workflow.
 
-Private reproducibility records are core161-pre-dialogue-inputs and original
-probe/ledger/previous-fixture archives, core161-final-frozen-source.json,
-core161-canonical-build-recipe.json, core161-independent-bindings.json,
-core161-existing-role-reconciliation.json, core161-protocol-native-identity.json,
-strict result archives, public/whole-root test recipes and the retirement plan.
-They are relative to .analysis/; raw native evidence is not committed.
+Private evidence under `.analysis/` includes core161-canonical-build-recipe.json,
+core161-independent-bindings.json, core161-existing-role-reconciliation.json,
+core161-protocol-native-identity.json and public/whole-root test recipes.
+Native exports and unfinished candidates remain private.
 
 > **CORE/RECON-990 update:** The actual 29B Dialogue `interrupt_offset_7` E8
 > at `0x00464521` targets the distinct 35B child-event Handle wrapper

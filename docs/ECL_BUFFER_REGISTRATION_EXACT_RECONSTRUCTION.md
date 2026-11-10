@@ -119,11 +119,9 @@ unknown physical origin because their folded contributors are unresolved.
 Verified SDK roles do not automatically exclude possible application contributors.
 Neither auto-analysis labels nor byte identity alone establish authorship.
 
-Only the EclLoaderBuffer object is rebuilt. Its new canonical path is
-`build/core127-canonical/EclLoaderBuffer.obj`; protect the sibling receipt.
-Original inputs and the replaced object's immutable receipt are preserved in
-`.analysis/core127-original-inputs.json.gz`. Private observations, boundaries,
-alias checks and exception evidence are under `.analysis/core127-*`.
+Only EclLoaderBuffer was rebuilt at this checkpoint. Current canonical objects
+and receipts are selected by `config/match-units.toml`. Private observations,
+boundaries, alias checks and exception evidence are under `.analysis/core127-*`.
 
 The frozen graph passes 844 complete strict units across 161 objects and 162,849
 disjoint comparison bytes. All 80 public tests pass in 322.805 seconds; target,

@@ -34,7 +34,6 @@ The 32-bit accumulator source evaluation now reproduces the original **float X â
 ## Bounded reproducible native evidence
 
 - `.analysis/core698-player-motion-accumulator-order-probes.py/json`: ten actual whole C++ method builds, comparing both wrapping operand orders, staged temporaries, inline accumulator conversion and rejected interleaved X-scale-before-Y cases. All 67 E8/37 DIR32 counts persisted.
-- `build/core699-probes/PlayerMainFrame.obj` and real locked MSVC x86 source/headers receipt: `/std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /EHsc`.
 - `.analysis/core699-player-main-motion-order-whole-proof.json`: independently disassembled full immutable original and new maintained C++, original X/Y live-field order assertions and full instruction/mnemonic score.
 - `.analysis/core699-player-main-67-callee-whole-proof.py/json`: rechecked **all 67** immutable original E8 physical callee roles against the actual new C++ COFF. Sixty already independently anchored, six original folded-compatible source identities (fully byte-attested, no double credit), one remaining distinct nonexact 555B child.
 

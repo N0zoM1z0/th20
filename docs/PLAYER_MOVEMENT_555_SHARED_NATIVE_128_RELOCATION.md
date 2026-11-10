@@ -31,9 +31,6 @@ The remaining blocker is unaffected: the original computes `cvttss2si esi,xmm0` 
 Reproducible evidence:
 
 - `.analysis/core723-player-movement-real-constant.cpp` — private same-game source probe with only these two typed native-global denominators.
-- `build/core723-probes/PlayerMovement.obj` — MSVC compiled private complete function and actual 27-field COFF relocation table.
-- `build/core720-probes/PlayerMovement-precise_nosdl.obj` — pre-edit complete-function COFF reference.
-- `build/core724-probes/PlayerMovement.obj` — new maintained actual source whole native MSVC compilation.
 - `.analysis/core724-player-movement-real-128-native-relocation-proof.json` — asserts 561/561 raw C++ bytes equal, the *only* two changed symbol identities at original typed relocation fields, native immutable `0x0056CD98` and nine separate accepted original game native relocation sites.
 
 **Affected canonical strict native source units: zero.** The only edited file is the noncanonical whole game-owned `src/PlayerMovement.cpp`, previously absent from all 1,187 canonical match-unit providers. Full Player movement alone was compiled and structurally compared; original PE, shared headers, accepted strict receipts and game exact ledger were unchanged. No global cold replay was run. Accepted game-authored coverage remains **537 complete functions /184,665 disjoint original native code bytes**.

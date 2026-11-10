@@ -75,11 +75,9 @@ failure domains, original startup, native disk/game execution and linking a
 playable reconstruction remain open. Whole load, Metadata byte sum, archive
 compression and other pending owners retain their existing nonexact status.
 
-Private proofs are `core091-bindings.json`, `core091-cold-audit.json`,
-`core091-final-frozen-source.json` and `exact091-canonical-results.json.gz`.
-The first records independent identities; the second verifies them against
-fresh canonical objects. Historical probes require their original SHA-bound
-input set. Completed registration and replay writers must never rerun.
+Private proofs are `core091-bindings.json` and `core091-cold-audit.json`.
+The first records independent identities; the second checked them against fresh
+canonical objects. Reproduce current comparisons with the maintained scripts.
 
 The final public suite passes all 59 tests in 140.855 seconds. Protected
 retirement removes six obsolete probe products (257,559 bytes),

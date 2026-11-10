@@ -131,11 +131,8 @@ Player ownership and the full 1,707-byte hit damage query remain open. This
 batch closes the query's actual Bomb getter/event dependency without replacing
 the query with a host environment or claiming whole-game linkage/startup.
 
-Private reproducible evidence: core100-production-bindings.json,
-core100-native-roots-audit.json, core100-final-frozen-source.json,
-exact100-canonical-results.json.gz and core100-final-literal-reconciliation.json.
-Historical trial inputs and receipts are archived before retiring obsolete
-objects and copied headers. Completed proof writers must not be rerun.
+Private evidence: core100-production-bindings.json,
+core100-native-roots-audit.json and core100-final-literal-reconciliation.json.
 
 Protected periodic retirement removes 85 products/3,809,702 bytes gross during
 and after this batch. The final cleanup saves 3,221,374 bytes net after its

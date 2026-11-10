@@ -483,13 +483,8 @@ the actual private source and active v4 object/receipt. The v3 report records
 the still-nonexact earlier binding attempt, including its failed expectation;
 the completed writer is not rerun or overwritten.
 
-Replaced v1/v2/v3 pairs are retired after original receipt/input verification
-against three lossless SHA-bound archives and installed SDK files. Cleanup
-protects all current canonical pairs, 256 production sources, active v4 and
-native/private evidence, then replays the 756 existing canonical units. No
-unchanged-source cold rebuild or deletion of tools, references, supplied game
-files or the database is needed. The removal inventory remains private in
-`core109-cleanup.json.gz`.
+The v1/v2/v3 compiler trials were superseded by the maintained source. Use a fresh
+locked-compiler build and complete affected comparison for current acceptance.
 
 
 ## Subsequent CORE/EXACT-445 whole native effect request queue

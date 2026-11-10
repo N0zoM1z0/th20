@@ -40,3 +40,12 @@ recorded game-specific prefix/profile.
 Read-only source access to other registered games remains available through
 Factory for cross-reference. Shared tools do not grant writes to their mutable
 state. Ordinary analysis and source browsing do not require a full replay.
+
+The remaining large local directories are the installed MSVC 19.44.35211 /
+Windows SDK 10.0.26100.0 payload under `.tools/msvc` and this game's mutable
+Wine prefix under `.tools/wine`. A prefix is required game state, not a second
+Wine installation. Factory's current MSVC 14.10/v141-xp package is a different
+compiler and cannot replace TH20's locked payload. Share a matching installation
+only after checking its complete compiler/SDK contents; keep the same local
+selector path and this game's prefix. Download caches and superseded manifests
+are disposable.

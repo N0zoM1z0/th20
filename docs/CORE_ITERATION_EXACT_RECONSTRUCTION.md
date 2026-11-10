@@ -91,8 +91,5 @@ results equal the retained frozen reports without another cold build.
 
 Private evidence: core099-production-bindings.json,
 core099-native-roots-audit.json, core099-template-support.json,
-core099-production-eh-support.json, core099-semantics.json,
-core099-final-frozen-source.json, exact099-canonical-results.json.gz,
-core099-registered.json, core099-interim-cleanup.json,
-core099-final-cleanup.json and both core099 retired-inputs archives.
-Completed writers must never rerun.
+core099-production-eh-support.json, core099-semantics.json and
+core099-registered.json.

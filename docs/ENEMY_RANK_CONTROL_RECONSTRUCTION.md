@@ -100,9 +100,8 @@ Private paths are relative to `.analysis/`:
 - `core158-dispatch-host.cpp`, `core158-rank-host-cases.inc`, `core158-dispatch-host-recipe.json`, `core158-dispatch-host-v3.log`
 - `core158-missing-state-native.asm`, `core158-destination-native.asm`, `core158-helper-callers.txt`
 - `core158-production-diagnostic.json`, `core158-independent-bindings.json`, `core158-eh-reuse.py`, `core158-eh-evidence-reuse.json`
-- `core158-cold-proof.json`, `core158-affected-results.json.gz`, `core158-new-exact-results.json.gz`
-- `core158-pre-rank-inputs.json.gz`, `core158-pre-registration-ledgers.json.gz`
-- `core158-enemy-current-dependencies.json`, `core158-graph-audit.json`, `core158-retirement-plan.json`, `core158-cleanup.json`
+- `core158-cold-proof.json`
+- `core158-enemy-current-dependencies.json`, `core158-graph-audit.json`
 
 The unchanged complete root has 1,264 direct sites / 236 dependencies. The
 current navigation audit finds 124 canonical entry targets covering 843 sites;

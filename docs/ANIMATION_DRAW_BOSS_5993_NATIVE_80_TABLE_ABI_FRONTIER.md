@@ -155,11 +155,8 @@ scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/build.py --check
 ```
 
-The isolated new **noncanonical** whole-function compiler object/receipt is
-`build/core834-probe/AnimationDrawBoss.obj` and
-`build/core834-probe/AnimationDrawBoss.receipt.json`. Previous probe objects
-under `build/core797-probe` and the private experimental variants under
-`.analysis/core834-draw/` remain ignored retained evidence.
+The whole-function compiler trial was noncanonical. Private experimental source
+variants and findings remain under `.analysis/core834-draw/`.
 
 **Affected canonical exact replay scope: zero.** The sole modified native
 source `src/AnimationDrawBoss.cpp` is not yet a canonical accepted object.

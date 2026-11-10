@@ -142,10 +142,8 @@ functions nonexact. Confirmed origins are 152 authored and 36 excluded, with
 bytes. These reviewed-subset totals do not measure whole-game completion.
 
 Private evidence includes `.analysis/core131-region-lifetime-native.asm`,
-`core131-boundary-origin-audit.json`, `core131-admission-results.json`,
-`core131-affected-results.json.gz` and the original SHA-bound input archive
-`core131-pre-header-inputs.json.gz`. Current products and final validation are
-recorded in [the handoff](RE_HANDOFF.md).
+`core131-boundary-origin-audit.json` and `core131-admission-results.json`.
+Current accepted products are selected by `config/match-units.toml`.
 
 The whole 1,707-byte damage query remains unimplemented and unaccepted. Native
 heap release before later query reads and the unconsumed visit counter remain

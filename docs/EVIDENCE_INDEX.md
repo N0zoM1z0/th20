@@ -38,11 +38,6 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   Enemy ECL, and 39,470B Animation VM dispatch. Use the
   [open-function backlog](RE_OPEN_BOSS_BACKLOG.md) for exact addresses,
   maintained-source paths and individual original PE proofs.
-- **Storage:** [2026-10-31 audited pruning](MAINTENANCE_STORAGE_2026_10_31.md)
-  removed 2,875 *noncanonical* compiled products/121.80MiB. Every
-  canonical receipt, tracked native proof and active probe remained
-  protected. The live build tree, compiler installation and private
-  `.analysis/` evidence must not be globally deleted.
 
 ## Historical investigation index — dated source-status statements
 
@@ -630,8 +625,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [1,996B Mode7 setup](ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md),
   [2,136B mesh24/25](ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md),
   and [2,169B closed LINESTRIP](ANIMATION_SHAPE_LINESTRIP_2169_STRICT_EXACT.md).
-- [The current handoff's protected storage / replay rules](RE_HANDOFF.md)
-  and [latest guarded artifact cleanup audit](MAINTENANCE_STORAGE_2026_10_30_CORE896.md).
+- [The current handoff's protected storage / replay rules](RE_HANDOFF.md).
 
 **Current verified checkpoint:** **1,443 source-present mappings, 1,443
 strict units from 390 pinned object/receipt providers, and 712 distinct
@@ -1009,12 +1003,6 @@ Compiler scores labelled "current" in historical entries below mean
 - [CORE/EXACT-645 — original complete 3,735B BulletController::emit 100% strict exact plus 3,832B whole compiler contribution](BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md) — **935/935 native instructions; 60/60 independently attested original E8 physical callees; 69/69 independently anchored original HIGHLOW including all 24 switch-table targets and the true old EH handler; 3,316/3,316 nonrelocated bytes and final 3,832/3,832 whole native strict equality.** Discovered and corrected historic **4.0f vs wrongly assumed 2.0f velocity multiplier** from original 0x0056C8E0 data. Exactly one new whole game owner cold built/replayed **1/1**, no full cold replay; game-authored strict exact **499 functions / 179,444 bytes**, unrelated large parents still open.
 
 ## Workflow and storage
-
-- [CORE/DOC-CLEANUP-628 — current concise handoff and live artifact retention](ARTIFACT_RETIREMENT_CORE628.md) — 813-line historical handoff consolidated to 147 current-state lines, 1,148 ignored reproducible probes / 43.24 MiB retired after dry-run and native-target plus 486 canonical SHA checks, no original game code changes or full cold replay. Unique private `--inventory` prevents loss of previous cleanup evidence.
-
-- [CORE/CLEANUP-497 — historical handoff and object-cache retirement](ARTIFACT_RETIREMENT_2026_10_29.md) — 1,670 files / 55.82 MiB retired, **236 canonical providers at that date**, not the live native graph.
-
-- [CORE/CLEANUP-300 artifact retirement and protected storage](ARTIFACT_RETIREMENT_2026_10_28.md) — 2,496 obsolete ignored files / 203.65 MiB retired, every canonical object/receipt and native target preserved, recorded SHA/path inventory.
 
 ## Collision geometry — native provenance and exactness
 

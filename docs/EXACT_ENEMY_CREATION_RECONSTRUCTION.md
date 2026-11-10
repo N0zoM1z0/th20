@@ -115,8 +115,6 @@ The whole 41 KB 0048C010 dispatcher, laser/callback ownership and whole-game
 link/runtime remain open. Native exports and rejected source/diagnostics stay
 in ignored .analysis; obsolete object/receipt artifacts are retired separately.
 
-Cleanup retired 43 obsolete object/receipt artifacts / 1,153,194 bytes, with all
-186 canonical hashes unchanged and 500 post-cleanup strict replays passing.
-Cumulative retirement is 2,089 files / 70,300,517 bytes. Private
-core066-cleanup.json records every removed path and byte count. Native exports,
-rejected source/diagnostics and all supplied/reference/tool inputs are preserved.
+At this checkpoint all 500 units strictly replayed. Native exports, rejected
+source/diagnostics and supplied/reference/tool inputs remain available for
+further reconstruction.

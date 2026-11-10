@@ -46,12 +46,10 @@ contract rather than changing it to adjust emission.
 
 ## Shared declaration and comparison closure
 
-Original source versions, receipts and all 328 product hashes were preserved
-before editing in `.analysis/core142-pre-header-inputs.json.gz`. Captured include
-closures select 70 affected providers / 425 prior units; 94 other objects are
-reused. All affected providers were built once and all 425 units strictly replay.
-The snapshot path set remains 279 entries. Every prior profile, extent, target,
-relocation role and addend is preserved.
+Captured include closures selected 70 affected providers / 425 prior units;
+94 other objects were reused. All affected providers were built once and all
+425 units strictly replayed. Every prior profile, extent, target, relocation
+role and addend was preserved.
 
 Thirty-three decorated identities change with the class tag, including compressed
 self-type references in member signatures. Local literal labels are reconciled
@@ -75,10 +73,7 @@ retirement continue to execute through the shared owners. PMR/startup fixtures,
 unused routes and outer Enemy movement/destruction remain explicit boundaries.
 Positive allocation checks do not establish the native out-of-memory domain.
 
-The focused O2/UBSan fixture passes after the substitution. The complete CI result
-and final cleanup replay are recorded in the current handoff. Private evidence is
+The focused O2/UBSan fixture passed after the substitution. Private evidence is
 `.analysis/core142-ecl-node-factory.asm`, `core142-boundaries.json`,
 `core142-probe-results.json`, `core142-new-exact-results.json`,
 `core142-support.json`, `core142-cold-proof.json` and `core142-graph-audit.json`.
-The affected replay is `core142-affected-results.json.gz`; native and rejected
-probe inputs are retained separately from regenerable build products.

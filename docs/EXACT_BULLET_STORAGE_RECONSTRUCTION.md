@@ -146,10 +146,7 @@ imported or asserted byte-identical.
 Private evidence includes `core078-pool-native.asm`,
 `core078-typed-consumers.asm`, `core078-flag-high-bit.asm`,
 `core078-virtuals-shared.asm`, `core078-resource-support.asm`,
-`core078-library-base.asm`, repeatable `core078-audit.py`, all preserved probe
-sources/results, and compressed `exact078-final-canonical-results.json.gz`. The first
-`exact078-canonical-results.json.gz` belongs to the superseded pre-color declaration
-and is preserved only as historical byte evidence.
+`core078-library-base.asm` and repeatable `core078-audit.py`.
 
 All49 public tests pass in145.482 seconds. Target/tracking/reference/progress
 gates pass. Protected retirement removes six completed probe products,160000

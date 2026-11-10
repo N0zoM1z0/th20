@@ -99,9 +99,7 @@ object lifetime and is NOT an acceptable workaround.
   actual maintained C++ full-source result after fresh compilation.
 - .analysis/core654-player-main-physical-callee-audit.py/json:
   67 original native E8 callee identities and source COFF roles.
-- build/core654-probes/PlayerMainFrame.obj and receipt: ignored,
-  locked MSVC 19.44.35211 x86 full source object under
-  /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /EHsc.
+
 
 No public header, original target, already strict source/receipt,
 or canonical match manifest was changed. This source is

@@ -164,10 +164,8 @@ expression and signed comparison; source uses a safe complete-owner byte view.
 No inert local, artificial zero index, emission-only signed-pointer cast,
 fake result, assembly or shortened unit is introduced.
 
-Raw proofs stay in ignored .analysis/: core089-whole-audit.json,
-core089-cold-support.json, core089-final-frozen-source.json,
-exact089-canonical-results.json.gz and the bounded native exports. Historical
-rejected probe inputs are preserved by SHA-256 before product retirement.
+Raw proofs under ignored `.analysis/` include core089-whole-audit.json,
+core089-cold-support.json and the bounded native exports.
 
 ## Semantic checks
 

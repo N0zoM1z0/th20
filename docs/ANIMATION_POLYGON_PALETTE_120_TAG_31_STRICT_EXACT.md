@@ -98,8 +98,8 @@ defines two genuine external float constants
 **8 contiguous bytes at `0x0056CD90`**. The independent
 [`scripts/verify-animation-polygon-widths8-data.py`](../scripts/verify-animation-polygon-widths8-data.py)
 compares the entire original data region with the separate freshly compiled
-`build/core890-probe/AnimationPolygonWidths8.obj` COFF
-bytes and both real external symbol offsets: **8/8B exact**. The
+COFF bytes from `AnimationPolygonWidths8.cpp` and both real external symbol
+offsets: **8/8B exact**. The
 16.0f global is also used by the separate 104B outline caller, which
 remains SOURCE-PRESENT/NONEXACT. Defining the 32.0f symbol in the *same*
 translation unit as the 120B caller instead caused MSVC to substitute

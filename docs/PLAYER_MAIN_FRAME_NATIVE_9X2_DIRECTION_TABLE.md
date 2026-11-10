@@ -86,8 +86,7 @@ Private source experiments compiled *the entire original parent*:
   Sixty were previously independently anchored, six call occurrences
   have fully byte-identical folded-compatible source implementations,
   and the remaining mapped movement child remains separately NONEXACT.
-- `build/core668-probes/PlayerMainFrame.obj` and associated pinned
-  compile receipt: single affected whole-parent source object.
+
 
 There is no configured canonical unit for src/PlayerMainFrame.cpp.
 **Affected previously accepted units: zero; fresh whole-parent probes only.**

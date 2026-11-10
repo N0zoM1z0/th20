@@ -52,8 +52,6 @@ The compiler-generated string is not invented as a new public data symbol; it al
 ## Reproducible source and evidence
 
 - src/PlayerDirectionTable.cpp — newly maintained natural C++ game source for the real external signed 9×2 array, with a compile-time layout check.
-- build/core729-probes/PlayerDirectionTable-production.obj — compiled actual new source with one .rdata data symbol, 72-byte section and complete original byte equality.
-- build/core729-probes/PlayerMainFrame.obj — freshly recompiled whole Player main source, with all 3,114 bytes and relocation symbol roles unchanged by adding the independent data owner.
 - .analysis/core728-player-main-all-37-PE-data-roles.py/json — all 37 original physical PE HIGHLOW targets against actual ordinal C++ COFF symbol roles; 34 independently canonical-attested and three newly resolved.
 - .analysis/core729-original-player-72B-data-and-37-main-data-roles.json — exact original/compiled data SHA, PE section/file address, real symbol, exact 7-byte effect string and two original main table references.
 - PLAYER_MAIN_FRAME_NATIVE_9X2_DIRECTION_TABLE.md — older original opcode and 9×2 indexing proof, now extended by the new actually compiled table definition.

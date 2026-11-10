@@ -139,7 +139,11 @@ Python 3.11+, with no original game or C++ compiler:
 scripts/repo-python scripts/ci.py
 ```
 
-Default CI checks the exact oracle and repository metadata. The historical
+Default CI checks public-tree Python/JSON/TOML/shell syntax, private-artifact
+exclusion, source-profile rules, ledger consistency and build configuration.
+It needs no game, compiler, Ghidra or optional Python packages. Use
+`scripts/repo-python scripts/ci.py --full` to add synthetic exact-oracle tests
+when changing the comparator or its inputs. The historical
 portable C++ semantic suite has been retired; [retained tests](tests/README.md)
 cover exact comparison and repository tools. Exact checkpoints require affected
 native builds and complete strict replay. A specific unresolved behavior or ABI
@@ -187,8 +191,6 @@ limits; nonexact implementations remain documented for further reconstruction.
 - [Focused evidence index](docs/EVIDENCE_INDEX.md)
 - [Architecture and target inventory](docs/ARCHITECTURE.md)
 - [Reconstruction workflow](docs/RE_WORKFLOW.md)
-- [Latest source/document cleanup and protected storage audit](docs/MAINTENANCE_STORAGE_2026_10_30.md)
-- [Historical CORE628 artifact-retirement checkpoint](docs/ARTIFACT_RETIREMENT_CORE628.md)
 - [Independent oracles](docs/ORACLES.md)
 - [Build and strict matching](docs/BUILD_MATCHING.md)
 - [Ghidra setup and attestation](docs/GHIDRA.md)

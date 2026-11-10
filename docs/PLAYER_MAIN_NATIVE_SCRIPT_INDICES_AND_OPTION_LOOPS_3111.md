@@ -55,7 +55,7 @@ Original native motion gating checks dy then dx, and the original 33-entry histo
 - .analysis/core699-player-true-script-indices-probes.py and core699-player-native-script-index-results.json: four immutable native script access arithmetic groups independently compared with nine actual whole C++ variants.
 - .analysis/core700-player-history-copy-lifetime-probes.py and core700-player-history-copy-lifetime-results.json: seventeen complete whole-function natural history value-copy variants and their true original call counts.
 - .analysis/core701-player-final-original-option-iterators.py and core701-player-native-option-iterator-results.json: cached option receiver, pointer and argument-local grammars, comparing full 3,111B original.
-- .analysis/core702-player-maintained-script-options-history.json and build/core702-probes/PlayerMainFrame.obj with pinned MSVC receipt: actual newly maintained production C++ recompilation, verifying 3,114B/783 and 783/783 original ordered mnemonic heads, with 67/37 references by count.
+- .analysis/core702-player-maintained-script-options-history.json: actual newly maintained production C++ recompilation, verifying 3,114B/783 and 783/783 original ordered mnemonic heads, with 67/37 references by count.
 - .analysis/core703-player-main-script-index-and-option-native-proof.json: independently scanned immutable original PE physical four script byte offsets and four original begin/end E8 call destinations.
 - .analysis/core703-player-main-native-script-callee-proof.py/json: complete new candidate COFF compared in original ordinal order to all 67 immutable original E8 callee physical identities; no alias double counting.
 

@@ -105,9 +105,7 @@ See [current Dialogue evidence](DIALOGUE_OWNER_RECONSTRUCTION.md) for that closu
 updated fixtures and remaining native resource/geometry work.
 The production Enemy dispatcher and whole-game link remain incomplete.
 
-Private reproducibility records under .analysis/ include core160-pre-ascii-inputs,
-core160-pre-registration-ledgers and core160-probe-v1-original-inputs archives;
-core160-independent-bindings.json, core160-ascii-native-identity.json,
-core160-ascii-callable-identity.json, core160-sdk-container-origin.json,
-core160-cold-proof.json, affected/new strict results, the semantic log and
-core160-retirement-plan.json. Preserve native exports and unfinished inputs.
+Private evidence under `.analysis/` includes core160-independent-bindings.json,
+core160-ascii-native-identity.json, core160-ascii-callable-identity.json,
+core160-sdk-container-origin.json, core160-cold-proof.json and the semantic log.
+Preserve native exports and unfinished inputs.

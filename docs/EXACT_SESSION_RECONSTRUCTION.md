@@ -127,12 +127,6 @@ objects, covering 98,007 disjoint comparison bytes. Origin review remains
 Eleven complete reference associations close; all 6,945 indexed reviews remain
 terminal, with 177 absorbed. No authored origin follows from this byte match.
 
-Private complete replay is stored compressed from the outset at
-`.analysis/exact073-canonical-results.json.gz`; the constructor/EH/CRT/BSS audit
-is `.analysis/core073-audit.py`, with results in `.analysis/core073-support.json`.
-Configuration and registration writers are completed one-time operations and
-must never be rerun. Public semantic verification and protected cleanup are
-recorded in the current handoff: all 45 public tests pass, eight obsolete probe
-products are retired and two inactive successful snapshots are losslessly
-archived. All 202 current canonical hashes remain unchanged. No additional
-unchanged cold build is needed for cleanup or documentation.
+The constructor/EH/CRT/BSS audit is `.analysis/core073-audit.py`, with findings
+in `.analysis/core073-support.json`. Configuration and registration writers are
+completed one-time operations; reproduce current units with maintained scripts.

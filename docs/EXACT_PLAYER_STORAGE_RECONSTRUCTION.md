@@ -126,11 +126,5 @@ operations. Whole canonical receipts are compressed from the outset. Cleanup
 preserves current objects/receipts, original target/reference/tools and all
 native/failed source evidence; post-cleanup verification reuses current objects.
 
-Protected retirement removes six completed probe object/receipt files,
-126,345 bytes. All 210 current canonical hashes and native/failed source
-files remain unchanged. Post-cleanup strict replay passes 575/575 with 105
-existing objects and no rebuild. Private inventory and compressed proof are
-`core076-probe-cleanup.json` and `core076-post-cleanup-results.json.gz`.
-Cumulative retired build products are 2,538 files /1,002,311,858 bytes; separate
-lossless archival savings remain 12,617,291 bytes. Analysis is approximately
-74 MiB and build 4.6 MiB; installed tools are protected.
+At this checkpoint strict replay passed all 575 units across 105 existing
+objects without a rebuild. Current comparisons use the live unit manifest.

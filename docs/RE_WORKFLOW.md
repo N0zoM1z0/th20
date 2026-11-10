@@ -129,183 +129,46 @@ full-graph cold compilation. This is a narrow compiler-evidence
 receipt update, not an ABI change or license to rename unknown
 relocations without original-PE proof.
 
-## Retiring generated artifacts
+## Repository size and basic checks
 
-Keep current handoff, architecture, oracle and source-map documents concise and
-separate. Record unique evidence in its focused document and update the evidence
-index. Historical session logs stay in Git; dated batch counts do not override
-live ledgers. Correct misleading source names/comments with the usual affected
-replay rather than carrying unsupported semantics into future work.
+Keep required inputs (original game, pinned tools and Ghidra project), current
+source and exact ledgers, reproducible build/comparison scripts, and useful
+knowledge. Record current blockers, verified findings and worthwhile failed
+approaches in short English notes. A document citation alone does not justify
+keeping a file. Git preserves historical tracked text.
 
-During longer batches, retire replaced trials periodically once their
-replacement evidence is verified. Preserve active inputs and native evidence;
-archive original SHA-bound inputs and receipts before removing copied headers
-or old snapshots. Keep heavy verification/build jobs serial at reduced priority.
-Do not wait until the end of a long batch to address accumulating temporary data.
+Delete obsolete input snapshots, completed comparison/CI logs, historical
+archives, duplicate exports and cleanup reports when they no longer help an
+open question. Remove their evidence references too. Command examples may still
+name disposable output paths: running the recipe recreates those products.
+Retain an old compiler context only when an unresolved question depends on
+inputs that are difficult to reproduce; identify that reason in the relevant
+working note. No new archive, per-file audit or cleanup report is required.
 
-Retire superseded build artifacts after every stable reconstruction batch, as
-explicitly requested by the user. Protect every current
-`config/match-units.toml` object and its sibling
-`.receipt.json` before removing obsolete experiment builds. Keep toolchain smoke
-proof reports and probe sources, active probes, native exports and evidence
-supporting reviewed ledgers. Completed regenerable smoke binaries and copied SDK
-DLLs can be retired while retaining their saved proof and master SDK files.
-Completed generated checkouts, CMake build trees and temporary setup environments
-can be removed after confirming they contain no tracked or active input. Preserve
-locked tools, reference source, Ghidra and supplied game files.
-
-Downloaded MSVC installer payloads under `.tools/downloads/msvc/` are a
-regenerable cache, separate from the installed compiler and SDK under
-`.tools/msvc/`. After checking the installed tools, this cache can be retired
-with a path/size/hash inventory. Preserve `.tools/vs2022-pinned.manifest`, the
-tool lock and installed files; never follow tool symlinks during deletion.
-The bootstrap skips MSVC downloads when the installed compiler is present.
-
-The pinned D3DX NuGet archive under `.tools/downloads/` is also a regenerable
-download cache. Check its locked package hash and verify the extracted SDK files
-against the archive before retiring it; preserve the installed SDK and record
-both the cache inventory and installed-file hashes. Bootstrap reuses an installed
-D3DX SDK without downloading this cache again.
-
-Record removed paths/bytes and protected hashes privately. Verify those hashes
-after cleanup; an unchanged graph requires no replay. If the batch also changes
-reconstruction inputs, strictly replay only the affected units, using explicit
-source filters or individual unit commands at reduced priority. Never run a
-whole-graph replay or cold build solely for cleanup or documentation.
-Source/header/profile changes require fresh affected builds. EXACT-058 records
-the historical first retirement pass; its broader verification is not the
-current required scope.
-
-Inactive successful replay snapshots may be archived losslessly as `.json.gz`.
-Completed historical replay logs may likewise use `.log.gz` after checking an
-explicit successful terminal summary and rejecting failure or mismatch records.
-Verify that every saved unit passed, check the decompressed content against the
-original SHA-256 before retiring the uncompressed file, and record both hashes
-and bytes saved. Keep current snapshots, native exports, failed experiments and
-active inputs intact. Read archived evidence with `gzip.open` through
-`scripts/repo-python`; an archived path is preserved evidence, not a missing
-verification. Store cleanup-only replay reports compressed from the outset.
-
-Superseded generated handoff inventories may also be archived losslessly after
-checking that the current handoff uses a newer inventory. Preserve their exact
-decompressed bytes, record both hashes and update the current handoff's archive
-lookup. Do not retire the current product inventory or active investigation inputs.
-
-Superseded source-freeze hash reports may use the same lossless archival process.
-Keep the current freeze and every report protected by the active investigation;
-record the original and archive hashes in the current handoff's private lookup.
-
-Completed historical public-CI logs may likewise be archived as `.log.gz` after
-checking their terminal success marker and successful test summary. Record the
-original path, original SHA-256, archive path and archive SHA-256 in the private
-retirement inventory; verify decompressed bytes before removing the original.
-Keep current CI evidence, failed logs, native exports and active inputs intact.
-
-## Latest guarded storage audit: 2026-10-31 (historical checkpoint)
-
-[October 31 guarded generated-build cleanup](MAINTENANCE_STORAGE_2026_10_31.md)
-retired **2,875** noncanonical `.obj`/receipt files totaling
-**127,712,939 bytes (121.80 MiB)**. The exact original PE and **923
-protected artifact SHA-256 hashes** remained unchanged; 432 canonical
-object/receipt pairs, 164 individually referenced proof files, and
-1,881 active probe files were retained. The precise private SHA inventory
-is `.analysis/gptweb-cleanup-2026-10-31-build-retirement.json`.
-A subsequent dry-run had **zero** eligible files. These are dated
-counts; derive the live count from the unit manifest and a new dry-run.
-The 4.2GB installed MSVC/Wine/SDK and historical `.analysis` evidence
-were deliberately protected. No native replay is warranted for an
-unchanged code/manifest graph.
-
-## Guarded artifact retirement: live script, dated historical checkpoints
-
-The [CORE/DOC-CLEANUP-628 storage audit](ARTIFACT_RETIREMENT_CORE628.md)
-recorded **243 canonical object/receipt pairs and 1,184 strict native
-units at that historical checkpoint**, NOT as live figures. CORE/MAINT-751 historically had **245 canonical pairs and 1,203 strict
-units**. The newer CORE/MAINT-830 live inventory is **259 canonical pairs and
-1,238 strict units** (subject to later live ledger updates).
-Future agents must derive these counts from config/match-units.toml, not
-dated prose. The older 236/212-provider audits similarly retain only
-their historical checkpoint significance.
-
-The **historical CORE628** retirement deleted **1,148 noncanonical files /
-45,337,123 bytes (43.24 MiB)** while retaining the then-current 486
-protected hashes, 1,696 active probe files and the original PE. Its archived
-private inventory is `.analysis/core628-build-retirement-inventory.json`.
-The [October 29 CORE/MAINT-751 audit](MAINTENANCE_STORAGE_2026_10_29.md)
-subsequently protected its then-current **245 canonical pairs** and retired
-**1,042 more noncanonical files /48,417,387 bytes**; those numbers are
-**historical, not today's manifest**.
-
-The [October 30 CORE/MAINT-830 guarded storage audit](MAINTENANCE_STORAGE_2026_10_30.md)
-records the later **259 canonical object/receipt pairs** and the exact
-new disposable set, private hash inventory and preserved original evidence.
-Check its dated details and re-run the guarded dry-run to obtain future live
-counts. The original PE, Ghidra project, active Player/Bullet/mesh experiments,
-private native evidence, installed toolchain and all canonical receipts remain
-protected.
-
-**Do not overwrite previous retirement audits.** The guarded script now
-requires an explicit **new, unique** audit inventory for applying a nonempty
-deletion set:
+The build cleanup script protects current manifest objects and receipts, skips
+tracked files and symlinks, and checks retained product/target hashes. It lists
+candidates by default. Use an explicit keep path for a needed compiler context:
 
 ```sh
 scripts/repo-python scripts/prune-generated-artifacts.py
-# Review the target/protected/dry-run scope before explicitly applying:
-scripts/repo-python scripts/prune-generated-artifacts.py \
-    --apply --inventory .analysis/unique-new-retirement-inventory.json
+scripts/repo-python scripts/prune-generated-artifacts.py --keep build/open-question
+scripts/repo-python scripts/prune-generated-artifacts.py --keep build/open-question --apply
 ```
 
-Deleting historical `.analysis/*.json.gz` archives for their age is unsafe:
-retained source freeze/replay records and native evidence cite many of these
-exact snapshots. Preserve the Ghidra project, original executable, installed
-MSVC/Wine/D3DX, private references, native source, canonical receipts,
-independent PE proofs and current active hypotheses. An unchanged native
-source/manifest graph has **zero affected exact units** and does not require
-cold replay. The current [short handoff](RE_HANDOFF.md) is authoritative;
-check dated old proof documents via [the evidence index](EVIDENCE_INDEX.md).
+Review the selection before applying. Keep source drafts and native evidence;
+noncanonical objects can normally be rebuilt. Do not remove the entire build
+or analysis tree. Preserve supplied game files, projects and game-specific Wine
+state. Reuse Factory's pinned tools as described in [shared tools](SHARED_TOOLS.md).
 
-## Historical guarded build-object cleanup (CORE/CLEANUP-497)
+Documentation and cleanup with unchanged native inputs have zero affected exact
+units. Inspect diffs/links and check protected hashes; no MSVC, Ghidra or replay.
+Native changes still require fresh affected builds and complete strict comparison,
+including owned extents and relocations. Exactness comes from that comparison.
 
-The [2026-10-29 artifact retirement report](ARTIFACT_RETIREMENT_2026_10_29.md)
-supersedes *live* artifact counts in the dated CORE/CLEANUP-300
-report. Use the tracked dry-run-first
-`scripts/prune-generated-artifacts.py` for follow-on cleanup.
-It reads the **live manifest** for exact protected objects and
-receipts and explicitly retains the active, unfinished complete-boss
-probe sets. A previous safety-audited application retired
-**1,670 ignored noncanonical compiler objects/receipts, reclaiming
-55.82 MiB**; **all 236 current canonical object/receipt pairs**
-and the immutable game executable SHA-256 remained unchanged.
-Each deleted file's path, original byte count and SHA-256 are in
-the private `.analysis/core497-build-retirement-inventory.json`.
-
-Do not treat the 126 MiB of private historical `.analysis/*.gz`
-archives as disposable merely because they are old: retained
-historical research scripts explicitly reference these snapshots.
-The 1,253-line old handoff is available at
-`git show 9eed65c:docs/RE_HANDOFF.md`; the current
-[compact handoff](RE_HANDOFF.md) is the authoritative source
-for current exact/nonexact status. Old native exact counts and
-old NONEXACT descriptions in focused proof documents must be
-read with their checkpoint date and later supersession notes.
-
-## Protected storage and ignored artifact retirement (CORE/CLEANUP-300)
-
-Treat `build/` as a regenerable object cache, **not** as a stable evidence
-archive. The live `config/match-units.toml` is the source of truth for
-protected canonical objects; each currently selected object also has a
-corresponding `.receipt.json` describing its actual included headers.
-Never retire either file, or any original executable, source/toolchain,
-private Ghidra database, original native disassembly or cited research
-snapshot. Do not run whole-graph replay for documentation and storage
-cleanup if native compiler inputs are unchanged.
-
-The completed [CORE/CLEANUP-300 audit](ARTIFACT_RETIREMENT_2026_10_28.md)
-retired 2,496 obsolete ignored products and reclaimed 203.65 MiB,
-without touching 212 canonical object/receipt pairs. The private
-`.analysis/core300-safe-artifact-prune.py` is dry-run by default,
-rechecks manifest/target protection and records deleted file names,
-sizes and SHA-256 values. Regenerate any retired private host or probe
-from retained source rather than treating legacy build outputs as
-exactness evidence. Preserve any ongoing nonexact source hypothesis
-privately before removing its speculative public declarations.
+Default public CI runs syntax, ledger, build-configuration, source-profile and
+private-artifact checks in a clean checkout without proprietary inputs. Run
+`scripts/repo-python scripts/ci.py` when changing these inputs. `--full` adds
+synthetic exact-oracle tests for relevant comparator changes. Other tool tests
+are selected explicitly for the changed tool. Reports, progress generation,
+native replay and reference-review suites are separate task-specific commands,
+not routine commit gates.

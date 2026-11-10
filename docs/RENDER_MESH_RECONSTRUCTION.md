@@ -224,25 +224,13 @@ interval unclassified; no padding, guessed alignment or inert stores are
 introduced. Original malformed dimensions, ANM/render resources, RTTI/EH/full
 linkage and game runtime remain independent open scope.
 
-Original 149 canonical receipt closures plus the fresh private mesh closure are
-verified and losslessly archived **before** changing the shared header. Each
-affected previous object is rebuilt once; the new maintained mesh object is
-reused in full replay. Complete original literal payloads and actual fresh COFF
-relocation roles identify changed labels, including duplicates. Preserve
-`core116-pre-admission-inputs.json.gz`, the source freeze, whole private proof,
-full canonical results, maintained sanitizer receipt, origin audit and attested
-native exports. Historical sound probes remain represented by their original
-source closures and require fresh builds before new acceptance.
-All72 public tests pass in292.555 seconds; the full gate passes in294.904
-seconds. Temporary host products and CI bytecode caches retire automatically.
-Protected retirement removes149 replaced canonical pairs and the migrated
-private surface-grid pair:300 files /8,291,307 bytes (7.91 MiB). Original
-source/receipt/SDK closures are verified before deletion. All773 completed
-comparison results,265 source hashes and300 current canonical-file hashes remain
-unchanged after cleanup. Build9.5MiB/analysis131MiB; keep the cleanup receipt
-and pre-deletion path/size/hash plan. Two literal labels are reconciled through
-40 verified reference roles, including duplicate full payloads. No unchanged
-source cold rebuild is used for documentation or retirement.
+The shared-header change required 149 existing providers to be rebuilt; the
+fresh maintained mesh object was reused. Complete original literal payloads and
+fresh COFF relocation roles identified changed labels, including duplicates.
+The whole private proof, origin audit and attested native exports retain the
+useful findings. Historical sound probes require fresh builds for new acceptance.
+All 773 complete comparisons passed at this checkpoint, including 40 independently
+verified literal reference roles.
 
 CORE095 reconstructs the complete grid initialization, adjacent-column strip
 publication, UV conversion and enemy deformation protocol. `RenderMesh.cpp`

@@ -168,8 +168,7 @@ included in the authored denominator while remaining absent from source coverage
 These reviewed-subset totals do not measure whole-game completion.
 
 Private evidence includes the attested core132 File/producer/PMR/EH listings,
-`core132-new-exact-results.json`, `core132-eh-support.json`,
-`core132-boundaries.json` and `core132-pre-header-inputs.json.gz`. The reference's
-range checks, manual clears and repaired preload-failure table entry are not
-imported. Actual loaded-data clearing, preload failure lifetime, Renderer, whole
-VM and game startup/runtime remain open.
+`core132-new-exact-results.json`, `core132-eh-support.json` and
+`core132-boundaries.json`. The reference's range checks, manual clears and repaired
+preload-failure table entry are not imported. Actual loaded-data clearing,
+preload failure lifetime, Renderer, whole VM and game startup/runtime remain open.

@@ -125,12 +125,7 @@ are mapped separately. All 63 public tests pass; authored exact coverage stays
 unknown pending independent classification. The existing destructor root is
 renamed without duplicate credit.
 
-Canonical evidence: core097-final-frozen-source.json,
-exact097-canonical-results.json.gz, core097-cold-audit.json,
-core097-registered.json and core097-production-lifetime-support.json. The complete
-46-byte deleting destructor, 16-byte destroy_at and 97-byte release_object
-strictly replay as support only. The refreshed active HitCtrlInf probe is
-build/core097-HitCtrlInf.obj, supported by core097-hit-whole-bindings.json.
-Protected retirement is recorded in core097-cleanup.json after semantic CI;
-original private inputs and receipts are preserved losslessly. Completed
-proof/replay/retirement writers must not rerun.
+Independent evidence is in core097-cold-audit.json, core097-registered.json and
+core097-production-lifetime-support.json. The complete 46-byte deleting
+destructor, 16-byte destroy_at and 97-byte release_object strictly replayed as
+support only. HitCtrlInf bindings are in core097-hit-whole-bindings.json.

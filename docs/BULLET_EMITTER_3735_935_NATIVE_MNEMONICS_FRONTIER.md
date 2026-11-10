@@ -65,9 +65,6 @@ on the basis of this structural score.
   declarations does not remove the NOP. Direct inline sine/absolute
   expression, unlike the detached value local, restores original mode-12
   order and 935/935 instruction alignment.
-- build/core632-probes/BulletEmitter.obj:
-  freshly compiled actual src/BulletEmitter.cpp under pinned MSVC x86
-  /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc.
 - .analysis/core632-emitter-mode12-maintained-native-proof.json:
   independent whole PE-to-COFF disassembly, physical native sequence and
   instruction/relocation type counts.

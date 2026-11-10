@@ -50,9 +50,9 @@ Next correct step: experiment with natural original C++ receiver and temporary l
 
 ## Reproducible evidence and bounded scope
 
+- Four full-method profile trials (`strict_fast`, `precise_sdl`, `strict_sdl`,
+  `fast_sdl`) remained nonexact at 3,114B/783 instructions.
 - .analysis/core721-player-main-native-field-operand-audit.py/json — original entire PE 3,111B/783 instructions, real entire 3,114B/783 compiled source and detailed operand comparison, 164 exact ordinary numeric immediates, 67 exact nonstack positive game-member offsets and the seven original/compiled ADD encoding differences; independently re-parses the original PE .reloc directory.
-- build/core717-probes/PlayerMainFrame.obj — pinned real whole maintained Player main method compilation, full original PE bytes not edited.
-- build/core718-probes/strict_fast.obj, precise_sdl.obj, strict_sdl.obj and fast_sdl.obj — four complete method compiler-profile source probes, all nonexact at 3,114B/783.
 - .analysis/core703-player-main-native-script-callee-proof.py/json — previous independent all-67 original native E8 role validation from genuine original PE caller destinations.
 - docs/PLAYER_MAIN_NATIVE_SCRIPT_INDICES_AND_OPTION_LOOPS_3111.md — previous correction to actual native four script slots and cached option begin/end semantics, which remain in the maintained source.
 
