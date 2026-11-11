@@ -171,6 +171,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1058 — complete-source 2,227B GDI glyph text core Boss frontier](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md) — native entire 470 instructions, 25 E8/43 HIGHLOW, full font/CP932/GDI/outline/alpha/queued-job pipeline, 2,052B/481 typed source remains NONEXACT.
 - [2,227B Glyph text GDI color, native horizontal mutation and full switch-table frontier](GLYPH_TEXT_CORE2227_COLOR_AND_CANVAS_ABI_FRONTIER.md) — current 2,316B full contribution, 15/25 original E8 positions and 41/43 body data locations aligned; source-present NONEXACT.
+- [2,227B Glyph text queued-task ABI frontier](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md) — original 8B identity helper, 132B capture, 102B function producer, 56B queue, native EH lifetimes and full-body rejected source variations.
 
 - [CORE/RECON-1060 — exact 56B native glyph text queue bridge with borrowed std::function](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md) — real 2,227B caller, original `_Unfancy` and 151B append E8, whole 56/56, +56 game-authored bytes; 2,227B parent 2,072B source NONEXACT.
 

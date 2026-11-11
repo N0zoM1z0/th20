@@ -96,6 +96,7 @@ folded implementations, and post-`ret` switch/padding data.
    sites and 41/43 body data sites** align after recovering native GDI color,
    single-canvas, in-place horizontal offset and two-wchar zero-init roles.
    [Current glyph core proof](GLYPH_TEXT_CORE2227_COLOR_AND_CANVAS_ABI_FRONTIER.md);
+   [queued task/EH frontier](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md);
    [Current centered frontier](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md);
    [other Bosses](RE_OPEN_BOSS_BACKLOG.md).
 5. **Huge source-absent dispatchers:** 12,140B Bullet command,
