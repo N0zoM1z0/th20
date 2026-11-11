@@ -45,7 +45,9 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
         const std::uint32_t outlined=opaque.value^0xff000000u;
         const std::int32_t row_words=pixel_stride_4156c0()/4;
         std::int32_t row_advance=0;
-        for (std::int32_t y=0;y<rows;++y) {
+        // Native update edge reads the live stride before the row test.
+        for (std::int32_t y=0;y<rows;
+             ++y,row_advance+=pixel_stride_4156c0()) {
             auto* dest=reinterpret_cast<std::uint32_t*>(
                 pixels+row_advance+start*4);
             for (std::int32_t x=start;x<end;++x,++dest) {
@@ -79,7 +81,6 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     }
                 }
             }
-            row_advance+=pixel_stride_4156c0();
         }
     } else if (pixel_format==0x1a) {
         GlyphMaskOffsets offsets;

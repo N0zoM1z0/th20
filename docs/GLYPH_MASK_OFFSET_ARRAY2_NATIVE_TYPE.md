@@ -44,9 +44,9 @@ now naturally emits a complete **22B**
 `std::array<int32_t,2>::operator[](size_t) const` method that is
 **22/22 structurally identical to the preexisting native folded
 `0x00414580` code**, as verified by actual original bytes. The
-recompiled original-related game Boss naturally emits **four
-separate REL32 E8 fields** to this true C++ array method: compiler
-field offsets `+0x28F`, `+0x2A1`, `+0x649`, `+0x65B`; their native
+recompiled original-related game Boss at **CORE/RECON-1080** naturally
+emitted **four separate REL32 E8 fields** to this true C++ array
+method: historical compiler field offsets `+0x28F`, `+0x2A1`, `+0x649`, `+0x65B`; their native
 unrelocated equivalents are anchored by the original genuine four
 physical E8 sites above. There is no synthesized `Vector3` class
 or fake target implementation. Identical original x86 does not by
@@ -140,3 +140,31 @@ The current strict closure is therefore **24/24**, not the historical
 24 current original heads, including the nine new descendants.
 This is an evidence/verification-count correction, not a new original
 function, a new compiler source or new authored-game byte credit.
+
+## Follow-up — original row-stride increment control flow
+
+The maintained 2,245B source now puts the **live BGRA32 row-stride update**
+in the `for` increment expression, not at the bottom of the loop body.
+The original whole function calls `pixel_stride_4156c0` at `+0x1D7`
+*after* incrementing `y` but *before* retesting `y<rows`. The source
+probe moves the corresponding E8 from compiler `+0x41A` to `+0x1B5`,
+without adding an unnecessary getter, modifying native target bytes,
+or changing any pixel-format behavior. Its first **23 call roles are
+now in original native order**, compared with only the first nine
+before the change. The 2,061B/545-i386, 36-E8/5-DIR32 footprint stays
+unchanged; original remains 2,245B/612-i386, 37-E8/5-HIGHLOW.
+
+This also moves the *candidate* BGRA32 folded array E8 fields from
+`+0x28F/+0x2A1` to **`+0x2A3/+0x2B5`**, leaving the RGBA4444 candidate
+fields at `+0x649/+0x65B`. The **original** BGRA32 E8 sites remain
+`+0x29E/+0x2B0`, independently checked against the immutable PE.
+The original's separate `+0x5E7` per-pixel 16-bit stride call is still
+missing in the candidate, and is the next call-order/semantic frontier.
+The full source remains **NONEXACT** with no extra game-authored bytes.
+
+The one affected owner source was cold-replayed for **24/24 exact generic
+and color descendants in one object**, with no unfiltered replay.
+The original-specific verifier now checks the whole native body,
+the updated candidate sites, the first 23 real call roles, and the
+24 separate exact descendants. See
+[`GLYPH_MASK_BOSS2245_ROW_INCREMENT_FRONTIER.md`](GLYPH_MASK_BOSS2245_ROW_INCREMENT_FRONTIER.md).
