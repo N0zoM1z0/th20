@@ -1606,3 +1606,6 @@ th20::NativeCardWindowTimeView::current_seconds_41cb10
 th20::window_frame_clock_dispatch_4193c0
 th20::NativeFrameDeviceClockView::frame_seconds_4abd50
 th20::NativeFrameDeviceClockView::frame_pipeline_4ac0e0
+th20::read_frame_pair_4ac170
+th20::frame_time_u64_4ac200
+th20::frame_time_breakdown_4ac270

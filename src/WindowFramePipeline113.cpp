@@ -6,11 +6,6 @@
 #include "NativeWindowFrameClockView.hpp"
 #include <cstdint>
 namespace th20 {
-struct NativeFrameTimePair {
-    std::uint32_t low;
-    std::uint32_t high;
-};
-static_assert(sizeof(NativeFrameTimePair)==8);
 NativeFrameTimePair* __cdecl read_frame_pair_4ac170(NativeFrameTimePair* temp);
 std::uint64_t __cdecl frame_time_u64_4ac200(NativeFrameTimePair* pair);
 void __cdecl frame_time_breakdown_4ac270(std::uint8_t* out, std::uint64_t* value);

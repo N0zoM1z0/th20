@@ -28885,3 +28885,46 @@ relocations = [
   { offset = 0x34, type = "REL32", symbol = "?frame_time_u64_4ac200@th20@@YA_KPAUNativeFrameTimePair@1@@Z", target = 0x004AC200 },
   { offset = 0x5E, type = "REL32", symbol = "?frame_time_breakdown_4ac270@th20@@YAXPAEPA_K@Z", target = 0x004AC270 },
 ]
+
+# CORE/RECON-1128: source-exact original time wrapper with authorship held review.
+[units.frame_time_pair_read_46]
+source = "src/WindowFrameTimeLeaves109.cpp"
+object = "build/core1128-canonical/WindowFrameTimeLeaves109.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::read_frame_pair_4ac170"]
+symbol = "?read_frame_pair_4ac170@th20@@YAPAUNativeFrameTimePair@1@PAU21@@Z"
+target_address = 0x004AC170
+size = 46
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "?native_clock_ticks_541900@th20@@YA_KXZ", target = 0x00541900 },
+  { offset = 0x19, type = "REL32", symbol = "??0NativeFrameClockPairValue@th20@@QAE@ABU01@@Z", target = 0x00446DA0 },
+  { offset = 0x22, type = "REL32", symbol = "??4NativeFrameClockPairValue@th20@@QAEAAU01@ABU01@@Z", target = 0x00447D20 },
+]
+
+# CORE/RECON-1128: source-exact original time wrapper with authorship held review.
+[units.frame_time_u64_convert_42]
+source = "src/WindowFrameTimeLeaves109.cpp"
+object = "build/core1128-canonical/WindowFrameTimeLeaves109.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::frame_time_u64_4ac200"]
+symbol = "?frame_time_u64_4ac200@th20@@YA_KPAUNativeFrameTimePair@1@@Z"
+target_address = 0x004AC200
+size = 42
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "?native_stamp_input_451620@NativeFrameTimePairBuilder@th20@@QAEPAUNativeFrameTimePair@2@PAU32@@Z", target = 0x00451620 },
+  { offset = 0x18, type = "REL32", symbol = "?native_stamp_convert_4abb20@th20@@YAPAUNativeFrameTimeValue64@1@PAU21@PBUNativeFrameTimePair@1@@Z", target = 0x004ABB20 },
+  { offset = 0x22, type = "REL32", symbol = "?native_timestamp_value_44c090@NativeFrameTimeValue64@th20@@QAE_KXZ", target = 0x0044C090 },
+]
+
+# CORE/RECON-1128: source-exact original time wrapper with authorship held review.
+[units.frame_time_breakdown_21]
+source = "src/WindowFrameTimeLeaves109.cpp"
+object = "build/core1128-canonical/WindowFrameTimeLeaves109.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::frame_time_breakdown_4ac270"]
+symbol = "?frame_time_breakdown_4ac270@th20@@YAXPAEPA_K@Z"
+target_address = 0x004AC270
+size = 21
+relocations = [
+  { offset = 0xC, type = "REL32", symbol = "?native_time_breakdown_55139c@th20@@YAXPAEPB_K@Z", target = 0x0055139C },
+]

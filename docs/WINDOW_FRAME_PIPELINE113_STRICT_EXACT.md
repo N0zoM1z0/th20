@@ -46,5 +46,4 @@ Reproduce:
 
 One new game-authored whole-exact original head, **113 native bytes**.
 The 437B and 32B parents are not credited again; the child date/time
-conversion methods at 0x004AC170, 0x004AC200 and 0x004AC270 remain
-separately open. A playable game binary has not been linked or tested.
+conversion methods at 0x004AC170, 0x004AC200 and 0x004AC270 were subsequently [recovered as whole exact source](WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md) with authorship held review. A playable game binary has not been linked or tested.

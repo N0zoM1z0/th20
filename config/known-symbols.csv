@@ -902,3 +902,6 @@ address,name,module,confidence,evidence
 0x004193C0,th20::window_frame_clock_dispatch_4193c0,WindowState,high,CORE/RECON-1124; docs/WINDOW_FRAME_CLOCK_DISPATCH32_STRICT_EXACT.md
 0x004ABD50,th20::NativeFrameDeviceClockView::frame_seconds_4abd50,WindowState,high,CORE/RECON-1125; docs/WINDOW_FRAME_DEVICE_CLOCK437_STRICT_EXACT.md
 0x004AC0E0,th20::NativeFrameDeviceClockView::frame_pipeline_4ac0e0,WindowState,high,CORE/RECON-1126; docs/WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md
+0x004AC170,th20::read_frame_pair_4ac170,WindowState,medium,CORE/RECON-1128; docs/WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md
+0x004AC200,th20::frame_time_u64_4ac200,WindowState,medium,CORE/RECON-1128; docs/WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md
+0x004AC270,th20::frame_time_breakdown_4ac270,WindowState,medium,CORE/RECON-1128; docs/WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md

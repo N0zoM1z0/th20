@@ -14,9 +14,9 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,622** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,608** functions |
-| Canonical exact units / compiler objects | **1,606** units / **454** protected MSVC objects and receipts |
+| Functions with provisional source mapping | **1,625** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,611** functions |
+| Canonical exact units / compiler objects | **1,609** units / **455** protected MSVC objects and receipts |
 | Credited game-authored whole exact | **796** distinct original heads / **269,526** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window frame time wrappers** 0x004AC170 **46B**, 0x004AC200 **42B** and 0x004AC270 **21B** are [full native source-exact](WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md). Genuine 8B time temporary creates original compiler NOP, three real CRT/chrono adapter calls, and 6/6 affected exact units /4 cold objects preserve the 113B pipeline, 437B Boss and 32B dispatch. These three helpers are **origin review**, not credited as new authored game bytes.
 
 - **Window device frame pipeline** 0x004AC0E0 is [113/113B whole strict exact](WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md). The real three original date/time helper E8 sites and 101/101 ordinary bytes match. No native GS cookie; one source compiled /GS- without /sdl. Its real 437B parent and 32B dispatch remain exact in scoped **3/3** cold replay; only the new 113B is credited.
 
