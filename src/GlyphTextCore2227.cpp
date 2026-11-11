@@ -2,6 +2,10 @@
 // SOURCE-PRESENT NONEXACT: all native font, GDI, outline, alpha and
 // submission stages are maintained; original compiler/EH and the queued
 // functor/task producer have independent source boundaries still open.
+// Original 22-case font dispatch and its true 22-entry pointer table are
+// recovered, with the original allocator argument and evaluation order.
+// The complete 2316B COFF footprint now equals code+alignment+table extent;
+// code remains one byte longer and is NOT strict exact.
 #include "NativeGlyphRenderJob.hpp"
 #include "NativeGlyphTextCore.hpp"
 #include "NativeGlyphFontResources.hpp"
@@ -49,23 +53,50 @@ std::uint64_t __cdecl native_text_core_415830(
     std::lock_guard<std::recursive_mutex> raster_guard(process_locks.slot(0x12));
     // The original selects an existing native font via array-index helper.
     HFONT selected_font=native_glyph_fonts_5b66f0[font];
-    auto* canvas=process_allocator->allocate_object<NativeGlyphCanvasStorage>(
-        "glyph GDI text canvas");
-    auto* glyph=reinterpret_cast<NativeGlyphCanvasView*>(canvas);
     float outline_radius=native_font_size_56c8d0;
     std::int32_t baseline=2;
+    auto* canvas=process_allocator->allocate_object<NativeGlyphCanvasStorage>(
+        "D:\\cygwin\\home\\zun\\prog\\th20\\src\\core\\grpfont.cpp:920 AflDIB");
+    auto* glyph=reinterpret_cast<NativeGlyphCanvasView*>(canvas);
+    // Original physical switch is directly indexed by font 0..21 (22
+    // pointer entries). Distinct 1/2/3, 4/5, 14/15, 16/17 and 20/21
+    // cases independently assign BOTH native radius and baseline, even
+    // when some values coincide. Only true native aliases are grouped.
     switch (font) {
-      case 1: case 2: case 3: baseline=3;break;
-      case 4: case 5: outline_radius=native_font_size_56c8d4;baseline=3;break;
-      case 6: case 8: outline_radius=native_font_size_56c8d8;baseline=3;break;
-      case 9: outline_radius=native_font_size_56c8dc;baseline=3;break;
-      case 10: outline_radius=native_font_size_56c8e0;baseline=4;break;
-      case 12: case 13: baseline=6;break;
-      case 14: case 15: outline_radius=native_font_size_56c8d8;baseline=6;break;
-      case 16: case 17: outline_radius=native_font_size_56c8e0;baseline=6;break;
-      case 18: case 19: baseline=2;break;
-      case 20: case 21: outline_radius=native_font_size_56c8d8;baseline=7;break;
-      default: baseline=3;break;
+      case 0: case 7: case 11: default:
+        outline_radius=native_font_size_56c8d0; baseline=3; break;
+      case 1:
+        outline_radius=native_font_size_56c8d0; baseline=3; break;
+      case 2:
+        outline_radius=native_font_size_56c8d0; baseline=3; break;
+      case 3:
+        outline_radius=native_font_size_56c8d0; baseline=3; break;
+      case 4:
+        outline_radius=native_font_size_56c8d4; baseline=3; break;
+      case 5:
+        outline_radius=native_font_size_56c8d4; baseline=3; break;
+      case 6: case 8:
+        outline_radius=native_font_size_56c8d8; baseline=3; break;
+      case 9:
+        outline_radius=native_font_size_56c8dc; baseline=3; break;
+      case 10:
+        outline_radius=native_font_size_56c8e0; baseline=4; break;
+      case 12: case 13:
+        outline_radius=native_font_size_56c8d0; baseline=6; break;
+      case 14:
+        outline_radius=native_font_size_56c8d8; baseline=6; break;
+      case 15:
+        outline_radius=native_font_size_56c8d8; baseline=6; break;
+      case 16:
+        outline_radius=native_font_size_56c8e0; baseline=6; break;
+      case 17:
+        outline_radius=native_font_size_56c8e0; baseline=6; break;
+      case 18: case 19:
+        outline_radius=native_font_size_56c8d0; baseline=2; break;
+      case 20:
+        outline_radius=native_font_size_56c8d8; baseline=7; break;
+      case 21:
+        outline_radius=native_font_size_56c8d8; baseline=7; break;
     }
     outline_radius*=native_font_outline_scale_5ae120;
     native_font_outline_scale_5ae120=1.0f;

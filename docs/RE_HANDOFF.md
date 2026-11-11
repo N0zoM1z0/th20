@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,600** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,586** functions |
-| Canonical exact units / compiler objects | **1,584** units / **438** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **775** distinct original heads / **265,737** `.text` bytes |
+| Functions with provisional source mapping | **1,601** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,587** functions |
+| Canonical exact units / compiler objects | **1,585** units / **439** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **776** distinct original heads / **265,848** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -30,6 +30,7 @@ folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
 
+- **Animation pool staging reset** `0x00445A40` is [111/111B whole exact](ANIMATION_POOL_STAGING_RESET111_STRICT_EXACT.md). Three original recovery callers pass the existing pool; its queue and stream cursors are shared with exact 192B Draw Flush. One new canonical unit and object were cold-replayed in isolation.
 - **Both Renderer list-update Bosses** `0x00449870` **508B** and
   `0x00449B20` **511B** are [whole strict exact](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md).
   An Animation-only `class IntrusiveList<Animation>` specialization reproduces
@@ -88,7 +89,10 @@ folded implementations, and post-`ret` switch/padding data.
    positions; the reordered SSE/font-width lifetime remains **NONEXACT**.
    The 578B ASCII renderer, 2,245B glyph compositor, 2,227B Unicode
    glyph core, 1,896B Card spell-start and 3,111B Player main also remain
-   open. [Current centered frontier](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md);
+   open. The 2,227B glyph text core now generates the full **2,316B**
+   code+22-pointer contribution and correct font-switch alias groups, but
+   remains NONEXACT (candidate RET one byte late). [Glyph core switch](GLYPH_TEXT_CORE2227_SWITCH22_NATIVE_CONVERGENCE.md);
+   [Current centered frontier](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md);
    [other Bosses](RE_OPEN_BOSS_BACKLOG.md).
 5. **Huge source-absent dispatchers:** 12,140B Bullet command,
    41,967B Enemy ECL opcode, 39,470B Animation VM update. Exact children

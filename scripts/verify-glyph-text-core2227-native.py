@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Original whole 2227B GDI text rasterization Boss, 2080B typed source frontier.
+"""Original whole 2227B GDI text rasterization Boss, 22-pointer source frontier.
 
 This never accepts a shortened code extent and does not infer native target
 roles from a generated COFF input. Children have independent match units.
@@ -56,23 +56,57 @@ def verify(candidate):
  assert calls(pins,0x0044FFF0)[0x6C]==HEAD and calls(pins,0x0044FFF0)[0xD4]==HEAD
  print('PASS immutable whole 2227B/470-i386 glyph text Boss: 25 real native E8 and 43 PE HIGHLOW')
  print('PASS original 294B submit Boss two E8 into text core and native 2245B outline/542B alpha/104B canvas child links')
+ # The physical original switch table follows code plus one real NOP.
+ table_start = HEAD + 2228
+ assert pe.raw_at(img,base,sec,HEAD+2227,1)==b'\x90'
+ original_table=[struct.unpack('<I',pe.raw_at(img,base,sec,table_start+4*i,4))[0]
+                 for i in range(22)]
+ assert len(set(original_table))==17
+ assert all(HEAD <= value < HEAD+2227 for value in original_table)
+ assert all(table_start+4*i in hl for i in range(22))
+ assert len([x for x in hl if HEAD<=x<table_start+22*4])==43+22
+ assert original_table[0]==original_table[7]==original_table[11]
+ assert original_table[6]==original_table[8]
+ assert original_table[12]==original_table[13]
+ assert original_table[18]==original_table[19]
+ print('PASS original 2227B code plus one NOP/22 switch HIGHLOW: 2316B whole native physical contribution, 17 original case aliases')
  if candidate:
-  b,r=cm.object_function(candidate,SYM,2080)
-  ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b),0))
-  assert len(b)==2080 and len(ins)==486 and len(r)==79
-  assert sum(x['type']=='REL32' for x in r)==25
-  assert sum(x['type']=='DIR32' for x in r)==54
+  b,r=cm.object_function(candidate,SYM,2316)
+  assert len(b)==2316 and len(r)==90
+  # Candidate is still nonexact: executable code is 2228B with no NOP,
+  # but the after-return pointer table starts at exactly native +2228.
+  candidate_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b[:2228]),0))
+  assert len(candidate_ins)==472
+  assert candidate_ins[-1].address+candidate_ins[-1].size==2228
+  assert candidate_ins[-1].mnemonic=='ret'
+  body_fields=[x for x in r if x['offset']<2228]
+  call_fields=[x for x in body_fields if x['type']=='REL32']
+  data=[x for x in body_fields if x['type']=='DIR32']
+  table=[x for x in r if x['offset']>=2228]
+  assert len(call_fields)==25 and len(data)==43 and len(table)==22
+  assert [x['offset'] for x in table]==list(range(2228,2316,4))
+  assert all(x['type']=='DIR32' and x['symbol'].startswith('$LN') for x in table)
   assert all(x['addend']==0 for x in r)
-  assert any('composite_glyph_mask_416420' in x['symbol'] for x in r)
-  assert any('invert_alpha_417ab0' in x['symbol'] for x in r)
-  assert any('ensure_format_4153d0' in x['symbol'] for x in r)
-  assert any('submit_4162f0' in x['symbol'] for x in r)
+  candidate_alias=[x['symbol'] for x in table]
+  assert len(set(candidate_alias))==17
+  assert all((original_table[i]==original_table[j]) ==
+             (candidate_alias[i]==candidate_alias[j])
+             for i in range(22) for j in range(22))
+  first_four=[0x039,0x045,0x057,0x089]
+  assert [x['offset']-1 for x in call_fields[:4]]==first_four
+  actual_native_data=[x-HEAD for x in sorted(hl) if HEAD<=x<HEAD+2227]
+  assert sum(x['offset']==old for x,old in zip(data,actual_native_data))==7
+  assert any('composite_glyph_mask_416420' in x['symbol'] for x in call_fields)
+  assert any('invert_alpha_417ab0' in x['symbol'] for x in call_fields)
+  assert any('ensure_format_4153d0' in x['symbol'] for x in call_fields)
+  assert any('submit_4162f0' in x['symbol'] for x in call_fields)
   assert cm.compare_unit('glyph_text_queue_submit_56')['result']=='exact'
-  print('SOURCE-PRESENT NONEXACT C++20 candidate 2080B/486 x86, 25 E8/54 DIR32 (vs native 2227B/470 and 25/43)')
   assert cm.compare_unit('glyph_text_job_capture_132')['result']=='exact'
-  original_job=pe.raw_at(img,base,sec,0x00413EC0,132)
-  assert hashlib.sha256(original_job).hexdigest()=='1bdff818be6f3097007f19698a72a5e969b7e0922c69ca783a23efa6148247fa'
-  print('PASS separate native 132B queued-job capture is whole strict exact under borrowed std::function const&, source 132B')
+  assert cm.compare_unit('glyph_text_job_dtor_23')['result']=='exact'
+  print('PASS full C++20 COFF contribution 2316B: 25 E8, 43 body DIR32, all 22 after-ret DIR32, 17/17 native switch alias groups')
+  print('PASS original allocator ordering and distinct font-case source; first four native E8 sites and seven native data positions align')
+  print('PASS unrelated exact 56B queue and two existing glyph-job source units unchanged (132B/23B)')
+  print('NONEXACT original code 2227B/470-i386 + one NOP versus candidate code 2228B/472-i386 with no pad; whole relocation bytes differ')
  print('Original entire 2227B text core remains NONEXACT; exact 132B game-owned capture is a distinct physical native head')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)
