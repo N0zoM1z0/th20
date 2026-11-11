@@ -105,3 +105,8 @@ The separate Window Present/Reset caller at 0x004199A0 is now
 [whole 164B strict exact](WINDOW_PRESENT_NO_WAIT164_STRICT_EXACT.md)
 including its original E8 to this 574B scene function. This does
 not establish whole-native exactness for the 574B screenshot body.
+
+The separate 385B time-paced Window Present/Reset caller has also
+reached [whole strict exact](WINDOW_PACED_PRESENT385_STRICT_EXACT.md),
+including its real call to this screenshot scene. The 574B
+screenshot body still needs independent compiler closure.

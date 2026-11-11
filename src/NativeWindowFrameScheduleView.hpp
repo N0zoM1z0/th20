@@ -9,5 +9,6 @@ struct NativeWindowFrameScheduleView {
     void schedule_frame_4193e0();
     void update_scene_419760();
     void present_no_wait_4199a0();
+    void present_paced_419a50();
 };
 }

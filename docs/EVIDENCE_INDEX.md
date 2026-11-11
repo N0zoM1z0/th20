@@ -1622,3 +1622,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Window screenshot pending Renderer 88B whole strict exact](WINDOW_CAPTURE_PENDING88_STRICT_EXACT.md) — native four real 40B surface copy records at Renderer+0x18, true E8 at +0x3E to previously exact 439B D3D9 blitter, source 84/84 ordinary bytes, one source-local 1/1 exact unit and +88 distinct game bytes.
 
 - [Window Present/Reset 164B whole strict exact](WINDOW_PRESENT_NO_WAIT164_STRICT_EXACT.md) — original nine E8 and eight HIGHLOW physical locations/targets, entire 96/96 ordinary bytes, real IDirect3DDevice9 Present/Reset device lifetimes and original MSVC NOP from C++ scoped source. One distinct game-authored original exact 164B head, 1/1 local replay.
+
+- [Window paced 385B D3D9 Present Boss whole strict exact](WINDOW_PACED_PRESENT385_STRICT_EXACT.md) — first complete natural C++ MSVC source compiles to 385/385 original bytes, 94-i386, original 1/60 pacing/Sleep and genuine Present/Reset recovery, all 12 E8 +17 HIGHLOW native physical sites and 269/269 ordinary bytes, one new authored head and 1/1 local replay.

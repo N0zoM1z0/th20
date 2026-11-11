@@ -53,3 +53,8 @@ needed a separate 1/1 cold replay; the 884B and 574B nonexact
 source consumers were compiled/compared alone, not the full graph.
 
 One new distinct game-authored exact original head, **164 bytes**.
+
+The neighboring frame-paced Window presenter at 0x00419A50 is now
+[whole 385B strict exact](WINDOW_PACED_PRESENT385_STRICT_EXACT.md),
+with the additional original 1/60 seconds Sleep path. These are
+separate game-authored physical functions; no duplicate credit.
