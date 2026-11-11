@@ -16,8 +16,8 @@ for more candidates. Git history preserves earlier checkpoints.
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
 | Functions with provisional source mapping | **1,631** rows; includes unaccepted and excluded mappings |
 | Source-present / implemented | **1,617** functions |
-| Canonical exact units / compiler objects | **1,613** units / **459** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **800** distinct original heads / **270,194** `.text` bytes |
+| Canonical exact units / compiler objects | **1,614** units / **460** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **801** distinct original heads / **270,768** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -30,13 +30,15 @@ folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
 
+- **Window screenshot scene Boss** 0x00419760 is now [whole 574/574B strict exact](WINDOW_SNAPSHOT_SCENE574_STRICT_EXACT.md): native 132 i386, all original 20 E8 +12 HIGHLOW physical fields, 446/446 ordinary bytes; genuine short-circuit input guard, two real c_str pointer lifetimes and original WindowState base+0x89 addends. 1/1 scoped replay; 884B scheduler still NONEXACT.
+
 - **Window paced D3D9 Present Boss** 0x00419A50 is [385/385B whole strict exact](WINDOW_PACED_PRESENT385_STRICT_EXACT.md), 94 original i386, original 1/60 frame budget and Sleep, real D3D9 Present/Reset with authentic 12 E8 and 17 PE HIGHLOW physical fields/targets, 269/269 ordinary bytes. 1/1 local cold replay; shared-header exact 31B getter and 164B no-wait presenter each 1/1 preserved. The 574B screenshot and 884B frame scheduler are still NONEXACT.
 
 - **Window D3D9 Present/Reset** 0x004199A0 is [164B/49-i386 whole strict exact](WINDOW_PRESENT_NO_WAIT164_STRICT_EXACT.md), all nine native E8 and eight HIGHLOW physical fields/targets plus 96/96 ordinary bytes. Authentic distinct Present and Reset device lifetimes and a real scoped NOP after the 574B screenshot update make MSVC naturally produce exact stack and length; 1/1 new and 1/1 shared-header-affected 31B replay. The 574B scene child and 884B scheduler parent remain NONEXACT; 32B clock dispatch already exact.
 
 - **Window snapshot pending Renderer leaf** 0x0041BFC0 [88B/28-i386 whole strict exact](WINDOW_CAPTURE_PENDING88_STRICT_EXACT.md), four real 40B Renderer surface copy records at +0x18; submits each active entry through already exact 439B D3D9 blit at 0x0044BB10 then retires file_index to -1. Single real E8 and 84/84 ordinary bytes exact; 1/1 local cold replay. 574B screenshot and 884B Window parents are still NONEXACT.
 
-- **Window screenshot/scene updater** 0x00419760 now has [entire compiled 574B-original /551B typed source](WINDOW_SNAPSHOT_SCENE574_FULL_SOURCE_FRONTIER.md), with genuine snapshot directory, per-file filename search and Graphics capture. All 20/20 native E8 callee and 12/12 data target roles match in order, but only 1/20 E8 and 3/12 data physical sites align; **NONEXACT, zero authored parent byte credit**. Corrected third input-pointer byte offset and now calls as actual 884B Window scheduler member. The 31B getter passed 1/1 header-scoped replay.
+- **Window screenshot/scene updater historical frontier** 0x00419760 had [574B original /551B earlier source](WINDOW_SNAPSHOT_SCENE574_FULL_SOURCE_FRONTIER.md), with genuine snapshot directory, per-file filename search and Graphics capture. All 20/20 native E8 callee and 12/12 data target roles match in order, but only 1/20 E8 and 3/12 data physical sites align; **NONEXACT, zero authored parent byte credit**. Corrected third input-pointer byte offset and now calls as actual 884B Window scheduler member. The 31B getter passed 1/1 header-scoped replay.
 
 - **Window frame scheduler Boss** 0x004193E0 now has [complete compiled source frontier](WINDOW_FRAME_SCHEDULER884_FULL_SOURCE_FRONTIER.md): 884B/239 native vs 890B/240 candidate, with all 32 E8 target roles and 21 PE data roles in native order (12/32 E8 and 6/21 data physical offsets aligned). Parent NONEXACT, zero byte credit; distinct 31B RepeatCounter, 346B clock and 32B frame dispatch children stay exact. Only source-local compiler probe, no full cold replay.
 

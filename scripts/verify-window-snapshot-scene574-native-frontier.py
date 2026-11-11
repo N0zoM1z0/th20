@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Full SHA-pinned 574B Window snapshot scene and entire nonexact typed source.
+"""Full SHA-pinned 574B Window snapshot Boss and whole strict exact source.
 
 Original E8/HIGHLOW roles are independently read from immutable PE, never
-inferred from compiler displacements. The 541B C++ candidate remains NONEXACT.
+inferred from compiler displacements. Both PE and pinned MSVC code have complete 574B/132-i386 identity.
 """
 from pathlib import Path
 import hashlib,importlib.util,struct,sys
@@ -75,9 +75,9 @@ def main():
  assert calls==NATIVE_E8 and data==NATIVE_DATA
  assert pe.raw_at(image,base,secs,0x0056CAAC,9)==b'snapshot\x00'
  assert pe.raw_at(image,base,secs,0x0056CABC,14)==b'th20_%.3d.png\x00'
- code,rr=cf.object_function(OBJ,SYM,551)
+ code,rr=cf.object_function(OBJ,SYM,574)
  src_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(code),0))
- assert len(code)==551 and len(src_ins)==125
+ assert len(code)==574 and len(src_ins)==132
  crels=[r for r in rr if r['type']=='REL32']
  drel=[r for r in rr if r['type']=='DIR32']
  assert len(crels)==20 and len(drel)==12
@@ -93,8 +93,12 @@ def main():
  same_data=sum(off==rel['offset'] for (off,_),rel in zip(sorted(data.items()),drel))
  masked={j for rel in rr for j in range(rel['offset'],rel['offset']+4)}
  ordinary=sum(a==z for i,(a,z) in enumerate(zip(original,code)) if i not in masked)
- assert same_calls==1 and same_data==3 and ordinary==88,(same_calls,same_data,ordinary)
+ assert same_calls==20 and same_data==12 and ordinary==446,(same_calls,same_data,ordinary)
  assert bytes(code)!=original
+ # The raw COFF displacement/data entries are linker placeholders; only
+ # the attested full strict source replay can establish all 574 exact bytes.
+ canonical=cf.compare_unit('window_snapshot_scene_boss_574')
+ assert canonical['result']=='exact' and canonical['matched_bytes']==574
  for unit,n in [('window_active_repeat_31',31),('game_file_exists_157',157)]:
   try:
    proof=cf.compare_unit(unit)
@@ -104,7 +108,7 @@ def main():
     continue
    raise
  print('PASS original complete native screenshot scene 574B/132 i386, all 20 E8 and 12 PE HIGHLOW sites/target identities independently SHA-pinned')
- print('PASS entire C++ source 551B/125 i386; 20/20 E8 callee roles and 12/12 data target roles in original sequence, genuine snapshot and format strings')
- print(f'NONEXACT: {same_calls}/20 E8 physical offsets and {same_data}/12 data offsets align; only {ordinary} ordinary positional bytes agree')
- print('PASS existing exact Window 31B RepeatCounter; original 884B parent remains NONEXACT, no newly credited game bytes for the screenshot function')
+ print('PASS entire C++ source 574B/132 i386; all 20 original E8 and 12 data sites physically identical, full 446/446 ordinary bytes')
+ print(f'PASS whole original strict exact: {same_calls}/20 E8 and {same_data}/12 data offsets, {ordinary}/446 ordinary bytes, full 574/574 replay')
+ print('PASS existing exact Window 31B RepeatCounter; original 884B scheduler remains NONEXACT. Only 574 new game bytes credited.')
 if __name__=='__main__':main()

@@ -1,5 +1,7 @@
 # Window snapshot/scene update 574B — entire typed source, NONEXACT
 
+**Historical NONEXACT source frontier, now superseded by [whole strict 574B exact reconstruction](WINDOW_SNAPSHOT_SCENE574_STRICT_EXACT.md).**
+
 The immutable original TH20 Japanese Steamless v1.00a executable is pinned
 to SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 The true Window scene/screenshot update function at 0x00419760 is

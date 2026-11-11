@@ -29022,3 +29022,47 @@ relocations = [
   { offset = 0x16A, type = "REL32", symbol = "?current_seconds_41cb10@NativeCardWindowTimeView@th20@@QAENXZ", target = 0x0041CB10 },
   { offset = 0x178, type = "REL32", symbol = "?window_frame_clock_dispatch_4193c0@th20@@YAXXZ", target = 0x004193C0 },
 ]
+
+# CORE/RECON-1135: native full 574B Window screenshot Boss, 20 E8 and 12 HIGHLOW.
+[units.window_snapshot_scene_boss_574]
+source = "src/WindowSnapshotScene574.cpp"
+object = "build/core1135-canonical/WindowSnapshotScene574.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeWindowFrameScheduleView::update_scene_419760"]
+symbol = "?update_scene_419760@NativeWindowFrameScheduleView@th20@@QAEXXZ"
+target_address = 0x00419760
+size = 574
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?update_scene_419760@NativeWindowFrameScheduleView@th20@@QAEXXZ", target = 0x00567F76 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x33, type = "DIR32", symbol = "?native_window_capture_renderer_5c0028@th20@@3PAUNativeWindowCaptureRenderer@1@A", target = 0x005C0028 },
+  { offset = 0x38, type = "REL32", symbol = "?prepare_frame_41bfc0@NativeWindowCaptureRenderer@th20@@QAEXXZ", target = 0x0041BFC0 },
+  { offset = 0x4A, type = "DIR32", symbol = "?native_snapshot_input_bindings_5b889c@th20@@3PAPAUInputButtonState@1@A", target = 0x005B889C },
+  { offset = 0x5A, type = "DIR32", symbol = "?native_snapshot_input_bindings_5b889c@th20@@3PAPAUInputButtonState@1@A", target = 0x005B889C },
+  { offset = 0x70, type = "REL32", symbol = "?pressed_bits@InputButtonState@th20@@QBEII@Z", target = 0x00419C00 },
+  { offset = 0x95, type = "DIR32", symbol = "?native_snapshot_options_5b87e8@th20@@3IA", target = 0x005B87E8 },
+  { offset = 0xA8, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xB3, type = "REL32", symbol = "??$?0$$BY0BAAA@D$0A@@path@filesystem@std@@QAE@AAY0BAAA@$$CBDW4format@012@@Z", target = 0x00417CD0 },
+  { offset = 0xBF, type = "DIR32", symbol = "?native_snapshot_subdir_56caac@th20@@3QBDB", target = 0x0056CAAC },
+  { offset = 0xCA, type = "REL32", symbol = "??$?_0$$BY08D$0A@@path@filesystem@std@@QAEAAV012@AAY08$$CBD@Z", target = 0x00417E40 },
+  { offset = 0xD6, type = "REL32", symbol = "?create_directories@filesystem@std@@YA_NABVpath@12@@Z", target = 0x0041C2E0 },
+  { offset = 0x110, type = "DIR32", symbol = "?native_snapshot_pattern_56cabc@th20@@3QBDB", target = 0x0056CABC },
+  { offset = 0x121, type = "REL32", symbol = "?native_snapshot_format_41f220@th20@@YAHPADIPBDH@Z", target = 0x0041F220 },
+  { offset = 0x129, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x134, type = "REL32", symbol = "??$?4$$BY0BAAA@D$0A@@path@filesystem@std@@QAEAAV012@AAY0BAAA@$$CBD@Z", target = 0x00417DF0 },
+  { offset = 0x139, type = "DIR32", symbol = "?native_snapshot_subdir_56caac@th20@@3QBDB", target = 0x0056CAAC },
+  { offset = 0x144, type = "REL32", symbol = "??$?_0$$BY08D$0A@@path@filesystem@std@@QAEAAV012@AAY08$$CBD@Z", target = 0x00417E40 },
+  { offset = 0x156, type = "REL32", symbol = "??$?_0$$BY0BAA@D$0A@@path@filesystem@std@@QAEAAV012@AAY0BAA@$$CBD@Z", target = 0x00417E40 },
+  { offset = 0x168, type = "REL32", symbol = "?string@path@filesystem@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@XZ", target = 0x0041E790 },
+  { offset = 0x177, type = "REL32", symbol = "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ", target = 0x0040FF30 },
+  { offset = 0x189, type = "REL32", symbol = "?game_file_exists_4107a0@th20@@YA_NPBD@Z", target = 0x004107A0 },
+  { offset = 0x1A2, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ", target = 0x0040E5A0 },
+  { offset = 0x1B4, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ", target = 0x0040E5A0 },
+  { offset = 0x1D8, type = "REL32", symbol = "?string@path@filesystem@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@XZ", target = 0x0041E790 },
+  { offset = 0x1E7, type = "REL32", symbol = "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ", target = 0x0040FF30 },
+  { offset = 0x1F9, type = "DIR32", symbol = "?native_window_capture_graphics_5c4d40@th20@@3UNativeWindowCaptureGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x1FE, type = "REL32", symbol = "?write_snapshot_4de040@NativeWindowCaptureGraphics@th20@@QAEXPBD@Z", target = 0x004DE040 },
+  { offset = 0x20D, type = "REL32", symbol = "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ", target = 0x0040E5A0 },
+  { offset = 0x220, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+  { offset = 0x236, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
