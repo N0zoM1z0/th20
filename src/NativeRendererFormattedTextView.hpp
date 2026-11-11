@@ -10,5 +10,9 @@ struct NativeRendererFormattedTextView : NativeTextSubmitOwner {
         std::int32_t font, std::int32_t horizontal, std::int32_t align,
         std::int32_t mode, std::function<void()> callback,
         const wchar_t* format, ...);
+    NativeTextDrawResult8 __cdecl draw_centered_text_44add0(
+        Animation* animation, std::int32_t layer, std::uint32_t color,
+        std::int32_t font, std::int32_t align, std::int32_t mode,
+        std::function<void()> callback, const wchar_t* format, ...);
 };
 }

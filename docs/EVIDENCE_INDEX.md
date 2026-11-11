@@ -30,7 +30,10 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   are also independently exact.
 - **Renderer formatted sprite text:** [417B whole original native exact](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md)
   at `0x0044AC20`, with 114 i386 instructions, ten independently decoded
-  E8 targets and three original HIGHLOW fields. The 586B sibling is still open.
+  E8 targets and three original HIGHLOW fields. The adjacent [586B centered
+  Unicode Renderer source](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md)
+  now reconstructs the complete control flow and width semantics, but its
+  current 594B MSVC body retains an eight-byte SSE/stack frontier.
 - **Original input:** [3,490B InputDevice polling native exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md)
   includes keyboard, DirectInput, XInput and input-history update,
   preserving the full original native `input_device_poll` source. Older
