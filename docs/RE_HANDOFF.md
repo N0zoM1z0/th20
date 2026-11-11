@@ -82,11 +82,14 @@ folded implementations, and post-`ret` switch/padding data.
    [ANM proof](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md),
    [list helper proof](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md),
    [text submit](ASCII_TEXT_SUBMIT294_TYPED_NATIVE_FRONTIER.md).
-4. **Other source-present Bosses:** 586B centered Unicode text currently
-   compiles as 594B/140 instructions; 578B ASCII render has SSE registers
-   unresolved. Also work on the 2,245B glyph compositor, 2,227B Unicode
-   glyph core, 1,896B Card spell-start, and 3,111B Player main.
-   [Evidence/backlog](RE_OPEN_BOSS_BACKLOG.md).
+4. **Other source-present Bosses:** The 586B centered Unicode text now
+   compiles as **586B/140 instructions**, with 10/11 physical E8 sites
+   and 399/506 ordinary bytes aligned, but only four of nine body data
+   positions; the reordered SSE/font-width lifetime remains **NONEXACT**.
+   The 578B ASCII renderer, 2,245B glyph compositor, 2,227B Unicode
+   glyph core, 1,896B Card spell-start and 3,111B Player main also remain
+   open. [Current centered frontier](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md);
+   [other Bosses](RE_OPEN_BOSS_BACKLOG.md).
 5. **Huge source-absent dispatchers:** 12,140B Bullet command,
    41,967B Enemy ECL opcode, 39,470B Animation VM update. Exact children
    do not establish whole-parent exactness. Keep their full original

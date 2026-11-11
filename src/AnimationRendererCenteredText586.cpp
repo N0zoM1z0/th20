@@ -36,11 +36,10 @@ NativeTextDrawResult8 __cdecl NativeRendererFormattedTextView::draw_centered_tex
     transform.field_d = animation->base.field_3b4;
     animation->base.flags.bit_10 = 1;
     std::uint32_t bit10 = (animation->base.flags.word_04 >> 10) & 1;
-    float char_width = glyph_width * native_double_56c8d0 - native_one_56c8cc;
-    float formatted_width = static_cast<float>(
-        std::strlen(reinterpret_cast<const char*>(formatted))) * char_width / 4.0f;
     std::int32_t offset = static_cast<std::int32_t>(
-        sprite->extent_4c / native_double_56c8d0 - formatted_width);
+        sprite->extent_4c / native_double_56c8d0 -
+        ((static_cast<float>(std::strlen(reinterpret_cast<const char*>(formatted))) *
+          (glyph_width * native_double_56c8d0 - native_one_56c8cc)) / 4.0f));
     auto* texture = reinterpret_cast<AnimationQuadSubmitOwner*>(this)
         ->texture_for_sprite(sprite->texture_id);
     return submit_text_44fff0(texture, sprite, offset, layer, color,

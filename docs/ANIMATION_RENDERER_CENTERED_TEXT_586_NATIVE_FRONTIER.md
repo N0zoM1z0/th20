@@ -24,21 +24,70 @@ All **11 physical E8 calls**, read from the immutable original machine-code rela
 
 All **nine native PE HIGHLOW** fields are independently located at `+0x06 -> 0x00568578` (EH), `+0x18 -> 0x005B25C0` (cookie), `+0x35 -> 0x005C0240` (lock registry), `+0x56 -> 0x0056C768` (font table), `+0x10F -> 0x0056C8D0` (`2.0f`), `+0x117 -> 0x0056C8CC` (`1.0f`), `+0x14E -> 0x0056CDD0` (unsigned length correction), `+0x172 -> 0x0056C8E0` (`4.0f`), and `+0x185 -> 0x0056C8D0` (`2.0f`). These physical sites are measured from the original PE, not guessed by reverse-solving a candidate COFF field.
 
-## Reproduced native compiler frontier, not exact
+## Current source-size convergence, still not exact
 
-Pinned MSVC 19.44 i386 C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc` builds the maintained C++ into a complete **594B /140-instruction** COFF contribution with all **11 REL32 + nine DIR32** roles. Before the centered-width expression, original and generated source are identical apart from two ordinary frame/local-offset operands (the generated frame uses `sub esp,0x548` versus the original `sub esp,0x544`). In the mathematical suffix, `/Od` materializes an additional intermediate `formatted_width` float at a stack slot; the original keeps the pre-subtraction width in an XMM register, using `movss xmm1,[char_width]`, `mulss xmm0,xmm1`, then `subss xmm1,xmm0`. The modern 594B expression instead spills width and uses a memory-source `mulss`/`subss`, accounting for the net eight-byte native-length difference and changed operand/relocation offsets.
+With the pinned MSVC 19.44 i386 C++20 `/Od /Ob0 /GS /Gy /Zl
+/arch:SSE2 /fp:precise /sdl /EHsc` profile, keeping the genuine width
+formula in one direct expression produces a complete **586B /140-instruction**
+function. The old maintained two-intermediate expression produced
+**594B /140 instructions**; no change to public types, EH handling or its
+independently exact 417B sibling was needed. All **11 actual REL32 call
+roles** and **nine DIR32 target classes** remain present. The new source
+aligns **10/11 original E8 opcode offsets** (only `strlen` moves from
+`+0x12A` to `+0x125`) and matches **399/506 ordinary bytes** when the
+20 real COFF relocation fields are masked. This is a complete-function
+comparison against the locked target, *not* a shortened native extent.
 
-Multiple ignored/private natural source shapes were compiled as focused experiments: distinct float intermediates (622B), a single direct expression (602B), precomputed advance with a length variable (594B), direct `strlen` plus a named computed width (594B), and a length-first expression (582B, but wrong original evaluation order). The maintained 594B version keeps the real advance-first, length-second behavior and avoids fictitious padding, unused locals, inline assembly, or truncating the original native extent. **`0x0044ADD0` remains SOURCE-PRESENT, NONEXACT**; neither this function nor its separate 294B text-submit callee receives original exact credit. The private alternatives remain under ignored `.analysis/gptweb-centered586-probes/`.
+The previous 594B expression matched only **303/510 ordinary bytes**
+in the original 586B window, and its later E8 sites were displaced.
+However, the new 586B result is **not an all-metric improvement**:
+the earlier expression correctly calculated and spilled the font
+advance before calling `strlen`. The direct-expression lowering reads
+`sprite->extent_4c` first and defers the font-advance calculation until
+after `strlen`. It retains the same arithmetic inputs but changes
+MSVC's floating-point evaluation and register lifetimes. Only the
+first **four of nine original HIGHLOW physical positions** now agree,
+versus seven of nine in the earlier source. The remaining five source
+DIR32 fields have the authentic constants, but different offsets and
+order; neither this rearrangement nor matching code length proves
+original machine-code identity.
 
-Reproduce the scoped compiler frontier:
+In the original, the advance calculation loads `2.0f` at `+0x10F`,
+subtracts `1.0f` at `+0x117`, spills the advance *between* the
+`strlen` push and call, then loads the unsigned-length correction at
+`+0x14E`. The final SSE sequence multiplies the converted length by
+the earlier advance using `xmm1` and subtracts the result from the
+sprite's half-width. The new source instead loads sprite half-width
+before `strlen` and calculates advance after it, so recovering the
+original evaluation order **without losing the native 586B footprint**
+is the next exactness problem. Attempts with a separately named
+`std::size_t`/`uint32_t` length preserved the earlier order but
+compiled to at least 594B; changing the half-width and width
+intermediates increased code size or instruction count. The separate
+5,993B Draw and 2,884B particle Update Bosses were also investigated
+in the same continuation; experimental changes did not beat their
+existing full-source baselines and were not adopted.
+
+**`0x0044ADD0` remains SOURCE-PRESENT, NONEXACT.** There is no new
+canonical unit or strict game-authored byte credit. Only this source
+file changed; its exact 417B neighbor is a different source/owner unit,
+with its existing **417/417** comparison preserved. No shared header,
+previously exact native provider or replay input changed, so the
+required affected canonical cold-replay scope is **zero units**.
+The private compiler variants remain under ignored
+`.analysis/gptweb-centered586-new/` and historical experiments under
+`.analysis/gptweb-centered586-probes/`.
+
+Reproduce the one-source codegen and independently inspect all its
+code and relocation fields:
 
 ```sh
-nice -n 15 scripts/repo-python scripts/compile-probe.py \
+nice -n 15 scripts/compile-probe.sh \
   src/AnimationRendererCenteredText586.cpp \
-  build/core1105-probes/AnimationRendererCenteredText586.obj \
+  build/gptweb-probe/Centered586_mainline.obj \
   /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
-# Separate already accepted header consumer, rebuilt only for its changed include:
-nice -n 15 scripts/repo-python scripts/build.py --unit animation_renderer_formatted_text_417
+scripts/repo-python .analysis/gptweb-centered586-new/score.py \
+  build/gptweb-probe/Centered586_mainline.obj
 scripts/repo-python scripts/compare-coff-function.py --unit animation_renderer_formatted_text_417
 ```
 
