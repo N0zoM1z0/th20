@@ -1,5 +1,11 @@
 # CORE/RECON-966 — original 2,884B particle Update Boss temporary Ghidra recovery and *NONEXACT* whole C++20 research source
 
+**2026-11-11 further source improvement:** The current maintained source
+now compiles as **2,924B/760-i386**, with original ESI age lifetime and
+six aligned original E8 locations. See the newer
+[ESI/polar source proof](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+The 2,969B/763 result immediately below is the preceding dated snapshot.
+
 **2026-11-11 continuation:** The entire large Boss now has maintained,
 source-present C++ in
 [`src/AnimationParticleGridUpdate2884.cpp`](../src/AnimationParticleGridUpdate2884.cpp),

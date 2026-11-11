@@ -35,6 +35,11 @@ def main():
     calls=sum(q['type']=='REL32' for q in relocations)
     data=sum(q['type']=='DIR32' for q in relocations)
     print(f'SOURCE-PRESENT NONEXACT: compiled {len(raw)}B/{len(instructions)} i386, {calls} REL32/{data} DIR32')
+    # Revalidate the complete 99 source call roles and 25 native data roles,
+    # not just their counts or an accidentally matching function size.
+    subprocess.run([str(ROOT/'scripts/repo-python'),
+        str(ROOT/'scripts/verify-animation-particle-grid-update2884-candidate-roles.py'),
+        '--candidate-object',str(OBJECT)],cwd=ROOT,check=True)
     print('ORIGINAL IMMUTABLE: 2884B/768 i386, 99 E8/25 PE HIGHLOW')
     if (len(raw)!=2884 or len(instructions)!=768):
         print('CORRECT STATUS: NONEXACT; no config/match-units.toml entry, no authored-game credit')

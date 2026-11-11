@@ -134,10 +134,14 @@ links to original PE evidence. The immediate priorities are:
    been promoted to [maintained source](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md),
    with four real Session→EffectInfo→AnimationFile→spawn protocols and the
    genuine 25B/19B animation accessors. The pinned candidate remains
-   2,969B/763 i386, **NONEXACT**; its separately accepted 26B selector,
+   2,924B/760 i386, **NONEXACT**; its separately accepted 26B selector,
    83B spawn, 92B Stop and now independently strict **51B Event** sibling
    retain exact credit only for themselves. The new aggregate Timer owner
    preserves all eight exact group-dependent units after six scoped builds.
+   A further [whole-code ESI/polar evaluation improvement](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md)
+   restored the native ESI lifetime and six exact E8 sites, reducing the
+   nonexact 2,884B parent candidate from 2,969B to 2,924B while preserving
+   all 99 native E8 roles and 25 PE HIGHLOW role destinations.
 
 ## Scoped compiler receipt integrity
 

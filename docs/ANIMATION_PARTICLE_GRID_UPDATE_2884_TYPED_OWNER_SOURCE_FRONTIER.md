@@ -16,7 +16,7 @@ The group now represents the unchanged Timer storage at offset `+0x1930`
 by `NativeGridTimedDelta.time`, which permits the event's original folded
 26B forwarding operator and the group's genuine 172B direct Timer constructor.
 The maintained Update invokes the member Timer's `changed`, `less_than`,
-`operator*`, and increment; it continues compiling as 2,969B/763 i386,
+`operator*`, and increment; it continues compiling as 2,924B/760 i386,
 99 REL32/25 DIR32, NONEXACT. Twelve real `INT3` bytes separate these bodies.
 
 The original Ghidra inventory missed the 2,884B Update boundary. The
@@ -72,8 +72,9 @@ The group's `+0x1930` Timer member now has a 16B aggregate wrapper
 to call the original 26B folded `+=` helper without altering the already
 strict 172B constructor's real Timer E8 target. All eight previously exact
 particle-group units remained exact after six targeted object rebuilds.
-The Update's calls use `.time`, preserving the full nonexact 2,969B/763
-compiler frontier. No bytes from the 2,884B parent are newly credited.
+The Update's calls use `.time`; the original 2,969B/763
+compiler frontier was subsequently improved to the current 2,924B/760
+with meaningful source/ESI/polar evaluation changes. No bytes from the 2,884B parent are newly credited.
 
 Beyond the four resource paths, the maintained C++ preserves the 200-handle
 lifetime loop, two exact 202B Vector3 normalization calls, two exact 57B
@@ -84,11 +85,26 @@ integer stage arrays use native four-byte `std::array` indexing instead of
 incorrect `Vector3` reinterpretation; their folded 22B original physical
 callee was already exact and is not credited again.
 
+## 2026-11-11: original ESI lifetime and polar-angle convergence
+
+The maintained whole-body compiler output is now **2,924B/760 i386**,
+45B closer to the 2,884B original than the prior 2,969B source.
+Native disassembly established a genuine callee-saved ESI age comparison
+across `Animation::variables()`, not a stack-cached `const int elapsed`.
+The source uses the actual child age directly in the condition, removes
+an unnecessary emission-index initialization, and makes real first/second
+polar angle evaluations explicit in C++. This restored the ESI save/restore
+and six physically aligned native E8 sites while preserving **99/99
+original call target roles and 25/25 original data target roles**.
+The new original-only role checker is integrated into the focused compiler
+probe; see [the full convergence proof](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+The complete parent remains **SOURCE-PRESENT NONEXACT**; no credited bytes.
+
 ## Native result and remaining Boss frontier
 
 Pinned MSVC 19.44 x86 C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2
 /fp:precise /sdl /EHsc` compiles the **entire maintained source** into
-**2,969B/763 i386 instructions**, **99 REL32 and 25 DIR32** relocations.
+**2,924B/760 i386 instructions**, **99 REL32 and 25 DIR32** relocations.
 All **99 original E8 target roles remain in the same ordered call sequence**;
 the caller instruction positions, frame/local allocation, x87/SSE polar
 argument evaluation, and some ordinary native bytes remain different.

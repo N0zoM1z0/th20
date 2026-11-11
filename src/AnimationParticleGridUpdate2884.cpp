@@ -1,7 +1,11 @@
 // Original 2,884B particle-grid virtual Update at 0x0045C360.
 // Full game-owned C++ logic, SOURCE-PRESENT NONEXACT. The original has
 // 768 i386 instructions, 99 E8 calls and 25 PE HIGHLOW fields; current
-// pinned-MSVC 2969B/763-instruction body preserves 99 REL32/25 DIR32.
+// pinned-MSVC 2924B/760-instruction body preserves 99 REL32/25 DIR32.
+// The native early ESI lifetime is recovered by comparing the actual child age
+// directly against the owner's variable, without an unnecessary saved int.
+// The emission slot is assigned by the Timer before its first use; the two
+// polar angle intermediates retain real effectful getter evaluation order.
 // Session -> Context -> EffectInfo -> AnimationFile -> spawn is the actual
 // resource chain, with the original four independently observed calls.
 // The native loop stage words are int32_t at +0x15E8; the 200 handles
@@ -28,17 +32,19 @@ void normalize_vector3_45cf10(Vector3&,const Vector3&);
 int NativeParticleGridGroup::update() {
     Vector3 basis, gradient, position, velocity, tangent;
     int processed = 0;
-    int emission_index=0;
+    int emission_index;
     int effect_index=0;
     Animation* const owner=animation;
     Vector3 center=owner->vector_5bc_ref();
     extra_1920=center;
     extra_1914=center;
     extra_1908=center;
-    polar(tangent, owner->rotation_z_value(), native_particle_radius_300);
+    const float angle=owner->rotation_z_value();
+    polar(tangent,angle,native_particle_radius_300);
     tangent.z=0.0f;
     extra_1914+=tangent;
-    const float direction=owner->rotation_z_value()+owner->variables().field_28;
+    float direction=owner->rotation_z_value();
+    direction+=owner->variables().field_28;
     polar(tangent,direction,native_particle_radius_150);
     tangent.z=0.0f;
     extra_1908+=tangent;
@@ -143,8 +149,8 @@ int NativeParticleGridGroup::update() {
             vectors_c88[index]=velocity;
             stages_15e8[index]=1;
         } else {
-            const int elapsed=reinterpret_cast<NativeParticleAnimationAccess*>(child)->age_45d0a0();
-            if (owner->variables().field_00+1<=elapsed && stages_15e8[index]==1) {
+            if (reinterpret_cast<NativeParticleAnimationAccess*>(child)->age_45d0a0()
+                >= owner->variables().field_00+1 && stages_15e8[index]==1) {
                 gradient=owner->vector_5bc_ref();
                 polar(tangent,native_polygon_random_5ba4c4.radians(),
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
