@@ -24,9 +24,9 @@ old status labels are **historical observations**, not current facts.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded labels | Title/replay strings say **1.00c inside this same locked v1.00a file**; do not change targets based on the embedded label |
 | Ghidra provisional candidates | **6,928 Ghidra candidates plus one original-only recovered 2,884B head** (not all Ghidra candidates have independent boundaries) |
-| Accepted source-tracked units | **1,583 whole strict units**; `functions.csv` has **1,585** nonempty source-file rows |
-| Canonical build providers | **437 pinned MSVC object + receipt pairs**; all currently protected |
-| Credited *game-authored* whole-native exact | **774 distinct original function heads /265,580 `.text` bytes** |
+| Accepted source-tracked units | **1,584 whole strict units**; `functions.csv` has **1,586** nonempty source-file rows |
+| Canonical build providers | **438 pinned MSVC object + receipt pairs**; all currently protected |
+| Credited *game-authored* whole-native exact | **775 distinct original function heads /265,737 `.text` bytes** |
 | Whole game compiles, links or plays | **No** — native matching and standalone source coverage are different milestones |
 
 Those figures are a **dated snapshot**, not a counter to increment
@@ -42,6 +42,15 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 ```
 
 ## Important recent *whole exact* Bosses — do not reclassify as open
+
+- **Game filesystem exists** `0x004107A0`, **157B/47-i386 WHOLE
+  STRICT EXACT**: the original takes a narrow `char const*` input and
+  constructs `std::filesystem::path` using the existing 44B
+  `path<char const*>` native constructor (not a path-copy constructor).
+  All seven E8 and three native HIGHLOW relocation targets are
+  independently verified; no unrelated source/object replay was needed.
+  [Source/ABI correction and complete proof](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md).
+
 
 - **Both Renderer Animation list-update Bosses now WHOLE STRICT EXACT:**
   `0x00449870` **508B/152-i386** and `0x00449B20` **511B/153-i386**,

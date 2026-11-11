@@ -213,7 +213,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1084 — whole original 266B persistent CP932 input ReadFile Boss strict exact](GAME_FILE_INPUT_READ266_STRICT_EXACT.md) — native global HANDLE at 0x5AE060, original 88B allocation, lock slot2 and exact ReadFile/CloseHandle/error flow, 266/266, 8 E8/11 HIGHLOW, +266 game-authored bytes.
 
-- [CORE/RECON-1085 — complete original 157B game filesystem-exists wrapper, 155B natural MSVC STL NONEXACT frontier](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md) — real slot2 lock and 44B legacy path ctor with format=0, original seven E8/three HIGHLOW, current 155B/46 source differs by native two-byte/one-instruction path-copy ABI; no false exact credit.
+- [CORE/RECON-1114 — whole native 157/157B game filesystem exists STRICT EXACT](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md) — original input is narrow `const char*` by value, not `std::filesystem::path&`; real 44B `std::filesystem::path<char const*>` ctor emits native `push auto_format=0` and `lea [ebp+8]`. Ordinary C++20 code reproduces all 47 original instructions, seven E8 and three PE HIGHLOW role destinations, **117/117 nonreloc, 157/157 fully relocated bytes**. Historical CORE/RECON-1085 155B path-copy hypothesis superseded; +one game-owned exact head /157 bytes, existing STL children never recredited.
 
 - [CORE/RECON-1087 — complete native 439B D3D9 Renderer texture blit, natural 438B source one true NOP frontier](ANIMATION_SURFACE_BLIT439_NATIVE_FRONTIER.md) — original six E8/two HIGHLOW, real texture slot lookup, D3DX RECT blit and AddDirtyRect/Release; 438B/157 modern C++ vs 439B/158 original, diagnostic 437/438 normalized code bytes, no false exact credit.
 

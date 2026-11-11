@@ -28419,3 +28419,26 @@ relocations = [
   { offset = 0x1E1, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 0x1F7, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/RECON-1114: real narrow-char path source, whole 157B game-owned exact.
+[units.game_file_exists_157]
+source = "src/GameFileExists157.cpp"
+object = "build/core1114-canonical/GameFileExists157.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::game_file_exists_4107a0"]
+symbol = "?game_file_exists_4107a0@th20@@YA_NPBD@Z"
+target_address = 0x004107A0
+size = 157
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?game_file_exists_4107a0@th20@@YA_NPBD@Z", target = 0x00567A15 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2B, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x30, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x4E, type = "REL32", symbol = "??$?0PBD$0A@@path@filesystem@std@@QAE@ABQBDW4format@012@@Z", target = 0x0040C720 },
+  { offset = 0x5B, type = "REL32", symbol = "?exists@filesystem@std@@YA_NABVpath@12@@Z", target = 0x00410610 },
+  { offset = 0x6D, type = "REL32", symbol = "??1path@filesystem@std@@QAE@XZ", target = 0x0040E6C0 },
+  { offset = 0x7C, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x95, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

@@ -59,8 +59,6 @@ These should be addressed *alongside* major Bosses, not instead of them.
   `struct`/`class`/`noexcept` and shared-header ABI issue; changing
   the global declaration affects a huge existing exact include closure.
   [Whole original evidence](ANIMATION_VECTOR2_ARRAY_60_64_61_NOEXCEPT_FRONTIER.md).
-- **157B game filesystem path existence** has unresolved original STL
-  constructor/move effects. [PE/typed frontier](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md).
 - **35B PMR glyph offset vector insertion**, 108B/488B growth and
   original 158B glyph task-node constructor differ under modern STL.
   Preserve genuine PMR allocator/ownership behavior.
@@ -69,6 +67,12 @@ These should be addressed *alongside* major Bosses, not instead of them.
   [158B node](GLYPH_QUEUE_NODE_CTOR158_NATIVE_FRONTIER.md).
 
 ## D. Recent large exact closures — do NOT rework as pending
+
+- **Game-specific filesystem existence** `0x004107A0`, **157/157B
+  exact**: true `const char*` input, existing 44B path-from-narrow-string
+  ctor and real path destructor, all 7 E8/3 HIGHLOW roles.
+  [Current native source proof](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md).
+
 
 - **Renderer wide formatted-text caller `0x0044AC20`, 417B/114-i386:**
   [WHOLE STRICT EXACT](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md),

@@ -773,3 +773,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0045D060,th20::NativeParticleGridGroup::interrupt,51,matching,100.00,animation_particle_grid_event_51,CORE/RECON-1108; docs/ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md
 0x00449870,th20::animation_list_update_449870,508,matching,100.00,animation_renderer_list_update_primary_508,CORE/RECON-1110; docs/ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md
 0x00449B20,th20::animation_list_update_secondary_449b20,511,matching,100.00,animation_renderer_list_update_secondary_511,CORE/RECON-1110; docs/ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md
+0x004107A0,th20::game_file_exists_4107a0,157,matching,100.00,game_file_exists_157,CORE/RECON-1114; docs/GAME_FILE_EXISTS157_NATIVE_FRONTIER.md

@@ -1,3 +1,53 @@
+# CORE/RECON-1114 — original 157B game filesystem-exists query, whole strict exact
+
+The original game entry at `0x004107A0` is now **157/157B whole strict
+exact (47/47 x86 instructions)** under locked MSVC 19.44 C++20 i386.
+The earlier `const std::filesystem::path&` parameter guess was wrong:
+the physical native code passes **the address of its input stack slot**
+(`lea eax,[ebp+8]` at `+0x46`) to the complete previously accepted
+**44B `std::filesystem::path<const char*>` constructor** at `0x0040C720`.
+The caller's actual source parameter is a **narrow `const char*` pointer
+passed by value**, not a reference to another filesystem path. Standard
+C++ `std::filesystem::path filename(source)` naturally selects the
+correct templated path-from-char-pointer constructor with the genuine
+`auto_format=0` argument. Its destructor remains the actual original
+`std::filesystem::path::~path` at `0x0040E6C0`.
+
+The maintained source in [`src/GameFileExists157.cpp`](../src/GameFileExists157.cpp)
+contains the authentic slot-2 recursive lock, standard local path,
+`std::filesystem::exists()` and natural RAII destructors. It compiles
+to the entire **157B/47 i386**, with **117/117 identical nonrelocated
+bytes** and exactly **seven real E8 + three PE HIGHLOW fields**. All ten
+candidate COFF relocation symbols map to independently decoded native
+physical field positions and original destinations: actual lock slot,
+lock guard constructor/destructor, real 44B narrow path constructor,
+104B exists backend, native path destructor and compiler cookie plus
+EH, process lock global and cookie data. The full canonical build and
+strict relocated comparison passed **`game_file_exists_157: exact
+(157/157 bytes)`**. The format alternatives `native_format=1` and
+`generic_format=2` fail one literal byte and were rejected.
+
+To reproduce only this unit, without a full cold replay:
+
+```sh
+nice -n 15 scripts/repo-python scripts/build.py --unit game_file_exists_157
+scripts/repo-python scripts/verify-game-file-exists157-native.py
+scripts/repo-python scripts/compare-coff-function.py --unit game_file_exists_157
+```
+
+This credits **one distinct game-authored 157B function**, without
+recrediting the already independently known STL constructor, path
+destructor or 104B exists backend. No shared header or other accepted
+source was modified, so no other exact compiler object needed a cold
+rebuild. The original byte ranges and target identity remain unchanged.
+
+---
+
+## Previous CORE/RECON-1085 hypothesis (superseded)
+
+The text below preserves the earlier 155B source and its incorrect
+path-reference hypothesis as historical research, not the current source.
+
 # CORE/RECON-1085 — original complete 157B native game filesystem-exists wrapper, 155B C++20 source frontier
 
 Immutable TH20 Japanese v1.00a Steamless original SHA-256
