@@ -28939,3 +28939,16 @@ symbol = "?active_repeat_41ca50@NativeWindowFrameScheduleView@th20@@QAEPAURepeat
 target_address = 0x0041CA50
 size = 31
 relocations = []
+
+# CORE/RECON-1132: entire 88B game Renderer pending-surface-copy loop.
+[units.window_capture_pending_88]
+source = "src/WindowCapturePending88.cpp"
+object = "build/core1132-canonical/WindowCapturePending88.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeWindowCaptureRenderer::prepare_frame_41bfc0"]
+symbol = "?prepare_frame_41bfc0@NativeWindowCaptureRenderer@th20@@QAEXXZ"
+target_address = 0x0041BFC0
+size = 88
+relocations = [
+  { offset = 0x3F, type = "REL32", symbol = "?blit_surface_rect_44bb10@NativeRendererSurfaceBlitView@th20@@QAEXPBUNativeSurfaceBlitCommand@2@@Z", target = 0x0044BB10 },
+]

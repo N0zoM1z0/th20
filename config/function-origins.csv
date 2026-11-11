@@ -617,7 +617,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041BE90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041BEA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041BF40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041BFC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041BFC0,authored,AnimationTextureResources,authored,high,"CORE/RECON-1132; docs/WINDOW_CAPTURE_PENDING88_STRICT_EXACT.md; unique 88B game Renderer four pending surface command retire loop, all original bytes/physical E8 relocation exact; genuine 439B blit callee previously whole exact and not re-credited"
 0x0041C020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041C0E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041C100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

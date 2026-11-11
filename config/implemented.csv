@@ -1612,3 +1612,4 @@ th20::frame_time_breakdown_4ac270
 th20::NativeWindowFrameScheduleView::active_repeat_41ca50
 th20::NativeWindowFrameScheduleView::schedule_frame_4193e0
 th20::NativeWindowFrameScheduleView::update_scene_419760
+th20::NativeWindowCaptureRenderer::prepare_frame_41bfc0

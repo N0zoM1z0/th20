@@ -3,6 +3,7 @@
 // Original whole-native exactness remains OPEN; never count 574 game bytes
 // until the full PE/COFF source relocations and ordinary bytes match.
 #include "NativeWindowFrameScheduleView.hpp"
+#include "NativeWindowCaptureRenderer.hpp"
 #include "InputState.hpp"
 #include "GameFileIo.hpp"
 #include <filesystem>
@@ -11,9 +12,6 @@
 #include <cstdint>
 namespace th20 {
 bool game_file_exists_4107a0(const char* filename);
-struct NativeWindowCaptureRenderer {
-    void prepare_frame_41bfc0();
-};
 extern NativeWindowCaptureRenderer* native_window_capture_renderer_5c0028;
 extern InputButtonState* native_snapshot_input_bindings_5b889c[];
 extern std::uint32_t native_snapshot_options_5b87e8;

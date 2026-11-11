@@ -1618,3 +1618,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Window frame scheduler 884B complete source nonexact frontier](WINDOW_FRAME_SCHEDULER884_FULL_SOURCE_FRONTIER.md) — full 890B candidate, original 32/32 E8 callee and 21/21 PE data targets in original order, 12/32 E8 and 6/21 data physical sites; independent original-only proof, zero new exact parent bytes.
 
 - [Window scene/snapshot 574B complete typed nonexact source frontier](WINDOW_SNAPSHOT_SCENE574_FULL_SOURCE_FRONTIER.md) — real screenshot path/filename and third input-pointer byte offset, full source 551B, 20 E8 +12 PE HIGHLOW target roles in native order, 1/20 and 3/12 physical sites. Independent full original-proof verifier, no new exact parent credit.
+
+- [Window screenshot pending Renderer 88B whole strict exact](WINDOW_CAPTURE_PENDING88_STRICT_EXACT.md) — native four real 40B surface copy records at Renderer+0x18, true E8 at +0x3E to previously exact 439B D3D9 blitter, source 84/84 ordinary bytes, one source-local 1/1 exact unit and +88 distinct game bytes.

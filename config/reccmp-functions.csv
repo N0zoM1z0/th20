@@ -1627,3 +1627,4 @@ th20::frame_time_breakdown_4ac270,0x004AC270,function
 th20::NativeWindowFrameScheduleView::active_repeat_41ca50,0x0041CA50,function
 th20::NativeWindowFrameScheduleView::schedule_frame_4193e0,0x004193E0,function
 th20::NativeWindowFrameScheduleView::update_scene_419760,0x00419760,function
+th20::NativeWindowCaptureRenderer::prepare_frame_41bfc0,0x0041BFC0,function

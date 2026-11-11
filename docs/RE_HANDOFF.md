@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,628** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,614** functions |
-| Canonical exact units / compiler objects | **1,610** units / **456** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **797** distinct original heads / **269,557** `.text` bytes |
+| Functions with provisional source mapping | **1,629** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,615** functions |
+| Canonical exact units / compiler objects | **1,611** units / **457** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **798** distinct original heads / **269,645** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window snapshot pending Renderer leaf** 0x0041BFC0 [88B/28-i386 whole strict exact](WINDOW_CAPTURE_PENDING88_STRICT_EXACT.md), four real 40B Renderer surface copy records at +0x18; submits each active entry through already exact 439B D3D9 blit at 0x0044BB10 then retires file_index to -1. Single real E8 and 84/84 ordinary bytes exact; 1/1 local cold replay. 574B screenshot and 884B Window parents are still NONEXACT.
 
 - **Window screenshot/scene updater** 0x00419760 now has [entire compiled 574B-original /551B typed source](WINDOW_SNAPSHOT_SCENE574_FULL_SOURCE_FRONTIER.md), with genuine snapshot directory, per-file filename search and Graphics capture. All 20/20 native E8 callee and 12/12 data target roles match in order, but only 1/20 E8 and 3/12 data physical sites align; **NONEXACT, zero authored parent byte credit**. Corrected third input-pointer byte offset and now calls as actual 884B Window scheduler member. The 31B getter passed 1/1 header-scoped replay.
 

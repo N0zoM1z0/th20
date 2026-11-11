@@ -94,3 +94,9 @@ frame scheduler are both **game-authored source-present, NONEXACT**;
 neither is accepted in config/matches.csv. Current exact totals
 should be retrieved from the live authoritative script, not copied
 from this historical frontier.
+
+The only screenshot frame preparation dependency (0x0041BFC0) is now
+[whole 88B strict exact](WINDOW_CAPTURE_PENDING88_STRICT_EXACT.md): a genuine
+four-entry pending Renderer surface-copy queue which calls the earlier
+whole-exact 439B D3D9 surface blit. The screenshot Boss itself remains
+NONEXACT; these child bytes do not count toward its own exactness.
