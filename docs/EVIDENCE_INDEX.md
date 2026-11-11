@@ -1592,3 +1592,7 @@ Compiler scores labelled "current" in historical entries below mean
 - [Card bit-8 getter 23B whole strict exact](CARD_FLAG8_GETTER23_STRICT_EXACT.md) — 6 original physical E8 caller sites, actual Card flags offset, 23/23 original bytes, independent exact child of 875B Card/6073B battle Bosses.
 
 - [Card periodic-update 875B Boss plus 32B HUD leaf full strict exact](CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md) — 28 native E8/8 PE data roles, 731 ordinary bytes, genuine Card/Timer/Enemy/Player dependencies and 0.05f interpolation. 907 newly accepted authored `.text` bytes.
+
+- [Card 121B FunctionChain registration and two 13B typed callback bridges whole strict exact](CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md) — original PE callback pointer anchors and real Session/Context, six E8 + three PE HIGHLOW, 147 new authored bytes, 6/6 scoped replay.
+
+- [Card 121B registration and two 13B update/draw callbacks whole strict exact](CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md) — original 6 E8/3 HIGHLOW owner, two real 13B bridges, 6/6 affected exact units, +147 new authored bytes.

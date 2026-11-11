@@ -28548,3 +28548,50 @@ symbol = "?clear_ui_flag0_487b90@NativeCardTickUiView@th20@@QAEXXZ"
 target_address = 0x00487B90
 size = 32
 relocations = []
+
+# CORE/RECON-1119: original whole Card callback registration/bridge, no duplicate heads.
+[units.card_registration_121]
+source = "src/CardRegisterCallbacks121.cpp"
+object = "build/core1119-canonical/CardRegisterCallbacks121.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardSetupView::register_callbacks_487b10"]
+symbol = "?register_callbacks_487b10@NativeCardSetupView@th20@@QAEHH@Z"
+target_address = 0x00487B10
+size = 121
+relocations = [
+  { offset = 0x11, type = "REL32", symbol = "?bind_context@Card@th20@@QAEXH@Z", target = 0x00488A20 },
+  { offset = 0x1A, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x1F, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+  { offset = 0x2E, type = "REL32", symbol = "?set_card@Context@th20@@QAEXPAUCard@2@@Z", target = 0x00412DA0 },
+  { offset = 0x37, type = "DIR32", symbol = "?card_tick_callback_4885d0@th20@@YAHPAUNativeCardTickView@1@@Z", target = 0x004885D0 },
+  { offset = 0x3E, type = "REL32", symbol = "?register_update_disabled@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412310 },
+  { offset = 0x50, type = "DIR32", symbol = "?card_draw_callback_488680@th20@@YAHPAUNativeCardDrawView@1@@Z", target = 0x00488680 },
+  { offset = 0x57, type = "REL32", symbol = "?register_draw_disabled@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004123B0 },
+  { offset = 0x6D, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]
+
+# CORE/RECON-1119: original whole Card callback registration/bridge, no duplicate heads.
+[units.card_tick_callback_13]
+source = "src/CardCallbackBridges13.cpp"
+object = "build/core1119-canonical/CardCallbackBridges13.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::card_tick_callback_4885d0"]
+symbol = "?card_tick_callback_4885d0@th20@@YAHPAUNativeCardTickView@1@@Z"
+target_address = 0x004885D0
+size = 13
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "?update_486f60@NativeCardTickView@th20@@QAEHXZ", target = 0x00486F60 },
+]
+
+# CORE/RECON-1119: original whole Card callback registration/bridge, no duplicate heads.
+[units.card_draw_callback_13]
+source = "src/CardCallbackBridges13.cpp"
+object = "build/core1119-canonical/CardCallbackBridges13.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::card_draw_callback_488680"]
+symbol = "?card_draw_callback_488680@th20@@YAHPAUNativeCardDrawView@1@@Z"
+target_address = 0x00488680
+size = 13
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "?draw_487590@NativeCardDrawView@th20@@QAEHXZ", target = 0x00487590 },
+]

@@ -1590,3 +1590,6 @@ th20::NativeAnimationReadView::vector_484_44cb00
 th20::NativeCardBit8GetterView::flag8_value_4888a0
 th20::NativeCardTickView::update_486f60
 th20::NativeCardTickUiView::clear_ui_flag0_487b90
+th20::NativeCardSetupView::register_callbacks_487b10
+th20::card_tick_callback_4885d0
+th20::card_draw_callback_488680

@@ -886,3 +886,6 @@ address,name,module,confidence,evidence
 0x004888A0,th20::NativeCardBit8GetterView::flag8_value_4888a0,CardSpell,high,CORE/RECON-1117; docs/CARD_FLAG8_GETTER23_STRICT_EXACT.md
 0x00486F60,th20::NativeCardTickView::update_486f60,CardSpell,high,CORE/RECON-1118; docs/CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md
 0x00487B90,th20::NativeCardTickUiView::clear_ui_flag0_487b90,CardSpell,high,CORE/RECON-1118; docs/CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md
+0x00487B10,th20::NativeCardSetupView::register_callbacks_487b10,CardSpell,high,CORE/RECON-1119; docs/CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md
+0x004885D0,th20::card_tick_callback_4885d0,CardSpell,high,CORE/RECON-1119; docs/CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md
+0x00488680,th20::card_draw_callback_488680,CardSpell,high,CORE/RECON-1119; docs/CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md
