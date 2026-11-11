@@ -53,3 +53,9 @@ caller were already independent whole-exact functions and
 remain separate. The sqrt helper is treated as a native callee;
 this work does not credit it as a new authored original head.
 One distinct new **846B game-authored whole exact** Boss head.
+
+The native 35B sqrt adapter at 0x00439850 subsequently reached
+[35/35B original source exact](GRAPHICS_CAMERA_SQRT_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md),
+but its compiler/CRT authorship is under review and **not credited**
+as a new game-authored exact head. The camera Boss owns only its
+own 846 original bytes.

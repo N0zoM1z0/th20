@@ -29296,3 +29296,16 @@ relocations = [
   { offset = 0x339, type = "REL32", symbol = "_D3DXMatrixPerspectiveFovLH@20", target = 0x005406C0 },
   { offset = 0x344, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1143: exact 35B sqrt wrapper; origin/author review (NOT game credit).
+[units.graphics_camera_sqrt_adapter_35]
+source = "src/GraphicsCameraSqrtAdapter35.cpp"
+object = "build/core1143-canonical/GraphicsCameraSqrtAdapter35.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_sqrt_439850"]
+symbol = "?native_sqrt_439850@th20@@YAMM@Z"
+target_address = 0x00439850
+size = 35
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "_sqrt", target = 0x00550000 },
+]

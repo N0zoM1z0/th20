@@ -14,9 +14,9 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,638** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,624** functions |
-| Canonical exact units / compiler objects | **1,621** units / **467** protected MSVC objects and receipts |
+| Functions with provisional source mapping | **1,639** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,625** functions |
+| Canonical exact units / compiler objects | **1,622** units / **468** protected MSVC objects and receipts |
 | Credited game-authored whole exact | **808** distinct original heads / **273,531** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Graphics camera sqrt adapter** 0x00439850 is [source-native 35/35B strict exact, authorship review](GRAPHICS_CAMERA_SQRT_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md): authentic float-to-double sqrt-to-float return, one original E8 to 0x00550000, 31 ordinary bytes; one-source 1/1 replay. Possible generated CRT/math wrapper, origin UNKNOWN, **no new game-authored head/byte credit**; the 846B camera Boss remains separately whole exact.
 
 - **Graphics D3DX9 camera matrix Boss** 0x004DA1F0 [846/846B full strict exact](GRAPHICS_CAMERA_MATRIX_BOSS846_STRICT_EXACT.md): 194 i386, native 7 E8/20 HIGHLOW physical positions and targets, 738 ordinary bytes; true unsigned viewport 0/2^32 compiler conversion table, three Vector3 constructors, native sqrt and D3DX LookAt/Perspective. First full MSVC source compiled native exact, 1/1 source-scoped replay, +846 distinct authored game bytes. Exact 194B transform and 284B viewport callers preserved.
 
