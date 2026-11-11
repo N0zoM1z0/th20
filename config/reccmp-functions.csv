@@ -1614,3 +1614,6 @@ th20::NativeCardAsciiDrawView::set_layer_488a00,0x00488A00,function
 th20::NativeCardAsciiDrawView::set_color_alpha_488940,0x00488940,function
 th20::NativeCardClockView::process_clock_4872d0,0x004872D0,function
 th20::card_clock_update_487560,0x00487560,function
+th20::NativeCardTimeSaveArchiveView::primary_record_488740,0x00488740,function
+th20::NativeCardTimeSaveArchiveView::alternate_record_488770,0x00488770,function
+th20::NativeCardRawRecordArray::at,0x00486E30,function

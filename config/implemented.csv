@@ -1599,3 +1599,6 @@ th20::NativeCardAsciiDrawView::set_layer_488a00
 th20::NativeCardAsciiDrawView::set_color_alpha_488940
 th20::NativeCardClockView::process_clock_4872d0
 th20::card_clock_update_487560
+th20::NativeCardTimeSaveArchiveView::primary_record_488740
+th20::NativeCardTimeSaveArchiveView::alternate_record_488770
+th20::NativeCardRawRecordArray::at

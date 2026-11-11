@@ -1600,3 +1600,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Card Draw Boss 797B plus three AsciiInf state setters 25B each strict exact](CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md) — native 30 E8, 28 HIGHLOW, 565/565 ordinary bytes and 4/4 scoped replay, +872 authored original bytes.
 
 - [Card clock 645B Boss and 37B callback whole exact](CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md) — all 14 E8/12 HIGHLOW original roles, 541 ordinary bytes, native FWAIT via exception-aware MSVC conversion, 2/2 scoped replay and 682 newly credited original bytes.
+
+- [Card time archive 38B/41B selectors strict exact; 20B record-index helper exact but authorship unresolved](CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md) — genuine 645B parent dependency, original indexed-array roles, 3/3 scoped replay, 79 new game-authored bytes and no 22B folded duplicate credit.

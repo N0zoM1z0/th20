@@ -28748,3 +28748,41 @@ relocations = [
   { offset = 0x14, type = "REL32", symbol = "?card@th20@@YAPAUCard@1@H@Z", target = 0x00478EA0 },
   { offset = 0x1E, type = "REL32", symbol = "?process_clock_4872d0@NativeCardClockView@th20@@QAEXXZ", target = 0x004872D0 },
 ]
+
+# CORE/RECON-1122: full original indexed Card archive accessor / generic stride helper.
+[units.card_time_primary_archive_38]
+source = "src/CardTimeArchiveAccessors38_41.cpp"
+object = "build/core1122-canonical/CardTimeArchiveAccessors38_41.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTimeSaveArchiveView::primary_record_488740"]
+symbol = "?primary_record_488740@NativeCardTimeSaveArchiveView@th20@@QAEPAEH@Z"
+target_address = 0x00488740
+size = 38
+relocations = [
+  { offset = 0x1A, type = "REL32", symbol = "?at@NativeCardPointerSlots50@th20@@QAEAAPAEH@Z", target = 0x00414580 },
+]
+
+# CORE/RECON-1122: full original indexed Card archive accessor / generic stride helper.
+[units.card_time_alternate_archive_41]
+source = "src/CardTimeArchiveAccessors38_41.cpp"
+object = "build/core1122-canonical/CardTimeArchiveAccessors38_41.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTimeSaveArchiveView::alternate_record_488770"]
+symbol = "?alternate_record_488770@NativeCardTimeSaveArchiveView@th20@@QAEPAEH@Z"
+target_address = 0x00488770
+size = 41
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "?at@NativeCardRawRecordArray@th20@@QAEAAUNativeCardRawRecord44@2@H@Z", target = 0x00486E30 },
+]
+
+# CORE/RECON-1122: full original indexed Card archive accessor / generic stride helper.
+[units.card_time_raw_record_index_20]
+source = "src/CardTimeArchiveAccessors38_41.cpp"
+object = "build/core1122-canonical/CardTimeArchiveAccessors38_41.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardRawRecordArray::at"]
+symbol = "?at@NativeCardRawRecordArray@th20@@QAEAAUNativeCardRawRecord44@2@H@Z"
+target_address = 0x00486E30
+size = 20
+relocations = [
+]

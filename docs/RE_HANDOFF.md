@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,615** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,601** functions |
-| Canonical exact units / compiler objects | **1,599** units / **449** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **790** distinct original heads / **268,519** `.text` bytes |
+| Functions with provisional source mapping | **1,618** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,604** functions |
+| Canonical exact units / compiler objects | **1,602** units / **450** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **792** distinct original heads / **268,598** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -30,7 +30,9 @@ folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
 
-- **Card time-settlement Boss** 0x004872D0 is [645/645B whole strict exact](CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md), together with its native independent 37B callback 0x00487560. All **14 E8 / 12 PE HIGHLOW** native sites/targets, **541/541** ordinary bytes and native FWAIT plus exception-aware integer conversion match. **2/2** source-only cold replay, 682 additional original bytes. The separate original 346B WindowState time helper and 38/41B record selectors remain open.
+- **Card time archive selectors** at 0x00488740 **38B** and 0x00488770 **41B** are [whole strict exact](CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md); the genuine 20B/44-byte-index generic helper is also compiled exact but held authorship review and excluded from original game credit. Existing folded 22B indexer retained exact; all **3/3** changed units in one object, **79** new authored bytes.
+
+- **Card time-settlement Boss** 0x004872D0 is [645/645B whole strict exact](CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md), together with its native independent 37B callback 0x00487560. All **14 E8 / 12 PE HIGHLOW** native sites/targets, **541/541** ordinary bytes and native FWAIT plus exception-aware integer conversion match. **2/2** source-only cold replay, 682 additional original bytes. The original 346B WindowState clock helper remains open; the two 38/41B record selectors were subsequently [closed whole exact](CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md).
 
 - **Card Draw Boss** `0x00487590` is [797/797B whole strict exact](CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md), with **30/30 E8, 28/28 HIGHLOW** exact sites and targets, plus all **565 original ordinary bytes**. Three real AsciiInf setters (font, layer, packed alpha) at `0x00488B00`, `0x00488A00`, `0x00488940` are **25/25B** each; **4/4** scoped strict units /2 objects. This closes Card register → draw callback → draw Boss, not Card Start or 6,073B battle control.
 
