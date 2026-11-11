@@ -1590,3 +1590,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Card spell-start 1,896B full 62-E8 /26-data original role graph](CARD_START1896_FULL_CALL_DATA_ROLES_FRONTIER.md) — independent true file getters and seven stage-table reloads, authentic PMR-string destructor lifetime, current full 1,848B nonexact source, affected exact Card/HUD children preserved.
 
 - [Card bit-8 getter 23B whole strict exact](CARD_FLAG8_GETTER23_STRICT_EXACT.md) — 6 original physical E8 caller sites, actual Card flags offset, 23/23 original bytes, independent exact child of 875B Card/6073B battle Bosses.
+
+- [Card periodic-update 875B Boss plus 32B HUD leaf full strict exact](CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md) — 28 native E8/8 PE data roles, 731 ordinary bytes, genuine Card/Timer/Enemy/Player dependencies and 0.05f interpolation. 907 newly accepted authored `.text` bytes.

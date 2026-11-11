@@ -30,7 +30,13 @@ folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
 
-- **Card flag bit-8 getter** `0x004888A0` is [23/23B whole strict exact](CARD_FLAG8_GETTER23_STRICT_EXACT.md). Genuine Card+0x78 bitfield, 6 physical E8 original caller sites in 875B Card update and 6,073B battle Boss. One new source/receipt, one scoped replay. Larger parents are still NONEXACT.
+- **Card periodic Update Boss** `0x00486F60` **875/875B whole strict exact** and its distinct
+  `0x00487B90` **32/32B HUD leaf** are [strict original complete](CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md). All 28 E8 + 8 PE HIGHLOW positions/targets
+  and 731 original ordinary bytes matched pinned MSVC; genuine Card/Timer,
+  Player/Enemy, bit8 gating, real 0.05f native vector interpolation and HUD
+  bit0 side effect. The preexisting [23B Card flag bit8 getter](CARD_FLAG8_GETTER23_STRICT_EXACT.md)
+  remains exact in the same scoped 3/3 replay, not double credited. The
+  6,073B battle controller and 1,896B Card Start remain NONEXACT.
 
 - **Two native Animation field leaves** `0x0044C650` **21B alpha** and `0x0044CB00` **19B Vector3** are [whole strict exact](ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md). Original 4KB/9KB callers and true `+0x493`/`+0x484` offsets are attested; two distinct heads add 40 original bytes. One new source/object, scoped 2/2 strict replay; no existing canonical headers or units changed.
 - **Animation pool staging reset** `0x00445A40` is [111/111B whole exact](ANIMATION_POOL_STAGING_RESET111_STRICT_EXACT.md). Three original recovery callers pass the existing pool; its queue and stream cursors are shared with exact 192B Draw Flush. One new canonical unit and object were cold-replayed in isolation.

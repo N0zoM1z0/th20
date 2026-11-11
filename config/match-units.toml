@@ -28488,3 +28488,63 @@ symbol = "?flag8_value_4888a0@NativeCardBit8GetterView@th20@@QBEIXZ"
 target_address = 0x004888A0
 size = 23
 relocations = []
+
+# CORE/RECON-1118: original whole Card frame Boss 875B/262 x86; 28 E8/8 HIGHLOW.
+[units.card_tick_boss_875]
+source = "src/CardTickBoss875.cpp"
+object = "build/core1118-canonical/CardTickBoss875.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTickView::update_486f60"]
+symbol = "?update_486f60@NativeCardTickView@th20@@QAEHXZ"
+target_address = 0x00486F60
+size = 875
+relocations = [
+  { offset = 0x3D, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x58, type = "DIR32", symbol = "?native_card_ui_5c069c@th20@@3PAUNativeCardUiDirtyView@1@A", target = 0x005C069C },
+  { offset = 0x5D, type = "REL32", symbol = "?clear_ui_flag0_487b90@NativeCardTickUiView@th20@@QAEXXZ", target = 0x00487B90 },
+  { offset = 0x74, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0xF6, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+  { offset = 0x10A, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x12F, type = "REL32", symbol = "?flag8_value_4888a0@NativeCardBit8GetterView@th20@@QBEIXZ", target = 0x004888A0 },
+  { offset = 0x141, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x148, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x150, type = "DIR32", symbol = "?native_card_y_edge_96_56fe7c@th20@@3MB", target = 0x0056FE7C },
+  { offset = 0x15E, type = "REL32", symbol = "?flag8_value_4888a0@NativeCardBit8GetterView@th20@@QBEIXZ", target = 0x004888A0 },
+  { offset = 0x170, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x177, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x17F, type = "DIR32", symbol = "?native_card_screen_height_448_56d7c0@th20@@3MB", target = 0x0056D7C0 },
+  { offset = 0x187, type = "DIR32", symbol = "?native_card_y_edge_96_56fe7c@th20@@3MB", target = 0x0056FE7C },
+  { offset = 0x1C0, type = "REL32", symbol = "?interrupt@AnimationHandle@th20@@QAEXH@Z", target = 0x0044EF90 },
+  { offset = 0x1F3, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x1FA, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x206, type = "DIR32", symbol = "?native_card_y_edge_128_56cd98@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x224, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x22B, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x233, type = "DIR32", symbol = "?native_card_screen_height_448_56d7c0@th20@@3MB", target = 0x0056D7C0 },
+  { offset = 0x23B, type = "DIR32", symbol = "?native_card_y_edge_128_56cd98@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x270, type = "REL32", symbol = "?interrupt@AnimationHandle@th20@@QAEXH@Z", target = 0x0044EF90 },
+  { offset = 0x290, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x29D, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x2AF, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x2BC, type = "REL32", symbol = "?selected@EnemyController@th20@@QAEPAUEnemy@2@I@Z", target = 0x00485660 },
+  { offset = 0x2C3, type = "REL32", symbol = "?position_ref@Enemy@th20@@QAEAAUVector3@2@XZ", target = 0x0047A2C0 },
+  { offset = 0x2DC, type = "REL32", symbol = "??GVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429440 },
+  { offset = 0x2E8, type = "DIR32", symbol = "__real@3d4ccccd", target = 0x0056FE5C },
+  { offset = 0x2F9, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x308, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x323, type = "REL32", symbol = "?set_position@AnimationHandle@th20@@QAEXABUVector3@2@@Z", target = 0x004502C0 },
+  { offset = 0x340, type = "REL32", symbol = "?bomb_controller@Context@th20@@QAEPAVBombController@2@XZ", target = 0x00424010 },
+  { offset = 0x347, type = "REL32", symbol = "?active_478130@NativeCardTickBombView@th20@@QBE_NXZ", target = 0x00478130 },
+
+]
+
+# CORE/RECON-1118: genuine separate Card HUD bit0 publisher, 32B exact.
+[units.card_tick_ui_clear_32]
+source = "src/CardTickUiClear32.cpp"
+object = "build/core1118-canonical/CardTickUiClear32.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTickUiView::clear_ui_flag0_487b90"]
+symbol = "?clear_ui_flag0_487b90@NativeCardTickUiView@th20@@QAEXXZ"
+target_address = 0x00487B90
+size = 32
+relocations = []

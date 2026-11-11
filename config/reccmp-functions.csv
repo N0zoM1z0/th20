@@ -1603,3 +1603,5 @@ th20::NativeAnimationPoolStagingView::reset_staging_buffers_445a40,0x00445A40,fu
 th20::NativeAnimationReadView::color_alpha_44c650,0x0044C650,function
 th20::NativeAnimationReadView::vector_484_44cb00,0x0044CB00,function
 th20::NativeCardBit8GetterView::flag8_value_4888a0,0x004888A0,function
+th20::NativeCardTickView::update_486f60,0x00486F60,function
+th20::NativeCardTickUiView::clear_ui_flag0_487b90,0x00487B90,function

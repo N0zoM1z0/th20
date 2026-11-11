@@ -114,4 +114,4 @@ only replay source units actually touched, never a full cold replay.
 For documentation/ignored-artifact-only cleanup there are **zero affected
 native units** and no reason to rebuild MSVC objects.
 
-**New native Card tick/battle-child frontier:** Card bit-8 getter `0x004888A0` at 23B now [whole strict exact](CARD_FLAG8_GETTER23_STRICT_EXACT.md) and is called six times by original 875B Card tick `0x00486F60` and 6,073B battle control `0x004B2C90`; both parent Bosses remain unaccepted.
+**Card tick Boss closed:** Original `0x00486F60` 875B Card Update is now [whole strict exact](CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md), along with distinct `0x00487B90` 32B HUD bit0 leaf. All 28 E8/8 HIGHLOW physical roles and 731 ordinary bytes match; 3/3 affected canonical units pass scoped replay including the preexisting `0x004888A0` 23B Card bit8 getter. The **6,073B battle controller** `0x004B2C90`, which calls the flag getter four times, and 1,896B Card Start remain genuine large **NONEXACT** parents; no whole exactness is inferred for them.

@@ -44,5 +44,8 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 ```
 
 **One new game-authored original whole-exact function, 23 credited bytes.**
-The 875B Card update and 6,073B battle controller remain source-unaccepted
-Bosses. No full-graph cold replay, link, or runtime-playable build is claimed.
+The 875B Card update was subsequently reconstructed
+[whole strict exact](CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md) using this
+23B getter at its two actual original E8 sites. It adds **no second
+credit for this getter**. The 6,073B battle controller remains an
+unaccepted Boss. No full-graph cold replay, link, or runtime-playable build is claimed.

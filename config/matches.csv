@@ -778,3 +778,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0044C650,th20::NativeAnimationReadView::color_alpha_44c650,21,matching,100.00,animation_color_alpha_21,CORE/RECON-1116; docs/ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md; whole original native body exact with zero relocations
 0x0044CB00,th20::NativeAnimationReadView::vector_484_44cb00,19,matching,100.00,animation_vector_484_19,CORE/RECON-1116; docs/ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md; whole original native body exact with zero relocations
 0x004888A0,th20::NativeCardBit8GetterView::flag8_value_4888a0,23,matching,100.00,card_flag8_getter_23,CORE/RECON-1117; docs/CARD_FLAG8_GETTER23_STRICT_EXACT.md; entire native original 23B / 11 i386 and zero PE HIGHLOW or E8 and exact 23/23
+0x00486F60,th20::NativeCardTickView::update_486f60,875,matching,100.00,card_tick_boss_875,CORE/RECON-1118; docs/CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md; entire original matching game source
+0x00487B90,th20::NativeCardTickUiView::clear_ui_flag0_487b90,32,matching,100.00,card_tick_ui_clear_32,CORE/RECON-1118; docs/CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md; entire original matching game source
