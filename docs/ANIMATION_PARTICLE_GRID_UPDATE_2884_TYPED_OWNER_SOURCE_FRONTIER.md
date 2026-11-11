@@ -94,6 +94,11 @@ spills and the subsequent paired per-particle loops.
 The only native cold replays after extracting the child interfaces were
 the **two exact 26B and 83B providers**. The 2,884B source was compiled as
 one independent NONEXACT probe, not included in an all-graph cold replay.
+The receipt verifier's separate [scoped input-closure regression](../scripts/test-scoped-build-receipt.py)
+ensures that moving this unrelated probe translation unit does not require
+cold-replaying the other exact objects: it permits unrelated source-path
+changes while rejecting modified included headers, changed owned source,
+object bytes, compiler profile or target identity.
 
 The move from `probes/` to `src/` exposed an unrelated receipt-freshness
 issue: the previous verifier demanded an identical global source filename

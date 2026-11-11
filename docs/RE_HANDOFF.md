@@ -24,7 +24,7 @@ old status labels are **historical observations**, not current facts.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded labels | Title/replay strings say **1.00c inside this same locked v1.00a file**; do not change targets based on the embedded label |
 | Ghidra provisional candidates | **6,928 Ghidra candidates plus one original-only recovered 2,884B head** (not all Ghidra candidates have independent boundaries) |
-| Accepted source-tracked units | **1,579 whole strict units**; `functions.csv` has **1,597** nonempty source-file rows |
+| Accepted source-tracked units | **1,580 whole strict units**; `functions.csv` has **1,582** nonempty source-file rows |
 | Canonical build providers | **434 pinned MSVC object + receipt pairs**; all currently protected |
 | Credited *game-authored* whole-native exact | **771 distinct original function heads /264,510 `.text` bytes** |
 | Whole game compiles, links or plays | **No** — native matching and standalone source coverage are different milestones |
@@ -123,6 +123,23 @@ links to original PE evidence. The immediate priorities are:
    genuine 25B/19B animation accessors. The pinned candidate remains
    2,969B/763 i386, **NONEXACT**; its separately accepted 26B selector,
    83B spawn and 92B Stop sibling retain exact credit only for themselves.
+
+## Scoped compiler receipt integrity
+
+The full 2,884B particle Update translation unit was moved from the
+`probes/` tree to `src/` and is still NONEXACT. This touched no prior
+canonical object's real compiler include closure. The receipt verifier
+in [`scripts/project.py`](../scripts/project.py) now permits unrelated
+source moves/additions while still SHA-checking the owned source, each
+captured include, the pinned compiler, profile, target identity and whole
+COFF object. It also rejects newly introduced source/header basenames
+that might shadow a captured include. The focused regression
+[`scripts/test-scoped-build-receipt.py`](../scripts/test-scoped-build-receipt.py)
+uses only a disposable 26B exact object and covers **3 accepted /6 rejected**
+scenarios (header/source/object/profile/target tampering rejected); native
+`compare-coff-function.py --unit` continues verifying complete original
+relocated bytes. This prevents unrelated source work from triggering a
+whole-graph cold replay.
 
 ## Workflow and verification boundary
 
