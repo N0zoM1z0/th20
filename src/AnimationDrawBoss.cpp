@@ -4,8 +4,8 @@
 // relocation target roles are independently known. Current source compiles
 // to both real switch pointer partitions and the native 5993B/1501-x86
 // body length, 0x204 frame, all 123 call roles in physical order (81-site
-// exact prefix; 86 physical E8 sites total), and all 32 original data roles
-// (23 absolute relocation sites aligned). The other bytes still differ:
+// exact prefix; 113 physical E8 sites total), and all 32 original data roles
+// (26 absolute relocation sites aligned). The other bytes still differ:
 // same size and instruction count do NOT imply native exactness.
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
@@ -229,8 +229,11 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         const auto quad_count=animation->base.variables.field_00;
         const float aux_half=height/native_two;
         const float adjusted_scale=animation_inherited_aux_scale_x(animation)+aux_half;
+        // A genuinely used width argument: its separate lifetime aligns
+        // downstream native E8 sites without a dummy compiler-shaping local.
+        const float shape_width=width+(height/native_two);
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780(
-            position.x,position.y,adjusted_scale,width+(height/native_two),height,
+            position.x,position.y,adjusted_scale,shape_width,height,
             angle,quad_count,first_color,second_color);
         break;
     }
@@ -286,10 +289,17 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     case 44:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width,animation_inherited_aux_scale_x(animation),height,angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
-    case 45:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width+(height / native_two),animation_inherited_aux_scale_x(animation)+(height / native_two),height,
-                                     angle,(animation->base.variables.field_00),animation_draw_color_490(animation),animation_draw_color_494(animation));
+    case 45: {
+        // Original evaluates these three real draw arguments before the
+        // inherited scale and height-half expressions; source order matters.
+        const auto secondary_color=animation_draw_color_494(animation);
+        const auto primary_color=animation_draw_color_490(animation);
+        const auto quad_count=animation->base.variables.field_00;
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
+            position.x,position.y,width+(height/native_two),animation_inherited_aux_scale_x(animation)+(height/native_two),height,
+            angle,quad_count,primary_color,secondary_color);
         break;
+    }
     case 46: {
         // Original color/count calls are evaluated before the inherited
         // scale; the width expression is evaluated when passed to renderer.

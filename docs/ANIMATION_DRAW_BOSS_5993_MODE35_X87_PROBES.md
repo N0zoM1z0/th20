@@ -1,3 +1,10 @@
+**2026-11-11 CURRENT SOURCE UPDATE:** Original first inherited-scale x87
+spill at mode35/36 is still unresolved, but used mode35 width and ordered
+mode45 color/count inputs improved the maintained complete 5,993B candidate
+to **113/123 original E8 physical sites, 26/32 body data locations and
+4,801/5,376 ordinary bytes**. See [the new source/native role proof](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
+The prior 86/123 and experimental 85/123 snapshots below remain historical.
+
 # CORE/RECON-908 — 5,993B Animation Draw Boss: mode 35/36 original x87 return spill and SSE operand frontier
 
 The immutable Japanese TH20 Steamless 1.00a target is SHA-256

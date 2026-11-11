@@ -108,7 +108,13 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 source files, native extents, unresolved compiler/ABI issues and
 links to original PE evidence. The immediate priorities are:
 
-1. **5,993B Animation Draw** (native x87/SSE/local-operand roles),
+1. **5,993B Animation Draw:** Latest maintained whole-function
+   [mode35/45 native-site convergence](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md) retains the entire
+   **5,993B/1,501-i386** and 49+31 original jump-pointer tables,
+   with **113/123 E8 sites** and **26/32 in-body HIGHLOW sites** aligned
+   (previously 86/123 and 23/32). Original call/data roles remain 123/32;
+   **4,801/5,376** ordinary bytes match. The first inherited-scale x87
+   return spill and mode45 float lifetime still differ: **NONEXACT**.
    **2,245B glyph mask compositor** (GDI bitmap/PMR growth),
    **2,227B Unicode glyph text core**, and **1,896B Card start**.
    These are all source-present but remain **NONEXACT**.

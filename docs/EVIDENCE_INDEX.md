@@ -28,6 +28,12 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   [269B preloader](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md), and
   [182B file find/wait](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md)
   are also independently exact.
+- **5,993B Animation Draw dispatcher (still NONEXACT):**
+  [current full-size mode35/45 source convergence](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md)
+  preserves all 123 original E8 call roles, 32 native body HIGHLOW roles,
+  the 0x204 stack and both native 49+31 pointer tables; now **113/123**
+  E8 sites, **26/32** body data sites and **4,801/5,376** comparable
+  native bytes match. The whole x87/SSE/branch output is not yet exact.
 - **Two large Renderer update Bosses:**
   [508B +511B WHOLE STRICT EXACT](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md),
   all 60 original E8/10 HIGHLOW roles and full 1,019 original game bytes,
@@ -856,7 +862,7 @@ Compiler scores labelled "current" in historical entries below mean
 
 ## 5,993B Animation Draw Boss: original executable length, i386 count and 0x204 stack recovered (still NONEXACT)
 
-- [CORE/RECON-835 — complete original 5,993B/1,501-x86 renderer draw parent and naturally equal-sized C++ source](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) — pinned source is now **5,993B/1,501 genuine x86, `sub esp,0x204`**, with **original 3B alignment and same 80 49+31 direct switch-pointer field positions** (full **6,316B** compiler contribution). All **123** original E8 targets in actual original physical order, first **81** contiguous sites and **86/123** total original E8 site/target pairs identical; **32/32** original body PE HIGHLOW target multiplicities, **23/32 exact field/target locations**. Natural per-case **used** color/count/height-half/auxiliary-value evaluation sequences for modes35/36, 29/30, 46 correct compiler hoisting; rejected a private trial with an otherwise unconsumed x87 return-spill local rather than add a fake compiler-shaping statement. **NONEXACT**: only **3,819/5,376 nonrelocation bytes** equal, nine data-field locations and real x87/branch code differ. Prior CORE/RECON-834 6,085B/1,514 candidate is historical; **zero new original game exact credit and zero affected canonical units**, only one focused noncanonical MSVC compile.
+- **Historical baseline, SUPERSEDED by [CORE/RECON-1112 improved mode35/45 native-site proof](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).** [CORE/RECON-835 — complete original 5,993B/1,501-x86 renderer draw parent and naturally equal-sized C++ source](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md) — pinned source is now **5,993B/1,501 genuine x86, `sub esp,0x204`**, with **original 3B alignment and same 80 49+31 direct switch-pointer field positions** (full **6,316B** compiler contribution). All **123** original E8 targets in actual original physical order, first **81** contiguous sites and **86/123** total original E8 site/target pairs identical; **32/32** original body PE HIGHLOW target multiplicities, **23/32 exact field/target locations**. Natural per-case **used** color/count/height-half/auxiliary-value evaluation sequences for modes35/36, 29/30, 46 correct compiler hoisting; rejected a private trial with an otherwise unconsumed x87 return-spill local rather than add a fake compiler-shaping statement. **NONEXACT**: only **3,819/5,376 nonrelocation bytes** equal, nine data-field locations and real x87/branch code differ. Prior CORE/RECON-834 6,085B/1,514 candidate is historical; **zero new original game exact credit and zero affected canonical units**, only one focused noncanonical MSVC compile.
 
 ## Original 5,993B Animation Draw Boss: exact 80-mode pointer structure and native backend ABI recovered (parent NONEXACT)
 
