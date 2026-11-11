@@ -1,3 +1,14 @@
+**CURRENT SOURCE UPDATE (2026-11-11):** The RGBA4444 per-pixel
+source address now includes the original live stride getter at native
+`+0x5E7` and uses a mutable stencil scratch for guarded neighbor reads.
+The complete maintained source now compiles to **2,141B/565-i386** with
+**37/37 E8 callee roles in original order**, **9/9 live stride calls**,
+5 DIR32 roles and four genuine array-index helper calls; it remains
+**NONEXACT** against the immutable 2,245B/612-i386 original. All **24/24**
+exact source descendants survived a scoped one-object cold replay.
+See [current full-role proof](GLYPH_MASK_BOSS2245_RGBA4444_SOURCE_STRIDE_37_CALLS.md).
+Older source totals below are historical.
+
 # CORE/RECON-1080 — native two-word glyph offsets are array-indexed values; exact 15-unit PMR ABI migration
 
 Locked original TH20 Japanese Steamless v1.00a SHA-256

@@ -1,6 +1,8 @@
 // Game-owned 2,245B glyph compositor at 0x00416420. SOURCE-PRESENT,
 // NONEXACT: its two native pixel-format branches and 16B PMR-vector
 // offsets are reconstructed, but the full Win32/PMR EH lowering is open.
+// The 16-bit live source-pixel stride is now restored alongside the
+// four stencil-index E8 calls; the complete parent remains NONEXACT.
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -105,7 +107,12 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
             auto* dest=reinterpret_cast<std::uint16_t*>(
                 pixels+y*pixel_stride_4156c0()+start*2);
             for (std::int32_t x=start;x<end;++x,++dest) {
-                const auto* stencil=reinterpret_cast<const std::uint16_t*>(original);
+                // Native RGBA4444 reads the *live* per-pixel source row
+                // stride here, before enumerating stencil offsets. This
+                // mutable scratch address then holds each real guarded
+                // neighbor's source address for its alpha-nibble test.
+                // Multiplication precedes signed division, as in the PE.
+                const std::uint16_t* stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y*pixel_stride_4156c0())/2)+x];
                 bool touches_outline=false;
                 for (const GlyphMaskOffset& off:offsets) {
                     // The original has two genuine E8 calls per vector
@@ -113,13 +120,13 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     const std::int32_t delta_x=off[0];
                     const std::int32_t delta_y=off[1];
                     if (((x-delta_x>=0 && y-delta_y>=0) &&
-                         (stencil[(y-delta_y)*(pixel_stride_4156c0()/2)+x-delta_x]>>12)!=0xf) ||
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+x-delta_x]), ((*stencil>>12)!=0xf))) ||
                         ((x+delta_x<canvas_width_415800() && y-delta_y>=0) &&
-                         (stencil[(y-delta_y)*(pixel_stride_4156c0()/2)+x+delta_x]>>12)!=0xf) ||
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+x+delta_x]), ((*stencil>>12)!=0xf))) ||
                         ((x-delta_x>=0 && y+delta_y<rows) &&
-                         (stencil[(y+delta_y)*(pixel_stride_4156c0()/2)+x-delta_x]>>12)!=0xf) ||
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+x-delta_x]), ((*stencil>>12)!=0xf))) ||
                         ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
-                         (stencil[(y+delta_y)*(pixel_stride_4156c0()/2)+x+delta_x]>>12)!=0xf)) {
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+x+delta_x]), ((*stencil>>12)!=0xf)))) {
                         touches_outline=true;
                         break;
                     }
