@@ -14,8 +14,8 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,626** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,612** functions |
+| Functions with provisional source mapping | **1,627** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,613** functions |
 | Canonical exact units / compiler objects | **1,610** units / **456** protected MSVC objects and receipts |
 | Credited game-authored whole exact | **797** distinct original heads / **269,557** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window frame scheduler Boss** 0x004193E0 now has [complete compiled source frontier](WINDOW_FRAME_SCHEDULER884_FULL_SOURCE_FRONTIER.md): 884B/239 native vs 890B/240 candidate, with all 32 E8 target roles and 21 PE data roles in native order (12/32 E8 and 6/21 data physical offsets aligned). Parent NONEXACT, zero byte credit; distinct 31B RepeatCounter, 346B clock and 32B frame dispatch children stay exact. Only source-local compiler probe, no full cold replay.
 
 - **Window frame scheduler repeat leaf** 0x0041CA50 is [31/31B strict exact](WINDOW_ACTIVE_REPEAT31_STRICT_EXACT.md), 11 i386/no relocs; genuine WindowState+0x2100 index into four 12B RepeatCounters at +0x2104. Original 884B Window scheduler calls this 14 times. Only new 31B credited; 1/1 scoped cold replay; parent stays NONEXACT.
 
