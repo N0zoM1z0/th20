@@ -28454,3 +28454,25 @@ symbol = "?reset_staging_buffers_445a40@NativeAnimationPoolStagingView@th20@@QAE
 target_address = 0x00445A40
 size = 111
 relocations = []
+
+# CORE/RECON-1116: real game Animation field read, complete native no-reloc function.
+[units.animation_color_alpha_21]
+source = "src/AnimationFieldReadLeaves.cpp"
+object = "build/core1116-canonical/AnimationFieldReadLeaves.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationReadView::color_alpha_44c650"]
+symbol = "?color_alpha_44c650@NativeAnimationReadView@th20@@QBEEXZ"
+target_address = 0x0044C650
+size = 21
+relocations = []
+
+# CORE/RECON-1116: real game Animation field read, complete native no-reloc function.
+[units.animation_vector_484_19]
+source = "src/AnimationFieldReadLeaves.cpp"
+object = "build/core1116-canonical/AnimationFieldReadLeaves.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationReadView::vector_484_44cb00"]
+symbol = "?vector_484_44cb00@NativeAnimationReadView@th20@@QAEAAUVector3@2@XZ"
+target_address = 0x0044CB00
+size = 19
+relocations = []

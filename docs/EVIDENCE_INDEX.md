@@ -1584,3 +1584,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Glyph Text 2,227B named task/completion pointer ABI](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md) — current 2,296B whole compiler contribution, 17/25 aligned E8 sites, 41/43 original data sites; real helper/132B capture/56B queue graph and correct destructor lifetime, original parent NONEXACT.
 
 - [Glyph Mask 2,245B RGBA4444 live source-stride and 37-role Boss frontier](GLYPH_MASK_BOSS2245_RGBA4444_SOURCE_STRIDE_37_CALLS.md) — 37/37 original E8 target roles, all nine per-pixel/row stride getter calls, four real folded array indexes; maintained 2,141B/565-i386 NONEXACT, 24/24 scoped exact helper replays.
+
+- [CORE/RECON-1116 — exact 21B Animation alpha and 19B Vector3 field readers](ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md) — entire original 21/21B and 19/19B with real 4KB/9KB caller E8 evidence, zero PE/COFF relocations; +40 disjoint game-authored native bytes and 2/2 one-source scoped replay.

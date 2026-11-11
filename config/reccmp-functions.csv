@@ -1600,3 +1600,5 @@ th20::particle_effect_info_for_session_437520,0x00437520,function
 th20::NativeParticleGridGroup::update,0x0045C360,function
 th20::NativeParticleGridGroup::interrupt,0x0045D060,function
 th20::NativeAnimationPoolStagingView::reset_staging_buffers_445a40,0x00445A40,function
+th20::NativeAnimationReadView::color_alpha_44c650,0x0044C650,function
+th20::NativeAnimationReadView::vector_484_44cb00,0x0044CB00,function

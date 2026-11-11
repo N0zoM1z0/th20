@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,601** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,587** functions |
-| Canonical exact units / compiler objects | **1,585** units / **439** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **776** distinct original heads / **265,848** `.text` bytes |
+| Functions with provisional source mapping | **1,603** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,589** functions |
+| Canonical exact units / compiler objects | **1,587** units / **440** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **778** distinct original heads / **265,888** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -30,6 +30,7 @@ folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
 
+- **Two native Animation field leaves** `0x0044C650` **21B alpha** and `0x0044CB00` **19B Vector3** are [whole strict exact](ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md). Original 4KB/9KB callers and true `+0x493`/`+0x484` offsets are attested; two distinct heads add 40 original bytes. One new source/object, scoped 2/2 strict replay; no existing canonical headers or units changed.
 - **Animation pool staging reset** `0x00445A40` is [111/111B whole exact](ANIMATION_POOL_STAGING_RESET111_STRICT_EXACT.md). Three original recovery callers pass the existing pool; its queue and stream cursors are shared with exact 192B Draw Flush. One new canonical unit and object were cold-replayed in isolation.
 - **Both Renderer list-update Bosses** `0x00449870` **508B** and
   `0x00449B20` **511B** are [whole strict exact](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md).

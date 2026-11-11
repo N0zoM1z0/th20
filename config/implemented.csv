@@ -1585,3 +1585,5 @@ th20::animation_list_update_449870
 th20::animation_list_update_secondary_449b20
 th20::game_file_exists_4107a0
 th20::NativeAnimationPoolStagingView::reset_staging_buffers_445a40
+th20::NativeAnimationReadView::color_alpha_44c650
+th20::NativeAnimationReadView::vector_484_44cb00
