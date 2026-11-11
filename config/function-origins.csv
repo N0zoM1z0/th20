@@ -2421,8 +2421,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00486EF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486F60,authored,CardSpell,authored,high,CORE/RECON-1118; docs/CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md; whole 875B native E8/HIGHLOW and original Card interval/animation control code exact
-0x004872D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00487560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004872D0,authored,CardSpell,authored,high,"CORE/RECON-1121; docs/CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md; Whole 645B Card clock Boss: original 14 E8 and 12 HIGHLOW exact offsets and targets; authentic WindowState clock, fmod/floor, x87 fwait and __ftol2_sse_excpt, signed time code and saved game record ownership."
+0x00487560,authored,CardSpell,authored,high,"CORE/RECON-1121; docs/CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md; Whole original 37B Card time callback: two genuine Card(0) lookup E8 and one native exact 645B clock method E8, 15 instructions, complete source original match."
 0x00487590,authored,CardSpell,authored,high,CORE/RECON-1120; docs/CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md; full original body/relocations and true parent Card Draw callback grounded; no duplicate physical heads
 0x004878B0,authored,CardSpell,authored,high,CORE/RECON-1002; docs/CARD_FINISH_602_STRICT_EXACT.md; entire game-specific Card bonus+records+achievement+animations+sound protocol source C++20 whole 602B/172-instruction relocated strict exact; no duplicated callee bytes
 0x00487B10,authored,CardSpell,authored,high,"CORE/RECON-1119; docs/CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md; Full original native 121B code exact and 6 physical E8 / 3 PE HIGHLOW roles. True Card game-allocated frame setup publishes session/context Card owner and the real Card update/draw callbacks; priority40/12, disabled chain registers, Timer reset; 121/121 whole native bytes."

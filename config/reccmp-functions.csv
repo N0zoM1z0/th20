@@ -1612,3 +1612,5 @@ th20::NativeCardDrawView::draw_487590,0x00487590,function
 th20::NativeCardAsciiDrawView::set_font_488b00,0x00488B00,function
 th20::NativeCardAsciiDrawView::set_layer_488a00,0x00488A00,function
 th20::NativeCardAsciiDrawView::set_color_alpha_488940,0x00488940,function
+th20::NativeCardClockView::process_clock_4872d0,0x004872D0,function
+th20::card_clock_update_487560,0x00487560,function

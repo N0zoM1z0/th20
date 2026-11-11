@@ -893,3 +893,5 @@ address,name,module,confidence,evidence
 0x00488B00,th20::NativeCardAsciiDrawView::set_font_488b00,AsciiInf,high,CORE/RECON-1120; docs/CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md
 0x00488A00,th20::NativeCardAsciiDrawView::set_layer_488a00,AsciiInf,high,CORE/RECON-1120; docs/CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md
 0x00488940,th20::NativeCardAsciiDrawView::set_color_alpha_488940,AsciiInf,high,CORE/RECON-1120; docs/CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md
+0x004872D0,th20::NativeCardClockView::process_clock_4872d0,CardSpell,high,CORE/RECON-1121; docs/CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md
+0x00487560,th20::card_clock_update_487560,CardSpell,high,CORE/RECON-1121; docs/CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md

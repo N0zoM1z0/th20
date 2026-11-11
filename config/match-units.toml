@@ -28695,3 +28695,56 @@ symbol = "?set_color_alpha_488940@NativeCardAsciiDrawView@th20@@QAEXE@Z"
 target_address = 0x00488940
 size = 25
 relocations = []
+
+# CORE/RECON-1121: complete original Card clock game source strict exact.
+[units.card_clock_boss_645]
+source = "src/CardClockBoss645.cpp"
+object = "build/core1121-canonical/CardClockBoss645.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardClockView::process_clock_4872d0"]
+symbol = "?process_clock_4872d0@NativeCardClockView@th20@@QAEXXZ"
+target_address = 0x004872D0
+size = 645
+relocations = [
+  { offset = 0x23, type = "DIR32", symbol = "?native_card_window_time_5b6758@th20@@3UNativeCardWindowTimeView@1@A", target = 0x005B6758 },
+  { offset = 0x28, type = "REL32", symbol = "?current_seconds_41cb10@NativeCardWindowTimeView@th20@@QAENXZ", target = 0x0041CB10 },
+  { offset = 0x6E, type = "DIR32", symbol = "?native_card_window_time_5b6758@th20@@3UNativeCardWindowTimeView@1@A", target = 0x005B6758 },
+  { offset = 0x73, type = "REL32", symbol = "?current_seconds_41cb10@NativeCardWindowTimeView@th20@@QAENXZ", target = 0x0041CB10 },
+  { offset = 0x9C, type = "DIR32", symbol = "?native_card_tick_seconds_56fe60@th20@@3NB", target = 0x0056FE60 },
+  { offset = 0xB9, type = "REL32", symbol = "_fmod", target = 0x0054FFA0 },
+  { offset = 0xE2, type = "DIR32", symbol = "?native_card_tick_seconds_56fe60@th20@@3NB", target = 0x0056FE60 },
+  { offset = 0xEA, type = "DIR32", symbol = "?native_card_double_two_56fe68@th20@@3NB", target = 0x0056FE68 },
+  { offset = 0x108, type = "DIR32", symbol = "?native_card_tick_seconds_56fe60@th20@@3NB", target = 0x0056FE60 },
+  { offset = 0x12B, type = "REL32", symbol = "_floor", target = 0x00550130 },
+  { offset = 0x133, type = "REL32", symbol = "__ftol2_sse_excpt", target = 0x00543310 },
+  { offset = 0x15F, type = "REL32", symbol = "_floor", target = 0x00550130 },
+  { offset = 0x17D, type = "DIR32", symbol = "?native_card_double_hundred_56fe70@th20@@3NB", target = 0x0056FE70 },
+  { offset = 0x194, type = "REL32", symbol = "?encode_time@Card@th20@@QAEXHH@Z", target = 0x00488990 },
+  { offset = 0x1B7, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0x1BC, type = "REL32", symbol = "?restart@GameController@th20@@QBEHXZ", target = 0x00488830 },
+  { offset = 0x1D1, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x1D6, type = "REL32", symbol = "?clamped_field_1f4@Session@th20@@QAEHXZ", target = 0x00474D60 },
+  { offset = 0x1E3, type = "DIR32", symbol = "?native_card_play_5c60fc@th20@@3PAUNativeCardTimeSaveArchiveView@1@A", target = 0x005C60FC },
+  { offset = 0x1E8, type = "REL32", symbol = "?primary_record_488740@NativeCardTimeSaveArchiveView@th20@@QAEPAEH@Z", target = 0x00488740 },
+  { offset = 0x20F, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x214, type = "REL32", symbol = "?clamped_field_1f4@Session@th20@@QAEHXZ", target = 0x00474D60 },
+  { offset = 0x221, type = "DIR32", symbol = "?native_card_play_5c60fc@th20@@3PAUNativeCardTimeSaveArchiveView@1@A", target = 0x005C60FC },
+  { offset = 0x226, type = "REL32", symbol = "?alternate_record_488770@NativeCardTimeSaveArchiveView@th20@@QAEPAEH@Z", target = 0x00488770 },
+  { offset = 0x254, type = "REL32", symbol = "?invalid_encoded_time@Card@th20@@QAEHXZ", target = 0x004885E0 },
+  { offset = 0x267, type = "REL32", symbol = "?encode_time@Card@th20@@QAEXHH@Z", target = 0x00488990 },
+]
+
+# CORE/RECON-1121: complete original Card clock game source strict exact.
+[units.card_clock_callback_37]
+source = "src/CardClockCallback37.cpp"
+object = "build/core1121-canonical/CardClockCallback37.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::card_clock_update_487560"]
+symbol = "?card_clock_update_487560@th20@@YAXXZ"
+target_address = 0x00487560
+size = 37
+relocations = [
+  { offset = 0x6, type = "REL32", symbol = "?card@th20@@YAPAUCard@1@H@Z", target = 0x00478EA0 },
+  { offset = 0x14, type = "REL32", symbol = "?card@th20@@YAPAUCard@1@H@Z", target = 0x00478EA0 },
+  { offset = 0x1E, type = "REL32", symbol = "?process_clock_4872d0@NativeCardClockView@th20@@QAEXXZ", target = 0x004872D0 },
+]
