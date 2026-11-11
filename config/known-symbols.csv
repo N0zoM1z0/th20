@@ -898,3 +898,4 @@ address,name,module,confidence,evidence
 0x00488740,th20::NativeCardTimeSaveArchiveView::primary_record_488740,CardSpell,high,CORE/RECON-1122; docs/CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md
 0x00488770,th20::NativeCardTimeSaveArchiveView::alternate_record_488770,CardSpell,high,CORE/RECON-1122; docs/CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md
 0x00486E30,th20::NativeCardRawRecordArray::at,CardSpell,medium,CORE/RECON-1122; docs/CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md
+0x0041CB10,th20::NativeCardWindowTimeView::current_seconds_41cb10,WindowState,high,CORE/RECON-1123; docs/WINDOW_SECONDS_CLOCK346_STRICT_EXACT.md

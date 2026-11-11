@@ -1602,3 +1602,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Card clock 645B Boss and 37B callback whole exact](CARD_CLOCK_BOSS645_CALLBACK37_STRICT_EXACT.md) — all 14 E8/12 HIGHLOW original roles, 541 ordinary bytes, native FWAIT via exception-aware MSVC conversion, 2/2 scoped replay and 682 newly credited original bytes.
 
 - [Card time archive 38B/41B selectors strict exact; 20B record-index helper exact but authorship unresolved](CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md) — genuine 645B parent dependency, original indexed-array roles, 3/3 scoped replay, 79 new game-authored bytes and no 22B folded duplicate credit.
+
+- [WindowState original 346B clock whole strict exact](WINDOW_SECONDS_CLOCK346_STRICT_EXACT.md) — QPC/timeGetTime, original unsigned DWORD correction table and shared real elapsed stack lifetime; 8 E8/19 HIGHLOW anchored native roles, source-scoped 1/1, +346 game bytes.

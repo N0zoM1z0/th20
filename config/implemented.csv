@@ -1602,3 +1602,4 @@ th20::card_clock_update_487560
 th20::NativeCardTimeSaveArchiveView::primary_record_488740
 th20::NativeCardTimeSaveArchiveView::alternate_record_488770
 th20::NativeCardRawRecordArray::at
+th20::NativeCardWindowTimeView::current_seconds_41cb10

@@ -28786,3 +28786,42 @@ target_address = 0x00486E30
 size = 20
 relocations = [
 ]
+
+# CORE/RECON-1123: original complete WindowState high-resolution/fallback seconds clock.
+[units.window_seconds_clock_boss_346]
+source = "src/WindowSecondsClock346.cpp"
+object = "build/core1123-canonical/WindowSecondsClock346.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardWindowTimeView::current_seconds_41cb10"]
+symbol = "?current_seconds_41cb10@NativeCardWindowTimeView@th20@@QAENXZ"
+target_address = 0x0041CB10
+size = 346
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x16, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x1B, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x24, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x2A, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x30, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x40, type = "DIR32", symbol = "__imp__QueryPerformanceCounter@4", target = 0x0056C11C },
+  { offset = 0x49, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x52, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x57, type = "REL32", symbol = "__ltod3", target = 0x00542E00 },
+  { offset = 0x5D, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x63, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x6D, type = "REL32", symbol = "__ultod3", target = 0x00542E00 },
+  { offset = 0x83, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x97, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xA4, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xB1, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0xC4, type = "DIR32", symbol = "__imp__timeGetTime@0", target = 0x0056C2E8 },
+  { offset = 0xDB, type = "DIR32", symbol = "?correction@?8??current_seconds_41cb10@NativeCardWindowTimeView@th20@@QAENXZ@4QBNB", target = 0x0056CDD0 },
+  { offset = 0xE8, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xFC, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x104, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x10C, type = "DIR32", symbol = "__real@408f400000000000", target = 0x0056CD88 },
+  { offset = 0x123, type = "DIR32", symbol = "__real@408f400000000000", target = 0x0056CD88 },
+  { offset = 0x13A, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x147, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x152, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

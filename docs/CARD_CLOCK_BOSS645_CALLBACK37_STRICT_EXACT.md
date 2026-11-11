@@ -83,5 +83,5 @@ Reproduce with scoped source replay only:
     scripts/repo-python scripts/validate-tracking.py --require-target
 
 **Two new original whole-exact game heads, 682 native .text bytes.**
-The 346B WindowState clock callee is not credited here; the 38/41B archive selectors were subsequently [closed separately](CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md), and their bytes are credited only in that checkpoint. The 1,896B Card Start and 6,073B battle-control parents
+The 346B WindowState clock callee was subsequently [reconstructed whole exact](WINDOW_SECONDS_CLOCK346_STRICT_EXACT.md) and is credited only in that separate checkpoint; the 38/41B archive selectors were subsequently [closed separately](CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md), and their bytes are credited only in that checkpoint. The 1,896B Card Start and 6,073B battle-control parents
 remain NONEXACT; game linking and runtime validation are open.
