@@ -1,3 +1,13 @@
+**CORE/RECON-1109 continuation:** A new dedicated explicit
+`class IntrusiveList<Animation>` probe reproduces **both whole 508B/511B
+bodies with every original E8/HIGHLOW field, all physical targets and all
+368/371 ordinary bytes**, without changing the generic public type.
+[Full executable proof and exact-consumer regression audit](ANIMATION_RENDERER_LIST_508_511_ANIMATION_CLASS_SPECIALIZATION_FRONTIER.md)
+shows 38/38 Animation.cpp canonical objects still structurally exact when
+compared at their genuine full COFF lengths; the remaining class/struct
+mangled-ABI and other affected owner migration must be resolved before
+claiming the two Bosses as canonical exact.
+
 # CORE/RECON-993 — Renderer list-update Boss: original 508B primary source and compiler-tag frontier
 
 Target: immutable Japanese TH20 Steamless v1.00a, SHA-256

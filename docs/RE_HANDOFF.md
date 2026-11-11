@@ -98,8 +98,14 @@ links to original PE evidence. The immediate priorities are:
 
 1. **508B/511B Renderer list-update Bosses:** real two-pass source
    is still 10B short because of an MSVC `/sdl` list initialization.
-   The shared `IntrusiveList` class-tag experiment must be scoped;
-   do *not* break hundreds of exact include consumers to gain one Boss.
+   An [Animation-only class-template specialization probe](ANIMATION_RENDERER_LIST_508_511_ANIMATION_CLASS_SPECIALIZATION_FRONTIER.md)
+   now yields **complete 508B/511B, 368/368 and 371/371 ordinary bytes,
+   and all 35 native relocation roles** in *each* Boss. A corrected
+   full-extent comparator confirms all 38 `Animation.cpp` exact units
+   remain structurally exact; the historical apparent +5B increases
+   were real after-ret padding already included in `compare_size`.
+   Keep the specialization noncanonical until class-key/ODR and
+   linker symbol ABI across the other consumers are reconciled.
 2. **5,993B Animation Draw** (native x87/SSE/local-operand roles),
    **2,245B glyph mask compositor** (GDI bitmap/PMR growth),
    **2,227B Unicode glyph text core**, and **1,896B Card start**.
