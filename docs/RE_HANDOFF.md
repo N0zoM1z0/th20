@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,629** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,615** functions |
-| Canonical exact units / compiler objects | **1,611** units / **457** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **798** distinct original heads / **269,645** `.text` bytes |
+| Functions with provisional source mapping | **1,630** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,616** functions |
+| Canonical exact units / compiler objects | **1,612** units / **458** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **799** distinct original heads / **269,809** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window D3D9 Present/Reset** 0x004199A0 is [164B/49-i386 whole strict exact](WINDOW_PRESENT_NO_WAIT164_STRICT_EXACT.md), all nine native E8 and eight HIGHLOW physical fields/targets plus 96/96 ordinary bytes. Authentic distinct Present and Reset device lifetimes and a real scoped NOP after the 574B screenshot update make MSVC naturally produce exact stack and length; 1/1 new and 1/1 shared-header-affected 31B replay. The 574B scene child and 884B scheduler parent remain NONEXACT; 32B clock dispatch already exact.
 
 - **Window snapshot pending Renderer leaf** 0x0041BFC0 [88B/28-i386 whole strict exact](WINDOW_CAPTURE_PENDING88_STRICT_EXACT.md), four real 40B Renderer surface copy records at +0x18; submits each active entry through already exact 439B D3D9 blit at 0x0044BB10 then retires file_index to -1. Single real E8 and 84/84 ordinary bytes exact; 1/1 local cold replay. 574B screenshot and 884B Window parents are still NONEXACT.
 

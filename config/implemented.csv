@@ -1613,3 +1613,4 @@ th20::NativeWindowFrameScheduleView::active_repeat_41ca50
 th20::NativeWindowFrameScheduleView::schedule_frame_4193e0
 th20::NativeWindowFrameScheduleView::update_scene_419760
 th20::NativeWindowCaptureRenderer::prepare_frame_41bfc0
+th20::NativeWindowFrameScheduleView::present_no_wait_4199a0

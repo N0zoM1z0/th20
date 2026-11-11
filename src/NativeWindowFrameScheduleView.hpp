@@ -8,5 +8,6 @@ struct NativeWindowFrameScheduleView {
     WindowState::RepeatCounter* active_repeat_41ca50();
     void schedule_frame_4193e0();
     void update_scene_419760();
+    void present_no_wait_4199a0();
 };
 }

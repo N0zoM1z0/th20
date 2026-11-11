@@ -100,3 +100,8 @@ The only screenshot frame preparation dependency (0x0041BFC0) is now
 four-entry pending Renderer surface-copy queue which calls the earlier
 whole-exact 439B D3D9 surface blit. The screenshot Boss itself remains
 NONEXACT; these child bytes do not count toward its own exactness.
+
+The separate Window Present/Reset caller at 0x004199A0 is now
+[whole 164B strict exact](WINDOW_PRESENT_NO_WAIT164_STRICT_EXACT.md)
+including its original E8 to this 574B scene function. This does
+not establish whole-native exactness for the 574B screenshot body.
