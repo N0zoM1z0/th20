@@ -29159,3 +29159,45 @@ relocations = [
   { offset = 0x234, type = "DIR32", symbol = "?native_frame_elapsed_5c5b18@th20@@3NA", target = 0x005C5B18 },
   { offset = 0x23C, type = "REL32", symbol = "?frame_leave_412540@NativeWindowFrameScheduleView@th20@@QAEHXZ", target = 0x00412540 },
 ]
+
+# CORE/RECON-1138: full original 370B paced Window frame controller.
+[units.window_frame_paced_boss_370]
+source = "src/WindowFramePacedBoss370.cpp"
+object = "build/core1138-canonical/WindowFramePacedBoss370.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeWindowFrameScheduleView::frame_controller_paced_41a030"]
+symbol = "?frame_controller_paced_41a030@NativeWindowFrameScheduleView@th20@@QAEHXZ"
+target_address = 0x0041A030
+size = 370
+relocations = [
+  { offset = 0x18, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x1D, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0x24, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x29, type = "REL32", symbol = "?setup_view_41dce0@NativeTickGraphicsView@th20@@QAEXH@Z", target = 0x0041DCE0 },
+  { offset = 0x2F, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 0x34, type = "REL32", symbol = "?update@FunctionChainController@th20@@QAEHXZ", target = 0x00412810 },
+  { offset = 0x42, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x47, type = "REL32", symbol = "?bail_out_4d9e30@NativeTickGraphicsView@th20@@QAEXXZ", target = 0x004D9E30 },
+  { offset = 0x5E, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x63, type = "REL32", symbol = "?bail_out_4d9e30@NativeTickGraphicsView@th20@@QAEXXZ", target = 0x004D9E30 },
+  { offset = 0x83, type = "DIR32", symbol = "?native_frame_skip_5c4f84@th20@@3EA", target = 0x005C4F84 },
+  { offset = 0x9A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x9F, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0xB9, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0xBE, type = "REL32", symbol = "?reset_staging_buffers_445a40@NativeAnimationPoolStagingView@th20@@QAEXXZ", target = 0x00445A40 },
+  { offset = 0xC4, type = "DIR32", symbol = "?native_render_alpha_5c5af8@th20@@3IA", target = 0x005C5AF8 },
+  { offset = 0xCD, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xD2, type = "REL32", symbol = "?graphics_disable_fog@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDA60 },
+  { offset = 0xD8, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
+  { offset = 0xDD, type = "REL32", symbol = "?draw@FunctionChainController@th20@@QAEHXZ", target = 0x00412AA0 },
+  { offset = 0xE3, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0xE8, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0xED, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xF2, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x113, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x118, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x13B, type = "REL32", symbol = "?present_paced_419a50@NativeWindowFrameScheduleView@th20@@QAEXXZ", target = 0x00419A50 },
+  { offset = 0x144, type = "REL32", symbol = "?current_seconds_41cb10@NativeCardWindowTimeView@th20@@QAENXZ", target = 0x0041CB10 },
+  { offset = 0x15F, type = "DIR32", symbol = "?native_frame_elapsed_5c5b18@th20@@3NA", target = 0x005C5B18 },
+  { offset = 0x167, type = "REL32", symbol = "?frame_leave_412540@NativeWindowFrameScheduleView@th20@@QAEHXZ", target = 0x00412540 },
+]

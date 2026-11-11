@@ -51,3 +51,8 @@ into those parent functions.
 **One new distinct whole-exact game-authored function /385B**
 is credited. The separate whole-exact 164B no-wait frame presenter
 and 346B clock are not duplicated.
+
+The paced Window frame controller at original 0x0041A030 is now
+[whole 370B strict exact](WINDOW_FRAME_PACED_BOSS370_STRICT_EXACT.md),
+with a physical original E8 into this already exact 385B Presenter.
+Each distinct game function is credited only once.
