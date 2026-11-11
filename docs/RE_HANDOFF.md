@@ -30,6 +30,8 @@ folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
 
+- **Window paced frame controller Boss** 0x0041A030 [370/370B strict whole-native exact](WINDOW_FRAME_PACED_BOSS370_STRICT_EXACT.md): original 97 i386, all 15 E8 and 15 HIGHLOW original positions and targets, 250/250 ordinary bytes. Real FunctionChain render path and already exact 385B paced Presenter; original true guard generates the natural 13B branch. New source 1/1 scoped cold replay, all six header-affected Window exact units individually 1/1. The 884B Window scheduler remains NONEXACT.
+
 - **Window paced frame controller Boss** 0x0041A030 is [whole 370/370B strict exact](WINDOW_FRAME_PACED_BOSS370_STRICT_EXACT.md), 97 native i386. The real constant-true frame enable guard restores native +13B; 15/15 E8, 15/15 PE data locations/targets and all 250 ordinary bytes match. Calls the separately exact 385B paced Presenter and genuine D3D9 scene/FunctionChain draw; new 1/1 and six header-affected local 1/1 strict replays all passed. Original 884B scheduler remains NONEXACT.
 
 - **Window synchronized no-wait frame controller Boss** 0x00419DE0 is [whole 583/583B strict exact](WINDOW_FRAME_NO_WAIT_BOSS583_STRICT_EXACT.md), 138 original i386, real WindowState clock sync, deadline and Sleep(1), FunctionChain update/draw, D3D9 scene and existing exact 164B Presenter. All 16 E8 +20 HIGHLOW physical fields/targets and 439/439 ordinary bytes exact. One new 583B 1/1 source cold replay, plus five Window-header-affected older exact units each 1/1. 884B scheduler stays NONEXACT.
