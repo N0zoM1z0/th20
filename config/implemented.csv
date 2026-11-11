@@ -1576,3 +1576,4 @@ std::atomic<std::uint32_t>::operator=(uint32_t)
 std::atomic<std::uint32_t>::operator uint32_t()
 th20::NativeRendererTextureMemoryView::create_uploaded_texture_44e8f0
 th20::NativeRendererTextureMemoryView::finalize_uploaded_texture_451910
+th20::NativeRendererFormattedTextView::draw_formatted_text_44ac20

@@ -28,6 +28,9 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   [269B preloader](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md), and
   [182B file find/wait](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md)
   are also independently exact.
+- **Renderer formatted sprite text:** [417B whole original native exact](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md)
+  at `0x0044AC20`, with 114 i386 instructions, ten independently decoded
+  E8 targets and three original HIGHLOW fields. The 586B sibling is still open.
 - **Original input:** [3,490B InputDevice polling native exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md)
   includes keyboard, DirectInput, XInput and input-history update,
   preserving the full original native `input_device_poll` source. Older

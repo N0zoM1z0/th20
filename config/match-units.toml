@@ -28266,3 +28266,29 @@ relocations = [
   { offset = 0xAC8, type = "DIR32", symbol = "$LN51", target = 0x0045210D },
   { offset = 0xACC, type = "DIR32", symbol = "$LN58", target = 0x0045239B },
 ]
+
+
+# CORE/RECON-1104: full original 417B variadic Renderer sprite-text Boss.
+[units.animation_renderer_formatted_text_417]
+source = "src/AnimationRendererFormattedText417.cpp"
+object = "build/core1104-canonical/AnimationRendererFormattedText417.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeRendererFormattedTextView::draw_formatted_text_44ac20"]
+symbol = "?draw_formatted_text_44ac20@NativeRendererFormattedTextView@th20@@QAA?AUNativeTextDrawResult8@2@PAVAnimation@2@HIHHHHV?$function@$$A6AXXZ@std@@PB_WZZ"
+target_address = 0x0044AC20
+size = 417
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?draw_formatted_text_44ac20@NativeRendererFormattedTextView@th20@@QAA?AUNativeTextDrawResult8@2@PAVAnimation@2@HIHHHHV?$function@$$A6AXXZ@std@@PB_WZZ", target = 0x00568528 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x35, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x3A, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x46, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x6A, type = "REL32", symbol = "?format_text_447940@th20@@YAXPA_WPB_WPAD@Z", target = 0x00447940 },
+  { offset = 0x7F, type = "REL32", symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@XZ", target = 0x00437CD0 },
+  { offset = 0xFD, type = "REL32", symbol = "?texture_for_sprite@AnimationQuadSubmitOwner@th20@@QAEPAUIDirect3DBaseTexture9@@I@Z", target = 0x00445A00 },
+  { offset = 0x117, type = "REL32", symbol = "??0?$function@$$A6AXXZ@std@@QAE@ABV01@@Z", target = 0x004140F0 },
+  { offset = 0x162, type = "REL32", symbol = "?submit_text_44fff0@NativeTextSubmitOwner@th20@@QAE?AUNativeTextDrawResult8@2@PAUIDirect3DBaseTexture9@@PAUSpriteData@2@HHIPBDHHHPBUNativeTextTransform4@2@HV?$function@$$A6AXXZ@std@@@Z", target = 0x0044FFF0 },
+  { offset = 0x171, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x180, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+  { offset = 0x199, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

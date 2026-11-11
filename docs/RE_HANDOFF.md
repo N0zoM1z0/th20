@@ -6,7 +6,7 @@
 > Older broad validation instructions apply only when their impact is relevant.
 
 
-**Reconciled 2026-10-31.** This is the short, current entry point for
+**Reconciled 2026-11-11.** This is the short, current entry point for
 the next agent, **not** the 100KB chronological checkpoint log.
 Read [AGENTS.md](../AGENTS.md) first, then this page, the
 [open Boss backlog](RE_OPEN_BOSS_BACKLOG.md), the
@@ -24,9 +24,9 @@ old status labels are **historical observations**, not current facts.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded labels | Title/replay strings say **1.00c inside this same locked v1.00a file**; do not change targets based on the embedded label |
 | Ghidra provisional candidates | **6,928** (not all physical function boundaries independently established) |
-| Accepted source-tracked units | **1,578 whole strict units**; `functions.csv` has **1,595** nonempty source-file rows |
-| Canonical build providers | **432 pinned MSVC object + receipt pairs**; all currently protected |
-| Credited *game-authored* whole-native exact | **769 distinct original function heads /264,067 `.text` bytes** |
+| Accepted source-tracked units | **1,579 whole strict units**; `functions.csv` has **1,596** nonempty source-file rows |
+| Canonical build providers | **433 pinned MSVC object + receipt pairs**; all currently protected |
+| Credited *game-authored* whole-native exact | **770 distinct original function heads /264,484 `.text` bytes** |
 | Whole game compiles, links or plays | **No** — native matching and standalone source coverage are different milestones |
 
 Those figures are a **dated snapshot**, not a counter to increment
@@ -74,6 +74,9 @@ scripts/repo-python scripts/validate-tracking.py --require-target
   (3,490B/747-i386)** is also [WHOLE STRICT EXACT](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md),
   not source-present/NONEXACT as a few historical `InputState.hpp`
   and source comments once claimed. Canonical unit: `input_device_poll`.
+- **Renderer Unicode formatted sprite text** `0x0044AC20`:
+  **417B/114-i386 WHOLE STRICT EXACT**, with original lock-9 format and
+  by-value callback dispatch. [Independent full-code/relocation proof](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md).
 - Other very large already accepted native bodies include **11,110B
   ECL tick**, **3,735B Bullet emitter**, **3,159B quad submit**,
   **4,347B Mode8 draw**, **2,769B Mode6 draw** and
@@ -99,13 +102,11 @@ links to original PE evidence. The immediate priorities are:
 3. **336B ANM per-group parser**: now source-present, 336B/83 i386
    but **278/280 ordinary bytes**, with two outstanding stack/frame
    differences. Its 1,022B loader parent is already exact.
-4. **417B/586B Renderer formatted-text callers**: neither has an
-   accepted maintained source. A genuine unfinished **418B** C++
-   candidate for original **417B `0x0044AC20`** was transferred
-   from an untracked `src/` path into protected private notes
-   `.analysis/gptweb-open-animation-formatted-text417.cpp`;
-   investigate the real byte flag at `Animation+0x49A` versus
-   provisional member at `+0x4A2` before promoting it.
+4. **586B Renderer formatted-text sibling:** The separate **417B Unicode
+   formatted-text parent** at `0x0044AC20` is now [whole strict exact](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md),
+   417/417 canonical native bytes with all ten E8 and three HIGHLOW roles.
+   `0x0044ADD0` (586B) remains source-absent; investigate its float text
+   metrics and real variadic/PMR ABI without re-crediting the 417B parent.
 5. Source-absent **12,140B Bullet command dispatcher**, **41,967B
    Enemy ECL opcode dispatcher** and **39,470B Animation VM**.
    Their independently exact descendants do not make these
@@ -140,8 +141,8 @@ links to original PE evidence. The immediate priorities are:
 
 Keep the locked target/provenance, reference inputs, pinned tools, Ghidra project,
 current source and ledgers, canonical manifest objects/receipts, and useful native
-knowledge. Retain unresolved source drafts, including
-`.analysis/gptweb-open-animation-formatted-text417.cpp`. Historical snapshots,
+knowledge. Retain unresolved source drafts. The 417B formatted-text private draft is now
+superseded by the maintained exact source, but remains as ignored investigation history. Historical snapshots,
 comparison logs, cleanup reports and noncanonical objects are disposable unless
 a specific open question needs a difficult-to-reproduce compiler context.
 Document references do not confer retention. See [the workflow](RE_WORKFLOW.md).
