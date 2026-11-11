@@ -67,6 +67,6 @@ def verify():
  print('PASS 25 real PE HIGHLOW site/target fields, frozen SHA256',FIELD_FINGERPRINT)
  print('PASS real native ret 0x0045CEA3, 12 genuine INT3 then separate 92B method at 0x0045CEB0')
  print('PASS two physical 202B normalization child E8, game RNG/cookie and native branch boundaries')
- print('NOT EXACT: no canonical C++ source, no new original-authored .text credit or game-function mapping')
+ print('NOT EXACT: original-only validator; maintained source remains nonexact, no new authored .text credit')
 
 if __name__=='__main__':verify()

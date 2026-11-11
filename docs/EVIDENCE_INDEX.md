@@ -34,6 +34,11 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   Unicode Renderer source](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md)
   now reconstructs the complete control flow and width semantics, but its
   current 594B MSVC body retains an eight-byte SSE/stack frontier.
+- **Original 2,884B particle-grid Update:**
+  [maintained whole-function C++ and real resource owner source frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md)
+  now connects the strict 26B Session/EffectInfo selector, 38B file lookup,
+  83B spawn and 25B/19B accessors across all 99 original call roles.
+  This **large game Boss remains NONEXACT** at 2,969B/763 i386.
 - **Original input:** [3,490B InputDevice polling native exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md)
   includes keyboard, DirectInput, XInput and input-history update,
   preserving the full original native `input_device_poll` source. Older

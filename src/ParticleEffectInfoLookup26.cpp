@@ -1,5 +1,6 @@
 // Original session-indexed EffectInfo selector used by particle and effect
 // creation. The returned owner is borrowed from the current game Session.
+#include "ParticleEffectInfoLookup26.hpp"
 #include "Session.hpp"
 
 namespace th20 {

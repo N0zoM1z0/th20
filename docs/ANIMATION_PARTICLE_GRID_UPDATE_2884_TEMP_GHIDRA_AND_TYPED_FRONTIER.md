@@ -1,5 +1,17 @@
 # CORE/RECON-966 — original 2,884B particle Update Boss temporary Ghidra recovery and *NONEXACT* whole C++20 research source
 
+**2026-11-11 continuation:** The entire large Boss now has maintained,
+source-present C++ in
+[`src/AnimationParticleGridUpdate2884.cpp`](../src/AnimationParticleGridUpdate2884.cpp),
+with corrected Session/EffectInfo/AnimationFile/spawn owners, actual Timer
+and Animation accessors, and real integer stages. Its complete current
+compiler output is **2,969B/763 instructions**, versus original
+2,884B/768: **still NONEXACT**. The source-present ledger and full
+corroboration are in the
+[new exact-owner source frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md).
+The historical 2,953B experiments recorded below remain dated evidence,
+not the current maintained compiler result.
+
 This documents a **real but unaccepted** advance on TH20's complete
 original `0x0045C360` polymorphic particle-grid Update Boss, whose
 full native **2,884B/768-i386** extent, sole `ret`, vtable slot and
@@ -46,7 +58,7 @@ class and its real `AnimationCallback` base, not this spurious local.
 
 ## Compiled entire C++ function: substantial progress, still not exact
 
-[`probes/AnimationParticleGridUpdate2884Frontier.cpp`](../probes/AnimationParticleGridUpdate2884Frontier.cpp)
+[`src/AnimationParticleGridUpdate2884.cpp`](../src/AnimationParticleGridUpdate2884.cpp)
 contains a maintained **whole-function** natural C++20 experiment on
 one real `NativeParticleGridGroup::update()`. This is *not* a handwritten
 machine-code blob, original PE patch, compile-time fake padding or

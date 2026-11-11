@@ -1,21 +1,20 @@
-// CORE/RECON-966: EXPERIMENTAL, NOT EXACT: full 2884B particle-grid Update.
-// All thirteen 4-byte particle handle/stage index operations now use the
-// real std::array<AnimationHandle,200> / std::array<int32_t,200> owners.
-// Their native bodies are exactly identical to the earlier folded 22B
-// Vector3-addressing hypothesis, with no type punning in these arrays.
-// Source is tracked under probes, NOT src and NOT strict canonical tracking.
-// Reproducible C++20 partial semantic reconstruction, 2953B/764 i386 output
-// vs original 2884B/768 i386, despite matching 99 call/25 data reloc counts.
-// DO NOT promote or claim authored original exact credit from this probe.
-// The group now declares the actual integer stage words at +0x15E8.
-// The folded 22B indexed leaf can be naturally emitted by either real
-// four-byte std::array owner. File/palette methods remain provisional.
-// Original body has 768 i386 instructions, 99 E8, 25 HIGHLOW; this is
-// a typed semantic draft with unresolved native file/palette helper APIs.
+// Original 2,884B particle-grid virtual Update at 0x0045C360.
+// Full game-owned C++ logic, SOURCE-PRESENT NONEXACT. The original has
+// 768 i386 instructions, 99 E8 calls and 25 PE HIGHLOW fields; current
+// pinned-MSVC 2969B/763-instruction body preserves 99 REL32/25 DIR32.
+// Session -> Context -> EffectInfo -> AnimationFile -> spawn is the actual
+// resource chain, with the original four independently observed calls.
+// The native loop stage words are int32_t at +0x15E8; the 200 handles
+// and stage values use their real C++ array owners. The remaining frame,
+// x87/SSE argument lifetimes and some source/ABI details are not exact.
 #include "NativeParticleGridGroup.hpp"
 #include "NativeAnimationInterpolationConfig.hpp"
 #include "Animation.hpp"
 #include "AnimationFile.hpp"
+#include "ItemResourceOwners.hpp"
+#include "ParticleEffectInfoLookup26.hpp"
+#include "NativeParticleSpawnFileView.hpp"
+#include "NativeParticleAnimationAccess.hpp"
 #include "GameRandom.hpp"
 #include "MotionMath.hpp"
 #include <cstdint>
@@ -25,23 +24,12 @@ extern const float native_particle_radius_300, native_particle_radius_150;
 extern const float native_particle_radius_50, native_particle_radius_200;
 extern const float native_particle_radius_20, native_particle_radius_100;
 void normalize_vector3_45cf10(Vector3&,const Vector3&);
-struct NativeParticleTimerGate { int changed_45d030(); };
-struct NativeParticleAnimationFile : AnimationFile {
-    AnimationHandle spawn_45d210(const char* stem, int script, const Vector3* pos,
-                                float rotation, int special);
-};
-// Original 0x00437520 file-selection receiver and original 0x0045D100
-// forwarding ABI still need identification independently from the PE.
-NativeParticleAnimationFile* particle_effect_file_437520(int index);
-std::uint32_t native_particle_effect_palette_45d100(NativeParticleAnimationFile* file,int subindex);
-// Original 0x0045D0A0 is an Animation+0x4D8 Timer conversion by value.
-int native_particle_age_limit_45d0a0(Animation* child);
-struct NativeAnimationColorWordView { std::uint32_t& color_ref_45d0e0(); };
 
 int NativeParticleGridGroup::update() {
     Vector3 basis, gradient, position, velocity, tangent;
     int processed = 0;
     int emission_index=0;
+    int effect_index=0;
     Animation* const owner=animation;
     Vector3 center=owner->vector_5bc_ref();
     extra_1920=center;
@@ -54,39 +42,39 @@ int NativeParticleGridGroup::update() {
     polar(tangent,direction,native_particle_radius_150);
     tangent.z=0.0f;
     extra_1908+=tangent;
-    if (reinterpret_cast<NativeParticleTimerGate*>(&timer_1930)->changed_45d030()) {
+    if (timer_1930.changed()) {
         if (timer_1930.less_than(50)) {
             emission_index=timer_1930 * 4;
             // Physical original particle handle creation 1/4.
             {
-                NativeParticleAnimationFile* file=particle_effect_file_437520(0);
-                std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
-                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,0);
+                EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
+                auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
+                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
                 colors_08[emission_index+0]=handle;
             }
             // Physical original particle handle creation 2/4.
             {
-                NativeParticleAnimationFile* file=particle_effect_file_437520(0);
-                std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
-                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,0);
+                EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
+                auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
+                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
                 colors_08[emission_index+1]=handle;
             }
             // Physical original particle handle creation 3/4.
             {
-                NativeParticleAnimationFile* file=particle_effect_file_437520(0);
-                std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
-                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,0);
+                EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
+                auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
+                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
                 colors_08[emission_index+2]=handle;
             }
             // Physical original particle handle creation 4/4.
             {
-                NativeParticleAnimationFile* file=particle_effect_file_437520(0);
-                std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
-                AnimationHandle handle=file->spawn_45d210("effect",0x96,nullptr,0.0f,0);
+                EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
+                auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
+                AnimationHandle handle=file->spawn_45d210("effect",0x96,nullptr,0.0f,effect_index);
                 colors_08[emission_index+3]=handle;
             }
             union { std::uint32_t word; AnimationColorChannels channels; } initial_color;
-            initial_color.word = reinterpret_cast<NativeAnimationColorWordView*>(owner)->color_ref_45d0e0();
+            initial_color.word = reinterpret_cast<NativeParticleAnimationAccess*>(owner)->color_ref_45d0e0();
             {
                 Animation* child=colors_08[emission_index+0].resolve();
                 if(child) {
@@ -155,7 +143,7 @@ int NativeParticleGridGroup::update() {
             vectors_c88[index]=velocity;
             stages_15e8[index]=1;
         } else {
-            const int elapsed=native_particle_age_limit_45d0a0(child);
+            const int elapsed=reinterpret_cast<NativeParticleAnimationAccess*>(child)->age_45d0a0();
             if (owner->variables().field_00+1<=elapsed && stages_15e8[index]==1) {
                 gradient=owner->vector_5bc_ref();
                 polar(tangent,native_polygon_random_5ba4c4.radians(),

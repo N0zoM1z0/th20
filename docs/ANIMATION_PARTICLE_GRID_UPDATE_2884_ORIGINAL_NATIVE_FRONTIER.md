@@ -3,6 +3,12 @@
 Immutable original target: Japanese TH20 Steamless v1.00a, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 
+**2026-11-11 source-present update:** This original-only boundary and
+vtable/E8/HIGHLOW proof remains valid. The previously missing complete
+function now has maintained, still NONEXACT C++ source; see
+[CORE/RECON-1107](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md).
+Its existing 2,884B native size and 99/25 relocation roles have not changed.
+
 > **CORE/RECON-966 updated frontier:** The original boundaries and native
 > relocation fingerprints below remain valid. A temporary in-memory Ghidra
 > function transaction recovered the entire provisional decompilation,

@@ -118,24 +118,25 @@ def verify_build_receipt(unit):
             raise ValueError(f"stale or incompatible build receipt: {key}; cold-build the unit")
     current = source_fingerprint(ROOT / unit["source"])
     recorded = receipt.get("inputs")
-    if not isinstance(recorded, dict) or recorded.keys() != current.keys():
+    if not isinstance(recorded, dict):
         raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
     headers = receipt.get("headers")
     if not isinstance(headers, dict):
         raise ValueError("stale or incompatible build receipt: headers; cold-build the unit")
     source = (ROOT / unit["source"]).resolve()
     included = {Path(path).resolve() for path in headers}
+    # Adding or moving an unrelated translation unit does not stale every
+    # original object. A newly introduced name that can shadow a captured
+    # include (or the owned source) still forces a cold rebuild.
+    captured_names = {path.name.casefold() for path in included | {source}}
+    if any(Path(name).name.casefold() in captured_names
+           for name in recorded.keys() ^ current.keys()):
+        raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
     for name, observed in current.items():
         path = (ROOT / name).resolve()
-        # The compiler's captured include closure determines which existing
-        # C/C++ files affect this object. The complete path set stays fixed,
-        # so added/removed files cannot change include resolution unnoticed.
-        if path != source and path not in included and path.suffix.lower() in {
-            ".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx",
-            ".inc", ".inl"
-        }:
+        if path != source and path not in included:
             continue
-        if recorded[name] != observed:
+        if recorded.get(name) != observed:
             raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
     for header, expected_hash in headers.items():
         if digest(header) != expected_hash:

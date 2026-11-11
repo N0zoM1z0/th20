@@ -2,14 +2,9 @@
 // Real C++ return-by-value AnimationHandle and the full native 922B callee;
 // the compiler owns the hidden return-object pointer, not a fake explicit
 // void* output argument. Full scoped strict proof in CORE/RECON-957/958.
-#include "AnimationFile.hpp"
+#include "NativeParticleSpawnFileView.hpp"
 #include <cstdint>
 namespace th20 {
-struct NativeParticleSpawnFileView : AnimationFile {
-    AnimationHandle spawn_45d210(const char* expected_stem,
-        std::int32_t script, const Vector3* position, float rotation,
-        std::int32_t special);
-};
 AnimationHandle NativeParticleSpawnFileView::spawn_45d210(
     const char* expected_stem,std::int32_t script,const Vector3* position,
     float rotation,std::int32_t special) {

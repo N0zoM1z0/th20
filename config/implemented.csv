@@ -1579,3 +1579,4 @@ th20::NativeRendererTextureMemoryView::finalize_uploaded_texture_451910
 th20::NativeRendererFormattedTextView::draw_formatted_text_44ac20
 th20::NativeRendererFormattedTextView::draw_centered_text_44add0
 th20::particle_effect_info_for_session_437520
+th20::NativeParticleGridGroup::update

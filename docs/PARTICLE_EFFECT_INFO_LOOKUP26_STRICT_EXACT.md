@@ -45,9 +45,10 @@ The prior 2,884B particle Update research source incorrectly represented
 the next original call `0x0045D100` as an unused free palette lookup,
 rather than the real `EffectInfo::animation_file(index)` method. The
 correct resource chain is `Session -> Context -> EffectInfo -> AnimationFile
--> spawn`. Reconstructing that larger call protocol is separate from the
-independently exact 26B selector and must not grant credit to the still
-nonexact 2,884B parent.
+-> spawn`. That larger call protocol is now present in the
+[maintained 2,884B Update source](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md),
+but must not grant credit to the still NONEXACT parent; this 26B selector
+has its own independent exact unit.
 
 Only this new owner was cold built and replayed:
 

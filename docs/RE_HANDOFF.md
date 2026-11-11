@@ -23,10 +23,10 @@ old status labels are **historical observations**, not current facts.
 | Executable | `resources/th20.exe` — Japanese Steamless TH20 v1.00a, **1,858,560 bytes** |
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded labels | Title/replay strings say **1.00c inside this same locked v1.00a file**; do not change targets based on the embedded label |
-| Ghidra provisional candidates | **6,928** (not all physical function boundaries independently established) |
+| Ghidra provisional candidates | **6,928 Ghidra candidates plus one original-only recovered 2,884B head** (not all Ghidra candidates have independent boundaries) |
 | Accepted source-tracked units | **1,579 whole strict units**; `functions.csv` has **1,597** nonempty source-file rows |
-| Canonical build providers | **433 pinned MSVC object + receipt pairs**; all currently protected |
-| Credited *game-authored* whole-native exact | **770 distinct original function heads /264,484 `.text` bytes** |
+| Canonical build providers | **434 pinned MSVC object + receipt pairs**; all currently protected |
+| Credited *game-authored* whole-native exact | **771 distinct original function heads /264,510 `.text` bytes** |
 | Whole game compiles, links or plays | **No** — native matching and standalone source coverage are different milestones |
 
 Those figures are a **dated snapshot**, not a counter to increment
@@ -117,8 +117,12 @@ links to original PE evidence. The immediate priorities are:
    Update now has an independently verified **integer stage owner at
    +0x15E8**; all eight exact consumers survived a focused six-object
    replay; its nine handle and four stage array accesses now use genuine
-   typed `std::array` indexing with unchanged native code. The 92B Stop
-   sibling remains whole strict exact; the 2,884B parent is NONEXACT.
+   typed `std::array` indexing. The full 2,884B virtual Update has since
+   been promoted to [maintained source](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md),
+   with four real Session→EffectInfo→AnimationFile→spawn protocols and the
+   genuine 25B/19B animation accessors. The pinned candidate remains
+   2,969B/763 i386, **NONEXACT**; its separately accepted 26B selector,
+   83B spawn and 92B Stop sibling retain exact credit only for themselves.
 
 ## Workflow and verification boundary
 
