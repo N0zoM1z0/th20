@@ -1586,3 +1586,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Glyph Mask 2,245B RGBA4444 live source-stride and 37-role Boss frontier](GLYPH_MASK_BOSS2245_RGBA4444_SOURCE_STRIDE_37_CALLS.md) — 37/37 original E8 target roles, all nine per-pixel/row stride getter calls, four real folded array indexes; maintained 2,141B/565-i386 NONEXACT, 24/24 scoped exact helper replays.
 
 - [CORE/RECON-1116 — exact 21B Animation alpha and 19B Vector3 field readers](ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md) — entire original 21/21B and 19/19B with real 4KB/9KB caller E8 evidence, zero PE/COFF relocations; +40 disjoint game-authored native bytes and 2/2 one-source scoped replay.
+
+- [Card spell-start 1,896B full 62-E8 /26-data original role graph](CARD_START1896_FULL_CALL_DATA_ROLES_FRONTIER.md) — independent true file getters and seven stage-table reloads, authentic PMR-string destructor lifetime, current full 1,848B nonexact source, affected exact Card/HUD children preserved.

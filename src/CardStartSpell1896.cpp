@@ -1,11 +1,14 @@
-// Original Card start 1,896B boss: main gameplay stages reconstructed
-// as a typed, compilable C++ research candidate. NONEXACT: original 62 E8,
-// 26 PE HIGHLOW, native PMR string/text task EH and live resource owners.
+// Original Card start 1,896B Boss: main gameplay stages reconstructed
+// as typed C++20. The genuine renderer-file/text-file getters and all
+// seven script-table global reads now recover all original 62 E8/26
+// HIGHLOW destination roles in order. Candidate 1848B remains NONEXACT;
+// PMR callable construction and original EH/local lifetimes remain open.
 // The retained TextJob/record table interfaces below remain provisional,
 // and must be independently resolved before whole-code acceptance.
 #include "Card.hpp"
 #include "NativeCardStartFlagsView.hpp"
 #include "NativeCardFinishViews.hpp"
+#include "NativeCardRendererFileView.hpp"
 #include "NativeCardSpellViews.hpp"
 #include "NativeCardTextPayload.hpp"
 #include "NativeCardAsciiTaskQueueView.hpp"
@@ -42,11 +45,9 @@ struct NativeCardScriptEntry {
 };
 static_assert(sizeof(NativeCardScriptEntry)==0xC);
 
-static const NativeCardScriptEntry& spell_script_entry(
-    std::int32_t group, std::int32_t variant) {
-    return *reinterpret_cast<const NativeCardScriptEntry*>(
-        native_card_script_table_5c6110+0x64+group*0x34+variant*0xC);
-}
+// Deliberately re-evaluate the native global table pointer at each of
+// its seven actual uses; no artificial cached table snapshot.
+#define CARD_SCRIPT_ENTRY(stage,option) (*reinterpret_cast<const NativeCardScriptEntry*>(native_card_script_table_5c6110+0x64+(stage)*0x34+(option)*0xC))
 
 void Card::start_spell(std::int32_t index, const char* spell_name,
                        std::int32_t duration_frames, std::int32_t group) {
@@ -89,22 +90,29 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
     frames = 1;
     spell_flags.bits &= ~0x40u;
 
-    // Three genuine Card info handles, each with independent native creation.
-    auto* text_file = current_ascii->animation_file;
-    info_handles[0] = text_file->spawn(nullptr,0,-1,nullptr);
-    info_handles[1] = text_file->spawn(nullptr,player_index+0x16,-1,nullptr);
-    info_handles[2] = text_file->spawn(nullptr,1,-1,nullptr);
+    // The first and third handles read the live AsciiInf/current renderer
+    // resource via its original 20B member getter. The text handle instead
+    // uses the 16B getter for the independent shared text-file owner.
+    // All three reads and spawns are independent original E8 calls.
+    info_handles[0] = native_card_renderer_5c0698->current_file_437950()->spawn(
+        nullptr,0,-1,nullptr);
+    info_handles[1] = reinterpret_cast<AsciiInf*>(native_card_renderer_5c0698)
+        ->text_animation_file()->spawn("text",player_index+0x16,-1,nullptr);
+    info_handles[2] = native_card_renderer_5c0698->current_file_437950()->spawn(
+        nullptr,1,-1,nullptr);
 
-    // Original retains a local PMR string and builds a separate task using
-    // this Card, the name, and the second animation's resolved VM object.
+    // The original PMR display name outlives its captured text payload,
+    // the queue submission and the subsequent Card effect/script spawns.
+    // Its own destructor is the penultimate native E8 at +0x746, not an
+    // early cleanup before the sound effect and reward update.
     // The actual 56B/23B capture constructor/destructor, 64B move and
     // 167B PMR copy constructor are independently whole exact; the queue's own
     // std::function capture/move EH remains a separate unresolved owner.
+    std::pmr::string display_name(spell_name);
     {
-        std::pmr::string display_name(spell_name);
         NativeCardTextPayload payload(this,display_name,
                                      info_handles[1].resolve());
-        reinterpret_cast<NativeCardAsciiTaskQueueView*>(current_ascii)->
+        reinterpret_cast<NativeCardAsciiTaskQueueView*>(native_card_renderer_5c0698)->
             enqueue_470180(std::function<void()>(std::move(payload)));
     }
     process_sound.request_effect(0x21,0);
@@ -114,8 +122,8 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
     auto* effect_file=context->effect_info()->animation_file(0);
     effect_handle=effect_file->spawn("effect",6,-1,nullptr);
     auto* boss=context->enemy_controller()->selected(0);
-    if (boss==nullptr) position=Vector3(0.0f,0.0f,0.0f);
-    else position=context->enemy_controller()->selected(0)->position_ref();
+    if (boss!=nullptr) position=context->enemy_controller()->selected(0)->position_ref();
+    else position=Vector3(0.0f,0.0f,0.0f);
     effect_handle.set_position(position);
     auto* var4=effect_handle.find_child(4,0);
     var4->variables().field_08=duration_frames;
@@ -123,11 +131,11 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
     var5->variables().field_08=duration_frames;
     duration=duration_frames;
 
-    // This table and the signed multiplication represent the game's five
-    // difficulty-dependent reward tiers, not a constant score credit.
+    // The original reads the clamped base before the player mode, then
+    // applies the actual difficulty-dependent tier; not a constant reward.
     const std::int32_t reward_multipliers[5]={500000,1000000,1500000,2000000,1000000};
-    std::int32_t multiplier_index=session.mode();
     const std::int32_t base=session.clamped_field_1f4();
+    std::int32_t multiplier_index=session.mode();
     const std::uint32_t raw_bonus=static_cast<std::uint32_t>(base)*
         static_cast<std::uint32_t>(reward_multipliers[multiplier_index]);
     bonus=static_cast<std::int32_t>(raw_bonus);
@@ -137,21 +145,24 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
     effect_file=context->effect_info()->animation_file(0);
     effect_file->spawn("effect",0xD,-1,nullptr);
 
-    // The original stage profile uses two 12-byte columns for Card indexes
-    // 0x58..0x5C and a fixed third column for a further optional animation.
+    // The real table at 0x005C6110 is mutable and re-read for *each*
+    // original tested/spawned file id, script and flag-group word. The
+    // macro expands actual typed pointer expressions seven times; caching
+    // a local table entry suppresses five genuine original PE HIGHLOW roles.
+    // Slots are 12B and each stage is 0x34B, with two main variants and
+    // a separately optional third script. No helper E8 exists in the PE.
     const std::int32_t variant=(index>=0x58 && index<=0x5C)?1:0;
-    const auto& primary=spell_script_entry(group,variant);
-    if (primary.file_id>=0) {
-        auto* file=enemy_controller(0)->animation_file(primary.file_id);
-        background_handle=file->spawn(nullptr,primary.script,-1,nullptr);
+    if (CARD_SCRIPT_ENTRY(group,variant).file_id>=0) {
+        auto* file=enemy_controller(0)->animation_file(CARD_SCRIPT_ENTRY(group,variant).file_id);
+        background_handle=file->spawn(nullptr,CARD_SCRIPT_ENTRY(group,variant).script,-1,nullptr);
     }
     reinterpret_cast<NativeCardStartFlagsView*>(this)->set_spell_flag9_488960(
-        static_cast<std::uint32_t>(primary.group));
+        static_cast<std::uint32_t>(CARD_SCRIPT_ENTRY(group,variant).group));
 
-    const auto& optional=spell_script_entry(group,2);
-    if (optional.file_id!=-1) {
-        auto* file=enemy_controller(0)->animation_file(optional.file_id);
-        file->spawn(nullptr,optional.script,-1,nullptr);
+    if (CARD_SCRIPT_ENTRY(group,2).file_id!=-1) {
+        auto* file=enemy_controller(0)->animation_file(CARD_SCRIPT_ENTRY(group,2).file_id);
+        file->spawn(nullptr,CARD_SCRIPT_ENTRY(group,2).script,-1,nullptr);
     }
 }
+#undef CARD_SCRIPT_ENTRY
 }

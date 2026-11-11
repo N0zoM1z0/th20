@@ -104,6 +104,14 @@ folded implementations, and post-`ret` switch/padding data.
    [queued task/EH frontier](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md);
    [Current centered frontier](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md);
    [other Bosses](RE_OPEN_BOSS_BACKLOG.md).
+   The 1,896B **Card Start Boss** now recovers its real two 20B renderer
+   getters, separate 16B text getter, seven independent script-table
+   global reads, and the PMR name lifetime ending after all spell work.
+   Source candidate **1,848B/490 i386** has **62/62 E8 callee roles**
+   and **26/26 data roles** in native order, but still **NONEXACT**
+   (original 1,896B/512); affected 128B+7B source units and existing
+   1,522B HUD/20B getter remained exact under bounded validation.
+   [Current Card Boss proof](CARD_START1896_FULL_CALL_DATA_ROLES_FRONTIER.md).
 5. **Huge source-absent dispatchers:** 12,140B Bullet command,
    41,967B Enemy ECL opcode, 39,470B Animation VM update. Exact children
    do not establish whole-parent exactness. Keep their full original
