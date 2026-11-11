@@ -1596,3 +1596,4 @@ th20::NativeRendererTextureMemoryView::create_uploaded_texture_44e8f0,0x0044E8F0
 th20::NativeRendererTextureMemoryView::finalize_uploaded_texture_451910,0x00451910,function
 th20::NativeRendererFormattedTextView::draw_formatted_text_44ac20,0x0044AC20,function
 th20::NativeRendererFormattedTextView::draw_centered_text_44add0,0x0044ADD0,function
+th20::particle_effect_info_for_session_437520,0x00437520,function

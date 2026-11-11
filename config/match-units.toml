@@ -28292,3 +28292,19 @@ relocations = [
   { offset = 0x180, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
   { offset = 0x199, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/RECON-1106: real 26B session-indexed EffectInfo resource owner.
+[units.particle_effect_info_lookup_26]
+source = "src/ParticleEffectInfoLookup26.cpp"
+object = "build/core1106-canonical/ParticleEffectInfoLookup26.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::particle_effect_info_for_session_437520"]
+symbol = "?particle_effect_info_for_session_437520@th20@@YAPAVEffectInfo@1@H@Z"
+target_address = 0x00437520
+size = 26
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0xD, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+  { offset = 0x14, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
+]
