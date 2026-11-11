@@ -44,8 +44,8 @@ Source-specific 1/1 cold replay:
 
 The changed shared Window header required only independent 1/1
 replays of the already exact 31B RepeatCounter and 164B no-wait
-Present units. Neither the original 574B screenshot/scene callee nor
-the 884B scheduler parent is yet exact, so no byte credit flows
+Present units. The original 574B screenshot/scene callee was subsequently made
+exact, but the 884B scheduler parent is still NONEXACT, so no byte credit flows
 into those parent functions.
 
 **One new distinct whole-exact game-authored function /385B**

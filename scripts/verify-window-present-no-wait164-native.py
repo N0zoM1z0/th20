@@ -45,7 +45,9 @@ def main():
  for other,n in [('window_active_repeat_31',31),('window_frame_clock_dispatch_32',32)]:
   p=cf.compare_unit(other)
   assert p['result']=='exact' and p['matched_bytes']==n
+ snap=cf.compare_unit('window_snapshot_scene_boss_574')
+ assert snap['result']=='exact' and snap['matched_bytes']==574
  print('PASS original complete Window Present/Reset 164B/49-i386 SHA, 9 E8/8 PE HIGHLOW physical sites and original destinations')
  print('PASS 164/164 byte natural C++ source, all 96/96 ordinary bytes, real MSVC scope NOP and separate present/reset D3D9 device lifetimes')
- print('PASS previously exact 31B repeat getter and 32B clock dispatch remain strictly exact; 574B scene callee still NONEXACT')
+ print('PASS previously exact 31B repeat getter and 32B clock dispatch remain strictly exact; 574B scene callee now whole strict exact')
 if __name__=='__main__':main()

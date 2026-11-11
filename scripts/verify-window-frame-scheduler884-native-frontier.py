@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Entire 884B original Window frame scheduler versus full nonexact 890B typed source.
+"""Entire 884B original Window scheduler versus 866B actual D3D9 typed source.
 
 Native E8/HIGHLOW targets come only from original SHA-pinned PE; COFF roles are
 derived from actual compiler relocations, not inferred from counts or prefixes.
@@ -88,9 +88,9 @@ def main():
      (0x0056C468,1.0),(0x0056C470,60.0),(0x0056CD88,1000.0),
      (0x0056CD78,2.5),(0x0056CD60,0.019),(0x0056CD58,0.013)):
   assert pe.raw_at(image,base,sec,addr,8)==struct.pack('<d',value)
- obj,rel=cf.object_function(OBJ,SYM,890)
+ obj,rel=cf.object_function(OBJ,SYM,866)
  source=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(obj),0))
- assert len(obj)==890 and len(source)==240
+ assert len(obj)==866 and len(source)==236
  calls=[r for r in rel if r['type']=='REL32']
  data=[r for r in rel if r['type']=='DIR32']
  assert len(calls)==32 and len(data)==21 and len(rel)==53
@@ -107,17 +107,17 @@ def main():
  source_data_sites=[r['offset'] for r in data]
  same_calls=sum(x==y for x,y in zip(orig_call_sites,source_call_sites))
  same_data=sum(x==y for x,y in zip(orig_data_sites,source_data_sites))
- assert same_calls==12 and same_data==6
+ assert same_calls==13 and same_data==7
  mask={i for r in rel for i in range(r['offset'],r['offset']+4)}
  ordinary=sum(a==z for i,(a,z) in enumerate(zip(raw,obj)) if i not in mask)
- assert ordinary==279,ordinary
+ assert ordinary==367,ordinary
  assert bytes(obj)!=raw
- for unit,n in [('window_active_repeat_31',31),('window_seconds_clock_boss_346',346),('window_frame_clock_dispatch_32',32)]:
+ for unit,n in [('window_active_repeat_31',31),('window_seconds_clock_boss_346',346),('window_frame_clock_dispatch_32',32),('window_snapshot_scene_boss_574',574)]:
   proof=cf.compare_unit(unit)
   assert proof['result']=='exact' and proof['matched_bytes']==n,unit
  print('PASS native original 884B/239 i386 complete SHA, 32 real E8 and 21 PE HIGHLOW site/destination identities')
- print('PASS complete candidate 890B/240 i386, all 32/32 original E8 CALLEE roles and 21/21 PE DATA target roles in native order')
+ print('PASS complete candidate 866B/236 i386, all 32/32 original E8 CALLEE roles and 21/21 PE DATA target roles in native order')
  print(f'NONEXACT: only {same_calls}/32 E8 and {same_data}/21 HIGHLOW physical offsets match, {ordinary} ordinary positional bytes equal')
- print('PASS original-unique 31B repeat selector, 346B WindowState seconds clock, 32B frame dispatch independently full exact')
+ print('PASS separate 31B RepeatCounter, 346B Window seconds clock, 32B dispatch and now exact 574B screenshot child remain full native exact')
  print('No 884B game parent exactness or newly credited original bytes. Candidate is real compiled gameplay source; no full-graph replay.')
 if __name__=='__main__':main()

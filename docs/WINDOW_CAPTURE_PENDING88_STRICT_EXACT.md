@@ -33,5 +33,6 @@ Source-bounded cold replay and native SHA evidence:
     scripts/repo-python scripts/verify-window-snapshot-scene574-native-frontier.py
 
 One distinct game-authored whole-exact original head /88 original bytes,
-with a single new exact unit. The enclosing 574B and 884B Window
-parents remain NONEXACT, so none of their parent bytes are credited.
+with a single new exact unit. The 574B enclosing screenshot Boss was subsequently reconstructed
+whole strict exact; the separate 884B scheduler is still NONEXACT.
+Only distinct accepted original game heads receive byte credit.

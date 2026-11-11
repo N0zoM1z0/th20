@@ -47,7 +47,9 @@ def main():
  for dep,n in [('window_present_no_wait_164',164),('window_active_repeat_31',31)]:
   p=cf.compare_unit(dep)
   assert p['result']=='exact' and p['matched_bytes']==n,dep
+ snap=cf.compare_unit('window_snapshot_scene_boss_574')
+ assert snap['result']=='exact' and snap['matched_bytes']==574
  print('PASS original 385B/94 i386 Window 1/60 frame pacing SHA, complete 12 E8/17 HIGHLOW physical sites/destinations')
  print('PASS canonical full 385/385B source, 269/269 ordinary bytes and all three original compiler NOPs; no fake locals/padding')
- print('PASS existing 164B no-wait Present and 31B Window repeat remain exact, 574B screenshot and 884B scheduler still NONEXACT')
+ print('PASS existing 164B no-wait Present and 31B Window repeat remain exact, 574B screenshot now whole exact; 884B scheduler still NONEXACT')
 if __name__=='__main__':main()

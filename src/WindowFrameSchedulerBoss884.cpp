@@ -1,22 +1,22 @@
-// Real game WindowState per-frame scheduler, original 0x004193E0
-// 884B / 239 i386 / 32 native E8 / 21 PE HIGHLOW.
-// This complete executable C++20 research candidate restores the genuine
-// 346B clock, all 14 exact 31B active-repeat getter calls, real Win32 timer,
-// Graphics/D3D vtable poll and loss/reset path, and 32 ordered callee roles.
-// The entire 884B parent is NONEXACT: do NOT credit any parent game bytes.
-// Frame/swapchain owner layouts are deliberately borrowed, never allocated.
+// Original game WindowState 884B frame scheduler (0x004193E0).
+// Complete gameplay/control-flow source, still NONEXACT.
+// Real D3D9 GetRasterStatus(UINT,D3DRASTER_STATUS*) at vtable +0x4C
+// supplies the original two-DWORD InVBlank/ScanLine output (not fake
+// result locals). Native Present and Reset at +0x44/+0x40 use
+// separately acquired D3D9 device pointers. The actual clock,
+// RepeatCounter, Renderer, WinMM imports and Graphics owner are borrowed.
+// The typed 866B candidate has all 32/32 native E8 target roles and
+// 21/21 native data destination roles; parent bytes remain uncredited.
 #include "NativeWindowFrameScheduleView.hpp"
 #include "NativeCardClockViews.hpp"
 #include "NativeGlyphCanvasView.hpp"
 #include <windows.h>
 #include <mmsystem.h>
+#include <d3d9.h>
 #include <cstdint>
 namespace th20 {
-struct NativeFrameDevice {
-    void** vtable;
-};
 struct NativeFrameGraphicsView {
-    NativeFrameDevice* device_412730();
+    IDirect3DDevice9* device_412730();
     void frame_recover_4dd840();
     void frame_complete_4dbd70();
 };
@@ -26,7 +26,7 @@ struct NativeFrameAnimationPoolView {
     void frame_restored_41d9f0();
 };
 extern NativeFrameAnimationPoolView* native_frame_renderer_5c0028;
-extern unsigned char native_frame_present_5c4e24;
+extern D3DPRESENT_PARAMETERS native_frame_present_5c4e24;
 extern std::int32_t native_frame_status_5c586c;
 extern const double native_scheduler_one_56c468;
 extern const double native_scheduler_sixty_56c470;
@@ -63,8 +63,10 @@ void NativeWindowFrameScheduleView::schedule_frame_4193e0() {
     }
     if (WINDOW().sleep_budget < 0) WINDOW().sleep_budget=0;
 
-    std::int32_t quit=0;
-    std::int32_t received=0;
+    // The original local is the native D3DRASTER_STATUS pair:
+    // raster.InVBlank at [ebp-0xC] and raster.ScanLine at [ebp-0x8].
+    D3DRASTER_STATUS raster{};
+    raster.ScanLine=0;
     const double now=NOW();
     if (now < WINDOW().current_draw_time)
         WINDOW().current_draw_time=now;
@@ -72,13 +74,11 @@ void NativeWindowFrameScheduleView::schedule_frame_4193e0() {
         if (reinterpret_cast<NativeGlyphCanvasView*>(&GFX())->canvas_width_415800()==0) {
             while (NOW()-WINDOW().current_draw_time < native_scheduler_poll_56cd58)
                 Sleep(1);
-            received=0;
+            raster.InVBlank=FALSE;
             while (1) {
-                NativeFrameDevice* device=GFX().device_412730();
-                auto fn=reinterpret_cast<long (__stdcall*)(NativeFrameDevice*,std::int32_t,std::int32_t*)>(
-                    (*reinterpret_cast<void**>(reinterpret_cast<std::uint8_t*>(device->vtable)+0x4C)));
-                quit=fn(device,0,&received);
-                if (quit!=0 || received!=0) break;
+                IDirect3DDevice9* device=GFX().device_412730();
+                if (device->GetRasterStatus(0,&raster)!=D3D_OK) break;
+                if (raster.InVBlank!=FALSE) break;
             }
         }
     } else {
@@ -88,14 +88,12 @@ void NativeWindowFrameScheduleView::schedule_frame_4193e0() {
     WINDOW().current_draw_time=NOW();
     update_scene_419760();
     {
-        NativeFrameDevice* device=GFX().device_412730();
-        auto fn=reinterpret_cast<long (__stdcall*)(NativeFrameDevice*,void*,void*,void*,void*)>((*reinterpret_cast<void**>(reinterpret_cast<std::uint8_t*>(device->vtable)+0x44)));
-        if (fn(device,nullptr,nullptr,nullptr,nullptr)<0) {
+        IDirect3DDevice9* device=GFX().device_412730();
+        if (device->Present(nullptr,nullptr,nullptr,nullptr)<0) {
             GFX().frame_recover_4dd840();
             native_frame_renderer_5c0028->frame_lost_41dbe0();
-            device=GFX().device_412730();
-            auto reset=reinterpret_cast<long (__stdcall*)(NativeFrameDevice*,void*)>((*reinterpret_cast<void**>(reinterpret_cast<std::uint8_t*>(device->vtable)+0x40)));
-            if (reset(device,&native_frame_present_5c4e24)==0) {
+            IDirect3DDevice9* reset_device=GFX().device_412730();
+            if (reset_device->Reset(&native_frame_present_5c4e24)==D3D_OK) {
                 native_frame_renderer_5c0028->frame_restored_41d9f0();
                 GFX().frame_complete_4dbd70();
                 window_frame_initialize_41a2c0();

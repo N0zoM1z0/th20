@@ -17,12 +17,17 @@ WindowState source path as typed and compilable C++20:
 - Consults the exact 31B active RepeatCounter selector exactly fourteen
   times, with real +0x2100 current-index, +0x2104 12B counter array,
   native budget comparison order, 15-step saturation and clamping.
-- Maintains the separate WindowState current-draw clock +0x20F0,
-  original 0.019 and 0.013 double frame wait thresholds, real
-  Graphics +0x104 predicate, and device poll at vtable +0x4C,
-  with Windows Sleep(1) only on the real waiting path.
-- Performs the original Window scene/frame update 0x00419760, actual
-  Graphics COM present at vtable +0x44 and recovery/reset at +0x40
+- Maintains the real WindowState current-draw clock +0x20F0,
+  original 0.019 and 0.013 double wait thresholds, and Graphics
+  +0x104 predicate. The vtable +0x4C operation is the genuine
+  IDirect3DDevice9::GetRasterStatus, not an arbitrary function
+  pointer: its actual eight-byte D3DRASTER_STATUS output contains
+  InVBlank and ScanLine. The source naturally reproduces the
+  original four x86 instructions initializing this pair.
+  Windows Sleep(1) runs only on the real waiting path.
+- Performs the now strictly exact 574B Window scene/frame update
+  at 0x00419760, genuine IDirect3DDevice9::Present at vtable +0x44,
+  and the independently acquired device Reset at +0x40
   when the presentation result signals failure. This preserves the
   real Graphics, Animation renderer owner, device presentation
   record at 0x005C4E24 and reset completion state at 0x005C586C.
@@ -50,23 +55,27 @@ invented local variables.
 | Restore original repeat/wait branch order | 899B /242 | 9/32 |
 | Correct +0x20E8/+0x20F0 fields and budget comparison | 899B /242 | 11/32 |
 | Direct byte-offset COM virtual methods and loop variants | 875–892B /235–241 | 11–12/32 |
-| Current maintained candidate | **890B /240** | **12/32** |
+| Prior raw COM-vtable frontier | 890B /240 | 12/32 |
+| Real D3D9 GetRasterStatus / Present / Reset, maintained | **866B /236** | **13/32** |
 
 The full current candidate has **32 compiler E8/REL32 and 21
 DIR32**, matching **all 32/32 native callee target roles** and
 **21/21 PE data destination roles** in exact original order.
-The initial eleven physical E8 addresses agree; total physical
-alignment is **12/32 E8 and 6/21 HIGHLOW**. Only **279 ordinary
-bytes** are equal at their same positional byte offsets after masking
-the candidate relocations. Thus original 884B/239i and candidate
-890B/240i remain **NONEXACT**. This new source adds zero original
+The first thirteen physical E8 sites now agree and the real data
+relocations align at **7/21** original physical positions. Overall
+**13/32 E8** and **7/21 HIGHLOW** positions are correct, with
+**367 positional ordinary bytes** agreeing after masking candidate
+relocations. Original 884B/239i versus candidate 866B/236i remains
+**NONEXACT**. The original full 32 E8/21 data target role order is
+unchanged. This new source adds zero original
 parent-game exact byte credit.
 
 The original SHA-pinned independent proof is
 scripts/verify-window-frame-scheduler884-native-frontier.py.
 It attests the entire real PE function, all E8/HIGHLOW original
 offsets and targets, true literal doubles, and independently exact
-31B repeat /346B seconds /32B frame dispatch child receipts. It
+31B repeat /346B seconds /32B frame dispatch /574B screenshot
+child receipts. It
 explicitly rejects whole parent exactness; source presence is not
 misrepresented as byte-exact reconstruction.
 
@@ -80,9 +89,15 @@ run full-graph cold replay or claim 884B exact:
     scripts/repo-python scripts/verify-window-frame-scheduler884-native-frontier.py
     scripts/repo-python scripts/validate-tracking.py --require-target
 
-The remaining source lowering frontier includes genuine COM method
-pointer/return lifetimes and the device poll input/output stack
-ordering. The separately exact 31B RepeatCounter leaf was accepted
+The remaining source lowering frontier is the native D3DRASTER_STATUS
+scanline/wait-loop local lifetime, long conditional branch placement
+and frame-sample stack lifetime. Do not add unused locals just to
+repair byte offsets; the new D3D9 API calls are source-semantic,
+not fabricated compiler stubs. The separately exact 31B RepeatCounter leaf was accepted
 in a preceding commit and must not be double counted.
 
-**Next dependent source recovered:** The genuine 574B screenshot/scene callee at 0x00419760 now has its own [complete typed 551B source frontier](WINDOW_SNAPSHOT_SCENE574_FULL_SOURCE_FRONTIER.md), with 20 original call/12 data target roles in native order. This 884B parent now calls it directly as NativeWindowFrameScheduleView::update_scene_419760(), rather than through an unrelated borrowed Graphics view. Both parents remain NONEXACT with no additional original byte credit.
+**Dependent Boss closed:** The real 574B screenshot/scene callee at
+0x00419760 is [whole 574/574B strict exact](WINDOW_SNAPSHOT_SCENE574_STRICT_EXACT.md),
+with original 20 E8/12 HIGHLOW physical positions and 446 ordinary bytes. This 884B parent now calls it directly as NativeWindowFrameScheduleView::update_scene_419760(), rather than through an unrelated borrowed Graphics view. The 574B screenshot callee has since reached whole strict exact.
+Only this 884B scheduling parent remains NONEXACT; its own bytes
+cannot be credited through its already exact child.

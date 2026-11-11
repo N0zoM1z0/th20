@@ -39,7 +39,7 @@ The original NOP is at +0x11; the dispatch-return NOP at +0x9F.
 
 Independent native proof:
 scripts/verify-window-present-no-wait164-native.py.
-The 574B screenshot callee remains source-present/NONEXACT, but
+The 574B screenshot callee has since been reconstructed whole strict exact;
 this caller is its own distinct original whole-exact function.
 The already exact 32B clock dispatch is not re-credited.
 
@@ -49,7 +49,7 @@ Source-local cold replay:
     scripts/repo-python scripts/verify-window-present-no-wait164-native.py
 
 Only the shared-header-affected 31B RepeatCounter unit additionally
-needed a separate 1/1 cold replay; the 884B and 574B nonexact
+needed a separate 1/1 cold replay; the 884B nonexact parent and 574B source
 source consumers were compiled/compared alone, not the full graph.
 
 One new distinct game-authored exact original head, **164 bytes**.

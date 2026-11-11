@@ -17,7 +17,7 @@ HEAD=0x00419760
 SIZE=574
 SHA='12c08490acf889b9d6ef21f67e6f85051f7eeb7bc00bb7b576450899b48ead57'
 SYM='?update_scene_419760@NativeWindowFrameScheduleView@th20@@QAEXXZ'
-OBJ=R/'build/gptweb20-window574/WindowSnapshotScene574.obj'
+OBJ=R/'build/core1135-canonical/WindowSnapshotScene574.obj'
 NATIVE_E8={
  0x037:0x0041BFC0,0x06F:0x00419C00,0x0B2:0x00417CD0,
  0x0C9:0x00417E40,0x0D5:0x0041C2E0,0x120:0x0041F220,
