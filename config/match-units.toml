@@ -29399,3 +29399,58 @@ relocations = [
   { offset = 0x72, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x7C, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
 ]
+
+# CORE/RECON-1147: original true native Renderer reset state +0x6000E0C.
+[units.renderer_device_reset_41db40]
+source = "src/RendererDeviceResetHooks108.cpp"
+object = "build/core1147-canonical/RendererDeviceResetHooks108.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationResetHooks::restart_state_41db40"]
+symbol = "?restart_state_41db40@NativeAnimationResetHooks@th20@@QAEXXZ"
+target_address = 0x0041DB40
+size = 21
+relocations = []
+
+# CORE/RECON-1147: original true native Renderer reset state +0x6000E0D.
+[units.renderer_device_reset_41db60]
+source = "src/RendererDeviceResetHooks108.cpp"
+object = "build/core1147-canonical/RendererDeviceResetHooks108.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationResetHooks::restart_state_41db60"]
+symbol = "?restart_state_41db60@NativeAnimationResetHooks@th20@@QAEXXZ"
+target_address = 0x0041DB60
+size = 21
+relocations = []
+
+# CORE/RECON-1147: original true native Renderer reset state +0x6000E0E.
+[units.renderer_device_reset_41db80]
+source = "src/RendererDeviceResetHooks108.cpp"
+object = "build/core1147-canonical/RendererDeviceResetHooks108.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationResetHooks::restart_state_41db80"]
+symbol = "?restart_state_41db80@NativeAnimationResetHooks@th20@@QAEXXZ"
+target_address = 0x0041DB80
+size = 21
+relocations = []
+
+# CORE/RECON-1147: original true native Renderer reset state +0x6000E08.
+[units.renderer_device_reset_41dba0]
+source = "src/RendererDeviceResetHooks108.cpp"
+object = "build/core1147-canonical/RendererDeviceResetHooks108.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationResetHooks::restart_state_41dba0"]
+symbol = "?restart_state_41dba0@NativeAnimationResetHooks@th20@@QAEXXZ"
+target_address = 0x0041DBA0
+size = 24
+relocations = []
+
+# CORE/RECON-1147: original true native Renderer reset state +0x6000E10.
+[units.renderer_device_reset_41dbc0]
+source = "src/RendererDeviceResetHooks108.cpp"
+object = "build/core1147-canonical/RendererDeviceResetHooks108.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationResetHooks::restart_state_41dbc0"]
+symbol = "?restart_state_41dbc0@NativeAnimationResetHooks@th20@@QAEXXZ"
+target_address = 0x0041DBC0
+size = 21
+relocations = []

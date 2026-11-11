@@ -7,20 +7,13 @@
 // because the original GS frame/cookie and stack lifetimes differ.
 // No synthetic stack arrays or padding to force a size-only match.
 #include "Graphics.hpp"
-#include "AnimationRuntimeOwner.hpp"
+#include "NativeAnimationResetHooksView.hpp"
 #include <cstdint>
 #include <d3d9.h>
 namespace th20 {
 extern const float native_reset_one_56c8cc;
 extern const float native_reset_thousand_56cdb0;
 extern const float native_reset_five_thousand_56cdb8;
-struct NativeAnimationResetHooks:AnimationPoolOwner {
-    void restart_state_41db40();
-    void restart_state_41db60();
-    void restart_state_41db80();
-    void restart_state_41dba0();
-    void restart_state_41dbc0();
-};
 void __cdecl window_frame_initialize_41a2c0() {
     process_graphics.get_device()->SetRenderState(static_cast<D3DRENDERSTATETYPE>(0x7),1);
     process_graphics.get_device()->SetRenderState(static_cast<D3DRENDERSTATETYPE>(0x89),0);

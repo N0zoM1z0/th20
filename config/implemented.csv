@@ -1625,3 +1625,8 @@ th20::NativeGraphicsModeAction::recompute_current_4da1f0
 th20::native_sqrt_439850
 th20::NativeFrameGraphicsView::frame_recover_4dd840
 th20::window_frame_initialize_41a2c0
+th20::NativeAnimationResetHooks::restart_state_41db40
+th20::NativeAnimationResetHooks::restart_state_41db60
+th20::NativeAnimationResetHooks::restart_state_41db80
+th20::NativeAnimationResetHooks::restart_state_41dba0
+th20::NativeAnimationResetHooks::restart_state_41dbc0

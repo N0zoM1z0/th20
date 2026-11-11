@@ -1640,3 +1640,8 @@ th20::NativeGraphicsModeAction::recompute_current_4da1f0,0x004DA1F0,function
 th20::native_sqrt_439850,0x00439850,function
 th20::NativeFrameGraphicsView::frame_recover_4dd840,0x004DD840,function
 th20::window_frame_initialize_41a2c0,0x0041A2C0,function
+th20::NativeAnimationResetHooks::restart_state_41db40,0x0041DB40,function
+th20::NativeAnimationResetHooks::restart_state_41db60,0x0041DB60,function
+th20::NativeAnimationResetHooks::restart_state_41db80,0x0041DB80,function
+th20::NativeAnimationResetHooks::restart_state_41dba0,0x0041DBA0,function
+th20::NativeAnimationResetHooks::restart_state_41dbc0,0x0041DBC0,function

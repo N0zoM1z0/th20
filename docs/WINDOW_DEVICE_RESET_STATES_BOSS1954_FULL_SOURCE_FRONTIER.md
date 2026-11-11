@@ -72,3 +72,10 @@ exact unit, no full cold graph):
 
 The separately exact 884B Window scheduler and its other exact
 callers retain their receipts and their original byte credit.
+
+The five real Renderer reset-hook callees now have a shared borrowed
+C++ declaration and [five separate whole-exact implementations totaling
+108B](RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md).
+Their canonical replay is 5/5 units in one MSVC cold source object.
+This improves the real source linkage boundary but does not change
+the 1,954B parent GS/cookie mismatch; it remains NONEXACT.

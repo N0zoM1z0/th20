@@ -650,11 +650,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041D350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D9F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DB40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DB60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DB80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DBA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041DBC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041DB40,authored,Animation,authored,high,"CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md; original game-specific Renderer device reset state setter +0x6000E0C=0xB, entire 21B/9-i386 code natural MSVC exact without relocations, unique original physical head"
+0x0041DB60,authored,Animation,authored,high,"CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md; original game-specific Renderer device reset state setter +0x6000E0D=0xFF, entire 21B/9-i386 code natural MSVC exact without relocations, unique original physical head"
+0x0041DB80,authored,Animation,authored,high,"CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md; original game-specific Renderer device reset state setter +0x6000E0E=0xFF, entire 21B/9-i386 code natural MSVC exact without relocations, unique original physical head"
+0x0041DBA0,authored,Animation,authored,high,"CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md; original game-specific Renderer device reset state setter +0x6000E08=0xFFFFFFFF, entire 24B/9-i386 code natural MSVC exact without relocations, unique original physical head"
+0x0041DBC0,authored,Animation,authored,high,"CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md; original game-specific Renderer device reset state setter +0x6000E10=0xFF, entire 21B/9-i386 code natural MSVC exact without relocations, unique original physical head"
 0x0041DBE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DCC0,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041DCE0,authored,Graphics,authored,high,"CORE/RECON-1139; docs/GRAPHICS_VIEWPORT_CLIP284_STRICT_EXACT.md; game-authored Graphics viewport/clip selector 284B full native exact, 67 i386, two original calls/four PE data fields and genuine 0x16C-stride viewport array; separate original physical 280B sibling"
