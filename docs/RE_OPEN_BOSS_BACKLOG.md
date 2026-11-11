@@ -1,3 +1,5 @@
+
+**Window scheduler 884B CLOSED whole strict exact:** Original 0x004193E0 now [884B/239-i386 strict native source exact](WINDOW_FRAME_SCHEDULER_BOSS884_STRICT_EXACT.md), all 32 native E8 and 21 HIGHLOW physical locations/destinations, 672/672 ordinary bytes. The old 866B/236-instruction D3D9 source and NONEXACT records in earlier backlog sections are superseded research history. Restoring the original observed scanline local, real double clock sample and scoped D3D9 Reset yields an authentic original NOP and all 884 bytes. One 1/1 scoped cold replay, +884 unique game-authored bytes, no double counting exact callees.
 # TH20 — open native reconstruction Bosses and source frontiers
 
 **Live backlog checked 2026-11-11.** This is a *working priority map*;

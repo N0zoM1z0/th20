@@ -16,8 +16,8 @@ for more candidates. Git history preserves earlier checkpoints.
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
 | Functions with provisional source mapping | **1,639** rows; includes unaccepted and excluded mappings |
 | Source-present / implemented | **1,625** functions |
-| Canonical exact units / compiler objects | **1,622** units / **468** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **808** distinct original heads / **273,531** `.text` bytes |
+| Canonical exact units / compiler objects | **1,623** units / **469** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **809** distinct original heads / **274,415** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window frame scheduler Boss** 0x004193E0 is now [whole 884/884B strict exact](WINDOW_FRAME_SCHEDULER_BOSS884_STRICT_EXACT.md), **239 i386, all 32 original E8 +21 PE HIGHLOW physical positions and targets and 672/672 ordinary bytes**. Authentic scanline snapshot/time sample and scoped D3D9 Reset device restore original compiler NOP; 1/1 source-only canonical cold replay. Former 866B/NONEXACT notes below are historical frontiers; the separately accepted 31B RepeatCounter, 346B clock, 574B screenshot and 32B dispatch are not double-counted.
 
 - **Graphics camera sqrt adapter** 0x00439850 is [source-native 35/35B strict exact, authorship review](GRAPHICS_CAMERA_SQRT_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md): authentic float-to-double sqrt-to-float return, one original E8 to 0x00550000, 31 ordinary bytes; one-source 1/1 replay. Possible generated CRT/math wrapper, origin UNKNOWN, **no new game-authored head/byte credit**; the 846B camera Boss remains separately whole exact.
 

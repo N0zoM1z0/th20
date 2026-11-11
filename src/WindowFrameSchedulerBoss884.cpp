@@ -1,12 +1,10 @@
-// Original game WindowState 884B frame scheduler (0x004193E0).
-// Complete gameplay/control-flow source, still NONEXACT.
-// Real D3D9 GetRasterStatus(UINT,D3DRASTER_STATUS*) at vtable +0x4C
-// supplies the original two-DWORD InVBlank/ScanLine output (not fake
-// result locals). Native Present and Reset at +0x44/+0x40 use
-// separately acquired D3D9 device pointers. The actual clock,
-// RepeatCounter, Renderer, WinMM imports and Graphics owner are borrowed.
-// The typed 866B candidate has all 32/32 native E8 target roles and
-// 21/21 native data destination roles; parent bytes remain uncredited.
+// Whole original game WindowState 884B/239-i386 frame scheduling Boss.
+// The genuine D3D9 GetRasterStatus output uses the native two-DWORD
+// raster record and its observed previous-scanline snapshot local.
+// The frame clock stores the original sampled double at stack -0x54.
+// A distinct D3D9 Reset device scope naturally reproduces the native
+// 0x004193E0 code and the compiler-generated NOP after device loss.
+// No handmade instructions, padding, or synthetic object allocation.
 #include "NativeWindowFrameScheduleView.hpp"
 #include "NativeCardClockViews.hpp"
 #include "NativeGlyphCanvasView.hpp"
@@ -72,10 +70,12 @@ void NativeWindowFrameScheduleView::schedule_frame_4193e0() {
         WINDOW().current_draw_time=now;
     if (now-WINDOW().current_draw_time < native_scheduler_refresh_56cd60) {
         if (reinterpret_cast<NativeGlyphCanvasView*>(&GFX())->canvas_width_415800()==0) {
+            std::uint32_t captured_scanline=0;
             while (NOW()-WINDOW().current_draw_time < native_scheduler_poll_56cd58)
                 Sleep(1);
             raster.InVBlank=FALSE;
             while (1) {
+                captured_scanline=raster.ScanLine;
                 IDirect3DDevice9* device=GFX().device_412730();
                 if (device->GetRasterStatus(0,&raster)!=D3D_OK) break;
                 if (raster.InVBlank!=FALSE) break;
@@ -92,17 +92,19 @@ void NativeWindowFrameScheduleView::schedule_frame_4193e0() {
         if (device->Present(nullptr,nullptr,nullptr,nullptr)<0) {
             GFX().frame_recover_4dd840();
             native_frame_renderer_5c0028->frame_lost_41dbe0();
-            IDirect3DDevice9* reset_device=GFX().device_412730();
-            if (reset_device->Reset(&native_frame_present_5c4e24)==D3D_OK) {
-                native_frame_renderer_5c0028->frame_restored_41d9f0();
-                GFX().frame_complete_4dbd70();
-                window_frame_initialize_41a2c0();
-                native_frame_status_5c586c=2;
+            {
+                IDirect3DDevice9* reset_device=GFX().device_412730();
+                if (reset_device->Reset(&native_frame_present_5c4e24)==D3D_OK) {
+                    native_frame_renderer_5c0028->frame_restored_41d9f0();
+                    GFX().frame_complete_4dbd70();
+                    window_frame_initialize_41a2c0();
+                    native_frame_status_5c586c=2;
+                }
             }
         }
     }
     window_frame_clock_dispatch_4193c0();
-    NOW();
+    const double clock_sample_after_present=NOW();
     if (REPEAT().second>0) {
         timeBeginPeriod(1);
         Sleep(REPEAT().second);

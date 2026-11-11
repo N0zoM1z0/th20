@@ -1,4 +1,6 @@
 # Window frame scheduler Boss 884B — complete typed source, NONEXACT
+**Historical NONEXACT source frontier: superseded by [strict whole original 884B exact](WINDOW_FRAME_SCHEDULER_BOSS884_STRICT_EXACT.md).** The size/position comparisons below describe earlier candidates only. The current accepted 884B native source matches all call/data physical sites and ordinary bytes.
+
 
 Target: Japanese Steamless TH20 v1.00a, immutable SHA-256
 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
