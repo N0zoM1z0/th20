@@ -28825,3 +28825,19 @@ relocations = [
   { offset = 0x147, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x152, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1124: native Window/Frame 32B game dispatch, one real Card-clock downstream.
+[units.window_frame_clock_dispatch_32]
+source = "src/WindowFrameClockDispatch32.cpp"
+object = "build/core1124-canonical/WindowFrameClockDispatch32.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::window_frame_clock_dispatch_4193c0"]
+symbol = "?window_frame_clock_dispatch_4193c0@th20@@YAXXZ"
+target_address = 0x004193C0
+size = 32
+relocations = [
+  { offset = 0x5, type = "DIR32", symbol = "?native_frame_device_5c4a00@th20@@3PAUNativeFrameDeviceClockView@1@A", target = 0x005C4A00 },
+  { offset = 0xE, type = "DIR32", symbol = "?native_frame_device_5c4a00@th20@@3PAUNativeFrameDeviceClockView@1@A", target = 0x005C4A00 },
+  { offset = 0x13, type = "REL32", symbol = "?frame_seconds_4abd50@NativeFrameDeviceClockView@th20@@QAEXXZ", target = 0x004ABD50 },
+  { offset = 0x19, type = "REL32", symbol = "?card_clock_update_487560@th20@@YAXXZ", target = 0x00487560 },
+]
