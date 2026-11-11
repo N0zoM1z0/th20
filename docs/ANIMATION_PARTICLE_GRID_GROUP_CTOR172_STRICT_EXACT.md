@@ -58,6 +58,17 @@ Existing 200-color and 200-Vector3 array ctor units: exact (83/83 each)
 Exact replay: 4/4 units, 2 cold objects
 ```
 
+**2026-11-11 event-ABI closure:** The 51B grid virtual event now strictly
+matches the original by forwarding its Timer increment through a natural
+`NativeGridTimedDelta::operator+=` aggregate member. This 16B aggregate
+contains the genuine `Timer` at offset zero. Its group constructor uses
+`timer_1930{}` rather than parenthesized `timer_1930()`, which retains
+**the original direct E8 `+0x9D -> 0x00422D90` to `Timer::Timer()`** and
+all **172/172 native constructor bytes**. The whole 51B event is independently
+[whole strict exact](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md).
+The entire eight-unit particle class/header include closure was rebuilt
+and passed again; no original existing bytes were recredited.
+
 **2026-11-11 type correction:** The complete original 2,884B particle
 Update observes 0/1/2 integer stage transitions at `+0x15E8`, so the
 shared header now declares `std::array<std::int32_t,200> stages_15e8`.
