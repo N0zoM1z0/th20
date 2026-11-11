@@ -24,7 +24,7 @@ The source-owned layout is established by actual original call offsets:
 | --- | --- |
 | `+0x08` | 200 four-byte `AnimationHandle` color cells; constructor E8 `+0x22 -> 0x0045C190` |
 | `+0x328` and `+0xC88` | Two independently real 200-element `Vector3` arrays, 2,400 bytes each; ctor E8 `+0x30/+0x3E -> 0x0045C130` |
-| `+0x15E8` | 200 floats cleared through genuine 800B `memset` E8 `+0x54 -> 0x00544760` |
+| `+0x15E8` | 200 four-byte integer stage words cleared through genuine 800B `memset` E8 `+0x54 -> 0x00544760`; integer type is corroborated by original 2,884B Update |
 | `+0x1908`, `+0x1914`, `+0x1920` | Three 12-byte Vector3 default constructors E8 `+0x65/+0x73/+0x81 -> 0x00422E10` |
 | `+0x192C` | One naturally zero-initialized float |
 | `+0x1930` | Native 16B Timer ctor E8 `+0x9D -> 0x00422D90`; total group size `0x1940` |
@@ -40,7 +40,7 @@ accepted* original folded 20B ordinary destructor, and E8 `+0x20 ->
 [`src/NativeParticleGridGroup.hpp`](../src/NativeParticleGridGroup.hpp)
 holds one layout-asserted polymorphic class with real arrays and Timer.
 The natural [`src/AnimationParticleGridGroupCtor172.cpp`](../src/AnimationParticleGridGroupCtor172.cpp)
-expresses ordinary base and member initialization, with the float array
+expresses ordinary base and member initialization, with the integer stage array
 value-initialized to zero. There is no manual memset, fake vptr, C++
 assembly or artificial byte padding. Both distinct array constructors
 were [separately accepted 83/83 each](ANIMATION_PARTICLE_GRID_ARRAYS200_78_STRICT_EXACT.md)
@@ -57,6 +57,15 @@ animation_particle_grid_scalar_delete_49: exact (49/49 bytes)
 Existing 200-color and 200-Vector3 array ctor units: exact (83/83 each)
 Exact replay: 4/4 units, 2 cold objects
 ```
+
+**2026-11-11 type correction:** The complete original 2,884B particle
+Update observes 0/1/2 integer stage transitions at `+0x15E8`, so the
+shared header now declares `std::array<std::int32_t,200> stages_15e8`.
+The ctor's 800-byte zeroing remains unchanged and does not itself prove a
+float representation. Six header-dependent compiler objects were rebuilt;
+all eight exact units passed full strict comparison (including this 172B
+ctor and 49B deleting wrapper). This type correction does **not** admit
+the still nonexact 2,884B Update Boss.
 
 Only the original 172B custom group constructor receives **one
 newly credited game-authored function /172 `.text` bytes**. The generated

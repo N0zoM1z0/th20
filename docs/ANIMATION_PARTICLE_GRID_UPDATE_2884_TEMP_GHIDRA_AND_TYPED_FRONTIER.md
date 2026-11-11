@@ -90,16 +90,25 @@ addresses, call targets and stack local layout remain different.
 The source does **not** satisfy a canonical strict replay and must not
 enter the original authored exact accounting.
 
-One key **semantic warning** is genuinely discovered rather than
-papered over: the previously strict 172B constructor's shared header
-models `+0x15E8` as `std::array<float,200>`, but the original 2,884B
-Update accesses these words as **integer stage flags** 0/1/2.
-The experiment uses an explicit provisional integer view over that
-existing storage rather than changing the shared header and silently
-risking its independently exact ctor/factory/draw units. A future
-canonical cleanup should reconcile source type/ODR, check all directly
-affected strict object units, and avoid inferring gameplay floats from
-the legacy member name.
+**2026-11-11 resolved type frontier:** The original 2,884B Update's
+`+0x15E8` stage transitions are integers `0 -> 1 -> 2`, not floats.
+The shared `NativeParticleGridGroup` now declares exactly **200
+`std::int32_t` stage words** at this original offset, and its 172B
+constructor initializes the typed array to zero. The original ctor's
+800B `memset` did not distinguish float and integer values, so this
+type correction relies on the independently attested Update instruction
+reads and comparisons.
+
+Canonical compiler receipts identified **eight exact units in six affected
+object providers**. All six objects were rebuilt under the locked MSVC
+profile and **8/8 affected strict units remain exact**, covering the
+172B constructor, 49B deleting wrapper, 156B factory, 47B create,
+31B config, 92B stop and both 200-element array constructors. The
+research-only 2,884B Update still compiles as **2,953B/764 instructions,
+99 REL32/25 DIR32**. Its use of `Vector3::operator[]` as a byte-lane
+alias remains provisional; the now-correct integer storage does not
+prove that accessor's original C++ spelling. No parent-body exactness
+is claimed and no unrelated provider was rebuilt.
 
 Some `0x00437520` effect-file, `0x0045D100` palette/file, and
 `0x0045D0A0` animation Timer accessor source names/signatures in the

@@ -3,9 +3,10 @@
 // Reproducible C++20 partial semantic reconstruction, 2953B/764 i386 output
 // vs original 2884B/768 i386, despite matching 99 call/25 data reloc counts.
 // DO NOT promote or claim authored original exact credit from this probe.
-// This noncanonical draft uses a provisional int view of a historical
-// std::array<float,200> field (original code accesses integer states 0/1/2)
-// and provisional file/palette member origins; do not instantiate as runtime.
+// The group now declares the actual integer stage words at +0x15E8.
+// The Vector3-indexed alias below is still only a compiler/ABI hypothesis:
+// original E8 calls access the same four-byte words through a folded leaf.
+// File/palette member origins remain provisional; do not instantiate as runtime.
 // Original body has 768 i386 instructions, 99 E8, 25 HIGHLOW; this is
 // a typed semantic draft with unresolved native file/palette helper APIs.
 #include "NativeParticleGridGroup.hpp"
@@ -122,7 +123,7 @@ int NativeParticleGridGroup::update() {
         Animation* child=reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](index))->resolve();
         if (!child) continue;
         child->set_slowdown(owner->slowdown());
-        if (reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&scalars_15e8)->operator[](index))==0) {
+        if (reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))==0) {
             position=extra_1914;
             polar(tangent,native_polygon_random_5ba4c4.radians(),
                   native_polygon_random_5ba4c4.unit()*native_particle_radius_150);
@@ -149,10 +150,10 @@ int NativeParticleGridGroup::update() {
                 static_cast<int>(owner->variables().field_00),position,tangent,gradient,velocity);
             positions_328[index]=gradient;
             vectors_c88[index]=velocity;
-            reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&scalars_15e8)->operator[](index))=1;
+            reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))=1;
         } else {
             const int elapsed=native_particle_age_limit_45d0a0(child);
-            if (owner->variables().field_00+1<=elapsed && reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&scalars_15e8)->operator[](index))==1) {
+            if (owner->variables().field_00+1<=elapsed && reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))==1) {
                 gradient=owner->vector_5bc_ref();
                 polar(tangent,native_polygon_random_5ba4c4.radians(),
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
@@ -164,7 +165,7 @@ int NativeParticleGridGroup::update() {
                 reinterpret_cast<NativeAnimationInterpolationForwardView*>(child)->configure_45d150(
                     static_cast<int>(owner->variables().field_00),
                     positions_328[index],vectors_c88[index],gradient,tangent);
-                reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&scalars_15e8)->operator[](index))=2;
+                reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))=2;
             }
         }
         ++processed;

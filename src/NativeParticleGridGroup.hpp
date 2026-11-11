@@ -13,7 +13,8 @@ public:
     std::array<AnimationHandle,200> colors_08;
     std::array<Vector3,200> positions_328;
     std::array<Vector3,200> vectors_c88;
-    std::array<float,200> scalars_15e8;
+    // Update treats all 200 words as integer stages (0, 1, 2), not floats.
+    std::array<std::int32_t,200> stages_15e8;
     Vector3 extra_1908;
     Vector3 extra_1914;
     Vector3 extra_1920;
@@ -31,7 +32,7 @@ public:
 static_assert(offsetof(NativeParticleGridGroup,colors_08)==0x08);
 static_assert(offsetof(NativeParticleGridGroup,positions_328)==0x328);
 static_assert(offsetof(NativeParticleGridGroup,vectors_c88)==0xC88);
-static_assert(offsetof(NativeParticleGridGroup,scalars_15e8)==0x15E8);
+static_assert(offsetof(NativeParticleGridGroup,stages_15e8)==0x15E8);
 static_assert(offsetof(NativeParticleGridGroup,extra_1908)==0x1908);
 static_assert(offsetof(NativeParticleGridGroup,scalar_192c)==0x192C);
 static_assert(offsetof(NativeParticleGridGroup,timer_1930)==0x1930);

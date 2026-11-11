@@ -113,7 +113,10 @@ links to original PE evidence. The immediate priorities are:
    Enemy ECL opcode dispatcher** and **39,470B Animation VM**.
    Their independently exact descendants do not make these
    parents exact. The backlog also covers Player/particle/mesh
-   frontiers and smaller exact-leaf opportunities.
+   frontiers and smaller exact-leaf opportunities. The 2,884B particle
+   Update now has an independently verified **integer stage owner at
+   +0x15E8**; all eight exact consumers survived a focused six-object
+   replay, but the 2,884B research source remains NONEXACT.
 
 ## Workflow and verification boundary
 
