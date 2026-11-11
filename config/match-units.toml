@@ -29219,3 +29219,19 @@ relocations = [
   { offset = 0xD6, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0xF8, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
 ]
+
+# CORE/RECON-1140: 53B Graphics Worker stop/detach-and-join leaf.
+[units.graphics_worker_close_53]
+source = "src/GraphicsWorkerClose53.cpp"
+object = "build/core1140-canonical/GraphicsWorkerClose53.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeTickGraphicsView::bail_out_4d9e30"]
+symbol = "?bail_out_4d9e30@NativeTickGraphicsView@th20@@QAEXXZ"
+target_address = 0x004D9E30
+size = 53
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?graphics_worker_close_message_571e48@th20@@3QBDB", target = 0x00571E48 },
+  { offset = 0xD, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x1E, type = "REL32", symbol = "?close_and_detach@Worker@th20@@QAEXXZ", target = 0x004BA8B0 },
+  { offset = 0x2C, type = "REL32", symbol = "?close_and_join@Worker@th20@@QAEXXZ", target = 0x0040BCF0 },
+]

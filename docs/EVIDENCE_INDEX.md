@@ -1638,3 +1638,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Window paced frame controller Boss 370B strict whole-native exact](WINDOW_FRAME_PACED_BOSS370_STRICT_EXACT.md) — original 97 i386, 15/15 E8 and 15/15 PE HIGHLOW physical relocations with native targets, 250/250 ordinary bytes; true gated scene, FunctionChain and real D3D9 SetTexture, existing 385B Presenter, bounded source cold replay and six exact header consumers; one distinct new 370B authored original head.
 
 - [Graphics viewport clip switch 284B whole strict exact](GRAPHICS_VIEWPORT_CLIP284_STRICT_EXACT.md) — native 67 x86, Graphics+0x278 ViewportState stride0x16C, D3D9 SetViewport, unadjusted+0xE0 and adjusted+0x104 views, 2 native E8 /4 HIGHLOW and all 260 ordinary bytes; 1/1 scoped replay, one unique original 284B head distinct from sibling 280B.
+
+- [Graphics frame Worker cleanup 53B whole strict exact](GRAPHICS_WORKER_CLOSE53_STRICT_EXACT.md) — real Graphics+0xD90 Worker close/detach then join, original SyncCloseSubThread message, 3/3 native E8 and one HIGHLOW physical target plus 37/37 ordinary bytes; 1/1 source-local replay and +53 distinct authored game bytes.

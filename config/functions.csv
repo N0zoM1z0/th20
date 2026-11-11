@@ -4046,7 +4046,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004D9C40,363,0x004D9DAA,FUN_004d9c40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004D9DB0,67,0x004D9DF2,FUN_004d9db0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004D9E00,38,0x004D9E25,Gdiplus::Image::SetStatus,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004D9E30,53,0x004D9E64,FUN_004d9e30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004D9E30,53,0x004D9E64,FUN_004d9e30,th20::NativeTickGraphicsView::bail_out_4d9e30,Graphics,matching,100.00,__thiscall,?bail_out_4d9e30@NativeTickGraphicsView@th20@@QAEXXZ,false,src/GraphicsWorkerClose53.cpp,CORE/RECON-1140; docs/GRAPHICS_WORKER_CLOSE53_STRICT_EXACT.md,authored,"Complete 53B/17-i386 original game Graphics Worker shutdown leaf: native process Graphics+0xD90 real Worker, actual SyncCloseSubThread diagnostic literal, close_and_detach then close_and_join, original compiler NOP at +0x30. Full original 3 E8 and 1 HIGHLOW physical sites and native targets, 37/37 ordinary bytes, 1/1 MSVC C++20 strict replay. Already reconstructed Worker and ECL callees not re-credited."
 0x004D9E70,34,0x004D9E91,FUN_004d9e70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004D9EA0,187,0x004D9F5A,FUN_004d9ea0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004D9F60,435,0x004DA112,FUN_004d9f60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

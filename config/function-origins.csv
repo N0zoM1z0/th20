@@ -4046,7 +4046,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D9C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D9E30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D9E30,authored,Graphics,authored,high,CORE/RECON-1140; docs/GRAPHICS_WORKER_CLOSE53_STRICT_EXACT.md; unique original 53B/17-i386 game Graphics Worker shutdown method with actual diagnostics and two real Worker calls; whole-native exact
 0x004D9E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9EA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9F60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
