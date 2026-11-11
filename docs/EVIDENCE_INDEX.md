@@ -1588,3 +1588,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [CORE/RECON-1116 — exact 21B Animation alpha and 19B Vector3 field readers](ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md) — entire original 21/21B and 19/19B with real 4KB/9KB caller E8 evidence, zero PE/COFF relocations; +40 disjoint game-authored native bytes and 2/2 one-source scoped replay.
 
 - [Card spell-start 1,896B full 62-E8 /26-data original role graph](CARD_START1896_FULL_CALL_DATA_ROLES_FRONTIER.md) — independent true file getters and seven stage-table reloads, authentic PMR-string destructor lifetime, current full 1,848B nonexact source, affected exact Card/HUD children preserved.
+
+- [Card bit-8 getter 23B whole strict exact](CARD_FLAG8_GETTER23_STRICT_EXACT.md) — 6 original physical E8 caller sites, actual Card flags offset, 23/23 original bytes, independent exact child of 875B Card/6073B battle Bosses.

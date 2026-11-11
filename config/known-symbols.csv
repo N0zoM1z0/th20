@@ -883,3 +883,4 @@ address,name,module,confidence,evidence
 0x00445A40,th20::NativeAnimationPoolStagingView::reset_staging_buffers_445a40,Animation,high,CORE/RECON-1115; docs/ANIMATION_POOL_STAGING_RESET111_STRICT_EXACT.md
 0x0044C650,th20::NativeAnimationReadView::color_alpha_44c650,Animation,high,CORE/RECON-1116; docs/ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md
 0x0044CB00,th20::NativeAnimationReadView::vector_484_44cb00,Animation,high,CORE/RECON-1116; docs/ANIMATION_FIELD_READ_LEAVES_21_19_STRICT_EXACT.md
+0x004888A0,th20::NativeCardBit8GetterView::flag8_value_4888a0,CardSpell,high,CORE/RECON-1117; docs/CARD_FLAG8_GETTER23_STRICT_EXACT.md

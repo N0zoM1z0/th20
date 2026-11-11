@@ -28476,3 +28476,15 @@ symbol = "?vector_484_44cb00@NativeAnimationReadView@th20@@QAEAAUVector3@2@XZ"
 target_address = 0x0044CB00
 size = 19
 relocations = []
+
+# CORE/RECON-1117: real game Card bit8 getter, original 23B/11-i386.
+# Two original Card tick E8 and four battle-controller E8; no relocations.
+[units.card_flag8_getter_23]
+source = "src/CardFlag8Getter23.cpp"
+object = "build/core1117-canonical/CardFlag8Getter23.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardBit8GetterView::flag8_value_4888a0"]
+symbol = "?flag8_value_4888a0@NativeCardBit8GetterView@th20@@QBEIXZ"
+target_address = 0x004888A0
+size = 23
+relocations = []

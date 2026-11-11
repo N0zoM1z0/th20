@@ -113,3 +113,5 @@ resolved, not ignored. Commit stable source work with **`gpt-web:`**;
 only replay source units actually touched, never a full cold replay.
 For documentation/ignored-artifact-only cleanup there are **zero affected
 native units** and no reason to rebuild MSVC objects.
+
+**New native Card tick/battle-child frontier:** Card bit-8 getter `0x004888A0` at 23B now [whole strict exact](CARD_FLAG8_GETTER23_STRICT_EXACT.md) and is called six times by original 875B Card tick `0x00486F60` and 6,073B battle control `0x004B2C90`; both parent Bosses remain unaccepted.
