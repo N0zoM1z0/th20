@@ -65,5 +65,5 @@ To reproduce:
 **One newly credited game-authored original head /437 native bytes**.
 The 32B dispatch, 346B WindowState seconds clock, and 645B Card time
 settlement are already separately credited, with no duplicate bytes.
-The 113B frame-pipeline function and still-larger Window scheduling
+The 113B frame-pipeline function was subsequently [reconstructed whole exact](WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md); still-larger Window scheduling
 Bosses remain open, and no playable full-game executable is claimed.

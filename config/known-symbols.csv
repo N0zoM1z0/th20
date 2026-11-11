@@ -901,3 +901,4 @@ address,name,module,confidence,evidence
 0x0041CB10,th20::NativeCardWindowTimeView::current_seconds_41cb10,WindowState,high,CORE/RECON-1123; docs/WINDOW_SECONDS_CLOCK346_STRICT_EXACT.md
 0x004193C0,th20::window_frame_clock_dispatch_4193c0,WindowState,high,CORE/RECON-1124; docs/WINDOW_FRAME_CLOCK_DISPATCH32_STRICT_EXACT.md
 0x004ABD50,th20::NativeFrameDeviceClockView::frame_seconds_4abd50,WindowState,high,CORE/RECON-1125; docs/WINDOW_FRAME_DEVICE_CLOCK437_STRICT_EXACT.md
+0x004AC0E0,th20::NativeFrameDeviceClockView::frame_pipeline_4ac0e0,WindowState,high,CORE/RECON-1126; docs/WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md

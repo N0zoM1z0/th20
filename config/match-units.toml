@@ -28867,5 +28867,21 @@ relocations = [
   { offset = 0x167, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
   { offset = 0x179, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
   { offset = 0x190, type = "DIR32", symbol = "?native_frame_skip_count_5c4f84@th20@@3EA", target = 0x005C4F84 },
-  { offset = 0x1A8, type = "REL32", symbol = "?frame_pipeline_4ac0e0@NativeFrameDeviceClockView@th20@@QAEXXZ", target = 0x004AC0E0 },
+  { offset = 0x1A8, type = "REL32", symbol = "?frame_pipeline_4ac0e0@NativeFrameDeviceClockView@th20@@QAEPAUNativeFrameTimePair@2@XZ", target = 0x004AC0E0 },
+]
+
+# CORE/RECON-1126: original complete 113B Window device timestamp assembly.
+# No native cookie: /GS- and no /sdl are the observed MSVC security settings.
+[units.window_frame_pipeline_113]
+source = "src/WindowFramePipeline113.cpp"
+object = "build/core1126-canonical/WindowFramePipeline113.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::NativeFrameDeviceClockView::frame_pipeline_4ac0e0"]
+symbol = "?frame_pipeline_4ac0e0@NativeFrameDeviceClockView@th20@@QAEPAUNativeFrameTimePair@2@XZ"
+target_address = 0x004AC0E0
+size = 113
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "?read_frame_pair_4ac170@th20@@YAPAUNativeFrameTimePair@1@PAU21@@Z", target = 0x004AC170 },
+  { offset = 0x34, type = "REL32", symbol = "?frame_time_u64_4ac200@th20@@YA_KPAUNativeFrameTimePair@1@@Z", target = 0x004AC200 },
+  { offset = 0x5E, type = "REL32", symbol = "?frame_time_breakdown_4ac270@th20@@YAXPAEPA_K@Z", target = 0x004AC270 },
 ]

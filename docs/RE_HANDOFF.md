@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,621** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,607** functions |
-| Canonical exact units / compiler objects | **1,605** units / **453** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **795** distinct original heads / **269,413** `.text` bytes |
+| Functions with provisional source mapping | **1,622** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,608** functions |
+| Canonical exact units / compiler objects | **1,606** units / **454** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **796** distinct original heads / **269,526** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window device frame pipeline** 0x004AC0E0 is [113/113B whole strict exact](WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md). The real three original date/time helper E8 sites and 101/101 ordinary bytes match. No native GS cookie; one source compiled /GS- without /sdl. Its real 437B parent and 32B dispatch remain exact in scoped **3/3** cold replay; only the new 113B is credited.
 
 - **Window device frame-timing Boss** 0x004ABD50 is [437/437B whole strict exact](WINDOW_FRAME_DEVICE_CLOCK437_STRICT_EXACT.md): 105 i386, original 2 E8/14 HIGHLOW sites and targets, 373/373 ordinary bytes. Real FPS 65/57 limits, 1.0/60.0 intervals, actual 0/2^32 unsigned time table and GameController flag roles; scoped **2/2** replay also preserves 32B Window frame dispatch. Adds 437 distinct authored game bytes; 113B downstream pipeline is still open.
 

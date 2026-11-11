@@ -1608,3 +1608,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Window/Frame clock dispatch 32B whole strict exact](WINDOW_FRAME_CLOCK_DISPATCH32_STRICT_EXACT.md) — two original E8 and two HIGHLOW native sites, genuine 437B device frame callee and exact 37B Card clock callback, scoped 1/1 cold replay.
 
 - [Window device frame-rate Boss 437B whole strict exact](WINDOW_FRAME_DEVICE_CLOCK437_STRICT_EXACT.md) — real frame interval/FPS limits, 0/2^32 correction table, 2 E8/14 HIGHLOW roles and all 373 ordinary bytes; 2/2 source-scoped replay with existing 32B Window dispatch.
+
+- [Window frame pipeline 113B whole exact](WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md) — real 8B time pair, 64-bit value and breakdown owner fields, original three E8 and 101 ordinary bytes; /GS- and no /sdl restore native cookie-free 34 instructions, 3/3 source-scoped replay.
