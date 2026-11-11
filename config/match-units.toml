@@ -28595,3 +28595,103 @@ size = 13
 relocations = [
   { offset = 0x7, type = "REL32", symbol = "?draw_487590@NativeCardDrawView@th20@@QAEHXZ", target = 0x00487590 },
 ]
+
+# CORE/RECON-1120: immutable original full Card Draw 797B/221-i386, 30 genuine E8 and 28 real PE HIGHLOW.
+[units.card_draw_boss_797]
+source = "src/CardDrawBoss797.cpp"
+object = "build/core1120-canonical/CardDrawBoss797.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardDrawView::draw_487590"]
+symbol = "?draw_487590@NativeCardDrawView@th20@@QAEHXZ"
+target_address = 0x00487590
+size = 797
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x31, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x46, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x4B, type = "REL32", symbol = "?set_font_488b00@NativeCardAsciiDrawView@th20@@QAEXH@Z", target = 0x00488B00 },
+  { offset = 0x53, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x58, type = "REL32", symbol = "?set_layer_488a00@NativeCardAsciiDrawView@th20@@QAEXH@Z", target = 0x00488A00 },
+  { offset = 0x60, type = "REL32", symbol = "?color_ref_45d0e0@NativeParticleAnimationAccess@th20@@QAEAAIXZ", target = 0x0045D0E0 },
+  { offset = 0x71, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x76, type = "REL32", symbol = "?set_color_alpha_488940@NativeCardAsciiDrawView@th20@@QAEXE@Z", target = 0x00488940 },
+  { offset = 0x96, type = "DIR32", symbol = "?native_card_y_37_56fe78@th20@@3MB", target = 0x0056FE78 },
+  { offset = 0xA4, type = "DIR32", symbol = "?native_card_x_266_56fe80@th20@@3MB", target = 0x0056FE80 },
+  { offset = 0xB1, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xC6, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0xCB, type = "REL32", symbol = "?render_number_46cd40@NativeCardAsciiDrawView@th20@@QAEXABUVector3@2@IHD@Z", target = 0x0046CD40 },
+  { offset = 0xE0, type = "DIR32", symbol = "?native_card_y_37_56fe78@th20@@3MB", target = 0x0056FE78 },
+  { offset = 0xEE, type = "DIR32", symbol = "?native_card_x_282_56fe84@th20@@3MB", target = 0x0056FE84 },
+  { offset = 0xFB, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x106, type = "DIR32", symbol = "$SG54914", target = 0x0056FDF8 },
+  { offset = 0x10B, type = "REL32", symbol = "??0?$basic_string_view@DU?$char_traits@D@std@@@std@@QAE@QBD@Z", target = 0x0040DDD0 },
+  { offset = 0x115, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x11A, type = "REL32", symbol = "?render_text_46ce90@NativeCardAsciiDrawView@th20@@QAEXABUVector3@2@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", target = 0x0046CE90 },
+  { offset = 0x12D, type = "DIR32", symbol = "?native_card_y_37_56fe78@th20@@3MB", target = 0x0056FE78 },
+  { offset = 0x13B, type = "DIR32", symbol = "?native_card_x_360_56fe88@th20@@3MB", target = 0x0056FE88 },
+  { offset = 0x148, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x14D, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x152, type = "REL32", symbol = "?field_70_is_two@Session@th20@@QAE_NXZ", target = 0x00488850 },
+  { offset = 0x175, type = "DIR32", symbol = "?native_card_records_5c6108@th20@@3PAUNativeCardRecordArchive@1@A", target = 0x005C6108 },
+  { offset = 0x17A, type = "REL32", symbol = "?native_primary_records_50fc50@th20@@YIPAUNativeCardRecordArchive@1@PAU21@@Z", target = 0x0050FC50 },
+  { offset = 0x197, type = "REL32", symbol = "?record_486e10@NativeSpellRecordArrayView@th20@@QAEPAUNativeSpellRecordView@2@H@Z", target = 0x00486E10 },
+  { offset = 0x1AE, type = "DIR32", symbol = "$SG54917", target = 0x0056FDFC },
+  { offset = 0x1B3, type = "REL32", symbol = "??0?$basic_string_view@DU?$char_traits@D@std@@@std@@QAE@QBD@Z", target = 0x0040DDD0 },
+  { offset = 0x1BD, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x1C2, type = "REL32", symbol = "?render_text_46ce90@NativeCardAsciiDrawView@th20@@QAEXABUVector3@2@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", target = 0x0046CE90 },
+  { offset = 0x1CE, type = "DIR32", symbol = "?native_card_records_5c6108@th20@@3PAUNativeCardRecordArchive@1@A", target = 0x005C6108 },
+  { offset = 0x1D3, type = "REL32", symbol = "?native_primary_records_50fc50@th20@@YIPAUNativeCardRecordArchive@1@PAU21@@Z", target = 0x0050FC50 },
+  { offset = 0x1F0, type = "REL32", symbol = "?record_486e10@NativeSpellRecordArrayView@th20@@QAEPAUNativeSpellRecordView@2@H@Z", target = 0x00486E10 },
+  { offset = 0x203, type = "DIR32", symbol = "?native_card_records_5c6108@th20@@3PAUNativeCardRecordArchive@1@A", target = 0x005C6108 },
+  { offset = 0x208, type = "REL32", symbol = "?native_primary_records_50fc50@th20@@YIPAUNativeCardRecordArchive@1@PAU21@@Z", target = 0x0050FC50 },
+  { offset = 0x225, type = "REL32", symbol = "?record_486e10@NativeSpellRecordArrayView@th20@@QAEPAUNativeSpellRecordView@2@H@Z", target = 0x00486E10 },
+  { offset = 0x23B, type = "DIR32", symbol = "$SG54920", target = 0x0056FE04 },
+  { offset = 0x244, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x24A, type = "REL32", symbol = "?render_format_46c990@NativeCardAsciiDrawView@th20@@QAAXABUVector3@2@PBDZZ", target = 0x0046C990 },
+  { offset = 0x258, type = "DIR32", symbol = "?native_card_records_5c6108@th20@@3PAUNativeCardRecordArchive@1@A", target = 0x005C6108 },
+  { offset = 0x25D, type = "REL32", symbol = "?native_primary_records_50fc50@th20@@YIPAUNativeCardRecordArchive@1@PAU21@@Z", target = 0x0050FC50 },
+  { offset = 0x27A, type = "REL32", symbol = "?record_486e10@NativeSpellRecordArrayView@th20@@QAEPAUNativeSpellRecordView@2@H@Z", target = 0x00486E10 },
+  { offset = 0x28D, type = "DIR32", symbol = "?native_card_records_5c6108@th20@@3PAUNativeCardRecordArchive@1@A", target = 0x005C6108 },
+  { offset = 0x292, type = "REL32", symbol = "?native_primary_records_50fc50@th20@@YIPAUNativeCardRecordArchive@1@PAU21@@Z", target = 0x0050FC50 },
+  { offset = 0x2AF, type = "REL32", symbol = "?record_486e10@NativeSpellRecordArrayView@th20@@QAEPAUNativeSpellRecordView@2@H@Z", target = 0x00486E10 },
+  { offset = 0x2C9, type = "DIR32", symbol = "$SG54921", target = 0x0056FE10 },
+  { offset = 0x2D2, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x2D8, type = "REL32", symbol = "?render_format_46c990@NativeCardAsciiDrawView@th20@@QAAXABUVector3@2@PBDZZ", target = 0x0046C990 },
+  { offset = 0x2E3, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x2E8, type = "REL32", symbol = "?set_font_488b00@NativeCardAsciiDrawView@th20@@QAEXH@Z", target = 0x00488B00 },
+  { offset = 0x2F0, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x2F5, type = "REL32", symbol = "?set_layer_488a00@NativeCardAsciiDrawView@th20@@QAEXH@Z", target = 0x00488A00 },
+  { offset = 0x300, type = "DIR32", symbol = "?native_card_renderer_5c0698@th20@@3PAUNativeCardRendererFileView@1@A", target = 0x005C0698 },
+  { offset = 0x305, type = "REL32", symbol = "?set_color_alpha_488940@NativeCardAsciiDrawView@th20@@QAEXE@Z", target = 0x00488940 },
+  { offset = 0x315, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.card_draw_ascii_font_25]
+source = "src/CardDrawAsciiSetters75.cpp"
+object = "build/core1120-canonical/CardDrawAsciiSetters75.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardAsciiDrawView::set_font_488b00"]
+symbol = "?set_font_488b00@NativeCardAsciiDrawView@th20@@QAEXH@Z"
+target_address = 0x00488B00
+size = 25
+relocations = []
+
+[units.card_draw_ascii_layer_25]
+source = "src/CardDrawAsciiSetters75.cpp"
+object = "build/core1120-canonical/CardDrawAsciiSetters75.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardAsciiDrawView::set_layer_488a00"]
+symbol = "?set_layer_488a00@NativeCardAsciiDrawView@th20@@QAEXH@Z"
+target_address = 0x00488A00
+size = 25
+relocations = []
+
+[units.card_draw_ascii_alpha_25]
+source = "src/CardDrawAsciiSetters75.cpp"
+object = "build/core1120-canonical/CardDrawAsciiSetters75.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardAsciiDrawView::set_color_alpha_488940"]
+symbol = "?set_color_alpha_488940@NativeCardAsciiDrawView@th20@@QAEXE@Z"
+target_address = 0x00488940
+size = 25
+relocations = []

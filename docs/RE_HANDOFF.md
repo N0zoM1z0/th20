@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,609** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,595** functions |
-| Canonical exact units / compiler objects | **1,593** units / **445** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **784** distinct original heads / **266,965** `.text` bytes |
+| Functions with provisional source mapping | **1,613** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,599** functions |
+| Canonical exact units / compiler objects | **1,597** units / **447** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **788** distinct original heads / **267,837** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -30,15 +30,15 @@ folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
 
-- **Card callback registration and bridge trio** `0x00487B10` **121B** plus `0x004885D0` **13B** update and `0x00488680` **13B** draw callbacks are [strict exact](CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md), original physical 6 E8/3 HIGHLOW and 1 E8 each. One native register publishes both C callbacks to the real disabled update/draw FunctionChains. Scoped **6/6** replay preserved the 875B Card update Boss, 32B HUD clear and 23B flag getter. Distinct 797B Card draw body remains NONEXACT.
+- **Card Draw Boss** `0x00487590` is [797/797B whole strict exact](CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md), with **30/30 E8, 28/28 HIGHLOW** exact sites and targets, plus all **565 original ordinary bytes**. Three real AsciiInf setters (font, layer, packed alpha) at `0x00488B00`, `0x00488A00`, `0x00488940` are **25/25B** each; **4/4** scoped strict units /2 objects. This closes Card register → draw callback → draw Boss, not Card Start or 6,073B battle control.
 
 - **Card registration + C callback bridges** `0x00487B10` **121B** and
   `0x004885D0` / `0x00488680` **13B each** are [three new whole strict exact](CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md).
   Actual `Session::context`, Card publication, two original
   FunctionChain priorities **40/12** and their original function-pointer
   PE HIGHLOW fields; the tick callback enters our exact 875B Card Boss.
-  Original **797B Card draw** remains NONEXACT. A focused 6/6 unit replay
-  verified the existing 875B/32B/23B source leaves too.
+  The draw callback now enters the [independently completed 797B draw Boss](CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md).
+  A focused 6/6 unit replay also preserved the existing 875B/32B/23B Card units.
 
 - **Card periodic Update Boss** `0x00486F60` **875/875B whole strict exact** and its distinct
   `0x00487B90` **32/32B HUD leaf** are [strict original complete](CARD_TICK_BOSS875_AND_UI32_STRICT_EXACT.md). All 28 E8 + 8 PE HIGHLOW positions/targets

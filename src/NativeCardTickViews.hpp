@@ -9,8 +9,8 @@ struct NativeCardBit8GetterView { std::uint32_t flag8_value_4888a0() const; };
 struct NativeCardTickUiView { void clear_ui_flag0_487b90(); };
 struct NativeCardTickBombView { bool active_478130() const; };
 // The original registration at 0x00487B10 publishes two C callbacks:
-// Update enters our 875B exact Boss; draw enters a separate 797B game
-// draw function still not source-exact. Both bridges are distinct 13B heads.
+// Update enters the exact 875B Card tick; draw enters the now exact
+// 797B Card Draw. Both bridges are distinct strict-exact 13B heads.
 struct NativeCardDrawView { std::int32_t draw_487590(); };
 struct NativeCardSetupView { std::int32_t register_callbacks_487b10(std::int32_t index); };
 std::int32_t __cdecl card_tick_callback_4885d0(NativeCardTickView* card);

@@ -1596,3 +1596,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Card 121B FunctionChain registration and two 13B typed callback bridges whole strict exact](CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md) — original PE callback pointer anchors and real Session/Context, six E8 + three PE HIGHLOW, 147 new authored bytes, 6/6 scoped replay.
 
 - [Card 121B registration and two 13B update/draw callbacks whole strict exact](CARD_REGISTRATION121_CALLBACK_BRIDGES13_STRICT_EXACT.md) — original 6 E8/3 HIGHLOW owner, two real 13B bridges, 6/6 affected exact units, +147 new authored bytes.
+
+- [Card Draw Boss 797B plus three AsciiInf state setters 25B each strict exact](CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md) — native 30 E8, 28 HIGHLOW, 565/565 ordinary bytes and 4/4 scoped replay, +872 authored original bytes.

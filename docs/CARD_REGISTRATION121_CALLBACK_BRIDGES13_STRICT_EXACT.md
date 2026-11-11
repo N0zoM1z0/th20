@@ -61,6 +61,7 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 
 **Three new authored whole-exact original heads /147 native bytes**. The
 875B Card update parent was already accepted and is not credited again.
-The downstream original **797B Card Draw** at `0x00487590` remains
-**NONEXACT** in this step, as do the unrelated 1,896B Card Start and
-6,073B battle-control Bosses. No complete link or playable game is claimed.
+The downstream 797B Card Draw was subsequently reconstructed
+[whole strict exact](CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md)
+with its three 25B original AsciiInf state setters. The separate 1,896B
+Card Start and 6,073B battle-control Bosses remain NONEXACT. No complete link or playable game is claimed.

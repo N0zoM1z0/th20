@@ -1593,3 +1593,7 @@ th20::NativeCardTickUiView::clear_ui_flag0_487b90
 th20::NativeCardSetupView::register_callbacks_487b10
 th20::card_tick_callback_4885d0
 th20::card_draw_callback_488680
+th20::NativeCardDrawView::draw_487590
+th20::NativeCardAsciiDrawView::set_font_488b00
+th20::NativeCardAsciiDrawView::set_layer_488a00
+th20::NativeCardAsciiDrawView::set_color_alpha_488940

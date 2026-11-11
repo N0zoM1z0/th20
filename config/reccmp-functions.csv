@@ -1608,3 +1608,7 @@ th20::NativeCardTickUiView::clear_ui_flag0_487b90,0x00487B90,function
 th20::NativeCardSetupView::register_callbacks_487b10,0x00487B10,function
 th20::card_tick_callback_4885d0,0x004885D0,function
 th20::card_draw_callback_488680,0x00488680,function
+th20::NativeCardDrawView::draw_487590,0x00487590,function
+th20::NativeCardAsciiDrawView::set_font_488b00,0x00488B00,function
+th20::NativeCardAsciiDrawView::set_layer_488a00,0x00488A00,function
+th20::NativeCardAsciiDrawView::set_color_alpha_488940,0x00488940,function
