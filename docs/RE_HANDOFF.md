@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,639** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,625** functions |
-| Canonical exact units / compiler objects | **1,623** units / **469** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **809** distinct original heads / **274,415** `.text` bytes |
+| Functions with provisional source mapping | **1,640** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,626** functions |
+| Canonical exact units / compiler objects | **1,624** units / **470** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **810** distinct original heads / **274,551** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Graphics D3D9 resource release** 0x004DD840 [136/136B strict whole exact](GRAPHICS_D3D_RESOURCE_RELEASE136_STRICT_EXACT.md), 35 native i386, 13 original HIGHLOW data fields, 84 ordinary bytes and three actual COM Release virtual calls. Real process Graphics base +0x19C/+0x1A0/+0x1A4 member COFF addends; 1/1 source-scoped replay. Used by now exact 884B scheduler and separate exact 164B/385B Window Presenters.
 
 - **Window frame scheduler Boss** 0x004193E0 is now [whole 884/884B strict exact](WINDOW_FRAME_SCHEDULER_BOSS884_STRICT_EXACT.md), **239 i386, all 32 original E8 +21 PE HIGHLOW physical positions and targets and 672/672 ordinary bytes**. Authentic scanline snapshot/time sample and scoped D3D9 Reset device restore original compiler NOP; 1/1 source-only canonical cold replay. Former 866B/NONEXACT notes below are historical frontiers; the separately accepted 31B RepeatCounter, 346B clock, 574B screenshot and 32B dispatch are not double-counted.
 

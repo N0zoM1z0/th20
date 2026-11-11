@@ -4076,7 +4076,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004DD600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DD730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DD820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DD840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DD840,authored,Graphics,authored,high,"CORE/RECON-1145; docs/GRAPHICS_D3D_RESOURCE_RELEASE136_STRICT_EXACT.md; game-authored real Graphics global D3D9 resources at +0x19C/1A0/1A4; native whole 136B/35 i386 strict source exact, 13 PE HIGHLOW with true Graphics base COFF addends"
 0x004DD8D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DD910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DDA10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

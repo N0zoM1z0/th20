@@ -4076,7 +4076,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004DD600,300,0x004DD72B,FUN_004dd600,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004DD730,234,0x004DD819,FUN_004dd730,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004DD820,21,0x004DD834,FUN_004dd820,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004DD840,136,0x004DD8C7,FUN_004dd840,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004DD840,136,0x004DD8C7,FUN_004dd840,th20::NativeFrameGraphicsView::frame_recover_4dd840,Graphics,matching,100.00,__thiscall,?frame_recover_4dd840@NativeFrameGraphicsView@th20@@QAEXXZ,false,src/GraphicsReleaseD3DResources136.cpp,CORE/RECON-1145; docs/GRAPHICS_D3D_RESOURCE_RELEASE136_STRICT_EXACT.md,authored,"Whole game Graphics D3D9 resource cleanup at 0x004DD840: native 136B/35 i386, exactly 13 original PE HIGHLOW fields (base process Graphics 0x005C4D40 with COFF +0x19C/+0x1A0/+0x1A4 member addends), no E8, 84/84 ordinary bytes. Three true IUnknown::Release vtable+8 on live Graphics resources, clear every member and primary resource again. Natural pinned MSVC source 136/136 exact; called by whole exact 164B/385B Window presenters and 884B scheduler."
 0x004DD8D0,54,0x004DD905,FUN_004dd8d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004DD910,255,0x004DDA0E,FUN_004dd910,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004DDA10,30,0x004DDA2D,FUN_004dda10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

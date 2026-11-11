@@ -1623,3 +1623,4 @@ th20::NativeTickGraphicsView::bail_out_4d9e30
 th20::NativeGraphicsModeAction::prepare_device_4da120
 th20::NativeGraphicsModeAction::recompute_current_4da1f0
 th20::native_sqrt_439850
+th20::NativeFrameGraphicsView::frame_recover_4dd840

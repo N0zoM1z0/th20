@@ -78,3 +78,9 @@ Only this source had a cold compile/replay:
 RepeatCounter, 346B Window seconds clock, 574B screenshot,
 and 32B dispatch children are not double-counted. The full
 playable game is still not built, linked or runtime validated.
+
+The Graphics resource release dependency at 0x004DD840 has
+subsequently reached [136/136B native strict exact](GRAPHICS_D3D_RESOURCE_RELEASE136_STRICT_EXACT.md).
+It uses the real process Graphics global with member relocations
+and is a separate authored original head, not duplicate 884B
+scheduler byte credit.
