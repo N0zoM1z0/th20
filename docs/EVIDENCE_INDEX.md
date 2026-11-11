@@ -1580,3 +1580,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [REF-026: Title batch review](REFERENCE_TITLE_REVIEW.md)
 
 - [Enemy opcode 555 resource path and exact Bullet file getter](ENEMY_OPCODE_555_EFFECT_RECONSTRUCTION.md) — complete 20B native getter, 33 affected-only strict replays; whole root still open.
+
+- [Glyph Text 2,227B named task/completion pointer ABI](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md) — current 2,296B whole compiler contribution, 17/25 aligned E8 sites, 41/43 original data sites; real helper/132B capture/56B queue graph and correct destructor lifetime, original parent NONEXACT.

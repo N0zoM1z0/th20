@@ -1,3 +1,38 @@
+**CURRENT ADOPTED SOURCE UPDATE (2026-11-11).** The true completion
+word at native stack `+0x2C` is now declared `std::uint8_t*`, consistent
+with the independently exact 360B upload, and forwarded by reference
+without an integer/pointer alias. The complete typed C++ source now
+uses a genuine `std::addressof(canvas)` identity call (its folded native
+8B code matches **8/8**) and a **named brace-constructed**
+`NativeGlyphRenderJob` whose destruction occurs **after** queue
+submission, in the actual original order. The pixel-rectangle y-offset
+is incremented by six rather than assigned, as in original `+0x797`.
+The caller `AsciiTextSubmit294.cpp` forwards its original 32-bit input
+word as a pointer without modifying the native i386 stack ABI. Its
+natural 292B/104-i386 body remains **NONEXACT** by only the two
+original NOPs and its original-role validator still passes.
+
+The current whole compiler contribution is **2,296B/466 code i386**
+with the native 25 E8, 43 body DIR32 and 22 after-return switch pointers,
+all 17 authentic table aliases. The first **17/25** E8 positions
+(including genuine `+0x7BC` helper and `+0x7E7` glyph job constructor)
+now align, **41/43** body data sites are at original positions, and
+**1,626/1,936** comparable ordinary bytes are equal. This is an
+improvement in original call sites over the previous **15/25**, but
+still **SOURCE-PRESENT, NONEXACT**: original physical extent is
+2,316B, code 2,227B/470 i386, so there is zero new parent exact credit.
+The original `std::function` constructor at `+0x80F` and the following
+queue/cleanup code remain the next native codegen frontier; our candidate
+constructor is at `+0x7FD`, and the natural typed source is 20B shorter.
+
+The complete original PE target roles and generated COFF symbols are
+independently checked in `scripts/verify-glyph-text-core2227-native.py`.
+A **scoped** one-object rebuild for only `src/GlyphTextCore2227.cpp`
+strictly replayed **2/2** existing 132B/23B job units. No full cold replay.
+No synthetic call, unused local, false data, manual NOP or game-authored
+credit is added. The remaining sections record previous private trials,
+not the current maintained C++ source.
+
 # Glyph Text 2,227B Boss: queue-task ownership and compiler-return frontier
 
 The locked Japanese TH20 Steamless v1.00a executable (SHA-256

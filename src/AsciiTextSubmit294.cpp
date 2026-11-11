@@ -1,4 +1,6 @@
 // Original 294B text submit Boss, full two-path game source, NONEXACT.
+// Its original scalar word forwards by value as a completion pointer,
+// with no extra stack slot; the resulting pointer bits are unchanged on x86.
 // The core's genuine EDX:EAX uint64 result is published directly into the
 // native hidden eight-byte result object, separately in each real path.
 // Pinned MSVC i386 emits 292B/104 instructions versus 294B/106 original:
@@ -31,13 +33,13 @@ NativeTextDrawResult8 NativeTextSubmitOwner::submit_text_44fff0(
         NativeTextDrawResult8 out;
         *reinterpret_cast<std::uint64_t*>(&out)=native_text_core_415830(
             transform, horizontal_offset, layer, color, formatted,
-            texture, font, align, 1, mode, callback);
+            texture, font, align, 1, reinterpret_cast<std::uint8_t*>(mode), callback);
         return out;
     } else {
         NativeTextDrawResult8 out;
         *reinterpret_cast<std::uint64_t*>(&out)=native_text_core_415830(
             transform, horizontal_offset, layer, 0, formatted,
-            texture, font, align, 0, mode, callback);
+            texture, font, align, 0, reinterpret_cast<std::uint8_t*>(mode), callback);
         return out;
     }
 }

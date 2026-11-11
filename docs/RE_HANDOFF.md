@@ -89,12 +89,14 @@ folded implementations, and post-`ret` switch/padding data.
    positions; the reordered SSE/font-width lifetime remains **NONEXACT**.
    The 578B ASCII renderer, 2,245B glyph compositor, 2,227B Unicode
    glyph core, 1,896B Card spell-start and 3,111B Player main also remain
-   open. The 2,227B glyph text core now preserves the **native 2,316B
-   total code+table contribution, 22 real switch pointers and 17 aliases**.
-   Its code is 2,226B/469 instructions plus 2B padding, versus original
-   2,227B/470 plus 1B padding: still **NONEXACT**, but **15/25 original E8
-   sites and 41/43 body data sites** align after recovering native GDI color,
-   single-canvas, in-place horizontal offset and two-wchar zero-init roles.
+   open. The 2,227B Glyph Text Core now types the native completion-byte
+   pointer and maintains a named render job alive through queue submission;
+   its original 8B canvas-reference helper is also native 8/8 exact as a
+   folded library alias. Full candidate 2,296B vs original 2,316B complete
+   code/table contribution: 17/25 original E8 sites, 41/43 body data
+   positions and 1,626/1,936 ordinary bytes agree. Its 22 font pointers
+   and 17 aliases remain correct; parent stays **NONEXACT**.
+   [Current queue-task ABI](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md);
    [Current glyph core proof](GLYPH_TEXT_CORE2227_COLOR_AND_CANVAS_ABI_FRONTIER.md);
    [queued task/EH frontier](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md);
    [Current centered frontier](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md);

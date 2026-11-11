@@ -1,3 +1,10 @@
+**Newer adopted source:** The queue-task/completion-pointer ABI is now
+corrected in maintained C++. The full candidate is **2,296B**, with
+**17/25** native E8 sites and **41/43** native body data locations aligned;
+all 22 font-switch pointers remain genuine. It is still **NONEXACT**.
+See [current task ABI and lifetime proof](GLYPH_TEXT_CORE2227_QUEUE_TASK_ABI_FRONTIER.md).
+All earlier score lines below are dated historical checkpoints.
+
 **CURRENT 2026-11-11 SOURCE CONVERGENCE:** The original +0x10 GDI
 color/+0x14 outline color, single-canvas owner, true +2 text-offset
 mutation, two-wide-character aggregate initialization and native 22-pointer

@@ -2,12 +2,13 @@
 // SOURCE-PRESENT NONEXACT: all native font, GDI, outline, alpha and
 // submission stages are maintained; original compiler/EH and the queued
 // functor/task producer have independent source boundaries still open.
-// The original 22-pointer font switch and true allocation/color behavior
-// are reconstructed. Used horizontal offset mutation and the two-wide-char
-// zero initialization now align the first 15 E8 sites and 41/43 in-body
-// HIGHLOW fields. The complete COFF contribution is native-sized 2316B,
-// including all 22 table entries, but the code return is one byte early.
-// This large Boss remains NONEXACT (1566/1956 ordinary byte agreement).
+// Its 22-entry native font switch, GDI color/offset protocol and correct
+// same-frame draw/submit behavior are retained. A real 8B folded canvas
+// reference call, completion-pointer ABI and named job lifetime restore
+// the first 17 native E8 sites, while the whole parent remains NONEXACT.
+// Full current MSVC x86 COFF contribution: 2296B (candidate code 2208B
+// including return, then 22 real switch pointers); original total 2316B.
+// All 25 callee roles and 43 original data roles remain accounted for.
 #include "NativeGlyphRenderJob.hpp"
 #include "NativeGlyphTextCore.hpp"
 #include "NativeGlyphFontResources.hpp"
@@ -23,6 +24,7 @@
 #include <cstring>
 #include <cwchar>
 #include <functional>
+#include <memory>
 #include <mutex>
 #include <utility>
 namespace th20 {
@@ -50,7 +52,7 @@ std::uint64_t __cdecl native_text_core_415830(
     const NativeTextTransform4* transform, std::int32_t horizontal_offset,
     std::int32_t text_color_word, std::uint32_t outline_color, const char* formatted,
     IDirect3DBaseTexture9* texture, std::int32_t font, std::int32_t align,
-    std::int32_t is_special, std::int32_t mode,
+    std::int32_t is_special, std::uint8_t* completion_flag,
     std::function<void()> callback) {
     std::lock_guard<std::recursive_mutex> raster_guard(process_locks.slot(0x12));
     // The original selects an existing native font via array-index helper.
@@ -167,18 +169,20 @@ std::uint64_t __cdecl native_text_core_415830(
             native_rectangle.field_d-native_rectangle.field_b};
         if(pixel_rectangle.field_c>0x400)pixel_rectangle.field_c=0x400;
         if(native_font_extra_padding_5b66ec && font!=0x13 && font!=0x12) {
-            pixel_rectangle.field_b=6;
+            // The native 0x797 edge increments the pre-existing field,
+            // rather than assigning a fresh literal six.
+            pixel_rectangle.field_b+=6;
             pixel_rectangle.field_d+=6;
         }
-        const std::int32_t glyph_mode=mode;
-        // Native upload code proves this original 32-bit argument word
-        // becomes a borrowed completion-byte pointer in the captured job.
-        // The submit/format caller's external parameter spelling is still
-        // unresolved; preserve every i386 pointer bit from that input.
-        std::uint8_t* completion_flag=reinterpret_cast<std::uint8_t*>(
-            static_cast<std::uintptr_t>(static_cast<std::uint32_t>(mode)));
-        NativeGlyphRenderJob glyph_job(canvas,texture,native_rectangle,pixel_rectangle,
-                                       completion_flag,callback);
+        // The real 360B D3D9 upload reads this original input word as
+        // an optional completion byte pointer. Passing its typed stack
+        // argument by const-reference recovers native [ebp+0x2C], without
+        // a redundant compiler-spilled conversion from an integer local.
+        // The original also invokes an 8B folded identity helper on the
+        // address of its canvas pointer before capturing the canvas value.
+        NativeGlyphRenderJob glyph_job{*std::addressof(canvas),texture,
+                                       native_rectangle,pixel_rectangle,
+                                       completion_flag,callback};
         // The original 56B queue bridge takes an already-constructed
         // std::function lvalue by reference, preserving its owner lifetime.
         std::function<void()> submitted(std::move(glyph_job));
@@ -188,8 +192,12 @@ std::uint64_t __cdecl native_text_core_415830(
         reinterpret_cast<NativeGlyphQueueView*>(&native_glyph_task_queue_5b66e0)
             ->submit_4162f0(submitted);
     }
-    // Original returned text SIZE is a native EDX:EAX value (not pixels).
-    return (static_cast<std::uint64_t>(static_cast<std::uint32_t>(extent.cy))<<32) |
-           static_cast<std::uint32_t>(extent.cx);
+    // The original result is the eight object-representation bytes of SIZE
+    // returned directly in i386 EDX:EAX. This MSVC x86-specific view avoids
+    // fabricating a non-native 64-bit shift helper in the function body.
+#if defined(_M_IX86)
+    static_assert(sizeof(SIZE)==sizeof(std::uint64_t));
+#endif
+    return *reinterpret_cast<const std::uint64_t*>(&extent);
 }
 } // namespace th20
