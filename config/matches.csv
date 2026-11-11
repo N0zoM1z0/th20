@@ -774,3 +774,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00449870,th20::animation_list_update_449870,508,matching,100.00,animation_renderer_list_update_primary_508,CORE/RECON-1110; docs/ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md
 0x00449B20,th20::animation_list_update_secondary_449b20,511,matching,100.00,animation_renderer_list_update_secondary_511,CORE/RECON-1110; docs/ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md
 0x004107A0,th20::game_file_exists_4107a0,157,matching,100.00,game_file_exists_157,CORE/RECON-1114; docs/GAME_FILE_EXISTS157_NATIVE_FRONTIER.md
+0x00445A40,th20::NativeAnimationPoolStagingView::reset_staging_buffers_445a40,111,matching,100.00,animation_pool_staging_reset_111,CORE/RECON-1115; docs/ANIMATION_POOL_STAGING_RESET111_STRICT_EXACT.md; complete physical 111/111 original and zero relocations

@@ -880,3 +880,4 @@ address,name,module,confidence,evidence
 0x00449870,th20::animation_list_update_449870,AnimationPool,high,CORE/RECON-1110; docs/ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md; whole relocated original class-key ABI and two-pass source
 0x00449B20,th20::animation_list_update_secondary_449b20,AnimationPool,high,CORE/RECON-1110; docs/ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md; whole relocated original class-key ABI and two-pass source
 0x004107A0,th20::game_file_exists_4107a0,GameFileIo,high,CORE/RECON-1114; docs/GAME_FILE_EXISTS157_NATIVE_FRONTIER.md; native original source signature inferred char const* from push-format=0 and address of incoming parameter slot
+0x00445A40,th20::NativeAnimationPoolStagingView::reset_staging_buffers_445a40,Animation,high,CORE/RECON-1115; docs/ANIMATION_POOL_STAGING_RESET111_STRICT_EXACT.md
