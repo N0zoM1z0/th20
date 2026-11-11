@@ -14,8 +14,8 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,640** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,626** functions |
+| Functions with provisional source mapping | **1,641** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,627** functions |
 | Canonical exact units / compiler objects | **1,624** units / **470** protected MSVC objects and receipts |
 | Credited game-authored whole exact | **810** distinct original heads / **274,551** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window device reset state Boss** 0x0041A2C0 has [complete 1,911B compiled C++ source frontier vs original 1,954B/507 instructions](WINDOW_DEVICE_RESET_STATES_BOSS1954_FULL_SOURCE_FRONTIER.md): genuine 24 D3D9 RenderState, eight TextureStageState, six SamplerState calls, plus five Renderer recovery hooks. All 43/43 real game E8 and 47/47 PE data destination roles are preserved in original order; original MSVC security cookie/stack differ, so **NONEXACT and zero parent-byte credit**. This Boss is called by the now exact 884B Window scheduler; no full cold replay.
 
 - **Graphics D3D9 resource release** 0x004DD840 [136/136B strict whole exact](GRAPHICS_D3D_RESOURCE_RELEASE136_STRICT_EXACT.md), 35 native i386, 13 original HIGHLOW data fields, 84 ordinary bytes and three actual COM Release virtual calls. Real process Graphics base +0x19C/+0x1A0/+0x1A4 member COFF addends; 1/1 source-scoped replay. Used by now exact 884B scheduler and separate exact 164B/385B Window Presenters.
 

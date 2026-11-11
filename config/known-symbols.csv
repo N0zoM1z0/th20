@@ -920,3 +920,4 @@ address,name,module,confidence,evidence
 0x004DA1F0,th20::NativeGraphicsModeAction::recompute_current_4da1f0,Graphics,high,CORE/RECON-1142; docs/GRAPHICS_CAMERA_MATRIX_BOSS846_STRICT_EXACT.md
 0x00439850,th20::native_sqrt_439850,Math,medium,CORE/RECON-1143; docs/GRAPHICS_CAMERA_SQRT_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md
 0x004DD840,th20::NativeFrameGraphicsView::frame_recover_4dd840,Graphics,high,CORE/RECON-1145; docs/GRAPHICS_D3D_RESOURCE_RELEASE136_STRICT_EXACT.md
+0x0041A2C0,th20::window_frame_initialize_41a2c0,WindowState,high,CORE/RECON-1146; docs/WINDOW_DEVICE_RESET_STATES_BOSS1954_FULL_SOURCE_FRONTIER.md

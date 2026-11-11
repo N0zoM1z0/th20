@@ -84,3 +84,9 @@ subsequently reached [136/136B native strict exact](GRAPHICS_D3D_RESOURCE_RELEAS
 It uses the real process Graphics global with member relocations
 and is a separate authored original head, not duplicate 884B
 scheduler byte credit.
+
+The successful Reset path calls the game device-state initializer
+at original 0x0041A2C0. Its full D3D9 state sequence now has a
+[compiled 1,911B C++ source frontier](WINDOW_DEVICE_RESET_STATES_BOSS1954_FULL_SOURCE_FRONTIER.md),
+but that distinct 1,954B original parent is NONEXACT and not
+credited via the exact 884B scheduler call.

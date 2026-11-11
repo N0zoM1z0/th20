@@ -595,7 +595,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041A200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041A240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041A280,authored,InputState,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
-0x0041A2C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041A2C0,authored,WindowState,authored,high,"CORE/RECON-1146; docs/WINDOW_DEVICE_RESET_STATES_BOSS1954_FULL_SOURCE_FRONTIER.md; game-owned 1954B/507-i386 reset-state Boss with 24 Render, eight TextureStage and six Sampler D3D9 states and five renderer reset hooks. Entire 1911B compiled typed C++ source matches 43/43 native game E8 target roles and 47/47 data roles in original sequence, but parent NONEXACT because real native GS frame/cookie remains unmatched"
 0x0041AA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041AB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041ABE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
