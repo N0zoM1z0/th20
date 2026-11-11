@@ -905,3 +905,4 @@ address,name,module,confidence,evidence
 0x004AC170,th20::read_frame_pair_4ac170,WindowState,medium,CORE/RECON-1128; docs/WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md
 0x004AC200,th20::frame_time_u64_4ac200,WindowState,medium,CORE/RECON-1128; docs/WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md
 0x004AC270,th20::frame_time_breakdown_4ac270,WindowState,medium,CORE/RECON-1128; docs/WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md
+0x0041CA50,th20::NativeWindowFrameScheduleView::active_repeat_41ca50,WindowState,high,CORE/RECON-1129; docs/WINDOW_ACTIVE_REPEAT31_STRICT_EXACT.md

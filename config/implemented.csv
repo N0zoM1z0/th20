@@ -1609,3 +1609,4 @@ th20::NativeFrameDeviceClockView::frame_pipeline_4ac0e0
 th20::read_frame_pair_4ac170
 th20::frame_time_u64_4ac200
 th20::frame_time_breakdown_4ac270
+th20::NativeWindowFrameScheduleView::active_repeat_41ca50

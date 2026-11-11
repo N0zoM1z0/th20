@@ -135,3 +135,5 @@ native units** and no reason to rebuild MSVC objects.
 **113B frame pipeline closed:** [Original 0x004AC0E0 113B /34 i386 whole strict exact](WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md), native three E8 helpers, 101 ordinary bytes, no security cookie. Its existing 437B parent/32B caller stay exact under 3/3 affected source cold replay. The 46B/42B/21B helpers at 0x004AC170 /0x004AC200 /0x004AC270 now have [whole-exact typed source](WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md), with origin review and no new game-authored credit.
 
 **Time-wrapper dependent leaves source exact:** [46B/42B/21B whole-source exact](WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md) for the original 113B frame-pipeline caller; 6/6 affected units strict replay. Original source provenance remains under review because these wrappers may be chrono/CRT-generated; no additional authored-game byte credit.
+
+**884B Window scheduler frontier:** 0x004193E0 calls the [new whole-exact 31B RepeatCounter selector 0x0041CA50](WINDOW_ACTIVE_REPEAT31_STRICT_EXACT.md) 14 times and the already exact 346B WindowState clock. Parent still NONEXACT; typed source next, do not credit parent bytes through this leaf.

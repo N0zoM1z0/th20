@@ -1624,3 +1624,4 @@ th20::NativeFrameDeviceClockView::frame_pipeline_4ac0e0,0x004AC0E0,function
 th20::read_frame_pair_4ac170,0x004AC170,function
 th20::frame_time_u64_4ac200,0x004AC200,function
 th20::frame_time_breakdown_4ac270,0x004AC270,function
+th20::NativeWindowFrameScheduleView::active_repeat_41ca50,0x0041CA50,function

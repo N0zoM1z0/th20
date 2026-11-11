@@ -1612,3 +1612,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Window frame pipeline 113B whole exact](WINDOW_FRAME_PIPELINE113_STRICT_EXACT.md) — real 8B time pair, 64-bit value and breakdown owner fields, original three E8 and 101 ordinary bytes; /GS- and no /sdl restore native cookie-free 34 instructions, 3/3 source-scoped replay.
 
 - [Window time conversion 46B/42B/21B whole source-exact leaves](WINDOW_FRAME_TIME_LEAVES109_NATIVE_EXACT.md) — genuine nested pair temporaries, original emitted NOP, 7 native E8 and 109/109 ordinary bytes, scope-only 6/6 replay; library/game authorship unproven and uncredited.
+
+- [Window active RepeatCounter 31B whole strict exact](WINDOW_ACTIVE_REPEAT31_STRICT_EXACT.md) — native 12B stride and original +0x2100/+0x2104 fields, 14 original 884B scheduler calls, source-scoped 1/1 exact, +31 authored game bytes.

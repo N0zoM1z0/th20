@@ -28928,3 +28928,14 @@ size = 21
 relocations = [
   { offset = 0xC, type = "REL32", symbol = "?native_time_breakdown_55139c@th20@@YAXPAEPB_K@Z", target = 0x0055139C },
 ]
+
+# CORE/RECON-1129: real game WindowState RepeatCounter entry view 31B exact.
+[units.window_active_repeat_31]
+source = "src/WindowActiveRepeat31.cpp"
+object = "build/core1129-canonical/WindowActiveRepeat31.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeWindowFrameScheduleView::active_repeat_41ca50"]
+symbol = "?active_repeat_41ca50@NativeWindowFrameScheduleView@th20@@QAEPAURepeatCounter@WindowState@2@XZ"
+target_address = 0x0041CA50
+size = 31
+relocations = []
