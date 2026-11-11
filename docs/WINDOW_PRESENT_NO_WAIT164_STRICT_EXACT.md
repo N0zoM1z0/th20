@@ -58,3 +58,7 @@ The neighboring frame-paced Window presenter at 0x00419A50 is now
 [whole 385B strict exact](WINDOW_PACED_PRESENT385_STRICT_EXACT.md),
 with the additional original 1/60 seconds Sleep path. These are
 separate game-authored physical functions; no duplicate credit.
+
+The original 583B Window no-wait frame controller caller at
+0x00419DE0 is also now [whole strict exact](WINDOW_FRAME_NO_WAIT_BOSS583_STRICT_EXACT.md)
+and reuses this existing 164B Presenter without duplicate credit.

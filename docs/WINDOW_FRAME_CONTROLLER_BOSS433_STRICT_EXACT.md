@@ -45,3 +45,8 @@ Only source-local replay, not a full cold graph:
 
 One distinct game-authored original whole-exact head, **433 bytes**.
 The 884B Window scheduler remains separately NONEXACT.
+
+Its sibling synchronized Window frame controller 0x00419DE0 is now
+[whole 583B strict exact](WINDOW_FRAME_NO_WAIT_BOSS583_STRICT_EXACT.md),
+with a separately authentic deadline clock and 1ms Sleep stage.
+These are distinct original physical game functions.

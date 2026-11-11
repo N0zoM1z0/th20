@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,632** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,618** functions |
-| Canonical exact units / compiler objects | **1,615** units / **461** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **802** distinct original heads / **271,201** `.text` bytes |
+| Functions with provisional source mapping | **1,633** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,619** functions |
+| Canonical exact units / compiler objects | **1,616** units / **462** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **803** distinct original heads / **271,784** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window synchronized no-wait frame controller Boss** 0x00419DE0 is [whole 583/583B strict exact](WINDOW_FRAME_NO_WAIT_BOSS583_STRICT_EXACT.md), 138 original i386, real WindowState clock sync, deadline and Sleep(1), FunctionChain update/draw, D3D9 scene and existing exact 164B Presenter. All 16 E8 +20 HIGHLOW physical fields/targets and 439/439 ordinary bytes exact. One new 583B 1/1 source cold replay, plus five Window-header-affected older exact units each 1/1. 884B scheduler stays NONEXACT.
 
 - **Window frame controller Boss** 0x00419C20 [whole 433/433B strict exact](WINDOW_FRAME_CONTROLLER_BOSS433_STRICT_EXACT.md): 110 original i386, 15 E8 and 18 HIGHLOW original physical fields and targets plus all 301 ordinary bytes. Real FunctionChain 611B update/587B draw, D3D9 BeginScene/SetTexture/EndScene, actual 32-bit render-alpha reset and Window 1/60 frame deadline; 1/1 scoped replay. Its 884B scheduler callee remains independently NONEXACT.
 

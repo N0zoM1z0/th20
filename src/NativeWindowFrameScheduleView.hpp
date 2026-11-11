@@ -11,6 +11,7 @@ struct NativeWindowFrameScheduleView {
     void present_no_wait_4199a0();
     void present_paced_419a50();
     std::int32_t frame_controller_step_419c20();
+    std::int32_t frame_controller_no_wait_419de0();
     std::int32_t frame_leave_412540();
 };
 }

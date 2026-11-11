@@ -151,3 +151,5 @@ native units** and no reason to rebuild MSVC objects.
 **Window screenshot Boss resolved:** Original 0x00419760 now [574B whole strict exact](WINDOW_SNAPSHOT_SCENE574_STRICT_EXACT.md), including 20 E8/12 HIGHLOW sites, 446 ordinary bytes and 1/1 scoped cold replay. Prior screenshot NONEXACT notes are historical; only the enclosing 884B Window scheduler remains open.
 
 **Window frame controller 433B now closed:** [Original 0x00419C20 whole 433B strict exact](WINDOW_FRAME_CONTROLLER_BOSS433_STRICT_EXACT.md), 15 E8 and 18 PE data fields/targets plus all 301 ordinary bytes exactly, original FunctionChain frame callback and real D3D9 scene flow. The original 884B Window scheduler is a separate callee still NONEXACT; its 866B typed D3D9 raster polling source stays open.
+
+**Window no-wait frame controller 583B now strictly closed:** Original 0x00419DE0 has [whole native 583B/138-i386 exact](WINDOW_FRAME_NO_WAIT_BOSS583_STRICT_EXACT.md), with real time sync/Sleep, 16 E8 +20 HIGHLOW native physical fields, 439 ordinary bytes, and distinct 164B no-wait Presenter. This joins 433B and 574B closed Window Bosses; the separate 884B Window scheduler remains NONEXACT.
