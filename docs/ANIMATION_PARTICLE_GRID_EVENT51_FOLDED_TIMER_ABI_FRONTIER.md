@@ -1,10 +1,3 @@
-**2026-11-11 RESOLVED:** The original 51B event is now
-[whole strict exact](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md)
-using `NativeGridTimedDelta { Timer time; }` as a standard aggregate with
-braced initialization. This preserves the authentic `Timer::Timer` E8 in
-the 172B group constructor and emits the original folded 26B `operator+=`
-call in the event. The rejected variants below remain historical evidence.
-
 # CORE/RECON-952 — original 51B particle-grid virtual event and folded 26B Timer call ABI frontier (NOT exact)
 
 **2026-11-11 resolved:** This is the historical *nonexact* investigation.
