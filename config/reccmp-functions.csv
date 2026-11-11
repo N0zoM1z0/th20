@@ -1630,3 +1630,4 @@ th20::NativeWindowFrameScheduleView::update_scene_419760,0x00419760,function
 th20::NativeWindowCaptureRenderer::prepare_frame_41bfc0,0x0041BFC0,function
 th20::NativeWindowFrameScheduleView::present_no_wait_4199a0,0x004199A0,function
 th20::NativeWindowFrameScheduleView::present_paced_419a50,0x00419A50,function
+th20::NativeWindowFrameScheduleView::frame_controller_step_419c20,0x00419C20,function

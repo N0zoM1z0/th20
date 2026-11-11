@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,631** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,617** functions |
-| Canonical exact units / compiler objects | **1,614** units / **460** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **801** distinct original heads / **270,768** `.text` bytes |
+| Functions with provisional source mapping | **1,632** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,618** functions |
+| Canonical exact units / compiler objects | **1,615** units / **461** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **802** distinct original heads / **271,201** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Window frame controller Boss** 0x00419C20 [whole 433/433B strict exact](WINDOW_FRAME_CONTROLLER_BOSS433_STRICT_EXACT.md): 110 original i386, 15 E8 and 18 HIGHLOW original physical fields and targets plus all 301 ordinary bytes. Real FunctionChain 611B update/587B draw, D3D9 BeginScene/SetTexture/EndScene, actual 32-bit render-alpha reset and Window 1/60 frame deadline; 1/1 scoped replay. Its 884B scheduler callee remains independently NONEXACT.
 
 - **Window screenshot scene Boss** 0x00419760 is now [whole 574/574B strict exact](WINDOW_SNAPSHOT_SCENE574_STRICT_EXACT.md): native 132 i386, all original 20 E8 +12 HIGHLOW physical fields, 446/446 ordinary bytes; genuine short-circuit input guard, two real c_str pointer lifetimes and original WindowState base+0x89 addends. 1/1 scoped replay; 884B scheduler still NONEXACT.
 
