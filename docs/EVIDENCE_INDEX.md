@@ -1616,3 +1616,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Window active RepeatCounter 31B whole strict exact](WINDOW_ACTIVE_REPEAT31_STRICT_EXACT.md) — native 12B stride and original +0x2100/+0x2104 fields, 14 original 884B scheduler calls, source-scoped 1/1 exact, +31 authored game bytes.
 
 - [Window frame scheduler 884B complete source nonexact frontier](WINDOW_FRAME_SCHEDULER884_FULL_SOURCE_FRONTIER.md) — full 890B candidate, original 32/32 E8 callee and 21/21 PE data targets in original order, 12/32 E8 and 6/21 data physical sites; independent original-only proof, zero new exact parent bytes.
+
+- [Window scene/snapshot 574B complete typed nonexact source frontier](WINDOW_SNAPSHOT_SCENE574_FULL_SOURCE_FRONTIER.md) — real screenshot path/filename and third input-pointer byte offset, full source 551B, 20 E8 +12 PE HIGHLOW target roles in native order, 1/20 and 3/12 physical sites. Independent full original-proof verifier, no new exact parent credit.

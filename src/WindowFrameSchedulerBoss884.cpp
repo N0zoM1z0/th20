@@ -37,9 +37,6 @@ extern const double native_scheduler_poll_56cd58;
 void __cdecl window_frame_clock_dispatch_4193c0();
 void __cdecl window_frame_initialize_41a2c0();
 
-struct NativeFrameGraphicsStateView {
-    void update_scene_419760();
-};
 #define WINDOW() (*reinterpret_cast<WindowState*>(this))
 #define NOW() (reinterpret_cast<NativeCardWindowTimeView*>(this)->current_seconds_41cb10())
 #define GFX() native_frame_graphics_5c4d40
@@ -89,7 +86,7 @@ void NativeWindowFrameScheduleView::schedule_frame_4193e0() {
     }
 
     WINDOW().current_draw_time=NOW();
-    reinterpret_cast<NativeFrameGraphicsStateView*>(this)->update_scene_419760();
+    update_scene_419760();
     {
         NativeFrameDevice* device=GFX().device_412730();
         auto fn=reinterpret_cast<long (__stdcall*)(NativeFrameDevice*,void*,void*,void*,void*)>((*reinterpret_cast<void**>(reinterpret_cast<std::uint8_t*>(device->vtable)+0x44)));

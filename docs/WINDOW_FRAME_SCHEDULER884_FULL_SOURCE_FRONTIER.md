@@ -84,3 +84,5 @@ The remaining source lowering frontier includes genuine COM method
 pointer/return lifetimes and the device poll input/output stack
 ordering. The separately exact 31B RepeatCounter leaf was accepted
 in a preceding commit and must not be double counted.
+
+**Next dependent source recovered:** The genuine 574B screenshot/scene callee at 0x00419760 now has its own [complete typed 551B source frontier](WINDOW_SNAPSHOT_SCENE574_FULL_SOURCE_FRONTIER.md), with 20 original call/12 data target roles in native order. This 884B parent now calls it directly as NativeWindowFrameScheduleView::update_scene_419760(), rather than through an unrelated borrowed Graphics view. Both parents remain NONEXACT with no additional original byte credit.
