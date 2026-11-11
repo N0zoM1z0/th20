@@ -1,3 +1,13 @@
+**CURRENT 2026-11-11 SOURCE CONVERGENCE:** The original +0x10 GDI
+color/+0x14 outline color, single-canvas owner, true +2 text-offset
+mutation, two-wide-character aggregate initialization and native 22-pointer
+font switch are all recovered. The current source builds to the original
+**2,316B complete contribution**, matching **15/25 E8** sites and
+**41/43** in-body data-field positions with **1,566/1,956** ordinary
+bytes; its return remains one byte early and the parent is **NONEXACT**.
+See the [latest complete frontier](GLYPH_TEXT_CORE2227_COLOR_AND_CANVAS_ABI_FRONTIER.md).
+All earlier candidate totals below are historical.
+
 **CURRENT WHOLE-SOURCE UPDATE (2026-11-11):** The native 22-pointer font
 switch has been reconstructed in maintained C++ with the exact original
 case-alias partition and allocator evaluation order. Its full compiler

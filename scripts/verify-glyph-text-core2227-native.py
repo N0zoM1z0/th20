@@ -70,15 +70,24 @@ def verify(candidate):
  assert original_table[12]==original_table[13]
  assert original_table[18]==original_table[19]
  print('PASS original 2227B code plus one NOP/22 switch HIGHLOW: 2316B whole native physical contribution, 17 original case aliases')
+ # The two native color arguments are distinct: +0x10 is the packed GDI
+ # text color, +0x14 is the independent glyph-mask outline color.
+ at={i.address-HEAD:(i.mnemonic,i.op_str) for i in native}
+ assert at[0x392]==('mov','eax, dword ptr [ebp + 0x10]')
+ assert at[0x492]==('mov','edx, dword ptr [ebp + 0x14]')
+ assert at[0x5CD]==('mov','eax, dword ptr [ebp + 0x14]')
  if candidate:
+  # Do not compare a 2,227-byte prefix of a differently sized object:
+  # the complete candidate includes genuine compiler switch-pointer data.
   b,r=cm.object_function(candidate,SYM,2316)
   assert len(b)==2316 and len(r)==90
-  # Candidate is still nonexact: executable code is 2228B with no NOP,
-  # but the after-return pointer table starts at exactly native +2228.
   candidate_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b[:2228]),0))
-  assert len(candidate_ins)==472
+  assert len(candidate_ins)==470
+  # Original ret +0x8B2 with one NOP; candidate ret +0x8B1 with a
+  # true two-byte compiler NOP. Whole contribution still differs.
+  assert candidate_ins[-2].address==2225 and candidate_ins[-2].mnemonic=='ret'
+  assert candidate_ins[-1].address==2226 and candidate_ins[-1].bytes==bytes.fromhex('6690')
   assert candidate_ins[-1].address+candidate_ins[-1].size==2228
-  assert candidate_ins[-1].mnemonic=='ret'
   body_fields=[x for x in r if x['offset']<2228]
   call_fields=[x for x in body_fields if x['type']=='REL32']
   data=[x for x in body_fields if x['type']=='DIR32']
@@ -92,10 +101,44 @@ def verify(candidate):
   assert all((original_table[i]==original_table[j]) ==
              (candidate_alias[i]==candidate_alias[j])
              for i in range(22) for j in range(22))
-  first_four=[0x039,0x045,0x057,0x089]
-  assert [x['offset']-1 for x in call_fields[:4]]==first_four
+  native_call_offsets=sorted(E8)
+  assert [x['offset']-1 for x in call_fields[:15]]==native_call_offsets[:15]
   actual_native_data=[x-HEAD for x in sorted(hl) if HEAD<=x<HEAD+2227]
-  assert sum(x['offset']==old for x,old in zip(data,actual_native_data))==7
+  assert sum(x['offset']==old for x,old in zip(data,actual_native_data))==41
+  # All 43 original role targets are independent original PE observations.
+  # The candidate's real MSVC symbols are mapped by literal names, never
+  # by reading a target field under comparison to manufacture a pass.
+  data_symbols=(
+      ('__ehhandler$',0x00567DD9), ('___security_cookie',0x005B25C0),
+      ('?process_locks@',0x005C0240), ('?native_glyph_fonts_5b66f0@',0x005B66F0),
+      ('?native_font_size_56c8d0@',0x0056C8D0),
+      ('?native_font_size_56c8d4@',0x0056C8D4),
+      ('?native_font_size_56c8d8@',0x0056C8D8),
+      ('?native_font_size_56c8dc@',0x0056C8DC),
+      ('?native_font_size_56c8e0@',0x0056C8E0),
+      ('$SG',0x0056C860), ('?process_allocator@',0x005B8894),
+      ('$LN',0x004160E4), ('?native_font_outline_scale_5ae120@',0x005AE120),
+      ('__real@3f800000',0x0056C8CC),
+      ('__imp__MultiByteToWideChar@24',0x0056C124),
+      ('__imp__SelectObject@8',0x0056C02C),
+      ('__imp__SetBkMode@8',0x0056C028),
+      ('__imp__GetTextExtentPoint32W@16',0x0056C030),
+      ('__imp__SetTextColor@8',0x0056C024),
+      ('__imp__TextOutW@20',0x0056C01C),
+      ('?native_font_extra_padding_5b66ec@',0x005B66EC),
+      ('?native_glyph_task_queue_5b66e0@',0x005B66E0),
+  )
+  for local,source in zip(actual_native_data,data):
+   actual=struct.unpack('<I',pe.raw_at(img,base,sec,HEAD+local,4))[0]
+   matches=[address for prefix,address in data_symbols
+            if source['symbol'].startswith(prefix)]
+   assert len(matches)==1 and matches[0]==actual,(hex(local),source['symbol'],matches,hex(actual))
+  # Ordinary bytes are compared over the ENTIRE 2,316B contribution,
+  # masking only genuine COFF relocation operands from this actual object.
+  ignored={i for field in r for i in range(field['offset'],field['offset']+4)}
+  original_extent=pe.raw_at(img,base,sec,HEAD,2316)
+  equal=sum(x==y for i,(x,y) in enumerate(zip(b,original_extent)) if i not in ignored)
+  assert len(ignored)==90*4 and len(b)-len(ignored)==1956 and equal==1566
   assert any('composite_glyph_mask_416420' in x['symbol'] for x in call_fields)
   assert any('invert_alpha_417ab0' in x['symbol'] for x in call_fields)
   assert any('ensure_format_4153d0' in x['symbol'] for x in call_fields)
@@ -103,10 +146,12 @@ def verify(candidate):
   assert cm.compare_unit('glyph_text_queue_submit_56')['result']=='exact'
   assert cm.compare_unit('glyph_text_job_capture_132')['result']=='exact'
   assert cm.compare_unit('glyph_text_job_dtor_23')['result']=='exact'
-  print('PASS full C++20 COFF contribution 2316B: 25 E8, 43 body DIR32, all 22 after-ret DIR32, 17/17 native switch alias groups')
-  print('PASS original allocator ordering and distinct font-case source; first four native E8 sites and seven native data positions align')
-  print('PASS unrelated exact 56B queue and two existing glyph-job source units unchanged (132B/23B)')
-  print('NONEXACT original code 2227B/470-i386 + one NOP versus candidate code 2228B/472-i386 with no pad; whole relocation bytes differ')
+  assert original[0x43A:0x443]==bytes.fromhex('8b450c83c00289450c')
+  print('PASS original text color +0x10 and separate outline +0x14, true in-place +2 text offset and native two-character zero-initialization')
+  print('PASS whole C++20 source/PE contribution 2316B: 25 E8/43 native body DIR32 roles and 22 real after-RET DIR32 with all 17 table aliases')
+  print('PASS original 470-instruction code census, first 15 native E8 sites and 41/43 original in-body HIGHLOW positions aligned')
+  print(f'NONEXACT: {equal}/1956 ordinary bytes equal after masking real COFF fields; candidate RET one byte early and task construction remains different')
+  print('PASS separate strict 56B queue, exact 132B glyph job constructor and 23B job destructor')
  print('Original entire 2227B text core remains NONEXACT; exact 132B game-owned capture is a distinct physical native head')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)

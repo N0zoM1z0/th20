@@ -89,9 +89,13 @@ folded implementations, and post-`ret` switch/padding data.
    positions; the reordered SSE/font-width lifetime remains **NONEXACT**.
    The 578B ASCII renderer, 2,245B glyph compositor, 2,227B Unicode
    glyph core, 1,896B Card spell-start and 3,111B Player main also remain
-   open. The 2,227B glyph text core now generates the full **2,316B**
-   code+22-pointer contribution and correct font-switch alias groups, but
-   remains NONEXACT (candidate RET one byte late). [Glyph core switch](GLYPH_TEXT_CORE2227_SWITCH22_NATIVE_CONVERGENCE.md);
+   open. The 2,227B glyph text core now preserves the **native 2,316B
+   total code+table contribution, 22 real switch pointers and 17 aliases**.
+   Its code is 2,226B/469 instructions plus 2B padding, versus original
+   2,227B/470 plus 1B padding: still **NONEXACT**, but **15/25 original E8
+   sites and 41/43 body data sites** align after recovering native GDI color,
+   single-canvas, in-place horizontal offset and two-wchar zero-init roles.
+   [Current glyph core proof](GLYPH_TEXT_CORE2227_COLOR_AND_CANVAS_ABI_FRONTIER.md);
    [Current centered frontier](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md);
    [other Bosses](RE_OPEN_BOSS_BACKLOG.md).
 5. **Huge source-absent dispatchers:** 12,140B Bullet command,

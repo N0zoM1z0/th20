@@ -2,10 +2,12 @@
 // SOURCE-PRESENT NONEXACT: all native font, GDI, outline, alpha and
 // submission stages are maintained; original compiler/EH and the queued
 // functor/task producer have independent source boundaries still open.
-// Original 22-case font dispatch and its true 22-entry pointer table are
-// recovered, with the original allocator argument and evaluation order.
-// The complete 2316B COFF footprint now equals code+alignment+table extent;
-// code remains one byte longer and is NOT strict exact.
+// The original 22-pointer font switch and true allocation/color behavior
+// are reconstructed. Used horizontal offset mutation and the two-wide-char
+// zero initialization now align the first 15 E8 sites and 41/43 in-body
+// HIGHLOW fields. The complete COFF contribution is native-sized 2316B,
+// including all 22 table entries, but the code return is one byte early.
+// This large Boss remains NONEXACT (1566/1956 ordinary byte agreement).
 #include "NativeGlyphRenderJob.hpp"
 #include "NativeGlyphTextCore.hpp"
 #include "NativeGlyphFontResources.hpp"
@@ -46,7 +48,7 @@ extern template NativeGlyphCanvasStorage* DiagnosticAllocator::allocate_object<
 // rather than replacing their internals with approximations.
 std::uint64_t __cdecl native_text_core_415830(
     const NativeTextTransform4* transform, std::int32_t horizontal_offset,
-    std::int32_t layer, std::uint32_t color, const char* formatted,
+    std::int32_t text_color_word, std::uint32_t outline_color, const char* formatted,
     IDirect3DBaseTexture9* texture, std::int32_t font, std::int32_t align,
     std::int32_t is_special, std::int32_t mode,
     std::function<void()> callback) {
@@ -57,7 +59,6 @@ std::uint64_t __cdecl native_text_core_415830(
     std::int32_t baseline=2;
     auto* canvas=process_allocator->allocate_object<NativeGlyphCanvasStorage>(
         "D:\\cygwin\\home\\zun\\prog\\th20\\src\\core\\grpfont.cpp:920 AflDIB");
-    auto* glyph=reinterpret_cast<NativeGlyphCanvasView*>(canvas);
     // Original physical switch is directly indexed by font 0..21 (22
     // pointer entries). Distinct 1/2/3, 4/5, 14/15, 16/17 and 20/21
     // cases independently assign BOTH native radius and baseline, even
@@ -108,25 +109,33 @@ std::uint64_t __cdecl native_text_core_415830(
                                   +3+static_cast<std::int32_t>(outline_radius);
     const std::int32_t bitmap_height=(transform->field_d-transform->field_b)
                                    +3+static_cast<std::int32_t>(outline_radius);
-    glyph->ensure_format_4153d0(bitmap_width,bitmap_height+6,0x15);
-    HDC dc=static_cast<HDC>(glyph->device_context_415620());
+    reinterpret_cast<NativeGlyphCanvasView*>(canvas)->ensure_format_4153d0(bitmap_width,bitmap_height+6,0x15);
+    HDC dc=static_cast<HDC>(reinterpret_cast<NativeGlyphCanvasView*>(canvas)->device_context_415620());
     HGDIOBJ previous=SelectObject(dc,selected_font);
-    const COLORREF text_color=RGB((color>>16)&0xff,(color>>8)&0xff,color&0xff);
+    // Original stack +0x10 supplies the GDI text color. The separate
+    // +0x14 word is the glyph-mask outline color: neither is a render layer.
+    // Preserve the original three used 8-bit channel stores and masks.
+    const std::uint8_t red=static_cast<std::uint8_t>((static_cast<std::uint32_t>(text_color_word)>>16)&0xffu);
+    const std::uint8_t green=static_cast<std::uint8_t>((static_cast<std::uint32_t>(text_color_word)>>8)&0xffu);
+    const std::uint8_t blue=static_cast<std::uint8_t>(static_cast<std::uint32_t>(text_color_word)&0xffu);
+    const COLORREF text_color=RGB(red,green,blue);
     SetBkMode(dc,TRANSPARENT);
     const std::int32_t char_count=static_cast<std::int32_t>(std::wcslen(unicode));
-    SIZE extent{};
+    SIZE extent;
     GetTextExtentPoint32W(dc,unicode,char_count,&extent);
 
     if (align==0) {
+        // Native advances its actual stack argument exactly once before drawing.
+        horizontal_offset += 2;
         SetTextColor(dc,text_color);
         if (is_special!=0) {
-            TextOutW(dc,horizontal_offset+2,baseline,unicode,char_count);
-            glyph->composite_glyph_mask_416420(bitmap_height+6,0,bitmap_width,
-                                                layer,outline_radius);
+            TextOutW(dc,horizontal_offset,baseline,unicode,char_count);
+            reinterpret_cast<NativeGlyphCanvasView*>(canvas)->composite_glyph_mask_416420(bitmap_height+6,0,bitmap_width,
+                                                outline_color,outline_radius);
         }
-        TextOutW(dc,horizontal_offset+2,baseline,unicode,char_count);
+        TextOutW(dc,horizontal_offset,baseline,unicode,char_count);
     } else {
-        wchar_t single_character[2]={0,0};
+        wchar_t single_character[2]{};
         SetTextColor(dc,text_color);
         if (is_special!=0) {
             std::int32_t px=horizontal_offset;
@@ -136,8 +145,8 @@ std::uint64_t __cdecl native_text_core_415830(
                 TextOutW(dc,px,baseline,single_character,1);
                 px+=align;
             }
-            glyph->composite_glyph_mask_416420(bitmap_height+6,0,bitmap_width,
-                                                layer,outline_radius);
+            reinterpret_cast<NativeGlyphCanvasView*>(canvas)->composite_glyph_mask_416420(bitmap_height+6,0,bitmap_width,
+                                                outline_color,outline_radius);
         }
         std::int32_t px=horizontal_offset;
         for(std::int32_t k=0;k<char_count;++k) {
@@ -148,7 +157,7 @@ std::uint64_t __cdecl native_text_core_415830(
         }
     }
     SelectObject(dc,previous);
-    glyph->invert_alpha_417ab0(bitmap_height+6,0,bitmap_width,0);
+    reinterpret_cast<NativeGlyphCanvasView*>(canvas)->invert_alpha_417ab0(bitmap_height+6,0,bitmap_width,0);
     SelectObject(dc,previous);
     {
         std::lock_guard<std::recursive_mutex> submit_guard(process_locks.slot(0x13));

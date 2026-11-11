@@ -1,3 +1,13 @@
+**Later source convergence:** The maintained glyph text Boss now also
+recovers its real GDI text/outline color roles, in-place horizontal offset
+advance, single-canvas lifetime and two-wide-char aggregate initialization.
+The current full COFF contribution is still native-sized **2,316B**, but
+its 25 E8 sites now align **15/25** and 43 in-body HIGHLOW sites align
+**41/43**, with **1,566/1,956** ordinary bytes agreeing. The candidate
+`ret` remains one byte earlier than the original. This document retains
+the historical first switch-only 2,316B source checkpoint. See the
+[latest GDI/source lifetime proof](GLYPH_TEXT_CORE2227_COLOR_AND_CANVAS_ABI_FRONTIER.md).
+
 # The 2,227B Glyph Text Boss: original 22-case font switch and full table
 
 At original `0x00415830`, the Japanese Steamless v1.00a TH20 glyph text
