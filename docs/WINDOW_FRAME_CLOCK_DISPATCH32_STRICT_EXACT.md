@@ -9,7 +9,7 @@ translation: it reads the real process frame device pointer twice from
 the original global 0x005C4A00, conditionally calls the device's
 frame_seconds_4abd50 method, and then always invokes the separate
 original 37B Card clock callback at 0x00487560. The first device
-method is a **437B source-unaccepted** original at 0x004ABD50. The
+method is a **437B original at 0x004ABD50 (subsequently whole strict exact)**. The
 Card clock callback and its 645B settlement parent have already been
 accepted whole-exact and are not counted a second time.
 
@@ -36,4 +36,4 @@ Reproduce:
     scripts/repo-python scripts/validate-tracking.py --require-target
 
 This credits **one new distinct game-authored head /32 native bytes**.
-The 437B device tick owner and other Window/frame parents remain open.
+The 437B device tick owner was subsequently [reconstructed whole strict exact](WINDOW_FRAME_DEVICE_CLOCK437_STRICT_EXACT.md). Other larger Window/frame scheduling parents remain open.

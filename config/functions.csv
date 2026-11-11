@@ -3168,7 +3168,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004ABB80,260,0x004ABC83,FUN_004abb80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004ABC90,112,0x004ABCFF,FUN_004abc90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004ABD10,49,0x004ABD40,FUN_004abd10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004ABD50,437,0x004ABF04,FUN_004abd50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004ABD50,437,0x004ABF04,FUN_004abd50,th20::NativeFrameDeviceClockView::frame_seconds_4abd50,WindowState,matching,100.00,__thiscall,?frame_seconds_4abd50@NativeFrameDeviceClockView@th20@@QAEHXZ,false,src/WindowFrameDeviceClock437.cpp,CORE/RECON-1125; docs/WINDOW_FRAME_DEVICE_CLOCK437_STRICT_EXACT.md,authored,"Whole original 437B/105-i386 window device frame-tick accountant with real 346B WindowState clock, 1.0s interval, original unsigned frame counter 0/2^32 correction, 65/57 fps thresholds, native 60.0 accumulation and true GameController flags. 2 E8/14 data physical roles and all 373 ordinary bytes exact. One real 113B frame pipeline member helper still open."
 0x004ABF30,333,0x004AC07C,FUN_004abf30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AC080,38,0x004AC0A5,FUN_004ac080,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AC0B0,13,0x004AC0BC,FUN_004ac0b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

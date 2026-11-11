@@ -1619,3 +1619,4 @@ th20::NativeCardTimeSaveArchiveView::alternate_record_488770,0x00488770,function
 th20::NativeCardRawRecordArray::at,0x00486E30,function
 th20::NativeCardWindowTimeView::current_seconds_41cb10,0x0041CB10,function
 th20::window_frame_clock_dispatch_4193c0,0x004193C0,function
+th20::NativeFrameDeviceClockView::frame_seconds_4abd50,0x004ABD50,function

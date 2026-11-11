@@ -28838,6 +28838,34 @@ size = 32
 relocations = [
   { offset = 0x5, type = "DIR32", symbol = "?native_frame_device_5c4a00@th20@@3PAUNativeFrameDeviceClockView@1@A", target = 0x005C4A00 },
   { offset = 0xE, type = "DIR32", symbol = "?native_frame_device_5c4a00@th20@@3PAUNativeFrameDeviceClockView@1@A", target = 0x005C4A00 },
-  { offset = 0x13, type = "REL32", symbol = "?frame_seconds_4abd50@NativeFrameDeviceClockView@th20@@QAEXXZ", target = 0x004ABD50 },
+  { offset = 0x13, type = "REL32", symbol = "?frame_seconds_4abd50@NativeFrameDeviceClockView@th20@@QAEHXZ", target = 0x004ABD50 },
   { offset = 0x19, type = "REL32", symbol = "?card_clock_update_487560@th20@@YAXXZ", target = 0x00487560 },
+]
+
+# CORE/RECON-1125: entire native 437B Window device/frame accountant, 2 E8/14 HIGHLOW roles.
+[units.window_frame_device_clock_boss_437]
+source = "src/WindowFrameDeviceClock437.cpp"
+object = "build/core1125-canonical/WindowFrameDeviceClock437.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeFrameDeviceClockView::frame_seconds_4abd50"]
+symbol = "?frame_seconds_4abd50@NativeFrameDeviceClockView@th20@@QAEHXZ"
+target_address = 0x004ABD50
+size = 437
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "?native_card_window_time_5b6758@th20@@3UNativeCardWindowTimeView@1@A", target = 0x005B6758 },
+  { offset = 0xF, type = "REL32", symbol = "?current_seconds_41cb10@NativeCardWindowTimeView@th20@@QAENXZ", target = 0x0041CB10 },
+  { offset = 0x43, type = "DIR32", symbol = "?native_frame_min_window_56c468@th20@@3NB", target = 0x0056C468 },
+  { offset = 0x8D, type = "DIR32", symbol = "?correction_table@?6??frame_seconds_4abd50@NativeFrameDeviceClockView@th20@@QAEHXZ@4QBNB", target = 0x0056CDD0 },
+  { offset = 0xAD, type = "DIR32", symbol = "?native_frame_maximum_fps_570618@th20@@3MB", target = 0x00570618 },
+  { offset = 0xD0, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0xDC, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0xF0, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0x10E, type = "DIR32", symbol = "?native_frame_count_step_56c470@th20@@3NB", target = 0x0056C470 },
+  { offset = 0x125, type = "DIR32", symbol = "?native_frame_minimum_fps_570614@th20@@3MB", target = 0x00570614 },
+  { offset = 0x137, type = "DIR32", symbol = "?native_frame_count_step_56c470@th20@@3NB", target = 0x0056C470 },
+  { offset = 0x15F, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0x167, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0x179, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0x190, type = "DIR32", symbol = "?native_frame_skip_count_5c4f84@th20@@3EA", target = 0x005C4F84 },
+  { offset = 0x1A8, type = "REL32", symbol = "?frame_pipeline_4ac0e0@NativeFrameDeviceClockView@th20@@QAEXXZ", target = 0x004AC0E0 },
 ]

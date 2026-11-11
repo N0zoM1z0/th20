@@ -3168,7 +3168,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004ABB80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004ABC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004ABD10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004ABD50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004ABD50,authored,WindowState,authored,high,CORE/RECON-1125; docs/WINDOW_FRAME_DEVICE_CLOCK437_STRICT_EXACT.md; complete source original 437B frame/timing and original E8/HIGHLOW physically anchored; 32B caller whole exact
 0x004ABF30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AC080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AC0B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
