@@ -53,6 +53,10 @@ scripts/repo-python scripts/validate-tracking.py --require-target
   passed fresh cold replay in **22 affected objects**. [Whole native/ABI
   proof](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md). +1,019
   distinct game-authored bytes; no child was credited twice.
+  The separately original [40B list constructor and 42B reset](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md)
+  are still NONEXACT; a new single-object double-tail hypothesis
+  yields 40B/16 i386 and 34/36 ordinary bytes, with two register-direction
+  bytes unresolved and no duplicate credit.
 
 
 - Original D3D9 **alpha-fringe texture finalizer** `0x00451910`:

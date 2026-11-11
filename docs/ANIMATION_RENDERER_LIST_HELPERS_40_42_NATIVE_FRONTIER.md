@@ -1,3 +1,59 @@
+## CORE/RECON-1113 — native constructor double-tail store and exact-size C++ hypothesis
+
+The original `0x00418A50` has **40 genuine code bytes and 16 x86
+instructions**. The target-bound Ghidra analysis and the independently
+SHA-pinned original machine code both show its actual executed operations:
+
+```cpp
+IntrusiveLink<Animation>::IntrusiveLink();
+this->tail = this;  // original store 1 at +0x15
+this->tail = this;  // original store 2 at +0x1E
+```
+
+Both stores affect the *same physical field* at `this+0x14`; their
+source-level reason (for example a member-initializer phase plus a
+constructor-body invariant) remains **unproven**. An explicitly
+**evidence-only** private class-key probe hypothesizes a member
+initializer and a constructor-body invariant assignment:
+
+```cpp
+IntrusiveList<Animation>::IntrusiveList()
+    : IntrusiveLink<Animation>(), tail(this) {
+    tail = this;
+}
+```
+
+Pinned MSVC 19.44 i386 C++20 emits **the entire original 40B/16
+instructions**, including two 0x14 tail stores and exactly one E8
+`+0x0A -> 0x00418A10`. The full original comparison now reaches
+**34/36 nonrelocation bytes**, rather than the historical 31B/13
+instruction one-store candidate. The only remaining differences are
+two **ModRM register-direction bytes**: native `+0x16 = 0x41` versus
+candidate `0x48`, and native `+0x1F = 0x50` versus candidate `0x42`.
+All other original constructor bytes and call roles match.
+
+A reproducible single-object, original-only bounded experiment is
+[`scripts/probe-animation-list-ctor40-double-tail.py`](../scripts/probe-animation-list-ctor40-double-tail.py).
+It clones the *real maintained* `src/IntrusiveListAnimation.hpp` into
+a disposable `.analysis/` translation unit, changes only the private
+constructor hypothesis and **requires** the above two original ModRM
+differences rather than pretending they are exact. The script also
+SHA-attests the native constructor and the existing 63B/61B original
+link helpers; no public header, canonical unit or receipt is changed.
+The source interpretation of the duplicate tail publication needs more
+evidence before mainline acceptance, and the current full comparison is
+still **NONEXACT**. The real 42B reset remains **37/38 ordinary bytes**
+(one original register-selection byte unresolved), despite 15 private
+natural C++ alias/lvalue tests. **No new original head/byte credit.**
+
+Fast focused reproduction:
+
+```sh
+nice -n 15 scripts/repo-python scripts/probe-animation-list-ctor40-double-tail.py
+```
+
+---
+
 **2026-11-11 status:** The *parent* 508B/511B Renderer updates are
 [now complete strict exact](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md).
 The physically separate **40B list constructor and 42B reset** remain

@@ -16,6 +16,11 @@ The former **508B/511B Renderer list-update pair is no longer open**:
 recovered the original `/sdl` class-key preclear, with **82/82** prior
 strict units preserved. Keep the original 40B list constructor and 42B reset
 on their *separate* NONEXACT helper backlog; they were not credited here.
+A [bounded 40B constructor double-tail probe](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md)
+now reproduces all 40 original code bytes in length/16 i386 instructions,
+34/36 ordinary bytes, original folded E8; two ModRM bytes and the reason
+for the same-address duplicate tail write remain open and are **not**
+canonically accepted.
 
 | Original physical Boss | What is recovered; genuine next work |
 | --- | --- |
