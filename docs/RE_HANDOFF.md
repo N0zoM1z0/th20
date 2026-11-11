@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,603** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,589** functions |
-| Canonical exact units / compiler objects | **1,587** units / **440** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **778** distinct original heads / **265,888** `.text` bytes |
+| Functions with provisional source mapping | **1,604** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,590** functions |
+| Canonical exact units / compiler objects | **1,588** units / **441** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **779** distinct original heads / **265,911** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
