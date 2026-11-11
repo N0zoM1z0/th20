@@ -116,7 +116,9 @@ links to original PE evidence. The immediate priorities are:
    frontiers and smaller exact-leaf opportunities. The 2,884B particle
    Update now has an independently verified **integer stage owner at
    +0x15E8**; all eight exact consumers survived a focused six-object
-   replay, but the 2,884B research source remains NONEXACT.
+   replay; its nine handle and four stage array accesses now use genuine
+   typed `std::array` indexing with unchanged native code. The 92B Stop
+   sibling remains whole strict exact; the 2,884B parent is NONEXACT.
 
 ## Workflow and verification boundary
 

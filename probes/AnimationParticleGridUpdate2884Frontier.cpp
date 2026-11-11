@@ -1,12 +1,15 @@
 // CORE/RECON-966: EXPERIMENTAL, NOT EXACT: full 2884B particle-grid Update.
+// All thirteen 4-byte particle handle/stage index operations now use the
+// real std::array<AnimationHandle,200> / std::array<int32_t,200> owners.
+// Their native bodies are exactly identical to the earlier folded 22B
+// Vector3-addressing hypothesis, with no type punning in these arrays.
 // Source is tracked under probes, NOT src and NOT strict canonical tracking.
 // Reproducible C++20 partial semantic reconstruction, 2953B/764 i386 output
 // vs original 2884B/768 i386, despite matching 99 call/25 data reloc counts.
 // DO NOT promote or claim authored original exact credit from this probe.
 // The group now declares the actual integer stage words at +0x15E8.
-// The Vector3-indexed alias below is still only a compiler/ABI hypothesis:
-// original E8 calls access the same four-byte words through a folded leaf.
-// File/palette member origins remain provisional; do not instantiate as runtime.
+// The folded 22B indexed leaf can be naturally emitted by either real
+// four-byte std::array owner. File/palette methods remain provisional.
 // Original body has 768 i386 instructions, 99 E8, 25 HIGHLOW; this is
 // a typed semantic draft with unresolved native file/palette helper APIs.
 #include "NativeParticleGridGroup.hpp"
@@ -59,47 +62,47 @@ int NativeParticleGridGroup::update() {
                 NativeParticleAnimationFile* file=particle_effect_file_437520(0);
                 std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
                 AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,0);
-                *reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+0))=handle;
+                colors_08[emission_index+0]=handle;
             }
             // Physical original particle handle creation 2/4.
             {
                 NativeParticleAnimationFile* file=particle_effect_file_437520(0);
                 std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
                 AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,0);
-                *reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+1))=handle;
+                colors_08[emission_index+1]=handle;
             }
             // Physical original particle handle creation 3/4.
             {
                 NativeParticleAnimationFile* file=particle_effect_file_437520(0);
                 std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
                 AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,0);
-                *reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+2))=handle;
+                colors_08[emission_index+2]=handle;
             }
             // Physical original particle handle creation 4/4.
             {
                 NativeParticleAnimationFile* file=particle_effect_file_437520(0);
                 std::uint32_t palette = native_particle_effect_palette_45d100(file,0);
                 AnimationHandle handle=file->spawn_45d210("effect",0x96,nullptr,0.0f,0);
-                *reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+3))=handle;
+                colors_08[emission_index+3]=handle;
             }
             union { std::uint32_t word; AnimationColorChannels channels; } initial_color;
             initial_color.word = reinterpret_cast<NativeAnimationColorWordView*>(owner)->color_ref_45d0e0();
             {
-                Animation* child=reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+0))->resolve();
+                Animation* child=colors_08[emission_index+0].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().field_00=owner->variables().field_00;
                 }
             }
             {
-                Animation* child=reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+1))->resolve();
+                Animation* child=colors_08[emission_index+1].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().field_00=owner->variables().field_00;
                 }
             }
             {
-                Animation* child=reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+2))->resolve();
+                Animation* child=colors_08[emission_index+2].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().field_00=owner->variables().field_00;
@@ -111,7 +114,7 @@ int NativeParticleGridGroup::update() {
             initial_color.channels.green = static_cast<std::uint8_t>(300 - initial_color.channels.green);
             initial_color.channels.blue = static_cast<std::uint8_t>(300 - initial_color.channels.blue);
             {
-                Animation* child=reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](emission_index+3))->resolve();
+                Animation* child=colors_08[emission_index+3].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().field_00=owner->variables().field_00;
@@ -120,10 +123,10 @@ int NativeParticleGridGroup::update() {
         }
     }
     for (int index=0;index<200;++index) {
-        Animation* child=reinterpret_cast<AnimationHandle*>(&reinterpret_cast<Vector3*>(&colors_08)->operator[](index))->resolve();
+        Animation* child=colors_08[index].resolve();
         if (!child) continue;
         child->set_slowdown(owner->slowdown());
-        if (reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))==0) {
+        if (stages_15e8[index]==0) {
             position=extra_1914;
             polar(tangent,native_polygon_random_5ba4c4.radians(),
                   native_polygon_random_5ba4c4.unit()*native_particle_radius_150);
@@ -150,10 +153,10 @@ int NativeParticleGridGroup::update() {
                 static_cast<int>(owner->variables().field_00),position,tangent,gradient,velocity);
             positions_328[index]=gradient;
             vectors_c88[index]=velocity;
-            reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))=1;
+            stages_15e8[index]=1;
         } else {
             const int elapsed=native_particle_age_limit_45d0a0(child);
-            if (owner->variables().field_00+1<=elapsed && reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))==1) {
+            if (owner->variables().field_00+1<=elapsed && stages_15e8[index]==1) {
                 gradient=owner->vector_5bc_ref();
                 polar(tangent,native_polygon_random_5ba4c4.radians(),
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
@@ -165,7 +168,7 @@ int NativeParticleGridGroup::update() {
                 reinterpret_cast<NativeAnimationInterpolationForwardView*>(child)->configure_45d150(
                     static_cast<int>(owner->variables().field_00),
                     positions_328[index],vectors_c88[index],gradient,tangent);
-                reinterpret_cast<std::int32_t&>(reinterpret_cast<Vector3*>(&stages_15e8)->operator[](index))=2;
+                stages_15e8[index]=2;
             }
         }
         ++processed;

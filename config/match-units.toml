@@ -24904,7 +24904,7 @@ symbol = "?slot_0c@NativeParticleGridGroup@th20@@UAEHXZ"
 target_address = 0x0045CEB0
 size = 92
 relocations = [
- { offset = 0x35, type = "REL32", symbol = "??AVector3@th20@@QAEAAMH@Z", target = 0x00414580 },
+ { offset = 0x35, type = "REL32", symbol = "??A?$array@UAnimationHandle@th20@@$0MI@@std@@QAEAAUAnimationHandle@th20@@I@Z", target = 0x00414580 },
  { offset = 0x3C, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CED0 },
  { offset = 0x4F, type = "REL32", symbol = "?stop@Animation@th20@@QAEXXZ", target = 0x0044FD00 },
 ]

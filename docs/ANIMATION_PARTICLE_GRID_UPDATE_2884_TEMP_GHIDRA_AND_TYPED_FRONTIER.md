@@ -105,9 +105,23 @@ profile and **8/8 affected strict units remain exact**, covering the
 172B constructor, 49B deleting wrapper, 156B factory, 47B create,
 31B config, 92B stop and both 200-element array constructors. The
 research-only 2,884B Update still compiles as **2,953B/764 instructions,
-99 REL32/25 DIR32**. Its use of `Vector3::operator[]` as a byte-lane
-alias remains provisional; the now-correct integer storage does not
-prove that accessor's original C++ spelling. No parent-body exactness
+99 REL32/25 DIR32**. **Further 2026-11-11 index-ownership closure:** After the correct integer
+stage declaration was in place, the research source's thirteen remaining
+4-byte indexing calls were rewritten from an old `Vector3` cast into
+**nine natural `colors_08[index]` or `colors_08[emission_index+n]`
+`AnimationHandle` accesses** and **four natural `stages_15e8[index]`
+integer accesses**. The same correction was made in the independently
+strict 92B Stop sibling. The entire 2,953B/764-instruction C++ candidate
+is **byte-for-byte unchanged**, with the same 99 REL32/25 DIR32 field
+sites; the only relevant relocation changes are true C++ template
+symbol identities. Both `std::array` four-byte element accessor
+instantiations emit the full **22/22** original folded leaf at
+`0x00414580`, already canonically covered by `vector3_index` and not
+recredited. The 92B Stop strict replay passes **92/92** with its
+updated array symbol and unmodified physical E8 destination. These
+changes remove invalid 12-byte `Vector3` aliasing without changing
+gameplay semantics or claiming new exact parent credit. The other
+file/palette member names and original 2,884B ABI remain unresolved. No parent-body exactness
 is claimed and no unrelated provider was rebuilt.
 
 Some `0x00437520` effect-file, `0x0045D100` palette/file, and
