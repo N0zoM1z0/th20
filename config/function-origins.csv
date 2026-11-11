@@ -657,7 +657,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041DBC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DBE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DCC0,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
-0x0041DCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041DCE0,authored,Graphics,authored,high,"CORE/RECON-1139; docs/GRAPHICS_VIEWPORT_CLIP284_STRICT_EXACT.md; game-authored Graphics viewport/clip selector 284B full native exact, 67 i386, two original calls/four PE data fields and genuine 0x16C-stride viewport array; separate original physical 280B sibling"
 0x0041DE00,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041DE30,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041DE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

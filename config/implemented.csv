@@ -1618,3 +1618,4 @@ th20::NativeWindowFrameScheduleView::present_paced_419a50
 th20::NativeWindowFrameScheduleView::frame_controller_step_419c20
 th20::NativeWindowFrameScheduleView::frame_controller_no_wait_419de0
 th20::NativeWindowFrameScheduleView::frame_controller_paced_41a030
+th20::NativeGraphicsModeAction::set_clip_41dce0

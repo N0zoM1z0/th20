@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,634** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,620** functions |
-| Canonical exact units / compiler objects | **1,617** units / **463** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **804** distinct original heads / **272,154** `.text` bytes |
+| Functions with provisional source mapping | **1,635** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,621** functions |
+| Canonical exact units / compiler objects | **1,618** units / **464** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **805** distinct original heads / **272,438** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Graphics viewport/clip switch** 0x0041DCE0 is [whole 284/284B strict exact](GRAPHICS_VIEWPORT_CLIP284_STRICT_EXACT.md), called by 15 original sites including newly exact 433B/583B/370B Window controllers. Uses true Graphics 0x16C ViewportState array, raw viewport +0xE0, adjusted D3D9 viewport +0x104, third point and Graphics +0xB04 reset. 2 E8 +4 HIGHLOW physical sites and 260/260 ordinary bytes exact, 1/1 new source cold replay; independent already exact 280B sibling not re-credited.
 
 - **Window paced frame controller Boss** 0x0041A030 [370/370B strict whole-native exact](WINDOW_FRAME_PACED_BOSS370_STRICT_EXACT.md): original 97 i386, all 15 E8 and 15 HIGHLOW original positions and targets, 250/250 ordinary bytes. Real FunctionChain render path and already exact 385B paced Presenter; original true guard generates the natural 13B branch. New source 1/1 scoped cold replay, all six header-affected Window exact units individually 1/1. The 884B Window scheduler remains NONEXACT.
 
