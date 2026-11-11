@@ -4051,7 +4051,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D9EA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9F60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DA120,authored,Graphics,authored,high,"CORE/RECON-1141; docs/GRAPHICS_PREPARE_DEVICE194_STRICT_EXACT.md; unique game-authored 194B Graphics D3D9 transform setup, original 55 i386 with 3 E8 and 7 data native fields; whole MSVC source strict exact"
-0x004DA1F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DA1F0,authored,Graphics,authored,high,"CORE/RECON-1142; docs/GRAPHICS_CAMERA_MATRIX_BOSS846_STRICT_EXACT.md; unique 846B game-authored Graphics D3DX9 view/projection camera Boss, unsigned viewport double conversion native 0/2^32 table, 7 E8 and 20 data fields, complete 194-i386/846B original source exact"
 0x004DA540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DAB40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DAB80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

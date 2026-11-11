@@ -29257,3 +29257,42 @@ relocations = [
   { offset = 0x8A, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0xA8, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
 ]
+
+# CORE/RECON-1142: whole original 846B D3DX Graphics camera matrices.
+[units.graphics_camera_matrix_boss_846]
+source = "src/GraphicsCameraMatrixBoss846.cpp"
+object = "build/core1142-canonical/GraphicsCameraMatrixBoss846.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGraphicsModeAction::recompute_current_4da1f0"]
+symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z"
+target_address = 0x004DA1F0
+size = 846
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x31, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x4B, type = "DIR32", symbol = "?native_camera_half_divisor_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x5B, type = "REL32", symbol = "?native_sqrt_439850@th20@@YAMM@Z", target = 0x00439850 },
+  { offset = 0x8D, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xB4, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xCC, type = "DIR32", symbol = "?native_camera_half_divisor_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xF2, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x10A, type = "DIR32", symbol = "?native_camera_half_divisor_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x126, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x168, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x191, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x1C1, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x1D9, type = "DIR32", symbol = "?native_camera_half_divisor_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x203, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x233, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x24B, type = "DIR32", symbol = "?native_camera_half_divisor_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x25D, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x26F, type = "DIR32", symbol = "?native_camera_negative_one_56e0f4@th20@@3MB", target = 0x0056E0F4 },
+  { offset = 0x285, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x29D, type = "REL32", symbol = "_D3DXMatrixLookAtLH@16", target = 0x005406BA },
+  { offset = 0x2A6, type = "DIR32", symbol = "?native_camera_max_z_571ea0@th20@@3MB", target = 0x00571EA0 },
+  { offset = 0x2B4, type = "DIR32", symbol = "?native_camera_min_z_56c8cc@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x2D6, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x303, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x339, type = "REL32", symbol = "_D3DXMatrixPerspectiveFovLH@20", target = 0x005406C0 },
+  { offset = 0x344, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
