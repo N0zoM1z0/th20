@@ -1,6 +1,6 @@
 # TH20 original-native evidence index
 
-**Native evidence navigation, current entry points updated 2026-11-11 (CORE/RECON-1110).** For the live
+**Native evidence navigation, reconciled 2026-11-11.** For live
 repository status, **first read the [current handoff](RE_HANDOFF.md)**,
 [accepted author-code ledger](../config/matches.csv), and
 [strict unit graph](../config/match-units.toml). The following detailed
@@ -10,13 +10,21 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
-The short [current handoff](RE_HANDOFF.md) and
-[open Boss backlog](RE_OPEN_BOSS_BACKLOG.md) are **the active state**, not
-the historical evidence entries below. As of 2026-10-31:
-**1,578 strict source units /432 canonical object-receipt providers**,
-**769 game-authored exact native heads/264,067 code bytes**. Validate
-these snapshot numbers against the live CSV/TOML before relying on them.
+The [current handoff](RE_HANDOFF.md) and
+[open Boss backlog](RE_OPEN_BOSS_BACKLOG.md) are the **active state**;
+entries below preserve dated evidence, not necessarily current acceptance.
+Disposable noncanonical compiled objects named in historical entries may have
+been cleaned; reproduce them with the source/probe instructions rather than
+using the historical object path as a current file locator.
+At the 2026-11-11 checkpoint the authoritative ledgers record
+**1,584 strict units /438 canonical object-receipt providers**,
+**775 game-authored exact heads /265,737 original code bytes**.
+Recheck the live CSV/TOML before relying on these dated counts.
 
+- **157B game file-existence wrapper:** [whole strict exact](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md).
+  The original receives a narrow `const char*` and constructs a local
+  standard filesystem path; the former 155B path-copy source hypothesis
+  was incorrect and is retained only as historical research.
 - **Recently completed large game code:**
   [2,745B D3D9 alpha-fringe finalizer](ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md)
   is **whole strict exact**, including `compare_size=2798` with all

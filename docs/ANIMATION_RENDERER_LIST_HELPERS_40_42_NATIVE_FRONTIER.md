@@ -91,8 +91,11 @@ The 40B mismatch is **not** repaired by inserting a deliberate redundant
 store. Such code would be compiler-shaping rather than recovered source
 semantics. The compiler's physical original second tail write may reflect
 different real source/member initialization roles; those remain unproven.
-The actual public `IntrusiveLink.hpp` is unmodified. The Animation-specific
-instantiation is an isolated **probe, not a second canonical template owner**.
+The generic `IntrusiveLink.hpp` remains unchanged. At this historical
+checkpoint, the Animation-only class specialization was a probe; it was
+subsequently introduced in [the exact Renderer migration](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md)
+with 82/82 existing exact consumers preserved. The new two-store ctor
+*itself* is still only a private hypothesis, not canonical source.
 
 ## Canonical credit and bounded verification
 
@@ -119,7 +122,7 @@ scripts/repo-python scripts/compare-coff-function.py --unit link_default_ctor
 scripts/repo-python scripts/compare-coff-function.py --unit link_initialize
 ```
 
-Next experiments should examine naturally expressed initialization order and
-MSVC template symbol ownership for the list constructor/reset, while separately
-assessing the far-reaching `struct`/`class` ABI migration required to close
-both **508B/511B** update parents. No physical head may be counted twice.
+Next experiments should resolve the two genuine ctor ModRM bytes and the
+reset register-selection byte without unproven duplicate assignment or dead
+locals. The **508B/511B update parents are already whole exact**; no physical
+head may be credited twice.

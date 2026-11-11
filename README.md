@@ -51,19 +51,21 @@ are excluded from Git.
 
 ## Repository status
 
-At the October 30, 2026 checkpoint the maintained graph has **1,443
-source-present mappings**, **1,443 strict canonical native units** and
-**390 canonical MSVC object/receipt providers**. Independently verified
-game-authored whole-function exactness is **769 complete functions /
-264,067 original native bytes**. These are dated values, not a
-whole-game buildability or playable-game claim: always run
+At the November 11, 2026 checkpoint, the tracked source inventory covers
+**1,586 functions**, with **1,584 strict native units** built from **438
+canonical MSVC object/receipt providers**. Independently validated
+*game-authored* whole-function exactness is **775 functions /265,737
+original `.text` bytes**. This is a dated snapshot, not a playable-game
+or whole-project-build claim. Run
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`
-for the live inventory and consult the
-[current concise handoff](docs/RE_HANDOFF.md) for the unfinished bosses.
+for live counts and read the
+[current agent handoff](docs/RE_HANDOFF.md) and
+[remaining Boss backlog](docs/RE_OPEN_BOSS_BACKLOG.md) before continuing.
 
 | Area | Verified live state and detailed evidence |
 | --- | --- |
 | **Large exact game functions** | Original [11,110B ECL runtime tick](docs/EXACT_ECL_TICK_RECONSTRUCTION.md), [3,735B Bullet emitter](docs/BULLET_EMITTER_3735_3832_STRICT_EXACT_RECONSTRUCTION.md), [3,490B InputDevice polling](docs/INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md), and other accepted whole bodies; the complete physical credit is in [`config/matches.csv`](config/matches.csv). |
+| **Recently completed Renderer/game IO** | Whole strict exact **508B +511B** Renderer list-update Bosses (independently preserving 82/82 prior exact consumers), **417B** Unicode formatted-text caller, and **157B** game filesystem-exists wrapper with actual narrow `const char*` source. [Renderer pair](docs/ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md), [text](docs/ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md), [file exists](docs/GAME_FILE_EXISTS157_NATIVE_FRONTIER.md). The separate 40B list ctor/42B reset and 586B centered text remain NONEXACT. |
 | **Animation quad-submit Boss** | Original **3,159B body /3,180B complete relocated contribution** [strict exact](docs/ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md). Its separate [20B standard `round(float)` header wrapper](docs/ANIMATION_STD_ROUND_FLOAT_20_LIBRARY_EXACT.md) is strict exact but **library**, not authored game code. |
 | **Animation rendering backends** | Original **4,347B Mode8**, **2,769B Mode6**, **1,378B Mode6 setup**, **1,996B Mode7 setup**, **753B Mode7**, and **2,136B mesh24/25** each independently whole strict exact. [Mode8](docs/ANIMATION_DRAW_MODE8_4347_STRICT_EXACT.md), [Mode6](docs/ANIMATION_DRAW_MODE6_2769_STRICT_EXACT.md), [Mode6 setup](docs/ANIMATION_DRAW_MODE6_SETUP_1378_STRICT_EXACT.md), [Mode7 setup](docs/ANIMATION_DRAW_MODE7_SETUP_1996_STRICT_EXACT.md), [mesh](docs/ANIMATION_DRAW_MESH2425_2136_STRICT_EXACT.md). Their enclosing **5,993B Draw dispatcher remains NONEXACT**. |
 | **Animation geometry Bosses** | Independently exact **2,169B closed line, 1,980B rectangle, 1,601B triangle, 1,468B ring**, and many 375B–1,174B fan/ellipse/strip renderers. [Source-native proof index](docs/EVIDENCE_INDEX.md) supplies the individual original heads and relocation roles; exact children do **not** complete the 5,993B Draw dispatcher. |
@@ -89,10 +91,10 @@ for the live inventory and consult the
 | **347B Renderer layer-classification dispatch Boss** | Full native **347B/105-i386 strict exact**, true 14 E8/3 HIGHLOW and lock9, real original 382B+394B classifications, four 0x48-stride renderer lookups and authentic 806B/230B separate children. **+347 authored bytes**, 3/3 scoped chain replay. [Whole proof](docs/ANIMATION_RENDERER_CLASSIFY_DISPATCH347_STRICT_EXACT.md). |
 | **382B/394B dual Renderer classification Bosses** | Both game-owned classification and +0x500 link-staging methods **382/382 +394/394 whole strict exact**, true 347B parent E8, 16 native E8/2 HIGHLOW each, first/second 24B lists and third list+0x30. **+776 authored game bytes** and 2/2 affected unit replay. [Complete native proof](docs/ANIMATION_RENDERER_CLASSIFY382394_STRICT_EXACT.md). |
 | **188B Direct3D9 surface clearing** | Native **188B/75-i386 whole strict exact**, real texture GetSurfaceLevel/Surface GetDesc/LockRect/UnlockRect/Release, original locked pitch×height `memset`; 2 original E8/one PE HIGHLOW, **+188 game-authored bytes**. [Original proof](docs/ANIMATION_TEXTURE_SURFACE_CLEAR188_STRICT_EXACT.md). |
-| **164B Renderer second-list update wrapper** | Native complete **164B/46-i386 strict exact**, genuine lock9, pool+0xD8 reset and typed 0x48 Renderer first slot, E8 into distinct **511B NONEXACT** secondary update. **+164 authored game bytes**, 3/3 scoped replay. [PE/COFF evidence](docs/ANIMATION_RENDERER_UPDATE_SECONDARY164_STRICT_EXACT.md). |
+| **164B Renderer second-list update wrapper** | Native complete **164B/46-i386 strict exact**, genuine lock9, pool+0xD8 reset and typed 0x48 Renderer first slot, E8 into independently **511B whole-exact** secondary update. **+164 authored game bytes**, 3/3 scoped replay. [PE/COFF evidence](docs/ANIMATION_RENDERER_UPDATE_SECONDARY164_STRICT_EXACT.md). |
 | **59B GameController-gated Renderer update** | Original entire **59B/18-i386 strict exact**, genuine current GameController original 3 PE HIGHLOW, two independently exact status checks, E8 to existing exact 150B Renderer gate. **+59 authored bytes**, 2/2 scoped replay. [Full proof](docs/ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md). |
 | **411B recursive Animation retirement queue** | Whole original **411B/116-i386 strict exact**: real self recursion, child list traversal and 57B staged `append` instead of distinct 76B free-list `insert_after`, all native 18 E8/2 HIGHLOW. **+411 game-authored bytes**. [Complete evidence](docs/ANIMATION_QUEUE_RETIREMENT411_STRICT_EXACT.md). |
-| **150B Renderer locked list-update wrapper** | Whole original **150B/44-i386 strict exact**, true slot9 lock and pool+0x6C8 first Renderer, native 6 E8/3 HIGHLOW, directly calls still NONEXACT 508B update Boss. **+150 authored game bytes**, 1/1 scoped replay. [Original proof](docs/ANIMATION_RENDERER_UPDATE150_STRICT_EXACT.md). |
+| **150B Renderer locked list-update wrapper** | Whole original **150B/44-i386 strict exact**, true slot9 lock and pool+0x6C8 first Renderer, native 6 E8/3 HIGHLOW, directly calls the independently **508B whole-exact** update Boss. **+150 authored game bytes**, 1/1 scoped replay. [Original proof](docs/ANIMATION_RENDERER_UPDATE150_STRICT_EXACT.md). |
 | **35B Handle event forwarding and 29B caller ABI correction** | Whole distinct **35B/15-i386 strict exact** at original `0x0044F0D0` → exact 261B child-event/VM traversal; **29B Dialogue offset+7** originally calls this 35B, not separate older 35B → 246B ordinary interrupt. Shared decorated symbol corrected, 8/8 scoped exact, **+35 authored bytes**. [Original PE evidence](docs/ANIMATION_HANDLE_EVENT_DESCENDANTS_BRIDGE35_STRICT_EXACT.md). |
 | **261B Animation child interrupt/VM visit** | Whole original **261B/81-i386 strict exact**, true 456B handle resolver, real child-links[1] iteration, native `Animation::interrupt(event)` followed by real **39,470B VM** E8 (VM still NONEXACT), **14 E8/2 HIGHLOW**, +261 game-authored bytes. Resolver dependency 5/5 scoped strict. [PE native proof](docs/ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md). |
 | **56B Handle fallback resolver +39B callback forward** | Real native 51B Handle resolver followed by genuine **resident Animation at pool+0xDC** fallback, then original Animation callback write. **56/56 and 39/39 whole strict exact**, 3 original E8/one PE HIGHLOW, **+95 authored bytes**, 10/10 scoped replay; corroborates real 138B pool destructor layout. [Complete proof](docs/ANIMATION_HANDLE_RESOLVE_RESIDENT56_CALLBACK39_STRICT_EXACT.md). |

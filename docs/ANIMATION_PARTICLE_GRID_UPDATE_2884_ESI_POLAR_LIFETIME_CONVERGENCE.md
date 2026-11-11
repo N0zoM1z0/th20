@@ -70,10 +70,11 @@ candidate relocation counts.
 | First 20 E8 offset absolute-difference sum | 659 | **119** | 0 |
 | Original ESI push/age-across-call lifetime | No | **Yes** | Yes |
 
-The previous full 2,969B object was saved under
-`build/gptweb-particle-owner-probes/EffectChainSpawnSlot.obj`; the
-new whole 2,924B object is the output of the maintained single-source
-probe. Size converged **45B** toward the real game function, and the
+The previous 2,969B candidate source is retained as
+`.analysis/gptweb-particle-owner-probes/EffectChainSpawnSlot.cpp`; its
+noncanonical compiled object was removed during storage cleanup.
+Rebuild it with `scripts/compile-probe.py` if needed. The current
+2,924B candidate is reproducible from the maintained single-source probe. Size converged **45B** toward the real game function, and the
 native early original E8 instruction sites now align where they
 previously did not. The 2,924B candidate's original-code difference
 remains **40B and eight i386 instructions**. These bytes are *not*
