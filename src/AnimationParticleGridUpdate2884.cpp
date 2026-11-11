@@ -42,9 +42,9 @@ int NativeParticleGridGroup::update() {
     polar(tangent,direction,native_particle_radius_150);
     tangent.z=0.0f;
     extra_1908+=tangent;
-    if (timer_1930.changed()) {
-        if (timer_1930.less_than(50)) {
-            emission_index=timer_1930 * 4;
+    if (timer_1930.time.changed()) {
+        if (timer_1930.time.less_than(50)) {
+            emission_index=timer_1930.time * 4;
             // Physical original particle handle creation 1/4.
             {
                 EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
@@ -162,7 +162,7 @@ int NativeParticleGridGroup::update() {
         ++processed;
     }
     if (!processed) return -1;
-    ++timer_1930;
+    ++timer_1930.time;
     return 0;
 }
 }

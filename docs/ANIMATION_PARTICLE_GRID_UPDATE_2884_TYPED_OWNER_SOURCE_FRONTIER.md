@@ -10,7 +10,14 @@ body SHA-256 `0d8c82a2018031e59c5e7172e08318e133f3513b6fc4639a1bab506c41eb02d1`,
 **99 genuine E8 calls, 25 PE HIGHLOW fields**, and one real `ret` at
 `0x0045CEA3`. The original PE-relocated six-entry vtable at `0x0056EC14`
 points slot 1 to this function; slot 3 points to the independently exact
-92B Stop sibling. Twelve real `INT3` bytes separate these bodies.
+92B Stop sibling, and slot 4 to the newly
+[whole-exact 51B particle event](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md).
+The group now represents the unchanged Timer storage at offset `+0x1930`
+by `NativeGridTimedDelta.time`, which permits the event's original folded
+26B forwarding operator and the group's genuine 172B direct Timer constructor.
+The maintained Update invokes the member Timer's `changed`, `less_than`,
+`operator*`, and increment; it continues compiling as 2,969B/763 i386,
+99 REL32/25 DIR32, NONEXACT. Twelve real `INT3` bytes separate these bodies.
 
 The original Ghidra inventory missed the 2,884B Update boundary. The
 [original-only proof](../scripts/verify-animation-particle-grid-update2884-native.py)
@@ -58,6 +65,15 @@ exact **25B age** and **19B color-word** getters with their actual
 `__thiscall` ABI; no invented free-function substitute remains.
 The real `Timer::changed()` source is used for the folded original
 `0x0045D030` timer gate, also seen independently in other exact callers.
+
+The group's `+0x1930` Timer member now has a 16B aggregate wrapper
+`NativeGridTimedDelta { Timer time; }` that allows the independently strict
+[51B virtual Event](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md)
+to call the original 26B folded `+=` helper without altering the already
+strict 172B constructor's real Timer E8 target. All eight previously exact
+particle-group units remained exact after six targeted object rebuilds.
+The Update's calls use `.time`, preserving the full nonexact 2,969B/763
+compiler frontier. No bytes from the 2,884B parent are newly credited.
 
 Beyond the four resource paths, the maintained C++ preserves the 200-handle
 lifetime loop, two exact 202B Vector3 normalization calls, two exact 57B

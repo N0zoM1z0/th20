@@ -34,6 +34,10 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   Unicode Renderer source](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md)
   now reconstructs the complete control flow and width semantics, but its
   current 594B MSVC body retains an eight-byte SSE/stack frontier.
+- **Particle-grid virtual Event** `0x0045D060`: [whole original
+  51B/18-instruction strict exact](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md),
+  one real E8 to a previously exact folded 26B forwarding helper, original
+  group Timer constructor and eight dependent exact units preserved.
 - **Original 2,884B particle-grid Update:**
   [maintained whole-function C++ and real resource owner source frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md)
   now connects the strict 26B Session/EffectInfo selector, 38B file lookup,

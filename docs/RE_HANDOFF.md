@@ -24,9 +24,9 @@ old status labels are **historical observations**, not current facts.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded labels | Title/replay strings say **1.00c inside this same locked v1.00a file**; do not change targets based on the embedded label |
 | Ghidra provisional candidates | **6,928 Ghidra candidates plus one original-only recovered 2,884B head** (not all Ghidra candidates have independent boundaries) |
-| Accepted source-tracked units | **1,580 whole strict units**; `functions.csv` has **1,582** nonempty source-file rows |
-| Canonical build providers | **434 pinned MSVC object + receipt pairs**; all currently protected |
-| Credited *game-authored* whole-native exact | **771 distinct original function heads /264,510 `.text` bytes** |
+| Accepted source-tracked units | **1,581 whole strict units**; `functions.csv` has **1,583** nonempty source-file rows |
+| Canonical build providers | **435 pinned MSVC object + receipt pairs**; all currently protected |
+| Credited *game-authored* whole-native exact | **772 distinct original function heads /264,561 `.text` bytes** |
 | Whole game compiles, links or plays | **No** — native matching and standalone source coverage are different milestones |
 
 Those figures are a **dated snapshot**, not a counter to increment
@@ -74,6 +74,11 @@ scripts/repo-python scripts/validate-tracking.py --require-target
   (3,490B/747-i386)** is also [WHOLE STRICT EXACT](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md),
   not source-present/NONEXACT as a few historical `InputState.hpp`
   and source comments once claimed. Canonical unit: `input_device_poll`.
+- **Particle-grid virtual event** `0x0045D060`: **51B/18-i386 WHOLE STRICT
+  EXACT**, backed by the genuine 16B aggregate Timer layout and the already
+  accepted folded 26B forwarding callee (never recredited). Original vtable
+  slot4, sole E8, and the true 172B constructor's Timer call are all
+  independently attested. [Complete native proof](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md).
 - **Renderer Unicode formatted sprite text** `0x0044AC20`:
   **417B/114-i386 WHOLE STRICT EXACT**, with original lock-9 format and
   by-value callback dispatch. [Independent full-code/relocation proof](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md).
@@ -122,7 +127,9 @@ links to original PE evidence. The immediate priorities are:
    with four real Session→EffectInfo→AnimationFile→spawn protocols and the
    genuine 25B/19B animation accessors. The pinned candidate remains
    2,969B/763 i386, **NONEXACT**; its separately accepted 26B selector,
-   83B spawn and 92B Stop sibling retain exact credit only for themselves.
+   83B spawn, 92B Stop and now independently strict **51B Event** sibling
+   retain exact credit only for themselves. The new aggregate Timer owner
+   preserves all eight exact group-dependent units after six scoped builds.
 
 ## Scoped compiler receipt integrity
 

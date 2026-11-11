@@ -770,3 +770,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00451910,th20::NativeRendererTextureMemoryView::finalize_uploaded_texture_451910,2745,matching,100.00,animation_texture_finalize_alpha_2745,CORE/RECON-1103; docs/ANIMATION_TEXTURE_FINALIZER2745_STRICT_EXACT.md
 0x0044AC20,th20::NativeRendererFormattedTextView::draw_formatted_text_44ac20,417,matching,100.00,animation_renderer_formatted_text_417,CORE/RECON-1104; docs/ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md
 0x00437520,th20::particle_effect_info_for_session_437520,26,matching,100.00,particle_effect_info_lookup_26,CORE/RECON-1106; docs/PARTICLE_EFFECT_INFO_LOOKUP26_STRICT_EXACT.md
+0x0045D060,th20::NativeParticleGridGroup::interrupt,51,matching,100.00,animation_particle_grid_event_51,CORE/RECON-1108; docs/ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md

@@ -8,6 +8,15 @@
 #include <cstdint>
 namespace th20 {
 class Animation;
+// One real Timer at offset zero. The original particle event invokes a
+// separately folded 26B forwarding +=, while the group's constructor calls
+// Timer::Timer directly. Aggregate initialization preserves both native ABIs.
+struct NativeGridTimedDelta {
+    Timer time;
+    void operator+=(std::int32_t amount) { time += amount; }
+};
+static_assert(sizeof(NativeGridTimedDelta) == sizeof(Timer));
+
 class NativeParticleGridGroup : public AnimationCallback {
 public:
     std::array<AnimationHandle,200> colors_08;
@@ -22,7 +31,7 @@ public:
     // A pointer-like union view is provisional; C++17 MSVC /sdl requires
     // pointer-bearing class classification to emit the native autozero.
     union { float scalar_192c; void* provisional_pointer_192c; };
-    Timer timer_1930;
+    NativeGridTimedDelta timer_1930;
     explicit NativeParticleGridGroup(Animation* owner);
     std::int32_t configure_45cfe0(const Vector3& unused_position, std::int32_t unused_token);
     std::int32_t update() override;

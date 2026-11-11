@@ -1,4 +1,21 @@
+**2026-11-11 RESOLVED:** The original 51B event is now
+[whole strict exact](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md)
+using `NativeGridTimedDelta { Timer time; }` as a standard aggregate with
+braced initialization. This preserves the authentic `Timer::Timer` E8 in
+the 172B group constructor and emits the original folded 26B `operator+=`
+call in the event. The rejected variants below remain historical evidence.
+
 # CORE/RECON-952 — original 51B particle-grid virtual event and folded 26B Timer call ABI frontier (NOT exact)
+
+**2026-11-11 resolved:** This is the historical *nonexact* investigation.
+A real aggregate containing `Timer` as its offset-zero member, together
+with `timer_1930{}` braced initialization, satisfies both previously
+conflicting original call targets. The particle virtual event is now
+[whole 51/51 strict exact](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md),
+and its actual 172B group constructor plus all seven other affected exact
+units still pass full strict comparison. Keep the historical rejected
+experiments below as evidence of the resolved compiler/ABI distinction.
+
 
 Locked Japanese TH20 1.00a Steamless SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
