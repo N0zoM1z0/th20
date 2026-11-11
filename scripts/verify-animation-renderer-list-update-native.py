@@ -42,7 +42,7 @@ VARIANTS={
  '511':(0x00449B20,511,153,'82610fc6e8e74938e509de8a188f053c31e2e9e08ff4039f498b7046861258d8',SECONDARY_CALLS,SECONDARY_DATA,'?animation_list_update_secondary_449b20@th20@@YIXPAUNativeSpawnRendererView@1@@Z'),
 }
 
-def verify(variant,object_name=None):
+def verify(variant,object_name=None,whole_object=None):
  addr,size,count,sha,calls,data,symbol=VARIANTS[variant]
  image,_=pe.verified_target();base,sections=pe.parse_sections(image)
  highlow=pe.physical_highlow(image,base,sections)
@@ -66,6 +66,28 @@ def verify(variant,object_name=None):
  if variant=='511':
   assert any(i.mnemonic=='add' and i.op_str=='eax, 0x18' for i in ins)
  print(f'PASS original {variant}B/{count} i386, {len(calls)} E8/{len(data)} HIGHLOW, immutable SHA-256 and actual end')
+ if whole_object:
+  if object_name:
+   raise ValueError('use whole candidate or historical 10B normalized candidate, not both')
+  full_symbol=symbol
+  if variant=='508':
+   full_symbol=symbol.replace('YIXPAU?$IntrusiveList@VAnimation','YIXPAV?$IntrusiveList@VAnimation')
+  code,relocs=coff.object_function(Path(whole_object),full_symbol,size)
+  expected={(i+1,'REL32',dest) for i,dest in calls.items()}
+  expected.update((i,'DIR32',dest) for i,dest in data.items())
+  assert len(expected)==len(relocs)==35
+  observed={(r['offset'],r['type'],r['symbol']) for r in relocs}
+  assert len(observed)==35
+  report=coff.compare(Path(whole_object),full_symbol,addr,size)
+  assert report['result']=='structural-exact'
+  assert len(report['relocations'])==35
+  actual={(int(r['offset'],16),r['type'],int(r['solved_destination'],16))
+          for r in report['relocations']}
+  assert actual==expected,(expected^actual)
+  assert report['matched_comparable_bytes']==report['comparable_bytes']==size-35*4
+  print(f'PASS whole actual {variant}B: {size}/{size} complete structural code; {len(relocs)} true original field sites and independently decoded targets')
+  print('Canonical credit requires: scripts/repo-python scripts/compare-coff-function.py --unit animation_renderer_list_update_'+('primary_508' if variant=='508' else 'secondary_511'))
+  return
  if not object_name:return
  obj,relocs=coff.object_function(Path(object_name),symbol,size-10)
  assert len(obj)==size-10
@@ -87,5 +109,6 @@ def verify(variant,object_name=None):
 
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--variant',choices=VARIANTS,required=True)
- p.add_argument('--candidate-object')
- a=p.parse_args();verify(a.variant,a.candidate_object)
+ p.add_argument('--candidate-object',help='historical NONEXACT 10B-short baseline diagnostic only')
+ p.add_argument('--whole-candidate-object',help='full class-tag native size/relocation-role proof')
+ a=p.parse_args();verify(a.variant,a.candidate_object,a.whole_candidate_object)

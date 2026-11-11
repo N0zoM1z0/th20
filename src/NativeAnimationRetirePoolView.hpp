@@ -1,6 +1,7 @@
+#include "IntrusiveListAnimation.hpp"
 #pragma once
-// Original 411B renderer retirement queue and the still nonexact 508B
-// list-update caller share one non-owning AnimationPoolOwner view.
+// Both the original 411B recursive renderer retirement queue and its
+// 508B/511B exact Renderer-list callers share this non-owning pool view.
 #include "AnimationRuntimeOwner.hpp"
 #include "IntrusiveLink.hpp"
 namespace th20 {

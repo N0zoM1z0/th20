@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // CORE/RECON-989: entire original 261B child event+VM update traversal.
 // Original VM callee 0x0042B5D0 /39470B remains NONEXACT.
 #include "AnimationRuntimeOwner.hpp"

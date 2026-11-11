@@ -1,3 +1,9 @@
+**2026-11-11 status:** The *parent* 508B/511B Renderer updates are
+[now complete strict exact](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md).
+The physically separate **40B list constructor and 42B reset** remain
+NONEXACT and have no new duplicate credit; the historical investigation
+below is still valid for those two leaves.
+
 # CORE/RECON-995 — independent 40B/42B Renderer list-helper investigation
 
 This follow-up to the [508B/511B complete Renderer update sources](ANIMATION_RENDERER_LIST_UPDATE_508_511_NATIVE_FRONTIER.md)

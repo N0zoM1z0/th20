@@ -1,6 +1,7 @@
+#include "IntrusiveListAnimation.hpp"
 // Original whole 150B/44-i386 RendererPool lock+one-list update wrapper.
-// The real original E8 targets the separate still-NONEXACT 508B list update;
-// this unit cannot be used to infer transitive code exactness.
+// The original E8 targets the now independently whole-exact 508B
+// Renderer list update; this 150B wrapper remains independently exact.
 #include "Animation.hpp"
 #include "NativeSpawnAnimationPoolView.hpp"
 #include "NativeAnimationRendererUpdate.hpp"

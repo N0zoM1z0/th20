@@ -20387,7 +20387,7 @@ relocations = [
   { offset = 0xC3, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXPAVAnimation@2@@Z", target = 0x44a670 },
   { offset = 0xD9, type = "REL32", symbol = "??AAnimationChildLinks@th20@@QAEAAV?$IntrusiveLink@VAnimation@th20@@@1@H@Z", target = 0x4494b0 },
   { offset = 0xE8, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXPAVAnimation@2@@Z", target = 0x44a670 },
-  { offset = 0xF4, type = "DIR32", symbol = "$SG79272", target = 0x56e5bc },
+  { offset = 0xF4, type = "DIR32", symbol = "$SG79343", target = 0x56e5bc },
   { offset = 0xFA, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x5b8894 },
   { offset = 0xFF, type = "REL32", symbol = "??$allocate_object@VAnimation@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVAnimation@1@PBD@Z", target = 0x447800 },
   { offset = 0x10A, type = "REL32", symbol = "?reset@Animation@th20@@QAEXXZ", target = 0x4299d0 },
@@ -25569,7 +25569,7 @@ relocations = [
  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
  { offset = 0x58, type = "REL32", symbol = "?renderer_index_449490@NativeRendererPoolSelector@th20@@QAEPAXH@Z", target = 0x00449490 },
- { offset = 0x5F, type = "REL32", symbol = "?animation_list_update_449870@th20@@YIXPAU?$IntrusiveList@VAnimation@th20@@@1@@Z", target = 0x00449870 },
+ { offset = 0x5F, type = "REL32", symbol = "?animation_list_update_449870@th20@@YIXPAV?$IntrusiveList@VAnimation@th20@@@1@@Z", target = 0x00449870 },
  { offset = 0x76, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
  { offset = 0x8E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
@@ -25582,11 +25582,11 @@ source = "src/AnimationQueueRetirement411.cpp"
 object = "build/core977-canonical/AnimationQueueRetirement411.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeAnimationRetirePoolView::queue_retired_animation_44f840"]
-symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAU?$IntrusiveList@VAnimation@th20@@@2@@Z"
+symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAV?$IntrusiveList@VAnimation@th20@@@2@@Z"
 target_address = 0x0044F840
 size = 411
 relocations = [
- { offset = 0x006, type = "DIR32", symbol = "__ehhandler$?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAU?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0056867D },
+ { offset = 0x006, type = "DIR32", symbol = "__ehhandler$?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAV?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0056867D },
  { offset = 0x015, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
  { offset = 0x03C, type = "REL32", symbol = "??AAnimationChildLinks@th20@@QAEAAV?$IntrusiveLink@VAnimation@th20@@@1@H@Z", target = 0x004494B0 },
  { offset = 0x043, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
@@ -25599,7 +25599,7 @@ relocations = [
  { offset = 0x0AA, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
  { offset = 0x0B9, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
  { offset = 0x0C8, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
- { offset = 0x0D3, type = "REL32", symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAU?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0044F840 },
+ { offset = 0x0D3, type = "REL32", symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAV?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0044F840 },
  { offset = 0x0E5, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
  { offset = 0x10A, type = "REL32", symbol = "?initialize@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEXPAVAnimation@2@@Z", target = 0x0044A670 },
  { offset = 0x11C, type = "REL32", symbol = "?append@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXPAV?$IntrusiveLink@VAnimation@th20@@@2@@Z", target = 0x00411EA0 },
@@ -28322,4 +28322,100 @@ target_address = 0x0045D060
 size = 51
 relocations = [
   { offset = 0x26, type = "REL32", symbol = "??YNativeGridTimedDelta@th20@@QAEXH@Z", target = 0x0045C300 },
+]
+
+
+# CORE/RECON-1110: original complete 508B Renderer Animation list Boss.
+[units.animation_renderer_list_update_primary_508]
+source = "src/AnimationRendererListUpdate508.cpp"
+object = "build/core1110-canonical/AnimationRendererListUpdate508.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_list_update_449870"]
+symbol = "?animation_list_update_449870@th20@@YIXPAV?$IntrusiveList@VAnimation@th20@@@1@@Z"
+target_address = 0x00449870
+size = 508
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?animation_list_update_449870@th20@@YIXPAV?$IntrusiveList@VAnimation@th20@@@1@@Z", target = 0x00568315 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x31, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$IntrusiveList@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 0x43, type = "REL32", symbol = "?reset@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXPAVAnimation@2@@Z", target = 0x0044A640 },
+  { offset = 0x54, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x60, type = "REL32", symbol = "?begin@?$IntrusiveList@VAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x6F, type = "REL32", symbol = "?end@?$IntrusiveList@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x7C, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x89, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x9C, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0xA7, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xBB, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xCF, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xE2, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xF5, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0xFA, type = "REL32", symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAV?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0044F840 },
+  { offset = 0x105, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x118, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x11F, type = "REL32", symbol = "?update@Animation@th20@@QAEHXZ", target = 0x0042B5D0 },
+  { offset = 0x12B, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x13E, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x143, type = "REL32", symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAV?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0044F840 },
+  { offset = 0x158, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0x169, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x175, type = "REL32", symbol = "?begin@?$IntrusiveList@VAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x184, type = "REL32", symbol = "?end@?$IntrusiveList@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x191, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x19E, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x1AD, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0x1B8, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x1C7, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x1CC, type = "REL32", symbol = "?release_animation@AnimationPoolOwner@th20@@QAEHPAVAnimation@2@@Z", target = 0x0044C2F0 },
+  { offset = 0x1DE, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0x1F4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+
+# CORE/RECON-1110: original complete 511B Renderer Animation list Boss.
+[units.animation_renderer_list_update_secondary_511]
+source = "src/AnimationRendererListUpdate511.cpp"
+object = "build/core1110-canonical/AnimationRendererListUpdate511.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::animation_list_update_secondary_449b20"]
+symbol = "?animation_list_update_secondary_449b20@th20@@YIXPAUNativeSpawnRendererView@1@@Z"
+target_address = 0x00449B20
+size = 511
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?animation_list_update_secondary_449b20@th20@@YIXPAUNativeSpawnRendererView@1@@Z", target = 0x00568315 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x31, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x39, type = "REL32", symbol = "??0?$IntrusiveList@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
+  { offset = 0x43, type = "REL32", symbol = "?reset@?$IntrusiveList@VAnimation@th20@@@th20@@QAEXPAVAnimation@2@@Z", target = 0x0044A640 },
+  { offset = 0x57, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x63, type = "REL32", symbol = "?begin@?$IntrusiveList@VAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x72, type = "REL32", symbol = "?end@?$IntrusiveList@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x7F, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x8C, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x9F, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0xAA, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xBE, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xD2, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xE5, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0xF8, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0xFD, type = "REL32", symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAV?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0044F840 },
+  { offset = 0x108, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x11B, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x122, type = "REL32", symbol = "?update@Animation@th20@@QAEHXZ", target = 0x0042B5D0 },
+  { offset = 0x12E, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x141, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x146, type = "REL32", symbol = "?queue_retired_animation_44f840@NativeAnimationRetirePoolView@th20@@QAEXPAVAnimation@2@PAV?$IntrusiveList@VAnimation@th20@@@2@@Z", target = 0x0044F840 },
+  { offset = 0x15B, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0x16C, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x178, type = "REL32", symbol = "?begin@?$IntrusiveList@VAnimation@th20@@@th20@@QAE?AV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x187, type = "REL32", symbol = "?end@?$IntrusiveList@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveIterator@VAnimation@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x194, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x1A1, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VAnimation@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x1B0, type = "REL32", symbol = "?get@?$IntrusiveIterator@VAnimation@th20@@@th20@@QAEPAV?$IntrusiveLink@VAnimation@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0x1BB, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEAAPAVAnimation@2@XZ", target = 0x0040F160 },
+  { offset = 0x1CA, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x1CF, type = "REL32", symbol = "?release_animation@AnimationPoolOwner@th20@@QAEHPAVAnimation@2@@Z", target = 0x0044C2F0 },
+  { offset = 0x1E1, type = "REL32", symbol = "??1?$IntrusiveIterator@VAnimation@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0x1F7, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]

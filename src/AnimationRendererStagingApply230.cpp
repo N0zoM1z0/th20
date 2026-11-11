@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Entire original 230B staged Renderer Animation draw/owner counter loop.
 // Original 5993B Animation draw remains separately NONEXACT.
 #include "NativeRendererClassificationOwner.hpp"

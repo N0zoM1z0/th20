@@ -1,6 +1,6 @@
 # TH20 original-native evidence index
 
-**Native evidence navigation, current entry points checked 2026-10-31 (CORE/DOC-CLEANUP).** For the live
+**Native evidence navigation, current entry points updated 2026-11-11 (CORE/RECON-1110).** For the live
 repository status, **first read the [current handoff](RE_HANDOFF.md)**,
 [accepted author-code ledger](../config/matches.csv), and
 [strict unit graph](../config/match-units.toml). The following detailed
@@ -28,6 +28,11 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   [269B preloader](ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md), and
   [182B file find/wait](ANIMATION_FILE_FIND_OR_LOAD182_STRICT_EXACT.md)
   are also independently exact.
+- **Two large Renderer update Bosses:**
+  [508B +511B WHOLE STRICT EXACT](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md),
+  all 60 original E8/10 HIGHLOW roles and full 1,019 original game bytes,
+  with scoped **82/82** existing exact units protected. The original
+  40B constructor/42B reset folded callees remain separately NONEXACT.
 - **Renderer formatted sprite text:** [417B whole original native exact](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md)
   at `0x0044AC20`, with 114 i386 instructions, ten independently decoded
   E8 targets and three original HIGHLOW fields. The adjacent [586B centered
@@ -47,7 +52,7 @@ these snapshot numbers against the live CSV/TOML before relying on them.
   includes keyboard, DirectInput, XInput and input-history update,
   preserving the full original native `input_device_poll` source. Older
   text describing this parent as NONEXACT was stale.
-- **Still open:** 508B/511B Renderer list updates, 5,993B Animation
+- **Still open:** 5,993B Animation
   Draw, 2,245B glyph compositor, 2,227B GDI text core, 1,896B Card
   start, 336B ANM group parse, plus very large 12,140B Bullet, 41,967B
   Enemy ECL, and 39,470B Animation VM dispatch. Use the
@@ -238,7 +243,8 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 ## Reading order for outstanding original Bosses
 
-- **508B/511B primary and secondary Renderer list updates — SOURCE-PRESENT, NONEXACT:**
+- **Historical 508B/511B primary and secondary Renderer list source-nonexact
+  investigation — SUPERSEDED by [CORE/RECON-1110 whole exact](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md):**
   [whole original native and 10B compiler-tag frontier](ANIMATION_RENDERER_LIST_UPDATE_508_511_NATIVE_FRONTIER.md);
   complete two-pass C++ loops exist and both physical E8/HIGHLOW sets are verified,
   but no exact credit from normalized bytes;

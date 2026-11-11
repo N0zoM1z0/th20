@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 #pragma once
 // Two native 24-byte Animation intrusive lists, used by the full original
 // 922B AnimationFile::spawn Boss and four renderer registration helpers.

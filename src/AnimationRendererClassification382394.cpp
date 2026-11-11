@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Full two original Renderer classification/queueing Bosses 382B and 394B.
 // The direct nested link_500.initialize(node_access()) expression preserves
 // the actual original native receiver/argument evaluation order; no fake NOP.

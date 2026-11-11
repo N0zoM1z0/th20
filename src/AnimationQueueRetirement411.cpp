@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // CORE/RECON-977: complete original 411B recursive Animation retirement.
 // Actual 57B native IntrusiveList append is the physical 0x411EA0 call;
 // do not conflate with the distinct 76B native insert_after 0x411EE0.

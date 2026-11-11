@@ -24,9 +24,9 @@ old status labels are **historical observations**, not current facts.
 | Immutable SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Embedded labels | Title/replay strings say **1.00c inside this same locked v1.00a file**; do not change targets based on the embedded label |
 | Ghidra provisional candidates | **6,928 Ghidra candidates plus one original-only recovered 2,884B head** (not all Ghidra candidates have independent boundaries) |
-| Accepted source-tracked units | **1,581 whole strict units**; `functions.csv` has **1,583** nonempty source-file rows |
-| Canonical build providers | **435 pinned MSVC object + receipt pairs**; all currently protected |
-| Credited *game-authored* whole-native exact | **772 distinct original function heads /264,561 `.text` bytes** |
+| Accepted source-tracked units | **1,583 whole strict units**; `functions.csv` has **1,585** nonempty source-file rows |
+| Canonical build providers | **437 pinned MSVC object + receipt pairs**; all currently protected |
+| Credited *game-authored* whole-native exact | **774 distinct original function heads /265,580 `.text` bytes** |
 | Whole game compiles, links or plays | **No** — native matching and standalone source coverage are different milestones |
 
 Those figures are a **dated snapshot**, not a counter to increment
@@ -42,6 +42,18 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 ```
 
 ## Important recent *whole exact* Bosses — do not reclassify as open
+
+- **Both Renderer Animation list-update Bosses now WHOLE STRICT EXACT:**
+  `0x00449870` **508B/152-i386** and `0x00449B20` **511B/153-i386**,
+  each with all 30 original E8 and five PE HIGHLOW fields, all native
+  physical targets and complete **508/508 +511/511 relocated bytes**.
+  The original `/sdl` ten-byte list preclear is naturally emitted by the
+  one consistent `class IntrusiveList<Animation>` explicit specialization;
+  the generic list type is unchanged. **82/82** earlier canonical units
+  passed fresh cold replay in **22 affected objects**. [Whole native/ABI
+  proof](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md). +1,019
+  distinct game-authored bytes; no child was credited twice.
+
 
 - Original D3D9 **alpha-fringe texture finalizer** `0x00451910`:
   **2,745B/759-i386 WHOLE STRICT EXACT**. Canonical native code
@@ -96,21 +108,11 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 source files, native extents, unresolved compiler/ABI issues and
 links to original PE evidence. The immediate priorities are:
 
-1. **508B/511B Renderer list-update Bosses:** real two-pass source
-   is still 10B short because of an MSVC `/sdl` list initialization.
-   An [Animation-only class-template specialization probe](ANIMATION_RENDERER_LIST_508_511_ANIMATION_CLASS_SPECIALIZATION_FRONTIER.md)
-   now yields **complete 508B/511B, 368/368 and 371/371 ordinary bytes,
-   and all 35 native relocation roles** in *each* Boss. A corrected
-   full-extent comparator confirms all 38 `Animation.cpp` exact units
-   remain structurally exact; the historical apparent +5B increases
-   were real after-ret padding already included in `compare_size`.
-   Keep the specialization noncanonical until class-key/ODR and
-   linker symbol ABI across the other consumers are reconciled.
-2. **5,993B Animation Draw** (native x87/SSE/local-operand roles),
+1. **5,993B Animation Draw** (native x87/SSE/local-operand roles),
    **2,245B glyph mask compositor** (GDI bitmap/PMR growth),
    **2,227B Unicode glyph text core**, and **1,896B Card start**.
    These are all source-present but remain **NONEXACT**.
-3. **336B ANM per-group parser**: now source-present, 336B/83 i386
+2. **336B ANM per-group parser**: now source-present, 336B/83 i386
    but **278/280 ordinary bytes**, with two outstanding stack/frame
    differences. Its 1,022B loader parent is already exact.
 4. **586B centered Unicode Renderer text Boss:** `0x0044ADD0` now has
@@ -120,7 +122,7 @@ links to original PE evidence. The immediate priorities are:
    remain NONEXACT. Both it and the separately [whole-exact 417B](ANIMATION_RENDERER_FORMATTED_TEXT_417_STRICT_EXACT.md)
    use one borrowed Renderer owner; the 417B consumer was rebuilt and
    remains strict exact. No credit is claimed for the 586B sibling.
-5. Source-absent **12,140B Bullet command dispatcher**, **41,967B
+4. Source-absent **12,140B Bullet command dispatcher**, **41,967B
    Enemy ECL opcode dispatcher** and **39,470B Animation VM**.
    Their independently exact descendants do not make these
    parents exact. The backlog also covers Player/particle/mesh

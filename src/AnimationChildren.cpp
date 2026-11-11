@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 #include "Animation.hpp"
 namespace th20 {
 IntrusiveLink<Animation>& AnimationChildLinks::operator[](std::int32_t index) { return nodes[index]; }

@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Complete original AnimationHandle comparison and position protocol.
 // Uses the real four-byte handle, external Renderer handle resolution and
 // the original full Animation Vector3 position value owner at +0x5BC.

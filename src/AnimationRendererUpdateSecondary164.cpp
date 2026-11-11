@@ -1,6 +1,6 @@
 // Whole original 164B/46-i386 Renderer update of secondary list.
-// Native 511B child is SOURCE-PRESENT but still NONEXACT; its natural
-// C++ list-construction body misses one original 10B MSVC preclear.
+// Original 511B Renderer child is now separately WHOLE STRICT EXACT;
+// native list construction emits the real 10B MSVC /sdl preclear.
 #include "LockRegistry.hpp"
 #include "NativeSpawnAnimationPoolView.hpp"
 #include "NativeSpawnRendererView.hpp"

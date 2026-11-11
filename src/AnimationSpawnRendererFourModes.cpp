@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Four independently native-exact renderer enqueue and handle-registration
 // functions sharing one original two-list owner with AnimationFile::spawn.
 #include "Animation.hpp"

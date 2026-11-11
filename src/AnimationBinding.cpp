@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 #include "Animation.hpp"
 #include "AnimationFile.hpp"
 #include <cstring>

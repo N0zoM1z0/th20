@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Complete original native 456-byte SprtCtrlInf::getSprt(SprtID) behavior,
 // retained under the existing ABI-compatible AnimationPoolOwner::resolve_handle
 // name because its many already native-exact callers supply a four-byte word.

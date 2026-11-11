@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Native AnimationHandle retirement and recursive pool-owned subtree marking.
 // Original handle index and pool owner have distinct, observed lifetimes.
 #include "AnimationHandle.hpp"

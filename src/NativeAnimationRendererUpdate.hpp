@@ -1,7 +1,8 @@
+#include "IntrusiveListAnimation.hpp"
 #pragma once
-// Two adjacent original renderer update methods. Both 150B/164B
-// wrappers are strict exact; their complete 508B/511B list-walking C++
-// sources remain NONEXACT solely at the shared MSVC 10B list preclear ABI.
+// Both 150B/164B wrappers and their complete 508B/511B Renderer
+// two-pass update callees are WHOLE STRICT EXACT under the original
+// Animation-only class-key /sdl ABI. See CORE/RECON-1110.
 #include "AnimationRuntimeOwner.hpp"
 #include "IntrusiveLink.hpp"
 namespace th20 {

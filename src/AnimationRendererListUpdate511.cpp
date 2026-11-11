@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Secondary Renderer animation update, sharing the native deferred-retirement protocol.
 // The source follows the complete native iterator and two-phase release path.
 #include "NativeAnimationRendererUpdate.hpp"

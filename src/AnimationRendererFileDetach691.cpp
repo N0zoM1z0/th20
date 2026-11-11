@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Complete original 691B game Renderer file detachment Boss.
 // Iterate both true 24B Animation intrusive lists in the one genuine 72B
 // Renderer slot at pool+0x6C8; mark affected Animation records at +0x570.

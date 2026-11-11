@@ -1,3 +1,9 @@
+**2026-11-11 RESOLVED:** Both maintained Renderer list-update
+functions are now [complete native 508B/511B WHOLE STRICT EXACT](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md),
+with real class-key `/sdl` initialization, complete native E8/HIGHLOW roles
+and **82/82** exact affected consumers rebuilt. The research-only
+NONEXACT hypotheses below remain archived historical observations.
+
 **CORE/RECON-1109 continuation:** A new dedicated explicit
 `class IntrusiveList<Animation>` probe reproduces **both whole 508B/511B
 bodies with every original E8/HIGHLOW field, all physical targets and all

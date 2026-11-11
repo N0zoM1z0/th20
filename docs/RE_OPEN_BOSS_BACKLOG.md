@@ -11,9 +11,14 @@ source/byte mismatches; some old status prose predates later commits.
 
 ## A. Major source-present, still NONEXACT game functions
 
+The former **508B/511B Renderer list-update pair is no longer open**:
+[CORE/RECON-1110 whole native strict exact proof](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md)
+recovered the original `/sdl` class-key preclear, with **82/82** prior
+strict units preserved. Keep the original 40B list constructor and 42B reset
+on their *separate* NONEXACT helper backlog; they were not credited here.
+
 | Original physical Boss | What is recovered; genuine next work |
 | --- | --- |
-| **Renderer primary and secondary animation-list updates** `0x00449870` **508B/152-i386**, `0x00449B20` **511B/153-i386** | Source: `src/AnimationRendererListUpdate508.cpp` and `511.cpp`. Both complete two-pass deferred retirement algorithms and native E8/HIGHLOW edges are known. Modern C++ `IntrusiveList<Animation>` emits **498B/501B**: one real **10B compiler `/sdl` preclear** is absent; a private `struct`→`class` tag test emits original sizes but alters shared ABI/decorations and many canonical units. A now reproducible **Animation-only explicit class specialization** emits **whole structural 508B/511B with all 35 true native relocation roles per Boss**, and the full exact-consumer control confirms 38/38 Animation.cpp exact contributions still match (the earlier +5B observation was ordinary original after-ret padding, not a regression). DO NOT canonically merge before the source/ODR and decorated-ABI migration is proven. [Full private native and regression proof](ANIMATION_RENDERER_LIST_508_511_ANIMATION_CLASS_SPECIALIZATION_FRONTIER.md); [original algorithm frontier](ANIMATION_RENDERER_LIST_UPDATE_508_511_NATIVE_FRONTIER.md). Exact 150B/164B wrapper and 411B retirement callee do not make either loop exact. |
 | **Animation main Draw** `0x00443880`, **5,993B/1,501-i386** | `src/AnimationDrawBoss.cpp`; native 123 E8/32 HIGHLOW. Whole candidate has real native length but wrong x87 inherited-scale spills and some register/stack roles; **not byte exact**. Repair actual mode35/36 expression/lifetime and verify every native role, not just size or exact mode backends. [Current frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md). |
 | **Glyph mask compositor** `0x00416420`, **2,245B/612-i386** | `src/GlyphMaskComposite2245.cpp`; real BGRA32/ARGB4444 GDI mask, bitmap stride and PMR offset vector. Prior candidate around 2,061B/545 instructions, not accepted. Remaining original vector insertion/growth and MSVC allocation/ABI details; do not claim whole exact from exact pixel leaves. [Whole original and bitmap frontier](GLYPH_MASK_BOSS2245_LIVE_BITMAP_FRONTIER.md), [PMR insertion](GLYPH_MASK_EMPLACE35_NATIVE_FRONTIER.md). |
 | **Glyph Unicode/GDI text core** `0x00415830`, **2,227B/470-i386** | `src/GlyphTextCore2227.cpp`; font metrics, glyph mask, queued task and Alpha producer/consumer typed. Native original 25 E8/43 HIGHLOW, modern candidate still shorter/different. The 542B canvas Alpha and many PMR/GDI children are already exact. [Core frontier](GLYPH_TEXT_CORE2227_TYPED_NATIVE_FRONTIER.md). |

@@ -1581,3 +1581,5 @@ th20::NativeRendererFormattedTextView::draw_centered_text_44add0
 th20::particle_effect_info_for_session_437520
 th20::NativeParticleGridGroup::update
 th20::NativeParticleGridGroup::interrupt
+th20::animation_list_update_449870
+th20::animation_list_update_secondary_449b20

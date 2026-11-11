@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Complete original 0x0044C9B0..0x0044CAD9 298-byte Animation-pool
 // allocation game boss. Entire native owner/reuse/new path, natural C++.
 // Renderer remains an opaque external owner: original x86 attests its
@@ -23,10 +24,6 @@ extern template Animation* DiagnosticAllocator::allocate_object<Animation>(const
 // A real typed specialization returns the already modeled next link without
 // an extra helper call; it is a folded *source role*, not another 17B game
 // exact credit or a fabricated trampoline into the Timer implementation.
-template<>
-IntrusiveLink<Animation>* IntrusiveList<Animation>::front() {
-    return next;
-}
 
 Animation* AnimationPoolOwner::allocate_animation() {
     if (reinterpret_cast<IntrusiveList<Animation>*>(

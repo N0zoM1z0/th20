@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 #pragma once
 // Three genuine consecutive 24B Animation intrusive lists at Renderer
 // offsets +0x00/+0x18/+0x30. Classification is a NON-OWNING view: it

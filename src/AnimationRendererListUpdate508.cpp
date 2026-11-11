@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Primary Renderer animation update, including deferred subtree retirement.
 // The source follows the complete native iterator and two-phase release path.
 #include "NativeAnimationRendererUpdate.hpp"

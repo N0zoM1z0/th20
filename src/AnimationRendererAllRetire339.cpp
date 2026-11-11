@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // CORE/RECON-988: original whole 339B/106-i386 two-list Renderer retirement.
 // Both loops invoke the same genuine whole-exact 308B AnimationPool retire.
 #include "NativeSpawnRendererView.hpp"

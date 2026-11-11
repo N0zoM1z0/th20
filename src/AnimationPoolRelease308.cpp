@@ -1,3 +1,4 @@
+#include "IntrusiveListAnimation.hpp"
 // Entire original 308B game-owned AnimationPool retirement.
 // Two separate original array-base computations are intentional: the first
 // clears active and the second inserts a free link at the head, not append.
