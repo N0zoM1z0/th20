@@ -1640,3 +1640,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Graphics viewport clip switch 284B whole strict exact](GRAPHICS_VIEWPORT_CLIP284_STRICT_EXACT.md) — native 67 x86, Graphics+0x278 ViewportState stride0x16C, D3D9 SetViewport, unadjusted+0xE0 and adjusted+0x104 views, 2 native E8 /4 HIGHLOW and all 260 ordinary bytes; 1/1 scoped replay, one unique original 284B head distinct from sibling 280B.
 
 - [Graphics frame Worker cleanup 53B whole strict exact](GRAPHICS_WORKER_CLOSE53_STRICT_EXACT.md) — real Graphics+0xD90 Worker close/detach then join, original SyncCloseSubThread message, 3/3 native E8 and one HIGHLOW physical target plus 37/37 ordinary bytes; 1/1 source-local replay and +53 distinct authored game bytes.
+
+- [Graphics D3D9 matrix stage 194B whole strict exact](GRAPHICS_PREPARE_DEVICE194_STRICT_EXACT.md) — native 55 instructions, original 3/3 E8 and 7/7 PE HIGHLOW physical sites/targets and 154/154 ordinary bytes, real process-global device via 0x005C4D40, View/Projection SetTransform and original renderer first point; one exact source-local unit, +194 distinct game bytes.

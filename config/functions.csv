@@ -4050,7 +4050,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004D9E70,34,0x004D9E91,FUN_004d9e70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004D9EA0,187,0x004D9F5A,FUN_004d9ea0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004D9F60,435,0x004DA112,FUN_004d9f60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004DA120,194,0x004DA1E1,FUN_004da120,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004DA120,194,0x004DA1E1,FUN_004da120,th20::NativeGraphicsModeAction::prepare_device_4da120,Graphics,matching,100.00,__thiscall,?prepare_device_4da120@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@@Z,false,src/GraphicsPrepareDevice194.cpp,CORE/RECON-1141; docs/GRAPHICS_PREPARE_DEVICE194_STRICT_EXACT.md,authored,"Entire game Graphics device transform stage original 194B/55 native i386; natural process global Graphics get_device +0x5C4D40, Renderer flush and both true D3D9 SetTransform(D3DTS_VIEW/PROJECTION), first ViewportState point into Renderer+0xC8/0xCC. All original 3 E8, 7 HIGHLOW native physical sites/destinations and all 154 ordinary bytes source strict exact, preserved original Imul by zero on first point selection; no artificial locals or padding."
 0x004DA1F0,846,0x004DA53D,FUN_004da1f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004DA540,1402,0x004DAAB9,FUN_004da540,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004DAB40,62,0x004DAB7D,FUN_004dab40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

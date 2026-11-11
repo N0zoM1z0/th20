@@ -14,10 +14,10 @@ for more candidates. Git history preserves earlier checkpoints.
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
 | Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,636** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,622** functions |
-| Canonical exact units / compiler objects | **1,619** units / **465** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **806** distinct original heads / **272,491** `.text` bytes |
+| Functions with provisional source mapping | **1,637** rows; includes unaccepted and excluded mappings |
+| Source-present / implemented | **1,623** functions |
+| Canonical exact units / compiler objects | **1,620** units / **466** protected MSVC objects and receipts |
+| Credited game-authored whole exact | **807** distinct original heads / **272,685** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
 These figures are a checkpoint, not counters to update by hand. The
@@ -29,6 +29,8 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 folded implementations, and post-`ret` switch/padding data.
 
 ## Recently closed whole-native work — do not reopen
+
+- **Graphics device matrix stage** 0x004DA120 is [whole 194/194B strict exact](GRAPHICS_PREPARE_DEVICE194_STRICT_EXACT.md): native 55 i386, original three E8/seven HIGHLOW physical targets, 154/154 ordinary bytes; real global Graphics D3D9 View/Projection transforms and Animation Renderer first point. One-source 1/1 cold replay. The connected 846B camera/matrix Boss 0x004DA1F0 remains a separate open function.
 
 - **Graphics Worker close leaf** 0x004D9E30 [53/53B whole strict exact](GRAPHICS_WORKER_CLOSE53_STRICT_EXACT.md): real Graphics+0xD90 Worker stop/detach+join with the native SyncCloseSubThread diagnostic. Three E8 and one PE HIGHLOW original physical target, 37 ordinary bytes and original NOP all exact. Only new 53B source 1/1 cold replay; 370B/433B/583B Window frame callers remain exact.
 

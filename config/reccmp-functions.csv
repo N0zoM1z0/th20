@@ -1635,3 +1635,4 @@ th20::NativeWindowFrameScheduleView::frame_controller_no_wait_419de0,0x00419DE0,
 th20::NativeWindowFrameScheduleView::frame_controller_paced_41a030,0x0041A030,function
 th20::NativeGraphicsModeAction::set_clip_41dce0,0x0041DCE0,function
 th20::NativeTickGraphicsView::bail_out_4d9e30,0x004D9E30,function
+th20::NativeGraphicsModeAction::prepare_device_4da120,0x004DA120,function
