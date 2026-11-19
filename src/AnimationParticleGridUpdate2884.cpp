@@ -85,21 +85,21 @@ int NativeParticleGridGroup::update() {
                 Animation* child=colors_08[emission_index+0].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().field_00=owner->variables().field_00;
+                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
                 }
             }
             {
                 Animation* child=colors_08[emission_index+1].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().field_00=owner->variables().field_00;
+                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
                 }
             }
             {
                 Animation* child=colors_08[emission_index+2].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().field_00=owner->variables().field_00;
+                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
                 }
             }
             // Original immutable native fourth-emitter color transform:
@@ -111,7 +111,7 @@ int NativeParticleGridGroup::update() {
                 Animation* child=colors_08[emission_index+3].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().field_00=owner->variables().field_00;
+                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
                 }
             }
         }
@@ -144,13 +144,13 @@ int NativeParticleGridGroup::update() {
                 native_polygon_random_5ba4c4.unit()*native_particle_radius_100+
                 native_particle_radius_100);
             reinterpret_cast<NativeAnimationInterpolationForwardView*>(child)->configure_45d150(
-                static_cast<int>(owner->variables().field_00),position,tangent,gradient,velocity);
+                static_cast<int>(owner->variables().particle_grid_count),position,tangent,gradient,velocity);
             positions_328[index]=gradient;
             vectors_c88[index]=velocity;
             stages_15e8[index]=1;
         } else {
             if (reinterpret_cast<NativeParticleAnimationAccess*>(child)->age_45d0a0()
-                >= owner->variables().field_00+1 && stages_15e8[index]==1) {
+                >= owner->variables().particle_grid_count+1 && stages_15e8[index]==1) {
                 gradient=owner->vector_5bc_ref();
                 polar(tangent,native_polygon_random_5ba4c4.radians(),
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
@@ -160,7 +160,7 @@ int NativeParticleGridGroup::update() {
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
                 tangent.z=0.0f;
                 reinterpret_cast<NativeAnimationInterpolationForwardView*>(child)->configure_45d150(
-                    static_cast<int>(owner->variables().field_00),
+                    static_cast<int>(owner->variables().particle_grid_count),
                     positions_328[index],vectors_c88[index],gradient,tangent);
                 stages_15e8[index]=2;
             }

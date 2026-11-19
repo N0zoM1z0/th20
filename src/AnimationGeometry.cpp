@@ -41,7 +41,7 @@ void Animation::update_geometry() {
     switch (base.flags.bytes_00.field_00) {
     default: return;
     case 9: {
-        std::int32_t count = base.variables.field_00;
+        std::int32_t count = base.variables.geometry_vertex_count;
         float angle = base.vector_38.z;
         float step = (pi * 2.0f) / float(count - 1);
         auto* vertex = static_cast<SpriteTexturedVertex*>(geometry);
@@ -75,7 +75,7 @@ void Animation::update_geometry() {
         break;
     }
     case 47: {
-        std::int32_t count=base.variables.field_00;
+        std::int32_t count=base.variables.geometry_vertex_count;
         float angle=base.vector_38.z;
         float step=(pi*2.0f)/float(count-1);
         auto* vertex=static_cast<SpriteWorldTexturedVertex*>(geometry);
@@ -129,7 +129,7 @@ void Animation::update_geometry() {
     }
     case 13:
     case 14: {
-        std::int32_t count=base.variables.field_00;
+        std::int32_t count=base.variables.geometry_vertex_count;
         float angle=normalize_angle(base.vector_38.z-base.vector_38.x/2.0f);
         float step=base.vector_38.x/float(count-1);
         auto* vertex=static_cast<SpriteTexturedVertex*>(geometry);
@@ -161,7 +161,7 @@ void Animation::update_geometry() {
     }
     case 24:
     case 25: {
-        std::int32_t count=base.variables.field_00;
+        std::int32_t count=base.variables.geometry_vertex_count;
         float angle=normalize_angle(base.variables.field_1c-base.variables.field_10/2.0f);
         float step=base.variables.field_10/float(count-1);
         auto* vertex=static_cast<SpriteWorldTexturedVertex*>(geometry);

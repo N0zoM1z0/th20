@@ -231,3 +231,27 @@ Bosses. Re-run the relevant probe script when a removed temporary object is
 needed, rather than restoring old binary caches. Large historical
 entries in the [evidence index](EVIDENCE_INDEX.md) are dated and sometimes
 superseded; use the **current ledger and this handoff** for status.
+
+## 2026-11-19 session — contextual ANM count views
+
+- Added same-storage `AnmVariables` aliases for the context-specific uses of
+  slot 10000: `geometry_vertex_count`, `draw_shape_count`, and
+  `particle_grid_count`. `field_00` remains the generic script-variable name.
+- Updated `AnimationGeometry`, the 5,993B Draw Boss, and the 2,884B Particle
+  Grid Update to use their evidenced contextual names. The union remains 64B
+  with every alias statically asserted at offset zero; no new storage or
+  padding was introduced.
+- Focused verification passed for the Draw Boss source/ABI/native census and
+  Particle Grid role audit. Their machine-code statuses remain unchanged:
+  Draw Boss NONEXACT (5,993B/1,501 instructions; 123 call roles), Particle
+  Grid NONEXACT (2,924B/760 instructions vs native 2,884B/768; 99 call roles,
+  25 data roles). The contextual naming pass reduced Draw Boss lexical
+  anonymous-identifier findings from 48 to 24; this heuristic count is not an
+  exactness metric.
+- The next semantic frontier remains the mode 35/36 x87 spill/lifetime and
+  mode 45/46 SSE ordering in Draw Boss, plus the Particle Grid local-frame and
+  loop-lifetime differences. Do not add dead compiler-shaping locals to mimic
+  native stores that are not subsequently read.
+- See `docs/ANM_VARIABLE_SLOT_10000_CONTEXTUAL_COUNT_VIEWS.md` for the
+  evidence and the distinction between contextual views and fixed field
+  semantics.
