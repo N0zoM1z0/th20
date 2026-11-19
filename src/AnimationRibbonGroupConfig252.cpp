@@ -5,10 +5,9 @@
 #include "Animation.hpp"
 #include "Vector3.hpp"
 #include <cstdint>
+#include "NativeAnimationFadeConfig86.hpp"
 namespace th20 {
-struct NativeRibbonAnimationConfigView {
-    void configure_438c60(std::int32_t, std::int32_t, std::uint8_t, std::uint8_t);
-};
+
 std::int32_t NativeRibbonGroup::configure_group_45eb10(
     const NativeRibbonGroupOptions& config, std::int32_t token) {
     resource_token_b5c = reinterpret_cast<void*>(static_cast<std::uintptr_t>(token));
@@ -28,7 +27,7 @@ std::int32_t NativeRibbonGroup::configure_group_45eb10(
     Animation* const anim1 = animation;
     anim1->set_layer(11);
     Animation* const anim2 = animation;
-    reinterpret_cast<NativeRibbonAnimationConfigView*>(anim2)->configure_438c60(30, 0, 255, 0);
+    reinterpret_cast<NativeAnimationFadeConfig86*>(anim2)->interpolate_channel_438c60(30, 0, 255, 0);
     Animation* const anim3 = animation;
     anim3->set_flag_byte_01(1);
     return 0;

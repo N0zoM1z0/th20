@@ -25,5 +25,9 @@ manually. Ghidra's actual callers include the 39,470B Animation VM at
 A focused `replay-exact-units.py --source src/AnimationFadeConfig86.cpp` rebuild
 and full canonical COFF/PE relocation comparison is the acceptance gate. The
 native head is counted once, separately from its already-exact interpolation
-callee and exact caller methods. Existing nominal caller views are reconciled
-through the same canonical callee in the following caller-scope step.
+callee and exact caller methods. All four previously exact game caller translation units now use this single
+borrowed class and method, rather than three distinct nominal declarations
+for one original physical callee. Their original E8 target stays `0x00438C60`.
+The four scoped cold replays passed **6/6 polygon**, **1/1 ribbon group**,
+**1/1 solo ribbon**, and **1/1 trail** exact units with full original
+relocation locations and target roles; no caller bytes were re-credited.

@@ -23171,7 +23171,7 @@ relocations = [
   { offset = 0xC5, type = "REL32", symbol = "?initialize_palette_45fc90@NativePolygonSegmentSlot@th20@@QAEXI@Z", target = 0x0045FC90 },
   { offset = 0xDA, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
   { offset = 0xED, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
-  { offset = 0x109, type = "REL32", symbol = "?configure_438c60@NativePolygonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+  { offset = 0x109, type = "REL32", symbol = "?interpolate_channel_438c60@NativeAnimationFadeConfig86@th20@@QAEXHHEE@Z", target = 0x00438C60 },
   { offset = 0x11C, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
 ]
 
@@ -24200,7 +24200,7 @@ relocations = [
   { offset = 0x99, type = "REL32", symbol = "?initialize_palette_45ec10@NativeRibbonSegment@th20@@QAEXI@Z", target = 0x0045EC10 },
   { offset = 0xAE, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
   { offset = 0xC1, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
-  { offset = 0xDD, type = "REL32", symbol = "?configure_438c60@NativeRibbonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+  { offset = 0xDD, type = "REL32", symbol = "?interpolate_channel_438c60@NativeAnimationFadeConfig86@th20@@QAEXHHEE@Z", target = 0x00438C60 },
   { offset = 0xF0, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
 ]
 
@@ -24510,7 +24510,7 @@ relocations = [
  { offset = 0x53, type = "REL32", symbol = "?initialize_palette_45dbf0@NativeRibbonSoloPaletteView@th20@@QAEXI@Z", target = 0x0045DBF0 },
  { offset = 0x68, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
  { offset = 0x7B, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
- { offset = 0x97, type = "REL32", symbol = "?configure_438c60@NativeRibbonAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+ { offset = 0x97, type = "REL32", symbol = "?interpolate_channel_438c60@NativeAnimationFadeConfig86@th20@@QAEXHHEE@Z", target = 0x00438C60 },
  { offset = 0xAA, type = "REL32", symbol = "?set_flag_byte_01@Animation@th20@@QAEXE@Z", target = 0x0045DD40 },
 ]
 
@@ -24687,7 +24687,7 @@ relocations = [
  { offset = 0x137, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
  { offset = 0x14A, type = "REL32", symbol = "?set_layer@Animation@th20@@QAEXH@Z", target = 0x00450350 },
  { offset = 0x155, type = "REL32", symbol = "?set_animation_flag_byte_01_one@th20@@YIXPAVAnimation@1@@Z", target = 0x0045E5B0 },
- { offset = 0x171, type = "REL32", symbol = "?configure_438c60@NativeTrailAnimationConfigView@th20@@QAEXHHEE@Z", target = 0x00438C60 },
+ { offset = 0x171, type = "REL32", symbol = "?interpolate_channel_438c60@NativeAnimationFadeConfig86@th20@@QAEXHHEE@Z", target = 0x00438C60 },
 ]
 
 # CORE/RECON-942: complete original gray and pink native creation wrappers.

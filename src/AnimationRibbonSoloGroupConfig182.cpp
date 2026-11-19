@@ -3,6 +3,7 @@
 #include "Vector3.hpp"
 #include <cstdint>
 #include <cstddef>
+#include "NativeAnimationFadeConfig86.hpp"
 namespace th20 {
 struct NativeRibbonSoloGroupOptions {
     Vector3 position;
@@ -13,9 +14,7 @@ static_assert(offsetof(NativeRibbonSoloGroupOptions,control_24)==0x24);
 struct NativeRibbonSoloPaletteView {
     void initialize_palette_45dbf0(std::uint32_t color);
 };
-struct NativeRibbonAnimationConfigView {
-    void configure_438c60(std::int32_t,std::int32_t,std::uint8_t,std::uint8_t);
-};
+
 std::int32_t NativeRibbonSoloGroup::configure_group_45db30(
         const NativeRibbonSoloGroupOptions& config,std::int32_t token) {
     resource_token_3dc = reinterpret_cast<void*>(static_cast<std::uintptr_t>(token));
@@ -29,7 +28,7 @@ std::int32_t NativeRibbonSoloGroup::configure_group_45db30(
     Animation* const anim1 = animation;
     anim1->set_layer(11);
     Animation* const anim2 = animation;
-    reinterpret_cast<NativeRibbonAnimationConfigView*>(anim2)->configure_438c60(30,0,255,0);
+    reinterpret_cast<NativeAnimationFadeConfig86*>(anim2)->interpolate_channel_438c60(30,0,255,0);
     Animation* const anim3 = animation;
     anim3->set_flag_byte_01(1);
     return 0;

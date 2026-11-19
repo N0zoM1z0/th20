@@ -3,11 +3,12 @@
 #include "Vector3.hpp"
 #include "GameRandom.hpp"
 #include <cstdint>
+#include "NativeAnimationFadeConfig86.hpp"
 namespace th20 {
 extern GameRandom native_polygon_random_5ba4c4;
 extern const float native_pi;
 void __fastcall set_animation_flag_byte_01_one(Animation* animation);
-struct NativeTrailAnimationConfigView { void configure_438c60(std::int32_t,std::int32_t,std::uint8_t,std::uint8_t); };
+
 struct NativeTrailRGBA {std::uint8_t r,g,b,a;};
 std::int32_t NativeRibbonTrailGroup::configure_pink_45e3a0(const Vector3& position, std::int32_t token) {
     token_31c = reinterpret_cast<void*>(static_cast<std::uintptr_t>(token));
@@ -29,7 +30,7 @@ std::int32_t NativeRibbonTrailGroup::configure_pink_45e3a0(const Vector3& positi
     animation->set_position(position);
     animation->set_layer(15);
     set_animation_flag_byte_01_one(animation);
-    reinterpret_cast<NativeTrailAnimationConfigView*>(animation)->configure_438c60(64,0,255,0);
+    reinterpret_cast<NativeAnimationFadeConfig86*>(animation)->interpolate_channel_438c60(64,0,255,0);
     return 0;
 }
 }

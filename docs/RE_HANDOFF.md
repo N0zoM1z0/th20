@@ -334,3 +334,14 @@ superseded; use the **current ledger and this handoff** for status.
   four RenderMesh compiler-local literal labels were refreshed in the exact
   relocation manifest; both RenderMesh units still replay exact. See
   `docs/ANIMATION_MODE_BYTE_498_SEMANTICS.md`.
+
+## 2026-11-19 — Animation 86B interpolation callee closed
+
+- Entire original `0x00438C60` Animation integer interpolation from two byte
+  endpoints is now strict exact, `86/86` native bytes and three relocations;
+  `src/AnimationFadeConfig86.cpp`, unit `animation_fade_config_86`.
+- Consolidated four exact Polygon/Ribbon/Trail caller sources onto the one
+  canonical callable borrowed view. Scoped strict replay: 6/6, 1/1, 1/1,
+  1/1; original caller instruction and E8 target roles unchanged.
+- See `docs/ANIMATION_FADE_CONFIG86_STRICT_EXACT.md`. The much larger
+  Animation Draw, Particle Grid and GDI Text cores remain NONEXACT.

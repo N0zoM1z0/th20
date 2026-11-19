@@ -16,6 +16,7 @@
 #include "DiagnosticObjectFactories.hpp"
 #include <cstddef>
 #include <cstdint>
+#include "NativeAnimationFadeConfig86.hpp"
 namespace th20 {
 
 NativePolygonSegmentSlot* NativePolygonSegmentArray::at(std::int32_t index) {
@@ -26,9 +27,7 @@ NativePolygonSegmentSlot* NativePolygonSegmentArray::end() {
         reinterpret_cast<std::uint8_t*>(this) + sizeof(segments));
 }
 
-struct NativePolygonAnimationConfigView {
-    void configure_438c60(std::int32_t, std::int32_t, std::uint8_t, std::uint8_t);
-};
+
 
 // Complete original game 140B/46-x86 polygon dynamic dispatch Boss.
 // The following 4 PE INT3 bytes are alignment, not game function code.
@@ -102,7 +101,7 @@ std::int32_t NativePolygonMotionGroup::configure_group_45fb60(
     Animation* const animation1 = animation;
     animation1->set_layer(11);
     Animation* const animation2 = animation;
-    reinterpret_cast<NativePolygonAnimationConfigView*>(animation2)->configure_438c60(30,0,255,0);
+    reinterpret_cast<NativeAnimationFadeConfig86*>(animation2)->interpolate_channel_438c60(30,0,255,0);
     Animation* const animation3 = animation;
     animation3->set_flag_byte_01(1);
     return 0;
