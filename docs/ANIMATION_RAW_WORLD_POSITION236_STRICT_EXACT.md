@@ -1,67 +1,46 @@
-# CORE/RECON-965 — complete original 236B recursive Animation raw-world-position Boss strict exact
+# Animation::world_position_for_spawn — complete 236B native reconstruction
 
 Locked Japanese TH20 Steamless v1.00a SHA-256:
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 Original `0x0044CB80` is a complete game-authored **236B/77-i386**
-`Animation` position-composition function. This is distinct from the
-previously accepted public `Animation::position` and
-`Animation::transform_position` methods: it returns a raw composed
-`Vector3` by reference and recurses through its real `parent_558`
-without adding viewport/window scaling. Its caller graph includes the
-separate original `0x004512B0` animation spawning/positioning path;
-the large caller is not inferred exact from this callee.
+`Animation` recursive world-position method. It returns a composed
+`Vector3` by reference and recurses through the real `parent_558` without
+adding viewport/window scaling. Its caller graph includes the original
+`0x004512B0` recursive animation-spawn path.
 
-## Immutable original native and return evidence
+## Original native behavior
 
-[`scripts/verify-animation-raw-world-position236-native.py`](../scripts/verify-animation-raw-world-position236-native.py)
-independently checks every original function byte through genuine
-`ret 4`, all 77 i386 instructions, **eight native E8 sites and
-physical destinations**, one original security-cookie **HIGHLOW
-`+0x07 -> 0x005B25C0`**, the self-recursion site and the four actual
-following `INT3` alignment bytes:
+The method composes `vector_5bc + base.vector_2c + base.vector_484` in that
+order. It recurses only if a real parent exists and native
+`base.flags.word_04` bit 12 is clear. If bit 5 is set, it rotates the result's
+XY lanes by the parent's rotation Z, then recursively adds the parent's
+world position. It does not apply unrelated viewport scaling or parent
+scale. Parent-cycle policy is outside this source reconstruction.
 
-| Original E8 | Original physical destination | Meaning |
-| --- | --- | --- |
-| `+0x2C/+0x44` | `0x00429570` | Two genuine typed `Vector3::operator+` bodies |
-| `+0x93` | `0x00437930` | Parent Animation rotation Z getter |
-| `+0xA4` | `0x00458FA0` | Genuine three-lane `rotate_xy` on the returned vector |
-| `+0xAF` | `0x00422E10` | Native Vector3 parent-position temporary constructor |
-| `+0xC7` | **`0x0044CB80`** | Physically real recursive **self-call**, not a guessed neighboring method |
-| `+0xD3` | `0x004296E0` | Actual `Vector3::operator+=` to add parent position |
-| `+0xE1` | `0x005429EE` | Native security-cookie checker |
+## Whole-function proof
 
-The original function first composes `Animation::vector_5bc`,
-`AnimationBase::vector_2c`, and `AnimationBase::vector_484` in that
-order. It recurses only if a real parent exists and the native
-`base.flags.word_04` bit 12 is clear. If bit 5 is set, it rotates the
-result's XY lanes by the parent's actual rotation Z, then recursively
-adds the parent's raw world position. No unrelated inherited viewport
-scale or fake pointer field is included. Parent-cycle policy is outside
-this original source reconstruction.
+`scripts/verify-animation-world-position-for-spawn236-native.py` pins the
+whole original body SHA-256
+`390a97772793da5a55b5398aa28a11db73e87c9c5af50fc2ba70e94c07eb6dc8`,
+all **77/77** i386 instructions through `ret 4`, eight native E8 sites and
+their physical destinations, the single original security-cookie HIGHLOW
+`+0x07 -> 0x005B25C0`, and the recursive self-call at `+0xC7`.
 
-[`src/AnimationRawWorldPosition236.cpp`](../src/AnimationRawWorldPosition236.cpp)
-uses the *existing maintained `Animation` layout*, a zero-extra-storage
-source-level derived view, real `Vector3` operations, and a natural
-recursive call to the same native method. No global `Animation.hpp`
-modification, memory-access dummy statement, manual NOP or x86 assembly
-was needed. Locked MSVC 19.44 x86 C++20 `/Od /Ob0 /GS /Gy /Zl
-/arch:SSE2 /fp:precise /sdl /EHsc` produces the entire authentic
-236B body and **200/200 nonrelocated bytes**, all eight true E8 and
-the original HIGHLOW. Source-scoped canonical original-target replay:
+The natural C++ member now lives on the actual `Animation` class in
+`src/AnimationWorldPositionForSpawn236.cpp`; no derived ABI view or extra
+object storage is used. Pinned MSVC 19.44 x86 C++20 emits the complete
+**236B** body: **200/200 ordinary bytes** and **36/36 relocation bytes**
+match, with zero ordinary-byte differences and all nine relocations solving
+to the original destinations. The canonical unit retains its existing
+physical identity `animation_raw_world_position_236` and replays separately
+from the rest of the cold graph.
 
-```text
-animation_raw_world_position_236: exact (236/236 bytes)
-Exact replay: 1/1 unit, 1 cold object
-```
-
-This adds **one distinct game-authored whole exact function and +236
-native `.text` bytes**; previously accepted math operations and their
-possibly folded aliases are not counted again. The full 2,884B particle
-Update and remaining 39,470B Animation VM remain separate nonexact
-parents; whole-game build/link/playability is not claimed.
+The method is now also the natural parent-position dependency for the
+619B recursive AnimationFile child-spawn reconstruction at `0x004512B0`.
+The original 39,470B Animation VM remains a separate NONEXACT parent.
 
 ```bash
-scripts/repo-python scripts/verify-animation-raw-world-position236-native.py
-nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/AnimationRawWorldPosition236.cpp
+scripts/repo-python scripts/probe-animation-world-position-for-spawn236.py
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/AnimationWorldPositionForSpawn236.cpp
 scripts/repo-python scripts/validate-tracking.py --require-target
 ```

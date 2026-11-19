@@ -423,3 +423,18 @@ superseded; use the **current ledger and this handoff** for status.
   all 19 relocation destinations exact, 15 original E8 calls and four
   original PE HIGHLOW fields independently verified.
 - See `docs/ANIMATION_FILE_SPAWN_CHILD604_STRICT_EXACT.md`.
+
+## 2026-11-19 — 236B recursive world position bound to Animation
+
+- Replaced the temporary `NativeAnimationRawPositionView` ABI with the
+  actual `Animation::world_position_for_spawn(Vector3&)` member. The method
+  remains whole-function strict exact at `0x0044CB80`, 236/236 bytes.
+- Original recursive parent semantics are unchanged: compose the three
+  local vectors, honor parent-inheritance bit 12, optionally rotate XY
+  under bit 5, recurse and add the parent's position.
+- All 77 original instructions, eight E8 calls, the recursive self-call,
+  one PE HIGHLOW cookie and all nine relocation destinations are verified;
+  200 ordinary bytes + 36 relocation bytes exact. Removed the derived-view
+  source and duplicate experimental unit.
+- This real Animation member is the position dependency for the next
+  619B opcode-0x76 recursive child-spawn helper.

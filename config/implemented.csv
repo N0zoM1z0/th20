@@ -1406,7 +1406,7 @@ th20::native_spawn_stem_equals_446de0
 th20::NativeStemStringView::equals_44b400
 th20::native_stem_equal_len_447200
 th20::native_stem_compare_bytes_44be00
-th20::NativeAnimationRawPositionView::raw_position_44cb80
+th20::Animation::world_position_for_spawn
 th20::NativeParticleAnimationAccess::age_45d0a0
 th20::NativeParticleAnimationAccess::color_ref_45d0e0
 th20::NativeAnimationHandleForwardView::find_child_handle_44c7b0

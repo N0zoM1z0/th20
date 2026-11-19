@@ -173,6 +173,8 @@ public:
     void interrupt(std::int32_t event);
     std::int32_t update();
     Vector3& position(Vector3& output);
+    // Recursive raw world-position composition used by VM child spawning.
+    Vector3& world_position_for_spawn(Vector3& output);
     Vector3& transform_position(Vector3& value);
     float rotation_z_value();
     float scale_x_value();
