@@ -92,6 +92,9 @@ corner-array lifetimes and typed owners were restored; this is semantic
 progress, not a size optimization.
 
 The generic `NativeAnimationVmCallView` has now been removed completely.
+A further 75 calls to Animation, AnimationFile, Motion, AnimationHandle and
+Float/Vector/Angle interpolation owners were expanded into direct natural
+C++ member expressions; the associated numeric `FUN_` wrappers were deleted.
 A further 308 VM operand/value lookups were rewritten from numeric `FUN_`
 macros to direct `Animation::integer_argument`, `float_argument`,
 `integer_value`, and `float_value` member calls. The source now spells these

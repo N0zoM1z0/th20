@@ -479,8 +479,11 @@ superseded; use the **current ledger and this handoff** for status.
   is 40,808B: 40,164B code plus a compiler-emitted 644B/161-entry switch
   table; the code portion decodes to 8,382 instruction heads and 505 E8.
   The generic `NativeAnimationVmCallView` numeric adapter has been removed;
-  308 operand/value lookups are now direct Animation member calls (`integer_argument`,
-  `float_argument`, `integer_value`, `float_value`). The remaining VM calls
+  75 Animation/AnimationFile/Motion/AnimationHandle/Interpolation operations
+  now use direct typed member expressions, with their numeric `FUN_` wrappers
+  removed. 308 operand/value lookups are direct Animation member calls
+  (`integer_argument`, `float_argument`, `integer_value`, `float_value`).
+  The remaining VM calls
   use typed Animation/Timer/Interpolation/Renderer/
   Motion/Random/Math owners, with only the 0x4397F0 cdecl math helper still
   The last cdecl math helper at 0x004397F0 is now the exact 48B

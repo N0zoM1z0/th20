@@ -49,22 +49,6 @@ extern float DAT_005c5540[3];
 // Replace already reconstructed dependencies with their real maintained C++
 // owners. The remaining ABI view is restricted to helpers whose owner/signature
 // is still being recovered; these calls no longer route through numeric stubs.
-#undef FUN_00435520
-#define FUN_00435520(self) (reinterpret_cast<Animation*>(self)->update_motion())
-#undef FUN_004358d0
-#define FUN_004358d0(self) (reinterpret_cast<Animation*>(self)->update_interpolations())
-#undef FUN_00435c80
-#define FUN_00435c80(self) (reinterpret_cast<Animation*>(self)->update_geometry())
-#undef FUN_00437490
-#define FUN_00437490(self,index) (reinterpret_cast<AnimationFile*>(self)->script(index))
-#undef FUN_004374b0
-#define FUN_004374b0(self) (reinterpret_cast<Animation*>(self)->slowdown())
-#undef FUN_00437840
-#define FUN_00437840(self,value,rotate,scale) (reinterpret_cast<Animation*>(self)->transform_direction(*reinterpret_cast<Vector3*>(value),rotate,scale))
-#undef FUN_00437930
-#define FUN_00437930(self) (reinterpret_cast<Animation*>(self)->rotation_z_value())
-#undef FUN_00438620
-#define FUN_00438620(self,animation_value,index) (reinterpret_cast<AnimationFile*>(self)->apply_sprite(reinterpret_cast<Animation*>(animation_value),index))
 #undef FUN_00438bd0
 #define FUN_00438bd0(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationColorConfigView*>(self)->interpolate_secondary_alpha_438bd0(frames,curve,start,end))
 #undef FUN_00438c60
@@ -79,48 +63,6 @@ extern float DAT_005c5540[3];
 #define FUN_00438df0(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_primary_scale_438df0(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
 #undef FUN_00438e30
 #define FUN_00438e30(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_uv_scale_438e30(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
-#undef FUN_00439280
-#define FUN_00439280(self,x,y,z) (reinterpret_cast<Animation*>(self)->set_rotation_speed(x,y,z))
-#undef FUN_00439390
-#define FUN_00439390(self,x,y) (reinterpret_cast<Animation*>(self)->set_scale_speed(x,y))
-#undef FUN_004393f0
-#define FUN_004393f0(self,value) (reinterpret_cast<Motion*>(self)->set_position(*reinterpret_cast<const Vector3*>(value)))
-#undef FUN_0044ced0
-#define FUN_0044ced0(handle) (reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationHandle*>(handle)->resolve()))
-#undef FUN_00450350
-#define FUN_00450350(self,layer) (reinterpret_cast<Animation*>(self)->set_layer(layer))
-#undef FUN_00438a70
-#define FUN_00438a70(self,value) (reinterpret_cast<FloatInterpolation*>(self)->set_end(*reinterpret_cast<const float*>(value)))
-#undef FUN_00438a90
-#define FUN_00438a90(self,value) (reinterpret_cast<VectorInterpolation*>(self)->set_end(*reinterpret_cast<const Vector3*>(value)))
-#undef FUN_00438ae0
-#define FUN_00438ae0(self,value) (reinterpret_cast<AngleInterpolation*>(self)->set_end(*reinterpret_cast<const Angle*>(value)))
-#undef FUN_00438b00
-#define FUN_00438b00(self,value) (reinterpret_cast<FloatInterpolation*>(self)->set_tangent_end(*reinterpret_cast<const float*>(value)))
-#undef FUN_00438b20
-#define FUN_00438b20(self,value) (reinterpret_cast<VectorInterpolation*>(self)->set_tangent_end(*reinterpret_cast<const Vector3*>(value)))
-#undef FUN_00438b50
-#define FUN_00438b50(self,value) (reinterpret_cast<AngleInterpolation*>(self)->set_tangent_end(*reinterpret_cast<const Angle*>(value)))
-#undef FUN_00438e70
-#define FUN_00438e70(self,value) (reinterpret_cast<VectorInterpolation*>(self)->set_duration(value))
-#undef FUN_004393d0
-#define FUN_004393d0(self,value) (reinterpret_cast<FloatInterpolation*>(self)->set_start(*reinterpret_cast<const float*>(value)))
-#undef FUN_00439440
-#define FUN_00439440(self,value) (reinterpret_cast<AngleInterpolation*>(self)->set_start(*reinterpret_cast<const Angle*>(value)))
-#undef FUN_00439460
-#define FUN_00439460(self,value) (reinterpret_cast<FloatInterpolation*>(self)->set_tangent_start(*reinterpret_cast<const float*>(value)))
-#undef FUN_00439480
-#define FUN_00439480(self,value) (reinterpret_cast<VectorInterpolation*>(self)->set_tangent_start(*reinterpret_cast<const Vector3*>(value)))
-#undef FUN_004394b0
-#define FUN_004394b0(self,value) (reinterpret_cast<AngleInterpolation*>(self)->set_tangent_start(*reinterpret_cast<const Angle*>(value)))
-#undef FUN_004394d0
-#define FUN_004394d0(self,mode) (reinterpret_cast<FloatInterpolation*>(self)->set_mode(mode))
-#undef FUN_004394f0
-#define FUN_004394f0(self,mode) (reinterpret_cast<VectorInterpolation*>(self)->set_mode(mode))
-#undef FUN_004395b0
-#define FUN_004395b0(self) (reinterpret_cast<FloatInterpolation*>(self)->reset_timer())
-#undef FUN_004396a0
-#define FUN_004396a0(self) (reinterpret_cast<VectorInterpolation*>(self)->reset_timer())
 
 
 // Native leaf owners recovered from the VM call graph.
@@ -274,10 +216,10 @@ std::int32_t Animation::update() {
   if ((*(std::uint32_t *)((int)this + 0x49c) >> 8 & 1) != 0) {
     FUN_004292a0(&DAT_005aefe4,DAT_0056c8cc);
   }
-  fVar11 = FUN_004374b0((int)this);
+  fVar11 = reinterpret_cast<Animation*>((int)this)->slowdown();
   local_588 = (float)fVar11;
   if (_DAT_0056e0e8 < local_588) {
-    fVar11 = FUN_004374b0((int)this);
+    fVar11 = reinterpret_cast<Animation*>((int)this)->slowdown();
     local_594 = (float)fVar11;
     FUN_004292a0(&DAT_005aefe4,initial_clock_value - local_594 * initial_clock_value);
     fVar11 = FUN_004292e0((float *)&DAT_005aefe4);
@@ -302,7 +244,7 @@ std::int32_t Animation::update() {
     if (*(int *)((int)this + 0x438) != 0) {
       local_774 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_770 = *(int *)((int)this + 0x24);
-      iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(FUN_00437490(local_774,local_770)));
+      iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_774)->script(local_770)));
       instruction = (short *)(iVar2 + *(int *)((int)this + 0x28));
       goto LAB_0042de0b;
     }
@@ -311,7 +253,7 @@ std::int32_t Animation::update() {
 LAB_0042b831:
       local_77c = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_778 = *(int *)((int)this + 0x24);
-      iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(FUN_00437490(local_77c,local_778)));
+      iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_77c)->script(local_778)));
       instruction = (short *)(iVar2 + *(int *)((int)this + 0x28));
       sVar1 = instruction[2];
       iVar2 = FUN_0040ff90((int)this + 0x4c8);
@@ -384,7 +326,7 @@ switchD_0042b8cc_caseD_a0:
           local_560 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         AnimationHandle local_7c = reinterpret_cast<AnimationFile*>(local_584)->spawn_child(local_560,reinterpret_cast<Animation*>(local_580),local_55c);
-        local_568 = FUN_0044ced0(&local_7c);
+        local_568 = reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationHandle*>(&local_7c)->resolve());
         if ((instruction[3] & 2U) == 0) {
           local_564 = *(float *)(instruction + 6);
         }
@@ -425,7 +367,7 @@ switchD_0042b8cc_caseD_a0:
           local_574 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         AnimationHandle local_80 = reinterpret_cast<AnimationFile*>(local_590)->spawn_child(local_574,reinterpret_cast<Animation*>(local_58c),local_570);
-        local_f4 = FUN_0044ced0(&local_80);
+        local_f4 = reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationHandle*>(&local_80)->resolve());
         if ((instruction[3] & 2U) == 0) {
           local_578 = *(float *)(instruction + 6);
         }
@@ -513,7 +455,7 @@ switchD_0042b8cc_caseD_a0:
           local_108 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         AnimationHandle local_84 = reinterpret_cast<AnimationFile*>(local_5b4)->spawn_child_and_update(local_108,reinterpret_cast<Animation*>(local_5b0),0);
-        local_114 = FUN_0044ced0(&local_84);
+        local_114 = reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationHandle*>(&local_84)->resolve());
         if ((instruction[3] & 2U) == 0) {
           local_110 = *(float *)(instruction + 6);
         }
@@ -577,14 +519,14 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_120;
         std::uint32_t local_d8;
         *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) | 1;
-        fVar11 = FUN_00437930((int)this);
+        fVar11 = reinterpret_cast<Animation*>((int)this)->rotation_z_value();
         local_5cc = (float)fVar11;
         if (local_5cc <= -(DAT_0056e0f0 / DAT_0056c8e0)) {
 LAB_0042c32a:
-          fVar11 = FUN_00437930((int)this);
+          fVar11 = reinterpret_cast<Animation*>((int)this)->rotation_z_value();
           local_5d4 = (float)fVar11;
           if (DAT_0056e0f0 / DAT_0056c8e0 <= local_5d4) {
-            fVar11 = FUN_00437930((int)this);
+            fVar11 = reinterpret_cast<Animation*>((int)this)->rotation_z_value();
             local_5d8 = (float)fVar11;
             if (local_5d8 < DAT_0056e0f0 / DAT_0056c8d0 + DAT_0056e0f0 / DAT_0056c8e0) {
               if ((instruction[3] & 8U) == 0) {
@@ -597,10 +539,10 @@ LAB_0042c32a:
               goto LAB_0042c528;
             }
           }
-          fVar11 = FUN_00437930((int)this);
+          fVar11 = reinterpret_cast<Animation*>((int)this)->rotation_z_value();
           local_5dc = (float)fVar11;
           if (local_5dc <= -(DAT_0056e0f0 / DAT_0056c8e0)) {
-            fVar11 = FUN_00437930((int)this);
+            fVar11 = reinterpret_cast<Animation*>((int)this)->rotation_z_value();
             local_5e0 = (float)fVar11;
             if (DAT_0056e0f0 / DAT_0056c8d0 + DAT_0056e0f0 / DAT_0056c8e0 < local_5e0) {
               if ((instruction[3] & 4U) == 0) {
@@ -622,7 +564,7 @@ LAB_0042c32a:
           local_d8 = local_12c;
         }
         else {
-          fVar11 = FUN_00437930((int)this);
+          fVar11 = reinterpret_cast<Animation*>((int)this)->rotation_z_value();
           local_5d0 = (float)fVar11;
           if (DAT_0056e0f0 / DAT_0056c8e0 <= local_5d0) goto LAB_0042c32a;
           if ((instruction[3] & 1U) == 0) {
@@ -639,11 +581,11 @@ LAB_0042c528:
           local_d8 = (*local_5e4)(reinterpret_cast<Animation*>(this),local_d8);
         }
         if ((int)local_d8 < 0) {
-          FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
+          reinterpret_cast<AnimationFile*>(native_card_renderer_5c0698->current_file_437950())->apply_sprite(reinterpret_cast<Animation*>(this), 0x120);
         }
         else {
           local_5ec = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-          FUN_00438620(local_5ec,(int)this,local_d8);
+          reinterpret_cast<AnimationFile*>(local_5ec)->apply_sprite(reinterpret_cast<Animation*>((int)this), local_d8);
         }
         uVar4 = FUN_0040ff90((int)this + 0x4c8);
         *(std::uint32_t *)((int)this + 0x43c) = uVar4;
@@ -675,11 +617,11 @@ LAB_0042c528:
           local_e8 = (*local_5f0)(reinterpret_cast<Animation*>(this),local_130);
         }
         if ((int)local_e8 < 0) {
-          FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
+          reinterpret_cast<AnimationFile*>(native_card_renderer_5c0698->current_file_437950())->apply_sprite(reinterpret_cast<Animation*>(this), 0x120);
         }
         else {
           local_5f8 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-          FUN_00438620(local_5f8,(int)this,local_e8);
+          reinterpret_cast<AnimationFile*>(local_5f8)->apply_sprite(reinterpret_cast<Animation*>((int)this), local_e8);
         }
         uVar4 = FUN_0040ff90((int)this + 0x4c8);
         *(std::uint32_t *)((int)this + 0x43c) = uVar4;
@@ -727,11 +669,11 @@ LAB_0042c528:
           local_ec = (*local_6e4)(reinterpret_cast<Animation*>(this),uVar3 % local_138 + local_13c);
         }
         if (local_ec < 0) {
-          FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
+          reinterpret_cast<AnimationFile*>(native_card_renderer_5c0698->current_file_437950())->apply_sprite(reinterpret_cast<Animation*>(this), 0x120);
         }
         else {
           local_604 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-          FUN_00438620(local_604,(int)this,local_ec);
+          reinterpret_cast<AnimationFile*>(local_604)->apply_sprite(reinterpret_cast<Animation*>((int)this), local_ec);
         }
         uVar4 = FUN_0040ff90((int)this + 0x4c8);
         *(std::uint32_t *)((int)this + 0x43c) = uVar4;
@@ -1004,7 +946,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_19c = (float)fVar11;
         }
-        FUN_00439280(this,local_19c,local_198,local_194);
+        reinterpret_cast<Animation*>(this)->set_rotation_speed(local_19c, local_198, local_194);
         break;
       }
       case 0x58: {
@@ -1024,7 +966,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_1a4 = (float)fVar11;
         }
-        FUN_00439390(this,local_1a4,local_1a0);
+        reinterpret_cast<Animation*>(this)->set_scale_speed(local_1a4, local_1a0);
         break;
       }
       case 0x59: {
@@ -1195,7 +1137,7 @@ LAB_0042de0b:
         local_f0 = (short *)0x0;
         local_614 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_610 = *(int *)((int)this + 0x24);
-        for (scan_instruction = reinterpret_cast<std::int16_t*>(FUN_00437490(local_614,local_610));
+        for (scan_instruction = reinterpret_cast<std::int16_t*>(reinterpret_cast<AnimationFile*>(local_614)->script(local_610));
             ((*scan_instruction != 5 || (*(int *)((int)this + 0x438) != *(int *)(scan_instruction + 4))) &&
             (*scan_instruction != -1)); scan_instruction = (short *)((std::uint32_t)(std::uint16_t)scan_instruction[1] + (int)scan_instruction)) {
           if ((*scan_instruction == 5) && (*(int *)(scan_instruction + 4) == -1)) {
@@ -1297,20 +1239,20 @@ LAB_0042df8e:
         else {
           local_1ec = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438e70(local_61c,local_1ec);
+        reinterpret_cast<VectorInterpolation*>(local_61c)->set_duration(local_1ec);
         local_620 = (void *)((int)this + 0x8c);
-        FUN_00439480(local_620,(std::uint32_t *)&DAT_0056e058);
+        reinterpret_cast<VectorInterpolation*>(local_620)->set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
         local_624 = (void *)((int)this + 0x8c);
-        FUN_00438b20(local_624,(std::uint32_t *)&DAT_0056e058);
+        reinterpret_cast<VectorInterpolation*>(local_624)->set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
         local_628 = (void *)((int)this + 0x8c);
-        FUN_004394f0(local_628,*(std::uint32_t *)(instruction + 6));
+        reinterpret_cast<VectorInterpolation*>(local_628)->set_mode(*(std::uint32_t *)(instruction + 6));
         if ((*(std::uint32_t *)((int)this + 0x49c) >> 6 & 1) == 0) {
           local_62c = (void *)((int)this + 0x8c);
-          FUN_004393f0(local_62c,(std::uint32_t *)((int)this + 0x2c));
+          reinterpret_cast<Motion*>(local_62c)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x2c)));
         }
         else {
           local_630 = (void *)((int)this + 0x8c);
-          FUN_004393f0(local_630,(std::uint32_t *)((int)this + 0x484));
+          reinterpret_cast<Motion*>(local_630)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x484)));
         }
         local_634 = (void *)((int)this + 0x8c);
         if ((instruction[3] & 4U) == 0) {
@@ -1335,8 +1277,8 @@ LAB_0042df8e:
           local_1f0 = (float)fVar11;
         }
         Vector3 local_7cc(local_1f8,local_1f4,local_1f0);
-        FUN_00438a90(local_634,&local_7cc);
-        FUN_004396a0((int)this + 0x8c);
+        reinterpret_cast<VectorInterpolation*>(local_634)->set_end(*reinterpret_cast<const Vector3*>(&local_7cc));
+        reinterpret_cast<VectorInterpolation*>((int)this + 0x8c)->reset_timer();
         break;
       }
       case 0x69: {
@@ -1352,20 +1294,20 @@ LAB_0042df8e:
         else {
           local_1fc = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438e70(local_638,local_1fc);
+        reinterpret_cast<VectorInterpolation*>(local_638)->set_duration(local_1fc);
         local_63c = (void *)((int)this + 0x8c);
-        FUN_00439480(local_63c,(std::uint32_t *)&DAT_0056e058);
+        reinterpret_cast<VectorInterpolation*>(local_63c)->set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
         local_640 = (void *)((int)this + 0x8c);
-        FUN_00438b20(local_640,(std::uint32_t *)&DAT_0056e058);
+        reinterpret_cast<VectorInterpolation*>(local_640)->set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
         local_644 = (void *)((int)this + 0x8c);
-        FUN_004394f0(local_644,*(std::uint32_t *)(instruction + 6));
+        reinterpret_cast<VectorInterpolation*>(local_644)->set_mode(*(std::uint32_t *)(instruction + 6));
         if ((*(std::uint32_t *)((int)this + 0x49c) >> 6 & 1) == 0) {
           local_648 = (void *)((int)this + 0x8c);
-          FUN_004393f0(local_648,(std::uint32_t *)((int)this + 0x2c));
+          reinterpret_cast<Motion*>(local_648)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x2c)));
         }
         else {
           local_64c = (void *)((int)this + 0x8c);
-          FUN_004393f0(local_64c,(std::uint32_t *)((int)this + 0x484));
+          reinterpret_cast<Motion*>(local_64c)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x484)));
         }
         if ((instruction[3] & 8U) == 0) {
           local_200 = *(float *)(instruction + 10);
@@ -1386,8 +1328,8 @@ LAB_0042df8e:
         polar(local_b4,local_204,local_200);
         local_ac = 0;
         local_650 = (void *)((int)this + 0x8c);
-        FUN_00438a90(local_650,&local_b4);
-        FUN_004396a0((int)this + 0x8c);
+        reinterpret_cast<VectorInterpolation*>(local_650)->set_end(*reinterpret_cast<const Vector3*>(&local_b4));
+        reinterpret_cast<VectorInterpolation*>((int)this + 0x8c)->reset_timer();
         break;
       }
       case 0x5c: {
@@ -1465,20 +1407,20 @@ LAB_0042df8e:
         else {
           local_220 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438e70(local_654,local_220);
+        reinterpret_cast<VectorInterpolation*>(local_654)->set_duration(local_220);
         local_658 = (void *)((int)this + 0x8c);
-        FUN_00439480(local_658,&local_90);
+        reinterpret_cast<VectorInterpolation*>(local_658)->set_tangent_start(*reinterpret_cast<const Vector3*>(&local_90));
         local_65c = (void *)((int)this + 0x8c);
-        FUN_00438b20(local_65c,&local_9c);
+        reinterpret_cast<VectorInterpolation*>(local_65c)->set_tangent_end(*reinterpret_cast<const Vector3*>(&local_9c));
         local_660 = (void *)((int)this + 0x8c);
-        FUN_004394f0(local_660,8);
+        reinterpret_cast<VectorInterpolation*>(local_660)->set_mode(8);
         if ((*(std::uint32_t *)((int)this + 0x49c) >> 6 & 1) == 0) {
           local_664 = (void *)((int)this + 0x8c);
-          FUN_004393f0(local_664,(std::uint32_t *)((int)this + 0x2c));
+          reinterpret_cast<Motion*>(local_664)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x2c)));
         }
         else {
           local_668 = (void *)((int)this + 0x8c);
-          FUN_004393f0(local_668,(std::uint32_t *)((int)this + 0x484));
+          reinterpret_cast<Motion*>(local_668)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x484)));
         }
         local_66c = (void *)((int)this + 0x8c);
         if ((instruction[3] & 0x10U) == 0) {
@@ -1503,8 +1445,8 @@ LAB_0042df8e:
           local_224 = (float)fVar11;
         }
         Vector3 local_7d8(local_22c,local_228,local_224);
-        FUN_00438a90(local_66c,&local_7d8);
-        FUN_004396a0((int)this + 0x8c);
+        reinterpret_cast<VectorInterpolation*>(local_66c)->set_end(*reinterpret_cast<const Vector3*>(&local_7d8));
+        reinterpret_cast<VectorInterpolation*>((int)this + 0x8c)->reset_timer();
         break;
       }
       case 0x50: {
@@ -1639,15 +1581,15 @@ LAB_0042df8e:
         else {
           local_260 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438e70(local_680,local_260);
+        reinterpret_cast<VectorInterpolation*>(local_680)->set_duration(local_260);
         local_684 = (void *)((int)this + 0x160);
-        FUN_00439480(local_684,(std::uint32_t *)&DAT_0056e058);
+        reinterpret_cast<VectorInterpolation*>(local_684)->set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
         local_688 = (void *)((int)this + 0x160);
-        FUN_00438b20(local_688,(std::uint32_t *)&DAT_0056e058);
+        reinterpret_cast<VectorInterpolation*>(local_688)->set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
         local_68c = (void *)((int)this + 0x160);
-        FUN_004394f0(local_68c,*(std::uint32_t *)(instruction + 6));
+        reinterpret_cast<VectorInterpolation*>(local_68c)->set_mode(*(std::uint32_t *)(instruction + 6));
         local_690 = (void *)((int)this + 0x160);
-        FUN_004393f0(local_690,(std::uint32_t *)((int)this + 0x38));
+        reinterpret_cast<Motion*>(local_690)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x38)));
         local_694 = (void *)((int)this + 0x160);
         if ((instruction[3] & 4U) == 0) {
           local_26c = *(float *)(instruction + 8);
@@ -1671,8 +1613,8 @@ LAB_0042df8e:
           local_264 = (float)fVar11;
         }
         Vector3 local_7e4(local_26c,local_268,local_264);
-        FUN_00438a90(local_694,&local_7e4);
-        FUN_004396a0((int)this + 0x160);
+        reinterpret_cast<VectorInterpolation*>(local_694)->set_end(*reinterpret_cast<const Vector3*>(&local_7e4));
+        reinterpret_cast<VectorInterpolation*>((int)this + 0x160)->reset_timer();
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 2;
         break;
       }
@@ -1689,15 +1631,15 @@ LAB_0042df8e:
         base.interpolation_1b4.set_duration(local_270);
         local_69c = (void *)((int)this + 0x1b4);
         Angle local_7bc(0.0f);
-        FUN_004394b0(local_69c,&local_7bc);
+        reinterpret_cast<AngleInterpolation*>(local_69c)->set_tangent_start(*reinterpret_cast<const Angle*>(&local_7bc));
         local_6a0 = (void *)((int)this + 0x1b4);
         Angle local_7c0(0.0f);
-        FUN_00438b50(local_6a0,&local_7c0);
+        reinterpret_cast<AngleInterpolation*>(local_6a0)->set_tangent_end(*reinterpret_cast<const Angle*>(&local_7c0));
         local_6a4 = (void *)((int)this + 0x1b4);
-        FUN_004394d0(local_6a4,*(std::uint32_t *)(instruction + 6));
+        reinterpret_cast<FloatInterpolation*>(local_6a4)->set_mode(*(std::uint32_t *)(instruction + 6));
         local_6a8 = (void *)((int)this + 0x1b4);
         Angle local_788(*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this) + 0x40));
-        FUN_00439440(local_6a8,&local_788);
+        reinterpret_cast<AngleInterpolation*>(local_6a8)->set_start(*reinterpret_cast<const Angle*>(&local_788));
         local_6ac = (void *)((int)this + 0x1b4);
         if ((instruction[3] & 4U) == 0) {
           local_274 = *(float *)(instruction + 8);
@@ -1707,8 +1649,8 @@ LAB_0042df8e:
           local_274 = (float)fVar11;
         }
         Angle local_78c(local_274);
-        FUN_00438ae0(local_6ac,&local_78c);
-        FUN_004395b0((int)this + 0x1b4);
+        reinterpret_cast<AngleInterpolation*>(local_6ac)->set_end(*reinterpret_cast<const Angle*>(&local_78c));
+        reinterpret_cast<FloatInterpolation*>((int)this + 0x1b4)->reset_timer();
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 2;
         break;
       }
@@ -1824,14 +1766,14 @@ LAB_0042df8e:
         base.interpolation_320.set_duration(local_29c);
         local_6d0 = (void *)((int)this + 800);
         local_6cc = 0;
-        FUN_00439460(local_6d0,&local_6cc);
+        reinterpret_cast<FloatInterpolation*>(local_6d0)->set_tangent_start(*reinterpret_cast<const float*>(&local_6cc));
         local_6d8 = (void *)((int)this + 800);
         local_6d4 = 0;
-        FUN_00438b00(local_6d8,&local_6d4);
+        reinterpret_cast<FloatInterpolation*>(local_6d8)->set_tangent_end(*reinterpret_cast<const float*>(&local_6d4));
         local_6dc = (void *)((int)this + 800);
-        FUN_004394d0(local_6dc,*(std::uint32_t *)(instruction + 6));
+        reinterpret_cast<FloatInterpolation*>(local_6dc)->set_mode(*(std::uint32_t *)(instruction + 6));
         local_6e0 = (void *)((int)this + 800);
-        FUN_004393d0(local_6e0,(std::uint32_t *)((int)this + 0x3a0));
+        reinterpret_cast<FloatInterpolation*>(local_6e0)->set_start(*reinterpret_cast<const float*>((std::uint32_t *)((int)this + 0x3a0)));
         local_6e8 = (void *)((int)this + 800);
         if ((instruction[3] & 4U) == 0) {
           local_2a0 = *(float *)(instruction + 8);
@@ -1841,8 +1783,8 @@ LAB_0042df8e:
           local_2a0 = (float)fVar11;
         }
         local_768 = local_2a0;
-        FUN_00438a70(local_6e8,&local_768);
-        FUN_004395b0((int)this + 800);
+        reinterpret_cast<FloatInterpolation*>(local_6e8)->set_end(*reinterpret_cast<const float*>(&local_768));
+        reinterpret_cast<FloatInterpolation*>((int)this + 800)->reset_timer();
         break;
       }
       case 100: {
@@ -1861,14 +1803,14 @@ LAB_0042df8e:
         base.interpolation_34c.set_duration(local_2a4);
         local_6f4 = (void *)((int)this + 0x34c);
         local_6f0 = 0;
-        FUN_00439460(local_6f4,&local_6f0);
+        reinterpret_cast<FloatInterpolation*>(local_6f4)->set_tangent_start(*reinterpret_cast<const float*>(&local_6f0));
         local_6fc = (void *)((int)this + 0x34c);
         local_6f8 = 0;
-        FUN_00438b00(local_6fc,&local_6f8);
+        reinterpret_cast<FloatInterpolation*>(local_6fc)->set_tangent_end(*reinterpret_cast<const float*>(&local_6f8));
         local_700 = (void *)((int)this + 0x34c);
-        FUN_004394d0(local_700,*(std::uint32_t *)(instruction + 6));
+        reinterpret_cast<FloatInterpolation*>(local_700)->set_mode(*(std::uint32_t *)(instruction + 6));
         local_704 = (void *)((int)this + 0x34c);
-        FUN_004393d0(local_704,(std::uint32_t *)((int)this + 0x3a4));
+        reinterpret_cast<FloatInterpolation*>(local_704)->set_start(*reinterpret_cast<const float*>((std::uint32_t *)((int)this + 0x3a4)));
         local_70c = (void *)((int)this + 0x34c);
         if ((instruction[3] & 4U) == 0) {
           local_2a8 = *(float *)(instruction + 8);
@@ -1878,8 +1820,8 @@ LAB_0042df8e:
           local_2a8 = (float)fVar11;
         }
         local_708 = local_2a8;
-        FUN_00438a70(local_70c,&local_708);
-        FUN_004395b0((int)this + 0x34c);
+        reinterpret_cast<FloatInterpolation*>(local_70c)->set_end(*reinterpret_cast<const float*>(&local_708));
+        reinterpret_cast<FloatInterpolation*>((int)this + 0x34c)->reset_timer();
         break;
       }
       case 0x36: {
@@ -3433,7 +3375,7 @@ LAB_0042df8e:
         break;
       }
       case 0x38: {
-        FUN_00450350(this,(std::uint32_t)*(std::uint8_t *)(instruction + 4));
+        reinterpret_cast<Animation*>(this)->set_layer((std::uint32_t)*(std::uint8_t *)(instruction + 4));
         break;
       }
       case 0x5f: {
@@ -3695,7 +3637,7 @@ code_r0x0042df46:
   timer_4c8--;
 LAB_00434dce:
   if ((*(std::uint32_t *)((int)this + 0x49c) >> 0x13 & 1) != 0) {
-    FUN_00435520((int)this);
+    reinterpret_cast<Animation*>((int)this)->update_motion();
   }
   if ((*(std::uint8_t *)((int)this + 0x4a1) >> 1 & 1) != 0) {
     FUN_004296e0((void *)((int)this + 0x5bc),(float *)&DAT_005c5540);
@@ -3710,8 +3652,8 @@ LAB_00434dce:
     base.vector_398.x=base.vectors_378[1].x-base.vectors_378[0].x;
     base.vector_398.y=base.vectors_378[1].y-base.vectors_378[0].y;
   }
-  FUN_004358d0((int)this);
-  FUN_00435c80(this);
+  reinterpret_cast<Animation*>((int)this)->update_interpolations();
+  reinterpret_cast<Animation*>(this)->update_geometry();
   local_764 = (std::uint32_t *)((int)this + 0x4c8);
   FUN_00423540(local_764);
 LAB_00434fb5:
