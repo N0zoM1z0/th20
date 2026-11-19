@@ -32,8 +32,10 @@ helpers. The original +0x18 animation-file lookup now calls the already
 reconstructed whole-exact `NativeAnimationLegacyFileView::previous_file_437470`
 member instead of a numeric borrowed-call adapter; its sibling +0x1C getter
 remains distinct. The eight exact color/fade/vector-configuration leaves are
-now called through their typed owner views, and the two opcode RGB operands
-are real `Color3` objects invoking the original constructor directly.
+now called through their typed owner views. Opcode temporaries also recover
+real `Color3`, `Vector3`, `Vector2`, and `Angle` object lifetimes and their
+existing native constructors rather than raw byte/word arrays and numeric
+constructor adapters.
 Remaining numeric call-view declarations are scoped to unreconstructed
 helper owners.
 
@@ -59,11 +61,13 @@ AnimationFile child-spawn helpers, and both corner-projection dispatches.
 
 This is a complete compiling semantic source translation, not a strict exact
 match. It has no `match-units.toml` exact unit and contributes **zero** new
-exact functions. The remaining difference is **+1,534 bytes / +162 decoded
-instructions**. The original stack allocation is `sub esp, 0x804`; the current
-candidate uses `sub esp, 0x874`. Absolute-data relocation ownership and the
-remaining instruction/frame-layout differences are still unresolved. No
-exactness credit is claimed from call-target parity alone.
+exact functions. The total contribution is **+1,366 bytes**; after excluding
+the compiler switch table, the code portion is **+722 bytes** and has 192
+fewer decoded instruction heads than the original. The original stack
+allocation is `sub esp, 0x804`; the current candidate uses `sub esp, 0x874`.
+Absolute-data relocation ownership and the remaining instruction/frame-layout
+differences are still unresolved. No exactness credit is claimed from
+call-target parity alone.
 
 The next pass should reduce the Ghidra-style function-scope temporary set
 into natural opcode-local lifetimes, replace remaining numeric borrowed view

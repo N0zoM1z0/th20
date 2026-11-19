@@ -1,4 +1,5 @@
 #include "Animation.hpp"
+#include "Vector2.hpp"
 #include "NativeAnimationVector2ConfigView.hpp"
 #include "NativeAnimationFadeConfig86.hpp"
 #include "NativeAnimationColorConfigView.hpp"
@@ -21,7 +22,6 @@
 namespace th20 {
 using NativeVmEntryCallback=AnimationEntryCallback;
 using NativeVmScriptCallback=AnimationScriptCallback;
-struct NativeVmVector3 { float x,y,z; };
 struct NativeAnimationCornerProjectionDispatchView { void project_corners(Vector3* corners); };
 
 extern "C" {
@@ -116,11 +116,8 @@ struct NativeAnimationVmCallView {
 };
 
 #define vm_0041df50(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_0041df50(__VA_ARGS__))
-#define vm_00422dd0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00422dd0(__VA_ARGS__))
 #define vm_00423520(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00423520(__VA_ARGS__))
 #define vm_00423ea0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00423ea0(__VA_ARGS__))
-#define vm_00429210(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429210(__VA_ARGS__))
-#define vm_00429250(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429250(__VA_ARGS__))
 #define vm_00429280(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429280(__VA_ARGS__))
 #define vm_004292a0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004292a0(__VA_ARGS__))
 #define vm_004296e0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004296e0(__VA_ARGS__))
@@ -178,15 +175,11 @@ struct NativeAnimationVmCallView {
 #define FUN_0040bc20 vm_0040bc20
 #define FUN_0040ff90 vm_0040ff90
 #define FUN_0041df50 vm_0041df50
-#define FUN_00422dd0 vm_00422dd0
-#define FUN_00422e10 vm_00422e10
 #define FUN_00423520 vm_00423520
 #define FUN_00423540 vm_00423540
 #define FUN_00423ea0 vm_00423ea0
 #define FUN_00423ee0 vm_00423ee0
 #define FUN_00424060 vm_00424060
-#define FUN_00429210 vm_00429210
-#define FUN_00429250 vm_00429250
 #define FUN_00429280 vm_00429280
 #define FUN_004292a0 vm_004292a0
 #define FUN_004292e0 vm_004292e0
@@ -727,7 +720,6 @@ switchD_0042b8cc_caseD_a0:
         float local_110;
         float local_10c;
         std::uint32_t local_108;
-        NativeVmVector3 local_a8;
         local_5b4 = FUN_00437470((int)this);
         local_5b0 = this;
         if ((instruction[3] & 1U) == 0) {
@@ -752,8 +744,8 @@ switchD_0042b8cc_caseD_a0:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 8));
           local_10c = (float)fVar11;
         }
-        FUN_00422dd0(&local_a8,local_110,local_10c,0.0f);
-        reinterpret_cast<Animation*>(this)->transform_direction(*reinterpret_cast<Vector3*>(&local_a8),1,1);
+        Vector3 local_a8(local_110,local_10c,0.0f);
+        reinterpret_cast<Animation*>(this)->transform_direction(local_a8,1,1);
         *reinterpret_cast<float*>(local_114 + 0x484) = local_a8.x;
         *reinterpret_cast<float*>(local_114 + 0x488) = local_a8.y;
         break;
@@ -1273,8 +1265,6 @@ LAB_0042c528:
         break;
       }
       case 0x48: {
-        std::uint8_t local_7fc [12];
-        std::uint8_t local_7f0 [12];
         float local_1c0;
         float local_1bc;
         float local_1b8;
@@ -1303,10 +1293,8 @@ LAB_0042c528:
             fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 4));
             local_1b4 = (float)fVar11;
           }
-          puVar5 = FUN_00422dd0(local_7f0,local_1b4,local_1b0,local_1ac);
-          *(std::uint32_t *)((int)this + 0x2c) = *puVar5;
-          *(std::uint32_t *)((int)this + 0x30) = puVar5[1];
-          *(std::uint32_t *)((int)this + 0x34) = puVar5[2];
+          Vector3 local_7f0(local_1b4,local_1b0,local_1ac);
+          *reinterpret_cast<Vector3*>(reinterpret_cast<std::uint8_t*>(this) + 0x2c) = local_7f0;
         }
         else {
           if ((instruction[3] & 4U) == 0) {
@@ -1330,15 +1318,12 @@ LAB_0042c528:
             fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 4));
             local_1c0 = (float)fVar11;
           }
-          puVar5 = FUN_00422dd0(local_7fc,local_1c0,local_1bc,local_1b8);
-          *(std::uint32_t *)((int)this + 0x484) = *puVar5;
-          *(std::uint32_t *)((int)this + 0x488) = puVar5[1];
-          *(std::uint32_t *)((int)this + 0x48c) = puVar5[2];
+          Vector3 local_7fc(local_1c0,local_1bc,local_1b8);
+          *reinterpret_cast<Vector3*>(reinterpret_cast<std::uint8_t*>(this) + 0x484) = local_7fc;
         }
         break;
       }
       case 0x71: {
-        std::uint8_t local_808 [12];
         float local_1cc;
         float local_1c8;
         float local_1c4;
@@ -1363,10 +1348,8 @@ LAB_0042c528:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 4));
           local_1cc = (float)fVar11;
         }
-        puVar5 = FUN_00422dd0(local_808,local_1cc,local_1c8,local_1c4);
-        *(std::uint32_t *)((int)this + 0x484) = *puVar5;
-        *(std::uint32_t *)((int)this + 0x488) = puVar5[1];
-        *(std::uint32_t *)((int)this + 0x48c) = puVar5[2];
+        Vector3 local_808(local_1cc,local_1c8,local_1c4);
+        *reinterpret_cast<Vector3*>(reinterpret_cast<std::uint8_t*>(this) + 0x484) = local_808;
         break;
       }
       case 0x6c: {
@@ -1523,7 +1506,6 @@ LAB_0042df8e:
         break;
       }
       case 0x4f: {
-        std::uint32_t local_7cc [3];
         float local_1f8;
         float local_1f4;
         float local_1f0;
@@ -1572,8 +1554,8 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 0xc));
           local_1f0 = (float)fVar11;
         }
-        FUN_00422dd0(local_7cc,local_1f8,local_1f4,local_1f0);
-        FUN_00438a90(local_634,local_7cc);
+        Vector3 local_7cc(local_1f8,local_1f4,local_1f0);
+        FUN_00438a90(local_634,&local_7cc);
         FUN_004396a0((int)this + 0x8c);
         break;
       }
@@ -1581,7 +1563,7 @@ LAB_0042df8e:
         float local_204;
         float local_200;
         std::uint32_t local_1fc;
-        float local_b4 [2];
+        Vector3 local_b4;
         std::uint32_t local_ac;
         local_638 = (void *)((int)this + 0x8c);
         if ((instruction[3] & 1U) == 0) {
@@ -1605,7 +1587,6 @@ LAB_0042df8e:
           local_64c = (void *)((int)this + 0x8c);
           FUN_004393f0(local_64c,(std::uint32_t *)((int)this + 0x484));
         }
-        FUN_00422e10(local_b4);
         if ((instruction[3] & 8U) == 0) {
           local_200 = *(float *)(instruction + 10);
         }
@@ -1622,21 +1603,17 @@ LAB_0042df8e:
           local_204 = (float)fVar11;
           this_local = this;
         }
-        polar(*reinterpret_cast<Vector3*>(local_b4),local_204,local_200);
+        polar(local_b4,local_204,local_200);
         local_ac = 0;
         local_650 = (void *)((int)this + 0x8c);
-        FUN_00438a90(local_650,local_b4);
+        FUN_00438a90(local_650,&local_b4);
         FUN_004396a0((int)this + 0x8c);
         break;
       }
       case 0x5c: {
         float local_21c;
-        float local_9c;
-        float local_98;
-        float local_94;
-        float local_90;
-        float local_8c;
-        float local_88;
+        Vector3 local_90;
+        Vector3 local_9c;
         float local_22c;
         float local_228;
         float local_224;
@@ -1653,8 +1630,6 @@ LAB_0042df8e:
         float local_210;
         float local_20c;
         float local_208;
-        FUN_00422e10(&local_90);
-        FUN_00422e10(&local_9c);
         if ((instruction[3] & 2U) == 0) {
           local_208 = *(float *)(instruction + 6);
         }
@@ -1662,7 +1637,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 6));
           local_208 = (float)fVar11;
         }
-        local_90 = local_208;
+        local_90.x = local_208;
         if ((instruction[3] & 4U) == 0) {
           local_20c = *(float *)(instruction + 8);
         }
@@ -1670,7 +1645,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 8));
           local_20c = (float)fVar11;
         }
-        local_8c = local_20c;
+        local_90.y = local_20c;
         if ((instruction[3] & 8U) == 0) {
           local_210 = *(float *)(instruction + 10);
         }
@@ -1678,7 +1653,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 10));
           local_210 = (float)fVar11;
         }
-        local_88 = local_210;
+        local_90.z = local_210;
         if ((instruction[3] & 0x80U) == 0) {
           local_214 = *(float *)(instruction + 0x12);
         }
@@ -1686,7 +1661,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 0x12));
           local_214 = (float)fVar11;
         }
-        local_9c = local_214;
+        local_9c.x = local_214;
         if ((instruction[3] & 0x100U) == 0) {
           local_218 = *(float *)(instruction + 0x14);
         }
@@ -1694,7 +1669,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 0x14));
           local_218 = (float)fVar11;
         }
-        local_98 = local_218;
+        local_9c.y = local_218;
         if ((instruction[3] & 0x200U) == 0) {
           local_21c = *(float *)(instruction + 0x16);
         }
@@ -1702,7 +1677,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 0x16));
           local_21c = (float)fVar11;
         }
-        local_94 = local_21c;
+        local_9c.z = local_21c;
         local_654 = (void *)((int)this + 0x8c);
         if ((instruction[3] & 1U) == 0) {
           local_220 = *(std::uint32_t *)(instruction + 4);
@@ -1873,7 +1848,6 @@ LAB_0042df8e:
         break;
       }
       case 0x52: {
-        std::uint32_t local_7e4 [3];
         float local_26c;
         float local_268;
         float local_264;
@@ -1916,17 +1890,13 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 0xc));
           local_264 = (float)fVar11;
         }
-        FUN_00422dd0(local_7e4,local_26c,local_268,local_264);
-        FUN_00438a90(local_694,local_7e4);
+        Vector3 local_7e4(local_26c,local_268,local_264);
+        FUN_00438a90(local_694,&local_7e4);
         FUN_004396a0((int)this + 0x160);
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 2;
         break;
       }
       case 0x53: {
-        std::uint8_t local_7c0 [4];
-        std::uint8_t local_7bc [4];
-        std::uint8_t local_78c [4];
-        std::uint8_t local_788 [4];
         float local_274;
         std::uint32_t local_270;
         local_698 = (void *)((int)this + 0x1b4);
@@ -1938,16 +1908,16 @@ LAB_0042df8e:
         }
         FUN_0041df50(local_698,local_270);
         local_69c = (void *)((int)this + 0x1b4);
-        pfVar6 = FUN_00429210(local_7bc,0.0f);
-        FUN_004394b0(local_69c,pfVar6);
+        Angle local_7bc(0.0f);
+        FUN_004394b0(local_69c,&local_7bc);
         local_6a0 = (void *)((int)this + 0x1b4);
-        pfVar6 = FUN_00429210(local_7c0,0.0f);
-        FUN_00438b50(local_6a0,pfVar6);
+        Angle local_7c0(0.0f);
+        FUN_00438b50(local_6a0,&local_7c0);
         local_6a4 = (void *)((int)this + 0x1b4);
         FUN_004394d0(local_6a4,*(std::uint32_t *)(instruction + 6));
         local_6a8 = (void *)((int)this + 0x1b4);
-        pfVar6 = FUN_00429210(local_788,*(float *)((int)this + 0x40));
-        FUN_00439440(local_6a8,pfVar6);
+        Angle local_788(*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this) + 0x40));
+        FUN_00439440(local_6a8,&local_788);
         local_6ac = (void *)((int)this + 0x1b4);
         if ((instruction[3] & 4U) == 0) {
           local_274 = *(float *)(instruction + 8);
@@ -1956,14 +1926,13 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 8));
           local_274 = (float)fVar11;
         }
-        pfVar6 = FUN_00429210(local_78c,local_274);
-        FUN_00438ae0(local_6ac,pfVar6);
+        Angle local_78c(local_274);
+        FUN_00438ae0(local_6ac,&local_78c);
         FUN_004395b0((int)this + 0x1b4);
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 2;
         break;
       }
       case 0x54: {
-        std::uint32_t local_794 [2];
         std::uint32_t local_6b4;
         std::uint32_t local_280;
         float local_27c;
@@ -1982,7 +1951,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 10));
           local_278 = (float)fVar11;
         }
-        FUN_00429250(local_794,local_27c,local_278);
+        Vector2 local_794(local_27c,local_278);
         local_6b0 = (std::uint32_t *)((int)this + 0x50);
         local_6b4 = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
@@ -1991,12 +1960,11 @@ LAB_0042df8e:
         else {
           local_280 = FUN_00437d00(this,*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438df0(this,local_280,local_6b4,local_6b0,local_794);
+        FUN_00438df0(this,local_280,local_6b4,local_6b0,&local_794);
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
         break;
       }
       case 0x6b: {
-        std::uint32_t local_79c [2];
         std::uint32_t local_6bc;
         std::uint32_t local_28c;
         float local_288;
@@ -2015,7 +1983,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 10));
           local_284 = (float)fVar11;
         }
-        FUN_00429250(local_79c,local_288,local_284);
+        Vector2 local_79c(local_288,local_284);
         local_6b8 = (std::uint32_t *)((int)this + 0x58);
         local_6bc = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
@@ -2024,12 +1992,11 @@ LAB_0042df8e:
         else {
           local_28c = FUN_00437d00(this,*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438db0(this,local_28c,local_6bc,local_6b8,local_79c);
+        FUN_00438db0(this,local_28c,local_6bc,local_6b8,&local_79c);
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
         break;
       }
       case 0x66: {
-        std::uint32_t local_7a4 [2];
         std::uint32_t local_6c4;
         std::uint32_t local_298;
         float local_294;
@@ -2048,7 +2015,7 @@ LAB_0042df8e:
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 10));
           local_290 = (float)fVar11;
         }
-        FUN_00429250(local_7a4,local_294,local_290);
+        Vector2 local_7a4(local_294,local_290);
         local_6c0 = (std::uint32_t *)((int)this + 0x68);
         local_6c4 = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
@@ -2057,7 +2024,7 @@ LAB_0042df8e:
         else {
           local_298 = FUN_00437d00(this,*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438e30(this,local_298,local_6c4,local_6c0,local_7a4);
+        FUN_00438e30(this,local_298,local_6c4,local_6c0,&local_7a4);
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 8;
         break;
       }
@@ -3661,8 +3628,7 @@ LAB_0042df8e:
         float local_4f0;
         float local_4ec;
         float local_4e8;
-        NativeVmVector3 local_c0;
-        FUN_00422e10(&local_c0);
+        Vector3 local_c0;
         if ((instruction[3] & 4U) == 0) {
           local_4e8 = *(float *)(instruction + 8);
         }
