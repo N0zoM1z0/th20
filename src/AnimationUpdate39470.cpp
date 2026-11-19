@@ -146,7 +146,7 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_558 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_784 = reinterpret_cast<AnimationFile*>(local_57c)->spawn_child(local_558,reinterpret_cast<Animation*>(local_780),0);
+        reinterpret_cast<AnimationFile*>(local_57c)->spawn_child(local_558,reinterpret_cast<Animation*>(local_780),0);
         break;
       }
       case 0x77: {
@@ -245,7 +245,7 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_fc = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_7a8 = reinterpret_cast<AnimationFile*>(local_59c)->spawn_child(local_fc,reinterpret_cast<Animation*>(local_598),2);
+        reinterpret_cast<AnimationFile*>(local_59c)->spawn_child(local_fc,reinterpret_cast<Animation*>(local_598),2);
         break;
       }
       case 0x73: {
@@ -260,7 +260,7 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_100 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_7ac = reinterpret_cast<AnimationFile*>(local_5a4)->spawn_child(local_100,reinterpret_cast<Animation*>(local_5a0),4);
+        reinterpret_cast<AnimationFile*>(local_5a4)->spawn_child(local_100,reinterpret_cast<Animation*>(local_5a0),4);
         break;
       }
       case 0x75: {
@@ -275,7 +275,7 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_104 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_7b0 = reinterpret_cast<AnimationFile*>(local_5ac)->spawn_child(local_104,reinterpret_cast<Animation*>(local_5a8),6);
+        reinterpret_cast<AnimationFile*>(local_5ac)->spawn_child(local_104,reinterpret_cast<Animation*>(local_5a8),6);
         break;
       }
       case 0x7b: {
@@ -335,7 +335,7 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_118 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_7b4 = reinterpret_cast<AnimationFile*>(local_5c0)->spawn_child_and_update(local_118,reinterpret_cast<Animation*>(local_5bc),0);
+        reinterpret_cast<AnimationFile*>(local_5c0)->spawn_child_and_update(local_118,reinterpret_cast<Animation*>(local_5bc),0);
         break;
       }
       case 0x7a: {
@@ -349,7 +349,7 @@ switchD_0042b8cc_caseD_a0:
         }
         // The original VM forwards its Animation receiver as both the
         // opaque effect-parameter payload and the existing-animation owner.
-        AnimationHandle local_7b8=effect_info->spawn_effect(
+        effect_info->spawn_effect(
             local_11c,*reinterpret_cast<const EffectParameters*>(this),this);
         break;
       }
@@ -1134,13 +1134,11 @@ LAB_0042df8e:
         break;
       }
       case 0x69: {
-        void *this_local;
 
         float local_204;
         float local_200;
         std::uint32_t local_1fc;
         Vector3 local_b4;
-        std::uint32_t local_ac;
 
         if ((instruction[3] & 1U) == 0) {
           local_1fc = *(std::uint32_t *)(instruction + 4);
@@ -1171,16 +1169,13 @@ LAB_0042df8e:
           local_200 = (float)fVar11;
         }
         if ((instruction[3] & 4U) == 0) {
-          this_local = (void *)0x8;
           local_204 = *(float *)(instruction + 8);
         }
         else {
           fVar11 = this->float_value(*(float *)(instruction + 8));
           local_204 = (float)fVar11;
-          this_local = this;
         }
         polar(local_b4,local_204,local_200);
-        local_ac = 0;
 
         base.interpolation_8c.set_end(*reinterpret_cast<const Vector3*>(&local_b4));
         base.interpolation_8c.reset_timer();
@@ -3192,7 +3187,6 @@ LAB_0042df8e:
         float local_75c;
         float local_758;
         float local_754;
-        float local_750;
         float local_4f0;
         float local_4ec;
         float local_4e8;
@@ -3212,7 +3206,6 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 10));
           local_4ec = (float)fVar11;
         }
-        local_750 = local_4ec;
         local_754 = local_4ec - local_4f0;
         fVar11 = reinterpret_cast<GameRandom*>(0x5ba4c4)->signed_unit();
         local_758 = (float)fVar11;

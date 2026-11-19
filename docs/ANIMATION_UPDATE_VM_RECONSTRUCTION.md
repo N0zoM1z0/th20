@@ -132,13 +132,17 @@ Vector/Angle/Float interpolation objects plus three Vector2 fields directly to
 their `AnimationBase` members. The original shared Angle-mode/reset call
 addresses and all 505 call destinations are retained. It removes another
 **68 bytes / 8 instruction heads** from 40,600B and reduces the frame from
-`0x844` to `0x830`.
+`0x844` to `0x830`. The next Boss-local cleanup removes three dead decompiler
+scratch values (`this_local`, `local_ac`, and `local_750`) and spells six
+unused spawn-result handles as discarded return values while preserving all
+spawn calls. The dead stores account for another **48 bytes / 5 instruction
+heads** from 40,532B and reduce the frame to `0x824`.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The total contribution is **+1,062 bytes**, comprising
-+418 bytes of code and the 644-byte compiler switch table. The code portion
-has 212 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The total contribution is **+1,014 bytes**, comprising
++396 bytes of code and the 644-byte compiler switch table. The code portion
+has 217 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
 `sub esp, 0x804`; the current candidate now uses `sub esp, 0x830` after
 removing obsolete Timer pointer temporaries, numeric call-view paths, unused
@@ -147,7 +151,7 @@ ownership and the remaining instruction/frame-layout differences are
 unresolved. No exactness credit is claimed from call-target
 parity alone.
 
-The next pass should reconcile the 0x2C stack-frame delta, absolute-data
+The next pass should reconcile the 0x20 stack-frame delta, absolute-data
 references, and ordinary instruction bytes using natural C++ types and
 lifetimes. Do not add padding or assembly to close the size gap.
 
