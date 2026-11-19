@@ -49,55 +49,9 @@ extern float DAT_005c5540[3];
 // Replace already reconstructed dependencies with their real maintained C++
 // owners. The remaining ABI view is restricted to helpers whose owner/signature
 // is still being recovered; these calls no longer route through numeric stubs.
-#undef FUN_00438bd0
-#define FUN_00438bd0(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationColorConfigView*>(self)->interpolate_secondary_alpha_438bd0(frames,curve,start,end))
-#undef FUN_00438c60
-#define FUN_00438c60(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationFadeConfig86*>(self)->interpolate_channel_438c60(frames,curve,start,end))
-#undef FUN_00438cc0
-#define FUN_00438cc0(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationColorConfigView*>(self)->interpolate_rgb_438cc0(frames,curve,start,end))
-#undef FUN_00438d50
-#define FUN_00438d50(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationColorConfigView*>(self)->interpolate_primary_rgb_438d50(frames,curve,start,end))
-#undef FUN_00438db0
-#define FUN_00438db0(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_secondary_scale_438db0(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
-#undef FUN_00438df0
-#define FUN_00438df0(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_primary_scale_438df0(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
-#undef FUN_00438e30
-#define FUN_00438e30(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_uv_scale_438e30(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
 
 
 // Native leaf owners recovered from the VM call graph.
-#undef FUN_0040ff90
-#define FUN_0040ff90(timer) (static_cast<std::int32_t>(*reinterpret_cast<Timer*>(timer)))
-#undef FUN_00423520
-#define FUN_00423520(timer,value) (*reinterpret_cast<Timer*>(timer)=static_cast<std::int32_t>(value))
-#undef FUN_00423540
-#define FUN_00423540(timer) ((*reinterpret_cast<Timer*>(timer))++)
-#undef FUN_00423ea0
-#define FUN_00423ea0(random,bound) (reinterpret_cast<GameRandom*>(random)->bounded(bound))
-#undef FUN_00423ee0
-#define FUN_00423ee0(random) (reinterpret_cast<GameRandom*>(random)->next())
-#undef FUN_00424060
-#define FUN_00424060(controller) (reinterpret_cast<GameController*>(controller)->animation_frozen())
-#undef FUN_00429280
-#define FUN_00429280(timer,source) (reinterpret_cast<Timer*>(timer)->set_from_current(*reinterpret_cast<const Timer*>(source)))
-#undef FUN_004292a0
-#define FUN_004292a0(clock,value) (reinterpret_cast<ClockScalar*>(clock)->set(value))
-#undef FUN_004292e0
-#define FUN_004292e0(clock) (static_cast<float>(*reinterpret_cast<ClockScalar*>(clock)))
-#undef FUN_004296e0
-#define FUN_004296e0(vector,other) (*reinterpret_cast<Vector3*>(vector)+=*reinterpret_cast<const Vector3*>(other))
-#undef FUN_004297d0
-#define FUN_004297d0(random) (reinterpret_cast<GameRandom*>(random)->radians())
-#undef FUN_00429800
-#define FUN_00429800(random,limit) (reinterpret_cast<GameRandom*>(random)->range(limit))
-#undef FUN_004298e0
-#define FUN_004298e0(random) (reinterpret_cast<GameRandom*>(random)->signed_unit())
-#undef FUN_0042b590
-#define FUN_0042b590(animation,bytes) (reinterpret_cast<Animation*>(animation)->allocate_geometry(bytes))
-#undef FUN_00438600
-#define FUN_00438600(left,right) (add_angles(left,right))
-#undef FUN_00445770
-#define FUN_00445770(animation,value) (reinterpret_cast<NativeAnimationCornerProjectionDispatchView*>(animation)->project_corners(reinterpret_cast<Vector3*>(value)))
 
 std::int32_t Animation::update() {
 
@@ -211,21 +165,21 @@ std::int32_t Animation::update() {
   if ((*(std::uint32_t *)((int)this + 0x4b4) & 1) != 0) {
     return 0;
   }
-  fVar11 = FUN_004292e0((float *)&DAT_005aefe4);
+  fVar11 = static_cast<float>(*reinterpret_cast<ClockScalar*>((float *)&DAT_005aefe4));
   initial_clock_value = (float)fVar11;
   if ((*(std::uint32_t *)((int)this + 0x49c) >> 8 & 1) != 0) {
-    FUN_004292a0(&DAT_005aefe4,DAT_0056c8cc);
+    reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(DAT_0056c8cc);
   }
   fVar11 = reinterpret_cast<Animation*>((int)this)->slowdown();
   local_588 = (float)fVar11;
   if (_DAT_0056e0e8 < local_588) {
     fVar11 = reinterpret_cast<Animation*>((int)this)->slowdown();
     local_594 = (float)fVar11;
-    FUN_004292a0(&DAT_005aefe4,initial_clock_value - local_594 * initial_clock_value);
-    fVar11 = FUN_004292e0((float *)&DAT_005aefe4);
+    reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(initial_clock_value - local_594 * initial_clock_value);
+    fVar11 = static_cast<float>(*reinterpret_cast<ClockScalar*>((float *)&DAT_005aefe4));
     local_5b8 = (float)fVar11;
     if (local_5b8 < 0.0f) {
-      FUN_004292a0(&DAT_005aefe4,0);
+      reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(0);
     }
   }
   if (reinterpret_cast<Animation*>(this)->callback &&
@@ -240,7 +194,7 @@ std::int32_t Animation::update() {
   if ((-1 < *(int *)((int)this + 0x28)) && ((*(std::uint32_t *)((int)this + 0x49c) >> 0x19 & 1) == 0)
      ) {
     local_76c = (std::uint32_t *)((int)this + 0x4d8);
-    FUN_00423540(local_76c);
+    ((*reinterpret_cast<Timer*>(local_76c))++);
     if (*(int *)((int)this + 0x438) != 0) {
       local_774 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_770 = *(int *)((int)this + 0x24);
@@ -249,14 +203,14 @@ std::int32_t Animation::update() {
       goto LAB_0042de0b;
     }
     if ((((*(std::uint8_t *)((int)this + 0x4a0) & 3) != 1) || (DAT_005ba828 == 0)) ||
-       (uVar3 = FUN_00424060(DAT_005ba828), uVar3 == 0)) {
+       (uVar3 = reinterpret_cast<GameController*>(DAT_005ba828)->animation_frozen(), uVar3 == 0)) {
 LAB_0042b831:
       local_77c = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_778 = *(int *)((int)this + 0x24);
       iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_77c)->script(local_778)));
       instruction = (short *)(iVar2 + *(int *)((int)this + 0x28));
       sVar1 = instruction[2];
-      iVar2 = FUN_0040ff90((int)this + 0x4c8);
+      iVar2 = static_cast<std::int32_t>(*reinterpret_cast<Timer*>((int)this + 0x4c8));
       if (iVar2 < sVar1) goto LAB_00434dce;
       local_e0 = (int)*instruction + 1;
       if (0x27b < local_e0) {
@@ -587,7 +541,7 @@ LAB_0042c528:
           local_5ec = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           reinterpret_cast<AnimationFile*>(local_5ec)->apply_sprite(reinterpret_cast<Animation*>((int)this), local_d8);
         }
-        uVar4 = FUN_0040ff90((int)this + 0x4c8);
+        uVar4 = static_cast<std::int32_t>(*reinterpret_cast<Timer*>((int)this + 0x4c8));
         *(std::uint32_t *)((int)this + 0x43c) = uVar4;
         break;
       }
@@ -623,7 +577,7 @@ LAB_0042c528:
           local_5f8 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           reinterpret_cast<AnimationFile*>(local_5f8)->apply_sprite(reinterpret_cast<Animation*>((int)this), local_e8);
         }
-        uVar4 = FUN_0040ff90((int)this + 0x4c8);
+        uVar4 = static_cast<std::int32_t>(*reinterpret_cast<Timer*>((int)this + 0x4c8));
         *(std::uint32_t *)((int)this + 0x43c) = uVar4;
         break;
       }
@@ -648,7 +602,7 @@ LAB_0042c528:
           else {
             local_140 = this->integer_value(*(std::uint32_t *)(instruction + 6));
           }
-          uVar3 = FUN_00423ee0(0x5ba4c4);
+          uVar3 = reinterpret_cast<GameRandom*>(0x5ba4c4)->next();
           local_ec = uVar3 % local_140 + local_144;
         }
         else {
@@ -665,7 +619,7 @@ LAB_0042c528:
           else {
             local_138 = this->integer_value(*(std::uint32_t *)(instruction + 6));
           }
-          uVar3 = FUN_00423ee0(0x5ba4c4);
+          uVar3 = reinterpret_cast<GameRandom*>(0x5ba4c4)->next();
           local_ec = (*local_6e4)(reinterpret_cast<Animation*>(this),uVar3 % local_138 + local_13c);
         }
         if (local_ec < 0) {
@@ -675,7 +629,7 @@ LAB_0042c528:
           local_604 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           reinterpret_cast<AnimationFile*>(local_604)->apply_sprite(reinterpret_cast<Animation*>((int)this), local_ec);
         }
-        uVar4 = FUN_0040ff90((int)this + 0x4c8);
+        uVar4 = static_cast<std::int32_t>(*reinterpret_cast<Timer*>((int)this + 0x4c8));
         *(std::uint32_t *)((int)this + 0x43c) = uVar4;
         break;
       }
@@ -822,7 +776,7 @@ LAB_0042c528:
         break;
       }
       case 0x26: {
-        FUN_00423520((void *)((int)this + 0x4c8),*(int *)(instruction + 6));
+        (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>(*(int *)(instruction + 6)));
         *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)(instruction + 4);
         goto LAB_0042b831;
       }
@@ -837,7 +791,7 @@ LAB_0042c528:
           local_184 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         if (0 < (int)local_184) {
-          FUN_00423520((void *)((int)this + 0x4c8),*(int *)(instruction + 8));
+          (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>(*(int *)(instruction + 8)));
           *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)(instruction + 6);
           goto LAB_0042b831;
         }
@@ -981,7 +935,7 @@ LAB_0042c528:
         else {
           local_1a8 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        FUN_00438c60(this,local_1a8,0,local_cf,local_ce);
+        reinterpret_cast<NativeAnimationFadeConfig86*>(this)->interpolate_channel_438c60(local_1a8, 0, local_cf, local_ce);
         break;
       }
       case 0x37: {
@@ -1150,10 +1104,10 @@ LAB_0042de0b:
         *(std::uint8_t *)((int)this + 0x4a1) = *(std::uint8_t *)((int)this + 0x4a1) & 0xfe;
         if (*scan_instruction == 5) {
 LAB_0042df8e:
-          FUN_00429280(this,(int)this + 0x4c8);
+          reinterpret_cast<Timer*>(this)->set_from_current(*reinterpret_cast<const Timer*>((int)this + 0x4c8));
           *(std::uint32_t *)((int)this + 0x10) = *(std::uint32_t *)((int)this + 0x28);
           local_dc = (std::uint32_t)(std::uint16_t)scan_instruction[1] + local_dc;
-          FUN_00423520((void *)((int)this + 0x4c8),(int)scan_instruction[2]);
+          (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>((int)scan_instruction[2]));
           scan_instruction = (short *)((std::uint32_t)(std::uint16_t)scan_instruction[1] + (int)scan_instruction);
           *(int *)((int)this + 0x28) = local_dc;
           *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) | 1;
@@ -1171,7 +1125,7 @@ LAB_0042df8e:
         goto switchD_0042b8cc_caseD_2;
       }
       case 5: {
-        FUN_00429280((void *)((int)this + 0x4c8),(int)this);
+        reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))->set_from_current(*reinterpret_cast<const Timer*>((int)this));
         *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)((int)this + 0x10);
         goto LAB_0042b831;
       }
@@ -1484,7 +1438,7 @@ LAB_0042df8e:
         else {
           local_23c = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438d50(this,local_23c,local_670,local_70,local_6c);
+        reinterpret_cast<NativeAnimationColorConfigView*>(this)->interpolate_primary_rgb_438d50(local_23c, local_670, local_70, local_6c);
         break;
       }
       case 0x51: {
@@ -1506,7 +1460,7 @@ LAB_0042df8e:
         else {
           local_244 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438c60(this,local_244,local_674,local_d0,(std::uint8_t)local_240);
+        reinterpret_cast<NativeAnimationFadeConfig86*>(this)->interpolate_channel_438c60(local_244, local_674, local_d0, (std::uint8_t)local_240);
         break;
       }
       case 0x55: {
@@ -1544,7 +1498,7 @@ LAB_0042df8e:
         else {
           local_254 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438cc0(this,local_254,local_678,local_78,local_74);
+        reinterpret_cast<NativeAnimationColorConfigView*>(this)->interpolate_rgb_438cc0(local_254, local_678, local_78, local_74);
         break;
       }
       case 0x56: {
@@ -1566,7 +1520,7 @@ LAB_0042df8e:
         else {
           local_25c = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438bd0(this,local_25c,local_67c,local_d1,(std::uint8_t)local_258);
+        reinterpret_cast<NativeAnimationColorConfigView*>(this)->interpolate_secondary_alpha_438bd0(local_25c, local_67c, local_d1, (std::uint8_t)local_258);
         break;
       }
       case 0x52: {
@@ -1682,7 +1636,7 @@ LAB_0042df8e:
         else {
           local_280 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438df0(this,local_280,local_6b4,local_6b0,&local_794);
+        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_primary_scale_438df0(local_280, local_6b4, *reinterpret_cast<const Vector2*>(local_6b0), *reinterpret_cast<const Vector2*>(&local_794));
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
         break;
       }
@@ -1714,7 +1668,7 @@ LAB_0042df8e:
         else {
           local_28c = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438db0(this,local_28c,local_6bc,local_6b8,&local_79c);
+        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_secondary_scale_438db0(local_28c, local_6bc, *reinterpret_cast<const Vector2*>(local_6b8), *reinterpret_cast<const Vector2*>(&local_79c));
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
         break;
       }
@@ -1746,7 +1700,7 @@ LAB_0042df8e:
         else {
           local_298 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00438e30(this,local_298,local_6c4,local_6c0,&local_7a4);
+        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_uv_scale_438e30(local_298, local_6c4, *reinterpret_cast<const Vector2*>(local_6c0), *reinterpret_cast<const Vector2*>(&local_7a4));
         *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 8;
         break;
       }
@@ -1847,7 +1801,7 @@ LAB_0042df8e:
         else {
           local_2ac = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_0042b590(this,local_2ac * 0x38);
+        reinterpret_cast<Animation*>(this)->allocate_geometry(local_2ac * 0x38);
         break;
       }
       case 0x9e: {
@@ -1860,7 +1814,7 @@ LAB_0042df8e:
         else {
           local_2b0 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_0042b590(this,local_2b0 * 0x38);
+        reinterpret_cast<Animation*>(this)->allocate_geometry(local_2b0 * 0x38);
         if ((instruction[3] & 1U) == 0) {
           local_2b4 = *(std::uint32_t *)(instruction + 4);
         }
@@ -1873,7 +1827,7 @@ LAB_0042df8e:
       case 0x9f: {
         float local_2b8;
         *(std::uint8_t *)((int)this + 0x498) = 0x30;
-        FUN_0042b590(this,0x54);
+        reinterpret_cast<Animation*>(this)->allocate_geometry(0x54);
         if ((instruction[3] & 1U) == 0) {
           local_2b8 = *(float *)(instruction + 4);
         }
@@ -1893,7 +1847,7 @@ LAB_0042df8e:
         else {
           local_2bc = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_0042b590(this,local_2bc * 0x38);
+        reinterpret_cast<Animation*>(this)->allocate_geometry(local_2bc * 0x38);
         break;
       }
       case 0x7f: {
@@ -1905,7 +1859,7 @@ LAB_0042df8e:
         else {
           local_2c0 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_0042b590(this,local_2c0 * 0x38);
+        reinterpret_cast<Animation*>(this)->allocate_geometry(local_2c0 * 0x38);
         break;
       }
       case 0x86: {
@@ -1917,7 +1871,7 @@ LAB_0042df8e:
         else {
           local_2c4 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_0042b590(this,local_2c4 * 0x30);
+        reinterpret_cast<Animation*>(this)->allocate_geometry(local_2c4 * 0x30);
         break;
       }
       case 0x87: {
@@ -1929,12 +1883,12 @@ LAB_0042df8e:
         else {
           local_2c8 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        FUN_0042b590(this,local_2c8 * 0x30);
+        reinterpret_cast<Animation*>(this)->allocate_geometry(local_2c8 * 0x30);
         break;
       }
       case 0x5a: {
         Vector3 corners[4];
-        FUN_00445770(this,corners);
+        reinterpret_cast<NativeAnimationCornerProjectionDispatchView*>(this)->project_corners(reinterpret_cast<Vector3*>(corners));
         normalize_coordinates_438eb0(&base.vectors_378[0],reinterpret_cast<const Vector2*>(&corners[0]));
         normalize_coordinates_438eb0(&base.vectors_378[1],reinterpret_cast<const Vector2*>(&corners[1]));
         normalize_coordinates_438eb0(&base.vectors_378[2],reinterpret_cast<const Vector2*>(&corners[2]));
@@ -3186,7 +3140,7 @@ LAB_0042df8e:
         else {
           local_4c0 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        local_728 = FUN_00423ea0(&DAT_005ba4c4,local_4c0);
+        local_728 = reinterpret_cast<GameRandom*>(&DAT_005ba4c4)->bounded(local_4c0);
         puVar8 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *puVar8 = local_728;
         break;
@@ -3201,7 +3155,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_4c4 = (float)fVar11;
         }
-        fVar11 = FUN_00429800(0x5ba4c4,local_4c4);
+        fVar11 = reinterpret_cast<GameRandom*>(0x5ba4c4)->range(local_4c4);
         local_72c = (float)fVar11;
         pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *pfVar6 = local_72c;
@@ -3297,7 +3251,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_4dc = (float)fVar11;
         }
-        fVar11 = (float)FUN_00438600(local_4dc,0.0f);
+        fVar11 = (float)add_angles(local_4dc, 0.0f);
         local_744 = (float)fVar11;
         pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *pfVar6 = local_744;
@@ -3352,10 +3306,10 @@ LAB_0042df8e:
         }
         local_750 = local_4ec;
         local_754 = local_4ec - local_4f0;
-        fVar11 = FUN_004298e0(0x5ba4c4);
+        fVar11 = reinterpret_cast<GameRandom*>(0x5ba4c4)->signed_unit();
         local_758 = (float)fVar11;
         local_75c = local_754 * local_758 + local_4f0;
-        fVar11 = FUN_004297d0(0x5ba4c4);
+        fVar11 = reinterpret_cast<GameRandom*>(0x5ba4c4)->radians();
         local_760 = (float)fVar11;
         polar(*reinterpret_cast<Vector3*>(&local_c0),local_760,local_75c);
         pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
@@ -3410,7 +3364,7 @@ LAB_0042df8e:
         }
         if (local_4f4 == local_4f8) {
 LAB_00434d6a:
-          FUN_00423520((void *)((int)this + 0x4c8),*(int *)(instruction + 10));
+          (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>(*(int *)(instruction + 10)));
           *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)(instruction + 8);
           goto LAB_0042b831;
         }
@@ -3640,11 +3594,11 @@ LAB_00434dce:
     reinterpret_cast<Animation*>((int)this)->update_motion();
   }
   if ((*(std::uint8_t *)((int)this + 0x4a1) >> 1 & 1) != 0) {
-    FUN_004296e0((void *)((int)this + 0x5bc),(float *)&DAT_005c5540);
+    (*reinterpret_cast<Vector3*>((void *)((int)this + 0x5bc)) += *reinterpret_cast<const Vector3*>((float *)&DAT_005c5540));
   }
   if ((base.flags.word_04 >> 0xb & 1) != 0) {
     Vector3 corners[4];
-    FUN_00445770(this,corners);
+    reinterpret_cast<NativeAnimationCornerProjectionDispatchView*>(this)->project_corners(reinterpret_cast<Vector3*>(corners));
     normalize_coordinates_438eb0(&base.vectors_378[0],reinterpret_cast<const Vector2*>(&corners[0]));
     normalize_coordinates_438eb0(&base.vectors_378[1],reinterpret_cast<const Vector2*>(&corners[1]));
     normalize_coordinates_438eb0(&base.vectors_378[2],reinterpret_cast<const Vector2*>(&corners[2]));
@@ -3655,12 +3609,12 @@ LAB_00434dce:
   reinterpret_cast<Animation*>((int)this)->update_interpolations();
   reinterpret_cast<Animation*>(this)->update_geometry();
   local_764 = (std::uint32_t *)((int)this + 0x4c8);
-  FUN_00423540(local_764);
+  ((*reinterpret_cast<Timer*>(local_764))++);
 LAB_00434fb5:
-  FUN_004292a0(&DAT_005aefe4,initial_clock_value);
+  reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(initial_clock_value);
   return 0;
 LAB_00434fd1:
-  FUN_004292a0(&DAT_005aefe4,initial_clock_value);
+  reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(initial_clock_value);
   return 1;
 }
 
