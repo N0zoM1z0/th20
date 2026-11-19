@@ -44,7 +44,7 @@ int NativeParticleGridGroup::update() {
     tangent.z=0.0f;
     extra_1914+=tangent;
     float direction=owner->rotation_z_value();
-    direction+=owner->variables().field_28;
+    direction+=owner->variables().particle_grid_angle_offset;
     polar(tangent,direction,native_particle_radius_150);
     tangent.z=0.0f;
     extra_1908+=tangent;

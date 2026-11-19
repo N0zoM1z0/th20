@@ -289,3 +289,18 @@ superseded; use the **current ledger and this handoff** for status.
   Animation Parameters 20/20, Corner Projection 1/1, Geometry 6/6, Draw Mode
   8 1/1, and Corner Rotated 1/1. Draw Boss source/ABI/native and Particle Grid
   role audits also pass; their parents remain NONEXACT.
+
+## 2026-11-19 session — particle-grid angle variable
+
+- Resolved the Particle Grid Update's remaining `AnmVariables.field_28` use:
+  it is added to `rotation_z_value()` to form the second polar heading.
+  Added the same-storage `particle_grid_angle_offset` view at slot 10010
+  (`+0x28`) and used it in the 2,884B parent. The generic `field_28` name
+  remains available to other script-variable consumers. The Particle Grid
+  lexical debt report is now 0 under the repository's layout-heuristic scan;
+  this is not an exactness metric. Its focused role audit still confirms
+  99/99 call targets and 25/25 data roles, with the source remaining
+  NONEXACT at 2,924B/760 instructions versus native 2,884B/768. The shared
+  `Animation.cpp` object also passed targeted exact replay 38/38 after the
+  ANM layout alias. See
+  `docs/ANM_VARIABLE_SLOT_10010_PARTICLE_GRID_ANGLE_OFFSET.md`.

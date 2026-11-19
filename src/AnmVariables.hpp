@@ -18,7 +18,11 @@ struct AnmVariables {
         std::int32_t particle_grid_count;
     };
     std::int32_t field_04, field_08, field_0c;
-    float field_10, field_14, field_18, field_1c, field_20, field_24, field_28;
+    float field_10, field_14, field_18, field_1c, field_20, field_24;
+    union {
+        float field_28;
+        float particle_grid_angle_offset;
+    };
     std::int32_t field_2c, field_30;
     float field_34, field_38;
     std::int32_t field_3c;
@@ -31,6 +35,8 @@ static_assert(offsetof(AnmVariables, geometry_vertex_count) == 0);
 static_assert(offsetof(AnmVariables, draw_shape_count) == 0);
 static_assert(offsetof(AnmVariables, particle_grid_count) == 0);
 static_assert(offsetof(AnmVariables, field_10) == 16);
+static_assert(offsetof(AnmVariables, field_28) == 0x28);
+static_assert(offsetof(AnmVariables, particle_grid_angle_offset) == 0x28);
 static_assert(offsetof(AnmVariables, field_2c) == 44);
 static_assert(offsetof(AnmVariables, field_3c) == 60);
 
