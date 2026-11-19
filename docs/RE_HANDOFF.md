@@ -500,8 +500,9 @@ superseded; use the **current ledger and this handoff** for status.
   natural cdecl ScalarMath calls. The newly added asin/acos wrappers each
   replay 35/35 bytes with their original CRT import relocations. Opcode 0x24
   now calls the exact 88B cdecl `polar_components` helper; both independent
-  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x85c`
-  versus the original `0x804`, down from the previous `0x874`.
+  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x858`
+  versus the original `0x804`, down from the previous `0x874`; the follow-up
+  case-scope pass moved 65 opcode locals and removed 12 unused temporaries.
 - The eight exact color/fade/vector leaves and all eight coordinate-normalizer
   calls are bound through typed owners; the normalizer independently replays
   95/95 bytes. The 59B Timer unscaled fractional-advance leaf is now
@@ -511,7 +512,9 @@ superseded; use the **current ledger and this handoff** for status.
   and opcode 0x20 uses the existing exact 35B CRT sqrt adapter. This latest
   Timer/interpolation pass removed 136B/17 instructions from the 41,048B
   checkpoint and shrank the frame from 0x874 to 0x85c. The follow-up math
-  owner pass removes another 100B/17 instructions from the 40,912B candidate.
+  owner pass removes another 100B/17 instructions from the 40,912B candidate;
+  later lexical lifetime cleanup moves 65 case locals and removes 12 unused
+  decompiler temporaries, reducing the current frame to 0x858.
   The follow-up polar helper removes another 4B/1 instruction from 40,812B. Opcode scratch values
   now use real Color3, Vector2, Vector3 and Angle objects. Both corner paths use natural Vector3[4] arrays, and
   their compiler-generated 56B array helper is byte-identical to original
@@ -519,7 +522,7 @@ superseded; use the **current ledger and this handoff** for status.
   preceding 40,836B checkpoint; it restores real source-level lifetimes,
   not an optimization or an exactness claim.
 - The candidate still has 210 DIR32 relocations versus 55 original PE
-  HIGHLOW fields and a larger stack frame (`0x85c` versus `0x804`). Its total
+  HIGHLOW fields and a larger stack frame (`0x858` versus `0x804`). Its total
   contribution is +1,338B (+694B code plus the switch table); it has 177 fewer
   code instruction heads than the original. It is explicitly NONEXACT, has
   no exact match unit, and is not counted as a new exact function. No

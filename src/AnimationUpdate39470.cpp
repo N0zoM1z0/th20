@@ -54,100 +54,22 @@ std::int32_t Animation::update() {
   float *pfVar6;
   int *piVar7;
   int *puVar8;
-  void *extraout_ECX;
   void *this_local;
-  short *extraout_ECX_00;
-  short *extraout_ECX_01;
-  short *extraout_ECX_02;
-  short *extraout_ECX_03;
-  short *extraout_ECX_04;
-  void *this_00;
-  void *this_01;
   std::uint32_t *puVar10;
   float fVar11;
-  void *local_780;
   void *local_77c;
   int local_778;
   void *local_774;
   int local_770;
   std::uint32_t *local_76c;
   std::uint32_t *local_764;
-  float *local_74c;
-  float *local_748;
-  void *local_70c;
-  void *local_704;
-  void *local_700;
-  void *local_6fc;
-  void *local_6f4;
-  void *local_6ec;
-  void *local_6e8;
-  void *local_6e0;
-  void *local_6dc;
-  void *local_6d8;
-  void *local_6d0;
-  void *local_6c8;
-  std::uint32_t *local_6c0;
-  std::uint32_t *local_6b8;
-  std::uint32_t *local_6b0;
-  void *local_6ac;
-  void *local_6a8;
-  void *local_6a4;
-  void *local_6a0;
-  void *local_69c;
-  void *local_698;
-  void *local_694;
-  void *local_690;
-  void *local_68c;
-  void *local_688;
-  void *local_684;
-  void *local_680;
 
-  void *local_650;
-  void *local_64c;
-  void *local_648;
-  void *local_644;
-  void *local_640;
-  void *local_63c;
-  void *local_638;
-  void *local_634;
-  void *local_630;
-  void *local_62c;
-  void *local_628;
-  void *local_624;
-  void *local_620;
-  void *local_61c;
-  void *local_614;
-  void *local_604;
-  void *local_600;
   NativeVmEntryCallback local_5fc;
-  void *local_5f8;
-  void *local_5f4;
-  void *local_5ec;
-  void *local_5e8;
-  std::uint32_t local_5c8;
-  void *local_5bc;
   float local_5b8;
-  void *local_5b0;
-  void *local_5a8;
-  void *local_5a0;
-  void *local_598;
   float local_594;
-  void *local_58c;
   float local_588;
-  void *local_580;
-  int *local_4b4;
-  float *local_4ac;
-  int *local_4a4;
-  float *local_49c;
-  int *local_494;
-  float *local_48c;
-  int *local_484;
-  float *local_47c;
-  int *local_474;
 
 
-  int *local_180;
-  short *local_f0;
   float initial_clock_value;
   std::uint32_t local_e0;
   std::int16_t *scan_instruction;
@@ -236,6 +158,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x72: {
+        void *local_780;
         void* local_57c;
         std::uint32_t local_558;
         local_57c = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
@@ -250,6 +173,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x77: {
+        void *local_580;
         void* local_584;
         float local_56c;
         std::uintptr_t local_568;
@@ -291,6 +215,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x7c: {
+        void *local_58c;
         void* local_590;
         float local_578;
         std::uint32_t local_574;
@@ -332,6 +257,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x74: {
+        void *local_598;
         void* local_59c;
         std::uint32_t local_fc;
         local_59c = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
@@ -346,6 +272,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x73: {
+        void *local_5a0;
         void* local_5a4;
         std::uint32_t local_100;
         local_5a4 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
@@ -360,6 +287,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x75: {
+        void *local_5a8;
         void* local_5ac;
         std::uint32_t local_104;
         local_5ac = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
@@ -386,6 +314,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x78: {
+        void *local_5b0;
         void* local_5b4;
         std::uintptr_t local_114;
         float local_110;
@@ -422,6 +351,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x76: {
+        void *local_5bc;
         void* local_5c0;
         std::uint32_t local_118;
         local_5c0 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
@@ -451,6 +381,7 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x47: {
+        void *local_5ec;
         NativeVmScriptCallback local_5e4;
         float local_5e0;
         float local_5dc;
@@ -537,6 +468,7 @@ LAB_0042c528:
         break;
       }
       case 0x34: {
+        void *local_5f8;
         NativeVmScriptCallback local_5f0;
         std::uint32_t local_134;
         std::uint32_t local_130;
@@ -573,6 +505,7 @@ LAB_0042c528:
         break;
       }
       case 0x35: {
+        void *local_604;
         NativeVmScriptCallback local_6e4;
         std::uint32_t local_144;
         std::uint32_t local_140;
@@ -772,6 +705,7 @@ LAB_0042c528:
         goto LAB_0042b831;
       }
       case 0x27: {
+        int *local_180;
         std::uint32_t local_184;
         local_180 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *local_180 = *local_180 + -1;
@@ -1066,6 +1000,8 @@ LAB_0042c528:
         break;
       }
       case 3: {
+        short *local_f0;
+        void *local_614;
         int local_610;
         int local_1e0;
         int local_dc;
@@ -1173,6 +1109,13 @@ LAB_0042df8e:
         break;
       }
       case 0x4f: {
+        void *local_634;
+        void *local_630;
+        void *local_62c;
+        void *local_628;
+        void *local_624;
+        void *local_620;
+        void *local_61c;
         float local_1f8;
         float local_1f4;
         float local_1f0;
@@ -1227,6 +1170,13 @@ LAB_0042df8e:
         break;
       }
       case 0x69: {
+        void *local_650;
+        void *local_64c;
+        void *local_648;
+        void *local_644;
+        void *local_640;
+        void *local_63c;
+        void *local_638;
         float local_204;
         float local_200;
         std::uint32_t local_1fc;
@@ -1515,6 +1465,12 @@ LAB_0042df8e:
         break;
       }
       case 0x52: {
+        void *local_694;
+        void *local_690;
+        void *local_68c;
+        void *local_688;
+        void *local_684;
+        void *local_680;
         float local_26c;
         float local_268;
         float local_264;
@@ -1564,6 +1520,12 @@ LAB_0042df8e:
         break;
       }
       case 0x53: {
+        void *local_6ac;
+        void *local_6a8;
+        void *local_6a4;
+        void *local_6a0;
+        void *local_69c;
+        void *local_698;
         float local_274;
         std::uint32_t local_270;
         local_698 = (void *)((int)this + 0x1b4);
@@ -1600,6 +1562,7 @@ LAB_0042df8e:
         break;
       }
       case 0x54: {
+        std::uint32_t *local_6b0;
         std::uint32_t local_6b4;
         std::uint32_t local_280;
         float local_27c;
@@ -1632,6 +1595,7 @@ LAB_0042df8e:
         break;
       }
       case 0x6b: {
+        std::uint32_t *local_6b8;
         std::uint32_t local_6bc;
         std::uint32_t local_28c;
         float local_288;
@@ -1664,6 +1628,7 @@ LAB_0042df8e:
         break;
       }
       case 0x66: {
+        std::uint32_t *local_6c0;
         std::uint32_t local_6c4;
         std::uint32_t local_298;
         float local_294;
@@ -1696,6 +1661,12 @@ LAB_0042df8e:
         break;
       }
       case 99: {
+        void *local_6e8;
+        void *local_6e0;
+        void *local_6dc;
+        void *local_6d8;
+        void *local_6d0;
+        void *local_6c8;
         float local_768;
         std::uint32_t local_6d4;
         std::uint32_t local_6cc;
@@ -1733,6 +1704,12 @@ LAB_0042df8e:
         break;
       }
       case 100: {
+        void *local_70c;
+        void *local_704;
+        void *local_700;
+        void *local_6fc;
+        void *local_6f4;
+        void *local_6ec;
         float local_708;
         std::uint32_t local_6f8;
         std::uint32_t local_6f0;
@@ -2987,6 +2964,7 @@ LAB_0042df8e:
         break;
       }
       case 8: {
+        int *local_474;
         std::uint32_t local_470;
         if ((instruction[3] & 2U) == 0) {
           local_470 = *(std::uint32_t *)(instruction + 6);
@@ -2999,6 +2977,7 @@ LAB_0042df8e:
         break;
       }
       case 9: {
+        float *local_47c;
         float local_478;
         if ((instruction[3] & 2U) == 0) {
           local_478 = *(float *)(instruction + 6);
@@ -3012,6 +2991,7 @@ LAB_0042df8e:
         break;
       }
       case 10: {
+        int *local_484;
         std::uint32_t local_480;
         if ((instruction[3] & 2U) == 0) {
           local_480 = *(std::uint32_t *)(instruction + 6);
@@ -3024,6 +3004,7 @@ LAB_0042df8e:
         break;
       }
       case 0xb: {
+        float *local_48c;
         float local_488;
         if ((instruction[3] & 2U) == 0) {
           local_488 = *(float *)(instruction + 6);
@@ -3037,6 +3018,7 @@ LAB_0042df8e:
         break;
       }
       case 0xc: {
+        int *local_494;
         std::uint32_t local_490;
         if ((instruction[3] & 2U) == 0) {
           local_490 = *(std::uint32_t *)(instruction + 6);
@@ -3049,6 +3031,7 @@ LAB_0042df8e:
         break;
       }
       case 0xd: {
+        float *local_49c;
         float local_498;
         if ((instruction[3] & 2U) == 0) {
           local_498 = *(float *)(instruction + 6);
@@ -3062,6 +3045,7 @@ LAB_0042df8e:
         break;
       }
       case 0xe: {
+        int *local_4a4;
         std::uint32_t local_4a0;
         if ((instruction[3] & 2U) == 0) {
           local_4a0 = *(std::uint32_t *)(instruction + 6);
@@ -3074,6 +3058,7 @@ LAB_0042df8e:
         break;
       }
       case 0xf: {
+        float *local_4ac;
         float local_4a8;
         if ((instruction[3] & 2U) == 0) {
           local_4a8 = *(float *)(instruction + 6);
@@ -3087,6 +3072,7 @@ LAB_0042df8e:
         break;
       }
       case 0x10: {
+        int *local_4b4;
         std::uint32_t local_4b0;
         if ((instruction[3] & 2U) == 0) {
           local_4b0 = *(std::uint32_t *)(instruction + 6);
@@ -3249,6 +3235,8 @@ LAB_0042df8e:
         break;
       }
       case 0x24: {
+        float *local_74c;
+        float *local_748;
         float local_4e4;
         float local_4e0;
         if ((instruction[3] & 8U) == 0) {

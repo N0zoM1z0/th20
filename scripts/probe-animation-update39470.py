@@ -27,6 +27,7 @@ SYMBOL='?update@Animation@th20@@QAEHXZ'
 CANDIDATE_SIZE=40808
 CANDIDATE_CODE_SIZE=40164
 CANDIDATE_INSTRUCTIONS=8382
+CANDIDATE_STACK_FRAME=0x858
 CANDIDATE_JUMP_TABLE_ENTRIES=161
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
@@ -101,6 +102,11 @@ def compile_candidate(original_targets):
  jump_table_size=4*CANDIDATE_JUMP_TABLE_ENTRIES
  code=body[:jump_table[0]]
  ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(code,0))
+ assert len(ins)>=3 and ins[0].mnemonic=='push' and ins[1].mnemonic=='mov' and ins[2].mnemonic=='sub'
+ frame_match=re.fullmatch(r'esp,\s*0x([0-9a-fA-F]+)',ins[2].op_str)
+ assert frame_match,ins[2].op_str
+ candidate_frame=int(frame_match.group(1),16)
+ assert candidate_frame==CANDIDATE_STACK_FRAME,hex(candidate_frame)
  calls=[x for x in ins if x.size==5 and x.bytes[0]==0xE8]
  rel32=[x for x in relocations if x['type']=='REL32']
  assert len(body)==CANDIDATE_SIZE and len(code)==CANDIDATE_CODE_SIZE and len(ins)==CANDIDATE_INSTRUCTIONS and len(calls)==CANDIDATE_CALLS,(len(body),len(code),len(ins),len(calls))
@@ -110,6 +116,7 @@ def compile_candidate(original_targets):
  assert candidate_targets==original_targets,('call target multiset mismatch',original_targets-candidate_targets,candidate_targets-original_targets)
  dir32=sum(x['type']=='DIR32' for x in relocations)
  print(f'PASS source compile and opcode coverage: {len(cases)} case labels')
+ print(f'PASS lexical lifetime stack frame: 0x{candidate_frame:x}')
  print(f'PASS all {len(calls)} candidate E8 targets exactly match the original 505-call target multiset')
  print(f'NONEXACT contribution: {len(body)}B = {len(code)}B code + {jump_table_size}B {CANDIDATE_JUMP_TABLE_ENTRIES}-entry switch table')
  print(f'Code decode: {len(ins)} instructions, {len(calls)} E8, {dir32} total DIR32 ({len(label_relocs)} local-label relocations)')

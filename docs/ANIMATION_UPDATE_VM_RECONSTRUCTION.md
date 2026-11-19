@@ -72,7 +72,10 @@ negative-index sprite fallbacks. The latter is independently checked as
 `timer_4c8--`; the Angle and two float interpolation-duration writes call their
 real typed members, with the Angle specialization independently verified
 22/22 bytes. Opcode 0x20 now calls the existing exact CRT sqrt adapter
-(35/35 bytes). The four scalar trig opcodes now call the natural cdecl
+(35/35 bytes). A subsequent lexical-lifetime pass moved 65 one-opcode locals
+into their case scopes, removed 12 unused decompiler temporaries, and reduced
+the frame another four bytes to `0x858` without changing any opcode or call
+site. The four scalar trig opcodes now call the natural cdecl
 `scalar_math::{sine,cosine,arcsine,arccosine}` wrappers directly; all four
 35-byte CRT adapters replay exactly, including the newly added asin/acos
 units and their original `_asin`/`_acos` relocations. Opcode 0x24 now calls
@@ -116,13 +119,14 @@ new exact functions. The total contribution is **+1,338 bytes**, comprising
 +694 bytes of code and the 644-byte compiler switch table. The code portion
 has 177 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
-`sub esp, 0x804`; the current candidate now uses `sub esp, 0x85C` after
-removing the obsolete Timer pointer temporaries and numeric call-view paths.
-Absolute-data relocation ownership and the remaining instruction/frame-layout
-differences are unresolved. No exactness credit is claimed from call-target
+`sub esp, 0x804`; the current candidate now uses `sub esp, 0x858` after
+removing obsolete Timer pointer temporaries, numeric call-view paths, unused
+decompiler locals and over-scoped opcode temporaries. Absolute-data relocation
+ownership and the remaining instruction/frame-layout differences are
+unresolved. No exactness credit is claimed from call-target
 parity alone.
 
-The next pass should reconcile the 0x58 stack-frame delta, absolute-data
+The next pass should reconcile the 0x54 stack-frame delta, absolute-data
 references, and ordinary instruction bytes using natural C++ types and
 lifetimes. Do not add padding or assembly to close the size gap.
 
