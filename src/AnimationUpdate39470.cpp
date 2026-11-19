@@ -110,7 +110,6 @@ struct NativeAnimationVmCallView {
     float call_00439850(float);
     void call_00445770(float*);
     void call_00450350(std::int32_t);
-    void call_00454110(float);
 };
 
 #define vm_0041df50(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_0041df50(__VA_ARGS__))
@@ -154,7 +153,6 @@ struct NativeAnimationVmCallView {
 #define vm_00439850(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439850(__VA_ARGS__))
 #define vm_00445770(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00445770(__VA_ARGS__))
 #define vm_00450350(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00450350(__VA_ARGS__))
-#define vm_00454110(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00454110(__VA_ARGS__))
 
 #define vm_004292e0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004292e0(__VA_ARGS__))
 #define vm_00429420(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429420(__VA_ARGS__))
@@ -233,7 +231,6 @@ struct NativeAnimationVmCallView {
 #define FUN_00445770 vm_00445770
 #define FUN_0044ced0 vm_0044ced0
 #define FUN_00450350 vm_00450350
-#define FUN_00454110 vm_00454110
 
 
 // Replace already reconstructed dependencies with their real maintained C++
@@ -435,7 +432,6 @@ std::int32_t Animation::update() {
   void *local_618;
   void *local_614;
   void *local_60c;
-  void *local_608;
   void *local_604;
   void *local_600;
   NativeVmEntryCallback local_5fc;
@@ -1378,14 +1374,13 @@ LAB_0042c528:
       }
       case 4: {
         std::uint32_t local_1dc;
-        local_608 = (void *)((int)this + 0x4c8);
         if ((instruction[3] & 1U) == 0) {
           local_1dc = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_1dc = FUN_00437d00(this,*(std::uint32_t *)(instruction + 4));
         }
-        FUN_00454110(local_608,static_cast<float>(-static_cast<std::int32_t>(local_1dc)));
+        timer_4c8.add_unscaled(static_cast<float>(-static_cast<std::int32_t>(local_1dc)));
         break;
       }
       case 3: {

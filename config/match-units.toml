@@ -29808,3 +29808,14 @@ target_address = 0x00439390
 size = 62
 relocations = [
 ]
+
+# CORE/RECON-1162: exact direct fractional Timer advance used by Animation VM opcode 4.
+[units.timer_add_unscaled_454110]
+source = "src/TimerUnscaledAdvance59.cpp"
+object = "build/core1170-canonical/TimerUnscaledAdvance59.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Timer::add_unscaled"]
+symbol = "?add_unscaled@Timer@th20@@QAEXM@Z"
+target_address = 0x00454110
+size = 59
+relocations = []

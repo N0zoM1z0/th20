@@ -480,11 +480,13 @@ superseded; use the **current ledger and this handoff** for status.
   table; the code portion decodes to 8,417 instruction heads and 505 E8.
   All 505 candidate E8 destinations match the original call-target multiset,
   including postfix Timer increment, child-spawn return ABI, corner projection,
-  the whole-exact +0x18 file lookup and the original 0x0040BC20 array helper.
+  the whole-exact +0x18 file lookup, the original 0x0040BC20 array helper,
+  and the newly exact 59B Timer unscaled-fractional advance at opcode 4.
 - The eight exact color/fade/vector leaves and all eight coordinate-normalizer
   calls are bound through typed owners; the normalizer independently replays
-  95/95 bytes. Opcode scratch values now use real Color3, Vector2, Vector3
-  and Angle objects. Both corner paths use natural Vector3[4] arrays, and
+  95/95 bytes. The 59B Timer unscaled fractional-advance leaf is now
+  59/59 exact and called as `timer_4c8.add_unscaled`. Opcode scratch values
+  now use real Color3, Vector2, Vector3 and Angle objects. Both corner paths use natural Vector3[4] arrays, and
   their compiler-generated 56B array helper is byte-identical to original
   0x0040BC20. This corner-array recovery grew the candidate by 220B from the
   preceding 40,836B checkpoint; it restores real source-level lifetimes,

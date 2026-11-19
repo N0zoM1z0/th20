@@ -50,6 +50,8 @@ struct Timer {
     void set_from_current(const Timer& source);
     void set(float value);
     void add(float delta);
+    // Direct VM fractional advance; intentionally bypasses clock/mode scaling.
+    void add_unscaled(float delta);
     std::int32_t tick();
     bool at_least(std::int32_t value) const;
     bool at_most(std::int32_t value) const;

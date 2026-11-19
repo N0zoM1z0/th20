@@ -61,8 +61,9 @@ original PE body has 55 physical HIGHLOW fields.
 
 The source now uses the original exact typed owners for the +0x18 file lookup,
 all seven color/fade/vector-configuration operations, the eight screen-
-coordinate normalizer calls, and the Session-to-EffectInfo lookup plus
-`EffectInfo::spawn_effect` at opcode 0x7A. Opcode temporaries use natural `Color3`,
+coordinate normalizer calls, the Session-to-EffectInfo lookup plus
+`EffectInfo::spawn_effect` at opcode 0x7A, and the exact 59-byte
+`Timer::add_unscaled` leaf used by opcode 4. Opcode temporaries use natural `Color3`,
 `Vector3`, `Vector2`, and `Angle` objects. Both four-corner paths now use
 `Vector3 corners[4]`; the MSVC-generated 56-byte array-construction helper is
 byte-identical to original `0x0040BC20`, and the normalizer leaf replays exact
