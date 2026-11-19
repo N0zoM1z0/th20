@@ -29637,13 +29637,13 @@ relocations = [
   { offset = 0x25, type = "DIR32", symbol = "?native_spawn_height_480@th20@@3MB", target = 0x0056CDA8 },
 ]
 
-# CORE/RECON-1155; docs/ANIMATION_FILE_SPRITE_APPLY716_STRICT_EXACT.md; whole original SpriteData-to-Animation application.
-[units.animation_file_sprite_apply_716]
+# CORE/RECON-1155 — complete original 716B AnimationFile sprite application.
+[units.animation_file_apply_sprite]
 source = "src/AnimationFileSpriteApply.cpp"
-object = "build/core141-canonical/AnimationFileSpriteApply716.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
-functions = ["th20::NativeAnimationFileSpriteApplyView::apply_sprite"]
-symbol = "?apply_sprite@NativeAnimationFileSpriteApplyView@th20@@QAEHPAVAnimation@2@H@Z"
+object = "build/core1155-canonical/AnimationFileSpriteApply.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationFile::apply_sprite"]
+symbol = "?apply_sprite@AnimationFile@th20@@QAEHPAVAnimation@2@H@Z"
 target_address = 0x00438620
 size = 716
 relocations = [

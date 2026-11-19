@@ -940,4 +940,4 @@ address,name,module,confidence,evidence
 0x00439640,th20::Interpolation<Vector2>::begin,Interpolation,medium,"CORE/RECON-1152; docs/ANIMATION_VECTOR2_INTERPOLATION_NATIVE_SOURCE_FRONTIER.md; exact source instance, original authorship/compiler origin pending"
 0x00438EB0,th20::normalize_coordinates_438eb0,Animation,high,CORE/RECON-1153; docs/ANIMATION_VECTOR2_COORDINATE_NORMALIZE95_STRICT_EXACT.md; whole native 95B screen-coordinate normalizer
 0x00445770,th20::NativeAnimationCornerProjectionDispatchView::project_corners,Animation,high,CORE/RECON-1154; docs/ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md; native call graph and source-mode semantics recovered; compiler body NONEXACT
-0x00438620,th20::NativeAnimationFileSpriteApplyView::apply_sprite,AnimationFile,high,CORE/RECON-1155; docs/ANIMATION_FILE_SPRITE_APPLY716_STRICT_EXACT.md; 716B whole strict exact SpriteData-to-Animation operation
+0x00438620,th20::AnimationFile::apply_sprite,AnimationFile,high,CORE/RECON-1155; docs/ANIMATION_FILE_SPRITE_APPLY716_STRICT_EXACT.md; 716B whole strict exact SpriteData-to-Animation operation

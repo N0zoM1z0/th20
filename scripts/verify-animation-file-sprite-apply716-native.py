@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Whole-native proof for the 716B AnimationFile SpriteData application method."""
+"""Whole-original and canonical candidate proof for AnimationFile::apply_sprite."""
 from __future__ import annotations
 import hashlib
 import importlib.util
@@ -22,16 +22,18 @@ cf=load('sprite_apply_coff','scripts/compare-coff-function.py')
 HEAD=0x00438620
 SIZE=716
 SHA256='588b789deec72290b8fd75c577751531b00f231ad30f890a8d8c032ca69bf860'
-SYMBOL='?apply_sprite@NativeAnimationFileSpriteApplyView@th20@@QAEHPAVAnimation@2@H@Z'
-SPRITE='?sprite@AnimationFile@th20@@QAEPAUSpriteData@2@H@Z'
-IDENTITY='?identity_matrix@th20@@3UMatrix4@1@B'
-SCALE256='?native_256@th20@@3MB'
+SYMBOL='?apply_sprite@AnimationFile@th20@@QAEHPAVAnimation@2@H@Z'
+SPRITE_SYMBOL='?sprite@AnimationFile@th20@@QAEPAUSpriteData@2@H@Z'
+IDENTITY_SYMBOL='?identity_matrix@th20@@3UMatrix4@1@B'
+NATIVE_256_SYMBOL='?native_256@th20@@3MB'
+EXPECTED_CALLS=((0x2C,0x00437C80),)
+EXPECTED_HIGHLOW=(0x17E,0x193,0x1A5,0x1D4)
 EXPECTED_RELOCS=(
-    (0x2D,'REL32',SPRITE,0x00437C80),
-    (0x17E,'DIR32',IDENTITY,0x0056E068),
-    (0x193,'DIR32',IDENTITY,0x0056E068),
-    (0x1A5,'DIR32',SCALE256,0x0056CDA0),
-    (0x1D4,'DIR32',SCALE256,0x0056CDA0),
+    (0x02D,'REL32',SPRITE_SYMBOL,0x00437C80),
+    (0x17E,'DIR32',IDENTITY_SYMBOL,0x0056E068),
+    (0x193,'DIR32',IDENTITY_SYMBOL,0x0056E068),
+    (0x1A5,'DIR32',NATIVE_256_SYMBOL,0x0056CDA0),
+    (0x1D4,'DIR32',NATIVE_256_SYMBOL,0x0056CDA0),
 )
 
 def verify_original():
@@ -49,39 +51,40 @@ def verify_original():
         if item.size==5 and item.bytes[0]==0xE8:
             target=(item.address+5+struct.unpack_from('<i',item.bytes,1)[0])&0xffffffff
             calls.append((item.address-HEAD,target))
-    assert calls==[(0x2C,0x00437C80)],calls
+    assert tuple(calls)==EXPECTED_CALLS,calls
     highlow=tuple(sorted(address-HEAD for address in pe.physical_highlow(image,base,sections)
                          if HEAD<=address<HEAD+SIZE))
-    assert highlow==(0x17E,0x193,0x1A5,0x1D4),highlow
-    scale=pe.raw_at(image,base,sections,0x0056CDA0,4)
-    assert struct.unpack('<f',scale)[0]==256.0
-    identity=struct.unpack('<16f',pe.raw_at(image,base,sections,0x0056E068,64))
-    assert identity==(1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,
-                      0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0),identity
+    assert highlow==EXPECTED_HIGHLOW,highlow
     return body
 
 def verify_candidate(path:Path):
-    result=cf.compare(path,SYMBOL,HEAD,SIZE)
-    assert result['result']=='structural-exact',result
-    assert result['size']==SIZE
-    assert result['comparable_bytes']==696
-    assert result['matched_comparable_bytes']==696
-    actual=tuple((int(item['offset'],16),item['type'],item['symbol'],
-                  int(item['solved_destination'],16)) for item in result['relocations'])
-    assert actual==EXPECTED_RELOCS,actual
-    return result
+    body,relocations=cf.object_function(path,SYMBOL,SIZE)
+    assert len(body)==SIZE,len(body)
+    actual=tuple(sorted((int(item['offset']),item['type'],str(item['symbol']))
+                        for item in relocations))
+    expected=tuple(sorted((offset,kind,symbol) for offset,kind,symbol,_ in EXPECTED_RELOCS))
+    assert actual==expected,actual
+    report=cf.compare(path,SYMBOL,HEAD,SIZE)
+    assert report['result']=='structural-exact',report
+    assert report['size']==SIZE and report['comparable_bytes']==696
+    assert report['matched_comparable_bytes']==696 and report['relocation_field_bytes']==20
+    assert not report['first_differences'],report['first_differences']
+    solved=tuple(sorted((int(item['offset'],16),item['type'],item['symbol'],
+                         int(item['solved_destination'],16)) for item in report['relocations']))
+    assert solved==tuple(sorted(EXPECTED_RELOCS)),solved
+    return report
 
 def main():
     verify_original()
-    print('PASS original whole 716B/179-i386 AnimationFile sprite application: SHA, RET 8, one SpriteData accessor E8, four physical HIGHLOW fields')
-    print('PASS original identity_matrix at 0x0056E068 and native_256=256.0 at 0x0056CDA0')
+    print('PASS original whole 716B/179-i386 AnimationFile::apply_sprite SHA, RET 8, E8 +0x2C -> 0x00437C80 and four physical HIGHLOW fields')
     if len(sys.argv)==3 and sys.argv[1]=='--candidate-object':
-        result=verify_candidate(Path(sys.argv[2]))
-        print('PASS candidate 716B: 696/696 ordinary bytes and all five relocation roles/targets exact')
+        report=verify_candidate(Path(sys.argv[2]))
+        print('PASS candidate whole 716/716: 696 ordinary bytes + 20 relocation bytes; all five original relocation destinations exact')
+        print('PASS strict structural comparison: zero ordinary-byte differences; one native SpriteData accessor and four original data references')
     elif len(sys.argv)>1:
         raise SystemExit('usage: verify-animation-file-sprite-apply716-native.py [--candidate-object OBJECT]')
     else:
-        print('ORIGINAL ONLY: pass --candidate-object build/...obj for candidate verification')
+        print('ORIGINAL ONLY: pass --candidate-object build/.../AnimationFileSpriteApply.obj for candidate verification')
 
 if __name__=='__main__':
     main()

@@ -53,6 +53,8 @@ public:
     std::uint32_t texture_id(std::uint32_t index);
     void store_sprite(std::int32_t index,const SpriteData& source);
     SpriteData* sprite(std::int32_t index);
+    // Apply a file-owned SpriteData record to the native Animation state.
+    std::int32_t apply_sprite(Animation* animation,std::int32_t sprite_index);
     void apply_template(Animation* animation, std::int32_t script);
     AnimationFile();
     ~AnimationFile();
@@ -88,6 +90,8 @@ static_assert(sizeof(TextureRecord)==0x18);
 static_assert(offsetof(TextureRecord,header)==0x10);
 static_assert(offsetof(TextureRecord,flags)==0x14);
 static_assert(sizeof(AnimationFile)==0x70);
+static_assert(offsetof(AnimationFile,bytes)==0x3c);
+static_assert(offsetof(AnimationFile,sprites)==0x50);
 static_assert(offsetof(AnimationFile,stage)==0x5c);
 #endif
 }

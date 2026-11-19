@@ -3,16 +3,12 @@
 
 namespace th20 {
 
-// Zero-storage derived ABI view over the original AnimationFile receiver.
-// The inherited base remains at offset zero; no file object or layout changes.
-struct NativeAnimationFileSpriteApplyView : AnimationFile {
-    std::int32_t apply_sprite(Animation* animation,std::int32_t sprite_index);
-};
 extern const float native_256;
-static_assert(sizeof(NativeAnimationFileSpriteApplyView)==sizeof(AnimationFile));
 
-std::int32_t NativeAnimationFileSpriteApplyView::apply_sprite(
-    Animation* animation,std::int32_t sprite_index) {
+// Native AnimationFile+0x3C is the loaded byte-buffer sentinel. A loaded
+// file's SpriteData record is copied into the Animation's four UV corners,
+// extents, scale matrices and integer source rectangle.
+std::int32_t AnimationFile::apply_sprite(Animation* animation,std::int32_t sprite_index) {
     if(bytes==nullptr) return -1;
     animation->base.field_20=sprite_index;
     SpriteData* const sprite=this->sprite(sprite_index);

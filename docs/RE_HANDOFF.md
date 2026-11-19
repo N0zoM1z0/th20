@@ -389,16 +389,21 @@ superseded; use the **current ledger and this handoff** for status.
   at `+0x398/+0x39C`. The VM parent remains open. See
   `docs/ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md`.
 
-## 2026-11-19 — 716B AnimationFile SpriteData application is whole-native exact
+## 2026-11-19 — 716B AnimationFile::apply_sprite whole-native exact
 
-- Added `src/AnimationFileSpriteApply.cpp` as a zero-storage derived ABI view
-  over the existing `AnimationFile`; the shared `AnimationFile.hpp` layout was
-  not changed, so unrelated compiler receipts remain valid.
-- Recovered the exact four-corner UV ordering, width/height, `native_256` and
-  identity-matrix scaling, copied transform matrix, and integer sprite bounds.
-- The complete 716B/179-i386 function at `0x00438620` now has 696/696 ordinary
-  bytes exact and all five original relocation roles exact, including the call
-  to `AnimationFile::sprite` at `0x00437C80`.
-- Strict unit: `animation_file_sprite_apply_716`; focused verifier:
-  `scripts/verify-animation-file-sprite-apply716-native.py`. The enclosing
-  39,470B Animation VM remains NONEXACT and receives no parent-byte credit.
+- Replaced the temporary zero-data derived ABI view with the actual
+  `AnimationFile::apply_sprite` member declaration and implementation in
+  `src/AnimationFile.hpp` / `src/AnimationFileSpriteApply.cpp`; no storage or
+  object layout was added. The x86 owner asserts `bytes+0x3C` and
+  `sprites+0x50`.
+- Recovered the exact four-corner UV order, UV width/height, source extents,
+  both identity-based scale matrices, copied transform matrix, and signed
+  integer source rectangle.
+- The complete original `0x00438620` body is 716B/179 i386 instructions.
+  Canonical member source emits 716/716 exact: 696 ordinary bytes and all
+  20 relocation bytes; the original SpriteData accessor E8 and four HIGHLOW
+  destinations are independently pinned. The only unit is
+  `animation_file_apply_sprite`; the obsolete derived-view unit was removed.
+- Original VM `0x0042B5D0`, wrapper `0x0044BD50`, and setup/apply path
+  `0x004708E0` are direct consumers. The 39,470B VM parent remains NONEXACT.
+- See `docs/ANIMATION_FILE_SPRITE_APPLY716_STRICT_EXACT.md`.
