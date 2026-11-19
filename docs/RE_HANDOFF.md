@@ -481,7 +481,9 @@ superseded; use the **current ledger and this handoff** for status.
   All 505 candidate E8 destinations match the original call-target multiset,
   including postfix Timer increment, child-spawn return ABI, corner projection,
   the whole-exact +0x18 file lookup, the original 0x0040BC20 array helper,
-  and the newly exact 59B Timer unscaled-fractional advance at opcode 4.
+  the newly exact 59B Timer unscaled-fractional advance at opcode 4, and the
+  existing whole-exact 20B CardRenderer current-file getter at all three
+  negative-index fallback paths (20/20 bytes, zero relocations).
 - The eight exact color/fade/vector leaves and all eight coordinate-normalizer
   calls are bound through typed owners; the normalizer independently replays
   95/95 bytes. The 59B Timer unscaled fractional-advance leaf is now

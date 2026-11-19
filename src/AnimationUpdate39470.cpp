@@ -15,6 +15,7 @@
 #include "AnimationCornerProjectionOwner.hpp"
 #include "AnimationHandle.hpp"
 #include "NativeAnimationLegacyFileView.hpp"
+#include "NativeCardRendererFileView.hpp"
 #include "Motion.hpp"
 #include "Interpolation.hpp"
 #include "ClockScalar.hpp"
@@ -43,7 +44,6 @@ extern float DAT_0056e058[3];
 extern std::uint32_t DAT_005aefe4;
 extern std::uint32_t DAT_005ba4c4;
 extern void* DAT_005ba828;
-extern void* DAT_005c0698;
 extern float DAT_005c5540[3];
 }
 
@@ -62,7 +62,6 @@ struct NativeAnimationVmCallView {
     void call_00435c80();
     float call_004374b0();
     float call_00437930();
-    void* call_00437950();
     void call_004395b0();
     void call_004396a0();
     std::uintptr_t call_0044ced0();
@@ -164,7 +163,6 @@ struct NativeAnimationVmCallView {
 #define vm_00437470(self, ...) (reinterpret_cast<NativeAnimationLegacyFileView*>(self)->previous_file_437470(__VA_ARGS__))
 #define vm_004374b0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004374b0(__VA_ARGS__))
 #define vm_00437930(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437930(__VA_ARGS__))
-#define vm_00437950(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437950(__VA_ARGS__))
 #define vm_004395b0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004395b0(__VA_ARGS__))
 #define vm_004396a0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004396a0(__VA_ARGS__))
 #define vm_0044ced0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_0044ced0(__VA_ARGS__))
@@ -196,7 +194,6 @@ struct NativeAnimationVmCallView {
 #define FUN_004374b0 vm_004374b0
 #define FUN_00437840 vm_00437840
 #define FUN_00437930 vm_00437930
-#define FUN_00437950 vm_00437950
 #define FUN_00437d00 vm_00437d00
 #define FUN_00437eb0 vm_00437eb0
 #define FUN_00438600 vm_00438600
@@ -841,8 +838,7 @@ LAB_0042c528:
           local_d8 = (*local_5e4)(reinterpret_cast<Animation*>(this),local_d8);
         }
         if ((int)local_d8 < 0) {
-          local_5e8 = (void *)FUN_00437950(DAT_005c0698);
-          FUN_00438620(local_5e8,(int)this,0x120);
+          FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
         }
         else {
           local_5ec = (void *)FUN_00437470((int)this);
@@ -878,8 +874,7 @@ LAB_0042c528:
           local_e8 = (*local_5f0)(reinterpret_cast<Animation*>(this),local_130);
         }
         if ((int)local_e8 < 0) {
-          local_5f4 = (void *)FUN_00437950(DAT_005c0698);
-          FUN_00438620(local_5f4,(int)this,0x120);
+          FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
         }
         else {
           local_5f8 = (void *)FUN_00437470((int)this);
@@ -931,8 +926,7 @@ LAB_0042c528:
           local_ec = (*local_6e4)(reinterpret_cast<Animation*>(this),uVar3 % local_138 + local_13c);
         }
         if (local_ec < 0) {
-          local_600 = (void *)FUN_00437950(DAT_005c0698);
-          FUN_00438620(local_600,(int)this,0x120);
+          FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
         }
         else {
           local_604 = (void *)FUN_00437470((int)this);
