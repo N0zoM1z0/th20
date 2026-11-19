@@ -1637,7 +1637,7 @@ LAB_0042df8e:
       }
       case 0x5a: {
         Vector3 corners[4];
-        reinterpret_cast<NativeAnimationCornerProjectionDispatchView*>(this)->project_corners(reinterpret_cast<Vector3*>(corners));
+        this->project_corners(corners);
         normalize_coordinates_438eb0(&base.vectors_378[0],reinterpret_cast<const Vector2*>(&corners[0]));
         normalize_coordinates_438eb0(&base.vectors_378[1],reinterpret_cast<const Vector2*>(&corners[1]));
         normalize_coordinates_438eb0(&base.vectors_378[2],reinterpret_cast<const Vector2*>(&corners[2]));
@@ -3217,7 +3217,7 @@ LAB_00434dce:
   }
   if ((base.flags.word_04 >> 0xb & 1) != 0) {
     Vector3 corners[4];
-    reinterpret_cast<NativeAnimationCornerProjectionDispatchView*>(this)->project_corners(reinterpret_cast<Vector3*>(corners));
+    this->project_corners(corners);
     normalize_coordinates_438eb0(&base.vectors_378[0],reinterpret_cast<const Vector2*>(&corners[0]));
     normalize_coordinates_438eb0(&base.vectors_378[1],reinterpret_cast<const Vector2*>(&corners[1]));
     normalize_coordinates_438eb0(&base.vectors_378[2],reinterpret_cast<const Vector2*>(&corners[2]));

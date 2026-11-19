@@ -9,20 +9,20 @@ namespace th20 {
 static_assert(offsetof(AnimationBase, flags)==0x498);
 static_assert(sizeof(Vector3)==12);
 
-void NativeAnimationCornerProjectionDispatchView::project_corners(Vector3* corners) {
-    switch (reinterpret_cast<Animation*>(this)->base.flags.bytes_00.animation_mode) {
+void Animation::project_corners(Vector3* corners) {
+    switch (base.flags.bytes_00.animation_mode) {
     case 0:
         reinterpret_cast<NativeAnimationCornerProjector*>(current_animation_pool)->project_corners_43eb40(
-            reinterpret_cast<Animation*>(this),corners,corners+1,corners+2,corners+3);
+            this,corners,corners+1,corners+2,corners+3);
         break;
     case 1:
         reinterpret_cast<NativeAnimationCornerProjector*>(current_animation_pool)->project_rotated_corners_43ef20(
-            reinterpret_cast<Animation*>(this),corners,corners+1,corners+2,corners+3);
+            this,corners,corners+1,corners+2,corners+3);
         break;
     case 2:
     case 3:
         reinterpret_cast<NativeAnimationCornerProjector*>(current_animation_pool)->project_corners_43eb40(
-            reinterpret_cast<Animation*>(this),corners,corners+1,corners+2,corners+3);
+            this,corners,corners+1,corners+2,corners+3);
         break;
     }
 }

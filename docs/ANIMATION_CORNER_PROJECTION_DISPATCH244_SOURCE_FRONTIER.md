@@ -44,8 +44,13 @@ is also called by `0x00504480`.
 
 The 95B coordinate normalizer is whole-native exact; the two projection
 leaves at `0x0043EB40` and `0x0043EF20` are independently whole-native
-exact. This dispatch wrapper now has natural C++ source in
-`src/AnimationCornerProjectionDispatch244.cpp` and a reproducible scoped
+exact. The maintained source now expresses the dispatcher as the real
+`Animation::project_corners(Vector3*)` member, declared on `Animation` without
+adding storage or changing object layout. Both VM paths call it directly as
+`this->project_corners(corners)`; the temporary ABI-compatible receiver-view
+struct has been removed. This keeps the native Animation receiver explicit
+in the natural class that owns the mode byte. The source remains in
+`src/AnimationCornerProjectionDispatch244.cpp`, with a reproducible scoped
 probe in `scripts/probe-animation-corner-projection-dispatch244.py`.
 
 ## Exactness boundary
@@ -59,6 +64,12 @@ four-way switch and `ret 4`, but its call sites are displaced. It is therefore
 **SOURCE-PRESENT, NONEXACT**. No strict match unit, `matches.csv` entry or
 original authored-byte credit is added. The 68B executable-codegen gap is
 explicitly open; no ASM, padding, fake calls or synthetic data are used.
+The member-owner refactor retains the same 192B/176B+16B compiler
+contribution, three projector call roles and three `current_animation_pool`
+references. Its focused dispatcher probe passes; the enclosing VM probe also
+retains 161 opcode cases and all 505 original call-target multiplicities. The
+changed `Animation.cpp` owner/header closure was strict-replayed 38/38 units
+in one cold object; no full-project cold replay was run.
 
 The enclosing **39,470B** Animation VM remains source-absent/NONEXACT.
 This dispatch child and its exact projector/normalizer descendants do not

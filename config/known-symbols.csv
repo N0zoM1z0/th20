@@ -939,7 +939,7 @@ address,name,module,confidence,evidence
 0x00438AC0,th20::Interpolation<Vector2>::set_end,Interpolation,medium,"CORE/RECON-1152; docs/ANIMATION_VECTOR2_INTERPOLATION_NATIVE_SOURCE_FRONTIER.md; exact source instance, original authorship/compiler origin pending"
 0x00439640,th20::Interpolation<Vector2>::begin,Interpolation,medium,"CORE/RECON-1152; docs/ANIMATION_VECTOR2_INTERPOLATION_NATIVE_SOURCE_FRONTIER.md; exact source instance, original authorship/compiler origin pending"
 0x00438EB0,th20::normalize_coordinates_438eb0,Animation,high,CORE/RECON-1153; docs/ANIMATION_VECTOR2_COORDINATE_NORMALIZE95_STRICT_EXACT.md; whole native 95B screen-coordinate normalizer
-0x00445770,th20::NativeAnimationCornerProjectionDispatchView::project_corners,Animation,high,CORE/RECON-1154; docs/ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md; native call graph and source-mode semantics recovered; compiler body NONEXACT
+0x00445770,th20::Animation::project_corners,Animation,high,CORE/RECON-1154; docs/ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md; native call graph and source-mode semantics recovered; compiler body NONEXACT
 0x00438620,th20::AnimationFile::apply_sprite,AnimationFile,high,CORE/RECON-1155; docs/ANIMATION_FILE_SPRITE_APPLY716_STRICT_EXACT.md; 716B whole strict exact SpriteData-to-Animation operation
 0x00451050,th20::AnimationFile::spawn_child,AnimationFile,high,CORE/RECON-1156; docs/ANIMATION_FILE_SPAWN_CHILD604_STRICT_EXACT.md; VM opcodes 0x72-0x75/0x77/0x7C; complete 604B exact
 0x004512B0,th20::AnimationFile::spawn_child_and_update,AnimationFile,high,CORE/RECON-1158; docs/ANIMATION_FILE_SPAWN_CHILD_UPDATE619_STRICT_EXACT.md; original VM opcodes 0x76/0x78; complete 619B exact

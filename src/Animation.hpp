@@ -211,6 +211,8 @@ public:
     float scale_x_value();
     float scale_y_value();
     void update_geometry();
+    // Native 0x445770 Animation corner-mode projection dispatch.
+    void project_corners(Vector3* corners);
     void update_motion();
     void update_interpolations();
     float slowdown();
