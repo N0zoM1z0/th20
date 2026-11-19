@@ -66,7 +66,13 @@ coordinate normalizer calls, the Session-to-EffectInfo lookup plus
 `Timer::add_unscaled` leaf used by opcode 4, and the existing exact
 `NativeCardRendererFileView::current_file_437950` getter used by all three
 negative-index sprite fallbacks. The latter is independently checked as
-20/20 bytes with no relocations. Opcode temporaries use natural `Color3`,
+20/20 bytes with no relocations. Both Timer postfix-decrement sites now call
+`timer_4c8--`; the Angle and two float interpolation-duration writes call their
+real typed members, with the Angle specialization independently verified
+22/22 bytes. Opcode 0x20 now calls the existing exact CRT sqrt adapter
+(35/35 bytes). This latest direct-member pass removes 136 bytes and 17
+instruction heads from the preceding 41,048-byte checkpoint, and reduces the
+stack frame from `0x874` to `0x85c`. Opcode temporaries use natural `Color3`,
 `Vector3`, `Vector2`, and `Angle` objects. Both four-corner paths now use
 `Vector3 corners[4]`; the MSVC-generated 56-byte array-construction helper is
 byte-identical to original `0x0040BC20`, and the normalizer leaf replays exact

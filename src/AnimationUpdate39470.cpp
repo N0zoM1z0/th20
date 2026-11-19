@@ -1369,7 +1369,7 @@ LAB_0042c528:
 switchD_0042b8cc_caseD_2:
         if (*(int *)((int)this + 0x438) == 0) {
           *(std::uint8_t *)((int)this + 0x4a1) = *(std::uint8_t *)((int)this + 0x4a1) | 1;
-timer_4c8--;
+          timer_4c8--;
           goto LAB_00434dce;
         }
 LAB_0042de0b:
@@ -3883,7 +3883,7 @@ LAB_00434dad:
   }
   goto LAB_00434fb5;
 code_r0x0042df46:
-timer_4c8--;
+  timer_4c8--;
 LAB_00434dce:
   if ((*(std::uint32_t *)((int)this + 0x49c) >> 0x13 & 1) != 0) {
     FUN_00435520((int)this);
