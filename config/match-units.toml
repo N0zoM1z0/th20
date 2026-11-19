@@ -29469,3 +29469,42 @@ relocations = [
   { offset = 0x41, type = "REL32", symbol = "?begin@?$Interpolation@H@th20@@QAEXHHABH0@Z", target = 0x00439550 },
   { offset = 0x4C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1149: native Animation+0x220 Vector2 interpolator forwarding.
+[units.animation_vector2_438db0]
+source = "src/AnimationVector2ConfigLeaves153.cpp"
+object = "build/core1149-canonical/AnimationVector2ConfigLeaves153.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationVector2ConfigView::interpolate_secondary_scale_438db0"]
+symbol = "?interpolate_secondary_scale_438db0@NativeAnimationVector2ConfigView@th20@@QAEXHHABUVector2@2@0@Z"
+target_address = 0x00438DB0
+size = 51
+relocations = [
+  { offset = 0x28, type = "REL32", symbol = "?begin@?$Interpolation@UVector2@th20@@@th20@@QAEXHHABUVector2@2@0@Z", target = 0x00439640 },
+]
+
+# CORE/RECON-1149: native Animation+0x1e0 Vector2 interpolator forwarding.
+[units.animation_vector2_438df0]
+source = "src/AnimationVector2ConfigLeaves153.cpp"
+object = "build/core1149-canonical/AnimationVector2ConfigLeaves153.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationVector2ConfigView::interpolate_primary_scale_438df0"]
+symbol = "?interpolate_primary_scale_438df0@NativeAnimationVector2ConfigView@th20@@QAEXHHABUVector2@2@0@Z"
+target_address = 0x00438DF0
+size = 51
+relocations = [
+  { offset = 0x28, type = "REL32", symbol = "?begin@?$Interpolation@UVector2@th20@@@th20@@QAEXHHABUVector2@2@0@Z", target = 0x00439640 },
+]
+
+# CORE/RECON-1149: native Animation+0x260 Vector2 interpolator forwarding.
+[units.animation_vector2_438e30]
+source = "src/AnimationVector2ConfigLeaves153.cpp"
+object = "build/core1149-canonical/AnimationVector2ConfigLeaves153.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationVector2ConfigView::interpolate_uv_scale_438e30"]
+symbol = "?interpolate_uv_scale_438e30@NativeAnimationVector2ConfigView@th20@@QAEXHHABUVector2@2@0@Z"
+target_address = 0x00438E30
+size = 51
+relocations = [
+  { offset = 0x28, type = "REL32", symbol = "?begin@?$Interpolation@UVector2@th20@@@th20@@QAEXHHABUVector2@2@0@Z", target = 0x00439640 },
+]

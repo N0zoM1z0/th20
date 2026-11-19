@@ -1646,3 +1646,6 @@ th20::NativeAnimationResetHooks::restart_state_41db80,0x0041DB80,function
 th20::NativeAnimationResetHooks::restart_state_41dba0,0x0041DBA0,function
 th20::NativeAnimationResetHooks::restart_state_41dbc0,0x0041DBC0,function
 th20::NativeAnimationFadeConfig86::interpolate_channel_438c60,0x00438C60,function
+th20::NativeAnimationVector2ConfigView::interpolate_secondary_scale_438db0,0x00438DB0,function
+th20::NativeAnimationVector2ConfigView::interpolate_primary_scale_438df0,0x00438DF0,function
+th20::NativeAnimationVector2ConfigView::interpolate_uv_scale_438e30,0x00438E30,function

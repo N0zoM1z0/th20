@@ -927,3 +927,6 @@ address,name,module,confidence,evidence
 0x0041DBA0,th20::NativeAnimationResetHooks::restart_state_41dba0,Animation,high,CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md
 0x0041DBC0,th20::NativeAnimationResetHooks::restart_state_41dbc0,Animation,high,CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md
 0x00438C60,th20::NativeAnimationFadeConfig86::interpolate_channel_438c60,Animation,high,CORE/RECON-1148; docs/ANIMATION_FADE_CONFIG86_STRICT_EXACT.md
+0x00438DB0,th20::NativeAnimationVector2ConfigView::interpolate_secondary_scale_438db0,Animation,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md
+0x00438DF0,th20::NativeAnimationVector2ConfigView::interpolate_primary_scale_438df0,Animation,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md
+0x00438E30,th20::NativeAnimationVector2ConfigView::interpolate_uv_scale_438e30,Animation,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md
