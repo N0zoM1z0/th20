@@ -1,4 +1,6 @@
 #include "Animation.hpp"
+#include "ParticleEffectInfoLookup26.hpp"
+#include "ItemResourceOwners.hpp"
 #include "Vector2.hpp"
 #include "AnimationVector2CoordinateNormalize95.hpp"
 #include "NativeAnimationVector2ConfigView.hpp"
@@ -31,10 +33,8 @@ std::uint32_t __fastcall vm_0040ff90(std::uintptr_t);
 void __fastcall vm_00423540(void*);
 std::uint32_t __fastcall vm_00423ee0(std::uintptr_t);
 std::uint32_t __fastcall vm_00424060(void*);
-void __cdecl vm_00437520(std::int32_t);
 float __cdecl vm_00438600(float,float);
 float __cdecl vm_004397f0(float,float);
-std::uint32_t* __stdcall vm_0049db70(std::uint32_t*,std::uint32_t,void*,std::int32_t);
 
 extern std::uint8_t DAT_00435285;
 extern float DAT_0056c8cc,DAT_0056c8d0,DAT_0056c8e0,DAT_0056e0e8,DAT_0056e0f0,DAT_0056e0f4;
@@ -196,7 +196,6 @@ struct NativeAnimationVmCallView {
 #define FUN_00437470 vm_00437470
 #define FUN_00437490 vm_00437490
 #define FUN_004374b0 vm_004374b0
-#define FUN_00437520 vm_00437520
 #define FUN_00437840 vm_00437840
 #define FUN_00437930 vm_00437930
 #define FUN_00437950 vm_00437950
@@ -235,7 +234,6 @@ struct NativeAnimationVmCallView {
 #define FUN_0044ced0 vm_0044ced0
 #define FUN_00450350 vm_00450350
 #define FUN_00454110 vm_00454110
-#define FUN_0049db70 vm_0049db70
 
 
 // Replace already reconstructed dependencies with their real maintained C++
@@ -446,7 +444,6 @@ std::int32_t Animation::update() {
   void *local_5ec;
   void *local_5e8;
   std::uint32_t local_5c8;
-  void *local_5c4;
   void *local_5bc;
   float local_5b8;
   void *local_5b0;
@@ -758,17 +755,18 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x7a: {
-        std::uint32_t local_7b8;
         std::uint32_t local_11c;
-        FUN_00437520(0);
-        local_5c4 = this;
+        EffectInfo* const effect_info=particle_effect_info_for_session_437520(0);
         if ((instruction[3] & 1U) == 0) {
           local_11c = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_11c = FUN_00437d00(this,*(std::uint32_t *)(instruction + 4));
         }
-        FUN_0049db70(&local_7b8,local_11c,local_5c4,(int)this);
+        // The original VM forwards its Animation receiver as both the
+        // opaque effect-parameter payload and the existing-animation owner.
+        AnimationHandle local_7b8=effect_info->spawn_effect(
+            local_11c,*reinterpret_cast<const EffectParameters*>(this),this);
         break;
       }
       case 0x47: {

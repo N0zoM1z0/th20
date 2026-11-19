@@ -52,7 +52,7 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate COFF contribution is **41,056 bytes**: **40,412 bytes
+The current candidate COFF contribution is **41,048 bytes**: **40,404 bytes
 of code plus a 644-byte, 161-entry compiler-generated switch table**. The
 code portion decodes to 8,417 instruction heads and 505 E8 calls, compared
 with the original 39,470-byte body / 8,559 instruction heads / 505 E8 calls.
@@ -60,19 +60,23 @@ The candidate has 505 REL32 call relocations and 213 DIR32 relocations; the
 original PE body has 55 physical HIGHLOW fields.
 
 The source now uses the original exact typed owners for the +0x18 file lookup,
-all seven color/fade/vector-configuration operations, and all eight
-screen-coordinate normalizer calls. Opcode temporaries use natural `Color3`,
+all seven color/fade/vector-configuration operations, the eight screen-
+coordinate normalizer calls, and the Session-to-EffectInfo lookup plus
+`EffectInfo::spawn_effect` at opcode 0x7A. Opcode temporaries use natural `Color3`,
 `Vector3`, `Vector2`, and `Angle` objects. Both four-corner paths now use
 `Vector3 corners[4]`; the MSVC-generated 56-byte array-construction helper is
 byte-identical to original `0x0040BC20`, and the normalizer leaf replays exact
-at 95/95 bytes. The candidate grew by 220 bytes relative to the previous
-40,836-byte checkpoint as these corner-array lifetimes and typed normalizer
-calls were restored; this is semantic progress, not a size optimization.
+at 95/95 bytes. The VM's effect opcode now uses the existing exact Session
+lookup and `EffectInfo::spawn_effect` member, preserving its hidden
+`AnimationHandle` return and original receiver/argument ABI. The candidate
+is 212 bytes larger than the previous 40,836-byte checkpoint as these
+corner-array lifetimes and typed owners were restored; this is semantic
+progress, not a size optimization.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The total contribution is **+1,586 bytes**, comprising
-+942 bytes of code and the 644-byte compiler switch table. The code portion
+new exact functions. The total contribution is **+1,578 bytes**, comprising
++934 bytes of code and the 644-byte compiler switch table. The code portion
 has 142 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
 `sub esp, 0x804`; the current candidate still uses `sub esp, 0x874`.
