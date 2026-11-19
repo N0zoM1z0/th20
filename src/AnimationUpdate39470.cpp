@@ -31,7 +31,6 @@ struct NativeAnimationCornerProjectionDispatchView { void project_corners(Vector
 
 extern "C" {
 // Original external helpers are declared with their x86 receiver/stack ABI.
-float __cdecl vm_004397f0(float,float);
 
 extern std::uint8_t DAT_00435285;
 extern float DAT_0056c8cc,DAT_0056c8d0,DAT_0056c8e0,DAT_0056e0e8,DAT_0056e0f0,DAT_0056e0f4;
@@ -46,7 +45,6 @@ extern float DAT_005c5540[3];
 // The remaining original call sites are bound to real C++ owners or to the
 // small set of still-unrecovered external helpers. There is no generic VM
 // numeric-address call view left in this translation unit.
-#define FUN_004397f0 vm_004397f0
 
 // Replace already reconstructed dependencies with their real maintained C++
 // owners. The remaining ABI view is restricted to helpers whose owner/signature
@@ -3095,7 +3093,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_46c = (float)fVar11;
         }
-        fVar11 = FUN_004397f0(local_46c,local_468);
+        fVar11 = scalar_math::arctangent_vm(local_46c,local_468);
         local_720 = (float)fVar11;
         pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *pfVar6 = local_720;
@@ -3231,7 +3229,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_4bc = (float)fVar11;
         }
-        fVar11 = FUN_004397f0(local_4bc,local_4b8);
+        fVar11 = scalar_math::arctangent_vm(local_4bc,local_4b8);
         local_724 = (float)fVar11;
         pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *pfVar6 = local_724;

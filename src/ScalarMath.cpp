@@ -32,4 +32,8 @@ float arctangent(float y, float x) {
     return static_cast<float>(std::atan2(static_cast<double>(y), static_cast<double>(x)));
 }
 
+float arctangent_vm(float y, float x) {
+    return static_cast<float>(std::atan2(static_cast<double>(y), static_cast<double>(x)));
+}
+
 } // namespace th20::scalar_math

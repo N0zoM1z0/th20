@@ -10,5 +10,7 @@ float arcsine(float value);
 float arccosine(float value);
 float square_root(float value);
 float arctangent(float y, float x);
+// Second native VM atan2 adapter linked to the original math dispatcher.
+float arctangent_vm(float y, float x);
 
 } // namespace th20::scalar_math
