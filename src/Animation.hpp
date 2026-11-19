@@ -63,7 +63,11 @@ struct AnimationFlags {
     };
     std::uint8_t layer_mode : 2;
     std::uint8_t other_0b : 6;
-    std::uint8_t field_0c : 8;
+    // The byte selects how animation geometry is scaled against the window.
+    union {
+        std::uint8_t field_0c : 8;
+        std::uint8_t scale_mode : 8;
+    };
     std::uint8_t field_0d, field_0e, field_0f;
     std::uint32_t word_10, word_14, word_18, word_1c;
 };
@@ -221,6 +225,8 @@ struct AnimationPool {
     AnimationPool() noexcept;
     ~AnimationPool() noexcept;
 };
+static_assert(sizeof(AnimationFlags) == 0x20);
+static_assert(offsetof(AnimationFlags, field_0d) == 0x0d);
 static_assert(sizeof(AnimationBase) == 0x4c0);
 static_assert(offsetof(AnimationBase, variables) == 0x444);
 static_assert(offsetof(AnimationBase, flags) == 0x498);

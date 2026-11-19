@@ -75,7 +75,7 @@ void Animation::set_layer(std::int32_t layer) {
     else base.flags.layer_mode = 0;
     if (((base.field_14 >= 20 && base.field_14 <= 36) ||
          (base.field_14 >= 45 && base.field_14 <= 53)) &&
-        !((base.flags.word_04 >> 23) & 1u)) base.flags.field_0c = 1;
+        !((base.flags.word_04 >> 23) & 1u)) base.flags.scale_mode = 1;
 }
 }
 

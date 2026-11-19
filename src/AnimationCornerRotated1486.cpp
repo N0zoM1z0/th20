@@ -30,10 +30,10 @@ void NativeAnimationCornerProjector::project_rotated_corners_43ef20(
         scale_x=animation->parent_55c->base.vector_50.x*animation->parent_55c->base.vector_58.x*scale_x;
         scale_y=animation->parent_55c->base.vector_50.y*animation->parent_55c->base.vector_58.y*scale_y;
     }
-    if (animation->base.flags.field_0c==1 || animation->base.flags.field_0c==5) {
+    if (animation->base.flags.scale_mode==1 || animation->base.flags.scale_mode==5) {
         scale_x=scale_x*window_state.scale;
         scale_y=scale_y*window_state.scale;
-    } else if (animation->base.flags.field_0c==2 || animation->base.flags.field_0c==6) {
+    } else if (animation->base.flags.scale_mode==2 || animation->base.flags.scale_mode==6) {
         scale_x=window_state.scale*native_half*scale_x;
         scale_y=window_state.scale*native_half*scale_y;
     }

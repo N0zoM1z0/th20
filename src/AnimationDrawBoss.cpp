@@ -155,10 +155,10 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         angle += animation->parent_55c->rotation_z_value();
     }
     reinterpret_cast<AnimationQuadSubmitOwner*>(this)->bind_native_texture_state(animation);
-    if (animation->base.flags.field_0c == 1 || animation->base.flags.field_0c == 5) {
+    if (animation->base.flags.scale_mode == 1 || animation->base.flags.scale_mode == 5) {
         width *= window_state.scale;
         height *= window_state.scale;
-    } else if (animation->base.flags.field_0c == 2 || animation->base.flags.field_0c == 6) {
+    } else if (animation->base.flags.scale_mode == 2 || animation->base.flags.scale_mode == 6) {
         width *= window_state.scale * 0.5f;
         height *= window_state.scale * 0.5f;
     }

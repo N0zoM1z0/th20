@@ -51,10 +51,10 @@ std::int32_t AnimationDrawDetailedOwner::draw_simple_mode8(Animation* animation)
         animation->matrix_57c.elements[0][0]*=animation->base.vector_50.x*animation->base.vector_58.x;
         animation->matrix_57c.elements[1][1]*=animation->base.vector_50.y*animation->base.vector_58.y;
         animation->base.flags.word_04 &= ~4u;
-        if (animation->base.flags.field_0c==1 || animation->base.flags.field_0c==5) {
+        if (animation->base.flags.scale_mode==1 || animation->base.flags.scale_mode==5) {
             animation->matrix_57c.elements[0][0]*=window_state.scale;
             animation->matrix_57c.elements[1][1]*=window_state.scale;
-        } else if (animation->base.flags.field_0c==2 || animation->base.flags.field_0c==6) {
+        } else if (animation->base.flags.scale_mode==2 || animation->base.flags.scale_mode==6) {
             animation->matrix_57c.elements[0][0]*=window_state.scale*native_half;
             animation->matrix_57c.elements[1][1]*=window_state.scale*native_half;
         }

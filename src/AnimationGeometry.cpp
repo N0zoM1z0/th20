@@ -13,8 +13,8 @@ Vector3& Animation::position(Vector3& output) {
     return output;
 }
 Vector3& Animation::transform_position(Vector3& value) {
-    if (base.flags.field_0c == 1 || base.flags.field_0c == 3) value *= window_state.scale_value();
-    else if (base.flags.field_0c == 2 || base.flags.field_0c == 4) value *= window_state.scale_value() * 0.5f;
+    if (base.flags.scale_mode == 1 || base.flags.scale_mode == 3) value *= window_state.scale_value();
+    else if (base.flags.scale_mode == 2 || base.flags.scale_mode == 4) value *= window_state.scale_value() * 0.5f;
     if (parent_558 && !((base.flags.word_04 >> 12) & 1u)) {
         if ((base.flags.word_04 >> 5) & 1u) rotate_xy(value, value, parent_558->rotation_z_value());
         if ((base.flags.word_04 >> 22) & 1u) {
@@ -59,8 +59,8 @@ void Animation::update_geometry() {
             first_radius = parent_55c->scale_x_value() * first_radius;
             second_radius = parent_55c->scale_y_value() * second_radius;
         }
-        if (base.flags.field_0c == 1) { first_radius *= window_state.scale; second_radius *= window_state.scale; }
-        else if (base.flags.field_0c == 2) { first_radius = (window_state.scale * 0.5f) * first_radius; second_radius = (window_state.scale * 0.5f) * second_radius; }
+        if (base.flags.scale_mode == 1) { first_radius *= window_state.scale; second_radius *= window_state.scale; }
+        else if (base.flags.scale_mode == 2) { first_radius = (window_state.scale * 0.5f) * first_radius; second_radius = (window_state.scale * 0.5f) * second_radius; }
         for (std::int32_t i=0;i<count-1;++i) {
             vertex->reciprocal_w=1.0f;vertex->color=first_color;
             vertex->u=base.vectors_378[0].x+base.field_78;vertex->v=uv+base.field_7c;
@@ -92,8 +92,8 @@ void Animation::update_geometry() {
             first_radius=parent_55c->scale_x_value()*first_radius;
             second_radius=parent_55c->scale_y_value()*second_radius;
         }
-        if(base.flags.field_0c==1) {first_radius*=window_state.scale;second_radius*=window_state.scale;}
-        else if(base.flags.field_0c==2) {first_radius=(window_state.scale*0.5f)*first_radius;second_radius=(window_state.scale*0.5f)*second_radius;}
+        if(base.flags.scale_mode==1) {first_radius*=window_state.scale;second_radius*=window_state.scale;}
+        else if(base.flags.scale_mode==2) {first_radius=(window_state.scale*0.5f)*first_radius;second_radius=(window_state.scale*0.5f)*second_radius;}
         for(std::int32_t i=0;i<count-1;++i) {
             vertex->color=first_color;vertex->u=base.vectors_378[0].x+base.field_78;vertex->v=uv+base.field_7c;
             polar(vertex->position,angle,first_radius);vertex->position.z=0;vertex->position+=center;++vertex;
@@ -112,8 +112,8 @@ void Animation::update_geometry() {
         std::uint32_t second_color=base.flags.color_mode?base.color_494:base.color_490;
         float radius=base.variables.field_10;
         if(parent_55c && !((base.flags.word_04>>12)&1u)) radius=parent_55c->scale_x_value()*radius;
-        if(base.flags.field_0c==1)radius*=window_state.scale;
-        else if(base.flags.field_0c==2)radius=(window_state.scale*0.5f)*radius;
+        if(base.flags.scale_mode==1)radius*=window_state.scale;
+        else if(base.flags.scale_mode==2)radius=(window_state.scale*0.5f)*radius;
         vertices[0].color=first_color;vertices[1].color=second_color;vertices[2].color=second_color;
         vertices[0].u=(base.vectors_378[1].x-base.vectors_378[0].x)/2.0f+base.vectors_378[0].x+base.field_78;
         vertices[0].v=base.vectors_378[0].y+base.field_7c;
@@ -146,8 +146,8 @@ void Animation::update_geometry() {
             first_radius=parent_55c->scale_x_value()*first_radius;
             second_radius=parent_55c->scale_y_value()*second_radius;
         }
-        if(base.flags.field_0c==1) {first_radius*=window_state.scale;second_radius*=window_state.scale;}
-        else if(base.flags.field_0c==2) {first_radius=(window_state.scale*0.5f)*first_radius;second_radius=(window_state.scale*0.5f)*second_radius;}
+        if(base.flags.scale_mode==1) {first_radius*=window_state.scale;second_radius*=window_state.scale;}
+        else if(base.flags.scale_mode==2) {first_radius=(window_state.scale*0.5f)*first_radius;second_radius=(window_state.scale*0.5f)*second_radius;}
         for(std::int32_t i=0;i<count;++i) {
             vertex->reciprocal_w=1.0f;vertex->color=color;
             vertex->u=base.vectors_378[0].x+base.field_78;vertex->v=uv+base.field_7c;

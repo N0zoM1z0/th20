@@ -273,3 +273,19 @@ superseded; use the **current ledger and this handoff** for status.
   1/1, Classification 2/2, File Detach 1/1, List Update 508 1/1, List Update
   511 1/1). The Draw Boss source/ABI and Particle Grid role audits also pass;
   both large parents remain NONEXACT.
+
+## 2026-11-19 session — Animation scale-mode view
+
+- Resolved `AnimationBase::flags+0x0c` (`Animation+0x4A4`) as a scale-mode
+  byte from the parameter producer and geometry/draw consumers. Modes 1/3
+  select full scale and 2/4 half scale in position transformation; draw and
+  corner paths use 1/5 and 2/6 for the corresponding full/half behavior.
+- Added `scale_mode` as a same-byte, same-width bitfield union alias while
+  retaining `field_0c`; `AnimationFlags` remains 0x20 bytes and the following
+  byte is statically pinned at offset 0x0d. Updated the observed
+  producers/consumers to use the semantic name. See
+  `docs/ANIMATION_SCALE_MODE_4A4_SEMANTICS.md`.
+- Targeted exact replay passed for the 29 affected configured units:
+  Animation Parameters 20/20, Corner Projection 1/1, Geometry 6/6, Draw Mode
+  8 1/1, and Corner Rotated 1/1. Draw Boss source/ABI/native and Particle Grid
+  role audits also pass; their parents remain NONEXACT.
