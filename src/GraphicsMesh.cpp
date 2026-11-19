@@ -8,7 +8,7 @@ AnimationHandle Graphics::create_grid_strip(std::int32_t rows,std::int32_t scrip
     Animation* animation=handle.resolve();
     animation->allocate_geometry(sizeof(SpriteTexturedVertex)*rows*2);
     if (rows>2) {
-        animation->base.flags.bytes_00.field_00=12;
+        animation->base.flags.bytes_00.animation_mode=12;
         animation->base.flags.bits_08.field_4_5=3;
         animation->variables().field_00=rows;
         auto* vertex=animation->mesh_vertices();
@@ -16,7 +16,7 @@ AnimationHandle Graphics::create_grid_strip(std::int32_t rows,std::int32_t scrip
             vertex->position.z=0.0f;vertex->reciprocal_w=1.0f;
             vertex->color=0xffffffffu;++vertex;
         }
-    } else animation->base.flags.bytes_00.field_00=0;
+    } else animation->base.flags.bytes_00.animation_mode=0;
     return handle;
 }
 AnimationHandle Graphics::create_surface_strip(std::int32_t rows,std::int32_t script) {
@@ -24,14 +24,14 @@ AnimationHandle Graphics::create_surface_strip(std::int32_t rows,std::int32_t sc
     Animation* animation=handle.resolve();
     animation->allocate_geometry(sizeof(SpriteTexturedVertex)*rows*2);
     if (rows>2) {
-        animation->base.flags.bytes_00.field_00=12;
+        animation->base.flags.bytes_00.animation_mode=12;
         animation->variables().field_00=rows;
         auto* vertex=animation->mesh_vertices();
         for (std::int32_t i=0;i<rows*2;++i) {
             vertex->position.z=0.0f;vertex->reciprocal_w=1.0f;
             vertex->color=0xffffffffu;++vertex;
         }
-    } else animation->base.flags.bytes_00.field_00=0;
+    } else animation->base.flags.bytes_00.animation_mode=0;
     return handle;
 }
 } // namespace th20

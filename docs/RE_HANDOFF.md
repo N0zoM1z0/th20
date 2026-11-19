@@ -322,3 +322,15 @@ superseded; use the **current ledger and this handoff** for status.
   stayed identical. Only those local names were refreshed in the canonical
   relocation manifest. See
   `docs/ANIMATION_VIEWPORT_PLACEMENT_MODE_4A3_SEMANTICS.md`.
+
+## 2026-11-19 session — Animation mode byte semantics
+
+- Named the low byte of `AnimationFlags::bytes_00` as `animation_mode`; it
+  selects the renderer/geometry dispatch mode (including mode 12 mesh and
+  geometry modes 9/13/14/24/25/47/48). Named the separate high byte
+  `flag_byte_01`, used by the setter, render-mesh strip setup, and quad
+  texture-state cache.
+- Kept the two-byte overlay and 16-bit raw `field_00` alias unchanged. The
+  four RenderMesh compiler-local literal labels were refreshed in the exact
+  relocation manifest; both RenderMesh units still replay exact. See
+  `docs/ANIMATION_MODE_BYTE_498_SEMANTICS.md`.

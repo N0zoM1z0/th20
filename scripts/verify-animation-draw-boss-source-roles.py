@@ -98,7 +98,7 @@ def main():
     for mode in list(range(16,23)) + list(range(26,47)):
         expected_case_labels[mode] += 1
     assert Counter(case_labels) == expected_case_labels, Counter(case_labels)-expected_case_labels
-    assert text.count("switch (animation->base.flags.bytes_00.field_00)") == 2
+    assert text.count("switch (animation->base.flags.bytes_00.animation_mode)") == 2
     assert "draw_complex_mode6(animation)" in text
     assert "->bind_native_texture_state(animation)" in text
     # One real renderer ABI declaration is now shared with the independently

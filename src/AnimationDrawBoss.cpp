@@ -49,7 +49,7 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
 
     // Main original 49-entry switch at 0x0044391F. Cases 24,25 and 47/48
     // never reach the original 31-entry nested switch despite their IDs.
-    switch (animation->base.flags.bytes_00.field_00) {
+    switch (animation->base.flags.bytes_00.animation_mode) {
     case 0:
         if (animation->base.channels_490.alpha == 0 &&
             animation->base.channels_494.alpha == 0) return -1;
@@ -164,7 +164,7 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     }
 
 
-    switch (animation->base.flags.bytes_00.field_00) {
+    switch (animation->base.flags.bytes_00.animation_mode) {
     case 26: {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43cd40((position.x),(position.y),width,angle,animation_draw_color_490(animation),(animation->base.flags.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(animation->base.flags.word_10),(animation->base.flags.word_14));
         break;

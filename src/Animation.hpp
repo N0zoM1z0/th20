@@ -26,7 +26,13 @@ using AnimationEntryCallback = std::int32_t (*)(Animation*);
 using AnimationScriptCallback = std::int32_t (*)(Animation*, std::int32_t);
 struct SpriteTexturedVertex;
 struct AnimationColorChannels { std::uint8_t blue, green, red, alpha; };
-struct AnimationFlagBytes { std::uint8_t field_00, field_01; };
+struct AnimationFlagBytes {
+    std::uint8_t animation_mode;
+    std::uint8_t flag_byte_01;
+};
+static_assert(sizeof(AnimationFlagBytes) == 2);
+static_assert(offsetof(AnimationFlagBytes, animation_mode) == 0);
+static_assert(offsetof(AnimationFlagBytes, flag_byte_01) == 1);
 // Mixed flag storage observed through byte/word producers and consumers.
 // Offset labels preserve unresolved roles; no packing or explicit padding.
 // Native renderer reads bits 4..5 together; their mode meaning is unresolved.

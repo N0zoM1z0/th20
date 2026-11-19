@@ -30,9 +30,9 @@ static_assert(sizeof(NativeRenderByteA1)==1 && sizeof(NativeRenderByteA2)==1);
 void AnimationQuadSubmitOwner::bind_native_texture_state(Animation* animation) {
     // Real original owner offsets +6000E0C/+6000E12/13/14 are byte-sized
     // state caches; source macros re-evaluate actual pointer expressions.
-    if (NATIVE_DRAW_CACHE(0x6000E0C) != animation->base.flags.bytes_00.field_01) {
+    if (NATIVE_DRAW_CACHE(0x6000E0C) != animation->base.flags.bytes_00.flag_byte_01) {
         flush_draws();
-        NATIVE_DRAW_CACHE(0x6000E0C) = animation->base.flags.bytes_00.field_01;
+        NATIVE_DRAW_CACHE(0x6000E0C) = animation->base.flags.bytes_00.flag_byte_01;
         D3D_SET_RENDER(0x0F, 1);
         D3D_SET_RENDER(0xCE, 1);
         D3D_SET_RENDER(0xCF, 2);

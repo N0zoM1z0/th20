@@ -38,7 +38,7 @@ Vector3& Animation::transform_position(Vector3& value) {
     return value;
 }
 void Animation::update_geometry() {
-    switch (base.flags.bytes_00.field_00) {
+    switch (base.flags.bytes_00.animation_mode) {
     default: return;
     case 9: {
         std::int32_t count = base.variables.geometry_vertex_count;
@@ -48,7 +48,7 @@ void Animation::update_geometry() {
         float uv = 0.0f;
         float uv_step = float(base.variables.field_04) / float(count - 1);
         Vector3 center;
-        if (base.flags.bytes_00.field_00 == 9) position(center);
+        if (base.flags.bytes_00.animation_mode == 9) position(center);
         else center = {0,0,0};
         base.flags.word_04 &= ~0x200000u;
         std::uint32_t first_color = base.color_490;
@@ -138,7 +138,7 @@ void Animation::update_geometry() {
         Vector3 center;
         position(center);
         base.flags.word_04&=~0x200000u;
-        if(base.flags.bytes_00.field_00==14)angle=normalize_angle(base.vector_38.z);
+        if(base.flags.bytes_00.animation_mode==14)angle=normalize_angle(base.vector_38.z);
         std::uint32_t color=base.flags.color_mode?base.color_494:base.color_490;
         float first_radius=base.vector_50.x*0.5f+base.vector_50.y;
         float second_radius=base.vector_50.y-base.vector_50.x*0.5f;
@@ -173,7 +173,7 @@ void Animation::update_geometry() {
         float half_height=base.variables.field_14/2.0f;
         float first_radius=base.variables.field_18;
         float second_radius=base.variables.field_18;
-        if(base.flags.bytes_00.field_00==25) {
+        if(base.flags.bytes_00.animation_mode==25) {
             half_height=0;first_radius-=base.variables.field_14/2.0f;second_radius+=base.variables.field_14/2.0f;
         }
         for(std::int32_t i=0;i<count;++i) {

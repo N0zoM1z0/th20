@@ -62,7 +62,7 @@ void Animation::interpolate_alpha_494(std::int32_t duration, std::int32_t mode, 
     if (!base.flags.color_mode) base.flags.color_mode = 1;
 }
 void Animation::set_flag_byte_01(std::uint8_t value) {
-    base.flags.bytes_00.field_01 = value;
+    base.flags.bytes_00.flag_byte_01 = value;
 }
 }
 namespace th20 {

@@ -6,15 +6,15 @@
 namespace th20 {
 
 void __fastcall set_animation_flag_byte_01_zero(Animation* animation) {
-    animation->base.flags.bytes_00.field_01 = 0;
+    animation->base.flags.bytes_00.flag_byte_01 = 0;
 }
 
 void __fastcall set_animation_flag_byte_01_one(Animation* animation) {
-    animation->base.flags.bytes_00.field_01 = 1;
+    animation->base.flags.bytes_00.flag_byte_01 = 1;
 }
 
 void __fastcall set_animation_flag_byte_01_two(Animation* animation) {
-    animation->base.flags.bytes_00.field_01 = 2;
+    animation->base.flags.bytes_00.flag_byte_01 = 2;
 }
 
 void __fastcall interrupt_animation_mode2(Animation* animation) {
