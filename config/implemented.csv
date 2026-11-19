@@ -1659,4 +1659,4 @@ th20::Animation::update
 th20::scalar_math::arcsine
 th20::scalar_math::arccosine
 th20::polar_components
-th20::scalar_math::arctangent_vm
+th20::scalar_math::floating_remainder

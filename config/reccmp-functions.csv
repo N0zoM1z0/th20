@@ -1674,4 +1674,4 @@ th20::Animation::update,0x0042B5D0,function
 th20::scalar_math::arcsine,0x00439760,function
 th20::scalar_math::arccosine,0x00439790,function
 th20::polar_components,0x004392D0,function
-th20::scalar_math::arctangent_vm,0x004397F0,function
+th20::scalar_math::floating_remainder,0x004397F0,function

@@ -29839,16 +29839,16 @@ relocations = [
 ]
 
 
-# CORE/RECON-1165: exact VM cdecl atan2 adapter at 0x004397F0.
-[units.scalar_math_arctangent_vm_4397f0]
+# CORE/RECON-1165: exact VM cdecl fmod adapter at 0x004397F0.
+[units.scalar_math_floating_remainder_4397f0]
 source = "src/ScalarMath.cpp"
 object = "build/core141-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
-functions = ["th20::scalar_math::arctangent_vm"]
-symbol = "?arctangent_vm@scalar_math@th20@@YAMMM@Z"
+functions = ["th20::scalar_math::floating_remainder"]
+symbol = "?floating_remainder@scalar_math@th20@@YAMMM@Z"
 target_address = 0x004397F0
 size = 48
-relocations = [{ offset = 0x1F, type = "REL32", symbol = "_atan2", target = 0x0054FFA0 }]
+relocations = [{ offset = 0x1F, type = "REL32", symbol = "_fmod", target = 0x0054FFA0 }]
 
 [units.scalar_math_arcsine_35]
 source = "src/ScalarMath.cpp"

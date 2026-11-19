@@ -3093,7 +3093,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_46c = (float)fVar11;
         }
-        fVar11 = scalar_math::arctangent_vm(local_46c,local_468);
+        fVar11 = scalar_math::floating_remainder(local_46c,local_468);
         local_720 = (float)fVar11;
         pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *pfVar6 = local_720;
@@ -3229,7 +3229,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_4bc = (float)fVar11;
         }
-        fVar11 = scalar_math::arctangent_vm(local_4bc,local_4b8);
+        fVar11 = scalar_math::floating_remainder(local_4bc,local_4b8);
         local_724 = (float)fVar11;
         pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *pfVar6 = local_724;
