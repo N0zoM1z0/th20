@@ -500,9 +500,11 @@ superseded; use the **current ledger and this handoff** for status.
   natural cdecl ScalarMath calls. The newly added asin/acos wrappers each
   replay 35/35 bytes with their original CRT import relocations. Opcode 0x24
   now calls the exact 88B cdecl `polar_components` helper; both independent
-  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x858`
-  versus the original `0x804`, down from the previous `0x874`; the follow-up
-  case-scope pass moved 65 opcode locals and removed 12 unused temporaries.
+  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x84c`
+  versus the original `0x804`, down from the previous `0x874`; two lifetime
+  passes moved opcode locals into their case scopes and removed unused
+  temporaries. The latest Timer/callback/random cleanup removes 112B/15
+  instruction heads from 40,808B and another 0xC of stack frame.
 - The eight exact color/fade/vector leaves and all eight coordinate-normalizer
   calls are bound through typed owners; the normalizer independently replays
   95/95 bytes. The 59B Timer unscaled fractional-advance leaf is now
@@ -522,8 +524,8 @@ superseded; use the **current ledger and this handoff** for status.
   preceding 40,836B checkpoint; it restores real source-level lifetimes,
   not an optimization or an exactness claim.
 - The candidate still has 210 DIR32 relocations versus 55 original PE
-  HIGHLOW fields and a larger stack frame (`0x858` versus `0x804`). Its total
-  contribution is +1,338B (+694B code plus the switch table); it has 177 fewer
+  HIGHLOW fields and a larger stack frame (`0x84c` versus `0x804`). Its total
+  contribution is +1,226B (+582B code plus the switch table); it has 192 fewer
   code instruction heads than the original. It is explicitly NONEXACT, has
   no exact match unit, and is not counted as a new exact function. No
   assembly, NOP padding, dummy accesses or byte fillers. Next work is strict

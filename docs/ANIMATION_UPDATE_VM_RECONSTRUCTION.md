@@ -54,7 +54,7 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate COFF contribution is **40,808 bytes**: **40,164 bytes
+The current candidate COFF contribution is **40,696 bytes**: **40,052 bytes
 of code plus a 644-byte, 161-entry compiler-generated switch table**. The
 code portion decodes to 8,382 instruction heads and 505 E8 calls, compared
 with the original 39,470-byte body / 8,559 instruction heads / 505 E8 calls.
@@ -113,20 +113,26 @@ Calls formerly routed through numeric method stubs now bind to maintained
 call sites now use the exact typed `std::fmod` wrapper; the 14 previous-file
 lookups and corner-projection dispatch also use direct typed C++ owners.
 
+A second prologue/case lifetime pass replaced the two raw Timer pointer
+increments with `timer_4d8++` and `timer_4c8++`, removed the copied entry
+callback pointer, and scoped file lookup, random, scan and clock temporaries.
+It removes another **112 bytes / 15 instruction heads** from the previous
+40,808-byte checkpoint and reduces the frame from `0x858` to `0x84c`.
+
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The total contribution is **+1,338 bytes**, comprising
-+694 bytes of code and the 644-byte compiler switch table. The code portion
-has 177 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The total contribution is **+1,226 bytes**, comprising
++582 bytes of code and the 644-byte compiler switch table. The code portion
+has 192 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
-`sub esp, 0x804`; the current candidate now uses `sub esp, 0x858` after
+`sub esp, 0x804`; the current candidate now uses `sub esp, 0x84c` after
 removing obsolete Timer pointer temporaries, numeric call-view paths, unused
 decompiler locals and over-scoped opcode temporaries. Absolute-data relocation
 ownership and the remaining instruction/frame-layout differences are
 unresolved. No exactness credit is claimed from call-target
 parity alone.
 
-The next pass should reconcile the 0x54 stack-frame delta, absolute-data
+The next pass should reconcile the 0x48 stack-frame delta, absolute-data
 references, and ordinary instruction bytes using natural C++ types and
 lifetimes. Do not add padding or assembly to close the size gap.
 
