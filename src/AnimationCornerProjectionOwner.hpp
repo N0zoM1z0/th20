@@ -8,6 +8,9 @@ struct NativeQuadAxisLayout { float corners[3][4]; };
 static_assert(sizeof(NativeQuadAxisLayout) == 0x30);
 extern const NativeQuadAxisLayout native_quad_axis_layout[2];
 extern Vector3 native_projection_world_position;
+struct NativeAnimationCornerProjectionDispatchView {
+    void project_corners(Vector3* corners);
+};
 struct NativeAnimationCornerProjector {
     void project_corners_43eb40(Animation* animation,
                                 Vector3* a, Vector3* b, Vector3* c, Vector3* d);

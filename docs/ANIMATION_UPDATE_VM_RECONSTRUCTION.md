@@ -40,8 +40,10 @@ arrays; MSVC emits a 56-byte array-construction helper that is byte-identical
 to the original native `0x0040BC20` helper. All eight screen-coordinate
 normalizer calls bind directly to the exact typed `normalize_coordinates_438eb0`
 leaf and the four output vectors use `AnimationBase::vectors_378`/`vector_398`.
-Remaining numeric call-view declarations are scoped to unreconstructed
-helper owners.
+All numeric `FUN_` call macros and the generic numeric call-view declarations
+have now been removed from the Boss source. The 0x4397F0 CRT wrapper is
+identified as `fmod` (not `atan2`) and is bound to its 48/48-byte exact
+`ScalarMath::floating_remainder` owner.
 
 The two original random-threshold sign-mask expressions are represented as
 natural IEEE-754 unary negation (the original 16-byte XMM mask is the repeated
@@ -104,9 +106,9 @@ measured Boss code or its 505-call target multiset.
 Calls formerly routed through numeric method stubs now bind to maintained
 `Animation`, `Timer`, `Interpolation`, `AnimationFile`, `Motion`, `GameRandom`,
 `GameController`, `ClockScalar`, `EffectInfo`, `NativeCardRendererFileView`,
-`Vector3`, `ScalarMath`, and `MotionMath` owners. The remaining explicit
-external cdecl math call at `0x004397F0` is still under investigation; the
-legacy previous-file accessor remains a typed `NativeAnimationLegacyFileView`.
+`Vector3`, `ScalarMath`, and `MotionMath` owners. The two original `0x4397F0`
+call sites now use the exact typed `std::fmod` wrapper; the 14 previous-file
+lookups and corner-projection dispatch also use direct typed C++ owners.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**

@@ -484,13 +484,11 @@ superseded; use the **current ledger and this handoff** for status.
   member expressions; all corresponding numeric `FUN_` wrappers are gone.
   308 operand/value lookups are direct Animation member calls
   (`integer_argument`, `float_argument`, `integer_value`, `float_value`).
-  The remaining VM calls
-  use typed Animation/Timer/Interpolation/Renderer/
-  Motion/Random/Math owners, with only the 0x4397F0 cdecl math helper still
-  The last cdecl math helper at 0x004397F0 is now the exact 48B
-  `scalar_math::arctangent_vm` owner (including the original `_atan2`
-  relocation); both call sites are typed. The 14 previous-file lookups are
-  direct `NativeAnimationLegacyFileView` calls, not numeric `FUN_` macros.
+  All numeric `FUN_` wrappers are gone. The 0x4397F0 helper is correctly
+  identified as CRT `fmod` (not atan2) and is bound to the exact 48B
+  `scalar_math::floating_remainder` owner with the original `_fmod` relocation.
+  Both call sites are typed; the 14 previous-file lookups and both corner
+  projection dispatch calls also use direct typed C++ owners.
   All 505 candidate E8 destinations match the original call-target multiset,
   including postfix Timer increment, child-spawn return ABI, corner projection,
   the whole-exact +0x18 file lookup, the original 0x0040BC20 array helper,

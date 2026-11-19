@@ -9,10 +9,6 @@ namespace th20 {
 static_assert(offsetof(AnimationBase, flags)==0x498);
 static_assert(sizeof(Vector3)==12);
 
-struct NativeAnimationCornerProjectionDispatchView {
-    void project_corners(Vector3* corners);
-};
-
 void NativeAnimationCornerProjectionDispatchView::project_corners(Vector3* corners) {
     switch (reinterpret_cast<Animation*>(this)->base.flags.bytes_00.animation_mode) {
     case 0:
