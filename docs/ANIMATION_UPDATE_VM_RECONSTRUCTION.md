@@ -150,13 +150,23 @@ and `spawn_child_and_update(...).resolve()` chains, with the same return
 semantics and no changed E8 targets. This removes another **48 bytes / 6
 instruction heads** from 37,312B and leaves a 37,264-byte contribution with
 36,620 code bytes and a 644-byte switch table. The stack allocation is now
-`0x800`, four bytes below the original `0x804`.
+`0x800`, four bytes below the original `0x804`. A follow-up owner pass removes
+five more one-use Animation receiver aliases from the discarded-child spawn
+opcodes. The three resolved-child results are now typed as `Animation*` and
+write their X/Y channels through `base.vector_484`, rather than integer pointer
+arithmetic; the four component locals become direct conditional member
+assignments, while the transformed Vector3 path retains its ordered inputs.
+The five receiver-alias removals account for another **60 bytes / 10
+instruction heads** from 37,264B and reduce the frame from `0x800` to `0x7EC`.
+The resulting contribution is **37,204B** (36,560B code plus the 644B switch
+table), with 7,916 code instructions and all 505 original E8 destinations
+still matching.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The candidate is now **2,206 bytes smaller overall** than the original body:
-36,620 bytes of code plus a 644-byte compiler switch table. The code portion
-has 633 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The candidate is now **2,266 bytes smaller overall** than the original body:
+36,560 bytes of code plus a 644-byte compiler switch table. The code portion
+has 643 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
 `sub esp, 0x804`; the current candidate now uses `sub esp, 0x800` after
 removing obsolete Timer pointer temporaries, numeric call-view paths, unused

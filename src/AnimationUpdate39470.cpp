@@ -125,26 +125,21 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x72: {
-        void *local_780;
         void* local_57c;
         std::uint32_t local_558;
         local_57c = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        local_780 = this;
         if ((instruction[3] & 1U) == 0) {
           local_558 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_558 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<AnimationFile*>(local_57c)->spawn_child(local_558,reinterpret_cast<Animation*>(local_780),0);
+        reinterpret_cast<AnimationFile*>(local_57c)->spawn_child(local_558,this,0);
         break;
       }
       case 0x77: {
-        void *local_580;
         void* local_584;
-        float local_56c;
-        std::uintptr_t local_568;
-        float local_564;
+        Animation* local_568;
         std::uint32_t local_560;
         std::uint32_t local_55c;
         if ((base.flags.word_04 >> 0x12 & 1) == 0) {
@@ -159,33 +154,22 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_560 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        local_568 = reinterpret_cast<std::uintptr_t>(
+        local_568 =
             reinterpret_cast<AnimationFile*>(reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470())->spawn_child(
-                local_560,this,local_55c).resolve());
-        if ((instruction[3] & 2U) == 0) {
-          local_564 = *(float *)(instruction + 6);
-        }
-        else {
-          local_564 = this->float_value(*(float *)(instruction + 6));
-        }
-        *(float *)(local_568 + 0x484) = local_564;
-        if ((instruction[3] & 4U) == 0) {
-          local_56c = *(float *)(instruction + 8);
-        }
-        else {
-          local_56c = this->float_value(*(float *)(instruction + 8));
-        }
-        *(float *)(local_568 + 0x488) = local_56c;
+                local_560,this,local_55c).resolve();
+        local_568->base.vector_484.x = (instruction[3] & 2U) == 0
+            ? *(float *)(instruction + 6)
+            : this->float_value(*(float *)(instruction + 6));
+        local_568->base.vector_484.y = (instruction[3] & 4U) == 0
+            ? *(float *)(instruction + 8)
+            : this->float_value(*(float *)(instruction + 8));
         break;
       }
       case 0x7c: {
-        void *local_58c;
         void* local_590;
-        float local_578;
         std::uint32_t local_574;
         std::uint32_t local_570;
-        float local_f8;
-        std::uintptr_t local_f4;
+        Animation* local_f4;
         if ((base.flags.word_04 >> 0x12 & 1) == 0) {
           local_570 = 2;
         }
@@ -198,68 +182,54 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_574 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        local_f4 = reinterpret_cast<std::uintptr_t>(
+        local_f4 =
             reinterpret_cast<AnimationFile*>(reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470())->spawn_child(
-                local_574,this,local_570).resolve());
-        if ((instruction[3] & 2U) == 0) {
-          local_578 = *(float *)(instruction + 6);
-        }
-        else {
-          local_578 = this->float_value(*(float *)(instruction + 6));
-        }
-        *(float *)(local_f4 + 0x484) = local_578;
-        if ((instruction[3] & 4U) == 0) {
-          local_f8 = *(float *)(instruction + 8);
-        }
-        else {
-          local_f8 = this->float_value(*(float *)(instruction + 8));
-        }
-        *(float *)(local_f4 + 0x488) = local_f8;
+                local_574,this,local_570).resolve();
+        local_f4->base.vector_484.x = (instruction[3] & 2U) == 0
+            ? *(float *)(instruction + 6)
+            : this->float_value(*(float *)(instruction + 6));
+        local_f4->base.vector_484.y = (instruction[3] & 4U) == 0
+            ? *(float *)(instruction + 8)
+            : this->float_value(*(float *)(instruction + 8));
         break;
       }
       case 0x74: {
-        void *local_598;
         void* local_59c;
         std::uint32_t local_fc;
         local_59c = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        local_598 = this;
         if ((instruction[3] & 1U) == 0) {
           local_fc = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_fc = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<AnimationFile*>(local_59c)->spawn_child(local_fc,reinterpret_cast<Animation*>(local_598),2);
+        reinterpret_cast<AnimationFile*>(local_59c)->spawn_child(local_fc,this,2);
         break;
       }
       case 0x73: {
-        void *local_5a0;
         void* local_5a4;
         std::uint32_t local_100;
         local_5a4 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        local_5a0 = this;
         if ((instruction[3] & 1U) == 0) {
           local_100 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_100 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<AnimationFile*>(local_5a4)->spawn_child(local_100,reinterpret_cast<Animation*>(local_5a0),4);
+        reinterpret_cast<AnimationFile*>(local_5a4)->spawn_child(local_100,this,4);
         break;
       }
       case 0x75: {
-        void *local_5a8;
         void* local_5ac;
         std::uint32_t local_104;
         local_5ac = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        local_5a8 = this;
         if ((instruction[3] & 1U) == 0) {
           local_104 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_104 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<AnimationFile*>(local_5ac)->spawn_child(local_104,reinterpret_cast<Animation*>(local_5a8),6);
+        reinterpret_cast<AnimationFile*>(local_5ac)->spawn_child(local_104,this,6);
         break;
       }
       case 0x7b: {
@@ -271,11 +241,8 @@ switchD_0042b8cc_caseD_a0:
         break;
       }
       case 0x78: {
-        void *local_5b0;
         void* local_5b4;
-        std::uintptr_t local_114;
-        float local_110;
-        float local_10c;
+        Animation* local_114;
         std::uint32_t local_108;
         if ((instruction[3] & 1U) == 0) {
           local_108 = *(std::uint32_t *)(instruction + 4);
@@ -283,40 +250,29 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_108 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        local_114 = reinterpret_cast<std::uintptr_t>(
+        local_114 =
             reinterpret_cast<AnimationFile*>(reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470())->spawn_child_and_update(
-                local_108,this,0).resolve());
-        if ((instruction[3] & 2U) == 0) {
-          local_110 = *(float *)(instruction + 6);
-        }
-        else {
-          local_110 = this->float_value(*(float *)(instruction + 6));
-        }
-        if ((instruction[3] & 4U) == 0) {
-          local_10c = *(float *)(instruction + 8);
-        }
-        else {
-          local_10c = this->float_value(*(float *)(instruction + 8));
-        }
-        Vector3 local_a8(local_110,local_10c,0.0f);
+                local_108,this,0).resolve();
+        Vector3 local_a8(
+            (instruction[3] & 2U) == 0 ? *(float *)(instruction + 6) : this->float_value(*(float *)(instruction + 6)),
+            (instruction[3] & 4U) == 0 ? *(float *)(instruction + 8) : this->float_value(*(float *)(instruction + 8)),
+            0.0f);
         this->transform_direction(local_a8,1,1);
-        *reinterpret_cast<float*>(local_114 + 0x484) = local_a8.x;
-        *reinterpret_cast<float*>(local_114 + 0x488) = local_a8.y;
+        local_114->base.vector_484.x = local_a8.x;
+        local_114->base.vector_484.y = local_a8.y;
         break;
       }
       case 0x76: {
-        void *local_5bc;
         void* local_5c0;
         std::uint32_t local_118;
         local_5c0 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        local_5bc = this;
         if ((instruction[3] & 1U) == 0) {
           local_118 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_118 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<AnimationFile*>(local_5c0)->spawn_child_and_update(local_118,reinterpret_cast<Animation*>(local_5bc),0);
+        reinterpret_cast<AnimationFile*>(local_5c0)->spawn_child_and_update(local_118,this,0);
         break;
       }
       case 0x7a: {
