@@ -475,15 +475,24 @@ superseded; use the **current ledger and this handoff** for status.
   through maintained Animation, AnimationFile, Timer, Interpolation,
   Motion, AnimationHandle and geometry C++ interfaces.
 - The immutable original is independently bounded at 39,470B / 8,559
-  instructions / 505 E8 / 55 PE HIGHLOW. The current C++ candidate is
-  41,004B / 8,721 instructions / 505 E8. All 505 candidate E8 destinations
-  match the original call-target multiset exactly, including postfix Timer
-  increment, child-spawn return ABI, corner-projection dispatch, and the
-  whole-exact AnimationBase+0x18 file lookup now bound to its shared typed
-  owner (29/29 leaf replay retained).
+  instruction heads / 505 E8 / 55 PE HIGHLOW. The current C++ contribution
+  is 41,056B: 40,412B code plus a compiler-emitted 644B/161-entry switch
+  table; the code portion decodes to 8,417 instruction heads and 505 E8.
+  All 505 candidate E8 destinations match the original call-target multiset,
+  including postfix Timer increment, child-spawn return ABI, corner projection,
+  the whole-exact +0x18 file lookup and the original 0x0040BC20 array helper.
+- The eight exact color/fade/vector leaves and all eight coordinate-normalizer
+  calls are bound through typed owners; the normalizer independently replays
+  95/95 bytes. Opcode scratch values now use real Color3, Vector2, Vector3
+  and Angle objects. Both corner paths use natural Vector3[4] arrays, and
+  their compiler-generated 56B array helper is byte-identical to original
+  0x0040BC20. This corner-array recovery grew the candidate by 220B from the
+  preceding 40,836B checkpoint; it restores real source-level lifetimes,
+  not an optimization or an exactness claim.
 - The candidate still has 213 DIR32 relocations versus 55 original PE
-  HIGHLOW fields and a larger stack frame (`0x874` versus `0x804`). It is
-  explicitly NONEXACT, has no exact match unit, and is not counted as a new
-  exact function. No assembly, NOP padding, dummy accesses or byte fillers.
-  Next work is natural opcode-local lifetime cleanup and strict frame/data
-  relocation/ordinary-byte reconciliation.
+  HIGHLOW fields and a larger stack frame (`0x874` versus `0x804`). Its total
+  contribution is +1,586B (+942B code plus the switch table); it has 142 fewer
+  code instruction heads than the original. It is explicitly NONEXACT, has
+  no exact match unit, and is not counted as a new exact function. No
+  assembly, NOP padding, dummy accesses or byte fillers. Next work is strict
+  frame/data relocation and ordinary-byte reconciliation.

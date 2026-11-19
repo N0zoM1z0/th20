@@ -1,5 +1,6 @@
 #include "Animation.hpp"
 #include "Vector2.hpp"
+#include "AnimationVector2CoordinateNormalize95.hpp"
 #include "NativeAnimationVector2ConfigView.hpp"
 #include "NativeAnimationFadeConfig86.hpp"
 #include "NativeAnimationColorConfigView.hpp"
@@ -27,14 +28,11 @@ struct NativeAnimationCornerProjectionDispatchView { void project_corners(Vector
 extern "C" {
 // Original external helpers are declared with their x86 receiver/stack ABI.
 std::uint32_t __fastcall vm_0040ff90(std::uintptr_t);
-void __stdcall vm_0040bc20(void*,std::uint32_t,std::uint32_t,std::uint32_t* (__fastcall *)(void*));
-std::uint32_t* __fastcall vm_00422e10(void*);
 void __fastcall vm_00423540(void*);
 std::uint32_t __fastcall vm_00423ee0(std::uintptr_t);
 std::uint32_t __fastcall vm_00424060(void*);
 void __cdecl vm_00437520(std::int32_t);
 float __cdecl vm_00438600(float,float);
-void __cdecl vm_00438eb0(float*,const float*);
 float __cdecl vm_004397f0(float,float);
 std::uint32_t* __stdcall vm_0049db70(std::uint32_t*,std::uint32_t,void*,std::int32_t);
 
@@ -213,7 +211,6 @@ struct NativeAnimationVmCallView {
 #define FUN_00438b20 vm_00438b20
 #define FUN_00438b50 vm_00438b50
 #define FUN_00438e70 vm_00438e70
-#define FUN_00438eb0 vm_00438eb0
 #define FUN_00439280 vm_00439280
 #define FUN_004392d0 vm_004392d0
 #define FUN_00439330 vm_00439330
@@ -477,10 +474,6 @@ std::int32_t Animation::update() {
   std::uint32_t local_e0;
   std::int16_t *scan_instruction;
   std::int16_t *instruction;
-  float local_38 [3];
-  float local_2c [3];
-  float local_20 [3];
-  float local_14 [3];
 
   if ((*(std::uint32_t *)((int)this + 0x4b4) & 1) != 0) {
     return 0;
@@ -2211,20 +2204,14 @@ LAB_0042df8e:
         break;
       }
       case 0x5a: {
-        float local_68 [3];
-        float local_5c [3];
-        float local_50 [3];
-        float local_44 [3];
-        FUN_0040bc20(local_68,0xc,4,vm_00422e10);
-        FUN_00445770(this,local_68);
-        FUN_00438eb0((float *)((int)this + 0x378),local_68);
-        FUN_00438eb0((float *)((int)this + 0x380),local_5c);
-        FUN_00438eb0((float *)((int)this + 0x388),local_50);
-        FUN_00438eb0((float *)((int)this + 0x390),local_44);
-        *(float *)((int)this + 0x398) =
-             *(float *)((int)this + 0x380) - *(float *)((int)this + 0x378);
-        *(float *)((int)this + 0x39c) =
-             *(float *)((int)this + 0x38c) - *(float *)((int)this + 0x37c);
+        Vector3 corners[4];
+        FUN_00445770(this,corners);
+        normalize_coordinates_438eb0(&base.vectors_378[0],reinterpret_cast<const Vector2*>(&corners[0]));
+        normalize_coordinates_438eb0(&base.vectors_378[1],reinterpret_cast<const Vector2*>(&corners[1]));
+        normalize_coordinates_438eb0(&base.vectors_378[2],reinterpret_cast<const Vector2*>(&corners[2]));
+        normalize_coordinates_438eb0(&base.vectors_378[3],reinterpret_cast<const Vector2*>(&corners[3]));
+        base.vector_398.x=base.vectors_378[1].x-base.vectors_378[0].x;
+        base.vector_398.y=base.vectors_378[1].y-base.vectors_378[0].y;
         break;
       }
       case 0x5b: {
@@ -3937,17 +3924,15 @@ LAB_00434dce:
   if ((*(std::uint8_t *)((int)this + 0x4a1) >> 1 & 1) != 0) {
     FUN_004296e0((void *)((int)this + 0x5bc),(float *)&DAT_005c5540);
   }
-  if ((*(std::uint32_t *)((int)this + 0x49c) >> 0xb & 1) != 0) {
-    FUN_0040bc20(local_38,0xc,4,vm_00422e10);
-    FUN_00445770(this,local_38);
-    FUN_00438eb0((float *)((int)this + 0x378),local_38);
-    FUN_00438eb0((float *)((int)this + 0x380),local_2c);
-    FUN_00438eb0((float *)((int)this + 0x388),local_20);
-    FUN_00438eb0((float *)((int)this + 0x390),local_14);
-    *(float *)((int)this + 0x398) =
-         *(float *)((int)this + 0x380) - *(float *)((int)this + 0x378);
-    *(float *)((int)this + 0x39c) =
-         *(float *)((int)this + 0x38c) - *(float *)((int)this + 0x37c);
+  if ((base.flags.word_04 >> 0xb & 1) != 0) {
+    Vector3 corners[4];
+    FUN_00445770(this,corners);
+    normalize_coordinates_438eb0(&base.vectors_378[0],reinterpret_cast<const Vector2*>(&corners[0]));
+    normalize_coordinates_438eb0(&base.vectors_378[1],reinterpret_cast<const Vector2*>(&corners[1]));
+    normalize_coordinates_438eb0(&base.vectors_378[2],reinterpret_cast<const Vector2*>(&corners[2]));
+    normalize_coordinates_438eb0(&base.vectors_378[3],reinterpret_cast<const Vector2*>(&corners[3]));
+    base.vector_398.x=base.vectors_378[1].x-base.vectors_378[0].x;
+    base.vector_398.y=base.vectors_378[1].y-base.vectors_378[0].y;
   }
   FUN_004358d0((int)this);
   FUN_00435c80(this);

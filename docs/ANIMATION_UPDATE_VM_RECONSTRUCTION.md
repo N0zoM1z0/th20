@@ -35,7 +35,11 @@ remains distinct. The eight exact color/fade/vector-configuration leaves are
 now called through their typed owner views. Opcode temporaries also recover
 real `Color3`, `Vector3`, `Vector2`, and `Angle` object lifetimes and their
 existing native constructors rather than raw byte/word arrays and numeric
-constructor adapters.
+constructor adapters. Both four-corner paths now use real `Vector3[4]`
+arrays; MSVC emits a 56-byte array-construction helper that is byte-identical
+to the original native `0x0040BC20` helper. All eight screen-coordinate
+normalizer calls bind directly to the exact typed `normalize_coordinates_438eb0`
+leaf and the four output vectors use `AnimationBase::vectors_378`/`vector_398`.
 Remaining numeric call-view declarations are scoped to unreconstructed
 helper owners.
 
@@ -48,32 +52,37 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate object is **41,004 bytes / 8,721 instructions / 505
-E8 calls**, compared with the original 39,470 / 8,559 / 505. The candidate
-has 505 REL32 call relocations and 213 DIR32 relocations; the original PE
-has 55 physical HIGHLOW fields. The source also restores the native shared
-return-one block to its original late function-tail position and removes the
-redundant `void*` alias for the member `this` pointer. An independent
-target-multiset check now
-confirms that **all 505 candidate E8 calls resolve to the exact same 505
-original target addresses**, including the postfix Timer helper, both
-AnimationFile child-spawn helpers, and both corner-projection dispatches.
+The current candidate COFF contribution is **41,056 bytes**: **40,412 bytes
+of code plus a 644-byte, 161-entry compiler-generated switch table**. The
+code portion decodes to 8,417 instruction heads and 505 E8 calls, compared
+with the original 39,470-byte body / 8,559 instruction heads / 505 E8 calls.
+The candidate has 505 REL32 call relocations and 213 DIR32 relocations; the
+original PE body has 55 physical HIGHLOW fields.
 
-This is a complete compiling semantic source translation, not a strict exact
-match. It has no `match-units.toml` exact unit and contributes **zero** new
-exact functions. The total contribution is **+1,366 bytes**; after excluding
-the compiler switch table, the code portion is **+722 bytes** and has 192
-fewer decoded instruction heads than the original. The original stack
-allocation is `sub esp, 0x804`; the current candidate uses `sub esp, 0x874`.
+The source now uses the original exact typed owners for the +0x18 file lookup,
+all seven color/fade/vector-configuration operations, and all eight
+screen-coordinate normalizer calls. Opcode temporaries use natural `Color3`,
+`Vector3`, `Vector2`, and `Angle` objects. Both four-corner paths now use
+`Vector3 corners[4]`; the MSVC-generated 56-byte array-construction helper is
+byte-identical to original `0x0040BC20`, and the normalizer leaf replays exact
+at 95/95 bytes. The candidate grew by 220 bytes relative to the previous
+40,836-byte checkpoint as these corner-array lifetimes and typed normalizer
+calls were restored; this is semantic progress, not a size optimization.
+
+This remains a complete compiling semantic source translation, not a strict
+exact match. It has no `match-units.toml` exact unit and contributes **zero**
+new exact functions. The total contribution is **+1,586 bytes**, comprising
++942 bytes of code and the 644-byte compiler switch table. The code portion
+has 142 fewer decoded instruction heads than the original body, so the byte
+gap is not an instruction-count proxy. The original stack allocation is
+`sub esp, 0x804`; the current candidate still uses `sub esp, 0x874`.
 Absolute-data relocation ownership and the remaining instruction/frame-layout
-differences are still unresolved. No exactness credit is claimed from
-call-target parity alone.
+differences are unresolved. No exactness credit is claimed from call-target
+parity alone.
 
-The next pass should reduce the Ghidra-style function-scope temporary set
-into natural opcode-local lifetimes, replace remaining numeric borrowed view
-calls with their real C++ owners, and reconcile the candidate stack frame,
-DIR32 data references, and all ordinary bytes. Do not add padding or assembly
-to close the size gap.
+The next pass should reconcile the 0x70 stack-frame delta, absolute-data
+references, and ordinary instruction bytes using natural C++ types and
+lifetimes. Do not add padding or assembly to close the size gap.
 
 ## Focused verification
 

@@ -24,9 +24,9 @@ ORIGINAL_INSTRUCTIONS=8559
 ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
 SYMBOL='?update@Animation@th20@@QAEHXZ'
-CANDIDATE_SIZE=40836
-CANDIDATE_CODE_SIZE=40192
-CANDIDATE_INSTRUCTIONS=8367
+CANDIDATE_SIZE=41056
+CANDIDATE_CODE_SIZE=40412
+CANDIDATE_INSTRUCTIONS=8417
 CANDIDATE_JUMP_TABLE_ENTRIES=161
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
@@ -34,7 +34,10 @@ SPECIAL_CALL_TARGETS={
  '?project_corners@NativeAnimationCornerProjectionDispatchView@th20@@QAEXPAUVector3@2@@Z':0x00445770,
  '?interpolate_primary_rgb_438d50@NativeAnimationColorConfigView@th20@@QAEXHHABUColor3@2@0@Z':0x00438D50,
  '?interpolate_rgb_438cc0@NativeAnimationColorConfigView@th20@@QAEXHHABUColor3@2@0@Z':0x00438CC0,
+ '??_H@YGXPAXIIP6EPAX0@Z@Z':0x0040BC20,
 }
+ARRAY_CTOR_SYMBOL='??_H@YGXPAXIIP6EPAX0@Z@Z'
+ARRAY_CTOR_SIZE=56
 
 def verify_original():
  image,_=pe.verified_target();base,sections=pe.parse_sections(image);body=pe.raw_at(image,base,sections,ADDRESS,ORIGINAL_SIZE)
@@ -77,6 +80,14 @@ def compile_candidate(original_targets):
  flags=['/nologo','/c','/std:c++20','/Od','/Ob0','/GS','/Gy','/Zl','/arch:SSE2','/fp:precise','/sdl','/EHsc']
  subprocess.run([str(ROOT/'scripts/compile-probe.sh'),str(source),str(obj),*flags],cwd=ROOT,check=True)
  body,relocations=cf.object_function(obj,SYMBOL,CANDIDATE_SIZE)
+ # A natural Vector3[4] declaration emits the compiler's array-construction
+ # helper. Its complete 56-byte body is identical to original game helper
+ # 0x0040BC20, including the indirect constructor call and RET 0x10.
+ array_ctor,_=cf.object_function(obj,ARRAY_CTOR_SYMBOL,ARRAY_CTOR_SIZE)
+ image,_=pe.verified_target();base,sections=pe.parse_sections(image)
+ original_array_ctor=pe.raw_at(image,base,sections,0x0040BC20,ARRAY_CTOR_SIZE)
+ assert array_ctor==original_array_ctor,'native Vector3 array-constructor helper differs from original 0x0040BC20'
+ print(f'PASS natural Vector3[4] constructor helper: {ARRAY_CTOR_SIZE}/{ARRAY_CTOR_SIZE} bytes exact to original 0x0040BC20')
  # MSVC emits the 161-entry switch dispatch table as a trailing COFF
  # contribution with one DIR32 relocation per case label. Do not disassemble
  # these 644 bytes as fake x86 instructions.
