@@ -371,3 +371,20 @@ superseded; use the **current ledger and this handoff** for status.
 - Authorship remains under review because these are generic template bodies;
   they are source-present and exact but receive no new authored `matches.csv`
   credit yet. See `docs/ANIMATION_VECTOR2_INTERPOLATION_NATIVE_SOURCE_FRONTIER.md`.
+
+## 2026-11-19 — Animation VM opcode 0x5A corner-projection chain
+
+- The 95B `0x00438EB0` Vector2 screen-coordinate normalizer is now whole-native
+  exact in `src/AnimationVector2CoordinateNormalize95.cpp` (commit `888f36b`).
+- Recovered the original `0x00445770` 244B mode dispatcher and added natural
+  C++ source. Modes 0/2/3 route to the 985B corner projector; mode 1 routes to
+  the 1486B rotated projector. Its real unused ECX receiver is the renderer
+  owner global `current_animation_pool` at `0x005C0028`.
+- The focused probe confirms the original 244B SHA/79 instructions, three E8
+  destinations and four HIGHLOW fields, and the candidate's three projector
+  calls plus three renderer-owner relocations. Candidate is **192B**, so it
+  remains SOURCE-PRESENT NONEXACT with no match-unit or byte credit.
+- The `0x0042B5D0` 39,470B VM's opcode `0x5A` and final flag-bit-11 path both
+  use this dispatcher, then normalize four Vector3 corners and store width/height
+  at `+0x398/+0x39C`. The VM parent remains open. See
+  `docs/ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md`.
