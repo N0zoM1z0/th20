@@ -61,7 +61,9 @@ struct AnimationFlags {
         std::uint8_t field_0a;
         struct { std::uint8_t low_5 : 5; std::uint8_t upper_3 : 3; } bits_0a;
     };
-    std::uint8_t layer_mode : 2;
+    // Selects the screen/viewport placement path; values 1 and 2 choose
+    // distinct WindowState origin pairs, while zero stays mesh-relative.
+    std::uint8_t viewport_placement_mode : 2;
     std::uint8_t other_0b : 6;
     // The byte selects how animation geometry is scaled against the window.
     union {

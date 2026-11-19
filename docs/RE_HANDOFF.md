@@ -304,3 +304,21 @@ superseded; use the **current ledger and this handoff** for status.
   `Animation.cpp` object also passed targeted exact replay 38/38 after the
   ANM layout alias. See
   `docs/ANM_VARIABLE_SLOT_10010_PARTICLE_GRID_ANGLE_OFFSET.md`.
+
+## 2026-11-19 session — Animation viewport-placement mode
+
+- Resolved the two low bits at `Animation+0x4A3` as a viewport-placement
+  selector. Mode 1 selects WindowState coordinate pair `+0x58/+0x5c`, mode 2
+  selects `+0x60/+0x64`, and mode 0 leaves ordinary mesh-relative placement.
+  `set_layer`, file spawn, Bullet/Player draw setup, mesh lifecycle, geometry,
+  and mode-6/mode-7 renderers independently corroborate the values.
+- Renamed the bitfield to `viewport_placement_mode` without changing its
+  two-bit width or the `AnimationFlags` 0x20-byte layout. Focused strict
+  replays passed Animation Geometry 6/6, Animation Parameters 20/20, mesh
+  draw 1/1, mode 6 1/1, mode 7 setup 1/1, AnimationFile spawn 1/1, Bullet
+  emitter 1/1, Player Draw 1/1, and RenderMesh lifecycle 2/2.
+- RenderMesh's four compiler-local `$SG` literal labels changed under the
+  typed header name; their relocation sites, targets, and literal contents
+  stayed identical. Only those local names were refreshed in the canonical
+  relocation manifest. See
+  `docs/ANIMATION_VIEWPORT_PLACEMENT_MODE_4A3_SEMANTICS.md`.

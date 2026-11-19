@@ -74,7 +74,7 @@ std::int32_t AnimationDrawDetailedOwner::draw_mesh_2425(
     world=animation->matrix_57c;
     world.elements[3][0]=animation->base.vector_2c.x +
         animation->vector_5bc.x+animation->base.vector_484.x;
-    if (!animation->base.flags.layer_mode && !animation->parent_55c) {
+    if (!animation->base.flags.viewport_placement_mode && !animation->parent_55c) {
         world.elements[3][0]+=static_cast<float>(
             reinterpret_cast<NativeMeshWindowGetter*>(&window_state)->mesh_x());
         world.elements[3][1]+=static_cast<float>(

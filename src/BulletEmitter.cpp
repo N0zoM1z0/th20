@@ -245,7 +245,7 @@ std::int32_t BulletController::emit(const ShotParameters& shot,
     // by shot type; directly reading bullet_styles[shot.type].script lost this real E8.
     file->load_script(bullet->animation,type_to_script(shot.type));
     bullet->flags.bits|=0x10u;
-    bullet->animation->base.flags.layer_mode=1;
+    bullet->animation->base.flags.viewport_placement_mode=1;
 
     // Original x86 recalculates the 0x158-byte BulletStyle index for
     // each independent use, rather than caching a style reference.

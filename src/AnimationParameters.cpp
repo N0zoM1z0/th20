@@ -70,9 +70,9 @@ void Animation::update_layer() {}
 void Animation::set_layer(std::int32_t layer) {
     base.field_14 = layer;
     update_layer();
-    if (base.field_14 >= 3 && base.field_14 <= 19) base.flags.layer_mode = 1;
-    else if (base.field_14 >= 20 && base.field_14 <= 23) base.flags.layer_mode = 2;
-    else base.flags.layer_mode = 0;
+    if (base.field_14 >= 3 && base.field_14 <= 19) base.flags.viewport_placement_mode = 1;
+    else if (base.field_14 >= 20 && base.field_14 <= 23) base.flags.viewport_placement_mode = 2;
+    else base.flags.viewport_placement_mode = 0;
     if (((base.field_14 >= 20 && base.field_14 <= 36) ||
          (base.field_14 >= 45 && base.field_14 <= 53)) &&
         !((base.flags.word_04 >> 23) & 1u)) base.flags.scale_mode = 1;

@@ -48,7 +48,7 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
                          process_graphics.current_viewport->fog.far_distance;
     camera_vector=animation->base.vector_2c + animation->vector_5bc +
                   animation->base.vector_484 - process_graphics.current_viewport->vector_00;
-    if (animation->base.flags.layer_mode && animation->parent_55c==nullptr) {
+    if (animation->base.flags.viewport_placement_mode && animation->parent_55c==nullptr) {
         camera_vector.x+=static_cast<float>(window_state.scaled_width)/native_two;
         camera_vector.y+=(static_cast<float>(window_state.scaled_height)-native_448)/native_two;
     }

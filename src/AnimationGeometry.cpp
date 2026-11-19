@@ -25,8 +25,8 @@ Vector3& Animation::transform_position(Vector3& value) {
         parent_558->position(parent_position);
         value += parent_position;
     } else {
-        if (base.flags.layer_mode) {
-            if (base.flags.layer_mode == 1) {
+        if (base.flags.viewport_placement_mode) {
+            if (base.flags.viewport_placement_mode == 1) {
                 value.x += float(window_state.field_0058_value());
                 value.y += float(window_state.field_005c_value());
             } else {
