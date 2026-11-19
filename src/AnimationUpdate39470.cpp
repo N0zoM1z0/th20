@@ -1,4 +1,8 @@
 #include "Animation.hpp"
+#include "NativeAnimationVector2ConfigView.hpp"
+#include "NativeAnimationFadeConfig86.hpp"
+#include "NativeAnimationColorConfigView.hpp"
+#include "Color3.hpp"
 #include "AnimationCallback.hpp"
 #include "MotionMath.hpp"
 #include "ScalarMath.hpp"
@@ -68,7 +72,6 @@ struct NativeAnimationVmCallView {
     std::uint32_t* call_00422dd0(float,float,float);
     void call_00423520(std::int32_t);
     std::uint32_t call_00423ea0(std::uint32_t);
-    std::uint8_t* call_00429150(std::uint8_t,std::uint8_t,std::uint8_t);
     float* call_00429210(float);
     std::uint32_t* call_00429250(float,float);
     void call_00429280(std::uintptr_t);
@@ -89,13 +92,6 @@ struct NativeAnimationVmCallView {
     void call_00438b00(const void*);
     void call_00438b20(const void*);
     void call_00438b50(const void*);
-    void call_00438bd0(std::int32_t, std::int32_t, std::uint8_t, std::uint8_t);
-    void call_00438c60(std::int32_t, std::int32_t, std::uint8_t, std::uint8_t);
-    void call_00438cc0(std::int32_t, std::int32_t, const void*, const void*);
-    void call_00438d50(std::int32_t, std::int32_t, const void*, const void*);
-    void call_00438db0(std::uint32_t,std::uint32_t,const void*,const void*);
-    void call_00438df0(std::uint32_t,std::uint32_t,const void*,const void*);
-    void call_00438e30(std::uint32_t,std::uint32_t,const void*,const void*);
     void call_00438e70(std::int32_t);
     void call_00439280(float,float,float);
     void call_004392d0(float*,float*,float,float);
@@ -123,7 +119,6 @@ struct NativeAnimationVmCallView {
 #define vm_00422dd0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00422dd0(__VA_ARGS__))
 #define vm_00423520(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00423520(__VA_ARGS__))
 #define vm_00423ea0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00423ea0(__VA_ARGS__))
-#define vm_00429150(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429150(__VA_ARGS__))
 #define vm_00429210(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429210(__VA_ARGS__))
 #define vm_00429250(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429250(__VA_ARGS__))
 #define vm_00429280(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429280(__VA_ARGS__))
@@ -144,13 +139,6 @@ struct NativeAnimationVmCallView {
 #define vm_00438b00(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438b00(__VA_ARGS__))
 #define vm_00438b20(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438b20(__VA_ARGS__))
 #define vm_00438b50(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438b50(__VA_ARGS__))
-#define vm_00438bd0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438bd0(__VA_ARGS__))
-#define vm_00438c60(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438c60(__VA_ARGS__))
-#define vm_00438cc0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438cc0(__VA_ARGS__))
-#define vm_00438d50(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438d50(__VA_ARGS__))
-#define vm_00438db0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438db0(__VA_ARGS__))
-#define vm_00438df0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438df0(__VA_ARGS__))
-#define vm_00438e30(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438e30(__VA_ARGS__))
 #define vm_00438e70(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438e70(__VA_ARGS__))
 #define vm_00439280(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439280(__VA_ARGS__))
 #define vm_004392d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004392d0(__VA_ARGS__))
@@ -197,7 +185,6 @@ struct NativeAnimationVmCallView {
 #define FUN_00423ea0 vm_00423ea0
 #define FUN_00423ee0 vm_00423ee0
 #define FUN_00424060 vm_00424060
-#define FUN_00429150 vm_00429150
 #define FUN_00429210 vm_00429210
 #define FUN_00429250 vm_00429250
 #define FUN_00429280 vm_00429280
@@ -232,13 +219,6 @@ struct NativeAnimationVmCallView {
 #define FUN_00438b00 vm_00438b00
 #define FUN_00438b20 vm_00438b20
 #define FUN_00438b50 vm_00438b50
-#define FUN_00438bd0 vm_00438bd0
-#define FUN_00438c60 vm_00438c60
-#define FUN_00438cc0 vm_00438cc0
-#define FUN_00438d50 vm_00438d50
-#define FUN_00438db0 vm_00438db0
-#define FUN_00438df0 vm_00438df0
-#define FUN_00438e30 vm_00438e30
 #define FUN_00438e70 vm_00438e70
 #define FUN_00438eb0 vm_00438eb0
 #define FUN_00439280 vm_00439280
@@ -295,6 +275,20 @@ struct NativeAnimationVmCallView {
 #define FUN_00437eb0(self,value) (reinterpret_cast<Animation*>(self)->float_value(value))
 #undef FUN_00438620
 #define FUN_00438620(self,animation_value,index) (reinterpret_cast<AnimationFile*>(self)->apply_sprite(reinterpret_cast<Animation*>(animation_value),index))
+#undef FUN_00438bd0
+#define FUN_00438bd0(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationColorConfigView*>(self)->interpolate_secondary_alpha_438bd0(frames,curve,start,end))
+#undef FUN_00438c60
+#define FUN_00438c60(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationFadeConfig86*>(self)->interpolate_channel_438c60(frames,curve,start,end))
+#undef FUN_00438cc0
+#define FUN_00438cc0(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationColorConfigView*>(self)->interpolate_rgb_438cc0(frames,curve,start,end))
+#undef FUN_00438d50
+#define FUN_00438d50(self,frames,curve,start,end) (reinterpret_cast<NativeAnimationColorConfigView*>(self)->interpolate_primary_rgb_438d50(frames,curve,start,end))
+#undef FUN_00438db0
+#define FUN_00438db0(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_secondary_scale_438db0(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
+#undef FUN_00438df0
+#define FUN_00438df0(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_primary_scale_438df0(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
+#undef FUN_00438e30
+#define FUN_00438e30(self,frames,curve,from,to) (reinterpret_cast<NativeAnimationVector2ConfigView*>(self)->interpolate_uv_scale_438e30(frames,curve,*reinterpret_cast<const Vector2*>(from),*reinterpret_cast<const Vector2*>(to)))
 #undef FUN_00439280
 #define FUN_00439280(self,x,y,z) (reinterpret_cast<Animation*>(self)->set_rotation_speed(x,y,z))
 #undef FUN_00439390
@@ -1764,10 +1758,8 @@ LAB_0042df8e:
         std::uint32_t local_238;
         std::uint32_t local_234;
         std::uint32_t local_230;
-        std::uint8_t local_70 [4];
-        std::uint8_t local_6c [4];
-        FUN_00429150(local_70,*(std::uint8_t *)((int)this + 0x492),
-                     *(std::uint8_t *)((int)this + 0x491),*(std::uint8_t *)((int)this + 0x490));
+        Color3 local_70(*(std::uint8_t *)((int)this + 0x492),
+                        *(std::uint8_t *)((int)this + 0x491),*(std::uint8_t *)((int)this + 0x490));
         if ((instruction[3] & 0x10U) == 0) {
           local_230 = *(std::uint32_t *)(instruction + 0xc);
         }
@@ -1786,7 +1778,8 @@ LAB_0042df8e:
         else {
           local_238 = FUN_00437d00(this,*(std::uint32_t *)(instruction + 8));
         }
-        FUN_00429150(local_6c,(char)local_238,(char)local_234,(char)local_230);
+        Color3 local_6c(static_cast<std::uint8_t>(local_238),static_cast<std::uint8_t>(local_234),
+                        static_cast<std::uint8_t>(local_230));
         local_670 = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
           local_23c = *(std::uint32_t *)(instruction + 4);
@@ -1825,10 +1818,8 @@ LAB_0042df8e:
         std::uint32_t local_250;
         std::uint32_t local_24c;
         std::uint32_t local_248;
-        std::uint8_t local_78 [4];
-        std::uint8_t local_74 [4];
-        FUN_00429150(local_78,*(std::uint8_t *)((int)this + 0x496),
-                     *(std::uint8_t *)((int)this + 0x495),*(std::uint8_t *)((int)this + 0x494));
+        Color3 local_78(*(std::uint8_t *)((int)this + 0x496),
+                        *(std::uint8_t *)((int)this + 0x495),*(std::uint8_t *)((int)this + 0x494));
         if ((instruction[3] & 0x10U) == 0) {
           local_248 = *(std::uint32_t *)(instruction + 0xc);
         }
@@ -1847,7 +1838,8 @@ LAB_0042df8e:
         else {
           local_250 = FUN_00437d00(this,*(std::uint32_t *)(instruction + 8));
         }
-        FUN_00429150(local_74,(char)local_250,(char)local_24c,(char)local_248);
+        Color3 local_74(static_cast<std::uint8_t>(local_250),static_cast<std::uint8_t>(local_24c),
+                        static_cast<std::uint8_t>(local_248));
         local_678 = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
           local_254 = *(std::uint32_t *)(instruction + 4);

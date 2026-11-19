@@ -31,8 +31,11 @@ The recovered call graph is progressively bound to maintained C++ owners:
 helpers. The original +0x18 animation-file lookup now calls the already
 reconstructed whole-exact `NativeAnimationLegacyFileView::previous_file_437470`
 member instead of a numeric borrowed-call adapter; its sibling +0x1C getter
-remains distinct. Remaining numeric call-view declarations are explicitly
-scoped to unreconstructed helper owners.
+remains distinct. The eight exact color/fade/vector-configuration leaves are
+now called through their typed owner views, and the two opcode RGB operands
+are real `Color3` objects invoking the original constructor directly.
+Remaining numeric call-view declarations are scoped to unreconstructed
+helper owners.
 
 The two original random-threshold sign-mask expressions are represented as
 natural IEEE-754 unary negation (the original 16-byte XMM mask is the repeated

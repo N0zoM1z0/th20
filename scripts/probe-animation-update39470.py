@@ -25,11 +25,15 @@ ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
 SYMBOL='?update@Animation@th20@@QAEHXZ'
 CANDIDATE_SIZE=41004
-CANDIDATE_INSTRUCTIONS=8721
+CANDIDATE_CODE_SIZE=40360
+CANDIDATE_INSTRUCTIONS=8399
+CANDIDATE_JUMP_TABLE_ENTRIES=161
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
 SPECIAL_CALL_TARGETS={
  '?project_corners@NativeAnimationCornerProjectionDispatchView@th20@@QAEXPAUVector3@2@@Z':0x00445770,
+ '?interpolate_primary_rgb_438d50@NativeAnimationColorConfigView@th20@@QAEXHHABUColor3@2@0@Z':0x00438D50,
+ '?interpolate_rgb_438cc0@NativeAnimationColorConfigView@th20@@QAEXHHABUColor3@2@0@Z':0x00438CC0,
 }
 
 def verify_original():
@@ -73,18 +77,31 @@ def compile_candidate(original_targets):
  flags=['/nologo','/c','/std:c++20','/Od','/Ob0','/GS','/Gy','/Zl','/arch:SSE2','/fp:precise','/sdl','/EHsc']
  subprocess.run([str(ROOT/'scripts/compile-probe.sh'),str(source),str(obj),*flags],cwd=ROOT,check=True)
  body,relocations=cf.object_function(obj,SYMBOL,CANDIDATE_SIZE)
- ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,0))
+ # MSVC emits the 161-entry switch dispatch table as a trailing COFF
+ # contribution with one DIR32 relocation per case label. Do not disassemble
+ # these 644 bytes as fake x86 instructions.
+ label_relocs=sorted(int(x['offset']) for x in relocations
+                     if x['type']=='DIR32' and x['symbol'].startswith('$LN'))
+ assert len(label_relocs)==CANDIDATE_JUMP_TABLE_ENTRIES+1,len(label_relocs)
+ jump_table=label_relocs[-CANDIDATE_JUMP_TABLE_ENTRIES:]
+ assert jump_table==list(range(jump_table[0],jump_table[0]+4*CANDIDATE_JUMP_TABLE_ENTRIES,4))
+ assert jump_table[-1]+4==len(body)
+ jump_table_size=4*CANDIDATE_JUMP_TABLE_ENTRIES
+ code=body[:jump_table[0]]
+ ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(code,0))
  calls=[x for x in ins if x.size==5 and x.bytes[0]==0xE8]
  rel32=[x for x in relocations if x['type']=='REL32']
- assert len(body)==CANDIDATE_SIZE and len(ins)==CANDIDATE_INSTRUCTIONS and len(calls)==CANDIDATE_CALLS,(len(body),len(ins),len(calls))
+ assert len(body)==CANDIDATE_SIZE and len(code)==CANDIDATE_CODE_SIZE and len(ins)==CANDIDATE_INSTRUCTIONS and len(calls)==CANDIDATE_CALLS,(len(body),len(code),len(ins),len(calls))
  assert len(rel32)==CANDIDATE_CALLS,(len(rel32),CANDIDATE_CALLS)
+ assert sum(x.size for x in ins)==len(code)
  candidate_targets=candidate_call_targets(relocations)
  assert candidate_targets==original_targets,('call target multiset mismatch',original_targets-candidate_targets,candidate_targets-original_targets)
  dir32=sum(x['type']=='DIR32' for x in relocations)
  print(f'PASS source compile and opcode coverage: {len(cases)} case labels')
  print(f'PASS all {len(calls)} candidate E8 targets exactly match the original 505-call target multiset')
- print(f'NONEXACT candidate: {len(body)}B, {len(ins)} instructions, {len(calls)} E8, {dir32} DIR32')
- print(f'Explicit gap: +{len(body)-ORIGINAL_SIZE} bytes, +{len(ins)-ORIGINAL_INSTRUCTIONS} instructions; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')
+ print(f'NONEXACT contribution: {len(body)}B = {len(code)}B code + {jump_table_size}B {CANDIDATE_JUMP_TABLE_ENTRIES}-entry switch table')
+ print(f'Code decode: {len(ins)} instructions, {len(calls)} E8, {dir32} total DIR32 ({len(label_relocs)} local-label relocations)')
+ print(f'Explicit gap: +{len(body)-ORIGINAL_SIZE}B total; +{len(code)-ORIGINAL_SIZE}B code before the switch table; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')
 
 def main():
  original_targets=verify_original();compile_candidate(original_targets)
