@@ -1646,3 +1646,4 @@ th20::normalize_coordinates_438eb0
 th20::NativeAnimationCornerProjectionDispatchView::project_corners
 th20::AnimationFile::apply_sprite
 th20::AnimationFile::spawn_child
+th20::AnimationFile::spawn_child_and_update

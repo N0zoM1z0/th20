@@ -1661,3 +1661,4 @@ th20::normalize_coordinates_438eb0,0x00438EB0,function
 th20::NativeAnimationCornerProjectionDispatchView::project_corners,0x00445770,function
 th20::AnimationFile::apply_sprite,0x00438620,function
 th20::AnimationFile::spawn_child,0x00451050,function
+th20::AnimationFile::spawn_child_and_update,0x004512B0,function

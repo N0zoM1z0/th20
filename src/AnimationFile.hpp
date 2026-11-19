@@ -69,6 +69,9 @@ public:
     // VM child-spawn helper: creates a child Animation under the supplied
     // parent and returns its renderer registration by value.
     AnimationHandle spawn_child(std::int32_t script,Animation* parent,std::uint32_t flags);
+    // VM variant that applies a template, inherits parent transform state,
+    // and executes the new Animation before renderer registration.
+    AnimationHandle spawn_child_and_update(std::int32_t script,Animation* parent,std::uint32_t flags);
     AnimationHandle spawn(const char* expected_stem, std::int32_t script,
                           const Vector3& position, float rotation,
                           std::int32_t layer, Animation** output);

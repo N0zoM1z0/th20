@@ -438,3 +438,17 @@ superseded; use the **current ledger and this handoff** for status.
   source and duplicate experimental unit.
 - This real Animation member is the position dependency for the next
   619B opcode-0x76 recursive child-spawn helper.
+
+## 2026-11-19 — AnimationFile 619B recursive child-spawn helper restored
+
+- Added natural `AnimationFile::spawn_child_and_update(int, Animation*, uint)`
+  source. It applies the file template, inherits parent renderer/layer/flags,
+  copies the parent's recursive raw world position and transform vectors,
+  then executes the new Animation VM before Renderer registration.
+- Original VM opcodes 0x76 and 0x78 call this 619B helper. The existing
+  236B raw-world-position helper and four Renderer modes are reused exactly.
+- Whole 619/619 strict exact: 551 ordinary bytes + 68 relocation bytes,
+  all 17 relocation destinations exact, 13 original E8 calls and four
+  original PE HIGHLOW fields independently verified. The 39,470B VM callee
+  remains NONEXACT and is not credited.
+- See `docs/ANIMATION_FILE_SPAWN_CHILD_UPDATE619_STRICT_EXACT.md`.

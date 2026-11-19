@@ -29683,3 +29683,31 @@ relocations = [
   { offset = 0x23A, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x252, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+# CORE/RECON-1158 — complete 619B recursive AnimationFile child-spawn helper.
+[units.animation_file_spawn_child_update_619]
+source = "src/AnimationFileSpawnChildUpdate619.cpp"
+object = "build/core1158-canonical/AnimationFileSpawnChildUpdate619.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::AnimationFile::spawn_child_and_update"]
+symbol = "?spawn_child_and_update@AnimationFile@th20@@QAE?AUAnimationHandle@2@HPAVAnimation@2@I@Z"
+target_address = 0x004512B0
+size = 619
+relocations = [
+  { offset = 0x006, type = "DIR32", symbol = "__ehhandler$?spawn_child_and_update@AnimationFile@th20@@QAE?AUAnimationHandle@2@HPAVAnimation@2@I@Z", target = 0x0056824D },
+  { offset = 0x015, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x02E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x033, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x03C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x058, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x05D, type = "REL32", symbol = "?allocate_animation@AnimationPoolOwner@th20@@QAEPAVAnimation@2@XZ", target = 0x0044C9B0 },
+  { offset = 0x07C, type = "REL32", symbol = "?apply_template@AnimationFile@th20@@QAEXPAVAnimation@2@H@Z", target = 0x00438B70 },
+  { offset = 0x125, type = "REL32", symbol = "?world_position_for_spawn@Animation@th20@@QAEAAUVector3@2@AAU32@@Z", target = 0x0044CB80 },
+  { offset = 0x170, type = "REL32", symbol = "?update@Animation@th20@@QAEHXZ", target = 0x0042B5D0 },
+  { offset = 0x178, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x1AE, type = "REL32", symbol = "?spawn_flag6_44b890@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B890 },
+  { offset = 0x1E4, type = "REL32", symbol = "?spawn_flag4_44b8e0@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B8E0 },
+  { offset = 0x21A, type = "REL32", symbol = "?spawn_flag2_44b840@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B840 },
+  { offset = 0x233, type = "REL32", symbol = "?spawn_normal_44b7f0@NativeSpawnRendererView@th20@@QAE?AUAnimationHandle@2@PAVAnimation@2@@Z", target = 0x0044B7F0 },
+  { offset = 0x249, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x261, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
