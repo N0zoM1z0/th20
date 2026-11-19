@@ -558,9 +558,9 @@ superseded; use the **current ledger and this handoff** for status.
   preceding 40,836B checkpoint; it restores real source-level lifetimes,
   not an optimization or an exactness claim.
 - The candidate still has 210 DIR32 relocations versus 55 original PE
-  HIGHLOW fields and a stack frame (`0x800` versus `0x804`). Its total
-  contribution is now -2,206B (36,620B code plus the 644B switch table); it
-  has 633 fewer
+  HIGHLOW fields and a stack frame (`0x7f8` versus `0x804`). Its total
+  contribution is now -2,318B (36,508B code plus the 644B switch table); it
+  has 639 fewer
   code instruction heads than the original. It is explicitly NONEXACT, has
   no exact match unit, and is not counted as a new exact function. No
   assembly, NOP padding, dummy accesses or byte fillers. Next work is strict

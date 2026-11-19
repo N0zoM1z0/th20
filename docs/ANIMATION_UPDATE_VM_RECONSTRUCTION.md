@@ -176,14 +176,14 @@ new exact functions. The candidate is now **2,318 bytes smaller overall** than t
 36,508 bytes of code plus a 644-byte compiler switch table. The code portion
 has 639 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
-`sub esp, 0x804`; the current candidate now uses `sub esp, 0x800` after
+`sub esp, 0x804`; the current candidate now uses `sub esp, 0x7F8` after
 removing obsolete Timer pointer temporaries, numeric call-view paths, unused
 decompiler locals and over-scoped opcode temporaries. Absolute-data relocation
 ownership and the remaining instruction/frame-layout differences are
 unresolved. No exactness credit is claimed from call-target
 parity alone.
 
-The next pass should reconcile the 0x04 stack-frame delta, absolute-data
+The next pass should reconcile the 0x0C stack-frame delta, absolute-data
 references, and ordinary instruction bytes using natural C++ types and
 lifetimes. Do not add padding or assembly to close the size gap.
 
@@ -191,8 +191,9 @@ lifetimes. Do not add padding or assembly to close the size gap.
 
 The current focused Boss probe compiles the full 161-opcode source, verifies
 all 505 original call destinations, checks the natural 56-byte Vector3 array
-helper against `0x0040BC20`, and pins the current 40,532-byte contribution and
-`0x830` frame. The changed Animation flag/owner closure was independently
+helper against `0x0040BC20`, and pins the current 37,152-byte contribution and
+`0x7F8` frame. It also checks the original ordered child-spawn/resolve/writeback
+subsequences (two child writebacks and one child-update/vector-transform path). The changed Animation flag/owner closure was independently
 compiled across 23 affected translation units and strict-replayed as **112/112
 units in 20 cold objects**. The separate Timer/ScalarMath closure strict-replayed
 as **29/29 units in 3 cold objects**. These are targeted source closures, not a
