@@ -476,16 +476,18 @@ superseded; use the **current ledger and this handoff** for status.
   Motion, AnimationHandle and geometry C++ interfaces.
 - The immutable original is independently bounded at 39,470B / 8,559
   instruction heads / 505 E8 / 55 PE HIGHLOW. The current C++ contribution
-  is 40,912B: 40,268B code plus a compiler-emitted 644B/161-entry switch
-  table; the code portion decodes to 8,400 instruction heads and 505 E8.
+  is 40,812B: 40,168B code plus a compiler-emitted 644B/161-entry switch
+  table; the code portion decodes to 8,383 instruction heads and 505 E8.
   All 505 candidate E8 destinations match the original call-target multiset,
   including postfix Timer increment, child-spawn return ABI, corner projection,
   the whole-exact +0x18 file lookup, the original 0x0040BC20 array helper,
   the newly exact 59B Timer unscaled-fractional advance at opcode 4, the
   existing whole-exact 20B CardRenderer current-file getter at all three
   negative-index fallback paths, typed Timer postfix decrement, three
-  interpolation-duration members (including the 22/22 Angle specialization)
-  and the exact CRT square-root adapter. The stack frame is now `0x85c`
+  interpolation-duration members (including the 22/22 Angle specialization),
+  the exact CRT square-root adapter, and all four scalar trig wrappers as
+  natural cdecl ScalarMath calls. The newly added asin/acos wrappers each
+  replay 35/35 bytes with their original CRT import relocations. The stack frame is now `0x85c`
   versus the original `0x804`, down from the previous `0x874`.
 - The eight exact color/fade/vector leaves and all eight coordinate-normalizer
   calls are bound through typed owners; the normalizer independently replays
@@ -494,16 +496,17 @@ superseded; use the **current ledger and this handoff** for status.
   duration specialization is independently 22/22 exact; both Timer postfix
   decrement call sites and the three duration writes now use real C++ members,
   and opcode 0x20 uses the existing exact 35B CRT sqrt adapter. This latest
-  pass removes 136B/17 instructions from the 41,048B checkpoint and shrinks
-  the frame from 0x874 to 0x85c. Opcode scratch values
+  Timer/interpolation pass removed 136B/17 instructions from the 41,048B
+  checkpoint and shrank the frame from 0x874 to 0x85c. The follow-up math
+  owner pass removes another 100B/17 instructions from the 40,912B candidate. Opcode scratch values
   now use real Color3, Vector2, Vector3 and Angle objects. Both corner paths use natural Vector3[4] arrays, and
   their compiler-generated 56B array helper is byte-identical to original
   0x0040BC20. This corner-array recovery grew the candidate by 220B from the
   preceding 40,836B checkpoint; it restores real source-level lifetimes,
   not an optimization or an exactness claim.
-- The candidate still has 213 DIR32 relocations versus 55 original PE
+- The candidate still has 210 DIR32 relocations versus 55 original PE
   HIGHLOW fields and a larger stack frame (`0x85c` versus `0x804`). Its total
-  contribution is +1,442B (+798B code plus the switch table); it has 159 fewer
+  contribution is +1,342B (+698B code plus the switch table); it has 176 fewer
   code instruction heads than the original. It is explicitly NONEXACT, has
   no exact match unit, and is not counted as a new exact function. No
   assembly, NOP padding, dummy accesses or byte fillers. Next work is strict

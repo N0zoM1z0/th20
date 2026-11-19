@@ -52,11 +52,11 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate COFF contribution is **40,912 bytes**: **40,268 bytes
+The current candidate COFF contribution is **40,812 bytes**: **40,168 bytes
 of code plus a 644-byte, 161-entry compiler-generated switch table**. The
-code portion decodes to 8,400 instruction heads and 505 E8 calls, compared
+code portion decodes to 8,383 instruction heads and 505 E8 calls, compared
 with the original 39,470-byte body / 8,559 instruction heads / 505 E8 calls.
-The candidate has 505 REL32 call relocations and 213 DIR32 relocations; the
+The candidate has 505 REL32 call relocations and 210 DIR32 relocations; the
 original PE body has 55 physical HIGHLOW fields.
 
 The source now uses the original exact typed owners for the +0x18 file lookup,
@@ -70,9 +70,13 @@ negative-index sprite fallbacks. The latter is independently checked as
 `timer_4c8--`; the Angle and two float interpolation-duration writes call their
 real typed members, with the Angle specialization independently verified
 22/22 bytes. Opcode 0x20 now calls the existing exact CRT sqrt adapter
-(35/35 bytes). This latest direct-member pass removes 136 bytes and 17
-instruction heads from the preceding 41,048-byte checkpoint, and reduces the
-stack frame from `0x874` to `0x85c`. Opcode temporaries use natural `Color3`,
+(35/35 bytes). The four scalar trig opcodes now call the natural cdecl
+`scalar_math::{sine,cosine,arcsine,arccosine}` wrappers directly; all four
+35-byte CRT adapters replay exactly, including the newly added asin/acos
+units and their original `_asin`/`_acos` relocations. This latest math-owner
+pass removes a further 100 bytes and 17 instruction heads from the preceding
+40,912-byte checkpoint. The preceding Timer/interpolation/sqrt pass reduced
+the stack frame from `0x874` to `0x85c`. Opcode temporaries use natural `Color3`,
 `Vector3`, `Vector2`, and `Angle` objects. Both four-corner paths now use
 `Vector3 corners[4]`; the MSVC-generated 56-byte array-construction helper is
 byte-identical to original `0x0040BC20`, and the normalizer leaf replays exact
@@ -85,9 +89,9 @@ progress, not a size optimization.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The total contribution is **+1,442 bytes**, comprising
-+798 bytes of code and the 644-byte compiler switch table. The code portion
-has 159 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The total contribution is **+1,342 bytes**, comprising
++698 bytes of code and the 644-byte compiler switch table. The code portion
+has 176 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
 `sub esp, 0x804`; the current candidate now uses `sub esp, 0x85C` after
 removing the obsolete Timer pointer temporaries and numeric call-view paths.
@@ -95,7 +99,7 @@ Absolute-data relocation ownership and the remaining instruction/frame-layout
 differences are unresolved. No exactness credit is claimed from call-target
 parity alone.
 
-The next pass should reconcile the 0x70 stack-frame delta, absolute-data
+The next pass should reconcile the 0x58 stack-frame delta, absolute-data
 references, and ordinary instruction bytes using natural C++ types and
 lifetimes. Do not add padding or assembly to close the size gap.
 

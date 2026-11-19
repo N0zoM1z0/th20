@@ -16,6 +16,14 @@ float absolute(float value) {
     return static_cast<float>(std::fabs(static_cast<double>(value)));
 }
 
+float arcsine(float value) {
+    return static_cast<float>(std::asin(static_cast<double>(value)));
+}
+
+float arccosine(float value) {
+    return static_cast<float>(std::acos(static_cast<double>(value)));
+}
+
 float square_root(float value) {
     return static_cast<float>(std::sqrt(static_cast<double>(value)));
 }

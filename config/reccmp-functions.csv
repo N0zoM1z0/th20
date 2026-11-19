@@ -1671,3 +1671,5 @@ th20::Interpolation<Angle>::set_tangent_start,0x004394B0,function
 th20::Animation::set_rotation_speed,0x00439280,function
 th20::Animation::set_scale_speed,0x00439390,function
 th20::Animation::update,0x0042B5D0,function
+th20::scalar_math::arcsine,0x00439760,function
+th20::scalar_math::arccosine,0x00439790,function

@@ -6,6 +6,8 @@ namespace th20::scalar_math {
 float sine(float value);
 float cosine(float value);
 float absolute(float value);
+float arcsine(float value);
+float arccosine(float value);
 float square_root(float value);
 float arctangent(float y, float x);
 

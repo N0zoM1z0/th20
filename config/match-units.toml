@@ -93,6 +93,8 @@ target_address = 0x004397C0
 size = 35
 relocations = [{ offset = 0x12, type = "REL32", symbol = "_cos", target = 0x0054FF50 }]
 
+
+
 [units.scalar_math_square_root]
 source = "src/ScalarMath.cpp"
 object = "build/core141-canonical/ScalarMath.obj"
@@ -29819,3 +29821,24 @@ symbol = "?add_unscaled@Timer@th20@@QAEXM@Z"
 target_address = 0x00454110
 size = 59
 relocations = []
+
+# CORE/RECON-1163: natural C++ wrappers for the original CRT arcsine/arccosine helpers.
+[units.scalar_math_arcsine_35]
+source = "src/ScalarMath.cpp"
+object = "build/core1165-canonical/ScalarMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::scalar_math::arcsine"]
+symbol = "?arcsine@scalar_math@th20@@YAMM@Z"
+target_address = 0x00439760
+size = 35
+relocations = [{ offset = 0x12, type = "REL32", symbol = "_asin", target = 0x0054FEB0 }]
+
+[units.scalar_math_arccosine_35]
+source = "src/ScalarMath.cpp"
+object = "build/core1165-canonical/ScalarMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::scalar_math::arccosine"]
+symbol = "?arccosine@scalar_math@th20@@YAMM@Z"
+target_address = 0x00439790
+size = 35
+relocations = [{ offset = 0x12, type = "REL32", symbol = "_acos", target = 0x0054FF00 }]

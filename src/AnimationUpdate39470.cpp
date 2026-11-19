@@ -97,10 +97,6 @@ struct NativeAnimationVmCallView {
     void call_004394b0(const void*);
     void call_004394d0(std::uint32_t);
     void call_004394f0(std::uint32_t);
-    float call_00439760(float);
-    float call_00439790(float);
-    float call_004397c0(float);
-    float call_00439820(float);
     void call_00445770(float*);
     void call_00450350(std::int32_t);
 };
@@ -137,10 +133,6 @@ struct NativeAnimationVmCallView {
 #define vm_004394b0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004394b0(__VA_ARGS__))
 #define vm_004394d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004394d0(__VA_ARGS__))
 #define vm_004394f0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004394f0(__VA_ARGS__))
-#define vm_00439760(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439760(__VA_ARGS__))
-#define vm_00439790(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439790(__VA_ARGS__))
-#define vm_004397c0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004397c0(__VA_ARGS__))
-#define vm_00439820(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439820(__VA_ARGS__))
 #define vm_00445770(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00445770(__VA_ARGS__))
 #define vm_00450350(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00450350(__VA_ARGS__))
 
@@ -206,11 +198,7 @@ struct NativeAnimationVmCallView {
 #define FUN_004394f0 vm_004394f0
 #define FUN_004395b0 vm_004395b0
 #define FUN_004396a0 vm_004396a0
-#define FUN_00439760 vm_00439760
-#define FUN_00439790 vm_00439790
-#define FUN_004397c0 vm_004397c0
 #define FUN_004397f0 vm_004397f0
-#define FUN_00439820 vm_00439820
 #define FUN_00445770 vm_00445770
 #define FUN_0044ced0 vm_0044ced0
 #define FUN_00450350 vm_00450350
@@ -332,10 +320,6 @@ struct NativeAnimationVmCallView {
 #define FUN_0042b590(animation,bytes) (reinterpret_cast<Animation*>(animation)->allocate_geometry(bytes))
 #undef FUN_00438600
 #define FUN_00438600(left,right) (add_angles(left,right))
-#undef FUN_004397c0
-#define FUN_004397c0(math,value) (scalar_math::cosine(value))
-#undef FUN_00439820
-#define FUN_00439820(math,value) (scalar_math::sine(value))
 #undef FUN_00445770
 #define FUN_00445770(animation,value) (reinterpret_cast<NativeAnimationCornerProjectionDispatchView*>(animation)->project_corners(reinterpret_cast<Vector3*>(value)))
 
@@ -356,7 +340,6 @@ std::int32_t Animation::update() {
   short *extraout_ECX_02;
   short *extraout_ECX_03;
   short *extraout_ECX_04;
-  short *psVar9;
   void *this_00;
   void *this_01;
   std::uint32_t *puVar10;
@@ -3453,14 +3436,12 @@ LAB_0042df8e:
         float local_4c8;
         if ((instruction[3] & 2U) == 0) {
           local_4c8 = *(float *)(instruction + 6);
-          psVar9 = instruction;
         }
         else {
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 6));
           local_4c8 = (float)fVar11;
-          psVar9 = reinterpret_cast<short*>(this);
         }
-        fVar11 = FUN_00439820(psVar9,local_4c8);
+        fVar11 = scalar_math::sine(local_4c8);
         local_730 = (float)fVar11;
         pfVar6 = FUN_00437310(this,(float *)(instruction + 4),instruction[3],0);
         *pfVar6 = local_730;
@@ -3471,14 +3452,12 @@ LAB_0042df8e:
         float local_4cc;
         if ((instruction[3] & 2U) == 0) {
           local_4cc = *(float *)(instruction + 6);
-          psVar9 = instruction;
         }
         else {
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 6));
           local_4cc = (float)fVar11;
-          psVar9 = reinterpret_cast<short*>(this);
         }
-        fVar11 = FUN_004397c0(psVar9,local_4cc);
+        fVar11 = scalar_math::cosine(local_4cc);
         local_734 = (float)fVar11;
         pfVar6 = FUN_00437310(this,(float *)(instruction + 4),instruction[3],0);
         *pfVar6 = local_734;
@@ -3505,14 +3484,12 @@ LAB_0042df8e:
         float local_4d4;
         if ((instruction[3] & 2U) == 0) {
           local_4d4 = *(float *)(instruction + 6);
-          psVar9 = instruction;
         }
         else {
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 6));
           local_4d4 = (float)fVar11;
-          psVar9 = reinterpret_cast<short*>(this);
         }
-        fVar11 = FUN_00439760(psVar9,local_4d4);
+        fVar11 = scalar_math::arcsine(local_4d4);
         local_73c = (float)fVar11;
         pfVar6 = FUN_00437310(this,(float *)(instruction + 4),instruction[3],0);
         *pfVar6 = local_73c;
@@ -3523,14 +3500,12 @@ LAB_0042df8e:
         float local_4d8;
         if ((instruction[3] & 2U) == 0) {
           local_4d8 = *(float *)(instruction + 6);
-          psVar9 = instruction;
         }
         else {
           fVar11 = FUN_00437eb0((int)this,*(float *)(instruction + 6));
           local_4d8 = (float)fVar11;
-          psVar9 = reinterpret_cast<short*>(this);
         }
-        fVar11 = FUN_00439790(psVar9,local_4d8);
+        fVar11 = scalar_math::arccosine(local_4d8);
         local_740 = (float)fVar11;
         pfVar6 = FUN_00437310(this,(float *)(instruction + 4),instruction[3],0);
         *pfVar6 = local_740;
