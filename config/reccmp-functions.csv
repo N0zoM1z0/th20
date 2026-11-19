@@ -1651,3 +1651,4 @@ th20::NativeAnimationVector2ConfigView::interpolate_primary_scale_438df0,0x00438
 th20::NativeAnimationVector2ConfigView::interpolate_uv_scale_438e30,0x00438E30,function
 th20::NativeAnimationColorConfigView::interpolate_secondary_alpha_438bd0,0x00438BD0,function
 th20::NativeAnimationColorConfigView::interpolate_rgb_438cc0,0x00438CC0,function
+th20::NativeAnimationColorConfigView::interpolate_primary_rgb_438d50,0x00438D50,function

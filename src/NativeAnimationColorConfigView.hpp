@@ -8,5 +8,7 @@ struct NativeAnimationColorConfigView {
                                              std::uint8_t start, std::uint8_t end);
     void interpolate_rgb_438cc0(std::int32_t frames, std::int32_t curve,
                                 const Color3& start, const Color3& end);
+    void interpolate_primary_rgb_438d50(std::int32_t frames, std::int32_t curve,
+                                        const Color3& start, const Color3& end);
 };
 }

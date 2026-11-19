@@ -993,7 +993,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00438BD0,authored,Animation,authored,high,"CORE/RECON-1150; docs/ANIMATION_COLOR_CONFIG274_STRICT_EXACT.md; native Animation-specific color interpolation that updates live color-mode bitfield, called from the actual 39470B animation VM"
 0x00438C60,authored,Animation,authored,high,"CORE/RECON-1148; docs/ANIMATION_FADE_CONFIG86_STRICT_EXACT.md; native Animation byte endpoint interpolation, used by game VM, Polygon, Ribbon and Trail config callers"
 0x00438CC0,authored,Animation,authored,high,"CORE/RECON-1150; docs/ANIMATION_COLOR_CONFIG274_STRICT_EXACT.md; native Animation-specific color interpolation that updates live color-mode bitfield, called from the actual 39470B animation VM"
-0x00438D50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00438D50,authored,Animation,authored,high,CORE/RECON-1151; docs/ANIMATION_PRIMARY_RGB96_STRICT_EXACT.md; original Animation custom RGB interpolation called by 39470B animation VM
 0x00438DB0,authored,Animation,authored,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md; original game Animation custom Vector2 interpolation wrapper called from 39470B VM
 0x00438DF0,authored,Animation,authored,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md; original game Animation custom Vector2 interpolation wrapper called from 39470B VM
 0x00438E30,authored,Animation,authored,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md; original game Animation custom Vector2 interpolation wrapper called from 39470B VM

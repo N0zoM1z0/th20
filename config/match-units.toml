@@ -29540,3 +29540,20 @@ relocations = [
   { offset = 0x4B, type = "REL32", symbol = "?begin@?$Interpolation@UIntegerTriple@th20@@@th20@@QAEXHHABUIntegerTriple@2@0@Z", target = 0x004395D0 },
   { offset = 0x84, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1151: 96B Animation Color3 RGB interpolation via genuine +0xE0 member.
+[units.animation_primary_rgb_438d50]
+source = "src/AnimationRGBInterpolation96.cpp"
+object = "build/core1151-canonical/AnimationRGBInterpolation96.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationColorConfigView::interpolate_primary_rgb_438d50"]
+symbol = "?interpolate_primary_rgb_438d50@NativeAnimationColorConfigView@th20@@QAEXHHABVColor3@2@0@Z"
+target_address = 0x00438D50
+size = 96
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1B, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@ABVColor3@1@@Z", target = 0x00429180 },
+  { offset = 0x27, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@ABVColor3@1@@Z", target = 0x00429180 },
+  { offset = 0x4B, type = "REL32", symbol = "?begin@?$Interpolation@UIntegerTriple@th20@@@th20@@QAEXHHABUIntegerTriple@2@0@Z", target = 0x004395D0 },
+  { offset = 0x56, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
