@@ -71,6 +71,10 @@ void Timer::set_mode(std::uint32_t mode) {
     flag_bits.mode = mode;
 }
 
+void Timer::set_from_current(const Timer& source) {
+    set(source.current);
+}
+
 void Timer::set(std::int32_t value) {
     if (!(flags & 1u)) {
         reset();

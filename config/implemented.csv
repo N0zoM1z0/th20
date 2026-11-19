@@ -1390,7 +1390,7 @@ th20::normalize_vector3_45cf10
 th20::NativeVectorInterpolationConfigView::configure_45d190
 th20::NativeAnimationInterpolationForwardView::configure_45d150
 th20::NativeParticleSpawnFileView::spawn_45d210
-"th20::AnimationFile::spawn(full 7-arg protocol)"
+th20::AnimationFile::spawn(full 7-arg protocol)
 th20::NativeSpawnRendererView::spawn_normal_44b7f0
 th20::NativeSpawnRendererView::spawn_flag2_44b840
 th20::NativeSpawnRendererView::spawn_flag6_44b890
@@ -1399,9 +1399,9 @@ th20::NativeRendererPoolSelector::renderer_index_449490
 th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0
 th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0
 th20::NativeRendererPoolRegister::register_44c8f0
-"th20::NativeGenerationPool::generation_bits_4493e0"
-"th20::NativeGenerationPool::operator++(postfix)"
-"th20::NativeGenerationPool::operator&="
+th20::NativeGenerationPool::generation_bits_4493e0
+th20::NativeGenerationPool::operator++(postfix)
+th20::NativeGenerationPool::operator&=
 th20::native_spawn_stem_equals_446de0
 th20::NativeStemStringView::equals_44b400
 th20::native_stem_equal_len_447200
@@ -1647,3 +1647,11 @@ th20::NativeAnimationCornerProjectionDispatchView::project_corners
 th20::AnimationFile::apply_sprite
 th20::AnimationFile::spawn_child
 th20::AnimationFile::spawn_child_and_update
+"th20::Color3::Color3(std::uint8_t,std::uint8_t,std::uint8_t)"
+th20::Timer::set_from_current
+th20::Interpolation<Angle>::set_end
+th20::Interpolation<Angle>::set_tangent_end
+th20::Interpolation<Angle>::set_start
+th20::Interpolation<Angle>::set_tangent_start
+th20::Animation::set_rotation_speed
+th20::Animation::set_scale_speed

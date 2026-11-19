@@ -29711,3 +29711,100 @@ relocations = [
   { offset = 0x249, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
   { offset = 0x261, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_color3_ctor_429150]
+source = "src/Color3.cpp"
+object = "build/core141-canonical/Color3.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Color3::Color3(std::uint8_t,std::uint8_t,std::uint8_t)"]
+symbol = "??0Color3@th20@@QAE@EEE@Z"
+target_address = 0x00429150
+size = 43
+relocations = [
+]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_timer_set_from_current_429280]
+source = "src/Timer.cpp"
+object = "build/core141-canonical/Timer.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Timer::set_from_current"]
+symbol = "?set_from_current@Timer@th20@@QAEXABU12@@Z"
+target_address = 0x00429280
+size = 29
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?set@Timer@th20@@QAEXH@Z", target = 0x00423F80 },
+]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_angle_set_end_438ae0]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Angle>::set_end"]
+symbol = "?set_end@?$Interpolation@UAngle@th20@@@th20@@QAEXABUAngle@2@@Z"
+target_address = 0x00438AE0
+size = 24
+relocations = [
+]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_angle_set_tangent_end_438b50]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Angle>::set_tangent_end"]
+symbol = "?set_tangent_end@?$Interpolation@UAngle@th20@@@th20@@QAEXABUAngle@2@@Z"
+target_address = 0x00438B50
+size = 24
+relocations = [
+]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_angle_set_start_439440]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Angle>::set_start"]
+symbol = "?set_start@?$Interpolation@UAngle@th20@@@th20@@QAEXABUAngle@2@@Z"
+target_address = 0x00439440
+size = 23
+relocations = [
+]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_angle_set_tangent_start_4394b0]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Angle>::set_tangent_start"]
+symbol = "?set_tangent_start@?$Interpolation@UAngle@th20@@@th20@@QAEXABUAngle@2@@Z"
+target_address = 0x004394B0
+size = 24
+relocations = [
+]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_set_rotation_speed_39280]
+source = "src/AnimationParameters.cpp"
+object = "build/core163-canonical/AnimationParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::set_rotation_speed"]
+symbol = "?set_rotation_speed@Animation@th20@@QAEXMMM@Z"
+target_address = 0x00439280
+size = 76
+relocations = [
+]
+
+# CORE/RECON-1160: native Animation VM opcode leaf.
+[units.animation_vm_set_scale_speed_39390]
+source = "src/AnimationParameters.cpp"
+object = "build/core163-canonical/AnimationParameters.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::set_scale_speed"]
+symbol = "?set_scale_speed@Animation@th20@@QAEXMM@Z"
+target_address = 0x00439390
+size = 62
+relocations = [
+]

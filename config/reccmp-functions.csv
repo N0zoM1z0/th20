@@ -1391,7 +1391,7 @@ th20::normalize_vector3_45cf10,0x0045CF10,function
 th20::NativeVectorInterpolationConfigView::configure_45d190,0x0045D190,function
 th20::NativeAnimationInterpolationForwardView::configure_45d150,0x0045D150,function
 th20::NativeParticleSpawnFileView::spawn_45d210,0x0045D210,function
-"th20::AnimationFile::spawn(full 7-arg protocol)",0x00450CB0,function
+th20::AnimationFile::spawn(full 7-arg protocol),0x00450CB0,function
 th20::NativeSpawnRendererView::spawn_normal_44b7f0,0x0044B7F0,function
 th20::NativeSpawnRendererView::spawn_flag2_44b840,0x0044B840,function
 th20::NativeSpawnRendererView::spawn_flag6_44b890,0x0044B890,function
@@ -1400,9 +1400,9 @@ th20::NativeRendererPoolSelector::renderer_index_449490,0x00449490,function
 th20::NativeSpawnAnimationPoolView::prefer_alternate_44c8a0,0x0044C8A0,function
 th20::NativeSpawnAnimationPoolView::choose_renderer_44c8c0,0x0044C8C0,function
 th20::NativeRendererPoolRegister::register_44c8f0,0x0044C8F0,function
-"th20::NativeGenerationPool::generation_bits_4493e0",0x004493E0,function
-"th20::NativeGenerationPool::operator++(postfix)",0x00449570,function
-"th20::NativeGenerationPool::operator&=",0x00449690,function
+th20::NativeGenerationPool::generation_bits_4493e0,0x004493E0,function
+th20::NativeGenerationPool::operator++(postfix),0x00449570,function
+th20::NativeGenerationPool::operator&=,0x00449690,function
 th20::native_spawn_stem_equals_446de0,0x00446DE0,function
 th20::NativeStemStringView::equals_44b400,0x0044B400,function
 th20::native_stem_equal_len_447200,0x00447200,function
@@ -1662,3 +1662,11 @@ th20::NativeAnimationCornerProjectionDispatchView::project_corners,0x00445770,fu
 th20::AnimationFile::apply_sprite,0x00438620,function
 th20::AnimationFile::spawn_child,0x00451050,function
 th20::AnimationFile::spawn_child_and_update,0x004512B0,function
+"th20::Color3::Color3(std::uint8_t,std::uint8_t,std::uint8_t)",0x00429150,function
+th20::Timer::set_from_current,0x00429280,function
+th20::Interpolation<Angle>::set_end,0x00438AE0,function
+th20::Interpolation<Angle>::set_tangent_end,0x00438B50,function
+th20::Interpolation<Angle>::set_start,0x00439440,function
+th20::Interpolation<Angle>::set_tangent_start,0x004394B0,function
+th20::Animation::set_rotation_speed,0x00439280,function
+th20::Animation::set_scale_speed,0x00439390,function

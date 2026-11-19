@@ -202,6 +202,9 @@ public:
     float width();
     void set_rotation(float angle);
     void set_rotation_z(float angle);
+    // ANM opcode 0x57 angular-rate vector and opcode 0x58 scale-rate pair.
+    void set_rotation_speed(float x, float y, float z);
+    void set_scale_speed(float x, float y);
     void set_scale(float x, float y);
     void set_scale_58(float x, float y);
     void interpolate_scale(std::int32_t duration, std::int32_t mode, float x, float y);

@@ -452,3 +452,17 @@ superseded; use the **current ledger and this handoff** for status.
   original PE HIGHLOW fields independently verified. The 39,470B VM callee
   remains NONEXACT and is not credited.
 - See `docs/ANIMATION_FILE_SPAWN_CHILD_UPDATE619_STRICT_EXACT.md`.
+
+## 2026-11-19 — eight original Animation VM opcode leaves restored
+
+- Recovered the 43B `Color3(red,green,blue)` BGR-storing constructor used
+  by opcode 0x55; the 29B `Timer::set_from_current` helper used by VM
+  jump/reset paths; all four 23/24B `Interpolation<Angle>` start/end and
+  tangent setters used by opcode 0x53; and the 76B/62B Animation angular-
+  rate and scale-rate setters called by opcodes 0x57/0x58.
+- Every leaf has its own physical match unit and whole original PE proof.
+  All eight complete C++ candidates replay strict exact (305/305 bytes,
+  including the Timer helper's one real E8 relocation to `Timer::set`).
+- The 39,470B `Animation::update` Boss remains explicitly NONEXACT; these
+  are verified leaves and opcode semantics, not a claim that the dispatcher
+  has been reconstructed.

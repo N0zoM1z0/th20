@@ -5,6 +5,17 @@ void Animation::set_rotation_z(float angle) {
     base.vector_38.z = angle;
     base.flags.word_04 |= 2u;
 }
+void Animation::set_rotation_speed(float x,float y,float z) {
+    base.vector_44.x=x;
+    base.vector_44.y=y;
+    base.vector_44.z=z;
+    base.flags.word_04|=0x80000u;
+}
+void Animation::set_scale_speed(float x,float y) {
+    base.vector_60.x=x;
+    base.vector_60.y=y;
+    base.flags.word_04|=0x80000u;
+}
 void Animation::set_scale(float x, float y) {
     base.vector_50.x = x;
     base.vector_50.y = y;

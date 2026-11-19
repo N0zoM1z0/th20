@@ -46,6 +46,8 @@ struct Timer {
     void reset();
     void set_mode(std::uint32_t mode);
     void set(std::int32_t value);
+    // Copy only the source current frame through the destination's set protocol.
+    void set_from_current(const Timer& source);
     void set(float value);
     void add(float delta);
     std::int32_t tick();
