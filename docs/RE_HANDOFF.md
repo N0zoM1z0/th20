@@ -483,7 +483,8 @@ superseded; use the **current ledger and this handoff** for status.
   `float_argument`, `integer_value`, `float_value`). The remaining VM calls
   use typed Animation/Timer/Interpolation/Renderer/
   Motion/Random/Math owners, with only the 0x4397F0 cdecl math helper still
-  awaiting owner/source recovery.
+  awaiting owner/source recovery; the 14 previous-file lookups are direct
+  `NativeAnimationLegacyFileView` calls, not numeric `FUN_` macros.
   All 505 candidate E8 destinations match the original call-target multiset,
   including postfix Timer increment, child-spawn return ABI, corner projection,
   the whole-exact +0x18 file lookup, the original 0x0040BC20 array helper,

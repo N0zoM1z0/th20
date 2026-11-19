@@ -46,8 +46,6 @@ extern float DAT_005c5540[3];
 // The remaining original call sites are bound to real C++ owners or to the
 // small set of still-unrecovered external helpers. There is no generic VM
 // numeric-address call view left in this translation unit.
-#define vm_00437470(self, ...) (reinterpret_cast<NativeAnimationLegacyFileView*>(self)->previous_file_437470(__VA_ARGS__))
-#define FUN_00437470 vm_00437470
 #define FUN_004397f0 vm_004397f0
 
 // Replace already reconstructed dependencies with their real maintained C++
@@ -304,7 +302,7 @@ std::int32_t Animation::update() {
     local_76c = (std::uint32_t *)((int)this + 0x4d8);
     FUN_00423540(local_76c);
     if (*(int *)((int)this + 0x438) != 0) {
-      local_774 = (void *)FUN_00437470((int)this);
+      local_774 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_770 = *(int *)((int)this + 0x24);
       iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(FUN_00437490(local_774,local_770)));
       instruction = (short *)(iVar2 + *(int *)((int)this + 0x28));
@@ -313,7 +311,7 @@ std::int32_t Animation::update() {
     if ((((*(std::uint8_t *)((int)this + 0x4a0) & 3) != 1) || (DAT_005ba828 == 0)) ||
        (uVar3 = FUN_00424060(DAT_005ba828), uVar3 == 0)) {
 LAB_0042b831:
-      local_77c = (void *)FUN_00437470((int)this);
+      local_77c = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_778 = *(int *)((int)this + 0x24);
       iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(FUN_00437490(local_77c,local_778)));
       instruction = (short *)(iVar2 + *(int *)((int)this + 0x28));
@@ -355,7 +353,7 @@ switchD_0042b8cc_caseD_a0:
       case 0x72: {
         void* local_57c;
         std::uint32_t local_558;
-        local_57c = FUN_00437470((int)this);
+        local_57c = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_780 = this;
         if ((instruction[3] & 1U) == 0) {
           local_558 = *(std::uint32_t *)(instruction + 4);
@@ -373,7 +371,7 @@ switchD_0042b8cc_caseD_a0:
         float local_564;
         std::uint32_t local_560;
         std::uint32_t local_55c;
-        local_584 = FUN_00437470((int)this);
+        local_584 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         if ((*(std::uint32_t *)((int)this + 0x49c) >> 0x12 & 1) == 0) {
           local_55c = 0;
         }
@@ -414,7 +412,7 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_570;
         float local_f8;
         std::uintptr_t local_f4;
-        local_590 = FUN_00437470((int)this);
+        local_590 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         if ((*(std::uint32_t *)((int)this + 0x49c) >> 0x12 & 1) == 0) {
           local_570 = 2;
         }
@@ -451,7 +449,7 @@ switchD_0042b8cc_caseD_a0:
       case 0x74: {
         void* local_59c;
         std::uint32_t local_fc;
-        local_59c = FUN_00437470((int)this);
+        local_59c = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_598 = this;
         if ((instruction[3] & 1U) == 0) {
           local_fc = *(std::uint32_t *)(instruction + 4);
@@ -465,7 +463,7 @@ switchD_0042b8cc_caseD_a0:
       case 0x73: {
         void* local_5a4;
         std::uint32_t local_100;
-        local_5a4 = FUN_00437470((int)this);
+        local_5a4 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_5a0 = this;
         if ((instruction[3] & 1U) == 0) {
           local_100 = *(std::uint32_t *)(instruction + 4);
@@ -479,7 +477,7 @@ switchD_0042b8cc_caseD_a0:
       case 0x75: {
         void* local_5ac;
         std::uint32_t local_104;
-        local_5ac = FUN_00437470((int)this);
+        local_5ac = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_5a8 = this;
         if ((instruction[3] & 1U) == 0) {
           local_104 = *(std::uint32_t *)(instruction + 4);
@@ -508,7 +506,7 @@ switchD_0042b8cc_caseD_a0:
         float local_110;
         float local_10c;
         std::uint32_t local_108;
-        local_5b4 = FUN_00437470((int)this);
+        local_5b4 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_5b0 = this;
         if ((instruction[3] & 1U) == 0) {
           local_108 = *(std::uint32_t *)(instruction + 4);
@@ -541,7 +539,7 @@ switchD_0042b8cc_caseD_a0:
       case 0x76: {
         void* local_5c0;
         std::uint32_t local_118;
-        local_5c0 = FUN_00437470((int)this);
+        local_5c0 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_5bc = this;
         if ((instruction[3] & 1U) == 0) {
           local_118 = *(std::uint32_t *)(instruction + 4);
@@ -646,7 +644,7 @@ LAB_0042c528:
           FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
         }
         else {
-          local_5ec = (void *)FUN_00437470((int)this);
+          local_5ec = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           FUN_00438620(local_5ec,(int)this,local_d8);
         }
         uVar4 = FUN_0040ff90((int)this + 0x4c8);
@@ -682,7 +680,7 @@ LAB_0042c528:
           FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
         }
         else {
-          local_5f8 = (void *)FUN_00437470((int)this);
+          local_5f8 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           FUN_00438620(local_5f8,(int)this,local_e8);
         }
         uVar4 = FUN_0040ff90((int)this + 0x4c8);
@@ -734,7 +732,7 @@ LAB_0042c528:
           FUN_00438620(native_card_renderer_5c0698->current_file_437950(),this,0x120);
         }
         else {
-          local_604 = (void *)FUN_00437470((int)this);
+          local_604 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           FUN_00438620(local_604,(int)this,local_ec);
         }
         uVar4 = FUN_0040ff90((int)this + 0x4c8);
@@ -1197,7 +1195,7 @@ LAB_0042de0b:
         local_dc = 0;
         local_1e0 = 0;
         local_f0 = (short *)0x0;
-        local_614 = (void *)FUN_00437470((int)this);
+        local_614 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         local_610 = *(int *)((int)this + 0x24);
         for (scan_instruction = reinterpret_cast<std::int16_t*>(FUN_00437490(local_614,local_610));
             ((*scan_instruction != 5 || (*(int *)((int)this + 0x438) != *(int *)(scan_instruction + 4))) &&
