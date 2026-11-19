@@ -52,9 +52,9 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate COFF contribution is **41,048 bytes**: **40,404 bytes
+The current candidate COFF contribution is **40,912 bytes**: **40,268 bytes
 of code plus a 644-byte, 161-entry compiler-generated switch table**. The
-code portion decodes to 8,417 instruction heads and 505 E8 calls, compared
+code portion decodes to 8,400 instruction heads and 505 E8 calls, compared
 with the original 39,470-byte body / 8,559 instruction heads / 505 E8 calls.
 The candidate has 505 REL32 call relocations and 213 DIR32 relocations; the
 original PE body has 55 physical HIGHLOW fields.
@@ -79,11 +79,12 @@ progress, not a size optimization.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The total contribution is **+1,578 bytes**, comprising
-+934 bytes of code and the 644-byte compiler switch table. The code portion
-has 142 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The total contribution is **+1,442 bytes**, comprising
++798 bytes of code and the 644-byte compiler switch table. The code portion
+has 159 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
-`sub esp, 0x804`; the current candidate still uses `sub esp, 0x874`.
+`sub esp, 0x804`; the current candidate now uses `sub esp, 0x85C` after
+removing the obsolete Timer pointer temporaries and numeric call-view paths.
 Absolute-data relocation ownership and the remaining instruction/frame-layout
 differences are unresolved. No exactness credit is claimed from call-target
 parity alone.
