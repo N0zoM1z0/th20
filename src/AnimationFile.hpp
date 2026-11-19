@@ -66,6 +66,9 @@ public:
     void bind_animation(Animation* animation, std::int32_t script);
     // Parent binding prepares the actual Animation before its VM update.
     void bind_animation(Animation* animation, std::int32_t script, Animation* parent);
+    // VM child-spawn helper: creates a child Animation under the supplied
+    // parent and returns its renderer registration by value.
+    AnimationHandle spawn_child(std::int32_t script,Animation* parent,std::uint32_t flags);
     AnimationHandle spawn(const char* expected_stem, std::int32_t script,
                           const Vector3& position, float rotation,
                           std::int32_t layer, Animation** output);

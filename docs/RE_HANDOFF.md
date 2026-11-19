@@ -407,3 +407,19 @@ superseded; use the **current ledger and this handoff** for status.
 - Original VM `0x0042B5D0`, wrapper `0x0044BD50`, and setup/apply path
   `0x004708E0` are direct consumers. The 39,470B VM parent remains NONEXACT.
 - See `docs/ANIMATION_FILE_SPRITE_APPLY716_STRICT_EXACT.md`.
+
+## 2026-11-19 — AnimationFile 604B VM child-spawn method restored
+
+- Added the natural `AnimationFile::spawn_child(int, Animation*, uint32)`
+  return-by-value member in `src/AnimationFileSpawnChild604.cpp`. The
+  hidden `AnimationHandle` return-object ABI is preserved.
+- It locks recursive registry slot 9, increments AnimationFile+0x68,
+  allocates from the real Animation Pool, inherits the parent's renderer
+  and layer, binds the child script, dispatches the four Renderer modes,
+  and links the child into the parent's intrusive Animation tree.
+- Original VM opcodes 0x72-0x75, 0x77 and 0x7C call this 604B helper.
+  Opcode 0x76 is a separate 619B helper at 0x004512B0.
+- Whole 604/604 strict exact: 528 ordinary bytes + 76 relocation bytes,
+  all 19 relocation destinations exact, 15 original E8 calls and four
+  original PE HIGHLOW fields independently verified.
+- See `docs/ANIMATION_FILE_SPAWN_CHILD604_STRICT_EXACT.md`.
