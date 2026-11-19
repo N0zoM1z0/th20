@@ -930,3 +930,5 @@ address,name,module,confidence,evidence
 0x00438DB0,th20::NativeAnimationVector2ConfigView::interpolate_secondary_scale_438db0,Animation,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md
 0x00438DF0,th20::NativeAnimationVector2ConfigView::interpolate_primary_scale_438df0,Animation,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md
 0x00438E30,th20::NativeAnimationVector2ConfigView::interpolate_uv_scale_438e30,Animation,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md
+0x00438BD0,th20::NativeAnimationColorConfigView::interpolate_secondary_alpha_438bd0,Animation,high,CORE/RECON-1150; docs/ANIMATION_COLOR_CONFIG274_STRICT_EXACT.md
+0x00438CC0,th20::NativeAnimationColorConfigView::interpolate_rgb_438cc0,Animation,high,CORE/RECON-1150; docs/ANIMATION_COLOR_CONFIG274_STRICT_EXACT.md

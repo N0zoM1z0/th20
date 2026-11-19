@@ -1634,3 +1634,5 @@ th20::NativeAnimationFadeConfig86::interpolate_channel_438c60
 th20::NativeAnimationVector2ConfigView::interpolate_secondary_scale_438db0
 th20::NativeAnimationVector2ConfigView::interpolate_primary_scale_438df0
 th20::NativeAnimationVector2ConfigView::interpolate_uv_scale_438e30
+th20::NativeAnimationColorConfigView::interpolate_secondary_alpha_438bd0
+th20::NativeAnimationColorConfigView::interpolate_rgb_438cc0

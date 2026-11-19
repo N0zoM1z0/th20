@@ -29508,3 +29508,35 @@ size = 51
 relocations = [
   { offset = 0x28, type = "REL32", symbol = "?begin@?$Interpolation@UVector2@th20@@@th20@@QAEXHHABUVector2@2@0@Z", target = 0x00439640 },
 ]
+
+# CORE/RECON-1150: whole native Animation color interpolation and color-mode activation.
+[units.animation_color_config_438bd0]
+source = "src/AnimationColorConfig274.cpp"
+object = "build/core1150-canonical/AnimationColorConfig274.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationColorConfigView::interpolate_secondary_alpha_438bd0"]
+symbol = "?interpolate_secondary_alpha_438bd0@NativeAnimationColorConfigView@th20@@QAEXHHEE@Z"
+target_address = 0x00438BD0
+size = 132
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x41, type = "REL32", symbol = "?begin@?$Interpolation@H@th20@@QAEXHHABH0@Z", target = 0x00439550 },
+  { offset = 0x7A, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1150: whole native Animation color interpolation and color-mode activation.
+[units.animation_color_config_438cc0]
+source = "src/AnimationColorConfig274.cpp"
+object = "build/core1150-canonical/AnimationColorConfig274.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationColorConfigView::interpolate_rgb_438cc0"]
+symbol = "?interpolate_rgb_438cc0@NativeAnimationColorConfigView@th20@@QAEXHHABVColor3@2@0@Z"
+target_address = 0x00438CC0
+size = 142
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1B, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@ABVColor3@1@@Z", target = 0x00429180 },
+  { offset = 0x27, type = "REL32", symbol = "??0IntegerTriple@th20@@QAE@ABVColor3@1@@Z", target = 0x00429180 },
+  { offset = 0x4B, type = "REL32", symbol = "?begin@?$Interpolation@UIntegerTriple@th20@@@th20@@QAEXHHABUIntegerTriple@2@0@Z", target = 0x004395D0 },
+  { offset = 0x84, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
