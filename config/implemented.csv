@@ -1630,3 +1630,4 @@ th20::NativeAnimationResetHooks::restart_state_41db60
 th20::NativeAnimationResetHooks::restart_state_41db80
 th20::NativeAnimationResetHooks::restart_state_41dba0
 th20::NativeAnimationResetHooks::restart_state_41dbc0
+th20::NativeAnimationFadeConfig86::interpolate_channel_438c60

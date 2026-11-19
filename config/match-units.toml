@@ -29454,3 +29454,18 @@ symbol = "?restart_state_41dbc0@NativeAnimationResetHooks@th20@@QAEXXZ"
 target_address = 0x0041DBC0
 size = 21
 relocations = []
+
+# CORE/RECON-1148: Animation+0x134 integer interpolation from two byte endpoints.
+[units.animation_fade_config_86]
+source = "src/AnimationFadeConfig86.cpp"
+object = "build/core1148-canonical/AnimationFadeConfig86.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationFadeConfig86::interpolate_channel_438c60"]
+symbol = "?interpolate_channel_438c60@NativeAnimationFadeConfig86@th20@@QAEXHHEE@Z"
+target_address = 0x00438C60
+size = 86
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x41, type = "REL32", symbol = "?begin@?$Interpolation@H@th20@@QAEXHHABH0@Z", target = 0x00439550 },
+  { offset = 0x4C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
