@@ -1642,3 +1642,4 @@ th20::Interpolation<Vector2>::set_mode
 th20::Interpolation<Vector2>::set_start
 th20::Interpolation<Vector2>::set_end
 th20::Interpolation<Vector2>::begin
+th20::normalize_coordinates_438eb0

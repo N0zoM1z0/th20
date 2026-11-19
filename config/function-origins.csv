@@ -999,7 +999,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00438E30,authored,Animation,authored,high,CORE/RECON-1149; docs/ANIMATION_VECTOR2_CONFIG_LEAVES153_STRICT_EXACT.md; original game Animation custom Vector2 interpolation wrapper called from 39470B VM
 0x00438E70,authored,BulletInterpolation,authored,high,"ghidra-12.1.3-initial-inventory CORE/EXACT-730: exact complete original physical 22B Bullet VectorInterpolation game method, original 12140B Bullet native E8 calls with actual Bullet+0x420 Vector3 interpolation receiver, exact 35B fold-compatible source alias Motion::set_position vs VectorInterpolation::set_start without duplicate canonical or original code credit; genuine native exact + unchanged existing interpolation CXX template, scoped 43/43 MSVC cold replay; docs/BULLET_VECTOR3_INTERPOLATION_95_EXACT_FOLDED_ALIAS.md."
 0x00438E90,unknown,Interpolation,review,pending,CORE/RECON-1152; docs/ANIMATION_VECTOR2_INTERPOLATION_NATIVE_SOURCE_FRONTIER.md; exact natural template instance and real Animation interpolation call graph established; original game-authored vs generated/library instantiation not yet resolved
-0x00438EB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00438EB0,authored,Animation,authored,high,CORE/RECON-1153; docs/ANIMATION_VECTOR2_COORDINATE_NORMALIZE95_STRICT_EXACT.md; custom Animation VM coordinate normalization with two independent screen-axis divisors and nonnegative clamp
 0x00438F10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00439280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004392D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
