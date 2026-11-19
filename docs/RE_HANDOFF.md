@@ -466,3 +466,22 @@ superseded; use the **current ledger and this handoff** for status.
 - The 39,470B `Animation::update` Boss remains explicitly NONEXACT; these
   are verified leaves and opcode semantics, not a claim that the dispatcher
   has been reconstructed.
+
+## 2026-11-19 — full Animation::update VM dispatcher translated to C++
+
+- Added a compiling `std::int32_t Animation::update()` source translation
+  for the complete original 39,470B Boss at 0x0042B5D0. All 161 original
+  opcode case labels are represented, and known helper calls now route
+  through maintained Animation, AnimationFile, Timer, Interpolation,
+  Motion, AnimationHandle and geometry C++ interfaces.
+- The immutable original is independently bounded at 39,470B / 8,559
+  instructions / 505 E8 / 55 PE HIGHLOW. The current C++ candidate is
+  40,996B / 8,721 instructions / 505 E8. All 505 candidate E8 destinations
+  now match the original call-target multiset exactly, including postfix
+  Timer increment, child-spawn return ABI and corner-projection dispatch.
+- The candidate still has 213 DIR32 relocations versus 55 original PE
+  HIGHLOW fields and a larger stack frame (`0x874` versus `0x804`). It is
+  explicitly NONEXACT, has no exact match unit, and is not counted as a new
+  exact function. No assembly, NOP padding, dummy accesses or byte fillers.
+  Next work is natural opcode-local lifetime cleanup and strict frame/data
+  relocation/ordinary-byte reconciliation.
