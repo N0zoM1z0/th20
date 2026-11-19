@@ -87,7 +87,6 @@ struct NativeAnimationVmCallView {
     void call_00438b50(const void*);
     void call_00438e70(std::int32_t);
     void call_00439280(float,float,float);
-    void call_004392d0(float*,float*,float,float);
     void call_00439390(float,float);
     void call_004393d0(const void*);
     void call_004393f0(const void*);
@@ -123,7 +122,6 @@ struct NativeAnimationVmCallView {
 #define vm_00438b50(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438b50(__VA_ARGS__))
 #define vm_00438e70(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438e70(__VA_ARGS__))
 #define vm_00439280(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439280(__VA_ARGS__))
-#define vm_004392d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004392d0(__VA_ARGS__))
 #define vm_00439390(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439390(__VA_ARGS__))
 #define vm_004393d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004393d0(__VA_ARGS__))
 #define vm_004393f0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004393f0(__VA_ARGS__))
@@ -186,7 +184,6 @@ struct NativeAnimationVmCallView {
 #define FUN_00438b50 vm_00438b50
 #define FUN_00438e70 vm_00438e70
 #define FUN_00439280 vm_00439280
-#define FUN_004392d0 vm_004392d0
 #define FUN_00439390 vm_00439390
 #define FUN_004393d0 vm_004393d0
 #define FUN_004393f0 vm_004393f0
@@ -3546,7 +3543,7 @@ LAB_0042df8e:
         }
         local_748 = FUN_00437310(this,(float *)(instruction + 6),instruction[3],1);
         local_74c = FUN_00437310(this,(float *)(instruction + 4),instruction[3],0);
-        FUN_004392d0(this,local_74c,local_748,local_4e4,local_4e0);
+        polar_components(local_74c,local_748,local_4e4,local_4e0);
         break;
       }
       case 0x25: {

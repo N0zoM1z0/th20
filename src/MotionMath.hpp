@@ -8,6 +8,8 @@ namespace th20 {
 
 // XY operations preserve the destination's z lane. Rotation permits aliasing.
 void polar(Vector3& destination, float direction, float length);
+// Write independent script-variable outputs from a polar pair.
+void polar_components(float* x, float* y, float direction, float length);
 void ellipse_polar(Vector3& destination, float direction, float axis_x, float axis_y);
 // Below magnitude 0.01, multiply the original vector rather than divide it.
 // The complete three-lane result permits destination/input aliasing.

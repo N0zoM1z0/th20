@@ -29823,6 +29823,21 @@ size = 59
 relocations = []
 
 # CORE/RECON-1163: natural C++ wrappers for the original CRT arcsine/arccosine helpers.
+
+# CORE/RECON-1164: exact independent XY polar outputs used by Animation VM opcode 0x24.
+[units.motion_math_polar_components_4392d0]
+source = "src/MotionMath.cpp"
+object = "build/core154-canonical/MotionMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::polar_components"]
+symbol = "?polar_components@th20@@YAXPAM0MM@Z"
+target_address = 0x004392D0
+size = 88
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?cos@@YAMM@Z", target = 0x004371D0 },
+  { offset = 0x39, type = "REL32", symbol = "?sin@@YAMM@Z", target = 0x00439530 },
+]
+
 [units.scalar_math_arcsine_35]
 source = "src/ScalarMath.cpp"
 object = "build/core1165-canonical/ScalarMath.obj"

@@ -476,8 +476,8 @@ superseded; use the **current ledger and this handoff** for status.
   Motion, AnimationHandle and geometry C++ interfaces.
 - The immutable original is independently bounded at 39,470B / 8,559
   instruction heads / 505 E8 / 55 PE HIGHLOW. The current C++ contribution
-  is 40,812B: 40,168B code plus a compiler-emitted 644B/161-entry switch
-  table; the code portion decodes to 8,383 instruction heads and 505 E8.
+  is 40,808B: 40,164B code plus a compiler-emitted 644B/161-entry switch
+  table; the code portion decodes to 8,382 instruction heads and 505 E8.
   All 505 candidate E8 destinations match the original call-target multiset,
   including postfix Timer increment, child-spawn return ABI, corner projection,
   the whole-exact +0x18 file lookup, the original 0x0040BC20 array helper,
@@ -487,7 +487,9 @@ superseded; use the **current ledger and this handoff** for status.
   interpolation-duration members (including the 22/22 Angle specialization),
   the exact CRT square-root adapter, and all four scalar trig wrappers as
   natural cdecl ScalarMath calls. The newly added asin/acos wrappers each
-  replay 35/35 bytes with their original CRT import relocations. The stack frame is now `0x85c`
+  replay 35/35 bytes with their original CRT import relocations. Opcode 0x24
+  now calls the exact 88B cdecl `polar_components` helper; both independent
+  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x85c`
   versus the original `0x804`, down from the previous `0x874`.
 - The eight exact color/fade/vector leaves and all eight coordinate-normalizer
   calls are bound through typed owners; the normalizer independently replays
@@ -498,7 +500,8 @@ superseded; use the **current ledger and this handoff** for status.
   and opcode 0x20 uses the existing exact 35B CRT sqrt adapter. This latest
   Timer/interpolation pass removed 136B/17 instructions from the 41,048B
   checkpoint and shrank the frame from 0x874 to 0x85c. The follow-up math
-  owner pass removes another 100B/17 instructions from the 40,912B candidate. Opcode scratch values
+  owner pass removes another 100B/17 instructions from the 40,912B candidate.
+  The follow-up polar helper removes another 4B/1 instruction from 40,812B. Opcode scratch values
   now use real Color3, Vector2, Vector3 and Angle objects. Both corner paths use natural Vector3[4] arrays, and
   their compiler-generated 56B array helper is byte-identical to original
   0x0040BC20. This corner-array recovery grew the candidate by 220B from the
@@ -506,7 +509,7 @@ superseded; use the **current ledger and this handoff** for status.
   not an optimization or an exactness claim.
 - The candidate still has 210 DIR32 relocations versus 55 original PE
   HIGHLOW fields and a larger stack frame (`0x85c` versus `0x804`). Its total
-  contribution is +1,342B (+698B code plus the switch table); it has 176 fewer
+  contribution is +1,338B (+694B code plus the switch table); it has 177 fewer
   code instruction heads than the original. It is explicitly NONEXACT, has
   no exact match unit, and is not counted as a new exact function. No
   assembly, NOP padding, dummy accesses or byte fillers. Next work is strict

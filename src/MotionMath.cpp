@@ -8,6 +8,11 @@ namespace {
 constexpr float pi = 3.1415927410125732f;
 }
 
+void polar_components(float* x, float* y, float direction, float length) {
+    *x = std::cos(direction) * length;
+    *y = std::sin(direction) * length;
+}
+
 void polar(Vector3& destination, float direction, float length) {
     destination.x = std::cos(direction) * length;
     destination.y = std::sin(direction) * length;
