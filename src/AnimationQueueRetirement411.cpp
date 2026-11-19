@@ -18,11 +18,11 @@ void NativeAnimationRetirePoolView::queue_retired_animation_44f840(Animation* an
             queue_retired_animation_44f840(link->node_access(),pending);
         }
     }
-    if(animation->field_570 != 2) {
+    if(animation->retirement_state != 2) {
         animation->link_53c.initialize(animation);
         pending->append(&animation->link_53c);
     }
-    animation->field_570=2;
+    animation->retirement_state=2;
     animation->parent_558=nullptr;
     animation->parent_55c=nullptr;
     animation->field_554=0;

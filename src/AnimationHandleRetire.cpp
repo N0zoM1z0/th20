@@ -9,7 +9,7 @@ namespace th20 {
 
 void AnimationPoolOwner::mark_animation_tree_for_retirement(Animation* animation) {
     if (!animation) return;
-    animation->field_570 = 1;
+    animation->retirement_state = 1;
     if (animation->child_links[1].next_value()) {
         IntrusiveLink<Animation>* children = animation->child_links[1].next_value();
         IntrusiveIterator<Animation> iterator = children->begin();

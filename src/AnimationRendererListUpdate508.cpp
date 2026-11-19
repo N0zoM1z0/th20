@@ -18,10 +18,10 @@ void __fastcall animation_list_update_449870(IntrusiveList<Animation>* list) {
             IntrusiveLink<Animation>* link = iterator.get();
             link->node_access()->field_554 = 0;
             link->node_access()->field_550 = 0;
-            if (link->node_access()->field_570 == 1) {
+            if (link->node_access()->retirement_state == 1) {
                 reinterpret_cast<NativeAnimationRetirePoolView*>(current_animation_pool)
                     ->queue_retired_animation_44f840(link->node_access(), &pending);
-            } else if (link->node_access()->field_570 == 0) {
+            } else if (link->node_access()->retirement_state == 0) {
                 if (link->node_access()->update() != 0) {
                     reinterpret_cast<NativeAnimationRetirePoolView*>(current_animation_pool)
                         ->queue_retired_animation_44f840(link->node_access(), &pending);

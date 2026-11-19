@@ -24,10 +24,10 @@ void NativeFileClearPoolView::detach_file_44fd30(AnimationFile* file,char flag) 
                     IntrusiveLink<Animation>* link=iterator.get();
                     if (link->node_access()->base.field_18==file->id &&
                         (static_cast<std::uint8_t>(flag)==0 || reinterpret_cast<NativeAnimationFlagByte4b0&>(link->node_access()->base.flags.word_18).bit1 == 0)) {
-                        link->node_access()->field_570=1;
+                        link->node_access()->retirement_state=1;
                     } else if(link->node_access()->base.field_1c==file->id &&
                         (static_cast<std::uint8_t>(flag)==0 || reinterpret_cast<NativeAnimationFlagByte4b0&>(link->node_access()->base.flags.word_18).bit1 == 0)) {
-                        link->node_access()->field_570=1;
+                        link->node_access()->retirement_state=1;
                     }
                 }
             }
@@ -41,10 +41,10 @@ void NativeFileClearPoolView::detach_file_44fd30(AnimationFile* file,char flag) 
                     IntrusiveLink<Animation>* link=iterator.get();
                     if (link->node_access()->base.field_18==file->id &&
                         (static_cast<std::uint8_t>(flag)==0 || reinterpret_cast<NativeAnimationFlagByte4b0&>(link->node_access()->base.flags.word_18).bit1 == 0)) {
-                        link->node_access()->field_570=1;
+                        link->node_access()->retirement_state=1;
                     } else if(link->node_access()->base.field_1c==file->id &&
                         (static_cast<std::uint8_t>(flag)==0 || reinterpret_cast<NativeAnimationFlagByte4b0&>(link->node_access()->base.flags.word_18).bit1 == 0)) {
-                        link->node_access()->field_570=1;
+                        link->node_access()->retirement_state=1;
                     }
                 }
             }

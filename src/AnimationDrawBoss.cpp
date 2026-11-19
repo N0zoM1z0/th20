@@ -32,6 +32,7 @@ static_assert(offsetof(AnimationBase, color_494) == 0x494);
 static_assert(offsetof(AnimationBase, flags) == 0x498);
 static_assert(offsetof(Animation, callback) == 0x568);
 static_assert(offsetof(Animation, field_570) == 0x570);
+static_assert(offsetof(Animation, retirement_state) == 0x570);
 static_assert(offsetof(WindowState, scale) == 0x20C0);
 #endif
 
@@ -43,7 +44,7 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     if ((animation->base.flags.word_04 & 1u) == 0) return -1;
     if (animation->callback) animation->callback->draw();
     if (!animation_draw_enabled(animation)) return -1;
-    if (animation->field_570 != 0) return -1;
+    if (animation->retirement_state != 0) return -1;
     graphics_disable_depth_writes(&process_graphics);
 
     // Main original 49-entry switch at 0x0044391F. Cases 24,25 and 47/48

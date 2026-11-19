@@ -255,3 +255,21 @@ superseded; use the **current ledger and this handoff** for status.
 - See `docs/ANM_VARIABLE_SLOT_10000_CONTEXTUAL_COUNT_VIEWS.md` for the
   evidence and the distinction between contextual views and fixed field
   semantics.
+
+## 2026-11-19 session — Animation retirement lifecycle view
+
+- Resolved `Animation+0x570` as a retirement lifecycle state from independent
+  producers and consumers: file detach and recursive tree marking write 1;
+  active-list updates distinguish 0 (update) from 1 (queue); pending
+  retirement appends the +`0x53c` link once and writes 2; draw rejects
+  nonzero; pool/reset paths restore 0.
+- Added the same-storage `retirement_state` alias for renderer/retirement
+  consumers while preserving the original `field_570` spelling and exact
+  `Animation::clear_field_570` mangled symbol in CORE/EXACT-119. Both names
+  are statically asserted at +`0x570`. See
+  `docs/ANIMATION_RETIREMENT_STATE_570_SEMANTICS.md`.
+- Targeted exact replay passed for all 54 configured units across the eight
+  affected source objects (Animation 38/38, Binding 7/7, Retire 3/3, Queue
+  1/1, Classification 2/2, File Detach 1/1, List Update 508 1/1, List Update
+  511 1/1). The Draw Boss source/ABI and Particle Grid role audits also pass;
+  both large parents remain NONEXACT.

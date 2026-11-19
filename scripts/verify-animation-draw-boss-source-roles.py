@@ -114,7 +114,8 @@ def main():
     assert "std::int32_t AnimationPoolOwner::draw(Animation* animation)" in text
     assert "graphics_disable_depth_writes(&process_graphics)" in text
     assert "animation->callback->draw()" in text
-    assert "animation->field_570 != 0" in text
+    assert "animation->retirement_state != 0" in text
+    assert "offsetof(Animation, retirement_state) == 0x570" in text
 
     with (ROOT / "config/animation-draw-boss-mode-e8.csv").open(newline="") as f:
         routes = list(csv.DictReader(f))

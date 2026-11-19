@@ -118,7 +118,14 @@ public:
     float field_560;
     void* geometry;
     AnimationCallback* callback;
-    std::uint32_t geometry_bytes, field_570, field_574;
+    std::uint32_t geometry_bytes;
+    // Lifecycle view used by the renderer/retirement pipeline. Keep the
+    // original field_570 spelling for the already-exact clear_field_570 ABI.
+    union {
+        std::uint32_t field_570;
+        std::uint32_t retirement_state;
+    };
+    std::uint32_t field_574;
     std::uint8_t field_578, field_579;
     Matrix4 matrix_57c;
     Vector3 vector_5bc;

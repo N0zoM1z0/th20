@@ -17,7 +17,7 @@ int NativeRendererClassificationView::classify_primary_44a090(int identifier) {
         IntrusiveIterator<Animation>* end=active->end();
         for(;iterator.differs(end);iterator.advance()) {
             IntrusiveLink<Animation>* link=iterator.get();
-            if(link->node_access()->field_570==0) {
+            if(link->node_access()->retirement_state==0) {
                 int index=link->node_access()->base.field_14;
                 if(index>=46 && index<=53) index -= 17;
                 else if(index==45) index=26;
@@ -40,7 +40,7 @@ int NativeRendererClassificationView::classify_secondary_44a210(int identifier) 
         IntrusiveIterator<Animation>* end=active->end();
         for(;iterator.differs(end);iterator.advance()) {
             IntrusiveLink<Animation>* link=iterator.get();
-            if(link->node_access()->field_570==0) {
+            if(link->node_access()->retirement_state==0) {
                 int index=link->node_access()->base.field_14;
                 if(index>=29 && index<=36) index += 17;
                 else if(index==26) index=45;
