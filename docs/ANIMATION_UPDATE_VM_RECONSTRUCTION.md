@@ -28,8 +28,11 @@ functions, NOP padding, dummy memory accesses, or fake code-size fillers.
 The recovered call graph is progressively bound to maintained C++ owners:
 `Animation`, `AnimationFile`, `AnimationHandle`, `Timer`, `ClockScalar`,
 `Motion`, `Interpolation<T>`, `GameRandom`, and the existing color/geometry
-helpers. Remaining numeric call-view declarations are explicitly scoped to
-unreconstructed helper owners.
+helpers. The original +0x18 animation-file lookup now calls the already
+reconstructed whole-exact `NativeAnimationLegacyFileView::previous_file_437470`
+member instead of a numeric borrowed-call adapter; its sibling +0x1C getter
+remains distinct. Remaining numeric call-view declarations are explicitly
+scoped to unreconstructed helper owners.
 
 The two original random-threshold sign-mask expressions are represented as
 natural IEEE-754 unary negation (the original 16-byte XMM mask is the repeated
@@ -40,17 +43,20 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate object is **40,996 bytes / 8,721 instructions / 505
+The current candidate object is **41,004 bytes / 8,721 instructions / 505
 E8 calls**, compared with the original 39,470 / 8,559 / 505. The candidate
 has 505 REL32 call relocations and 213 DIR32 relocations; the original PE
-has 55 physical HIGHLOW fields. An independent target-multiset check now
+has 55 physical HIGHLOW fields. The source also restores the native shared
+return-one block to its original late function-tail position and removes the
+redundant `void*` alias for the member `this` pointer. An independent
+target-multiset check now
 confirms that **all 505 candidate E8 calls resolve to the exact same 505
 original target addresses**, including the postfix Timer helper, both
 AnimationFile child-spawn helpers, and both corner-projection dispatches.
 
 This is a complete compiling semantic source translation, not a strict exact
 match. It has no `match-units.toml` exact unit and contributes **zero** new
-exact functions. The remaining difference is **+1,526 bytes / +162 decoded
+exact functions. The remaining difference is **+1,534 bytes / +162 decoded
 instructions**. The original stack allocation is `sub esp, 0x804`; the current
 candidate uses `sub esp, 0x874`. Absolute-data relocation ownership and the
 remaining instruction/frame-layout differences are still unresolved. No

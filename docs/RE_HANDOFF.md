@@ -476,9 +476,11 @@ superseded; use the **current ledger and this handoff** for status.
   Motion, AnimationHandle and geometry C++ interfaces.
 - The immutable original is independently bounded at 39,470B / 8,559
   instructions / 505 E8 / 55 PE HIGHLOW. The current C++ candidate is
-  40,996B / 8,721 instructions / 505 E8. All 505 candidate E8 destinations
-  now match the original call-target multiset exactly, including postfix
-  Timer increment, child-spawn return ABI and corner-projection dispatch.
+  41,004B / 8,721 instructions / 505 E8. All 505 candidate E8 destinations
+  match the original call-target multiset exactly, including postfix Timer
+  increment, child-spawn return ABI, corner-projection dispatch, and the
+  whole-exact AnimationBase+0x18 file lookup now bound to its shared typed
+  owner (29/29 leaf replay retained).
 - The candidate still has 213 DIR32 relocations versus 55 original PE
   HIGHLOW fields and a larger stack frame (`0x874` versus `0x804`). It is
   explicitly NONEXACT, has no exact match unit, and is not counted as a new

@@ -3,14 +3,12 @@
 // Animation::animation_file() which reads the OTHER original slot +0x1C.
 // Local derived views add NO storage or synthetic member fields.
 #include "Animation.hpp"
+#include "NativeAnimationLegacyFileView.hpp"
 #include "AnimationFile.hpp"
 #include "AnimationRuntimeOwner.hpp"
 #include "Identifier32.hpp"
 #include <cstdint>
 namespace th20 {
-struct NativeAnimationLegacyFileView : Animation {
-    AnimationFile* previous_file_437470();
-};
 AnimationFile* NativeAnimationLegacyFileView::previous_file_437470() {
     return current_animation_pool->file_by_index(base.field_18);
 }
