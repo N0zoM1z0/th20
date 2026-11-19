@@ -147,22 +147,21 @@ switchD_0042b8cc_caseD_a0:
         float local_564;
         std::uint32_t local_560;
         std::uint32_t local_55c;
-        local_584 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         if ((base.flags.word_04 >> 0x12 & 1) == 0) {
           local_55c = 0;
         }
         else {
           local_55c = 4;
         }
-        local_580 = this;
         if ((instruction[3] & 1U) == 0) {
           local_560 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_560 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_7c = reinterpret_cast<AnimationFile*>(local_584)->spawn_child(local_560,reinterpret_cast<Animation*>(local_580),local_55c);
-        local_568 = reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationHandle*>(&local_7c)->resolve());
+        local_568 = reinterpret_cast<std::uintptr_t>(
+            reinterpret_cast<AnimationFile*>(reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470())->spawn_child(
+                local_560,this,local_55c).resolve());
         if ((instruction[3] & 2U) == 0) {
           local_564 = *(float *)(instruction + 6);
         }
@@ -187,22 +186,21 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_570;
         float local_f8;
         std::uintptr_t local_f4;
-        local_590 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
         if ((base.flags.word_04 >> 0x12 & 1) == 0) {
           local_570 = 2;
         }
         else {
           local_570 = 6;
         }
-        local_58c = this;
         if ((instruction[3] & 1U) == 0) {
           local_574 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_574 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_80 = reinterpret_cast<AnimationFile*>(local_590)->spawn_child(local_574,reinterpret_cast<Animation*>(local_58c),local_570);
-        local_f4 = reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationHandle*>(&local_80)->resolve());
+        local_f4 = reinterpret_cast<std::uintptr_t>(
+            reinterpret_cast<AnimationFile*>(reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470())->spawn_child(
+                local_574,this,local_570).resolve());
         if ((instruction[3] & 2U) == 0) {
           local_578 = *(float *)(instruction + 6);
         }
@@ -279,16 +277,15 @@ switchD_0042b8cc_caseD_a0:
         float local_110;
         float local_10c;
         std::uint32_t local_108;
-        local_5b4 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        local_5b0 = this;
         if ((instruction[3] & 1U) == 0) {
           local_108 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_108 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        AnimationHandle local_84 = reinterpret_cast<AnimationFile*>(local_5b4)->spawn_child_and_update(local_108,reinterpret_cast<Animation*>(local_5b0),0);
-        local_114 = reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationHandle*>(&local_84)->resolve());
+        local_114 = reinterpret_cast<std::uintptr_t>(
+            reinterpret_cast<AnimationFile*>(reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470())->spawn_child_and_update(
+                local_108,this,0).resolve());
         if ((instruction[3] & 2U) == 0) {
           local_110 = *(float *)(instruction + 6);
         }

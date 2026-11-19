@@ -143,22 +143,29 @@ spill. The source now assigns helper results directly to their destination
 values and writes through the typed argument accessors. This removes another
 **3,172 bytes / 410 instruction heads** from 40,484B and reduces the frame to
 `0x80C`; the full 505-call target multiset and all 161 opcode labels remain
-unchanged.
+unchanged. The same typed-return pass then inlines the three remaining
+spawn-child handles that are immediately resolved and dereferenced. Their
+`AnimationHandle` temporaries are now expressed as direct `spawn_child(...).resolve()`
+and `spawn_child_and_update(...).resolve()` chains, with the same return
+semantics and no changed E8 targets. This removes another **48 bytes / 6
+instruction heads** from 37,312B and leaves a 37,264-byte contribution with
+36,620 code bytes and a 644-byte switch table. The stack allocation is now
+`0x800`, four bytes below the original `0x804`.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The candidate is now **2,158 bytes smaller overall** than the original body:
-36,668 bytes of code plus a 644-byte compiler switch table. The code portion
-has 627 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The candidate is now **2,206 bytes smaller overall** than the original body:
+36,620 bytes of code plus a 644-byte compiler switch table. The code portion
+has 633 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
-`sub esp, 0x804`; the current candidate now uses `sub esp, 0x830` after
+`sub esp, 0x804`; the current candidate now uses `sub esp, 0x800` after
 removing obsolete Timer pointer temporaries, numeric call-view paths, unused
 decompiler locals and over-scoped opcode temporaries. Absolute-data relocation
 ownership and the remaining instruction/frame-layout differences are
 unresolved. No exactness credit is claimed from call-target
 parity alone.
 
-The next pass should reconcile the 0x08 stack-frame delta, absolute-data
+The next pass should reconcile the 0x04 stack-frame delta, absolute-data
 references, and ordinary instruction bytes using natural C++ types and
 lifetimes. Do not add padding or assembly to close the size gap.
 

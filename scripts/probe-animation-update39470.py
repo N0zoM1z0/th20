@@ -24,10 +24,10 @@ ORIGINAL_INSTRUCTIONS=8559
 ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
 SYMBOL='?update@Animation@th20@@QAEHXZ'
-CANDIDATE_SIZE=37312
-CANDIDATE_CODE_SIZE=36668
-CANDIDATE_INSTRUCTIONS=7932
-CANDIDATE_STACK_FRAME=0x80c
+CANDIDATE_SIZE=37264
+CANDIDATE_CODE_SIZE=36620
+CANDIDATE_INSTRUCTIONS=7926
+CANDIDATE_STACK_FRAME=0x800
 CANDIDATE_JUMP_TABLE_ENTRIES=161
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
@@ -120,7 +120,7 @@ def compile_candidate(original_targets):
  print(f'PASS all {len(calls)} candidate E8 targets exactly match the original 505-call target multiset')
  print(f'NONEXACT contribution: {len(body)}B = {len(code)}B code + {jump_table_size}B {CANDIDATE_JUMP_TABLE_ENTRIES}-entry switch table')
  print(f'Code decode: {len(ins)} instructions, {len(calls)} E8, {dir32} total DIR32 ({len(label_relocs)} local-label relocations)')
- print(f'Explicit gap: +{len(body)-ORIGINAL_SIZE}B total; +{len(code)-ORIGINAL_SIZE}B code before the switch table; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')
+ print(f'Contribution delta: {len(body)-ORIGINAL_SIZE:+}B total; {len(code)-ORIGINAL_SIZE:+}B code before the switch table; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')
 
 def main():
  original_targets=verify_original();compile_candidate(original_targets)
