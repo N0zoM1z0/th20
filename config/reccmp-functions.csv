@@ -1659,3 +1659,4 @@ th20::Interpolation<Vector2>::set_end,0x00438AC0,function
 th20::Interpolation<Vector2>::begin,0x00439640,function
 th20::normalize_coordinates_438eb0,0x00438EB0,function
 th20::NativeAnimationCornerProjectionDispatchView::project_corners,0x00445770,function
+th20::NativeAnimationFileSpriteApplyView::apply_sprite,0x00438620,function

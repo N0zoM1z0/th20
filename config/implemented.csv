@@ -1644,3 +1644,4 @@ th20::Interpolation<Vector2>::set_end
 th20::Interpolation<Vector2>::begin
 th20::normalize_coordinates_438eb0
 th20::NativeAnimationCornerProjectionDispatchView::project_corners
+th20::NativeAnimationFileSpriteApplyView::apply_sprite

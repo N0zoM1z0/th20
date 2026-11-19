@@ -388,3 +388,17 @@ superseded; use the **current ledger and this handoff** for status.
   use this dispatcher, then normalize four Vector3 corners and store width/height
   at `+0x398/+0x39C`. The VM parent remains open. See
   `docs/ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md`.
+
+## 2026-11-19 — 716B AnimationFile SpriteData application is whole-native exact
+
+- Added `src/AnimationFileSpriteApply.cpp` as a zero-storage derived ABI view
+  over the existing `AnimationFile`; the shared `AnimationFile.hpp` layout was
+  not changed, so unrelated compiler receipts remain valid.
+- Recovered the exact four-corner UV ordering, width/height, `native_256` and
+  identity-matrix scaling, copied transform matrix, and integer sprite bounds.
+- The complete 716B/179-i386 function at `0x00438620` now has 696/696 ordinary
+  bytes exact and all five original relocation roles exact, including the call
+  to `AnimationFile::sprite` at `0x00437C80`.
+- Strict unit: `animation_file_sprite_apply_716`; focused verifier:
+  `scripts/verify-animation-file-sprite-apply716-native.py`. The enclosing
+  39,470B Animation VM remains NONEXACT and receives no parent-byte credit.
