@@ -31,15 +31,15 @@ using NativeVmScriptCallback=AnimationScriptCallback;
 extern "C" {
 // Original external helpers are declared with their x86 receiver/stack ABI.
 
-extern std::uint8_t DAT_00435285;
-extern float DAT_0056c8cc,DAT_0056c8d0,DAT_0056c8e0,DAT_0056e0e8,DAT_0056e0f0,DAT_0056e0f4;
-extern float _DAT_0056e0e8;
-extern float DAT_0056e058[3];
-extern std::uint32_t DAT_005aefe4;
-extern std::uint32_t DAT_005ba4c4;
-extern void* DAT_005ba828;
-extern float DAT_005c5540[3];
 }
+
+extern GameController* current_game_controller;
+extern GameRandom native_polygon_random_5ba4c4;
+extern const Vector3 native_zero_position;
+extern const float native_zero, native_one, native_two, native_four;
+extern const float native_half, native_pi, native_negative_one;
+extern const Vector3 native_vector_5c5540;
+extern const std::uint8_t native_animation_opcode_dispatch_435285[];
 
 // Every original VM helper call below is expressed through a maintained C++
 // owner. No numeric-address call adapters or generic call views remain.
@@ -52,15 +52,15 @@ std::int32_t Animation::update() {
   if ((base.flags.word_1c & 1) != 0) {
     return 0;
   }
-  initial_clock_value = static_cast<float>(*reinterpret_cast<ClockScalar*>((float *)&DAT_005aefe4));
+  initial_clock_value = static_cast<float>(default_timer_clock);
   if ((base.flags.word_04 >> 8 & 1) != 0) {
-    reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(DAT_0056c8cc);
+    default_timer_clock.set(native_one);
   }
-  if (_DAT_0056e0e8 < this->slowdown()) {
+  if (native_zero < this->slowdown()) {
     const float slowdown = this->slowdown();
-    reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(initial_clock_value - slowdown * initial_clock_value);
-    if (static_cast<float>(*reinterpret_cast<ClockScalar*>((float *)&DAT_005aefe4)) < 0.0f) {
-      reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(0);
+    default_timer_clock.set(initial_clock_value - slowdown * initial_clock_value);
+    if (static_cast<float>(default_timer_clock) < 0.0f) {
+      default_timer_clock.set(0);
     }
   }
   if (this->callback && this->callback->update() != 0) {
@@ -81,8 +81,8 @@ std::int32_t Animation::update() {
           reinterpret_cast<std::uintptr_t>(local_774->script(local_770)) + base.field_28);
       goto LAB_0042de0b;
     }
-    if ((((base.flags.byte_08 & 3) != 1) || (DAT_005ba828 == 0)) ||
-       (reinterpret_cast<GameController*>(DAT_005ba828)->animation_frozen() == 0)) {
+    if ((((base.flags.byte_08 & 3) != 1) || (current_game_controller == 0)) ||
+       (current_game_controller->animation_frozen() == 0)) {
       AnimationFile* local_77c;
       int local_778;
       std::uint32_t local_e0;
@@ -99,7 +99,7 @@ switchD_0042b8cc_caseD_a0:
       }
                     /* WARNING (jumptable): Sanity check requires truncation of jumptable */
                     /* WARNING: Could not find normalized switch variable to match jumptable */
-      switch((&DAT_00435285)[*instruction]) {
+      switch(native_animation_opcode_dispatch_435285[*instruction]) {
       case 0xa0: {
         goto switchD_0042b8cc_caseD_a0;
       }
@@ -303,12 +303,12 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_d8;
         base.flags.byte_02 = base.flags.byte_02 | 1;
         local_5cc = this->rotation_z_value();
-        if (local_5cc <= -(DAT_0056e0f0 / DAT_0056c8e0)) {
+        if (local_5cc <= -(native_pi / native_four)) {
 LAB_0042c32a:
           local_5d4 = this->rotation_z_value();
-          if (DAT_0056e0f0 / DAT_0056c8e0 <= local_5d4) {
+          if (native_pi / native_four <= local_5d4) {
             local_5d8 = this->rotation_z_value();
-            if (local_5d8 < DAT_0056e0f0 / DAT_0056c8d0 + DAT_0056e0f0 / DAT_0056c8e0) {
+            if (local_5d8 < native_pi / native_two + native_pi / native_four) {
               if ((instruction[3] & 8U) == 0) {
                 local_124 = *(std::uint32_t *)(instruction + 10);
               }
@@ -320,9 +320,9 @@ LAB_0042c32a:
             }
           }
           local_5dc = this->rotation_z_value();
-          if (local_5dc <= -(DAT_0056e0f0 / DAT_0056c8e0)) {
+          if (local_5dc <= -(native_pi / native_four)) {
             local_5e0 = this->rotation_z_value();
-            if (DAT_0056e0f0 / DAT_0056c8d0 + DAT_0056e0f0 / DAT_0056c8e0 < local_5e0) {
+            if (native_pi / native_two + native_pi / native_four < local_5e0) {
               if ((instruction[3] & 4U) == 0) {
                 local_128 = *(std::uint32_t *)(instruction + 8);
               }
@@ -343,7 +343,7 @@ LAB_0042c32a:
         }
         else {
           local_5d0 = this->rotation_z_value();
-          if (DAT_0056e0f0 / DAT_0056c8e0 <= local_5d0) goto LAB_0042c32a;
+          if (native_pi / native_four <= local_5d0) goto LAB_0042c32a;
           if ((instruction[3] & 1U) == 0) {
             local_120 = *(std::uint32_t *)(instruction + 4);
           }
@@ -426,7 +426,7 @@ LAB_0042c528:
           else {
             local_140 = this->integer_value(*(std::uint32_t *)(instruction + 6));
           }
-          random_value = reinterpret_cast<GameRandom*>(0x5ba4c4)->next();
+          random_value = native_polygon_random_5ba4c4.next();
           local_ec = random_value % local_140 + local_144;
         }
         else {
@@ -443,7 +443,7 @@ LAB_0042c528:
           else {
             local_138 = this->integer_value(*(std::uint32_t *)(instruction + 6));
           }
-          random_value = reinterpret_cast<GameRandom*>(0x5ba4c4)->next();
+          random_value = native_polygon_random_5ba4c4.next();
           local_ec = (*local_6e4)(this,random_value % local_138 + local_13c);
         }
         if (local_ec < 0) {
@@ -619,7 +619,7 @@ LAB_0042c528:
         base.flags.byte_08 =
              base.flags.byte_08 & 0x3f |
              (base.flags.byte_08 >> 6 ^ 1) << 6;
-        base.vector_50.x = base.vector_50.x * DAT_0056e0f4;
+        base.vector_50.x = base.vector_50.x * native_negative_one;
         base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
@@ -627,16 +627,16 @@ LAB_0042c528:
         base.flags.byte_08 =
              base.flags.byte_08 & 0x3f |
              (base.flags.byte_08 >> 6 ^ 2) << 6;
-        base.vector_50.y = base.vector_50.y * DAT_0056e0f4;
+        base.vector_50.y = base.vector_50.y * native_negative_one;
         base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x70: {
         if ((base.flags.byte_08 >> 6 & 1) != 0) {
-          base.vector_50.x = base.vector_50.x * DAT_0056e0f4;
+          base.vector_50.x = base.vector_50.x * native_negative_one;
         }
         if ((base.flags.byte_08 >> 6 & 2) != 0) {
-          base.vector_50.y = base.vector_50.y * DAT_0056e0f4;
+          base.vector_50.y = base.vector_50.y * native_negative_one;
         }
         base.flags.byte_08 = base.flags.byte_08 & 0x3f;
         base.flags.word_04 = base.flags.word_04 | 4;
@@ -991,9 +991,9 @@ LAB_0042df8e:
         }
         base.interpolation_8c.set_duration(local_1ec);
 
-        base.interpolation_8c.set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+        base.interpolation_8c.set_tangent_start(native_zero_position);
 
-        base.interpolation_8c.set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+        base.interpolation_8c.set_tangent_end(native_zero_position);
 
         base.interpolation_8c.set_mode(*(std::uint32_t *)(instruction + 6));
         if ((base.flags.word_04 >> 6 & 1) == 0) {
@@ -1042,9 +1042,9 @@ LAB_0042df8e:
         }
         base.interpolation_8c.set_duration(local_1fc);
 
-        base.interpolation_8c.set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+        base.interpolation_8c.set_tangent_start(native_zero_position);
 
-        base.interpolation_8c.set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+        base.interpolation_8c.set_tangent_end(native_zero_position);
 
         base.interpolation_8c.set_mode(*(std::uint32_t *)(instruction + 6));
         if ((base.flags.word_04 >> 6 & 1) == 0) {
@@ -1307,9 +1307,9 @@ LAB_0042df8e:
         }
         base.interpolation_160.set_duration(local_260);
 
-        base.interpolation_160.set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+        base.interpolation_160.set_tangent_start(native_zero_position);
 
-        base.interpolation_160.set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+        base.interpolation_160.set_tangent_end(native_zero_position);
 
         base.interpolation_160.set_mode(*(std::uint32_t *)(instruction + 6));
 
@@ -2803,7 +2803,7 @@ LAB_0042df8e:
         else {
           local_4c0 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        local_728 = reinterpret_cast<GameRandom*>(&DAT_005ba4c4)->bounded(local_4c0);
+        local_728 = native_polygon_random_5ba4c4.bounded(local_4c0);
         *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_728;
         break;
       }
@@ -2816,7 +2816,7 @@ LAB_0042df8e:
         else {
           local_4c4 = this->float_value(*(float *)(instruction + 6));
         }
-        local_72c = reinterpret_cast<GameRandom*>(0x5ba4c4)->range(local_4c4);
+        local_72c = native_polygon_random_5ba4c4.range(local_4c4);
         *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_72c;
         break;
       }
@@ -2944,9 +2944,9 @@ LAB_0042df8e:
           local_4ec = this->float_value(*(float *)(instruction + 10));
         }
         local_754 = local_4ec - local_4f0;
-        local_758 = reinterpret_cast<GameRandom*>(0x5ba4c4)->signed_unit();
+        local_758 = native_polygon_random_5ba4c4.signed_unit();
         local_75c = local_754 * local_758 + local_4f0;
-        local_760 = reinterpret_cast<GameRandom*>(0x5ba4c4)->radians();
+        local_760 = native_polygon_random_5ba4c4.radians();
         polar(*reinterpret_cast<Vector3*>(&local_c0),local_760,local_75c);
         *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_c0.x;
         *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 6)),static_cast<std::uint16_t>(instruction[3]),1) = local_c0.y;
@@ -3213,7 +3213,7 @@ LAB_00434dce:
     this->update_motion();
   }
   if ((base.flags.byte_09 >> 1 & 1) != 0) {
-    vector_5bc += *reinterpret_cast<const Vector3*>((float *)&DAT_005c5540);
+    vector_5bc += native_vector_5c5540;
   }
   if ((base.flags.word_04 >> 0xb & 1) != 0) {
     Vector3 corners[4];
@@ -3229,10 +3229,10 @@ LAB_00434dce:
   this->update_geometry();
   timer_4c8++;
 LAB_00434fb5:
-  reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(initial_clock_value);
+  default_timer_clock.set(initial_clock_value);
   return 0;
 LAB_00434fd1:
-  reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(initial_clock_value);
+  default_timer_clock.set(initial_clock_value);
   return 1;
 }
 

@@ -29,6 +29,9 @@ CANDIDATE_SIZE=37152
 CANDIDATE_CODE_SIZE=36508
 CANDIDATE_INSTRUCTIONS=7920
 CANDIDATE_STACK_FRAME=0x7f8
+CANDIDATE_DIR32=215
+CANDIDATE_LOCAL_LABEL_DIR32=162
+CANDIDATE_EXTERNAL_DIR32=53
 CANDIDATE_JUMP_TABLE_ENTRIES=161
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
@@ -83,6 +86,7 @@ def count_call_subsequence(sequence,pattern):
 
 def compile_candidate(original_targets):
  source=ROOT/'src/AnimationUpdate39470.cpp';text=source.read_text()
+ assert 'DAT_' not in text,'raw decompiler global names remain in the VM source'
  cases=set(int(x,0) for x in re.findall(r'^\s*case\s+(0x[0-9a-fA-F]+|\d+)\s*:',text,re.M))
  assert len(cases)==161,len(cases)
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
@@ -133,13 +137,34 @@ def compile_candidate(original_targets):
  assert count_call_subsequence(candidate_sequence,child_writeback)==2
  assert count_call_subsequence(ORIGINAL_CALL_TARGET_SEQUENCE,child_update_vector)==1
  assert count_call_subsequence(candidate_sequence,child_update_vector)==1
- dir32=sum(x['type']=='DIR32' for x in relocations)
+ dir32_relocations=[x for x in relocations if x['type']=='DIR32']
+ label_dir32=sum(str(x['symbol']).startswith('$LN') for x in dir32_relocations)
+ external_dir32=collections.Counter(str(x['symbol']) for x in dir32_relocations
+                                    if not str(x['symbol']).startswith('$LN'))
+ assert len(dir32_relocations)==CANDIDATE_DIR32,len(dir32_relocations)
+ assert label_dir32==CANDIDATE_LOCAL_LABEL_DIR32,label_dir32
+ assert sum(external_dir32.values())==CANDIDATE_EXTERNAL_DIR32,external_dir32
+ expected_owner_relocations={
+  '?default_timer_clock@th20@@3UClockScalar@1@A':7,
+  '?native_polygon_random_5ba4c4@th20@@3UGameRandom@1@A':6,
+  '?current_game_controller@th20@@3PAUGameController@1@A':2,
+  '?native_zero_position@th20@@3UVector3@1@B':6,
+  '?native_pi@th20@@3MB':8,
+  '?native_four@th20@@3MB':6,
+  '?native_negative_one@th20@@3MB':4,
+  '?native_two@th20@@3MB':2,
+  '?native_one@th20@@3MB':1,
+  '?native_zero@th20@@3MB':1,
+  '?native_animation_opcode_dispatch_435285@th20@@3QBEB':1,
+  '?native_vector_5c5540@th20@@3UVector3@1@B':1,
+ }
+ assert all(external_dir32[symbol]==count for symbol,count in expected_owner_relocations.items()),external_dir32
  print(f'PASS source compile and opcode coverage: {len(cases)} case labels')
  print(f'PASS lexical lifetime stack frame: 0x{candidate_frame:x}')
  print(f'PASS all {len(calls)} candidate E8 targets exactly match the original 505-call target multiset')
  print('PASS original child-spawn ordering: 2 resolve+two-float writebacks and 1 child-update+Vector3 transform sequence')
  print(f'NONEXACT contribution: {len(body)}B = {len(code)}B code + {jump_table_size}B {CANDIDATE_JUMP_TABLE_ENTRIES}-entry switch table')
- print(f'Code decode: {len(ins)} instructions, {len(calls)} E8, {dir32} total DIR32 ({len(label_relocs)} local-label relocations)')
+ print(f'Code decode: {len(ins)} instructions, {len(calls)} E8, {len(dir32_relocations)} DIR32 ({label_dir32} local-label + {sum(external_dir32.values())} external data/constructor/cookie relocations)')
  print(f'Contribution delta: {len(body)-ORIGINAL_SIZE:+}B total; {len(code)-ORIGINAL_SIZE:+}B code before the switch table; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')
 
 def main():

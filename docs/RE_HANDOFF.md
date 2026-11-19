@@ -535,7 +535,14 @@ superseded; use the **current ledger and this handoff** for status.
   paths and the child-update/resolve/transform path. This removes another 52B;
   the candidate is 37,152B (36,508B code + 644B table), 7,920 instructions,
   with the `0x7f8` frame (12B below original) and all 505 call targets retained.
-  The focused Animation flag/owner
+  The next global-owner pass replaces all remaining raw `DAT_` names with the
+  typed process ClockScalar, polygon GameRandom, current GameController pointer,
+  zero Vector3, native float constants, opcode dispatch table and Vector3 data
+  views. The Boss source now contains no raw `DAT_` globals. Its 215 DIR32
+  relocations comprise 162 local switch labels and 53 external
+  data/constructor/cookie references; all 53 external symbols and their
+  multiplicities are pinned by the focused probe. This is ownership evidence,
+  not a physical relocation-site exactness claim. The focused Animation flag/owner
   closure compiled across 23 changed translation units and strict-replayed
   112/112 units in 20 cold objects; the Timer/ScalarMath closure separately
   replayed 29/29 units in 3 cold objects. No full-project cold replay was run.
@@ -557,7 +564,8 @@ superseded; use the **current ledger and this handoff** for status.
   0x0040BC20. This corner-array recovery grew the candidate by 220B from the
   preceding 40,836B checkpoint; it restores real source-level lifetimes,
   not an optimization or an exactness claim.
-- The candidate still has 210 DIR32 relocations versus 55 original PE
+- The candidate now has 215 DIR32 relocations (162 local switch labels and
+  53 typed external data/constructor/cookie references) versus 55 original PE
   HIGHLOW fields and a stack frame (`0x7f8` versus `0x804`). Its total
   contribution is now -2,318B (36,508B code plus the 644B switch table); it
   has 639 fewer

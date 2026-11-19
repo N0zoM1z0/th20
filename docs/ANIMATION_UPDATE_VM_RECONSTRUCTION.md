@@ -27,8 +27,13 @@ Its immutable PE body SHA-256 is
 functions, NOP padding, dummy memory accesses, or fake code-size fillers.
 The recovered call graph is progressively bound to maintained C++ owners:
 `Animation`, `AnimationFile`, `AnimationHandle`, `Timer`, `ClockScalar`,
-`Motion`, `Interpolation<T>`, `GameRandom`, and the existing color/geometry
-helpers. The original +0x18 animation-file lookup now calls the already
+`Motion`, `Interpolation<T>`, `GameRandom`, `GameController`, and the existing
+color/geometry helpers. The process-global clock, polygon random stream,
+current GameController pointer, zero Vector3 and native float constants now
+use their existing typed owners rather than decompiler `DAT_` names. The
+opcode dispatch byte table and the remaining global Vector3 are explicitly
+typed address-owned data views (`native_animation_opcode_dispatch_435285`
+and `native_vector_5c5540`). The original +0x18 animation-file lookup now calls the already
 reconstructed whole-exact `NativeAnimationLegacyFileView::previous_file_437470`
 member instead of a numeric borrowed-call adapter; its sibling +0x1C getter
 remains distinct. The eight exact color/fade/vector-configuration leaves are
@@ -54,12 +59,17 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate COFF contribution is **40,696 bytes**: **40,052 bytes
+The current candidate COFF contribution is **37,152 bytes**: **36,508 bytes
 of code plus a 644-byte, 161-entry compiler-generated switch table**. The
-code portion decodes to 8,382 instruction heads and 505 E8 calls, compared
+code portion decodes to 7,920 instruction heads and 505 E8 calls, compared
 with the original 39,470-byte body / 8,559 instruction heads / 505 E8 calls.
-The candidate has 505 REL32 call relocations and 210 DIR32 relocations; the
-original PE body has 55 physical HIGHLOW fields.
+The current candidate has 505 REL32 call relocations and **215 DIR32
+relocations**: 162 compiler switch-label entries and 53 external
+data/constructor/security-cookie references. The original PE body has 55
+physical HIGHLOW fields. The 53 external references are now pinned by symbol
+and multiplicity in the focused probe; their count is closer to the original
+physical data-relocation count, but their sites and roles are not claimed to
+be exact.
 
 The source now uses the original exact typed owners for the +0x18 file lookup,
 all seven color/fade/vector-configuration operations, the eight screen-
@@ -168,7 +178,14 @@ spawn/resolve/transform sequence. This removes another **52 bytes** from
 37,204B. The current contribution is **37,152B** (36,508B code plus the 644B
 switch table), with 7,920 code instructions and a `0x7F8` frame (12B below
 the original `0x804`). The full 505-call target multiset and all three
-child-call subsequences remain intact.
+child-call subsequences remain intact. A subsequent global-owner pass removes
+the remaining raw `DAT_` globals from the Boss: the process `ClockScalar`,
+`GameRandom`, `GameController*`, zero `Vector3`, seven native float constants,
+opcode dispatch table and remaining `Vector3` data all have typed C++ names.
+The function now has **215 DIR32 relocations** (162 switch-label and 53
+external data/constructor/cookie references), up from 210; the focused probe
+pins all 53 external symbol roles and their multiplicities. This is source
+ownership recovery, not an exact relocation-site claim.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
