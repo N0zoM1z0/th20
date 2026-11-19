@@ -48,19 +48,19 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
                          process_graphics.current_viewport->fog.far_distance;
     camera_vector=animation->base.vector_2c + animation->vector_5bc +
                   animation->base.vector_484 - process_graphics.current_viewport->vector_00;
-    if (animation->base.flags.viewport_placement_mode && animation->parent_55c==nullptr) {
+    if (animation->base.flags.bits_0b.viewport_placement_mode && animation->parent_55c==nullptr) {
         camera_vector.x+=static_cast<float>(window_state.scaled_width)/native_two;
         camera_vector.y+=(static_cast<float>(window_state.scaled_height)-native_448)/native_two;
     }
     float depth=animation_depth(camera_vector);
     Mode6PackedColor main_color, other_color;
 
-    switch(animation->base.flags.color_mode) {
+    switch(animation->base.flags.bits_09.color_mode) {
     default: break;
     case 0:
     case 1: {
         float fade;
-        main_color.word=(animation->base.flags.color_mode==0)?animation->base.color_490:animation->base.color_494;
+        main_color.word=(animation->base.flags.bits_09.color_mode==0)?animation->base.color_490:animation->base.color_494;
         if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)!=0) { ANM6_TINT(main_color); }
         if (depth > process_graphics.current_viewport->fog.near_distance) {
             fade=(process_graphics.current_viewport->fog.near_distance-depth)/fog_span;
@@ -145,7 +145,7 @@ std::int32_t AnimationDrawDetailedOwner::draw_complex_mode6(Animation* animation
             native_quad_vertices[0].color=main_color.word;
             native_quad_vertices[3].color=other_color.word;
         }
-        if (animation->base.flags.color_mode==2) {
+        if (animation->base.flags.bits_09.color_mode==2) {
             native_quad_vertices[2].color=native_quad_vertices[0].color;
             native_quad_vertices[1].color=native_quad_vertices[3].color;
         } else {

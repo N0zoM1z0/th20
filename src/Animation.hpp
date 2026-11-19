@@ -47,19 +47,46 @@ struct AnimationWord04Bits {
     std::uint32_t bit_24 : 1;
     std::uint32_t high : 7;
 };
+struct AnimationFlagByte02 {
+    // Raw byte alias preserves the native flag-byte operations while keeping
+    // the independently observed bit names available to other owners.
+    union {
+        std::uint8_t byte_02;
+        struct { std::uint8_t bit_10 : 1; std::uint8_t other_02 : 7; };
+    };
+};
+struct AnimationFlagByte09 {
+    union {
+        std::uint8_t byte_09;
+        struct {
+            std::uint8_t other_09_low : 2;
+            std::uint8_t color_mode : 3;
+            std::uint8_t other_09_high : 3;
+        };
+    };
+};
+struct AnimationFlagByte0B {
+    union {
+        std::uint8_t byte_0b;
+        struct {
+            std::uint8_t viewport_placement_mode : 2;
+            std::uint8_t other_0b : 6;
+        };
+    };
+};
+static_assert(sizeof(AnimationFlagByte02) == 1);
+static_assert(sizeof(AnimationFlagByte09) == 1);
+static_assert(sizeof(AnimationFlagByte0B) == 1);
 struct AnimationFlags {
     union { std::uint16_t field_00; AnimationFlagBytes bytes_00; };
-    std::uint8_t bit_10 : 1;
-    std::uint8_t other_02 : 7;
+    union { std::uint8_t byte_02; AnimationFlagByte02 bits_02; };
     std::uint8_t field_03;
     union { std::uint32_t word_04; AnimationWord04Bits bits_04; };
     union {
         std::uint8_t byte_08;
         AnimationModeBits bits_08;
     };
-    std::uint8_t other_09_low : 2;
-    std::uint8_t color_mode : 3;
-    std::uint8_t other_09_high : 3;
+    union { std::uint8_t byte_09; AnimationFlagByte09 bits_09; };
     // Native Animation+0x4A2 high three bits are read as a true byte bitfield
     // by the entire BulletController single draw-group loop. Keep the exact
     // original one-byte raw alias for existing consumers.
@@ -69,8 +96,7 @@ struct AnimationFlags {
     };
     // Selects the screen/viewport placement path; values 1 and 2 choose
     // distinct WindowState origin pairs, while zero stays mesh-relative.
-    std::uint8_t viewport_placement_mode : 2;
-    std::uint8_t other_0b : 6;
+    union { std::uint8_t byte_0b; AnimationFlagByte0B bits_0b; };
     // The byte selects how animation geometry is scaled against the window.
     union {
         std::uint8_t field_0c : 8;
@@ -79,6 +105,11 @@ struct AnimationFlags {
     std::uint8_t field_0d, field_0e, field_0f;
     std::uint32_t word_10, word_14, word_18, word_1c;
 };
+static_assert(sizeof(AnimationFlags) == 0x20);
+static_assert(offsetof(AnimationFlags, byte_02) == 2);
+static_assert(offsetof(AnimationFlags, byte_09) == 9);
+static_assert(offsetof(AnimationFlags, field_0a) == 10);
+static_assert(offsetof(AnimationFlags, byte_0b) == 11);
 // Native immutable identity value at 0056E068; production data definition
 // and its original global initialization contract remain pending.
 extern const Matrix4 identity_matrix;
@@ -238,7 +269,6 @@ struct AnimationPool {
     AnimationPool() noexcept;
     ~AnimationPool() noexcept;
 };
-static_assert(sizeof(AnimationFlags) == 0x20);
 static_assert(offsetof(AnimationFlags, field_0d) == 0x0d);
 static_assert(sizeof(AnimationBase) == 0x4c0);
 static_assert(offsetof(AnimationBase, variables) == 0x444);

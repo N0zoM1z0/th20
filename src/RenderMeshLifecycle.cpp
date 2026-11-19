@@ -32,7 +32,7 @@ RenderMesh::RenderMesh(std::int32_t num_columns,std::int32_t num_rows,
             Animation* animation=(strip_handles[column]=process_graphics.create_grid_strip(num_rows,0)).resolve();
             strips[column]=animation;
             strips[column]->base.flags.bytes_00.flag_byte_01=0;
-            strips[column]->base.flags.viewport_placement_mode=0;
+            strips[column]->base.flags.bits_0b.viewport_placement_mode=0;
         }
     } else {
         std::int32_t script=window_state.scaled_width==640?13:
@@ -46,7 +46,7 @@ RenderMesh::RenderMesh(std::int32_t num_columns,std::int32_t num_rows,
             Animation* animation=(strip_handles[column]=process_graphics.create_surface_strip(num_rows,script)).resolve();
             strips[column]=animation;
             strips[column]->base.flags.bytes_00.flag_byte_01=0;
-            strips[column]->base.flags.viewport_placement_mode=0;
+            strips[column]->base.flags.bits_0b.viewport_placement_mode=0;
             Animation* strip=strips[column];
             strip->set_layer(27);
         }

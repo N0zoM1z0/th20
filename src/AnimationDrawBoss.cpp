@@ -166,14 +166,14 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
 
     switch (animation->base.flags.bytes_00.animation_mode) {
     case 26: {
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43cd40((position.x),(position.y),width,angle,animation_draw_color_490(animation),(animation->base.flags.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(animation->base.flags.word_10),(animation->base.flags.word_14));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43cd40((position.x),(position.y),width,angle,animation_draw_color_490(animation),(animation->base.flags.bits_09.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(animation->base.flags.word_10),(animation->base.flags.word_14));
         break;
     }
     case 16:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_rect_439a00((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_490(animation),(animation->base.flags.word_10),(animation->base.flags.word_14));
         break;
     case 27: {
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43b0e0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),(animation->base.flags.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(animation->base.flags.word_10),(animation->base.flags.word_14));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43b0e0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),(animation->base.flags.bits_09.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(animation->base.flags.word_10),(animation->base.flags.word_14));
         break;
     }
     case 20:

@@ -40,7 +40,7 @@ NativeTextDrawResult8 __cdecl NativeTextSubmitOwner::draw_44b020(
     transform.field_b=animation->base.field_3ac;
     transform.field_c=animation->base.field_3b0;
     transform.field_d=animation->base.field_3b4;
-    animation->base.flags.bit_10 = 1;
+    animation->base.flags.bits_02.bit_10 = 1;
     auto shadow=static_cast<std::int32_t>((animation->base.flags.word_04>>10)&1);
     // Unsigned byte count -> float follows the native two-lane correction
     // sequence. The compiler's exact XMM operand register choice differs.

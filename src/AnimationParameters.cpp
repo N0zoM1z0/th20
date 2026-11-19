@@ -70,7 +70,7 @@ void Animation::interpolate_alpha_494(std::int32_t duration, std::int32_t mode, 
     const std::int32_t to = alpha;
     auto& interpolation = base.interpolation_2f4;
     interpolation.begin(duration, mode, from, to);
-    if (!base.flags.color_mode) base.flags.color_mode = 1;
+    if (!base.flags.bits_09.color_mode) base.flags.bits_09.color_mode = 1;
 }
 void Animation::set_flag_byte_01(std::uint8_t value) {
     base.flags.bytes_00.flag_byte_01 = value;
@@ -81,9 +81,9 @@ void Animation::update_layer() {}
 void Animation::set_layer(std::int32_t layer) {
     base.field_14 = layer;
     update_layer();
-    if (base.field_14 >= 3 && base.field_14 <= 19) base.flags.viewport_placement_mode = 1;
-    else if (base.field_14 >= 20 && base.field_14 <= 23) base.flags.viewport_placement_mode = 2;
-    else base.flags.viewport_placement_mode = 0;
+    if (base.field_14 >= 3 && base.field_14 <= 19) base.flags.bits_0b.viewport_placement_mode = 1;
+    else if (base.field_14 >= 20 && base.field_14 <= 23) base.flags.bits_0b.viewport_placement_mode = 2;
+    else base.flags.bits_0b.viewport_placement_mode = 0;
     if (((base.field_14 >= 20 && base.field_14 <= 36) ||
          (base.field_14 >= 45 && base.field_14 <= 53)) &&
         !((base.flags.word_04 >> 23) & 1u)) base.flags.scale_mode = 1;

@@ -106,7 +106,7 @@ std::int32_t AnimationDrawDetailedOwner::draw_simple_mode8(Animation* animation)
     animation->transform_position(*reinterpret_cast<Vector3*>(world.elements[3]));
     reinterpret_cast<AnimationQuadSubmitOwner*>(this)->bind_native_texture_state(animation);
     Mode8PackedColor color;
-    color.word=animation->base.flags.color_mode != 0 ? animation->base.color_494:animation->base.color_490;
+    color.word=animation->base.flags.bits_09.color_mode != 0 ? animation->base.color_494:animation->base.color_490;
     if (*reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x7D40E90)) {
         color.lanes.red=multiply_color_128_saturating(color.lanes.red,reinterpret_cast<const Mode8PackedColor*>(reinterpret_cast<const std::uint8_t*>(this)+0x7D40E8C)->lanes.red);
         color.lanes.green=multiply_color_128_saturating(color.lanes.green,reinterpret_cast<const Mode8PackedColor*>(reinterpret_cast<const std::uint8_t*>(this)+0x7D40E8C)->lanes.green);

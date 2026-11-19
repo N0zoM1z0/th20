@@ -25,8 +25,8 @@ Vector3& Animation::transform_position(Vector3& value) {
         parent_558->position(parent_position);
         value += parent_position;
     } else {
-        if (base.flags.viewport_placement_mode) {
-            if (base.flags.viewport_placement_mode == 1) {
+        if (base.flags.bits_0b.viewport_placement_mode) {
+            if (base.flags.bits_0b.viewport_placement_mode == 1) {
                 value.x += float(window_state.field_0058_value());
                 value.y += float(window_state.field_005c_value());
             } else {
@@ -52,7 +52,7 @@ void Animation::update_geometry() {
         else center = {0,0,0};
         base.flags.word_04 &= ~0x200000u;
         std::uint32_t first_color = base.color_490;
-        std::uint32_t second_color = base.flags.color_mode ? base.color_494 : base.color_490;
+        std::uint32_t second_color = base.flags.bits_09.color_mode ? base.color_494 : base.color_490;
         float first_radius = base.vector_50.x * 0.5f + base.vector_50.y;
         float second_radius = base.vector_50.y - base.vector_50.x * 0.5f;
         if (parent_55c && !((base.flags.word_04 >> 12) & 1u)) {
@@ -85,7 +85,7 @@ void Animation::update_geometry() {
         center={0,0,0};
         base.flags.word_04&=~0x200000u;
         std::uint32_t first_color=base.color_490;
-        std::uint32_t second_color=base.flags.color_mode?base.color_494:base.color_490;
+        std::uint32_t second_color=base.flags.bits_09.color_mode?base.color_494:base.color_490;
         float first_radius=base.variables.field_10*0.5f+base.variables.field_14;
         float second_radius=base.variables.field_14-base.variables.field_10*0.5f;
         if(parent_55c && !((base.flags.word_04>>12)&1u)) {
@@ -109,7 +109,7 @@ void Animation::update_geometry() {
         auto* vertices=static_cast<SpriteWorldTexturedVertex*>(geometry);
         base.flags.word_04&=~0x200000u;
         std::uint32_t first_color=base.color_490;
-        std::uint32_t second_color=base.flags.color_mode?base.color_494:base.color_490;
+        std::uint32_t second_color=base.flags.bits_09.color_mode?base.color_494:base.color_490;
         float radius=base.variables.field_10;
         if(parent_55c && !((base.flags.word_04>>12)&1u)) radius=parent_55c->scale_x_value()*radius;
         if(base.flags.scale_mode==1)radius*=window_state.scale;
@@ -139,7 +139,7 @@ void Animation::update_geometry() {
         position(center);
         base.flags.word_04&=~0x200000u;
         if(base.flags.bytes_00.animation_mode==14)angle=normalize_angle(base.vector_38.z);
-        std::uint32_t color=base.flags.color_mode?base.color_494:base.color_490;
+        std::uint32_t color=base.flags.bits_09.color_mode?base.color_494:base.color_490;
         float first_radius=base.vector_50.x*0.5f+base.vector_50.y;
         float second_radius=base.vector_50.y-base.vector_50.x*0.5f;
         if(parent_55c && !((base.flags.word_04>>12)&1u)) {
@@ -168,7 +168,7 @@ void Animation::update_geometry() {
         float uv=0.0f;
         float uv_step=float(base.variables.field_04)/float(count-1);
         base.flags.word_04&=~0x200000u;
-        std::uint32_t color=base.flags.color_mode?base.color_494:base.color_490;
+        std::uint32_t color=base.flags.bits_09.color_mode?base.color_494:base.color_490;
         Vector3 point;
         float half_height=base.variables.field_14/2.0f;
         float first_radius=base.variables.field_18;

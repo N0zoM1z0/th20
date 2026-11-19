@@ -34,7 +34,7 @@ NativeTextDrawResult8 __cdecl NativeRendererFormattedTextView::draw_centered_tex
     transform.field_b = animation->base.field_3ac;
     transform.field_c = animation->base.field_3b0;
     transform.field_d = animation->base.field_3b4;
-    animation->base.flags.bit_10 = 1;
+    animation->base.flags.bits_02.bit_10 = 1;
     std::uint32_t bit10 = (animation->base.flags.word_04 >> 10) & 1;
     std::int32_t offset = static_cast<std::int32_t>(
         sprite->extent_4c / native_double_56c8d0 -

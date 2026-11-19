@@ -39,7 +39,7 @@ AnimationHandle AnimationFile::spawn(const char* expected_stem,std::int32_t scri
     anim->base.flags.word_04 |= 0x200u;
     if (layer>=0) {
         anim->base.field_14=layer;
-        if (layer<=23) anim->base.flags.viewport_placement_mode=1;
+        if (layer<=23) anim->base.flags.bits_0b.viewport_placement_mode=1;
     }
     if (position != nullptr || (flags&8u)!=0) {
         if ((flags&1u)!=0) {

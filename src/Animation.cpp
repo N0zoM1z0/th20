@@ -36,7 +36,7 @@ void Animation::reset() {
     base.color_490 = 0xffffffffu;
     base.matrix_3b8 = identity_matrix;
     base.flags = {};
-    base.flags.bit_10 = 1;
+    base.flags.bits_02.bit_10 = 1;
     base.flags.word_04 |= 1u;
     base.flags.bits_08.mode = 1;
     timer_4c8.reset();

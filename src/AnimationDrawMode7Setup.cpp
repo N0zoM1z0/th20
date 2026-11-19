@@ -44,7 +44,7 @@ std::int32_t AnimationDrawDetailedOwner::prepare_simple_mode7(Animation* animati
     }
     transformed = *reinterpret_cast<TransformMatrix*>(&animation->matrix_57c);
     transformed.elements[3][0] += animation->vector_5bc.x + animation->base.vector_2c.x + animation->base.vector_484.x;
-    if (animation->base.flags.viewport_placement_mode && !animation->parent_55c) {
+    if (animation->base.flags.bits_0b.viewport_placement_mode && !animation->parent_55c) {
         transformed.elements[3][0] += static_cast<float>(window_state.scaled_width)/native_two;
         transformed.elements[3][1] += (static_cast<float>(window_state.scaled_height)-native_448)/native_two;
     }

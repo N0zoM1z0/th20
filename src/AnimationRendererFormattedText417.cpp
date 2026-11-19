@@ -29,7 +29,7 @@ NativeTextDrawResult8 __cdecl NativeRendererFormattedTextView::draw_formatted_te
         animation->base.field_3a8, animation->base.field_3ac,
         animation->base.field_3b0, animation->base.field_3b4
     };
-    animation->base.flags.bit_10 = 1;
+    animation->base.flags.bits_02.bit_10 = 1;
     std::uint32_t bit10 = (animation->base.flags.word_04 >> 10) & 1;
     auto* texture = reinterpret_cast<AnimationQuadSubmitOwner*>(this)
         ->texture_for_sprite(sprite->texture_id);

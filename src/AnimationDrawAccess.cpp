@@ -15,7 +15,7 @@ std::uint32_t __fastcall animation_draw_color_494(Animation* animation) {
 }
 
 std::uint32_t __fastcall animation_draw_enabled(Animation* animation) {
-    return animation->base.flags.bit_10;
+    return animation->base.flags.bits_02.bit_10;
 }
 
 float __fastcall animation_inherited_aux_scale_x(Animation* animation) {

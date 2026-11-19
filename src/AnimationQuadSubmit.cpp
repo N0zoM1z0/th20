@@ -134,11 +134,11 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
         if ((options&2)==0) {
             SourcePackedColor main_color;
             SourcePackedColor other_color;
-            switch (animation->base.flags.color_mode) {
+            switch (animation->base.flags.bits_09.color_mode) {
             default: break;
             case 0:
             case 1: {
-                main_color.word=animation->base.flags.color_mode==0?animation->base.color_490:animation->base.color_494;
+                main_color.word=animation->base.flags.bits_09.color_mode==0?animation->base.color_490:animation->base.color_494;
                 if (animation->base.flags.bits_04.bit_24 && animation->parent_55c!=nullptr) {
                     ANM_MUL4_COLOR_INTO(main_color,animation->parent_55c->field_5cc,
                                         multiply_color_128_saturating);
@@ -164,7 +164,7 @@ std::int32_t AnimationDrawModeOwner::render_quad(Animation* animation,
                 // The real original game has separate four-store branches
                 // for modes 2 and 3 (8 physical color output references),
                 // even though two output colors coincide in both branches.
-                if (animation->base.flags.color_mode==2) {
+                if (animation->base.flags.bits_09.color_mode==2) {
                     native_quad_vertices[0].color=main_color.word;
                     native_quad_vertices[1].color=other_color.word;
                     native_quad_vertices[2].color=main_color.word;

@@ -8,7 +8,7 @@
 namespace th20 {
 
 void Animation::set_collision_color_mode(std::uint8_t value) {
-    base.flags.color_mode = value;
+    base.flags.bits_09.color_mode = value;
 }
 
 void Animation::set_base_position(const Vector3& value) {

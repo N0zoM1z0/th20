@@ -47,7 +47,7 @@ std::int32_t AnimationDrawDetailedOwner::draw_simple_mode7(Animation* animation)
     const float fog_range = process_graphics.current_viewport->fog.near_distance -
                             process_graphics.current_viewport->fog.far_distance;
     Mode7PackedColor selected;
-    selected.word = animation->base.flags.color_mode != 0 ?
+    selected.word = animation->base.flags.bits_09.color_mode != 0 ?
         animation->base.color_494 : animation->base.color_490;
 
     for (std::int32_t i=0; i<4; ++i) {

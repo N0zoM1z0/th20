@@ -10,8 +10,8 @@ void NativeAnimationColorConfigView::interpolate_secondary_alpha_438bd0(
     IntegerInterpolation* const interpolation=
         &reinterpret_cast<Animation*>(this)->base.interpolation_2f4;
     interpolation->begin(frames,curve,from,to);
-    if (!reinterpret_cast<Animation*>(this)->base.flags.color_mode)
-        reinterpret_cast<Animation*>(this)->base.flags.color_mode=1;
+    if (!reinterpret_cast<Animation*>(this)->base.flags.bits_09.color_mode)
+        reinterpret_cast<Animation*>(this)->base.flags.bits_09.color_mode=1;
 }
 void NativeAnimationColorConfigView::interpolate_rgb_438cc0(
         std::int32_t frames,std::int32_t curve,const Color3& start,const Color3& end) {
@@ -20,7 +20,7 @@ void NativeAnimationColorConfigView::interpolate_rgb_438cc0(
     IntegerTripleInterpolation* const interpolation=
         &reinterpret_cast<Animation*>(this)->base.interpolation_2a0;
     interpolation->begin(frames,curve,from,to);
-    if (!reinterpret_cast<Animation*>(this)->base.flags.color_mode)
-        reinterpret_cast<Animation*>(this)->base.flags.color_mode=1;
+    if (!reinterpret_cast<Animation*>(this)->base.flags.bits_09.color_mode)
+        reinterpret_cast<Animation*>(this)->base.flags.bits_09.color_mode=1;
 }
 }

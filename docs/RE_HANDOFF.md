@@ -500,11 +500,23 @@ superseded; use the **current ledger and this handoff** for status.
   natural cdecl ScalarMath calls. The newly added asin/acos wrappers each
   replay 35/35 bytes with their original CRT import relocations. Opcode 0x24
   now calls the exact 88B cdecl `polar_components` helper; both independent
-  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x84c`
+  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x830`
   versus the original `0x804`, down from the previous `0x874`; two lifetime
   passes moved opcode locals into their case scopes and removed unused
   temporaries. The latest Timer/callback/random cleanup removes 112B/15
-  instruction heads from 40,808B and another 0xC of stack frame.
+  instruction heads from 40,808B and another 0xC of stack frame. The
+  AnimationBase/AnmVariables/Vector3 owner pass then removes another 116B/16
+  instructions from 40,716B and another 8 bytes of frame. The flag bytes at
+  +0x49A/+0x4A1/+0x4A3 now have explicit one-byte union views while preserving
+  their named bitfield aliases; all 23 affected consumers compile. The Boss
+  contains no raw `this + offset` member expressions. A final interpolation
+  owner pass removes 48 temporary pointers, binds the embedded interpolation
+  and Vector2 members directly, and retains the original shared Angle-mode/
+  reset helper call destinations; this removes another 68B/8 instructions and
+  shrinks the frame from 0x844 to 0x830. The focused Animation flag/owner
+  closure compiled across 23 changed translation units and strict-replayed
+  112/112 units in 20 cold objects; the Timer/ScalarMath closure separately
+  replayed 29/29 units in 3 cold objects. No full-project cold replay was run.
 - The eight exact color/fade/vector leaves and all eight coordinate-normalizer
   calls are bound through typed owners; the normalizer independently replays
   95/95 bytes. The 59B Timer unscaled fractional-advance leaf is now
@@ -524,8 +536,8 @@ superseded; use the **current ledger and this handoff** for status.
   preceding 40,836B checkpoint; it restores real source-level lifetimes,
   not an optimization or an exactness claim.
 - The candidate still has 210 DIR32 relocations versus 55 original PE
-  HIGHLOW fields and a larger stack frame (`0x84c` versus `0x804`). Its total
-  contribution is +1,226B (+582B code plus the switch table); it has 192 fewer
+  HIGHLOW fields and a larger stack frame (`0x830` versus `0x804`). Its total
+  contribution is +1,062B (+418B code plus the switch table); it has 212 fewer
   code instruction heads than the original. It is explicitly NONEXACT, has
   no exact match unit, and is not counted as a new exact function. No
   assembly, NOP padding, dummy accesses or byte fillers. Next work is strict

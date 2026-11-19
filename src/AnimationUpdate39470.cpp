@@ -52,17 +52,15 @@ std::int32_t Animation::update() {
   int *puVar8;
   float fVar11;
 
-
-
   float initial_clock_value;
   std::int16_t *instruction;
 
-  if ((*(std::uint32_t *)((int)this + 0x4b4) & 1) != 0) {
+  if ((base.flags.word_1c & 1) != 0) {
     return 0;
   }
   fVar11 = static_cast<float>(*reinterpret_cast<ClockScalar*>((float *)&DAT_005aefe4));
   initial_clock_value = (float)fVar11;
-  if ((*(std::uint32_t *)((int)this + 0x49c) >> 8 & 1) != 0) {
+  if ((base.flags.word_04 >> 8 & 1) != 0) {
     reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(DAT_0056c8cc);
   }
   if (_DAT_0056e0e8 < this->slowdown()) {
@@ -76,33 +74,33 @@ std::int32_t Animation::update() {
       (iVar2 = this->callback->update(), iVar2 != 0)) {
     goto LAB_00434fd1;
   }
-  if (*(int *)((int)this + 0x5dc) != 0) {
+  if (field_5dc != nullptr) {
     iVar2 = this->field_5dc(this);
     if (iVar2 != 0) goto LAB_00434fd1;
   }
-  if ((-1 < *(int *)((int)this + 0x28)) && ((*(std::uint32_t *)((int)this + 0x49c) >> 0x19 & 1) == 0)
+  if ((-1 < base.field_28) && ((base.flags.word_04 >> 0x19 & 1) == 0)
      ) {
     timer_4d8++;
-    if (*(int *)((int)this + 0x438) != 0) {
+    if (base.field_438 != 0) {
       void *local_774;
       int local_770;
       local_774 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-      local_770 = *(int *)((int)this + 0x24);
+      local_770 = base.field_24;
       iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_774)->script(local_770)));
-      instruction = (short *)(iVar2 + *(int *)((int)this + 0x28));
+      instruction = (short *)(iVar2 + base.field_28);
       goto LAB_0042de0b;
     }
-    if ((((*(std::uint8_t *)((int)this + 0x4a0) & 3) != 1) || (DAT_005ba828 == 0)) ||
+    if ((((base.flags.byte_08 & 3) != 1) || (DAT_005ba828 == 0)) ||
        (reinterpret_cast<GameController*>(DAT_005ba828)->animation_frozen() == 0)) {
       void *local_77c;
       int local_778;
       std::uint32_t local_e0;
 LAB_0042b831:
       local_77c = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-      local_778 = *(int *)((int)this + 0x24);
+      local_778 = base.field_24;
       iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_77c)->script(local_778)));
-      instruction = (short *)(iVar2 + *(int *)((int)this + 0x28));
-      iVar2 = static_cast<std::int32_t>(*reinterpret_cast<Timer*>((int)this + 0x4c8));
+      instruction = (short *)(iVar2 + base.field_28);
+      iVar2 = static_cast<std::int32_t>(timer_4c8);
       if (iVar2 < instruction[2]) goto LAB_00434dce;
       local_e0 = (int)*instruction + 1;
       if (0x27b < local_e0) {
@@ -116,12 +114,12 @@ switchD_0042b8cc_caseD_a0:
         goto switchD_0042b8cc_caseD_a0;
       }
       case 0: {
-        *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) & 0xfe;
-        *(std::uint32_t *)((int)this + 0x28) = 0xffffffff;
+        base.flags.byte_02 = base.flags.byte_02 & 0xfe;
+        base.field_28 = 0xffffffff;
         goto LAB_00434fd1;
       }
       case 1: {
-        *(std::uint32_t *)((int)this + 0x28) = 0xffffffff;
+        base.field_28 = 0xffffffff;
         goto LAB_00434fb5;
       }
       case 0x68: {
@@ -132,8 +130,8 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_554 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xfffffeff | (local_554 & 1) << 8;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xfffffeff | (local_554 & 1) << 8;
         break;
       }
       case 0x72: {
@@ -160,7 +158,7 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_560;
         std::uint32_t local_55c;
         local_584 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        if ((*(std::uint32_t *)((int)this + 0x49c) >> 0x12 & 1) == 0) {
+        if ((base.flags.word_04 >> 0x12 & 1) == 0) {
           local_55c = 0;
         }
         else {
@@ -202,7 +200,7 @@ switchD_0042b8cc_caseD_a0:
         float local_f8;
         std::uintptr_t local_f4;
         local_590 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        if ((*(std::uint32_t *)((int)this + 0x49c) >> 0x12 & 1) == 0) {
+        if ((base.flags.word_04 >> 0x12 & 1) == 0) {
           local_570 = 2;
         }
         else {
@@ -283,14 +281,8 @@ switchD_0042b8cc_caseD_a0:
       case 0x7b: {
         std::uint32_t *puVar5;
         std::uint32_t *puVar10;
-        if (*(int *)((int)this + 0x55c) != 0) {
-          puVar5 = (std::uint32_t *)(*(int *)((int)this + 0x55c) + 0x444);
-          puVar10 = (std::uint32_t *)((int)this + 0x444);
-          for (iVar2 = 0x10; iVar2 != 0; iVar2 = iVar2 + -1) {
-            *puVar10 = *puVar5;
-            puVar5 = puVar5 + 1;
-            puVar10 = puVar10 + 1;
-          }
+        if (parent_55c != nullptr) {
+          base.variables = parent_55c->base.variables;
         }
         break;
       }
@@ -375,7 +367,7 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_124;
         std::uint32_t local_120;
         std::uint32_t local_d8;
-        *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) | 1;
+        base.flags.byte_02 = base.flags.byte_02 | 1;
         fVar11 = this->rotation_z_value();
         local_5cc = (float)fVar11;
         if (local_5cc <= -(DAT_0056e0f0 / DAT_0056c8e0)) {
@@ -433,7 +425,7 @@ LAB_0042c32a:
           local_d8 = local_120;
         }
 LAB_0042c528:
-        if (*(int *)((int)this + 0x5e0) != 0) {
+        if (field_5e0 != nullptr) {
           local_5e4 = this->field_5e0;
           local_d8 = (*local_5e4)(this,local_d8);
         }
@@ -444,7 +436,7 @@ LAB_0042c528:
           local_5ec = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           reinterpret_cast<AnimationFile*>(local_5ec)->apply_sprite(this, local_d8);
         }
-        *(std::uint32_t *)((int)this + 0x43c) = static_cast<std::int32_t>(timer_4c8);
+        base.field_43c = static_cast<std::int32_t>(timer_4c8);
         break;
       }
       case 0x34: {
@@ -453,8 +445,8 @@ LAB_0042c528:
         std::uint32_t local_134;
         std::uint32_t local_130;
         std::uint32_t local_e8;
-        *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) | 1;
-        if (*(int *)((int)this + 0x5e0) == 0) {
+        base.flags.byte_02 = base.flags.byte_02 | 1;
+        if (field_5e0 == nullptr) {
           if ((instruction[3] & 1U) == 0) {
             local_134 = *(std::uint32_t *)(instruction + 4);
           }
@@ -480,7 +472,7 @@ LAB_0042c528:
           local_5f8 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           reinterpret_cast<AnimationFile*>(local_5f8)->apply_sprite(this, local_e8);
         }
-        *(std::uint32_t *)((int)this + 0x43c) = static_cast<std::int32_t>(timer_4c8);
+        base.field_43c = static_cast<std::int32_t>(timer_4c8);
         break;
       }
       case 0x35: {
@@ -492,8 +484,8 @@ LAB_0042c528:
         std::uint32_t local_13c;
         std::uint32_t local_138;
         int local_ec;
-        *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) | 1;
-        if (*(int *)((int)this + 0x5e0) == 0) {
+        base.flags.byte_02 = base.flags.byte_02 | 1;
+        if (field_5e0 == nullptr) {
           if ((instruction[3] & 1U) == 0) {
             local_144 = *(std::uint32_t *)(instruction + 4);
           }
@@ -533,7 +525,7 @@ LAB_0042c528:
           local_604 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
           reinterpret_cast<AnimationFile*>(local_604)->apply_sprite(this, local_ec);
         }
-        *(std::uint32_t *)((int)this + 0x43c) = static_cast<std::int32_t>(timer_4c8);
+        base.field_43c = static_cast<std::int32_t>(timer_4c8);
         break;
       }
       case 0x4a: {
@@ -546,7 +538,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_148 = (float)fVar11;
         }
-        *(float *)((int)this + 0x50) = local_148;
+        base.vector_50.x = local_148;
         if ((instruction[3] & 2U) == 0) {
           local_14c = *(float *)(instruction + 6);
         }
@@ -554,8 +546,8 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_14c = (float)fVar11;
         }
-        *(float *)((int)this + 0x54) = local_14c;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
+        base.vector_50.y = local_14c;
+        base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x6a: {
@@ -568,7 +560,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_150 = (float)fVar11;
         }
-        *(float *)((int)this + 0x58) = local_150;
+        base.vector_58.x = local_150;
         if ((instruction[3] & 2U) == 0) {
           local_154 = *(float *)(instruction + 6);
         }
@@ -576,8 +568,8 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_154 = (float)fVar11;
         }
-        *(float *)((int)this + 0x5c) = local_154;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
+        base.vector_58.y = local_154;
+        base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x65: {
@@ -590,7 +582,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_158 = (float)fVar11;
         }
-        *(float *)((int)this + 0x68) = local_158;
+        base.vector_68.x = local_158;
         if ((instruction[3] & 2U) == 0) {
           local_15c = *(float *)(instruction + 6);
         }
@@ -598,8 +590,8 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_15c = (float)fVar11;
         }
-        *(float *)((int)this + 0x6c) = local_15c;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 8;
+        base.vector_68.y = local_15c;
+        base.flags.word_04 = base.flags.word_04 | 8;
         break;
       }
       case 0x4b: {
@@ -610,7 +602,7 @@ LAB_0042c528:
         else {
           local_160 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint8_t *)((int)this + 0x493) = (std::uint8_t)local_160;
+        base.channels_490.alpha = (std::uint8_t)local_160;
         break;
       }
       case 0x4c: {
@@ -623,21 +615,21 @@ LAB_0042c528:
         else {
           local_164 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint8_t *)((int)this + 0x492) = (std::uint8_t)local_164;
+        base.channels_490.red = (std::uint8_t)local_164;
         if ((instruction[3] & 2U) == 0) {
           local_168 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_168 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint8_t *)((int)this + 0x491) = (std::uint8_t)local_168;
+        base.channels_490.green = (std::uint8_t)local_168;
         if ((instruction[3] & 4U) == 0) {
           local_16c = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_16c = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint8_t *)((int)this + 0x490) = (std::uint8_t)local_16c;
+        base.channels_490.blue = (std::uint8_t)local_16c;
         break;
       }
       case 0x4d: {
@@ -648,7 +640,7 @@ LAB_0042c528:
         else {
           local_170 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint8_t *)((int)this + 0x497) = (std::uint8_t)local_170;
+        base.channels_494.alpha = (std::uint8_t)local_170;
         break;
       }
       case 0x4e: {
@@ -661,26 +653,26 @@ LAB_0042c528:
         else {
           local_174 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint8_t *)((int)this + 0x496) = (std::uint8_t)local_174;
+        base.channels_494.red = (std::uint8_t)local_174;
         if ((instruction[3] & 2U) == 0) {
           local_178 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_178 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint8_t *)((int)this + 0x495) = (std::uint8_t)local_178;
+        base.channels_494.green = (std::uint8_t)local_178;
         if ((instruction[3] & 4U) == 0) {
           local_17c = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_17c = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint8_t *)((int)this + 0x494) = (std::uint8_t)local_17c;
+        base.channels_494.blue = (std::uint8_t)local_17c;
         break;
       }
       case 0x26: {
-        (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>(*(int *)(instruction + 6)));
-        *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)(instruction + 4);
+        (timer_4c8=static_cast<std::int32_t>(*(int *)(instruction + 6)));
+        base.field_28 = *(std::uint32_t *)(instruction + 4);
         goto LAB_0042b831;
       }
       case 0x27: {
@@ -695,57 +687,57 @@ LAB_0042c528:
           local_184 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         if (0 < (int)local_184) {
-          (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>(*(int *)(instruction + 8)));
-          *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)(instruction + 6);
+          (timer_4c8=static_cast<std::int32_t>(*(int *)(instruction + 8)));
+          base.field_28 = *(std::uint32_t *)(instruction + 6);
           goto LAB_0042b831;
         }
         break;
       }
       case 0x3c: {
-        *(std::uint8_t *)((int)this + 0x4a0) =
-             *(std::uint8_t *)((int)this + 0x4a0) & 0x3f |
-             (*(std::uint8_t *)((int)this + 0x4a0) >> 6 ^ 1) << 6;
-        *(float *)((int)this + 0x50) = *(float *)((int)this + 0x50) * DAT_0056e0f4;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
+        base.flags.byte_08 =
+             base.flags.byte_08 & 0x3f |
+             (base.flags.byte_08 >> 6 ^ 1) << 6;
+        base.vector_50.x = base.vector_50.x * DAT_0056e0f4;
+        base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x3d: {
-        *(std::uint8_t *)((int)this + 0x4a0) =
-             *(std::uint8_t *)((int)this + 0x4a0) & 0x3f |
-             (*(std::uint8_t *)((int)this + 0x4a0) >> 6 ^ 2) << 6;
-        *(float *)((int)this + 0x54) = *(float *)((int)this + 0x54) * DAT_0056e0f4;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
+        base.flags.byte_08 =
+             base.flags.byte_08 & 0x3f |
+             (base.flags.byte_08 >> 6 ^ 2) << 6;
+        base.vector_50.y = base.vector_50.y * DAT_0056e0f4;
+        base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x70: {
-        if ((*(std::uint8_t *)((int)this + 0x4a0) >> 6 & 1) != 0) {
-          *(float *)((int)this + 0x50) = *(float *)((int)this + 0x50) * DAT_0056e0f4;
+        if ((base.flags.byte_08 >> 6 & 1) != 0) {
+          base.vector_50.x = base.vector_50.x * DAT_0056e0f4;
         }
-        if ((*(std::uint8_t *)((int)this + 0x4a0) >> 6 & 2) != 0) {
-          *(float *)((int)this + 0x54) = *(float *)((int)this + 0x54) * DAT_0056e0f4;
+        if ((base.flags.byte_08 >> 6 & 2) != 0) {
+          base.vector_50.y = base.vector_50.y * DAT_0056e0f4;
         }
-        *(std::uint8_t *)((int)this + 0x4a0) = *(std::uint8_t *)((int)this + 0x4a0) & 0x3f;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
+        base.flags.byte_08 = base.flags.byte_08 & 0x3f;
+        base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x43: {
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xfeffffff | (*(std::uint8_t *)(instruction + 4) & 1) << 0x18;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xfeffffff | (*(std::uint8_t *)(instruction + 4) & 1) << 0x18;
         break;
       }
       case 0x44: {
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 1;
+        base.flags.word_04 = base.flags.word_04 | 1;
         break;
       }
       case 0x45: {
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) & 0xfffffffe;
+        base.flags.word_04 = base.flags.word_04 & 0xfffffffe;
         break;
       }
       case 0x6f: {
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xffefffff | (*(std::uint8_t *)(instruction + 4) & 1) << 0x14;
-        *(std::uint32_t *)((int)this + 0x4b8) = *(std::uint32_t *)(instruction + 6);
-        *(std::uint32_t *)((int)this + 0x4bc) = *(std::uint32_t *)(instruction + 8);
+        base.flags.word_04 =
+             base.flags.word_04 & 0xffefffff | (*(std::uint8_t *)(instruction + 4) & 1) << 0x14;
+        base.field_4b8 = *reinterpret_cast<const float*>(instruction + 6);
+        base.field_4bc = *reinterpret_cast<const float*>(instruction + 8);
         break;
       }
       case 0x49: {
@@ -759,7 +751,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_188 = (float)fVar11;
         }
-        *(float *)((int)this + 0x38) = local_188;
+        base.vector_38.x = local_188;
         if ((instruction[3] & 2U) == 0) {
           local_18c = *(float *)(instruction + 6);
         }
@@ -767,7 +759,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_18c = (float)fVar11;
         }
-        *(float *)((int)this + 0x3c) = local_18c;
+        base.vector_38.y = local_18c;
         if ((instruction[3] & 4U) == 0) {
           local_190 = *(float *)(instruction + 8);
         }
@@ -775,8 +767,8 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 8));
           local_190 = (float)fVar11;
         }
-        *(float *)((int)this + 0x40) = local_190;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 2;
+        base.vector_38.z = local_190;
+        base.flags.word_04 = base.flags.word_04 | 2;
         break;
       }
       case 0x57: {
@@ -832,7 +824,7 @@ LAB_0042c528:
         std::uint8_t local_cf;
         std::uint8_t local_ce;
         local_ce = *(std::uint8_t *)(instruction + 4);
-        local_cf = *(std::uint8_t *)((int)this + 0x493);
+        local_cf = base.channels_490.alpha;
         if ((instruction[3] & 2U) == 0) {
           local_1a8 = *(std::uint32_t *)(instruction + 6);
         }
@@ -843,7 +835,7 @@ LAB_0042c528:
         break;
       }
       case 0x37: {
-        *(char *)((int)this + 0x499) = (char)instruction[4];
+        base.flags.bytes_00.flag_byte_01 = (char)instruction[4];
         break;
       }
       case 0x48: {
@@ -853,7 +845,7 @@ LAB_0042c528:
         float local_1b4;
         float local_1b0;
         float local_1ac;
-        if ((*(std::uint32_t *)((int)this + 0x49c) >> 6 & 1) == 0) {
+        if ((base.flags.word_04 >> 6 & 1) == 0) {
           if ((instruction[3] & 4U) == 0) {
             local_1ac = *(float *)(instruction + 8);
           }
@@ -944,7 +936,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_1d0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x80) = local_1d0;
+        base.vector_80.x = local_1d0;
         if ((instruction[3] & 2U) == 0) {
           local_1d4 = *(float *)(instruction + 6);
         }
@@ -952,7 +944,7 @@ LAB_0042c528:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_1d4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x84) = local_1d4;
+        base.vector_80.y = local_1d4;
         break;
       }
       case 0x6d: {
@@ -963,8 +955,7 @@ LAB_0042c528:
         else {
           local_1d8 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint8_t *)((int)this + 0x4a2) =
-             *(std::uint8_t *)((int)this + 0x4a2) & 0xe3 | ((std::uint8_t)local_1d8 & 7) << 2;
+        base.flags.field_0a = base.flags.field_0a & 0xe3 | ((std::uint8_t)local_1d8 & 7) << 2;
         break;
       }
       case 4: {
@@ -985,10 +976,10 @@ LAB_0042c528:
         int local_610;
         int local_1e0;
         int local_dc;
-        *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) & 0xfe;
+        base.flags.byte_02 = base.flags.byte_02 & 0xfe;
 switchD_0042b8cc_caseD_2:
-        if (*(int *)((int)this + 0x438) == 0) {
-          *(std::uint8_t *)((int)this + 0x4a1) = *(std::uint8_t *)((int)this + 0x4a1) | 1;
+        if (base.field_438 == 0) {
+          base.flags.byte_09 = base.flags.byte_09 | 1;
           timer_4c8--;
           goto LAB_00434dce;
         }
@@ -997,9 +988,9 @@ LAB_0042de0b:
         local_1e0 = 0;
         local_f0 = (short *)0x0;
         local_614 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        local_610 = *(int *)((int)this + 0x24);
+        local_610 = base.field_24;
         for (scan_instruction = reinterpret_cast<std::int16_t*>(reinterpret_cast<AnimationFile*>(local_614)->script(local_610));
-            ((*scan_instruction != 5 || (*(int *)((int)this + 0x438) != *(int *)(scan_instruction + 4))) &&
+            ((*scan_instruction != 5 || (base.field_438 != *(int *)(scan_instruction + 4))) &&
             (*scan_instruction != -1)); scan_instruction = (short *)((std::uint32_t)(std::uint16_t)scan_instruction[1] + (int)scan_instruction)) {
           if ((*scan_instruction == 5) && (*(int *)(scan_instruction + 4) == -1)) {
             local_f0 = scan_instruction;
@@ -1007,17 +998,17 @@ LAB_0042de0b:
           }
           local_dc = (std::uint32_t)(std::uint16_t)scan_instruction[1] + local_dc;
         }
-        *(std::uint32_t *)((int)this + 0x438) = 0;
-        *(std::uint8_t *)((int)this + 0x4a1) = *(std::uint8_t *)((int)this + 0x4a1) & 0xfe;
+        base.field_438 = 0;
+        base.flags.byte_09 = base.flags.byte_09 & 0xfe;
         if (*scan_instruction == 5) {
 LAB_0042df8e:
-          reinterpret_cast<Timer*>(this)->set_from_current(*reinterpret_cast<const Timer*>((int)this + 0x4c8));
-          *(std::uint32_t *)((int)this + 0x10) = *(std::uint32_t *)((int)this + 0x28);
+          base.timer.set_from_current(timer_4c8);
+          base.field_10 = base.field_28;
           local_dc = (std::uint32_t)(std::uint16_t)scan_instruction[1] + local_dc;
-          (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>((int)scan_instruction[2]));
+          (timer_4c8=static_cast<std::int32_t>((int)scan_instruction[2]));
           scan_instruction = (short *)((std::uint32_t)(std::uint16_t)scan_instruction[1] + (int)scan_instruction);
-          *(int *)((int)this + 0x28) = local_dc;
-          *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) | 1;
+          base.field_28 = local_dc;
+          base.flags.byte_02 = base.flags.byte_02 | 1;
           goto LAB_0042b831;
         }
         if (local_f0 != (short *)0x0) {
@@ -1032,19 +1023,19 @@ LAB_0042df8e:
         goto switchD_0042b8cc_caseD_2;
       }
       case 5: {
-        reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))->set_from_current(*reinterpret_cast<const Timer*>((int)this));
-        *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)((int)this + 0x10);
+        timer_4c8.set_from_current(base.timer);
+        base.field_28 = base.field_10;
         goto LAB_0042b831;
       }
       case 0x3e: {
         std::uint8_t local_cd;
         local_cd = (char)instruction[4] != '\0';
-        *(std::uint8_t *)((int)this + 0x49a) = *(std::uint8_t *)((int)this + 0x49a) & 0xfe | local_cd;
+        base.flags.byte_02 = base.flags.byte_02 & 0xfe | local_cd;
         break;
       }
       case 0x5d: {
-        *(std::uint32_t *)((int)this + 0x4a8) = (std::uint32_t)(std::uint16_t)instruction[4];
-        *(std::uint32_t *)((int)this + 0x4ac) = (std::uint32_t)(std::uint16_t)instruction[5];
+        base.flags.word_10 = (std::uint32_t)(std::uint16_t)instruction[4];
+        base.flags.word_14 = (std::uint32_t)(std::uint16_t)instruction[5];
         break;
       }
       case 0x61: {
@@ -1056,8 +1047,8 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_1e4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x3a0) = local_1e4;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 0x80000;
+        base.field_3a0 = local_1e4;
+        base.flags.word_04 = base.flags.word_04 | 0x80000;
         break;
       }
       case 0x62: {
@@ -1069,60 +1060,53 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_1e8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x3a4) = local_1e8;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 0x80000;
+        base.field_3a4 = local_1e8;
+        base.flags.word_04 = base.flags.word_04 | 0x80000;
         break;
       }
       case 0x39: {
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xffffffef | (*(std::uint8_t *)(instruction + 4) & 1) << 4;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xffffffef | (*(std::uint8_t *)(instruction + 4) & 1) << 4;
         break;
       }
       case 0x3a: {
-        *(std::uint8_t *)((int)this + 0x4a1) =
-             *(std::uint8_t *)((int)this + 0x4a1) & 0xfd | (*(std::uint8_t *)(instruction + 4) & 1) << 1;
+        base.flags.byte_09 = base.flags.byte_09 & 0xfd | (*(std::uint8_t *)(instruction + 4) & 1) << 1;
         break;
       }
       case 0x3f: {
-        *(std::uint8_t *)((int)this + 0x4a0) =
-             *(std::uint8_t *)((int)this + 0x4a0) & 0xf3 | (*(std::uint8_t *)(instruction + 4) & 3) << 2;
+        base.flags.byte_08 =
+             base.flags.byte_08 & 0xf3 | (*(std::uint8_t *)(instruction + 4) & 3) << 2;
         break;
       }
       case 0x4f: {
-        void *local_634;
-        void *local_630;
-        void *local_62c;
-        void *local_628;
-        void *local_624;
-        void *local_620;
-        void *local_61c;
+
         float local_1f8;
         float local_1f4;
         float local_1f0;
         std::uint32_t local_1ec;
-        local_61c = (void *)((int)this + 0x8c);
+
         if ((instruction[3] & 1U) == 0) {
           local_1ec = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_1ec = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<VectorInterpolation*>(local_61c)->set_duration(local_1ec);
-        local_620 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_620)->set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
-        local_624 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_624)->set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
-        local_628 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_628)->set_mode(*(std::uint32_t *)(instruction + 6));
-        if ((*(std::uint32_t *)((int)this + 0x49c) >> 6 & 1) == 0) {
-          local_62c = (void *)((int)this + 0x8c);
-          reinterpret_cast<Motion*>(local_62c)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x2c)));
+        base.interpolation_8c.set_duration(local_1ec);
+
+        base.interpolation_8c.set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+
+        base.interpolation_8c.set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+
+        base.interpolation_8c.set_mode(*(std::uint32_t *)(instruction + 6));
+        if ((base.flags.word_04 >> 6 & 1) == 0) {
+
+          reinterpret_cast<Motion*>(&base.interpolation_8c.start)->set_position(base.vector_2c);
         }
         else {
-          local_630 = (void *)((int)this + 0x8c);
-          reinterpret_cast<Motion*>(local_630)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x484)));
+
+          reinterpret_cast<Motion*>(&base.interpolation_8c.start)->set_position(base.vector_484);
         }
-        local_634 = (void *)((int)this + 0x8c);
+
         if ((instruction[3] & 4U) == 0) {
           local_1f8 = *(float *)(instruction + 8);
         }
@@ -1145,45 +1129,39 @@ LAB_0042df8e:
           local_1f0 = (float)fVar11;
         }
         Vector3 local_7cc(local_1f8,local_1f4,local_1f0);
-        reinterpret_cast<VectorInterpolation*>(local_634)->set_end(*reinterpret_cast<const Vector3*>(&local_7cc));
-        reinterpret_cast<VectorInterpolation*>((int)this + 0x8c)->reset_timer();
+        base.interpolation_8c.set_end(*reinterpret_cast<const Vector3*>(&local_7cc));
+        base.interpolation_8c.reset_timer();
         break;
       }
       case 0x69: {
         void *this_local;
-        void *local_650;
-        void *local_64c;
-        void *local_648;
-        void *local_644;
-        void *local_640;
-        void *local_63c;
-        void *local_638;
+
         float local_204;
         float local_200;
         std::uint32_t local_1fc;
         Vector3 local_b4;
         std::uint32_t local_ac;
-        local_638 = (void *)((int)this + 0x8c);
+
         if ((instruction[3] & 1U) == 0) {
           local_1fc = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_1fc = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<VectorInterpolation*>(local_638)->set_duration(local_1fc);
-        local_63c = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_63c)->set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
-        local_640 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_640)->set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
-        local_644 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_644)->set_mode(*(std::uint32_t *)(instruction + 6));
-        if ((*(std::uint32_t *)((int)this + 0x49c) >> 6 & 1) == 0) {
-          local_648 = (void *)((int)this + 0x8c);
-          reinterpret_cast<Motion*>(local_648)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x2c)));
+        base.interpolation_8c.set_duration(local_1fc);
+
+        base.interpolation_8c.set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+
+        base.interpolation_8c.set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+
+        base.interpolation_8c.set_mode(*(std::uint32_t *)(instruction + 6));
+        if ((base.flags.word_04 >> 6 & 1) == 0) {
+
+          reinterpret_cast<Motion*>(&base.interpolation_8c.start)->set_position(base.vector_2c);
         }
         else {
-          local_64c = (void *)((int)this + 0x8c);
-          reinterpret_cast<Motion*>(local_64c)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x484)));
+
+          reinterpret_cast<Motion*>(&base.interpolation_8c.start)->set_position(base.vector_484);
         }
         if ((instruction[3] & 8U) == 0) {
           local_200 = *(float *)(instruction + 10);
@@ -1203,9 +1181,9 @@ LAB_0042df8e:
         }
         polar(local_b4,local_204,local_200);
         local_ac = 0;
-        local_650 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_650)->set_end(*reinterpret_cast<const Vector3*>(&local_b4));
-        reinterpret_cast<VectorInterpolation*>((int)this + 0x8c)->reset_timer();
+
+        base.interpolation_8c.set_end(*reinterpret_cast<const Vector3*>(&local_b4));
+        base.interpolation_8c.reset_timer();
         break;
       }
       case 0x5c: {
@@ -1216,13 +1194,7 @@ LAB_0042df8e:
         float local_228;
         float local_224;
         std::uint32_t local_220;
-        void* local_66c;
-        void* local_668;
-        void* local_664;
-        void* local_660;
-        void* local_65c;
-        void* local_658;
-        void* local_654;
+
         float local_218;
         float local_214;
         float local_210;
@@ -1276,29 +1248,29 @@ LAB_0042df8e:
           local_21c = (float)fVar11;
         }
         local_9c.z = local_21c;
-        local_654 = (void *)((int)this + 0x8c);
+
         if ((instruction[3] & 1U) == 0) {
           local_220 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_220 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<VectorInterpolation*>(local_654)->set_duration(local_220);
-        local_658 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_658)->set_tangent_start(*reinterpret_cast<const Vector3*>(&local_90));
-        local_65c = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_65c)->set_tangent_end(*reinterpret_cast<const Vector3*>(&local_9c));
-        local_660 = (void *)((int)this + 0x8c);
-        reinterpret_cast<VectorInterpolation*>(local_660)->set_mode(8);
-        if ((*(std::uint32_t *)((int)this + 0x49c) >> 6 & 1) == 0) {
-          local_664 = (void *)((int)this + 0x8c);
-          reinterpret_cast<Motion*>(local_664)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x2c)));
+        base.interpolation_8c.set_duration(local_220);
+
+        base.interpolation_8c.set_tangent_start(*reinterpret_cast<const Vector3*>(&local_90));
+
+        base.interpolation_8c.set_tangent_end(*reinterpret_cast<const Vector3*>(&local_9c));
+
+        base.interpolation_8c.set_mode(8);
+        if ((base.flags.word_04 >> 6 & 1) == 0) {
+
+          reinterpret_cast<Motion*>(&base.interpolation_8c.start)->set_position(base.vector_2c);
         }
         else {
-          local_668 = (void *)((int)this + 0x8c);
-          reinterpret_cast<Motion*>(local_668)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x484)));
+
+          reinterpret_cast<Motion*>(&base.interpolation_8c.start)->set_position(base.vector_484);
         }
-        local_66c = (void *)((int)this + 0x8c);
+
         if ((instruction[3] & 0x10U) == 0) {
           local_22c = *(float *)(instruction + 0xc);
         }
@@ -1321,8 +1293,8 @@ LAB_0042df8e:
           local_224 = (float)fVar11;
         }
         Vector3 local_7d8(local_22c,local_228,local_224);
-        reinterpret_cast<VectorInterpolation*>(local_66c)->set_end(*reinterpret_cast<const Vector3*>(&local_7d8));
-        reinterpret_cast<VectorInterpolation*>((int)this + 0x8c)->reset_timer();
+        base.interpolation_8c.set_end(*reinterpret_cast<const Vector3*>(&local_7d8));
+        base.interpolation_8c.reset_timer();
         break;
       }
       case 0x50: {
@@ -1331,8 +1303,8 @@ LAB_0042df8e:
         std::uint32_t local_238;
         std::uint32_t local_234;
         std::uint32_t local_230;
-        Color3 local_70(*(std::uint8_t *)((int)this + 0x492),
-                        *(std::uint8_t *)((int)this + 0x491),*(std::uint8_t *)((int)this + 0x490));
+        Color3 local_70(base.channels_490.red,
+                        base.channels_490.green,base.channels_490.blue);
         if ((instruction[3] & 0x10U) == 0) {
           local_230 = *(std::uint32_t *)(instruction + 0xc);
         }
@@ -1374,7 +1346,7 @@ LAB_0042df8e:
         else {
           local_240 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        local_d0 = *(std::uint8_t *)((int)this + 0x493);
+        local_d0 = base.channels_490.alpha;
         local_674 = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
           local_244 = *(std::uint32_t *)(instruction + 4);
@@ -1391,8 +1363,8 @@ LAB_0042df8e:
         std::uint32_t local_250;
         std::uint32_t local_24c;
         std::uint32_t local_248;
-        Color3 local_78(*(std::uint8_t *)((int)this + 0x496),
-                        *(std::uint8_t *)((int)this + 0x495),*(std::uint8_t *)((int)this + 0x494));
+        Color3 local_78(base.channels_494.red,
+                        base.channels_494.green,base.channels_494.blue);
         if ((instruction[3] & 0x10U) == 0) {
           local_248 = *(std::uint32_t *)(instruction + 0xc);
         }
@@ -1434,7 +1406,7 @@ LAB_0042df8e:
         else {
           local_258 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        local_d1 = *(std::uint8_t *)((int)this + 0x497);
+        local_d1 = base.channels_494.alpha;
         local_67c = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
           local_25c = *(std::uint32_t *)(instruction + 4);
@@ -1446,33 +1418,28 @@ LAB_0042df8e:
         break;
       }
       case 0x52: {
-        void *local_694;
-        void *local_690;
-        void *local_68c;
-        void *local_688;
-        void *local_684;
-        void *local_680;
+
         float local_26c;
         float local_268;
         float local_264;
         std::uint32_t local_260;
-        local_680 = (void *)((int)this + 0x160);
+
         if ((instruction[3] & 1U) == 0) {
           local_260 = *(std::uint32_t *)(instruction + 4);
         }
         else {
           local_260 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<VectorInterpolation*>(local_680)->set_duration(local_260);
-        local_684 = (void *)((int)this + 0x160);
-        reinterpret_cast<VectorInterpolation*>(local_684)->set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
-        local_688 = (void *)((int)this + 0x160);
-        reinterpret_cast<VectorInterpolation*>(local_688)->set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
-        local_68c = (void *)((int)this + 0x160);
-        reinterpret_cast<VectorInterpolation*>(local_68c)->set_mode(*(std::uint32_t *)(instruction + 6));
-        local_690 = (void *)((int)this + 0x160);
-        reinterpret_cast<Motion*>(local_690)->set_position(*reinterpret_cast<const Vector3*>((std::uint32_t *)((int)this + 0x38)));
-        local_694 = (void *)((int)this + 0x160);
+        base.interpolation_160.set_duration(local_260);
+
+        base.interpolation_160.set_tangent_start(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+
+        base.interpolation_160.set_tangent_end(*reinterpret_cast<const Vector3*>((std::uint32_t *)&DAT_0056e058));
+
+        base.interpolation_160.set_mode(*(std::uint32_t *)(instruction + 6));
+
+        reinterpret_cast<Motion*>(&base.interpolation_160.start)->set_position(base.vector_38);
+
         if ((instruction[3] & 4U) == 0) {
           local_26c = *(float *)(instruction + 8);
         }
@@ -1495,21 +1462,16 @@ LAB_0042df8e:
           local_264 = (float)fVar11;
         }
         Vector3 local_7e4(local_26c,local_268,local_264);
-        reinterpret_cast<VectorInterpolation*>(local_694)->set_end(*reinterpret_cast<const Vector3*>(&local_7e4));
-        reinterpret_cast<VectorInterpolation*>((int)this + 0x160)->reset_timer();
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 2;
+        base.interpolation_160.set_end(*reinterpret_cast<const Vector3*>(&local_7e4));
+        base.interpolation_160.reset_timer();
+        base.flags.word_04 = base.flags.word_04 | 2;
         break;
       }
       case 0x53: {
-        void *local_6ac;
-        void *local_6a8;
-        void *local_6a4;
-        void *local_6a0;
-        void *local_69c;
-        void *local_698;
+
         float local_274;
         std::uint32_t local_270;
-        local_698 = (void *)((int)this + 0x1b4);
+
         if ((instruction[3] & 1U) == 0) {
           local_270 = *(std::uint32_t *)(instruction + 4);
         }
@@ -1517,18 +1479,18 @@ LAB_0042df8e:
           local_270 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         base.interpolation_1b4.set_duration(local_270);
-        local_69c = (void *)((int)this + 0x1b4);
+
         Angle local_7bc(0.0f);
-        reinterpret_cast<AngleInterpolation*>(local_69c)->set_tangent_start(*reinterpret_cast<const Angle*>(&local_7bc));
-        local_6a0 = (void *)((int)this + 0x1b4);
+        base.interpolation_1b4.set_tangent_start(*reinterpret_cast<const Angle*>(&local_7bc));
+
         Angle local_7c0(0.0f);
-        reinterpret_cast<AngleInterpolation*>(local_6a0)->set_tangent_end(*reinterpret_cast<const Angle*>(&local_7c0));
-        local_6a4 = (void *)((int)this + 0x1b4);
-        reinterpret_cast<FloatInterpolation*>(local_6a4)->set_mode(*(std::uint32_t *)(instruction + 6));
-        local_6a8 = (void *)((int)this + 0x1b4);
-        Angle local_788(*reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(this) + 0x40));
-        reinterpret_cast<AngleInterpolation*>(local_6a8)->set_start(*reinterpret_cast<const Angle*>(&local_788));
-        local_6ac = (void *)((int)this + 0x1b4);
+        base.interpolation_1b4.set_tangent_end(*reinterpret_cast<const Angle*>(&local_7c0));
+
+        reinterpret_cast<FloatInterpolation*>(&base.interpolation_1b4)->set_mode(*(std::uint32_t *)(instruction + 6));
+
+        Angle local_788(base.vector_38.z);
+        base.interpolation_1b4.set_start(*reinterpret_cast<const Angle*>(&local_788));
+
         if ((instruction[3] & 4U) == 0) {
           local_274 = *(float *)(instruction + 8);
         }
@@ -1537,13 +1499,13 @@ LAB_0042df8e:
           local_274 = (float)fVar11;
         }
         Angle local_78c(local_274);
-        reinterpret_cast<AngleInterpolation*>(local_6ac)->set_end(*reinterpret_cast<const Angle*>(&local_78c));
-        reinterpret_cast<FloatInterpolation*>((int)this + 0x1b4)->reset_timer();
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 2;
+        base.interpolation_1b4.set_end(*reinterpret_cast<const Angle*>(&local_78c));
+        reinterpret_cast<FloatInterpolation*>(&base.interpolation_1b4)->reset_timer();
+        base.flags.word_04 = base.flags.word_04 | 2;
         break;
       }
       case 0x54: {
-        std::uint32_t *local_6b0;
+
         std::uint32_t local_6b4;
         std::uint32_t local_280;
         float local_27c;
@@ -1563,7 +1525,7 @@ LAB_0042df8e:
           local_278 = (float)fVar11;
         }
         Vector2 local_794(local_27c,local_278);
-        local_6b0 = (std::uint32_t *)((int)this + 0x50);
+
         local_6b4 = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
           local_280 = *(std::uint32_t *)(instruction + 4);
@@ -1571,12 +1533,12 @@ LAB_0042df8e:
         else {
           local_280 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_primary_scale_438df0(local_280, local_6b4, *reinterpret_cast<const Vector2*>(local_6b0), *reinterpret_cast<const Vector2*>(&local_794));
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
+        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_primary_scale_438df0(local_280, local_6b4, base.vector_50, *reinterpret_cast<const Vector2*>(&local_794));
+        base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x6b: {
-        std::uint32_t *local_6b8;
+
         std::uint32_t local_6bc;
         std::uint32_t local_28c;
         float local_288;
@@ -1596,7 +1558,7 @@ LAB_0042df8e:
           local_284 = (float)fVar11;
         }
         Vector2 local_79c(local_288,local_284);
-        local_6b8 = (std::uint32_t *)((int)this + 0x58);
+
         local_6bc = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
           local_28c = *(std::uint32_t *)(instruction + 4);
@@ -1604,12 +1566,12 @@ LAB_0042df8e:
         else {
           local_28c = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_secondary_scale_438db0(local_28c, local_6bc, *reinterpret_cast<const Vector2*>(local_6b8), *reinterpret_cast<const Vector2*>(&local_79c));
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 4;
+        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_secondary_scale_438db0(local_28c, local_6bc, base.vector_58, *reinterpret_cast<const Vector2*>(&local_79c));
+        base.flags.word_04 = base.flags.word_04 | 4;
         break;
       }
       case 0x66: {
-        std::uint32_t *local_6c0;
+
         std::uint32_t local_6c4;
         std::uint32_t local_298;
         float local_294;
@@ -1629,7 +1591,7 @@ LAB_0042df8e:
           local_290 = (float)fVar11;
         }
         Vector2 local_7a4(local_294,local_290);
-        local_6c0 = (std::uint32_t *)((int)this + 0x68);
+
         local_6c4 = (std::uint32_t)*(std::uint8_t *)(instruction + 6);
         if ((instruction[3] & 1U) == 0) {
           local_298 = *(std::uint32_t *)(instruction + 4);
@@ -1637,23 +1599,18 @@ LAB_0042df8e:
         else {
           local_298 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_uv_scale_438e30(local_298, local_6c4, *reinterpret_cast<const Vector2*>(local_6c0), *reinterpret_cast<const Vector2*>(&local_7a4));
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 8;
+        reinterpret_cast<NativeAnimationVector2ConfigView*>(this)->interpolate_uv_scale_438e30(local_298, local_6c4, base.vector_68, *reinterpret_cast<const Vector2*>(&local_7a4));
+        base.flags.word_04 = base.flags.word_04 | 8;
         break;
       }
       case 99: {
-        void *local_6e8;
-        void *local_6e0;
-        void *local_6dc;
-        void *local_6d8;
-        void *local_6d0;
-        void *local_6c8;
+
         float local_768;
         std::uint32_t local_6d4;
         std::uint32_t local_6cc;
         float local_2a0;
         std::uint32_t local_29c;
-        local_6c8 = (void *)((int)this + 800);
+
         if ((instruction[3] & 1U) == 0) {
           local_29c = *(std::uint32_t *)(instruction + 4);
         }
@@ -1661,17 +1618,17 @@ LAB_0042df8e:
           local_29c = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         base.interpolation_320.set_duration(local_29c);
-        local_6d0 = (void *)((int)this + 800);
+
         local_6cc = 0;
-        reinterpret_cast<FloatInterpolation*>(local_6d0)->set_tangent_start(*reinterpret_cast<const float*>(&local_6cc));
-        local_6d8 = (void *)((int)this + 800);
+        base.interpolation_320.set_tangent_start(*reinterpret_cast<const float*>(&local_6cc));
+
         local_6d4 = 0;
-        reinterpret_cast<FloatInterpolation*>(local_6d8)->set_tangent_end(*reinterpret_cast<const float*>(&local_6d4));
-        local_6dc = (void *)((int)this + 800);
-        reinterpret_cast<FloatInterpolation*>(local_6dc)->set_mode(*(std::uint32_t *)(instruction + 6));
-        local_6e0 = (void *)((int)this + 800);
-        reinterpret_cast<FloatInterpolation*>(local_6e0)->set_start(*reinterpret_cast<const float*>((std::uint32_t *)((int)this + 0x3a0)));
-        local_6e8 = (void *)((int)this + 800);
+        base.interpolation_320.set_tangent_end(*reinterpret_cast<const float*>(&local_6d4));
+
+        base.interpolation_320.set_mode(*(std::uint32_t *)(instruction + 6));
+
+        base.interpolation_320.set_start(*&base.field_3a0);
+
         if ((instruction[3] & 4U) == 0) {
           local_2a0 = *(float *)(instruction + 8);
         }
@@ -1680,23 +1637,18 @@ LAB_0042df8e:
           local_2a0 = (float)fVar11;
         }
         local_768 = local_2a0;
-        reinterpret_cast<FloatInterpolation*>(local_6e8)->set_end(*reinterpret_cast<const float*>(&local_768));
-        reinterpret_cast<FloatInterpolation*>((int)this + 800)->reset_timer();
+        base.interpolation_320.set_end(*reinterpret_cast<const float*>(&local_768));
+        base.interpolation_320.reset_timer();
         break;
       }
       case 100: {
-        void *local_70c;
-        void *local_704;
-        void *local_700;
-        void *local_6fc;
-        void *local_6f4;
-        void *local_6ec;
+
         float local_708;
         std::uint32_t local_6f8;
         std::uint32_t local_6f0;
         float local_2a8;
         std::uint32_t local_2a4;
-        local_6ec = (void *)((int)this + 0x34c);
+
         if ((instruction[3] & 1U) == 0) {
           local_2a4 = *(std::uint32_t *)(instruction + 4);
         }
@@ -1704,17 +1656,17 @@ LAB_0042df8e:
           local_2a4 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
         base.interpolation_34c.set_duration(local_2a4);
-        local_6f4 = (void *)((int)this + 0x34c);
+
         local_6f0 = 0;
-        reinterpret_cast<FloatInterpolation*>(local_6f4)->set_tangent_start(*reinterpret_cast<const float*>(&local_6f0));
-        local_6fc = (void *)((int)this + 0x34c);
+        base.interpolation_34c.set_tangent_start(*reinterpret_cast<const float*>(&local_6f0));
+
         local_6f8 = 0;
-        reinterpret_cast<FloatInterpolation*>(local_6fc)->set_tangent_end(*reinterpret_cast<const float*>(&local_6f8));
-        local_700 = (void *)((int)this + 0x34c);
-        reinterpret_cast<FloatInterpolation*>(local_700)->set_mode(*(std::uint32_t *)(instruction + 6));
-        local_704 = (void *)((int)this + 0x34c);
-        reinterpret_cast<FloatInterpolation*>(local_704)->set_start(*reinterpret_cast<const float*>((std::uint32_t *)((int)this + 0x3a4)));
-        local_70c = (void *)((int)this + 0x34c);
+        base.interpolation_34c.set_tangent_end(*reinterpret_cast<const float*>(&local_6f8));
+
+        base.interpolation_34c.set_mode(*(std::uint32_t *)(instruction + 6));
+
+        base.interpolation_34c.set_start(*&base.field_3a4);
+
         if ((instruction[3] & 4U) == 0) {
           local_2a8 = *(float *)(instruction + 8);
         }
@@ -1723,27 +1675,25 @@ LAB_0042df8e:
           local_2a8 = (float)fVar11;
         }
         local_708 = local_2a8;
-        reinterpret_cast<FloatInterpolation*>(local_70c)->set_end(*reinterpret_cast<const float*>(&local_708));
-        reinterpret_cast<FloatInterpolation*>((int)this + 0x34c)->reset_timer();
+        base.interpolation_34c.set_end(*reinterpret_cast<const float*>(&local_708));
+        base.interpolation_34c.reset_timer();
         break;
       }
       case 0x36: {
-        *(char *)((int)this + 0x498) = (char)instruction[4];
-        *(std::uint8_t *)((int)this + 0x4a0) = *(std::uint8_t *)((int)this + 0x4a0) & 0xcf;
+        base.flags.bytes_00.animation_mode = (char)instruction[4];
+        base.flags.byte_08 = base.flags.byte_08 & 0xcf;
         break;
       }
       case 0x5e: {
-        *(std::uint32_t *)((int)this + 0x2c) = *(std::uint32_t *)((int)this + 0x5bc);
-        *(std::uint32_t *)((int)this + 0x30) = *(std::uint32_t *)((int)this + 0x5c0);
-        *(std::uint32_t *)((int)this + 0x34) = *(std::uint32_t *)((int)this + 0x5c4);
-        *(std::uint32_t *)((int)this + 0x5bc) = 0;
-        *(std::uint32_t *)((int)this + 0x5c0) = 0;
-        *(std::uint32_t *)((int)this + 0x5c4) = 0;
+        base.vector_2c = vector_5bc;
+        vector_5bc.x = 0.0f;
+        vector_5bc.y = 0.0f;
+        vector_5bc.z = 0.0f;
         break;
       }
       case 0x7d: {
         std::uint32_t local_2ac;
-        *(std::uint8_t *)((int)this + 0x498) = 9;
+        base.flags.bytes_00.animation_mode = 9;
         if ((instruction[3] & 1U) == 0) {
           local_2ac = *(std::uint32_t *)(instruction + 4);
         }
@@ -1756,7 +1706,7 @@ LAB_0042df8e:
       case 0x9e: {
         std::uint32_t local_2b4;
         std::uint32_t local_2b0;
-        *(std::uint8_t *)((int)this + 0x498) = 0x2f;
+        base.flags.bytes_00.animation_mode = 0x2f;
         if ((instruction[3] & 1U) == 0) {
           local_2b0 = *(std::uint32_t *)(instruction + 4);
         }
@@ -1770,12 +1720,12 @@ LAB_0042df8e:
         else {
           local_2b4 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_2b4;
+        base.variables.field_00 = local_2b4;
         break;
       }
       case 0x9f: {
         float local_2b8;
-        *(std::uint8_t *)((int)this + 0x498) = 0x30;
+        base.flags.bytes_00.animation_mode = 0x30;
         this->allocate_geometry(0x54);
         if ((instruction[3] & 1U) == 0) {
           local_2b8 = *(float *)(instruction + 4);
@@ -1784,12 +1734,12 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_2b8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x454) = local_2b8;
+        base.variables.field_10 = local_2b8;
         break;
       }
       case 0x7e: {
         std::uint32_t local_2bc;
-        *(std::uint8_t *)((int)this + 0x498) = 0xd;
+        base.flags.bytes_00.animation_mode = 0xd;
         if ((instruction[3] & 1U) == 0) {
           local_2bc = *(std::uint32_t *)(instruction + 4);
         }
@@ -1801,7 +1751,7 @@ LAB_0042df8e:
       }
       case 0x7f: {
         std::uint32_t local_2c0;
-        *(std::uint8_t *)((int)this + 0x498) = 0xe;
+        base.flags.bytes_00.animation_mode = 0xe;
         if ((instruction[3] & 1U) == 0) {
           local_2c0 = *(std::uint32_t *)(instruction + 4);
         }
@@ -1813,7 +1763,7 @@ LAB_0042df8e:
       }
       case 0x86: {
         std::uint32_t local_2c4;
-        *(std::uint8_t *)((int)this + 0x498) = 0x18;
+        base.flags.bytes_00.animation_mode = 0x18;
         if ((instruction[3] & 1U) == 0) {
           local_2c4 = *(std::uint32_t *)(instruction + 4);
         }
@@ -1825,7 +1775,7 @@ LAB_0042df8e:
       }
       case 0x87: {
         std::uint32_t local_2c8;
-        *(std::uint8_t *)((int)this + 0x498) = 0x19;
+        base.flags.bytes_00.animation_mode = 0x19;
         if ((instruction[3] & 1U) == 0) {
           local_2c8 = *(std::uint32_t *)(instruction + 4);
         }
@@ -1854,14 +1804,14 @@ LAB_0042df8e:
         else {
           local_2cc = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xfffff7ff | (local_2cc & 1) << 0xb;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xfffff7ff | (local_2cc & 1) << 0xb;
         break;
       }
       case 0x80: {
         float local_2d4;
         float local_2d0;
-        *(std::uint8_t *)((int)this + 0x498) = 0x10;
+        base.flags.bytes_00.animation_mode = 0x10;
         if ((instruction[3] & 1U) == 0) {
           local_2d0 = *(float *)(instruction + 4);
         }
@@ -1869,7 +1819,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_2d0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_2d0;
+        base.vector_70.x = local_2d0;
         if ((instruction[3] & 2U) == 0) {
           local_2d4 = *(float *)(instruction + 6);
         }
@@ -1877,13 +1827,13 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_2d4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_2d4;
+        base.vector_70.y = local_2d4;
         break;
       }
       case 0x83: {
         float local_2dc;
         float local_2d8;
-        *(std::uint8_t *)((int)this + 0x498) = 0x14;
+        base.flags.bytes_00.animation_mode = 0x14;
         if ((instruction[3] & 1U) == 0) {
           local_2d8 = *(float *)(instruction + 4);
         }
@@ -1891,7 +1841,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_2d8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_2d8;
+        base.vector_70.x = local_2d8;
         if ((instruction[3] & 2U) == 0) {
           local_2dc = *(float *)(instruction + 6);
         }
@@ -1899,13 +1849,13 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_2dc = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_2dc;
+        base.vector_70.y = local_2dc;
         break;
       }
       case 0x84: {
         float local_2e4;
         float local_2e0;
-        *(std::uint8_t *)((int)this + 0x498) = 0x15;
+        base.flags.bytes_00.animation_mode = 0x15;
         if ((instruction[3] & 1U) == 0) {
           local_2e0 = *(float *)(instruction + 4);
         }
@@ -1913,7 +1863,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_2e0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_2e0;
+        base.vector_70.x = local_2e0;
         if ((instruction[3] & 2U) == 0) {
           local_2e4 = *(float *)(instruction + 6);
         }
@@ -1921,13 +1871,13 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_2e4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_2e4;
+        base.vector_70.y = local_2e4;
         break;
       }
       case 0x85: {
         float local_2ec;
         float local_2e8;
-        *(std::uint8_t *)((int)this + 0x498) = 0x16;
+        base.flags.bytes_00.animation_mode = 0x16;
         if ((instruction[3] & 1U) == 0) {
           local_2e8 = *(float *)(instruction + 4);
         }
@@ -1935,7 +1885,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_2e8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_2e8;
+        base.vector_70.x = local_2e8;
         if ((instruction[3] & 2U) == 0) {
           local_2ec = *(float *)(instruction + 6);
         }
@@ -1943,13 +1893,13 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_2ec = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_2ec;
+        base.vector_70.y = local_2ec;
         break;
       }
       case 0x8a: {
         float local_2f4;
         float local_2f0;
-        *(std::uint8_t *)((int)this + 0x498) = 0x1a;
+        base.flags.bytes_00.animation_mode = 0x1a;
         if ((instruction[3] & 1U) == 0) {
           local_2f0 = *(float *)(instruction + 4);
         }
@@ -1957,7 +1907,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_2f0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_2f0;
+        base.vector_70.x = local_2f0;
         if ((instruction[3] & 2U) == 0) {
           local_2f4 = *(float *)(instruction + 6);
         }
@@ -1965,13 +1915,13 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_2f4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_2f4;
+        base.vector_70.y = local_2f4;
         break;
       }
       case 0x89: {
         float local_2fc;
         float local_2f8;
-        *(std::uint8_t *)((int)this + 0x498) = 0x1b;
+        base.flags.bytes_00.animation_mode = 0x1b;
         if ((instruction[3] & 1U) == 0) {
           local_2f8 = *(float *)(instruction + 4);
         }
@@ -1979,7 +1929,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_2f8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_2f8;
+        base.vector_70.x = local_2f8;
         if ((instruction[3] & 2U) == 0) {
           local_2fc = *(float *)(instruction + 6);
         }
@@ -1987,13 +1937,13 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_2fc = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_2fc;
+        base.vector_70.y = local_2fc;
         break;
       }
       case 0x81: {
         std::uint32_t local_304;
         float local_300;
-        *(std::uint8_t *)((int)this + 0x498) = 0x11;
+        base.flags.bytes_00.animation_mode = 0x11;
         if ((instruction[3] & 1U) == 0) {
           local_300 = *(float *)(instruction + 4);
         }
@@ -2001,14 +1951,14 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_300 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_300;
+        base.vector_70.x = local_300;
         if ((instruction[3] & 2U) == 0) {
           local_304 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_304 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_304;
+        base.variables.field_00 = local_304;
         break;
       }
       case 0x94: {
@@ -2016,7 +1966,7 @@ LAB_0042df8e:
         float local_310;
         float local_30c;
         float local_308;
-        *(std::uint8_t *)((int)this + 0x498) = 0x25;
+        base.flags.bytes_00.animation_mode = 0x25;
         if ((instruction[3] & 1U) == 0) {
           local_308 = *(float *)(instruction + 4);
         }
@@ -2024,7 +1974,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_308 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_308;
+        base.vector_70.x = local_308;
         if ((instruction[3] & 2U) == 0) {
           local_30c = *(float *)(instruction + 6);
         }
@@ -2032,7 +1982,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_30c = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_30c;
+        base.vector_70.y = local_30c;
         if ((instruction[3] & 4U) == 0) {
           local_310 = *(float *)(instruction + 8);
         }
@@ -2040,14 +1990,14 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 8));
           local_310 = (float)fVar11;
         }
-        *(float *)((int)this + 0x454) = local_310;
+        base.variables.field_10 = local_310;
         if ((instruction[3] & 8U) == 0) {
           local_314 = *(std::uint32_t *)(instruction + 10);
         }
         else {
           local_314 = this->integer_value(*(std::uint32_t *)(instruction + 10));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_314;
+        base.variables.field_00 = local_314;
         break;
       }
       case 0x95: {
@@ -2055,7 +2005,7 @@ LAB_0042df8e:
         float local_320;
         float local_31c;
         float local_318;
-        *(std::uint8_t *)((int)this + 0x498) = 0x26;
+        base.flags.bytes_00.animation_mode = 0x26;
         if ((instruction[3] & 1U) == 0) {
           local_318 = *(float *)(instruction + 4);
         }
@@ -2063,7 +2013,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_318 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_318;
+        base.vector_70.x = local_318;
         if ((instruction[3] & 2U) == 0) {
           local_31c = *(float *)(instruction + 6);
         }
@@ -2071,7 +2021,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_31c = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_31c;
+        base.vector_70.y = local_31c;
         if ((instruction[3] & 4U) == 0) {
           local_320 = *(float *)(instruction + 8);
         }
@@ -2079,14 +2029,14 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 8));
           local_320 = (float)fVar11;
         }
-        *(float *)((int)this + 0x454) = local_320;
+        base.variables.field_10 = local_320;
         if ((instruction[3] & 8U) == 0) {
           local_324 = *(std::uint32_t *)(instruction + 10);
         }
         else {
           local_324 = this->integer_value(*(std::uint32_t *)(instruction + 10));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_324;
+        base.variables.field_00 = local_324;
         break;
       }
       case 0x96: {
@@ -2095,7 +2045,7 @@ LAB_0042df8e:
         float local_330;
         float local_32c;
         float local_328;
-        *(std::uint8_t *)((int)this + 0x498) = 0x27;
+        base.flags.bytes_00.animation_mode = 0x27;
         if ((instruction[3] & 1U) == 0) {
           local_328 = *(float *)(instruction + 4);
         }
@@ -2103,7 +2053,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_328 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_328;
+        base.vector_70.x = local_328;
         if ((instruction[3] & 2U) == 0) {
           local_32c = *(float *)(instruction + 6);
         }
@@ -2111,7 +2061,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_32c = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_32c;
+        base.vector_70.y = local_32c;
         if ((instruction[3] & 4U) == 0) {
           local_330 = *(float *)(instruction + 8);
         }
@@ -2119,7 +2069,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 8));
           local_330 = (float)fVar11;
         }
-        *(float *)((int)this + 0x454) = local_330;
+        base.variables.field_10 = local_330;
         if ((instruction[3] & 8U) == 0) {
           local_334 = *(float *)(instruction + 10);
         }
@@ -2127,14 +2077,14 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 10));
           local_334 = (float)fVar11;
         }
-        *(float *)((int)this + 0x458) = local_334;
+        base.variables.field_14 = local_334;
         if ((instruction[3] & 0x10U) == 0) {
           local_338 = *(std::uint32_t *)(instruction + 0xc);
         }
         else {
           local_338 = this->integer_value(*(std::uint32_t *)(instruction + 0xc));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_338;
+        base.variables.field_00 = local_338;
         break;
       }
       case 0x97: {
@@ -2143,7 +2093,7 @@ LAB_0042df8e:
         float local_344;
         float local_340;
         float local_33c;
-        *(std::uint8_t *)((int)this + 0x498) = 0x28;
+        base.flags.bytes_00.animation_mode = 0x28;
         if ((instruction[3] & 1U) == 0) {
           local_33c = *(float *)(instruction + 4);
         }
@@ -2151,7 +2101,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_33c = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_33c;
+        base.vector_70.x = local_33c;
         if ((instruction[3] & 2U) == 0) {
           local_340 = *(float *)(instruction + 6);
         }
@@ -2159,7 +2109,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_340 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_340;
+        base.vector_70.y = local_340;
         if ((instruction[3] & 4U) == 0) {
           local_344 = *(float *)(instruction + 8);
         }
@@ -2167,7 +2117,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 8));
           local_344 = (float)fVar11;
         }
-        *(float *)((int)this + 0x454) = local_344;
+        base.variables.field_10 = local_344;
         if ((instruction[3] & 8U) == 0) {
           local_348 = *(float *)(instruction + 10);
         }
@@ -2175,14 +2125,14 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 10));
           local_348 = (float)fVar11;
         }
-        *(float *)((int)this + 0x458) = local_348;
+        base.variables.field_14 = local_348;
         if ((instruction[3] & 0x10U) == 0) {
           local_34c = *(std::uint32_t *)(instruction + 0xc);
         }
         else {
           local_34c = this->integer_value(*(std::uint32_t *)(instruction + 0xc));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_34c;
+        base.variables.field_00 = local_34c;
         break;
       }
       case 0x98: {
@@ -2191,7 +2141,7 @@ LAB_0042df8e:
         float local_358;
         float local_354;
         float local_350;
-        *(std::uint8_t *)((int)this + 0x498) = 0x29;
+        base.flags.bytes_00.animation_mode = 0x29;
         if ((instruction[3] & 1U) == 0) {
           local_350 = *(float *)(instruction + 4);
         }
@@ -2199,7 +2149,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_350 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_350;
+        base.vector_70.x = local_350;
         if ((instruction[3] & 2U) == 0) {
           local_354 = *(float *)(instruction + 6);
         }
@@ -2207,7 +2157,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_354 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_354;
+        base.vector_70.y = local_354;
         if ((instruction[3] & 4U) == 0) {
           local_358 = *(float *)(instruction + 8);
         }
@@ -2215,7 +2165,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 8));
           local_358 = (float)fVar11;
         }
-        *(float *)((int)this + 0x454) = local_358;
+        base.variables.field_10 = local_358;
         if ((instruction[3] & 8U) == 0) {
           local_35c = *(float *)(instruction + 10);
         }
@@ -2223,20 +2173,20 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 10));
           local_35c = (float)fVar11;
         }
-        *(float *)((int)this + 0x458) = local_35c;
+        base.variables.field_14 = local_35c;
         if ((instruction[3] & 0x10U) == 0) {
           local_360 = *(std::uint32_t *)(instruction + 0xc);
         }
         else {
           local_360 = this->integer_value(*(std::uint32_t *)(instruction + 0xc));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_360;
+        base.variables.field_00 = local_360;
         break;
       }
       case 0x82: {
         std::uint32_t local_368;
         float local_364;
-        *(std::uint8_t *)((int)this + 0x498) = 0x12;
+        base.flags.bytes_00.animation_mode = 0x12;
         if ((instruction[3] & 1U) == 0) {
           local_364 = *(float *)(instruction + 4);
         }
@@ -2244,21 +2194,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_364 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_364;
+        base.vector_70.x = local_364;
         if ((instruction[3] & 2U) == 0) {
           local_368 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_368 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_368;
+        base.variables.field_00 = local_368;
         break;
       }
       case 0x88: {
         std::uint32_t local_374;
         float local_370;
         float local_36c;
-        *(std::uint8_t *)((int)this + 0x498) = 0x13;
+        base.flags.bytes_00.animation_mode = 0x13;
         if ((instruction[3] & 1U) == 0) {
           local_36c = *(float *)(instruction + 4);
         }
@@ -2266,7 +2216,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_36c = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_36c;
+        base.vector_70.x = local_36c;
         if ((instruction[3] & 2U) == 0) {
           local_370 = *(float *)(instruction + 6);
         }
@@ -2274,21 +2224,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_370 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_370;
+        base.vector_70.y = local_370;
         if ((instruction[3] & 4U) == 0) {
           local_374 = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_374 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_374;
+        base.variables.field_00 = local_374;
         break;
       }
       case 0x8c: {
         std::uint32_t local_380;
         float local_37c;
         float local_378;
-        *(std::uint8_t *)((int)this + 0x498) = 0x1d;
+        base.flags.bytes_00.animation_mode = 0x1d;
         if ((instruction[3] & 1U) == 0) {
           local_378 = *(float *)(instruction + 4);
         }
@@ -2296,7 +2246,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_378 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_378;
+        base.vector_70.x = local_378;
         if ((instruction[3] & 2U) == 0) {
           local_37c = *(float *)(instruction + 6);
         }
@@ -2304,21 +2254,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_37c = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_37c;
+        base.vector_70.y = local_37c;
         if ((instruction[3] & 4U) == 0) {
           local_380 = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_380 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_380;
+        base.variables.field_00 = local_380;
         break;
       }
       case 0x8d: {
         std::uint32_t local_38c;
         float local_388;
         float local_384;
-        *(std::uint8_t *)((int)this + 0x498) = 0x1e;
+        base.flags.bytes_00.animation_mode = 0x1e;
         if ((instruction[3] & 1U) == 0) {
           local_384 = *(float *)(instruction + 4);
         }
@@ -2326,7 +2276,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_384 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_384;
+        base.vector_70.x = local_384;
         if ((instruction[3] & 2U) == 0) {
           local_388 = *(float *)(instruction + 6);
         }
@@ -2334,20 +2284,20 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_388 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_388;
+        base.vector_70.y = local_388;
         if ((instruction[3] & 4U) == 0) {
           local_38c = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_38c = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_38c;
+        base.variables.field_00 = local_38c;
         break;
       }
       case 0x8e: {
         std::uint32_t local_394;
         float local_390;
-        *(std::uint8_t *)((int)this + 0x498) = 0x1f;
+        base.flags.bytes_00.animation_mode = 0x1f;
         if ((instruction[3] & 1U) == 0) {
           local_390 = *(float *)(instruction + 4);
         }
@@ -2355,20 +2305,20 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_390 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_390;
+        base.vector_70.x = local_390;
         if ((instruction[3] & 2U) == 0) {
           local_394 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_394 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_394;
+        base.variables.field_00 = local_394;
         break;
       }
       case 0x90: {
         std::uint32_t local_39c;
         float local_398;
-        *(std::uint8_t *)((int)this + 0x498) = 0x21;
+        base.flags.bytes_00.animation_mode = 0x21;
         if ((instruction[3] & 1U) == 0) {
           local_398 = *(float *)(instruction + 4);
         }
@@ -2376,21 +2326,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_398 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_398;
+        base.vector_70.x = local_398;
         if ((instruction[3] & 2U) == 0) {
           local_39c = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_39c = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_39c;
+        base.variables.field_00 = local_39c;
         break;
       }
       case 0x91: {
         std::uint32_t local_3a8;
         float local_3a4;
         float local_3a0;
-        *(std::uint8_t *)((int)this + 0x498) = 0x22;
+        base.flags.bytes_00.animation_mode = 0x22;
         if ((instruction[3] & 1U) == 0) {
           local_3a0 = *(float *)(instruction + 4);
         }
@@ -2398,7 +2348,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3a0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3a0;
+        base.vector_70.x = local_3a0;
         if ((instruction[3] & 2U) == 0) {
           local_3a4 = *(float *)(instruction + 6);
         }
@@ -2406,21 +2356,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_3a4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_3a4;
+        base.vector_70.y = local_3a4;
         if ((instruction[3] & 4U) == 0) {
           local_3a8 = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_3a8 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3a8;
+        base.variables.field_00 = local_3a8;
         break;
       }
       case 0x92: {
         std::uint32_t local_3b4;
         float local_3b0;
         float local_3ac;
-        *(std::uint8_t *)((int)this + 0x498) = 0x23;
+        base.flags.bytes_00.animation_mode = 0x23;
         if ((instruction[3] & 1U) == 0) {
           local_3ac = *(float *)(instruction + 4);
         }
@@ -2428,7 +2378,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3ac = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3ac;
+        base.vector_70.x = local_3ac;
         if ((instruction[3] & 2U) == 0) {
           local_3b0 = *(float *)(instruction + 6);
         }
@@ -2436,21 +2386,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_3b0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_3b0;
+        base.vector_70.y = local_3b0;
         if ((instruction[3] & 4U) == 0) {
           local_3b4 = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_3b4 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3b4;
+        base.variables.field_00 = local_3b4;
         break;
       }
       case 0x93: {
         std::uint32_t local_3c0;
         float local_3bc;
         float local_3b8;
-        *(std::uint8_t *)((int)this + 0x498) = 0x24;
+        base.flags.bytes_00.animation_mode = 0x24;
         if ((instruction[3] & 1U) == 0) {
           local_3b8 = *(float *)(instruction + 4);
         }
@@ -2458,7 +2408,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3b8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3b8;
+        base.vector_70.x = local_3b8;
         if ((instruction[3] & 2U) == 0) {
           local_3bc = *(float *)(instruction + 6);
         }
@@ -2466,20 +2416,20 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_3bc = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_3bc;
+        base.vector_70.y = local_3bc;
         if ((instruction[3] & 4U) == 0) {
           local_3c0 = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_3c0 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3c0;
+        base.variables.field_00 = local_3c0;
         break;
       }
       case 0x99: {
         std::uint32_t local_3c8;
         float local_3c4;
-        *(std::uint8_t *)((int)this + 0x498) = 0x2a;
+        base.flags.bytes_00.animation_mode = 0x2a;
         if ((instruction[3] & 1U) == 0) {
           local_3c4 = *(float *)(instruction + 4);
         }
@@ -2487,20 +2437,20 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3c4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3c4;
+        base.vector_70.x = local_3c4;
         if ((instruction[3] & 2U) == 0) {
           local_3c8 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_3c8 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3c8 << 1;
+        base.variables.field_00 = local_3c8 << 1;
         break;
       }
       case 0x9a: {
         std::uint32_t local_3d0;
         float local_3cc;
-        *(std::uint8_t *)((int)this + 0x498) = 0x2b;
+        base.flags.bytes_00.animation_mode = 0x2b;
         if ((instruction[3] & 1U) == 0) {
           local_3cc = *(float *)(instruction + 4);
         }
@@ -2508,21 +2458,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3cc = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3cc;
+        base.vector_70.x = local_3cc;
         if ((instruction[3] & 2U) == 0) {
           local_3d0 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_3d0 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3d0 << 1;
+        base.variables.field_00 = local_3d0 << 1;
         break;
       }
       case 0x9b: {
         std::uint32_t local_3dc;
         float local_3d8;
         float local_3d4;
-        *(std::uint8_t *)((int)this + 0x498) = 0x2c;
+        base.flags.bytes_00.animation_mode = 0x2c;
         if ((instruction[3] & 1U) == 0) {
           local_3d4 = *(float *)(instruction + 4);
         }
@@ -2530,7 +2480,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3d4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3d4;
+        base.vector_70.x = local_3d4;
         if ((instruction[3] & 2U) == 0) {
           local_3d8 = *(float *)(instruction + 6);
         }
@@ -2538,21 +2488,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_3d8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_3d8;
+        base.vector_70.y = local_3d8;
         if ((instruction[3] & 4U) == 0) {
           local_3dc = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_3dc = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3dc << 1;
+        base.variables.field_00 = local_3dc << 1;
         break;
       }
       case 0x9c: {
         std::uint32_t local_3e8;
         float local_3e4;
         float local_3e0;
-        *(std::uint8_t *)((int)this + 0x498) = 0x2d;
+        base.flags.bytes_00.animation_mode = 0x2d;
         if ((instruction[3] & 1U) == 0) {
           local_3e0 = *(float *)(instruction + 4);
         }
@@ -2560,7 +2510,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3e0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3e0;
+        base.vector_70.x = local_3e0;
         if ((instruction[3] & 2U) == 0) {
           local_3e4 = *(float *)(instruction + 6);
         }
@@ -2568,21 +2518,21 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_3e4 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_3e4;
+        base.vector_70.y = local_3e4;
         if ((instruction[3] & 4U) == 0) {
           local_3e8 = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_3e8 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3e8 << 1;
+        base.variables.field_00 = local_3e8 << 1;
         break;
       }
       case 0x9d: {
         std::uint32_t local_3f4;
         float local_3f0;
         float local_3ec;
-        *(std::uint8_t *)((int)this + 0x498) = 0x2e;
+        base.flags.bytes_00.animation_mode = 0x2e;
         if ((instruction[3] & 1U) == 0) {
           local_3ec = *(float *)(instruction + 4);
         }
@@ -2590,7 +2540,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3ec = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3ec;
+        base.vector_70.x = local_3ec;
         if ((instruction[3] & 2U) == 0) {
           local_3f0 = *(float *)(instruction + 6);
         }
@@ -2598,20 +2548,20 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_3f0 = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_3f0;
+        base.vector_70.y = local_3f0;
         if ((instruction[3] & 4U) == 0) {
           local_3f4 = *(std::uint32_t *)(instruction + 8);
         }
         else {
           local_3f4 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        *(std::uint32_t *)((int)this + 0x444) = local_3f4 << 1;
+        base.variables.field_00 = local_3f4 << 1;
         break;
       }
       case 0x8b: {
         float local_3fc;
         float local_3f8;
-        *(std::uint8_t *)((int)this + 0x498) = 0x1c;
+        base.flags.bytes_00.animation_mode = 0x1c;
         if ((instruction[3] & 1U) == 0) {
           local_3f8 = *(float *)(instruction + 4);
         }
@@ -2619,7 +2569,7 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 4));
           local_3f8 = (float)fVar11;
         }
-        *(float *)((int)this + 0x70) = local_3f8;
+        base.vector_70.x = local_3f8;
         if ((instruction[3] & 2U) == 0) {
           local_3fc = *(float *)(instruction + 6);
         }
@@ -2627,11 +2577,11 @@ LAB_0042df8e:
           fVar11 = this->float_value(*(float *)(instruction + 6));
           local_3fc = (float)fVar11;
         }
-        *(float *)((int)this + 0x74) = local_3fc;
+        base.vector_70.y = local_3fc;
         break;
       }
       case 0x8f: {
-        *(std::uint8_t *)((int)this + 0x498) = 0x20;
+        base.flags.bytes_00.animation_mode = 0x20;
         break;
       }
       case 0x79: {
@@ -2642,8 +2592,8 @@ LAB_0042df8e:
         else {
           local_400 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xffffefff | (local_400 & 1) << 0xc;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xffffefff | (local_400 & 1) << 0xc;
         break;
       }
       case 0x40: {
@@ -2655,16 +2605,14 @@ LAB_0042df8e:
         else {
           local_404 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint8_t *)((int)this + 0x4a2) =
-             *(std::uint8_t *)((int)this + 0x4a2) & 0xfc | (std::uint8_t)local_404 & 3;
+        base.flags.field_0a = base.flags.field_0a & 0xfc | (std::uint8_t)local_404 & 3;
         if ((instruction[3] & 2U) == 0) {
           local_408 = *(std::uint32_t *)(instruction + 6);
         }
         else {
           local_408 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        *(std::uint8_t *)((int)this + 0x4a1) =
-             *(std::uint8_t *)((int)this + 0x4a1) & 0x9f | ((std::uint8_t)local_408 & 3) << 5;
+        base.flags.byte_09 = base.flags.byte_09 & 0x9f | ((std::uint8_t)local_408 & 3) << 5;
         break;
       }
       case 0x41: {
@@ -2675,8 +2623,8 @@ LAB_0042df8e:
         else {
           local_40c = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint8_t *)((int)this + 0x4a4) = (std::uint8_t)local_40c;
-        *(std::uint32_t *)((int)this + 0x49c) = *(std::uint32_t *)((int)this + 0x49c) | 0x800000;
+        base.flags.scale_mode = (std::uint8_t)local_40c;
+        base.flags.word_04 = base.flags.word_04 | 0x800000;
         break;
       }
       case 0x42: {
@@ -2687,8 +2635,8 @@ LAB_0042df8e:
         else {
           local_410 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xffffffdf | (local_410 & 1) << 5;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xffffffdf | (local_410 & 1) << 5;
         break;
       }
       case 0x46: {
@@ -2699,8 +2647,8 @@ LAB_0042df8e:
         else {
           local_414 = this->integer_value(*(std::uint32_t *)(instruction + 4));
         }
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xffbfffff | (local_414 & 1) << 0x16;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xffbfffff | (local_414 & 1) << 0x16;
         break;
       }
       case 6: {
@@ -3279,13 +3227,12 @@ LAB_0042df8e:
         break;
       }
       case 0x6e: {
-        *(std::uint8_t *)((int)this + 0x4a3) =
-             *(std::uint8_t *)((int)this + 0x4a3) & 0xfc | *(std::uint8_t *)(instruction + 4) & 3;
+        base.flags.byte_0b = base.flags.byte_0b & 0xfc | *(std::uint8_t *)(instruction + 4) & 3;
         break;
       }
       case 0x67: {
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xffffff7f | (*(std::uint8_t *)(instruction + 4) & 1) << 7;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xffffff7f | (*(std::uint8_t *)(instruction + 4) & 1) << 7;
         break;
       }
       case 0x38: {
@@ -3293,18 +3240,16 @@ LAB_0042df8e:
         break;
       }
       case 0x5f: {
-        *(std::uint8_t *)((int)this + 0x4a1) =
-             *(std::uint8_t *)((int)this + 0x4a1) & 0xe3 | (*(std::uint8_t *)(instruction + 4) & 7) << 2;
+        base.flags.byte_09 = base.flags.byte_09 & 0xe3 | (*(std::uint8_t *)(instruction + 4) & 7) << 2;
         break;
       }
       case 0x60: {
-        *(std::uint8_t *)((int)this + 0x4a2) =
-             *(std::uint8_t *)((int)this + 0x4a2) & 0x1f | (char)instruction[4] << 5;
+        base.flags.field_0a = base.flags.field_0a & 0x1f | (char)instruction[4] << 5;
         break;
       }
       case 0x3b: {
-        *(std::uint32_t *)((int)this + 0x49c) =
-             *(std::uint32_t *)((int)this + 0x49c) & 0xfffffdff | (*(std::uint8_t *)(instruction + 4) & 1) << 9;
+        base.flags.word_04 =
+             base.flags.word_04 & 0xfffffdff | (*(std::uint8_t *)(instruction + 4) & 1) << 9;
         break;
       }
       case 0x28: {
@@ -3324,8 +3269,8 @@ LAB_0042df8e:
         }
         if (local_4f4 == local_4f8) {
 LAB_00434d6a:
-          (*reinterpret_cast<Timer*>((void *)((int)this + 0x4c8))=static_cast<std::int32_t>(*(int *)(instruction + 10)));
-          *(std::uint32_t *)((int)this + 0x28) = *(std::uint32_t *)(instruction + 8);
+          (timer_4c8=static_cast<std::int32_t>(*(int *)(instruction + 10)));
+          base.field_28 = *(std::uint32_t *)(instruction + 8);
           goto LAB_0042b831;
         }
         break;
@@ -3542,7 +3487,7 @@ LAB_00434d6a:
       }
       }
 LAB_00434dad:
-      *(std::uint32_t *)((int)this + 0x28) = (std::uint32_t)(std::uint16_t)instruction[1] + *(int *)((int)this + 0x28);
+      base.field_28 = (std::uint32_t)(std::uint16_t)instruction[1] + base.field_28;
       goto LAB_0042b831;
     }
   }
@@ -3550,11 +3495,11 @@ LAB_00434dad:
 code_r0x0042df46:
   timer_4c8--;
 LAB_00434dce:
-  if ((*(std::uint32_t *)((int)this + 0x49c) >> 0x13 & 1) != 0) {
+  if ((base.flags.word_04 >> 0x13 & 1) != 0) {
     this->update_motion();
   }
-  if ((*(std::uint8_t *)((int)this + 0x4a1) >> 1 & 1) != 0) {
-    (*reinterpret_cast<Vector3*>((void *)((int)this + 0x5bc)) += *reinterpret_cast<const Vector3*>((float *)&DAT_005c5540));
+  if ((base.flags.byte_09 >> 1 & 1) != 0) {
+    vector_5bc += *reinterpret_cast<const Vector3*>((float *)&DAT_005c5540);
   }
   if ((base.flags.word_04 >> 0xb & 1) != 0) {
     Vector3 corners[4];

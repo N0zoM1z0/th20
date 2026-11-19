@@ -49,6 +49,6 @@ std::int32_t PlayerRecord::field_18_value() {return field_18;}
 void Animation::set_position(const Vector3& value) {vector_5bc=value;}
 void Animation::stop() {
     base.field_28=-1;
-    base.flags.bit_10=0;
+    base.flags.bits_02.bit_10=0;
 }
 }

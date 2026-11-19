@@ -117,26 +117,50 @@ A second prologue/case lifetime pass replaced the two raw Timer pointer
 increments with `timer_4d8++` and `timer_4c8++`, removed the copied entry
 callback pointer, and scoped file lookup, random, scan and clock temporaries.
 It removes another **112 bytes / 15 instruction heads** from the previous
-40,808-byte checkpoint and reduces the frame from `0x858` to `0x84c`.
+40,808-byte checkpoint and reduces the frame from `0x858` to `0x84c`. A
+subsequent typed-field pass replaces 65 additional raw offset expressions
+with AnimationBase channel/vector/variable/flag members, converts the parent
+16-word variable copy to `AnmVariables` assignment, and restores the
+Vector3[4] transfer as typed vector copy/reset. That pass removes another
+**116 bytes / 16 instruction heads** from 40,716B and reduces the frame to
+`0x844`. The flag storage now has one-byte union aliases for the native
+`+0x49A`, `+0x4A1`, and `+0x4A3` bytes while retaining the named bitfield views;
+23 affected Animation consumers compile with the same packed layout. The Boss
+has no remaining raw `this + offset` member expressions. A final interpolation
+owner pass removes 48 temporary pointers and binds the five embedded
+Vector/Angle/Float interpolation objects plus three Vector2 fields directly to
+their `AnimationBase` members. The original shared Angle-mode/reset call
+addresses and all 505 call destinations are retained. It removes another
+**68 bytes / 8 instruction heads** from 40,600B and reduces the frame from
+`0x844` to `0x830`.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The total contribution is **+1,226 bytes**, comprising
-+582 bytes of code and the 644-byte compiler switch table. The code portion
-has 192 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The total contribution is **+1,062 bytes**, comprising
++418 bytes of code and the 644-byte compiler switch table. The code portion
+has 212 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
-`sub esp, 0x804`; the current candidate now uses `sub esp, 0x84c` after
+`sub esp, 0x804`; the current candidate now uses `sub esp, 0x830` after
 removing obsolete Timer pointer temporaries, numeric call-view paths, unused
 decompiler locals and over-scoped opcode temporaries. Absolute-data relocation
 ownership and the remaining instruction/frame-layout differences are
 unresolved. No exactness credit is claimed from call-target
 parity alone.
 
-The next pass should reconcile the 0x48 stack-frame delta, absolute-data
+The next pass should reconcile the 0x2C stack-frame delta, absolute-data
 references, and ordinary instruction bytes using natural C++ types and
 lifetimes. Do not add padding or assembly to close the size gap.
 
 ## Focused verification
+
+The current focused Boss probe compiles the full 161-opcode source, verifies
+all 505 original call destinations, checks the natural 56-byte Vector3 array
+helper against `0x0040BC20`, and pins the current 40,532-byte contribution and
+`0x830` frame. The changed Animation flag/owner closure was independently
+compiled across 23 affected translation units and strict-replayed as **112/112
+units in 20 cold objects**. The separate Timer/ScalarMath closure strict-replayed
+as **29/29 units in 3 cold objects**. These are targeted source closures, not a
+full-project cold replay; the Boss itself remains explicitly NONEXACT.
 
 ```bash
 scripts/repo-python scripts/probe-animation-update39470.py

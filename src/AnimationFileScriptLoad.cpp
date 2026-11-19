@@ -26,7 +26,7 @@ void AnimationFile::load_script(Animation* animation, std::int32_t script_index)
         animation->base.field_28 = 0;
         animation->timer_4d8 = 0;
         animation->timer_4c8 = 0;
-        animation->base.flags.bit_10 = 0;
+        animation->base.flags.bits_02.bit_10 = 0;
         animation->field_5dc = nullptr;
         current_animation_pool->update_animation(animation);
 
