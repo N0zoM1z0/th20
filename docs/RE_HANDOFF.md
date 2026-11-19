@@ -500,7 +500,7 @@ superseded; use the **current ledger and this handoff** for status.
   natural cdecl ScalarMath calls. The newly added asin/acos wrappers each
   replay 35/35 bytes with their original CRT import relocations. Opcode 0x24
   now calls the exact 88B cdecl `polar_components` helper; both independent
-  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x824`
+  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x80c`
   versus the original `0x804`, down from the previous `0x874`; two lifetime
   passes moved opcode locals into their case scopes and removed unused
   temporaries. The latest Timer/callback/random cleanup removes 112B/15
@@ -516,7 +516,11 @@ superseded; use the **current ledger and this handoff** for status.
   shrinks the frame from 0x844 to 0x830. Removing three dead VM scratch values
   then removes another 48B/5 instructions and shrinks the frame to 0x824; six
   unused spawn results are now explicitly discarded without changing their
-  side-effect calls. The focused Animation flag/owner
+  side-effect calls. A broad result-expression pass then collapses 174 float
+  return scratch assignments, 23 argument pointer temporaries and shared
+  `iVar2`, removing 3,172B/410 instructions from 40,484B and shrinking the
+  frame from 0x824 to 0x80c. All 505 original E8 destinations still match.
+  The focused Animation flag/owner
   closure compiled across 23 changed translation units and strict-replayed
   112/112 units in 20 cold objects; the Timer/ScalarMath closure separately
   replayed 29/29 units in 3 cold objects. No full-project cold replay was run.
@@ -539,8 +543,9 @@ superseded; use the **current ledger and this handoff** for status.
   preceding 40,836B checkpoint; it restores real source-level lifetimes,
   not an optimization or an exactness claim.
 - The candidate still has 210 DIR32 relocations versus 55 original PE
-  HIGHLOW fields and a larger stack frame (`0x824` versus `0x804`). Its total
-  contribution is +1,014B (+396B code plus the switch table); it has 217 fewer
+  HIGHLOW fields and a larger stack frame (`0x80c` versus `0x804`). Its total
+  contribution is now -2,158B (36,668B code plus the 644B switch table); it
+  has 627 fewer
   code instruction heads than the original. It is explicitly NONEXACT, has
   no exact match unit, and is not counted as a new exact function. No
   assembly, NOP padding, dummy accesses or byte fillers. Next work is strict

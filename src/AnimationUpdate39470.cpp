@@ -46,20 +46,13 @@ extern float DAT_005c5540[3];
 
 std::int32_t Animation::update() {
 
-  int iVar2;
-  float *pfVar6;
-  int *piVar7;
-  int *puVar8;
-  float fVar11;
-
   float initial_clock_value;
   std::int16_t *instruction;
 
   if ((base.flags.word_1c & 1) != 0) {
     return 0;
   }
-  fVar11 = static_cast<float>(*reinterpret_cast<ClockScalar*>((float *)&DAT_005aefe4));
-  initial_clock_value = (float)fVar11;
+  initial_clock_value = static_cast<float>(*reinterpret_cast<ClockScalar*>((float *)&DAT_005aefe4));
   if ((base.flags.word_04 >> 8 & 1) != 0) {
     reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(DAT_0056c8cc);
   }
@@ -70,13 +63,11 @@ std::int32_t Animation::update() {
       reinterpret_cast<ClockScalar*>(&DAT_005aefe4)->set(0);
     }
   }
-  if (this->callback &&
-      (iVar2 = this->callback->update(), iVar2 != 0)) {
+  if (this->callback && this->callback->update() != 0) {
     goto LAB_00434fd1;
   }
-  if (field_5dc != nullptr) {
-    iVar2 = this->field_5dc(this);
-    if (iVar2 != 0) goto LAB_00434fd1;
+  if (field_5dc != nullptr && this->field_5dc(this) != 0) {
+    goto LAB_00434fd1;
   }
   if ((-1 < base.field_28) && ((base.flags.word_04 >> 0x19 & 1) == 0)
      ) {
@@ -86,8 +77,8 @@ std::int32_t Animation::update() {
       int local_770;
       local_774 = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_770 = base.field_24;
-      iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_774)->script(local_770)));
-      instruction = (short *)(iVar2 + base.field_28);
+      instruction = reinterpret_cast<std::int16_t*>(
+          reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_774)->script(local_770)) + base.field_28);
       goto LAB_0042de0b;
     }
     if ((((base.flags.byte_08 & 3) != 1) || (DAT_005ba828 == 0)) ||
@@ -98,10 +89,9 @@ std::int32_t Animation::update() {
 LAB_0042b831:
       local_77c = (void *)reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
       local_778 = base.field_24;
-      iVar2 = static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_77c)->script(local_778)));
-      instruction = (short *)(iVar2 + base.field_28);
-      iVar2 = static_cast<std::int32_t>(timer_4c8);
-      if (iVar2 < instruction[2]) goto LAB_00434dce;
+      instruction = reinterpret_cast<std::int16_t*>(
+          reinterpret_cast<std::uintptr_t>(reinterpret_cast<AnimationFile*>(local_77c)->script(local_778)) + base.field_28);
+      if (static_cast<std::int32_t>(timer_4c8) < instruction[2]) goto LAB_00434dce;
       local_e0 = (int)*instruction + 1;
       if (0x27b < local_e0) {
 switchD_0042b8cc_caseD_a0:
@@ -177,16 +167,14 @@ switchD_0042b8cc_caseD_a0:
           local_564 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_564 = (float)fVar11;
+          local_564 = this->float_value(*(float *)(instruction + 6));
         }
         *(float *)(local_568 + 0x484) = local_564;
         if ((instruction[3] & 4U) == 0) {
           local_56c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_56c = (float)fVar11;
+          local_56c = this->float_value(*(float *)(instruction + 8));
         }
         *(float *)(local_568 + 0x488) = local_56c;
         break;
@@ -219,16 +207,14 @@ switchD_0042b8cc_caseD_a0:
           local_578 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_578 = (float)fVar11;
+          local_578 = this->float_value(*(float *)(instruction + 6));
         }
         *(float *)(local_f4 + 0x484) = local_578;
         if ((instruction[3] & 4U) == 0) {
           local_f8 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_f8 = (float)fVar11;
+          local_f8 = this->float_value(*(float *)(instruction + 8));
         }
         *(float *)(local_f4 + 0x488) = local_f8;
         break;
@@ -307,15 +293,13 @@ switchD_0042b8cc_caseD_a0:
           local_110 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_110 = (float)fVar11;
+          local_110 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 4U) == 0) {
           local_10c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_10c = (float)fVar11;
+          local_10c = this->float_value(*(float *)(instruction + 8));
         }
         Vector3 local_a8(local_110,local_10c,0.0f);
         this->transform_direction(local_a8,1,1);
@@ -368,15 +352,12 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_120;
         std::uint32_t local_d8;
         base.flags.byte_02 = base.flags.byte_02 | 1;
-        fVar11 = this->rotation_z_value();
-        local_5cc = (float)fVar11;
+        local_5cc = this->rotation_z_value();
         if (local_5cc <= -(DAT_0056e0f0 / DAT_0056c8e0)) {
 LAB_0042c32a:
-          fVar11 = this->rotation_z_value();
-          local_5d4 = (float)fVar11;
+          local_5d4 = this->rotation_z_value();
           if (DAT_0056e0f0 / DAT_0056c8e0 <= local_5d4) {
-            fVar11 = this->rotation_z_value();
-            local_5d8 = (float)fVar11;
+            local_5d8 = this->rotation_z_value();
             if (local_5d8 < DAT_0056e0f0 / DAT_0056c8d0 + DAT_0056e0f0 / DAT_0056c8e0) {
               if ((instruction[3] & 8U) == 0) {
                 local_124 = *(std::uint32_t *)(instruction + 10);
@@ -388,11 +369,9 @@ LAB_0042c32a:
               goto LAB_0042c528;
             }
           }
-          fVar11 = this->rotation_z_value();
-          local_5dc = (float)fVar11;
+          local_5dc = this->rotation_z_value();
           if (local_5dc <= -(DAT_0056e0f0 / DAT_0056c8e0)) {
-            fVar11 = this->rotation_z_value();
-            local_5e0 = (float)fVar11;
+            local_5e0 = this->rotation_z_value();
             if (DAT_0056e0f0 / DAT_0056c8d0 + DAT_0056e0f0 / DAT_0056c8e0 < local_5e0) {
               if ((instruction[3] & 4U) == 0) {
                 local_128 = *(std::uint32_t *)(instruction + 8);
@@ -413,8 +392,7 @@ LAB_0042c32a:
           local_d8 = local_12c;
         }
         else {
-          fVar11 = this->rotation_z_value();
-          local_5d0 = (float)fVar11;
+          local_5d0 = this->rotation_z_value();
           if (DAT_0056e0f0 / DAT_0056c8e0 <= local_5d0) goto LAB_0042c32a;
           if ((instruction[3] & 1U) == 0) {
             local_120 = *(std::uint32_t *)(instruction + 4);
@@ -535,16 +513,14 @@ LAB_0042c528:
           local_148 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_148 = (float)fVar11;
+          local_148 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_50.x = local_148;
         if ((instruction[3] & 2U) == 0) {
           local_14c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_14c = (float)fVar11;
+          local_14c = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_50.y = local_14c;
         base.flags.word_04 = base.flags.word_04 | 4;
@@ -557,16 +533,14 @@ LAB_0042c528:
           local_150 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_150 = (float)fVar11;
+          local_150 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_58.x = local_150;
         if ((instruction[3] & 2U) == 0) {
           local_154 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_154 = (float)fVar11;
+          local_154 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_58.y = local_154;
         base.flags.word_04 = base.flags.word_04 | 4;
@@ -579,16 +553,14 @@ LAB_0042c528:
           local_158 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_158 = (float)fVar11;
+          local_158 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_68.x = local_158;
         if ((instruction[3] & 2U) == 0) {
           local_15c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_15c = (float)fVar11;
+          local_15c = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_68.y = local_15c;
         base.flags.word_04 = base.flags.word_04 | 8;
@@ -748,24 +720,21 @@ LAB_0042c528:
           local_188 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_188 = (float)fVar11;
+          local_188 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_38.x = local_188;
         if ((instruction[3] & 2U) == 0) {
           local_18c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_18c = (float)fVar11;
+          local_18c = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_38.y = local_18c;
         if ((instruction[3] & 4U) == 0) {
           local_190 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_190 = (float)fVar11;
+          local_190 = this->float_value(*(float *)(instruction + 8));
         }
         base.vector_38.z = local_190;
         base.flags.word_04 = base.flags.word_04 | 2;
@@ -779,22 +748,19 @@ LAB_0042c528:
           local_194 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_194 = (float)fVar11;
+          local_194 = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 2U) == 0) {
           local_198 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_198 = (float)fVar11;
+          local_198 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 1U) == 0) {
           local_19c = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_19c = (float)fVar11;
+          local_19c = this->float_value(*(float *)(instruction + 4));
         }
         this->set_rotation_speed(local_19c, local_198, local_194);
         break;
@@ -806,15 +772,13 @@ LAB_0042c528:
           local_1a0 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_1a0 = (float)fVar11;
+          local_1a0 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 1U) == 0) {
           local_1a4 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_1a4 = (float)fVar11;
+          local_1a4 = this->float_value(*(float *)(instruction + 4));
         }
         this->set_scale_speed(local_1a4, local_1a0);
         break;
@@ -850,22 +814,19 @@ LAB_0042c528:
             local_1ac = *(float *)(instruction + 8);
           }
           else {
-            fVar11 = this->float_value(*(float *)(instruction + 8));
-            local_1ac = (float)fVar11;
+            local_1ac = this->float_value(*(float *)(instruction + 8));
           }
           if ((instruction[3] & 2U) == 0) {
             local_1b0 = *(float *)(instruction + 6);
           }
           else {
-            fVar11 = this->float_value(*(float *)(instruction + 6));
-            local_1b0 = (float)fVar11;
+            local_1b0 = this->float_value(*(float *)(instruction + 6));
           }
           if ((instruction[3] & 1U) == 0) {
             local_1b4 = *(float *)(instruction + 4);
           }
           else {
-            fVar11 = this->float_value(*(float *)(instruction + 4));
-            local_1b4 = (float)fVar11;
+            local_1b4 = this->float_value(*(float *)(instruction + 4));
           }
           Vector3 local_7f0(local_1b4,local_1b0,local_1ac);
           *reinterpret_cast<Vector3*>(reinterpret_cast<std::uint8_t*>(this) + 0x2c) = local_7f0;
@@ -875,22 +836,19 @@ LAB_0042c528:
             local_1b8 = *(float *)(instruction + 8);
           }
           else {
-            fVar11 = this->float_value(*(float *)(instruction + 8));
-            local_1b8 = (float)fVar11;
+            local_1b8 = this->float_value(*(float *)(instruction + 8));
           }
           if ((instruction[3] & 2U) == 0) {
             local_1bc = *(float *)(instruction + 6);
           }
           else {
-            fVar11 = this->float_value(*(float *)(instruction + 6));
-            local_1bc = (float)fVar11;
+            local_1bc = this->float_value(*(float *)(instruction + 6));
           }
           if ((instruction[3] & 1U) == 0) {
             local_1c0 = *(float *)(instruction + 4);
           }
           else {
-            fVar11 = this->float_value(*(float *)(instruction + 4));
-            local_1c0 = (float)fVar11;
+            local_1c0 = this->float_value(*(float *)(instruction + 4));
           }
           Vector3 local_7fc(local_1c0,local_1bc,local_1b8);
           *reinterpret_cast<Vector3*>(reinterpret_cast<std::uint8_t*>(this) + 0x484) = local_7fc;
@@ -905,22 +863,19 @@ LAB_0042c528:
           local_1c4 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_1c4 = (float)fVar11;
+          local_1c4 = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 2U) == 0) {
           local_1c8 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_1c8 = (float)fVar11;
+          local_1c8 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 1U) == 0) {
           local_1cc = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_1cc = (float)fVar11;
+          local_1cc = this->float_value(*(float *)(instruction + 4));
         }
         Vector3 local_808(local_1cc,local_1c8,local_1c4);
         *reinterpret_cast<Vector3*>(reinterpret_cast<std::uint8_t*>(this) + 0x484) = local_808;
@@ -933,16 +888,14 @@ LAB_0042c528:
           local_1d0 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_1d0 = (float)fVar11;
+          local_1d0 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_80.x = local_1d0;
         if ((instruction[3] & 2U) == 0) {
           local_1d4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_1d4 = (float)fVar11;
+          local_1d4 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_80.y = local_1d4;
         break;
@@ -1044,8 +997,7 @@ LAB_0042df8e:
           local_1e4 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_1e4 = (float)fVar11;
+          local_1e4 = this->float_value(*(float *)(instruction + 4));
         }
         base.field_3a0 = local_1e4;
         base.flags.word_04 = base.flags.word_04 | 0x80000;
@@ -1057,8 +1009,7 @@ LAB_0042df8e:
           local_1e8 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_1e8 = (float)fVar11;
+          local_1e8 = this->float_value(*(float *)(instruction + 4));
         }
         base.field_3a4 = local_1e8;
         base.flags.word_04 = base.flags.word_04 | 0x80000;
@@ -1111,22 +1062,19 @@ LAB_0042df8e:
           local_1f8 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_1f8 = (float)fVar11;
+          local_1f8 = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 8U) == 0) {
           local_1f4 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_1f4 = (float)fVar11;
+          local_1f4 = this->float_value(*(float *)(instruction + 10));
         }
         if ((instruction[3] & 0x10U) == 0) {
           local_1f0 = *(float *)(instruction + 0xc);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0xc));
-          local_1f0 = (float)fVar11;
+          local_1f0 = this->float_value(*(float *)(instruction + 0xc));
         }
         Vector3 local_7cc(local_1f8,local_1f4,local_1f0);
         base.interpolation_8c.set_end(*reinterpret_cast<const Vector3*>(&local_7cc));
@@ -1165,15 +1113,13 @@ LAB_0042df8e:
           local_200 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_200 = (float)fVar11;
+          local_200 = this->float_value(*(float *)(instruction + 10));
         }
         if ((instruction[3] & 4U) == 0) {
           local_204 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_204 = (float)fVar11;
+          local_204 = this->float_value(*(float *)(instruction + 8));
         }
         polar(local_b4,local_204,local_200);
 
@@ -1199,48 +1145,42 @@ LAB_0042df8e:
           local_208 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_208 = (float)fVar11;
+          local_208 = this->float_value(*(float *)(instruction + 6));
         }
         local_90.x = local_208;
         if ((instruction[3] & 4U) == 0) {
           local_20c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_20c = (float)fVar11;
+          local_20c = this->float_value(*(float *)(instruction + 8));
         }
         local_90.y = local_20c;
         if ((instruction[3] & 8U) == 0) {
           local_210 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_210 = (float)fVar11;
+          local_210 = this->float_value(*(float *)(instruction + 10));
         }
         local_90.z = local_210;
         if ((instruction[3] & 0x80U) == 0) {
           local_214 = *(float *)(instruction + 0x12);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0x12));
-          local_214 = (float)fVar11;
+          local_214 = this->float_value(*(float *)(instruction + 0x12));
         }
         local_9c.x = local_214;
         if ((instruction[3] & 0x100U) == 0) {
           local_218 = *(float *)(instruction + 0x14);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0x14));
-          local_218 = (float)fVar11;
+          local_218 = this->float_value(*(float *)(instruction + 0x14));
         }
         local_9c.y = local_218;
         if ((instruction[3] & 0x200U) == 0) {
           local_21c = *(float *)(instruction + 0x16);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0x16));
-          local_21c = (float)fVar11;
+          local_21c = this->float_value(*(float *)(instruction + 0x16));
         }
         local_9c.z = local_21c;
 
@@ -1270,22 +1210,19 @@ LAB_0042df8e:
           local_22c = *(float *)(instruction + 0xc);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0xc));
-          local_22c = (float)fVar11;
+          local_22c = this->float_value(*(float *)(instruction + 0xc));
         }
         if ((instruction[3] & 0x20U) == 0) {
           local_228 = *(float *)(instruction + 0xe);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0xe));
-          local_228 = (float)fVar11;
+          local_228 = this->float_value(*(float *)(instruction + 0xe));
         }
         if ((instruction[3] & 0x40U) == 0) {
           local_224 = *(float *)(instruction + 0x10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0x10));
-          local_224 = (float)fVar11;
+          local_224 = this->float_value(*(float *)(instruction + 0x10));
         }
         Vector3 local_7d8(local_22c,local_228,local_224);
         base.interpolation_8c.set_end(*reinterpret_cast<const Vector3*>(&local_7d8));
@@ -1439,22 +1376,19 @@ LAB_0042df8e:
           local_26c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_26c = (float)fVar11;
+          local_26c = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 8U) == 0) {
           local_268 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_268 = (float)fVar11;
+          local_268 = this->float_value(*(float *)(instruction + 10));
         }
         if ((instruction[3] & 0x10U) == 0) {
           local_264 = *(float *)(instruction + 0xc);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 0xc));
-          local_264 = (float)fVar11;
+          local_264 = this->float_value(*(float *)(instruction + 0xc));
         }
         Vector3 local_7e4(local_26c,local_268,local_264);
         base.interpolation_160.set_end(*reinterpret_cast<const Vector3*>(&local_7e4));
@@ -1490,8 +1424,7 @@ LAB_0042df8e:
           local_274 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_274 = (float)fVar11;
+          local_274 = this->float_value(*(float *)(instruction + 8));
         }
         Angle local_78c(local_274);
         base.interpolation_1b4.set_end(*reinterpret_cast<const Angle*>(&local_78c));
@@ -1509,15 +1442,13 @@ LAB_0042df8e:
           local_27c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_27c = (float)fVar11;
+          local_27c = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 8U) == 0) {
           local_278 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_278 = (float)fVar11;
+          local_278 = this->float_value(*(float *)(instruction + 10));
         }
         Vector2 local_794(local_27c,local_278);
 
@@ -1542,15 +1473,13 @@ LAB_0042df8e:
           local_288 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_288 = (float)fVar11;
+          local_288 = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 8U) == 0) {
           local_284 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_284 = (float)fVar11;
+          local_284 = this->float_value(*(float *)(instruction + 10));
         }
         Vector2 local_79c(local_288,local_284);
 
@@ -1575,15 +1504,13 @@ LAB_0042df8e:
           local_294 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_294 = (float)fVar11;
+          local_294 = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 8U) == 0) {
           local_290 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_290 = (float)fVar11;
+          local_290 = this->float_value(*(float *)(instruction + 10));
         }
         Vector2 local_7a4(local_294,local_290);
 
@@ -1628,8 +1555,7 @@ LAB_0042df8e:
           local_2a0 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_2a0 = (float)fVar11;
+          local_2a0 = this->float_value(*(float *)(instruction + 8));
         }
         local_768 = local_2a0;
         base.interpolation_320.set_end(*reinterpret_cast<const float*>(&local_768));
@@ -1666,8 +1592,7 @@ LAB_0042df8e:
           local_2a8 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_2a8 = (float)fVar11;
+          local_2a8 = this->float_value(*(float *)(instruction + 8));
         }
         local_708 = local_2a8;
         base.interpolation_34c.set_end(*reinterpret_cast<const float*>(&local_708));
@@ -1726,8 +1651,7 @@ LAB_0042df8e:
           local_2b8 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_2b8 = (float)fVar11;
+          local_2b8 = this->float_value(*(float *)(instruction + 4));
         }
         base.variables.field_10 = local_2b8;
         break;
@@ -1811,16 +1735,14 @@ LAB_0042df8e:
           local_2d0 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_2d0 = (float)fVar11;
+          local_2d0 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_2d0;
         if ((instruction[3] & 2U) == 0) {
           local_2d4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_2d4 = (float)fVar11;
+          local_2d4 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_2d4;
         break;
@@ -1833,16 +1755,14 @@ LAB_0042df8e:
           local_2d8 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_2d8 = (float)fVar11;
+          local_2d8 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_2d8;
         if ((instruction[3] & 2U) == 0) {
           local_2dc = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_2dc = (float)fVar11;
+          local_2dc = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_2dc;
         break;
@@ -1855,16 +1775,14 @@ LAB_0042df8e:
           local_2e0 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_2e0 = (float)fVar11;
+          local_2e0 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_2e0;
         if ((instruction[3] & 2U) == 0) {
           local_2e4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_2e4 = (float)fVar11;
+          local_2e4 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_2e4;
         break;
@@ -1877,16 +1795,14 @@ LAB_0042df8e:
           local_2e8 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_2e8 = (float)fVar11;
+          local_2e8 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_2e8;
         if ((instruction[3] & 2U) == 0) {
           local_2ec = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_2ec = (float)fVar11;
+          local_2ec = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_2ec;
         break;
@@ -1899,16 +1815,14 @@ LAB_0042df8e:
           local_2f0 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_2f0 = (float)fVar11;
+          local_2f0 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_2f0;
         if ((instruction[3] & 2U) == 0) {
           local_2f4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_2f4 = (float)fVar11;
+          local_2f4 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_2f4;
         break;
@@ -1921,16 +1835,14 @@ LAB_0042df8e:
           local_2f8 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_2f8 = (float)fVar11;
+          local_2f8 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_2f8;
         if ((instruction[3] & 2U) == 0) {
           local_2fc = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_2fc = (float)fVar11;
+          local_2fc = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_2fc;
         break;
@@ -1943,8 +1855,7 @@ LAB_0042df8e:
           local_300 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_300 = (float)fVar11;
+          local_300 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_300;
         if ((instruction[3] & 2U) == 0) {
@@ -1966,24 +1877,21 @@ LAB_0042df8e:
           local_308 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_308 = (float)fVar11;
+          local_308 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_308;
         if ((instruction[3] & 2U) == 0) {
           local_30c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_30c = (float)fVar11;
+          local_30c = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_30c;
         if ((instruction[3] & 4U) == 0) {
           local_310 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_310 = (float)fVar11;
+          local_310 = this->float_value(*(float *)(instruction + 8));
         }
         base.variables.field_10 = local_310;
         if ((instruction[3] & 8U) == 0) {
@@ -2005,24 +1913,21 @@ LAB_0042df8e:
           local_318 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_318 = (float)fVar11;
+          local_318 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_318;
         if ((instruction[3] & 2U) == 0) {
           local_31c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_31c = (float)fVar11;
+          local_31c = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_31c;
         if ((instruction[3] & 4U) == 0) {
           local_320 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_320 = (float)fVar11;
+          local_320 = this->float_value(*(float *)(instruction + 8));
         }
         base.variables.field_10 = local_320;
         if ((instruction[3] & 8U) == 0) {
@@ -2045,32 +1950,28 @@ LAB_0042df8e:
           local_328 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_328 = (float)fVar11;
+          local_328 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_328;
         if ((instruction[3] & 2U) == 0) {
           local_32c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_32c = (float)fVar11;
+          local_32c = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_32c;
         if ((instruction[3] & 4U) == 0) {
           local_330 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_330 = (float)fVar11;
+          local_330 = this->float_value(*(float *)(instruction + 8));
         }
         base.variables.field_10 = local_330;
         if ((instruction[3] & 8U) == 0) {
           local_334 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_334 = (float)fVar11;
+          local_334 = this->float_value(*(float *)(instruction + 10));
         }
         base.variables.field_14 = local_334;
         if ((instruction[3] & 0x10U) == 0) {
@@ -2093,32 +1994,28 @@ LAB_0042df8e:
           local_33c = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_33c = (float)fVar11;
+          local_33c = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_33c;
         if ((instruction[3] & 2U) == 0) {
           local_340 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_340 = (float)fVar11;
+          local_340 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_340;
         if ((instruction[3] & 4U) == 0) {
           local_344 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_344 = (float)fVar11;
+          local_344 = this->float_value(*(float *)(instruction + 8));
         }
         base.variables.field_10 = local_344;
         if ((instruction[3] & 8U) == 0) {
           local_348 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_348 = (float)fVar11;
+          local_348 = this->float_value(*(float *)(instruction + 10));
         }
         base.variables.field_14 = local_348;
         if ((instruction[3] & 0x10U) == 0) {
@@ -2141,32 +2038,28 @@ LAB_0042df8e:
           local_350 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_350 = (float)fVar11;
+          local_350 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_350;
         if ((instruction[3] & 2U) == 0) {
           local_354 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_354 = (float)fVar11;
+          local_354 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_354;
         if ((instruction[3] & 4U) == 0) {
           local_358 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_358 = (float)fVar11;
+          local_358 = this->float_value(*(float *)(instruction + 8));
         }
         base.variables.field_10 = local_358;
         if ((instruction[3] & 8U) == 0) {
           local_35c = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_35c = (float)fVar11;
+          local_35c = this->float_value(*(float *)(instruction + 10));
         }
         base.variables.field_14 = local_35c;
         if ((instruction[3] & 0x10U) == 0) {
@@ -2186,8 +2079,7 @@ LAB_0042df8e:
           local_364 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_364 = (float)fVar11;
+          local_364 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_364;
         if ((instruction[3] & 2U) == 0) {
@@ -2208,16 +2100,14 @@ LAB_0042df8e:
           local_36c = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_36c = (float)fVar11;
+          local_36c = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_36c;
         if ((instruction[3] & 2U) == 0) {
           local_370 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_370 = (float)fVar11;
+          local_370 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_370;
         if ((instruction[3] & 4U) == 0) {
@@ -2238,16 +2128,14 @@ LAB_0042df8e:
           local_378 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_378 = (float)fVar11;
+          local_378 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_378;
         if ((instruction[3] & 2U) == 0) {
           local_37c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_37c = (float)fVar11;
+          local_37c = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_37c;
         if ((instruction[3] & 4U) == 0) {
@@ -2268,16 +2156,14 @@ LAB_0042df8e:
           local_384 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_384 = (float)fVar11;
+          local_384 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_384;
         if ((instruction[3] & 2U) == 0) {
           local_388 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_388 = (float)fVar11;
+          local_388 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_388;
         if ((instruction[3] & 4U) == 0) {
@@ -2297,8 +2183,7 @@ LAB_0042df8e:
           local_390 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_390 = (float)fVar11;
+          local_390 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_390;
         if ((instruction[3] & 2U) == 0) {
@@ -2318,8 +2203,7 @@ LAB_0042df8e:
           local_398 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_398 = (float)fVar11;
+          local_398 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_398;
         if ((instruction[3] & 2U) == 0) {
@@ -2340,16 +2224,14 @@ LAB_0042df8e:
           local_3a0 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3a0 = (float)fVar11;
+          local_3a0 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3a0;
         if ((instruction[3] & 2U) == 0) {
           local_3a4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_3a4 = (float)fVar11;
+          local_3a4 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_3a4;
         if ((instruction[3] & 4U) == 0) {
@@ -2370,16 +2252,14 @@ LAB_0042df8e:
           local_3ac = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3ac = (float)fVar11;
+          local_3ac = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3ac;
         if ((instruction[3] & 2U) == 0) {
           local_3b0 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_3b0 = (float)fVar11;
+          local_3b0 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_3b0;
         if ((instruction[3] & 4U) == 0) {
@@ -2400,16 +2280,14 @@ LAB_0042df8e:
           local_3b8 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3b8 = (float)fVar11;
+          local_3b8 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3b8;
         if ((instruction[3] & 2U) == 0) {
           local_3bc = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_3bc = (float)fVar11;
+          local_3bc = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_3bc;
         if ((instruction[3] & 4U) == 0) {
@@ -2429,8 +2307,7 @@ LAB_0042df8e:
           local_3c4 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3c4 = (float)fVar11;
+          local_3c4 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3c4;
         if ((instruction[3] & 2U) == 0) {
@@ -2450,8 +2327,7 @@ LAB_0042df8e:
           local_3cc = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3cc = (float)fVar11;
+          local_3cc = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3cc;
         if ((instruction[3] & 2U) == 0) {
@@ -2472,16 +2348,14 @@ LAB_0042df8e:
           local_3d4 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3d4 = (float)fVar11;
+          local_3d4 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3d4;
         if ((instruction[3] & 2U) == 0) {
           local_3d8 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_3d8 = (float)fVar11;
+          local_3d8 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_3d8;
         if ((instruction[3] & 4U) == 0) {
@@ -2502,16 +2376,14 @@ LAB_0042df8e:
           local_3e0 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3e0 = (float)fVar11;
+          local_3e0 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3e0;
         if ((instruction[3] & 2U) == 0) {
           local_3e4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_3e4 = (float)fVar11;
+          local_3e4 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_3e4;
         if ((instruction[3] & 4U) == 0) {
@@ -2532,16 +2404,14 @@ LAB_0042df8e:
           local_3ec = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3ec = (float)fVar11;
+          local_3ec = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3ec;
         if ((instruction[3] & 2U) == 0) {
           local_3f0 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_3f0 = (float)fVar11;
+          local_3f0 = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_3f0;
         if ((instruction[3] & 4U) == 0) {
@@ -2561,16 +2431,14 @@ LAB_0042df8e:
           local_3f8 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_3f8 = (float)fVar11;
+          local_3f8 = this->float_value(*(float *)(instruction + 4));
         }
         base.vector_70.x = local_3f8;
         if ((instruction[3] & 2U) == 0) {
           local_3fc = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_3fc = (float)fVar11;
+          local_3fc = this->float_value(*(float *)(instruction + 6));
         }
         base.vector_70.y = local_3fc;
         break;
@@ -2654,8 +2522,7 @@ LAB_0042df8e:
         else {
           local_418 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
-        puVar8 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *puVar8 = local_418;
+        *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_418;
         break;
       }
       case 7: {
@@ -2664,11 +2531,9 @@ LAB_0042df8e:
           local_41c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_41c = (float)fVar11;
+          local_41c = this->float_value(*(float *)(instruction + 6));
         }
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_41c;
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_41c;
         break;
       }
       case 0x12: {
@@ -2686,9 +2551,7 @@ LAB_0042df8e:
         else {
           local_424 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        iVar2 = local_420 + local_424;
-        piVar7 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *piVar7 = iVar2;
+        *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_420 + local_424;
         break;
       }
       case 0x13: {
@@ -2699,19 +2562,16 @@ LAB_0042df8e:
           local_428 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_428 = (float)fVar11;
+          local_428 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 4U) == 0) {
           local_42c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_42c = (float)fVar11;
+          local_42c = this->float_value(*(float *)(instruction + 8));
         }
         local_710 = local_428 + local_42c;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_710;
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_710;
         break;
       }
       case 0x14: {
@@ -2729,9 +2589,7 @@ LAB_0042df8e:
         else {
           local_434 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        iVar2 = local_430 - local_434;
-        piVar7 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *piVar7 = iVar2;
+        *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_430 - local_434;
         break;
       }
       case 0x15: {
@@ -2742,19 +2600,16 @@ LAB_0042df8e:
           local_438 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_438 = (float)fVar11;
+          local_438 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 4U) == 0) {
           local_43c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_43c = (float)fVar11;
+          local_43c = this->float_value(*(float *)(instruction + 8));
         }
         local_714 = local_438 - local_43c;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_714;
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_714;
         break;
       }
       case 0x16: {
@@ -2772,9 +2627,7 @@ LAB_0042df8e:
         else {
           local_444 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        iVar2 = local_440 * local_444;
-        piVar7 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *piVar7 = iVar2;
+        *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_440 * local_444;
         break;
       }
       case 0x17: {
@@ -2785,19 +2638,16 @@ LAB_0042df8e:
           local_448 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_448 = (float)fVar11;
+          local_448 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 4U) == 0) {
           local_44c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_44c = (float)fVar11;
+          local_44c = this->float_value(*(float *)(instruction + 8));
         }
         local_718 = local_448 * local_44c;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_718;
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_718;
         break;
       }
       case 0x18: {
@@ -2815,9 +2665,7 @@ LAB_0042df8e:
         else {
           local_454 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        iVar2 = (int)local_450 / (int)local_454;
-        piVar7 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *piVar7 = iVar2;
+        *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = (int)local_450 / (int)local_454;
         break;
       }
       case 0x19: {
@@ -2828,19 +2676,16 @@ LAB_0042df8e:
           local_458 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_458 = (float)fVar11;
+          local_458 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 4U) == 0) {
           local_45c = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_45c = (float)fVar11;
+          local_45c = this->float_value(*(float *)(instruction + 8));
         }
         local_71c = local_458 / local_45c;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_71c;
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_71c;
         break;
       }
       case 0x1a: {
@@ -2858,9 +2703,7 @@ LAB_0042df8e:
         else {
           local_464 = this->integer_value(*(std::uint32_t *)(instruction + 8));
         }
-        iVar2 = (int)local_460 % (int)local_464;
-        piVar7 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *piVar7 = iVar2;
+        *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = (int)local_460 % (int)local_464;
         break;
       }
       case 0x1b: {
@@ -2871,20 +2714,16 @@ LAB_0042df8e:
           local_468 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_468 = (float)fVar11;
+          local_468 = this->float_value(*(float *)(instruction + 8));
         }
         if ((instruction[3] & 2U) == 0) {
           local_46c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_46c = (float)fVar11;
+          local_46c = this->float_value(*(float *)(instruction + 6));
         }
-        fVar11 = scalar_math::floating_remainder(local_46c,local_468);
-        local_720 = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_720;
+        local_720 = scalar_math::floating_remainder(local_46c,local_468);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_720;
         break;
       }
       case 8: {
@@ -2907,8 +2746,7 @@ LAB_0042df8e:
           local_478 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_478 = (float)fVar11;
+          local_478 = this->float_value(*(float *)(instruction + 6));
         }
         local_47c = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *local_47c = *local_47c + local_478;
@@ -2934,8 +2772,7 @@ LAB_0042df8e:
           local_488 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_488 = (float)fVar11;
+          local_488 = this->float_value(*(float *)(instruction + 6));
         }
         local_48c = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *local_48c = *local_48c - local_488;
@@ -2961,8 +2798,7 @@ LAB_0042df8e:
           local_498 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_498 = (float)fVar11;
+          local_498 = this->float_value(*(float *)(instruction + 6));
         }
         local_49c = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *local_49c = *local_49c * local_498;
@@ -2988,8 +2824,7 @@ LAB_0042df8e:
           local_4a8 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4a8 = (float)fVar11;
+          local_4a8 = this->float_value(*(float *)(instruction + 6));
         }
         local_4ac = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
         *local_4ac = *local_4ac / local_4a8;
@@ -3016,20 +2851,16 @@ LAB_0042df8e:
           local_4b8 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4b8 = (float)fVar11;
+          local_4b8 = this->float_value(*(float *)(instruction + 6));
         }
         if ((instruction[3] & 1U) == 0) {
           local_4bc = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_4bc = (float)fVar11;
+          local_4bc = this->float_value(*(float *)(instruction + 4));
         }
-        fVar11 = scalar_math::floating_remainder(local_4bc,local_4b8);
-        local_724 = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_724;
+        local_724 = scalar_math::floating_remainder(local_4bc,local_4b8);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_724;
         break;
       }
       case 0x1c: {
@@ -3042,8 +2873,7 @@ LAB_0042df8e:
           local_4c0 = this->integer_value(*(std::uint32_t *)(instruction + 6));
         }
         local_728 = reinterpret_cast<GameRandom*>(&DAT_005ba4c4)->bounded(local_4c0);
-        puVar8 = this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *puVar8 = local_728;
+        *this->integer_argument(reinterpret_cast<std::int32_t*>((std::uint32_t *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_728;
         break;
       }
       case 0x1d: {
@@ -3053,13 +2883,10 @@ LAB_0042df8e:
           local_4c4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4c4 = (float)fVar11;
+          local_4c4 = this->float_value(*(float *)(instruction + 6));
         }
-        fVar11 = reinterpret_cast<GameRandom*>(0x5ba4c4)->range(local_4c4);
-        local_72c = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_72c;
+        local_72c = reinterpret_cast<GameRandom*>(0x5ba4c4)->range(local_4c4);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_72c;
         break;
       }
       case 0x1e: {
@@ -3069,13 +2896,10 @@ LAB_0042df8e:
           local_4c8 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4c8 = (float)fVar11;
+          local_4c8 = this->float_value(*(float *)(instruction + 6));
         }
-        fVar11 = scalar_math::sine(local_4c8);
-        local_730 = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_730;
+        local_730 = scalar_math::sine(local_4c8);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_730;
         break;
       }
       case 0x1f: {
@@ -3085,13 +2909,10 @@ LAB_0042df8e:
           local_4cc = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4cc = (float)fVar11;
+          local_4cc = this->float_value(*(float *)(instruction + 6));
         }
-        fVar11 = scalar_math::cosine(local_4cc);
-        local_734 = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_734;
+        local_734 = scalar_math::cosine(local_4cc);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_734;
         break;
       }
       case 0x20: {
@@ -3101,13 +2922,10 @@ LAB_0042df8e:
           local_4d0 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4d0 = (float)fVar11;
+          local_4d0 = this->float_value(*(float *)(instruction + 6));
         }
-        fVar11 = native_sqrt_439850(local_4d0);
-        local_738 = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_738;
+        local_738 = native_sqrt_439850(local_4d0);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_738;
         break;
       }
       case 0x21: {
@@ -3117,13 +2935,10 @@ LAB_0042df8e:
           local_4d4 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4d4 = (float)fVar11;
+          local_4d4 = this->float_value(*(float *)(instruction + 6));
         }
-        fVar11 = scalar_math::arcsine(local_4d4);
-        local_73c = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_73c;
+        local_73c = scalar_math::arcsine(local_4d4);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_73c;
         break;
       }
       case 0x22: {
@@ -3133,13 +2948,10 @@ LAB_0042df8e:
           local_4d8 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_4d8 = (float)fVar11;
+          local_4d8 = this->float_value(*(float *)(instruction + 6));
         }
-        fVar11 = scalar_math::arccosine(local_4d8);
-        local_740 = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_740;
+        local_740 = scalar_math::arccosine(local_4d8);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_740;
         break;
       }
       case 0x23: {
@@ -3149,13 +2961,10 @@ LAB_0042df8e:
           local_4dc = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_4dc = (float)fVar11;
+          local_4dc = this->float_value(*(float *)(instruction + 4));
         }
-        fVar11 = (float)add_angles(local_4dc, 0.0f);
-        local_744 = (float)fVar11;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_744;
+        local_744 = (float)add_angles(local_4dc, 0.0f);
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_744;
         break;
       }
       case 0x24: {
@@ -3167,15 +2976,13 @@ LAB_0042df8e:
           local_4e0 = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_4e0 = (float)fVar11;
+          local_4e0 = this->float_value(*(float *)(instruction + 10));
         }
         if ((instruction[3] & 4U) == 0) {
           local_4e4 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_4e4 = (float)fVar11;
+          local_4e4 = this->float_value(*(float *)(instruction + 8));
         }
         local_748 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 6)),static_cast<std::uint16_t>(instruction[3]),1);
         local_74c = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
@@ -3195,28 +3002,22 @@ LAB_0042df8e:
           local_4e8 = *(float *)(instruction + 8);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 8));
-          local_4e8 = (float)fVar11;
+          local_4e8 = this->float_value(*(float *)(instruction + 8));
         }
         local_4f0 = local_4e8;
         if ((instruction[3] & 8U) == 0) {
           local_4ec = *(float *)(instruction + 10);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 10));
-          local_4ec = (float)fVar11;
+          local_4ec = this->float_value(*(float *)(instruction + 10));
         }
         local_754 = local_4ec - local_4f0;
-        fVar11 = reinterpret_cast<GameRandom*>(0x5ba4c4)->signed_unit();
-        local_758 = (float)fVar11;
+        local_758 = reinterpret_cast<GameRandom*>(0x5ba4c4)->signed_unit();
         local_75c = local_754 * local_758 + local_4f0;
-        fVar11 = reinterpret_cast<GameRandom*>(0x5ba4c4)->radians();
-        local_760 = (float)fVar11;
+        local_760 = reinterpret_cast<GameRandom*>(0x5ba4c4)->radians();
         polar(*reinterpret_cast<Vector3*>(&local_c0),local_760,local_75c);
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0);
-        *pfVar6 = local_c0.x;
-        pfVar6 = this->float_argument(reinterpret_cast<float*>((float *)(instruction + 6)),static_cast<std::uint16_t>(instruction[3]),1);
-        *pfVar6 = local_c0.y;
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 4)),static_cast<std::uint16_t>(instruction[3]),0) = local_c0.x;
+        *this->float_argument(reinterpret_cast<float*>((float *)(instruction + 6)),static_cast<std::uint16_t>(instruction[3]),1) = local_c0.y;
         break;
       }
       case 0x6e: {
@@ -3275,15 +3076,13 @@ LAB_00434d6a:
           local_4fc = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_4fc = (float)fVar11;
+          local_4fc = this->float_value(*(float *)(instruction + 4));
         }
         if ((instruction[3] & 2U) == 0) {
           local_500 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_500 = (float)fVar11;
+          local_500 = this->float_value(*(float *)(instruction + 6));
         }
         if (local_4fc == local_500) goto LAB_00434d6a;
         break;
@@ -3313,15 +3112,13 @@ LAB_00434d6a:
           local_50c = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_50c = (float)fVar11;
+          local_50c = this->float_value(*(float *)(instruction + 4));
         }
         if ((instruction[3] & 2U) == 0) {
           local_510 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_510 = (float)fVar11;
+          local_510 = this->float_value(*(float *)(instruction + 6));
         }
         if (local_50c != local_510) goto LAB_00434d6a;
         break;
@@ -3351,15 +3148,13 @@ LAB_00434d6a:
           local_520 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_520 = (float)fVar11;
+          local_520 = this->float_value(*(float *)(instruction + 4));
         }
         if ((instruction[3] & 2U) == 0) {
           local_51c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_51c = (float)fVar11;
+          local_51c = this->float_value(*(float *)(instruction + 6));
         }
         if (local_520 < local_51c) goto LAB_00434d6a;
         break;
@@ -3389,15 +3184,13 @@ LAB_00434d6a:
           local_530 = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_530 = (float)fVar11;
+          local_530 = this->float_value(*(float *)(instruction + 4));
         }
         if ((instruction[3] & 2U) == 0) {
           local_52c = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_52c = (float)fVar11;
+          local_52c = this->float_value(*(float *)(instruction + 6));
         }
         if (local_530 <= local_52c) goto LAB_00434d6a;
         break;
@@ -3427,15 +3220,13 @@ LAB_00434d6a:
           local_53c = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_53c = (float)fVar11;
+          local_53c = this->float_value(*(float *)(instruction + 4));
         }
         if ((instruction[3] & 2U) == 0) {
           local_540 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_540 = (float)fVar11;
+          local_540 = this->float_value(*(float *)(instruction + 6));
         }
         if (local_540 < local_53c) goto LAB_00434d6a;
         break;
@@ -3465,15 +3256,13 @@ LAB_00434d6a:
           local_54c = *(float *)(instruction + 4);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 4));
-          local_54c = (float)fVar11;
+          local_54c = this->float_value(*(float *)(instruction + 4));
         }
         if ((instruction[3] & 2U) == 0) {
           local_550 = *(float *)(instruction + 6);
         }
         else {
-          fVar11 = this->float_value(*(float *)(instruction + 6));
-          local_550 = (float)fVar11;
+          local_550 = this->float_value(*(float *)(instruction + 6));
         }
         if (local_550 <= local_54c) goto LAB_00434d6a;
         break;
