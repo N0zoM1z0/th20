@@ -79,17 +79,17 @@ def verify(candidate):
  if candidate:
   # Whole, actual COFF function+switch contribution. Do not compare an
   # original-length prefix or claim that the shorter candidate is exact.
-  b,r=cm.object_function(candidate,SYM,2296)
-  assert len(b)==2296 and len(r)==90
-  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b[:2208]),0))
-  assert len(ci)==466 and ci[-1].mnemonic=='ret'
-  assert ci[-1].address==2207 and ci[-1].address+ci[-1].size==2208
-  body_fields=[x for x in r if x['offset']<2208]
+  b,r=cm.object_function(candidate,SYM,2308)
+  assert len(b)==2308 and len(r)==90
+  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b[:2220]),0))
+  assert len(ci)==468 and ci[-1].mnemonic=='ret'
+  assert ci[-1].address==2219 and ci[-1].address+ci[-1].size==2220
+  body_fields=[x for x in r if x['offset']<2220]
   call_fields=[x for x in body_fields if x['type']=='REL32']
   data=[x for x in body_fields if x['type']=='DIR32']
-  table=[x for x in r if x['offset']>=2208]
+  table=[x for x in r if x['offset']>=2220]
   assert len(call_fields)==25 and len(data)==43 and len(table)==22
-  assert [x['offset'] for x in table]==list(range(2208,2296,4))
+  assert [x['offset'] for x in table]==list(range(2220,2308,4))
   assert all(x['type']=='DIR32' and x['symbol'].startswith('$LN') for x in table)
   assert all(x['addend']==0 for x in r)
   ca=[x['symbol'] for x in table]
@@ -97,6 +97,10 @@ def verify(candidate):
   assert all((original_table[i]==original_table[j])==(ca[i]==ca[j])
              for i in range(22) for j in range(22))
   assert [x['offset']-1 for x in call_fields[:17]]==sorted(E8)[:17]
+  native_e8=list(sorted(E8))
+  generated_e8=[x['offset']-1 for x in call_fields]
+  assert sum(a==b for a,b in zip(native_e8,generated_e8))==17
+  assert sum(abs(a-b) for a,b in zip(native_e8,generated_e8))==52
   # Source roles are independent literal identities mapped onto the
   # immutable PE E8 targets, in order (including both destructor paths).
   callsites=(
@@ -158,14 +162,17 @@ def verify(candidate):
    matches=[target for prefix,target in roles if ref['symbol'].startswith(prefix)]
    assert len(matches)==1 and matches[0]==native_data[offset],(offset,ref['symbol'],matches)
   # No duplicate game credit: mask only actual COFF relocation fields and
-  # count ordinary bytes across this COMPLETE 2,296B contribution.
+  # count ordinary bytes across this COMPLETE 2,308B contribution.
   masked={i for ref in r for i in range(ref['offset'],ref['offset']+4)}
-  original_prefix=pe.raw_at(img,base,sec,HEAD,2296)
+  original_prefix=pe.raw_at(img,base,sec,HEAD,2308)
   equal=sum(a==z for i,(a,z) in enumerate(zip(b,original_prefix)) if i not in masked)
-  assert len(masked)==360 and len(b)-len(masked)==1936 and equal==1626
+  assert len(masked)==360 and len(b)-len(masked)==1948 and equal==1629
   assert bytes(b)!=original_prefix
   assert cm.compare_unit('glyph_text_queue_submit_56')['result']=='exact'
   assert cm.compare_unit('glyph_text_job_capture_132')['result']=='exact'
+  source=(ROOT/'src/GlyphTextCore2227.cpp').read_text()
+  assert 'NativeGlyphRenderJob&& queued_job=std::move(glyph_job);' in source
+  assert 'submitted(std::move(queued_job))' in source
   assert cm.compare_unit('glyph_text_job_dtor_23')['result']=='exact'
   assert original[0x43A:0x443]==bytes.fromhex('8b450c83c00289450c')
   assert at[0x797]==('mov','edx, dword ptr [ebp - 0x224]')
@@ -173,7 +180,7 @@ def verify(candidate):
   print('PASS original physical 8B address helper equals C++ std::addressof 8/8; 17/25 E8 positions and all 25 callee roles preserved in order')
   print('PASS 43/43 original body HIGHLOW target roles, 41/43 original positions, 22 generated font-case pointers and all 17 original alias classes')
   print('PASS natural named glyph job survives queued std::function submit, function destructor precedes job destructor, matching original role order')
-  print(f'NONEXACT: candidate 2296B/466 code instructions vs original 2316B/470+NOP, ordinary {equal}/1936; no parent exact credit')
+  print(f'NONEXACT: candidate 2308B/468 code instructions vs original 2316B/470+NOP, ordinary {equal}/1948; no parent exact credit')
   print('PASS separate 132B glyph job constructor, 23B destructor and 56B queue submit whole native exact')
  print('Original entire 2227B text core remains NONEXACT; exact 132B game-owned capture is a distinct physical native head')
 if __name__=='__main__':

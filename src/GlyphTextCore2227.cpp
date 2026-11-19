@@ -6,7 +6,7 @@
 // same-frame draw/submit behavior are retained. A real 8B folded canvas
 // reference call, completion-pointer ABI and named job lifetime restore
 // the first 17 native E8 sites, while the whole parent remains NONEXACT.
-// Full current MSVC x86 COFF contribution: 2296B (candidate code 2208B
+// Full current MSVC x86 COFF contribution: 2308B (candidate code 2220B
 // including return, then 22 real switch pointers); original total 2316B.
 // All 25 callee roles and 43 original data roles remain accounted for.
 #include "NativeGlyphRenderJob.hpp"
@@ -185,7 +185,11 @@ std::uint64_t __cdecl native_text_core_415830(
                                        completion_flag,callback};
         // The original 56B queue bridge takes an already-constructed
         // std::function lvalue by reference, preserving its owner lifetime.
-        std::function<void()> submitted(std::move(glyph_job));
+        // Keep a named rvalue reference to the actual constructed job while
+        // preparing its moved std::function capture. The reference aliases
+        // the live stack object; it does not create a second task or owner.
+        NativeGlyphRenderJob&& queued_job=std::move(glyph_job);
+        std::function<void()> submitted(std::move(queued_job));
         // Original 0x005B66E0 is the 12B PMR list object itself, not
         // a global pointer. Borrow the identical native head/count layout
         // for its whole-exact 56B member bridge without copying the list.

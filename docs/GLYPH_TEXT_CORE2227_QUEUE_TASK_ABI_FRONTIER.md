@@ -1,37 +1,56 @@
-**CURRENT ADOPTED SOURCE UPDATE (2026-11-11).** The true completion
-word at native stack `+0x2C` is now declared `std::uint8_t*`, consistent
-with the independently exact 360B upload, and forwarded by reference
-without an integer/pointer alias. The complete typed C++ source now
-uses a genuine `std::addressof(canvas)` identity call (its folded native
-8B code matches **8/8**) and a **named brace-constructed**
-`NativeGlyphRenderJob` whose destruction occurs **after** queue
-submission, in the actual original order. The pixel-rectangle y-offset
-is incremented by six rather than assigned, as in original `+0x797`.
-The caller `AsciiTextSubmit294.cpp` forwards its original 32-bit input
-word as a pointer without modifying the native i386 stack ABI. Its
-natural 292B/104-i386 body remains **NONEXACT** by only the two
-original NOPs and its original-role validator still passes.
+**2026-11-19 CURRENT ADOPTED UPDATE:** The real `NativeGlyphRenderJob`
+now remains visibly owned by a named rvalue reference that is actually moved
+into the queued `std::function`. This captures the genuine pointer/lifetime
+boundary without adding any extra call or unused local. The complete pinned
+C++ function now occupies **2,308B/468 code instructions** (original
+**2,316B contribution/470 code instructions+NOP**), and its authentic
+`0x310` stack frame matches the original where the prior source used `0x30c`.
+The native E8 role sequence is still **25/25**, with **17/25 exact sites**;
+the sum of absolute E8 site deviations falls from **148 to 52**. All
+**43/43 body data target roles** and **41/43 physical data sites** remain;
+full-body ordinary-byte agreement improves from 1,626/1,936 to
+**1,629/1,948**. All original 22 switch-case pointers and 17 alias groups
+remain generated, and previously strict 132B/23B task children pass the
+**2/2 source-scoped cold replay**. The parent is still **NONEXACT** and has
+no new game byte credit. See
+[`GLYPH_TEXT_CORE2227_RVALUE_QUEUE_LIFETIME_FRONTIER.md`](GLYPH_TEXT_CORE2227_RVALUE_QUEUE_LIFETIME_FRONTIER.md)
+for the complete source/PE comparison and original queue ABI.
 
-The current whole compiler contribution is **2,296B/466 code i386**
-with the native 25 E8, 43 body DIR32 and 22 after-return switch pointers,
-all 17 authentic table aliases. The first **17/25** E8 positions
-(including genuine `+0x7BC` helper and `+0x7E7` glyph job constructor)
-now align, **41/43** body data sites are at original positions, and
-**1,626/1,936** comparable ordinary bytes are equal. This is an
-improvement in original call sites over the previous **15/25**, but
-still **SOURCE-PRESENT, NONEXACT**: original physical extent is
-2,316B, code 2,227B/470 i386, so there is zero new parent exact credit.
-The original `std::function` constructor at `+0x80F` and the following
-queue/cleanup code remain the next native codegen frontier; our candidate
-constructor is at `+0x7FD`, and the natural typed source is 20B shorter.
+**CURRENT ADOPTED SOURCE UPDATE (2026-11-19).** The true completion
+word at native stack `+0x2C` is declared `std::uint8_t*`, consistent with
+the independently exact 360B upload, and forwarded by reference without
+an integer/pointer alias. The maintained source uses a genuine
+`std::addressof(canvas)` identity call (its folded native 8B code matches
+**8/8**) and a named brace-constructed `NativeGlyphRenderJob` whose
+destruction occurs after queue submission, in the actual original order.
+The pixel-rectangle y-offset is incremented by six rather than assigned,
+as in original `+0x797`. The caller `AsciiTextSubmit294.cpp` forwards its
+original 32-bit input word as a pointer without modifying the native i386
+stack ABI. Its natural 292B/104-i386 body remains NONEXACT by only the two
+original NOPs.
 
-The complete original PE target roles and generated COFF symbols are
-independently checked in `scripts/verify-glyph-text-core2227-native.py`.
-A **scoped** one-object rebuild for only `src/GlyphTextCore2227.cpp`
-strictly replayed **2/2** existing 132B/23B job units. No full cold replay.
-No synthetic call, unused local, false data, manual NOP or game-authored
-credit is added. The remaining sections record previous private trials,
-not the current maintained C++ source.
+The current whole MSVC x86 COFF contribution is **2,308B**: **2,220B
+code /468 i386 instructions** and 22 generated switch pointers. The
+original complete physical contribution is 2,316B (2,227B code, one
+original NOP and 22 pointers). The first **17/25** original E8 positions
+align, including the true `+0x7BC` reference helper and `+0x7E7` glyph
+job constructor. **41/43** body data relocation positions align and
+**1,629/1,948** comparable ordinary bytes match. All 25 original E8
+callee roles and all 43 original body data destinations remain correct
+and ordered; all 17 switch alias groups are retained. This improves
+queue-construction and cleanup convergence without claiming parent
+exactness. The `std::function` constructor and queue/cleanup sequence
+remain the next native codegen frontier; candidate constructor is at
+`+0x809` versus original `+0x80F`, a six-byte displacement after the
+first 17 E8 positions have aligned.
+
+The independent `scripts/verify-glyph-text-core2227-native.py` checks
+the complete 2,308B contribution, all 25 call roles, all 43 data roles,
+all 22 switch pointers, and the explicit 17 native alias groups. A
+scoped one-object rebuild of only `src/GlyphTextCore2227.cpp` strictly
+replayed **2/2** existing 132B/23B job units. The parent remains
+SOURCE-PRESENT, NONEXACT, with zero parent-byte credit. No synthetic
+call, unused local, false data, manual NOP, ASM or padding is used.
 
 # Glyph Text 2,227B Boss: queue-task ownership and compiler-return frontier
 
@@ -40,9 +59,9 @@ The locked Japanese TH20 Steamless v1.00a executable (SHA-256
 contains the full text rasterizer at `0x00415830`: **2,227B /470 i386 code**,
 one original NOP, and 22 real font-switch pointers. The maintained
 [`GlyphTextCore2227.cpp`](../src/GlyphTextCore2227.cpp) is SOURCE-PRESENT
-**NONEXACT**. Its best admitted source remains the native-sized **2,316B
-whole contribution**, with 15/25 physical E8 sites, 41/43 body HIGHLOW
-sites and 1,566/1,956 ordinary positional bytes aligned. The established
+**NONEXACT**. The earlier native-sized **2,316B whole contribution** was a prior frontier
+with 15/25 physical E8 sites and 1,566/1,956 ordinary positional bytes; it is
+superseded by the current 2,308B/17-site source frontier above. The established
 [font dispatch](GLYPH_TEXT_CORE2227_SWITCH22_NATIVE_CONVERGENCE.md)
 and [GDI color/offset semantics](GLYPH_TEXT_CORE2227_COLOR_AND_CANVAS_ABI_FRONTIER.md)
 are not changed by the experiments below.

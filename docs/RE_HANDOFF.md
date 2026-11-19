@@ -345,3 +345,16 @@ superseded; use the **current ledger and this handoff** for status.
   1/1; original caller instruction and E8 target roles unchanged.
 - See `docs/ANIMATION_FADE_CONFIG86_STRICT_EXACT.md`. The much larger
   Animation Draw, Particle Grid and GDI Text cores remain NONEXACT.
+
+## 2026-11-19 — Glyph Text 2,227B Boss queue lifetime convergence
+
+- A named **used** rvalue reference keeps the real glyph render job alive
+  during its move into the queued `std::function`; destructors remain after
+  queue submission in original order. The complete 2,308B/468-i386 C++
+  candidate now has the native `0x310` frame, all 25 genuine E8 roles and
+  43 data roles, 17/25 aligned E8 sites, **52** absolute site offset sum
+  (down from 148), 41/43 aligned data sites, 1,629/1,948 ordinary bytes.
+- The original 2,227B/470-i386 code +NOP+22-pointer contribution totals
+  2,316B; the parent remains NONEXACT, no new game authored bytes. Its
+  separate 132B constructor and 23B destructor still pass 2/2 scoped replay.
+- See `docs/GLYPH_TEXT_CORE2227_RVALUE_QUEUE_LIFETIME_FRONTIER.md`.
