@@ -478,6 +478,10 @@ superseded; use the **current ledger and this handoff** for status.
   instruction heads / 505 E8 / 55 PE HIGHLOW. The current C++ contribution
   is 40,808B: 40,164B code plus a compiler-emitted 644B/161-entry switch
   table; the code portion decodes to 8,382 instruction heads and 505 E8.
+  The generic `NativeAnimationVmCallView` numeric adapter has been removed;
+  the remaining VM calls use typed Animation/Timer/Interpolation/Renderer/
+  Motion/Random/Math owners, with only the 0x4397F0 cdecl math helper still
+  awaiting owner/source recovery.
   All 505 candidate E8 destinations match the original call-target multiset,
   including postfix Timer increment, child-spawn return ABI, corner projection,
   the whole-exact +0x18 file lookup, the original 0x0040BC20 array helper,

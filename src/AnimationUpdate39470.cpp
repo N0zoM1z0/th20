@@ -31,11 +31,6 @@ struct NativeAnimationCornerProjectionDispatchView { void project_corners(Vector
 
 extern "C" {
 // Original external helpers are declared with their x86 receiver/stack ABI.
-std::uint32_t __fastcall vm_0040ff90(std::uintptr_t);
-void __fastcall vm_00423540(void*);
-std::uint32_t __fastcall vm_00423ee0(std::uintptr_t);
-std::uint32_t __fastcall vm_00424060(void*);
-float __cdecl vm_00438600(float,float);
 float __cdecl vm_004397f0(float,float);
 
 extern std::uint8_t DAT_00435285;
@@ -48,158 +43,12 @@ extern void* DAT_005ba828;
 extern float DAT_005c5540[3];
 }
 
-// Zero-storage ABI view for the original VM's typed __thiscall dependencies.
-// Each declaration emits a direct native member call with ECX receiver and
-// ordinary stack arguments; no trampoline, function-pointer dispatch or code
-// body is introduced. Known owner methods are progressively replaced by their
-// maintained class declarations as those leaves are reconstructed.
-struct NativeAnimationVmCallView {
-    float call_004292e0();
-    float call_004297d0();
-    float call_004298e0();
-    void call_00435520();
-    void call_004358d0();
-    void call_00435c80();
-    float call_004374b0();
-    float call_00437930();
-    void call_004395b0();
-    void call_004396a0();
-    std::uintptr_t call_0044ced0();
-    void call_00423520(std::int32_t);
-    std::uint32_t call_00423ea0(std::uint32_t);
-    void call_00429280(std::uintptr_t);
-    void call_004292a0(float);
-    std::uint32_t* call_004296e0(const float*);
-    float call_00429800(float);
-    void* call_0042b590(std::int32_t);
-    std::int32_t* call_00437220(std::uint32_t*,std::uint32_t,std::int32_t);
-    float* call_00437310(float*,std::uint32_t,std::int32_t);
-    std::int16_t* call_00437490(std::int32_t);
-    std::uint32_t* call_00437840(float*,std::int32_t,std::int32_t);
-    std::uint32_t call_00437d00(std::uint32_t);
-    float call_00437eb0(float);
-    std::int32_t call_00438620(std::uintptr_t,std::int32_t);
-    void call_00438a70(const void*);
-    void call_00438a90(const void*);
-    void call_00438ae0(const void*);
-    void call_00438b00(const void*);
-    void call_00438b20(const void*);
-    void call_00438b50(const void*);
-    void call_00438e70(std::int32_t);
-    void call_00439280(float,float,float);
-    void call_00439390(float,float);
-    void call_004393d0(const void*);
-    void call_004393f0(const void*);
-    void call_00439440(const void*);
-    void call_00439460(const void*);
-    void call_00439480(const void*);
-    void call_004394b0(const void*);
-    void call_004394d0(std::uint32_t);
-    void call_004394f0(std::uint32_t);
-    void call_00445770(float*);
-    void call_00450350(std::int32_t);
-};
-
-#define vm_00423520(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00423520(__VA_ARGS__))
-#define vm_00423ea0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00423ea0(__VA_ARGS__))
-#define vm_00429280(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429280(__VA_ARGS__))
-#define vm_004292a0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004292a0(__VA_ARGS__))
-#define vm_004296e0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004296e0(__VA_ARGS__))
-#define vm_00429800(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00429800(__VA_ARGS__))
-#define vm_0042b590(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_0042b590(__VA_ARGS__))
-#define vm_00437220(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437220(__VA_ARGS__))
-#define vm_00437310(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437310(__VA_ARGS__))
-#define vm_00437490(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437490(__VA_ARGS__))
-#define vm_00437840(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437840(__VA_ARGS__))
-#define vm_00437d00(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437d00(__VA_ARGS__))
-#define vm_00437eb0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437eb0(__VA_ARGS__))
-#define vm_00438620(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438620(__VA_ARGS__))
-#define vm_00438a70(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438a70(__VA_ARGS__))
-#define vm_00438a90(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438a90(__VA_ARGS__))
-#define vm_00438ae0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438ae0(__VA_ARGS__))
-#define vm_00438b00(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438b00(__VA_ARGS__))
-#define vm_00438b20(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438b20(__VA_ARGS__))
-#define vm_00438b50(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438b50(__VA_ARGS__))
-#define vm_00438e70(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00438e70(__VA_ARGS__))
-#define vm_00439280(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439280(__VA_ARGS__))
-#define vm_00439390(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439390(__VA_ARGS__))
-#define vm_004393d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004393d0(__VA_ARGS__))
-#define vm_004393f0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004393f0(__VA_ARGS__))
-#define vm_00439440(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439440(__VA_ARGS__))
-#define vm_00439460(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439460(__VA_ARGS__))
-#define vm_00439480(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00439480(__VA_ARGS__))
-#define vm_004394b0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004394b0(__VA_ARGS__))
-#define vm_004394d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004394d0(__VA_ARGS__))
-#define vm_004394f0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004394f0(__VA_ARGS__))
-#define vm_00445770(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00445770(__VA_ARGS__))
-#define vm_00450350(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00450350(__VA_ARGS__))
-
-#define vm_004292e0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004292e0(__VA_ARGS__))
-#define vm_004297d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004297d0(__VA_ARGS__))
-#define vm_004298e0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004298e0(__VA_ARGS__))
-#define vm_00435520(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00435520(__VA_ARGS__))
-#define vm_004358d0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004358d0(__VA_ARGS__))
-#define vm_00435c80(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00435c80(__VA_ARGS__))
+// The remaining original call sites are bound to real C++ owners or to the
+// small set of still-unrecovered external helpers. There is no generic VM
+// numeric-address call view left in this translation unit.
 #define vm_00437470(self, ...) (reinterpret_cast<NativeAnimationLegacyFileView*>(self)->previous_file_437470(__VA_ARGS__))
-#define vm_004374b0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004374b0(__VA_ARGS__))
-#define vm_00437930(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_00437930(__VA_ARGS__))
-#define vm_004395b0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004395b0(__VA_ARGS__))
-#define vm_004396a0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_004396a0(__VA_ARGS__))
-#define vm_0044ced0(self, ...) (reinterpret_cast<NativeAnimationVmCallView*>(self)->call_0044ced0(__VA_ARGS__))
-#define FUN_0040bc20 vm_0040bc20
-#define FUN_0040ff90 vm_0040ff90
-#define FUN_00423520 vm_00423520
-#define FUN_00423540 vm_00423540
-#define FUN_00423ea0 vm_00423ea0
-#define FUN_00423ee0 vm_00423ee0
-#define FUN_00424060 vm_00424060
-#define FUN_00429280 vm_00429280
-#define FUN_004292a0 vm_004292a0
-#define FUN_004292e0 vm_004292e0
-#define FUN_004296e0 vm_004296e0
-#define FUN_004297d0 vm_004297d0
-#define FUN_00429800 vm_00429800
-#define FUN_004298e0 vm_004298e0
-#define FUN_0042b590 vm_0042b590
-#define FUN_0042b5d0 vm_0042b5d0
-#define FUN_00435520 vm_00435520
-#define FUN_004358d0 vm_004358d0
-#define FUN_00435c80 vm_00435c80
-#define FUN_00437220 vm_00437220
-#define FUN_00437310 vm_00437310
 #define FUN_00437470 vm_00437470
-#define FUN_00437490 vm_00437490
-#define FUN_004374b0 vm_004374b0
-#define FUN_00437840 vm_00437840
-#define FUN_00437930 vm_00437930
-#define FUN_00437d00 vm_00437d00
-#define FUN_00437eb0 vm_00437eb0
-#define FUN_00438600 vm_00438600
-#define FUN_00438620 vm_00438620
-#define FUN_00438a70 vm_00438a70
-#define FUN_00438a90 vm_00438a90
-#define FUN_00438ae0 vm_00438ae0
-#define FUN_00438b00 vm_00438b00
-#define FUN_00438b20 vm_00438b20
-#define FUN_00438b50 vm_00438b50
-#define FUN_00438e70 vm_00438e70
-#define FUN_00439280 vm_00439280
-#define FUN_00439390 vm_00439390
-#define FUN_004393d0 vm_004393d0
-#define FUN_004393f0 vm_004393f0
-#define FUN_00439440 vm_00439440
-#define FUN_00439460 vm_00439460
-#define FUN_00439480 vm_00439480
-#define FUN_004394b0 vm_004394b0
-#define FUN_004394d0 vm_004394d0
-#define FUN_004394f0 vm_004394f0
-#define FUN_004395b0 vm_004395b0
-#define FUN_004396a0 vm_004396a0
 #define FUN_004397f0 vm_004397f0
-#define FUN_00445770 vm_00445770
-#define FUN_0044ced0 vm_0044ced0
-#define FUN_00450350 vm_00450350
-
 
 // Replace already reconstructed dependencies with their real maintained C++
 // owners. The remaining ABI view is restricted to helpers whose owner/signature

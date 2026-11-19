@@ -91,6 +91,14 @@ is 212 bytes larger than the previous 40,836-byte checkpoint as these
 corner-array lifetimes and typed owners were restored; this is semantic
 progress, not a size optimization.
 
+The generic `NativeAnimationVmCallView` has now been removed completely.
+Calls formerly routed through its numeric method stubs now bind to maintained
+`Animation`, `Timer`, `Interpolation`, `AnimationFile`, `Motion`, `GameRandom`,
+`GameController`, `ClockScalar`, `EffectInfo`, `NativeCardRendererFileView`,
+`Vector3`, `ScalarMath`, and `MotionMath` owners. The remaining explicit
+external cdecl math call at `0x004397F0` is still under investigation; the
+legacy previous-file accessor remains a typed `NativeAnimationLegacyFileView`.
+
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
 new exact functions. The total contribution is **+1,338 bytes**, comprising
