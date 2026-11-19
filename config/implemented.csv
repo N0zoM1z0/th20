@@ -1637,3 +1637,8 @@ th20::NativeAnimationVector2ConfigView::interpolate_uv_scale_438e30
 th20::NativeAnimationColorConfigView::interpolate_secondary_alpha_438bd0
 th20::NativeAnimationColorConfigView::interpolate_rgb_438cc0
 th20::NativeAnimationColorConfigView::interpolate_primary_rgb_438d50
+th20::Interpolation<Vector2>::set_duration
+th20::Interpolation<Vector2>::set_mode
+th20::Interpolation<Vector2>::set_start
+th20::Interpolation<Vector2>::set_end
+th20::Interpolation<Vector2>::begin

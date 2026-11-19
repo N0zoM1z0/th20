@@ -29557,3 +29557,68 @@ relocations = [
   { offset = 0x4B, type = "REL32", symbol = "?begin@?$Interpolation@UIntegerTriple@th20@@@th20@@QAEXHHABUIntegerTriple@2@0@Z", target = 0x004395D0 },
   { offset = 0x56, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1152: whole native Vector2 interpolation template instance; origin remains under review.
+[units.vector2_interpolation_set_duration]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Vector2>::set_duration"]
+symbol = "?set_duration@?$Interpolation@UVector2@th20@@@th20@@QAEXH@Z"
+target_address = 0x00438E90
+size = 22
+relocations = [
+]
+
+# CORE/RECON-1152: whole native Vector2 interpolation template instance; origin remains under review.
+[units.vector2_interpolation_set_mode]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Vector2>::set_mode"]
+symbol = "?set_mode@?$Interpolation@UVector2@th20@@@th20@@QAEHH@Z"
+target_address = 0x00439510
+size = 25
+relocations = [
+]
+
+# CORE/RECON-1152: whole native Vector2 interpolation template instance; origin remains under review.
+[units.vector2_interpolation_set_start]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Vector2>::set_start"]
+symbol = "?set_start@?$Interpolation@UVector2@th20@@@th20@@QAEXABUVector2@2@@Z"
+target_address = 0x00439420
+size = 29
+relocations = [
+]
+
+# CORE/RECON-1152: whole native Vector2 interpolation template instance; origin remains under review.
+[units.vector2_interpolation_set_end]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Vector2>::set_end"]
+symbol = "?set_end@?$Interpolation@UVector2@th20@@@th20@@QAEXABUVector2@2@@Z"
+target_address = 0x00438AC0
+size = 30
+relocations = [
+]
+
+# CORE/RECON-1152: whole native Vector2 interpolation template instance; origin remains under review.
+[units.vector2_interpolation_begin]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<Vector2>::begin"]
+symbol = "?begin@?$Interpolation@UVector2@th20@@@th20@@QAEXHHABUVector2@2@0@Z"
+target_address = 0x00439640
+size = 92
+relocations = [
+  { offset = 0x0F, type = "REL32", symbol = "?set_duration@?$Interpolation@UVector2@th20@@@th20@@QAEXH@Z", target = 0x00438E90 },
+  { offset = 0x1B, type = "REL32", symbol = "?set_mode@?$Interpolation@UVector2@th20@@@th20@@QAEHH@Z", target = 0x00439510 },
+  { offset = 0x27, type = "REL32", symbol = "?set_start@?$Interpolation@UVector2@th20@@@th20@@QAEXABUVector2@2@@Z", target = 0x00439420 },
+  { offset = 0x33, type = "REL32", symbol = "?set_end@?$Interpolation@UVector2@th20@@@th20@@QAEXABUVector2@2@@Z", target = 0x00438AC0 },
+  { offset = 0x51, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]

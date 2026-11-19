@@ -358,3 +358,16 @@ superseded; use the **current ledger and this handoff** for status.
   2,316B; the parent remains NONEXACT, no new game authored bytes. Its
   separate 132B constructor and 23B destructor still pass 2/2 scoped replay.
 - See `docs/GLYPH_TEXT_CORE2227_RVALUE_QUEUE_LIFETIME_FRONTIER.md`.
+
+## 2026-11-19 — Vector2 interpolation template source frontier
+
+- The existing natural `Interpolation<Vector2>` instantiation in
+  `src/Interpolation.cpp` now maps five complete original functions at
+  `0x00438E90`, `0x00439510`, `0x00439420`, `0x00438AC0`, and `0x00439640`.
+  Scoped replay rebuilt one Interpolation object and passed **55/55** units.
+- The new five functions cover 198 original bytes and all five original E8
+  targets from Vector2 `begin`. The native SHA/extent/ret/E8 proof is
+  `scripts/verify-animation-vector2-interpolation-native.py`.
+- Authorship remains under review because these are generic template bodies;
+  they are source-present and exact but receive no new authored `matches.csv`
+  credit yet. See `docs/ANIMATION_VECTOR2_INTERPOLATION_NATIVE_SOURCE_FRONTIER.md`.
