@@ -24,10 +24,11 @@ ORIGINAL_INSTRUCTIONS=8559
 ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
 SYMBOL='?update@Animation@th20@@QAEHXZ'
-CANDIDATE_SIZE=37204
-CANDIDATE_CODE_SIZE=36560
-CANDIDATE_INSTRUCTIONS=7916
-CANDIDATE_STACK_FRAME=0x7ec
+ORIGINAL_CALL_TARGET_SEQUENCE=[]
+CANDIDATE_SIZE=37152
+CANDIDATE_CODE_SIZE=36508
+CANDIDATE_INSTRUCTIONS=7920
+CANDIDATE_STACK_FRAME=0x7f8
 CANDIDATE_JUMP_TABLE_ENTRIES=161
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
@@ -48,16 +49,17 @@ def verify_original():
  calls=[x for x in ins if x.size==5 and x.bytes[0]==0xE8]
  highlow=[x for x in pe.physical_highlow(image,base,sections) if ADDRESS<=x<ADDRESS+ORIGINAL_SIZE]
  assert len(calls)==ORIGINAL_CALLS and len(highlow)==ORIGINAL_HIGHLOW
- targets=collections.Counter((x.address+5+struct.unpack_from('<i',x.bytes,1)[0])&0xffffffff for x in calls)
+ global ORIGINAL_CALL_TARGET_SEQUENCE
+ ORIGINAL_CALL_TARGET_SEQUENCE=[(x.address+5+struct.unpack_from('<i',x.bytes,1)[0])&0xffffffff for x in calls]
+ targets=collections.Counter(ORIGINAL_CALL_TARGET_SEQUENCE)
  print(f'PASS original Boss boundary/hash: {ORIGINAL_SIZE}B, {len(ins)} instructions, {len(calls)} E8, {len(highlow)} PE HIGHLOW')
  return targets
 
-def candidate_call_targets(relocations):
+def candidate_call_target_sequence(relocations):
  units=tomllib.loads((ROOT/'config/match-units.toml').read_text())['units']
  symbol_to_address={u['symbol']:int(u['target_address']) for u in units.values() if u.get('symbol') and u.get('target_address') is not None}
- targets=collections.Counter();unknown=collections.Counter()
- for relocation in relocations:
-  if relocation['type']!='REL32':continue
+ sequence=[];unknown=collections.Counter()
+ for relocation in sorted((x for x in relocations if x['type']=='REL32'),key=lambda x:int(x['offset'])):
   symbol=relocation['symbol']
   match=re.search(r'(?:call|vm)_([0-9a-fA-F]{8})',symbol)
   if match:address=int(match.group(1),16)
@@ -68,9 +70,16 @@ def candidate_call_targets(relocations):
    matches={value for key,value in symbol_to_address.items() if key and (key in symbol or symbol in key)}
    if len(matches)==1:address=matches.pop()
    else:unknown[symbol]+=1;continue
-  targets[address]+=1
+  sequence.append(address)
  assert not unknown,unknown
- return targets
+ return sequence
+
+def candidate_call_targets(relocations):
+ return collections.Counter(candidate_call_target_sequence(relocations))
+
+def count_call_subsequence(sequence,pattern):
+ pattern=tuple(pattern)
+ return sum(tuple(sequence[i:i+len(pattern)])==pattern for i in range(len(sequence)-len(pattern)+1))
 
 def compile_candidate(original_targets):
  source=ROOT/'src/AnimationUpdate39470.cpp';text=source.read_text()
@@ -112,12 +121,23 @@ def compile_candidate(original_targets):
  assert len(body)==CANDIDATE_SIZE and len(code)==CANDIDATE_CODE_SIZE and len(ins)==CANDIDATE_INSTRUCTIONS and len(calls)==CANDIDATE_CALLS,(len(body),len(code),len(ins),len(calls))
  assert len(rel32)==CANDIDATE_CALLS,(len(rel32),CANDIDATE_CALLS)
  assert sum(x.size for x in ins)==len(code)
- candidate_targets=candidate_call_targets(relocations)
+ candidate_sequence=candidate_call_target_sequence(relocations)
+ candidate_targets=collections.Counter(candidate_sequence)
  assert candidate_targets==original_targets,('call target multiset mismatch',original_targets-candidate_targets,candidate_targets-original_targets)
+ # These three real VM spawn paths have observable child-resolution/writeback
+ # ordering. Pin their original target subsequences independently of the
+ # broader parent call-target multiset.
+ child_writeback=(0x00437470,0x00437D00,0x00451050,0x0044CED0,0x00437EB0,0x00437EB0)
+ child_update_vector=(0x00437470,0x00437D00,0x004512B0,0x0044CED0,0x00437EB0,0x00437EB0,0x00422DD0,0x00437840)
+ assert count_call_subsequence(ORIGINAL_CALL_TARGET_SEQUENCE,child_writeback)==2
+ assert count_call_subsequence(candidate_sequence,child_writeback)==2
+ assert count_call_subsequence(ORIGINAL_CALL_TARGET_SEQUENCE,child_update_vector)==1
+ assert count_call_subsequence(candidate_sequence,child_update_vector)==1
  dir32=sum(x['type']=='DIR32' for x in relocations)
  print(f'PASS source compile and opcode coverage: {len(cases)} case labels')
  print(f'PASS lexical lifetime stack frame: 0x{candidate_frame:x}')
  print(f'PASS all {len(calls)} candidate E8 targets exactly match the original 505-call target multiset')
+ print('PASS original child-spawn ordering: 2 resolve+two-float writebacks and 1 child-update+Vector3 transform sequence')
  print(f'NONEXACT contribution: {len(body)}B = {len(code)}B code + {jump_table_size}B {CANDIDATE_JUMP_TABLE_ENTRIES}-entry switch table')
  print(f'Code decode: {len(ins)} instructions, {len(calls)} E8, {dir32} total DIR32 ({len(label_relocs)} local-label relocations)')
  print(f'Contribution delta: {len(body)-ORIGINAL_SIZE:+}B total; {len(code)-ORIGINAL_SIZE:+}B code before the switch table; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')

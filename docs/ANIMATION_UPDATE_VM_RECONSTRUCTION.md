@@ -158,15 +158,23 @@ arithmetic; the four component locals become direct conditional member
 assignments, while the transformed Vector3 path retains its ordered inputs.
 The five receiver-alias removals account for another **60 bytes / 10
 instruction heads** from 37,264B and reduce the frame from `0x800` to `0x7EC`.
-The resulting contribution is **37,204B** (36,560B code plus the 644B switch
-table), with 7,916 code instructions and all 505 original E8 destinations
-still matching.
+The follow-up restores the three previous-file calls to their original order
+before the VM integer-value reads and replaces three remaining raw Vector3
+stack temporaries with direct `AnimationBase::vector_2c` / `vector_484`
+assignments. The `0x77`/`0x7C` child-writeback paths and the `0x78` child-update
+plus transformed-Vector3 path now have independently pinned original E8
+subsequences: two spawn/resolve/two-float-writeback sequences and one
+spawn/resolve/transform sequence. This removes another **52 bytes** from
+37,204B. The current contribution is **37,152B** (36,508B code plus the 644B
+switch table), with 7,920 code instructions and a `0x7F8` frame (12B below
+the original `0x804`). The full 505-call target multiset and all three
+child-call subsequences remain intact.
 
 This remains a complete compiling semantic source translation, not a strict
 exact match. It has no `match-units.toml` exact unit and contributes **zero**
-new exact functions. The candidate is now **2,266 bytes smaller overall** than the original body:
-36,560 bytes of code plus a 644-byte compiler switch table. The code portion
-has 643 fewer decoded instruction heads than the original body, so the byte
+new exact functions. The candidate is now **2,318 bytes smaller overall** than the original body:
+36,508 bytes of code plus a 644-byte compiler switch table. The code portion
+has 639 fewer decoded instruction heads than the original body, so the byte
 gap is not an instruction-count proxy. The original stack allocation is
 `sub esp, 0x804`; the current candidate now uses `sub esp, 0x800` after
 removing obsolete Timer pointer temporaries, numeric call-view paths, unused

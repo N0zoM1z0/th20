@@ -500,7 +500,7 @@ superseded; use the **current ledger and this handoff** for status.
   natural cdecl ScalarMath calls. The newly added asin/acos wrappers each
   replay 35/35 bytes with their original CRT import relocations. Opcode 0x24
   now calls the exact 88B cdecl `polar_components` helper; both independent
-  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x7ec`
+  output pointers and the original float-cosine/float-sine relocations match. The stack frame is now `0x7f8`
   versus the original `0x804`, down from the previous `0x874`; two lifetime
   passes moved opcode locals into their case scopes and removed unused
   temporaries. The latest Timer/callback/random cleanup removes 112B/15
@@ -527,7 +527,14 @@ superseded; use the **current ledger and this handoff** for status.
   the three resolved child results as `Animation*`, writing through
   `base.vector_484.x/y`; the component expressions now assign directly. This
   removes another 60B/10 instructions from 37,264B and reduces the frame from
-  0x800 to 0x7ec (24B below original).
+  0x800 to 0x7ec (24B below original). The next source pass restores the
+  previous-file lookup before the integer-value reads in the three child
+  paths and replaces three raw Vector3 stack temporaries with direct
+  `base.vector_2c` / `base.vector_484` assignments. The focused probe now pins
+  the original ordered call subsequences for two child spawn/resolve/writeback
+  paths and the child-update/resolve/transform path. This removes another 52B;
+  the candidate is 37,152B (36,508B code + 644B table), 7,920 instructions,
+  with the `0x7f8` frame (12B below original) and all 505 call targets retained.
   The focused Animation flag/owner
   closure compiled across 23 changed translation units and strict-replayed
   112/112 units in 20 cold objects; the Timer/ScalarMath closure separately
