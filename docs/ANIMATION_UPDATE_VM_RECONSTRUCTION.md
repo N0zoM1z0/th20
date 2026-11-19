@@ -92,7 +92,12 @@ corner-array lifetimes and typed owners were restored; this is semantic
 progress, not a size optimization.
 
 The generic `NativeAnimationVmCallView` has now been removed completely.
-Calls formerly routed through its numeric method stubs now bind to maintained
+A further 308 VM operand/value lookups were rewritten from numeric `FUN_`
+macros to direct `Animation::integer_argument`, `float_argument`,
+`integer_value`, and `float_value` member calls. The source now spells these
+high-frequency operations as their real owner methods, with no change to the
+measured Boss code or its 505-call target multiset.
+Calls formerly routed through numeric method stubs now bind to maintained
 `Animation`, `Timer`, `Interpolation`, `AnimationFile`, `Motion`, `GameRandom`,
 `GameController`, `ClockScalar`, `EffectInfo`, `NativeCardRendererFileView`,
 `Vector3`, `ScalarMath`, and `MotionMath` owners. The remaining explicit

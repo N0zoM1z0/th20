@@ -479,7 +479,9 @@ superseded; use the **current ledger and this handoff** for status.
   is 40,808B: 40,164B code plus a compiler-emitted 644B/161-entry switch
   table; the code portion decodes to 8,382 instruction heads and 505 E8.
   The generic `NativeAnimationVmCallView` numeric adapter has been removed;
-  the remaining VM calls use typed Animation/Timer/Interpolation/Renderer/
+  308 operand/value lookups are now direct Animation member calls (`integer_argument`,
+  `float_argument`, `integer_value`, `float_value`). The remaining VM calls
+  use typed Animation/Timer/Interpolation/Renderer/
   Motion/Random/Math owners, with only the 0x4397F0 cdecl math helper still
   awaiting owner/source recovery.
   All 505 candidate E8 destinations match the original call-target multiset,
