@@ -33,7 +33,7 @@ CANDIDATE_JUMP_TABLE_ENTRIES=161
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
 SPECIAL_CALL_TARGETS={
- '?project_corners@NativeAnimationCornerProjectionDispatchView@th20@@QAEXPAUVector3@2@@Z':0x00445770,
+ '?project_corners@Animation@th20@@QAEXPAUVector3@2@@Z':0x00445770,
  '?interpolate_primary_rgb_438d50@NativeAnimationColorConfigView@th20@@QAEXHHABUColor3@2@0@Z':0x00438D50,
  '?interpolate_rgb_438cc0@NativeAnimationColorConfigView@th20@@QAEXHHABUColor3@2@0@Z':0x00438CC0,
  '?set_duration@?$Interpolation@UAngle@th20@@@th20@@QAEXH@Z':0x0041DF50,
