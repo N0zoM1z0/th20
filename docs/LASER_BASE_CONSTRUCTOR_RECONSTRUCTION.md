@@ -50,7 +50,7 @@ circle-cancellation implementations against the new base constructor. The
 Type0 parameter constructor is now explicitly `noexcept`, preserving its
 native no-extra-EH call boundary in the concrete Line constructor. The
 independent Beam and Infinite structural audits remain green, and the separate
-Beam path-state constructor remains a strict exact replay. This constructor is
+Curve path-state constructor remains a strict exact replay. This constructor is
 tracked as `reconstructed`, not `matching`; the class name and game-authored
 object lifecycle are supported by the family vtables/factories and native
 member construction, while original source spelling remains inferred.

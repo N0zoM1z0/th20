@@ -1,21 +1,21 @@
-# `LaserBeamInf::cancel_circle()` — native Beam path cancellation
+# `LaserCurveInf::cancel_circle()` — native Curve path cancellation
 
-The Beam vtable at `0x00571214` dispatches circle cancellation through slot
+The Curve vtable at `0x00571214` dispatches circle cancellation through slot
 `+0x30` to the 647-byte native method at `0x004CA830`. The maintained source
-is a natural C++ reconstruction in `src/LaserBeamCancelCircle.cpp`; it is
+is a natural C++ reconstruction in `src/LaserCurveCancelCircle.cpp`; it is
 tracked as `reconstructed`, not `matching`.
 
 ## Recovered object and path boundaries
 
-- `LaserBeamInf` is `0x1370` bytes, matching the native Beam factory allocation.
+- `LaserCurveInf` is `0x1370` bytes, matching the native Curve factory allocation.
 - `LaserType2Parameters` begins at `+0x6F8`; its `count` and `color` lanes are
   consumed at `+0x718` and `+0x714`.
 - The two real `Animation` subobjects begin at `+0x754` and `+0xD38`.
 - The path pointer is at `+0x1328`; it advances in `0x20`-byte records. Each
-  `LaserBeamPathPoint` begins with the three-float point used by the hit test;
+  `LaserCurvePathPoint` begins with the three-float point used by the hit test;
   the remaining five words retain neutral names.
 - The separately constructed `0x40`-byte path-state object begins at `+0x1330`
-  and has its own [strict exact constructor receipt](LASER_BEAM_PATH_STATE_CTOR_EXACT.md).
+  and has its own [strict exact constructor receipt](LASER_CURVE_PATH_STATE_CTOR_EXACT.md).
 
 ## Native behavior
 
@@ -39,7 +39,7 @@ tracked as `reconstructed`, not `matching`.
 
 The locked MSVC x86 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl
 /EHsc` candidate contributes 641 bytes against the 647-byte native body. The
-focused verifier `scripts/verify-laser-beam-cancel-circle-native.py` compiles
+focused verifier `scripts/verify-laser-curve-cancel-circle-native.py` compiles
 only this source, aligns the post-branch code by the six-byte native branch
 layout difference, and confirms **583/583 ordinary non-relocation bytes** plus
 **10/10 original relocation destinations**. Those relocations cover the
@@ -54,7 +54,12 @@ single unordered-aware `JA` exit. The branch destinations and unordered
 semantics are independently checked. No unreachable jump, NOP, assembly, or
 padding is synthesized. No canonical match unit or exact byte credit is claimed.
 
-The class name and original source spelling are inferred from the native Beam
-vtable, factory allocation, constructor layout and slot ownership. The origin
-classification is medium-confidence game-authored behavior, independent of
-byte equality.
+The original `LaserCurveInf` source name is independently present in the
+native type-2 branch diagnostic at `0x00571550`; the native factory at
+`0x004C8080` allocates `0x1370` bytes and installs vtable `0x00571214`. The
+`0x004CA830` circle-cancel body is that vtable's `+0x30` target. The matching
+`LaserBeamInf` label belongs to the separate type-3 factory at `0x004C8020`,
+which allocates `0x1D30` bytes and installs vtable `0x00571374`. The path-state
+C++ type name remains a maintained descriptive name rather than a recovered
+original source spelling. The origin classification is medium-confidence
+game-authored behavior, independent of byte equality.

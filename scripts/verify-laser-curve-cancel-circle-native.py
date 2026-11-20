@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Focused structural audit for the nonexact LaserBeam circle-cancel candidate."""
+"""Focused structural audit for the nonexact LaserCurve circle-cancel candidate."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -9,9 +9,9 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "src/LaserBeamCancelCircle.cpp"
-OBJECT = ROOT / "build/probe-laser-beam-cancel-circle/LaserBeamCancelCircle.obj"
-SYMBOL = "?cancel_circle@LaserBeamInf@th20@@UAEHABUVector3@2@MHH@Z"
+SOURCE = ROOT / "src/LaserCurveCancelCircle.cpp"
+OBJECT = ROOT / "build/probe-laser-curve-cancel-circle/LaserCurveCancelCircle.obj"
+SYMBOL = "?cancel_circle@LaserCurveInf@th20@@UAEHABUVector3@2@MHH@Z"
 ADDRESS = 0x004CA830
 CANDIDATE_SIZE = 641
 NATIVE_SIZE = 647

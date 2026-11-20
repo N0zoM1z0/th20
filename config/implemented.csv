@@ -1746,8 +1746,8 @@ th20::WeaponStoneInfo::update_main
 th20::GameController::flag_6_set
 th20::Laser::cancel_circle
 th20::LaserLineInf::cancel_circle
-th20::LaserBeamPathState::LaserBeamPathState()
-th20::LaserBeamInf::cancel_circle
+th20::LaserCurvePathState::LaserCurvePathState()
+th20::LaserCurveInf::cancel_circle
 th20::LaserInfiniteInf::cancel_circle
 th20::Laser::Laser()
 th20::Laser::~Laser()

@@ -1,4 +1,4 @@
-#include "LaserBeamInf.hpp"
+#include "LaserCurveInf.hpp"
 #include "AnimationFile.hpp"
 #include "Bullet.hpp"
 #include "Context.hpp"
@@ -8,11 +8,11 @@
 
 namespace th20 {
 
-std::int32_t LaserBeamInf::cancel_circle(const Vector3& center, float radius,
+std::int32_t LaserCurveInf::cancel_circle(const Vector3& center, float radius,
                                          std::int32_t mode, std::int32_t argument) {
     if (argument!=0 && field_6cc!=0) return 0;
 
-    LaserBeamPathPoint* current_point;
+    LaserCurvePathPoint* current_point;
     std::int32_t hit_count=0;
     std::int32_t point_index=0;
     Vector3 point;
