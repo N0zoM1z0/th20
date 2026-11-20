@@ -1677,3 +1677,4 @@ th20::screen_factory_4250f0
 th20::NativeScreenInf::NativeScreenInf
 th20::NativeScreenFactoryAllocatorView::allocate_screen_422d40
 th20::screen_shutdown_425070
+th20::screen_update_envelope_4244c0
