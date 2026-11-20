@@ -17,6 +17,8 @@
 
 **Additional maintained source frontier (CORE/RECON-1150):** original opcode 632 now has natural-C++ source in `src/EnemyStateScriptPointerOpcode.cpp`, storing the borrowed pointer to `EclInstruction + 0x1C` in the actual `BulletCommand::script` field. The 41,967B parent remains source-absent and NONEXACT. See [the 632 source frontier](ENEMY_41967_632_SCRIPT_POINTER_SOURCE_FRONTIER.md).
 
+**Additional maintained source frontier (CORE/RECON-1151):** original opcode 621 now has natural-C++ source in `src/EnemyStateMeshOpcode.cpp`, restoring the real EnemyMeshOwner release/allocation lifecycle and conditional 17x17 RenderMesh factory. The 41,967B parent remains source-absent and NONEXACT. See [the 621 source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md).
+
 Locked target: Japanese TH20 1.00a Steamless original PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 
 ## Original compressed integer switch, independently attested
