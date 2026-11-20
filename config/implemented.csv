@@ -747,6 +747,7 @@ th20::Item::Item
 th20::Item::~Item
 th20::ItemInf::ItemInf
 th20::ItemInf::~ItemInf
+th20::ItemInf::update_main
 th20::Item::select_context
 th20::ItemInf::select_context
 th20::ItemInf::enable

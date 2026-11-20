@@ -748,6 +748,7 @@ th20::Item::Item,0x004C21B0,function
 th20::Item::~Item,0x004C2490,function
 th20::ItemInf::ItemInf,0x004C22E0,function
 th20::ItemInf::~ItemInf,0x004C24C0,function
+th20::ItemInf::update_main,0x004C25A0,function
 th20::Item::select_context,0x004C4F90,function
 th20::ItemInf::select_context,0x004C4FD0,function
 th20::ItemInf::enable,0x004C4650,function
