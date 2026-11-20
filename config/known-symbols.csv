@@ -981,3 +981,9 @@ address,name,module,confidence,evidence
 0x005B87F8,th20::native_screen_draw_extent_x_5b87f8,Screen,medium,Original 128B ScreenInf solid draw uses signed integer-to-float conversion for rectangle extent X
 0x005B87FC,th20::native_screen_draw_extent_y_5b87fc,Screen,medium,Original 128B ScreenInf solid draw uses signed integer-to-float conversion for rectangle extent Y
 0x00424F30,th20::screen_draw_fade_424f30,Screen,high,CORE/RECON-1132; docs/SCREEN_DRAW_FADE_105_STRICT_EXACT.md
+0x00424E80,th20::screen_draw_hold_424e80,Screen,high,CORE/RECON-1133; docs/SCREEN_DRAW_HOLD_172_STRICT_EXACT.md
+0x0056CDAC,native_screen_rect_width_640_56cdac,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry
+0x0056CDA4,native_screen_rect_inner_width_384_56cda4,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry
+0x0056C8D0,native_screen_half_2_56c8d0,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry
+0x0056CD90,native_screen_top_16_56cd90,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry
+0x0056D7C0,native_screen_height_448_56d7c0,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry

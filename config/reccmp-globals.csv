@@ -2,3 +2,8 @@ name,address,type
 th20::session,0x005BA568,data
 th20::native_screen_draw_extent_x_5b87f8,0x005B87F8,data
 th20::native_screen_draw_extent_y_5b87fc,0x005B87FC,data
+th20::native_screen_rect_width_640_56cdac,0x0056CDAC,data
+th20::native_screen_rect_inner_width_384_56cda4,0x0056CDA4,data
+th20::native_screen_half_2_56c8d0,0x0056C8D0,data
+th20::native_screen_top_16_56cd90,0x0056CD90,data
+th20::native_screen_height_448_56d7c0,0x0056D7C0,data

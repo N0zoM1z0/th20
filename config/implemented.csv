@@ -1686,3 +1686,4 @@ th20::screen_update_fade_in_424260
 th20::screen_update_solid_424460
 th20::screen_draw_solid_424e00
 th20::screen_draw_fade_424f30
+th20::screen_draw_hold_424e80

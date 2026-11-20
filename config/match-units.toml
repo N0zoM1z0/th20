@@ -30237,3 +30237,28 @@ relocations = [
   { offset = 0x4F, type = "REL32", symbol = "?screen_draw_rect_423650@th20@@YAXPBMI@Z", target = 0x00423650 },
   { offset = 0x61, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1133: whole native ScreenInf hold draw callback.
+[units.screen_draw_hold_172]
+source = "src/ScreenDrawHold172.cpp"
+object = "build/screen-draw-hold-canonical/ScreenDrawHold172.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_draw_hold_424e80"]
+symbol = "?screen_draw_hold_424e80@th20@@YAHPAX@Z"
+target_address = 0x00424E80
+size = 172
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1D, type = "DIR32", symbol = "?native_screen_rect_width_640_56cdac@th20@@3MB", target = 0x0056CDAC },
+  { offset = 0x25, type = "DIR32", symbol = "?native_screen_rect_inner_width_384_56cda4@th20@@3MB", target = 0x0056CDA4 },
+  { offset = 0x2D, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x3A, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x47, type = "DIR32", symbol = "?native_screen_rect_width_640_56cdac@th20@@3MB", target = 0x0056CDAC },
+  { offset = 0x4F, type = "DIR32", symbol = "?native_screen_rect_inner_width_384_56cda4@th20@@3MB", target = 0x0056CDA4 },
+  { offset = 0x57, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x5F, type = "DIR32", symbol = "?native_screen_rect_inner_width_384_56cda4@th20@@3MB", target = 0x0056CDA4 },
+  { offset = 0x6C, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x74, type = "DIR32", symbol = "?native_screen_height_448_56d7c0@th20@@3MB", target = 0x0056D7C0 },
+  { offset = 0x92, type = "REL32", symbol = "?screen_draw_rect_423650@th20@@YAXPBMI@Z", target = 0x00423650 },
+  { offset = 0xA4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

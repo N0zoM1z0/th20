@@ -787,7 +787,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004244C0,unknown,Screen,review,pending,Native 1318B ScreenInf envelope callback; GameController/Timer/GameRandom/Graphics viewport ownership mapped; source remains 2B and relocation NONEXACT. docs/SCREEN_ENVELOPE_UPDATE_1318_SOURCE_RECONSTRUCTION.md
 0x004249F0,unknown,Screen,review,pending,Native 1040B ScreenInf shake callback; Graphics viewport point lanes mapped; whole-function C++ replay still open. docs/SCREEN_SHAKE_UPDATE_1040_SOURCE_RECONSTRUCTION.md
 0x00424E00,authored,Screen,authored,high,CORE/RECON-1131; docs/SCREEN_DRAW_SOLID_128_STRICT_EXACT.md; registered by native ScreenInf mode switch
-0x00424E80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00424E80,authored,Screen,authored,high,CORE/RECON-1133; docs/SCREEN_DRAW_HOLD_172_STRICT_EXACT.md; registered by native ScreenInf mode switch
 0x00424F30,authored,Screen,authored,high,CORE/RECON-1132; docs/SCREEN_DRAW_FADE_105_STRICT_EXACT.md; registered by native ScreenInf mode switch
 0x00424FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00425070,authored,Screen,authored,high,"CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md; Whole original 29B scheduler shutdown callback: process allocator global, generic virtual-destructor release helper 0x41F7C0, explicit volatile local argument invalidation and return zero."
