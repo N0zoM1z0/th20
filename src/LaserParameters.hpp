@@ -141,7 +141,8 @@ public:
     virtual std::int32_t cancel_circle(const Vector3&, float,
                                        std::int32_t, std::int32_t); // slot 30
     virtual void slot_34() = 0;
-    virtual void slot_38() = 0;
+    virtual void cancel_segments(const std::uint8_t* segment_mask,
+                                 std::int32_t segment_count) = 0; // slot 38
     virtual void slot_3c() = 0;
     virtual void slot_40() = 0;
     virtual std::int32_t erase(std::int32_t, std::int32_t) = 0; // slot 44

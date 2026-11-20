@@ -157,3 +157,13 @@ pushes `0x00571508`. The original call destinations remain `0x004C8080` and
 fields from manifest anchors while the COFF literals still contained the wrong
 strings. The corrected arguments now pass the literal comparison and the full
 492-byte scoped replay, including the switch table.
+
+
+## Circle-cancellation virtual boundaries
+
+The four concrete Laser vtables expose distinct slot `+0x30` targets: Line
+`0x004CB060`, Beam `0x004CA830`, Infinite `0x004CABF0`, and Curve
+`0x004CAAC0` (the inherited `Laser::cancel_circle()` zero-return default).
+The Line handler now has a natural 1,143-byte candidate against its 1,165-byte
+native boundary; see [its reconstruction note](LASER_LINE_CANCEL_CIRCLE_RECONSTRUCTION.md).
+The other three segment handlers remain separate work items.

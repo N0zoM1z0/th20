@@ -38,3 +38,9 @@ zero. The Line, Beam and Infinite vtables point to separate segment-aware
 handlers at `0x004CB060`, `0x004CA830` and `0x004CABF0`; these larger concrete
 handlers remain separate reconstruction boundaries. See
 [the exact base-default receipt](LASER_BASE_CANCEL_CIRCLE_DEFAULT_EXACT.md).
+
+
+The Line Laser implementation reached by this loop is the 1,165-byte
+`LaserLineInf::cancel_circle()` handler at `0x004CB060`; its current natural
+source candidate and concrete `0x18F8` owner layout are documented separately
+in [the Line Laser cancellation reconstruction](LASER_LINE_CANCEL_CIRCLE_RECONSTRUCTION.md).
