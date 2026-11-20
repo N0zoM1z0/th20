@@ -851,3 +851,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00425070,th20::screen_shutdown_425070,29,matching,100.00,screen_inf_shutdown_29,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md
 0x004240C0,th20::screen_update_fade_out_4240c0,180,matching,100.00,screen_fade_out_180,CORE/RECON-1127; docs/SCREEN_FADE_OUT_UPDATE_180_STRICT_EXACT.md
 0x00424180,th20::screen_update_hold_424180,221,matching,100.00,screen_hold_update_221,CORE/RECON-1128; docs/SCREEN_HOLD_UPDATE_221_STRICT_EXACT.md
+0x00424260,th20::screen_update_fade_in_424260,239,matching,100.00,screen_fade_in_239,CORE/RECON-1129; docs/SCREEN_FADE_IN_UPDATE_239_STRICT_EXACT.md

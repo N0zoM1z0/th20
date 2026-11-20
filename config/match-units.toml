@@ -30164,3 +30164,24 @@ relocations = [
   { offset = 0xA3, type = "DIR32", symbol = "?native_screen_duration_8_56d7bc@th20@@3MB", target = 0x0056D7BC },
   { offset = 0xD0, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
 ]
+
+# CORE/RECON-1129: whole native ScreenInf fade-in update callback.
+[units.screen_fade_in_239]
+source = "src/ScreenFadeInUpdate239.cpp"
+object = "build/screen-fade-in-canonical/ScreenFadeInUpdate239.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_update_fade_in_424260"]
+symbol = "?screen_update_fade_in_424260@th20@@YAHPAX@Z"
+target_address = 0x00424260
+size = 239
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?native_screen_stopped_5ba518@th20@@3HA", target = 0x005BA518 },
+  { offset = 0x36, type = "REL32", symbol = "?less_than@Timer@th20@@QBE_NH@Z", target = 0x00423560 },
+  { offset = 0x48, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x58, type = "DIR32", symbol = "?native_screen_alpha_max_56cd9c@th20@@3MB", target = 0x0056CD9C },
+  { offset = 0xA8, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0xBC, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0xC5, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 0xCA, type = "REL32", symbol = "?update_suppressed@GameController@th20@@QBEHXZ", target = 0x00424030 },
+  { offset = 0xE1, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]

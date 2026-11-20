@@ -1682,3 +1682,4 @@ th20::screen_update_shake_4249f0
 th20::screen_update_flash_424350
 th20::screen_update_fade_out_4240c0
 th20::screen_update_hold_424180
+th20::screen_update_fade_in_424260
