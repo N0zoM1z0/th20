@@ -31386,7 +31386,7 @@ relocations = [
 
 # CORE/EXACT-1239: shared BulletStyle indexed accessor.
 [units.bullet_style_accessor]
-source = "src/BulletStyle.cpp"
+source = "src/BulletStyleAccessor.cpp"
 object = "build/bullet-style-accessor-canonical/BulletStyle.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::bullet_style"]
@@ -31626,4 +31626,95 @@ target_address = 0x004C84B0
 size = 256
 relocations = [
   { offset = 0x93, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@ABV01@@Z", target = 0x0048B2F0 },
+]
+
+# CORE/RECON-1154: original StageResource/Fog owner and interpolation leaves.
+[units.stage_resource_animation_file]
+source = "src/StageResourceFog.cpp"
+object = "build/core209-canonical/StageResourceFog.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::StageResourceOwner::animation_file"]
+symbol = "?animation_file@StageResourceOwner@th20@@QAEPAVAnimationFile@2@XZ"
+target_address = 0x004AADF0
+size = 20
+relocations = []
+
+[units.stage_resource_set_fog]
+source = "src/StageResourceFog.cpp"
+object = "build/core209-canonical/StageResourceFog.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::StageResourceOwner::set_fog"]
+symbol = "?set_fog@StageResourceOwner@th20@@QAEXHHABUFogValue@2@@Z"
+target_address = 0x0049C5B0
+size = 45
+relocations = [
+  { offset = 0x22, type = "REL32", symbol = "?set_fog@StageBackgroundFogOwner@th20@@QAEXHHABUFogValue@2@@Z", target = 0x004776C0 },
+]
+
+[units.stage_background_fog_set_fog]
+source = "src/StageResourceFog.cpp"
+object = "build/core209-canonical/StageResourceFog.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::StageBackgroundFogOwner::set_fog"]
+symbol = "?set_fog@StageBackgroundFogOwner@th20@@QAEXHHABUFogValue@2@@Z"
+target_address = 0x004776C0
+size = 130
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "?set_duration@?$Interpolation@UFogValue@th20@@@th20@@QAEXH@Z", target = 0x00477750 },
+  { offset = 0x34, type = "REL32", symbol = "?set_mode@?$Interpolation@UFogValue@th20@@@th20@@QAEHH@Z", target = 0x00477840 },
+  { offset = 0x52, type = "REL32", symbol = "?set_start@?$Interpolation@UFogValue@th20@@@th20@@QAEXABUFogValue@2@@Z", target = 0x00477820 },
+  { offset = 0x69, type = "REL32", symbol = "?set_end@?$Interpolation@UFogValue@th20@@@th20@@QAEXABUFogValue@2@@Z", target = 0x00477670 },
+  { offset = 0x77, type = "REL32", symbol = "?reset_timer@?$Interpolation@UFogValue@th20@@@th20@@QAEXXZ", target = 0x00477860 },
+]
+
+[units.fog_interpolation_set_duration]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<FogValue>::set_duration"]
+symbol = "?set_duration@?$Interpolation@UFogValue@th20@@@th20@@QAEXH@Z"
+target_address = 0x00477750
+size = 25
+relocations = []
+
+[units.fog_interpolation_set_mode]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<FogValue>::set_mode"]
+symbol = "?set_mode@?$Interpolation@UFogValue@th20@@@th20@@QAEHH@Z"
+target_address = 0x00477840
+size = 28
+relocations = []
+
+[units.fog_interpolation_set_start]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<FogValue>::set_start"]
+symbol = "?set_start@?$Interpolation@UFogValue@th20@@@th20@@QAEXABUFogValue@2@@Z"
+target_address = 0x00477820
+size = 30
+relocations = []
+
+[units.fog_interpolation_set_end]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<FogValue>::set_end"]
+symbol = "?set_end@?$Interpolation@UFogValue@th20@@@th20@@QAEXABUFogValue@2@@Z"
+target_address = 0x00477670
+size = 33
+relocations = []
+
+[units.fog_interpolation_reset_timer]
+source = "src/Interpolation.cpp"
+object = "build/core141-canonical/Interpolation.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::Interpolation<FogValue>::reset_timer"]
+symbol = "?reset_timer@?$Interpolation@UFogValue@th20@@@th20@@QAEXXZ"
+target_address = 0x00477860
+size = 28
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]
