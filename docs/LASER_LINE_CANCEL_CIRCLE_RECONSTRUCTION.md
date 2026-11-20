@@ -26,26 +26,19 @@ and `+0x1314`, for a total size of `0x18F8`.
    the native virtual slot `+0x38`. If every sampled segment hits, update the
    Laser's `field_24` cancellation bits directly. Return the hit count.
 
-## Current candidate and open work
+## Strict native replay
 
-The natural `/Od /Ob0 /GS /sdl` i386 COFF candidate is now 1,164 bytes versus
-the complete 1,170-byte native code body. The following `INT3` alignment bytes
-begin after the native function boundary and are not part of its size. The
-remaining six-byte difference comes from the native `JBE`/`JMP` branch layout
-and a second unreachable five-byte jump at `0x004CB221`; the natural source
-uses the equivalent unordered-aware `JA` exit instead of synthesizing dead
-code. No source padding or assembly is added. The hit test is written as
-`!(squared_distance > radius)` to preserve the native ordered/unordered
-`COMISS` branch behavior, rather than relying on the decompiler's superficially
-equivalent `<=` spelling. The candidate uses the real
-`Context::bullet_controller()` /
-`BulletController::animation_file()` / `AnimationFile::spawn()` accessor chain,
-Vector3 math, the XY squared-distance helper, and the native virtual publication
-slot. `Context::bullet_controller()` is a verified 16-byte physical alias of
-`Identifier32::get`; its source-level name is documented without a second
-reccmp mapping or duplicate byte credit. The full class vtable, constructor/destructor,
-and the other three `cancel_circle` implementations remain separate boundaries.
+The final natural C++ implementation uses a forward miss edge to the loop
+iteration tail. This is ordinary C++ control flow; the locked MSVC `/Od`
+compiler emits the same native `JBE` hit edge and the two native `JMP` edges,
+including the otherwise unreachable second jump. No inline assembly, manual
+branch bytes, NOPs, or padding are present.
 
-The shared base `field_6E4` is now typed as signed `std::int32_t`; the
-Infinite handler's native `JLE`/`JG` type-family comparisons independently
-confirm signed interpretation. This changes no object offsets or sizes.
+The complete 1,170-byte function now strictly replays: **1,170/1,170 bytes**
+and **30/30 original relocations**. The focused verifier
+`scripts/verify-laser-line-cancel-circle-native.py` rebuilds the one object and
+runs the canonical match unit. The three signed family thresholds are written
+as `<= 0x11`, `<= 0x1F`, and `<= 0x21`, which preserve the original semantics
+and the native `CMP/JLE` instructions. The shared `field_6E4` remains signed
+`std::int32_t`, corroborated by the Infinite handler's native `JLE`/`JG`
+comparisons.

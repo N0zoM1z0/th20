@@ -35,7 +35,11 @@ std::int32_t LaserLineInf::cancel_circle(const Vector3& center, float radius,
     std::int32_t hit_index=0;
     while (native_screen_top_16_56cd90/native_screen_half_2_56c8d0+distance<=field_74) {
         float squared_distance=geometry::squared_distance_xy(center,position);
-        if (!(squared_distance>radius)) {
+        // Keep the native forward miss edge as ordinary C++ control flow.
+        // Under the locked MSVC /Od profile this also preserves the original
+        // JBE/two-JMP layout without inline assembly or synthetic padding.
+        if (squared_distance>radius) goto line_iteration_tail;
+        {
             segment_mask[segment_count]=1;
             ++hit_count;
             ++context->bullet_controller()->cancel_counter;
@@ -58,6 +62,7 @@ std::int32_t LaserLineInf::cancel_circle(const Vector3& center, float radius,
             ++hit_index;
         }
 
+line_iteration_tail:
         position+=step;
         distance+=native_screen_top_16_56cd90;
         ++segment_count;

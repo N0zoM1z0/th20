@@ -3917,7 +3917,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004CAAC0,authored,Laser,authored,medium,CORE/EXACT-1219; docs/LASER_BASE_CANCEL_CIRCLE_DEFAULT_EXACT.md
 0x004CAAD0,authored,LaserController,authored,medium,CORE/EXACT-1218; docs/LASER_CONTROLLER_CANCEL_NEAR_EXACT.md
 0x004CABF0,authored,LaserInfiniteInf,authored,medium,"CORE/RECON-1224; docs/LASER_INFINITE_CANCEL_CIRCLE_RECONSTRUCTION.md; scripts/verify-laser-infinite-cancel-circle-native.py; original source diagnostic identifies LaserInfiniteInf and its custom path sampling, cancellation counter, screen culling and type-dependent effect dispatch"
-0x004CB060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004CB060,authored,LaserLineInf,authored,high,"CORE/EXACT-1231; docs/LASER_LINE_CANCEL_CIRCLE_RECONSTRUCTION.md; scripts/verify-laser-line-cancel-circle-native.py; original create_laser diagnostic identifies LaserLineInf, native Line vtable +0x30 targets this complete 1,170-byte body, and factory allocates 0x18F8"
 0x004CB500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CB510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CB970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

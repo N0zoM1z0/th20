@@ -31204,3 +31204,45 @@ relocations = [
   { offset = 0x49, type = "DIR32", symbol = "__real@3f8ccccd", target = 0x0056F798 },
   { offset = 0x93, type = "REL32", symbol = "??0LaserCurvePathState@th20@@QAE@XZ", target = 0x004C82C0 },
 ]
+
+# CORE/EXACT-1231: complete native Line Laser radial cancellation handler.
+[units.laser_line_cancel_circle]
+source = "src/LaserLineCancelCircle.cpp"
+object = "build/laser-line-cancel-circle-canonical/LaserLineCancelCircle.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserLineInf::cancel_circle"]
+symbol = "?cancel_circle@LaserLineInf@th20@@UAEHABUVector3@2@MHH@Z"
+target_address = 0x004CB060
+size = 1170
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x50, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x5B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x86, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x8E, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xA9, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0xBF, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0xC7, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xEA, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x115, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x14C, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x16D, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x175, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1A1, type = "REL32", symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z", target = 0x004560D0 },
+  { offset = 0x1F0, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x267, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x26E, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x2AD, type = "DIR32", symbol = "$SG88599", target = 0x0056FD14 },
+  { offset = 0x2BF, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x2F4, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x2FB, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x33A, type = "DIR32", symbol = "$SG88603", target = 0x0056FD14 },
+  { offset = 0x34C, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x36F, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x376, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x3B5, type = "DIR32", symbol = "$SG88605", target = 0x0056FD14 },
+  { offset = 0x3C7, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x3E9, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x3F9, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x488, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
