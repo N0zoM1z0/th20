@@ -1,8 +1,24 @@
 #include "LaserParameters.hpp"
 #include "DiagnosticAllocator.hpp"
+#include "MotionMath.hpp"
+#include "Session.hpp"
 #include <cstring>
 
 namespace th20 {
+
+void Laser::set_position(const Vector3& value) {
+    position=value;
+}
+
+void Laser::point_at_distance(float distance,Vector3& output) {
+    polar(output,angle,distance);
+    output+=position;
+}
+
+void Laser::select_context(std::int32_t index) {
+    view_index=index;
+    context=&session.context(view_index);
+}
 
 // The native base constructor initializes its real subobjects and scalar
 // lanes first, then clears the complete 0x6F8 prefix.  The final Timer

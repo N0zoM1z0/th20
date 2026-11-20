@@ -14,11 +14,12 @@ namespace th20 {
 class LaserBeamInf : public Laser {
 public:
     LaserBeamInf() noexcept;
+    std::int32_t initialize_laser(const void* input) override;
 
     LaserType3Parameters parameters;
     Animation animation_0;
     float field_d2c;
-    std::array<std::byte,0x800> field_d30;
+    float field_d30[0x200];
     std::array<std::byte,0x800> field_1530;
 };
 

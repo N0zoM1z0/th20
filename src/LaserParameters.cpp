@@ -24,6 +24,23 @@ LaserType3Parameters::LaserType3Parameters() noexcept
     : angle(0), field_1c(0), field_20(0), field_24(0), handle(0), field_2c(0),
       field_30(0), field_34(0), flags(0), view_index(0) {}
 LaserType3Parameters::~LaserType3Parameters() = default;
+LaserType3Parameters& LaserType3Parameters::operator=(const LaserType3Parameters& other) {
+    position=other.position;
+    vector_0c=other.vector_0c;
+    angle=other.angle;
+    field_1c=other.field_1c;
+    field_20=other.field_20;
+    field_24=other.field_24;
+    handle=other.handle;
+    field_2c=other.field_2c;
+    field_30=other.field_30;
+    field_34=other.field_34;
+    flags_alias_38=other.flags_alias_38;
+    flags=other.flags;
+    commands=other.commands;
+    view_index=other.view_index;
+    return *this;
+}
 
 LaserController::LaserController() noexcept
     : count(0), next_handle(0x10000), file(nullptr), field_4c(0),

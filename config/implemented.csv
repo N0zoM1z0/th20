@@ -1756,3 +1756,7 @@ th20::LaserInfiniteInf::LaserInfiniteInf()
 th20::LaserLineInf::LaserLineInf()
 th20::LaserBeamInf::LaserBeamInf()
 th20::LaserCurveInf::LaserCurveInf()
+th20::LaserBeamInf::initialize_laser
+th20::Laser::set_position
+th20::Laser::point_at_distance
+th20::Laser::select_context

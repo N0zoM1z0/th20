@@ -916,3 +916,7 @@ address,name,size,status,match_percent,unit,evidence
 0x004CB060,th20::LaserLineInf::cancel_circle,1170,matching,100.00,laser_line_cancel_circle,"CORE/EXACT-1231; docs/LASER_LINE_CANCEL_CIRCLE_RECONSTRUCTION.md; scripts/verify-laser-line-cancel-circle-native.py; complete 1,170-byte body and all 30 original relocations strictly replay"
 0x004CA830,th20::LaserCurveInf::cancel_circle,647,matching,100.00,laser_curve_cancel_circle,CORE/EXACT-1232; complete 647-byte body and all 10 original relocations strictly replay
 0x004CABF0,th20::LaserInfiniteInf::cancel_circle,1123,matching,100.00,laser_infinite_cancel_circle,"CORE/EXACT-1233; complete 1,123-byte body and all 33 original relocations strictly replay"
+0x004D3110,th20::LaserBeamInf::initialize_laser,275,matching,100.00,laser_beam_initialize,CORE/EXACT-1234; complete 275-byte initializer and five original relocations strictly replay
+0x004D7D50,th20::Laser::set_position,38,matching,100.00,laser_base_set_position,CORE/EXACT-1235; complete 38-byte body strictly replayed with no relocations
+0x004D67E0,th20::Laser::point_at_distance,66,matching,100.00,laser_base_point_at_distance,CORE/EXACT-1236; complete 66-byte body and two original relocations strictly replay
+0x004D7DD0,th20::Laser::select_context,54,matching,100.00,laser_base_select_context,CORE/EXACT-1237; complete 54-byte body and two original relocations strictly replay

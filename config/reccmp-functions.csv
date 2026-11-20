@@ -1771,3 +1771,7 @@ th20::LaserInfiniteInf::LaserInfiniteInf(),0x004C8880,function
 th20::LaserLineInf::LaserLineInf(),0x004C88E0,function
 th20::LaserBeamInf::LaserBeamInf(),0x004C8390,function
 th20::LaserCurveInf::LaserCurveInf(),0x004C8410,function
+th20::LaserBeamInf::initialize_laser,0x004D3110,function
+th20::Laser::set_position,0x004D7D50,function
+th20::Laser::point_at_distance,0x004D67E0,function
+th20::Laser::select_context,0x004D7DD0,function

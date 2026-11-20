@@ -31313,3 +31313,59 @@ relocations = [
   { offset = 0x3F8, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
   { offset = 0x459, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-1234: original type-3 LaserBeamInf initialization.
+[units.laser_beam_initialize]
+source = "src/LaserBeamInitialize.cpp"
+object = "build/laser-beam-initialize-canonical/LaserBeamInitialize.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserBeamInf::initialize_laser"]
+symbol = "?initialize_laser@LaserBeamInf@th20@@UAEHPBX@Z"
+target_address = 0x004D3110
+size = 275
+relocations = [
+  { offset = 0x17, type = "REL32", symbol = "??4LaserType3Parameters@th20@@QAEAAU01@ABU01@@Z", target = 0x004C8C90 },
+  { offset = 0x5B, type = "REL32", symbol = "?select_context@Laser@th20@@QAEXH@Z", target = 0x004D7DD0 },
+  { offset = 0xD8, type = "DIR32", symbol = "?native_one_56c8cc@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0xF9, type = "REL32", symbol = "?reset@Animation@th20@@QAEXXZ", target = 0x004299D0 },
+  { offset = 0x107, type = "REL32", symbol = "?set_animation_flag_byte_01_one@th20@@YIXPAVAnimation@1@@Z", target = 0x0045E5B0 },
+]
+
+# CORE/EXACT-1235: shared base position setter.
+[units.laser_base_set_position]
+source = "src/LaserBase.cpp"
+object = "build/laser-base-lifetime-canonical/LaserBase.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Laser::set_position"]
+symbol = "?set_position@Laser@th20@@UAEXABUVector3@2@@Z"
+target_address = 0x004D7D50
+size = 38
+relocations = []
+
+# CORE/EXACT-1236: shared polar point-at-distance helper.
+[units.laser_base_point_at_distance]
+source = "src/LaserBase.cpp"
+object = "build/laser-base-lifetime-canonical/LaserBase.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Laser::point_at_distance"]
+symbol = "?point_at_distance@Laser@th20@@UAEXMAAUVector3@2@@Z"
+target_address = 0x004D67E0
+size = 66
+relocations = [
+  { offset = 0x25, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x37, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+]
+
+# CORE/EXACT-1237: Laser view index and Session Context binding.
+[units.laser_base_select_context]
+source = "src/LaserBase.cpp"
+object = "build/laser-base-lifetime-canonical/LaserBase.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Laser::select_context"]
+symbol = "?select_context@Laser@th20@@QAEXH@Z"
+target_address = 0x004D7DD0
+size = 54
+relocations = [
+  { offset = 0x1E, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x23, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+]

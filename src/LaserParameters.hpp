@@ -59,11 +59,13 @@ struct LaserType3Parameters {
     float angle, field_1c, field_20, field_24;
     std::uint32_t handle, field_2c;
     float field_30;
-    std::uint32_t field_34, flags;
+    std::uint32_t field_34;
+    union { std::uint32_t flags; std::uint32_t flags_alias_38; };
     std::pmr::vector<BulletCommand> commands;
     std::int32_t view_index;
     LaserType3Parameters() noexcept;
     ~LaserType3Parameters();
+    LaserType3Parameters& operator=(const LaserType3Parameters&);
 };
 
 class AnimationFile;
@@ -128,8 +130,9 @@ class Laser {
 public:
     // Native 0x6F8-byte common prefix; derived constructors replace the base vtable.
     Laser() noexcept;
-    virtual void set_position(const Vector3&) = 0;         // slot 00
-    virtual void point_at_distance(float, Vector3&) = 0;  // slot 04
+    void select_context(std::int32_t index);
+    virtual void set_position(const Vector3&);            // slot 00
+    virtual void point_at_distance(float, Vector3&);      // slot 04
     virtual void slot_08() = 0;
     virtual void set_parameter_flag(std::uint32_t) = 0;   // slot 0C
     virtual void slot_10() = 0;
