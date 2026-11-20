@@ -60,20 +60,17 @@ void WeaponStoneInfo::update_progress_mesh() {
     auto* vertex=active_mesh->vertices;
     for (std::int32_t column=0;column<active_mesh->columns;++column) {
         for (std::int32_t row=0;row<active_mesh->rows;++row) {
-            const Vector3 radial_offset=*point-center;
+            Vector3 radial_offset=*point-center;
             const float distance=bullet_velocity_magnitude(radial_offset);
-            const float left=-((native_screen_rect_inner_width_384_56cda4+
-                                native_polygon_radius32)/native_screen_half_2_56c8d0)+
-                static_cast<float>(window_state.mesh_view_x(view_index));
-            const float right=((native_screen_rect_inner_width_384_56cda4+
-                                native_polygon_radius32)/native_screen_half_2_56c8d0)+
-                static_cast<float>(window_state.mesh_view_x(view_index));
-            const float top=static_cast<float>(window_state.mesh_view_y(view_index)-32);
-            const float bottom=native_screen_height_448_56d7c0+native_polygon_radius32+
-                static_cast<float>(window_state.mesh_view_y(view_index));
-
-            if (left<=point->x && point->x<=right &&
-                top<=point->y && point->y<=bottom) {
+            if (-((native_screen_rect_inner_width_384_56cda4+native_polygon_radius32)/
+                  native_screen_half_2_56c8d0)+
+                    static_cast<float>(window_state.mesh_view_x(view_index))<=point->x &&
+                point->x<=((native_screen_rect_inner_width_384_56cda4+native_polygon_radius32)/
+                  native_screen_half_2_56c8d0)+
+                    static_cast<float>(window_state.mesh_view_x(view_index)) &&
+                static_cast<float>(window_state.mesh_view_y(view_index)-32)<=point->y &&
+                point->y<=native_screen_height_448_56d7c0+native_polygon_radius32+
+                    static_cast<float>(window_state.mesh_view_y(view_index))) {
                 if (native_progress_mesh_radius_120_570ad0<distance) {
                     vertex->channels.alpha=0;
                 } else {
@@ -97,12 +94,11 @@ void WeaponStoneInfo::update_progress_mesh() {
                     const std::int32_t current_frame=static_cast<std::int32_t>(timer_44);
                     wave-=((static_cast<float>(current_frame)*native_pi_56e0f0)/
                            native_screen_half_2_56c8d0)/static_cast<float>(native_progress_mesh_wave_period_60_56e048);
-                    const float displacement_x=scalar_math::sine(static_cast<float>(wave))*
+                    radial_offset.x=scalar_math::sine(static_cast<float>(wave))*
                         normalized_distance*native_progress_mesh_wave_amplitude_05_56e0ec*radial_offset.x;
-                    const float displacement_y=scalar_math::sine(static_cast<float>(wave))*
+                    radial_offset.y=scalar_math::sine(static_cast<float>(wave))*
                         normalized_distance*native_progress_mesh_wave_amplitude_05_56e0ec*radial_offset.y;
-                    const Vector3 displacement(displacement_x,displacement_y,0.0f);
-                    vertex->position+=displacement;
+                    vertex->position+=radial_offset;
 
                     const float displaced_left=-((native_screen_rect_inner_width_384_56cda4+
                         native_polygon_radius32)/native_screen_half_2_56c8d0)+

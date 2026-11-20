@@ -52,16 +52,25 @@ final call is the real Timer increment wrapper. The native body also constructs
 and assigns a second Angle local to `frame*pi/10` but never reads it again;
 that dead local is intentionally not reproduced as inert source code.
 
-The `/Od` local COFF contribution is 1,800 bytes versus the 1,780-byte native
-function. The source now uses independently address-anchored original `.rdata`
-values for the 120px radius (`0x00570AD0`), alpha maximum (`0x0056CD9C`),
-fade thresholds (`0x00573160`, `0x0056FBF8`), wave amplitude/period
-(`0x0056E0EC`, `0x0056E048`), PI (`0x0056E0F0`), and viewport margins
-(`0x0056CD94`, `0x00576360`). The top cull and comparison use the native
-integer `view_y - 32` ordering; the displaced lower clamp uses the original
--32.0f data constant. The 20-byte difference remains visible: this is a
-semantic reconstruction, not a byte match. It is not admitted to
-`match-units.toml`; no full cold replay is run for this nonexact candidate.
+The `/Od` local COFF contribution is now 1,675 bytes versus the 1,780-byte
+native function. The source uses independently address-anchored original
+`.rdata` values for the 120px radius (`0x00570AD0`), alpha maximum
+(`0x0056CD9C`), fade thresholds (`0x00573160`, `0x0056FBF8`), wave
+amplitude/period (`0x0056E0EC`, `0x0056E048`), PI (`0x0056E0F0`), and viewport
+margins (`0x0056CD94`, `0x00576360`). The cull is expressed as short-circuit
+comparisons so the per-vertex WindowState getters execute in native order.
+The radial Vector3 returned by subtraction is then mutated in place for the
+wave displacement and passed to the native `Vector3::operator+=`, avoiding a
+second synthetic Vector3 construction. The top cull uses the native integer
+`view_y - 32` ordering; the displaced lower clamp uses the original -32.0f
+data constant.
+
+The native body also contains an unused second Angle local, assigned from
+`Timer * PI / 10`, and an unused stack copy of the 120px radius. Those dead
+operations are intentionally not recreated as inert source statements. The
+remaining 105-byte difference is visible; this is a semantic reconstruction,
+not a byte match. It is not admitted to `match-units.toml`; no full cold replay
+is run for this nonexact candidate.
 
 ## Targeted validation
 
