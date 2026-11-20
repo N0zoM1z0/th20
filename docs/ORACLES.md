@@ -22,16 +22,14 @@ Use the profile recorded for each source/unit in `config/match-units.toml`.
 
 Compiler receipts record commands, profile, source/header hashes, target identity,
 compiler identity and object hash. Canonical replay rejects absent or stale
-receipts. Receipts retain their original complete source/header/probe snapshots.
-Verification permits changes to existing C/C++ source/header files only when the
-compiler's captured include list does not include them. The actual source and
-all included files must still match. The complete snapshot path set and non-C/C++
-inputs remain conservative gates: added/removed files still invalidate previous
-receipts. A shared-header edit requires fresh builds and replay for every actual
-including object. Immutable receipts retain their original snapshots and are
-never rewritten to imply a fresh build. CORE129 records the affected-header
-validation and independent compiler include-trace evidence.
-Ordinary x86 COFF is supported; /GL and bigobj/LTCG are not.
+receipts. The recorded compiler command must name the unit's source. The
+source and every file in the compiler's include trace must match their recorded
+hashes, regardless of file extension. Unrelated paths can change while receipts
+remain valid. A new or removed path with the same case-insensitive basename as
+a captured input invalidates the receipt because it can change include
+resolution. Immutable receipts retain their original snapshots. Use
+`replay-exact-units.py --list-stale-sources` to find affected providers locally.
+The comparator supports ordinary x86 COFF.
 
 ## Strict comparison
 
@@ -43,12 +41,17 @@ manifest dependencies, then verify only those units. Use individual unit command
 or explicit `--source` filters; do not run an unfiltered whole-graph replay as a
 default. Reuse valid evidence for unchanged providers.
 
-`compare-coff-function.py --unit NAME` verifies the complete compiler contribution
-and all relocation identities, offsets, types and addends. Independently
-established DIR32/REL32 anchors are replayed, then every byte is compared.
-Unknown, missing, extra or overlapping relocations fail. Aux-less boundaries use
-the next actual function or section end, never a target-sized prefix. Retain
-associated alignment/tables and reconcile their ownership explicitly.
+`compare-coff-function.py --unit NAME` compares the complete compiler
+contribution. It checks COFF relocation offsets and types against the manifest
+and verifies that DIR32 fields coincide with the locked PE's HIGHLOW fields.
+For a same-section symbol, the COFF symbol's position must resolve to its
+independently established anchor. This permits MSVC to renumber a local `$LN`
+label. A renumbered `$SG` literal is accepted only when the COFF literal has
+the same bytes as the data at its anchored PE address. Other symbols require
+the recorded name. After resolving the relocations with their COFF addends,
+the comparison checks every code and owned data byte. Aux-less boundaries
+use the next function or section end. Reconcile associated alignment and tables
+with the function that owns them.
 
 Positional diagnostics may exclude relocation fields or solve potential
 destinations. Such results route investigation; they cannot supply canonical
@@ -72,7 +75,7 @@ resource or startup integration. That suite is retired (see
 [retained tests](../tests/README.md)). Exact acceptance uses complete native
 comparison, including original error paths and EH. Current results live in
 [the handoff](RE_HANDOFF.md) and
-[generated progress](PROGRESS.md), not historical batch counts.
+[live progress report](PROGRESS.md).
 
 No target byte arrays, assembly, arbitrary padding, inert locals, fake returns,
 ABI lies, patched compilers or source-profile branches are permitted. TH095's

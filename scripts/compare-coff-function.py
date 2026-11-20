@@ -38,6 +38,10 @@ def coff_name(raw: bytes, string_table: bytes) -> str:
     return read_c_string(raw)
 
 
+def numbered_label(name: str, prefix: str) -> bool:
+    return name.startswith(prefix) and name[len(prefix):].isdigit()
+
+
 def object_function(
     path: Path, wanted: str, expected_size: int | None = None
 ) -> tuple[bytearray, list[dict[str, object]]]:
@@ -140,12 +144,37 @@ def object_function(
         target_symbol = symbols.get(target_index)
         if target_symbol is None:
             raise ValueError(f"relocation references auxiliary/unknown symbol index {target_index}")
+        same_section = target_symbol["section"] == symbol["section"]
+        literal = None
+        if (type_id == 0x0006 and int(target_symbol["section"]) > 0
+                and target_symbol["storage"] == 3
+                and numbered_label(str(target_symbol["name"]), "$SG")):
+            literal_section = sections[int(target_symbol["section"]) - 1]
+            literal_start = int(target_symbol["value"])
+            if (literal_section["name_raw"].startswith(b".rdata")
+                    and not literal_section["reloc_count"]):
+                following = [int(other["value"]) for other in symbols.values()
+                             if other["section"] == target_symbol["section"]
+                             and int(other["value"]) > literal_start]
+                literal_end = min(following, default=int(literal_section["size"]))
+                raw_start = int(literal_section["raw_offset"])
+                if (0 <= literal_start < literal_end <= int(literal_section["size"])
+                        and raw_start + literal_end <= len(data)):
+                    contents = data[raw_start + literal_start : raw_start + literal_end]
+                    if following:
+                        # MSVC can pad the gap before the next literal. Keep
+                        # the payload and up to two zero terminator bytes.
+                        contents = contents[:len(contents.rstrip(b"\0")) + 2]
+                    literal = contents.hex()
         relocations.append(
             {
                 "offset": local_offset,
                 "type_id": type_id,
                 "type": COFF_RELOCATION_NAMES.get(type_id, f"0x{type_id:04X}"),
                 "symbol": target_symbol["name"],
+                "section_delta": (int(target_symbol["value"]) - int(symbol["value"]))
+                if same_section else None,
+                "literal": literal,
                 "addend": struct.unpack_from("<I", code, local_offset)[0],
             }
         )
@@ -175,6 +204,37 @@ def pe_bytes_at(data: bytes, address: int, size: int) -> bytes:
                 raise ValueError("target range extends beyond section raw data")
             return data[raw_offset + relative : raw_offset + relative + size]
     raise ValueError("target range is outside PE sections")
+
+
+def pe_highlow_offsets(data: bytes, address: int, size: int) -> set[int]:
+    optional = struct.unpack_from("<I", data, 0x3C)[0] + 24
+    if struct.unpack_from("<I", data, optional + 92)[0] <= 5:
+        return set()
+    base = struct.unpack_from("<I", data, optional + 28)[0]
+    rva, length = struct.unpack_from("<II", data, optional + 96 + 5 * 8)
+    if not rva and not length:
+        return set()
+    if not rva or not length:
+        raise ValueError("incomplete PE base relocation directory")
+    directory = pe_bytes_at(data, base + rva, length)
+    offsets = set()
+    block = 0
+    while block < len(directory):
+        if block + 8 > len(directory):
+            raise ValueError("truncated PE base relocation block")
+        page, block_size = struct.unpack_from("<II", directory, block)
+        end = block + block_size
+        if block_size < 8 or block_size % 2 or end > len(directory):
+            raise ValueError("invalid PE base relocation block size")
+        if base + page < address + size and base + page + 0x1003 > address:
+            for (field,) in struct.iter_unpack("<H", directory[block + 8 : end]):
+                offset = base + page + (field & 0xFFF) - address
+                if field >> 12 == 3 and -4 < offset < size:
+                    if not 0 <= offset <= size - 4:
+                        raise ValueError("PE HIGHLOW crosses the comparison boundary")
+                    offsets.add(offset)
+        block = end
+    return offsets
 
 
 def solved_relocations(
@@ -274,7 +334,8 @@ def compare_unit(name: str) -> dict[str, object]:
             f"object function size {len(code):#x} differs from manifest "
             f"comparison extent {compare_size:#x}"
         )
-    target = pe_bytes_at(verified_target(), address, compare_size)
+    image = verified_target()
+    target = pe_bytes_at(image, address, compare_size)
 
     expected = list(unit.get("relocations", []))
     normalized_expected = []
@@ -292,15 +353,18 @@ def compare_unit(name: str) -> dict[str, object]:
                 "target": int(relocation["target"]),
             }
         )
-    actual_key = sorted(
-        (int(row["offset"]), int(row["type_id"]), str(row["symbol"])) for row in actual
-    )
-    expected_key = sorted(
-        (int(row["offset"]), int(row["type_id"]), str(row["symbol"]))
-        for row in normalized_expected
-    )
+    actual_key = sorted((row["offset"], row["type_id"]) for row in actual)
+    expected_key = sorted((row["offset"], row["type_id"]) for row in normalized_expected)
     if actual_key != expected_key:
         raise ValueError(f"COFF relocations differ from manifest: actual={actual_key!r} expected={expected_key!r}")
+
+    highlow = pe_highlow_offsets(image, address, compare_size)
+    dir32 = {int(row["offset"]) for row in actual if row["type"] == "DIR32"}
+    if highlow != dir32:
+        raise ValueError(
+            f"COFF DIR32 differs from PE HIGHLOW: missing={sorted(highlow - dir32)} "
+            f"extra={sorted(dir32 - highlow)}"
+        )
 
     occupied = set()
     for row in normalized_expected:
@@ -310,20 +374,41 @@ def compare_unit(name: str) -> dict[str, object]:
             raise ValueError("out-of-range or overlapping relocation fields")
         occupied.update(fields)
 
+    actual_by_offset = {row["offset"]: row for row in actual}
     replay = []
     for relocation in normalized_expected:
         offset = int(relocation["offset"])
         addend = struct.unpack_from("<I", code, offset)[0]
+        destination = int(relocation["target"])
+        actual_row = actual_by_offset[offset]
+        section_delta = actual_row["section_delta"]
+        if section_delta is not None and destination != address + int(section_delta):
+            raise ValueError(f"COFF section-local symbol disagrees with anchor at {offset:#x}")
+        observed_symbol = str(actual_row["symbol"])
+        expected_symbol = str(relocation["symbol"])
+        local_label = (section_delta is not None and numbered_label(observed_symbol, "$LN")
+                       and numbered_label(expected_symbol, "$LN"))
+        local_literal = (actual_row["literal"] is not None
+                         and numbered_label(expected_symbol, "$SG"))
+        if local_literal:
+            literal = bytes.fromhex(str(actual_row["literal"]))
+            if pe_bytes_at(image, destination, len(literal)) != literal:
+                raise ValueError(f"COFF literal differs from anchored PE data at {offset:#x}")
+        if observed_symbol != expected_symbol and not (local_label or local_literal):
+            raise ValueError(
+                f"COFF relocations differ from manifest at {offset:#x}: "
+                f"actual={observed_symbol!r} expected={expected_symbol!r}"
+            )
         if relocation["type_id"] == 0x0006:
-            value = int(relocation["target"]) + addend
+            value = destination + addend
         else:
-            value = int(relocation["target"]) + addend - (address + offset + 4)
+            value = destination + addend - (address + offset + 4)
         struct.pack_into("<I", code, offset, value & 0xFFFFFFFF)
         replay.append(
             {
                 "offset": f"0x{offset:X}",
                 "type": relocation["type"],
-                "symbol": relocation["symbol"],
+                "symbol": observed_symbol,
                 "target": f"0x{int(relocation['target']):08X}",
                 "addend": f"0x{addend:08X}",
             }

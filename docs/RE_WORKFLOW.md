@@ -69,10 +69,13 @@ assumption. Record semantic interpretation, link coherence and runtime behavior
 separately from exactness.
 
 Determine affected providers from the changed input closures and manifest
-dependencies. Use individual unit commands or repeated `--source` filters;
-do not default to an unfiltered replay. Reuse passing evidence for unchanged
-providers. Public CI covers the exact oracle and metadata when those tools
-change. The historical portable semantic suite is retired; its paths and scenario
+dependencies. Use `replay-exact-units.py --list-stale-sources` to find local
+providers whose compiler receipts require rebuilding. Replay the selected
+providers with individual unit commands or repeated `--source` filters.
+Include units affected by manifest or anchor edits even when their compiler
+receipts still match. Reuse passing evidence for unchanged providers.
+Public CI covers the exact oracle and metadata. The historical portable
+semantic suite is retired. Its paths and scenario
 counts in evidence documents describe dated experiments, available in Git history
 (see [retained tests](../tests/README.md)). Investigate a specific unresolved native
 behavior or ABI question with a temporary probe under `.analysis/`. Preserve
@@ -165,10 +168,9 @@ units. Inspect diffs/links and check protected hashes; no MSVC, Ghidra or replay
 Native changes still require fresh affected builds and complete strict comparison,
 including owned extents and relocations. Exactness comes from that comparison.
 
-Default public CI runs syntax, ledger, build-configuration, source-profile and
-private-artifact checks in a clean checkout without proprietary inputs. Run
-`scripts/repo-python scripts/ci.py` when changing these inputs. `--full` adds
-synthetic exact-oracle tests for relevant comparator changes. Other tool tests
-are selected explicitly for the changed tool. Reports, progress generation,
-native replay and reference-review suites are separate task-specific commands,
-not routine commit gates.
+The public workflow runs `scripts/repo-python scripts/ci.py --full` in a clean
+checkout. It checks syntax, ledgers, build configuration, source profiles,
+private artifacts and synthetic exact-oracle cases. Use the same command for
+oracle changes. Run other tool tests when their inputs change. Reports,
+progress generation, native replay and reference-review suites are scoped
+to the work being validated.

@@ -146,6 +146,7 @@ def validate_match_manifest(
     if not isinstance(units, dict):
         raise ValueError("match-units.toml: [units] must be a table")
     supported_relocations = {"DIR32", "REL32"}
+    extents = []
     for name, unit in units.items():
         if not isinstance(unit, dict):
             raise ValueError(f"match-units.toml: unit {name!r} must be a table")
@@ -187,6 +188,7 @@ def validate_match_manifest(
             raise ValueError(
                 f"match-units.toml: unit {name!r} comparison extent is smaller than coverage"
             )
+        extents.append((target_address, target_address + compare_size, name))
         if not isinstance(unit["symbol"], str) or not unit["symbol"]:
             raise ValueError(f"match-units.toml: unit {name!r} lacks a COFF symbol")
         relocations = unit["relocations"]
@@ -216,6 +218,10 @@ def validate_match_manifest(
                     f"match-units.toml: unit {name!r} relocation type/symbol is invalid"
                 )
             offsets.add(offset)
+    extents.sort()
+    for (_, end, owner), (next_start, _, other) in zip(extents, extents[1:]):
+        if next_start < end:
+            raise ValueError(f"match-units.toml: comparison extents overlap: {owner!r}, {other!r}")
     return units
 
 

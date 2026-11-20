@@ -67,20 +67,19 @@ def verified_target(path=None):
     return data, manifest
 
 
+def source_tree_paths():
+    return {p.resolve() for tree in (ROOT / "src", ROOT / "probes")
+            for p in tree.rglob("*") if p.is_file()}
+
+
+def snapshot_name(path):
+    return str(path.relative_to(ROOT) if path.is_relative_to(ROOT) else path)
+
+
 def source_fingerprint(source):
-    """Conservative freshness: source plus every canonical source/header."""
-    source = Path(source).resolve()
-    paths = {source}
-    for tree in (ROOT / "src", ROOT / "probes"):
-        paths.update(p.resolve() for p in tree.rglob("*") if p.is_file())
-    result = {}
-    for path in sorted(paths):
-        try:
-            key = str(path.relative_to(ROOT))
-        except ValueError:
-            key = str(path)
-        result[key] = digest(path)
-    return result
+    """Capture the source and repository input snapshot for a build."""
+    return {snapshot_name(path): digest(path)
+            for path in sorted(source_tree_paths() | {Path(source).resolve()})}
 
 
 def toolchain_paths():
@@ -102,21 +101,24 @@ def attest_compiler():
     return lock, vc
 
 
-def verify_build_receipt(unit):
+def verify_build_receipt(unit, *, compiler_hash=None, target_hash=None, source_paths=None):
     output = (ROOT / unit["object"]).resolve()
     output.relative_to((ROOT / "build").resolve())
     receipt = json.loads(output.with_suffix(".receipt.json").read_text())
-    lock, _ = attest_compiler()
+    if compiler_hash is None:
+        lock, _ = attest_compiler()
+        compiler_hash = lock["files"]["bin/HostX64/x86/cl.exe"]
+    if target_hash is None:
+        target_hash = load_manifest("target.toml")["target"]["sha256"]
     expected = {
         "object_sha256": digest(output),
         "profile": unit["profile"],
-        "compiler_sha256": lock["files"]["bin/HostX64/x86/cl.exe"],
-        "target_sha256": load_manifest("target.toml")["target"]["sha256"],
+        "compiler_sha256": compiler_hash,
+        "target_sha256": target_hash,
     }
     for key, value in expected.items():
         if receipt.get(key) != value:
             raise ValueError(f"stale or incompatible build receipt: {key}; cold-build the unit")
-    current = source_fingerprint(ROOT / unit["source"])
     recorded = receipt.get("inputs")
     if not isinstance(recorded, dict):
         raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
@@ -124,21 +126,27 @@ def verify_build_receipt(unit):
     if not isinstance(headers, dict):
         raise ValueError("stale or incompatible build receipt: headers; cold-build the unit")
     source = (ROOT / unit["source"]).resolve()
+    command = receipt.get("command")
+    source_argument = "Z:" + str(source).replace("/", "\\")
+    if not isinstance(command, list) or len(command) < 3 or command[-3] != source_argument:
+        raise ValueError("stale or incompatible build receipt: compiled source; cold-build the unit")
     included = {Path(path).resolve() for path in headers}
     # Adding or moving an unrelated translation unit does not stale every
     # original object. A newly introduced name that can shadow a captured
     # include (or the owned source) still forces a cold rebuild.
     captured_names = {path.name.casefold() for path in included | {source}}
-    if any(Path(name).name.casefold() in captured_names
-           for name in recorded.keys() ^ current.keys()):
+    path_snapshot = source_tree_paths() if source_paths is None else source_paths
+    current = {snapshot_name(path) for path in path_snapshot | {source}
+               if path.name.casefold() in captured_names}
+    recorded_names = {name for name in recorded if Path(name).name.casefold() in captured_names}
+    if current != recorded_names:
         raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
-    for name, observed in current.items():
-        path = (ROOT / name).resolve()
-        if path != source and path not in included:
-            continue
-        if recorded.get(name) != observed:
-            raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
+    if recorded.get(snapshot_name(source)) != digest(source):
+        raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
     for header, expected_hash in headers.items():
+        header_name = snapshot_name(Path(header))
+        if header_name in current and recorded.get(header_name) != expected_hash:
+            raise ValueError("stale or incompatible build receipt: inputs; cold-build the unit")
         if digest(header) != expected_hash:
             raise ValueError(f"included header changed: {header}; cold-build the unit")
     return receipt

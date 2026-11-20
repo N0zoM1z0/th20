@@ -4,8 +4,9 @@ The maintained tests cover strict COFF comparison and receipt freshness,
 dispatcher auditing, canonical ECL relocation owners, reference indexing and
 repository Python selection. Run only the relevant checks when these tools
 change. `scripts/repo-python scripts/ci.py` remains the public CI entrypoint.
-Its default is basic syntax, ledger and build-configuration checks;
-`--full` adds the synthetic exact-oracle tests. Neither command builds C++.
+Its default covers syntax, ledgers and build configuration. The public
+workflow runs `--full` to add the synthetic exact-oracle tests. Both modes
+run without the native toolchain.
 Exact reconstruction checkpoints use affected locked-compiler builds and
 complete canonical replay, as described in [the workflow](../docs/RE_WORKFLOW.md).
 
