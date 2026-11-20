@@ -1726,3 +1726,9 @@ th20::item_award_reward_type_0,0x004C4B90,function
 th20::item_award_reward_type_2,0x004C4DA0,function
 th20::NativeViewIndexOwner::set_view_index,0x004776A0,function
 th20::ItemInf::update_callback,0x004C46F0,function
+th20::PlayerRecord::clamped_field_b8,0x004B80B0,function
+th20::PlayerRecord::clamped_field_bc,0x004B8100,function
+th20::PlayerRecord::clamped_field_c0,0x004B8150,function
+th20::PlayerRecord::clamped_field_cc,0x00477FF0,function
+th20::PlayerRecord::clamped_field_d0,0x004B7E70,function
+th20::PlayerRecord::clamped_field_d8,0x004B7E20,function

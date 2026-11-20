@@ -1711,3 +1711,9 @@ th20::item_award_reward_type_2
 th20::NativeViewIndexOwner::set_view_index
 th20::ItemInf::update_callback
 th20::BombController::active_for
+th20::PlayerRecord::clamped_field_b8
+th20::PlayerRecord::clamped_field_bc
+th20::PlayerRecord::clamped_field_c0
+th20::PlayerRecord::clamped_field_cc
+th20::PlayerRecord::clamped_field_d0
+th20::PlayerRecord::clamped_field_d8

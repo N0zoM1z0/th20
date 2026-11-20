@@ -879,3 +879,9 @@ address,name,size,status,match_percent,unit,evidence
 0x004C46F0,th20::ItemInf::update_callback,79,matching,100.00,item_inf_update_gate,CORE/RECON-1147; docs/ITEM_INF_UPDATE_GATE_79_EXACT.md
 0x00424010,th20::Context::bomb_controller,17,matching,100.00,context_bomb_controller,CORE/RECON-1148; docs/BOMB_OWNER_RECONSTRUCTION.md
 0x004C4F00,th20::BombController::active_for,72,matching,100.00,bomb_controller_active_for,CORE/RECON-1149; docs/BOMB_CONTROLLER_ACTIVE_FOR_72_EXACT.md
+0x004B80B0,th20::PlayerRecord::clamped_field_b8,73,matching,100.00,player_record_clamped_field_b8,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B8100,th20::PlayerRecord::clamped_field_bc,73,matching,100.00,player_record_clamped_field_bc,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B8150,th20::PlayerRecord::clamped_field_c0,73,matching,100.00,player_record_clamped_field_c0,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x00477FF0,th20::PlayerRecord::clamped_field_cc,73,matching,100.00,player_record_clamped_field_cc,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B7E70,th20::PlayerRecord::clamped_field_d0,73,matching,100.00,player_record_clamped_field_d0,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B7E20,th20::PlayerRecord::clamped_field_d8,73,matching,100.00,player_record_clamped_field_d8,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md

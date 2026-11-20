@@ -1013,3 +1013,9 @@ address,name,module,confidence,evidence
 0x004776A0,th20::NativeViewIndexOwner::set_view_index,NativeViewIndexOwner,high,CORE/RECON-1146; docs/NATIVE_VIEW_INDEX_OWNER_EXACT.md
 0x005C0028,th20::native_view_index_owner_5c0028,NativeViewIndexOwner,high,CORE/RECON-1146
 0x004C46F0,th20::ItemInf::update_callback,ItemInf,high,CORE/RECON-1147
+0x004B80B0,th20::PlayerRecord::clamped_field_b8,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B8100,th20::PlayerRecord::clamped_field_bc,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B8150,th20::PlayerRecord::clamped_field_c0,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x00477FF0,th20::PlayerRecord::clamped_field_cc,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B7E70,th20::PlayerRecord::clamped_field_d0,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B7E20,th20::PlayerRecord::clamped_field_d8,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md

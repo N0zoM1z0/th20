@@ -30682,3 +30682,75 @@ size = 72
 relocations = [
   { offset = 35, type = "REL32", symbol = "?less_than@Timer@th20@@QBE_NH@Z", target = 0x00423560 },
 ]
+
+[units.player_record_clamped_field_b8]
+source = "src/PlayerRecordItemProgressAccessors.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgressAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::clamped_field_b8"]
+symbol = "?clamped_field_b8@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x004B80B0
+size = 73
+relocations = [
+  { offset = 42, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_clamped_field_bc]
+source = "src/PlayerRecordItemProgressAccessors.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgressAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::clamped_field_bc"]
+symbol = "?clamped_field_bc@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x004B8100
+size = 73
+relocations = [
+  { offset = 42, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_clamped_field_c0]
+source = "src/PlayerRecordItemProgressAccessors.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgressAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::clamped_field_c0"]
+symbol = "?clamped_field_c0@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x004B8150
+size = 73
+relocations = [
+  { offset = 42, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_clamped_field_cc]
+source = "src/PlayerRecordItemProgressAccessors.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgressAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::clamped_field_cc"]
+symbol = "?clamped_field_cc@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x00477FF0
+size = 73
+relocations = [
+  { offset = 42, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_clamped_field_d0]
+source = "src/PlayerRecordItemProgressAccessors.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgressAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::clamped_field_d0"]
+symbol = "?clamped_field_d0@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x004B7E70
+size = 73
+relocations = [
+  { offset = 42, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+[units.player_record_clamped_field_d8]
+source = "src/PlayerRecordItemProgressAccessors.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgressAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::PlayerRecord::clamped_field_d8"]
+symbol = "?clamped_field_d8@PlayerRecord@th20@@QAEHXZ"
+target_address = 0x004B7E20
+size = 73
+relocations = [
+  { offset = 42, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
