@@ -9225,7 +9225,7 @@ relocations = [
   { offset = 0x3E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x49, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
   { offset = 0x68, type = "REL32", symbol = "??0Configuration@th20@@QAE@XZ", target = 0x004B9C10 },
-  { offset = 0xD7, type = "DIR32", symbol = "$SG7266", target = 0x00570B10 },
+  { offset = 0xD7, type = "DIR32", symbol = "?native_game_controller_diagnostic_570b10@th20@@3QBDB", target = 0x00570B10 },
   { offset = 0xDC, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 

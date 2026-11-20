@@ -2,10 +2,11 @@
 #include "Session.hpp"
 #include "EclDiagnostic.hpp"
 namespace th20 {
+extern const char native_game_controller_diagnostic_570b10[];
 GameController::GameController() noexcept
     :load_stage(0),field_34(0),game_flags{},field_ec(0),field_f0(0),field_f4(0),
      field_f8(0.0),field_100(0.0),restart_mode(0),field_10c(0) {
-    ecl_diagnostic_hint("initialize GameTaskInf\n");
+    ecl_diagnostic_hint(native_game_controller_diagnostic_570b10);
 }
 int GameController::update_suppressed() const {
     return (game_flags.bits&1u)|((game_flags.bits>>2)&1u);
