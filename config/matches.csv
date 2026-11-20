@@ -849,3 +849,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004233B0,th20::NativeScreenInf::NativeScreenInf,187,matching,100.00,screen_inf_constructor_187,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md
 0x00422D40,th20::NativeScreenFactoryAllocatorView::allocate_screen_422d40,67,matching,100.00,screen_inf_allocate_67,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md
 0x00425070,th20::screen_shutdown_425070,29,matching,100.00,screen_inf_shutdown_29,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md
+0x004240C0,th20::screen_update_fade_out_4240c0,180,matching,100.00,screen_fade_out_180,CORE/RECON-1127; docs/SCREEN_FADE_OUT_UPDATE_180_STRICT_EXACT.md

@@ -30126,3 +30126,21 @@ relocations = [
   { offset = 0x9, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 0xE, type = "REL32", symbol = "?release_screen_41f7c0@NativeScreenFactoryAllocatorView@th20@@QAEXPAUNativeScreenInf@2@@Z", target = 0x0041F7C0 },
 ]
+
+# CORE/RECON-1127: whole native ScreenInf fade-out update callback.
+[units.screen_fade_out_180]
+source = "src/ScreenFadeOutUpdate180.cpp"
+object = "build/screen-fade-out-canonical/ScreenFadeOutUpdate180.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_update_fade_out_4240c0"]
+symbol = "?screen_update_fade_out_4240c0@th20@@YAHPAX@Z"
+target_address = 0x004240C0
+size = 180
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?native_screen_stopped_5ba518@th20@@3HA", target = 0x005BA518 },
+  { offset = 0x29, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x39, type = "DIR32", symbol = "?native_screen_alpha_max_56cd9c@th20@@3MB", target = 0x0056CD9C },
+  { offset = 0x4D, type = "DIR32", symbol = "?native_screen_alpha_max_56cd9c@th20@@3MB", target = 0x0056CD9C },
+  { offset = 0x86, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0xA7, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]

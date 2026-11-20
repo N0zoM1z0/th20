@@ -1680,3 +1680,4 @@ th20::screen_shutdown_425070
 th20::screen_update_envelope_4244c0
 th20::screen_update_shake_4249f0
 th20::screen_update_flash_424350
+th20::screen_update_fade_out_4240c0
