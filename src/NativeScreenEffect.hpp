@@ -22,4 +22,7 @@ static_assert(offsetof(NativeScreenInf,view_40)==0x40);
 #endif
 NativeScreenInf* __cdecl screen_factory_4250f0(std::int32_t mode,std::uint32_t p1,
     std::uint32_t p2,std::uint32_t p3,std::uint32_t p4,std::int32_t priority,std::uint32_t view);
+// Native 37B default-priority wrapper, selected by Bomb/Screen callers.
+NativeScreenInf* __cdecl screen_effect_default_425090(std::int32_t mode,std::uint32_t p1,
+    std::uint32_t p2,std::uint32_t p3,std::uint32_t p4);
 }

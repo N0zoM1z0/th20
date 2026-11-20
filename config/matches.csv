@@ -844,3 +844,5 @@ address,name,size,status,match_percent,unit,evidence
 0x00450320,th20::NativeAnimationPositionRelayView::set_position_forward_450320,33,matching,100.00,bomb_pulse_animation_position_relay_33,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
 0x004502F0,th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,40,matching,100.00,bomb_pulse_animation_pool_position_40,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
 0x00423BF0,th20::NativeScreenInf::initialize_423bf0,637,matching,100.00,screen_init_boss_637,CORE/RECON-1124; docs/SCREEN_INITIALIZE_BOSS637_STRICT_EXACT.md
+0x00425090,th20::screen_effect_default_425090,37,matching,100.00,screen_effect_default_37,CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md
+0x004250F0,th20::screen_factory_4250f0,81,matching,100.00,screen_effect_factory_81,CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md

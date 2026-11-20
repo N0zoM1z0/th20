@@ -1687,3 +1687,5 @@ th20::NativeBombPulseAnimationDelegate::update_478610,0x00478610,function
 th20::NativeAnimationPositionRelayView::set_position_forward_450320,0x00450320,function
 th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,0x004502F0,function
 th20::NativeScreenInf::initialize_423bf0,0x00423BF0,function
+th20::screen_effect_default_425090,0x00425090,function
+th20::screen_factory_4250f0,0x004250F0,function

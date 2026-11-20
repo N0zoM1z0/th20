@@ -30050,3 +30050,30 @@ relocations = [
   { offset = 0x2A0, type = "DIR32", symbol = "$LN13", target = 0x00423DC8 },
   { offset = 0x2A4, type = "DIR32", symbol = "$LN14", target = 0x00423DE3 },
 ]
+
+# CORE/RECON-1125: whole native 37B ScreenInf default-priority adapter.
+[units.screen_effect_default_37]
+source = "src/ScreenEffectDefault37.cpp"
+object = "build/gptweb-screen-factory/ScreenEffectDefault37.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_effect_default_425090"]
+symbol = "?screen_effect_default_425090@th20@@YAPAUNativeScreenInf@1@HIIII@Z"
+target_address = 0x00425090
+size = 37
+relocations = [{ offset = 0x1C, type = "REL32", symbol = "?screen_factory_4250f0@th20@@YAPAUNativeScreenInf@1@HIIIIHI@Z", target = 0x004250F0 }]
+
+# CORE/RECON-1125: whole native 81B ScreenInf allocation and initializer.
+[units.screen_effect_factory_81]
+source = "src/ScreenEffectFactory81.cpp"
+object = "build/gptweb-screen-factory/ScreenEffectFactory81.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_factory_4250f0"]
+symbol = "?screen_factory_4250f0@th20@@YAPAUNativeScreenInf@1@HIIIIHI@Z"
+target_address = 0x004250F0
+size = 81
+relocations = [
+  { offset = 0x5, type = "DIR32", symbol = "$SG78290", target = 0x0056D768 },
+  { offset = 0xB, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x10, type = "REL32", symbol = "?allocate_screen_422d40@NativeScreenAllocatorView@th20@@QAEPAUNativeScreenInf@2@PBD@Z", target = 0x00422D40 },
+  { offset = 0x46, type = "REL32", symbol = "?initialize_423bf0@NativeScreenInf@th20@@QAEXHIIIIH@Z", target = 0x00423BF0 },
+]

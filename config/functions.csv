@@ -791,9 +791,9 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00424F30,105,0x00424F98,FUN_00424f30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00424FA0,202,0x00425069,FUN_00424fa0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00425070,29,0x0042508C,FUN_00425070,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00425090,37,0x004250B4,__aligned_offset_recalloc,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00425090,37,0x004250B4,__aligned_offset_recalloc,th20::screen_effect_default_425090,Screen,matching,100.00,__cdecl,?screen_effect_default_425090@th20@@YAPAUNativeScreenInf@1@HIIII@Z,false,src/ScreenEffectDefault37.cpp,CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md,authored,"Whole 37B native ScreenInf default-priority factory forwards five typed inputs, priority 0x6D and view zero to 0x004250F0; exact E8 at +0x1C. Entire physical relocation fields and complete code strict exact."
 0x004250C0,39,0x004250E6,FUN_004250c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004250F0,81,0x00425140,FUN_004250f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004250F0,81,0x00425140,FUN_004250f0,th20::screen_factory_4250f0,Screen,matching,100.00,__cdecl,?screen_factory_4250f0@th20@@YAPAUNativeScreenInf@1@HIIIIHI@Z,false,src/ScreenEffectFactory81.cpp,CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md,authored,"Whole 81B native ScreenInf allocation/initialize factory, authentic screen.cpp:580 ScreenInf label 0x0056D768, process_allocator pointer 0x005B8894, true 0x44B allocation callee 0x00422D40, exact 637B initialize callee 0x00423BF0. Entire physical relocation fields and complete code strict exact."
 0x00425150,56,0x00425187,FUN_00425150,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00425190,74,0x004251D9,FUN_00425190,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004251E0,19,0x004251F2,FUN_004251e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

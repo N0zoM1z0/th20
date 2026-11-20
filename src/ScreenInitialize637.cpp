@@ -1,5 +1,5 @@
 // Original 637-byte ScreenInf initializer at 0x00423BF0, 10 real modes.
-// Source-present large Boss, not yet accepted as whole byte-exact.
+// Canonical full strict exact: 637B body and complete 680B jump-table contribution.
 #include "NativeScreenEffect.hpp"
 #include "FunctionChainController.hpp"
 #include "FunctionChain.hpp"

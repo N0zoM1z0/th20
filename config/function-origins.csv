@@ -791,9 +791,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00424F30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00424FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00425070,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00425090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00425090,authored,Screen,authored,high,"CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md; Whole 37B native ScreenInf default-priority factory forwards five typed inputs, priority 0x6D and view zero to 0x004250F0; exact E8 at +0x1C."
 0x004250C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004250F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004250F0,authored,Screen,authored,high,"CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md; Whole 81B native ScreenInf allocation/initialize factory, authentic screen.cpp:580 ScreenInf label 0x0056D768, process_allocator pointer 0x005B8894, true 0x44B allocation callee 0x00422D40, exact 637B initialize callee 0x00423BF0."
 0x00425150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00425190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004251E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
