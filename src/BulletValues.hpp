@@ -37,17 +37,18 @@ struct ShotParameters {
     ShotParameters();
 };
 
-// ECL command operands. Original type spelling and opcode-dependent aliases
-// remain open. The final slot is consumed as a script-name pointer by opcode24.
+// ECL command operands. The eight payload words are opcode-dependent bit
+// fields; their float/integer aliases share the native 32-bit storage. The
+// final slot is consumed as a script-name pointer by opcode24.
 struct BulletCommand {
-    float operand_00;
-    float operand_04;
-    float operand_08;
-    float operand_0c;
-    std::int32_t operand_10;
-    std::int32_t operand_14;
-    std::int32_t operand_18;
-    std::int32_t operand_1c;
+    union { float operand_00; std::int32_t operand_00_integer; std::uint32_t operand_00_word; };
+    union { float operand_04; std::int32_t operand_04_integer; std::uint32_t operand_04_word; };
+    union { float operand_08; std::int32_t operand_08_integer; std::uint32_t operand_08_word; };
+    union { float operand_0c; std::int32_t operand_0c_integer; std::uint32_t operand_0c_word; };
+    union { std::int32_t operand_10; float operand_10_real; std::uint32_t operand_10_word; };
+    union { std::int32_t operand_14; float operand_14_real; std::uint32_t operand_14_word; };
+    union { std::int32_t operand_18; float operand_18_real; std::uint32_t operand_18_word; };
+    union { std::int32_t operand_1c; float operand_1c_real; std::uint32_t operand_1c_word; };
     std::uint32_t opcode;
     std::uint32_t flags;
     const char* script;
@@ -66,7 +67,16 @@ static_assert(offsetof(ShotParameters, angle_step) == 0x18);
 static_assert(offsetof(ShotParameters, speed) == 0x1c);
 static_assert(offsetof(ShotParameters, count) == 0x24);
 static_assert(offsetof(ShotParameters, rows) == 0x26);
+static_assert(offsetof(BulletCommand, operand_00) == 0x00);
+static_assert(offsetof(BulletCommand, operand_04) == 0x04);
+static_assert(offsetof(BulletCommand, operand_08) == 0x08);
+static_assert(offsetof(BulletCommand, operand_0c) == 0x0c);
+static_assert(offsetof(BulletCommand, operand_10) == 0x10);
+static_assert(offsetof(BulletCommand, operand_14) == 0x14);
+static_assert(offsetof(BulletCommand, operand_18) == 0x18);
+static_assert(offsetof(BulletCommand, operand_1c) == 0x1c);
 static_assert(offsetof(BulletCommand, opcode) == 0x20);
+static_assert(offsetof(BulletCommand, flags) == 0x24);
 static_assert(offsetof(BulletCommand, script) == 0x28);
 #if defined(_M_IX86)
 static_assert(sizeof(BulletCommand) == 44);
