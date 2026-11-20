@@ -1744,3 +1744,4 @@ th20::FunctionChainNode::enabled
 th20::GameController::update_node_enabled
 th20::WeaponStoneInfo::update_main
 th20::GameController::flag_6_set
+th20::Laser::cancel_circle

@@ -30,3 +30,11 @@ iterator/list helpers, node accessors and virtual dispatch call site. The
 canonical `laser_cancel_near` unit is scoped to this source/object and replays
 independently. The source owner is established; original authored/source origin
 remains unknown and is not inferred from byte equality.
+
+
+The `LaserCurveInf` vtable's circle-cancel slot at `+0x30` points to the
+15-byte `Laser::cancel_circle()` base default at `0x004CAAC0`, which returns
+zero. The Line, Beam and Infinite vtables point to separate segment-aware
+handlers at `0x004CB060`, `0x004CA830` and `0x004CABF0`; these larger concrete
+handlers remain separate reconstruction boundaries. See
+[the exact base-default receipt](LASER_BASE_CANCEL_CIRCLE_DEFAULT_EXACT.md).

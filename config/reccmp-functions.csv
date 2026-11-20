@@ -1759,3 +1759,4 @@ th20::FunctionChainNode::enabled,0x00464390,function
 th20::GameController::update_node_enabled,0x00464350,function
 th20::WeaponStoneInfo::update_main,0x00532B20,function
 th20::GameController::flag_6_set,0x00534300,function
+th20::Laser::cancel_circle,0x004CAAC0,function

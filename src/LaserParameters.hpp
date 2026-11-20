@@ -136,8 +136,10 @@ public:
     virtual void slot_28() = 0;
     virtual std::int32_t cancel_rectangle(const Vector3&, const Vector3&,
                                           float, std::int32_t, std::int32_t) = 0; // slot 2C
+    // The native Curve vtable inherits this no-op default; the three other
+    // concrete Laser families override the slot with segment cancellation.
     virtual std::int32_t cancel_circle(const Vector3&, float,
-                                       std::int32_t, std::int32_t) = 0; // slot 30
+                                       std::int32_t, std::int32_t); // slot 30
     virtual void slot_34() = 0;
     virtual void slot_38() = 0;
     virtual void slot_3c() = 0;

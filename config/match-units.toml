@@ -31072,3 +31072,15 @@ relocations = [
   { offset = 0xFD, type = "REL32", symbol = "??1?$IntrusiveIterator@VLaser@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 0x116, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/EXACT-1219: Laser base default used by the Curve vtable.
+[units.laser_base_cancel_circle_default]
+source = "src/LaserCancelCircleDefault.cpp"
+object = "build/core1219-canonical/LaserCancelCircleDefault.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Laser::cancel_circle"]
+symbol = "?cancel_circle@Laser@th20@@UAEHABUVector3@2@MHH@Z"
+target_address = 0x004CAAC0
+size = 15
+relocations = []
