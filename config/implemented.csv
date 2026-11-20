@@ -1717,3 +1717,7 @@ th20::PlayerRecord::clamped_field_c0
 th20::PlayerRecord::clamped_field_cc
 th20::PlayerRecord::clamped_field_d0
 th20::PlayerRecord::clamped_field_d8
+th20::FrontInf::update_progress_handles_50
+th20::FrontInf::update_progress_handles_6c
+th20::Animation::interrupt_offset_7
+th20::interrupt_animation_mode5

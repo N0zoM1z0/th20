@@ -31,6 +31,21 @@ struct FrontBossPanel {
     FrontBossPanel() noexcept;
 };
 
+template<class T, std::size_t Count>
+struct NativePointerArray {
+    T* first;
+    std::array<T*, Count-1> remaining;
+    T** slot(std::int32_t index);
+};
+template<class T, std::size_t Count>
+T** NativePointerArray<T,Count>::slot(std::int32_t index) {
+    return reinterpret_cast<T**>(reinterpret_cast<unsigned char*>(this) + index * sizeof(T*));
+}
+using FrontProgressArray = NativePointerArray<Animation, 7>;
+#if defined(_M_IX86)
+static_assert(sizeof(FrontProgressArray) == 0x1c);
+static_assert(offsetof(FrontProgressArray, remaining) == 4);
+#endif
 struct FrontFlags {
     union {
         std::uint32_t bits;
@@ -51,10 +66,8 @@ class FrontInf : public TaskInfo {
 public:
     std::array<AnimationHandle, 7> handles_10, handles_2c;
     std::array<AnimationHandle, 2> handles_48;
-    std::int32_t field_50;
-    std::array<std::int32_t, 6> fields_54;
-    std::int32_t field_6c;
-    std::array<std::int32_t, 6> fields_70;
+    NativePointerArray<Animation, 7> progress_handles_50;
+    NativePointerArray<Animation, 7> progress_handles_6c;
     std::int32_t field_88;
     std::array<std::int32_t, 1> fields_8c;
     AnimationHandle handle_90;
@@ -95,6 +108,12 @@ public:
     void set_field_180(std::int32_t value);
     void set_boss_gauge(std::int32_t boss, std::int32_t marker, float fraction,
                         std::int32_t value);
+    void update_progress_handles_50(std::int32_t active_count,
+                                    std::int32_t script_index,
+                                    std::int32_t filled_count);
+    void update_progress_handles_6c(std::int32_t active_count,
+                                    std::int32_t script_index,
+                                    std::int32_t filled_count);
 };
 
 extern FrontInf* current_front;
@@ -104,6 +123,9 @@ static_assert(sizeof(FrontFlags) == 4);
 #if defined(_M_IX86)
 static_assert(sizeof(FrontInf) == 0x2d8);
 static_assert(alignof(FrontInf) == 8);
+static_assert(sizeof(FrontProgressArray) == 0x1c);
+static_assert(offsetof(FrontInf, progress_handles_50) == 0x50);
+static_assert(offsetof(FrontInf, progress_handles_6c) == 0x6c);
 static_assert(offsetof(FrontInf, field_158) == 0x158);
 static_assert(offsetof(FrontInf, dialogue) == 0x1bc);
 static_assert(offsetof(FrontInf, boss_panels) == 0x1d0);

@@ -28,7 +28,8 @@ FrontFlags::FrontFlags() noexcept {
 FrontInf* current_front;
 
 FrontInf::FrontInf()
-    : field_50(0), fields_54{}, field_6c(0), fields_70{}, field_88(0), fields_8c{},
+    : progress_handles_50{nullptr, {}}, progress_handles_6c{nullptr, {}},
+      field_88(0), fields_8c{},
       field_11c(0), field_120(0.0f), field_124(0.0f), field_128(0), field_12c(0),
       field_130(0), field_134(0), field_138(0), field_150(nullptr),
       field_158(0), field_160(0), field_168(0), message_file(nullptr),

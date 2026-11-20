@@ -1732,3 +1732,7 @@ th20::PlayerRecord::clamped_field_c0,0x004B8150,function
 th20::PlayerRecord::clamped_field_cc,0x00477FF0,function
 th20::PlayerRecord::clamped_field_d0,0x004B7E70,function
 th20::PlayerRecord::clamped_field_d8,0x004B7E20,function
+th20::FrontInf::update_progress_handles_50,0x004B8BF0,function
+th20::FrontInf::update_progress_handles_6c,0x004B8650,function
+th20::Animation::interrupt_offset_7,0x004B85A0,function
+th20::interrupt_animation_mode5,0x004B8580,function

@@ -885,3 +885,7 @@ address,name,size,status,match_percent,unit,evidence
 0x00477FF0,th20::PlayerRecord::clamped_field_cc,73,matching,100.00,player_record_clamped_field_cc,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
 0x004B7E70,th20::PlayerRecord::clamped_field_d0,73,matching,100.00,player_record_clamped_field_d0,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
 0x004B7E20,th20::PlayerRecord::clamped_field_d8,73,matching,100.00,player_record_clamped_field_d8,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B8BF0,th20::FrontInf::update_progress_handles_50,412,matching,100.00,front_inf_progress_handles_50,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004B8650,th20::FrontInf::update_progress_handles_6c,412,matching,100.00,front_inf_progress_handles_6c,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004B85A0,th20::Animation::interrupt_offset_7,29,matching,100.00,front_inf_animation_interrupt_offset_7,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004B8580,th20::interrupt_animation_mode5,22,matching,100.00,front_inf_animation_interrupt_mode5,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md

@@ -16003,7 +16003,7 @@ relocations = [
   { offset = 718, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 4337040 },
   { offset = 801, type = "DIR32", symbol = "??0FrontBossPanel@th20@@QAE@XZ", target = 4909888 },
   { offset = 820, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 4242464 },
-  { offset = 838, type = "DIR32", symbol = "$SG179918", target = 5703232 },
+  { offset = 838, type = "DIR32", symbol = "$SG180004", target = 5703232 },
   { offset = 843, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 4245168 },
   { offset = 854, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 6031012 },
 ]
@@ -30753,4 +30753,86 @@ target_address = 0x004B7E20
 size = 73
 relocations = [
   { offset = 42, type = "REL32", symbol = "??$clamp@H@std@@YAABHABH00@Z", target = 0x00471170 },
+]
+
+# CORE/RECON-1151: FrontInf seven-marker progress animation and native event wrappers.
+[units.front_inf_progress_handles_50]
+source = "src/HudGaugeProgress.cpp"
+object = "build/front-inf-progress/HudGaugeProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontInf::update_progress_handles_50"]
+symbol = "?update_progress_handles_50@FrontInf@th20@@QAEXHHH@Z"
+target_address = 0x004B8BF0
+size = 412
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x22, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x4F, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x63, type = "DIR32", symbol = "?native_progress_marker_spacing_56fd48@th20@@3MB", target = 0x0056FD48 },
+  { offset = 0x95, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0xA6, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
+  { offset = 0xD8, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0xDF, type = "REL32", symbol = "?interrupt_animation_mode2@th20@@YIXPAVAnimation@1@@Z", target = 0x00486330 },
+  { offset = 0xFF, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x10E, type = "DIR32", symbol = "?native_progress_script_frames_570780@th20@@3QBHB", target = 0x00570780 },
+  { offset = 0x11D, type = "REL32", symbol = "?interrupt_offset_7@Animation@th20@@QAEXH@Z", target = 0x004B85A0 },
+  { offset = 0x14E, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x155, type = "REL32", symbol = "?interrupt_animation_mode3@th20@@YIXPAVAnimation@1@@Z", target = 0x00486370 },
+  { offset = 0x17E, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x185, type = "REL32", symbol = "?interrupt_animation_mode5@th20@@YIXPAVAnimation@1@@Z", target = 0x004B8580 },
+  { offset = 0x192, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1151: FrontInf seven-marker progress animation and native event wrappers.
+[units.front_inf_progress_handles_6c]
+source = "src/HudGaugeProgress.cpp"
+object = "build/front-inf-progress/HudGaugeProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::FrontInf::update_progress_handles_6c"]
+symbol = "?update_progress_handles_6c@FrontInf@th20@@QAEXHHH@Z"
+target_address = 0x004B8650
+size = 412
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x22, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x4F, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x63, type = "DIR32", symbol = "?native_progress_marker_spacing_56fd48@th20@@3MB", target = 0x0056FD48 },
+  { offset = 0x95, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0xA6, type = "REL32", symbol = "?set_position@Animation@th20@@QAEXABUVector3@2@@Z", target = 0x0045DD60 },
+  { offset = 0xD8, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0xDF, type = "REL32", symbol = "?interrupt_animation_mode2@th20@@YIXPAVAnimation@1@@Z", target = 0x00486330 },
+  { offset = 0xFF, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x10E, type = "DIR32", symbol = "?native_progress_script_frames_57078c@th20@@3QBHB", target = 0x0057078C },
+  { offset = 0x11D, type = "REL32", symbol = "?interrupt_offset_7@Animation@th20@@QAEXH@Z", target = 0x004B85A0 },
+  { offset = 0x14E, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x155, type = "REL32", symbol = "?interrupt_animation_mode3@th20@@YIXPAVAnimation@1@@Z", target = 0x00486370 },
+  { offset = 0x17E, type = "REL32", symbol = "?slot@?$NativePointerArray@VAnimation@th20@@$06@th20@@QAEPAPAVAnimation@2@H@Z", target = 0x00414580 },
+  { offset = 0x185, type = "REL32", symbol = "?interrupt_animation_mode5@th20@@YIXPAVAnimation@1@@Z", target = 0x004B8580 },
+  { offset = 0x192, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1151: FrontInf seven-marker progress animation and native event wrappers.
+[units.front_inf_animation_interrupt_offset_7]
+source = "src/HudGaugeProgress.cpp"
+object = "build/front-inf-progress/HudGaugeProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::interrupt_offset_7"]
+symbol = "?interrupt_offset_7@Animation@th20@@QAEXH@Z"
+target_address = 0x004B85A0
+size = 29
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "?interrupt@Animation@th20@@QAEXH@Z", target = 0x004388F0 },
+]
+
+# CORE/RECON-1151: FrontInf seven-marker progress animation and native event wrappers.
+[units.front_inf_animation_interrupt_mode5]
+source = "src/HudGaugeProgress.cpp"
+object = "build/front-inf-progress/HudGaugeProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::interrupt_animation_mode5"]
+symbol = "?interrupt_animation_mode5@th20@@YIXPAVAnimation@1@@Z"
+target_address = 0x004B8580
+size = 22
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?interrupt@Animation@th20@@QAEXH@Z", target = 0x004388F0 },
 ]

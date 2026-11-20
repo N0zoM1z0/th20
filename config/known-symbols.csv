@@ -1019,3 +1019,7 @@ address,name,module,confidence,evidence
 0x00477FF0,th20::PlayerRecord::clamped_field_cc,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
 0x004B7E70,th20::PlayerRecord::clamped_field_d0,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
 0x004B7E20,th20::PlayerRecord::clamped_field_d8,PlayerRecord,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md
+0x004B8BF0,th20::FrontInf::update_progress_handles_50,FrontInf,high,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004B8650,th20::FrontInf::update_progress_handles_6c,FrontInf,high,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004B85A0,th20::Animation::interrupt_offset_7,Animation,high,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004B8580,th20::interrupt_animation_mode5,Animation,high,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md

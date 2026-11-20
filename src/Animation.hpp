@@ -202,6 +202,7 @@ public:
     Vector3& transform_direction(Vector3& value, std::int32_t rotate, std::int32_t scale);
     AnimationCallback* set_callback(AnimationCallback* value);
     void interrupt(std::int32_t event);
+    void interrupt_offset_7(std::int32_t event);
     std::int32_t update();
     Vector3& position(Vector3& output);
     // Recursive raw world-position composition used by VM child spawning.
