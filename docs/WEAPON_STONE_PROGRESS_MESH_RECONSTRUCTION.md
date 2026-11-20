@@ -69,9 +69,13 @@ candidate.
 
 The 20-byte callback wrapper at `0x00532720` and its 32-byte callback-object
 method at `0x00532A90` are now independently exact and admitted in
-`CORE/EXACT-1203`; see `docs/WEAPON_STONE_PROGRESS_CALLBACK_EXACT.md`. Their
-exactness does not transfer to this 1,780-byte updater. The 467-byte
-progress-effect initializer at `0x005348D0` and the separate 581-byte sibling
-progress routine at `0x00534AB0` remain open boundaries. Continue from their
-actual native callers and owner/vtable evidence; do not fold them into this
-method or claim them from its implementation.
+`CORE/EXACT-1203`; see `docs/WEAPON_STONE_PROGRESS_CALLBACK_EXACT.md`. The
+37-byte RenderMesh callback setter at `0x0052CD50` is also exact in
+`CORE/EXACT-1204`; see `docs/RENDER_MESH_CALLBACK_EXACT.md`. Their exactness
+does not transfer to this 1,780-byte updater. The 467-byte progress-effect
+initializer at `0x005348D0` now has a natural 466-byte semantic candidate; all
+non-relocation bytes align after removing its single native NOP, but it remains
+NONEXACT. See `docs/WEAPON_STONE_PROGRESS_EFFECT_INITIALIZER_RECONSTRUCTION.md`.
+The separate 581-byte sibling progress routine at `0x00534AB0` remains the next
+large boundary. Continue from its actual native callers and owner/vtable
+evidence; do not fold it into this method or claim it from its sibling.
