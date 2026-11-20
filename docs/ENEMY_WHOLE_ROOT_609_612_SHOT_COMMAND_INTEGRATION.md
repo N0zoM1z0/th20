@@ -1,5 +1,8 @@
 # CORE187: four Enemy shot-command opcodes in the entire dispatcher host
 
+**Current maintained source update (CORE/RECON-1145):** `src/EnemyStateShotCommandOpcode.cpp` now contains the natural-C++ 609/610/611/612 case fragment. It replaces the historical private draft's queued-selector boundary with the accepted `EnemyState::writable_shot()` pair ABI, preserves all per-field writes and the late cursor commit, and calls the real PMR command vector. This is still a helper fragment inside the 41,967B `EnemyState::execute_opcode()` parent, not a separate original native function or parent restoration. See [the 609–612 source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md).
+
+
 The user-selected locked TH20 Japanese v1.00a Steamless target is still SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This checkpoint extends **one continuing 41,967-byte native Enemy dispatcher

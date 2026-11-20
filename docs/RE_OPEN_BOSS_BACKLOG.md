@@ -52,11 +52,13 @@ canonically accepted.
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **Enemy ECL opcode dispatcher** `0x0048C010`, **41,967B**. The parent remains
-  source-absent/NONEXACT; original Laser opcodes 702/703/711/713 now have maintained
-  natural-C++ fragments using the real writable queued selector and Laser factory.
-  Next add 711/713 and integrate the supported cases into the full parent.
-  [Native case graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md) and
-  [four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md).
+  source-absent/NONEXACT; original Laser opcodes 702/703/711/713 and shared
+  queued-command opcodes 609/610/611/612 now have maintained natural-C++ fragments
+  using the real writable queued selector. Continue the other large opcode
+  clusters and integrate the supported cases into the full parent.
+  [Native case graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md),
+  [four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md),
+  and [609–612 shot-command source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md).
 - **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation
   execution/update remains source-absent; accepted per-mode renderer
   children do not prove this parent. [Architecture/source map](SOURCE_MAP.md).
