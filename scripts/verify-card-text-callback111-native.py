@@ -48,6 +48,17 @@ def verify():
  ctor_data={p-0x00486740:struct.unpack('<I',pe.raw_at(image,base,sections,p,4))[0]
             for p in reloc if 0x00486740<=p<0x00486740+102}
  assert ctor_data=={0x06:0x00567C8D,0x13:0x005B25C0}
+ impl_ctor=pe.raw_at(image,base,sections,0x004866B0,53)
+ assert hashlib.sha256(impl_ctor).hexdigest()==(
+     '55cdae513205b64f52ba95b7e706a2209dff51e4cf13c5268e76d890dbbb7fdd')
+ impl_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(impl_ctor,0x004866B0))
+ assert len(impl_ins)==19
+ assert (impl_ins[-1].mnemonic,impl_ins[-1].op_str)==('ret','4')
+ assert impl_ins[-1].address+impl_ins[-1].size==0x004866B0+53
+ assert calls(impl_ins,0x004866B0)=={0x0A:0x0040BDA0,0x1C:0x0040B280}
+ impl_data={p-0x004866B0:struct.unpack('<I',pe.raw_at(image,base,sections,p,4))[0]
+            for p in reloc if 0x004866B0<=p<0x004866B0+53}
+ assert impl_data=={0x14:0x0056FE28}
  tick_reset=pe.raw_at(image,base,sections,0x004869D0,90)
  assert hashlib.sha256(tick_reset).hexdigest()==(
      'f957d4564a030aaad49dd863e78969ee16a2f2343badc5e326dee9d725b59621')
@@ -95,12 +106,16 @@ def verify():
  reset=coff.compare_unit('card_tick_function_reset_90')
  assert reset['result']=='exact' and reset['size']==90 and reset['matched_bytes']==90
  assert len(reset['relocations'])==5
+ impl=coff.compare_unit('card_tick_func_impl_ctor_53')
+ assert impl['result']=='exact' and impl['size']==53 and impl['matched_bytes']==53
+ assert len(impl['relocations'])==3
  print('PASS immutable native Card callback 111B/42-i386, four real E8/one PE HIGHLOW')
  print('PASS nested 102B constructor SHA/call map: 3 E8 + 2 physical PE HIGHLOW; exact 5 relocation roles')
  print('PASS nested 90B _Reset SHA/call map: all five original E8 targets; no PE HIGHLOW')
  print('PASS real capture+4 std::pmr::string::c_str at 0x44BAF0, whole 22B/10 i386, original _Myptr E8')
  print('PASS nested NativeCardTickCallback std::function constructor 102/102, 82 ordinary bytes and five relocations')
  print('PASS nested _Reset 90/90, 70 ordinary bytes and five original E8 destinations')
+ print('PASS 53B _Func_impl_no_alloc ctor, 41/41 ordinary bytes, two E8 and its original vtable HIGHLOW')
  print('PASS both nested callable boundaries preserve their out-of-line std::forward calls to 0x0040B280')
  print('The 578B ASCII text draw Boss and 1,896B Card start remain NONEXACT, no transitive credit')
 if __name__=='__main__':verify()

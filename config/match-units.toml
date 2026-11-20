@@ -26623,6 +26623,21 @@ relocations = [
   { offset = 0x4F, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
 ]
 
+# CORE/RECON-1191: 53B erased callable target construction.
+[units.card_tick_func_impl_ctor_53]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_impl_no_alloc<NativeCardTickCallback>::_Func_impl_no_alloc(move)"]
+symbol = "??$?0UNativeCardTickCallback@th20@@$0A@@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@QAE@$$QAUNativeCardTickCallback@th20@@@Z"
+target_address = 0x004866B0
+size = 53
+relocations = [
+  { offset = 0x0B, type = "REL32", symbol = "??0?$_Func_base@X$$V@std@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x14, type = "DIR32", symbol = "??_7?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@6B@", target = 0x0056FE28 },
+  { offset = 0x1D, type = "REL32", symbol = "??$forward@UNativeCardTickCallback@th20@@@std@@YA$$QAUNativeCardTickCallback@th20@@AAU12@@Z", target = 0x0040B280 },
+]
+
 # CORE/RECON-1038: complete native 54B std::_String_val::_Myptr from PMR c_str.
 [units.card_text_string_myptr_54]
 source = "src/CardTextCallback111.cpp"

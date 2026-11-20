@@ -934,3 +934,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00486A30,std::_Func_class<void>::_Reset(NativeCardTextPayload&&),65,matching,100.00,card_text_function_reset_65,"CORE/RECON-1188; original whole function, all native relocation roles"
 0x00486740,std::function<void()>::function(NativeCardTickCallback&&),102,matching,100.00,card_tick_function_ctor_102,"CORE/RECON-1190; original whole function, all native relocation roles"
 0x004869D0,std::_Func_class<void>::_Reset(NativeCardTickCallback&&),90,matching,100.00,card_tick_function_reset_90,"CORE/RECON-1190; original whole function, all native relocation roles"
+0x004866B0,std::_Func_impl_no_alloc<NativeCardTickCallback>::_Func_impl_no_alloc(move),53,matching,100.00,card_tick_func_impl_ctor_53,"CORE/RECON-1191; original 53B whole exact, two E8 and vtable HIGHLOW"

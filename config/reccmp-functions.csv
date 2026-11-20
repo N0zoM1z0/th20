@@ -1789,3 +1789,4 @@ std::function<void()>::function(NativeCardTextPayload&&),0x00486800,function
 std::_Func_class<void>::_Reset(NativeCardTextPayload&&),0x00486A30,function
 std::function<void()>::function(NativeCardTickCallback&&),0x00486740,function
 std::_Func_class<void>::_Reset(NativeCardTickCallback&&),0x004869D0,function
+std::_Func_impl_no_alloc<NativeCardTickCallback>::_Func_impl_no_alloc(move),0x004866B0,function

@@ -2396,7 +2396,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00486600,library,Bullet,exclude,high,"CORE/LIB-254; docs/BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md; Real MSVC std::pmr::vector<BulletCommand> count based on original 44-byte difference of vector storage pointers, called from full 3735B Bullet shot emitter. Actual pinned STL template instantiation yields native 41/41 strict zero-relocation replay. Library origin: excluded from game-authored exact credit."
 0x00486630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004866B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004866B0,unknown,CxxRuntime,authored,high,CORE/RECON-1191
 0x004866F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486740,unknown,CxxRuntime,authored,high,CORE/RECON-1190
 0x004867B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

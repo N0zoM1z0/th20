@@ -4,8 +4,11 @@ and 90B `_Reset` at `0x004869D0` restored whole exact. The maintained source
 explicitly instantiates `std::forward<NativeCardTickCallback>` with
 `__declspec(noinline)`, preserving both original E8 calls to the shared 8B
 `0x0040B280` forwarding leaf. The constructor matches 102/102 bytes with
-five relocations; `_Reset` matches 90/90 with five E8 destinations. This is a
-separate nested callable from the 102B/65B `NativeCardTextPayload` callable
+five relocations; `_Reset` matches 90/90 with five E8 destinations. The
+53B `std::_Func_impl_no_alloc<NativeCardTickCallback>` move constructor at
+`0x004866B0` is also now whole exact: 41/41 ordinary bytes, two E8 targets,
+and its original vtable HIGHLOW. This is a separate nested callable from the
+102B/65B `NativeCardTextPayload` callable
 used by Card start; neither result grants exactness to the 578B draw Boss or
 1,896B Card start parent.
 
