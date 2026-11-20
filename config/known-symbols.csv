@@ -971,3 +971,4 @@ address,name,module,confidence,evidence
 0x00425070,th20::screen_shutdown_425070,Screen,high,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md
 0x004244C0,th20::screen_update_envelope_4244c0,Screen,medium,docs/SCREEN_ENVELOPE_UPDATE_1318_SOURCE_RECONSTRUCTION.md
 0x004249F0,th20::screen_update_shake_4249f0,Screen,medium,docs/SCREEN_SHAKE_UPDATE_1040_SOURCE_RECONSTRUCTION.md
+0x00424350,th20::screen_update_flash_424350,Screen,medium,docs/SCREEN_FLASH_UPDATE_264_SOURCE_RECONSTRUCTION.md

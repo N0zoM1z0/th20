@@ -1694,3 +1694,4 @@ th20::NativeScreenFactoryAllocatorView::allocate_screen_422d40,0x00422D40,functi
 th20::screen_shutdown_425070,0x00425070,function
 th20::screen_update_envelope_4244c0,0x004244C0,function
 th20::screen_update_shake_4249f0,0x004249F0,function
+th20::screen_update_flash_424350,0x00424350,function
