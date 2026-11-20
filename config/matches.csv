@@ -873,3 +873,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004E1410,th20::PlayerRecord::add_field_30_and_check,146,matching,100.00,player_record_add_field_30_and_check,CORE/RECON-1142; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md
 0x00510710,th20::ItemRewardPopupQueue::enqueue,255,matching,100.00,item_reward_popup_queue,CORE/RECON-1143; docs/ITEM_REWARD_POPUP_QUEUE_EXACT.md
 0x004BD5A0,th20::item_reward_popup_queue,26,matching,100.00,item_reward_popup_queue_lookup,CORE/RECON-1143; docs/ITEM_REWARD_POPUP_QUEUE_EXACT.md
+0x004C47C0,th20::Item::award_life_reward,307,matching,100.00,item_award_life_reward,CORE/RECON-1144; docs/ITEM_REWARD_LIFE_HELPER_307_EXACT.md

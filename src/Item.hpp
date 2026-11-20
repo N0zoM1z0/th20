@@ -24,6 +24,7 @@ struct Item {
     std::int32_t spawn_effect();
     std::int32_t activate();
     void retire();
+    void award_life_reward();
 };
 class ItemInf : public TaskInfo {
 public:

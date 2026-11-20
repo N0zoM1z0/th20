@@ -30575,3 +30575,35 @@ relocations = [
   { offset = 13, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
   { offset = 20, type = "REL32", symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ", target = 0x00421810 },
 ]
+
+# CORE/RECON-1144: original Item life/power reward helper, full call order.
+[units.item_award_life_reward]
+source = "src/ItemRewardHelpers.cpp"
+object = "build/item-reward-helpers/ItemRewardHelpers.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Item::award_life_reward"]
+symbol = "?award_life_reward@Item@th20@@QAEXXZ"
+target_address = 0x004C47C0
+size = 307
+relocations = [
+  { offset = 13, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 23, type = "REL32", symbol = "?clamped_option_units@PlayerRecord@th20@@QAEHXZ", target = 0x004993B0 },
+  { offset = 32, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 42, type = "REL32", symbol = "?clamped_option_cap@PlayerRecord@th20@@QAEHXZ", target = 0x004B8210 },
+  { offset = 53, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 63, type = "REL32", symbol = "?clamped_field_40@PlayerRecord@th20@@QAEHXZ", target = 0x004C4B30 },
+  { offset = 105, type = "REL32", symbol = "?item_reward_popup_queue@th20@@YAPAUItemRewardPopupQueue@1@H@Z", target = 0x004BD5A0 },
+  { offset = 138, type = "REL32", symbol = "?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z", target = 0x00510710 },
+  { offset = 147, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 152, type = "REL32", symbol = "?add_score@Session@th20@@QAEXI@Z", target = 0x00488550 },
+  { offset = 160, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 173, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 183, type = "REL32", symbol = "?clamped_option_cap@PlayerRecord@th20@@QAEHXZ", target = 0x004B8210 },
+  { offset = 198, type = "REL32", symbol = "?add_field_30_and_check@PlayerRecord@th20@@QAEHH@Z", target = 0x004E1410 },
+  { offset = 214, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 230, type = "REL32", symbol = "?rebuild_option_animations@Player@th20@@QAEXH@Z", target = 0x004FACA0 },
+  { offset = 237, type = "REL32", symbol = "?item_reward_popup_queue@th20@@YAPAUItemRewardPopupQueue@1@H@Z", target = 0x004BD5A0 },
+  { offset = 268, type = "REL32", symbol = "?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z", target = 0x00510710 },
+  { offset = 292, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 297, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 0x00426EB0 },
+]
