@@ -877,3 +877,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004C4DA0,th20::item_award_reward_type_2,346,matching,100.00,item_award_reward_type_2,CORE/RECON-1145; docs/ITEM_REWARD_HELPERS_RECONSTRUCTION.md
 0x004776A0,th20::NativeViewIndexOwner::set_view_index,25,matching,100.00,native_view_index_owner_set,CORE/RECON-1146; docs/NATIVE_VIEW_INDEX_OWNER_EXACT.md
 0x004C46F0,th20::ItemInf::update_callback,79,matching,100.00,item_inf_update_gate,CORE/RECON-1147; docs/ITEM_INF_UPDATE_GATE_79_EXACT.md
+0x00424010,th20::Context::bomb_controller,17,matching,100.00,context_bomb_controller,CORE/RECON-1148; docs/BOMB_OWNER_RECONSTRUCTION.md
