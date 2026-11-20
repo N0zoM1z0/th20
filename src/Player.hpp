@@ -69,6 +69,10 @@ public:
     std::int32_t load_shot_data(PlayerShotData** output,const char* path);
     bool focused_mode();
     std::int32_t state_value() const;
+    float motion_parameter_00_value() const;
+    float motion_parameter_04_value() const;
+    float motion_parameter_08_value() const;
+    float motion_parameter_10_value() const;
     void apply_player_hit();
     void record_bullet_graze(const Vector3& position, std::uint32_t bullet_color);
     std::int32_t collision_rectangle(const Vector3& bullet_position,

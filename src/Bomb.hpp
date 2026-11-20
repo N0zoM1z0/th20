@@ -48,6 +48,7 @@ public:
     std::int32_t draw();
     std::int32_t event(const Vector3* position,const Vector2* dimensions);
     std::int32_t finish();
+    bool active_for(std::int32_t duration) const;
     static std::int32_t update_callback(void* owner);
     static std::int32_t draw_callback(void* owner);
 };

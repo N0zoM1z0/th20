@@ -1692,3 +1692,8 @@ th20::native_construct_array_40bc20
 th20::NativeAnimationResetHooks::reset_sprite_cache_424080
 th20::NativeAnimationResetHooks::reset_color_cache_4240a0
 th20::screen_draw_rect_423650
+th20::Player::motion_parameter_00_value
+th20::Player::motion_parameter_04_value
+th20::Player::motion_parameter_08_value
+th20::Player::motion_parameter_10_value
+th20::ItemInf::set_speed_scale

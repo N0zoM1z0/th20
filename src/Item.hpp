@@ -41,6 +41,7 @@ public:
     ~ItemInf() override;
     void enable() override;
     void select_context(std::int32_t index);
+    void set_speed_scale(float value);
     // Native whole-pool byte initialization requires fresh, resource-free
     // Item/Animation storage. It is not a general release/reset operation.
     void initialize_pool();

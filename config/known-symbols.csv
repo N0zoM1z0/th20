@@ -992,3 +992,9 @@ address,name,module,confidence,evidence
 0x00424080,th20::NativeAnimationResetHooks::reset_sprite_cache_424080,Graphics,high,CORE/RECON-1136; docs/SCREEN_DRAW_SUPPORT_40BC20_424080_4240A0.md
 0x004240A0,th20::NativeAnimationResetHooks::reset_color_cache_4240a0,Graphics,high,CORE/RECON-1137; docs/SCREEN_DRAW_SUPPORT_40BC20_424080_4240A0.md
 0x00423650,th20::screen_draw_rect_423650,Graphics,high,CORE/RECON-1138; docs/SCREEN_DRAW_RECTANGLE_1407_STRICT_EXACT.md
+0x004C4940,th20::Player::motion_parameter_00_value,Player,high,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
+0x004C4920,th20::Player::motion_parameter_04_value,Player,high,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
+0x004C4900,th20::Player::motion_parameter_08_value,Player,high,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
+0x004B8050,th20::Player::motion_parameter_10_value,Player,high,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
+0x004C4F70,th20::ItemInf::set_speed_scale,Item,high,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
+0x004C4F00,th20::BombController::active_for,Bomb,medium,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md

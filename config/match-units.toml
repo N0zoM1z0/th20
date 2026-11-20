@@ -30442,3 +30442,54 @@ relocations = [
   { offset = 0x3E7, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", addend = 0x3A8, target = 0x005C4D40 },
   { offset = 0x403, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", addend = 0x3A8, target = 0x005C4D40 },
 ]
+
+# CORE/RECON-1140: Player motion-parameter accessors used by ItemInf update.
+[units.player_motion_parameter_00_value]
+source = "src/PlayerMotionParameterAccessors.cpp"
+object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::motion_parameter_00_value"]
+symbol = "?motion_parameter_00_value@Player@th20@@QBEMXZ"
+target_address = 0x004C4940
+size = 20
+relocations = []
+
+[units.player_motion_parameter_04_value]
+source = "src/PlayerMotionParameterAccessors.cpp"
+object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::motion_parameter_04_value"]
+symbol = "?motion_parameter_04_value@Player@th20@@QBEMXZ"
+target_address = 0x004C4920
+size = 20
+relocations = []
+
+[units.player_motion_parameter_08_value]
+source = "src/PlayerMotionParameterAccessors.cpp"
+object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::motion_parameter_08_value"]
+symbol = "?motion_parameter_08_value@Player@th20@@QBEMXZ"
+target_address = 0x004C4900
+size = 20
+relocations = []
+
+[units.player_motion_parameter_10_value]
+source = "src/PlayerMotionParameterAccessors.cpp"
+object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Player::motion_parameter_10_value"]
+symbol = "?motion_parameter_10_value@Player@th20@@QBEMXZ"
+target_address = 0x004B8050
+size = 20
+relocations = []
+
+[units.item_controller_set_speed_scale]
+source = "src/ItemInfSetSpeedScale.cpp"
+object = "build/item-inf-set-speed-scale/ItemInfSetSpeedScale.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::ItemInf::set_speed_scale"]
+symbol = "?set_speed_scale@ItemInf@th20@@QAEXM@Z"
+target_address = 0x004C4F70
+size = 29
+relocations = []
