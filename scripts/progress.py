@@ -4,55 +4,26 @@
 from __future__ import annotations
 
 import argparse
-import csv
+import json
 from pathlib import Path
+import subprocess
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG = ROOT / "config"
-OUTPUT = ROOT / "docs" / "PROGRESS.md"
-SVG = ROOT / "resources" / "progress.svg"
+OUTPUT = ROOT / ".analysis" / "progress" / "PROGRESS.md"
+SVG = OUTPUT.with_name("progress.svg")
 
 
-def csv_rows(name: str) -> list[dict[str, str]]:
-    with (CONFIG / name).open(newline="", encoding="utf-8") as stream:
-        return list(csv.DictReader(stream))
+def measures():
+    report = subprocess.check_output(
+        [sys.executable, "scripts/report-reconstruction-status.py", "--summary", "--json"],
+        cwd=ROOT, text=True,
+    )
+    return json.loads(report)["summary"]
 
 
-def measures() -> dict[str, int | float]:
-    functions = csv_rows("functions.csv")
-    origins = {row["address"]: row for row in csv_rows("function-origins.csv")}
-    matches = csv_rows("matches.csv")
-    with (CONFIG / "implemented.csv").open(newline="", encoding="utf-8") as stream:
-        implemented = [row[0] for row in csv.reader(stream) if row]
-    authored = [
-        row for row in functions if origins[row["address"]]["disposition"] == "authored"
-    ]
-    excluded = [
-        row for row in functions if origins[row["address"]]["disposition"] == "exclude"
-    ]
-    reviewed = len(authored) + len(excluded)
-    mappings = {row["name"]: row["address"] for row in csv_rows("reccmp-functions.csv")}
-    implemented_authored = sum(origins[mappings[name]]["disposition"] == "authored"
-                               for name in implemented)
-    exact_bytes = sum(int(row["size"], 0) for row in matches)
-    authored_bytes = sum(int(row["size"], 0) for row in authored)
-    return {
-        "functions": len(functions),
-        "review": len(functions) - reviewed,
-        "authored": len(authored),
-        "excluded": len(excluded),
-        "implemented": len(implemented),
-        "implemented_authored": implemented_authored,
-        "matches": len(matches),
-        "exact_bytes": exact_bytes,
-        "authored_bytes": authored_bytes,
-        "reviewed": reviewed,
-    }
-
-
-def render() -> str:
-    values = measures()
+def render(values) -> str:
     exact_pct = (
         100 * int(values["exact_bytes"]) / int(values["authored_bytes"])
         if values["authored_bytes"]
@@ -65,26 +36,25 @@ provisional until each boundary is reconciled with exact target control flow.
 
 | Measure | Count |
 | --- | ---: |
-| Tracked 1.00a function candidates | {values['functions']:,} |
+| Tracked 1.00a function candidates | {values['candidates']:,} |
 | Origin/boundary review pending | {values['review']:,} |
 | Confirmed authored functions | {values['authored']:,} |
 | Classified exclusions | {values['excluded']:,} |
-| Source-present mappings, all origins | {values['implemented']:,} |
-| Source-present authored mappings | {values['implemented_authored']:,} |
-| Canonical exact functions | {values['matches']:,} |
+| Source-present mappings, all origins | {values['source_present']:,} |
+| Source-present authored mappings | {values['source_present_authored']:,} |
+| Canonical exact functions | {values['exact_functions']:,} |
 | Canonical exact authored bytes | {values['exact_bytes']:,} |
 | Exact / currently confirmed authored bytes | {exact_pct:.2f}% |
 
-Exact totals count only functions whose configured MSVC x86 unit passes the
-canonical zero-difference comparator and is recorded consistently in both
-`config/matches.csv` and `config/functions.csv`.
+Exact totals are recorded acceptance in the canonical ledgers. Use
+`scripts/repo-python scripts/replay-exact-units.py --list-stale-sources`
+to inspect local build receipt freshness.
 """
 
 
-def render_svg() -> str:
-    values = measures()
-    functions = int(values["functions"])
-    reviewed = int(values["reviewed"])
+def render_svg(values) -> str:
+    functions = int(values["candidates"])
+    reviewed = functions - int(values["review"])
     review_pending = int(values["review"])
     review_pct = 100 * reviewed / functions if functions else 0.0
     exact_bytes = int(values["exact_bytes"])
@@ -123,8 +93,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    content = render()
-    svg = render_svg()
+    values = measures()
+    content = render(values)
+    svg = render_svg(values)
     if args.check:
         stale: list[str] = []
         if not OUTPUT.exists() or OUTPUT.read_text(encoding="utf-8") != content:
@@ -136,8 +107,8 @@ def main() -> int:
             return 1
         print("progress artifacts are current")
         return 0
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(content, encoding="utf-8")
-    SVG.parent.mkdir(parents=True, exist_ok=True)
     SVG.write_text(svg, encoding="utf-8")
     print(f"wrote {OUTPUT.relative_to(ROOT)} and {SVG.relative_to(ROOT)}")
     return 0

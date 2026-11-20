@@ -1,6 +1,6 @@
 # TH20 reconstruction — handoff to the next agent
 
-**Reconciled 2026-11-11.** Start with [AGENTS.md](../AGENTS.md) for the
+Start with [AGENTS.md](../AGENTS.md) for the
 repository rules and exact target. This is the current work queue; the large
 [evidence index](EVIDENCE_INDEX.md) contains dated investigations, **not** a
 current-status ledger. Read the [open Boss backlog](RE_OPEN_BOSS_BACKLOG.md)
@@ -13,20 +13,18 @@ for more candidates. Git history preserves earlier checkpoints.
 | Executable | `resources/th20.exe`, Japanese Steamless v1.00a, 1,858,560 bytes |
 | Locked SHA-256 | `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897` |
 | Version label caveat | Embedded title/replay strings say **1.00c** inside this *same* selected file; see [provenance](TARGET_PROVENANCE.md) |
-| Provisional inventory | 6,929 function candidates, including one original-only recovered 2,884B head |
-| Functions with provisional source mapping | **1,646** rows; includes unaccepted and excluded mappings |
-| Source-present / implemented | **1,632** functions |
-| Canonical exact units / compiler objects | **1,629** units / **471** protected MSVC objects and receipts |
-| Credited game-authored whole exact | **815** distinct original heads / **274,659** `.text` bytes |
 | Full playable game | **Not yet built, linked or runtime-validated** |
 
-These figures are a checkpoint, not counters to update by hand. The
-[original game exact ledger](../config/matches.csv),
+The [original game exact ledger](../config/matches.csv),
 [complete unit manifest](../config/match-units.toml), and
 [function/source ledger](../config/functions.csv) are authoritative. Recheck
 live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary`. Authored game credit excludes compiler/STL helpers, duplicated
 folded implementations, and post-`ret` switch/padding data.
+
+The current item work starts with the [exact 201-byte phase transition](WEAPON_STONE_ITEM_PROGRESS_EXACT.md).
+The ItemInf main loop and the WeaponStone mesh callback and effect path have
+working-tree drafts whose whole-function acceptance is still pending.
 
 ## Recently closed whole-native work — do not reopen
 
@@ -182,10 +180,10 @@ folded implementations, and post-`ret` switch/padding data.
    (original 1,896B/512); affected 128B+7B source units and existing
    1,522B HUD/20B getter remained exact under bounded validation.
    [Current Card Boss proof](CARD_START1896_FULL_CALL_DATA_ROLES_FRONTIER.md).
-5. **Huge source-absent dispatchers:** 12,140B Bullet command,
-   41,967B Enemy ECL opcode, 39,470B Animation VM update. Exact children
-   do not establish whole-parent exactness. Keep their full original
-   code/table boundaries in view; see [backlog](RE_OPEN_BOSS_BACKLOG.md).
+5. **Large dispatchers.** The 12,140B Bullet command path and 41,967B Enemy
+   ECL opcode handler still lack whole source. The 39,470B Animation VM
+   update has compiled C++ and remains nonexact. Keep each original code and
+   table extent in view. See the [backlog](RE_OPEN_BOSS_BACKLOG.md).
 
 ## Fast reproduction and safety boundaries
 
@@ -200,6 +198,7 @@ Ghidra and tool access are described in [shared tools](SHARED_TOOLS.md).
 # Read current state; no cold compilation
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 scripts/repo-python scripts/validate-tracking.py --require-target
+scripts/repo-python scripts/replay-exact-units.py --list-stale-sources
 
 # Whole source-present NONEXACT Bosses, each one isolated build/role check
 scripts/repo-python scripts/verify-animation-draw-boss-source-roles.py
@@ -207,9 +206,10 @@ scripts/repo-python scripts/probe-animation-particle-grid-update2884.py
 scripts/repo-python scripts/verify-animation-file-group336-native.py
 
 # For changed exact source, ONLY its affected unit(s)/include consumers
-scripts/repo-python scripts/build.py --unit UNIT_ID
+nice -n 15 scripts/repo-python scripts/build.py --unit UNIT_ID
 scripts/repo-python scripts/compare-coff-function.py --unit UNIT_ID
-# Or: scripts/repo-python scripts/replay-exact-units.py --source src/FILE.cpp
+# Or use repeated source filters
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/FILE.cpp
 ```
 
 **Never run unfiltered full cold replay for a routine handoff.** Inspect
@@ -223,14 +223,10 @@ are **zero native units to rebuild**: check links, tracking and Git diff.
 
 The locked executable, `_reference`, `ghidra-project`, pinned MSVC/SDK in
 `.tools/msvc`, the TH20-specific Wine prefix in `.tools/wine`, `.venv`,
-current source and all **438 canonical** object/receipt providers are
-**protected**. Storage maintenance on this checkpoint removed 37
-recreatable `build/gptweb-*` experiment-output directories and superseded
-private source clones; keep current `.analysis/` research sources for open
-Bosses. Re-run the relevant probe script when a removed temporary object is
-needed, rather than restoring old binary caches. Large historical
-entries in the [evidence index](EVIDENCE_INDEX.md) are dated and sometimes
-superseded; use the **current ledger and this handoff** for status.
+canonical object and receipt paths from the match manifest, and useful private
+evidence for open functions are protected. Re-run the relevant probe to
+recreate a removed temporary object. The [evidence index](EVIDENCE_INDEX.md)
+links dated investigations.
 
 ## 2026-11-19 session — contextual ANM count views
 

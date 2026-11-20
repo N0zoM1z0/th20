@@ -69,9 +69,13 @@ def load() -> tuple[list[dict[str, object]], dict[str, int]]:
         "candidate_bytes": sum(int(row["size"]) for row in result),
         "review": sum(row["category"] == "review" for row in result),
         "authored": sum(row["category"] == "authored" for row in result),
+        "authored_bytes": sum(int(row["size"]) for row in result if row["category"] == "authored"),
         "excluded": sum(row["category"] == "excluded" for row in result),
         "mapped": sum(bool(row["mapped"]) for row in result),
         "source_present": sum(bool(row["source_present"]) for row in result),
+        "source_present_authored": sum(
+            bool(row["source_present"]) for row in result if row["category"] == "authored"
+        ),
         "exact_functions": sum(bool(row["exact"]) for row in result),
         "exact_bytes": sum(int(row["size"]) for row in result if row["exact"]),
         "configured_units": len(manifest.get("units", {})),
@@ -129,7 +133,7 @@ def main() -> int:
             f"authored {summary['authored']}, excluded {summary['excluded']}"
         )
         print(
-            f"Reconstruction: mapped {summary['mapped']}, source "
+            f"Reconstruction ledger: mapped {summary['mapped']}, source "
             f"{summary['source_present']}, exact {summary['exact_functions']} "
             f"({summary['exact_bytes']} bytes), units {summary['configured_units']}"
         )

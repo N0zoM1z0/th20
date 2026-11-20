@@ -9,10 +9,6 @@ Agent workflow: follow the highest-priority requirements in [AGENTS.md](AGENTS.m
     alt="Original Japanese TH20 title screen">
 </p>
 
-<p align="center">
-  <img src="resources/progress.svg" alt="TH20 exact source reconstruction progress">
-</p>
-
 Source reconstruction of the original Japanese TH20 v1.00a **Steamless**
 executable. Function-level exactness requires reproducible comparison against
 one hash-attested target. The workflow follows [TH095](https://github.com/N0zoM1z0/th095),
@@ -113,12 +109,13 @@ for live counts and read the
 | **200-particle polymorphic native group constructor** | Whole **172B/46-i386** original game ctor and **49B/18-i386** generated deleting wrapper now strict exact under one real **0x1940-byte** class with two 200-element Vector3 arrays. Original `0x56EC14` vtable and all 9 ctor E8/1 HIGHLOW independently audited. **+172 authored-game bytes**; generated wrappers uncredited. [Whole original proof](docs/ANIMATION_PARTICLE_GRID_GROUP_CTOR172_STRICT_EXACT.md), [156B C++17 factory](docs/ANIMATION_PARTICLE_GRID_FACTORY156_STRICT_EXACT.md), [47B create/31B configuration](docs/ANIMATION_PARTICLE_GRID_CREATE47_CONFIG31_STRICT_EXACT.md), [92B virtual stop](docs/ANIMATION_PARTICLE_GRID_STOP92_STRICT_EXACT.md). |
 | **1,486B rotated sprite corner Boss now whole exact** | **1,486/1,486 original x86 exact** with all 13 E8, nine native HIGHLOW and an authentic compiler-emitted `+0x41` NOP from the post-Angle lexical scope. The separately exact 985B corner sibling remains unchanged. [Complete strict proof](docs/ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md). |
 | **Source-present, NONEXACT parents** | Original [5,993B Animation Draw](docs/ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md), [104B polygon wrapper](docs/ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md), [3,111B Player main](docs/PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md), and [555B Player movement](docs/PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md). |
-| **Source-absent large parents** | Original [12,140B Bullet extended command](docs/BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md), [41,967B Enemy ECL opcode dispatcher](docs/ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md), and **39,470B Animation VM update**. Their exact callees are not parent-body credit. |
+| **Open large parents** | The [12,140B Bullet extended command](docs/BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md) and [41,967B Enemy ECL opcode dispatcher](docs/ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md) still lack whole source. The [39,470B Animation VM update](docs/ANIMATION_UPDATE_VM_RECONSTRUCTION.md) has a compiled C++ candidate and remains nonexact. |
 | **Exact original `.rdata`** | The **96B 2×3×4 quad corner table**, **8B polygon widths (16.0f/32.0f)** and **72B Player direction table** each have attested original data bytes; **none** increases game `.text` coverage. [Corner table](docs/ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md), [polygon scalars](docs/ANIMATION_POLYGON_PALETTE_120_TAG_31_STRICT_EXACT.md), [Player data](docs/PLAYER_DIRECTION_TABLE_72_EXACT_RDATA_AND_37_ROLES.md). |
 | **Whole-program result** | **Not linked or playable yet.** Source mapping, canonical strict acceptance, original authorship credit, static data and runtime integration are different claims. |
 
-[Generated progress](docs/PROGRESS.md) and the status reporter provide live
-authored totals. [The current handoff](docs/RE_HANDOFF.md) records remaining work
+[Progress commands](docs/PROGRESS.md) read current totals directly from the
+ledgers and can generate a Markdown report and SVG. [The current handoff](docs/RE_HANDOFF.md)
+records remaining work
 and local verification; [the evidence index](docs/EVIDENCE_INDEX.md) routes dated
 investigations without mixing historical counts into current status.
 
@@ -138,14 +135,12 @@ When code or infrastructure changes warrant broader checks, public CI needs
 Python 3.11+, with no original game or C++ compiler:
 
 ```bash
-scripts/repo-python scripts/ci.py
+scripts/repo-python scripts/ci.py --full
 ```
 
-Default CI checks public-tree Python/JSON/TOML/shell syntax, private-artifact
-exclusion, source-profile rules, ledger consistency and build configuration.
-It needs no game, compiler, Ghidra or optional Python packages. Use
-`scripts/repo-python scripts/ci.py --full` to add synthetic exact-oracle tests
-when changing the comparator or its inputs. The historical
+Public CI checks syntax, private-artifact exclusion, source profiles, ledgers,
+build configuration and synthetic exact-oracle cases. It runs without the game,
+compiler, Ghidra or optional Python packages. The historical
 portable C++ semantic suite has been retired; [retained tests](tests/README.md)
 cover exact comparison and repository tools. Exact checkpoints require affected
 native builds and complete strict replay. A specific unresolved behavior or ABI
@@ -206,7 +201,7 @@ limits; nonexact implementations remain documented for further reconstruction.
 - [Runtime invincibility launcher](docs/RUNTIME_PATCH.md)
 - [Verified knowledge base](docs/KNOWLEDGE_BASE.md)
 - [Roadmap](docs/ROADMAP.md)
-- [Generated progress](docs/PROGRESS.md)
+- [Progress commands](docs/PROGRESS.md)
 - [Agent rules](AGENTS.md)
 
 ## Credits
