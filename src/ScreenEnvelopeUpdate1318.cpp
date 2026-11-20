@@ -45,12 +45,12 @@ std::int32_t __cdecl screen_update_envelope_4244c0(void* task) {
                     static_cast<std::int32_t>(reinterpret_cast<NativeScreenInf*>(task)->field_24)+
                     static_cast<std::int32_t>(reinterpret_cast<NativeScreenInf*>(task)->field_28)-
                     static_cast<std::int32_t>(reinterpret_cast<NativeScreenInf*>(task)->timer_30);
-                const double remaining_double=static_cast<double>(remaining)+
+                volatile double remaining_double=static_cast<double>(remaining)+
                     native_unsigned_double_bias_56cdd0[static_cast<std::uint32_t>(remaining)>>31];
                 const std::int32_t duration=static_cast<std::int32_t>(reinterpret_cast<NativeScreenInf*>(task)->field_28);
-                progress=static_cast<float>(remaining_double)/static_cast<float>(
-                    static_cast<double>(duration)+
-                    native_unsigned_double_bias_56cdd0[static_cast<std::uint32_t>(duration)>>31]);
+                volatile double duration_double=static_cast<double>(duration)+
+                    native_unsigned_double_bias_56cdd0[static_cast<std::uint32_t>(duration)>>31];
+                progress=static_cast<float>(remaining_double)/static_cast<float>(duration_double);
             } else {
                 return 7;
             }
@@ -59,43 +59,57 @@ std::int32_t __cdecl screen_update_envelope_4244c0(void* task) {
     progress=static_cast<float>(static_cast<std::int32_t>(reinterpret_cast<NativeScreenInf*>(task)->field_1c))*progress;
 
     const std::uint32_t x_mode=native_polygon_random_5ba4c4.bounded(3);
-    if (x_mode==0) {
+    float x_positive_scaled;
+    float x_negative_scaled;
+    if (x_mode!=0) {
+        if (x_mode!=1) {
+            if (x_mode!=2) {
+            } else {
+                process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=-progress;
+                x_negative_scaled=(-progress)*native_texture_scale_5b8818;
+                process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=x_negative_scaled;
+                process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=x_negative_scaled;
+                process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=x_negative_scaled;
+            }
+        } else {
+            process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=progress;
+            x_positive_scaled=progress*native_texture_scale_5b8818;
+            process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=x_positive_scaled;
+            process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=x_positive_scaled;
+            process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=x_positive_scaled;
+        }
+    } else {
         process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=0.0f;
         process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=0.0f;
         process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=0.0f;
         process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=0.0f;
-    } else if (x_mode==1) {
-        process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=progress;
-        const float scaled=progress*native_texture_scale_5b8818;
-        process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=scaled;
-        process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=scaled;
-        process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=scaled;
-    } else if (x_mode==2) {
-        process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=-progress;
-        const float scaled=(-progress)*native_texture_scale_5b8818;
-        process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=scaled;
-        process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=scaled;
-        process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=scaled;
     }
 
     const std::uint32_t y_mode=native_polygon_random_5ba4c4.bounded(3);
-    if (y_mode==0) {
+    float y_positive_scaled;
+    float y_negative_scaled;
+    if (y_mode!=0) {
+        if (y_mode!=1) {
+            if (y_mode!=2) {
+            } else {
+                process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=-progress;
+                y_negative_scaled=(-progress)*native_texture_scale_5b8818;
+                process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=y_negative_scaled;
+                process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=y_negative_scaled;
+                process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=y_negative_scaled;
+            }
+        } else {
+            process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=progress;
+            y_positive_scaled=progress*native_texture_scale_5b8818;
+            process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=y_positive_scaled;
+            process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=y_positive_scaled;
+            process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=y_positive_scaled;
+        }
+    } else {
         process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=0.0f;
         process_graphics.viewports[3].points[2].y=0.0f;
         process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=0.0f;
         process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=0.0f;
-    } else if (y_mode==1) {
-        process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=progress;
-        const float scaled=progress*native_texture_scale_5b8818;
-        process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=scaled;
-        process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=scaled;
-        process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=scaled;
-    } else if (y_mode==2) {
-        process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=-progress;
-        const float scaled=(-progress)*native_texture_scale_5b8818;
-        process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=scaled;
-        process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=scaled;
-        process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=scaled;
     }
 
     return 1;
