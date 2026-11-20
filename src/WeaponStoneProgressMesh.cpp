@@ -11,10 +11,14 @@
 #include "ScalarMath.hpp"
 
 namespace th20 {
+extern const float native_screen_rect_inner_width_384_56cda4;
+extern const float native_screen_half_2_56c8d0;
+extern const float native_screen_height_448_56d7c0;
+extern const float native_screen_alpha_max_56cd9c;
+extern const float native_pi_56e0f0;
+extern const float native_polygon_radius32;
 namespace {
 constexpr float progress_mesh_radius = 120.0f;
-constexpr float progress_mesh_pi = 3.1415927410125732f;
-constexpr float progress_mesh_alpha_max = 255.0f;
 constexpr float progress_mesh_alpha_fade_start = 0.8f;
 constexpr float progress_mesh_alpha_fade_span = 0.2f;
 constexpr float progress_mesh_wave_amplitude = 0.5f;
@@ -50,61 +54,89 @@ void WeaponStoneInfo::update_progress_mesh() {
     center.x+=view_x;
     center.y+=view_y;
 
-    const float left=view_x-(384.0f+32.0f)/2.0f;
-    const float right=view_x+(384.0f+32.0f)/2.0f;
-    const float top=view_y-32.0f;
-    const float bottom=view_y+448.0f+32.0f;
-    const std::int32_t frame=static_cast<std::int32_t>(timer_44);
-    const bool fading=timer_44.greater_than(progress_mesh_fade_start_frame);
-    const float time_phase=((static_cast<float>(frame)*progress_mesh_pi)/2.0f)/
-        static_cast<float>(progress_mesh_wave_period);
-
+    Angle wave;
     auto* point=active_mesh->positions;
     auto* vertex=active_mesh->vertices;
     for (std::int32_t column=0;column<active_mesh->columns;++column) {
         for (std::int32_t row=0;row<active_mesh->rows;++row) {
             const Vector3 radial_offset=*point-center;
             const float distance=bullet_velocity_magnitude(radial_offset);
+            const float left=-((native_screen_rect_inner_width_384_56cda4+
+                                native_polygon_radius32)/native_screen_half_2_56c8d0)+
+                static_cast<float>(window_state.mesh_view_x(view_index));
+            const float right=((native_screen_rect_inner_width_384_56cda4+
+                                native_polygon_radius32)/native_screen_half_2_56c8d0)+
+                static_cast<float>(window_state.mesh_view_x(view_index));
+            const float top=static_cast<float>(window_state.mesh_view_y(view_index))-
+                native_polygon_radius32;
+            const float bottom=native_screen_height_448_56d7c0+native_polygon_radius32+
+                static_cast<float>(window_state.mesh_view_y(view_index));
 
-            if (point->x<left || point->x>right || point->y<top || point->y>bottom) {
-                vertex->channels.alpha=0;
-            } else if (!(distance<=progress_mesh_radius)) {
-                vertex->channels.alpha=0;
+            if (left<=point->x && point->x<=right &&
+                top<=point->y && point->y<=bottom) {
+                if (progress_mesh_radius<distance) {
+                    vertex->channels.alpha=0;
+                } else {
+                    const float normalized_distance=distance/progress_mesh_radius;
+                    vertex->color=0xffffffffu;
+                    if (progress_mesh_alpha_fade_start<normalized_distance) {
+                        vertex->channels.alpha=static_cast<std::uint8_t>(
+                            static_cast<std::int32_t>(native_screen_alpha_max_56cd9c-
+                                ((normalized_distance-progress_mesh_alpha_fade_start)*
+                                 native_screen_alpha_max_56cd9c)/progress_mesh_alpha_fade_span));
+                    }
+
+                    if (timer_44.greater_than(progress_mesh_fade_start_frame)) {
+                        const std::int32_t current_frame=static_cast<std::int32_t>(timer_44);
+                        const std::int32_t alpha=vertex->channels.alpha;
+                        vertex->channels.alpha=static_cast<std::uint8_t>(
+                            (alpha*(progress_mesh_lifetime_frames-current_frame))/20);
+                    }
+
+                    wave=(native_pi_56e0f0*native_screen_half_2_56c8d0)*normalized_distance;
+                    const std::int32_t current_frame=static_cast<std::int32_t>(timer_44);
+                    wave-=((static_cast<float>(current_frame)*native_pi_56e0f0)/
+                           native_screen_half_2_56c8d0)/static_cast<float>(progress_mesh_wave_period);
+                    const float displacement_x=scalar_math::sine(static_cast<float>(wave))*
+                        normalized_distance*progress_mesh_wave_amplitude*radial_offset.x;
+                    const float displacement_y=scalar_math::sine(static_cast<float>(wave))*
+                        normalized_distance*progress_mesh_wave_amplitude*radial_offset.y;
+                    const Vector3 displacement(displacement_x,displacement_y,0.0f);
+                    vertex->position+=displacement;
+
+                    const float displaced_left=-((native_screen_rect_inner_width_384_56cda4+
+                        native_polygon_radius32)/native_screen_half_2_56c8d0)+
+                        static_cast<float>(window_state.mesh_view_x(view_index));
+                    if (displaced_left<=vertex->position.x) {
+                        const float displaced_right=((native_screen_rect_inner_width_384_56cda4+
+                            native_polygon_radius32)/native_screen_half_2_56c8d0)+
+                            static_cast<float>(window_state.mesh_view_x(view_index));
+                        if (displaced_right<vertex->position.x)
+                            vertex->position.x=displaced_right;
+                    } else {
+                        vertex->position.x=-((native_screen_rect_inner_width_384_56cda4+
+                            native_polygon_radius32)/native_screen_half_2_56c8d0)+
+                            static_cast<float>(window_state.mesh_view_x(view_index));
+                    }
+
+                    const float displaced_top=static_cast<float>(window_state.mesh_view_y(view_index))-
+                        native_polygon_radius32;
+                    if (displaced_top<=vertex->position.y) {
+                        const float displaced_bottom=native_screen_height_448_56d7c0+
+                            native_polygon_radius32+
+                            static_cast<float>(window_state.mesh_view_y(view_index));
+                        if (displaced_bottom<vertex->position.y)
+                            vertex->position.y=displaced_bottom;
+                    } else {
+                        vertex->position.y=static_cast<float>(window_state.mesh_view_y(view_index))-
+                            native_polygon_radius32;
+                    }
+                    vertex->position.z=0.0f;
+                    point->z=0.0f;
+                }
             } else {
-                const float normalized_distance=distance/progress_mesh_radius;
-                vertex->color=0xffffffffu;
-                if (normalized_distance>progress_mesh_alpha_fade_start) {
-                    const float alpha=progress_mesh_alpha_max-
-                        ((normalized_distance-progress_mesh_alpha_fade_start)*
-                         progress_mesh_alpha_max)/progress_mesh_alpha_fade_span;
-                    vertex->channels.alpha=static_cast<std::uint8_t>(
-                        static_cast<std::int32_t>(alpha));
-                }
-
-                if (fading) {
-                    const std::int32_t remaining=progress_mesh_lifetime_frames-frame;
-                    const std::int32_t alpha=vertex->channels.alpha;
-                    vertex->channels.alpha=static_cast<std::uint8_t>(
-                        (alpha*remaining)/20);
-                }
-
-                Angle wave;
-                wave=(progress_mesh_pi*2.0f)*normalized_distance;
-                wave-=time_phase;
-                const float radial_wave=scalar_math::sine(static_cast<float>(wave))*
-                    normalized_distance*progress_mesh_wave_amplitude;
-                const Vector3 displacement(radial_wave*radial_offset.x,
-                                            radial_wave*radial_offset.y,0.0f);
-                vertex->position+=displacement;
-
-                if (vertex->position.x<left) vertex->position.x=left;
-                else if (vertex->position.x>right) vertex->position.x=right;
-                if (vertex->position.y<top) vertex->position.y=top;
-                else if (vertex->position.y>bottom) vertex->position.y=bottom;
-                vertex->position.z=0.0f;
-                point->z=0.0f;
+                vertex->channels.alpha=0;
             }
-
             ++point;
             ++vertex;
         }

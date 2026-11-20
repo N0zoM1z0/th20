@@ -52,10 +52,11 @@ final call is the real Timer increment wrapper. The native body also constructs
 and assigns a second Angle local to `frame*pi/10` but never reads it again;
 that dead local is intentionally not reproduced as inert source code.
 
-The `/Od` local COFF contribution is 1,223 bytes versus the 1,780-byte native
-function. This is a semantic reconstruction, not a byte match. It is not
-admitted to `match-units.toml`; no full cold replay is run for this nonexact
-candidate.
+The `/Od` local COFF contribution is 1,794 bytes versus the 1,780-byte native
+function. This refinement restores the repeated per-vertex viewport queries,
+separate X/Y sine calls, and the original displaced-vertex boundary path. It is
+a semantic reconstruction, not a byte match. It is not admitted to
+`match-units.toml`; no full cold replay is run for this nonexact candidate.
 
 ## Targeted validation
 
