@@ -1003,3 +1003,6 @@ address,name,module,confidence,evidence
 0x004B8300,th20::PlayerRecord::clamped_field_48,PlayerRecord,high,CORE/RECON-1141
 0x004C46A0,th20::PlayerRecord::add_field_3c_clamped,PlayerRecord,high,CORE/RECON-1141
 0x004E1410,th20::PlayerRecord::add_field_30_and_check,PlayerRecord,high,CORE/RECON-1142; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md
+0x00510710,th20::ItemRewardPopupQueue::enqueue,Item,high,CORE/RECON-1143
+0x004BD5A0,th20::item_reward_popup_queue,Item,high,CORE/RECON-1143
+0x0056C8CC,native_one_56c8cc,Constants,high,CORE/RECON-1143; original queue timestamp float 1.0 at 0x0056C8CC

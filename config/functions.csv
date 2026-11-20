@@ -3611,7 +3611,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004BD560,10,0x004BD569,FUN_004bd560,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004BD570,20,0x004BD583,FUN_004bd570,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004BD590,10,0x004BD599,FUN_004bd590,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004BD5A0,26,0x004BD5B9,FUN_004bd5a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004BD5A0,26,0x004BD5B9,FUN_004bd5a0,th20::item_reward_popup_queue,Item,matching,100.00,__cdecl,?item_reward_popup_queue@th20@@YAPAUItemRewardPopupQueue@1@H@Z,false,src/ItemRewardPopupQueue.cpp,CORE/RECON-1143; docs/ITEM_REWARD_POPUP_QUEUE_EXACT.md,authored,Whole native 26B indexed Context reward-queue lookup. Uses Session::context and the shared +0x1c accessor head at 0x00421810 (Player::animation_file_ref alias); all three original relocation fields match.
 0x004BD5C0,73,0x004BD608,FUN_004bd5c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004BD610,151,0x004BD6A6,FUN_004bd610,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004BD6B0,40,0x004BD6D7,FUN_004bd6b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -4987,7 +4987,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0050FF70,413,0x0051010C,FUN_0050ff70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00510110,1326,0x0051063D,FUN_00510110,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00510640,200,0x00510707,FUN_00510640,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00510710,255,0x0051080E,FUN_00510710,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00510710,255,0x0051080E,FUN_00510710,th20::ItemRewardPopupQueue::enqueue,Item,matching,100.00,__thiscall,?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z,false,src/ItemRewardPopupQueue.cpp,CORE/RECON-1143; docs/ITEM_REWARD_POPUP_QUEUE_EXACT.md,authored,"Whole native 255B Item reward-number queue enqueue. Rotates ten 0x44 records at +0x600, converts signed integer to decimal digit bytes including negative marker, resets Timer, copies Vector3, writes original 1.0 clock global. Both native relocations match: Timer assignment at +0xBD and native_one_56c8cc at +0xE1."
 0x00510810,13,0x0051081C,FUN_00510810,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00510820,13,0x0051082C,FUN_00510820,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00510830,27,0x0051084A,FUN_00510830,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

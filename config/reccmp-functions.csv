@@ -1718,3 +1718,5 @@ th20::PlayerRecord::clamped_field_44,0x004B82C0,function
 th20::PlayerRecord::clamped_field_48,0x004B8300,function
 th20::PlayerRecord::add_field_3c_clamped,0x004C46A0,function
 th20::PlayerRecord::add_field_30_and_check,0x004E1410,function
+th20::ItemRewardPopupQueue::enqueue,0x00510710,function
+th20::item_reward_popup_queue,0x004BD5A0,function

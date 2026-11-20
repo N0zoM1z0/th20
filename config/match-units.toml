@@ -30547,3 +30547,31 @@ relocations = [
   { offset = 75, type = "DIR32", symbol = "?native_card_hud_5c06a4@th20@@3PAUNativeCardHudView@1@A", target = 0x005C06A4 },
   { offset = 80, type = "REL32", symbol = "?report_spell_result_4b90e0@NativeCardHudView@th20@@QAEXHH@Z", target = 0x004B90E0 },
 ]
+
+# CORE/RECON-1143: native Item reward-number queue owner and context lookup.
+[units.item_reward_popup_queue]
+source = "src/ItemRewardPopupQueue.cpp"
+object = "build/item-reward-popup/ItemRewardPopupQueue.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::ItemRewardPopupQueue::enqueue"]
+symbol = "?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z"
+target_address = 0x00510710
+size = 255
+relocations = [
+  { offset = 189, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 225, type = "DIR32", symbol = "?native_one_56c8cc@th20@@3MB", target = 0x0056C8CC },
+]
+
+[units.item_reward_popup_queue_lookup]
+source = "src/ItemRewardPopupQueue.cpp"
+object = "build/item-reward-popup/ItemRewardPopupQueue.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::item_reward_popup_queue"]
+symbol = "?item_reward_popup_queue@th20@@YAPAUItemRewardPopupQueue@1@H@Z"
+target_address = 0x004BD5A0
+size = 26
+relocations = [
+  { offset = 8, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 13, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+  { offset = 20, type = "REL32", symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ", target = 0x00421810 },
+]

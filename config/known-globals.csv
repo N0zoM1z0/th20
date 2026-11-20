@@ -11,3 +11,4 @@ address,name,module,confidence,evidence
 0x005BA568,th20::session,Session,high,EXACT-073; original initializer401180/CRT56C3CC/ctor422E40/704-byte BSS; docs/EXACT_SESSION_RECONSTRUCTION.md
 0x005B66D8,th20::process_chain,FunctionChainController,high,CORE/EXACT-097; four registration helpers and HitCtrlInf destruction independently read controller pointer; startup open
 0x005C06A4,th20::current_front,FrontInf,high,"CORE159; FrontInf constructor4AF2E5 publication, destructor4AFBCE clearing and independent HUD/ECL consumers; docs/FRONT_OWNER_RECONSTRUCTION.md"
+0x0056C8CC,th20::native_one_56c8cc,float,high,CORE/RECON-1143; original reward popup clock value 1.0 and PE relocation at 0x005107F1

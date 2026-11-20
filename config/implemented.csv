@@ -1702,3 +1702,5 @@ th20::PlayerRecord::clamped_field_44
 th20::PlayerRecord::clamped_field_48
 th20::PlayerRecord::add_field_3c_clamped
 th20::PlayerRecord::add_field_30_and_check
+th20::ItemRewardPopupQueue::enqueue
+th20::item_reward_popup_queue
