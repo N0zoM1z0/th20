@@ -3916,7 +3916,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004CA830,authored,LaserBeam,authored,medium,"CORE/RECON-1223; docs/LASER_BEAM_CANCEL_CIRCLE_RECONSTRUCTION.md; scripts/verify-laser-beam-cancel-circle-native.py; custom path sampling, per-hit game counter/effect publication and Laser virtual cancellation are game-owned behavior"
 0x004CAAC0,authored,Laser,authored,medium,CORE/EXACT-1219; docs/LASER_BASE_CANCEL_CIRCLE_DEFAULT_EXACT.md
 0x004CAAD0,authored,LaserController,authored,medium,CORE/EXACT-1218; docs/LASER_CONTROLLER_CANCEL_NEAR_EXACT.md
-0x004CABF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004CABF0,authored,LaserInfiniteInf,authored,medium,"CORE/RECON-1224; docs/LASER_INFINITE_CANCEL_CIRCLE_RECONSTRUCTION.md; scripts/verify-laser-infinite-cancel-circle-native.py; original source diagnostic identifies LaserInfiniteInf and its custom path sampling, cancellation counter, screen culling and type-dependent effect dispatch"
 0x004CB060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CB500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CB510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

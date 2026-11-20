@@ -183,7 +183,9 @@ public:
     Timer timer_6ac, timer_6bc;
     std::uint32_t field_6cc, field_6d0, field_6d4;
     void* allocated_6d8;
-    std::uint32_t field_6dc, field_6e0, field_6e4, field_6e8;
+    std::uint32_t field_6dc, field_6e0;
+    std::int32_t field_6e4; // signed laser-family discriminator (+0x6E4)
+    std::uint32_t field_6e8;
     std::int32_t view_index;
     Context* context;
     std::uint32_t field_6f4;

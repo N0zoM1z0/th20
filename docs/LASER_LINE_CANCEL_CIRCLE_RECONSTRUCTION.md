@@ -45,3 +45,7 @@ slot. `Context::bullet_controller()` is a verified 16-byte physical alias of
 `Identifier32::get`; its source-level name is documented without a second
 reccmp mapping or duplicate byte credit. The full class vtable, constructor/destructor,
 and the other three `cancel_circle` implementations remain separate boundaries.
+
+The shared base `field_6E4` is now typed as signed `std::int32_t`; the
+Infinite handler's native `JLE`/`JG` type-family comparisons independently
+confirm signed interpretation. This changes no object offsets or sizes.
