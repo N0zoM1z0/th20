@@ -28,7 +28,7 @@ std::int32_t LaserController::create_laser(std::int32_t kind,const void* paramet
         break;
     }
     case 3: {
-        auto* beam=process_allocator->allocate_laser_curve("D:\\cygwin\\home\\zun\\prog\\th20\\src\\game\\laser.cpp:328 LaserCurveInf");
+        auto* beam=process_allocator->allocate_laser_curve("D:\\cygwin\\home\\zun\\prog\\th20\\src\\game\\laser.cpp:317 LaserBeamInf");
         if (!beam) return 0;
         beam->handle=next_handle;
         if (beam->initialize_laser(parameters)<0) return 0;
@@ -36,7 +36,7 @@ std::int32_t LaserController::create_laser(std::int32_t kind,const void* paramet
         break;
     }
     case 2: {
-        auto* beam=process_allocator->allocate_laser_beam("D:\\cygwin\\home\\zun\\prog\\th20\\src\\game\\laser.cpp:317 LaserBeamInf");
+        auto* beam=process_allocator->allocate_laser_beam("D:\\cygwin\\home\\zun\\prog\\th20\\src\\game\\laser.cpp:328 LaserCurveInf");
         if (!beam) return 0;
         beam->handle=next_handle;
         if (beam->initialize_laser(parameters)<0) return 0;

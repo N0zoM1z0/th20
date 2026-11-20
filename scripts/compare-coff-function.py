@@ -386,15 +386,16 @@ def compare_unit(name: str) -> dict[str, object]:
             raise ValueError(f"COFF section-local symbol disagrees with anchor at {offset:#x}")
         observed_symbol = str(actual_row["symbol"])
         expected_symbol = str(relocation["symbol"])
-        local_label = (section_delta is not None and numbered_label(observed_symbol, "$LN")
-                       and numbered_label(expected_symbol, "$LN"))
-        local_literal = (actual_row["literal"] is not None
-                         and numbered_label(expected_symbol, "$SG"))
-        if local_literal:
+        if numbered_label(expected_symbol, "$LN"):
+            if section_delta is None or not numbered_label(observed_symbol, "$LN"):
+                raise ValueError(f"COFF local label has no same-section definition at {offset:#x}")
+        elif numbered_label(expected_symbol, "$SG"):
+            if actual_row["literal"] is None:
+                raise ValueError(f"COFF local literal has no readable definition at {offset:#x}")
             literal = bytes.fromhex(str(actual_row["literal"]))
             if pe_bytes_at(image, destination, len(literal)) != literal:
                 raise ValueError(f"COFF literal differs from anchored PE data at {offset:#x}")
-        if observed_symbol != expected_symbol and not (local_label or local_literal):
+        elif observed_symbol != expected_symbol:
             raise ValueError(
                 f"COFF relocations differ from manifest at {offset:#x}: "
                 f"actual={observed_symbol!r} expected={expected_symbol!r}"

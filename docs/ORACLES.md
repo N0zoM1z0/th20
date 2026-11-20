@@ -46,9 +46,10 @@ contribution. It checks COFF relocation offsets and types against the manifest
 and verifies that DIR32 fields coincide with the locked PE's HIGHLOW fields.
 For a same-section symbol, the COFF symbol's position must resolve to its
 independently established anchor. This permits MSVC to renumber a local `$LN`
-label. A renumbered `$SG` literal is accepted only when the COFF literal has
-the same bytes as the data at its anchored PE address. Other symbols require
-the recorded name. After resolving the relocations with their COFF addends,
+label. A `$SG` literal must have a COFF definition with matching bytes at its
+anchored PE address. For adjacent COFF literals, the check includes their
+payload and terminator. Other symbols require the recorded name. After
+resolving the relocations with their COFF addends,
 the comparison checks every code and owned data byte. Aux-less boundaries
 use the next function or section end. Reconcile associated alignment and tables
 with the function that owns them.

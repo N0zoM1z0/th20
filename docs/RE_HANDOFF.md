@@ -26,6 +26,14 @@ The current item work starts with the [exact 201-byte phase transition](WEAPON_S
 The ItemInf main loop and the WeaponStone mesh callback and effect path have
 working-tree drafts whose whole-function acceptance is still pending.
 
+The exact-oracle audit rebuilt and replayed the stale receipt closure of
+1,153 current units across 354 objects. The separate 201-byte item-progress
+unit was also cold-built and replayed. The receipt scan returned an empty
+list for the audited worktree. The [Laser factory evidence](LASER_CONTROLLER_CREATE_WHOLE_EXACT_RECONSTRUCTION.md#diagnostic-string-correction)
+records the two reversed diagnostic arguments exposed and corrected by the
+literal check. See [oracle rules](ORACLES.md) for the relocation and receipt
+checks used by the replay.
+
 ## Recently closed whole-native work — do not reopen
 
 - **Renderer D3D9 reset hooks** original 0x0041DB40/60/80/A0/C0 are [five whole-exact distinct native functions /108B](RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md): four 21B byte setters and one 24B DWORD setter at native AnimationPoolOwner+0x6000E08...+0x6000E10, each nine exact x86 instructions. One cold source object, 5/5 exact local replay; these five hooks now have actual implementations in the NONEXACT 1,954B Window state reset Boss. No parent byte credit.

@@ -36,18 +36,17 @@ the four valid branches calls the original process `DiagnosticAllocator*`
 `0x005B8894`, passes its genuine game-owned source label, and invokes a
 distinct original 92-byte factory:
 
-| Native type | Original concrete owner label | Original factory entry |
+| Native type | Original diagnostic label | Original factory entry |
 | --- | --- | --- |
 | 0 | `LaserLineInf` | `0x004C8190` |
 | 1 | `LaserInfiniteInf` | `0x004C8130` |
-| 2 | `LaserBeamInf` | `0x004C8080` |
-| 3 | `LaserCurveInf` | `0x004C8020` |
+| 2 | `LaserCurveInf` | `0x004C8080` |
+| 3 | `LaserBeamInf` | `0x004C8020` |
 
 The debug labels have independent complete strings from the PE's `.rdata` at
 `0x00571478`, `0x005714C0`, `0x00571508` and `0x00571550`. The source
-labels and type-to-factory mapping are native observations; the inferred
-method spellings `allocate_laser_line/infinite/beam/curve` do *not* claim
-original symbol recovery. Their four actual concrete allocation/construction
+labels and type-to-factory mapping are native observations. The allocator
+method spellings are provisional. Their four actual concrete allocation/construction
 bodies and lifetimes are still **undefined interfaces**, not fake implemented
 factories. They are declared on the genuine `DiagnosticAllocator` owner in
 `src/DiagnosticAllocator.hpp`, and their original addresses anchor the exact
@@ -147,3 +146,14 @@ All **42,087/42,087** full-host O2/UBSan and ASan+UBSan cases pass. The four
 concrete allocation interfaces remain explicit private fixtures; original
 41,967-byte Enemy machine code is still nonexact. See
 [CORE196 whole-root integration](ENEMY_WHOLE_ROOT_REAL_LASER_CREATOR_INTEGRATION.md).
+
+## Diagnostic string correction
+
+The stricter comparator found that the C++ string arguments for types 2 and
+3 were reversed. The original four-entry switch table reaches type 2 at
+`0x004D4968`, which pushes `0x00571550`, and type 3 at `0x004D490D`, which
+pushes `0x00571508`. The original call destinations remain `0x004C8080` and
+`0x004C8020` respectively. The earlier comparator could reproduce the pointer
+fields from manifest anchors while the COFF literals still contained the wrong
+strings. The corrected arguments now pass the literal comparison and the full
+492-byte scoped replay, including the switch table.

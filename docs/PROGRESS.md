@@ -1,6 +1,6 @@
 # TH20 reconstruction progress
 
-Read the current checkout's ledgers with:
+The status report reads the current checkout's ledgers.
 
 ```bash
 scripts/repo-python scripts/report-reconstruction-status.py --summary

@@ -152,6 +152,9 @@ class ExactOracleTests(unittest.TestCase):
         self.object.write_bytes(coff(self.code, relocations, local_target=7, symbol=b"$LN41"))
         with self.assertRaisesRegex(ValueError, "section-local symbol disagrees"):
             self.compare()
+        self.object.write_bytes(coff(self.code, relocations, symbol=b"$LN40"))
+        with self.assertRaisesRegex(ValueError, "no same-section definition"):
+            self.compare()
 
     def test_renumbered_literal_requires_matching_anchored_contents(self):
         self.unit["relocations"][1].update(target=0x40100B, symbol="$SG123")
@@ -164,6 +167,9 @@ class ExactOracleTests(unittest.TestCase):
         self.assertEqual(self.compare()["result"], "exact")
         self.object.write_bytes(coff(self.code, relocations, symbol=b"$SG124", literal=b"sampLe\0"))
         with self.assertRaisesRegex(ValueError, "literal differs"):
+            self.compare()
+        self.object.write_bytes(coff(self.code, relocations, symbol=b"$SG123"))
+        with self.assertRaisesRegex(ValueError, "no readable definition"):
             self.compare()
 
     def test_prefix_comparison_is_rejected(self):
