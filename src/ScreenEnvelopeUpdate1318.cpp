@@ -58,7 +58,7 @@ std::int32_t __cdecl screen_update_envelope_4244c0(void* task) {
     }
     progress=static_cast<float>(static_cast<std::int32_t>(reinterpret_cast<NativeScreenInf*>(task)->field_1c))*progress;
 
-    const std::int32_t x_mode=static_cast<std::int32_t>(native_polygon_random_5ba4c4.bounded(3));
+    const std::uint32_t x_mode=native_polygon_random_5ba4c4.bounded(3);
     if (x_mode==0) {
         process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=0.0f;
         process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=0.0f;
@@ -78,10 +78,10 @@ std::int32_t __cdecl screen_update_envelope_4244c0(void* task) {
         process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].x=scaled;
     }
 
-    const std::int32_t y_mode=static_cast<std::int32_t>(native_polygon_random_5ba4c4.bounded(3));
+    const std::uint32_t y_mode=native_polygon_random_5ba4c4.bounded(3);
     if (y_mode==0) {
-        process_graphics.viewports[3].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=0.0f;
         process_graphics.viewports[1].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=0.0f;
+        process_graphics.viewports[3].points[2].y=0.0f;
         process_graphics.viewports[0].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=0.0f;
         process_graphics.viewports[5].points[reinterpret_cast<NativeScreenInf*>(task)->view_40].y=0.0f;
     } else if (y_mode==1) {
