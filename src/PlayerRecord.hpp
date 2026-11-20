@@ -90,6 +90,7 @@ struct PlayerRecord {
     std::int32_t clamped_field_44();
     std::int32_t clamped_field_48();
     void add_field_3c_clamped(std::int32_t amount);
+    std::int32_t add_field_30_and_check(std::int32_t amount);
     std::int32_t available_option_count();
     std::int32_t reward_limit();
     std::int32_t collision_radius_multiplier();

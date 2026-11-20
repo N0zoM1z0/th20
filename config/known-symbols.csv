@@ -1002,3 +1002,4 @@ address,name,module,confidence,evidence
 0x004B82C0,th20::PlayerRecord::clamped_field_44,PlayerRecord,high,CORE/RECON-1141
 0x004B8300,th20::PlayerRecord::clamped_field_48,PlayerRecord,high,CORE/RECON-1141
 0x004C46A0,th20::PlayerRecord::add_field_3c_clamped,PlayerRecord,high,CORE/RECON-1141
+0x004E1410,th20::PlayerRecord::add_field_30_and_check,PlayerRecord,high,CORE/RECON-1142; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md

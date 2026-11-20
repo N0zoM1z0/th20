@@ -1717,3 +1717,4 @@ th20::PlayerRecord::clamped_field_40,0x004C4B30,function
 th20::PlayerRecord::clamped_field_44,0x004B82C0,function
 th20::PlayerRecord::clamped_field_48,0x004B8300,function
 th20::PlayerRecord::add_field_3c_clamped,0x004C46A0,function
+th20::PlayerRecord::add_field_30_and_check,0x004E1410,function
