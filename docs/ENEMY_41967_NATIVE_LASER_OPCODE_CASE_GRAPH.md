@@ -7,6 +7,8 @@
 
 **Additional maintained source frontier (CORE/RECON-1145):** the shared 1,457B original case for opcodes 609/610/611/612 now has natural-C++ source in `src/EnemyStateShotCommandOpcode.cpp`. It uses the real 396B `EnemyState::writable_shot()` pair selector and the actual PMR `BulletCommand` vector/cursor fields. The parent remains source-absent and NONEXACT. See [the 609–612 source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md).
 
+**Additional maintained source frontier (CORE/RECON-1146):** original opcodes 700/701 now have natural-C++ fragments in `src/EnemyStateQueuedParametersOpcode.cpp`, using the accepted `EnemyState::writable_shot()` pair selector and real record/metadata fields. The 41,967B parent remains source-absent and NONEXACT. See [the 700/701 source frontier](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md).
+
 Locked target: Japanese TH20 1.00a Steamless original PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 
 ## Original compressed integer switch, independently attested
