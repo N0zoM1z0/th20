@@ -19,6 +19,8 @@
 
 **Additional maintained source frontier (CORE/RECON-1151):** original opcode 621 now has natural-C++ source in `src/EnemyStateMeshOpcode.cpp`, restoring the real EnemyMeshOwner release/allocation lifecycle and conditional 17x17 RenderMesh factory. The 41,967B parent remains source-absent and NONEXACT. See [the 621 source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md).
 
+**Additional maintained source frontier (CORE/RECON-1152):** original opcode 555 now has natural-C++ source in `src/EnemyStateAnimationSpawnOpcode.cpp`, preserving the sound gate, distance threshold, live EnemyController/AnimationFile selection and layer-3 spawn. The 41,967B parent remains source-absent and NONEXACT. See [the 555 source frontier](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md).
+
 Locked target: Japanese TH20 1.00a Steamless original PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 
 ## Original compressed integer switch, independently attested

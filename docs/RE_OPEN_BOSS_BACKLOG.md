@@ -64,7 +64,8 @@ canonically accepted.
   [609–612 shot-command source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md),
   [614 queue-copy source frontier](ENEMY_41967_614_QUEUE_COPY_SOURCE_FRONTIER.md),
   [632 borrowed-script source frontier](ENEMY_41967_632_SCRIPT_POINTER_SOURCE_FRONTIER.md),
-  and [621 mesh-owner source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md).
+  [621 mesh-owner source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md),
+  and [555 sound/spawn source frontier](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md).
 - **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation
   execution/update remains source-absent; accepted per-mode renderer
   children do not prove this parent. [Architecture/source map](SOURCE_MAP.md).
