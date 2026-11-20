@@ -1682,3 +1682,7 @@ th20::NativeBombPlayerView::set_invulnerability_479060,0x00479060,function
 th20::NativeBombPlayerView::mark_bomb_used_4790a0,0x004790A0,function
 th20::NativeBombEnemyCounterView::advance_477f40,0x00477F40,function
 th20::NativeBombPulse::start,0x00478C00,function
+th20::bomb_pulse_animation_callback_478380,0x00478380,function
+th20::NativeBombPulseAnimationDelegate::update_478610,0x00478610,function
+th20::NativeAnimationPositionRelayView::set_position_forward_450320,0x00450320,function
+th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,0x004502F0,function

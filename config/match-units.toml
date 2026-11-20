@@ -29940,3 +29940,50 @@ symbol = "?advance_477f40@NativeBombEnemyCounterView@th20@@QAEXH@Z"
 target_address = 0x00477F40
 size = 28
 relocations = []
+
+# CORE/RECON-1123: original Bomb pl01 callback / animation position relay whole exact.
+[units.bomb_pulse_callback_20]
+source = "src/BombPulseAnimationCallback20.cpp"
+object = "build/gptweb-bomb-pulse-callbacks/BombPulseAnimationCallback20.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::bomb_pulse_animation_callback_478380"]
+symbol = "?bomb_pulse_animation_callback_478380@th20@@YAHPAVAnimation@1@@Z"
+target_address = 0x00478380
+size = 20
+relocations = [{ offset = 0xC, type = "REL32", symbol = "?update_478610@NativeBombPulseAnimationDelegate@th20@@QAEHPAVAnimation@2@@Z", target = 0x00478610 }]
+
+# CORE/RECON-1123: original Bomb pl01 callback / animation position relay whole exact.
+[units.bomb_pulse_animation_update_39]
+source = "src/BombPulseAnimationUpdate39.cpp"
+object = "build/gptweb-bomb-pulse-callbacks/BombPulseAnimationUpdate39.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeBombPulseAnimationDelegate::update_478610"]
+symbol = "?update_478610@NativeBombPulseAnimationDelegate@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x00478610
+size = 39
+relocations = [{ offset = 0x1B, type = "REL32", symbol = "?set_position_forward_450320@NativeAnimationPositionRelayView@th20@@QAEXABUVector3@2@@Z", target = 0x00450320 }]
+
+# CORE/RECON-1123: original Bomb pl01 callback / animation position relay whole exact.
+[units.bomb_pulse_animation_position_relay_33]
+source = "src/BombPulseAnimationPositionRelay33.cpp"
+object = "build/gptweb-bomb-pulse-callbacks/BombPulseAnimationPositionRelay33.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationPositionRelayView::set_position_forward_450320"]
+symbol = "?set_position_forward_450320@NativeAnimationPositionRelayView@th20@@QAEXABUVector3@2@@Z"
+target_address = 0x00450320
+size = 33
+relocations = [
+  { offset = 0x11, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x16, type = "REL32", symbol = "?set_animation_position_4502f0@NativeAnimationPoolPositionView@th20@@QAEXPAVAnimation@2@ABUVector3@2@@Z", target = 0x004502F0 },
+]
+
+# CORE/RECON-1123: original Bomb pl01 callback / animation position relay whole exact.
+[units.bomb_pulse_animation_pool_position_40]
+source = "src/BombPulseAnimationPoolPosition40.cpp"
+object = "build/gptweb-bomb-pulse-callbacks/BombPulseAnimationPoolPosition40.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationPoolPositionView::set_animation_position_4502f0"]
+symbol = "?set_animation_position_4502f0@NativeAnimationPoolPositionView@th20@@QAEXPAVAnimation@2@ABUVector3@2@@Z"
+target_address = 0x004502F0
+size = 40
+relocations = []

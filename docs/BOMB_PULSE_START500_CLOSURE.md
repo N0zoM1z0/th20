@@ -44,3 +44,11 @@ The `0x00425090` helper was initially named CRT aligned realloc by
 auto-analysis, but its 7-argument constructor at `0x004250F0` allocates
 and initializes a scheduled game-side object; this is a source-role
 hypothesis pending its own independent reconstruction, not an exact leaf.
+
+## Callback-chain expansion
+
+The two original animation callback pointers both resolve to the now
+whole-exact original 20B entry and its **39B -> 33B -> 40B** full
+native position-update chain. See
+[BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md](BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md).
+No additional exactness is claimed for the 500-byte parent.

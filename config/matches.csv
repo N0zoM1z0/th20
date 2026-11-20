@@ -839,3 +839,7 @@ address,name,size,status,match_percent,unit,evidence
 0x00479060,th20::NativeBombPlayerView::set_invulnerability_479060,32,matching,100.00,bomb_pulse_invulnerability_32,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
 0x004790A0,th20::NativeBombPlayerView::mark_bomb_used_4790a0,26,matching,100.00,bomb_pulse_flag2_26,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
 0x00477F40,th20::NativeBombEnemyCounterView::advance_477f40,28,matching,100.00,bomb_pulse_enemy_counter_28,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
+0x00478380,th20::bomb_pulse_animation_callback_478380,20,matching,100.00,bomb_pulse_callback_20,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
+0x00478610,th20::NativeBombPulseAnimationDelegate::update_478610,39,matching,100.00,bomb_pulse_animation_update_39,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
+0x00450320,th20::NativeAnimationPositionRelayView::set_position_forward_450320,33,matching,100.00,bomb_pulse_animation_position_relay_33,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
+0x004502F0,th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,40,matching,100.00,bomb_pulse_animation_pool_position_40,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md

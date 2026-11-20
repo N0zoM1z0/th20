@@ -959,3 +959,7 @@ address,name,module,confidence,evidence
 0x004790A0,th20::NativeBombPlayerView::mark_bomb_used_4790a0,Player,high,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
 0x00477F40,th20::NativeBombEnemyCounterView::advance_477f40,Enemy,high,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
 0x00478C00,th20::NativeBombPulse::start,Bomb,medium,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
+0x00478380,th20::bomb_pulse_animation_callback_478380,BombAnimation,high,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
+0x00478610,th20::NativeBombPulseAnimationDelegate::update_478610,BombAnimation,high,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
+0x00450320,th20::NativeAnimationPositionRelayView::set_position_forward_450320,Animation,high,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
+0x004502F0,th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,AnimationPool,high,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
