@@ -977,7 +977,6 @@ address,name,module,confidence,evidence
 0x00424260,th20::screen_update_fade_in_424260,Screen,high,CORE/RECON-1129; docs/SCREEN_FADE_IN_UPDATE_239_STRICT_EXACT.md
 0x00424460,th20::screen_update_solid_424460,Screen,high,CORE/RECON-1130; docs/SCREEN_SOLID_UPDATE_82_STRICT_EXACT.md
 0x00424E00,th20::screen_draw_solid_424e00,Screen,high,CORE/RECON-1131; docs/SCREEN_DRAW_SOLID_128_STRICT_EXACT.md
-0x00423650,th20::screen_draw_rect_423650,Graphics,medium,Native callee of ScreenInf solid/fade/hold/flash draw callbacks; 1407B boundary remains unclassified
 0x005B87F8,th20::native_screen_draw_extent_x_5b87f8,Screen,medium,Original 128B ScreenInf solid draw uses signed integer-to-float conversion for rectangle extent X
 0x005B87FC,th20::native_screen_draw_extent_y_5b87fc,Screen,medium,Original 128B ScreenInf solid draw uses signed integer-to-float conversion for rectangle extent Y
 0x00424F30,th20::screen_draw_fade_424f30,Screen,high,CORE/RECON-1132; docs/SCREEN_DRAW_FADE_105_STRICT_EXACT.md
@@ -992,3 +991,4 @@ address,name,module,confidence,evidence
 0x0040BC20,th20::native_construct_array_40bc20,Runtime,medium,CORE/RECON-1135; docs/SCREEN_DRAW_SUPPORT_40BC20_424080_4240A0.md
 0x00424080,th20::NativeAnimationResetHooks::reset_sprite_cache_424080,Graphics,high,CORE/RECON-1136; docs/SCREEN_DRAW_SUPPORT_40BC20_424080_4240A0.md
 0x004240A0,th20::NativeAnimationResetHooks::reset_color_cache_4240a0,Graphics,high,CORE/RECON-1137; docs/SCREEN_DRAW_SUPPORT_40BC20_424080_4240A0.md
+0x00423650,th20::screen_draw_rect_423650,Graphics,high,CORE/RECON-1138; docs/SCREEN_DRAW_RECTANGLE_1407_STRICT_EXACT.md
