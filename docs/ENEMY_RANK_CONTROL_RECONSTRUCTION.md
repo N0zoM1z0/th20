@@ -19,7 +19,7 @@ EclSelection.cpp, with declarations on the actual existing owners:
 | 0x4AA9B0 | 36 | Enemy::float_argument_destination |
 | 0x49CC30 | 38 | EclManager::subtract_time |
 
-All five complete functions strictly replay, totaling 182 comparison bytes.
+All five complete functions strictly replay, totaling 182 comparison bytes. The four argument-destination wrappers have since been upgraded to `matching` after the complete `EnemyScriptAdvance.cpp` cold replay; see [the complete argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md).
 Original source names and authored/compiler origins remain unknown. The final
 function is placed on the genuine EclManager base; native field access alone
 does not distinguish original base versus derived source qualification. There

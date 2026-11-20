@@ -1,5 +1,8 @@
 # Enemy state lifetime and ECL argument protocol
 
+**Current exact boundary extension (CORE/RECON-1157):** the four EnemyState/Enemy integer and float reader wrappers are now `matching` in `config/functions.csv`; the four corresponding destination wrappers and four supplied-value wrappers are also matching. All twelve original functions (462 bytes total) were replayed through the existing `EnemyScript.cpp` and `EnemyScriptAdvance.cpp` providers. See [the complete argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md).
+
+
 Batch counts and open-work statements describe the checkpoint documented here.
 For present acceptance and remaining work, read the [current handoff](RE_HANDOFF.md).
 

@@ -25,6 +25,8 @@
 
 **Additional maintained source frontier (CORE/RECON-1156):** original opcode 549 now has natural-C++ source in `src/EnemyStateMembershipOpcode.cpp`, preserving the cached Context owner, real intrusive membership query, and late full-width integer destination write. The 41,967B parent remains NONEXACT. See [the 549 membership source frontier](ENEMY_41967_549_MEMBERSHIP_SOURCE_FRONTIER.md).
 
+**Additional maintained boundary frontier (CORE/RECON-1157):** all twelve EnemyState/Enemy argument, destination and supplied-value forwarding methods now have matching native function rows after focused cold replay of `EnemyScript.cpp` and `EnemyScriptAdvance.cpp`. This closes the exact Enemy→current-runtime leaf chain used by opcodes 514, 521, 549 and 551; the 41,967B parent remains NONEXACT. See [the Enemy argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md).
+
 **Additional maintained source frontier (CORE/RECON-1152):** original opcode 555 now has natural-C++ source in `src/EnemyStateAnimationSpawnOpcode.cpp`, preserving the sound gate, distance threshold, live EnemyController/AnimationFile selection and layer-3 spawn. The 41,967B parent remains source-absent and NONEXACT. See [the 555 source frontier](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md).
 
 **Additional maintained source frontier (CORE/RECON-1153):** original opcodes 553/554 now have natural-C++ source in `src/EnemyStateControllerSetterOpcode.cpp`, preserving the pre-operand Context cache and Y-before-X float reads. The 41,967B parent remains source-absent and NONEXACT. See [the 553/554 source frontier](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md).

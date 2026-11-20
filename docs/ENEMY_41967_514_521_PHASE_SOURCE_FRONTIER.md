@@ -34,7 +34,7 @@ Opcode 521 loads and caches `Enemy*` before reading integer operand 0, then pass
 
 ## Leaf boundaries and focused verification
 
-The existing `Enemy::configure_phase` (**301B**) and `Enemy::configure_timeout` (**154B**) producers remain whole-exact. The three Session helpers used by opcode 514 are now also registered matching after focused exact replay: `field_70_is_two` (**42B**), `clamped_field_1f4` (**25B**) and `clamped_field_1fc` (**25B**). The targeted source replays rebuilt only `EnemyInitialization.cpp` (10/10 units) and `Session.cpp` (25/25 units).
+The existing `Enemy::configure_phase` (**301B**) and `Enemy::configure_timeout` (**154B**) producers remain whole-exact. The three Session helpers used by opcode 514 are now also registered matching after focused exact replay: `field_70_is_two` (**42B**), `clamped_field_1f4` (**25B**) and `clamped_field_1fc` (**25B**). The EnemyState→Enemy→EclRuntime integer reader chain is now also fully matching (two 36B wrappers); see [the complete argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md). The targeted source replays rebuilt only `EnemyInitialization.cpp` (10/10 units), `Session.cpp` (25/25 units), and `EnemyScript.cpp` (10/10 units).
 
 `scripts/verify-enemy-phase-opcode-source.py` extracts both primary CFGs directly from the locked PE, verifies their hashes, instruction counts and E8 targets, checks all four original phase strings, validates the repeated C++ call/operand counts, and compares the compiled helper's 27 direct-call relocations with the combined original call multiset.
 

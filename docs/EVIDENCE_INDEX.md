@@ -1480,6 +1480,7 @@ Compiler scores labelled "current" in historical entries below mean
 - [Enemy opcode 551 natural-C++ source frontier](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md) — real typed StageResource/Fog owner, original 257-byte caller and eight exact owner/interpolation leaf bodies.
 - [Enemy opcodes 514/521 natural-C++ phase source frontier](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md) — 736B phase/death/timeout CFG, 88B borrowed timeout-name CFG, and exact Session/Enemy leaf boundaries.
 - [Enemy opcode 549 natural-C++ membership source frontier](ENEMY_41967_549_MEMBERSHIP_SOURCE_FRONTIER.md) — 95B original case with cached Context owner, real intrusive membership query, and late integer destination.
+- [Enemy argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md) — twelve exact EnemyState/Enemy wrappers for integer/float reads, destinations and supplied values.
 - [Enemy whole-root opcode 554 BulletInf integration](ENEMY_WHOLE_ROOT_554_BULLET_INTEGRATION.md) — complete native 106-byte case path, real 2001-slot Bullet owner and 37,479 full-root host checks, without any root exact claim.
 - [Enemy opcode 554 and actual BulletController vector owner](ENEMY_OPCODE_554_BULLET_VECTOR_RECONSTRUCTION.md) — whole 39-byte two-float native setter, genuine Context slot-zero receiver, 32 protected strict replays and full 2001-bullet owner image checks.
 - [Enemy whole-root opcode 524/553 integration](ENEMY_WHOLE_ROOT_524_553_INTEGRATION.md) — 37,347 complete-host scenarios with 166 new live Game/Session/Controller receiver-order checks; no root exactness.

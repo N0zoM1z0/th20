@@ -25,6 +25,6 @@ The order matters: operand evaluation may retarget Context, but the native predi
 
 ## Scoped verification and exactness boundary
 
-`src/EnemyStateMembershipOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-membership-opcode-source.py` extracts the original 95B branch directly from the locked PE, checks all 20 instruction heads and four direct-call sites/targets, validates the source order, and confirms the compiled object references the real Context getter, EnemyState VM accessors and accepted 244B membership method.
+`src/EnemyStateMembershipOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-membership-opcode-source.py` extracts the original 95B branch directly from the locked PE, checks all 20 instruction heads and four direct-call sites/targets, validates the source order, and confirms the compiled object references the real Context getter, EnemyState VM accessors and accepted 244B membership method. The complete 36B EnemyState→Enemy→EclRuntime integer reader and late destination chains are now `matching`, as are their float and supplied-value siblings; see [the 12-function argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md).
 
 This is a source fragment, not a standalone original function. No parent byte credit is added. The complete 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
