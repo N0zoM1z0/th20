@@ -927,3 +927,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004C9380,th20::LaserCurveInf::erase,266,matching,100.00,laser_curve_erase,CORE/EXACT-1247; complete 266-byte body and all seven original relocations strictly replay
 0x004C9F10,th20::LaserInfiniteInf::cancel_rectangle,1131,matching,100.00,laser_infinite_cancel_rectangle,"CORE/EXACT-1248; complete 1,131-byte body and all 30 original relocations strictly replay"
 0x004CA380,th20::LaserLineInf::cancel_rectangle,1197,matching,100.00,laser_line_cancel_rectangle,"CORE/EXACT-1249; complete 1,197-byte body and all 30 original relocations strictly replay"
+0x004C9AB0,th20::LaserCurveInf::cancel_rectangle,740,matching,100.00,laser_curve_cancel_rectangle,"CORE/EXACT-1250; complete 740-byte body and all 21 original relocations strictly replay"

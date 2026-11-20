@@ -31580,3 +31580,37 @@ relocations = [
   { offset = 0x414, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
   { offset = 0x4A3, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+
+# CORE/EXACT-1250: Curve Laser rectangle-cancellation boss.
+[units.laser_curve_cancel_rectangle]
+source = "src/LaserCurveCancelRectangle.cpp"
+object = "build/laser-curve-cancel-rectangle-canonical/LaserCurveCancelRectangle.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserCurveInf::cancel_rectangle"]
+symbol = "?cancel_rectangle@LaserCurveInf@th20@@UAEHABUVector3@2@0MHH@Z"
+target_address = 0x004C9AB0
+size = 740
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x41, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x49, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x51, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x6D, type = "DIR32", symbol = "$SG89390", target = 0x00571748 },
+  { offset = 0x7D, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x82, type = "REL32", symbol = "?allocate_bytes@DiagnosticAllocator@th20@@QAEPAXHPBD@Z", target = 0x0041F610 },
+  { offset = 0xA7, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0xB3, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xC4, type = "REL32", symbol = "??KVector3@th20@@QBE?AU01@M@Z", target = 0x00452FF0 },
+  { offset = 0xE5, type = "REL32", symbol = "??GVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429440 },
+  { offset = 0x106, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x1B7, type = "REL32", symbol = "?rotated_rectangle_point@geometry@th20@@YA_NMMMMMMM@Z", target = 0x00458E90 },
+  { offset = 0x1EB, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x21D, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x224, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x254, type = "DIR32", symbol = "$SG89395", target = 0x0056FD14 },
+  { offset = 0x260, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x2C1, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x2C6, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x2DA, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
