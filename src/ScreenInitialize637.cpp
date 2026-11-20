@@ -39,13 +39,13 @@ void NativeScreenInf::initialize_423bf0(
         update_node=register_update(24,screen_update_fade_out_4240c0,this);
         draw_node=register_draw(draw_priority,screen_draw_fade_424f30,this);
         break;
-    case 4:
-        update_node=register_update(24,screen_update_flash_424350,this);
-        draw_node=register_draw(draw_priority,screen_draw_flash_424fa0,this);
-        break;
     case 5:
         update_node=register_update(24,screen_update_fade_in_424260,this);
         draw_node=register_draw(draw_priority,screen_draw_solid_424e00,this);
+        break;
+    case 4:
+        update_node=register_update(24,screen_update_flash_424350,this);
+        draw_node=register_draw(draw_priority,screen_draw_flash_424fa0,this);
         break;
     case 6:
         update_node=register_update(24,screen_update_hold_424180,this);

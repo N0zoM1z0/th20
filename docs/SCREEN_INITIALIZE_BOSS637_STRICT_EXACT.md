@@ -36,6 +36,13 @@ semantically real `default: break;` **before** `case 0` in the C++
 switch naturally restores that exact two-branch control flow. MSVC
 therefore emits the original 637B body, the real 3B alignment, and the
 40B compiler-generated jump table, without adding any inert instructions.
+The original switch places the physical code for **case 5 before case 4**:
+case 5 registers update `0x00424260` / draw `0x00424E00`; case 4
+registers update `0x00424350` / draw `0x00424FA0`. Moving the two
+natural C++ case blocks into that observed order keeps the intended
+mode mapping and reproduces the two independent compiler-generated
+jump-table addresses at `+0x290` and `+0x294`. Both the ordinary bytes
+and the physical destinations are replayed after this correction.
 
 ## Complete cold canonical proof
 
