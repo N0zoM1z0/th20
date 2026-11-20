@@ -1734,3 +1734,5 @@ th20::PlayerRecord::field_a4_value
 th20::WeaponStoneInfo::process_item_drop
 th20::WeaponStoneInfo::complete_item_progress
 th20::WeaponStoneInfo::update_progress_mesh
+th20::weapon_stone_progress_animation_callback
+th20::WeaponStoneProgressCallback::update

@@ -65,10 +65,13 @@ candidate.
   provisional source mapping is added.
 - No canonical replay or original-byte match is claimed.
 
-## Remaining boundary work
+## Adjacent callback and remaining boundaries
 
-The 20-byte callback wrapper at `0x00532720`, its 32-byte dispatcher at
-`0x00532A90`, the 467-byte progress-effect initializer at `0x005348D0`, and
-the separate 581-byte sibling progress routine at `0x00534AB0` remain open
-boundaries. Continue from the actual native callers and owner/vtable evidence;
-do not fold them into this method or claim them from its implementation.
+The 20-byte callback wrapper at `0x00532720` and its 32-byte callback-object
+method at `0x00532A90` are now independently exact and admitted in
+`CORE/EXACT-1203`; see `docs/WEAPON_STONE_PROGRESS_CALLBACK_EXACT.md`. Their
+exactness does not transfer to this 1,780-byte updater. The 467-byte
+progress-effect initializer at `0x005348D0` and the separate 581-byte sibling
+progress routine at `0x00534AB0` remain open boundaries. Continue from their
+actual native callers and owner/vtable evidence; do not fold them into this
+method or claim them from its implementation.

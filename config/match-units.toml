@@ -30933,3 +30933,29 @@ relocations = [
   { offset = 0x90, type = "DIR32", symbol = "$SG174220", target = 0x005762C4 },
   { offset = 0x9C, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
 ]
+
+
+# CORE/EXACT-1203: the actual animation entry callback and its one-byte local
+# callback object are game-owned progress-mesh behavior.
+[units.weapon_stone_progress_callback_entry]
+source = "src/WeaponStoneProgressCallback.cpp"
+object = "build/core1203-canonical/WeaponStoneProgressCallback.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::weapon_stone_progress_animation_callback"]
+symbol = "?weapon_stone_progress_animation_callback@th20@@YAHPAVAnimation@1@@Z"
+target_address = 0x00532720
+size = 20
+relocations = [{ offset = 0xC, type = "REL32", symbol = "?update@WeaponStoneProgressCallback@th20@@QAEHPAVAnimation@2@@Z", target = 0x00532A90 }]
+
+[units.weapon_stone_progress_callback_update]
+source = "src/WeaponStoneProgressCallback.cpp"
+object = "build/core1203-canonical/WeaponStoneProgressCallback.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::WeaponStoneProgressCallback::update"]
+symbol = "?update@WeaponStoneProgressCallback@th20@@QAEHPAVAnimation@2@@Z"
+target_address = 0x00532A90
+size = 32
+relocations = [
+  { offset = 0xA, type = "REL32", symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z", target = 0x00464230 },
+  { offset = 0x14, type = "REL32", symbol = "?update_progress_mesh@WeaponStoneInfo@th20@@QAEXXZ", target = 0x00533970 },
+]
