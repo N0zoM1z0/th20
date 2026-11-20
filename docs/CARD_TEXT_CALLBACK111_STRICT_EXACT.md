@@ -1,3 +1,16 @@
+**CORE/RECON-1192 erased-target vtable closure:** The concrete
+`std::_Func_impl_no_alloc<NativeCardTickCallback>` now has all six original
+vtable methods separately reconstructed from the same natural C++ source:
+47B `_Copy`, 104B `_Move`, 26B `_Do_call`, 16B `_Target_type`, 35B
+`_Delete_this`, and 26B `_Get`. The 14B `std::invoke<NativeCardTickCallback>`
+bridge is also exact and calls the distinct 34B `NativeCardTickCallback`
+operator target. Every original E8/DIR32/PE HIGHLOW role is preserved.
+The `_Move` contribution includes five compiler-generated trailing INT3
+bytes that exactly match the native adjacent alignment span; the function
+coverage remains 104B and the comparison span is 109B. No source padding or
+assembly is used. The 34B operator body and its 22B AnimationHandle bridge
+remain the next semantic/source boundary.
+
 **CORE/RECON-1190 nested callable extension:** The callback's own
 `std::function<void()>` now has its original 102B constructor at `0x00486740`
 and 90B `_Reset` at `0x004869D0` restored whole exact. The maintained source

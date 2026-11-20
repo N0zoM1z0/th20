@@ -1217,12 +1217,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044B320,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B380,library,AnimationPmr,exclude,high,"CORE/EXACT-135: Actual string pointer/capacity producer, capacity-plus-one count and allocator callee corroborate the explicit SDK deallocation helper. Complete native control flow and whole fresh production contribution strictly replay with independent anchors. One actual Animation object rebuild preserves all22 prior affected units;162 objects are reused. SDK/compiler source presence is separate from authored exact coverage. See docs/ANIMATION_PMR_RETIREMENT_RECONSTRUCTION.md."
-0x0044B3A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044B3A0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
 0x0044B3D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B400,unknown,CxxUtility,review,pending,"CORE/RECON-963; docs/ANIMATION_SPAWN_STEM_77_17_STRICT_EXACT.md; whole original 77B typed PMR string comparison and physical E8 original, strict full 77/77; C++ STL/PMR original source provenance uncertain"
 0x0044B450,unknown,CxxRuntime,review,pending,CORE/RECON-1094; docs/ANIMATION_FILE_PATH_PMR_NINE_STRICT_EXACT.md; complete original 141B generic native helper with real parent original native 132B _Find_stem 0x0044B690 E8+0x5D; zero authored-game exact credit
 0x0044B4E0,unknown,CxxRuntime,review,pending,CORE/RECON-1094; docs/ANIMATION_FILE_PATH_PMR_NINE_STRICT_EXACT.md; complete original 80B generic native helper with real parent original native 81B/132B path subparsers 0x0044B630/+0x2A and 0x0044B690/+0x2A; zero authored-game exact credit
-0x0044B530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044B530,unknown,CxxRuntime,authored,high,CORE/RECON-1192
 0x0044B550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B5C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B630,unknown,CxxRuntime,review,pending,"CORE/RECON-1096; docs/ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md; full native original 81B standard library source, genuine original E8 from 0x44c590+0x2f; generic uncredited"
@@ -2406,7 +2406,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004869D0,unknown,CxxRuntime,authored,high,CORE/RECON-1190
 0x00486A30,unknown,CxxRuntime,authored,high,CORE/RECON-1188
 0x00486A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00486AD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00486AD0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
 0x00486AE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486AF0,unknown,CardText,review,pending,"CORE/RECON-1029; docs/CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md; 64B source exact typed lambda payload move, real 66B wrapper and 108B PMR move callee remain independently scoped; generated compiler or authored ownership uncertain"
 0x00486B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2430,13 +2430,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00487BB0,authored,Card,authored,high,"CORE/RECON-1121; docs/CARD_CAPTURE_REFRESH123_STRICT_EXACT.md; original genuine 123B Card bomb/capture state path, exact four original E8 relocation roles and Card+0x78,+0x7C,+0xC0 field accesses"
 0x00487C30,authored,CardSpell,authored,high,"CORE/RECON-1030; docs/CARD_START1896_TEXT_TASK_CONSTRUCTION_FRONTIER.md; complete source-present 1750B 61 E8/16 HL generated C++20 candidate, true 1896B 62 E8/26 HL, real capture/std::function/AsciiInf queue producer and lock-18 consumer, native std::move and text callback/EH frontier NONEXACT"
 0x004883A0,authored,CardSpell,authored,high,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Card UI owner flag +0x3344 bit0 publication on Card finish; full native verified and origin classification separate from code exactness
-0x004883C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004883C0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
 0x004883F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488410,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488440,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00488440,unknown,CxxRuntime,authored,high,CORE/RECON-1192
 0x00488460,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004884F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00488480,unknown,CxxRuntime,authored,high,CORE/RECON-1192
+0x004884F0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
 0x00488500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488510,authored,CardSpell,authored,high,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Game-specific capped 99999 spell capture-count state at record+0xC0/+0xC4; full native verified and origin classification separate from code exactness
 0x00488550,unknown,DamageQueryProtocol,review,pending,"CORE/EXACT-103: Thirteen new complete actual query consumers980B plus the existing45B Timer/Cursor shared head with real Player/Shot/Enemy/Session/Overlay owners. Full246B Shot and251B Enemy search, native unsigned64 score division/addition/cap and Session uint32 zero extension, actual frame/period gating, forced defeat and preserved-bit marker protocols. Complete typed templates/EH and existing-head aliases replay as support; no duplicate physical credit. O2/ASan/UBSan actual protocol scope passes. Whole private query1685/native1707 remains nonexact and unaccepted; native post-retirement heap lifetime, callbacks, original Item spawn, enclosing lifetime/RTTI/full-link/startup remain open. Authored/reference attribution stays independent. See docs/DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md. Frozen251-file graph passes731 strict units/142 fresh objects/138358 disjoint bytes;14 complete maintained candidates include45B Timer/Cursor alias;13 new physical roots980B and36 independent relocations. Full45 support contributions replay."

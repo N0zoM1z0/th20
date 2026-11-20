@@ -26,6 +26,10 @@ static_assert(sizeof(NativeCardTickCallback) == 4);
 // Current MSVC otherwise folds both constexpr forwarding instantiations.
 template __declspec(noinline) th20::NativeCardTickCallback&&
 std::forward<th20::NativeCardTickCallback>(th20::NativeCardTickCallback&) noexcept;
+// The erased-target virtual _Move also preserves its own original out-of-line
+// std::move<T&> call to the same 8B identity leaf.
+template __declspec(noinline) th20::NativeCardTickCallback&&
+std::move<th20::NativeCardTickCallback&>(th20::NativeCardTickCallback&) noexcept;
 
 void NativeCardTextPayload::operator()() const {
     // The native layer number is 0x00FFFFFF, NOT -1: both values are distinct

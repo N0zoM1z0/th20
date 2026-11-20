@@ -26638,6 +26638,97 @@ relocations = [
   { offset = 0x1D, type = "REL32", symbol = "??$forward@UNativeCardTickCallback@th20@@@std@@YA$$QAUNativeCardTickCallback@th20@@AAU12@@Z", target = 0x0040B280 },
 ]
 
+# CORE/RECON-1192: concrete std::_Func_impl_no_alloc vtable and invoke path.
+[units.card_tick_func_impl_copy_47]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_impl_no_alloc<NativeCardTickCallback>::_Copy"]
+symbol = "?_Copy@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEPAV?$_Func_base@X$$V@2@PAX@Z"
+target_address = 0x004883C0
+size = 47
+relocations = [
+  { offset = 0x10, type = "REL32", symbol = "??2@YAPAXIPAX@Z", target = 0x0040E700 },
+  { offset = 0x25, type = "REL32", symbol = "??$?0ABUNativeCardTickCallback@th20@@$0A@@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@QAE@ABUNativeCardTickCallback@th20@@@Z", target = 0x004866B0 },
+]
+
+[units.card_tick_func_impl_move_104]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_impl_no_alloc<NativeCardTickCallback>::_Move"]
+symbol = "?_Move@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEPAV?$_Func_base@X$$V@2@PAX@Z"
+target_address = 0x00488480
+size = 104
+compare_size = 109
+relocations = [
+  { offset = 0x06, type = "DIR32", symbol = "__ehhandler$?_Move@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEPAV?$_Func_base@X$$V@2@PAX@Z", target = 0x00567750 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2F, type = "REL32", symbol = "??2@YAPAXIPAX@Z", target = 0x0040E700 },
+  { offset = 0x41, type = "REL32", symbol = "??$move@AAUNativeCardTickCallback@th20@@@std@@YA$$QAUNativeCardTickCallback@th20@@AAU12@@Z", target = 0x0040B280 },
+  { offset = 0x53, type = "REL32", symbol = "??$?0UNativeCardTickCallback@th20@@$0A@@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@QAE@$$QAUNativeCardTickCallback@th20@@@Z", target = 0x004866B0 },
+]
+
+[units.card_tick_func_impl_do_call_26]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_impl_no_alloc<NativeCardTickCallback>::_Do_call"]
+symbol = "?_Do_call@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEXXZ"
+target_address = 0x00488440
+size = 26
+relocations = [
+  { offset = 0x0F, type = "REL32", symbol = "??$invoke@AAUNativeCardTickCallback@th20@@@std@@YAXAAUNativeCardTickCallback@th20@@@Z", target = 0x00486AD0 },
+]
+
+[units.card_tick_func_impl_target_type_16]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_impl_no_alloc<NativeCardTickCallback>::_Target_type"]
+symbol = "?_Target_type@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEABVtype_info@@XZ"
+target_address = 0x004884F0
+size = 16
+relocations = [
+  { offset = 0x08, type = "DIR32", symbol = "??_R0?AUNativeCardTickCallback@th20@@@8", target = 0x005B3380 },
+]
+
+[units.card_tick_func_impl_get_26]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_impl_no_alloc<NativeCardTickCallback>::_Get"]
+symbol = "?_Get@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEPBXXZ"
+target_address = 0x0044B530
+size = 26
+relocations = [
+  { offset = 0x0F, type = "REL32", symbol = "??$addressof@$$CBUNativeCardTickCallback@th20@@@std@@YAPBUNativeCardTickCallback@th20@@ABU12@@Z", target = 0x0040B280 },
+]
+
+[units.card_tick_func_impl_delete_35]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_impl_no_alloc<NativeCardTickCallback>::_Delete_this"]
+symbol = "?_Delete_this@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEX_N@Z"
+target_address = 0x0044B3A0
+size = 35
+relocations = [
+  { offset = 0x16, type = "REL32", symbol = "??$_Deallocate@$03@std@@YAXPAXI@Z", target = 0x0040CFC0 },
+]
+
+[units.card_tick_invoke_14]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::invoke<NativeCardTickCallback>"]
+symbol = "??$invoke@AAUNativeCardTickCallback@th20@@@std@@YAXAAUNativeCardTickCallback@th20@@@Z"
+target_address = 0x00486AD0
+size = 14
+relocations = [
+  { offset = 0x07, type = "REL32", symbol = "??RNativeCardTickCallback@th20@@QBEXXZ", target = 0x00486E50 },
+]
+
 # CORE/RECON-1038: complete native 54B std::_String_val::_Myptr from PMR c_str.
 [units.card_text_string_myptr_54]
 source = "src/CardTextCallback111.cpp"

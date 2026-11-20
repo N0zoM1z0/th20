@@ -1775,3 +1775,10 @@ std::_Func_class<void>::_Reset(NativeCardTextPayload&&)
 std::function<void()>::function(NativeCardTickCallback&&)
 std::_Func_class<void>::_Reset(NativeCardTickCallback&&)
 std::_Func_impl_no_alloc<NativeCardTickCallback>::_Func_impl_no_alloc(move)
+?_Copy@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEPAV?$_Func_base@X$$V@2@PAX@Z
+?_Move@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEPAV?$_Func_base@X$$V@2@PAX@Z
+?_Do_call@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEXXZ
+?_Target_type@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEABVtype_info@@XZ
+?_Get@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEPBXXZ
+?_Delete_this@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEX_N@Z
+??$invoke@AAUNativeCardTickCallback@th20@@@std@@YAXAAUNativeCardTickCallback@th20@@@Z

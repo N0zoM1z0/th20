@@ -164,3 +164,14 @@ at `0x0040B280`; the constructor has two real PE HIGHLOW plus three E8, and
 _Reset has five E8. These are separate generic STL boundaries from the
 Card-start payload's 102B/65B pair; the 578B draw Boss and 1,896B parent remain
 NONEXACT.
+
+
+**CORE/RECON-1192 erased callable vtable:** The `NativeCardTickCallback`
+`std::_Func_impl_no_alloc` concrete target now has its original six-method
+vtable restored as whole exact natural-C++ units: Copy 47B, Move 104B, Do_call
+26B, Target_type 16B, Delete_this 35B and Get 26B. Its 14B `std::invoke`
+bridge is also exact. The `_Move` 104B body plus five compiler-generated
+INT3 alignment bytes matches the original 109B comparison span; only 104B
+function coverage is credited. The 34B callback operator and its 22B
+AnimationHandle wrapper remain open; the 578B renderer and 1,896B Card parent
+remain NONEXACT.

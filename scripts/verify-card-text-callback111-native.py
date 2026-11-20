@@ -109,6 +109,36 @@ def verify():
  impl=coff.compare_unit('card_tick_func_impl_ctor_53')
  assert impl['result']=='exact' and impl['size']==53 and impl['matched_bytes']==53
  assert len(impl['relocations'])==3
+ # The concrete erased-target vtable has six original slots. Verify the
+ # whole vtable head and each independent native virtual body/relocation.
+ vtable=pe.raw_at(image,base,sections,0x0056FE28,24)
+ assert struct.unpack('<6I',vtable)==(
+     0x004883C0,0x00488480,0x00488440,0x004884F0,0x0044B3A0,0x0044B530)
+ expected_virtuals=(
+  ('card_tick_func_impl_copy_47',0x004883C0,47,'e00d24e1e4773ab228db23db6e8e80457cf0c64213512578cfeebf2a82ffa78c',2),
+  ('card_tick_func_impl_move_104',0x00488480,104,'e17bc087b575ad4da5f566e5ebeb0d8b058f805f2b0dc90496458a325bf6fff8',5),
+  ('card_tick_func_impl_do_call_26',0x00488440,26,'f20885c9887766b859475ed7d670a869fbc7dac77ce0e322c27e1866134d3e02',1),
+  ('card_tick_func_impl_target_type_16',0x004884F0,16,'ee15f6d9711662c243b2d5e787183414ae7096b951b48c0d8dc1408ca250eddf',1),
+  ('card_tick_func_impl_get_26',0x0044B530,26,'2fe2dbee16fa0248d334c545b664f30233f7ef1f467861c20b928e83d2d9ced8',1),
+  ('card_tick_func_impl_delete_35',0x0044B3A0,35,'eb6ab290916efc9e256d8cf1de0a7cdd52c0dd35c7ba54cf0829a0b464cf7c3c',1),
+  ('card_tick_invoke_14',0x00486AD0,14,'f83c1bf135f1c4f150d0515e498a110cb158a5c9ced72fc3c1c5a7ae1ebd8346',1),
+ )
+ for unit_name,address,body_size,digest,reloc_count in expected_virtuals:
+  body=pe.raw_at(image,base,sections,address,body_size)
+  assert hashlib.sha256(body).hexdigest()==digest
+  report=coff.compare_unit(unit_name)
+  assert report['result']=='exact' and report['size']==body_size
+  assert report['matched_bytes']==body_size and len(report['relocations'])==reloc_count
+ # _Move's source-generated 109B COFF contribution is the true 104B body
+ # followed by five compiler INT3 bytes. The native adjacent span has the
+ # same five alignment bytes; coverage credit remains exactly 104B.
+ move_unit=coff.compare_unit('card_tick_func_impl_move_104')
+ assert move_unit['compared_size']==109 and move_unit['matched_compared_bytes']==109
+ assert pe.raw_at(image,base,sections,0x00488480+104,5)==b'\xCC'*5
+ assert pe.raw_at(image,base,sections,0x00488480,109)[104:]==b'\xCC'*5
+ invoke_body=pe.raw_at(image,base,sections,0x00486AD0,14)
+ invoke_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(invoke_body,0x00486AD0))
+ assert calls(invoke_ins,0x00486AD0)=={0x06:0x00486E50}
  print('PASS immutable native Card callback 111B/42-i386, four real E8/one PE HIGHLOW')
  print('PASS nested 102B constructor SHA/call map: 3 E8 + 2 physical PE HIGHLOW; exact 5 relocation roles')
  print('PASS nested 90B _Reset SHA/call map: all five original E8 targets; no PE HIGHLOW')
@@ -116,6 +146,9 @@ def verify():
  print('PASS nested NativeCardTickCallback std::function constructor 102/102, 82 ordinary bytes and five relocations')
  print('PASS nested _Reset 90/90, 70 ordinary bytes and five original E8 destinations')
  print('PASS 53B _Func_impl_no_alloc ctor, 41/41 ordinary bytes, two E8 and its original vtable HIGHLOW')
+ print('PASS all six original erased-target vtable virtuals: Copy, Move, Do_call, Target_type, Delete_this, Get')
+ print('PASS 104B _Move body + 5 native/compiler INT3 alignment bytes, 109/109 compare; 104B coverage')
+ print('PASS 14B std::invoke bridge calls the distinct original 34B NativeCardTickCallback operator()')
  print('PASS both nested callable boundaries preserve their out-of-line std::forward calls to 0x0040B280')
  print('The 578B ASCII text draw Boss and 1,896B Card start remain NONEXACT, no transitive credit')
 if __name__=='__main__':verify()
