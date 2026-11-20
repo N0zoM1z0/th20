@@ -52,6 +52,7 @@ public:
     Item* spawn(std::int32_t type,const Vector3& position,std::uint32_t color,float angle,float speed,
                 std::int32_t delay,std::uint32_t extra,std::int32_t sound);
     static std::int32_t update_callback(void* owner);
+    std::int32_t update_main();
     static std::int32_t draw_callback(void* owner);
     static std::int32_t second_draw_callback(void* owner);
 };

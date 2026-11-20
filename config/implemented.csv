@@ -1709,3 +1709,4 @@ th20::item_award_reward_type_1
 th20::item_award_reward_type_0
 th20::item_award_reward_type_2
 th20::NativeViewIndexOwner::set_view_index
+th20::ItemInf::update_callback

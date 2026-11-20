@@ -30651,3 +30651,21 @@ symbol = "?set_view_index@NativeViewIndexOwner@th20@@QAEXH@Z"
 target_address = 0x004776A0
 size = 25
 relocations = []
+
+# CORE/RECON-1147: complete ItemInf frame callback gate, before the large update owner.
+[units.item_inf_update_gate]
+source = "src/ItemInfUpdateGate.cpp"
+object = "build/item-inf-update-gate/ItemInfUpdateGate.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::ItemInf::update_callback"]
+symbol = "?update_callback@ItemInf@th20@@SAHPAX@Z"
+target_address = 0x004C46F0
+size = 79
+relocations = [
+  { offset = 5, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 14, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 19, type = "REL32", symbol = "?update_suppressed@GameController@th20@@QBEHXZ", target = 0x00424030 },
+  { offset = 36, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 44, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
+  { offset = 73, type = "REL32", symbol = "?update_main@ItemInf@th20@@QAEHXZ", target = 0x004C25A0 },
+]
