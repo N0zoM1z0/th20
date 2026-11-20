@@ -3904,7 +3904,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C92C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9300,authored,LaserController,authored,high,"CORE/EXACT-194; docs/LASER_REGISTRATION_NATIVE_EXACT_RECONSTRUCTION.md; native game-specific 75-byte Laser registration, original 474B creation has four independent registration call sites, intrusive link+8 / list+0x10 / count+0x28; full strict locked MSVC whole-function proof and 22/22 affected units."
 0x004C9350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C9380,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C9380,authored,LaserCurveInf,authored,high,"CORE/EXACT-1247; docs/LASER_CURVE_ERASE_EXACT.md; original Curve-family vtable slot +0x44 points directly to the complete 266-byte native path-point erasure handler"
 0x004C9490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9580,authored,LaserInfiniteInf,authored,high,"CORE/EXACT-1245; docs/LASER_INFINITE_ERASE_EXACT.md; original Infinite-family vtable slot +0x44 points directly to the complete 683-byte native erasure and bullet-regeneration handler"
 0x004C9830,authored,LaserLineInf,authored,high,"CORE/EXACT-1246; docs/LASER_LINE_ERASE_EXACT.md; original Line-family vtable slot +0x44 points directly to the complete 635-byte native erasure and bullet-regeneration handler"

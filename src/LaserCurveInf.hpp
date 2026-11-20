@@ -43,6 +43,7 @@ public:
     LaserCurveInf() noexcept;
     std::int32_t cancel_circle(const Vector3& center, float radius,
                                std::int32_t mode, std::int32_t argument) override;
+    std::int32_t erase(std::int32_t mode, std::int32_t argument) override;
 
     LaserType2Parameters parameters;
     Animation animation_0;

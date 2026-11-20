@@ -924,3 +924,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004CF550,th20::laser_infinite_animation_script_callback,105,matching,100.00,laser_infinite_animation_callback,CORE/EXACT-1238; complete 105-byte callback and both original BSS relocations strictly replay
 0x004C9580,th20::LaserInfiniteInf::erase,683,matching,100.00,laser_infinite_erase,CORE/EXACT-1245; complete 683-byte body and all 29 original relocations strictly replay
 0x004C9830,th20::LaserLineInf::erase,635,matching,100.00,laser_line_erase,CORE/EXACT-1246; complete 635-byte body and all 27 original relocations strictly replay
+0x004C9380,th20::LaserCurveInf::erase,266,matching,100.00,laser_curve_erase,CORE/EXACT-1247; complete 266-byte body and all seven original relocations strictly replay
