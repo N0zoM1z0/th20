@@ -1782,3 +1782,5 @@ std::_Func_impl_no_alloc<NativeCardTickCallback>::_Func_impl_no_alloc(move)
 ?_Get@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEPBXXZ
 ?_Delete_this@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEX_N@Z
 ??$invoke@AAUNativeCardTickCallback@th20@@@std@@YAXAAUNativeCardTickCallback@th20@@@Z
+th20::NativeCardTickCallback::operator()
+th20::NativeCardTickEventView::update_event_4

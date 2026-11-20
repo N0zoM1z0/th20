@@ -8,8 +8,9 @@ operator target. Every original E8/DIR32/PE HIGHLOW role is preserved.
 The `_Move` contribution includes five compiler-generated trailing INT3
 bytes that exactly match the native adjacent alignment span; the function
 coverage remains 104B and the comparison span is 109B. No source padding or
-assembly is used. The 34B operator body and its 22B AnimationHandle bridge
-remain the next semantic/source boundary.
+assembly is used. The 34B operator body and its 22B AnimationHandle event-4 bridge are now
+whole exact under CORE/RECON-1193. The callback's native field access is
+`Card::info_handles[1]` at `+0x18`, not the Card age Timer at `+0x24`.
 
 **CORE/RECON-1190 nested callable extension:** The callback's own
 `std::function<void()>` now has its original 102B constructor at `0x00486740`

@@ -175,3 +175,12 @@ INT3 alignment bytes matches the original 109B comparison span; only 104B
 function coverage is credited. The 34B callback operator and its 22B
 AnimationHandle wrapper remain open; the 578B renderer and 1,896B Card parent
 remain NONEXACT.
+
+
+**CORE/RECON-1193 deferred callback execution:** The 34B
+`NativeCardTickCallback::operator()` and 22B event-4 wrapper are now whole
+exact from `CardTextCallback111.cpp`. The callback selects the actual
+`Card::info_handles[1]` at offset `+0x18`, then the wrapper forwards event 4
+to the independently exact 35B `AnimationHandle::update_descendants_event`
+bridge. This closes the nested std::function's concrete invocation path; it
+does not close the 578B text renderer or 1,896B Card start parent.

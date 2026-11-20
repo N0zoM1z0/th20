@@ -139,6 +139,31 @@ def verify():
  invoke_body=pe.raw_at(image,base,sections,0x00486AD0,14)
  invoke_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(invoke_body,0x00486AD0))
  assert calls(invoke_ins,0x00486AD0)=={0x06:0x00486E50}
+ tick_operator=pe.raw_at(image,base,sections,0x00486E50,34)
+ assert hashlib.sha256(tick_operator).hexdigest()==(
+     '5758a1ba9010e22126d3e639e7386c7b6a1be86dabf06441c5fa497da54b8bb4')
+ tick_operator_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(tick_operator,0x00486E50))
+ assert len(tick_operator_ins)==14
+ assert (tick_operator_ins[-1].mnemonic,tick_operator_ins[-1].op_str)==('ret','')
+ assert tick_operator_ins[-1].address+tick_operator_ins[-1].size==0x00486E50+34
+ assert calls(tick_operator_ins,0x00486E50)=={0x18:0x00488920}
+ # The native callback selects Card::info_handles[1] at Card+0x14+4 = +0x18.
+ assert tick_operator[0x0A:0x18]==b'\x8b\x08\xba\x04\x00\x00\x00\xc1\xe2\x00\x8d\x4c\x11\x14'
+ tick_event=pe.raw_at(image,base,sections,0x00488920,22)
+ assert hashlib.sha256(tick_event).hexdigest()==(
+     'd197bbe6c3ebc4495bb36a18d6337ccca5be96326e0e60c4c13868cfe06926b2')
+ tick_event_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(tick_event,0x00488920))
+ assert len(tick_event_ins)==11
+ assert (tick_event_ins[-1].mnemonic,tick_event_ins[-1].op_str)==('ret','')
+ assert tick_event_ins[-1].address+tick_event_ins[-1].size==0x00488920+22
+ assert calls(tick_event_ins,0x00488920)=={0x0C:0x0044F0D0}
+ assert tick_event[0x07:0x09]==b'\x6a\x04'
+ tick_operator_unit=coff.compare_unit('card_tick_callback_operator_34')
+ assert tick_operator_unit['result']=='exact' and tick_operator_unit['size']==34
+ assert tick_operator_unit['matched_bytes']==34 and len(tick_operator_unit['relocations'])==1
+ tick_event_unit=coff.compare_unit('card_tick_event_wrapper_22')
+ assert tick_event_unit['result']=='exact' and tick_event_unit['size']==22
+ assert tick_event_unit['matched_bytes']==22 and len(tick_event_unit['relocations'])==1
  print('PASS immutable native Card callback 111B/42-i386, four real E8/one PE HIGHLOW')
  print('PASS nested 102B constructor SHA/call map: 3 E8 + 2 physical PE HIGHLOW; exact 5 relocation roles')
  print('PASS nested 90B _Reset SHA/call map: all five original E8 targets; no PE HIGHLOW')
@@ -149,6 +174,8 @@ def verify():
  print('PASS all six original erased-target vtable virtuals: Copy, Move, Do_call, Target_type, Delete_this, Get')
  print('PASS 104B _Move body + 5 native/compiler INT3 alignment bytes, 109/109 compare; 104B coverage')
  print('PASS 14B std::invoke bridge calls the distinct original 34B NativeCardTickCallback operator()')
+ print('PASS 34B callback operator selects Card::info_handles[1] at +0x18 and calls the original 22B event-4 wrapper')
+ print('PASS 22B wrapper calls the already-exact 35B AnimationHandle descendant-event bridge with event 4')
  print('PASS both nested callable boundaries preserve their out-of-line std::forward calls to 0x0040B280')
  print('The 578B ASCII text draw Boss and 1,896B Card start remain NONEXACT, no transitive credit')
 if __name__=='__main__':verify()

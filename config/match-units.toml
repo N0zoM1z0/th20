@@ -26729,6 +26729,31 @@ relocations = [
   { offset = 0x07, type = "REL32", symbol = "??RNativeCardTickCallback@th20@@QBEXXZ", target = 0x00486E50 },
 ]
 
+# CORE/RECON-1193: original Card tick callback operator and event-4 bridge.
+[units.card_tick_callback_operator_34]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTickCallback::operator()"]
+symbol = "??RNativeCardTickCallback@th20@@QBEXXZ"
+target_address = 0x00486E50
+size = 34
+relocations = [
+  { offset = 0x19, type = "REL32", symbol = "?update_event_4@NativeCardTickEventView@th20@@QAEXXZ", target = 0x00488920 },
+]
+
+[units.card_tick_event_wrapper_22]
+source = "src/CardTextCallback111.cpp"
+object = "build/core1037-canonical/CardTextCallback111.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardTickEventView::update_event_4"]
+symbol = "?update_event_4@NativeCardTickEventView@th20@@QAEXXZ"
+target_address = 0x00488920
+size = 22
+relocations = [
+  { offset = 0x0D, type = "REL32", symbol = "?update_descendants_event_44f0d0@AnimationHandle@th20@@QAEXH@Z", target = 0x0044F0D0 },
+]
+
 # CORE/RECON-1038: complete native 54B std::_String_val::_Myptr from PMR c_str.
 [units.card_text_string_myptr_54]
 source = "src/CardTextCallback111.cpp"

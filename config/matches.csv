@@ -942,3 +942,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0044B530,?_Get@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EBEPBXXZ,0x0044B549,matching,100.00,card_tick_func_impl_get_26,"CORE/RECON-1192; original whole native function, all original relocation roles"
 0x0044B3A0,?_Delete_this@?$_Func_impl_no_alloc@UNativeCardTickCallback@th20@@X$$V@std@@EAEX_N@Z,0x0044B3C2,matching,100.00,card_tick_func_impl_delete_35,"CORE/RECON-1192; original whole native function, all original relocation roles"
 0x00486AD0,??$invoke@AAUNativeCardTickCallback@th20@@@std@@YAXAAUNativeCardTickCallback@th20@@@Z,0x00486ADD,matching,100.00,card_tick_invoke_14,"CORE/RECON-1192; original whole native function, all original relocation roles"
+0x00486E50,th20::NativeCardTickCallback::operator(),34,matching,100.00,card_tick_callback_operator_34,"CORE/RECON-1193; original whole function, native E8 target and Card+0x18/event-4 semantics"
+0x00488920,th20::NativeCardTickEventView::update_event_4,22,matching,100.00,card_tick_event_wrapper_22,"CORE/RECON-1193; original whole function, native E8 target and Card+0x18/event-4 semantics"

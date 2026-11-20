@@ -31,6 +31,18 @@ std::forward<th20::NativeCardTickCallback>(th20::NativeCardTickCallback&) noexce
 template __declspec(noinline) th20::NativeCardTickCallback&&
 std::move<th20::NativeCardTickCallback&>(th20::NativeCardTickCallback&) noexcept;
 
+// The native deferred tick callback addresses Card::info_handles[1] (+0x18)
+// through a tiny borrowed view; its wrapper supplies event 4 to the original
+// AnimationHandle descendant-event bridge.
+struct NativeCardTickEventView {
+    void update_event_4() {
+        reinterpret_cast<AnimationHandle*>(this)->update_descendants_event_44f0d0(4);
+    }
+};
+void NativeCardTickCallback::operator()() const {
+    reinterpret_cast<NativeCardTickEventView*>(&owner->info_handles[1])->update_event_4();
+}
+
 void NativeCardTextPayload::operator()() const {
     // The native layer number is 0x00FFFFFF, NOT -1: both values are distinct
     // and MSVC emits different instructions for their original pushes.

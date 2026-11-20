@@ -184,4 +184,4 @@ remaining VM/resource calls explicitly captured. See
 
 - `src/CardStartSpell1896.cpp` — original Card `std::function` callable constructor (102B), `_Reset` (65B), 7B callable predicate, and 1,896B `Card::start_spell` source candidate.
 
-- `src/CardTextCallback111.cpp` — original nested `NativeCardTickCallback` std::function constructor (102B), `_Reset` (90B), 53B erased-target constructor, six-method `_Func_impl_no_alloc` vtable and 14B invoke bridge, in addition to the 111B Card text callback.
+- `src/CardTextCallback111.cpp` — original nested `NativeCardTickCallback` std::function constructor (102B), `_Reset` (90B), 53B erased-target constructor, six-method `_Func_impl_no_alloc` vtable, 14B invoke bridge, 34B callback operator and 22B event-4 wrapper, in addition to the 111B Card text callback.

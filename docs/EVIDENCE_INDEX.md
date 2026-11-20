@@ -117,6 +117,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1028 — whole 32B original Card ASCII task list push-back](CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md) — native 153B parent E8, genuine 32B helper and original nested E8, both 153/153 and 32/32 exact in one pinned object, STL origin uncredited.
 
+- [CORE/RECON-1193 — Card tick callback execution chain exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — original 34B callback operator selects Card::info_handles[1] and calls the exact 22B event-4 wrapper.
 - [CORE/RECON-1192 — Card tick erased-target vtable strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — all six original `_Func_impl_no_alloc` virtuals plus the 14B std::invoke bridge; `_Move` verified with its original 5B alignment span.
 - [CORE/RECON-1191 — nested Card tick erased-target constructor exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — original 53B `_Func_impl_no_alloc<NativeCardTickCallback>` constructor with both E8 targets and vtable HIGHLOW.
 - [CORE/RECON-1190 — nested Card text callback callable boundaries exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — original 102B NativeCardTickCallback std::function constructor and 90B _Reset, including both std::forward calls to 0x0040B280.

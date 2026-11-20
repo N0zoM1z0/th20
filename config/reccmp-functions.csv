@@ -1797,3 +1797,5 @@ std::_Func_impl_no_alloc<NativeCardTickCallback>::_Target_type,0x004884F0,functi
 std::_Func_impl_no_alloc<NativeCardTickCallback>::_Get,0x0044B530,function
 std::_Func_impl_no_alloc<NativeCardTickCallback>::_Delete_this,0x0044B3A0,function
 std::invoke<NativeCardTickCallback>,0x00486AD0,function
+th20::NativeCardTickCallback::operator(),0x00486E50,function
+th20::NativeCardTickEventView::update_event_4,0x00488920,function
