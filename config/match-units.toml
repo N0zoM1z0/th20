@@ -30289,3 +30289,36 @@ relocations = [
   { offset = 0xB0, type = "REL32", symbol = "?screen_draw_rect_423650@th20@@YAXPBMI@Z", target = 0x00423650 },
   { offset = 0xC2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1135: generic native strided element-construction loop.
+[units.native_construct_array_40bc20]
+source = "src/NativeArrayConstruct.cpp"
+object = "build/native-array-construct-canonical/NativeArrayConstruct.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_construct_array_40bc20"]
+symbol = "?native_construct_array_40bc20@th20@@YGXPAXIIP6EX0@Z@Z"
+target_address = 0x0040BC20
+size = 56
+relocations = []
+
+# CORE/RECON-1136: native AnimationPoolOwner sprite cache reset.
+[units.renderer_reset_sprite_cache_424080]
+source = "src/RendererDeviceResetHooks108.cpp"
+object = "build/core1147-canonical/RendererDeviceResetHooks108.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationResetHooks::reset_sprite_cache_424080"]
+symbol = "?reset_sprite_cache_424080@NativeAnimationResetHooks@th20@@QAEXXZ"
+target_address = 0x00424080
+size = 24
+relocations = []
+
+# CORE/RECON-1137: native AnimationPoolOwner color-cache reset.
+[units.renderer_reset_color_cache_4240a0]
+source = "src/RendererDeviceResetHooks108.cpp"
+object = "build/core1147-canonical/RendererDeviceResetHooks108.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeAnimationResetHooks::reset_color_cache_4240a0"]
+symbol = "?reset_color_cache_4240a0@NativeAnimationResetHooks@th20@@QAEXXZ"
+target_address = 0x004240A0
+size = 21
+relocations = []

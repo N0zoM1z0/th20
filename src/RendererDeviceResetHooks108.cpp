@@ -20,4 +20,10 @@ void NativeAnimationResetHooks::restart_state_41dba0() {
 void NativeAnimationResetHooks::restart_state_41dbc0() {
     *reinterpret_cast<std::uint8_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E10)=0xFF;
 }
+void NativeAnimationResetHooks::reset_sprite_cache_424080() {
+    *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E18)=0;
+}
+void NativeAnimationResetHooks::reset_color_cache_4240a0() {
+    *reinterpret_cast<std::uint8_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E0F)=0xFF;
+}
 }

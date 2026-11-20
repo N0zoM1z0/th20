@@ -1704,3 +1704,6 @@ th20::screen_draw_rect_423650,0x00423650,function
 th20::screen_draw_fade_424f30,0x00424F30,function
 th20::screen_draw_hold_424e80,0x00424E80,function
 th20::screen_draw_flash_424fa0,0x00424FA0,function
+th20::native_construct_array_40bc20,0x0040BC20,function
+th20::NativeAnimationResetHooks::reset_sprite_cache_424080,0x00424080,function
+th20::NativeAnimationResetHooks::reset_color_cache_4240a0,0x004240A0,function
