@@ -1,3 +1,14 @@
+**CORE/RECON-1187 update — the 108B PMR move callee is now whole exact.**
+The maintained `CardTextPayloadNative.cpp` explicitly instantiates the natural
+C++ `std::move<std::pmr::polymorphic_allocator<char>&>` forwarding leaf with
+`__declspec(noinline)`, preserving the original out-of-line 8B call instead of
+letting current MSVC inline it. The 108B `std::pmr::string` move constructor now
+matches **108/108 bytes**, all **5/5 original REL32 destinations** in order,
+and the same 8B `0x0040B280` helper. The 64B payload move remains 64/64 exact.
+No assembly, byte patching, or padding is used. The 102B std::function
+constructor and 65B `_Reset` are still NONEXACT; this does not claim those
+separate callables exact.
+
 # CORE/RECON-1029 — original 64B Card text capture move constructor whole native exact
 
 Locked original: Japanese TH20 Steamless v1.00a SHA-256
@@ -51,12 +62,10 @@ Exact replay: 5/5 units, 2 cold objects
 This adds **one whole strict unit/64 unique original bytes**, but its
 original compiler-generated lambda/capture source ownership remains
 `origin=unknown/review`; no new game-authored head or bytes are claimed.
-The called **108B original PMR move** is still distinct: a natural
-source-generated candidate currently measures **99B**, one fewer
-9-byte `std::move` forwarding sequence than the original. A similarly
-missing semantically meaningful `std::move` call affects the native
-102B `std::function` capture constructor and 65B `_Reset` helper.
-They remain NONEXACT rather than having code manually padded to match.
+The original **108B PMR move** is now a distinct whole exact unit. The
+native 102B `std::function` capture constructor and 65B `_Reset` helper
+remain NONEXACT; their current candidates still lack their own original
+9-byte forwarding sequences. They are not padded or credited.
 The complete original 1,896B Card start parent is likewise NONEXACT.
 
 ```sh

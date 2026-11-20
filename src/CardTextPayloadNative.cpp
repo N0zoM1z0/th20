@@ -5,6 +5,14 @@
 #include "Card.hpp"
 #include "Animation.hpp"
 #include <utility>
+
+// CORE/RECON-1187: the original 108B PMR basic_string move path calls the
+// shared 8B std::move<T&> forwarding leaf for its polymorphic allocator.
+// Preserve that ABI boundary rather than letting current MSVC inline it.
+template __declspec(noinline) std::pmr::polymorphic_allocator<char>&&
+std::move<std::pmr::polymorphic_allocator<char>&>(
+    std::pmr::polymorphic_allocator<char>&) noexcept;
+
 namespace th20 {
 NativeCardTextPayload::NativeCardTextPayload(
     Card* owner, const std::pmr::string& source, Animation* ani)

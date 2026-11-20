@@ -33,7 +33,10 @@ def verify():
  unit=coff.compare_unit('card_text_payload_move_64')
  assert unit['result']=='exact' and unit['size']==64 and unit['matched_bytes']==64
  assert len(unit['relocations'])==1
+ pmr_move=coff.compare_unit('card_pmr_string_move_108')
+ assert pmr_move['result']=='exact' and pmr_move['size']==108
+ assert pmr_move['matched_bytes']==108 and len(pmr_move['relocations'])==5
  print('PASS native Card PMR capture move: 64B/24 i386, exact E8 +0x26 to original PMR move ctor 0x0046A710')
  print('PASS original 66B lambda target wrapper E8 +0x33 directly into native 64B payload move')
- print('PASS pinned canonical complete 64/64 source; original 108B PMR move callee not claimed exact')
+ print('PASS original PMR string move constructor: 108B exact, 5/5 E8 target roles including std::move<T&> to 0x0040B280')
 if __name__=='__main__':verify()

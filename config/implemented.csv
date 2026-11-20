@@ -1769,3 +1769,4 @@ th20::LaserInfiniteInf::cancel_rectangle
 th20::LaserLineInf::cancel_rectangle
 th20::LaserCurveInf::cancel_rectangle
 th20::LaserType2Parameters::LaserType2Parameters(const th20::LaserType2Parameters&)
+std::pmr::string::basic_string(move)

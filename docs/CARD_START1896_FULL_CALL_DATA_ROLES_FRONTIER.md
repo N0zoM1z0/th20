@@ -107,3 +107,12 @@ remain distinct original physical code owners, never double-credited.
 
 
 **Related text-render Boss update (CORE/RECON-1182):** the 578B ASCII text renderer used by Card's PMR text callback now has a typed owner for the original unsigned-length correction table at `0x0056CDD0`; all 11 call and 8 data target roles remain in order. Its current 574B candidate differs only by one compiler-fused scalar SSE instruction and the independent local spill schedule; it remains NONEXACT. See [the ASCII text-render frontier](ASCII_TEXT_RENDER578_NATIVE_FRONTIER.md).
+
+
+**CORE/RECON-1187 boundary extension:** The Card text capture's original
+108B PMR string move constructor (`0x0046A710`) is now a separate whole exact
+natural-C++ unit. Its original `std::move<polymorphic_allocator<char>&>` E8 to
+the shared 8B `0x0040B280` leaf is restored, with all five original REL32
+roles. This closes the PMR move callee used by the exact 64B capture move; it
+does not close the 102B `std::function` constructor, 65B `_Reset`, or 1,896B
+Card start parent.

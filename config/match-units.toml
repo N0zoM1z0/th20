@@ -26446,6 +26446,24 @@ relocations = [
   { offset = 0x27, type = "REL32", symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@$$QAV01@@Z", target = 0x0046A710 },
 ]
 
+# CORE/RECON-1187: original 108B PMR string move, including its real
+# out-of-line allocator std::move<T&> call to the shared 8B 0x0040B280 leaf.
+[units.card_pmr_string_move_108]
+source = "src/CardTextPayloadNative.cpp"
+object = "build/core1007-canonical/CardTextPayloadNative.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::string::basic_string(move)"]
+symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@QAE@$$QAV01@@Z"
+target_address = 0x0046A710
+size = 108
+relocations = [
+  { offset = 0x13, type = "REL32", symbol = "?_Getal@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEAAV?$polymorphic_allocator@D@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x19, type = "REL32", symbol = "??$move@AAV?$polymorphic_allocator@D@pmr@std@@@std@@YA$$QAV?$polymorphic_allocator@D@pmr@0@AAV120@@Z", target = 0x0040B280 },
+  { offset = 0x36, type = "REL32", symbol = "??$?0V?$polymorphic_allocator@D@pmr@std@@$$V@?$_Compressed_pair@V?$polymorphic_allocator@D@pmr@std@@V?$_String_val@U?$_Simple_types@D@std@@@3@$0A@@std@@QAE@U_One_then_variadic_args_t@1@$$QAV?$polymorphic_allocator@D@pmr@1@@Z", target = 0x00467FA0 },
+  { offset = 0x51, type = "REL32", symbol = "?_Alloc_proxy@_Container_base0@std@@QAEXABU_Fake_allocator@2@@Z", target = 0x0040EC90 },
+  { offset = 0x5E, type = "REL32", symbol = "?_Take_contents@?$basic_string@DU?$char_traits@D@std@@V?$polymorphic_allocator@D@pmr@2@@std@@AAEXAAV12@@Z", target = 0x0046ED90 },
+]
+
 # CORE/RECON-1037: corrected original string receiver: PMR string c_str
 # on Card capture+4. The earlier payload-method source owner was wrong.
 [units.card_text_capture_cstr_22]

@@ -929,3 +929,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004CA380,th20::LaserLineInf::cancel_rectangle,1197,matching,100.00,laser_line_cancel_rectangle,"CORE/EXACT-1249; complete 1,197-byte body and all 30 original relocations strictly replay"
 0x004C9AB0,th20::LaserCurveInf::cancel_rectangle,740,matching,100.00,laser_curve_cancel_rectangle,"CORE/EXACT-1250; complete 740-byte body and all 21 original relocations strictly replay"
 0x004C84B0,th20::LaserType2Parameters::LaserType2Parameters(const th20::LaserType2Parameters&),256,matching,100.00,laser_type2_parameters_copy,"CORE/EXACT-1251; complete 256-byte body and original PMR vector constructor relocation strictly replay"
+0x0046A710,std::pmr::string::basic_string(move),108,matching,100.00,card_pmr_string_move_108,CORE/RECON-1187; original 108B/38-i386 whole exact; five native REL32 roles including the allocator std::move forwarding call to 0x0040B280
