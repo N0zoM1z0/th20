@@ -973,3 +973,4 @@ address,name,module,confidence,evidence
 0x004249F0,th20::screen_update_shake_4249f0,Screen,medium,docs/SCREEN_SHAKE_UPDATE_1040_SOURCE_RECONSTRUCTION.md
 0x00424350,th20::screen_update_flash_424350,Screen,medium,docs/SCREEN_FLASH_UPDATE_264_SOURCE_RECONSTRUCTION.md
 0x004240C0,th20::screen_update_fade_out_4240c0,Screen,high,CORE/RECON-1127; docs/SCREEN_FADE_OUT_UPDATE_180_STRICT_EXACT.md
+0x00424180,th20::screen_update_hold_424180,Screen,high,CORE/RECON-1128; docs/SCREEN_HOLD_UPDATE_221_STRICT_EXACT.md

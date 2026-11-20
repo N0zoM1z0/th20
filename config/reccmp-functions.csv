@@ -1696,3 +1696,4 @@ th20::screen_update_envelope_4244c0,0x004244C0,function
 th20::screen_update_shake_4249f0,0x004249F0,function
 th20::screen_update_flash_424350,0x00424350,function
 th20::screen_update_fade_out_4240c0,0x004240C0,function
+th20::screen_update_hold_424180,0x00424180,function

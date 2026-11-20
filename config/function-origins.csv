@@ -780,7 +780,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00424080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004240A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004240C0,authored,Screen,authored,high,CORE/RECON-1127; docs/SCREEN_FADE_OUT_UPDATE_180_STRICT_EXACT.md; callback registered by the native ScreenInf initialization switch
-0x00424180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00424180,authored,Screen,authored,high,CORE/RECON-1128; docs/SCREEN_HOLD_UPDATE_221_STRICT_EXACT.md; callback registered by the native ScreenInf initialization switch
 0x00424260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00424350,unknown,Screen,review,pending,Native 264B ScreenInf flash update; Timer/Screen flag ownership mapped; 264B C++ candidate still has SSE instruction-order mismatch. docs/SCREEN_FLASH_UPDATE_264_SOURCE_RECONSTRUCTION.md
 0x00424460,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -30144,3 +30144,23 @@ relocations = [
   { offset = 0x86, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
   { offset = 0xA7, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
 ]
+
+# CORE/RECON-1128: whole native ScreenInf hold update callback.
+[units.screen_hold_update_221]
+source = "src/ScreenHoldUpdate221.cpp"
+object = "build/screen-hold-canonical/ScreenHoldUpdate221.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_update_hold_424180"]
+symbol = "?screen_update_hold_424180@th20@@YAHPAX@Z"
+target_address = 0x00424180
+size = 221
+relocations = [
+  { offset = 0x2C, type = "REL32", symbol = "?at_most@Timer@th20@@QBE_NH@Z", target = 0x00423590 },
+  { offset = 0x3E, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x4E, type = "DIR32", symbol = "?native_screen_alpha_128_56cd98@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x79, type = "REL32", symbol = "?at_most@Timer@th20@@QBE_NH@Z", target = 0x00423590 },
+  { offset = 0x8B, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x9B, type = "DIR32", symbol = "?native_screen_alpha_128_56cd98@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0xA3, type = "DIR32", symbol = "?native_screen_duration_8_56d7bc@th20@@3MB", target = 0x0056D7BC },
+  { offset = 0xD0, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
