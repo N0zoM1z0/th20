@@ -1,6 +1,6 @@
 # CORE/RECON-716 — original 41,967-byte Enemy ECL Boss: native Laser opcode case ownership
 
-**Current maintained source frontier (CORE/RECON-1143):** `src/EnemyStateLaserOpcode.cpp` now contains natural-C++ source fragments for original opcodes 702, 703, 711 and 713. They use the accepted `EnemyState::writable_shot`, real LaserType0/1 parameter objects, and the real Context-owned `LaserController::create_laser`. This is a helper fragment, not an independent original function and not the 41,967B `EnemyState::execute_opcode()` body; the parent remains source-absent and NONEXACT. See [the four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md).
+**Current maintained source frontier (CORE/RECON-1143):** `src/EnemyStateLaserOpcode.cpp` now contains natural-C++ source fragments for original opcodes 702, 703, 711 and 713. They use the accepted `EnemyState::writable_shot`, real LaserType0/1/2/3 parameter objects, and the real Context-owned `LaserController::create_laser`. This is a helper fragment, not an independent original function and not the 41,967B `EnemyState::execute_opcode()` body; the parent remains source-absent and NONEXACT. See [the four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md).
 
 
 **The original Enemy opcode dispatcher at 0x0048C010 remains NONEXACT.** This independent original x86 audit confirms the four game Laser parameter class construction/destruction paths inside the giant dispatcher without claiming any parent bytes as original strict exact.

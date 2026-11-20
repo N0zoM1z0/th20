@@ -97,12 +97,11 @@ bool execute_enemy_laser_opcode(EnemyState& state, std::int32_t opcode) {
         laser.color = record.parameters.color;
         laser.angle = normalize_angle(record.parameters.angle);
         laser.speed = record.parameters.speed;
-        // The original writes the adjacent count/rows shorts as one DWORD.
-        laser.count = static_cast<std::uint16_t>(record.parameters.count)
-            | (static_cast<std::uint32_t>(static_cast<std::uint16_t>(record.parameters.rows)) << 16);
+        laser.count = metadata.field_24;
         laser.width = metadata.field_14;
         laser.radial_offset = metadata.field_00;
-        laser.flags.word = metadata.field_24 | 1u;
+        // The native type-2 constructor zeroes flags, then the case ORs bit 0.
+        laser.flags.word = 1u;
         laser.sound = metadata.sound;
         laser.motion_sound = metadata.alternate_sound;
         laser.view_index = static_cast<std::int32_t>(state.field_2e8);
