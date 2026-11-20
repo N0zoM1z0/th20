@@ -61,7 +61,8 @@ canonically accepted.
   [700/701 parameter source frontier](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md),
   [602–604 shared parameter source frontier](ENEMY_41967_602_604_SHARED_PARAMETERS_SOURCE_FRONTIER.md),
   [600/601 reset/fire source frontier](ENEMY_41967_600_601_SHOT_FIRE_SOURCE_FRONTIER.md),
-  and [609–612 shot-command source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md).
+  [609–612 shot-command source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md),
+  and [614 queue-copy source frontier](ENEMY_41967_614_QUEUE_COPY_SOURCE_FRONTIER.md).
 - **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation
   execution/update remains source-absent; accepted per-mode renderer
   children do not prove this parent. [Architecture/source map](SOURCE_MAP.md).

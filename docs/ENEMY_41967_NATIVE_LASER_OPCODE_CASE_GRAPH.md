@@ -13,6 +13,8 @@
 
 **Additional maintained source frontier (CORE/RECON-1148):** original opcodes 600/601 now have natural-C++ fragments in `src/EnemyStateShotFireOpcode.cpp`, covering the typed queued reset and the live Context/BulletController fire protocol. The original 339B firing callee and 41,967B parent remain NONEXACT. See [the 600/601 source frontier](ENEMY_41967_600_601_SHOT_FIRE_SOURCE_FRONTIER.md).
 
+**Additional maintained source frontier (CORE/RECON-1149):** original opcode 614 now has natural-C++ source in `src/EnemyStateQueueCopyOpcode.cpp`, preserving destination-then-source queue growth and the accepted 119B whole-record assignment. The 41,967B parent remains source-absent and NONEXACT. See [the 614 source frontier](ENEMY_41967_614_QUEUE_COPY_SOURCE_FRONTIER.md).
+
 Locked target: Japanese TH20 1.00a Steamless original PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 
 ## Original compressed integer switch, independently attested

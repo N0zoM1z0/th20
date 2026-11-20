@@ -1,5 +1,8 @@
 # CORE187: four Enemy shot-command opcodes in the entire dispatcher host
 
+**Current maintained production source update (CORE/RECON-1149):** original opcode 614 now has natural-C++ source in `src/EnemyStateQueueCopyOpcode.cpp`. It reads both indexes before mutation, grows the real PMR forward_list destination then source, advances two independent iterators and calls the accepted 119B `EnemyQueuedRecord::operator=`. It is a separate inline case fragment in the same 41,967B root; the parent remains NONEXACT. See [the 614 source frontier](ENEMY_41967_614_QUEUE_COPY_SOURCE_FRONTIER.md).
+
+
 **Current maintained source update (CORE/RECON-1145):** `src/EnemyStateShotCommandOpcode.cpp` now contains the natural-C++ 609/610/611/612 case fragment. It replaces the historical private draft's queued-selector boundary with the accepted `EnemyState::writable_shot()` pair ABI, preserves all per-field writes and the late cursor commit, and calls the real PMR command vector. This is still a helper fragment inside the 41,967B `EnemyState::execute_opcode()` parent, not a separate original native function or parent restoration. See [the 609–612 source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md).
 
 
