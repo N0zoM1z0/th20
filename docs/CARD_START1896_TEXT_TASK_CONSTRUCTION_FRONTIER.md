@@ -153,3 +153,14 @@ restores the original 8B forwarding E8 to `0x0040B280`; the candidate is
 108/108 bytes with all five original REL32 target roles. The 64B payload move
 remains exact. The separate 102B `std::function` constructor and 65B `_Reset`
 are now whole exact under CORE/RECON-1188.
+
+
+**CORE/RECON-1190 callback nested callable:** The independent 111B deferred
+Card text callback constructs its own `std::function<void()>` for the 4B
+`NativeCardTickCallback`. Its original 102B constructor at `0x00486740` and
+90B `_Reset` at `0x004869D0` are now whole exact from the existing
+`CardTextCallback111.cpp` owner. Both use the same 8B `std::forward<T&>` leaf
+at `0x0040B280`; the constructor has two real PE HIGHLOW plus three E8, and
+_Reset has five E8. These are separate generic STL boundaries from the
+Card-start payload's 102B/65B pair; the 578B draw Boss and 1,896B parent remain
+NONEXACT.

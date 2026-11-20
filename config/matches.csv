@@ -932,3 +932,5 @@ address,name,size,status,match_percent,unit,evidence
 0x0046A710,std::pmr::string::basic_string(move),108,matching,100.00,card_pmr_string_move_108,CORE/RECON-1187; original 108B/38-i386 whole exact; five native REL32 roles including the allocator std::move forwarding call to 0x0040B280
 0x00486800,std::function<void()>::function(NativeCardTextPayload&&),102,matching,100.00,card_text_function_ctor_102,"CORE/RECON-1188; original whole function, all native relocation roles"
 0x00486A30,std::_Func_class<void>::_Reset(NativeCardTextPayload&&),65,matching,100.00,card_text_function_reset_65,"CORE/RECON-1188; original whole function, all native relocation roles"
+0x00486740,std::function<void()>::function(NativeCardTickCallback&&),102,matching,100.00,card_tick_function_ctor_102,"CORE/RECON-1190; original whole function, all native relocation roles"
+0x004869D0,std::_Func_class<void>::_Reset(NativeCardTickCallback&&),90,matching,100.00,card_tick_function_reset_90,"CORE/RECON-1190; original whole function, all native relocation roles"

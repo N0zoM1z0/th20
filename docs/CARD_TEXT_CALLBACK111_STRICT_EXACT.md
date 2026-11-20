@@ -1,3 +1,14 @@
+**CORE/RECON-1190 nested callable extension:** The callback's own
+`std::function<void()>` now has its original 102B constructor at `0x00486740`
+and 90B `_Reset` at `0x004869D0` restored whole exact. The maintained source
+explicitly instantiates `std::forward<NativeCardTickCallback>` with
+`__declspec(noinline)`, preserving both original E8 calls to the shared 8B
+`0x0040B280` forwarding leaf. The constructor matches 102/102 bytes with
+five relocations; `_Reset` matches 90/90 with five E8 destinations. This is a
+separate nested callable from the 102B/65B `NativeCardTextPayload` callable
+used by Card start; neither result grants exactness to the 578B draw Boss or
+1,896B Card start parent.
+
 # CORE/RECON-1037 — complete original 111B Card name-display callback strict exact; corrected 22B PMR receiver
 
 Target: the locked Japanese TH20 Steamless v1.00a executable, SHA-256
@@ -91,13 +102,16 @@ Exact replay: 8/8 units, 3 cold objects
 ```
 
 This contributes **one new game-authored function /111 original `.text`
-bytes**, from the complete Card-specific callback. The 22B PMR `c_str`
-remains generic/unknown source origin with **zero new authored credit**,
-and the folded 24B `Card*` constructor at `0x004142A0` is **not**
-credited again. The original 102B std::function capture constructor,
-578B ASCII render Boss and enclosing 1,896B Card start are separately
-NONEXACT and do not gain transitive exactness. Whole-game linking and
-frame-time runtime behavior remain unproven. No full cold replay ran.
+bytes**, from the complete Card-specific callback. The 22B PMR `c_str`,
+102B `NativeCardTickCallback` std::function constructor and 90B `_Reset`
+remain generic C++ runtime/template bodies with **zero new game-authored
+credit**; the folded 24B `Card*` constructor at `0x004142A0` is **not**
+credited again. The nested constructor and reset are now independently whole
+exact with their original 5/5 relocations each, including both out-of-line
+`std::forward` calls to `0x0040B280`. The separate 578B ASCII render Boss and
+enclosing 1,896B Card start remain NONEXACT and gain no transitive exactness.
+Whole-game linking and frame-time runtime behavior remain unproven. No full
+cold replay ran.
 
 ```sh
 scripts/repo-python scripts/verify-card-text-callback111-native.py

@@ -34,6 +34,31 @@ def verify():
  assert len(ins)==42 and ins[-1].address+ins[-1].size==CALLBACK+111
  assert (ins[-1].mnemonic,ins[-1].op_str)==('ret','')
  assert calls(ins,CALLBACK)==CALLS
+ # The nested NativeCardTickCallback callable has its own constructor and
+ # reset pair; independently pin both native bodies and their physical calls.
+ tick_ctor=pe.raw_at(image,base,sections,0x00486740,102)
+ assert hashlib.sha256(tick_ctor).hexdigest()==(
+     '2c7a7d79d5795164ae1b3ee55227647727d114e8a809b9495307f0af3ecc2148')
+ tick_ctor_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(tick_ctor,0x00486740))
+ assert len(tick_ctor_ins)==32
+ assert (tick_ctor_ins[-1].mnemonic,tick_ctor_ins[-1].op_str)==('ret','4')
+ assert tick_ctor_ins[-1].address+tick_ctor_ins[-1].size==0x00486740+102
+ assert calls(tick_ctor_ins,0x00486740)=={
+     0x29:0x00413F80,0x39:0x0040B280,0x45:0x004869D0}
+ ctor_data={p-0x00486740:struct.unpack('<I',pe.raw_at(image,base,sections,p,4))[0]
+            for p in reloc if 0x00486740<=p<0x00486740+102}
+ assert ctor_data=={0x06:0x00567C8D,0x13:0x005B25C0}
+ tick_reset=pe.raw_at(image,base,sections,0x004869D0,90)
+ assert hashlib.sha256(tick_reset).hexdigest()==(
+     'f957d4564a030aaad49dd863e78969ee16a2f2343badc5e326dee9d725b59621')
+ tick_reset_ins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(tick_reset,0x004869D0))
+ assert len(tick_reset_ins)==34
+ assert (tick_reset_ins[-1].mnemonic,tick_reset_ins[-1].op_str)==('ret','4')
+ assert tick_reset_ins[-1].address+tick_reset_ins[-1].size==0x004869D0+90
+ assert calls(tick_reset_ins,0x004869D0)=={
+     0x0D:0x00413910,0x24:0x0040E700,0x33:0x0040B280,
+     0x45:0x004866B0,0x4E:0x00414C60}
+ assert not any(0x004869D0<=p<0x004869D0+90 for p in reloc)
  data={p-CALLBACK:struct.unpack('<I',pe.raw_at(image,base,sections,p,4))[0]
        for p in reloc if CALLBACK<=p<CALLBACK+111}
  assert data==HIGHLOW
@@ -51,8 +76,9 @@ def verify():
  # At the PMR string level, c_str forwards its String_val subobject at +4
  # to the actual native 0x0040F2C0 _Myptr helper.
  assert original_cstr[0x0A:0x0D]==b'\x83\xc1\x04'
- # Parent Card start 1,896B E8 into its std::function producer at +0x325,
- # whose original 102B/65B children remain nonexact source frontiers.
+ # Parent Card start 1,896B E8 into its independent text-task std::function
+ # producer at +0x325; this deferred callback constructs a second, nested
+ # std::function for the NativeCardTickCallback target.
  parent=pe.raw_at(image,base,sections,0x00487C30,1896)
  # Use the full immutable Card parent SHA without assuming it directly calls
  # this deferred callback: the invocation happens later through std::function.
@@ -63,9 +89,18 @@ def verify():
  pmr=coff.compare_unit('card_text_capture_cstr_22')
  assert pmr['result']=='exact' and pmr['size']==22 and pmr['matched_bytes']==22
  assert len(pmr['relocations'])==1
+ ctor=coff.compare_unit('card_tick_function_ctor_102')
+ assert ctor['result']=='exact' and ctor['size']==102 and ctor['matched_bytes']==102
+ assert len(ctor['relocations'])==5
+ reset=coff.compare_unit('card_tick_function_reset_90')
+ assert reset['result']=='exact' and reset['size']==90 and reset['matched_bytes']==90
+ assert len(reset['relocations'])==5
  print('PASS immutable native Card callback 111B/42-i386, four real E8/one PE HIGHLOW')
+ print('PASS nested 102B constructor SHA/call map: 3 E8 + 2 physical PE HIGHLOW; exact 5 relocation roles')
+ print('PASS nested 90B _Reset SHA/call map: all five original E8 targets; no PE HIGHLOW')
  print('PASS real capture+4 std::pmr::string::c_str at 0x44BAF0, whole 22B/10 i386, original _Myptr E8')
- print('PASS native layer 0x00FFFFFF and full original 8B text-result/variadic member ABI')
- print('PASS canonical whole 111/111 callback plus relocated 22/22 PMR c_str (corrected original source owner)')
+ print('PASS nested NativeCardTickCallback std::function constructor 102/102, 82 ordinary bytes and five relocations')
+ print('PASS nested _Reset 90/90, 70 ordinary bytes and five original E8 destinations')
+ print('PASS both nested callable boundaries preserve their out-of-line std::forward calls to 0x0040B280')
  print('The 578B ASCII text draw Boss and 1,896B Card start remain NONEXACT, no transitive credit')
 if __name__=='__main__':verify()

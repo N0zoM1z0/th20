@@ -183,3 +183,5 @@ remaining VM/resource calls explicitly captured. See
 - `src/CardTextPayloadNative.cpp` — original Card text capture constructors, copy/move/destructor and the exact 108B PMR string move constructor (`card_pmr_string_move_108`).
 
 - `src/CardStartSpell1896.cpp` — original Card `std::function` callable constructor (102B), `_Reset` (65B), 7B callable predicate, and 1,896B `Card::start_spell` source candidate.
+
+- `src/CardTextCallback111.cpp` — original nested `NativeCardTickCallback` std::function constructor (102B) and `_Reset` (90B), in addition to the 111B Card text callback.

@@ -21,6 +21,12 @@ struct NativeCardTickCallback {
 #if defined(_M_IX86)
 static_assert(sizeof(NativeCardTickCallback) == 4);
 #endif
+// CORE/RECON-1190: the original nested 102B std::function constructor and
+// 90B _Reset each preserve an out-of-line std::forward<T> call to 0x0040B280.
+// Current MSVC otherwise folds both constexpr forwarding instantiations.
+template __declspec(noinline) th20::NativeCardTickCallback&&
+std::forward<th20::NativeCardTickCallback>(th20::NativeCardTickCallback&) noexcept;
+
 void NativeCardTextPayload::operator()() const {
     // The native layer number is 0x00FFFFFF, NOT -1: both values are distinct
     // and MSVC emits different instructions for their original pushes.

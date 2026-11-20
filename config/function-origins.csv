@@ -2398,12 +2398,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00486690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004866B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004866F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00486740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00486740,unknown,CxxRuntime,authored,high,CORE/RECON-1190
 0x004867B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486800,unknown,CxxRuntime,authored,high,CORE/RECON-1188
 0x00486870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004869D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004869D0,unknown,CxxRuntime,authored,high,CORE/RECON-1190
 0x00486A30,unknown,CxxRuntime,authored,high,CORE/RECON-1188
 0x00486A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486AD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

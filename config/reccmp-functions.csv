@@ -1787,3 +1787,5 @@ th20::LaserType2Parameters::LaserType2Parameters(const th20::LaserType2Parameter
 std::pmr::string::basic_string(move),0x0046A710,function
 std::function<void()>::function(NativeCardTextPayload&&),0x00486800,function
 std::_Func_class<void>::_Reset(NativeCardTextPayload&&),0x00486A30,function
+std::function<void()>::function(NativeCardTickCallback&&),0x00486740,function
+std::_Func_class<void>::_Reset(NativeCardTickCallback&&),0x004869D0,function
