@@ -1686,3 +1686,4 @@ th20::bomb_pulse_animation_callback_478380,0x00478380,function
 th20::NativeBombPulseAnimationDelegate::update_478610,0x00478610,function
 th20::NativeAnimationPositionRelayView::set_position_forward_450320,0x00450320,function
 th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,0x004502F0,function
+th20::NativeScreenInf::initialize_423bf0,0x00423BF0,function

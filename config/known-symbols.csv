@@ -963,3 +963,4 @@ address,name,module,confidence,evidence
 0x00478610,th20::NativeBombPulseAnimationDelegate::update_478610,BombAnimation,high,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
 0x00450320,th20::NativeAnimationPositionRelayView::set_position_forward_450320,Animation,high,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
 0x004502F0,th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,AnimationPool,high,CORE/RECON-1123; docs/BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md
+0x00423BF0,th20::NativeScreenInf::initialize_423bf0,Screen,high,CORE/RECON-1124; docs/SCREEN_INITIALIZE_BOSS637_STRICT_EXACT.md

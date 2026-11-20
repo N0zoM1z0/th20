@@ -29987,3 +29987,66 @@ symbol = "?set_animation_position_4502f0@NativeAnimationPoolPositionView@th20@@Q
 target_address = 0x004502F0
 size = 40
 relocations = []
+
+# CORE/RECON-1124: original 637B ScreenInf Boss plus real 3B alignment and 40B switch table.
+[units.screen_init_boss_637]
+source = "src/ScreenInitialize637.cpp"
+object = "build/gptweb-screen-boss-canonical/ScreenInitialize637.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeScreenInf::initialize_423bf0"]
+symbol = "?initialize_423bf0@NativeScreenInf@th20@@QAEXHIIIIH@Z"
+target_address = 0x00423BF0
+size = 637
+compare_size = 680
+relocations = [
+  { offset = 0x1B, type = "DIR32", symbol = "$LN16", target = 0x00423E70 },
+  { offset = 0x29, type = "DIR32", symbol = "?screen_update_fade_out_4240c0@th20@@YAHPAX@Z", target = 0x004240C0 },
+  { offset = 0x30, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x42, type = "DIR32", symbol = "?screen_draw_solid_424e00@th20@@YAHPAX@Z", target = 0x00424E00 },
+  { offset = 0x4B, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0x62, type = "DIR32", symbol = "?screen_update_shake_4249f0@th20@@YAHPAX@Z", target = 0x004249F0 },
+  { offset = 0x69, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x80, type = "DIR32", symbol = "?screen_update_fade_in_424260@th20@@YAHPAX@Z", target = 0x00424260 },
+  { offset = 0x87, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x99, type = "DIR32", symbol = "?screen_draw_fade_424f30@th20@@YAHPAX@Z", target = 0x00424F30 },
+  { offset = 0xA2, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0xC3, type = "DIR32", symbol = "?screen_update_fade_out_4240c0@th20@@YAHPAX@Z", target = 0x004240C0 },
+  { offset = 0xCA, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0xDC, type = "DIR32", symbol = "?screen_draw_fade_424f30@th20@@YAHPAX@Z", target = 0x00424F30 },
+  { offset = 0xE5, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0xFC, type = "DIR32", symbol = "?screen_update_flash_424350@th20@@YAHPAX@Z", target = 0x00424260 },
+  { offset = 0x103, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x115, type = "DIR32", symbol = "?screen_draw_flash_424fa0@th20@@YAHPAX@Z", target = 0x00424E00 },
+  { offset = 0x11E, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0x135, type = "DIR32", symbol = "?screen_update_fade_in_424260@th20@@YAHPAX@Z", target = 0x00424350 },
+  { offset = 0x13C, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x14E, type = "DIR32", symbol = "?screen_draw_solid_424e00@th20@@YAHPAX@Z", target = 0x00424FA0 },
+  { offset = 0x157, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0x16E, type = "DIR32", symbol = "?screen_update_hold_424180@th20@@YAHPAX@Z", target = 0x00424180 },
+  { offset = 0x175, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x187, type = "DIR32", symbol = "?screen_draw_fade_424f30@th20@@YAHPAX@Z", target = 0x00424F30 },
+  { offset = 0x190, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0x1A7, type = "DIR32", symbol = "?screen_update_hold_424180@th20@@YAHPAX@Z", target = 0x00424180 },
+  { offset = 0x1AE, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x1C0, type = "DIR32", symbol = "?screen_draw_hold_424e80@th20@@YAHPAX@Z", target = 0x00424E80 },
+  { offset = 0x1C9, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0x1DD, type = "DIR32", symbol = "?screen_update_envelope_4244c0@th20@@YAHPAX@Z", target = 0x004244C0 },
+  { offset = 0x1E4, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x1F8, type = "DIR32", symbol = "?screen_update_solid_424460@th20@@YAHPAX@Z", target = 0x00424460 },
+  { offset = 0x1FF, type = "REL32", symbol = "?register_update@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x004122C0 },
+  { offset = 0x211, type = "DIR32", symbol = "?screen_draw_fade_424f30@th20@@YAHPAX@Z", target = 0x00424F30 },
+  { offset = 0x21A, type = "REL32", symbol = "?register_draw@th20@@YAPAVFunctionChainNode@1@HP6AHPAX@Z0@Z", target = 0x00412360 },
+  { offset = 0x231, type = "DIR32", symbol = "?screen_shutdown_425070@th20@@YAHPAX@Z", target = 0x00425070 },
+  { offset = 0x239, type = "REL32", symbol = "?set_shutdown_callback@FunctionChainNode@th20@@QAEXP6AHPAX@Z@Z", target = 0x00412DA0 },
+  { offset = 0x246, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x280, type = "DIR32", symbol = "$LN5", target = 0x00423C14 },
+  { offset = 0x284, type = "DIR32", symbol = "$LN6", target = 0x00423C4D },
+  { offset = 0x288, type = "DIR32", symbol = "$LN7", target = 0x00423C6B },
+  { offset = 0x28C, type = "DIR32", symbol = "$LN8", target = 0x00423CA4 },
+  { offset = 0x290, type = "DIR32", symbol = "$LN9", target = 0x00423D20 },
+  { offset = 0x294, type = "DIR32", symbol = "$LN10", target = 0x00423CE7 },
+  { offset = 0x298, type = "DIR32", symbol = "$LN11", target = 0x00423D59 },
+  { offset = 0x29C, type = "DIR32", symbol = "$LN12", target = 0x00423D92 },
+  { offset = 0x2A0, type = "DIR32", symbol = "$LN13", target = 0x00423DC8 },
+  { offset = 0x2A4, type = "DIR32", symbol = "$LN14", target = 0x00423DE3 },
+]

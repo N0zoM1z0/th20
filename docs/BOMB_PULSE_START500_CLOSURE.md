@@ -52,3 +52,15 @@ whole-exact original 20B entry and its **39B -> 33B -> 40B** full
 native position-update chain. See
 [BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md](BOMB_PULSE_CALLBACK_CHAIN_STRICT_EXACT.md).
 No additional exactness is claimed for the 500-byte parent.
+
+## ScreenInf auxiliary initializer closed whole exact
+
+The five-argument `0x00425090` factory wrapper used by this Bomb start
+forwards to the actual 81-byte ScreenInf factory `0x004250F0`. Its
+large native update behavior is separate, but the real **637B**
+mode switch and FunctionChain initializer at `0x00423BF0` has since
+been completed **whole strict exact** (680B including genuine switch
+table and alignment) in
+[SCREEN_INITIALIZE_BOSS637_STRICT_EXACT.md](SCREEN_INITIALIZE_BOSS637_STRICT_EXACT.md).
+The Bomb parent remains NONEXACT and the factory itself is still
+a separate reconstruction boundary.
