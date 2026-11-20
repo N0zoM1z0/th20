@@ -1697,3 +1697,7 @@ th20::Player::motion_parameter_04_value
 th20::Player::motion_parameter_08_value
 th20::Player::motion_parameter_10_value
 th20::ItemInf::set_speed_scale
+th20::PlayerRecord::clamped_field_40
+th20::PlayerRecord::clamped_field_44
+th20::PlayerRecord::clamped_field_48
+th20::PlayerRecord::add_field_3c_clamped

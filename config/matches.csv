@@ -866,3 +866,7 @@ address,name,size,status,match_percent,unit,evidence
 0x004C4900,th20::Player::motion_parameter_08_value,20,matching,100.00,player_motion_parameter_08_value,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
 0x004B8050,th20::Player::motion_parameter_10_value,20,matching,100.00,player_motion_parameter_10_value,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
 0x004C4F70,th20::ItemInf::set_speed_scale,29,matching,100.00,item_controller_set_speed_scale,docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md
+0x004C4B30,th20::PlayerRecord::clamped_field_40,64,matching,100.00,player_record_clamped_field_40,CORE/RECON-1141; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md
+0x004B82C0,th20::PlayerRecord::clamped_field_44,64,matching,100.00,player_record_clamped_field_44,CORE/RECON-1141; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md
+0x004B8300,th20::PlayerRecord::clamped_field_48,64,matching,100.00,player_record_clamped_field_48,CORE/RECON-1141; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md
+0x004C46A0,th20::PlayerRecord::add_field_3c_clamped,75,matching,100.00,player_record_add_field_3c_clamped,CORE/RECON-1141; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md

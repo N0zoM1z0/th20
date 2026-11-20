@@ -1713,3 +1713,7 @@ th20::Player::motion_parameter_08_value,0x004C4900,function
 th20::Player::motion_parameter_10_value,0x004B8050,function
 th20::ItemInf::set_speed_scale,0x004C4F70,function
 th20::BombController::active_for,0x004C4F00,function
+th20::PlayerRecord::clamped_field_40,0x004C4B30,function
+th20::PlayerRecord::clamped_field_44,0x004B82C0,function
+th20::PlayerRecord::clamped_field_48,0x004B8300,function
+th20::PlayerRecord::add_field_3c_clamped,0x004C46A0,function

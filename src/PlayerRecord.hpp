@@ -86,6 +86,10 @@ struct PlayerRecord {
     // remain inferred, but their fields, bounds and call ABI are observed.
     std::int32_t clamped_option_units();
     std::int32_t clamped_option_cap();
+    std::int32_t clamped_field_40();
+    std::int32_t clamped_field_44();
+    std::int32_t clamped_field_48();
+    void add_field_3c_clamped(std::int32_t amount);
     std::int32_t available_option_count();
     std::int32_t reward_limit();
     std::int32_t collision_radius_multiplier();
