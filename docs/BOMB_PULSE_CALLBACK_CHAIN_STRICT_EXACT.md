@@ -17,8 +17,9 @@ The two native REL32 links from `0x00478380` to `0x00478610` and from
 `0x00478610` to `0x00450320` are verified as separate physical calls.
 The 33-byte relay has one real DIR32 global and a REL32 to the 40-byte
 pool method. The final 40-byte method has zero relocation fields.
-All four complete original bodies are independently reproduced, with
-original runtime file ownership still explicitly open.
+All four complete original bodies are independently reproduced: **132
+disjoint bytes** across the full callback chain, with original runtime
+file ownership still explicitly open.
 
 The 20-byte callback uses a genuine stack-resident **empty C++ class**
 for its member-call receiver. Its original 20-byte stack frame contains
@@ -32,3 +33,12 @@ The other three units compile with the ordinary `/GS /sdl` profile.
 Each exact unit is individually cold-compiled and canonical relocation
 replayed. The recovered 500-byte parent remains **NONEXACT** and no
 extra whole-parent authored-byte credit is claimed.
+
+Scoped canonical replays (four independent cold objects):
+
+```sh
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/BombPulseAnimationCallback20.cpp
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/BombPulseAnimationUpdate39.cpp
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/BombPulseAnimationPositionRelay33.cpp
+nice -n 15 scripts/repo-python scripts/replay-exact-units.py --source src/BombPulseAnimationPoolPosition40.cpp
+```
