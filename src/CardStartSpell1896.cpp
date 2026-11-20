@@ -1,7 +1,7 @@
 // Original Card start 1,896B Boss: main gameplay stages reconstructed
 // as typed C++20. The genuine renderer-file/text-file getters and all
 // seven script-table global reads now recover all original 62 E8/26
-// HIGHLOW destination roles in order. Candidate 1848B remains NONEXACT;
+// HIGHLOW destination roles in order. Candidate 1915B remains NONEXACT;
 // PMR callable construction and original EH/local lifetimes remain open.
 // The retained TextJob/record table interfaces below remain provisional,
 // and must be independently resolved before whole-code acceptance.
@@ -39,11 +39,14 @@ struct NativeCardStartBombView { bool active_478130() const; };
 extern const std::uint8_t* native_card_script_table_5c6110;
 
 struct NativeCardScriptEntry {
-    std::int32_t file_id;
-    std::int32_t group;
-    std::int32_t script;
+    std::int32_t file_id; // descriptor +0x00
+    std::int32_t script;  // descriptor +0x04
+    std::int32_t group;   // descriptor +0x08, published to Card flag 9
 };
 static_assert(sizeof(NativeCardScriptEntry)==0xC);
+static_assert(offsetof(NativeCardScriptEntry,file_id)==0x0);
+static_assert(offsetof(NativeCardScriptEntry,script)==0x4);
+static_assert(offsetof(NativeCardScriptEntry,group)==0x8);
 
 // Deliberately re-evaluate the native global table pointer at each of
 // its seven actual uses; no artificial cached table snapshot.
@@ -67,18 +70,25 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
         auto* main_records = reinterpret_cast<NativeSpellRecordArrayView*>(
             reinterpret_cast<std::uint8_t*>(native_primary_records_50fc50(
                 native_card_records_5c6108))+0xB08);
-        auto* first = main_records->record_486e10(index);
-        strcpy_s(reinterpret_cast<char*>(first),0xC0,spell_name);
+        // Keep the record lookup inside the first strcpy_s argument. On
+        // i386 MSVC the other two arguments are pushed first; the original
+        // ECL code therefore calls record_486e10 only after those pushes.
+        strcpy_s(reinterpret_cast<char*>(main_records->record_486e10(index)),
+                 0xC0,spell_name);
         main_records = reinterpret_cast<NativeSpellRecordArrayView*>(
             reinterpret_cast<std::uint8_t*>(native_primary_records_50fc50(
                 native_card_records_5c6108))+0xB08);
         main_records->record_486e10(index)->increment_attempt_488590(attempt_kind);
 
+        // As with the primary record, retain the secondary archive/record
+        // lookup as the first strcpy_s argument so native right-to-left
+        // argument evaluation reproduces the original call ordering.
+        strcpy_s(reinterpret_cast<char*>(
+                     reinterpret_cast<NativeSpellRecordArrayView*>(
+                         native_card_records_5c6108->secondary_488700()+0xB08)
+                         ->record_486e10(index)),
+                 0xC0,spell_name);
         auto* alternate = reinterpret_cast<NativeSpellRecordArrayView*>(
-            native_card_records_5c6108->secondary_488700()+0xB08);
-        strcpy_s(reinterpret_cast<char*>(alternate->record_486e10(index)),0xC0,
-                 spell_name);
-        alternate = reinterpret_cast<NativeSpellRecordArrayView*>(
             native_card_records_5c6108->secondary_488700()+0xB08);
         alternate->record_486e10(index)->increment_attempt_488590(attempt_kind);
     }
@@ -123,7 +133,12 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
     effect_handle=effect_file->spawn("effect",6,-1,nullptr);
     auto* boss=context->enemy_controller()->selected(0);
     if (boss!=nullptr) position=context->enemy_controller()->selected(0)->position_ref();
-    else position=Vector3(0.0f,0.0f,0.0f);
+    else {
+        // The native constructs a local zero Vector3, then copies its three
+        // words into Card::position; retain that value lifetime explicitly.
+        const Vector3 fallback_position(0.0f,0.0f,0.0f);
+        position = fallback_position;
+    }
     effect_handle.set_position(position);
     auto* var4=effect_handle.find_child(4,0);
     var4->variables().field_08=duration_frames;
@@ -136,10 +151,13 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
     const std::int32_t reward_multipliers[5]={500000,1000000,1500000,2000000,1000000};
     const std::int32_t base=session.clamped_field_1f4();
     std::int32_t multiplier_index=session.mode();
-    const std::uint32_t raw_bonus=static_cast<std::uint32_t>(base)*
-        static_cast<std::uint32_t>(reward_multipliers[multiplier_index]);
-    bonus=static_cast<std::int32_t>(raw_bonus);
-    initial_bonus=bonus>999999999 ? 999999999 : bonus;
+    const std::int32_t reward = static_cast<std::int32_t>(
+        static_cast<std::uint32_t>(base) *
+        static_cast<std::uint32_t>(reward_multipliers[multiplier_index]));
+    bonus = reward;
+    initial_bonus = reward;
+    if (initial_bonus > 999999999)
+        initial_bonus = 999999999;
 
     // The original issues this second named effect spawn independently.
     effect_file=context->effect_info()->animation_file(0);
@@ -151,17 +169,29 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
     // a local table entry suppresses five genuine original PE HIGHLOW roles.
     // Slots are 12B and each stage is 0x34B, with two main variants and
     // a separately optional third script. No helper E8 exists in the PE.
-    const std::int32_t variant=(index>=0x58 && index<=0x5C)?1:0;
-    if (CARD_SCRIPT_ENTRY(group,variant).file_id>=0) {
-        auto* file=enemy_controller(0)->animation_file(CARD_SCRIPT_ENTRY(group,variant).file_id);
-        background_handle=file->spawn(nullptr,CARD_SCRIPT_ENTRY(group,variant).script,-1,nullptr);
+    const std::int32_t table_stage = group;
+    const std::int32_t variant = (index >= 0x58 && index <= 0x5C) ? 1 : 0;
+    const std::int32_t script_variant = variant;
+    if (CARD_SCRIPT_ENTRY(table_stage, variant).file_id >= 0) {
+        auto* controller = enemy_controller(0);
+        const std::uint32_t file_id =
+            static_cast<std::uint32_t>(CARD_SCRIPT_ENTRY(table_stage, variant).file_id);
+        auto* file = controller->animation_file(file_id);
+        const std::int32_t script = CARD_SCRIPT_ENTRY(table_stage, variant).script;
+        background_handle = file->spawn(nullptr, script, -1, nullptr);
     }
-    reinterpret_cast<NativeCardStartFlagsView*>(this)->set_spell_flag9_488960(
-        static_cast<std::uint32_t>(CARD_SCRIPT_ENTRY(group,variant).group));
 
-    if (CARD_SCRIPT_ENTRY(group,2).file_id!=-1) {
-        auto* file=enemy_controller(0)->animation_file(CARD_SCRIPT_ENTRY(group,2).file_id);
-        file->spawn(nullptr,CARD_SCRIPT_ENTRY(group,2).script,-1,nullptr);
+    const std::uint32_t flag_group = static_cast<std::uint32_t>(
+        CARD_SCRIPT_ENTRY(table_stage, script_variant).group);
+    reinterpret_cast<NativeCardStartFlagsView*>(this)->set_spell_flag9_488960(flag_group);
+
+    if (CARD_SCRIPT_ENTRY(table_stage, 2).file_id != -1) {
+        auto* controller = enemy_controller(0);
+        const std::uint32_t file_id = static_cast<std::uint32_t>(
+            CARD_SCRIPT_ENTRY(table_stage, 2).file_id);
+        auto* file = controller->animation_file(file_id);
+        const std::int32_t script = CARD_SCRIPT_ENTRY(table_stage, 2).script;
+        file->spawn(nullptr, script, -1, nullptr);
     }
 }
 #undef CARD_SCRIPT_ENTRY

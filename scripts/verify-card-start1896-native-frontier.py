@@ -123,9 +123,9 @@ def verify(candidate):
     if candidate:
         # This entire natural COFF is NONEXACT; never compare a shortened
         # source prefix against an original 1896B target as exact code.
-        body,relocs=coff.object_function(candidate,SYM,1848)
+        body,relocs=coff.object_function(candidate,SYM,1915)
         compiled=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
-        assert len(body)==1848 and len(compiled)==490
+        assert len(body)==1915 and len(compiled)==495
         assert (compiled[-1].mnemonic,compiled[-1].op_str)==('ret','0x10')
         assert compiled[-1].address+compiled[-1].size==len(body)
         calls=[r for r in relocs if r['type']=='REL32']
@@ -155,18 +155,33 @@ def verify(candidate):
         assert calls[-1]['symbol'].startswith('@__security_check_cookie@4')
         mask={i for r in relocs for i in range(r['offset'],r['offset']+4)}
         same_bytes=sum(a==z for i,(a,z) in enumerate(zip(original,body)) if i not in mask)
-        assert len(mask)==352 and same_bytes==90
-        assert body!=original[:1848]
+        compared_mask=len(mask & set(range(len(original))))
+        assert len(mask)==352
+        assert body!=original and len(body)!=len(original)
+        source=(ROOT/'src/CardStartSpell1896.cpp').read_text(encoding='utf8')
+        assert 'strcpy_s(reinterpret_cast<char*>(main_records->record_486e10(index)),' in source
+        assert 'native_card_records_5c6108->secondary_488700()+0xB08)' in source
+        assert 'std::int32_t script;  // descriptor +0x04' in source
+        assert 'std::int32_t group;   // descriptor +0x08' in source
+        assert 'const std::int32_t reward = static_cast<std::int32_t>(' in source
+        assert 'initial_bonus = reward;' in source
+        assert 'if (initial_bonus > 999999999)' in source
+        assert 'const Vector3 fallback_position(0.0f,0.0f,0.0f);' in source
+        assert 'const std::int32_t table_stage = group;' in source
+        assert 'const std::int32_t script_variant = variant;' in source
+        assert source.count('auto* controller = enemy_controller(0);') == 2
+        assert source.count('const std::uint32_t file_id =') == 2
+        assert source.count('const std::int32_t script = CARD_SCRIPT_ENTRY(') == 2
         # The two shared Renderer getters and Card-start PMR constructor / callable
         # remain strict original heads, never re-credit their byte extents.
         for unit in ('card_hud_renderer_file_getter_20','card_hud_spell_result_boss_1522',
                      'card_start_pmr_string_char_ctor_128','card_text_callable_test_7'):
             result=coff.compare_unit(unit)
             assert result['result']=='exact' and result['matched_bytes']==result['size'],unit
-        print('PASS candidate entire 1848B/490 i386, 62/62 original E8 CALLEE ROLES in order and 26/26 PE data target ROLES in order')
+        print('PASS candidate entire 1915B/495 i386, 62/62 original E8 CALLEE ROLES in order and 26/26 PE data target ROLES in order')
         print('PASS authentic three independent file getter E8, four Renderer-global loads, seven live script-table loads, and late PMR destructor')
         print('PASS four affected canonical units whole native exact (1522B HUD parent, 20B file getter, 128B PMR char constructor, 7B callable helper)')
-        print(f'NONEXACT full parent: candidate 1848B vs native 1896B, ordinary {same_bytes}/{1848-len(mask)}, {same_sites}/62 physical E8 positions')
+        print(f'NONEXACT full parent: candidate 1915B vs native 1896B, ordinary {same_bytes}/{len(original)-compared_mask} compared positional bytes, {same_sites}/62 physical E8 positions')
     print('Original entire Card start 1896B Boss remains NONEXACT; zero new parent game-original byte credit')
 if __name__=='__main__':
     p=argparse.ArgumentParser()

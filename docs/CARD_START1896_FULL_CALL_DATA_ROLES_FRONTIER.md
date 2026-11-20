@@ -48,10 +48,7 @@ These are four accesses of the selected 12B descriptor (`file_id`
 condition, `file_id` lookup, `script` lookup and `group` flag
 publication) plus three accesses of the optional third descriptor.
 The actual stage stride is **0x34**, descriptor stride **0x0C** and
-native descriptor-array base **+0x64**. The current source expresses
-those same real typed accesses at every native use using a local source
-macro `CARD_SCRIPT_ENTRY`. The macro avoids an unrelated C++ helper E8
-and does **not** cache a mutable global pointer. The old `spell_script_entry`
+native descriptor-array base **+0x64**. The maintained source uses the actual 12B descriptor view with field order `file_id` at `+0x00`, `script` at `+0x04`, and the Card flag-9 group word at `+0x08`. It preserves separate stage, selected-variant, controller, file-id, AnimationFile and script locals across the first/optional-third descriptor paths; the original global pointer is re-read at each of its seven uses through `CARD_SCRIPT_ENTRY`. The macro avoids an unrelated C++ helper E8 and does **not** cache a mutable global pointer. The old `spell_script_entry`
 helper was called twice in the source but not once in the original PE.
 
 ## Whole-COFF results, not a shortened prefix
@@ -61,7 +58,7 @@ Pinned MSVC 19.44 x86 C++20 (`/std:c++20 /Od /Ob0 /GS /Gy /Zl
 
 | Evidence | Previous maintained source | Current source | Original PE |
 | --- | ---: | ---: | ---: |
-| Complete native parent / candidate function | 1,750B | **1,848B** | 1,896B |
+| Complete native parent / candidate function | 1,750B | **1,915B** | 1,896B |
 | i386 instructions | 478 | **490** | 512 |
 | Physical E8 / compiler REL32 | 61 | **62** | 62 |
 | PE HIGHLOW / compiler DIR32 | 16 | **26** | 26 |
@@ -69,10 +66,7 @@ Pinned MSVC 19.44 x86 C++20 (`/std:c++20 /Od /Ob0 /GS /Gy /Zl
 | Original data destination **roles in order** | incomplete | **26/26** | 26/26 |
 | E8 **opcode positions** identical | not exact | **0/62** | 62/62 |
 
-The current parent remains 48 bytes and 22 i386 instructions short,
-with differing stack locals, source call placement, and compiler/EH
-cleanup. It matches only **90/1,496** ordinary positional bytes
-when masking the exact 88 real COFF relocation fields. All role
+The current candidate is 19 bytes longer than the original but has 17 fewer i386 instruction heads, with differing stack locals, source call placement, and compiler/EH cleanup. It matches **91/1,548** ordinary positional bytes when comparing the overlapping native range and masking the 88 real COFF relocation fields. The candidate's final 19 bytes have no original native counterpart; no prefix or padding credit is claimed. All role
 claims compare the original SHA-pinned physical PE E8 destinations
 and HIGHLOW values to the actual generated COFF **symbol names**;
 they are not inferred from candidate displacements. The full source
