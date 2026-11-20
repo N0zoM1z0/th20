@@ -18,6 +18,7 @@ The original primary jump table has 34 command IDs (`0..33`). The maintained sou
 | `10, 11, 12` | Bullet cancel, positional sound request, and slot-6 setup |
 | `15, 16` | Native field assignment and repeat/jump counter behavior |
 | `17` | VectorInterpolation start/end/tangent/duration/mode setup with optional position-relative endpoint |
+| `18` | Thresholded angle update with player-relative targeting, single-wrap normalization, and optional speed update |
 | `19` | Slot-9 polar vector, Timer, and command-flag setup |
 | `20` | Animation flag-byte selection through the three original typed helpers |
 | `21` | Slot-10 speed interpolation and aimed polar vector |

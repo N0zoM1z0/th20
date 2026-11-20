@@ -8,6 +8,10 @@
 #include "AnimationCallback.hpp"
 #include "EnemyController.hpp"
 #include "Bullet.hpp"
+#include "DebugAllocator.hpp"
+#include "ShotMetadata.hpp"
+#include <memory>
+#include <utility>
 #include "BulletAimSelector.hpp"
 #include "BulletStyle.hpp"
 #include "Player.hpp"
@@ -258,8 +262,38 @@ void Bullet::run_extended_commands() {
             ++field_38;
             continue;
         }
-        case 13:
-            return; // ECL/Enemy command setup remains open.
+        case 13: {
+            auto spawned_metadata =
+                std::allocate_shared<ShotMetadata>(DebugAllocator<ShotMetadata>{});
+            ShotParameters parameters;
+            spawned_metadata->field_38 =
+                static_cast<std::int16_t>(command.operand_10_word);
+            spawned_metadata->field_44 = command.operand_14_real;
+
+            parameters.position = position;
+            parameters.count = static_cast<std::int16_t>(command.operand_18_word);
+            parameters.rows = static_cast<std::int16_t>(command.operand_1c_word);
+            const BulletCommand& following = metadata->commands[field_38 + 1];
+            parameters.angle = select_bullet_aim(
+                view_index, static_cast<float>(angle), position,
+                command.operand_00, following.operand_0c);
+            parameters.angle_step = command.operand_04;
+            parameters.speed = command.operand_08 > native_selector_min
+                ? command.operand_08 : speed;
+            parameters.speed_step = command.operand_0c;
+
+            ++field_38;
+            parameters.type = following.operand_10_word;
+            parameters.color = following.operand_14_word;
+            const bool cancel_after_fire = following.operand_18_real != 0.0f;
+            spawned_metadata->commands = metadata->commands;
+            context->bullet_controller()->fire(
+                parameters, std::move(spawned_metadata));
+            ++field_38;
+            if (cancel_after_fire)
+                cancel(0);
+            continue;
+        }
         case 17: {
             command_flags.words.low |= 0x20000;
             commands.at(8).vector_24.x = command.operand_00;
@@ -282,8 +316,35 @@ void Bullet::run_extended_commands() {
             interpolation_420.reset_timer();
             break;
         }
-        case 18:
-            return; // Angle target selection and current-speed transition remain open.
+        case 18: {
+            if (command.operand_00 < 990.0f) {
+                if (command.operand_00 >= -998.0f) {
+                    float next_angle = command.operand_00;
+                    if (next_angle <= -990.0f) {
+                        if (next_angle < -999.0f)
+                            next_angle += 360.0f;
+                    } else if (next_angle > 999.0f) {
+                        next_angle -= 360.0f;
+                    }
+                    angle.value = next_angle;
+                }
+            } else {
+                float next_angle = context->player()->direction_to(position) +
+                                   (command.operand_00 - 999.0f);
+                if (next_angle <= -990.0f) {
+                    if (next_angle < -999.0f)
+                        next_angle += 360.0f;
+                } else if (next_angle > 999.0f) {
+                    next_angle -= 360.0f;
+                }
+                angle.value = next_angle;
+            }
+            if (command.operand_04 >= -998.0f)
+                field_24 = command.operand_04;
+            polar(velocity, static_cast<float>(angle), field_24);
+            ++field_38;
+            continue;
+        }
         case 19:
             command_flags.words.low &= ~0x80000u;
             polar(commands.at(9).vector_24, command.operand_00, command.operand_04);
