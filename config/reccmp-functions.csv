@@ -1757,3 +1757,4 @@ th20::WeaponStoneInfo::initialize_phase_effect,0x00534AB0,function
 th20::LaserController::cancel_near,0x004CAAD0,function
 th20::FunctionChainNode::enabled,0x00464390,function
 th20::GameController::update_node_enabled,0x00464350,function
+th20::WeaponStoneInfo::update_main,0x00532B20,function

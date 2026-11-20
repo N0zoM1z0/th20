@@ -54,6 +54,7 @@ public:
     void initialize_progress_effect();
     void initialize_phase_effect();
     void update_progress_mesh();
+    std::int32_t update_main();
     ~WeaponStoneInfo() override;
     void enable() override;
     void disable() override;
