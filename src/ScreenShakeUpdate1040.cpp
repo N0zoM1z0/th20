@@ -15,9 +15,9 @@ std::int32_t __cdecl screen_update_shake_4249f0(void* task) {
             static_cast<std::int32_t>(static_cast<NativeScreenInf*>(task)->field_1c))) return 7;
 
     volatile float fraction=static_cast<NativeScreenInf*>(task)->timer_30.fraction();
-    float amplitude=static_cast<float>(
+    float amplitude=fraction*static_cast<float>(
         static_cast<std::int32_t>(static_cast<NativeScreenInf*>(task)->field_24)-
-        static_cast<std::int32_t>(static_cast<NativeScreenInf*>(task)->field_20))*fraction;
+        static_cast<std::int32_t>(static_cast<NativeScreenInf*>(task)->field_20));
     amplitude/=static_cast<float>(static_cast<std::int32_t>(
         static_cast<NativeScreenInf*>(task)->field_1c));
     amplitude+=static_cast<float>(static_cast<std::int32_t>(
