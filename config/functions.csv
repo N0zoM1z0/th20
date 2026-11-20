@@ -3915,7 +3915,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004CA380,1197,0x004CA82C,FUN_004ca380,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004CA830,647,0x004CAAB6,FUN_004ca830,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004CAAC0,15,0x004CAACE,FUN_004caac0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004CAAD0,288,0x004CABEF,FUN_004caad0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004CAAD0,288,0x004CABEF,FUN_004caad0,th20::LaserController::cancel_near,LaserController,reconstructed,0.00,__thiscall,?cancel_near@LaserController@th20@@QAEHABUVector3@2@MHH@Z,false,src/LaserCancelNear.cpp,CORE/RECON-1207; docs/LASER_CONTROLLER_CANCEL_NEAR_RECONSTRUCTION.md,unknown,"Natural C++ reconstruction of the 288B LaserController radial cancellation loop. Publishes the cancellation center, traverses the real active Laser intrusive list with RAII iterator lifetime, skips state 1, dispatches the actual Laser vtable +0x30 cancel_circle(center,radius,mode,argument) and sums each result. /Od COFF contribution 281B; native 288B. NONEXACT; no padding, inert code, or origin claim."
 0x004CABF0,1123,0x004CB052,FUN_004cabf0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004CB060,1170,0x004CB4F1,FUN_004cb060,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004CB500,15,0x004CB50E,FUN_004cb500,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

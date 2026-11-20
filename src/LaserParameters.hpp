@@ -84,6 +84,8 @@ public:
     ~LaserController() override;
     void select_context(std::int32_t index);
     std::int32_t cancel_all(std::int32_t mode, std::int32_t argument);
+    std::int32_t cancel_near(const Vector3& center, float radius,
+                             std::int32_t mode, std::int32_t argument);
     std::int32_t reset_all_lasers();
     void register_laser(Laser* chosen);
     std::int32_t create_laser(std::int32_t type, const void* parameters);

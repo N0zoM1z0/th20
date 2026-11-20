@@ -1754,3 +1754,4 @@ th20::WeaponStoneProgressCallback::update,0x00532A90,function
 th20::RenderMesh::set_update_callback,0x0052CD50,function
 th20::WeaponStoneInfo::initialize_progress_effect,0x005348D0,function
 th20::WeaponStoneInfo::initialize_phase_effect,0x00534AB0,function
+th20::LaserController::cancel_near,0x004CAAD0,function
