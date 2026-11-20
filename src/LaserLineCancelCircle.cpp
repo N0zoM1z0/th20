@@ -41,15 +41,15 @@ std::int32_t LaserLineInf::cancel_circle(const Vector3& center, float radius,
             ++context->bullet_controller()->cancel_counter;
 
             if (hit_index%4==0) {
-                if (field_6e4<0x12 || field_6e4==0x22 || field_6e4==0x26) {
+                if (field_6e4<=0x11 || field_6e4==0x22 || field_6e4==0x26) {
                     context->bullet_controller()->animation_file()->spawn(
                         "bullet",static_cast<std::int32_t>(parameters.color*2u+0xd4u),
                         position,0.0f,-1,nullptr);
-                } else if (field_6e4<0x20 || field_6e4==0x1b) {
+                } else if (field_6e4<=0x1f || field_6e4==0x1b) {
                     context->bullet_controller()->animation_file()->spawn(
                         "bullet",static_cast<std::int32_t>(parameters.color*2u+0x104u),
                         position,0.0f,-1,nullptr);
-                } else if (field_6e4<0x22) {
+                } else if (field_6e4<=0x21) {
                     context->bullet_controller()->animation_file()->spawn(
                         "bullet",static_cast<std::int32_t>(parameters.color*2u+0x11cu),
                         position,0.0f,-1,nullptr);
