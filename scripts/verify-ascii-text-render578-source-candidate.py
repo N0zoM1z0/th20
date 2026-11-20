@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the natural-C++ 578B ASCII renderer and its single SSE fusion."""
+"""Verify the 578B ASCII renderer and its current 574B natural-C++ candidate."""
 from __future__ import annotations
 
 import argparse
