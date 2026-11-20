@@ -9,7 +9,7 @@ LaserType0Parameters::LaserType0Parameters()
       type(0), color(0), radial_offset(0), command_index(0), flags(0),
       field_48(0), field_4c(0), view_index(0) {}
 LaserType0Parameters::~LaserType0Parameters() = default;
-LaserType1Parameters::LaserType1Parameters()
+LaserType1Parameters::LaserType1Parameters() noexcept
     : angle(0), angular_velocity(0), length_limit(0), length(0), width(0),
       growth_speed(8), delay(0), grow_time(0), sustain_time(0), shrink_time(0),
       sound(0), field_44(0), handle(0), radial_offset(0), command_index(0),

@@ -8,6 +8,7 @@ namespace th20 {
 // Infinite-family vtable 0x005712E8; the factory allocates 0x1338 bytes.
 class LaserInfiniteInf : public Laser {
 public:
+    LaserInfiniteInf() noexcept;
     std::int32_t cancel_circle(const Vector3& center, float radius,
                                std::int32_t mode, std::int32_t argument) override;
 

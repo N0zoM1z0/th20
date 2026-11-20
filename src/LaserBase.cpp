@@ -14,7 +14,7 @@ Laser::~Laser() {
     }
 }
 
-Laser::Laser()
+Laser::Laser() noexcept
     : flags(0), state(0), field_24(0), age(), timer_38(), timer_48(),
       position(), velocity(), angle(0.0f), field_74(0.0f), speed(0.0f),
       field_7c(0.0f), field_80(0.0f), field_84(0), field_88(0), handle(0),

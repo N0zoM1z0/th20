@@ -57,3 +57,8 @@ unreachable jump, NOP, assembly, or padding is synthesized. No canonical match
 unit or exact byte credit is claimed. The native class/source spelling is
 corroborated by the original source diagnostic and vtable; authorship is
 classified as medium-confidence game logic independently of byte equality.
+
+The concrete `LaserInfiniteInf` constructor at `0x004C8880` is now also
+restored as a natural C++ initializer list and strictly exact (87/87 bytes,
+five original relocations). See
+[the constructor receipt](LASER_INFINITE_CONSTRUCTOR_EXACT.md).

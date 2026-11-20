@@ -33,7 +33,7 @@ struct LaserType1Parameters {
     std::uint32_t command_index, type, color, flags;
     std::pmr::vector<BulletCommand> commands;
     std::int32_t view_index;
-    LaserType1Parameters();
+    LaserType1Parameters() noexcept;
     ~LaserType1Parameters();
 };
 struct CurveNode;
@@ -127,7 +127,7 @@ static_assert(offsetof(LaserType3Parameters, commands) == 0x3c);
 class Laser {
 public:
     // Native 0x6F8-byte common prefix; derived constructors replace the base vtable.
-    Laser();
+    Laser() noexcept;
     virtual void set_position(const Vector3&) = 0;         // slot 00
     virtual void point_at_distance(float, Vector3&) = 0;  // slot 04
     virtual void slot_08() = 0;

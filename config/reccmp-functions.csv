@@ -1767,3 +1767,4 @@ th20::LaserInfiniteInf::cancel_circle,0x004CABF0,function
 th20::Laser::Laser(),0x004C85B0,function
 th20::Laser::~Laser(),0x004C8AF0,function
 th20::Laser::scalar_deleting_destructor,0x004C9210,function
+th20::LaserInfiniteInf::LaserInfiniteInf(),0x004C8880,function

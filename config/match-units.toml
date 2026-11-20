@@ -31132,3 +31132,20 @@ relocations = [
   { offset = 0xB, type = "REL32", symbol = "??1Laser@th20@@UAE@XZ", target = 0x004C8AF0 },
   { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
 ]
+
+# CORE/EXACT-1227: native Infinite Laser concrete-family constructor.
+[units.laser_infinite_ctor]
+source = "src/LaserInfiniteConstructor.cpp"
+object = "build/laser-infinite-constructor-canonical/LaserInfiniteConstructor.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserInfiniteInf::LaserInfiniteInf()"]
+symbol = "??0LaserInfiniteInf@th20@@QAE@XZ"
+target_address = 0x004C8880
+size = 87
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Laser@th20@@QAE@XZ", target = 0x004C85B0 },
+  { offset = 0x14, type = "DIR32", symbol = "??_7LaserInfiniteInf@th20@@6B@", target = 0x005712E8 },
+  { offset = 0x22, type = "REL32", symbol = "??0LaserType1Parameters@th20@@QAE@XZ", target = 0x0047C030 },
+  { offset = 0x3D, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+  { offset = 0x4B, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+]

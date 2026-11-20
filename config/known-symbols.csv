@@ -1053,3 +1053,4 @@ address,name,module,confidence,evidence
 0x004C85B0,th20::Laser::Laser(),Laser,medium,CORE/RECON-1225; docs/LASER_BASE_CONSTRUCTOR_RECONSTRUCTION.md; native base vtable 0x005710BC and three concrete family constructors independently establish the common game-owned 0x6F8 prefix
 0x004C8AF0,th20::Laser::~Laser(),Laser,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native Laser vtable destructor and EclRuntime intrusive-link owner
 0x004C9210,th20::Laser::scalar_deleting_destructor,Laser,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native scalar deleting wrapper and 0x6F8 allocation size
+0x004C8880,th20::LaserInfiniteInf::LaserInfiniteInf(),LaserInfiniteInf,high,"CORE/EXACT-1227; docs/LASER_INFINITE_CONSTRUCTOR_EXACT.md; native family vtable, factory size and all four member-construction relocations"
