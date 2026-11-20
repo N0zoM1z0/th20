@@ -1,5 +1,8 @@
 # CORE208 — entire original Enemy opcode 632: borrowed ECL script pointer
 
+**Current maintained production source update (CORE/RECON-1150):** original opcode 632 now has natural-C++ source in `src/EnemyStateScriptPointerOpcode.cpp`. The helper accepts the parent's live `EclInstruction&`, reads both indexes before COW, grows the real PMR vector, and stores the borrowed `EclInstruction+0x1C` pointer into the real `BulletCommand::script` word. This does not allocate/copy a string or claim the 41,967B parent exact. See [the 632 source frontier](ENEMY_41967_632_SCRIPT_POINTER_SOURCE_FRONTIER.md).
+
+
 The original Japanese TH20 v1.00a Steamless binary is pinned at SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 CORE208 extends the **same complete 41,967-byte**
