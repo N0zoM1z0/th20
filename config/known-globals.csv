@@ -16,3 +16,5 @@ address,name,module,confidence,evidence
 0x0056FD48,th20::native_progress_marker_spacing_56fd48,FrontInf,high,CORE/RECON-1151; original PE float at 0x0056FD48 is exactly 28.0f and is used by both 412B progress update functions.
 0x00570780,th20::native_progress_script_frames_570780,FrontInf,high,"CORE/RECON-1151; original PE three-entry signed script selector table at 0x00570780 is exactly {0, 1, 2} and is used by the +0x50 seven-marker updater."
 0x0057078C,th20::native_progress_script_frames_57078c,FrontInf,high,"CORE/RECON-1151; original PE three-entry signed script selector table at 0x0057078C is exactly {0, 1, 2} and is used by the +0x6C seven-marker updater."
+0x005AFED8,th20::native_item_progress_thresholds_standard,PlayerRecord,high,CORE/RECON-1152; exact original PE 31-entry signed threshold table: thirty 3-frame thresholds followed by 99999999.
+0x005AFF54,th20::native_item_progress_thresholds_mode4,PlayerRecord,high,CORE/RECON-1152; exact original PE 10-entry signed mode-4 threshold table: nine 3-frame thresholds followed by 99999999.

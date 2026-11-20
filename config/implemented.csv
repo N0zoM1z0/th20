@@ -1721,3 +1721,8 @@ th20::FrontInf::update_progress_handles_50
 th20::FrontInf::update_progress_handles_6c
 th20::Animation::interrupt_offset_7
 th20::interrupt_animation_mode5
+th20::PlayerRecord::advance_progress_cc
+th20::PlayerRecord::tick_progress_d0
+th20::PlayerRecord::advance_progress_b8
+th20::PlayerRecord::tick_progress_c0
+th20::PlayerRecord::advance_progress_c4

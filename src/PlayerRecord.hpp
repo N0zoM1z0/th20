@@ -95,6 +95,11 @@ struct PlayerRecord {
     std::int32_t clamped_field_cc();
     std::int32_t clamped_field_d0();
     std::int32_t clamped_field_d8();
+    void advance_progress_cc(std::int32_t amount);
+    void tick_progress_d0(std::int32_t amount);
+    std::int32_t advance_progress_b8(std::int32_t amount);
+    void tick_progress_c0(std::int32_t amount);
+    void advance_progress_c4();
     void add_field_3c_clamped(std::int32_t amount);
     std::int32_t add_field_30_and_check(std::int32_t amount);
     std::int32_t available_option_count();

@@ -1023,3 +1023,8 @@ address,name,module,confidence,evidence
 0x004B8650,th20::FrontInf::update_progress_handles_6c,FrontInf,high,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
 0x004B85A0,th20::Animation::interrupt_offset_7,Animation,high,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
 0x004B8580,th20::interrupt_animation_mode5,Animation,high,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004E10E0,th20::PlayerRecord::advance_progress_cc,PlayerRecord,high,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E11A0,th20::PlayerRecord::tick_progress_d0,PlayerRecord,high,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E1250,th20::PlayerRecord::advance_progress_b8,PlayerRecord,high,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E1310,th20::PlayerRecord::tick_progress_c0,PlayerRecord,high,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E1510,th20::PlayerRecord::advance_progress_c4,PlayerRecord,high,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md

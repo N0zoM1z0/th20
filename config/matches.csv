@@ -889,3 +889,8 @@ address,name,size,status,match_percent,unit,evidence
 0x004B8650,th20::FrontInf::update_progress_handles_6c,412,matching,100.00,front_inf_progress_handles_6c,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
 0x004B85A0,th20::Animation::interrupt_offset_7,29,matching,100.00,front_inf_animation_interrupt_offset_7,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
 0x004B8580,th20::interrupt_animation_mode5,22,matching,100.00,front_inf_animation_interrupt_mode5,CORE/RECON-1151; docs/FRONT_INF_PROGRESS_HANDLES_412_EXACT.md
+0x004E10E0,th20::PlayerRecord::advance_progress_cc,187,matching,100.00,player_record_advance_progress_cc,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E11A0,th20::PlayerRecord::tick_progress_d0,172,matching,100.00,player_record_tick_progress_d0,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E1250,th20::PlayerRecord::advance_progress_b8,188,matching,100.00,player_record_advance_progress_b8,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E1310,th20::PlayerRecord::tick_progress_c0,246,matching,100.00,player_record_tick_progress_c0,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x004E1510,th20::PlayerRecord::advance_progress_c4,86,matching,100.00,player_record_advance_progress_c4,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md

@@ -1736,3 +1736,8 @@ th20::FrontInf::update_progress_handles_50,0x004B8BF0,function
 th20::FrontInf::update_progress_handles_6c,0x004B8650,function
 th20::Animation::interrupt_offset_7,0x004B85A0,function
 th20::interrupt_animation_mode5,0x004B8580,function
+th20::PlayerRecord::advance_progress_cc,0x004E10E0,function
+th20::PlayerRecord::tick_progress_d0,0x004E11A0,function
+th20::PlayerRecord::advance_progress_b8,0x004E1250,function
+th20::PlayerRecord::tick_progress_c0,0x004E1310,function
+th20::PlayerRecord::advance_progress_c4,0x004E1510,function

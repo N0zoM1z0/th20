@@ -12107,7 +12107,7 @@ relocations = [
   { offset = 110, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 124, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 269, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 300, type = "DIR32", symbol = "$SG98300", target = 0x00570D4C },
+  { offset = 300, type = "DIR32", symbol = "$SG98318", target = 0x00570D4C },
   { offset = 305, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -12124,7 +12124,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1ItemInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7ItemInf@th20@@6B@", target = 0x00570D40 },
-  { offset = 48, type = "DIR32", symbol = "$SG98316", target = 0x00570D60 },
+  { offset = 48, type = "DIR32", symbol = "$SG98334", target = 0x00570D60 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 74, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -12632,7 +12632,7 @@ size = 344
 relocations = [
   { offset = 83, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 96, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 128, type = "DIR32", symbol = "$SG194329", target = 0x0056EC84 },
+  { offset = 128, type = "DIR32", symbol = "$SG194614", target = 0x0056EC84 },
   { offset = 140, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
   { offset = 174, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 179, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -12640,7 +12640,7 @@ relocations = [
   { offset = 196, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
   { offset = 240, type = "REL32", symbol = "?effect_info@Context@th20@@QAEPAVEffectInfo@2@XZ", target = 0x0041CAD0 },
   { offset = 253, type = "REL32", symbol = "?animation_file@EffectInfo@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x0045D100 },
-  { offset = 286, type = "DIR32", symbol = "$SG194335", target = 0x0056EC84 },
+  { offset = 286, type = "DIR32", symbol = "$SG194620", target = 0x0056EC84 },
   { offset = 298, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
   { offset = 328, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 333, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
@@ -30835,4 +30835,110 @@ target_address = 0x004B8580
 size = 22
 relocations = [
   { offset = 0xD, type = "REL32", symbol = "?interrupt@Animation@th20@@QAEXH@Z", target = 0x004388F0 },
+]
+
+# CORE/RECON-1152: native PlayerRecord item progress state machine.
+[units.player_record_advance_progress_cc]
+source = "src/PlayerRecordItemProgress.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerRecord::advance_progress_cc"]
+symbol = "?advance_progress_cc@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004E10E0
+size = 187
+relocations = [
+  { offset = 0x22, type = "REL32", symbol = "?clamped_field_d8@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E20 },
+  { offset = 0x42, type = "REL32", symbol = "?clamped_field_d8@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E20 },
+  { offset = 0x55, type = "REL32", symbol = "?clamped_field_d8@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E20 },
+  { offset = 0x69, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x6E, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
+  { offset = 0x75, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x80, type = "REL32", symbol = "?clamped_field_d8@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E20 },
+  { offset = 0x8B, type = "REL32", symbol = "?clamped_field_d0@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E70 },
+  { offset = 0x96, type = "REL32", symbol = "?clamped_field_cc@PlayerRecord@th20@@QAEHXZ", target = 0x00477FF0 },
+  { offset = 0xAB, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0xB0, type = "REL32", symbol = "?update_progress_handles_6c@FrontInf@th20@@QAEXHHH@Z", target = 0x004B8650 },
+]
+
+# CORE/RECON-1152: native PlayerRecord item progress state machine.
+[units.player_record_tick_progress_d0]
+source = "src/PlayerRecordItemProgress.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerRecord::tick_progress_d0"]
+symbol = "?tick_progress_d0@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004E11A0
+size = 172
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?clamped_field_d8@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E20 },
+  { offset = 0x5F, type = "REL32", symbol = "?advance_progress_cc@PlayerRecord@th20@@QAEXH@Z", target = 0x004E10E0 },
+  { offset = 0x66, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x71, type = "REL32", symbol = "?clamped_field_d8@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E20 },
+  { offset = 0x7C, type = "REL32", symbol = "?clamped_field_d0@PlayerRecord@th20@@QAEHXZ", target = 0x004B7E70 },
+  { offset = 0x87, type = "REL32", symbol = "?clamped_field_cc@PlayerRecord@th20@@QAEHXZ", target = 0x00477FF0 },
+  { offset = 0x9C, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0xA1, type = "REL32", symbol = "?update_progress_handles_6c@FrontInf@th20@@QAEXHHH@Z", target = 0x004B8650 },
+]
+
+# CORE/RECON-1152: native PlayerRecord item progress state machine.
+[units.player_record_advance_progress_b8]
+source = "src/PlayerRecordItemProgress.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerRecord::advance_progress_b8"]
+symbol = "?advance_progress_b8@PlayerRecord@th20@@QAEHH@Z"
+target_address = 0x004E1250
+size = 188
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?clamped_field_bc@PlayerRecord@th20@@QAEHXZ", target = 0x004B8100 },
+  { offset = 0x42, type = "REL32", symbol = "?clamped_field_bc@PlayerRecord@th20@@QAEHXZ", target = 0x004B8100 },
+  { offset = 0x55, type = "REL32", symbol = "?clamped_field_bc@PlayerRecord@th20@@QAEHXZ", target = 0x004B8100 },
+  { offset = 0x71, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x7C, type = "REL32", symbol = "?clamped_field_bc@PlayerRecord@th20@@QAEHXZ", target = 0x004B8100 },
+  { offset = 0x87, type = "REL32", symbol = "?clamped_field_c0@PlayerRecord@th20@@QAEHXZ", target = 0x004B8150 },
+  { offset = 0x92, type = "REL32", symbol = "?clamped_field_b8@PlayerRecord@th20@@QAEHXZ", target = 0x004B80B0 },
+  { offset = 0xA7, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0xAC, type = "REL32", symbol = "?update_progress_handles_50@FrontInf@th20@@QAEXHHH@Z", target = 0x004B8BF0 },
+]
+
+# CORE/RECON-1152: native PlayerRecord item progress state machine.
+[units.player_record_tick_progress_c0]
+source = "src/PlayerRecordItemProgress.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerRecord::tick_progress_c0"]
+symbol = "?tick_progress_c0@PlayerRecord@th20@@QAEXH@Z"
+target_address = 0x004E1310
+size = 246
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?clamped_field_bc@PlayerRecord@th20@@QAEHXZ", target = 0x004B8100 },
+  { offset = 0x44, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 0x49, type = "REL32", symbol = "?mode@Session@th20@@QAEHXZ", target = 0x004640A0 },
+  { offset = 0x5E, type = "DIR32", symbol = "?native_item_progress_thresholds_mode4@th20@@3QBHB", target = 0x005AFF54 },
+  { offset = 0x73, type = "DIR32", symbol = "?native_item_progress_thresholds_standard@th20@@3QBHB", target = 0x005AFED8 },
+  { offset = 0xA7, type = "REL32", symbol = "?advance_progress_c4@PlayerRecord@th20@@QAEXXZ", target = 0x004E1510 },
+  { offset = 0xB0, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0xBB, type = "REL32", symbol = "?clamped_field_bc@PlayerRecord@th20@@QAEHXZ", target = 0x004B8100 },
+  { offset = 0xC6, type = "REL32", symbol = "?clamped_field_c0@PlayerRecord@th20@@QAEHXZ", target = 0x004B8150 },
+  { offset = 0xD1, type = "REL32", symbol = "?clamped_field_b8@PlayerRecord@th20@@QAEHXZ", target = 0x004B80B0 },
+  { offset = 0xE6, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0xEB, type = "REL32", symbol = "?update_progress_handles_50@FrontInf@th20@@QAEXHHH@Z", target = 0x004B8BF0 },
+]
+
+# CORE/RECON-1152: native PlayerRecord item progress state machine.
+[units.player_record_advance_progress_c4]
+source = "src/PlayerRecordItemProgress.cpp"
+object = "build/player-record-progress/PlayerRecordItemProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::PlayerRecord::advance_progress_c4"]
+symbol = "?advance_progress_c4@PlayerRecord@th20@@QAEXXZ"
+target_address = 0x004E1510
+size = 86
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?advance_progress_b8@PlayerRecord@th20@@QAEHH@Z", target = 0x004E1250 },
+  { offset = 0x1A, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x1F, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
+  { offset = 0x26, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x33, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x38, type = "REL32", symbol = "?report_spell_result_4b90e0@NativeCardHudView@th20@@QAEXHH@Z", target = 0x004B90E0 },
 ]
