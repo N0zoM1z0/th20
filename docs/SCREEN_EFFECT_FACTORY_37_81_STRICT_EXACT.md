@@ -33,6 +33,22 @@ scripts/repo-python scripts/replay-exact-units.py --source src/ScreenEffectFacto
 scripts/repo-python scripts/replay-exact-units.py --source src/ScreenInitialize637.cpp
 ```
 
-The 67B allocator template at `0x00422D40` and 187B object constructor
-at `0x004233B0` are separate source boundaries, not implicitly exact from
-these wrappers. More ScreenInf per-mode update/draw bodies are open.
+The complete owner lifetime has now been expanded beyond those wrappers:
+
+- `0x00422D40` — 67B real allocator body: `operator new(0x44)`, explicit
+  null branch, original zero-memory helper `0x0040C080`, and direct
+  constructor call. Whole strict exact.
+- `0x004233B0` — 187B ScreenInf constructor: true TaskInfo base, derived
+  vtable, eight scalar fields, Timer and diagnostic. Whole strict exact,
+  including the original five-byte `INT3` alignment in the 192B comparison.
+- `0x00425070` — 29B shutdown callback: the generic virtual destructor
+  release at `0x0041F7C0`, real process allocator global and explicit local
+  argument clear. Whole strict exact.
+
+The 37B wrapper and 81B factory remain separate from the 637B initializer;
+none of these boundaries double-counts the others. The factory's diagnostic
+label now uses a named native-address symbol, avoiding compiler-generated
+`$SG` literal labels that change between standalone cold builds. The
+independent native lifecycle audit is
+`scripts/verify-screen-inf-lifecycle-native.py`. More ScreenInf per-mode
+update/draw bodies remain open.
