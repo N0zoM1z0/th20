@@ -975,3 +975,4 @@ address,name,module,confidence,evidence
 0x004240C0,th20::screen_update_fade_out_4240c0,Screen,high,CORE/RECON-1127; docs/SCREEN_FADE_OUT_UPDATE_180_STRICT_EXACT.md
 0x00424180,th20::screen_update_hold_424180,Screen,high,CORE/RECON-1128; docs/SCREEN_HOLD_UPDATE_221_STRICT_EXACT.md
 0x00424260,th20::screen_update_fade_in_424260,Screen,high,CORE/RECON-1129; docs/SCREEN_FADE_IN_UPDATE_239_STRICT_EXACT.md
+0x00424460,th20::screen_update_solid_424460,Screen,high,CORE/RECON-1130; docs/SCREEN_SOLID_UPDATE_82_STRICT_EXACT.md

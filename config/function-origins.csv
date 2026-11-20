@@ -783,7 +783,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00424180,authored,Screen,authored,high,CORE/RECON-1128; docs/SCREEN_HOLD_UPDATE_221_STRICT_EXACT.md; callback registered by the native ScreenInf initialization switch
 0x00424260,authored,Screen,authored,high,CORE/RECON-1129; docs/SCREEN_FADE_IN_UPDATE_239_STRICT_EXACT.md; callback registered by the native ScreenInf initialization switch
 0x00424350,unknown,Screen,review,pending,Native 264B ScreenInf flash update; Timer/Screen flag ownership mapped; 264B C++ candidate still has SSE instruction-order mismatch. docs/SCREEN_FLASH_UPDATE_264_SOURCE_RECONSTRUCTION.md
-0x00424460,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00424460,authored,Screen,authored,high,CORE/RECON-1130; docs/SCREEN_SOLID_UPDATE_82_STRICT_EXACT.md; callback registered by the native ScreenInf initialization switch
 0x004244C0,unknown,Screen,review,pending,Native 1318B ScreenInf envelope callback; GameController/Timer/GameRandom/Graphics viewport ownership mapped; source remains 2B and relocation NONEXACT. docs/SCREEN_ENVELOPE_UPDATE_1318_SOURCE_RECONSTRUCTION.md
 0x004249F0,unknown,Screen,review,pending,Native 1040B ScreenInf shake callback; Graphics viewport point lanes mapped; whole-function C++ replay still open. docs/SCREEN_SHAKE_UPDATE_1040_SOURCE_RECONSTRUCTION.md
 0x00424E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
