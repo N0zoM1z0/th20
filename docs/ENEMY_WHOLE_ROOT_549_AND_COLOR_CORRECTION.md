@@ -1,5 +1,8 @@
 # Enemy whole-root opcode 549 and corrected opcode 551 color identity (CORE179)
 
+**Current maintained production source update (CORE/RECON-1156):** original opcode 549 now has natural-C++ source in `src/EnemyStateMembershipOpcode.cpp`. It uses the real `Context::enemy_controller`, the accepted 244B `EnemyController::has_identifier`, and the actual late `EnemyState::integer_argument_destination(0)` path. The source verifier checks the complete 95B/20-instruction/4-E8 primary branch. The full 41,967B parent remains NONEXACT. See [the opcode 549 source frontier](ENEMY_41967_549_MEMBERSHIP_SOURCE_FRONTIER.md).
+
+
 The sole target is Japanese TH20 v1.00a Steamless PE32, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The real Enemy dispatcher is still one **41,967-byte** root at `0x0048C010`,

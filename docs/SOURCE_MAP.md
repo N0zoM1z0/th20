@@ -175,3 +175,4 @@ remaining VM/resource calls explicitly captured. See
 
 - [Enemy opcode 551 Fog and typed StageResource owner](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md)
 - [Enemy opcodes 514/521 phase and borrowed timeout-name fragments](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md)
+- [Enemy opcode 549 intrusive membership query](ENEMY_41967_549_MEMBERSHIP_SOURCE_FRONTIER.md)
