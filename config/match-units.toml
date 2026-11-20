@@ -31614,3 +31614,16 @@ relocations = [
   { offset = 0x2C6, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
   { offset = 0x2DA, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-1251: LaserType2Parameters copy constructor used by Curve splitting.
+[units.laser_type2_parameters_copy]
+source = "src/LaserType2ParametersCopy.cpp"
+object = "build/laser-type2-parameters-copy-canonical/LaserType2ParametersCopy.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserType2Parameters::LaserType2Parameters(const th20::LaserType2Parameters&)"]
+symbol = "??0LaserType2Parameters@th20@@QAE@ABU01@@Z"
+target_address = 0x004C84B0
+size = 256
+relocations = [
+  { offset = 0x93, type = "REL32", symbol = "??0?$vector@UBulletCommand@th20@@V?$polymorphic_allocator@UBulletCommand@th20@@@pmr@std@@@std@@QAE@ABV01@@Z", target = 0x0048B2F0 },
+]

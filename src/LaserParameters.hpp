@@ -56,6 +56,7 @@ struct LaserType2Parameters {
     std::uint32_t field_50, field_54;
     std::int32_t view_index;
     LaserType2Parameters() noexcept;
+    LaserType2Parameters(const LaserType2Parameters& other);
     ~LaserType2Parameters();
 };
 struct LaserType3Parameters {
