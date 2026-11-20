@@ -21,6 +21,8 @@
 
 **Additional maintained source frontier (CORE/RECON-1152):** original opcode 555 now has natural-C++ source in `src/EnemyStateAnimationSpawnOpcode.cpp`, preserving the sound gate, distance threshold, live EnemyController/AnimationFile selection and layer-3 spawn. The 41,967B parent remains source-absent and NONEXACT. See [the 555 source frontier](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md).
 
+**Additional maintained source frontier (CORE/RECON-1153):** original opcodes 553/554 now have natural-C++ source in `src/EnemyStateControllerSetterOpcode.cpp`, preserving the pre-operand Context cache and Y-before-X float reads. The 41,967B parent remains source-absent and NONEXACT. See [the 553/554 source frontier](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md).
+
 Locked target: Japanese TH20 1.00a Steamless original PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 
 ## Original compressed integer switch, independently attested
