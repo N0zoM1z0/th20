@@ -1,2 +1,4 @@
 name,address,type
 th20::session,0x005BA568,data
+th20::native_screen_draw_extent_x_5b87f8,0x005B87F8,data
+th20::native_screen_draw_extent_y_5b87fc,0x005B87FC,data
