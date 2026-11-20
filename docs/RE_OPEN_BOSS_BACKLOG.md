@@ -66,7 +66,12 @@ canonically accepted.
   [632 borrowed-script source frontier](ENEMY_41967_632_SCRIPT_POINTER_SOURCE_FRONTIER.md),
   [621 mesh-owner source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md),
   [555 sound/spawn source frontier](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md),
-  and [553/554 controller setter source frontier](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md).
+  [553/554 controller setter source frontier](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md),
+  [514/521 phase source frontier](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md),
+  [549 membership source frontier](ENEMY_41967_549_MEMBERSHIP_SOURCE_FRONTIER.md),
+  [551 Fog/StageResource source frontier](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md),
+  [522/528/531/532/533 Card Spell Start source frontier](ENEMY_41967_522_528_531_532_533_CARD_START_SOURCE_FRONTIER.md),
+  and [Enemy argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md).
 - **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation
   execution/update remains source-absent; accepted per-mode renderer
   children do not prove this parent. [Architecture/source map](SOURCE_MAP.md).
