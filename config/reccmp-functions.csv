@@ -1724,3 +1724,4 @@ th20::item_award_life_reward,0x004C47C0,function
 th20::item_award_reward_type_1,0x004C4960,function
 th20::item_award_reward_type_0,0x004C4B90,function
 th20::item_award_reward_type_2,0x004C4DA0,function
+th20::NativeViewIndexOwner::set_view_index,0x004776A0,function

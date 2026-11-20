@@ -9,3 +9,4 @@ th20::native_screen_top_16_56cd90,0x0056CD90,data
 th20::native_screen_height_448_56d7c0,0x0056D7C0,data
 th20::window_state,0x005B6758,data
 th20::native_one_56c8cc,0x0056C8CC,data
+th20::native_view_index_owner_5c0028,0x005C0028,data

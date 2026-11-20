@@ -1010,3 +1010,5 @@ address,name,module,confidence,evidence
 0x004C4960,th20::item_award_reward_type_1,Item,medium,CORE/RECON-1145
 0x004C4B90,th20::item_award_reward_type_0,Item,medium,CORE/RECON-1145
 0x004C4DA0,th20::item_award_reward_type_2,Item,high,CORE/RECON-1145
+0x004776A0,th20::NativeViewIndexOwner::set_view_index,NativeViewIndexOwner,high,CORE/RECON-1146; docs/NATIVE_VIEW_INDEX_OWNER_EXACT.md
+0x005C0028,th20::native_view_index_owner_5c0028,NativeViewIndexOwner,high,CORE/RECON-1146

@@ -875,3 +875,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004BD5A0,th20::item_reward_popup_queue,26,matching,100.00,item_reward_popup_queue_lookup,CORE/RECON-1143; docs/ITEM_REWARD_POPUP_QUEUE_EXACT.md
 0x004C47C0,th20::item_award_life_reward,307,matching,100.00,item_award_life_reward,CORE/RECON-1144; docs/ITEM_REWARD_LIFE_HELPER_307_EXACT.md
 0x004C4DA0,th20::item_award_reward_type_2,346,matching,100.00,item_award_reward_type_2,CORE/RECON-1145; docs/ITEM_REWARD_HELPERS_RECONSTRUCTION.md
+0x004776A0,th20::NativeViewIndexOwner::set_view_index,25,matching,100.00,native_view_index_owner_set,CORE/RECON-1146; docs/NATIVE_VIEW_INDEX_OWNER_EXACT.md

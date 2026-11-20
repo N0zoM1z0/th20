@@ -2085,7 +2085,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00477520,285,0x0047763C,FUN_00477520,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00477640,38,0x00477665,FUN_00477640,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00477670,33,0x00477690,FUN_00477670,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004776A0,25,0x004776B8,FUN_004776a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004776A0,25,0x004776B8,FUN_004776a0,th20::NativeViewIndexOwner::set_view_index,NativeViewIndexOwner,matching,100.00,__thiscall,?set_view_index@NativeViewIndexOwner@th20@@QAEXH@Z,false,src/NativeViewIndexOwner.cpp,CORE/RECON-1146; docs/NATIVE_VIEW_INDEX_OWNER_EXACT.md,authored,"Native 25B setter stores the supplied view index at owner+0x6c4. Exact whole-body C++ replay, no relocations. Original helper has 16 independent callers including the 4757B ItemInf update; opaque owner type retained without inventing the rest of its fields."
 0x004776C0,130,0x00477741,FUN_004776c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00477750,25,0x00477768,FUN_00477750,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00477770,25,0x00477788,FUN_00477770,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
