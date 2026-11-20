@@ -1661,3 +1661,4 @@ th20::scalar_math::arccosine
 th20::polar_components
 th20::scalar_math::floating_remainder
 th20::NativeCardCaptureTimeoutView::elapsed_4887d0
+th20::NativeCardCaptureRefreshView::refresh_487bb0

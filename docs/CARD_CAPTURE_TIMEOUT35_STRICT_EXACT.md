@@ -14,7 +14,8 @@ with one E8 operand at `+0x18` to the independently known `0x004235C0`.
 The whole original function was compared, not an arbitrary prefix.
 
 The original 123B Card capture-state handler at `0x00487BB0` is this
-function's sole native caller. That parent must be reconstructed and
-validated independently. The 35B unit has an individual canonical
-strict relocation replay, and neither copied native bytes nor inert
-compiler-shaping code is involved.
+function's sole native caller. It has since been reconstructed and
+independently verified whole exact; see
+[CARD_CAPTURE_REFRESH123_STRICT_EXACT.md](CARD_CAPTURE_REFRESH123_STRICT_EXACT.md).
+The 35B leaf retains its separate canonical strict relocation replay,
+without copied native bytes or inert compiler-shaping code.

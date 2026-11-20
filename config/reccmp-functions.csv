@@ -1676,3 +1676,4 @@ th20::scalar_math::arccosine,0x00439790,function
 th20::polar_components,0x004392D0,function
 th20::scalar_math::floating_remainder,0x004397F0,function
 th20::NativeCardCaptureTimeoutView::elapsed_4887d0,0x004887D0,function
+th20::NativeCardCaptureRefreshView::refresh_487bb0,0x00487BB0,function
