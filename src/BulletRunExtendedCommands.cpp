@@ -7,6 +7,9 @@
 #include "Bullet.hpp"
 #include "BulletAimSelector.hpp"
 #include "BulletStyle.hpp"
+#include "Player.hpp"
+#include "GameRandom.hpp"
+#include "LaserParameters.hpp"
 #include "MotionMath.hpp"
 #include "SoundInf.hpp"
 #include <cstdint>
@@ -14,6 +17,10 @@
 namespace th20 {
 extern const float native_screen_rect_inner_width_384_56cda4;
 extern const float native_screen_height_448_56d7c0;
+extern const float native_selector_min;
+extern const float native_selector_player_hi;
+extern const float native_selector_wobble_lo;
+extern GameRandom script_random;
 void Bullet::run_extended_commands() {
     for (;;) {
         if (field_38 >= 24)
@@ -75,8 +82,61 @@ void Bullet::run_extended_commands() {
             if (field_38 != 0 && static_cast<std::int32_t>(field_40) >= 0)
                 process_sound.request_effect(static_cast<std::int32_t>(field_40), 0);
             break;
-        case 4:
-            return; // Native command-4 has a separate eight-way subtype switch.
+        case 4: {
+            command_flags.words.low |= 0x10;
+            commands.at(3).scalar_10 = command.operand_04 <= native_selector_min
+                ? field_24 : command.operand_04;
+            const float current_angle = static_cast<float>(angle);
+            const float target_angle = select_bullet_aim(
+                view_index, current_angle, position,
+                command.operand_00, command.operand_08);
+            commands.at(3).scalar_14 = target_angle;
+
+            switch (command.operand_18) {
+            case 0:
+            case 1:
+            case 4:
+                commands.at(3).scalar_14 = target_angle;
+                break;
+            case 2: {
+                const float player_angle = context->player()->direction_to(
+                    commands.at(12).vector_18);
+                commands.at(3).scalar_14 = normalize_angle(target_angle + player_angle);
+                break;
+            }
+            case 3:
+                commands.at(3).scalar_14 = normalize_angle(
+                    target_angle + commands.at(12).scalar_14);
+                break;
+            case 5:
+            case 6:
+                commands.at(3).scalar_14 =
+                    script_random.signed_unit() * command.operand_00;
+                break;
+            case 7: {
+                float selected_angle;
+                if (command.operand_00 > native_selector_min) {
+                    if (command.operand_00 < 990.0f)
+                        selected_angle = command.operand_00;
+                    else
+                        selected_angle = context->player()->direction_to(position);
+                } else {
+                    selected_angle = current_angle;
+                }
+                commands.at(3).scalar_14 = selected_angle;
+                commands.at(3).scalar_10 =
+                    script_random.signed_unit() * command.operand_04 + field_24;
+                break;
+            }
+            }
+
+            commands.at(3).timer = 0;
+            commands.at(3).word_30 = command.operand_10_word;
+            commands.at(3).word_34 = command.operand_14_word;
+            commands.at(3).word_38 = 0;
+            commands.at(3).word_3c = command.operand_18_word;
+            break;
+        }
         case 5:
             ++field_38;
             continue;
@@ -108,8 +168,77 @@ void Bullet::run_extended_commands() {
         case 22:
         case 23:
         case 24:
-        case 27:
-            return; // Animation, ECL, interpolation, enemy and laser branches remain open.
+            return; // Animation, ECL, interpolation and Enemy handlers remain open.
+        case 27: {
+            if (command.operand_10_real == 0.0f) {
+                LaserType0Parameters parameters;
+                parameters.commands = metadata->commands;
+                const BulletCommand& following = *(&command + 1);
+                parameters.position = position;
+                parameters.angle = select_bullet_aim(
+                    view_index, static_cast<float>(angle), position,
+                    command.operand_00, following.operand_0c);
+                parameters.length = command.operand_0c;
+                parameters.field_14 = command.operand_08;
+                parameters.length_limit = following.operand_00;
+                parameters.width = following.operand_04;
+                parameters.speed = command.operand_04 > native_selector_min
+                    ? command.operand_04 : field_24;
+                parameters.type = command.operand_14_word;
+                parameters.color = command.operand_18_word;
+                parameters.radial_offset = following.operand_08;
+                parameters.command_index = following.operand_18_word;
+                parameters.flags |= 1;
+                parameters.field_48 = static_cast<std::int32_t>(following.operand_10_word);
+                parameters.field_4c = static_cast<std::int32_t>(following.operand_14_word);
+
+                ++field_38;
+                context->laser_controller()->create_laser(0, &parameters);
+                ++field_38;
+                if (command.operand_1c_real != 0.0f)
+                    cancel(0);
+                continue;
+            }
+            if (command.operand_10_real == 1.0f) {
+                LaserType1Parameters parameters;
+                parameters.commands = metadata->commands;
+                const BulletCommand& following = *(&command + 1);
+                parameters.position = position;
+                if (command.operand_00 > native_selector_min) {
+                    if (command.operand_00 < native_selector_player_hi ||
+                        command.operand_00 >= native_selector_wobble_lo)
+                        parameters.angle = command.operand_00;
+                    else
+                        parameters.angle = context->player()->direction_to(position);
+                } else {
+                    parameters.angle = static_cast<float>(angle);
+                }
+                parameters.length_limit = command.operand_0c;
+                parameters.length = command.operand_08;
+                parameters.width = following.operand_00;
+                parameters.growth_speed = command.operand_04 > native_selector_min
+                    ? command.operand_04 : field_24;
+                parameters.delay = static_cast<std::int32_t>(following.operand_10_word);
+                parameters.grow_time = static_cast<std::int32_t>(following.operand_14_word);
+                parameters.sustain_time = static_cast<std::int32_t>(following.operand_18_word);
+                parameters.shrink_time = static_cast<std::int32_t>(following.operand_1c_word);
+                parameters.sound = 0x12;
+                parameters.field_44 = -1;
+                parameters.radial_offset = following.operand_04;
+                parameters.command_index = (command.operand_1c_word & 0xff00u) >> 8;
+                parameters.type = command.operand_14_word;
+                parameters.color = command.operand_18_word;
+                parameters.flags = (command.operand_1c_word & 0xffu) | 2u;
+
+                ++field_38;
+                context->laser_controller()->create_laser(1, &parameters);
+                ++field_38;
+                if ((command.operand_1c_word & 0x10000u) != 0)
+                    cancel(0);
+                continue;
+            }
+            return;
+        }
         case 10:
             cancel(0);
             break;

@@ -161,7 +161,7 @@ def main() -> None:
           f"{len(calls)}/210 direct E8 mapped: "
           f"{len(known)} canonical, {len(unknown)} genuinely still unsourced")
     print("PASS 53/53 PE switch HIGHLOW and 38/38 original body HIGHLOW")
-    print("Original game parent has partial natural-C++ source (22/34 primary entries), "
+    print("Original game parent has partial natural-C++ source (24/34 primary entries), "
           "remains NONEXACT, and receives zero original parent byte credit.")
 
 

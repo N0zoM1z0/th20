@@ -40,10 +40,11 @@ canonically accepted.
 ## B. Very large native dispatcher Bosses still NONEXACT
 
 - **Bullet extended command** `0x0047DCF0`, **12,140B**. Partial natural C++ now
-  represents 22/34 primary command entries in `src/BulletRunExtendedCommands.cpp`;
-  12 complex handlers remain open and the whole parent is still NONEXACT.
-  Prioritize command 4's nested subtype switch and command 27's Laser parameter
-  lifetime. Preserve the actual branch/table boundaries and check the
+  represents 24/34 primary command entries in `src/BulletRunExtendedCommands.cpp`;
+  10 complex handlers remain open and the whole parent is still NONEXACT.
+  Command 4's 8-way subtype switch and command 27's two Laser parameter
+  lifetimes now have natural C++ source. Prioritize the command-9 11-way
+  selector and the ECL/Enemy branches. Preserve the actual branch/table boundaries and check the
   [partial source frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md) and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **Enemy ECL opcode dispatcher** `0x0048C010`, **41,967B**. Distinguish

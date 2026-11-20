@@ -4,29 +4,31 @@ The original `Bullet::run_extended_commands()` at `0x0047DCF0` is now **SOURCE-P
 
 ## Current native command coverage
 
-The original primary jump table has 34 command IDs (`0..33`). The maintained source currently has natural C++ control flow for 19 gameplay branches and the three original shared no-op/advance IDs:
+The original primary jump table has 34 command IDs (`0..33`). The maintained source currently has natural C++ control flow for 21 gameplay branches and the three original shared no-op/advance IDs:
 
 | Native command IDs | Current source behavior |
 | --- | --- |
 | `0, 1, 2, 3` | Command-flag update, Timer/vector setup, animation interrupt, aim selection, polar vector initialization, and sound request |
+| `4` | Complete 8-way subtype switch: fixed/player-relative/random angle selection, normalization, slot-12 vector/scalar inputs, and slot-3 timer/operand setup |
 | `5, 14, 28` | The three original IDs sharing the native no-op/advance tail |
 | `6, 7` | Slot-4 trajectory parameters and Bullet scalar assignment |
 | `10, 11, 12` | Bullet cancel, positional sound request, and slot-6 setup |
 | `15, 16` | Native field assignment and repeat/jump counter behavior |
 | `21` | Slot-10 speed interpolation and aimed polar vector |
+| `27` | Two-record LaserType0/1 creation: real PMR command-vector copy, typed parameter construction, context LaserController factory call, and conditional Bullet cancel |
 | `25, 26` | Draw-group assignment and slot-13 timer activation |
 | `29, 30, 31, 32, 33` | Radius/size selection, slot-5/slot-7 setup, slot-1 speed interpolation, and upper command-flag update |
 
-That is **22/34 primary table entries represented**, including 19 nontrivial command handlers and the three original shared no-op cases. The 12 still-pending command handlers are `4, 8, 9, 13, 17, 18, 19, 20, 22, 23, 24, 27`.
+That is **24/34 primary table entries represented**, including 21 nontrivial command handlers and the three original shared no-op cases. Command 4 is restored with its complete native 8-way subtype switch, and command 27 now constructs the real LaserType0/1 parameter records from two adjacent BulletCommand entries. The 10 still-pending command handlers are `8, 9, 13, 17, 18, 19, 20, 22, 23, 24`.
 
-The unsupported commands currently return without consuming the command. This is an explicit partial-source boundary, not original game behavior: it prevents the reconstruction from silently skipping commands whose state transitions are not yet restored. In particular, command 4's separate 8-way subtype table, command 9's 11-way selector, the ECL/Enemy creation path, and command 27's LaserType0/1 parameter construction remain open. Do not treat this source as playable or complete.
+The unsupported commands currently return without consuming the command. This is an explicit partial-source boundary, not original game behavior: it prevents the reconstruction from silently skipping commands whose state transitions are not yet restored. Command 9's separate 11-way selector and the ECL/Enemy creation paths remain open; command 27 now uses the existing whole LaserType0/1 constructors, destructors, PMR vector copy assignment, Context accessor, and LaserController factory. Do not treat this source as playable or complete.
 
 ## Type and ABI evidence used
 
 - The receiver is the actual `Bullet` instance, independently established by both strict original callers (`BulletController::emit` and `Bullet::update_physics`) and their identical native member symbol.
 - The 24-command guard uses the real `Bullet+0x38` command cursor and `Bullet+0x98` shared metadata owner.
 - `BulletCommand` is the real 44-byte record. Its eight payload words have float/signed-integer/raw-word aliases while opcode/flags/script remain at `+0x20/+0x24/+0x28`; the existing full 3,832-byte emitter COFF contribution and all 129 relocations remain identical after that overlay.
-- The implementation uses existing typed `BulletExtendedCommands::at`, `Timer`, `Animation`, `Vector3`, `select_bullet_aim`, `polar`, `SoundInf`, and `bullet_radius` interfaces. No assembly, padding, fabricated native target, or duplicated object storage was added.
+- The implementation uses existing typed `BulletExtendedCommands::at`, `Timer`, `Animation`, `Vector3`, `select_bullet_aim`, `normalize_angle`, `Context::player`, `Player::direction_to`, `GameRandom`, `polar`, `SoundInf`, `bullet_radius`, `LaserType0/1Parameters`, and `LaserController::create_laser` interfaces. The fresh COFF probe contains a compiler-emitted 8-entry nested subtype jump table for command 4 and direct typed calls for both Laser parameter lifetimes, the PMR command-vector copy, the Context LaserController accessor, and the real Laser factory. No assembly, padding, fabricated native target, or duplicated object storage was added.
 
 ## Scoped verification and exactness boundary
 
@@ -38,4 +40,4 @@ The separate strict canonical `bullet_emitter_whole_3735` object was freshly re-
 
 The original full dispatcher remains **NONEXACT**. Its 12,140 original body bytes, 38 body HIGHLOW fields, 210 E8 calls, and 53 switch-table HIGHLOW fields are not credited by this partial source. There is no canonical `match-units.toml` entry for the parent and no claim of whole-function exactness. The independent native closure verifier continues to account for all 210 original E8 sites, all 53 table pointers and all 38 in-body HIGHLOW fields.
 
-Next reconstruction work is the pending complex handlers, prioritizing command 4's nested subtype switch and command 27's two real Laser parameter lifetimes, then the command-9 11-way selector and the ECL/Enemy branches.
+Next reconstruction work is the pending complex handlers, prioritizing the command-9 11-way selector and the ECL/Enemy branches.
