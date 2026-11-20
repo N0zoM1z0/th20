@@ -13,6 +13,7 @@ spec=importlib.util.spec_from_file_location('pe_screen_shake',ROOT/'scripts/veri
 pe=importlib.util.module_from_spec(spec);spec.loader.exec_module(pe)
 ADDRESS=0x004249F0
 SIZE=1040
+SHA="5cd92082635ff548fafb5ea036ed751acbfb6edab415492d1f88ebf2d8f462de"
 CALLS={0x27:0x00423540,0x40:0x004235C0,0x5C:0x00423BD0,0xB1:0x00423EA0,0x260:0x00423EA0}
 HIGHLOW={
  0x008:0x005BA518,0x0AD:0x005BA4C4,
@@ -32,6 +33,7 @@ HIGHLOW={
 def verify():
  image,_=pe.verified_target();base,sections=pe.parse_sections(image)
  body=pe.raw_at(image,base,sections,ADDRESS,SIZE)
+ assert hashlib.sha256(body).hexdigest()==SHA
  instructions=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,ADDRESS))
  assert instructions[-1].mnemonic=='ret'
  calls={i.address-ADDRESS:(i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xffffffff

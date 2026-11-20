@@ -860,3 +860,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00424080,th20::NativeAnimationResetHooks::reset_sprite_cache_424080,24,matching,100.00,renderer_reset_sprite_cache_424080,CORE/RECON-1136; docs/SCREEN_DRAW_SUPPORT_40BC20_424080_4240A0.md
 0x004240A0,th20::NativeAnimationResetHooks::reset_color_cache_4240a0,21,matching,100.00,renderer_reset_color_cache_4240a0,CORE/RECON-1137; docs/SCREEN_DRAW_SUPPORT_40BC20_424080_4240A0.md
 0x00423650,th20::screen_draw_rect_423650,1407,matching,100.00,screen_draw_rectangle_1407,CORE/RECON-1138; docs/SCREEN_DRAW_RECTANGLE_1407_STRICT_EXACT.md
+0x004249F0,th20::screen_update_shake_4249f0,1040,matching,100.00,screen_shake_update_1040,CORE/RECON-1139; docs/SCREEN_SHAKE_UPDATE_1040_SOURCE_RECONSTRUCTION.md
