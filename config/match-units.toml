@@ -31084,3 +31084,20 @@ symbol = "?cancel_circle@Laser@th20@@UAEHABUVector3@2@MHH@Z"
 target_address = 0x004CAAC0
 size = 15
 relocations = []
+
+[units.laser_beam_path_state_ctor]
+source = "src/LaserBeamPathState.cpp"
+object = "build/probe-laser-beam-path-state/LaserBeamPathState.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserBeamPathState::LaserBeamPathState()"]
+symbol = "??0LaserBeamPathState@th20@@QAE@XZ"
+target_address = 0x004C82C0
+size = 190
+compare_size = 195
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0LaserBeamPathState@th20@@QAE@XZ", target = 0x005679A0 },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x62, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x6D, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x87, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
+]

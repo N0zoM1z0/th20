@@ -907,3 +907,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00533780,th20::WeaponStoneInfo::process_item_drop,406,matching,100.00,weapon_stone_item_drop,CORE/EXACT-1215; 290/290 non-relocation bytes; 29/29 native relocation targets; scoped MSVC x86 replay
 0x004CAAD0,th20::LaserController::cancel_near,288,matching,100.00,laser_cancel_near,CORE/EXACT-1218; 240/240 non-relocation bytes; 12/12 native relocation targets; scoped MSVC x86 replay
 0x004CAAC0,th20::Laser::cancel_circle,15,matching,100.00,laser_base_cancel_circle_default,CORE/EXACT-1219; 15/15 native bytes; no relocations; scoped MSVC x86 replay
+0x004C82C0,th20::LaserBeamPathState::LaserBeamPathState(),190,matching,100.00,laser_beam_path_state_ctor,CORE/EXACT-1222; 175/175 non-relocation bytes; 5/5 native relocation targets; 5-byte alignment independently compared

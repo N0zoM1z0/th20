@@ -1047,3 +1047,4 @@ address,name,module,confidence,evidence
 0x004CAAD0,th20::LaserController::cancel_near,LaserController,high,CORE/EXACT-1218; complete natural C++ 288-byte body and 12 native relocations; docs/LASER_CONTROLLER_CANCEL_NEAR_EXACT.md
 0x004CAAC0,th20::Laser::cancel_circle,Laser,high,CORE/EXACT-1219; complete natural C++ 15-byte base default and LaserCurveInf vtable inheritance; docs/LASER_BASE_CANCEL_CIRCLE_DEFAULT_EXACT.md
 0x004CB060,th20::LaserLineInf::cancel_circle,LaserLineInf,medium,CORE/RECON-1220; native Line vtable slot +0x30; natural 1164B candidate; docs/LASER_LINE_CANCEL_CIRCLE_RECONSTRUCTION.md
+0x004C82C0,th20::LaserBeamPathState::LaserBeamPathState(),LaserBeam,medium,CORE/EXACT-1222; complete 190-byte natural C++ constructor and five original relocations; docs/LASER_BEAM_PATH_STATE_CTOR_EXACT.md
