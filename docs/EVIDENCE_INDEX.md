@@ -269,8 +269,9 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   complete two-pass C++ loops exist and both physical E8/HIGHLOW sets are verified,
   but no exact credit from normalized bytes;
   [original 40B/42B helper and already-exact 63B/61B leaf audit](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md).
-- **12,140B Bullet extended command — SOURCE-ABSENT:**
-  [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md)
+- **12,140B Bullet extended command — SOURCE-PRESENT, PARTIAL, NONEXACT:**
+  [first natural-C++ dispatcher frontier: 22/34 primary entries represented](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md),
+  [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md),
   and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **41,967B Enemy ECL — SOURCE-ABSENT:**
   [original opcode graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md).

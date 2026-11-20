@@ -153,14 +153,16 @@ def main() -> None:
     assert HEAD not in authored
     with (ROOT / "config/functions.csv").open(newline="", encoding="utf8") as file:
         root = next(row for row in csv.DictReader(file) if row["address"] == "0x0047DCF0")
-    assert root["source_file"] == "" and root["status"] == "unclassified"
+    assert root["source_file"] == "src/BulletRunExtendedCommands.cpp"
+    assert root["status"] == "reconstructed"
+    assert (ROOT / root["source_file"]).is_file()
 
     print(f"PASS entire original Bullet Boss {BYTES}B / {len(ops)} i386, "
           f"{len(calls)}/210 direct E8 mapped: "
           f"{len(known)} canonical, {len(unknown)} genuinely still unsourced")
     print("PASS 53/53 PE switch HIGHLOW and 38/38 original body HIGHLOW")
-    print("Original game parent remains source-absent and NONEXACT; "
-          "no original authored code credit for this parent.")
+    print("Original game parent has partial natural-C++ source (22/34 primary entries), "
+          "remains NONEXACT, and receives zero original parent byte credit.")
 
 
 if __name__ == "__main__":

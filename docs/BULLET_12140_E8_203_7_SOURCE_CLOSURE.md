@@ -1,6 +1,9 @@
 # CORE/RECON-750 — entire 12,140-byte Bullet command Boss: 203/210 canonical call roles, seven remaining native children
 
-**The entire original TH20 Bullet::run_extended_commands game function remains source-absent and NONEXACT.** This audit re-reads all 12,140 original executable bytes, all 2,490 original i386 instructions, all 210 real E8 direct calls and all three physical PE HIGHLOW switch tables, then joins actual native E8 destinations to the **current**, separately source-present canonical strict graph. It does not credit the nonexact giant parent with any game-authored code bytes.
+**Current source status (CORE/RECON-1140):** the dispatcher now has a partial natural-C++ implementation for 22/34 primary command entries in `src/BulletRunExtendedCommands.cpp`. Twelve complex handlers remain pending; the latest native verifier maps 208/210 physical E8 occurrences to canonical strict target heads, with only two compiler-runtime calls still open. The parent is SOURCE-PRESENT/PARTIAL and still NONEXACT with zero parent byte credit. See [the partial C++ frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md). Earlier source-absent statements below are historical.
+
+
+**The entire original TH20 Bullet::run_extended_commands game function remains PARTIAL and NONEXACT; a partial natural-C++ definition is now maintained.** This audit re-reads all 12,140 original executable bytes, all 2,490 original i386 instructions, all 210 real E8 direct calls and all three physical PE HIGHLOW switch tables, then joins actual native E8 destinations to the **current**, separately source-present canonical strict graph. It does not credit the nonexact giant parent with any game-authored code bytes.
 
 Original locked Japanese TH20 v1.00a Steamless PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 
@@ -21,7 +24,7 @@ Original locked Japanese TH20 v1.00a Steamless PE, SHA-256 a274b45fe6ec53511718b
 
 These numbers use original actual physical E8 call sites, not decompiler names or an assumption that a C++ declaration proves byte exactness. All currently configured native strict unit target heads are matched by actual original 32-bit destination values. Some previously source-present whole methods have multiple legitimate type-compatible aliases; a call counts **once** regardless of alias spelling. The graph currently has 1,203 canonical strict units and 1,201 source-present functions, covering library as well as game code; do not call all 203 E8 destinations game-authored.
 
-The source-bound direct-call coverage has improved over the dated 188/210 canonical-role count in the earlier single-table native Boss research through the genuinely accepted seven new 199B Vector3/Float interpolation methods, exact 121B/20B Bullet command PMR vector library methods, 200B/196B/73B C++17 vector helpers and 46B/54B shared_ptr move code. The STL helpers are source-present but excluded from original game-authored byte credit. The remaining original function still has its separate source-absent body and must not be considered linker-complete.
+The source-bound direct-call coverage has improved over the dated 188/210 canonical-role count in the earlier single-table native Boss research through the genuinely accepted seven new 199B Vector3/Float interpolation methods, exact 121B/20B Bullet command PMR vector library methods, 200B/196B/73B C++17 vector helpers and 46B/54B shared_ptr move code. The STL helpers are source-present but excluded from original game-authored byte credit. The remaining original function still has twelve pending complex command handlers and must not be considered linker-complete.
 
 ## Exactly seven real original E8 gaps, no guessed game methods
 

@@ -37,11 +37,14 @@ canonically accepted.
 | **200-particle virtual grid update** `0x0045C360`, **2,884B/768-i386** | The complete game method is **now SOURCE-PRESENT, NONEXACT** in `src/AnimationParticleGridUpdate2884.cpp`. All **99 native E8 call roles/25 HIGHLOW fields** were independently attested, and the prior false four file/palette calls were repaired to the genuine Session→Context→EffectInfo→AnimationFile→83B spawn pipeline; existing 26B owner, 83B spawn, 25B age and 19B color accessors are separately exact. The distinct **51B virtual Event** is also now [whole strict exact](ANIMATION_PARTICLE_GRID_EVENT51_AGGREGATE_TIMER_STRICT_EXACT.md), with a true aggregate Timer forwarding ABI; all eight dependent exact units survived a focused six-object rebuild. The natural original-sized caller is **not** yet matched: pinned C++20 emits **2,876B/760 i386** versus 2,884B/768 native. The [ESI/polar/shared-child convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md) restores original ESI lifetime, matches the 0x19C stack frame, aligns eight E8 sites and reduces total E8 offset delta to 1,463 without losing any original call/data role; the remaining polar SSE/argument ABI is still open. [Full source/native frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md). |
 | **Enemy mesh lifetime** `0x004A4190`, **1,649B** | `src/EnemyMesh.cpp` has reconstructed behavior but is not whole strict exact. [Original work](ENEMY_MESH_LIFETIME_RECONSTRUCTION.md). |
 
-## B. Very large native dispatcher Bosses still source-absent
+## B. Very large native dispatcher Bosses still NONEXACT
 
-- **Bullet extended command** `0x0047DCF0`, **12,140B**. Original tables
-  and some exact callees known; whole command dispatch not accepted.
-  Keep the target's actual branch/table boundaries and check the
+- **Bullet extended command** `0x0047DCF0`, **12,140B**. Partial natural C++ now
+  represents 22/34 primary command entries in `src/BulletRunExtendedCommands.cpp`;
+  12 complex handlers remain open and the whole parent is still NONEXACT.
+  Prioritize command 4's nested subtype switch and command 27's Laser parameter
+  lifetime. Preserve the actual branch/table boundaries and check the
+  [partial source frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md) and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **Enemy ECL opcode dispatcher** `0x0048C010`, **41,967B**. Distinguish
   original laser and scripting opcodes from shared helpers.
