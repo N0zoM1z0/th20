@@ -19,25 +19,25 @@ std::int32_t LaserLineInf::cancel_circle(const Vector3& center, float radius,
     std::int32_t segment_count=0;
     Vector3 position;
     Vector3 step;
+    // The native body also materializes a separate copy of the base position.
+    const Vector3 base_position_snapshot=this->position;
     float distance=native_screen_top_16_56cd90/native_screen_half_2_56c8d0;
     std::uint8_t segment_mask[512];
     std::memset(segment_mask,0,sizeof(segment_mask));
 
-    const Vector3 base_position=this->position;
     step.z=0.0f;
-    polar(step,angle,distance);
-    position=base_position+step;
+    polar(step,angle,native_screen_top_16_56cd90/native_screen_half_2_56c8d0);
+    position=this->position+step;
     position.z=0.0f;
     step+=step;
 
-    const float radius_squared=radius*radius;
+    radius*=radius;
     std::int32_t hit_index=0;
-    for (; native_screen_top_16_56cd90/native_screen_half_2_56c8d0+distance<=field_74;
-         distance+=native_screen_top_16_56cd90) {
-        if (geometry::squared_distance_xy(center,position)<=radius_squared) {
+    while (native_screen_top_16_56cd90/native_screen_half_2_56c8d0+distance<=field_74) {
+        float squared_distance=geometry::squared_distance_xy(center,position);
+        if (!(squared_distance>radius)) {
             segment_mask[segment_count]=1;
             ++hit_count;
-
             ++context->bullet_controller()->cancel_counter;
 
             if (hit_index%4==0) {
@@ -59,15 +59,16 @@ std::int32_t LaserLineInf::cancel_circle(const Vector3& center, float radius,
         }
 
         position+=step;
+        distance+=native_screen_top_16_56cd90;
         ++segment_count;
     }
 
     if (hit_count!=0) {
-        if (hit_count<segment_count) {
-            cancel_segments(segment_mask,segment_count);
-        } else {
+        if (hit_count>=segment_count) {
             flags=(flags&0xfffffff9u)|2u;
+            return hit_count;
         }
+        cancel_segments(segment_mask,segment_count);
     }
     return hit_count;
 }
