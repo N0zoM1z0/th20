@@ -1703,3 +1703,4 @@ th20::screen_draw_solid_424e00,0x00424E00,function
 th20::screen_draw_rect_423650,0x00423650,function
 th20::screen_draw_fade_424f30,0x00424F30,function
 th20::screen_draw_hold_424e80,0x00424E80,function
+th20::screen_draw_flash_424fa0,0x00424FA0,function

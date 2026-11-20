@@ -987,3 +987,5 @@ address,name,module,confidence,evidence
 0x0056C8D0,native_screen_half_2_56c8d0,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry
 0x0056CD90,native_screen_top_16_56cd90,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry
 0x0056D7C0,native_screen_height_448_56d7c0,Screen,medium,Original ScreenInf hold draw constants: 640/384/2/16/448 float rectangle geometry
+0x00424FA0,th20::screen_draw_flash_424fa0,Screen,high,CORE/RECON-1134; docs/SCREEN_DRAW_FLASH_202_STRICT_EXACT.md
+0x005B6758,th20::window_state,Window,medium,Original ScreenInf flash draw uses the process WindowState object as ECX receiver for six physical getter calls; four fields are pinned by native getter bodies and static_assert offsets

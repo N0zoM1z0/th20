@@ -789,7 +789,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00424E00,authored,Screen,authored,high,CORE/RECON-1131; docs/SCREEN_DRAW_SOLID_128_STRICT_EXACT.md; registered by native ScreenInf mode switch
 0x00424E80,authored,Screen,authored,high,CORE/RECON-1133; docs/SCREEN_DRAW_HOLD_172_STRICT_EXACT.md; registered by native ScreenInf mode switch
 0x00424F30,authored,Screen,authored,high,CORE/RECON-1132; docs/SCREEN_DRAW_FADE_105_STRICT_EXACT.md; registered by native ScreenInf mode switch
-0x00424FA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00424FA0,authored,Screen,authored,high,CORE/RECON-1134; docs/SCREEN_DRAW_FLASH_202_STRICT_EXACT.md; native ScreenInf flash draw callback and WindowState receiver independently audited
 0x00425070,authored,Screen,authored,high,"CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md; Whole original 29B scheduler shutdown callback: process allocator global, generic virtual-destructor release helper 0x41F7C0, explicit volatile local argument invalidation and return zero."
 0x00425090,authored,Screen,authored,high,"CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md; Whole 37B native ScreenInf default-priority factory forwards five typed inputs, priority 0x6D and view zero to 0x004250F0; exact E8 at +0x1C."
 0x004250C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

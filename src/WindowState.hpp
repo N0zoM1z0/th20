@@ -98,6 +98,10 @@ static_assert(sizeof(void*) != 4 || offsetof(WindowState, display_mode_value) ==
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, flags) == 0x2090);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, field_2098) == 0x2098);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, current_time) == 0x20c8);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, playfield_width) == 0x18);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, playfield_height) == 0x1c);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, offset_x) == 0x20);
+static_assert(sizeof(void*) != 4 || offsetof(WindowState, offset_y) == 0x24);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, mesh_offset_x) == 0x38);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, mesh_offset_y) == 0x40);
 static_assert(sizeof(void*) != 4 || offsetof(WindowState, scaled_width) == 0x20a0);

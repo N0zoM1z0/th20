@@ -30262,3 +30262,30 @@ relocations = [
   { offset = 0x92, type = "REL32", symbol = "?screen_draw_rect_423650@th20@@YAXPBMI@Z", target = 0x00423650 },
   { offset = 0xA4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1134: whole native ScreenInf flash draw callback.
+[units.screen_draw_flash_202]
+source = "src/ScreenDrawFlash202.cpp"
+object = "build/screen-draw-flash-canonical/ScreenDrawFlash202.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_draw_flash_424fa0"]
+symbol = "?screen_draw_flash_424fa0@th20@@YAHPAX@Z"
+target_address = 0x00424FA0
+size = 202
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x11, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x16, type = "REL32", symbol = "?offset_x_41cad0@NativeWindowStateDrawView@th20@@QAEHXZ", target = 0x0041CAD0 },
+  { offset = 0x24, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x29, type = "REL32", symbol = "?playfield_height_41caf0@NativeWindowStateDrawView@th20@@QAEHXZ", target = 0x0041CAF0 },
+  { offset = 0x37, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x3C, type = "REL32", symbol = "?offset_x_41cad0@NativeWindowStateDrawView@th20@@QAEHXZ", target = 0x0041CAD0 },
+  { offset = 0x45, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x4F, type = "REL32", symbol = "?playfield_width_424010@NativeWindowStateDrawView@th20@@QAEHXZ", target = 0x00424010 },
+  { offset = 0x66, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x6B, type = "REL32", symbol = "?playfield_height_41caf0@NativeWindowStateDrawView@th20@@QAEHXZ", target = 0x0041CAF0 },
+  { offset = 0x74, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x7E, type = "REL32", symbol = "?offset_y_421810@NativeWindowStateDrawView@th20@@QAEHXZ", target = 0x00421810 },
+  { offset = 0xB0, type = "REL32", symbol = "?screen_draw_rect_423650@th20@@YAXPBMI@Z", target = 0x00423650 },
+  { offset = 0xC2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
