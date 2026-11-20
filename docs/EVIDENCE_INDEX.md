@@ -279,7 +279,8 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [original opcode graph and 702/703/711/713 Laser paths](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md),
   [natural-C++ 702/703/711/713 Laser fragments](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md),
   [natural-C++ 609/610/611/612 queued shot-command fragment](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md),
-  [natural-C++ 700/701 queued-parameter fragment](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md).
+  [natural-C++ 700/701 queued-parameter fragment](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md),
+  [natural-C++ 602/603/604 ensure-only parameter fragment](ENEMY_41967_602_604_SHARED_PARAMETERS_SOURCE_FRONTIER.md).
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).
 - **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**

@@ -1,5 +1,8 @@
 # CORE205: three complete queued-parameter heads in the entire Enemy boss root
 
+**Current maintained production source update (CORE/RECON-1147):** original opcodes 602/603/604 now have natural-C++ source fragments in `src/EnemyStateSharedQueuedParametersOpcode.cpp`. They use the accepted exact 305B ensure-only `EnemyState::shared_shot()` pair selector, not the writable COW selector, and preserve the ordered type/color, vector X/Y, and individually normalized angle/angle_step mutations. The complete 41,967B parent remains source-absent/NONEXACT. See [the 602–604 source frontier](ENEMY_41967_602_604_SHARED_PARAMETERS_SOURCE_FRONTIER.md).
+
+
 The locked TH20 Japanese v1.00a Steamless executable has SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 This work extends **one same complete 41,967-byte native
