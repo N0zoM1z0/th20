@@ -878,3 +878,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004776A0,th20::NativeViewIndexOwner::set_view_index,25,matching,100.00,native_view_index_owner_set,CORE/RECON-1146; docs/NATIVE_VIEW_INDEX_OWNER_EXACT.md
 0x004C46F0,th20::ItemInf::update_callback,79,matching,100.00,item_inf_update_gate,CORE/RECON-1147; docs/ITEM_INF_UPDATE_GATE_79_EXACT.md
 0x00424010,th20::Context::bomb_controller,17,matching,100.00,context_bomb_controller,CORE/RECON-1148; docs/BOMB_OWNER_RECONSTRUCTION.md
+0x004C4F00,th20::BombController::active_for,72,matching,100.00,bomb_controller_active_for,CORE/RECON-1149; docs/BOMB_CONTROLLER_ACTIVE_FOR_72_EXACT.md

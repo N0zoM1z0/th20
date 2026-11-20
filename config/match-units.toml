@@ -11482,7 +11482,7 @@ relocations = [
   { offset = 42, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
   { offset = 51, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
   { offset = 92, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
-  { offset = 137, type = "DIR32", symbol = "$SG79585", target = 0x0056FAA0 },
+  { offset = 137, type = "DIR32", symbol = "$SG79608", target = 0x0056FAA0 },
   { offset = 142, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -11499,7 +11499,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1BombController@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7BombController@th20@@6B@", target = 0x0056FA94 },
-  { offset = 48, type = "DIR32", symbol = "$SG79596", target = 0x0056FAB8 },
+  { offset = 48, type = "DIR32", symbol = "$SG79619", target = 0x0056FAB8 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
   { offset = 74, type = "REL32", symbol = "??$release_object@VBomb@th20@@@DiagnosticAllocator@th20@@QAEXPAVBomb@1@@Z", target = 0x0041F7C0 },
@@ -30668,4 +30668,17 @@ relocations = [
   { offset = 36, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
   { offset = 44, type = "DIR32", symbol = "?current_game_controller@th20@@3PAUGameController@1@A", target = 0x005BA828 },
   { offset = 73, type = "REL32", symbol = "?update_main@ItemInf@th20@@QAEHXZ", target = 0x004C25A0 },
+]
+
+# CORE/RECON-1149: native BombController active-window predicate consumed by ItemInf.
+[units.bomb_controller_active_for]
+source = "src/BombControllerActiveFor.cpp"
+object = "build/item-inf-update-gate/BombControllerActiveFor.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::BombController::active_for"]
+symbol = "?active_for@BombController@th20@@QBEEH@Z"
+target_address = 0x004C4F00
+size = 72
+relocations = [
+  { offset = 35, type = "REL32", symbol = "?less_than@Timer@th20@@QBE_NH@Z", target = 0x00423560 },
 ]

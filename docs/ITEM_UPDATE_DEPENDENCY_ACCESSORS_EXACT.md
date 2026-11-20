@@ -12,6 +12,6 @@ The 4,757-byte `ItemInf` frame-update callback at `0x004C25A0` reads four scalar
 
 The four getters are implemented in `src/PlayerMotionParameterAccessors.cpp`; the setter is implemented in `src/Item.cpp`. Each has a separate canonical match unit and replay target. The native getter receiver is `Player*`, not `PlayerMotionParameters*`; this is why the C++ methods live on `Player` even though the fields are represented by the embedded `PlayerMotionParameters` member.
 
-A further caller dependency at `0x004C4F00` is now named `BombController::active_for(int)`: the native predicate checks `active_state == 1` and `age.less_than(duration)`. Its natural C++ implementation is in `src/Bomb.cpp`, but currently compiles to 58 bytes versus the 72-byte native body, so it remains reconstructed with zero exact-byte credit.
+The caller dependency at 0x004C4F00 is now whole-body exact as BombController::active_for(int). It checks active_state == 1, calls age.less_than(duration), stores the 0/1 result in the original 32-bit local and returns its low byte. The 72B C++ body matches all 68 non-relocation bytes and its one Timer call relocation. See BOMB_CONTROLLER_ACTIVE_FOR_72_EXACT.md.
 
 This closes five small native boundaries directly used by the still-open 4,757-byte `ItemInf` update. The large update itself remains open; these helper matches are not counted as reconstruction of the boss.
