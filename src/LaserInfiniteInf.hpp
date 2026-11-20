@@ -10,6 +10,10 @@ class LaserInfiniteInf : public Laser {
 public:
     LaserInfiniteInf() noexcept;
     std::int32_t initialize_laser(const void* input) override;
+    std::int32_t cancel_rectangle(const Vector3& rectangle_center,
+                                  const Vector3& rectangle_size,
+                                  float rectangle_direction, std::int32_t mode,
+                                  std::int32_t argument) override;
     std::int32_t cancel_circle(const Vector3& center, float radius,
                                std::int32_t mode, std::int32_t argument) override;
     std::int32_t erase(std::int32_t mode, std::int32_t argument) override;

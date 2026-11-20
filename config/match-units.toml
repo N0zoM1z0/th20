@@ -31496,3 +31496,45 @@ relocations = [
   { offset = 0xDB, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
   { offset = 0x100, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/EXACT-1248: Infinite Laser rectangle cancellation boss.
+[units.laser_infinite_cancel_rectangle]
+source = "src/LaserInfiniteCancelRectangle.cpp"
+object = "build/laser-infinite-cancel-rectangle-canonical/LaserInfiniteCancelRectangle.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserInfiniteInf::cancel_rectangle"]
+symbol = "?cancel_rectangle@LaserInfiniteInf@th20@@UAEHABUVector3@2@0MHH@Z"
+target_address = 0x004C9F10
+size = 1131
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x50, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x5B, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x63, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x6B, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x86, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x91, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x99, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xBC, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0xF2, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0x129, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x132, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x13A, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1E5, type = "REL32", symbol = "?rectangle_rectangle@geometry@th20@@YA_NMMMMMMMMMM@Z", target = 0x004580C0 },
+  { offset = 0x221, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x27D, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x284, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x2C3, type = "DIR32", symbol = "$SG88642", target = 0x0056FD14 },
+  { offset = 0x2D5, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x30A, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x311, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x350, type = "DIR32", symbol = "$SG88646", target = 0x0056FD14 },
+  { offset = 0x362, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x385, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x38C, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x3CB, type = "DIR32", symbol = "$SG88648", target = 0x0056FD14 },
+  { offset = 0x3DD, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x3F0, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x400, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x461, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

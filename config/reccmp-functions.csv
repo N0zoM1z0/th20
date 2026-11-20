@@ -1780,3 +1780,4 @@ th20::laser_infinite_animation_script_callback,0x004CF550,function
 th20::LaserInfiniteInf::erase,0x004C9580,function
 th20::LaserLineInf::erase,0x004C9830,function
 th20::LaserCurveInf::erase,0x004C9380,function
+th20::LaserInfiniteInf::cancel_rectangle,0x004C9F10,function
