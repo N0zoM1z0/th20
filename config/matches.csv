@@ -914,3 +914,5 @@ address,name,size,status,match_percent,unit,evidence
 0x004C8390,th20::LaserBeamInf::LaserBeamInf(),122,matching,100.00,laser_beam_ctor,CORE/EXACT-1229; docs/LASER_BEAM_CONSTRUCTOR_EXACT.md; complete 122-byte constructor and six original relocations strictly replay
 0x004C8410,th20::LaserCurveInf::LaserCurveInf(),159,matching,100.00,laser_curve_ctor,CORE/EXACT-1230; docs/LASER_CURVE_CONSTRUCTOR_EXACT.md; complete 159-byte constructor and seven original relocations strictly replay
 0x004CB060,th20::LaserLineInf::cancel_circle,1170,matching,100.00,laser_line_cancel_circle,"CORE/EXACT-1231; docs/LASER_LINE_CANCEL_CIRCLE_RECONSTRUCTION.md; scripts/verify-laser-line-cancel-circle-native.py; complete 1,170-byte body and all 30 original relocations strictly replay"
+0x004CA830,th20::LaserCurveInf::cancel_circle,647,matching,100.00,laser_curve_cancel_circle,CORE/EXACT-1232; complete 647-byte body and all 10 original relocations strictly replay
+0x004CABF0,th20::LaserInfiniteInf::cancel_circle,1123,matching,100.00,laser_infinite_cancel_circle,"CORE/EXACT-1233; complete 1,123-byte body and all 33 original relocations strictly replay"

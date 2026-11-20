@@ -1,19 +1,19 @@
-# `LaserCurveInf::cancel_circle()` — native Curve path cancellation
+# `LaserCurveInf::cancel_circle()` — exact native Curve path cancellation
 
 The Curve vtable at `0x00571214` dispatches circle cancellation through slot
-`+0x30` to the 647-byte native method at `0x004CA830`. The maintained source
-is a natural C++ reconstruction in `src/LaserCurveCancelCircle.cpp`; it is
-tracked as `reconstructed`, not `matching`.
+`+0x30` to the 647-byte native method at `0x004CA830`. The original type-2
+`create_laser` diagnostic identifies the class as `LaserCurveInf`; its native
+factory allocates `0x1370` bytes. The natural C++ implementation lives in
+`src/LaserCurveCancelCircle.cpp`.
 
 ## Recovered object and path boundaries
 
-- `LaserCurveInf` is `0x1370` bytes, matching the native Curve factory allocation.
+- `LaserCurveInf` is `0x1370` bytes, matching the native factory allocation.
 - `LaserType2Parameters` begins at `+0x6F8`; its `count` and `color` lanes are
   consumed at `+0x718` and `+0x714`.
 - The two real `Animation` subobjects begin at `+0x754` and `+0xD38`.
 - The path pointer is at `+0x1328`; it advances in `0x20`-byte records. Each
-  `LaserCurvePathPoint` begins with the three-float point used by the hit test;
-  the remaining five words retain neutral names.
+  `LaserCurvePathPoint` begins with the three-float point used by the hit test.
 - The separately constructed `0x40`-byte path-state object begins at `+0x1330`
   and has its own [strict exact constructor receipt](LASER_CURVE_PATH_STATE_CTOR_EXACT.md).
 
@@ -24,42 +24,28 @@ tracked as `reconstructed`, not `matching`.
 2. Initialize the hit count and point index, construct the working `Vector3`,
    preserve the native base-position snapshot, and zero the 512-byte segment mask.
 3. Square the radius once. Iterate `parameters.count` path records from `+0x1328`,
-   copying each record's leading `Vector3` and testing XY squared distance. The
-   `!(distance > radius_squared)` spelling preserves the native unordered
-   `COMISS` behavior as well as the ordinary finite comparison.
+   copying each record's leading `Vector3` and testing XY squared distance.
+   The forward miss edge `if (squared_distance > radius) goto tail` preserves
+   the native unordered-aware `COMISS` behavior and branch layout.
 4. For each hit, set the corresponding mask byte, increment the game's global
-   bullet-cancel counter, and every twentieth point spawn the `"bullet"` animation
-   with script `parameters.color * 2 + 0xD4`. The path pointer advances by `0x20`
-   on every sample, including misses.
+   bullet-cancel counter, and every twentieth point spawn the `bullet` animation
+   with script `parameters.color * 2 + 0xD4`. Advance the path pointer for every
+   sample, including misses.
 5. If all points hit, set the native Laser state bits. Otherwise, when at least
    one point hit, dispatch the actual virtual slot `+0x38` with the mask and
    number of sampled points. Return the hit count.
 
-## Focused structural receipt — deliberately NONEXACT
+## Strict native replay
 
-The locked MSVC x86 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl
-/EHsc` candidate contributes 641 bytes against the 647-byte native body. The
-focused verifier `scripts/verify-laser-curve-cancel-circle-native.py` compiles
-only this source, aligns the post-branch code by the six-byte native branch
-layout difference, and confirms **583/583 ordinary non-relocation bytes** plus
-**10/10 original relocation destinations**. Those relocations cover the
-security cookie, `Vector3` constructor, `_memset`, squared-distance helper,
-`Context::bullet_controller()` (twice), `BulletController::animation_file()`,
-the original `"bullet"` literal at `0x0056FD14`, `AnimationFile::spawn()`, and
-the security-cookie check.
+The natural C++ forward miss goto makes the locked MSVC x86 `/Od` compiler emit
+the native `JBE` hit edge and both `JMP` edges, including the otherwise
+unreachable second jump. The complete **647/647 bytes** now strictly replay,
+with **607/607 ordinary bytes** and **10/10 original relocation destinations**
+matching. The relocations cover the security cookie, `Vector3`, `_memset`, the
+XY squared-distance helper, the real BulletController/AnimationFile accessor
+chain, the original `bullet` literal, `AnimationFile::spawn`, and the security
+check. No inline assembly, manual branch bytes, NOPs, or padding are present.
 
-The remaining six bytes are the native conditional layout: `JBE` to the hit
-block followed by two jumps to the loop tail, versus the natural candidate's
-single unordered-aware `JA` exit. The branch destinations and unordered
-semantics are independently checked. No unreachable jump, NOP, assembly, or
-padding is synthesized. No canonical match unit or exact byte credit is claimed.
-
-The original `LaserCurveInf` source name is independently present in the
-native type-2 branch diagnostic at `0x00571550`; the native factory at
-`0x004C8080` allocates `0x1370` bytes and installs vtable `0x00571214`. The
-`0x004CA830` circle-cancel body is that vtable's `+0x30` target. The matching
-`LaserBeamInf` label belongs to the separate type-3 factory at `0x004C8020`,
-which allocates `0x1D30` bytes and installs vtable `0x00571374`. The path-state
-C++ type name remains a maintained descriptive name rather than a recovered
-original source spelling. The origin classification is medium-confidence
-game-authored behavior, independent of byte equality.
+The original class name is supported by the type-2 diagnostic string, native
+factory, vtable and slot ownership; the path-state type spelling remains a
+maintained descriptive name.

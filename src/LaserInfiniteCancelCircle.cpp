@@ -35,7 +35,11 @@ std::int32_t LaserInfiniteInf::cancel_circle(const Vector3& center, float radius
     radius*=radius;
     while (native_screen_top_16_56cd90/native_screen_half_2_56c8d0+distance<field_74) {
         const float squared_distance=geometry::squared_distance_xy(center,position);
-        if (!(squared_distance>radius)) {
+        // Preserve the native unordered-aware hit edge with a forward miss path.
+        // A forward miss edge preserves the native JBE/two-JMP layout
+        // while retaining the unordered-aware COMISS hit semantics.
+        if (squared_distance>radius) goto infinite_iteration_tail;
+        {
             segment_mask[segment_count]=1;
             ++hit_count;
             ++context->bullet_controller()->cancel_counter;
@@ -58,6 +62,7 @@ std::int32_t LaserInfiniteInf::cancel_circle(const Vector3& center, float radius
             }
         }
 
+infinite_iteration_tail:
         position+=step;
         distance+=native_screen_top_16_56cd90;
         ++segment_count;

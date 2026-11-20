@@ -27,7 +27,11 @@ std::int32_t LaserCurveInf::cancel_circle(const Vector3& center, float radius,
         point=current_point->position;
 
         const float squared_distance=geometry::squared_distance_xy(center,point);
-        if (!(squared_distance>radius)) {
+        // Preserve the native unordered-aware hit edge with a forward miss path.
+        // A forward miss edge preserves the native JBE/two-JMP layout
+        // while retaining the unordered-aware COMISS hit semantics.
+        if (squared_distance>radius) goto curve_iteration_tail;
+        {
             segment_mask[point_index]=1;
             ++hit_count;
             ++context->bullet_controller()->cancel_counter;
@@ -39,6 +43,7 @@ std::int32_t LaserCurveInf::cancel_circle(const Vector3& center, float radius,
             }
         }
 
+curve_iteration_tail:
         ++current_point;
     }
 
