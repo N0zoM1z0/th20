@@ -1662,3 +1662,8 @@ th20::polar_components
 th20::scalar_math::floating_remainder
 th20::NativeCardCaptureTimeoutView::elapsed_4887d0
 th20::NativeCardCaptureRefreshView::refresh_487bb0
+th20::NativeBombEffectHandleView::bind_owner_450850
+th20::NativeBombPlayerView::set_invulnerability_479060
+th20::NativeBombPlayerView::mark_bomb_used_4790a0
+th20::NativeBombEnemyCounterView::advance_477f40
+th20::NativeBombPulse::start

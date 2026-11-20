@@ -1677,3 +1677,8 @@ th20::polar_components,0x004392D0,function
 th20::scalar_math::floating_remainder,0x004397F0,function
 th20::NativeCardCaptureTimeoutView::elapsed_4887d0,0x004887D0,function
 th20::NativeCardCaptureRefreshView::refresh_487bb0,0x00487BB0,function
+th20::NativeBombEffectHandleView::bind_owner_450850,0x00450850,function
+th20::NativeBombPlayerView::set_invulnerability_479060,0x00479060,function
+th20::NativeBombPlayerView::mark_bomb_used_4790a0,0x004790A0,function
+th20::NativeBombEnemyCounterView::advance_477f40,0x00477F40,function
+th20::NativeBombPulse::start,0x00478C00,function

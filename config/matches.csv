@@ -835,3 +835,7 @@ address,name,size,status,match_percent,unit,evidence
 0x00439390,th20::Animation::set_scale_speed,62,matching,100.00,animation_vm_set_scale_speed_39390,CORE/RECON-1160; docs/ANIMATION_VM_OPCODE_LEAVES_EXACT.md; complete original native body strict exact
 0x004887D0,th20::NativeCardCaptureTimeoutView::elapsed_4887d0,35,matching,100.00,card_capture_timeout_35,CORE/RECON-1120; docs/CARD_CAPTURE_TIMEOUT35_STRICT_EXACT.md
 0x00487BB0,th20::NativeCardCaptureRefreshView::refresh_487bb0,123,matching,100.00,card_capture_refresh_123,CORE/RECON-1121; docs/CARD_CAPTURE_REFRESH123_STRICT_EXACT.md
+0x00450850,th20::NativeBombEffectHandleView::bind_owner_450850,30,matching,100.00,bomb_pulse_handle_owner_30,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
+0x00479060,th20::NativeBombPlayerView::set_invulnerability_479060,32,matching,100.00,bomb_pulse_invulnerability_32,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
+0x004790A0,th20::NativeBombPlayerView::mark_bomb_used_4790a0,26,matching,100.00,bomb_pulse_flag2_26,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md
+0x00477F40,th20::NativeBombEnemyCounterView::advance_477f40,28,matching,100.00,bomb_pulse_enemy_counter_28,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md

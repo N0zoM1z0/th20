@@ -29896,3 +29896,47 @@ relocations = [
   { offset = 0x56, type = "REL32", symbol = "?bomb_controller@Context@th20@@QAEPAVBombController@2@XZ", target = 0x00424010 },
   { offset = 0x5D, type = "REL32", symbol = "?active_478130@NativeCardBombActiveView@th20@@QBE_NXZ", target = 0x00478130 },
 ]
+
+# CORE/RECON-1122: Resolve live/fallback animation and store real callback owner at Animation+0x5C8.
+[units.bomb_pulse_handle_owner_30]
+source = "src/BombPulseHandleOwner30.cpp"
+object = "build/gptweb-bomb-pulse-canonical/BombPulseHandleOwner30.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeBombEffectHandleView::bind_owner_450850"]
+symbol = "?bind_owner_450850@NativeBombEffectHandleView@th20@@QAEXPAX@Z"
+target_address = 0x00450850
+size = 30
+relocations = [{ offset = 0xB, type = "REL32", symbol = "?resolve_or_resident_44cf10@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CF10 }]
+
+# CORE/RECON-1122: Player+0x2050 real Timer receives original integer assignment, not set(int).
+[units.bomb_pulse_invulnerability_32]
+source = "src/BombPulsePlayerInvulnerability32.cpp"
+object = "build/gptweb-bomb-pulse-canonical/BombPulsePlayerInvulnerability32.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeBombPlayerView::set_invulnerability_479060"]
+symbol = "?set_invulnerability_479060@NativeBombPlayerView@th20@@QAEXH@Z"
+target_address = 0x00479060
+size = 32
+relocations = [{ offset = 0x15, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 }]
+
+# CORE/RECON-1122: Marks Player entity flag bit2 after Bomb pulse initialization.
+[units.bomb_pulse_flag2_26]
+source = "src/BombPulsePlayerFlags26.cpp"
+object = "build/gptweb-bomb-pulse-canonical/BombPulsePlayerFlags26.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeBombPlayerView::mark_bomb_used_4790a0"]
+symbol = "?mark_bomb_used_4790a0@NativeBombPlayerView@th20@@QAEXXZ"
+target_address = 0x004790A0
+size = 26
+relocations = []
+
+# CORE/RECON-1122: Adds input delta to actual EnemyController+0x4C (EnemyData.field_3c).
+[units.bomb_pulse_enemy_counter_28]
+source = "src/BombPulseEnemyCounter28.cpp"
+object = "build/gptweb-bomb-pulse-canonical/BombPulseEnemyCounter28.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeBombEnemyCounterView::advance_477f40"]
+symbol = "?advance_477f40@NativeBombEnemyCounterView@th20@@QAEXH@Z"
+target_address = 0x00477F40
+size = 28
+relocations = []
