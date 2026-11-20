@@ -1,5 +1,8 @@
 # Enemy opcode 551: genuine FogValue packing in the complete-root host (CORE176)
 
+**Current maintained production source update (CORE/RECON-1154):** opcode 551 now has natural-C++ source in `src/EnemyStateFogOpcode.cpp`. The previous opaque `0x005C069C` receiver is now the typed partial `StageResourceOwner* process_stage_resource`; its actual nested Background/Fog layout and the 20B animation-file getter, 45B wrapper, 130B FogInterpolation setter and five FogInterpolation leaf methods are restored from original offsets and native call sites. The eight owner/leaf functions' pinned i386 COFF bodies match their original PE bytes apart from separately verified E8 relocations. The full 41,967B parent remains NONEXACT. See [the opcode 551 source frontier](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md).
+
+
 The comparison target remains Japanese TH20 v1.00a Steamless PE32, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The production `EnemyState::execute_opcode` at **0x0048C010** remains an

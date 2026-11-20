@@ -172,3 +172,5 @@ selection, cached Manager routing and the direct index setter. The integrated
 defeat fixture uses these actual bodies and the maintained ECL reset, with
 remaining VM/resource calls explicitly captured. See
 [defeat state protocols](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md).
+
+- [Enemy opcode 551 Fog and typed StageResource owner](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md)
