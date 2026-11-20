@@ -9,7 +9,7 @@
 
 namespace th20 {
 
-struct EclRuntime;
+struct LaserRuntimeState;
 
 // Four real dispatcher temporaries, with separate command-vector lifetimes.
 // Neutral field names retain unresolved opcode-specific roles.
@@ -18,11 +18,13 @@ struct LaserType0Parameters {
     float angle, length, field_14, length_limit, width, speed;
     std::uint32_t type, color;
     float radial_offset;
-    std::uint32_t command_index, flags;
+    std::uint32_t command_index;
+    union { std::uint32_t flags; std::uint32_t flags_alias_34; };
     std::pmr::vector<BulletCommand> commands;
     std::int32_t field_48, field_4c, view_index;
     LaserType0Parameters() noexcept;
     ~LaserType0Parameters();
+    LaserType0Parameters& operator=(const LaserType0Parameters&);
 };
 struct LaserType1Parameters {
     Vector3 position, velocity;
@@ -30,11 +32,13 @@ struct LaserType1Parameters {
     std::int32_t delay, grow_time, sustain_time, shrink_time, sound, field_44;
     std::uint32_t handle;
     float radial_offset;
-    std::uint32_t command_index, type, color, flags;
+    std::uint32_t command_index, type, color;
+    union { std::uint32_t flags; std::uint32_t flags_alias_5c; };
     std::pmr::vector<BulletCommand> commands;
     std::int32_t view_index;
     LaserType1Parameters() noexcept;
     ~LaserType1Parameters();
+    LaserType1Parameters& operator=(const LaserType1Parameters&);
 };
 struct CurveNode;
 struct LaserType2Flags { std::uint32_t word; };
@@ -189,7 +193,7 @@ public:
     std::uint32_t field_6a0, field_6a4, field_6a8;
     Timer timer_6ac, timer_6bc;
     std::uint32_t field_6cc, field_6d0, field_6d4;
-    IntrusiveLink<EclRuntime>* runtime_link_6d8;
+    LaserRuntimeState* runtime_state_6d8;
     std::uint32_t field_6dc, field_6e0;
     std::int32_t field_6e4; // signed laser-family discriminator (+0x6E4)
     std::uint32_t field_6e8;
@@ -212,7 +216,7 @@ static_assert(offsetof(Laser, command_index) == 0x690);
 static_assert(offsetof(Laser, active_commands) == 0x698);
 static_assert(offsetof(Laser, timer_6ac) == 0x6ac);
 static_assert(offsetof(Laser, field_6cc) == 0x6cc);
-static_assert(offsetof(Laser, runtime_link_6d8) == 0x6d8);
+static_assert(offsetof(Laser, runtime_state_6d8) == 0x6d8);
 static_assert(offsetof(Laser, field_6e4) == 0x6e4);
 static_assert(offsetof(Laser, field_6e8) == 0x6e8);
 static_assert(offsetof(Laser, context) == 0x6f0);

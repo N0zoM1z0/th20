@@ -9,6 +9,7 @@ namespace th20 {
 class LaserInfiniteInf : public Laser {
 public:
     LaserInfiniteInf() noexcept;
+    std::int32_t initialize_laser(const void* input) override;
     std::int32_t cancel_circle(const Vector3& center, float radius,
                                std::int32_t mode, std::int32_t argument) override;
 

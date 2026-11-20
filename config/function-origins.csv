@@ -2357,7 +2357,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00485660,unknown,EnemyVariables,review,pending,"EXACT-072: Six complete actual Enemy integer/float destination, checked selection, identifier resolution and Data/16-slot-array construction contributions add1820body/2183comparisonbytes. Full540unit/100object graph replays96830disjointbytes. Native table/producer/callee/EH identity and full canonical relocation replay establish real storage/protocol; no partial read/search/root credit. Owned O2/UBSan checks cover signed bits, float/Movement aliases, repeated player0 lookups, stale/null fallback, array bounds and complete writable-slot counts. Whole read_integer/read_float, observer auto-init/list find, Session/startup, enclosing Controller,41KB Enemy root and whole-game link/runtime remain open. See docs/EXACT_ENEMY_VARIABLE_RECONSTRUCTION.md."
 0x00485690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004856C0,authored,Bullet,authored,high,"CORE/ORIGIN-563; docs/BULLET_EMITTER_REAL_CALLS_18_EXACT_RECONSTRUCTION.md; immutable original E8 from entire 3735B Bullet emitter 0x00482297 to actual native 18B style script getter, one original PE HIGHLOW at 0x004856CC to native 0x005C06A8, whole 18/18 native strict exact"
-0x004856E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004856E0,authored,BulletStyle,authored,high,CORE/EXACT-1239; docs/LASER_INFINITE_ANIMATION_CALLBACK_EXACT.md; native caller/factory boundary and object offsets independently grounded
 0x00485700,unknown,BulletStyle,review,pending,"REF-029: full18-byte natural cdecl radius read; actual writable344-byte*50 BSS table and radius+144 independently derived from complete401280 startup initializer, all4300 words audited.137-unit/36-object cold canonical replay and dirty-table/IEEE C++20 UBSan checks pass. Storage/initializer undefined; original name/origin pending. See docs/REFERENCE_BULLET_LASER_DAMAGE_REVIEW.md."
 0x00485720,unknown,AnimationCallback,review,unknown,"CORE/EXACT-123: Complete native callback8 owner/five integer-return virtual slots, true cdecl unary-entry/script pointers and Bullet528 signed type/color accessors. Nine whole physical roots414B plus five folded aliases151B independently verified; no duplicate byte credit or native RTTI identity claim.149903 actual-owner O2/ASan/UBSan/float-cast-overflow cases and18 whole private migration roots3360B pass. Frozen276-source graph passes827 strict units/160 fresh objects/160921 disjoint bytes; maintained149903-case production semantics pass; original base SprtFuncBaseInf/direct derived EffectMenuWindowInf48 RTTI corroborates owner. Whole40752B VM, derived draw and Renderer+6000DFC remain open. See docs/ANIMATION_CALLBACK_RECONSTRUCTION.md."
 0x00485740,authored,BulletAim,authored,high,"CORE/EXACT-294; docs/BULLET_AIM_SELECTOR_EXACT_RECONSTRUCTION.md; Complete 434B/109-instruction native Bullet aim direction-mode boss, original 22 PE-attested relocated call/globals. Actual 7 native immutable float selection thresholds: -999990, 999990, 1999990, 2999990, 3999990, 4999990 and 3.141592741; chooses fixed, player-aimed, player-plus-random, random-plus-fixed and selected Enemy-aimed paths. True float x87 ST0 returns, NaN-preserving comparisons, real existing Player::direction_to / EnemyController::selected / Enemy::position_ref / geometry::direction_xy / GameRandom::signed_unit. Original C++ nested conditional expression with meaningful real result. 434/434 canonical strict bytes, 346/346 nonreloc, 22 original data/call relocations independently PE verified, 1/1 newly scoped units in 1 new cold object; zero prior units/headers affected. No whole-repo cold replay."
@@ -3865,14 +3865,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C7F00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C7F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C7F90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C7FD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C7FD0,authored,LaserRuntimeState,authored,medium,CORE/RECON-1241; docs/LASER_RUNTIME_STATE_RECONSTRUCTION.md; native caller/factory boundary and object offsets independently grounded
 0x004C8020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C80E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C81F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C8240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C8240,authored,LaserRuntimeState,authored,medium,CORE/RECON-1241; docs/LASER_RUNTIME_STATE_RECONSTRUCTION.md; native caller/factory boundary and object offsets independently grounded
 0x004C82C0,authored,LaserCurve,authored,medium,CORE/EXACT-1222; docs/LASER_CURVE_PATH_STATE_CTOR_EXACT.md; called as a distinct 0x40-byte LaserCurveInf subobject at +0x1330 by the game-authored 159-byte Curve constructor
 0x004C8390,authored,LaserBeamInf,authored,high,CORE/EXACT-1229; docs/LASER_BEAM_CONSTRUCTOR_EXACT.md; original create_laser type-3 diagnostic string at 0x00571508 names LaserBeamInf; factory 0x004C8020 allocates 0x1D30 and calls this constructor; native vtable 0x00571374 independently confirms the base circle-cancel default
 0x004C8410,authored,LaserCurveInf,authored,high,CORE/EXACT-1230; docs/LASER_CURVE_CONSTRUCTOR_EXACT.md; native type-2 diagnostic string at 0x00571550 names LaserCurveInf; 0x004C8080 factory allocates 0x1370 bytes and invokes this constructor; vtable 0x00571214 and path-cancel slot agree
@@ -3884,14 +3884,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C8940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C8AF0,authored,Laser,authored,high,"CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; original base vtable, field +0x6D8 ownership and exact release_object<IntrusiveLink<EclRuntime>> call independently established"
+0x004C8AF0,authored,Laser,authored,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native Laser vtable and shared 0x3C LaserRuntimeState factory/constructor establish +0x6D8 ownership
 0x004C8B70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8C90,authored,LaserParameters,authored,medium,CORE/RECON-1238; docs/LASER_TYPE3_PARAMETERS_COPY_RECONSTRUCTION.md; original native caller/vtable/member layout independently anchors the owner
 0x004C8D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C8E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C8FE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C8E90,authored,LaserParameters,authored,medium,CORE/RECON-1242; docs/LASER_TYPE1_PARAMETERS_COPY_RECONSTRUCTION.md; native caller/factory boundary and object offsets independently grounded
+0x004C8FE0,authored,LaserParameters,authored,medium,"CORE/RECON-1243; docs/LASER_TYPE0_PARAMETERS_COPY_RECONSTRUCTION.md; native Line initializer copies the 0x54-byte Type0 parameter block and PMR command vector"
 0x004C90D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3935,7 +3935,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004CEBA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CEBB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CF080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004CF550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004CF550,authored,LaserInfiniteInf,authored,high,CORE/EXACT-1238; docs/LASER_INFINITE_ANIMATION_CALLBACK_EXACT.md; native caller/factory boundary and object offsets independently grounded
 0x004CF5C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CF5F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CF680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3960,8 +3960,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D3110,authored,LaserBeamInf,authored,high,CORE/EXACT-1234; docs/LASER_BEAM_INITIALIZE_EXACT.md; original native caller/vtable/member layout independently anchors the owner
 0x004D3230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D3CA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D3D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D4150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D3D70,authored,LaserInfiniteInf,authored,medium,CORE/RECON-1240; docs/LASER_INFINITE_INITIALIZE_RECONSTRUCTION.md; native caller/factory boundary and object offsets independently grounded
+0x004D4150,authored,LaserLineInf,authored,medium,"CORE/RECON-1244; docs/LASER_LINE_INITIALIZE_RECONSTRUCTION.md; three native Animation subobjects, Type0 parameter copy, shared runtime-state factory and original 1,284-byte body"
 0x004D4660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D46E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D47F0,authored,LaserController,authored,high,"CORE/EXACT-195; docs/LASER_CONTROLLER_CREATE_WHOLE_EXACT_RECONSTRUCTION.md; original 474B game-specific four-variant Laser creation with true 4-entry 16B switch table, native label/globals, 4 allocator/virtual init/registration consumer paths, real intrusivelist registration at exact 0x4C9300; complete 492B comparison with 21 native original relocations and 33 affected TUs/223 whole strict units."

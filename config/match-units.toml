@@ -31117,7 +31117,7 @@ relocations = [
   { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x2B, type = "DIR32", symbol = "??_7Laser@th20@@6B@", target = 0x005710BC },
   { offset = 0x47, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
-  { offset = 0x4C, type = "REL32", symbol = "??$release_object@V?$IntrusiveLink@UEclRuntime@th20@@@th20@@@DiagnosticAllocator@th20@@QAEXPAV?$IntrusiveLink@UEclRuntime@th20@@@1@@Z", target = 0x00413B70 },
+  { offset = 0x4C, type = "REL32", symbol = "??$release_object@ULaserRuntimeState@th20@@@DiagnosticAllocator@th20@@QAEXPAULaserRuntimeState@1@@Z", target = 0x00413B70 },
 ]
 
 [units.laser_base_scalar_deleting_destructor]
@@ -31368,4 +31368,31 @@ size = 54
 relocations = [
   { offset = 0x1E, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
   { offset = 0x23, type = "REL32", symbol = "?context@Session@th20@@QAEAAUContext@2@H@Z", target = 0x0040BBC0 },
+]
+
+# CORE/EXACT-1238: Infinite Laser Animation script-parameter callback.
+[units.laser_infinite_animation_callback]
+source = "src/LaserInfiniteAnimationCallback.cpp"
+object = "build/laser-infinite-animation-callback-canonical/LaserInfiniteAnimationCallback.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::laser_infinite_animation_script_callback"]
+symbol = "?laser_infinite_animation_script_callback@th20@@YAHPAVAnimation@1@H@Z"
+target_address = 0x004CF550
+size = 105
+relocations = [
+  { offset = 0x28, type = "DIR32", symbol = "?bullet_styles@th20@@3PAUBulletStyle@1@A", target = 0x005C06A8 },
+  { offset = 0x54, type = "DIR32", symbol = "?bullet_styles@th20@@3PAUBulletStyle@1@A", target = 0x005C06A8 },
+]
+
+# CORE/EXACT-1239: shared BulletStyle indexed accessor.
+[units.bullet_style_accessor]
+source = "src/BulletStyle.cpp"
+object = "build/bullet-style-accessor-canonical/BulletStyle.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::bullet_style"]
+symbol = "?bullet_style@th20@@YAPAUBulletStyle@1@H@Z"
+target_address = 0x004856E0
+size = 17
+relocations = [
+  { offset = 0xB, type = "DIR32", symbol = "?bullet_styles@th20@@3PAUBulletStyle@1@A", target = 0x005C06A8 },
 ]

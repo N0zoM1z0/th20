@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <type_traits>
 #include "DebugMemoryResource.hpp"
 #include "LockRegistry.hpp"
 
@@ -29,7 +30,8 @@ public:
     template<class T>
     void release_object(T* memory) {
         if (!memory) return;
-        std::destroy_at(memory);
+        if constexpr (!std::is_trivially_destructible_v<T>)
+            std::destroy_at(memory);
         std::lock_guard<std::recursive_mutex> guard(process_locks.slot(1));
         ::operator delete(memory);
     }

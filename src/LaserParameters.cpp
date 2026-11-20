@@ -9,12 +9,58 @@ LaserType0Parameters::LaserType0Parameters() noexcept
       type(0), color(0), radial_offset(0), command_index(0), flags(0),
       field_48(0), field_4c(0), view_index(0) {}
 LaserType0Parameters::~LaserType0Parameters() = default;
+LaserType0Parameters& LaserType0Parameters::operator=(const LaserType0Parameters& other) {
+    position=other.position;
+    angle=other.angle;
+    length=other.length;
+    field_14=other.field_14;
+    length_limit=other.length_limit;
+    width=other.width;
+    speed=other.speed;
+    type=other.type;
+    color=other.color;
+    radial_offset=other.radial_offset;
+    command_index=other.command_index;
+    flags_alias_34=other.flags_alias_34;
+    flags=other.flags;
+    commands=other.commands;
+    field_48=other.field_48;
+    field_4c=other.field_4c;
+    view_index=other.view_index;
+    return *this;
+}
 LaserType1Parameters::LaserType1Parameters() noexcept
     : angle(0), angular_velocity(0), length_limit(0), length(0), width(0),
       growth_speed(8), delay(0), grow_time(0), sustain_time(0), shrink_time(0),
       sound(0), field_44(0), handle(0), radial_offset(0), command_index(0),
       type(0), color(0), flags(0), view_index(0) {}
 LaserType1Parameters::~LaserType1Parameters() = default;
+LaserType1Parameters& LaserType1Parameters::operator=(const LaserType1Parameters& other) {
+    position=other.position;
+    velocity=other.velocity;
+    angle=other.angle;
+    angular_velocity=other.angular_velocity;
+    length_limit=other.length_limit;
+    length=other.length;
+    width=other.width;
+    growth_speed=other.growth_speed;
+    delay=other.delay;
+    grow_time=other.grow_time;
+    sustain_time=other.sustain_time;
+    shrink_time=other.shrink_time;
+    sound=other.sound;
+    field_44=other.field_44;
+    handle=other.handle;
+    radial_offset=other.radial_offset;
+    command_index=other.command_index;
+    type=other.type;
+    color=other.color;
+    flags_alias_5c=other.flags_alias_5c;
+    flags=other.flags;
+    commands=other.commands;
+    view_index=other.view_index;
+    return *this;
+}
 LaserType2Parameters::LaserType2Parameters() noexcept
     : angle(0), width(0), speed(0), type(0), color(0), count(0), radial_offset(0),
       flags{}, sound(0), motion_sound(0), command_index(0), path(nullptr), time(0),

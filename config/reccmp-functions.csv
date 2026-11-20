@@ -1775,3 +1775,5 @@ th20::LaserBeamInf::initialize_laser,0x004D3110,function
 th20::Laser::set_position,0x004D7D50,function
 th20::Laser::point_at_distance,0x004D67E0,function
 th20::Laser::select_context,0x004D7DD0,function
+th20::bullet_style,0x004856E0,function
+th20::laser_infinite_animation_script_callback,0x004CF550,function

@@ -1051,7 +1051,7 @@ address,name,module,confidence,evidence
 0x004CA830,th20::LaserCurveInf::cancel_circle,LaserCurveInf,high,"CORE/EXACT-1232; complete 647-byte natural C++ handler, 607 ordinary bytes and 10/10 relocations strictly replayed; docs/LASER_CURVE_CANCEL_CIRCLE_RECONSTRUCTION.md"
 0x004CABF0,th20::LaserInfiniteInf::cancel_circle,LaserInfiniteInf,high,"CORE/EXACT-1233; complete 1,123-byte natural C++ handler, 991 ordinary bytes and 33/33 relocations strictly replayed; docs/LASER_INFINITE_CANCEL_CIRCLE_RECONSTRUCTION.md"
 0x004C85B0,th20::Laser::Laser(),Laser,medium,CORE/RECON-1225; docs/LASER_BASE_CONSTRUCTOR_RECONSTRUCTION.md; native base vtable 0x005710BC and three concrete family constructors independently establish the common game-owned 0x6F8 prefix
-0x004C8AF0,th20::Laser::~Laser(),Laser,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native Laser vtable destructor and EclRuntime intrusive-link owner
+0x004C8AF0,th20::Laser::~Laser(),Laser,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native Laser vtable and shared 0x3C LaserRuntimeState factory/constructor establish the owned +0x6D8 state
 0x004C9210,th20::Laser::scalar_deleting_destructor,Laser,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native scalar deleting wrapper and 0x6F8 allocation size
 0x004C8880,th20::LaserInfiniteInf::LaserInfiniteInf(),LaserInfiniteInf,high,"CORE/EXACT-1227; docs/LASER_INFINITE_CONSTRUCTOR_EXACT.md; native family vtable, factory size and all four member-construction relocations"
 0x004C88E0,th20::LaserLineInf::LaserLineInf(),LaserLineInf,high,"CORE/EXACT-1228; docs/LASER_LINE_CONSTRUCTOR_EXACT.md; original diagnostic name, 0x18F8 factory allocation and native vtable 0x00571148"
@@ -1061,3 +1061,11 @@ address,name,module,confidence,evidence
 0x004D7D50,th20::Laser::set_position,Laser,high,CORE/EXACT-1235; complete 38-byte body strictly replayed with no relocations; native function boundary and direct call/vtable evidence
 0x004D67E0,th20::Laser::point_at_distance,Laser,high,CORE/EXACT-1236; complete 66-byte body and two original relocations strictly replay; native function boundary and direct call/vtable evidence
 0x004D7DD0,th20::Laser::select_context,Laser,high,CORE/EXACT-1237; complete 54-byte body and two original relocations strictly replay; native function boundary and direct call/vtable evidence
+0x004856E0,th20::bullet_style,BulletStyle,high,CORE/EXACT-1239; complete 17-byte indexed accessor and original BulletStyle BSS relocation strictly replay
+0x004C7FD0,th20::DiagnosticAllocator::allocate_object<LaserRuntimeState>,LaserRuntimeState,medium,CORE/RECON-1241; docs/LASER_RUNTIME_STATE_RECONSTRUCTION.md; native Line and Infinite callers allocate the same 0x3C state
+0x004C8240,th20::LaserRuntimeState::LaserRuntimeState,LaserRuntimeState,medium,CORE/RECON-1241; docs/LASER_RUNTIME_STATE_RECONSTRUCTION.md; original two Vector3 and one Vector2 constructor relocations
+0x004C8E90,th20::LaserType1Parameters::operator=,LaserParameters,medium,CORE/RECON-1242; docs/LASER_TYPE1_PARAMETERS_COPY_RECONSTRUCTION.md; native Infinite initializer copies the 0x74-byte Type1 parameter block
+0x004CF550,th20::laser_infinite_animation_script_callback,LaserInfiniteInf,high,CORE/EXACT-1238; docs/LASER_INFINITE_ANIMATION_CALLBACK_EXACT.md; original Animation::field_5E0 callback slot and two BulletStyle global relocations
+0x004D3D70,th20::LaserInfiniteInf::initialize_laser,LaserInfiniteInf,medium,"CORE/RECON-1240; docs/LASER_INFINITE_INITIALIZE_RECONSTRUCTION.md; type-1 factory diagnostic, 0x1338 object layout, Animation offsets and 986-byte native body"
+0x004C8FE0,th20::LaserType0Parameters::operator=,LaserParameters,medium,CORE/RECON-1243; docs/LASER_TYPE0_PARAMETERS_COPY_RECONSTRUCTION.md; native Line initializer copies the 0x54-byte Type0 parameter block
+0x004D4150,th20::LaserLineInf::initialize_laser,LaserLineInf,medium,CORE/RECON-1244; docs/LASER_LINE_INITIALIZE_RECONSTRUCTION.md; native Line initializer owns three Animation subobjects and a shared 0x3C runtime state
