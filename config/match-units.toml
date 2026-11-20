@@ -10785,7 +10785,7 @@ relocations = [
 
 [units.render_mesh_uv]
 source = "src/RenderMesh.cpp"
-object = "build/core180-canonical/RenderMesh.obj"
+object = "build/core180-canonical/RenderMeshAux.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 symbol = "?render_mesh_uv@th20@@YAXUVector3@1@AAM1@Z"
 functions = ["th20::render_mesh_uv"]
@@ -30959,3 +30959,15 @@ relocations = [
   { offset = 0xA, type = "REL32", symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z", target = 0x00464230 },
   { offset = 0x14, type = "REL32", symbol = "?update_progress_mesh@WeaponStoneInfo@th20@@QAEXXZ", target = 0x00533970 },
 ]
+
+
+# CORE/EXACT-1204: real RenderMesh root-handle callback publication wrapper.
+[units.render_mesh_set_update_callback]
+source = "src/RenderMesh.cpp"
+object = "build/core180-canonical/RenderMeshAux.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::RenderMesh::set_update_callback"]
+symbol = "?set_update_callback@RenderMesh@th20@@QAEXP6AHPAVAnimation@2@@Z@Z"
+target_address = 0x0052CD50
+size = 37
+relocations = [{ offset = 0x1A, type = "REL32", symbol = "?set_entry_callback_forward_44f100@AnimationHandle@th20@@QAEXP6AHPAVAnimation@2@@Z@Z", target = 0x0044F100 }]

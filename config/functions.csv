@@ -5354,7 +5354,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0052CC90,61,0x0052CCCC,FUN_0052cc90,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052CCD0,63,0x0052CD0E,FUN_0052ccd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052CD10,63,0x0052CD4E,FUN_0052cd10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0052CD50,37,0x0052CD74,FUN_0052cd50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0052CD50,37,0x0052CD74,FUN_0052cd50,th20::RenderMesh::set_update_callback,RenderMesh,matching,100.00,__thiscall,?set_update_callback@RenderMesh@th20@@QAEXP6AHPAVAnimation@2@@Z@Z,false,src/RenderMesh.cpp,CORE/EXACT-1204; docs/RENDER_MESH_CALLBACK_EXACT.md,authored,Complete native 37-byte RenderMesh callback publication wrapper. Forwards the supplied AnimationEntryCallback through the AnimationHandle at RenderMesh+0x8 to AnimationHandle::set_entry_callback_forward_44f100. All 33 non-relocation bytes match and the single REL32 target resolves to 0x0044F100. Strict scoped MSVC x86 /Od /GS- replay; used by the WeaponStone progress-mesh initializer.
 0x0052CD80,22,0x0052CD95,FUN_0052cd80,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052CDA0,39,0x0052CDC6,FUN_0052cda0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0052CDD0,25,0x0052CDE8,FUN_0052cdd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

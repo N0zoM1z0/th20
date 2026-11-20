@@ -1751,3 +1751,4 @@ th20::WeaponStoneInfo::complete_item_progress,0x00534D00,function
 th20::WeaponStoneInfo::update_progress_mesh,0x00533970,function
 th20::weapon_stone_progress_animation_callback,0x00532720,function
 th20::WeaponStoneProgressCallback::update,0x00532A90,function
+th20::RenderMesh::set_update_callback,0x0052CD50,function

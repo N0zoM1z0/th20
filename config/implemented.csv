@@ -1736,3 +1736,4 @@ th20::WeaponStoneInfo::complete_item_progress
 th20::WeaponStoneInfo::update_progress_mesh
 th20::weapon_stone_progress_animation_callback
 th20::WeaponStoneProgressCallback::update
+th20::RenderMesh::set_update_callback

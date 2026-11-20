@@ -5354,7 +5354,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0052CC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052CCD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052CD10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0052CD50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0052CD50,authored,RenderMesh,authored,high,CORE/EXACT-1204
 0x0052CD80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052CDA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0052CDD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
