@@ -21,7 +21,7 @@ struct LaserType0Parameters {
     std::uint32_t command_index, flags;
     std::pmr::vector<BulletCommand> commands;
     std::int32_t field_48, field_4c, view_index;
-    LaserType0Parameters();
+    LaserType0Parameters() noexcept;
     ~LaserType0Parameters();
 };
 struct LaserType1Parameters {

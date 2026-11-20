@@ -47,6 +47,8 @@ The 32-bit compile statically verifies the complete `Laser` size and all
 recovered member offsets. Targeted probes also compile `LaserParameters.cpp`,
 `LaserFactory.cpp`, `LaserRegistration.cpp`, and the Line, Beam and Infinite
 circle-cancellation implementations against the new base constructor. The
+Type0 parameter constructor is now explicitly `noexcept`, preserving its
+native no-extra-EH call boundary in the concrete Line constructor. The
 independent Beam and Infinite structural audits remain green, and the separate
 Beam path-state constructor remains a strict exact replay. This constructor is
 tracked as `reconstructed`, not `matching`; the class name and game-authored

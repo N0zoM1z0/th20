@@ -31149,3 +31149,21 @@ relocations = [
   { offset = 0x3D, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
   { offset = 0x4B, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
 ]
+
+# CORE/EXACT-1228: complete native Line Laser concrete-family constructor.
+[units.laser_line_ctor]
+source = "src/LaserLineConstructor.cpp"
+object = "build/laser-line-constructor-canonical/LaserLineConstructor.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserLineInf::LaserLineInf()"]
+symbol = "??0LaserLineInf@th20@@QAE@XZ"
+target_address = 0x004C88E0
+size = 88
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Laser@th20@@QAE@XZ", target = 0x004C85B0 },
+  { offset = 0x14, type = "DIR32", symbol = "??_7LaserLineInf@th20@@6B@", target = 0x00571148 },
+  { offset = 0x22, type = "REL32", symbol = "??0LaserType0Parameters@th20@@QAE@XZ", target = 0x0047C130 },
+  { offset = 0x30, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+  { offset = 0x3E, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+  { offset = 0x4C, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+]

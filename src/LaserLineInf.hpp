@@ -10,6 +10,7 @@ namespace th20 {
 // subobjects, not a byte-array size surrogate.
 class LaserLineInf : public Laser {
 public:
+    LaserLineInf() noexcept;
     std::int32_t cancel_circle(const Vector3& center, float radius,
                                std::int32_t mode, std::int32_t argument) override;
 

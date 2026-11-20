@@ -3880,7 +3880,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C85B0,authored,Laser,authored,medium,"CORE/RECON-1225; docs/LASER_BASE_CONSTRUCTOR_RECONSTRUCTION.md; native family factories call this shared game object constructor before installing Line/Beam/Infinite family vtables; it initializes game-specific timer, motion, command and Context state"
 0x004C87C0,authored,LaserParameters,authored,high,"CORE/EXACT-161; docs/DIALOGUE_OWNER_RECONSTRUCTION.md; Complete179-byte noexcept LaserInf constructor over genuine0x58 TaskInfo-derived storage, actual observed list, two Vector3 values, count0, initial handle65536, file/context pointers and diagnostic. Independent AV LaserInf/TaskInf hierarchy, native88-byte deleting size, full source layout and complete184-byte comparison including all5 emitted INT3 bytes establish the owner. Full flags5 support strictly replays. Resource lifetime and individual Laser owners remain open; custom diagnostic/handle protocol establishes authored origin."
 0x004C8880,authored,LaserInfiniteInf,authored,high,CORE/EXACT-1227; docs/LASER_INFINITE_CONSTRUCTOR_EXACT.md; vtable 0x005712E8 and 0x1338 factory allocation; exact base/Type1/Animation subobject offsets independently decoded
-0x004C88E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C88E0,authored,LaserLineInf,authored,high,"CORE/EXACT-1228; docs/LASER_LINE_CONSTRUCTOR_EXACT.md; source diagnostic in original create_laser path names LaserLineInf; native 0x18F8 factory allocation, vtable 0x00571148 and member construction offsets independently agree"
 0x004C8940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
