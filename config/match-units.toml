@@ -30993,3 +30993,15 @@ symbol = "?update_node_enabled@GameController@th20@@QBEHXZ"
 target_address = 0x00464350
 size = 56
 relocations = [{ offset = 0x19, type = "REL32", symbol = "?enabled@FunctionChainNode@th20@@QBEIXZ", target = 0x00464390 }]
+
+
+# CORE/EXACT-1210: native GameController bit-6 phase-cancellation reader.
+[units.game_controller_flag6]
+source = "src/GameControllerFlag6.cpp"
+object = "build/core1210-canonical/GameControllerFlag6.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::GameController::flag_6_set"]
+symbol = "?flag_6_set@GameController@th20@@QBEIXZ"
+target_address = 0x00534300
+size = 26
+relocations = []
