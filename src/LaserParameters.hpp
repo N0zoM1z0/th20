@@ -123,6 +123,8 @@ static_assert(offsetof(LaserType3Parameters, commands) == 0x3c);
 #endif
 class Laser {
 public:
+    // Native 0x6F8-byte common prefix; derived constructors replace the base vtable.
+    Laser();
     virtual void set_position(const Vector3&) = 0;         // slot 00
     virtual void point_at_distance(float, Vector3&) = 0;  // slot 04
     virtual void slot_08() = 0;
@@ -165,9 +167,8 @@ public:
 
     std::uint32_t field_04;
     IntrusiveLink<Laser> link;                            // +08
-    // The large native body is not a dummy padding block: its timer,
-    // motion and 24 x 64-byte extended-command layout can be checked against
-    // native constructors and consumers, independently of this loop.
+    // The 24 actual 64-byte command records are constructed by the native
+    // base constructor before its final whole-prefix zeroing pass.
     std::uint32_t flags;
     std::int32_t state;
     std::uint32_t field_24;
@@ -197,11 +198,18 @@ public:
 #if defined(_M_IX86)
 static_assert(sizeof(Laser) == 0x6f8);
 static_assert(offsetof(Laser, link) == 0x08);
+static_assert(offsetof(Laser, age) == 0x28);
+static_assert(offsetof(Laser, position) == 0x58);
+static_assert(offsetof(Laser, velocity) == 0x64);
 static_assert(offsetof(Laser, commands) == 0x90);
+static_assert(offsetof(Laser, command_index) == 0x690);
 static_assert(offsetof(Laser, active_commands) == 0x698);
 static_assert(offsetof(Laser, timer_6ac) == 0x6ac);
-static_assert(offsetof(Laser, context) == 0x6f0);
 static_assert(offsetof(Laser, field_6cc) == 0x6cc);
+static_assert(offsetof(Laser, field_6e4) == 0x6e4);
+static_assert(offsetof(Laser, field_6e8) == 0x6e8);
+static_assert(offsetof(Laser, context) == 0x6f0);
+static_assert(offsetof(Laser, field_6f4) == 0x6f4);
 #endif
 
 } // namespace th20

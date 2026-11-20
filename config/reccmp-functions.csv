@@ -1764,3 +1764,4 @@ th20::LaserLineInf::cancel_circle,0x004CB060,function
 th20::LaserBeamPathState::LaserBeamPathState(),0x004C82C0,function
 th20::LaserBeamInf::cancel_circle,0x004CA830,function
 th20::LaserInfiniteInf::cancel_circle,0x004CABF0,function
+th20::Laser::Laser(),0x004C85B0,function
