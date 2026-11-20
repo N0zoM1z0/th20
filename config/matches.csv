@@ -904,3 +904,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0052CD50,th20::RenderMesh::set_update_callback,37,matching,100.00,render_mesh_set_update_callback,CORE/EXACT-1204; strict scoped MSVC x86 /Od /GS- replay; all non-relocation bytes and native target verified
 0x00464390,th20::FunctionChainNode::enabled,22,matching,100.00,function_chain_node_enabled,CORE/EXACT-1209; scoped MSVC x86 /Od /GS- cold replay; all non-relocation bytes and native call targets verified
 0x00464350,th20::GameController::update_node_enabled,56,matching,100.00,game_controller_update_node_enabled,CORE/EXACT-1209; scoped MSVC x86 /Od /GS- cold replay; all non-relocation bytes and native call targets verified
+0x00533780,th20::WeaponStoneInfo::process_item_drop,406,matching,100.00,weapon_stone_item_drop,CORE/EXACT-1215; 290/290 non-relocation bytes; 29/29 native relocation targets; scoped MSVC x86 replay

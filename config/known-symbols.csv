@@ -1032,7 +1032,7 @@ address,name,module,confidence,evidence
 0x0051B920,th20::PlayerRecord::clamped_field_50,PlayerRecord,high,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
 0x00533920,th20::PlayerRecord::add_field_4c_clamped,PlayerRecord,high,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
 0x00534390,th20::PlayerRecord::field_a4_value,PlayerRecord,high,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
-0x00533780,th20::WeaponStoneInfo::process_item_drop,WeaponStoneInfo,medium,CORE/RECON-1153; natural C++ reconstruction present; current 395B candidate remains nonexact.
+0x00533780,th20::WeaponStoneInfo::process_item_drop,WeaponStoneInfo,high,CORE/EXACT-1215; complete natural C++ 406-byte body and 29 native relocations; docs/WEAPON_STONE_ITEM_DROP_EXACT.md
 0x00534D00,th20::WeaponStoneInfo::complete_item_progress,WeaponStoneInfo,high,docs/WEAPON_STONE_ITEM_PROGRESS_EXACT.md
 0x0056CD94,native_polygon_radius32,Screen,medium,Native WeaponStone/mesh vertex culling and displacement use the 32.0f screen margin at this original .rdata address
 0x0056CD9C,native_screen_alpha_max_56cd9c,Screen,medium,Native screen alpha and WeaponStone progress-mesh alpha use the original 255.0f data value

@@ -31005,3 +31005,45 @@ symbol = "?flag_6_set@GameController@th20@@QBEIXZ"
 target_address = 0x00534300
 size = 26
 relocations = []
+
+
+# CORE/EXACT-1215: complete WeaponStone item-drop progression method.
+[units.weapon_stone_item_drop]
+source = "src/WeaponStoneItemDrop.cpp"
+object = "build/core1215-canonical/WeaponStoneItemDrop.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::WeaponStoneInfo::process_item_drop"]
+symbol = "?process_item_drop@WeaponStoneInfo@th20@@QAEXH@Z"
+target_address = 0x00533780
+size = 406
+relocations = [
+  { offset = 0xC, type = "DIR32", symbol = "?current_front@th20@@3PAVFrontInf@1@A", target = 0x005C06A4 },
+  { offset = 0x11, type = "REL32", symbol = "?has_dialogue@FrontInf@th20@@QAEHXZ", target = 0x00478160 },
+  { offset = 0x2F, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x39, type = "REL32", symbol = "?field_2f_value@PlayerRecord@th20@@QAEEXZ", target = 0x00464400 },
+  { offset = 0x5D, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x67, type = "REL32", symbol = "?field_a4_value@PlayerRecord@th20@@QAEEXZ", target = 0x00534390 },
+  { offset = 0x75, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x7F, type = "REL32", symbol = "?clamped_field_4c@PlayerRecord@th20@@QAEHXZ", target = 0x0051B8A0 },
+  { offset = 0xA9, type = "REL32", symbol = "?set_passive@Weapon@th20@@QAEXE@Z", target = 0x004865B0 },
+  { offset = 0xB1, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0xBB, type = "REL32", symbol = "?clamped_field_4c@PlayerRecord@th20@@QAEHXZ", target = 0x0051B8A0 },
+  { offset = 0xC4, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0xCE, type = "REL32", symbol = "?clamped_field_50@PlayerRecord@th20@@QAEHXZ", target = 0x0051B920 },
+  { offset = 0xE2, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0xEF, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0xF9, type = "REL32", symbol = "?clamped_field_50@PlayerRecord@th20@@QAEHXZ", target = 0x0051B920 },
+  { offset = 0x108, type = "REL32", symbol = "?set_field_4c@PlayerRecord@th20@@QAEXH@Z", target = 0x004BE940 },
+  { offset = 0x110, type = "REL32", symbol = "?complete_item_progress@WeaponStoneInfo@th20@@QAEXXZ", target = 0x00534D00 },
+  { offset = 0x11A, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x12C, type = "REL32", symbol = "?add_field_4c_clamped@PlayerRecord@th20@@QAEXH@Z", target = 0x00533920 },
+  { offset = 0x134, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x13E, type = "REL32", symbol = "?clamped_field_4c@PlayerRecord@th20@@QAEHXZ", target = 0x0051B8A0 },
+  { offset = 0x147, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x151, type = "REL32", symbol = "?clamped_field_50@PlayerRecord@th20@@QAEHXZ", target = 0x0051B920 },
+  { offset = 0x15C, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x169, type = "REL32", symbol = "?player_record@th20@@YAPAUPlayerRecord@1@H@Z", target = 0x00464080 },
+  { offset = 0x173, type = "REL32", symbol = "?clamped_field_50@PlayerRecord@th20@@QAEHXZ", target = 0x0051B920 },
+  { offset = 0x182, type = "REL32", symbol = "?set_field_4c@PlayerRecord@th20@@QAEXH@Z", target = 0x004BE940 },
+  { offset = 0x18A, type = "REL32", symbol = "?complete_item_progress@WeaponStoneInfo@th20@@QAEXXZ", target = 0x00534D00 },
+]

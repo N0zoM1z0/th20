@@ -12,12 +12,11 @@ The first three retain the original std::clamp call at 0x00471170 and match
 all 191 non-relocation bytes. The byte accessor matches all 21 bytes. All
 four strict match units replay independently from one source/object.
 
-WeaponStoneInfo::process_item_drop(int) at 0x00533780 is also now represented
-by maintained natural C++ in src/WeaponStoneItemDrop.cpp. It checks the
-FrontInf dialogue gate and phase, selects the 10/15-item interval, toggles
-the passive weapon at the +0x4C progression interval, increments and clamps
-the PlayerRecord stone counter, and dispatches the phase-complete transition.
-Its current strict-profile candidate is 395 bytes against the 406-byte native
-body, so it is deliberately tracked as reconstructed/nonexact with no original
-byte credit. The separate 201-byte phase transition at 0x00534D00 now has
+WeaponStoneInfo::process_item_drop(int) at 0x00533780 is now a complete
+406-byte natural C++ match in src/WeaponStoneItemDrop.cpp. Its separate
+FrontInf/phase guards, 10/15-item interval, passive-weapon trigger, progress
+threshold branches and phase-completion call match all 290 non-relocation
+bytes and all 29 original relocations. See
+[the full item-drop exact receipt](WEAPON_STONE_ITEM_DROP_EXACT.md). The
+separate 201-byte phase transition at 0x00534D00 retains its own
 [whole-function exact evidence](WEAPON_STONE_ITEM_PROGRESS_EXACT.md).
