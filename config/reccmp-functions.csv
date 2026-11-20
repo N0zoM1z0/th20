@@ -1741,3 +1741,8 @@ th20::PlayerRecord::tick_progress_d0,0x004E11A0,function
 th20::PlayerRecord::advance_progress_b8,0x004E1250,function
 th20::PlayerRecord::tick_progress_c0,0x004E1310,function
 th20::PlayerRecord::advance_progress_c4,0x004E1510,function
+th20::PlayerRecord::clamped_field_4c,0x0051B8A0,function
+th20::PlayerRecord::clamped_field_50,0x0051B920,function
+th20::PlayerRecord::add_field_4c_clamped,0x00533920,function
+th20::PlayerRecord::field_a4_value,0x00534390,function
+th20::WeaponStoneInfo::process_item_drop,0x00533780,function

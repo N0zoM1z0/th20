@@ -894,3 +894,7 @@ address,name,size,status,match_percent,unit,evidence
 0x004E1250,th20::PlayerRecord::advance_progress_b8,188,matching,100.00,player_record_advance_progress_b8,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
 0x004E1310,th20::PlayerRecord::tick_progress_c0,246,matching,100.00,player_record_tick_progress_c0,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
 0x004E1510,th20::PlayerRecord::advance_progress_c4,86,matching,100.00,player_record_advance_progress_c4,CORE/RECON-1152; docs/PLAYER_RECORD_ITEM_PROGRESS_EXACT.md
+0x0051B8A0,th20::PlayerRecord::clamped_field_4c,64,matching,100.00,player_record_clamped_field_4c,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
+0x0051B920,th20::PlayerRecord::clamped_field_50,64,matching,100.00,player_record_clamped_field_50,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
+0x00533920,th20::PlayerRecord::add_field_4c_clamped,75,matching,100.00,player_record_add_field_4c_clamped,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
+0x00534390,th20::PlayerRecord::field_a4_value,21,matching,100.00,player_record_field_a4_value,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md

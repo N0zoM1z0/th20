@@ -1726,3 +1726,8 @@ th20::PlayerRecord::tick_progress_d0
 th20::PlayerRecord::advance_progress_b8
 th20::PlayerRecord::tick_progress_c0
 th20::PlayerRecord::advance_progress_c4
+th20::PlayerRecord::clamped_field_4c
+th20::PlayerRecord::clamped_field_50
+th20::PlayerRecord::add_field_4c_clamped
+th20::PlayerRecord::field_a4_value
+th20::WeaponStoneInfo::process_item_drop

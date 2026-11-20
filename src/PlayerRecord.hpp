@@ -88,6 +88,9 @@ struct PlayerRecord {
     std::int32_t clamped_option_cap();
     std::int32_t clamped_field_40();
     std::int32_t clamped_field_44();
+    std::int32_t clamped_field_4c();
+    std::int32_t clamped_field_50();
+    void add_field_4c_clamped(std::int32_t amount);
     std::int32_t clamped_field_48();
     std::int32_t clamped_field_b8();
     std::int32_t clamped_field_bc();
@@ -112,6 +115,7 @@ struct PlayerRecord {
     std::uint64_t current_score() const;
     std::int32_t field_10_value();
     std::int32_t field_14_value();
+    std::uint8_t field_a4_value();
     std::uint8_t field_a5_value();
     std::uint8_t field_2f_value();
     void set_field_ec(std::int32_t value);

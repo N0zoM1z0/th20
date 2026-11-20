@@ -49,6 +49,7 @@ public:
     Context* context;
     WeaponStoneInfo();
     void record_damage(const Vector3*,std::int32_t,std::int32_t);
+    void process_item_drop(std::int32_t amount);
     ~WeaponStoneInfo() override;
     void enable() override;
     void disable() override;
