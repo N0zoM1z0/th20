@@ -922,3 +922,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004D7DD0,th20::Laser::select_context,54,matching,100.00,laser_base_select_context,CORE/EXACT-1237; complete 54-byte body and two original relocations strictly replay
 0x004856E0,th20::bullet_style,17,matching,100.00,bullet_style_accessor,CORE/EXACT-1239; complete 17-byte accessor and original BSS relocation strictly replay
 0x004CF550,th20::laser_infinite_animation_script_callback,105,matching,100.00,laser_infinite_animation_callback,CORE/EXACT-1238; complete 105-byte callback and both original BSS relocations strictly replay
+0x004C9580,th20::LaserInfiniteInf::erase,683,matching,100.00,laser_infinite_erase,CORE/EXACT-1245; complete 683-byte body and all 29 original relocations strictly replay

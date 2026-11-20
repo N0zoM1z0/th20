@@ -3906,7 +3906,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004C9350,39,0x004C9376,FUN_004c9350,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C9380,266,0x004C9489,FUN_004c9380,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C9490,238,0x004C957D,FUN_004c9490,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004C9580,683,0x004C982A,FUN_004c9580,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004C9580,683,0x004C982A,FUN_004c9580,th20::LaserInfiniteInf::erase,LaserInfiniteInf,matching,100.00,__thiscall,?erase@LaserInfiniteInf@th20@@UAEHHH@Z,false,src/LaserInfiniteErase.cpp,CORE/EXACT-1245; docs/LASER_INFINITE_ERASE_EXACT.md,authored,"Whole 683-byte Infinite Laser erase handler strictly replays. Samples the laser axis at native screen-derived spacing, skips samples outside the screen, selects one of three bullet-animation script families from the signed laser type and color, spawns the bullet effects, and transitions Laser state to 1. All 563 ordinary bytes and 29 original relocations match."
 0x004C9830,635,0x004C9AAA,FUN_004c9830,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C9AB0,740,0x004C9D93,FUN_004c9ab0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004C9DA0,15,0x004C9DAE,FUN_004c9da0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

@@ -3906,7 +3906,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C9350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9380,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C9580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C9580,authored,LaserInfiniteInf,authored,high,"CORE/EXACT-1245; docs/LASER_INFINITE_ERASE_EXACT.md; original Infinite-family vtable slot +0x44 points directly to the complete 683-byte native erasure and bullet-regeneration handler"
 0x004C9830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9AB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9DA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

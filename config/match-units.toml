@@ -31396,3 +31396,45 @@ size = 17
 relocations = [
   { offset = 0xB, type = "DIR32", symbol = "?bullet_styles@th20@@3PAUBulletStyle@1@A", target = 0x005C06A8 },
 ]
+
+# CORE/EXACT-1245: Infinite Laser segment-erasure / bullet regeneration handler.
+[units.laser_infinite_erase]
+source = "src/LaserInfiniteErase.cpp"
+object = "build/laser-infinite-erase-canonical/LaserInfiniteErase.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserInfiniteInf::erase"]
+symbol = "?erase@LaserInfiniteInf@th20@@UAEHHH@Z"
+target_address = 0x004C9580
+size = 683
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x37, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x3F, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
+  { offset = 0x47, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x4F, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x5C, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x64, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x81, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0xA5, type = "REL32", symbol = "??HVector3@th20@@QBE?AU01@ABU01@@Z", target = 0x00429570 },
+  { offset = 0xC2, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0xCB, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0xD3, type = "DIR32", symbol = "?native_screen_half_2_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xFB, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x109, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x117, type = "REL32", symbol = "?bullet_position_outside_screen@th20@@YAHABUVector3@1@MM@Z", target = 0x00485390 },
+  { offset = 0x154, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x15B, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x18B, type = "DIR32", symbol = "$SG88405", target = 0x0056FD14 },
+  { offset = 0x197, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x1C3, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x1CA, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x1FA, type = "DIR32", symbol = "$SG88409", target = 0x0056FD14 },
+  { offset = 0x206, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x223, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x22A, type = "REL32", symbol = "?animation_file@BulletController@th20@@QBEPAVAnimationFile@2@XZ", target = 0x004859B0 },
+  { offset = 0x25A, type = "DIR32", symbol = "$SG88411", target = 0x0056FD14 },
+  { offset = 0x266, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+  { offset = 0x273, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x280, type = "DIR32", symbol = "?native_screen_top_16_56cd90@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x2A1, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

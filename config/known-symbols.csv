@@ -1069,3 +1069,4 @@ address,name,module,confidence,evidence
 0x004D3D70,th20::LaserInfiniteInf::initialize_laser,LaserInfiniteInf,medium,"CORE/RECON-1240; docs/LASER_INFINITE_INITIALIZE_RECONSTRUCTION.md; type-1 factory diagnostic, 0x1338 object layout, Animation offsets and 986-byte native body"
 0x004C8FE0,th20::LaserType0Parameters::operator=,LaserParameters,medium,CORE/RECON-1243; docs/LASER_TYPE0_PARAMETERS_COPY_RECONSTRUCTION.md; native Line initializer copies the 0x54-byte Type0 parameter block
 0x004D4150,th20::LaserLineInf::initialize_laser,LaserLineInf,medium,CORE/RECON-1244; docs/LASER_LINE_INITIALIZE_RECONSTRUCTION.md; native Line initializer owns three Animation subobjects and a shared 0x3C runtime state
+0x004C9580,th20::LaserInfiniteInf::erase,LaserInfiniteInf,high,CORE/EXACT-1245; docs/LASER_INFINITE_ERASE_EXACT.md; original Infinite vtable slot +0x44 and whole 683-byte strict replay

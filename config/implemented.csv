@@ -1762,3 +1762,4 @@ th20::Laser::point_at_distance
 th20::Laser::select_context
 th20::bullet_style
 th20::laser_infinite_animation_script_callback
+th20::LaserInfiniteInf::erase

@@ -1777,3 +1777,4 @@ th20::Laser::point_at_distance,0x004D67E0,function
 th20::Laser::select_context,0x004D7DD0,function
 th20::bullet_style,0x004856E0,function
 th20::laser_infinite_animation_script_callback,0x004CF550,function
+th20::LaserInfiniteInf::erase,0x004C9580,function
