@@ -1678,3 +1678,5 @@ Compiler scores labelled "current" in historical entries below mean
 - [Window D3D9 reset-state Boss 1,954B complete compiled source, NONEXACT](WINDOW_DEVICE_RESET_STATES_BOSS1954_FULL_SOURCE_FRONTIER.md) — original 507 instructions, full 1,911B source implements 24 render, eight texture-stage, six sampler D3D9 calls and five Renderer recovery hooks; independent original SHA and 43/43 game E8 +47/47 PE data destination roles, missing native GS/cookie lowering, zero parent game-authored exact bytes.
 
 - [Renderer D3D9 reset five leaf functions, 108B whole native exact](RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md) — unique original 0x0041DB40/60/80/A0/C0, four 21B byte setters and one 24B DWORD setter, genuine large AnimationPoolOwner native offsets, 9/9 instructions per function, zero E8/data relocations; one source-local cold object 5/5 exact, +108 distinct game-authored bytes; 1,954B parent NONEXACT.
+
+- [ASCII text renderer typed unsigned-length source frontier](ASCII_TEXT_RENDER578_NATIVE_FRONTIER.md) — CORE/RECON-1173 resolves the original 16B 0x56CDD0 correction table and verifies the 574B natural-C++ candidate against all native call/data roles.

@@ -1,3 +1,17 @@
+**CORE/RECON-1182 update:** The maintained natural-C++ source now names the real
+
+**CURRENT CORE/RECON-1173 UPDATE:** the previously unresolved unsigned-`strlen` conversion table at `0x0056CDD0` is now a typed `const double[2]` global, with original values `{0.0, 4294967296.0}`. `AsciiTextRender578.cpp` explicitly converts the 32-bit length through `int32_t` plus the indexed correction word before converting to float. The candidate now carries the exact table relocation and all 11 original E8 / 8 DIR32 target roles in order. It is 574B/138 instructions versus the 578B/139-instruction original. After relocation normalization, the only codegen differences are the local spill's scheduling around the `strlen` argument push and the compiler fusing native `movss xmm1,[width_factor]` + `mulss xmm0,xmm1` into `mulss xmm0,[width_factor]`. The candidate remains NONEXACT; no padding or assembly is used. See `scripts/verify-ascii-text-render578-source-candidate.py`.
+unsigned conversion correction table at `0x0056CDD0` directly. The native
+16-byte table is verified from the PE as `{0.0, 4294967296.0}`; the current
+candidate is **574B/138 i386**, with all **11 original E8 callee roles** and
+all **8 PE data roles** represented in order by 19 genuine COFF relocations.
+The candidate is four bytes and one instruction shorter than the original
+578B/139 function, and the final call/data fields move by four bytes after the
+shorter multiply expression. It remains **NONEXACT** with zero new game byte
+credit. The current source verifier checks the full native target, candidate
+extent, relocation roles, and correction-table contents. This is natural C++;
+no inline assembly, padding, or target-byte patching is used.
+
 **CORE/RECON-1037 update:** The 111B Card text lambda calling this renderer is now [whole strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md); the 578B renderer still has five SSE operand bytes and an unverified correction-data symbol, so this original 578B function is still NONEXACT.
 
 # CORE/RECON-1035 — whole 578-byte ASCII text rendering Boss, five SSE source-code bytes from native exactness
@@ -74,7 +88,13 @@ All **eight original PE HIGHLOW** fields are likewise checked:
 are equal**, but the exact original data-symbol owner is unresolved,
 so this diagnostic does **not** constitute a canonical relocation receipt.
 
-## Full-length source diagnostic — NONEXACT
+## Historical CORE/RECON-1035 source diagnostic — NONEXACT
+
+The earlier full-length 578B/139 source candidate used the compiler-generated
+unsigned conversion constant and had five SSE register-selector byte
+differences. CORE/RECON-1182 replaces that diagnostic with the current
+explicit-table 574B/138 candidate above; the old 497/502 metric is historical,
+not a measurement of the current candidate.
 
 Pinned MSVC 19.44 i386 C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2
 /fp:precise /sdl /EHsc` emits a whole **578B /139-instruction** candidate
@@ -95,8 +115,8 @@ manual assembly, dead local, dummy write, shortened function extent or
 unverified strict credit is used.
 
 **Status: SOURCE-PRESENT, NONEXACT.** The original 111B Card lambda, 294B
-text submit and 1,896B Card start Boss remain separate unfinished native
-parents/callees. Game-authored exact count and `config/match-units.toml`
+text submit and 1,896B Card start Boss remain separate native
+parents/callees with their own exactness frontiers. Game-authored exact count and `config/match-units.toml`
 are **unchanged** by this checkpoint. This is an independently attested,
 complete-source Boss frontier, **not a strict acceptance**. No full cold
 replay is needed for a newly authored unaccepted source.
@@ -135,8 +155,8 @@ The original 93B std::function copy/20B destructor in this 578B Boss
 have four separately exact [25B/71B/20B/30B function base children](ASCII_STD_FUNCTION_BASE_25_71_20_30_EXACT.md).
 Their complete 146 physical bytes and original E8 graph are reproduced
 naturally from this **same** C++ owner in a six-unit scoped replay.
-The 578B parent still differs at five real SSE operand bytes and
-retains NONEXACT status.
+The 578B parent remains NONEXACT; the current 574B candidate is still four
+bytes and one instruction short.
 
 ## CORE/RECON-1063 — native text submit 294B gap narrowed to two NOPs
 

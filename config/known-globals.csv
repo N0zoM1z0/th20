@@ -20,3 +20,4 @@ address,name,module,confidence,evidence
 0x005AFF54,th20::native_item_progress_thresholds_mode4,PlayerRecord,high,CORE/RECON-1152; exact original PE 10-entry signed mode-4 threshold table: nine 3-frame thresholds followed by 99999999.
 0x0056E0E8,th20::native_zero_56e0e8,Constants,high,CORE/RECON-1240; file-backed .rdata float 0.0 used by Infinite Laser radial-offset and length-threshold comparisons
 0x0056E1A0,th20::native_0_01,Constants,high,CORE/RECON-1240; file-backed .rdata float 0.01 used by Infinite Laser length-threshold initialization
+0x0056CDD0,th20::native_unsigned_length_correction_56cdd0,,high,"CORE/RECON-1173; locked TH20 1.00a PE data is {0.0, 4294967296.0}; original AsciiTextRender578 adds indexed qword at native +0x14E to convert unsigned 32-bit strlen result to double."

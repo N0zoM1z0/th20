@@ -104,3 +104,6 @@ frontier is the remaining 48B of EH, bonus, stack-local and handle
 creation lowering; the 102B text `std::function` constructor is still
 independently nonexact. Existing Card text/queue and HUD children
 remain distinct original physical code owners, never double-credited.
+
+
+**Related text-render Boss update (CORE/RECON-1173):** the 578B ASCII text renderer used by Card's PMR text callback now has a typed owner for the original unsigned-length correction table at `0x0056CDD0`; all 11 call and 8 data target roles remain in order. Its current 574B candidate differs only by one compiler-fused scalar SSE instruction and the independent local spill schedule; it remains NONEXACT. See [the ASCII text-render frontier](ASCII_TEXT_RENDER578_NATIVE_FRONTIER.md).

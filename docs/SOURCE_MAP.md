@@ -178,3 +178,4 @@ remaining VM/resource calls explicitly captured. See
 - [Enemy opcode 549 intrusive membership query](ENEMY_41967_549_MEMBERSHIP_SOURCE_FRONTIER.md)
 - [EnemyState / Enemy / EclRuntime argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md)
 - [Enemy shared Card Spell Start opcodes 522/528/531/532/533](ENEMY_41967_522_528_531_532_533_CARD_START_SOURCE_FRONTIER.md)
+- [ASCII text renderer and unsigned-length correction table](ASCII_TEXT_RENDER578_NATIVE_FRONTIER.md)
