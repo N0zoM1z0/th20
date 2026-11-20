@@ -27,6 +27,7 @@ public:
     void initialize(float x,float y,float width,float height);
     void initialize_surface_grid(float x,float y,float width,float height);
     void update_strips();
+    void set_update_callback(std::int32_t (*callback)(Animation*));
 };
 struct EnemyMeshOwner {
     RenderMesh* mesh = nullptr;

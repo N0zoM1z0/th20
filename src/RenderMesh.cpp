@@ -31,6 +31,9 @@ void RenderMesh::initialize(float x,float y,float width,float height) {
     }
     update_strips();
 }
+void RenderMesh::set_update_callback(std::int32_t (*callback)(Animation*)) {
+    root.set_entry_callback_forward_44f100(callback);
+}
 void RenderMesh::update_strips() {
     if (!columns) return;
     auto* source=vertices;

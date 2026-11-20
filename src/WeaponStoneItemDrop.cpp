@@ -5,7 +5,7 @@
 #include "Weapon.hpp"
 
 namespace th20 {
-void weapon_stone_progress_effect();
+
 
 void WeaponStoneInfo::process_item_drop(std::int32_t amount) {
     if (current_front->has_dialogue()!=0 || phase!=0)
@@ -22,11 +22,11 @@ void WeaponStoneInfo::process_item_drop(std::int32_t amount) {
         player_record(0)->add_field_4c_clamped(amount);
         if (player_record(0)->clamped_field_4c()>=player_record(0)->clamped_field_50()) {
             player_record(0)->set_field_4c(player_record(0)->clamped_field_50());
-            weapon_stone_progress_effect();
+            complete_item_progress();
         }
     } else if (phase==0) {
         player_record(0)->set_field_4c(player_record(0)->clamped_field_50());
-        weapon_stone_progress_effect();
+        complete_item_progress();
     }
 }
 }
