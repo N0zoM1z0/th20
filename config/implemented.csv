@@ -1766,3 +1766,4 @@ th20::LaserInfiniteInf::erase
 th20::LaserLineInf::erase
 th20::LaserCurveInf::erase
 th20::LaserInfiniteInf::cancel_rectangle
+th20::LaserLineInf::cancel_rectangle

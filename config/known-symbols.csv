@@ -1073,3 +1073,4 @@ address,name,module,confidence,evidence
 0x004C9830,th20::LaserLineInf::erase,LaserLineInf,high,CORE/EXACT-1246; docs/LASER_LINE_ERASE_EXACT.md; original Line vtable slot +0x44 and whole 635-byte strict replay
 0x004C9380,th20::LaserCurveInf::erase,LaserCurveInf,high,CORE/EXACT-1247; docs/LASER_CURVE_ERASE_EXACT.md; original Curve vtable slot +0x44 and whole 266-byte strict replay
 0x004C9F10,th20::LaserInfiniteInf::cancel_rectangle,LaserInfiniteInf,high,"CORE/EXACT-1248; docs/LASER_INFINITE_CANCEL_RECTANGLE_EXACT.md; original Infinite vtable slot +0x2C and whole 1,131-byte strict replay"
+0x004CA380,th20::LaserLineInf::cancel_rectangle,LaserLineInf,high,"CORE/EXACT-1249; docs/LASER_LINE_CANCEL_RECTANGLE_EXACT.md; original Line vtable slot +0x2C and whole 1,197-byte strict replay"
