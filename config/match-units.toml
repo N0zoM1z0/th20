@@ -30220,3 +30220,20 @@ relocations = [
   { offset = 0x66, type = "REL32", symbol = "?screen_draw_rect_423650@th20@@YAXPBMI@Z", target = 0x00423650 },
   { offset = 0x78, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1132: whole native ScreenInf fade draw callback.
+[units.screen_draw_fade_105]
+source = "src/ScreenDrawFade105.cpp"
+object = "build/screen-draw-fade-canonical/ScreenDrawFade105.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_draw_fade_424f30"]
+symbol = "?screen_draw_fade_424f30@th20@@YAHPAX@Z"
+target_address = 0x00424F30
+size = 105
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x24, type = "DIR32", symbol = "?native_screen_draw_extent_x_5b87f8@th20@@3HA", target = 0x005B87F8 },
+  { offset = 0x31, type = "DIR32", symbol = "?native_screen_draw_extent_y_5b87fc@th20@@3HA", target = 0x005B87FC },
+  { offset = 0x4F, type = "REL32", symbol = "?screen_draw_rect_423650@th20@@YAXPBMI@Z", target = 0x00423650 },
+  { offset = 0x61, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

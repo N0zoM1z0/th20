@@ -980,3 +980,4 @@ address,name,module,confidence,evidence
 0x00423650,th20::screen_draw_rect_423650,Graphics,medium,Native callee of ScreenInf solid/fade/hold/flash draw callbacks; 1407B boundary remains unclassified
 0x005B87F8,th20::native_screen_draw_extent_x_5b87f8,Screen,medium,Original 128B ScreenInf solid draw uses signed integer-to-float conversion for rectangle extent X
 0x005B87FC,th20::native_screen_draw_extent_y_5b87fc,Screen,medium,Original 128B ScreenInf solid draw uses signed integer-to-float conversion for rectangle extent Y
+0x00424F30,th20::screen_draw_fade_424f30,Screen,high,CORE/RECON-1132; docs/SCREEN_DRAW_FADE_105_STRICT_EXACT.md

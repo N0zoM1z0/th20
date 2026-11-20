@@ -854,3 +854,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00424260,th20::screen_update_fade_in_424260,239,matching,100.00,screen_fade_in_239,CORE/RECON-1129; docs/SCREEN_FADE_IN_UPDATE_239_STRICT_EXACT.md
 0x00424460,th20::screen_update_solid_424460,82,matching,100.00,screen_solid_update_82,CORE/RECON-1130; docs/SCREEN_SOLID_UPDATE_82_STRICT_EXACT.md
 0x00424E00,th20::screen_draw_solid_424e00,128,matching,100.00,screen_draw_solid_128,CORE/RECON-1131; docs/SCREEN_DRAW_SOLID_128_STRICT_EXACT.md
+0x00424F30,th20::screen_draw_fade_424f30,105,matching,100.00,screen_draw_fade_105,CORE/RECON-1132; docs/SCREEN_DRAW_FADE_105_STRICT_EXACT.md
