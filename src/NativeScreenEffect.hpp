@@ -6,6 +6,7 @@
 #include <cstdint>
 namespace th20 {
 struct NativeScreenInf : TaskInfo {
+    NativeScreenInf() noexcept;
     std::int32_t mode_10;
     std::uint32_t field_14;
     std::uint32_t alpha_18;

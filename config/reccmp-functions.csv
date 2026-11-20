@@ -1689,3 +1689,6 @@ th20::NativeAnimationPoolPositionView::set_animation_position_4502f0,0x004502F0,
 th20::NativeScreenInf::initialize_423bf0,0x00423BF0,function
 th20::screen_effect_default_425090,0x00425090,function
 th20::screen_factory_4250f0,0x004250F0,function
+th20::NativeScreenInf::NativeScreenInf,0x004233B0,function
+th20::NativeScreenFactoryAllocatorView::allocate_screen_422d40,0x00422D40,function
+th20::screen_shutdown_425070,0x00425070,function

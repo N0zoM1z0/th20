@@ -966,3 +966,6 @@ address,name,module,confidence,evidence
 0x00423BF0,th20::NativeScreenInf::initialize_423bf0,Screen,high,CORE/RECON-1124; docs/SCREEN_INITIALIZE_BOSS637_STRICT_EXACT.md
 0x00425090,th20::screen_effect_default_425090,Screen,high,CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md
 0x004250F0,th20::screen_factory_4250f0,Screen,high,CORE/RECON-1125; docs/SCREEN_EFFECT_FACTORY_37_81_STRICT_EXACT.md
+0x004233B0,th20::NativeScreenInf::NativeScreenInf,Screen,high,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md
+0x00422D40,th20::NativeScreenFactoryAllocatorView::allocate_screen_422d40,Screen,high,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md
+0x00425070,th20::screen_shutdown_425070,Screen,high,CORE/RECON-1126; docs/SCREEN_INF_LIFECYCLE_67_187_29_STRICT_EXACT.md

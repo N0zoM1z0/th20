@@ -10,6 +10,7 @@
 #include "Angle.hpp"
 #include "AnimationHandle.hpp"
 #include "NativeBombPulseViews.hpp"
+#include "NativeScreenEffect.hpp"
 #include <cstdint>
 namespace th20 {
 extern const float native_negative_pi, native_two;
@@ -34,7 +35,7 @@ std::int32_t NativeBombPulse::start(std::int32_t) {
     reinterpret_cast<NativeCardCaptureRefreshView*>(card(0))->refresh_487bb0();
     reinterpret_cast<NativeBombPlayerView*>(player(0))->set_invulnerability_479060(120);
     reinterpret_cast<NativeBombEnemyCounterView*>(enemy_controller(0))->advance_477f40(1);
-    (void)create_bomb_pulse_auxiliary_425090(8,3,60,240,30);
+    (void)screen_effect_default_425090(8,3,60,240,30);
     reinterpret_cast<NativeBombPlayerView*>(player(0))->mark_bomb_used_4790a0();
     return 0;
 }

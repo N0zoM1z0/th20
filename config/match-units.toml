@@ -30072,8 +30072,57 @@ symbol = "?screen_factory_4250f0@th20@@YAPAUNativeScreenInf@1@HIIIIHI@Z"
 target_address = 0x004250F0
 size = 81
 relocations = [
-  { offset = 0x5, type = "DIR32", symbol = "$SG78290", target = 0x0056D768 },
+  { offset = 0x5, type = "DIR32", symbol = "?native_screen_diagnostic_56d768@th20@@3QBDB", target = 0x0056D768 },
   { offset = 0xB, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
-  { offset = 0x10, type = "REL32", symbol = "?allocate_screen_422d40@NativeScreenAllocatorView@th20@@QAEPAUNativeScreenInf@2@PBD@Z", target = 0x00422D40 },
+  { offset = 0x10, type = "REL32", symbol = "?allocate_screen_422d40@NativeScreenFactoryAllocatorView@th20@@QAEPAUNativeScreenInf@2@PBD@Z", target = 0x00422D40 },
   { offset = 0x46, type = "REL32", symbol = "?initialize_423bf0@NativeScreenInf@th20@@QAEXHIIIIH@Z", target = 0x00423BF0 },
+]
+
+# CORE/RECON-1126: complete ScreenInf lifecycle native boundary.
+[units.screen_inf_constructor_187]
+source = "src/ScreenInfConstruction187.cpp"
+object = "build/gptweb-screen-boss-canonical/ScreenInfConstruction187.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeScreenInf::NativeScreenInf"]
+symbol = "??0NativeScreenInf@th20@@QAE@XZ"
+target_address = 0x004233B0
+size = 187
+compare_size = 192
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0NativeScreenInf@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0TaskInfo@th20@@QAE@XZ", target = 0x0041FD20 },
+  { offset = 0x33, type = "DIR32", symbol = "??_7NativeScreenInf@th20@@6B@", target = 0x0056D744 },
+  { offset = 0x8E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x9D, type = "DIR32", symbol = "$SG1558", target = 0x0056D750 },
+  { offset = 0xA2, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+]
+
+# CORE/RECON-1126: complete ScreenInf lifecycle native boundary.
+[units.screen_inf_allocate_67]
+source = "src/ScreenAllocate67.cpp"
+object = "build/gptweb-screen-boss-canonical/ScreenAllocate67.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeScreenFactoryAllocatorView::allocate_screen_422d40"]
+symbol = "?allocate_screen_422d40@NativeScreenFactoryAllocatorView@th20@@QAEPAUNativeScreenInf@2@PBD@Z"
+target_address = 0x00422D40
+size = 67
+relocations = [
+  { offset = 0xC, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x0054275D },
+  { offset = 0x22, type = "REL32", symbol = "?clear_40c080@NativeScreenMemoryView@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x2A, type = "REL32", symbol = "?construct_4233b0@NativeScreenInfConstructorView@th20@@QAEPAUNativeScreenInf@2@XZ", target = 0x004233B0 },
+]
+
+# CORE/RECON-1126: complete ScreenInf lifecycle native boundary.
+[units.screen_inf_shutdown_29]
+source = "src/ScreenShutdown29.cpp"
+object = "build/gptweb-screen-boss-canonical/ScreenShutdown29.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::screen_shutdown_425070"]
+symbol = "?screen_shutdown_425070@th20@@YAHPAX@Z"
+target_address = 0x00425070
+size = 29
+relocations = [
+  { offset = 0x9, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0xE, type = "REL32", symbol = "?release_screen_41f7c0@NativeScreenFactoryAllocatorView@th20@@QAEXPAUNativeScreenInf@2@@Z", target = 0x0041F7C0 },
 ]

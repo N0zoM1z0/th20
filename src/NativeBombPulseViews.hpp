@@ -8,9 +8,6 @@
 namespace th20 {
 class Animation;
 std::int32_t __cdecl bomb_pulse_animation_callback_478380(Animation* animation);
-void* __cdecl create_bomb_pulse_auxiliary_425090(
-    std::int32_t mode,std::int32_t variant,std::int32_t length,
-    std::int32_t radius,std::int32_t strength);
 struct NativeBombEffectHandleView : AnimationHandle {
     void bind_owner_450850(void* owner);
 };

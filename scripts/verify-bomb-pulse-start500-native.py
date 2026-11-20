@@ -55,7 +55,7 @@ CALL_ROLE={
     '?set_invulnerability_479060@':0x00479060,
     '?enemy_controller@':0x00478060,
     '?advance_477f40@':0x00477F40,
-    '?create_bomb_pulse_auxiliary_425090@':0x00425090,
+    '?screen_effect_default_425090@':0x00425090,
     '?mark_bomb_used_4790a0@':0x004790A0,
     '@__security_check_cookie@':0x005429EE,
 }
