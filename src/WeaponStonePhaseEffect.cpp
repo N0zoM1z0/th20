@@ -26,7 +26,8 @@ void WeaponStoneInfo::initialize_phase_effect() {
         source_position=weapon_28->phase_position();
     else
         source_position=&player(0)->position_ref();
-    const Vector3 position=*source_position;
+    const Vector3* selected_position=source_position;
+    const Vector3 position=*selected_position;
 
     process_allocator->release_object(mesh);
     mesh=nullptr;

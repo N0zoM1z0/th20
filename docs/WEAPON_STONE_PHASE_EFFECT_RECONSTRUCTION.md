@@ -10,8 +10,10 @@ is the actual `WeaponStoneInfo*` in ECX: it accesses the owner fields at
 ## Reconstructed behavior
 
 1. Read the player's mode. Mode 7 snapshots `weapon_28->phase_position()`;
-   other modes snapshot `player(0)->position_ref()`. The snapshot happens
-   before the old mesh is retired and before a replacement is allocated.
+   other modes snapshot `player(0)->position_ref()`. Preserve the selected
+   pointer in a second local before copying its three floats; the original
+   stack layout contains this pointer alias. The snapshot happens before the
+   old mesh is retired and before a replacement is allocated.
 2. Retire the previous RenderMesh, clear `mesh`, and allocate a new 12x12
    RenderMesh with surface selector zero, this object's view index, and the
    original diagnostic source label `weaponstone.cpp:652 RenderMeshInf`.
@@ -33,16 +35,19 @@ use the actual session-0 `EffectInfo` and the existing type-6 spawn path.
 
 ## Exactness status
 
-The natural `/Od /Ob0 /GS /sdl` i386 COFF function contribution is 574 bytes;
-the native body is 581 bytes. This is tracked as `reconstructed`, not
-`matching`. No assembly, inert statement, NOP, padding, byte credit, or
-original-origin claim is added to close the difference. The source is compiled
-as i386 COFF and the function remains outside `match-units.toml` until a
-source-grounded exact boundary is established.
+The natural `/Od /Ob0 /GS /sdl` i386 COFF function contribution is 580 bytes;
+the native body is 581 bytes. After the callback publication call, the native
+compiler emits a one-byte NOP at `0x00534B81`; the natural candidate proceeds
+directly to the next local construction. The candidate is tracked as
+`reconstructed`, not `matching`. No assembly, inert statement, NOP, padding,
+byte credit, or original-origin claim is added to close the difference. The
+source is compiled as i386 COFF and the function remains outside
+`match-units.toml`.
 
 ## Adjacent open work
 
 The caller at `0x00532B20` is a separate 1,018-byte WeaponStone frame/update
-function and remains unimplemented. This initializer does not claim any of
-its phase-state, timing, cancellation, four-weapon virtual dispatch, or
-terminal-return behavior.
+function, now represented by a natural but nonexact reconstruction in
+`src/WeaponStoneUpdateMain.cpp`. Its phase-state, timing, cancellation, and
+four-weapon virtual-dispatch behavior are tracked independently; this
+initializer claims none of the caller's bytes.
