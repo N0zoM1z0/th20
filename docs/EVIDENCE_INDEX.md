@@ -277,7 +277,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **41,967B Enemy ECL — SOURCE-ABSENT parent, Laser opcode fragments SOURCE-PRESENT:**
   [original opcode graph and 702/703/711/713 Laser paths](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md),
-  [natural-C++ 702/703 Laser fragment](ENEMY_41967_LASER_702_703_SOURCE_FRONTIER.md).
+  [natural-C++ 702/703/711/713 Laser fragments](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md).
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).
 - **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**

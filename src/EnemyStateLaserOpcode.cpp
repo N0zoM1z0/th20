@@ -6,6 +6,9 @@
 
 namespace th20 {
 
+// The four branches are kept together because the original parent shares the
+// same queued-shot COW protocol, command-vector copy, Context Laser owner and
+// common Laser factory. Their native case bodies are inline in the 41,967B Boss.
 bool execute_enemy_laser_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {
     case 702: {
@@ -74,6 +77,63 @@ bool execute_enemy_laser_opcode(EnemyState& state, std::int32_t opcode) {
         laser.view_index = static_cast<std::int32_t>(state.field_2e8);
 
         (void)state.context->laser_controller()->create_laser(1, &laser);
+        return true;
+    }
+    case 711: {
+        LaserType2Parameters laser;
+        const auto selector = state.integer_argument(0);
+        auto selected = state.writable_shot(static_cast<std::uint32_t>(selector));
+        auto& record = *selected.first;
+        auto& metadata = *selected.second;
+
+        laser.commands = metadata.commands;
+        if (record.vector_40.z > 0.9f) {
+            laser.position = record.vector_40 + record.vector_34;
+            laser.position.z = 0.0f;
+        } else {
+            laser.position = state.position_ref() + record.vector_34;
+        }
+        laser.type = record.parameters.type;
+        laser.color = record.parameters.color;
+        laser.angle = normalize_angle(record.parameters.angle);
+        laser.speed = record.parameters.speed;
+        // The original writes the adjacent count/rows shorts as one DWORD.
+        laser.count = static_cast<std::uint16_t>(record.parameters.count)
+            | (static_cast<std::uint32_t>(static_cast<std::uint16_t>(record.parameters.rows)) << 16);
+        laser.width = metadata.field_14;
+        laser.radial_offset = metadata.field_00;
+        laser.flags.word = metadata.field_24 | 1u;
+        laser.sound = metadata.sound;
+        laser.motion_sound = metadata.alternate_sound;
+        laser.view_index = static_cast<std::int32_t>(state.field_2e8);
+
+        (void)state.context->laser_controller()->create_laser(2, &laser);
+        return true;
+    }
+    case 713: {
+        LaserType3Parameters laser;
+        const auto selector = state.integer_argument(0);
+        auto selected = state.writable_shot(static_cast<std::uint32_t>(selector));
+        auto& record = *selected.first;
+        auto& metadata = *selected.second;
+
+        laser.commands = metadata.commands;
+        if (record.vector_40.z > 0.9f) {
+            laser.position = record.vector_40 + record.vector_34;
+            laser.position.z = 0.0f;
+        } else {
+            laser.position = state.position_ref() + record.vector_34;
+        }
+        laser.field_2c = record.parameters.color;
+        laser.angle = normalize_angle(record.parameters.angle);
+        laser.field_34 = metadata.field_24;
+        laser.field_24 = metadata.field_14;
+        laser.field_20 = record.parameters.position.z;
+        laser.field_30 = metadata.field_00;
+        laser.handle = static_cast<std::uint32_t>(state.integer_argument(1));
+        laser.view_index = static_cast<std::int32_t>(state.field_2e8);
+
+        (void)state.context->laser_controller()->create_laser(3, &laser);
         return true;
     }
     default:
