@@ -1,5 +1,8 @@
 # CORE202: complete native opcode 600 queued-parameter reset in the whole Enemy root
 
+**Current maintained production source update (CORE/RECON-1148):** the opcode 600 reset is now implemented as the 600 branch of `execute_enemy_shot_fire_opcode` in `src/EnemyStateShotFireOpcode.cpp`. It uses the real `EnemyState::writable_shot`, `ShotParameters` constructor/assignment and `EtamaArgInf` default/move-assignment lifetime, preserves `record.vector_34.z`, and writes the native reset fields in order. The 41,967B parent remains NONEXACT. See [the 600/601 source frontier](ENEMY_41967_600_601_SHOT_FIRE_SOURCE_FRONTIER.md).
+
+
 The original 41,967-byte `EnemyState::execute_opcode` at `0x0048C010`
 remains **machine-code nonexact**. CORE202 continues the same complete
 source-draft root with the original opcode **600**, independently decoded

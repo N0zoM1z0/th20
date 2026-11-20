@@ -1,5 +1,8 @@
 # CORE204: full native Enemy opcode 601 and real Bullet scalar owner
 
+**Current maintained production source update (CORE/RECON-1148):** the opcode 601 case now has natural-C++ source in `src/EnemyStateShotFireOpcode.cpp`, using the exact ensure-only `shared_shot` selector, the 0.9 position branch, three live Context BulletController lookups, the real `shared_ptr` by-value copy, and the final post-fire scalar reset. The original 339B `BulletController::fire` body and 41,967B parent remain NONEXACT. See [the 600/601 source frontier](ENEMY_41967_600_601_SHOT_FIRE_SOURCE_FRONTIER.md).
+
+
 This checkpoint extends **the same complete 41,967-byte original Enemy
 `execute_opcode()` source draft** at `0x0048C010`, not a standalone partial
 opcode function. The original locked TH20 Japanese v1.00a Steamless target is
