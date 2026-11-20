@@ -17,14 +17,15 @@ extern const float native_screen_height_448_56d7c0;
 extern const float native_screen_alpha_max_56cd9c;
 extern const float native_pi_56e0f0;
 extern const float native_polygon_radius32;
+extern const float native_screen_negative_32_576360;
+extern const float native_progress_mesh_radius_120_570ad0;
+extern const float native_progress_mesh_alpha_fade_start_08_573160;
+extern const float native_progress_mesh_alpha_fade_span_02_56fbf8;
+extern const float native_progress_mesh_wave_amplitude_05_56e0ec;
+extern const float native_progress_mesh_wave_period_60_56e048;
 namespace {
-constexpr float progress_mesh_radius = 120.0f;
-constexpr float progress_mesh_alpha_fade_start = 0.8f;
-constexpr float progress_mesh_alpha_fade_span = 0.2f;
-constexpr float progress_mesh_wave_amplitude = 0.5f;
 constexpr std::int32_t progress_mesh_fade_start_frame = 60;
 constexpr std::int32_t progress_mesh_lifetime_frames = 80;
-constexpr std::int32_t progress_mesh_wave_period = 60;
 }
 
 void WeaponStoneInfo::update_progress_mesh() {
@@ -44,10 +45,10 @@ void WeaponStoneInfo::update_progress_mesh() {
         source_position=&player(0)->position_ref();
 
     Vector3 center=*source_position;
-    active_mesh->initialize(center.x-progress_mesh_radius,
-                            center.y-progress_mesh_radius,
-                            progress_mesh_radius*2.0f,
-                            progress_mesh_radius*2.0f);
+    active_mesh->initialize(center.x-native_progress_mesh_radius_120_570ad0,
+                            center.y-native_progress_mesh_radius_120_570ad0,
+                            native_progress_mesh_radius_120_570ad0*2.0f,
+                            native_progress_mesh_radius_120_570ad0*2.0f);
 
     const float view_x=static_cast<float>(window_state.mesh_view_x(view_index));
     const float view_y=static_cast<float>(window_state.mesh_view_y(view_index));
@@ -67,23 +68,22 @@ void WeaponStoneInfo::update_progress_mesh() {
             const float right=((native_screen_rect_inner_width_384_56cda4+
                                 native_polygon_radius32)/native_screen_half_2_56c8d0)+
                 static_cast<float>(window_state.mesh_view_x(view_index));
-            const float top=static_cast<float>(window_state.mesh_view_y(view_index))-
-                native_polygon_radius32;
+            const float top=static_cast<float>(window_state.mesh_view_y(view_index)-32);
             const float bottom=native_screen_height_448_56d7c0+native_polygon_radius32+
                 static_cast<float>(window_state.mesh_view_y(view_index));
 
             if (left<=point->x && point->x<=right &&
                 top<=point->y && point->y<=bottom) {
-                if (progress_mesh_radius<distance) {
+                if (native_progress_mesh_radius_120_570ad0<distance) {
                     vertex->channels.alpha=0;
                 } else {
-                    const float normalized_distance=distance/progress_mesh_radius;
+                    const float normalized_distance=distance/native_progress_mesh_radius_120_570ad0;
                     vertex->color=0xffffffffu;
-                    if (progress_mesh_alpha_fade_start<normalized_distance) {
+                    if (native_progress_mesh_alpha_fade_start_08_573160<normalized_distance) {
                         vertex->channels.alpha=static_cast<std::uint8_t>(
                             static_cast<std::int32_t>(native_screen_alpha_max_56cd9c-
-                                ((normalized_distance-progress_mesh_alpha_fade_start)*
-                                 native_screen_alpha_max_56cd9c)/progress_mesh_alpha_fade_span));
+                                ((normalized_distance-native_progress_mesh_alpha_fade_start_08_573160)*
+                                 native_screen_alpha_max_56cd9c)/native_progress_mesh_alpha_fade_span_02_56fbf8));
                     }
 
                     if (timer_44.greater_than(progress_mesh_fade_start_frame)) {
@@ -96,11 +96,11 @@ void WeaponStoneInfo::update_progress_mesh() {
                     wave=(native_pi_56e0f0*native_screen_half_2_56c8d0)*normalized_distance;
                     const std::int32_t current_frame=static_cast<std::int32_t>(timer_44);
                     wave-=((static_cast<float>(current_frame)*native_pi_56e0f0)/
-                           native_screen_half_2_56c8d0)/static_cast<float>(progress_mesh_wave_period);
+                           native_screen_half_2_56c8d0)/static_cast<float>(native_progress_mesh_wave_period_60_56e048);
                     const float displacement_x=scalar_math::sine(static_cast<float>(wave))*
-                        normalized_distance*progress_mesh_wave_amplitude*radial_offset.x;
+                        normalized_distance*native_progress_mesh_wave_amplitude_05_56e0ec*radial_offset.x;
                     const float displacement_y=scalar_math::sine(static_cast<float>(wave))*
-                        normalized_distance*progress_mesh_wave_amplitude*radial_offset.y;
+                        normalized_distance*native_progress_mesh_wave_amplitude_05_56e0ec*radial_offset.y;
                     const Vector3 displacement(displacement_x,displacement_y,0.0f);
                     vertex->position+=displacement;
 
@@ -119,8 +119,7 @@ void WeaponStoneInfo::update_progress_mesh() {
                             static_cast<float>(window_state.mesh_view_x(view_index));
                     }
 
-                    const float displaced_top=static_cast<float>(window_state.mesh_view_y(view_index))-
-                        native_polygon_radius32;
+                    const float displaced_top=static_cast<float>(window_state.mesh_view_y(view_index)-32);
                     if (displaced_top<=vertex->position.y) {
                         const float displaced_bottom=native_screen_height_448_56d7c0+
                             native_polygon_radius32+
@@ -128,8 +127,8 @@ void WeaponStoneInfo::update_progress_mesh() {
                         if (displaced_bottom<vertex->position.y)
                             vertex->position.y=displaced_bottom;
                     } else {
-                        vertex->position.y=static_cast<float>(window_state.mesh_view_y(view_index))-
-                            native_polygon_radius32;
+                        vertex->position.y=static_cast<float>(window_state.mesh_view_y(view_index))+
+                            native_screen_negative_32_576360;
                     }
                     vertex->position.z=0.0f;
                     point->z=0.0f;

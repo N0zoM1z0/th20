@@ -15,3 +15,12 @@ th20::native_progress_script_frames_570780,0x00570780,data
 th20::native_progress_script_frames_57078c,0x0057078C,data
 th20::native_item_progress_thresholds_standard,0x005AFED8,data
 th20::native_item_progress_thresholds_mode4,0x005AFF54,data
+th20::native_polygon_radius32,0x0056CD94,data
+th20::native_screen_alpha_max_56cd9c,0x0056CD9C,data
+th20::native_pi_56e0f0,0x0056E0F0,data
+th20::native_progress_mesh_radius_120_570ad0,0x00570AD0,data
+th20::native_progress_mesh_alpha_fade_start_08_573160,0x00573160,data
+th20::native_progress_mesh_alpha_fade_span_02_56fbf8,0x0056FBF8,data
+th20::native_progress_mesh_wave_amplitude_05_56e0ec,0x0056E0EC,data
+th20::native_progress_mesh_wave_period_60_56e048,0x0056E048,data
+th20::native_screen_negative_32_576360,0x00576360,data

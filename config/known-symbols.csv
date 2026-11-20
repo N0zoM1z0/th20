@@ -1034,3 +1034,12 @@ address,name,module,confidence,evidence
 0x00534390,th20::PlayerRecord::field_a4_value,PlayerRecord,high,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
 0x00533780,th20::WeaponStoneInfo::process_item_drop,WeaponStoneInfo,medium,CORE/RECON-1153; natural C++ reconstruction present; current 395B candidate remains nonexact.
 0x00534D00,th20::WeaponStoneInfo::complete_item_progress,WeaponStoneInfo,high,docs/WEAPON_STONE_ITEM_PROGRESS_EXACT.md
+0x0056CD94,native_polygon_radius32,Screen,medium,Native WeaponStone/mesh vertex culling and displacement use the 32.0f screen margin at this original .rdata address
+0x0056CD9C,native_screen_alpha_max_56cd9c,Screen,medium,Native screen alpha and WeaponStone progress-mesh alpha use the original 255.0f data value
+0x0056E0F0,native_pi_56e0f0,Math,medium,Native WeaponStone phase/progress effect and mesh deformation use the original PI float
+0x00570AD0,native_progress_mesh_radius_120_570ad0,WeaponStone,medium,Native 1780-byte WeaponStone progress-mesh updater uses this original 120.0f radius
+0x00573160,native_progress_mesh_alpha_fade_start_08_573160,WeaponStone,medium,Native 1780-byte WeaponStone progress-mesh updater uses this original 0.8f fade-start threshold
+0x0056FBF8,native_progress_mesh_alpha_fade_span_02_56fbf8,WeaponStone,medium,Native 1780-byte WeaponStone progress-mesh updater uses this original 0.2f fade span
+0x0056E0EC,native_progress_mesh_wave_amplitude_05_56e0ec,WeaponStone,medium,Native 1780-byte WeaponStone progress-mesh updater uses this original 0.5f radial displacement amplitude
+0x0056E048,native_progress_mesh_wave_period_60_56e048,WeaponStone,medium,Native 1780-byte WeaponStone progress-mesh updater uses this original 60.0f wave period
+0x00576360,native_screen_negative_32_576360,Screen,medium,Native WeaponStone progress-mesh displaced-vertex lower clamp adds the original -32.0f viewport offset
