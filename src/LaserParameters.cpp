@@ -20,7 +20,7 @@ LaserType2Parameters::LaserType2Parameters()
       flags{}, sound(0), motion_sound(0), command_index(0), path(nullptr), time(0),
       field_50(0), field_54(0), view_index(0) {}
 LaserType2Parameters::~LaserType2Parameters() = default;
-LaserType3Parameters::LaserType3Parameters()
+LaserType3Parameters::LaserType3Parameters() noexcept
     : angle(0), field_1c(0), field_20(0), field_24(0), handle(0), field_2c(0),
       field_30(0), field_34(0), flags(0), view_index(0) {}
 LaserType3Parameters::~LaserType3Parameters() = default;

@@ -31167,3 +31167,21 @@ relocations = [
   { offset = 0x3E, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
   { offset = 0x4C, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
 ]
+
+# CORE/EXACT-1229: original type-3 LaserBeamInf concrete-family constructor.
+[units.laser_beam_ctor]
+source = "src/LaserBeamConstructor.cpp"
+object = "build/laser-beam-constructor-canonical/LaserBeamConstructor.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserBeamInf::LaserBeamInf()"]
+symbol = "??0LaserBeamInf@th20@@QAE@XZ"
+target_address = 0x004C8390
+size = 122
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Laser@th20@@QAE@XZ", target = 0x004C85B0 },
+  { offset = 0x14, type = "DIR32", symbol = "??_7LaserBeamInf@th20@@6B@", target = 0x00571374 },
+  { offset = 0x22, type = "REL32", symbol = "??0LaserType3Parameters@th20@@QAE@XZ", target = 0x0048B5B0 },
+  { offset = 0x30, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+  { offset = 0x54, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x6C, type = "REL32", symbol = "_memset", target = 0x00544760 },
+]

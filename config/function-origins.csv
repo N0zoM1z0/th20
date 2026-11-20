@@ -3874,7 +3874,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C81F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C82C0,authored,LaserCurve,authored,medium,CORE/EXACT-1222; docs/LASER_CURVE_PATH_STATE_CTOR_EXACT.md; called as a distinct 0x40-byte LaserCurveInf subobject at +0x1330 by the game-authored 159-byte Curve constructor
-0x004C8390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C8390,authored,LaserBeamInf,authored,high,CORE/EXACT-1229; docs/LASER_BEAM_CONSTRUCTOR_EXACT.md; original create_laser type-3 diagnostic string at 0x00571508 names LaserBeamInf; factory 0x004C8020 allocates 0x1D30 and calls this constructor; native vtable 0x00571374 independently confirms the base circle-cancel default
 0x004C8410,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C84B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C85B0,authored,Laser,authored,medium,"CORE/RECON-1225; docs/LASER_BASE_CONSTRUCTOR_RECONSTRUCTION.md; native family factories call this shared game object constructor before installing Line/Beam/Infinite family vtables; it initializes game-specific timer, motion, command and Context state"

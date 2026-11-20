@@ -62,7 +62,7 @@ struct LaserType3Parameters {
     std::uint32_t field_34, flags;
     std::pmr::vector<BulletCommand> commands;
     std::int32_t view_index;
-    LaserType3Parameters();
+    LaserType3Parameters() noexcept;
     ~LaserType3Parameters();
 };
 

@@ -1055,3 +1055,4 @@ address,name,module,confidence,evidence
 0x004C9210,th20::Laser::scalar_deleting_destructor,Laser,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native scalar deleting wrapper and 0x6F8 allocation size
 0x004C8880,th20::LaserInfiniteInf::LaserInfiniteInf(),LaserInfiniteInf,high,"CORE/EXACT-1227; docs/LASER_INFINITE_CONSTRUCTOR_EXACT.md; native family vtable, factory size and all four member-construction relocations"
 0x004C88E0,th20::LaserLineInf::LaserLineInf(),LaserLineInf,high,"CORE/EXACT-1228; docs/LASER_LINE_CONSTRUCTOR_EXACT.md; original diagnostic name, 0x18F8 factory allocation and native vtable 0x00571148"
+0x004C8390,th20::LaserBeamInf::LaserBeamInf(),LaserBeamInf,high,"CORE/EXACT-1229; docs/LASER_BEAM_CONSTRUCTOR_EXACT.md; source diagnostic, 0x1D30 native factory allocation and vtable 0x00571374"
