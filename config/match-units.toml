@@ -31047,3 +31047,28 @@ relocations = [
   { offset = 0x182, type = "REL32", symbol = "?set_field_4c@PlayerRecord@th20@@QAEXH@Z", target = 0x004BE940 },
   { offset = 0x18A, type = "REL32", symbol = "?complete_item_progress@WeaponStoneInfo@th20@@QAEXXZ", target = 0x00534D00 },
 ]
+
+
+# CORE/EXACT-1218: complete LaserController radial cancellation loop.
+[units.laser_cancel_near]
+source = "src/LaserCancelNear.cpp"
+object = "build/core1218-canonical/LaserCancelNear.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserController::cancel_near"]
+symbol = "?cancel_near@LaserController@th20@@QAEHABUVector3@2@MHH@Z"
+target_address = 0x004CAAD0
+size = 288
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?cancel_near@LaserController@th20@@QAEHABUVector3@2@MHH@Z", target = 0x005685FD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x5A, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x66, type = "REL32", symbol = "?begin@?$IntrusiveList@VLaser@th20@@@th20@@QAE?AV?$IntrusiveIterator@VLaser@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x75, type = "REL32", symbol = "?end@?$IntrusiveList@VLaser@th20@@@th20@@QAEPAV?$IntrusiveIterator@VLaser@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x82, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x8F, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VLaser@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x9E, type = "REL32", symbol = "?get@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEPAV?$IntrusiveLink@VLaser@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0xA9, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VLaser@th20@@@th20@@QAEAAPAVLaser@2@XZ", target = 0x0040F160 },
+  { offset = 0xB9, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VLaser@th20@@@th20@@QAEAAPAVLaser@2@XZ", target = 0x0040F160 },
+  { offset = 0xFD, type = "REL32", symbol = "??1?$IntrusiveIterator@VLaser@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0x116, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

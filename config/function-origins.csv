@@ -3915,7 +3915,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004CA380,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CA830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CAAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004CAAD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004CAAD0,authored,LaserController,authored,medium,CORE/EXACT-1218; docs/LASER_CONTROLLER_CANCEL_NEAR_EXACT.md
 0x004CABF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CB060,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004CB500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

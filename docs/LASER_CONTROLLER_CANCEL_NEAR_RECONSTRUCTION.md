@@ -11,7 +11,9 @@ other state dispatches the real virtual slot `+0x30`,
 returned cancellation counts and returns the aggregate. This is the exact
 path used by WeaponStone's 24/128-radius phase cancellation.
 
-The natural `/Od /Ob0 /GS /sdl` i386 COFF contribution is 281 bytes versus the
-288-byte native body. It is tracked as `reconstructed`, not `matching`. No
-assembly, synthetic padding, no-op statements, or original-origin claim is
-used to close the seven-byte difference.
+The natural `/Od /Ob0 /GS /sdl` i386 COFF contribution is now 288 bytes and
+matches the complete native body. The source preserves counter-before-center
+initialization, repeated `node_access()` calls and the positive `state != 1`
+branch. All 240 non-relocation bytes and all 12 native relocation targets
+match; see [the exact replay receipt](LASER_CONTROLLER_CANCEL_NEAR_EXACT.md).
+The method's original authored/source origin remains unknown.
