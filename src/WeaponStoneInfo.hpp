@@ -50,6 +50,9 @@ public:
     WeaponStoneInfo();
     void record_damage(const Vector3*,std::int32_t,std::int32_t);
     void process_item_drop(std::int32_t amount);
+    void complete_item_progress();
+    void initialize_progress_effect();
+    void update_progress_mesh();
     ~WeaponStoneInfo() override;
     void enable() override;
     void disable() override;

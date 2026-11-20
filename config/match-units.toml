@@ -30993,3 +30993,25 @@ target_address = 0x00534390
 size = 21
 relocations = [
 ]
+
+[units.weapon_stone_complete_item_progress]
+source = "src/WeaponStoneCompleteItemProgress.cpp"
+object = "build/weapon-stone-complete-item-progress/WeaponStoneCompleteItemProgress.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::WeaponStoneInfo::complete_item_progress"]
+symbol = "?complete_item_progress@WeaponStoneInfo@th20@@QAEXXZ"
+target_address = 0x00534D00
+size = 201
+relocations = [
+  { offset = 0x0C, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0x16, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x27, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x2C, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 0x00426EB0 },
+  { offset = 0x34, type = "REL32", symbol = "?initialize_progress_effect@WeaponStoneInfo@th20@@QAEXXZ", target = 0x005348D0 },
+  { offset = 0x48, type = "REL32", symbol = "??9AnimationHandle@th20@@QBE_NI@Z", target = 0x0047C650 },
+  { offset = 0x5A, type = "REL32", symbol = "?cancel_animation_handle@th20@@YIXABUAnimationHandle@1@@Z", target = 0x00479040 },
+  { offset = 0x6B, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0x75, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x90, type = "DIR32", symbol = "$SG174220", target = 0x005762C4 },
+  { offset = 0x9C, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z", target = 0x004790E0 },
+]

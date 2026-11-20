@@ -5620,7 +5620,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x005348B0,22,0x005348C5,FUN_005348b0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005348D0,467,0x00534AA2,FUN_005348d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00534AB0,581,0x00534CF4,FUN_00534ab0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00534D00,201,0x00534DC8,FUN_00534d00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00534D00,201,0x00534DC8,FUN_00534d00,th20::WeaponStoneInfo::complete_item_progress,WeaponStoneInfo,matching,100.00,__thiscall,?complete_item_progress@WeaponStoneInfo@th20@@QAEXXZ,false,src/WeaponStoneCompleteItemProgress.cpp,docs/WEAPON_STONE_ITEM_PROGRESS_EXACT.md,authored,Complete 201-byte phase transition through the native RET. All nine direct call relocations and two PE HIGHLOW fields replay exact.
 0x00534DD0,82,0x00534E21,FUN_00534dd0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00534E30,20,0x00534E43,FUN_00534e30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00534E50,135,0x00534ED6,FUN_00534e50,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

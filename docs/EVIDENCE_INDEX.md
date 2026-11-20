@@ -21,6 +21,7 @@ At the 2026-11-11 checkpoint the authoritative ledgers record
 **775 game-authored exact heads /265,737 original code bytes**.
 Recheck the live CSV/TOML before relying on these dated counts.
 
+- **201B WeaponStoneInfo item-progress transition:** [whole strict exact](WEAPON_STONE_ITEM_PROGRESS_EXACT.md).
 - **157B game file-existence wrapper:** [whole strict exact](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md).
   The original receives a narrow `const char*` and constructs a local
   standard filesystem path; the former 155B path-copy source hypothesis

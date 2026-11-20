@@ -898,3 +898,4 @@ address,name,size,status,match_percent,unit,evidence
 0x0051B920,th20::PlayerRecord::clamped_field_50,64,matching,100.00,player_record_clamped_field_50,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
 0x00533920,th20::PlayerRecord::add_field_4c_clamped,75,matching,100.00,player_record_add_field_4c_clamped,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
 0x00534390,th20::PlayerRecord::field_a4_value,21,matching,100.00,player_record_field_a4_value,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
+0x00534D00,th20::WeaponStoneInfo::complete_item_progress,201,matching,100.00,weapon_stone_complete_item_progress,docs/WEAPON_STONE_ITEM_PROGRESS_EXACT.md

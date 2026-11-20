@@ -19,5 +19,5 @@ the passive weapon at the +0x4C progression interval, increments and clamps
 the PlayerRecord stone counter, and dispatches the phase-complete transition.
 Its current strict-profile candidate is 395 bytes against the 406-byte native
 body, so it is deliberately tracked as reconstructed/nonexact with no original
-byte credit. The phase-complete 201-byte WeaponStoneInfo boundary at 0x00534D00
-is the next dependency to restore.
+byte credit. The separate 201-byte phase transition at 0x00534D00 now has
+[whole-function exact evidence](WEAPON_STONE_ITEM_PROGRESS_EXACT.md).

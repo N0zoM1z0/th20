@@ -1731,3 +1731,4 @@ th20::PlayerRecord::clamped_field_50
 th20::PlayerRecord::add_field_4c_clamped
 th20::PlayerRecord::field_a4_value
 th20::WeaponStoneInfo::process_item_drop
+th20::WeaponStoneInfo::complete_item_progress

@@ -1033,3 +1033,4 @@ address,name,module,confidence,evidence
 0x00533920,th20::PlayerRecord::add_field_4c_clamped,PlayerRecord,high,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
 0x00534390,th20::PlayerRecord::field_a4_value,PlayerRecord,high,CORE/RECON-1153; docs/PLAYER_RECORD_STONE_PROGRESS_EXACT.md
 0x00533780,th20::WeaponStoneInfo::process_item_drop,WeaponStoneInfo,medium,CORE/RECON-1153; natural C++ reconstruction present; current 395B candidate remains nonexact.
+0x00534D00,th20::WeaponStoneInfo::complete_item_progress,WeaponStoneInfo,high,docs/WEAPON_STONE_ITEM_PROGRESS_EXACT.md

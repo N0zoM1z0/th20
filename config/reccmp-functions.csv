@@ -1746,3 +1746,4 @@ th20::PlayerRecord::clamped_field_50,0x0051B920,function
 th20::PlayerRecord::add_field_4c_clamped,0x00533920,function
 th20::PlayerRecord::field_a4_value,0x00534390,function
 th20::WeaponStoneInfo::process_item_drop,0x00533780,function
+th20::WeaponStoneInfo::complete_item_progress,0x00534D00,function
