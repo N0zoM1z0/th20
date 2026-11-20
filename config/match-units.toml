@@ -29869,3 +29869,14 @@ symbol = "?arccosine@scalar_math@th20@@YAMM@Z"
 target_address = 0x00439790
 size = 35
 relocations = [{ offset = 0x12, type = "REL32", symbol = "_acos", target = 0x0054FF00 }]
+
+# CORE/RECON-1120: whole original Card timer 60-frame threshold; one real E8.
+[units.card_capture_timeout_35]
+source = "src/CardCaptureTimeout35.cpp"
+object = "build/gptweb-card-capture/timeout35.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardCaptureTimeoutView::elapsed_4887d0"]
+symbol = "?elapsed_4887d0@NativeCardCaptureTimeoutView@th20@@QBEHXZ"
+target_address = 0x004887D0
+size = 35
+relocations = [{ offset = 0x18, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 }]
