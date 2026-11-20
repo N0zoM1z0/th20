@@ -51,7 +51,7 @@ struct LaserType2Parameters {
     float time;
     std::uint32_t field_50, field_54;
     std::int32_t view_index;
-    LaserType2Parameters();
+    LaserType2Parameters() noexcept;
     ~LaserType2Parameters();
 };
 struct LaserType3Parameters {

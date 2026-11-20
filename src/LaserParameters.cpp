@@ -15,7 +15,7 @@ LaserType1Parameters::LaserType1Parameters() noexcept
       sound(0), field_44(0), handle(0), radial_offset(0), command_index(0),
       type(0), color(0), flags(0), view_index(0) {}
 LaserType1Parameters::~LaserType1Parameters() = default;
-LaserType2Parameters::LaserType2Parameters()
+LaserType2Parameters::LaserType2Parameters() noexcept
     : angle(0), width(0), speed(0), type(0), color(0), count(0), radial_offset(0),
       flags{}, sound(0), motion_sound(0), command_index(0), path(nullptr), time(0),
       field_50(0), field_54(0), view_index(0) {}

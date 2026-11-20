@@ -912,3 +912,4 @@ address,name,size,status,match_percent,unit,evidence
 0x004C8880,th20::LaserInfiniteInf::LaserInfiniteInf(),87,matching,100.00,laser_infinite_ctor,CORE/EXACT-1227; docs/LASER_INFINITE_CONSTRUCTOR_EXACT.md; complete 87-byte constructor and five original relocations strictly replay
 0x004C88E0,th20::LaserLineInf::LaserLineInf(),88,matching,100.00,laser_line_ctor,CORE/EXACT-1228; docs/LASER_LINE_CONSTRUCTOR_EXACT.md; complete 88-byte constructor and six original relocations strictly replay
 0x004C8390,th20::LaserBeamInf::LaserBeamInf(),122,matching,100.00,laser_beam_ctor,CORE/EXACT-1229; docs/LASER_BEAM_CONSTRUCTOR_EXACT.md; complete 122-byte constructor and six original relocations strictly replay
+0x004C8410,th20::LaserCurveInf::LaserCurveInf(),159,matching,100.00,laser_curve_ctor,CORE/EXACT-1230; docs/LASER_CURVE_CONSTRUCTOR_EXACT.md; complete 159-byte constructor and seven original relocations strictly replay

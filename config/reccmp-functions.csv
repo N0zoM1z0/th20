@@ -1770,3 +1770,4 @@ th20::Laser::scalar_deleting_destructor,0x004C9210,function
 th20::LaserInfiniteInf::LaserInfiniteInf(),0x004C8880,function
 th20::LaserLineInf::LaserLineInf(),0x004C88E0,function
 th20::LaserBeamInf::LaserBeamInf(),0x004C8390,function
+th20::LaserCurveInf::LaserCurveInf(),0x004C8410,function

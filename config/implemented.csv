@@ -1755,3 +1755,4 @@ th20::Laser::scalar_deleting_destructor
 th20::LaserInfiniteInf::LaserInfiniteInf()
 th20::LaserLineInf::LaserLineInf()
 th20::LaserBeamInf::LaserBeamInf()
+th20::LaserCurveInf::LaserCurveInf()

@@ -40,13 +40,15 @@ static_assert(offsetof(LaserCurvePathPoint,position)==0);
 // member at +0x1328, advanced in 0x20-byte records by cancel_circle().
 class LaserCurveInf : public Laser {
 public:
+    LaserCurveInf() noexcept;
     std::int32_t cancel_circle(const Vector3& center, float radius,
                                std::int32_t mode, std::int32_t argument) override;
 
     LaserType2Parameters parameters;
     Animation animation_0;
     Animation animation_1;
-    std::uint32_t field_131c, field_1320, field_1324;
+    float field_131c;
+    std::uint32_t field_1320, field_1324;
     LaserCurvePathPoint* point_data;
     std::uint32_t field_132c;
     LaserCurvePathState path_state;
@@ -57,7 +59,11 @@ static_assert(sizeof(LaserCurveInf)==0x1370);
 static_assert(offsetof(LaserCurveInf,parameters)==0x6f8);
 static_assert(offsetof(LaserCurveInf,animation_0)==0x754);
 static_assert(offsetof(LaserCurveInf,animation_1)==0xd38);
+static_assert(offsetof(LaserCurveInf,field_131c)==0x131c);
+static_assert(offsetof(LaserCurveInf,field_1320)==0x1320);
+static_assert(offsetof(LaserCurveInf,field_1324)==0x1324);
 static_assert(offsetof(LaserCurveInf,point_data)==0x1328);
+static_assert(offsetof(LaserCurveInf,field_132c)==0x132c);
 static_assert(offsetof(LaserCurveInf,path_state)==0x1330);
 #endif
 

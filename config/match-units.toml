@@ -31185,3 +31185,22 @@ relocations = [
   { offset = 0x54, type = "REL32", symbol = "_memset", target = 0x00544760 },
   { offset = 0x6C, type = "REL32", symbol = "_memset", target = 0x00544760 },
 ]
+
+# CORE/EXACT-1230: original type-2 LaserCurveInf constructor and path-state subobject.
+[units.laser_curve_ctor]
+source = "src/LaserCurveConstructor.cpp"
+object = "build/laser-curve-constructor-canonical/LaserCurveConstructor.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::LaserCurveInf::LaserCurveInf()"]
+symbol = "??0LaserCurveInf@th20@@QAE@XZ"
+target_address = 0x004C8410
+size = 159
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0Laser@th20@@QAE@XZ", target = 0x004C85B0 },
+  { offset = 0x14, type = "DIR32", symbol = "??_7LaserCurveInf@th20@@6B@", target = 0x00571214 },
+  { offset = 0x22, type = "REL32", symbol = "??0LaserType2Parameters@th20@@QAE@XZ", target = 0x0048B650 },
+  { offset = 0x30, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+  { offset = 0x3E, type = "REL32", symbol = "??0Animation@th20@@QAE@XZ", target = 0x00448B40 },
+  { offset = 0x49, type = "DIR32", symbol = "__real@3f8ccccd", target = 0x0056F798 },
+  { offset = 0x93, type = "REL32", symbol = "??0LaserCurvePathState@th20@@QAE@XZ", target = 0x004C82C0 },
+]
