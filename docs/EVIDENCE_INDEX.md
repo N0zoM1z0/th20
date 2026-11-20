@@ -62,9 +62,10 @@ Recheck the live CSV/TOML before relying on these dated counts.
   [maintained whole-function C++ and real resource owner source frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md)
   now connects the strict 26B Session/EffectInfo selector, 38B file lookup,
   83B spawn and 25B/19B accessors across all 99 original call roles.
-  This **large game Boss remains NONEXACT** at **2,924B/760 i386**
-  after [native ESI/polar lifetime convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md):
-  original 99 E8/25 HIGHLOW roles preserved, six original call sites aligned.
+  This **large game Boss remains NONEXACT** at **2,876B/760 i386**
+  after [native ESI/polar/shared-child lifetime convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md):
+  original 99 E8/25 HIGHLOW roles preserved, native 0x19C frame matched,
+  eight original call sites aligned and total E8 displacement reduced to 1,463.
 - **Original input:** [3,490B InputDevice polling native exact](INPUT_DEVICE_POLL_3490_EXACT_RECONSTRUCTION.md)
   includes keyboard, DirectInput, XInput and input-history update,
   preserving the full original native `input_device_poll` source. Older

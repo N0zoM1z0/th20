@@ -1,7 +1,9 @@
 // Original 2,884B particle-grid virtual Update at 0x0045C360.
 // Full game-owned C++ logic, SOURCE-PRESENT NONEXACT. The original has
 // 768 i386 instructions, 99 E8 calls and 25 PE HIGHLOW fields; current
-// pinned-MSVC 2924B/760-instruction body preserves 99 REL32/25 DIR32.
+// pinned-MSVC 2876B/760-instruction body preserves 99 REL32/25 DIR32.
+// Four emitter child updates and the 200-slot loop reuse one Animation*
+// local, matching the original [EBP-0x54] pointer lifetime.
 // The native early ESI lifetime is recovered by comparing the actual child age
 // directly against the owner's variable, without an unnecessary saved int.
 // The emission slot is assigned by the Timer before its first use; the two
@@ -9,8 +11,8 @@
 // Session -> Context -> EffectInfo -> AnimationFile -> spawn is the actual
 // resource chain, with the original four independently observed calls.
 // The native loop stage words are int32_t at +0x15E8; the 200 handles
-// and stage values use their real C++ array owners. The remaining frame,
-// x87/SSE argument lifetimes and some source/ABI details are not exact.
+// and stage values use their real C++ array owners. The 0x19C stack frame
+// now matches; x87/SSE argument lifetimes and some source/ABI details remain.
 #include "NativeParticleGridGroup.hpp"
 #include "NativeAnimationInterpolationConfig.hpp"
 #include "Animation.hpp"
@@ -35,6 +37,7 @@ int NativeParticleGridGroup::update() {
     int emission_index;
     int effect_index=0;
     Animation* const owner=animation;
+    Animation* child;
     Vector3 center=owner->vector_5bc_ref();
     extra_1920=center;
     extra_1914=center;
@@ -82,21 +85,21 @@ int NativeParticleGridGroup::update() {
             union { std::uint32_t word; AnimationColorChannels channels; } initial_color;
             initial_color.word = reinterpret_cast<NativeParticleAnimationAccess*>(owner)->color_ref_45d0e0();
             {
-                Animation* child=colors_08[emission_index+0].resolve();
+                child=colors_08[emission_index+0].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().particle_grid_count=owner->variables().particle_grid_count;
                 }
             }
             {
-                Animation* child=colors_08[emission_index+1].resolve();
+                child=colors_08[emission_index+1].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().particle_grid_count=owner->variables().particle_grid_count;
                 }
             }
             {
-                Animation* child=colors_08[emission_index+2].resolve();
+                child=colors_08[emission_index+2].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().particle_grid_count=owner->variables().particle_grid_count;
@@ -108,7 +111,7 @@ int NativeParticleGridGroup::update() {
             initial_color.channels.green = static_cast<std::uint8_t>(300 - initial_color.channels.green);
             initial_color.channels.blue = static_cast<std::uint8_t>(300 - initial_color.channels.blue);
             {
-                Animation* child=colors_08[emission_index+3].resolve();
+                child=colors_08[emission_index+3].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
                     child->variables().particle_grid_count=owner->variables().particle_grid_count;
@@ -117,7 +120,7 @@ int NativeParticleGridGroup::update() {
         }
     }
     for (int index=0;index<200;++index) {
-        Animation* child=colors_08[index].resolve();
+        child=colors_08[index].resolve();
         if (!child) continue;
         child->set_slowdown(owner->slowdown());
         if (stages_15e8[index]==0) {

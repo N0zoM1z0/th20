@@ -1,4 +1,4 @@
-# CORE/RECON-1111 — 2,884B particle Update: real ESI/age and polar lifetime convergence
+# CORE/RECON-1111 — 2,884B particle Update: ESI/age, polar and shared-child lifetime convergence
 
 The genuine TH20 Japanese Steamless v1.00a particle-grid virtual Update is
 at **`0x0045C360`**, exactly **2,884B/768 i386**. It is SHA-pinned in
@@ -7,9 +7,11 @@ together with its six-slot native vtable, all 99 physical E8 site/target
 pairs, 25 actual PE HIGHLOW fields and 12 trailing `INT3` bytes. The
 full maintained C++ source is
 [`AnimationParticleGridUpdate2884.cpp`](../src/AnimationParticleGridUpdate2884.cpp).
-**This parent remains SOURCE-PRESENT, NONEXACT**.
+The current source compiles to **2,876B/760 i386** after the 2026-11-20
+shared-child lifetime recovery; **this parent remains SOURCE-PRESENT,
+NONEXACT**.
 
-## Three actual original source/ABI corrections
+## Four actual original source/ABI corrections
 
 These are used-source changes, not artificial padding or dead variables:
 
@@ -47,6 +49,17 @@ These are used-source changes, not artificial padding or dead variables:
    separate radius temporaries, or evaluating variables before the
    rotation yielded worse code or the wrong native call order.
 
+4. **Shared child-pointer lifetime:** The four emitter color/variable
+   propagation blocks and the later 200-slot update loop reuse the same
+   native local pointer slot, `[EBP-0x54]`. The original writes a resolved
+   child into that slot at `0x45C73F`, `0x45C79C`, `0x45C7F9`,
+   `0x45C880`, and `0x45C8F9`, then reads that same slot for child methods
+   and later interpolation calls. The maintained C++ now declares one
+   `Animation* child` and assigns it at each resolve site rather than
+   declaring five block-local pointers. Each assignment dominates every
+   use in its branch/iteration, preserving behavior while matching the
+   native lifetime and reducing needless `/Od` stack slots.
+
 ## Complete bounded build and measurable distance
 
 The genuine locked MSVC 19.44 i386 profile is
@@ -59,26 +72,34 @@ integer-stage transitions. These are compared against independently
 locked original destinations; they are **not** inferred from matching
 candidate relocation counts.
 
-| Measured property | Previous maintained source | This checkpoint | Original native |
-| --- | ---: | ---: | ---: |
-| Whole compiler code bytes | 2,969 | **2,924** | 2,884 |
-| Whole i386 instructions | 763 | **760** | 768 |
-| E8 / COFF REL32 calls | 99 | **99** | 99 |
-| PE HIGHLOW / COFF DIR32 | 25 | **25** | 25 |
-| E8 opcode offsets exactly aligned | 0 /99 | **6 /99** | 99 /99 |
-| Sum of absolute differences between corresponding E8 offsets | 7,558 | **3,639** | 0 |
-| First 20 E8 offset absolute-difference sum | 659 | **119** | 0 |
-| Original ESI push/age-across-call lifetime | No | **Yes** | Yes |
+| Measured property | 2,969B source | 2,924B checkpoint | Current checkpoint | Original native |
+| --- | ---: | ---: | ---: | ---: |
+| Whole compiler code bytes | 2,969 | 2,924 | **2,876** | 2,884 |
+| Whole i386 instructions | 763 | 760 | **760** | 768 |
+| E8 / COFF REL32 calls | 99 | 99 | **99** | 99 |
+| PE HIGHLOW / COFF DIR32 | 25 | 25 | **25** | 25 |
+| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | **8 /99** | 99 /99 |
+| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | **1,463** | 0 |
+| First 20 E8 offset absolute-difference sum | 659 | 119 | **92** | 0 |
+| Local stack frame | — | 0x1AC | **0x19C** | 0x19C |
+| Original ESI push/age-across-call lifetime | No | Yes | **Yes** | Yes |
 
 The previous 2,969B candidate source is retained as
 `.analysis/gptweb-particle-owner-probes/EffectChainSpawnSlot.cpp`; its
-noncanonical compiled object was removed during storage cleanup.
-Rebuild it with `scripts/compile-probe.py` if needed. The current
-2,924B candidate is reproducible from the maintained single-source probe. Size converged **45B** toward the real game function, and the
-native early original E8 instruction sites now align where they
-previously did not. The 2,924B candidate's original-code difference
-remains **40B and eight i386 instructions**. These bytes are *not*
-accepted as original code; code length alone has no matching credit.
+noncanonical compiled object was removed during storage cleanup. Rebuild it
+with `scripts/compile-probe.py` if needed. The current 2,876B candidate is
+reproducible from the maintained single-source probe. The shared
+child-pointer lifetime removes **48B** from the 2,924B checkpoint, brings
+the local stack frame to the native **0x19C**, raises physical E8-site
+alignment from six to eight, and cuts total E8 displacement from 3,639 to
+**1,463** (first 20 sites: 92). The candidate is now **8B smaller and eight
+instructions shorter** than the original; these bytes are *not* accepted as
+original code, and code length alone has no matching credit. A more
+aggressive const-reference center probe compiled to 2,856B/758, but was
+rejected: the native explicitly materializes a 12-byte Vector3 snapshot
+before copying it to the three group fields, so the maintained source keeps
+the value copy and changes only the independently evidenced child-pointer
+lifetime.
 
 ## New independent original-role checker
 
@@ -97,17 +118,19 @@ fake relocation, or grants a strict match.
 
 This role checker now runs automatically after the existing
 [`probe-animation-particle-grid-update2884.py`](../scripts/probe-animation-particle-grid-update2884.py)
-compiles the *one* real maintained function:
+compiles the *one* real maintained function. The 2026-11-20 source now
+reports 2,876B/760 i386, 8/99 physical E8 sites aligned, and an exact
+0x19C local frame while preserving every original call/data role:
 
 ```sh
 nice -n 15 scripts/repo-python scripts/probe-animation-particle-grid-update2884.py
 ```
 
 The original `0x0045C360` **2,884B/768-i386** remains NONEXACT;
-there is **no new match-unit or game-authored byte credit**. Remaining
-original-native differences are mainly the 0x19C aligned local stack
-frame (candidate still larger), early float-argument push/spill order,
-and per-loop pointer/register lifetime. The strict **26B EffectInfo**,
+there is **no new match-unit or game-authored byte credit**. The candidate's
+0x19C local frame now matches the original; remaining differences are the
+early float-argument push/spill order, Vector3 local-slot placement, and
+some per-loop register lifetimes. The strict **26B EffectInfo**,
 **51B Event**, **92B Stop** and associated already exact descendants
 are separate functions and were not modified; no all-project cold replay
 was performed.

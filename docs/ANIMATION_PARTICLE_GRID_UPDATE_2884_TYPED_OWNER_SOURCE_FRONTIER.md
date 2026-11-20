@@ -1,5 +1,7 @@
 # CORE/RECON-1107 — source-present 2,884B particle-grid Update with real effect resource ownership
 
+> **Current status (2026-11-20):** The 2,924B compiler measurement below is a historical checkpoint. The maintained source now reuses one `Animation* child` local across the four emitter branches and the 200-slot loop; the current candidate is **2,876B/760 i386**, matches the native **0x19C** stack-frame size, aligns **8/99** E8 sites, and preserves all 99 call/25 data roles. It remains **SOURCE-PRESENT, NONEXACT**. See the [latest shared-child convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+
 This checkpoint promotes the full game-authored 200-particle virtual Update
 at **`0x0045C360..0x0045CEA3`** into maintained
 [`src/AnimationParticleGridUpdate2884.cpp`](../src/AnimationParticleGridUpdate2884.cpp).

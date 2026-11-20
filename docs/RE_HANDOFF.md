@@ -146,10 +146,11 @@ checks used by the replay.
    [Latest proof](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
 2. **2,884B particle-grid Update** `0x0045C360` — source
    [`AnimationParticleGridUpdate2884.cpp`](../src/AnimationParticleGridUpdate2884.cpp),
-   **NONEXACT**: candidate 2,924B/760 i386 versus original 2,884B/768.
-   All 99 E8 and 25 HIGHLOW *roles* remain correct; native ESI/age lifetime
-   was recovered, with six E8 physical sites aligned. Next: polar/x87
-   argument spills, 0x19C native frame and loop register lifetime.
+   **NONEXACT**: candidate 2,876B/760 i386 versus original 2,884B/768.
+   All 99 E8 and 25 HIGHLOW roles remain correct; native ESI/age lifetime
+   and the 0x19C stack frame now match, with eight E8 sites aligned and
+   total E8 offset delta 1,463 (first 20: 92). Next: polar/x87 argument
+   spills and remaining loop register lifetime.
    [Current experiment](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
 3. **Near-exact leaves:** 336B ANM group parser `0x0044EBF0` is
    278/280 ordinary bytes (two stack slot operands), while its 1,022B
@@ -235,6 +236,25 @@ canonical object and receipt paths from the match manifest, and useful private
 evidence for open functions are protected. Re-run the relevant probe to
 recreate a removed temporary object. The [evidence index](EVIDENCE_INDEX.md)
 links dated investigations.
+
+## 2026-11-20 session — particle-grid shared child-pointer lifetime
+
+- Native disassembly confirms the four emitter child updates and the 200-slot
+  loop reuse the same `[EBP-0x54]` Animation pointer slot. The maintained
+  source now declares one `Animation* child` and assigns it before each
+  branch/iteration use, replacing five separately scoped pointer locals.
+- The bounded single-function probe now compiles **2,876B/760 i386** versus
+  the original **2,884B/768**. The candidate's local stack frame is now
+  **0x19C**, matching the native frame; physical E8-site alignment rises
+  from 6/99 to **8/99**, total corresponding E8 displacement falls from
+  3,639 to **1,463**, and the first 20 sites fall from 119 to **92**.
+- All **99/99** native call targets and **25/25** data target roles remain
+  correct. The parent remains SOURCE-PRESENT NONEXACT, with no match-unit or
+  authored-byte credit. A const-reference Vector3 experiment was rejected
+  because native code materializes a real 12-byte value snapshot.
+- Only the particle-grid source probe and its original-role verifier ran;
+  no full cold replay. Next frontier: early polar x87/SSE argument spills and
+  remaining loop register lifetimes.
 
 ## 2026-11-19 session — contextual ANM count views
 
