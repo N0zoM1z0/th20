@@ -177,7 +177,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1060 — exact 56B native glyph text queue bridge with borrowed std::function](GLYPH_TEXT_QUEUE_SUBMIT56_STRICT_EXACT.md) — real 2,227B caller, original `_Unfancy` and 151B append E8, whole 56/56, +56 game-authored bytes; 2,227B parent 2,072B source NONEXACT.
 
-- [CORE/RECON-1061 — original 151B PMR glyph list insertion and five 59/124/34/19/48B exact methods](GLYPH_QUEUE_LIST_59_124_34_19_48_STRICT_EXACT.md) — original 56B queue caller and eight native E8/two HIGHLOW, C++20 `_Emplace` 130B/44 NONEXACT, five original standard helpers 284B whole exact and zero game-authored credit.
+- [CORE/RECON-1061 — original 151B PMR glyph list insertion and five 59/125/34/19/48B exact methods](GLYPH_QUEUE_LIST_59_124_34_19_48_STRICT_EXACT.md) — original 56B queue caller and eight native E8/two HIGHLOW, C++20 `_Emplace` 130B/44 NONEXACT, five original standard helpers 284B whole exact and zero game-authored credit.
 
 - [CORE/RECON-1062 — original 23B glyph render job destructor whole exact](GLYPH_TEXT_JOB_DTOR23_STRICT_EXACT.md) — actual 2,227B parent E8, 40B std::function at capture+0x30 and native exact 20B library destructor, 2/2 scoped glyph job units, +23 authored-game bytes.
 
@@ -270,7 +270,8 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   but no exact credit from normalized bytes;
   [original 40B/42B helper and already-exact 63B/61B leaf audit](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md).
 - **12,140B Bullet extended command — SOURCE-PRESENT, PARTIAL, NONEXACT:**
-  [first natural-C++ dispatcher frontier: 24/34 primary entries represented](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md),
+  [first natural-C++ dispatcher frontier: 25/34 primary entries represented](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md),
+  [command-9 BulletStyle/Animation/Enemy-file branch and 14 original E8 sites](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md),
   [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md),
   and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **41,967B Enemy ECL — SOURCE-ABSENT:**

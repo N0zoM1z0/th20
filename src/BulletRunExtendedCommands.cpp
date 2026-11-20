@@ -4,6 +4,9 @@
 // restored. Unsupported native opcodes deliberately remain pending rather
 // than being silently consumed as no-ops.
 #include "Animation.hpp"
+#include "AnimationFile.hpp"
+#include "AnimationCallback.hpp"
+#include "EnemyController.hpp"
 #include "Bullet.hpp"
 #include "BulletAimSelector.hpp"
 #include "BulletStyle.hpp"
@@ -21,6 +24,9 @@ extern const float native_selector_min;
 extern const float native_selector_player_hi;
 extern const float native_selector_wobble_lo;
 extern GameRandom script_random;
+extern const Vector3 native_zero_position;
+extern std::int32_t bullet_cancel_scripts_by_color[8];
+void __fastcall interrupt_animation_mode2(Animation* animation);
 void Bullet::run_extended_commands() {
     for (;;) {
         if (field_38 >= 24)
@@ -159,16 +165,150 @@ void Bullet::run_extended_commands() {
             field_18 = static_cast<std::int32_t>(command.operand_10_word);
             break;
         case 8:
-        case 9:
+            command_flags.words.low |= 0x100;
+            commands.at(11).timer =
+                static_cast<std::int32_t>(command.operand_10_real);
+            commands.at(11).word_30 = command.operand_14_word;
+            ++field_38;
+            continue;
+        case 9: {
+            if ((command.operand_10_word & 0x8000u) == 0) {
+                field_4c = static_cast<std::int16_t>(command.operand_10_word);
+                field_4e = static_cast<std::int16_t>(command.operand_14_word & 0x7fffu);
+                const std::int32_t type = static_cast<std::int32_t>(command.operand_10_word);
+                const std::int32_t color = field_4e;
+                const float radius = bullet_radius(type);
+                size.y = radius;
+                size.x = radius;
+                draw_group = bullet_styles[field_4c].draw_group;
+
+                animation->reset();
+                animation->set_field_5e0(bullet_animation_script);
+                animation->user_data = this;
+                context->bullet_controller()->file->load_script(
+                    animation, type_to_script(type));
+                flags.bits |= 0x10;
+                animation->base.flags.bits_0b.viewport_placement_mode = 1;
+                animation_handle.retire();
+                const std::uint32_t child_script = bullet_styles[field_4c].child_script;
+                if (child_script != 0) {
+                    animation_handle = context->bullet_controller()->file->spawn(
+                        nullptr, static_cast<std::int32_t>(child_script), position,
+                        0.0f, -1, nullptr);
+                }
+
+                switch (bullet_styles[field_4c].cancel_type) {
+                case 0:
+                    cancel_script = static_cast<std::int32_t>(field_4e) * 2 + 6;
+                    break;
+                case 1:
+                    cancel_script = color < 8 ? bullet_cancel_scripts_by_color[color] : 0;
+                    break;
+                case 2:
+                    cancel_script = -1;
+                    flags.bits |= 0x10;
+                    break;
+                case 3:
+                    cancel_script = 0x12;
+                    break;
+                case 4:
+                    cancel_script = 8;
+                    break;
+                case 5:
+                    cancel_script = 0x0e;
+                    break;
+                case 6:
+                    cancel_script = color < 16
+                        ? static_cast<std::int32_t>(bullet_styles[field_4c].colors[color].words[3])
+                        : 0;
+                    flags.bits |= 0x10;
+                    break;
+                case 7:
+                    cancel_script = 0x107;
+                    flags.bits |= 0x10;
+                    break;
+                case 8:
+                    cancel_script = 0x10a;
+                    flags.bits |= 0x10;
+                    break;
+                case 9:
+                    cancel_script = 0x10d;
+                    flags.bits |= 0x10;
+                    break;
+                case 10:
+                    cancel_script = 0x116;
+                    flags.bits |= 0x10;
+                    break;
+                }
+                if ((command.operand_14_word & 0x8000u) != 0)
+                    interrupt_animation_mode2(animation);
+            } else {
+                animation->reset();
+                const std::int32_t enemy_type =
+                    static_cast<std::int32_t>(command.operand_10_word & 0x7fffu);
+                const std::int32_t enemy_script =
+                    static_cast<std::int32_t>(command.operand_14_word & 0x7fffu);
+                context->enemy_controller()->animation_file(enemy_type)->load_script(
+                    animation, enemy_script);
+                animation->base.flags.bits_0b.viewport_placement_mode = 1;
+            }
+            ++field_38;
+            continue;
+        }
         case 13:
-        case 17:
+            return; // ECL/Enemy command setup remains open.
+        case 17: {
+            command_flags.words.low |= 0x20000;
+            commands.at(8).vector_24.x = command.operand_00;
+            commands.at(8).vector_24.y = command.operand_04;
+            if ((command.operand_14_word & 0x100u) != 0)
+                commands.at(8).vector_24 += position;
+            commands.at(8).scalar_10 = field_24;
+            commands.at(8).vector_24.z = 0.0f;
+            commands.at(8).word_30 = command.operand_10_word;
+            commands.at(8).word_34 = command.operand_14_word & 0xffu;
+            commands.at(8).timer = 0;
+            interpolation_420.set_start(position);
+            interpolation_420.set_end(commands.at(8).vector_24);
+            interpolation_420.set_tangent_start(native_zero_position);
+            interpolation_420.set_tangent_end(native_zero_position);
+            interpolation_420.set_duration(
+                static_cast<std::int32_t>(command.operand_10_word));
+            interpolation_420.set_mode(
+                static_cast<std::int32_t>(command.operand_14_word & 0xffu));
+            interpolation_420.reset_timer();
+            break;
+        }
         case 18:
         case 19:
         case 20:
+            return; // Angle-motion and animation flag handlers remain open.
         case 22:
-        case 23:
+            command_flags.words.low &= ~0x400000u;
+            interpolation_474.set_start(command.operand_00);
+            interpolation_474.set_end(command.operand_04);
+            interpolation_474.set_tangent_start(0.0f);
+            interpolation_474.set_tangent_end(0.0f);
+            interpolation_474.set_duration(
+                static_cast<std::int32_t>(command.operand_10_word));
+            interpolation_474.set_mode(
+                static_cast<std::int32_t>(command.operand_14_word));
+            interpolation_474.reset_timer();
+            flags.bits |= 0x40;
+            ++field_38;
+            continue;
+        case 23: {
+            auto& slot = commands.at(12);
+            slot.vector_18.x = position.x;
+            slot.vector_18.y = position.y;
+            slot.vector_18.z = position.z;
+            commands.at(12).scalar_14 = static_cast<float>(angle);
+            commands.at(12).scalar_10 = field_24;
+            ++field_38;
+            continue;
+        }
         case 24:
-            return; // Animation, ECL, interpolation and Enemy handlers remain open.
+            return; // ECL/Enemy spawn command remains open.
         case 27: {
             if (command.operand_10_real == 0.0f) {
                 LaserType0Parameters parameters;
