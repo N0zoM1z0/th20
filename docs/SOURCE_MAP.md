@@ -174,3 +174,4 @@ remaining VM/resource calls explicitly captured. See
 [defeat state protocols](ENEMY_DEFEAT_STATE_RECONSTRUCTION.md).
 
 - [Enemy opcode 551 Fog and typed StageResource owner](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md)
+- [Enemy opcodes 514/521 phase and borrowed timeout-name fragments](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md)

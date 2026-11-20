@@ -1,5 +1,8 @@
 # Enemy phase producer reconstruction
 
+**Current original dispatcher source update (CORE/RECON-1155):** natural-C++ inline source for original opcodes 514 and 521 is now maintained in `src/EnemyStatePhaseOpcode.cpp`. Opcode 514 is the complete 736B/171-instruction/25-E8 primary branch; opcode 521 is the 88B/20-instruction/2-E8 primary branch. The broad CORE209 284B/60-instruction range is a contiguous switch neighborhood, not a single 521 body. The three Session getter leaves used by 514 are now matching after focused exact replay. See [the 514/521 source frontier](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md).
+
+
 ## CORE/EXACT-147 acceptance
 
 The maintained Enemy owner now implements the complete phase and timeout

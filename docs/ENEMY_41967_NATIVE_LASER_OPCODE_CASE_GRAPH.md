@@ -21,6 +21,8 @@
 
 **Additional maintained source frontier (CORE/RECON-1154):** original opcode 551 now has natural-C++ source in `src/EnemyStateFogOpcode.cpp`; the former opaque Stage global now has a typed partial owner, actual FogInterpolation and current FogValue members, and exact source bodies for the 20B/45B/130B owner chain plus five interpolation leaves. The 41,967B parent remains NONEXACT. See [the 551 Fog source frontier](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md).
 
+**Additional maintained source frontier (CORE/RECON-1155):** original opcodes 514 and 521 now have natural-C++ phase/timeout fragments in `src/EnemyStatePhaseOpcode.cpp`, preserving borrowed packet-name pointers, repeated Session clamps, and exact Enemy phase/timeout producers. The 41,967B parent remains NONEXACT. See [the 514/521 phase source frontier](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md).
+
 **Additional maintained source frontier (CORE/RECON-1152):** original opcode 555 now has natural-C++ source in `src/EnemyStateAnimationSpawnOpcode.cpp`, preserving the sound gate, distance threshold, live EnemyController/AnimationFile selection and layer-3 spawn. The 41,967B parent remains source-absent and NONEXACT. See [the 555 source frontier](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md).
 
 **Additional maintained source frontier (CORE/RECON-1153):** original opcodes 553/554 now have natural-C++ source in `src/EnemyStateControllerSetterOpcode.cpp`, preserving the pre-operand Context cache and Y-before-X float reads. The 41,967B parent remains source-absent and NONEXACT. See [the 553/554 source frontier](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md).
