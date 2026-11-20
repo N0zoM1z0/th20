@@ -1740,3 +1740,5 @@ th20::RenderMesh::set_update_callback
 th20::WeaponStoneInfo::initialize_progress_effect
 th20::WeaponStoneInfo::initialize_phase_effect
 th20::LaserController::cancel_near
+th20::FunctionChainNode::enabled
+th20::GameController::update_node_enabled

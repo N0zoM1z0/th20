@@ -30971,3 +30971,25 @@ symbol = "?set_update_callback@RenderMesh@th20@@QAEXP6AHPAVAnimation@2@@Z@Z"
 target_address = 0x0052CD50
 size = 37
 relocations = [{ offset = 0x1A, type = "REL32", symbol = "?set_entry_callback_forward_44f100@AnimationHandle@th20@@QAEXP6AHPAVAnimation@2@@Z@Z", target = 0x0044F100 }]
+
+
+# CORE/EXACT-1209: Task callback enable-bit access and GameController wrapper.
+[units.function_chain_node_enabled]
+source = "src/FunctionChainNodeEnabled.cpp"
+object = "build/core1209-canonical/FunctionChainNodeEnabled.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::FunctionChainNode::enabled"]
+symbol = "?enabled@FunctionChainNode@th20@@QBEIXZ"
+target_address = 0x00464390
+size = 22
+relocations = []
+
+[units.game_controller_update_node_enabled]
+source = "src/GameControllerUpdateNodeEnabled.cpp"
+object = "build/core1209-canonical/GameControllerUpdateNodeEnabled.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::GameController::update_node_enabled"]
+symbol = "?update_node_enabled@GameController@th20@@QBEHXZ"
+target_address = 0x00464350
+size = 56
+relocations = [{ offset = 0x19, type = "REL32", symbol = "?enabled@FunctionChainNode@th20@@QBEIXZ", target = 0x00464390 }]

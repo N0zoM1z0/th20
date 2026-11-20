@@ -22,6 +22,7 @@ struct GameController final : TaskInfo {
     ~GameController() override;
     int update_suppressed() const;
     int animation_frozen() const;
+    std::int32_t update_node_enabled() const;
     std::int32_t restart() const;
     void clear_flag_6();
     void set_field_34(std::uint32_t value);

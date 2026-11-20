@@ -36,6 +36,7 @@ public:
     void set_owned();
     void enable();
     void disable();
+    std::uint32_t enabled() const;
     void set_before_insert(FunctionChainCallback value);
     void set_shutdown_callback(FunctionChainCallback value);
 };
