@@ -101,8 +101,10 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 
 No full-graph cold replay was used. The next substantial Card Start
 frontier is the remaining 48B of EH, bonus, stack-local and handle
-creation lowering; the 102B text `std::function` constructor is still
-independently nonexact. Existing Card text/queue and HUD children
+creation lowering; the 102B NativeCardTextPayload `std::function` constructor at `0x00486800`
+and 65B `_Reset` at `0x00486A30` are now exact under CORE/RECON-1188. The
+separate 102B callback constructor at `0x00486740` remains independently
+NONEXACT. Existing Card text/queue and HUD children
 remain distinct original physical code owners, never double-credited.
 
 
@@ -114,5 +116,5 @@ remain distinct original physical code owners, never double-credited.
 natural-C++ unit. Its original `std::move<polymorphic_allocator<char>&>` E8 to
 the shared 8B `0x0040B280` leaf is restored, with all five original REL32
 roles. This closes the PMR move callee used by the exact 64B capture move; it
-does not close the 102B `std::function` constructor, 65B `_Reset`, or 1,896B
-Card start parent.
+does not close the 1,896B Card start parent; the 102B constructor and 65B
+`_Reset` have since become whole exact under CORE/RECON-1188.

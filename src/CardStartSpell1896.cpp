@@ -27,6 +27,14 @@
 #include <utility>
 #include <memory_resource>
 #include <string>
+#include <utility>
+
+// CORE/RECON-1188: the original 102B std::function constructor and 65B
+// _Reset each make an out-of-line std::forward<T> call to the shared 8B
+// identity leaf. Preserve the exact callable specialization rather than
+// letting current MSVC inline this constexpr reference cast.
+template __declspec(noinline) th20::NativeCardTextPayload&&
+std::forward<th20::NativeCardTextPayload>(th20::NativeCardTextPayload&) noexcept;
 
 namespace th20 {
 // This borrowed view uses the independently whole-exact 42B BombController

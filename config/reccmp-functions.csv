@@ -1785,3 +1785,5 @@ th20::LaserLineInf::cancel_rectangle,0x004CA380,function
 th20::LaserCurveInf::cancel_rectangle,0x004C9AB0,function
 th20::LaserType2Parameters::LaserType2Parameters(const th20::LaserType2Parameters&),0x004C84B0,function
 std::pmr::string::basic_string(move),0x0046A710,function
+std::function<void()>::function(NativeCardTextPayload&&),0x00486800,function
+std::_Func_class<void>::_Reset(NativeCardTextPayload&&),0x00486A30,function

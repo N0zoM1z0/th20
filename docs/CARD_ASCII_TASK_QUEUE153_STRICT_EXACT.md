@@ -79,4 +79,6 @@ constructs a copyable PMR/Card/Animation callable in a real
 `std::function<void()>` and directly passes it by value through the
 shared borrowed [`NativeCardAsciiTaskQueueView`](../src/NativeCardAsciiTaskQueueView.hpp).
 This 153B queue and its 32B STL caller remain whole strict exact;
-Card start and its 102B callable constructor remain independently NONEXACT.
+Card start remains NONEXACT; its 102B NativeCardTextPayload callable constructor
+at `0x00486800` is now whole exact, while the separate 102B callback constructor
+at `0x00486740` remains independently NONEXACT.

@@ -1,10 +1,10 @@
 **CURRENT WHOLE-SOURCE UPDATE:** The maintained 1,896B Card start now has the original 20B Renderer file getter twice, the separate 16B text-file getter, the actual `"text"` literal, and the PMR display name lifetime through the end of the Card method. The tail script table is re-read from its true `0x005C6110` global seven times. Its whole source candidate is now **1,915B/495 i386 with all 62 original E8 and 26 PE HIGHLOW destination roles represented in exact original order**, but still NONEXACT. See [current source call/data proof](CARD_START1896_FULL_CALL_DATA_ROLES_FRONTIER.md). Earlier numeric source states below are historical.
 
-**CORE/RECON-1160 / 1187 forwarding-leaf update:** the original 8B reference-forwarding primitive at `0x0040B280` remains `matching` from the `EclLoaderBuffer.cpp` owner. The original PMR string move (`0x0046A728`) now naturally calls it through an explicit out-of-line `std::move<polymorphic_allocator<char>&>` instantiation; the 108B PMR move constructor is whole exact. The Card `std::function` constructor (`0x00486839`) and `_Reset` helper (`0x00486A50`) still inline their forwarding operation under MSVC 19.44 and remain NONEXACT; no synthetic wrapper or padding is used.
+**CORE/RECON-1160 / 1187 forwarding-leaf update:** the original 8B reference-forwarding primitive at `0x0040B280` remains `matching` from the `EclLoaderBuffer.cpp` owner. The original PMR string move (`0x0046A728`) now naturally calls it through an explicit out-of-line `std::move<polymorphic_allocator<char>&>` instantiation; the 108B PMR move constructor is whole exact. The Card `std::function` constructor (`0x00486839`) and `_Reset` helper (`0x00486A50`) are now both exact after CORE/RECON-1188 restored their real out-of-line `std::forward<NativeCardTextPayload>` calls; no synthetic wrapper or padding is used.
 
 **New original dispatcher caller (CORE/RECON-1158):** the complete 552B shared Enemy opcode branch for 522/528/531/532/533 is now maintained in natural C++ and reaches this real `Card::start_spell` owner after its native rolling-XOR packet-name decode, mode adjustment and cached Context Card selection. This closes the caller source, not the 1,896B callee: the callee remains NONEXACT. See [the caller source frontier](ENEMY_41967_522_528_531_532_533_CARD_START_SOURCE_FRONTIER.md).
 
-**Current CORE/RECON-1037 update:** The actual Card text lambda body at `0x00486E80` has [whole 111/111 strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md), with the real `std::pmr::string::c_str` receiver at capture+4 and native layer 0x00FFFFFF. All historical comments below calling the 111B callback unresolved are dated. The 102B `std::function` constructor, the enclosing 1,896B Card start and the 578B text renderer remain NONEXACT.
+**Current CORE/RECON-1037 / 1188 update:** The actual Card text lambda body at `0x00486E80` has [whole 111/111 strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md), with the real `std::pmr::string::c_str` receiver at capture+4 and native layer 0x00FFFFFF. The 102B NativeCardTextPayload `std::function` constructor at `0x00486800` and 65B `_Reset` at `0x00486A30` are now whole exact. A separate 102B `std::function` constructor at `0x00486740` used by the callback path remains NONEXACT; the enclosing 1,896B Card start and 578B text renderer also remain NONEXACT.
 
 # CORE/RECON-1030 — Card start 1,896B native text producer: real callable, PMR capture and locked task enqueue
 
@@ -46,12 +46,12 @@ for `NativeCardTextPayload` failed with the pinned MSVC's C++ requirement
 N4988 [func.wrap.func.con]/10.1. The retained header now declares a
 normal **copy constructor** (`std::pmr::string` copied), alongside the
 previous exact Card*/PMR string/Animation* ordinary and move constructors.
-The call operator for the original **111B native text callback**
-at `0x00486E80` is explicitly declared as a still unresolved callable
-source owner; no fabricated body is substituted. Its native path gets the
-name string, constructs an intermediate `std::function`, and calls the
-separately substantial text-display path at `0x0044B020` (578B);
-those larger bodies/EH remain separate research targets.
+The original **111B native text callback** at `0x00486E80` is now whole
+strict exact under CORE/RECON-1037; no fabricated body is used. Its native
+path gets the name string, constructs an intermediate `std::function`, and
+calls the separately substantial text-display path at `0x0044B020` (578B).
+The separate 102B callback constructor at `0x00486740`, the text-render
+Boss and Card parent retain their own distinct exactness frontiers.
 
 A first correct high-level C++ candidate used a distinct `task` local
 and passed `std::move(task)` into the queue. It compiled to
@@ -84,9 +84,10 @@ preserving the native out-of-line allocator `std::move<T&>` call. The 102B
 callable constructor and 65B `_Reset` still have their own genuine 9-byte
 compiler-lowering differences; they are not padded or aliased to hide them.
 
-The 111B Card text callback is now whole exact. The original 102B
-std::function constructor and 65B reset, original EH frame/unwind, full
-effect/metadata owners and original whole-graph control flow remain open.
+The 111B Card text callback is now whole exact. The original 102B NativeCardTextPayload `std::function` constructor and 65B
+reset are now exact. The separate 102B callback constructor at `0x00486740`,
+original EH frame/unwind, full effect/metadata owners and original whole-graph
+control flow remain open.
 The 1,896B Card start **remains SOURCE-PRESENT, NONEXACT**.
 The checker
 [`verify-card-start1896-native-frontier.py`](../scripts/verify-card-start1896-native-frontier.py)
@@ -126,18 +127,19 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 The original 111B Card text callable's first E8 call targets a complete
 [22B source-exact PMR name getter](CARD_TEXT_CAPTURE_CSTR22_STRICT_EXACT.md)
 on the real 36B capture. The getter and its `c_str()` callee are
-independently proved from the PE. The callable's own 111B body,
-its constructed 102B `std::function`, 578B text draw Boss and
-Card start's 1,896B parent remain separate unresolved code.
+independently proved from the PE. The callable's own 111B body is now exact. Its separate 102B `std::function`
+constructor at `0x00486740`, the 578B text draw Boss and Card start's 1,896B
+parent remain separate unresolved code.
 
 ## CORE/RECON-1034 — source-generated 7B callable-test child accepted
 
 The original 65B `_Reset` calls a genuine [whole-exact 7B
 `std::_Test_callable<NativeCardTextPayload>`](CARD_TEXT_CALLABLE_TEST7_STRICT_EXACT.md)
-at `0x00413910`. It is now a separate strict source unit generated
-by the existing Card start C++ translation unit. Original 65B `_Reset`,
-102B `std::function` constructor and the 1,896B parent remain
-NONEXACT; no authored-game credit is inferred from this generic child.
+at `0x00413910`. At the historical CORE/RECON-1034 checkpoint, the 65B
+`_Reset` and 102B NativeCardTextPayload `std::function` constructor were
+NONEXACT. CORE/RECON-1188 has since closed both whole functions with their
+original `std::forward<T>` E8 calls. The separate 102B callback constructor
+at `0x00486740` and 1,896B Card parent remain NONEXACT.
 
 
 **Current CORE/RECON-1165/1168/1170 source update:** the primary/secondary spell-record lookups now remain inside the first `strcpy_s` argument, preserving native right-to-left argument evaluation. The reward product is retained in its own local before both Card fields are assigned and the initial bonus is clamped. The zero-position fallback now has an explicit local `Vector3` lifetime. The 12B script-table descriptor is corrected to `{file_id, script, group}` at offsets `+0/+4/+8`, and the stage/variant/controller/file/script locals are explicit. The whole natural-C++ candidate is now 1,915B/495 i386; all 62 original E8 callee roles and 26 PE data destination roles still match in order, but the original 1,896B parent remains NONEXACT (candidate 19B longer, 17 instruction heads fewer, 91/1,548 overlapping non-relocation bytes match).
@@ -150,4 +152,4 @@ constructor at `0x0046A710` is now whole exact from the existing
 restores the original 8B forwarding E8 to `0x0040B280`; the candidate is
 108/108 bytes with all five original REL32 target roles. The 64B payload move
 remains exact. The separate 102B `std::function` constructor and 65B `_Reset`
-remain NONEXACT and are still open.
+are now whole exact under CORE/RECON-1188.

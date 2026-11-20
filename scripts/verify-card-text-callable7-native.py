@@ -27,7 +27,14 @@ def verify():
  r=coff.compare_unit('card_text_callable_test_7')
  assert r['result']=='exact' and r['size']==7 and r['matched_bytes']==7
  assert not r['relocations']
+ ctor=coff.compare_unit('card_text_function_ctor_102')
+ assert ctor['result']=='exact' and ctor['size']==102 and ctor['matched_bytes']==102
+ assert len(ctor['relocations'])==5
+ reset=coff.compare_unit('card_text_function_reset_65')
+ assert reset['result']=='exact' and reset['size']==65 and reset['matched_bytes']==65
+ assert len(reset['relocations'])==4
  print('PASS immutable original 7B/5-i386 std::_Test_callable true-valued method, no reloc')
- print('PASS original 65B/26-i386 function reset E8 +0xB -> 7B head, all four E8 targets verified')
- print('PASS canonical 7/7 from natural CardStart std::function capture; original 65B reset stays NONEXACT')
+ print('PASS original 102B std::function callable constructor, 82/82 ordinary bytes and 5/5 native relocations')
+ print('PASS original 65B/26-i386 _Reset, 49/49 ordinary bytes and 4/4 native E8 destinations')
+ print('PASS both forwarding E8 sites use the exact shared 8B std::forward<T&> leaf at 0x0040B280')
 if __name__=='__main__': verify()

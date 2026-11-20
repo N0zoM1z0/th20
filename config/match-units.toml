@@ -26509,6 +26509,39 @@ target_address = 0x00413910
 size = 7
 relocations = []
 
+# CORE/RECON-1188: native 102B std::function forwarding constructor.
+[units.card_text_function_ctor_102]
+source = "src/CardStartSpell1896.cpp"
+object = "build/core1009-canonical/CardStartSpell1896.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::function<void()>::function(NativeCardTextPayload&&)"]
+symbol = "??$?0UNativeCardTextPayload@th20@@$0A@@?$function@$$A6AXXZ@std@@QAE@$$QAUNativeCardTextPayload@th20@@@Z"
+target_address = 0x00486800
+size = 102
+relocations = [
+  { offset = 0x06, type = "DIR32", symbol = "__ehhandler$??$?0UNativeCardTextPayload@th20@@$0A@@?$function@$$A6AXXZ@std@@QAE@$$QAUNativeCardTextPayload@th20@@@Z", target = 0x00567C8D },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2A, type = "REL32", symbol = "??0?$_Func_class@X$$V@std@@QAE@XZ", target = 0x00413F80 },
+  { offset = 0x3A, type = "REL32", symbol = "??$forward@UNativeCardTextPayload@th20@@@std@@YA$$QAUNativeCardTextPayload@th20@@AAU12@@Z", target = 0x0040B280 },
+  { offset = 0x46, type = "REL32", symbol = "??$_Reset@UNativeCardTextPayload@th20@@@?$_Func_class@X$$V@std@@IAEX$$QAUNativeCardTextPayload@th20@@@Z", target = 0x00486A30 },
+]
+
+# CORE/RECON-1188: native 65B _Reset forwarding constructor.
+[units.card_text_function_reset_65]
+source = "src/CardStartSpell1896.cpp"
+object = "build/core1009-canonical/CardStartSpell1896.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void>::_Reset(NativeCardTextPayload&&)"]
+symbol = "??$_Reset@UNativeCardTextPayload@th20@@@?$_Func_class@X$$V@std@@IAEX$$QAUNativeCardTextPayload@th20@@@Z"
+target_address = 0x00486A30
+size = 65
+relocations = [
+  { offset = 0x0C, type = "REL32", symbol = "??$_Test_callable@UNativeCardTextPayload@th20@@@std@@YA_NABUNativeCardTextPayload@th20@@@Z", target = 0x00413910 },
+  { offset = 0x21, type = "REL32", symbol = "??$forward@UNativeCardTextPayload@th20@@@std@@YA$$QAUNativeCardTextPayload@th20@@AAU12@@Z", target = 0x0040B280 },
+  { offset = 0x2A, type = "REL32", symbol = "??$_Global_new@V?$_Func_impl_no_alloc@UNativeCardTextPayload@th20@@X$$V@std@@UNativeCardTextPayload@th20@@@std@@YAPAV?$_Func_impl_no_alloc@UNativeCardTextPayload@th20@@X$$V@0@$$QAUNativeCardTextPayload@th20@@@Z", target = 0x00486920 },
+  { offset = 0x36, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+]
+
 # CORE/RECON-1036: original whole 93B standard function library body.
 [units.ascii_function_copy_93]
 source = "src/AsciiTextRender578.cpp"

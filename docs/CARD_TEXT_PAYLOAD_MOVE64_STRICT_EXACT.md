@@ -6,8 +6,8 @@ letting current MSVC inline it. The 108B `std::pmr::string` move constructor now
 matches **108/108 bytes**, all **5/5 original REL32 destinations** in order,
 and the same 8B `0x0040B280` helper. The 64B payload move remains 64/64 exact.
 No assembly, byte patching, or padding is used. The 102B std::function
-constructor and 65B `_Reset` are still NONEXACT; this does not claim those
-separate callables exact.
+constructor and 65B `_Reset` are now separately whole exact under
+CORE/RECON-1188; this PMR move unit does not duplicate their byte credit.
 
 # CORE/RECON-1029 — original 64B Card text capture move constructor whole native exact
 

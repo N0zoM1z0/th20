@@ -175,12 +175,13 @@ def verify(candidate):
         # The two shared Renderer getters and Card-start PMR constructor / callable
         # remain strict original heads, never re-credit their byte extents.
         for unit in ('card_hud_renderer_file_getter_20','card_hud_spell_result_boss_1522',
-                     'card_start_pmr_string_char_ctor_128','card_text_callable_test_7'):
+                     'card_start_pmr_string_char_ctor_128','card_text_callable_test_7',
+                     'card_text_function_ctor_102','card_text_function_reset_65'):
             result=coff.compare_unit(unit)
             assert result['result']=='exact' and result['matched_bytes']==result['size'],unit
         print('PASS candidate entire 1915B/495 i386, 62/62 original E8 CALLEE ROLES in order and 26/26 PE data target ROLES in order')
         print('PASS authentic three independent file getter E8, four Renderer-global loads, seven live script-table loads, and late PMR destructor')
-        print('PASS four affected canonical units whole native exact (1522B HUD parent, 20B file getter, 128B PMR char constructor, 7B callable helper)')
+        print('PASS six affected canonical units whole native exact (1522B HUD parent, 20B file getter, 128B PMR char constructor, 7B callable helper, 102B std::function ctor, 65B _Reset)')
         print(f'NONEXACT full parent: candidate 1915B vs native 1896B, ordinary {same_bytes}/{len(original)-compared_mask} compared positional bytes, {same_sites}/62 physical E8 positions')
     print('Original entire Card start 1896B Boss remains NONEXACT; zero new parent game-original byte credit')
 if __name__=='__main__':

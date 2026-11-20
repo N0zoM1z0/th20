@@ -117,6 +117,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1028 — whole 32B original Card ASCII task list push-back](CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md) — native 153B parent E8, genuine 32B helper and original nested E8, both 153/153 and 32/32 exact in one pinned object, STL origin uncredited.
 
+- [CORE/RECON-1188 — Card callable constructor and Reset strict exact](CARD_TEXT_CALLABLE_TEST7_STRICT_EXACT.md) — original 102B std::function constructor and 65B _Reset now exact with the original std::forward E8 to the shared 8B helper.
 - [CORE/RECON-1187 — original 108B PMR string move constructor strict exact](CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md) — whole 108/108 bytes, five original REL32 target roles and real 8B allocator std::move forwarding call; the 64B Card capture move remains exact.
 - [CORE/RECON-1029 — original 64B Card text payload move constructor strict exact](CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md) — true 66B wrapper E8, PMR move target and real copyable 36B capture; original generic/compiler ownership uncredited.
 
