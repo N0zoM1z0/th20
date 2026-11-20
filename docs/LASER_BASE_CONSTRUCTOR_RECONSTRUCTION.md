@@ -18,9 +18,11 @@ this base constructor returns.
 - Twenty-four real `ExtendedCommand` objects occupy `+0x90..+0x68F`, each with
   a `0x40` stride. `command_index` is at `+0x690`, the 64-bit active-command
   mask at `+0x698`, and the trailing timers at `+0x6AC` and `+0x6BC`.
-- The controller/context tail begins at `+0x6CC`; the signed family/type
-  discriminator is at `+0x6E4`, the sentinel word at `+0x6E8`, and `Context*`
-  at `+0x6F0`. The last word at `+0x6F4` is also covered by the final clear.
+- The controller/context tail begins at `+0x6CC`; the owned
+  `IntrusiveLink<EclRuntime>*` is at `+0x6D8`, followed by two neutral words.
+  The signed family/type discriminator is at `+0x6E4`, the sentinel word at
+  `+0x6E8`, and `Context*` at `+0x6F0`. The last word at `+0x6F4` is also
+  covered by the final clear.
 
 The native body first installs its temporary base vtable, constructs the link,
 timers, vectors and 24 command records, and writes the observed scalar

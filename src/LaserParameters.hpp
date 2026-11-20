@@ -1,12 +1,15 @@
 #pragma once
 
 #include "BulletValues.hpp"
+#include "IntrusiveLink.hpp"
 #include "TaskInfo.hpp"
 #include <cstddef>
 #include <memory_resource>
 #include <vector>
 
 namespace th20 {
+
+struct EclRuntime;
 
 // Four real dispatcher temporaries, with separate command-vector lifetimes.
 // Neutral field names retain unresolved opcode-specific roles.
@@ -183,7 +186,7 @@ public:
     std::uint32_t field_6a0, field_6a4, field_6a8;
     Timer timer_6ac, timer_6bc;
     std::uint32_t field_6cc, field_6d0, field_6d4;
-    void* allocated_6d8;
+    IntrusiveLink<EclRuntime>* runtime_link_6d8;
     std::uint32_t field_6dc, field_6e0;
     std::int32_t field_6e4; // signed laser-family discriminator (+0x6E4)
     std::uint32_t field_6e8;
@@ -206,6 +209,7 @@ static_assert(offsetof(Laser, command_index) == 0x690);
 static_assert(offsetof(Laser, active_commands) == 0x698);
 static_assert(offsetof(Laser, timer_6ac) == 0x6ac);
 static_assert(offsetof(Laser, field_6cc) == 0x6cc);
+static_assert(offsetof(Laser, runtime_link_6d8) == 0x6d8);
 static_assert(offsetof(Laser, field_6e4) == 0x6e4);
 static_assert(offsetof(Laser, field_6e8) == 0x6e8);
 static_assert(offsetof(Laser, context) == 0x6f0);

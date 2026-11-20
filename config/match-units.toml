@@ -31101,3 +31101,34 @@ relocations = [
   { offset = 0x6D, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
   { offset = 0x87, type = "REL32", symbol = "??0Angle@th20@@QAE@M@Z", target = 0x00429210 },
 ]
+
+# CORE/EXACT-1226: complete Laser base destructor and compiler scalar delete.
+[units.laser_base_destructor]
+source = "src/LaserBase.cpp"
+object = "build/laser-base-lifetime-canonical/LaserBase.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Laser::~Laser()"]
+symbol = "??1Laser@th20@@UAE@XZ"
+target_address = 0x004C8AF0
+size = 108
+compare_size = 113
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??1Laser@th20@@UAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2B, type = "DIR32", symbol = "??_7Laser@th20@@6B@", target = 0x005710BC },
+  { offset = 0x47, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x4C, type = "REL32", symbol = "??$release_object@V?$IntrusiveLink@UEclRuntime@th20@@@th20@@@DiagnosticAllocator@th20@@QAEXPAV?$IntrusiveLink@UEclRuntime@th20@@@1@@Z", target = 0x00413B70 },
+]
+
+[units.laser_base_scalar_deleting_destructor]
+source = "src/LaserBase.cpp"
+object = "build/laser-base-lifetime-canonical/LaserBase.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Laser::scalar_deleting_destructor"]
+symbol = "??_GLaser@th20@@UAEPAXI@Z"
+target_address = 0x004C9210
+size = 49
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??1Laser@th20@@UAE@XZ", target = 0x004C8AF0 },
+  { offset = 0x21, type = "REL32", symbol = "??3@YAXPAXI@Z", target = 0x0054278D },
+]

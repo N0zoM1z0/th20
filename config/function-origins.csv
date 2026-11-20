@@ -3884,7 +3884,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C8940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C8AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C8AF0,authored,Laser,authored,high,"CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; original base vtable, field +0x6D8 ownership and exact release_object<IntrusiveLink<EclRuntime>> call independently established"
 0x004C8B70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3898,7 +3898,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C9170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C91D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C9210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C9210,compiler,Laser,review,high,CORE/EXACT-1226; docs/LASER_BASE_DESTRUCTOR_EXACT.md; native scalar deleting wrapper is compiler-generated and strictly replays independently of authored destructor body
 0x004C9250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C9280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C92C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

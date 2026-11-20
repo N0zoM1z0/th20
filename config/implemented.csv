@@ -1750,3 +1750,5 @@ th20::LaserBeamPathState::LaserBeamPathState()
 th20::LaserBeamInf::cancel_circle
 th20::LaserInfiniteInf::cancel_circle
 th20::Laser::Laser()
+th20::Laser::~Laser()
+th20::Laser::scalar_deleting_destructor
