@@ -4,6 +4,7 @@
 #include "Player.hpp"
 #include "PlayerRecord.hpp"
 #include "Session.hpp"
+#include "Identifier32.hpp"
 #include "Weapon.hpp"
 #include "Bullet.hpp"
 #include "BulletCollisionHandle.hpp"
@@ -16,9 +17,9 @@ extern const float native_twenty_four_56f7b4;
 
 std::int32_t WeaponStoneInfo::update_main() {
     if (current_game_controller!=nullptr &&
-        (current_game_controller->game_flags.bits&0x40u)!=0 && phase!=0) {
+        current_game_controller->flag_6_set()!=0 && phase!=0) {
         handle_20.interrupt(1);
-        handle_20=0;
+        handle_20=0u;
         phase=0;
         weapon_28->end_phase();
     }
@@ -33,16 +34,18 @@ std::int32_t WeaponStoneInfo::update_main() {
         return 1;
     }
 
-    const std::int32_t mode=player_record(0)->field_0c_value();
-    bool allow_cancellation=(mode!=5 && mode!=7);
+    bool initial_cancellation;
+    if (player_record(0)->field_0c_value()==5) initial_cancellation=false;
+    else if (player_record(0)->field_0c_value()==7) initial_cancellation=false;
+    else initial_cancellation=true;
+    bool allow_cancellation=initial_cancellation;
     if (phase==2) {
-        if (weapon_28->end_phase()!=0) {
-            phase=1;
-        } else {
+        if (weapon_28->end_phase()==0) {
             radius=native_screen_alpha_128_56cd98;
             if (allow_cancellation) timer_64=60;
             goto phase_complete;
         }
+        phase=1;
     }
 
     if (phase==1) {
@@ -58,13 +61,14 @@ std::int32_t WeaponStoneInfo::update_main() {
             allow_cancellation=false;
         if (allow_cancellation) timer_64=4;
         radius=native_twenty_four_56f7b4;
-        goto phase_complete;
+    } else {
+        goto update_weapons;
     }
-    goto update_weapons;
 
 phase_complete:
+
     handle_20.interrupt(1);
-    handle_20=0;
+    handle_20=0u;
     phase=0;
     initialize_phase_effect();
     player_record(0)->set_field_4c(0);
