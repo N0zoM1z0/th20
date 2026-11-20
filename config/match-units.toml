@@ -12107,7 +12107,7 @@ relocations = [
   { offset = 110, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 124, type = "REL32", symbol = "??0?$IntrusiveList@UItem@th20@@@th20@@QAE@XZ", target = 0x00418A50 },
   { offset = 269, type = "REL32", symbol = "??0Vector3@th20@@QAE@XZ", target = 0x00422E10 },
-  { offset = 300, type = "DIR32", symbol = "$SG98046", target = 0x00570D4C },
+  { offset = 300, type = "DIR32", symbol = "$SG98300", target = 0x00570D4C },
   { offset = 305, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
 ]
 
@@ -12124,7 +12124,7 @@ relocations = [
   { offset = 6, type = "DIR32", symbol = "__ehhandler$??1ItemInf@th20@@UAE@XZ", target = 0x00567600 },
   { offset = 19, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 43, type = "DIR32", symbol = "??_7ItemInf@th20@@6B@", target = 0x00570D40 },
-  { offset = 48, type = "DIR32", symbol = "$SG98062", target = 0x00570D60 },
+  { offset = 48, type = "DIR32", symbol = "$SG98316", target = 0x00570D60 },
   { offset = 53, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
   { offset = 69, type = "DIR32", symbol = "?process_chain@th20@@3PAVFunctionChainController@1@A", target = 0x005B66D8 },
   { offset = 74, type = "REL32", symbol = "?remove@FunctionChainController@th20@@QAEXPAVFunctionChainNode@2@@Z", target = 0x004124B0 },
@@ -30581,8 +30581,8 @@ relocations = [
 source = "src/ItemRewardHelpers.cpp"
 object = "build/item-reward-helpers/ItemRewardHelpers.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
-functions = ["th20::Item::award_life_reward"]
-symbol = "?award_life_reward@Item@th20@@QAEXXZ"
+functions = ["th20::item_award_life_reward"]
+symbol = "?item_award_life_reward@th20@@YIXPAUItem@1@@Z"
 target_address = 0x004C47C0
 size = 307
 relocations = [
@@ -30606,4 +30606,38 @@ relocations = [
   { offset = 268, type = "REL32", symbol = "?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z", target = 0x00510710 },
   { offset = 292, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
   { offset = 297, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 0x00426EB0 },
+]
+
+# CORE/RECON-1145: original Item context-bound special reward helper.
+[units.item_award_reward_type_2]
+source = "src/ItemRewardHelpers.cpp"
+object = "build/item-reward-helpers/ItemRewardHelpers.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::item_award_reward_type_2"]
+symbol = "?item_award_reward_type_2@th20@@YIXPAUItem@1@@Z"
+target_address = 0x004C4DA0
+size = 346
+relocations = [
+  { offset = 20, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 27, type = "REL32", symbol = "?clamped_option_units@PlayerRecord@th20@@QAEHXZ", target = 0x004993B0 },
+  { offset = 43, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 50, type = "REL32", symbol = "?clamped_option_cap@PlayerRecord@th20@@QAEHXZ", target = 0x004B8210 },
+  { offset = 70, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 75, type = "REL32", symbol = "?add_score@Session@th20@@QAEXI@Z", target = 0x00488550 },
+  { offset = 89, type = "REL32", symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ", target = 0x00421810 },
+  { offset = 119, type = "REL32", symbol = "?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z", target = 0x00510710 },
+  { offset = 143, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 148, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 0x00426EB0 },
+  { offset = 175, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 192, type = "REL32", symbol = "?player_record@Context@th20@@QAEPAUPlayerRecord@2@XZ", target = 0x0041CAF0 },
+  { offset = 199, type = "REL32", symbol = "?starting_power@PlayerRecord@th20@@QAEHXZ", target = 0x004B81D0 },
+  { offset = 214, type = "REL32", symbol = "?add_field_30_and_check@PlayerRecord@th20@@QAEHH@Z", target = 0x004E1410 },
+  { offset = 237, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 250, type = "REL32", symbol = "?rebuild_option_animations@Player@th20@@QAEXH@Z", target = 0x004FACA0 },
+  { offset = 274, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 279, type = "REL32", symbol = "?request_effect_at@SoundInf@th20@@QAEXHM@Z", target = 0x00426EB0 },
+  { offset = 293, type = "REL32", symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ", target = 0x00421810 },
+  { offset = 321, type = "REL32", symbol = "?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z", target = 0x00510710 },
+  { offset = 331, type = "DIR32", symbol = "?session@th20@@3USession@1@A", target = 0x005BA568 },
+  { offset = 336, type = "REL32", symbol = "?add_score@Session@th20@@QAEXI@Z", target = 0x00488550 },
 ]

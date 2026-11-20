@@ -1,6 +1,6 @@
 # Item life/power reward helper — whole native 307B exact
 
-The original helper at `0x004C47C0` is now a natural `Item::award_life_reward()` method in `src/ItemRewardHelpers.cpp`. It is the first of the four reward helpers called by the 4757B ItemInf update parent to be fully restored.
+The original helper at `0x004C47C0` is now a natural `item_award_life_reward(Item*)` method in `src/ItemRewardHelpers.cpp`. It is the first of the four reward helpers called by the 4757B ItemInf update parent to be fully restored.
 
 The source retains the native order and real owners:
 

@@ -56,7 +56,6 @@ struct Session {
 extern Session session;
 PlayerTable& player_table();
 PlayerRecord* player_record(std::int32_t index);
-ItemRewardPopupQueue* item_reward_popup_queue(std::int32_t index);
 EnemyController* enemy_controller(std::int32_t index);
 static_assert(sizeof(PlayerTable) == 0x228);
 static_assert(offsetof(PlayerTable,field_1e0) == 0x1e0);
