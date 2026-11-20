@@ -27,6 +27,9 @@ extern GameRandom script_random;
 extern const Vector3 native_zero_position;
 extern std::int32_t bullet_cancel_scripts_by_color[8];
 void __fastcall interrupt_animation_mode2(Animation* animation);
+void __fastcall set_animation_flag_byte_01_zero(Animation* animation);
+void __fastcall set_animation_flag_byte_01_one(Animation* animation);
+void __fastcall set_animation_flag_byte_01_two(Animation* animation);
 void Bullet::run_extended_commands() {
     for (;;) {
         if (field_38 >= 24)
@@ -280,9 +283,25 @@ void Bullet::run_extended_commands() {
             break;
         }
         case 18:
+            return; // Angle target selection and current-speed transition remain open.
         case 19:
+            command_flags.words.low &= ~0x80000u;
+            polar(commands.at(9).vector_24, command.operand_00, command.operand_04);
+            commands.at(9).vector_24.z = 0.0f;
+            commands.at(9).scalar_14 = command.operand_00;
+            commands.at(9).scalar_10 = command.operand_04;
+            commands.at(9).word_30 = command.operand_10_word;
+            commands.at(9).timer = 0;
+            break;
         case 20:
-            return; // Angle-motion and animation flag handlers remain open.
+            if (command.operand_10_word == 2)
+                set_animation_flag_byte_01_two(animation);
+            else if (command.operand_10_word == 1)
+                set_animation_flag_byte_01_one(animation);
+            else
+                set_animation_flag_byte_01_zero(animation);
+            ++field_38;
+            continue;
         case 22:
             command_flags.words.low &= ~0x400000u;
             interpolation_474.set_start(command.operand_00);
