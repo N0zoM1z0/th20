@@ -39,14 +39,16 @@ canonically accepted.
 
 ## B. Very large native dispatcher Bosses still NONEXACT
 
-- **Bullet extended command** `0x0047DCF0`, **12,140B**. Partial natural C++ now
-  represents 25/34 primary command entries in `src/BulletRunExtendedCommands.cpp`;
-  9 complex handlers remain open and the whole parent is still NONEXACT.
-  Command 4's 8-way subtype switch, command 9's 11-way style policy and both
-  AnimationFile routes, and command 27's two Laser parameter lifetimes now
-  have natural C++ source. Prioritize command 8's Animation slot branch and
-  the ECL/Enemy paths. Preserve actual branch/table boundaries; see the
-  [partial source frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md),
+- **Bullet extended command** `0x0047DCF0`, **12,140B**. The natural-C++ source
+  in `src/BulletRunExtendedCommands.cpp` now represents all **34/34 primary
+  command IDs** (31 gameplay handlers plus three shared no-op entries); the
+  12,140B parent remains NONEXACT. Commands 4/9/13/18/24/27 cover the nested
+  subtype/style switches, Bullet pattern fire, angle/speed transition, Enemy
+  creation and both Laser lifetimes. The next frontier is whole-parent
+  ABI/SEH/stack/codegen convergence and the separate 41,967B Enemy ECL dispatcher.
+  Preserve original branch/table boundaries; see the
+  [34/34 primary source frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md),
+  [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **Enemy ECL opcode dispatcher** `0x0048C010`, **41,967B**. Distinguish

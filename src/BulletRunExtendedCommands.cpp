@@ -7,6 +7,7 @@
 #include "AnimationFile.hpp"
 #include "AnimationCallback.hpp"
 #include "EnemyController.hpp"
+#include "EnemySpawn.hpp"
 #include "Bullet.hpp"
 #include "DebugAllocator.hpp"
 #include "ShotMetadata.hpp"
@@ -387,8 +388,21 @@ void Bullet::run_extended_commands() {
             ++field_38;
             continue;
         }
-        case 24:
-            return; // ECL/Enemy spawn command remains open.
+        case 24: {
+            EnemySpawn parameters;
+            parameters.position = position;
+            parameters.health = 10000;
+            parameters.variables.field_00 = command.operand_10_word;
+            parameters.variables.field_04 = command.operand_14_word;
+            parameters.variables.field_08 = command.operand_18_word;
+            parameters.variables.field_0c = command.operand_1c_word;
+            parameters.variables.field_10 = command.operand_00;
+            parameters.variables.field_14 = command.operand_04;
+            parameters.variables.field_18 = command.operand_08;
+            parameters.variables.field_1c = command.operand_0c;
+            context->enemy_controller()->create(command.script, parameters, nullptr);
+            break;
+        }
         case 27: {
             if (command.operand_10_real == 0.0f) {
                 LaserType0Parameters parameters;

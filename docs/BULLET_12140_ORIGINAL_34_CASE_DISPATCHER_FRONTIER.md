@@ -1,6 +1,6 @@
 # CORE/RECON-710 — original 12,140-byte Bullet command sequencer: complete 34-way switch and independent game-owner ABI
 
-**Current source status (CORE/RECON-1140):** a partial natural-C++ definition now exists in `src/BulletRunExtendedCommands.cpp`, representing 25/34 primary entries. Nine complex handlers remain pending; the parent is **SOURCE-PRESENT, PARTIAL, NONEXACT**, with zero 12,140B exact credit. See [the current partial C++ frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md). The historical source-absent wording below records the earlier checkpoint.
+**Current source status (CORE/RECON-1140/1142):** a partial natural-C++ definition now exists in `src/BulletRunExtendedCommands.cpp`, representing 34/34 primary entries. All 34 primary command IDs now have natural-C++ handlers; the parent is **SOURCE-PRESENT, PARTIAL, NONEXACT**, with zero 12,140B exact credit. See [the current partial C++ frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md). The historical source-absent wording below records the earlier checkpoint.
 
 
 
@@ -21,7 +21,7 @@ At entry, the genuine ECX thiscall receiver reads Bullet+0x38 and checks it agai
 - Complete original **3,735B BulletController::emit** at 0x004818E0 E8-calls this 12,140B original head at **0x004826B5 → 0x0047DCF0**. The complete actual canonical emitter object uses relocation field +0xDD6 with the legitimate MSVC class method symbol **?run_extended_commands@Bullet@th20@@QAEXXZ**. The separately accepted 3,832-byte compiler/NOP/switch-table contribution is still **3,832/3,832 exact**.
 - Complete original **1,846B Bullet::update_physics** at 0x00485B60 also E8-calls it at **0x00485D7B → 0x0047DCF0**. Its actual pinned canonical C++ object uses the *same* legitimate Bullet member symbol at original immediate field +0x21C, with **1,846/1,846 original bytes and 1,864/1,864 complete compiler contribution strict exact**.
 
-Thus the original parent is a **Bullet instance command sequencer**, not a BulletController dispatch root or an STL/library helper. The real shared Bullet.hpp already declares the exact void Bullet::run_extended_commands() method; however there is **NO maintained complete C++ definition**; a partial 25/34-entry definition is now maintained. The original 12,140B function must remain unclassified/unmapped for reconstruction strict acceptance even though its original project/game authorship and C++ entry role are now high-confidence.
+Thus the original parent is a **Bullet instance command sequencer**, not a BulletController dispatch root or an STL/library helper. The real shared Bullet.hpp already declares the exact void Bullet::run_extended_commands() method; the maintained C++ source now has all 34 primary case handlers, but there is still **NO complete byte-exact 12,140B C++ reconstruction**. The original 12,140B function must remain unclassified/unmapped for reconstruction strict acceptance even though its original project/game authorship and C++ entry role are now high-confidence.
 
 ## Actual original post-body switch table
 

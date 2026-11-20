@@ -270,7 +270,8 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   but no exact credit from normalized bytes;
   [original 40B/42B helper and already-exact 63B/61B leaf audit](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md).
 - **12,140B Bullet extended command — SOURCE-PRESENT, PARTIAL, NONEXACT:**
-  [first natural-C++ dispatcher frontier: 25/34 primary entries represented](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md),
+  [natural-C++ dispatcher frontier: 34/34 primary entries represented](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md),
+  [command-13/18/24 metadata-fire, angle/speed, and Enemy creation branches](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 BulletStyle/Animation/Enemy-file branch and 14 original E8 sites](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md),
   [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md),
   and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).
