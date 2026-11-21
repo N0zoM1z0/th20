@@ -49,6 +49,8 @@
 #include <initializer_list>
 #include <algorithm>
 #include <cmath>
+#include <new>
+#include <vector>
 
 namespace th20 {
 GameRandom script_random(1);
@@ -58,8 +60,10 @@ std::int32_t defeat_result = 0;
 GameController* current_game_controller = nullptr;
 Player* dispatch_test_player = nullptr;
 alignas(BulletController) std::array<std::uint8_t, sizeof(BulletController)> bullet_controller_storage{};
+alignas(BulletController) std::array<std::uint8_t, sizeof(BulletController)> alternate_bullet_controller_storage{};
 alignas(LaserController) std::array<std::uint8_t, sizeof(LaserController)> laser_controller_storage{};
 BulletController* dispatch_test_bullets = nullptr;
+BulletController* dispatch_test_bullets_alternate = nullptr;
 LaserController* dispatch_test_lasers = nullptr;
 std::int32_t dispatch_player_calls = 0;
 std::int32_t dispatch_player_index = -1;
@@ -118,12 +122,42 @@ std::int32_t screen_factory_calls = 0;
 std::int32_t screen_factory_mode = -1;
 std::array<std::uint32_t,6> screen_factory_arguments{};
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
+std::int32_t dispatch_integer_read_calls = 0;
+std::int32_t dispatch_integer_read_index = 0;
+std::int32_t dispatch_integer_read_value = 0;
+void (*dispatch_integer_read_hook)(std::int32_t) = nullptr;
+std::int32_t dispatch_float_read_calls = 0;
+std::array<std::int32_t,2> dispatch_float_read_indices{};
+std::array<float,2> dispatch_float_read_values{};
+std::int32_t dispatch_float_throw_at = 0;
+void (*dispatch_float_read_hook)(std::int32_t) = nullptr;
+Context* dispatch_operand_original_context = nullptr;
+Context* dispatch_operand_alternate_context = nullptr;
+EnemyState* dispatch_operand_state = nullptr;
+EnemyController* dispatch_operand_alternate_enemy_controller = nullptr;
+BulletController* dispatch_operand_alternate_bullet_controller = nullptr;
+void retarget_enemy_controller_during_integer_read(std::int32_t) {
+    dispatch_operand_original_context->enemies = dispatch_operand_alternate_enemy_controller;
+    dispatch_operand_state->context = dispatch_operand_alternate_context;
+}
+void retarget_bullet_controller_during_first_float_read(std::int32_t) {
+    if (dispatch_float_read_calls == 1) {
+        dispatch_operand_original_context->primary_owner = dispatch_operand_alternate_bullet_controller;
+        dispatch_operand_state->context = dispatch_operand_alternate_context;
+    }
+}
+void throw_during_integer_read(std::int32_t) { throw 553; }
+void throw_during_float_read(std::int32_t) {
+    if (dispatch_float_read_calls == dispatch_float_throw_at) throw 554;
+}
 bool pattern_drop_called = false;
 bool pattern_drop_bomb_mark = false;
 Vector3 pattern_drop_origin{};
 std::int32_t enemy_script_globals[4]{};
 Enemy::~Enemy() = default;
 EnemyController::~EnemyController() = default;
+BulletController::~BulletController() = default;
+void BulletController::enable() {}
 std::int32_t BulletController::cancel_all(std::int32_t) {
     assert(this == dispatch_test_bullets);
     ++bullet_cancel_all_calls;
@@ -145,15 +179,28 @@ void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
     pattern_drop_bomb_mark = bomb_mark;
     pattern_drop_origin = origin;
 }
-std::int32_t Enemy::read_integer(std::int32_t) { return 0; }
-float Enemy::read_float(std::int32_t) { return 0.0f; }
+std::int32_t Enemy::read_integer(std::int32_t index) {
+    if (!dispatch_integer_read_hook) return 0;
+    ++dispatch_integer_read_calls;
+    dispatch_integer_read_index = index;
+    dispatch_integer_read_hook(index);
+    return dispatch_integer_read_value;
+}
+float Enemy::read_float(std::int32_t index) {
+    if (!dispatch_float_read_hook) return 0.0f;
+    const auto call = dispatch_float_read_calls++;
+    if (call < static_cast<std::int32_t>(dispatch_float_read_indices.size()))
+        dispatch_float_read_indices[call] = index;
+    dispatch_float_read_hook(index);
+    return call < static_cast<std::int32_t>(dispatch_float_read_values.size())
+        ? dispatch_float_read_values[call] : 0.0f;
+}
 Player* Context::player() { return static_cast<Player*>(object_04); }
 Player* player(std::int32_t index) {
     ++dispatch_player_calls;
     dispatch_player_index = index;
     return dispatch_test_player;
 }
-BulletController* bullet_controller(std::int32_t) { return dispatch_test_bullets; }
 LaserController* laser_controller(std::int32_t) { return dispatch_test_lasers; }
 void GameController::set_field_34(std::uint32_t value) {
     assert(this == current_game_controller);
@@ -281,7 +328,6 @@ std::int32_t FrontInf::dialogue_ready() {
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
-bool execute_enemy_controller_setter_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_mesh_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queue_copy_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
@@ -369,21 +415,31 @@ int main() {
     Context context;
     PlayerRecord player_record;
     EnemyController controller;
+    EnemyController alternate_controller;
+    Context alternate_context;
     AnimationFile test_animation_file;
     StageResourceOwner stage_resource{};
     dispatch_test_enemy_controller = &controller;
     dispatch_test_animation_file = &test_animation_file;
     process_stage_resource = &stage_resource;
-    dispatch_test_bullets = reinterpret_cast<BulletController*>(bullet_controller_storage.data());
+    dispatch_test_bullets = ::new (static_cast<void*>(bullet_controller_storage.data())) BulletController();
+    dispatch_test_bullets_alternate = ::new (static_cast<void*>(alternate_bullet_controller_storage.data())) BulletController();
     dispatch_test_lasers = reinterpret_cast<LaserController*>(laser_controller_storage.data());
     context.current_player = &player_record;
     context.enemies = &controller;
     context.primary_owner = dispatch_test_bullets;
+    alternate_context.enemies = &alternate_controller;
+    alternate_context.primary_owner = dispatch_test_bullets_alternate;
     session.contexts[0].primary_owner = dispatch_test_bullets;
     context.object_14 = dispatch_test_lasers;
     session.contexts[0].object_14 = dispatch_test_lasers;
     enemy.state.context = &context;
     session.contexts[0].enemies = &controller;
+    dispatch_operand_original_context = &context;
+    dispatch_operand_alternate_context = &alternate_context;
+    dispatch_operand_state = &enemy.state;
+    dispatch_operand_alternate_enemy_controller = &alternate_controller;
+    dispatch_operand_alternate_bullet_controller = dispatch_test_bullets_alternate;
     selected_test_enemy = &enemy;
     Card card;
     context.card_owner = &card;
@@ -921,6 +977,104 @@ int main() {
     assert(dispatch_identifier_calls == 2 && dispatch_identifier_value == 0u);
     assert(enemy.main.stack.local(0) == 0u);
 
+    // Opcode 553 writes the complete unsigned word through the real
+    // EnemyController setter. Its receiver is cached before VM operand 0.
+    controller.data.field_88 = 0x12345678u;
+    set_packet(553, {0x87654321u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.data.field_88 == 0x87654321u);
+
+    controller.data.field_88 = 0x11223344u;
+    alternate_controller.data.field_88 = 0x55667788u;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = static_cast<std::int32_t>(0x89abcdefu);
+    dispatch_integer_read_hook = &retarget_enemy_controller_during_integer_read;
+    set_packet(553, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(controller.data.field_88 == 0x89abcdefu);
+    assert(alternate_controller.data.field_88 == 0x55667788u);
+    assert(context.enemies == &alternate_controller && enemy.state.context == &alternate_context);
+    dispatch_integer_read_hook = nullptr;
+    context.enemies = &controller;
+    enemy.state.context = &context;
+
+    controller.data.field_88 = 0x76543210u;
+    dispatch_integer_read_hook = &throw_during_integer_read;
+    set_packet(553, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+    bool opcode553_threw = false;
+    try { (void)enemy.state.execute_opcode(); }
+    catch (int value) { opcode553_threw = value == 553; }
+    assert(opcode553_threw && controller.data.field_88 == 0x76543210u);
+    dispatch_integer_read_hook = nullptr;
+
+    // Opcode 554 caches the real BulletController before reading Y then X.
+    // Its production 39-byte setter may change only the two Vector2 words.
+    dispatch_test_bullets->vector_4c = {1.25f,2.5f};
+    dispatch_test_bullets_alternate->vector_4c = {3.75f,4.5f};
+    std::vector<std::uint8_t> bullet_owner_before(sizeof(BulletController));
+    std::vector<std::uint8_t> alternate_bullet_before(sizeof(BulletController));
+    std::memcpy(bullet_owner_before.data(), dispatch_test_bullets, bullet_owner_before.size());
+    std::memcpy(alternate_bullet_before.data(), dispatch_test_bullets_alternate, alternate_bullet_before.size());
+    set_packet(554, {bits(12.5f),bits(-7.25f),0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_test_bullets->vector_4c.x == 12.5f);
+    assert(dispatch_test_bullets->vector_4c.y == -7.25f);
+    const auto* bullet_owner_base = reinterpret_cast<const std::uint8_t*>(dispatch_test_bullets);
+    const auto vector_offset = static_cast<std::size_t>(
+        reinterpret_cast<const std::uint8_t*>(&dispatch_test_bullets->vector_4c) - bullet_owner_base);
+    const auto* bullet_owner_after = bullet_owner_base;
+    const auto* alternate_bullet_after = reinterpret_cast<const std::uint8_t*>(dispatch_test_bullets_alternate);
+    for (std::size_t i=0; i<bullet_owner_before.size(); ++i) {
+        if (i < vector_offset || i >= vector_offset + sizeof(Vector2))
+            assert(bullet_owner_before[i] == bullet_owner_after[i]);
+        assert(alternate_bullet_before[i] == alternate_bullet_after[i]);
+    }
+
+    // Retarget both the original Context slot and EnemyState::context during
+    // the first (Y) read. The original cached BulletController must still be
+    // the only owner modified, and the VM references expose Y-before-X.
+    dispatch_test_bullets->vector_4c = {5.0f,6.0f};
+    dispatch_test_bullets_alternate->vector_4c = {7.0f,8.0f};
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {-7.25f,12.5f};
+    dispatch_float_read_hook = &retarget_bullet_controller_during_first_float_read;
+    set_packet(554, {bits(-102.0f),bits(-101.0f),0,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(dispatch_test_bullets->vector_4c.x == 12.5f);
+    assert(dispatch_test_bullets->vector_4c.y == -7.25f);
+    assert(dispatch_test_bullets_alternate->vector_4c.x == 7.0f);
+    assert(dispatch_test_bullets_alternate->vector_4c.y == 8.0f);
+    assert(context.primary_owner == dispatch_test_bullets_alternate);
+    assert(enemy.state.context == &alternate_context);
+    dispatch_float_read_hook = nullptr;
+    context.primary_owner = dispatch_test_bullets;
+    enemy.state.context = &context;
+
+    // Either operand exception prevents the native setter from running.
+    for (std::int32_t throw_at=1; throw_at<=2; ++throw_at) {
+        dispatch_test_bullets->vector_4c = {21.0f,22.0f};
+        dispatch_test_bullets_alternate->vector_4c = {31.0f,32.0f};
+        dispatch_float_read_calls = 0;
+        dispatch_float_throw_at = throw_at;
+        dispatch_float_read_hook = &throw_during_float_read;
+        set_packet(554, {bits(-102.0f),bits(-101.0f),0,0,0,0,0,0}, 3);
+        bool opcode554_threw = false;
+        try { (void)enemy.state.execute_opcode(); }
+        catch (int value) { opcode554_threw = value == 554; }
+        assert(opcode554_threw);
+        assert(dispatch_test_bullets->vector_4c.x == 21.0f);
+        assert(dispatch_test_bullets->vector_4c.y == 22.0f);
+        assert(dispatch_test_bullets_alternate->vector_4c.x == 31.0f);
+        assert(dispatch_test_bullets_alternate->vector_4c.y == 32.0f);
+    }
+    dispatch_float_read_hook = nullptr;
+    context.primary_owner = dispatch_test_bullets;
+    enemy.state.context = &context;
+
     // Opcode 551 reads integers 0/1/2 then floats 4/3, builds the actual
     // FogValue (B,G,R,A byte lanes) and publishes it through the live Stage.
     fog_set_calls = 0;
@@ -985,5 +1139,8 @@ int main() {
     assert((dispatch_order == std::array<std::int32_t,4>{1,2,3,0}));
     assert(std::abs(animation_spawn_rotation - 0.9272952f) < 0.00001f);
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    dispatch_test_bullets_alternate->~BulletController();
+    dispatch_test_bullets->~BulletController();
+
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
