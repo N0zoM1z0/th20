@@ -1,4 +1,4 @@
-# SoundInf command enqueue — 328B native C++ source frontier
+# SoundInf command enqueue — 328B strict-exact C++ reconstruction
 
 The original `SoundInf::enqueue` at `0x00428C90` is the shared command-queue
 writer used by the music/voice path in the 626-byte FrontInf dialogue-command
@@ -21,13 +21,20 @@ actual `SoundInf::commands` member and a narrow
 calls. The view's `operator[]` at `0x004260D0` is a separate 23-byte strict
 exact helper with the native `0x10c` `SoundCommand` stride.
 
-## Parent remains NONEXACT
+## Complete parent strict replay
 
-The original `SoundInf::enqueue` extent is 328 bytes. The current pinned MSVC
-C++ candidate contributes 324 bytes; the remaining four-byte control-flow
-shape difference is intentionally left visible. There is no strict parent
-match unit or exact-byte credit. The implementation is ordinary C++ and uses
-no assembly, padding, or post-return bytes.
+The original `SoundInf::enqueue` extent is 328 bytes. The maintained natural
+C++ `for` loop, with each native indexed-view access kept at its original
+source site, now contributes the complete 328-byte function. All 15 relocation
+anchors replay to their original targets: the EH handler and security cookie,
+slot-11 lock acquisition, five command-array indexed accesses, secure name
+copy, exact diagnostic literal and hook, lock-guard destruction, and final
+security-cookie check. The whole body is admitted as a strict match.
+
+The implementation remains ordinary C++ with no assembly, padding, or
+post-return bytes. The source-level owner attribution is still conservative:
+the native `SoundInf` receiver is proven, while original file/class spelling
+and authored provenance remain unclaimed.
 
 `scripts/verify-sound-inf-enqueue.py` runs an ASan/UBSan host test covering
 first-free insertion, the 31-entry limit, queue-full behavior, slot reuse,

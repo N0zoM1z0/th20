@@ -32077,6 +32077,33 @@ target_address = 0x004260D0
 size = 23
 relocations = []
 
+# CORE/RECON-1209: complete native SoundInf command enqueue writer.
+[units.sound_inf_enqueue328]
+source = "src/SoundInfEnqueue323.cpp"
+object = "build/gpt-web-sound-canonical/SoundInfEnqueue323.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::SoundInf::enqueue"]
+symbol = "?enqueue@SoundInf@th20@@QAEXHHPBD@Z"
+target_address = 0x00428C90
+size = 328
+relocations = [
+  { offset = 0x06, type = "DIR32", symbol = "__ehhandler$?enqueue@SoundInf@th20@@QAEXHHPBD@Z", target = 0x0056824D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x33, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x3C, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x77, type = "REL32", symbol = "??ANativeSoundCommandArrayView@th20@@QAEAAUSoundCommand@1@I@Z", target = 0x004260D0 },
+  { offset = 0x95, type = "REL32", symbol = "??ANativeSoundCommandArrayView@th20@@QAEAAUSoundCommand@1@I@Z", target = 0x004260D0 },
+  { offset = 0xB1, type = "REL32", symbol = "??ANativeSoundCommandArrayView@th20@@QAEAAUSoundCommand@1@I@Z", target = 0x004260D0 },
+  { offset = 0xD7, type = "REL32", symbol = "??ANativeSoundCommandArrayView@th20@@QAEAAUSoundCommand@1@I@Z", target = 0x004260D0 },
+  { offset = 0xE0, type = "REL32", symbol = "_strcpy_s", target = 0x00548610 },
+  { offset = 0xFA, type = "REL32", symbol = "??ANativeSoundCommandArrayView@th20@@QAEAAUSoundCommand@1@I@Z", target = 0x004260D0 },
+  { offset = 0x111, type = "DIR32", symbol = "$SG169540", target = 0x0056E034 },
+  { offset = 0x116, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x128, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x13E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
 # GPT-WEB: borrowed FrontInf message AnimationFile field getter.
 [units.front_dialogue_message_file20]
 source = "src/FrontDialogueFieldViews.cpp"

@@ -1795,3 +1795,4 @@ th20::NativeCardStageVoiceFlagsView::slot_411c10
 th20::NativeCardStageVoiceOwnerView::stage_voice_flags_640e0
 th20::Graphics::play_front_dialogue_voice_4d9b50
 th20::LaserController::cancel_all
+th20::SoundInf::enqueue

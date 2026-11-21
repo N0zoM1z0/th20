@@ -870,7 +870,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00428C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428C60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428C80,library,STL,exclude,high,"CORE/RECON-810; docs/ANIMATION_TEXTURE_LOOKUP_60_STL_ARRAY_34_16_EXACT.md; independently corrected old auto function 13B to full original 16B by real ret 0x00428C8F, genuine MSVC std::array<AnimationFile*,42>::_Xran, true original 30B library string and two physical PE HIGHLOW/E8 fields, whole code strict but game credit excluded"
-0x00428C90,unknown,SoundInf,review,pending,"CORE/RECON-1204; docs/SOUND_INF_ENQUEUE_323_NATIVE_FRONTIER.md; queue protocol and 324/328 natural C++ source frontier are established; original core/sound.cpp source owner remains inferred and four native control-flow bytes remain unmatched"
+0x00428C90,unknown,SoundInf,review,pending,"CORE/RECON-1209; docs/SOUND_INF_ENQUEUE_323_NATIVE_FRONTIER.md; complete 328-byte queue writer and all 15 native relocation anchors strictly replay; original source file/class spelling and authored provenance remain unproven"
 0x00428DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428E50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
