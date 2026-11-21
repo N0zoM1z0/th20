@@ -31,6 +31,9 @@
 
 namespace th20 {
 
+int execute_enemy_animation_secondary_opcode(EnemyState& state);
+int execute_enemy_animation_state_opcode(EnemyState& state);
+
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
     // runtime. The original packet, including any trailing payload, remains
@@ -75,6 +78,12 @@ int EnemyState::execute_opcode() {
     // Native case 2 is the complete animation-link creation operation.
     case 303:
         return spawn_animation();
+    // Native case 3 (306) creates the secondary animation and publishes its
+    // state only for link zero; case 7 (313) uses field_28 + 5 as its script.
+    case 306:
+        return execute_enemy_animation_secondary_opcode(*this);
+    case 313:
+        return execute_enemy_animation_state_opcode(*this);
     default:
         break;
     }

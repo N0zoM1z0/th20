@@ -63,6 +63,20 @@ source fragments.
   its leading handle address; this does not assert the original type name. Both
   functions have strict byte/relocation matches, while their original source
   origin remains unclassified and no authored-byte credit is claimed.
+- Native switch case `3` (opcode 306) now reconstructs the second animation
+  creation path. It uses integer operands 0/1 as link index/script, retires and
+  replaces the PMR link with a flag-2 animation, refreshes dimensions and
+  conditionally clears recursive flag 0. For link zero it additionally sets
+  `flags.word_04` bit 4 and publishes `field_28 = script`, `field_2c = 0`,
+  `field_24 = script`, and `field_20 = field_1c`. Unlike opcode 303, this native
+  path does not reject a negative script before calling `spawn_flag2`.
+- Native switch case `7` (opcode 313) now restores the related animation path
+  using integer operand 0 as the link index and `field_28 + 5` as the script.
+  It shares the PMR handle retirement/replacement, primary-dimension refresh
+  and conditional recursive flag-clear sequence, but does not publish the
+  opcode-306 secondary-state fields. These two inline case bodies are restored
+  in natural C++; the 41,967-byte root remains NONEXACT and no separate byte
+  credit is claimed for inline code.
 - Native switch case `1` now restores opcode 302 as the scalar field setter:
   `field_1c = integer_argument(0)`. This matches the native `FUN_004AB080`
   argument read followed by the store at EnemyState offset `0x1C`.

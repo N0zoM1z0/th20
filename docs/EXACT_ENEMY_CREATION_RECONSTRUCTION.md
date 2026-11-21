@@ -116,6 +116,17 @@ for the spawn call and, for index zero, once more for `field_24`; these are
 three distinct native evaluations. The primary animation then supplies height
 and width for `vector_170`.
 
+The same dispatcher table also has two related inline animation-create
+operations, now restored in `src/EnemyStateAnimationCreateOpcode.cpp`: opcode
+306 takes its script from integer operand 1 and, for link zero, publishes the
+secondary animation identity/flag fields; opcode 313 takes its script from
+`field_28 + 5`. Both replace a PMR `EnemyAnimationLink`, create via
+`AnimationFile::spawn_flag2`, refresh the primary dimensions for link zero and
+conditionally clear recursive flag 0. The 306/313 paths do not share opcode
+303 negative-script guard. These are inline regions of the large dispatcher,
+not separately bounded native functions, so they receive semantic progress
+only and no independent strict-byte credit.
+
 The 50-byte native `0x00450120` helper is also strict exact in
 `src/EnemyAnimationLinkClearFlag.cpp`: it resolves the link leading handle
 through `current_animation_pool` and clears Animation flag bit zero recursively

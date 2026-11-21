@@ -26,20 +26,23 @@ folded implementations, and post-`ret` switch/padding data.
 
 The current workstream is the 41,967-byte `EnemyState::execute_opcode` at
 `0x0048C010`, with large native case families and their leaf callees as the
-priority. The maintained root routes opcode 302 to the native scalar field
-setter, the 13 animation-setter opcodes to the exact `EnemyState::change_animation`,
+priority. The maintained root routes opcode 302 to the native scalar field setter,
+the 13 animation-setter opcodes to the exact `EnemyState::change_animation`,
 direct spawn opcodes 300/301/304/305/321 to the 653-byte
-`EnemyState::spawn_from_opcode` semantic body, and opcode 303 to the new exact
+`EnemyState::spawn_from_opcode` semantic body, and opcode 303 to the exact
 398-byte `EnemyState::spawn_animation`. The spawn leaf remains NONEXACT: all
 19 relocation destinations and its 653-byte extent match, while 14 ordinary
 bytes differ in two float argument stack-slot/load sequences. Cases
-309/310/311/312 now use the exact 43-byte `EnemyController::selected(0)` guard
-and fall through to that spawn leaf only when the slot is empty. The 50-byte
+309/310/311/312 use the exact 43-byte `EnemyController::selected(0)` guard
+and fall through to that spawn leaf only when the slot is empty. Cases 306 and
+313 now restore the two adjacent inline animation-create variants, including
+their distinct script sources and link-zero state publication. The 50-byte
 `0x00450120` recursive flag-clear leaf is also strict exact. The 41,967-byte
-root remains NONEXACT. The EnemyState header include closure was replayed locally:
-125/125 units across 30 cold objects; no whole-graph cold replay was run. Next
-priority is resolving the 653-byte spawn leaf float argument order and
-continuing the remaining root case families.
+root remains NONEXACT. The EnemyState header include closure was replayed locally
+in the previous checkpoint: 125/125 units across 30 cold objects; this cpp-only
+change is being checked with its focused canonical units, not a whole-graph
+cold replay. Next priority is the neighboring 307/308/314/315 animation/effect
+paths and the remaining root case families.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 
