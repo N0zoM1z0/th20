@@ -31992,3 +31992,14 @@ size = 61
 relocations = [
   { offset = 0x30, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHPBUVector3@2@MHIPAPAVAnimation@2@@Z", target = 0x00450CB0 },
 ]
+
+# GPT-WEB: native Enemy flag-word bit-9 setter used by opcode 340.
+[units.enemy_state_flag_04_bit_9]
+source = "src/EnemyStateFlagBit9.cpp"
+object = "build/gpt-web-enemy-canonical/EnemyStateFlagBit9.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::set_enemy_state_flag_04_bit_9"]
+symbol = "?set_enemy_state_flag_04_bit_9@th20@@YIXPAUEnemy@1@@Z"
+target_address = 0x00497240
+size = 35
+relocations = []

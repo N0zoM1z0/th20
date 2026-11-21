@@ -47,8 +47,10 @@ addition was followed by a focused include-closure replay: 345/345 units across
 aliases 181/193/41 restore handle interruption and primary-link reset. Cases
 320/322/323, the selected-Enemy-position query aliases 17/21/25/45/260, flag
 cases 341/342/343 and identifier-exists aliases 44/73/344 are now also
-restored. Next priority is the remaining inline effect/animation cases
-334/338/339/340 and larger root case families beyond this cluster.
+restored. Cases 338/339/340 now restore positioned effect-animation creation, the
+spawn-and-update loop, and selected-Enemy flag-bit-9 publication; the 35-byte
+`0x00497240` setter is strict exact. The next priority is opcode 334 (the
+remaining EffectInfo scheduled-effect path) and larger root case families.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 

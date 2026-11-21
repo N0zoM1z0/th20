@@ -45,6 +45,10 @@ int execute_enemy_animation_state_selectors_opcode(EnemyState& state);
 int execute_enemy_selected_position_opcode(EnemyState& state);
 int execute_enemy_animation_flags_opcode(EnemyState& state, std::int32_t opcode);
 int execute_enemy_has_selected_identifier_opcode(EnemyState& state);
+int execute_enemy_effect_position_spawn_opcode(EnemyState& state);
+int execute_enemy_effect_spawn_and_update_opcode(EnemyState& state);
+int execute_enemy_set_found_flag_bit_9_opcode(EnemyState& state);
+void __fastcall set_enemy_state_flag_04_bit_9(Enemy* enemy);
 
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
@@ -130,6 +134,12 @@ int EnemyState::execute_opcode() {
         return execute_enemy_animation_flags_opcode(*this, opcode);
     case 44: case 73: case 344:
         return execute_enemy_has_selected_identifier_opcode(*this);
+    case 338:
+        return execute_enemy_effect_position_spawn_opcode(*this);
+    case 339:
+        return execute_enemy_effect_spawn_and_update_opcode(*this);
+    case 340:
+        return execute_enemy_set_found_flag_bit_9_opcode(*this);
     default:
         break;
     }

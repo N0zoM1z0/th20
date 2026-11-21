@@ -100,6 +100,18 @@ source fragments.
   corresponding low bits in `flags.word_08`. Case `25` (opcodes 44/73/344)
   writes whether the integer-operand-1 identifier resolves through
   `EnemyController::find` into integer destination zero.
+- Native case `19` (opcode 338) builds a position from float operands 2/3,
+  adds the current EnemyState position, then spawns a positioned flag-2
+  animation using file operand 0, script operand 1 and rotation operand 4. The
+  resulting handle is published through `EffectInfo`.
+- Native case `20` (opcode 339) creates a null-position flag-2 animation from
+  file/script operands 0/1, publishes its handle, resolves it and invokes the
+  actual `Animation::update` once per operand-2 iteration. The native loop
+  re-reads operand 2 on each condition check; the source preserves that order.
+- Native case `21` (opcode 340) resolves an Enemy by identifier operand 0 and,
+  when found, sets its `EnemyState::flags.word_04` bit 9. The 35-byte
+  `0x00497240` fastcall leaf is now strict exact in
+  `src/EnemyStateFlagBit9.cpp`; its source owner/origin remains provisional.
 - Native switch case `10` maps opcodes `48/173/177/201/316` to a further
   indexed animation replacement path, now restored in
   `src/EnemyStateAnimationVariantOpcode.cpp`. Operand 0 selects the link; a
