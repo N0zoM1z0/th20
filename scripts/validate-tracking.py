@@ -299,11 +299,21 @@ def main() -> int:
             if row["name"] not in implemented:
                 raise ValueError(f"matches.csv:{line}: exact row lacks source-present evidence")
             exact.add(value)
+        # matches.csv is the authored exact-credit ledger, not a list of every
+        # byte-identical source body. Shared/folded template and forwarding
+        # aliases can be 100% matching while their original game-owned source
+        # identity remains unknown; those stay in functions.csv as matching
+        # but must not receive authored byte credit until origin/owner proof.
         ledger_exact = {
-            value for value, row in functions.items() if row["status"] == "matching"
+            value for value, row in functions.items()
+            if row["status"] == "matching"
+            and origins[value]["disposition"] == "authored"
+            and row["owner"] == "authored"
         }
         if exact != ledger_exact:
-            raise ValueError("matches.csv and functions.csv matching statuses differ")
+            raise ValueError(
+                "matches.csv and authored matching functions.csv rows differ"
+            )
     except (
         OSError, KeyError, TypeError, ValueError, subprocess.CalledProcessError,
         tomllib.TOMLDecodeError,
