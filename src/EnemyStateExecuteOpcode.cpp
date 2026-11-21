@@ -8,6 +8,7 @@
 #include "EnemyStatePatternOpcode.hpp"
 #include "EnemyStateControlOpcode.hpp"
 #include "EnemyStateDynamicParameterOpcode.hpp"
+#include "EnemyStateControllerManagementOpcode.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
@@ -43,6 +44,9 @@ int EnemyState::execute_opcode() {
         return 0;
     if (execute_enemy_dynamic_parameter_opcode(*this, opcode))
         return 0;
+    std::int32_t controller_result = 0;
+    if (execute_enemy_controller_management_opcode(*this, opcode, controller_result))
+        return controller_result;
 
     // Independently reconstructed inline case families. Each helper returns
     // false without reading operands when the opcode is outside its family.

@@ -53,7 +53,7 @@ canonically accepted.
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
 - **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199
   added the partial natural-C++ root entry and wired the complete 400–448 movement
-  family, nine Pattern cases, 20 bounds/health/controller/state cases, four
+  family, nine Pattern cases, 20 bounds/health/controller/state cases and five controller selection/clear callers, four
   indexed parameter-copy cases, and the independently maintained opcode fragments.
   The root remains incomplete/NONEXACT;
   continue restoring the other inline case families and

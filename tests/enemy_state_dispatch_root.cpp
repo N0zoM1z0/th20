@@ -6,6 +6,7 @@
 #include "EnemyStateMovementOpcode.hpp"
 #include "EnemyStatePatternOpcode.hpp"
 #include "EnemyStateControlOpcode.hpp"
+#include "EnemyStateControllerManagementOpcode.hpp"
 #include "PlayerRecord.hpp"
 #include "Session.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
@@ -51,7 +52,12 @@ void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
 std::int32_t Enemy::read_integer(std::int32_t) { return 0; }
 float Enemy::read_float(std::int32_t) { return 0.0f; }
 Player* Context::player() { return nullptr; }
-Enemy* EnemyController::find(std::uint32_t) { return nullptr; }
+Enemy* selected_test_enemy = nullptr;
+Enemy* EnemyController::find(std::uint32_t identifier) {
+    return selected_test_enemy && selected_test_enemy->state.identifier.get() == identifier
+        ? selected_test_enemy : nullptr;
+}
+void AnimationHandle::retire() {}
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
@@ -76,6 +82,8 @@ int main() {
     EnemyController controller;
     context.current_player = &player_record;
     context.enemies = &controller;
+    session.contexts[0].enemies = &controller;
+    selected_test_enemy = &enemy;
     enemy.state.context = &context;
     enemy.state.identifier = 0x12345678u;
     EclLoader loader;
@@ -283,6 +291,63 @@ int main() {
     assert(enemy.state.execute_opcode() == 0);
     assert(player_record.field_e0 == 7 && enemy.state.field_284 == 6);
 
+    // Opcode 520 returns -1 on the first selected handle among slots 0..2.
+    for (std::uint32_t selected_slot = 0; selected_slot < 3; ++selected_slot) {
+        for (auto& handle : controller.data.handles) handle.value = 0;
+        controller.data.handles[selected_slot].value = enemy.state.identifier.get();
+        set_packet(520, {0,0,0,0,0,0,0,0});
+        assert(enemy.state.execute_opcode() == -1);
+    }
+    for (auto& handle : controller.data.handles) handle.value = 0;
+    set_packet(520, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+
+    // Drive the already exact 501B/521B/514B/526B controller clear leaves
+    // over a real linked Enemy, keeping its Animation list empty so the only
+    // stubbed leaf is the external animation-handle retirement boundary.
+    controller.enemies.prepend(&enemy.controller_link);
+    enemy.state.flags.word_00 = 0;
+    enemy.state.flags.word_04 = 0;
+    enemy.state.field_284 = 42;
+    enemy.state.field_27c = 8;
+    enemy.state.field_30 = 17;
+    enemy.state.vector_6c = {5.0f,6.0f,0.0f};
+    enemy.state.pattern.radius_x = 4.0f;
+    enemy.state.pattern.radius_y = 9.0f;
+    const auto timer_before_clear = controller.data.timer_8c.current;
+    set_packet(525, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.data.timer_8c.current == timer_before_clear + 1);
+    assert(enemy.state.field_284 == 0 && enemy.state.vector_6c.x == 0.0f && enemy.state.vector_6c.y == 192.0f);
+    assert(enemy.state.pattern.radius_x == 32.0f && enemy.state.pattern.radius_y == 32.0f);
+    assert(enemy.state.flags.word_04 & 0x200u);
+
+    enemy.state.field_284 = 43;
+    enemy.state.vector_6c = {7.0f,8.0f,0.0f};
+    set_packet(545, {17,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.data.timer_8c.current == timer_before_clear + 2);
+    assert(enemy.state.field_284 == 0 && enemy.state.vector_6c.x == 0.0f && enemy.state.vector_6c.y == 192.0f);
+
+    enemy.state.field_284 = 44;
+    enemy.state.field_27c = 9;
+    set_packet(565, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.data.timer_8c.current == timer_before_clear + 3);
+    assert(enemy.state.field_284 == 0 && enemy.state.field_27c == -1);
+
+    enemy.state.flags.word_04 |= 1u << 30;
+    enemy.state.field_284 = 45;
+    set_packet(573, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.data.timer_8c.current == timer_before_clear + 4);
+    assert(enemy.state.field_284 == 45);
+    enemy.state.flags.word_04 &= ~(1u << 30);
+    set_packet(573, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.data.timer_8c.current == timer_before_clear + 5);
+    assert(enemy.state.field_284 == 0);
+
     for (std::int32_t selector = 0; selector < 4; ++selector) {
         enemy.state.field_50 = selector;
         set_packet(529, {static_cast<std::uint32_t>(-9985),101,102,103,104,0,0,0,0}, 1);
@@ -308,5 +373,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

@@ -29,6 +29,9 @@ source fragments.
 - `src/EnemyStateDynamicParameterOpcode.cpp` restores the 4-way/8-way integer
   and float copy cases 529/530/570/571, preserving the ECL reference-bit and
   negative manager-variable destination path for operand 0.
+- `src/EnemyStateControllerManagementOpcode.cpp` restores selection/clear
+  cases 520/525/545/565/573. Opcode 520 propagates its special `-1` return;
+  the other four call the real 501B/521B/514B/526B EnemyController clear leaves.
 - The root now also routes to the maintained phase, card-start, controller
   setter, fog, membership, mesh, animation-spawn, queued-shot, script-pointer,
   shot-fire, shot-command, laser-parameter, and laser-creation opcode fragments.
