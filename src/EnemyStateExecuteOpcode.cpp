@@ -6,6 +6,7 @@
 #include "EclRuntime.hpp"
 #include "EnemyStateMovementOpcode.hpp"
 #include "EnemyStatePatternOpcode.hpp"
+#include "EnemyStateControlOpcode.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
@@ -36,6 +37,8 @@ int EnemyState::execute_opcode() {
     if (execute_enemy_movement_opcode(*this, opcode))
         return 0;
     if (execute_enemy_pattern_opcode(*this, opcode))
+        return 0;
+    if (execute_enemy_control_opcode(*this, opcode))
         return 0;
 
     // Independently reconstructed inline case families. Each helper returns

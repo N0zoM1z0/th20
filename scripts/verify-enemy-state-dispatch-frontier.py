@@ -17,7 +17,8 @@ NATIVE_SHA256='e6874e1ee7d7def173d3c4af12934573812db26a5572987ec0fa6fafb24a73f0'
 HOST_SOURCES=[
     'tests/enemy_state_dispatch_root.cpp',
     'src/EnemyStateExecuteOpcode.cpp', 'src/EnemyStateMovementOpcode.cpp',
-    'src/EnemyStatePatternOpcode.cpp', 'src/Session.cpp',
+    'src/EnemyStatePatternOpcode.cpp', 'src/EnemyStateControlOpcode.cpp', 'src/Session.cpp',
+    'src/EnemyControllerConstruction.cpp', 'src/EnemyInitialization.cpp', 'src/EnemyData.cpp',
     'src/EnemyState.cpp', 'src/EnemyMovement.cpp', 'src/Enemy.cpp', 'src/PlayerRecord.cpp',
     'src/EnemyScript.cpp', 'src/EnemyVariables.cpp', 'src/EnemySpawn.cpp',
     'src/EnemyHealth.cpp', 'src/EnemyPattern.cpp', 'src/EnemyCounters.cpp',
@@ -30,7 +31,7 @@ HOST_SOURCES=[
     'src/GameRandomStream.cpp', 'src/GameRandomAngle.cpp', 'src/ScriptStack.cpp',
     'src/ScriptStackCopy.cpp', 'src/Identifier32.cpp', 'src/DiagnosticAllocator.cpp',
     'src/DebugMemoryResource.cpp', 'src/LockRegistry.cpp', 'src/Worker.cpp',
-    'src/Context.cpp', 'src/MeshInterfaces.cpp', 'src/TaskInfoConstruction.cpp',
+    'src/Context.cpp', 'src/MeshInterfaces.cpp', 'src/TaskInfoConstruction.cpp', 'src/TaskInfo.cpp', 'src/FunctionChain.cpp',
     'src/EclDiagnostic.cpp',
 ]
 
@@ -69,12 +70,44 @@ def main() -> None:
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
 
+    control_cases={
+        500:(50,0x00490B7B,0x00490C07,[0x004AAFB0,0x004AAFB0,0x0041CAF0,0x00497CC0]),
+        501:(51,0x00490C07,0x00490C38,[0x004AAFB0,0x004AAFB0]),
+        504:(54,0x004908D4,0x00490958,[0x004AAFB0,0x004AAFB0,0x004AAFB0,0x004AAFB0]),
+        505:(55,0x00490958,0x00490978,[]),
+        511:(61,0x00491BF6,0x00491CE5,[0x004AB080,0x0045D650,0x0040C300,0x00411570,0x0040C300,0x0049C4E0,0x0040C300,0x0049C340]),
+        512:(62,0x00491D39,0x00491E60,[0x004AB080,0x00412730,0x0049C4B0,0x00412730,0x0049C2E0,0x00412730,0x0049C2E0]),
+        513:(63,0x00493B5B,0x00493B74,[0x00423520]),
+        515:(65,0x00491E60,0x00491E85,[0x004AB080,0x00423520]),
+        526:(76,0x00490978,0x004909C0,[0x004AAFB0]),
+        535:(81,0x00491E85,0x00491EAA,[0x004AB080,0x00423520]),
+        543:(89,0x00495D20,0x00495D64,[0x004AB080]),
+        544:(90,0x00495D64,0x00495D7F,[0x004AB080]),
+        546:(92,0x0048C211,0x0048C22C,[0x004AB080]),
+        547:(93,0x0048C22C,0x0048C24A,[0x004AB080]),
+        557:(103,0x00490D90,0x00490DD3,[0x004AB080]),
+        558:(104,0x00490DD3,0x00490DEE,[0x004AAFB0]),
+        559:(105,0x00490DEE,0x00490E09,[0x004AAFB0]),
+        566:(112,0x00491CE5,0x00491D39,[0x004AB080,0x0045D650,0x0040C300,0x0049C340]),
+    }
+    for opcode,(index,start,end,expected_calls) in control_cases.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        instructions=list(decoder.disasm(body,start))
+        assert instructions and instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
+
     root=(ROOT/'src/EnemyStateExecuteOpcode.cpp').read_text()
     movement=(ROOT/'src/EnemyStateMovementOpcode.cpp').read_text()
     pattern=(ROOT/'src/EnemyStatePatternOpcode.cpp').read_text()
+    control=(ROOT/'src/EnemyStateControlOpcode.cpp').read_text()
     assert 'entity->current_runtime->current()' in root
     assert 'execute_enemy_movement_opcode(*this, opcode)' in root
     assert 'execute_enemy_pattern_opcode(*this, opcode)' in root
+    assert 'execute_enemy_control_opcode(*this, opcode)' in root
     assert 'if (opcode == 560 && entity->defeat())' in root
     assert 'return 1;' in root
     assert 'return 0;' in root
@@ -95,7 +128,9 @@ def main() -> None:
     assert set(pattern_labels)=={506,507,508,509,510,556,567,568,572},pattern_labels
     assert 'session.field_70_is_two()' in pattern
     assert 'state.pattern.drop(origin, bomb_mark)' in pattern
-    for source in (root,movement,pattern):
+    control_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',control)]
+    assert set(control_labels)=={500,501,504,505,511,512,513,515,526,535,543,544,546,547,557,558,559,566},control_labels
+    for source in (root,movement,pattern,control):
         for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
             assert forbidden not in source
 
@@ -104,6 +139,7 @@ def main() -> None:
     for source,obj in (
         ('src/EnemyStateMovementOpcode.cpp','build/core209-canonical/EnemyStateMovementOpcode.obj'),
         ('src/EnemyStatePatternOpcode.cpp','build/core210-canonical/EnemyStatePatternOpcode.obj'),
+        ('src/EnemyStateControlOpcode.cpp','build/core211-canonical/EnemyStateControlOpcode.obj'),
         ('src/EnemyStateExecuteOpcode.cpp','build/core209-canonical/EnemyStateExecuteOpcode.obj'),
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
@@ -115,12 +151,13 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, two-player 509 gate and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
-    print('PASS full 49-opcode movement family 400-448, nine EnemyPattern cases and 14 existing opcode fragments wired')
-    print('PASS all three i386 COFF source units compile under locked MSVC profile')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for all 18 bounds/health/controller/state cases (1,415B/292 heads/42 calls)')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 18 control/state cases and 14 existing opcode fragments wired')
+    print('PASS all four i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 
