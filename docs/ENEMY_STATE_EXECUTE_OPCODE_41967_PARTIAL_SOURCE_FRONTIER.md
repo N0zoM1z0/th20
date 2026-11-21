@@ -77,6 +77,15 @@ source fragments.
   opcode-306 secondary-state fields. These two inline case bodies are restored
   in natural C++; the 41,967-byte root remains NONEXACT and no separate byte
   credit is claimed for inline code.
+- Native switch case `11` covers opcodes `181/193/317`: it selects the
+  `EnemyAnimationLink` by integer operand 0 and forwards operand 1 to the
+  existing exact `AnimationHandle::interrupt` wrapper at `0x0044EF90`, which
+  delegates to the real animation-pool descendant interrupt protocol.
+- Native switch case `12` covers opcodes `41/318`: it retires animation link
+  zero, spawns `field_28` from the controller file at `field_1c` with layer
+  `field_34 + 7` and flag 2, then resets `field_2c`, publishes `field_24` and
+  `field_20`, and clears `flags.word_04` bit 4. This path does not resolve the
+  new handle, refresh dimensions or run the recursive flag-0 clear.
 - Native switch case `10` maps opcodes `48/173/177/201/316` to a further
   indexed animation replacement path, now restored in
   `src/EnemyStateAnimationVariantOpcode.cpp`. Operand 0 selects the link; a

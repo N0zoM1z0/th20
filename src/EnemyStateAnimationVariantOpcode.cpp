@@ -42,3 +42,26 @@ int execute_enemy_animation_spawn_mapped(EnemyState& state) {
 }
 
 } // namespace th20
+
+namespace th20 {
+
+// Native jump-table case 12 covers opcodes 41 and 318. It replaces link zero
+// from field_28, resets the secondary animation identity and clears bit 4.
+int execute_enemy_animation_spawn_primary_from_field(EnemyState& state) {
+    auto& link = state.animations[0];
+    link.handle.retire();
+
+    auto* file = state.context->enemy_controller()->animation_file(state.field_1c);
+    const std::int32_t layer = static_cast<std::int32_t>(
+        static_cast<std::uint32_t>(state.field_34) + 7u);
+    const std::int32_t script = state.field_28;
+    link.handle = file->spawn_flag2(nullptr, script, layer, nullptr);
+
+    state.field_2c = 0;
+    state.field_24 = state.field_28;
+    state.field_20 = state.field_1c;
+    state.flags.word_04 &= ~0x10u;
+    return 0;
+}
+
+} // namespace th20

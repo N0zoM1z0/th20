@@ -38,6 +38,7 @@ int execute_enemy_animation_effect_spawn_opcode(EnemyState& state);
 int execute_enemy_animation_effect_flag2_handle_opcode(EnemyState& state);
 int execute_enemy_animation_effect_rotate_opcode(EnemyState& state);
 int execute_enemy_animation_spawn_mapped(EnemyState& state);
+int execute_enemy_animation_spawn_primary_from_field(EnemyState& state);
 
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
@@ -101,6 +102,16 @@ int EnemyState::execute_opcode() {
     // selector; its negative and nonnegative selector branches differ.
     case 48: case 173: case 177: case 201: case 316:
         return execute_enemy_animation_spawn_mapped(*this);
+    // Native case 11 interrupts the selected link; case 12 replaces link zero.
+    case 181: case 193: case 317: {
+        const std::int32_t index = integer_argument(0);
+        auto& link = animations[index];
+        const std::int32_t event = integer_argument(1);
+        link.handle.interrupt(event);
+        return 0;
+    }
+    case 41: case 318:
+        return execute_enemy_animation_spawn_primary_from_field(*this);
     default:
         break;
     }
