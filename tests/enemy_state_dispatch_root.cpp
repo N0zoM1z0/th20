@@ -5,6 +5,9 @@
 #include "AnimationHandleSetFlag0Recursive.hpp"
 #include "AnimationRuntimeOwner.hpp"
 #include "EnemyController.hpp"
+#include "AnimationFile.hpp"
+#include "FogValue.hpp"
+#include "StageResource.hpp"
 #include "Context.hpp"
 #include "DiagnosticAllocator.hpp"
 #include "LockRegistry.hpp"
@@ -45,6 +48,7 @@
 #include <iostream>
 #include <initializer_list>
 #include <algorithm>
+#include <cmath>
 
 namespace th20 {
 GameRandom script_random(1);
@@ -68,6 +72,30 @@ bool front_has_dialogue = false;
 std::int32_t sound_effect_calls = 0;
 std::int32_t sound_effect_id = -1;
 float sound_effect_x = 0.0f;
+std::array<std::int32_t,4> dispatch_order{};
+std::int32_t dispatch_order_size = 0;
+EnemyController* dispatch_test_enemy_controller = nullptr;
+AnimationFile* dispatch_test_animation_file = nullptr;
+std::int32_t animation_file_select_calls = 0;
+std::int32_t animation_file_select_index = -1;
+std::int32_t animation_spawn_calls = 0;
+const char* animation_spawn_stem = reinterpret_cast<const char*>(1);
+std::int32_t animation_spawn_script = -1;
+Vector3 animation_spawn_position{};
+float animation_spawn_rotation = 0.0f;
+std::int32_t animation_spawn_layer = -1;
+Animation** animation_spawn_output = reinterpret_cast<Animation**>(1);
+bool dispatch_identifier_result = false;
+std::int32_t dispatch_identifier_calls = 0;
+std::uint32_t dispatch_identifier_value = 0;
+std::int32_t fog_set_calls = 0;
+std::int32_t fog_set_duration = 0;
+std::int32_t fog_set_mode = 0;
+FogValue fog_set_value{};
+StageResourceOwner* process_stage_resource = nullptr;
+extern const float native_progress_mesh_alpha_fade_span_02_56fbf8 = 0.2f;
+extern const float native_negative_pi_56e0f8 = -3.1415927410125732f;
+extern const float native_screen_half_2_56c8d0 = 2.0f;
 bool front_dialogue_ready = false;
 std::int32_t front_dialogue_ready_calls = 0;
 std::int32_t front_dialogue_command_calls = 0;
@@ -142,6 +170,48 @@ Enemy* EnemyController::find(std::uint32_t identifier) {
     return selected_test_enemy && selected_test_enemy->state.identifier.get() == identifier
         ? selected_test_enemy : nullptr;
 }
+bool EnemyController::has_identifier(std::uint32_t identifier) {
+    assert(this == dispatch_test_enemy_controller);
+    ++dispatch_identifier_calls;
+    dispatch_identifier_value = identifier;
+    return identifier != 0 && dispatch_identifier_result;
+}
+AnimationFile* EnemyController::animation_file(std::int32_t index) {
+    assert(this == dispatch_test_enemy_controller);
+    ++animation_file_select_calls;
+    animation_file_select_index = index;
+    if (dispatch_order_size < static_cast<std::int32_t>(dispatch_order.size()))
+        dispatch_order[dispatch_order_size++] = 2;
+    return dispatch_test_animation_file;
+}
+AnimationFile::AnimationFile()
+    : id(0), filename(), stem(), bytes(nullptr), templates(nullptr),
+      texture_count(0), script_count(0), sprite_count(0), sprites(nullptr),
+      scripts(nullptr), textures(nullptr), stage(0), field_60(0), field_64(0),
+      field_68(0), field_6c(0) {}
+AnimationFile::~AnimationFile() = default;
+AnimationHandle AnimationFile::spawn(const char* expected_stem, std::int32_t script,
+    const Vector3& position, float rotation, std::int32_t layer, Animation** output) {
+    assert(this == dispatch_test_animation_file);
+    ++animation_spawn_calls;
+    animation_spawn_stem = expected_stem;
+    animation_spawn_script = script;
+    animation_spawn_position = position;
+    animation_spawn_rotation = rotation;
+    animation_spawn_layer = layer;
+    animation_spawn_output = output;
+    if (dispatch_order_size < static_cast<std::int32_t>(dispatch_order.size()))
+        dispatch_order[dispatch_order_size++] = 3;
+    return AnimationHandle{};
+}
+void StageResourceOwner::set_fog(std::int32_t duration, std::int32_t mode,
+                                 const FogValue& value) {
+    assert(this == process_stage_resource);
+    ++fog_set_calls;
+    fog_set_duration = duration;
+    fog_set_mode = mode;
+    fog_set_value = value;
+}
 void AnimationHandle::retire() {}
 Card::~Card() = default;
 void Card::finish_spell() { ++card_finish_spell_calls; }
@@ -160,6 +230,8 @@ extern "C" int strcpy_s(char* destination, std::size_t capacity, const char* sou
     return 0;
 }
 void SoundInf::request_effect_at(std::int32_t id, float x) {
+    if (dispatch_order_size < static_cast<std::int32_t>(dispatch_order.size()))
+        dispatch_order[dispatch_order_size++] = 1;
     ++sound_effect_calls;
     sound_effect_id = id;
     sound_effect_x = x;
@@ -209,10 +281,7 @@ std::int32_t FrontInf::dialogue_ready() {
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
-bool execute_enemy_animation_spawn_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_controller_setter_opcode(EnemyState&, std::int32_t) { return false; }
-bool execute_enemy_fog_opcode(EnemyState&, std::int32_t) { return false; }
-bool execute_enemy_membership_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_mesh_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queue_copy_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
@@ -231,7 +300,6 @@ int execute_enemy_animation_spawn_primary_from_field(EnemyState&) { return 0; }
 int execute_enemy_animation_link_offset_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_link_parent_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_state_selectors_opcode(EnemyState&) { return 0; }
-int execute_enemy_selected_position_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_flags_opcode(EnemyState&, std::int32_t) { return 0; }
 int execute_enemy_has_selected_identifier_opcode(EnemyState&) { return 0; }
 int execute_enemy_effect_position_request_opcode(EnemyState&) { return 0; }
@@ -297,9 +365,15 @@ int main() {
     assert(process_locks.slot(11).try_lock());
     process_locks.slot(11).unlock();
     Enemy enemy;
+    Enemy found_enemy;
     Context context;
     PlayerRecord player_record;
     EnemyController controller;
+    AnimationFile test_animation_file;
+    StageResourceOwner stage_resource{};
+    dispatch_test_enemy_controller = &controller;
+    dispatch_test_animation_file = &test_animation_file;
+    process_stage_resource = &stage_resource;
     dispatch_test_bullets = reinterpret_cast<BulletController*>(bullet_controller_storage.data());
     dispatch_test_lasers = reinterpret_cast<LaserController*>(laser_controller_storage.data());
     context.current_player = &player_record;
@@ -317,6 +391,8 @@ int main() {
     current_front = &front;
     enemy.state.context = &context;
     enemy.state.identifier = 0x12345678u;
+    found_enemy.state.identifier = 0x00000324u;
+    found_enemy.state.motion_110.position = {12.0f,34.0f,56.0f};
     EclLoader loader;
     alignas(16) std::array<std::uint8_t, 16 + 16 + 9 * 4> packet{};
     loader.records.push_back({"root-test", packet.data()});
@@ -363,6 +439,21 @@ int main() {
     set_packet(548, {});
     assert(enemy.state.execute_opcode() == 0);
     assert(front_stage_title_calls == 1);
+
+    // Opcode 324 resolves an Enemy by identifier and copies its XY position;
+    // when no Enemy matches, the exact fallback is this EnemyState's XY.
+    enemy.state.motion_110.position = {1.0f,2.0f,3.0f};
+    selected_test_enemy = &found_enemy;
+    set_packet(324, {bits(-9981.0f),bits(-9980.0f),0x00000324u,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.counters.field_10 == 12.0f);
+    assert(enemy.state.counters.field_14 == 34.0f);
+    selected_test_enemy = nullptr;
+    set_packet(324, {bits(-9981.0f),bits(-9980.0f),0x00000324u,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.counters.field_10 == 1.0f);
+    assert(enemy.state.counters.field_14 == 2.0f);
+    selected_test_enemy = &enemy;
 
     enemy.state.field_1c = 0x12345678;
     enemy.state.field_280 = -19;
@@ -813,5 +904,86 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, laser reset 539, bit flag 552, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    // Opcode 549 resolves Context/EnemyController before operand 1 and writes
+    // the bool result only after the exact membership leaf returns.
+    dispatch_identifier_calls = 0;
+    dispatch_identifier_result = true;
+    enemy.main.stack.words.clear();
+    set_packet(549, {0,0x12345678u,0,0,0,0,0,0}, 1);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_identifier_calls == 1);
+    assert(dispatch_identifier_value == 0x12345678u);
+    assert(enemy.main.stack.local(0) == 1u);
+    dispatch_identifier_result = false;
+    enemy.main.stack.words.clear();
+    set_packet(549, {0,0,0,0,0,0,0,0}, 1);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_identifier_calls == 2 && dispatch_identifier_value == 0u);
+    assert(enemy.main.stack.local(0) == 0u);
+
+    // Opcode 551 reads integers 0/1/2 then floats 4/3, builds the actual
+    // FogValue (B,G,R,A byte lanes) and publishes it through the live Stage.
+    fog_set_calls = 0;
+    set_packet(551, {17u,2u,0xa1b2c3d4u,bits(4.5f),bits(9.25f),0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(fog_set_calls == 1 && fog_set_duration == 17 && fog_set_mode == 2);
+    assert(fog_set_value.near_distance == 4.5f && fog_set_value.far_distance == 9.25f);
+    assert(fog_set_value.channels[0] == 0xd4 && fog_set_value.channels[1] == 0xc3);
+    assert(fog_set_value.channels[2] == 0xb2 && fog_set_value.channels[3] == 0xa1);
+    assert(fog_set_value.packed == 0xa1b2c3d4u);
+
+    // Opcode 555 has two independent signed gates. It may request sound only,
+    // spawn only, both in order, or neither; the spatial path uses layer 3.
+    sound_effect_calls = 0;
+    animation_file_select_calls = 0;
+    animation_spawn_calls = 0;
+    dispatch_order_size = 0;
+    enemy.state.field_250 = -1;
+    enemy.state.field_254 = -1;
+    set_packet(555, {});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(sound_effect_calls == 0 && animation_spawn_calls == 0);
+
+    enemy.state.field_250 = 23;
+    enemy.state.field_254 = -1;
+    enemy.state.motion_110.position.x = 12.5f;
+    set_packet(555, {});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(sound_effect_calls == 1 && sound_effect_id == 23 && sound_effect_x == 12.5f);
+    assert(animation_file_select_calls == 0 && animation_spawn_calls == 0);
+
+    enemy.state.field_250 = -1;
+    enemy.state.field_254 = 42;
+    enemy.state.field_258 = 6;
+    enemy.state.vector_6c = {1.0f,2.0f,0.0f};
+    enemy.state.motion_110.position = {1.1f,2.1f,0.0f};
+    set_packet(555, {});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(animation_file_select_calls == 1 && animation_file_select_index == 6);
+    assert(animation_spawn_calls == 1 && animation_spawn_script == 42);
+    assert(animation_spawn_stem == nullptr && animation_spawn_output == nullptr);
+    assert(animation_spawn_layer == 3);
+    assert(animation_spawn_position.x == 1.1f && animation_spawn_position.y == 2.1f);
+    assert(animation_spawn_rotation == native_negative_pi_56e0f8 / native_screen_half_2_56c8d0);
+
+    sound_effect_calls = 0;
+    animation_file_select_calls = 0;
+    animation_spawn_calls = 0;
+    dispatch_order_size = 0;
+    enemy.state.field_250 = 19;
+    enemy.state.field_254 = 44;
+    enemy.state.field_258 = 3;
+    enemy.state.vector_6c = {0.0f,0.0f,0.0f};
+    enemy.state.motion_110.position = {3.0f,4.0f,0.0f};
+    set_packet(555, {});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(sound_effect_calls == 1 && sound_effect_id == 19 && sound_effect_x == 3.0f);
+    assert(animation_file_select_calls == 1 && animation_file_select_index == 3);
+    assert(animation_spawn_calls == 1 && animation_spawn_script == 44);
+    assert(animation_spawn_layer == 3 && animation_spawn_output == nullptr);
+    assert(dispatch_order_size == 3);
+    assert((dispatch_order == std::array<std::int32_t,4>{1,2,3,0}));
+    assert(std::abs(animation_spawn_rotation - 0.9272952f) < 0.00001f);
+
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

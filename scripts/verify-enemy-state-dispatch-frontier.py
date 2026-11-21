@@ -36,6 +36,9 @@ HOST_SOURCES=[
     'src/Context.cpp', 'src/MeshInterfaces.cpp', 'src/TaskInfoConstruction.cpp', 'src/TaskInfo.cpp', 'src/FunctionChain.cpp',
     'src/EclDiagnostic.cpp',
     'src/EnemyStateDialogueOpcode.cpp',
+    'src/EnemyStateAnimationSpawnOpcode.cpp', 'src/EnemyStateFogOpcode.cpp',
+    'src/EnemyStateMembershipOpcode.cpp', 'src/GeometryMetrics.cpp',
+    'src/FogValue.cpp', 'src/EffectParameters.cpp',
     'src/SoundInfEnqueue323.cpp', 'src/NativeSoundCommandArrayView.cpp',
 ]
 
@@ -84,6 +87,22 @@ def main() -> None:
         body=pe.get_data(start-image_base,end-start)
         instructions=list(decoder.disasm(body,start))
         assert instructions and instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
+
+    selected_position_case={
+        324:(17,0x004960C1,0x004961D5,[0x00412730,0x004AB080,0x00498A80,
+            0x0047A2C0,0x004AA980,0x0047A2C0,0x004AA980,0x00499350,
+            0x004AA980,0x00499350,0x004AA980]),
+    }
+    for opcode,(index,start,end,expected_calls) in selected_position_case.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        instructions=list(decoder.disasm(body,start))
+        assert len(instructions)==53,(opcode,len(instructions))
+        assert instructions[-1].address+instructions[-1].size==end,(opcode,end)
         calls=[int(insn.op_str,16) for insn in instructions
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
@@ -158,6 +177,22 @@ def main() -> None:
         534:(80,0x00495773,0x0049579E,[0x004AB080,0x0049C720]),
         548:(94,0x0048C5C1,0x0048C5D2,[0x004B96F0]),
     }
+    extended_cases={
+        549:(95,0x00495D7F,0x00495DDE,[0x00412730,0x004AB080,0x0049BF00,0x004AA9E0]),
+        551:(97,0x00495C1F,0x00495D20,[0x00425CC0,0x004AB080,0x004AB080,0x004AB080,0x0045D650,0x004AAFB0,0x004AAFB0,0x004718D0,0x0049C5B0]),
+        555:(101,0x0048C3F4,0x0048C578,[0x004292E0,0x00426EB0,0x00499350,0x004560D0,0x00499350,0x0047A2E0,0x00412730,0x004AAE10,0x00499350,0x004790E0]),
+    }
+    for opcode,(index,start,end,expected_calls) in extended_cases.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        instructions=list(decoder.disasm(body,start))
+        expected_instruction_counts={549:20,551:58,555:81}
+        assert len(instructions)==expected_instruction_counts[opcode],(opcode,len(instructions))
+        assert instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
     for opcode,(index,start,end,expected_calls) in frontend_cases.items():
         assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
         assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
@@ -281,6 +316,14 @@ def main() -> None:
     assert 'return 1;' in root
     assert 'return 0;' in root
     assert 'if (execute_enemy_laser_opcode(*this, opcode))' in root
+    assert 'execute_enemy_animation_spawn_opcode(*this, opcode)' in root
+    assert 'execute_enemy_fog_opcode(*this, opcode)' in root
+    assert 'execute_enemy_membership_opcode(*this, opcode)' in root
+    assert 'if (opcode != 555)' in (ROOT/'src/EnemyStateAnimationSpawnOpcode.cpp').read_text()
+    fog_source=(ROOT/'src/EnemyStateFogOpcode.cpp').read_text()
+    membership_source=(ROOT/'src/EnemyStateMembershipOpcode.cpp').read_text()
+    assert 'if (opcode != 551)' in fog_source and 'float_argument(4)' in fog_source and 'float_argument(3)' in fog_source
+    assert 'if (opcode != 549)' in membership_source and 'integer_argument(1)' in membership_source and 'integer_argument_destination(0)' in membership_source
     labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',movement)]
     assert len(labels)==49 and set(labels)==set(range(400,449)),labels
     for helper in (
@@ -311,6 +354,12 @@ def main() -> None:
     assert case534.index('integer_argument(0)') < case534.index('set_field_180')
     assert 'case 548:' in frontend_source and 'current_front->show_stage_title()' in frontend_source
     assert 'case 569:' in root and 'return 0;' in root[root.index('case 569:'):root.index('default:',root.index('case 569:'))]
+    assert 'case 17: case 21: case 25: case 45: case 260: case 324:' in root
+    selected_position_source=root[root.index('int execute_enemy_selected_position_opcode'):root.index('int EnemyState::execute_opcode')]
+    assert selected_position_source.index('state.context->enemy_controller()') < selected_position_source.index('integer_argument(2)') < selected_position_source.index('controller->find(identifier)')
+    assert selected_position_source.count('enemy->position_ref()')==2
+    assert selected_position_source.count('state.position_ref()')==2
+    assert selected_position_source.index('float_argument_destination(0)') < selected_position_source.index('float_argument_destination(1)')
     assert 'state.context->laser_controller()->reset_all_lasers()' in time_source
     assert 'case 552:' in control and '((value & 1u) << 3)' in control
     card_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',card_source)]
@@ -348,6 +397,33 @@ def main() -> None:
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
 
+    # The native 324 case calls each selected/fallback position getter twice,
+    # with a destination lookup after each component. Verify the natural C++
+    # object retains the same eleven ordered calls instead of caching a Vector3.
+    root_object=ROOT/'build/core209-canonical/EnemyStateExecuteOpcode.obj'
+    object_dump=subprocess.run(['objdump','-dr',str(root_object)],cwd=ROOT,
+        check=True,text=True,capture_output=True).stdout
+    marker='<?execute_enemy_selected_position_opcode@th20@@YAHAAUEnemyState@1@@Z>:'
+    assert marker in object_dump
+    object_function=object_dump.split(marker,1)[1].split('Disassembly of section',1)[0]
+    object_calls=re.findall(r'DISP32\s+([^\r\n]+)',object_function)
+    expected_object_calls=[
+        '?enemy_controller@Context@th20',
+        '?integer_argument@EnemyState@th20',
+        '?find@EnemyController@th20',
+        '?position_ref@Enemy@th20',
+        '?float_argument_destination@EnemyState@th20',
+        '?position_ref@Enemy@th20',
+        '?float_argument_destination@EnemyState@th20',
+        '?position_ref@EnemyState@th20',
+        '?float_argument_destination@EnemyState@th20',
+        '?position_ref@EnemyState@th20',
+        '?float_argument_destination@EnemyState@th20',
+    ]
+    assert len(object_calls)==len(expected_object_calls),object_calls
+    for actual,expected in zip(object_calls,expected_object_calls):
+        assert expected in actual,(actual,expected)
+
     host=ROOT/'build/core209-enemy-dispatch-root-test'
     command=['g++-13','-std=c++20','-O1','-Wall','-Wextra','-Werror',
         '-D__fastcall=','-D__cdecl=','-D__thiscall=',
@@ -356,7 +432,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, laser reset 539, bit flag 552, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
@@ -367,10 +443,13 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for timer/mode/time 538/539/540/541/542/574 (624B/130 heads/16 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for card/health 523/536/537/561/562 (235B/52 heads/11 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for front sound/gauge/title 516/519/527/534/548 (351B/78 heads/14 calls)')
+    print('PASS original compressed dispatch pointer and ordered E8 map for selected-Enemy position opcode 324 (276B/53 instructions/11 calls)')
+    print('PASS natural C++ opcode-324 COFF object retains all eleven ordered calls and repeated XY position reads')
+    print('PASS original opcode-549 membership block (95B), opcode-551 fog block (257B) and opcode-555 animation/sound Boss (388B) selector/call maps')
     print('PASS original opcode-569 selector index 173 points directly to the verified common return-zero epilogue')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases and 24 opcode fragments wired')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, three restored membership/fog/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases and 27 opcode fragments wired')
     print('PASS all eighteen i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 

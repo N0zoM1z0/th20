@@ -58,6 +58,24 @@ int execute_enemy_animation_flags_add_opcode(EnemyState& state);
 int execute_enemy_animation_flags_clear_opcode(EnemyState& state);
 void TH20_FASTCALL set_enemy_state_flag_04_bit_9(Enemy* enemy);
 
+// Native selector entry 17 / opcode 324 shares this operation with the
+// lower-numbered 17/21/25/45/260 aliases: find by identifier, then publish XY.
+int execute_enemy_selected_position_opcode(EnemyState& state) {
+    auto* controller = state.context->enemy_controller();
+    const std::int32_t identifier = state.integer_argument(2);
+    Enemy* enemy = controller->find(identifier);
+    if (enemy) {
+        // Native 324 independently re-reads the selected Enemy position for
+        // each component, resolving each output destination only afterward.
+        *state.float_argument_destination(0) = enemy->position_ref().x;
+        *state.float_argument_destination(1) = enemy->position_ref().y;
+    } else {
+        *state.float_argument_destination(0) = state.position_ref().x;
+        *state.float_argument_destination(1) = state.position_ref().y;
+    }
+    return 0;
+}
+
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
     // runtime. The original packet, including any trailing payload, remains
@@ -158,7 +176,7 @@ int EnemyState::execute_opcode() {
         return execute_enemy_animation_link_parent_opcode(*this);
     case 323:
         return execute_enemy_animation_state_selectors_opcode(*this);
-    case 17: case 21: case 25: case 45: case 260:
+    case 17: case 21: case 25: case 45: case 260: case 324:
         return execute_enemy_selected_position_opcode(*this);
     case 341: case 342: case 343:
         return execute_enemy_animation_flags_opcode(*this, opcode);

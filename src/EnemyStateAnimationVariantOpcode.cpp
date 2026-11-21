@@ -96,18 +96,6 @@ int execute_enemy_animation_state_selectors_opcode(EnemyState& state) {
     return 0;
 }
 
-// Native case 17 aliases 17/21/25/45/260. It returns the selected Enemy
-// position when found, otherwise the current EnemyState position.
-int execute_enemy_selected_position_opcode(EnemyState& state) {
-    auto* controller = state.context->enemy_controller();
-    const std::int32_t identifier = state.integer_argument(2);
-    Enemy* enemy = controller->find(identifier);
-    const Vector3& position = enemy ? enemy->position_ref() : state.position_ref();
-    *state.float_argument_destination(0) = position.x;
-    *state.float_argument_destination(1) = position.y;
-    return 0;
-}
-
 // Native cases 22/23/24 toggle the three low bits of EnemyState word_08.
 int execute_enemy_animation_flags_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {

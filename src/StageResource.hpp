@@ -35,5 +35,8 @@ static_assert(offsetof(StageBackgroundFogOwner, fog_interpolation) == 0x134);
 static_assert(offsetof(StageBackgroundFogOwner, current_fog) == 0x354);
 static_assert(sizeof(StageBackgroundFogOwner) == 0x370);
 static_assert(offsetof(StageResourceOwner, background) == 0x10);
+#if defined(_M_IX86)
+// The process owner contains a native 32-bit pointer at this x86 offset.
 static_assert(offsetof(StageResourceOwner, animation_file_value) == 0x3334);
+#endif
 }
