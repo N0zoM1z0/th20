@@ -35,14 +35,16 @@ direct spawn opcodes 300/301/304/305/321 to the 653-byte
 bytes differ in two float argument stack-slot/load sequences. Cases
 309/310/311/312 use the exact 43-byte `EnemyController::selected(0)` guard
 and fall through to that spawn leaf only when the slot is empty. Cases 306 and
-313 now restore the two adjacent inline animation-create variants, including
-their distinct script sources and link-zero state publication. The 50-byte
-`0x00450120` recursive flag-clear leaf is also strict exact. The 41,967-byte
-root remains NONEXACT. The EnemyState header include closure was replayed locally
-in the previous checkpoint: 125/125 units across 30 cold objects; this cpp-only
-change is being checked with its focused canonical units, not a whole-graph
-cold replay. Next priority is the neighboring 307/308/314/315 animation/effect
-paths and the remaining root case families.
+313 restore two adjacent inline animation-create variants. Cases 307/308/314/315
+now restore the four EffectInfo handle-publication paths, including positioned
+flag-2 spawn, null-position flag-2 spawn, positioned flag-zero spawn, and the
+position-plus-rotation follow-up. The 61-byte `0x0049CBB0` positioned flag-2
+AnimationFile wrapper is also strict exact; its original source owner remains
+provisional. The 50-byte `0x00450120` recursive flag-clear leaf is strict exact.
+The 41,967-byte root remains NONEXACT. The `AnimationFile.hpp` wrapper
+addition was followed by a focused include-closure replay: 345/345 units across
+113 cold objects passed; no whole-graph cold replay was run. The next priority
+is opcode 316 and the remaining root case families.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 

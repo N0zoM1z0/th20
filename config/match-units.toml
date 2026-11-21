@@ -31979,3 +31979,16 @@ relocations = [
   { offset = 0x17C, type = "REL32", symbol = "??A?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEAAUEnemyAnimationLink@th20@@I@Z", target = 0x0048BCE0 },
   { offset = 0x183, type = "REL32", symbol = "?clear_flag0_recursively@EnemyAnimationLink@th20@@QAEXXZ", target = 0x00450120 },
 ]
+
+# GPT-WEB: native positioned flag-2 AnimationFile spawn wrapper.
+[units.animation_file_spawn_flag2_position]
+source = "src/AnimationFileSpawnFlag2Position.cpp"
+object = "build/gpt-web-enemy-canonical/AnimationFileSpawnFlag2Position.obj"
+profile = ["/nologo", "/c", "/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::AnimationFile::spawn_flag2_position"]
+symbol = "?spawn_flag2_position@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHABUVector3@2@MHPAPAVAnimation@2@@Z"
+target_address = 0x0049CBB0
+size = 61
+relocations = [
+  { offset = 0x30, type = "REL32", symbol = "?spawn@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHPBUVector3@2@MHIPAPAVAnimation@2@@Z", target = 0x00450CB0 },
+]

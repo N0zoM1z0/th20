@@ -1803,3 +1803,4 @@ th20::IntrusiveList<T>::prepend,0x0044A6B0,function
 th20::EnemyState::execute_opcode,0x0048C010,function
 th20::EnemyAnimationLink::clear_flag0_recursively,0x00450120,function
 th20::EnemyState::spawn_animation,0x00496A00,function
+th20::AnimationFile::spawn_flag2_position,0x0049CBB0,function

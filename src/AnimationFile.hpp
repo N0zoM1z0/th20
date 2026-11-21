@@ -83,6 +83,10 @@ public:
                                 Animation** output);
     AnimationHandle spawn_flag2(const char* expected_stem,std::int32_t script,
                                 std::int32_t layer,Animation** output);
+    // Native 61-byte positioned flag-2 wrapper at 0x0049CBB0.
+    AnimationHandle spawn_flag2_position(const char* expected_stem,std::int32_t script,
+                                         const Vector3& position,float rotation,
+                                         std::int32_t layer,Animation** output);
     AnimationHandle spawn_flag8(const char* expected_stem,std::int32_t script,
                                const Vector3& position,float rotation,
                                std::int32_t layer,Animation** output);

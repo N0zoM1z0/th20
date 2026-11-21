@@ -1788,3 +1788,4 @@ th20::IntrusiveList<T>::prepend
 th20::EnemyState::execute_opcode
 th20::EnemyAnimationLink::clear_flag0_recursively
 th20::EnemyState::spawn_animation
+th20::AnimationFile::spawn_flag2_position

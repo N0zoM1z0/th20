@@ -77,6 +77,19 @@ source fragments.
   opcode-306 secondary-state fields. These two inline case bodies are restored
   in natural C++; the 41,967-byte root remains NONEXACT and no separate byte
   credit is claimed for inline code.
+- Native cases `4/5/8/9` (opcodes 307/308/314/315) now restore the
+  EffectInfo animation-handle publication paths. Opcode 307 creates a
+  positioned flag-2 animation; 308 creates a null-position flag-2 animation;
+  314 creates a positioned flag-zero animation; and 315 creates a positioned
+  flag-2 animation, then reapplies the current position and operand-2 rotation
+  when its handle resolves. All four publish the resulting handle through the
+  real `EffectInfo::publish_handle` owner.
+- The positioned flag-2 factory wrapper at `0x0049CBB0` is now a separate
+  natural C++ method, `AnimationFile::spawn_flag2_position`, with strict
+  61/61-byte and relocation replay. It forwards the expected stem, script,
+  position, rotation, layer and output to the existing native spawn producer
+  with flag value 2. Its source-level owner/origin remains provisional; no
+  authored-byte credit is claimed.
 - Native switch case `1` now restores opcode 302 as the scalar field setter:
   `field_1c = integer_argument(0)`. This matches the native `FUN_004AB080`
   argument read followed by the store at EnemyState offset `0x1C`.
@@ -106,10 +119,11 @@ unit; the exact callee units above are credited separately.
 
 The spawn leaf and dispatcher compile as MSVC-compatible i386 COFF under the
 locked `/Od /Ob0` profile. The animation-link clear and opcode-303 spawn units
-strictly replay as 50/50 and 398/398 bytes with all original relocation
-targets. The 43-byte selected-Enemy guard leaf also strictly replayed. Because
-`EnemyState.hpp` changed, the affected include closure was rebuilt locally: 125
-units across 30 cold objects passed; no whole-graph replay was run. The 653-byte
+strictly replay as 50/50 and 398/398 bytes; the positioned flag-2 AnimationFile
+wrapper strictly replays as 61/61 bytes, each with all original relocation
+targets. The 43-byte selected-Enemy guard leaf also strictly replayed. The
+`AnimationFile.hpp` change rebuilt its affected include closure locally: 345/345
+units across 113 cold objects passed. No whole-graph replay was run. The 653-byte
 spawn leaf remains limited by the 14 float-argument stack-order bytes noted
 above.
 
