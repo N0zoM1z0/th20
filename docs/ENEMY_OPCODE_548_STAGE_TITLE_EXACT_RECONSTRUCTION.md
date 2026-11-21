@@ -93,11 +93,14 @@ Windows/Renderer startup or a playable game.
 
 The Enemy 41,967-byte main root still needs its full primary routing tables,
 shared control exits, nested rank tables, compiler-owned EH/data, complete
-VM/Animation resource dependencies and missing long opcode paths. The
-corresponding original opcode548 case was subsequently [integrated and tested
-in the complete CORE181 whole-root host](ENEMY_WHOLE_ROOT_548_STAGE_TITLE_INTEGRATION.md)
-with 256 new native receiver/guard/Renderer-boundary scenarios, without
-claiming any exact root bytes. Other high-value unresolved native
-paths include 539 and 555. The three complete real methods add **118**
-nonoverlapping authored native bytes; they do **not** credit any fragment of
-Enemy's main root.
+VM/Animation resource dependencies and missing long opcode paths. Opcode 548
+is now wired in the maintained partial root through
+`current_front->show_stage_title()`. The original 17-byte case block, selector
+entry 94 and one ordered E8 target are checked by the focused dispatcher
+verifier; the 75-byte FrontInf method retains its independent exact credit.
+The earlier [CORE181 whole-root host](ENEMY_WHOLE_ROOT_548_STAGE_TITLE_INTEGRATION.md)
+continues to provide 256 native receiver/guard/Renderer-boundary scenarios.
+Neither inline integration nor that semantic host confers any exact root bytes.
+Other high-value unresolved native paths include 555 and the remaining long
+case families. The three complete real methods add **118** nonoverlapping
+authored native bytes; they do **not** credit any fragment of Enemy's main root.

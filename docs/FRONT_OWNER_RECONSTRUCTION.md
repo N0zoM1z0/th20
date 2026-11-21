@@ -101,8 +101,8 @@ words. Scheduler and resource destruction are explicit host boundaries.
 At CORE159 the integrated private whole-root draft passed 36,244 scenarios:
 26,781 prior cases and 9,463 new FrontInf callers. It contains 110 effective values /
 81 primary heads. The maintained partial EnemyState dispatcher now routes
-opcodes 527 and 534 through these actual FrontInf setters. This is inline root
-source progress only; the 41,967-byte dispatcher remains NONEXACT and receives
+opcodes 527/534/548 through these actual FrontInf setters/title method. This
+is inline root source progress only; the 41,967-byte dispatcher remains NONEXACT and receives
 no separate case-block byte credit.
 
 Opcode 534 reads its value before loading the live process FrontInf and writing

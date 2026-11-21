@@ -77,6 +77,7 @@ std::int32_t laser_cancel_all_calls = 0;
 std::int32_t laser_reset_calls = 0;
 std::int32_t front_field_180_calls = 0;
 std::int32_t front_field_180_value = 0;
+std::int32_t front_stage_title_calls = 0;
 std::int32_t front_boss_gauge_calls = 0;
 std::int32_t front_boss_gauge_boss = -1;
 std::int32_t front_boss_gauge_marker = -1;
@@ -187,6 +188,7 @@ FrontInf::FrontInf() : TaskInfo() {}
 FrontInf::~FrontInf() = default;
 void FrontInf::enable() {}
 std::int32_t FrontInf::has_dialogue() { return front_has_dialogue ? 1 : 0; }
+void FrontInf::show_stage_title() { ++front_stage_title_calls; }
 void FrontInf::set_field_180(std::int32_t value) {
     ++front_field_180_calls;
     front_field_180_value = value;
@@ -356,6 +358,20 @@ int main() {
     assert(enemy.state.execute_opcode() == 0);
     assert(front_field_180_calls == 1);
     assert(static_cast<std::uint32_t>(front.field_180) == 0x87654321u);
+
+    front_stage_title_calls = 0;
+    set_packet(548, {});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(front_stage_title_calls == 1);
+
+    enemy.state.field_1c = 0x12345678;
+    enemy.state.field_280 = -19;
+    enemy.state.flags.word_04 = 0xa5a5f00du;
+    set_packet(569, {});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.field_1c == 0x12345678);
+    assert(enemy.state.field_280 == -19);
+    assert(enemy.state.flags.word_04 == 0xa5a5f00du);
 
     enemy.state.flags.word_04 = 0xa5000000u;
     set_packet(424, {1,0,0,0,0,0,0,0});
@@ -797,5 +813,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge 527/534, laser reset 539, bit flag 552, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, laser reset 539, bit flag 552, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

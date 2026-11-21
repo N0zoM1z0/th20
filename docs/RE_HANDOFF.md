@@ -64,7 +64,8 @@ root boundary now also includes 26 native aliases from the lower opcode ranges,
 canonicalized to their corresponding 400-series movement implementations.
 The remaining priority is the other unhandled dispatcher case families and
 the 41,967-byte root boundary; no whole-graph cold replay was run. The latest
-root increments wire native opcodes 524/575, 527/534, 539 and 552 with their
+root increments wire native opcodes 524/575, 527/534/548, 539, 552 and the
+reserved 569 selector with their
 original operand/receiver order. The focused dispatcher verifier checks all
 new selector entries, the ordered E8 targets, ASan/UBSan host assertions, and
 all 18 locked-profile i386 source compiles. GameController and Player exact

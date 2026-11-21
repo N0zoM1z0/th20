@@ -84,12 +84,6 @@ source fragments.
   original 59-byte case body, compressed selector index and all three ordered
   E8 targets are independently checked. Neither inline case receives separate
   root byte credit.
-- Native switch case `89` / opcode 539 now calls
-  `context->laser_controller()->reset_all_lasers()` without reading operands.
-  Its original 30-byte case body and two ordered E8 targets are verified; the
-  `Context::laser_controller` accessor and 263-byte
-  `LaserController::reset_all_lasers` callee are independently exact. The
-  focused ASan/UBSan fixture asserts the saved Context receiver and one reset.
 - Native case `77` / opcode 527 now restores the FrontInf boss-gauge update.
   It reads float operand 1, integer operand 2, the signed
   `EnemyHealth::field_04` denominator, integer operand 0, and the current boss
@@ -102,7 +96,7 @@ source fragments.
   complete signed word through the exact 25-byte `FrontInf::set_field_180`.
   Its 43-byte case block, compressed selector entry and two ordered E8 targets
   are checked.
-- Native case `85` / opcode 539 obtains the actual LaserController from the
+- Native selector entry `85` / opcode 539 obtains the actual LaserController from the
   EnemyState Context and calls the exact 263-byte
   `LaserController::reset_all_lasers` method. The 30-byte case block, selector
   entry and both ordered E8 targets are checked; the reset method's own exact
@@ -110,6 +104,15 @@ source fragments.
 - Native case `98` / opcode 552 updates only bit 3 of `flags.word_04`, preserving
   every other bit. Its 65-byte case block, compressed selector entry and
   original integer-argument E8 target are checked.
+- Native selector entry `94` / opcode 548 calls the exact 75-byte
+  `FrontInf::show_stage_title` method. The original 17-byte case block includes
+  the global FrontInf load, one E8 call, the native NOP and shared-exit jump;
+  the compressed selector entry and complete block boundary are checked.
+- Native opcode 569 is a reserved selector: its compressed entry `173` points
+  directly to the common return-zero epilogue at `0x004963DF`. The root has an
+  explicit operand-free `return 0` case, and the verifier checks the selector,
+  target and full 31-byte epilogue. The host fixture checks that representative
+  EnemyState fields remain unchanged.
 - Native switch case `3` (opcode 306) now reconstructs the second animation
   creation path. It uses integer operands 0/1 as link index/script, retires and
   replaces the PMR link with a flag-2 animation, refreshes dimensions and
@@ -236,7 +239,8 @@ function bodies; no duplicate byte credit is assigned.
 The remaining inline cases in the original 41,967B body—including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
 additional opcode ranges—still need source recovery. Opcodes 524/575, 527/534,
-539 and 552 are now wired into the maintained root, but this does not close
+539, 548, 552 and the reserved 569 selector are now represented in the
+maintained root, but this does not close
 their surrounding switch tables or the dispatcher as a whole. Unknown opcodes currently
 fall through the provisional zero return and must not be treated as proven
 native no-ops. The 41,967-byte root remains NONEXACT and has no whole-root match

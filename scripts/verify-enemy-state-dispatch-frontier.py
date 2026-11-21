@@ -156,6 +156,7 @@ def main() -> None:
         519:(69,0x0049407F,0x004940AA,[0x00478160,0x00499110]),
         527:(77,0x004909C0,0x00490A69,[0x004AAFB0,0x004AB080,0x00498F50,0x0040FF90,0x004AB080,0x0049C9C0]),
         534:(80,0x00495773,0x0049579E,[0x004AB080,0x0049C720]),
+        548:(94,0x0048C5C1,0x0048C5D2,[0x004B96F0]),
     }
     for opcode,(index,start,end,expected_calls) in frontend_cases.items():
         assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
@@ -182,6 +183,14 @@ def main() -> None:
         calls=[int(insn.op_str,16) for insn in instructions
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
+
+    # Opcode 569 is a reserved selector that points directly at the common
+    # return-zero epilogue rather than owning an inline case body.
+    assert selector[569-300] == 173
+    assert struct.unpack_from('<I',pointer_table,173*4)[0] == 0x004963DF
+    epilogue=list(decoder.disasm(pe.get_data(0x004963DF-image_base,0x1F),0x004963DF))
+    assert epilogue and epilogue[0].mnemonic == 'xor' and epilogue[0].op_str == 'eax, eax'
+    assert epilogue[-1].address + epilogue[-1].size == 0x004963FE
 
     card_cases={
         523:(73,0x004943C9,0x00494405,[0x00411700,0x004878B0,0x0049C360]),
@@ -294,12 +303,14 @@ def main() -> None:
     assert set(management_labels)=={520,525,545,565,573},management_labels
     assert 'result = -1;' in management
     frontend_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',frontend_source)]
-    assert set(frontend_labels)=={516,519,527,534},frontend_labels
+    assert set(frontend_labels)=={516,519,527,534,548},frontend_labels
     assert 'result = -1;' in frontend_source
     case527=frontend_source[frontend_source.index('case 527:'):frontend_source.index('case 534:')]
     assert case527.index('float_argument(1)') < case527.index('integer_argument(2)') < case527.index('state.health.field_04') < case527.index('integer_argument(0)') < case527.index('state.field_270') < case527.index('set_boss_gauge')
-    case534=frontend_source[frontend_source.index('case 534:'):frontend_source.index('case 519:')]
+    case534=frontend_source[frontend_source.index('case 534:'):frontend_source.index('case 548:')]
     assert case534.index('integer_argument(0)') < case534.index('set_field_180')
+    assert 'case 548:' in frontend_source and 'current_front->show_stage_title()' in frontend_source
+    assert 'case 569:' in root and 'return 0;' in root[root.index('case 569:'):root.index('default:',root.index('case 569:'))]
     assert 'state.context->laser_controller()->reset_all_lasers()' in time_source
     assert 'case 552:' in control and '((value & 1u) << 3)' in control
     card_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',card_source)]
@@ -345,7 +356,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge 527/534, laser reset 539, bit flag 552, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, laser reset 539, bit flag 552, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
@@ -355,10 +366,11 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for controller selection/clear 520/525/545/565/573 (289B/65 heads/17 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for timer/mode/time 538/539/540/541/542/574 (624B/130 heads/16 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for card/health 523/536/537/561/562 (235B/52 heads/11 calls)')
-    print('PASS original compressed dispatch pointers and ordered E8 maps for front sound/gauge 516/519/527/534 (334B/74 heads/13 calls)')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for front sound/gauge/title 516/519/527/534/548 (351B/78 heads/14 calls)')
+    print('PASS original opcode-569 selector index 173 points directly to the verified common return-zero epilogue')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, four front sound/gauge cases, two global-owner cases, four dynamic parameter cases and 22 opcode fragments wired')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases and 24 opcode fragments wired')
     print('PASS all eighteen i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 

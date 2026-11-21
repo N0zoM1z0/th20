@@ -199,6 +199,10 @@ int EnemyState::execute_opcode() {
         receiver->set_entity_flag_10(value);
         return 0;
     }
+    // Native opcode 569 selects the shared epilogue directly (jump-table
+    // index 173 at 0x004963DF); it performs no operand or owner access.
+    case 569:
+        return 0;
     default:
         break;
     }

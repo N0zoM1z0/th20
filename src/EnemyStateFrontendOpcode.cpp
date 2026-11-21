@@ -32,6 +32,10 @@ bool execute_enemy_frontend_opcode(
         result = 0;
         break;
     }
+    case 548:
+        current_front->show_stage_title();
+        result = 0;
+        break;
     case 519:
         if (current_front->has_dialogue() && !current_front->dialogue_ready()) {
             result = -1;

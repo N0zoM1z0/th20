@@ -55,8 +55,9 @@ canonically accepted.
   maintain the partial natural-C++ root entry and wire the complete 400–448 movement
   family, nine Pattern cases, 21 bounds/health/controller/state cases, five controller
   selection/clear cases, six timer/mode/runtime-time cases, five Card/health cases,
-  front sound/gauge cases 516/519/527/534, laser reset 539, bit flag 552,
-  global-owner opcodes 524/575, four indexed parameter-copy cases and the
+  front sound/gauge/title cases 516/519/527/534/548, laser reset 539,
+  bit flag 552, reserved selector 569, global-owner opcodes 524/575, four
+  indexed parameter-copy cases and the
   independently maintained opcode fragments. The 328B `SoundInf::enqueue` dependency
   is now whole strict exact (all 15 relocations); the 626B FrontInf command parent is
   still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains
