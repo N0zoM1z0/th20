@@ -58,6 +58,17 @@ int EnemyState::execute_opcode() {
     if (execute_enemy_frontend_opcode(*this, opcode, frontend_result))
         return frontend_result;
 
+    // Native switch case 0x0d funnels this complete animation-setter family
+    // through EnemyState::change_animation (the original 0x00496B90 owner).
+    switch (opcode) {
+    case 319: case 325: case 326: case 327: case 328: case 329: case 330:
+    case 331: case 332: case 333: case 335: case 336: case 337:
+        change_animation();
+        return 0;
+    default:
+        break;
+    }
+
     // Independently reconstructed inline case families. Each helper returns
     // false without reading operands when the opcode is outside its family.
     if (execute_enemy_phase_opcode(*this, instruction, opcode))

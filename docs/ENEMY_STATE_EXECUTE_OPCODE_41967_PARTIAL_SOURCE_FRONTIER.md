@@ -41,6 +41,11 @@ source fragments.
 - `src/EnemyStateFrontendOpcode.cpp` restores sound/dialogue cases 516/519,
   including position-before-sound-operand evaluation and the special `-1`
   return when an existing dialogue is not ready.
+- Native switch case `0x0d` now routes all 13 animation-setter opcodes
+  `319/325–333/335–337` through the existing `EnemyState::change_animation`
+  owner at `0x00496B90`. The original root case is a single call to that
+  967-byte method; this closes the dispatcher-to-animation boundary without
+  duplicating its implementation.
 - The root now also routes to the maintained phase, card-start, controller
   setter, fog, membership, mesh, animation-spawn, queued-shot, script-pointer,
   shot-fire, shot-command, laser-parameter, and laser-creation opcode fragments.
