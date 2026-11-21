@@ -16,6 +16,7 @@
 #include "EnemyStateTimeOpcode.hpp"
 #include "EnemyStateCardOpcode.hpp"
 #include "EnemyStateFrontendOpcode.hpp"
+#include "EnemyStateDialogueOpcode.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
@@ -175,6 +176,8 @@ int EnemyState::execute_opcode() {
         return execute_enemy_animation_flags_clear_opcode(*this);
     case 517:
         return execute_enemy_screen_effect_spawn_opcode(*this);
+    case 518:
+        return execute_enemy_dialogue_opcode(*this);
     default:
         break;
     }

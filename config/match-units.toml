@@ -32089,12 +32089,80 @@ size = 20
 relocations = []
 
 # GPT-WEB: borrowed SoundInf queued-track name field getter.
-[units.sound_inf_queued_track_name20]
+[units.sound_inf_queued_track_name19]
 source = "src/FrontDialogueFieldViews.cpp"
 object = "build/gpt-web-dialogue-canonical/FrontDialogueFieldViews.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::NativeSoundInfQueuedTrackView::queued_track_name_4b8090"]
 symbol = "?queued_track_name_4b8090@NativeSoundInfQueuedTrackView@th20@@QAEPADXZ"
 target_address = 0x004B8090
-size = 20
+size = 19
 relocations = []
+
+
+[units.front_dialogue_voice_sound104]
+source = "src/FrontDialogueVoiceSound104.cpp"
+object = "build/gpt-web-dialogue-canonical/FrontDialogueVoiceSound104.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::play_front_dialogue_voice_4d9b50"]
+symbol = "?play_front_dialogue_voice_4d9b50@Graphics@th20@@QAEHHH@Z"
+target_address = 0x004D9B50
+size = 104
+relocations = [
+  { offset = 0x0A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x0F, type = "REL32", symbol = "?uses_preloaded_music@Graphics@th20@@QBEHXZ", target = 0x00428FA0 },
+  { offset = 0x18, type = "DIR32", symbol = "?sound_command_name_571b14@th20@@3QBDB", target = 0x00571B14 },
+  { offset = 0x21, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x26, type = "REL32", symbol = "?enqueue@SoundInf@th20@@QAEXHHPBD@Z", target = 0x00428C90 },
+  { offset = 0x2C, type = "DIR32", symbol = "?sound_command_name_571b14@th20@@3QBDB", target = 0x00571B14 },
+  { offset = 0x37, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x3C, type = "REL32", symbol = "?enqueue@SoundInf@th20@@QAEXHHPBD@Z", target = 0x00428C90 },
+  { offset = 0x42, type = "DIR32", symbol = "?native_card_records_5c6108@th20@@3PAUNativeCardRecordArchive@1@A", target = 0x005C6108 },
+  { offset = 0x47, type = "REL32", symbol = "?stage_voice_flags_640e0@NativeCardStageVoiceOwnerView@th20@@QAEPAUNativeCardStageVoiceFlagsView@2@XZ", target = 0x004640E0 },
+  { offset = 0x59, type = "REL32", symbol = "?slot_411c10@NativeCardStageVoiceFlagsView@th20@@QAEPAEH@Z", target = 0x00411C10 },
+]
+
+[units.card_stage_voice_flags_base19]
+source = "src/FrontDialogueVoiceSound104.cpp"
+object = "build/gpt-web-dialogue-canonical/FrontDialogueVoiceSound104.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardStageVoiceOwnerView::stage_voice_flags_640e0"]
+symbol = "?stage_voice_flags_640e0@NativeCardStageVoiceOwnerView@th20@@QAEPAUNativeCardStageVoiceFlagsView@2@XZ"
+target_address = 0x004640E0
+size = 19
+relocations = []
+
+[units.card_stage_voice_flags_slot19]
+source = "src/FrontDialogueVoiceSound104.cpp"
+object = "build/gpt-web-dialogue-canonical/FrontDialogueVoiceSound104.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::NativeCardStageVoiceFlagsView::slot_411c10"]
+symbol = "?slot_411c10@NativeCardStageVoiceFlagsView@th20@@QAEPAEH@Z"
+target_address = 0x00411C10
+size = 19
+relocations = []
+
+
+# CORE/RECON-1208: original 238-byte LaserController cancel-all boss.
+[units.laser_controller_cancel_all]
+source = "src/LaserCancelAll238.cpp"
+object = "build/gpt-web-laser-canonical/LaserCancelAll238.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::LaserController::cancel_all"]
+symbol = "?cancel_all@LaserController@th20@@QAEHHH@Z"
+target_address = 0x004C9490
+size = 238
+relocations = [
+  { offset = 0x06, type = "DIR32", symbol = "__ehhandler$?cancel_all@LaserController@th20@@QAEHHH@Z", target = 0x0056863D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x3A, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x46, type = "REL32", symbol = "?begin@?$IntrusiveList@VLaser@th20@@@th20@@QAE?AV?$IntrusiveIterator@VLaser@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x55, type = "REL32", symbol = "?end@?$IntrusiveList@VLaser@th20@@@th20@@QAEPAV?$IntrusiveIterator@VLaser@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x62, type = "REL32", symbol = "?advance@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x6F, type = "REL32", symbol = "?differs@?$IntrusiveIterator@VLaser@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x7E, type = "REL32", symbol = "?get@?$IntrusiveIterator@VLaser@th20@@@th20@@QAEPAV?$IntrusiveLink@VLaser@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0x89, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VLaser@th20@@@th20@@QAEAAPAVLaser@2@XZ", target = 0x0040F160 },
+  { offset = 0x99, type = "REL32", symbol = "?node_access@?$IntrusiveLink@VLaser@th20@@@th20@@QAEAAPAVLaser@2@XZ", target = 0x0040F160 },
+  { offset = 0xC9, type = "REL32", symbol = "??1?$IntrusiveIterator@VLaser@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0xE4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

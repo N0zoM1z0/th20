@@ -1,3 +1,6 @@
+#include "EnemyStateDialogueOpcode.hpp"
+#include "LaserParameters.hpp"
+#include "Bullet.hpp"
 #include "Enemy.hpp"
 #include "AnimationHandleSetFlag0Recursive.hpp"
 #include "AnimationRuntimeOwner.hpp"
@@ -53,6 +56,10 @@ std::int32_t sound_effect_id = -1;
 float sound_effect_x = 0.0f;
 bool front_dialogue_ready = false;
 std::int32_t front_dialogue_ready_calls = 0;
+std::int32_t front_dialogue_command_calls = 0;
+std::int32_t last_front_dialogue_command = 0;
+std::int32_t bullet_cancel_all_calls = 0;
+std::int32_t laser_cancel_all_calls = 0;
 std::int32_t animation_flags_add_calls = 0;
 std::int32_t animation_flag0_set_calls = 0;
 std::array<std::uint32_t,8> animation_flag0_set_handles{};
@@ -66,6 +73,8 @@ Vector3 pattern_drop_origin{};
 std::int32_t enemy_script_globals[4]{};
 Enemy::~Enemy() = default;
 EnemyController::~EnemyController() = default;
+void BulletController::cancel_all(std::int32_t) { ++bullet_cancel_all_calls; }
+void LaserController::cancel_all(std::int32_t, std::int32_t) { ++laser_cancel_all_calls; }
 std::int32_t Enemy::defeat() { return defeat_result; }
 void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
     pattern_drop_called = true;
@@ -103,6 +112,10 @@ void SoundInf::request_effect_at(std::int32_t id, float x) {
     sound_effect_x = x;
 }
 FrontInf* current_front = nullptr;
+void FrontInf::set_dialogue_command_4b9740(std::int32_t command) {
+    ++front_dialogue_command_calls;
+    last_front_dialogue_command = command;
+}
 AnimationPoolOwner test_animation_pool;
 AnimationPoolOwner* current_animation_pool = &test_animation_pool;
 struct NativeScreenInf;
@@ -215,8 +228,14 @@ int main() {
     Context context;
     PlayerRecord player_record;
     EnemyController controller;
+    BulletController test_bullets;
+    LaserController test_lasers;
     context.current_player = &player_record;
     context.enemies = &controller;
+    context.primary_owner = &test_bullets;
+    session.contexts[0].primary_owner = &test_bullets;
+    context.object_14 = &test_lasers;
+    session.contexts[0].object_14 = &test_lasers;
     session.contexts[0].enemies = &controller;
     selected_test_enemy = &enemy;
     Card card;
@@ -440,6 +459,16 @@ int main() {
     set_packet(517, {0x11u,0x22u,0x33u,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0);
     assert(screen_factory_calls == 1 && screen_factory_mode == 1);
+
+    front_dialogue_command_calls = 0;
+    bullet_cancel_all_calls = 0;
+    laser_cancel_all_calls = 0;
+    set_packet(518, {123,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(front_dialogue_command_calls == 1);
+    assert(last_front_dialogue_command == 123);
+    assert(bullet_cancel_all_calls == 1);
+    assert(laser_cancel_all_calls == 1);
     assert((screen_factory_arguments == std::array<std::uint32_t,6>{
         0x11u,0x22u,0x33u,0u,0u,0u}));
 
@@ -646,5 +675,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

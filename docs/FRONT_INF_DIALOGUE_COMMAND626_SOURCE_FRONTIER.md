@@ -1,40 +1,43 @@
-# FrontInf dialogue command — 626B natural-C++ source frontier
+# FrontInf dialogue command — 626B native boss source frontier
 
-The original FrontInf dialogue command at `0x004B9740` is now represented by
-`NativeFrontInfDialogueCommandView::set_dialogue_command_4b9740` in
-`src/FrontInfDialogueCommand626.cpp`. The view avoids changing the shared
-`FrontInf` layout while using the observed borrowed fields: message
-`AnimationFile*` at `+0x170` and current `Dialogue*` at `+0x1bc`.
+The original `FrontInf::set_dialogue_command` at `0x004B9740` is the 626-byte
+boss reached by Enemy ECL opcode 518. Its maintained implementation is
+`src/FrontInfDialogueCommand626.cpp` and is ordinary C++ against the real
+`FrontInf`, `Dialogue`, `Card`, `Graphics`, and `SoundInf` owners.
 
 ## Recovered branches
 
-- Commands `-1` and `-3` select one of two voice records, suppress a duplicate
-  voice when two-player mode is active and the game is not restarting, queue
-  the voice path, and spawn the corresponding message animation (`selector+1`).
-  The 20-byte queued-track and message-file getters are strict exact. The
-  104-byte voice helper is now a natural C++ source frontier and uses the
-  reconstructed `SoundInf::enqueue` queue writer.
-- Command `-2` selects one of two dialogue-finished transitions based on the
-  Card extra-sound flag. The transition callees at `0x004BC570` and
-  `0x004E5BD0` remain large open Boss functions and are represented as external
-  view boundaries, not no-op stubs.
-- Ordinary script commands release an existing Dialogue through the strict
-  97-byte `0x004AE830` leaf and allocate a zeroed `0x140` Dialogue before its
-  existing constructor. The new 156-byte allocator source at `0x004AE930` is
-  natural C++ using nothrow allocation, zero initialization and placement
-  construction; it remains NONEXACT and receives no strict parent credit.
+- `-1` / `-3`: select one of the two native voice-table entries, preserve the
+  `Session::field_70_is_two` and `GameController::restart` duplicate-track gate,
+  append `.wav`, compare the actual `SoundInf+0x2444` queued name, then enqueue
+  the voice, set its stage flag and spawn the corresponding FrontInf message
+  animation.
+- `-2`: call `card(0)`, test the native card end flag and route to the original
+  screen-transition or GameController transition path.
+- Other commands: release the existing Dialogue through the native
+  ECX-receiver/stack-argument ABI, clear the FrontInf pointer, read the script
+  offset from `message_bytes + command*8 + 4`, allocate the new Dialogue and
+  publish the command into its first state field.
 
-The 626-byte FrontInf method remains **NONEXACT**. Its original class owner and
-some stage/voice global view types are still provisional. The voice helper
-retains explicit external boundaries for the preloaded-music predicate, stage
-voice-flag storage and the original diagnostic string. No assembly or
-synthetic padding is used.
+The current pinned-MSVC candidate is **622/626 bytes**. The 4-byte difference
+remains explicit; there is no parent strict match unit and no exact-byte credit.
+The ordinary C++ implementation preserves the native duplicate pointer clear
+and message-table offset lookup. It uses no assembly, padding or post-return
+bytes. The 156-byte allocator callee has a separate natural C++ candidate at
+80/156 bytes and remains NONEXACT.
 
-## Opcode 518 integration
+## Exact voice dependency
 
-`EnemyState::execute_opcode` now routes opcode 518 through
-`execute_enemy_dialogue_opcode`. The wrapper reads operand zero, invokes the
-FrontInf command view, then clears the player-zero Bullet, Laser and Enemy
-controllers in native order. The focused dispatcher verifier checks the
-original compressed selector/pointer entry and the required E8 targets for
-case 518. The 41,967-byte dispatcher parent remains NONEXACT.
+The 104-byte `0x004D9B50` voice helper is now a separate strict-exact
+`Graphics::play_front_dialogue_voice_4d9b50` member. Its original caller at
+`0x004B9890` explicitly loads `process_graphics` into ECX before the call,
+proving the Graphics receiver. It preserves the five native calls:
+preloaded-music check, two SoundInf queue writes, card-record stage-flag base
+(`0x004640E0`) and indexed flag address (`0x00411C10`). Both 19-byte offset
+helpers are strict exact as well. The original authored spelling/provenance
+remains unproven; no parent completion is inferred from these leaves.
+
+The opcode-518 dispatcher fragment is wired through
+`src/EnemyStateDialogueOpcode.cpp`, then performs the original Bullet, Laser
+and Enemy controller cleanup. The 41,967-byte `EnemyState::execute_opcode`
+root remains NONEXACT.

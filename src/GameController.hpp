@@ -28,6 +28,7 @@ struct GameController final : TaskInfo {
     void clear_flag_6();
     void set_field_34(std::uint32_t value);
 };
+extern GameController* current_game_controller;
 #if defined(_M_IX86)
 static_assert(sizeof(GameController)==0x110);
 static_assert(offsetof(GameController,frame_timer)==0x10);

@@ -63,6 +63,8 @@ struct Graphics {
     AnimationHandle create_grid_strip(std::int32_t rows,std::int32_t script);
     AnimationHandle create_surface_strip(std::int32_t rows,std::int32_t script);
     std::int32_t uses_preloaded_music() const;
+    std::int32_t play_front_dialogue_voice_4d9b50(std::int32_t selector,
+                                                   std::int32_t voice_id);
     graphics_api::Device* get_device();
     // The locked target's texture-format predicate is a constant-zero method.
     std::int32_t texture_format_mode();

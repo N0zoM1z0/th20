@@ -1076,3 +1076,4 @@ address,name,module,confidence,evidence
 0x004CA380,th20::LaserLineInf::cancel_rectangle,LaserLineInf,high,"CORE/EXACT-1249; docs/LASER_LINE_CANCEL_RECTANGLE_EXACT.md; original Line vtable slot +0x2C and whole 1,197-byte strict replay"
 0x004C9AB0,th20::LaserCurveInf::cancel_rectangle,LaserCurveInf,high,"CORE/EXACT-1250; docs/LASER_CURVE_CANCEL_RECTANGLE_EXACT.md; original Curve vtable slot +0x2C and whole 740-byte strict replay"
 0x004C84B0,th20::LaserType2Parameters::LaserType2Parameters(const th20::LaserType2Parameters&),LaserParameters,high,"CORE/EXACT-1251; docs/LASER_TYPE2_PARAMETERS_COPY_EXACT.md; original 256-byte Type2 copy constructor and PMR vector relocation"
+0x00571B14,th20::sound_command_name_571b14,Sound,high,CORE/RECON-1207; native 0x4D9B50 passes the same six-byte "dummy" command-name literal to both SoundInf::enqueue calls

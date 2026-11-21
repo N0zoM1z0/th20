@@ -1,4 +1,4 @@
-# Front dialogue field views — two 20B strict-exact leaves
+# Front dialogue field views — 19B and 20B strict-exact leaves
 
 Two native accessors used by the FrontInf dialogue-command path are now
 reconstructed as narrow, non-owning C++ views. Neither view asserts the
@@ -6,7 +6,7 @@ original source class name or ownership of the containing object.
 
 | Native entry | Meaning | Result |
 | --- | --- | ---: |
-| `0x004B8090` | `SoundInf` queued-track name at `this + 0x2444` | **20/20** |
+| `0x004B8090` | `SoundInf` queued-track name at `this + 0x2444` | **19/19** |
 | `0x004B8270` | borrowed `AnimationFile*` at `FrontInf + 0x170` | **20/20** |
 
 Source: `src/FrontDialogueFieldViews.hpp` and

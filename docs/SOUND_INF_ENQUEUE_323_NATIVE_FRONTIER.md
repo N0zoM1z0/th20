@@ -13,7 +13,7 @@ Boss at `0x004B9740`.
 - Publish `type`, then `argument`, copy the 256-byte name with `strcpy_s`,
   and finally set `stage` to zero.
 - If all 31 usable entries are occupied, leave the queue unchanged.
-- Preserve the native trailing `_Adl_verify_range` diagnostic-helper call.
+- Preserve the native trailing 5-byte no-op diagnostic hook at `0x0040C6B0`; the source reuses the existing `ecl_diagnostic_hint` symbol, without duplicating or crediting the folded helper.
 
 The maintained implementation is `src/SoundInfEnqueue323.cpp`. It uses the
 actual `SoundInf::commands` member and a narrow
@@ -24,12 +24,12 @@ exact helper with the native `0x10c` `SoundCommand` stride.
 ## Parent remains NONEXACT
 
 The original `SoundInf::enqueue` extent is 328 bytes. The current pinned MSVC
-C++ candidate contributes 330 bytes; the remaining two-byte control-flow
+C++ candidate contributes 324 bytes; the remaining four-byte control-flow
 shape difference is intentionally left visible. There is no strict parent
 match unit or exact-byte credit. The implementation is ordinary C++ and uses
 no assembly, padding, or post-return bytes.
 
 `scripts/verify-sound-inf-enqueue.py` runs an ASan/UBSan host test covering
 first-free insertion, the 31-entry limit, queue-full behavior, slot reuse,
-field publication order and the trailing range-check call. The indexed-view
+field publication order, slot-11 unlock and the trailing diagnostic hook. The indexed-view
 leaf is replayed independently; the parent function remains a source frontier.

@@ -21,7 +21,7 @@ def main() -> None:
     ]
     subprocess.run(command, cwd=ROOT, check=True)
     subprocess.run([str(host)], cwd=ROOT, check=True)
-    print('PASS SoundInf::enqueue: first-free slot, 31-slot bound, command field order, safe name copy and range-check call')
+    print('PASS SoundInf::enqueue: first-free slot, 31-slot bound, command field order, secure name copy, slot-11 unlock and diagnostic range hook')
 
 
 if __name__ == '__main__':

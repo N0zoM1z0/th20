@@ -1,19 +1,15 @@
 #pragma once
+
+#include "FrontDialogueAllocate156.hpp"
+#include "FrontDialogueFieldViews.hpp"
+#include "FrontDialogueRelease97.hpp"
+#include "GameController.hpp"
+#include "NativeCardFinishViews.hpp"
+#include "HudGauge.hpp"
+#include "NativeCardFinishViews.hpp"
 #include <cstdint>
 
 namespace th20 {
-
-class Card;
-
-void play_front_dialogue_voice_4d9b50(std::int32_t selector, std::int32_t sound_id);
-
-struct NativeCardExtraSoundView {
-    bool requires_extra_sound_488880();
-};
-
-struct NativeGameControllerRestartView {
-    bool is_restarting_488830();
-};
 
 struct NativeGameControllerDialogueTransitionView {
     void finish_dialogue_4bc570();
@@ -24,9 +20,7 @@ struct NativeScreenDialogueTransitionView {
 };
 
 extern NativeScreenDialogueTransitionView* native_screen_dialogue_transition_5c60bc;
-
-struct NativeFrontInfDialogueCommandView {
-    void set_dialogue_command_4b9740(std::int32_t command);
-};
+extern const char front_dialogue_allocator_label_5706f8[];
+extern const std::uint8_t* native_card_script_table_5c6110;
 
 } // namespace th20

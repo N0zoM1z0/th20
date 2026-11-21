@@ -3,7 +3,6 @@
 #include "NativeSoundCommandArrayView.hpp"
 #include "SecureCrt.hpp"
 #include "EclDiagnostic.hpp"
-#include <cstddef>
 #include <cstdint>
 #include <mutex>
 
@@ -18,20 +17,15 @@ increment:
 check:
     if (index >= 31)
         goto finished;
-    if ((*reinterpret_cast<NativeSoundCommandArrayView*>(
-            reinterpret_cast<std::uint8_t*>(this) + offsetof(SoundInf, commands)))[index].type == 0)
+    if ((*reinterpret_cast<NativeSoundCommandArrayView*>(&commands))[index].type == 0)
         goto enqueue;
     goto increment;
 enqueue:
-    (*reinterpret_cast<NativeSoundCommandArrayView*>(
-        reinterpret_cast<std::uint8_t*>(this) + offsetof(SoundInf, commands)))[index].type = type;
-    (*reinterpret_cast<NativeSoundCommandArrayView*>(
-        reinterpret_cast<std::uint8_t*>(this) + offsetof(SoundInf, commands)))[index].argument = argument;
-    strcpy_s((*reinterpret_cast<NativeSoundCommandArrayView*>(
-        reinterpret_cast<std::uint8_t*>(this) + offsetof(SoundInf, commands)))[index].name,
+    (*reinterpret_cast<NativeSoundCommandArrayView*>(&commands))[index].type = type;
+    (*reinterpret_cast<NativeSoundCommandArrayView*>(&commands))[index].argument = argument;
+    strcpy_s((*reinterpret_cast<NativeSoundCommandArrayView*>(&commands))[index].name,
         0x100, name);
-    (*reinterpret_cast<NativeSoundCommandArrayView*>(
-        reinterpret_cast<std::uint8_t*>(this) + offsetof(SoundInf, commands)))[index].stage = 0;
+    (*reinterpret_cast<NativeSoundCommandArrayView*>(&commands))[index].stage = 0;
 finished:
     ecl_diagnostic_hint("Sound Que Add %d\r\n", type);
 }

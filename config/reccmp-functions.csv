@@ -1806,3 +1806,7 @@ th20::EnemyState::spawn_animation,0x00496A00,function
 th20::AnimationFile::spawn_flag2_position,0x0049CBB0,function
 th20::set_enemy_state_flag_04_bit_9,0x00497240,function
 th20::EffectInfo::spawn_effect_at_position,0x004974D0,function
+th20::NativeCardStageVoiceFlagsView::slot_411c10,0x00411C10,function
+th20::NativeCardStageVoiceOwnerView::stage_voice_flags_640e0,0x004640E0,function
+th20::Graphics::play_front_dialogue_voice_4d9b50,0x004D9B50,function
+th20::LaserController::cancel_all,0x004C9490,function

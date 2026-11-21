@@ -46,8 +46,8 @@ address,name,size,status,match_percent,unit,evidence
 0x0041CC90,th20::WindowState::RepeatCounter::reset,40,matching,100.00,window_repeat_reset,REF-011; pinned MSVC cold build and complete canonical relocation replay
 0x0041D0C0,th20::is_japanese_user_locale,47,matching,100.00,window_japanese_locale,REF-011; pinned MSVC cold build and complete canonical relocation replay
 0x00414820,th20::mark_font_available,20,matching,100.00,font_mark_available,REF-011; pinned MSVC cold build and complete canonical relocation replay
-0x004B8090,th20::NativeSoundInfQueuedTrackView::queued_track_name_4b8090,20,matching,100.00,sound_inf_queued_track_name20,CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; original SoundInf+0x2444 getter, 20/20 strict exact
-0x004B8270,th20::NativeFrontInfMessageFileView::message_file_4b8270,20,matching,100.00,front_dialogue_message_file20,CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; original FrontInf+0x170 getter, 20/20 strict exact
+0x004B8090,th20::NativeSoundInfQueuedTrackView::queued_track_name_4b8090,19,matching,100.00,sound_inf_queued_track_name19,"CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; original SoundInf+0x2444 getter, 19/19 strict exact"
+0x004B8270,th20::NativeFrontInfMessageFileView::message_file_4b8270,20,matching,100.00,front_dialogue_message_file20,"CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; original FrontInf+0x170 getter, 20/20 strict exact"
 0x004D82C0,th20::initialize_shared_scene_resources,134,matching,100.00,scene_resources_initialize,REF-012; docs/REFERENCE_FUNCTION_REVIEW.md
 0x004D8560,th20::release_shared_scene_resources,62,matching,100.00,scene_resources_release,REF-012; docs/REFERENCE_FUNCTION_REVIEW.md
 0x00428380,th20::SoundEffectChannel::release,46,matching,100.00,sound_channel_release,REF-013; docs/REFERENCE_FUNCTION_REVIEW.md
@@ -949,3 +949,7 @@ address,name,size,status,match_percent,unit,evidence
 0x00486AD0,std::invoke<NativeCardTickCallback>,14,matching,100.00,card_tick_invoke_14,"CORE/RECON-1192; original whole native function, all original relocation roles"
 0x00486E50,th20::NativeCardTickCallback::operator(),34,matching,100.00,card_tick_callback_operator_34,"CORE/RECON-1193; original whole function, native E8 target and Card+0x18/event-4 semantics"
 0x00488920,th20::NativeCardTickEventView::update_event_4,22,matching,100.00,card_tick_event_wrapper_22,"CORE/RECON-1193; original whole function, native E8 target and Card+0x18/event-4 semantics"
+0x00411C10,th20::NativeCardStageVoiceFlagsView::slot_411c10,19,matching,100.00,card_stage_voice_flags_slot19,CORE/RECON-1206; docs/FRONT_DIALOGUE_VOICE_SOUND104_STRICT_EXACT.md; whole byte-index view
+0x004640E0,th20::NativeCardStageVoiceOwnerView::stage_voice_flags_640e0,19,matching,100.00,card_stage_voice_flags_base19,CORE/RECON-1206; docs/FRONT_DIALOGUE_VOICE_SOUND104_STRICT_EXACT.md; whole +0x91f48 card-record view
+0x004D9B50,th20::Graphics::play_front_dialogue_voice_4d9b50,104,matching,100.00,front_dialogue_voice_sound104,"CORE/RECON-1208; docs/FRONT_DIALOGUE_VOICE_SOUND104_STRICT_EXACT.md; whole caller-proven Graphics voice helper, five native calls and eleven relocation anchors"
+0x004C9490,th20::LaserController::cancel_all,238,matching,100.00,laser_controller_cancel_all,CORE/RECON-1208; docs/LASER_CANCEL_ALL238_STRICT_EXACT.md; whole 238/238 native body, all 12 relocations and original EH replay

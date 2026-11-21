@@ -103,6 +103,7 @@ public:
     void enable() override;
     std::int32_t has_dialogue();
     std::int32_t dialogue_ready();
+    void set_dialogue_command_4b9740(std::int32_t command);
     void show_stage_title();
     Dialogue* dialogue_value();
     void set_field_180(std::int32_t value);

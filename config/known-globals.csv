@@ -21,3 +21,10 @@ address,name,module,confidence,evidence
 0x0056E0E8,th20::native_zero_56e0e8,Constants,high,CORE/RECON-1240; file-backed .rdata float 0.0 used by Infinite Laser radial-offset and length-threshold comparisons
 0x0056E1A0,th20::native_0_01,Constants,high,CORE/RECON-1240; file-backed .rdata float 0.01 used by Infinite Laser length-threshold initialization
 0x0056CDD0,th20::native_unsigned_length_correction_56cdd0,,high,"CORE/RECON-1173; locked TH20 1.00a PE data is {0.0, 4294967296.0}; original AsciiTextRender578 adds indexed qword at native +0x14E to convert unsigned 32-bit strlen result to double."
+0x005BA828,th20::current_game_controller,GameController*,high,CORE/EXACT-077; docs/EXACT_GAME_CONTROLLER_RECONSTRUCTION.md; native current-controller pointer consumed by FrontInf dialogue commands
+0x005BA830,th20::process_sound,SoundInf,high,CORE/EXACT-111; docs/SOUND_PROTOCOL_RECONSTRUCTION.md; native SoundInf owner and command queue
+0x005C4D40,th20::process_graphics,Graphics,high,CORE/EXACT-111; docs/SOUND_PROTOCOL_RECONSTRUCTION.md; Graphics owner supplies preloaded-music predicate
+0x005C60BC,th20::native_screen_dialogue_transition_5c60bc,void*,unknown,"CORE/RECON-1206; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; pointer passed to native 0x004E5BD0 transition, pointee owner unresolved"
+0x005C6108,native_card_records_5c6108,NativeCardRecordArchive*,unknown,CORE/RECON-1207; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; shared stage/card-data owner supplies secondary records and voice-used byte region at +0x91F48+0x36
+0x005C6110,th20::native_card_script_table_5c6110,const std::uint8_t*,medium,CORE/RECON-1206; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; table supplies FrontInf voice file and voice-id records
+0x005706F8,th20::front_dialogue_allocator_label_5706f8,const char[],medium,CORE/RECON-1206; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; native FrontInf dialogue factory allocation diagnostic label
