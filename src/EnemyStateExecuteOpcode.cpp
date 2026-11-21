@@ -49,6 +49,7 @@ int execute_enemy_effect_position_request_opcode(EnemyState& state);
 int execute_enemy_effect_position_spawn_opcode(EnemyState& state);
 int execute_enemy_effect_spawn_and_update_opcode(EnemyState& state);
 int execute_enemy_set_found_flag_bit_9_opcode(EnemyState& state);
+int execute_enemy_animation_flags_add_opcode(EnemyState& state);
 void __fastcall set_enemy_state_flag_04_bit_9(Enemy* enemy);
 
 int EnemyState::execute_opcode() {
@@ -79,6 +80,8 @@ int EnemyState::execute_opcode() {
     case 157: case 212: movement_opcode = 442; break;
     case 105: movement_opcode = 443; break;
     case 109: case 113: movement_opcode = 446; break;
+    case 117: movement_opcode = 447; break;
+    case 121: case 125: case 204: movement_opcode = 448; break;
     default: break;
     }
     if (execute_enemy_movement_opcode(*this, movement_opcode))
@@ -163,6 +166,8 @@ int EnemyState::execute_opcode() {
         return execute_enemy_effect_spawn_and_update_opcode(*this);
     case 340:
         return execute_enemy_set_found_flag_bit_9_opcode(*this);
+    case 88: case 502:
+        return execute_enemy_animation_flags_add_opcode(*this);
     default:
         break;
     }

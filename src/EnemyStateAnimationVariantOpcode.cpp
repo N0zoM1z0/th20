@@ -139,3 +139,21 @@ int execute_enemy_has_selected_identifier_opcode(EnemyState& state) {
 }
 
 } // namespace th20
+
+namespace th20 {
+
+// Native case 52 / opcode 502 ORs the supplied low 14 flag bits. When bit 5
+// is active, all current animation links recursively clear Animation flag 0.
+int execute_enemy_animation_flags_add_opcode(EnemyState& state) {
+    const std::uint32_t bits = static_cast<std::uint32_t>(state.integer_argument(0)) & 0x3fffu;
+    state.flags.word_00 |= bits;
+    if ((state.flags.word_00 >> 5) & 1u) {
+        for (auto& link : state.animations)
+            link.clear_flag0_recursively();
+    }
+    return 0;
+}
+
+
+
+} // namespace th20

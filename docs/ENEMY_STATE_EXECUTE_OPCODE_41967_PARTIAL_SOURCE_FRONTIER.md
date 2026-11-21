@@ -160,6 +160,18 @@ source fragments.
 ## Remaining scope
 
 This is a **partial root reconstruction**, not an exact or complete dispatcher.
+Native movement case `48` also aliases opcode `117` to the existing
+`447`-style branch, and case `49` aliases `121/125/204` to the `field_44`
+setter at opcode 448. These low-numbered entries are now routed through the
+same movement provider.
+
+Native case `52` aliases `88/502`: it ORs integer operand 0 into the low 14
+bits of `flags.word_00`; if bit 5 is active afterward, it walks every
+`EnemyAnimationLink` and invokes the existing recursive flag-0 clear leaf.
+The adjacent case `53` / opcode 503, which clears selected bits and restores
+recursive flag 0 when bit 5 becomes inactive, remains open pending recovery of
+the native set-flag recursion leaf.
+
 The movement boundary has also been expanded from only the 400-448 range
 to its native jump-table aliases. The aliases are canonicalized to the matching
 movement operation before entering the same maintained helper: `57/61 -> 402`,
