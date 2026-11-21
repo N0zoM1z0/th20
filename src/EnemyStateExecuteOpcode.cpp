@@ -33,6 +33,10 @@ namespace th20 {
 
 int execute_enemy_animation_secondary_opcode(EnemyState& state);
 int execute_enemy_animation_state_opcode(EnemyState& state);
+int execute_enemy_animation_effect_flag2_opcode(EnemyState& state);
+int execute_enemy_animation_effect_spawn_opcode(EnemyState& state);
+int execute_enemy_animation_effect_flag2_handle_opcode(EnemyState& state);
+int execute_enemy_animation_effect_rotate_opcode(EnemyState& state);
 
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
@@ -84,6 +88,16 @@ int EnemyState::execute_opcode() {
         return execute_enemy_animation_secondary_opcode(*this);
     case 313:
         return execute_enemy_animation_state_opcode(*this);
+    // EffectInfo-published animation handles: 307/315 use flag-2 positioned
+    // spawn, 314 uses positioned flag-zero spawn, and 308 uses null position.
+    case 307:
+        return execute_enemy_animation_effect_flag2_opcode(*this);
+    case 308:
+        return execute_enemy_animation_effect_flag2_handle_opcode(*this);
+    case 314:
+        return execute_enemy_animation_effect_spawn_opcode(*this);
+    case 315:
+        return execute_enemy_animation_effect_rotate_opcode(*this);
     default:
         break;
     }
