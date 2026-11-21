@@ -32,6 +32,9 @@ source fragments.
 - `src/EnemyStateControllerManagementOpcode.cpp` restores selection/clear
   cases 520/525/545/565/573. Opcode 520 propagates its special `-1` return;
   the other four call the real 501B/521B/514B/526B EnemyController clear leaves.
+- `src/EnemyStateTimeOpcode.cpp` restores five timer/mode cases 538/540/541/542/574,
+  including the real global clock setter, three ordered Session mode queries,
+  and inherited current-runtime time subtraction.
 - The root now also routes to the maintained phase, card-start, controller
   setter, fog, membership, mesh, animation-spawn, queued-shot, script-pointer,
   shot-fire, shot-command, laser-parameter, and laser-creation opcode fragments.

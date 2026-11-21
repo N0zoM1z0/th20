@@ -7,6 +7,8 @@
 #include "EnemyStatePatternOpcode.hpp"
 #include "EnemyStateControlOpcode.hpp"
 #include "EnemyStateControllerManagementOpcode.hpp"
+#include "EnemyStateTimeOpcode.hpp"
+#include "ClockScalar.hpp"
 #include "PlayerRecord.hpp"
 #include "Session.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
@@ -348,6 +350,43 @@ int main() {
     assert(controller.data.timer_8c.current == timer_before_clear + 5);
     assert(enemy.state.field_284 == 0);
 
+    enemy.state.flags.word_04 = 0xa5000000u;
+    set_packet(538, {1,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.flags.word_04 == 0xa5000800u);
+    set_packet(538, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.flags.word_04 == 0xa5000000u);
+
+    enemy.state.flags.word_04 = 0xffffffffu;
+    enemy.state.flags.word_00 = 0xffffffffu;
+    enemy.state.field_28 = 91;
+    set_packet(540, {0,12,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.field_54 == 12 && enemy.state.field_58 == 91);
+    assert((enemy.state.flags.word_04 & 0x3000u) == 0);
+    assert((enemy.state.flags.word_00 & 1u) == 0);
+
+    set_packet(541, {bits(0.75f),0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(static_cast<float>(default_timer_clock) == 0.75f);
+
+    const std::int32_t mode_amounts[4] = {10,20,30,40};
+    for (std::int32_t mode = 0; mode < 4; ++mode) {
+        session.table.field_1e0 = mode;
+        enemy.main.time = 100.0f;
+        set_packet(542, {10,20,30,40,0,0,0,0});
+        assert(enemy.state.execute_opcode() == 0);
+        assert(enemy.main.time == 100.0f - static_cast<float>(mode_amounts[mode]));
+    }
+    session.table.field_1e0 = 0;
+    enemy.main.time = 50.0f;
+    enemy.state.flags.word_08 = 0x40u;
+    set_packet(574, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0 && enemy.main.time == 50.0f);
+    enemy.state.flags.word_08 = 0;
+    assert(enemy.state.execute_opcode() == 0 && enemy.main.time == 49.0f);
+
     for (std::int32_t selector = 0; selector < 4; ++selector) {
         enemy.state.field_50 = selector;
         set_packet(529, {static_cast<std::uint32_t>(-9985),101,102,103,104,0,0,0,0}, 1);
@@ -373,5 +412,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

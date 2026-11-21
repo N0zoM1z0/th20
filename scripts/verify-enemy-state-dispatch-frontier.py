@@ -18,7 +18,8 @@ HOST_SOURCES=[
     'tests/enemy_state_dispatch_root.cpp',
     'src/EnemyStateExecuteOpcode.cpp', 'src/EnemyStateMovementOpcode.cpp',
     'src/EnemyStatePatternOpcode.cpp', 'src/EnemyStateControlOpcode.cpp', 'src/EnemyStateDynamicParameterOpcode.cpp',
-    'src/EnemyStateControllerManagementOpcode.cpp', 'src/EnemySpawning.cpp', 'src/Session.cpp',
+    'src/EnemyStateControllerManagementOpcode.cpp', 'src/EnemyStateTimeOpcode.cpp',
+    'src/EnemySpawning.cpp', 'src/EclSelection.cpp', 'src/Session.cpp',
     'src/EnemyControllerConstruction.cpp', 'src/EnemyInitialization.cpp', 'src/EnemyData.cpp',
     'src/EnemyState.cpp', 'src/EnemyMovement.cpp', 'src/Enemy.cpp', 'src/PlayerRecord.cpp',
     'src/EnemyScript.cpp', 'src/EnemyScriptAdvance.cpp', 'src/EnemyVariables.cpp', 'src/EnemySpawn.cpp',
@@ -120,6 +121,23 @@ def main() -> None:
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
 
+    time_cases={
+        538:(84,0x00494483,0x004944C7,[0x004AB080]),
+        540:(86,0x004957BC,0x00495860,[0x004AB080,0x004AB080]),
+        541:(87,0x004958A2,0x004958C3,[0x004AAFB0,0x004292A0]),
+        542:(88,0x0049598E,0x00495A9A,[0x004AB080]*4+[0x004640A0]*3+[0x0049CC30]),
+        574:(119,0x004963A2,0x004963DF,[0x0049CC30]),
+    }
+    for opcode,(index,start,end,expected_calls) in time_cases.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        instructions=list(decoder.disasm(body,start))
+        assert instructions and instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
+
     dynamic_cases={
         529:(78,0x00491F46,0x0049201A,[0x004AB080,0x004AA9E0]*4),
         530:(79,0x0049201A,0x00492101,[0x004AAFB0,0x004AA980]*4),
@@ -142,12 +160,14 @@ def main() -> None:
     control=(ROOT/'src/EnemyStateControlOpcode.cpp').read_text()
     dynamic=(ROOT/'src/EnemyStateDynamicParameterOpcode.cpp').read_text()
     management=(ROOT/'src/EnemyStateControllerManagementOpcode.cpp').read_text()
+    time_source=(ROOT/'src/EnemyStateTimeOpcode.cpp').read_text()
     assert 'entity->current_runtime->current()' in root
     assert 'execute_enemy_movement_opcode(*this, opcode)' in root
     assert 'execute_enemy_pattern_opcode(*this, opcode)' in root
     assert 'execute_enemy_control_opcode(*this, opcode)' in root
     assert 'execute_enemy_dynamic_parameter_opcode(*this, opcode)' in root
     assert 'execute_enemy_controller_management_opcode(*this, opcode, controller_result)' in root
+    assert 'execute_enemy_time_opcode(*this, opcode)' in root
     assert 'if (opcode == 560 && entity->defeat())' in root
     assert 'return 1;' in root
     assert 'return 0;' in root
@@ -173,9 +193,11 @@ def main() -> None:
     management_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',management)]
     assert set(management_labels)=={520,525,545,565,573},management_labels
     assert 'result = -1;' in management
+    time_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',time_source)]
+    assert set(time_labels)=={538,540,541,542,574},time_labels
     dynamic_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',dynamic)]
     assert {529,530,570,571}.issubset(set(dynamic_labels)),dynamic_labels
-    for source in (root,movement,pattern,control,dynamic,management):
+    for source in (root,movement,pattern,control,dynamic,management,time_source):
         for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
             assert forbidden not in source
 
@@ -187,6 +209,7 @@ def main() -> None:
         ('src/EnemyStateControlOpcode.cpp','build/core211-canonical/EnemyStateControlOpcode.obj'),
         ('src/EnemyStateDynamicParameterOpcode.cpp','build/core212-canonical/EnemyStateDynamicParameterOpcode.obj'),
         ('src/EnemyStateControllerManagementOpcode.cpp','build/core213-canonical/EnemyStateControllerManagementOpcode.obj'),
+        ('src/EnemyStateTimeOpcode.cpp','build/core214-canonical/EnemyStateTimeOpcode.obj'),
         ('src/EnemyStateExecuteOpcode.cpp','build/core209-canonical/EnemyStateExecuteOpcode.obj'),
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
@@ -198,15 +221,16 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
     print('PASS original compressed dispatch pointers and ordered E8 maps for all 20 bounds/health/controller/state cases (1,759B/360 heads/51 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for controller selection/clear 520/525/545/565/573 (289B/65 heads/17 calls)')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for timer/mode/time 538/540/541/542/574 (594B/123 heads/14 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 20 control/state cases, five controller selection/clear cases, four dynamic parameter cases and 14 existing opcode fragments wired')
-    print('PASS all six i386 COFF source units compile under locked MSVC profile')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 20 control/state cases, five controller selection/clear cases, five timer/mode/time cases, four dynamic parameter cases and 14 existing opcode fragments wired')
+    print('PASS all seven i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 
