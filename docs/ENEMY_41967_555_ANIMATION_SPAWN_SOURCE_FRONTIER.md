@@ -21,4 +21,4 @@ The source deliberately preserves the three separate position reads and only eva
 
 `src/EnemyStateAnimationSpawnOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. The focused verifier checks the original 388B branch directly from the locked PE, all 81 instruction heads, all ten direct E8 site/target pairs, the three PE float constants and the ordered natural-C++ call path. The focused i386 object also retains the real data references to `0x0056FBF8`, `0x0056E0F8` and `0x0056C8D0`. It reuses the existing whole-exact `EnemyController::animation_file` and `AnimationFile::spawn` methods.
 
-This is an inline source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The original 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
+This is an inline source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.

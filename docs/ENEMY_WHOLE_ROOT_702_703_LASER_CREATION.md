@@ -1,6 +1,6 @@
 # CORE192: real Laser parameter owners inside the entire Enemy boss root
 
-**Current production source update (CORE/RECON-1143/1144):** the original 702/703/711/713 Laser case semantics are now maintained as `execute_enemy_laser_opcode(EnemyState&, opcode)` in `src/EnemyStateLaserOpcode.cpp`. This replaces the private draft's queued-selector and Laser-factory boundaries with the actual accepted `EnemyState::writable_shot()` and `LaserController::create_laser()` methods. It is a C++ source fragment only; the original 41,967B `EnemyState::execute_opcode()` root remains undefined/source-absent and NONEXACT. See [the four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md).
+**Current production source update (CORE/RECON-1143/1144):** the original 702/703/711/713 Laser case semantics are now maintained as `execute_enemy_laser_opcode(EnemyState&, opcode)` in `src/EnemyStateLaserOpcode.cpp`. This replaces the private draft's queued-selector and Laser-factory boundaries with the actual accepted `EnemyState::writable_shot()` and `LaserController::create_laser()` methods. It is a C++ source fragment only; the original 41,967B `EnemyState::execute_opcode()` root now has a partial C++ entry (CORE/RECON-1196), but remains incomplete and NONEXACT. See [the four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md).
 
 
 This work extends the *same* natural-source candidate for the native

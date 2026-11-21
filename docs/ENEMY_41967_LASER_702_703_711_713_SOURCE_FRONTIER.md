@@ -13,7 +13,7 @@ The immutable Japanese TH20 1.00a Steamless PE (SHA-256 `a274b45fe6ec53511718bb3
 | 711 | `0x00494CE7` | 141 | 15 | `0x00494CED -> 0x0048B650` LaserType2 | `0x00494F47 -> 0x0048B8B0` LaserType2 |
 | 713 | `0x00494A84` | 137 | 16 | `0x00494A8A -> 0x0048B5B0` LaserType3 | `0x00494CDC -> 0x0048B890` LaserType3 |
 
-The original native verifier independently confirms the whole 41,967B/8,896-instruction Enemy parent, its 704-byte compact opcode selector, all 174 relocatable case pointers, and all four bounded case CFGs. The cases reach the common parent epilogue without unresolved branch edges. The parent itself remains **NONEXACT and source-absent**.
+The original native verifier independently confirms the whole 41,967B/8,896-instruction Enemy parent, its 704-byte compact opcode selector, all 174 relocatable case pointers, and all four bounded case CFGs. The cases reach the common parent epilogue without unresolved branch edges. The parent now has a partial C++ root entry (CORE/RECON-1196), but remains incomplete and NONEXACT.
 
 ## Maintained C++ behavior
 

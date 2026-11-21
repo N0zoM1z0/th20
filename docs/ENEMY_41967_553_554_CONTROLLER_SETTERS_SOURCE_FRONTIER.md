@@ -22,4 +22,4 @@ The source uses the actual typed controller owners and setter methods, not direc
 
 The helper compiles as i386 COFF under the pinned MSVC profile. The verifier checks the exact original branch byte lengths, instruction counts, hashes, all seven E8 site/target pairs, and the relative order of Context lookup, VM reads and setter calls.
 
-These are inline source fragments, not separate native functions. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
+These are inline source fragments, not separate native functions. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.

@@ -110,7 +110,9 @@ struct EnemyState {
     int update_movements();
     void update_mesh();
     Vector3& position_ref();
-    // The whole 48C010 dispatcher remains undefined while its owners are closed.
+    // Partial natural-C++ entry for the 41,967B 0x48C010 opcode boss.
+    // Movement 400-448 and independently reconstructed opcode families are
+    // wired; the remaining inline switch cases are still an open frontier.
     int execute_opcode();
     // Original 305B ensure-only and 396B COW queued record/metadata pair
     // selectors. They return raw record and value pointers, NOT a shared_ptr.

@@ -22,4 +22,4 @@ The pointer's lifetime remains owned by the live ECL packet. It must not be dere
 
 `src/EnemyStateScriptPointerOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-script-pointer-opcode-source.py` checks the immutable original branch hash, 252B/62-instruction/10-E8 counts, original call-target multiset, both VM operand reads before COW, vector size/resize order and exact borrowed packet pointer expression.
 
-This is a source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The original 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
+This is a source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.

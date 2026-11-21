@@ -23,4 +23,4 @@ The final call is the already accepted whole-exact **119B `EnemyQueuedRecord::op
 
 `src/EnemyStateQueueCopyOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-queue-copy-opcode-source.py` checks the immutable original branch hash, 572B/129-instruction/19-E8 counts, original target multiset, both operand reads before mutation, destination-before-source growth, two independent advances and final typed copy assignment.
 
-This is a source fragment, not a standalone original function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
+This is a source fragment, not a standalone original function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.

@@ -1,6 +1,6 @@
 # CORE198: native Enemy opcodes 700/701 inside the entire boss root
 
-**Current maintained production source update (CORE/RECON-1146):** the original 700/701 case semantics are now maintained as `execute_enemy_queued_parameters_opcode(EnemyState&, opcode)` in `src/EnemyStateQueuedParametersOpcode.cpp`. It uses the now-accepted exact 396B `EnemyState::writable_shot()` pair selector rather than the private CORE198 selector boundary. The two opcodes remain inline case fragments in the 41,967B `EnemyState::execute_opcode()` parent, which remains source-absent/NONEXACT. See [the 700/701 source frontier](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md).
+**Current maintained production source update (CORE/RECON-1146):** the original 700/701 case semantics are now maintained as `execute_enemy_queued_parameters_opcode(EnemyState&, opcode)` in `src/EnemyStateQueuedParametersOpcode.cpp`. It uses the now-accepted exact 396B `EnemyState::writable_shot()` pair selector rather than the private CORE198 selector boundary. The two opcodes remain inline case fragments in the 41,967B `EnemyState::execute_opcode()` parent, which now has a partial C++ entry (CORE/RECON-1196) but remains incomplete/NONEXACT. See [the 700/701 source frontier](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md).
 
 
 CORE198 continues the **same 41,967-byte original `EnemyState::execute_opcode`**

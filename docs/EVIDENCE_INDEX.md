@@ -117,6 +117,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1028 — whole 32B original Card ASCII task list push-back](CARD_ASCII_LIST_PUSH32_STRICT_EXACT.md) — native 153B parent E8, genuine 32B helper and original nested E8, both 153/153 and 32/32 exact in one pinned object, STL origin uncredited.
 
+- [CORE/RECON-1196 — 41,967B EnemyState::execute_opcode partial C++ root](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md) — live instruction retrieval, complete 400–448 movement family, and 14 existing opcode fragments wired into the root; parent explicitly NONEXACT.
 - [CORE/RECON-1194/1195 — shared 66B IntrusiveList prepend boundary](INTRUSIVE_LIST_PREPEND_66_SHARED_CALLER_FRONTIER.md) — 15 physical callers, both original E8 roles, and a natural C++ candidate at 56/58 ordinary bytes; explicitly reconstructed, not strict exact.
 - [CORE/RECON-1193 — Card tick callback execution chain exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — original 34B callback operator selects Card::info_handles[1] and calls the exact 22B event-4 wrapper.
 - [CORE/RECON-1192 — Card tick erased-target vtable strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md) — all six original `_Func_impl_no_alloc` virtuals plus the 14B std::invoke bridge; `_Move` verified with its original 5B alignment span.
@@ -282,7 +283,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [command-9 BulletStyle/Animation/Enemy-file branch and 14 original E8 sites](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md),
   [full native three-switch CFG](BULLET_12140_THREE_SWITCH_NATIVE_CFG_RECONSTRUCTION.md),
   and [210-call original PE verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **41,967B Enemy ECL — SOURCE-ABSENT parent, selected opcode fragments SOURCE-PRESENT:**
+- **41,967B Enemy ECL — PARTIAL C++ root source, selected opcode families wired; whole parent NONEXACT:**
   [original opcode graph and 702/703/711/713 Laser paths](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md),
   [natural-C++ 702/703/711/713 Laser fragments](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md),
   [natural-C++ 609/610/611/612 queued shot-command fragment](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md),

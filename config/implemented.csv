@@ -1785,3 +1785,4 @@ std::invoke<NativeCardTickCallback>
 th20::NativeCardTickCallback::operator()
 th20::NativeCardTickEventView::update_event_4
 th20::IntrusiveList<T>::prepend
+th20::EnemyState::execute_opcode

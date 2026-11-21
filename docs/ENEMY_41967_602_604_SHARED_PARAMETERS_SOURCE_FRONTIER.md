@@ -26,4 +26,4 @@ The selected queue entry, actual shared owner, PMR list and surrounding state ar
 
 `src/EnemyStateSharedQueuedParametersOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-shared-queued-parameters-opcode-source.py` checks the original branch addresses, byte/instruction counts, native SHA-256 values, direct-call target multisets, use of `shared_shot` (and absence of `writable_shot`), and every field/normalization write. The compiled object calls the actual typed `EnemyState::shared_shot`, integer/float accessors and `normalize_angle` methods.
 
-No `config/functions.csv` function mapping or parent byte credit is added: these are inline opcode case fragments. The 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**, with no canonical whole-parent unit. No full cold replay was performed.
+No `config/functions.csv` function mapping or parent byte credit is added: these are inline opcode case fragments. The 41,967B Enemy dispatcher now has a partial C++ root entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT, with no canonical whole-parent unit. No full cold replay was performed.

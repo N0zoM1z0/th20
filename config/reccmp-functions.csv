@@ -1800,3 +1800,4 @@ std::invoke<NativeCardTickCallback>,0x00486AD0,function
 th20::NativeCardTickCallback::operator(),0x00486E50,function
 th20::NativeCardTickEventView::update_event_4,0x00488920,function
 th20::IntrusiveList<T>::prepend,0x0044A6B0,function
+th20::EnemyState::execute_opcode,0x0048C010,function

@@ -31,4 +31,4 @@ The 339B original `BulletController::fire` callee remains NONEXACT as a native f
 
 `src/EnemyStateShotFireOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-shot-fire-opcode-source.py` checks the two immutable native branch ranges, byte/instruction counts, branch SHA-256 values, direct-call target multisets, exact reset fields, preserved `vector_34.z`, strict 0.9 comparison, three live Context lookups, real shared_ptr-by-value fire call, and final scalar reset order.
 
-These are inline source fragments, not separate native functions. No `config/functions.csv` mapping or parent byte credit is added. The original 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
+These are inline source fragments, not separate native functions. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.

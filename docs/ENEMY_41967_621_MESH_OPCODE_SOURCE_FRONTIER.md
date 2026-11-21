@@ -27,4 +27,4 @@ The implementation reuses the already exact 97B `DiagnosticAllocator::release_ob
 
 `src/EnemyStateMeshOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. The focused original-PE verifier checks the entire 346B branch, 70 instruction heads, all seven E8 destinations, both original diagnostic labels, both original float constants, and the C++ source mutation/call order.
 
-This is a source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The original 41,967B Enemy dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
+This is a source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.

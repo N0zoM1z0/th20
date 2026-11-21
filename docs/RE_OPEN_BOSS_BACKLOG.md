@@ -51,27 +51,11 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** `0x0048C010`, **41,967B**. The parent remains
-  source-absent/NONEXACT; original Laser opcodes 702/703/711/713 and shared
-  queued-command opcodes 609/610/611/612 now have maintained natural-C++ fragments
-  using the real writable queued selector. Continue the other large opcode
-  clusters and integrate the supported cases into the full parent.
-  [Native case graph](ENEMY_41967_NATIVE_LASER_OPCODE_CASE_GRAPH.md),
-  [four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md),
-  [700/701 parameter source frontier](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md),
-  [602–604 shared parameter source frontier](ENEMY_41967_602_604_SHARED_PARAMETERS_SOURCE_FRONTIER.md),
-  [600/601 reset/fire source frontier](ENEMY_41967_600_601_SHOT_FIRE_SOURCE_FRONTIER.md),
-  [609–612 shot-command source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md),
-  [614 queue-copy source frontier](ENEMY_41967_614_QUEUE_COPY_SOURCE_FRONTIER.md),
-  [632 borrowed-script source frontier](ENEMY_41967_632_SCRIPT_POINTER_SOURCE_FRONTIER.md),
-  [621 mesh-owner source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md),
-  [555 sound/spawn source frontier](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md),
-  [553/554 controller setter source frontier](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md),
-  [514/521 phase source frontier](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md),
-  [549 membership source frontier](ENEMY_41967_549_MEMBERSHIP_SOURCE_FRONTIER.md),
-  [551 Fog/StageResource source frontier](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md),
-  [522/528/531/532/533 Card Spell Start source frontier](ENEMY_41967_522_528_531_532_533_CARD_START_SOURCE_FRONTIER.md),
-  and [Enemy argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md).
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196
+  added the partial natural-C++ root entry and wired the complete 400–448 movement
+  family plus independently maintained opcode fragments. The root remains
+  incomplete/NONEXACT; continue restoring the other inline case families and
+  converge the complete original 41,967B body, stack, calls and switch data.
 - **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation
   execution/update remains source-absent; accepted per-mode renderer
   children do not prove this parent. [Architecture/source map](SOURCE_MAP.md).

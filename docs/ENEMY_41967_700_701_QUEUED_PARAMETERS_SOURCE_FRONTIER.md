@@ -24,4 +24,4 @@ Neither opcode changes `ShotMetadata::field_30` cursor. They preserve the select
 
 `src/EnemyStateQueuedParametersOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-queued-parameters-opcode-source.py` checks the original 700/701 branch intervals, byte/instruction counts, native SHA-256 values, direct-call destination multisets, and all maintained source writes. The object relocations point to the actual `EnemyState::integer_argument`, `float_argument` and accepted `writable_shot` methods.
 
-The source is a case fragment, not a standalone native-function definition. No `config/functions.csv` mapping or original parent byte credit is added. The complete 41,967B Enemy ECL dispatcher remains **SOURCE-ABSENT, NONEXACT**. No full cold replay was performed.
+The source is a case fragment, not a standalone native-function definition. No `config/functions.csv` mapping or original parent byte credit is added. The 41,967B Enemy ECL dispatcher now has a partial C++ root entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. No full cold replay was performed.
