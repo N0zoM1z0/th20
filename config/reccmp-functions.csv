@@ -1799,3 +1799,4 @@ std::_Func_impl_no_alloc<NativeCardTickCallback>::_Delete_this,0x0044B3A0,functi
 std::invoke<NativeCardTickCallback>,0x00486AD0,function
 th20::NativeCardTickCallback::operator(),0x00486E50,function
 th20::NativeCardTickEventView::update_event_4,0x00488920,function
+th20::IntrusiveList<T>::prepend,0x0044A6B0,function
