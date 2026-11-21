@@ -32033,3 +32033,35 @@ relocations = [
   { offset = 0x16, type = "REL32", symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@2@I@Z", target = 0x0044CD00 },
   { offset = 0x29, type = "REL32", symbol = "?set_flag0_recursively@Animation@th20@@QAEXXZ", target = 0x0044FA70 },
 ]
+
+# GPT-WEB: original Dialogue release wrapper, using its true destroy_at helper.
+[units.front_dialogue_release97]
+source = "src/FrontDialogueRelease97.cpp"
+object = "build/gpt-web-dialogue-canonical/FrontDialogueRelease97.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::NativeFrontDialogueReleaseView::release_dialogue"]
+symbol = "?release_dialogue@NativeFrontDialogueReleaseView@th20@@QAEXPAUDialogue@2@@Z"
+target_address = 0x004AE830
+size = 97
+relocations = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x20, type = "REL32", symbol = "??$destroy_at@UDialogue@th20@@@std@@YAXQAUDialogue@th20@@@Z", target = 0x004AE9F0 },
+  { offset = 0x2A, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x2F, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x38, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x41, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x005429FC },
+  { offset = 0x4C, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x57, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.dialogue_destroy_at16]
+source = "src/FrontDialogueRelease97.cpp"
+object = "build/gpt-web-dialogue-canonical/FrontDialogueRelease97.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["std::destroy_at<th20::Dialogue>"]
+symbol = "??$destroy_at@UDialogue@th20@@@std@@YAXQAUDialogue@th20@@@Z"
+target_address = 0x004AE9F0
+size = 16
+relocations = [
+  { offset = 0x09, type = "REL32", symbol = "??_GDialogue@th20@@QAEPAXI@Z", target = 0x004B06E0 },
+]

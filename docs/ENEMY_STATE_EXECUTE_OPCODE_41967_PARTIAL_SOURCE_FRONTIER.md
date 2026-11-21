@@ -249,3 +249,13 @@ maintained helper uses explicit sequential reads and preserves the native
 argument order. The focused verifier checks the native selector and pointer,
 all 25 instructions and the four E8 targets; its host fixture checks the
 resulting factory arguments. The 41,967-byte dispatcher remains NONEXACT.
+
+## Opcode 518 FrontInf dialogue lifetime dependency
+
+The adjacent opcode 518 case calls the 626-byte FrontInf dialogue-command
+method at `0x004B9740`, then clears Bullet, Laser and Enemy controllers. Its
+existing-dialogue replacement path now has a strict-exact 97-byte release
+wrapper at `0x004AE830` and a strict-exact 16-byte `std::destroy_at<Dialogue>`
+helper at `0x004AE9F0`. The release wrapper preserves its original lock-slot-1
+and scalar-delete sequence. The 626-byte parent and opcode-518 case are still
+open; no completion credit is inferred from these lifetime leaves.

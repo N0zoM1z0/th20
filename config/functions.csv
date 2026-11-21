@@ -3284,11 +3284,11 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004AE730,90,0x004AE789,_Reset<>,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AE790,90,0x004AE7E9,_Reset<>,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AE7F0,56,0x004AE827,FUN_004ae7f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004AE830,97,0x004AE890,FUN_004ae830,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004AE830,97,0x004AE890,FUN_004ae830,th20::NativeFrontDialogueReleaseView::release_dialogue,Dialogue,matching,100.00,__thiscall,void th20::NativeFrontDialogueReleaseView::release_dialogue(th20::Dialogue*),false,src/FrontDialogueRelease97.cpp,CORE/RECON-1203; docs/FRONT_DIALOGUE_RELEASE97_STRICT_EXACT.md,unknown,Whole 97-byte borrowed Dialogue release wrapper; all eight original relocation destinations strictly replay. The receiver owner remains provisional.
 0x004AE8A0,135,0x004AE926,FUN_004ae8a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AE930,156,0x004AE9CB,FUN_004ae930,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AE9D0,17,0x004AE9E0,FUN_004ae9d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004AE9F0,16,0x004AE9FF,FUN_004ae9f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004AE9F0,16,0x004AE9FF,FUN_004ae9f0,std::destroy_at<th20::Dialogue>,Dialogue,matching,100.00,__cdecl,void std::destroy_at<th20::Dialogue>(th20::Dialogue*),false,src/FrontDialogueRelease97.cpp,CORE/RECON-1203; docs/FRONT_DIALOGUE_RELEASE97_STRICT_EXACT.md,unknown,Whole 16-byte standard-library destroy_at wrapper; original deleting-destructor target at 0x004B06E0 strictly replayed. No authored-byte credit.
 0x004AEA00,14,0x004AEA0D,FUN_004aea00,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AEA10,14,0x004AEA1D,FUN_004aea10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004AEA20,14,0x004AEA2D,FUN_004aea20,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
