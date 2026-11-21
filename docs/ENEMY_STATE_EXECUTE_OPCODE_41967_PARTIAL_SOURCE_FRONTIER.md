@@ -77,6 +77,15 @@ source fragments.
   opcode-306 secondary-state fields. These two inline case bodies are restored
   in natural C++; the 41,967-byte root remains NONEXACT and no separate byte
   credit is claimed for inline code.
+- Native switch case `10` maps opcodes `48/173/177/201/316` to a further
+  indexed animation replacement path, now restored in
+  `src/EnemyStateAnimationVariantOpcode.cpp`. Operand 0 selects the link; a
+  negative operand-1 selector uses `field_28` directly, while a nonnegative
+  selector uses `field_28 + 5 + selector`. It retires/replaces the PMR handle
+  with a flag-2 animation, refreshes primary dimensions for link zero and
+  conditionally clears recursive flag 0. Unlike opcode 303, it has no negative
+  script guard and does not publish the opcode-306 state fields. This is inline
+  dispatcher logic and receives semantic progress only.
 - Native cases `4/5/8/9` (opcodes 307/308/314/315) now restore the
   EffectInfo animation-handle publication paths. Opcode 307 creates a
   positioned flag-2 animation; 308 creates a null-position flag-2 animation;

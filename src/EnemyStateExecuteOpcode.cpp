@@ -37,6 +37,7 @@ int execute_enemy_animation_effect_flag2_opcode(EnemyState& state);
 int execute_enemy_animation_effect_spawn_opcode(EnemyState& state);
 int execute_enemy_animation_effect_flag2_handle_opcode(EnemyState& state);
 int execute_enemy_animation_effect_rotate_opcode(EnemyState& state);
+int execute_enemy_animation_spawn_mapped(EnemyState& state);
 
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
@@ -68,9 +69,7 @@ int EnemyState::execute_opcode() {
         return frontend_result;
 
     // Native switch case 0 dispatches the five direct spawn opcodes through
-    // the recovered 653-byte EnemyState::spawn_from_opcode leaf. Cases 309,
-    // 311 and 312 share the leaf behind a separate native guard not restored
-    // at this boundary yet.
+    // the recovered 653-byte EnemyState::spawn_from_opcode leaf.
     switch (opcode) {
     case 300: case 301: case 304: case 305: case 321:
         return spawn_from_opcode();
@@ -98,6 +97,10 @@ int EnemyState::execute_opcode() {
         return execute_enemy_animation_effect_spawn_opcode(*this);
     case 315:
         return execute_enemy_animation_effect_rotate_opcode(*this);
+    // Native case 10 aliases five opcodes to the field_28-based animation
+    // selector; its negative and nonnegative selector branches differ.
+    case 48: case 173: case 177: case 201: case 316:
+        return execute_enemy_animation_spawn_mapped(*this);
     default:
         break;
     }
