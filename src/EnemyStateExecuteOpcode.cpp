@@ -61,7 +61,27 @@ int EnemyState::execute_opcode() {
     // The 400-448 family is a contiguous 49-opcode movement boss. It remains
     // one natural C++ switch because the native root shares movement records,
     // interpolation lifetimes and combine_movements boundaries throughout.
-    if (execute_enemy_movement_opcode(*this, opcode))
+    std::int32_t movement_opcode = opcode;
+    switch (opcode) {
+    // These low-numbered and 400-series aliases share native switch bodies.
+    case 57: case 61: movement_opcode = 402; break;
+    case 13: case 56: movement_opcode = 403; break;
+    case 53: case 108: case 180: movement_opcode = 430; break;
+    case 49: case 77: movement_opcode = 411; break;
+    case 65: movement_opcode = 414; break;
+    case 69: case 236: movement_opcode = 415; break;
+    case 89: movement_opcode = 419; break;
+    case 133: movement_opcode = 410; break;
+    case 76: case 93: case 120: movement_opcode = 426; break;
+    case 97: movement_opcode = 432; break;
+    case 101: case 149: movement_opcode = 433; break;
+    case 153: movement_opcode = 435; break;
+    case 157: case 212: movement_opcode = 442; break;
+    case 105: movement_opcode = 443; break;
+    case 109: case 113: movement_opcode = 446; break;
+    default: break;
+    }
+    if (execute_enemy_movement_opcode(*this, movement_opcode))
         return 0;
     if (execute_enemy_pattern_opcode(*this, opcode))
         return 0;

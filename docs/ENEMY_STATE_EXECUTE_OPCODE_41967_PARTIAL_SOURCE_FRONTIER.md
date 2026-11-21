@@ -160,6 +160,15 @@ source fragments.
 ## Remaining scope
 
 This is a **partial root reconstruction**, not an exact or complete dispatcher.
+The movement boundary has also been expanded from only the 400-448 range
+to its native jump-table aliases. The aliases are canonicalized to the matching
+movement operation before entering the same maintained helper: `57/61 -> 402`,
+`13/56 -> 403`, `53/108/180 -> 430`, `49/77 -> 411`, `65 -> 414`,
+`69/236 -> 415`, `89 -> 419`, `133 -> 410`, `76/93/120 -> 426`, `97 -> 432`,
+`101/149 -> 433`, `153 -> 435`, `157/212 -> 442`, `105 -> 443`, and
+`109/113 -> 446`. These are native shared-case aliases, not new independent
+function bodies; no duplicate byte credit is assigned.
+
 The remaining inline cases in the original 41,967B body—including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
 additional opcode ranges—still need source recovery. Unknown opcodes currently

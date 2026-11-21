@@ -51,9 +51,11 @@ restored. Cases 338/339/340 now restore positioned effect-animation creation, th
 spawn-and-update loop, and selected-Enemy flag-bit-9 publication; the 35-byte
 `0x00497240` setter is strict exact. Opcode 334 now routes through the exact 108-byte EffectInfo positioned
 scheduled-effect wrapper; the `ItemResourceOwners.hpp` change was followed by
-a focused closure replay of 33/33 units across 10 cold objects. The remaining
-priority is the other unhandled dispatcher case families and the 41,967-byte
-root boundary; no whole-graph cold replay was run.
+a focused closure replay of 33/33 units across 10 cold objects. The movement
+root boundary now also includes 26 native aliases from the lower opcode ranges,
+canonicalized to their corresponding 400-series movement implementations.
+The remaining priority is the other unhandled dispatcher case families and
+the 41,967-byte root boundary; no whole-graph cold replay was run.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 
