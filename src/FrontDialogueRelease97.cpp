@@ -1,13 +1,10 @@
 #include "DialogueText.hpp"
+#include "FrontDialogueRelease97.hpp"
 #include "LockRegistry.hpp"
 #include <memory>
 #include <mutex>
 
 namespace th20 {
-
-struct NativeFrontDialogueReleaseView {
-    void release_dialogue(Dialogue* dialogue);
-};
 
 void NativeFrontDialogueReleaseView::release_dialogue(Dialogue* dialogue) {
     if (!dialogue)

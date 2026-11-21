@@ -14,6 +14,7 @@
 #include "EnemyStateFrontendOpcode.hpp"
 #include "HudGauge.hpp"
 #include "SoundInf.hpp"
+#include "SecureCrt.hpp"
 #include "Card.hpp"
 #include "ClockScalar.hpp"
 #include "PlayerRecord.hpp"
@@ -89,6 +90,13 @@ SoundEffectChannel::SoundEffectChannel()
     : buffer(nullptr), cooldown(-1), definition(nullptr), id(0), pan(0), was_playing(0) {}
 SoundInf::SoundInf() noexcept = default;
 SoundInf::~SoundInf() = default;
+extern "C" int strcpy_s(char* destination, std::size_t capacity, const char* source) {
+    if (!destination || !source || capacity == 0) return 22;
+    const std::size_t length = std::strlen(source);
+    if (length >= capacity) { destination[0] = '\0'; return 34; }
+    std::memcpy(destination, source, length + 1);
+    return 0;
+}
 void SoundInf::request_effect_at(std::int32_t id, float x) {
     ++sound_effect_calls;
     sound_effect_id = id;
@@ -166,6 +174,43 @@ void TH20_FASTCALL set_animation_handle_flag0_recursively(AnimationHandle* handl
 
 int main() {
     using namespace th20;
+
+    // The native SoundInf queue scans exactly slots 0..30, publishes into
+    // the first empty record, and leaves the final 32nd record untouched.
+    for (auto& command : process_sound.commands) {
+        command.type = 0;
+        command.argument = -7;
+        command.stage = 9;
+        std::memset(command.name, 'x', sizeof command.name);
+    }
+    process_sound.enqueue(2, 17, "dummy");
+    assert(process_sound.commands[0].type == 2);
+    assert(process_sound.commands[0].argument == 17);
+    assert(process_sound.commands[0].stage == 0);
+    assert(std::strcmp(process_sound.commands[0].name, "dummy") == 0);
+    assert(process_sound.commands[1].type == 0);
+    assert(process_locks.slot(11).try_lock());
+    process_locks.slot(11).unlock();
+
+    process_sound.commands[0].type = 4;
+    process_sound.commands[1].type = 6;
+    process_sound.commands[2].type = 8;
+    process_sound.enqueue(3, 29, "front-voice.wav");
+    assert(process_sound.commands[3].type == 3);
+    assert(process_sound.commands[3].argument == 29);
+    assert(process_sound.commands[3].stage == 0);
+    assert(std::strcmp(process_sound.commands[3].name, "front-voice.wav") == 0);
+
+    for (std::size_t i = 0; i < 31; ++i) {
+        process_sound.commands[i].type = static_cast<std::int32_t>(i + 1);
+    }
+    process_sound.commands[31].type = 0;
+    process_sound.commands[31].argument = 0x12345678;
+    process_sound.enqueue(7, 41, "must-not-use-slot-31.wav");
+    assert(process_sound.commands[31].type == 0);
+    assert(process_sound.commands[31].argument == 0x12345678);
+    assert(process_locks.slot(11).try_lock());
+    process_locks.slot(11).unlock();
     Enemy enemy;
     Context context;
     PlayerRecord player_record;
@@ -374,6 +419,9 @@ int main() {
     assert(animation_flag0_set_calls == 2);
     assert(animation_flag0_set_handles[0] == 0x11111111u);
     assert(animation_flag0_set_handles[1] == 0x22222222u);
+
+    set_packet(518, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
 
     // An already-inactive bit five still triggers the native restoration walk.
     enemy.state.flags.word_00 = 0xa5ff3fdfu;
@@ -598,5 +646,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound/dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

@@ -35,6 +35,7 @@ HOST_SOURCES=[
     'src/DebugMemoryResource.cpp', 'src/LockRegistry.cpp', 'src/Worker.cpp',
     'src/Context.cpp', 'src/MeshInterfaces.cpp', 'src/TaskInfoConstruction.cpp', 'src/TaskInfo.cpp', 'src/FunctionChain.cpp',
     'src/EclDiagnostic.cpp',
+    'src/SoundInfEnqueue323.cpp', 'src/NativeSoundCommandArrayView.cpp',
 ]
 
 
@@ -291,6 +292,8 @@ def main() -> None:
         ('src/EnemyStateAnimationFlagsClearOpcode.cpp','build/core217-canonical/EnemyStateAnimationFlagsClearOpcode.obj'),
         ('src/EnemyStateScreenOpcode.cpp','build/core218-canonical/EnemyStateScreenOpcode.obj'),
         ('src/EnemyStateExecuteOpcode.cpp','build/core209-canonical/EnemyStateExecuteOpcode.obj'),
+        ('src/SoundInfEnqueue323.cpp','build/gpt-web-sound-canonical/SoundInfEnqueue323.obj'),
+        ('src/NativeSoundCommandArrayView.cpp','build/gpt-web-sound-canonical/NativeSoundCommandArrayView.obj'),
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
 
@@ -301,7 +304,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound/dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
@@ -314,7 +317,7 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for sound/dialogue 516/519 (122B/28 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
     print('PASS 49 movement cases, nine EnemyPattern cases, 20 control/state cases, five controller selection/clear cases, five timer/mode/time cases, five card/health cases, two sound/dialogue cases, four dynamic parameter cases and 16 opcode fragments wired')
-    print('PASS all eleven i386 COFF source units compile under locked MSVC profile')
+    print('PASS all thirteen i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 
