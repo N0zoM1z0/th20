@@ -125,3 +125,17 @@ int execute_enemy_set_found_flag_bit_9_opcode(EnemyState& state) {
 }
 
 } // namespace th20
+
+namespace th20 {
+
+// Native case 18 / opcode 334 allocates an EffectInfo handle slot and runs the
+// effect script callback with the current EnemyState position as its parameter view.
+int execute_enemy_effect_position_request_opcode(EnemyState& state) {
+    auto* effects = state.context->effect_info();
+    Vector3& position = state.position_ref();
+    const std::int32_t kind = state.integer_argument(0);
+    effects->spawn_effect_at_position(kind, position, nullptr);
+    return 0;
+}
+
+} // namespace th20

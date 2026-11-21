@@ -32003,3 +32003,18 @@ symbol = "?set_enemy_state_flag_04_bit_9@th20@@YIXPAUEnemy@1@@Z"
 target_address = 0x00497240
 size = 35
 relocations = []
+
+# GPT-WEB: native EffectInfo positioned effect scheduling wrapper.
+[units.effect_info_spawn_effect_at_position]
+source = "src/EffectInfoSpawnPosition.cpp"
+object = "build/gpt-web-effect-canonical/EffectInfoSpawnPosition.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::EffectInfo::spawn_effect_at_position"]
+symbol = "?spawn_effect_at_position@EffectInfo@th20@@QAEIHABUVector3@2@PAVAnimation@2@@Z"
+target_address = 0x004974D0
+size = 108
+relocations = [
+  { offset = 0x0D, type = "REL32", symbol = "?select_handle_slot@EffectInfo@th20@@QAEHXZ", target = 0x00498E70 },
+  { offset = 0x3B, type = "REL32", symbol = "?spawn_effect@EffectInfo@th20@@QAE?AUAnimationHandle@2@HABUEffectParameters@2@PAVAnimation@2@@Z", target = 0x0049DB70 },
+  { offset = 0x55, type = "REL32", symbol = "??A?$array@UEffectAnimationHandle@th20@@$0EAA@@std@@QAEAAUEffectAnimationHandle@th20@@I@Z", target = 0x00414580 },
+]

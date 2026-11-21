@@ -1790,3 +1790,4 @@ th20::EnemyAnimationLink::clear_flag0_recursively
 th20::EnemyState::spawn_animation
 th20::AnimationFile::spawn_flag2_position
 th20::set_enemy_state_flag_04_bit_9
+th20::EffectInfo::spawn_effect_at_position

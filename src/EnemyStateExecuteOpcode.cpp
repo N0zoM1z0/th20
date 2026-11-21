@@ -45,6 +45,7 @@ int execute_enemy_animation_state_selectors_opcode(EnemyState& state);
 int execute_enemy_selected_position_opcode(EnemyState& state);
 int execute_enemy_animation_flags_opcode(EnemyState& state, std::int32_t opcode);
 int execute_enemy_has_selected_identifier_opcode(EnemyState& state);
+int execute_enemy_effect_position_request_opcode(EnemyState& state);
 int execute_enemy_effect_position_spawn_opcode(EnemyState& state);
 int execute_enemy_effect_spawn_and_update_opcode(EnemyState& state);
 int execute_enemy_set_found_flag_bit_9_opcode(EnemyState& state);
@@ -134,6 +135,8 @@ int EnemyState::execute_opcode() {
         return execute_enemy_animation_flags_opcode(*this, opcode);
     case 44: case 73: case 344:
         return execute_enemy_has_selected_identifier_opcode(*this);
+    case 334:
+        return execute_enemy_effect_position_request_opcode(*this);
     case 338:
         return execute_enemy_effect_position_spawn_opcode(*this);
     case 339:

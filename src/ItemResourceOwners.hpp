@@ -35,6 +35,9 @@ public:
     AnimationFile* animation_file(std::int32_t index);
     std::int32_t select_handle_slot();
     std::uint32_t publish_handle(std::uint32_t handle);
+    // Native 108-byte scheduled effect spawn from a position view.
+    std::uint32_t spawn_effect_at_position(std::int32_t kind, const Vector3& position,
+                                           Animation* existing_animation);
     // Native scheduler returns void. The final pointer selects an existing
     // animation for the later deferred creator (null means spawn new).
     // Process 1024 animation handles and all 1024 scheduled effect requests.

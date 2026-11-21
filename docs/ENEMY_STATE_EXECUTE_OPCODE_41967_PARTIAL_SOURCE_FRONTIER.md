@@ -100,6 +100,14 @@ source fragments.
   corresponding low bits in `flags.word_08`. Case `25` (opcodes 44/73/344)
   writes whether the integer-operand-1 identifier resolves through
   `EnemyController::find` into integer destination zero.
+- Native case `18` (opcode 334) requests an EffectInfo handle slot using
+  integer operand 0 and the current EnemyState position view. The new
+  `EffectInfo::spawn_effect_at_position` method at `0x004974D0` reproduces the
+  108-byte wrapper exactly: it selects a free slot, invokes the real
+  `EffectInfo::spawn_effect` callback path, stores the resulting handle in the
+  slot array and returns the high-bit-tagged slot token (ignored by this
+  opcode). All three native relocations strictly replay. The source-level
+  owner/origin remains provisional and receives no authored-byte credit.
 - Native case `19` (opcode 338) builds a position from float operands 2/3,
   adds the current EnemyState position, then spawns a positioned flag-2
   animation using file operand 0, script operand 1 and rotation operand 4. The
