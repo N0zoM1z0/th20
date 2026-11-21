@@ -3,8 +3,9 @@
 The only comparison target is Japanese TH20 v1.00a Steamless PE32, original
 SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The complete **41,967-byte** Enemy opcode dispatcher at `0x0048C010` remains
-**unimplemented and nonexact**. This batch independently reconstructs two of
-its actual full native dependencies, not copied fragments of the main root.
+**partial and nonexact**. This document independently reconstructs the two
+full native dependencies used by opcode 524 and records the case's integration
+into the maintained partial root; it does not claim whole-root completion.
 
 ## Original native opcode 524 and genuine global ownership
 
@@ -89,8 +90,12 @@ ABI and semantic claims.
 The complete `EnemyState::execute_opcode` control flow still needs its full
 41,967-byte source body, all five pointer tables, its compressed index,
 shared case exits, four rank tables, compiler-owned data/alignment and EH.
-Its own opcode 524 case must be integrated and tested separately in the private
-whole-root host, including cached operand order, the two distinct global
-owners, and `field_280`/`field_284` write ordering. These two complete
-leaf/callee matches contribute no partial root exactness. Game startup,
+Opcode 524 is now integrated into the maintained partial root at
+`src/EnemyStateExecuteOpcode.cpp`. Its original 76-byte case block and
+compressed selector entry are verified, and the source preserves operand-read
+before global-owner load, the exact `GameController::set_field_34` call, then
+`field_280` and `field_284` stores. The focused ASan/UBSan dispatch fixture passes with assertions for the
+complete 32-bit input and post-call state stores. This inline integration
+contributes no partial root exactness; the complete 41,967-byte dispatcher
+and Game startup,
 resource/graphics ownership and linked playable execution remain open.

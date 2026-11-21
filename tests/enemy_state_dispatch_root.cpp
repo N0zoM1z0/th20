@@ -22,6 +22,8 @@
 #include "ClockScalar.hpp"
 #include "PlayerRecord.hpp"
 #include "Session.hpp"
+#include "GameController.hpp"
+#include "Player.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
@@ -49,6 +51,18 @@ GameRandom script_random(1);
 DiagnosticAllocator* process_allocator = nullptr;
 LockRegistry process_locks;
 std::int32_t defeat_result = 0;
+GameController* current_game_controller = nullptr;
+Player* dispatch_test_player = nullptr;
+alignas(BulletController) std::array<std::uint8_t, sizeof(BulletController)> bullet_controller_storage{};
+alignas(LaserController) std::array<std::uint8_t, sizeof(LaserController)> laser_controller_storage{};
+BulletController* dispatch_test_bullets = nullptr;
+LaserController* dispatch_test_lasers = nullptr;
+std::int32_t dispatch_player_calls = 0;
+std::int32_t dispatch_player_index = -1;
+std::int32_t game_controller_set_calls = 0;
+std::uint32_t game_controller_last_value = 0;
+std::int32_t player_flag_set_calls = 0;
+std::uint32_t player_flag_last_value = 0;
 std::int32_t card_finish_spell_calls = 0;
 bool front_has_dialogue = false;
 std::int32_t sound_effect_calls = 0;
@@ -73,8 +87,16 @@ Vector3 pattern_drop_origin{};
 std::int32_t enemy_script_globals[4]{};
 Enemy::~Enemy() = default;
 EnemyController::~EnemyController() = default;
-void BulletController::cancel_all(std::int32_t) { ++bullet_cancel_all_calls; }
-void LaserController::cancel_all(std::int32_t, std::int32_t) { ++laser_cancel_all_calls; }
+std::int32_t BulletController::cancel_all(std::int32_t) {
+    assert(this == dispatch_test_bullets);
+    ++bullet_cancel_all_calls;
+    return 0;
+}
+std::int32_t LaserController::cancel_all(std::int32_t, std::int32_t) {
+    assert(this == dispatch_test_lasers);
+    ++laser_cancel_all_calls;
+    return 0;
+}
 std::int32_t Enemy::defeat() { return defeat_result; }
 void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
     pattern_drop_called = true;
@@ -83,7 +105,24 @@ void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
 }
 std::int32_t Enemy::read_integer(std::int32_t) { return 0; }
 float Enemy::read_float(std::int32_t) { return 0.0f; }
-Player* Context::player() { return nullptr; }
+Player* Context::player() { return static_cast<Player*>(object_04); }
+Player* player(std::int32_t index) {
+    ++dispatch_player_calls;
+    dispatch_player_index = index;
+    return dispatch_test_player;
+}
+BulletController* bullet_controller(std::int32_t) { return dispatch_test_bullets; }
+LaserController* laser_controller(std::int32_t) { return dispatch_test_lasers; }
+void GameController::set_field_34(std::uint32_t value) {
+    assert(this == current_game_controller);
+    ++game_controller_set_calls;
+    game_controller_last_value = value;
+}
+void Player::set_entity_flag_10(std::uint32_t value) {
+    assert(this == dispatch_test_player);
+    ++player_flag_set_calls;
+    player_flag_last_value = value;
+}
 Enemy* selected_test_enemy = nullptr;
 Enemy* EnemyController::find(std::uint32_t identifier) {
     return selected_test_enemy && selected_test_enemy->state.identifier.get() == identifier
@@ -188,6 +227,11 @@ void TH20_FASTCALL set_animation_handle_flag0_recursively(AnimationHandle* handl
 int main() {
     using namespace th20;
 
+    alignas(GameController) std::array<std::uint8_t, sizeof(GameController)> game_storage{};
+    alignas(Player) std::array<std::uint8_t, sizeof(Player)> player_storage{};
+    current_game_controller = reinterpret_cast<GameController*>(game_storage.data());
+    dispatch_test_player = reinterpret_cast<Player*>(player_storage.data());
+
     // The native SoundInf queue scans exactly slots 0..30, publishes into
     // the first empty record, and leaves the final 32nd record untouched.
     for (auto& command : process_sound.commands) {
@@ -228,14 +272,14 @@ int main() {
     Context context;
     PlayerRecord player_record;
     EnemyController controller;
-    BulletController test_bullets;
-    LaserController test_lasers;
+    dispatch_test_bullets = reinterpret_cast<BulletController*>(bullet_controller_storage.data());
+    dispatch_test_lasers = reinterpret_cast<LaserController*>(laser_controller_storage.data());
     context.current_player = &player_record;
     context.enemies = &controller;
-    context.primary_owner = &test_bullets;
-    session.contexts[0].primary_owner = &test_bullets;
-    context.object_14 = &test_lasers;
-    session.contexts[0].object_14 = &test_lasers;
+    context.primary_owner = dispatch_test_bullets;
+    session.contexts[0].primary_owner = dispatch_test_bullets;
+    context.object_14 = dispatch_test_lasers;
+    session.contexts[0].object_14 = dispatch_test_lasers;
     session.contexts[0].enemies = &controller;
     selected_test_enemy = &enemy;
     Card card;
@@ -469,6 +513,30 @@ int main() {
     assert(last_front_dialogue_command == 123);
     assert(bullet_cancel_all_calls == 1);
     assert(laser_cancel_all_calls == 1);
+
+    // Opcode 524 preserves the original full signed input in EnemyState while
+    // delegating the unsigned word to the published GameController owner.
+    game_controller_set_calls = 0;
+    game_controller_last_value = 0;
+    enemy.state.field_280 = 17;
+    enemy.state.field_284 = 9;
+    set_packet(524, {0x87654321u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(game_controller_set_calls == 1);
+    assert(game_controller_last_value == 0x87654321u);
+    assert(static_cast<std::uint32_t>(enemy.state.field_280) == 0x87654321u);
+    assert(enemy.state.field_284 == 0);
+
+    // Opcode 575 saves Player zero before the integer operand and forwards the
+    // full 32-bit word to the exact Player bit-10 setter.
+    dispatch_player_calls = 0;
+    dispatch_player_index = -1;
+    player_flag_set_calls = 0;
+    player_flag_last_value = 0;
+    set_packet(575, {0x80000001u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_player_calls == 1 && dispatch_player_index == 0);
+    assert(player_flag_set_calls == 1 && player_flag_last_value == 0x80000001u);
     assert((screen_factory_arguments == std::array<std::uint32_t,6>{
         0x11u,0x22u,0x33u,0u,0u,0u}));
 
@@ -675,5 +743,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

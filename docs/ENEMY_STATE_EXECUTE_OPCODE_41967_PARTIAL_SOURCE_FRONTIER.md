@@ -71,6 +71,19 @@ source fragments.
   selector/pointer entry and four ordered E8 targets are verified; no callee
   bytes are re-credited. See
   [the opcode-517 ScreenInf fragment](ENEMY_OPCODE_517_SCREEN_EFFECT_SPAWN_FRONTIER.md).
+- Native switch case `74` / opcode 524 now updates the published
+  `current_game_controller` through the exact 36-byte
+  `GameController::set_field_34` method. The root reads integer operand zero
+  first, calls the GameController setter with the complete 32-bit word, then
+  stores the original signed value in `field_280` and clears `field_284`.
+  The original 76-byte case body, compressed selector index and both ordered
+  E8 targets are independently checked.
+- Native switch case `120` / opcode 575 now saves `player(0)` before reading
+  integer operand zero, then calls the exact 42-byte
+  `Player::set_entity_flag_10` setter with the complete 32-bit word. The
+  original 59-byte case body, compressed selector index and all three ordered
+  E8 targets are independently checked. Neither inline case receives separate
+  root byte credit.
 - Native switch case `3` (opcode 306) now reconstructs the second animation
   creation path. It uses integer operands 0/1 as link index/script, retires and
   replaces the PMR link with a flag-2 animation, refreshes dimensions and
@@ -196,7 +209,9 @@ function bodies; no duplicate byte credit is assigned.
 
 The remaining inline cases in the original 41,967B body—including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
-additional opcode ranges—still need source recovery. Unknown opcodes currently
+additional opcode ranges—still need source recovery. Opcodes 524 and 575 are
+now wired into the maintained root, but this does not close their surrounding
+switch tables or the dispatcher as a whole. Unknown opcodes currently
 fall through the provisional zero return and must not be treated as proven
 native no-ops. The 41,967-byte root remains NONEXACT and has no whole-root match
 unit; the exact callee units above are credited separately.

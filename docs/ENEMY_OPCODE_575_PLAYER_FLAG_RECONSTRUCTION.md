@@ -61,12 +61,17 @@ portable O2/UBSan evidence, not native full-game execution.
 
 ## Remaining large root
 
-The 41,967-byte Enemy dispatcher at `0x0048C010` is still absent from
-production source and has no canonical unit. Its compressed primary index,
-174 heads, four nested rank tables, shared tails, native EH and full COFF
-contribution must be reconciled as a **single complete root**. Opcode 575 is
-now a verified constituent path and its actual callee is exact; this does
-not grant partial root bytes. Opcodes 502/503 and remaining animation, Stage,
-audio and other real owner dependencies are still open. Refer to
+Opcode 575 is now integrated into the maintained partial dispatcher at
+`src/EnemyStateExecuteOpcode.cpp`. The source saves `player(0)` before reading
+integer operand zero, then invokes the exact Player bit-10 setter with the
+complete 32-bit word. The original 59-byte case block, compressed selector
+entry and three ordered E8 targets are checked; the focused dispatch fixture
+passes its ASan/UBSan host assertions for the receiver and full-width
+argument. This inline integration does not grant partial root byte credit.
+The 41,967-byte Enemy dispatcher
+remains NONEXACT; its compressed primary index, 174 heads, four nested rank
+tables, shared tails, native EH and full COFF contribution must be reconciled
+as a **single complete root**. Opcodes 502/503 and remaining animation, Stage,
+audio and other real owner dependencies remain open. Refer to
 [whole-root layout](CORE_ENEMY_DISPATCH_LAYOUT.md) and
 [rank/control history](ENEMY_RANK_CONTROL_RECONSTRUCTION.md).

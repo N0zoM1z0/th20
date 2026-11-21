@@ -164,6 +164,22 @@ def main() -> None:
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
 
+    global_owner_cases={
+        # The native case bodies are adjacent in address space, but their
+        # compressed jump-table indices are independently selected above.
+        524:(74,0x00495727,0x00495773,[0x004AB080,0x0049C940]),
+        575:(120,0x004956EC,0x00495727,[0x00460830,0x004AB080,0x0049C390]),
+    }
+    for opcode,(index,start,end,expected_calls) in global_owner_cases.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        instructions=list(decoder.disasm(body,start))
+        assert instructions and instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
+
     card_cases={
         523:(73,0x004943C9,0x00494405,[0x00411700,0x004878B0,0x0049C360]),
         536:(82,0x00494405,0x00494423,[0x00411700,0x00497450]),
@@ -242,6 +258,13 @@ def main() -> None:
     assert 'integer_argument(2)' in screen and 'integer_argument(1)' in screen and 'integer_argument(0)' in screen
     assert 'screen_factory_4250f0(1, first, second, third, 0, 0, 0)' in screen
     assert 'if (opcode == 560 && entity->defeat())' in root
+    case524=root[root.index('case 524:'):root.index('case 575:')]
+    assert case524.index('integer_argument(0)') < case524.index('current_game_controller->set_field_34')
+    assert case524.index('current_game_controller->set_field_34') < case524.index('field_280 = value') < case524.index('field_284 = 0')
+    case575=root[root.index('case 575:'):root.index('default:',root.index('case 575:'))]
+    assert case575.index('player(0)') < case575.index('integer_argument(0)') < case575.index('set_entity_flag_10')
+    assert 'current_game_controller->set_field_34' in root
+    assert 'receiver->set_entity_flag_10(value)' in root
     assert 'return 1;' in root
     assert 'return 0;' in root
     assert 'if (execute_enemy_laser_opcode(*this, opcode))' in root
@@ -306,12 +329,13 @@ def main() -> None:
 
     host=ROOT/'build/core209-enemy-dispatch-root-test'
     command=['g++-13','-std=c++20','-O1','-Wall','-Wextra','-Werror',
+        '-D__fastcall=','-D__cdecl=','-D__thiscall=',
         '-ffunction-sections','-fdata-sections','-Wl,--gc-sections','-pthread','-Isrc',
         '-fsanitize=address,undefined','-fno-sanitize-recover=all','-fno-sanitize=vptr',
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
@@ -322,9 +346,10 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for timer/mode/time 538/540/541/542/574 (594B/123 heads/14 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for card/health 523/536/537/561/562 (235B/52 heads/11 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for sound/dialogue 516/518/519 (122B/28 heads/5 calls)')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 20 control/state cases, five controller selection/clear cases, five timer/mode/time cases, five card/health cases, three sound/dialogue cases, four dynamic parameter cases and 16 opcode fragments wired')
-    print('PASS all fourteen i386 COFF source units compile under locked MSVC profile')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 20 control/state cases, five controller selection/clear cases, five timer/mode/time cases, five card/health cases, three sound/dialogue cases, two global-owner cases, four dynamic parameter cases and 18 opcode fragments wired')
+    print('PASS all eighteen i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 

@@ -5,6 +5,8 @@
 #include "EnemyStateScreenOpcode.hpp"
 #include "AnimationHandleSetFlag0Recursive.hpp"
 #include "Enemy.hpp"
+#include "GameController.hpp"
+#include "Player.hpp"
 #include "Context.hpp"
 #include "EnemyController.hpp"
 #include "EclRuntime.hpp"
@@ -178,6 +180,25 @@ int EnemyState::execute_opcode() {
         return execute_enemy_screen_effect_spawn_opcode(*this);
     case 518:
         return execute_enemy_dialogue_opcode(*this);
+    // Native case 74 / opcode 524 reads its operand before loading the
+    // published GameController owner, then preserves the full signed value
+    // in field_280 and clears field_284 after the GameInf setter returns.
+    case 524: {
+        const auto value = integer_argument(0);
+        current_game_controller->set_field_34(static_cast<std::uint32_t>(value));
+        field_280 = value;
+        field_284 = 0;
+        return 0;
+    }
+    // Native case 120 / opcode 575 captures Player zero before reading the
+    // operand, then invokes the bit-10 setter on that saved receiver. The
+    // setter consumes the complete 32-bit word.
+    case 575: {
+        Player* receiver = player(0);
+        const auto value = static_cast<std::uint32_t>(integer_argument(0));
+        receiver->set_entity_flag_10(value);
+        return 0;
+    }
     default:
         break;
     }
