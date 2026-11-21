@@ -52,6 +52,7 @@ std::int32_t sound_effect_id = -1;
 float sound_effect_x = 0.0f;
 bool front_dialogue_ready = false;
 std::int32_t front_dialogue_ready_calls = 0;
+std::int32_t animation_flags_add_calls = 0;
 std::int32_t animation_flag0_set_calls = 0;
 std::array<std::uint32_t,8> animation_flag0_set_handles{};
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
@@ -136,7 +137,7 @@ int execute_enemy_effect_position_request_opcode(EnemyState&) { return 0; }
 int execute_enemy_effect_position_spawn_opcode(EnemyState&) { return 0; }
 int execute_enemy_effect_spawn_and_update_opcode(EnemyState&) { return 0; }
 int execute_enemy_set_found_flag_bit_9_opcode(EnemyState&) { return 0; }
-int execute_enemy_animation_flags_add_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_flags_add_opcode(EnemyState&) { ++animation_flags_add_calls; return 0; }
 Animation* AnimationPoolOwner::resolve_handle(std::uint32_t) { return nullptr; }
 void AnimationPoolOwner::retire_handle(std::uint32_t) {}
 void AnimationPoolOwner::interrupt_handle(std::uint32_t, std::int32_t) {}
@@ -332,6 +333,13 @@ int main() {
     assert(enemy.state.execute_opcode() == 0 && enemy.state.field_38 == 7.25f);
     set_packet(559, {bits(-1.5f),0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0 && enemy.state.field_4c == -1.5f);
+
+    // The 88/502 aliases still enter the separate native OR-flag helper.
+    animation_flags_add_calls = 0;
+    set_packet(502, {0x00000020u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0 && animation_flags_add_calls == 1);
+    set_packet(88, {0x00000020u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0 && animation_flags_add_calls == 2);
 
     // Opcode 503 clears only the low fourteen bits. It restores flag zero
     // on every current handle only when bit five is inactive afterward.
