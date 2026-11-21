@@ -51,10 +51,11 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199
   added the partial natural-C++ root entry and wired the complete 400–448 movement
-  family, nine Pattern cases, 18 bounds/health/controller/state cases, and the
-  independently maintained opcode fragments. The root remains incomplete/NONEXACT;
+  family, nine Pattern cases, 18 bounds/health/controller/state cases, four
+  indexed parameter-copy cases, and the independently maintained opcode fragments.
+  The root remains incomplete/NONEXACT;
   continue restoring the other inline case families and
   converge the complete original 41,967B body, stack, calls and switch data.
 - **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation

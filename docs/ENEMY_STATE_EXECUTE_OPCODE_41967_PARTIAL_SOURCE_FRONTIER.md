@@ -25,6 +25,9 @@ source fragments.
 - `src/EnemyStateControlOpcode.cpp` restores 18 original bounds, health,
   controller-selection and state cases, including the 295B opcode-512 handle
   publisher and the 239B opcode-511 health initialization/update branch.
+- `src/EnemyStateDynamicParameterOpcode.cpp` restores the 4-way/8-way integer
+  and float copy cases 529/530/570/571, preserving the ECL reference-bit and
+  negative manager-variable destination path for operand 0.
 - The root now also routes to the maintained phase, card-start, controller
   setter, fog, membership, mesh, animation-spawn, queued-shot, script-pointer,
   shot-fire, shot-command, laser-parameter, and laser-creation opcode fragments.
@@ -43,13 +46,14 @@ strict exact-byte credit and no match unit has been added.
 
 ## Focused evidence
 
-All four maintained C++ translation units compile as MSVC-compatible i386 COFF
+All five maintained C++ translation units compile as MSVC-compatible i386 COFF
 under the repository's locked `/Od /Ob0` profile:
 
 ```bash
 scripts/compile-probe.sh src/EnemyStateMovementOpcode.cpp build/core209-canonical/EnemyStateMovementOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 scripts/compile-probe.sh src/EnemyStatePatternOpcode.cpp build/core210-canonical/EnemyStatePatternOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 scripts/compile-probe.sh src/EnemyStateControlOpcode.cpp build/core211-canonical/EnemyStateControlOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
+scripts/compile-probe.sh src/EnemyStateDynamicParameterOpcode.cpp build/core212-canonical/EnemyStateDynamicParameterOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 scripts/compile-probe.sh src/EnemyStateExecuteOpcode.cpp build/core209-canonical/EnemyStateExecuteOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 ```
 

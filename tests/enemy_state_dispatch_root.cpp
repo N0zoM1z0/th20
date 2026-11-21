@@ -27,6 +27,8 @@
 #include <cstdint>
 #include <cstring>
 #include <iostream>
+#include <initializer_list>
+#include <algorithm>
 
 namespace th20 {
 GameRandom script_random(1);
@@ -77,7 +79,7 @@ int main() {
     enemy.state.context = &context;
     enemy.state.identifier = 0x12345678u;
     EclLoader loader;
-    alignas(16) std::array<std::uint8_t, 16 + 16 + 8 * 4> packet{};
+    alignas(16) std::array<std::uint8_t, 16 + 16 + 9 * 4> packet{};
     loader.records.push_back({"root-test", packet.data()});
     enemy.loader = &loader;
     enemy.main.manager = &enemy;
@@ -87,13 +89,19 @@ int main() {
     enemy.state.entity = &enemy;
     enemy.state.movements.resize(1);
 
-    auto set_packet = [&](std::int16_t opcode, const std::array<std::uint32_t,8>& args) {
+    auto set_packet = [&](std::int16_t opcode,
+                          std::initializer_list<std::uint32_t> args,
+                          std::uint16_t references = 0) {
+        std::array<std::uint32_t,9> words{};
+        assert(args.size() <= words.size());
+        std::copy(args.begin(), args.end(), words.begin());
         auto* ins = reinterpret_cast<EclInstruction*>(packet.data() + 16);
-        std::memset(ins, 0, sizeof(EclInstruction) + args.size() * sizeof(std::uint32_t));
+        std::memset(ins, 0, sizeof(EclInstruction) + sizeof(words));
         ins->opcode = opcode;
-        ins->length = static_cast<std::uint16_t>(sizeof(EclInstruction) + args.size() * sizeof(std::uint32_t));
-        ins->references = 0;
-        std::memcpy(ins + 1, args.data(), args.size() * sizeof(std::uint32_t));
+        ins->length = static_cast<std::uint16_t>(sizeof(EclInstruction) + sizeof(words));
+        ins->references = references;
+        ins->argument_count = static_cast<std::uint8_t>(words.size());
+        std::memcpy(ins + 1, words.data(), sizeof(words));
     };
     auto bits = [](float value) { std::uint32_t out; std::memcpy(&out,&value,4); return out; };
 
@@ -245,5 +253,30 @@ int main() {
     set_packet(547, {11,0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0 && enemy.state.field_264 == 11);
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559 and special 560 return\n";
+    for (std::int32_t selector = 0; selector < 4; ++selector) {
+        enemy.state.field_50 = selector;
+        set_packet(529, {static_cast<std::uint32_t>(-9985),101,102,103,104,0,0,0,0}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(enemy.state.counters.field_00 == static_cast<std::uint32_t>(101 + selector));
+    }
+    for (std::int32_t selector = 0; selector < 4; ++selector) {
+        enemy.state.field_50 = selector;
+        set_packet(530, {bits(-9981.0f),bits(1.25f),bits(2.25f),bits(3.25f),bits(4.25f),0,0,0,0}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(enemy.state.counters.field_10 == 1.25f + selector);
+    }
+    for (std::int32_t selector = 0; selector < 8; ++selector) {
+        enemy.state.field_50 = selector;
+        set_packet(570, {static_cast<std::uint32_t>(-9985),201,202,203,204,205,206,207,208}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(enemy.state.counters.field_00 == static_cast<std::uint32_t>(201 + selector));
+    }
+    for (std::int32_t selector = 0; selector < 8; ++selector) {
+        enemy.state.field_50 = selector;
+        set_packet(571, {bits(-9981.0f),bits(11.5f),bits(12.5f),bits(13.5f),bits(14.5f),bits(15.5f),bits(16.5f),bits(17.5f),bits(18.5f)}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(enemy.state.counters.field_10 == 11.5f + selector);
+    }
+
+    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
