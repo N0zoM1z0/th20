@@ -32065,3 +32065,36 @@ size = 16
 relocations = [
   { offset = 0x09, type = "REL32", symbol = "??_GDialogue@th20@@QAEPAXI@Z", target = 0x004B06E0 },
 ]
+
+# CORE/RECON-1204: native SoundInf command-array indexed view.
+[units.native_sound_command_array_view_index23]
+source = "src/NativeSoundCommandArrayView.cpp"
+object = "build/gpt-web-sound-canonical/NativeSoundCommandArrayView.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeSoundCommandArrayView::operator[]"]
+symbol = "??ANativeSoundCommandArrayView@th20@@QAEAAUSoundCommand@1@I@Z"
+target_address = 0x004260D0
+size = 23
+relocations = []
+
+# GPT-WEB: borrowed FrontInf message AnimationFile field getter.
+[units.front_dialogue_message_file20]
+source = "src/FrontDialogueFieldViews.cpp"
+object = "build/gpt-web-dialogue-canonical/FrontDialogueFieldViews.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::NativeFrontInfMessageFileView::message_file_4b8270"]
+symbol = "?message_file_4b8270@NativeFrontInfMessageFileView@th20@@QAEPAVAnimationFile@2@XZ"
+target_address = 0x004B8270
+size = 20
+relocations = []
+
+# GPT-WEB: borrowed SoundInf queued-track name field getter.
+[units.sound_inf_queued_track_name20]
+source = "src/FrontDialogueFieldViews.cpp"
+object = "build/gpt-web-dialogue-canonical/FrontDialogueFieldViews.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::NativeSoundInfQueuedTrackView::queued_track_name_4b8090"]
+symbol = "?queued_track_name_4b8090@NativeSoundInfQueuedTrackView@th20@@QAEPADXZ"
+target_address = 0x004B8090
+size = 20
+relocations = []

@@ -262,6 +262,6 @@ open; no completion credit is inferred from these lifetime leaves.
 
 The same opcode-518 dialogue path uses `SoundInf::enqueue` at `0x00428C90`
 for its voice/music command. That 328-byte command-queue writer now has a
-natural C++ source frontier and a focused host test; its 330-byte candidate is
+natural C++ source frontier and a focused host test; its 324-byte candidate is
 explicitly NONEXACT. Its 23-byte indexed `SoundCommand` view is independently
 strict exact. See [the SoundInf queue frontier](SOUND_INF_ENQUEUE_323_NATIVE_FRONTIER.md).
