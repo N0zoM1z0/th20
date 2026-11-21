@@ -40,8 +40,16 @@ now restore the four EffectInfo handle-publication paths, including positioned
 flag-2 spawn, null-position flag-2 spawn, positioned flag-zero spawn, and the
 position-plus-rotation follow-up. The 61-byte `0x0049CBB0` positioned flag-2
 AnimationFile wrapper is also strict exact; its original source owner remains
-provisional. The 50-byte `0x00450120` recursive flag-clear leaf is strict exact.
-The 41,967-byte root remains NONEXACT. The `AnimationFile.hpp` wrapper
+provisional. The 50-byte `0x00450120` recursive flag-clear leaf is strict exact, and the
+adjacent 50-byte `0x0044FA30` recursive flag-set leaf is now strict exact as
+well. Native cases 52/53 (opcodes 502/503) are both restored: they update the
+low fourteen `flags.word_00` bits and conditionally traverse every animation
+link to clear or restore recursive flag zero based on bit five. Their two
+1,472-byte native blocks, selector/pointer entries and ordered E8 maps are
+covered by the focused dispatcher verifier; the opcode-503 runtime test checks
+both transitions and the already-inactive path. The leaf's original source
+owner remains unknown. The 41,967-byte root remains NONEXACT. The
+`AnimationFile.hpp` wrapper
 addition was followed by a focused include-closure replay: 345/345 units across
 113 cold objects passed; no whole-graph cold replay was run. Cases 317/318 and
 aliases 181/193/41 restore handle interruption and primary-link reset. Cases

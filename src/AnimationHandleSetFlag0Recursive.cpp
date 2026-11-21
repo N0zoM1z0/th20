@@ -4,7 +4,7 @@
 
 namespace th20 {
 
-void __fastcall set_animation_handle_flag0_recursively(AnimationHandle* handle) {
+void TH20_FASTCALL set_animation_handle_flag0_recursively(AnimationHandle* handle) {
     Animation* animation = current_animation_pool->resolve_handle(handle->value);
     if (!animation)
         return;

@@ -2,6 +2,7 @@
 // dispatcher at 0x0048C010. The opcode families below have independently
 // reconstructed source fragments; the remaining inline cases are still open.
 #include "EnemyState.hpp"
+#include "AnimationHandleSetFlag0Recursive.hpp"
 #include "Enemy.hpp"
 #include "Context.hpp"
 #include "EnemyController.hpp"
@@ -50,7 +51,8 @@ int execute_enemy_effect_position_spawn_opcode(EnemyState& state);
 int execute_enemy_effect_spawn_and_update_opcode(EnemyState& state);
 int execute_enemy_set_found_flag_bit_9_opcode(EnemyState& state);
 int execute_enemy_animation_flags_add_opcode(EnemyState& state);
-void __fastcall set_enemy_state_flag_04_bit_9(Enemy* enemy);
+int execute_enemy_animation_flags_clear_opcode(EnemyState& state);
+void TH20_FASTCALL set_enemy_state_flag_04_bit_9(Enemy* enemy);
 
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
@@ -168,6 +170,8 @@ int EnemyState::execute_opcode() {
         return execute_enemy_set_found_flag_bit_9_opcode(*this);
     case 88: case 502:
         return execute_enemy_animation_flags_add_opcode(*this);
+    case 503:
+        return execute_enemy_animation_flags_clear_opcode(*this);
     default:
         break;
     }

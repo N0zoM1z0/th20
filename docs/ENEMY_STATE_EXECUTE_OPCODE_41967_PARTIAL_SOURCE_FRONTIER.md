@@ -58,11 +58,12 @@ source fragments.
   retires the old handle, selects the controller AnimationFile, creates the
   flag-2 animation, updates primary animation dimensions and conditionally
   clears the recursive flag-0 state. Its 50-byte `0x00450120` handle-first
-  recursive-clear leaf is also strict exact with all three relocations. The
-  helper is expressed on `EnemyAnimationLink` because the native call receives
-  its leading handle address; this does not assert the original type name. Both
-  functions have strict byte/relocation matches, while their original source
-  origin remains unclassified and no authored-byte credit is claimed.
+  recursive-clear leaf is strict exact with all three relocations. The adjacent
+  50-byte `0x0044FA30` handle-first recursive-set leaf is now also strict exact;
+  its generic `AnimationHandle*` source view is used by opcode 503 and the Card
+  HUD, while the original class/source owner remains unknown. Both flag leaves
+  have strict byte/relocation matches, but their original source origins remain
+  unclassified and no authored-byte credit is claimed.
 - Native switch case `3` (opcode 306) now reconstructs the second animation
   creation path. It uses integer operands 0/1 as link index/script, retires and
   replaces the PMR link with a flag-2 animation, refreshes dimensions and
@@ -167,10 +168,15 @@ same movement provider.
 
 Native case `52` aliases `88/502`: it ORs integer operand 0 into the low 14
 bits of `flags.word_00`; if bit 5 is active afterward, it walks every
-`EnemyAnimationLink` and invokes the existing recursive flag-0 clear leaf.
-The adjacent case `53` / opcode 503, which clears selected bits and restores
-recursive flag 0 when bit 5 becomes inactive, remains open pending recovery of
-the native set-flag recursion leaf.
+`EnemyAnimationLink` and invokes the exact recursive flag-0 clear leaf at
+`0x00450120`. Adjacent case `53` / opcode 503 now clears the selected low 14
+bits and, when bit 5 is inactive afterward, walks the same animation-link
+vector and invokes the exact recursive flag-0 setter at `0x0044FA30`.
+The original native case blocks are each 1,472 bytes / 296 instructions, with
+four ordered calls apiece; the focused verifier checks both selector/pointer
+entries and all eight E8 targets. A host regression test covers the active,
+cleared, and already-inactive bit-5 paths. The 41,967-byte parent remains
+partial and NONEXACT.
 
 The movement boundary has also been expanded from only the 400-448 range
 to its native jump-table aliases. The aliases are canonicalized to the matching
@@ -214,3 +220,15 @@ scripts/compile-probe.sh src/EnemyStateExecuteOpcode.cpp build/core209-canonical
 No assembly, byte padding, or synthetic instruction sequences are used. The
 next major step is to restore and test the remaining inline case families in
 the original root, then compare whole-root code and relocation boundaries.
+
+## Animation flag cases 502/503
+
+The two adjacent native switch cases have now both been reconstructed in the
+maintained C++ root. Case 52 / opcode 502 ORs the low fourteen operand bits and
+recursively clears flag zero when bit five is active. Case 53 / opcode 503
+clears those operand-selected bits and recursively restores flag zero when bit
+five is inactive after the update. The 50-byte setter at `0x0044FA30` is a
+separate strict-exact leaf; the root and its inline opcode cases are still
+NONEXACT. `scripts/verify-enemy-state-dispatch-frontier.py` checks the native
+1,472-byte case ranges, selector and jump-table entries, ordered call maps,
+source routing, i386 compilation, and the three opcode-503 runtime conditions.

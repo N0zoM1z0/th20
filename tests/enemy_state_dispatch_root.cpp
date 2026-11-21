@@ -1,4 +1,6 @@
 #include "Enemy.hpp"
+#include "AnimationHandleSetFlag0Recursive.hpp"
+#include "AnimationRuntimeOwner.hpp"
 #include "EnemyController.hpp"
 #include "Context.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -50,6 +52,8 @@ std::int32_t sound_effect_id = -1;
 float sound_effect_x = 0.0f;
 bool front_dialogue_ready = false;
 std::int32_t front_dialogue_ready_calls = 0;
+std::int32_t animation_flag0_set_calls = 0;
+std::array<std::uint32_t,8> animation_flag0_set_handles{};
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
 bool pattern_drop_called = false;
 bool pattern_drop_bomb_mark = false;
@@ -87,6 +91,8 @@ void SoundInf::request_effect_at(std::int32_t id, float x) {
     sound_effect_x = x;
 }
 FrontInf* current_front = nullptr;
+AnimationPoolOwner test_animation_pool;
+AnimationPoolOwner* current_animation_pool = &test_animation_pool;
 HudGauge::HudGauge() = default;
 FrontBossPanel::FrontBossPanel() noexcept = default;
 FrontFlags::FrontFlags() noexcept = default;
@@ -112,6 +118,36 @@ bool execute_enemy_shared_queued_parameters_opcode(EnemyState&, std::int32_t) { 
 bool execute_enemy_shot_command_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_laser_opcode(EnemyState&, std::int32_t) { return false; }
+int execute_enemy_animation_secondary_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_state_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_effect_flag2_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_effect_spawn_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_effect_flag2_handle_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_effect_rotate_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_spawn_mapped(EnemyState&) { return 0; }
+int execute_enemy_animation_spawn_primary_from_field(EnemyState&) { return 0; }
+int execute_enemy_animation_link_offset_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_link_parent_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_state_selectors_opcode(EnemyState&) { return 0; }
+int execute_enemy_selected_position_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_flags_opcode(EnemyState&, std::int32_t) { return 0; }
+int execute_enemy_has_selected_identifier_opcode(EnemyState&) { return 0; }
+int execute_enemy_effect_position_request_opcode(EnemyState&) { return 0; }
+int execute_enemy_effect_position_spawn_opcode(EnemyState&) { return 0; }
+int execute_enemy_effect_spawn_and_update_opcode(EnemyState&) { return 0; }
+int execute_enemy_set_found_flag_bit_9_opcode(EnemyState&) { return 0; }
+int execute_enemy_animation_flags_add_opcode(EnemyState&) { return 0; }
+Animation* AnimationPoolOwner::resolve_handle(std::uint32_t) { return nullptr; }
+void AnimationPoolOwner::retire_handle(std::uint32_t) {}
+void AnimationPoolOwner::interrupt_handle(std::uint32_t, std::int32_t) {}
+int EnemyState::spawn_from_opcode() { return 0; }
+int EnemyState::spawn_animation() { return 0; }
+void EnemyState::change_animation() {}
+void TH20_FASTCALL set_animation_handle_flag0_recursively(AnimationHandle* handle) {
+    if (animation_flag0_set_calls < static_cast<std::int32_t>(animation_flag0_set_handles.size()))
+        animation_flag0_set_handles[animation_flag0_set_calls] = handle->value;
+    ++animation_flag0_set_calls;
+}
 }
 
 int main() {
@@ -296,6 +332,36 @@ int main() {
     assert(enemy.state.execute_opcode() == 0 && enemy.state.field_38 == 7.25f);
     set_packet(559, {bits(-1.5f),0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0 && enemy.state.field_4c == -1.5f);
+
+    // Opcode 503 clears only the low fourteen bits. It restores flag zero
+    // on every current handle only when bit five is inactive afterward.
+    enemy.state.animations.resize(2);
+    enemy.state.animations[0].handle.value = 0x11111111u;
+    enemy.state.animations[1].handle.value = 0x22222222u;
+    enemy.state.flags.word_00 = 0xa5ff3fffu;
+    animation_flag0_set_calls = 0;
+    set_packet(503, {0x00001000u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.flags.word_00 == 0xa5ff2fffu);
+    assert(animation_flag0_set_calls == 0);
+
+    enemy.state.flags.word_00 = 0xa5ff3fffu;
+    animation_flag0_set_calls = 0;
+    set_packet(503, {0x80004020u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.flags.word_00 == 0xa5ff3fdfu);
+    assert(animation_flag0_set_calls == 2);
+    assert(animation_flag0_set_handles[0] == 0x11111111u);
+    assert(animation_flag0_set_handles[1] == 0x22222222u);
+
+    // An already-inactive bit five still triggers the native restoration walk.
+    enemy.state.flags.word_00 = 0xa5ff3fdfu;
+    animation_flag0_set_calls = 0;
+    set_packet(503, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.flags.word_00 == 0xa5ff3fdfu);
+    assert(animation_flag0_set_calls == 2);
+    enemy.state.animations.clear();
     set_packet(543, {1,0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0 && (enemy.state.flags.word_04 & 0x8000u));
     set_packet(544, {9,0,0,0,0,0,0,0});
@@ -499,5 +565,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound/dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound/dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
