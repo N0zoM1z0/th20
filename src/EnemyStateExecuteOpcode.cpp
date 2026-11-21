@@ -39,6 +39,12 @@ int execute_enemy_animation_effect_flag2_handle_opcode(EnemyState& state);
 int execute_enemy_animation_effect_rotate_opcode(EnemyState& state);
 int execute_enemy_animation_spawn_mapped(EnemyState& state);
 int execute_enemy_animation_spawn_primary_from_field(EnemyState& state);
+int execute_enemy_animation_link_offset_opcode(EnemyState& state);
+int execute_enemy_animation_link_parent_opcode(EnemyState& state);
+int execute_enemy_animation_state_selectors_opcode(EnemyState& state);
+int execute_enemy_selected_position_opcode(EnemyState& state);
+int execute_enemy_animation_flags_opcode(EnemyState& state, std::int32_t opcode);
+int execute_enemy_has_selected_identifier_opcode(EnemyState& state);
 
 int EnemyState::execute_opcode() {
     // EclRuntime::tick enters this virtual owner only with a live current
@@ -112,6 +118,18 @@ int EnemyState::execute_opcode() {
     }
     case 41: case 318:
         return execute_enemy_animation_spawn_primary_from_field(*this);
+    case 320:
+        return execute_enemy_animation_link_offset_opcode(*this);
+    case 322:
+        return execute_enemy_animation_link_parent_opcode(*this);
+    case 323:
+        return execute_enemy_animation_state_selectors_opcode(*this);
+    case 17: case 21: case 25: case 45: case 260:
+        return execute_enemy_selected_position_opcode(*this);
+    case 341: case 342: case 343:
+        return execute_enemy_animation_flags_opcode(*this, opcode);
+    case 44: case 73: case 344:
+        return execute_enemy_has_selected_identifier_opcode(*this);
     default:
         break;
     }

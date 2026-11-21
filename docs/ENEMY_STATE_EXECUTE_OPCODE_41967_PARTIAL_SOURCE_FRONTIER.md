@@ -86,6 +86,20 @@ source fragments.
   `field_34 + 7` and flag 2, then resets `field_2c`, publishes `field_24` and
   `field_20`, and clears `flags.word_04` bit 4. This path does not resolve the
   new handle, refresh dimensions or run the recursive flag-0 clear.
+- Native case `14` (opcode 320) writes an indexed `EnemyAnimationLink` XY
+  offset from float operands 1/2 and zeros its Z component; case `15` (opcode
+  322) writes the indexed link parent from integer operand 1 (read before the
+  index operand 0). Case `16` (opcode 323) stores integer operands 0/1 in
+  `field_258` and `field_254`.
+- Native case `17` aliases `17/21/25/45/260`: it resolves the Enemy identifier
+  from integer operand 2 and copies the selected Enemy position into float
+  destinations 0/1, falling back to the current EnemyState position when no
+  Enemy is found. The exact `EnemyController::find`, `Enemy::position_ref`,
+  `EnemyState::position_ref` and destination leaves are reused.
+- Native cases `22/23/24` (opcodes 341/342/343) set, clear, or assign the
+  corresponding low bits in `flags.word_08`. Case `25` (opcodes 44/73/344)
+  writes whether the integer-operand-1 identifier resolves through
+  `EnemyController::find` into integer destination zero.
 - Native switch case `10` maps opcodes `48/173/177/201/316` to a further
   indexed animation replacement path, now restored in
   `src/EnemyStateAnimationVariantOpcode.cpp`. Operand 0 selects the link; a

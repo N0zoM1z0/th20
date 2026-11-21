@@ -43,8 +43,12 @@ AnimationFile wrapper is also strict exact; its original source owner remains
 provisional. The 50-byte `0x00450120` recursive flag-clear leaf is strict exact.
 The 41,967-byte root remains NONEXACT. The `AnimationFile.hpp` wrapper
 addition was followed by a focused include-closure replay: 345/345 units across
-113 cold objects passed; no whole-graph cold replay was run. The next priority
-is opcode 316 and the remaining root case families.
+113 cold objects passed; no whole-graph cold replay was run. Cases 317/318 and
+aliases 181/193/41 restore handle interruption and primary-link reset. Cases
+320/322/323, the selected-Enemy-position query aliases 17/21/25/45/260, flag
+cases 341/342/343 and identifier-exists aliases 44/73/344 are now also
+restored. Next priority is the remaining inline effect/animation cases
+334/338/339/340 and larger root case families beyond this cluster.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 
