@@ -84,6 +84,32 @@ source fragments.
   original 59-byte case body, compressed selector index and all three ordered
   E8 targets are independently checked. Neither inline case receives separate
   root byte credit.
+- Native switch case `89` / opcode 539 now calls
+  `context->laser_controller()->reset_all_lasers()` without reading operands.
+  Its original 30-byte case body and two ordered E8 targets are verified; the
+  `Context::laser_controller` accessor and 263-byte
+  `LaserController::reset_all_lasers` callee are independently exact. The
+  focused ASan/UBSan fixture asserts the saved Context receiver and one reset.
+- Native case `77` / opcode 527 now restores the FrontInf boss-gauge update.
+  It reads float operand 1, integer operand 2, the signed
+  `EnemyHealth::field_04` denominator, integer operand 0, and the current boss
+  index in native order, then calls the exact 65-byte
+  `FrontInf::set_boss_gauge`. The source deliberately reads `health.field_04`:
+  the native offset-four Timer conversion is applied to the real EnemyHealth
+  receiver at `EnemyState+0x18C`, not to current health or a fabricated Timer.
+  Its 169-byte case block, selector entry and six ordered E8 targets are checked.
+- Native case `80` / opcode 534 reads integer operand zero and writes the
+  complete signed word through the exact 25-byte `FrontInf::set_field_180`.
+  Its 43-byte case block, compressed selector entry and two ordered E8 targets
+  are checked.
+- Native case `85` / opcode 539 obtains the actual LaserController from the
+  EnemyState Context and calls the exact 263-byte
+  `LaserController::reset_all_lasers` method. The 30-byte case block, selector
+  entry and both ordered E8 targets are checked; the reset method's own exact
+  bytes are credited only by its independent match unit.
+- Native case `98` / opcode 552 updates only bit 3 of `flags.word_04`, preserving
+  every other bit. Its 65-byte case block, compressed selector entry and
+  original integer-argument E8 target are checked.
 - Native switch case `3` (opcode 306) now reconstructs the second animation
   creation path. It uses integer operands 0/1 as link index/script, retires and
   replaces the PMR link with a flag-2 animation, refreshes dimensions and
@@ -209,9 +235,9 @@ function bodies; no duplicate byte credit is assigned.
 
 The remaining inline cases in the original 41,967B body—including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
-additional opcode ranges—still need source recovery. Opcodes 524 and 575 are
-now wired into the maintained root, but this does not close their surrounding
-switch tables or the dispatcher as a whole. Unknown opcodes currently
+additional opcode ranges—still need source recovery. Opcodes 524/575, 527/534,
+539 and 552 are now wired into the maintained root, but this does not close
+their surrounding switch tables or the dispatcher as a whole. Unknown opcodes currently
 fall through the provisional zero return and must not be treated as proven
 native no-ops. The 41,967-byte root remains NONEXACT and has no whole-root match
 unit; the exact callee units above are credited separately.

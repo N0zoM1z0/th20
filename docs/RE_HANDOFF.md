@@ -64,11 +64,12 @@ root boundary now also includes 26 native aliases from the lower opcode ranges,
 canonicalized to their corresponding 400-series movement implementations.
 The remaining priority is the other unhandled dispatcher case families and
 the 41,967-byte root boundary; no whole-graph cold replay was run. The latest
-root increment wires native opcodes 524 and 575 with their original operand /
-receiver order; the focused dispatcher verifier now checks both selector
-entries, all five E8 targets, the ASan/UBSan host assertions, and all 18
-locked-profile i386 source compiles. The 524 GameController and 575 Player
-callee dependencies each replayed their source-scoped exact units.
+root increments wire native opcodes 524/575, 527/534, 539 and 552 with their
+original operand/receiver order. The focused dispatcher verifier checks all
+new selector entries, the ordered E8 targets, ASan/UBSan host assertions, and
+all 18 locked-profile i386 source compiles. GameController and Player exact
+callees replayed 6/6 and 8/8; the FrontInf setters and Laser reset are reused
+through their existing exact units. No full cold replay was run.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 

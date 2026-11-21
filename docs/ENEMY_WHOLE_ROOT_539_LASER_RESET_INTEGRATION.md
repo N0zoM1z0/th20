@@ -100,3 +100,16 @@ resources, native exception ownership and the 41,967-byte whole-root
 machine-code identity remain unresolved. Explicitly **zero** bytes of new
 whole-root opcode-case coverage enter the exact-function ledger. Current
 accepted authored exactness stays **218 functions / 57,271 bytes**.
+
+
+## Maintained partial-root integration
+
+Opcode 539 is now wired into `src/EnemyStateExecuteOpcode.cpp` as an inline
+case: `context->laser_controller()->reset_all_lasers()`. It consumes no ECL
+operands. The original 30-byte case block at `0x0049579E`, compressed selector
+entry and ordered calls to `Context::laser_controller` (`0x0041CA90`) and
+`LaserController::reset_all_lasers` (`0x004D2430`) are checked by the focused
+dispatch verifier. The Context accessor and 263-byte LaserController callee
+remain independently strict exact; the inline case receives no separate root
+byte credit. The ASan/UBSan dispatch fixture verifies the active Context
+receiver and exactly one reset. The 41,967-byte root remains NONEXACT.
