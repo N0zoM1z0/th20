@@ -20,5 +20,6 @@ The implementation preserves the original queue types (4 for optional stop,
 2 for voice start), selector and voice ID, and final byte store of one. The
 native caller loads `process_graphics` into ECX immediately before the call,
 proving the `Graphics` receiver. The original authored spelling/provenance
-remain unknown. The 328-byte SoundInf enqueue parent remains NONEXACT at its
-separate source frontier.
+remain unknown. The 328-byte `SoundInf::enqueue` parent is now independently
+strict exact (328/328 bytes, all 15 relocations); see
+`docs/SOUND_INF_ENQUEUE_323_NATIVE_FRONTIER.md`.

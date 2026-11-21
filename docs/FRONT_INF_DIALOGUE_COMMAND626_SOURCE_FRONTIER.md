@@ -39,8 +39,10 @@ The 104-byte `0x004D9B50` voice helper is now a separate strict-exact
 proving the Graphics receiver. It preserves the five native calls:
 preloaded-music check, two SoundInf queue writes, card-record stage-flag base
 (`0x004640E0`) and indexed flag address (`0x00411C10`). Both 19-byte offset
-helpers are strict exact as well. The original authored spelling/provenance
-remains unproven; no parent completion is inferred from these leaves.
+helpers are strict exact as well. The shared `SoundInf::enqueue` dependency
+at `0x00428C90` is also now a complete 328/328 strict-exact C++ reconstruction
+with all 15 native relocation anchors. The original authored spelling/provenance
+remains unproven; no parent completion is inferred from these dependencies.
 
 The opcode-518 dispatcher fragment is wired through
 `src/EnemyStateDialogueOpcode.cpp`, then performs the original Bullet, Laser
