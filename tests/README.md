@@ -9,6 +9,9 @@ workflow runs `--full` to add the synthetic exact-oracle tests. Both modes
 run without the native toolchain.
 Exact reconstruction checkpoints use affected locked-compiler builds and
 complete canonical replay, as described in [the workflow](../docs/RE_WORKFLOW.md).
+Focused native-subsystem host checks can be run independently; for example,
+`scripts/repo-python scripts/verify-sound-inf-enqueue.py` exercises the SoundInf
+31-entry command queue under ASan/UBSan without running the full test suite.
 
 The historical portable C++ semantic suite and its Python runners were retired
 on 2026-10-28. Allocation-failure/null robustness cases, exception matrices,
