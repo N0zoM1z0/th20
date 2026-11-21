@@ -89,6 +89,8 @@ def main() -> None:
         558:(104,0x00490DD3,0x00490DEE,[0x004AAFB0]),
         559:(105,0x00490DEE,0x00490E09,[0x004AAFB0]),
         566:(112,0x00491CE5,0x00491D39,[0x004AB080,0x0045D650,0x0040C300,0x0049C340]),
+        563:(109,0x00490C38,0x00490D19,[0x004AB080,0x0041CAF0,0x00497CC0,0x004AB080,0x0041CAF0,0x00497CC0]),
+        564:(110,0x00490D19,0x00490D90,[0x00499330,0x0041CAF0,0x00497C60]),
     }
     for opcode,(index,start,end,expected_calls) in control_cases.items():
         assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
@@ -147,7 +149,7 @@ def main() -> None:
     assert 'session.field_70_is_two()' in pattern
     assert 'state.pattern.drop(origin, bomb_mark)' in pattern
     control_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',control)]
-    assert set(control_labels)=={500,501,504,505,511,512,513,515,526,535,543,544,546,547,557,558,559,566},control_labels
+    assert set(control_labels)=={500,501,504,505,511,512,513,515,526,535,543,544,546,547,557,558,559,563,564,566},control_labels
     dynamic_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',dynamic)]
     assert {529,530,570,571}.issubset(set(dynamic_labels)),dynamic_labels
     for source in (root,movement,pattern,control,dynamic):
@@ -172,13 +174,13 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
-    print('PASS original compressed dispatch pointers and ordered E8 maps for all 18 bounds/health/controller/state cases (1,415B/292 heads/42 calls)')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for all 20 bounds/health/controller/state cases (1,759B/360 heads/51 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 18 control/state cases, four dynamic parameter cases and 14 existing opcode fragments wired')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 20 control/state cases, four dynamic parameter cases and 14 existing opcode fragments wired')
     print('PASS all five i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 

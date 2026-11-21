@@ -3,6 +3,7 @@
 #include "Context.hpp"
 #include "EnemyController.hpp"
 #include "PlayerRecord.hpp"
+#include "Session.hpp"
 
 namespace th20 {
 
@@ -44,6 +45,30 @@ bool execute_enemy_control_opcode(EnemyState& state, std::int32_t opcode) {
     case 566:
         state.health.set_health(static_cast<std::uint32_t>(state.integer_argument(0)));
         state.health.set_scaled_health(state.health.get_health());
+        break;
+    case 563:
+        if (state.field_284 == 0) {
+            state.field_284 = state.integer_argument(0);
+            if (state.field_284 > 0) {
+                auto* record = state.context->player_record();
+                const auto delta = state.field_284;
+                record->add_field_dc(delta);
+            }
+        } else if (state.field_284 == 1) {
+            state.field_284 = state.integer_argument(0);
+            auto* record = state.context->player_record();
+            const auto delta = static_cast<std::int32_t>(
+                static_cast<std::uint32_t>(state.field_284) - 1u);
+            record->add_field_dc(delta);
+        }
+        break;
+    case 564:
+        if (state.field_284 != 0 && state.field_280 == session.clamped_field_1fc()) {
+            auto* record = state.context->player_record();
+            const auto delta = state.field_284;
+            record->add_field_e0(delta);
+            state.field_284 = 0;
+        }
         break;
     case 512: {
         const auto index = state.integer_argument(0);

@@ -22,9 +22,10 @@ source fragments.
   cases 506/507/508/509/510/556/567/568/572. They call the maintained real
   `EnemyPattern` setters and exact `drop` protocol; opcode 509 preserves its
   two-player Session guard before touching the Enemy or Pattern owners.
-- `src/EnemyStateControlOpcode.cpp` restores 18 original bounds, health,
-  controller-selection and state cases, including the 295B opcode-512 handle
-  publisher and the 239B opcode-511 health initialization/update branch.
+- `src/EnemyStateControlOpcode.cpp` restores 20 original bounds, health,
+  controller-selection, state and PlayerRecord-counter cases, including the
+  295B opcode-512 handle publisher, 239B opcode-511 health branch, and the
+  225B/119B opcode-563/564 pending field-counter protocol.
 - `src/EnemyStateDynamicParameterOpcode.cpp` restores the 4-way/8-way integer
   and float copy cases 529/530/570/571, preserving the ECL reference-bit and
   negative manager-variable destination path for operand 0.

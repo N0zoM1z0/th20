@@ -253,6 +253,36 @@ int main() {
     set_packet(547, {11,0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0 && enemy.state.field_264 == 11);
 
+    // Opcode 563 has two state-dependent update protocols. The first adds
+    // the newly read positive field_284; the second adds the newly read value
+    // minus one. Other prior states do not evaluate operand zero.
+    player_record.field_dc = 10;
+    enemy.state.field_284 = 0;
+    set_packet(563, {7,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.field_284 == 7 && player_record.field_dc == 17);
+    enemy.state.field_284 = 1;
+    set_packet(563, {6,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.field_284 == 6 && player_record.field_dc == 22);
+    enemy.state.field_284 = 9;
+    set_packet(563, {99,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.field_284 == 9 && player_record.field_dc == 22);
+
+    session.table.field_1fc = 5;
+    enemy.state.field_280 = 5;
+    enemy.state.field_284 = 4;
+    player_record.field_e0 = 3;
+    set_packet(564, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(player_record.field_e0 == 7 && enemy.state.field_284 == 0);
+    enemy.state.field_284 = 6;
+    enemy.state.field_280 = 4;
+    set_packet(564, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(player_record.field_e0 == 7 && enemy.state.field_284 == 6);
+
     for (std::int32_t selector = 0; selector < 4; ++selector) {
         enemy.state.field_50 = selector;
         set_packet(529, {static_cast<std::uint32_t>(-9985),101,102,103,104,0,0,0,0}, 1);
@@ -278,5 +308,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

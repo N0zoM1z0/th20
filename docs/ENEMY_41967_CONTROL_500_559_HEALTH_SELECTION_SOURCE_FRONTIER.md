@@ -1,9 +1,9 @@
-# CORE/RECON-1198 — Enemy bounds, health, controller and state opcode cases
+# CORE/RECON-1198/1199 — Enemy bounds, health, controller and state opcode cases
 
-The partial natural-C++ `EnemyState::execute_opcode()` root now routes 18 more
+The partial natural-C++ `EnemyState::execute_opcode()` root now routes 20 more
 original inline cases through `src/EnemyStateControlOpcode.cpp`:
 
-`500, 501, 504, 505, 511, 512, 513, 515, 526, 535, 543, 544, 546, 547, 557, 558, 559, 566`.
+`500, 501, 504, 505, 511, 512, 513, 515, 526, 535, 543, 544, 546, 547, 557, 558, 559, 563, 564, 566`.
 
 They are not standalone native functions. The original 41,967B parent remains
 incomplete and NONEXACT, with no parent byte credit or new function match unit.
@@ -34,9 +34,11 @@ are checked in order by `scripts/verify-enemy-state-dispatch-frontier.py`.
 | 557 | `0x00490D90` | 67 | 14 | `0x004AB080` |
 | 558 | `0x00490DD3` | 27 | 6 | `0x004AAFB0` |
 | 559 | `0x00490DEE` | 27 | 6 | `0x004AAFB0` |
+| 563 | `0x00490C38` | 225 | 46 | `0x004AB080`, `0x0041CAF0`, `0x00497CC0`, `0x004AB080`, `0x0041CAF0`, `0x00497CC0` |
+| 564 | `0x00490D19` | 119 | 22 | `0x00499330`, `0x0041CAF0`, `0x00497C60` |
 | 566 | `0x00491CE5` | 84 | 18 | `0x004AB080`, `0x0045D650`, `0x0040C300`, `0x0049C340` |
 
-Combined scope: **1,415 original bytes, 292 x86 heads and 42 direct E8 calls**.
+Combined scope: **1,759 original bytes, 360 x86 heads and 51 direct E8 calls**.
 The case heads are non-contiguous in the original boss; these figures describe
 bounded inline CFGs, not a new parent or function extent.
 
@@ -62,6 +64,15 @@ bounded inline CFGs, not a new parent or function extent.
 - **543 / 557** replace only bits 15 / 12 with the low bit of the integer
   operand. **544 / 546 / 547** update the corresponding integer state fields.
   **558 / 559** store their float operands directly.
+- **563** has two separate state-dependent update paths. When the old
+  `field_284` is zero, it reads operand 0, stores it, and increments the live
+  PlayerRecord `field_dc` only when the new value is positive. When the old
+  value is one, it reads/stores operand 0 and adds the new value minus one to
+  `field_dc`. Other old values do not read the operand or touch the record.
+- **564** first requires nonzero `field_284`, then calls the real Session
+  `clamped_field_1fc()` accessor and compares it to `field_280`. Only on a
+  match does it add `field_284` to the live PlayerRecord `field_e0` and clear
+  `field_284`; the failed comparison leaves the pending value intact.
 
 The health methods reuse existing folded physical leaves: `0x45D650` is the
 24B first-word store also used by `PackedColor`, `0x40C300` is the 16B first-word
@@ -74,7 +85,8 @@ and current `Enemy` identity. The focused host test constructs the real
 `EnemyController`, calls the actual `set_field_84_bit_0` and `set_selected`
 methods, verifies a positive selection stores the Enemy identifier, then
 verifies a negative index clears the previously selected handle. It also tests
-the real Context `PlayerRecord` path for opcode 500 and the health/timer/flag
+the real Context `PlayerRecord` path for opcode 500, both opcode-563 state
+branches, opcode-564's Session clamp/commit gate, and the health/timer/flag
 mutations above.
 
 ## Focused verification
@@ -84,6 +96,6 @@ scripts/repo-python scripts/verify-enemy-state-dispatch-frontier.py
 ```
 
 This verifies every original selector byte, pointer, bounded case extent and
-ordered E8 target for all 18 cases; builds all four new C++ units as locked
+ordered E8 target for all 20 cases; builds all five new C++ units as locked
 MSVC-compatible i386 COFF; and runs the ASan/UBSan live-packet host test. The
 whole 41,967B root remains NONEXACT and uncredited.

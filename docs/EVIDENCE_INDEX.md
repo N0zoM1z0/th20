@@ -296,7 +296,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [natural-C++ 555 sound and AnimationFile spawn fragment](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md),
   [natural-C++ 553/554 Context/controller setter fragments](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md),
   [natural-C++ EnemyPattern opcodes 506/507/508/509/510/556/567/568/572 and 621B/136-head native case map](ENEMY_41967_PATTERN_506_510_556_567_568_572_SOURCE_FRONTIER.md),
-  [natural-C++ 18 bounds/health/controller/state cases 500–559 and 566; 1,415B/292-head/42-E8 native case map](ENEMY_41967_CONTROL_500_559_HEALTH_SELECTION_SOURCE_FRONTIER.md),
+  [natural-C++ 20 bounds/health/controller/state cases 500–559/563/564/566; 1,759B/360-head/51-E8 native case map](ENEMY_41967_CONTROL_500_559_HEALTH_SELECTION_SOURCE_FRONTIER.md),
   [natural-C++ 4-way/8-way integer/float parameter copies 529/530/570/571; 1,262B/268-head/48-E8 native case map](ENEMY_41967_DYNAMIC_PARAMETER_529_530_570_571_SOURCE_FRONTIER.md).
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).
