@@ -31934,3 +31934,48 @@ size = 28
 relocations = [
   { offset = 0x13, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]
+
+# GPT-WEB: original Enemy animation-link recursive flag clear.
+[units.enemy_animation_link_clear_flag]
+source = "src/EnemyAnimationLinkClearFlag.cpp"
+object = "build/gpt-web-enemy-canonical/EnemyAnimationLinkClearFlag.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyAnimationLink::clear_flag0_recursively"]
+symbol = "?clear_flag0_recursively@EnemyAnimationLink@th20@@QAEXXZ"
+target_address = 0x00450120
+size = 50
+relocations = [
+  { offset = 0x11, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x16, type = "REL32", symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@2@I@Z", target = 0x0044CD00 },
+  { offset = 0x29, type = "REL32", symbol = "?clear_flag0_recursively@Animation@th20@@QAEXXZ", target = 0x00450160 },
+]
+
+# GPT-WEB: original EnemyState opcode-303 animation creation Boss.
+[units.enemy_state_spawn_animation]
+source = "src/EnemyStateAnimationCreateOpcode.cpp"
+object = "build/gpt-web-enemy-canonical/EnemyStateAnimationCreateOpcode.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyState::spawn_animation"]
+symbol = "?spawn_animation@EnemyState@th20@@QAEHXZ"
+target_address = 0x00496A00
+size = 398
+relocations = [
+  { offset = 0x0F, type = "REL32", symbol = "?integer_argument@EnemyState@th20@@QAEHH@Z", target = 0x004AB080 },
+  { offset = 0x1C, type = "REL32", symbol = "?integer_argument@EnemyState@th20@@QAEHH@Z", target = 0x004AB080 },
+  { offset = 0x2A, type = "REL32", symbol = "?size@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QBEIXZ", target = 0x0049CB30 },
+  { offset = 0x4C, type = "REL32", symbol = "?resize@?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEXI@Z", target = 0x0049C2A0 },
+  { offset = 0x62, type = "REL32", symbol = "??A?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEAAUEnemyAnimationLink@th20@@I@Z", target = 0x0048BCE0 },
+  { offset = 0x69, type = "REL32", symbol = "?retire@AnimationHandle@th20@@QAEXXZ", target = 0x0044FCD0 },
+  { offset = 0x82, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x9A, type = "REL32", symbol = "?animation_file@EnemyController@th20@@QAEPAVAnimationFile@2@H@Z", target = 0x004AAE10 },
+  { offset = 0xB3, type = "REL32", symbol = "?integer_argument@EnemyState@th20@@QAEHH@Z", target = 0x004AB080 },
+  { offset = 0xCE, type = "REL32", symbol = "?spawn_flag2@AnimationFile@th20@@QAE?AUAnimationHandle@2@PBDHHPAPAVAnimation@2@@Z", target = 0x0049CBF0 },
+  { offset = 0xE8, type = "REL32", symbol = "??A?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEAAUEnemyAnimationLink@th20@@I@Z", target = 0x0048BCE0 },
+  { offset = 0xFD, type = "REL32", symbol = "?integer_argument@EnemyState@th20@@QAEHH@Z", target = 0x004AB080 },
+  { offset = 0x124, type = "REL32", symbol = "??A?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEAAUEnemyAnimationLink@th20@@I@Z", target = 0x0048BCE0 },
+  { offset = 0x12B, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x13C, type = "REL32", symbol = "?height@Animation@th20@@QAEMXZ", target = 0x004459A0 },
+  { offset = 0x14D, type = "REL32", symbol = "?width@Animation@th20@@QAEMXZ", target = 0x004459D0 },
+  { offset = 0x17C, type = "REL32", symbol = "??A?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEAAUEnemyAnimationLink@th20@@I@Z", target = 0x0048BCE0 },
+  { offset = 0x183, type = "REL32", symbol = "?clear_flag0_recursively@EnemyAnimationLink@th20@@QAEXXZ", target = 0x00450120 },
+]

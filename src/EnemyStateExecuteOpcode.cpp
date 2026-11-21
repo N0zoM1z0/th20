@@ -3,6 +3,8 @@
 // reconstructed source fragments; the remaining inline cases are still open.
 #include "EnemyState.hpp"
 #include "Enemy.hpp"
+#include "Context.hpp"
+#include "EnemyController.hpp"
 #include "EclRuntime.hpp"
 #include "EnemyStateMovementOpcode.hpp"
 #include "EnemyStatePatternOpcode.hpp"
@@ -65,6 +67,14 @@ int EnemyState::execute_opcode() {
     switch (opcode) {
     case 300: case 301: case 304: case 305: case 321:
         return spawn_from_opcode();
+    // Native case 6 gates the same spawn leaf on the selected Enemy slot.
+    case 309: case 310: case 311: case 312:
+        if (!context->enemy_controller()->selected(0))
+            return spawn_from_opcode();
+        return 0;
+    // Native case 2 is the complete animation-link creation operation.
+    case 303:
+        return spawn_animation();
     default:
         break;
     }

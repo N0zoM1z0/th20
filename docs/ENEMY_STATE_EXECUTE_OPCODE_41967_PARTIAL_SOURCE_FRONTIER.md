@@ -41,16 +41,28 @@ source fragments.
 - `src/EnemyStateFrontendOpcode.cpp` restores sound/dialogue cases 516/519,
   including position-before-sound-operand evaluation and the special `-1`
   return when an existing dialogue is not ready.
-- Native switch case `0` now routes direct spawn opcodes 300/301/304/305/321
-  to the maintained 653-byte `EnemyState::spawn_from_opcode()` implementation
-  in `src/EnemyStateSpawnOpcode.cpp`. It reconstructs the real script-name
-  payload, default operands, relative/mirrored position, spawn flags, counters,
-  identity and `EnemyController::create` handoff. Cases 309/311/312 also call
-  this native leaf behind a separate guard that remains open. The leaf is
-  semantically reconstructed but NONEXACT: its 653-byte extent and all 19
-  relocation destinations match, while 14 ordinary bytes differ in two float
-  argument stack-slot/load ordering sequences; see the creation reconstruction
-  record.
+- Native switch case `0` routes direct spawn opcodes 300/301/304/305/321 to
+  the maintained 653-byte `EnemyState::spawn_from_opcode()` implementation in
+  `src/EnemyStateSpawnOpcode.cpp`. It reconstructs the script-name payload,
+  default operands, relative/mirrored position, spawn flags, counters, identity
+  and `EnemyController::create` handoff. The leaf remains NONEXACT: its extent
+  and all 19 relocation destinations match, but 14 ordinary bytes differ in
+  the two float argument stack-slot/load sequences.
+- Native switch case `6` handles 309/310/311/312 through the exact
+  `EnemyController::selected(0)` leaf at `0x00485660`; when the slot is empty it
+  branches to the same spawn leaf, otherwise it skips creation. The leaf keeps
+  the native per-opcode relative-position and direction-flag distinctions.
+- Native switch case `2` routes opcode 303 to `EnemyState::spawn_animation()`
+  at `0x00496A00`, now a strict whole-function 398/398-byte C++ match with all
+  18 original relocation targets. It resizes the PMR animation-link vector,
+  retires the old handle, selects the controller AnimationFile, creates the
+  flag-2 animation, updates primary animation dimensions and conditionally
+  clears the recursive flag-0 state. Its 50-byte `0x00450120` handle-first
+  recursive-clear leaf is also strict exact with all three relocations. The
+  helper is expressed on `EnemyAnimationLink` because the native call receives
+  its leading handle address; this does not assert the original type name. Both
+  functions have strict byte/relocation matches, while their original source
+  origin remains unclassified and no authored-byte credit is claimed.
 - Native switch case `1` now restores opcode 302 as the scalar field setter:
   `field_1c = integer_argument(0)`. This matches the native `FUN_004AB080`
   argument read followed by the store at EnemyState offset `0x1C`.
@@ -71,16 +83,21 @@ source fragments.
 This is a **partial root reconstruction**, not an exact or complete dispatcher.
 The remaining inline cases in the original 41,967B body—including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
-additional opcode ranges—still need source recovery. Unknown opcodes currently fall through the provisional zero
-return and must not be treated as proven native no-ops. The parent receives no
-strict exact-byte credit and no match unit has been added.
+additional opcode ranges—still need source recovery. Unknown opcodes currently
+fall through the provisional zero return and must not be treated as proven
+native no-ops. The 41,967-byte root remains NONEXACT and has no whole-root match
+unit; the exact callee units above are credited separately.
 
 ## Focused evidence
 
-The spawn leaf and the dispatcher compile as MSVC-compatible i386 COFF under
-the locked `/Od /Ob0` profile. The spawn-leaf diagnostic comparison is scoped
-to `0x00496FB0` only and reports the 14 non-relocation differences described
-above; no whole-root or cold replay was run.
+The spawn leaf and dispatcher compile as MSVC-compatible i386 COFF under the
+locked `/Od /Ob0` profile. The animation-link clear and opcode-303 spawn units
+strictly replay as 50/50 and 398/398 bytes with all original relocation
+targets. The 43-byte selected-Enemy guard leaf also strictly replayed. Because
+`EnemyState.hpp` changed, the affected include closure was rebuilt locally: 125
+units across 30 cold objects passed; no whole-graph replay was run. The 653-byte
+spawn leaf remains limited by the 14 float-argument stack-order bytes noted
+above.
 
 The five pre-existing helper/root translation units also compile as MSVC-compatible i386 COFF
 under the repository's locked `/Od /Ob0` profile:

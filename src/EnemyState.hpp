@@ -27,6 +27,9 @@ struct EnemyAnimationLink {
     Vector3 offset;
     std::int32_t parent;
     EnemyAnimationLink();
+    // Native 0x00450120 resolves the leading handle word and clears
+    // Animation flag bit zero recursively when the pooled handle is live.
+    void clear_flag0_recursively();
 };
 
 // The queued record owns the real shared metadata value through shared_ptr.
@@ -119,6 +122,7 @@ struct EnemyState {
     std::pair<EnemyQueuedRecord*, ShotMetadata*> shared_shot(std::uint32_t index);
     std::pair<EnemyQueuedRecord*, ShotMetadata*> writable_shot(std::uint32_t index);
     void change_animation();
+    int spawn_animation();
     int spawn_from_opcode();
     std::int32_t integer_argument_value(std::int32_t index, std::int32_t value);
     float float_argument_value(std::int32_t index, float value);

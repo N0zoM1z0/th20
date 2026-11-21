@@ -99,8 +99,31 @@ routes native case-0 opcodes 300/301/304/305/321 to this leaf. The body performs
 the EnemyController capacity guard, parses the padded script-name payload and
 per-operand defaults, applies relative/mirrored position rules, copies the
 EnemyCounters block and source Enemy identity, then calls the existing
-`EnemyController::create` path. Native cases 309/311/312 also share this leaf
-behind a separate guard that is not yet restored at the dispatcher boundary.
+`EnemyController::create` path. Native case 6 covers 309/310/311/312 through
+the exact `EnemyController::selected(0)` leaf at `0x00485660`; only an empty
+slot branches to this same spawn leaf. That guard is now restored in the root.
+
+## CORE/RECON-1197 — exact opcode-303 animation creation
+
+The adjacent native case-2 opcode 303 operation at `0x00496A00` is now
+implemented as `EnemyState::spawn_animation()` in
+`src/EnemyStateAnimationCreateOpcode.cpp`. Its complete 398-byte body and all
+18 original relocation destinations strictly replay. It grows the PMR
+`EnemyAnimationLink` vector, retires the selected prior handle, resolves the
+controller AnimationFile using `field_1c`, and calls `spawn_flag2` with the
+second integer operand and `field_34 + 7`. The script operand is read again
+for the spawn call and, for index zero, once more for `field_24`; these are
+three distinct native evaluations. The primary animation then supplies height
+and width for `vector_170`.
+
+The 50-byte native `0x00450120` helper is also strict exact in
+`src/EnemyAnimationLinkClearFlag.cpp`: it resolves the link leading handle
+through `current_animation_pool` and clears Animation flag bit zero recursively
+only when a live animation is found. The maintained method is attached to
+`EnemyAnimationLink`, whose first member is the handle; the original source
+class name is not asserted. Both new functions are strict whole-function
+matches; their original source-origin records remain unknown, so they are not
+entered as authored byte credit.
 
 The focused `/Od /Ob0` strict one-function comparison reproduces the 653-byte
 extent and all 19 relocation fields resolve to their original native
