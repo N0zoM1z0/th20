@@ -9,6 +9,9 @@
 #include "EnemyStateControllerManagementOpcode.hpp"
 #include "EnemyStateTimeOpcode.hpp"
 #include "EnemyStateCardOpcode.hpp"
+#include "EnemyStateFrontendOpcode.hpp"
+#include "HudGauge.hpp"
+#include "SoundInf.hpp"
 #include "Card.hpp"
 #include "ClockScalar.hpp"
 #include "PlayerRecord.hpp"
@@ -41,6 +44,12 @@ DiagnosticAllocator* process_allocator = nullptr;
 LockRegistry process_locks;
 std::int32_t defeat_result = 0;
 std::int32_t card_finish_spell_calls = 0;
+bool front_has_dialogue = false;
+std::int32_t sound_effect_calls = 0;
+std::int32_t sound_effect_id = -1;
+float sound_effect_x = 0.0f;
+bool front_dialogue_ready = false;
+std::int32_t front_dialogue_ready_calls = 0;
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
 bool pattern_drop_called = false;
 bool pattern_drop_bomb_mark = false;
@@ -65,6 +74,30 @@ Enemy* EnemyController::find(std::uint32_t identifier) {
 void AnimationHandle::retire() {}
 Card::~Card() = default;
 void Card::finish_spell() { ++card_finish_spell_calls; }
+SoundInf process_sound;
+SoundEffectRequest::SoundEffectRequest() : id(0), count(0), pans{} {}
+SoundCommand::SoundCommand() : type(0), argument(0), stage(0), name{} {}
+SoundEffectChannel::SoundEffectChannel()
+    : buffer(nullptr), cooldown(-1), definition(nullptr), id(0), pan(0), was_playing(0) {}
+SoundInf::SoundInf() noexcept = default;
+SoundInf::~SoundInf() = default;
+void SoundInf::request_effect_at(std::int32_t id, float x) {
+    ++sound_effect_calls;
+    sound_effect_id = id;
+    sound_effect_x = x;
+}
+FrontInf* current_front = nullptr;
+HudGauge::HudGauge() = default;
+FrontBossPanel::FrontBossPanel() noexcept = default;
+FrontFlags::FrontFlags() noexcept = default;
+FrontInf::FrontInf() : TaskInfo() {}
+FrontInf::~FrontInf() = default;
+void FrontInf::enable() {}
+std::int32_t FrontInf::has_dialogue() { return front_has_dialogue ? 1 : 0; }
+std::int32_t FrontInf::dialogue_ready() {
+    ++front_dialogue_ready_calls;
+    return front_dialogue_ready ? 1 : 0;
+}
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
@@ -93,6 +126,8 @@ int main() {
     selected_test_enemy = &enemy;
     Card card;
     context.card_owner = &card;
+    FrontInf front;
+    current_front = &front;
     enemy.state.context = &context;
     enemy.state.identifier = 0x12345678u;
     EclLoader loader;
@@ -421,6 +456,24 @@ int main() {
     assert(enemy.state.execute_opcode() == 0);
     assert(enemy.state.health.flags.bits == 0xfffffffeu);
 
+    enemy.state.motion_110.position = {96.0f,0.0f,0.0f};
+    set_packet(516, {7,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(sound_effect_calls == 1 && sound_effect_id == 7 && sound_effect_x == 96.0f);
+
+    front_has_dialogue = false;
+    front_dialogue_ready_calls = 0;
+    set_packet(519, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(front_dialogue_ready_calls == 0);
+    front_has_dialogue = true;
+    front_dialogue_ready = false;
+    assert(enemy.state.execute_opcode() == -1);
+    assert(front_dialogue_ready_calls == 1);
+    front_dialogue_ready = true;
+    assert(enemy.state.execute_opcode() == 0);
+    assert(front_dialogue_ready_calls == 2);
+
     for (std::int32_t selector = 0; selector < 4; ++selector) {
         enemy.state.field_50 = selector;
         set_packet(529, {static_cast<std::uint32_t>(-9985),101,102,103,104,0,0,0,0}, 1);
@@ -446,5 +499,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound/dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

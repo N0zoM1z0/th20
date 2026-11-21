@@ -11,6 +11,7 @@
 #include "EnemyStateControllerManagementOpcode.hpp"
 #include "EnemyStateTimeOpcode.hpp"
 #include "EnemyStateCardOpcode.hpp"
+#include "EnemyStateFrontendOpcode.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
@@ -53,6 +54,9 @@ int EnemyState::execute_opcode() {
         return 0;
     if (execute_enemy_card_opcode(*this, opcode))
         return 0;
+    std::int32_t frontend_result = 0;
+    if (execute_enemy_frontend_opcode(*this, opcode, frontend_result))
+        return frontend_result;
 
     // Independently reconstructed inline case families. Each helper returns
     // false without reading operands when the opcode is outside its family.

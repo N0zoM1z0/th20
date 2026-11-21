@@ -38,6 +38,9 @@ source fragments.
 - `src/EnemyStateCardOpcode.cpp` restores Card spell/flag and scaled-health
   cases 523/536/537/561/562, reusing the existing exact 602B finish-spell leaf
   and real Card/EnemyHealth setters without duplicating their byte credit.
+- `src/EnemyStateFrontendOpcode.cpp` restores sound/dialogue cases 516/519,
+  including position-before-sound-operand evaluation and the special `-1`
+  return when an existing dialogue is not ready.
 - The root now also routes to the maintained phase, card-start, controller
   setter, fog, membership, mesh, animation-spawn, queued-shot, script-pointer,
   shot-fire, shot-command, laser-parameter, and laser-creation opcode fragments.
