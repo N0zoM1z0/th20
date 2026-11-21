@@ -32018,3 +32018,18 @@ relocations = [
   { offset = 0x3B, type = "REL32", symbol = "?spawn_effect@EffectInfo@th20@@QAE?AUAnimationHandle@2@HABUEffectParameters@2@PAVAnimation@2@@Z", target = 0x0049DB70 },
   { offset = 0x55, type = "REL32", symbol = "??A?$array@UEffectAnimationHandle@th20@@$0EAA@@std@@QAEAAUEffectAnimationHandle@th20@@I@Z", target = 0x00414580 },
 ]
+
+# GPT-WEB: shared AnimationHandle view restoring flag zero recursively.
+[units.animation_handle_set_flag0_recursive]
+source = "src/AnimationHandleSetFlag0Recursive.cpp"
+object = "build/gpt-web-enemy-canonical/AnimationHandleSetFlag0Recursive.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::set_animation_handle_flag0_recursively"]
+symbol = "?set_animation_handle_flag0_recursively@th20@@YIXPAUAnimationHandle@1@@Z"
+target_address = 0x0044FA30
+size = 50
+relocations = [
+  { offset = 0x11, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x16, type = "REL32", symbol = "?resolve_handle@AnimationPoolOwner@th20@@QAEPAVAnimation@2@I@Z", target = 0x0044CD00 },
+  { offset = 0x29, type = "REL32", symbol = "?set_flag0_recursively@Animation@th20@@QAEXXZ", target = 0x0044FA70 },
+]

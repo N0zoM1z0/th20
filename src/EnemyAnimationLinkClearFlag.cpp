@@ -11,4 +11,5 @@ void EnemyAnimationLink::clear_flag0_recursively() {
     animation->clear_flag0_recursively();
 }
 
+
 } // namespace th20
