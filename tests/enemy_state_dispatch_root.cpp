@@ -8,6 +8,8 @@
 #include "EnemyStateControlOpcode.hpp"
 #include "EnemyStateControllerManagementOpcode.hpp"
 #include "EnemyStateTimeOpcode.hpp"
+#include "EnemyStateCardOpcode.hpp"
+#include "Card.hpp"
 #include "ClockScalar.hpp"
 #include "PlayerRecord.hpp"
 #include "Session.hpp"
@@ -38,6 +40,7 @@ GameRandom script_random(1);
 DiagnosticAllocator* process_allocator = nullptr;
 LockRegistry process_locks;
 std::int32_t defeat_result = 0;
+std::int32_t card_finish_spell_calls = 0;
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
 bool pattern_drop_called = false;
 bool pattern_drop_bomb_mark = false;
@@ -60,6 +63,8 @@ Enemy* EnemyController::find(std::uint32_t identifier) {
         ? selected_test_enemy : nullptr;
 }
 void AnimationHandle::retire() {}
+Card::~Card() = default;
+void Card::finish_spell() { ++card_finish_spell_calls; }
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
@@ -86,6 +91,8 @@ int main() {
     context.enemies = &controller;
     session.contexts[0].enemies = &controller;
     selected_test_enemy = &enemy;
+    Card card;
+    context.card_owner = &card;
     enemy.state.context = &context;
     enemy.state.identifier = 0x12345678u;
     EclLoader loader;
@@ -387,6 +394,33 @@ int main() {
     enemy.state.flags.word_08 = 0;
     assert(enemy.state.execute_opcode() == 0 && enemy.main.time == 49.0f);
 
+    enemy.state.health.flags.bits = 0xffffffffu;
+    const auto finish_calls_before = card_finish_spell_calls;
+    set_packet(523, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(card_finish_spell_calls == finish_calls_before + 1);
+    assert((enemy.state.health.flags.bits & 1u) == 0);
+    card.spell_flags.bits = 0;
+    set_packet(536, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(card.spell_flags.bits & 8u);
+    set_packet(537, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(card.spell_flags.bits & 16u);
+    card.spell_flags.bits = 0xffffffffu;
+    set_packet(561, {1,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(card.spell_flags.bits == 0xffffffffu);
+    set_packet(561, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(card.spell_flags.bits == 0xfffffeffu);
+    set_packet(562, {1,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.health.flags.bits == 0xffffffffu);
+    set_packet(562, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.health.flags.bits == 0xfffffffeu);
+
     for (std::int32_t selector = 0; selector < 4; ++selector) {
         enemy.state.field_50 = selector;
         set_packet(529, {static_cast<std::uint32_t>(-9985),101,102,103,104,0,0,0,0}, 1);
@@ -412,5 +446,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

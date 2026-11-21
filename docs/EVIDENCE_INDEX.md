@@ -299,6 +299,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [natural-C++ 20 bounds/health/controller/state cases 500–559/563/564/566; 1,759B/360-head/51-E8 native case map](ENEMY_41967_CONTROL_500_559_HEALTH_SELECTION_SOURCE_FRONTIER.md),
   [natural-C++ controller selection/clear cases 520/525/545/565/573; 289B/65-head/17-E8 native map and real list-clear callers](ENEMY_41967_CONTROLLER_520_525_545_565_573_SOURCE_FRONTIER.md),
   [natural-C++ timer/mode/runtime-time cases 538/540/541/542/574; 594B/123-head/14-E8 native map](ENEMY_41967_TIME_538_540_541_542_574_SOURCE_FRONTIER.md),
+  [natural-C++ Card/health cases 523/536/537/561/562; 235B/52-head/11-E8 native map and real Card setters](ENEMY_41967_CARD_523_536_537_561_562_SOURCE_FRONTIER.md),
   [natural-C++ 4-way/8-way integer/float parameter copies 529/530/570/571; 1,262B/268-head/48-E8 native case map](ENEMY_41967_DYNAMIC_PARAMETER_529_530_570_571_SOURCE_FRONTIER.md).
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).

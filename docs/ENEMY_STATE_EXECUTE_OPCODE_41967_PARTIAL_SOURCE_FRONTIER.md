@@ -35,6 +35,9 @@ source fragments.
 - `src/EnemyStateTimeOpcode.cpp` restores five timer/mode cases 538/540/541/542/574,
   including the real global clock setter, three ordered Session mode queries,
   and inherited current-runtime time subtraction.
+- `src/EnemyStateCardOpcode.cpp` restores Card spell/flag and scaled-health
+  cases 523/536/537/561/562, reusing the existing exact 602B finish-spell leaf
+  and real Card/EnemyHealth setters without duplicating their byte credit.
 - The root now also routes to the maintained phase, card-start, controller
   setter, fog, membership, mesh, animation-spawn, queued-shot, script-pointer,
   shot-fire, shot-command, laser-parameter, and laser-creation opcode fragments.
