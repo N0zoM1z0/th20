@@ -3,11 +3,16 @@
 #include "Enemy.hpp"
 #include "ClockScalar.hpp"
 #include "Session.hpp"
+#include "Context.hpp"
+#include "LaserParameters.hpp"
 
 namespace th20 {
 
 bool execute_enemy_time_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {
+    case 539:
+        state.context->laser_controller()->reset_all_lasers();
+        break;
     case 538: {
         const auto value = static_cast<std::uint32_t>(state.integer_argument(0));
         state.flags.word_04 = (state.flags.word_04 & ~0x800u) | ((value & 1u) << 11);

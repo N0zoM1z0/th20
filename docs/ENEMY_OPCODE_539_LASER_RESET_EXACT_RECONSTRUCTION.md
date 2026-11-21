@@ -95,9 +95,13 @@ production and game-runtime equivalence is **not** claimed.
 ## Still open
 
 Original source names, all unimplemented Laser virtual methods, beam
-construction/retirement, session startup, rendering and the complete
-41,967-byte Enemy dispatcher are separate targets. The 263-byte callee has
-**one** new authenticated authored exact function; the Enemy root receives
-**zero** partial function bytes. A subsequent private complete-root host may
-integrate this real 539 callee but cannot confer root exactness without a
-whole-function MSVC canonical replay.
+construction/retirement, session startup and rendering remain separate
+frontiers. Opcode 539 is now wired into the maintained partial
+`EnemyState::execute_opcode` root through the real
+`state.context->laser_controller()->reset_all_lasers()` call. The 30-byte
+native case block, selector index 85 and ordered calls to `0x0041CA90` and
+`0x004D2430` are checked by `scripts/verify-enemy-state-dispatch-frontier.py`;
+the focused ASan/UBSan dispatcher fixture verifies the actual Context receiver
+and one reset call. The 263-byte callee retains its independent exact credit;
+the 41,967-byte root remains NONEXACT and receives **zero** partial function
+bytes until a whole-function MSVC canonical replay.

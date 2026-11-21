@@ -75,7 +75,6 @@ std::int32_t last_front_dialogue_command = 0;
 std::int32_t bullet_cancel_all_calls = 0;
 std::int32_t laser_cancel_all_calls = 0;
 std::int32_t laser_reset_calls = 0;
-std::int32_t laser_reset_calls = 0;
 std::int32_t front_field_180_calls = 0;
 std::int32_t front_field_180_value = 0;
 std::int32_t front_boss_gauge_calls = 0;
@@ -105,10 +104,6 @@ std::int32_t LaserController::cancel_all(std::int32_t, std::int32_t) {
     assert(this == dispatch_test_lasers);
     ++laser_cancel_all_calls;
     return 0;
-}
-void LaserController::reset_all_lasers() {
-    assert(this == dispatch_test_lasers);
-    ++laser_reset_calls;
 }
 std::int32_t LaserController::reset_all_lasers() {
     assert(this == dispatch_test_lasers);
@@ -582,13 +577,6 @@ int main() {
     assert(static_cast<std::uint32_t>(enemy.state.field_280) == 0x87654321u);
     assert(enemy.state.field_284 == 0);
 
-    // Opcode 539 consumes no operands and resets the active Context's laser
-    // controller through the native two-call path.
-    laser_reset_calls = 0;
-    set_packet(539, {0,0,0,0,0,0,0,0});
-    assert(enemy.state.execute_opcode() == 0);
-    assert(laser_reset_calls == 1);
-
     // Opcode 575 saves Player zero before the integer operand and forwards the
     // full 32-bit word to the exact Player bit-10 setter.
     dispatch_player_calls = 0;
@@ -809,5 +797,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, laser-reset opcode 539 and global-owner opcodes 524/575, front gauge 527/534, laser reset 539, bit flag 552, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge 527/534, laser reset 539, bit flag 552, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

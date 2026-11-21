@@ -103,6 +103,11 @@ bool execute_enemy_control_opcode(EnemyState& state, std::int32_t opcode) {
         state.field_274 = state.float_argument(0);
         state.field_274 *= state.field_274;
         break;
+    case 552: {
+        const auto value = static_cast<std::uint32_t>(state.integer_argument(0));
+        state.flags.word_04 = (state.flags.word_04 & ~8u) | ((value & 1u) << 3);
+        break;
+    }
     case 557: {
         const auto value = static_cast<std::uint32_t>(state.integer_argument(0));
         state.flags.word_00 = (state.flags.word_00 & ~0x1000u) | ((value & 1u) << 12);

@@ -100,8 +100,10 @@ words. Scheduler and resource destruction are explicit host boundaries.
 
 At CORE159 the integrated private whole-root draft passed 36,244 scenarios:
 26,781 prior cases and 9,463 new FrontInf callers. It contains 110 effective values /
-81 primary heads. Production dispatch remains undefined and receives no partial
-source acceptance or exact credit.
+81 primary heads. The maintained partial EnemyState dispatcher now routes
+opcodes 527 and 534 through these actual FrontInf setters. This is inline root
+source progress only; the 41,967-byte dispatcher remains NONEXACT and receives
+no separate case-block byte credit.
 
 Opcode 534 reads its value before loading the live process FrontInf and writing
 field180. Opcode 519 short-circuits the actual Dialogue-pointer predicate, then
@@ -119,8 +121,11 @@ and the current boss index. It divides by binary32(initial health) before the
 last operand and loads the process HUD after operand evaluation. The physical
 offset-four getter is folded with Timer::operator int, but its real receiver is
 EnemyHealth at state+18C. It reads field04, not current health or a Timer base.
-The private source preserves that semantic distinction; exact whole-root member
-call partitioning remains open. Tests cover denominator mutation, late boss/HUD
+The maintained `src/EnemyStateFrontendOpcode.cpp` source now preserves that
+semantic distinction and routes the case through the exact FrontInf boss-gauge
+setter. The focused dispatcher fixture checks a signed denominator and the
+resulting fraction/value. The whole-root member-call partitioning remains open.
+Historical FrontInf fixture tests also cover denominator mutation, late boss/HUD
 selection, zero/negative denominators, failure prefixes and complete state/owner
 images. Portable NaN checks establish classification, not native NaN payloads.
 All marker indices and resource/frame pointers stay within documented valid
