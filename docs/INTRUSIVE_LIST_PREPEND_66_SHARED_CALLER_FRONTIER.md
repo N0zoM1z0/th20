@@ -1,4 +1,4 @@
-# CORE/RECON-1194 — shared 66B IntrusiveList prepend boundary
+# CORE/RECON-1194/1195 — shared 66B IntrusiveList prepend boundary
 
 Target: Japanese TH20 v1.00a Steamless PE, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
@@ -21,13 +21,15 @@ original `ret 4`. There are **15 physical original callers**, including the
 The maintained implementation already exists in `src/IntrusiveLink.hpp` as
 `IntrusiveList<T>::prepend`. A fresh locked MSVC x86 C++20 compilation of the
 `IntrusiveList<Bullet>` instantiation contributes the complete 66-byte body
-and both original relocation roles. **53/58 ordinary bytes match**. The only
-five ordinary-byte differences are at `+0x2C..+0x30`, in the final tail-sentinel
-comparison: the native compiler form compares the memory operand against the
-saved `this` register, while the candidate loads the tail pointer and compares
-it against the saved stack value. Both preserve the same sentinel test and
-conditional tail update; the two call destinations and function boundary are
-identical.
+and both original relocation roles. The first natural source form matched **53/58 ordinary bytes**. Reversing the
+C++ equality operands to `if (this == tail)` changed the emitted sequence to
+**56/58 ordinary bytes** without changing semantics or function extent. The
+candidate now has the same two `this` reloads as the original; only the two-byte
+CMP opcode/modrm sequence at `+0x2E..+0x2F` remains different. Native uses
+`cmp dword ptr [ecx+0x14], eax` (`39 41 14`); the current compiler emits the
+commuted equality as `cmp ecx, dword ptr [eax+0x14]` (`3B 48 14`). Both set the
+same equality flags, and both branch to the same unchanged tail-update block.
+The two call destinations and function boundary are identical.
 
 This is now classified as a reconstructed shared C++ template boundary, not
 as an exact function. It contributes **zero exact bytes** and has no
@@ -42,6 +44,8 @@ scripts/repo-python scripts/verify-intrusive-list-prepend-frontier.py
 ```
 
 The verifier checks the immutable 66B body hash, 25 instruction heads, both
-original E8 targets, all 15 physical callers, and the fresh natural C++
-instantiation's 53/58 ordinary-byte comparison. It explicitly does not award
-strict exactness.
+original E8 targets, all 15 physical callers, the fresh natural C++
+instantiation's 56/58 ordinary-byte comparison, and a host semantic test in
+`tests/intrusive_list_prepend_semantics.cpp` covering empty, first, repeated
+head insertion, link ownership and stable-tail behavior. It explicitly does
+not award strict exactness.

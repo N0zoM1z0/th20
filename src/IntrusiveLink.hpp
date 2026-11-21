@@ -103,7 +103,7 @@ template<class T> void IntrusiveList<T>::append(IntrusiveLink<T>* link){
 }
 template<class T> void IntrusiveList<T>::prepend(IntrusiveLink<T>* link){
     IntrusiveLink<T>& head=*this;head.insert_after(link);link->set_owner(this);
-    if(tail==static_cast<IntrusiveLink<T>*>(this))tail=link;
+    if(this==tail)tail=link;
 }
 template<class T> void IntrusiveList<T>::reset(T* input){
     IntrusiveLink<T>& head=*this;head.initialize(input);tail=this;

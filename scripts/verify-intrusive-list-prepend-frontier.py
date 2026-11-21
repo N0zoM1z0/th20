@@ -73,21 +73,31 @@ def main():
         assert kind=='REL32'
         relocated.update(range(offset,offset+4))
     mismatches=[i for i in range(SIZE) if i not in relocated and candidate[i]!=native[i]]
-    assert mismatches==[0x2C,0x2D,0x2E,0x2F,0x30],mismatches
+    assert mismatches==[0x2E,0x2F],mismatches
     comparable=SIZE-len(relocated)
     matched=comparable-len(mismatches)
-    assert (matched,comparable)==(53,58)
+    assert (matched,comparable)==(56,58)
 
     source=(ROOT/'src/IntrusiveLink.hpp').read_text()
     assert 'head.insert_after(link);link->set_owner(this);' in source
-    assert 'if(tail==static_cast<IntrusiveLink<T>*>(this))tail=link;' in source
+    assert 'if(this==tail)tail=link;' in source
     for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
         assert forbidden not in source
+    # Exercise the same maintained template on the host: empty insertion,
+    # then repeated head insertion while the original tail remains stable.
+    semantic_binary = ROOT / "build/intrusive-list-prepend-semantics"
+    subprocess.run([
+        "g++-13", "-std=c++20", "-O2", "-Wall", "-Wextra", "-Werror",
+        "-Isrc", "tests/intrusive_list_prepend_semantics.cpp",
+        "-o", str(semantic_binary),
+    ], cwd=ROOT, check=True)
+    subprocess.run([str(semantic_binary)], cwd=ROOT, check=True)
+    print('PASS C++ semantic test: empty list, first insert, repeated prepend and stable tail')
     print('PASS original 66B/25-i386 shared intrusive prepend body SHA-256')
     print('PASS two original E8 roles: IntrusiveLink::insert_after -> 0x411EE0; owner setter -> 0x412DC0')
     print('PASS 15 physical native callers, including BulletEmitter 0x481975 and Animation callers')
     print('PASS natural IntrusiveList<Bullet>::prepend candidate is 66B with both relocation roles')
-    print('PARTIAL 53/58 ordinary bytes match; only +0x2C..+0x30 tail-sentinel compare encoding differs')
+    print('PARTIAL 56/58 ordinary bytes match; only +0x2E..+0x2F CMP operand-order opcode differs')
     print('NO strict exact unit or game-authored byte credit; no assembly, volatile, or padding workaround')
 
 if __name__=='__main__':
