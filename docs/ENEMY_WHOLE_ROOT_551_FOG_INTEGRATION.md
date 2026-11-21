@@ -89,6 +89,9 @@ its full 174-head primary routing, four nested rank tables, shared exits,
 compiler-owned EH/data and true native subsystem owners. For this specific
 path the original 0x005C069C global and 0x49C5B0/0x4776C0 fog interpolation
 interfaces remain unclosed; the earlier FogValue leaf exactness does not prove
-these owners. Other high-priority native paths include 539, 548/549, 555 and
-unrecovered original Screen/Renderer/Stage resource lifecycles. No original
+these owners. The maintained partial root now routes 539, 548, 549, 551 and 555, and the
+focused root fixture executes the actual 549/551/555 helpers with explicit
+owner boundaries. Their selector/call maps and affected leaf replays are
+checked independently. Other unhandled native case families and the original
+Screen/Renderer/Stage startup/resource lifecycles remain open. No original
 Win32/game startup, playability or overall percent exactness is claimed.

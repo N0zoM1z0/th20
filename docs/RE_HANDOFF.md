@@ -53,8 +53,12 @@ owner remains unknown. Opcode 517 now restores the 99-byte ScreenInf creation ca
 addition was followed by a focused include-closure replay: 345/345 units across
 113 cold objects passed; no whole-graph cold replay was run. Cases 317/318 and
 aliases 181/193/41 restore handle interruption and primary-link reset. Cases
-320/322/323, the selected-Enemy-position query aliases 17/21/25/45/260, flag
-cases 341/342/343 and identifier-exists aliases 44/73/344 are now also
+320/322/323, selected-Enemy-position opcode 324 (276B/53 instructions/11
+ordered calls) and lower aliases 17/21/25/45/260, membership 549, FogValue 551
+and the 388B animation/sound Boss 555 are now also routed through maintained
+C++. The root host now executes the actual 549/551/555 helpers rather than
+stubbing them; its owner boundaries and exact leaves are separately documented.
+Flag cases 341/342/343 and identifier-exists aliases 44/73/344 are also
 restored. Cases 338/339/340 now restore positioned effect-animation creation, the
 spawn-and-update loop, and selected-Enemy flag-bit-9 publication; the 35-byte
 `0x00497240` setter is strict exact. Opcode 334 now routes through the exact 108-byte EffectInfo positioned
@@ -64,13 +68,13 @@ root boundary now also includes 26 native aliases from the lower opcode ranges,
 canonicalized to their corresponding 400-series movement implementations.
 The remaining priority is the other unhandled dispatcher case families and
 the 41,967-byte root boundary; no whole-graph cold replay was run. The latest
-root increments wire native opcodes 524/575, 527/534/548, 539, 552 and the
-reserved 569 selector with their
-original operand/receiver order. The focused dispatcher verifier checks all
-new selector entries, the ordered E8 targets, ASan/UBSan host assertions, and
-all 18 locked-profile i386 source compiles. GameController and Player exact
-callees replayed 6/6 and 8/8; the FrontInf setters and Laser reset are reused
-through their existing exact units. No full cold replay was run.
+root increments wire native opcodes 324, 524/575, 527/534/548, 539, 549,
+551, 552, 555 and reserved selector 569. The focused dispatcher verifier checks
+the selector entries, ordered E8 targets, ASan/UBSan root-host assertions and
+all 18 locked-profile i386 source compiles. Affected-only leaf replays passed
+for EnemyController/Enemy position and VM destinations, 549 membership,
+FogValue/PackedColor/StageResource, and the 555 sound/geometry/AnimationFile
+chain. No full cold replay was run; the 41,967B parent remains NONEXACT.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 

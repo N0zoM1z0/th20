@@ -101,6 +101,8 @@ verifier; the 75-byte FrontInf method retains its independent exact credit.
 The earlier [CORE181 whole-root host](ENEMY_WHOLE_ROOT_548_STAGE_TITLE_INTEGRATION.md)
 continues to provide 256 native receiver/guard/Renderer-boundary scenarios.
 Neither inline integration nor that semantic host confers any exact root bytes.
-Other high-value unresolved native paths include 555 and the remaining long
-case families. The three complete real methods add **118** nonoverlapping
+Native 539, 549, 551 and the 388-byte opcode-555 animation/sound Boss now also
+have maintained root routes and focused selector/call-map/runtime coverage.
+Other unhandled long case families, shared exits/EH/data and the complete root
+remain NONEXACT. The three complete real methods add **118** nonoverlapping
 authored native bytes; they do **not** credit any fragment of Enemy's main root.

@@ -104,6 +104,9 @@ The private semantic whole-root draft covers **121 effective opcode values /
 92 primary heads**. The 41,967-byte native Enemy root is **still not exact**;
 its 174-head compressed primary routing, four nested rank tables, shared
 exit/data/EH, complete graphical and subsystem state are still unclosed.
-The remaining high-value incomplete paths include 539, 548 and 555, as well
-as native background/resource lifetimes. No runnable Windows game or
-overall percent-complete byte claim follows from portable host tests.
+The maintained partial root now also routes 539, 548, 549, 551 and 555, with
+focused native selector/call-map checks and bounded ASan/UBSan integration
+coverage. These are source/semantic increments only; the complete 41,967-byte
+root, its shared exits/EH/data and native background/resource lifetimes remain
+NONEXACT. No runnable Windows game or overall percent-complete byte claim
+follows from portable host tests.

@@ -64,7 +64,10 @@ CORE181 takes the private complete-root semantic draft to **122 effective
 opcode values / 93 original primary heads**. The source-accepted exact graph
 remains **217 full authored functions / 57,008 native bytes / 1,003 strict
 units**; the **17-byte** 548 case contributes **zero** partial native root
-credit. Original 539, 555 and other missing long case paths, full 174-head
-primary index, four nested rank tables, shared case exits, original compiler
-EH/data, and native Renderer/Background/Stage startup and resource lifecycle
-are still open. This portable host is not a playable Windows game.
+credit. Original 539/549/551/555 now have maintained C++ root routes and focused
+native selector/call-map coverage; opcode 555 is a 388-byte/81-instruction
+animation-and-sound Boss with bounded runtime gate/direction tests. Other
+missing long case paths, the full 174-head primary index, four nested rank
+tables, shared case exits, original compiler EH/data, and native
+Renderer/Background/Stage startup and resource lifecycle are still open. This
+portable host is not a playable Windows game.

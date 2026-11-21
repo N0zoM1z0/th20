@@ -22,3 +22,20 @@ The source deliberately preserves the three separate position reads and only eva
 `src/EnemyStateAnimationSpawnOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. The focused verifier checks the original 388B branch directly from the locked PE, all 81 instruction heads, all ten direct E8 site/target pairs, the three PE float constants and the ordered natural-C++ call path. The focused i386 object also retains the real data references to `0x0056FBF8`, `0x0056E0F8` and `0x0056C8D0`. It reuses the existing whole-exact `EnemyController::animation_file` and `AnimationFile::spawn` methods.
 
 This is an inline source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.
+
+## Maintained root-host integration
+
+The focused dispatcher verifier now checks selector index 101, all 388 native
+bytes / 81 instruction heads and the ten ordered E8 targets. The ASan/UBSan
+root host executes the actual production helper with both gates disabled,
+sound-only, animation-only near/far, and both-gates cases. It checks the 0.04 squared
+distance threshold, -pi/2 fallback, computed XY direction, selected file index,
+script, layer 3, null stem/output and sound-before-file-before-spawn ordering.
+SoundInf request, EnemyController file selection and AnimationFile spawn are
+explicit host boundaries. Their underlying leaves and geometry are independently
+replayed exact in affected objects: SoundEffects **5/5**, GeometryMetrics **8/8**,
+MeshInterfaces **10/10**, ClockScalar **3/3**, MeshResourceAccess **8/8**,
+EnemyResourceSelection **1/1**, and the complete 922-byte
+`AnimationFile::spawn` Boss **1/1**. The 922-byte Boss itself strictly replays
+**922/922** in its own fresh canonical object. No full cold replay or whole-root
+byte credit is claimed.

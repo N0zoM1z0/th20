@@ -28,3 +28,14 @@ The order matters: operand evaluation may retarget Context, but the native predi
 `src/EnemyStateMembershipOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-membership-opcode-source.py` extracts the original 95B branch directly from the locked PE, checks all 20 instruction heads and four direct-call sites/targets, validates the source order, and confirms the compiled object references the real Context getter, EnemyState VM accessors and accepted 244B membership method. The complete 36B EnemyState→Enemy→EclRuntime integer reader and late destination chains are now `matching`, as are their float and supplied-value siblings; see [the 12-function argument forwarding boundary](ENEMY_ARGUMENT_FORWARDING_BOUNDARY.md).
 
 This is a source fragment, not a standalone original function. No parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.
+
+## Maintained root-host integration
+
+The focused dispatcher verifier now rechecks selector index 95, the complete
+95-byte/20-instruction branch and all four ordered E8 targets. The ASan/UBSan
+root host executes the production membership helper, checks its cached Context
+receiver, operand-1 identifier and late full-word destination write for true
+and false results. The root fixture uses a narrow `EnemyController::has_identifier`
+boundary; the actual 244-byte intrusive query was independently replayed
+**14/14** in its one affected canonical object. The 41,967-byte root remains
+NONEXACT and receives no case-byte credit.

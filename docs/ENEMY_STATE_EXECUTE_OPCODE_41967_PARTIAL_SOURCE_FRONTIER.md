@@ -146,6 +146,41 @@ source fragments.
   destinations 0/1, falling back to the current EnemyState position when no
   Enemy is found. The exact `EnemyController::find`, `Enemy::position_ref`,
   `EnemyState::position_ref` and destination leaves are reused.
+- Native opcode `324` is a separate 276-byte / 53-instruction case at
+  `0x004960C1..0x004961D5`, selected by compressed index 17. It caches the
+  Context's EnemyController before reading integer operand 2, calls the exact
+  251-byte `EnemyController::find`, then copies the selected Enemy's X/Y into
+  float destinations 0/1. If no Enemy is found, it reads the current
+  EnemyState position instead. The same natural-C++ operation is shared with
+  the lower 17/21/25/45/260 routes. The verifier checks all 11 ordered E8
+  targets; the ASan/UBSan host exercises both selected-Enemy and fallback paths.
+  See the [opcode-324 source/call-order frontier](ENEMY_41967_324_SELECTED_POSITION_FRONTIER.md).
+- Native opcode `549` is a 95-byte / 20-instruction membership query at
+  `0x00495D7F..0x00495DDE`, selector index 95. It caches the Context's
+  EnemyController before integer operand 1, calls the exact 244-byte intrusive
+  membership predicate, then resolves integer destination 0 and writes the
+  zero-extended boolean. The verifier checks all four ordered E8 targets; the
+  root host executes the actual helper with a predicate boundary, while the
+  complete 244-byte leaf independently replays exact.
+- Native opcode `551` is a 257-byte / 58-instruction FogValue update at
+  `0x00495C1F..0x00495D20`, selector index 97. It reads integers 0/1/2,
+  then floats 4/3, builds the real PackedColor and FogValue in blue/green/red/
+  alpha byte order, and only then loads the live StageResource owner and calls
+  `set_fog`. The verifier checks all nine ordered E8 targets. The root host
+  executes the actual helper and constructors, capturing the final owner call;
+  the three StageResource owner methods and six FogValue methods independently
+  replay exact.
+- Native opcode `555` is the 388-byte / 81-instruction animation-and-sound
+  Boss at `0x0048C3F4..0x0048C578`, selector index 101. Its two independent
+  signed gates preserve sound-before-animation ordering. The animation path
+  computes the XY squared-distance threshold from the original 0.2f constant,
+  selects -pi/2 or the real XY direction, resolves the live Context controller
+  and AnimationFile, then spawns at layer 3 without consuming ECL operands.
+  The verifier checks all ten ordered E8 targets and the three original float
+  constants. The root host executes the real helper across both gate outcomes,
+  near/far direction paths and combined ordering; the SoundInf request,
+  EnemyController file selector and AnimationFile spawn are explicit host
+  boundaries, with their real leaves independently replayed exact.
 - Native cases `22/23/24` (opcodes 341/342/343) set, clear, or assign the
   corresponding low bits in `flags.word_08`. Case `25` (opcodes 44/73/344)
   writes whether the integer-operand-1 identifier resolves through
@@ -238,9 +273,9 @@ function bodies; no duplicate byte credit is assigned.
 
 The remaining inline cases in the original 41,967B body—including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
-additional opcode ranges—still need source recovery. Opcodes 524/575, 527/534,
-539, 548, 552 and the reserved 569 selector are now represented in the
-maintained root, but this does not close
+additional opcode ranges—still need source recovery. Opcodes 324, 524/575,
+527/534, 539, 548, 549, 551, 552, 555 and the reserved 569 selector are now
+represented in the maintained root, but this does not close
 their surrounding switch tables or the dispatcher as a whole. Unknown opcodes currently
 fall through the provisional zero return and must not be treated as proven
 native no-ops. The 41,967-byte root remains NONEXACT and has no whole-root match
