@@ -51,6 +51,9 @@ source fragments.
   relocation destinations match, while 14 ordinary bytes differ in two float
   argument stack-slot/load ordering sequences; see the creation reconstruction
   record.
+- Native switch case `1` now restores opcode 302 as the scalar field setter:
+  `field_1c = integer_argument(0)`. This matches the native `FUN_004AB080`
+  argument read followed by the store at EnemyState offset `0x1C`.
 - Native switch case `0x0d` now routes all 13 animation-setter opcodes
   `319/325–333/335–337` through the existing `EnemyState::change_animation`
   owner at `0x00496B90`. The original root case is a single call to that

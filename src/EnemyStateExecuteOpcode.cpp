@@ -69,6 +69,13 @@ int EnemyState::execute_opcode() {
         break;
     }
 
+    // Native switch case 1 is the scalar field setter: opcode 302 consumes
+    // integer argument zero and stores it in EnemyState::field_1c.
+    if (opcode == 302) {
+        field_1c = integer_argument(0);
+        return 0;
+    }
+
     // Native switch case 0x0d funnels this complete animation-setter family
     // through EnemyState::change_animation (the original 0x00496B90 owner).
     switch (opcode) {

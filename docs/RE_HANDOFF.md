@@ -26,9 +26,9 @@ folded implementations, and post-`ret` switch/padding data.
 
 The current workstream is the 41,967-byte `EnemyState::execute_opcode` at
 `0x0048C010`, with large native case families and their leaf callees as the
-priority. The maintained root now routes the 13 animation-setter opcodes to
-`EnemyState::change_animation` and the five direct spawn opcodes to the new
-653-byte natural C++ `EnemyState::spawn_from_opcode` body. The spawn leaf is
+priority. The maintained root now routes opcode 302 to the native scalar field setter, the 13 animation-setter
+opcodes to `EnemyState::change_animation`, and the five direct spawn opcodes
+to the new 653-byte natural C++ `EnemyState::spawn_from_opcode` body. The spawn leaf is
 semantic but NONEXACT: all 19 relocation destinations and its 653-byte extent
 match, while 14 ordinary bytes remain different in two float argument setup
 sequences. Cases 309/311/312 still require their native guard restoration.
