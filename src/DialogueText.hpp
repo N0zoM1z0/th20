@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <cstddef>
 #include "AnimationHandle.hpp"
 #include "Cursor.hpp"
 #include "DialogueFlags.hpp"
@@ -45,6 +46,7 @@ struct Dialogue {
     float text_width;
     std::int32_t field_138, field_13c;
 
+    static void* operator new(std::size_t size);
     explicit Dialogue(std::uint8_t* input);
     ~Dialogue();
     std::int32_t ready();

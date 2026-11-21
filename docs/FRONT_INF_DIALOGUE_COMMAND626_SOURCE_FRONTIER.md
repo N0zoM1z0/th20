@@ -23,8 +23,13 @@ The current pinned-MSVC candidate is **622/626 bytes**. The 4-byte difference
 remains explicit; there is no parent strict match unit and no exact-byte credit.
 The ordinary C++ implementation preserves the native duplicate pointer clear
 and message-table offset lookup. It uses no assembly, padding or post-return
-bytes. The 156-byte allocator callee has a separate natural C++ candidate at
-80/156 bytes and remains NONEXACT.
+bytes. The 156-byte allocator callee now uses a class-specific
+`Dialogue::operator new` to preserve the native raw-storage clear before the
+real constructor. A direct `new Dialogue(std::move(script))` lets the compiler
+generate the matching sized-delete unwind path when construction throws. The
+pinned candidate is 168 bytes against the 156-byte native contribution and
+remains NONEXACT; no bytes are credited until the complete contribution and
+relocation set match.
 
 ## Exact voice dependency
 

@@ -8,7 +8,7 @@ struct NativeScreenFactoryAllocatorView {
     void release_screen_41f7c0(NativeScreenInf* screen);
 };
 struct NativeScreenMemoryView {
-    void clear_40c080(std::size_t bytes);
+    void clear_40c080(std::size_t bytes) noexcept;
 };
 struct NativeScreenInfConstructorView {
     NativeScreenInf* construct_4233b0();
