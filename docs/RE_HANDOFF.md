@@ -22,7 +22,21 @@ live progress with `scripts/repo-python scripts/report-reconstruction-status.py
 --summary`. Authored game credit excludes compiler/STL helpers, duplicated
 folded implementations, and post-`ret` switch/padding data.
 
-The current item work starts with the [exact 201-byte phase transition](WEAPON_STONE_ITEM_PROGRESS_EXACT.md).
+## Active reconstruction frontier — Enemy ECL dispatcher
+
+The current workstream is the 41,967-byte `EnemyState::execute_opcode` at
+`0x0048C010`, with large native case families and their leaf callees as the
+priority. The maintained root now routes the 13 animation-setter opcodes to
+`EnemyState::change_animation` and the five direct spawn opcodes to the new
+653-byte natural C++ `EnemyState::spawn_from_opcode` body. The spawn leaf is
+semantic but NONEXACT: all 19 relocation destinations and its 653-byte extent
+match, while 14 ordinary bytes remain different in two float argument setup
+sequences. Cases 309/311/312 still require their native guard restoration.
+The root itself remains NONEXACT; no full cold replay was run for this work.
+See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
+and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
+
+The earlier ItemInf work starts with the [exact 201-byte phase transition](WEAPON_STONE_ITEM_PROGRESS_EXACT.md).
 The ItemInf main loop and the WeaponStone mesh callback and effect path have
 working-tree drafts whose whole-function acceptance is still pending.
 

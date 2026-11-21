@@ -58,6 +58,17 @@ int EnemyState::execute_opcode() {
     if (execute_enemy_frontend_opcode(*this, opcode, frontend_result))
         return frontend_result;
 
+    // Native switch case 0 dispatches the five direct spawn opcodes through
+    // the recovered 653-byte EnemyState::spawn_from_opcode leaf. Cases 309,
+    // 311 and 312 share the leaf behind a separate native guard not restored
+    // at this boundary yet.
+    switch (opcode) {
+    case 300: case 301: case 304: case 305: case 321:
+        return spawn_from_opcode();
+    default:
+        break;
+    }
+
     // Native switch case 0x0d funnels this complete animation-setter family
     // through EnemyState::change_animation (the original 0x00496B90 owner).
     switch (opcode) {

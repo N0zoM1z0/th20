@@ -93,11 +93,26 @@ pushed GitHub head is checked separately.
 
 ## Preserved nonexact work
 
-The complete 00496FB0 opcode spawn entry is 653 bytes. Its natural probe has
-that complete size, but fourteen non-relocation bytes differ because two float
-loads and stack reservations exchange order. Byte/reference/const operand
-forms and precise/fast/except profiles do not resolve it. The probe stays
-private and pending; no partial opcode or dispatcher credit is assigned.
+The complete 00496FB0 opcode spawn entry is 653 bytes and now has a maintained
+natural C++ body in `src/EnemyStateSpawnOpcode.cpp`. The 41,967-byte dispatcher
+routes native case-0 opcodes 300/301/304/305/321 to this leaf. The body performs
+the EnemyController capacity guard, parses the padded script-name payload and
+per-operand defaults, applies relative/mirrored position rules, copies the
+EnemyCounters block and source Enemy identity, then calls the existing
+`EnemyController::create` path. Native cases 309/311/312 also share this leaf
+behind a separate guard that is not yet restored at the dispatcher boundary.
+
+The focused `/Od /Ob0` strict one-function comparison reproduces the 653-byte
+extent and all 19 relocation fields resolve to their original native
+destinations. It reports 639/653 bytes matched after relocation replay; the
+non-relocation view is 563/577 bytes. The remaining 14 bytes are exactly the two
+7-byte argument-setup sequences at offsets `0x86–0x8C` and `0xA5–0xAB`, where
+the native reserves the float argument slot before its `movss` load and the
+natural probe performs the load before the slot reservation. Direct, const,
+reference and volatile operand forms did not resolve this compiler scheduling
+difference. No assembly or padding is used. This is maintained semantic source
+progress only: the function is still NONEXACT and receives no strict exact or
+accepted-fact credit until a natural-source exact comparison passes.
 
 Scalar factory 004A2910 calls a compiler pre-construction clear before the
 actual Enemy constructor. Clean scalar-new probes currently omit that clear.

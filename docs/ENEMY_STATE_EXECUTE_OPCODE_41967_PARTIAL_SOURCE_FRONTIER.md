@@ -41,6 +41,16 @@ source fragments.
 - `src/EnemyStateFrontendOpcode.cpp` restores sound/dialogue cases 516/519,
   including position-before-sound-operand evaluation and the special `-1`
   return when an existing dialogue is not ready.
+- Native switch case `0` now routes direct spawn opcodes 300/301/304/305/321
+  to the maintained 653-byte `EnemyState::spawn_from_opcode()` implementation
+  in `src/EnemyStateSpawnOpcode.cpp`. It reconstructs the real script-name
+  payload, default operands, relative/mirrored position, spawn flags, counters,
+  identity and `EnemyController::create` handoff. Cases 309/311/312 also call
+  this native leaf behind a separate guard that remains open. The leaf is
+  semantically reconstructed but NONEXACT: its 653-byte extent and all 19
+  relocation destinations match, while 14 ordinary bytes differ in two float
+  argument stack-slot/load ordering sequences; see the creation reconstruction
+  record.
 - Native switch case `0x0d` now routes all 13 animation-setter opcodes
   `319/325–333/335–337` through the existing `EnemyState::change_animation`
   owner at `0x00496B90`. The original root case is a single call to that
@@ -56,15 +66,20 @@ source fragments.
 ## Remaining scope
 
 This is a **partial root reconstruction**, not an exact or complete dispatcher.
-The remaining inline cases in the original 41,967B body—including the unhandled
-500-series cases, other 520-series operations and additional opcode ranges—
-still need source recovery. Unknown opcodes currently fall through the provisional zero
+The remaining inline cases in the original 41,967B body—including most of the
+300-series, unhandled 500-series cases, other 520-series operations and
+additional opcode ranges—still need source recovery. Unknown opcodes currently fall through the provisional zero
 return and must not be treated as proven native no-ops. The parent receives no
 strict exact-byte credit and no match unit has been added.
 
 ## Focused evidence
 
-All five maintained C++ translation units compile as MSVC-compatible i386 COFF
+The spawn leaf and the dispatcher compile as MSVC-compatible i386 COFF under
+the locked `/Od /Ob0` profile. The spawn-leaf diagnostic comparison is scoped
+to `0x00496FB0` only and reports the 14 non-relocation differences described
+above; no whole-root or cold replay was run.
+
+The five pre-existing helper/root translation units also compile as MSVC-compatible i386 COFF
 under the repository's locked `/Od /Ob0` profile:
 
 ```bash
