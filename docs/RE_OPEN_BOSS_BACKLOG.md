@@ -51,13 +51,16 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199
-  added the partial natural-C++ root entry and wired the complete 400–448 movement
-  family, nine Pattern cases, 20 bounds/health/controller/state cases and five controller selection/clear callers and five timer/mode/runtime-time callers and five Card/health callers and two sound/dialogue callers, four
-  indexed parameter-copy cases, and the independently maintained opcode fragments.
-  The root remains incomplete/NONEXACT;
-  continue restoring the other inline case families and
-  converge the complete original 41,967B body, stack, calls and switch data.
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210
+  maintain the partial natural-C++ root entry and wire the complete 400–448 movement
+  family, nine Pattern cases, 20 bounds/health/controller/state cases, five controller
+  selection/clear cases, five timer/mode/runtime-time cases, five Card/health cases,
+  sound/dialogue cases, opcodes 524/575, four indexed parameter-copy cases and the
+  independently maintained opcode fragments. The 328B `SoundInf::enqueue` dependency
+  is now whole strict exact (all 15 relocations); the 626B FrontInf command parent is
+  still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains
+  incomplete/NONEXACT; continue restoring the other inline case families and converge
+  the complete original 41,967B body, stack, calls and switch data.
 - **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation
   execution/update remains source-absent; accepted per-mode renderer
   children do not prove this parent. [Architecture/source map](SOURCE_MAP.md).

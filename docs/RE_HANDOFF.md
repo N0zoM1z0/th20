@@ -48,7 +48,7 @@ link to clear or restore recursive flag zero based on bit five. Their two
 1,472-byte native blocks, selector/pointer entries and ordered E8 maps are
 covered by the focused dispatcher verifier; the opcode-503 runtime test checks
 both transitions and the already-inactive path. The leaf's original source
-owner remains unknown. Opcode 517 now restores the 99-byte ScreenInf creation case through the already exact 81-byte ScreenInf factory, preserving its native operand-read order and factory arguments. The 97-byte `0x004AE830` Dialogue release wrapper and its 16-byte `std::destroy_at<Dialogue>` helper are now strict exact; their original receiver owner remains unknown. The 626-byte FrontInf dialogue-command parent is still open. Its `SoundInf::enqueue` dependency now has a natural 31-slot C++ source frontier (324B candidate against 328B native, explicitly NONEXACT), an exact 23-byte command-array indexer, and a focused ASan/UBSan queue test. The 41,967-byte root remains NONEXACT. The
+owner remains unknown. Opcode 517 now restores the 99-byte ScreenInf creation case through the already exact 81-byte ScreenInf factory, preserving its native operand-read order and factory arguments. The 97-byte `0x004AE830` Dialogue release wrapper and its 16-byte `std::destroy_at<Dialogue>` helper are now strict exact; their original receiver owner remains unknown. The 626-byte FrontInf dialogue-command parent is still open at 622/626 bytes; its four unmatched native bytes are not filled with assembly or padding. Its `SoundInf::enqueue` dependency is now a natural-C++ **328/328 strict exact** whole function with all 15 relocation anchors, plus the exact 23-byte command-array indexer and passing focused ASan/UBSan queue test. The 238-byte LaserController cancel-all Boss and 104-byte Graphics dialogue-voice helper are also strict exact. The 156-byte Dialogue allocator remains NONEXACT (168-byte natural C++ candidate) while preserving zero-before-construction and sized-delete unwind behavior. The 41,967-byte root remains NONEXACT. The
 `AnimationFile.hpp` wrapper
 addition was followed by a focused include-closure replay: 345/345 units across
 113 cold objects passed; no whole-graph cold replay was run. Cases 317/318 and
@@ -63,7 +63,12 @@ a focused closure replay of 33/33 units across 10 cold objects. The movement
 root boundary now also includes 26 native aliases from the lower opcode ranges,
 canonicalized to their corresponding 400-series movement implementations.
 The remaining priority is the other unhandled dispatcher case families and
-the 41,967-byte root boundary; no whole-graph cold replay was run.
+the 41,967-byte root boundary; no whole-graph cold replay was run. The latest
+root increment wires native opcodes 524 and 575 with their original operand /
+receiver order; the focused dispatcher verifier now checks both selector
+entries, all five E8 targets, the ASan/UBSan host assertions, and all 18
+locked-profile i386 source compiles. The 524 GameController and 575 Player
+callee dependencies each replayed their source-scoped exact units.
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 
