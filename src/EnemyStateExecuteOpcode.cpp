@@ -190,6 +190,11 @@ int EnemyState::execute_opcode() {
         field_284 = 0;
         return 0;
     }
+    // Native case 89 / opcode 539 obtains the active Context's LaserController
+    // and resets its intrusive laser list; this opcode consumes no operands.
+    case 539:
+        context->laser_controller()->reset_all_lasers();
+        return 0;
     // Native case 120 / opcode 575 captures Player zero before reading the
     // operand, then invokes the bit-10 setter on that saved receiver. The
     // setter consumes the complete 32-bit word.

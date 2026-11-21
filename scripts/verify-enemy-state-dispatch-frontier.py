@@ -122,6 +122,7 @@ def main() -> None:
         566:(112,0x00491CE5,0x00491D39,[0x004AB080,0x0045D650,0x0040C300,0x0049C340]),
         563:(109,0x00490C38,0x00490D19,[0x004AB080,0x0041CAF0,0x00497CC0,0x004AB080,0x0041CAF0,0x00497CC0]),
         564:(110,0x00490D19,0x00490D90,[0x00499330,0x0041CAF0,0x00497C60]),
+        552:(98,0x0049412F,0x00494170,[0x004AB080]),
     }
     for opcode,(index,start,end,expected_calls) in control_cases.items():
         assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
@@ -153,6 +154,8 @@ def main() -> None:
     frontend_cases={
         516:(66,0x00493F3F,0x00493F8E,[0x00499350,0x004AB080,0x00426EB0]),
         519:(69,0x0049407F,0x004940AA,[0x00478160,0x00499110]),
+        527:(77,0x004909C0,0x00490A69,[0x004AAFB0,0x004AB080,0x00498F50,0x0040FF90,0x004AB080,0x0049C9C0]),
+        534:(80,0x00495773,0x0049579E,[0x004AB080,0x0049C720]),
     }
     for opcode,(index,start,end,expected_calls) in frontend_cases.items():
         assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
@@ -199,6 +202,7 @@ def main() -> None:
 
     time_cases={
         538:(84,0x00494483,0x004944C7,[0x004AB080]),
+        539:(85,0x0049579E,0x004957BC,[0x0041CA90,0x004D2430]),
         540:(86,0x004957BC,0x00495860,[0x004AB080,0x004AB080]),
         541:(87,0x004958A2,0x004958C3,[0x004AAFB0,0x004292A0]),
         542:(88,0x0049598E,0x00495A9A,[0x004AB080]*4+[0x004640A0]*3+[0x0049CC30]),
@@ -285,17 +289,23 @@ def main() -> None:
     assert 'session.field_70_is_two()' in pattern
     assert 'state.pattern.drop(origin, bomb_mark)' in pattern
     control_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',control)]
-    assert set(control_labels)=={500,501,504,505,511,512,513,515,526,535,543,544,546,547,557,558,559,563,564,566},control_labels
+    assert set(control_labels)=={500,501,504,505,511,512,513,515,526,535,543,544,546,547,552,557,558,559,563,564,566},control_labels
     management_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',management)]
     assert set(management_labels)=={520,525,545,565,573},management_labels
     assert 'result = -1;' in management
     frontend_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',frontend_source)]
-    assert set(frontend_labels)=={516,519},frontend_labels
+    assert set(frontend_labels)=={516,519,527,534},frontend_labels
     assert 'result = -1;' in frontend_source
+    case527=frontend_source[frontend_source.index('case 527:'):frontend_source.index('case 534:')]
+    assert case527.index('float_argument(1)') < case527.index('integer_argument(2)') < case527.index('state.health.field_04') < case527.index('integer_argument(0)') < case527.index('state.field_270') < case527.index('set_boss_gauge')
+    case534=frontend_source[frontend_source.index('case 534:'):frontend_source.index('case 519:')]
+    assert case534.index('integer_argument(0)') < case534.index('set_field_180')
+    assert 'state.context->laser_controller()->reset_all_lasers()' in time_source
+    assert 'case 552:' in control and '((value & 1u) << 3)' in control
     card_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',card_source)]
     assert set(card_labels)=={523,536,537,561,562},card_labels
     time_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',time_source)]
-    assert set(time_labels)=={538,540,541,542,574},time_labels
+    assert set(time_labels)=={538,539,540,541,542,574},time_labels
     dynamic_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',dynamic)]
     assert {529,530,570,571}.issubset(set(dynamic_labels)),dynamic_labels
     for source in (root,movement,pattern,control,dynamic,management,time_source,card_source,frontend_source,flags_clear,screen):
@@ -335,20 +345,20 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge 527/534, laser reset 539, bit flag 552, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
-    print('PASS original compressed dispatch pointers and ordered E8 maps for all 20 bounds/health/controller/state cases (1,759B/360 heads/51 calls)')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for all 21 bounds/health/controller/state cases (1,824B/373 heads/52 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for animation flag cases 502/503 (2,944B/592 instructions/8 calls)')
     print('PASS original compressed dispatch pointer and ordered E8 map for ScreenInf opcode 517 (99B/25 instructions/4 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for controller selection/clear 520/525/545/565/573 (289B/65 heads/17 calls)')
-    print('PASS original compressed dispatch pointers and ordered E8 maps for timer/mode/time 538/540/541/542/574 (594B/123 heads/14 calls)')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for timer/mode/time 538/539/540/541/542/574 (624B/130 heads/16 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for card/health 523/536/537/561/562 (235B/52 heads/11 calls)')
-    print('PASS original compressed dispatch pointers and ordered E8 maps for sound/dialogue 516/518/519 (122B/28 heads/5 calls)')
+    print('PASS original compressed dispatch pointers and ordered E8 maps for front sound/gauge 516/519/527/534 (334B/74 heads/13 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 20 control/state cases, five controller selection/clear cases, five timer/mode/time cases, five card/health cases, three sound/dialogue cases, two global-owner cases, four dynamic parameter cases and 18 opcode fragments wired')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, four front sound/gauge cases, two global-owner cases, four dynamic parameter cases and 22 opcode fragments wired')
     print('PASS all eighteen i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
