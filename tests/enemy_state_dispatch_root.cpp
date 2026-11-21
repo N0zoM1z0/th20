@@ -4,6 +4,8 @@
 #include "DiagnosticAllocator.hpp"
 #include "LockRegistry.hpp"
 #include "EnemyStateMovementOpcode.hpp"
+#include "EnemyStatePatternOpcode.hpp"
+#include "Session.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
@@ -29,10 +31,17 @@ GameRandom script_random(1);
 DiagnosticAllocator* process_allocator = nullptr;
 LockRegistry process_locks;
 std::int32_t defeat_result = 0;
+bool pattern_drop_called = false;
+bool pattern_drop_bomb_mark = false;
+Vector3 pattern_drop_origin{};
 std::int32_t enemy_script_globals[4]{};
-EnemyController* enemy_controller(std::int32_t) { return nullptr; }
 Enemy::~Enemy() = default;
 std::int32_t Enemy::defeat() { return defeat_result; }
+void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
+    pattern_drop_called = true;
+    pattern_drop_bomb_mark = bomb_mark;
+    pattern_drop_origin = origin;
+}
 std::int32_t Enemy::read_integer(std::int32_t) { return 0; }
 float Enemy::read_float(std::int32_t) { return 0.0f; }
 Player* Context::player() { return nullptr; }
@@ -106,5 +115,57 @@ int main() {
     assert(enemy.state.execute_opcode() == 1);
     defeat_result = 0;
 
-    std::cout << "PASS whole-root dispatch for movement opcodes 400/404/424/448 and special opcode 560 return\n";
+    enemy.state.pattern.counts.fill(9);
+    enemy.state.pattern.extra_counts.fill(7);
+    enemy.state.pattern.duration = 99;
+    set_packet(506, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    for (const auto value : enemy.state.pattern.counts) assert(value == 0);
+    assert(enemy.state.pattern.duration == 0);
+
+    set_packet(507, {1,17,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.pattern.counts[0] == 17);
+    set_packet(567, {2,23,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.pattern.extra_counts[1] == 23);
+    set_packet(568, {77,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.pattern.duration == 77);
+    set_packet(572, {4,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.pattern.bomb_kind == 4);
+    set_packet(508, {bits(-3.5f),bits(9.25f),0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.pattern.radius_x == -3.5f);
+    assert(enemy.state.pattern.radius_y == 9.25f);
+    set_packet(510, {6,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.pattern.base_kind == 6);
+
+    session.field_70 = 2;
+    enemy.state.pattern.counts[0] = 123;
+    pattern_drop_called = false;
+    set_packet(509, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.pattern.counts[0] == 123);
+    assert(!pattern_drop_called);
+
+    session.field_70 = 1;
+    enemy.state.flags.word_08 = 1u << 5;
+    enemy.state.motion_110.position = {3.0f,4.0f,5.0f};
+    pattern_drop_called = false;
+    set_packet(509, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(pattern_drop_called && pattern_drop_bomb_mark);
+    assert(pattern_drop_origin.x == 3.0f && pattern_drop_origin.y == 4.0f && pattern_drop_origin.z == 5.0f);
+
+    session.field_70 = 2;
+    enemy.state.flags.word_08 = 0;
+    pattern_drop_called = false;
+    set_packet(556, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(pattern_drop_called && !pattern_drop_bomb_mark);
+
+    std::cout << "PASS root dispatch: movement 400/404/424/448, pattern 506-510/556/567/568/572, two-player 509 gate and special 560 return\n";
 }

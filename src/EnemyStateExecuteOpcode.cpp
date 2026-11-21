@@ -5,6 +5,7 @@
 #include "Enemy.hpp"
 #include "EclRuntime.hpp"
 #include "EnemyStateMovementOpcode.hpp"
+#include "EnemyStatePatternOpcode.hpp"
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
@@ -33,6 +34,8 @@ int EnemyState::execute_opcode() {
     // one natural C++ switch because the native root shares movement records,
     // interpolation lifetimes and combine_movements boundaries throughout.
     if (execute_enemy_movement_opcode(*this, opcode))
+        return 0;
+    if (execute_enemy_pattern_opcode(*this, opcode))
         return 0;
 
     // Independently reconstructed inline case families. Each helper returns

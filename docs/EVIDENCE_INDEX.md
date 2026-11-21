@@ -294,7 +294,8 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [natural-C++ 632 borrowed ECL script pointer fragment](ENEMY_41967_632_SCRIPT_POINTER_SOURCE_FRONTIER.md),
   [natural-C++ 621 EnemyMeshOwner/RenderMesh lifecycle fragment](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md),
   [natural-C++ 555 sound and AnimationFile spawn fragment](ENEMY_41967_555_ANIMATION_SPAWN_SOURCE_FRONTIER.md),
-  [natural-C++ 553/554 Context/controller setter fragments](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md).
+  [natural-C++ 553/554 Context/controller setter fragments](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md),
+  [natural-C++ EnemyPattern opcodes 506/507/508/509/510/556/567/568/572 and 621B/136-head native case map](ENEMY_41967_PATTERN_506_510_556_567_568_572_SOURCE_FRONTIER.md),.
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).
 - **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**

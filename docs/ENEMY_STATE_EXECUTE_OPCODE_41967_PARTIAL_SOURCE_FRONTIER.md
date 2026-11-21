@@ -4,7 +4,8 @@ The original `EnemyState::execute_opcode` root at `0x0048C010` is 41,967
 bytes. It is still **NONEXACT** and its full original inline switch has not
 been recovered. This checkpoint changes the status from source-absent to a
 real maintained C++ entry point and restores the complete contiguous native
-movement opcode family 400–448 as a separate natural source fragment.
+movement opcode family 400–448 plus nine EnemyPattern opcode cases as natural
+source fragments.
 
 ## New maintained source
 
@@ -17,6 +18,10 @@ movement opcode family 400–448 as a separate natural source fragment.
   family 400–448, extracted from the previously exercised whole-root semantic
   draft and expressed as ordinary C++ over the real `EnemyState`, `Motion`,
   interpolation, player, and random owners.
+- `src/EnemyStatePatternOpcode.cpp` restores the nine native EnemyPattern
+  cases 506/507/508/509/510/556/567/568/572. They call the maintained real
+  `EnemyPattern` setters and exact `drop` protocol; opcode 509 preserves its
+  two-player Session guard before touching the Enemy or Pattern owners.
 - The root now also routes to the maintained phase, card-start, controller
   setter, fog, membership, mesh, animation-spawn, queued-shot, script-pointer,
   shot-fire, shot-command, laser-parameter, and laser-creation opcode fragments.
