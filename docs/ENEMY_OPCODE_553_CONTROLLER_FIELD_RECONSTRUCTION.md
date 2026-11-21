@@ -63,12 +63,15 @@ The full Enemy creation/reset/clear test suite passes its existing publication,
 4,636 clear scenarios, and other gameplay/state checks. This is portable
 O2/UBSan corroboration, not original game runtime execution.
 
-## Remaining large-root work
+## Maintained partial-root integration and remaining large-root work
 
 Production `EnemyState::execute_opcode()` still needs its complete actual
 41,967-byte body, index/pointer/nested rank tables, exception metadata and
-compiler contribution. Opcode 553 is a confirmed constituent path and exact
-callee; its *whole-root host integration* must separately exercise the
-pre-operand cached receiver and setter effects. Opcodes 524, 539, 548/549,
-551 and 554/555 likewise remain nonexact as part of the large root. No
-partial case address span is admitted as a standalone function.
+compiler contribution. The maintained partial-root host now executes the real
+opcode-553 helper and exact `EnemyController::set_field_88` leaf. A referenced
+integer read retargets both the original Context's controller and the active
+EnemyState Context; the write still lands on the controller cached before the
+operand, and an injected operand exception leaves it unchanged. The focused
+verifier checks the original selector-99 66B/14-instruction path, its three
+ordered E8 calls and the natural-C++ COFF call order. The parent remains
+NONEXACT; no partial case span is admitted as a standalone function.

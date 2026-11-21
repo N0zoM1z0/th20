@@ -74,3 +74,17 @@ shared compiler data/EH and numerous actual unreconstructed owners remain.
 The next high-value paths are opcodes 539, 548/549, 551, 555 and native VM/
 Renderer integration. Full original game startup/linkage and playability are
 not claimed by this portable host.
+
+## Later maintained partial-root integration
+
+The production partial `EnemyState::execute_opcode` root now routes opcodes
+553/554 through `src/EnemyStateControllerSetterOpcode.cpp`. Its focused
+ASan/UBSan fixture executes the real opcode-554 helper and the real
+39-byte BulletController setter on actual placement-constructed BulletController
+owners. It verifies the complete owner byte image, Y-before-X operand order,
+Context/EnemyState retargeting after the first read, and no writes after either
+operand throws. The paired opcode-553 test verifies the cached EnemyController
+receiver and the real 25-byte EnemyData setter. Original 553/554 case selector
+and call maps, plus all seven natural-C++ helper relocations, are checked by the
+focused dispatcher verifier. These are semantic/source advances only; the
+41,967-byte Enemy root remains NONEXACT and no inline-case byte credit is added.

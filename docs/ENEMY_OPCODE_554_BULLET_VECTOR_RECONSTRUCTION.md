@@ -72,3 +72,24 @@ verification does not upgrade the whole root to machine-code exactness.
 Renderer, Bullet VM, whole root compiler tables and callback/resource paths
 remain open. This new 39-byte full callee does not grant any partial 41KB root
 byte credit.
+
+## Maintained partial-root opcode 554 integration
+
+The maintained partial root now executes the real
+`execute_enemy_controller_setter_opcode` helper and production
+`BulletController::set_vector_4c`. The focused ASan/UBSan fixture uses two
+placement-constructed real BulletController owners. It compares the complete
+original owner image before/after a normal setter call, allowing changes only
+to the two `vector_4c` float words. A referenced-operand case records manager
+reads `-101` then `-102`, proves Y-before-X, retargets both the original
+Context's BulletController and `EnemyState::context` during the first read,
+and verifies that only the originally cached owner receives `(12.5,-7.25)`.
+Injected failures at either operand prevent writes to both owners.
+
+The focused dispatcher verifier checks the original 106B/22-instruction
+selector-100 branch, all four ordered E8 targets, and the pinned i386 COFF
+helper's seven-call sequence across opcodes 553/554. Affected-only strict
+replays passed BulletController **12/12** (including the setter 39/39), Bullet
+**2/2**, BulletValues **3/3**, and Context **3/3**. This improves maintained
+root semantics only; the 41,967B parent remains NONEXACT and no inline case
+bytes are separately credited. No full cold replay was run.

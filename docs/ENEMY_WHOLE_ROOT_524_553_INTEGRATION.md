@@ -88,7 +88,13 @@ portable behavior tests. Production Enemy opcode dispatch is still undefined;
 there is **no partial root byte credit**. Authored exact count remains
 **211 complete functions / 56,583 bytes**, with **997** strict exact units.
 
-Further priorities: original paths 539, 548/549, 551, 554/555, and resolving
-the full root's 174-head primary index plus its four nested rank tables,
-shared compiler-owned EH and data contributions. The host must remain a
-single complete-root candidate throughout.
+This CORE173 private complete-root experiment is historical. The maintained
+partial production root now also routes 553/554 through the real controller
+setter helper; its focused ASan/UBSan fixture verifies cached Context receivers,
+full-word EnemyData writes, Y-before-X BulletVector updates, Context retargeting
+and operand failures. The helper's original 66B/106B case maps and seven E8
+calls are independently checked, and the actual EnemyData/BulletController
+setters replay exact in their affected source objects. This does not promote
+the private CORE173 candidate or maintained 41,967B root to byte exactness.
+Other inline paths, the 174-head primary index, four nested rank tables,
+shared compiler-owned EH and data contributions remain open.

@@ -170,6 +170,21 @@ source fragments.
   executes the actual helper and constructors, capturing the final owner call;
   the three StageResource owner methods and six FogValue methods independently
   replay exact.
+- Native opcode `553` is a 66-byte / 14-instruction cached-EnemyController
+  setter at `0x00495860..0x004958A2`, selector index 99. It loads the live
+  Context's EnemyController before integer operand 0, then calls the real
+  `EnemyController::set_field_88` with the full 32-bit value. The root host
+  executes the production helper and 25-byte setter: operand evaluation
+  retargets both Context and EnemyState, yet only the original cached
+  controller changes; an operand exception leaves it untouched.
+- Native opcode `554` is a 106-byte / 22-instruction BulletController vector
+  setter at `0x004961D5..0x0049623F`, selector index 100. It caches the live
+  Context's BulletController before reading float operand 1 (Y) and then 0 (X),
+  and passes `(X,Y)` to the real 39-byte `BulletController::set_vector_4c`.
+  The root host constructs two real BulletController owners and executes the
+  production setter. It verifies the whole owner image changes only in the two
+  vector words, Context retargeting cannot redirect the cached receiver, and
+  exceptions on either operand prevent the write.
 - Native opcode `555` is the 388-byte / 81-instruction animation-and-sound
   Boss at `0x0048C3F4..0x0048C578`, selector index 101. Its two independent
   signed gates preserve sound-before-animation ordering. The animation path
@@ -275,7 +290,8 @@ The remaining inline cases in the original 41,967B body—including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
 additional opcode ranges—still need source recovery. Opcodes 324, 524/575,
 527/534, 539, 548, 549, 551, 552, 555 and the reserved 569 selector are now
-represented in the maintained root, but this does not close
+represented in the maintained root, including controller setter cases
+553/554, but this does not close
 their surrounding switch tables or the dispatcher as a whole. Unknown opcodes currently
 fall through the provisional zero return and must not be treated as proven
 native no-ops. The 41,967-byte root remains NONEXACT and has no whole-root match
@@ -303,6 +319,15 @@ scripts/compile-probe.sh src/EnemyStateControlOpcode.cpp build/core211-canonical
 scripts/compile-probe.sh src/EnemyStateDynamicParameterOpcode.cpp build/core212-canonical/EnemyStateDynamicParameterOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 scripts/compile-probe.sh src/EnemyStateExecuteOpcode.cpp build/core209-canonical/EnemyStateExecuteOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 ```
+
+The latest focused dispatcher pass now compiles **25** locked-profile i386
+COFF units and executes the production 553/554 helper paths under ASan/UBSan.
+The actual EnemyData and BulletController setters are used, not test stubs.
+Affected-only strict replays passed EnemyData **5/5**, BulletController **12/12**,
+Bullet **2/2**, BulletValues **3/3** and Context **3/3**. The 553/554 native
+case maps add 172 bytes / 36 instructions / seven ordered E8 calls; the
+compiled helper's seven COFF relocations are also checked in order. No full
+cold replay or whole-root byte credit is claimed.
 
 No assembly, byte padding, or synthetic instruction sequences are used. The
 next major step is to restore and test the remaining inline case families in
