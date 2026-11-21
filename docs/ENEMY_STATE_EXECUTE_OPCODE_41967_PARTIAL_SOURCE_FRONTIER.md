@@ -64,6 +64,13 @@ source fragments.
   HUD, while the original class/source owner remains unknown. Both flag leaves
   have strict byte/relocation matches, but their original source origins remain
   unclassified and no authored-byte credit is claimed.
+- Native switch case `0x43` / opcode 517 now creates a mode-1 ScreenInf by
+  reading integer operands 2, 1 and 0 in that order, then calling the existing
+  exact 81-byte `screen_factory_4250f0` with those values as parameters 1/2/3
+  and zero for parameter 4, priority and view. The native 99-byte case block,
+  selector/pointer entry and four ordered E8 targets are verified; no callee
+  bytes are re-credited. See
+  [the opcode-517 ScreenInf fragment](ENEMY_OPCODE_517_SCREEN_EFFECT_SPAWN_FRONTIER.md).
 - Native switch case `3` (opcode 306) now reconstructs the second animation
   creation path. It uses integer operands 0/1 as link index/script, retires and
   replaces the PMR link with a flag-2 animation, refreshes dimensions and
@@ -232,3 +239,13 @@ separate strict-exact leaf; the root and its inline opcode cases are still
 NONEXACT. `scripts/verify-enemy-state-dispatch-frontier.py` checks the native
 1,472-byte case ranges, selector and jump-table entries, ordered call maps,
 source routing, i386 compilation, and the three opcode-503 runtime conditions.
+
+## ScreenInf opcode 517
+
+The 99-byte native case at `0x00493F8E` reads ECL operands 2/1/0, then creates
+a mode-1 ScreenInf through the already whole-exact 81-byte factory at
+`0x004250F0`, passing operands 0/1/2 and three trailing zero values. The
+maintained helper uses explicit sequential reads and preserves the native
+argument order. The focused verifier checks the native selector and pointer,
+all 25 instructions and the four E8 targets; its host fixture checks the
+resulting factory arguments. The 41,967-byte dispatcher remains NONEXACT.

@@ -2,6 +2,7 @@
 // dispatcher at 0x0048C010. The opcode families below have independently
 // reconstructed source fragments; the remaining inline cases are still open.
 #include "EnemyState.hpp"
+#include "EnemyStateScreenOpcode.hpp"
 #include "AnimationHandleSetFlag0Recursive.hpp"
 #include "Enemy.hpp"
 #include "Context.hpp"
@@ -172,6 +173,8 @@ int EnemyState::execute_opcode() {
         return execute_enemy_animation_flags_add_opcode(*this);
     case 503:
         return execute_enemy_animation_flags_clear_opcode(*this);
+    case 517:
+        return execute_enemy_screen_effect_spawn_opcode(*this);
     default:
         break;
     }

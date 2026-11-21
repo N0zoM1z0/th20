@@ -55,6 +55,9 @@ std::int32_t front_dialogue_ready_calls = 0;
 std::int32_t animation_flags_add_calls = 0;
 std::int32_t animation_flag0_set_calls = 0;
 std::array<std::uint32_t,8> animation_flag0_set_handles{};
+std::int32_t screen_factory_calls = 0;
+std::int32_t screen_factory_mode = -1;
+std::array<std::uint32_t,6> screen_factory_arguments{};
 std::uint32_t current_enemy_generation = 1, previous_enemy_generation = 0;
 bool pattern_drop_called = false;
 bool pattern_drop_bomb_mark = false;
@@ -94,6 +97,16 @@ void SoundInf::request_effect_at(std::int32_t id, float x) {
 FrontInf* current_front = nullptr;
 AnimationPoolOwner test_animation_pool;
 AnimationPoolOwner* current_animation_pool = &test_animation_pool;
+struct NativeScreenInf;
+NativeScreenInf* screen_factory_4250f0(std::int32_t mode,
+    std::uint32_t p1, std::uint32_t p2, std::uint32_t p3, std::uint32_t p4,
+    std::int32_t priority, std::uint32_t view) {
+    ++screen_factory_calls;
+    screen_factory_mode = mode;
+    screen_factory_arguments = {p1, p2, p3, p4,
+        static_cast<std::uint32_t>(priority), view};
+    return nullptr;
+}
 HudGauge::HudGauge() = default;
 FrontBossPanel::FrontBossPanel() noexcept = default;
 FrontFlags::FrontFlags() noexcept = default;
@@ -370,6 +383,18 @@ int main() {
     assert(enemy.state.flags.word_00 == 0xa5ff3fdfu);
     assert(animation_flag0_set_calls == 2);
     enemy.state.animations.clear();
+
+    // Native opcode 517 reads operands 2/1/0 in that order, then passes
+    // them as ScreenInf factory parameters 1/2/3 with all trailing values 0.
+    screen_factory_calls = 0;
+    screen_factory_mode = -1;
+    screen_factory_arguments = {};
+    set_packet(517, {0x11u,0x22u,0x33u,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(screen_factory_calls == 1 && screen_factory_mode == 1);
+    assert((screen_factory_arguments == std::array<std::uint32_t,6>{
+        0x11u,0x22u,0x33u,0u,0u,0u}));
+
     set_packet(543, {1,0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0 && (enemy.state.flags.word_04 & 0x8000u));
     set_packet(544, {9,0,0,0,0,0,0,0});
@@ -573,5 +598,5 @@ int main() {
         assert(enemy.state.counters.field_10 == 11.5f + selector);
     }
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound/dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/540/541/542/574, card/health 523/536/537/561/562, sound/dialogue 516/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
