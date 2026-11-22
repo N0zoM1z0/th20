@@ -76,7 +76,7 @@ The false-returning root-test stub is removed. The production helper is
 included in `HOST_SOURCES` and the locked-profile COFF compile list; the
 native opcode verifier is invoked by the maintained root verifier. The
 focused root host passes under ASan/UBSan, and the root verifier compiles
-**39 locked-profile i386 COFF source units** and 105 focused host sources. See the dedicated
+**40 locked-profile i386 COFF source units** and 105 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -123,7 +123,7 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **39 locked-profile i386
+The maintained root verifier currently compiles **40 locked-profile i386
 COFF units** and runs 105 focused host source units under ASan/UBSan, including
 opcodes 617, 618 and 620. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)

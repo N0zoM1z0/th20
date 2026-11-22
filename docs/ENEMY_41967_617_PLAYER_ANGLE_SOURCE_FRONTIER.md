@@ -97,7 +97,7 @@ The COFF checks separately confirm the Context +4 accessor and Player +0x614
 position view. The ASan/UBSan root host tests the real Player fixture, live
 Context retargeting between operands, the direct atan2 coincident-point result,
 and second-operand exception preservation. The maintained dispatcher
-verifier compiles **39 locked-profile i386 COFF source units** and executes
+verifier compiles **40 locked-profile i386 COFF source units** and executes
 **105 focused host source units**. No full cold replay was run.
 
 The opcode remains an inline fragment only. No standalone function unit,
