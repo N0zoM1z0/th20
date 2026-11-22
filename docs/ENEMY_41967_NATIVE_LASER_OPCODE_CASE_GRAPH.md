@@ -51,6 +51,16 @@ are checked. See the 609–612 source frontier.
 
 **Additional maintained source frontier (CORE/RECON-1149):** original opcode 614 now has natural-C++ source in `src/EnemyStateQueueCopyOpcode.cpp`, preserving destination-then-source queue growth and the accepted 119B whole-record assignment. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 614 source frontier](ENEMY_41967_614_QUEUE_COPY_SOURCE_FRONTIER.md).
 
+**Maintained root-host execution update (CORE/RECON-1249):** opcode 614 now
+runs the production helper in the ASan/UBSan root host with the real PMR
+forward_list and exact 119B EnemyQueuedRecord assignment. Full record and
+shared metadata ownership, self-assignment, destination/source growth and a
+second-operand exception before mutation are tested. The verifier checks the
+original 572B/129-head/19-E8 case and ordered natural-C++ COFF calls; the
+assignment leaf replays 1/1 exact. The 41,967B parent remains NONEXACT. See
+the 614 queue-copy source frontier.
+
+
 **Additional maintained source frontier (CORE/RECON-1150):** original opcode 632 now has natural-C++ source in `src/EnemyStateScriptPointerOpcode.cpp`, storing the borrowed pointer to `EclInstruction + 0x1C` in the actual `BulletCommand::script` field. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 632 source frontier](ENEMY_41967_632_SCRIPT_POINTER_SOURCE_FRONTIER.md).
 
 **Additional maintained source frontier (CORE/RECON-1151):** original opcode 621 now has natural-C++ source in `src/EnemyStateMeshOpcode.cpp`, restoring the real EnemyMeshOwner release/allocation lifecycle and conditional 17x17 RenderMesh factory. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 621 source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md).

@@ -24,3 +24,32 @@ The final call is the already accepted whole-exact **119B `EnemyQueuedRecord::op
 `src/EnemyStateQueueCopyOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. `scripts/verify-enemy-queue-copy-opcode-source.py` checks the immutable original branch hash, 572B/129-instruction/19-E8 counts, original target multiset, both operand reads before mutation, destination-before-source growth, two independent advances and final typed copy assignment.
 
 This is a source fragment, not a standalone original function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.
+
+## Maintained root-host execution closure — CORE/RECON-1249
+
+The maintained ASan/UBSan Enemy dispatcher host previously returned false
+from a test-only execute_enemy_queue_copy_opcode stub. CORE/RECON-1249 removes
+that stub and links the real 614 helper plus the existing whole-exact
+EnemyQueuedRecord::operator= source.
+
+The root test exercises the actual std::pmr::forward_list<EnemyQueuedRecord>
+owned by EnemyState and the actual 119B typed copy assignment. It verifies
+the full record: shared_ptr<ShotMetadata> ownership, every ShotParameters
+field, field_30, and both Vector3 values. The source metadata owner and its
+BulletCommand vector remain shared and unchanged; the destination's previous
+owner is released. Same-index self-assignment preserves the original owner
+count. Separate cases exercise destination growth and source growth.
+
+A referenced second-operand exception is injected after the first VM index
+has been read. The helper must leave the original two-node queue and both
+record images untouched, proving both indexes are read before either resize.
+The verifier independently rechecks the immutable native 572B / 129-head /
+19-E8 case and the natural-C++ COFF call sequence: two integer reads,
+destination end/begin/distance/resize, source end/begin/distance/resize,
+independent iterator advances/dereferences, and the final typed assignment.
+
+The maintained root verifier now compiles 33 locked-profile i386 COFF
+source units and executes the helper under ASan/UBSan. The existing
+EnemyQueuedRecord assignment was replayed affected-only: 1/1 exact,
+119/119 bytes. No full cold replay, standalone-function mapping or
+41,967B parent byte credit is claimed.

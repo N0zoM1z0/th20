@@ -80,6 +80,12 @@ canonically accepted.
   selection; the factory remains a capture-only test boundary. Their 2,699B /
   607-head / 62-E8 native maps and 47 ordered COFF relocations are checked
   (CORE/RECON-1247).
+  The 572B opcode-614 queue-copy branch is now also executed in the root
+  host with the real PMR forward_list and exact 119B typed record assignment.
+  Full record/shared metadata ownership, self-copy, both growth paths and
+  second-operand exception-before-mutation are covered; the original
+  572B/129-head/19-E8 case and ordered COFF calls are verified. The assignment
+  leaf replays 1/1 exact (CORE/RECON-1249).
   The 346B opcode-621 mesh lifecycle is now also executed in the root host
   with real allocator templates and EnemyMeshOwner release; zero/negative/
   positive radius and operand-exception order are covered. RenderMesh

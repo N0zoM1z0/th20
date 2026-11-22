@@ -103,6 +103,16 @@ is strict exact. LaserParameters replays 12/12 and LaserFactory 1/1; the root
 verifier compiles 32 locked-profile COFF units and checks 47 ordered helper
 relocations. See CORE/RECON-1247 in the Laser opcode source frontier.
 
+The 572B Enemy ECL opcode 614 queue-copy branch is now executed in the
+maintained ASan/UBSan root host rather than a false-returning stub. The
+production PMR forward_list helper and actual 119B EnemyQueuedRecord
+assignment run; tests cover full-record/shared_ptr ownership, self-copy,
+destination/source growth, and a second-operand exception before mutation.
+The verifier checks the original 572B/129-head/19-E8 branch and the ordered
+natural-C++ COFF call sequence. The exact assignment leaf replays 1/1
+(119/119B). The 41,967B parent remains NONEXACT; see CORE/RECON-1249 in the
+614 queue-copy frontier.
+
 The 346B Enemy ECL opcode 621 mesh-owner branch is now executed in the
 maintained ASan/UBSan root host rather than a false-returning stub. The real
 allocator allocate/release templates and EnemyMeshOwner destructor run;

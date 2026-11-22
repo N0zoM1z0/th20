@@ -185,6 +185,13 @@ source fragments.
   production setter. It verifies the whole owner image changes only in the two
   vector words, Context retargeting cannot redirect the cached receiver, and
   exceptions on either operand prevent the write.
+- Native opcode 614 is the 572-byte / 129-instruction queued-record
+  copy branch at 0x004925C7, with 19 original E8 calls. The maintained
+  ASan/UBSan root host executes the production helper, actual PMR forward_list
+  and exact 119B EnemyQueuedRecord assignment. Full 76B record/metadata-owner
+  copy, self-assignment, destination and source growth, and a second-operand
+  exception before mutation are tested. The assignment leaf replays 1/1
+  exact; the 41,967B parent remains NONEXACT.
 - Native opcode 621 is the 346-byte / 70-instruction mesh-owner lifecycle
   branch at 0x00495A9A, with seven original E8 calls. The ASan/UBSan root host
   executes the production helper, real DiagnosticAllocator allocation/release
