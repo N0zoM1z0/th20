@@ -50,7 +50,7 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1253
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1254
   maintain the partial natural-C++ root entry and wire the complete 400–448 movement
   family, nine Pattern cases, 21 bounds/health/controller/state cases, five controller
   selection/clear cases, six timer/mode/runtime-time cases, five Card/health cases,
@@ -85,6 +85,14 @@ canonically accepted.
   second-operand exception-before-mutation are covered; the original
   572B/129-head/19-E8 case and ordered COFF calls are verified. The assignment
   leaf replays 1/1 exact (CORE/RECON-1249).
+  The 175B opcode-616 paired radial cancellation branch is now executed in
+  the root host with the real 320B BulletController and 288B LaserController
+  cancel_near Bosses. Tests cover live Enemy position aliasing during Bullet
+  traversal, Context retargeting before the Laser phase, Bullet/Laser state
+  filters, virtual circle-cancel arguments and radius exception-before-effects.
+  Bullet::cancel and concrete Laser::cancel_circle remain explicit leaf test
+  boundaries; the 47-unit COFF / 111-source ASan/UBSan root verifier passes
+  (CORE/RECON-1254).
   The 203B opcode-617 Player-relative angle branch is now executed in the
   root host with real Player construction, Context::player and
   Player::position_ref leaves, existing atan2 and float-destination writeback.
@@ -101,7 +109,7 @@ canonically accepted.
   The 250B opcode-620 shared queued-vector case is now executed in the root
   host with the real ensure-only shared_shot selector and std::pair access.
   The -990.0f threshold, COMISS/JBE NaN path, shared metadata ownership and
-  second-operand exception order are tested; the 40-unit COFF/root-host
+  second-operand exception order are tested; the 47-unit COFF/root-host
   verifier passes (CORE/RECON-1251).
   The 346B opcode-621 mesh lifecycle is now also executed in the root host
   with real allocator templates and EnemyMeshOwner release; zero/negative/

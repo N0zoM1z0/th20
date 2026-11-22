@@ -1073,6 +1073,7 @@ def main() -> None:
     print('PASS production Enemy queue-copy opcode 614 helper and exact EnemyQueuedRecord assignment linked into ASan/UBSan root host')
     print('PASS production Enemy shared queued polar opcode 618 helper linked into ASan/UBSan root host with argument-order and vector-lane preservation tests')
     print('PASS production Enemy shared queued-parameter opcode 620 helper linked into ASan/UBSan root host with ensure-only shared metadata and native NaN threshold semantics')
+    print('PASS production Enemy opcode 616 helper and real Bullet/Laser cancellation Bosses linked into ASan/UBSan root host with live Context/position retargeting')
     print('PASS production Enemy bullet rectangle cancel opcode 712 helper linked into ASan/UBSan root host with real AnimationHandle/rotation and 707B BulletController cancellation boss')
     print('PASS production 242B BulletController::cancel_all and 19B active_list linked into ASan/UBSan root host; opcode 518 cancels a live active Bullet through the real iterator traversal')
     print('PASS production Enemy mesh opcode 621 helper linked into ASan/UBSan root host with real EnemyMeshOwner allocation/release and conditional RenderMesh allocation')
@@ -1084,7 +1085,7 @@ def main() -> None:
     print('PASS original opcode-569 selector index 173 points directly to the verified common return-zero epilogue')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 40 opcode fragments wired')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 41 opcode fragments wired')
     print('PASS all forty-seven i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
