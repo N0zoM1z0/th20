@@ -507,9 +507,14 @@ def main() -> None:
     laser_source_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-laser-opcode-source.py')],
         cwd=ROOT,check=True,text=True,capture_output=True)
-    for opcode,heads,calls in ((702,153,15),(703,176,16),(711,141,15),(713,137,16)):
+    laser_case_counts=((702,682,153,15),(703,787,176,16),(711,619,141,15),(713,611,137,16))
+    for opcode,byte_count,heads,calls in laser_case_counts:
         assert f'PASS original opcode {opcode}: {heads} CFG heads, {calls} E8' in laser_source_audit.stdout
+    assert sum(row[1] for row in laser_case_counts)==2699
+    assert sum(row[2] for row in laser_case_counts)==607
+    assert sum(row[3] for row in laser_case_counts)==62
     print(laser_source_audit.stdout,end='')
+    print('PASS native Laser case family totals: 2699B / 607 instruction heads / 62 E8 calls')
 
     shot_source_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-shot-command-opcode-source.py')],
