@@ -192,6 +192,15 @@ source fragments.
   copy, self-assignment, destination and source growth, and a second-operand
   exception before mutation are tested. The assignment leaf replays 1/1
   exact; the 41,967B parent remains NONEXACT.
+- Native opcode 618 is the 243-byte / 55-instruction shared queued-polar
+  update at 0x00492BC6, selector index 136, with ten original E8 calls.
+  The maintained root host executes the production helper, real ensure-only
+  shared_shot, pair extraction, Vector3 constructor and existing polar leaf.
+  Integer/float/float argument order, +0x34/+0x38 XY stores, Z/vector_40
+  preservation, shared metadata ownership and second-float exception before
+  queue growth are checked under ASan/UBSan. See the
+  [opcode-618 source frontier](ENEMY_41967_618_SHARED_QUEUED_POLAR_SOURCE_FRONTIER.md).
+  The 41,967B parent remains NONEXACT; no standalone unit or byte credit.
 - Native opcode 620 is the 250-byte / 57-instruction shared queued-vector
   update at 0x00492D4D, selector index 138, with eight original E8 calls.
   The maintained root host executes the production helper and real
@@ -354,7 +363,7 @@ function bodies; no duplicate byte credit is assigned.
 The remaining inline cases in the original 41,967B body, including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
 additional opcode ranges, still need source recovery. The maintained root now
-also represents 609/610/611/612, 614, 620, 621, 702/703/711/712/713 and
+also represents 609/610/611/612, 614, 618, 620, 621, 702/703/711/712/713 and
 800/801/802, alongside 324, 524/575, 527/534, 539, 548, 549, 551, 552,
 553/554, 555 and reserved selector 569. These fragments do not close their
 surrounding switch tables or the dispatcher as a whole. Unknown opcodes
@@ -389,8 +398,8 @@ The maintained dispatcher verifier currently compiles **36** locked-profile
 i386 COFF source units and executes the root-host case families under
 ASan/UBSan. Its focused native checks include the 609-612 shared
 1,457B/314-instruction/29-E8 branch, the 614 572B/129-instruction/19-E8
-queue-copy branch, the 620 250B/57-instruction/8-E8 shared queued-vector
-branch, the 621 346B/70-instruction/7-E8 mesh branch, the four Laser branches
+queue-copy branch, the 618 243B/55-instruction/10-E8 shared queued-polar
+branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the four Laser branches
 (2,699B/607 CFG heads/62 E8), the 712 196B/42-instruction/9-E8
 rectangle-cancel branch, and the 800-802 script-control branches
 (627B/128 instructions/25 E8). It also checks the 553/554 setter maps and

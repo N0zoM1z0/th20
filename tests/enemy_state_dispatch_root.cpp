@@ -1373,6 +1373,75 @@ int main() {
     enemy.state.queued.clear();
     metadata_owner_620.reset();
 
+    // Native opcode 618 reads selector/direction/length first, then obtains
+    // the shared queued record, constructs a temporary Vector3, computes the
+    // polar XY pair and publishes only those two lanes. The existing Z lane
+    // and shared metadata owner must remain untouched.
+    enemy.state.queued.clear();
+    auto& queued_record_618 = enemy.state.queued.emplace_front();
+    auto metadata_owner_618 = std::make_shared<ShotMetadata>();
+    queued_record_618.owner = metadata_owner_618;
+    queued_record_618.vector_34 = {11.0f,22.0f,33.0f};
+    queued_record_618.vector_40 = {44.0f,55.0f,66.0f};
+    auto* const metadata_pointer_618 = metadata_owner_618.get();
+    const float pi_half_618 = std::acos(-1.0f) * 0.5f;
+    dispatch_integer_read_calls = 0;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {pi_half_618,2.0f};
+    dispatch_float_read_hook = &observe_float_read;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(618, {0,bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 6);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_read_trace_enabled = false;
+    dispatch_float_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 0); // selector 0 is an immediate operand
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'f' && dispatch_read_indices[0] == -101);
+    assert(dispatch_read_kinds[1] == 'f' && dispatch_read_indices[1] == -102);
+    assert(std::fabs(queued_record_618.vector_34.x) < 0.00001f);
+    assert(std::fabs(queued_record_618.vector_34.y - 2.0f) < 0.00001f);
+    assert(queued_record_618.vector_34.z == 33.0f);
+    assert(queued_record_618.vector_40.x == 44.0f &&
+           queued_record_618.vector_40.y == 55.0f &&
+           queued_record_618.vector_40.z == 66.0f);
+    assert(queued_record_618.owner.get() == metadata_pointer_618);
+    assert(metadata_owner_618.use_count() == 2);
+
+    // Both VM float reads precede shared_shot. If the second operand throws,
+    // the queue must remain empty and no metadata owner may be allocated.
+    enemy.state.queued.clear();
+    dispatch_integer_read_calls = 0;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {pi_half_618,2.0f};
+    dispatch_float_throw_at = 2;
+    dispatch_float_read_hook = &throw_during_float_read;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(618, {0,bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 6);
+    bool queued_polar_second_float_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { queued_polar_second_float_threw = value == 554; }
+    dispatch_read_trace_enabled = false;
+    dispatch_float_read_hook = nullptr;
+    dispatch_float_throw_at = 0;
+    assert(queued_polar_second_float_threw);
+    assert(dispatch_integer_read_calls == 0 && dispatch_float_read_calls == 2);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'f' && dispatch_read_indices[0] == -101);
+    assert(dispatch_read_kinds[1] == 'f' && dispatch_read_indices[1] == -102);
+    assert(enemy.state.queued.empty());
+    assert(metadata_owner_618.use_count() == 1);
+    metadata_owner_618.reset();
+
     // Native opcode 712 reads both dimensions before resolving animation
     // link zero, then obtains the live Context BulletController, rotation and
     // Enemy position before calling the complete 707B cancellation Boss.
@@ -2338,5 +2407,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

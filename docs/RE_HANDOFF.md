@@ -35,15 +35,24 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoint — Enemy ECL opcode 620
+## Latest checkpoints — Enemy ECL opcodes 618 and 620
 
-The prior dirty opcode-620 work has been integrated into the maintained root
-host and focused verifier. The three original in-progress paths are now
-reviewed production/test/verifier work, not disposable changes:
+The opcode-618 and opcode-620 shared queued-parameter fragments are now
+integrated into the maintained root host and focused verifiers. Their
+production/test/verifier changes are checkpointed and retained:
 
 - `src/EnemyStateSharedQueuedParametersOpcode.cpp`
 - `tests/enemy_state_dispatch_root.cpp`
 - `scripts/verify-enemy-shared-queued-opcode-source.py`
+- `scripts/verify-enemy-shared-queued-polar-opcode-source.py`
+
+Native opcode 618 is the **243-byte / 55-instruction / 10-E8** case at
+`0x00492BC6`, selector index 136. Its natural C++ source reads the integer
+selector and both float operands before the real ensure-only `shared_shot`,
+then extracts the pair, constructs a temporary `Vector3`, calls the existing
+`polar` leaf and writes only queued-record vector_34 XY. The root host tests
+second-float exception before queue growth, shared-owner stability, Z and
+vector_40 preservation. See [the opcode-618 source frontier](ENEMY_41967_618_SHARED_QUEUED_POLAR_SOURCE_FRONTIER.md).
 
 Native opcode 620 is the **250-byte / 57-instruction / 8-E8** case at
 `0x00492D4D`, selector index 138. Its natural C++ source uses the real
@@ -77,6 +86,9 @@ Recent committed case families exercised by the maintained root include:
   COW selector and PMR BulletCommand vector.
 - **614:** 572B queued-record copy; real PMR forward-list and exact 119B record
   assignment.
+- **618:** 243B shared queued-polar update; real ensure-only shared record,
+  pair extraction, temporary Vector3 and existing polar leaf; XY-only writes
+  with Z/vector_40 preservation and second-float exception ordering.
 - **620:** 250B shared queued-vector update; real ensure-only shared record,
   pair extraction, ordered X/Y writes, native `COMISS/JBE` NaN behavior and
   second-operand exception coverage.
@@ -100,7 +112,7 @@ Recent committed case families exercised by the maintained root include:
 
 The maintained root verifier currently compiles **36 locked-profile i386
 COFF units** and runs the focused root host under ASan/UBSan, including opcode
-620. The exact per-case boundaries and host limitations are documented in the
+618 and 620. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
 
@@ -114,7 +126,7 @@ source-present but NONEXACT.
 ## Continuation order
 
 1. Continue the remaining large Enemy dispatcher cases. The next native
-   targets include the 618/632/617 range; investigate each parent branch and
+   targets include opcode 617 and the remaining unhandled ranges; investigate
    its real leaf dependencies together.
 2. Continue convergence of the 41,967B Enemy root and the open FrontInf,
    Bullet and Animation Bosses. Do not substitute trivial setters for Boss

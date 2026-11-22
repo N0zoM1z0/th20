@@ -50,7 +50,7 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1251
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1252
   maintain the partial natural-C++ root entry and wire the complete 400–448 movement
   family, nine Pattern cases, 21 bounds/health/controller/state cases, five controller
   selection/clear cases, six timer/mode/runtime-time cases, five Card/health cases,
@@ -85,6 +85,11 @@ canonically accepted.
   second-operand exception-before-mutation are covered; the original
   572B/129-head/19-E8 case and ordered COFF calls are verified. The assignment
   leaf replays 1/1 exact (CORE/RECON-1249).
+  The 243B opcode-618 shared queued-polar case is now executed in the root
+  host using the real ensure-only shared_shot, pair extraction, Vector3
+  constructor and polar leaf. Argument order, XY-only publication, shared
+  metadata ownership and second-float exception-before-growth pass the native
+  branch verifier and ASan/UBSan root host (CORE/RECON-1252).
   The 250B opcode-620 shared queued-vector case is now executed in the root
   host with the real ensure-only shared_shot selector and std::pair access.
   The -990.0f threshold, COMISS/JBE NaN path, shared metadata ownership and
