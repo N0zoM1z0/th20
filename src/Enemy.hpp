@@ -31,6 +31,9 @@ struct Enemy : EclManager {
     ~Enemy() override;
     Enemy* parent();
     bool bomb_drop_disabled();
+    // Native +0x88 view; the 19-byte code head is shared with
+    // Session::player_table and receives no duplicate physical byte credit.
+    EnemyState& state_value();
     Vector3& position_ref();
     std::int32_t execute_opcode() override;
     std::int32_t read_integer(std::int32_t index) override;

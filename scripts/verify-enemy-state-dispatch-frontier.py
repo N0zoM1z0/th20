@@ -38,6 +38,7 @@ HOST_SOURCES=[
     'src/EnemyStateDialogueOpcode.cpp',
     'src/EnemyStateAnimationSpawnOpcode.cpp', 'src/EnemyStateFogOpcode.cpp',
     'src/EnemyStateMembershipOpcode.cpp', 'src/EnemyStateControllerSetterOpcode.cpp',
+    'src/EnemyStateScriptControlOpcode.cpp', 'src/EclManagerSelect.cpp', 'src/EnemyStateAccessor.cpp',
     'src/Bullet.cpp', 'src/BulletController.cpp', 'src/BulletValues.cpp',
     'src/GeometryMetrics.cpp',
     'src/FogValue.cpp', 'src/EffectParameters.cpp',
@@ -104,6 +105,27 @@ def main() -> None:
         body=pe.get_data(start-image_base,end-start)
         instructions=list(decoder.disasm(body,start))
         assert len(instructions)==53,(opcode,len(instructions))
+        assert instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
+
+    script_control_cases={
+        800:(167,0x00495FC1,0x00496051,
+             [0x00412730,0x004AB080,0x00498A80,0x004973C0,0x004972C0,0x00540200]),
+        801:(168,0x00495DDE,0x00495E86,
+             [0x00412730,0x004AB080,0x00498A80,0x0047A2C0,0x004AA980,0x0047A2C0,0x004AA980]),
+        802:(169,0x00495E86,0x00495FC1,
+             [0x004AB080,0x00412730,0x00485660,0x004989F0,0x0048BD40,0x004989F0,
+              0x0048BD40,0x004973C0,0x004972C0,0x004989F0,0x0048BD40,0x00540200]),
+    }
+    for opcode,(index,start,end,expected_calls) in script_control_cases.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        instructions=list(decoder.disasm(body,start))
+        expected_instruction_counts={800:30,801:32,802:66}
+        assert len(instructions)==expected_instruction_counts[opcode],(opcode,len(instructions))
         assert instructions[-1].address+instructions[-1].size==end,(opcode,end)
         calls=[int(insn.op_str,16) for insn in instructions
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
@@ -283,6 +305,8 @@ def main() -> None:
         assert calls==expected_calls,(opcode,calls,expected_calls)
 
     root=(ROOT/'src/EnemyStateExecuteOpcode.cpp').read_text()
+    script_control=(ROOT/'src/EnemyStateScriptControlOpcode.cpp').read_text()
+    ecl_manager_select=(ROOT/'src/EclManagerSelect.cpp').read_text()
     movement=(ROOT/'src/EnemyStateMovementOpcode.cpp').read_text()
     pattern=(ROOT/'src/EnemyStatePatternOpcode.cpp').read_text()
     control=(ROOT/'src/EnemyStateControlOpcode.cpp').read_text()
@@ -299,6 +323,15 @@ def main() -> None:
     assert 'execute_enemy_control_opcode(*this, opcode)' in root
     assert 'execute_enemy_dynamic_parameter_opcode(*this, opcode)' in root
     assert 'execute_enemy_controller_management_opcode(*this, opcode, controller_result)' in root
+    assert 'execute_enemy_script_control_opcode(*this, instruction, opcode)' in root
+    assert 'case 800:' in script_control and 'case 801:' in script_control and 'case 802:' in script_control
+    assert 'target->terminate_async()' in script_control
+    assert 'target->reset()' in script_control and 'target->select(script_name)' in script_control
+    assert 'reinterpret_cast<const char*>(&instruction) + 0x18' in script_control
+    assert 'target->position_ref().x' in script_control and 'target->position_ref().y' in script_control
+    assert 'target->state_value().phases' in script_control
+    assert 'target->terminate_async()' in script_control and 'target->select(target->state_value().phases' in script_control
+    assert 'return source->select(this, name);' in ecl_manager_select
     assert 'execute_enemy_time_opcode(*this, opcode)' in root
     assert 'execute_enemy_card_opcode(*this, opcode)' in root
     assert 'execute_enemy_frontend_opcode(*this, opcode, frontend_result)' in root
@@ -403,6 +436,9 @@ def main() -> None:
         ('src/EnemyStateScreenOpcode.cpp','build/core218-canonical/EnemyStateScreenOpcode.obj'),
         ('src/EnemyStateExecuteOpcode.cpp','build/core209-canonical/EnemyStateExecuteOpcode.obj'),
         ('src/EnemyStateControllerSetterOpcode.cpp','build/core213-canonical/EnemyStateControllerSetterOpcode.obj'),
+        ('src/EnemyStateScriptControlOpcode.cpp','build/core220-canonical/EnemyStateScriptControlOpcode.obj'),
+        ('src/EclManagerSelect.cpp','build/core219-canonical/EclManagerSelect.obj'),
+        ('src/EnemyStateAccessor.cpp','build/core221-canonical/EnemyStateAccessor.obj'),
         ('src/Bullet.cpp','build/core174-canonical/Bullet.obj'),
         ('src/BulletController.cpp','build/core203-canonical/BulletController.obj'),
         ('src/BulletValues.cpp','build/core141-canonical/BulletValues.obj'),
@@ -448,6 +484,62 @@ def main() -> None:
 
     # Both controller-setter cases must retain the native call order in the
     # compiled natural-C++ helper, not merely in its source spelling.
+    script_control_object=ROOT/'build/core220-canonical/EnemyStateScriptControlOpcode.obj'
+    script_control_dump=subprocess.run(['objdump','-dr',str(script_control_object)],cwd=ROOT,
+        check=True,text=True,capture_output=True).stdout
+    script_control_marker='<?execute_enemy_script_control_opcode@th20@@YA_NAAUEnemyState@1@ABUEclInstruction@1@H@Z>:'
+    assert script_control_marker in script_control_dump
+    script_control_function=script_control_dump.split(script_control_marker,1)[1].split('Disassembly of section',1)[0]
+    script_control_calls=re.findall(r'DISP32\s+([^\r\n]+)',script_control_function)
+    expected_script_control_calls=[
+        '?enemy_controller@Context@th20',
+        '?integer_argument@EnemyState@th20',
+        '?find@EnemyController@th20',
+        '?terminate_async@EclManager@th20',
+        '?reset@EclManager@th20',
+        '?select@EclManager@th20',
+        '?enemy_controller@Context@th20',
+        '?integer_argument@EnemyState@th20',
+        '?find@EnemyController@th20',
+        '?position_ref@Enemy@th20',
+        '?float_argument_destination@EnemyState@th20',
+        '?position_ref@Enemy@th20',
+        '?float_argument_destination@EnemyState@th20',
+        '?integer_argument@EnemyState@th20',
+        '?enemy_controller@Context@th20',
+        '?selected@EnemyController@th20',
+        '?state_value@Enemy@th20',
+        '??A?$vector@UEnemyPhase@th20',
+        '?state_value@Enemy@th20',
+        '??A?$vector@UEnemyPhase@th20',
+        '?terminate_async@EclManager@th20',
+        '?reset@EclManager@th20',
+        '?state_value@Enemy@th20',
+        '??A?$vector@UEnemyPhase@th20',
+        '?select@EclManager@th20',
+    ]
+    assert len(script_control_calls)==len(expected_script_control_calls),script_control_calls
+    for actual,expected in zip(script_control_calls,expected_script_control_calls):
+        assert expected in actual,(actual,expected)
+
+    # Enemy::state_value is the second natural owner view of the same
+    # relocation-free +0x88 getter already strictly represented by
+    # Session::player_table. The physical 19B head is credited only once.
+    accessor_object=ROOT/'build/core221-canonical/EnemyStateAccessor.obj'
+    accessor_bytes_dump=subprocess.run(['objdump','-s','-j','.text$mn',str(accessor_object)],
+        cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    accessor_words=[]
+    for line in accessor_bytes_dump.splitlines():
+        fields=line.split()
+        if len(fields) >= 2 and re.fullmatch(r'[0-9a-f]{4}',fields[0]):
+            for field in fields[1:]:
+                if re.fullmatch(r'(?:[0-9a-f]{2}){1,4}',field):
+                    accessor_words.append(field)
+                else:
+                    break
+    accessor_hex=''.join(accessor_words)
+    assert bytes.fromhex(accessor_hex) == pe.get_data(0x004989F0-image_base,19)
+
     setter_object=ROOT/'build/core213-canonical/EnemyStateControllerSetterOpcode.obj'
     setter_dump=subprocess.run(['objdump','-dr',str(setter_object)],cwd=ROOT,
         check=True,text=True,capture_output=True).stdout
@@ -476,7 +568,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
@@ -490,12 +582,15 @@ def main() -> None:
     print('PASS original compressed dispatch pointer and ordered E8 map for selected-Enemy position opcode 324 (276B/53 instructions/11 calls)')
     print('PASS natural C++ opcode-324 COFF object retains all eleven ordered calls and repeated XY position reads')
     print('PASS natural C++ 553/554 COFF helper retains all seven ordered Context/VM/setter calls')
+    print('PASS natural C++ 800/801 COFF helper retains all thirteen ordered Context/VM/Enemy/EclManager calls')
+    print('PASS native Enemy opcode 800/801/802 selector, instruction and 25-call natural-source order')
+    print('PASS Enemy::state_value natural C++ alias strictly matches the shared original 19B +0x88 getter without duplicate byte credit')
     print('PASS original opcode-549 membership (95B), opcode-551 fog (257B), opcode-553/554 controller setters (66B/106B) and opcode-555 animation/sound Boss (388B) selector/call maps')
     print('PASS original opcode-569 selector index 173 points directly to the verified common return-zero epilogue')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases and 29 opcode fragments wired')
-    print('PASS all twenty-five i386 COFF source units compile under locked MSVC profile')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases and 32 opcode fragments wired')
+    print('PASS all twenty-nine i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 

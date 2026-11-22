@@ -129,6 +129,7 @@ public:
     EclManager();
     void reset();
     void set_loader(EclLoader* value);
+    int select(const char* name);
     void select_subroutine(const char* name);
     std::int32_t select_subroutine_index(std::int32_t index);
     void set_subroutine_index(std::int32_t value);

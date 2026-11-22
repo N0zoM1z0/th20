@@ -22,6 +22,7 @@
 #include "EnemyStateAnimationSpawnOpcode.hpp"
 #include "EnemyStateCardStartOpcode.hpp"
 #include "EnemyStateControllerSetterOpcode.hpp"
+#include "EnemyStateScriptControlOpcode.hpp"
 #include "EnemyStateFogOpcode.hpp"
 #include "EnemyStateLaserOpcode.hpp"
 #include "EnemyStateMembershipOpcode.hpp"
@@ -254,6 +255,8 @@ int EnemyState::execute_opcode() {
     if (execute_enemy_animation_spawn_opcode(*this, opcode))
         return 0;
     if (execute_enemy_controller_setter_opcode(*this, opcode))
+        return 0;
+    if (execute_enemy_script_control_opcode(*this, instruction, opcode))
         return 0;
     if (execute_enemy_fog_opcode(*this, opcode))
         return 0;

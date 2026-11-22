@@ -213,7 +213,21 @@ void Player::set_entity_flag_10(std::uint32_t value) {
     player_flag_last_value = value;
 }
 Enemy* selected_test_enemy = nullptr;
+std::array<Enemy*,16> dispatch_find_enemies{};
+std::array<std::uint32_t,8> dispatch_find_identifiers{};
+std::int32_t dispatch_find_calls = 0;
+EnemyController* dispatch_find_receiver = nullptr;
+std::uint32_t dispatch_find_identifier = 0;
 Enemy* EnemyController::find(std::uint32_t identifier) {
+    ++dispatch_find_calls;
+    dispatch_find_receiver = this;
+    dispatch_find_identifier = identifier;
+    if (dispatch_find_calls <= static_cast<std::int32_t>(dispatch_find_identifiers.size()))
+        dispatch_find_identifiers[static_cast<std::size_t>(dispatch_find_calls - 1)] = identifier;
+    for (auto* candidate : dispatch_find_enemies) {
+        if (candidate && candidate->state.identifier.get() == identifier)
+            return candidate;
+    }
     return selected_test_enemy && selected_test_enemy->state.identifier.get() == identifier
         ? selected_test_enemy : nullptr;
 }
@@ -412,6 +426,7 @@ int main() {
     process_locks.slot(11).unlock();
     Enemy enemy;
     Enemy found_enemy;
+    Enemy found_enemy2;
     Context context;
     PlayerRecord player_record;
     EnemyController controller;
@@ -452,6 +467,7 @@ int main() {
     EclLoader loader;
     alignas(16) std::array<std::uint8_t, 16 + 16 + 9 * 4> packet{};
     loader.records.push_back({"root-test", packet.data()});
+    loader.subroutine_count = 1;
     enemy.loader = &loader;
     enemy.main.manager = &enemy;
     enemy.main.position.subroutine = 0;
@@ -977,6 +993,144 @@ int main() {
     assert(dispatch_identifier_calls == 2 && dispatch_identifier_value == 0u);
     assert(enemy.main.stack.local(0) == 0u);
 
+    // Opcode 800 finds the requested Enemy through the Context controller,
+    // retires its async runtimes, resets its main runtime, then selects the
+    // inline script name at EclInstruction+0x18 through the real EclLoader.
+    found_enemy.loader = &loader;
+    found_enemy.state.entity = &found_enemy;
+    found_enemy.reset();
+    found_enemy.main.time = 9.5f;
+    found_enemy.main.position.subroutine = 7;
+    found_enemy.main.position.offset = 12;
+    found_enemy.main.async_id = 88;
+    found_enemy.main.signal = 19;
+    found_enemy.main.flags.bits = 0xa5a5a5a5u;
+    found_enemy.main.stack.words.push_back(0x12345678u);
+    found_enemy.main.stack.pointer = 4;
+    found_enemy.main.stack.frame_base = 4;
+    selected_test_enemy = &found_enemy;
+    dispatch_find_calls = 0;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = 0x324;
+    dispatch_integer_read_hook = &retarget_enemy_controller_during_integer_read;
+    set_packet(800, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+    auto* opcode800_instruction = reinterpret_cast<EclInstruction*>(packet.data() + 16);
+    std::memcpy(reinterpret_cast<std::uint8_t*>(opcode800_instruction) + 0x18,
+                "root-test", sizeof("root-test"));
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(dispatch_find_calls == 1 && dispatch_find_receiver == &controller);
+    assert(dispatch_find_identifier == 0x324u);
+    assert(context.enemies == &alternate_controller && enemy.state.context == &alternate_context);
+    assert(found_enemy.loader == &loader && found_enemy.current_runtime == &found_enemy.main);
+    assert(found_enemy.main.manager == &found_enemy);
+    assert(found_enemy.main.position.subroutine == 0 && found_enemy.main.position.offset == 0);
+    assert(found_enemy.main.time == 0.0f && found_enemy.main.async_id == -1);
+    assert(found_enemy.main.signal == 0 && found_enemy.main.flags.bits == 0xa5a5a5a4u);
+    assert(found_enemy.main.stack.words.empty());
+    assert(found_enemy.main.stack.pointer == 0 && found_enemy.main.stack.frame_base == 0);
+    assert(found_enemy.runtimes.next_value() == nullptr);
+    dispatch_integer_read_hook = nullptr;
+    context.enemies = &controller;
+    enemy.state.context = &context;
+
+    // A missing identifier still consumes the operand and performs the lookup,
+    // but does not reset or redirect the target Enemy's current runtime.
+    selected_test_enemy = nullptr;
+    dispatch_find_calls = 0;
+    found_enemy.main.time = 77.0f;
+    set_packet(800, {0x324u,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_find_calls == 1 && dispatch_find_receiver == &controller);
+    assert(dispatch_find_identifier == 0x324u && found_enemy.main.time == 77.0f);
+
+    // Opcode 801 uses operand 2 as an Enemy identifier, then independently
+    // re-reads the selected Enemy's position before resolving each output
+    // destination. Both VM destinations are real ScriptStack local slots.
+    selected_test_enemy = &found_enemy;
+    found_enemy.state.motion_110.position = {12.0f,34.0f,56.0f};
+    enemy.main.stack.reset();
+    dispatch_find_calls = 0;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = 0x324;
+    dispatch_integer_read_hook = &retarget_enemy_controller_during_integer_read;
+    set_packet(801, {bits(0.0f),bits(4.0f),static_cast<std::uint32_t>(-101),0,0,0,0,0}, 7);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(dispatch_find_calls == 1 && dispatch_find_receiver == &controller);
+    assert(dispatch_find_identifier == 0x324u);
+    assert(enemy.main.stack.local(0) == bits(12.0f));
+    assert(enemy.main.stack.local(4) == bits(34.0f));
+    assert(context.enemies == &alternate_controller && enemy.state.context == &alternate_context);
+    dispatch_integer_read_hook = nullptr;
+    context.enemies = &controller;
+    enemy.state.context = &context;
+    selected_test_enemy = &enemy;
+
+    // Opcode 802 walks the three selected Enemy slots, skips the current
+    // player slot and any negative-life phase, and restarts only eligible
+    // targets using the borrowed script stored in each real EnemyPhase.
+    loader.records.clear();
+    loader.records.push_back({"phase-a", packet.data()});
+    loader.records.push_back({"phase-b", packet.data()});
+    loader.records.push_back({"root-test", packet.data()});
+    loader.subroutine_count = 3;
+    found_enemy.loader = &loader;
+    found_enemy.state.entity = &found_enemy;
+    found_enemy.state.phases.resize(1);
+    found_enemy.state.phases[0].life = 9;
+    std::strcpy(found_enemy.state.phases[0].script, "phase-a");
+    found_enemy.main.time = 9.0f;
+    found_enemy.main.position.subroutine = 4;
+    found_enemy.main.position.offset = 8;
+    found_enemy.main.async_id = 7;
+    found_enemy2.loader = &loader;
+    found_enemy2.state.entity = &found_enemy2;
+    found_enemy2.state.identifier = 0x1002u;
+    found_enemy2.reset();
+    found_enemy2.state.phases.resize(1);
+    found_enemy2.state.phases[0].life = -1;
+    std::strcpy(found_enemy2.state.phases[0].script, "phase-b");
+    found_enemy2.main.time = 77.0f;
+    found_enemy2.main.position.subroutine = 5;
+    found_enemy2.main.position.offset = 6;
+    found_enemy2.main.async_id = 10;
+    enemy.state.phases.resize(1);
+    enemy.state.phases[0].life = 9;
+    std::strcpy(enemy.state.phases[0].script, "root-test");
+    enemy.state.field_270 = 1;
+    enemy.main.time = 55.0f;
+    enemy.main.position.subroutine = 0;
+    enemy.main.position.offset = 0;
+    enemy.main.async_id = 12;
+    controller.data.handles[0].value = found_enemy.state.identifier.get();
+    controller.data.handles[1].value = enemy.state.identifier.get();
+    controller.data.handles[2].value = found_enemy2.state.identifier.get();
+    dispatch_find_enemies = {};
+    dispatch_find_enemies[0] = &found_enemy;
+    dispatch_find_enemies[1] = &enemy;
+    dispatch_find_enemies[2] = &found_enemy2;
+    dispatch_find_calls = 0;
+    dispatch_find_identifiers = {};
+    selected_test_enemy = nullptr;
+    set_packet(802, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_find_calls == 3 && dispatch_find_receiver == &controller);
+    assert(dispatch_find_identifiers[0] == found_enemy.state.identifier.get());
+    assert(dispatch_find_identifiers[1] == enemy.state.identifier.get());
+    assert(dispatch_find_identifiers[2] == found_enemy2.state.identifier.get());
+    assert(found_enemy.main.position.subroutine == 0 && found_enemy.main.position.offset == 0);
+    assert(found_enemy.main.time == 0.0f && found_enemy.main.async_id == -1);
+    assert(found_enemy.current_runtime == &found_enemy.main);
+    assert(found_enemy2.main.time == 77.0f);
+    assert(found_enemy2.main.position.subroutine == 5 && found_enemy2.main.position.offset == 6);
+    assert(found_enemy2.main.async_id == 10);
+    assert(enemy.main.time == 55.0f);
+    assert(enemy.main.position.subroutine == 0 && enemy.main.position.offset == 0);
+    assert(enemy.main.async_id == 12);
+    dispatch_find_enemies = {};
+    selected_test_enemy = &enemy;
+
     // Opcode 553 writes the complete unsigned word through the real
     // EnemyController setter. Its receiver is cached before VM operand 0.
     controller.data.field_88 = 0x12345678u;
@@ -1142,5 +1296,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
