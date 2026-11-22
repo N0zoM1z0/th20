@@ -65,6 +65,23 @@ the 614 queue-copy source frontier.
 
 **Additional maintained source frontier (CORE/RECON-1151):** original opcode 621 now has natural-C++ source in `src/EnemyStateMeshOpcode.cpp`, restoring the real EnemyMeshOwner release/allocation lifecycle and conditional 17x17 RenderMesh factory. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 621 source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md).
 
+
+**Additional maintained source frontier (CORE/RECON-1250):** original opcode
+712 now has natural-C++ source in `src/EnemyStateBulletCancelOpcode.cpp`. The
+196B/42-head/9-E8 branch constructs the rectangle from two VM floats, resolves
+animation link zero, obtains the Context BulletController and rotation, then
+calls the existing 707B rectangle-cancellation Boss. The 41,967B parent remains
+NONEXACT. See [the opcode-712 source frontier](ENEMY_41967_712_BULLET_CANCEL_SOURCE_FRONTIER.md).
+
+**Maintained root-host execution update (CORE/RECON-1250):** opcode 712 now
+executes its production helper and the real 707B rectangle-cancel Boss under
+ASan/UBSan, including rotated-rectangle geometry, state/field eligibility,
+the second 384x448 viewport filter and second-float exception order. Opcode
+518 also links the real 242B BulletController cancel-all and 19B active-list
+methods. The 456B AnimationPoolOwner resolver and 662B Bullet::cancel remain
+explicit test boundaries. Five affected-only exact source replays pass; the
+root remains NONEXACT.
+
 **Maintained root-host execution update (CORE/RECON-1248):** opcode 621 now
 executes the real helper, allocator templates and EnemyMeshOwner destructor in
 the ASan/UBSan dispatcher host. Positive/zero/negative radius, owner

@@ -76,7 +76,7 @@ the 41,967-byte root boundary; no whole-graph cold replay was run. The latest
 root increments wire native opcodes 324, 524/575, 527/534/548, 539, 549,
 551, 552, 553/554, 555, 800/801/802 and reserved selector 569. The focused dispatcher verifier checks
 the selector entries, ordered E8 targets, ASan/UBSan root-host assertions and
-all 29 locked-profile i386 source compiles. Affected-only leaf replays passed
+all 35 locked-profile i386 source compiles. Affected-only leaf replays passed
 for EnemyController/Enemy position and VM destinations, 549 membership,
 FogValue/PackedColor/StageResource, the 553/554 EnemyData/BulletController
 setters and Bullet constructors, 800/801/802 EclManager/EnemyVariable/phase
@@ -123,6 +123,22 @@ the existing exact 213B MeshResourceAccess specialization. Affected-only exact
 replays passed EnemyMesh 7/7, MeshInterfaces 10/10 and MeshResourceAccess 8/8;
 the root verifier checks the original 346B/70-head/7-E8 case and seven ordered
 COFF relocations. See CORE/RECON-1248 in the opcode-621 mesh frontier.
+
+The 196B Enemy ECL opcode 712 rectangle-cancel branch is now wired into the
+maintained ASan/UBSan root host. The natural-C++ helper preserves both VM float
+reads, animation handle resolution, Context BulletController lookup, Animation
+Z rotation, Enemy position and the call into the real 707B rectangle-cancel
+Boss. The Boss and 669B rectangle-circle geometry execute against real active
+Bullets; tests cover rotated geometry, states 1/2 versus state 3, the
+field_18 gate, the second 384x448 viewport filter and a second-operand
+exception before handle lookup. Opcode 518 now also executes the real 242B
+BulletController cancel-all and 19B active-list leaves. The 456B
+AnimationPoolOwner resolver and 662B Bullet::cancel remain explicit host
+boundaries. Affected-only exact replays passed BulletRectangleCancellation
+1/1, RectangleCollisions 12/12, BulletCollisionHandle 2/2, AnimationGeometry
+6/6 and BulletCancellation 2/2. The root verifier checks the original
+196B/42-head/9-E8 branch and nine ordered COFF relocations, and compiles 35
+locked-profile units. See CORE/RECON-1250 in the opcode-712 source frontier.
 
 The shared scalar allocator now preserves the native unconditional
 std::destroy_at call for trivial intrusive nodes. This restores the complete

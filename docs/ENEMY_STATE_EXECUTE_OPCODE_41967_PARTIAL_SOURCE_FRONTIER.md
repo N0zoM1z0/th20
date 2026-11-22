@@ -199,6 +199,15 @@ source fragments.
   radius, replacement, 17x17 RenderMesh arguments and partial writes when
   float or integer operands throw. Renderer-dependent RenderMesh ctor/dtor
   and allocator startup remain host fixtures; the 41,967B parent is NONEXACT.
+- Native opcode 712 is the 196-byte / 42-instruction rectangle bullet
+  cancellation case at 0x0049540D, selector index 164, with nine original E8
+  calls. The production helper reads both VM dimensions, resolves animation
+  link zero, obtains the Context BulletController and Animation rotation, then
+  calls the real 707B rectangle-cancellation Boss. The ASan/UBSan root host
+  exercises rotated geometry, both eligible Bullet states, state/field gates,
+  the fixed 384x448 viewport filter and second-operand exception ordering.
+  The 456B AnimationPoolOwner resolver and 662B Bullet::cancel child remain
+  explicit test boundaries; the 41,967B parent remains NONEXACT.
 - Native opcodes 609/610/611/612 share the 1,457-byte / 314-instruction
   branch at 0x004931DD, selector index 130, with 29 original E8 calls. The
   maintained root host now links and executes the production shot-command

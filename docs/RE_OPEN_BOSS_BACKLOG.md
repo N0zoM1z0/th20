@@ -93,6 +93,15 @@ canonically accepted.
   binds the existing exact 213B MeshResourceAccess specialization. EnemyMesh
   7/7, MeshInterfaces 10/10 and MeshResourceAccess 8/8 affected replays pass
   (CORE/RECON-1248).
+  The 196B opcode-712 rectangle-cancel branch is now executed in the root
+  host through its production helper and the real 707B rectangle-cancel Boss.
+  Rotated geometry, states 1/2, state/field gates, the second 384x448 viewport
+  filter and second-float exception order are covered. Opcode 518 also uses
+  the real 242B BulletController cancel-all and 19B active-list methods. The
+  456B AnimationPoolOwner resolver and 662B Bullet::cancel remain host
+  boundaries. BulletRectangleCancellation 1/1, RectangleCollisions 12/12,
+  BulletCollisionHandle 2/2, AnimationGeometry 6/6 and BulletCancellation
+  2/2 affected exact replays pass (CORE/RECON-1250).
   The 626B FrontInf command parent is
   still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains
   incomplete/NONEXACT; continue restoring the other inline case families and converge
