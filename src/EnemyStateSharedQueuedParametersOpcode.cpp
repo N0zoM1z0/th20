@@ -4,6 +4,9 @@
 
 namespace th20 {
 
+extern const float native_speed_override_threshold;
+extern const float native_one_56c8cc;
+
 bool execute_enemy_shared_queued_parameters_opcode(EnemyState& state,
                                                     std::int32_t opcode) {
     switch (opcode) {
@@ -29,6 +32,24 @@ bool execute_enemy_shared_queued_parameters_opcode(EnemyState& state,
         auto& parameters = selected.first->parameters;
         parameters.angle = normalize_angle(state.float_argument(1));
         parameters.angle_step = normalize_angle(state.float_argument(2));
+        return true;
+    }
+    case 620: {
+        const auto selector = state.integer_argument(0);
+        auto selected = state.shared_shot(static_cast<std::uint32_t>(selector));
+        auto* record = std::get<0>(std::move(selected));
+        auto* metadata = std::get<1>(std::move(selected));
+        (void)metadata;
+
+        const float x = state.float_argument(1);
+        record->vector_40.x = x;
+        const float y = state.float_argument(2);
+        record->vector_40.y = y;
+        if (x < native_speed_override_threshold) {
+            record->vector_40.z = 0.0f;
+        } else {
+            record->vector_40.z = native_one_56c8cc;
+        }
         return true;
     }
     default:

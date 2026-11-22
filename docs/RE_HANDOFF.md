@@ -35,41 +35,34 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Current worktree — preserve this in-progress opcode 620 work
+## Latest checkpoint — Enemy ECL opcode 620
 
-The worktree is intentionally dirty in exactly these three paths:
+The prior dirty opcode-620 work has been integrated into the maintained root
+host and focused verifier. The three original in-progress paths are now
+reviewed production/test/verifier work, not disposable changes:
 
-- src/EnemyStateSharedQueuedParametersOpcode.cpp
-- tests/enemy_state_dispatch_root.cpp
-- scripts/verify-enemy-shared-queued-opcode-source.py (untracked)
+- `src/EnemyStateSharedQueuedParametersOpcode.cpp`
+- `tests/enemy_state_dispatch_root.cpp`
+- `scripts/verify-enemy-shared-queued-opcode-source.py`
 
-This is an unfinished reconstruction of **Enemy ECL opcode 620**. Do not
-reset, overwrite or discard it.
+Native opcode 620 is the **250-byte / 57-instruction / 8-E8** case at
+`0x00492D4D`, selector index 138. Its natural C++ source uses the real
+ensure-only `shared_shot` path and pair `std::get` extraction, writes the
+queued record's `vector_40.x/y/z`, preserves the `-990.0f` threshold and
+`1.0f` constant, and matches the original `COMISS/JBE` NaN behavior. The root
+test checks shared metadata ownership, threshold boundary, NaN, and the
+second-operand exception after the X write.
 
-The original case is **250 bytes / 57 x86 instructions / 8 ordered E8 calls**
-at 0x00492D4D, selector index 138. The source adds the case to the existing
-shared queued-parameter helper. It reads two float operands, writes
-EnemyQueuedRecord::vector_40.x/y, and sets Z according to the original
--990.0f threshold and 1.0f constant. The root test covers the sentinel
-boundary, preservation of shared metadata ownership and a second-operand
-exception after the X write.
+The false-returning root-test stub is removed. The production helper is
+included in `HOST_SOURCES` and the locked-profile COFF compile list; the
+native opcode verifier is invoked by the maintained root verifier. The
+focused root host passes under ASan/UBSan, and the root verifier compiles
+**36 locked-profile i386 COFF source units**. See the dedicated
+[opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
-The production dispatcher already routes this helper, but the root-host
-integration is **not finished**:
-- The test removed its old false-returning helper stub.
-- scripts/verify-enemy-state-dispatch-frontier.py does not yet include
-  src/EnemyStateSharedQueuedParametersOpcode.cpp in HOST_SOURCES.
-- The new native verifier is not yet called by the maintained root verifier.
-- The current 35-unit root-host pass predates these dirty changes. Opcode 620
-  has no accepted COFF/replay or root-host result yet.
-
-**Immediate next action:** finish the host link and locked-profile COFF
-integration for the shared helper, wire the new native verifier into the
-maintained verifier, run the focused root host and affected-only comparison,
-then update the opcode-620 evidence and commit the completed source/test
-checkpoint. The expected host source count will increase when this helper is
-added. Do not claim the case complete until the real helper executes in the
-root host and its COFF call order is checked.
+This is still an inline fragment only. No standalone function unit or
+strict exact-byte claim is created, and the 41,967-byte parent remains
+**NONEXACT**. No full cold replay was run.
 
 ## Active Boss — EnemyState::execute_opcode
 
@@ -84,6 +77,9 @@ Recent committed case families exercised by the maintained root include:
   COW selector and PMR BulletCommand vector.
 - **614:** 572B queued-record copy; real PMR forward-list and exact 119B record
   assignment.
+- **620:** 250B shared queued-vector update; real ensure-only shared record,
+  pair extraction, ordered X/Y writes, native `COMISS/JBE` NaN behavior and
+  second-operand exception coverage.
 - **621:** 346B mesh-owner lifecycle; real allocator templates and
   EnemyMeshOwner destructor. Renderer-dependent RenderMesh ctor/dtor and
   allocator startup remain host fixtures.
@@ -102,10 +98,9 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **35 locked-profile i386
-COFF units** and runs the focused root host for the committed baseline. That
-count does not include the uncommitted opcode-620 helper above. The exact
-per-case boundaries and host limitations are documented in the
+The maintained root verifier currently compiles **36 locked-profile i386
+COFF units** and runs the focused root host under ASan/UBSan, including opcode
+620. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
 
@@ -118,12 +113,12 @@ source-present but NONEXACT.
 
 ## Continuation order
 
-1. Finish and verify the dirty opcode-620 work described above.
-2. Continue the remaining large Enemy dispatcher cases (the native case map
-   still has substantial uncovered blocks, including the 618/632/617 range).
-3. Continue the 41,967B parent convergence and the open FrontInf/Bullet/
-   Animation Bosses. Work on large parents and their real leaf dependencies
-   together; do not substitute a sequence of trivial setters for Boss work.
+1. Continue the remaining large Enemy dispatcher cases. The next native
+   targets include the 618/632/617 range; investigate each parent branch and
+   its real leaf dependencies together.
+2. Continue convergence of the 41,967B Enemy root and the open FrontInf,
+   Bullet and Animation Bosses. Do not substitute trivial setters for Boss
+   work; preserve natural C++ control flow and real ownership.
 
 For source changes, replay only affected units and changed shared-header
 consumers. Do not run a full cold replay for routine progress. Preserve
@@ -153,6 +148,7 @@ entire analysis or build tree to save space.
 - git status --short --branch
 - scripts/repo-python scripts/report-reconstruction-status.py --summary
 - scripts/repo-python scripts/verify-enemy-state-dispatch-frontier.py
+- scripts/repo-python scripts/verify-enemy-shared-queued-opcode-source.py
 - scripts/repo-python scripts/replay-exact-units.py --source src/ChangedSource.cpp
 - scripts/repo-python scripts/build.py --check
 - git diff --check

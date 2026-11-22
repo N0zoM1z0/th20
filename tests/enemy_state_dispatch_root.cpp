@@ -48,6 +48,7 @@
 #include <cstdint>
 #include <cstring>
 #include <iostream>
+#include <limits>
 #include <initializer_list>
 #include <iterator>
 #include <algorithm>
@@ -117,6 +118,8 @@ extern const float native_two = 2.0f;
 extern const float native_448 = 448.0f;
 extern const float native_gameplay_width = 384.0f;
 extern const float native_zero_56e0e8 = 0.0f;
+extern const float native_speed_override_threshold = -990.0f;
+extern const float native_one_56c8cc = 1.0f;
 std::int32_t render_mesh_ctor_calls = 0;
 std::int32_t render_mesh_dtor_calls = 0;
 std::array<std::int32_t,4> render_mesh_ctor_arguments{};
@@ -514,7 +517,6 @@ bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
-bool execute_enemy_shared_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
 int execute_enemy_animation_secondary_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_state_opcode(EnemyState&) { return 0; }
@@ -1289,6 +1291,87 @@ int main() {
     process_allocator->release_object(enemy.state.mesh);
     enemy.state.mesh = nullptr;
     assert(render_mesh_dtor_calls == 1);
+
+    // Native opcode 620 updates the real queued record's vector_40, not
+    // ShotMetadata. The ensure-only shared_shot selector must preserve an
+    // already-shared metadata owner while the two VM float operands are read
+    // and the original -990.0f sentinel selects the Z lane.
+    enemy.state.queued.clear();
+    auto& queued_record_620 = enemy.state.queued.emplace_front();
+    auto metadata_owner_620 = std::make_shared<ShotMetadata>();
+    queued_record_620.owner = metadata_owner_620;
+    queued_record_620.vector_40 = {11.0f,22.0f,33.0f};
+    auto* const metadata_pointer_620 = metadata_owner_620.get();
+    assert(metadata_owner_620.use_count() == 2);
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {-990.0f,4.25f};
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(620, {0,bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 6);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_float_read_hook = nullptr;
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(queued_record_620.vector_40.x == -990.0f);
+    assert(queued_record_620.vector_40.y == 4.25f);
+    assert(queued_record_620.vector_40.z == 1.0f);
+    assert(queued_record_620.owner.get() == metadata_pointer_620);
+    assert(metadata_owner_620.use_count() == 2);
+
+    // Values strictly below the native sentinel clear vector_40.z.
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {-991.0f,5.5f};
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(620, {0,bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 6);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_float_read_hook = nullptr;
+    assert(queued_record_620.vector_40.x == -991.0f);
+    assert(queued_record_620.vector_40.y == 5.5f);
+    assert(queued_record_620.vector_40.z == 0.0f);
+    assert(queued_record_620.owner.get() == metadata_pointer_620);
+    assert(metadata_owner_620.use_count() == 2);
+
+    // COMISS followed by JBE treats an unordered X comparison as the
+    // threshold-selected path. Preserve that native NaN behavior explicitly.
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {
+        std::numeric_limits<float>::quiet_NaN(),6.5f};
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(620, {0,bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 6);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_float_read_hook = nullptr;
+    assert(std::isnan(queued_record_620.vector_40.x));
+    assert(queued_record_620.vector_40.y == 6.5f);
+    assert(queued_record_620.vector_40.z == 1.0f);
+    assert(queued_record_620.owner.get() == metadata_pointer_620);
+    assert(metadata_owner_620.use_count() == 2);
+
+    // A second-operand exception occurs after the X write but before Y/Z.
+    // The shared metadata owner is neither cloned nor replaced.
+    queued_record_620.vector_40 = {31.0f,32.0f,33.0f};
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {123.0f,456.0f};
+    dispatch_float_throw_at = 2;
+    dispatch_float_read_hook = &throw_during_float_read;
+    set_packet(620, {0,bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 6);
+    bool queued_vector_second_float_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { queued_vector_second_float_threw = value == 554; }
+    dispatch_float_read_hook = nullptr;
+    dispatch_float_throw_at = 0;
+    assert(queued_vector_second_float_threw);
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(queued_record_620.vector_40.x == 123.0f);
+    assert(queued_record_620.vector_40.y == 32.0f);
+    assert(queued_record_620.vector_40.z == 33.0f);
+    assert(queued_record_620.owner.get() == metadata_pointer_620);
+    assert(metadata_owner_620.use_count() == 2);
+    enemy.state.queued.clear();
+    metadata_owner_620.reset();
 
     // Native opcode 712 reads both dimensions before resolving animation
     // link zero, then obtains the live Context BulletController, rotation and
@@ -2255,5 +2338,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

@@ -192,6 +192,15 @@ source fragments.
   copy, self-assignment, destination and source growth, and a second-operand
   exception before mutation are tested. The assignment leaf replays 1/1
   exact; the 41,967B parent remains NONEXACT.
+- Native opcode 620 is the 250-byte / 57-instruction shared queued-vector
+  update at 0x00492D4D, selector index 138, with eight original E8 calls.
+  The maintained root host executes the production helper and real
+  ensure-only shared_shot path; shared metadata ownership, X/Y write order,
+  -990.0f boundary, COMISS/JBE NaN behavior and second-operand exception are
+  tested under ASan/UBSan. The locked-profile COFF helper preserves ordered
+  std::get<0/1>, VM operand, COMISS/JBE and direct XYZ-store behavior. See the
+  [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
+  The parent remains NONEXACT; no standalone unit or exact-byte credit is claimed.
 - Native opcode 621 is the 346-byte / 70-instruction mesh-owner lifecycle
   branch at 0x00495A9A, with seven original E8 calls. The ASan/UBSan root host
   executes the production helper, real DiagnosticAllocator allocation/release
@@ -345,7 +354,7 @@ function bodies; no duplicate byte credit is assigned.
 The remaining inline cases in the original 41,967B body, including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
 additional opcode ranges, still need source recovery. The maintained root now
-also represents 609/610/611/612, 614, 621, 702/703/711/712/713 and
+also represents 609/610/611/612, 614, 620, 621, 702/703/711/712/713 and
 800/801/802, alongside 324, 524/575, 527/534, 539, 548, 549, 551, 552,
 553/554, 555 and reserved selector 569. These fragments do not close their
 surrounding switch tables or the dispatcher as a whole. Unknown opcodes
@@ -376,19 +385,19 @@ scripts/compile-probe.sh src/EnemyStateDynamicParameterOpcode.cpp build/core212-
 scripts/compile-probe.sh src/EnemyStateExecuteOpcode.cpp build/core209-canonical/EnemyStateExecuteOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 ```
 
-The maintained dispatcher verifier currently compiles **35** locked-profile
-i386 COFF source units and executes the committed root-host case families
-under ASan/UBSan. Its focused native checks include the 609-612 shared
+The maintained dispatcher verifier currently compiles **36** locked-profile
+i386 COFF source units and executes the root-host case families under
+ASan/UBSan. Its focused native checks include the 609-612 shared
 1,457B/314-instruction/29-E8 branch, the 614 572B/129-instruction/19-E8
-queue-copy branch, the 621 346B/70-instruction/7-E8 mesh branch, the four
-Laser branches (2,699B/607 CFG heads/62 E8), the 712 196B/42-instruction/9-E8
+queue-copy branch, the 620 250B/57-instruction/8-E8 shared queued-vector
+branch, the 621 346B/70-instruction/7-E8 mesh branch, the four Laser branches
+(2,699B/607 CFG heads/62 E8), the 712 196B/42-instruction/9-E8
 rectangle-cancel branch, and the 800-802 script-control branches
-(627B/128 instructions/25 E8). It also checks the committed 553/554 setter
-maps and their ordered COFF relocations. Exact leaf replay receipts and
-explicit host-fixture boundaries are recorded in each linked case frontier.
-This 35-unit result is the committed baseline before the uncommitted opcode
-620 work described in [the current handoff](RE_HANDOFF.md). No full cold
-replay or whole-root byte credit is claimed.
+(627B/128 instructions/25 E8). It also checks the 553/554 setter maps and
+their ordered COFF relocations. Exact leaf replay receipts and explicit
+host-fixture boundaries are recorded in each linked case frontier. Opcode
+620 is included in this 36-unit focused result. No full cold replay or
+whole-root byte credit is claimed; the parent remains NONEXACT.
 
 No assembly, byte padding, or synthetic instruction sequences are used. The
 next major step is to restore and test the remaining inline case families in
