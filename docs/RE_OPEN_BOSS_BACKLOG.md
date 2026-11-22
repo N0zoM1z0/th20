@@ -75,6 +75,11 @@ canonically accepted.
   all four explicit/cursor and base/extended variants plus partial-write
   exception behavior are covered. The native 29-E8 map and 26-call COFF
   helper order are checked (CORE/RECON-1246).
+  The four large Laser cases 702/703/711/713 are now also executed in the
+  root host using real parameter lifetimes, writable-shot COW and late Context
+  selection; the factory remains a capture-only test boundary. Their 2,699B /
+  607-head / 62-E8 native maps and 47 ordered COFF relocations are checked
+  (CORE/RECON-1247).
   The 626B FrontInf command parent is
   still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains
   incomplete/NONEXACT; continue restoring the other inline case families and converge

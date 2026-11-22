@@ -33,3 +33,50 @@ The helper uses the already whole-exact LaserType0/1/2/3 constructors/destructor
 This helper does not receive a `config/functions.csv` original-function mapping because the original 702/703/711/713 bodies are inline regions inside `EnemyState::execute_opcode()`, not independent native functions. The 41,967B parent still has no maintained complete body, no canonical whole-parent unit and zero parent byte credit. Run `scripts/verify-enemy-laser-opcode-source.py` for the maintained-source/original-CFG cross-check. No full cold replay was performed.
 
 Next work: continue through other large native opcode clusters (especially the remaining Laser and queued Bullet-command branches), then integrate the supported opcode fragments into a natural-C++ parent dispatcher without treating this helper as the complete 41,967B function.
+
+## Maintained root-host execution closure — CORE/RECON-1247
+
+The maintained root host previously replaced execute_enemy_laser_opcode with
+a false-returning stub. CORE/RECON-1247 removes that stub and links the real
+EnemyStateLaserOpcode.cpp helper together with LaserParameters.cpp. The four
+large production branches now execute under the maintained ASan/UBSan
+EnemyState::execute_opcode host.
+
+The host uses the real LaserType0/1/2/3 parameter constructors and destructors,
+the real LaserController constructor/reset and Context lookup, the real
+EnemyState::writable_shot() selector, PMR BulletCommand vector copies and
+normalization. The create_laser method is an explicit capture-only test
+boundary: it snapshots the typed temporary before its real destructor runs.
+The separate production LaserFactory.cpp remains independently strict exact
+at 474/474 body bytes (492/492 compared bytes).
+
+The four branch tests cover both sides of the native 0.9 Z-position gate:
+702 and 711 use vector_40 + vector_34 with Z cleared, while 703 and 713 use
+the EnemyState position fallback. They verify all four parameter layouts,
+flags, type/color, lengths, widths, speeds, duration fields, sounds, view
+index and copied PMR command vectors. Opcode 703 additionally triggers real
+writable-shot COW; opcodes 703 and 713 read handle operand 1 late, retarget
+Context during that read, and prove the final factory receives the newly
+selected LaserController.
+
+The maintained root verifier now runs verify-enemy-laser-opcode-source.py
+itself and checks the original bounded CFG counts: 702 **153/15**, 703
+**176/16**, 711 **141/15**, 713 **137/16** (instruction heads / direct E8).
+Together these inline branches cover **2,699 native bytes, 607 instruction
+heads and 62 original E8 calls**. It also checks the natural-C++ helper's
+**47 ordered COFF relocations**, including all four real parameter
+constructor/destructor pairs, writable-shot selection, PMR vector copy,
+position reads, angle normalization, late integer reads, Context lookup and
+factory handoff.
+
+Affected-only strict dependency replays passed LaserParameters.cpp **12/12**
+(all four parameter ctor/dtor pairs, LaserController ctor, selector and
+reset) and LaserFactory.cpp **1/1** (474/474). The maintained root verifier
+compiles **31** locked i386 COFF source units and its ASan/UBSan host executes
+the four production case helpers. The factory method is deliberately captured
+at the host boundary; this is not a claim that the native game Laser allocation
+graph is fully executed by the test.
+
+These are inline case restorations only. The 41,967-byte Enemy dispatcher
+remains NONEXACT and receives no whole-parent byte credit. No full cold replay,
+assembly, NOP or padding was used.

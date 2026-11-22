@@ -192,6 +192,13 @@ source fragments.
   all four explicit/cursor and base/extended modes plus partial-write exception
   behavior are tested under ASan/UBSan. This is inline case coverage, not a
   standalone native function or parent byte credit.
+- Native Laser opcodes 702/703/711/713 cover **2,699 bytes / 607
+  instruction heads / 62 E8 calls**. The maintained root host now executes the
+  production helper with real LaserType0/1/2/3 parameter lifetimes,
+  writable-shot COW, PMR command copies, both position branches and late
+  handle reads that retarget Context before the capture-only factory boundary.
+  The verifier checks the four original CFGs and 47 ordered COFF relocations;
+  LaserParameters replays 12/12 and LaserFactory 1/1. No parent byte credit.
 - Native opcode `800` is a 144-byte / 30-instruction script-selection branch
   at `0x00495FC1..0x00496051`, selector index 167. It reads integer operand 0,
   resolves the target through `EnemyController::find`, then terminates async

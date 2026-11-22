@@ -93,6 +93,16 @@ an operand exception. The verifier re-decodes the original 1,457B/314-head/
 dependency replays passed EnemyQueuedSelection 2/2 and ShotMetadata 3/3.
 See CORE/RECON-1246 in the 609–612 shot-command source frontier.
 
+The 702/703/711/713 Laser branches (2,699 native bytes / 607 instruction
+heads / 62 E8 calls) now also execute their real production helper in the
+maintained ASan/UBSan root host. It uses the real four typed parameter
+temporaries, writable-shot COW, PMR command copies, position gate and late
+handle reads that retarget Context before the factory call. The create_laser
+method is a capture-only host boundary; its separate 474B production factory
+is strict exact. LaserParameters replays 12/12 and LaserFactory 1/1; the root
+verifier compiles 31 locked-profile COFF units and checks 47 ordered helper
+relocations. See CORE/RECON-1247 in the Laser opcode source frontier.
+
 The shared scalar allocator now preserves the native unconditional
 std::destroy_at call for trivial intrusive nodes. This restores the complete
 97B IntrusiveLink<EclRuntime> release body: EclRuntimeLifetime replays 12/12,

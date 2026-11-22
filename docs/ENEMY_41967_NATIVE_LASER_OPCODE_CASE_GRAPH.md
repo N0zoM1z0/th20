@@ -2,9 +2,19 @@
 
 **Current maintained source frontier (CORE/RECON-1143):** `src/EnemyStateLaserOpcode.cpp` now contains natural-C++ source fragments for original opcodes 702, 703, 711 and 713. They use the accepted `EnemyState::writable_shot`, real LaserType0/1/2/3 parameter objects, and the real Context-owned `LaserController::create_laser`. This is a helper fragment, not an independent original function and not the 41,967B `EnemyState::execute_opcode()` body; the parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the four-opcode Laser source frontier](ENEMY_41967_LASER_702_703_711_713_SOURCE_FRONTIER.md).
 
+**Maintained root-host execution update (CORE/RECON-1247):** the previous
+false-returning execute_enemy_laser_opcode host stub is removed. The real
+702/703/711/713 helper now runs under ASan/UBSan with real LaserType0/1/2/3
+parameter lifetimes, writable-shot COW, PMR command copies and late Context
+selection. The create_laser call remains a capture-only host boundary; the
+separate 474B production LaserFactory is strict exact. All four original
+native CFGs and the helper's 47 ordered COFF relocations are checked. See the
+four-opcode Laser source frontier.
 
 
-**Superseding whole-root status (CORE/RECON-1196):** the maintained source now provides a real, partial natural-C++ EnemyState::execute_opcode entry. It borrows the live EclInstruction, routes all 49 movement opcodes 400–448 through EnemyStateMovementOpcode.cpp, and wires the independently maintained phase, card-start, fog, membership, mesh, animation, queued-shot, script-pointer, shot-fire, shot-command and laser fragments. The 41,967B parent is no longer source-absent, but it remains incomplete and NONEXACT: other inline opcode families still need restoration, and no whole-parent exact-byte credit is claimed. See the partial whole-root C++ frontier and its focused host/COFF verifier.
+
+
+**Superseding whole-root status (CORE/RECON-1196):** the maintained source now provides a real, partial natural-C++ EnemyState::execute_opcode entry. It borrows the live EclInstruction, routes all 49 movement opcodes 400–448 through EnemyStateMovementOpcode.cpp, and wires the independently maintained phase, card-start, fog, membership, mesh, animation, queued-shot, script-pointer, shot-fire, shot-command and laser fragments, including the maintained root-host execution of Laser 702/703/711/713 (CORE/RECON-1247). The 41,967B parent is no longer source-absent, but it remains incomplete and NONEXACT: other inline opcode families still need restoration, and no whole-parent exact-byte credit is claimed. See the partial whole-root C++ frontier and its focused host/COFF verifier.
 
 **Additional maintained source frontier (CORE/RECON-1197):** the partial whole-root entry now also routes nine original EnemyPattern opcodes 506/507/508/509/510/556/567/568/572 through `src/EnemyStatePatternOpcode.cpp`. The nine bounded original cases account for 621 native bytes, 136 x86 instruction heads and 23 ordered E8 calls; the existing Pattern setters and exact `EnemyPattern::drop` leaf are reused. Opcode 509 retains its real two-player Session guard before Enemy/Pattern access. The 41,967B parent remains incomplete/NONEXACT. See [the EnemyPattern opcode frontier](ENEMY_41967_PATTERN_506_510_556_567_568_572_SOURCE_FRONTIER.md).
 
