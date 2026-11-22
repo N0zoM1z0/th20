@@ -1,5 +1,6 @@
 #include "EnemyStateDialogueOpcode.hpp"
 #include "LaserParameters.hpp"
+#include "RenderMesh.hpp"
 #include "Bullet.hpp"
 #include "Enemy.hpp"
 #include "AnimationHandleSetFlag0Recursive.hpp"
@@ -90,6 +91,7 @@ std::int32_t animation_spawn_script = -1;
 Vector3 animation_spawn_position{};
 float animation_spawn_rotation = 0.0f;
 std::int32_t animation_spawn_layer = -1;
+std::uint32_t animation_spawn_flags = 0xffffffffu;
 Animation** animation_spawn_output = reinterpret_cast<Animation**>(1);
 bool dispatch_identifier_result = false;
 std::int32_t dispatch_identifier_calls = 0;
@@ -102,6 +104,12 @@ StageResourceOwner* process_stage_resource = nullptr;
 extern const float native_progress_mesh_alpha_fade_span_02_56fbf8 = 0.2f;
 extern const float native_negative_pi_56e0f8 = -3.1415927410125732f;
 extern const float native_screen_half_2_56c8d0 = 2.0f;
+extern const float native_screen_top_16_56cd90 = 16.0f;
+extern const float native_zero_56e0e8 = 0.0f;
+std::int32_t render_mesh_ctor_calls = 0;
+std::int32_t render_mesh_dtor_calls = 0;
+std::array<std::int32_t,4> render_mesh_ctor_arguments{};
+bool mesh_owner_visible_during_float_read = false;
 bool front_dialogue_ready = false;
 std::int32_t front_dialogue_ready_calls = 0;
 std::int32_t front_dialogue_command_calls = 0;
@@ -174,6 +182,12 @@ void retarget_bullet_controller_during_first_float_read(std::int32_t) {
 }
 void throw_during_integer_read(std::int32_t) { throw 553; }
 void observe_integer_read(std::int32_t) {}
+void throw_during_mesh_float_read(std::int32_t) {
+    mesh_owner_visible_during_float_read =
+        dispatch_operand_state && dispatch_operand_state->mesh &&
+        dispatch_operand_state->mesh->mesh == nullptr;
+    throw 554;
+}
 void observe_float_read(std::int32_t) {}
 void throw_during_float_read(std::int32_t) {
     if (dispatch_float_read_calls == dispatch_float_throw_at) throw 554;
@@ -182,6 +196,16 @@ bool pattern_drop_called = false;
 bool pattern_drop_bomb_mark = false;
 Vector3 pattern_drop_origin{};
 std::int32_t enemy_script_globals[4]{};
+DiagnosticAllocator::DiagnosticAllocator() : state_word_(0), resource_() {}
+RenderMesh::RenderMesh(std::int32_t columns_value, std::int32_t rows_value,
+                       std::int32_t surface, std::int32_t view)
+    : columns(columns_value), rows(rows_value), root(), strip_handles(nullptr),
+      strips(nullptr), vertices(nullptr), positions(nullptr), view_index(view),
+      context(nullptr) {
+    ++render_mesh_ctor_calls;
+    render_mesh_ctor_arguments = {columns_value, rows_value, surface, view};
+}
+RenderMesh::~RenderMesh() { ++render_mesh_dtor_calls; }
 Enemy::~Enemy() = default;
 EnemyController::~EnemyController() = default;
 BulletController::~BulletController() = default;
@@ -380,14 +404,16 @@ AnimationFile::AnimationFile()
       field_68(0), field_6c(0) {}
 AnimationFile::~AnimationFile() = default;
 AnimationHandle AnimationFile::spawn(const char* expected_stem, std::int32_t script,
-    const Vector3& position, float rotation, std::int32_t layer, Animation** output) {
+    const Vector3* position, float rotation, std::int32_t layer,
+    std::uint32_t flags, Animation** output) {
     assert(this == dispatch_test_animation_file);
     ++animation_spawn_calls;
     animation_spawn_stem = expected_stem;
     animation_spawn_script = script;
-    animation_spawn_position = position;
+    animation_spawn_position = position ? *position : Vector3{};
     animation_spawn_rotation = rotation;
     animation_spawn_layer = layer;
+    animation_spawn_flags = flags;
     animation_spawn_output = output;
     if (dispatch_order_size < static_cast<std::int32_t>(dispatch_order.size()))
         dispatch_order[dispatch_order_size++] = 3;
@@ -470,7 +496,6 @@ std::int32_t FrontInf::dialogue_ready() {
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
-bool execute_enemy_mesh_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queue_copy_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shared_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
@@ -513,6 +538,8 @@ int main() {
     alignas(Player) std::array<std::uint8_t, sizeof(Player)> player_storage{};
     current_game_controller = reinterpret_cast<GameController*>(game_storage.data());
     dispatch_test_player = reinterpret_cast<Player*>(player_storage.data());
+    DiagnosticAllocator dispatch_allocator;
+    process_allocator = &dispatch_allocator;
 
     // The native SoundInf queue scans exactly slots 0..30, publishes into
     // the first empty record, and leaves the final 32nd record untouched.
@@ -1003,6 +1030,83 @@ int main() {
     assert(original_laser_metadata->commands.size() == 2);
     assert(laser_record->owner->field_34 == 0x10);
     assert(laser_record->owner->commands.size() == 2);
+
+    // Native opcode 621 releases the previous EnemyMeshOwner before reading
+    // either operand, then conditionally allocates the 17x17 RenderMesh only
+    // for a strictly positive radius. Both allocator template paths and the
+    // EnemyMeshOwner destructor are the maintained production implementations.
+    enemy.state.field_2e8 = 9;
+    render_mesh_ctor_calls = 0;
+    render_mesh_dtor_calls = 0;
+    set_packet(621, {bits(5.5f),0x89abcdefu,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.mesh != nullptr && enemy.state.mesh->mesh != nullptr);
+    assert(enemy.state.mesh->radius == 5.5f);
+    assert(enemy.state.mesh->current_radius == 16.0f);
+    assert(enemy.state.mesh->color == 0x89abcdefu);
+    assert(enemy.state.mesh->phase_x.value == 0.0f && enemy.state.mesh->phase_y.value == 0.0f);
+    assert(render_mesh_ctor_calls == 1 && render_mesh_dtor_calls == 0);
+    assert((render_mesh_ctor_arguments == std::array<std::int32_t,4>{17,17,0,9}));
+    assert(enemy.state.mesh->mesh->columns == 17 && enemy.state.mesh->mesh->rows == 17);
+    assert(enemy.state.mesh->mesh->view_index == 9);
+
+    // Equality with zero takes the no-renderer branch. Replacing the owner
+    // destroys the prior real EnemyMeshOwner and its RenderMesh before the
+    // newly allocated owner is populated.
+    set_packet(621, {bits(0.0f),0x76543210u,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.mesh != nullptr && enemy.state.mesh->mesh == nullptr);
+    assert(enemy.state.mesh->radius == 0.0f && enemy.state.mesh->current_radius == 16.0f);
+    assert(enemy.state.mesh->color == 0x76543210u);
+    assert(render_mesh_ctor_calls == 1 && render_mesh_dtor_calls == 1);
+
+    // A negative radius also skips the factory. The old owner is still
+    // retired first, and the new owner keeps the signed negative radius.
+    set_packet(621, {bits(-3.0f),0x10203040u,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(enemy.state.mesh != nullptr && enemy.state.mesh->mesh == nullptr);
+    assert(enemy.state.mesh->radius == -3.0f && enemy.state.mesh->color == 0x10203040u);
+    assert(render_mesh_ctor_calls == 1 && render_mesh_dtor_calls == 1);
+
+    // The native order publishes a new owner before float operand 0. A
+    // throwing operand leaves that fresh, default-initialized owner published
+    // and does not reach the integer color read or conditional RenderMesh.
+    dispatch_operand_state = &enemy.state;
+    mesh_owner_visible_during_float_read = false;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_hook = &throw_during_mesh_float_read;
+    set_packet(621, {bits(-101.0f),0x55667788u,0,0,0,0,0,0}, 1);
+    bool mesh_float_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { mesh_float_threw = value == 554; }
+    dispatch_float_read_hook = nullptr;
+    assert(mesh_float_threw && mesh_owner_visible_during_float_read);
+    assert(dispatch_float_read_calls == 1 && dispatch_float_read_indices[0] == -101);
+    assert(enemy.state.mesh != nullptr && enemy.state.mesh->mesh == nullptr);
+    assert(enemy.state.mesh->radius == 0.0f && enemy.state.mesh->color == 0u);
+    assert(render_mesh_ctor_calls == 1 && render_mesh_dtor_calls == 1);
+
+    // A throwing integer color operand occurs after the radius write but
+    // before the conditional RenderMesh allocation.
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_hook = &throw_during_integer_read;
+    set_packet(621, {bits(7.25f),static_cast<std::uint32_t>(-101),0,0,0,0,0,0}, 2);
+    bool mesh_integer_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { mesh_integer_threw = value == 553; }
+    dispatch_integer_read_hook = nullptr;
+    assert(mesh_integer_threw);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(enemy.state.mesh != nullptr && enemy.state.mesh->mesh == nullptr);
+    assert(enemy.state.mesh->radius == 7.25f && enemy.state.mesh->current_radius == 16.0f);
+    assert(enemy.state.mesh->color == 0u);
+    assert(render_mesh_ctor_calls == 1 && render_mesh_dtor_calls == 1);
+
+    process_allocator->release_object(enemy.state.mesh);
+    enemy.state.mesh = nullptr;
+    assert(render_mesh_dtor_calls == 1);
+    process_allocator = nullptr;
 
     front_field_180_calls = 0;
     front_boss_gauge_calls = 0;
@@ -1827,7 +1931,7 @@ int main() {
     assert(sound_effect_calls == 1 && sound_effect_id == 19 && sound_effect_x == 3.0f);
     assert(animation_file_select_calls == 1 && animation_file_select_index == 3);
     assert(animation_spawn_calls == 1 && animation_spawn_script == 44);
-    assert(animation_spawn_layer == 3 && animation_spawn_output == nullptr);
+    assert(animation_spawn_layer == 3 && animation_spawn_flags == 0u && animation_spawn_output == nullptr);
     assert(dispatch_order_size == 3);
     assert((dispatch_order == std::array<std::int32_t,4>{1,2,3,0}));
     assert(std::abs(animation_spawn_rotation - 0.9272952f) < 0.00001f);
@@ -1837,5 +1941,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

@@ -28,7 +28,7 @@ bool execute_enemy_mesh_opcode(EnemyState& state, std::int32_t opcode) {
     if (mesh.radius > native_zero_56e0e8) {
         mesh.mesh = process_allocator->allocate_object<RenderMesh>(
             "D:\\cygwin\\home\\zun\\prog\\th20\\src\\game\\ecl.cpp:2395 RenderMeshInf",
-            17, 17, 0, state.field_2e8);
+            17, 17, 0, static_cast<std::int32_t>(state.field_2e8));
     }
     return true;
 }

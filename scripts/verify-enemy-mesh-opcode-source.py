@@ -73,7 +73,7 @@ def main() -> None:
         "if (mesh.radius > native_zero_56e0e8)",
         "process_allocator->allocate_object<RenderMesh>(",
         RENDER_LABEL.replace("\\", "\\\\"),
-        "17, 17, 0, state.field_2e8",
+        "17, 17, 0, static_cast<std::int32_t>(state.field_2e8)",
     ):
         assert required in source, required
     order = [
