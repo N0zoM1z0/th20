@@ -25,6 +25,7 @@
 #include "EnemyStateScriptControlOpcode.hpp"
 #include "EnemyStateFogOpcode.hpp"
 #include "EnemyStateLaserOpcode.hpp"
+#include "EnemyStateBulletCancelOpcode.hpp"
 #include "EnemyStateMembershipOpcode.hpp"
 #include "EnemyStateMeshOpcode.hpp"
 #include "EnemyStatePhaseOpcode.hpp"
@@ -275,6 +276,8 @@ int EnemyState::execute_opcode() {
     if (execute_enemy_queued_parameters_opcode(*this, opcode))
         return 0;
     if (execute_enemy_laser_opcode(*this, opcode))
+        return 0;
+    if (execute_enemy_bullet_cancel_opcode(*this, opcode))
         return 0;
 
     // Native opcode 560 is special: defeat requests a same-tick script exit

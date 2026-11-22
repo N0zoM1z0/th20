@@ -7,6 +7,7 @@
 #include "AnimationRuntimeOwner.hpp"
 #include "EnemyController.hpp"
 #include "AnimationFile.hpp"
+#include "Animation.hpp"
 #include "FogValue.hpp"
 #include "StageResource.hpp"
 #include "Context.hpp"
@@ -93,6 +94,12 @@ Vector3 animation_spawn_position{};
 float animation_spawn_rotation = 0.0f;
 std::int32_t animation_spawn_layer = -1;
 std::uint32_t animation_spawn_flags = 0xffffffffu;
+Animation* dispatch_test_animation = nullptr;
+std::uint32_t dispatch_test_animation_handle = 0;
+std::int32_t animation_pool_resolve_calls = 0;
+std::uint32_t animation_pool_resolve_last_handle = 0;
+std::int32_t bullet_cancel_calls = 0;
+std::int32_t bullet_cancel_mode = -1;
 Animation** animation_spawn_output = reinterpret_cast<Animation**>(1);
 bool dispatch_identifier_result = false;
 std::int32_t dispatch_identifier_calls = 0;
@@ -106,6 +113,9 @@ extern const float native_progress_mesh_alpha_fade_span_02_56fbf8 = 0.2f;
 extern const float native_negative_pi_56e0f8 = -3.1415927410125732f;
 extern const float native_screen_half_2_56c8d0 = 2.0f;
 extern const float native_screen_top_16_56cd90 = 16.0f;
+extern const float native_two = 2.0f;
+extern const float native_448 = 448.0f;
+extern const float native_gameplay_width = 384.0f;
 extern const float native_zero_56e0e8 = 0.0f;
 std::int32_t render_mesh_ctor_calls = 0;
 std::int32_t render_mesh_dtor_calls = 0;
@@ -115,7 +125,6 @@ bool front_dialogue_ready = false;
 std::int32_t front_dialogue_ready_calls = 0;
 std::int32_t front_dialogue_command_calls = 0;
 std::int32_t last_front_dialogue_command = 0;
-std::int32_t bullet_cancel_all_calls = 0;
 std::int32_t laser_cancel_all_calls = 0;
 struct DispatchLaserCapture {
     LaserController* receiver = nullptr;
@@ -214,9 +223,10 @@ Enemy::~Enemy() = default;
 EnemyController::~EnemyController() = default;
 BulletController::~BulletController() = default;
 void BulletController::enable() {}
-std::int32_t BulletController::cancel_all(std::int32_t) {
-    assert(this == dispatch_test_bullets);
-    ++bullet_cancel_all_calls;
+std::int32_t Bullet::cancel(std::int32_t mode) {
+    ++bullet_cancel_calls;
+    bullet_cancel_mode = mode;
+    state = 4;
     return 0;
 }
 std::int32_t LaserController::cancel_all(std::int32_t, std::int32_t) {
@@ -407,6 +417,9 @@ AnimationFile::AnimationFile()
       scripts(nullptr), textures(nullptr), stage(0), field_60(0), field_64(0),
       field_68(0), field_6c(0) {}
 AnimationFile::~AnimationFile() = default;
+AnimationBase::AnimationBase() noexcept = default;
+Animation::Animation() noexcept = default;
+Animation::~Animation() noexcept = default;
 AnimationHandle AnimationFile::spawn(const char* expected_stem, std::int32_t script,
     const Vector3* position, float rotation, std::int32_t layer,
     std::uint32_t flags, Animation** output) {
@@ -521,7 +534,11 @@ int execute_enemy_effect_position_spawn_opcode(EnemyState&) { return 0; }
 int execute_enemy_effect_spawn_and_update_opcode(EnemyState&) { return 0; }
 int execute_enemy_set_found_flag_bit_9_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_flags_add_opcode(EnemyState&) { ++animation_flags_add_calls; return 0; }
-Animation* AnimationPoolOwner::resolve_handle(std::uint32_t) { return nullptr; }
+Animation* AnimationPoolOwner::resolve_handle(std::uint32_t handle) {
+    ++animation_pool_resolve_calls;
+    animation_pool_resolve_last_handle = handle;
+    return handle == dispatch_test_animation_handle ? dispatch_test_animation : nullptr;
+}
 void AnimationPoolOwner::retire_handle(std::uint32_t) {}
 void AnimationPoolOwner::interrupt_handle(std::uint32_t, std::int32_t) {}
 int EnemyState::spawn_from_opcode() { return 0; }
@@ -544,6 +561,10 @@ int main() {
     DiagnosticAllocator dispatch_allocator;
     process_allocator = &dispatch_allocator;
 
+    Animation dispatch_animation;
+    dispatch_test_animation = &dispatch_animation;
+    dispatch_test_animation_handle = 0x12345678u;
+    dispatch_animation.base.vector_38.z = 1.57079632679f;
     // The native SoundInf queue scans exactly slots 0..30, publishes into
     // the first empty record, and leaves the final 32nd record untouched.
     for (auto& command : process_sound.commands) {
@@ -1268,7 +1289,132 @@ int main() {
     process_allocator->release_object(enemy.state.mesh);
     enemy.state.mesh = nullptr;
     assert(render_mesh_dtor_calls == 1);
-    process_allocator = nullptr;
+
+    // Native opcode 712 reads both dimensions before resolving animation
+    // link zero, then obtains the live Context BulletController, rotation and
+    // Enemy position before calling the complete 707B cancellation Boss.
+    // The rotated geometry distinguishes the animation's Z angle from an
+    // axis-aligned rectangle, while state/field gates exercise the real list.
+    enemy.state.animations.clear();
+    enemy.state.animations.emplace_back();
+    enemy.state.animations[0].handle.value = dispatch_test_animation_handle;
+    enemy.state.motion_110.position = {100.0f,100.0f,0.0f};
+    Bullet rotated_inside;
+    Bullet rotated_inside_state2;
+    Bullet axis_outside;
+    Bullet inactive_state;
+    Bullet excluded_field;
+    rotated_inside.state = 1;
+    rotated_inside.field_18 = 0;
+    rotated_inside.position = {100.0f,108.0f,0.0f};
+    rotated_inside.size.x = 0.5f;
+    rotated_inside.scale = 1.0f;
+    rotated_inside.flags.fields.effect_mode = 3;
+    rotated_inside_state2.state = 2;
+    rotated_inside_state2.field_18 = 0;
+    rotated_inside_state2.position = {100.0f,106.0f,0.0f};
+    rotated_inside_state2.size.x = 0.5f;
+    rotated_inside_state2.scale = 1.0f;
+    rotated_inside_state2.flags.fields.effect_mode = 2;
+    axis_outside.state = 1;
+    axis_outside.field_18 = 0;
+    axis_outside.position = {108.0f,100.0f,0.0f};
+    axis_outside.size.x = 0.5f;
+    axis_outside.scale = 1.0f;
+    axis_outside.flags.fields.effect_mode = 1;
+    inactive_state.state = 3;
+    inactive_state.field_18 = 0;
+    inactive_state.position = {100.0f,100.0f,0.0f};
+    inactive_state.size.x = 0.5f;
+    inactive_state.scale = 1.0f;
+    inactive_state.flags.fields.effect_mode = 2;
+    excluded_field.state = 1;
+    excluded_field.field_18 = 1;
+    excluded_field.position = {100.0f,100.0f,0.0f};
+    excluded_field.size.x = 0.5f;
+    excluded_field.scale = 1.0f;
+    excluded_field.flags.fields.effect_mode = 3;
+    dispatch_test_bullets->active.append(&rotated_inside.link);
+    dispatch_test_bullets->active.append(&rotated_inside_state2.link);
+    dispatch_test_bullets->active.append(&axis_outside.link);
+    dispatch_test_bullets->active.append(&inactive_state.link);
+    dispatch_test_bullets->active.append(&excluded_field.link);
+    const auto cancel_counter_before_712 = dispatch_test_bullets->cancel_counter;
+    animation_pool_resolve_calls = 0;
+    bullet_cancel_calls = 0;
+    bullet_cancel_mode = -1;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {20.0f,4.0f};
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(712, {bits(-101.0f),bits(-102.0f),0,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_float_read_hook = nullptr;
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(animation_pool_resolve_calls == 1);
+    assert(animation_pool_resolve_last_handle == dispatch_test_animation_handle);
+    assert(enemy.state.animations[0].handle.value == dispatch_test_animation_handle);
+    assert(bullet_cancel_calls == 2 && bullet_cancel_mode == 1);
+    assert(dispatch_test_bullets->cancel_counter == cancel_counter_before_712 + 2);
+    assert(rotated_inside.state == 4 && rotated_inside_state2.state == 4);
+    assert(axis_outside.state == 1 && inactive_state.state == 3 && excluded_field.state == 1);
+    assert(rotated_inside.flags.fields.effect_mode == 0);
+    assert(rotated_inside_state2.flags.fields.effect_mode == 0);
+    assert(axis_outside.flags.fields.effect_mode == 1);
+    assert(inactive_state.flags.fields.effect_mode == 2);
+    assert(excluded_field.flags.fields.effect_mode == 3);
+    rotated_inside.link.detach();
+    rotated_inside_state2.link.detach();
+    axis_outside.link.detach();
+    inactive_state.link.detach();
+    excluded_field.link.detach();
+
+    // If the second VM dimension read throws, the animation handle lookup and
+    // the 707B controller Boss are not entered. This pins the two-operand
+    // prefix as an observable native exception boundary.
+    animation_pool_resolve_calls = 0;
+    bullet_cancel_calls = 0;
+    const auto cancel_counter_before_712_throw = dispatch_test_bullets->cancel_counter;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {20.0f,4.0f};
+    dispatch_float_throw_at = 2;
+    dispatch_float_read_hook = &throw_during_float_read;
+    set_packet(712, {bits(-101.0f),bits(-102.0f),0,0,0,0,0,0}, 3);
+    bool bullet_cancel_dimension_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { bullet_cancel_dimension_threw = value == 554; }
+    dispatch_float_read_hook = nullptr;
+    dispatch_float_throw_at = 0;
+    assert(bullet_cancel_dimension_threw);
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(animation_pool_resolve_calls == 0 && bullet_cancel_calls == 0);
+    assert(dispatch_test_bullets->cancel_counter == cancel_counter_before_712_throw);
+
+    // The user rectangle can intersect a bullet outside the fixed 384x448
+    // gameplay viewport. The second original geometry test must reject it.
+    Bullet outside_viewport;
+    outside_viewport.state = 1;
+    outside_viewport.field_18 = 0;
+    outside_viewport.position = {100.0f,-2.0f,0.0f};
+    outside_viewport.size.x = 0.5f;
+    outside_viewport.scale = 1.0f;
+    outside_viewport.flags.fields.effect_mode = 2;
+    dispatch_test_bullets->active.append(&outside_viewport.link);
+    enemy.state.motion_110.position = {100.0f,5.0f,0.0f};
+    animation_pool_resolve_calls = 0;
+    bullet_cancel_calls = 0;
+    set_packet(712, {bits(20.0f),bits(4.0f),0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(animation_pool_resolve_calls == 1);
+    assert(bullet_cancel_calls == 0);
+    assert(dispatch_test_bullets->cancel_counter == cancel_counter_before_712_throw);
+    assert(outside_viewport.state == 1);
+    assert(outside_viewport.flags.fields.effect_mode == 2);
+    outside_viewport.link.detach();
+    enemy.state.motion_110.position = {100.0f,100.0f,0.0f};
 
     front_field_180_calls = 0;
     front_boss_gauge_calls = 0;
@@ -1512,14 +1658,20 @@ int main() {
     assert(screen_factory_calls == 1 && screen_factory_mode == 1);
 
     front_dialogue_command_calls = 0;
-    bullet_cancel_all_calls = 0;
     laser_cancel_all_calls = 0;
+    Bullet dialogue_cancel_bullet;
+    dialogue_cancel_bullet.state = 1;
+    dispatch_test_bullets->active.append(&dialogue_cancel_bullet.link);
+    bullet_cancel_calls = 0;
+    bullet_cancel_mode = -1;
     set_packet(518, {123,0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0);
     assert(front_dialogue_command_calls == 1);
     assert(last_front_dialogue_command == 123);
-    assert(bullet_cancel_all_calls == 1);
+    assert(bullet_cancel_calls == 1 && bullet_cancel_mode == 0);
+    assert(dialogue_cancel_bullet.state == 4);
     assert(laser_cancel_all_calls == 1);
+    dialogue_cancel_bullet.link.detach();
 
     // Opcode 524 preserves the original full signed input in EnemyState while
     // delegating the unsigned word to the published GameController owner.
@@ -2103,5 +2255,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
