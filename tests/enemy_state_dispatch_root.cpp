@@ -41,6 +41,7 @@
 #include "EnemyStateQueuedParametersOpcode.hpp"
 #include "EnemyStateScriptPointerOpcode.hpp"
 #include "EnemyStateSharedQueuedParametersOpcode.hpp"
+#include "EnemyStatePlayerAngleOpcode.hpp"
 #include "EnemyStateShotCommandOpcode.hpp"
 #include "EnemyStateShotFireOpcode.hpp"
 #include <array>
@@ -71,12 +72,8 @@ BulletController* dispatch_test_bullets = nullptr;
 BulletController* dispatch_test_bullets_alternate = nullptr;
 LaserController* dispatch_test_lasers = nullptr;
 LaserController* dispatch_test_lasers_alternate = nullptr;
-std::int32_t dispatch_player_calls = 0;
-std::int32_t dispatch_player_index = -1;
 std::int32_t game_controller_set_calls = 0;
 std::uint32_t game_controller_last_value = 0;
-std::int32_t player_flag_set_calls = 0;
-std::uint32_t player_flag_last_value = 0;
 std::int32_t card_finish_spell_calls = 0;
 bool front_has_dialogue = false;
 std::int32_t sound_effect_calls = 0;
@@ -186,6 +183,10 @@ BulletController* dispatch_operand_alternate_bullet_controller = nullptr;
 void retarget_enemy_controller_during_integer_read(std::int32_t) {
     dispatch_operand_original_context->enemies = dispatch_operand_alternate_enemy_controller;
     dispatch_operand_state->context = dispatch_operand_alternate_context;
+}
+void retarget_context_player_during_first_float_read(std::int32_t) {
+    if (dispatch_float_read_calls == 1)
+        dispatch_operand_state->context = dispatch_operand_alternate_context;
 }
 void retarget_bullet_controller_during_first_float_read(std::int32_t) {
     if (dispatch_float_read_calls == 1) {
@@ -365,22 +366,13 @@ float Enemy::read_float(std::int32_t index) {
     return call < static_cast<std::int32_t>(dispatch_float_read_values.size())
         ? dispatch_float_read_values[call] : 0.0f;
 }
-Player* Context::player() { return static_cast<Player*>(object_04); }
-Player* player(std::int32_t index) {
-    ++dispatch_player_calls;
-    dispatch_player_index = index;
-    return dispatch_test_player;
-}
 void GameController::set_field_34(std::uint32_t value) {
     assert(this == current_game_controller);
     ++game_controller_set_calls;
     game_controller_last_value = value;
 }
-void Player::set_entity_flag_10(std::uint32_t value) {
-    assert(this == dispatch_test_player);
-    ++player_flag_set_calls;
-    player_flag_last_value = value;
-}
+Player::~Player() = default;
+void Player::enable() {}
 Enemy* selected_test_enemy = nullptr;
 std::array<Enemy*,16> dispatch_find_enemies{};
 std::array<std::uint32_t,8> dispatch_find_identifiers{};
@@ -557,11 +549,12 @@ int main() {
     using namespace th20;
 
     alignas(GameController) std::array<std::uint8_t, sizeof(GameController)> game_storage{};
-    alignas(Player) std::array<std::uint8_t, sizeof(Player)> player_storage{};
     current_game_controller = reinterpret_cast<GameController*>(game_storage.data());
-    dispatch_test_player = reinterpret_cast<Player*>(player_storage.data());
     DiagnosticAllocator dispatch_allocator;
     process_allocator = &dispatch_allocator;
+    Player player_fixture;
+    Player alternate_player_fixture;
+    dispatch_test_player = &player_fixture;
 
     Animation dispatch_animation;
     dispatch_test_animation = &dispatch_animation;
@@ -620,6 +613,10 @@ int main() {
     dispatch_test_bullets_alternate = ::new (static_cast<void*>(alternate_bullet_controller_storage.data())) BulletController();
     dispatch_test_lasers = ::new (static_cast<void*>(laser_controller_storage.data())) LaserController();
     dispatch_test_lasers_alternate = ::new (static_cast<void*>(alternate_laser_controller_storage.data())) LaserController();
+    auto* alternate_player = &alternate_player_fixture;
+    context.object_04 = dispatch_test_player;
+    alternate_context.object_04 = alternate_player;
+    session.contexts[0].object_04 = dispatch_test_player;
     context.current_player = &player_record;
     context.enemies = &controller;
     context.primary_owner = dispatch_test_bullets;
@@ -1442,6 +1439,81 @@ int main() {
     assert(metadata_owner_618.use_count() == 1);
     metadata_owner_618.reset();
 
+    // Native opcode 617 computes atan2(player.y-target_y, player.x-target_x)
+    // and writes float destination zero. It deliberately obtains Context's
+    // Player twice: the first position reference survives operand 1, while a
+    // Context retarget during that read supplies the second Player for Y.
+    dispatch_test_player->position = {10.0f,20.0f,0.0f};
+    alternate_player->position = {100.0f,200.0f,0.0f};
+    enemy.state.context = &context;
+    enemy.main.stack.reset();
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {2.0f,50.0f};
+    dispatch_float_read_hook = &retarget_context_player_during_first_float_read;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(617, {bits(0.0f),bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 7);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_read_trace_enabled = false;
+    dispatch_float_read_hook = nullptr;
+    enemy.state.context = &context;
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'f' && dispatch_read_kinds[1] == 'f');
+    assert(dispatch_read_indices[0] == -101 && dispatch_read_indices[1] == -102);
+    std::uint32_t player_angle_bits_617 = enemy.main.stack.local(0);
+    float player_angle_617 = 0.0f;
+    std::memcpy(&player_angle_617, &player_angle_bits_617, sizeof(player_angle_617));
+    const float expected_player_angle_617 = std::atan2(150.0f,8.0f);
+    assert(std::fabs(player_angle_617 - expected_player_angle_617) < 0.00001f);
+
+    // Unlike Player::direction_to, native opcode 617 calls atan2 directly:
+    // the coincident point therefore writes atan2(0,0) == 0, not pi/2.
+    dispatch_test_player->position = {7.0f,9.0f,0.0f};
+    enemy.main.stack.reset();
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {7.0f,9.0f};
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(617, {bits(0.0f),bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 7);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_float_read_hook = nullptr;
+    std::uint32_t zero_vector_angle_bits_617 = enemy.main.stack.local(0);
+    float zero_vector_angle_617 = 1.0f;
+    std::memcpy(&zero_vector_angle_617, &zero_vector_angle_bits_617, sizeof(zero_vector_angle_617));
+    assert(zero_vector_angle_617 == 0.0f);
+
+    // The second operand exception occurs after both position references but
+    // before atan2/destination publication; the previous local remains intact.
+    enemy.main.stack.reset();
+    enemy.main.stack.local(0) = bits(123.0f);
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {2.0f,50.0f};
+    dispatch_float_throw_at = 2;
+    dispatch_float_read_hook = &throw_during_float_read;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(617, {bits(0.0f),bits(-101.0f),bits(-102.0f),0,0,0,0,0}, 7);
+    bool player_angle_second_operand_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { player_angle_second_operand_threw = value == 554; }
+    dispatch_read_trace_enabled = false;
+    dispatch_float_read_hook = nullptr;
+    dispatch_float_throw_at = 0;
+    assert(player_angle_second_operand_threw);
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'f' && dispatch_read_kinds[1] == 'f');
+    assert(enemy.main.stack.local(0) == bits(123.0f));
+    enemy.state.context = &context;
+
     // Native opcode 712 reads both dimensions before resolving animation
     // link zero, then obtains the live Context BulletController, rotation and
     // Enemy position before calling the complete 707B cancellation Boss.
@@ -1839,15 +1911,12 @@ int main() {
     assert(enemy.state.field_284 == 0);
 
     // Opcode 575 saves Player zero before the integer operand and forwards the
-    // full 32-bit word to the exact Player bit-10 setter.
-    dispatch_player_calls = 0;
-    dispatch_player_index = -1;
-    player_flag_set_calls = 0;
-    player_flag_last_value = 0;
+    // full 32-bit word through the real Player lookup and bit-10 setter.
+    player_fixture.entity_flags.bits = 0;
     set_packet(575, {0x80000001u,0,0,0,0,0,0,0});
     assert(enemy.state.execute_opcode() == 0);
-    assert(dispatch_player_calls == 1 && dispatch_player_index == 0);
-    assert(player_flag_set_calls == 1 && player_flag_last_value == 0x80000001u);
+    assert(session.contexts[0].object_04 == dispatch_test_player);
+    assert(player_fixture.entity_flags.fields.bit_10 == 1);
     assert((screen_factory_arguments == std::array<std::uint32_t,6>{
         0x11u,0x22u,0x33u,0u,0u,0u}));
 
@@ -2407,5 +2476,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

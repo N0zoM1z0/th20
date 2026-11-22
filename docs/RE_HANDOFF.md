@@ -35,16 +35,26 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoints — Enemy ECL opcodes 618 and 620
+## Latest checkpoints — Enemy ECL opcodes 617, 618 and 620
 
-The opcode-618 and opcode-620 shared queued-parameter fragments are now
-integrated into the maintained root host and focused verifiers. Their
-production/test/verifier changes are checkpointed and retained:
+Enemy ECL opcodes 617, 618 and 620 are now integrated into the maintained
+root host and focused verifiers. Their production/test/verifier changes are
+checkpointed and retained:
 
+- `src/EnemyStatePlayerAngleOpcode.cpp`
 - `src/EnemyStateSharedQueuedParametersOpcode.cpp`
 - `tests/enemy_state_dispatch_root.cpp`
+- `scripts/verify-enemy-player-angle-opcode-source.py`
 - `scripts/verify-enemy-shared-queued-opcode-source.py`
 - `scripts/verify-enemy-shared-queued-polar-opcode-source.py`
+
+Native opcode 617 is the **203-byte / 41-instruction / 8-E8** case at
+`0x004958C3`, selector index 135. It reads the live Context Player position,
+subtracts VM float operands 1/2 in X-then-Y order, calls the existing
+`scalar_math::arctangent(dy, dx)`, and writes float destination 0. Context is
+re-read between operands, and the root host tests retargeting with two real
+Player objects, direct atan2(0,0)==0 semantics, and second-operand exception
+preservation. See [the opcode-617 source frontier](ENEMY_41967_617_PLAYER_ANGLE_SOURCE_FRONTIER.md).
 
 Native opcode 618 is the **243-byte / 55-instruction / 10-E8** case at
 `0x00492BC6`, selector index 136. Its natural C++ source reads the integer
@@ -66,7 +76,7 @@ The false-returning root-test stub is removed. The production helper is
 included in `HOST_SOURCES` and the locked-profile COFF compile list; the
 native opcode verifier is invoked by the maintained root verifier. The
 focused root host passes under ASan/UBSan, and the root verifier compiles
-**36 locked-profile i386 COFF source units**. See the dedicated
+**39 locked-profile i386 COFF source units** and 105 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -86,6 +96,9 @@ Recent committed case families exercised by the maintained root include:
   COW selector and PMR BulletCommand vector.
 - **614:** 572B queued-record copy; real PMR forward-list and exact 119B record
   assignment.
+- **617:** 203B Player-relative angle; two live Context/Player position reads,
+  existing atan2 leaf, destination writeback, Context-retarget semantics and
+  second-operand exception coverage.
 - **618:** 243B shared queued-polar update; real ensure-only shared record,
   pair extraction, temporary Vector3 and existing polar leaf; XY-only writes
   with Z/vector_40 preservation and second-float exception ordering.
@@ -110,9 +123,9 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **36 locked-profile i386
-COFF units** and runs the focused root host under ASan/UBSan, including opcode
-618 and 620. The exact per-case boundaries and host limitations are documented in the
+The maintained root verifier currently compiles **39 locked-profile i386
+COFF units** and runs 105 focused host source units under ASan/UBSan, including
+opcodes 617, 618 and 620. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
 

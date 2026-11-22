@@ -20,7 +20,6 @@ std::int32_t Timer::every(std::int32_t divisor) const {
     return current!=previous && current%divisor==0?1:0;
 }
 std::int32_t Player::frame_changed() {return timer_644.changed();}
-Player* Context::player() {return static_cast<Player*>(object_04);}
 PlayerShot* Player::find_shot(std::int32_t identifier) {
     auto& controller=shots;
     return controller.find(identifier);

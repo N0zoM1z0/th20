@@ -192,6 +192,26 @@ source fragments.
   copy, self-assignment, destination and source growth, and a second-operand
   exception before mutation are tested. The assignment leaf replays 1/1
   exact; the 41,967B parent remains NONEXACT.
+- Native opcode 617 is the 203-byte / 41-instruction Player-relative angle
+  branch at 0x004958C3, selector index 135, with eight original E8 calls.
+  The production helper re-reads the live Context Player for each coordinate,
+  calls the existing atan2 leaf directly, and writes VM float destination 0.
+  The root host uses real Player fixtures and tests Context retargeting between
+  operands, atan2(0,0)==0 (not Player::direction_to's pi/2 special case), and
+  second-operand exception preservation. The 17B +4 Context::player getter is
+  a shared physical accessor and receives no duplicate byte credit. See the
+  [opcode-617 source frontier](ENEMY_41967_617_PLAYER_ANGLE_SOURCE_FRONTIER.md).
+  The 41,967B parent remains NONEXACT; no standalone unit or byte credit.
+- Native opcode 617 is the 203-byte / 41-instruction player-angle case at
+  0x004958C3, selector index 135, with eight original E8 calls. The maintained
+  root host executes two real Context::player / Player::position_ref reads,
+  the existing atan2 wrapper and VM destination writeback. A Context retarget
+  during float operand 1 proves X retains the first captured Player while Y
+  uses the second live Context; a second-operand exception preserves the
+  destination. The Context accessor was moved to Context.cpp and the affected
+  Context/DamageQueryProtocol replay passes 17/17. See the
+  [opcode-617 source frontier](ENEMY_41967_617_PLAYER_ANGLE_SOURCE_FRONTIER.md).
+  The 41,967B parent remains NONEXACT; no standalone unit or byte credit.
 - Native opcode 618 is the 243-byte / 55-instruction shared queued-polar
   update at 0x00492BC6, selector index 136, with ten original E8 calls.
   The maintained root host executes the production helper, real ensure-only
@@ -363,7 +383,7 @@ function bodies; no duplicate byte credit is assigned.
 The remaining inline cases in the original 41,967B body, including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
 additional opcode ranges, still need source recovery. The maintained root now
-also represents 609/610/611/612, 614, 618, 620, 621, 702/703/711/712/713 and
+also represents 609/610/611/612, 614, 617, 618, 620, 621, 702/703/711/712/713 and
 800/801/802, alongside 324, 524/575, 527/534, 539, 548, 549, 551, 552,
 553/554, 555 and reserved selector 569. These fragments do not close their
 surrounding switch tables or the dispatcher as a whole. Unknown opcodes
@@ -394,18 +414,18 @@ scripts/compile-probe.sh src/EnemyStateDynamicParameterOpcode.cpp build/core212-
 scripts/compile-probe.sh src/EnemyStateExecuteOpcode.cpp build/core209-canonical/EnemyStateExecuteOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 ```
 
-The maintained dispatcher verifier currently compiles **36** locked-profile
-i386 COFF source units and executes the root-host case families under
+The maintained dispatcher verifier currently compiles **39** locked-profile
+i386 COFF source units and executes **105** focused host source units under
 ASan/UBSan. Its focused native checks include the 609-612 shared
 1,457B/314-instruction/29-E8 branch, the 614 572B/129-instruction/19-E8
-queue-copy branch, the 618 243B/55-instruction/10-E8 shared queued-polar
-branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the four Laser branches
+queue-copy branch, the 617 203B/41-instruction/8-E8 Player-relative angle
+branch, the 618 243B/55-instruction/10-E8 shared queued-polar branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the four Laser branches
 (2,699B/607 CFG heads/62 E8), the 712 196B/42-instruction/9-E8
 rectangle-cancel branch, and the 800-802 script-control branches
 (627B/128 instructions/25 E8). It also checks the 553/554 setter maps and
 their ordered COFF relocations. Exact leaf replay receipts and explicit
-host-fixture boundaries are recorded in each linked case frontier. Opcode
-620 is included in this 36-unit focused result. No full cold replay or
+host-fixture boundaries are recorded in each linked case frontier. Opcodes
+617, 618 and 620 are included in this 39-unit focused result. No full cold replay or
 whole-root byte credit is claimed; the parent remains NONEXACT.
 
 No assembly, byte padding, or synthetic instruction sequences are used. The
