@@ -25,13 +25,16 @@ public:
     void* allocate_bytes(std::int32_t size, const char* label);
     void release_bytes(void* memory);
 
-    // Destroy outside the lock, then release scalar storage under slot 1.
+    // Preserve the native unconditional destroy_at call, including for
+    // trivially destructible template arguments. The SDK destroy_at body is
+    // itself a no-op for those types, but its call is part of the original
+    // out-of-line /Od allocator contribution. Destruction remains outside the
+    // lock; scalar storage is released under slot 1.
     // Null is a no-op; process startup remains an external dependency.
     template<class T>
     void release_object(T* memory) {
         if (!memory) return;
-        if constexpr (!std::is_trivially_destructible_v<T>)
-            std::destroy_at(memory);
+        std::destroy_at(memory);
         std::lock_guard<std::recursive_mutex> guard(process_locks.slot(1));
         ::operator delete(memory);
     }
