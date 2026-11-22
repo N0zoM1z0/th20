@@ -62,9 +62,11 @@ Player* dispatch_test_player = nullptr;
 alignas(BulletController) std::array<std::uint8_t, sizeof(BulletController)> bullet_controller_storage{};
 alignas(BulletController) std::array<std::uint8_t, sizeof(BulletController)> alternate_bullet_controller_storage{};
 alignas(LaserController) std::array<std::uint8_t, sizeof(LaserController)> laser_controller_storage{};
+alignas(LaserController) std::array<std::uint8_t, sizeof(LaserController)> alternate_laser_controller_storage{};
 BulletController* dispatch_test_bullets = nullptr;
 BulletController* dispatch_test_bullets_alternate = nullptr;
 LaserController* dispatch_test_lasers = nullptr;
+LaserController* dispatch_test_lasers_alternate = nullptr;
 std::int32_t dispatch_player_calls = 0;
 std::int32_t dispatch_player_index = -1;
 std::int32_t game_controller_set_calls = 0;
@@ -106,7 +108,23 @@ std::int32_t front_dialogue_command_calls = 0;
 std::int32_t last_front_dialogue_command = 0;
 std::int32_t bullet_cancel_all_calls = 0;
 std::int32_t laser_cancel_all_calls = 0;
-std::int32_t laser_reset_calls = 0;
+struct DispatchLaserCapture {
+    LaserController* receiver = nullptr;
+    std::int32_t kind = -1, view_index = -1;
+    Vector3 position{}, velocity{}, vector_0c{};
+    float angle = 0.0f, length = 0.0f, field_14 = 0.0f, length_limit = 0.0f;
+    float width = 0.0f, speed = 0.0f, radial_offset = 0.0f;
+    float angular_velocity = 0.0f, growth_speed = 0.0f;
+    float field_1c = 0.0f, field_20 = 0.0f, field_24 = 0.0f, field_30 = 0.0f;
+    std::uint32_t type = 0, color = 0, flags = 0, handle = 0, count = 0;
+    std::uint32_t field_2c = 0, field_34 = 0, command_index = 0;
+    std::int32_t delay = 0, grow_time = 0, sustain_time = 0, shrink_time = 0;
+    std::int32_t sound = 0, alternate_sound = 0, field_48 = 0, field_4c = 0;
+    std::int32_t motion_sound = 0;
+    std::vector<BulletCommand> commands;
+};
+DispatchLaserCapture dispatch_laser_capture;
+std::int32_t dispatch_laser_create_calls = 0;
 std::int32_t front_field_180_calls = 0;
 std::int32_t front_field_180_value = 0;
 std::int32_t front_stage_title_calls = 0;
@@ -178,9 +196,98 @@ std::int32_t LaserController::cancel_all(std::int32_t, std::int32_t) {
     ++laser_cancel_all_calls;
     return 0;
 }
-std::int32_t LaserController::reset_all_lasers() {
-    assert(this == dispatch_test_lasers);
-    ++laser_reset_calls;
+LaserController::~LaserController() = default;
+std::int32_t LaserController::create_laser(std::int32_t kind, const void* parameters) {
+    assert(this == dispatch_test_lasers || this == dispatch_test_lasers_alternate);
+    ++dispatch_laser_create_calls;
+    dispatch_laser_capture = DispatchLaserCapture{};
+    dispatch_laser_capture.receiver = this;
+    dispatch_laser_capture.kind = kind;
+    switch (kind) {
+    case 0: {
+        const auto& p = *static_cast<const LaserType0Parameters*>(parameters);
+        dispatch_laser_capture.position = p.position;
+        dispatch_laser_capture.angle = p.angle;
+        dispatch_laser_capture.length = p.length;
+        dispatch_laser_capture.field_14 = p.field_14;
+        dispatch_laser_capture.length_limit = p.length_limit;
+        dispatch_laser_capture.width = p.width;
+        dispatch_laser_capture.speed = p.speed;
+        dispatch_laser_capture.type = p.type;
+        dispatch_laser_capture.color = p.color;
+        dispatch_laser_capture.radial_offset = p.radial_offset;
+        dispatch_laser_capture.command_index = p.command_index;
+        dispatch_laser_capture.flags = p.flags;
+        dispatch_laser_capture.field_48 = p.field_48;
+        dispatch_laser_capture.field_4c = p.field_4c;
+        dispatch_laser_capture.view_index = p.view_index;
+        dispatch_laser_capture.commands.assign(p.commands.begin(), p.commands.end());
+        break;
+    }
+    case 1: {
+        const auto& p = *static_cast<const LaserType1Parameters*>(parameters);
+        dispatch_laser_capture.position = p.position;
+        dispatch_laser_capture.velocity = p.velocity;
+        dispatch_laser_capture.angle = p.angle;
+        dispatch_laser_capture.angular_velocity = p.angular_velocity;
+        dispatch_laser_capture.length_limit = p.length_limit;
+        dispatch_laser_capture.length = p.length;
+        dispatch_laser_capture.width = p.width;
+        dispatch_laser_capture.growth_speed = p.growth_speed;
+        dispatch_laser_capture.delay = p.delay;
+        dispatch_laser_capture.grow_time = p.grow_time;
+        dispatch_laser_capture.sustain_time = p.sustain_time;
+        dispatch_laser_capture.shrink_time = p.shrink_time;
+        dispatch_laser_capture.sound = p.sound;
+        dispatch_laser_capture.alternate_sound = p.field_44;
+        dispatch_laser_capture.handle = p.handle;
+        dispatch_laser_capture.radial_offset = p.radial_offset;
+        dispatch_laser_capture.command_index = p.command_index;
+        dispatch_laser_capture.type = p.type;
+        dispatch_laser_capture.color = p.color;
+        dispatch_laser_capture.flags = p.flags;
+        dispatch_laser_capture.view_index = p.view_index;
+        dispatch_laser_capture.commands.assign(p.commands.begin(), p.commands.end());
+        break;
+    }
+    case 2: {
+        const auto& p = *static_cast<const LaserType2Parameters*>(parameters);
+        dispatch_laser_capture.position = p.position;
+        dispatch_laser_capture.angle = p.angle;
+        dispatch_laser_capture.width = p.width;
+        dispatch_laser_capture.speed = p.speed;
+        dispatch_laser_capture.type = p.type;
+        dispatch_laser_capture.color = p.color;
+        dispatch_laser_capture.count = p.count;
+        dispatch_laser_capture.radial_offset = p.radial_offset;
+        dispatch_laser_capture.flags = p.flags.word;
+        dispatch_laser_capture.sound = p.sound;
+        dispatch_laser_capture.motion_sound = p.motion_sound;
+        dispatch_laser_capture.command_index = p.command_index;
+        dispatch_laser_capture.view_index = p.view_index;
+        dispatch_laser_capture.commands.assign(p.commands.begin(), p.commands.end());
+        break;
+    }
+    case 3: {
+        const auto& p = *static_cast<const LaserType3Parameters*>(parameters);
+        dispatch_laser_capture.position = p.position;
+        dispatch_laser_capture.vector_0c = p.vector_0c;
+        dispatch_laser_capture.angle = p.angle;
+        dispatch_laser_capture.field_1c = p.field_1c;
+        dispatch_laser_capture.field_20 = p.field_20;
+        dispatch_laser_capture.field_24 = p.field_24;
+        dispatch_laser_capture.handle = p.handle;
+        dispatch_laser_capture.field_2c = p.field_2c;
+        dispatch_laser_capture.field_30 = p.field_30;
+        dispatch_laser_capture.field_34 = p.field_34;
+        dispatch_laser_capture.flags = p.flags;
+        dispatch_laser_capture.view_index = p.view_index;
+        dispatch_laser_capture.commands.assign(p.commands.begin(), p.commands.end());
+        break;
+    }
+    default:
+        assert(false);
+    }
     return 0;
 }
 std::int32_t Enemy::defeat() { return defeat_result; }
@@ -223,7 +330,6 @@ Player* player(std::int32_t index) {
     dispatch_player_index = index;
     return dispatch_test_player;
 }
-LaserController* laser_controller(std::int32_t) { return dispatch_test_lasers; }
 void GameController::set_field_34(std::uint32_t value) {
     assert(this == current_game_controller);
     ++game_controller_set_calls;
@@ -369,7 +475,6 @@ bool execute_enemy_queue_copy_opcode(EnemyState&, std::int32_t) { return false; 
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shared_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
-bool execute_enemy_laser_opcode(EnemyState&, std::int32_t) { return false; }
 int execute_enemy_animation_secondary_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_state_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_effect_flag2_opcode(EnemyState&) { return 0; }
@@ -460,12 +565,14 @@ int main() {
     process_stage_resource = &stage_resource;
     dispatch_test_bullets = ::new (static_cast<void*>(bullet_controller_storage.data())) BulletController();
     dispatch_test_bullets_alternate = ::new (static_cast<void*>(alternate_bullet_controller_storage.data())) BulletController();
-    dispatch_test_lasers = reinterpret_cast<LaserController*>(laser_controller_storage.data());
+    dispatch_test_lasers = ::new (static_cast<void*>(laser_controller_storage.data())) LaserController();
+    dispatch_test_lasers_alternate = ::new (static_cast<void*>(alternate_laser_controller_storage.data())) LaserController();
     context.current_player = &player_record;
     context.enemies = &controller;
     context.primary_owner = dispatch_test_bullets;
     alternate_context.enemies = &alternate_controller;
     alternate_context.primary_owner = dispatch_test_bullets_alternate;
+    alternate_context.object_14 = dispatch_test_lasers_alternate;
     session.contexts[0].primary_owner = dispatch_test_bullets;
     context.object_14 = dispatch_test_lasers;
     session.contexts[0].object_14 = dispatch_test_lasers;
@@ -716,6 +823,186 @@ int main() {
     assert(bits(partial_record.owner->commands[4].operand_00) == bits(-0.0f));
     assert(partial_record.owner->commands[4].operand_04 == 0.0f);
     assert(partial_record.owner->field_30 == 17);
+
+    // The four large Laser branches now execute their production helper with
+    // real LaserType0/1/2/3 temporary constructors, the real writable-shot
+    // selector, and a capture-only create_laser factory boundary.
+    std::shared_ptr<ShotMetadata> laser_shared_original;
+    const auto prepare_laser_shot = [&](bool use_vector40, bool share_owner) -> EnemyQueuedRecord* {
+        enemy.state.queued.clear();
+        auto& record = enemy.state.queued.emplace_front();
+        record.owner = std::make_shared<ShotMetadata>();
+        auto& metadata = *record.owner;
+        metadata.commands.resize(2);
+        metadata.commands[0].operand_00 = 1.25f;
+        metadata.commands[0].operand_10 = 0x101;
+        metadata.commands[0].opcode = 0x202;
+        metadata.commands[0].flags = 0x303;
+        metadata.commands[1].operand_04 = -2.5f;
+        metadata.commands[1].operand_14 = 0x404;
+        metadata.commands[1].opcode = 0x505;
+        metadata.commands[1].flags = 0x606;
+        metadata.field_00 = 1.75f;
+        metadata.field_14 = 2.5f;
+        metadata.field_24 = 3;
+        metadata.field_28 = 4;
+        metadata.field_2c = 5;
+        metadata.field_30 = 6;
+        metadata.field_34 = 0x10;
+        metadata.sound = 7;
+        metadata.alternate_sound = 8;
+        record.parameters.type = 9;
+        record.parameters.color = 10;
+        record.parameters.position = {11.0f,12.0f,13.0f};
+        record.parameters.angle = 0.5f;
+        record.parameters.speed = 14.0f;
+        record.vector_34 = {1.0f,2.0f,3.0f};
+        record.vector_40 = use_vector40
+            ? Vector3{10.0f,20.0f,1.0f} : Vector3{10.0f,20.0f,0.9f};
+        enemy.state.motion_110.position = {100.0f,200.0f,300.0f};
+        enemy.state.field_2e8 = 6;
+        if (share_owner) laser_shared_original = record.owner;
+        else laser_shared_original.reset();
+        return &record;
+    };
+
+    auto* laser_record = prepare_laser_shot(true, false);
+    dispatch_laser_create_calls = 0;
+    set_packet(702, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_laser_create_calls == 1 && dispatch_laser_capture.kind == 0);
+    assert(dispatch_laser_capture.receiver == dispatch_test_lasers);
+    assert(dispatch_laser_capture.position.x == 11.0f &&
+           dispatch_laser_capture.position.y == 22.0f &&
+           dispatch_laser_capture.position.z == 0.0f);
+    assert(dispatch_laser_capture.angle == 0.5f);
+    assert(dispatch_laser_capture.length == 12.0f && dispatch_laser_capture.field_14 == 11.0f);
+    assert(dispatch_laser_capture.length_limit == 13.0f && dispatch_laser_capture.width == 2.5f);
+    assert(dispatch_laser_capture.speed == 14.0f);
+    assert(dispatch_laser_capture.type == 9 && dispatch_laser_capture.color == 10);
+    assert(dispatch_laser_capture.radial_offset == 1.75f && dispatch_laser_capture.flags == 0x11u);
+    assert(dispatch_laser_capture.field_48 == 7 && dispatch_laser_capture.field_4c == 8);
+    assert(dispatch_laser_capture.view_index == 6);
+    assert(dispatch_laser_capture.commands.size() == 2);
+    assert(dispatch_laser_capture.commands[0].opcode == 0x202 &&
+           dispatch_laser_capture.commands[0].flags == 0x303);
+    assert(dispatch_laser_capture.commands[0].operand_00 == 1.25f &&
+           dispatch_laser_capture.commands[0].operand_10 == 0x101);
+    assert(dispatch_laser_capture.commands[1].operand_04 == -2.5f &&
+           dispatch_laser_capture.commands[1].operand_14 == 0x404);
+    assert(laser_record->owner.use_count() == 1);
+
+    // Opcode 703 takes the fallback position path, performs COW on a shared
+    // metadata owner, reads handle operand 1 late, and then resolves the
+    // current Context LaserController after that operand read.
+    laser_record = prepare_laser_shot(false, true);
+    dispatch_laser_create_calls = 0;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = 0x12345678;
+    dispatch_integer_read_hook = &retarget_enemy_controller_during_integer_read;
+    dispatch_operand_original_context = &context;
+    dispatch_operand_alternate_context = &alternate_context;
+    dispatch_operand_state = &enemy.state;
+    dispatch_operand_alternate_enemy_controller = &alternate_controller;
+    set_packet(703, {0,static_cast<std::uint32_t>(-101),0,0,0,0,0,0}, 2);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(context.enemies == &alternate_controller && enemy.state.context == &alternate_context);
+    assert(dispatch_laser_create_calls == 1 && dispatch_laser_capture.kind == 1);
+    assert(dispatch_laser_capture.receiver == dispatch_test_lasers_alternate);
+    assert(dispatch_laser_capture.position.x == 101.0f &&
+           dispatch_laser_capture.position.y == 202.0f &&
+           dispatch_laser_capture.position.z == 303.0f);
+    assert(dispatch_laser_capture.angle == 0.5f && dispatch_laser_capture.growth_speed == 14.0f);
+    assert(dispatch_laser_capture.length == 11.0f && dispatch_laser_capture.length_limit == 12.0f);
+    assert(dispatch_laser_capture.width == 2.5f && dispatch_laser_capture.radial_offset == 1.75f);
+    assert(dispatch_laser_capture.delay == 3 && dispatch_laser_capture.grow_time == 4);
+    assert(dispatch_laser_capture.sustain_time == 5 && dispatch_laser_capture.shrink_time == 6);
+    assert(dispatch_laser_capture.sound == 7 && dispatch_laser_capture.alternate_sound == 8);
+    assert(dispatch_laser_capture.flags == 0x12u && dispatch_laser_capture.handle == 0x12345678u);
+    assert(dispatch_laser_capture.view_index == 6 && dispatch_laser_capture.commands.size() == 2);
+    assert(dispatch_laser_capture.commands[0].operand_00 == 1.25f &&
+           dispatch_laser_capture.commands[0].operand_10 == 0x101);
+    assert(dispatch_laser_capture.commands[1].operand_04 == -2.5f &&
+           dispatch_laser_capture.commands[1].operand_14 == 0x404);
+    assert(laser_record->owner != laser_shared_original);
+    assert(laser_shared_original->field_34 == 0x10 && laser_shared_original->commands.size() == 2);
+    context.enemies = &controller;
+    enemy.state.context = &context;
+
+    laser_record = prepare_laser_shot(true, false);
+    dispatch_laser_create_calls = 0;
+    set_packet(711, {0,0,0,0,0,0,0,0});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_laser_create_calls == 1 && dispatch_laser_capture.kind == 2);
+    assert(dispatch_laser_capture.receiver == dispatch_test_lasers);
+    assert(dispatch_laser_capture.position.x == 11.0f &&
+           dispatch_laser_capture.position.y == 22.0f &&
+           dispatch_laser_capture.position.z == 0.0f);
+    assert(dispatch_laser_capture.angle == 0.5f && dispatch_laser_capture.speed == 14.0f);
+    assert(dispatch_laser_capture.type == 9 && dispatch_laser_capture.color == 10);
+    assert(dispatch_laser_capture.count == 3 && dispatch_laser_capture.width == 2.5f);
+    assert(dispatch_laser_capture.radial_offset == 1.75f && dispatch_laser_capture.flags == 1u);
+    assert(dispatch_laser_capture.sound == 7 && dispatch_laser_capture.motion_sound == 8);
+    assert(dispatch_laser_capture.view_index == 6 && dispatch_laser_capture.commands.size() == 2);
+    assert(dispatch_laser_capture.commands[0].operand_00 == 1.25f &&
+           dispatch_laser_capture.commands[0].operand_10 == 0x101);
+
+    laser_record = prepare_laser_shot(false, false);
+    dispatch_laser_create_calls = 0;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = 0x87654321;
+    dispatch_integer_read_hook = &retarget_enemy_controller_during_integer_read;
+    dispatch_operand_original_context = &context;
+    dispatch_operand_alternate_context = &alternate_context;
+    dispatch_operand_state = &enemy.state;
+    dispatch_operand_alternate_enemy_controller = &alternate_controller;
+    set_packet(713, {0,static_cast<std::uint32_t>(-101),0,0,0,0,0,0}, 2);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(context.enemies == &alternate_controller && enemy.state.context == &alternate_context);
+    assert(dispatch_laser_create_calls == 1 && dispatch_laser_capture.kind == 3);
+    assert(dispatch_laser_capture.receiver == dispatch_test_lasers_alternate);
+    assert(dispatch_laser_capture.position.x == 101.0f &&
+           dispatch_laser_capture.position.y == 202.0f &&
+           dispatch_laser_capture.position.z == 303.0f);
+    assert(dispatch_laser_capture.angle == 0.5f);
+    assert(dispatch_laser_capture.field_2c == 10u && dispatch_laser_capture.field_34 == 3u);
+    assert(dispatch_laser_capture.field_24 == 2.5f && dispatch_laser_capture.field_20 == 13.0f);
+    assert(dispatch_laser_capture.field_30 == 1.75f);
+    assert(dispatch_laser_capture.handle == 0x87654321u);
+    assert(dispatch_laser_capture.flags == 0u && dispatch_laser_capture.view_index == 6);
+    assert(dispatch_laser_capture.commands.size() == 2);
+    assert(dispatch_laser_capture.commands[1].operand_04 == -2.5f &&
+           dispatch_laser_capture.commands[1].operand_14 == 0x404);
+    context.enemies = &controller;
+    enemy.state.context = &context;
+
+    // The late 703 handle operand is read after the COW selection and all
+    // metadata copies. A thrown VM read must skip the factory call while
+    // preserving the detached metadata owner and the original shared value.
+    laser_record = prepare_laser_shot(false, true);
+    auto* original_laser_metadata = laser_shared_original.get();
+    dispatch_laser_create_calls = 0;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_hook = &throw_during_integer_read;
+    set_packet(703, {0,static_cast<std::uint32_t>(-101),0,0,0,0,0,0}, 2);
+    bool laser_handle_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { laser_handle_threw = value == 553; }
+    dispatch_integer_read_hook = nullptr;
+    assert(laser_handle_threw);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(dispatch_laser_create_calls == 0);
+    assert(laser_record->owner.get() != original_laser_metadata);
+    assert(laser_record->owner.use_count() == 1);
+    assert(laser_shared_original.use_count() == 1);
+    assert(original_laser_metadata->field_34 == 0x10);
+    assert(original_laser_metadata->commands.size() == 2);
+    assert(laser_record->owner->field_34 == 0x10);
+    assert(laser_record->owner->commands.size() == 2);
 
     front_field_180_calls = 0;
     front_boss_gauge_calls = 0;
@@ -1090,9 +1377,9 @@ int main() {
     assert(controller.data.timer_8c.current == timer_before_clear + 5);
     assert(enemy.state.field_284 == 0);
 
-    laser_reset_calls = 0;
     set_packet(539, {0,0,0,0,0,0,0,0});
-    assert(enemy.state.execute_opcode() == 0 && laser_reset_calls == 1);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_test_lasers->active.next_value() == nullptr);
 
     enemy.state.flags.word_04 = 0xa5000000u;
     set_packet(538, {1,0,0,0,0,0,0,0});
@@ -1545,8 +1832,10 @@ int main() {
     assert((dispatch_order == std::array<std::int32_t,4>{1,2,3,0}));
     assert(std::abs(animation_spawn_rotation - 0.9272952f) < 0.00001f);
 
+    dispatch_test_lasers_alternate->~LaserController();
+    dispatch_test_lasers->~LaserController();
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
