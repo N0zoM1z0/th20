@@ -147,6 +147,7 @@ void retarget_bullet_controller_during_first_float_read(std::int32_t) {
     }
 }
 void throw_during_integer_read(std::int32_t) { throw 553; }
+void observe_integer_read(std::int32_t) {}
 void throw_during_float_read(std::int32_t) {
     if (dispatch_float_read_calls == dispatch_float_throw_at) throw 554;
 }
@@ -1112,9 +1113,13 @@ int main() {
     dispatch_find_enemies[2] = &found_enemy2;
     dispatch_find_calls = 0;
     dispatch_find_identifiers = {};
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_integer_read_value = 0;
     selected_test_enemy = nullptr;
-    set_packet(802, {0,0,0,0,0,0,0,0});
+    set_packet(802, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
     assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
     assert(dispatch_find_calls == 3 && dispatch_find_receiver == &controller);
     assert(dispatch_find_identifiers[0] == found_enemy.state.identifier.get());
     assert(dispatch_find_identifiers[1] == enemy.state.identifier.get());
@@ -1128,6 +1133,29 @@ int main() {
     assert(enemy.main.time == 55.0f);
     assert(enemy.main.position.subroutine == 0 && enemy.main.position.offset == 0);
     assert(enemy.main.async_id == 12);
+
+    // A nonnegative phase with an empty inline script still follows the
+    // native non-null array-address gate: it retires/reset the target and
+    // calls EclManager::select with the empty string, which resolves to -1.
+    found_enemy2.state.phases[0].life = 0;
+    found_enemy2.state.phases[0].script[0] = 0;
+    found_enemy2.main.time = 88.0f;
+    found_enemy2.main.position.subroutine = 5;
+    found_enemy2.main.position.offset = 6;
+    found_enemy2.main.async_id = 10;
+    dispatch_find_calls = 0;
+    dispatch_find_identifiers = {};
+    dispatch_integer_read_calls = 0;
+    set_packet(802, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(dispatch_find_calls == 3);
+    assert(found_enemy2.main.time == 0.0f);
+    assert(found_enemy2.main.position.subroutine == -1);
+    assert(found_enemy2.main.position.offset == 0);
+    assert(found_enemy2.main.async_id == -1);
+    assert(found_enemy2.current_runtime == &found_enemy2.main);
+    dispatch_integer_read_hook = nullptr;
     dispatch_find_enemies = {};
     selected_test_enemy = &enemy;
 
