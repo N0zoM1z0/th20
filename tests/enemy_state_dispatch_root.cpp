@@ -48,6 +48,7 @@
 #include <cstring>
 #include <iostream>
 #include <initializer_list>
+#include <iterator>
 #include <algorithm>
 #include <cmath>
 #include <new>
@@ -181,6 +182,9 @@ void retarget_bullet_controller_during_first_float_read(std::int32_t) {
     }
 }
 void throw_during_integer_read(std::int32_t) { throw 553; }
+void throw_during_second_integer_read(std::int32_t) {
+    if (dispatch_integer_read_calls == 2) throw 557;
+}
 void observe_integer_read(std::int32_t) {}
 void throw_during_mesh_float_read(std::int32_t) {
     mesh_owner_visible_during_float_read =
@@ -496,7 +500,6 @@ std::int32_t FrontInf::dialogue_ready() {
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
-bool execute_enemy_queue_copy_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shared_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
@@ -850,6 +853,165 @@ int main() {
     assert(bits(partial_record.owner->commands[4].operand_00) == bits(-0.0f));
     assert(partial_record.owner->commands[4].operand_04 == 0.0f);
     assert(partial_record.owner->field_30 == 17);
+
+    // Native opcode 614 copies a complete EnemyQueuedRecord through the
+    // production forward_list helper and the real 119B copy-assignment leaf.
+    // This is not a ShotParameters-only copy or a metadata COW operation.
+    const auto queued_record_at = [&](std::uint32_t index) -> EnemyQueuedRecord& {
+        auto it = enemy.state.queued.begin();
+        std::advance(it, static_cast<std::ptrdiff_t>(index));
+        return *it;
+    };
+    enemy.state.queued.clear();
+    enemy.state.queued.emplace_front();
+    enemy.state.queued.emplace_front();
+    enemy.state.queued.emplace_front();
+    auto& queue_destination = queued_record_at(0);
+    auto& queue_middle = queued_record_at(1);
+    auto& queue_source = queued_record_at(2);
+
+    auto old_destination_owner = std::make_shared<ShotMetadata>();
+    old_destination_owner->field_00 = 11.0f;
+    old_destination_owner->commands.resize(1);
+    old_destination_owner->commands[0].opcode = 0x11110000u;
+    queue_destination.owner = old_destination_owner;
+    queue_destination.parameters.type = 0x01020304u;
+    queue_destination.parameters.color = 0x11121314u;
+    queue_destination.parameters.position = {1.0f,2.0f,3.0f};
+    queue_destination.parameters.angle = 4.0f;
+    queue_destination.parameters.angle_step = 5.0f;
+    queue_destination.parameters.speed = 6.0f;
+    queue_destination.parameters.speed_step = 7.0f;
+    queue_destination.parameters.count = 8;
+    queue_destination.parameters.rows = 9;
+    queue_destination.field_30 = 10;
+    queue_destination.vector_34 = {11.0f,12.0f,13.0f};
+    queue_destination.vector_40 = {14.0f,15.0f,16.0f};
+
+    auto source_owner = std::make_shared<ShotMetadata>();
+    source_owner->field_00 = 91.25f;
+    source_owner->field_14 = 92.5f;
+    source_owner->field_24 = 0x24242424u;
+    source_owner->commands.resize(2);
+    source_owner->commands[0].opcode = 0xabcdef01u;
+    source_owner->commands[1].flags = 0x76543210u;
+    queue_source.owner = source_owner;
+    queue_source.parameters.type = 0x12345678u;
+    queue_source.parameters.color = 0x87654321u;
+    queue_source.parameters.position = {-1.25f,2.5f,-3.75f};
+    queue_source.parameters.angle = 0.125f;
+    queue_source.parameters.angle_step = -0.25f;
+    queue_source.parameters.speed = 8.5f;
+    queue_source.parameters.speed_step = -9.75f;
+    queue_source.parameters.count = 321;
+    queue_source.parameters.rows = 17;
+    queue_source.field_30 = 0xfedcba98u;
+    queue_source.vector_34 = {21.0f,22.0f,23.0f};
+    queue_source.vector_40 = {-31.0f,-32.0f,-33.0f};
+    queue_middle.field_30 = 0x55667788u;
+
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_packet(614, {0,2});
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 0);
+    assert(std::distance(enemy.state.queued.begin(), enemy.state.queued.end()) == 3);
+    assert(queue_destination.owner == source_owner && queue_source.owner == source_owner);
+    assert(source_owner.use_count() == 3);
+    assert(old_destination_owner.use_count() == 1);
+    assert(queue_destination.parameters.type == 0x12345678u);
+    assert(queue_destination.parameters.color == 0x87654321u);
+    assert(queue_destination.parameters.position.x == -1.25f &&
+           queue_destination.parameters.position.y == 2.5f &&
+           queue_destination.parameters.position.z == -3.75f);
+    assert(queue_destination.parameters.angle == 0.125f &&
+           queue_destination.parameters.angle_step == -0.25f);
+    assert(queue_destination.parameters.speed == 8.5f &&
+           queue_destination.parameters.speed_step == -9.75f);
+    assert(queue_destination.parameters.count == 321 && queue_destination.parameters.rows == 17);
+    assert(queue_destination.field_30 == 0xfedcba98u);
+    assert(queue_destination.vector_34.x == 21.0f &&
+           queue_destination.vector_34.y == 22.0f &&
+           queue_destination.vector_34.z == 23.0f);
+    assert(queue_destination.vector_40.x == -31.0f &&
+           queue_destination.vector_40.y == -32.0f &&
+           queue_destination.vector_40.z == -33.0f);
+    assert(source_owner->field_00 == 91.25f && source_owner->field_14 == 92.5f);
+    assert(source_owner->commands.size() == 2);
+    assert(source_owner->commands[0].opcode == 0xabcdef01u);
+    assert(source_owner->commands[1].flags == 0x76543210u);
+    assert(queue_middle.field_30 == 0x55667788u);
+
+    // Same-index copy is genuine self-assignment and does not change the
+    // metadata owner's reference count or any source field.
+    const auto source_owner_count = source_owner.use_count();
+    set_packet(614, {2,2});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(source_owner.use_count() == source_owner_count);
+    assert(queue_source.field_30 == 0xfedcba98u);
+
+    // Destination growth is performed before source lookup/copy. Existing
+    // source index 2 is copied into newly appended destination index 5.
+    set_packet(614, {5,2});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(std::distance(enemy.state.queued.begin(), enemy.state.queued.end()) == 6);
+    auto& grown_destination = queued_record_at(5);
+    assert(grown_destination.owner == source_owner);
+    assert(grown_destination.parameters.type == 0x12345678u);
+    assert(grown_destination.field_30 == 0xfedcba98u);
+    assert(source_owner.use_count() == 4);
+
+    // Source growth also uses the original forward_list resize path. The
+    // newly created source record is default-initialized and copied whole.
+    auto& old_index_one = queued_record_at(1);
+    auto old_index_one_owner = std::make_shared<ShotMetadata>();
+    old_index_one.owner = old_index_one_owner;
+    old_index_one.parameters.type = 0xaabbccddu;
+    set_packet(614, {1,8});
+    assert(enemy.state.execute_opcode() == 0);
+    assert(std::distance(enemy.state.queued.begin(), enemy.state.queued.end()) == 9);
+    assert(old_index_one.owner == nullptr);
+    assert(old_index_one.parameters.type == 0u);
+    assert(old_index_one.field_30 == 0u);
+    assert(old_index_one.vector_34.x == 0.0f && old_index_one.vector_40.z == 0.0f);
+    assert(old_index_one_owner.use_count() == 1);
+
+    // Both operands are read before any list mutation. Force the second
+    // referenced operand to throw after the first resolves to index 0; the
+    // two-node queue and its complete record images must remain untouched.
+    enemy.state.queued.clear();
+    enemy.state.queued.emplace_front();
+    enemy.state.queued.emplace_front();
+    auto& exception_destination = queued_record_at(0);
+    auto& exception_source = queued_record_at(1);
+    exception_destination.parameters.type = 0x13572468u;
+    exception_destination.field_30 = 0x24681357u;
+    exception_source.parameters.type = 0xabcdef01u;
+    exception_source.field_30 = 0x10fedcbau;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 0;
+    dispatch_integer_read_scripted_values[1] = 8;
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_read_hook = &throw_during_second_integer_read;
+    set_packet(614, {static_cast<std::uint32_t>(-101),
+                     static_cast<std::uint32_t>(-101)}, 0x3);
+    bool queue_copy_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { queue_copy_threw = value == 557; }
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    assert(queue_copy_threw);
+    assert(dispatch_integer_read_calls == 2);
+    assert(dispatch_integer_read_indices[0] == -101 &&
+           dispatch_integer_read_indices[1] == -101);
+    assert(std::distance(enemy.state.queued.begin(), enemy.state.queued.end()) == 2);
+    assert(exception_destination.parameters.type == 0x13572468u);
+    assert(exception_destination.field_30 == 0x24681357u);
+    assert(exception_source.parameters.type == 0xabcdef01u);
+    assert(exception_source.field_30 == 0x10fedcbau);
 
     // The four large Laser branches now execute their production helper with
     // real LaserType0/1/2/3 temporary constructors, the real writable-shot
@@ -1941,5 +2103,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

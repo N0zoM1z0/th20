@@ -40,6 +40,7 @@ HOST_SOURCES=[
     'src/EnemyStateShotCommandOpcode.cpp', 'src/EnemyQueuedSelection.cpp', 'src/ShotMetadata.cpp',
     'src/EnemyStateLaserOpcode.cpp', 'src/LaserParameters.cpp',
     'src/EnemyStateMeshOpcode.cpp', 'src/EnemyMesh.cpp',
+    'src/EnemyStateQueueCopyOpcode.cpp', 'src/EnemyQueuedRecordAssignment.cpp',
     'src/MeshResourceAccess.cpp',
     'src/EnemyStateAnimationSpawnOpcode.cpp', 'src/EnemyStateFogOpcode.cpp',
     'src/EnemyStateMembershipOpcode.cpp', 'src/EnemyStateControllerSetterOpcode.cpp',
@@ -492,6 +493,7 @@ def main() -> None:
         ('src/EnemyStateShotCommandOpcode.cpp','build/core222-canonical/EnemyStateShotCommandOpcode.obj'),
         ('src/EnemyStateLaserOpcode.cpp','build/core223-canonical/EnemyStateLaserOpcode.obj'),
         ('src/EnemyStateMeshOpcode.cpp','build/core224-canonical/EnemyStateMeshOpcode.obj'),
+        ('src/EnemyStateQueueCopyOpcode.cpp','build/core225-canonical/EnemyStateQueueCopyOpcode.obj'),
         ('src/EclManagerSelect.cpp','build/core219-canonical/EclManagerSelect.obj'),
         ('src/EnemyStateAccessor.cpp','build/core221-canonical/EnemyStateAccessor.obj'),
         ('src/Bullet.cpp','build/core174-canonical/Bullet.obj'),
@@ -509,6 +511,12 @@ def main() -> None:
         ('src/NativeSoundCommandArrayView.cpp','build/gpt-web-sound-canonical/NativeSoundCommandArrayView.obj'),
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
+
+    queue_source_audit=subprocess.run(
+        [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-queue-copy-opcode-source.py')],
+        cwd=ROOT,check=True,text=True,capture_output=True)
+    assert 'PASS original opcode 614: 572B / 129 x86 / 19 direct E8' in queue_source_audit.stdout
+    print(queue_source_audit.stdout,end='')
 
     mesh_source_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-mesh-opcode-source.py')],
@@ -534,6 +542,47 @@ def main() -> None:
     assert 'PASS original Enemy shared opcode head 0x4931DD: 1457B / 314 x86 / 29 E8' in shot_source_audit.stdout
     print(shot_source_audit.stdout,end='')
     print('PASS locked PE 609/610/611/612 selector index 130, 1457B/314-instruction extent and ordered 29 E8 call map')
+
+    # The 614 helper must preserve both VM reads before either mutation,
+    # destination growth before source growth, independent iterator advances,
+    # and the final typed EnemyQueuedRecord assignment.
+    queue_object=ROOT/'build/core225-canonical/EnemyStateQueueCopyOpcode.obj'
+    queue_dump=subprocess.run(['objdump','-dr',str(queue_object)],cwd=ROOT,
+        check=True,text=True,capture_output=True).stdout
+    queue_marker='<?execute_enemy_queue_copy_opcode@th20@@YA_NAAUEnemyState@1@H@Z>:'
+    assert queue_marker in queue_dump
+    queue_function=queue_dump.split(queue_marker,1)[1].split('Disassembly of section',1)[0]
+    queue_calls=re.findall(r'DISP32\s+([^\r\n]+)',queue_function)
+    assert len(queue_calls)==24,queue_calls
+    semantic_queue_calls=[
+        '?integer_argument@EnemyState@th20',
+        '?integer_argument@EnemyState@th20',
+        '?end@?$forward_list@UEnemyQueuedRecord@th20',
+        '?begin@?$forward_list@UEnemyQueuedRecord@th20',
+        '??$distance@',
+        '?resize@?$forward_list@UEnemyQueuedRecord@th20',
+        '?end@?$forward_list@UEnemyQueuedRecord@th20',
+        '?begin@?$forward_list@UEnemyQueuedRecord@th20',
+        '??$distance@',
+        '?resize@?$forward_list@UEnemyQueuedRecord@th20',
+        '?begin@?$forward_list@UEnemyQueuedRecord@th20',
+        '??$advance@',
+        '?begin@?$forward_list@UEnemyQueuedRecord@th20',
+        '??$advance@',
+        '??D?$_Flist_iterator',
+        '??D?$_Flist_iterator',
+        '??4EnemyQueuedRecord@th20',
+        '@__security_check_cookie@4',
+    ]
+    # Ignore only the compiler's explicit local-iterator zero-init helpers.
+    semantic=[call for call in queue_calls if '__autoclassinit2@?$_Flist_iterator' not in call]
+    assert len(semantic)==len(semantic_queue_calls),(semantic,queue_calls)
+    for actual,expected in zip(semantic,semantic_queue_calls):
+        assert expected in actual,(actual,expected)
+    assert 'src/EnemyStateQueueCopyOpcode.cpp' in HOST_SOURCES
+    assert 'src/EnemyQueuedRecordAssignment.cpp' in HOST_SOURCES
+    assert 'bool execute_enemy_queue_copy_opcode(EnemyState&' not in root_test_source
+    print('PASS natural C++ Enemy queue-copy 614 COFF helper preserves both operand reads, destination/source resize order, independent advances and typed record assignment')
 
     # The 621 helper must retain native owner release, owner allocation,
     # float-before-integer reads, both Angle stores and conditional RenderMesh
@@ -781,7 +830,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
@@ -797,6 +846,7 @@ def main() -> None:
     print('PASS natural C++ 553/554 COFF helper retains all seven ordered Context/VM/setter calls')
     print('PASS natural C++ 800/801 COFF helper retains all thirteen ordered Context/VM/Enemy/EclManager calls')
     print('PASS native Enemy opcode 800/801/802 selector, instruction and 25-call natural-source order')
+    print('PASS production Enemy queue-copy opcode 614 helper and exact EnemyQueuedRecord assignment linked into ASan/UBSan root host')
     print('PASS production Enemy mesh opcode 621 helper linked into ASan/UBSan root host with real EnemyMeshOwner allocation/release and conditional RenderMesh allocation')
     print('PASS production Enemy Laser 702/703/711/713 helper linked into ASan/UBSan root host with real parameter temporaries and capture-only factory boundary')
     print('PASS production Enemy shot-command 609/610/611/612 helper linked into ASan/UBSan root host with real writable-shot selector and PMR vector')
@@ -806,8 +856,8 @@ def main() -> None:
     print('PASS original opcode-569 selector index 173 points directly to the verified common return-zero epilogue')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 35 opcode fragments wired')
-    print('PASS all thirty-two i386 COFF source units compile under locked MSVC profile')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 36 opcode fragments wired')
+    print('PASS all thirty-three i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 
