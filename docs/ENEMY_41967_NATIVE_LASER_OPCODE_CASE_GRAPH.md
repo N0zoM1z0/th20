@@ -24,6 +24,15 @@
 
 **Additional maintained source frontier (CORE/RECON-1145):** the shared 1,457B original case for opcodes 609/610/611/612 now has natural-C++ source in `src/EnemyStateShotCommandOpcode.cpp`. It uses the real 396B `EnemyState::writable_shot()` pair selector and the actual PMR `BulletCommand` vector/cursor fields. The parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 609–612 source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md).
 
+**Maintained root-host execution update (CORE/RECON-1246):** original Enemy
+ECL opcodes 609/610/611/612 now execute their real production
+EnemyStateShotCommandOpcode.cpp helper under the maintained ASan/UBSan
+dispatcher host. This closes a test-host false-returning stub, not a missing
+production route. The real writable-shot COW selector and PMR command vector
+are exercised; native selector/call map and natural-C++ COFF relocation order
+are checked. See the 609–612 source frontier.
+
+
 **Additional maintained source frontier (CORE/RECON-1146):** original opcodes 700/701 now have natural-C++ fragments in `src/EnemyStateQueuedParametersOpcode.cpp`, using the accepted `EnemyState::writable_shot()` pair selector and real record/metadata fields. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 700/701 source frontier](ENEMY_41967_700_701_QUEUED_PARAMETERS_SOURCE_FRONTIER.md).
 
 **Additional maintained source frontier (CORE/RECON-1147):** original opcodes 602/603/604 now have natural-C++ fragments in `src/EnemyStateSharedQueuedParametersOpcode.cpp`, using the accepted 305B ensure-only `EnemyState::shared_shot()` selector and ordered raw field/angle mutations. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 602–604 source frontier](ENEMY_41967_602_604_SHARED_PARAMETERS_SOURCE_FRONTIER.md).

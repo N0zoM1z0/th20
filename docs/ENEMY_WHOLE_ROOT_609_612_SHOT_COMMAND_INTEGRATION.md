@@ -5,6 +5,18 @@
 
 **Current maintained source update (CORE/RECON-1145):** `src/EnemyStateShotCommandOpcode.cpp` now contains the natural-C++ 609/610/611/612 case fragment. It replaces the historical private draft's queued-selector boundary with the accepted `EnemyState::writable_shot()` pair ABI, preserves all per-field writes and the late cursor commit, and calls the real PMR command vector. This is still a helper fragment inside the 41,967B `EnemyState::execute_opcode()` parent, not a separate original native function or parent restoration. See [the 609–612 source frontier](ENEMY_41967_609_612_SHOT_COMMAND_SOURCE_FRONTIER.md).
 
+**Maintained root-host execution update (CORE/RECON-1246):** the old
+false-returning execute_enemy_shot_command_opcode test stub is removed. The
+ASan/UBSan root host now links the production 609/610/611/612 helper, the real
+396B EnemyState::writable_shot selector and the real EtamaArgInf metadata
+constructor. Four opcode scenarios exercise explicit/cursor indexing,
+base/extended layouts, PMR vector growth, shared-owner COW and partial writes
+when the second float read throws. The root verifier re-decodes the original
+1,457B/314-instruction/29-E8 case and checks the natural-C++ COFF helper's
+26 ordered relocations. The 41,967B parent remains NONEXACT and receives no
+parent byte credit.
+
+
 
 The user-selected locked TH20 Japanese v1.00a Steamless target is still SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.

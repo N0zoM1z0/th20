@@ -70,6 +70,11 @@ canonically accepted.
   is now whole strict exact (all 15 relocations). CORE/RECON-1245 also fixes
   the shared scalar allocator's unconditional destroy_at call for trivial
   intrusive nodes; 130/130 affected units pass across 17 source-scoped objects.
+  The 1,457B shared shot-command branch 609/610/611/612 is now also executed
+  by the root host using the real writable-shot COW selector and PMR vector;
+  all four explicit/cursor and base/extended variants plus partial-write
+  exception behavior are covered. The native 29-E8 map and 26-call COFF
+  helper order are checked (CORE/RECON-1246).
   The 626B FrontInf command parent is
   still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains
   incomplete/NONEXACT; continue restoring the other inline case families and converge

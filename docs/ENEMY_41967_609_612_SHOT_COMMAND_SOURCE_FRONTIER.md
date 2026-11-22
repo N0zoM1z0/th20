@@ -39,3 +39,43 @@ The source deliberately does **not** cache a `BulletCommand&`. It spells out ten
 This helper receives no `config/functions.csv` native-function mapping because the original 609–612 bodies are one inline region inside `EnemyState::execute_opcode()`. The 41,967B parent now has a partial C++ root entry (CORE/RECON-1196), but remains incomplete/NONEXACT, with no canonical whole-parent unit and zero parent byte credit. No full cold replay was performed.
 
 Next work: continue closing the other large Enemy ECL opcode families and integrate the source fragments into the full natural-C++ dispatcher only after preserving the original compact opcode table, common epilogue, exception behavior and all parent ABI boundaries.
+
+## Maintained root-host execution closure — CORE/RECON-1246
+
+The maintained tests/enemy_state_dispatch_root.cpp previously supplied a
+false-returning execute_enemy_shot_command_opcode stub. Although production
+EnemyState::execute_opcode() already routed the four cases to the helper,
+the maintained ASan/UBSan root host therefore never executed those production
+branches. CORE/RECON-1246 removes that stub and links the actual helper together
+with the real EnemyState::writable_shot() and EtamaArgInf implementations.
+
+The root host now executes all four variants through the production dispatcher:
+
+- 609: explicit command index, base six-field payload and real vector growth
+- 610: explicit command index, extended ten-field payload and shared-owner COW
+- 611: metadata cursor, base payload and real vector growth
+- 612: metadata cursor, extended payload without unnecessary growth
+
+The tests check the real forward-list selector, unique/shared owner behavior,
+44-byte BulletCommand fields, untouched neighboring commands, PMR vector
+resize, exact integer-before-float operand read sequence, explicit-index versus
+cursor commit, and both base and extended layouts. A second-float exception in
+610 verifies that the resize and prior field writes survive while the final
+cursor write does not occur.
+
+The focused root verifier now re-decodes the original locked PE branch on every
+run: all four opcodes share selector index **130** and head 0x004931DD;
+the branch is **1,457 bytes / 314 instructions / 29 ordered E8 calls**, with
+the independently audited SHA-256 and exact call targets. It invokes the
+dedicated immutable source audit and checks the compiled natural-C++ helper's
+**26 ordered DISP32 relocations** (25 semantic calls plus the security-cookie
+epilogue), including all ten separately emitted PMR vector element accesses.
+
+Affected-only dependency replays passed EnemyQueuedSelection.cpp **2/2**
+(writable_shot **396/396**) and ShotMetadata.cpp **3/3** (constructor,
+destructor and move assignment). The root verifier compiles **30** locked
+i386 COFF source units and its ASan/UBSan host now links the real shot-command
+helper, COW selector and metadata constructor. The four branches remain inline
+regions of the **41,967-byte** dispatcher: no standalone native function,
+whole-parent exactness or parent byte credit is claimed. No full cold replay
+was run; no assembly or padding is used.

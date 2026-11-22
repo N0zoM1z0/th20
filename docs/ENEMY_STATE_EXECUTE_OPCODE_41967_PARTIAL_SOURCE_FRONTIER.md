@@ -185,6 +185,13 @@ source fragments.
   production setter. It verifies the whole owner image changes only in the two
   vector words, Context retargeting cannot redirect the cached receiver, and
   exceptions on either operand prevent the write.
+- Native opcodes 609/610/611/612 share the 1,457-byte / 314-instruction
+  branch at 0x004931DD, selector index 130, with 29 original E8 calls. The
+  maintained root host now links and executes the production shot-command
+  helper, real EnemyState::writable_shot COW selector and PMR command vector;
+  all four explicit/cursor and base/extended modes plus partial-write exception
+  behavior are tested under ASan/UBSan. This is inline case coverage, not a
+  standalone native function or parent byte credit.
 - Native opcode `800` is a 144-byte / 30-instruction script-selection branch
   at `0x00495FC1..0x00496051`, selector index 167. It reads integer operand 0,
   resolves the target through `EnemyController::find`, then terminates async

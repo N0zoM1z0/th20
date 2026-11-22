@@ -84,6 +84,15 @@ providers, and the 555 sound/geometry/AnimationFile chain. The 40B
 EclManager::select wrapper is strict exact. No full cold replay was run; the
 41,967B parent remains NONEXACT.
 
+The 609/610/611/612 shared 1,457B shot-command branch is now also executed
+by the maintained ASan/UBSan root host rather than a false-returning test stub.
+It links the real writable-shot COW selector and PMR command vector, covers all
+four explicit/cursor and base/extended variants, and checks partial writes on
+an operand exception. The verifier re-decodes the original 1,457B/314-head/
+29-E8 native case and checks the natural-C++ COFF call order. The two affected
+dependency replays passed EnemyQueuedSelection 2/2 and ShotMetadata 3/3.
+See CORE/RECON-1246 in the 609–612 shot-command source frontier.
+
 The shared scalar allocator now preserves the native unconditional
 std::destroy_at call for trivial intrusive nodes. This restores the complete
 97B IntrusiveLink<EclRuntime> release body: EclRuntimeLifetime replays 12/12,
