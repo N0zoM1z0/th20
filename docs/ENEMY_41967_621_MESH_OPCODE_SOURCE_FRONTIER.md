@@ -28,3 +28,40 @@ The implementation reuses the already exact 97B `DiagnosticAllocator::release_ob
 `src/EnemyStateMeshOpcode.cpp` compiles as i386 COFF under the pinned MSVC profile. The focused original-PE verifier checks the entire 346B branch, 70 instruction heads, all seven E8 destinations, both original diagnostic labels, both original float constants, and the C++ source mutation/call order.
 
 This is a source fragment, not a separate native function. No `config/functions.csv` mapping or parent byte credit is added. The 41,967B Enemy root now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence are still NONEXACT. No full cold replay was performed.
+
+## Maintained root-host execution closure — CORE/RECON-1248
+
+The maintained ASan/UBSan Enemy dispatcher host previously supplied a
+false-returning execute_enemy_mesh_opcode test stub. CORE/RECON-1248 removes
+that stub and links the production 621 helper, EnemyMeshOwner lifetime source,
+and the actual MeshResourceAccess translation unit.
+
+The test now exercises the real DiagnosticAllocator allocate_object and
+release_object template paths, the real EnemyMeshOwner destructor, and the
+real 213B signed-int RenderMesh allocator specialization. The renderer-bound
+RenderMesh constructor/destructor and the not-yet-recovered process allocator
+startup constructor remain explicit host fixtures: the constructor fixture
+records the requested dimensions/surface/view, while the production helper
+and owner allocation/release paths execute unchanged. The helper explicitly
+narrows field_2e8 to int32 so its COFF call binds to the original
+allocate_object<RenderMesh,int,int,int,int> ABI and the already exact
+MeshResourceAccess instantiation, rather than emitting an unowned unsigned
+template specialization.
+
+Root assertions cover positive radius (17x17, surface 0, selected view),
+zero and negative radii (no RenderMesh allocation), replacement/destruction
+of a previous owner, and two partial-failure boundaries: a float operand
+exception leaves the freshly published default owner in place; an integer
+color exception preserves the radius write but skips RenderMesh allocation.
+The same root build now links the actual MeshResourceAccess short
+AnimationFile::spawn wrapper; its full 922B renderer/VM producer remains a
+capture-only test boundary.
+
+The root verifier runs the immutable native 621 audit on every pass:
+**346 bytes / 70 x86 instructions / 7 ordered E8 calls**, both diagnostic
+strings and the original 16.0f/0.0f constants. It also checks all seven
+ordered natural-C++ COFF relocations and executes the production helper under
+ASan/UBSan. Affected-only exact replays passed EnemyMesh.cpp **7/7**,
+MeshInterfaces.cpp **10/10**, and MeshResourceAccess.cpp **8/8**. The
+maintained verifier compiles **32** locked-profile i386 COFF units. No full
+cold replay, whole-parent exactness or 41,967B parent byte credit is claimed.

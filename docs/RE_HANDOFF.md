@@ -100,8 +100,19 @@ temporaries, writable-shot COW, PMR command copies, position gate and late
 handle reads that retarget Context before the factory call. The create_laser
 method is a capture-only host boundary; its separate 474B production factory
 is strict exact. LaserParameters replays 12/12 and LaserFactory 1/1; the root
-verifier compiles 31 locked-profile COFF units and checks 47 ordered helper
+verifier compiles 32 locked-profile COFF units and checks 47 ordered helper
 relocations. See CORE/RECON-1247 in the Laser opcode source frontier.
+
+The 346B Enemy ECL opcode 621 mesh-owner branch is now executed in the
+maintained ASan/UBSan root host rather than a false-returning stub. The real
+allocator allocate/release templates and EnemyMeshOwner destructor run;
+positive/zero/negative radius, owner replacement and float/integer exception
+ordering are covered. Renderer-dependent RenderMesh ctor/dtor and allocator
+startup remain host fixtures. The source now casts the view to int32 to bind
+the existing exact 213B MeshResourceAccess specialization. Affected-only exact
+replays passed EnemyMesh 7/7, MeshInterfaces 10/10 and MeshResourceAccess 8/8;
+the root verifier checks the original 346B/70-head/7-E8 case and seven ordered
+COFF relocations. See CORE/RECON-1248 in the opcode-621 mesh frontier.
 
 The shared scalar allocator now preserves the native unconditional
 std::destroy_at call for trivial intrusive nodes. This restores the complete

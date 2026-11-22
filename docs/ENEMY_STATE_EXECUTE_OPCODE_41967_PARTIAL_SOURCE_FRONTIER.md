@@ -185,6 +185,13 @@ source fragments.
   production setter. It verifies the whole owner image changes only in the two
   vector words, Context retargeting cannot redirect the cached receiver, and
   exceptions on either operand prevent the write.
+- Native opcode 621 is the 346-byte / 70-instruction mesh-owner lifecycle
+  branch at 0x00495A9A, with seven original E8 calls. The ASan/UBSan root host
+  executes the production helper, real DiagnosticAllocator allocation/release
+  templates and EnemyMeshOwner destructor. It covers positive/zero/negative
+  radius, replacement, 17x17 RenderMesh arguments and partial writes when
+  float or integer operands throw. Renderer-dependent RenderMesh ctor/dtor
+  and allocator startup remain host fixtures; the 41,967B parent is NONEXACT.
 - Native opcodes 609/610/611/612 share the 1,457-byte / 314-instruction
   branch at 0x004931DD, selector index 130, with 29 original E8 calls. The
   maintained root host now links and executes the production shot-command

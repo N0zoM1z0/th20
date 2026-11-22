@@ -55,6 +55,17 @@ are checked. See the 609–612 source frontier.
 
 **Additional maintained source frontier (CORE/RECON-1151):** original opcode 621 now has natural-C++ source in `src/EnemyStateMeshOpcode.cpp`, restoring the real EnemyMeshOwner release/allocation lifecycle and conditional 17x17 RenderMesh factory. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 621 source frontier](ENEMY_41967_621_MESH_OPCODE_SOURCE_FRONTIER.md).
 
+**Maintained root-host execution update (CORE/RECON-1248):** opcode 621 now
+executes the real helper, allocator templates and EnemyMeshOwner destructor in
+the ASan/UBSan dispatcher host. Positive/zero/negative radius, owner
+replacement, RenderMesh factory arguments, and float/integer operand-failure
+ordering are covered. The renderer-dependent RenderMesh ctor/dtor and process
+allocator startup remain explicit test fixtures. The source casts the view to
+int32 to bind the existing exact 213B MeshResourceAccess specialization; the
+root verifier checks all seven ordered COFF relocations. See the 621 mesh
+source frontier.
+
+
 **Additional maintained source frontier (CORE/RECON-1154):** original opcode 551 now has natural-C++ source in `src/EnemyStateFogOpcode.cpp`; the former opaque Stage global now has a typed partial owner, actual FogInterpolation and current FogValue members, and exact source bodies for the 20B/45B/130B owner chain plus five interpolation leaves. The 41,967B parent remains NONEXACT. See [the 551 Fog source frontier](ENEMY_41967_551_FOG_SOURCE_FRONTIER.md).
 
 **Additional maintained source frontier (CORE/RECON-1155):** original opcodes 514 and 521 now have natural-C++ phase/timeout fragments in `src/EnemyStatePhaseOpcode.cpp`, preserving borrowed packet-name pointers, repeated Session clamps, and exact Enemy phase/timeout producers. The 41,967B parent remains NONEXACT. See [the 514/521 phase source frontier](ENEMY_41967_514_521_PHASE_SOURCE_FRONTIER.md).
