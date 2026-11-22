@@ -42,6 +42,8 @@ HOST_SOURCES=[
     'src/EnemyStateDialogueOpcode.cpp',
     'src/EnemyStateShotCommandOpcode.cpp', 'src/EnemyQueuedSelection.cpp', 'src/ShotMetadata.cpp',
     'src/EnemyStateSharedQueuedParametersOpcode.cpp', 'src/EnemyStatePlayerAngleOpcode.cpp',
+    'src/EnemyStateBulletLaserCancelOpcode.cpp', 'src/BulletSpatialCancellation.cpp',
+    'src/BulletDistance.cpp', 'src/LaserCancelNear.cpp', 'src/LaserBase.cpp', 'src/LaserCancelCircleDefault.cpp',
     'src/EnemyStateLaserOpcode.cpp', 'src/LaserParameters.cpp',
     'src/EnemyStateBulletCancelOpcode.cpp', 'src/BulletRectangleCancellation.cpp',
     'src/RectangleCollisions.cpp', 'src/BulletCollisionHandle.cpp', 'src/CollisionGeometry.cpp',
@@ -361,6 +363,13 @@ def main() -> None:
     flags_clear=(ROOT/'src/EnemyStateAnimationFlagsClearOpcode.cpp').read_text()
     screen=(ROOT/'src/EnemyStateScreenOpcode.cpp').read_text()
     player_angle_source=(ROOT/'src/EnemyStatePlayerAngleOpcode.cpp').read_text()
+    bullet_laser_cancel_source=(ROOT/'src/EnemyStateBulletLaserCancelOpcode.cpp').read_text()
+    assert 'execute_enemy_bullet_laser_cancel_opcode(*this, opcode)' in root
+    assert 'state.float_argument(0)' in bullet_laser_cancel_source
+    assert 'state.context->bullet_controller()' in bullet_laser_cancel_source
+    assert 'state.context->laser_controller()' in bullet_laser_cancel_source
+    assert 'bullets->cancel_near(bullet_center, radius, 0)' in bullet_laser_cancel_source
+    assert 'lasers->cancel_near(laser_center, radius, 0, 1)' in bullet_laser_cancel_source
     assert 'execute_enemy_player_angle_opcode(*this, opcode)' in root
     assert player_angle_source.count('state.context->player()->position_ref()') == 2
     assert 'scalar_math::arctangent(delta_y, delta_x)' in player_angle_source
@@ -432,6 +441,16 @@ def main() -> None:
     assert 'expected_player_angle_617' in root_test_source
     assert 'player_angle_second_operand_threw' in root_test_source
     assert 'zero_vector_angle_617 == 0.0f' in root_test_source
+    assert 'retarget_to_original_and_move_enemy_during_bullet_cancel' in root_test_source
+    assert 'bullet_at_retargeted_center.state == 4' in root_test_source
+    assert 'bullet_left_at_old_center.state == 1' in root_test_source
+    assert 'laser_state_zero.circle_argument == 1' in root_test_source
+    assert 'laser_wrong_context.circle_calls == 0' in root_test_source
+    assert 'opcode616_radius_threw' in root_test_source
+    assert 'src/BulletSpatialCancellation.cpp' in HOST_SOURCES
+    assert 'src/BulletDistance.cpp' in HOST_SOURCES
+    assert 'src/LaserCancelNear.cpp' in HOST_SOURCES
+    assert 'src/LaserCancelCircleDefault.cpp' in HOST_SOURCES
     assert 'Player player_fixture;' in root_test_source
     assert 'Player alternate_player_fixture;' in root_test_source
     assert 'player_fixture.entity_flags.fields.bit_10 == 1' in root_test_source
@@ -549,6 +568,12 @@ def main() -> None:
         ('src/Player.cpp','build/core208-canonical/Player.obj'),
         ('src/PlayerStorage.cpp','build/core208-canonical/PlayerStorage.obj'),
         ('src/EnemyStatePlayerAngleOpcode.cpp','build/gpt-web-enemy-617-canonical/EnemyStatePlayerAngleOpcode.obj'),
+        ('src/EnemyStateBulletLaserCancelOpcode.cpp','build/gpt-web-enemy-616-canonical/EnemyStateBulletLaserCancelOpcode.obj'),
+        ('src/BulletSpatialCancellation.cpp','build/gpt-web-enemy-616-canonical/BulletSpatialCancellation.obj'),
+        ('src/BulletDistance.cpp','build/gpt-web-enemy-616-canonical/BulletDistance.obj'),
+        ('src/LaserCancelNear.cpp','build/gpt-web-enemy-616-canonical/LaserCancelNear.obj'),
+        ('src/LaserBase.cpp','build/gpt-web-enemy-616-canonical/LaserBase.obj'),
+        ('src/LaserCancelCircleDefault.cpp','build/gpt-web-enemy-616-canonical/LaserCancelCircleDefault.obj'),
         ('src/PlayerDirection.cpp','build/core208-canonical/PlayerDirection.obj'),
         ('src/EclManagerSelect.cpp','build/core219-canonical/EclManagerSelect.obj'),
         ('src/EnemyStateAccessor.cpp','build/core221-canonical/EnemyStateAccessor.obj'),
@@ -583,6 +608,12 @@ def main() -> None:
     assert 'PASS original Enemy opcode 712: selector 164, 196B / 42 x86 / 9 ordered E8' in bullet_cancel_source_audit.stdout
     print(bullet_cancel_source_audit.stdout,end='')
 
+    bullet_laser_cancel_source_audit=subprocess.run(
+        [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-bullet-laser-cancel-opcode-source.py')],
+        cwd=ROOT,check=True,text=True,capture_output=True)
+    assert 'PASS original Enemy opcode 616: selector 134, 175B / 37 x86 / 7 ordered E8 calls' in bullet_laser_cancel_source_audit.stdout
+    print(bullet_laser_cancel_source_audit.stdout,end='')
+
     player_angle_source_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-player-angle-opcode-source.py')],
         cwd=ROOT,check=True,text=True,capture_output=True)
@@ -601,6 +632,27 @@ def main() -> None:
     assert 'PASS original Enemy opcode 620: 250B / 57 x86 / 8 ordered direct E8 calls' in shared_queued_source_audit.stdout
     assert 'PASS COMISS/JBE unordered NaN behavior' in shared_queued_source_audit.stdout
     print(shared_queued_source_audit.stdout,end='')
+
+    bullet_laser_cancel_object=ROOT/'build/gpt-web-enemy-616-canonical/EnemyStateBulletLaserCancelOpcode.obj'
+    bullet_laser_cancel_dump=subprocess.run(
+        ['objdump','-dr',str(bullet_laser_cancel_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    bullet_laser_cancel_marker='<?execute_enemy_bullet_laser_cancel_opcode@th20@@YA_NAAUEnemyState@1@H@Z>:'
+    assert bullet_laser_cancel_marker in bullet_laser_cancel_dump
+    bullet_laser_cancel_function=bullet_laser_cancel_dump.split(bullet_laser_cancel_marker,1)[1].split('Disassembly of section',1)[0]
+    bullet_laser_cancel_calls=re.findall(r'DISP32\s+([^\r\n]+)',bullet_laser_cancel_function)
+    expected_bullet_laser_cancel_calls=[
+        '?float_argument@EnemyState@th20@@QAEMH@Z',
+        '?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ',
+        '?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ',
+        '?cancel_near@BulletController@th20@@QAEHABUVector3@2@MH@Z',
+        '?laser_controller@Context@th20@@QAEPAVLaserController@2@XZ',
+        '?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ',
+        '?cancel_near@LaserController@th20@@QAEHABUVector3@2@MHH@Z',
+    ]
+    assert len(bullet_laser_cancel_calls)==len(expected_bullet_laser_cancel_calls),(bullet_laser_cancel_calls,expected_bullet_laser_cancel_calls)
+    for actual,expected in zip(bullet_laser_cancel_calls,expected_bullet_laser_cancel_calls):
+        assert expected in actual,(actual,expected)
+    print('PASS natural C++ opcode-616 COFF: radius, Bullet Context/position/Boss, then independent Laser Context/position/Boss')
 
     player_angle_object=ROOT/'build/gpt-web-enemy-617-canonical/EnemyStatePlayerAngleOpcode.obj'
     player_angle_dump=subprocess.run(
@@ -994,15 +1046,16 @@ def main() -> None:
         assert expected in actual,(actual,expected)
 
     host=ROOT/'build/core209-enemy-dispatch-root-test'
-    command=['g++-13','-std=c++20','-O1','-Wall','-Wextra','-Werror',
+    command=['g++-13','-std=c++20','-O1','-Wall','-Wextra','-Werror','-Wno-class-memaccess',
         '-D__fastcall=','-D__cdecl=','-D__thiscall=',
         '-ffunction-sections','-fdata-sections','-Wl,--gc-sections','-pthread','-Isrc',
         '-fsanitize=address,undefined','-fno-sanitize-recover=all','-fno-sanitize=vptr',
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
+    print(f'PASS maintained root host executes {len(HOST_SOURCES)} focused source units under ASan/UBSan')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
     print('PASS original compressed dispatch pointers and bounded E8 call maps for all nine EnemyPattern cases')
     print('PASS original compressed dispatch pointers and ordered E8 maps for all 21 bounds/health/controller/state cases (1,824B/373 heads/52 calls)')
@@ -1031,8 +1084,8 @@ def main() -> None:
     print('PASS original opcode-569 selector index 173 points directly to the verified common return-zero epilogue')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
-    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 39 opcode fragments wired')
-    print('PASS all forty i386 COFF source units compile under locked MSVC profile')
+    print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 40 opcode fragments wired')
+    print('PASS all forty-seven i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 

@@ -34,6 +34,7 @@
 #include "EnemyStateScriptPointerOpcode.hpp"
 #include "EnemyStateSharedQueuedParametersOpcode.hpp"
 #include "EnemyStatePlayerAngleOpcode.hpp"
+#include "EnemyStateBulletLaserCancelOpcode.hpp"
 #include "EnemyStateShotCommandOpcode.hpp"
 #include "EnemyStateShotFireOpcode.hpp"
 
@@ -271,6 +272,8 @@ int EnemyState::execute_opcode() {
     if (execute_enemy_shot_fire_opcode(*this, opcode))
         return 0;
     if (execute_enemy_player_angle_opcode(*this, opcode))
+        return 0;
+    if (execute_enemy_bullet_laser_cancel_opcode(*this, opcode))
         return 0;
     if (execute_enemy_shared_queued_parameters_opcode(*this, opcode))
         return 0;
