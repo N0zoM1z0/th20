@@ -50,6 +50,9 @@
 
 **Additional maintained source frontier (CORE/RECON-1153):** original opcodes 553/554 now have natural-C++ source in `src/EnemyStateControllerSetterOpcode.cpp`, preserving the pre-operand Context cache and Y-before-X float reads. The 41,967B parent now has a partial C++ entry (CORE/RECON-1196); remaining inline cases and whole-root equivalence remain NONEXACT. See [the 553/554 source frontier](ENEMY_41967_553_554_CONTROLLER_SETTERS_SOURCE_FRONTIER.md).
 
+
+**Additional maintained source frontier (CORE/RECON-1215):** original opcodes 800/801/802 now route through src/EnemyStateScriptControlOpcode.cpp. They restore cross-Enemy script selection, selected-Enemy XY writeback and three-slot phase-script restarts. The 40B EclManager::select forwarding leaf is strict exact; the shared Enemy::state_value +0x88 getter is verified without duplicate byte credit. The root host exercises the real EclManager/EclLoader, phase vector and VM destinations. The 41,967B parent remains NONEXACT. See [the 800–802 script-control frontier](ENEMY_41967_800_801_802_SCRIPT_CONTROL_SOURCE_FRONTIER.md).
+
 Locked target: Japanese TH20 1.00a Steamless original PE, SHA-256 a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897.
 
 ## Original compressed integer switch, independently attested

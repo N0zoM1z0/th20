@@ -185,6 +185,25 @@ source fragments.
   production setter. It verifies the whole owner image changes only in the two
   vector words, Context retargeting cannot redirect the cached receiver, and
   exceptions on either operand prevent the write.
+- Native opcode `800` is a 144-byte / 30-instruction script-selection branch
+  at `0x00495FC1..0x00496051`, selector index 167. It reads integer operand 0,
+  resolves the target through `EnemyController::find`, then terminates async
+  runtimes, resets the target EclManager, and selects the borrowed script
+  name at EclInstruction + 0x18. The 40-byte EclManager::select wrapper at
+  `0x00540200` is now a separate strict-exact natural-C++ leaf.
+- Native opcode `801` is a 168-byte / 32-instruction selected-Enemy position
+  writeback at `0x00495DDE..0x00495E86`, selector index 168. It reads the
+  target identifier from integer operand 2, then independently reads X and Y
+  through Enemy::position_ref before resolving float destinations 0 and 1.
+- Native opcode `802` is a 315-byte / 66-instruction phase-script restart loop
+  at `0x00495E86..0x00495FC1`, selector index 169. It reads the phase index
+  once, walks selected slots 0–2, skips field_270 and negative-life phases,
+  and restarts eligible Enemies using the borrowed EnemyPhase::script.
+  Enemy::state_value is a typed natural-C++ alias of the existing shared
+  19-byte +0x88 getter at `0x004989F0`; it adds no duplicate physical credit.
+  The root host exercises all three slots, the current-slot skip and the
+  negative-life skip using real phase vectors and EclManager runtime reset/
+  selection.
 - Native opcode `555` is the 388-byte / 81-instruction animation-and-sound
   Boss at `0x0048C3F4..0x0048C578`, selector index 101. Its two independent
   signed gates preserve sound-before-animation ordering. The animation path
@@ -291,7 +310,7 @@ The remaining inline cases in the original 41,967B body—including most of the
 additional opcode ranges—still need source recovery. Opcodes 324, 524/575,
 527/534, 539, 548, 549, 551, 552, 555 and the reserved 569 selector are now
 represented in the maintained root, including controller setter cases
-553/554, but this does not close
+553/554 and script-control cases 800/801/802, but this does not close
 their surrounding switch tables or the dispatcher as a whole. Unknown opcodes currently
 fall through the provisional zero return and must not be treated as proven
 native no-ops. The 41,967-byte root remains NONEXACT and has no whole-root match
@@ -327,6 +346,20 @@ Affected-only strict replays passed EnemyData **5/5**, BulletController **12/12*
 Bullet **2/2**, BulletValues **3/3** and Context **3/3**. The 553/554 native
 case maps add 172 bytes / 36 instructions / seven ordered E8 calls; the
 compiled helper's seven COFF relocations are also checked in order. No full
+cold replay or whole-root byte credit is claimed.
+
+
+The latest script-control increment adds original opcodes 800/801/802:
+**627 native bytes / 128 instructions / 25 E8 calls**. The focused ASan/UBSan
+host executes all three production case helpers, including real EclManager
+termination/reset/script selection, actual selected-handle traversal, phase
+life filtering and XY destination writes. The 40-byte EclManager::select
+leaf strictly replays **40/40**; the shared 19-byte Enemy::state_value
+getter is byte-compared with the existing Session::player_table head and
+receives no duplicate credit. Affected-only strict replays passed
+EclSelection **11/11**, EnemyVariables **4/4**, Enemy.cpp **6/6** and
+EnemyInitialization **10/10**. The root verifier compiles **29** locked-profile
+i386 COFF source units and checks the 25 ordered helper relocations. No full
 cold replay or whole-root byte credit is claimed.
 
 No assembly, byte padding, or synthetic instruction sequences are used. The

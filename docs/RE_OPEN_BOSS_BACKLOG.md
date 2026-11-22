@@ -51,18 +51,21 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1214
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215
   maintain the partial natural-C++ root entry and wire the complete 400–448 movement
   family, nine Pattern cases, 21 bounds/health/controller/state cases, five controller
   selection/clear cases, six timer/mode/runtime-time cases, five Card/health cases,
   front sound/gauge/title cases 516/519/527/534/548, laser reset 539,
   membership 549, fog 551, controller setters 553/554, animation/sound Boss
-  555, bit flag 552, selected-position Boss 324, reserved selector 569, global-owner opcodes
+  555, bit flag 552, selected-position Boss 324, script-control cases
+  800/801/802, reserved selector 569, global-owner opcodes
   524/575, four indexed parameter-copy cases and the
   independently maintained opcode fragments. The focused root host now executes
   the production 549/551/553/554/555 helpers, with real controller setter
   leaves, Context-retarget/operand-failure tests and full BulletController
-  owner-image checks; selector/call maps for 324/549/551/553/554/555 are checked.
+  owner-image checks. It also executes 800/801/802 script-control paths with
+  real EclManager reset/select, EnemyPhase filtering and VM XY destination
+  checks; selector/call maps for 324/549/551/553/554/555/800/801/802 are checked.
   The 328B `SoundInf::enqueue` dependency
   is now whole strict exact (all 15 relocations); the 626B FrontInf command parent is
   still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains

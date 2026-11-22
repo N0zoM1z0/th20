@@ -5,6 +5,11 @@
 
 ## CORE/EXACT-147 acceptance
 
+The original phase vector/indexer is also consumed by the maintained Enemy
+ECL opcode 802 script-control branch. That branch walks selected Enemy slots,
+filters negative-life phase records, then resets and selects the borrowed phase
+script; see [the opcode 800–802 source frontier](ENEMY_41967_800_801_802_SCRIPT_CONTROL_SOURCE_FRONTIER.md).
+
 The maintained Enemy owner now implements the complete phase and timeout
 configuration protocol used by the whole opcode dispatcher. EnemyInitialization.cpp
 owns both producers; EnemyState.hpp keeps the record's implicit member defaults.
