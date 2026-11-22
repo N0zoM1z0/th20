@@ -66,12 +66,17 @@ stack vector. Scalar deleting destructors perform their actual one-bit optional
 sized release (72 and 112 bytes on x86).
 
 Typed scalar disposal first accepts null as a no-op. Otherwise it invokes real
-std::destroy_at before acquiring mutex slot 1, then calls unsized operator delete
-under the lock. This is separate from array release and generic malloc/free.
-The native Runtime destroy_at wrapper calls its nonvirtual compiler scalar
-destructor with flag zero; current MSVC naturally emits this for the implicit
-Runtime destructor. The trivial node destroy_at folds to the complete empty
-cdecl body. Neither helper earns duplicate coverage.
+std::destroy_at unconditionally before acquiring mutex slot 1, then calls
+unsized operator delete under the lock. This is separate from array release
+and generic malloc/free. The native Runtime destroy_at wrapper calls its
+nonvirtual compiler scalar destructor with flag zero; current MSVC naturally
+emits this for the implicit Runtime destructor. The trivial node destroy_at
+folds to the complete empty cdecl body at 0040C6B0, but the original
+release_object<IntrusiveLink<EclRuntime>> still calls that empty helper. A
+source-level if constexpr guard had removed the call and shortened the
+candidate contribution; CORE/RECON-1245 restores the unconditional C++ call
+and the complete 97-byte native release body. Neither helper earns duplicate
+coverage.
 
 ## Complete compiler and independent support evidence
 
@@ -114,6 +119,13 @@ fixture boundary. The existing argument/stack test now runs real production
 Runtime/Manager lifetimes and concrete base defaults; lookup and derived game
 variable semantics retain explicit fixture boundaries. Other existing whole tick/
 call/Enemy checks retain their deliberate bounded dependency fixtures.
+
+The later shared-header source correction CORE/RECON-1245 was checked with
+affected-only source replays: EclRuntimeLifetime 12/12 plus sixteen other
+allocator-consuming translation units, for 130/130 configured units across
+17 fresh source objects. Three additional unregistered WeaponStone release
+callers compile under the locked i386 profile. This does not replace or repeat
+the historical 534-unit whole-graph receipt above.
 
 The full derived include body at 004A5BE0/516 is reconstructed privately and
 retains four constant byte-index lowering differences. Relative section-pointer

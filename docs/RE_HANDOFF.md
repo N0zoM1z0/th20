@@ -83,6 +83,14 @@ setters and Bullet constructors, 800/801/802 EclManager/EnemyVariable/phase
 providers, and the 555 sound/geometry/AnimationFile chain. The 40B
 EclManager::select wrapper is strict exact. No full cold replay was run; the
 41,967B parent remains NONEXACT.
+
+The shared scalar allocator now preserves the native unconditional
+std::destroy_at call for trivial intrusive nodes. This restores the complete
+97B IntrusiveLink<EclRuntime> release body: EclRuntimeLifetime replays 12/12,
+and 130/130 configured units pass across 17 affected source-scoped objects;
+three additional WeaponStone release callers compile. See
+[CORE/RECON-1245](ECL_RUNTIME_TRIVIAL_DESTROY_AT_REPLAY_CORRECTION.md).
+
 See [the dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and [the spawn leaf record](EXACT_ENEMY_CREATION_RECONSTRUCTION.md).
 

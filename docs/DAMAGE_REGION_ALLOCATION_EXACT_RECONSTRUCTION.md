@@ -49,9 +49,13 @@ precedes acquisition of game recursive-lock slot one. Unsized scalar delete
 executes under the guard, followed by unlocking and cookie verification. The
 Region's implicit trivial destruction emits the complete five-byte empty cdecl
 `std::destroy_at` body at the existing `0040C6B0` fold. The independently reviewed
-ECL trivial-node destruction already establishes that role and anchor. Both the
-five-byte destruction alias and 31-byte initializer receive zero duplicate
-coverage. See [ECL lifetime](EXACT_ECL_RUNTIME_LIFETIME_RECONSTRUCTION.md).
+ECL trivial-node destruction establishes that role and anchor. The shared
+release_object source now calls std::destroy_at unconditionally, including for
+trivial types, preserving the original out-of-line empty-helper call.
+CORE/RECON-1245 verifies the ECL 97-byte release and all affected allocator
+source scopes. Both the five-byte destruction alias and 31-byte initializer
+receive zero duplicate coverage. See [ECL lifetime](EXACT_ECL_RUNTIME_LIFETIME_RECONSTRUCTION.md)
+and the [trivial-node release correction](ECL_RUNTIME_TRIVIAL_DESTROY_AT_REPLAY_CORRECTION.md).
 
 ## Independent origin and boundary review
 

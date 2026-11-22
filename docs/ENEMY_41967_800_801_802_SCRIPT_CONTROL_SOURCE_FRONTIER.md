@@ -88,6 +88,12 @@ Affected-only strict replays passed:
 - EnemyInitialization.cpp: **10/10**, including the 136-byte EnemyPhase
   vector indexer **36/36**
 
+The async termination dependency was also rechecked after correcting the
+shared allocator template: its trivial IntrusiveLink release now preserves the
+original empty destroy_at call and replays as part of EclRuntimeLifetime
+**12/12**. The 97-byte release leaf and 93-byte terminate_async caller both
+remain whole exact; see the [trivial-node release correction](ECL_RUNTIME_TRIVIAL_DESTROY_AT_REPLAY_CORRECTION.md).
+
 The focused dispatcher verifier checks all three original selector entries,
 branch extents, instruction counts and 25 ordered native E8 targets. It also
 checks the 25 ordered natural-C++ helper relocations, the shared 19-byte

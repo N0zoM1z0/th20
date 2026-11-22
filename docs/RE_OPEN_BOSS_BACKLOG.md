@@ -67,7 +67,10 @@ canonically accepted.
   real EclManager reset/select, EnemyPhase filtering and VM XY destination
   checks; selector/call maps for 324/549/551/553/554/555/800/801/802 are checked.
   The 328B `SoundInf::enqueue` dependency
-  is now whole strict exact (all 15 relocations); the 626B FrontInf command parent is
+  is now whole strict exact (all 15 relocations). CORE/RECON-1245 also fixes
+  the shared scalar allocator's unconditional destroy_at call for trivial
+  intrusive nodes; 130/130 affected units pass across 17 source-scoped objects.
+  The 626B FrontInf command parent is
   still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains
   incomplete/NONEXACT; continue restoring the other inline case families and converge
   the complete original 41,967B body, stack, calls and switch data.
