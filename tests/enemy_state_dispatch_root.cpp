@@ -127,8 +127,16 @@ std::int32_t dispatch_integer_read_index = 0;
 std::int32_t dispatch_integer_read_value = 0;
 void (*dispatch_integer_read_hook)(std::int32_t) = nullptr;
 std::int32_t dispatch_float_read_calls = 0;
-std::array<std::int32_t,2> dispatch_float_read_indices{};
-std::array<float,2> dispatch_float_read_values{};
+std::array<std::int32_t,8> dispatch_float_read_indices{};
+std::array<float,8> dispatch_float_read_values{};
+std::array<std::int32_t,16> dispatch_integer_read_indices{};
+std::array<std::int32_t,16> dispatch_integer_read_scripted_values{};
+bool dispatch_integer_read_scripted = false;
+std::int32_t dispatch_integer_throw_at = 0;
+std::array<char,32> dispatch_read_kinds{};
+std::array<std::int32_t,32> dispatch_read_indices{};
+std::int32_t dispatch_read_trace_count = 0;
+bool dispatch_read_trace_enabled = false;
 std::int32_t dispatch_float_throw_at = 0;
 void (*dispatch_float_read_hook)(std::int32_t) = nullptr;
 Context* dispatch_operand_original_context = nullptr;
@@ -148,6 +156,7 @@ void retarget_bullet_controller_during_first_float_read(std::int32_t) {
 }
 void throw_during_integer_read(std::int32_t) { throw 553; }
 void observe_integer_read(std::int32_t) {}
+void observe_float_read(std::int32_t) {}
 void throw_during_float_read(std::int32_t) {
     if (dispatch_float_read_calls == dispatch_float_throw_at) throw 554;
 }
@@ -182,16 +191,28 @@ void EnemyPattern::drop(const Vector3& origin, bool bomb_mark) {
 }
 std::int32_t Enemy::read_integer(std::int32_t index) {
     if (!dispatch_integer_read_hook) return 0;
-    ++dispatch_integer_read_calls;
+    const auto call = dispatch_integer_read_calls++;
     dispatch_integer_read_index = index;
+    if (call < static_cast<std::int32_t>(dispatch_integer_read_indices.size()))
+        dispatch_integer_read_indices[call] = index;
+    if (dispatch_read_trace_enabled && dispatch_read_trace_count < static_cast<std::int32_t>(dispatch_read_kinds.size())) {
+        dispatch_read_kinds[dispatch_read_trace_count] = 'i';
+        dispatch_read_indices[dispatch_read_trace_count++] = index;
+    }
     dispatch_integer_read_hook(index);
-    return dispatch_integer_read_value;
+    if (dispatch_integer_throw_at == call + 1) throw 609;
+    return dispatch_integer_read_scripted
+        ? dispatch_integer_read_scripted_values[call] : dispatch_integer_read_value;
 }
 float Enemy::read_float(std::int32_t index) {
     if (!dispatch_float_read_hook) return 0.0f;
     const auto call = dispatch_float_read_calls++;
     if (call < static_cast<std::int32_t>(dispatch_float_read_indices.size()))
         dispatch_float_read_indices[call] = index;
+    if (dispatch_read_trace_enabled && dispatch_read_trace_count < static_cast<std::int32_t>(dispatch_read_kinds.size())) {
+        dispatch_read_kinds[dispatch_read_trace_count] = 'f';
+        dispatch_read_indices[dispatch_read_trace_count++] = index;
+    }
     dispatch_float_read_hook(index);
     return call < static_cast<std::int32_t>(dispatch_float_read_values.size())
         ? dispatch_float_read_values[call] : 0.0f;
@@ -347,7 +368,6 @@ bool execute_enemy_mesh_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queue_copy_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_shared_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
-bool execute_enemy_shot_command_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
 bool execute_enemy_laser_opcode(EnemyState&, std::int32_t) { return false; }
 int execute_enemy_animation_secondary_opcode(EnemyState&) { return 0; }
@@ -466,7 +486,7 @@ int main() {
     found_enemy.state.identifier = 0x00000324u;
     found_enemy.state.motion_110.position = {12.0f,34.0f,56.0f};
     EclLoader loader;
-    alignas(16) std::array<std::uint8_t, 16 + 16 + 9 * 4> packet{};
+    alignas(16) std::array<std::uint8_t, 16 + 16 + 16 * 4> packet{};
     loader.records.push_back({"root-test", packet.data()});
     loader.subroutine_count = 1;
     enemy.loader = &loader;
@@ -480,7 +500,7 @@ int main() {
     auto set_packet = [&](std::int16_t opcode,
                           std::initializer_list<std::uint32_t> args,
                           std::uint16_t references = 0) {
-        std::array<std::uint32_t,9> words{};
+        std::array<std::uint32_t,16> words{};
         assert(args.size() <= words.size());
         std::copy(args.begin(), args.end(), words.begin());
         auto* ins = reinterpret_cast<EclInstruction*>(packet.data() + 16);
@@ -492,6 +512,210 @@ int main() {
         std::memcpy(ins + 1, words.data(), sizeof(words));
     };
     auto bits = [](float value) { std::uint32_t out; std::memcpy(&out,&value,4); return out; };
+
+    // The 1,457-byte native 609-612 branch now runs through the real root
+    // dispatcher, the production writable-shot COW selector and the real
+    // PMR BulletCommand vector. The four opcodes differ in explicit/cursor
+    // indexing and base/extended operand layouts.
+    const auto run_shot_command_case = [&](std::int32_t opcode,
+                                           std::uint32_t command_index,
+                                           std::uint32_t cursor_before,
+                                           std::size_t initial_size,
+                                           bool expect_extended,
+                                           bool expect_cursor_mode,
+                                           bool expect_cow) {
+        enemy.state.queued.clear();
+        auto& selected_record = enemy.state.queued.emplace_front();
+        enemy.state.queued.emplace_front(); // selected_record is now index 1
+        selected_record.owner = std::make_shared<ShotMetadata>();
+        auto* original_metadata = selected_record.owner.get();
+        original_metadata->commands.resize(initial_size);
+        for (std::size_t i = 0; i < initial_size; ++i) {
+            auto& command = original_metadata->commands[i];
+            command.flags = 0xaabb0000u + static_cast<std::uint32_t>(i);
+            command.opcode = 0xbeef0000u + static_cast<std::uint32_t>(i);
+            command.operand_10 = 100 + static_cast<std::int32_t>(i);
+            command.operand_14 = 200 + static_cast<std::int32_t>(i);
+            command.operand_18 = 300 + static_cast<std::int32_t>(i);
+            command.operand_1c = 400 + static_cast<std::int32_t>(i);
+            command.operand_00 = 500.0f + static_cast<float>(i);
+            command.operand_04 = 600.0f + static_cast<float>(i);
+            command.operand_08 = 700.0f + static_cast<float>(i);
+            command.operand_0c = 800.0f + static_cast<float>(i);
+            command.script = "preserved command";
+        }
+        original_metadata->field_30 = cursor_before;
+        std::shared_ptr<ShotMetadata> shared_owner;
+        if (expect_cow) shared_owner = selected_record.owner;
+
+        const std::size_t integer_count = expect_extended ? 6u : 4u;
+        std::array<std::uint32_t,8> integer_values{};
+        integer_values[0] = 1u;
+        if (!expect_cursor_mode) integer_values[1] = command_index;
+        const std::size_t operand_start = expect_cursor_mode ? 1u : 2u;
+        const std::array<std::uint32_t,6> payload_values{
+            0x11112222u, 0x33334444u, 0x55556666u,
+            0x77778888u, 0x9999aaaau, 0xbbbbccccu
+        };
+        for (std::size_t i = 0; i < integer_count; ++i)
+            integer_values[operand_start + i] = payload_values[i];
+        const std::array<float,4> float_values{{
+            -0.0f, 1.25f, -2.5f, 9.75f
+        }};
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_index = 0;
+        dispatch_integer_read_indices = {};
+        dispatch_integer_read_scripted_values = {};
+        dispatch_integer_read_scripted = true;
+        dispatch_integer_throw_at = 0;
+        dispatch_integer_read_hook = &observe_integer_read;
+        for (std::size_t i = 0; i < integer_values.size(); ++i)
+            dispatch_integer_read_scripted_values[i] = static_cast<std::int32_t>(integer_values[i]);
+        dispatch_float_read_calls = 0;
+        dispatch_float_read_indices = {};
+        dispatch_float_read_values = {};
+        dispatch_float_read_hook = &observe_float_read;
+        for (std::size_t i = 0; i < float_values.size(); ++i)
+            dispatch_float_read_values[i] = float_values[i];
+        dispatch_float_throw_at = 0;
+        dispatch_read_trace_count = 0;
+        dispatch_read_kinds = {};
+        dispatch_read_indices = {};
+        dispatch_read_trace_enabled = true;
+
+        std::array<std::uint32_t,12> reference_words{};
+        reference_words.fill(static_cast<std::uint32_t>(-101));
+        const std::size_t float_count = expect_extended ? 4u : 2u;
+        const std::size_t first_float = (expect_cursor_mode ? 1u : 2u) + integer_count;
+        for (std::size_t i = 0; i < float_count; ++i)
+            reference_words[first_float + i] = bits(-101.0f);
+        set_packet(opcode, {
+            reference_words[0], reference_words[1], reference_words[2], reference_words[3],
+            reference_words[4], reference_words[5], reference_words[6], reference_words[7],
+            reference_words[8], reference_words[9], reference_words[10], reference_words[11]
+        }, 0x0fffu);
+
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_read_trace_enabled = false;
+        dispatch_integer_read_hook = nullptr;
+        dispatch_float_read_hook = nullptr;
+        dispatch_integer_read_scripted = false;
+
+        const std::size_t expected_integer_count = 1u + (expect_cursor_mode ? 0u : 1u) + integer_count;
+        assert(dispatch_integer_read_calls == static_cast<std::int32_t>(expected_integer_count));
+        assert(dispatch_float_read_calls == static_cast<std::int32_t>(float_count));
+        assert(dispatch_read_trace_count == static_cast<std::int32_t>(expected_integer_count + float_count));
+        for (std::size_t i = 0; i < expected_integer_count; ++i) {
+            assert(dispatch_read_kinds[i] == 'i' && dispatch_read_indices[i] == -101);
+        }
+        for (std::size_t i = 0; i < float_count; ++i) {
+            const auto at = expected_integer_count + i;
+            assert(dispatch_read_kinds[at] == 'f' && dispatch_read_indices[at] == -101);
+        }
+
+        auto* metadata = selected_record.owner.get();
+        assert(metadata != nullptr);
+        assert((metadata != original_metadata) == expect_cow);
+        if (expect_cow) {
+            assert(selected_record.owner != shared_owner);
+            assert(selected_record.owner.use_count() == 1);
+            assert(shared_owner.use_count() == 1);
+            assert(shared_owner->field_30 == cursor_before);
+            assert(shared_owner->commands.size() == initial_size);
+        } else {
+            assert(selected_record.owner.get() == original_metadata);
+        }
+
+        const std::size_t target_index = expect_cursor_mode ? cursor_before : command_index;
+        assert(metadata->commands.size() == std::max(initial_size, target_index + 1u));
+        const auto& command = metadata->commands[target_index];
+        assert(command.flags == integer_values[operand_start]);
+        assert(command.opcode == integer_values[operand_start + 1]);
+        assert(command.operand_10 == static_cast<std::int32_t>(integer_values[operand_start + 2]));
+        assert(command.operand_14 == static_cast<std::int32_t>(integer_values[operand_start + 3]));
+        if (expect_extended) {
+            assert(command.operand_18 == static_cast<std::int32_t>(integer_values[operand_start + 4]));
+            assert(command.operand_1c == static_cast<std::int32_t>(integer_values[operand_start + 5]));
+        } else if (target_index < initial_size) {
+            assert(command.operand_18 == 300 + static_cast<std::int32_t>(target_index));
+            assert(command.operand_1c == 400 + static_cast<std::int32_t>(target_index));
+        } else {
+            assert(command.operand_18 == 0 && command.operand_1c == 0);
+        }
+        assert(bits(command.operand_00) == bits(float_values[0]));
+        assert(bits(command.operand_04) == bits(float_values[1]));
+        if (expect_extended) {
+            assert(bits(command.operand_08) == bits(float_values[2]));
+            assert(bits(command.operand_0c) == bits(float_values[3]));
+        } else if (target_index < initial_size) {
+            assert(bits(command.operand_08) == bits(700.0f + static_cast<float>(target_index)));
+            assert(bits(command.operand_0c) == bits(800.0f + static_cast<float>(target_index)));
+        } else {
+            assert(command.operand_08 == 0.0f && command.operand_0c == 0.0f);
+        }
+        if (target_index < initial_size)
+            assert(command.script && std::strcmp(command.script, "preserved command") == 0);
+        else
+            assert(command.script == nullptr);
+        assert(metadata->field_30 == (expect_cursor_mode ? cursor_before + 1u : command_index + 1u));
+        assert(metadata->field_24 == 0 && metadata->field_28 == 0 &&
+               metadata->field_2c == 0 && metadata->field_34 == 0);
+    };
+
+    run_shot_command_case(609, 3, 17, 2, false, false, false);
+    run_shot_command_case(610, 1, 17, 4, true, false, true);
+    run_shot_command_case(611, 0, 3, 2, false, true, false);
+    run_shot_command_case(612, 1, 1, 3, true, true, false);
+
+    // An exception in the second float read preserves the resize and every
+    // earlier field write but does not commit the metadata command cursor.
+    enemy.state.queued.clear();
+    auto& partial_record = enemy.state.queued.emplace_front();
+    partial_record.owner = std::make_shared<ShotMetadata>();
+    partial_record.owner->commands.resize(2);
+    partial_record.owner->field_30 = 17;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_throw_at = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_integer_read_scripted_values[0] = 0;
+    dispatch_integer_read_scripted_values[1] = 4;
+    dispatch_integer_read_scripted_values[2] = 0x11112222;
+    dispatch_integer_read_scripted_values[3] = 0x33334444;
+    dispatch_integer_read_scripted_values[4] = 0x55556666;
+    dispatch_integer_read_scripted_values[5] = 0x77778888;
+    dispatch_integer_read_scripted_values[6] = 0x9999aaaa;
+    dispatch_integer_read_scripted_values[7] = 0xbbbbcccc;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_values = {-0.0f, 1.25f, -2.5f, 9.75f};
+    dispatch_float_read_hook = &throw_during_float_read;
+    dispatch_float_throw_at = 2;
+    set_packet(610, {
+        static_cast<std::uint32_t>(-101), static_cast<std::uint32_t>(-101),
+        static_cast<std::uint32_t>(-101), static_cast<std::uint32_t>(-101),
+        static_cast<std::uint32_t>(-101), static_cast<std::uint32_t>(-101),
+        static_cast<std::uint32_t>(-101), static_cast<std::uint32_t>(-101),
+        bits(-101.0f), bits(-101.0f), bits(-101.0f), bits(-101.0f)
+    }, 0x0fffu);
+    bool shot_command_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { shot_command_threw = value == 554; }
+    dispatch_integer_read_hook = nullptr;
+    dispatch_float_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    dispatch_integer_throw_at = 0;
+    dispatch_float_throw_at = 0;
+    assert(shot_command_threw);
+    assert(dispatch_integer_read_calls == 8 && dispatch_float_read_calls == 2);
+    assert(partial_record.owner->commands.size() == 5);
+    assert(partial_record.owner->commands[4].flags == 0x11112222u);
+    assert(partial_record.owner->commands[4].opcode == 0x33334444u);
+    assert(partial_record.owner->commands[4].operand_10 == 0x55556666);
+    assert(partial_record.owner->commands[4].operand_14 == 0x77778888);
+    assert(bits(partial_record.owner->commands[4].operand_00) == bits(-0.0f));
+    assert(partial_record.owner->commands[4].operand_04 == 0.0f);
+    assert(partial_record.owner->field_30 == 17);
 
     front_field_180_calls = 0;
     front_boss_gauge_calls = 0;
@@ -1324,5 +1548,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518, global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
