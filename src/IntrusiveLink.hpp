@@ -24,7 +24,7 @@ public:
     T*& node_access();
     void set_iterator(IntrusiveIterator<T>* input);
     void set_owner(IntrusiveList<T>* input);
-    void initialize(T* input);
+    void initialize(T* input) noexcept;
     void detach();
     void detach_inner();
     IntrusiveLink* find(T* input);
@@ -70,7 +70,7 @@ template<class T> T*& IntrusiveLink<T>::node_ref(){return node;}
 template<class T> T*& IntrusiveLink<T>::node_access(){return node_ref();}
 template<class T> void IntrusiveLink<T>::set_iterator(IntrusiveIterator<T>* input){iterator=input;}
 template<class T> void IntrusiveLink<T>::set_owner(IntrusiveList<T>* input){owner=input;}
-template<class T> void IntrusiveLink<T>::initialize(T* input){node=input;previous=nullptr;next=nullptr;owner=nullptr;iterator=nullptr;}
+template<class T> void IntrusiveLink<T>::initialize(T* input) noexcept{node=input;previous=nullptr;next=nullptr;owner=nullptr;iterator=nullptr;}
 template<class T> void IntrusiveLink<T>::detach(){
     if(owner){IntrusiveList<T>* list=owner;list->remove(this);} else detach_inner();
 }

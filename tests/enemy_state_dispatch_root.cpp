@@ -4,6 +4,7 @@
 #include "RenderMesh.hpp"
 #include "Bullet.hpp"
 #include "Enemy.hpp"
+#include "StoneEnemyRecord.hpp"
 #include "AnimationHandleSetFlag0Recursive.hpp"
 #include "AnimationRuntimeOwner.hpp"
 #include "EnemyController.hpp"
@@ -746,6 +747,19 @@ int main() {
     assert(process_sound.commands[31].argument == 0x12345678);
     assert(process_locks.slot(11).try_lock());
     process_locks.slot(11).unlock();
+    StoneEnemyRecord stone_enemy_record;
+    assert(stone_enemy_record.link.node == &stone_enemy_record);
+    assert(stone_enemy_record.link.next == nullptr);
+    assert(stone_enemy_record.link.previous == nullptr);
+    assert(stone_enemy_record.link.owner == nullptr);
+    assert(stone_enemy_record.link.iterator == nullptr);
+    assert(stone_enemy_record.handle_14.value == 0);
+    assert(stone_enemy_record.handle_18.value == 0);
+    assert(stone_enemy_record.timer_1c.previous == 0);
+    assert(stone_enemy_record.timer_1c.current == 0);
+    assert(stone_enemy_record.timer_1c.current_fraction == 0.0f);
+    assert(stone_enemy_record.timer_1c.flags == 0);
+
     Enemy enemy;
     Enemy found_enemy;
     Enemy found_enemy2;

@@ -158,6 +158,8 @@ the complete effect-handle selection and tagged publication protocol. See
 
 WeaponStoneInfo.hpp declares the independently identified 0xB4 StoneEnemyController;
 WeaponStoneInfo.cpp owns its construction, byte getter and process-slot access.
+StoneEnemyRecord.hpp/.cpp define the 0x34 list record and its strict-exact constructor;
+its allocation, full opcode-1001 Boss and resource retirement remain open.
 Player.cpp, PlayerStorage.cpp, PlayerRecord.cpp and GeometryMetrics.cpp own the
 remaining maintained defeat dependencies. The ten complete roots and three SDK
 callback helpers are strict exact. PlayerFeedback's actual counter getter reads

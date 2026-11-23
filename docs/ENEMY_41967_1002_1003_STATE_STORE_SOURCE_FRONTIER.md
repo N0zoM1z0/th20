@@ -57,5 +57,5 @@ name or prove the origin of the enclosing controller type. Likewise, the
 
 `scripts/verify-enemy-state-dispatch-frontier.py` re-decodes both native cases
 from the locked PE and checks the maintained source order. Its focused root
-host executes the production dispatcher with **129 source units under
+host executes the production dispatcher with **130 source units under
 ASan/UBSan**. No full cold replay is required or claimed.

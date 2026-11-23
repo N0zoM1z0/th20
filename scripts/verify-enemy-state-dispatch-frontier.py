@@ -25,7 +25,7 @@ HOST_SOURCES=[
     'src/EnemyStatePatternOpcode.cpp', 'src/EnemyStateControlOpcode.cpp', 'src/EnemyStateDynamicParameterOpcode.cpp',
     'src/EnemyStateControllerManagementOpcode.cpp', 'src/EnemyStateTimeOpcode.cpp', 'src/EnemyStateCardOpcode.cpp', 'src/EnemyStateFrontendOpcode.cpp',
     'src/EnemySpawning.cpp', 'src/Card.cpp', 'src/AnimationHandle.cpp', 'src/AnimationParameters.cpp', 'src/AnimationPackedColor.cpp', 'src/EclSelection.cpp', 'src/Session.cpp', 'src/SessionScore.cpp', 'src/ItemRewardPopupQueue.cpp',
-    'src/EnemyControllerConstruction.cpp', 'src/EnemyInitialization.cpp', 'src/EnemyData.cpp',
+    'src/EnemyControllerConstruction.cpp', 'src/EnemyInitialization.cpp', 'src/EnemyData.cpp', 'src/StoneEnemyRecord.cpp',
     'src/EnemyState.cpp', 'src/EnemyMovement.cpp', 'src/Enemy.cpp', 'src/PlayerRecord.cpp',
     'src/NativeFloatGlobals.cpp',
     'src/EnemyScript.cpp', 'src/EnemyScriptAdvance.cpp', 'src/EnemyVariables.cpp', 'src/EnemySpawn.cpp',
@@ -842,6 +842,7 @@ def main() -> None:
         ('src/EnemyStateDialogueOpcode.cpp','build/gpt-web-dialogue-canonical/EnemyStateDialogueOpcode.obj'),
         ('src/SoundInfEnqueue323.cpp','build/gpt-web-sound-canonical/SoundInfEnqueue323.obj'),
         ('src/NativeSoundCommandArrayView.cpp','build/gpt-web-sound-canonical/NativeSoundCommandArrayView.obj'),
+        ('src/StoneEnemyRecord.cpp','build/gpt-web-stone-enemy-record-canonical/StoneEnemyRecord.obj'),
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
 
@@ -1598,7 +1599,7 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
     print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 41 opcode fragments wired')
-    print('PASS all sixty-two i386 COFF source units compile under locked MSVC profile')
+    print('PASS all sixty-three i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 

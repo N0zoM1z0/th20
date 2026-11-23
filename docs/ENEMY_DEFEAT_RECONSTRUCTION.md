@@ -27,9 +27,12 @@ The maintained StoneEnemyController uses the complete observed storage:
 | 0x84 | FloatInterpolation |
 | 0xB0 | Raw byte reward gate |
 
-The original record type spelling and remaining member meanings are unknown.
-The record is forward-declared, not replaced by a prefix. Controller destruction
-and allocation remain undefined production interfaces. The getter at 0x485A40
+The original record type spelling and the semantic roles of its trailing words
+remain unknown. The maintained `StoneEnemyRecord` is a complete 0x34-byte layout
+with an intrusive link, two AnimationHandles and a Timer; its 76-byte constructor
+strictly replays at 0x5119E0. The +2C/+30 words are zeroed by the allocation
+factory before construction, not by the record constructor. Controller destruction
+and record allocation remain undefined production interfaces. The getter at 0x485A40
 returns the raw byte; no boolean field or TaskInfo/vtable base is inferred.
 
 ## Complete maintained caller

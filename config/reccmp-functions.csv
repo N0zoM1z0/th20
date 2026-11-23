@@ -945,6 +945,7 @@ th20::EffectInfo::select_handle_slot,0x00498E70,function
 th20::EffectInfo::publish_handle,0x00497D20,function
 th20::Enemy::defeat,0x004A5640,function
 th20::StoneEnemyController::StoneEnemyController,0x00511980,function
+th20::StoneEnemyRecord::StoneEnemyRecord,0x005119E0,function
 th20::StoneEnemyController::byte_b0_value,0x00485A40,function
 th20::stone_enemy_controller,0x00513DD0,function
 th20::Enemy::damage_marked,0x004AB300,function

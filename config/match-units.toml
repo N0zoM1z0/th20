@@ -15591,6 +15591,23 @@ relocations = [
   { offset = 1363, type = "REL32", symbol = "@__security_check_cookie@4", target = 5515758 },
 ]
 
+
+[units.stone_enemy_record_ctor]
+source = "src/StoneEnemyRecord.cpp"
+object = "build/gpt-web-stone-enemy-record-canonical/StoneEnemyRecord.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::StoneEnemyRecord::StoneEnemyRecord"]
+symbol = "??0StoneEnemyRecord@th20@@QAE@XZ"
+target_address = 0x005119E0
+size = 76
+relocations = [
+  { offset = 0x0D, type = "REL32", symbol = "??0?$IntrusiveLink@UStoneEnemyRecord@th20@@@th20@@QAE@XZ", target = 0x00418A10 },
+  { offset = 0x18, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x23, type = "REL32", symbol = "??0AnimationHandle@th20@@QAE@XZ", target = 0x00425CC0 },
+  { offset = 0x2E, type = "REL32", symbol = "??0Timer@th20@@QAE@XZ", target = 0x00422D90 },
+  { offset = 0x40, type = "REL32", symbol = "?initialize@?$IntrusiveLink@UStoneEnemyRecord@th20@@@th20@@QAEXPAUStoneEnemyRecord@2@@Z", target = 0x0044A670 },
+]
+
 [units.stone_enemy_controller_ctor]
 source = "src/WeaponStoneInfo.cpp"
 object = "build/core163-canonical/WeaponStoneInfo.obj"
