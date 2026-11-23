@@ -35,17 +35,18 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoints — Enemy ECL opcodes 616, 617, 618, 619, 620 and 633
+## Latest checkpoints — Enemy ECL opcodes 616, 617, 618, 619, 620, 627/628, 632 and 633
 
-Enemy ECL opcodes 616, 617, 618, 619, 620 and 633 are now integrated into the
+Enemy ECL opcodes 616, 617, 618, 619, 620, 627, 628, 632 and 633 are now integrated into the
 maintained root host and focused verifiers. Their production/test/verifier
 changes are checkpointed and retained:
 
-- `src/EnemyStateBulletLaserCancelOpcode.cpp`
 - `src/EnemyStatePlayerAngleOpcode.cpp`
 - `src/EnemyStateSharedQueuedParametersOpcode.cpp`
 - `src/EnemyStateQueuedParametersOpcode.cpp`
-- `src/EnemyStateQueuedParametersOpcode.cpp`
+- `src/EnemyStateScriptPointerOpcode.cpp`
+- `src/EnemyStateBulletLaserCancelOpcode.cpp`
+- `src/BulletLimitedCancellation.cpp`
 - `tests/enemy_state_dispatch_root.cpp`
 - `scripts/verify-enemy-bullet-laser-cancel-opcode-source.py`
 - `scripts/verify-enemy-player-angle-opcode-source.py`
@@ -104,11 +105,31 @@ selector-exception tests cover both arithmetic and COW side effects.
 See the opcode-633 source frontier
 (ENEMY_41967_633_WRITABLE_QUEUED_RECORD_DECREMENT_SOURCE_FRONTIER.md).
 
-Both false-returning root-test stubs for the shared and writable queued-parameter helpers are removed. The production helpers are
-included in `HOST_SOURCES` and the locked-profile COFF compile list; the
-native opcode verifier is invoked by the maintained root verifier. The
-focused root host passes under ASan/UBSan, and the root verifier compiles
-**48 locked-profile i386 COFF source units** and 112 focused host sources. See the dedicated
+Native opcode 632 is the **252-byte / 62-instruction / 10-E8** borrowed
+BulletCommand script-pointer case at 0x00493831, selector index 150. Both
+integer indexes are read before writable metadata COW, pair extraction and
+PMR command-vector size/resize/index. The stored pointer is the original
+EclInstruction + 0x1c trailing payload address; no string is copied. The
+root host verifies COW, vector growth, pointer identity and second-index
+exception-before-side-effects. See
+[the opcode-632 source frontier](ENEMY_41967_632_BORROWED_SCRIPT_POINTER_SOURCE_FRONTIER.md).
+
+Native opcodes 627 and 628 are each **182-byte / 39-instruction / 7-E8**
+paired capped Bullet/Laser radial-cancellation cases at 0x00495580 and
+0x00495636, selector indexes 145/146. They call the real 401B
+BulletController::cancel_near_limited Boss with mode 0, limit 99,999 and
+effects 0, then re-read Context/position and call the real 288B
+LaserController::cancel_near Boss with mode 0 / argument 1. The root host
+tests real intrusive traversal, state/field filters, effect-bit reset,
+Context/position retargeting and radius exception ordering. See
+[the opcode-627/628 source frontier](ENEMY_41967_627_628_CAPPED_RADIAL_CANCEL_SOURCE_FRONTIER.md).
+
+The false-returning root-test stubs for the shared, writable queued-parameter
+and script-pointer helpers are removed. The production helpers are included
+in HOST_SOURCES and the locked-profile COFF compile list; their native opcode
+verifiers are invoked by the maintained root verifier. The focused root host
+passes under ASan/UBSan, and the root verifier compiles **50 locked-profile
+i386 COFF source units** and 114 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -144,6 +165,10 @@ Recent committed case families exercised by the maintained root include:
   ordered pair extraction, COW-before-float and exception-after-clone coverage.
 - **633:** 163B writable queued-record decrement; real COW selector, ordered pair
   extraction, uint32 wrap/signed high-bit clamp and selector-exception coverage.
+- **632:** 252B borrowed script pointer; both indexes before COW, real PMR command
+  growth and exact EclInstruction+0x1C pointer identity, plus second-index exception.
+- **627/628:** two 182B capped Bullet/Laser cancellation branches; real 401B limited
+  Bullet and 288B Laser Bosses, 99,999 cap/effects arguments and live Context retargeting.
 - **621:** 346B mesh-owner lifecycle; real allocator templates and
   EnemyMeshOwner destructor. Renderer-dependent RenderMesh ctor/dtor and
   allocator startup remain host fixtures.
@@ -162,9 +187,9 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **48 locked-profile i386
-COFF units** and runs 112 focused host source units under ASan/UBSan, including
-opcodes 616, 617, 618, 619, 620 and 633. The exact per-case boundaries and host limitations are documented in the
+The maintained root verifier currently compiles **50 locked-profile i386
+COFF units** and runs 114 focused host source units under ASan/UBSan, including
+opcodes 616, 617, 618, 619, 620, 627, 628, 632 and 633. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
 

@@ -50,7 +50,7 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1254
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1258
   maintain the partial natural-C++ root entry and wire the complete 400–448 movement
   family, nine Pattern cases, 21 bounds/health/controller/state cases, five controller
   selection/clear cases, six timer/mode/runtime-time cases, five Card/health cases,
@@ -93,6 +93,18 @@ canonically accepted.
   Bullet::cancel and concrete Laser::cancel_circle remain explicit leaf test
   boundaries; the 47-unit COFF / 111-source ASan/UBSan root verifier passes
   (CORE/RECON-1254).
+  The 627/628 pair each restore a separate 182B capped radial-cancellation
+  branch and now execute the complete 401B BulletController::cancel_near_limited
+  Boss plus 288B LaserController::cancel_near Boss. The native 99,999 limit,
+  effects/mode arguments, live Context/position retargeting, Bullet state/field
+  filters, effect-bit reset and radius exception-before-side-effects are
+  checked under ASan/UBSan; both 7-E8 maps are pinned (CORE/RECON-1255).
+  Opcode 632's 252B borrowed script-pointer branch now executes the production
+  helper with both integer indexes before real writable metadata COW, PMR
+  command-vector growth and the borrowed EclInstruction+0x1C payload pointer.
+  Shared-owner preservation, old command data and second-index exception
+  before COW/growth are tested; its 10-E8 map and ordered COFF relocations are
+  checked (CORE/RECON-1256).
   The 203B opcode-617 Player-relative angle branch is now executed in the
   root host with real Player construction, Context::player and
   Player::position_ref leaves, existing atan2 and float-destination writeback.
