@@ -42,6 +42,10 @@ maintained root host and focused verifiers. Their production/test/verifier
 changes are checkpointed and retained:
 
 - `src/EnemyStatePlayerAngleOpcode.cpp`
+- `src/EnemyStateLaserOpcode.cpp`
+- `src/LaserControllerFindLaser.cpp`
+- `scripts/verify-laser-controller-find-laser-source.py`
+- `scripts/verify-enemy-laser-lookup-opcode-source.py`
 - `src/EnemyStateSharedQueuedParametersOpcode.cpp`
 - `src/EnemyStateQueuedParametersOpcode.cpp`
 - `src/EnemyStateScriptPointerOpcode.cpp`
@@ -100,7 +104,14 @@ body is 230B/70 instructions/11 E8 calls and is called by Enemy ECL opcodes
 and destroys the iterator on both paths. The root host tests empty/missing,
 later-element, and duplicate-handle lookups. See
 [the Laser find_laser source frontier](LASER_CONTROLLER_FIND_LASER_230_SOURCE_FRONTIER.md).
-The 704–710 parent branches and 41,967B Enemy root remain NONEXACT.
+
+Enemy opcode 704 is now independently restored as a 176B/37-instruction
+inline source fragment: Context owner capture, integer handle operand, real
+`find_laser`, Vector3 construction, ordered float operands 1/2 and conditional
+virtual `set_position`. Its native PE/COFF verifier and live Context-retarget /
+missing-handle / operand-exception root tests pass. See
+[the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
+Sibling opcode fragments 705–710 and the 41,967B Enemy root remain NONEXACT.
 
 Native opcode 620 is the **250-byte / 57-instruction / 8-E8** case at
 `0x00492D4D`, selector index 138. Its natural C++ source uses the real

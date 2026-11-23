@@ -4,7 +4,9 @@
 handle lookup at `0x00498FF0` is now linked into the maintained Enemy root
 host and covered by native PE, i386 COFF, and ASan/UBSan regression checks.
 This is a real leaf used by Enemy ECL opcodes 704–710; it is not a synthetic
-replacement or a claim that those seven parent opcode branches are restored.
+replacement and does not claim that all seven parent opcode branches are
+restored. Opcode 704 now has a separate inline source frontier; siblings
+705–710 remain open.
 
 ## Locked native evidence
 
@@ -63,7 +65,10 @@ a later-element hit, a missing handle, and duplicate handles where the first
 list entry wins. The focused root verifier links the source under ASan/UBSan
 and compiles its locked-profile i386 COFF object.
 
-This restores the shared leaf only. The 704–710 caller branches remain
-separate open work, and the 41,967-byte `EnemyState::execute_opcode` parent
-remains **NONEXACT**. No parent-byte credit is claimed and no full cold replay
-was run.
+This restores the shared leaf and is now exercised by the separately
+recovered inline Enemy opcode-704 position-update fragment (176B/37
+instructions/six direct E8 calls plus a conditional `set_position` vcall).
+See [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
+Sibling caller fragments 705–710 remain open, and the 41,967-byte
+`EnemyState::execute_opcode` parent remains **NONEXACT**. No parent-byte
+credit is claimed and no full cold replay was run.

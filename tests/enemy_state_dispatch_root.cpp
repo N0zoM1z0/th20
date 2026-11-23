@@ -280,7 +280,14 @@ public:
     Vector3 circle_center{};
     float circle_radius = 0.0f;
     std::int32_t circle_mode = -1, circle_argument = -1, circle_result = 0;
+    std::int32_t position_calls = 0;
+    Vector3 last_position{};
 
+    void set_position(const Vector3& value) override {
+        ++position_calls;
+        last_position = value;
+        Laser::set_position(value);
+    }
     void slot_08() override {}
     void set_parameter_flag(std::uint32_t) override {}
     void slot_10() override {}
@@ -1322,6 +1329,136 @@ int main() {
     assert(original_laser_metadata->commands.size() == 2);
     assert(laser_record->owner->field_34 == 0x10);
     assert(laser_record->owner->commands.size() == 2);
+
+    // Native opcode 704 captures Context::laser_controller before reading
+    // the handle, resolves the Laser before both float operands, and only
+    // invokes the virtual position setter after both operands succeed.
+    DispatchTestLaser laser_704_primary;
+    DispatchTestLaser laser_704_alternate;
+    laser_704_primary.handle = 0x70412345u;
+    laser_704_alternate.handle = 0x70412345u;
+    laser_704_primary.position = {1.0f,2.0f,3.0f};
+    laser_704_alternate.position = {4.0f,5.0f,6.0f};
+    laser_704_primary.link.initialize(&laser_704_primary);
+    laser_704_alternate.link.initialize(&laser_704_alternate);
+    dispatch_test_lasers->active.append(&laser_704_primary.link);
+    dispatch_test_lasers_alternate->active.append(&laser_704_alternate.link);
+    dispatch_operand_state = &enemy.state;
+    dispatch_operand_original_context = &context;
+    dispatch_operand_alternate_context = &alternate_context;
+    enemy.state.context = &context;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_value = 0x70412345;
+    dispatch_integer_read_hook = &retarget_context_during_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {};
+    dispatch_float_read_values[0] = 12.5f;
+    dispatch_float_read_values[1] = -7.25f;
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(704, {static_cast<std::uint32_t>(-101),bits(-102.0f),bits(-103.0f),0,0,0,0,0}, 7);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    dispatch_float_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -102 && dispatch_float_read_indices[1] == -103);
+    assert(enemy.state.context == &alternate_context);
+    assert(laser_704_primary.position_calls == 1);
+    assert(laser_704_primary.position.x == 12.5f &&
+           laser_704_primary.position.y == -7.25f &&
+           laser_704_primary.position.z == 0.0f);
+    assert(laser_704_alternate.position_calls == 0);
+    assert(laser_704_alternate.position.x == 4.0f &&
+           laser_704_alternate.position.y == 5.0f &&
+           laser_704_alternate.position.z == 6.0f);
+
+    // Retargeting Context during the first float read must still update the
+    // already-resolved Laser from the originally captured controller.
+    enemy.state.context = &context;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = 0x70412345;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values[0] = -31.25f;
+    dispatch_float_read_values[1] = 47.5f;
+    dispatch_float_read_hook = &retarget_context_player_during_first_float_read;
+    set_packet(704, {static_cast<std::uint32_t>(-101),bits(-102.0f),bits(-103.0f),0,0,0,0,0}, 7);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    dispatch_float_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(dispatch_float_read_calls == 2);
+    assert(enemy.state.context == &alternate_context);
+    assert(laser_704_primary.position_calls == 2);
+    assert(laser_704_primary.position.x == -31.25f &&
+           laser_704_primary.position.y == 47.5f &&
+           laser_704_primary.position.z == 0.0f);
+    assert(laser_704_alternate.position_calls == 0);
+
+    // A missing handle still consumes both float operands but does not issue
+    // the virtual setter.
+    enemy.state.context = &context;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = static_cast<std::int32_t>(0xdeadbeefu);
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values[0] = 80.0f;
+    dispatch_float_read_values[1] = 90.0f;
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(704, {static_cast<std::uint32_t>(-101),bits(-102.0f),bits(-103.0f),0,0,0,0,0}, 7);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    dispatch_float_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(dispatch_float_read_calls == 2);
+    assert(laser_704_primary.position_calls == 2 &&
+           laser_704_alternate.position_calls == 0);
+
+    // The handle exception precedes Vector3 construction and both floats;
+    // the second-float exception occurs after lookup but before the vcall.
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = 0x70412345;
+    dispatch_integer_throw_at = 1;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_hook = &observe_float_read;
+    set_packet(704, {static_cast<std::uint32_t>(-101),bits(-102.0f),bits(-103.0f),0,0,0,0,0}, 7);
+    bool laser_704_integer_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { laser_704_integer_threw = value == 609; }
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_throw_at = 0;
+    dispatch_float_read_hook = nullptr;
+    assert(laser_704_integer_threw && dispatch_integer_read_calls == 1);
+    assert(dispatch_integer_read_index == -101);
+    assert(dispatch_float_read_calls == 0 && laser_704_primary.position_calls == 2);
+
+    dispatch_float_read_calls = 0;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = 0x70412345;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_float_throw_at = 2;
+    dispatch_float_read_hook = &throw_during_float_read;
+    set_packet(704, {static_cast<std::uint32_t>(-101),bits(-102.0f),bits(-103.0f),0,0,0,0,0}, 7);
+    bool laser_704_second_float_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { laser_704_second_float_threw = value == 554; }
+    dispatch_float_read_hook = nullptr;
+    dispatch_integer_read_hook = nullptr;
+    dispatch_float_throw_at = 0;
+    assert(laser_704_second_float_threw && dispatch_float_read_calls == 2);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+    assert(laser_704_primary.position_calls == 2 &&
+           laser_704_alternate.position_calls == 0);
+    dispatch_test_lasers->active.remove(&laser_704_primary.link);
+    dispatch_test_lasers_alternate->active.remove(&laser_704_alternate.link);
+    assert(dispatch_test_lasers->active.front() == nullptr);
+    assert(dispatch_test_lasers_alternate->active.front() == nullptr);
+    enemy.state.context = &context;
 
     // Native opcode 621 releases the previous EnemyMeshOwner before reading
     // either operand, then conditionally allocates the 17x17 RenderMesh only
@@ -3911,5 +4048,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710 (real intrusive-list first-match lookup and iterator cleanup), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710 (real intrusive-list first-match lookup and iterator cleanup), Enemy Laser position opcode 704 (Context capture, live retargeting and operand exception order), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

@@ -243,8 +243,19 @@ source fragments.
   C++ helper uses the actual intrusive list, preserves the +0x8C handle test,
   repeats node_value() on the match return, and destroys the iterator on both
   paths. The maintained root host covers empty/missing/later/duplicate lookup
-  cases. See LASER_CONTROLLER_FIND_LASER_230_SOURCE_FRONTIER.md. The seven
-  caller branches and the 41,967B parent remain NONEXACT.
+  cases. See LASER_CONTROLLER_FIND_LASER_230_SOURCE_FRONTIER.md. Opcode 704
+  now has a separate inline source frontier; sibling callers 705–710 and the
+  41,967B parent remain NONEXACT.
+- Native Enemy opcode 704 is now a separate production source fragment. Its
+  original selector 156 case is 176B/37 instructions/six E8 calls plus one
+  conditional `Laser::set_position` vcall. It captures the Context
+  LaserController before reading handle operand 0, resolves through the real
+  `LaserController::find_laser` leaf, constructs Vector3, reads float operands
+  1/2 in order and only then invokes the setter. The root host covers Context
+  retargeting during handle/float reads, missing handles and both integer and
+  float exceptions before mutation. See
+  [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
+  Sibling inline callers 705–710 and the 41,967B parent remain NONEXACT.
 - Native opcode 620 is the 250-byte / 57-instruction shared queued-vector
   update at 0x00492D4D, selector index 138, with eight original E8 calls.
   The maintained root host executes the production helper and real

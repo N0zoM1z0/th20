@@ -6,9 +6,27 @@
 
 namespace th20 {
 
-// The four branches are kept together because the original parent shares the
-// same queued-shot COW protocol, command-vector copy, Context Laser owner and
-// common Laser factory. Their native case bodies are inline in the 41,967B Boss.
+// Native opcode 704 is a separate lookup/mutation fragment from the four
+// queued-shot creation cases below. Keep its Context capture, handle lookup,
+// Vector3 construction and VM operand order explicit in its own source helper.
+bool execute_enemy_laser_lookup_opcode(EnemyState& state, std::int32_t opcode) {
+    if (opcode != 704) return false;
+    auto* const controller = state.context->laser_controller();
+    const auto handle = state.integer_argument(0);
+    auto* const laser = controller->find_laser(handle);
+    Vector3 position;
+    position.x = state.float_argument(1);
+    position.y = state.float_argument(2);
+    if (laser != nullptr) {
+        position.z = 0.0f;
+        laser->set_position(position);
+    }
+    return true;
+}
+
+// The four creation branches share the queued-shot COW protocol, command-
+// vector copy, Context Laser owner and common Laser factory. Their native case
+// bodies are inline in the 41,967B EnemyState::execute_opcode Boss.
 bool execute_enemy_laser_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {
     case 702: {

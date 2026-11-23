@@ -290,6 +290,8 @@ int EnemyState::execute_opcode() {
         return 0;
     if (execute_enemy_queued_parameters_opcode(*this, opcode))
         return 0;
+    if (execute_enemy_laser_lookup_opcode(*this, opcode))
+        return 0;
     if (execute_enemy_laser_opcode(*this, opcode))
         return 0;
     if (execute_enemy_bullet_cancel_opcode(*this, opcode))
