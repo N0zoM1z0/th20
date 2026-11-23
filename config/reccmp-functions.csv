@@ -1827,3 +1827,7 @@ th20::EnemyState::spawn_from_opcode,0x00496FB0,function
 th20::DiagnosticAllocator::allocate_object<StoneEnemyRecord>,0x00511870,function
 th20::StoneEnemyController::add_record,0x00512F60,function
 th20::StageResourceOwner::select_record,0x004773C0,function
+
+th20::StageBackgroundFogOwner::execute_script,0x004751B0,function
+th20::StageResourceOwner::interrupt_animations,0x00477480,function
+th20::StageResourceOwner::set_primary_rotation_flag,0x00477790,function

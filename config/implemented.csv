@@ -1812,3 +1812,7 @@ th20::StoneEnemyRecord::StoneEnemyRecord
 th20::DiagnosticAllocator::allocate_object<StoneEnemyRecord>
 th20::StoneEnemyController::add_record
 th20::StageResourceOwner::select_record
+
+th20::StageBackgroundFogOwner::execute_script
+th20::StageResourceOwner::interrupt_animations
+th20::StageResourceOwner::set_primary_rotation_flag

@@ -32461,3 +32461,18 @@ size = 133
 relocations = [
   { offset = 0x69, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
 ]
+
+
+# CORE/RECON-1301: complete StageResource animation interruption traversal.
+[units.stage_resource_interrupt_animations]
+source = "src/StageResourceInterruptAnimations.cpp"
+object = "build/gpt-web-stage-resource/StageResourceInterruptAnimations.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::StageResourceOwner::interrupt_animations"]
+symbol = "?interrupt_animations@StageResourceOwner@th20@@QAEXH@Z"
+target_address = 0x00477480
+size = 160
+relocations = [
+  { offset = 0x4D, type = "REL32", symbol = "?set_vm_event_477450@NativeHudAnimationView@th20@@QAEXH@Z", target = 0x00477450 },
+  { offset = 0x93, type = "REL32", symbol = "?set_vm_event_477450@NativeHudAnimationView@th20@@QAEXH@Z", target = 0x00477450 },
+]

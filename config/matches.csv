@@ -943,3 +943,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00488E80,th20::EnemyState::clear_all_bullets_for_enemy_clear,291,matching,100.00,enemy_state_clear_all_bullets_for_enemy_clear,"CORE/RECON-1262; docs/ENEMY_41967_629_BULLET_CLEAR_CALLBACK_SOURCE_FRONTIER.md; whole 291/291 native function and all original relocations strictly replay"
 0x005119E0,th20::StoneEnemyRecord::StoneEnemyRecord,76,matching,100.00,stone_enemy_record_ctor,docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md; one fresh canonical COFF object
 0x00512F60,th20::StoneEnemyController::add_record,69,matching,100.00,stone_enemy_controller_add_record,docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md; one fresh canonical COFF object
+0x00477480,th20::StageResourceOwner::interrupt_animations,160,matching,100.00,stage_resource_interrupt_animations,CORE/RECON-1301; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md; complete 160-byte body and both original REL32 destinations strictly replayed
