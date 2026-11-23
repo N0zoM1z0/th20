@@ -58,11 +58,13 @@ The independent verifier
 [`scripts/verify-enemy-laser-lookup-opcode-source.py`](../scripts/verify-enemy-laser-lookup-opcode-source.py)
 pins the locked PE identity, selector, branch extent/hash, six E8 targets,
 conditional vcall and ordered natural-C++ COFF relocations. The maintained
-root verifier runs **128 focused host source units** under ASan/UBSan and
+root verifier runs **129 focused host source units** under ASan/UBSan and
 compiles **62 locked-profile i386 COFF units**; no full cold replay is used.
 
-Opcode 704 and sibling Laser caller fragments 705–710 now all have natural
-C++ source and focused root coverage. The six small setter leaves called by
-705–710 strictly replay 172/172 bytes; see the [705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+Opcode 704 and sibling Laser caller fragments 705–710 and 714 now all have
+natural C++ source and focused root coverage. The six small setter leaves
+called by 705–710 strictly replay 172/172 bytes; see the [705–710 mutation
+frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md). Opcode
+714's virtual flag behavior is documented in the [714 flag frontier](ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md).
 The complete 41,967-byte `EnemyState::execute_opcode` parent remains
 **NONEXACT**. No inline parent byte credit is claimed.

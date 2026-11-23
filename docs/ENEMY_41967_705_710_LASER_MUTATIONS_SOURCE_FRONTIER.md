@@ -85,13 +85,17 @@ The production root host executes the real mutation helper with actual
 
 The independent verifier
 [`verify-enemy-laser-mutation-opcodes-source.py`](../scripts/verify-enemy-laser-mutation-opcodes-source.py)
-pins all six original inline branches, the six strict-exact setter leaves,
-the production helper's 20 ordered COFF relocations, and the indirect
-slot-`0x44` call. The maintained root suite runs **128 focused host source
-units** under ASan/UBSan and compiles **62 locked-profile i386 COFF units**.
-No full cold replay was run.
+pins all six original 705–710 inline branches plus opcode 714, all eight
+selector/extent/hash/call maps, the six strict-exact setter leaves, the four
+native vtable slot targets, the production helper's 24 ordered COFF
+relocations and both indirect slot-`0x44`/slot-`0x0C` calls. The Beam flag
+override is honestly checked as reconstructed (39/42), not exact. The
+maintained root suite runs **129 focused host source units** under ASan/UBSan
+and compiles **62 locked-profile i386 COFF units**. No full cold replay was run.
 
-The shared `LaserController::find_laser` leaf and all seven Enemy caller
-fragments 704–710 now have natural source and focused runtime coverage. The
-complete 41,967-byte `EnemyState::execute_opcode()` parent remains
-**NONEXACT**; no parent-byte credit is claimed.
+The shared `LaserController::find_laser` leaf and all eight Enemy caller
+fragments 704–710 and 714 now have natural source and focused runtime coverage.
+The separate [opcode-714 virtual flag frontier](ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md)
+records its slot-`0x0C` dispatch and Beam override. The complete 41,967-byte
+`EnemyState::execute_opcode()` parent remains **NONEXACT**; no parent-byte
+credit is claimed.

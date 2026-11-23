@@ -24,9 +24,8 @@ bool execute_enemy_laser_lookup_opcode(EnemyState& state, std::int32_t opcode) {
     return true;
 }
 
-// The four creation branches share the queued-shot COW protocol, command-
-// vector copy, Context Laser owner and common Laser factory. Their native case
-// bodies are inline in the 41,967B EnemyState::execute_opcode Boss.
+// Native mutation branches 705-710 and 714 stay inline in the original
+// dispatcher. This helper keeps their lookup, operand and virtual-call order.
 bool execute_enemy_laser_mutation_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {
     case 705: {
@@ -70,11 +69,25 @@ bool execute_enemy_laser_mutation_opcode(EnemyState& state, std::int32_t opcode)
         }
         return true;
     }
+    case 714: {
+        auto* const controller = state.context->laser_controller();
+        const auto handle = state.integer_argument(0);
+        auto* const laser = controller->find_laser(handle);
+        if (laser != nullptr)
+            // The virtual call designator is evaluated before its argument;
+            // MSVC captures slot +0x0C before integer operand 1, as the native
+            // branch does even if the operand read changes the Laser vptr.
+            laser->set_parameter_flag(static_cast<std::uint32_t>(state.integer_argument(1)));
+        return true;
+    }
     default:
         return false;
     }
 }
 
+// The four creation branches share the queued-shot COW protocol, command-
+// vector copy, Context Laser owner and common Laser factory. Their native case
+// bodies are inline in the 41,967B EnemyState::execute_opcode Boss.
 bool execute_enemy_laser_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {
     case 702: {

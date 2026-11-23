@@ -51,6 +51,7 @@ changes are checkpointed and retained:
 - `scripts/verify-enemy-laser-mutation-opcodes-source.py`
 - `docs/ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md`
 - `docs/LASER_MUTATION_SETTER_LEAVES_EXACT.md`
+- `docs/ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md`
 - `src/EnemyStateSharedQueuedParametersOpcode.cpp`
 - `src/EnemyStateQueuedParametersOpcode.cpp`
 - `src/EnemyStateScriptPointerOpcode.cpp`
@@ -116,9 +117,12 @@ inline source fragment: Context owner capture, integer handle operand, real
 virtual `set_position`. Its native PE/COFF verifier and live Context-retarget /
 missing-handle / operand-exception root tests pass. See
 [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
-Sibling opcode fragments 705–710 now have natural C++ source, focused root
-coverage and strict-exact setter leaves; see
-[the 705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+Sibling opcode fragments 705–710 and 714 now have natural C++ source and
+focused root coverage. The six 705–710 setter leaves remain strict exact;
+opcode 714's Beam flag override is semantic reconstruction (39/42), while
+its three non-Beam vtables share an already-folded no-op body. See the
+[705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md)
+and [714 Laser flag frontier](ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md).
 The 41,967B Enemy root remains NONEXACT.
 
 Native opcode 620 is the **250-byte / 57-instruction / 8-E8** case at
@@ -201,7 +205,7 @@ and script-pointer helpers are removed. The production helpers are included
 in HOST_SOURCES and the locked-profile COFF compile list; their native opcode
 verifiers are invoked by the maintained root verifier. The focused root host
 passes under ASan/UBSan, and the root verifier compiles **62 locked-profile
-i386 COFF source units** and 128 focused host sources. See the dedicated
+i386 COFF source units** and 129 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -265,7 +269,7 @@ Recent committed case families exercised by the maintained root include:
   sound/gauge/title and selected-position cases.
 
 The maintained root verifier currently compiles **62 locked-profile i386
-COFF units** and runs 128 focused host source units under ASan/UBSan, including
+COFF units** and runs 129 focused host source units under ASan/UBSan, including
 opcodes 616, 617, 618, 619, 620, 627, 628, 629, 630, 632 and 633. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).

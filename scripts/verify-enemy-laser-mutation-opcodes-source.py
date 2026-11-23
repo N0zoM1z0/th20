@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Verify Enemy inline Laser mutation opcodes 705-710 and six native setter leaves."""
+"""Verify Enemy inline Laser mutation opcodes 705-710/714 and six native setter leaves."""
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 import subprocess
 import sys
@@ -38,6 +39,9 @@ CASES = {
     710: (162, 0x00494F52, 0x00494FD3, 129, 29,
           "ff435ada8dd7ad827a823624a336c8a823d72b5f471cdecb99330d4a65da19ad",
           [0x0041CA90, 0x004AB080, 0x00498FF0, 0x0049C500]),
+    714: (166, 0x004952D6, 0x0049535E, 136, 29,
+          "1897fa2091dedde2fa20479d159c7f646dbf5933a24fdcbb3d5b4f320a5d426e",
+          [0x0041CA90, 0x004AB080, 0x00498FF0, 0x004AB080]),
 }
 
 SETTERS = {
@@ -69,6 +73,10 @@ EXPECTED_RELOCS = [
     "?integer_argument@EnemyState@th20",
     "?find_laser@LaserController@th20",
     "?set_handle@Laser@th20",
+    "?laser_controller@Context@th20",
+    "?integer_argument@EnemyState@th20",
+    "?find_laser@LaserController@th20",
+    "?integer_argument@EnemyState@th20",
     "@__security_check_cookie@4",
 ]
 
@@ -107,13 +115,45 @@ def main() -> None:
             text = "\n".join(f"{i.mnemonic} {i.op_str}" for i in insns)
             assert "mov edx, dword ptr [ecx + 0x44]" in text
             assert text.index("call dword ptr [ebp - 0xecc]") < text.index("call 0x49c500")
+        elif opcode == 714:
+            assert len(indirect) == 1
+            assert indirect[0].address == 0x00495352
+            assert indirect[0].op_str == "dword ptr [ebp - 0xf10]"
+            text = "\n".join(f"{i.mnemonic} {i.op_str}" for i in insns)
+            assert "mov eax, dword ptr [edx + 0xc]" in text
+            assert text.index("mov eax, dword ptr [edx + 0xc]") < text.rindex("call 0x4ab080")
+            assert text.rindex("call 0x4ab080") < text.index("call dword ptr [ebp - 0xf10]")
         else:
             assert not indirect
         total_bytes += size
         total_instructions += count
         total_direct_calls += len(direct)
 
-    assert (total_bytes, total_instructions, total_direct_calls) == (724, 158, 31)
+    assert (total_bytes, total_instructions, total_direct_calls) == (860, 187, 35)
+
+    # Three native Laser vtables share the no-op +0x0C slot; the Beam vtable
+    # routes that same virtual slot to its bit-zero flag override.
+    vtable_addresses = (0x00571148, 0x00571214, 0x005712E8, 0x00571374)
+    flag_targets = [
+        int.from_bytes(pe.get_data(address - IMAGE_BASE + 0x0C, 4), "little")
+        for address in vtable_addresses
+    ]
+    assert flag_targets == [0x0040EC90, 0x0040EC90, 0x0040EC90, 0x004D7D20]
+    default_flag = pe.get_data(0x0040EC90 - IMAGE_BASE, 13)
+    assert hashlib.sha256(default_flag).hexdigest() == "8a964d1d7ff7ce1a3c60997027339b1b12723566ff413f0bb34cb92f56441d3a"
+    beam_flag = pe.get_data(0x004D7D20 - IMAGE_BASE, 42)
+    assert hashlib.sha256(beam_flag).hexdigest() == "006557136769450e257f9674a8b40724d65d97d887b0bf2de49357dfee41d63e"
+    beam_flag_text = "\n".join(f"{i.mnemonic} {i.op_str}" for i in decoder.disasm(beam_flag, 0x004D7D20))
+    assert "and eax, 1" in beam_flag_text and "and edx, 0xfffffffe" in beam_flag_text
+    assert "or edx, eax" in beam_flag_text and "0x730" in beam_flag_text
+
+    # The base no-op's physical address is already owned by the folded STL
+    # identity; the Beam override is semantic reconstruction, not a second
+    # exact row or duplicate credit.
+    function_inventory = (ROOT / "config/functions.csv").read_text(encoding="utf8")
+    assert "0x0040EC90,13,0x0040EC9C,FUN_0040ec90,std::_Iterator_base0::_Adopt" in function_inventory
+    assert "0x004D7D20,42,0x004D7D49,FUN_004d7d20,th20::LaserBeamInf::set_parameter_flag,LaserBeamInf,reconstructed" in function_inventory
+    assert "th20::Laser::set_parameter_flag" not in function_inventory
 
     # Pin the six leaf targets used by the inline parent cases, independently
     # of the helper implementation and its source names.
@@ -125,7 +165,15 @@ def main() -> None:
         text = "\n".join(f"{i.mnemonic} {i.op_str}" for i in insns)
         assert store_offset in text, (name, store_offset, text)
 
+    functions = (ROOT / "config/functions.csv").read_text(encoding="utf8")
+    assert "0x0040EC90,13,0x0040EC9C,FUN_0040ec90,std::_Iterator_base0::_Adopt" in functions
+    assert "th20::Laser::set_parameter_flag" not in functions
+    assert "0x004D7D20,42,0x004D7D49,FUN_004d7d20,th20::LaserBeamInf::set_parameter_flag,LaserBeamInf,reconstructed" in functions
+    assert "static_assert(offsetof(LaserType3Parameters, flags) == 0x38);" in (ROOT / "src/LaserParameters.hpp").read_text(encoding="utf8")
+
     source = (ROOT / "src/EnemyStateLaserOpcode.cpp").read_text(encoding="utf8")
+    laser_methods = (ROOT / "src/LaserCommandMethods.cpp").read_text(encoding="utf8")
+    assert "parameters.flags = (value & 1u) | (parameters.flags & ~1u);" in laser_methods
     assert "execute_enemy_laser_mutation_opcode(*this, opcode)" in (ROOT / "src/EnemyStateExecuteOpcode.cpp").read_text(encoding="utf8")
     begin = source.index("bool execute_enemy_laser_mutation_opcode")
     end = source.index("bool execute_enemy_laser_opcode", begin)
@@ -139,6 +187,7 @@ def main() -> None:
         "laser->set_field_7c(value)", "laser->set_speed(value)",
         "laser->set_angle(value)", "laser->set_parameter_field_714(value)",
         "case 710:", "(void)laser->erase(0, 0);", "laser->set_handle(0);",
+        "case 714:", "laser->set_parameter_flag(static_cast<std::uint32_t>(state.integer_argument(1)))",
     ):
         assert fragment in helper, fragment
     case705 = helper[helper.index("case 705:"):helper.index("case 706:")]
@@ -148,6 +197,8 @@ def main() -> None:
     assert scalar.index("find_laser(handle)") < scalar.index("if (laser == nullptr)") < scalar.index("float_argument(1)")
     case710 = helper[helper.index("case 710:"):helper.index("default:")]
     assert case710.index("find_laser(handle)") < case710.index("erase(0, 0)") < case710.index("set_handle(0)")
+    case714 = helper[helper.index("case 714:"):helper.index("default:")]
+    assert case714.index("find_laser(handle)") < case714.index("set_parameter_flag") < case714.index("integer_argument(1)")
 
     tests = (ROOT / "tests/enemy_state_dispatch_root.cpp").read_text(encoding="utf8")
     for fragment in (
@@ -155,7 +206,13 @@ def main() -> None:
         "run_laser_scalar_setter(707", "run_laser_scalar_setter(708", "run_laser_scalar_setter(709",
         "read_native_laser_field<float>(laser_706, 0x714)",
         "set_packet(710,", "laser_710.handle_during_erase == 0x71012345u",
-        "laser_710.handle == 0",
+        "laser_710.handle == 0", "DispatchTestLaserAlternateFlag",
+        "retarget_context_and_laser_vtable_during_integer_read",
+        "dispatch_laser_vtable_retarget_target", "laser_714_alternate.alternate_flag_calls == 0",
+        "laser_714_flag_operand_threw", "class DispatchTestLaser : public LaserBeamInf",
+        "LaserBeamInf::set_parameter_flag(value)",
+        "laser_714_primary.parameters.flags == 0xa5a5a5a5u",
+        "laser_714_primary.parameters.flags == 0xa5a5a5a4u",
     ):
         assert fragment in tests, fragment
 
@@ -167,8 +224,14 @@ def main() -> None:
     assert len(relocs) == len(EXPECTED_RELOCS), (relocs, EXPECTED_RELOCS)
     for actual, expected in zip(relocs, EXPECTED_RELOCS):
         assert expected in actual, (actual, expected)
-    assert "call   *-0x44(%ebp)" in function
-    assert function.index("call   *-0x44(%ebp)") < function.index("?set_handle@Laser@th20")
+    assert "call   *-0x48(%ebp)" in function
+    assert "call   *-0x58(%ebp)" in function
+    assert function.index("call   *-0x48(%ebp)") < function.index("?set_handle@Laser@th20")
+    find_laser = function.rindex("?find_laser@LaserController")
+    slot_capture = function.index("mov    0xc(%ecx),%edx", find_laser)
+    second_integer = function.index("?integer_argument@EnemyState", find_laser + 1)
+    flag_call = function.index("call   *-0x58(%ebp)")
+    assert find_laser < slot_capture < second_integer < flag_call
 
     # The six leafs are independent exact units, not merely a structural
     # disassembly match. Rebuild one cold source object and replay every body.
@@ -177,12 +240,27 @@ def main() -> None:
         assert f"{name}: exact ({size}/{size} bytes)" in replay, replay
     assert "Exact replay: 6/6 units, 1 cold objects" in replay
 
-    print("PASS original Enemy inline Laser mutation opcodes 705-710: selectors 157-162, 724B/158 x86/31 ordered E8 plus one slot-0x44 virtual erase")
+    # The Beam flag override is deliberately reconstructed, not strict exact.
+    # Pin its honest structural score after the same cold source-object build.
+    diagnostic = subprocess.run(
+        [sys.executable, "scripts/compare-coff-function.py",
+         "build/gpt-web-laser-canonical/LaserCommandMethods.obj",
+         "?set_parameter_flag@LaserBeamInf@th20@@UAEXI@Z", "0x004D7D20", "42", "--json"],
+        cwd=ROOT, text=True, capture_output=True)
+    assert diagnostic.returncode == 1, diagnostic.stdout + diagnostic.stderr
+    beam_result = json.loads(diagnostic.stdout)
+    assert beam_result["result"] == "mismatch"
+    assert beam_result["size"] == 42 and beam_result["comparable_bytes"] == 42
+    assert beam_result["matched_comparable_bytes"] == 39
+    assert beam_result["relocation_field_bytes"] == 0
+
+    print("PASS original Enemy inline Laser mutation opcodes 705-710/714: selectors 157-162/166, 860B/187 x86/35 ordered E8 plus slot-0x44 erase and slot-0x0C flag virtual calls")
     print("PASS six original Laser setter leaves: 172/172 native bytes strictly exact as natural C++ with no relocations")
+    print("PASS opcode714 vtable map: three Laser families share the 13B no-op slot; Beam +0x730 bit-zero override is natural C++ reconstructed at 39/42 bytes, not strict exact")
     print("PASS 705 Context/handle/find/Vector3/float/float/vector-store order; 706-709 null guard before float and +7C/+78/+70/+714 stores")
     print("PASS 710 virtual erase(0,0) precedes set_handle(0), preserving native handle through erase")
-    print("PASS natural C++ COFF mutation helper preserves all 20 ordered relocations and the indirect slot-0x44 erase call")
-    print("PASS root host covers 705 shared triplet/exception, 706-709 scalar fields and miss/throw order, and 710 erase-before-handle-clear")
+    print("PASS natural C++ COFF mutation helper preserves all 24 ordered relocations, erase slot-0x44 and pre-operand-captured flag slot-0x0C calls")
+    print("PASS root host covers 705 shared triplet/exception, 706-709 scalar fields/miss/throw, 710 erase-before-clear, and 714 pre-operand vtable capture plus real Beam flag-bit set/clear")
     print(replay, end="")
 
 

@@ -3,11 +3,12 @@
 **CORE/RECON-1265.** The natural C++ implementation of the shared Laser
 handle lookup at `0x00498FF0` is now linked into the maintained Enemy root
 host and covered by native PE, i386 COFF, and ASan/UBSan regression checks.
-This is a real leaf used by Enemy ECL opcodes 704–710; it is not a synthetic
-replacement and does not claim that the 41,967-byte parent is restored. All
-seven caller fragments 704–710 now have natural C++ source and focused root
-coverage. See the [opcode-704 position frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md)
-and [opcode-705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+This is a real leaf used by Enemy ECL opcodes 704–710 and 714; it is not a
+synthetic replacement and does not claim that the 41,967-byte parent is
+restored. Eight caller fragments now have natural C++ source and focused root
+coverage. See the [opcode-704 position frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md),
+[opcode-705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md),
+and [opcode-714 flag frontier](ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md).
 
 ## Locked native evidence
 
@@ -35,10 +36,10 @@ The complete ordered call-site map is:
 
 The `LaserController` active list is at `+0x10`; the compared handle is at
 `Laser+0x8C`. The original compressed selector table maps opcodes 704–710 to
-indexes 156–162, and each of those seven native cases contains a direct call
-to `0x00498FF0`. Their call sites are independently checked at
-`0x0049500A`, `0x004950BA`, `0x00495159`, `0x004951C6`, `0x00495233`,
-`0x004952A0`, and `0x00494F89`.
+indexes 156–162, and opcode 714 to index 166. Each of those eight native
+cases contains a direct call to `0x00498FF0`. Their call sites are independently
+checked at `0x0049500A`, `0x004950BA`, `0x00495159`, `0x004951C6`,
+`0x00495233`, `0x004952A0`, `0x00494F89`, and `0x0049530D`.
 
 ## Natural C++ and important ordering
 
@@ -66,12 +67,12 @@ a later-element hit, a missing handle, and duplicate handles where the first
 list entry wins. The focused root verifier links the source under ASan/UBSan
 and compiles its locked-profile i386 COFF object.
 
-This restores the shared leaf and is now exercised by the separately
-recovered inline Enemy opcode-704 position-update fragment (176B/37
-instructions/six direct E8 calls plus a conditional `set_position` vcall).
-See [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
-All seven Enemy caller fragments 704–710 now have natural C++ source and
-focused root coverage. See the [opcode-704 position frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md)
-and [opcode-705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
-The 41,967-byte `EnemyState::execute_opcode` parent remains **NONEXACT**. No parent-byte
-credit is claimed and no full cold replay was run.
+This restores the shared leaf and is now exercised by eight separately
+recovered inline Enemy callers: opcodes 704–710 and 714. Opcode 704 is the
+176B/37-instruction position-update branch; 705–710 are the 724B/158-instruction
+parameter/field/erase family; 714 is the 136B/29-instruction parameter-flag
+virtual call. See the [opcode-704 position frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md),
+[opcode-705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md),
+and [opcode-714 flag frontier](ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md).
+The 41,967-byte `EnemyState::execute_opcode` parent remains **NONEXACT**. No
+parent-byte credit is claimed and no full cold replay was run.

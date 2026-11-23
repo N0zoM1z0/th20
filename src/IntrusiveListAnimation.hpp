@@ -23,7 +23,10 @@ public:
 inline IntrusiveList<Animation>::IntrusiveList() : IntrusiveLink<Animation>(),tail(this) {}
 inline Animation* IntrusiveList<Animation>::node_value(){return IntrusiveLink<Animation>::node_value();}
 inline void IntrusiveList<Animation>::remove(IntrusiveLink<Animation>* link){
-    if(tail==link)tail=link->previous_value();link->detach_inner();
+    if (tail == link) {
+        tail = link->previous_value();
+    }
+    link->detach_inner();
 }
 inline void IntrusiveList<Animation>::append(IntrusiveLink<Animation>* link){
     IntrusiveLink<Animation>* end=tail;end->insert_after(link);link->set_owner(this);tail=link;

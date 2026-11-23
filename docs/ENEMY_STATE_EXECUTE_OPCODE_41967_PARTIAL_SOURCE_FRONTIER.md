@@ -239,13 +239,13 @@ source fragments.
   [opcode-618 source frontier](ENEMY_41967_618_SHARED_QUEUED_POLAR_SOURCE_FRONTIER.md).
   The 41,967B parent remains NONEXACT; no standalone unit or byte credit.
 - The shared LaserController::find_laser leaf at 0x00498FF0 is a 230-byte /
-  70-instruction / 11-E8 function used by Enemy opcodes 704–710. The natural
+  70-instruction / 11-E8 function used by Enemy opcodes 704–710 and 714. The natural
   C++ helper uses the actual intrusive list, preserves the +0x8C handle test,
   repeats node_value() on the match return, and destroys the iterator on both
   paths. The maintained root host covers empty/missing/later/duplicate lookup
   cases. See LASER_CONTROLLER_FIND_LASER_230_SOURCE_FRONTIER.md. Opcode 704
-  now has separate inline source frontiers for all seven caller branches
-  704–710; the 41,967B parent remains NONEXACT.
+  now has separate inline source frontiers for all eight caller branches
+  704–710 and 714; the 41,967B parent remains NONEXACT.
 - Native Enemy opcode 704 is now a separate production source fragment. Its
   original selector 156 case is 176B/37 instructions/six E8 calls plus one
   conditional `Laser::set_position` vcall. It captures the Context
@@ -255,8 +255,9 @@ source fragments.
   retargeting during handle/float reads, missing handles and both integer and
   float exceptions before mutation. See
   [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
-  Sibling inline callers 705–710 now also have natural C++ source and focused
-  root coverage; see [the 705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+  Sibling inline callers 705–710 and 714 now also have natural C++ source and
+  focused root coverage; see the [705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md)
+  and [714 flag frontier](ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md).
   The complete 41,967B parent remains NONEXACT.
 - Native Enemy opcodes 705–710 are now source fragments totaling 724B/158
   x86/31 E8 plus one indirect slot-0x44 virtual erase. They preserve 705's
@@ -267,6 +268,19 @@ source fragments.
   exact natural C++ units. See
   [the 705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
   These remain inline fragments; the complete 41,967B parent is NONEXACT.
+- Native Enemy opcode 714 is now a separate 136B/29-instruction inline
+  source fragment (selector 166): Context LaserController capture, integer
+  handle operand 0, real find_laser, null guard, capture virtual Laser slot
+  +0x0C, integer operand 1, then invoke the captured function pointer. The
+  native branch has four ordered E8 calls plus one indirect virtual call.
+  Missing handles suppress operand 1; the vtable target is captured before
+  that operand is evaluated. Three original Laser vtables use the base no-op
+  at the already-folded 0x0040EC90 physical address; the type-3 Beam vtable
+  uses the natural C++ `LaserBeamInf::set_parameter_flag` override at
+  0x004D7D20, which masks only bit zero at +0x730 and is reconstructed 39/42,
+  not strict exact. Root tests cover vtable retarget during operand evaluation,
+  missing handles and second-operand exceptions. See
+  [the opcode-714 flag frontier](ENEMY_41967_714_LASER_PARAMETER_FLAG_SOURCE_FRONTIER.md).
 - Native opcode 620 is the 250-byte / 57-instruction shared queued-vector
   update at 0x00492D4D, selector index 138, with eight original E8 calls.
   The maintained root host executes the production helper and real

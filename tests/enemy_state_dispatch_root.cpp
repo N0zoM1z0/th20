@@ -1,5 +1,6 @@
 #include "EnemyStateDialogueOpcode.hpp"
 #include "LaserParameters.hpp"
+#include "LaserBeamInf.hpp"
 #include "RenderMesh.hpp"
 #include "Bullet.hpp"
 #include "Enemy.hpp"
@@ -274,7 +275,12 @@ std::int32_t LaserController::cancel_all(std::int32_t, std::int32_t) {
     return 0;
 }
 LaserController::~LaserController() = default;
-class DispatchTestLaser final : public Laser {
+// LaserBeamInf's base vtable needs this non-tested virtual entry point. The
+// opcode-714 fixture only exercises its flag override; initialization remains
+// an explicit host boundary and the real production body is not shadowed in
+// the locked-profile COFF/replay path.
+std::int32_t LaserBeamInf::initialize_laser(const void*) { return 0; }
+class DispatchTestLaser : public LaserBeamInf {
 public:
     std::int32_t circle_calls = 0;
     Vector3 circle_center{};
@@ -288,6 +294,9 @@ public:
     std::int32_t erase_calls = 0;
     std::int32_t erase_mode = -1, erase_argument = -1;
     std::uint32_t handle_during_erase = 0;
+    std::int32_t parameter_flag_calls = 0;
+    std::uint32_t parameter_flag_value = 0;
+    std::uint32_t handle_during_parameter_flag = 0;
 
     void set_position(const Vector3& value) override {
         ++position_calls;
@@ -295,7 +304,12 @@ public:
         Laser::set_position(value);
     }
     void slot_08() override {}
-    void set_parameter_flag(std::uint32_t) override {}
+    void set_parameter_flag(std::uint32_t value) override {
+        ++parameter_flag_calls;
+        parameter_flag_value = value;
+        handle_during_parameter_flag = handle;
+        LaserBeamInf::set_parameter_flag(value);
+    }
     void slot_10() override {}
     std::int32_t initialize_laser(const void*) override { return 0; }
     void slot_18() override {}
@@ -341,6 +355,28 @@ public:
     void slot_7c() override {}
     void slot_80() override {}
 };
+
+class DispatchTestLaserAlternateFlag final : public DispatchTestLaser {
+public:
+    std::int32_t alternate_flag_calls = 0;
+    std::uint32_t alternate_flag_value = 0;
+    void set_parameter_flag(std::uint32_t value) override {
+        ++alternate_flag_calls;
+        alternate_flag_value = value;
+    }
+};
+
+Laser* dispatch_laser_vtable_retarget_target = nullptr;
+Laser* dispatch_laser_vtable_retarget_source = nullptr;
+void retarget_context_and_laser_vtable_during_integer_read(std::int32_t index) {
+    dispatch_operand_state->context = dispatch_operand_alternate_context;
+    if (index == -102) {
+        assert(dispatch_laser_vtable_retarget_target != nullptr);
+        assert(dispatch_laser_vtable_retarget_source != nullptr);
+        *reinterpret_cast<void**>(dispatch_laser_vtable_retarget_target) =
+            *reinterpret_cast<void**>(dispatch_laser_vtable_retarget_source);
+    }
+}
 
 template <typename T>
 T read_native_laser_field(const DispatchTestLaser& laser, std::size_t offset) {
@@ -1661,6 +1697,114 @@ int main() {
     assert(laser_710.handle == 0);
     dispatch_test_lasers->active.remove(&laser_710.link);
     assert(dispatch_test_lasers->active.front() == nullptr);
+
+    // Native opcode 714 captures the LaserController, reads handle operand 0,
+    // resolves the Laser, captures its vtable slot +0x0C, then reads integer
+    // operand 1 and invokes the virtual set_parameter_flag method.
+    DispatchTestLaser laser_714_primary;
+    DispatchTestLaserAlternateFlag laser_714_alternate;
+    laser_714_primary.handle = 0x71412345u;
+    laser_714_alternate.handle = 0x71412345u;
+    laser_714_primary.parameters.flags = 0xa5a5a5a4u;
+    laser_714_primary.link.initialize(&laser_714_primary);
+    laser_714_alternate.link.initialize(&laser_714_alternate);
+    dispatch_test_lasers->active.append(&laser_714_primary.link);
+    dispatch_test_lasers_alternate->active.append(&laser_714_alternate.link);
+    enemy.state.context = &context;
+    dispatch_operand_state = &enemy.state;
+    dispatch_operand_original_context = &context;
+    dispatch_operand_alternate_context = &alternate_context;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 0x71412345;
+    dispatch_integer_read_scripted_values[1] = 0x12345679;
+    dispatch_integer_read_scripted = true;
+    const auto original_laser_714_vtable =
+        *reinterpret_cast<void**>(&laser_714_primary);
+    dispatch_laser_vtable_retarget_target = &laser_714_primary;
+    dispatch_laser_vtable_retarget_source = &laser_714_alternate;
+    dispatch_integer_read_hook = &retarget_context_and_laser_vtable_during_integer_read;
+    set_packet(714, {static_cast<std::uint32_t>(-101),static_cast<std::uint32_t>(-102),0,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    *reinterpret_cast<void**>(&laser_714_primary) = original_laser_714_vtable;
+    dispatch_laser_vtable_retarget_target = nullptr;
+    dispatch_laser_vtable_retarget_source = nullptr;
+    assert(dispatch_integer_read_calls == 2);
+    assert(dispatch_integer_read_indices[0] == -101 && dispatch_integer_read_indices[1] == -102);
+    assert(enemy.state.context == &alternate_context);
+    assert(laser_714_primary.parameter_flag_calls == 1);
+    assert(laser_714_primary.parameter_flag_value == 0x12345679u);
+    assert(laser_714_primary.parameters.flags == 0xa5a5a5a5u);
+    assert(laser_714_primary.handle_during_parameter_flag == 0x71412345u);
+    assert(laser_714_alternate.parameter_flag_calls == 0);
+    assert(laser_714_alternate.alternate_flag_calls == 0);
+
+    // A second Beam vcall clears bit zero and preserves the other 31 flag
+    // bits, exercising both branches of the real Beam setter implementation.
+    enemy.state.context = &context;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 0x71412345;
+    dispatch_integer_read_scripted_values[1] = 0x87654320;
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_packet(714, {static_cast<std::uint32_t>(-101),static_cast<std::uint32_t>(-102),0,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    assert(dispatch_integer_read_calls == 2);
+    assert(laser_714_primary.parameter_flag_calls == 2);
+    assert(laser_714_primary.parameters.flags == 0xa5a5a5a4u);
+
+    // A missing handle suppresses operand 1 and the virtual call. The native
+    // branch tests the resolved Laser before reading the flag argument.
+    enemy.state.context = &context;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 0xdeadbeefu;
+    dispatch_integer_read_scripted_values[1] = 0x87654321u;
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_packet(714, {static_cast<std::uint32_t>(-101),static_cast<std::uint32_t>(-102),0,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+    assert(laser_714_primary.parameter_flag_calls == 2 && laser_714_alternate.parameter_flag_calls == 0);
+    assert(laser_714_primary.parameters.flags == 0xa5a5a5a4u);
+    assert(laser_714_alternate.alternate_flag_calls == 0);
+
+    // If the second integer operand throws, the previously resolved Laser is
+    // not mutated and the virtual flag setter is not invoked.
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 0x71412345;
+    dispatch_integer_read_scripted_values[1] = 0xabcdef01;
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_throw_at = 2;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_packet(714, {static_cast<std::uint32_t>(-101),static_cast<std::uint32_t>(-102),0,0,0,0,0,0}, 3);
+    bool laser_714_flag_operand_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { laser_714_flag_operand_threw = value == 609; }
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    dispatch_integer_throw_at = 0;
+    assert(laser_714_flag_operand_threw && dispatch_integer_read_calls == 2);
+    assert(laser_714_primary.parameter_flag_calls == 2 && laser_714_alternate.parameter_flag_calls == 0);
+    assert(laser_714_primary.parameters.flags == 0xa5a5a5a4u);
+    assert(laser_714_alternate.alternate_flag_calls == 0);
+    dispatch_test_lasers->active.remove(&laser_714_primary.link);
+    dispatch_test_lasers_alternate->active.remove(&laser_714_alternate.link);
+    assert(dispatch_test_lasers->active.front() == nullptr);
+    assert(dispatch_test_lasers_alternate->active.front() == nullptr);
+    enemy.state.context = &context;
 
     // Native opcode 621 releases the previous EnemyMeshOwner before reading
     // either operand, then conditionally allocates the 17x17 RenderMesh only
@@ -4250,5 +4394,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710 (real intrusive-list first-match lookup and iterator cleanup), Enemy Laser position opcode 704 (Context capture, live retargeting and operand exception order), Enemy Laser mutation opcodes 705/706/707/708/709/710 (shared +0x704 triplet, conditional +0x7C/+0x78/+0x70/+0x714 setters and erase-before-handle-clear), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710/714 (real intrusive-list first-match lookup and iterator cleanup), Enemy Laser position opcode 704 (Context capture, live retargeting and operand exception order), Enemy Laser mutation opcodes 705/706/707/708/709/710/714 (shared +0x704 triplet, conditional +0x7C/+0x78/+0x70/+0x714 setters, erase-before-handle-clear and slot-0x0C flag vcall), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

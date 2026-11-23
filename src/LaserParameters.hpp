@@ -132,6 +132,7 @@ static_assert(offsetof(LaserType2Parameters, flags) == 0x28);
 static_assert(offsetof(LaserType2Parameters, commands) == 0x2c);
 static_assert(offsetof(LaserType2Parameters, path) == 0x48);
 static_assert(offsetof(LaserType3Parameters, field_30) == 0x30);
+static_assert(offsetof(LaserType3Parameters, flags) == 0x38);
 static_assert(offsetof(LaserType3Parameters, commands) == 0x3c);
 #endif
 

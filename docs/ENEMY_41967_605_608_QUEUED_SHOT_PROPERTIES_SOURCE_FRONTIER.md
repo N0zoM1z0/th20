@@ -67,6 +67,6 @@ The maintained root host executes all four cases through
 
 Only the actual metadata/record owners and allocator paths are used; no
 false-returning test stub or synthetic byte sequence is involved. The
-maintained verifier now executes **128 focused host source units** under
+maintained verifier now executes **129 focused host source units** under
 ASan/UBSan and compiles **62 locked-profile i386 COFF units**. No full cold
 replay was run.

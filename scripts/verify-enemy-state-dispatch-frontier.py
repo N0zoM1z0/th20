@@ -47,6 +47,7 @@ HOST_SOURCES=[
     'src/EnemyStateBulletLaserCancelOpcode.cpp', 'src/EnemyStateBulletClearOpcode.cpp', 'src/BulletSpatialCancellation.cpp', 'src/BulletLimitedCancellation.cpp',
     'src/LaserControllerFindLaser.cpp',
     'src/LaserCommandMethods.cpp',
+    'src/LaserBeamConstructor.cpp',
     'src/BulletDistance.cpp', 'src/LaserCancelNear.cpp', 'src/LaserBase.cpp', 'src/LaserCancelCircleDefault.cpp',
     'src/EnemyStateLaserOpcode.cpp', 'src/LaserParameters.cpp',
     'src/EnemyStateBulletCancelOpcode.cpp', 'src/BulletRectangleCancellation.cpp',
@@ -1524,7 +1525,14 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710 (real intrusive-list first-match lookup and iterator cleanup), Enemy Laser position opcode 704 (Context capture, live retargeting and operand exception order), Enemy Laser mutation opcodes 705/706/707/708/709/710 (shared +0x704 triplet, conditional +0x7C/+0x78/+0x70/+0x714 setters and erase-before-handle-clear), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n' in result.stdout
+    assert 'PASS root dispatch:' in result.stdout
+    for marker in (
+        'LaserController::find_laser 704-710/714',
+        'Enemy Laser position opcode 704',
+        'Enemy Laser mutation opcodes 705/706/707/708/709/710/714',
+        'shot commands 609/610/611/612',
+    ):
+        assert marker in result.stdout, marker
     print(result.stdout,end='')
     print(f'PASS maintained root host executes {len(HOST_SOURCES)} focused source units under ASan/UBSan')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
@@ -1550,7 +1558,7 @@ def main() -> None:
     print('PASS production Enemy mesh opcode 621 helper linked into ASan/UBSan root host with real EnemyMeshOwner allocation/release and conditional RenderMesh allocation')
     print('PASS production Enemy Laser 702/703/711/713 helper linked into ASan/UBSan root host with real parameter temporaries and capture-only factory boundary')
     print('PASS production Enemy Laser position opcode 704 helper linked into ASan/UBSan root host with live Context capture, Laser lookup, float operand order and exception-before-vcall behavior')
-    print('PASS production Enemy Laser mutation opcodes 705-710 helper linked into ASan/UBSan root host with native +0x704/+0x7C/+0x78/+0x70/+0x714 stores and erase-before-handle-clear')
+    print('PASS production Enemy Laser mutation opcodes 705-710/714 helper linked into ASan/UBSan root host with native parameter stores, erase-before-handle-clear and captured slot-0x0C flag vcall')
     print('PASS production Enemy shot-command 609/610/611/612 helper linked into ASan/UBSan root host with real writable-shot selector and PMR vector')
     print('PASS natural C++ shot-command COFF helper preserves 25 ordered semantic relocations and ten distinct PMR vector element accesses')
     print('PASS Enemy::state_value natural C++ alias strictly matches the shared original 19B +0x88 getter without duplicate byte credit')

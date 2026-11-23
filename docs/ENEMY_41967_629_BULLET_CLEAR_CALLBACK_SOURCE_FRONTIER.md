@@ -96,7 +96,7 @@ as a **39-byte strict-exact** C++ leaf at `0x0049CAE0`; its complete 35
 non-relocation bytes and sole REL32 to `Timer::operator=(float)` are verified
 by `scripts/verify-bullet-timer-4d8-source.py`.
 
-The maintained root verifier currently runs **128 focused host source units**
+The maintained root verifier currently runs **129 focused host source units**
 under ASan/UBSan and compiles **62 locked-profile i386 COFF units**. The
 41,967-byte `EnemyState::execute_opcode` parent remains **NONEXACT**; opcode
 629 is an inline fragment and receives no whole-parent byte credit. No full

@@ -34,7 +34,7 @@ integer-operand exception before score or popup side effects. The original
 255-byte enqueue Boss is separately strict-exact and is reused without
 claiming duplicate bytes.
 
-The maintained root verifier currently runs **128 focused host source units**
+The maintained root verifier currently runs **129 focused host source units**
 under ASan/UBSan and compiles **62 locked-profile i386 COFF units**. The
 41,967-byte `EnemyState::execute_opcode` parent remains **NONEXACT**; opcode
 630 is an inline fragment and receives no whole-parent byte credit. No full
