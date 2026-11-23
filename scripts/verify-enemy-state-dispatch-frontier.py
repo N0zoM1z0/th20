@@ -298,6 +298,9 @@ def main() -> None:
     # The final three owned native selectors include the 1002/1003
     # controller/state stores immediately before the shared epilogue.
     enemy_state_tail_cases={
+        1001:(170,0x0049629B,0x00496355,186,39,
+              'a6090a588b973e8fa24fe53f6e804d0b0bfaa5c626844472f1920e2465c7b335',
+              [0x00513DD0,0x004AB080,0x00498F70,0x00512F60,0x004AB080]),
         1002:(171,0x00496355,0x00496387,50,10,
               'ffa345dd7dda00d19cd5ce12a935de0eda8071d1a2a44758ac8594336ac97ffe',
               [0x004AB080,0x00412730]),
@@ -316,6 +319,12 @@ def main() -> None:
         calls=[int(insn.op_str,16) for insn in instructions
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
+
+    # The opcode-1001 wrapper's source diagnostic is a real original PE
+    # string, not an invented label or replacement resource name.
+    expected_stone_source_label=(
+        b'D:\\cygwin\\home\\zun\\prog\\th20\\src\\game\\stoneenemy.cpp:76 StoneEnemyInf\0')
+    assert pe.get_data(0x00574240-image_base,len(expected_stone_source_label)) == expected_stone_source_label
 
     # Opcode 569 is a reserved selector that points directly at the common
     # return-zero epilogue rather than owning an inline case body.
@@ -645,6 +654,25 @@ def main() -> None:
     assert 'execute_enemy_controller_setter_opcode(EnemyState&' not in root_test_source
     assert 'void BulletController::set_vector_4c' not in root_test_source
     assert 'void EnemyController::set_field_88' not in root_test_source
+    stone_record_source=(ROOT/'src/StoneEnemyRecord.cpp').read_text()
+    stone_record_header=(ROOT/'src/StoneEnemyRecord.hpp').read_text()
+    assert 'process_allocator->allocate_object<StoneEnemyRecord>' in stone_record_source
+    assert 'records.append(&record->link)' in stone_record_source
+    assert 'record->initialize(enemy_handle, player_index)' in stone_record_source
+    assert 'StoneEnemyController::add_record' in stone_record_source
+    assert 'stone_enemy_record_diagnostic_label' in stone_record_source
+    assert 'EnemyHandle enemy_14;' in stone_record_header
+    assert 'AnimationHandle handle_18;' in stone_record_header
+    assert 'allocated_stone_record' in root_test_source
+    assert 'stone_enemy_record_diagnostic_label' in root_test_source
+    stone_record_source=(ROOT/'src/StoneEnemyRecord.cpp').read_text()
+    assert 'process_allocator->allocate_object<StoneEnemyRecord>' in stone_record_source
+    assert 'records.append(&record->link)' in stone_record_source
+    assert 'record->initialize(enemy_handle, player_index)' in stone_record_source
+    assert 'StoneEnemyController::add_record' in stone_record_source
+    assert 'stone_enemy_record_diagnostic_label' in stone_record_source
+    assert 'allocated_stone_record' in root_test_source
+    assert 'stone_enemy_record_diagnostic_label' in root_test_source
     assert '::new (static_cast<void*>(bullet_controller_storage.data())) BulletController()' in root_test_source
     assert 'retarget_enemy_controller_during_integer_read' in root_test_source
     assert 'retarget_bullet_controller_during_first_float_read' in root_test_source
@@ -1595,6 +1623,7 @@ def main() -> None:
     print('PASS natural C++ shot-command COFF helper preserves 25 ordered semantic relocations and ten distinct PMR vector element accesses')
     print('PASS Enemy::state_value natural C++ alias strictly matches the shared original 19B +0x88 getter without duplicate byte credit')
     print('PASS original opcode-549 membership (95B), opcode-551 fog (257B), opcode-553/554 controller setters (66B/106B) and opcode-555 animation/sound Boss (388B) selector/call maps')
+    print('PASS original opcode-1001 selector 170: 186B / 39 x86 / five ordered calls; 129B allocator factory, 76B record constructor and 69B list-append wrapper strictly exact')
     print('PASS original opcode-569 selector index 173 points directly to the verified common return-zero epilogue')
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')

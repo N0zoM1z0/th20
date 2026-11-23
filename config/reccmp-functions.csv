@@ -1824,3 +1824,5 @@ th20::EclManager::select,0x00540200,function
 th20::EnemyState::clear_bullets_in_animation_rectangle,0x00488B80,function
 th20::EnemyState::clear_all_bullets_for_enemy_clear,0x00488E80,function
 th20::EnemyState::spawn_from_opcode,0x00496FB0,function
+th20::DiagnosticAllocator::allocate_object<StoneEnemyRecord>,0x00511870,function
+th20::StoneEnemyController::add_record,0x00512F60,function

@@ -14,6 +14,7 @@ struct StoneEnemyController {
     Interpolation<std::uint8_t> scalar_64;
     FloatInterpolation scalar_84;
     std::uint8_t byte_b0;
+    void add_record(std::int32_t enemy_handle, std::int32_t player_index);
     StoneEnemyController();
     ~StoneEnemyController();
     std::uint8_t byte_b0_value();

@@ -1808,3 +1808,6 @@ th20::EnemyState::clear_bullets_in_animation_rectangle
 th20::EnemyState::clear_all_bullets_for_enemy_clear
 th20::EnemyState::spawn_from_opcode
 th20::LaserBeamInf::set_parameter_flag
+th20::StoneEnemyRecord::StoneEnemyRecord
+th20::DiagnosticAllocator::allocate_object<StoneEnemyRecord>
+th20::StoneEnemyController::add_record

@@ -1079,3 +1079,5 @@ address,name,module,confidence,evidence
 0x00571B14,th20::sound_command_name_571b14,Sound,high,CORE/RECON-1207; native 0x4D9B50 passes the same six-byte "dummy" command-name literal to both SoundInf::enqueue calls
 0x00540200,th20::EclManager::select,EclManager,high,CORE/RECON-1215; docs/ENEMY_41967_800_801_SCRIPT_CONTROL_SOURCE_FRONTIER.md
 0x0056F00C,native_six_56f00c,Math,high,CORE/RECON-1259; native Enemy opcode 629 Bullet-circle radius is exactly 6.0f at this original .rdata address
+0x00511870,th20::DiagnosticAllocator::allocate_object<StoneEnemyRecord>,CxxAllocator,medium,docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md
+0x00512F60,th20::StoneEnemyController::add_record,StoneEnemyController,medium,config/source-diagnostics.csv; docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md

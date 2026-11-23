@@ -29,10 +29,12 @@ The maintained StoneEnemyController uses the complete observed storage:
 
 The original record type spelling and the semantic roles of its trailing words
 remain unknown. The maintained `StoneEnemyRecord` is a complete 0x34-byte layout
-with an intrusive link, two AnimationHandles and a Timer; its 76-byte constructor
-strictly replays at 0x5119E0. The +2C/+30 words are zeroed by the allocation
-factory before construction, not by the record constructor. Controller destruction
-and record allocation remain undefined production interfaces. The getter at 0x485A40
+with an intrusive link, an EnemyHandle, an AnimationHandle and a Timer; its
+76-byte constructor strictly replays at 0x5119E0. The exact 129-byte
+DiagnosticAllocator factory zeroes the class before construction, and the exact
+69-byte StoneEnemyController record-creation wrapper appends the record before
+calling its still-open 1,847-byte initializer. Controller destruction and record
+retirement remain undefined production interfaces. The getter at 0x485A40
 returns the raw byte; no boolean field or TaskInfo/vtable base is inferred.
 
 ## Complete maintained caller

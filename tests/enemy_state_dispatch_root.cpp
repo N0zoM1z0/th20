@@ -14,6 +14,7 @@
 #include "StageResource.hpp"
 #include "Context.hpp"
 #include "DiagnosticAllocator.hpp"
+#include "DiagnosticObjectFactories.hpp"
 #include "LockRegistry.hpp"
 #include "EnemyStateMovementOpcode.hpp"
 #include "EnemyStatePatternOpcode.hpp"
@@ -753,12 +754,25 @@ int main() {
     assert(stone_enemy_record.link.previous == nullptr);
     assert(stone_enemy_record.link.owner == nullptr);
     assert(stone_enemy_record.link.iterator == nullptr);
-    assert(stone_enemy_record.handle_14.value == 0);
+    assert(stone_enemy_record.enemy_14.value == 0);
     assert(stone_enemy_record.handle_18.value == 0);
     assert(stone_enemy_record.timer_1c.previous == 0);
     assert(stone_enemy_record.timer_1c.current == 0);
     assert(stone_enemy_record.timer_1c.current_fraction == 0.0f);
     assert(stone_enemy_record.timer_1c.flags == 0);
+
+    // Exercise the real DiagnosticAllocator template factory as well as the
+    // standalone constructor. The MSVC /sdl auto-zero itself is separately
+    // pinned by the 129-byte native factory replay.
+    DiagnosticAllocator record_allocator;
+    auto* const allocated_stone_record =
+        record_allocator.allocate_object<StoneEnemyRecord>(stone_enemy_record_diagnostic_label);
+    assert(allocated_stone_record != nullptr);
+    assert(allocated_stone_record->link.node == allocated_stone_record);
+    assert(allocated_stone_record->enemy_14.value == 0);
+    assert(allocated_stone_record->handle_18.value == 0);
+    assert(allocated_stone_record->timer_1c.previous == 0);
+    record_allocator.release_object(allocated_stone_record);
 
     Enemy enemy;
     Enemy found_enemy;
